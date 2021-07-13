@@ -8442,12 +8442,14 @@ components:
       - $ref: '#/components/schemas/BaseResponse'
       - $ref: '#/components/schemas/ApplicationStorageResponse'
       - $ref: '#/components/schemas/ApplicationPortResponse'
-      - $ref: '#/components/schemas/ApplicationRequest'
       example:
-        environment:
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        min_running_instances: 0
+        memory: 1024
         maximum_memory: 1024
-        maximum_cpu: 1250
+        build_mode: BUILDPACKS
+        description: description
+        cpu: 1250
+        max_running_instances: 0
         git_repository:
           owner: John Doe
           deployed_commit_tag: v1.0.1
@@ -8457,6 +8459,14 @@ components:
           has_access: true
           deployed_commit_id: deployed_commit_id
           deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+        dockerfile_path: dockerfile_path
+        healthcheck:
+          protocol: TCP
+          value: value
+        environment:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        maximum_cpu: 1250
+        name: name
       properties:
         environment:
           $ref: '#/components/schemas/ReferenceObject'
@@ -8475,6 +8485,51 @@ components:
             on organization cluster configuration. unit is MB. 1024 MB = 1GB
           example: 1024
           type: number
+        name:
+          description: name is case insensitive
+          type: string
+        description:
+          description: give a description to this application
+          type: string
+        build_mode:
+          default: BUILDPACKS
+          description: |
+            `DOCKER` requires `dockerfile_path`
+            `BUILDPACKS` does not require any `dockerfile_path`
+          enum:
+          - DOCKER
+          - BUILDPACKS
+          type: string
+        dockerfile_path:
+          description: The path of the associated Dockerfile. Only if you are using
+            build_mode = DOCKER
+          type: string
+        cpu:
+          default: 250
+          description: unit is millicores (m). 1000m = 1 cpu
+          example: 1250
+          type: number
+        memory:
+          default: 256
+          description: unit is MB. 1024 MB = 1GB
+          example: 1024
+          type: number
+        min_running_instances:
+          default: 1
+          description: |
+            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+            Note: 0 means that there is no application running.
+          minimum: 0
+          type: integer
+        max_running_instances:
+          default: 1
+          description: |
+            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+            Note: -1 means that there is no limit.
+          maximum: -1
+          type: integer
+        healthcheck:
+          $ref: '#/components/schemas/Healthcheck'
       type: object
     CustomDomainRequest:
       example:
@@ -8679,10 +8734,13 @@ components:
     ApplicationResponseList:
       example:
         results:
-        - environment:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - min_running_instances: 0
+          memory: 1024
           maximum_memory: 1024
-          maximum_cpu: 1250
+          build_mode: BUILDPACKS
+          description: description
+          cpu: 1250
+          max_running_instances: 0
           git_repository:
             owner: John Doe
             deployed_commit_tag: v1.0.1
@@ -8692,10 +8750,21 @@ components:
             has_access: true
             deployed_commit_id: deployed_commit_id
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
-        - environment:
+          dockerfile_path: dockerfile_path
+          healthcheck:
+            protocol: TCP
+            value: value
+          environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          maximum_memory: 1024
           maximum_cpu: 1250
+          name: name
+        - min_running_instances: 0
+          memory: 1024
+          maximum_memory: 1024
+          build_mode: BUILDPACKS
+          description: description
+          cpu: 1250
+          max_running_instances: 0
           git_repository:
             owner: John Doe
             deployed_commit_tag: v1.0.1
@@ -8705,6 +8774,14 @@ components:
             has_access: true
             deployed_commit_id: deployed_commit_id
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+          dockerfile_path: dockerfile_path
+          healthcheck:
+            protocol: TCP
+            value: value
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          maximum_cpu: 1250
+          name: name
       properties:
         results:
           items:

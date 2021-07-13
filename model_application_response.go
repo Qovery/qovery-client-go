@@ -23,12 +23,29 @@ type ApplicationResponse struct {
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *float32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
-	MaximumMemory *float32                            `json:"maximum_memory,omitempty"`
-	Id            string                              `json:"id"`
-	CreatedAt     time.Time                           `json:"created_at"`
-	UpdatedAt     *time.Time                          `json:"updated_at,omitempty"`
-	Storage       *[]ApplicationStorageRequestStorage `json:"storage,omitempty"`
-	Ports         *[]ApplicationPortRequestPorts      `json:"ports,omitempty"`
+	MaximumMemory *float32 `json:"maximum_memory,omitempty"`
+	// name is case insensitive
+	Name *string `json:"name,omitempty"`
+	// give a description to this application
+	Description *string `json:"description,omitempty"`
+	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
+	BuildMode *string `json:"build_mode,omitempty"`
+	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
+	DockerfilePath *string `json:"dockerfile_path,omitempty"`
+	// unit is millicores (m). 1000m = 1 cpu
+	Cpu *float32 `json:"cpu,omitempty"`
+	// unit is MB. 1024 MB = 1GB
+	Memory *float32 `json:"memory,omitempty"`
+	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
+	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
+	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
+	MaxRunningInstances *int32                               `json:"max_running_instances,omitempty"`
+	Healthcheck         *Healthcheck                         `json:"healthcheck,omitempty"`
+	Id                  string                               `json:"id"`
+	CreatedAt           time.Time                            `json:"created_at"`
+	UpdatedAt           *time.Time                           `json:"updated_at,omitempty"`
+	Storage             *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports               *[]ApplicationPortResponsePorts      `json:"ports,omitempty"`
 }
 
 // NewApplicationResponse instantiates a new ApplicationResponse object
@@ -51,6 +68,16 @@ func NewApplicationResponseWithDefaults() *ApplicationResponse {
 	this.MaximumCpu = &maximumCpu
 	var maximumMemory float32 = 256
 	this.MaximumMemory = &maximumMemory
+	var buildMode string = "BUILDPACKS"
+	this.BuildMode = &buildMode
+	var cpu float32 = 250
+	this.Cpu = &cpu
+	var memory float32 = 256
+	this.Memory = &memory
+	var minRunningInstances int32 = 1
+	this.MinRunningInstances = &minRunningInstances
+	var maxRunningInstances int32 = 1
+	this.MaxRunningInstances = &maxRunningInstances
 	return &this
 }
 
@@ -182,6 +209,294 @@ func (o *ApplicationResponse) SetMaximumMemory(v float32) {
 	o.MaximumMemory = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *ApplicationResponse) SetName(v string) {
+	o.Name = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ApplicationResponse) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetBuildMode returns the BuildMode field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetBuildMode() string {
+	if o == nil || o.BuildMode == nil {
+		var ret string
+		return ret
+	}
+	return *o.BuildMode
+}
+
+// GetBuildModeOk returns a tuple with the BuildMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetBuildModeOk() (*string, bool) {
+	if o == nil || o.BuildMode == nil {
+		return nil, false
+	}
+	return o.BuildMode, true
+}
+
+// HasBuildMode returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasBuildMode() bool {
+	if o != nil && o.BuildMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildMode gets a reference to the given string and assigns it to the BuildMode field.
+func (o *ApplicationResponse) SetBuildMode(v string) {
+	o.BuildMode = &v
+}
+
+// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetDockerfilePath() string {
+	if o == nil || o.DockerfilePath == nil {
+		var ret string
+		return ret
+	}
+	return *o.DockerfilePath
+}
+
+// GetDockerfilePathOk returns a tuple with the DockerfilePath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetDockerfilePathOk() (*string, bool) {
+	if o == nil || o.DockerfilePath == nil {
+		return nil, false
+	}
+	return o.DockerfilePath, true
+}
+
+// HasDockerfilePath returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasDockerfilePath() bool {
+	if o != nil && o.DockerfilePath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDockerfilePath gets a reference to the given string and assigns it to the DockerfilePath field.
+func (o *ApplicationResponse) SetDockerfilePath(v string) {
+	o.DockerfilePath = &v
+}
+
+// GetCpu returns the Cpu field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetCpu() float32 {
+	if o == nil || o.Cpu == nil {
+		var ret float32
+		return ret
+	}
+	return *o.Cpu
+}
+
+// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetCpuOk() (*float32, bool) {
+	if o == nil || o.Cpu == nil {
+		return nil, false
+	}
+	return o.Cpu, true
+}
+
+// HasCpu returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasCpu() bool {
+	if o != nil && o.Cpu != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCpu gets a reference to the given float32 and assigns it to the Cpu field.
+func (o *ApplicationResponse) SetCpu(v float32) {
+	o.Cpu = &v
+}
+
+// GetMemory returns the Memory field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetMemory() float32 {
+	if o == nil || o.Memory == nil {
+		var ret float32
+		return ret
+	}
+	return *o.Memory
+}
+
+// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetMemoryOk() (*float32, bool) {
+	if o == nil || o.Memory == nil {
+		return nil, false
+	}
+	return o.Memory, true
+}
+
+// HasMemory returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasMemory() bool {
+	if o != nil && o.Memory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMemory gets a reference to the given float32 and assigns it to the Memory field.
+func (o *ApplicationResponse) SetMemory(v float32) {
+	o.Memory = &v
+}
+
+// GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetMinRunningInstances() int32 {
+	if o == nil || o.MinRunningInstances == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MinRunningInstances
+}
+
+// GetMinRunningInstancesOk returns a tuple with the MinRunningInstances field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetMinRunningInstancesOk() (*int32, bool) {
+	if o == nil || o.MinRunningInstances == nil {
+		return nil, false
+	}
+	return o.MinRunningInstances, true
+}
+
+// HasMinRunningInstances returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasMinRunningInstances() bool {
+	if o != nil && o.MinRunningInstances != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMinRunningInstances gets a reference to the given int32 and assigns it to the MinRunningInstances field.
+func (o *ApplicationResponse) SetMinRunningInstances(v int32) {
+	o.MinRunningInstances = &v
+}
+
+// GetMaxRunningInstances returns the MaxRunningInstances field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetMaxRunningInstances() int32 {
+	if o == nil || o.MaxRunningInstances == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaxRunningInstances
+}
+
+// GetMaxRunningInstancesOk returns a tuple with the MaxRunningInstances field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetMaxRunningInstancesOk() (*int32, bool) {
+	if o == nil || o.MaxRunningInstances == nil {
+		return nil, false
+	}
+	return o.MaxRunningInstances, true
+}
+
+// HasMaxRunningInstances returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasMaxRunningInstances() bool {
+	if o != nil && o.MaxRunningInstances != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxRunningInstances gets a reference to the given int32 and assigns it to the MaxRunningInstances field.
+func (o *ApplicationResponse) SetMaxRunningInstances(v int32) {
+	o.MaxRunningInstances = &v
+}
+
+// GetHealthcheck returns the Healthcheck field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetHealthcheck() Healthcheck {
+	if o == nil || o.Healthcheck == nil {
+		var ret Healthcheck
+		return ret
+	}
+	return *o.Healthcheck
+}
+
+// GetHealthcheckOk returns a tuple with the Healthcheck field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetHealthcheckOk() (*Healthcheck, bool) {
+	if o == nil || o.Healthcheck == nil {
+		return nil, false
+	}
+	return o.Healthcheck, true
+}
+
+// HasHealthcheck returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasHealthcheck() bool {
+	if o != nil && o.Healthcheck != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHealthcheck gets a reference to the given Healthcheck and assigns it to the Healthcheck field.
+func (o *ApplicationResponse) SetHealthcheck(v Healthcheck) {
+	o.Healthcheck = &v
+}
+
 // GetId returns the Id field value
 func (o *ApplicationResponse) GetId() string {
 	if o == nil {
@@ -263,9 +578,9 @@ func (o *ApplicationResponse) SetUpdatedAt(v time.Time) {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetStorage() []ApplicationStorageRequestStorage {
+func (o *ApplicationResponse) GetStorage() []ApplicationStorageResponseStorage {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageRequestStorage
+		var ret []ApplicationStorageResponseStorage
 		return ret
 	}
 	return *o.Storage
@@ -273,7 +588,7 @@ func (o *ApplicationResponse) GetStorage() []ApplicationStorageRequestStorage {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetStorageOk() (*[]ApplicationStorageRequestStorage, bool) {
+func (o *ApplicationResponse) GetStorageOk() (*[]ApplicationStorageResponseStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -289,15 +604,15 @@ func (o *ApplicationResponse) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageRequestStorage and assigns it to the Storage field.
-func (o *ApplicationResponse) SetStorage(v []ApplicationStorageRequestStorage) {
+// SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
+func (o *ApplicationResponse) SetStorage(v []ApplicationStorageResponseStorage) {
 	o.Storage = &v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetPorts() []ApplicationPortRequestPorts {
+func (o *ApplicationResponse) GetPorts() []ApplicationPortResponsePorts {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortRequestPorts
+		var ret []ApplicationPortResponsePorts
 		return ret
 	}
 	return *o.Ports
@@ -305,7 +620,7 @@ func (o *ApplicationResponse) GetPorts() []ApplicationPortRequestPorts {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetPortsOk() (*[]ApplicationPortRequestPorts, bool) {
+func (o *ApplicationResponse) GetPortsOk() (*[]ApplicationPortResponsePorts, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -321,8 +636,8 @@ func (o *ApplicationResponse) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortRequestPorts and assigns it to the Ports field.
-func (o *ApplicationResponse) SetPorts(v []ApplicationPortRequestPorts) {
+// SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
+func (o *ApplicationResponse) SetPorts(v []ApplicationPortResponsePorts) {
 	o.Ports = &v
 }
 
@@ -339,6 +654,33 @@ func (o ApplicationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaximumMemory != nil {
 		toSerialize["maximum_memory"] = o.MaximumMemory
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
+	}
+	if o.BuildMode != nil {
+		toSerialize["build_mode"] = o.BuildMode
+	}
+	if o.DockerfilePath != nil {
+		toSerialize["dockerfile_path"] = o.DockerfilePath
+	}
+	if o.Cpu != nil {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if o.Memory != nil {
+		toSerialize["memory"] = o.Memory
+	}
+	if o.MinRunningInstances != nil {
+		toSerialize["min_running_instances"] = o.MinRunningInstances
+	}
+	if o.MaxRunningInstances != nil {
+		toSerialize["max_running_instances"] = o.MaxRunningInstances
+	}
+	if o.Healthcheck != nil {
+		toSerialize["healthcheck"] = o.Healthcheck
 	}
 	if true {
 		toSerialize["id"] = o.Id
