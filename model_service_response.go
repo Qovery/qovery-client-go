@@ -45,7 +45,7 @@ type ServiceResponse struct {
 // will change when the set of required properties is changed
 func NewServiceResponse(id string, createdAt time.Time) *ServiceResponse {
 	this := ServiceResponse{}
-	this.Id = &id
+	this.Id = id
 	this.CreatedAt = createdAt
 	return &this
 }

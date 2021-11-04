@@ -10,7 +10,7 @@ info:
   title: '[BETA] Qovery API'
   version: 1.0.0
   x-logo:
-    url: https://raw.githubusercontent.com/Qovery/public-resources/master/qovery%20logo%20white%20text%20HQ.png
+    url: https://raw.githubusercontent.com/Qovery/public-resources/master/qovery_new_logo_white.svg
     altText: Qovery
 servers:
 - url: https://api.qovery.com
@@ -184,6 +184,204 @@ paths:
       summary: Get organization members
       tags:
       - Members
+  /organization/{organizationId}/member/{userId}:
+    delete:
+      operationId: deleteMember
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: User ID
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Remove a member
+      tags:
+      - Members
+  /organization/{organizationId}/inviteMember:
+    get:
+      operationId: getOrganizationInvitedMembers
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteMemberResponseList'
+          description: Get invited members
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get invited members
+      tags:
+      - Members
+    post:
+      operationId: postInviteMember
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteMemberRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteMemberResponse'
+          description: User invited
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: User already invited
+      summary: Invite someone in the organization
+      tags:
+      - Members
+  /organization/{organizationId}/inviteMember/{inviteId}:
+    delete:
+      operationId: deleteInviteMember
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Remove an invited member
+      tags:
+      - Members
+    post:
+      operationId: postAcceptInviteMember
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Invite ID
+        explode: false
+        in: path
+        name: inviteId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteMemberResponse'
+          description: User invited
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: User already invited
+      summary: Accept Invite in the organization
+      tags:
+      - Members
+  /organization/{organizationId}/transferOwnership:
+    post:
+      operationId: postOrganizationTransferOwnership
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferOwnershipRequest'
+      responses:
+        "204":
+          description: no content
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Transfer organization ownership to another user
+      tags:
+      - Members
   /organization/{organizationId}/currentCost:
     get:
       operationId: getOrganizationCurrentCost
@@ -247,6 +445,9 @@ paths:
       - Billing
   /organization/{organizationId}/cluster/{clusterId}/currentCost:
     get:
+      description: |
+        Get your cluster cost range. We are unable to give a precise cost of your infrastructure at the moment.
+        But Qovery guarantees that the cost of your cluster will not exceed the max range.
       operationId: getClusterCurrentCost
       parameters:
       - description: Organization ID
@@ -272,7 +473,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CostResponse'
+                $ref: '#/components/schemas/CostRangeResponse'
           description: Get cluster cost
         "401":
           description: Access token is missing or invalid
@@ -281,70 +482,6 @@ paths:
         "404":
           description: Resource not found
       summary: Get cluster current cost
-      tags:
-      - Billing
-  /organization/{organizationId}/costBudget:
-    get:
-      operationId: getOrganizationCostBudget
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CostResponse'
-          description: Get Cost Budget
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Get organization cost Budget
-      tags:
-      - Billing
-    put:
-      operationId: editOrganizationBudget
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrganizationBudgetEditRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CostResponse'
-          description: Edit cost budget
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Edit Organization Budget
       tags:
       - Billing
   /organization/{organizationId}/billingInfo:
@@ -1026,7 +1163,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterCredentialsRequest'
+              $ref: '#/components/schemas/AwsCredentialsRequest'
       responses:
         "201":
           content:
@@ -1104,7 +1241,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterCredentialsRequest'
+              $ref: '#/components/schemas/AwsCredentialsRequest'
       responses:
         "200":
           content:
@@ -1168,7 +1305,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterCredentialsRequest'
+              $ref: '#/components/schemas/DoCredentialsRequest'
       responses:
         "201":
           content:
@@ -1246,7 +1383,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterCredentialsRequest'
+              $ref: '#/components/schemas/DoCredentialsRequest'
       responses:
         "200":
           content:
@@ -1310,7 +1447,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterCredentialsRequest'
+              $ref: '#/components/schemas/ScalewayCredentialsRequest'
       responses:
         "201":
           content:
@@ -1388,7 +1525,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterCredentialsRequest'
+              $ref: '#/components/schemas/ScalewayCredentialsRequest'
       responses:
         "200":
           content:
@@ -1407,6 +1544,25 @@ paths:
       summary: Edit a set of Scaleway credentials
       tags:
       - Cloud Provider Credentials
+  /cloudProvider:
+    get:
+      operationId: listCloudProvider
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudProviderResponseList'
+          description: list cloud providers
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Cloud providers available
+      tags:
+      - Cloud Provider
   /aws/region:
     get:
       operationId: listAWSRegions
@@ -1425,7 +1581,26 @@ paths:
           description: Resource not found
       summary: List AWS regions
       tags:
-      - Cloud Provider Credentials
+      - Cloud Provider
+  /aws/clusterFeature:
+    get:
+      operationId: listAWSFeatures
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterFeatureResponseList'
+          description: list features available for AWS cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List AWS features available
+      tags:
+      - Cloud Provider
   /digitalOcean/region:
     get:
       operationId: listDORegions
@@ -1444,7 +1619,26 @@ paths:
           description: Resource not found
       summary: List DO regions
       tags:
-      - Cloud Provider Credentials
+      - Cloud Provider
+  /digitalOcean/clusterFeature:
+    get:
+      operationId: listDOFeatures
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterFeatureResponseList'
+          description: list features available for Digital Ocean cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List DO features available
+      tags:
+      - Cloud Provider
   /scaleway/region:
     get:
       operationId: listScalewayRegions
@@ -1463,7 +1657,26 @@ paths:
           description: Resource not found
       summary: List Scaleway regions
       tags:
-      - Cloud Provider Credentials
+      - Cloud Provider
+  /scaleway/clusterFeature:
+    get:
+      operationId: listScalewayFeatures
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterFeatureResponseList'
+          description: list features available for Scaleway cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Scaleway features available
+      tags:
+      - Cloud Provider
   /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo:
     get:
       operationId: getOrganizationCloudProviderInfo
@@ -1664,6 +1877,47 @@ paths:
         "404":
           description: Resource not found
       summary: Update a cluster Version
+      tags:
+      - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/stop:
+    post:
+      description: Cluster stop has been requester.
+      operationId: StopCluster
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterStatusResponse'
+          description: Update cluster
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Cluster is already stopped or an operation is in progress
+      summary: Stop cluster
       tags:
       - Clusters
   /project/{projectId}:
@@ -2938,6 +3192,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: return (or not) results that must be updated
+        explode: true
+        in: query
+        name: toUpdate
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -3019,35 +3281,6 @@ paths:
         "404":
           description: Resource not found
       summary: List all environment applications statuses
-      tags:
-      - Applications
-  /environment/{environmentId}/application/to-update:
-    get:
-      operationId: listApplicationToUpdate
-      parameters:
-      - description: Environment ID
-        explode: false
-        in: path
-        name: environmentId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApplicationResponseList'
-          description: List applications
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List applications to update
       tags:
       - Applications
   /environment/{environmentId}/application/instance:
@@ -3137,6 +3370,36 @@ paths:
         "404":
           description: Resource not found
       summary: List current scaling information for each application
+      tags:
+      - Applications
+  /environment/{environmentId}/application/supportedLanguage:
+    get:
+      description: Returns list of languages supported by Buildpacks.
+      operationId: getEnvironmentApplicationSupportedLanguages
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguageList'
+          description: Supported languages list.
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List supported languages
       tags:
       - Applications
   /environment/{environmentId}/log:
@@ -5289,6 +5552,44 @@ paths:
       summary: Edit a Custom Domain
       tags:
       - Custom Domain
+  /application/{applicationId}/customDomain/{customDomainId}/status:
+    get:
+      operationId: getCustomDomainStatus
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Custom Domain ID
+        explode: false
+        in: path
+        name: customDomainId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomainResponse'
+          description: Get status
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get Custom Domain status
+      tags:
+      - Custom Domain
   /application/{applicationId}/log:
     get:
       description: This will list the last 1000 logs of the application
@@ -6680,6 +6981,30 @@ paths:
       summary: Get github repositories of the connected user
       tags:
       - Git repositories
+  /account/github/repository/branch:
+    get:
+      operationId: getGithubRepositoryBranches
+      parameters:
+      - description: The name of the repository where to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Get github repository branches
+        "401":
+          description: Access token is missing or invalid
+      summary: Get github branches of the specified repository
+      tags:
+      - Git repositories
   /account/gitlab/repository:
     get:
       operationId: getGitlabRepositories
@@ -6693,6 +7018,30 @@ paths:
         "401":
           description: Access token is missing or invalid
       summary: Get gitlab repositories of the connected user
+      tags:
+      - Git repositories
+  /account/gitlab/repository/branch:
+    get:
+      operationId: getGitlabRepositoryBranches
+      parameters:
+      - description: The name of the repository to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1account~1github~1repository~1branch/get/responses/200/content/application~1json/schema'
+          description: Get gitlab repository branches
+        "401":
+          description: Access token is missing or invalid
+      summary: Get gitlab branches of the specified repository
       tags:
       - Git repositories
   /account/referral:
@@ -7066,7 +7415,9 @@ components:
         plan:
           enum:
           - COMMUNITY
-          - STARTUP
+          - FREE
+          - PROFESSIONAL
+          - BUSINESS
           type: string
         website_url:
           nullable: true
@@ -7117,7 +7468,6 @@ components:
       type: object
     ClusterStatusResponseList:
       allOf:
-      - $ref: '#/components/schemas/ReferenceObject'
       - $ref: '#/components/schemas/ClusterStatusResponse'
     MetricGenericResponse:
       example:
@@ -7385,19 +7735,17 @@ components:
     MemberResponseList:
       example:
         results:
-        - last_activity: 2000-01-23T04:56:07.000+00:00
-          role: OWNER
-          invitation_status: PENDING
+        - role: OWNER
           profile_picture_url: https://openapi-generator.tech
-          last_name: last_name
-          first_name: first_name
+          last_activity_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          nickname: nickname
           email: email
-        - last_activity: 2000-01-23T04:56:07.000+00:00
-          role: OWNER
-          invitation_status: PENDING
+        - role: OWNER
           profile_picture_url: https://openapi-generator.tech
-          last_name: last_name
-          first_name: first_name
+          last_activity_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          nickname: nickname
           email: email
       properties:
         results:
@@ -7655,22 +8003,22 @@ components:
     DatabaseEditRequest:
       example:
         memory: 1024
-        accessibility: public
+        accessibility: PUBLIC
         name: name
         cpu: 1250
         storage: 4
         version: "10.1"
       properties:
         name:
-          description: name is case insensitive
+          description: name is case-insensitive
           type: string
         version:
           example: "10.1"
           type: string
         accessibility:
           enum:
-          - public
-          - private
+          - PUBLIC
+          - PRIVATE
           type: string
         cpu:
           default: 250
@@ -7715,10 +8063,6 @@ components:
           type: array
       type: object
     ClusterCredentialsRequest:
-      example:
-        access_key_id: access_key_id
-        name: name
-        secret_access_key: secret_access_key
       properties:
         name:
           type: string
@@ -7733,17 +8077,16 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
       example:
-        last_activity: 2000-01-23T04:56:07.000+00:00
         role: OWNER
-        invitation_status: PENDING
         profile_picture_url: https://openapi-generator.tech
-        last_name: last_name
-        first_name: first_name
+        last_activity_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        nickname: nickname
         email: email
       properties:
-        first_name:
+        name:
           type: string
-        last_name:
+        nickname:
           type: string
         email:
           format: email
@@ -7751,7 +8094,7 @@ components:
         profile_picture_url:
           format: uri
           type: string
-        last_activity:
+        last_activity_at:
           description: last time the user was connected
           format: date-time
           type: string
@@ -7762,22 +8105,35 @@ components:
           - DEVELOPER
           - VIEWER
           type: string
-        invitation_status:
-          enum:
-          - PENDING
-          - ACCEPTED
-          type: string
+      required:
+      - email
       type: object
     ClusterStatusResponse:
       example:
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: READY
       properties:
+        cluster_id:
+          format: uuid
+          type: string
         status:
           enum:
           - READY
+          - QUEUED
+          - BUILDING
+          - BUILD_ERROR
+          - BUILT
           - DEPLOYING
+          - DEPLOYMENT_ERROR
+          - DEPLOYED
+          - STOPPING
+          - STOP_ERROR
+          - STOPPED
+          - DELETING
+          - DELETE_ERROR
+          - DELETED
           - RUNNING
-          - WARNING
+          - RUNNING_ERROR
           type: string
       type: object
     InvoiceResponseList:
@@ -8151,20 +8507,12 @@ components:
           type: string
         name:
           type: string
-        billing_started_on:
-          format: date-time
-          type: string
-        billing_ended_on:
-          format: date-time
-          type: string
         consumed_time_in_seconds:
           example: 3600
           type: integer
         cost:
           $ref: '#/components/schemas/CostResponse'
       required:
-      - billing_ended_on
-      - billing_started_on
       - consumed_time_in_seconds
       - cost
       - id
@@ -8377,46 +8725,13 @@ components:
           type: array
       type: object
     ClusterRequest:
-      example:
-        memory: 1024
-        auto_update: true
-        max_running_nodes: 6
-        name: name
-        description: description
-        cpu: 1250
-        min_running_nodes: 0
-        enable_historic_log: true
-        enable_historic_metric: true
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          type: string
-        auto_update:
-          type: boolean
-        enable_historic_metric:
-          type: boolean
-        enable_historic_log:
-          type: boolean
-        cpu:
-          default: 250
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: number
-        memory:
-          default: 256
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: number
-        min_running_nodes:
-          default: 1
-          type: integer
-        max_running_nodes:
-          default: 1
-          type: integer
+      allOf:
+      - $ref: '#/components/schemas/Cluster'
+      - $ref: '#/components/schemas/ClusterFeatureRequest'
       required:
+      - cloud_provider
       - name
+      - region
       type: object
     ClusterCloudProviderInfoResponse:
       example:
@@ -8639,7 +8954,7 @@ components:
       - $ref: '#/components/schemas/CustomDomainRequest'
       example:
         validation_domain: validation_domain
-        status: validation_pending
+        status: deploying
       properties:
         validation_domain:
           description: URL provided by Qovery. You must create a CNAME on your DNS
@@ -8647,8 +8962,9 @@ components:
           type: string
         status:
           enum:
-          - validation_pending
-          - live
+          - deploying
+          - checking
+          - ready
           - error
           type: string
       type: object
@@ -8820,7 +9136,10 @@ components:
         start_time: 2000-01-23T04:56:07.000+00:00
         auto_deploy: true
         stop_time: 2000-01-23T04:56:07.000+00:00
-        weekday: FRIDAY
+        timezone: Europe/London
+        weekdays:
+        - MONDAY
+        - MONDAY
         always_up: false
       properties:
         auto_deploy:
@@ -8829,6 +9148,11 @@ components:
         always_up:
           default: false
           type: boolean
+        timezone:
+          default: Europe/London
+          description: specify value only if always_up = false
+          nullable: false
+          type: string
         start_time:
           description: specify value only if always_up = false
           format: date-time
@@ -8839,19 +9163,21 @@ components:
           format: date-time
           nullable: true
           type: string
-        weekday:
+        weekdays:
           description: specify value only if always_up = false
-          enum:
-          - MONDAY
-          - TUESDAY
-          - WEDNESDAY
-          - THURSDAY
-          - FRIDAY
-          - SATURDAY
-          - SUNDAY
-          example: FRIDAY
+          items:
+            enum:
+            - MONDAY
+            - TUESDAY
+            - WEDNESDAY
+            - THURSDAY
+            - FRIDAY
+            - SATURDAY
+            - SUNDAY
+            example: MONDAY
+            type: string
           nullable: true
-          type: string
+          type: array
       type: object
     MetricMemoryDatapointResponse:
       example:
@@ -8907,11 +9233,55 @@ components:
         database:
           $ref: '#/components/schemas/ReferenceObject'
       type: object
-    BudgetExceeded:
+    CurrentCost:
       properties:
-        budget_exceeded:
-          type: boolean
+        plan:
+          enum:
+          - COMMUNITY
+          - FREE
+          - PROFESSIONAL
+          - BUSINESS
+          type: string
+        remaining_trial_day:
+          description: number of days remaining before the end of the trial period
+          type: integer
+        remaining_credits:
+          $ref: '#/components/schemas/RemainingCredits'
+        cost:
+          $ref: '#/components/schemas/Cost'
       type: object
+    PaidUsage:
+      properties:
+        paid_usage:
+          $ref: '#/components/schemas/PaidUsageResponse'
+      type: object
+    PaidUsageResponse:
+      properties:
+        max_deployments_per_month:
+          type: integer
+        consumed_deployments:
+          type: integer
+        monthly_plan_cost:
+          type: number
+        monthly_plan_cost_in_cents:
+          type: integer
+        remaining_deployments:
+          type: integer
+        deployments_exceeded:
+          type: boolean
+        renewal_at:
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
+    CommunityUsage:
+      properties:
+        community_usage:
+          $ref: '#/components/schemas/CommunityUsageResponse'
+      type: object
+    CommunityUsageResponse:
+      allOf:
+      - $ref: '#/components/schemas/ProjectCurrentCostResponseList'
     DatabaseVersionMode:
       example:
         name: "10.1"
@@ -8973,10 +9343,24 @@ components:
       type: object
     ClusterRegionResponse:
       example:
+        country_code: country_code
+        country: country
+        city: city
         name: name
       properties:
         name:
           type: string
+        country_code:
+          type: string
+        country:
+          type: string
+        city:
+          type: string
+      required:
+      - city
+      - country
+      - country_code
+      - name
       type: object
     CredentialsRequest:
       example:
@@ -9262,11 +9646,10 @@ components:
     ClusterResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/ClusterRequest'
+      - $ref: '#/components/schemas/Cluster'
+      - $ref: '#/components/schemas/ClusterFeatureResponse'
       example:
-        cloud_provider: AWS
         has_access: true
-        region: region
         version: version
         estimated_cloud_provider_cost: 0.8008281904610115
         status: READY
@@ -9284,14 +9667,6 @@ components:
         has_access:
           type: boolean
         version:
-          type: string
-        cloud_provider:
-          enum:
-          - AWS
-          - DIGITAL_OCEAN
-          - SCALEWAY
-          type: string
-        region:
           type: string
       type: object
     BackupPaginatedResponseList:
@@ -9323,8 +9698,14 @@ components:
     ClusterRegionResponseList:
       example:
         results:
-        - name: name
-        - name: name
+        - country_code: country_code
+          country: country
+          city: city
+          name: name
+        - country_code: country_code
+          country: country
+          city: city
+          name: name
       properties:
         results:
           items:
@@ -9375,7 +9756,11 @@ components:
     ClusterCredentialsResponse:
       example:
         name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        id:
+          format: uuid
+          type: string
         name:
           type: string
       type: object
@@ -9528,10 +9913,6 @@ components:
       - name
       type: object
     CostResponse:
-      example:
-        total_in_cents: 30000
-        total: 300
-        currency_code: USD
       properties:
         total_in_cents:
           example: 30000
@@ -9603,9 +9984,9 @@ components:
       example:
         results:
         - validation_domain: validation_domain
-          status: validation_pending
+          status: deploying
         - validation_domain: validation_domain
-          status: validation_pending
+          status: deploying
       properties:
         results:
           items:
@@ -9621,12 +10002,9 @@ components:
       type: object
     OrganizationCurrentCostResponse:
       allOf:
-      - $ref: '#/components/schemas/BudgetThreshold'
-      - $ref: '#/components/schemas/BillingPeriod'
-      - $ref: '#/components/schemas/Cost'
-      - $ref: '#/components/schemas/RemainingCredits'
-      - $ref: '#/components/schemas/BudgetExceeded'
-      - $ref: '#/components/schemas/ProjectCurrentCostResponseList'
+      - $ref: '#/components/schemas/CurrentCost'
+      - $ref: '#/components/schemas/PaidUsage'
+      - $ref: '#/components/schemas/CommunityUsage'
     GitRepositoryResponseList:
       example:
         results:
@@ -9809,6 +10187,11 @@ components:
         always_up:
           default: false
           type: boolean
+        timezone:
+          default: Europe/London
+          description: specify value only if always_up = false
+          nullable: false
+          type: string
         start_time:
           description: specify value only if always_up = false
           format: date-time
@@ -9819,19 +10202,21 @@ components:
           format: date-time
           nullable: true
           type: string
-        weekday:
+        weekdays:
           description: specify value only if always_up = false
-          enum:
-          - MONDAY
-          - TUESDAY
-          - WEDNESDAY
-          - THURSDAY
-          - FRIDAY
-          - SATURDAY
-          - SUNDAY
-          example: MONDAY
+          items:
+            enum:
+            - MONDAY
+            - TUESDAY
+            - WEDNESDAY
+            - THURSDAY
+            - FRIDAY
+            - SATURDAY
+            - SUNDAY
+            example: MONDAY
+            type: string
           nullable: true
-          type: string
+          type: array
       required:
       - always_up
       - cluster
@@ -9978,7 +10363,9 @@ components:
       example:
         results:
         - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         results:
           items:
@@ -9997,15 +10384,11 @@ components:
     ClusterResponseList:
       example:
         results:
-        - cloud_provider: AWS
-          has_access: true
-          region: region
+        - has_access: true
           version: version
           estimated_cloud_provider_cost: 0.8008281904610115
           status: READY
-        - cloud_provider: AWS
-          has_access: true
-          region: region
+        - has_access: true
           version: version
           estimated_cloud_provider_cost: 0.8008281904610115
           status: READY
@@ -10094,7 +10477,10 @@ components:
         start_time: 2000-01-23T04:56:07.000+00:00
         auto_deploy: true
         stop_time: 2000-01-23T04:56:07.000+00:00
-        weekday: MONDAY
+        timezone: Europe/London
+        weekdays:
+        - MONDAY
+        - MONDAY
         always_up: false
       properties:
         auto_deploy:
@@ -10103,6 +10489,11 @@ components:
         always_up:
           default: false
           type: boolean
+        timezone:
+          default: Europe/London
+          description: specify value only if always_up = false
+          nullable: false
+          type: string
         start_time:
           description: specify value only if always_up = false
           format: date-time
@@ -10113,19 +10504,21 @@ components:
           format: date-time
           nullable: true
           type: string
-        weekday:
+        weekdays:
           description: specify value only if always_up = false
-          enum:
-          - MONDAY
-          - TUESDAY
-          - WEDNESDAY
-          - THURSDAY
-          - FRIDAY
-          - SATURDAY
-          - SUNDAY
-          example: MONDAY
+          items:
+            enum:
+            - MONDAY
+            - TUESDAY
+            - WEDNESDAY
+            - THURSDAY
+            - FRIDAY
+            - SATURDAY
+            - SUNDAY
+            example: MONDAY
+            type: string
           nullable: true
-          type: string
+          type: array
       type: object
     ReferenceObjectStatusResponseList:
       example:
@@ -10581,13 +10974,6 @@ components:
           readOnly: true
           type: string
       type: object
-    OrganizationBudgetEditRequest:
-      example:
-        total_in_cents: 0
-      properties:
-        total_in_cents:
-          type: integer
-      type: object
     TagResponse:
       example:
         name: name
@@ -10645,6 +11031,27 @@ components:
           items:
             $ref: '#/components/schemas/EnvironmentApplicationsStorageResponse'
           type: array
+      type: object
+    EnvironmentApplicationsSupportedLanguageList:
+      example:
+        results:
+        - name: Ruby
+        - name: Ruby
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguage'
+          type: array
+      type: object
+    EnvironmentApplicationsSupportedLanguage:
+      example:
+        name: Ruby
+      properties:
+        name:
+          example: Ruby
+          type: string
+      required:
+      - name
       type: object
     DatabaseConfigurationResponse:
       example:
@@ -10757,6 +11164,376 @@ components:
         results:
           items:
             $ref: '#/components/schemas/StorageDiskResponse'
+          type: array
+      type: object
+    CostRangeResponse:
+      example:
+        max_cost: 300
+        min_cost: 150
+        min_cost_in_cents: 15000
+        max_cost_in_cents: 30000
+        currency_code: USD
+      properties:
+        min_cost_in_cents:
+          example: 15000
+          type: integer
+        min_cost:
+          example: 150
+          type: number
+        max_cost_in_cents:
+          example: 30000
+          type: integer
+        max_cost:
+          example: 300
+          type: number
+        currency_code:
+          example: USD
+          type: string
+      required:
+      - currency_code
+      - total
+      - total_in_cents
+      type: object
+    CloudProviderResponse:
+      example:
+        regions:
+        - country_code: country_code
+          country: country
+          city: city
+          name: name
+        - country_code: country_code
+          country: country
+          city: city
+          name: name
+        logo_url: logo_url
+        name: name
+        short_name: short_name
+      properties:
+        short_name:
+          type: string
+        name:
+          type: string
+        logo_url:
+          type: string
+        regions:
+          items:
+            $ref: '#/components/schemas/ClusterRegionResponse'
+          type: array
+      type: object
+    InviteMemberResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      example:
+        role: ADMIN
+        invitation_link: https://openapi-generator.tech
+        logo_url: https://openapi-generator.tech
+        invitation_status: PENDING
+        inviter: inviter
+        email: email
+      properties:
+        email:
+          format: email
+          type: string
+        role:
+          enum:
+          - ADMIN
+          - DEVELOPER
+          - VIEWER
+          type: string
+        invitation_link:
+          format: uri
+          type: string
+        invitation_status:
+          enum:
+          - PENDING
+          - EXPIRED
+          type: string
+        inviter:
+          type: string
+        logo_url:
+          format: uri
+          type: string
+      required:
+      - email
+      - invitation_link
+      - invitation_status
+      - inviter
+      - role
+      type: object
+    TransferOwnershipRequest:
+      example:
+        user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        user_id:
+          format: uuid
+          type: string
+      required:
+      - user_id
+      type: object
+    CluserCredentialsResponse:
+      $ref: '#/components/schemas/ClusterCredentialsRequest'
+    AwsCredentialsRequest:
+      example:
+        access_key_id: access_key_id
+        name: name
+        secret_access_key: secret_access_key
+      properties:
+        name:
+          type: string
+        access_key_id:
+          type: string
+        secret_access_key:
+          type: string
+      required:
+      - name
+      type: object
+    DoCredentialsRequest:
+      example:
+        spaces_secret_key: spaces_secret_key
+        name: name
+        spaces_access_id: spaces_access_id
+        token: token
+      properties:
+        name:
+          type: string
+        token:
+          type: string
+        spaces_access_id:
+          type: string
+        spaces_secret_key:
+          type: string
+      required:
+      - name
+      type: object
+    ScalewayCredentialsRequest:
+      example:
+        name: name
+        scaleway_secret_key: scaleway_secret_key
+        scaleway_access_key: scaleway_access_key
+        scaleway_project_id: scaleway_project_id
+      properties:
+        name:
+          type: string
+        scaleway_access_key:
+          type: string
+        scaleway_secret_key:
+          type: string
+        scaleway_project_id:
+          type: string
+      required:
+      - name
+      type: object
+    InviteMemberRequest:
+      example:
+        role: ADMIN
+        email: email
+      properties:
+        email:
+          type: string
+        role:
+          enum:
+          - ADMIN
+          - DEVELOPER
+          - VIEWER
+          type: string
+      required:
+      - email
+      - role
+      type: object
+    ClusterFeatureRequest:
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/ClusterFeatureRequest_features'
+          type: array
+      type: object
+    EnvironmentApplicationsSupportedLanguageResponse:
+      $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguage'
+    EnvironmentApplicationsSupportedLanguageResponseList:
+      $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguageList'
+    Cluster:
+      properties:
+        name:
+          description: name is case-insensitive
+          type: string
+        description:
+          type: string
+        cloud_provider:
+          enum:
+          - AWS
+          - DIGITAL_OCEAN
+          - SCALEWAY
+          type: string
+        region:
+          type: string
+        auto_update:
+          type: boolean
+        cpu:
+          default: 250
+          description: unit is millicores (m). 1000m = 1 cpu
+          example: 1250
+          type: number
+        memory:
+          default: 256
+          description: unit is MB. 1024 MB = 1GB
+          example: 1024
+          type: number
+        min_running_nodes:
+          default: 1
+          type: integer
+        max_running_nodes:
+          default: 1
+          type: integer
+      required:
+      - cloud_provider
+      - name
+      - region
+      type: object
+    ClusterFeatureResponse:
+      example:
+        value_type: BOOLEAN
+        cost_per_month_in_cents: 9900
+        is_value_updatable: false
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        title: title
+        value: value
+        cost_per_month: 99
+        currency_code: USD
+      properties:
+        id:
+          format: uuid
+          type: string
+        title:
+          nullable: false
+          type: string
+        description:
+          nullable: true
+          type: string
+        cost_per_month_in_cents:
+          example: 9900
+          nullable: true
+          type: integer
+        cost_per_month:
+          example: 99
+          nullable: true
+          type: number
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        value_type:
+          enum:
+          - BOOLEAN
+          nullable: false
+          type: string
+        value:
+          nullable: true
+          type: string
+        is_value_updatable:
+          default: false
+          type: boolean
+      type: object
+    ClusterFeatureResponseList:
+      example:
+        results:
+        - value_type: BOOLEAN
+          cost_per_month_in_cents: 9900
+          is_value_updatable: false
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          value: value
+          cost_per_month: 99
+          currency_code: USD
+        - value_type: BOOLEAN
+          cost_per_month_in_cents: 9900
+          is_value_updatable: false
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          value: value
+          cost_per_month: 99
+          currency_code: USD
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterFeatureResponse'
+          type: array
+      type: object
+    InviteMemberResponseList:
+      example:
+        results:
+        - role: ADMIN
+          invitation_link: https://openapi-generator.tech
+          logo_url: https://openapi-generator.tech
+          invitation_status: PENDING
+          inviter: inviter
+          email: email
+        - role: ADMIN
+          invitation_link: https://openapi-generator.tech
+          logo_url: https://openapi-generator.tech
+          invitation_status: PENDING
+          inviter: inviter
+          email: email
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/InviteMemberResponse'
+          type: array
+      type: object
+    CloudProviderResponseList:
+      example:
+        results:
+        - regions:
+          - country_code: country_code
+            country: country
+            city: city
+            name: name
+          - country_code: country_code
+            country: country
+            city: city
+            name: name
+          logo_url: logo_url
+          name: name
+          short_name: short_name
+        - regions:
+          - country_code: country_code
+            country: country
+            city: city
+            name: name
+          - country_code: country_code
+            country: country
+            city: city
+            name: name
+          logo_url: logo_url
+          name: name
+          short_name: short_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/CloudProviderResponse'
+          type: array
+      type: object
+    inline_response_200_results:
+      example:
+        name: main
+      properties:
+        name:
+          example: main
+          type: string
+      required:
+      - name
+      type: object
+    inline_response_200:
+      example:
+        results:
+        - name: main
+        - name: main
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/inline_response_200_results'
           type: array
       type: object
     ApplicationStorageRequest_storage:
@@ -11018,6 +11795,16 @@ components:
       - internal_port
       - protocol
       type: object
+    ClusterFeatureRequest_features:
+      properties:
+        id:
+          format: uuid
+          nullable: false
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
@@ -11031,6 +11818,7 @@ x-tagGroups:
   - Members
   - Billing
   - Clusters
+  - Cloud Provider
   - Cloud Provider Credentials
 - name: Project
   tags:

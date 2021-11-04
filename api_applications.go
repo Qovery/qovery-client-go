@@ -558,24 +558,25 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListApplicationRequest struct {
+type ApiGetEnvironmentApplicationSupportedLanguagesRequest struct {
 	ctx           _context.Context
 	ApiService    *ApplicationsApiService
 	environmentId string
 }
 
-func (r ApiListApplicationRequest) Execute() (ApplicationResponseList, *_nethttp.Response, error) {
-	return r.ApiService.ListApplicationExecute(r)
+func (r ApiGetEnvironmentApplicationSupportedLanguagesRequest) Execute() (EnvironmentApplicationsSupportedLanguageList, *_nethttp.Response, error) {
+	return r.ApiService.GetEnvironmentApplicationSupportedLanguagesExecute(r)
 }
 
 /*
- * ListApplication List applications
+ * GetEnvironmentApplicationSupportedLanguages List supported languages
+ * Returns list of languages supported by Buildpacks.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param environmentId Environment ID
- * @return ApiListApplicationRequest
+ * @return ApiGetEnvironmentApplicationSupportedLanguagesRequest
  */
-func (a *ApplicationsApiService) ListApplication(ctx _context.Context, environmentId string) ApiListApplicationRequest {
-	return ApiListApplicationRequest{
+func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguages(ctx _context.Context, environmentId string) ApiGetEnvironmentApplicationSupportedLanguagesRequest {
+	return ApiGetEnvironmentApplicationSupportedLanguagesRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentId: environmentId,
@@ -584,24 +585,24 @@ func (a *ApplicationsApiService) ListApplication(ctx _context.Context, environme
 
 /*
  * Execute executes the request
- * @return ApplicationResponseList
+ * @return EnvironmentApplicationsSupportedLanguageList
  */
-func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequest) (ApplicationResponseList, *_nethttp.Response, error) {
+func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExecute(r ApiGetEnvironmentApplicationSupportedLanguagesRequest) (EnvironmentApplicationsSupportedLanguageList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ApplicationResponseList
+		localVarReturnValue  EnvironmentApplicationsSupportedLanguageList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.ListApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationSupportedLanguages")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environment/{environmentId}/application"
+	localVarPath := localBasePath + "/environment/{environmentId}/application/supportedLanguage"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -662,24 +663,30 @@ func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListApplicationToUpdateRequest struct {
+type ApiListApplicationRequest struct {
 	ctx           _context.Context
 	ApiService    *ApplicationsApiService
 	environmentId string
+	toUpdate      *bool
 }
 
-func (r ApiListApplicationToUpdateRequest) Execute() (ApplicationResponseList, *_nethttp.Response, error) {
-	return r.ApiService.ListApplicationToUpdateExecute(r)
+func (r ApiListApplicationRequest) ToUpdate(toUpdate bool) ApiListApplicationRequest {
+	r.toUpdate = &toUpdate
+	return r
+}
+
+func (r ApiListApplicationRequest) Execute() (ApplicationResponseList, *_nethttp.Response, error) {
+	return r.ApiService.ListApplicationExecute(r)
 }
 
 /*
- * ListApplicationToUpdate List applications to update
+ * ListApplication List applications
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param environmentId Environment ID
- * @return ApiListApplicationToUpdateRequest
+ * @return ApiListApplicationRequest
  */
-func (a *ApplicationsApiService) ListApplicationToUpdate(ctx _context.Context, environmentId string) ApiListApplicationToUpdateRequest {
-	return ApiListApplicationToUpdateRequest{
+func (a *ApplicationsApiService) ListApplication(ctx _context.Context, environmentId string) ApiListApplicationRequest {
+	return ApiListApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentId: environmentId,
@@ -690,7 +697,7 @@ func (a *ApplicationsApiService) ListApplicationToUpdate(ctx _context.Context, e
  * Execute executes the request
  * @return ApplicationResponseList
  */
-func (a *ApplicationsApiService) ListApplicationToUpdateExecute(r ApiListApplicationToUpdateRequest) (ApplicationResponseList, *_nethttp.Response, error) {
+func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequest) (ApplicationResponseList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -700,18 +707,21 @@ func (a *ApplicationsApiService) ListApplicationToUpdateExecute(r ApiListApplica
 		localVarReturnValue  ApplicationResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.ListApplicationToUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.ListApplication")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environment/{environmentId}/application/to-update"
+	localVarPath := localBasePath + "/environment/{environmentId}/application"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.toUpdate != nil {
+		localVarQueryParams.Add("toUpdate", parameterToString(*r.toUpdate, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

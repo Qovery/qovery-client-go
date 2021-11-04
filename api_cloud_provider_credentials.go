@@ -29,14 +29,14 @@ var (
 type CloudProviderCredentialsApiService service
 
 type ApiCreateAWSCredentialsRequest struct {
-	ctx                       _context.Context
-	ApiService                *CloudProviderCredentialsApiService
-	organizationId            string
-	clusterCredentialsRequest *ClusterCredentialsRequest
+	ctx                   _context.Context
+	ApiService            *CloudProviderCredentialsApiService
+	organizationId        string
+	awsCredentialsRequest *AwsCredentialsRequest
 }
 
-func (r ApiCreateAWSCredentialsRequest) ClusterCredentialsRequest(clusterCredentialsRequest ClusterCredentialsRequest) ApiCreateAWSCredentialsRequest {
-	r.clusterCredentialsRequest = &clusterCredentialsRequest
+func (r ApiCreateAWSCredentialsRequest) AwsCredentialsRequest(awsCredentialsRequest AwsCredentialsRequest) ApiCreateAWSCredentialsRequest {
+	r.awsCredentialsRequest = &awsCredentialsRequest
 	return r
 }
 
@@ -102,7 +102,7 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterCredentialsRequest
+	localVarPostBody = r.awsCredentialsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -141,14 +141,14 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 }
 
 type ApiCreateDOCredentialsRequest struct {
-	ctx                       _context.Context
-	ApiService                *CloudProviderCredentialsApiService
-	organizationId            string
-	clusterCredentialsRequest *ClusterCredentialsRequest
+	ctx                  _context.Context
+	ApiService           *CloudProviderCredentialsApiService
+	organizationId       string
+	doCredentialsRequest *DoCredentialsRequest
 }
 
-func (r ApiCreateDOCredentialsRequest) ClusterCredentialsRequest(clusterCredentialsRequest ClusterCredentialsRequest) ApiCreateDOCredentialsRequest {
-	r.clusterCredentialsRequest = &clusterCredentialsRequest
+func (r ApiCreateDOCredentialsRequest) DoCredentialsRequest(doCredentialsRequest DoCredentialsRequest) ApiCreateDOCredentialsRequest {
+	r.doCredentialsRequest = &doCredentialsRequest
 	return r
 }
 
@@ -214,7 +214,7 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterCredentialsRequest
+	localVarPostBody = r.doCredentialsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -253,14 +253,14 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 }
 
 type ApiCreateScalewayCredentialsRequest struct {
-	ctx                       _context.Context
-	ApiService                *CloudProviderCredentialsApiService
-	organizationId            string
-	clusterCredentialsRequest *ClusterCredentialsRequest
+	ctx                        _context.Context
+	ApiService                 *CloudProviderCredentialsApiService
+	organizationId             string
+	scalewayCredentialsRequest *ScalewayCredentialsRequest
 }
 
-func (r ApiCreateScalewayCredentialsRequest) ClusterCredentialsRequest(clusterCredentialsRequest ClusterCredentialsRequest) ApiCreateScalewayCredentialsRequest {
-	r.clusterCredentialsRequest = &clusterCredentialsRequest
+func (r ApiCreateScalewayCredentialsRequest) ScalewayCredentialsRequest(scalewayCredentialsRequest ScalewayCredentialsRequest) ApiCreateScalewayCredentialsRequest {
+	r.scalewayCredentialsRequest = &scalewayCredentialsRequest
 	return r
 }
 
@@ -326,7 +326,7 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterCredentialsRequest
+	localVarPostBody = r.scalewayCredentialsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -656,15 +656,15 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r 
 }
 
 type ApiEditAWSCredentialsRequest struct {
-	ctx                       _context.Context
-	ApiService                *CloudProviderCredentialsApiService
-	organizationId            string
-	credentialsId             string
-	clusterCredentialsRequest *ClusterCredentialsRequest
+	ctx                   _context.Context
+	ApiService            *CloudProviderCredentialsApiService
+	organizationId        string
+	credentialsId         string
+	awsCredentialsRequest *AwsCredentialsRequest
 }
 
-func (r ApiEditAWSCredentialsRequest) ClusterCredentialsRequest(clusterCredentialsRequest ClusterCredentialsRequest) ApiEditAWSCredentialsRequest {
-	r.clusterCredentialsRequest = &clusterCredentialsRequest
+func (r ApiEditAWSCredentialsRequest) AwsCredentialsRequest(awsCredentialsRequest AwsCredentialsRequest) ApiEditAWSCredentialsRequest {
+	r.awsCredentialsRequest = &awsCredentialsRequest
 	return r
 }
 
@@ -733,7 +733,7 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterCredentialsRequest
+	localVarPostBody = r.awsCredentialsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -772,15 +772,15 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 }
 
 type ApiEditDOCredentialsRequest struct {
-	ctx                       _context.Context
-	ApiService                *CloudProviderCredentialsApiService
-	organizationId            string
-	credentialsId             string
-	clusterCredentialsRequest *ClusterCredentialsRequest
+	ctx                  _context.Context
+	ApiService           *CloudProviderCredentialsApiService
+	organizationId       string
+	credentialsId        string
+	doCredentialsRequest *DoCredentialsRequest
 }
 
-func (r ApiEditDOCredentialsRequest) ClusterCredentialsRequest(clusterCredentialsRequest ClusterCredentialsRequest) ApiEditDOCredentialsRequest {
-	r.clusterCredentialsRequest = &clusterCredentialsRequest
+func (r ApiEditDOCredentialsRequest) DoCredentialsRequest(doCredentialsRequest DoCredentialsRequest) ApiEditDOCredentialsRequest {
+	r.doCredentialsRequest = &doCredentialsRequest
 	return r
 }
 
@@ -849,7 +849,7 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterCredentialsRequest
+	localVarPostBody = r.doCredentialsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -888,15 +888,15 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 }
 
 type ApiEditScalewayCredentialsRequest struct {
-	ctx                       _context.Context
-	ApiService                *CloudProviderCredentialsApiService
-	organizationId            string
-	credentialsId             string
-	clusterCredentialsRequest *ClusterCredentialsRequest
+	ctx                        _context.Context
+	ApiService                 *CloudProviderCredentialsApiService
+	organizationId             string
+	credentialsId              string
+	scalewayCredentialsRequest *ScalewayCredentialsRequest
 }
 
-func (r ApiEditScalewayCredentialsRequest) ClusterCredentialsRequest(clusterCredentialsRequest ClusterCredentialsRequest) ApiEditScalewayCredentialsRequest {
-	r.clusterCredentialsRequest = &clusterCredentialsRequest
+func (r ApiEditScalewayCredentialsRequest) ScalewayCredentialsRequest(scalewayCredentialsRequest ScalewayCredentialsRequest) ApiEditScalewayCredentialsRequest {
+	r.scalewayCredentialsRequest = &scalewayCredentialsRequest
 	return r
 }
 
@@ -965,7 +965,7 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterCredentialsRequest
+	localVarPostBody = r.scalewayCredentialsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1048,106 +1048,6 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListAWSRegionsRequest struct {
-	ctx        _context.Context
-	ApiService *CloudProviderCredentialsApiService
-}
-
-func (r ApiListAWSRegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
-	return r.ApiService.ListAWSRegionsExecute(r)
-}
-
-/*
- * ListAWSRegions List AWS regions
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListAWSRegionsRequest
- */
-func (a *CloudProviderCredentialsApiService) ListAWSRegions(ctx _context.Context) ApiListAWSRegionsRequest {
-	return ApiListAWSRegionsRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-/*
- * Execute executes the request
- * @return ClusterRegionResponseList
- */
-func (a *CloudProviderCredentialsApiService) ListAWSRegionsExecute(r ApiListAWSRegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ClusterRegionResponseList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListAWSRegions")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/aws/region"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1311,106 +1211,6 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListDORegionsRequest struct {
-	ctx        _context.Context
-	ApiService *CloudProviderCredentialsApiService
-}
-
-func (r ApiListDORegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
-	return r.ApiService.ListDORegionsExecute(r)
-}
-
-/*
- * ListDORegions List DO regions
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListDORegionsRequest
- */
-func (a *CloudProviderCredentialsApiService) ListDORegions(ctx _context.Context) ApiListDORegionsRequest {
-	return ApiListDORegionsRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-/*
- * Execute executes the request
- * @return ClusterRegionResponseList
- */
-func (a *CloudProviderCredentialsApiService) ListDORegionsExecute(r ApiListDORegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ClusterRegionResponseList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListDORegions")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/digitalOcean/region"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiListScalewayCredentialsRequest struct {
 	ctx            _context.Context
 	ApiService     *CloudProviderCredentialsApiService
@@ -1456,106 +1256,6 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r Ap
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListScalewayRegionsRequest struct {
-	ctx        _context.Context
-	ApiService *CloudProviderCredentialsApiService
-}
-
-func (r ApiListScalewayRegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
-	return r.ApiService.ListScalewayRegionsExecute(r)
-}
-
-/*
- * ListScalewayRegions List Scaleway regions
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListScalewayRegionsRequest
- */
-func (a *CloudProviderCredentialsApiService) ListScalewayRegions(ctx _context.Context) ApiListScalewayRegionsRequest {
-	return ApiListScalewayRegionsRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-/*
- * Execute executes the request
- * @return ClusterRegionResponseList
- */
-func (a *CloudProviderCredentialsApiService) ListScalewayRegionsExecute(r ApiListScalewayRegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ClusterRegionResponseList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListScalewayRegions")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/scaleway/region"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

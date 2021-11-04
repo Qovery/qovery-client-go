@@ -128,19 +128,17 @@ Class | Method | HTTP request | Description
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentScale**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentscale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentStorage**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentstorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsApi.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
+*ApplicationsApi* | [**GetEnvironmentApplicationSupportedLanguages**](docs/ApplicationsApi.md#getenvironmentapplicationsupportedlanguages) | **Get** /environment/{environmentId}/application/supportedLanguage | List supported languages
 *ApplicationsApi* | [**ListApplication**](docs/ApplicationsApi.md#listapplication) | **Get** /environment/{environmentId}/application | List applications
-*ApplicationsApi* | [**ListApplicationToUpdate**](docs/ApplicationsApi.md#listapplicationtoupdate) | **Get** /environment/{environmentId}/application/to-update | List applications to update
 *BackupsApi* | [**AddBackupDatabase**](docs/BackupsApi.md#addbackupdatabase) | **Post** /database/{databaseId}/backup | Add a backup to the Database 
 *BackupsApi* | [**ListDatabaseBackup**](docs/BackupsApi.md#listdatabasebackup) | **Get** /database/{databaseId}/backup | List database  backups
 *BackupsApi* | [**RemoveDatabaseBackup**](docs/BackupsApi.md#removedatabasebackup) | **Delete** /database/{databaseId}/backup/{backupId} | Remove database  backup
 *BillingApi* | [**AddCreditCard**](docs/BillingApi.md#addcreditcard) | **Post** /organization/{organizationId}/creditCard | Add credit card
 *BillingApi* | [**AddCreditCode**](docs/BillingApi.md#addcreditcode) | **Post** /organization/{organizationId}/creditCode | Add credit code
 *BillingApi* | [**EditOrganizationBillingInfo**](docs/BillingApi.md#editorganizationbillinginfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
-*BillingApi* | [**EditOrganizationBudget**](docs/BillingApi.md#editorganizationbudget) | **Put** /organization/{organizationId}/costBudget | Edit Organization Budget
 *BillingApi* | [**GetClusterCurrentCost**](docs/BillingApi.md#getclustercurrentcost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
 *BillingApi* | [**GetOrganizationBillingInfo**](docs/BillingApi.md#getorganizationbillinginfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
 *BillingApi* | [**GetOrganizationBillingStatus**](docs/BillingApi.md#getorganizationbillingstatus) | **Get** /organization/{organizationId}/billingStatus | Get organization billing status
-*BillingApi* | [**GetOrganizationCostBudget**](docs/BillingApi.md#getorganizationcostbudget) | **Get** /organization/{organizationId}/costBudget | Get organization cost Budget
 *BillingApi* | [**GetOrganizationCurrentCost**](docs/BillingApi.md#getorganizationcurrentcost) | **Get** /organization/{organizationId}/currentCost | Get organization current cost
 *BillingApi* | [**GetOrganizationInvoice**](docs/BillingApi.md#getorganizationinvoice) | **Get** /organization/{organizationId}/invoice/{invoiceId} | Get organization invoice
 *BillingApi* | [**GetOrganizationInvoicePDF**](docs/BillingApi.md#getorganizationinvoicepdf) | **Get** /organization/{organizationId}/invoice/{invoiceId}/download | Get invoice link
@@ -148,6 +146,13 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**ListOrganizationInvoice**](docs/BillingApi.md#listorganizationinvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
 *BillingApi* | [**OrganizationDownloadAllInvoices**](docs/BillingApi.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
 *BillingApi* | [**OrganizationOrganizationIdCreditCardCreditCardIdDelete**](docs/BillingApi.md#organizationorganizationidcreditcardcreditcardiddelete) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
+*CloudProviderApi* | [**ListAWSFeatures**](docs/CloudProviderApi.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
+*CloudProviderApi* | [**ListAWSRegions**](docs/CloudProviderApi.md#listawsregions) | **Get** /aws/region | List AWS regions
+*CloudProviderApi* | [**ListCloudProvider**](docs/CloudProviderApi.md#listcloudprovider) | **Get** /cloudProvider | List Cloud providers available
+*CloudProviderApi* | [**ListDOFeatures**](docs/CloudProviderApi.md#listdofeatures) | **Get** /digitalOcean/clusterFeature | List DO features available
+*CloudProviderApi* | [**ListDORegions**](docs/CloudProviderApi.md#listdoregions) | **Get** /digitalOcean/region | List DO regions
+*CloudProviderApi* | [**ListScalewayFeatures**](docs/CloudProviderApi.md#listscalewayfeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
+*CloudProviderApi* | [**ListScalewayRegions**](docs/CloudProviderApi.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
 *CloudProviderCredentialsApi* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsApi.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 *CloudProviderCredentialsApi* | [**CreateDOCredentials**](docs/CloudProviderCredentialsApi.md#createdocredentials) | **Post** /organization/{organizationId}/digitalOcean/credentials | Create Digital Ocean credentials set
 *CloudProviderCredentialsApi* | [**CreateScalewayCredentials**](docs/CloudProviderCredentialsApi.md#createscalewaycredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
@@ -158,11 +163,8 @@ Class | Method | HTTP request | Description
 *CloudProviderCredentialsApi* | [**EditDOCredentials**](docs/CloudProviderCredentialsApi.md#editdocredentials) | **Put** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Edit a set of Digital Ocean credentials
 *CloudProviderCredentialsApi* | [**EditScalewayCredentials**](docs/CloudProviderCredentialsApi.md#editscalewaycredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
 *CloudProviderCredentialsApi* | [**ListAWSCredentials**](docs/CloudProviderCredentialsApi.md#listawscredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
-*CloudProviderCredentialsApi* | [**ListAWSRegions**](docs/CloudProviderCredentialsApi.md#listawsregions) | **Get** /aws/region | List AWS regions
 *CloudProviderCredentialsApi* | [**ListDOCredentials**](docs/CloudProviderCredentialsApi.md#listdocredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials | List DO credentials
-*CloudProviderCredentialsApi* | [**ListDORegions**](docs/CloudProviderCredentialsApi.md#listdoregions) | **Get** /digitalOcean/region | List DO regions
 *CloudProviderCredentialsApi* | [**ListScalewayCredentials**](docs/CloudProviderCredentialsApi.md#listscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
-*CloudProviderCredentialsApi* | [**ListScalewayRegions**](docs/CloudProviderCredentialsApi.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
 *ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
 *ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 *ClustersApi* | [**DeployCluster**](docs/ClustersApi.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
@@ -173,10 +175,12 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**GetOrganizationClusterStatus**](docs/ClustersApi.md#getorganizationclusterstatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
 *ClustersApi* | [**ListOrganizationCluster**](docs/ClustersApi.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 *ClustersApi* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersApi.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
+*ClustersApi* | [**StopCluster**](docs/ClustersApi.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 *ClustersApi* | [**UpdateCluster**](docs/ClustersApi.md#updatecluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/update | Update a cluster Version
 *CustomDomainApi* | [**CreateApplicationCustomDomain**](docs/CustomDomainApi.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
 *CustomDomainApi* | [**DeleteCustomDomain**](docs/CustomDomainApi.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 *CustomDomainApi* | [**EditCustomDomain**](docs/CustomDomainApi.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
+*CustomDomainApi* | [**GetCustomDomainStatus**](docs/CustomDomainApi.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
 *CustomDomainApi* | [**ListApplicationCustomDomain**](docs/CustomDomainApi.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
 *DatabaseApi* | [**CreateLogicalDatabaseOnDatabase**](docs/DatabaseApi.md#createlogicaldatabaseondatabase) | **Post** /database/{databaseId}/logicalDatabase | Create a logical database on the database
 *DatabaseActionsApi* | [**DeployDatabase**](docs/DatabaseActionsApi.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
@@ -236,7 +240,9 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**ListEnvironment**](docs/EnvironmentsApi.md#listenvironment) | **Get** /project/{projectId}/environment | List environments
 *GitRepositoriesApi* | [**GetGitProviderAccount**](docs/GitRepositoriesApi.md#getgitprovideraccount) | **Get** /account/gitAuthProvider | Get git provider accounts
 *GitRepositoriesApi* | [**GetGithubRepositories**](docs/GitRepositoriesApi.md#getgithubrepositories) | **Get** /account/github/repository | Get github repositories of the connected user
+*GitRepositoriesApi* | [**GetGithubRepositoryBranches**](docs/GitRepositoriesApi.md#getgithubrepositorybranches) | **Get** /account/github/repository/branch | Get github branches of the specified repository
 *GitRepositoriesApi* | [**GetGitlabRepositories**](docs/GitRepositoriesApi.md#getgitlabrepositories) | **Get** /account/gitlab/repository | Get gitlab repositories of the connected user
+*GitRepositoriesApi* | [**GetGitlabRepositoryBranches**](docs/GitRepositoriesApi.md#getgitlabrepositorybranches) | **Get** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
 *LogicalDatabaseApi* | [**DeleteLogicalDatabase**](docs/LogicalDatabaseApi.md#deletelogicaldatabase) | **Delete** /logicalDatabase/{logicalDatabaseId} | Delete a Logical database
 *LogicalDatabaseApi* | [**EditLogicalDatabase**](docs/LogicalDatabaseApi.md#editlogicaldatabase) | **Put** /logicalDatabase/{logicalDatabaseId} | Edit a logical database
 *LogicalDatabaseApi* | [**EditLogicalDatabaseCredentials**](docs/LogicalDatabaseApi.md#editlogicaldatabasecredentials) | **Put** /logicalDatabase/{logicalDatabaseId}/credentials | Edit logical database credentials
@@ -244,7 +250,13 @@ Class | Method | HTTP request | Description
 *LogicalDatabaseApi* | [**GetLogicalDatabaseCredentials**](docs/LogicalDatabaseApi.md#getlogicaldatabasecredentials) | **Get** /logicalDatabase/{logicalDatabaseId}/credentials | Get  credentials of the logical database
 *LogicalDatabaseApi* | [**ListLogicalDatabaseApplication**](docs/LogicalDatabaseApi.md#listlogicaldatabaseapplication) | **Get** /logicalDatabase/{logicalDatabaseId}/application | List linked applications
 *LogicalDatabaseApi* | [**ListLogicalDatabaseDatabase**](docs/LogicalDatabaseApi.md#listlogicaldatabasedatabase) | **Get** /database/{databaseId}/logicalDatabase | List logical databases of a database
+*MembersApi* | [**DeleteInviteMember**](docs/MembersApi.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
+*MembersApi* | [**DeleteMember**](docs/MembersApi.md#deletemember) | **Delete** /organization/{organizationId}/member/{userId} | Remove a member
+*MembersApi* | [**GetOrganizationInvitedMembers**](docs/MembersApi.md#getorganizationinvitedmembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
 *MembersApi* | [**GetOrganizationMembers**](docs/MembersApi.md#getorganizationmembers) | **Get** /organization/{organizationId}/member | Get organization members
+*MembersApi* | [**PostAcceptInviteMember**](docs/MembersApi.md#postacceptinvitemember) | **Post** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization
+*MembersApi* | [**PostInviteMember**](docs/MembersApi.md#postinvitemember) | **Post** /organization/{organizationId}/inviteMember | Invite someone in the organization
+*MembersApi* | [**PostOrganizationTransferOwnership**](docs/MembersApi.md#postorganizationtransferownership) | **Post** /organization/{organizationId}/transferOwnership | Transfer organization ownership to another user
 *OrganizationMainCallsApi* | [**CreateOrganization**](docs/OrganizationMainCallsApi.md#createorganization) | **Post** /organization | Create an organization
 *OrganizationMainCallsApi* | [**DeleteOrganization**](docs/OrganizationMainCallsApi.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
 *OrganizationMainCallsApi* | [**EditOrganization**](docs/OrganizationMainCallsApi.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
@@ -298,6 +310,7 @@ Class | Method | HTTP request | Description
  - [ApplicationStorageRequestStorage](docs/ApplicationStorageRequestStorage.md)
  - [ApplicationStorageResponse](docs/ApplicationStorageResponse.md)
  - [ApplicationStorageResponseStorage](docs/ApplicationStorageResponseStorage.md)
+ - [AwsCredentialsRequest](docs/AwsCredentialsRequest.md)
  - [BackupPaginatedResponseList](docs/BackupPaginatedResponseList.md)
  - [BackupRequest](docs/BackupRequest.md)
  - [BackupResponse](docs/BackupResponse.md)
@@ -309,15 +322,21 @@ Class | Method | HTTP request | Description
  - [BillingPeriod](docs/BillingPeriod.md)
  - [BillingStart](docs/BillingStart.md)
  - [BillingStatus](docs/BillingStatus.md)
- - [BudgetExceeded](docs/BudgetExceeded.md)
  - [BudgetResponse](docs/BudgetResponse.md)
  - [BudgetThreshold](docs/BudgetThreshold.md)
+ - [CloudProviderResponse](docs/CloudProviderResponse.md)
+ - [CloudProviderResponseList](docs/CloudProviderResponseList.md)
+ - [Cluster](docs/Cluster.md)
  - [ClusterCloudProviderInfoRequest](docs/ClusterCloudProviderInfoRequest.md)
  - [ClusterCloudProviderInfoRequestCredentials](docs/ClusterCloudProviderInfoRequestCredentials.md)
  - [ClusterCloudProviderInfoResponse](docs/ClusterCloudProviderInfoResponse.md)
  - [ClusterCredentialsRequest](docs/ClusterCredentialsRequest.md)
  - [ClusterCredentialsResponse](docs/ClusterCredentialsResponse.md)
  - [ClusterCredentialsResponseList](docs/ClusterCredentialsResponseList.md)
+ - [ClusterFeatureRequest](docs/ClusterFeatureRequest.md)
+ - [ClusterFeatureRequestFeatures](docs/ClusterFeatureRequestFeatures.md)
+ - [ClusterFeatureResponse](docs/ClusterFeatureResponse.md)
+ - [ClusterFeatureResponseList](docs/ClusterFeatureResponseList.md)
  - [ClusterReadinessStatus](docs/ClusterReadinessStatus.md)
  - [ClusterRegionResponse](docs/ClusterRegionResponse.md)
  - [ClusterRegionResponseList](docs/ClusterRegionResponseList.md)
@@ -329,13 +348,17 @@ Class | Method | HTTP request | Description
  - [CommitPaginatedResponseList](docs/CommitPaginatedResponseList.md)
  - [CommitResponse](docs/CommitResponse.md)
  - [CommitResponseList](docs/CommitResponseList.md)
+ - [CommunityUsage](docs/CommunityUsage.md)
+ - [CommunityUsageResponse](docs/CommunityUsageResponse.md)
  - [Cost](docs/Cost.md)
+ - [CostRangeResponse](docs/CostRangeResponse.md)
  - [CostResponse](docs/CostResponse.md)
  - [CredentialsRequest](docs/CredentialsRequest.md)
  - [CredentialsResponse](docs/CredentialsResponse.md)
  - [CreditCardRequest](docs/CreditCardRequest.md)
  - [CreditCardResponse](docs/CreditCardResponse.md)
  - [CreditCardResponseList](docs/CreditCardResponseList.md)
+ - [CurrentCost](docs/CurrentCost.md)
  - [CustomDomainRequest](docs/CustomDomainRequest.md)
  - [CustomDomainResponse](docs/CustomDomainResponse.md)
  - [CustomDomainResponseList](docs/CustomDomainResponseList.md)
@@ -354,12 +377,15 @@ Class | Method | HTTP request | Description
  - [DeploymentHistoryResponse](docs/DeploymentHistoryResponse.md)
  - [DeploymentHistoryResponseList](docs/DeploymentHistoryResponseList.md)
  - [DeploymentRuleRequest](docs/DeploymentRuleRequest.md)
+ - [DoCredentialsRequest](docs/DoCredentialsRequest.md)
  - [EnvironmentApplicationsCurrentScaleResponse](docs/EnvironmentApplicationsCurrentScaleResponse.md)
  - [EnvironmentApplicationsCurrentScaleResponseList](docs/EnvironmentApplicationsCurrentScaleResponseList.md)
  - [EnvironmentApplicationsInstanceResponseList](docs/EnvironmentApplicationsInstanceResponseList.md)
  - [EnvironmentApplicationsInstanceResponseListResults](docs/EnvironmentApplicationsInstanceResponseListResults.md)
  - [EnvironmentApplicationsStorageResponse](docs/EnvironmentApplicationsStorageResponse.md)
  - [EnvironmentApplicationsStorageResponseList](docs/EnvironmentApplicationsStorageResponseList.md)
+ - [EnvironmentApplicationsSupportedLanguage](docs/EnvironmentApplicationsSupportedLanguage.md)
+ - [EnvironmentApplicationsSupportedLanguageList](docs/EnvironmentApplicationsSupportedLanguageList.md)
  - [EnvironmentDatabasesCurrentMetricResponse](docs/EnvironmentDatabasesCurrentMetricResponse.md)
  - [EnvironmentDatabasesCurrentMetricResponseCpu](docs/EnvironmentDatabasesCurrentMetricResponseCpu.md)
  - [EnvironmentDatabasesCurrentMetricResponseList](docs/EnvironmentDatabasesCurrentMetricResponseList.md)
@@ -392,8 +418,13 @@ Class | Method | HTTP request | Description
  - [GitRepositoryResponse](docs/GitRepositoryResponse.md)
  - [GitRepositoryResponseList](docs/GitRepositoryResponseList.md)
  - [Healthcheck](docs/Healthcheck.md)
+ - [InlineResponse200](docs/InlineResponse200.md)
+ - [InlineResponse200Results](docs/InlineResponse200Results.md)
  - [InstanceResponse](docs/InstanceResponse.md)
  - [InstanceResponseList](docs/InstanceResponseList.md)
+ - [InviteMemberRequest](docs/InviteMemberRequest.md)
+ - [InviteMemberResponse](docs/InviteMemberResponse.md)
+ - [InviteMemberResponseList](docs/InviteMemberResponseList.md)
  - [InvoiceResponse](docs/InvoiceResponse.md)
  - [InvoiceResponseList](docs/InvoiceResponseList.md)
  - [Key](docs/Key.md)
@@ -423,7 +454,6 @@ Class | Method | HTTP request | Description
  - [MetricStorageResponse](docs/MetricStorageResponse.md)
  - [MetricStorageResponseList](docs/MetricStorageResponseList.md)
  - [Name](docs/Name.md)
- - [OrganizationBudgetEditRequest](docs/OrganizationBudgetEditRequest.md)
  - [OrganizationCreditCodeRequest](docs/OrganizationCreditCodeRequest.md)
  - [OrganizationCurrentCostResponse](docs/OrganizationCurrentCostResponse.md)
  - [OrganizationEditRequest](docs/OrganizationEditRequest.md)
@@ -432,6 +462,8 @@ Class | Method | HTTP request | Description
  - [OrganizationResponseList](docs/OrganizationResponseList.md)
  - [OverriddenSecret](docs/OverriddenSecret.md)
  - [PaginationDataResponse](docs/PaginationDataResponse.md)
+ - [PaidUsage](docs/PaidUsage.md)
+ - [PaidUsageResponse](docs/PaidUsageResponse.md)
  - [ProjectCurrentCostResponse](docs/ProjectCurrentCostResponse.md)
  - [ProjectCurrentCostResponseList](docs/ProjectCurrentCostResponseList.md)
  - [ProjectDeploymentRuleRequest](docs/ProjectDeploymentRuleRequest.md)
@@ -448,6 +480,7 @@ Class | Method | HTTP request | Description
  - [ReferralResponse](docs/ReferralResponse.md)
  - [RemainingCredits](docs/RemainingCredits.md)
  - [RewardClaimResponse](docs/RewardClaimResponse.md)
+ - [ScalewayCredentialsRequest](docs/ScalewayCredentialsRequest.md)
  - [SecretEditRequest](docs/SecretEditRequest.md)
  - [SecretRequest](docs/SecretRequest.md)
  - [SecretResponse](docs/SecretResponse.md)
@@ -461,6 +494,7 @@ Class | Method | HTTP request | Description
  - [TagRequest](docs/TagRequest.md)
  - [TagResponse](docs/TagResponse.md)
  - [TagResponseList](docs/TagResponseList.md)
+ - [TransferOwnershipRequest](docs/TransferOwnershipRequest.md)
  - [UnexpectedError](docs/UnexpectedError.md)
  - [UserResponse](docs/UserResponse.md)
  - [UserResponseList](docs/UserResponseList.md)

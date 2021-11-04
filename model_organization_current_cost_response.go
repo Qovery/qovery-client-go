@@ -13,29 +13,25 @@ package qovery
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // OrganizationCurrentCostResponse struct for OrganizationCurrentCostResponse
 type OrganizationCurrentCostResponse struct {
-	TotalInCents     int32                         `json:"total_in_cents"`
-	Total            float32                       `json:"total"`
-	CurrencyCode     string                        `json:"currency_code"`
-	BillingStartedOn *time.Time                    `json:"billing_started_on,omitempty"`
-	BillingEndedOn   *time.Time                    `json:"billing_ended_on,omitempty"`
-	BudgetExceeded   *bool                         `json:"budget_exceeded,omitempty"`
-	Projects         *[]ProjectCurrentCostResponse `json:"projects,omitempty"`
+	Plan *string `json:"plan,omitempty"`
+	// number of days remaining before the end of the trial period
+	RemainingTrialDay *int32                  `json:"remaining_trial_day,omitempty"`
+	RemainingCredits  *RemainingCredits       `json:"remaining_credits,omitempty"`
+	Cost              *Cost                   `json:"cost,omitempty"`
+	PaidUsage         *PaidUsageResponse      `json:"paid_usage,omitempty"`
+	CommunityUsage    *CommunityUsageResponse `json:"community_usage,omitempty"`
 }
 
 // NewOrganizationCurrentCostResponse instantiates a new OrganizationCurrentCostResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationCurrentCostResponse(totalInCents int32, total float32, currencyCode string) *OrganizationCurrentCostResponse {
+func NewOrganizationCurrentCostResponse() *OrganizationCurrentCostResponse {
 	this := OrganizationCurrentCostResponse{}
-	this.TotalInCents = totalInCents
-	this.Total = total
-	this.CurrencyCode = currencyCode
 	return &this
 }
 
@@ -47,228 +43,217 @@ func NewOrganizationCurrentCostResponseWithDefaults() *OrganizationCurrentCostRe
 	return &this
 }
 
-// GetTotalInCents returns the TotalInCents field value
-func (o *OrganizationCurrentCostResponse) GetTotalInCents() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.TotalInCents
-}
-
-// GetTotalInCentsOk returns a tuple with the TotalInCents field value
-// and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostResponse) GetTotalInCentsOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalInCents, true
-}
-
-// SetTotalInCents sets field value
-func (o *OrganizationCurrentCostResponse) SetTotalInCents(v int32) {
-	o.TotalInCents = v
-}
-
-// GetTotal returns the Total field value
-func (o *OrganizationCurrentCostResponse) GetTotal() float32 {
-	if o == nil {
-		var ret float32
-		return ret
-	}
-
-	return o.Total
-}
-
-// GetTotalOk returns a tuple with the Total field value
-// and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostResponse) GetTotalOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Total, true
-}
-
-// SetTotal sets field value
-func (o *OrganizationCurrentCostResponse) SetTotal(v float32) {
-	o.Total = v
-}
-
-// GetCurrencyCode returns the CurrencyCode field value
-func (o *OrganizationCurrentCostResponse) GetCurrencyCode() string {
-	if o == nil {
+// GetPlan returns the Plan field value if set, zero value otherwise.
+func (o *OrganizationCurrentCostResponse) GetPlan() string {
+	if o == nil || o.Plan == nil {
 		var ret string
 		return ret
 	}
-
-	return o.CurrencyCode
+	return *o.Plan
 }
 
-// GetCurrencyCodeOk returns a tuple with the CurrencyCode field value
+// GetPlanOk returns a tuple with the Plan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostResponse) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil {
+func (o *OrganizationCurrentCostResponse) GetPlanOk() (*string, bool) {
+	if o == nil || o.Plan == nil {
 		return nil, false
 	}
-	return &o.CurrencyCode, true
+	return o.Plan, true
 }
 
-// SetCurrencyCode sets field value
-func (o *OrganizationCurrentCostResponse) SetCurrencyCode(v string) {
-	o.CurrencyCode = v
-}
-
-// GetBillingStartedOn returns the BillingStartedOn field value if set, zero value otherwise.
-func (o *OrganizationCurrentCostResponse) GetBillingStartedOn() time.Time {
-	if o == nil || o.BillingStartedOn == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.BillingStartedOn
-}
-
-// GetBillingStartedOnOk returns a tuple with the BillingStartedOn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostResponse) GetBillingStartedOnOk() (*time.Time, bool) {
-	if o == nil || o.BillingStartedOn == nil {
-		return nil, false
-	}
-	return o.BillingStartedOn, true
-}
-
-// HasBillingStartedOn returns a boolean if a field has been set.
-func (o *OrganizationCurrentCostResponse) HasBillingStartedOn() bool {
-	if o != nil && o.BillingStartedOn != nil {
+// HasPlan returns a boolean if a field has been set.
+func (o *OrganizationCurrentCostResponse) HasPlan() bool {
+	if o != nil && o.Plan != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingStartedOn gets a reference to the given time.Time and assigns it to the BillingStartedOn field.
-func (o *OrganizationCurrentCostResponse) SetBillingStartedOn(v time.Time) {
-	o.BillingStartedOn = &v
+// SetPlan gets a reference to the given string and assigns it to the Plan field.
+func (o *OrganizationCurrentCostResponse) SetPlan(v string) {
+	o.Plan = &v
 }
 
-// GetBillingEndedOn returns the BillingEndedOn field value if set, zero value otherwise.
-func (o *OrganizationCurrentCostResponse) GetBillingEndedOn() time.Time {
-	if o == nil || o.BillingEndedOn == nil {
-		var ret time.Time
+// GetRemainingTrialDay returns the RemainingTrialDay field value if set, zero value otherwise.
+func (o *OrganizationCurrentCostResponse) GetRemainingTrialDay() int32 {
+	if o == nil || o.RemainingTrialDay == nil {
+		var ret int32
 		return ret
 	}
-	return *o.BillingEndedOn
+	return *o.RemainingTrialDay
 }
 
-// GetBillingEndedOnOk returns a tuple with the BillingEndedOn field value if set, nil otherwise
+// GetRemainingTrialDayOk returns a tuple with the RemainingTrialDay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostResponse) GetBillingEndedOnOk() (*time.Time, bool) {
-	if o == nil || o.BillingEndedOn == nil {
+func (o *OrganizationCurrentCostResponse) GetRemainingTrialDayOk() (*int32, bool) {
+	if o == nil || o.RemainingTrialDay == nil {
 		return nil, false
 	}
-	return o.BillingEndedOn, true
+	return o.RemainingTrialDay, true
 }
 
-// HasBillingEndedOn returns a boolean if a field has been set.
-func (o *OrganizationCurrentCostResponse) HasBillingEndedOn() bool {
-	if o != nil && o.BillingEndedOn != nil {
+// HasRemainingTrialDay returns a boolean if a field has been set.
+func (o *OrganizationCurrentCostResponse) HasRemainingTrialDay() bool {
+	if o != nil && o.RemainingTrialDay != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingEndedOn gets a reference to the given time.Time and assigns it to the BillingEndedOn field.
-func (o *OrganizationCurrentCostResponse) SetBillingEndedOn(v time.Time) {
-	o.BillingEndedOn = &v
+// SetRemainingTrialDay gets a reference to the given int32 and assigns it to the RemainingTrialDay field.
+func (o *OrganizationCurrentCostResponse) SetRemainingTrialDay(v int32) {
+	o.RemainingTrialDay = &v
 }
 
-// GetBudgetExceeded returns the BudgetExceeded field value if set, zero value otherwise.
-func (o *OrganizationCurrentCostResponse) GetBudgetExceeded() bool {
-	if o == nil || o.BudgetExceeded == nil {
-		var ret bool
+// GetRemainingCredits returns the RemainingCredits field value if set, zero value otherwise.
+func (o *OrganizationCurrentCostResponse) GetRemainingCredits() RemainingCredits {
+	if o == nil || o.RemainingCredits == nil {
+		var ret RemainingCredits
 		return ret
 	}
-	return *o.BudgetExceeded
+	return *o.RemainingCredits
 }
 
-// GetBudgetExceededOk returns a tuple with the BudgetExceeded field value if set, nil otherwise
+// GetRemainingCreditsOk returns a tuple with the RemainingCredits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostResponse) GetBudgetExceededOk() (*bool, bool) {
-	if o == nil || o.BudgetExceeded == nil {
+func (o *OrganizationCurrentCostResponse) GetRemainingCreditsOk() (*RemainingCredits, bool) {
+	if o == nil || o.RemainingCredits == nil {
 		return nil, false
 	}
-	return o.BudgetExceeded, true
+	return o.RemainingCredits, true
 }
 
-// HasBudgetExceeded returns a boolean if a field has been set.
-func (o *OrganizationCurrentCostResponse) HasBudgetExceeded() bool {
-	if o != nil && o.BudgetExceeded != nil {
+// HasRemainingCredits returns a boolean if a field has been set.
+func (o *OrganizationCurrentCostResponse) HasRemainingCredits() bool {
+	if o != nil && o.RemainingCredits != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBudgetExceeded gets a reference to the given bool and assigns it to the BudgetExceeded field.
-func (o *OrganizationCurrentCostResponse) SetBudgetExceeded(v bool) {
-	o.BudgetExceeded = &v
+// SetRemainingCredits gets a reference to the given RemainingCredits and assigns it to the RemainingCredits field.
+func (o *OrganizationCurrentCostResponse) SetRemainingCredits(v RemainingCredits) {
+	o.RemainingCredits = &v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise.
-func (o *OrganizationCurrentCostResponse) GetProjects() []ProjectCurrentCostResponse {
-	if o == nil || o.Projects == nil {
-		var ret []ProjectCurrentCostResponse
+// GetCost returns the Cost field value if set, zero value otherwise.
+func (o *OrganizationCurrentCostResponse) GetCost() Cost {
+	if o == nil || o.Cost == nil {
+		var ret Cost
 		return ret
 	}
-	return *o.Projects
+	return *o.Cost
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetCostOk returns a tuple with the Cost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostResponse) GetProjectsOk() (*[]ProjectCurrentCostResponse, bool) {
-	if o == nil || o.Projects == nil {
+func (o *OrganizationCurrentCostResponse) GetCostOk() (*Cost, bool) {
+	if o == nil || o.Cost == nil {
 		return nil, false
 	}
-	return o.Projects, true
+	return o.Cost, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *OrganizationCurrentCostResponse) HasProjects() bool {
-	if o != nil && o.Projects != nil {
+// HasCost returns a boolean if a field has been set.
+func (o *OrganizationCurrentCostResponse) HasCost() bool {
+	if o != nil && o.Cost != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProjects gets a reference to the given []ProjectCurrentCostResponse and assigns it to the Projects field.
-func (o *OrganizationCurrentCostResponse) SetProjects(v []ProjectCurrentCostResponse) {
-	o.Projects = &v
+// SetCost gets a reference to the given Cost and assigns it to the Cost field.
+func (o *OrganizationCurrentCostResponse) SetCost(v Cost) {
+	o.Cost = &v
+}
+
+// GetPaidUsage returns the PaidUsage field value if set, zero value otherwise.
+func (o *OrganizationCurrentCostResponse) GetPaidUsage() PaidUsageResponse {
+	if o == nil || o.PaidUsage == nil {
+		var ret PaidUsageResponse
+		return ret
+	}
+	return *o.PaidUsage
+}
+
+// GetPaidUsageOk returns a tuple with the PaidUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationCurrentCostResponse) GetPaidUsageOk() (*PaidUsageResponse, bool) {
+	if o == nil || o.PaidUsage == nil {
+		return nil, false
+	}
+	return o.PaidUsage, true
+}
+
+// HasPaidUsage returns a boolean if a field has been set.
+func (o *OrganizationCurrentCostResponse) HasPaidUsage() bool {
+	if o != nil && o.PaidUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPaidUsage gets a reference to the given PaidUsageResponse and assigns it to the PaidUsage field.
+func (o *OrganizationCurrentCostResponse) SetPaidUsage(v PaidUsageResponse) {
+	o.PaidUsage = &v
+}
+
+// GetCommunityUsage returns the CommunityUsage field value if set, zero value otherwise.
+func (o *OrganizationCurrentCostResponse) GetCommunityUsage() CommunityUsageResponse {
+	if o == nil || o.CommunityUsage == nil {
+		var ret CommunityUsageResponse
+		return ret
+	}
+	return *o.CommunityUsage
+}
+
+// GetCommunityUsageOk returns a tuple with the CommunityUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationCurrentCostResponse) GetCommunityUsageOk() (*CommunityUsageResponse, bool) {
+	if o == nil || o.CommunityUsage == nil {
+		return nil, false
+	}
+	return o.CommunityUsage, true
+}
+
+// HasCommunityUsage returns a boolean if a field has been set.
+func (o *OrganizationCurrentCostResponse) HasCommunityUsage() bool {
+	if o != nil && o.CommunityUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCommunityUsage gets a reference to the given CommunityUsageResponse and assigns it to the CommunityUsage field.
+func (o *OrganizationCurrentCostResponse) SetCommunityUsage(v CommunityUsageResponse) {
+	o.CommunityUsage = &v
 }
 
 func (o OrganizationCurrentCostResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["total_in_cents"] = o.TotalInCents
+	if o.Plan != nil {
+		toSerialize["plan"] = o.Plan
 	}
-	if true {
-		toSerialize["total"] = o.Total
+	if o.RemainingTrialDay != nil {
+		toSerialize["remaining_trial_day"] = o.RemainingTrialDay
 	}
-	if true {
-		toSerialize["currency_code"] = o.CurrencyCode
+	if o.RemainingCredits != nil {
+		toSerialize["remaining_credits"] = o.RemainingCredits
 	}
-	if o.BillingStartedOn != nil {
-		toSerialize["billing_started_on"] = o.BillingStartedOn
+	if o.Cost != nil {
+		toSerialize["cost"] = o.Cost
 	}
-	if o.BillingEndedOn != nil {
-		toSerialize["billing_ended_on"] = o.BillingEndedOn
+	if o.PaidUsage != nil {
+		toSerialize["paid_usage"] = o.PaidUsage
 	}
-	if o.BudgetExceeded != nil {
-		toSerialize["budget_exceeded"] = o.BudgetExceeded
-	}
-	if o.Projects != nil {
-		toSerialize["projects"] = o.Projects
+	if o.CommunityUsage != nil {
+		toSerialize["community_usage"] = o.CommunityUsage
 	}
 	return json.Marshal(toSerialize)
 }

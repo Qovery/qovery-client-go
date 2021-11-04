@@ -75,6 +75,8 @@ type APIClient struct {
 
 	BillingApi *BillingApiService
 
+	CloudProviderApi *CloudProviderApiService
+
 	CloudProviderCredentialsApi *CloudProviderCredentialsApiService
 
 	ClustersApi *ClustersApiService
@@ -163,6 +165,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
 	c.BackupsApi = (*BackupsApiService)(&c.common)
 	c.BillingApi = (*BillingApiService)(&c.common)
+	c.CloudProviderApi = (*CloudProviderApiService)(&c.common)
 	c.CloudProviderCredentialsApi = (*CloudProviderCredentialsApiService)(&c.common)
 	c.ClustersApi = (*ClustersApiService)(&c.common)
 	c.CustomDomainApi = (*CustomDomainApiService)(&c.common)

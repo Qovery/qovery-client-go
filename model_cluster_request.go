@@ -17,27 +17,30 @@ import (
 
 // ClusterRequest struct for ClusterRequest
 type ClusterRequest struct {
-	// name is case insensitive
-	Name                 string  `json:"name"`
-	Description          *string `json:"description,omitempty"`
-	AutoUpdate           *bool   `json:"auto_update,omitempty"`
-	EnableHistoricMetric *bool   `json:"enable_historic_metric,omitempty"`
-	EnableHistoricLog    *bool   `json:"enable_historic_log,omitempty"`
+	// name is case-insensitive
+	Name          string  `json:"name"`
+	Description   *string `json:"description,omitempty"`
+	CloudProvider string  `json:"cloud_provider"`
+	Region        string  `json:"region"`
+	AutoUpdate    *bool   `json:"auto_update,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory          *float32 `json:"memory,omitempty"`
-	MinRunningNodes *int32   `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32   `json:"max_running_nodes,omitempty"`
+	Memory          *float32                         `json:"memory,omitempty"`
+	MinRunningNodes *int32                           `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32                           `json:"max_running_nodes,omitempty"`
+	Features        *[]ClusterFeatureRequestFeatures `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterRequest(name string) *ClusterRequest {
+func NewClusterRequest(name string, cloudProvider string, region string) *ClusterRequest {
 	this := ClusterRequest{}
 	this.Name = name
+	this.CloudProvider = cloudProvider
+	this.Region = region
 	var cpu float32 = 250
 	this.Cpu = &cpu
 	var memory float32 = 256
@@ -121,6 +124,54 @@ func (o *ClusterRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetCloudProvider returns the CloudProvider field value
+func (o *ClusterRequest) GetCloudProvider() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetCloudProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudProvider, true
+}
+
+// SetCloudProvider sets field value
+func (o *ClusterRequest) SetCloudProvider(v string) {
+	o.CloudProvider = v
+}
+
+// GetRegion returns the Region field value
+func (o *ClusterRequest) GetRegion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetRegionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Region, true
+}
+
+// SetRegion sets field value
+func (o *ClusterRequest) SetRegion(v string) {
+	o.Region = v
+}
+
 // GetAutoUpdate returns the AutoUpdate field value if set, zero value otherwise.
 func (o *ClusterRequest) GetAutoUpdate() bool {
 	if o == nil || o.AutoUpdate == nil {
@@ -151,70 +202,6 @@ func (o *ClusterRequest) HasAutoUpdate() bool {
 // SetAutoUpdate gets a reference to the given bool and assigns it to the AutoUpdate field.
 func (o *ClusterRequest) SetAutoUpdate(v bool) {
 	o.AutoUpdate = &v
-}
-
-// GetEnableHistoricMetric returns the EnableHistoricMetric field value if set, zero value otherwise.
-func (o *ClusterRequest) GetEnableHistoricMetric() bool {
-	if o == nil || o.EnableHistoricMetric == nil {
-		var ret bool
-		return ret
-	}
-	return *o.EnableHistoricMetric
-}
-
-// GetEnableHistoricMetricOk returns a tuple with the EnableHistoricMetric field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetEnableHistoricMetricOk() (*bool, bool) {
-	if o == nil || o.EnableHistoricMetric == nil {
-		return nil, false
-	}
-	return o.EnableHistoricMetric, true
-}
-
-// HasEnableHistoricMetric returns a boolean if a field has been set.
-func (o *ClusterRequest) HasEnableHistoricMetric() bool {
-	if o != nil && o.EnableHistoricMetric != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableHistoricMetric gets a reference to the given bool and assigns it to the EnableHistoricMetric field.
-func (o *ClusterRequest) SetEnableHistoricMetric(v bool) {
-	o.EnableHistoricMetric = &v
-}
-
-// GetEnableHistoricLog returns the EnableHistoricLog field value if set, zero value otherwise.
-func (o *ClusterRequest) GetEnableHistoricLog() bool {
-	if o == nil || o.EnableHistoricLog == nil {
-		var ret bool
-		return ret
-	}
-	return *o.EnableHistoricLog
-}
-
-// GetEnableHistoricLogOk returns a tuple with the EnableHistoricLog field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetEnableHistoricLogOk() (*bool, bool) {
-	if o == nil || o.EnableHistoricLog == nil {
-		return nil, false
-	}
-	return o.EnableHistoricLog, true
-}
-
-// HasEnableHistoricLog returns a boolean if a field has been set.
-func (o *ClusterRequest) HasEnableHistoricLog() bool {
-	if o != nil && o.EnableHistoricLog != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableHistoricLog gets a reference to the given bool and assigns it to the EnableHistoricLog field.
-func (o *ClusterRequest) SetEnableHistoricLog(v bool) {
-	o.EnableHistoricLog = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -345,6 +332,38 @@ func (o *ClusterRequest) SetMaxRunningNodes(v int32) {
 	o.MaxRunningNodes = &v
 }
 
+// GetFeatures returns the Features field value if set, zero value otherwise.
+func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures {
+	if o == nil || o.Features == nil {
+		var ret []ClusterFeatureRequestFeatures
+		return ret
+	}
+	return *o.Features
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeatures, bool) {
+	if o == nil || o.Features == nil {
+		return nil, false
+	}
+	return o.Features, true
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *ClusterRequest) HasFeatures() bool {
+	if o != nil && o.Features != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given []ClusterFeatureRequestFeatures and assigns it to the Features field.
+func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeatures) {
+	o.Features = &v
+}
+
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -353,14 +372,14 @@ func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
+	if true {
+		toSerialize["cloud_provider"] = o.CloudProvider
+	}
+	if true {
+		toSerialize["region"] = o.Region
+	}
 	if o.AutoUpdate != nil {
 		toSerialize["auto_update"] = o.AutoUpdate
-	}
-	if o.EnableHistoricMetric != nil {
-		toSerialize["enable_historic_metric"] = o.EnableHistoricMetric
-	}
-	if o.EnableHistoricLog != nil {
-		toSerialize["enable_historic_log"] = o.EnableHistoricLog
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
@@ -373,6 +392,9 @@ func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxRunningNodes != nil {
 		toSerialize["max_running_nodes"] = o.MaxRunningNodes
+	}
+	if o.Features != nil {
+		toSerialize["features"] = o.Features
 	}
 	return json.Marshal(toSerialize)
 }

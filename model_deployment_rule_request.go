@@ -26,11 +26,13 @@ type DeploymentRuleRequest struct {
 	AutoDeploy  *bool   `json:"auto_deploy,omitempty"`
 	AlwaysUp    bool    `json:"always_up"`
 	// specify value only if always_up = false
+	Timezone *string `json:"timezone,omitempty"`
+	// specify value only if always_up = false
 	StartTime NullableTime `json:"start_time,omitempty"`
 	// specify value only if always_up = false
 	StopTime NullableTime `json:"stop_time,omitempty"`
 	// specify value only if always_up = false
-	Weekday NullableString `json:"weekday,omitempty"`
+	Weekdays []string `json:"weekdays,omitempty"`
 }
 
 // NewDeploymentRuleRequest instantiates a new DeploymentRuleRequest object
@@ -45,6 +47,8 @@ func NewDeploymentRuleRequest(name string, mode string, cluster string, alwaysUp
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
 	this.AlwaysUp = alwaysUp
+	var timezone string = "Europe/London"
+	this.Timezone = &timezone
 	return &this
 }
 
@@ -57,6 +61,8 @@ func NewDeploymentRuleRequestWithDefaults() *DeploymentRuleRequest {
 	this.AutoDeploy = &autoDeploy
 	var alwaysUp bool = false
 	this.AlwaysUp = alwaysUp
+	var timezone string = "Europe/London"
+	this.Timezone = &timezone
 	return &this
 }
 
@@ -220,6 +226,38 @@ func (o *DeploymentRuleRequest) SetAlwaysUp(v bool) {
 	o.AlwaysUp = v
 }
 
+// GetTimezone returns the Timezone field value if set, zero value otherwise.
+func (o *DeploymentRuleRequest) GetTimezone() string {
+	if o == nil || o.Timezone == nil {
+		var ret string
+		return ret
+	}
+	return *o.Timezone
+}
+
+// GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentRuleRequest) GetTimezoneOk() (*string, bool) {
+	if o == nil || o.Timezone == nil {
+		return nil, false
+	}
+	return o.Timezone, true
+}
+
+// HasTimezone returns a boolean if a field has been set.
+func (o *DeploymentRuleRequest) HasTimezone() bool {
+	if o != nil && o.Timezone != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimezone gets a reference to the given string and assigns it to the Timezone field.
+func (o *DeploymentRuleRequest) SetTimezone(v string) {
+	o.Timezone = &v
+}
+
 // GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentRuleRequest) GetStartTime() time.Time {
 	if o == nil || o.StartTime.Get() == nil {
@@ -306,47 +344,37 @@ func (o *DeploymentRuleRequest) UnsetStopTime() {
 	o.StopTime.Unset()
 }
 
-// GetWeekday returns the Weekday field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeploymentRuleRequest) GetWeekday() string {
-	if o == nil || o.Weekday.Get() == nil {
-		var ret string
+// GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DeploymentRuleRequest) GetWeekdays() []string {
+	if o == nil {
+		var ret []string
 		return ret
 	}
-	return *o.Weekday.Get()
+	return o.Weekdays
 }
 
-// GetWeekdayOk returns a tuple with the Weekday field value if set, nil otherwise
+// GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeploymentRuleRequest) GetWeekdayOk() (*string, bool) {
-	if o == nil {
+func (o *DeploymentRuleRequest) GetWeekdaysOk() (*[]string, bool) {
+	if o == nil || o.Weekdays == nil {
 		return nil, false
 	}
-	return o.Weekday.Get(), o.Weekday.IsSet()
+	return &o.Weekdays, true
 }
 
-// HasWeekday returns a boolean if a field has been set.
-func (o *DeploymentRuleRequest) HasWeekday() bool {
-	if o != nil && o.Weekday.IsSet() {
+// HasWeekdays returns a boolean if a field has been set.
+func (o *DeploymentRuleRequest) HasWeekdays() bool {
+	if o != nil && o.Weekdays != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetWeekday gets a reference to the given NullableString and assigns it to the Weekday field.
-func (o *DeploymentRuleRequest) SetWeekday(v string) {
-	o.Weekday.Set(&v)
-}
-
-// SetWeekdayNil sets the value for Weekday to be an explicit nil
-func (o *DeploymentRuleRequest) SetWeekdayNil() {
-	o.Weekday.Set(nil)
-}
-
-// UnsetWeekday ensures that no value is present for Weekday, not even an explicit nil
-func (o *DeploymentRuleRequest) UnsetWeekday() {
-	o.Weekday.Unset()
+// SetWeekdays gets a reference to the given []string and assigns it to the Weekdays field.
+func (o *DeploymentRuleRequest) SetWeekdays(v []string) {
+	o.Weekdays = v
 }
 
 func (o DeploymentRuleRequest) MarshalJSON() ([]byte, error) {
@@ -369,14 +397,17 @@ func (o DeploymentRuleRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["always_up"] = o.AlwaysUp
 	}
+	if o.Timezone != nil {
+		toSerialize["timezone"] = o.Timezone
+	}
 	if o.StartTime.IsSet() {
 		toSerialize["start_time"] = o.StartTime.Get()
 	}
 	if o.StopTime.IsSet() {
 		toSerialize["stop_time"] = o.StopTime.Get()
 	}
-	if o.Weekday.IsSet() {
-		toSerialize["weekday"] = o.Weekday.Get()
+	if o.Weekdays != nil {
+		toSerialize["weekdays"] = o.Weekdays
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,6 +17,7 @@ import (
 
 // ClusterCredentialsResponse struct for ClusterCredentialsResponse
 type ClusterCredentialsResponse struct {
+	Id   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -35,6 +36,38 @@ func NewClusterCredentialsResponse() *ClusterCredentialsResponse {
 func NewClusterCredentialsResponseWithDefaults() *ClusterCredentialsResponse {
 	this := ClusterCredentialsResponse{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ClusterCredentialsResponse) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterCredentialsResponse) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ClusterCredentialsResponse) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ClusterCredentialsResponse) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -71,6 +104,9 @@ func (o *ClusterCredentialsResponse) SetName(v string) {
 
 func (o ClusterCredentialsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
