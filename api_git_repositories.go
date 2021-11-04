@@ -447,7 +447,7 @@ func (r ApiGetGitlabRepositoryBranchesRequest) Name(name string) ApiGetGitlabRep
 	return r
 }
 
-func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (Object, *_nethttp.Response, error) {
+func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (interface{}, *_nethttp.Response, error) {
 	return r.ApiService.GetGitlabRepositoryBranchesExecute(r)
 }
 
@@ -467,14 +467,14 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoryBranches(ctx _context.Con
  * Execute executes the request
  * @return Object
  */
-func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (Object, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (interface{}, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Object
+		localVarReturnValue  interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositoryBranches")
