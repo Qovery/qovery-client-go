@@ -353,118 +353,6 @@ func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganiza
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEditOrganizationBudgetRequest struct {
-	ctx                           _context.Context
-	ApiService                    *BillingApiService
-	organizationId                string
-	organizationBudgetEditRequest *OrganizationBudgetEditRequest
-}
-
-func (r ApiEditOrganizationBudgetRequest) OrganizationBudgetEditRequest(organizationBudgetEditRequest OrganizationBudgetEditRequest) ApiEditOrganizationBudgetRequest {
-	r.organizationBudgetEditRequest = &organizationBudgetEditRequest
-	return r
-}
-
-func (r ApiEditOrganizationBudgetRequest) Execute() (CostResponse, *_nethttp.Response, error) {
-	return r.ApiService.EditOrganizationBudgetExecute(r)
-}
-
-/*
- * EditOrganizationBudget Edit Organization Budget
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param organizationId Organization ID
- * @return ApiEditOrganizationBudgetRequest
- */
-func (a *BillingApiService) EditOrganizationBudget(ctx _context.Context, organizationId string) ApiEditOrganizationBudgetRequest {
-	return ApiEditOrganizationBudgetRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
-	}
-}
-
-/*
- * Execute executes the request
- * @return CostResponse
- */
-func (a *BillingApiService) EditOrganizationBudgetExecute(r ApiEditOrganizationBudgetRequest) (CostResponse, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CostResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.EditOrganizationBudget")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/organization/{organizationId}/costBudget"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.organizationBudgetEditRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiGetClusterCurrentCostRequest struct {
 	ctx            _context.Context
 	ApiService     *BillingApiService
@@ -472,17 +360,20 @@ type ApiGetClusterCurrentCostRequest struct {
 	clusterId      string
 }
 
-func (r ApiGetClusterCurrentCostRequest) Execute() (CostResponse, *_nethttp.Response, error) {
+func (r ApiGetClusterCurrentCostRequest) Execute() (CostRangeResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetClusterCurrentCostExecute(r)
 }
 
 /*
  * GetClusterCurrentCost Get cluster current cost
+ * Get your cluster cost range. We are unable to give a precise cost of your infrastructure at the moment.
+But Qovery guarantees that the cost of your cluster will not exceed the max range.
+
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param organizationId Organization ID
  * @param clusterId Cluster ID
  * @return ApiGetClusterCurrentCostRequest
- */
+*/
 func (a *BillingApiService) GetClusterCurrentCost(ctx _context.Context, organizationId string, clusterId string) ApiGetClusterCurrentCostRequest {
 	return ApiGetClusterCurrentCostRequest{
 		ApiService:     a,
@@ -494,16 +385,16 @@ func (a *BillingApiService) GetClusterCurrentCost(ctx _context.Context, organiza
 
 /*
  * Execute executes the request
- * @return CostResponse
+ * @return CostRangeResponse
  */
-func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (CostResponse, *_nethttp.Response, error) {
+func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (CostRangeResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  CostResponse
+		localVarReturnValue  CostRangeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetClusterCurrentCost")
@@ -726,110 +617,6 @@ func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganiza
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/billingStatus"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetOrganizationCostBudgetRequest struct {
-	ctx            _context.Context
-	ApiService     *BillingApiService
-	organizationId string
-}
-
-func (r ApiGetOrganizationCostBudgetRequest) Execute() (CostResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetOrganizationCostBudgetExecute(r)
-}
-
-/*
- * GetOrganizationCostBudget Get organization cost Budget
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param organizationId Organization ID
- * @return ApiGetOrganizationCostBudgetRequest
- */
-func (a *BillingApiService) GetOrganizationCostBudget(ctx _context.Context, organizationId string) ApiGetOrganizationCostBudgetRequest {
-	return ApiGetOrganizationCostBudgetRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
-	}
-}
-
-/*
- * Execute executes the request
- * @return CostResponse
- */
-func (a *BillingApiService) GetOrganizationCostBudgetExecute(r ApiGetOrganizationCostBudgetRequest) (CostResponse, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  CostResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationCostBudget")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/organization/{organizationId}/costBudget"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

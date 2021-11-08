@@ -18,24 +18,23 @@ import (
 
 // MemberResponse struct for MemberResponse
 type MemberResponse struct {
-	FirstName         *string `json:"first_name,omitempty"`
-	LastName          *string `json:"last_name,omitempty"`
-	Email             *string `json:"email,omitempty"`
+	Name              *string `json:"name,omitempty"`
+	Nickname          *string `json:"nickname,omitempty"`
+	Email             string  `json:"email"`
 	ProfilePictureUrl *string `json:"profile_picture_url,omitempty"`
 	// last time the user was connected
-	LastActivity     *time.Time `json:"last_activity,omitempty"`
-	Role             *string    `json:"role,omitempty"`
-	InvitationStatus *string    `json:"invitation_status,omitempty"`
-	Id               string     `json:"id"`
-	CreatedAt        time.Time  `json:"created_at"`
-	UpdatedAt        *time.Time `json:"updated_at,omitempty"`
+	LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
+	Role           *string    `json:"role,omitempty"`
+	Id             string     `json:"id"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewMemberResponse instantiates a new MemberResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMemberResponse(id string, createdAt time.Time) *MemberResponse {
+func NewMemberResponse(email string, id string, createdAt time.Time) *MemberResponse {
 	this := MemberResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -50,100 +49,92 @@ func NewMemberResponseWithDefaults() *MemberResponse {
 	return &this
 }
 
-// GetFirstName returns the FirstName field value if set, zero value otherwise.
-func (o *MemberResponse) GetFirstName() string {
-	if o == nil || o.FirstName == nil {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *MemberResponse) GetName() string {
+	if o == nil || o.Name == nil {
 		var ret string
 		return ret
 	}
-	return *o.FirstName
+	return *o.Name
 }
 
-// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberResponse) GetFirstNameOk() (*string, bool) {
-	if o == nil || o.FirstName == nil {
+func (o *MemberResponse) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
 		return nil, false
 	}
-	return o.FirstName, true
+	return o.Name, true
 }
 
-// HasFirstName returns a boolean if a field has been set.
-func (o *MemberResponse) HasFirstName() bool {
-	if o != nil && o.FirstName != nil {
+// HasName returns a boolean if a field has been set.
+func (o *MemberResponse) HasName() bool {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
-func (o *MemberResponse) SetFirstName(v string) {
-	o.FirstName = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *MemberResponse) SetName(v string) {
+	o.Name = &v
 }
 
-// GetLastName returns the LastName field value if set, zero value otherwise.
-func (o *MemberResponse) GetLastName() string {
-	if o == nil || o.LastName == nil {
+// GetNickname returns the Nickname field value if set, zero value otherwise.
+func (o *MemberResponse) GetNickname() string {
+	if o == nil || o.Nickname == nil {
 		var ret string
 		return ret
 	}
-	return *o.LastName
+	return *o.Nickname
 }
 
-// GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
+// GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberResponse) GetLastNameOk() (*string, bool) {
-	if o == nil || o.LastName == nil {
+func (o *MemberResponse) GetNicknameOk() (*string, bool) {
+	if o == nil || o.Nickname == nil {
 		return nil, false
 	}
-	return o.LastName, true
+	return o.Nickname, true
 }
 
-// HasLastName returns a boolean if a field has been set.
-func (o *MemberResponse) HasLastName() bool {
-	if o != nil && o.LastName != nil {
+// HasNickname returns a boolean if a field has been set.
+func (o *MemberResponse) HasNickname() bool {
+	if o != nil && o.Nickname != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLastName gets a reference to the given string and assigns it to the LastName field.
-func (o *MemberResponse) SetLastName(v string) {
-	o.LastName = &v
+// SetNickname gets a reference to the given string and assigns it to the Nickname field.
+func (o *MemberResponse) SetNickname(v string) {
+	o.Nickname = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value
 func (o *MemberResponse) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Email
+
+	return o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *MemberResponse) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return &o.Email, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *MemberResponse) HasEmail() bool {
-	if o != nil && o.Email != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail sets field value
 func (o *MemberResponse) SetEmail(v string) {
-	o.Email = &v
+	o.Email = v
 }
 
 // GetProfilePictureUrl returns the ProfilePictureUrl field value if set, zero value otherwise.
@@ -178,36 +169,36 @@ func (o *MemberResponse) SetProfilePictureUrl(v string) {
 	o.ProfilePictureUrl = &v
 }
 
-// GetLastActivity returns the LastActivity field value if set, zero value otherwise.
-func (o *MemberResponse) GetLastActivity() time.Time {
-	if o == nil || o.LastActivity == nil {
+// GetLastActivityAt returns the LastActivityAt field value if set, zero value otherwise.
+func (o *MemberResponse) GetLastActivityAt() time.Time {
+	if o == nil || o.LastActivityAt == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastActivity
+	return *o.LastActivityAt
 }
 
-// GetLastActivityOk returns a tuple with the LastActivity field value if set, nil otherwise
+// GetLastActivityAtOk returns a tuple with the LastActivityAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberResponse) GetLastActivityOk() (*time.Time, bool) {
-	if o == nil || o.LastActivity == nil {
+func (o *MemberResponse) GetLastActivityAtOk() (*time.Time, bool) {
+	if o == nil || o.LastActivityAt == nil {
 		return nil, false
 	}
-	return o.LastActivity, true
+	return o.LastActivityAt, true
 }
 
-// HasLastActivity returns a boolean if a field has been set.
-func (o *MemberResponse) HasLastActivity() bool {
-	if o != nil && o.LastActivity != nil {
+// HasLastActivityAt returns a boolean if a field has been set.
+func (o *MemberResponse) HasLastActivityAt() bool {
+	if o != nil && o.LastActivityAt != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLastActivity gets a reference to the given time.Time and assigns it to the LastActivity field.
-func (o *MemberResponse) SetLastActivity(v time.Time) {
-	o.LastActivity = &v
+// SetLastActivityAt gets a reference to the given time.Time and assigns it to the LastActivityAt field.
+func (o *MemberResponse) SetLastActivityAt(v time.Time) {
+	o.LastActivityAt = &v
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
@@ -240,38 +231,6 @@ func (o *MemberResponse) HasRole() bool {
 // SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *MemberResponse) SetRole(v string) {
 	o.Role = &v
-}
-
-// GetInvitationStatus returns the InvitationStatus field value if set, zero value otherwise.
-func (o *MemberResponse) GetInvitationStatus() string {
-	if o == nil || o.InvitationStatus == nil {
-		var ret string
-		return ret
-	}
-	return *o.InvitationStatus
-}
-
-// GetInvitationStatusOk returns a tuple with the InvitationStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MemberResponse) GetInvitationStatusOk() (*string, bool) {
-	if o == nil || o.InvitationStatus == nil {
-		return nil, false
-	}
-	return o.InvitationStatus, true
-}
-
-// HasInvitationStatus returns a boolean if a field has been set.
-func (o *MemberResponse) HasInvitationStatus() bool {
-	if o != nil && o.InvitationStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetInvitationStatus gets a reference to the given string and assigns it to the InvitationStatus field.
-func (o *MemberResponse) SetInvitationStatus(v string) {
-	o.InvitationStatus = &v
 }
 
 // GetId returns the Id field value
@@ -356,26 +315,23 @@ func (o *MemberResponse) SetUpdatedAt(v time.Time) {
 
 func (o MemberResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FirstName != nil {
-		toSerialize["first_name"] = o.FirstName
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
-	if o.LastName != nil {
-		toSerialize["last_name"] = o.LastName
+	if o.Nickname != nil {
+		toSerialize["nickname"] = o.Nickname
 	}
-	if o.Email != nil {
+	if true {
 		toSerialize["email"] = o.Email
 	}
 	if o.ProfilePictureUrl != nil {
 		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
 	}
-	if o.LastActivity != nil {
-		toSerialize["last_activity"] = o.LastActivity
+	if o.LastActivityAt != nil {
+		toSerialize["last_activity_at"] = o.LastActivityAt
 	}
 	if o.Role != nil {
 		toSerialize["role"] = o.Role
-	}
-	if o.InvitationStatus != nil {
-		toSerialize["invitation_status"] = o.InvitationStatus
 	}
 	if true {
 		toSerialize["id"] = o.Id

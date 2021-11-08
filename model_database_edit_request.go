@@ -17,7 +17,7 @@ import (
 
 // DatabaseEditRequest struct for DatabaseEditRequest
 type DatabaseEditRequest struct {
-	// name is case insensitive
+	// name is case-insensitive
 	Name          *string `json:"name,omitempty"`
 	Version       *string `json:"version,omitempty"`
 	Accessibility *string `json:"accessibility,omitempty"`

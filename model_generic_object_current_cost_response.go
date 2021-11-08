@@ -13,15 +13,12 @@ package qovery
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // GenericObjectCurrentCostResponse struct for GenericObjectCurrentCostResponse
 type GenericObjectCurrentCostResponse struct {
 	Id                    string       `json:"id"`
 	Name                  string       `json:"name"`
-	BillingStartedOn      time.Time    `json:"billing_started_on"`
-	BillingEndedOn        time.Time    `json:"billing_ended_on"`
 	ConsumedTimeInSeconds int32        `json:"consumed_time_in_seconds"`
 	Cost                  CostResponse `json:"cost"`
 }
@@ -30,12 +27,10 @@ type GenericObjectCurrentCostResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGenericObjectCurrentCostResponse(id string, name string, billingStartedOn time.Time, billingEndedOn time.Time, consumedTimeInSeconds int32, cost CostResponse) *GenericObjectCurrentCostResponse {
+func NewGenericObjectCurrentCostResponse(id string, name string, consumedTimeInSeconds int32, cost CostResponse) *GenericObjectCurrentCostResponse {
 	this := GenericObjectCurrentCostResponse{}
 	this.Id = id
 	this.Name = name
-	this.BillingStartedOn = billingStartedOn
-	this.BillingEndedOn = billingEndedOn
 	this.ConsumedTimeInSeconds = consumedTimeInSeconds
 	this.Cost = cost
 	return &this
@@ -97,54 +92,6 @@ func (o *GenericObjectCurrentCostResponse) SetName(v string) {
 	o.Name = v
 }
 
-// GetBillingStartedOn returns the BillingStartedOn field value
-func (o *GenericObjectCurrentCostResponse) GetBillingStartedOn() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.BillingStartedOn
-}
-
-// GetBillingStartedOnOk returns a tuple with the BillingStartedOn field value
-// and a boolean to check if the value has been set.
-func (o *GenericObjectCurrentCostResponse) GetBillingStartedOnOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillingStartedOn, true
-}
-
-// SetBillingStartedOn sets field value
-func (o *GenericObjectCurrentCostResponse) SetBillingStartedOn(v time.Time) {
-	o.BillingStartedOn = v
-}
-
-// GetBillingEndedOn returns the BillingEndedOn field value
-func (o *GenericObjectCurrentCostResponse) GetBillingEndedOn() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.BillingEndedOn
-}
-
-// GetBillingEndedOnOk returns a tuple with the BillingEndedOn field value
-// and a boolean to check if the value has been set.
-func (o *GenericObjectCurrentCostResponse) GetBillingEndedOnOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.BillingEndedOn, true
-}
-
-// SetBillingEndedOn sets field value
-func (o *GenericObjectCurrentCostResponse) SetBillingEndedOn(v time.Time) {
-	o.BillingEndedOn = v
-}
-
 // GetConsumedTimeInSeconds returns the ConsumedTimeInSeconds field value
 func (o *GenericObjectCurrentCostResponse) GetConsumedTimeInSeconds() int32 {
 	if o == nil {
@@ -200,12 +147,6 @@ func (o GenericObjectCurrentCostResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["billing_started_on"] = o.BillingStartedOn
-	}
-	if true {
-		toSerialize["billing_ended_on"] = o.BillingEndedOn
 	}
 	if true {
 		toSerialize["consumed_time_in_seconds"] = o.ConsumedTimeInSeconds

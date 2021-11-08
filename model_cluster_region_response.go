@@ -17,15 +17,22 @@ import (
 
 // ClusterRegionResponse struct for ClusterRegionResponse
 type ClusterRegionResponse struct {
-	Name *string `json:"name,omitempty"`
+	Name        string `json:"name"`
+	CountryCode string `json:"country_code"`
+	Country     string `json:"country"`
+	City        string `json:"city"`
 }
 
 // NewClusterRegionResponse instantiates a new ClusterRegionResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterRegionResponse() *ClusterRegionResponse {
+func NewClusterRegionResponse(name string, countryCode string, country string, city string) *ClusterRegionResponse {
 	this := ClusterRegionResponse{}
+	this.Name = name
+	this.CountryCode = countryCode
+	this.Country = country
+	this.City = city
 	return &this
 }
 
@@ -37,42 +44,115 @@ func NewClusterRegionResponseWithDefaults() *ClusterRegionResponse {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ClusterRegionResponse) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRegionResponse) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ClusterRegionResponse) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
+// SetName sets field value
+func (o *ClusterRegionResponse) SetName(v string) {
+	o.Name = v
+}
+
+// GetCountryCode returns the CountryCode field value
+func (o *ClusterRegionResponse) GetCountryCode() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.CountryCode
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ClusterRegionResponse) SetName(v string) {
-	o.Name = &v
+// GetCountryCodeOk returns a tuple with the CountryCode field value
+// and a boolean to check if the value has been set.
+func (o *ClusterRegionResponse) GetCountryCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CountryCode, true
+}
+
+// SetCountryCode sets field value
+func (o *ClusterRegionResponse) SetCountryCode(v string) {
+	o.CountryCode = v
+}
+
+// GetCountry returns the Country field value
+func (o *ClusterRegionResponse) GetCountry() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Country
+}
+
+// GetCountryOk returns a tuple with the Country field value
+// and a boolean to check if the value has been set.
+func (o *ClusterRegionResponse) GetCountryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Country, true
+}
+
+// SetCountry sets field value
+func (o *ClusterRegionResponse) SetCountry(v string) {
+	o.Country = v
+}
+
+// GetCity returns the City field value
+func (o *ClusterRegionResponse) GetCity() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.City
+}
+
+// GetCityOk returns a tuple with the City field value
+// and a boolean to check if the value has been set.
+func (o *ClusterRegionResponse) GetCityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.City, true
+}
+
+// SetCity sets field value
+func (o *ClusterRegionResponse) SetCity(v string) {
+	o.City = v
 }
 
 func (o ClusterRegionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["country_code"] = o.CountryCode
+	}
+	if true {
+		toSerialize["country"] = o.Country
+	}
+	if true {
+		toSerialize["city"] = o.City
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,7 +17,8 @@ import (
 
 // ClusterStatusResponse struct for ClusterStatusResponse
 type ClusterStatusResponse struct {
-	Status *string `json:"status,omitempty"`
+	ClusterId *string `json:"cluster_id,omitempty"`
+	Status    *string `json:"status,omitempty"`
 }
 
 // NewClusterStatusResponse instantiates a new ClusterStatusResponse object
@@ -35,6 +36,38 @@ func NewClusterStatusResponse() *ClusterStatusResponse {
 func NewClusterStatusResponseWithDefaults() *ClusterStatusResponse {
 	this := ClusterStatusResponse{}
 	return &this
+}
+
+// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+func (o *ClusterStatusResponse) GetClusterId() string {
+	if o == nil || o.ClusterId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterStatusResponse) GetClusterIdOk() (*string, bool) {
+	if o == nil || o.ClusterId == nil {
+		return nil, false
+	}
+	return o.ClusterId, true
+}
+
+// HasClusterId returns a boolean if a field has been set.
+func (o *ClusterStatusResponse) HasClusterId() bool {
+	if o != nil && o.ClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
+func (o *ClusterStatusResponse) SetClusterId(v string) {
+	o.ClusterId = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -71,6 +104,9 @@ func (o *ClusterStatusResponse) SetStatus(v string) {
 
 func (o ClusterStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ClusterId != nil {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
 	}
