@@ -3,5 +3,6 @@ module github.com/qovery/qovery-client-go
 go 1.13
 
 require (
+	golang.org/x/net v0.0.0-20200822124328-c89045814202
 	golang.org/x/oauth2 v0.0.0-20210218202405-ba52d332ba99
 )
