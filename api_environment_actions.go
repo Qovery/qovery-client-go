@@ -29,10 +29,10 @@ var (
 type EnvironmentActionsApiService service
 
 type ApiCloneEnvironmentRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentActionsApiService
+	ctx           _context.Context
+	ApiService    *EnvironmentActionsApiService
 	environmentId string
-	cloneRequest *CloneRequest
+	cloneRequest  *CloneRequest
 }
 
 func (r ApiCloneEnvironmentRequest) CloneRequest(cloneRequest CloneRequest) ApiCloneEnvironmentRequest {
@@ -55,8 +55,8 @@ You must provide a name. This will create a new environment, with the same confi
 */
 func (a *EnvironmentActionsApiService) CloneEnvironment(ctx _context.Context, environmentId string) ApiCloneEnvironmentRequest {
 	return ApiCloneEnvironmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -65,10 +65,10 @@ func (a *EnvironmentActionsApiService) CloneEnvironment(ctx _context.Context, en
 //  @return EnvironmentResponse
 func (a *EnvironmentActionsApiService) CloneEnvironmentExecute(r ApiCloneEnvironmentRequest) (EnvironmentResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  EnvironmentResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue EnvironmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.CloneEnvironment")
@@ -140,11 +140,10 @@ func (a *EnvironmentActionsApiService) CloneEnvironmentExecute(r ApiCloneEnviron
 }
 
 type ApiDeployEnvironmentRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentActionsApiService
+	ctx           _context.Context
+	ApiService    *EnvironmentActionsApiService
 	environmentId string
 }
-
 
 func (r ApiDeployEnvironmentRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.DeployEnvironmentExecute(r)
@@ -161,8 +160,8 @@ This will deploy all the services of this environment to their latest version.
 */
 func (a *EnvironmentActionsApiService) DeployEnvironment(ctx _context.Context, environmentId string) ApiDeployEnvironmentRequest {
 	return ApiDeployEnvironmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -171,10 +170,10 @@ func (a *EnvironmentActionsApiService) DeployEnvironment(ctx _context.Context, e
 //  @return Status
 func (a *EnvironmentActionsApiService) DeployEnvironmentExecute(r ApiDeployEnvironmentRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  Status
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.DeployEnvironment")
@@ -244,9 +243,9 @@ func (a *EnvironmentActionsApiService) DeployEnvironmentExecute(r ApiDeployEnvir
 }
 
 type ApiRestartEnvironmentRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentActionsApiService
-	environmentId string
+	ctx                       _context.Context
+	ApiService                *EnvironmentActionsApiService
+	environmentId             string
 	environmentRestartRequest *EnvironmentRestartRequest
 }
 
@@ -268,8 +267,8 @@ RestartEnvironment Restart environment
 */
 func (a *EnvironmentActionsApiService) RestartEnvironment(ctx _context.Context, environmentId string) ApiRestartEnvironmentRequest {
 	return ApiRestartEnvironmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -278,10 +277,10 @@ func (a *EnvironmentActionsApiService) RestartEnvironment(ctx _context.Context, 
 //  @return Status
 func (a *EnvironmentActionsApiService) RestartEnvironmentExecute(r ApiRestartEnvironmentRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  Status
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.RestartEnvironment")
@@ -353,11 +352,10 @@ func (a *EnvironmentActionsApiService) RestartEnvironmentExecute(r ApiRestartEnv
 }
 
 type ApiStopEnvironmentRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentActionsApiService
+	ctx           _context.Context
+	ApiService    *EnvironmentActionsApiService
 	environmentId string
 }
-
 
 func (r ApiStopEnvironmentRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.StopEnvironmentExecute(r)
@@ -372,8 +370,8 @@ StopEnvironment Stop environment
 */
 func (a *EnvironmentActionsApiService) StopEnvironment(ctx _context.Context, environmentId string) ApiStopEnvironmentRequest {
 	return ApiStopEnvironmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -382,10 +380,10 @@ func (a *EnvironmentActionsApiService) StopEnvironment(ctx _context.Context, env
 //  @return Status
 func (a *EnvironmentActionsApiService) StopEnvironmentExecute(r ApiStopEnvironmentRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  Status
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.StopEnvironment")

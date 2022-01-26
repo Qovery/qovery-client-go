@@ -17,9 +17,9 @@ import (
 
 // GitAuthProviderResponse struct for GitAuthProviderResponse
 type GitAuthProviderResponse struct {
-	Id *string `json:"id,omitempty"`
-	Name string `json:"name"`
-	Owner string `json:"owner"`
+	Id    *string `json:"id,omitempty"`
+	Name  string  `json:"name"`
+	Owner string  `json:"owner"`
 }
 
 // NewGitAuthProviderResponse instantiates a new GitAuthProviderResponse object
@@ -86,7 +86,7 @@ func (o *GitAuthProviderResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *GitAuthProviderResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -110,7 +110,7 @@ func (o *GitAuthProviderResponse) GetOwner() string {
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
 func (o *GitAuthProviderResponse) GetOwnerOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Owner, true
@@ -170,5 +170,3 @@ func (v *NullableGitAuthProviderResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

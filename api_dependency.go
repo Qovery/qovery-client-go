@@ -29,12 +29,11 @@ var (
 type DependencyApiService service
 
 type ApiCreateApplicationDependencyRequest struct {
-	ctx _context.Context
-	ApiService *DependencyApiService
-	applicationId string
+	ctx                 _context.Context
+	ApiService          *DependencyApiService
+	applicationId       string
 	targetApplicationId string
 }
-
 
 func (r ApiCreateApplicationDependencyRequest) Execute() (ApplicationResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateApplicationDependencyExecute(r)
@@ -52,9 +51,9 @@ Add application dependency to this application to prevent this application start
 */
 func (a *DependencyApiService) CreateApplicationDependency(ctx _context.Context, applicationId string, targetApplicationId string) ApiCreateApplicationDependencyRequest {
 	return ApiCreateApplicationDependencyRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:          a,
+		ctx:                 ctx,
+		applicationId:       applicationId,
 		targetApplicationId: targetApplicationId,
 	}
 }
@@ -63,10 +62,10 @@ func (a *DependencyApiService) CreateApplicationDependency(ctx _context.Context,
 //  @return ApplicationResponse
 func (a *DependencyApiService) CreateApplicationDependencyExecute(r ApiCreateApplicationDependencyRequest) (ApplicationResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ApplicationResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DependencyApiService.CreateApplicationDependency")
@@ -137,11 +136,10 @@ func (a *DependencyApiService) CreateApplicationDependencyExecute(r ApiCreateApp
 }
 
 type ApiListApplicationDependencyRequest struct {
-	ctx _context.Context
-	ApiService *DependencyApiService
+	ctx           _context.Context
+	ApiService    *DependencyApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationDependencyRequest) Execute() (ApplicationResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListApplicationDependencyExecute(r)
@@ -156,8 +154,8 @@ ListApplicationDependency List application dependencies
 */
 func (a *DependencyApiService) ListApplicationDependency(ctx _context.Context, applicationId string) ApiListApplicationDependencyRequest {
 	return ApiListApplicationDependencyRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -166,10 +164,10 @@ func (a *DependencyApiService) ListApplicationDependency(ctx _context.Context, a
 //  @return ApplicationResponseList
 func (a *DependencyApiService) ListApplicationDependencyExecute(r ApiListApplicationDependencyRequest) (ApplicationResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ApplicationResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ApplicationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DependencyApiService.ListApplicationDependency")
@@ -239,12 +237,11 @@ func (a *DependencyApiService) ListApplicationDependencyExecute(r ApiListApplica
 }
 
 type ApiRemoveApplicationDependencyRequest struct {
-	ctx _context.Context
-	ApiService *DependencyApiService
-	applicationId string
+	ctx                 _context.Context
+	ApiService          *DependencyApiService
+	applicationId       string
 	targetApplicationId string
 }
-
 
 func (r ApiRemoveApplicationDependencyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveApplicationDependencyExecute(r)
@@ -260,9 +257,9 @@ RemoveApplicationDependency Remove application dependency to this application.
 */
 func (a *DependencyApiService) RemoveApplicationDependency(ctx _context.Context, applicationId string, targetApplicationId string) ApiRemoveApplicationDependencyRequest {
 	return ApiRemoveApplicationDependencyRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:          a,
+		ctx:                 ctx,
+		applicationId:       applicationId,
 		targetApplicationId: targetApplicationId,
 	}
 }
@@ -270,9 +267,9 @@ func (a *DependencyApiService) RemoveApplicationDependency(ctx _context.Context,
 // Execute executes the request
 func (a *DependencyApiService) RemoveApplicationDependencyExecute(r ApiRemoveApplicationDependencyRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DependencyApiService.RemoveApplicationDependency")

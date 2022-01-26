@@ -29,12 +29,11 @@ var (
 type ApplicationDatabaseApiService service
 
 type ApiAttachDatabasetoApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationDatabaseApiService
-	applicationId string
+	ctx              _context.Context
+	ApiService       *ApplicationDatabaseApiService
+	applicationId    string
 	targetDatabaseId string
 }
-
 
 func (r ApiAttachDatabasetoApplicationRequest) Execute() (DatabaseResponse, *_nethttp.Response, error) {
 	return r.ApiService.AttachDatabasetoApplicationExecute(r)
@@ -50,9 +49,9 @@ AttachDatabasetoApplication Link a database to the application
 */
 func (a *ApplicationDatabaseApiService) AttachDatabasetoApplication(ctx _context.Context, applicationId string, targetDatabaseId string) ApiAttachDatabasetoApplicationRequest {
 	return ApiAttachDatabasetoApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:       a,
+		ctx:              ctx,
+		applicationId:    applicationId,
 		targetDatabaseId: targetDatabaseId,
 	}
 }
@@ -61,10 +60,10 @@ func (a *ApplicationDatabaseApiService) AttachDatabasetoApplication(ctx _context
 //  @return DatabaseResponse
 func (a *ApplicationDatabaseApiService) AttachDatabasetoApplicationExecute(r ApiAttachDatabasetoApplicationRequest) (DatabaseResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DatabaseResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue DatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.AttachDatabasetoApplication")
@@ -135,12 +134,11 @@ func (a *ApplicationDatabaseApiService) AttachDatabasetoApplicationExecute(r Api
 }
 
 type ApiAttachLogicalDatabasetoApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationDatabaseApiService
-	applicationId string
+	ctx                     _context.Context
+	ApiService              *ApplicationDatabaseApiService
+	applicationId           string
 	targetLogicalDatabaseId string
 }
-
 
 func (r ApiAttachLogicalDatabasetoApplicationRequest) Execute() (LogicalDatabaseResponse, *_nethttp.Response, error) {
 	return r.ApiService.AttachLogicalDatabasetoApplicationExecute(r)
@@ -156,9 +154,9 @@ AttachLogicalDatabasetoApplication Link a logical database to the application
 */
 func (a *ApplicationDatabaseApiService) AttachLogicalDatabasetoApplication(ctx _context.Context, applicationId string, targetLogicalDatabaseId string) ApiAttachLogicalDatabasetoApplicationRequest {
 	return ApiAttachLogicalDatabasetoApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:              a,
+		ctx:                     ctx,
+		applicationId:           applicationId,
 		targetLogicalDatabaseId: targetLogicalDatabaseId,
 	}
 }
@@ -167,10 +165,10 @@ func (a *ApplicationDatabaseApiService) AttachLogicalDatabasetoApplication(ctx _
 //  @return LogicalDatabaseResponse
 func (a *ApplicationDatabaseApiService) AttachLogicalDatabasetoApplicationExecute(r ApiAttachLogicalDatabasetoApplicationRequest) (LogicalDatabaseResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LogicalDatabaseResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue LogicalDatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.AttachLogicalDatabasetoApplication")
@@ -241,11 +239,10 @@ func (a *ApplicationDatabaseApiService) AttachLogicalDatabasetoApplicationExecut
 }
 
 type ApiListApplicationDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationDatabaseApiService
+	ctx           _context.Context
+	ApiService    *ApplicationDatabaseApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationDatabaseRequest) Execute() (DatabaseResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListApplicationDatabaseExecute(r)
@@ -260,8 +257,8 @@ ListApplicationDatabase List linked databases
 */
 func (a *ApplicationDatabaseApiService) ListApplicationDatabase(ctx _context.Context, applicationId string) ApiListApplicationDatabaseRequest {
 	return ApiListApplicationDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -270,10 +267,10 @@ func (a *ApplicationDatabaseApiService) ListApplicationDatabase(ctx _context.Con
 //  @return DatabaseResponseList
 func (a *ApplicationDatabaseApiService) ListApplicationDatabaseExecute(r ApiListApplicationDatabaseRequest) (DatabaseResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DatabaseResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue DatabaseResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.ListApplicationDatabase")
@@ -343,11 +340,10 @@ func (a *ApplicationDatabaseApiService) ListApplicationDatabaseExecute(r ApiList
 }
 
 type ApiListApplicationLogicalDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationDatabaseApiService
+	ctx           _context.Context
+	ApiService    *ApplicationDatabaseApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationLogicalDatabaseRequest) Execute() (LogicalDatabaseResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListApplicationLogicalDatabaseExecute(r)
@@ -362,8 +358,8 @@ ListApplicationLogicalDatabase List linked logical databases
 */
 func (a *ApplicationDatabaseApiService) ListApplicationLogicalDatabase(ctx _context.Context, applicationId string) ApiListApplicationLogicalDatabaseRequest {
 	return ApiListApplicationLogicalDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -372,10 +368,10 @@ func (a *ApplicationDatabaseApiService) ListApplicationLogicalDatabase(ctx _cont
 //  @return LogicalDatabaseResponseList
 func (a *ApplicationDatabaseApiService) ListApplicationLogicalDatabaseExecute(r ApiListApplicationLogicalDatabaseRequest) (LogicalDatabaseResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LogicalDatabaseResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue LogicalDatabaseResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.ListApplicationLogicalDatabase")
@@ -445,12 +441,11 @@ func (a *ApplicationDatabaseApiService) ListApplicationLogicalDatabaseExecute(r 
 }
 
 type ApiRemoveDatabaseFromApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationDatabaseApiService
-	applicationId string
+	ctx              _context.Context
+	ApiService       *ApplicationDatabaseApiService
+	applicationId    string
 	targetDatabaseId string
 }
-
 
 func (r ApiRemoveDatabaseFromApplicationRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveDatabaseFromApplicationExecute(r)
@@ -466,9 +461,9 @@ RemoveDatabaseFromApplication Remove database link to this application.
 */
 func (a *ApplicationDatabaseApiService) RemoveDatabaseFromApplication(ctx _context.Context, applicationId string, targetDatabaseId string) ApiRemoveDatabaseFromApplicationRequest {
 	return ApiRemoveDatabaseFromApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:       a,
+		ctx:              ctx,
+		applicationId:    applicationId,
 		targetDatabaseId: targetDatabaseId,
 	}
 }
@@ -476,9 +471,9 @@ func (a *ApplicationDatabaseApiService) RemoveDatabaseFromApplication(ctx _conte
 // Execute executes the request
 func (a *ApplicationDatabaseApiService) RemoveDatabaseFromApplicationExecute(r ApiRemoveDatabaseFromApplicationRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.RemoveDatabaseFromApplication")
@@ -540,12 +535,11 @@ func (a *ApplicationDatabaseApiService) RemoveDatabaseFromApplicationExecute(r A
 }
 
 type ApiRemoveLogicalDatabaseFromApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationDatabaseApiService
-	applicationId string
+	ctx                     _context.Context
+	ApiService              *ApplicationDatabaseApiService
+	applicationId           string
 	targetLogicalDatabaseId string
 }
-
 
 func (r ApiRemoveLogicalDatabaseFromApplicationRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveLogicalDatabaseFromApplicationExecute(r)
@@ -561,9 +555,9 @@ RemoveLogicalDatabaseFromApplication Remove logical database link to this applic
 */
 func (a *ApplicationDatabaseApiService) RemoveLogicalDatabaseFromApplication(ctx _context.Context, applicationId string, targetLogicalDatabaseId string) ApiRemoveLogicalDatabaseFromApplicationRequest {
 	return ApiRemoveLogicalDatabaseFromApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:              a,
+		ctx:                     ctx,
+		applicationId:           applicationId,
 		targetLogicalDatabaseId: targetLogicalDatabaseId,
 	}
 }
@@ -571,9 +565,9 @@ func (a *ApplicationDatabaseApiService) RemoveLogicalDatabaseFromApplication(ctx
 // Execute executes the request
 func (a *ApplicationDatabaseApiService) RemoveLogicalDatabaseFromApplicationExecute(r ApiRemoveLogicalDatabaseFromApplicationRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.RemoveLogicalDatabaseFromApplication")

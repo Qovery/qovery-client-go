@@ -18,10 +18,10 @@ import (
 // DatabaseRequest struct for DatabaseRequest
 type DatabaseRequest struct {
 	// name is case insensitive
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Version string `json:"version"`
-	Mode string `json:"mode"`
+	Name          string  `json:"name"`
+	Type          string  `json:"type"`
+	Version       string  `json:"version"`
+	Mode          string  `json:"mode"`
 	Accessibility *string `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
@@ -81,7 +81,7 @@ func (o *DatabaseRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -105,7 +105,7 @@ func (o *DatabaseRequest) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -129,7 +129,7 @@ func (o *DatabaseRequest) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetVersionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Version, true
@@ -153,7 +153,7 @@ func (o *DatabaseRequest) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetModeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -356,5 +356,3 @@ func (v *NullableDatabaseRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,33 +19,33 @@ import (
 // ClusterResponse struct for ClusterResponse
 type ClusterResponse struct {
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *float32 `json:"estimated_cloud_provider_cost,omitempty"`
-	Status *string `json:"status,omitempty"`
-	HasAccess *bool `json:"has_access,omitempty"`
-	Version *string `json:"version,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	EstimatedCloudProviderCost *float32   `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *string    `json:"status,omitempty"`
+	HasAccess                  *bool      `json:"has_access,omitempty"`
+	Version                    *string    `json:"version,omitempty"`
+	Id                         string     `json:"id"`
+	CreatedAt                  time.Time  `json:"created_at"`
+	UpdatedAt                  *time.Time `json:"updated_at,omitempty"`
 	// name is case-insensitive
-	Name string `json:"name"`
-	Description NullableString `json:"description,omitempty"`
-	CloudProvider string `json:"cloud_provider"`
-	Region string `json:"region"`
-	AutoUpdate *bool `json:"auto_update,omitempty"`
+	Name          string         `json:"name"`
+	Description   NullableString `json:"description,omitempty"`
+	CloudProvider string         `json:"cloud_provider"`
+	Region        string         `json:"region"`
+	AutoUpdate    *bool          `json:"auto_update,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory *float32 `json:"memory,omitempty"`
-	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
-	Title *string `json:"title,omitempty"`
-	CostPerMonthInCents NullableInt32 `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode NullableString `json:"currency_code,omitempty"`
-	ValueType *string `json:"value_type,omitempty"`
-	Value NullableString `json:"value,omitempty"`
-	IsValueUpdatable *bool `json:"is_value_updatable,omitempty"`
-	AcceptedValues *Array `json:"accepted_values,omitempty"`
+	Memory              *float32        `json:"memory,omitempty"`
+	MinRunningNodes     *int32          `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes     *int32          `json:"max_running_nodes,omitempty"`
+	Title               *string         `json:"title,omitempty"`
+	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
+	ValueType           *string         `json:"value_type,omitempty"`
+	Value               NullableString  `json:"value,omitempty"`
+	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
+	AcceptedValues      *Array          `json:"accepted_values,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
@@ -231,7 +231,7 @@ func (o *ClusterResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ClusterResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -255,7 +255,7 @@ func (o *ClusterResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *ClusterResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -311,7 +311,7 @@ func (o *ClusterResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ClusterResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -335,7 +335,7 @@ func (o *ClusterResponse) GetDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Description.Get(), o.Description.IsSet()
@@ -354,6 +354,7 @@ func (o *ClusterResponse) HasDescription() bool {
 func (o *ClusterResponse) SetDescription(v string) {
 	o.Description.Set(&v)
 }
+
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *ClusterResponse) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -377,7 +378,7 @@ func (o *ClusterResponse) GetCloudProvider() string {
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
 func (o *ClusterResponse) GetCloudProviderOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CloudProvider, true
@@ -401,7 +402,7 @@ func (o *ClusterResponse) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
 func (o *ClusterResponse) GetRegionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Region, true
@@ -617,7 +618,7 @@ func (o *ClusterResponse) GetCostPerMonthInCents() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterResponse) GetCostPerMonthInCentsOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CostPerMonthInCents.Get(), o.CostPerMonthInCents.IsSet()
@@ -636,6 +637,7 @@ func (o *ClusterResponse) HasCostPerMonthInCents() bool {
 func (o *ClusterResponse) SetCostPerMonthInCents(v int32) {
 	o.CostPerMonthInCents.Set(&v)
 }
+
 // SetCostPerMonthInCentsNil sets the value for CostPerMonthInCents to be an explicit nil
 func (o *ClusterResponse) SetCostPerMonthInCentsNil() {
 	o.CostPerMonthInCents.Set(nil)
@@ -659,7 +661,7 @@ func (o *ClusterResponse) GetCostPerMonth() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterResponse) GetCostPerMonthOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CostPerMonth.Get(), o.CostPerMonth.IsSet()
@@ -678,6 +680,7 @@ func (o *ClusterResponse) HasCostPerMonth() bool {
 func (o *ClusterResponse) SetCostPerMonth(v float32) {
 	o.CostPerMonth.Set(&v)
 }
+
 // SetCostPerMonthNil sets the value for CostPerMonth to be an explicit nil
 func (o *ClusterResponse) SetCostPerMonthNil() {
 	o.CostPerMonth.Set(nil)
@@ -701,7 +704,7 @@ func (o *ClusterResponse) GetCurrencyCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterResponse) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
@@ -720,6 +723,7 @@ func (o *ClusterResponse) HasCurrencyCode() bool {
 func (o *ClusterResponse) SetCurrencyCode(v string) {
 	o.CurrencyCode.Set(&v)
 }
+
 // SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
 func (o *ClusterResponse) SetCurrencyCodeNil() {
 	o.CurrencyCode.Set(nil)
@@ -775,7 +779,7 @@ func (o *ClusterResponse) GetValue() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterResponse) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
@@ -794,6 +798,7 @@ func (o *ClusterResponse) HasValue() bool {
 func (o *ClusterResponse) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ClusterResponse) SetValueNil() {
 	o.Value.Set(nil)
@@ -980,5 +985,3 @@ func (v *NullableClusterResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

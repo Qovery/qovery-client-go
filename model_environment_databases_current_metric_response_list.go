@@ -112,5 +112,3 @@ func (v *NullableEnvironmentDatabasesCurrentMetricResponseList) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

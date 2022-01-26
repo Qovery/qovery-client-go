@@ -17,7 +17,7 @@ import (
 
 // BillingStatus struct for BillingStatus
 type BillingStatus struct {
-	IsValid *bool `json:"is_valid,omitempty"`
+	IsValid *bool   `json:"is_valid,omitempty"`
 	Message *string `json:"message,omitempty"`
 }
 
@@ -148,5 +148,3 @@ func (v *NullableBillingStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

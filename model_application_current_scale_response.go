@@ -18,14 +18,14 @@ import (
 
 // ApplicationCurrentScaleResponse struct for ApplicationCurrentScaleResponse
 type ApplicationCurrentScaleResponse struct {
-	Min *int32 `json:"min,omitempty"`
-	Max *int32 `json:"max,omitempty"`
-	Running *int32 `json:"running,omitempty"`
-	RunningInPercent *float32 `json:"running_in_percent,omitempty"`
-	WarningThresholdInPercent *float32 `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent *float32 `json:"alert_threshold_in_percent,omitempty"`
-	Status *string `json:"status,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Min                       *int32     `json:"min,omitempty"`
+	Max                       *int32     `json:"max,omitempty"`
+	Running                   *int32     `json:"running,omitempty"`
+	RunningInPercent          *float32   `json:"running_in_percent,omitempty"`
+	WarningThresholdInPercent *float32   `json:"warning_threshold_in_percent,omitempty"`
+	AlertThresholdInPercent   *float32   `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *string    `json:"status,omitempty"`
+	UpdatedAt                 *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewApplicationCurrentScaleResponse instantiates a new ApplicationCurrentScaleResponse object
@@ -365,5 +365,3 @@ func (v *NullableApplicationCurrentScaleResponse) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

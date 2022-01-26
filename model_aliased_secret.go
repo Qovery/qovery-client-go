@@ -17,8 +17,8 @@ import (
 
 // AliasedSecret struct for AliasedSecret
 type AliasedSecret struct {
-	Id *string `json:"id,omitempty"`
-	Key *string `json:"key,omitempty"`
+	Id    *string `json:"id,omitempty"`
+	Key   *string `json:"key,omitempty"`
 	Scope *string `json:"scope,omitempty"`
 }
 
@@ -184,5 +184,3 @@ func (v *NullableAliasedSecret) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

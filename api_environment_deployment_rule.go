@@ -29,10 +29,10 @@ var (
 type EnvironmentDeploymentRuleApiService service
 
 type ApiEditEnvironmentDeploymentRuleRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentDeploymentRuleApiService
-	environmentId string
-	deploymentRuleId string
+	ctx                                  _context.Context
+	ApiService                           *EnvironmentDeploymentRuleApiService
+	environmentId                        string
+	deploymentRuleId                     string
 	environmentDeploymentRuleEditRequest *EnvironmentDeploymentRuleEditRequest
 }
 
@@ -55,9 +55,9 @@ EditEnvironmentDeploymentRule Edit an environment deployment rule
 */
 func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRule(ctx _context.Context, environmentId string, deploymentRuleId string) ApiEditEnvironmentDeploymentRuleRequest {
 	return ApiEditEnvironmentDeploymentRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentId: environmentId,
+		ApiService:       a,
+		ctx:              ctx,
+		environmentId:    environmentId,
 		deploymentRuleId: deploymentRuleId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRule(ctx 
 //  @return EnvironmentDeploymentRuleResponse
 func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecute(r ApiEditEnvironmentDeploymentRuleRequest) (EnvironmentDeploymentRuleResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  EnvironmentDeploymentRuleResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue EnvironmentDeploymentRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.EditEnvironmentDeploymentRule")
@@ -142,11 +142,10 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecu
 }
 
 type ApiGetEnvironmentDeploymentRuleRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentDeploymentRuleApiService
+	ctx           _context.Context
+	ApiService    *EnvironmentDeploymentRuleApiService
 	environmentId string
 }
-
 
 func (r ApiGetEnvironmentDeploymentRuleRequest) Execute() (EnvironmentDeploymentRuleResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetEnvironmentDeploymentRuleExecute(r)
@@ -161,8 +160,8 @@ GetEnvironmentDeploymentRule Get environment deployment rule
 */
 func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRule(ctx _context.Context, environmentId string) ApiGetEnvironmentDeploymentRuleRequest {
 	return ApiGetEnvironmentDeploymentRuleRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -171,10 +170,10 @@ func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRule(ctx _
 //  @return EnvironmentDeploymentRuleResponse
 func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecute(r ApiGetEnvironmentDeploymentRuleRequest) (EnvironmentDeploymentRuleResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  EnvironmentDeploymentRuleResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue EnvironmentDeploymentRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.GetEnvironmentDeploymentRule")

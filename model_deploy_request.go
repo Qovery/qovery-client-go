@@ -52,7 +52,7 @@ func (o *DeployRequest) GetGitCommitId() string {
 // GetGitCommitIdOk returns a tuple with the GitCommitId field value
 // and a boolean to check if the value has been set.
 func (o *DeployRequest) GetGitCommitIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.GitCommitId, true
@@ -106,5 +106,3 @@ func (v *NullableDeployRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

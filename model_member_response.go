@@ -18,16 +18,16 @@ import (
 
 // MemberResponse struct for MemberResponse
 type MemberResponse struct {
-	Name *string `json:"name,omitempty"`
-	Nickname *string `json:"nickname,omitempty"`
-	Email string `json:"email"`
+	Name              *string `json:"name,omitempty"`
+	Nickname          *string `json:"nickname,omitempty"`
+	Email             string  `json:"email"`
 	ProfilePictureUrl *string `json:"profile_picture_url,omitempty"`
 	// last time the user was connected
 	LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
-	Role *string `json:"role,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Role           *string    `json:"role,omitempty"`
+	Id             string     `json:"id"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewMemberResponse instantiates a new MemberResponse object
@@ -126,7 +126,7 @@ func (o *MemberResponse) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *MemberResponse) GetEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Email, true
@@ -246,7 +246,7 @@ func (o *MemberResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *MemberResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -270,7 +270,7 @@ func (o *MemberResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *MemberResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -380,5 +380,3 @@ func (v *NullableMemberResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

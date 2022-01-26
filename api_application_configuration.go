@@ -29,9 +29,9 @@ var (
 type ApplicationConfigurationApiService service
 
 type ApiEditApplicationNetworkRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationConfigurationApiService
-	applicationId string
+	ctx                       _context.Context
+	ApiService                *ApplicationConfigurationApiService
+	applicationId             string
 	applicationNetworkRequest *ApplicationNetworkRequest
 }
 
@@ -55,8 +55,8 @@ Edit the Network settings of the application.
 */
 func (a *ApplicationConfigurationApiService) EditApplicationNetwork(ctx _context.Context, applicationId string) ApiEditApplicationNetworkRequest {
 	return ApiEditApplicationNetworkRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -65,10 +65,10 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetwork(ctx _context
 //  @return ApplicationNetworkResponse
 func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r ApiEditApplicationNetworkRequest) (ApplicationNetworkResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ApplicationNetworkResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ApplicationNetworkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.EditApplicationNetwork")
@@ -140,11 +140,10 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r Api
 }
 
 type ApiGetApplicationNetworkRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationConfigurationApiService
+	ctx           _context.Context
+	ApiService    *ApplicationConfigurationApiService
 	applicationId string
 }
-
 
 func (r ApiGetApplicationNetworkRequest) Execute() (ApplicationNetworkResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetApplicationNetworkExecute(r)
@@ -161,8 +160,8 @@ Get status of the application network settings.
 */
 func (a *ApplicationConfigurationApiService) GetApplicationNetwork(ctx _context.Context, applicationId string) ApiGetApplicationNetworkRequest {
 	return ApiGetApplicationNetworkRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -171,10 +170,10 @@ func (a *ApplicationConfigurationApiService) GetApplicationNetwork(ctx _context.
 //  @return ApplicationNetworkResponse
 func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiGetApplicationNetworkRequest) (ApplicationNetworkResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ApplicationNetworkResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ApplicationNetworkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.GetApplicationNetwork")

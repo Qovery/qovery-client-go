@@ -17,8 +17,8 @@ import (
 
 // MetricStorageResponse struct for MetricStorageResponse
 type MetricStorageResponse struct {
-	StorageId *string `json:"storage_id,omitempty"`
-	Data []MetricStorageDatapointResponse `json:"data"`
+	StorageId *string                          `json:"storage_id,omitempty"`
+	Data      []MetricStorageDatapointResponse `json:"data"`
 }
 
 // NewMetricStorageResponse instantiates a new MetricStorageResponse object
@@ -84,7 +84,7 @@ func (o *MetricStorageResponse) GetData() []MetricStorageDatapointResponse {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 func (o *MetricStorageResponse) GetDataOk() (*[]MetricStorageDatapointResponse, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Data, true
@@ -141,5 +141,3 @@ func (v *NullableMetricStorageResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

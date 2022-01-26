@@ -23,8 +23,8 @@ type ApplicationPortRequestPorts struct {
 	// The exposed port for your application. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible *bool `json:"publicly_accessible,omitempty"`
-	Protocol string `json:"protocol"`
+	PubliclyAccessible *bool  `json:"publicly_accessible,omitempty"`
+	Protocol           string `json:"protocol"`
 }
 
 // NewApplicationPortRequestPorts instantiates a new ApplicationPortRequestPorts object
@@ -93,7 +93,7 @@ func (o *ApplicationPortRequestPorts) GetInternalPort() int32 {
 // GetInternalPortOk returns a tuple with the InternalPort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortRequestPorts) GetInternalPortOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.InternalPort, true
@@ -181,7 +181,7 @@ func (o *ApplicationPortRequestPorts) GetProtocol() string {
 // GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortRequestPorts) GetProtocolOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Protocol, true
@@ -247,5 +247,3 @@ func (v *NullableApplicationPortRequestPorts) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -29,10 +29,10 @@ var (
 type ApplicationDeploymentHistoryApiService service
 
 type ApiListApplicationDeploymentHistoryRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationDeploymentHistoryApiService
+	ctx           _context.Context
+	ApiService    *ApplicationDeploymentHistoryApiService
 	applicationId string
-	startId *string
+	startId       *string
 }
 
 // Starting point after which to return results
@@ -56,8 +56,8 @@ By default it returns the 20 last results. The response is paginated. In order t
 */
 func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistory(ctx _context.Context, applicationId string) ApiListApplicationDeploymentHistoryRequest {
 	return ApiListApplicationDeploymentHistoryRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistor
 //  @return DeploymentHistoryPaginatedResponseList
 func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistoryExecute(r ApiListApplicationDeploymentHistoryRequest) (DeploymentHistoryPaginatedResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DeploymentHistoryPaginatedResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue DeploymentHistoryPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentHistoryApiService.ListApplicationDeploymentHistory")

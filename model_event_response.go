@@ -18,15 +18,15 @@ import (
 
 // EventResponse struct for EventResponse
 type EventResponse struct {
-	User *UserResponse `json:"user,omitempty"`
+	User   *UserResponse   `json:"user,omitempty"`
 	Commit *CommitResponse `json:"commit,omitempty"`
-	Status *Status `json:"status,omitempty"`
+	Status *Status         `json:"status,omitempty"`
 	// DRAFT - we have to specify here all the possible events
-	Type *string `json:"type,omitempty"`
-	Log *ReferenceObject `json:"log,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Type      *string          `json:"type,omitempty"`
+	Log       *ReferenceObject `json:"log,omitempty"`
+	Id        string           `json:"id"`
+	CreatedAt time.Time        `json:"created_at"`
+	UpdatedAt *time.Time       `json:"updated_at,omitempty"`
 }
 
 // NewEventResponse instantiates a new EventResponse object
@@ -221,7 +221,7 @@ func (o *EventResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *EventResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -245,7 +245,7 @@ func (o *EventResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *EventResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -352,5 +352,3 @@ func (v *NullableEventResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

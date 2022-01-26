@@ -29,11 +29,10 @@ var (
 type ApplicationLogsApiService service
 
 type ApiListApplicationLogRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationLogsApiService
+	ctx           _context.Context
+	ApiService    *ApplicationLogsApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationLogRequest) Execute() (LogResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListApplicationLogExecute(r)
@@ -50,8 +49,8 @@ This will list the last 1000 logs of the application
 */
 func (a *ApplicationLogsApiService) ListApplicationLog(ctx _context.Context, applicationId string) ApiListApplicationLogRequest {
 	return ApiListApplicationLogRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -60,10 +59,10 @@ func (a *ApplicationLogsApiService) ListApplicationLog(ctx _context.Context, app
 //  @return LogResponseList
 func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicationLogRequest) (LogResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LogResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue LogResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLogsApiService.ListApplicationLog")

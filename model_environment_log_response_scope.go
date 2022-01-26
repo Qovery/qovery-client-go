@@ -19,7 +19,7 @@ import (
 type EnvironmentLogResponseScope struct {
 	Type *string `json:"type,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id   *string `json:"id,omitempty"`
 }
 
 // NewEnvironmentLogResponseScope instantiates a new EnvironmentLogResponseScope object
@@ -184,5 +184,3 @@ func (v *NullableEnvironmentLogResponseScope) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

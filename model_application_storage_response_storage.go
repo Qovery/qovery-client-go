@@ -17,11 +17,11 @@ import (
 
 // ApplicationStorageResponseStorage struct for ApplicationStorageResponseStorage
 type ApplicationStorageResponseStorage struct {
-	Id *string `json:"id,omitempty"`
-	Type string `json:"type"`
+	Id   *string `json:"id,omitempty"`
+	Type string  `json:"type"`
 	// unit is GB
-	Size float32 `json:"size"`
-	MountPoint string `json:"mount_point"`
+	Size       float32 `json:"size"`
+	MountPoint string  `json:"mount_point"`
 }
 
 // NewApplicationStorageResponseStorage instantiates a new ApplicationStorageResponseStorage object
@@ -89,7 +89,7 @@ func (o *ApplicationStorageResponseStorage) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationStorageResponseStorage) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -113,7 +113,7 @@ func (o *ApplicationStorageResponseStorage) GetSize() float32 {
 // GetSizeOk returns a tuple with the Size field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationStorageResponseStorage) GetSizeOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Size, true
@@ -137,7 +137,7 @@ func (o *ApplicationStorageResponseStorage) GetMountPoint() string {
 // GetMountPointOk returns a tuple with the MountPoint field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationStorageResponseStorage) GetMountPointOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.MountPoint, true
@@ -200,5 +200,3 @@ func (v *NullableApplicationStorageResponseStorage) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

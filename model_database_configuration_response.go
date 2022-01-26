@@ -17,8 +17,8 @@ import (
 
 // DatabaseConfigurationResponse struct for DatabaseConfigurationResponse
 type DatabaseConfigurationResponse struct {
-	DatabaseType *string `json:"database_type,omitempty"`
-	Version *[]DatabaseVersionMode `json:"version,omitempty"`
+	DatabaseType *string                `json:"database_type,omitempty"`
+	Version      *[]DatabaseVersionMode `json:"version,omitempty"`
 }
 
 // NewDatabaseConfigurationResponse instantiates a new DatabaseConfigurationResponse object
@@ -148,5 +148,3 @@ func (v *NullableDatabaseConfigurationResponse) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,8 +17,8 @@ import (
 
 // DatabaseCurrentMetricResponse struct for DatabaseCurrentMetricResponse
 type DatabaseCurrentMetricResponse struct {
-	Cpu *EnvironmentDatabasesCurrentMetricResponseCpu `json:"cpu,omitempty"`
-	Memory *EnvironmentDatabasesCurrentMetricResponseMemory `json:"memory,omitempty"`
+	Cpu     *EnvironmentDatabasesCurrentMetricResponseCpu     `json:"cpu,omitempty"`
+	Memory  *EnvironmentDatabasesCurrentMetricResponseMemory  `json:"memory,omitempty"`
 	Storage *EnvironmentDatabasesCurrentMetricResponseStorage `json:"storage,omitempty"`
 }
 
@@ -184,5 +184,3 @@ func (v *NullableDatabaseCurrentMetricResponse) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

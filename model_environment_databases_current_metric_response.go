@@ -17,10 +17,10 @@ import (
 
 // EnvironmentDatabasesCurrentMetricResponse struct for EnvironmentDatabasesCurrentMetricResponse
 type EnvironmentDatabasesCurrentMetricResponse struct {
-	Database *string `json:"database,omitempty"`
-	Cpu *EnvironmentDatabasesCurrentMetricResponseCpu `json:"cpu,omitempty"`
-	Memory *EnvironmentDatabasesCurrentMetricResponseMemory `json:"memory,omitempty"`
-	Storage *EnvironmentDatabasesCurrentMetricResponseStorage `json:"storage,omitempty"`
+	Database *string                                           `json:"database,omitempty"`
+	Cpu      *EnvironmentDatabasesCurrentMetricResponseCpu     `json:"cpu,omitempty"`
+	Memory   *EnvironmentDatabasesCurrentMetricResponseMemory  `json:"memory,omitempty"`
+	Storage  *EnvironmentDatabasesCurrentMetricResponseStorage `json:"storage,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetricResponse instantiates a new EnvironmentDatabasesCurrentMetricResponse object
@@ -220,5 +220,3 @@ func (v *NullableEnvironmentDatabasesCurrentMetricResponse) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

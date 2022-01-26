@@ -19,9 +19,9 @@ import (
 type CurrentCost struct {
 	Plan *string `json:"plan,omitempty"`
 	// number of days remaining before the end of the trial period
-	RemainingTrialDay *int32 `json:"remaining_trial_day,omitempty"`
-	RemainingCredits *RemainingCredits `json:"remaining_credits,omitempty"`
-	Cost *Cost `json:"cost,omitempty"`
+	RemainingTrialDay *int32            `json:"remaining_trial_day,omitempty"`
+	RemainingCredits  *RemainingCredits `json:"remaining_credits,omitempty"`
+	Cost              *Cost             `json:"cost,omitempty"`
 }
 
 // NewCurrentCost instantiates a new CurrentCost object
@@ -221,5 +221,3 @@ func (v *NullableCurrentCost) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

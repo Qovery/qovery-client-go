@@ -18,10 +18,10 @@ import (
 
 // MetricCPUDatapointResponse struct for MetricCPUDatapointResponse
 type MetricCPUDatapointResponse struct {
-	CreatedAt time.Time `json:"created_at"`
-	RequestedInNumber *float32 `json:"requested_in_number,omitempty"`
-	ConsumedInNumber float32 `json:"consumed_in_number"`
-	ConsumedInPercent float32 `json:"consumed_in_percent"`
+	CreatedAt         time.Time `json:"created_at"`
+	RequestedInNumber *float32  `json:"requested_in_number,omitempty"`
+	ConsumedInNumber  float32   `json:"consumed_in_number"`
+	ConsumedInPercent float32   `json:"consumed_in_percent"`
 }
 
 // NewMetricCPUDatapointResponse instantiates a new MetricCPUDatapointResponse object
@@ -57,7 +57,7 @@ func (o *MetricCPUDatapointResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *MetricCPUDatapointResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -113,7 +113,7 @@ func (o *MetricCPUDatapointResponse) GetConsumedInNumber() float32 {
 // GetConsumedInNumberOk returns a tuple with the ConsumedInNumber field value
 // and a boolean to check if the value has been set.
 func (o *MetricCPUDatapointResponse) GetConsumedInNumberOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ConsumedInNumber, true
@@ -137,7 +137,7 @@ func (o *MetricCPUDatapointResponse) GetConsumedInPercent() float32 {
 // GetConsumedInPercentOk returns a tuple with the ConsumedInPercent field value
 // and a boolean to check if the value has been set.
 func (o *MetricCPUDatapointResponse) GetConsumedInPercentOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ConsumedInPercent, true
@@ -200,5 +200,3 @@ func (v *NullableMetricCPUDatapointResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

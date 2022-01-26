@@ -29,9 +29,9 @@ var (
 type ProjectDeploymentRuleApiService service
 
 type ApiCreateDeploymentRuleRequest struct {
-	ctx _context.Context
-	ApiService *ProjectDeploymentRuleApiService
-	projectId string
+	ctx                          _context.Context
+	ApiService                   *ProjectDeploymentRuleApiService
+	projectId                    string
 	projectDeploymentRuleRequest *ProjectDeploymentRuleRequest
 }
 
@@ -54,8 +54,8 @@ CreateDeploymentRule Create a deployment rule
 func (a *ProjectDeploymentRuleApiService) CreateDeploymentRule(ctx _context.Context, projectId string) ApiCreateDeploymentRuleRequest {
 	return ApiCreateDeploymentRuleRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -63,10 +63,10 @@ func (a *ProjectDeploymentRuleApiService) CreateDeploymentRule(ctx _context.Cont
 //  @return ProjectDeploymentRuleResponse
 func (a *ProjectDeploymentRuleApiService) CreateDeploymentRuleExecute(r ApiCreateDeploymentRuleRequest) (ProjectDeploymentRuleResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectDeploymentRuleResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectDeploymentRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.CreateDeploymentRule")
@@ -138,12 +138,11 @@ func (a *ProjectDeploymentRuleApiService) CreateDeploymentRuleExecute(r ApiCreat
 }
 
 type ApiDeleteProjectDeploymentRuleRequest struct {
-	ctx _context.Context
-	ApiService *ProjectDeploymentRuleApiService
-	projectId string
+	ctx              _context.Context
+	ApiService       *ProjectDeploymentRuleApiService
+	projectId        string
 	deploymentRuleId string
 }
-
 
 func (r ApiDeleteProjectDeploymentRuleRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteProjectDeploymentRuleExecute(r)
@@ -159,9 +158,9 @@ DeleteProjectDeploymentRule Delete a project deployment rule
 */
 func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRule(ctx _context.Context, projectId string, deploymentRuleId string) ApiDeleteProjectDeploymentRuleRequest {
 	return ApiDeleteProjectDeploymentRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ApiService:       a,
+		ctx:              ctx,
+		projectId:        projectId,
 		deploymentRuleId: deploymentRuleId,
 	}
 }
@@ -169,9 +168,9 @@ func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRule(ctx _conte
 // Execute executes the request
 func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRuleExecute(r ApiDeleteProjectDeploymentRuleRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.DeleteProjectDeploymentRule")
@@ -233,10 +232,10 @@ func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRuleExecute(r A
 }
 
 type ApiEditProjectDeployemtnRuleRequest struct {
-	ctx _context.Context
-	ApiService *ProjectDeploymentRuleApiService
-	projectId string
-	deploymentRuleId string
+	ctx                          _context.Context
+	ApiService                   *ProjectDeploymentRuleApiService
+	projectId                    string
+	deploymentRuleId             string
 	projectDeploymentRuleRequest *ProjectDeploymentRuleRequest
 }
 
@@ -259,9 +258,9 @@ EditProjectDeployemtnRule Edit a project deployment rule
 */
 func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRule(ctx _context.Context, projectId string, deploymentRuleId string) ApiEditProjectDeployemtnRuleRequest {
 	return ApiEditProjectDeployemtnRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ApiService:       a,
+		ctx:              ctx,
+		projectId:        projectId,
 		deploymentRuleId: deploymentRuleId,
 	}
 }
@@ -270,10 +269,10 @@ func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRule(ctx _context
 //  @return ProjectDeploymentRuleResponse
 func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRuleExecute(r ApiEditProjectDeployemtnRuleRequest) (ProjectDeploymentRuleResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectDeploymentRuleResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectDeploymentRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.EditProjectDeployemtnRule")
@@ -346,12 +345,11 @@ func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRuleExecute(r Api
 }
 
 type ApiGetProjectDeploymentRuleRequest struct {
-	ctx _context.Context
-	ApiService *ProjectDeploymentRuleApiService
-	projectId string
+	ctx              _context.Context
+	ApiService       *ProjectDeploymentRuleApiService
+	projectId        string
 	deploymentRuleId string
 }
-
 
 func (r ApiGetProjectDeploymentRuleRequest) Execute() (ProjectDeploymentRuleResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetProjectDeploymentRuleExecute(r)
@@ -367,9 +365,9 @@ GetProjectDeploymentRule Get project deployment rule
 */
 func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRule(ctx _context.Context, projectId string, deploymentRuleId string) ApiGetProjectDeploymentRuleRequest {
 	return ApiGetProjectDeploymentRuleRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ApiService:       a,
+		ctx:              ctx,
+		projectId:        projectId,
 		deploymentRuleId: deploymentRuleId,
 	}
 }
@@ -378,10 +376,10 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRule(ctx _context.
 //  @return ProjectDeploymentRuleResponse
 func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiGetProjectDeploymentRuleRequest) (ProjectDeploymentRuleResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectDeploymentRuleResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectDeploymentRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.GetProjectDeploymentRule")
@@ -452,11 +450,10 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiG
 }
 
 type ApiListProjectDeploymentRuleRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProjectDeploymentRuleApiService
-	projectId string
+	projectId  string
 }
-
 
 func (r ApiListProjectDeploymentRuleRequest) Execute() (ProjectDeploymentRuleResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListProjectDeploymentRuleExecute(r)
@@ -472,8 +469,8 @@ ListProjectDeploymentRule List project deployment rules
 func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRule(ctx _context.Context, projectId string) ApiListProjectDeploymentRuleRequest {
 	return ApiListProjectDeploymentRuleRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -481,10 +478,10 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRule(ctx _context
 //  @return ProjectDeploymentRuleResponseList
 func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRuleExecute(r ApiListProjectDeploymentRuleRequest) (ProjectDeploymentRuleResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectDeploymentRuleResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectDeploymentRuleResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.ListProjectDeploymentRule")

@@ -29,9 +29,9 @@ var (
 type CloudProviderCredentialsApiService service
 
 type ApiCreateAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
+	ctx                   _context.Context
+	ApiService            *CloudProviderCredentialsApiService
+	organizationId        string
 	awsCredentialsRequest *AwsCredentialsRequest
 }
 
@@ -53,8 +53,8 @@ CreateAWSCredentials Create AWS credentials set
 */
 func (a *CloudProviderCredentialsApiService) CreateAWSCredentials(ctx _context.Context, organizationId string) ApiCreateAWSCredentialsRequest {
 	return ApiCreateAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentials(ctx _context.C
 //  @return ClusterCredentialsResponse
 func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateAWSCredentials")
@@ -138,9 +138,9 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 }
 
 type ApiCreateDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
+	ctx                  _context.Context
+	ApiService           *CloudProviderCredentialsApiService
+	organizationId       string
 	doCredentialsRequest *DoCredentialsRequest
 }
 
@@ -162,8 +162,8 @@ CreateDOCredentials Create Digital Ocean credentials set
 */
 func (a *CloudProviderCredentialsApiService) CreateDOCredentials(ctx _context.Context, organizationId string) ApiCreateDOCredentialsRequest {
 	return ApiCreateDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -172,10 +172,10 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentials(ctx _context.Co
 //  @return ClusterCredentialsResponse
 func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCreateDOCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateDOCredentials")
@@ -247,9 +247,9 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 }
 
 type ApiCreateScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
+	ctx                        _context.Context
+	ApiService                 *CloudProviderCredentialsApiService
+	organizationId             string
 	scalewayCredentialsRequest *ScalewayCredentialsRequest
 }
 
@@ -271,8 +271,8 @@ CreateScalewayCredentials Create Scaleway credentials set
 */
 func (a *CloudProviderCredentialsApiService) CreateScalewayCredentials(ctx _context.Context, organizationId string) ApiCreateScalewayCredentialsRequest {
 	return ApiCreateScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -281,10 +281,10 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentials(ctx _cont
 //  @return ClusterCredentialsResponse
 func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateScalewayCredentials")
@@ -356,12 +356,11 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 }
 
 type ApiDeleteAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	credentialsId string
+	ctx            _context.Context
+	ApiService     *CloudProviderCredentialsApiService
+	credentialsId  string
 	organizationId string
 }
-
 
 func (r ApiDeleteAWSCredentialsRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteAWSCredentialsExecute(r)
@@ -377,9 +376,9 @@ DeleteAWSCredentials Delete a set of AWS credentials
 */
 func (a *CloudProviderCredentialsApiService) DeleteAWSCredentials(ctx _context.Context, credentialsId string, organizationId string) ApiDeleteAWSCredentialsRequest {
 	return ApiDeleteAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
-		credentialsId: credentialsId,
+		ApiService:     a,
+		ctx:            ctx,
+		credentialsId:  credentialsId,
 		organizationId: organizationId,
 	}
 }
@@ -387,9 +386,9 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentials(ctx _context.C
 // Execute executes the request
 func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDeleteAWSCredentialsRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteAWSCredentials")
@@ -451,12 +450,11 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDe
 }
 
 type ApiDeleteDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	credentialsId string
+	ctx            _context.Context
+	ApiService     *CloudProviderCredentialsApiService
+	credentialsId  string
 	organizationId string
 }
-
 
 func (r ApiDeleteDOCredentialsRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteDOCredentialsExecute(r)
@@ -472,9 +470,9 @@ DeleteDOCredentials Delete a set of Digital Ocean credentials
 */
 func (a *CloudProviderCredentialsApiService) DeleteDOCredentials(ctx _context.Context, credentialsId string, organizationId string) ApiDeleteDOCredentialsRequest {
 	return ApiDeleteDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
-		credentialsId: credentialsId,
+		ApiService:     a,
+		ctx:            ctx,
+		credentialsId:  credentialsId,
 		organizationId: organizationId,
 	}
 }
@@ -482,9 +480,9 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentials(ctx _context.Co
 // Execute executes the request
 func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDeleteDOCredentialsRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteDOCredentials")
@@ -546,12 +544,11 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDel
 }
 
 type ApiDeleteScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	credentialsId string
+	ctx            _context.Context
+	ApiService     *CloudProviderCredentialsApiService
+	credentialsId  string
 	organizationId string
 }
-
 
 func (r ApiDeleteScalewayCredentialsRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteScalewayCredentialsExecute(r)
@@ -567,9 +564,9 @@ DeleteScalewayCredentials Delete a set of Scaleway credentials
 */
 func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentials(ctx _context.Context, credentialsId string, organizationId string) ApiDeleteScalewayCredentialsRequest {
 	return ApiDeleteScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
-		credentialsId: credentialsId,
+		ApiService:     a,
+		ctx:            ctx,
+		credentialsId:  credentialsId,
 		organizationId: organizationId,
 	}
 }
@@ -577,9 +574,9 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentials(ctx _cont
 // Execute executes the request
 func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r ApiDeleteScalewayCredentialsRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteScalewayCredentials")
@@ -641,10 +638,10 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r 
 }
 
 type ApiEditAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
-	credentialsId string
+	ctx                   _context.Context
+	ApiService            *CloudProviderCredentialsApiService
+	organizationId        string
+	credentialsId         string
 	awsCredentialsRequest *AwsCredentialsRequest
 }
 
@@ -667,10 +664,10 @@ EditAWSCredentials Edit a set of AWS credentials
 */
 func (a *CloudProviderCredentialsApiService) EditAWSCredentials(ctx _context.Context, organizationId string, credentialsId string) ApiEditAWSCredentialsRequest {
 	return ApiEditAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		credentialsId: credentialsId,
+		credentialsId:  credentialsId,
 	}
 }
 
@@ -678,10 +675,10 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentials(ctx _context.Con
 //  @return ClusterCredentialsResponse
 func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditAWSCredentials")
@@ -754,10 +751,10 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 }
 
 type ApiEditDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
-	credentialsId string
+	ctx                  _context.Context
+	ApiService           *CloudProviderCredentialsApiService
+	organizationId       string
+	credentialsId        string
 	doCredentialsRequest *DoCredentialsRequest
 }
 
@@ -780,10 +777,10 @@ EditDOCredentials Edit a set of Digital Ocean credentials
 */
 func (a *CloudProviderCredentialsApiService) EditDOCredentials(ctx _context.Context, organizationId string, credentialsId string) ApiEditDOCredentialsRequest {
 	return ApiEditDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		credentialsId: credentialsId,
+		credentialsId:  credentialsId,
 	}
 }
 
@@ -791,10 +788,10 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentials(ctx _context.Cont
 //  @return ClusterCredentialsResponse
 func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditDOCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditDOCredentials")
@@ -867,10 +864,10 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 }
 
 type ApiEditScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
-	credentialsId string
+	ctx                        _context.Context
+	ApiService                 *CloudProviderCredentialsApiService
+	organizationId             string
+	credentialsId              string
 	scalewayCredentialsRequest *ScalewayCredentialsRequest
 }
 
@@ -893,10 +890,10 @@ EditScalewayCredentials Edit a set of Scaleway credentials
 */
 func (a *CloudProviderCredentialsApiService) EditScalewayCredentials(ctx _context.Context, organizationId string, credentialsId string) ApiEditScalewayCredentialsRequest {
 	return ApiEditScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		credentialsId: credentialsId,
+		credentialsId:  credentialsId,
 	}
 }
 
@@ -904,10 +901,10 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentials(ctx _contex
 //  @return ClusterCredentialsResponse
 func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditScalewayCredentials")
@@ -980,11 +977,10 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 }
 
 type ApiListAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
+	ctx            _context.Context
+	ApiService     *CloudProviderCredentialsApiService
 	organizationId string
 }
-
 
 func (r ApiListAWSCredentialsRequest) Execute() (ClusterCredentialsResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListAWSCredentialsExecute(r)
@@ -999,8 +995,8 @@ ListAWSCredentials List AWS credentials
 */
 func (a *CloudProviderCredentialsApiService) ListAWSCredentials(ctx _context.Context, organizationId string) ApiListAWSCredentialsRequest {
 	return ApiListAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -1009,10 +1005,10 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentials(ctx _context.Con
 //  @return ClusterCredentialsResponseList
 func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiListAWSCredentialsRequest) (ClusterCredentialsResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListAWSCredentials")
@@ -1082,11 +1078,10 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 }
 
 type ApiListDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
+	ctx            _context.Context
+	ApiService     *CloudProviderCredentialsApiService
 	organizationId string
 }
-
 
 func (r ApiListDOCredentialsRequest) Execute() (ClusterCredentialsResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListDOCredentialsExecute(r)
@@ -1101,8 +1096,8 @@ ListDOCredentials List DO credentials
 */
 func (a *CloudProviderCredentialsApiService) ListDOCredentials(ctx _context.Context, organizationId string) ApiListDOCredentialsRequest {
 	return ApiListDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -1111,10 +1106,10 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentials(ctx _context.Cont
 //  @return ClusterCredentialsResponseList
 func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListDOCredentialsRequest) (ClusterCredentialsResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListDOCredentials")
@@ -1184,11 +1179,10 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 }
 
 type ApiListScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
+	ctx            _context.Context
+	ApiService     *CloudProviderCredentialsApiService
 	organizationId string
 }
-
 
 func (r ApiListScalewayCredentialsRequest) Execute() (ClusterCredentialsResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListScalewayCredentialsExecute(r)
@@ -1203,8 +1197,8 @@ ListScalewayCredentials List Scaleway credentials
 */
 func (a *CloudProviderCredentialsApiService) ListScalewayCredentials(ctx _context.Context, organizationId string) ApiListScalewayCredentialsRequest {
 	return ApiListScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -1213,10 +1207,10 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentials(ctx _contex
 //  @return ClusterCredentialsResponseList
 func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r ApiListScalewayCredentialsRequest) (ClusterCredentialsResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterCredentialsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListScalewayCredentials")

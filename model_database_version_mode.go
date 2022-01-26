@@ -17,7 +17,7 @@ import (
 
 // DatabaseVersionMode struct for DatabaseVersionMode
 type DatabaseVersionMode struct {
-	Name *string `json:"name,omitempty"`
+	Name          *string `json:"name,omitempty"`
 	SupportedMode *string `json:"supported_mode,omitempty"`
 }
 
@@ -148,5 +148,3 @@ func (v *NullableDatabaseVersionMode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

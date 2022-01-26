@@ -17,8 +17,8 @@ import (
 
 // OverriddenSecret struct for OverriddenSecret
 type OverriddenSecret struct {
-	Id *string `json:"id,omitempty"`
-	Key *string `json:"key,omitempty"`
+	Id    *string `json:"id,omitempty"`
+	Key   *string `json:"key,omitempty"`
 	Scope *string `json:"scope,omitempty"`
 }
 
@@ -184,5 +184,3 @@ func (v *NullableOverriddenSecret) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

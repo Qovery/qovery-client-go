@@ -29,10 +29,10 @@ var (
 type DatabaseEventApiService service
 
 type ApiListDatabaseEventRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *DatabaseEventApiService
 	databaseId string
-	startId *string
+	startId    *string
 }
 
 // Starting point after which to return results
@@ -57,7 +57,7 @@ By default it returns the 20 last results. The response is paginated. In order t
 func (a *DatabaseEventApiService) ListDatabaseEvent(ctx _context.Context, databaseId string) ApiListDatabaseEventRequest {
 	return ApiListDatabaseEventRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *DatabaseEventApiService) ListDatabaseEvent(ctx _context.Context, databa
 //  @return EventPaginatedResponseList
 func (a *DatabaseEventApiService) ListDatabaseEventExecute(r ApiListDatabaseEventRequest) (EventPaginatedResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  EventPaginatedResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue EventPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseEventApiService.ListDatabaseEvent")

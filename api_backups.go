@@ -29,9 +29,9 @@ var (
 type BackupsApiService service
 
 type ApiAddBackupDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *BackupsApiService
-	databaseId string
+	ctx           _context.Context
+	ApiService    *BackupsApiService
+	databaseId    string
 	backupRequest *BackupRequest
 }
 
@@ -45,7 +45,7 @@ func (r ApiAddBackupDatabaseRequest) Execute() (BackupResponse, *_nethttp.Respon
 }
 
 /*
-AddBackupDatabase Add a backup to the Database 
+AddBackupDatabase Add a backup to the Database
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
@@ -54,7 +54,7 @@ AddBackupDatabase Add a backup to the Database
 func (a *BackupsApiService) AddBackupDatabase(ctx _context.Context, databaseId string) ApiAddBackupDatabaseRequest {
 	return ApiAddBackupDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *BackupsApiService) AddBackupDatabase(ctx _context.Context, databaseId s
 //  @return BackupResponse
 func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseRequest) (BackupResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  BackupResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue BackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.AddBackupDatabase")
@@ -138,10 +138,10 @@ func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseReque
 }
 
 type ApiListDatabaseBackupRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BackupsApiService
 	databaseId string
-	startId *string
+	startId    *string
 }
 
 // Starting point after which to return results
@@ -166,7 +166,7 @@ By default it returns the 20 last results. The response is paginated. In order t
 func (a *BackupsApiService) ListDatabaseBackup(ctx _context.Context, databaseId string) ApiListDatabaseBackupRequest {
 	return ApiListDatabaseBackupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -175,10 +175,10 @@ func (a *BackupsApiService) ListDatabaseBackup(ctx _context.Context, databaseId 
 //  @return BackupPaginatedResponseList
 func (a *BackupsApiService) ListDatabaseBackupExecute(r ApiListDatabaseBackupRequest) (BackupPaginatedResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  BackupPaginatedResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue BackupPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ListDatabaseBackup")
@@ -251,12 +251,11 @@ func (a *BackupsApiService) ListDatabaseBackupExecute(r ApiListDatabaseBackupReq
 }
 
 type ApiRemoveDatabaseBackupRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BackupsApiService
 	databaseId string
-	backupId string
+	backupId   string
 }
-
 
 func (r ApiRemoveDatabaseBackupRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveDatabaseBackupExecute(r)
@@ -273,18 +272,18 @@ RemoveDatabaseBackup Remove database  backup
 func (a *BackupsApiService) RemoveDatabaseBackup(ctx _context.Context, databaseId string, backupId string) ApiRemoveDatabaseBackupRequest {
 	return ApiRemoveDatabaseBackupRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
-		backupId: backupId,
+		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
 func (a *BackupsApiService) RemoveDatabaseBackupExecute(r ApiRemoveDatabaseBackupRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.RemoveDatabaseBackup")

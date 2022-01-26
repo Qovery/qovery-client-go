@@ -17,9 +17,9 @@ import (
 
 // ClusterStatusResponse struct for ClusterStatusResponse
 type ClusterStatusResponse struct {
-	ClusterId *string `json:"cluster_id,omitempty"`
-	Status *string `json:"status,omitempty"`
-	IsDeployed *bool `json:"is_deployed,omitempty"`
+	ClusterId  *string `json:"cluster_id,omitempty"`
+	Status     *string `json:"status,omitempty"`
+	IsDeployed *bool   `json:"is_deployed,omitempty"`
 }
 
 // NewClusterStatusResponse instantiates a new ClusterStatusResponse object
@@ -184,5 +184,3 @@ func (v *NullableClusterStatusResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

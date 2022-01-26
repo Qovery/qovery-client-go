@@ -18,14 +18,14 @@ import (
 
 // StorageDiskResponse struct for StorageDiskResponse
 type StorageDiskResponse struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	StorageId *string `json:"storage_id,omitempty"`
-	RequestedInGb *int32 `json:"requested_in_gb,omitempty"`
-	ConsumedInGb *float32 `json:"consumed_in_gb,omitempty"`
-	ConsumedInPercent *float32 `json:"consumed_in_percent,omitempty"`
-	WarningThresholdInPercent *float32 `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent *float32 `json:"alert_threshold_in_percent,omitempty"`
-	Status *string `json:"status,omitempty"`
+	CreatedAt                 *time.Time `json:"created_at,omitempty"`
+	StorageId                 *string    `json:"storage_id,omitempty"`
+	RequestedInGb             *int32     `json:"requested_in_gb,omitempty"`
+	ConsumedInGb              *float32   `json:"consumed_in_gb,omitempty"`
+	ConsumedInPercent         *float32   `json:"consumed_in_percent,omitempty"`
+	WarningThresholdInPercent *float32   `json:"warning_threshold_in_percent,omitempty"`
+	AlertThresholdInPercent   *float32   `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *string    `json:"status,omitempty"`
 }
 
 // NewStorageDiskResponse instantiates a new StorageDiskResponse object
@@ -365,5 +365,3 @@ func (v *NullableStorageDiskResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

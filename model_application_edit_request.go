@@ -20,9 +20,9 @@ type ApplicationEditRequest struct {
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
-	Description *string `json:"description,omitempty"`
+	Description   *string                          `json:"description,omitempty"`
 	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
-	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path` 
+	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile
 	DockerfilePath *string `json:"dockerfile_path,omitempty"`
@@ -32,17 +32,17 @@ type ApplicationEditRequest struct {
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *float32 `json:"memory,omitempty"`
-	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running. 
+	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
-	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
-	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
-	Healthcheck *Healthcheck `json:"healthcheck,omitempty"`
-	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  
+	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
+	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
+	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
+	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
 	EnvPreview *bool `json:"env_preview,omitempty"`
-	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  
-	StickySession *bool `json:"sticky-session,omitempty"`
-	Storage *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
-	Ports *[]ApplicationPortResponsePorts `json:"ports,omitempty"`
+	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
+	StickySession *bool                                `json:"sticky-session,omitempty"`
+	Storage       *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports         *[]ApplicationPortResponsePorts      `json:"ports,omitempty"`
 }
 
 // NewApplicationEditRequest instantiates a new ApplicationEditRequest object
@@ -639,5 +639,3 @@ func (v *NullableApplicationEditRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

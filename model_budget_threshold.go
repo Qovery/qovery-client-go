@@ -17,9 +17,9 @@ import (
 
 // BudgetThreshold struct for BudgetThreshold
 type BudgetThreshold struct {
-	TotalInCents *int32 `json:"total_in_cents,omitempty"`
-	Total *float32 `json:"total,omitempty"`
-	CurrencyCode *string `json:"currency_code,omitempty"`
+	TotalInCents *int32   `json:"total_in_cents,omitempty"`
+	Total        *float32 `json:"total,omitempty"`
+	CurrencyCode *string  `json:"currency_code,omitempty"`
 }
 
 // NewBudgetThreshold instantiates a new BudgetThreshold object
@@ -184,5 +184,3 @@ func (v *NullableBudgetThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

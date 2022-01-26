@@ -29,11 +29,10 @@ var (
 type DatabaseApplicationApiService service
 
 type ApiListDatabaseApplicationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *DatabaseApplicationApiService
 	databaseId string
 }
-
 
 func (r ApiListDatabaseApplicationRequest) Execute() (ApplicationResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListDatabaseApplicationExecute(r)
@@ -49,7 +48,7 @@ ListDatabaseApplication List applications using the database
 func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx _context.Context, databaseId string) ApiListDatabaseApplicationRequest {
 	return ApiListDatabaseApplicationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -58,10 +57,10 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx _context.Con
 //  @return ApplicationResponseList
 func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiListDatabaseApplicationRequest) (ApplicationResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ApplicationResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ApplicationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.ListDatabaseApplication")
@@ -131,19 +130,18 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 }
 
 type ApiRemoveApplicationFromDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *DatabaseApplicationApiService
-	databaseId string
+	ctx                 _context.Context
+	ApiService          *DatabaseApplicationApiService
+	databaseId          string
 	targetApplicationId string
 }
-
 
 func (r ApiRemoveApplicationFromDatabaseRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveApplicationFromDatabaseExecute(r)
 }
 
 /*
-RemoveApplicationFromDatabase Remove an application from this database 
+RemoveApplicationFromDatabase Remove an application from this database
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
@@ -152,9 +150,9 @@ RemoveApplicationFromDatabase Remove an application from this database
 */
 func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx _context.Context, databaseId string, targetApplicationId string) ApiRemoveApplicationFromDatabaseRequest {
 	return ApiRemoveApplicationFromDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
-		databaseId: databaseId,
+		ApiService:          a,
+		ctx:                 ctx,
+		databaseId:          databaseId,
 		targetApplicationId: targetApplicationId,
 	}
 }
@@ -162,9 +160,9 @@ func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx _conte
 // Execute executes the request
 func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r ApiRemoveApplicationFromDatabaseRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.RemoveApplicationFromDatabase")

@@ -19,13 +19,13 @@ import (
 // SecretResponse struct for SecretResponse
 type SecretResponse struct {
 	// key is case sensitive
-	Key *string `json:"key,omitempty"`
+	Key              *string           `json:"key,omitempty"`
 	OverriddenSecret *OverriddenSecret `json:"overridden_secret,omitempty"`
-	AliasedSecret *AliasedSecret `json:"aliased_secret,omitempty"`
-	Scope string `json:"scope"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	AliasedSecret    *AliasedSecret    `json:"aliased_secret,omitempty"`
+	Scope            string            `json:"scope"`
+	Id               string            `json:"id"`
+	CreatedAt        time.Time         `json:"created_at"`
+	UpdatedAt        *time.Time        `json:"updated_at,omitempty"`
 }
 
 // NewSecretResponse instantiates a new SecretResponse object
@@ -156,7 +156,7 @@ func (o *SecretResponse) GetScope() string {
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *SecretResponse) GetScopeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Scope, true
@@ -180,7 +180,7 @@ func (o *SecretResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *SecretResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -204,7 +204,7 @@ func (o *SecretResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *SecretResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -308,5 +308,3 @@ func (v *NullableSecretResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

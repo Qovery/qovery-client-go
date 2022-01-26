@@ -112,5 +112,3 @@ func (v *NullableMetricStorageDatapointResponseList) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

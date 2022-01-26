@@ -52,7 +52,7 @@ func (o *CustomDomainRequest) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value
 // and a boolean to check if the value has been set.
 func (o *CustomDomainRequest) GetDomainOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Domain, true
@@ -106,5 +106,3 @@ func (v *NullableCustomDomainRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

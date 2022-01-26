@@ -29,10 +29,10 @@ var (
 type EnvironmentDeploymentHistoryApiService service
 
 type ApiListEnvironmentDeploymentHistoryRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentDeploymentHistoryApiService
+	ctx           _context.Context
+	ApiService    *EnvironmentDeploymentHistoryApiService
 	environmentId string
-	startId *string
+	startId       *string
 }
 
 // Starting point after which to return results
@@ -56,8 +56,8 @@ List previous and current environment deployments with the status deployment and
 */
 func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistory(ctx _context.Context, environmentId string) ApiListEnvironmentDeploymentHistoryRequest {
 	return ApiListEnvironmentDeploymentHistoryRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistor
 //  @return DeploymentHistoryEnvironmentPaginatedResponseList
 func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistoryExecute(r ApiListEnvironmentDeploymentHistoryRequest) (DeploymentHistoryEnvironmentPaginatedResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DeploymentHistoryEnvironmentPaginatedResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue DeploymentHistoryEnvironmentPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentHistoryApiService.ListEnvironmentDeploymentHistory")

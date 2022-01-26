@@ -28,10 +28,9 @@ var (
 type ReferralRewardsApiService service
 
 type ApiGetAccountReferralRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ReferralRewardsApiService
 }
-
 
 func (r ApiGetAccountReferralRequest) Execute() (ReferralResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetAccountReferralExecute(r)
@@ -46,7 +45,7 @@ GetAccountReferral Get your referral information
 func (a *ReferralRewardsApiService) GetAccountReferral(ctx _context.Context) ApiGetAccountReferralRequest {
 	return ApiGetAccountReferralRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -54,10 +53,10 @@ func (a *ReferralRewardsApiService) GetAccountReferral(ctx _context.Context) Api
 //  @return ReferralResponse
 func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountReferralRequest) (ReferralResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ReferralResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ReferralResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferralRewardsApiService.GetAccountReferral")
@@ -126,8 +125,8 @@ func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountRef
 }
 
 type ApiPostAccountRewardClaimRequest struct {
-	ctx _context.Context
-	ApiService *ReferralRewardsApiService
+	ctx                 _context.Context
+	ApiService          *ReferralRewardsApiService
 	rewardClaimResponse *RewardClaimResponse
 }
 
@@ -151,16 +150,16 @@ A same code can be claimed only 3 times at max
 func (a *ReferralRewardsApiService) PostAccountRewardClaim(ctx _context.Context) ApiPostAccountRewardClaimRequest {
 	return ApiPostAccountRewardClaimRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ReferralRewardsApiService) PostAccountRewardClaimExecute(r ApiPostAccountRewardClaimRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferralRewardsApiService.PostAccountRewardClaim")

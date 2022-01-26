@@ -18,11 +18,11 @@ import (
 
 // DeploymentHistoryResponse struct for DeploymentHistoryResponse
 type DeploymentHistoryResponse struct {
-	Commit *CommitResponse `json:"commit,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Commit    *CommitResponse `json:"commit,omitempty"`
+	Status    *string         `json:"status,omitempty"`
+	Id        string          `json:"id"`
+	CreatedAt time.Time       `json:"created_at"`
+	UpdatedAt *time.Time      `json:"updated_at,omitempty"`
 }
 
 // NewDeploymentHistoryResponse instantiates a new DeploymentHistoryResponse object
@@ -121,7 +121,7 @@ func (o *DeploymentHistoryResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -145,7 +145,7 @@ func (o *DeploymentHistoryResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -243,5 +243,3 @@ func (v *NullableDeploymentHistoryResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -112,5 +112,3 @@ func (v *NullableEnvironmentApplicationsSupportedLanguageList) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

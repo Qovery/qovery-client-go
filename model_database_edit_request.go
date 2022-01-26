@@ -18,8 +18,8 @@ import (
 // DatabaseEditRequest struct for DatabaseEditRequest
 type DatabaseEditRequest struct {
 	// name is case-insensitive
-	Name *string `json:"name,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Name          *string `json:"name,omitempty"`
+	Version       *string `json:"version,omitempty"`
 	Accessibility *string `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
@@ -304,5 +304,3 @@ func (v *NullableDatabaseEditRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

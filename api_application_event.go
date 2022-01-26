@@ -29,10 +29,10 @@ var (
 type ApplicationEventApiService service
 
 type ApiListApplicationEventRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationEventApiService
+	ctx           _context.Context
+	ApiService    *ApplicationEventApiService
 	applicationId string
-	startId *string
+	startId       *string
 }
 
 // Starting point after which to return results
@@ -56,8 +56,8 @@ By default it returns the 20 last results. The response is paginated. In order t
 */
 func (a *ApplicationEventApiService) ListApplicationEvent(ctx _context.Context, applicationId string) ApiListApplicationEventRequest {
 	return ApiListApplicationEventRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *ApplicationEventApiService) ListApplicationEvent(ctx _context.Context, 
 //  @return EventPaginatedResponseList
 func (a *ApplicationEventApiService) ListApplicationEventExecute(r ApiListApplicationEventRequest) (EventPaginatedResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  EventPaginatedResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue EventPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEventApiService.ListApplicationEvent")

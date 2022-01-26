@@ -19,7 +19,7 @@ import (
 // MetricRestartResponseResults struct for MetricRestartResponseResults
 type MetricRestartResponseResults struct {
 	Datetime time.Time `json:"datetime"`
-	Message string `json:"message"`
+	Message  string    `json:"message"`
 }
 
 // NewMetricRestartResponseResults instantiates a new MetricRestartResponseResults object
@@ -54,7 +54,7 @@ func (o *MetricRestartResponseResults) GetDatetime() time.Time {
 // GetDatetimeOk returns a tuple with the Datetime field value
 // and a boolean to check if the value has been set.
 func (o *MetricRestartResponseResults) GetDatetimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Datetime, true
@@ -78,7 +78,7 @@ func (o *MetricRestartResponseResults) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 func (o *MetricRestartResponseResults) GetMessageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Message, true
@@ -135,5 +135,3 @@ func (v *NullableMetricRestartResponseResults) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

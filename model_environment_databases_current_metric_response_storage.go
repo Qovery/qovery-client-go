@@ -17,12 +17,12 @@ import (
 
 // EnvironmentDatabasesCurrentMetricResponseStorage struct for EnvironmentDatabasesCurrentMetricResponseStorage
 type EnvironmentDatabasesCurrentMetricResponseStorage struct {
-	RequestedInGb *int32 `json:"requested_in_gb,omitempty"`
-	ConsumedInGb *int32 `json:"consumed_in_gb,omitempty"`
-	ConsumedInPercent *float32 `json:"consumed_in_percent,omitempty"`
+	RequestedInGb             *int32   `json:"requested_in_gb,omitempty"`
+	ConsumedInGb              *int32   `json:"consumed_in_gb,omitempty"`
+	ConsumedInPercent         *float32 `json:"consumed_in_percent,omitempty"`
 	WarningThresholdInPercent *float32 `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent *float32 `json:"alert_threshold_in_percent,omitempty"`
-	Status *string `json:"status,omitempty"`
+	AlertThresholdInPercent   *float32 `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *string  `json:"status,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetricResponseStorage instantiates a new EnvironmentDatabasesCurrentMetricResponseStorage object
@@ -292,5 +292,3 @@ func (v *NullableEnvironmentDatabasesCurrentMetricResponseStorage) UnmarshalJSON
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -18,15 +18,15 @@ import (
 
 // EnvironmentApplicationsCurrentScaleResponse struct for EnvironmentApplicationsCurrentScaleResponse
 type EnvironmentApplicationsCurrentScaleResponse struct {
-	Application *string `json:"application,omitempty"`
-	Min *int32 `json:"min,omitempty"`
-	Max *int32 `json:"max,omitempty"`
-	Running *int32 `json:"running,omitempty"`
-	RunningInPercent *float32 `json:"running_in_percent,omitempty"`
-	WarningThresholdInPercent *float32 `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent *float32 `json:"alert_threshold_in_percent,omitempty"`
-	Status *string `json:"status,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Application               *string    `json:"application,omitempty"`
+	Min                       *int32     `json:"min,omitempty"`
+	Max                       *int32     `json:"max,omitempty"`
+	Running                   *int32     `json:"running,omitempty"`
+	RunningInPercent          *float32   `json:"running_in_percent,omitempty"`
+	WarningThresholdInPercent *float32   `json:"warning_threshold_in_percent,omitempty"`
+	AlertThresholdInPercent   *float32   `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *string    `json:"status,omitempty"`
+	UpdatedAt                 *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewEnvironmentApplicationsCurrentScaleResponse instantiates a new EnvironmentApplicationsCurrentScaleResponse object
@@ -401,5 +401,3 @@ func (v *NullableEnvironmentApplicationsCurrentScaleResponse) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

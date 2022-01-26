@@ -17,9 +17,9 @@ import (
 
 // BudgetResponse struct for BudgetResponse
 type BudgetResponse struct {
-	TotalInCents *int32 `json:"total_in_cents,omitempty"`
-	Total *float32 `json:"total,omitempty"`
-	CurrencyCode *string `json:"currency_code,omitempty"`
+	TotalInCents *int32   `json:"total_in_cents,omitempty"`
+	Total        *float32 `json:"total,omitempty"`
+	CurrencyCode *string  `json:"currency_code,omitempty"`
 }
 
 // NewBudgetResponse instantiates a new BudgetResponse object
@@ -184,5 +184,3 @@ func (v *NullableBudgetResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

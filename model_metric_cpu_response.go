@@ -17,8 +17,8 @@ import (
 
 // MetricCPUResponse struct for MetricCPUResponse
 type MetricCPUResponse struct {
-	InstanceName string `json:"instance_name"`
-	Data []MetricCPUDatapointResponse `json:"data"`
+	InstanceName string                       `json:"instance_name"`
+	Data         []MetricCPUDatapointResponse `json:"data"`
 }
 
 // NewMetricCPUResponse instantiates a new MetricCPUResponse object
@@ -53,7 +53,7 @@ func (o *MetricCPUResponse) GetInstanceName() string {
 // GetInstanceNameOk returns a tuple with the InstanceName field value
 // and a boolean to check if the value has been set.
 func (o *MetricCPUResponse) GetInstanceNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.InstanceName, true
@@ -77,7 +77,7 @@ func (o *MetricCPUResponse) GetData() []MetricCPUDatapointResponse {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 func (o *MetricCPUResponse) GetDataOk() (*[]MetricCPUDatapointResponse, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Data, true
@@ -134,5 +134,3 @@ func (v *NullableMetricCPUResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

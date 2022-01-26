@@ -18,7 +18,7 @@ import (
 // ClusterRoutingTableResponseResults struct for ClusterRoutingTableResponseResults
 type ClusterRoutingTableResponseResults struct {
 	Destination *string `json:"destination,omitempty"`
-	Target *string `json:"target,omitempty"`
+	Target      *string `json:"target,omitempty"`
 	Description *string `json:"description,omitempty"`
 }
 
@@ -184,5 +184,3 @@ func (v *NullableClusterRoutingTableResponseResults) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

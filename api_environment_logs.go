@@ -29,11 +29,10 @@ var (
 type EnvironmentLogsApiService service
 
 type ApiListEnvironmentLogRequest struct {
-	ctx _context.Context
-	ApiService *EnvironmentLogsApiService
+	ctx           _context.Context
+	ApiService    *EnvironmentLogsApiService
 	environmentId string
 }
-
 
 func (r ApiListEnvironmentLogRequest) Execute() (EnvironmentLogResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListEnvironmentLogExecute(r)
@@ -50,8 +49,8 @@ This returns the last 1000 environment deployment logs.
 */
 func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx _context.Context, environmentId string) ApiListEnvironmentLogRequest {
 	return ApiListEnvironmentLogRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -60,10 +59,10 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx _context.Context, env
 //  @return EnvironmentLogResponseList
 func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironmentLogRequest) (EnvironmentLogResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  EnvironmentLogResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue EnvironmentLogResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsApiService.ListEnvironmentLog")

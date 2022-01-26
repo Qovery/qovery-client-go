@@ -19,11 +19,11 @@ import (
 type OrganizationCurrentCostResponse struct {
 	Plan *string `json:"plan,omitempty"`
 	// number of days remaining before the end of the trial period
-	RemainingTrialDay *int32 `json:"remaining_trial_day,omitempty"`
-	RemainingCredits *RemainingCredits `json:"remaining_credits,omitempty"`
-	Cost *Cost `json:"cost,omitempty"`
-	PaidUsage *PaidUsageResponse `json:"paid_usage,omitempty"`
-	CommunityUsage *CommunityUsageResponse `json:"community_usage,omitempty"`
+	RemainingTrialDay *int32                  `json:"remaining_trial_day,omitempty"`
+	RemainingCredits  *RemainingCredits       `json:"remaining_credits,omitempty"`
+	Cost              *Cost                   `json:"cost,omitempty"`
+	PaidUsage         *PaidUsageResponse      `json:"paid_usage,omitempty"`
+	CommunityUsage    *CommunityUsageResponse `json:"community_usage,omitempty"`
 }
 
 // NewOrganizationCurrentCostResponse instantiates a new OrganizationCurrentCostResponse object
@@ -293,5 +293,3 @@ func (v *NullableOrganizationCurrentCostResponse) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

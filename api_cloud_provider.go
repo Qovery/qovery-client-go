@@ -28,10 +28,9 @@ var (
 type CloudProviderApiService service
 
 type ApiListAWSFeaturesRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CloudProviderApiService
 }
-
 
 func (r ApiListAWSFeaturesRequest) Execute() (ClusterFeatureResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListAWSFeaturesExecute(r)
@@ -46,7 +45,7 @@ ListAWSFeatures List AWS features available
 func (a *CloudProviderApiService) ListAWSFeatures(ctx _context.Context) ApiListAWSFeaturesRequest {
 	return ApiListAWSFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -54,10 +53,10 @@ func (a *CloudProviderApiService) ListAWSFeatures(ctx _context.Context) ApiListA
 //  @return ClusterFeatureResponseList
 func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesRequest) (ClusterFeatureResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterFeatureResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterFeatureResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSFeatures")
@@ -126,10 +125,9 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 }
 
 type ApiListAWSRegionsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CloudProviderApiService
 }
-
 
 func (r ApiListAWSRegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListAWSRegionsExecute(r)
@@ -144,7 +142,7 @@ ListAWSRegions List AWS regions
 func (a *CloudProviderApiService) ListAWSRegions(ctx _context.Context) ApiListAWSRegionsRequest {
 	return ApiListAWSRegionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -152,10 +150,10 @@ func (a *CloudProviderApiService) ListAWSRegions(ctx _context.Context) ApiListAW
 //  @return ClusterRegionResponseList
 func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterRegionResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterRegionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSRegions")
@@ -224,10 +222,9 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 }
 
 type ApiListCloudProviderRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CloudProviderApiService
 }
-
 
 func (r ApiListCloudProviderRequest) Execute() (CloudProviderResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListCloudProviderExecute(r)
@@ -242,7 +239,7 @@ ListCloudProvider List Cloud providers available
 func (a *CloudProviderApiService) ListCloudProvider(ctx _context.Context) ApiListCloudProviderRequest {
 	return ApiListCloudProviderRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -250,10 +247,10 @@ func (a *CloudProviderApiService) ListCloudProvider(ctx _context.Context) ApiLis
 //  @return CloudProviderResponseList
 func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProviderRequest) (CloudProviderResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CloudProviderResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue CloudProviderResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListCloudProvider")
@@ -322,10 +319,9 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 }
 
 type ApiListDOFeaturesRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CloudProviderApiService
 }
-
 
 func (r ApiListDOFeaturesRequest) Execute() (ClusterFeatureResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListDOFeaturesExecute(r)
@@ -340,7 +336,7 @@ ListDOFeatures List DO features available
 func (a *CloudProviderApiService) ListDOFeatures(ctx _context.Context) ApiListDOFeaturesRequest {
 	return ApiListDOFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -348,10 +344,10 @@ func (a *CloudProviderApiService) ListDOFeatures(ctx _context.Context) ApiListDO
 //  @return ClusterFeatureResponseList
 func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesRequest) (ClusterFeatureResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterFeatureResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterFeatureResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOFeatures")
@@ -420,10 +416,9 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 }
 
 type ApiListDORegionsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CloudProviderApiService
 }
-
 
 func (r ApiListDORegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListDORegionsExecute(r)
@@ -438,7 +433,7 @@ ListDORegions List DO regions
 func (a *CloudProviderApiService) ListDORegions(ctx _context.Context) ApiListDORegionsRequest {
 	return ApiListDORegionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -446,10 +441,10 @@ func (a *CloudProviderApiService) ListDORegions(ctx _context.Context) ApiListDOR
 //  @return ClusterRegionResponseList
 func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterRegionResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterRegionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDORegions")
@@ -518,10 +513,9 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 }
 
 type ApiListScalewayFeaturesRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CloudProviderApiService
 }
-
 
 func (r ApiListScalewayFeaturesRequest) Execute() (ClusterFeatureResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListScalewayFeaturesExecute(r)
@@ -536,7 +530,7 @@ ListScalewayFeatures List Scaleway features available
 func (a *CloudProviderApiService) ListScalewayFeatures(ctx _context.Context) ApiListScalewayFeaturesRequest {
 	return ApiListScalewayFeaturesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -544,10 +538,10 @@ func (a *CloudProviderApiService) ListScalewayFeatures(ctx _context.Context) Api
 //  @return ClusterFeatureResponseList
 func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayFeaturesRequest) (ClusterFeatureResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterFeatureResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterFeatureResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayFeatures")
@@ -616,10 +610,9 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 }
 
 type ApiListScalewayRegionsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *CloudProviderApiService
 }
-
 
 func (r ApiListScalewayRegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListScalewayRegionsExecute(r)
@@ -634,7 +627,7 @@ ListScalewayRegions List Scaleway regions
 func (a *CloudProviderApiService) ListScalewayRegions(ctx _context.Context) ApiListScalewayRegionsRequest {
 	return ApiListScalewayRegionsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -642,10 +635,10 @@ func (a *CloudProviderApiService) ListScalewayRegions(ctx _context.Context) ApiL
 //  @return ClusterRegionResponseList
 func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterRegionResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ClusterRegionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayRegions")

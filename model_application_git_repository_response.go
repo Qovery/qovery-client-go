@@ -18,9 +18,9 @@ import (
 
 // ApplicationGitRepositoryResponse struct for ApplicationGitRepositoryResponse
 type ApplicationGitRepositoryResponse struct {
-	HasAccess *bool `json:"has_access,omitempty"`
-	Provider *string `json:"provider,omitempty"`
-	Owner *string `json:"owner,omitempty"`
+	HasAccess *bool   `json:"has_access,omitempty"`
+	Provider  *string `json:"provider,omitempty"`
+	Owner     *string `json:"owner,omitempty"`
 	// repository name
 	Name *string `json:"name,omitempty"`
 	// Git commit ID corresponding to the deployed version of the app
@@ -29,7 +29,7 @@ type ApplicationGitRepositoryResponse struct {
 	DeployedCommitDate *time.Time `json:"deployed_commit_date,omitempty"`
 	// Git commit user corresponding to the deployed version of the app
 	DeployedCommitContributor *string `json:"deployed_commit_contributor,omitempty"`
-	DeployedCommitTag *string `json:"deployed_commit_tag,omitempty"`
+	DeployedCommitTag         *string `json:"deployed_commit_tag,omitempty"`
 }
 
 // NewApplicationGitRepositoryResponse instantiates a new ApplicationGitRepositoryResponse object
@@ -369,5 +369,3 @@ func (v *NullableApplicationGitRepositoryResponse) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

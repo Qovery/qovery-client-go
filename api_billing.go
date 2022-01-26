@@ -29,9 +29,9 @@ var (
 type BillingApiService service
 
 type ApiAddCreditCardRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
-	organizationId string
+	ctx               _context.Context
+	ApiService        *BillingApiService
+	organizationId    string
 	creditCardRequest *CreditCardRequest
 }
 
@@ -53,8 +53,8 @@ AddCreditCard Add credit card
 */
 func (a *BillingApiService) AddCreditCard(ctx _context.Context, organizationId string) ApiAddCreditCardRequest {
 	return ApiAddCreditCardRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *BillingApiService) AddCreditCard(ctx _context.Context, organizationId s
 //  @return CreditCardResponse
 func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (CreditCardResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CreditCardResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue CreditCardResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.AddCreditCard")
@@ -138,9 +138,9 @@ func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (Cre
 }
 
 type ApiAddCreditCodeRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
-	organizationId string
+	ctx                           _context.Context
+	ApiService                    *BillingApiService
+	organizationId                string
 	organizationCreditCodeRequest *OrganizationCreditCodeRequest
 }
 
@@ -162,8 +162,8 @@ AddCreditCode Add credit code
 */
 func (a *BillingApiService) AddCreditCode(ctx _context.Context, organizationId string) ApiAddCreditCodeRequest {
 	return ApiAddCreditCodeRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -171,9 +171,9 @@ func (a *BillingApiService) AddCreditCode(ctx _context.Context, organizationId s
 // Execute executes the request
 func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.AddCreditCode")
@@ -236,9 +236,9 @@ func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*_n
 }
 
 type ApiEditOrganizationBillingInfoRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
-	organizationId string
+	ctx                _context.Context
+	ApiService         *BillingApiService
+	organizationId     string
 	billingInfoRequest *BillingInfoRequest
 }
 
@@ -260,8 +260,8 @@ EditOrganizationBillingInfo Edit Organization Billing Info
 */
 func (a *BillingApiService) EditOrganizationBillingInfo(ctx _context.Context, organizationId string) ApiEditOrganizationBillingInfoRequest {
 	return ApiEditOrganizationBillingInfoRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -270,10 +270,10 @@ func (a *BillingApiService) EditOrganizationBillingInfo(ctx _context.Context, or
 //  @return BillingInfoResponse
 func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganizationBillingInfoRequest) (BillingInfoResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  BillingInfoResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue BillingInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.EditOrganizationBillingInfo")
@@ -345,12 +345,11 @@ func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganiza
 }
 
 type ApiGetClusterCurrentCostRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiGetClusterCurrentCostRequest) Execute() (CostRangeResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetClusterCurrentCostExecute(r)
@@ -370,10 +369,10 @@ But Qovery guarantees that the cost of your cluster will not exceed the max rang
 */
 func (a *BillingApiService) GetClusterCurrentCost(ctx _context.Context, organizationId string, clusterId string) ApiGetClusterCurrentCostRequest {
 	return ApiGetClusterCurrentCostRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -381,10 +380,10 @@ func (a *BillingApiService) GetClusterCurrentCost(ctx _context.Context, organiza
 //  @return CostRangeResponse
 func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (CostRangeResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CostRangeResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue CostRangeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetClusterCurrentCost")
@@ -455,11 +454,10 @@ func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentC
 }
 
 type ApiGetOrganizationBillingInfoRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationBillingInfoRequest) Execute() (BillingInfoResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationBillingInfoExecute(r)
@@ -474,8 +472,8 @@ GetOrganizationBillingInfo Get organization billing info
 */
 func (a *BillingApiService) GetOrganizationBillingInfo(ctx _context.Context, organizationId string) ApiGetOrganizationBillingInfoRequest {
 	return ApiGetOrganizationBillingInfoRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -484,10 +482,10 @@ func (a *BillingApiService) GetOrganizationBillingInfo(ctx _context.Context, org
 //  @return BillingInfoResponse
 func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizationBillingInfoRequest) (BillingInfoResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  BillingInfoResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue BillingInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationBillingInfo")
@@ -557,11 +555,10 @@ func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizati
 }
 
 type ApiGetOrganizationBillingStatusRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationBillingStatusRequest) Execute() (BillingStatus, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationBillingStatusExecute(r)
@@ -582,8 +579,8 @@ This endpoint returns a "is_valid" boolean field reflecting the billing status o
 */
 func (a *BillingApiService) GetOrganizationBillingStatus(ctx _context.Context, organizationId string) ApiGetOrganizationBillingStatusRequest {
 	return ApiGetOrganizationBillingStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -592,10 +589,10 @@ func (a *BillingApiService) GetOrganizationBillingStatus(ctx _context.Context, o
 //  @return BillingStatus
 func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganizationBillingStatusRequest) (BillingStatus, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  BillingStatus
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue BillingStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationBillingStatus")
@@ -665,11 +662,10 @@ func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganiza
 }
 
 type ApiGetOrganizationCurrentCostRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationCurrentCostRequest) Execute() (OrganizationCurrentCostResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationCurrentCostExecute(r)
@@ -684,8 +680,8 @@ GetOrganizationCurrentCost Get organization current cost
 */
 func (a *BillingApiService) GetOrganizationCurrentCost(ctx _context.Context, organizationId string) ApiGetOrganizationCurrentCostRequest {
 	return ApiGetOrganizationCurrentCostRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -694,10 +690,10 @@ func (a *BillingApiService) GetOrganizationCurrentCost(ctx _context.Context, org
 //  @return OrganizationCurrentCostResponse
 func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizationCurrentCostRequest) (OrganizationCurrentCostResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  OrganizationCurrentCostResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue OrganizationCurrentCostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationCurrentCost")
@@ -767,12 +763,11 @@ func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizati
 }
 
 type ApiGetOrganizationInvoiceRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
-	invoiceId string
+	invoiceId      string
 }
-
 
 func (r ApiGetOrganizationInvoiceRequest) Execute() (InvoiceResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationInvoiceExecute(r)
@@ -788,10 +783,10 @@ GetOrganizationInvoice Get organization invoice
 */
 func (a *BillingApiService) GetOrganizationInvoice(ctx _context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoiceRequest {
 	return ApiGetOrganizationInvoiceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		invoiceId: invoiceId,
+		invoiceId:      invoiceId,
 	}
 }
 
@@ -799,10 +794,10 @@ func (a *BillingApiService) GetOrganizationInvoice(ctx _context.Context, organiz
 //  @return InvoiceResponse
 func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationInvoiceRequest) (InvoiceResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InvoiceResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue InvoiceResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationInvoice")
@@ -873,12 +868,11 @@ func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationIn
 }
 
 type ApiGetOrganizationInvoicePDFRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
-	invoiceId string
+	invoiceId      string
 }
-
 
 func (r ApiGetOrganizationInvoicePDFRequest) Execute() (LinkResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationInvoicePDFExecute(r)
@@ -896,10 +890,10 @@ This will return URL of the invoice PDF
 */
 func (a *BillingApiService) GetOrganizationInvoicePDF(ctx _context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoicePDFRequest {
 	return ApiGetOrganizationInvoicePDFRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		invoiceId: invoiceId,
+		invoiceId:      invoiceId,
 	}
 }
 
@@ -907,10 +901,10 @@ func (a *BillingApiService) GetOrganizationInvoicePDF(ctx _context.Context, orga
 //  @return LinkResponse
 func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizationInvoicePDFRequest) (LinkResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LinkResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue LinkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationInvoicePDF")
@@ -981,11 +975,10 @@ func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizatio
 }
 
 type ApiListOrganizationCreditCardsRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
 }
-
 
 func (r ApiListOrganizationCreditCardsRequest) Execute() (CreditCardResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListOrganizationCreditCardsExecute(r)
@@ -1000,8 +993,8 @@ ListOrganizationCreditCards List organization credit cards
 */
 func (a *BillingApiService) ListOrganizationCreditCards(ctx _context.Context, organizationId string) ApiListOrganizationCreditCardsRequest {
 	return ApiListOrganizationCreditCardsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -1010,10 +1003,10 @@ func (a *BillingApiService) ListOrganizationCreditCards(ctx _context.Context, or
 //  @return CreditCardResponseList
 func (a *BillingApiService) ListOrganizationCreditCardsExecute(r ApiListOrganizationCreditCardsRequest) (CreditCardResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CreditCardResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue CreditCardResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.ListOrganizationCreditCards")
@@ -1083,11 +1076,10 @@ func (a *BillingApiService) ListOrganizationCreditCardsExecute(r ApiListOrganiza
 }
 
 type ApiListOrganizationInvoiceRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
 }
-
 
 func (r ApiListOrganizationInvoiceRequest) Execute() (InvoiceResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListOrganizationInvoiceExecute(r)
@@ -1102,8 +1094,8 @@ ListOrganizationInvoice List organization invoices
 */
 func (a *BillingApiService) ListOrganizationInvoice(ctx _context.Context, organizationId string) ApiListOrganizationInvoiceRequest {
 	return ApiListOrganizationInvoiceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -1112,10 +1104,10 @@ func (a *BillingApiService) ListOrganizationInvoice(ctx _context.Context, organi
 //  @return InvoiceResponseList
 func (a *BillingApiService) ListOrganizationInvoiceExecute(r ApiListOrganizationInvoiceRequest) (InvoiceResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InvoiceResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue InvoiceResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.ListOrganizationInvoice")
@@ -1185,11 +1177,10 @@ func (a *BillingApiService) ListOrganizationInvoiceExecute(r ApiListOrganization
 }
 
 type ApiOrganizationDownloadAllInvoicesRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
 }
-
 
 func (r ApiOrganizationDownloadAllInvoicesRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.OrganizationDownloadAllInvoicesExecute(r)
@@ -1204,8 +1195,8 @@ OrganizationDownloadAllInvoices Download all invoices
 */
 func (a *BillingApiService) OrganizationDownloadAllInvoices(ctx _context.Context, organizationId string) ApiOrganizationDownloadAllInvoicesRequest {
 	return ApiOrganizationDownloadAllInvoicesRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -1213,9 +1204,9 @@ func (a *BillingApiService) OrganizationDownloadAllInvoices(ctx _context.Context
 // Execute executes the request
 func (a *BillingApiService) OrganizationDownloadAllInvoicesExecute(r ApiOrganizationDownloadAllInvoicesRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.OrganizationDownloadAllInvoices")
@@ -1276,12 +1267,11 @@ func (a *BillingApiService) OrganizationDownloadAllInvoicesExecute(r ApiOrganiza
 }
 
 type ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest struct {
-	ctx _context.Context
-	ApiService *BillingApiService
+	ctx            _context.Context
+	ApiService     *BillingApiService
 	organizationId string
-	creditCardId string
+	creditCardId   string
 }
-
 
 func (r ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.OrganizationOrganizationIdCreditCardCreditCardIdDeleteExecute(r)
@@ -1297,19 +1287,19 @@ OrganizationOrganizationIdCreditCardCreditCardIdDelete Delete credit card
 */
 func (a *BillingApiService) OrganizationOrganizationIdCreditCardCreditCardIdDelete(ctx _context.Context, organizationId string, creditCardId string) ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest {
 	return ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		creditCardId: creditCardId,
+		creditCardId:   creditCardId,
 	}
 }
 
 // Execute executes the request
 func (a *BillingApiService) OrganizationOrganizationIdCreditCardCreditCardIdDeleteExecute(r ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.OrganizationOrganizationIdCreditCardCreditCardIdDelete")

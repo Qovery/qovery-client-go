@@ -17,7 +17,7 @@ import (
 
 // ApplicationNetworkRequest struct for ApplicationNetworkRequest
 type ApplicationNetworkRequest struct {
-	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  
+	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
 	StickySession *bool `json:"sticky-session,omitempty"`
 }
 
@@ -117,5 +117,3 @@ func (v *NullableApplicationNetworkRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

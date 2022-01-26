@@ -18,7 +18,7 @@ import (
 // SecretEditRequest struct for SecretEditRequest
 type SecretEditRequest struct {
 	Value *string `json:"value,omitempty"`
-	Key *string `json:"key,omitempty"`
+	Key   *string `json:"key,omitempty"`
 }
 
 // NewSecretEditRequest instantiates a new SecretEditRequest object
@@ -148,5 +148,3 @@ func (v *NullableSecretEditRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -29,8 +29,8 @@ var (
 type ApplicationActionsApiService service
 
 type ApiDeployApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationActionsApiService
+	ctx           _context.Context
+	ApiService    *ApplicationActionsApiService
 	applicationId string
 	deployRequest *DeployRequest
 }
@@ -55,8 +55,8 @@ You must provide a git commit id
 */
 func (a *ApplicationActionsApiService) DeployApplication(ctx _context.Context, applicationId string) ApiDeployApplicationRequest {
 	return ApiDeployApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -65,10 +65,10 @@ func (a *ApplicationActionsApiService) DeployApplication(ctx _context.Context, a
 //  @return Status
 func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployApplicationRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  Status
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.DeployApplication")
@@ -140,11 +140,10 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 }
 
 type ApiRestartApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationActionsApiService
+	ctx           _context.Context
+	ApiService    *ApplicationActionsApiService
 	applicationId string
 }
-
 
 func (r ApiRestartApplicationRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.RestartApplicationExecute(r)
@@ -159,8 +158,8 @@ RestartApplication Restart application
 */
 func (a *ApplicationActionsApiService) RestartApplication(ctx _context.Context, applicationId string) ApiRestartApplicationRequest {
 	return ApiRestartApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -169,10 +168,10 @@ func (a *ApplicationActionsApiService) RestartApplication(ctx _context.Context, 
 //  @return Status
 func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApplicationRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  Status
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.RestartApplication")
@@ -242,11 +241,10 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 }
 
 type ApiStopApplicationRequest struct {
-	ctx _context.Context
-	ApiService *ApplicationActionsApiService
+	ctx           _context.Context
+	ApiService    *ApplicationActionsApiService
 	applicationId string
 }
-
 
 func (r ApiStopApplicationRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.StopApplicationExecute(r)
@@ -261,8 +259,8 @@ StopApplication Stop application
 */
 func (a *ApplicationActionsApiService) StopApplication(ctx _context.Context, applicationId string) ApiStopApplicationRequest {
 	return ApiStopApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -271,10 +269,10 @@ func (a *ApplicationActionsApiService) StopApplication(ctx _context.Context, app
 //  @return Status
 func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicationRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  Status
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.StopApplication")

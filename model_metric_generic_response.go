@@ -17,8 +17,8 @@ import (
 
 // MetricGenericResponse struct for MetricGenericResponse
 type MetricGenericResponse struct {
-	InstanceName string `json:"instance_name"`
-	Data []MetricGenericDatapointResponse `json:"data"`
+	InstanceName string                           `json:"instance_name"`
+	Data         []MetricGenericDatapointResponse `json:"data"`
 }
 
 // NewMetricGenericResponse instantiates a new MetricGenericResponse object
@@ -53,7 +53,7 @@ func (o *MetricGenericResponse) GetInstanceName() string {
 // GetInstanceNameOk returns a tuple with the InstanceName field value
 // and a boolean to check if the value has been set.
 func (o *MetricGenericResponse) GetInstanceNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.InstanceName, true
@@ -77,7 +77,7 @@ func (o *MetricGenericResponse) GetData() []MetricGenericDatapointResponse {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 func (o *MetricGenericResponse) GetDataOk() (*[]MetricGenericDatapointResponse, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Data, true
@@ -134,5 +134,3 @@ func (v *NullableMetricGenericResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

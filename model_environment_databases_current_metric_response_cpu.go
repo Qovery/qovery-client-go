@@ -17,12 +17,12 @@ import (
 
 // EnvironmentDatabasesCurrentMetricResponseCpu struct for EnvironmentDatabasesCurrentMetricResponseCpu
 type EnvironmentDatabasesCurrentMetricResponseCpu struct {
-	RequestedInFloat *float32 `json:"requested_in_float,omitempty"`
-	ConsumedInNumber *float32 `json:"consumed_in_number,omitempty"`
-	ConsumedInPercent *float32 `json:"consumed_in_percent,omitempty"`
+	RequestedInFloat          *float32 `json:"requested_in_float,omitempty"`
+	ConsumedInNumber          *float32 `json:"consumed_in_number,omitempty"`
+	ConsumedInPercent         *float32 `json:"consumed_in_percent,omitempty"`
 	WarningThresholdInPercent *float32 `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent *float32 `json:"alert_threshold_in_percent,omitempty"`
-	Status *string `json:"status,omitempty"`
+	AlertThresholdInPercent   *float32 `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *string  `json:"status,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetricResponseCpu instantiates a new EnvironmentDatabasesCurrentMetricResponseCpu object
@@ -292,5 +292,3 @@ func (v *NullableEnvironmentDatabasesCurrentMetricResponseCpu) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

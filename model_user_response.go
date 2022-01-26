@@ -18,13 +18,13 @@ import (
 
 // UserResponse struct for UserResponse
 type UserResponse struct {
-	Id *string `json:"id,omitempty"`
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
-	LastName *string `json:"last_name,omitempty"`
-	Email *string `json:"email,omitempty"`
-	ProfilePictureUrl *string `json:"profile_picture_url,omitempty"`
+	Id                *string    `json:"id,omitempty"`
+	CreatedAt         *time.Time `json:"created_at,omitempty"`
+	UpdatedAt         *time.Time `json:"updated_at,omitempty"`
+	FirstName         *string    `json:"first_name,omitempty"`
+	LastName          *string    `json:"last_name,omitempty"`
+	Email             *string    `json:"email,omitempty"`
+	ProfilePictureUrl *string    `json:"profile_picture_url,omitempty"`
 }
 
 // NewUserResponse instantiates a new UserResponse object
@@ -329,5 +329,3 @@ func (v *NullableUserResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -17,7 +17,7 @@ import (
 
 // ClusterFeatureRequestFeatures struct for ClusterFeatureRequestFeatures
 type ClusterFeatureRequestFeatures struct {
-	Id *string `json:"id,omitempty"`
+	Id    *string        `json:"id,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
 
@@ -83,7 +83,7 @@ func (o *ClusterFeatureRequestFeatures) GetValue() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureRequestFeatures) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
@@ -102,6 +102,7 @@ func (o *ClusterFeatureRequestFeatures) HasValue() bool {
 func (o *ClusterFeatureRequestFeatures) SetValue(v string) {
 	o.Value.Set(&v)
 }
+
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ClusterFeatureRequestFeatures) SetValueNil() {
 	o.Value.Set(nil)
@@ -158,5 +159,3 @@ func (v *NullableClusterFeatureRequestFeatures) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -19,11 +19,11 @@ import (
 // CustomDomainResponse struct for CustomDomainResponse
 type CustomDomainResponse struct {
 	// URL provided by Qovery. You must create a CNAME on your DNS provider using that URL
-	ValidationDomain *string `json:"validation_domain,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	ValidationDomain *string    `json:"validation_domain,omitempty"`
+	Status           *string    `json:"status,omitempty"`
+	Id               string     `json:"id"`
+	CreatedAt        time.Time  `json:"created_at"`
+	UpdatedAt        *time.Time `json:"updated_at,omitempty"`
 	// your custom domain
 	Domain string `json:"domain"`
 }
@@ -125,7 +125,7 @@ func (o *CustomDomainResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *CustomDomainResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -149,7 +149,7 @@ func (o *CustomDomainResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *CustomDomainResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -205,7 +205,7 @@ func (o *CustomDomainResponse) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value
 // and a boolean to check if the value has been set.
 func (o *CustomDomainResponse) GetDomainOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Domain, true
@@ -274,5 +274,3 @@ func (v *NullableCustomDomainResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

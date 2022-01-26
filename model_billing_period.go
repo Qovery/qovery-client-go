@@ -19,7 +19,7 @@ import (
 // BillingPeriod struct for BillingPeriod
 type BillingPeriod struct {
 	BillingStartedOn *time.Time `json:"billing_started_on,omitempty"`
-	BillingEndedOn *time.Time `json:"billing_ended_on,omitempty"`
+	BillingEndedOn   *time.Time `json:"billing_ended_on,omitempty"`
 }
 
 // NewBillingPeriod instantiates a new BillingPeriod object
@@ -149,5 +149,3 @@ func (v *NullableBillingPeriod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

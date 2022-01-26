@@ -29,8 +29,8 @@ var (
 type OrganizationMainCallsApiService service
 
 type ApiCreateOrganizationRequest struct {
-	ctx _context.Context
-	ApiService *OrganizationMainCallsApiService
+	ctx                 _context.Context
+	ApiService          *OrganizationMainCallsApiService
 	organizationRequest *OrganizationRequest
 }
 
@@ -52,7 +52,7 @@ CreateOrganization Create an organization
 func (a *OrganizationMainCallsApiService) CreateOrganization(ctx _context.Context) ApiCreateOrganizationRequest {
 	return ApiCreateOrganizationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -60,10 +60,10 @@ func (a *OrganizationMainCallsApiService) CreateOrganization(ctx _context.Contex
 //  @return OrganizationResponse
 func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateOrganizationRequest) (OrganizationResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  OrganizationResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue OrganizationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.CreateOrganization")
@@ -134,11 +134,10 @@ func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateO
 }
 
 type ApiDeleteOrganizationRequest struct {
-	ctx _context.Context
-	ApiService *OrganizationMainCallsApiService
+	ctx            _context.Context
+	ApiService     *OrganizationMainCallsApiService
 	organizationId string
 }
-
 
 func (r ApiDeleteOrganizationRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteOrganizationExecute(r)
@@ -155,8 +154,8 @@ To delete an organization you must have the admin permission
 */
 func (a *OrganizationMainCallsApiService) DeleteOrganization(ctx _context.Context, organizationId string) ApiDeleteOrganizationRequest {
 	return ApiDeleteOrganizationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -164,9 +163,9 @@ func (a *OrganizationMainCallsApiService) DeleteOrganization(ctx _context.Contex
 // Execute executes the request
 func (a *OrganizationMainCallsApiService) DeleteOrganizationExecute(r ApiDeleteOrganizationRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.DeleteOrganization")
@@ -227,9 +226,9 @@ func (a *OrganizationMainCallsApiService) DeleteOrganizationExecute(r ApiDeleteO
 }
 
 type ApiEditOrganizationRequest struct {
-	ctx _context.Context
-	ApiService *OrganizationMainCallsApiService
-	organizationId string
+	ctx                     _context.Context
+	ApiService              *OrganizationMainCallsApiService
+	organizationId          string
 	organizationEditRequest *OrganizationEditRequest
 }
 
@@ -253,8 +252,8 @@ To edit an organization you must have the admin permission
 */
 func (a *OrganizationMainCallsApiService) EditOrganization(ctx _context.Context, organizationId string) ApiEditOrganizationRequest {
 	return ApiEditOrganizationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -263,10 +262,10 @@ func (a *OrganizationMainCallsApiService) EditOrganization(ctx _context.Context,
 //  @return OrganizationResponse
 func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrganizationRequest) (OrganizationResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  OrganizationResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue OrganizationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.EditOrganization")
@@ -338,11 +337,10 @@ func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrgan
 }
 
 type ApiGetOrganizationRequest struct {
-	ctx _context.Context
-	ApiService *OrganizationMainCallsApiService
+	ctx            _context.Context
+	ApiService     *OrganizationMainCallsApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationRequest) Execute() (OrganizationResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationExecute(r)
@@ -357,8 +355,8 @@ GetOrganization Get organization by ID
 */
 func (a *OrganizationMainCallsApiService) GetOrganization(ctx _context.Context, organizationId string) ApiGetOrganizationRequest {
 	return ApiGetOrganizationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -367,10 +365,10 @@ func (a *OrganizationMainCallsApiService) GetOrganization(ctx _context.Context, 
 //  @return OrganizationResponse
 func (a *OrganizationMainCallsApiService) GetOrganizationExecute(r ApiGetOrganizationRequest) (OrganizationResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  OrganizationResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue OrganizationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.GetOrganization")
@@ -440,10 +438,9 @@ func (a *OrganizationMainCallsApiService) GetOrganizationExecute(r ApiGetOrganiz
 }
 
 type ApiListOrganizationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *OrganizationMainCallsApiService
 }
-
 
 func (r ApiListOrganizationRequest) Execute() (OrganizationResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListOrganizationExecute(r)
@@ -458,7 +455,7 @@ ListOrganization List user organizations
 func (a *OrganizationMainCallsApiService) ListOrganization(ctx _context.Context) ApiListOrganizationRequest {
 	return ApiListOrganizationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -466,10 +463,10 @@ func (a *OrganizationMainCallsApiService) ListOrganization(ctx _context.Context)
 //  @return OrganizationResponseList
 func (a *OrganizationMainCallsApiService) ListOrganizationExecute(r ApiListOrganizationRequest) (OrganizationResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  OrganizationResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue OrganizationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.ListOrganization")

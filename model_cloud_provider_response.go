@@ -17,10 +17,10 @@ import (
 
 // CloudProviderResponse struct for CloudProviderResponse
 type CloudProviderResponse struct {
-	ShortName *string `json:"short_name,omitempty"`
-	Name *string `json:"name,omitempty"`
-	LogoUrl *string `json:"logo_url,omitempty"`
-	Regions *[]ClusterRegionResponse `json:"regions,omitempty"`
+	ShortName *string                  `json:"short_name,omitempty"`
+	Name      *string                  `json:"name,omitempty"`
+	LogoUrl   *string                  `json:"logo_url,omitempty"`
+	Regions   *[]ClusterRegionResponse `json:"regions,omitempty"`
 }
 
 // NewCloudProviderResponse instantiates a new CloudProviderResponse object
@@ -220,5 +220,3 @@ func (v *NullableCloudProviderResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

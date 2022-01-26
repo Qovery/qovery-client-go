@@ -17,9 +17,9 @@ import (
 
 // DoCredentialsRequest struct for DoCredentialsRequest
 type DoCredentialsRequest struct {
-	Name string `json:"name"`
-	Token *string `json:"token,omitempty"`
-	SpacesAccessId *string `json:"spaces_access_id,omitempty"`
+	Name            string  `json:"name"`
+	Token           *string `json:"token,omitempty"`
+	SpacesAccessId  *string `json:"spaces_access_id,omitempty"`
 	SpacesSecretKey *string `json:"spaces_secret_key,omitempty"`
 }
 
@@ -54,7 +54,7 @@ func (o *DoCredentialsRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DoCredentialsRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -213,5 +213,3 @@ func (v *NullableDoCredentialsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

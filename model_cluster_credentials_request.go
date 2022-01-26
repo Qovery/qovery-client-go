@@ -17,8 +17,8 @@ import (
 
 // ClusterCredentialsRequest struct for ClusterCredentialsRequest
 type ClusterCredentialsRequest struct {
-	Name string `json:"name"`
-	AccessKeyId *string `json:"access_key_id,omitempty"`
+	Name            string  `json:"name"`
+	AccessKeyId     *string `json:"access_key_id,omitempty"`
 	SecretAccessKey *string `json:"secret_access_key,omitempty"`
 }
 
@@ -53,7 +53,7 @@ func (o *ClusterCredentialsRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ClusterCredentialsRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -177,5 +177,3 @@ func (v *NullableClusterCredentialsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

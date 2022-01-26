@@ -18,9 +18,9 @@ import (
 // EnvironmentRequest struct for EnvironmentRequest
 type EnvironmentRequest struct {
 	// name is case insensitive
-	Name string `json:"name"`
+	Name    string  `json:"name"`
 	Cluster *string `json:"cluster,omitempty"`
-	Mode *string `json:"mode,omitempty"`
+	Mode    *string `json:"mode,omitempty"`
 }
 
 // NewEnvironmentRequest instantiates a new EnvironmentRequest object
@@ -54,7 +54,7 @@ func (o *EnvironmentRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -178,5 +178,3 @@ func (v *NullableEnvironmentRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

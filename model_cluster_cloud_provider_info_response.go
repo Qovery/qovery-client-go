@@ -17,9 +17,9 @@ import (
 
 // ClusterCloudProviderInfoResponse struct for ClusterCloudProviderInfoResponse
 type ClusterCloudProviderInfoResponse struct {
-	CloudProvider *string `json:"cloud_provider,omitempty"`
-	Credentials *ClusterCloudProviderInfoRequestCredentials `json:"credentials,omitempty"`
-	Region *string `json:"region,omitempty"`
+	CloudProvider *string                                     `json:"cloud_provider,omitempty"`
+	Credentials   *ClusterCloudProviderInfoRequestCredentials `json:"credentials,omitempty"`
+	Region        *string                                     `json:"region,omitempty"`
 }
 
 // NewClusterCloudProviderInfoResponse instantiates a new ClusterCloudProviderInfoResponse object
@@ -184,5 +184,3 @@ func (v *NullableClusterCloudProviderInfoResponse) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

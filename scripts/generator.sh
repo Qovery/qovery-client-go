@@ -1,4 +1,3 @@
-
 #!/bin/sh
 docker run --rm \
     -v $PWD:/local openapitools/openapi-generator-cli:v5.3.1 generate \
@@ -7,3 +6,4 @@ docker run --rm \
     -o /local \
     --package-name qovery \
     --skip-validate-spec
+gofmt -s -w .

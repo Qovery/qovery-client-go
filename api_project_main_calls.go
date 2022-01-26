@@ -29,11 +29,10 @@ var (
 type ProjectMainCallsApiService service
 
 type ApiDeleteProjectRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProjectMainCallsApiService
-	projectId string
+	projectId  string
 }
-
 
 func (r ApiDeleteProjectRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteProjectExecute(r)
@@ -51,17 +50,17 @@ To delete a project you must have the admin permission
 func (a *ProjectMainCallsApiService) DeleteProject(ctx _context.Context, projectId string) ApiDeleteProjectRequest {
 	return ApiDeleteProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.DeleteProject")
@@ -122,9 +121,9 @@ func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequ
 }
 
 type ApiEditProjectRequest struct {
-	ctx _context.Context
-	ApiService *ProjectMainCallsApiService
-	projectId string
+	ctx            _context.Context
+	ApiService     *ProjectMainCallsApiService
+	projectId      string
 	projectRequest *ProjectRequest
 }
 
@@ -149,8 +148,8 @@ To edit a project you must have the admin permission
 func (a *ProjectMainCallsApiService) EditProject(ctx _context.Context, projectId string) ApiEditProjectRequest {
 	return ApiEditProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -158,10 +157,10 @@ func (a *ProjectMainCallsApiService) EditProject(ctx _context.Context, projectId
 //  @return ProjectResponse
 func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest) (ProjectResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectResponse
+		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.EditProject")
@@ -233,11 +232,10 @@ func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest)
 }
 
 type ApiGetProjectRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ProjectMainCallsApiService
-	projectId string
+	projectId  string
 }
-
 
 func (r ApiGetProjectRequest) Execute() (ProjectResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetProjectExecute(r)
@@ -253,8 +251,8 @@ GetProject Get project by ID
 func (a *ProjectMainCallsApiService) GetProject(ctx _context.Context, projectId string) ApiGetProjectRequest {
 	return ApiGetProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -262,10 +260,10 @@ func (a *ProjectMainCallsApiService) GetProject(ctx _context.Context, projectId 
 //  @return ProjectResponse
 func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (ProjectResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.GetProject")

@@ -17,7 +17,7 @@ import (
 
 // CredentialsRequest struct for CredentialsRequest
 type CredentialsRequest struct {
-	Login string `json:"login"`
+	Login    string `json:"login"`
 	Password string `json:"password"`
 }
 
@@ -53,7 +53,7 @@ func (o *CredentialsRequest) GetLogin() string {
 // GetLoginOk returns a tuple with the Login field value
 // and a boolean to check if the value has been set.
 func (o *CredentialsRequest) GetLoginOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Login, true
@@ -77,7 +77,7 @@ func (o *CredentialsRequest) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value
 // and a boolean to check if the value has been set.
 func (o *CredentialsRequest) GetPasswordOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Password, true
@@ -134,5 +134,3 @@ func (v *NullableCredentialsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

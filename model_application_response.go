@@ -18,7 +18,7 @@ import (
 
 // ApplicationResponse struct for ApplicationResponse
 type ApplicationResponse struct {
-	Environment *ReferenceObject `json:"environment,omitempty"`
+	Environment   *ReferenceObject                  `json:"environment,omitempty"`
 	GitRepository *ApplicationGitRepositoryResponse `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *float32 `json:"maximum_cpu,omitempty"`
@@ -28,7 +28,7 @@ type ApplicationResponse struct {
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
 	Description *string `json:"description,omitempty"`
-	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path` 
+	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath *string `json:"dockerfile_path,omitempty"`
@@ -38,18 +38,18 @@ type ApplicationResponse struct {
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *float32 `json:"memory,omitempty"`
-	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running. 
+	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
-	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
-	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
-	Healthcheck *Healthcheck `json:"healthcheck,omitempty"`
-	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  
-	EnvPreview *bool `json:"env_preview,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Storage *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
-	Ports *[]ApplicationPortResponsePorts `json:"ports,omitempty"`
+	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
+	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
+	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
+	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
+	EnvPreview *bool                                `json:"env_preview,omitempty"`
+	Id         string                               `json:"id"`
+	CreatedAt  time.Time                            `json:"created_at"`
+	UpdatedAt  *time.Time                           `json:"updated_at,omitempty"`
+	Storage    *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports      *[]ApplicationPortResponsePorts      `json:"ports,omitempty"`
 }
 
 // NewApplicationResponse instantiates a new ApplicationResponse object
@@ -580,7 +580,7 @@ func (o *ApplicationResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -604,7 +604,7 @@ func (o *ApplicationResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -811,5 +811,3 @@ func (v *NullableApplicationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

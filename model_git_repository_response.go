@@ -17,11 +17,11 @@ import (
 
 // GitRepositoryResponse struct for GitRepositoryResponse
 type GitRepositoryResponse struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	Url string `json:"url"`
+	Id            string  `json:"id"`
+	Name          string  `json:"name"`
+	Url           string  `json:"url"`
 	DefaultBranch *string `json:"default_branch,omitempty"`
-	IsPrivate *bool `json:"is_private,omitempty"`
+	IsPrivate     *bool   `json:"is_private,omitempty"`
 }
 
 // NewGitRepositoryResponse instantiates a new GitRepositoryResponse object
@@ -57,7 +57,7 @@ func (o *GitRepositoryResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *GitRepositoryResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -81,7 +81,7 @@ func (o *GitRepositoryResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *GitRepositoryResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -105,7 +105,7 @@ func (o *GitRepositoryResponse) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *GitRepositoryResponse) GetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Url, true
@@ -235,5 +235,3 @@ func (v *NullableGitRepositoryResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

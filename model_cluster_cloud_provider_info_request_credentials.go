@@ -17,7 +17,7 @@ import (
 
 // ClusterCloudProviderInfoRequestCredentials struct for ClusterCloudProviderInfoRequestCredentials
 type ClusterCloudProviderInfoRequestCredentials struct {
-	Id *string `json:"id,omitempty"`
+	Id   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -148,5 +148,3 @@ func (v *NullableClusterCloudProviderInfoRequestCredentials) UnmarshalJSON(src [
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

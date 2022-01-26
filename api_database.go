@@ -29,9 +29,9 @@ var (
 type DatabaseApiService service
 
 type ApiCreateLogicalDatabaseOnDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *DatabaseApiService
-	databaseId string
+	ctx                    _context.Context
+	ApiService             *DatabaseApiService
+	databaseId             string
 	logicalDatabaseRequest *LogicalDatabaseRequest
 }
 
@@ -56,7 +56,7 @@ If you don't specify credentials, Qovery will autogenerate them.
 func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabase(ctx _context.Context, databaseId string) ApiCreateLogicalDatabaseOnDatabaseRequest {
 	return ApiCreateLogicalDatabaseOnDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -65,10 +65,10 @@ func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabase(ctx _context.Contex
 //  @return LogicalDatabaseResponse
 func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateLogicalDatabaseOnDatabaseRequest) (LogicalDatabaseResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LogicalDatabaseResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue LogicalDatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApiService.CreateLogicalDatabaseOnDatabase")

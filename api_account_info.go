@@ -28,10 +28,9 @@ var (
 type AccountInfoApiService service
 
 type ApiGetAccountInformationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *AccountInfoApiService
 }
-
 
 func (r ApiGetAccountInformationRequest) Execute() (AccountInfoResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetAccountInformationExecute(r)
@@ -46,7 +45,7 @@ GetAccountInformation Get Account information
 func (a *AccountInfoApiService) GetAccountInformation(ctx _context.Context) ApiGetAccountInformationRequest {
 	return ApiGetAccountInformationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -54,10 +53,10 @@ func (a *AccountInfoApiService) GetAccountInformation(ctx _context.Context) ApiG
 //  @return AccountInfoResponse
 func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInformationRequest) (AccountInfoResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  AccountInfoResponse
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue AccountInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountInfoApiService.GetAccountInformation")

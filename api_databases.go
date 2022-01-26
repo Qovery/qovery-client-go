@@ -29,9 +29,9 @@ var (
 type DatabasesApiService service
 
 type ApiCreateDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *DatabasesApiService
-	environmentId string
+	ctx             _context.Context
+	ApiService      *DatabasesApiService
+	environmentId   string
 	databaseRequest *DatabaseRequest
 }
 
@@ -53,8 +53,8 @@ CreateDatabase Create a database
 */
 func (a *DatabasesApiService) CreateDatabase(ctx _context.Context, environmentId string) ApiCreateDatabaseRequest {
 	return ApiCreateDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *DatabasesApiService) CreateDatabase(ctx _context.Context, environmentId
 //  @return DatabaseResponse
 func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (DatabaseResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DatabaseResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue DatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.CreateDatabase")
@@ -138,11 +138,10 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 }
 
 type ApiGetEnvironmentDatabaseStatusRequest struct {
-	ctx _context.Context
-	ApiService *DatabasesApiService
+	ctx           _context.Context
+	ApiService    *DatabasesApiService
 	environmentId string
 }
-
 
 func (r ApiGetEnvironmentDatabaseStatusRequest) Execute() (ReferenceObjectStatusResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetEnvironmentDatabaseStatusExecute(r)
@@ -159,8 +158,8 @@ Returns a list of databases with only their id and status.
 */
 func (a *DatabasesApiService) GetEnvironmentDatabaseStatus(ctx _context.Context, environmentId string) ApiGetEnvironmentDatabaseStatusRequest {
 	return ApiGetEnvironmentDatabaseStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -169,10 +168,10 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatus(ctx _context.Context,
 //  @return ReferenceObjectStatusResponseList
 func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnvironmentDatabaseStatusRequest) (ReferenceObjectStatusResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ReferenceObjectStatusResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ReferenceObjectStatusResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.GetEnvironmentDatabaseStatus")
@@ -242,11 +241,10 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 }
 
 type ApiListDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *DatabasesApiService
+	ctx           _context.Context
+	ApiService    *DatabasesApiService
 	environmentId string
 }
-
 
 func (r ApiListDatabaseRequest) Execute() (DatabaseResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListDatabaseExecute(r)
@@ -261,8 +259,8 @@ ListDatabase List environment databases
 */
 func (a *DatabasesApiService) ListDatabase(ctx _context.Context, environmentId string) ApiListDatabaseRequest {
 	return ApiListDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -271,10 +269,10 @@ func (a *DatabasesApiService) ListDatabase(ctx _context.Context, environmentId s
 //  @return DatabaseResponseList
 func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (DatabaseResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DatabaseResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue DatabaseResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListDatabase")
@@ -344,11 +342,10 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (Dat
 }
 
 type ApiListEnvironmentDatabaseConfigRequest struct {
-	ctx _context.Context
-	ApiService *DatabasesApiService
+	ctx           _context.Context
+	ApiService    *DatabasesApiService
 	environmentId string
 }
-
 
 func (r ApiListEnvironmentDatabaseConfigRequest) Execute() (DatabaseConfigurationResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListEnvironmentDatabaseConfigExecute(r)
@@ -363,8 +360,8 @@ ListEnvironmentDatabaseConfig List eligible database types, versions and modes f
 */
 func (a *DatabasesApiService) ListEnvironmentDatabaseConfig(ctx _context.Context, environmentId string) ApiListEnvironmentDatabaseConfigRequest {
 	return ApiListEnvironmentDatabaseConfigRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -373,10 +370,10 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfig(ctx _context.Context
 //  @return DatabaseConfigurationResponseList
 func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvironmentDatabaseConfigRequest) (DatabaseConfigurationResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DatabaseConfigurationResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue DatabaseConfigurationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListEnvironmentDatabaseConfig")
@@ -446,11 +443,10 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 }
 
 type ApiListEnvironmentDatabaseCurrentMetricRequest struct {
-	ctx _context.Context
-	ApiService *DatabasesApiService
+	ctx           _context.Context
+	ApiService    *DatabasesApiService
 	environmentId string
 }
-
 
 func (r ApiListEnvironmentDatabaseCurrentMetricRequest) Execute() (EnvironmentDatabasesCurrentMetricResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListEnvironmentDatabaseCurrentMetricExecute(r)
@@ -465,8 +461,8 @@ ListEnvironmentDatabaseCurrentMetric List current metric consumption for each da
 */
 func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetric(ctx _context.Context, environmentId string) ApiListEnvironmentDatabaseCurrentMetricRequest {
 	return ApiListEnvironmentDatabaseCurrentMetricRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -475,10 +471,10 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetric(ctx _context.
 //  @return EnvironmentDatabasesCurrentMetricResponseList
 func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiListEnvironmentDatabaseCurrentMetricRequest) (EnvironmentDatabasesCurrentMetricResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  EnvironmentDatabasesCurrentMetricResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue EnvironmentDatabasesCurrentMetricResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListEnvironmentDatabaseCurrentMetric")

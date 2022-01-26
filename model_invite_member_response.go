@@ -18,15 +18,15 @@ import (
 
 // InviteMemberResponse struct for InviteMemberResponse
 type InviteMemberResponse struct {
-	Email string `json:"email"`
-	Role string `json:"role"`
-	InvitationLink string `json:"invitation_link"`
-	InvitationStatus string `json:"invitation_status"`
-	Inviter string `json:"inviter"`
-	LogoUrl *string `json:"logo_url,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Email            string     `json:"email"`
+	Role             string     `json:"role"`
+	InvitationLink   string     `json:"invitation_link"`
+	InvitationStatus string     `json:"invitation_status"`
+	Inviter          string     `json:"inviter"`
+	LogoUrl          *string    `json:"logo_url,omitempty"`
+	Id               string     `json:"id"`
+	CreatedAt        time.Time  `json:"created_at"`
+	UpdatedAt        *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewInviteMemberResponse instantiates a new InviteMemberResponse object
@@ -61,7 +61,7 @@ func (o *InviteMemberResponse) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *InviteMemberResponse) GetEmailOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Email, true
@@ -85,7 +85,7 @@ func (o *InviteMemberResponse) GetRole() string {
 // GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
 func (o *InviteMemberResponse) GetRoleOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Role, true
@@ -109,7 +109,7 @@ func (o *InviteMemberResponse) GetInvitationLink() string {
 // GetInvitationLinkOk returns a tuple with the InvitationLink field value
 // and a boolean to check if the value has been set.
 func (o *InviteMemberResponse) GetInvitationLinkOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.InvitationLink, true
@@ -133,7 +133,7 @@ func (o *InviteMemberResponse) GetInvitationStatus() string {
 // GetInvitationStatusOk returns a tuple with the InvitationStatus field value
 // and a boolean to check if the value has been set.
 func (o *InviteMemberResponse) GetInvitationStatusOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.InvitationStatus, true
@@ -157,7 +157,7 @@ func (o *InviteMemberResponse) GetInviter() string {
 // GetInviterOk returns a tuple with the Inviter field value
 // and a boolean to check if the value has been set.
 func (o *InviteMemberResponse) GetInviterOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Inviter, true
@@ -213,7 +213,7 @@ func (o *InviteMemberResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *InviteMemberResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -237,7 +237,7 @@ func (o *InviteMemberResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *InviteMemberResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -347,5 +347,3 @@ func (v *NullableInviteMemberResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

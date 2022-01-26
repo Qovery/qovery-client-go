@@ -17,9 +17,9 @@ import (
 
 // RemainingCredits struct for RemainingCredits
 type RemainingCredits struct {
-	TotalInCents int32 `json:"total_in_cents"`
-	Total float32 `json:"total"`
-	CurrencyCode string `json:"currency_code"`
+	TotalInCents int32   `json:"total_in_cents"`
+	Total        float32 `json:"total"`
+	CurrencyCode string  `json:"currency_code"`
 }
 
 // NewRemainingCredits instantiates a new RemainingCredits object
@@ -55,7 +55,7 @@ func (o *RemainingCredits) GetTotalInCents() int32 {
 // GetTotalInCentsOk returns a tuple with the TotalInCents field value
 // and a boolean to check if the value has been set.
 func (o *RemainingCredits) GetTotalInCentsOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.TotalInCents, true
@@ -79,7 +79,7 @@ func (o *RemainingCredits) GetTotal() float32 {
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
 func (o *RemainingCredits) GetTotalOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Total, true
@@ -103,7 +103,7 @@ func (o *RemainingCredits) GetCurrencyCode() string {
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value
 // and a boolean to check if the value has been set.
 func (o *RemainingCredits) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CurrencyCode, true
@@ -163,5 +163,3 @@ func (v *NullableRemainingCredits) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

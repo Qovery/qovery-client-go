@@ -29,11 +29,10 @@ var (
 type MembersApiService service
 
 type ApiDeleteInviteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            _context.Context
+	ApiService     *MembersApiService
 	organizationId string
 }
-
 
 func (r ApiDeleteInviteMemberRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteInviteMemberExecute(r)
@@ -48,8 +47,8 @@ DeleteInviteMember Remove an invited member
 */
 func (a *MembersApiService) DeleteInviteMember(ctx _context.Context, organizationId string) ApiDeleteInviteMemberRequest {
 	return ApiDeleteInviteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -57,9 +56,9 @@ func (a *MembersApiService) DeleteInviteMember(ctx _context.Context, organizatio
 // Execute executes the request
 func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.DeleteInviteMember")
@@ -120,12 +119,11 @@ func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberReq
 }
 
 type ApiDeleteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            _context.Context
+	ApiService     *MembersApiService
 	organizationId string
-	userId string
+	userId         string
 }
-
 
 func (r ApiDeleteMemberRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteMemberExecute(r)
@@ -141,19 +139,19 @@ DeleteMember Remove a member
 */
 func (a *MembersApiService) DeleteMember(ctx _context.Context, organizationId string, userId string) ApiDeleteMemberRequest {
 	return ApiDeleteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		userId: userId,
+		userId:         userId,
 	}
 }
 
 // Execute executes the request
 func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.DeleteMember")
@@ -215,11 +213,10 @@ func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_net
 }
 
 type ApiGetOrganizationInvitedMembersRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            _context.Context
+	ApiService     *MembersApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationInvitedMembersRequest) Execute() (InviteMemberResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationInvitedMembersExecute(r)
@@ -234,8 +231,8 @@ GetOrganizationInvitedMembers Get invited members
 */
 func (a *MembersApiService) GetOrganizationInvitedMembers(ctx _context.Context, organizationId string) ApiGetOrganizationInvitedMembersRequest {
 	return ApiGetOrganizationInvitedMembersRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -244,10 +241,10 @@ func (a *MembersApiService) GetOrganizationInvitedMembers(ctx _context.Context, 
 //  @return InviteMemberResponseList
 func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganizationInvitedMembersRequest) (InviteMemberResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InviteMemberResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue InviteMemberResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.GetOrganizationInvitedMembers")
@@ -317,11 +314,10 @@ func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganiz
 }
 
 type ApiGetOrganizationMembersRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            _context.Context
+	ApiService     *MembersApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationMembersRequest) Execute() (MemberResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationMembersExecute(r)
@@ -336,8 +332,8 @@ GetOrganizationMembers Get organization members
 */
 func (a *MembersApiService) GetOrganizationMembers(ctx _context.Context, organizationId string) ApiGetOrganizationMembersRequest {
 	return ApiGetOrganizationMembersRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -346,10 +342,10 @@ func (a *MembersApiService) GetOrganizationMembers(ctx _context.Context, organiz
 //  @return MemberResponseList
 func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMembersRequest) (MemberResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  MemberResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue MemberResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.GetOrganizationMembers")
@@ -419,12 +415,11 @@ func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMe
 }
 
 type ApiPostAcceptInviteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            _context.Context
+	ApiService     *MembersApiService
 	organizationId string
-	inviteId string
+	inviteId       string
 }
-
 
 func (r ApiPostAcceptInviteMemberRequest) Execute() (InviteMemberResponse, *_nethttp.Response, error) {
 	return r.ApiService.PostAcceptInviteMemberExecute(r)
@@ -440,10 +435,10 @@ PostAcceptInviteMember Accept Invite in the organization
 */
 func (a *MembersApiService) PostAcceptInviteMember(ctx _context.Context, organizationId string, inviteId string) ApiPostAcceptInviteMemberRequest {
 	return ApiPostAcceptInviteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		inviteId: inviteId,
+		inviteId:       inviteId,
 	}
 }
 
@@ -451,10 +446,10 @@ func (a *MembersApiService) PostAcceptInviteMember(ctx _context.Context, organiz
 //  @return InviteMemberResponse
 func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteMemberRequest) (InviteMemberResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InviteMemberResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue InviteMemberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostAcceptInviteMember")
@@ -525,9 +520,9 @@ func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteM
 }
 
 type ApiPostInviteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
-	organizationId string
+	ctx                 _context.Context
+	ApiService          *MembersApiService
+	organizationId      string
 	inviteMemberRequest *InviteMemberRequest
 }
 
@@ -549,8 +544,8 @@ PostInviteMember Invite someone in the organization
 */
 func (a *MembersApiService) PostInviteMember(ctx _context.Context, organizationId string) ApiPostInviteMemberRequest {
 	return ApiPostInviteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -559,10 +554,10 @@ func (a *MembersApiService) PostInviteMember(ctx _context.Context, organizationI
 //  @return InviteMemberResponse
 func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest) (InviteMemberResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InviteMemberResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue InviteMemberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostInviteMember")
@@ -634,9 +629,9 @@ func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest
 }
 
 type ApiPostOrganizationTransferOwnershipRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
-	organizationId string
+	ctx                      _context.Context
+	ApiService               *MembersApiService
+	organizationId           string
 	transferOwnershipRequest *TransferOwnershipRequest
 }
 
@@ -658,8 +653,8 @@ PostOrganizationTransferOwnership Transfer organization ownership to another use
 */
 func (a *MembersApiService) PostOrganizationTransferOwnership(ctx _context.Context, organizationId string) ApiPostOrganizationTransferOwnershipRequest {
 	return ApiPostOrganizationTransferOwnershipRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -667,9 +662,9 @@ func (a *MembersApiService) PostOrganizationTransferOwnership(ctx _context.Conte
 // Execute executes the request
 func (a *MembersApiService) PostOrganizationTransferOwnershipExecute(r ApiPostOrganizationTransferOwnershipRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = _nethttp.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostOrganizationTransferOwnership")

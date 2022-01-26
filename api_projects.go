@@ -29,8 +29,8 @@ var (
 type ProjectsApiService service
 
 type ApiCreateProjectRequest struct {
-	ctx _context.Context
-	ApiService *ProjectsApiService
+	ctx            _context.Context
+	ApiService     *ProjectsApiService
 	organizationId string
 	projectRequest *ProjectRequest
 }
@@ -53,8 +53,8 @@ CreateProject Create a project
 */
 func (a *ProjectsApiService) CreateProject(ctx _context.Context, organizationId string) ApiCreateProjectRequest {
 	return ApiCreateProjectRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *ProjectsApiService) CreateProject(ctx _context.Context, organizationId 
 //  @return ProjectResponse
 func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (ProjectResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectResponse
+		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.CreateProject")
@@ -138,11 +138,10 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (Pr
 }
 
 type ApiGetOrganizationProjectStatsRequest struct {
-	ctx _context.Context
-	ApiService *ProjectsApiService
+	ctx            _context.Context
+	ApiService     *ProjectsApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationProjectStatsRequest) Execute() (ProjectStatsResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationProjectStatsExecute(r)
@@ -159,8 +158,8 @@ Returns a list of project ids, and for each its total numberof services and envi
 */
 func (a *ProjectsApiService) GetOrganizationProjectStats(ctx _context.Context, organizationId string) ApiGetOrganizationProjectStatsRequest {
 	return ApiGetOrganizationProjectStatsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -169,10 +168,10 @@ func (a *ProjectsApiService) GetOrganizationProjectStats(ctx _context.Context, o
 //  @return ProjectStatsResponseList
 func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganizationProjectStatsRequest) (ProjectStatsResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectStatsResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectStatsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetOrganizationProjectStats")
@@ -242,11 +241,10 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 }
 
 type ApiListProjectRequest struct {
-	ctx _context.Context
-	ApiService *ProjectsApiService
+	ctx            _context.Context
+	ApiService     *ProjectsApiService
 	organizationId string
 }
-
 
 func (r ApiListProjectRequest) Execute() (ProjectResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListProjectExecute(r)
@@ -261,8 +259,8 @@ ListProject List projects
 */
 func (a *ProjectsApiService) ListProject(ctx _context.Context, organizationId string) ApiListProjectRequest {
 	return ApiListProjectRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -271,10 +269,10 @@ func (a *ProjectsApiService) ListProject(ctx _context.Context, organizationId st
 //  @return ProjectResponseList
 func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (ProjectResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ProjectResponseList
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue ProjectResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProject")

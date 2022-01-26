@@ -18,7 +18,7 @@ import (
 // Healthcheck struct for Healthcheck
 type Healthcheck struct {
 	Protocol *string `json:"protocol,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Value    *string `json:"value,omitempty"`
 }
 
 // NewHealthcheck instantiates a new Healthcheck object
@@ -148,5 +148,3 @@ func (v *NullableHealthcheck) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

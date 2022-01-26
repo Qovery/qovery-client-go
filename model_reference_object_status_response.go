@@ -18,10 +18,10 @@ import (
 // ReferenceObjectStatusResponse struct for ReferenceObjectStatusResponse
 type ReferenceObjectStatusResponse struct {
 	Id string `json:"id"`
-	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state. 
+	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
 	State string `json:"state"`
 	// message related to the state
-	Message NullableString `json:"message,omitempty"`
+	Message                 NullableString `json:"message,omitempty"`
 	ServiceDeploymentStatus NullableString `json:"serviceDeploymentStatus,omitempty"`
 }
 
@@ -57,7 +57,7 @@ func (o *ReferenceObjectStatusResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ReferenceObjectStatusResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -81,7 +81,7 @@ func (o *ReferenceObjectStatusResponse) GetState() string {
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
 func (o *ReferenceObjectStatusResponse) GetStateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.State, true
@@ -105,7 +105,7 @@ func (o *ReferenceObjectStatusResponse) GetMessage() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ReferenceObjectStatusResponse) GetMessageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Message.Get(), o.Message.IsSet()
@@ -124,6 +124,7 @@ func (o *ReferenceObjectStatusResponse) HasMessage() bool {
 func (o *ReferenceObjectStatusResponse) SetMessage(v string) {
 	o.Message.Set(&v)
 }
+
 // SetMessageNil sets the value for Message to be an explicit nil
 func (o *ReferenceObjectStatusResponse) SetMessageNil() {
 	o.Message.Set(nil)
@@ -147,7 +148,7 @@ func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatus() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatusOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ServiceDeploymentStatus.Get(), o.ServiceDeploymentStatus.IsSet()
@@ -166,6 +167,7 @@ func (o *ReferenceObjectStatusResponse) HasServiceDeploymentStatus() bool {
 func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatus(v string) {
 	o.ServiceDeploymentStatus.Set(&v)
 }
+
 // SetServiceDeploymentStatusNil sets the value for ServiceDeploymentStatus to be an explicit nil
 func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatusNil() {
 	o.ServiceDeploymentStatus.Set(nil)
@@ -228,5 +230,3 @@ func (v *NullableReferenceObjectStatusResponse) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

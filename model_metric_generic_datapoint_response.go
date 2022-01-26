@@ -19,7 +19,7 @@ import (
 // MetricGenericDatapointResponse struct for MetricGenericDatapointResponse
 type MetricGenericDatapointResponse struct {
 	CreatedAt time.Time `json:"created_at"`
-	Value float32 `json:"value"`
+	Value     float32   `json:"value"`
 }
 
 // NewMetricGenericDatapointResponse instantiates a new MetricGenericDatapointResponse object
@@ -54,7 +54,7 @@ func (o *MetricGenericDatapointResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *MetricGenericDatapointResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -78,7 +78,7 @@ func (o *MetricGenericDatapointResponse) GetValue() float32 {
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *MetricGenericDatapointResponse) GetValueOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Value, true
@@ -135,5 +135,3 @@ func (v *NullableMetricGenericDatapointResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

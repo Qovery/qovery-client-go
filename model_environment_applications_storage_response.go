@@ -17,8 +17,8 @@ import (
 
 // EnvironmentApplicationsStorageResponse struct for EnvironmentApplicationsStorageResponse
 type EnvironmentApplicationsStorageResponse struct {
-	Application string `json:"application"`
-	Disks *[]StorageDiskResponse `json:"disks,omitempty"`
+	Application string                 `json:"application"`
+	Disks       *[]StorageDiskResponse `json:"disks,omitempty"`
 }
 
 // NewEnvironmentApplicationsStorageResponse instantiates a new EnvironmentApplicationsStorageResponse object
@@ -52,7 +52,7 @@ func (o *EnvironmentApplicationsStorageResponse) GetApplication() string {
 // GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsStorageResponse) GetApplicationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Application, true
@@ -141,5 +141,3 @@ func (v *NullableEnvironmentApplicationsStorageResponse) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

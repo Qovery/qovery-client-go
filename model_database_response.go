@@ -19,22 +19,22 @@ import (
 // DatabaseResponse struct for DatabaseResponse
 type DatabaseResponse struct {
 	Environment *ReferenceObject `json:"environment,omitempty"`
-	Host *string `json:"host,omitempty"`
-	Port *int32 `json:"port,omitempty"`
+	Host        *string          `json:"host,omitempty"`
+	Port        *int32           `json:"port,omitempty"`
 	// Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *float32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *float32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
-	DiskEncrypted *bool `json:"disk_encrypted,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	DiskEncrypted *bool      `json:"disk_encrypted,omitempty"`
+	Id            string     `json:"id"`
+	CreatedAt     time.Time  `json:"created_at"`
+	UpdatedAt     *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name string `json:"name"`
-	Type string `json:"type"`
-	Version string `json:"version"`
-	Mode string `json:"mode"`
+	Name          string  `json:"name"`
+	Type          string  `json:"type"`
+	Version       string  `json:"version"`
+	Mode          string  `json:"mode"`
 	Accessibility *string `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
@@ -292,7 +292,7 @@ func (o *DatabaseResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -316,7 +316,7 @@ func (o *DatabaseResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -372,7 +372,7 @@ func (o *DatabaseResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -396,7 +396,7 @@ func (o *DatabaseResponse) GetType() string {
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseResponse) GetTypeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Type, true
@@ -420,7 +420,7 @@ func (o *DatabaseResponse) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseResponse) GetVersionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Version, true
@@ -444,7 +444,7 @@ func (o *DatabaseResponse) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *DatabaseResponse) GetModeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -674,5 +674,3 @@ func (v *NullableDatabaseResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

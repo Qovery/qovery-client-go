@@ -17,7 +17,7 @@ import (
 
 // ScalewayCredentialsRequest struct for ScalewayCredentialsRequest
 type ScalewayCredentialsRequest struct {
-	Name string `json:"name"`
+	Name              string  `json:"name"`
 	ScalewayAccessKey *string `json:"scaleway_access_key,omitempty"`
 	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
 	ScalewayProjectId *string `json:"scaleway_project_id,omitempty"`
@@ -54,7 +54,7 @@ func (o *ScalewayCredentialsRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ScalewayCredentialsRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -213,5 +213,3 @@ func (v *NullableScalewayCredentialsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
