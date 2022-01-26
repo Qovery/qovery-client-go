@@ -9682,12 +9682,14 @@ components:
         results:
         - mode: PRODUCTION
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           project:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cloud_provider: '{}'
         - mode: PRODUCTION
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           project:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10376,6 +10378,7 @@ components:
       example:
         mode: PRODUCTION
         last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         project:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10404,8 +10407,12 @@ components:
           - PRODUCTION
           - DEVELOPMENT
           type: string
+        cluster_id:
+          format: uuid
+          type: string
       required:
       - cloud_provider
+      - cluster_id
       - mode
       - name
       type: object

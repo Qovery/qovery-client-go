@@ -4,6 +4,8 @@ docker run --rm \
     -i /local/swagger.json \
     -g go \
     -o /local \
+    --git-user-id qovery \
+    --git-repo-id qovery-client-go \
     --package-name qovery \
     --skip-validate-spec
 gofmt -s -w .
