@@ -4,9 +4,13 @@ info:
     email: support+api+documentation@qovery.com
     name: Qovery Support Team
     url: https://discord.qovery.com
-  description: |
+  description: |-
     - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider.
     - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+
+    # Authentication
+
+    <!-- ReDoc-Inject: <security-definitions> -->
   title: '[BETA] Qovery API'
   version: 1.0.0
   x-logo:
@@ -1116,6 +1120,91 @@ paths:
         "404":
           description: Resource not found
       summary: Get cluster status
+      tags:
+      - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/routingTable:
+    get:
+      description: Retrieve network routing table where each line corresponds to a
+        route between a destination and a target.
+      operationId: getRoutingTable
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterRoutingTableResponse'
+          description: Routing table
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get routing table
+      tags:
+      - Clusters
+    put:
+      description: Edit routing table by returning updated table.
+      operationId: editRoutingTable
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterRoutingTableRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterRoutingTableResponse'
+          description: Updated routing table
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit routing table
       tags:
       - Clusters
   /organization/{organizationId}/aws/credentials:
@@ -2997,7 +3086,7 @@ paths:
       - Environment Deployment Rule
   /environment/{environmentId}/deploymentRule/{deploymentRuleId}:
     put:
-      operationId: editEnvironmentDeployemtnRule
+      operationId: editEnvironmentDeploymentRule
       parameters:
       - description: Environment ID
         explode: false
@@ -3160,7 +3249,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Name'
+              $ref: '#/components/schemas/CloneRequest'
       responses:
         "202":
           content:
@@ -3434,8 +3523,10 @@ paths:
       - Environment Logs
   /environment/{environmentId}/deploymentHistory:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: List previous and current environment deployments with the status
+        deployment and the related services. By default it returns the 20 last results.
+        The response is paginated. In order to request the next page, you can use
+        the startId query parameter
       operationId: listEnvironmentDeploymentHistory
       parameters:
       - description: Environment ID
@@ -3469,7 +3560,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: List environment deploys
+      summary: List environment deployments
       tags:
       - Environment Deployment History
   /environment/{environmentId}/environmentVariable:
@@ -4547,6 +4638,44 @@ paths:
       summary: Get Storage consumption metric over time for the application
       tags:
       - Application Metrics
+  /application/{applicationId}/metric/restart:
+    get:
+      description: Get application restart message and timestamp.
+      operationId: getApplicationMetricRestart
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Up to how many seconds in the past to ask analytics results
+        explode: true
+        in: query
+        name: lastSeconds
+        required: true
+        schema:
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricRestartResponse'
+          description: Restarts
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List application restarts
+      tags:
+      - Application Metrics
   /application/{applicationId}/dependency:
     get:
       operationId: listApplicationDependency
@@ -5620,6 +5749,72 @@ paths:
       summary: List logs
       tags:
       - Application Logs
+  /application/{applicationId}/network:
+    get:
+      description: Get status of the application network settings.
+      operationId: getApplicationNetwork
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationNetworkResponse'
+          description: Network information
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get Application Network information
+      tags:
+      - Application Configuration
+    put:
+      description: Edit the Network settings of the application.
+      operationId: editApplicationNetwork
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationNetworkRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationNetworkResponse'
+          description: Updated application network setting
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit Application Network
+      tags:
+      - Application Configuration
   /application/{applicationId}/database:
     get:
       operationId: listApplicationDatabase
@@ -6602,6 +6797,44 @@ paths:
       summary: Get Health Check latency  metric over time for the database
       tags:
       - Database Metrics
+  /database/{databaseId}/metric/restart:
+    get:
+      description: Get database restart message and timestamp.
+      operationId: getDatabaseMetricRestart
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Up to how many seconds in the past to ask analytics results
+        explode: true
+        in: query
+        name: lastSeconds
+        required: true
+        schema:
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricRestartResponse'
+          description: Restarts
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List database restarts
+      tags:
+      - Database Metrics
   /database/{databaseId}/backup:
     get:
       description: By default it returns the 20 last results. The response is paginated.
@@ -7044,6 +7277,45 @@ paths:
       summary: Get gitlab branches of the specified repository
       tags:
       - Git repositories
+  /account/bitbucket/repository:
+    get:
+      operationId: getBitbucketRepositories
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryResponseList'
+          description: Get bitbucket repositories
+        "401":
+          description: Access token is missing or invalid
+      summary: Get bitbucket repositories of the connected user
+      tags:
+      - Git repositories
+  /account/bitbucket/repository/branch:
+    get:
+      operationId: getBitbucketRepositoryBranches
+      parameters:
+      - description: The name of the repository where to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1account~1github~1repository~1branch/get/responses/200/content/application~1json/schema'
+          description: Get bitbucket repository branches
+        "401":
+          description: Access token is missing or invalid
+      summary: Get bitbucket branches of the specified repository
+      tags:
+      - Git repositories
   /account/referral:
     get:
       operationId: getAccountReferral
@@ -7467,8 +7739,20 @@ components:
           type: array
       type: object
     ClusterStatusResponseList:
-      allOf:
-      - $ref: '#/components/schemas/ClusterStatusResponse'
+      example:
+        results:
+        - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_deployed: true
+          status: READY
+        - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_deployed: true
+          status: READY
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterStatusResponse'
+          type: array
+      type: object
     MetricGenericResponse:
       example:
         instance_name: instance 1
@@ -7658,6 +7942,7 @@ components:
         port: 5432
         maximum_memory: 1024
         maximum_cpu: 1250
+        disk_encrypted: true
         host: host
       properties:
         environment:
@@ -7680,6 +7965,9 @@ components:
             on organization cluster configuration. unit is MB. 1024 MB = 1GB
           example: 1024
           type: number
+        disk_encrypted:
+          description: indicates if the database disk is encrypted or not
+          type: boolean
       type: object
     SecretRequest:
       example:
@@ -7828,12 +8116,14 @@ components:
           port: 5432
           maximum_memory: 1024
           maximum_cpu: 1250
+          disk_encrypted: true
           host: host
         - environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           port: 5432
           maximum_memory: 1024
           maximum_cpu: 1250
+          disk_encrypted: true
           host: host
       properties:
         results:
@@ -7867,23 +8157,37 @@ components:
       type: object
     DeploymentHistoryEnvironmentResponse:
       allOf:
-      - $ref: '#/components/schemas/DeploymentHistoryResponse'
+      - $ref: '#/components/schemas/BaseResponse'
       example:
-        service: '{}'
+        databases: ""
+        status: READY
+        applications: ""
       properties:
-        service:
-          properties:
-            type:
-              enum:
-              - APPLICATION
-              - DATABASE
-              type: string
-            name:
-              type: string
-            id:
-              format: uuid
-              type: string
-          type: object
+        status:
+          enum:
+          - READY
+          - BUILDING
+          - BUILD_ERROR
+          - BUILT
+          - DEPLOYMENT_QUEUED
+          - DEPLOYING
+          - DEPLOYMENT_ERROR
+          - DEPLOYED
+          - STOP_QUEUED
+          - STOPPING
+          - STOP_ERROR
+          - STOPPED
+          - DELETE_QUEUED
+          - DELETING
+          - DELETE_ERROR
+          - DELETED
+          - RUNNING
+          - RUNNING_ERROR
+          type: string
+        applications:
+          type: array
+        databases:
+          type: array
       type: object
     LogResponse:
       example:
@@ -8047,6 +8351,7 @@ components:
             author_avatar_url: author_avatar_url
             tag: v2.1.1
             message: message
+            commit_page_url: commit_page_url
           status: SUCCESS
         - commit:
             author_name: author_name
@@ -8055,6 +8360,7 @@ components:
             author_avatar_url: author_avatar_url
             tag: v2.1.1
             message: message
+            commit_page_url: commit_page_url
           status: SUCCESS
       properties:
         results:
@@ -8111,6 +8417,7 @@ components:
     ClusterStatusResponse:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        is_deployed: true
         status: READY
       properties:
         cluster_id:
@@ -8119,22 +8426,23 @@ components:
         status:
           enum:
           - READY
-          - QUEUED
-          - BUILDING
-          - BUILD_ERROR
-          - BUILT
+          - DEPLOYMENT_QUEUED
           - DEPLOYING
           - DEPLOYMENT_ERROR
           - DEPLOYED
+          - STOP_QUEUED
           - STOPPING
           - STOP_ERROR
           - STOPPED
+          - DELETE_QUEUED
           - DELETING
           - DELETE_ERROR
           - DELETED
           - RUNNING
           - RUNNING_ERROR
           type: string
+        is_deployed:
+          type: boolean
       type: object
     InvoiceResponseList:
       example:
@@ -8478,6 +8786,7 @@ components:
         author_avatar_url: author_avatar_url
         tag: v2.1.1
         message: message
+        commit_page_url: commit_page_url
       properties:
         created_at:
           format: date-time
@@ -8492,6 +8801,8 @@ components:
         author_name:
           type: string
         author_avatar_url:
+          type: string
+        commit_page_url:
           type: string
       required:
       - author_name
@@ -8523,6 +8834,7 @@ components:
       - $ref: '#/components/schemas/ApplicationStorageRequest'
       - $ref: '#/components/schemas/ApplicationPortRequest'
       example:
+        buildpack_language: GO
         min_running_instances: 0
         healthcheck:
           protocol: TCP
@@ -8537,6 +8849,7 @@ components:
           root_path: /
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
+        env_preview: true
         dockerfile_path: dockerfile_path
       properties:
         name:
@@ -8559,6 +8872,22 @@ components:
         dockerfile_path:
           description: The path of the associated Dockerfile. Only if you are using
             build_mode = DOCKER
+          type: string
+        buildpack_language:
+          description: Development language of the application
+          enum:
+          - GO
+          - NODE_JS
+          - CLOJURE
+          - PYTHON
+          - JAVA
+          - GRADLE
+          - JVM
+          - GRAILS
+          - SCALA
+          - PLAY
+          - PHP
+          - GO
           type: string
         cpu:
           default: 250
@@ -8586,6 +8915,12 @@ components:
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
+        env_preview:
+          default: true
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request. \n"
+          type: boolean
       required:
       - git_repository
       - name
@@ -8614,12 +8949,8 @@ components:
       - $ref: '#/components/schemas/ApplicationPortResponse'
       example:
         min_running_instances: 0
-        healthcheck:
-          protocol: TCP
-          value: value
         memory: 1024
         build_mode: DOCKER
-        name: name
         description: description
         cpu: 1250
         max_running_instances: 0
@@ -8628,6 +8959,13 @@ components:
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
         dockerfile_path: dockerfile_path
+        sticky-session: false
+        buildpack_language: GO
+        healthcheck:
+          protocol: TCP
+          value: value
+        name: name
+        env_preview: true
       properties:
         name:
           description: name is case insensitive
@@ -8647,6 +8985,22 @@ components:
           type: string
         dockerfile_path:
           description: The path of the associated Dockerfile
+          type: string
+        buildpack_language:
+          description: Development language of the application
+          enum:
+          - GO
+          - NODE_JS
+          - CLOJURE
+          - PYTHON
+          - JAVA
+          - GRADLE
+          - JVM
+          - GRAILS
+          - SCALA
+          - PLAY
+          - PHP
+          - GO
           type: string
         cpu:
           default: 250
@@ -8674,6 +9028,19 @@ components:
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
+        env_preview:
+          default: true
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request. \n"
+          type: boolean
+        sticky-session:
+          default: false
+          description: "Specify if the sticky session option (also called persistant\
+            \ session) is activated or not for this application.\nIf activated, user\
+            \ will be redirected by the load balancer to the same instance each time\
+            \ he access to the application. \n"
+          type: boolean
       type: object
     DeploymentHistoryResponseList:
       properties:
@@ -8703,6 +9070,7 @@ components:
           author_avatar_url: author_avatar_url
           tag: v2.1.1
           message: message
+          commit_page_url: commit_page_url
         status: SUCCESS
       properties:
         commit:
@@ -8711,6 +9079,64 @@ components:
           enum:
           - SUCCESS
           - FAILED
+          type: string
+      type: object
+    DeploymentHistoryApplicationResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      properties:
+        name:
+          type: string
+        commit:
+          $ref: '#/components/schemas/CommitResponse'
+        status:
+          enum:
+          - READY
+          - BUILDING
+          - BUILD_ERROR
+          - BUILT
+          - DEPLOYMENT_QUEUED
+          - DEPLOYING
+          - DEPLOYMENT_ERROR
+          - DEPLOYED
+          - STOP_QUEUED
+          - STOPPING
+          - STOP_ERROR
+          - STOPPED
+          - DELETE_QUEUED
+          - DELETING
+          - DELETE_ERROR
+          - DELETED
+          - RUNNING
+          - RUNNING_ERROR
+          type: string
+      type: object
+    DeploymentHistoryDatabaseResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      properties:
+        name:
+          type: string
+        status:
+          enum:
+          - READY
+          - BUILDING
+          - BUILD_ERROR
+          - BUILT
+          - DEPLOYMENT_QUEUED
+          - DEPLOYING
+          - DEPLOYMENT_ERROR
+          - DEPLOYED
+          - STOP_QUEUED
+          - STOPPING
+          - STOP_ERROR
+          - STOPPED
+          - DELETE_QUEUED
+          - DELETING
+          - DELETE_ERROR
+          - DELETED
+          - RUNNING
+          - RUNNING_ERROR
           type: string
       type: object
     OrganizationResponseList:
@@ -8775,6 +9201,7 @@ components:
           deployed_commit_id: deployed_commit_id
           deployed_commit_date: 2000-01-23T04:56:07.000+00:00
         dockerfile_path: dockerfile_path
+        buildpack_language: GO
         healthcheck:
           protocol: TCP
           value: value
@@ -8782,6 +9209,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         maximum_cpu: 1250
         name: name
+        env_preview: true
       properties:
         environment:
           $ref: '#/components/schemas/ReferenceObject'
@@ -8819,6 +9247,22 @@ components:
           description: The path of the associated Dockerfile. Only if you are using
             build_mode = DOCKER
           type: string
+        buildpack_language:
+          description: Development language of the application
+          enum:
+          - GO
+          - NODE_JS
+          - CLOJURE
+          - PYTHON
+          - JAVA
+          - GRADLE
+          - JVM
+          - GRAILS
+          - SCALA
+          - PLAY
+          - PHP
+          - GO
+          type: string
         cpu:
           default: 250
           description: unit is millicores (m). 1000m = 1 cpu
@@ -8845,6 +9289,12 @@ components:
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
+        env_preview:
+          default: true
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request. \n"
+          type: boolean
       type: object
     CustomDomainRequest:
       example:
@@ -8885,8 +9335,6 @@ components:
       - $ref: '#/components/schemas/ReferenceObject'
       - $ref: '#/components/schemas/ServiceTotalNumber'
     Name:
-      example:
-        name: name
       properties:
         name:
           type: string
@@ -9067,6 +9515,7 @@ components:
             deployed_commit_id: deployed_commit_id
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
           dockerfile_path: dockerfile_path
+          buildpack_language: GO
           healthcheck:
             protocol: TCP
             value: value
@@ -9074,6 +9523,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 1250
           name: name
+          env_preview: true
         - min_running_instances: 0
           memory: 1024
           maximum_memory: 1024
@@ -9091,6 +9541,7 @@ components:
             deployed_commit_id: deployed_commit_id
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
           dockerfile_path: dockerfile_path
+          buildpack_language: GO
           healthcheck:
             protocol: TCP
             value: value
@@ -9098,11 +9549,36 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 1250
           name: name
+          env_preview: true
       properties:
         results:
           items:
             $ref: '#/components/schemas/ApplicationResponse'
           type: array
+      type: object
+    ApplicationNetworkResponse:
+      example:
+        sticky-session: false
+      properties:
+        sticky-session:
+          default: false
+          description: "Specify if the sticky session option (also called persistant\
+            \ session) is activated or not for this application.\nIf activated, user\
+            \ will be redirected by the load balancer to the same instance each time\
+            \ he access to the application. \n"
+          type: boolean
+      type: object
+    ApplicationNetworkRequest:
+      example:
+        sticky-session: false
+      properties:
+        sticky-session:
+          default: false
+          description: "Specify if the sticky session option (also called persistant\
+            \ session) is activated or not for this application.\nIf activated, user\
+            \ will be redirected by the load balancer to the same instance each time\
+            \ he access to the application. \n"
+          type: boolean
       type: object
     RemainingCredits:
       allOf:
@@ -9140,31 +9616,31 @@ components:
         weekdays:
         - MONDAY
         - MONDAY
-        always_up: false
+        auto_stop: false
       properties:
         auto_deploy:
           default: true
           type: boolean
-        always_up:
+        auto_stop:
           default: false
           type: boolean
         timezone:
           default: Europe/London
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           nullable: false
           type: string
         start_time:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           format: date-time
           nullable: true
           type: string
         stop_time:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           format: date-time
           nullable: true
           type: string
         weekdays:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           items:
             enum:
             - MONDAY
@@ -9499,8 +9975,12 @@ components:
       - $ref: '#/components/schemas/PaginationDataResponse'
       example:
         results:
-        - service: '{}'
-        - service: '{}'
+        - databases: ""
+          status: READY
+          applications: ""
+        - databases: ""
+          status: READY
+          applications: ""
       properties:
         results:
           items:
@@ -9530,10 +10010,12 @@ components:
     EnvironmentVariableResponseList:
       example:
         results:
-        - scope: BUILT_IN
+        - service_name: service_name
+          scope: BUILT_IN
           aliased_variable: '{}'
           overridden_variable: '{}'
-        - scope: BUILT_IN
+        - service_name: service_name
+          scope: BUILT_IN
           aliased_variable: '{}'
           overridden_variable: '{}'
       properties:
@@ -9624,6 +10106,21 @@ components:
           - DEVELOPMENT
           type: string
       required:
+      - name
+      type: object
+    CloneRequest:
+      example:
+        cluster: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        name:
+          description: name is case insensitive
+          type: string
+        cluster:
+          format: uuid
+          type: string
+      required:
+      - cluster
       - name
       type: object
     MetricMemoryDatapointResponseList:
@@ -10083,6 +10580,7 @@ components:
       type: object
     Status:
       example:
+        serviceDeploymentStatus: NEVER_DEPLOYED
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: INITIALIZED
         message: message
@@ -10113,6 +10611,13 @@ components:
           type: string
         message:
           description: message related to the state
+          nullable: true
+          type: string
+        serviceDeploymentStatus:
+          enum:
+          - NEVER_DEPLOYED
+          - UP_TO_DATE
+          - OUT_OF_DATE
           nullable: true
           type: string
       required:
@@ -10159,6 +10664,7 @@ components:
       - $ref: '#/components/schemas/BackupRequest'
       example:
         status:
+          serviceDeploymentStatus: NEVER_DEPLOYED
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: INITIALIZED
           message: message
@@ -10184,26 +10690,26 @@ components:
         auto_deploy:
           default: true
           type: boolean
-        always_up:
+        auto_stop:
           default: false
           type: boolean
         timezone:
           default: Europe/London
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           nullable: false
           type: string
         start_time:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           format: date-time
           nullable: true
           type: string
         stop_time:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           format: date-time
           nullable: true
           type: string
         weekdays:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           items:
             enum:
             - MONDAY
@@ -10218,7 +10724,7 @@ components:
           nullable: true
           type: array
       required:
-      - always_up
+      - auto_stop
       - cluster
       - mode
       - name
@@ -10237,6 +10743,7 @@ components:
       - $ref: '#/components/schemas/BaseResponse'
       - $ref: '#/components/schemas/EnvironmentVariableRequest'
       example:
+        service_name: service_name
         scope: BUILT_IN
         aliased_variable: '{}'
         overridden_variable: '{}'
@@ -10282,6 +10789,8 @@ components:
           - ENVIRONMENT
           - PROJECT
           - APPLICATION
+          type: string
+        service_name:
           type: string
       required:
       - scope
@@ -10481,31 +10990,35 @@ components:
         weekdays:
         - MONDAY
         - MONDAY
-        always_up: false
+        auto_stop: false
+        auto_delete: false
       properties:
         auto_deploy:
           default: true
           type: boolean
-        always_up:
+        auto_delete:
+          default: false
+          type: boolean
+        auto_stop:
           default: false
           type: boolean
         timezone:
           default: Europe/London
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           nullable: false
           type: string
         start_time:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           format: date-time
           nullable: true
           type: string
         stop_time:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           format: date-time
           nullable: true
           type: string
         weekdays:
-          description: specify value only if always_up = false
+          description: specify value only if auto_stop = false
           items:
             enum:
             - MONDAY
@@ -10678,6 +11191,7 @@ components:
             author_avatar_url: author_avatar_url
             tag: v2.1.1
             message: message
+            commit_page_url: commit_page_url
           type: type
           user:
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -10688,6 +11202,7 @@ components:
             first_name: first_name
             email: email
           status:
+            serviceDeploymentStatus: NEVER_DEPLOYED
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: INITIALIZED
             message: message
@@ -10700,6 +11215,7 @@ components:
             author_avatar_url: author_avatar_url
             tag: v2.1.1
             message: message
+            commit_page_url: commit_page_url
           type: type
           user:
             updated_at: 2000-01-23T04:56:07.000+00:00
@@ -10710,6 +11226,7 @@ components:
             first_name: first_name
             email: email
           status:
+            serviceDeploymentStatus: NEVER_DEPLOYED
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: INITIALIZED
             message: message
@@ -10778,6 +11295,19 @@ components:
             $ref: '#/components/schemas/MetricStorageResponse'
           type: array
       type: object
+    MetricRestartResponse:
+      example:
+        results:
+        - datetime: 2000-01-23T04:56:07.000+00:00
+          message: message
+        - datetime: 2000-01-23T04:56:07.000+00:00
+          message: message
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/MetricRestartResponse_results'
+          type: array
+      type: object
     EventResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
@@ -10791,6 +11321,7 @@ components:
           author_avatar_url: author_avatar_url
           tag: v2.1.1
           message: message
+          commit_page_url: commit_page_url
         type: type
         user:
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -10801,6 +11332,7 @@ components:
           first_name: first_name
           email: email
         status:
+          serviceDeploymentStatus: NEVER_DEPLOYED
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: INITIALIZED
           message: message
@@ -10924,12 +11456,14 @@ components:
           author_avatar_url: author_avatar_url
           tag: v2.1.1
           message: message
+          commit_page_url: commit_page_url
         - author_name: author_name
           git_commit_id: git_commit_id
           created_at: 2000-01-23T04:56:07.000+00:00
           author_avatar_url: author_avatar_url
           tag: v2.1.1
           message: message
+          commit_page_url: commit_page_url
       properties:
         results:
           items:
@@ -11391,6 +11925,7 @@ components:
       type: object
     ClusterFeatureResponse:
       example:
+        accepted_values: ""
         value_type: BOOLEAN
         cost_per_month_in_cents: 9900
         is_value_updatable: false
@@ -11433,11 +11968,47 @@ components:
         is_value_updatable:
           default: false
           type: boolean
+        accepted_values:
+          nullable: false
+          type: array
+      type: object
+    ClusterRoutingTableResponse:
+      example:
+        results:
+        - destination: destination
+          description: description
+          target: target
+        - destination: destination
+          description: description
+          target: target
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterRoutingTableResponse_results'
+          type: array
+      type: object
+    ClusterRoutingTableRequest:
+      example:
+        routes:
+        - destination: destination
+          description: description
+          target: target
+        - destination: destination
+          description: description
+          target: target
+      properties:
+        routes:
+          items:
+            $ref: '#/components/schemas/ClusterRoutingTableRequest_routes'
+          type: array
+      required:
+      - routes
       type: object
     ClusterFeatureResponseList:
       example:
         results:
-        - value_type: BOOLEAN
+        - accepted_values: ""
+          value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
           description: description
@@ -11446,7 +12017,8 @@ components:
           value: value
           cost_per_month: 99
           currency_code: USD
-        - value_type: BOOLEAN
+        - accepted_values: ""
+          value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
           description: description
@@ -11795,6 +12367,20 @@ components:
       - internal_port
       - protocol
       type: object
+    MetricRestartResponse_results:
+      example:
+        datetime: 2000-01-23T04:56:07.000+00:00
+        message: message
+      properties:
+        datetime:
+          format: date-time
+          type: string
+        message:
+          type: string
+      required:
+      - datetime
+      - message
+      type: object
     ClusterFeatureRequest_features:
       properties:
         id:
@@ -11804,6 +12390,36 @@ components:
         value:
           nullable: true
           type: string
+      type: object
+    ClusterRoutingTableResponse_results:
+      example:
+        destination: destination
+        description: description
+        target: target
+      properties:
+        destination:
+          type: string
+        target:
+          type: string
+        description:
+          type: string
+      type: object
+    ClusterRoutingTableRequest_routes:
+      example:
+        destination: destination
+        description: description
+        target: target
+      properties:
+        destination:
+          type: string
+        target:
+          type: string
+        description:
+          type: string
+      required:
+      - description
+      - destination
+      - target
       type: object
   securitySchemes:
     bearerAuth:
@@ -11842,6 +12458,7 @@ x-tagGroups:
   tags:
   - Application Main Calls
   - Application Actions
+  - Application Configuration
   - Custom Domain
   - Dependency
   - Application Metrics

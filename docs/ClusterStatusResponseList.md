@@ -4,14 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [readonly] 
-**Status** | Pointer to **string** |  | [optional] 
+**Results** | Pointer to [**[]ClusterStatusResponse**](ClusterStatusResponse.md) |  | [optional] 
 
 ## Methods
 
 ### NewClusterStatusResponseList
 
-`func NewClusterStatusResponseList(id string, ) *ClusterStatusResponseList`
+`func NewClusterStatusResponseList() *ClusterStatusResponseList`
 
 NewClusterStatusResponseList instantiates a new ClusterStatusResponseList object
 This constructor will assign default values to properties that have it defined,
@@ -26,50 +25,30 @@ NewClusterStatusResponseListWithDefaults instantiates a new ClusterStatusRespons
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetResults
 
-`func (o *ClusterStatusResponseList) GetId() string`
+`func (o *ClusterStatusResponseList) GetResults() []ClusterStatusResponse`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetResults returns the Results field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetResultsOk
 
-`func (o *ClusterStatusResponseList) GetIdOk() (*string, bool)`
+`func (o *ClusterStatusResponseList) GetResultsOk() (*[]ClusterStatusResponse, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetResults
 
-`func (o *ClusterStatusResponseList) SetId(v string)`
+`func (o *ClusterStatusResponseList) SetResults(v []ClusterStatusResponse)`
 
-SetId sets Id field to given value.
+SetResults sets Results field to given value.
 
+### HasResults
 
-### GetStatus
+`func (o *ClusterStatusResponseList) HasResults() bool`
 
-`func (o *ClusterStatusResponseList) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *ClusterStatusResponseList) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *ClusterStatusResponseList) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *ClusterStatusResponseList) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
+HasResults returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

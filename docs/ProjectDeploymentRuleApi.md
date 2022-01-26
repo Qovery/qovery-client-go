@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
     projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("^feat", "Name_example", "Mode_example", "Cluster_example", false) // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -52,7 +52,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
+**projectId** | **string** | Project ID | 
 
 ### Other Parameters
 
@@ -101,8 +101,8 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
-    deploymentRuleId := TODO // string | Deployment Rule ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -120,8 +120,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
-**deploymentRuleId** | [**string**](.md) | Deployment Rule ID | 
+**projectId** | **string** | Project ID | 
+**deploymentRuleId** | **string** | Deployment Rule ID | 
 
 ### Other Parameters
 
@@ -170,8 +170,8 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
-    deploymentRuleId := TODO // string | Deployment Rule ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
     projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("^feat", "Name_example", "Mode_example", "Cluster_example", false) // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -192,8 +192,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
-**deploymentRuleId** | [**string**](.md) | Deployment Rule ID | 
+**projectId** | **string** | Project ID | 
+**deploymentRuleId** | **string** | Deployment Rule ID | 
 
 ### Other Parameters
 
@@ -243,8 +243,8 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
-    deploymentRuleId := TODO // string | Deployment Rule ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -264,8 +264,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
-**deploymentRuleId** | [**string**](.md) | Deployment Rule ID | 
+**projectId** | **string** | Project ID | 
+**deploymentRuleId** | **string** | Deployment Rule ID | 
 
 ### Other Parameters
 
@@ -314,7 +314,7 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -334,7 +334,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
+**projectId** | **string** | Project ID | 
 
 ### Other Parameters
 

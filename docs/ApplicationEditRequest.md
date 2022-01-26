@@ -9,11 +9,14 @@ Name | Type | Description | Notes
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
 **BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] 
 **DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile | [optional] 
+**BuildpackLanguage** | Pointer to **string** | Development language of the application | [optional] 
 **Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
+**EnvPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.   | [optional] [default to true]
+**StickySession** | Pointer to **bool** | Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.   | [optional] [default to false]
 **Storage** | Pointer to [**[]ApplicationStorageResponseStorage**](ApplicationStorageResponseStorage.md) |  | [optional] 
 **Ports** | Pointer to [**[]ApplicationPortResponsePorts**](ApplicationPortResponsePorts.md) |  | [optional] 
 
@@ -161,6 +164,31 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
+### GetBuildpackLanguage
+
+`func (o *ApplicationEditRequest) GetBuildpackLanguage() string`
+
+GetBuildpackLanguage returns the BuildpackLanguage field if non-nil, zero value otherwise.
+
+### GetBuildpackLanguageOk
+
+`func (o *ApplicationEditRequest) GetBuildpackLanguageOk() (*string, bool)`
+
+GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildpackLanguage
+
+`func (o *ApplicationEditRequest) SetBuildpackLanguage(v string)`
+
+SetBuildpackLanguage sets BuildpackLanguage field to given value.
+
+### HasBuildpackLanguage
+
+`func (o *ApplicationEditRequest) HasBuildpackLanguage() bool`
+
+HasBuildpackLanguage returns a boolean if a field has been set.
+
 ### GetCpu
 
 `func (o *ApplicationEditRequest) GetCpu() float32`
@@ -285,6 +313,56 @@ SetHealthcheck sets Healthcheck field to given value.
 `func (o *ApplicationEditRequest) HasHealthcheck() bool`
 
 HasHealthcheck returns a boolean if a field has been set.
+
+### GetEnvPreview
+
+`func (o *ApplicationEditRequest) GetEnvPreview() bool`
+
+GetEnvPreview returns the EnvPreview field if non-nil, zero value otherwise.
+
+### GetEnvPreviewOk
+
+`func (o *ApplicationEditRequest) GetEnvPreviewOk() (*bool, bool)`
+
+GetEnvPreviewOk returns a tuple with the EnvPreview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvPreview
+
+`func (o *ApplicationEditRequest) SetEnvPreview(v bool)`
+
+SetEnvPreview sets EnvPreview field to given value.
+
+### HasEnvPreview
+
+`func (o *ApplicationEditRequest) HasEnvPreview() bool`
+
+HasEnvPreview returns a boolean if a field has been set.
+
+### GetStickySession
+
+`func (o *ApplicationEditRequest) GetStickySession() bool`
+
+GetStickySession returns the StickySession field if non-nil, zero value otherwise.
+
+### GetStickySessionOk
+
+`func (o *ApplicationEditRequest) GetStickySessionOk() (*bool, bool)`
+
+GetStickySessionOk returns a tuple with the StickySession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStickySession
+
+`func (o *ApplicationEditRequest) SetStickySession(v bool)`
+
+SetStickySession sets StickySession field to given value.
+
+### HasStickySession
+
+`func (o *ApplicationEditRequest) HasStickySession() bool`
+
+HasStickySession returns a boolean if a field has been set.
 
 ### GetStorage
 

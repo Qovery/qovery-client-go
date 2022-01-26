@@ -8,12 +8,15 @@ Method | HTTP request | Description
 [**DeleteCluster**](ClustersApi.md#DeleteCluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 [**DeployCluster**](ClustersApi.md#DeployCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 [**EditCluster**](ClustersApi.md#EditCluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
+[**EditRoutingTable**](ClustersApi.md#EditRoutingTable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**GetClusterReadinessStatus**](ClustersApi.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**GetOrganizationCloudProviderInfo**](ClustersApi.md#GetOrganizationCloudProviderInfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 [**GetOrganizationClusterStatus**](ClustersApi.md#GetOrganizationClusterStatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
+[**GetRoutingTable**](ClustersApi.md#GetRoutingTable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
 [**ListOrganizationCluster**](ClustersApi.md#ListOrganizationCluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 [**SpecifyClusterCloudProviderInfo**](ClustersApi.md#SpecifyClusterCloudProviderInfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
+[**StopCluster**](ClustersApi.md#StopCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 [**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/update | Update a cluster Version
 
 
@@ -37,8 +40,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterRequest := *openapiclient.NewClusterRequest("Name_example") // ClusterRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterRequest := *openapiclient.NewClusterRequest("Name_example", "CloudProvider_example", "Region_example") // ClusterRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -58,7 +61,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -107,8 +110,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -126,8 +129,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 
@@ -178,8 +181,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -199,8 +202,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 
@@ -249,9 +252,9 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
-    clusterRequest := *openapiclient.NewClusterRequest("Name_example") // ClusterRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    clusterRequest := *openapiclient.NewClusterRequest("Name_example", "CloudProvider_example", "Region_example") // ClusterRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -271,8 +274,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 
@@ -288,6 +291,81 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterResponse**](ClusterResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EditRoutingTable
+
+> ClusterRoutingTableResponse EditRoutingTable(ctx, organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
+
+Edit routing table
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    clusterRoutingTableRequest := *openapiclient.NewClusterRoutingTableRequest([]openapiclient.ClusterRoutingTableRequestRoutes{*openapiclient.NewClusterRoutingTableRequestRoutes("Destination_example", "Target_example", "Description_example")}) // ClusterRoutingTableRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ClustersApi.EditRoutingTable(context.Background(), organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.EditRoutingTable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditRoutingTable`: ClusterRoutingTableResponse
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.EditRoutingTable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditRoutingTableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **clusterRoutingTableRequest** | [**ClusterRoutingTableRequest**](ClusterRoutingTableRequest.md) |  | 
+
+### Return type
+
+[**ClusterRoutingTableResponse**](ClusterRoutingTableResponse.md)
 
 ### Authorization
 
@@ -322,8 +400,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -343,8 +421,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 
@@ -393,8 +471,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -414,8 +492,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 
@@ -464,8 +542,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -485,8 +563,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 
@@ -537,7 +615,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -557,7 +635,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -571,6 +649,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterStatusResponseList**](ClusterStatusResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRoutingTable
+
+> ClusterRoutingTableResponse GetRoutingTable(ctx, organizationId, clusterId).Execute()
+
+Get routing table
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ClustersApi.GetRoutingTable(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetRoutingTable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetRoutingTable`: ClusterRoutingTableResponse
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetRoutingTable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRoutingTableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterRoutingTableResponse**](ClusterRoutingTableResponse.md)
 
 ### Authorization
 
@@ -605,7 +756,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -625,7 +776,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -673,8 +824,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
     clusterCloudProviderInfoRequest := *openapiclient.NewClusterCloudProviderInfoRequest() // ClusterCloudProviderInfoRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -695,8 +846,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 
@@ -727,6 +878,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## StopCluster
+
+> ClusterStatusResponse StopCluster(ctx, organizationId, clusterId).Execute()
+
+Stop cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ClustersApi.StopCluster(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.StopCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StopCluster`: ClusterStatusResponse
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.StopCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStopClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterStatusResponse**](ClusterStatusResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateCluster
 
 > ClusterStatusResponse UpdateCluster(ctx, organizationId, clusterId).Execute()
@@ -748,8 +972,8 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterId := TODO // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -769,8 +993,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**clusterId** | [**string**](.md) | Cluster ID | 
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
 
 ### Other Parameters
 

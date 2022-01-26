@@ -4,21 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | name is case insensitive | 
+**Name** | **string** | name is case-insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
+**CloudProvider** | **string** |  | 
+**Region** | **string** |  | 
 **AutoUpdate** | Pointer to **bool** |  | [optional] 
-**EnableHistoricMetric** | Pointer to **bool** |  | [optional] 
-**EnableHistoricLog** | Pointer to **bool** |  | [optional] 
 **Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
+**Features** | Pointer to [**[]ClusterFeatureRequestFeatures**](ClusterFeatureRequestFeatures.md) |  | [optional] 
 
 ## Methods
 
 ### NewClusterRequest
 
-`func NewClusterRequest(name string, ) *ClusterRequest`
+`func NewClusterRequest(name string, cloudProvider string, region string, ) *ClusterRequest`
 
 NewClusterRequest instantiates a new ClusterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -78,6 +79,46 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetCloudProvider
+
+`func (o *ClusterRequest) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *ClusterRequest) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *ClusterRequest) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
+
+### GetRegion
+
+`func (o *ClusterRequest) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *ClusterRequest) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *ClusterRequest) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+
 ### GetAutoUpdate
 
 `func (o *ClusterRequest) GetAutoUpdate() bool`
@@ -102,56 +143,6 @@ SetAutoUpdate sets AutoUpdate field to given value.
 `func (o *ClusterRequest) HasAutoUpdate() bool`
 
 HasAutoUpdate returns a boolean if a field has been set.
-
-### GetEnableHistoricMetric
-
-`func (o *ClusterRequest) GetEnableHistoricMetric() bool`
-
-GetEnableHistoricMetric returns the EnableHistoricMetric field if non-nil, zero value otherwise.
-
-### GetEnableHistoricMetricOk
-
-`func (o *ClusterRequest) GetEnableHistoricMetricOk() (*bool, bool)`
-
-GetEnableHistoricMetricOk returns a tuple with the EnableHistoricMetric field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableHistoricMetric
-
-`func (o *ClusterRequest) SetEnableHistoricMetric(v bool)`
-
-SetEnableHistoricMetric sets EnableHistoricMetric field to given value.
-
-### HasEnableHistoricMetric
-
-`func (o *ClusterRequest) HasEnableHistoricMetric() bool`
-
-HasEnableHistoricMetric returns a boolean if a field has been set.
-
-### GetEnableHistoricLog
-
-`func (o *ClusterRequest) GetEnableHistoricLog() bool`
-
-GetEnableHistoricLog returns the EnableHistoricLog field if non-nil, zero value otherwise.
-
-### GetEnableHistoricLogOk
-
-`func (o *ClusterRequest) GetEnableHistoricLogOk() (*bool, bool)`
-
-GetEnableHistoricLogOk returns a tuple with the EnableHistoricLog field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableHistoricLog
-
-`func (o *ClusterRequest) SetEnableHistoricLog(v bool)`
-
-SetEnableHistoricLog sets EnableHistoricLog field to given value.
-
-### HasEnableHistoricLog
-
-`func (o *ClusterRequest) HasEnableHistoricLog() bool`
-
-HasEnableHistoricLog returns a boolean if a field has been set.
 
 ### GetCpu
 
@@ -252,6 +243,31 @@ SetMaxRunningNodes sets MaxRunningNodes field to given value.
 `func (o *ClusterRequest) HasMaxRunningNodes() bool`
 
 HasMaxRunningNodes returns a boolean if a field has been set.
+
+### GetFeatures
+
+`func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures`
+
+GetFeatures returns the Features field if non-nil, zero value otherwise.
+
+### GetFeaturesOk
+
+`func (o *ClusterRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeatures, bool)`
+
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatures
+
+`func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeatures)`
+
+SetFeatures sets Features field to given value.
+
+### HasFeatures
+
+`func (o *ClusterRequest) HasFeatures() bool`
+
+HasFeatures returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

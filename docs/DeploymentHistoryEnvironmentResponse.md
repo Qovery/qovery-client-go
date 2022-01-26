@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Service** | Pointer to **map[string]interface{}** |  | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
+**Applications** | Pointer to [**Array**](array.md) |  | [optional] 
+**Databases** | Pointer to [**Array**](array.md) |  | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -28,30 +30,80 @@ NewDeploymentHistoryEnvironmentResponseWithDefaults instantiates a new Deploymen
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetService
+### GetStatus
 
-`func (o *DeploymentHistoryEnvironmentResponse) GetService() map[string]interface{}`
+`func (o *DeploymentHistoryEnvironmentResponse) GetStatus() string`
 
-GetService returns the Service field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetServiceOk
+### GetStatusOk
 
-`func (o *DeploymentHistoryEnvironmentResponse) GetServiceOk() (*map[string]interface{}, bool)`
+`func (o *DeploymentHistoryEnvironmentResponse) GetStatusOk() (*string, bool)`
 
-GetServiceOk returns a tuple with the Service field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetService
+### SetStatus
 
-`func (o *DeploymentHistoryEnvironmentResponse) SetService(v map[string]interface{})`
+`func (o *DeploymentHistoryEnvironmentResponse) SetStatus(v string)`
 
-SetService sets Service field to given value.
+SetStatus sets Status field to given value.
 
-### HasService
+### HasStatus
 
-`func (o *DeploymentHistoryEnvironmentResponse) HasService() bool`
+`func (o *DeploymentHistoryEnvironmentResponse) HasStatus() bool`
 
-HasService returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
+
+### GetApplications
+
+`func (o *DeploymentHistoryEnvironmentResponse) GetApplications() Array`
+
+GetApplications returns the Applications field if non-nil, zero value otherwise.
+
+### GetApplicationsOk
+
+`func (o *DeploymentHistoryEnvironmentResponse) GetApplicationsOk() (*Array, bool)`
+
+GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplications
+
+`func (o *DeploymentHistoryEnvironmentResponse) SetApplications(v Array)`
+
+SetApplications sets Applications field to given value.
+
+### HasApplications
+
+`func (o *DeploymentHistoryEnvironmentResponse) HasApplications() bool`
+
+HasApplications returns a boolean if a field has been set.
+
+### GetDatabases
+
+`func (o *DeploymentHistoryEnvironmentResponse) GetDatabases() Array`
+
+GetDatabases returns the Databases field if non-nil, zero value otherwise.
+
+### GetDatabasesOk
+
+`func (o *DeploymentHistoryEnvironmentResponse) GetDatabasesOk() (*Array, bool)`
+
+GetDatabasesOk returns a tuple with the Databases field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabases
+
+`func (o *DeploymentHistoryEnvironmentResponse) SetDatabases(v Array)`
+
+SetDatabases sets Databases field to given value.
+
+### HasDatabases
+
+`func (o *DeploymentHistoryEnvironmentResponse) HasDatabases() bool`
+
+HasDatabases returns a boolean if a field has been set.
 
 ### GetId
 

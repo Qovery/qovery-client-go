@@ -5,10 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
-**AlwaysUp** | Pointer to **bool** |  | [optional] [default to false]
-**StartTime** | Pointer to **NullableTime** | specify value only if always_up &#x3D; false | [optional] 
-**StopTime** | Pointer to **NullableTime** | specify value only if always_up &#x3D; false | [optional] 
-**Weekday** | Pointer to **NullableString** | specify value only if always_up &#x3D; false | [optional] 
+**AutoDelete** | Pointer to **bool** |  | [optional] [default to false]
+**AutoStop** | Pointer to **bool** |  | [optional] [default to false]
+**Timezone** | Pointer to **string** | specify value only if auto_stop &#x3D; false | [optional] [default to "Europe/London"]
+**StartTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
+**StopTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
+**Weekdays** | Pointer to **[]string** | specify value only if auto_stop &#x3D; false | [optional] 
 
 ## Methods
 
@@ -54,30 +56,80 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 HasAutoDeploy returns a boolean if a field has been set.
 
-### GetAlwaysUp
+### GetAutoDelete
 
-`func (o *EnvironmentDeploymentRuleEditRequest) GetAlwaysUp() bool`
+`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoDelete() bool`
 
-GetAlwaysUp returns the AlwaysUp field if non-nil, zero value otherwise.
+GetAutoDelete returns the AutoDelete field if non-nil, zero value otherwise.
 
-### GetAlwaysUpOk
+### GetAutoDeleteOk
 
-`func (o *EnvironmentDeploymentRuleEditRequest) GetAlwaysUpOk() (*bool, bool)`
+`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoDeleteOk() (*bool, bool)`
 
-GetAlwaysUpOk returns a tuple with the AlwaysUp field if it's non-nil, zero value otherwise
+GetAutoDeleteOk returns a tuple with the AutoDelete field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAlwaysUp
+### SetAutoDelete
 
-`func (o *EnvironmentDeploymentRuleEditRequest) SetAlwaysUp(v bool)`
+`func (o *EnvironmentDeploymentRuleEditRequest) SetAutoDelete(v bool)`
 
-SetAlwaysUp sets AlwaysUp field to given value.
+SetAutoDelete sets AutoDelete field to given value.
 
-### HasAlwaysUp
+### HasAutoDelete
 
-`func (o *EnvironmentDeploymentRuleEditRequest) HasAlwaysUp() bool`
+`func (o *EnvironmentDeploymentRuleEditRequest) HasAutoDelete() bool`
 
-HasAlwaysUp returns a boolean if a field has been set.
+HasAutoDelete returns a boolean if a field has been set.
+
+### GetAutoStop
+
+`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStop() bool`
+
+GetAutoStop returns the AutoStop field if non-nil, zero value otherwise.
+
+### GetAutoStopOk
+
+`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStopOk() (*bool, bool)`
+
+GetAutoStopOk returns a tuple with the AutoStop field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoStop
+
+`func (o *EnvironmentDeploymentRuleEditRequest) SetAutoStop(v bool)`
+
+SetAutoStop sets AutoStop field to given value.
+
+### HasAutoStop
+
+`func (o *EnvironmentDeploymentRuleEditRequest) HasAutoStop() bool`
+
+HasAutoStop returns a boolean if a field has been set.
+
+### GetTimezone
+
+`func (o *EnvironmentDeploymentRuleEditRequest) GetTimezone() string`
+
+GetTimezone returns the Timezone field if non-nil, zero value otherwise.
+
+### GetTimezoneOk
+
+`func (o *EnvironmentDeploymentRuleEditRequest) GetTimezoneOk() (*string, bool)`
+
+GetTimezoneOk returns a tuple with the Timezone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimezone
+
+`func (o *EnvironmentDeploymentRuleEditRequest) SetTimezone(v string)`
+
+SetTimezone sets Timezone field to given value.
+
+### HasTimezone
+
+`func (o *EnvironmentDeploymentRuleEditRequest) HasTimezone() bool`
+
+HasTimezone returns a boolean if a field has been set.
 
 ### GetStartTime
 
@@ -149,41 +201,41 @@ HasStopTime returns a boolean if a field has been set.
 `func (o *EnvironmentDeploymentRuleEditRequest) UnsetStopTime()`
 
 UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
-### GetWeekday
+### GetWeekdays
 
-`func (o *EnvironmentDeploymentRuleEditRequest) GetWeekday() string`
+`func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []string`
 
-GetWeekday returns the Weekday field if non-nil, zero value otherwise.
+GetWeekdays returns the Weekdays field if non-nil, zero value otherwise.
 
-### GetWeekdayOk
+### GetWeekdaysOk
 
-`func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdayOk() (*string, bool)`
+`func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() (*[]string, bool)`
 
-GetWeekdayOk returns a tuple with the Weekday field if it's non-nil, zero value otherwise
+GetWeekdaysOk returns a tuple with the Weekdays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWeekday
+### SetWeekdays
 
-`func (o *EnvironmentDeploymentRuleEditRequest) SetWeekday(v string)`
+`func (o *EnvironmentDeploymentRuleEditRequest) SetWeekdays(v []string)`
 
-SetWeekday sets Weekday field to given value.
+SetWeekdays sets Weekdays field to given value.
 
-### HasWeekday
+### HasWeekdays
 
-`func (o *EnvironmentDeploymentRuleEditRequest) HasWeekday() bool`
+`func (o *EnvironmentDeploymentRuleEditRequest) HasWeekdays() bool`
 
-HasWeekday returns a boolean if a field has been set.
+HasWeekdays returns a boolean if a field has been set.
 
-### SetWeekdayNil
+### SetWeekdaysNil
 
-`func (o *EnvironmentDeploymentRuleEditRequest) SetWeekdayNil(b bool)`
+`func (o *EnvironmentDeploymentRuleEditRequest) SetWeekdaysNil(b bool)`
 
- SetWeekdayNil sets the value for Weekday to be an explicit nil
+ SetWeekdaysNil sets the value for Weekdays to be an explicit nil
 
-### UnsetWeekday
-`func (o *EnvironmentDeploymentRuleEditRequest) UnsetWeekday()`
+### UnsetWeekdays
+`func (o *EnvironmentDeploymentRuleEditRequest) UnsetWeekdays()`
 
-UnsetWeekday ensures that no value is present for Weekday, not even an explicit nil
+UnsetWeekdays ensures that no value is present for Weekdays, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

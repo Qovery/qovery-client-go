@@ -4,14 +4,14 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EditEnvironmentDeployemtnRule**](EnvironmentDeploymentRuleApi.md#EditEnvironmentDeployemtnRule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
+[**EditEnvironmentDeploymentRule**](EnvironmentDeploymentRuleApi.md#EditEnvironmentDeploymentRule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
 [**GetEnvironmentDeploymentRule**](EnvironmentDeploymentRuleApi.md#GetEnvironmentDeploymentRule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
 
 
 
-## EditEnvironmentDeployemtnRule
+## EditEnvironmentDeploymentRule
 
-> EnvironmentDeploymentRuleResponse EditEnvironmentDeployemtnRule(ctx, environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
+> EnvironmentDeploymentRuleResponse EditEnvironmentDeploymentRule(ctx, environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
 
 Edit an environment deployment rule
 
@@ -28,19 +28,19 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
-    deploymentRuleId := TODO // string | Deployment Rule ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
     environmentDeploymentRuleEditRequest := *openapiclient.NewEnvironmentDeploymentRuleEditRequest() // EnvironmentDeploymentRuleEditRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EnvironmentDeploymentRuleApi.EditEnvironmentDeployemtnRule(context.Background(), environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
+    resp, r, err := api_client.EnvironmentDeploymentRuleApi.EditEnvironmentDeploymentRule(context.Background(), environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleApi.EditEnvironmentDeployemtnRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleApi.EditEnvironmentDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditEnvironmentDeployemtnRule`: EnvironmentDeploymentRuleResponse
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleApi.EditEnvironmentDeployemtnRule`: %v\n", resp)
+    // response from `EditEnvironmentDeploymentRule`: EnvironmentDeploymentRuleResponse
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleApi.EditEnvironmentDeploymentRule`: %v\n", resp)
 }
 ```
 
@@ -50,12 +50,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
-**deploymentRuleId** | [**string**](.md) | Deployment Rule ID | 
+**environmentId** | **string** | Environment ID | 
+**deploymentRuleId** | **string** | Deployment Rule ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEditEnvironmentDeployemtnRuleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEditEnvironmentDeploymentRuleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -121,7 +121,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
+**environmentId** | **string** | Environment ID | 
 
 ### Other Parameters
 

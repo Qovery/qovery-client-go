@@ -9,16 +9,17 @@ Name | Type | Description | Notes
 **Mode** | **string** |  | 
 **Cluster** | **string** |  | 
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
-**AlwaysUp** | **bool** |  | [default to false]
-**StartTime** | Pointer to **NullableTime** | specify value only if always_up &#x3D; false | [optional] 
-**StopTime** | Pointer to **NullableTime** | specify value only if always_up &#x3D; false | [optional] 
-**Weekday** | Pointer to **NullableString** | specify value only if always_up &#x3D; false | [optional] 
+**AutoStop** | **bool** |  | [default to false]
+**Timezone** | Pointer to **string** | specify value only if auto_stop &#x3D; false | [optional] [default to "Europe/London"]
+**StartTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
+**StopTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
+**Weekdays** | Pointer to **[]string** | specify value only if auto_stop &#x3D; false | [optional] 
 
 ## Methods
 
 ### NewDeploymentRuleRequest
 
-`func NewDeploymentRuleRequest(name string, mode string, cluster string, alwaysUp bool, ) *DeploymentRuleRequest`
+`func NewDeploymentRuleRequest(name string, mode string, cluster string, autoStop bool, ) *DeploymentRuleRequest`
 
 NewDeploymentRuleRequest instantiates a new DeploymentRuleRequest object
 This constructor will assign default values to properties that have it defined,
@@ -143,25 +144,50 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 HasAutoDeploy returns a boolean if a field has been set.
 
-### GetAlwaysUp
+### GetAutoStop
 
-`func (o *DeploymentRuleRequest) GetAlwaysUp() bool`
+`func (o *DeploymentRuleRequest) GetAutoStop() bool`
 
-GetAlwaysUp returns the AlwaysUp field if non-nil, zero value otherwise.
+GetAutoStop returns the AutoStop field if non-nil, zero value otherwise.
 
-### GetAlwaysUpOk
+### GetAutoStopOk
 
-`func (o *DeploymentRuleRequest) GetAlwaysUpOk() (*bool, bool)`
+`func (o *DeploymentRuleRequest) GetAutoStopOk() (*bool, bool)`
 
-GetAlwaysUpOk returns a tuple with the AlwaysUp field if it's non-nil, zero value otherwise
+GetAutoStopOk returns a tuple with the AutoStop field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAlwaysUp
+### SetAutoStop
 
-`func (o *DeploymentRuleRequest) SetAlwaysUp(v bool)`
+`func (o *DeploymentRuleRequest) SetAutoStop(v bool)`
 
-SetAlwaysUp sets AlwaysUp field to given value.
+SetAutoStop sets AutoStop field to given value.
 
+
+### GetTimezone
+
+`func (o *DeploymentRuleRequest) GetTimezone() string`
+
+GetTimezone returns the Timezone field if non-nil, zero value otherwise.
+
+### GetTimezoneOk
+
+`func (o *DeploymentRuleRequest) GetTimezoneOk() (*string, bool)`
+
+GetTimezoneOk returns a tuple with the Timezone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimezone
+
+`func (o *DeploymentRuleRequest) SetTimezone(v string)`
+
+SetTimezone sets Timezone field to given value.
+
+### HasTimezone
+
+`func (o *DeploymentRuleRequest) HasTimezone() bool`
+
+HasTimezone returns a boolean if a field has been set.
 
 ### GetStartTime
 
@@ -233,41 +259,41 @@ HasStopTime returns a boolean if a field has been set.
 `func (o *DeploymentRuleRequest) UnsetStopTime()`
 
 UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
-### GetWeekday
+### GetWeekdays
 
-`func (o *DeploymentRuleRequest) GetWeekday() string`
+`func (o *DeploymentRuleRequest) GetWeekdays() []string`
 
-GetWeekday returns the Weekday field if non-nil, zero value otherwise.
+GetWeekdays returns the Weekdays field if non-nil, zero value otherwise.
 
-### GetWeekdayOk
+### GetWeekdaysOk
 
-`func (o *DeploymentRuleRequest) GetWeekdayOk() (*string, bool)`
+`func (o *DeploymentRuleRequest) GetWeekdaysOk() (*[]string, bool)`
 
-GetWeekdayOk returns a tuple with the Weekday field if it's non-nil, zero value otherwise
+GetWeekdaysOk returns a tuple with the Weekdays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWeekday
+### SetWeekdays
 
-`func (o *DeploymentRuleRequest) SetWeekday(v string)`
+`func (o *DeploymentRuleRequest) SetWeekdays(v []string)`
 
-SetWeekday sets Weekday field to given value.
+SetWeekdays sets Weekdays field to given value.
 
-### HasWeekday
+### HasWeekdays
 
-`func (o *DeploymentRuleRequest) HasWeekday() bool`
+`func (o *DeploymentRuleRequest) HasWeekdays() bool`
 
-HasWeekday returns a boolean if a field has been set.
+HasWeekdays returns a boolean if a field has been set.
 
-### SetWeekdayNil
+### SetWeekdaysNil
 
-`func (o *DeploymentRuleRequest) SetWeekdayNil(b bool)`
+`func (o *DeploymentRuleRequest) SetWeekdaysNil(b bool)`
 
- SetWeekdayNil sets the value for Weekday to be an explicit nil
+ SetWeekdaysNil sets the value for Weekdays to be an explicit nil
 
-### UnsetWeekday
-`func (o *DeploymentRuleRequest) UnsetWeekday()`
+### UnsetWeekdays
+`func (o *DeploymentRuleRequest) UnsetWeekdays()`
 
-UnsetWeekday ensures that no value is present for Weekday, not even an explicit nil
+UnsetWeekdays ensures that no value is present for Weekdays, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

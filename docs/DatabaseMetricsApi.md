@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetDatabaseMetricCpu**](DatabaseMetricsApi.md#GetDatabaseMetricCpu) | **Get** /database/{databaseId}/metric/cpu | Get CPU consumption metric over time for the database
 [**GetDatabaseMetricHealthCheck**](DatabaseMetricsApi.md#GetDatabaseMetricHealthCheck) | **Get** /database/{databaseId}/metric/healthCheck | Get Health Check latency  metric over time for the database
 [**GetDatabaseMetricMemory**](DatabaseMetricsApi.md#GetDatabaseMetricMemory) | **Get** /database/{databaseId}/metric/memory | Get Memory consumption metric over time for the database
+[**GetDatabaseMetricRestart**](DatabaseMetricsApi.md#GetDatabaseMetricRestart) | **Get** /database/{databaseId}/metric/restart | List database restarts
 [**GetDatabaseMetricStorage**](DatabaseMetricsApi.md#GetDatabaseMetricStorage) | **Get** /database/{databaseId}/metric/storage | Get Storage consumption metric over time for the database
 
 
@@ -31,7 +32,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -51,7 +52,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -99,7 +100,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
@@ -120,7 +121,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -171,7 +172,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
@@ -192,7 +193,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -241,7 +242,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
@@ -262,7 +263,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -277,6 +278,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MetricMemoryDatapointResponseList**](MetricMemoryDatapointResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDatabaseMetricRestart
+
+> MetricRestartResponse GetDatabaseMetricRestart(ctx, applicationId).LastSeconds(lastSeconds).Execute()
+
+List database restarts
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricRestart(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricRestart``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDatabaseMetricRestart`: MetricRestartResponse
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseMetricsApi.GetDatabaseMetricRestart`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**applicationId** | **string** | Application ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDatabaseMetricRestartRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **lastSeconds** | **float32** | Up to how many seconds in the past to ask analytics results | 
+
+### Return type
+
+[**MetricRestartResponse**](MetricRestartResponse.md)
 
 ### Authorization
 
@@ -311,7 +384,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
@@ -332,7 +405,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 

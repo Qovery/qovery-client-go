@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CloneEnvironment
 
-> EnvironmentResponse CloneEnvironment(ctx, environmentId).Name(name).Execute()
+> EnvironmentResponse CloneEnvironment(ctx, environmentId).CloneRequest(cloneRequest).Execute()
 
 Clone environment
 
@@ -32,12 +32,12 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
-    name := *openapiclient.NewName("Name_example") // Name |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    cloneRequest := *openapiclient.NewCloneRequest("Name_example", "Cluster_example") // CloneRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EnvironmentActionsApi.CloneEnvironment(context.Background(), environmentId).Name(name).Execute()
+    resp, r, err := api_client.EnvironmentActionsApi.CloneEnvironment(context.Background(), environmentId).CloneRequest(cloneRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.CloneEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
+**environmentId** | **string** | Environment ID | 
 
 ### Other Parameters
 
@@ -63,7 +63,7 @@ Other parameters are passed through a pointer to a apiCloneEnvironmentRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **name** | [**Name**](Name.md) |  | 
+ **cloneRequest** | [**CloneRequest**](CloneRequest.md) |  | 
 
 ### Return type
 
@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -124,7 +124,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
+**environmentId** | **string** | Environment ID | 
 
 ### Other Parameters
 
@@ -172,7 +172,7 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
     environmentRestartRequest := *openapiclient.NewEnvironmentRestartRequest() // EnvironmentRestartRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -193,7 +193,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
+**environmentId** | **string** | Environment ID | 
 
 ### Other Parameters
 
@@ -242,7 +242,7 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -262,7 +262,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
+**environmentId** | **string** | Environment ID | 
 
 ### Other Parameters
 

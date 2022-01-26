@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     databaseEditRequest := *openapiclient.NewDatabaseEditRequest() // DatabaseEditRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -124,7 +124,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -173,7 +173,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     credentialsRequest := *openapiclient.NewCredentialsRequest("Login_example", "Password_example") // CredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -194,7 +194,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -243,7 +243,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -263,7 +263,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -311,7 +311,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -331,7 +331,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -379,7 +379,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -399,7 +399,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -447,7 +447,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -467,7 +467,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 

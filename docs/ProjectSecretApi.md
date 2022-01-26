@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
     secretRequest := *openapiclient.NewSecretRequest("Key_example", "Value_example") // SecretRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
+**projectId** | **string** | Project ID | 
 
 ### Other Parameters
 
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
-    secretId := TODO // string | Secret ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -128,8 +128,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**projectId** | **string** | Project ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 
@@ -181,8 +181,8 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
-    secretId := TODO // string | Secret ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -203,8 +203,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**projectId** | **string** | Project ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 
@@ -256,8 +256,8 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
-    secretId := TODO // string | Secret ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     secretEditRequest := *openapiclient.NewSecretEditRequest() // SecretEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -278,8 +278,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**projectId** | **string** | Project ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 
@@ -329,7 +329,7 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -349,7 +349,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
+**projectId** | **string** | Project ID | 
 
 ### Other Parameters
 
@@ -399,8 +399,8 @@ import (
 )
 
 func main() {
-    projectId := TODO // string | Project ID
-    secretId := TODO // string | Secret ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -418,8 +418,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | [**string**](.md) | Project ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**projectId** | **string** | Project ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 

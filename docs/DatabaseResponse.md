@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Port** | Pointer to **int32** |  | [optional] 
 **MaximumCpu** | Pointer to **float32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **MaximumMemory** | Pointer to **float32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -164,6 +165,31 @@ SetMaximumMemory sets MaximumMemory field to given value.
 `func (o *DatabaseResponse) HasMaximumMemory() bool`
 
 HasMaximumMemory returns a boolean if a field has been set.
+
+### GetDiskEncrypted
+
+`func (o *DatabaseResponse) GetDiskEncrypted() bool`
+
+GetDiskEncrypted returns the DiskEncrypted field if non-nil, zero value otherwise.
+
+### GetDiskEncryptedOk
+
+`func (o *DatabaseResponse) GetDiskEncryptedOk() (*bool, bool)`
+
+GetDiskEncryptedOk returns a tuple with the DiskEncrypted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskEncrypted
+
+`func (o *DatabaseResponse) SetDiskEncrypted(v bool)`
+
+SetDiskEncrypted sets DiskEncrypted field to given value.
+
+### HasDiskEncrypted
+
+`func (o *DatabaseResponse) HasDiskEncrypted() bool`
+
+HasDiskEncrypted returns a boolean if a field has been set.
 
 ### GetId
 

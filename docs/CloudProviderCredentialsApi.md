@@ -14,17 +14,14 @@ Method | HTTP request | Description
 [**EditDOCredentials**](CloudProviderCredentialsApi.md#EditDOCredentials) | **Put** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Edit a set of Digital Ocean credentials
 [**EditScalewayCredentials**](CloudProviderCredentialsApi.md#EditScalewayCredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
 [**ListAWSCredentials**](CloudProviderCredentialsApi.md#ListAWSCredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
-[**ListAWSRegions**](CloudProviderCredentialsApi.md#ListAWSRegions) | **Get** /aws/region | List AWS regions
 [**ListDOCredentials**](CloudProviderCredentialsApi.md#ListDOCredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials | List DO credentials
-[**ListDORegions**](CloudProviderCredentialsApi.md#ListDORegions) | **Get** /digitalOcean/region | List DO regions
 [**ListScalewayCredentials**](CloudProviderCredentialsApi.md#ListScalewayCredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
-[**ListScalewayRegions**](CloudProviderCredentialsApi.md#ListScalewayRegions) | **Get** /scaleway/region | List Scaleway regions
 
 
 
 ## CreateAWSCredentials
 
-> ClusterCredentialsResponse CreateAWSCredentials(ctx, organizationId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+> ClusterCredentialsResponse CreateAWSCredentials(ctx, organizationId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
 
 Create AWS credentials set
 
@@ -41,12 +38,12 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterCredentialsRequest := *openapiclient.NewClusterCredentialsRequest("Name_example") // ClusterCredentialsRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example") // AwsCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.CreateAWSCredentials(context.Background(), organizationId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+    resp, r, err := api_client.CloudProviderCredentialsApi.CreateAWSCredentials(context.Background(), organizationId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.CreateAWSCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +59,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -72,7 +69,7 @@ Other parameters are passed through a pointer to a apiCreateAWSCredentialsReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clusterCredentialsRequest** | [**ClusterCredentialsRequest**](ClusterCredentialsRequest.md) |  | 
+ **awsCredentialsRequest** | [**AwsCredentialsRequest**](AwsCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -94,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## CreateDOCredentials
 
-> ClusterCredentialsResponse CreateDOCredentials(ctx, organizationId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+> ClusterCredentialsResponse CreateDOCredentials(ctx, organizationId).DoCredentialsRequest(doCredentialsRequest).Execute()
 
 Create Digital Ocean credentials set
 
@@ -111,12 +108,12 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterCredentialsRequest := *openapiclient.NewClusterCredentialsRequest("Name_example") // ClusterCredentialsRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    doCredentialsRequest := *openapiclient.NewDoCredentialsRequest("Name_example") // DoCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.CreateDOCredentials(context.Background(), organizationId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+    resp, r, err := api_client.CloudProviderCredentialsApi.CreateDOCredentials(context.Background(), organizationId).DoCredentialsRequest(doCredentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.CreateDOCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +129,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -142,7 +139,7 @@ Other parameters are passed through a pointer to a apiCreateDOCredentialsRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clusterCredentialsRequest** | [**ClusterCredentialsRequest**](ClusterCredentialsRequest.md) |  | 
+ **doCredentialsRequest** | [**DoCredentialsRequest**](DoCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -164,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## CreateScalewayCredentials
 
-> ClusterCredentialsResponse CreateScalewayCredentials(ctx, organizationId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+> ClusterCredentialsResponse CreateScalewayCredentials(ctx, organizationId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
 
 Create Scaleway credentials set
 
@@ -181,12 +178,12 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    clusterCredentialsRequest := *openapiclient.NewClusterCredentialsRequest("Name_example") // ClusterCredentialsRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example") // ScalewayCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.CreateScalewayCredentials(context.Background(), organizationId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+    resp, r, err := api_client.CloudProviderCredentialsApi.CreateScalewayCredentials(context.Background(), organizationId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.CreateScalewayCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,7 +199,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -212,7 +209,7 @@ Other parameters are passed through a pointer to a apiCreateScalewayCredentialsR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clusterCredentialsRequest** | [**ClusterCredentialsRequest**](ClusterCredentialsRequest.md) |  | 
+ **scalewayCredentialsRequest** | [**ScalewayCredentialsRequest**](ScalewayCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -251,8 +248,8 @@ import (
 )
 
 func main() {
-    credentialsId := TODO // string | Credentials ID
-    organizationId := TODO // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -270,8 +267,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**credentialsId** | [**string**](.md) | Credentials ID | 
-**organizationId** | [**string**](.md) | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -320,8 +317,8 @@ import (
 )
 
 func main() {
-    credentialsId := TODO // string | Credentials ID
-    organizationId := TODO // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -339,8 +336,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**credentialsId** | [**string**](.md) | Credentials ID | 
-**organizationId** | [**string**](.md) | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -389,8 +386,8 @@ import (
 )
 
 func main() {
-    credentialsId := TODO // string | Credentials ID
-    organizationId := TODO // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -408,8 +405,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**credentialsId** | [**string**](.md) | Credentials ID | 
-**organizationId** | [**string**](.md) | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -441,7 +438,7 @@ Name | Type | Description  | Notes
 
 ## EditAWSCredentials
 
-> ClusterCredentialsResponse EditAWSCredentials(ctx, organizationId, credentialsId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+> ClusterCredentialsResponse EditAWSCredentials(ctx, organizationId, credentialsId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
 
 Edit a set of AWS credentials
 
@@ -458,13 +455,13 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    credentialsId := TODO // string | Credentials ID
-    clusterCredentialsRequest := *openapiclient.NewClusterCredentialsRequest("Name_example") // ClusterCredentialsRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+    awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example") // AwsCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.EditAWSCredentials(context.Background(), organizationId, credentialsId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+    resp, r, err := api_client.CloudProviderCredentialsApi.EditAWSCredentials(context.Background(), organizationId, credentialsId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.EditAWSCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -480,8 +477,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**credentialsId** | [**string**](.md) | Credentials ID | 
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
 
 ### Other Parameters
 
@@ -492,7 +489,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **clusterCredentialsRequest** | [**ClusterCredentialsRequest**](ClusterCredentialsRequest.md) |  | 
+ **awsCredentialsRequest** | [**AwsCredentialsRequest**](AwsCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -514,7 +511,7 @@ Name | Type | Description  | Notes
 
 ## EditDOCredentials
 
-> ClusterCredentialsResponse EditDOCredentials(ctx, organizationId, credentialsId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+> ClusterCredentialsResponse EditDOCredentials(ctx, organizationId, credentialsId).DoCredentialsRequest(doCredentialsRequest).Execute()
 
 Edit a set of Digital Ocean credentials
 
@@ -531,13 +528,13 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    credentialsId := TODO // string | Credentials ID
-    clusterCredentialsRequest := *openapiclient.NewClusterCredentialsRequest("Name_example") // ClusterCredentialsRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+    doCredentialsRequest := *openapiclient.NewDoCredentialsRequest("Name_example") // DoCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.EditDOCredentials(context.Background(), organizationId, credentialsId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+    resp, r, err := api_client.CloudProviderCredentialsApi.EditDOCredentials(context.Background(), organizationId, credentialsId).DoCredentialsRequest(doCredentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.EditDOCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,8 +550,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**credentialsId** | [**string**](.md) | Credentials ID | 
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
 
 ### Other Parameters
 
@@ -565,7 +562,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **clusterCredentialsRequest** | [**ClusterCredentialsRequest**](ClusterCredentialsRequest.md) |  | 
+ **doCredentialsRequest** | [**DoCredentialsRequest**](DoCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -587,7 +584,7 @@ Name | Type | Description  | Notes
 
 ## EditScalewayCredentials
 
-> ClusterCredentialsResponse EditScalewayCredentials(ctx, organizationId, credentialsId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+> ClusterCredentialsResponse EditScalewayCredentials(ctx, organizationId, credentialsId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
 
 Edit a set of Scaleway credentials
 
@@ -604,13 +601,13 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
-    credentialsId := TODO // string | Credentials ID
-    clusterCredentialsRequest := *openapiclient.NewClusterCredentialsRequest("Name_example") // ClusterCredentialsRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example") // ScalewayCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.EditScalewayCredentials(context.Background(), organizationId, credentialsId).ClusterCredentialsRequest(clusterCredentialsRequest).Execute()
+    resp, r, err := api_client.CloudProviderCredentialsApi.EditScalewayCredentials(context.Background(), organizationId, credentialsId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.EditScalewayCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -626,8 +623,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
-**credentialsId** | [**string**](.md) | Credentials ID | 
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
 
 ### Other Parameters
 
@@ -638,7 +635,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **clusterCredentialsRequest** | [**ClusterCredentialsRequest**](ClusterCredentialsRequest.md) |  | 
+ **scalewayCredentialsRequest** | [**ScalewayCredentialsRequest**](ScalewayCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -677,7 +674,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -697,7 +694,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -711,65 +708,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterCredentialsResponseList**](ClusterCredentialsResponseList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListAWSRegions
-
-> ClusterRegionResponseList ListAWSRegions(ctx).Execute()
-
-List AWS regions
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.ListAWSRegions(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.ListAWSRegions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListAWSRegions`: ClusterRegionResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.ListAWSRegions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListAWSRegionsRequest struct via the builder pattern
-
-
-### Return type
-
-[**ClusterRegionResponseList**](ClusterRegionResponseList.md)
 
 ### Authorization
 
@@ -804,7 +742,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -824,7 +762,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -838,65 +776,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterCredentialsResponseList**](ClusterCredentialsResponseList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListDORegions
-
-> ClusterRegionResponseList ListDORegions(ctx).Execute()
-
-List DO regions
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.ListDORegions(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.ListDORegions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListDORegions`: ClusterRegionResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.ListDORegions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListDORegionsRequest struct via the builder pattern
-
-
-### Return type
-
-[**ClusterRegionResponseList**](ClusterRegionResponseList.md)
 
 ### Authorization
 
@@ -931,7 +810,7 @@ import (
 )
 
 func main() {
-    organizationId := TODO // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -951,7 +830,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | [**string**](.md) | Organization ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -965,65 +844,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterCredentialsResponseList**](ClusterCredentialsResponseList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListScalewayRegions
-
-> ClusterRegionResponseList ListScalewayRegions(ctx).Execute()
-
-List Scaleway regions
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.CloudProviderCredentialsApi.ListScalewayRegions(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.ListScalewayRegions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListScalewayRegions`: ClusterRegionResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.ListScalewayRegions`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListScalewayRegionsRequest struct via the builder pattern
-
-
-### Return type
-
-[**ClusterRegionResponseList**](ClusterRegionResponseList.md)
 
 ### Authorization
 

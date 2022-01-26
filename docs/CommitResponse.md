@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Message** | **string** |  | 
 **AuthorName** | **string** |  | 
 **AuthorAvatarUrl** | Pointer to **string** |  | [optional] 
+**CommitPageUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -154,6 +155,31 @@ SetAuthorAvatarUrl sets AuthorAvatarUrl field to given value.
 `func (o *CommitResponse) HasAuthorAvatarUrl() bool`
 
 HasAuthorAvatarUrl returns a boolean if a field has been set.
+
+### GetCommitPageUrl
+
+`func (o *CommitResponse) GetCommitPageUrl() string`
+
+GetCommitPageUrl returns the CommitPageUrl field if non-nil, zero value otherwise.
+
+### GetCommitPageUrlOk
+
+`func (o *CommitResponse) GetCommitPageUrlOk() (*string, bool)`
+
+GetCommitPageUrlOk returns a tuple with the CommitPageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommitPageUrl
+
+`func (o *CommitResponse) SetCommitPageUrl(v string)`
+
+SetCommitPageUrl sets CommitPageUrl field to given value.
+
+### HasCommitPageUrl
+
+`func (o *CommitResponse) HasCommitPageUrl() bool`
+
+HasCommitPageUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | name is case insensitive | [optional] 
+**Name** | Pointer to **string** | name is case-insensitive | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **Accessibility** | Pointer to **string** |  | [optional] 
 **Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
