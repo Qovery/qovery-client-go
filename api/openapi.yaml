@@ -4,13 +4,9 @@ info:
     email: support+api+documentation@qovery.com
     name: Qovery Support Team
     url: https://discord.qovery.com
-  description: |-
+  description: |
     - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider.
     - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
-
-    # Authentication
-
-    <!-- ReDoc-Inject: <security-definitions> -->
   title: '[BETA] Qovery API'
   version: 1.0.0
   x-logo:
@@ -3287,6 +3283,7 @@ paths:
         name: toUpdate
         required: false
         schema:
+          default: false
           type: boolean
         style: form
       responses:
@@ -6802,10 +6799,10 @@ paths:
       description: Get database restart message and timestamp.
       operationId: getDatabaseMetricRestart
       parameters:
-      - description: Application ID
+      - description: Database ID
         explode: false
         in: path
-        name: applicationId
+        name: databaseId
         required: true
         schema:
           format: uuid
@@ -8159,9 +8156,33 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
       example:
-        databases: ""
+        databases:
+        - name: name
+          status: READY
+        - name: name
+          status: READY
         status: READY
-        applications: ""
+        applications:
+        - name: name
+          commit:
+            author_name: author_name
+            git_commit_id: git_commit_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            author_avatar_url: author_avatar_url
+            tag: v2.1.1
+            message: message
+            commit_page_url: commit_page_url
+          status: READY
+        - name: name
+          commit:
+            author_name: author_name
+            git_commit_id: git_commit_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            author_avatar_url: author_avatar_url
+            tag: v2.1.1
+            message: message
+            commit_page_url: commit_page_url
+          status: READY
       properties:
         status:
           enum:
@@ -8185,8 +8206,12 @@ components:
           - RUNNING_ERROR
           type: string
         applications:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryApplicationResponse'
           type: array
         databases:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryDatabaseResponse'
           type: array
       type: object
     LogResponse:
@@ -8844,7 +8869,7 @@ components:
         name: name
         description: description
         cpu: 1250
-        max_running_instances: 0
+        max_running_instances: 6
         git_repository:
           root_path: /
           branch: feat/text_xxx
@@ -8911,15 +8936,14 @@ components:
           description: |
             Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
             Note: -1 means that there is no limit.
-          maximum: -1
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         env_preview:
           default: true
-          description: "Specify if the environment preview option is activated or\
-            \ not for this application.\nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request. \n"
+          description: |
+            Specify if the environment preview option is activated or not for this application.
+            If activated, a preview environment will be automatically cloned at each pull request.
           type: boolean
       required:
       - git_repository
@@ -8953,7 +8977,7 @@ components:
         build_mode: DOCKER
         description: description
         cpu: 1250
-        max_running_instances: 0
+        max_running_instances: 6
         git_repository:
           root_path: /
           branch: feat/text_xxx
@@ -9024,22 +9048,20 @@ components:
           description: |
             Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
             Note: -1 means that there is no limit.
-          maximum: -1
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         env_preview:
           default: true
-          description: "Specify if the environment preview option is activated or\
-            \ not for this application.\nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request. \n"
+          description: |
+            Specify if the environment preview option is activated or not for this application.
+            If activated, a preview environment will be automatically cloned at each pull request.
           type: boolean
         sticky-session:
           default: false
-          description: "Specify if the sticky session option (also called persistant\
-            \ session) is activated or not for this application.\nIf activated, user\
-            \ will be redirected by the load balancer to the same instance each time\
-            \ he access to the application. \n"
+          description: |
+            Specify if the sticky session option (also called persistant session) is activated or not for this application.
+            If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
           type: boolean
       type: object
     DeploymentHistoryResponseList:
@@ -9084,6 +9106,17 @@ components:
     DeploymentHistoryApplicationResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
+      example:
+        name: name
+        commit:
+          author_name: author_name
+          git_commit_id: git_commit_id
+          created_at: 2000-01-23T04:56:07.000+00:00
+          author_avatar_url: author_avatar_url
+          tag: v2.1.1
+          message: message
+          commit_page_url: commit_page_url
+        status: READY
       properties:
         name:
           type: string
@@ -9114,6 +9147,9 @@ components:
     DeploymentHistoryDatabaseResponse:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
+      example:
+        name: name
+        status: READY
       properties:
         name:
           type: string
@@ -9190,7 +9226,7 @@ components:
         build_mode: BUILDPACKS
         description: description
         cpu: 1250
-        max_running_instances: 0
+        max_running_instances: 6
         git_repository:
           owner: John Doe
           deployed_commit_tag: v1.0.1
@@ -9285,15 +9321,14 @@ components:
           description: |
             Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
             Note: -1 means that there is no limit.
-          maximum: -1
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         env_preview:
           default: true
-          description: "Specify if the environment preview option is activated or\
-            \ not for this application.\nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request. \n"
+          description: |
+            Specify if the environment preview option is activated or not for this application.
+            If activated, a preview environment will be automatically cloned at each pull request.
           type: boolean
       type: object
     CustomDomainRequest:
@@ -9504,7 +9539,7 @@ components:
           build_mode: BUILDPACKS
           description: description
           cpu: 1250
-          max_running_instances: 0
+          max_running_instances: 6
           git_repository:
             owner: John Doe
             deployed_commit_tag: v1.0.1
@@ -9530,7 +9565,7 @@ components:
           build_mode: BUILDPACKS
           description: description
           cpu: 1250
-          max_running_instances: 0
+          max_running_instances: 6
           git_repository:
             owner: John Doe
             deployed_commit_tag: v1.0.1
@@ -9682,14 +9717,12 @@ components:
         results:
         - mode: PRODUCTION
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           project:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cloud_provider: '{}'
         - mode: PRODUCTION
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           project:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -9977,12 +10010,60 @@ components:
       - $ref: '#/components/schemas/PaginationDataResponse'
       example:
         results:
-        - databases: ""
+        - databases:
+          - name: name
+            status: READY
+          - name: name
+            status: READY
           status: READY
-          applications: ""
-        - databases: ""
+          applications:
+          - name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            status: READY
+          - name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            status: READY
+        - databases:
+          - name: name
+            status: READY
+          - name: name
+            status: READY
           status: READY
-          applications: ""
+          applications:
+          - name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            status: READY
+          - name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            status: READY
       properties:
         results:
           items:
@@ -10378,7 +10459,6 @@ components:
       example:
         mode: PRODUCTION
         last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         project:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10407,12 +10487,8 @@ components:
           - PRODUCTION
           - DEVELOPMENT
           type: string
-        cluster_id:
-          format: uuid
-          type: string
       required:
       - cloud_provider
-      - cluster_id
       - mode
       - name
       type: object
@@ -11932,7 +12008,9 @@ components:
       type: object
     ClusterFeatureResponse:
       example:
-        accepted_values: ""
+        accepted_values:
+        - ""
+        - ""
         value_type: BOOLEAN
         cost_per_month_in_cents: 9900
         is_value_updatable: false
@@ -11976,6 +12054,10 @@ components:
           default: false
           type: boolean
         accepted_values:
+          items:
+            oneOf:
+            - type: string
+            - type: boolean
           nullable: false
           type: array
       type: object
@@ -12014,7 +12096,9 @@ components:
     ClusterFeatureResponseList:
       example:
         results:
-        - accepted_values: ""
+        - accepted_values:
+          - ""
+          - ""
           value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
@@ -12024,7 +12108,9 @@ components:
           value: value
           cost_per_month: 99
           currency_code: USD
-        - accepted_values: ""
+        - accepted_values:
+          - ""
+          - ""
           value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false

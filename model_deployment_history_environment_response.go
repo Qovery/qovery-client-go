@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.  # Authentication  <!-- ReDoc-Inject: <security-definitions> -->
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,12 +18,12 @@ import (
 
 // DeploymentHistoryEnvironmentResponse struct for DeploymentHistoryEnvironmentResponse
 type DeploymentHistoryEnvironmentResponse struct {
-	Status       *string    `json:"status,omitempty"`
-	Applications *Array     `json:"applications,omitempty"`
-	Databases    *Array     `json:"databases,omitempty"`
-	Id           string     `json:"id"`
-	CreatedAt    time.Time  `json:"created_at"`
-	UpdatedAt    *time.Time `json:"updated_at,omitempty"`
+	Status       *string                                 `json:"status,omitempty"`
+	Applications *[]DeploymentHistoryApplicationResponse `json:"applications,omitempty"`
+	Databases    *[]DeploymentHistoryDatabaseResponse    `json:"databases,omitempty"`
+	Id           string                                  `json:"id"`
+	CreatedAt    time.Time                               `json:"created_at"`
+	UpdatedAt    *time.Time                              `json:"updated_at,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironmentResponse instantiates a new DeploymentHistoryEnvironmentResponse object
@@ -78,9 +78,9 @@ func (o *DeploymentHistoryEnvironmentResponse) SetStatus(v string) {
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *DeploymentHistoryEnvironmentResponse) GetApplications() Array {
+func (o *DeploymentHistoryEnvironmentResponse) GetApplications() []DeploymentHistoryApplicationResponse {
 	if o == nil || o.Applications == nil {
-		var ret Array
+		var ret []DeploymentHistoryApplicationResponse
 		return ret
 	}
 	return *o.Applications
@@ -88,7 +88,7 @@ func (o *DeploymentHistoryEnvironmentResponse) GetApplications() Array {
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetApplicationsOk() (*Array, bool) {
+func (o *DeploymentHistoryEnvironmentResponse) GetApplicationsOk() (*[]DeploymentHistoryApplicationResponse, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -104,15 +104,15 @@ func (o *DeploymentHistoryEnvironmentResponse) HasApplications() bool {
 	return false
 }
 
-// SetApplications gets a reference to the given Array and assigns it to the Applications field.
-func (o *DeploymentHistoryEnvironmentResponse) SetApplications(v Array) {
+// SetApplications gets a reference to the given []DeploymentHistoryApplicationResponse and assigns it to the Applications field.
+func (o *DeploymentHistoryEnvironmentResponse) SetApplications(v []DeploymentHistoryApplicationResponse) {
 	o.Applications = &v
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
-func (o *DeploymentHistoryEnvironmentResponse) GetDatabases() Array {
+func (o *DeploymentHistoryEnvironmentResponse) GetDatabases() []DeploymentHistoryDatabaseResponse {
 	if o == nil || o.Databases == nil {
-		var ret Array
+		var ret []DeploymentHistoryDatabaseResponse
 		return ret
 	}
 	return *o.Databases
@@ -120,7 +120,7 @@ func (o *DeploymentHistoryEnvironmentResponse) GetDatabases() Array {
 
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetDatabasesOk() (*Array, bool) {
+func (o *DeploymentHistoryEnvironmentResponse) GetDatabasesOk() (*[]DeploymentHistoryDatabaseResponse, bool) {
 	if o == nil || o.Databases == nil {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *DeploymentHistoryEnvironmentResponse) HasDatabases() bool {
 	return false
 }
 
-// SetDatabases gets a reference to the given Array and assigns it to the Databases field.
-func (o *DeploymentHistoryEnvironmentResponse) SetDatabases(v Array) {
+// SetDatabases gets a reference to the given []DeploymentHistoryDatabaseResponse and assigns it to the Databases field.
+func (o *DeploymentHistoryEnvironmentResponse) SetDatabases(v []DeploymentHistoryDatabaseResponse) {
 	o.Databases = &v
 }
 

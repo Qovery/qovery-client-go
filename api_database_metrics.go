@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.  # Authentication  <!-- ReDoc-Inject: <security-definitions> -->
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -468,10 +468,10 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatab
 }
 
 type ApiGetDatabaseMetricRestartRequest struct {
-	ctx           _context.Context
-	ApiService    *DatabaseMetricsApiService
-	applicationId string
-	lastSeconds   *float32
+	ctx         _context.Context
+	ApiService  *DatabaseMetricsApiService
+	databaseId  string
+	lastSeconds *float32
 }
 
 // Up to how many seconds in the past to ask analytics results
@@ -490,14 +490,14 @@ GetDatabaseMetricRestart List database restarts
 Get database restart message and timestamp.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
+ @param databaseId Database ID
  @return ApiGetDatabaseMetricRestartRequest
 */
-func (a *DatabaseMetricsApiService) GetDatabaseMetricRestart(ctx _context.Context, applicationId string) ApiGetDatabaseMetricRestartRequest {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricRestart(ctx _context.Context, databaseId string) ApiGetDatabaseMetricRestartRequest {
 	return ApiGetDatabaseMetricRestartRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		applicationId: applicationId,
+		ApiService: a,
+		ctx:        ctx,
+		databaseId: databaseId,
 	}
 }
 
@@ -517,7 +517,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetData
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/metric/restart"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

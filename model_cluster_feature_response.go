@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.  # Authentication  <!-- ReDoc-Inject: <security-definitions> -->
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,16 +17,16 @@ import (
 
 // ClusterFeatureResponse struct for ClusterFeatureResponse
 type ClusterFeatureResponse struct {
-	Id                  *string         `json:"id,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	Description         NullableString  `json:"description,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      *Array          `json:"accepted_values,omitempty"`
+	Id                  *string               `json:"id,omitempty"`
+	Title               *string               `json:"title,omitempty"`
+	Description         NullableString        `json:"description,omitempty"`
+	CostPerMonthInCents NullableInt32         `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32       `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString        `json:"currency_code,omitempty"`
+	ValueType           *string               `json:"value_type,omitempty"`
+	Value               NullableString        `json:"value,omitempty"`
+	IsValueUpdatable    *bool                 `json:"is_value_updatable,omitempty"`
+	AcceptedValues      *[]OneOfstringboolean `json:"accepted_values,omitempty"`
 }
 
 // NewClusterFeatureResponse instantiates a new ClusterFeatureResponse object
@@ -394,9 +394,9 @@ func (o *ClusterFeatureResponse) SetIsValueUpdatable(v bool) {
 }
 
 // GetAcceptedValues returns the AcceptedValues field value if set, zero value otherwise.
-func (o *ClusterFeatureResponse) GetAcceptedValues() Array {
+func (o *ClusterFeatureResponse) GetAcceptedValues() []OneOfstringboolean {
 	if o == nil || o.AcceptedValues == nil {
-		var ret Array
+		var ret []OneOfstringboolean
 		return ret
 	}
 	return *o.AcceptedValues
@@ -404,7 +404,7 @@ func (o *ClusterFeatureResponse) GetAcceptedValues() Array {
 
 // GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeatureResponse) GetAcceptedValuesOk() (*Array, bool) {
+func (o *ClusterFeatureResponse) GetAcceptedValuesOk() (*[]OneOfstringboolean, bool) {
 	if o == nil || o.AcceptedValues == nil {
 		return nil, false
 	}
@@ -420,8 +420,8 @@ func (o *ClusterFeatureResponse) HasAcceptedValues() bool {
 	return false
 }
 
-// SetAcceptedValues gets a reference to the given Array and assigns it to the AcceptedValues field.
-func (o *ClusterFeatureResponse) SetAcceptedValues(v Array) {
+// SetAcceptedValues gets a reference to the given []OneOfstringboolean and assigns it to the AcceptedValues field.
+func (o *ClusterFeatureResponse) SetAcceptedValues(v []OneOfstringboolean) {
 	o.AcceptedValues = &v
 }
 

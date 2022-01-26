@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.  # Authentication  <!-- ReDoc-Inject: <security-definitions> -->
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -35,17 +35,17 @@ type ClusterResponse struct {
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory              *float32        `json:"memory,omitempty"`
-	MinRunningNodes     *int32          `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes     *int32          `json:"max_running_nodes,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      *Array          `json:"accepted_values,omitempty"`
+	Memory              *float32              `json:"memory,omitempty"`
+	MinRunningNodes     *int32                `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes     *int32                `json:"max_running_nodes,omitempty"`
+	Title               *string               `json:"title,omitempty"`
+	CostPerMonthInCents NullableInt32         `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32       `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString        `json:"currency_code,omitempty"`
+	ValueType           *string               `json:"value_type,omitempty"`
+	Value               NullableString        `json:"value,omitempty"`
+	IsValueUpdatable    *bool                 `json:"is_value_updatable,omitempty"`
+	AcceptedValues      *[]OneOfstringboolean `json:"accepted_values,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
@@ -842,9 +842,9 @@ func (o *ClusterResponse) SetIsValueUpdatable(v bool) {
 }
 
 // GetAcceptedValues returns the AcceptedValues field value if set, zero value otherwise.
-func (o *ClusterResponse) GetAcceptedValues() Array {
+func (o *ClusterResponse) GetAcceptedValues() []OneOfstringboolean {
 	if o == nil || o.AcceptedValues == nil {
-		var ret Array
+		var ret []OneOfstringboolean
 		return ret
 	}
 	return *o.AcceptedValues
@@ -852,7 +852,7 @@ func (o *ClusterResponse) GetAcceptedValues() Array {
 
 // GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetAcceptedValuesOk() (*Array, bool) {
+func (o *ClusterResponse) GetAcceptedValuesOk() (*[]OneOfstringboolean, bool) {
 	if o == nil || o.AcceptedValues == nil {
 		return nil, false
 	}
@@ -868,8 +868,8 @@ func (o *ClusterResponse) HasAcceptedValues() bool {
 	return false
 }
 
-// SetAcceptedValues gets a reference to the given Array and assigns it to the AcceptedValues field.
-func (o *ClusterResponse) SetAcceptedValues(v Array) {
+// SetAcceptedValues gets a reference to the given []OneOfstringboolean and assigns it to the AcceptedValues field.
+func (o *ClusterResponse) SetAcceptedValues(v []OneOfstringboolean) {
 	o.AcceptedValues = &v
 }
 

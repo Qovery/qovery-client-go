@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabaseMetricRestart
 
-> MetricRestartResponse GetDatabaseMetricRestart(ctx, applicationId).LastSeconds(lastSeconds).Execute()
+> MetricRestartResponse GetDatabaseMetricRestart(ctx, databaseId).LastSeconds(lastSeconds).Execute()
 
 List database restarts
 
@@ -314,12 +314,12 @@ import (
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricRestart(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricRestart(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricRestart``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -335,7 +335,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | **string** | Application ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 

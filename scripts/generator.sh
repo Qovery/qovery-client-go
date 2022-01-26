@@ -1,7 +1,8 @@
 #!/bin/sh
+rm -rf api docs *.go
 docker run --rm \
     -v $PWD:/local openapitools/openapi-generator-cli:v5.3.1 generate \
-    -i /local/swagger.json \
+    -i /local/openapi.yaml \
     -g go \
     -o /local \
     --git-user-id qovery \

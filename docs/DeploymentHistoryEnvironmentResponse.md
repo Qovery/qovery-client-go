@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | Pointer to **string** |  | [optional] 
-**Applications** | Pointer to [**Array**](array.md) |  | [optional] 
-**Databases** | Pointer to [**Array**](array.md) |  | [optional] 
+**Applications** | Pointer to [**[]DeploymentHistoryApplicationResponse**](DeploymentHistoryApplicationResponse.md) |  | [optional] 
+**Databases** | Pointer to [**[]DeploymentHistoryDatabaseResponse**](DeploymentHistoryDatabaseResponse.md) |  | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -57,20 +57,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetApplications
 
-`func (o *DeploymentHistoryEnvironmentResponse) GetApplications() Array`
+`func (o *DeploymentHistoryEnvironmentResponse) GetApplications() []DeploymentHistoryApplicationResponse`
 
 GetApplications returns the Applications field if non-nil, zero value otherwise.
 
 ### GetApplicationsOk
 
-`func (o *DeploymentHistoryEnvironmentResponse) GetApplicationsOk() (*Array, bool)`
+`func (o *DeploymentHistoryEnvironmentResponse) GetApplicationsOk() (*[]DeploymentHistoryApplicationResponse, bool)`
 
 GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplications
 
-`func (o *DeploymentHistoryEnvironmentResponse) SetApplications(v Array)`
+`func (o *DeploymentHistoryEnvironmentResponse) SetApplications(v []DeploymentHistoryApplicationResponse)`
 
 SetApplications sets Applications field to given value.
 
@@ -82,20 +82,20 @@ HasApplications returns a boolean if a field has been set.
 
 ### GetDatabases
 
-`func (o *DeploymentHistoryEnvironmentResponse) GetDatabases() Array`
+`func (o *DeploymentHistoryEnvironmentResponse) GetDatabases() []DeploymentHistoryDatabaseResponse`
 
 GetDatabases returns the Databases field if non-nil, zero value otherwise.
 
 ### GetDatabasesOk
 
-`func (o *DeploymentHistoryEnvironmentResponse) GetDatabasesOk() (*Array, bool)`
+`func (o *DeploymentHistoryEnvironmentResponse) GetDatabasesOk() (*[]DeploymentHistoryDatabaseResponse, bool)`
 
 GetDatabasesOk returns a tuple with the Databases field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDatabases
 
-`func (o *DeploymentHistoryEnvironmentResponse) SetDatabases(v Array)`
+`func (o *DeploymentHistoryEnvironmentResponse) SetDatabases(v []DeploymentHistoryDatabaseResponse)`
 
 SetDatabases sets Databases field to given value.
 
