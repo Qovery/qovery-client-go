@@ -25,6 +25,7 @@ type EnvironmentResponse struct {
 	LastUpdatedBy *string                `json:"last_updated_by,omitempty"`
 	CloudProvider map[string]interface{} `json:"cloud_provider"`
 	Mode          string                 `json:"mode"`
+	ClusterId     string                 `json:"cluster_id"`
 	Id            string                 `json:"id"`
 	CreatedAt     time.Time              `json:"created_at"`
 	UpdatedAt     *time.Time             `json:"updated_at,omitempty"`
@@ -34,7 +35,7 @@ type EnvironmentResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentResponse(name string, cloudProvider map[string]interface{}, mode string, id string, createdAt time.Time) *EnvironmentResponse {
+func NewEnvironmentResponse(name string, cloudProvider map[string]interface{}, mode string, clusterId string, id string, createdAt time.Time) *EnvironmentResponse {
 	this := EnvironmentResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -185,6 +186,30 @@ func (o *EnvironmentResponse) SetMode(v string) {
 	o.Mode = v
 }
 
+// GetClusterId returns the ClusterId field value
+func (o *EnvironmentResponse) GetClusterId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentResponse) GetClusterIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ClusterId, true
+}
+
+// SetClusterId sets field value
+func (o *EnvironmentResponse) SetClusterId(v string) {
+	o.ClusterId = v
+}
+
 // GetId returns the Id field value
 func (o *EnvironmentResponse) GetId() string {
 	if o == nil {
@@ -281,6 +306,9 @@ func (o EnvironmentResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["mode"] = o.Mode
+	}
+	if true {
+		toSerialize["cluster_id"] = o.ClusterId
 	}
 	if true {
 		toSerialize["id"] = o.Id

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **LastUpdatedBy** | Pointer to **string** | uuid of the user that made the last update | [optional] 
 **CloudProvider** | **map[string]interface{}** |  | 
 **Mode** | **string** |  | 
+**ClusterId** | **string** |  | 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironmentResponse
 
-`func NewEnvironmentResponse(name string, cloudProvider map[string]interface{}, mode string, id string, createdAt time.Time, ) *EnvironmentResponse`
+`func NewEnvironmentResponse(name string, cloudProvider map[string]interface{}, mode string, clusterId string, id string, createdAt time.Time, ) *EnvironmentResponse`
 
 NewEnvironmentResponse instantiates a new EnvironmentResponse object
 This constructor will assign default values to properties that have it defined,
@@ -140,6 +141,26 @@ and a boolean to check if the value has been set.
 `func (o *EnvironmentResponse) SetMode(v string)`
 
 SetMode sets Mode field to given value.
+
+
+### GetClusterId
+
+`func (o *EnvironmentResponse) GetClusterId() string`
+
+GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
+
+### GetClusterIdOk
+
+`func (o *EnvironmentResponse) GetClusterIdOk() (*string, bool)`
+
+GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterId
+
+`func (o *EnvironmentResponse) SetClusterId(v string)`
+
+SetClusterId sets ClusterId field to given value.
 
 
 ### GetId
