@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
     environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example", "Value_example") // EnvironmentVariableRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
+**environmentId** | **string** | Environment ID | 
 
 ### Other Parameters
 
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
-    environmentVariableId := TODO // string | Environment Variable ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -128,8 +128,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
-**environmentVariableId** | [**string**](.md) | Environment Variable ID | 
+**environmentId** | **string** | Environment ID | 
+**environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
 
@@ -181,8 +181,8 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
-    environmentVariableId := TODO // string | Environment Variable ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -203,8 +203,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
-**environmentVariableId** | [**string**](.md) | Environment Variable ID | 
+**environmentId** | **string** | Environment ID | 
+**environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
 
@@ -256,8 +256,8 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
-    environmentVariableId := TODO // string | Environment Variable ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -275,8 +275,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
-**environmentVariableId** | [**string**](.md) | Environment Variable ID | 
+**environmentId** | **string** | Environment ID | 
+**environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
 
@@ -327,8 +327,8 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
-    environmentVariableId := TODO // string | Environment Variable ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
     environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example", "Value_example") // EnvironmentVariableEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -349,8 +349,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
-**environmentVariableId** | [**string**](.md) | Environment Variable ID | 
+**environmentId** | **string** | Environment ID | 
+**environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
 
@@ -400,7 +400,7 @@ import (
 )
 
 func main() {
-    environmentId := TODO // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -420,7 +420,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | [**string**](.md) | Environment ID | 
+**environmentId** | **string** | Environment ID | 
 
 ### Other Parameters
 

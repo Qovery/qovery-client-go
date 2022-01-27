@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
     backupRequest := *openapiclient.NewBackupRequest("Name_example", "Message_example") // BackupRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -101,8 +101,8 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
-    startId := TODO // string | Starting point after which to return results (optional)
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -122,7 +122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
+**databaseId** | **string** | Database ID | 
 
 ### Other Parameters
 
@@ -132,7 +132,7 @@ Other parameters are passed through a pointer to a apiListDatabaseBackupRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **startId** | [**string**](string.md) | Starting point after which to return results | 
+ **startId** | **string** | Starting point after which to return results | 
 
 ### Return type
 
@@ -171,8 +171,8 @@ import (
 )
 
 func main() {
-    databaseId := TODO // string | Database ID
-    backupId := TODO // string | Database Backup ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    backupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database Backup ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -190,8 +190,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | [**string**](.md) | Database ID | 
-**backupId** | [**string**](.md) | Database Backup ID | 
+**databaseId** | **string** | Database ID | 
+**backupId** | **string** | Database Backup ID | 
 
 ### Other Parameters
 

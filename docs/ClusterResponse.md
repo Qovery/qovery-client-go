@@ -8,26 +8,32 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
-**CloudProvider** | Pointer to **string** |  | [optional] 
-**Region** | Pointer to **string** |  | [optional] 
-**Id** | **string** |  | [readonly] 
+**Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **string** |  | [optional] 
+**Name** | **string** | name is case-insensitive | 
+**Description** | Pointer to **NullableString** |  | [optional] 
+**CloudProvider** | **string** |  | 
+**Region** | **string** |  | 
 **AutoUpdate** | Pointer to **bool** |  | [optional] 
-**EnableHistoricMetric** | Pointer to **bool** |  | [optional] 
-**EnableHistoricLog** | Pointer to **bool** |  | [optional] 
 **Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
+**Title** | Pointer to **string** |  | [optional] 
+**CostPerMonthInCents** | Pointer to **NullableInt32** |  | [optional] 
+**CostPerMonth** | Pointer to **NullableFloat32** |  | [optional] 
+**CurrencyCode** | Pointer to **NullableString** |  | [optional] 
+**ValueType** | Pointer to **string** |  | [optional] 
+**Value** | Pointer to **NullableString** |  | [optional] 
+**IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
+**AcceptedValues** | Pointer to [**[]interface{}**](interface{}.md) |  | [optional] 
 
 ## Methods
 
 ### NewClusterResponse
 
-`func NewClusterResponse(id string, createdAt time.Time, name string, ) *ClusterResponse`
+`func NewClusterResponse(id string, createdAt time.Time, name string, cloudProvider string, region string, ) *ClusterResponse`
 
 NewClusterResponse instantiates a new ClusterResponse object
 This constructor will assign default values to properties that have it defined,
@@ -142,56 +148,6 @@ SetVersion sets Version field to given value.
 
 HasVersion returns a boolean if a field has been set.
 
-### GetCloudProvider
-
-`func (o *ClusterResponse) GetCloudProvider() string`
-
-GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
-
-### GetCloudProviderOk
-
-`func (o *ClusterResponse) GetCloudProviderOk() (*string, bool)`
-
-GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudProvider
-
-`func (o *ClusterResponse) SetCloudProvider(v string)`
-
-SetCloudProvider sets CloudProvider field to given value.
-
-### HasCloudProvider
-
-`func (o *ClusterResponse) HasCloudProvider() bool`
-
-HasCloudProvider returns a boolean if a field has been set.
-
-### GetRegion
-
-`func (o *ClusterResponse) GetRegion() string`
-
-GetRegion returns the Region field if non-nil, zero value otherwise.
-
-### GetRegionOk
-
-`func (o *ClusterResponse) GetRegionOk() (*string, bool)`
-
-GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegion
-
-`func (o *ClusterResponse) SetRegion(v string)`
-
-SetRegion sets Region field to given value.
-
-### HasRegion
-
-`func (o *ClusterResponse) HasRegion() bool`
-
-HasRegion returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ClusterResponse) GetId() string`
@@ -302,6 +258,56 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ClusterResponse) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ClusterResponse) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetCloudProvider
+
+`func (o *ClusterResponse) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *ClusterResponse) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *ClusterResponse) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
+
+### GetRegion
+
+`func (o *ClusterResponse) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *ClusterResponse) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *ClusterResponse) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+
 ### GetAutoUpdate
 
 `func (o *ClusterResponse) GetAutoUpdate() bool`
@@ -326,56 +332,6 @@ SetAutoUpdate sets AutoUpdate field to given value.
 `func (o *ClusterResponse) HasAutoUpdate() bool`
 
 HasAutoUpdate returns a boolean if a field has been set.
-
-### GetEnableHistoricMetric
-
-`func (o *ClusterResponse) GetEnableHistoricMetric() bool`
-
-GetEnableHistoricMetric returns the EnableHistoricMetric field if non-nil, zero value otherwise.
-
-### GetEnableHistoricMetricOk
-
-`func (o *ClusterResponse) GetEnableHistoricMetricOk() (*bool, bool)`
-
-GetEnableHistoricMetricOk returns a tuple with the EnableHistoricMetric field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableHistoricMetric
-
-`func (o *ClusterResponse) SetEnableHistoricMetric(v bool)`
-
-SetEnableHistoricMetric sets EnableHistoricMetric field to given value.
-
-### HasEnableHistoricMetric
-
-`func (o *ClusterResponse) HasEnableHistoricMetric() bool`
-
-HasEnableHistoricMetric returns a boolean if a field has been set.
-
-### GetEnableHistoricLog
-
-`func (o *ClusterResponse) GetEnableHistoricLog() bool`
-
-GetEnableHistoricLog returns the EnableHistoricLog field if non-nil, zero value otherwise.
-
-### GetEnableHistoricLogOk
-
-`func (o *ClusterResponse) GetEnableHistoricLogOk() (*bool, bool)`
-
-GetEnableHistoricLogOk returns a tuple with the EnableHistoricLog field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableHistoricLog
-
-`func (o *ClusterResponse) SetEnableHistoricLog(v bool)`
-
-SetEnableHistoricLog sets EnableHistoricLog field to given value.
-
-### HasEnableHistoricLog
-
-`func (o *ClusterResponse) HasEnableHistoricLog() bool`
-
-HasEnableHistoricLog returns a boolean if a field has been set.
 
 ### GetCpu
 
@@ -476,6 +432,246 @@ SetMaxRunningNodes sets MaxRunningNodes field to given value.
 `func (o *ClusterResponse) HasMaxRunningNodes() bool`
 
 HasMaxRunningNodes returns a boolean if a field has been set.
+
+### GetTitle
+
+`func (o *ClusterResponse) GetTitle() string`
+
+GetTitle returns the Title field if non-nil, zero value otherwise.
+
+### GetTitleOk
+
+`func (o *ClusterResponse) GetTitleOk() (*string, bool)`
+
+GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTitle
+
+`func (o *ClusterResponse) SetTitle(v string)`
+
+SetTitle sets Title field to given value.
+
+### HasTitle
+
+`func (o *ClusterResponse) HasTitle() bool`
+
+HasTitle returns a boolean if a field has been set.
+
+### GetCostPerMonthInCents
+
+`func (o *ClusterResponse) GetCostPerMonthInCents() int32`
+
+GetCostPerMonthInCents returns the CostPerMonthInCents field if non-nil, zero value otherwise.
+
+### GetCostPerMonthInCentsOk
+
+`func (o *ClusterResponse) GetCostPerMonthInCentsOk() (*int32, bool)`
+
+GetCostPerMonthInCentsOk returns a tuple with the CostPerMonthInCents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCostPerMonthInCents
+
+`func (o *ClusterResponse) SetCostPerMonthInCents(v int32)`
+
+SetCostPerMonthInCents sets CostPerMonthInCents field to given value.
+
+### HasCostPerMonthInCents
+
+`func (o *ClusterResponse) HasCostPerMonthInCents() bool`
+
+HasCostPerMonthInCents returns a boolean if a field has been set.
+
+### SetCostPerMonthInCentsNil
+
+`func (o *ClusterResponse) SetCostPerMonthInCentsNil(b bool)`
+
+ SetCostPerMonthInCentsNil sets the value for CostPerMonthInCents to be an explicit nil
+
+### UnsetCostPerMonthInCents
+`func (o *ClusterResponse) UnsetCostPerMonthInCents()`
+
+UnsetCostPerMonthInCents ensures that no value is present for CostPerMonthInCents, not even an explicit nil
+### GetCostPerMonth
+
+`func (o *ClusterResponse) GetCostPerMonth() float32`
+
+GetCostPerMonth returns the CostPerMonth field if non-nil, zero value otherwise.
+
+### GetCostPerMonthOk
+
+`func (o *ClusterResponse) GetCostPerMonthOk() (*float32, bool)`
+
+GetCostPerMonthOk returns a tuple with the CostPerMonth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCostPerMonth
+
+`func (o *ClusterResponse) SetCostPerMonth(v float32)`
+
+SetCostPerMonth sets CostPerMonth field to given value.
+
+### HasCostPerMonth
+
+`func (o *ClusterResponse) HasCostPerMonth() bool`
+
+HasCostPerMonth returns a boolean if a field has been set.
+
+### SetCostPerMonthNil
+
+`func (o *ClusterResponse) SetCostPerMonthNil(b bool)`
+
+ SetCostPerMonthNil sets the value for CostPerMonth to be an explicit nil
+
+### UnsetCostPerMonth
+`func (o *ClusterResponse) UnsetCostPerMonth()`
+
+UnsetCostPerMonth ensures that no value is present for CostPerMonth, not even an explicit nil
+### GetCurrencyCode
+
+`func (o *ClusterResponse) GetCurrencyCode() string`
+
+GetCurrencyCode returns the CurrencyCode field if non-nil, zero value otherwise.
+
+### GetCurrencyCodeOk
+
+`func (o *ClusterResponse) GetCurrencyCodeOk() (*string, bool)`
+
+GetCurrencyCodeOk returns a tuple with the CurrencyCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrencyCode
+
+`func (o *ClusterResponse) SetCurrencyCode(v string)`
+
+SetCurrencyCode sets CurrencyCode field to given value.
+
+### HasCurrencyCode
+
+`func (o *ClusterResponse) HasCurrencyCode() bool`
+
+HasCurrencyCode returns a boolean if a field has been set.
+
+### SetCurrencyCodeNil
+
+`func (o *ClusterResponse) SetCurrencyCodeNil(b bool)`
+
+ SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
+
+### UnsetCurrencyCode
+`func (o *ClusterResponse) UnsetCurrencyCode()`
+
+UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
+### GetValueType
+
+`func (o *ClusterResponse) GetValueType() string`
+
+GetValueType returns the ValueType field if non-nil, zero value otherwise.
+
+### GetValueTypeOk
+
+`func (o *ClusterResponse) GetValueTypeOk() (*string, bool)`
+
+GetValueTypeOk returns a tuple with the ValueType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValueType
+
+`func (o *ClusterResponse) SetValueType(v string)`
+
+SetValueType sets ValueType field to given value.
+
+### HasValueType
+
+`func (o *ClusterResponse) HasValueType() bool`
+
+HasValueType returns a boolean if a field has been set.
+
+### GetValue
+
+`func (o *ClusterResponse) GetValue() string`
+
+GetValue returns the Value field if non-nil, zero value otherwise.
+
+### GetValueOk
+
+`func (o *ClusterResponse) GetValueOk() (*string, bool)`
+
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValue
+
+`func (o *ClusterResponse) SetValue(v string)`
+
+SetValue sets Value field to given value.
+
+### HasValue
+
+`func (o *ClusterResponse) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
+
+### SetValueNil
+
+`func (o *ClusterResponse) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *ClusterResponse) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
+### GetIsValueUpdatable
+
+`func (o *ClusterResponse) GetIsValueUpdatable() bool`
+
+GetIsValueUpdatable returns the IsValueUpdatable field if non-nil, zero value otherwise.
+
+### GetIsValueUpdatableOk
+
+`func (o *ClusterResponse) GetIsValueUpdatableOk() (*bool, bool)`
+
+GetIsValueUpdatableOk returns a tuple with the IsValueUpdatable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsValueUpdatable
+
+`func (o *ClusterResponse) SetIsValueUpdatable(v bool)`
+
+SetIsValueUpdatable sets IsValueUpdatable field to given value.
+
+### HasIsValueUpdatable
+
+`func (o *ClusterResponse) HasIsValueUpdatable() bool`
+
+HasIsValueUpdatable returns a boolean if a field has been set.
+
+### GetAcceptedValues
+
+`func (o *ClusterResponse) GetAcceptedValues() []interface{}`
+
+GetAcceptedValues returns the AcceptedValues field if non-nil, zero value otherwise.
+
+### GetAcceptedValuesOk
+
+`func (o *ClusterResponse) GetAcceptedValuesOk() (*[]interface{}, bool)`
+
+GetAcceptedValuesOk returns a tuple with the AcceptedValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcceptedValues
+
+`func (o *ClusterResponse) SetAcceptedValues(v []interface{})`
+
+SetAcceptedValues sets AcceptedValues field to given value.
+
+### HasAcceptedValues
+
+`func (o *ClusterResponse) HasAcceptedValues() bool`
+
+HasAcceptedValues returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

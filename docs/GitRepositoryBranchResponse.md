@@ -1,4 +1,4 @@
-# InlineResponse200Results
+# GitRepositoryBranchResponse
 
 ## Properties
 
@@ -8,39 +8,39 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewInlineResponse200Results
+### NewGitRepositoryBranchResponse
 
-`func NewInlineResponse200Results(name string, ) *InlineResponse200Results`
+`func NewGitRepositoryBranchResponse(name string, ) *GitRepositoryBranchResponse`
 
-NewInlineResponse200Results instantiates a new InlineResponse200Results object
+NewGitRepositoryBranchResponse instantiates a new GitRepositoryBranchResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewInlineResponse200ResultsWithDefaults
+### NewGitRepositoryBranchResponseWithDefaults
 
-`func NewInlineResponse200ResultsWithDefaults() *InlineResponse200Results`
+`func NewGitRepositoryBranchResponseWithDefaults() *GitRepositoryBranchResponse`
 
-NewInlineResponse200ResultsWithDefaults instantiates a new InlineResponse200Results object
+NewGitRepositoryBranchResponseWithDefaults instantiates a new GitRepositoryBranchResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *InlineResponse200Results) GetName() string`
+`func (o *GitRepositoryBranchResponse) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *InlineResponse200Results) GetNameOk() (*string, bool)`
+`func (o *GitRepositoryBranchResponse) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *InlineResponse200Results) SetName(v string)`
+`func (o *GitRepositoryBranchResponse) SetName(v string)`
 
 SetName sets Name field to given value.
 

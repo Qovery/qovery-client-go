@@ -61,7 +61,7 @@ Note, enum values are always validated and all unused variables are silently ign
 ### URLs Configuration per Operation
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
-An operation is uniquely identifield by `"{classname}Service.{nickname}"` string.
+An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```
@@ -85,6 +85,8 @@ Class | Method | HTTP request | Description
 *ApplicationActionsApi* | [**DeployApplication**](docs/ApplicationActionsApi.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsApi* | [**RestartApplication**](docs/ApplicationActionsApi.md#restartapplication) | **Post** /application/{applicationId}/restart | Restart application
 *ApplicationActionsApi* | [**StopApplication**](docs/ApplicationActionsApi.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
+*ApplicationConfigurationApi* | [**EditApplicationNetwork**](docs/ApplicationConfigurationApi.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
+*ApplicationConfigurationApi* | [**GetApplicationNetwork**](docs/ApplicationConfigurationApi.md#getapplicationnetwork) | **Get** /application/{applicationId}/network | Get Application Network information
 *ApplicationDatabaseApi* | [**AttachDatabasetoApplication**](docs/ApplicationDatabaseApi.md#attachdatabasetoapplication) | **Post** /application/{applicationId}/database/{targetDatabaseId} | Link a database to the application
 *ApplicationDatabaseApi* | [**AttachLogicalDatabasetoApplication**](docs/ApplicationDatabaseApi.md#attachlogicaldatabasetoapplication) | **Post** /application/{applicationId}/logicalDatabase/{targetLogicalDatabaseId} | Link a logical database to the application
 *ApplicationDatabaseApi* | [**ListApplicationDatabase**](docs/ApplicationDatabaseApi.md#listapplicationdatabase) | **Get** /application/{applicationId}/database | List linked databases
@@ -116,6 +118,7 @@ Class | Method | HTTP request | Description
 *ApplicationMetricsApi* | [**GetApplicationMetricCpu**](docs/ApplicationMetricsApi.md#getapplicationmetriccpu) | **Get** /application/{applicationId}/metric/cpu | Get CPU consumption metric over time for the application
 *ApplicationMetricsApi* | [**GetApplicationMetricHealthCheck**](docs/ApplicationMetricsApi.md#getapplicationmetrichealthcheck) | **Get** /application/{applicationId}/metric/healthCheck | Get Health Check latency  metric over time for the application
 *ApplicationMetricsApi* | [**GetApplicationMetricMemory**](docs/ApplicationMetricsApi.md#getapplicationmetricmemory) | **Get** /application/{applicationId}/metric/memory | Get Memory consumption metric over time for the application
+*ApplicationMetricsApi* | [**GetApplicationMetricRestart**](docs/ApplicationMetricsApi.md#getapplicationmetricrestart) | **Get** /application/{applicationId}/metric/restart | List application restarts
 *ApplicationMetricsApi* | [**GetApplicationMetricStorage**](docs/ApplicationMetricsApi.md#getapplicationmetricstorage) | **Get** /application/{applicationId}/metric/storage | Get Storage consumption metric over time for the application
 *ApplicationSecretApi* | [**CreateApplicationSecret**](docs/ApplicationSecretApi.md#createapplicationsecret) | **Post** /application/{applicationId}/secret | Add a secret to the application
 *ApplicationSecretApi* | [**CreateApplicationSecretAlias**](docs/ApplicationSecretApi.md#createapplicationsecretalias) | **Post** /application/{applicationId}/secret/{secretId}/alias | Create a secret alias at the application level
@@ -169,10 +172,12 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 *ClustersApi* | [**DeployCluster**](docs/ClustersApi.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 *ClustersApi* | [**EditCluster**](docs/ClustersApi.md#editcluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
+*ClustersApi* | [**EditRoutingTable**](docs/ClustersApi.md#editroutingtable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 *ClustersApi* | [**GetClusterReadinessStatus**](docs/ClustersApi.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersApi* | [**GetClusterStatus**](docs/ClustersApi.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersApi* | [**GetOrganizationCloudProviderInfo**](docs/ClustersApi.md#getorganizationcloudproviderinfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 *ClustersApi* | [**GetOrganizationClusterStatus**](docs/ClustersApi.md#getorganizationclusterstatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
+*ClustersApi* | [**GetRoutingTable**](docs/ClustersApi.md#getroutingtable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
 *ClustersApi* | [**ListOrganizationCluster**](docs/ClustersApi.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 *ClustersApi* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersApi.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 *ClustersApi* | [**StopCluster**](docs/ClustersApi.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
@@ -200,6 +205,7 @@ Class | Method | HTTP request | Description
 *DatabaseMetricsApi* | [**GetDatabaseMetricCpu**](docs/DatabaseMetricsApi.md#getdatabasemetriccpu) | **Get** /database/{databaseId}/metric/cpu | Get CPU consumption metric over time for the database
 *DatabaseMetricsApi* | [**GetDatabaseMetricHealthCheck**](docs/DatabaseMetricsApi.md#getdatabasemetrichealthcheck) | **Get** /database/{databaseId}/metric/healthCheck | Get Health Check latency  metric over time for the database
 *DatabaseMetricsApi* | [**GetDatabaseMetricMemory**](docs/DatabaseMetricsApi.md#getdatabasemetricmemory) | **Get** /database/{databaseId}/metric/memory | Get Memory consumption metric over time for the database
+*DatabaseMetricsApi* | [**GetDatabaseMetricRestart**](docs/DatabaseMetricsApi.md#getdatabasemetricrestart) | **Get** /database/{databaseId}/metric/restart | List database restarts
 *DatabaseMetricsApi* | [**GetDatabaseMetricStorage**](docs/DatabaseMetricsApi.md#getdatabasemetricstorage) | **Get** /database/{databaseId}/metric/storage | Get Storage consumption metric over time for the database
 *DatabasesApi* | [**CreateDatabase**](docs/DatabasesApi.md#createdatabase) | **Post** /environment/{environmentId}/database | Create a database
 *DatabasesApi* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesApi.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
@@ -213,8 +219,8 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsApi* | [**DeployEnvironment**](docs/EnvironmentActionsApi.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
 *EnvironmentActionsApi* | [**RestartEnvironment**](docs/EnvironmentActionsApi.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Restart environment
 *EnvironmentActionsApi* | [**StopEnvironment**](docs/EnvironmentActionsApi.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
-*EnvironmentDeploymentHistoryApi* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryApi.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deploys
-*EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeployemtnRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeployemtnrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
+*EnvironmentDeploymentHistoryApi* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryApi.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
+*EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
 *EnvironmentDeploymentRuleApi* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
 *EnvironmentLogsApi* | [**ListEnvironmentLog**](docs/EnvironmentLogsApi.md#listenvironmentlog) | **Get** /environment/{environmentId}/log | List environment deployment logs
 *EnvironmentMainCallsApi* | [**DeleteEnvironment**](docs/EnvironmentMainCallsApi.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
@@ -238,6 +244,8 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**GetProjectEnvironmentServiceNumber**](docs/EnvironmentsApi.md#getprojectenvironmentservicenumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
 *EnvironmentsApi* | [**GetProjectEnvironmentStatus**](docs/EnvironmentsApi.md#getprojectenvironmentstatus) | **Get** /project/{projectId}/environment/status | List environments statuses
 *EnvironmentsApi* | [**ListEnvironment**](docs/EnvironmentsApi.md#listenvironment) | **Get** /project/{projectId}/environment | List environments
+*GitRepositoriesApi* | [**GetBitbucketRepositories**](docs/GitRepositoriesApi.md#getbitbucketrepositories) | **Get** /account/bitbucket/repository | Get bitbucket repositories of the connected user
+*GitRepositoriesApi* | [**GetBitbucketRepositoryBranches**](docs/GitRepositoriesApi.md#getbitbucketrepositorybranches) | **Get** /account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
 *GitRepositoriesApi* | [**GetGitProviderAccount**](docs/GitRepositoriesApi.md#getgitprovideraccount) | **Get** /account/gitAuthProvider | Get git provider accounts
 *GitRepositoriesApi* | [**GetGithubRepositories**](docs/GitRepositoriesApi.md#getgithubrepositories) | **Get** /account/github/repository | Get github repositories of the connected user
 *GitRepositoriesApi* | [**GetGithubRepositoryBranches**](docs/GitRepositoriesApi.md#getgithubrepositorybranches) | **Get** /account/github/repository/branch | Get github branches of the specified repository
@@ -299,6 +307,8 @@ Class | Method | HTTP request | Description
  - [ApplicationEditRequest](docs/ApplicationEditRequest.md)
  - [ApplicationGitRepositoryRequest](docs/ApplicationGitRepositoryRequest.md)
  - [ApplicationGitRepositoryResponse](docs/ApplicationGitRepositoryResponse.md)
+ - [ApplicationNetworkRequest](docs/ApplicationNetworkRequest.md)
+ - [ApplicationNetworkResponse](docs/ApplicationNetworkResponse.md)
  - [ApplicationPortRequest](docs/ApplicationPortRequest.md)
  - [ApplicationPortRequestPorts](docs/ApplicationPortRequestPorts.md)
  - [ApplicationPortResponse](docs/ApplicationPortResponse.md)
@@ -324,6 +334,7 @@ Class | Method | HTTP request | Description
  - [BillingStatus](docs/BillingStatus.md)
  - [BudgetResponse](docs/BudgetResponse.md)
  - [BudgetThreshold](docs/BudgetThreshold.md)
+ - [CloneRequest](docs/CloneRequest.md)
  - [CloudProviderResponse](docs/CloudProviderResponse.md)
  - [CloudProviderResponseList](docs/CloudProviderResponseList.md)
  - [Cluster](docs/Cluster.md)
@@ -343,6 +354,10 @@ Class | Method | HTTP request | Description
  - [ClusterRequest](docs/ClusterRequest.md)
  - [ClusterResponse](docs/ClusterResponse.md)
  - [ClusterResponseList](docs/ClusterResponseList.md)
+ - [ClusterRoutingTableRequest](docs/ClusterRoutingTableRequest.md)
+ - [ClusterRoutingTableRequestRoutes](docs/ClusterRoutingTableRequestRoutes.md)
+ - [ClusterRoutingTableResponse](docs/ClusterRoutingTableResponse.md)
+ - [ClusterRoutingTableResponseResults](docs/ClusterRoutingTableResponseResults.md)
  - [ClusterStatusResponse](docs/ClusterStatusResponse.md)
  - [ClusterStatusResponseList](docs/ClusterStatusResponseList.md)
  - [CommitPaginatedResponseList](docs/CommitPaginatedResponseList.md)
@@ -371,6 +386,8 @@ Class | Method | HTTP request | Description
  - [DatabaseResponseList](docs/DatabaseResponseList.md)
  - [DatabaseVersionMode](docs/DatabaseVersionMode.md)
  - [DeployRequest](docs/DeployRequest.md)
+ - [DeploymentHistoryApplicationResponse](docs/DeploymentHistoryApplicationResponse.md)
+ - [DeploymentHistoryDatabaseResponse](docs/DeploymentHistoryDatabaseResponse.md)
  - [DeploymentHistoryEnvironmentPaginatedResponseList](docs/DeploymentHistoryEnvironmentPaginatedResponseList.md)
  - [DeploymentHistoryEnvironmentResponse](docs/DeploymentHistoryEnvironmentResponse.md)
  - [DeploymentHistoryPaginatedResponseList](docs/DeploymentHistoryPaginatedResponseList.md)
@@ -415,11 +432,11 @@ Class | Method | HTTP request | Description
  - [GenericObjectCurrentCostResponse](docs/GenericObjectCurrentCostResponse.md)
  - [GitAuthProviderResponse](docs/GitAuthProviderResponse.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
+ - [GitRepositoryBranchResponse](docs/GitRepositoryBranchResponse.md)
+ - [GitRepositoryBranchResponseList](docs/GitRepositoryBranchResponseList.md)
  - [GitRepositoryResponse](docs/GitRepositoryResponse.md)
  - [GitRepositoryResponseList](docs/GitRepositoryResponseList.md)
  - [Healthcheck](docs/Healthcheck.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse200Results](docs/InlineResponse200Results.md)
  - [InstanceResponse](docs/InstanceResponse.md)
  - [InstanceResponseList](docs/InstanceResponseList.md)
  - [InviteMemberRequest](docs/InviteMemberRequest.md)
@@ -449,6 +466,8 @@ Class | Method | HTTP request | Description
  - [MetricMemoryDatapointResponseList](docs/MetricMemoryDatapointResponseList.md)
  - [MetricMemoryResponse](docs/MetricMemoryResponse.md)
  - [MetricMemoryResponseList](docs/MetricMemoryResponseList.md)
+ - [MetricRestartResponse](docs/MetricRestartResponse.md)
+ - [MetricRestartResponseResults](docs/MetricRestartResponseResults.md)
  - [MetricStorageDatapointResponse](docs/MetricStorageDatapointResponse.md)
  - [MetricStorageDatapointResponseList](docs/MetricStorageDatapointResponseList.md)
  - [MetricStorageResponse](docs/MetricStorageResponse.md)

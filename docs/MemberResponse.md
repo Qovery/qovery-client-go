@@ -4,13 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**Email** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
+**Nickname** | Pointer to **string** |  | [optional] 
+**Email** | **string** |  | 
 **ProfilePictureUrl** | Pointer to **string** |  | [optional] 
-**LastActivity** | Pointer to **time.Time** | last time the user was connected | [optional] 
+**LastActivityAt** | Pointer to **time.Time** | last time the user was connected | [optional] 
 **Role** | Pointer to **string** |  | [optional] 
-**InvitationStatus** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -19,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewMemberResponse
 
-`func NewMemberResponse(id string, createdAt time.Time, ) *MemberResponse`
+`func NewMemberResponse(email string, id string, createdAt time.Time, ) *MemberResponse`
 
 NewMemberResponse instantiates a new MemberResponse object
 This constructor will assign default values to properties that have it defined,
@@ -34,55 +33,55 @@ NewMemberResponseWithDefaults instantiates a new MemberResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetFirstName
+### GetName
 
-`func (o *MemberResponse) GetFirstName() string`
+`func (o *MemberResponse) GetName() string`
 
-GetFirstName returns the FirstName field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetFirstNameOk
+### GetNameOk
 
-`func (o *MemberResponse) GetFirstNameOk() (*string, bool)`
+`func (o *MemberResponse) GetNameOk() (*string, bool)`
 
-GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFirstName
+### SetName
 
-`func (o *MemberResponse) SetFirstName(v string)`
+`func (o *MemberResponse) SetName(v string)`
 
-SetFirstName sets FirstName field to given value.
+SetName sets Name field to given value.
 
-### HasFirstName
+### HasName
 
-`func (o *MemberResponse) HasFirstName() bool`
+`func (o *MemberResponse) HasName() bool`
 
-HasFirstName returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
 
-### GetLastName
+### GetNickname
 
-`func (o *MemberResponse) GetLastName() string`
+`func (o *MemberResponse) GetNickname() string`
 
-GetLastName returns the LastName field if non-nil, zero value otherwise.
+GetNickname returns the Nickname field if non-nil, zero value otherwise.
 
-### GetLastNameOk
+### GetNicknameOk
 
-`func (o *MemberResponse) GetLastNameOk() (*string, bool)`
+`func (o *MemberResponse) GetNicknameOk() (*string, bool)`
 
-GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
+GetNicknameOk returns a tuple with the Nickname field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLastName
+### SetNickname
 
-`func (o *MemberResponse) SetLastName(v string)`
+`func (o *MemberResponse) SetNickname(v string)`
 
-SetLastName sets LastName field to given value.
+SetNickname sets Nickname field to given value.
 
-### HasLastName
+### HasNickname
 
-`func (o *MemberResponse) HasLastName() bool`
+`func (o *MemberResponse) HasNickname() bool`
 
-HasLastName returns a boolean if a field has been set.
+HasNickname returns a boolean if a field has been set.
 
 ### GetEmail
 
@@ -103,11 +102,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-### HasEmail
-
-`func (o *MemberResponse) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
 
 ### GetProfilePictureUrl
 
@@ -134,30 +128,30 @@ SetProfilePictureUrl sets ProfilePictureUrl field to given value.
 
 HasProfilePictureUrl returns a boolean if a field has been set.
 
-### GetLastActivity
+### GetLastActivityAt
 
-`func (o *MemberResponse) GetLastActivity() time.Time`
+`func (o *MemberResponse) GetLastActivityAt() time.Time`
 
-GetLastActivity returns the LastActivity field if non-nil, zero value otherwise.
+GetLastActivityAt returns the LastActivityAt field if non-nil, zero value otherwise.
 
-### GetLastActivityOk
+### GetLastActivityAtOk
 
-`func (o *MemberResponse) GetLastActivityOk() (*time.Time, bool)`
+`func (o *MemberResponse) GetLastActivityAtOk() (*time.Time, bool)`
 
-GetLastActivityOk returns a tuple with the LastActivity field if it's non-nil, zero value otherwise
+GetLastActivityAtOk returns a tuple with the LastActivityAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLastActivity
+### SetLastActivityAt
 
-`func (o *MemberResponse) SetLastActivity(v time.Time)`
+`func (o *MemberResponse) SetLastActivityAt(v time.Time)`
 
-SetLastActivity sets LastActivity field to given value.
+SetLastActivityAt sets LastActivityAt field to given value.
 
-### HasLastActivity
+### HasLastActivityAt
 
-`func (o *MemberResponse) HasLastActivity() bool`
+`func (o *MemberResponse) HasLastActivityAt() bool`
 
-HasLastActivity returns a boolean if a field has been set.
+HasLastActivityAt returns a boolean if a field has been set.
 
 ### GetRole
 
@@ -183,31 +177,6 @@ SetRole sets Role field to given value.
 `func (o *MemberResponse) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
-
-### GetInvitationStatus
-
-`func (o *MemberResponse) GetInvitationStatus() string`
-
-GetInvitationStatus returns the InvitationStatus field if non-nil, zero value otherwise.
-
-### GetInvitationStatusOk
-
-`func (o *MemberResponse) GetInvitationStatusOk() (*string, bool)`
-
-GetInvitationStatusOk returns a tuple with the InvitationStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInvitationStatus
-
-`func (o *MemberResponse) SetInvitationStatus(v string)`
-
-SetInvitationStatus sets InvitationStatus field to given value.
-
-### HasInvitationStatus
-
-`func (o *MemberResponse) HasInvitationStatus() bool`
-
-HasInvitationStatus returns a boolean if a field has been set.
 
 ### GetId
 

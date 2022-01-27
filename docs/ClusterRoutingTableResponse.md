@@ -1,52 +1,52 @@
-# InlineResponse200
+# ClusterRoutingTableResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]InlineResponse200Results**](InlineResponse200Results.md) |  | [optional] 
+**Results** | Pointer to [**[]ClusterRoutingTableResponseResults**](ClusterRoutingTableResponseResults.md) |  | [optional] 
 
 ## Methods
 
-### NewInlineResponse200
+### NewClusterRoutingTableResponse
 
-`func NewInlineResponse200() *InlineResponse200`
+`func NewClusterRoutingTableResponse() *ClusterRoutingTableResponse`
 
-NewInlineResponse200 instantiates a new InlineResponse200 object
+NewClusterRoutingTableResponse instantiates a new ClusterRoutingTableResponse object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewInlineResponse200WithDefaults
+### NewClusterRoutingTableResponseWithDefaults
 
-`func NewInlineResponse200WithDefaults() *InlineResponse200`
+`func NewClusterRoutingTableResponseWithDefaults() *ClusterRoutingTableResponse`
 
-NewInlineResponse200WithDefaults instantiates a new InlineResponse200 object
+NewClusterRoutingTableResponseWithDefaults instantiates a new ClusterRoutingTableResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *InlineResponse200) GetResults() []InlineResponse200Results`
+`func (o *ClusterRoutingTableResponse) GetResults() []ClusterRoutingTableResponseResults`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *InlineResponse200) GetResultsOk() (*[]InlineResponse200Results, bool)`
+`func (o *ClusterRoutingTableResponse) GetResultsOk() (*[]ClusterRoutingTableResponseResults, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *InlineResponse200) SetResults(v []InlineResponse200Results)`
+`func (o *ClusterRoutingTableResponse) SetResults(v []ClusterRoutingTableResponseResults)`
 
 SetResults sets Results field to given value.
 
 ### HasResults
 
-`func (o *InlineResponse200) HasResults() bool`
+`func (o *ClusterRoutingTableResponse) HasResults() bool`
 
 HasResults returns a boolean if a field has been set.
 

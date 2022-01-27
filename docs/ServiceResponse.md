@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** | type of the service (application, database, job, gateway...) | [optional] 
 **Name** | Pointer to **string** | name of the service | [optional] 
-**Id** | Pointer to **string** | uuid of the associated service (application, database, job, gateway...) | [optional] 
+**Id** | **string** | uuid of the associated service (application, database, job, gateway...) | 
 **DeployedCommitId** | Pointer to **string** | Git commit ID corresponding to the deployed version of the application | [optional] 
 **LastUpdatedBy** | Pointer to **string** | uuid of the user that made the last update | [optional] 
 **ConsumedResourcesInPercent** | Pointer to **float32** | global overview of resources consumption of the service | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewServiceResponse
 
-`func NewServiceResponse(createdAt time.Time, ) *ServiceResponse`
+`func NewServiceResponse(id string, createdAt time.Time, ) *ServiceResponse`
 
 NewServiceResponse instantiates a new ServiceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -104,11 +104,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ServiceResponse) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetDeployedCommitId
 

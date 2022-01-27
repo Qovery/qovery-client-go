@@ -29,8 +29,8 @@ import (
 )
 
 func main() {
-    applicationId := TODO // string | Application ID
-    startId := TODO // string | Starting point after which to return results (optional)
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | [**string**](.md) | Application ID | 
+**applicationId** | **string** | Application ID | 
 
 ### Other Parameters
 
@@ -60,7 +60,7 @@ Other parameters are passed through a pointer to a apiListApplicationEventReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **startId** | [**string**](string.md) | Starting point after which to return results | 
+ **startId** | **string** | Starting point after which to return results | 
 
 ### Return type
 

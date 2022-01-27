@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **State** | **string** | Status is a state machine. It starts with &#x60;BUILDING&#x60; or &#x60;DEPLOYING&#x60; state (or &#x60;INITIALIZED&#x60;if auto-deploy is deactivated). Then finish with &#x60;*_ERROR&#x60; or any termination state.  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
+**ServiceDeploymentStatus** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -102,6 +103,41 @@ HasMessage returns a boolean if a field has been set.
 `func (o *ReferenceObjectStatusResponse) UnsetMessage()`
 
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
+### GetServiceDeploymentStatus
+
+`func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatus() string`
+
+GetServiceDeploymentStatus returns the ServiceDeploymentStatus field if non-nil, zero value otherwise.
+
+### GetServiceDeploymentStatusOk
+
+`func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatusOk() (*string, bool)`
+
+GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceDeploymentStatus
+
+`func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatus(v string)`
+
+SetServiceDeploymentStatus sets ServiceDeploymentStatus field to given value.
+
+### HasServiceDeploymentStatus
+
+`func (o *ReferenceObjectStatusResponse) HasServiceDeploymentStatus() bool`
+
+HasServiceDeploymentStatus returns a boolean if a field has been set.
+
+### SetServiceDeploymentStatusNil
+
+`func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatusNil(b bool)`
+
+ SetServiceDeploymentStatusNil sets the value for ServiceDeploymentStatus to be an explicit nil
+
+### UnsetServiceDeploymentStatus
+`func (o *ReferenceObjectStatusResponse) UnsetServiceDeploymentStatus()`
+
+UnsetServiceDeploymentStatus ensures that no value is present for ServiceDeploymentStatus, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

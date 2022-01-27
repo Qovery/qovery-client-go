@@ -12,16 +12,17 @@ Name | Type | Description | Notes
 **Mode** | **string** |  | 
 **Cluster** | **string** |  | 
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
-**AlwaysUp** | **bool** |  | [default to false]
-**StartTime** | Pointer to **NullableTime** | specify value only if always_up &#x3D; false | [optional] 
-**StopTime** | Pointer to **NullableTime** | specify value only if always_up &#x3D; false | [optional] 
-**Weekday** | Pointer to **NullableString** | specify value only if always_up &#x3D; false | [optional] 
+**AutoStop** | **bool** |  | [default to false]
+**Timezone** | Pointer to **string** | specify value only if auto_stop &#x3D; false | [optional] [default to "Europe/London"]
+**StartTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
+**StopTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
+**Weekdays** | Pointer to **[]string** | specify value only if auto_stop &#x3D; false | [optional] 
 
 ## Methods
 
 ### NewProjectDeploymentRuleResponse
 
-`func NewProjectDeploymentRuleResponse(id string, createdAt time.Time, name string, mode string, cluster string, alwaysUp bool, ) *ProjectDeploymentRuleResponse`
+`func NewProjectDeploymentRuleResponse(id string, createdAt time.Time, name string, mode string, cluster string, autoStop bool, ) *ProjectDeploymentRuleResponse`
 
 NewProjectDeploymentRuleResponse instantiates a new ProjectDeploymentRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -211,25 +212,50 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 HasAutoDeploy returns a boolean if a field has been set.
 
-### GetAlwaysUp
+### GetAutoStop
 
-`func (o *ProjectDeploymentRuleResponse) GetAlwaysUp() bool`
+`func (o *ProjectDeploymentRuleResponse) GetAutoStop() bool`
 
-GetAlwaysUp returns the AlwaysUp field if non-nil, zero value otherwise.
+GetAutoStop returns the AutoStop field if non-nil, zero value otherwise.
 
-### GetAlwaysUpOk
+### GetAutoStopOk
 
-`func (o *ProjectDeploymentRuleResponse) GetAlwaysUpOk() (*bool, bool)`
+`func (o *ProjectDeploymentRuleResponse) GetAutoStopOk() (*bool, bool)`
 
-GetAlwaysUpOk returns a tuple with the AlwaysUp field if it's non-nil, zero value otherwise
+GetAutoStopOk returns a tuple with the AutoStop field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAlwaysUp
+### SetAutoStop
 
-`func (o *ProjectDeploymentRuleResponse) SetAlwaysUp(v bool)`
+`func (o *ProjectDeploymentRuleResponse) SetAutoStop(v bool)`
 
-SetAlwaysUp sets AlwaysUp field to given value.
+SetAutoStop sets AutoStop field to given value.
 
+
+### GetTimezone
+
+`func (o *ProjectDeploymentRuleResponse) GetTimezone() string`
+
+GetTimezone returns the Timezone field if non-nil, zero value otherwise.
+
+### GetTimezoneOk
+
+`func (o *ProjectDeploymentRuleResponse) GetTimezoneOk() (*string, bool)`
+
+GetTimezoneOk returns a tuple with the Timezone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimezone
+
+`func (o *ProjectDeploymentRuleResponse) SetTimezone(v string)`
+
+SetTimezone sets Timezone field to given value.
+
+### HasTimezone
+
+`func (o *ProjectDeploymentRuleResponse) HasTimezone() bool`
+
+HasTimezone returns a boolean if a field has been set.
 
 ### GetStartTime
 
@@ -301,41 +327,41 @@ HasStopTime returns a boolean if a field has been set.
 `func (o *ProjectDeploymentRuleResponse) UnsetStopTime()`
 
 UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
-### GetWeekday
+### GetWeekdays
 
-`func (o *ProjectDeploymentRuleResponse) GetWeekday() string`
+`func (o *ProjectDeploymentRuleResponse) GetWeekdays() []string`
 
-GetWeekday returns the Weekday field if non-nil, zero value otherwise.
+GetWeekdays returns the Weekdays field if non-nil, zero value otherwise.
 
-### GetWeekdayOk
+### GetWeekdaysOk
 
-`func (o *ProjectDeploymentRuleResponse) GetWeekdayOk() (*string, bool)`
+`func (o *ProjectDeploymentRuleResponse) GetWeekdaysOk() (*[]string, bool)`
 
-GetWeekdayOk returns a tuple with the Weekday field if it's non-nil, zero value otherwise
+GetWeekdaysOk returns a tuple with the Weekdays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWeekday
+### SetWeekdays
 
-`func (o *ProjectDeploymentRuleResponse) SetWeekday(v string)`
+`func (o *ProjectDeploymentRuleResponse) SetWeekdays(v []string)`
 
-SetWeekday sets Weekday field to given value.
+SetWeekdays sets Weekdays field to given value.
 
-### HasWeekday
+### HasWeekdays
 
-`func (o *ProjectDeploymentRuleResponse) HasWeekday() bool`
+`func (o *ProjectDeploymentRuleResponse) HasWeekdays() bool`
 
-HasWeekday returns a boolean if a field has been set.
+HasWeekdays returns a boolean if a field has been set.
 
-### SetWeekdayNil
+### SetWeekdaysNil
 
-`func (o *ProjectDeploymentRuleResponse) SetWeekdayNil(b bool)`
+`func (o *ProjectDeploymentRuleResponse) SetWeekdaysNil(b bool)`
 
- SetWeekdayNil sets the value for Weekday to be an explicit nil
+ SetWeekdaysNil sets the value for Weekdays to be an explicit nil
 
-### UnsetWeekday
-`func (o *ProjectDeploymentRuleResponse) UnsetWeekday()`
+### UnsetWeekdays
+`func (o *ProjectDeploymentRuleResponse) UnsetWeekdays()`
 
-UnsetWeekday ensures that no value is present for Weekday, not even an explicit nil
+UnsetWeekdays ensures that no value is present for Weekdays, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

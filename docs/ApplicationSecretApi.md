@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    applicationId := TODO // string | Application ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
     secretRequest := *openapiclient.NewSecretRequest("Key_example", "Value_example") // SecretRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -55,7 +55,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | [**string**](.md) | Application ID | 
+**applicationId** | **string** | Application ID | 
 
 ### Other Parameters
 
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-    applicationId := TODO // string | Application ID
-    secretId := TODO // string | Secret ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -128,8 +128,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | [**string**](.md) | Application ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**applicationId** | **string** | Application ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 
@@ -181,8 +181,8 @@ import (
 )
 
 func main() {
-    applicationId := TODO // string | Application ID
-    secretId := TODO // string | Secret ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -203,8 +203,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | [**string**](.md) | Application ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**applicationId** | **string** | Application ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 
@@ -256,8 +256,8 @@ import (
 )
 
 func main() {
-    applicationId := TODO // string | Application ID
-    secretId := TODO // string | Secret ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -275,8 +275,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | [**string**](.md) | Application ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**applicationId** | **string** | Application ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 
@@ -327,8 +327,8 @@ import (
 )
 
 func main() {
-    applicationId := TODO // string | Application ID
-    secretId := TODO // string | Secret ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     secretEditRequest := *openapiclient.NewSecretEditRequest() // SecretEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
@@ -349,8 +349,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | [**string**](.md) | Application ID | 
-**secretId** | [**string**](.md) | Secret ID | 
+**applicationId** | **string** | Application ID | 
+**secretId** | **string** | Secret ID | 
 
 ### Other Parameters
 
@@ -402,7 +402,7 @@ import (
 )
 
 func main() {
-    applicationId := TODO // string | Application ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -422,7 +422,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | [**string**](.md) | Application ID | 
+**applicationId** | **string** | Application ID | 
 
 ### Other Parameters
 

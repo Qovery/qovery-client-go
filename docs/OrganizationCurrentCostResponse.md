@@ -4,19 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalInCents** | **int32** |  | 
-**Total** | **float32** |  | 
-**CurrencyCode** | **string** |  | 
-**BillingStartedOn** | Pointer to **time.Time** |  | [optional] 
-**BillingEndedOn** | Pointer to **time.Time** |  | [optional] 
-**BudgetExceeded** | Pointer to **bool** |  | [optional] 
-**Projects** | Pointer to [**[]ProjectCurrentCostResponse**](ProjectCurrentCostResponse.md) |  | [optional] 
+**Plan** | Pointer to **string** |  | [optional] 
+**RemainingTrialDay** | Pointer to **int32** | number of days remaining before the end of the trial period | [optional] 
+**RemainingCredits** | Pointer to [**RemainingCredits**](RemainingCredits.md) |  | [optional] 
+**Cost** | Pointer to [**Cost**](Cost.md) |  | [optional] 
+**PaidUsage** | Pointer to [**PaidUsageResponse**](PaidUsageResponse.md) |  | [optional] 
+**CommunityUsage** | Pointer to [**CommunityUsageResponse**](CommunityUsageResponse.md) |  | [optional] 
 
 ## Methods
 
 ### NewOrganizationCurrentCostResponse
 
-`func NewOrganizationCurrentCostResponse(totalInCents int32, total float32, currencyCode string, ) *OrganizationCurrentCostResponse`
+`func NewOrganizationCurrentCostResponse() *OrganizationCurrentCostResponse`
 
 NewOrganizationCurrentCostResponse instantiates a new OrganizationCurrentCostResponse object
 This constructor will assign default values to properties that have it defined,
@@ -31,165 +30,155 @@ NewOrganizationCurrentCostResponseWithDefaults instantiates a new OrganizationCu
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTotalInCents
+### GetPlan
 
-`func (o *OrganizationCurrentCostResponse) GetTotalInCents() int32`
+`func (o *OrganizationCurrentCostResponse) GetPlan() string`
 
-GetTotalInCents returns the TotalInCents field if non-nil, zero value otherwise.
+GetPlan returns the Plan field if non-nil, zero value otherwise.
 
-### GetTotalInCentsOk
+### GetPlanOk
 
-`func (o *OrganizationCurrentCostResponse) GetTotalInCentsOk() (*int32, bool)`
+`func (o *OrganizationCurrentCostResponse) GetPlanOk() (*string, bool)`
 
-GetTotalInCentsOk returns a tuple with the TotalInCents field if it's non-nil, zero value otherwise
+GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTotalInCents
+### SetPlan
 
-`func (o *OrganizationCurrentCostResponse) SetTotalInCents(v int32)`
+`func (o *OrganizationCurrentCostResponse) SetPlan(v string)`
 
-SetTotalInCents sets TotalInCents field to given value.
+SetPlan sets Plan field to given value.
 
+### HasPlan
 
-### GetTotal
+`func (o *OrganizationCurrentCostResponse) HasPlan() bool`
 
-`func (o *OrganizationCurrentCostResponse) GetTotal() float32`
+HasPlan returns a boolean if a field has been set.
 
-GetTotal returns the Total field if non-nil, zero value otherwise.
+### GetRemainingTrialDay
 
-### GetTotalOk
+`func (o *OrganizationCurrentCostResponse) GetRemainingTrialDay() int32`
 
-`func (o *OrganizationCurrentCostResponse) GetTotalOk() (*float32, bool)`
+GetRemainingTrialDay returns the RemainingTrialDay field if non-nil, zero value otherwise.
 
-GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
+### GetRemainingTrialDayOk
+
+`func (o *OrganizationCurrentCostResponse) GetRemainingTrialDayOk() (*int32, bool)`
+
+GetRemainingTrialDayOk returns a tuple with the RemainingTrialDay field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTotal
+### SetRemainingTrialDay
 
-`func (o *OrganizationCurrentCostResponse) SetTotal(v float32)`
+`func (o *OrganizationCurrentCostResponse) SetRemainingTrialDay(v int32)`
 
-SetTotal sets Total field to given value.
+SetRemainingTrialDay sets RemainingTrialDay field to given value.
 
+### HasRemainingTrialDay
 
-### GetCurrencyCode
+`func (o *OrganizationCurrentCostResponse) HasRemainingTrialDay() bool`
 
-`func (o *OrganizationCurrentCostResponse) GetCurrencyCode() string`
+HasRemainingTrialDay returns a boolean if a field has been set.
 
-GetCurrencyCode returns the CurrencyCode field if non-nil, zero value otherwise.
+### GetRemainingCredits
 
-### GetCurrencyCodeOk
+`func (o *OrganizationCurrentCostResponse) GetRemainingCredits() RemainingCredits`
 
-`func (o *OrganizationCurrentCostResponse) GetCurrencyCodeOk() (*string, bool)`
+GetRemainingCredits returns the RemainingCredits field if non-nil, zero value otherwise.
 
-GetCurrencyCodeOk returns a tuple with the CurrencyCode field if it's non-nil, zero value otherwise
+### GetRemainingCreditsOk
+
+`func (o *OrganizationCurrentCostResponse) GetRemainingCreditsOk() (*RemainingCredits, bool)`
+
+GetRemainingCreditsOk returns a tuple with the RemainingCredits field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCurrencyCode
+### SetRemainingCredits
 
-`func (o *OrganizationCurrentCostResponse) SetCurrencyCode(v string)`
+`func (o *OrganizationCurrentCostResponse) SetRemainingCredits(v RemainingCredits)`
 
-SetCurrencyCode sets CurrencyCode field to given value.
+SetRemainingCredits sets RemainingCredits field to given value.
 
+### HasRemainingCredits
 
-### GetBillingStartedOn
+`func (o *OrganizationCurrentCostResponse) HasRemainingCredits() bool`
 
-`func (o *OrganizationCurrentCostResponse) GetBillingStartedOn() time.Time`
+HasRemainingCredits returns a boolean if a field has been set.
 
-GetBillingStartedOn returns the BillingStartedOn field if non-nil, zero value otherwise.
+### GetCost
 
-### GetBillingStartedOnOk
+`func (o *OrganizationCurrentCostResponse) GetCost() Cost`
 
-`func (o *OrganizationCurrentCostResponse) GetBillingStartedOnOk() (*time.Time, bool)`
+GetCost returns the Cost field if non-nil, zero value otherwise.
 
-GetBillingStartedOnOk returns a tuple with the BillingStartedOn field if it's non-nil, zero value otherwise
+### GetCostOk
+
+`func (o *OrganizationCurrentCostResponse) GetCostOk() (*Cost, bool)`
+
+GetCostOk returns a tuple with the Cost field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBillingStartedOn
+### SetCost
 
-`func (o *OrganizationCurrentCostResponse) SetBillingStartedOn(v time.Time)`
+`func (o *OrganizationCurrentCostResponse) SetCost(v Cost)`
 
-SetBillingStartedOn sets BillingStartedOn field to given value.
+SetCost sets Cost field to given value.
 
-### HasBillingStartedOn
+### HasCost
 
-`func (o *OrganizationCurrentCostResponse) HasBillingStartedOn() bool`
+`func (o *OrganizationCurrentCostResponse) HasCost() bool`
 
-HasBillingStartedOn returns a boolean if a field has been set.
+HasCost returns a boolean if a field has been set.
 
-### GetBillingEndedOn
+### GetPaidUsage
 
-`func (o *OrganizationCurrentCostResponse) GetBillingEndedOn() time.Time`
+`func (o *OrganizationCurrentCostResponse) GetPaidUsage() PaidUsageResponse`
 
-GetBillingEndedOn returns the BillingEndedOn field if non-nil, zero value otherwise.
+GetPaidUsage returns the PaidUsage field if non-nil, zero value otherwise.
 
-### GetBillingEndedOnOk
+### GetPaidUsageOk
 
-`func (o *OrganizationCurrentCostResponse) GetBillingEndedOnOk() (*time.Time, bool)`
+`func (o *OrganizationCurrentCostResponse) GetPaidUsageOk() (*PaidUsageResponse, bool)`
 
-GetBillingEndedOnOk returns a tuple with the BillingEndedOn field if it's non-nil, zero value otherwise
+GetPaidUsageOk returns a tuple with the PaidUsage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBillingEndedOn
+### SetPaidUsage
 
-`func (o *OrganizationCurrentCostResponse) SetBillingEndedOn(v time.Time)`
+`func (o *OrganizationCurrentCostResponse) SetPaidUsage(v PaidUsageResponse)`
 
-SetBillingEndedOn sets BillingEndedOn field to given value.
+SetPaidUsage sets PaidUsage field to given value.
 
-### HasBillingEndedOn
+### HasPaidUsage
 
-`func (o *OrganizationCurrentCostResponse) HasBillingEndedOn() bool`
+`func (o *OrganizationCurrentCostResponse) HasPaidUsage() bool`
 
-HasBillingEndedOn returns a boolean if a field has been set.
+HasPaidUsage returns a boolean if a field has been set.
 
-### GetBudgetExceeded
+### GetCommunityUsage
 
-`func (o *OrganizationCurrentCostResponse) GetBudgetExceeded() bool`
+`func (o *OrganizationCurrentCostResponse) GetCommunityUsage() CommunityUsageResponse`
 
-GetBudgetExceeded returns the BudgetExceeded field if non-nil, zero value otherwise.
+GetCommunityUsage returns the CommunityUsage field if non-nil, zero value otherwise.
 
-### GetBudgetExceededOk
+### GetCommunityUsageOk
 
-`func (o *OrganizationCurrentCostResponse) GetBudgetExceededOk() (*bool, bool)`
+`func (o *OrganizationCurrentCostResponse) GetCommunityUsageOk() (*CommunityUsageResponse, bool)`
 
-GetBudgetExceededOk returns a tuple with the BudgetExceeded field if it's non-nil, zero value otherwise
+GetCommunityUsageOk returns a tuple with the CommunityUsage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBudgetExceeded
+### SetCommunityUsage
 
-`func (o *OrganizationCurrentCostResponse) SetBudgetExceeded(v bool)`
+`func (o *OrganizationCurrentCostResponse) SetCommunityUsage(v CommunityUsageResponse)`
 
-SetBudgetExceeded sets BudgetExceeded field to given value.
+SetCommunityUsage sets CommunityUsage field to given value.
 
-### HasBudgetExceeded
+### HasCommunityUsage
 
-`func (o *OrganizationCurrentCostResponse) HasBudgetExceeded() bool`
+`func (o *OrganizationCurrentCostResponse) HasCommunityUsage() bool`
 
-HasBudgetExceeded returns a boolean if a field has been set.
-
-### GetProjects
-
-`func (o *OrganizationCurrentCostResponse) GetProjects() []ProjectCurrentCostResponse`
-
-GetProjects returns the Projects field if non-nil, zero value otherwise.
-
-### GetProjectsOk
-
-`func (o *OrganizationCurrentCostResponse) GetProjectsOk() (*[]ProjectCurrentCostResponse, bool)`
-
-GetProjectsOk returns a tuple with the Projects field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProjects
-
-`func (o *OrganizationCurrentCostResponse) SetProjects(v []ProjectCurrentCostResponse)`
-
-SetProjects sets Projects field to given value.
-
-### HasProjects
-
-`func (o *OrganizationCurrentCostResponse) HasProjects() bool`
-
-HasProjects returns a boolean if a field has been set.
+HasCommunityUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **OverriddenVariable** | Pointer to **map[string]interface{}** |  | [optional] 
 **AliasedVariable** | Pointer to **map[string]interface{}** |  | [optional] 
 **Scope** | **string** |  | 
+**ServiceName** | Pointer to **string** |  | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -101,6 +102,31 @@ and a boolean to check if the value has been set.
 
 SetScope sets Scope field to given value.
 
+
+### GetServiceName
+
+`func (o *EnvironmentVariableResponse) GetServiceName() string`
+
+GetServiceName returns the ServiceName field if non-nil, zero value otherwise.
+
+### GetServiceNameOk
+
+`func (o *EnvironmentVariableResponse) GetServiceNameOk() (*string, bool)`
+
+GetServiceNameOk returns a tuple with the ServiceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceName
+
+`func (o *EnvironmentVariableResponse) SetServiceName(v string)`
+
+SetServiceName sets ServiceName field to given value.
+
+### HasServiceName
+
+`func (o *EnvironmentVariableResponse) HasServiceName() bool`
+
+HasServiceName returns a boolean if a field has been set.
 
 ### GetId
 
