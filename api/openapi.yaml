@@ -7228,7 +7228,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
           description: Get github repository branches
         "401":
           description: Access token is missing or invalid
@@ -7267,7 +7267,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1account~1github~1repository~1branch/get/responses/200/content/application~1json/schema'
+                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
           description: Get gitlab repository branches
         "401":
           description: Access token is missing or invalid
@@ -7306,7 +7306,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1account~1github~1repository~1branch/get/responses/200/content/application~1json/schema'
+                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
           description: Get bitbucket repository branches
         "401":
           description: Access token is missing or invalid
@@ -9529,6 +9529,8 @@ components:
           type: string
         to_update:
           type: boolean
+      required:
+      - id
       type: object
     ApplicationResponseList:
       example:
@@ -12055,7 +12057,7 @@ components:
           type: boolean
         accepted_values:
           items:
-            oneOf:
+            anyOf:
             - type: string
             - type: boolean
           nullable: false
@@ -12180,7 +12182,18 @@ components:
             $ref: '#/components/schemas/CloudProviderResponse'
           type: array
       type: object
-    inline_response_200_results:
+    GitRepositoryBranchResponseList:
+      example:
+        results:
+        - name: main
+        - name: main
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/GitRepositoryBranchResponse'
+          type: array
+      type: object
+    GitRepositoryBranchResponse:
       example:
         name: main
       properties:
@@ -12189,17 +12202,6 @@ components:
           type: string
       required:
       - name
-      type: object
-    inline_response_200:
-      example:
-        results:
-        - name: main
-        - name: main
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/inline_response_200_results'
-          type: array
       type: object
     ApplicationStorageRequest_storage:
       properties:
@@ -12576,3 +12578,6 @@ x-tagGroups:
   - Account Info
   - Git repositories
   - Referral & Rewards
+- name: Git
+  tags:
+  - Git repositories

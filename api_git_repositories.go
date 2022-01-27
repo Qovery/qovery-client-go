@@ -136,7 +136,7 @@ func (r ApiGetBitbucketRepositoryBranchesRequest) Name(name string) ApiGetBitbuc
 	return r
 }
 
-func (r ApiGetBitbucketRepositoryBranchesRequest) Execute() (Object, *_nethttp.Response, error) {
+func (r ApiGetBitbucketRepositoryBranchesRequest) Execute() (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetBitbucketRepositoryBranchesExecute(r)
 }
 
@@ -154,13 +154,13 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranches(ctx _context.
 }
 
 // Execute executes the request
-//  @return Object
-func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiGetBitbucketRepositoryBranchesRequest) (Object, *_nethttp.Response, error) {
+//  @return GitRepositoryBranchResponseList
+func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiGetBitbucketRepositoryBranchesRequest) (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue Object
+		localVarReturnValue GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetBitbucketRepositoryBranches")
@@ -437,7 +437,7 @@ func (r ApiGetGithubRepositoryBranchesRequest) Name(name string) ApiGetGithubRep
 	return r
 }
 
-func (r ApiGetGithubRepositoryBranchesRequest) Execute() (InlineResponse200, *_nethttp.Response, error) {
+func (r ApiGetGithubRepositoryBranchesRequest) Execute() (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetGithubRepositoryBranchesExecute(r)
 }
 
@@ -455,13 +455,13 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranches(ctx _context.Con
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetGithubRepositoryBranchesRequest) (InlineResponse200, *_nethttp.Response, error) {
+//  @return GitRepositoryBranchResponseList
+func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetGithubRepositoryBranchesRequest) (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue InlineResponse200
+		localVarReturnValue GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGithubRepositoryBranches")
@@ -641,7 +641,7 @@ func (r ApiGetGitlabRepositoryBranchesRequest) Name(name string) ApiGetGitlabRep
 	return r
 }
 
-func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (Object, *_nethttp.Response, error) {
+func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetGitlabRepositoryBranchesExecute(r)
 }
 
@@ -659,13 +659,13 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoryBranches(ctx _context.Con
 }
 
 // Execute executes the request
-//  @return Object
-func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (Object, *_nethttp.Response, error) {
+//  @return GitRepositoryBranchResponseList
+func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod  = _nethttp.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue Object
+		localVarReturnValue GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositoryBranches")

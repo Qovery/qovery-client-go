@@ -75,7 +75,7 @@ Other parameters are passed through a pointer to a apiGetBitbucketRepositoriesRe
 
 ## GetBitbucketRepositoryBranches
 
-> Object GetBitbucketRepositoryBranches(ctx).Name(name).Execute()
+> GitRepositoryBranchResponseList GetBitbucketRepositoryBranches(ctx).Name(name).Execute()
 
 Get bitbucket branches of the specified repository
 
@@ -101,7 +101,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetBitbucketRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetBitbucketRepositoryBranches`: Object
+    // response from `GetBitbucketRepositoryBranches`: GitRepositoryBranchResponseList
     fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesApi.GetBitbucketRepositoryBranches`: %v\n", resp)
 }
 ```
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**GitRepositoryBranchResponseList**](GitRepositoryBranchResponseList.md)
 
 ### Authorization
 
@@ -257,7 +257,7 @@ Other parameters are passed through a pointer to a apiGetGithubRepositoriesReque
 
 ## GetGithubRepositoryBranches
 
-> InlineResponse200 GetGithubRepositoryBranches(ctx).Name(name).Execute()
+> GitRepositoryBranchResponseList GetGithubRepositoryBranches(ctx).Name(name).Execute()
 
 Get github branches of the specified repository
 
@@ -283,7 +283,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetGithubRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetGithubRepositoryBranches`: InlineResponse200
+    // response from `GetGithubRepositoryBranches`: GitRepositoryBranchResponseList
     fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesApi.GetGithubRepositoryBranches`: %v\n", resp)
 }
 ```
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**GitRepositoryBranchResponseList**](GitRepositoryBranchResponseList.md)
 
 ### Authorization
 
@@ -380,7 +380,7 @@ Other parameters are passed through a pointer to a apiGetGitlabRepositoriesReque
 
 ## GetGitlabRepositoryBranches
 
-> Object GetGitlabRepositoryBranches(ctx).Name(name).Execute()
+> GitRepositoryBranchResponseList GetGitlabRepositoryBranches(ctx).Name(name).Execute()
 
 Get gitlab branches of the specified repository
 
@@ -406,7 +406,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetGitlabRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetGitlabRepositoryBranches`: Object
+    // response from `GetGitlabRepositoryBranches`: GitRepositoryBranchResponseList
     fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesApi.GetGitlabRepositoryBranches`: %v\n", resp)
 }
 ```
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**GitRepositoryBranchResponseList**](GitRepositoryBranchResponseList.md)
 
 ### Authorization
 

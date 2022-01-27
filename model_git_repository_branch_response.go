@@ -15,31 +15,31 @@ import (
 	"encoding/json"
 )
 
-// InlineResponse200Results struct for InlineResponse200Results
-type InlineResponse200Results struct {
+// GitRepositoryBranchResponse struct for GitRepositoryBranchResponse
+type GitRepositoryBranchResponse struct {
 	Name string `json:"name"`
 }
 
-// NewInlineResponse200Results instantiates a new InlineResponse200Results object
+// NewGitRepositoryBranchResponse instantiates a new GitRepositoryBranchResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineResponse200Results(name string) *InlineResponse200Results {
-	this := InlineResponse200Results{}
+func NewGitRepositoryBranchResponse(name string) *GitRepositoryBranchResponse {
+	this := GitRepositoryBranchResponse{}
 	this.Name = name
 	return &this
 }
 
-// NewInlineResponse200ResultsWithDefaults instantiates a new InlineResponse200Results object
+// NewGitRepositoryBranchResponseWithDefaults instantiates a new GitRepositoryBranchResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineResponse200ResultsWithDefaults() *InlineResponse200Results {
-	this := InlineResponse200Results{}
+func NewGitRepositoryBranchResponseWithDefaults() *GitRepositoryBranchResponse {
+	this := GitRepositoryBranchResponse{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *InlineResponse200Results) GetName() string {
+func (o *GitRepositoryBranchResponse) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *InlineResponse200Results) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200Results) GetNameOk() (*string, bool) {
+func (o *GitRepositoryBranchResponse) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -58,11 +58,11 @@ func (o *InlineResponse200Results) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *InlineResponse200Results) SetName(v string) {
+func (o *GitRepositoryBranchResponse) SetName(v string) {
 	o.Name = v
 }
 
-func (o InlineResponse200Results) MarshalJSON() ([]byte, error) {
+func (o GitRepositoryBranchResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
@@ -70,38 +70,38 @@ func (o InlineResponse200Results) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineResponse200Results struct {
-	value *InlineResponse200Results
+type NullableGitRepositoryBranchResponse struct {
+	value *GitRepositoryBranchResponse
 	isSet bool
 }
 
-func (v NullableInlineResponse200Results) Get() *InlineResponse200Results {
+func (v NullableGitRepositoryBranchResponse) Get() *GitRepositoryBranchResponse {
 	return v.value
 }
 
-func (v *NullableInlineResponse200Results) Set(val *InlineResponse200Results) {
+func (v *NullableGitRepositoryBranchResponse) Set(val *GitRepositoryBranchResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineResponse200Results) IsSet() bool {
+func (v NullableGitRepositoryBranchResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineResponse200Results) Unset() {
+func (v *NullableGitRepositoryBranchResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineResponse200Results(val *InlineResponse200Results) *NullableInlineResponse200Results {
-	return &NullableInlineResponse200Results{value: val, isSet: true}
+func NewNullableGitRepositoryBranchResponse(val *GitRepositoryBranchResponse) *NullableGitRepositoryBranchResponse {
+	return &NullableGitRepositoryBranchResponse{value: val, isSet: true}
 }
 
-func (v NullableInlineResponse200Results) MarshalJSON() ([]byte, error) {
+func (v NullableGitRepositoryBranchResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineResponse200Results) UnmarshalJSON(src []byte) error {
+func (v *NullableGitRepositoryBranchResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

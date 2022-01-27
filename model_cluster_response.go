@@ -45,7 +45,7 @@ type ClusterResponse struct {
 	ValueType           *string               `json:"value_type,omitempty"`
 	Value               NullableString        `json:"value,omitempty"`
 	IsValueUpdatable    *bool                 `json:"is_value_updatable,omitempty"`
-	AcceptedValues      *[]OneOfstringboolean `json:"accepted_values,omitempty"`
+	AcceptedValues      *[]interface{} `json:"accepted_values,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
@@ -842,9 +842,9 @@ func (o *ClusterResponse) SetIsValueUpdatable(v bool) {
 }
 
 // GetAcceptedValues returns the AcceptedValues field value if set, zero value otherwise.
-func (o *ClusterResponse) GetAcceptedValues() []OneOfstringboolean {
+func (o *ClusterResponse) GetAcceptedValues() []interface{} {
 	if o == nil || o.AcceptedValues == nil {
-		var ret []OneOfstringboolean
+		var ret []interface{}
 		return ret
 	}
 	return *o.AcceptedValues
@@ -852,7 +852,7 @@ func (o *ClusterResponse) GetAcceptedValues() []OneOfstringboolean {
 
 // GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetAcceptedValuesOk() (*[]OneOfstringboolean, bool) {
+func (o *ClusterResponse) GetAcceptedValuesOk() (*[]interface{}, bool) {
 	if o == nil || o.AcceptedValues == nil {
 		return nil, false
 	}
@@ -868,8 +868,8 @@ func (o *ClusterResponse) HasAcceptedValues() bool {
 	return false
 }
 
-// SetAcceptedValues gets a reference to the given []OneOfstringboolean and assigns it to the AcceptedValues field.
-func (o *ClusterResponse) SetAcceptedValues(v []OneOfstringboolean) {
+// SetAcceptedValues gets a reference to the given []interface{} and assigns it to the AcceptedValues field.
+func (o *ClusterResponse) SetAcceptedValues(v []interface{}) {
 	o.AcceptedValues = &v
 }
 

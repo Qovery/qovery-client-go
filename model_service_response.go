@@ -23,7 +23,7 @@ type ServiceResponse struct {
 	// name of the service
 	Name *string `json:"name,omitempty"`
 	// uuid of the associated service (application, database, job, gateway...)
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// Git commit ID corresponding to the deployed version of the application
 	DeployedCommitId *string `json:"deployed_commit_id,omitempty"`
 	// uuid of the user that made the last update
@@ -122,36 +122,28 @@ func (o *ServiceResponse) SetName(v string) {
 	o.Name = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ServiceResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ServiceResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ServiceResponse) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *ServiceResponse) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetDeployedCommitId returns the DeployedCommitId field value if set, zero value otherwise.
@@ -410,7 +402,7 @@ func (o ServiceResponse) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Id != nil {
+	if true {
 		toSerialize["id"] = o.Id
 	}
 	if o.DeployedCommitId != nil {
