@@ -3225,6 +3225,39 @@ paths:
       summary: Restart environment
       tags:
       - Environment Actions
+  /environment/{environmentId}/cancelDeployment:
+    post:
+      description: Cancel the current deployment of your environment.
+      operationId: cancelEnvironmentDeployment
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: environment deployment cancelling has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Environment deployment is already cancelled or an operation
+            is in progress
+      summary: Cancel environment deployment
+      tags:
+      - Environment Actions
   /environment/{environmentId}/clone:
     post:
       description: You must provide a name. This will create a new environment, with
@@ -5072,6 +5105,44 @@ paths:
         "404":
           description: Resource not found
       summary: Add an environment variable to the application
+      tags:
+      - Application Environment Variable
+  /application/{applicationId}/environmentVariable/import:
+    post:
+      description: Import environment variables in a defined scope, with a defined
+        visibility.
+      operationId: importEnvironmentVariable
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableImportRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableImportResponse'
+          description: Import environment variables
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Import variables
       tags:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/{environmentVariableId}:
@@ -9229,12 +9300,15 @@ components:
         max_running_instances: 6
         git_repository:
           owner: John Doe
+          root_path: root_path
           deployed_commit_tag: v1.0.1
           deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           provider: GITHUB
           name: simple-node-app
           has_access: true
+          branch: branch
           deployed_commit_id: deployed_commit_id
+          url: https://openapi-generator.tech
           deployed_commit_date: 2000-01-23T04:56:07.000+00:00
         dockerfile_path: dockerfile_path
         buildpack_language: GO
@@ -9358,8 +9432,8 @@ components:
         environment_target: ^feat
       properties:
         environment_target:
-          description: specify here a regex based on environment name that will target
-            new environments after their creation
+          description: specify here a wildcard based on environment name that will
+            target new environments after their creation
           example: ^feat
           type: string
       required:
@@ -9544,12 +9618,15 @@ components:
           max_running_instances: 6
           git_repository:
             owner: John Doe
+            root_path: root_path
             deployed_commit_tag: v1.0.1
             deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             provider: GITHUB
             name: simple-node-app
             has_access: true
+            branch: branch
             deployed_commit_id: deployed_commit_id
+            url: https://openapi-generator.tech
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
           dockerfile_path: dockerfile_path
           buildpack_language: GO
@@ -9570,12 +9647,15 @@ components:
           max_running_instances: 6
           git_repository:
             owner: John Doe
+            root_path: root_path
             deployed_commit_tag: v1.0.1
             deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             provider: GITHUB
             name: simple-node-app
             has_access: true
+            branch: branch
             deployed_commit_id: deployed_commit_id
+            url: https://openapi-generator.tech
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
           dockerfile_path: dockerfile_path
           buildpack_language: GO
@@ -10111,6 +10191,53 @@ components:
             $ref: '#/components/schemas/EnvironmentVariableResponse'
           type: array
       type: object
+    VariableImportRequest:
+      example:
+        vars:
+        - is_secret: true
+          scope: ORGANIZATION
+          name: name
+          value: value
+        - is_secret: true
+          scope: ORGANIZATION
+          name: name
+          value: value
+        overwrite: false
+      properties:
+        overwrite:
+          default: false
+          type: boolean
+        vars:
+          items:
+            $ref: '#/components/schemas/VariableImportRequest_vars'
+          type: array
+      required:
+      - overwrite
+      - vars
+      type: object
+    VariableImportResponse:
+      example:
+        total_variables_to_import: 0.8008281904610115
+        successful_imported_variables:
+        - is_secret: true
+          scope: ORGANIZATION
+          name: name
+          value: value
+        - is_secret: true
+          scope: ORGANIZATION
+          name: name
+          value: value
+      properties:
+        total_variables_to_import:
+          type: number
+        successful_imported_variables:
+          items:
+            $ref: '#/components/schemas/VariableImportResponse_successful_imported_variables'
+          type: array
+      required:
+      - successful_imported_variables
+      - total_variables_to_import
+      type: object
     ReferenceObject:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10191,23 +10318,32 @@ components:
           enum:
           - PRODUCTION
           - DEVELOPMENT
+          - STAGING
+          - PREVIEW
           type: string
       required:
       - name
       type: object
     CloneRequest:
       example:
-        cluster: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        mode: PRODUCTION
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
       properties:
         name:
           description: name is case insensitive
           type: string
-        cluster:
+        cluster_id:
           format: uuid
           type: string
+        mode:
+          enum:
+          - PRODUCTION
+          - DEVELOPMENT
+          - STAGING
+          - PREVIEW
+          type: string
       required:
-      - cluster
       - name
       type: object
     MetricMemoryDatapointResponseList:
@@ -10234,6 +10370,7 @@ components:
       - $ref: '#/components/schemas/ClusterFeatureResponse'
       example:
         has_access: true
+        is_default: true
         version: version
         estimated_cloud_provider_cost: 0.8008281904610115
         status: READY
@@ -10252,6 +10389,8 @@ components:
           type: boolean
         version:
           type: string
+        is_default:
+          type: boolean
       type: object
     BackupPaginatedResponseList:
       allOf:
@@ -10491,6 +10630,8 @@ components:
           enum:
           - PRODUCTION
           - DEVELOPMENT
+          - STAGING
+          - PREVIEW
           type: string
         cluster_id:
           format: uuid
@@ -10672,10 +10813,10 @@ components:
       type: object
     Status:
       example:
-        serviceDeploymentStatus: NEVER_DEPLOYED
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: INITIALIZED
         message: message
+        service_deployment_status: NEVER_DEPLOYED
       properties:
         id:
           format: uuid
@@ -10685,27 +10826,34 @@ components:
             Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
           enum:
           - INITIALIZED
-          - QUEUED
+          - BUILDING_QUEUED
           - BUILDING
           - BUILD_ERROR
           - BUILT
+          - DEPLOYMENT_QUEUED
           - DEPLOYING
           - DEPLOYMENT_ERROR
           - DEPLOYED
+          - STOP_QUEUED
           - STOPPING
           - STOP_ERROR
           - STOPPED
+          - DELETE_QUEUED
           - DELETING
           - DELETE_ERROR
           - DELETED
           - RUNNING
           - RUNNING_ERROR
+          - CANCEL_QUEUED
+          - CANCELLING
+          - CANCEL_ERROR
+          - CANCELLED
           type: string
         message:
           description: message related to the state
           nullable: true
           type: string
-        serviceDeploymentStatus:
+        service_deployment_status:
           enum:
           - NEVER_DEPLOYED
           - UP_TO_DATE
@@ -10756,10 +10904,10 @@ components:
       - $ref: '#/components/schemas/BackupRequest'
       example:
         status:
-          serviceDeploymentStatus: NEVER_DEPLOYED
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: INITIALIZED
           message: message
+          service_deployment_status: NEVER_DEPLOYED
       properties:
         status:
           $ref: '#/components/schemas/Status'
@@ -10986,10 +11134,12 @@ components:
       example:
         results:
         - has_access: true
+          is_default: true
           version: version
           estimated_cloud_provider_cost: 0.8008281904610115
           status: READY
         - has_access: true
+          is_default: true
           version: version
           estimated_cloud_provider_cost: 0.8008281904610115
           status: READY
@@ -11205,12 +11355,15 @@ components:
     ApplicationGitRepositoryResponse:
       example:
         owner: John Doe
+        root_path: root_path
         deployed_commit_tag: v1.0.1
         deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         provider: GITHUB
         name: simple-node-app
         has_access: true
+        branch: branch
         deployed_commit_id: deployed_commit_id
+        url: https://openapi-generator.tech
         deployed_commit_date: 2000-01-23T04:56:07.000+00:00
       properties:
         has_access:
@@ -11223,9 +11376,16 @@ components:
         owner:
           example: John Doe
           type: string
+        url:
+          format: uri
+          type: string
         name:
           description: repository name
           example: simple-node-app
+          type: string
+        branch:
+          type: string
+        root_path:
           type: string
         deployed_commit_id:
           description: Git commit ID corresponding to the deployed version of the
@@ -11294,10 +11454,10 @@ components:
             first_name: first_name
             email: email
           status:
-            serviceDeploymentStatus: NEVER_DEPLOYED
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: INITIALIZED
             message: message
+            service_deployment_status: NEVER_DEPLOYED
         - log:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           commit:
@@ -11318,10 +11478,10 @@ components:
             first_name: first_name
             email: email
           status:
-            serviceDeploymentStatus: NEVER_DEPLOYED
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: INITIALIZED
             message: message
+            service_deployment_status: NEVER_DEPLOYED
       properties:
         results:
           items:
@@ -11424,10 +11584,10 @@ components:
           first_name: first_name
           email: email
         status:
-          serviceDeploymentStatus: NEVER_DEPLOYED
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: INITIALIZED
           message: message
+          service_deployment_status: NEVER_DEPLOYED
       properties:
         user:
           $ref: '#/components/schemas/UserResponse'
@@ -12331,6 +12491,58 @@ components:
           type: string
         name:
           type: string
+      type: object
+    VariableImportRequest_vars:
+      example:
+        is_secret: true
+        scope: ORGANIZATION
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        scope:
+          enum:
+          - ORGANIZATION
+          - PROJECT
+          - ENVIRONMENT
+          - APPLICATION
+          type: string
+        is_secret:
+          type: boolean
+      required:
+      - is_secret
+      - name
+      - scope
+      - value
+      type: object
+    VariableImportResponse_successful_imported_variables:
+      example:
+        is_secret: true
+        scope: ORGANIZATION
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          description: Optional if the variable is secret
+          type: string
+        scope:
+          enum:
+          - ORGANIZATION
+          - PROJECT
+          - ENVIRONMENT
+          - APPLICATION
+          type: string
+        is_secret:
+          type: boolean
+      required:
+      - is_secret
+      - name
+      - scope
       type: object
     ApplicationPortResponse_ports:
       properties:

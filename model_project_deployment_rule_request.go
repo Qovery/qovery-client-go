@@ -18,7 +18,7 @@ import (
 
 // ProjectDeploymentRuleRequest struct for ProjectDeploymentRuleRequest
 type ProjectDeploymentRuleRequest struct {
-	// specify here a regex based on environment name that will target new environments after their creation
+	// specify here a wildcard based on environment name that will target new environments after their creation
 	EnvironmentTarget string `json:"environment_target"`
 	// name is case insensitive
 	Name        string  `json:"name"`
@@ -382,11 +382,11 @@ func (o *ProjectDeploymentRuleRequest) GetWeekdays() []string {
 // GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectDeploymentRuleRequest) GetWeekdaysOk() (*[]string, bool) {
+func (o *ProjectDeploymentRuleRequest) GetWeekdaysOk() ([]string, bool) {
 	if o == nil || o.Weekdays == nil {
 		return nil, false
 	}
-	return &o.Weekdays, true
+	return o.Weekdays, true
 }
 
 // HasWeekdays returns a boolean if a field has been set.

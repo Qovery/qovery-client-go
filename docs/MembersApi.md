@@ -36,8 +36,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MembersApi.DeleteInviteMember(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.DeleteInviteMember(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.DeleteInviteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,8 +103,8 @@ func main() {
     userId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | User ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MembersApi.DeleteMember(context.Background(), organizationId, userId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.DeleteMember(context.Background(), organizationId, userId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.DeleteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,8 +171,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MembersApi.GetOrganizationInvitedMembers(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.GetOrganizationInvitedMembers(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.GetOrganizationInvitedMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,8 +239,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MembersApi.GetOrganizationMembers(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.GetOrganizationMembers(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.GetOrganizationMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -308,8 +308,8 @@ func main() {
     inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MembersApi.PostAcceptInviteMember(context.Background(), organizationId, inviteId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.PostAcceptInviteMember(context.Background(), organizationId, inviteId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.PostAcceptInviteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -379,8 +379,8 @@ func main() {
     inviteMemberRequest := *openapiclient.NewInviteMemberRequest("Email_example", "Role_example") // InviteMemberRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MembersApi.PostInviteMember(context.Background(), organizationId).InviteMemberRequest(inviteMemberRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.PostInviteMember(context.Background(), organizationId).InviteMemberRequest(inviteMemberRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.PostInviteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -449,8 +449,8 @@ func main() {
     transferOwnershipRequest := *openapiclient.NewTransferOwnershipRequest("UserId_example") // TransferOwnershipRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.MembersApi.PostOrganizationTransferOwnership(context.Background(), organizationId).TransferOwnershipRequest(transferOwnershipRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.PostOrganizationTransferOwnership(context.Background(), organizationId).TransferOwnershipRequest(transferOwnershipRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.PostOrganizationTransferOwnership``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

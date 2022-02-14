@@ -17,7 +17,7 @@ import (
 
 // MetricCPUResponseList struct for MetricCPUResponseList
 type MetricCPUResponseList struct {
-	Results *[]MetricCPUResponse `json:"results,omitempty"`
+	Results []MetricCPUResponse `json:"results,omitempty"`
 }
 
 // NewMetricCPUResponseList instantiates a new MetricCPUResponseList object
@@ -43,12 +43,12 @@ func (o *MetricCPUResponseList) GetResults() []MetricCPUResponse {
 		var ret []MetricCPUResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricCPUResponseList) GetResultsOk() (*[]MetricCPUResponse, bool) {
+func (o *MetricCPUResponseList) GetResultsOk() ([]MetricCPUResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *MetricCPUResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []MetricCPUResponse and assigns it to the Results field.
 func (o *MetricCPUResponseList) SetResults(v []MetricCPUResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o MetricCPUResponseList) MarshalJSON() ([]byte, error) {

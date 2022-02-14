@@ -17,7 +17,7 @@ import (
 
 // ClusterResponseList struct for ClusterResponseList
 type ClusterResponseList struct {
-	Results *[]ClusterResponse `json:"results,omitempty"`
+	Results []ClusterResponse `json:"results,omitempty"`
 }
 
 // NewClusterResponseList instantiates a new ClusterResponseList object
@@ -43,12 +43,12 @@ func (o *ClusterResponseList) GetResults() []ClusterResponse {
 		var ret []ClusterResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponseList) GetResultsOk() (*[]ClusterResponse, bool) {
+func (o *ClusterResponseList) GetResultsOk() ([]ClusterResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ClusterResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ClusterResponse and assigns it to the Results field.
 func (o *ClusterResponseList) SetResults(v []ClusterResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o ClusterResponseList) MarshalJSON() ([]byte, error) {

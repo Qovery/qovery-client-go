@@ -18,18 +18,18 @@ import (
 // CloneRequest struct for CloneRequest
 type CloneRequest struct {
 	// name is case insensitive
-	Name    string `json:"name"`
-	Cluster string `json:"cluster"`
+	Name      string  `json:"name"`
+	ClusterId *string `json:"cluster_id,omitempty"`
+	Mode      *string `json:"mode,omitempty"`
 }
 
 // NewCloneRequest instantiates a new CloneRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloneRequest(name string, cluster string) *CloneRequest {
+func NewCloneRequest(name string) *CloneRequest {
 	this := CloneRequest{}
 	this.Name = name
-	this.Cluster = cluster
 	return &this
 }
 
@@ -65,28 +65,68 @@ func (o *CloneRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetCluster returns the Cluster field value
-func (o *CloneRequest) GetCluster() string {
-	if o == nil {
+// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+func (o *CloneRequest) GetClusterId() string {
+	if o == nil || o.ClusterId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Cluster
+	return *o.ClusterId
 }
 
-// GetClusterOk returns a tuple with the Cluster field value
+// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloneRequest) GetClusterOk() (*string, bool) {
-	if o == nil {
+func (o *CloneRequest) GetClusterIdOk() (*string, bool) {
+	if o == nil || o.ClusterId == nil {
 		return nil, false
 	}
-	return &o.Cluster, true
+	return o.ClusterId, true
 }
 
-// SetCluster sets field value
-func (o *CloneRequest) SetCluster(v string) {
-	o.Cluster = v
+// HasClusterId returns a boolean if a field has been set.
+func (o *CloneRequest) HasClusterId() bool {
+	if o != nil && o.ClusterId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
+func (o *CloneRequest) SetClusterId(v string) {
+	o.ClusterId = &v
+}
+
+// GetMode returns the Mode field value if set, zero value otherwise.
+func (o *CloneRequest) GetMode() string {
+	if o == nil || o.Mode == nil {
+		var ret string
+		return ret
+	}
+	return *o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloneRequest) GetModeOk() (*string, bool) {
+	if o == nil || o.Mode == nil {
+		return nil, false
+	}
+	return o.Mode, true
+}
+
+// HasMode returns a boolean if a field has been set.
+func (o *CloneRequest) HasMode() bool {
+	if o != nil && o.Mode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
+func (o *CloneRequest) SetMode(v string) {
+	o.Mode = &v
 }
 
 func (o CloneRequest) MarshalJSON() ([]byte, error) {
@@ -94,8 +134,11 @@ func (o CloneRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if true {
-		toSerialize["cluster"] = o.Cluster
+	if o.ClusterId != nil {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if o.Mode != nil {
+		toSerialize["mode"] = o.Mode
 	}
 	return json.Marshal(toSerialize)
 }

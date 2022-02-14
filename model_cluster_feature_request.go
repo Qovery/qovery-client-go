@@ -17,7 +17,7 @@ import (
 
 // ClusterFeatureRequest struct for ClusterFeatureRequest
 type ClusterFeatureRequest struct {
-	Features *[]ClusterFeatureRequestFeatures `json:"features,omitempty"`
+	Features []ClusterFeatureRequestFeatures `json:"features,omitempty"`
 }
 
 // NewClusterFeatureRequest instantiates a new ClusterFeatureRequest object
@@ -43,12 +43,12 @@ func (o *ClusterFeatureRequest) GetFeatures() []ClusterFeatureRequestFeatures {
 		var ret []ClusterFeatureRequestFeatures
 		return ret
 	}
-	return *o.Features
+	return o.Features
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeatureRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeatures, bool) {
+func (o *ClusterFeatureRequest) GetFeaturesOk() ([]ClusterFeatureRequestFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ClusterFeatureRequest) HasFeatures() bool {
 
 // SetFeatures gets a reference to the given []ClusterFeatureRequestFeatures and assigns it to the Features field.
 func (o *ClusterFeatureRequest) SetFeatures(v []ClusterFeatureRequestFeatures) {
-	o.Features = &v
+	o.Features = v
 }
 
 func (o ClusterFeatureRequest) MarshalJSON() ([]byte, error) {

@@ -17,7 +17,7 @@ import (
 
 // EnvironmentApplicationsSupportedLanguageList struct for EnvironmentApplicationsSupportedLanguageList
 type EnvironmentApplicationsSupportedLanguageList struct {
-	Results *[]EnvironmentApplicationsSupportedLanguage `json:"results,omitempty"`
+	Results []EnvironmentApplicationsSupportedLanguage `json:"results,omitempty"`
 }
 
 // NewEnvironmentApplicationsSupportedLanguageList instantiates a new EnvironmentApplicationsSupportedLanguageList object
@@ -43,12 +43,12 @@ func (o *EnvironmentApplicationsSupportedLanguageList) GetResults() []Environmen
 		var ret []EnvironmentApplicationsSupportedLanguage
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsSupportedLanguageList) GetResultsOk() (*[]EnvironmentApplicationsSupportedLanguage, bool) {
+func (o *EnvironmentApplicationsSupportedLanguageList) GetResultsOk() ([]EnvironmentApplicationsSupportedLanguage, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *EnvironmentApplicationsSupportedLanguageList) HasResults() bool {
 
 // SetResults gets a reference to the given []EnvironmentApplicationsSupportedLanguage and assigns it to the Results field.
 func (o *EnvironmentApplicationsSupportedLanguageList) SetResults(v []EnvironmentApplicationsSupportedLanguage) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o EnvironmentApplicationsSupportedLanguageList) MarshalJSON() ([]byte, error) {

@@ -17,7 +17,7 @@ import (
 
 // ApplicationStorageResponse struct for ApplicationStorageResponse
 type ApplicationStorageResponse struct {
-	Storage *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Storage []ApplicationStorageResponseStorage `json:"storage,omitempty"`
 }
 
 // NewApplicationStorageResponse instantiates a new ApplicationStorageResponse object
@@ -43,12 +43,12 @@ func (o *ApplicationStorageResponse) GetStorage() []ApplicationStorageResponseSt
 		var ret []ApplicationStorageResponseStorage
 		return ret
 	}
-	return *o.Storage
+	return o.Storage
 }
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationStorageResponse) GetStorageOk() (*[]ApplicationStorageResponseStorage, bool) {
+func (o *ApplicationStorageResponse) GetStorageOk() ([]ApplicationStorageResponseStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ApplicationStorageResponse) HasStorage() bool {
 
 // SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
 func (o *ApplicationStorageResponse) SetStorage(v []ApplicationStorageResponseStorage) {
-	o.Storage = &v
+	o.Storage = v
 }
 
 func (o ApplicationStorageResponse) MarshalJSON() ([]byte, error) {

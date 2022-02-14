@@ -17,7 +17,7 @@ import (
 
 // InvoiceResponseList struct for InvoiceResponseList
 type InvoiceResponseList struct {
-	Results *[]InvoiceResponse `json:"results,omitempty"`
+	Results []InvoiceResponse `json:"results,omitempty"`
 }
 
 // NewInvoiceResponseList instantiates a new InvoiceResponseList object
@@ -43,12 +43,12 @@ func (o *InvoiceResponseList) GetResults() []InvoiceResponse {
 		var ret []InvoiceResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InvoiceResponseList) GetResultsOk() (*[]InvoiceResponse, bool) {
+func (o *InvoiceResponseList) GetResultsOk() ([]InvoiceResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *InvoiceResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []InvoiceResponse and assigns it to the Results field.
 func (o *InvoiceResponseList) SetResults(v []InvoiceResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o InvoiceResponseList) MarshalJSON() ([]byte, error) {

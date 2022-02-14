@@ -17,9 +17,9 @@ import (
 
 // EnvironmentLogPaginatedResponseList struct for EnvironmentLogPaginatedResponseList
 type EnvironmentLogPaginatedResponseList struct {
-	Results  *[]EnvironmentLogResponse `json:"results,omitempty"`
-	Page     float32                   `json:"page"`
-	PageSize float32                   `json:"page_size"`
+	Results  []EnvironmentLogResponse `json:"results,omitempty"`
+	Page     float32                  `json:"page"`
+	PageSize float32                  `json:"page_size"`
 }
 
 // NewEnvironmentLogPaginatedResponseList instantiates a new EnvironmentLogPaginatedResponseList object
@@ -47,12 +47,12 @@ func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLogRespo
 		var ret []EnvironmentLogResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() (*[]EnvironmentLogResponse, bool) {
+func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() ([]EnvironmentLogResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -70,7 +70,7 @@ func (o *EnvironmentLogPaginatedResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []EnvironmentLogResponse and assigns it to the Results field.
 func (o *EnvironmentLogPaginatedResponseList) SetResults(v []EnvironmentLogResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 // GetPage returns the Page field value

@@ -17,7 +17,7 @@ import (
 
 // EnvironmentApplicationsStorageResponseList struct for EnvironmentApplicationsStorageResponseList
 type EnvironmentApplicationsStorageResponseList struct {
-	Results *[]EnvironmentApplicationsStorageResponse `json:"results,omitempty"`
+	Results []EnvironmentApplicationsStorageResponse `json:"results,omitempty"`
 }
 
 // NewEnvironmentApplicationsStorageResponseList instantiates a new EnvironmentApplicationsStorageResponseList object
@@ -43,12 +43,12 @@ func (o *EnvironmentApplicationsStorageResponseList) GetResults() []EnvironmentA
 		var ret []EnvironmentApplicationsStorageResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsStorageResponseList) GetResultsOk() (*[]EnvironmentApplicationsStorageResponse, bool) {
+func (o *EnvironmentApplicationsStorageResponseList) GetResultsOk() ([]EnvironmentApplicationsStorageResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *EnvironmentApplicationsStorageResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []EnvironmentApplicationsStorageResponse and assigns it to the Results field.
 func (o *EnvironmentApplicationsStorageResponseList) SetResults(v []EnvironmentApplicationsStorageResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o EnvironmentApplicationsStorageResponseList) MarshalJSON() ([]byte, error) {

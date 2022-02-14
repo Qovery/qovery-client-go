@@ -17,7 +17,7 @@ import (
 
 // ClusterRoutingTableResponse struct for ClusterRoutingTableResponse
 type ClusterRoutingTableResponse struct {
-	Results *[]ClusterRoutingTableResponseResults `json:"results,omitempty"`
+	Results []ClusterRoutingTableResponseResults `json:"results,omitempty"`
 }
 
 // NewClusterRoutingTableResponse instantiates a new ClusterRoutingTableResponse object
@@ -43,12 +43,12 @@ func (o *ClusterRoutingTableResponse) GetResults() []ClusterRoutingTableResponse
 		var ret []ClusterRoutingTableResponseResults
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRoutingTableResponse) GetResultsOk() (*[]ClusterRoutingTableResponseResults, bool) {
+func (o *ClusterRoutingTableResponse) GetResultsOk() ([]ClusterRoutingTableResponseResults, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ClusterRoutingTableResponse) HasResults() bool {
 
 // SetResults gets a reference to the given []ClusterRoutingTableResponseResults and assigns it to the Results field.
 func (o *ClusterRoutingTableResponse) SetResults(v []ClusterRoutingTableResponseResults) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o ClusterRoutingTableResponse) MarshalJSON() ([]byte, error) {

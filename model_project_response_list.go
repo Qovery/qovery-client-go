@@ -17,7 +17,7 @@ import (
 
 // ProjectResponseList struct for ProjectResponseList
 type ProjectResponseList struct {
-	Results *[]ProjectResponse `json:"results,omitempty"`
+	Results []ProjectResponse `json:"results,omitempty"`
 }
 
 // NewProjectResponseList instantiates a new ProjectResponseList object
@@ -43,12 +43,12 @@ func (o *ProjectResponseList) GetResults() []ProjectResponse {
 		var ret []ProjectResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectResponseList) GetResultsOk() (*[]ProjectResponse, bool) {
+func (o *ProjectResponseList) GetResultsOk() ([]ProjectResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ProjectResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ProjectResponse and assigns it to the Results field.
 func (o *ProjectResponseList) SetResults(v []ProjectResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o ProjectResponseList) MarshalJSON() ([]byte, error) {

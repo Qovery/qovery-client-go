@@ -13,36 +13,36 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // ReferralRewardsApiService ReferralRewardsApi service
 type ReferralRewardsApiService service
 
 type ApiGetAccountReferralRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ReferralRewardsApiService
 }
 
-func (r ApiGetAccountReferralRequest) Execute() (ReferralResponse, *_nethttp.Response, error) {
+func (r ApiGetAccountReferralRequest) Execute() (*ReferralResponse, *http.Response, error) {
 	return r.ApiService.GetAccountReferralExecute(r)
 }
 
 /*
 GetAccountReferral Get your referral information
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccountReferralRequest
 */
-func (a *ReferralRewardsApiService) GetAccountReferral(ctx _context.Context) ApiGetAccountReferralRequest {
+func (a *ReferralRewardsApiService) GetAccountReferral(ctx context.Context) ApiGetAccountReferralRequest {
 	return ApiGetAccountReferralRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -51,24 +51,24 @@ func (a *ReferralRewardsApiService) GetAccountReferral(ctx _context.Context) Api
 
 // Execute executes the request
 //  @return ReferralResponse
-func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountReferralRequest) (ReferralResponse, *_nethttp.Response, error) {
+func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountReferralRequest) (*ReferralResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ReferralResponse
+		localVarReturnValue *ReferralResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferralRewardsApiService.GetAccountReferral")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/referral"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -97,15 +97,15 @@ func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountRef
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -114,7 +114,7 @@ func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountRef
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -125,7 +125,7 @@ func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountRef
 }
 
 type ApiPostAccountRewardClaimRequest struct {
-	ctx                 _context.Context
+	ctx                 context.Context
 	ApiService          *ReferralRewardsApiService
 	rewardClaimResponse *RewardClaimResponse
 }
@@ -135,7 +135,7 @@ func (r ApiPostAccountRewardClaimRequest) RewardClaimResponse(rewardClaimRespons
 	return r
 }
 
-func (r ApiPostAccountRewardClaimRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPostAccountRewardClaimRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PostAccountRewardClaimExecute(r)
 }
 
@@ -144,10 +144,10 @@ PostAccountRewardClaim Claim a reward
 
 A same code can be claimed only 3 times at max
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostAccountRewardClaimRequest
 */
-func (a *ReferralRewardsApiService) PostAccountRewardClaim(ctx _context.Context) ApiPostAccountRewardClaimRequest {
+func (a *ReferralRewardsApiService) PostAccountRewardClaim(ctx context.Context) ApiPostAccountRewardClaimRequest {
 	return ApiPostAccountRewardClaimRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -155,23 +155,23 @@ func (a *ReferralRewardsApiService) PostAccountRewardClaim(ctx _context.Context)
 }
 
 // Execute executes the request
-func (a *ReferralRewardsApiService) PostAccountRewardClaimExecute(r ApiPostAccountRewardClaimRequest) (*_nethttp.Response, error) {
+func (a *ReferralRewardsApiService) PostAccountRewardClaimExecute(r ApiPostAccountRewardClaimRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = _nethttp.MethodPost
+		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferralRewardsApiService.PostAccountRewardClaim")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/rewardClaim"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -202,15 +202,15 @@ func (a *ReferralRewardsApiService) PostAccountRewardClaimExecute(r ApiPostAccou
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

@@ -13,23 +13,23 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // EnvironmentSecretApiService EnvironmentSecretApi service
 type EnvironmentSecretApiService service
 
 type ApiCreateEnvironmentSecretRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *EnvironmentSecretApiService
 	environmentId string
 	secretRequest *SecretRequest
@@ -40,7 +40,7 @@ func (r ApiCreateEnvironmentSecretRequest) SecretRequest(secretRequest SecretReq
 	return r
 }
 
-func (r ApiCreateEnvironmentSecretRequest) Execute() (SecretResponse, *_nethttp.Response, error) {
+func (r ApiCreateEnvironmentSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentSecretExecute(r)
 }
 
@@ -52,11 +52,11 @@ CreateEnvironmentSecret Add a secret to the environment
   - If the secret value points toward an existing secret key, it will be considered as an alias.
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiCreateEnvironmentSecretRequest
 */
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx _context.Context, environmentId string) ApiCreateEnvironmentSecretRequest {
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx context.Context, environmentId string) ApiCreateEnvironmentSecretRequest {
 	return ApiCreateEnvironmentSecretRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -66,25 +66,25 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx _context.Conte
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (SecretResponse, *_nethttp.Response, error) {
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue SecretResponse
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecret")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -115,15 +115,15 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -132,7 +132,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -143,7 +143,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 }
 
 type ApiCreateEnvironmentSecretAliasRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *EnvironmentSecretApiService
 	environmentId string
 	secretId      string
@@ -155,7 +155,7 @@ func (r ApiCreateEnvironmentSecretAliasRequest) Key(key Key) ApiCreateEnvironmen
 	return r
 }
 
-func (r ApiCreateEnvironmentSecretAliasRequest) Execute() (SecretResponse, *_nethttp.Response, error) {
+func (r ApiCreateEnvironmentSecretAliasRequest) Execute() (*SecretResponse, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentSecretAliasExecute(r)
 }
 
@@ -170,12 +170,12 @@ CreateEnvironmentSecretAlias Create a secret alias at the environment level
 - Only 1 alias level is allowed. You can't create an alias on an alias
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @param secretId Secret ID
  @return ApiCreateEnvironmentSecretAliasRequest
 */
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx _context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretAliasRequest {
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretAliasRequest {
 	return ApiCreateEnvironmentSecretAliasRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -186,26 +186,26 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx _context.
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (SecretResponse, *_nethttp.Response, error) {
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue SecretResponse
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretAlias")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", _neturl.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -236,15 +236,15 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -253,7 +253,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -264,7 +264,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 }
 
 type ApiCreateEnvironmentSecretOverrideRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *EnvironmentSecretApiService
 	environmentId string
 	secretId      string
@@ -276,7 +276,7 @@ func (r ApiCreateEnvironmentSecretOverrideRequest) Value(value Value) ApiCreateE
 	return r
 }
 
-func (r ApiCreateEnvironmentSecretOverrideRequest) Execute() (SecretResponse, *_nethttp.Response, error) {
+func (r ApiCreateEnvironmentSecretOverrideRequest) Execute() (*SecretResponse, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentSecretOverrideExecute(r)
 }
 
@@ -290,12 +290,12 @@ CreateEnvironmentSecretOverride Create a secret override at the environment leve
 - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @param secretId Secret ID
  @return ApiCreateEnvironmentSecretOverrideRequest
 */
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx _context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretOverrideRequest {
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretOverrideRequest {
 	return ApiCreateEnvironmentSecretOverrideRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -306,26 +306,26 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx _conte
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (SecretResponse, *_nethttp.Response, error) {
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue SecretResponse
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretOverride")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", _neturl.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -356,15 +356,15 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -373,7 +373,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -384,7 +384,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 }
 
 type ApiEditEnvironmentSecretRequest struct {
-	ctx               _context.Context
+	ctx               context.Context
 	ApiService        *EnvironmentSecretApiService
 	environmentId     string
 	secretId          string
@@ -396,7 +396,7 @@ func (r ApiEditEnvironmentSecretRequest) SecretEditRequest(secretEditRequest Sec
 	return r
 }
 
-func (r ApiEditEnvironmentSecretRequest) Execute() (SecretResponse, *_nethttp.Response, error) {
+func (r ApiEditEnvironmentSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
 	return r.ApiService.EditEnvironmentSecretExecute(r)
 }
 
@@ -409,12 +409,12 @@ EditEnvironmentSecret Edit a secret belonging to the environment
 - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @param secretId Secret ID
  @return ApiEditEnvironmentSecretRequest
 */
-func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx _context.Context, environmentId string, secretId string) ApiEditEnvironmentSecretRequest {
+func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiEditEnvironmentSecretRequest {
 	return ApiEditEnvironmentSecretRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -425,26 +425,26 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx _context.Context
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (SecretResponse, *_nethttp.Response, error) {
+func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue SecretResponse
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.EditEnvironmentSecret")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", _neturl.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.secretEditRequest == nil {
 		return localVarReturnValue, nil, reportError("secretEditRequest is required and must be specified")
 	}
@@ -478,15 +478,15 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -495,7 +495,7 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -506,13 +506,13 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 }
 
 type ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *EnvironmentSecretApiService
 	environmentId string
 	secretId      string
 }
 
-func (r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EnvironmentEnvironmentIdSecretSecretIdDeleteExecute(r)
 }
 
@@ -524,12 +524,12 @@ EnvironmentEnvironmentIdSecretSecretIdDelete Delete a secret from the environmen
 - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @param secretId Secret ID
  @return ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest
 */
-func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDelete(ctx _context.Context, environmentId string, secretId string) ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest {
+func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDelete(ctx context.Context, environmentId string, secretId string) ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest {
 	return ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -539,25 +539,25 @@ func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDele
 }
 
 // Execute executes the request
-func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDeleteExecute(r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) (*_nethttp.Response, error) {
+func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDeleteExecute(r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.EnvironmentEnvironmentIdSecretSecretIdDelete")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", _neturl.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -586,15 +586,15 @@ func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDele
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -605,23 +605,23 @@ func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDele
 }
 
 type ApiListEnvironmentSecretsRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *EnvironmentSecretApiService
 	environmentId string
 }
 
-func (r ApiListEnvironmentSecretsRequest) Execute() (SecretResponseList, *_nethttp.Response, error) {
+func (r ApiListEnvironmentSecretsRequest) Execute() (*SecretResponseList, *http.Response, error) {
 	return r.ApiService.ListEnvironmentSecretsExecute(r)
 }
 
 /*
 ListEnvironmentSecrets List environment secrets
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiListEnvironmentSecretsRequest
 */
-func (a *EnvironmentSecretApiService) ListEnvironmentSecrets(ctx _context.Context, environmentId string) ApiListEnvironmentSecretsRequest {
+func (a *EnvironmentSecretApiService) ListEnvironmentSecrets(ctx context.Context, environmentId string) ApiListEnvironmentSecretsRequest {
 	return ApiListEnvironmentSecretsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -631,25 +631,25 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecrets(ctx _context.Contex
 
 // Execute executes the request
 //  @return SecretResponseList
-func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnvironmentSecretsRequest) (SecretResponseList, *_nethttp.Response, error) {
+func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnvironmentSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue SecretResponseList
+		localVarReturnValue *SecretResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.ListEnvironmentSecrets")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -678,15 +678,15 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -695,7 +695,7 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnv
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

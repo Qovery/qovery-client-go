@@ -13,23 +13,23 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // DatabasesApiService DatabasesApi service
 type DatabasesApiService service
 
 type ApiCreateDatabaseRequest struct {
-	ctx             _context.Context
+	ctx             context.Context
 	ApiService      *DatabasesApiService
 	environmentId   string
 	databaseRequest *DatabaseRequest
@@ -40,18 +40,18 @@ func (r ApiCreateDatabaseRequest) DatabaseRequest(databaseRequest DatabaseReques
 	return r
 }
 
-func (r ApiCreateDatabaseRequest) Execute() (DatabaseResponse, *_nethttp.Response, error) {
+func (r ApiCreateDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, error) {
 	return r.ApiService.CreateDatabaseExecute(r)
 }
 
 /*
 CreateDatabase Create a database
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiCreateDatabaseRequest
 */
-func (a *DatabasesApiService) CreateDatabase(ctx _context.Context, environmentId string) ApiCreateDatabaseRequest {
+func (a *DatabasesApiService) CreateDatabase(ctx context.Context, environmentId string) ApiCreateDatabaseRequest {
 	return ApiCreateDatabaseRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -61,25 +61,25 @@ func (a *DatabasesApiService) CreateDatabase(ctx _context.Context, environmentId
 
 // Execute executes the request
 //  @return DatabaseResponse
-func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (DatabaseResponse, *_nethttp.Response, error) {
+func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue DatabaseResponse
+		localVarReturnValue *DatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.CreateDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -110,15 +110,15 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -127,7 +127,7 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -138,12 +138,12 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 }
 
 type ApiGetEnvironmentDatabaseStatusRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *DatabasesApiService
 	environmentId string
 }
 
-func (r ApiGetEnvironmentDatabaseStatusRequest) Execute() (ReferenceObjectStatusResponseList, *_nethttp.Response, error) {
+func (r ApiGetEnvironmentDatabaseStatusRequest) Execute() (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	return r.ApiService.GetEnvironmentDatabaseStatusExecute(r)
 }
 
@@ -152,11 +152,11 @@ GetEnvironmentDatabaseStatus List all environment databases statuses
 
 Returns a list of databases with only their id and status.
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiGetEnvironmentDatabaseStatusRequest
 */
-func (a *DatabasesApiService) GetEnvironmentDatabaseStatus(ctx _context.Context, environmentId string) ApiGetEnvironmentDatabaseStatusRequest {
+func (a *DatabasesApiService) GetEnvironmentDatabaseStatus(ctx context.Context, environmentId string) ApiGetEnvironmentDatabaseStatusRequest {
 	return ApiGetEnvironmentDatabaseStatusRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -166,25 +166,25 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatus(ctx _context.Context,
 
 // Execute executes the request
 //  @return ReferenceObjectStatusResponseList
-func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnvironmentDatabaseStatusRequest) (ReferenceObjectStatusResponseList, *_nethttp.Response, error) {
+func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnvironmentDatabaseStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ReferenceObjectStatusResponseList
+		localVarReturnValue *ReferenceObjectStatusResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.GetEnvironmentDatabaseStatus")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -213,15 +213,15 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -230,7 +230,7 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -241,23 +241,23 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 }
 
 type ApiListDatabaseRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *DatabasesApiService
 	environmentId string
 }
 
-func (r ApiListDatabaseRequest) Execute() (DatabaseResponseList, *_nethttp.Response, error) {
+func (r ApiListDatabaseRequest) Execute() (*DatabaseResponseList, *http.Response, error) {
 	return r.ApiService.ListDatabaseExecute(r)
 }
 
 /*
 ListDatabase List environment databases
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiListDatabaseRequest
 */
-func (a *DatabasesApiService) ListDatabase(ctx _context.Context, environmentId string) ApiListDatabaseRequest {
+func (a *DatabasesApiService) ListDatabase(ctx context.Context, environmentId string) ApiListDatabaseRequest {
 	return ApiListDatabaseRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -267,25 +267,25 @@ func (a *DatabasesApiService) ListDatabase(ctx _context.Context, environmentId s
 
 // Execute executes the request
 //  @return DatabaseResponseList
-func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (DatabaseResponseList, *_nethttp.Response, error) {
+func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (*DatabaseResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue DatabaseResponseList
+		localVarReturnValue *DatabaseResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -314,15 +314,15 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (Dat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -331,7 +331,7 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (Dat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -342,23 +342,23 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (Dat
 }
 
 type ApiListEnvironmentDatabaseConfigRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *DatabasesApiService
 	environmentId string
 }
 
-func (r ApiListEnvironmentDatabaseConfigRequest) Execute() (DatabaseConfigurationResponseList, *_nethttp.Response, error) {
+func (r ApiListEnvironmentDatabaseConfigRequest) Execute() (*DatabaseConfigurationResponseList, *http.Response, error) {
 	return r.ApiService.ListEnvironmentDatabaseConfigExecute(r)
 }
 
 /*
 ListEnvironmentDatabaseConfig List eligible database types, versions and modes for the environment
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiListEnvironmentDatabaseConfigRequest
 */
-func (a *DatabasesApiService) ListEnvironmentDatabaseConfig(ctx _context.Context, environmentId string) ApiListEnvironmentDatabaseConfigRequest {
+func (a *DatabasesApiService) ListEnvironmentDatabaseConfig(ctx context.Context, environmentId string) ApiListEnvironmentDatabaseConfigRequest {
 	return ApiListEnvironmentDatabaseConfigRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -368,25 +368,25 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfig(ctx _context.Context
 
 // Execute executes the request
 //  @return DatabaseConfigurationResponseList
-func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvironmentDatabaseConfigRequest) (DatabaseConfigurationResponseList, *_nethttp.Response, error) {
+func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvironmentDatabaseConfigRequest) (*DatabaseConfigurationResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue DatabaseConfigurationResponseList
+		localVarReturnValue *DatabaseConfigurationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListEnvironmentDatabaseConfig")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/databaseConfiguration"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -415,15 +415,15 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -432,7 +432,7 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -443,23 +443,23 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 }
 
 type ApiListEnvironmentDatabaseCurrentMetricRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *DatabasesApiService
 	environmentId string
 }
 
-func (r ApiListEnvironmentDatabaseCurrentMetricRequest) Execute() (EnvironmentDatabasesCurrentMetricResponseList, *_nethttp.Response, error) {
+func (r ApiListEnvironmentDatabaseCurrentMetricRequest) Execute() (*EnvironmentDatabasesCurrentMetricResponseList, *http.Response, error) {
 	return r.ApiService.ListEnvironmentDatabaseCurrentMetricExecute(r)
 }
 
 /*
 ListEnvironmentDatabaseCurrentMetric List current metric consumption for each database
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiListEnvironmentDatabaseCurrentMetricRequest
 */
-func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetric(ctx _context.Context, environmentId string) ApiListEnvironmentDatabaseCurrentMetricRequest {
+func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetric(ctx context.Context, environmentId string) ApiListEnvironmentDatabaseCurrentMetricRequest {
 	return ApiListEnvironmentDatabaseCurrentMetricRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -469,25 +469,25 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetric(ctx _context.
 
 // Execute executes the request
 //  @return EnvironmentDatabasesCurrentMetricResponseList
-func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiListEnvironmentDatabaseCurrentMetricRequest) (EnvironmentDatabasesCurrentMetricResponseList, *_nethttp.Response, error) {
+func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiListEnvironmentDatabaseCurrentMetricRequest) (*EnvironmentDatabasesCurrentMetricResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue EnvironmentDatabasesCurrentMetricResponseList
+		localVarReturnValue *EnvironmentDatabasesCurrentMetricResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListEnvironmentDatabaseCurrentMetric")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database/currentMetric"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -516,15 +516,15 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -533,7 +533,7 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiL
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

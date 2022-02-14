@@ -21,8 +21,11 @@ type ApplicationGitRepositoryResponse struct {
 	HasAccess *bool   `json:"has_access,omitempty"`
 	Provider  *string `json:"provider,omitempty"`
 	Owner     *string `json:"owner,omitempty"`
+	Url       *string `json:"url,omitempty"`
 	// repository name
-	Name *string `json:"name,omitempty"`
+	Name     *string `json:"name,omitempty"`
+	Branch   *string `json:"branch,omitempty"`
+	RootPath *string `json:"root_path,omitempty"`
 	// Git commit ID corresponding to the deployed version of the app
 	DeployedCommitId *string `json:"deployed_commit_id,omitempty"`
 	// Git commit date corresponding to the deployed version of the app
@@ -145,6 +148,38 @@ func (o *ApplicationGitRepositoryResponse) SetOwner(v string) {
 	o.Owner = &v
 }
 
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *ApplicationGitRepositoryResponse) GetUrl() string {
+	if o == nil || o.Url == nil {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationGitRepositoryResponse) GetUrlOk() (*string, bool) {
+	if o == nil || o.Url == nil {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *ApplicationGitRepositoryResponse) HasUrl() bool {
+	if o != nil && o.Url != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *ApplicationGitRepositoryResponse) SetUrl(v string) {
+	o.Url = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ApplicationGitRepositoryResponse) GetName() string {
 	if o == nil || o.Name == nil {
@@ -175,6 +210,70 @@ func (o *ApplicationGitRepositoryResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ApplicationGitRepositoryResponse) SetName(v string) {
 	o.Name = &v
+}
+
+// GetBranch returns the Branch field value if set, zero value otherwise.
+func (o *ApplicationGitRepositoryResponse) GetBranch() string {
+	if o == nil || o.Branch == nil {
+		var ret string
+		return ret
+	}
+	return *o.Branch
+}
+
+// GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationGitRepositoryResponse) GetBranchOk() (*string, bool) {
+	if o == nil || o.Branch == nil {
+		return nil, false
+	}
+	return o.Branch, true
+}
+
+// HasBranch returns a boolean if a field has been set.
+func (o *ApplicationGitRepositoryResponse) HasBranch() bool {
+	if o != nil && o.Branch != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBranch gets a reference to the given string and assigns it to the Branch field.
+func (o *ApplicationGitRepositoryResponse) SetBranch(v string) {
+	o.Branch = &v
+}
+
+// GetRootPath returns the RootPath field value if set, zero value otherwise.
+func (o *ApplicationGitRepositoryResponse) GetRootPath() string {
+	if o == nil || o.RootPath == nil {
+		var ret string
+		return ret
+	}
+	return *o.RootPath
+}
+
+// GetRootPathOk returns a tuple with the RootPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationGitRepositoryResponse) GetRootPathOk() (*string, bool) {
+	if o == nil || o.RootPath == nil {
+		return nil, false
+	}
+	return o.RootPath, true
+}
+
+// HasRootPath returns a boolean if a field has been set.
+func (o *ApplicationGitRepositoryResponse) HasRootPath() bool {
+	if o != nil && o.RootPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRootPath gets a reference to the given string and assigns it to the RootPath field.
+func (o *ApplicationGitRepositoryResponse) SetRootPath(v string) {
+	o.RootPath = &v
 }
 
 // GetDeployedCommitId returns the DeployedCommitId field value if set, zero value otherwise.
@@ -316,8 +415,17 @@ func (o ApplicationGitRepositoryResponse) MarshalJSON() ([]byte, error) {
 	if o.Owner != nil {
 		toSerialize["owner"] = o.Owner
 	}
+	if o.Url != nil {
+		toSerialize["url"] = o.Url
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Branch != nil {
+		toSerialize["branch"] = o.Branch
+	}
+	if o.RootPath != nil {
+		toSerialize["root_path"] = o.RootPath
 	}
 	if o.DeployedCommitId != nil {
 		toSerialize["deployed_commit_id"] = o.DeployedCommitId

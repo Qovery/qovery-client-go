@@ -17,7 +17,7 @@ import (
 
 // ServiceResponseList struct for ServiceResponseList
 type ServiceResponseList struct {
-	Results *[]ServiceResponse `json:"results,omitempty"`
+	Results []ServiceResponse `json:"results,omitempty"`
 }
 
 // NewServiceResponseList instantiates a new ServiceResponseList object
@@ -43,12 +43,12 @@ func (o *ServiceResponseList) GetResults() []ServiceResponse {
 		var ret []ServiceResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceResponseList) GetResultsOk() (*[]ServiceResponse, bool) {
+func (o *ServiceResponseList) GetResultsOk() ([]ServiceResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ServiceResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ServiceResponse and assigns it to the Results field.
 func (o *ServiceResponseList) SetResults(v []ServiceResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o ServiceResponseList) MarshalJSON() ([]byte, error) {

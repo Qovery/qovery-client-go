@@ -17,7 +17,7 @@ import (
 
 // ApplicationPortResponse struct for ApplicationPortResponse
 type ApplicationPortResponse struct {
-	Ports *[]ApplicationPortResponsePorts `json:"ports,omitempty"`
+	Ports []ApplicationPortResponsePorts `json:"ports,omitempty"`
 }
 
 // NewApplicationPortResponse instantiates a new ApplicationPortResponse object
@@ -43,12 +43,12 @@ func (o *ApplicationPortResponse) GetPorts() []ApplicationPortResponsePorts {
 		var ret []ApplicationPortResponsePorts
 		return ret
 	}
-	return *o.Ports
+	return o.Ports
 }
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPortResponse) GetPortsOk() (*[]ApplicationPortResponsePorts, bool) {
+func (o *ApplicationPortResponse) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ApplicationPortResponse) HasPorts() bool {
 
 // SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
 func (o *ApplicationPortResponse) SetPorts(v []ApplicationPortResponsePorts) {
-	o.Ports = &v
+	o.Ports = v
 }
 
 func (o ApplicationPortResponse) MarshalJSON() ([]byte, error) {

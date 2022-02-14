@@ -17,7 +17,7 @@ import (
 
 // EnvironmentApplicationsCurrentScaleResponseList struct for EnvironmentApplicationsCurrentScaleResponseList
 type EnvironmentApplicationsCurrentScaleResponseList struct {
-	Results *[]EnvironmentApplicationsCurrentScaleResponse `json:"results,omitempty"`
+	Results []EnvironmentApplicationsCurrentScaleResponse `json:"results,omitempty"`
 }
 
 // NewEnvironmentApplicationsCurrentScaleResponseList instantiates a new EnvironmentApplicationsCurrentScaleResponseList object
@@ -43,12 +43,12 @@ func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResults() []Environ
 		var ret []EnvironmentApplicationsCurrentScaleResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResultsOk() (*[]EnvironmentApplicationsCurrentScaleResponse, bool) {
+func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResultsOk() ([]EnvironmentApplicationsCurrentScaleResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *EnvironmentApplicationsCurrentScaleResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []EnvironmentApplicationsCurrentScaleResponse and assigns it to the Results field.
 func (o *EnvironmentApplicationsCurrentScaleResponseList) SetResults(v []EnvironmentApplicationsCurrentScaleResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o EnvironmentApplicationsCurrentScaleResponseList) MarshalJSON() ([]byte, error) {

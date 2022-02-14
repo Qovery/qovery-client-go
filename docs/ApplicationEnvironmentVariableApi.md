@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CreateApplicationEnvironmentVariableOverride**](ApplicationEnvironmentVariableApi.md#CreateApplicationEnvironmentVariableOverride) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the application level
 [**DeleteApplicationEnvironmentVariable**](ApplicationEnvironmentVariableApi.md#DeleteApplicationEnvironmentVariable) | **Delete** /application/{applicationId}/environmentVariable/{environmentVariableId} | Delete an environment variable from an application
 [**EditApplicationEnvironmentVariable**](ApplicationEnvironmentVariableApi.md#EditApplicationEnvironmentVariable) | **Put** /application/{applicationId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the application
+[**ImportEnvironmentVariable**](ApplicationEnvironmentVariableApi.md#ImportEnvironmentVariable) | **Post** /application/{applicationId}/environmentVariable/import | Import variables
 [**ListApplicationEnvironmentVariable**](ApplicationEnvironmentVariableApi.md#ListApplicationEnvironmentVariable) | **Get** /application/{applicationId}/environmentVariable | List environment variables
 
 
@@ -38,8 +39,8 @@ func main() {
     environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example", "Value_example") // EnvironmentVariableRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable(context.Background(), applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable(context.Background(), applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -111,8 +112,8 @@ func main() {
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias(context.Background(), applicationId, environmentVariableId).Key(key).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias(context.Background(), applicationId, environmentVariableId).Key(key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +187,8 @@ func main() {
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride(context.Background(), applicationId, environmentVariableId).Value(value).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride(context.Background(), applicationId, environmentVariableId).Value(value).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +261,8 @@ func main() {
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.DeleteApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.DeleteApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.DeleteApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +333,8 @@ func main() {
     environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example", "Value_example") // EnvironmentVariableEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -381,6 +382,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ImportEnvironmentVariable
+
+> VariableImportResponse ImportEnvironmentVariable(ctx, applicationId).VariableImportRequest(variableImportRequest).Execute()
+
+Import variables
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVars{*openapiclient.NewVariableImportRequestVars("Name_example", "Value_example", "Scope_example", false)}) // VariableImportRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.ImportEnvironmentVariable(context.Background(), applicationId).VariableImportRequest(variableImportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.ImportEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportEnvironmentVariable`: VariableImportResponse
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableApi.ImportEnvironmentVariable`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**applicationId** | **string** | Application ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportEnvironmentVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **variableImportRequest** | [**VariableImportRequest**](VariableImportRequest.md) |  | 
+
+### Return type
+
+[**VariableImportResponse**](VariableImportResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListApplicationEnvironmentVariable
 
 > EnvironmentVariableResponseList ListApplicationEnvironmentVariable(ctx, applicationId).Execute()
@@ -403,8 +476,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.ListApplicationEnvironmentVariable(context.Background(), applicationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.ListApplicationEnvironmentVariable(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.ListApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

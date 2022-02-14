@@ -33,8 +33,8 @@ func main() {
     startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.EnvironmentDeploymentHistoryApi.ListEnvironmentDeploymentHistory(context.Background(), environmentId).StartId(startId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentDeploymentHistoryApi.ListEnvironmentDeploymentHistory(context.Background(), environmentId).StartId(startId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentHistoryApi.ListEnvironmentDeploymentHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

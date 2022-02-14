@@ -38,9 +38,9 @@ type ApplicationRequest struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	EnvPreview *bool                               `json:"env_preview,omitempty"`
-	Storage    *[]ApplicationStorageRequestStorage `json:"storage,omitempty"`
-	Ports      *[]ApplicationPortRequestPorts      `json:"ports,omitempty"`
+	EnvPreview *bool                              `json:"env_preview,omitempty"`
+	Storage    []ApplicationStorageRequestStorage `json:"storage,omitempty"`
+	Ports      []ApplicationPortRequestPorts      `json:"ports,omitempty"`
 }
 
 // NewApplicationRequest instantiates a new ApplicationRequest object
@@ -446,12 +446,12 @@ func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorage {
 		var ret []ApplicationStorageRequestStorage
 		return ret
 	}
-	return *o.Storage
+	return o.Storage
 }
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetStorageOk() (*[]ApplicationStorageRequestStorage, bool) {
+func (o *ApplicationRequest) GetStorageOk() ([]ApplicationStorageRequestStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -469,7 +469,7 @@ func (o *ApplicationRequest) HasStorage() bool {
 
 // SetStorage gets a reference to the given []ApplicationStorageRequestStorage and assigns it to the Storage field.
 func (o *ApplicationRequest) SetStorage(v []ApplicationStorageRequestStorage) {
-	o.Storage = &v
+	o.Storage = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
@@ -478,12 +478,12 @@ func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPorts {
 		var ret []ApplicationPortRequestPorts
 		return ret
 	}
-	return *o.Ports
+	return o.Ports
 }
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetPortsOk() (*[]ApplicationPortRequestPorts, bool) {
+func (o *ApplicationRequest) GetPortsOk() ([]ApplicationPortRequestPorts, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -501,7 +501,7 @@ func (o *ApplicationRequest) HasPorts() bool {
 
 // SetPorts gets a reference to the given []ApplicationPortRequestPorts and assigns it to the Ports field.
 func (o *ApplicationRequest) SetPorts(v []ApplicationPortRequestPorts) {
-	o.Ports = &v
+	o.Ports = v
 }
 
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {

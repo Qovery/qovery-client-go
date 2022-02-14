@@ -25,7 +25,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import sw "./qovery"
+import qovery "github.com/qovery/qovery-client-go"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -43,7 +43,7 @@ Default configuration comes with `Servers` field that contains server objects as
 For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), sw.ContextServerIndex, 1)
+ctx := context.WithValue(context.Background(), qovery.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
@@ -51,7 +51,7 @@ ctx := context.WithValue(context.Background(), sw.ContextServerIndex, 1)
 Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), sw.ContextServerVariables, map[string]string{
+ctx := context.WithValue(context.Background(), qovery.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -65,10 +65,10 @@ An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```
-ctx := context.WithValue(context.Background(), sw.ContextOperationServerIndices, map[string]int{
+ctx := context.WithValue(context.Background(), qovery.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), sw.ContextOperationServerVariables, map[string]map[string]string{
+ctx = context.WithValue(context.Background(), qovery.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *ApplicationEnvironmentVariableApi* | [**CreateApplicationEnvironmentVariableOverride**](docs/ApplicationEnvironmentVariableApi.md#createapplicationenvironmentvariableoverride) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the application level
 *ApplicationEnvironmentVariableApi* | [**DeleteApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#deleteapplicationenvironmentvariable) | **Delete** /application/{applicationId}/environmentVariable/{environmentVariableId} | Delete an environment variable from an application
 *ApplicationEnvironmentVariableApi* | [**EditApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#editapplicationenvironmentvariable) | **Put** /application/{applicationId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the application
+*ApplicationEnvironmentVariableApi* | [**ImportEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#importenvironmentvariable) | **Post** /application/{applicationId}/environmentVariable/import | Import variables
 *ApplicationEnvironmentVariableApi* | [**ListApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#listapplicationenvironmentvariable) | **Get** /application/{applicationId}/environmentVariable | List environment variables
 *ApplicationEventApi* | [**ListApplicationEvent**](docs/ApplicationEventApi.md#listapplicationevent) | **Get** /application/{applicationId}/event | List application events
 *ApplicationLogsApi* | [**ListApplicationLog**](docs/ApplicationLogsApi.md#listapplicationlog) | **Get** /application/{applicationId}/log | List logs
@@ -215,6 +216,7 @@ Class | Method | HTTP request | Description
 *DependencyApi* | [**CreateApplicationDependency**](docs/DependencyApi.md#createapplicationdependency) | **Post** /application/{applicationId}/dependency/{targetApplicationId} | Add application dependency to this application.
 *DependencyApi* | [**ListApplicationDependency**](docs/DependencyApi.md#listapplicationdependency) | **Get** /application/{applicationId}/dependency | List application dependencies
 *DependencyApi* | [**RemoveApplicationDependency**](docs/DependencyApi.md#removeapplicationdependency) | **Delete** /application/{applicationId}/dependency/{targetApplicationId} | Remove application dependency to this application.
+*EnvironmentActionsApi* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsApi.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsApi* | [**CloneEnvironment**](docs/EnvironmentActionsApi.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
 *EnvironmentActionsApi* | [**DeployEnvironment**](docs/EnvironmentActionsApi.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
 *EnvironmentActionsApi* | [**RestartEnvironment**](docs/EnvironmentActionsApi.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Restart environment
@@ -518,6 +520,10 @@ Class | Method | HTTP request | Description
  - [UserResponse](docs/UserResponse.md)
  - [UserResponseList](docs/UserResponseList.md)
  - [Value](docs/Value.md)
+ - [VariableImportRequest](docs/VariableImportRequest.md)
+ - [VariableImportRequestVars](docs/VariableImportRequestVars.md)
+ - [VariableImportResponse](docs/VariableImportResponse.md)
+ - [VariableImportResponseSuccessfulImportedVariables](docs/VariableImportResponseSuccessfulImportedVariables.md)
  - [VersionResponse](docs/VersionResponse.md)
  - [VersionResponseList](docs/VersionResponseList.md)
 
@@ -533,7 +539,7 @@ Class | Method | HTTP request | Description
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARERTOKENSTRING")
+auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 

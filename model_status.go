@@ -22,7 +22,7 @@ type Status struct {
 	State string `json:"state"`
 	// message related to the state
 	Message                 NullableString `json:"message,omitempty"`
-	ServiceDeploymentStatus NullableString `json:"serviceDeploymentStatus,omitempty"`
+	ServiceDeploymentStatus NullableString `json:"service_deployment_status,omitempty"`
 }
 
 // NewStatus instantiates a new Status object
@@ -197,7 +197,7 @@ func (o Status) MarshalJSON() ([]byte, error) {
 		toSerialize["message"] = o.Message.Get()
 	}
 	if o.ServiceDeploymentStatus.IsSet() {
-		toSerialize["serviceDeploymentStatus"] = o.ServiceDeploymentStatus.Get()
+		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus.Get()
 	}
 	return json.Marshal(toSerialize)
 }

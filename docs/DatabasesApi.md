@@ -35,8 +35,8 @@ func main() {
     databaseRequest := *openapiclient.NewDatabaseRequest("Name_example", "Type_example", "10.1", "Mode_example") // DatabaseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabasesApi.CreateDatabase(context.Background(), environmentId).DatabaseRequest(databaseRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabasesApi.CreateDatabase(context.Background(), environmentId).DatabaseRequest(databaseRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabasesApi.CreateDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -106,8 +106,8 @@ func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabasesApi.GetEnvironmentDatabaseStatus(context.Background(), environmentId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabasesApi.GetEnvironmentDatabaseStatus(context.Background(), environmentId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabasesApi.GetEnvironmentDatabaseStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,8 +174,8 @@ func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabasesApi.ListDatabase(context.Background(), environmentId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabasesApi.ListDatabase(context.Background(), environmentId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabasesApi.ListDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -242,8 +242,8 @@ func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabasesApi.ListEnvironmentDatabaseConfig(context.Background(), environmentId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabasesApi.ListEnvironmentDatabaseConfig(context.Background(), environmentId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabasesApi.ListEnvironmentDatabaseConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -310,8 +310,8 @@ func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabasesApi.ListEnvironmentDatabaseCurrentMetric(context.Background(), environmentId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabasesApi.ListEnvironmentDatabaseCurrentMetric(context.Background(), environmentId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabasesApi.ListEnvironmentDatabaseCurrentMetric``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

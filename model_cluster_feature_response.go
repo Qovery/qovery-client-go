@@ -17,16 +17,16 @@ import (
 
 // ClusterFeatureResponse struct for ClusterFeatureResponse
 type ClusterFeatureResponse struct {
-	Id                  *string         `json:"id,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	Description         NullableString  `json:"description,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      *[]interface{}  `json:"accepted_values,omitempty"`
+	Id                  *string              `json:"id,omitempty"`
+	Title               *string              `json:"title,omitempty"`
+	Description         NullableString       `json:"description,omitempty"`
+	CostPerMonthInCents NullableInt32        `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32      `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString       `json:"currency_code,omitempty"`
+	ValueType           *string              `json:"value_type,omitempty"`
+	Value               NullableString       `json:"value,omitempty"`
+	IsValueUpdatable    *bool                `json:"is_value_updatable,omitempty"`
+	AcceptedValues      []interface{} `json:"accepted_values,omitempty"`
 }
 
 // NewClusterFeatureResponse instantiates a new ClusterFeatureResponse object
@@ -399,12 +399,12 @@ func (o *ClusterFeatureResponse) GetAcceptedValues() []interface{} {
 		var ret []interface{}
 		return ret
 	}
-	return *o.AcceptedValues
+	return o.AcceptedValues
 }
 
 // GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeatureResponse) GetAcceptedValuesOk() (*[]interface{}, bool) {
+func (o *ClusterFeatureResponse) GetAcceptedValuesOk() ([]interface{}, bool) {
 	if o == nil || o.AcceptedValues == nil {
 		return nil, false
 	}
@@ -422,7 +422,7 @@ func (o *ClusterFeatureResponse) HasAcceptedValues() bool {
 
 // SetAcceptedValues gets a reference to the given []interface{} and assigns it to the AcceptedValues field.
 func (o *ClusterFeatureResponse) SetAcceptedValues(v []interface{}) {
-	o.AcceptedValues = &v
+	o.AcceptedValues = v
 }
 
 func (o ClusterFeatureResponse) MarshalJSON() ([]byte, error) {

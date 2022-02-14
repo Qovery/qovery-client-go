@@ -76,11 +76,11 @@ func (o *MetricGenericResponse) GetData() []MetricGenericDatapointResponse {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *MetricGenericResponse) GetDataOk() (*[]MetricGenericDatapointResponse, bool) {
+func (o *MetricGenericResponse) GetDataOk() ([]MetricGenericDatapointResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Data, true
+	return o.Data, true
 }
 
 // SetData sets field value

@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
-**Cluster** | **string** |  | 
+**ClusterId** | Pointer to **string** |  | [optional] 
+**Mode** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewCloneRequest
 
-`func NewCloneRequest(name string, cluster string, ) *CloneRequest`
+`func NewCloneRequest(name string, ) *CloneRequest`
 
 NewCloneRequest instantiates a new CloneRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,25 +47,55 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetCluster
+### GetClusterId
 
-`func (o *CloneRequest) GetCluster() string`
+`func (o *CloneRequest) GetClusterId() string`
 
-GetCluster returns the Cluster field if non-nil, zero value otherwise.
+GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
 
-### GetClusterOk
+### GetClusterIdOk
 
-`func (o *CloneRequest) GetClusterOk() (*string, bool)`
+`func (o *CloneRequest) GetClusterIdOk() (*string, bool)`
 
-GetClusterOk returns a tuple with the Cluster field if it's non-nil, zero value otherwise
+GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCluster
+### SetClusterId
 
-`func (o *CloneRequest) SetCluster(v string)`
+`func (o *CloneRequest) SetClusterId(v string)`
 
-SetCluster sets Cluster field to given value.
+SetClusterId sets ClusterId field to given value.
 
+### HasClusterId
+
+`func (o *CloneRequest) HasClusterId() bool`
+
+HasClusterId returns a boolean if a field has been set.
+
+### GetMode
+
+`func (o *CloneRequest) GetMode() string`
+
+GetMode returns the Mode field if non-nil, zero value otherwise.
+
+### GetModeOk
+
+`func (o *CloneRequest) GetModeOk() (*string, bool)`
+
+GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMode
+
+`func (o *CloneRequest) SetMode(v string)`
+
+SetMode sets Mode field to given value.
+
+### HasMode
+
+`func (o *CloneRequest) HasMode() bool`
+
+HasMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

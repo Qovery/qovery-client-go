@@ -17,7 +17,7 @@ import (
 
 // EventResponseList struct for EventResponseList
 type EventResponseList struct {
-	Results *[]EventResponse `json:"results,omitempty"`
+	Results []EventResponse `json:"results,omitempty"`
 }
 
 // NewEventResponseList instantiates a new EventResponseList object
@@ -43,12 +43,12 @@ func (o *EventResponseList) GetResults() []EventResponse {
 		var ret []EventResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventResponseList) GetResultsOk() (*[]EventResponse, bool) {
+func (o *EventResponseList) GetResultsOk() ([]EventResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *EventResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []EventResponse and assigns it to the Results field.
 func (o *EventResponseList) SetResults(v []EventResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o EventResponseList) MarshalJSON() ([]byte, error) {

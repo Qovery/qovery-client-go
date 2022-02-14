@@ -7,7 +7,10 @@ Name | Type | Description | Notes
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Provider** | Pointer to **string** |  | [optional] 
 **Owner** | Pointer to **string** |  | [optional] 
+**Url** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** | repository name | [optional] 
+**Branch** | Pointer to **string** |  | [optional] 
+**RootPath** | Pointer to **string** |  | [optional] 
 **DeployedCommitId** | Pointer to **string** | Git commit ID corresponding to the deployed version of the app | [optional] 
 **DeployedCommitDate** | Pointer to **time.Time** | Git commit date corresponding to the deployed version of the app | [optional] [readonly] 
 **DeployedCommitContributor** | Pointer to **string** | Git commit user corresponding to the deployed version of the app | [optional] 
@@ -107,6 +110,31 @@ SetOwner sets Owner field to given value.
 
 HasOwner returns a boolean if a field has been set.
 
+### GetUrl
+
+`func (o *ApplicationGitRepositoryResponse) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *ApplicationGitRepositoryResponse) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *ApplicationGitRepositoryResponse) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *ApplicationGitRepositoryResponse) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *ApplicationGitRepositoryResponse) GetName() string`
@@ -131,6 +159,56 @@ SetName sets Name field to given value.
 `func (o *ApplicationGitRepositoryResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetBranch
+
+`func (o *ApplicationGitRepositoryResponse) GetBranch() string`
+
+GetBranch returns the Branch field if non-nil, zero value otherwise.
+
+### GetBranchOk
+
+`func (o *ApplicationGitRepositoryResponse) GetBranchOk() (*string, bool)`
+
+GetBranchOk returns a tuple with the Branch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBranch
+
+`func (o *ApplicationGitRepositoryResponse) SetBranch(v string)`
+
+SetBranch sets Branch field to given value.
+
+### HasBranch
+
+`func (o *ApplicationGitRepositoryResponse) HasBranch() bool`
+
+HasBranch returns a boolean if a field has been set.
+
+### GetRootPath
+
+`func (o *ApplicationGitRepositoryResponse) GetRootPath() string`
+
+GetRootPath returns the RootPath field if non-nil, zero value otherwise.
+
+### GetRootPathOk
+
+`func (o *ApplicationGitRepositoryResponse) GetRootPathOk() (*string, bool)`
+
+GetRootPathOk returns a tuple with the RootPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRootPath
+
+`func (o *ApplicationGitRepositoryResponse) SetRootPath(v string)`
+
+SetRootPath sets RootPath field to given value.
+
+### HasRootPath
+
+`func (o *ApplicationGitRepositoryResponse) HasRootPath() bool`
+
+HasRootPath returns a boolean if a field has been set.
 
 ### GetDeployedCommitId
 
