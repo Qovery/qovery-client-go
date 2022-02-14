@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
-**EnvPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
+**AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -394,30 +394,30 @@ SetHealthcheck sets Healthcheck field to given value.
 
 HasHealthcheck returns a boolean if a field has been set.
 
-### GetEnvPreview
+### GetAutoPreview
 
-`func (o *ApplicationResponse) GetEnvPreview() bool`
+`func (o *ApplicationResponse) GetAutoPreview() bool`
 
-GetEnvPreview returns the EnvPreview field if non-nil, zero value otherwise.
+GetAutoPreview returns the AutoPreview field if non-nil, zero value otherwise.
 
-### GetEnvPreviewOk
+### GetAutoPreviewOk
 
-`func (o *ApplicationResponse) GetEnvPreviewOk() (*bool, bool)`
+`func (o *ApplicationResponse) GetAutoPreviewOk() (*bool, bool)`
 
-GetEnvPreviewOk returns a tuple with the EnvPreview field if it's non-nil, zero value otherwise
+GetAutoPreviewOk returns a tuple with the AutoPreview field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnvPreview
+### SetAutoPreview
 
-`func (o *ApplicationResponse) SetEnvPreview(v bool)`
+`func (o *ApplicationResponse) SetAutoPreview(v bool)`
 
-SetEnvPreview sets EnvPreview field to given value.
+SetAutoPreview sets AutoPreview field to given value.
 
-### HasEnvPreview
+### HasAutoPreview
 
-`func (o *ApplicationResponse) HasEnvPreview() bool`
+`func (o *ApplicationResponse) HasAutoPreview() bool`
 
-HasEnvPreview returns a boolean if a field has been set.
+HasAutoPreview returns a boolean if a field has been set.
 
 ### GetId
 

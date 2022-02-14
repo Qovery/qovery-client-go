@@ -8941,11 +8941,11 @@ components:
         description: description
         cpu: 1250
         max_running_instances: 6
+        auto_preview: true
         git_repository:
           root_path: /
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
-        env_preview: true
         dockerfile_path: dockerfile_path
       properties:
         name:
@@ -9010,7 +9010,7 @@ components:
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
-        env_preview:
+        auto_preview:
           default: true
           description: |
             Specify if the environment preview option is activated or not for this application.
@@ -9060,7 +9060,7 @@ components:
           protocol: TCP
           value: value
         name: name
-        env_preview: true
+        auto_preview: true
       properties:
         name:
           description: name is case insensitive
@@ -9122,7 +9122,7 @@ components:
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
-        env_preview:
+        auto_preview:
           default: true
           description: |
             Specify if the environment preview option is activated or not for this application.
@@ -9319,7 +9319,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         maximum_cpu: 1250
         name: name
-        env_preview: true
+        auto_preview: true
       properties:
         environment:
           $ref: '#/components/schemas/ReferenceObject'
@@ -9398,7 +9398,7 @@ components:
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
-        env_preview:
+        auto_preview:
           default: true
           description: |
             Specify if the environment preview option is activated or not for this application.
@@ -9637,7 +9637,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 1250
           name: name
-          env_preview: true
+          auto_preview: true
         - min_running_instances: 0
           memory: 1024
           maximum_memory: 1024
@@ -9666,7 +9666,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 1250
           name: name
-          env_preview: true
+          auto_preview: true
       properties:
         results:
           items:

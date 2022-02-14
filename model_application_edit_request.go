@@ -38,7 +38,7 @@ type ApplicationEditRequest struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	EnvPreview *bool `json:"env_preview,omitempty"`
+	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
 	StickySession *bool                               `json:"sticky-session,omitempty"`
 	Storage       []ApplicationStorageResponseStorage `json:"storage,omitempty"`
@@ -67,8 +67,8 @@ func NewApplicationEditRequestWithDefaults() *ApplicationEditRequest {
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
-	var envPreview bool = true
-	this.EnvPreview = &envPreview
+	var autoPreview bool = true
+	this.AutoPreview = &autoPreview
 	var stickySession bool = false
 	this.StickySession = &stickySession
 	return &this
@@ -426,36 +426,36 @@ func (o *ApplicationEditRequest) SetHealthcheck(v Healthcheck) {
 	o.Healthcheck = &v
 }
 
-// GetEnvPreview returns the EnvPreview field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetEnvPreview() bool {
-	if o == nil || o.EnvPreview == nil {
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetAutoPreview() bool {
+	if o == nil || o.AutoPreview == nil {
 		var ret bool
 		return ret
 	}
-	return *o.EnvPreview
+	return *o.AutoPreview
 }
 
-// GetEnvPreviewOk returns a tuple with the EnvPreview field value if set, nil otherwise
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetEnvPreviewOk() (*bool, bool) {
-	if o == nil || o.EnvPreview == nil {
+func (o *ApplicationEditRequest) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil || o.AutoPreview == nil {
 		return nil, false
 	}
-	return o.EnvPreview, true
+	return o.AutoPreview, true
 }
 
-// HasEnvPreview returns a boolean if a field has been set.
-func (o *ApplicationEditRequest) HasEnvPreview() bool {
-	if o != nil && o.EnvPreview != nil {
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasAutoPreview() bool {
+	if o != nil && o.AutoPreview != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEnvPreview gets a reference to the given bool and assigns it to the EnvPreview field.
-func (o *ApplicationEditRequest) SetEnvPreview(v bool) {
-	o.EnvPreview = &v
+// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+func (o *ApplicationEditRequest) SetAutoPreview(v bool) {
+	o.AutoPreview = &v
 }
 
 // GetStickySession returns the StickySession field value if set, zero value otherwise.
@@ -589,8 +589,8 @@ func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	if o.Healthcheck != nil {
 		toSerialize["healthcheck"] = o.Healthcheck
 	}
-	if o.EnvPreview != nil {
-		toSerialize["env_preview"] = o.EnvPreview
+	if o.AutoPreview != nil {
+		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	if o.StickySession != nil {
 		toSerialize["sticky-session"] = o.StickySession
