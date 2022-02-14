@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
-**EnvPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
+**AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
 **StickySession** | Pointer to **bool** | Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  | [optional] [default to false]
 **Storage** | Pointer to [**[]ApplicationStorageResponseStorage**](ApplicationStorageResponseStorage.md) |  | [optional] 
 **Ports** | Pointer to [**[]ApplicationPortResponsePorts**](ApplicationPortResponsePorts.md) |  | [optional] 
@@ -314,30 +314,30 @@ SetHealthcheck sets Healthcheck field to given value.
 
 HasHealthcheck returns a boolean if a field has been set.
 
-### GetEnvPreview
+### GetAutoPreview
 
-`func (o *ApplicationEditRequest) GetEnvPreview() bool`
+`func (o *ApplicationEditRequest) GetAutoPreview() bool`
 
-GetEnvPreview returns the EnvPreview field if non-nil, zero value otherwise.
+GetAutoPreview returns the AutoPreview field if non-nil, zero value otherwise.
 
-### GetEnvPreviewOk
+### GetAutoPreviewOk
 
-`func (o *ApplicationEditRequest) GetEnvPreviewOk() (*bool, bool)`
+`func (o *ApplicationEditRequest) GetAutoPreviewOk() (*bool, bool)`
 
-GetEnvPreviewOk returns a tuple with the EnvPreview field if it's non-nil, zero value otherwise
+GetAutoPreviewOk returns a tuple with the AutoPreview field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnvPreview
+### SetAutoPreview
 
-`func (o *ApplicationEditRequest) SetEnvPreview(v bool)`
+`func (o *ApplicationEditRequest) SetAutoPreview(v bool)`
 
-SetEnvPreview sets EnvPreview field to given value.
+SetAutoPreview sets AutoPreview field to given value.
 
-### HasEnvPreview
+### HasAutoPreview
 
-`func (o *ApplicationEditRequest) HasEnvPreview() bool`
+`func (o *ApplicationEditRequest) HasAutoPreview() bool`
 
-HasEnvPreview returns a boolean if a field has been set.
+HasAutoPreview returns a boolean if a field has been set.
 
 ### GetStickySession
 

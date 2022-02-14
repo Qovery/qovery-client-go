@@ -44,12 +44,12 @@ type ApplicationResponse struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	EnvPreview *bool                               `json:"env_preview,omitempty"`
-	Id         string                              `json:"id"`
-	CreatedAt  time.Time                           `json:"created_at"`
-	UpdatedAt  *time.Time                          `json:"updated_at,omitempty"`
-	Storage    []ApplicationStorageResponseStorage `json:"storage,omitempty"`
-	Ports      []ApplicationPortResponsePorts      `json:"ports,omitempty"`
+	AutoPreview *bool                               `json:"auto_preview,omitempty"`
+	Id          string                              `json:"id"`
+	CreatedAt   time.Time                           `json:"created_at"`
+	UpdatedAt   *time.Time                          `json:"updated_at,omitempty"`
+	Storage     []ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports       []ApplicationPortResponsePorts      `json:"ports,omitempty"`
 }
 
 // NewApplicationResponse instantiates a new ApplicationResponse object
@@ -82,8 +82,8 @@ func NewApplicationResponseWithDefaults() *ApplicationResponse {
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
-	var envPreview bool = true
-	this.EnvPreview = &envPreview
+	var autoPreview bool = true
+	this.AutoPreview = &autoPreview
 	return &this
 }
 
@@ -535,36 +535,36 @@ func (o *ApplicationResponse) SetHealthcheck(v Healthcheck) {
 	o.Healthcheck = &v
 }
 
-// GetEnvPreview returns the EnvPreview field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetEnvPreview() bool {
-	if o == nil || o.EnvPreview == nil {
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetAutoPreview() bool {
+	if o == nil || o.AutoPreview == nil {
 		var ret bool
 		return ret
 	}
-	return *o.EnvPreview
+	return *o.AutoPreview
 }
 
-// GetEnvPreviewOk returns a tuple with the EnvPreview field value if set, nil otherwise
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetEnvPreviewOk() (*bool, bool) {
-	if o == nil || o.EnvPreview == nil {
+func (o *ApplicationResponse) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil || o.AutoPreview == nil {
 		return nil, false
 	}
-	return o.EnvPreview, true
+	return o.AutoPreview, true
 }
 
-// HasEnvPreview returns a boolean if a field has been set.
-func (o *ApplicationResponse) HasEnvPreview() bool {
-	if o != nil && o.EnvPreview != nil {
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasAutoPreview() bool {
+	if o != nil && o.AutoPreview != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEnvPreview gets a reference to the given bool and assigns it to the EnvPreview field.
-func (o *ApplicationResponse) SetEnvPreview(v bool) {
-	o.EnvPreview = &v
+// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+func (o *ApplicationResponse) SetAutoPreview(v bool) {
+	o.AutoPreview = &v
 }
 
 // GetId returns the Id field value
@@ -755,8 +755,8 @@ func (o ApplicationResponse) MarshalJSON() ([]byte, error) {
 	if o.Healthcheck != nil {
 		toSerialize["healthcheck"] = o.Healthcheck
 	}
-	if o.EnvPreview != nil {
-		toSerialize["env_preview"] = o.EnvPreview
+	if o.AutoPreview != nil {
+		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	if true {
 		toSerialize["id"] = o.Id
