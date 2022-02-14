@@ -17,7 +17,7 @@ import (
 
 // TagResponseList struct for TagResponseList
 type TagResponseList struct {
-	Results *[]TagResponse `json:"results,omitempty"`
+	Results []TagResponse `json:"results,omitempty"`
 }
 
 // NewTagResponseList instantiates a new TagResponseList object
@@ -43,12 +43,12 @@ func (o *TagResponseList) GetResults() []TagResponse {
 		var ret []TagResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TagResponseList) GetResultsOk() (*[]TagResponse, bool) {
+func (o *TagResponseList) GetResultsOk() ([]TagResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *TagResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []TagResponse and assigns it to the Results field.
 func (o *TagResponseList) SetResults(v []TagResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o TagResponseList) MarshalJSON() ([]byte, error) {

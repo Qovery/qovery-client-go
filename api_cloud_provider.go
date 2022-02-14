@@ -13,36 +13,36 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // CloudProviderApiService CloudProviderApi service
 type CloudProviderApiService service
 
 type ApiListAWSFeaturesRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListAWSFeaturesRequest) Execute() (ClusterFeatureResponseList, *_nethttp.Response, error) {
+func (r ApiListAWSFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http.Response, error) {
 	return r.ApiService.ListAWSFeaturesExecute(r)
 }
 
 /*
 ListAWSFeatures List AWS features available
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAWSFeaturesRequest
 */
-func (a *CloudProviderApiService) ListAWSFeatures(ctx _context.Context) ApiListAWSFeaturesRequest {
+func (a *CloudProviderApiService) ListAWSFeatures(ctx context.Context) ApiListAWSFeaturesRequest {
 	return ApiListAWSFeaturesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -51,24 +51,24 @@ func (a *CloudProviderApiService) ListAWSFeatures(ctx _context.Context) ApiListA
 
 // Execute executes the request
 //  @return ClusterFeatureResponseList
-func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesRequest) (ClusterFeatureResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ClusterFeatureResponseList
+		localVarReturnValue *ClusterFeatureResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSFeatures")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/aws/clusterFeature"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -97,15 +97,15 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -114,7 +114,7 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -125,21 +125,21 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 }
 
 type ApiListAWSRegionsRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListAWSRegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
+func (r ApiListAWSRegionsRequest) Execute() (*ClusterRegionResponseList, *http.Response, error) {
 	return r.ApiService.ListAWSRegionsExecute(r)
 }
 
 /*
 ListAWSRegions List AWS regions
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAWSRegionsRequest
 */
-func (a *CloudProviderApiService) ListAWSRegions(ctx _context.Context) ApiListAWSRegionsRequest {
+func (a *CloudProviderApiService) ListAWSRegions(ctx context.Context) ApiListAWSRegionsRequest {
 	return ApiListAWSRegionsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -148,24 +148,24 @@ func (a *CloudProviderApiService) ListAWSRegions(ctx _context.Context) ApiListAW
 
 // Execute executes the request
 //  @return ClusterRegionResponseList
-func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ClusterRegionResponseList
+		localVarReturnValue *ClusterRegionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSRegions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/aws/region"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -194,15 +194,15 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -211,7 +211,7 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -222,21 +222,21 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 }
 
 type ApiListCloudProviderRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListCloudProviderRequest) Execute() (CloudProviderResponseList, *_nethttp.Response, error) {
+func (r ApiListCloudProviderRequest) Execute() (*CloudProviderResponseList, *http.Response, error) {
 	return r.ApiService.ListCloudProviderExecute(r)
 }
 
 /*
 ListCloudProvider List Cloud providers available
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCloudProviderRequest
 */
-func (a *CloudProviderApiService) ListCloudProvider(ctx _context.Context) ApiListCloudProviderRequest {
+func (a *CloudProviderApiService) ListCloudProvider(ctx context.Context) ApiListCloudProviderRequest {
 	return ApiListCloudProviderRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -245,24 +245,24 @@ func (a *CloudProviderApiService) ListCloudProvider(ctx _context.Context) ApiLis
 
 // Execute executes the request
 //  @return CloudProviderResponseList
-func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProviderRequest) (CloudProviderResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProviderRequest) (*CloudProviderResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue CloudProviderResponseList
+		localVarReturnValue *CloudProviderResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListCloudProvider")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/cloudProvider"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -291,15 +291,15 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -308,7 +308,7 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -319,21 +319,21 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 }
 
 type ApiListDOFeaturesRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListDOFeaturesRequest) Execute() (ClusterFeatureResponseList, *_nethttp.Response, error) {
+func (r ApiListDOFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http.Response, error) {
 	return r.ApiService.ListDOFeaturesExecute(r)
 }
 
 /*
 ListDOFeatures List DO features available
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDOFeaturesRequest
 */
-func (a *CloudProviderApiService) ListDOFeatures(ctx _context.Context) ApiListDOFeaturesRequest {
+func (a *CloudProviderApiService) ListDOFeatures(ctx context.Context) ApiListDOFeaturesRequest {
 	return ApiListDOFeaturesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -342,24 +342,24 @@ func (a *CloudProviderApiService) ListDOFeatures(ctx _context.Context) ApiListDO
 
 // Execute executes the request
 //  @return ClusterFeatureResponseList
-func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesRequest) (ClusterFeatureResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ClusterFeatureResponseList
+		localVarReturnValue *ClusterFeatureResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOFeatures")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/digitalOcean/clusterFeature"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -388,15 +388,15 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -405,7 +405,7 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -416,21 +416,21 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 }
 
 type ApiListDORegionsRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListDORegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
+func (r ApiListDORegionsRequest) Execute() (*ClusterRegionResponseList, *http.Response, error) {
 	return r.ApiService.ListDORegionsExecute(r)
 }
 
 /*
 ListDORegions List DO regions
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDORegionsRequest
 */
-func (a *CloudProviderApiService) ListDORegions(ctx _context.Context) ApiListDORegionsRequest {
+func (a *CloudProviderApiService) ListDORegions(ctx context.Context) ApiListDORegionsRequest {
 	return ApiListDORegionsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -439,24 +439,24 @@ func (a *CloudProviderApiService) ListDORegions(ctx _context.Context) ApiListDOR
 
 // Execute executes the request
 //  @return ClusterRegionResponseList
-func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ClusterRegionResponseList
+		localVarReturnValue *ClusterRegionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDORegions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/digitalOcean/region"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -485,15 +485,15 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -502,7 +502,7 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -513,21 +513,21 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 }
 
 type ApiListScalewayFeaturesRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListScalewayFeaturesRequest) Execute() (ClusterFeatureResponseList, *_nethttp.Response, error) {
+func (r ApiListScalewayFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http.Response, error) {
 	return r.ApiService.ListScalewayFeaturesExecute(r)
 }
 
 /*
 ListScalewayFeatures List Scaleway features available
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListScalewayFeaturesRequest
 */
-func (a *CloudProviderApiService) ListScalewayFeatures(ctx _context.Context) ApiListScalewayFeaturesRequest {
+func (a *CloudProviderApiService) ListScalewayFeatures(ctx context.Context) ApiListScalewayFeaturesRequest {
 	return ApiListScalewayFeaturesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -536,24 +536,24 @@ func (a *CloudProviderApiService) ListScalewayFeatures(ctx _context.Context) Api
 
 // Execute executes the request
 //  @return ClusterFeatureResponseList
-func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayFeaturesRequest) (ClusterFeatureResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ClusterFeatureResponseList
+		localVarReturnValue *ClusterFeatureResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayFeatures")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/scaleway/clusterFeature"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -582,15 +582,15 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -599,7 +599,7 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -610,21 +610,21 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 }
 
 type ApiListScalewayRegionsRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListScalewayRegionsRequest) Execute() (ClusterRegionResponseList, *_nethttp.Response, error) {
+func (r ApiListScalewayRegionsRequest) Execute() (*ClusterRegionResponseList, *http.Response, error) {
 	return r.ApiService.ListScalewayRegionsExecute(r)
 }
 
 /*
 ListScalewayRegions List Scaleway regions
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListScalewayRegionsRequest
 */
-func (a *CloudProviderApiService) ListScalewayRegions(ctx _context.Context) ApiListScalewayRegionsRequest {
+func (a *CloudProviderApiService) ListScalewayRegions(ctx context.Context) ApiListScalewayRegionsRequest {
 	return ApiListScalewayRegionsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -633,24 +633,24 @@ func (a *CloudProviderApiService) ListScalewayRegions(ctx _context.Context) ApiL
 
 // Execute executes the request
 //  @return ClusterRegionResponseList
-func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRegionsRequest) (ClusterRegionResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue ClusterRegionResponseList
+		localVarReturnValue *ClusterRegionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayRegions")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/scaleway/region"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -679,15 +679,15 @@ func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -696,7 +696,7 @@ func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

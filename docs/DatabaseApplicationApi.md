@@ -31,8 +31,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApplicationApi.ListDatabaseApplication(context.Background(), databaseId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApplicationApi.ListDatabaseApplication(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApplicationApi.ListDatabaseApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,8 +100,8 @@ func main() {
     targetApplicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target application ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApplicationApi.RemoveApplicationFromDatabase(context.Background(), databaseId, targetApplicationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApplicationApi.RemoveApplicationFromDatabase(context.Background(), databaseId, targetApplicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApplicationApi.RemoveApplicationFromDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

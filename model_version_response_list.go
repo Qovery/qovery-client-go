@@ -17,7 +17,7 @@ import (
 
 // VersionResponseList struct for VersionResponseList
 type VersionResponseList struct {
-	Results *[]VersionResponse `json:"results,omitempty"`
+	Results []VersionResponse `json:"results,omitempty"`
 }
 
 // NewVersionResponseList instantiates a new VersionResponseList object
@@ -43,12 +43,12 @@ func (o *VersionResponseList) GetResults() []VersionResponse {
 		var ret []VersionResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VersionResponseList) GetResultsOk() (*[]VersionResponse, bool) {
+func (o *VersionResponseList) GetResultsOk() ([]VersionResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *VersionResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []VersionResponse and assigns it to the Results field.
 func (o *VersionResponseList) SetResults(v []VersionResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o VersionResponseList) MarshalJSON() ([]byte, error) {

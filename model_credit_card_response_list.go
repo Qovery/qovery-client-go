@@ -17,7 +17,7 @@ import (
 
 // CreditCardResponseList struct for CreditCardResponseList
 type CreditCardResponseList struct {
-	Results *[]CreditCardResponse `json:"results,omitempty"`
+	Results []CreditCardResponse `json:"results,omitempty"`
 }
 
 // NewCreditCardResponseList instantiates a new CreditCardResponseList object
@@ -43,12 +43,12 @@ func (o *CreditCardResponseList) GetResults() []CreditCardResponse {
 		var ret []CreditCardResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreditCardResponseList) GetResultsOk() (*[]CreditCardResponse, bool) {
+func (o *CreditCardResponseList) GetResultsOk() ([]CreditCardResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CreditCardResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []CreditCardResponse and assigns it to the Results field.
 func (o *CreditCardResponseList) SetResults(v []CreditCardResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o CreditCardResponseList) MarshalJSON() ([]byte, error) {

@@ -18,12 +18,12 @@ import (
 
 // DeploymentHistoryEnvironmentResponse struct for DeploymentHistoryEnvironmentResponse
 type DeploymentHistoryEnvironmentResponse struct {
-	Status       *string                                 `json:"status,omitempty"`
-	Applications *[]DeploymentHistoryApplicationResponse `json:"applications,omitempty"`
-	Databases    *[]DeploymentHistoryDatabaseResponse    `json:"databases,omitempty"`
-	Id           string                                  `json:"id"`
-	CreatedAt    time.Time                               `json:"created_at"`
-	UpdatedAt    *time.Time                              `json:"updated_at,omitempty"`
+	Status       *string                                `json:"status,omitempty"`
+	Applications []DeploymentHistoryApplicationResponse `json:"applications,omitempty"`
+	Databases    []DeploymentHistoryDatabaseResponse    `json:"databases,omitempty"`
+	Id           string                                 `json:"id"`
+	CreatedAt    time.Time                              `json:"created_at"`
+	UpdatedAt    *time.Time                             `json:"updated_at,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironmentResponse instantiates a new DeploymentHistoryEnvironmentResponse object
@@ -83,12 +83,12 @@ func (o *DeploymentHistoryEnvironmentResponse) GetApplications() []DeploymentHis
 		var ret []DeploymentHistoryApplicationResponse
 		return ret
 	}
-	return *o.Applications
+	return o.Applications
 }
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetApplicationsOk() (*[]DeploymentHistoryApplicationResponse, bool) {
+func (o *DeploymentHistoryEnvironmentResponse) GetApplicationsOk() ([]DeploymentHistoryApplicationResponse, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -106,7 +106,7 @@ func (o *DeploymentHistoryEnvironmentResponse) HasApplications() bool {
 
 // SetApplications gets a reference to the given []DeploymentHistoryApplicationResponse and assigns it to the Applications field.
 func (o *DeploymentHistoryEnvironmentResponse) SetApplications(v []DeploymentHistoryApplicationResponse) {
-	o.Applications = &v
+	o.Applications = v
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
@@ -115,12 +115,12 @@ func (o *DeploymentHistoryEnvironmentResponse) GetDatabases() []DeploymentHistor
 		var ret []DeploymentHistoryDatabaseResponse
 		return ret
 	}
-	return *o.Databases
+	return o.Databases
 }
 
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetDatabasesOk() (*[]DeploymentHistoryDatabaseResponse, bool) {
+func (o *DeploymentHistoryEnvironmentResponse) GetDatabasesOk() ([]DeploymentHistoryDatabaseResponse, bool) {
 	if o == nil || o.Databases == nil {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *DeploymentHistoryEnvironmentResponse) HasDatabases() bool {
 
 // SetDatabases gets a reference to the given []DeploymentHistoryDatabaseResponse and assigns it to the Databases field.
 func (o *DeploymentHistoryEnvironmentResponse) SetDatabases(v []DeploymentHistoryDatabaseResponse) {
-	o.Databases = &v
+	o.Databases = v
 }
 
 // GetId returns the Id field value

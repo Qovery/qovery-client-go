@@ -23,6 +23,7 @@ type ClusterResponse struct {
 	Status                     *string    `json:"status,omitempty"`
 	HasAccess                  *bool      `json:"has_access,omitempty"`
 	Version                    *string    `json:"version,omitempty"`
+	IsDefault                  *bool      `json:"is_default,omitempty"`
 	Id                         string     `json:"id"`
 	CreatedAt                  time.Time  `json:"created_at"`
 	UpdatedAt                  *time.Time `json:"updated_at,omitempty"`
@@ -35,17 +36,17 @@ type ClusterResponse struct {
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory              *float32        `json:"memory,omitempty"`
-	MinRunningNodes     *int32          `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes     *int32          `json:"max_running_nodes,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      *[]interface{}  `json:"accepted_values,omitempty"`
+	Memory              *float32             `json:"memory,omitempty"`
+	MinRunningNodes     *int32               `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes     *int32               `json:"max_running_nodes,omitempty"`
+	Title               *string              `json:"title,omitempty"`
+	CostPerMonthInCents NullableInt32        `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32      `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString       `json:"currency_code,omitempty"`
+	ValueType           *string              `json:"value_type,omitempty"`
+	Value               NullableString       `json:"value,omitempty"`
+	IsValueUpdatable    *bool                `json:"is_value_updatable,omitempty"`
+	AcceptedValues      []interface{} `json:"accepted_values,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
@@ -216,6 +217,38 @@ func (o *ClusterResponse) HasVersion() bool {
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ClusterResponse) SetVersion(v string) {
 	o.Version = &v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *ClusterResponse) GetIsDefault() bool {
+	if o == nil || o.IsDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterResponse) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || o.IsDefault == nil {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *ClusterResponse) HasIsDefault() bool {
+	if o != nil && o.IsDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *ClusterResponse) SetIsDefault(v bool) {
+	o.IsDefault = &v
 }
 
 // GetId returns the Id field value
@@ -847,12 +880,12 @@ func (o *ClusterResponse) GetAcceptedValues() []interface{} {
 		var ret []interface{}
 		return ret
 	}
-	return *o.AcceptedValues
+	return o.AcceptedValues
 }
 
 // GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetAcceptedValuesOk() (*[]interface{}, bool) {
+func (o *ClusterResponse) GetAcceptedValuesOk() ([]interface{}, bool) {
 	if o == nil || o.AcceptedValues == nil {
 		return nil, false
 	}
@@ -870,7 +903,7 @@ func (o *ClusterResponse) HasAcceptedValues() bool {
 
 // SetAcceptedValues gets a reference to the given []interface{} and assigns it to the AcceptedValues field.
 func (o *ClusterResponse) SetAcceptedValues(v []interface{}) {
-	o.AcceptedValues = &v
+	o.AcceptedValues = v
 }
 
 func (o ClusterResponse) MarshalJSON() ([]byte, error) {
@@ -886,6 +919,9 @@ func (o ClusterResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.Version != nil {
 		toSerialize["version"] = o.Version
+	}
+	if o.IsDefault != nil {
+		toSerialize["is_default"] = o.IsDefault
 	}
 	if true {
 		toSerialize["id"] = o.Id

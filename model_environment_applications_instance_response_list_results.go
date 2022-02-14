@@ -76,11 +76,11 @@ func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstances() []In
 
 // GetInstancesOk returns a tuple with the Instances field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() (*[]InstanceResponse, bool) {
+func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() ([]InstanceResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Instances, true
+	return o.Instances, true
 }
 
 // SetInstances sets field value

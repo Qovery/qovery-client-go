@@ -17,9 +17,9 @@ import (
 
 // BackupPaginatedResponseList struct for BackupPaginatedResponseList
 type BackupPaginatedResponseList struct {
-	Page     float32           `json:"page"`
-	PageSize float32           `json:"page_size"`
-	Results  *[]BackupResponse `json:"results,omitempty"`
+	Page     float32          `json:"page"`
+	PageSize float32          `json:"page_size"`
+	Results  []BackupResponse `json:"results,omitempty"`
 }
 
 // NewBackupPaginatedResponseList instantiates a new BackupPaginatedResponseList object
@@ -95,12 +95,12 @@ func (o *BackupPaginatedResponseList) GetResults() []BackupResponse {
 		var ret []BackupResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupPaginatedResponseList) GetResultsOk() (*[]BackupResponse, bool) {
+func (o *BackupPaginatedResponseList) GetResultsOk() ([]BackupResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *BackupPaginatedResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []BackupResponse and assigns it to the Results field.
 func (o *BackupPaginatedResponseList) SetResults(v []BackupResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o BackupPaginatedResponseList) MarshalJSON() ([]byte, error) {

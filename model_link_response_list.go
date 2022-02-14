@@ -17,7 +17,7 @@ import (
 
 // LinkResponseList struct for LinkResponseList
 type LinkResponseList struct {
-	Results *[]LinkResponse `json:"results,omitempty"`
+	Results []LinkResponse `json:"results,omitempty"`
 }
 
 // NewLinkResponseList instantiates a new LinkResponseList object
@@ -43,12 +43,12 @@ func (o *LinkResponseList) GetResults() []LinkResponse {
 		var ret []LinkResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LinkResponseList) GetResultsOk() (*[]LinkResponse, bool) {
+func (o *LinkResponseList) GetResultsOk() ([]LinkResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *LinkResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []LinkResponse and assigns it to the Results field.
 func (o *LinkResponseList) SetResults(v []LinkResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o LinkResponseList) MarshalJSON() ([]byte, error) {

@@ -17,9 +17,9 @@ import (
 
 // EventPaginatedResponseList struct for EventPaginatedResponseList
 type EventPaginatedResponseList struct {
-	Results  *[]EventResponse `json:"results,omitempty"`
-	Page     float32          `json:"page"`
-	PageSize float32          `json:"page_size"`
+	Results  []EventResponse `json:"results,omitempty"`
+	Page     float32         `json:"page"`
+	PageSize float32         `json:"page_size"`
 }
 
 // NewEventPaginatedResponseList instantiates a new EventPaginatedResponseList object
@@ -47,12 +47,12 @@ func (o *EventPaginatedResponseList) GetResults() []EventResponse {
 		var ret []EventResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventPaginatedResponseList) GetResultsOk() (*[]EventResponse, bool) {
+func (o *EventPaginatedResponseList) GetResultsOk() ([]EventResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -70,7 +70,7 @@ func (o *EventPaginatedResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []EventResponse and assigns it to the Results field.
 func (o *EventPaginatedResponseList) SetResults(v []EventResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 // GetPage returns the Page field value

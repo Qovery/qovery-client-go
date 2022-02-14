@@ -26,10 +26,10 @@ type ClusterRequest struct {
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory          *float32                         `json:"memory,omitempty"`
-	MinRunningNodes *int32                           `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32                           `json:"max_running_nodes,omitempty"`
-	Features        *[]ClusterFeatureRequestFeatures `json:"features,omitempty"`
+	Memory          *float32                        `json:"memory,omitempty"`
+	MinRunningNodes *int32                          `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32                          `json:"max_running_nodes,omitempty"`
+	Features        []ClusterFeatureRequestFeatures `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
@@ -338,12 +338,12 @@ func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures {
 		var ret []ClusterFeatureRequestFeatures
 		return ret
 	}
-	return *o.Features
+	return o.Features
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeatures, bool) {
+func (o *ClusterRequest) GetFeaturesOk() ([]ClusterFeatureRequestFeatures, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -361,7 +361,7 @@ func (o *ClusterRequest) HasFeatures() bool {
 
 // SetFeatures gets a reference to the given []ClusterFeatureRequestFeatures and assigns it to the Features field.
 func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeatures) {
-	o.Features = &v
+	o.Features = v
 }
 
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {

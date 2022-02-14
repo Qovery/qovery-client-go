@@ -290,11 +290,11 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []string {
 // GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() (*[]string, bool) {
+func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() ([]string, bool) {
 	if o == nil || o.Weekdays == nil {
 		return nil, false
 	}
-	return &o.Weekdays, true
+	return o.Weekdays, true
 }
 
 // HasWeekdays returns a boolean if a field has been set.

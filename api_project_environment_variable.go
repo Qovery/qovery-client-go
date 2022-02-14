@@ -13,23 +13,23 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // ProjectEnvironmentVariableApiService ProjectEnvironmentVariableApi service
 type ProjectEnvironmentVariableApiService service
 
 type ApiCreateProjectEnvironmentVariableRequest struct {
-	ctx                        _context.Context
+	ctx                        context.Context
 	ApiService                 *ProjectEnvironmentVariableApiService
 	projectId                  string
 	environmentVariableRequest *EnvironmentVariableRequest
@@ -40,7 +40,7 @@ func (r ApiCreateProjectEnvironmentVariableRequest) EnvironmentVariableRequest(e
 	return r
 }
 
-func (r ApiCreateProjectEnvironmentVariableRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (r ApiCreateProjectEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
 	return r.ApiService.CreateProjectEnvironmentVariableExecute(r)
 }
 
@@ -52,11 +52,11 @@ CreateProjectEnvironmentVariable Add an environment variable to the project
   - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @return ApiCreateProjectEnvironmentVariableRequest
 */
-func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariable(ctx _context.Context, projectId string) ApiCreateProjectEnvironmentVariableRequest {
+func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariable(ctx context.Context, projectId string) ApiCreateProjectEnvironmentVariableRequest {
 	return ApiCreateProjectEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -66,25 +66,25 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariable(
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableExecute(r ApiCreateProjectEnvironmentVariableRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableExecute(r ApiCreateProjectEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvironmentVariableApiService.CreateProjectEnvironmentVariable")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -115,15 +115,15 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -132,7 +132,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableE
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -143,7 +143,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableE
 }
 
 type ApiCreateProjectEnvironmentVariableAliasRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *ProjectEnvironmentVariableApiService
 	projectId             string
 	environmentVariableId string
@@ -155,7 +155,7 @@ func (r ApiCreateProjectEnvironmentVariableAliasRequest) Key(key Key) ApiCreateP
 	return r
 }
 
-func (r ApiCreateProjectEnvironmentVariableAliasRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (r ApiCreateProjectEnvironmentVariableAliasRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
 	return r.ApiService.CreateProjectEnvironmentVariableAliasExecute(r)
 }
 
@@ -170,12 +170,12 @@ CreateProjectEnvironmentVariableAlias Create an environment variable alias at th
 - Only 1 alias level is allowed. You can't create an alias on an alias
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @param environmentVariableId Environment Variable ID
  @return ApiCreateProjectEnvironmentVariableAliasRequest
 */
-func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableAlias(ctx _context.Context, projectId string, environmentVariableId string) ApiCreateProjectEnvironmentVariableAliasRequest {
+func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableAlias(ctx context.Context, projectId string, environmentVariableId string) ApiCreateProjectEnvironmentVariableAliasRequest {
 	return ApiCreateProjectEnvironmentVariableAliasRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -186,26 +186,26 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableA
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableAliasExecute(r ApiCreateProjectEnvironmentVariableAliasRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableAliasExecute(r ApiCreateProjectEnvironmentVariableAliasRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvironmentVariableApiService.CreateProjectEnvironmentVariableAlias")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environmentVariable/{environmentVariableId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -236,15 +236,15 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -253,7 +253,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableA
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -264,7 +264,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableA
 }
 
 type ApiCreateProjectEnvironmentVariableOverrideRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *ProjectEnvironmentVariableApiService
 	projectId             string
 	environmentVariableId string
@@ -276,7 +276,7 @@ func (r ApiCreateProjectEnvironmentVariableOverrideRequest) Value(value Value) A
 	return r
 }
 
-func (r ApiCreateProjectEnvironmentVariableOverrideRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (r ApiCreateProjectEnvironmentVariableOverrideRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
 	return r.ApiService.CreateProjectEnvironmentVariableOverrideExecute(r)
 }
 
@@ -290,12 +290,12 @@ CreateProjectEnvironmentVariableOverride Create an environment variable override
 - Information regarding the overridden_variable will be exposed in the "overridden_variable" field of the newly created variable
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @param environmentVariableId Environment Variable ID
  @return ApiCreateProjectEnvironmentVariableOverrideRequest
 */
-func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableOverride(ctx _context.Context, projectId string, environmentVariableId string) ApiCreateProjectEnvironmentVariableOverrideRequest {
+func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableOverride(ctx context.Context, projectId string, environmentVariableId string) ApiCreateProjectEnvironmentVariableOverrideRequest {
 	return ApiCreateProjectEnvironmentVariableOverrideRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -306,26 +306,26 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableO
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableOverrideExecute(r ApiCreateProjectEnvironmentVariableOverrideRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableOverrideExecute(r ApiCreateProjectEnvironmentVariableOverrideRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPost
+		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvironmentVariableApiService.CreateProjectEnvironmentVariableOverride")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environmentVariable/{environmentVariableId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -356,15 +356,15 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableO
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -373,7 +373,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableO
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -384,13 +384,13 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableO
 }
 
 type ApiDeleteProjectEnvironmentVariableRequest struct {
-	ctx                   _context.Context
+	ctx                   context.Context
 	ApiService            *ProjectEnvironmentVariableApiService
 	projectId             string
 	environmentVariableId string
 }
 
-func (r ApiDeleteProjectEnvironmentVariableRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteProjectEnvironmentVariableRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteProjectEnvironmentVariableExecute(r)
 }
 
@@ -402,12 +402,12 @@ DeleteProjectEnvironmentVariable Delete an environment variable from a project
 - If you delete a variable having override or alias, the associated override/alias will be deleted as well
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @param environmentVariableId Environment Variable ID
  @return ApiDeleteProjectEnvironmentVariableRequest
 */
-func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariable(ctx _context.Context, projectId string, environmentVariableId string) ApiDeleteProjectEnvironmentVariableRequest {
+func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariable(ctx context.Context, projectId string, environmentVariableId string) ApiDeleteProjectEnvironmentVariableRequest {
 	return ApiDeleteProjectEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -417,25 +417,25 @@ func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariable(
 }
 
 // Execute executes the request
-func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariableExecute(r ApiDeleteProjectEnvironmentVariableRequest) (*_nethttp.Response, error) {
+func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariableExecute(r ApiDeleteProjectEnvironmentVariableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = _nethttp.MethodDelete
+		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvironmentVariableApiService.DeleteProjectEnvironmentVariable")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -464,15 +464,15 @@ func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariableE
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -483,7 +483,7 @@ func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariableE
 }
 
 type ApiEditProjectEnvironmentVariableRequest struct {
-	ctx                            _context.Context
+	ctx                            context.Context
 	ApiService                     *ProjectEnvironmentVariableApiService
 	projectId                      string
 	environmentVariableId          string
@@ -495,7 +495,7 @@ func (r ApiEditProjectEnvironmentVariableRequest) EnvironmentVariableEditRequest
 	return r
 }
 
-func (r ApiEditProjectEnvironmentVariableRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (r ApiEditProjectEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
 	return r.ApiService.EditProjectEnvironmentVariableExecute(r)
 }
 
@@ -508,12 +508,12 @@ EditProjectEnvironmentVariable Edit an environment variable belonging to the pro
 - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @param environmentVariableId Environment Variable ID
  @return ApiEditProjectEnvironmentVariableRequest
 */
-func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariable(ctx _context.Context, projectId string, environmentVariableId string) ApiEditProjectEnvironmentVariableRequest {
+func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariable(ctx context.Context, projectId string, environmentVariableId string) ApiEditProjectEnvironmentVariableRequest {
 	return ApiEditProjectEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -524,26 +524,26 @@ func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariable(ct
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariableExecute(r ApiEditProjectEnvironmentVariableRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
+func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariableExecute(r ApiEditProjectEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodPut
+		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvironmentVariableApiService.EditProjectEnvironmentVariable")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.environmentVariableEditRequest == nil {
 		return localVarReturnValue, nil, reportError("environmentVariableEditRequest is required and must be specified")
 	}
@@ -577,15 +577,15 @@ func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariableExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -594,7 +594,7 @@ func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariableExe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -605,23 +605,23 @@ func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariableExe
 }
 
 type ApiListProjectEnvironmentVariableRequest struct {
-	ctx        _context.Context
+	ctx        context.Context
 	ApiService *ProjectEnvironmentVariableApiService
 	projectId  string
 }
 
-func (r ApiListProjectEnvironmentVariableRequest) Execute() (EnvironmentVariableResponseList, *_nethttp.Response, error) {
+func (r ApiListProjectEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponseList, *http.Response, error) {
 	return r.ApiService.ListProjectEnvironmentVariableExecute(r)
 }
 
 /*
 ListProjectEnvironmentVariable List project environment variables
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @return ApiListProjectEnvironmentVariableRequest
 */
-func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariable(ctx _context.Context, projectId string) ApiListProjectEnvironmentVariableRequest {
+func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariable(ctx context.Context, projectId string) ApiListProjectEnvironmentVariableRequest {
 	return ApiListProjectEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -631,25 +631,25 @@ func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariable(ct
 
 // Execute executes the request
 //  @return EnvironmentVariableResponseList
-func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariableExecute(r ApiListProjectEnvironmentVariableRequest) (EnvironmentVariableResponseList, *_nethttp.Response, error) {
+func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariableExecute(r ApiListProjectEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue EnvironmentVariableResponseList
+		localVarReturnValue *EnvironmentVariableResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectEnvironmentVariableApiService.ListProjectEnvironmentVariable")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -678,15 +678,15 @@ func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariableExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -695,7 +695,7 @@ func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariableExe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

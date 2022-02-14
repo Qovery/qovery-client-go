@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
+**IsDefault** | Pointer to **bool** |  | [optional] 
 **Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -147,6 +148,31 @@ SetVersion sets Version field to given value.
 `func (o *ClusterResponse) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### GetIsDefault
+
+`func (o *ClusterResponse) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *ClusterResponse) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *ClusterResponse) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *ClusterResponse) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
 
 ### GetId
 

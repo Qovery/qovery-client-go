@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnvironmentTarget** | **string** | specify here a regex based on environment name that will target new environments after their creation | 
+**EnvironmentTarget** | **string** | specify here a wildcard based on environment name that will target new environments after their creation | 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **Mode** | **string** |  | 

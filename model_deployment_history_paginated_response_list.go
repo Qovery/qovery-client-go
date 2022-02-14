@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryPaginatedResponseList struct for DeploymentHistoryPaginatedResponseList
 type DeploymentHistoryPaginatedResponseList struct {
-	Results  *[]DeploymentHistoryResponse `json:"results,omitempty"`
-	Page     float32                      `json:"page"`
-	PageSize float32                      `json:"page_size"`
+	Results  []DeploymentHistoryResponse `json:"results,omitempty"`
+	Page     float32                     `json:"page"`
+	PageSize float32                     `json:"page_size"`
 }
 
 // NewDeploymentHistoryPaginatedResponseList instantiates a new DeploymentHistoryPaginatedResponseList object
@@ -47,12 +47,12 @@ func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistor
 		var ret []DeploymentHistoryResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() (*[]DeploymentHistoryResponse, bool) {
+func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -70,7 +70,7 @@ func (o *DeploymentHistoryPaginatedResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
 func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 // GetPage returns the Page field value

@@ -13,28 +13,28 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // ApplicationLogsApiService ApplicationLogsApi service
 type ApplicationLogsApiService service
 
 type ApiListApplicationLogRequest struct {
-	ctx           _context.Context
+	ctx           context.Context
 	ApiService    *ApplicationLogsApiService
 	applicationId string
 }
 
-func (r ApiListApplicationLogRequest) Execute() (LogResponseList, *_nethttp.Response, error) {
+func (r ApiListApplicationLogRequest) Execute() (*LogResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationLogExecute(r)
 }
 
@@ -43,11 +43,11 @@ ListApplicationLog List logs
 
 This will list the last 1000 logs of the application
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiListApplicationLogRequest
 */
-func (a *ApplicationLogsApiService) ListApplicationLog(ctx _context.Context, applicationId string) ApiListApplicationLogRequest {
+func (a *ApplicationLogsApiService) ListApplicationLog(ctx context.Context, applicationId string) ApiListApplicationLogRequest {
 	return ApiListApplicationLogRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -57,25 +57,25 @@ func (a *ApplicationLogsApiService) ListApplicationLog(ctx _context.Context, app
 
 // Execute executes the request
 //  @return LogResponseList
-func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicationLogRequest) (LogResponseList, *_nethttp.Response, error) {
+func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicationLogRequest) (*LogResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue LogResponseList
+		localVarReturnValue *LogResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLogsApiService.ListApplicationLog")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/log"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -104,15 +104,15 @@ func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -121,7 +121,7 @@ func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicati
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

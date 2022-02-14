@@ -17,7 +17,7 @@ import (
 
 // DatabaseResponseList struct for DatabaseResponseList
 type DatabaseResponseList struct {
-	Results *[]DatabaseResponse `json:"results,omitempty"`
+	Results []DatabaseResponse `json:"results,omitempty"`
 }
 
 // NewDatabaseResponseList instantiates a new DatabaseResponseList object
@@ -43,12 +43,12 @@ func (o *DatabaseResponseList) GetResults() []DatabaseResponse {
 		var ret []DatabaseResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponseList) GetResultsOk() (*[]DatabaseResponse, bool) {
+func (o *DatabaseResponseList) GetResultsOk() ([]DatabaseResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *DatabaseResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []DatabaseResponse and assigns it to the Results field.
 func (o *DatabaseResponseList) SetResults(v []DatabaseResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o DatabaseResponseList) MarshalJSON() ([]byte, error) {

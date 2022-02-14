@@ -33,8 +33,8 @@ func main() {
     logicalDatabaseRequest := *openapiclient.NewLogicalDatabaseRequest("Name_example") // LogicalDatabaseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.DatabaseApi.CreateLogicalDatabaseOnDatabase(context.Background(), databaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseApi.CreateLogicalDatabaseOnDatabase(context.Background(), databaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseApi.CreateLogicalDatabaseOnDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -17,11 +17,11 @@ import (
 
 // ProjectCurrentCostResponse struct for ProjectCurrentCostResponse
 type ProjectCurrentCostResponse struct {
-	Environments          *[]GenericObjectCurrentCostResponse `json:"environments,omitempty"`
-	Id                    string                              `json:"id"`
-	Name                  string                              `json:"name"`
-	ConsumedTimeInSeconds int32                               `json:"consumed_time_in_seconds"`
-	Cost                  CostResponse                        `json:"cost"`
+	Environments          []GenericObjectCurrentCostResponse `json:"environments,omitempty"`
+	Id                    string                             `json:"id"`
+	Name                  string                             `json:"name"`
+	ConsumedTimeInSeconds int32                              `json:"consumed_time_in_seconds"`
+	Cost                  CostResponse                       `json:"cost"`
 }
 
 // NewProjectCurrentCostResponse instantiates a new ProjectCurrentCostResponse object
@@ -51,12 +51,12 @@ func (o *ProjectCurrentCostResponse) GetEnvironments() []GenericObjectCurrentCos
 		var ret []GenericObjectCurrentCostResponse
 		return ret
 	}
-	return *o.Environments
+	return o.Environments
 }
 
 // GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectCurrentCostResponse) GetEnvironmentsOk() (*[]GenericObjectCurrentCostResponse, bool) {
+func (o *ProjectCurrentCostResponse) GetEnvironmentsOk() ([]GenericObjectCurrentCostResponse, bool) {
 	if o == nil || o.Environments == nil {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *ProjectCurrentCostResponse) HasEnvironments() bool {
 
 // SetEnvironments gets a reference to the given []GenericObjectCurrentCostResponse and assigns it to the Environments field.
 func (o *ProjectCurrentCostResponse) SetEnvironments(v []GenericObjectCurrentCostResponse) {
-	o.Environments = &v
+	o.Environments = v
 }
 
 // GetId returns the Id field value

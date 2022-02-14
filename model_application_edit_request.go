@@ -40,9 +40,9 @@ type ApplicationEditRequest struct {
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
 	EnvPreview *bool `json:"env_preview,omitempty"`
 	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession *bool                                `json:"sticky-session,omitempty"`
-	Storage       *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
-	Ports         *[]ApplicationPortResponsePorts      `json:"ports,omitempty"`
+	StickySession *bool                               `json:"sticky-session,omitempty"`
+	Storage       []ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports         []ApplicationPortResponsePorts      `json:"ports,omitempty"`
 }
 
 // NewApplicationEditRequest instantiates a new ApplicationEditRequest object
@@ -496,12 +496,12 @@ func (o *ApplicationEditRequest) GetStorage() []ApplicationStorageResponseStorag
 		var ret []ApplicationStorageResponseStorage
 		return ret
 	}
-	return *o.Storage
+	return o.Storage
 }
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetStorageOk() (*[]ApplicationStorageResponseStorage, bool) {
+func (o *ApplicationEditRequest) GetStorageOk() ([]ApplicationStorageResponseStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -519,7 +519,7 @@ func (o *ApplicationEditRequest) HasStorage() bool {
 
 // SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
 func (o *ApplicationEditRequest) SetStorage(v []ApplicationStorageResponseStorage) {
-	o.Storage = &v
+	o.Storage = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
@@ -528,12 +528,12 @@ func (o *ApplicationEditRequest) GetPorts() []ApplicationPortResponsePorts {
 		var ret []ApplicationPortResponsePorts
 		return ret
 	}
-	return *o.Ports
+	return o.Ports
 }
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetPortsOk() (*[]ApplicationPortResponsePorts, bool) {
+func (o *ApplicationEditRequest) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -551,7 +551,7 @@ func (o *ApplicationEditRequest) HasPorts() bool {
 
 // SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
 func (o *ApplicationEditRequest) SetPorts(v []ApplicationPortResponsePorts) {
-	o.Ports = &v
+	o.Ports = v
 }
 
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {

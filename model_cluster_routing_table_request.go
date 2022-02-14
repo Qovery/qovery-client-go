@@ -50,11 +50,11 @@ func (o *ClusterRoutingTableRequest) GetRoutes() []ClusterRoutingTableRequestRou
 
 // GetRoutesOk returns a tuple with the Routes field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRoutingTableRequest) GetRoutesOk() (*[]ClusterRoutingTableRequestRoutes, bool) {
+func (o *ClusterRoutingTableRequest) GetRoutesOk() ([]ClusterRoutingTableRequestRoutes, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Routes, true
+	return o.Routes, true
 }
 
 // SetRoutes sets field value

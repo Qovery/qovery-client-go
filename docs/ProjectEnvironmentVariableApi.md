@@ -38,8 +38,8 @@ func main() {
     environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example", "Value_example") // EnvironmentVariableRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariable(context.Background(), projectId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariable(context.Background(), projectId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -111,8 +111,8 @@ func main() {
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableAlias(context.Background(), projectId, environmentVariableId).Key(key).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableAlias(context.Background(), projectId, environmentVariableId).Key(key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableOverride(context.Background(), projectId, environmentVariableId).Value(value).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableOverride(context.Background(), projectId, environmentVariableId).Value(value).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,8 +260,8 @@ func main() {
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectEnvironmentVariableApi.DeleteProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableApi.DeleteProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.DeleteProjectEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +332,8 @@ func main() {
     environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example", "Value_example") // EnvironmentVariableEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectEnvironmentVariableApi.EditProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableApi.EditProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.EditProjectEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -403,8 +403,8 @@ func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectEnvironmentVariableApi.ListProjectEnvironmentVariable(context.Background(), projectId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableApi.ListProjectEnvironmentVariable(context.Background(), projectId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.ListProjectEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

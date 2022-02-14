@@ -22,7 +22,7 @@ type ReferenceObjectStatusResponse struct {
 	State string `json:"state"`
 	// message related to the state
 	Message                 NullableString `json:"message,omitempty"`
-	ServiceDeploymentStatus NullableString `json:"serviceDeploymentStatus,omitempty"`
+	ServiceDeploymentStatus NullableString `json:"service_deployment_status,omitempty"`
 }
 
 // NewReferenceObjectStatusResponse instantiates a new ReferenceObjectStatusResponse object
@@ -190,7 +190,7 @@ func (o ReferenceObjectStatusResponse) MarshalJSON() ([]byte, error) {
 		toSerialize["message"] = o.Message.Get()
 	}
 	if o.ServiceDeploymentStatus.IsSet() {
-		toSerialize["serviceDeploymentStatus"] = o.ServiceDeploymentStatus.Get()
+		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus.Get()
 	}
 	return json.Marshal(toSerialize)
 }

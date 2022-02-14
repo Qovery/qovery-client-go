@@ -17,10 +17,10 @@ import (
 
 // CloudProviderResponse struct for CloudProviderResponse
 type CloudProviderResponse struct {
-	ShortName *string                  `json:"short_name,omitempty"`
-	Name      *string                  `json:"name,omitempty"`
-	LogoUrl   *string                  `json:"logo_url,omitempty"`
-	Regions   *[]ClusterRegionResponse `json:"regions,omitempty"`
+	ShortName *string                 `json:"short_name,omitempty"`
+	Name      *string                 `json:"name,omitempty"`
+	LogoUrl   *string                 `json:"logo_url,omitempty"`
+	Regions   []ClusterRegionResponse `json:"regions,omitempty"`
 }
 
 // NewCloudProviderResponse instantiates a new CloudProviderResponse object
@@ -142,12 +142,12 @@ func (o *CloudProviderResponse) GetRegions() []ClusterRegionResponse {
 		var ret []ClusterRegionResponse
 		return ret
 	}
-	return *o.Regions
+	return o.Regions
 }
 
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderResponse) GetRegionsOk() (*[]ClusterRegionResponse, bool) {
+func (o *CloudProviderResponse) GetRegionsOk() ([]ClusterRegionResponse, bool) {
 	if o == nil || o.Regions == nil {
 		return nil, false
 	}
@@ -165,7 +165,7 @@ func (o *CloudProviderResponse) HasRegions() bool {
 
 // SetRegions gets a reference to the given []ClusterRegionResponse and assigns it to the Regions field.
 func (o *CloudProviderResponse) SetRegions(v []ClusterRegionResponse) {
-	o.Regions = &v
+	o.Regions = v
 }
 
 func (o CloudProviderResponse) MarshalJSON() ([]byte, error) {

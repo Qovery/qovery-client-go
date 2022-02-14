@@ -17,7 +17,7 @@ import (
 
 // StorageDiskResponseList struct for StorageDiskResponseList
 type StorageDiskResponseList struct {
-	Results *[]StorageDiskResponse `json:"results,omitempty"`
+	Results []StorageDiskResponse `json:"results,omitempty"`
 }
 
 // NewStorageDiskResponseList instantiates a new StorageDiskResponseList object
@@ -43,12 +43,12 @@ func (o *StorageDiskResponseList) GetResults() []StorageDiskResponse {
 		var ret []StorageDiskResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDiskResponseList) GetResultsOk() (*[]StorageDiskResponse, bool) {
+func (o *StorageDiskResponseList) GetResultsOk() ([]StorageDiskResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *StorageDiskResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []StorageDiskResponse and assigns it to the Results field.
 func (o *StorageDiskResponseList) SetResults(v []StorageDiskResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o StorageDiskResponseList) MarshalJSON() ([]byte, error) {

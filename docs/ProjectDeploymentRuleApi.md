@@ -35,8 +35,8 @@ func main() {
     projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("^feat", "Name_example", "Mode_example", "Cluster_example", false) // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectDeploymentRuleApi.CreateDeploymentRule(context.Background(), projectId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.CreateDeploymentRule(context.Background(), projectId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.CreateDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@ func main() {
     deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectDeploymentRuleApi.DeleteProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.DeleteProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.DeleteProjectDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("^feat", "Name_example", "Mode_example", "Cluster_example", false) // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectDeploymentRuleApi.EditProjectDeployemtnRule(context.Background(), projectId, deploymentRuleId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.EditProjectDeployemtnRule(context.Background(), projectId, deploymentRuleId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.EditProjectDeployemtnRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -247,8 +247,8 @@ func main() {
     deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectDeploymentRuleApi.GetProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.GetProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.GetProjectDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -317,8 +317,8 @@ func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ProjectDeploymentRuleApi.ListProjectDeploymentRule(context.Background(), projectId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.ListProjectDeploymentRule(context.Background(), projectId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.ListProjectDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
