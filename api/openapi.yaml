@@ -9101,12 +9101,12 @@ components:
           default: 250
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
-          type: number
+          type: integer
         memory:
           default: 256
           description: unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         min_running_instances:
           default: 1
           description: |
