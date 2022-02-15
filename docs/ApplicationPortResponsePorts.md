@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **InternalPort** | **int32** | The listening port of your application | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your application. This is optional. If not set a default port will be used. | [optional] 
-**PubliclyAccessible** | Pointer to **bool** | Expose the port to the world | [optional] 
-**Protocol** | **string** |  | [default to "HTTP"]
+**PubliclyAccessible** | **bool** | Expose the port to the world | 
+**Protocol** | Pointer to **string** |  | [optional] [default to "HTTP"]
 
 ## Methods
 
 ### NewApplicationPortResponsePorts
 
-`func NewApplicationPortResponsePorts(internalPort int32, protocol string, ) *ApplicationPortResponsePorts`
+`func NewApplicationPortResponsePorts(internalPort int32, publiclyAccessible bool, ) *ApplicationPortResponsePorts`
 
 NewApplicationPortResponsePorts instantiates a new ApplicationPortResponsePorts object
 This constructor will assign default values to properties that have it defined,
@@ -144,11 +144,6 @@ and a boolean to check if the value has been set.
 
 SetPubliclyAccessible sets PubliclyAccessible field to given value.
 
-### HasPubliclyAccessible
-
-`func (o *ApplicationPortResponsePorts) HasPubliclyAccessible() bool`
-
-HasPubliclyAccessible returns a boolean if a field has been set.
 
 ### GetProtocol
 
@@ -169,6 +164,11 @@ and a boolean to check if the value has been set.
 
 SetProtocol sets Protocol field to given value.
 
+### HasProtocol
+
+`func (o *ApplicationPortResponsePorts) HasProtocol() bool`
+
+HasProtocol returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

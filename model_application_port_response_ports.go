@@ -24,18 +24,20 @@ type ApplicationPortResponsePorts struct {
 	// The exposed port for your application. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible *bool  `json:"publicly_accessible,omitempty"`
-	Protocol           string `json:"protocol"`
+	PubliclyAccessible bool    `json:"publicly_accessible"`
+	Protocol           *string `json:"protocol,omitempty"`
 }
 
 // NewApplicationPortResponsePorts instantiates a new ApplicationPortResponsePorts object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationPortResponsePorts(internalPort int32, protocol string) *ApplicationPortResponsePorts {
+func NewApplicationPortResponsePorts(internalPort int32, publiclyAccessible bool) *ApplicationPortResponsePorts {
 	this := ApplicationPortResponsePorts{}
 	this.InternalPort = internalPort
-	this.Protocol = protocol
+	this.PubliclyAccessible = publiclyAccessible
+	var protocol string = "HTTP"
+	this.Protocol = &protocol
 	return &this
 }
 
@@ -45,7 +47,7 @@ func NewApplicationPortResponsePorts(internalPort int32, protocol string) *Appli
 func NewApplicationPortResponsePortsWithDefaults() *ApplicationPortResponsePorts {
 	this := ApplicationPortResponsePorts{}
 	var protocol string = "HTTP"
-	this.Protocol = protocol
+	this.Protocol = &protocol
 	return &this
 }
 
@@ -169,60 +171,60 @@ func (o *ApplicationPortResponsePorts) SetExternalPort(v int32) {
 	o.ExternalPort = &v
 }
 
-// GetPubliclyAccessible returns the PubliclyAccessible field value if set, zero value otherwise.
+// GetPubliclyAccessible returns the PubliclyAccessible field value
 func (o *ApplicationPortResponsePorts) GetPubliclyAccessible() bool {
-	if o == nil || o.PubliclyAccessible == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.PubliclyAccessible
+
+	return o.PubliclyAccessible
 }
 
-// GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value if set, nil otherwise
+// GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortResponsePorts) GetPubliclyAccessibleOk() (*bool, bool) {
-	if o == nil || o.PubliclyAccessible == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.PubliclyAccessible, true
+	return &o.PubliclyAccessible, true
 }
 
-// HasPubliclyAccessible returns a boolean if a field has been set.
-func (o *ApplicationPortResponsePorts) HasPubliclyAccessible() bool {
-	if o != nil && o.PubliclyAccessible != nil {
+// SetPubliclyAccessible sets field value
+func (o *ApplicationPortResponsePorts) SetPubliclyAccessible(v bool) {
+	o.PubliclyAccessible = v
+}
+
+// GetProtocol returns the Protocol field value if set, zero value otherwise.
+func (o *ApplicationPortResponsePorts) GetProtocol() string {
+	if o == nil || o.Protocol == nil {
+		var ret string
+		return ret
+	}
+	return *o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationPortResponsePorts) GetProtocolOk() (*string, bool) {
+	if o == nil || o.Protocol == nil {
+		return nil, false
+	}
+	return o.Protocol, true
+}
+
+// HasProtocol returns a boolean if a field has been set.
+func (o *ApplicationPortResponsePorts) HasProtocol() bool {
+	if o != nil && o.Protocol != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPubliclyAccessible gets a reference to the given bool and assigns it to the PubliclyAccessible field.
-func (o *ApplicationPortResponsePorts) SetPubliclyAccessible(v bool) {
-	o.PubliclyAccessible = &v
-}
-
-// GetProtocol returns the Protocol field value
-func (o *ApplicationPortResponsePorts) GetProtocol() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Protocol
-}
-
-// GetProtocolOk returns a tuple with the Protocol field value
-// and a boolean to check if the value has been set.
-func (o *ApplicationPortResponsePorts) GetProtocolOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Protocol, true
-}
-
-// SetProtocol sets field value
+// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
 func (o *ApplicationPortResponsePorts) SetProtocol(v string) {
-	o.Protocol = v
+	o.Protocol = &v
 }
 
 func (o ApplicationPortResponsePorts) MarshalJSON() ([]byte, error) {
@@ -239,10 +241,10 @@ func (o ApplicationPortResponsePorts) MarshalJSON() ([]byte, error) {
 	if o.ExternalPort != nil {
 		toSerialize["external_port"] = o.ExternalPort
 	}
-	if o.PubliclyAccessible != nil {
+	if true {
 		toSerialize["publicly_accessible"] = o.PubliclyAccessible
 	}
-	if true {
+	if o.Protocol != nil {
 		toSerialize["protocol"] = o.Protocol
 	}
 	return json.Marshal(toSerialize)
