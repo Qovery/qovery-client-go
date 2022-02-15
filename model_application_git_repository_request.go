@@ -22,17 +22,18 @@ type ApplicationGitRepositoryRequest struct {
 	// Name of the branch to use. This is optional If not specified, then the branch used is the `main` or `master` one
 	Branch *string `json:"branch,omitempty"`
 	// indicates the root path of the application.
-	RootPath string `json:"root_path"`
+	RootPath *string `json:"root_path,omitempty"`
 }
 
 // NewApplicationGitRepositoryRequest instantiates a new ApplicationGitRepositoryRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationGitRepositoryRequest(url string, rootPath string) *ApplicationGitRepositoryRequest {
+func NewApplicationGitRepositoryRequest(url string) *ApplicationGitRepositoryRequest {
 	this := ApplicationGitRepositoryRequest{}
 	this.Url = url
-	this.RootPath = rootPath
+	var rootPath string = "/"
+	this.RootPath = &rootPath
 	return &this
 }
 
@@ -42,7 +43,7 @@ func NewApplicationGitRepositoryRequest(url string, rootPath string) *Applicatio
 func NewApplicationGitRepositoryRequestWithDefaults() *ApplicationGitRepositoryRequest {
 	this := ApplicationGitRepositoryRequest{}
 	var rootPath string = "/"
-	this.RootPath = rootPath
+	this.RootPath = &rootPath
 	return &this
 }
 
@@ -102,28 +103,36 @@ func (o *ApplicationGitRepositoryRequest) SetBranch(v string) {
 	o.Branch = &v
 }
 
-// GetRootPath returns the RootPath field value
+// GetRootPath returns the RootPath field value if set, zero value otherwise.
 func (o *ApplicationGitRepositoryRequest) GetRootPath() string {
-	if o == nil {
+	if o == nil || o.RootPath == nil {
 		var ret string
 		return ret
 	}
-
-	return o.RootPath
+	return *o.RootPath
 }
 
-// GetRootPathOk returns a tuple with the RootPath field value
+// GetRootPathOk returns a tuple with the RootPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepositoryRequest) GetRootPathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.RootPath == nil {
 		return nil, false
 	}
-	return &o.RootPath, true
+	return o.RootPath, true
 }
 
-// SetRootPath sets field value
+// HasRootPath returns a boolean if a field has been set.
+func (o *ApplicationGitRepositoryRequest) HasRootPath() bool {
+	if o != nil && o.RootPath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRootPath gets a reference to the given string and assigns it to the RootPath field.
 func (o *ApplicationGitRepositoryRequest) SetRootPath(v string) {
-	o.RootPath = v
+	o.RootPath = &v
 }
 
 func (o ApplicationGitRepositoryRequest) MarshalJSON() ([]byte, error) {
@@ -134,7 +143,7 @@ func (o ApplicationGitRepositoryRequest) MarshalJSON() ([]byte, error) {
 	if o.Branch != nil {
 		toSerialize["branch"] = o.Branch
 	}
-	if true {
+	if o.RootPath != nil {
 		toSerialize["root_path"] = o.RootPath
 	}
 	return json.Marshal(toSerialize)

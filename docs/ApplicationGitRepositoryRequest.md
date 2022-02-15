@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** | application git repository URL | 
 **Branch** | Pointer to **string** | Name of the branch to use. This is optional If not specified, then the branch used is the &#x60;main&#x60; or &#x60;master&#x60; one  | [optional] 
-**RootPath** | **string** | indicates the root path of the application. | [default to "/"]
+**RootPath** | Pointer to **string** | indicates the root path of the application. | [optional] [default to "/"]
 
 ## Methods
 
 ### NewApplicationGitRepositoryRequest
 
-`func NewApplicationGitRepositoryRequest(url string, rootPath string, ) *ApplicationGitRepositoryRequest`
+`func NewApplicationGitRepositoryRequest(url string, ) *ApplicationGitRepositoryRequest`
 
 NewApplicationGitRepositoryRequest instantiates a new ApplicationGitRepositoryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -91,6 +91,11 @@ and a boolean to check if the value has been set.
 
 SetRootPath sets RootPath field to given value.
 
+### HasRootPath
+
+`func (o *ApplicationGitRepositoryRequest) HasRootPath() bool`
+
+HasRootPath returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

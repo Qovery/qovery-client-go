@@ -7734,7 +7734,6 @@ components:
       - name
       - owner
       - provider
-      - root_path
       - url
       type: object
     OrganizationRequest:
