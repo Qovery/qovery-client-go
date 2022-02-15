@@ -12573,7 +12573,7 @@ components:
           type: string
       required:
       - internal_port
-      - protocol
+      - publicly_accessible
       type: object
     EnvironmentDatabasesCurrentMetricResponse_cpu:
       example:
