@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **InternalPort** | **int32** | The listening port of your application | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your application. This is optional. If not set a default port will be used. | [optional] 
-**PubliclyAccessible** | Pointer to **bool** | Expose the port to the world | [optional] 
+**PubliclyAccessible** | **bool** | Expose the port to the world | 
 **Protocol** | Pointer to **string** |  | [optional] [default to "HTTP"]
 
 ## Methods
 
 ### NewApplicationPortRequestPorts
 
-`func NewApplicationPortRequestPorts(internalPort int32, ) *ApplicationPortRequestPorts`
+`func NewApplicationPortRequestPorts(internalPort int32, publiclyAccessible bool, ) *ApplicationPortRequestPorts`
 
 NewApplicationPortRequestPorts instantiates a new ApplicationPortRequestPorts object
 This constructor will assign default values to properties that have it defined,
@@ -118,11 +118,6 @@ and a boolean to check if the value has been set.
 
 SetPubliclyAccessible sets PubliclyAccessible field to given value.
 
-### HasPubliclyAccessible
-
-`func (o *ApplicationPortRequestPorts) HasPubliclyAccessible() bool`
-
-HasPubliclyAccessible returns a boolean if a field has been set.
 
 ### GetProtocol
 

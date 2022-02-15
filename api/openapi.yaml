@@ -12679,6 +12679,7 @@ components:
           type: string
       required:
       - internal_port
+      - publicly_accessible
       type: object
     MetricRestartResponse_results:
       example:

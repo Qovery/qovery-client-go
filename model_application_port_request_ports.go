@@ -23,7 +23,7 @@ type ApplicationPortRequestPorts struct {
 	// The exposed port for your application. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible *bool   `json:"publicly_accessible,omitempty"`
+	PubliclyAccessible bool    `json:"publicly_accessible"`
 	Protocol           *string `json:"protocol,omitempty"`
 }
 
@@ -31,9 +31,10 @@ type ApplicationPortRequestPorts struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationPortRequestPorts(internalPort int32) *ApplicationPortRequestPorts {
+func NewApplicationPortRequestPorts(internalPort int32, publiclyAccessible bool) *ApplicationPortRequestPorts {
 	this := ApplicationPortRequestPorts{}
 	this.InternalPort = internalPort
+	this.PubliclyAccessible = publiclyAccessible
 	var protocol string = "HTTP"
 	this.Protocol = &protocol
 	return &this
@@ -137,36 +138,28 @@ func (o *ApplicationPortRequestPorts) SetExternalPort(v int32) {
 	o.ExternalPort = &v
 }
 
-// GetPubliclyAccessible returns the PubliclyAccessible field value if set, zero value otherwise.
+// GetPubliclyAccessible returns the PubliclyAccessible field value
 func (o *ApplicationPortRequestPorts) GetPubliclyAccessible() bool {
-	if o == nil || o.PubliclyAccessible == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.PubliclyAccessible
+
+	return o.PubliclyAccessible
 }
 
-// GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value if set, nil otherwise
+// GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortRequestPorts) GetPubliclyAccessibleOk() (*bool, bool) {
-	if o == nil || o.PubliclyAccessible == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.PubliclyAccessible, true
+	return &o.PubliclyAccessible, true
 }
 
-// HasPubliclyAccessible returns a boolean if a field has been set.
-func (o *ApplicationPortRequestPorts) HasPubliclyAccessible() bool {
-	if o != nil && o.PubliclyAccessible != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPubliclyAccessible gets a reference to the given bool and assigns it to the PubliclyAccessible field.
+// SetPubliclyAccessible sets field value
 func (o *ApplicationPortRequestPorts) SetPubliclyAccessible(v bool) {
-	o.PubliclyAccessible = &v
+	o.PubliclyAccessible = v
 }
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
@@ -212,7 +205,7 @@ func (o ApplicationPortRequestPorts) MarshalJSON() ([]byte, error) {
 	if o.ExternalPort != nil {
 		toSerialize["external_port"] = o.ExternalPort
 	}
-	if o.PubliclyAccessible != nil {
+	if true {
 		toSerialize["publicly_accessible"] = o.PubliclyAccessible
 	}
 	if o.Protocol != nil {

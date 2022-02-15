@@ -9,3 +9,4 @@ docker run --rm \
     --git-repo-id qovery-client-go \
     --package-name qovery
 gofmt -s -w .
+git co .gitignore
