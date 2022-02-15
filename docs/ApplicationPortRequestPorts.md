@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **InternalPort** | **int32** | The listening port of your application | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your application. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | Pointer to **bool** | Expose the port to the world | [optional] 
-**Protocol** | **string** |  | [default to "HTTP"]
+**Protocol** | Pointer to **string** |  | [optional] [default to "HTTP"]
 
 ## Methods
 
 ### NewApplicationPortRequestPorts
 
-`func NewApplicationPortRequestPorts(internalPort int32, protocol string, ) *ApplicationPortRequestPorts`
+`func NewApplicationPortRequestPorts(internalPort int32, ) *ApplicationPortRequestPorts`
 
 NewApplicationPortRequestPorts instantiates a new ApplicationPortRequestPorts object
 This constructor will assign default values to properties that have it defined,
@@ -143,6 +143,11 @@ and a boolean to check if the value has been set.
 
 SetProtocol sets Protocol field to given value.
 
+### HasProtocol
+
+`func (o *ApplicationPortRequestPorts) HasProtocol() bool`
+
+HasProtocol returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

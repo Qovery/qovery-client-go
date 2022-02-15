@@ -12679,7 +12679,6 @@ components:
           type: string
       required:
       - internal_port
-      - protocol
       type: object
     MetricRestartResponse_results:
       example:
