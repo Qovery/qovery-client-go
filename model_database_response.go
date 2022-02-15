@@ -22,9 +22,9 @@ type DatabaseResponse struct {
 	Host        *string          `json:"host,omitempty"`
 	Port        *int32           `json:"port,omitempty"`
 	// Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
-	MaximumCpu *float32 `json:"maximum_cpu,omitempty"`
+	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
-	MaximumMemory *float32 `json:"maximum_memory,omitempty"`
+	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
 	DiskEncrypted *bool      `json:"disk_encrypted,omitempty"`
 	Id            string     `json:"id"`
@@ -37,11 +37,11 @@ type DatabaseResponse struct {
 	Mode          string  `json:"mode"`
 	Accessibility *string `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *float32 `json:"cpu,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory *float32 `json:"memory,omitempty"`
+	Memory *int32 `json:"memory,omitempty"`
 	// unit is MB
-	Storage *float32 `json:"storage,omitempty"`
+	Storage *int32 `json:"storage,omitempty"`
 }
 
 // NewDatabaseResponse instantiates a new DatabaseResponse object
@@ -58,11 +58,11 @@ func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ stri
 	this.Mode = mode
 	var accessibility string = "PRIVATE"
 	this.Accessibility = &accessibility
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
-	var storage float32 = 10240
+	var storage int32 = 10240
 	this.Storage = &storage
 	return &this
 }
@@ -72,17 +72,17 @@ func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ stri
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseResponseWithDefaults() *DatabaseResponse {
 	this := DatabaseResponse{}
-	var maximumCpu float32 = 250
+	var maximumCpu int32 = 250
 	this.MaximumCpu = &maximumCpu
-	var maximumMemory float32 = 256
+	var maximumMemory int32 = 256
 	this.MaximumMemory = &maximumMemory
 	var accessibility string = "PRIVATE"
 	this.Accessibility = &accessibility
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
-	var storage float32 = 10240
+	var storage int32 = 10240
 	this.Storage = &storage
 	return &this
 }
@@ -184,9 +184,9 @@ func (o *DatabaseResponse) SetPort(v int32) {
 }
 
 // GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetMaximumCpu() float32 {
+func (o *DatabaseResponse) GetMaximumCpu() int32 {
 	if o == nil || o.MaximumCpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.MaximumCpu
@@ -194,7 +194,7 @@ func (o *DatabaseResponse) GetMaximumCpu() float32 {
 
 // GetMaximumCpuOk returns a tuple with the MaximumCpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetMaximumCpuOk() (*float32, bool) {
+func (o *DatabaseResponse) GetMaximumCpuOk() (*int32, bool) {
 	if o == nil || o.MaximumCpu == nil {
 		return nil, false
 	}
@@ -210,15 +210,15 @@ func (o *DatabaseResponse) HasMaximumCpu() bool {
 	return false
 }
 
-// SetMaximumCpu gets a reference to the given float32 and assigns it to the MaximumCpu field.
-func (o *DatabaseResponse) SetMaximumCpu(v float32) {
+// SetMaximumCpu gets a reference to the given int32 and assigns it to the MaximumCpu field.
+func (o *DatabaseResponse) SetMaximumCpu(v int32) {
 	o.MaximumCpu = &v
 }
 
 // GetMaximumMemory returns the MaximumMemory field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetMaximumMemory() float32 {
+func (o *DatabaseResponse) GetMaximumMemory() int32 {
 	if o == nil || o.MaximumMemory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.MaximumMemory
@@ -226,7 +226,7 @@ func (o *DatabaseResponse) GetMaximumMemory() float32 {
 
 // GetMaximumMemoryOk returns a tuple with the MaximumMemory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetMaximumMemoryOk() (*float32, bool) {
+func (o *DatabaseResponse) GetMaximumMemoryOk() (*int32, bool) {
 	if o == nil || o.MaximumMemory == nil {
 		return nil, false
 	}
@@ -242,8 +242,8 @@ func (o *DatabaseResponse) HasMaximumMemory() bool {
 	return false
 }
 
-// SetMaximumMemory gets a reference to the given float32 and assigns it to the MaximumMemory field.
-func (o *DatabaseResponse) SetMaximumMemory(v float32) {
+// SetMaximumMemory gets a reference to the given int32 and assigns it to the MaximumMemory field.
+func (o *DatabaseResponse) SetMaximumMemory(v int32) {
 	o.MaximumMemory = &v
 }
 
@@ -488,9 +488,9 @@ func (o *DatabaseResponse) SetAccessibility(v string) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetCpu() float32 {
+func (o *DatabaseResponse) GetCpu() int32 {
 	if o == nil || o.Cpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Cpu
@@ -498,7 +498,7 @@ func (o *DatabaseResponse) GetCpu() float32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetCpuOk() (*float32, bool) {
+func (o *DatabaseResponse) GetCpuOk() (*int32, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -514,15 +514,15 @@ func (o *DatabaseResponse) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given float32 and assigns it to the Cpu field.
-func (o *DatabaseResponse) SetCpu(v float32) {
+// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+func (o *DatabaseResponse) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetMemory() float32 {
+func (o *DatabaseResponse) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Memory
@@ -530,7 +530,7 @@ func (o *DatabaseResponse) GetMemory() float32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetMemoryOk() (*float32, bool) {
+func (o *DatabaseResponse) GetMemoryOk() (*int32, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -546,15 +546,15 @@ func (o *DatabaseResponse) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given float32 and assigns it to the Memory field.
-func (o *DatabaseResponse) SetMemory(v float32) {
+// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+func (o *DatabaseResponse) SetMemory(v int32) {
 	o.Memory = &v
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetStorage() float32 {
+func (o *DatabaseResponse) GetStorage() int32 {
 	if o == nil || o.Storage == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Storage
@@ -562,7 +562,7 @@ func (o *DatabaseResponse) GetStorage() float32 {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetStorageOk() (*float32, bool) {
+func (o *DatabaseResponse) GetStorageOk() (*int32, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -578,8 +578,8 @@ func (o *DatabaseResponse) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given float32 and assigns it to the Storage field.
-func (o *DatabaseResponse) SetStorage(v float32) {
+// SetStorage gets a reference to the given int32 and assigns it to the Storage field.
+func (o *DatabaseResponse) SetStorage(v int32) {
 	o.Storage = &v
 }
 

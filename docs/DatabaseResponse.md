@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
-**MaximumCpu** | Pointer to **float32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**MaximumMemory** | Pointer to **float32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
@@ -18,9 +18,9 @@ Name | Type | Description | Notes
 **Version** | **string** |  | 
 **Mode** | **string** |  | 
 **Accessibility** | Pointer to **string** |  | [optional] [default to "PRIVATE"]
-**Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
-**Storage** | Pointer to **float32** | unit is MB | [optional] [default to 10240]
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Storage** | Pointer to **int32** | unit is MB | [optional] [default to 10240]
 
 ## Methods
 
@@ -118,20 +118,20 @@ HasPort returns a boolean if a field has been set.
 
 ### GetMaximumCpu
 
-`func (o *DatabaseResponse) GetMaximumCpu() float32`
+`func (o *DatabaseResponse) GetMaximumCpu() int32`
 
 GetMaximumCpu returns the MaximumCpu field if non-nil, zero value otherwise.
 
 ### GetMaximumCpuOk
 
-`func (o *DatabaseResponse) GetMaximumCpuOk() (*float32, bool)`
+`func (o *DatabaseResponse) GetMaximumCpuOk() (*int32, bool)`
 
 GetMaximumCpuOk returns a tuple with the MaximumCpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumCpu
 
-`func (o *DatabaseResponse) SetMaximumCpu(v float32)`
+`func (o *DatabaseResponse) SetMaximumCpu(v int32)`
 
 SetMaximumCpu sets MaximumCpu field to given value.
 
@@ -143,20 +143,20 @@ HasMaximumCpu returns a boolean if a field has been set.
 
 ### GetMaximumMemory
 
-`func (o *DatabaseResponse) GetMaximumMemory() float32`
+`func (o *DatabaseResponse) GetMaximumMemory() int32`
 
 GetMaximumMemory returns the MaximumMemory field if non-nil, zero value otherwise.
 
 ### GetMaximumMemoryOk
 
-`func (o *DatabaseResponse) GetMaximumMemoryOk() (*float32, bool)`
+`func (o *DatabaseResponse) GetMaximumMemoryOk() (*int32, bool)`
 
 GetMaximumMemoryOk returns a tuple with the MaximumMemory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumMemory
 
-`func (o *DatabaseResponse) SetMaximumMemory(v float32)`
+`func (o *DatabaseResponse) SetMaximumMemory(v int32)`
 
 SetMaximumMemory sets MaximumMemory field to given value.
 
@@ -363,20 +363,20 @@ HasAccessibility returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *DatabaseResponse) GetCpu() float32`
+`func (o *DatabaseResponse) GetCpu() int32`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *DatabaseResponse) GetCpuOk() (*float32, bool)`
+`func (o *DatabaseResponse) GetCpuOk() (*int32, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *DatabaseResponse) SetCpu(v float32)`
+`func (o *DatabaseResponse) SetCpu(v int32)`
 
 SetCpu sets Cpu field to given value.
 
@@ -388,20 +388,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *DatabaseResponse) GetMemory() float32`
+`func (o *DatabaseResponse) GetMemory() int32`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *DatabaseResponse) GetMemoryOk() (*float32, bool)`
+`func (o *DatabaseResponse) GetMemoryOk() (*int32, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *DatabaseResponse) SetMemory(v float32)`
+`func (o *DatabaseResponse) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
 
@@ -413,20 +413,20 @@ HasMemory returns a boolean if a field has been set.
 
 ### GetStorage
 
-`func (o *DatabaseResponse) GetStorage() float32`
+`func (o *DatabaseResponse) GetStorage() int32`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *DatabaseResponse) GetStorageOk() (*float32, bool)`
+`func (o *DatabaseResponse) GetStorageOk() (*int32, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *DatabaseResponse) SetStorage(v float32)`
+`func (o *DatabaseResponse) SetStorage(v int32)`
 
 SetStorage sets Storage field to given value.
 

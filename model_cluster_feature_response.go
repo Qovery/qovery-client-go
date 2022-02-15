@@ -17,16 +17,16 @@ import (
 
 // ClusterFeatureResponse struct for ClusterFeatureResponse
 type ClusterFeatureResponse struct {
-	Id                  *string         `json:"id,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	Description         NullableString  `json:"description,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      []interface{}   `json:"accepted_values,omitempty"`
+	Id                  *string              `json:"id,omitempty"`
+	Title               *string              `json:"title,omitempty"`
+	Description         NullableString       `json:"description,omitempty"`
+	CostPerMonthInCents NullableInt32        `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32      `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString       `json:"currency_code,omitempty"`
+	ValueType           *string              `json:"value_type,omitempty"`
+	Value               NullableString       `json:"value,omitempty"`
+	IsValueUpdatable    *bool                `json:"is_value_updatable,omitempty"`
+	AcceptedValues      []interface{} `json:"accepted_values,omitempty"`
 }
 
 // NewClusterFeatureResponse instantiates a new ClusterFeatureResponse object

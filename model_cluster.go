@@ -24,11 +24,11 @@ type Cluster struct {
 	Region        string  `json:"region"`
 	AutoUpdate    *bool   `json:"auto_update,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *float32 `json:"cpu,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory          *float32 `json:"memory,omitempty"`
-	MinRunningNodes *int32   `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32   `json:"max_running_nodes,omitempty"`
+	Memory          *int32 `json:"memory,omitempty"`
+	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
@@ -40,9 +40,9 @@ func NewCluster(name string, cloudProvider string, region string) *Cluster {
 	this.Name = name
 	this.CloudProvider = cloudProvider
 	this.Region = region
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
@@ -56,9 +56,9 @@ func NewCluster(name string, cloudProvider string, region string) *Cluster {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterWithDefaults() *Cluster {
 	this := Cluster{}
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
@@ -204,9 +204,9 @@ func (o *Cluster) SetAutoUpdate(v bool) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *Cluster) GetCpu() float32 {
+func (o *Cluster) GetCpu() int32 {
 	if o == nil || o.Cpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Cpu
@@ -214,7 +214,7 @@ func (o *Cluster) GetCpu() float32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetCpuOk() (*float32, bool) {
+func (o *Cluster) GetCpuOk() (*int32, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -230,15 +230,15 @@ func (o *Cluster) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given float32 and assigns it to the Cpu field.
-func (o *Cluster) SetCpu(v float32) {
+// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+func (o *Cluster) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *Cluster) GetMemory() float32 {
+func (o *Cluster) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Memory
@@ -246,7 +246,7 @@ func (o *Cluster) GetMemory() float32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetMemoryOk() (*float32, bool) {
+func (o *Cluster) GetMemoryOk() (*int32, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -262,8 +262,8 @@ func (o *Cluster) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given float32 and assigns it to the Memory field.
-func (o *Cluster) SetMemory(v float32) {
+// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+func (o *Cluster) SetMemory(v int32) {
 	o.Memory = &v
 }
 

@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryResponse**](ApplicationGitRepositoryResponse.md) |  | [optional] 
-**MaximumCpu** | Pointer to **float32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**MaximumMemory** | Pointer to **float32** | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] [default to "BUILDPACKS"]
 **DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **BuildpackLanguage** | Pointer to **string** | Development language of the application | [optional] 
-**Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
@@ -96,20 +96,20 @@ HasGitRepository returns a boolean if a field has been set.
 
 ### GetMaximumCpu
 
-`func (o *ApplicationResponse) GetMaximumCpu() float32`
+`func (o *ApplicationResponse) GetMaximumCpu() int32`
 
 GetMaximumCpu returns the MaximumCpu field if non-nil, zero value otherwise.
 
 ### GetMaximumCpuOk
 
-`func (o *ApplicationResponse) GetMaximumCpuOk() (*float32, bool)`
+`func (o *ApplicationResponse) GetMaximumCpuOk() (*int32, bool)`
 
 GetMaximumCpuOk returns a tuple with the MaximumCpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumCpu
 
-`func (o *ApplicationResponse) SetMaximumCpu(v float32)`
+`func (o *ApplicationResponse) SetMaximumCpu(v int32)`
 
 SetMaximumCpu sets MaximumCpu field to given value.
 
@@ -121,20 +121,20 @@ HasMaximumCpu returns a boolean if a field has been set.
 
 ### GetMaximumMemory
 
-`func (o *ApplicationResponse) GetMaximumMemory() float32`
+`func (o *ApplicationResponse) GetMaximumMemory() int32`
 
 GetMaximumMemory returns the MaximumMemory field if non-nil, zero value otherwise.
 
 ### GetMaximumMemoryOk
 
-`func (o *ApplicationResponse) GetMaximumMemoryOk() (*float32, bool)`
+`func (o *ApplicationResponse) GetMaximumMemoryOk() (*int32, bool)`
 
 GetMaximumMemoryOk returns a tuple with the MaximumMemory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumMemory
 
-`func (o *ApplicationResponse) SetMaximumMemory(v float32)`
+`func (o *ApplicationResponse) SetMaximumMemory(v int32)`
 
 SetMaximumMemory sets MaximumMemory field to given value.
 
@@ -271,20 +271,20 @@ HasBuildpackLanguage returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *ApplicationResponse) GetCpu() float32`
+`func (o *ApplicationResponse) GetCpu() int32`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *ApplicationResponse) GetCpuOk() (*float32, bool)`
+`func (o *ApplicationResponse) GetCpuOk() (*int32, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *ApplicationResponse) SetCpu(v float32)`
+`func (o *ApplicationResponse) SetCpu(v int32)`
 
 SetCpu sets Cpu field to given value.
 
@@ -296,20 +296,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *ApplicationResponse) GetMemory() float32`
+`func (o *ApplicationResponse) GetMemory() int32`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *ApplicationResponse) GetMemoryOk() (*float32, bool)`
+`func (o *ApplicationResponse) GetMemoryOk() (*int32, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *ApplicationResponse) SetMemory(v float32)`
+`func (o *ApplicationResponse) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
 

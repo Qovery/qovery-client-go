@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **CloudProvider** | **string** |  | 
 **Region** | **string** |  | 
 **AutoUpdate** | Pointer to **bool** |  | [optional] 
-**Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 
@@ -145,20 +145,20 @@ HasAutoUpdate returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *Cluster) GetCpu() float32`
+`func (o *Cluster) GetCpu() int32`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *Cluster) GetCpuOk() (*float32, bool)`
+`func (o *Cluster) GetCpuOk() (*int32, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *Cluster) SetCpu(v float32)`
+`func (o *Cluster) SetCpu(v int32)`
 
 SetCpu sets Cpu field to given value.
 
@@ -170,20 +170,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *Cluster) GetMemory() float32`
+`func (o *Cluster) GetMemory() int32`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *Cluster) GetMemoryOk() (*float32, bool)`
+`func (o *Cluster) GetMemoryOk() (*int32, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *Cluster) SetMemory(v float32)`
+`func (o *Cluster) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
 

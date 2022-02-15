@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **Version** | **string** |  | 
 **Mode** | **string** |  | 
 **Accessibility** | Pointer to **string** |  | [optional] [default to "PRIVATE"]
-**Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
-**Storage** | Pointer to **float32** | unit is MB | [optional] [default to 10240]
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Storage** | Pointer to **int32** | unit is MB | [optional] [default to 10240]
 
 ## Methods
 
@@ -139,20 +139,20 @@ HasAccessibility returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *DatabaseRequest) GetCpu() float32`
+`func (o *DatabaseRequest) GetCpu() int32`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *DatabaseRequest) GetCpuOk() (*float32, bool)`
+`func (o *DatabaseRequest) GetCpuOk() (*int32, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *DatabaseRequest) SetCpu(v float32)`
+`func (o *DatabaseRequest) SetCpu(v int32)`
 
 SetCpu sets Cpu field to given value.
 
@@ -164,20 +164,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *DatabaseRequest) GetMemory() float32`
+`func (o *DatabaseRequest) GetMemory() int32`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *DatabaseRequest) GetMemoryOk() (*float32, bool)`
+`func (o *DatabaseRequest) GetMemoryOk() (*int32, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *DatabaseRequest) SetMemory(v float32)`
+`func (o *DatabaseRequest) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
 
@@ -189,20 +189,20 @@ HasMemory returns a boolean if a field has been set.
 
 ### GetStorage
 
-`func (o *DatabaseRequest) GetStorage() float32`
+`func (o *DatabaseRequest) GetStorage() int32`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *DatabaseRequest) GetStorageOk() (*float32, bool)`
+`func (o *DatabaseRequest) GetStorageOk() (*int32, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *DatabaseRequest) SetStorage(v float32)`
+`func (o *DatabaseRequest) SetStorage(v int32)`
 
 SetStorage sets Storage field to given value.
 

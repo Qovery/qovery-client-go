@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Type** | **string** |  | 
-**Size** | **float32** | unit is GB | 
+**Size** | **int32** | unit is GB | 
 **MountPoint** | **string** |  | 
 
 ## Methods
 
 ### NewApplicationStorageResponseStorage
 
-`func NewApplicationStorageResponseStorage(type_ string, size float32, mountPoint string, ) *ApplicationStorageResponseStorage`
+`func NewApplicationStorageResponseStorage(type_ string, size int32, mountPoint string, ) *ApplicationStorageResponseStorage`
 
 NewApplicationStorageResponseStorage instantiates a new ApplicationStorageResponseStorage object
 This constructor will assign default values to properties that have it defined,
@@ -75,20 +75,20 @@ SetType sets Type field to given value.
 
 ### GetSize
 
-`func (o *ApplicationStorageResponseStorage) GetSize() float32`
+`func (o *ApplicationStorageResponseStorage) GetSize() int32`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ApplicationStorageResponseStorage) GetSizeOk() (*float32, bool)`
+`func (o *ApplicationStorageResponseStorage) GetSizeOk() (*int32, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ApplicationStorageResponseStorage) SetSize(v float32)`
+`func (o *ApplicationStorageResponseStorage) SetSize(v int32)`
 
 SetSize sets Size field to given value.
 

@@ -21,9 +21,9 @@ type ApplicationResponse struct {
 	Environment   *ReferenceObject                  `json:"environment,omitempty"`
 	GitRepository *ApplicationGitRepositoryResponse `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
-	MaximumCpu *float32 `json:"maximum_cpu,omitempty"`
+	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
-	MaximumMemory *float32 `json:"maximum_memory,omitempty"`
+	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
@@ -35,9 +35,9 @@ type ApplicationResponse struct {
 	// Development language of the application
 	BuildpackLanguage *string `json:"buildpack_language,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *float32 `json:"cpu,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory *float32 `json:"memory,omitempty"`
+	Memory *int32 `json:"memory,omitempty"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
@@ -68,15 +68,15 @@ func NewApplicationResponse(id string, createdAt time.Time) *ApplicationResponse
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationResponseWithDefaults() *ApplicationResponse {
 	this := ApplicationResponse{}
-	var maximumCpu float32 = 250
+	var maximumCpu int32 = 250
 	this.MaximumCpu = &maximumCpu
-	var maximumMemory float32 = 256
+	var maximumMemory int32 = 256
 	this.MaximumMemory = &maximumMemory
 	var buildMode string = "BUILDPACKS"
 	this.BuildMode = &buildMode
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
@@ -152,9 +152,9 @@ func (o *ApplicationResponse) SetGitRepository(v ApplicationGitRepositoryRespons
 }
 
 // GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetMaximumCpu() float32 {
+func (o *ApplicationResponse) GetMaximumCpu() int32 {
 	if o == nil || o.MaximumCpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.MaximumCpu
@@ -162,7 +162,7 @@ func (o *ApplicationResponse) GetMaximumCpu() float32 {
 
 // GetMaximumCpuOk returns a tuple with the MaximumCpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetMaximumCpuOk() (*float32, bool) {
+func (o *ApplicationResponse) GetMaximumCpuOk() (*int32, bool) {
 	if o == nil || o.MaximumCpu == nil {
 		return nil, false
 	}
@@ -178,15 +178,15 @@ func (o *ApplicationResponse) HasMaximumCpu() bool {
 	return false
 }
 
-// SetMaximumCpu gets a reference to the given float32 and assigns it to the MaximumCpu field.
-func (o *ApplicationResponse) SetMaximumCpu(v float32) {
+// SetMaximumCpu gets a reference to the given int32 and assigns it to the MaximumCpu field.
+func (o *ApplicationResponse) SetMaximumCpu(v int32) {
 	o.MaximumCpu = &v
 }
 
 // GetMaximumMemory returns the MaximumMemory field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetMaximumMemory() float32 {
+func (o *ApplicationResponse) GetMaximumMemory() int32 {
 	if o == nil || o.MaximumMemory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.MaximumMemory
@@ -194,7 +194,7 @@ func (o *ApplicationResponse) GetMaximumMemory() float32 {
 
 // GetMaximumMemoryOk returns a tuple with the MaximumMemory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetMaximumMemoryOk() (*float32, bool) {
+func (o *ApplicationResponse) GetMaximumMemoryOk() (*int32, bool) {
 	if o == nil || o.MaximumMemory == nil {
 		return nil, false
 	}
@@ -210,8 +210,8 @@ func (o *ApplicationResponse) HasMaximumMemory() bool {
 	return false
 }
 
-// SetMaximumMemory gets a reference to the given float32 and assigns it to the MaximumMemory field.
-func (o *ApplicationResponse) SetMaximumMemory(v float32) {
+// SetMaximumMemory gets a reference to the given int32 and assigns it to the MaximumMemory field.
+func (o *ApplicationResponse) SetMaximumMemory(v int32) {
 	o.MaximumMemory = &v
 }
 
@@ -376,9 +376,9 @@ func (o *ApplicationResponse) SetBuildpackLanguage(v string) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetCpu() float32 {
+func (o *ApplicationResponse) GetCpu() int32 {
 	if o == nil || o.Cpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Cpu
@@ -386,7 +386,7 @@ func (o *ApplicationResponse) GetCpu() float32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetCpuOk() (*float32, bool) {
+func (o *ApplicationResponse) GetCpuOk() (*int32, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -402,15 +402,15 @@ func (o *ApplicationResponse) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given float32 and assigns it to the Cpu field.
-func (o *ApplicationResponse) SetCpu(v float32) {
+// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+func (o *ApplicationResponse) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetMemory() float32 {
+func (o *ApplicationResponse) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Memory
@@ -418,7 +418,7 @@ func (o *ApplicationResponse) GetMemory() float32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetMemoryOk() (*float32, bool) {
+func (o *ApplicationResponse) GetMemoryOk() (*int32, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -434,8 +434,8 @@ func (o *ApplicationResponse) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given float32 and assigns it to the Memory field.
-func (o *ApplicationResponse) SetMemory(v float32) {
+// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+func (o *ApplicationResponse) SetMemory(v int32) {
 	o.Memory = &v
 }
 

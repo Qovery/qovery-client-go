@@ -19,7 +19,7 @@ import (
 // ClusterResponse struct for ClusterResponse
 type ClusterResponse struct {
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *float32   `json:"estimated_cloud_provider_cost,omitempty"`
+	EstimatedCloudProviderCost *int32     `json:"estimated_cloud_provider_cost,omitempty"`
 	Status                     *string    `json:"status,omitempty"`
 	HasAccess                  *bool      `json:"has_access,omitempty"`
 	Version                    *string    `json:"version,omitempty"`
@@ -34,19 +34,19 @@ type ClusterResponse struct {
 	Region        string         `json:"region"`
 	AutoUpdate    *bool          `json:"auto_update,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *float32 `json:"cpu,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory              *float32        `json:"memory,omitempty"`
-	MinRunningNodes     *int32          `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes     *int32          `json:"max_running_nodes,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      []interface{}   `json:"accepted_values,omitempty"`
+	Memory              *int32               `json:"memory,omitempty"`
+	MinRunningNodes     *int32               `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes     *int32               `json:"max_running_nodes,omitempty"`
+	Title               *string              `json:"title,omitempty"`
+	CostPerMonthInCents NullableInt32        `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32      `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString       `json:"currency_code,omitempty"`
+	ValueType           *string              `json:"value_type,omitempty"`
+	Value               NullableString       `json:"value,omitempty"`
+	IsValueUpdatable    *bool                `json:"is_value_updatable,omitempty"`
+	AcceptedValues      []interface{} `json:"accepted_values,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
@@ -60,9 +60,9 @@ func NewClusterResponse(id string, createdAt time.Time, name string, cloudProvid
 	this.Name = name
 	this.CloudProvider = cloudProvider
 	this.Region = region
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
@@ -78,9 +78,9 @@ func NewClusterResponse(id string, createdAt time.Time, name string, cloudProvid
 // but it doesn't guarantee that properties required by API are set
 func NewClusterResponseWithDefaults() *ClusterResponse {
 	this := ClusterResponse{}
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
@@ -92,9 +92,9 @@ func NewClusterResponseWithDefaults() *ClusterResponse {
 }
 
 // GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
-func (o *ClusterResponse) GetEstimatedCloudProviderCost() float32 {
+func (o *ClusterResponse) GetEstimatedCloudProviderCost() int32 {
 	if o == nil || o.EstimatedCloudProviderCost == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.EstimatedCloudProviderCost
@@ -102,7 +102,7 @@ func (o *ClusterResponse) GetEstimatedCloudProviderCost() float32 {
 
 // GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*float32, bool) {
+func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*int32, bool) {
 	if o == nil || o.EstimatedCloudProviderCost == nil {
 		return nil, false
 	}
@@ -118,8 +118,8 @@ func (o *ClusterResponse) HasEstimatedCloudProviderCost() bool {
 	return false
 }
 
-// SetEstimatedCloudProviderCost gets a reference to the given float32 and assigns it to the EstimatedCloudProviderCost field.
-func (o *ClusterResponse) SetEstimatedCloudProviderCost(v float32) {
+// SetEstimatedCloudProviderCost gets a reference to the given int32 and assigns it to the EstimatedCloudProviderCost field.
+func (o *ClusterResponse) SetEstimatedCloudProviderCost(v int32) {
 	o.EstimatedCloudProviderCost = &v
 }
 
@@ -479,9 +479,9 @@ func (o *ClusterResponse) SetAutoUpdate(v bool) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *ClusterResponse) GetCpu() float32 {
+func (o *ClusterResponse) GetCpu() int32 {
 	if o == nil || o.Cpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Cpu
@@ -489,7 +489,7 @@ func (o *ClusterResponse) GetCpu() float32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetCpuOk() (*float32, bool) {
+func (o *ClusterResponse) GetCpuOk() (*int32, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -505,15 +505,15 @@ func (o *ClusterResponse) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given float32 and assigns it to the Cpu field.
-func (o *ClusterResponse) SetCpu(v float32) {
+// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+func (o *ClusterResponse) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *ClusterResponse) GetMemory() float32 {
+func (o *ClusterResponse) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Memory
@@ -521,7 +521,7 @@ func (o *ClusterResponse) GetMemory() float32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetMemoryOk() (*float32, bool) {
+func (o *ClusterResponse) GetMemoryOk() (*int32, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -537,8 +537,8 @@ func (o *ClusterResponse) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given float32 and assigns it to the Memory field.
-func (o *ClusterResponse) SetMemory(v float32) {
+// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+func (o *ClusterResponse) SetMemory(v int32) {
 	o.Memory = &v
 }
 

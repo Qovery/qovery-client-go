@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] [default to "BUILDPACKS"]
 **DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **BuildpackLanguage** | Pointer to **string** | Development language of the application | [optional] 
-**Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
@@ -180,20 +180,20 @@ HasBuildpackLanguage returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *ApplicationRequest) GetCpu() float32`
+`func (o *ApplicationRequest) GetCpu() int32`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *ApplicationRequest) GetCpuOk() (*float32, bool)`
+`func (o *ApplicationRequest) GetCpuOk() (*int32, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *ApplicationRequest) SetCpu(v float32)`
+`func (o *ApplicationRequest) SetCpu(v int32)`
 
 SetCpu sets Cpu field to given value.
 
@@ -205,20 +205,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *ApplicationRequest) GetMemory() float32`
+`func (o *ApplicationRequest) GetMemory() int32`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *ApplicationRequest) GetMemoryOk() (*float32, bool)`
+`func (o *ApplicationRequest) GetMemoryOk() (*int32, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *ApplicationRequest) SetMemory(v float32)`
+`func (o *ApplicationRequest) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
 

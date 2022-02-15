@@ -20,15 +20,15 @@ type ApplicationStorageResponseStorage struct {
 	Id   *string `json:"id,omitempty"`
 	Type string  `json:"type"`
 	// unit is GB
-	Size       float32 `json:"size"`
-	MountPoint string  `json:"mount_point"`
+	Size       int32  `json:"size"`
+	MountPoint string `json:"mount_point"`
 }
 
 // NewApplicationStorageResponseStorage instantiates a new ApplicationStorageResponseStorage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationStorageResponseStorage(type_ string, size float32, mountPoint string) *ApplicationStorageResponseStorage {
+func NewApplicationStorageResponseStorage(type_ string, size int32, mountPoint string) *ApplicationStorageResponseStorage {
 	this := ApplicationStorageResponseStorage{}
 	this.Type = type_
 	this.Size = size
@@ -101,9 +101,9 @@ func (o *ApplicationStorageResponseStorage) SetType(v string) {
 }
 
 // GetSize returns the Size field value
-func (o *ApplicationStorageResponseStorage) GetSize() float32 {
+func (o *ApplicationStorageResponseStorage) GetSize() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -112,7 +112,7 @@ func (o *ApplicationStorageResponseStorage) GetSize() float32 {
 
 // GetSizeOk returns a tuple with the Size field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationStorageResponseStorage) GetSizeOk() (*float32, bool) {
+func (o *ApplicationStorageResponseStorage) GetSizeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *ApplicationStorageResponseStorage) GetSizeOk() (*float32, bool) {
 }
 
 // SetSize sets field value
-func (o *ApplicationStorageResponseStorage) SetSize(v float32) {
+func (o *ApplicationStorageResponseStorage) SetSize(v int32) {
 	o.Size = v
 }
 

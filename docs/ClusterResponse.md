@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EstimatedCloudProviderCost** | Pointer to **float32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
+**EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **CloudProvider** | **string** |  | 
 **Region** | **string** |  | 
 **AutoUpdate** | Pointer to **bool** |  | [optional] 
-**Cpu** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **float32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **Title** | Pointer to **string** |  | [optional] 
@@ -51,20 +51,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetEstimatedCloudProviderCost
 
-`func (o *ClusterResponse) GetEstimatedCloudProviderCost() float32`
+`func (o *ClusterResponse) GetEstimatedCloudProviderCost() int32`
 
 GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field if non-nil, zero value otherwise.
 
 ### GetEstimatedCloudProviderCostOk
 
-`func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*float32, bool)`
+`func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*int32, bool)`
 
 GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEstimatedCloudProviderCost
 
-`func (o *ClusterResponse) SetEstimatedCloudProviderCost(v float32)`
+`func (o *ClusterResponse) SetEstimatedCloudProviderCost(v int32)`
 
 SetEstimatedCloudProviderCost sets EstimatedCloudProviderCost field to given value.
 
@@ -361,20 +361,20 @@ HasAutoUpdate returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *ClusterResponse) GetCpu() float32`
+`func (o *ClusterResponse) GetCpu() int32`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *ClusterResponse) GetCpuOk() (*float32, bool)`
+`func (o *ClusterResponse) GetCpuOk() (*int32, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *ClusterResponse) SetCpu(v float32)`
+`func (o *ClusterResponse) SetCpu(v int32)`
 
 SetCpu sets Cpu field to given value.
 
@@ -386,20 +386,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *ClusterResponse) GetMemory() float32`
+`func (o *ClusterResponse) GetMemory() int32`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *ClusterResponse) GetMemoryOk() (*float32, bool)`
+`func (o *ClusterResponse) GetMemoryOk() (*int32, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *ClusterResponse) SetMemory(v float32)`
+`func (o *ClusterResponse) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
 

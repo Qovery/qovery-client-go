@@ -29,9 +29,9 @@ type ApplicationRequest struct {
 	// Development language of the application
 	BuildpackLanguage *string `json:"buildpack_language,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *float32 `json:"cpu,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory *float32 `json:"memory,omitempty"`
+	Memory *int32 `json:"memory,omitempty"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
@@ -59,9 +59,9 @@ func NewApplicationRequestWithDefaults() *ApplicationRequest {
 	this := ApplicationRequest{}
 	var buildMode string = "BUILDPACKS"
 	this.BuildMode = &buildMode
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
@@ -249,9 +249,9 @@ func (o *ApplicationRequest) SetBuildpackLanguage(v string) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetCpu() float32 {
+func (o *ApplicationRequest) GetCpu() int32 {
 	if o == nil || o.Cpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Cpu
@@ -259,7 +259,7 @@ func (o *ApplicationRequest) GetCpu() float32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetCpuOk() (*float32, bool) {
+func (o *ApplicationRequest) GetCpuOk() (*int32, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -275,15 +275,15 @@ func (o *ApplicationRequest) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given float32 and assigns it to the Cpu field.
-func (o *ApplicationRequest) SetCpu(v float32) {
+// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+func (o *ApplicationRequest) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetMemory() float32 {
+func (o *ApplicationRequest) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Memory
@@ -291,7 +291,7 @@ func (o *ApplicationRequest) GetMemory() float32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetMemoryOk() (*float32, bool) {
+func (o *ApplicationRequest) GetMemoryOk() (*int32, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -307,8 +307,8 @@ func (o *ApplicationRequest) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given float32 and assigns it to the Memory field.
-func (o *ApplicationRequest) SetMemory(v float32) {
+// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+func (o *ApplicationRequest) SetMemory(v int32) {
 	o.Memory = &v
 }
 

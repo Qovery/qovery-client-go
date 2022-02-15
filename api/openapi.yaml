@@ -8026,13 +8026,13 @@ components:
             organization cluster configuration. unit is millicores (m). 1000m = 1
             cpu
           example: 1250
-          type: number
+          type: integer
         maximum_memory:
           default: 256
           description: Maximum memory that can be allocated to the database based
             on organization cluster configuration. unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         disk_encrypted:
           description: indicates if the database disk is encrypted or not
           type: boolean
@@ -8116,7 +8116,7 @@ components:
         accessibility: PRIVATE
         name: name
         cpu: 1250
-        storage: 0.8008281904610115
+        storage: 0
         type: POSTGRESQL
         version: "10.1"
       properties:
@@ -8148,16 +8148,16 @@ components:
           default: 250
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
-          type: number
+          type: integer
         memory:
           default: 256
           description: unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         storage:
           default: 10240
           description: unit is MB
-          type: number
+          type: integer
       required:
       - mode
       - name
@@ -8424,16 +8424,16 @@ components:
           default: 250
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
-          type: number
+          type: integer
         memory:
           default: 256
           description: unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         storage:
           description: unit is GB
           example: 4
-          type: number
+          type: integer
       type: object
     DeploymentHistoryPaginatedResponseList:
       allOf:
@@ -8989,12 +8989,12 @@ components:
           default: 250
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
-          type: number
+          type: integer
         memory:
           default: 256
           description: unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         min_running_instances:
           default: 1
           description: |
@@ -9331,13 +9331,13 @@ components:
             on organization cluster configuration. unit is millicores (m). 1000m =
             1 cpu
           example: 1250
-          type: number
+          type: integer
         maximum_memory:
           default: 256
           description: Maximum memory that can be allocated to the application based
             on organization cluster configuration. unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         name:
           description: name is case insensitive
           type: string
@@ -9377,12 +9377,12 @@ components:
           default: 250
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
-          type: number
+          type: integer
         memory:
           default: 256
           description: unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         min_running_instances:
           default: 1
           description: |
@@ -10372,13 +10372,13 @@ components:
         has_access: true
         is_default: true
         version: version
-        estimated_cloud_provider_cost: 0.8008281904610115
+        estimated_cloud_provider_cost: 0
         status: READY
       properties:
         estimated_cloud_provider_cost:
           description: This is an estimation of the cost this cluster will represent
             on your cloud proider bill, based on your current configuration
-          type: number
+          type: integer
         status:
           enum:
           - READY
@@ -11136,12 +11136,12 @@ components:
         - has_access: true
           is_default: true
           version: version
-          estimated_cloud_provider_cost: 0.8008281904610115
+          estimated_cloud_provider_cost: 0
           status: READY
         - has_access: true
           is_default: true
           version: version
-          estimated_cloud_provider_cost: 0.8008281904610115
+          estimated_cloud_provider_cost: 0
           status: READY
       properties:
         results:
@@ -12158,12 +12158,12 @@ components:
           default: 250
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
-          type: number
+          type: integer
         memory:
           default: 256
           description: unit is MB. 1024 MB = 1GB
           example: 1024
-          type: number
+          type: integer
         min_running_nodes:
           default: 1
           type: integer
@@ -12382,7 +12382,7 @@ components:
         size:
           description: unit is GB
           example: 16
-          type: number
+          type: integer
         mount_point:
           example: /mnt/images
           type: string
@@ -12406,7 +12406,7 @@ components:
         size:
           description: unit is GB
           example: 16
-          type: number
+          type: integer
         mount_point:
           example: /mnt/images
           type: string

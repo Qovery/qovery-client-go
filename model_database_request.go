@@ -24,11 +24,11 @@ type DatabaseRequest struct {
 	Mode          string  `json:"mode"`
 	Accessibility *string `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *float32 `json:"cpu,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory *float32 `json:"memory,omitempty"`
+	Memory *int32 `json:"memory,omitempty"`
 	// unit is MB
-	Storage *float32 `json:"storage,omitempty"`
+	Storage *int32 `json:"storage,omitempty"`
 }
 
 // NewDatabaseRequest instantiates a new DatabaseRequest object
@@ -43,11 +43,11 @@ func NewDatabaseRequest(name string, type_ string, version string, mode string) 
 	this.Mode = mode
 	var accessibility string = "PRIVATE"
 	this.Accessibility = &accessibility
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
-	var storage float32 = 10240
+	var storage int32 = 10240
 	this.Storage = &storage
 	return &this
 }
@@ -59,11 +59,11 @@ func NewDatabaseRequestWithDefaults() *DatabaseRequest {
 	this := DatabaseRequest{}
 	var accessibility string = "PRIVATE"
 	this.Accessibility = &accessibility
-	var cpu float32 = 250
+	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory float32 = 256
+	var memory int32 = 256
 	this.Memory = &memory
-	var storage float32 = 10240
+	var storage int32 = 10240
 	this.Storage = &storage
 	return &this
 }
@@ -197,9 +197,9 @@ func (o *DatabaseRequest) SetAccessibility(v string) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *DatabaseRequest) GetCpu() float32 {
+func (o *DatabaseRequest) GetCpu() int32 {
 	if o == nil || o.Cpu == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Cpu
@@ -207,7 +207,7 @@ func (o *DatabaseRequest) GetCpu() float32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseRequest) GetCpuOk() (*float32, bool) {
+func (o *DatabaseRequest) GetCpuOk() (*int32, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -223,15 +223,15 @@ func (o *DatabaseRequest) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given float32 and assigns it to the Cpu field.
-func (o *DatabaseRequest) SetCpu(v float32) {
+// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+func (o *DatabaseRequest) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *DatabaseRequest) GetMemory() float32 {
+func (o *DatabaseRequest) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Memory
@@ -239,7 +239,7 @@ func (o *DatabaseRequest) GetMemory() float32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseRequest) GetMemoryOk() (*float32, bool) {
+func (o *DatabaseRequest) GetMemoryOk() (*int32, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -255,15 +255,15 @@ func (o *DatabaseRequest) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given float32 and assigns it to the Memory field.
-func (o *DatabaseRequest) SetMemory(v float32) {
+// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+func (o *DatabaseRequest) SetMemory(v int32) {
 	o.Memory = &v
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *DatabaseRequest) GetStorage() float32 {
+func (o *DatabaseRequest) GetStorage() int32 {
 	if o == nil || o.Storage == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Storage
@@ -271,7 +271,7 @@ func (o *DatabaseRequest) GetStorage() float32 {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseRequest) GetStorageOk() (*float32, bool) {
+func (o *DatabaseRequest) GetStorageOk() (*int32, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -287,8 +287,8 @@ func (o *DatabaseRequest) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given float32 and assigns it to the Storage field.
-func (o *DatabaseRequest) SetStorage(v float32) {
+// SetStorage gets a reference to the given int32 and assigns it to the Storage field.
+func (o *DatabaseRequest) SetStorage(v int32) {
 	o.Storage = &v
 }
 
