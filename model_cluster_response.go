@@ -36,17 +36,17 @@ type ClusterResponse struct {
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *float32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory              *float32             `json:"memory,omitempty"`
-	MinRunningNodes     *int32               `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes     *int32               `json:"max_running_nodes,omitempty"`
-	Title               *string              `json:"title,omitempty"`
-	CostPerMonthInCents NullableInt32        `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32      `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString       `json:"currency_code,omitempty"`
-	ValueType           *string              `json:"value_type,omitempty"`
-	Value               NullableString       `json:"value,omitempty"`
-	IsValueUpdatable    *bool                `json:"is_value_updatable,omitempty"`
-	AcceptedValues      []interface{} `json:"accepted_values,omitempty"`
+	Memory              *float32        `json:"memory,omitempty"`
+	MinRunningNodes     *int32          `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes     *int32          `json:"max_running_nodes,omitempty"`
+	Title               *string         `json:"title,omitempty"`
+	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
+	ValueType           *string         `json:"value_type,omitempty"`
+	Value               NullableString  `json:"value,omitempty"`
+	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
+	AcceptedValues      []interface{}   `json:"accepted_values,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
