@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // MetricMemoryDatapointResponseList struct for MetricMemoryDatapointResponseList
 type MetricMemoryDatapointResponseList struct {
-	Results []MetricMemoryDatapointResponse `json:"results,omitempty"`
+	Results *[]MetricMemoryDatapointResponse `json:"results,omitempty"`
 }
 
 // NewMetricMemoryDatapointResponseList instantiates a new MetricMemoryDatapointResponseList object
@@ -43,12 +43,12 @@ func (o *MetricMemoryDatapointResponseList) GetResults() []MetricMemoryDatapoint
 		var ret []MetricMemoryDatapointResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricMemoryDatapointResponseList) GetResultsOk() ([]MetricMemoryDatapointResponse, bool) {
+func (o *MetricMemoryDatapointResponseList) GetResultsOk() (*[]MetricMemoryDatapointResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *MetricMemoryDatapointResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []MetricMemoryDatapointResponse and assigns it to the Results field.
 func (o *MetricMemoryDatapointResponseList) SetResults(v []MetricMemoryDatapointResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o MetricMemoryDatapointResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableMetricMemoryDatapointResponseList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

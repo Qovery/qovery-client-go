@@ -35,8 +35,8 @@ func main() {
     targetApplicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DependencyApi.CreateApplicationDependency(context.Background(), applicationId, targetApplicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DependencyApi.CreateApplicationDependency(context.Background(), applicationId, targetApplicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DependencyApi.CreateApplicationDependency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DependencyApi.ListApplicationDependency(context.Background(), applicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DependencyApi.ListApplicationDependency(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DependencyApi.ListApplicationDependency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -174,8 +174,8 @@ func main() {
     targetApplicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DependencyApi.RemoveApplicationDependency(context.Background(), applicationId, targetApplicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DependencyApi.RemoveApplicationDependency(context.Background(), applicationId, targetApplicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DependencyApi.RemoveApplicationDependency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,10 +17,10 @@ import (
 
 // ClusterRegionResponse struct for ClusterRegionResponse
 type ClusterRegionResponse struct {
-	Name        string `json:"name"`
+	Name string `json:"name"`
 	CountryCode string `json:"country_code"`
-	Country     string `json:"country"`
-	City        string `json:"city"`
+	Country string `json:"country"`
+	City string `json:"city"`
 }
 
 // NewClusterRegionResponse instantiates a new ClusterRegionResponse object
@@ -57,7 +57,7 @@ func (o *ClusterRegionResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRegionResponse) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Name, true
@@ -81,7 +81,7 @@ func (o *ClusterRegionResponse) GetCountryCode() string {
 // GetCountryCodeOk returns a tuple with the CountryCode field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRegionResponse) GetCountryCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CountryCode, true
@@ -105,7 +105,7 @@ func (o *ClusterRegionResponse) GetCountry() string {
 // GetCountryOk returns a tuple with the Country field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRegionResponse) GetCountryOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Country, true
@@ -129,7 +129,7 @@ func (o *ClusterRegionResponse) GetCity() string {
 // GetCityOk returns a tuple with the City field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRegionResponse) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.City, true
@@ -192,3 +192,5 @@ func (v *NullableClusterRegionResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

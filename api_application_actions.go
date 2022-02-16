@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,24 +13,24 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // ApplicationActionsApiService ApplicationActionsApi service
 type ApplicationActionsApiService service
 
 type ApiDeployApplicationRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ctx _context.Context
+	ApiService *ApplicationActionsApiService
 	applicationId string
 	deployRequest *DeployRequest
 }
@@ -40,7 +40,7 @@ func (r ApiDeployApplicationRequest) DeployRequest(deployRequest DeployRequest) 
 	return r
 }
 
-func (r ApiDeployApplicationRequest) Execute() (*Status, *http.Response, error) {
+func (r ApiDeployApplicationRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.DeployApplicationExecute(r)
 }
 
@@ -49,39 +49,39 @@ DeployApplication Deploy application
 
 You must provide a git commit id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiDeployApplicationRequest
 */
-func (a *ApplicationActionsApiService) DeployApplication(ctx context.Context, applicationId string) ApiDeployApplicationRequest {
+func (a *ApplicationActionsApiService) DeployApplication(ctx _context.Context, applicationId string) ApiDeployApplicationRequest {
 	return ApiDeployApplicationRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployApplicationRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.DeployApplication")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -112,15 +112,15 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -129,7 +129,7 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -140,51 +140,52 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 }
 
 type ApiRestartApplicationRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ctx _context.Context
+	ApiService *ApplicationActionsApiService
 	applicationId string
 }
 
-func (r ApiRestartApplicationRequest) Execute() (*Status, *http.Response, error) {
+
+func (r ApiRestartApplicationRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.RestartApplicationExecute(r)
 }
 
 /*
 RestartApplication Restart application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiRestartApplicationRequest
 */
-func (a *ApplicationActionsApiService) RestartApplication(ctx context.Context, applicationId string) ApiRestartApplicationRequest {
+func (a *ApplicationActionsApiService) RestartApplication(ctx _context.Context, applicationId string) ApiRestartApplicationRequest {
 	return ApiRestartApplicationRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApplicationRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.RestartApplication")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/restart"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -213,15 +214,15 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -230,7 +231,7 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -241,51 +242,52 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 }
 
 type ApiStopApplicationRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ctx _context.Context
+	ApiService *ApplicationActionsApiService
 	applicationId string
 }
 
-func (r ApiStopApplicationRequest) Execute() (*Status, *http.Response, error) {
+
+func (r ApiStopApplicationRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.StopApplicationExecute(r)
 }
 
 /*
 StopApplication Stop application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiStopApplicationRequest
 */
-func (a *ApplicationActionsApiService) StopApplication(ctx context.Context, applicationId string) ApiStopApplicationRequest {
+func (a *ApplicationActionsApiService) StopApplication(ctx _context.Context, applicationId string) ApiStopApplicationRequest {
 	return ApiStopApplicationRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicationRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.StopApplication")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/stop"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -314,15 +316,15 @@ func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -331,7 +333,7 @@ func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicati
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

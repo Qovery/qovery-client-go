@@ -37,8 +37,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationCurrentInstance(context.Background(), applicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationCurrentInstance(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationCurrentInstance``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationCurrentScale(context.Background(), applicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationCurrentScale(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationCurrentScale``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationCurrentStorageDisk(context.Background(), applicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationCurrentStorageDisk(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationCurrentStorageDisk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -244,8 +244,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationMetricCpu(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationMetricCpu(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationMetricCpu``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -316,8 +316,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationMetricHealthCheck(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationMetricHealthCheck(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationMetricHealthCheck``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -386,8 +386,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationMetricMemory(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationMetricMemory(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationMetricMemory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -458,8 +458,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationMetricRestart(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationMetricRestart(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationMetricRestart``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -528,8 +528,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationMetricStorage(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationMetricsApi.GetApplicationMetricStorage(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationMetricStorage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

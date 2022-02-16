@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,16 +18,16 @@ import (
 
 // ProjectDeploymentRuleResponse struct for ProjectDeploymentRuleResponse
 type ProjectDeploymentRuleResponse struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
+	Id string `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name        string  `json:"name"`
+	Name string `json:"name"`
 	Description *string `json:"description,omitempty"`
-	Mode        string  `json:"mode"`
-	Cluster     string  `json:"cluster"`
-	AutoDeploy  *bool   `json:"auto_deploy,omitempty"`
-	AutoStop    bool    `json:"auto_stop"`
+	Mode string `json:"mode"`
+	Cluster string `json:"cluster"`
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	AutoStop bool `json:"auto_stop"`
 	// specify value only if auto_stop = false
 	Timezone *string `json:"timezone,omitempty"`
 	// specify value only if auto_stop = false
@@ -84,7 +84,7 @@ func (o *ProjectDeploymentRuleResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Id, true
@@ -108,7 +108,7 @@ func (o *ProjectDeploymentRuleResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -164,7 +164,7 @@ func (o *ProjectDeploymentRuleResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Name, true
@@ -220,7 +220,7 @@ func (o *ProjectDeploymentRuleResponse) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -244,7 +244,7 @@ func (o *ProjectDeploymentRuleResponse) GetCluster() string {
 // GetClusterOk returns a tuple with the Cluster field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetClusterOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Cluster, true
@@ -300,7 +300,7 @@ func (o *ProjectDeploymentRuleResponse) GetAutoStop() bool {
 // GetAutoStopOk returns a tuple with the AutoStop field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetAutoStopOk() (*bool, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.AutoStop, true
@@ -356,7 +356,7 @@ func (o *ProjectDeploymentRuleResponse) GetStartTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleResponse) GetStartTimeOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.StartTime.Get(), o.StartTime.IsSet()
@@ -375,7 +375,6 @@ func (o *ProjectDeploymentRuleResponse) HasStartTime() bool {
 func (o *ProjectDeploymentRuleResponse) SetStartTime(v time.Time) {
 	o.StartTime.Set(&v)
 }
-
 // SetStartTimeNil sets the value for StartTime to be an explicit nil
 func (o *ProjectDeploymentRuleResponse) SetStartTimeNil() {
 	o.StartTime.Set(nil)
@@ -399,7 +398,7 @@ func (o *ProjectDeploymentRuleResponse) GetStopTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleResponse) GetStopTimeOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.StopTime.Get(), o.StopTime.IsSet()
@@ -418,7 +417,6 @@ func (o *ProjectDeploymentRuleResponse) HasStopTime() bool {
 func (o *ProjectDeploymentRuleResponse) SetStopTime(v time.Time) {
 	o.StopTime.Set(&v)
 }
-
 // SetStopTimeNil sets the value for StopTime to be an explicit nil
 func (o *ProjectDeploymentRuleResponse) SetStopTimeNil() {
 	o.StopTime.Set(nil)
@@ -431,7 +429,7 @@ func (o *ProjectDeploymentRuleResponse) UnsetStopTime() {
 
 // GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDeploymentRuleResponse) GetWeekdays() []string {
-	if o == nil {
+	if o == nil  {
 		var ret []string
 		return ret
 	}
@@ -441,11 +439,11 @@ func (o *ProjectDeploymentRuleResponse) GetWeekdays() []string {
 // GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectDeploymentRuleResponse) GetWeekdaysOk() ([]string, bool) {
+func (o *ProjectDeploymentRuleResponse) GetWeekdaysOk() (*[]string, bool) {
 	if o == nil || o.Weekdays == nil {
 		return nil, false
 	}
-	return o.Weekdays, true
+	return &o.Weekdays, true
 }
 
 // HasWeekdays returns a boolean if a field has been set.
@@ -541,3 +539,5 @@ func (v *NullableProjectDeploymentRuleResponse) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

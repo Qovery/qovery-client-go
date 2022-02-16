@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -23,8 +23,8 @@ type ApplicationPortRequestPorts struct {
 	// The exposed port for your application. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible bool    `json:"publicly_accessible"`
-	Protocol           *string `json:"protocol,omitempty"`
+	PubliclyAccessible bool `json:"publicly_accessible"`
+	Protocol *string `json:"protocol,omitempty"`
 }
 
 // NewApplicationPortRequestPorts instantiates a new ApplicationPortRequestPorts object
@@ -95,7 +95,7 @@ func (o *ApplicationPortRequestPorts) GetInternalPort() int32 {
 // GetInternalPortOk returns a tuple with the InternalPort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortRequestPorts) GetInternalPortOk() (*int32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.InternalPort, true
@@ -151,7 +151,7 @@ func (o *ApplicationPortRequestPorts) GetPubliclyAccessible() bool {
 // GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortRequestPorts) GetPubliclyAccessibleOk() (*bool, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.PubliclyAccessible, true
@@ -249,3 +249,5 @@ func (v *NullableApplicationPortRequestPorts) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

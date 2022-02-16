@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // MetricStorageDatapointResponseList struct for MetricStorageDatapointResponseList
 type MetricStorageDatapointResponseList struct {
-	Results []MetricStorageDatapointResponse `json:"results,omitempty"`
+	Results *[]MetricStorageDatapointResponse `json:"results,omitempty"`
 }
 
 // NewMetricStorageDatapointResponseList instantiates a new MetricStorageDatapointResponseList object
@@ -43,12 +43,12 @@ func (o *MetricStorageDatapointResponseList) GetResults() []MetricStorageDatapoi
 		var ret []MetricStorageDatapointResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricStorageDatapointResponseList) GetResultsOk() ([]MetricStorageDatapointResponse, bool) {
+func (o *MetricStorageDatapointResponseList) GetResultsOk() (*[]MetricStorageDatapointResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *MetricStorageDatapointResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []MetricStorageDatapointResponse and assigns it to the Results field.
 func (o *MetricStorageDatapointResponseList) SetResults(v []MetricStorageDatapointResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o MetricStorageDatapointResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableMetricStorageDatapointResponseList) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

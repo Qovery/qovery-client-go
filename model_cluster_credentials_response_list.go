@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ClusterCredentialsResponseList struct for ClusterCredentialsResponseList
 type ClusterCredentialsResponseList struct {
-	Results []ClusterCredentialsResponse `json:"results,omitempty"`
+	Results *[]ClusterCredentialsResponse `json:"results,omitempty"`
 }
 
 // NewClusterCredentialsResponseList instantiates a new ClusterCredentialsResponseList object
@@ -43,12 +43,12 @@ func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentialsRespon
 		var ret []ClusterCredentialsResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterCredentialsResponseList) GetResultsOk() ([]ClusterCredentialsResponse, bool) {
+func (o *ClusterCredentialsResponseList) GetResultsOk() (*[]ClusterCredentialsResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ClusterCredentialsResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ClusterCredentialsResponse and assigns it to the Results field.
 func (o *ClusterCredentialsResponseList) SetResults(v []ClusterCredentialsResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o ClusterCredentialsResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableClusterCredentialsResponseList) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

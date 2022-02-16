@@ -36,8 +36,8 @@ func main() {
     targetDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDatabaseApi.AttachDatabasetoApplication(context.Background(), applicationId, targetDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationDatabaseApi.AttachDatabasetoApplication(context.Background(), applicationId, targetDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.AttachDatabasetoApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     targetLogicalDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDatabaseApi.AttachLogicalDatabasetoApplication(context.Background(), applicationId, targetLogicalDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationDatabaseApi.AttachLogicalDatabasetoApplication(context.Background(), applicationId, targetLogicalDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.AttachLogicalDatabasetoApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDatabaseApi.ListApplicationDatabase(context.Background(), applicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationDatabaseApi.ListApplicationDatabase(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.ListApplicationDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,8 +245,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDatabaseApi.ListApplicationLogicalDatabase(context.Background(), applicationId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationDatabaseApi.ListApplicationLogicalDatabase(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.ListApplicationLogicalDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -314,8 +314,8 @@ func main() {
     targetDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDatabaseApi.RemoveDatabaseFromApplication(context.Background(), applicationId, targetDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationDatabaseApi.RemoveDatabaseFromApplication(context.Background(), applicationId, targetDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.RemoveDatabaseFromApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -383,8 +383,8 @@ func main() {
     targetLogicalDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDatabaseApi.RemoveLogicalDatabaseFromApplication(context.Background(), applicationId, targetLogicalDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ApplicationDatabaseApi.RemoveLogicalDatabaseFromApplication(context.Background(), applicationId, targetLogicalDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.RemoveLogicalDatabaseFromApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -20,9 +20,9 @@ type ApplicationEditRequest struct {
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
-	Description   *string                          `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
-	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
+	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path` 
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile
 	DockerfilePath *string `json:"dockerfile_path,omitempty"`
@@ -32,17 +32,17 @@ type ApplicationEditRequest struct {
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
-	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
+	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running. 
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
-	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
-	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
+	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
+	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
+	Healthcheck *Healthcheck `json:"healthcheck,omitempty"`
+	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request. 
 	AutoPreview *bool `json:"auto_preview,omitempty"`
-	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession *bool                               `json:"sticky-session,omitempty"`
-	Storage       []ApplicationStorageResponseStorage `json:"storage,omitempty"`
-	Ports         []ApplicationPortResponsePorts      `json:"ports,omitempty"`
+	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application. 
+	StickySession *bool `json:"sticky_session,omitempty"`
+	Storage *[]ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports *[]ApplicationPortResponsePorts `json:"ports,omitempty"`
 }
 
 // NewApplicationEditRequest instantiates a new ApplicationEditRequest object
@@ -496,12 +496,12 @@ func (o *ApplicationEditRequest) GetStorage() []ApplicationStorageResponseStorag
 		var ret []ApplicationStorageResponseStorage
 		return ret
 	}
-	return o.Storage
+	return *o.Storage
 }
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetStorageOk() ([]ApplicationStorageResponseStorage, bool) {
+func (o *ApplicationEditRequest) GetStorageOk() (*[]ApplicationStorageResponseStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -519,7 +519,7 @@ func (o *ApplicationEditRequest) HasStorage() bool {
 
 // SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
 func (o *ApplicationEditRequest) SetStorage(v []ApplicationStorageResponseStorage) {
-	o.Storage = v
+	o.Storage = &v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
@@ -528,12 +528,12 @@ func (o *ApplicationEditRequest) GetPorts() []ApplicationPortResponsePorts {
 		var ret []ApplicationPortResponsePorts
 		return ret
 	}
-	return o.Ports
+	return *o.Ports
 }
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
+func (o *ApplicationEditRequest) GetPortsOk() (*[]ApplicationPortResponsePorts, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -551,7 +551,7 @@ func (o *ApplicationEditRequest) HasPorts() bool {
 
 // SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
 func (o *ApplicationEditRequest) SetPorts(v []ApplicationPortResponsePorts) {
-	o.Ports = v
+	o.Ports = &v
 }
 
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
@@ -593,7 +593,7 @@ func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	if o.StickySession != nil {
-		toSerialize["sticky-session"] = o.StickySession
+		toSerialize["sticky_session"] = o.StickySession
 	}
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
@@ -639,3 +639,5 @@ func (v *NullableApplicationEditRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

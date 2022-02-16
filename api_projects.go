@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,24 +13,24 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // ProjectsApiService ProjectsApi service
 type ProjectsApiService service
 
 type ApiCreateProjectRequest struct {
-	ctx            context.Context
-	ApiService     *ProjectsApiService
+	ctx _context.Context
+	ApiService *ProjectsApiService
 	organizationId string
 	projectRequest *ProjectRequest
 }
@@ -40,46 +40,46 @@ func (r ApiCreateProjectRequest) ProjectRequest(projectRequest ProjectRequest) A
 	return r
 }
 
-func (r ApiCreateProjectRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ApiCreateProjectRequest) Execute() (ProjectResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateProjectExecute(r)
 }
 
 /*
 CreateProject Create a project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiCreateProjectRequest
 */
-func (a *ProjectsApiService) CreateProject(ctx context.Context, organizationId string) ApiCreateProjectRequest {
+func (a *ProjectsApiService) CreateProject(ctx _context.Context, organizationId string) ApiCreateProjectRequest {
 	return ApiCreateProjectRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ProjectResponse
-func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*ProjectResponse, *http.Response, error) {
+func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (ProjectResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectResponse
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  ProjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.CreateProject")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/project"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -110,15 +110,15 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*P
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -127,7 +127,7 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*P
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -138,12 +138,13 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*P
 }
 
 type ApiGetOrganizationProjectStatsRequest struct {
-	ctx            context.Context
-	ApiService     *ProjectsApiService
+	ctx _context.Context
+	ApiService *ProjectsApiService
 	organizationId string
 }
 
-func (r ApiGetOrganizationProjectStatsRequest) Execute() (*ProjectStatsResponseList, *http.Response, error) {
+
+func (r ApiGetOrganizationProjectStatsRequest) Execute() (ProjectStatsResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetOrganizationProjectStatsExecute(r)
 }
 
@@ -152,39 +153,39 @@ GetOrganizationProjectStats List total number of services and environments for e
 
 Returns a list of project ids, and for each its total numberof services and environments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiGetOrganizationProjectStatsRequest
 */
-func (a *ProjectsApiService) GetOrganizationProjectStats(ctx context.Context, organizationId string) ApiGetOrganizationProjectStatsRequest {
+func (a *ProjectsApiService) GetOrganizationProjectStats(ctx _context.Context, organizationId string) ApiGetOrganizationProjectStatsRequest {
 	return ApiGetOrganizationProjectStatsRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ProjectStatsResponseList
-func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganizationProjectStatsRequest) (*ProjectStatsResponseList, *http.Response, error) {
+func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganizationProjectStatsRequest) (ProjectStatsResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectStatsResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  ProjectStatsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetOrganizationProjectStats")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/project/stats"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -213,15 +214,15 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -230,7 +231,7 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -241,51 +242,52 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 }
 
 type ApiListProjectRequest struct {
-	ctx            context.Context
-	ApiService     *ProjectsApiService
+	ctx _context.Context
+	ApiService *ProjectsApiService
 	organizationId string
 }
 
-func (r ApiListProjectRequest) Execute() (*ProjectResponseList, *http.Response, error) {
+
+func (r ApiListProjectRequest) Execute() (ProjectResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListProjectExecute(r)
 }
 
 /*
 ListProject List projects
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiListProjectRequest
 */
-func (a *ProjectsApiService) ListProject(ctx context.Context, organizationId string) ApiListProjectRequest {
+func (a *ProjectsApiService) ListProject(ctx _context.Context, organizationId string) ApiListProjectRequest {
 	return ApiListProjectRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ProjectResponseList
-func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (*ProjectResponseList, *http.Response, error) {
+func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (ProjectResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  ProjectResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProject")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/project"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -314,15 +316,15 @@ func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (*Proje
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -331,7 +333,7 @@ func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (*Proje
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

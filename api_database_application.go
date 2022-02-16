@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,67 +13,68 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // DatabaseApplicationApiService DatabaseApplicationApi service
 type DatabaseApplicationApiService service
 
 type ApiListDatabaseApplicationRequest struct {
-	ctx        context.Context
+	ctx _context.Context
 	ApiService *DatabaseApplicationApiService
 	databaseId string
 }
 
-func (r ApiListDatabaseApplicationRequest) Execute() (*ApplicationResponseList, *http.Response, error) {
+
+func (r ApiListDatabaseApplicationRequest) Execute() (ApplicationResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListDatabaseApplicationExecute(r)
 }
 
 /*
 ListDatabaseApplication List applications using the database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiListDatabaseApplicationRequest
 */
-func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx context.Context, databaseId string) ApiListDatabaseApplicationRequest {
+func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx _context.Context, databaseId string) ApiListDatabaseApplicationRequest {
 	return ApiListDatabaseApplicationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return ApplicationResponseList
-func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiListDatabaseApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
+func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiListDatabaseApplicationRequest) (ApplicationResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApplicationResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  ApplicationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.ListDatabaseApplication")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/application"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -102,15 +103,15 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -119,7 +120,7 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -130,53 +131,54 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 }
 
 type ApiRemoveApplicationFromDatabaseRequest struct {
-	ctx                 context.Context
-	ApiService          *DatabaseApplicationApiService
-	databaseId          string
+	ctx _context.Context
+	ApiService *DatabaseApplicationApiService
+	databaseId string
 	targetApplicationId string
 }
 
-func (r ApiRemoveApplicationFromDatabaseRequest) Execute() (*http.Response, error) {
+
+func (r ApiRemoveApplicationFromDatabaseRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveApplicationFromDatabaseExecute(r)
 }
 
 /*
-RemoveApplicationFromDatabase Remove an application from this database
+RemoveApplicationFromDatabase Remove an application from this database 
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @param targetApplicationId Target application ID
  @return ApiRemoveApplicationFromDatabaseRequest
 */
-func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx context.Context, databaseId string, targetApplicationId string) ApiRemoveApplicationFromDatabaseRequest {
+func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx _context.Context, databaseId string, targetApplicationId string) ApiRemoveApplicationFromDatabaseRequest {
 	return ApiRemoveApplicationFromDatabaseRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		databaseId:          databaseId,
+		ApiService: a,
+		ctx: ctx,
+		databaseId: databaseId,
 		targetApplicationId: targetApplicationId,
 	}
 }
 
 // Execute executes the request
-func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r ApiRemoveApplicationFromDatabaseRequest) (*http.Response, error) {
+func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r ApiRemoveApplicationFromDatabaseRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.RemoveApplicationFromDatabase")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/application/{targetApplicationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"targetApplicationId"+"}", url.PathEscape(parameterToString(r.targetApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"targetApplicationId"+"}", _neturl.PathEscape(parameterToString(r.targetApplicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -205,15 +207,15 @@ func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

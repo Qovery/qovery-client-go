@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,67 +13,68 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // DatabaseMetricsApiService DatabaseMetricsApi service
 type DatabaseMetricsApiService service
 
 type ApiGetDatabaseCurrentMetricRequest struct {
-	ctx        context.Context
+	ctx _context.Context
 	ApiService *DatabaseMetricsApiService
 	databaseId string
 }
 
-func (r ApiGetDatabaseCurrentMetricRequest) Execute() (*DatabaseCurrentMetricResponse, *http.Response, error) {
+
+func (r ApiGetDatabaseCurrentMetricRequest) Execute() (DatabaseCurrentMetricResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetDatabaseCurrentMetricExecute(r)
 }
 
 /*
-GetDatabaseCurrentMetric Get current metric consumption of the database
+GetDatabaseCurrentMetric Get current metric consumption of the database 
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseCurrentMetricRequest
 */
-func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetric(ctx context.Context, databaseId string) ApiGetDatabaseCurrentMetricRequest {
+func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetric(ctx _context.Context, databaseId string) ApiGetDatabaseCurrentMetricRequest {
 	return ApiGetDatabaseCurrentMetricRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return DatabaseCurrentMetricResponse
-func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetDatabaseCurrentMetricRequest) (*DatabaseCurrentMetricResponse, *http.Response, error) {
+func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetDatabaseCurrentMetricRequest) (DatabaseCurrentMetricResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DatabaseCurrentMetricResponse
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  DatabaseCurrentMetricResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseCurrentMetric")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/currentMetric"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -102,15 +103,15 @@ func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetData
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -119,7 +120,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetData
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -130,9 +131,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetData
 }
 
 type ApiGetDatabaseMetricCpuRequest struct {
-	ctx         context.Context
-	ApiService  *DatabaseMetricsApiService
-	databaseId  string
+	ctx _context.Context
+	ApiService *DatabaseMetricsApiService
+	databaseId string
 	lastSeconds *float32
 }
 
@@ -142,46 +143,46 @@ func (r ApiGetDatabaseMetricCpuRequest) LastSeconds(lastSeconds float32) ApiGetD
 	return r
 }
 
-func (r ApiGetDatabaseMetricCpuRequest) Execute() (*MetricCPUDatapointResponseList, *http.Response, error) {
+func (r ApiGetDatabaseMetricCpuRequest) Execute() (MetricCPUDatapointResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetDatabaseMetricCpuExecute(r)
 }
 
 /*
 GetDatabaseMetricCpu Get CPU consumption metric over time for the database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseMetricCpuRequest
 */
-func (a *DatabaseMetricsApiService) GetDatabaseMetricCpu(ctx context.Context, databaseId string) ApiGetDatabaseMetricCpuRequest {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricCpu(ctx _context.Context, databaseId string) ApiGetDatabaseMetricCpuRequest {
 	return ApiGetDatabaseMetricCpuRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return MetricCPUDatapointResponseList
-func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabaseMetricCpuRequest) (*MetricCPUDatapointResponseList, *http.Response, error) {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabaseMetricCpuRequest) (MetricCPUDatapointResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricCPUDatapointResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  MetricCPUDatapointResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricCpu")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/metric/cpu"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.lastSeconds == nil {
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
@@ -214,15 +215,15 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabase
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -231,7 +232,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabase
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -242,9 +243,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabase
 }
 
 type ApiGetDatabaseMetricHealthCheckRequest struct {
-	ctx         context.Context
-	ApiService  *DatabaseMetricsApiService
-	databaseId  string
+	ctx _context.Context
+	ApiService *DatabaseMetricsApiService
+	databaseId string
 	lastSeconds *float32
 }
 
@@ -254,7 +255,7 @@ func (r ApiGetDatabaseMetricHealthCheckRequest) LastSeconds(lastSeconds float32)
 	return r
 }
 
-func (r ApiGetDatabaseMetricHealthCheckRequest) Execute() (*MetricGenericResponseList, *http.Response, error) {
+func (r ApiGetDatabaseMetricHealthCheckRequest) Execute() (MetricGenericResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetDatabaseMetricHealthCheckExecute(r)
 }
 
@@ -263,39 +264,39 @@ GetDatabaseMetricHealthCheck Get Health Check latency  metric over time for the 
 
 The value returned corresponds to the 95th centile
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseMetricHealthCheckRequest
 */
-func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheck(ctx context.Context, databaseId string) ApiGetDatabaseMetricHealthCheckRequest {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheck(ctx _context.Context, databaseId string) ApiGetDatabaseMetricHealthCheckRequest {
 	return ApiGetDatabaseMetricHealthCheckRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return MetricGenericResponseList
-func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGetDatabaseMetricHealthCheckRequest) (*MetricGenericResponseList, *http.Response, error) {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGetDatabaseMetricHealthCheckRequest) (MetricGenericResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricGenericResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  MetricGenericResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricHealthCheck")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/metric/healthCheck"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.lastSeconds == nil {
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
@@ -328,15 +329,15 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -345,7 +346,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGet
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -356,9 +357,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGet
 }
 
 type ApiGetDatabaseMetricMemoryRequest struct {
-	ctx         context.Context
-	ApiService  *DatabaseMetricsApiService
-	databaseId  string
+	ctx _context.Context
+	ApiService *DatabaseMetricsApiService
+	databaseId string
 	lastSeconds *float32
 }
 
@@ -368,46 +369,46 @@ func (r ApiGetDatabaseMetricMemoryRequest) LastSeconds(lastSeconds float32) ApiG
 	return r
 }
 
-func (r ApiGetDatabaseMetricMemoryRequest) Execute() (*MetricMemoryDatapointResponseList, *http.Response, error) {
+func (r ApiGetDatabaseMetricMemoryRequest) Execute() (MetricMemoryDatapointResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetDatabaseMetricMemoryExecute(r)
 }
 
 /*
 GetDatabaseMetricMemory Get Memory consumption metric over time for the database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseMetricMemoryRequest
 */
-func (a *DatabaseMetricsApiService) GetDatabaseMetricMemory(ctx context.Context, databaseId string) ApiGetDatabaseMetricMemoryRequest {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricMemory(ctx _context.Context, databaseId string) ApiGetDatabaseMetricMemoryRequest {
 	return ApiGetDatabaseMetricMemoryRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return MetricMemoryDatapointResponseList
-func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatabaseMetricMemoryRequest) (*MetricMemoryDatapointResponseList, *http.Response, error) {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatabaseMetricMemoryRequest) (MetricMemoryDatapointResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricMemoryDatapointResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  MetricMemoryDatapointResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricMemory")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/metric/memory"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.lastSeconds == nil {
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
@@ -440,15 +441,15 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatab
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -457,7 +458,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatab
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -468,9 +469,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatab
 }
 
 type ApiGetDatabaseMetricRestartRequest struct {
-	ctx         context.Context
-	ApiService  *DatabaseMetricsApiService
-	databaseId  string
+	ctx _context.Context
+	ApiService *DatabaseMetricsApiService
+	databaseId string
 	lastSeconds *float32
 }
 
@@ -480,7 +481,7 @@ func (r ApiGetDatabaseMetricRestartRequest) LastSeconds(lastSeconds float32) Api
 	return r
 }
 
-func (r ApiGetDatabaseMetricRestartRequest) Execute() (*MetricRestartResponse, *http.Response, error) {
+func (r ApiGetDatabaseMetricRestartRequest) Execute() (MetricRestartResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetDatabaseMetricRestartExecute(r)
 }
 
@@ -489,39 +490,39 @@ GetDatabaseMetricRestart List database restarts
 
 Get database restart message and timestamp.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseMetricRestartRequest
 */
-func (a *DatabaseMetricsApiService) GetDatabaseMetricRestart(ctx context.Context, databaseId string) ApiGetDatabaseMetricRestartRequest {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricRestart(ctx _context.Context, databaseId string) ApiGetDatabaseMetricRestartRequest {
 	return ApiGetDatabaseMetricRestartRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return MetricRestartResponse
-func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetDatabaseMetricRestartRequest) (*MetricRestartResponse, *http.Response, error) {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetDatabaseMetricRestartRequest) (MetricRestartResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricRestartResponse
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  MetricRestartResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricRestart")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/metric/restart"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.lastSeconds == nil {
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
@@ -554,15 +555,15 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetData
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -571,7 +572,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetData
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -582,9 +583,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetData
 }
 
 type ApiGetDatabaseMetricStorageRequest struct {
-	ctx         context.Context
-	ApiService  *DatabaseMetricsApiService
-	databaseId  string
+	ctx _context.Context
+	ApiService *DatabaseMetricsApiService
+	databaseId string
 	lastSeconds *float32
 }
 
@@ -594,46 +595,46 @@ func (r ApiGetDatabaseMetricStorageRequest) LastSeconds(lastSeconds float32) Api
 	return r
 }
 
-func (r ApiGetDatabaseMetricStorageRequest) Execute() (*MetricStorageDatapointResponseList, *http.Response, error) {
+func (r ApiGetDatabaseMetricStorageRequest) Execute() (MetricStorageDatapointResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetDatabaseMetricStorageExecute(r)
 }
 
 /*
 GetDatabaseMetricStorage Get Storage consumption metric over time for the database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseMetricStorageRequest
 */
-func (a *DatabaseMetricsApiService) GetDatabaseMetricStorage(ctx context.Context, databaseId string) ApiGetDatabaseMetricStorageRequest {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricStorage(ctx _context.Context, databaseId string) ApiGetDatabaseMetricStorageRequest {
 	return ApiGetDatabaseMetricStorageRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return MetricStorageDatapointResponseList
-func (a *DatabaseMetricsApiService) GetDatabaseMetricStorageExecute(r ApiGetDatabaseMetricStorageRequest) (*MetricStorageDatapointResponseList, *http.Response, error) {
+func (a *DatabaseMetricsApiService) GetDatabaseMetricStorageExecute(r ApiGetDatabaseMetricStorageRequest) (MetricStorageDatapointResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricStorageDatapointResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  MetricStorageDatapointResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricStorage")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/metric/storage"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.lastSeconds == nil {
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
@@ -666,15 +667,15 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricStorageExecute(r ApiGetData
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -683,7 +684,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricStorageExecute(r ApiGetData
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

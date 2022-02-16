@@ -38,8 +38,8 @@ func main() {
     secretRequest := *openapiclient.NewSecretRequest("Key_example", "Value_example") // SecretRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretApi.CreateProjectSecret(context.Background(), projectId).SecretRequest(secretRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectSecretApi.CreateProjectSecret(context.Background(), projectId).SecretRequest(secretRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.CreateProjectSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -111,8 +111,8 @@ func main() {
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretApi.CreateProjectSecretAlias(context.Background(), projectId, secretId).Key(key).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectSecretApi.CreateProjectSecretAlias(context.Background(), projectId, secretId).Key(key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.CreateProjectSecretAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretApi.CreateProjectSecretOverride(context.Background(), projectId, secretId).Value(value).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectSecretApi.CreateProjectSecretOverride(context.Background(), projectId, secretId).Value(value).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.CreateProjectSecretOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,8 +261,8 @@ func main() {
     secretEditRequest := *openapiclient.NewSecretEditRequest() // SecretEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretApi.EditProjectSecret(context.Background(), projectId, secretId).SecretEditRequest(secretEditRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectSecretApi.EditProjectSecret(context.Background(), projectId, secretId).SecretEditRequest(secretEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.EditProjectSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -332,8 +332,8 @@ func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretApi.ListProjectSecrets(context.Background(), projectId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectSecretApi.ListProjectSecrets(context.Background(), projectId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.ListProjectSecrets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -403,8 +403,8 @@ func main() {
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretApi.ProjectProjectIdSecretSecretIdDelete(context.Background(), projectId, secretId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.ProjectSecretApi.ProjectProjectIdSecretSecretIdDelete(context.Background(), projectId, secretId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.ProjectProjectIdSecretSecretIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // MetricStorageResponseList struct for MetricStorageResponseList
 type MetricStorageResponseList struct {
-	Results []MetricStorageResponse `json:"results,omitempty"`
+	Results *[]MetricStorageResponse `json:"results,omitempty"`
 }
 
 // NewMetricStorageResponseList instantiates a new MetricStorageResponseList object
@@ -43,12 +43,12 @@ func (o *MetricStorageResponseList) GetResults() []MetricStorageResponse {
 		var ret []MetricStorageResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricStorageResponseList) GetResultsOk() ([]MetricStorageResponse, bool) {
+func (o *MetricStorageResponseList) GetResultsOk() (*[]MetricStorageResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *MetricStorageResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []MetricStorageResponse and assigns it to the Results field.
 func (o *MetricStorageResponseList) SetResults(v []MetricStorageResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o MetricStorageResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableMetricStorageResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

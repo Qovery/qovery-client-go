@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,26 +13,26 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // ApplicationDeploymentHistoryApiService ApplicationDeploymentHistoryApi service
 type ApplicationDeploymentHistoryApiService service
 
 type ApiListApplicationDeploymentHistoryRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationDeploymentHistoryApiService
+	ctx _context.Context
+	ApiService *ApplicationDeploymentHistoryApiService
 	applicationId string
-	startId       *string
+	startId *string
 }
 
 // Starting point after which to return results
@@ -41,7 +41,7 @@ func (r ApiListApplicationDeploymentHistoryRequest) StartId(startId string) ApiL
 	return r
 }
 
-func (r ApiListApplicationDeploymentHistoryRequest) Execute() (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
+func (r ApiListApplicationDeploymentHistoryRequest) Execute() (DeploymentHistoryPaginatedResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListApplicationDeploymentHistoryExecute(r)
 }
 
@@ -50,39 +50,39 @@ ListApplicationDeploymentHistory List application deploys
 
 By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter. You can also filter by status (FAILED or SUCCESS), and git_commit_id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiListApplicationDeploymentHistoryRequest
 */
-func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistory(ctx context.Context, applicationId string) ApiListApplicationDeploymentHistoryRequest {
+func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistory(ctx _context.Context, applicationId string) ApiListApplicationDeploymentHistoryRequest {
 	return ApiListApplicationDeploymentHistoryRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
 
 // Execute executes the request
 //  @return DeploymentHistoryPaginatedResponseList
-func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistoryExecute(r ApiListApplicationDeploymentHistoryRequest) (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
+func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistoryExecute(r ApiListApplicationDeploymentHistoryRequest) (DeploymentHistoryPaginatedResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeploymentHistoryPaginatedResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  DeploymentHistoryPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentHistoryApiService.ListApplicationDeploymentHistory")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentHistory"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	if r.startId != nil {
 		localVarQueryParams.Add("startId", parameterToString(*r.startId, ""))
@@ -114,15 +114,15 @@ func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -131,7 +131,7 @@ func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistor
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

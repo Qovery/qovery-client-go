@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // SecretResponseList struct for SecretResponseList
 type SecretResponseList struct {
-	Results []SecretResponse `json:"results,omitempty"`
+	Results *[]SecretResponse `json:"results,omitempty"`
 }
 
 // NewSecretResponseList instantiates a new SecretResponseList object
@@ -43,12 +43,12 @@ func (o *SecretResponseList) GetResults() []SecretResponse {
 		var ret []SecretResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SecretResponseList) GetResultsOk() ([]SecretResponse, bool) {
+func (o *SecretResponseList) GetResultsOk() (*[]SecretResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *SecretResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []SecretResponse and assigns it to the Results field.
 func (o *SecretResponseList) SetResults(v []SecretResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o SecretResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableSecretResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -35,8 +35,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesApi.GetBitbucketRepositories(context.Background()).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GitRepositoriesApi.GetBitbucketRepositories(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetBitbucketRepositories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -95,8 +95,8 @@ func main() {
     name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesApi.GetBitbucketRepositoryBranches(context.Background()).Name(name).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GitRepositoriesApi.GetBitbucketRepositoryBranches(context.Background()).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetBitbucketRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -158,8 +158,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesApi.GetGitProviderAccount(context.Background()).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GitRepositoriesApi.GetGitProviderAccount(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetGitProviderAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,8 +217,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesApi.GetGithubRepositories(context.Background()).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GitRepositoriesApi.GetGithubRepositories(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetGithubRepositories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -277,8 +277,8 @@ func main() {
     name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesApi.GetGithubRepositoryBranches(context.Background()).Name(name).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GitRepositoriesApi.GetGithubRepositoryBranches(context.Background()).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetGithubRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -340,8 +340,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesApi.GetGitlabRepositories(context.Background()).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GitRepositoriesApi.GetGitlabRepositories(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetGitlabRepositories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -400,8 +400,8 @@ func main() {
     name := "name_example" // string | The name of the repository to retrieve the branches (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesApi.GetGitlabRepositoryBranches(context.Background()).Name(name).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.GitRepositoriesApi.GetGitlabRepositoryBranches(context.Background()).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesApi.GetGitlabRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

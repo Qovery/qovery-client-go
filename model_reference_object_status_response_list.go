@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ReferenceObjectStatusResponseList struct for ReferenceObjectStatusResponseList
 type ReferenceObjectStatusResponseList struct {
-	Results []ReferenceObjectStatusResponse `json:"results,omitempty"`
+	Results *[]ReferenceObjectStatusResponse `json:"results,omitempty"`
 }
 
 // NewReferenceObjectStatusResponseList instantiates a new ReferenceObjectStatusResponseList object
@@ -43,12 +43,12 @@ func (o *ReferenceObjectStatusResponseList) GetResults() []ReferenceObjectStatus
 		var ret []ReferenceObjectStatusResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReferenceObjectStatusResponseList) GetResultsOk() ([]ReferenceObjectStatusResponse, bool) {
+func (o *ReferenceObjectStatusResponseList) GetResultsOk() (*[]ReferenceObjectStatusResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ReferenceObjectStatusResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ReferenceObjectStatusResponse and assigns it to the Results field.
 func (o *ReferenceObjectStatusResponseList) SetResults(v []ReferenceObjectStatusResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o ReferenceObjectStatusResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableReferenceObjectStatusResponseList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -9053,13 +9053,13 @@ components:
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
         dockerfile_path: dockerfile_path
-        sticky-session: false
         buildpack_language: GO
         healthcheck:
           protocol: TCP
           value: value
         name: name
         auto_preview: true
+        sticky_session: false
       properties:
         name:
           description: name is case insensitive
@@ -9127,7 +9127,7 @@ components:
             Specify if the environment preview option is activated or not for this application.
             If activated, a preview environment will be automatically cloned at each pull request.
           type: boolean
-        sticky-session:
+        sticky_session:
           default: false
           description: |
             Specify if the sticky session option (also called persistant session) is activated or not for this application.
@@ -9674,9 +9674,9 @@ components:
       type: object
     ApplicationNetworkResponse:
       example:
-        sticky-session: false
+        sticky_session: false
       properties:
-        sticky-session:
+        sticky_session:
           default: false
           description: "Specify if the sticky session option (also called persistant\
             \ session) is activated or not for this application.\nIf activated, user\
@@ -9686,9 +9686,9 @@ components:
       type: object
     ApplicationNetworkRequest:
       example:
-        sticky-session: false
+        sticky_session: false
       properties:
-        sticky-session:
+        sticky_session:
           default: false
           description: "Specify if the sticky session option (also called persistant\
             \ session) is activated or not for this application.\nIf activated, user\

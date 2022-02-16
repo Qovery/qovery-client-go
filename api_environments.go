@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,25 +13,25 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // EnvironmentsApiService EnvironmentsApi service
 type EnvironmentsApiService service
 
 type ApiCreateEnvironmentRequest struct {
-	ctx                context.Context
-	ApiService         *EnvironmentsApiService
-	projectId          string
+	ctx _context.Context
+	ApiService *EnvironmentsApiService
+	projectId string
 	environmentRequest *EnvironmentRequest
 }
 
@@ -40,46 +40,46 @@ func (r ApiCreateEnvironmentRequest) EnvironmentRequest(environmentRequest Envir
 	return r
 }
 
-func (r ApiCreateEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentRequest) Execute() (EnvironmentResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateEnvironmentExecute(r)
 }
 
 /*
 CreateEnvironment Create an environment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @return ApiCreateEnvironmentRequest
 */
-func (a *EnvironmentsApiService) CreateEnvironment(ctx context.Context, projectId string) ApiCreateEnvironmentRequest {
+func (a *EnvironmentsApiService) CreateEnvironment(ctx _context.Context, projectId string) ApiCreateEnvironmentRequest {
 	return ApiCreateEnvironmentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentResponse
-func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
+func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironmentRequest) (EnvironmentResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.CreateEnvironment")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environment"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -110,15 +110,15 @@ func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironment
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -127,7 +127,7 @@ func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironment
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -138,12 +138,13 @@ func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironment
 }
 
 type ApiGetProjectEnvironmentServiceNumberRequest struct {
-	ctx        context.Context
+	ctx _context.Context
 	ApiService *EnvironmentsApiService
-	projectId  string
+	projectId string
 }
 
-func (r ApiGetProjectEnvironmentServiceNumberRequest) Execute() (*EnvironmentStatsResponseList, *http.Response, error) {
+
+func (r ApiGetProjectEnvironmentServiceNumberRequest) Execute() (EnvironmentStatsResponseList, *_nethttp.Response, error) {
 	return r.ApiService.GetProjectEnvironmentServiceNumberExecute(r)
 }
 
@@ -152,39 +153,39 @@ GetProjectEnvironmentServiceNumber List total number of services for each enviro
 
 Returns a list of environment ids, and for each its total numberof services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @return ApiGetProjectEnvironmentServiceNumberRequest
 */
-func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumber(ctx context.Context, projectId string) ApiGetProjectEnvironmentServiceNumberRequest {
+func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumber(ctx _context.Context, projectId string) ApiGetProjectEnvironmentServiceNumberRequest {
 	return ApiGetProjectEnvironmentServiceNumberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentStatsResponseList
-func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r ApiGetProjectEnvironmentServiceNumberRequest) (*EnvironmentStatsResponseList, *http.Response, error) {
+func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r ApiGetProjectEnvironmentServiceNumberRequest) (EnvironmentStatsResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentStatsResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentStatsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.GetProjectEnvironmentServiceNumber")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environment/stats"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -213,15 +214,15 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -230,7 +231,7 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r Api
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -241,12 +242,13 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r Api
 }
 
 type ApiGetProjectEnvironmentStatusRequest struct {
-	ctx        context.Context
+	ctx _context.Context
 	ApiService *EnvironmentsApiService
-	projectId  string
+	projectId string
 }
 
-func (r ApiGetProjectEnvironmentStatusRequest) Execute() (*Status, *http.Response, error) {
+
+func (r ApiGetProjectEnvironmentStatusRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.GetProjectEnvironmentStatusExecute(r)
 }
 
@@ -255,39 +257,39 @@ GetProjectEnvironmentStatus List environments statuses
 
 Returns a list of environments with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @return ApiGetProjectEnvironmentStatusRequest
 */
-func (a *EnvironmentsApiService) GetProjectEnvironmentStatus(ctx context.Context, projectId string) ApiGetProjectEnvironmentStatusRequest {
+func (a *EnvironmentsApiService) GetProjectEnvironmentStatus(ctx _context.Context, projectId string) ApiGetProjectEnvironmentStatusRequest {
 	return ApiGetProjectEnvironmentStatusRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 //  @return Status
-func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProjectEnvironmentStatusRequest) (*Status, *http.Response, error) {
+func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProjectEnvironmentStatusRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.GetProjectEnvironmentStatus")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environment/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -316,15 +318,15 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProj
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -333,7 +335,7 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProj
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -344,51 +346,52 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProj
 }
 
 type ApiListEnvironmentRequest struct {
-	ctx        context.Context
+	ctx _context.Context
 	ApiService *EnvironmentsApiService
-	projectId  string
+	projectId string
 }
 
-func (r ApiListEnvironmentRequest) Execute() (*EnvironmentResponseList, *http.Response, error) {
+
+func (r ApiListEnvironmentRequest) Execute() (EnvironmentResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListEnvironmentExecute(r)
 }
 
 /*
 ListEnvironment List environments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @return ApiListEnvironmentRequest
 */
-func (a *EnvironmentsApiService) ListEnvironment(ctx context.Context, projectId string) ApiListEnvironmentRequest {
+func (a *EnvironmentsApiService) ListEnvironment(ctx _context.Context, projectId string) ApiListEnvironmentRequest {
 	return ApiListEnvironmentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentResponseList
-func (a *EnvironmentsApiService) ListEnvironmentExecute(r ApiListEnvironmentRequest) (*EnvironmentResponseList, *http.Response, error) {
+func (a *EnvironmentsApiService) ListEnvironmentExecute(r ApiListEnvironmentRequest) (EnvironmentResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.ListEnvironment")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/environment"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", _neturl.PathEscape(parameterToString(r.projectId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -417,15 +420,15 @@ func (a *EnvironmentsApiService) ListEnvironmentExecute(r ApiListEnvironmentRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -434,7 +437,7 @@ func (a *EnvironmentsApiService) ListEnvironmentExecute(r ApiListEnvironmentRequ
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // GitRepositoryResponseList struct for GitRepositoryResponseList
 type GitRepositoryResponseList struct {
-	Results []GitRepositoryResponse `json:"results,omitempty"`
+	Results *[]GitRepositoryResponse `json:"results,omitempty"`
 }
 
 // NewGitRepositoryResponseList instantiates a new GitRepositoryResponseList object
@@ -43,12 +43,12 @@ func (o *GitRepositoryResponseList) GetResults() []GitRepositoryResponse {
 		var ret []GitRepositoryResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GitRepositoryResponseList) GetResultsOk() ([]GitRepositoryResponse, bool) {
+func (o *GitRepositoryResponseList) GetResultsOk() (*[]GitRepositoryResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *GitRepositoryResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []GitRepositoryResponse and assigns it to the Results field.
 func (o *GitRepositoryResponseList) SetResults(v []GitRepositoryResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o GitRepositoryResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableGitRepositoryResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,7 +19,7 @@ import (
 // BillingPeriod struct for BillingPeriod
 type BillingPeriod struct {
 	BillingStartedOn *time.Time `json:"billing_started_on,omitempty"`
-	BillingEndedOn   *time.Time `json:"billing_ended_on,omitempty"`
+	BillingEndedOn *time.Time `json:"billing_ended_on,omitempty"`
 }
 
 // NewBillingPeriod instantiates a new BillingPeriod object
@@ -149,3 +149,5 @@ func (v *NullableBillingPeriod) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

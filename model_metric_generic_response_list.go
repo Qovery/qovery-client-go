@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // MetricGenericResponseList struct for MetricGenericResponseList
 type MetricGenericResponseList struct {
-	Results []MetricGenericResponse `json:"results,omitempty"`
+	Results *[]MetricGenericResponse `json:"results,omitempty"`
 }
 
 // NewMetricGenericResponseList instantiates a new MetricGenericResponseList object
@@ -43,12 +43,12 @@ func (o *MetricGenericResponseList) GetResults() []MetricGenericResponse {
 		var ret []MetricGenericResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricGenericResponseList) GetResultsOk() ([]MetricGenericResponse, bool) {
+func (o *MetricGenericResponseList) GetResultsOk() (*[]MetricGenericResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *MetricGenericResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []MetricGenericResponse and assigns it to the Results field.
 func (o *MetricGenericResponseList) SetResults(v []MetricGenericResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o MetricGenericResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableMetricGenericResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -38,8 +38,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMainCallsApi.DeleteDatabase(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMainCallsApi.DeleteDatabase(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.DeleteDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,8 +107,8 @@ func main() {
     databaseEditRequest := *openapiclient.NewDatabaseEditRequest() // DatabaseEditRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMainCallsApi.EditDatabase(context.Background(), databaseId).DatabaseEditRequest(databaseEditRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMainCallsApi.EditDatabase(context.Background(), databaseId).DatabaseEditRequest(databaseEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.EditDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -177,8 +177,8 @@ func main() {
     credentialsRequest := *openapiclient.NewCredentialsRequest("Login_example", "Password_example") // CredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMainCallsApi.EditDatabaseCredentials(context.Background(), databaseId).CredentialsRequest(credentialsRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMainCallsApi.EditDatabaseCredentials(context.Background(), databaseId).CredentialsRequest(credentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.EditDatabaseCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMainCallsApi.GetDatabase(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMainCallsApi.GetDatabase(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.GetDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -314,8 +314,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMainCallsApi.GetDatabaseMasterCredentials(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMainCallsApi.GetDatabaseMasterCredentials(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.GetDatabaseMasterCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -382,8 +382,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMainCallsApi.GetDatabaseStatus(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMainCallsApi.GetDatabaseStatus(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.GetDatabaseStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -450,8 +450,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMainCallsApi.ListDatabaseVersion(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMainCallsApi.ListDatabaseVersion(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.ListDatabaseVersion``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

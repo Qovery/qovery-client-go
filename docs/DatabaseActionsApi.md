@@ -32,8 +32,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsApi.DeployDatabase(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseActionsApi.DeployDatabase(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsApi.DeployDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,8 +100,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsApi.RestartDatabase(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseActionsApi.RestartDatabase(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsApi.RestartDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -168,8 +168,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsApi.StopDatabase(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseActionsApi.StopDatabase(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsApi.StopDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

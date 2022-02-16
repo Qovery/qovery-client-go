@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,25 +13,25 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // ApplicationEnvironmentVariableApiService ApplicationEnvironmentVariableApi service
 type ApplicationEnvironmentVariableApiService service
 
 type ApiCreateApplicationEnvironmentVariableRequest struct {
-	ctx                        context.Context
-	ApiService                 *ApplicationEnvironmentVariableApiService
-	applicationId              string
+	ctx _context.Context
+	ApiService *ApplicationEnvironmentVariableApiService
+	applicationId string
 	environmentVariableRequest *EnvironmentVariableRequest
 }
 
@@ -40,7 +40,7 @@ func (r ApiCreateApplicationEnvironmentVariableRequest) EnvironmentVariableReque
 	return r
 }
 
-func (r ApiCreateApplicationEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiCreateApplicationEnvironmentVariableRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateApplicationEnvironmentVariableExecute(r)
 }
 
@@ -50,39 +50,39 @@ CreateApplicationEnvironmentVariable Add an environment variable to the applicat
 - Add an environment variable to the application.
 
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiCreateApplicationEnvironmentVariableRequest
 */
-func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariable(ctx context.Context, applicationId string) ApiCreateApplicationEnvironmentVariableRequest {
+func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariable(ctx _context.Context, applicationId string) ApiCreateApplicationEnvironmentVariableRequest {
 	return ApiCreateApplicationEnvironmentVariableRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableExecute(r ApiCreateApplicationEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableExecute(r ApiCreateApplicationEnvironmentVariableRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.CreateApplicationEnvironmentVariable")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -113,15 +113,15 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -130,7 +130,7 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -141,11 +141,11 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 }
 
 type ApiCreateApplicationEnvironmentVariableAliasRequest struct {
-	ctx                   context.Context
-	ApiService            *ApplicationEnvironmentVariableApiService
-	applicationId         string
+	ctx _context.Context
+	ApiService *ApplicationEnvironmentVariableApiService
+	applicationId string
 	environmentVariableId string
-	key                   *Key
+	key *Key
 }
 
 func (r ApiCreateApplicationEnvironmentVariableAliasRequest) Key(key Key) ApiCreateApplicationEnvironmentVariableAliasRequest {
@@ -153,7 +153,7 @@ func (r ApiCreateApplicationEnvironmentVariableAliasRequest) Key(key Key) ApiCre
 	return r
 }
 
-func (r ApiCreateApplicationEnvironmentVariableAliasRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiCreateApplicationEnvironmentVariableAliasRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateApplicationEnvironmentVariableAliasExecute(r)
 }
 
@@ -168,42 +168,42 @@ CreateApplicationEnvironmentVariableAlias Create an environment variable alias a
 - Only 1 alias level is allowed. You can't create an alias on an alias
 
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @param environmentVariableId Environment Variable ID
  @return ApiCreateApplicationEnvironmentVariableAliasRequest
 */
-func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableAlias(ctx context.Context, applicationId string, environmentVariableId string) ApiCreateApplicationEnvironmentVariableAliasRequest {
+func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableAlias(ctx _context.Context, applicationId string, environmentVariableId string) ApiCreateApplicationEnvironmentVariableAliasRequest {
 	return ApiCreateApplicationEnvironmentVariableAliasRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		applicationId:         applicationId,
+		ApiService: a,
+		ctx: ctx,
+		applicationId: applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableAliasExecute(r ApiCreateApplicationEnvironmentVariableAliasRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableAliasExecute(r ApiCreateApplicationEnvironmentVariableAliasRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.CreateApplicationEnvironmentVariableAlias")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/environmentVariable/{environmentVariableId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -234,15 +234,15 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -251,7 +251,7 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -262,11 +262,11 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 }
 
 type ApiCreateApplicationEnvironmentVariableOverrideRequest struct {
-	ctx                   context.Context
-	ApiService            *ApplicationEnvironmentVariableApiService
-	applicationId         string
+	ctx _context.Context
+	ApiService *ApplicationEnvironmentVariableApiService
+	applicationId string
 	environmentVariableId string
-	value                 *Value
+	value *Value
 }
 
 func (r ApiCreateApplicationEnvironmentVariableOverrideRequest) Value(value Value) ApiCreateApplicationEnvironmentVariableOverrideRequest {
@@ -274,7 +274,7 @@ func (r ApiCreateApplicationEnvironmentVariableOverrideRequest) Value(value Valu
 	return r
 }
 
-func (r ApiCreateApplicationEnvironmentVariableOverrideRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiCreateApplicationEnvironmentVariableOverrideRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateApplicationEnvironmentVariableOverrideExecute(r)
 }
 
@@ -288,42 +288,42 @@ CreateApplicationEnvironmentVariableOverride Create an environment variable over
 - Information regarding the overridden_variable will be exposed in the "overridden_variable" field of the newly created variable
 
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @param environmentVariableId Environment Variable ID
  @return ApiCreateApplicationEnvironmentVariableOverrideRequest
 */
-func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableOverride(ctx context.Context, applicationId string, environmentVariableId string) ApiCreateApplicationEnvironmentVariableOverrideRequest {
+func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableOverride(ctx _context.Context, applicationId string, environmentVariableId string) ApiCreateApplicationEnvironmentVariableOverrideRequest {
 	return ApiCreateApplicationEnvironmentVariableOverrideRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		applicationId:         applicationId,
+		ApiService: a,
+		ctx: ctx,
+		applicationId: applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableOverrideExecute(r ApiCreateApplicationEnvironmentVariableOverrideRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableOverrideExecute(r ApiCreateApplicationEnvironmentVariableOverrideRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.CreateApplicationEnvironmentVariableOverride")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/environmentVariable/{environmentVariableId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -354,15 +354,15 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -371,7 +371,7 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -382,13 +382,14 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 }
 
 type ApiDeleteApplicationEnvironmentVariableRequest struct {
-	ctx                   context.Context
-	ApiService            *ApplicationEnvironmentVariableApiService
-	applicationId         string
+	ctx _context.Context
+	ApiService *ApplicationEnvironmentVariableApiService
+	applicationId string
 	environmentVariableId string
 }
 
-func (r ApiDeleteApplicationEnvironmentVariableRequest) Execute() (*http.Response, error) {
+
+func (r ApiDeleteApplicationEnvironmentVariableRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteApplicationEnvironmentVariableExecute(r)
 }
 
@@ -400,40 +401,40 @@ DeleteApplicationEnvironmentVariable Delete an environment variable from an appl
 - If you delete a variable having override or alias, the associated override/alias will be deleted as well
 
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @param environmentVariableId Environment Variable ID
  @return ApiDeleteApplicationEnvironmentVariableRequest
 */
-func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentVariable(ctx context.Context, applicationId string, environmentVariableId string) ApiDeleteApplicationEnvironmentVariableRequest {
+func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentVariable(ctx _context.Context, applicationId string, environmentVariableId string) ApiDeleteApplicationEnvironmentVariableRequest {
 	return ApiDeleteApplicationEnvironmentVariableRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		applicationId:         applicationId,
+		ApiService: a,
+		ctx: ctx,
+		applicationId: applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
 
 // Execute executes the request
-func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentVariableExecute(r ApiDeleteApplicationEnvironmentVariableRequest) (*http.Response, error) {
+func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentVariableExecute(r ApiDeleteApplicationEnvironmentVariableRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.DeleteApplicationEnvironmentVariable")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -462,15 +463,15 @@ func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentV
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -481,10 +482,10 @@ func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentV
 }
 
 type ApiEditApplicationEnvironmentVariableRequest struct {
-	ctx                            context.Context
-	ApiService                     *ApplicationEnvironmentVariableApiService
-	applicationId                  string
-	environmentVariableId          string
+	ctx _context.Context
+	ApiService *ApplicationEnvironmentVariableApiService
+	applicationId string
+	environmentVariableId string
 	environmentVariableEditRequest *EnvironmentVariableEditRequest
 }
 
@@ -493,7 +494,7 @@ func (r ApiEditApplicationEnvironmentVariableRequest) EnvironmentVariableEditReq
 	return r
 }
 
-func (r ApiEditApplicationEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiEditApplicationEnvironmentVariableRequest) Execute() (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	return r.ApiService.EditApplicationEnvironmentVariableExecute(r)
 }
 
@@ -506,42 +507,42 @@ EditApplicationEnvironmentVariable Edit an environment variable belonging to the
 - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @param environmentVariableId Environment Variable ID
  @return ApiEditApplicationEnvironmentVariableRequest
 */
-func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVariable(ctx context.Context, applicationId string, environmentVariableId string) ApiEditApplicationEnvironmentVariableRequest {
+func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVariable(ctx _context.Context, applicationId string, environmentVariableId string) ApiEditApplicationEnvironmentVariableRequest {
 	return ApiEditApplicationEnvironmentVariableRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		applicationId:         applicationId,
+		ApiService: a,
+		ctx: ctx,
+		applicationId: applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentVariableResponse
-func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVariableExecute(r ApiEditApplicationEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVariableExecute(r ApiEditApplicationEnvironmentVariableRequest) (EnvironmentVariableResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.EditApplicationEnvironmentVariable")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", _neturl.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 	if r.environmentVariableEditRequest == nil {
 		return localVarReturnValue, nil, reportError("environmentVariableEditRequest is required and must be specified")
 	}
@@ -575,15 +576,15 @@ func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVar
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -592,7 +593,7 @@ func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVar
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -603,9 +604,9 @@ func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVar
 }
 
 type ApiImportEnvironmentVariableRequest struct {
-	ctx                   context.Context
-	ApiService            *ApplicationEnvironmentVariableApiService
-	applicationId         string
+	ctx _context.Context
+	ApiService *ApplicationEnvironmentVariableApiService
+	applicationId string
 	variableImportRequest *VariableImportRequest
 }
 
@@ -614,7 +615,7 @@ func (r ApiImportEnvironmentVariableRequest) VariableImportRequest(variableImpor
 	return r
 }
 
-func (r ApiImportEnvironmentVariableRequest) Execute() (*VariableImportResponse, *http.Response, error) {
+func (r ApiImportEnvironmentVariableRequest) Execute() (VariableImportResponse, *_nethttp.Response, error) {
 	return r.ApiService.ImportEnvironmentVariableExecute(r)
 }
 
@@ -623,39 +624,39 @@ ImportEnvironmentVariable Import variables
 
 Import environment variables in a defined scope, with a defined visibility.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiImportEnvironmentVariableRequest
 */
-func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariable(ctx context.Context, applicationId string) ApiImportEnvironmentVariableRequest {
+func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariable(ctx _context.Context, applicationId string) ApiImportEnvironmentVariableRequest {
 	return ApiImportEnvironmentVariableRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
 
 // Execute executes the request
 //  @return VariableImportResponse
-func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariableExecute(r ApiImportEnvironmentVariableRequest) (*VariableImportResponse, *http.Response, error) {
+func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariableExecute(r ApiImportEnvironmentVariableRequest) (VariableImportResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *VariableImportResponse
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  VariableImportResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.ImportEnvironmentVariable")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/environmentVariable/import"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -686,15 +687,15 @@ func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariableExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -703,7 +704,7 @@ func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariableExec
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -714,51 +715,52 @@ func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariableExec
 }
 
 type ApiListApplicationEnvironmentVariableRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationEnvironmentVariableApiService
+	ctx _context.Context
+	ApiService *ApplicationEnvironmentVariableApiService
 	applicationId string
 }
 
-func (r ApiListApplicationEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponseList, *http.Response, error) {
+
+func (r ApiListApplicationEnvironmentVariableRequest) Execute() (EnvironmentVariableResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListApplicationEnvironmentVariableExecute(r)
 }
 
 /*
 ListApplicationEnvironmentVariable List environment variables
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
  @return ApiListApplicationEnvironmentVariableRequest
 */
-func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVariable(ctx context.Context, applicationId string) ApiListApplicationEnvironmentVariableRequest {
+func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVariable(ctx _context.Context, applicationId string) ApiListApplicationEnvironmentVariableRequest {
 	return ApiListApplicationEnvironmentVariableRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentVariableResponseList
-func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVariableExecute(r ApiListApplicationEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
+func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVariableExecute(r ApiListApplicationEnvironmentVariableRequest) (EnvironmentVariableResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentVariableResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.ListApplicationEnvironmentVariable")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", _neturl.PathEscape(parameterToString(r.applicationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -787,15 +789,15 @@ func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVar
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -804,7 +806,7 @@ func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVar
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

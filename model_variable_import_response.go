@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // VariableImportResponse struct for VariableImportResponse
 type VariableImportResponse struct {
-	TotalVariablesToImport      float32                                             `json:"total_variables_to_import"`
+	TotalVariablesToImport float32 `json:"total_variables_to_import"`
 	SuccessfulImportedVariables []VariableImportResponseSuccessfulImportedVariables `json:"successful_imported_variables"`
 }
 
@@ -53,7 +53,7 @@ func (o *VariableImportResponse) GetTotalVariablesToImport() float32 {
 // GetTotalVariablesToImportOk returns a tuple with the TotalVariablesToImport field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportResponse) GetTotalVariablesToImportOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.TotalVariablesToImport, true
@@ -76,11 +76,11 @@ func (o *VariableImportResponse) GetSuccessfulImportedVariables() []VariableImpo
 
 // GetSuccessfulImportedVariablesOk returns a tuple with the SuccessfulImportedVariables field value
 // and a boolean to check if the value has been set.
-func (o *VariableImportResponse) GetSuccessfulImportedVariablesOk() ([]VariableImportResponseSuccessfulImportedVariables, bool) {
-	if o == nil {
+func (o *VariableImportResponse) GetSuccessfulImportedVariablesOk() (*[]VariableImportResponseSuccessfulImportedVariables, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.SuccessfulImportedVariables, true
+	return &o.SuccessfulImportedVariables, true
 }
 
 // SetSuccessfulImportedVariables sets field value
@@ -134,3 +134,5 @@ func (v *NullableVariableImportResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ApplicationStorageRequest struct for ApplicationStorageRequest
 type ApplicationStorageRequest struct {
-	Storage []ApplicationStorageRequestStorage `json:"storage,omitempty"`
+	Storage *[]ApplicationStorageRequestStorage `json:"storage,omitempty"`
 }
 
 // NewApplicationStorageRequest instantiates a new ApplicationStorageRequest object
@@ -43,12 +43,12 @@ func (o *ApplicationStorageRequest) GetStorage() []ApplicationStorageRequestStor
 		var ret []ApplicationStorageRequestStorage
 		return ret
 	}
-	return o.Storage
+	return *o.Storage
 }
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationStorageRequest) GetStorageOk() ([]ApplicationStorageRequestStorage, bool) {
+func (o *ApplicationStorageRequest) GetStorageOk() (*[]ApplicationStorageRequestStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ApplicationStorageRequest) HasStorage() bool {
 
 // SetStorage gets a reference to the given []ApplicationStorageRequestStorage and assigns it to the Storage field.
 func (o *ApplicationStorageRequest) SetStorage(v []ApplicationStorageRequestStorage) {
-	o.Storage = v
+	o.Storage = &v
 }
 
 func (o ApplicationStorageRequest) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableApplicationStorageRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

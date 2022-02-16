@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // EnvironmentVariableResponseList struct for EnvironmentVariableResponseList
 type EnvironmentVariableResponseList struct {
-	Results []EnvironmentVariableResponse `json:"results,omitempty"`
+	Results *[]EnvironmentVariableResponse `json:"results,omitempty"`
 }
 
 // NewEnvironmentVariableResponseList instantiates a new EnvironmentVariableResponseList object
@@ -43,12 +43,12 @@ func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariableResp
 		var ret []EnvironmentVariableResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableResponseList) GetResultsOk() ([]EnvironmentVariableResponse, bool) {
+func (o *EnvironmentVariableResponseList) GetResultsOk() (*[]EnvironmentVariableResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *EnvironmentVariableResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []EnvironmentVariableResponse and assigns it to the Results field.
 func (o *EnvironmentVariableResponseList) SetResults(v []EnvironmentVariableResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o EnvironmentVariableResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableEnvironmentVariableResponseList) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,28 +13,29 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // EnvironmentLogsApiService EnvironmentLogsApi service
 type EnvironmentLogsApiService service
 
 type ApiListEnvironmentLogRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentLogsApiService
+	ctx _context.Context
+	ApiService *EnvironmentLogsApiService
 	environmentId string
 }
 
-func (r ApiListEnvironmentLogRequest) Execute() (*EnvironmentLogResponseList, *http.Response, error) {
+
+func (r ApiListEnvironmentLogRequest) Execute() (EnvironmentLogResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListEnvironmentLogExecute(r)
 }
 
@@ -43,39 +44,39 @@ ListEnvironmentLog List environment deployment logs
 
 This returns the last 1000 environment deployment logs.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiListEnvironmentLogRequest
 */
-func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx context.Context, environmentId string) ApiListEnvironmentLogRequest {
+func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx _context.Context, environmentId string) ApiListEnvironmentLogRequest {
 	return ApiListEnvironmentLogRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentLogResponseList
-func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironmentLogRequest) (*EnvironmentLogResponseList, *http.Response, error) {
+func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironmentLogRequest) (EnvironmentLogResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentLogResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentLogResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsApiService.ListEnvironmentLog")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/log"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -104,15 +105,15 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironme
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -121,7 +122,7 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironme
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

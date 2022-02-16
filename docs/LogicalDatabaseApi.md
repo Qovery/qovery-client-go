@@ -38,8 +38,8 @@ func main() {
     logicalDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Logical Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LogicalDatabaseApi.DeleteLogicalDatabase(context.Background(), logicalDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.LogicalDatabaseApi.DeleteLogicalDatabase(context.Background(), logicalDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.DeleteLogicalDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,8 +105,8 @@ func main() {
     logicalDatabaseRequest := *openapiclient.NewLogicalDatabaseRequest("Name_example") // LogicalDatabaseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LogicalDatabaseApi.EditLogicalDatabase(context.Background(), logicalDatabaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.LogicalDatabaseApi.EditLogicalDatabase(context.Background(), logicalDatabaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.EditLogicalDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -175,8 +175,8 @@ func main() {
     credentialsRequest := *openapiclient.NewCredentialsRequest("Login_example", "Password_example") // CredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LogicalDatabaseApi.EditLogicalDatabaseCredentials(context.Background(), logicalDatabaseId).CredentialsRequest(credentialsRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.LogicalDatabaseApi.EditLogicalDatabaseCredentials(context.Background(), logicalDatabaseId).CredentialsRequest(credentialsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.EditLogicalDatabaseCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
     logicalDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Logical Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LogicalDatabaseApi.GetLogicalDatabase(context.Background(), logicalDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.LogicalDatabaseApi.GetLogicalDatabase(context.Background(), logicalDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.GetLogicalDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -314,8 +314,8 @@ func main() {
     logicalDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Logical Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LogicalDatabaseApi.GetLogicalDatabaseCredentials(context.Background(), logicalDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.LogicalDatabaseApi.GetLogicalDatabaseCredentials(context.Background(), logicalDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.GetLogicalDatabaseCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -382,8 +382,8 @@ func main() {
     logicalDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Logical Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LogicalDatabaseApi.ListLogicalDatabaseApplication(context.Background(), logicalDatabaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.LogicalDatabaseApi.ListLogicalDatabaseApplication(context.Background(), logicalDatabaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.ListLogicalDatabaseApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -452,8 +452,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LogicalDatabaseApi.ListLogicalDatabaseDatabase(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.LogicalDatabaseApi.ListLogicalDatabaseDatabase(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.ListLogicalDatabaseDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

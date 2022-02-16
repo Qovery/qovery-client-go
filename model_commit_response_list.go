@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // CommitResponseList struct for CommitResponseList
 type CommitResponseList struct {
-	Results []CommitResponse `json:"results,omitempty"`
+	Results *[]CommitResponse `json:"results,omitempty"`
 }
 
 // NewCommitResponseList instantiates a new CommitResponseList object
@@ -43,12 +43,12 @@ func (o *CommitResponseList) GetResults() []CommitResponse {
 		var ret []CommitResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommitResponseList) GetResultsOk() ([]CommitResponse, bool) {
+func (o *CommitResponseList) GetResultsOk() (*[]CommitResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CommitResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []CommitResponse and assigns it to the Results field.
 func (o *CommitResponseList) SetResults(v []CommitResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o CommitResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableCommitResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

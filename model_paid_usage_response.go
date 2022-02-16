@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,13 +18,13 @@ import (
 
 // PaidUsageResponse struct for PaidUsageResponse
 type PaidUsageResponse struct {
-	MaxDeploymentsPerMonth *int32     `json:"max_deployments_per_month,omitempty"`
-	ConsumedDeployments    *int32     `json:"consumed_deployments,omitempty"`
-	MonthlyPlanCost        *float32   `json:"monthly_plan_cost,omitempty"`
-	MonthlyPlanCostInCents *int32     `json:"monthly_plan_cost_in_cents,omitempty"`
-	RemainingDeployments   *int32     `json:"remaining_deployments,omitempty"`
-	DeploymentsExceeded    *bool      `json:"deployments_exceeded,omitempty"`
-	RenewalAt              *time.Time `json:"renewal_at,omitempty"`
+	MaxDeploymentsPerMonth *int32 `json:"max_deployments_per_month,omitempty"`
+	ConsumedDeployments *int32 `json:"consumed_deployments,omitempty"`
+	MonthlyPlanCost *float32 `json:"monthly_plan_cost,omitempty"`
+	MonthlyPlanCostInCents *int32 `json:"monthly_plan_cost_in_cents,omitempty"`
+	RemainingDeployments *int32 `json:"remaining_deployments,omitempty"`
+	DeploymentsExceeded *bool `json:"deployments_exceeded,omitempty"`
+	RenewalAt *time.Time `json:"renewal_at,omitempty"`
 }
 
 // NewPaidUsageResponse instantiates a new PaidUsageResponse object
@@ -329,3 +329,5 @@ func (v *NullablePaidUsageResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

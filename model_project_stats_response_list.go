@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ProjectStatsResponseList struct for ProjectStatsResponseList
 type ProjectStatsResponseList struct {
-	Results []ProjectStatsResponse `json:"results,omitempty"`
+	Results *[]ProjectStatsResponse `json:"results,omitempty"`
 }
 
 // NewProjectStatsResponseList instantiates a new ProjectStatsResponseList object
@@ -43,12 +43,12 @@ func (o *ProjectStatsResponseList) GetResults() []ProjectStatsResponse {
 		var ret []ProjectStatsResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectStatsResponseList) GetResultsOk() ([]ProjectStatsResponse, bool) {
+func (o *ProjectStatsResponseList) GetResultsOk() (*[]ProjectStatsResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ProjectStatsResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ProjectStatsResponse and assigns it to the Results field.
 func (o *ProjectStatsResponseList) SetResults(v []ProjectStatsResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 func (o ProjectStatsResponseList) MarshalJSON() ([]byte, error) {
@@ -112,3 +112,5 @@ func (v *NullableProjectStatsResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

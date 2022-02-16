@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -50,11 +50,11 @@ func (o *ClusterRoutingTableRequest) GetRoutes() []ClusterRoutingTableRequestRou
 
 // GetRoutesOk returns a tuple with the Routes field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRoutingTableRequest) GetRoutesOk() ([]ClusterRoutingTableRequestRoutes, bool) {
-	if o == nil {
+func (o *ClusterRoutingTableRequest) GetRoutesOk() (*[]ClusterRoutingTableRequestRoutes, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Routes, true
+	return &o.Routes, true
 }
 
 // SetRoutes sets field value
@@ -105,3 +105,5 @@ func (v *NullableClusterRoutingTableRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

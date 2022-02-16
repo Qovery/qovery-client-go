@@ -35,8 +35,8 @@ func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMetricsApi.GetDatabaseCurrentMetric(context.Background(), databaseId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseCurrentMetric(context.Background(), databaseId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseCurrentMetric``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMetricsApi.GetDatabaseMetricCpu(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricCpu(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricCpu``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -176,8 +176,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMetricsApi.GetDatabaseMetricHealthCheck(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricHealthCheck(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricHealthCheck``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -246,8 +246,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMetricsApi.GetDatabaseMetricMemory(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricMemory(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricMemory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -318,8 +318,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMetricsApi.GetDatabaseMetricRestart(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricRestart(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricRestart``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -388,8 +388,8 @@ func main() {
     lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseMetricsApi.GetDatabaseMetricStorage(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.DatabaseMetricsApi.GetDatabaseMetricStorage(context.Background(), databaseId).LastSeconds(lastSeconds).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricStorage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

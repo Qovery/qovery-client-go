@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,18 +18,18 @@ import (
 // BillingInfoResponse struct for BillingInfoResponse
 type BillingInfoResponse struct {
 	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
+	LastName string `json:"last_name"`
 	// email used for billing, and to receive all invoices by email
-	Email   string `json:"email"`
+	Email string `json:"email"`
 	Address string `json:"address"`
-	City    string `json:"city"`
-	Zip     string `json:"zip"`
+	City string `json:"city"`
+	Zip string `json:"zip"`
 	// only for US
 	State *string `json:"state,omitempty"`
 	// ISO code of the country
 	CountryCode string `json:"country_code"`
 	// name of the company to bill
-	Company   *string `json:"company,omitempty"`
+	Company *string `json:"company,omitempty"`
 	VatNumber *string `json:"vat_number,omitempty"`
 }
 
@@ -70,7 +70,7 @@ func (o *BillingInfoResponse) GetFirstName() string {
 // GetFirstNameOk returns a tuple with the FirstName field value
 // and a boolean to check if the value has been set.
 func (o *BillingInfoResponse) GetFirstNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.FirstName, true
@@ -94,7 +94,7 @@ func (o *BillingInfoResponse) GetLastName() string {
 // GetLastNameOk returns a tuple with the LastName field value
 // and a boolean to check if the value has been set.
 func (o *BillingInfoResponse) GetLastNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.LastName, true
@@ -118,7 +118,7 @@ func (o *BillingInfoResponse) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *BillingInfoResponse) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Email, true
@@ -142,7 +142,7 @@ func (o *BillingInfoResponse) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *BillingInfoResponse) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Address, true
@@ -166,7 +166,7 @@ func (o *BillingInfoResponse) GetCity() string {
 // GetCityOk returns a tuple with the City field value
 // and a boolean to check if the value has been set.
 func (o *BillingInfoResponse) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.City, true
@@ -190,7 +190,7 @@ func (o *BillingInfoResponse) GetZip() string {
 // GetZipOk returns a tuple with the Zip field value
 // and a boolean to check if the value has been set.
 func (o *BillingInfoResponse) GetZipOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Zip, true
@@ -246,7 +246,7 @@ func (o *BillingInfoResponse) GetCountryCode() string {
 // GetCountryCodeOk returns a tuple with the CountryCode field value
 // and a boolean to check if the value has been set.
 func (o *BillingInfoResponse) GetCountryCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CountryCode, true
@@ -391,3 +391,5 @@ func (v *NullableBillingInfoResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

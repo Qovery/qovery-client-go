@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,11 +17,11 @@ import (
 
 // CostRangeResponse struct for CostRangeResponse
 type CostRangeResponse struct {
-	MinCostInCents *int32   `json:"min_cost_in_cents,omitempty"`
-	MinCost        *float32 `json:"min_cost,omitempty"`
-	MaxCostInCents *int32   `json:"max_cost_in_cents,omitempty"`
-	MaxCost        *float32 `json:"max_cost,omitempty"`
-	CurrencyCode   string   `json:"currency_code"`
+	MinCostInCents *int32 `json:"min_cost_in_cents,omitempty"`
+	MinCost *float32 `json:"min_cost,omitempty"`
+	MaxCostInCents *int32 `json:"max_cost_in_cents,omitempty"`
+	MaxCost *float32 `json:"max_cost,omitempty"`
+	CurrencyCode string `json:"currency_code"`
 }
 
 // NewCostRangeResponse instantiates a new CostRangeResponse object
@@ -183,7 +183,7 @@ func (o *CostRangeResponse) GetCurrencyCode() string {
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value
 // and a boolean to check if the value has been set.
 func (o *CostRangeResponse) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CurrencyCode, true
@@ -249,3 +249,5 @@ func (v *NullableCostRangeResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

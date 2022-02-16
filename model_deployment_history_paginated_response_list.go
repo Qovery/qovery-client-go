@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryPaginatedResponseList struct for DeploymentHistoryPaginatedResponseList
 type DeploymentHistoryPaginatedResponseList struct {
-	Results  []DeploymentHistoryResponse `json:"results,omitempty"`
-	Page     float32                     `json:"page"`
-	PageSize float32                     `json:"page_size"`
+	Results *[]DeploymentHistoryResponse `json:"results,omitempty"`
+	Page float32 `json:"page"`
+	PageSize float32 `json:"page_size"`
 }
 
 // NewDeploymentHistoryPaginatedResponseList instantiates a new DeploymentHistoryPaginatedResponseList object
@@ -47,12 +47,12 @@ func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistor
 		var ret []DeploymentHistoryResponse
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
+func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() (*[]DeploymentHistoryResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -70,7 +70,7 @@ func (o *DeploymentHistoryPaginatedResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
 func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetPage returns the Page field value
@@ -86,7 +86,7 @@ func (o *DeploymentHistoryPaginatedResponseList) GetPage() float32 {
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryPaginatedResponseList) GetPageOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Page, true
@@ -110,7 +110,7 @@ func (o *DeploymentHistoryPaginatedResponseList) GetPageSize() float32 {
 // GetPageSizeOk returns a tuple with the PageSize field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryPaginatedResponseList) GetPageSizeOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.PageSize, true
@@ -170,3 +170,5 @@ func (v *NullableDeploymentHistoryPaginatedResponseList) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -38,8 +38,8 @@ func main() {
     secretRequest := *openapiclient.NewSecretRequest("Key_example", "Value_example") // SecretRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentSecretApi.CreateEnvironmentSecret(context.Background(), environmentId).SecretRequest(secretRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.EnvironmentSecretApi.CreateEnvironmentSecret(context.Background(), environmentId).SecretRequest(secretRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.CreateEnvironmentSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -111,8 +111,8 @@ func main() {
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentSecretApi.CreateEnvironmentSecretAlias(context.Background(), environmentId, secretId).Key(key).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.EnvironmentSecretApi.CreateEnvironmentSecretAlias(context.Background(), environmentId, secretId).Key(key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.CreateEnvironmentSecretAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,8 +186,8 @@ func main() {
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentSecretApi.CreateEnvironmentSecretOverride(context.Background(), environmentId, secretId).Value(value).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.EnvironmentSecretApi.CreateEnvironmentSecretOverride(context.Background(), environmentId, secretId).Value(value).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.CreateEnvironmentSecretOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,8 +261,8 @@ func main() {
     secretEditRequest := *openapiclient.NewSecretEditRequest() // SecretEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentSecretApi.EditEnvironmentSecret(context.Background(), environmentId, secretId).SecretEditRequest(secretEditRequest).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.EnvironmentSecretApi.EditEnvironmentSecret(context.Background(), environmentId, secretId).SecretEditRequest(secretEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.EditEnvironmentSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -335,8 +335,8 @@ func main() {
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentSecretApi.EnvironmentEnvironmentIdSecretSecretIdDelete(context.Background(), environmentId, secretId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.EnvironmentSecretApi.EnvironmentEnvironmentIdSecretSecretIdDelete(context.Background(), environmentId, secretId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.EnvironmentEnvironmentIdSecretSecretIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -403,8 +403,8 @@ func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
     configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentSecretApi.ListEnvironmentSecrets(context.Background(), environmentId).Execute()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.EnvironmentSecretApi.ListEnvironmentSecrets(context.Background(), environmentId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.ListEnvironmentSecrets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

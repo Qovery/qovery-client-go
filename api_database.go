@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,25 +13,25 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // DatabaseApiService DatabaseApi service
 type DatabaseApiService service
 
 type ApiCreateLogicalDatabaseOnDatabaseRequest struct {
-	ctx                    context.Context
-	ApiService             *DatabaseApiService
-	databaseId             string
+	ctx _context.Context
+	ApiService *DatabaseApiService
+	databaseId string
 	logicalDatabaseRequest *LogicalDatabaseRequest
 }
 
@@ -40,7 +40,7 @@ func (r ApiCreateLogicalDatabaseOnDatabaseRequest) LogicalDatabaseRequest(logica
 	return r
 }
 
-func (r ApiCreateLogicalDatabaseOnDatabaseRequest) Execute() (*LogicalDatabaseResponse, *http.Response, error) {
+func (r ApiCreateLogicalDatabaseOnDatabaseRequest) Execute() (LogicalDatabaseResponse, *_nethttp.Response, error) {
 	return r.ApiService.CreateLogicalDatabaseOnDatabaseExecute(r)
 }
 
@@ -49,39 +49,39 @@ CreateLogicalDatabaseOnDatabase Create a logical database on the database
 
 If you don't specify credentials, Qovery will autogenerate them.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiCreateLogicalDatabaseOnDatabaseRequest
 */
-func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabase(ctx context.Context, databaseId string) ApiCreateLogicalDatabaseOnDatabaseRequest {
+func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabase(ctx _context.Context, databaseId string) ApiCreateLogicalDatabaseOnDatabaseRequest {
 	return ApiCreateLogicalDatabaseOnDatabaseRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return LogicalDatabaseResponse
-func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateLogicalDatabaseOnDatabaseRequest) (*LogicalDatabaseResponse, *http.Response, error) {
+func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateLogicalDatabaseOnDatabaseRequest) (LogicalDatabaseResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LogicalDatabaseResponse
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  LogicalDatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApiService.CreateLogicalDatabaseOnDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/logicalDatabase"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -112,15 +112,15 @@ func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -129,7 +129,7 @@ func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateL
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

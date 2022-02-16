@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,28 +13,29 @@ package qovery
 
 import (
 	"bytes"
-	"context"
-	"io/ioutil"
-	"net/http"
-	"net/url"
+	_context "context"
+	_ioutil "io/ioutil"
+	_nethttp "net/http"
+	_neturl "net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ context.Context
+	_ _context.Context
 )
 
 // EnvironmentMainCallsApiService EnvironmentMainCallsApi service
 type EnvironmentMainCallsApiService service
 
 type ApiDeleteEnvironmentRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ctx _context.Context
+	ApiService *EnvironmentMainCallsApiService
 	environmentId string
 }
 
-func (r ApiDeleteEnvironmentRequest) Execute() (*http.Response, error) {
+
+func (r ApiDeleteEnvironmentRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteEnvironmentExecute(r)
 }
 
@@ -43,37 +44,37 @@ DeleteEnvironment Delete an environment
 
 To delete an environment you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiDeleteEnvironmentRequest
 */
-func (a *EnvironmentMainCallsApiService) DeleteEnvironment(ctx context.Context, environmentId string) ApiDeleteEnvironmentRequest {
+func (a *EnvironmentMainCallsApiService) DeleteEnvironment(ctx _context.Context, environmentId string) ApiDeleteEnvironmentRequest {
 	return ApiDeleteEnvironmentRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
 
 // Execute executes the request
-func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
+func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.DeleteEnvironment")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -102,15 +103,15 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -121,9 +122,9 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnv
 }
 
 type ApiEditEnvironmentRequest struct {
-	ctx                    context.Context
-	ApiService             *EnvironmentMainCallsApiService
-	environmentId          string
+	ctx _context.Context
+	ApiService *EnvironmentMainCallsApiService
+	environmentId string
 	environmentEditRequest *EnvironmentEditRequest
 }
 
@@ -132,7 +133,7 @@ func (r ApiEditEnvironmentRequest) EnvironmentEditRequest(environmentEditRequest
 	return r
 }
 
-func (r ApiEditEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
+func (r ApiEditEnvironmentRequest) Execute() (EnvironmentResponse, *_nethttp.Response, error) {
 	return r.ApiService.EditEnvironmentExecute(r)
 }
 
@@ -141,39 +142,39 @@ EditEnvironment Edit an environment
 
 To edit an environment you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiEditEnvironmentRequest
 */
-func (a *EnvironmentMainCallsApiService) EditEnvironment(ctx context.Context, environmentId string) ApiEditEnvironmentRequest {
+func (a *EnvironmentMainCallsApiService) EditEnvironment(ctx _context.Context, environmentId string) ApiEditEnvironmentRequest {
 	return ApiEditEnvironmentRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentResponse
-func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
+func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (EnvironmentResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.EditEnvironment")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -204,15 +205,15 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -221,7 +222,7 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -232,51 +233,52 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 }
 
 type ApiGetEnvironmentRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ctx _context.Context
+	ApiService *EnvironmentMainCallsApiService
 	environmentId string
 }
 
-func (r ApiGetEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
+
+func (r ApiGetEnvironmentRequest) Execute() (EnvironmentResponse, *_nethttp.Response, error) {
 	return r.ApiService.GetEnvironmentExecute(r)
 }
 
 /*
 GetEnvironment Get environment by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiGetEnvironmentRequest
 */
-func (a *EnvironmentMainCallsApiService) GetEnvironment(ctx context.Context, environmentId string) ApiGetEnvironmentRequest {
+func (a *EnvironmentMainCallsApiService) GetEnvironment(ctx _context.Context, environmentId string) ApiGetEnvironmentRequest {
 	return ApiGetEnvironmentRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
 
 // Execute executes the request
 //  @return EnvironmentResponse
-func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
+func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (EnvironmentResponse, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  EnvironmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironment")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -305,15 +307,15 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -322,7 +324,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -333,51 +335,52 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 }
 
 type ApiGetEnvironmentStatusRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ctx _context.Context
+	ApiService *EnvironmentMainCallsApiService
 	environmentId string
 }
 
-func (r ApiGetEnvironmentStatusRequest) Execute() (*Status, *http.Response, error) {
+
+func (r ApiGetEnvironmentStatusRequest) Execute() (Status, *_nethttp.Response, error) {
 	return r.ApiService.GetEnvironmentStatusExecute(r)
 }
 
 /*
 GetEnvironmentStatus Get environment status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiGetEnvironmentStatusRequest
 */
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatus(ctx context.Context, environmentId string) ApiGetEnvironmentStatusRequest {
+func (a *EnvironmentMainCallsApiService) GetEnvironmentStatus(ctx _context.Context, environmentId string) ApiGetEnvironmentStatusRequest {
 	return ApiGetEnvironmentStatusRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
 
 // Execute executes the request
 //  @return Status
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (*Status, *http.Response, error) {
+func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (Status, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironmentStatus")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -406,15 +409,15 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -423,7 +426,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -434,12 +437,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 }
 
 type ApiListEnvironmentLinksRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ctx _context.Context
+	ApiService *EnvironmentMainCallsApiService
 	environmentId string
 }
 
-func (r ApiListEnvironmentLinksRequest) Execute() (*LinkResponseList, *http.Response, error) {
+
+func (r ApiListEnvironmentLinksRequest) Execute() (LinkResponseList, *_nethttp.Response, error) {
 	return r.ApiService.ListEnvironmentLinksExecute(r)
 }
 
@@ -448,39 +452,39 @@ ListEnvironmentLinks List all URLs of the environment
 
 This will return all the custom domains and Qovery autogenerated domain for all the applications within this environment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
  @return ApiListEnvironmentLinksRequest
 */
-func (a *EnvironmentMainCallsApiService) ListEnvironmentLinks(ctx context.Context, environmentId string) ApiListEnvironmentLinksRequest {
+func (a *EnvironmentMainCallsApiService) ListEnvironmentLinks(ctx _context.Context, environmentId string) ApiListEnvironmentLinksRequest {
 	return ApiListEnvironmentLinksRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
 
 // Execute executes the request
 //  @return LinkResponseList
-func (a *EnvironmentMainCallsApiService) ListEnvironmentLinksExecute(r ApiListEnvironmentLinksRequest) (*LinkResponseList, *http.Response, error) {
+func (a *EnvironmentMainCallsApiService) ListEnvironmentLinksExecute(r ApiListEnvironmentLinksRequest) (LinkResponseList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LinkResponseList
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  LinkResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.ListEnvironmentLinks")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/link"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", _neturl.PathEscape(parameterToString(r.environmentId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -509,15 +513,15 @@ func (a *EnvironmentMainCallsApiService) ListEnvironmentLinksExecute(r ApiListEn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -526,7 +530,7 @@ func (a *EnvironmentMainCallsApiService) ListEnvironmentLinksExecute(r ApiListEn
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

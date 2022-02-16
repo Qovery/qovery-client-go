@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,10 +18,10 @@ import (
 
 // DeploymentHistoryDatabaseResponse struct for DeploymentHistoryDatabaseResponse
 type DeploymentHistoryDatabaseResponse struct {
-	Name      *string    `json:"name,omitempty"`
-	Status    *string    `json:"status,omitempty"`
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
+	Name *string `json:"name,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Id string `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
@@ -121,7 +121,7 @@ func (o *DeploymentHistoryDatabaseResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryDatabaseResponse) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Id, true
@@ -145,7 +145,7 @@ func (o *DeploymentHistoryDatabaseResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryDatabaseResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -243,3 +243,5 @@ func (v *NullableDeploymentHistoryDatabaseResponse) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

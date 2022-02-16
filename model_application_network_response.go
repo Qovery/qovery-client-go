@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,8 +17,8 @@ import (
 
 // ApplicationNetworkResponse struct for ApplicationNetworkResponse
 type ApplicationNetworkResponse struct {
-	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession *bool `json:"sticky-session,omitempty"`
+	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  
+	StickySession *bool `json:"sticky_session,omitempty"`
 }
 
 // NewApplicationNetworkResponse instantiates a new ApplicationNetworkResponse object
@@ -77,7 +77,7 @@ func (o *ApplicationNetworkResponse) SetStickySession(v bool) {
 func (o ApplicationNetworkResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.StickySession != nil {
-		toSerialize["sticky-session"] = o.StickySession
+		toSerialize["sticky_session"] = o.StickySession
 	}
 	return json.Marshal(toSerialize)
 }
@@ -117,3 +117,5 @@ func (v *NullableApplicationNetworkResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

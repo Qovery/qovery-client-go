@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,18 +19,18 @@ import (
 // OrganizationResponse struct for OrganizationResponse
 type OrganizationResponse struct {
 	// uuid of the user owning the organization
-	Owner     *string    `json:"owner,omitempty"`
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
+	Owner *string `json:"owner,omitempty"`
+	Id string `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name        string         `json:"name"`
-	Description *string        `json:"description,omitempty"`
-	Plan        string         `json:"plan"`
-	WebsiteUrl  NullableString `json:"website_url,omitempty"`
-	Repository  NullableString `json:"repository,omitempty"`
-	LogoUrl     NullableString `json:"logo_url,omitempty"`
-	IconUrl     NullableString `json:"icon_url,omitempty"`
+	Name string `json:"name"`
+	Description *string `json:"description,omitempty"`
+	Plan string `json:"plan"`
+	WebsiteUrl NullableString `json:"website_url,omitempty"`
+	Repository NullableString `json:"repository,omitempty"`
+	LogoUrl NullableString `json:"logo_url,omitempty"`
+	IconUrl NullableString `json:"icon_url,omitempty"`
 }
 
 // NewOrganizationResponse instantiates a new OrganizationResponse object
@@ -99,7 +99,7 @@ func (o *OrganizationResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Id, true
@@ -123,7 +123,7 @@ func (o *OrganizationResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -179,7 +179,7 @@ func (o *OrganizationResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Name, true
@@ -235,7 +235,7 @@ func (o *OrganizationResponse) GetPlan() string {
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationResponse) GetPlanOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Plan, true
@@ -259,7 +259,7 @@ func (o *OrganizationResponse) GetWebsiteUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetWebsiteUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.WebsiteUrl.Get(), o.WebsiteUrl.IsSet()
@@ -278,7 +278,6 @@ func (o *OrganizationResponse) HasWebsiteUrl() bool {
 func (o *OrganizationResponse) SetWebsiteUrl(v string) {
 	o.WebsiteUrl.Set(&v)
 }
-
 // SetWebsiteUrlNil sets the value for WebsiteUrl to be an explicit nil
 func (o *OrganizationResponse) SetWebsiteUrlNil() {
 	o.WebsiteUrl.Set(nil)
@@ -302,7 +301,7 @@ func (o *OrganizationResponse) GetRepository() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetRepositoryOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Repository.Get(), o.Repository.IsSet()
@@ -321,7 +320,6 @@ func (o *OrganizationResponse) HasRepository() bool {
 func (o *OrganizationResponse) SetRepository(v string) {
 	o.Repository.Set(&v)
 }
-
 // SetRepositoryNil sets the value for Repository to be an explicit nil
 func (o *OrganizationResponse) SetRepositoryNil() {
 	o.Repository.Set(nil)
@@ -345,7 +343,7 @@ func (o *OrganizationResponse) GetLogoUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetLogoUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
@@ -364,7 +362,6 @@ func (o *OrganizationResponse) HasLogoUrl() bool {
 func (o *OrganizationResponse) SetLogoUrl(v string) {
 	o.LogoUrl.Set(&v)
 }
-
 // SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
 func (o *OrganizationResponse) SetLogoUrlNil() {
 	o.LogoUrl.Set(nil)
@@ -388,7 +385,7 @@ func (o *OrganizationResponse) GetIconUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationResponse) GetIconUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.IconUrl.Get(), o.IconUrl.IsSet()
@@ -407,7 +404,6 @@ func (o *OrganizationResponse) HasIconUrl() bool {
 func (o *OrganizationResponse) SetIconUrl(v string) {
 	o.IconUrl.Set(&v)
 }
-
 // SetIconUrlNil sets the value for IconUrl to be an explicit nil
 func (o *OrganizationResponse) SetIconUrlNil() {
 	o.IconUrl.Set(nil)
@@ -491,3 +487,5 @@ func (v *NullableOrganizationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
