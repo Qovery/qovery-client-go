@@ -7,7 +7,7 @@ info:
   description: |
     - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider.
     - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
-  title: '[BETA] Qovery API'
+  title: "[BETA] Qovery API"
   version: 1.0.0
   x-logo:
     url: https://raw.githubusercontent.com/Qovery/public-resources/master/qovery_new_logo_white.svg
@@ -550,11 +550,11 @@ paths:
       - Billing
   /organization/{organizationId}/billingStatus:
     get:
-      description: |
-        This endpoint returns a "is_valid" boolean field reflecting the billing status of the organization:
-        - If true, the organization billing is valid
-        - For Startup organization, it returns false if there is at least 1 invoice unpaid since 1 week
-        - For Community organization, it returns false if there is no credit left
+      description: "This endpoint returns a \"is_valid\" boolean field reflecting\
+        \ the billing status of the organization:\n- If true, the organization billing\
+        \ is valid\n- For Startup organization, it returns false if there is at least\
+        \ 1 invoice unpaid since 1 week\n- For Community organization, it returns\
+        \ false if there is no credit left\n"
       operationId: getOrganizationBillingStatus
       parameters:
       - description: Organization ID
@@ -878,8 +878,8 @@ paths:
       - Projects
   /organization/{organizationId}/project/stats:
     get:
-      description: Returns a list of project ids, and for each its total numberof
-        services and environments
+      description: "Returns a list of project ids, and for each its total numberof\
+        \ services and environments"
       operationId: getOrganizationProjectStats
       parameters:
       - description: Organization ID
@@ -2374,10 +2374,10 @@ paths:
       tags:
       - Project Environment Variable
     post:
-      description: |
-        - Add an environment variable to the project.
-          - If the environment variable key already exists, then it will be replaced by the new one.
-          - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
+      description: "- Add an environment variable to the project.\n  - If the environment\
+        \ variable key already exists, then it will be replaced by the new one.\n\
+        \  - If the environment variable value points toward an existing environment\
+        \ variable key, it will be considered as an alias.\n"
       operationId: createProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -2414,10 +2414,10 @@ paths:
       - Project Environment Variable
   /project/{projectId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: |
-        - To delete an environment variable you must have the project user permission
-        - You can't delete a BUILT_IN variable
-        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete an environment variable you must have the project\
+        \ user permission\n- You can't delete a BUILT_IN variable\n- If you delete\
+        \ a variable having override or alias, the associated override/alias will\
+        \ be deleted as well\n"
       operationId: deleteProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -2451,11 +2451,10 @@ paths:
       tags:
       - Project Environment Variable
     put:
-      description: |
-        - You can't edit a BUILT_IN variable
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -2555,13 +2554,14 @@ paths:
       - Project Environment Variable
   /project/{projectId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at project level on an existing environment variable having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new environment variable at project level with the same value as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at project level on an existing environment\
+        \ variable having higher scope, in order to customize its key.\n- You only\
+        \ have to specify a key in the request body\n- The system will create a new\
+        \ environment variable at project level with the same value as the one corresponding\
+        \ to the variable id in the path\n- The response body will contain the newly\
+        \ created variable\n- Information regarding the aliased_variable will be exposed\
+        \ in the \"aliased_variable\" field of the newly created variable\n- Only\
+        \ 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createProjectEnvironmentVariableAlias
       parameters:
       - description: Project ID
@@ -2637,10 +2637,9 @@ paths:
       tags:
       - Project Secret
     post:
-      description: |
-        - Add a secret to the project.
-          - If the secret key already exists, then it will be replaced by the new one.
-          - If the secret value points toward an existing secret key, it will be considered as an alias.
+      description: "- Add a secret to the project.\n  - If the secret key already\
+        \ exists, then it will be replaced by the new one.\n  - If the secret value\
+        \ points toward an existing secret key, it will be considered as an alias.\n"
       operationId: createProjectSecret
       parameters:
       - description: Project ID
@@ -2677,10 +2676,10 @@ paths:
       - Project Secret
   /project/{projectId}/secret/{secretId}:
     delete:
-      description: |
-        - To delete a secret you must have the project user permission
-        - You can't delete a BUILT_IN secret
-        - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteProjectSecret
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well  operationId:\
+        \ deleteProjectSecret\n"
       parameters:
       - description: Project ID
         explode: false
@@ -2713,11 +2712,10 @@ paths:
       tags:
       - Project Secret
     put:
-      description: |
-        - You can't edit a BUILT_IN secret
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editProjectSecret
       parameters:
       - description: Project ID
@@ -2817,13 +2815,14 @@ paths:
       - Project Secret
   /project/{projectId}/secret/{secretId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at project level on an existing secret having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new secret at project level with the same value as the one corresponding to the secret id in the path
-        - The response body will contain the newly created secret
-        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at project level on an existing secret\
+        \ having higher scope, in order to customize its key.\n- You only have to\
+        \ specify a key in the request body\n- The system will create a new secret\
+        \ at project level with the same value as the one corresponding to the secret\
+        \ id in the path\n- The response body will contain the newly created secret\n\
+        - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
+        \ field of the newly created secret\n- Only 1 alias level is allowed. You\
+        \ can't create an alias on an alias\n"
       operationId: createProjectSecretAlias
       parameters:
       - description: Project ID
@@ -2901,8 +2900,8 @@ paths:
       - Environments
   /project/{projectId}/environment/stats:
     get:
-      description: Returns a list of environment ids, and for each its total numberof
-        services
+      description: "Returns a list of environment ids, and for each its total numberof\
+        \ services"
       operationId: getProjectEnvironmentServiceNumber
       parameters:
       - description: Project ID
@@ -3260,9 +3259,9 @@ paths:
       - Environment Actions
   /environment/{environmentId}/clone:
     post:
-      description: You must provide a name. This will create a new environment, with
-        the same configuration, and same applications and databases. Database data
-        is not cloned.
+      description: "You must provide a name. This will create a new environment, with\
+        \ the same configuration, and same applications and databases. Database data\
+        \ is not cloned."
       operationId: cloneEnvironment
       parameters:
       - description: Environment ID
@@ -3463,7 +3462,7 @@ paths:
       - Applications
   /environment/{environmentId}/application/currentScale:
     get:
-      description: Returns min, max, and running number of instances for each application
+      description: "Returns min, max, and running number of instances for each application"
       operationId: getEnvironmentApplicationCurrentScale
       parameters:
       - description: Environment ID
@@ -3553,10 +3552,10 @@ paths:
       - Environment Logs
   /environment/{environmentId}/deploymentHistory:
     get:
-      description: List previous and current environment deployments with the status
-        deployment and the related services. By default it returns the 20 last results.
-        The response is paginated. In order to request the next page, you can use
-        the startId query parameter
+      description: "List previous and current environment deployments with the status\
+        \ deployment and the related services. By default it returns the 20 last results.\
+        \ The response is paginated. In order to request the next page, you can use\
+        \ the startId query parameter"
       operationId: listEnvironmentDeploymentHistory
       parameters:
       - description: Environment ID
@@ -3623,10 +3622,10 @@ paths:
       tags:
       - Environment Variable
     post:
-      description: |
-        - Add an environment variable to the environment.
-          - If the environment variable key already exists, then it will be replaced by the new one.
-          - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
+      description: "- Add an environment variable to the environment.\n  - If the\
+        \ environment variable key already exists, then it will be replaced by the\
+        \ new one.\n  - If the environment variable value points toward an existing\
+        \ environment variable key, it will be considered as an alias.\n"
       operationId: createEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -3663,10 +3662,10 @@ paths:
       - Environment Variable
   /environment/{environmentId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: |
-        - To delete an environment variable you must have the project user permission
-        - You can't delete a BUILT_IN variable
-        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete an environment variable you must have the project\
+        \ user permission\n- You can't delete a BUILT_IN variable\n- If you delete\
+        \ a variable having override or alias, the associated override/alias will\
+        \ be deleted as well\n"
       operationId: deleteEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -3700,11 +3699,10 @@ paths:
       tags:
       - Environment Variable
     put:
-      description: |
-        - You can't edit a BUILT_IN variable
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -3804,13 +3802,14 @@ paths:
       - Environment Variable
   /environment/{environmentId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at environment level on an existing environment variable having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new environment variable at environment level with the same value as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at environment level on an existing\
+        \ environment variable having higher scope, in order to customize its key.\n\
+        - You only have to specify a key in the request body\n- The system will create\
+        \ a new environment variable at environment level with the same value as the\
+        \ one corresponding to the variable id in the path\n- The response body will\
+        \ contain the newly created variable\n- Information regarding the aliased_variable\
+        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
+        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createEnvironmentEnvironmentVariableAlias
       parameters:
       - description: Environment ID
@@ -3886,10 +3885,9 @@ paths:
       tags:
       - Environment Secret
     post:
-      description: |
-        - Add a secret to the environment.
-          - If the secret key already exists, then it will be replaced by the new one.
-          - If the secret value points toward an existing secret key, it will be considered as an alias.
+      description: "- Add a secret to the environment.\n  - If the secret key already\
+        \ exists, then it will be replaced by the new one.\n  - If the secret value\
+        \ points toward an existing secret key, it will be considered as an alias.\n"
       operationId: createEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -3926,10 +3924,10 @@ paths:
       - Environment Secret
   /environment/{environmentId}/secret/{secretId}:
     delete:
-      description: |
-        - To delete a secret you must have the project user permission
-        - You can't delete a BUILT_IN secret
-        - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well  operationId:\
+        \ deleteEnvironmentSecret\n"
       parameters:
       - description: Environment ID
         explode: false
@@ -3962,11 +3960,10 @@ paths:
       tags:
       - Environment Secret
     put:
-      description: |
-        - You can't edit a BUILT_IN secret
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -4066,13 +4063,14 @@ paths:
       - Environment Secret
   /environment/{environmentId}/secret/{secretId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at environment level on an existing secret having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new secret at environment level with the same value as the one corresponding to the secret id in the path
-        - The response body will contain the newly created secret
-        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at environment level on an existing\
+        \ secret having higher scope, in order to customize its key.\n- You only have\
+        \ to specify a key in the request body\n- The system will create a new secret\
+        \ at environment level with the same value as the one corresponding to the\
+        \ secret id in the path\n- The response body will contain the newly created\
+        \ secret\n- Information regarding the aliased_secret will be exposed in the\
+        \ \"aliased_secret\" field of the newly created secret\n- Only 1 alias level\
+        \ is allowed. You can't create an alias on an alias\n"
       operationId: createEnvironmentSecretAlias
       parameters:
       - description: Environment ID
@@ -4175,7 +4173,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: List eligible database types, versions and modes for the environment
+      summary: "List eligible database types, versions and modes for the environment"
       tags:
       - Databases
   /application/{applicationId}:
@@ -4233,10 +4231,12 @@ paths:
       tags:
       - Application Main Calls
     put:
-      description: |
-        - To edit the application you must have the admin permission.
-        - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
-        - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
+      description: "- To edit the application you must have the admin permission.\n\
+        - For port edition, if you provide a port id, we will update the corresponding\
+        \ port. If you don't we will create a new one. If you remove a port from the\
+        \ payload, we will delete it.\n- For storage edition, if you provide a storage\
+        \ id, we will update the corresponding storage. If you don't we will create\
+        \ a new one. If you remove a storage from the payload, we will delete it.\n"
       operationId: editApplication
       parameters:
       - description: Application ID
@@ -4491,7 +4491,7 @@ paths:
       - Application Metrics
   /application/{applicationId}/currentScale:
     get:
-      description: Returns min, max, and running number of instances of the application
+      description: "Returns min, max, and running number of instances of the application"
       operationId: getApplicationCurrentScale
       parameters:
       - description: Application ID
@@ -4962,9 +4962,9 @@ paths:
       - Application Actions
   /application/{applicationId}/deploymentHistory:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter.
-        You can also filter by status (FAILED or SUCCESS), and git_commit_id
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter.\
+        \ You can also filter by status (FAILED or SUCCESS), and git_commit_id"
       operationId: listApplicationDeploymentHistory
       parameters:
       - description: Application ID
@@ -5003,8 +5003,8 @@ paths:
       - Application Deployment History
   /application/{applicationId}/event:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter"
       operationId: listApplicationEvent
       parameters:
       - description: Application ID
@@ -5109,8 +5109,8 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/import:
     post:
-      description: Import environment variables in a defined scope, with a defined
-        visibility.
+      description: "Import environment variables in a defined scope, with a defined\
+        \ visibility."
       operationId: importEnvironmentVariable
       parameters:
       - description: Application ID
@@ -5147,10 +5147,10 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: |
-        - To delete an environment variable from an application you must have the project user permission
-        - You can't delete a BUILT_IN variable
-        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete an environment variable from an application you must\
+        \ have the project user permission\n- You can't delete a BUILT_IN variable\n\
+        - If you delete a variable having override or alias, the associated override/alias\
+        \ will be deleted as well\n"
       operationId: deleteApplicationEnvironmentVariable
       parameters:
       - description: Application ID
@@ -5184,11 +5184,10 @@ paths:
       tags:
       - Application Environment Variable
     put:
-      description: |
-        - You can't edit a BUILT_IN variable
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editApplicationEnvironmentVariable
       parameters:
       - description: Application ID
@@ -5288,13 +5287,14 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at application level on an existing environment variable having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new environment variable at application level with the same value as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at application level on an existing\
+        \ environment variable having higher scope, in order to customize its key.\n\
+        - You only have to specify a key in the request body\n- The system will create\
+        \ a new environment variable at application level with the same value as the\
+        \ one corresponding to the variable id in the path\n- The response body will\
+        \ contain the newly created variable\n- Information regarding the aliased_variable\
+        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
+        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createApplicationEnvironmentVariableAlias
       parameters:
       - description: Application ID
@@ -5342,8 +5342,8 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/secret:
     get:
-      description: Secrets are like environment variables, but they are secured and
-        can't be revealed.
+      description: "Secrets are like environment variables, but they are secured and\
+        \ can't be revealed."
       operationId: listApplicationSecrets
       parameters:
       - description: Application ID
@@ -5410,10 +5410,9 @@ paths:
       - Application Secret
   /application/{applicationId}/secret/{secretId}:
     delete:
-      description: |
-        - To delete a secret you must have the project user permission
-        - You can't delete a BUILT_IN secret
-        - If you delete a secret having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well\n"
       operationId: deleteApplicationSecret
       parameters:
       - description: Application ID
@@ -5447,11 +5446,10 @@ paths:
       tags:
       - Application Secret
     put:
-      description: |
-        - You can't edit a BUILT_IN secret
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editApplicationSecret
       parameters:
       - description: Application ID
@@ -5551,13 +5549,14 @@ paths:
       - Application Secret
   /application/{applicationId}/secret/{secretId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at application level on an existing secret having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new secret at application level with the same value as the one corresponding to the secret id in the path
-        - The response body will contain the newly created secret
-        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at application level on an existing\
+        \ secret having higher scope, in order to customize its key.\n- You only have\
+        \ to specify a key in the request body\n- The system will create a new secret\
+        \ at application level with the same value as the one corresponding to the\
+        \ secret id in the path\n- The response body will contain the newly created\
+        \ secret\n- Information regarding the aliased_secret will be exposed in the\
+        \ \"aliased_secret\" field of the newly created secret\n- Only 1 alias level\
+        \ is allowed. You can't create an alias on an alias\n"
       operationId: createApplicationSecretAlias
       parameters:
       - description: Application ID
@@ -6463,9 +6462,9 @@ paths:
       - Database Main Calls
   /database/{databaseId}/logicalDatabase:
     get:
-      description: A logical database exists inside a database. The database is a
-        service that exists within an environment, that you can deploy, and that has
-        allocated resources. A database can have several logical databases
+      description: "A logical database exists inside a database. The database is a\
+        \ service that exists within an environment, that you can deploy, and that\
+        \ has allocated resources. A database can have several logical databases"
       operationId: listLogicalDatabaseDatabase
       parameters:
       - description: Database ID
@@ -6494,7 +6493,7 @@ paths:
       tags:
       - Logical Database
     post:
-      description: If you don't specify credentials, Qovery will autogenerate them.
+      description: "If you don't specify credentials, Qovery will autogenerate them."
       operationId: createLogicalDatabaseOnDatabase
       parameters:
       - description: Database ID
@@ -6905,8 +6904,8 @@ paths:
       - Database Metrics
   /database/{databaseId}/backup:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter"
       operationId: listDatabaseBackup
       parameters:
       - description: Database ID
@@ -7014,8 +7013,8 @@ paths:
       - Backups
   /database/{databaseId}/event:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter"
       operationId: listDatabaseEvent
       parameters:
       - description: Database ID
@@ -7079,9 +7078,9 @@ paths:
       tags:
       - Logical Database
     get:
-      description: A logical database exists inside a database. The database is a
-        service that exists within an environment, that you can deploy, and that has
-        allocated resources. A database can have several logical databases
+      description: "A logical database exists inside a database. The database is a\
+        \ service that exists within an environment, that you can deploy, and that\
+        \ has allocated resources. A database can have several logical databases"
       operationId: getLogicalDatabase
       parameters:
       - description: Logical Database ID
@@ -7721,9 +7720,8 @@ components:
           example: https://github.com/Qovery/simple-node-app
           type: string
         branch:
-          description: |
-            Name of the branch to use. This is optional
-            If not specified, then the branch used is the `main` or `master` one
+          description: "Name of the branch to use. This is optional\nIf not specified,\
+            \ then the branch used is the `main` or `master` one\n"
           example: feat/text_xxx
           type: string
         root_path:
@@ -7923,7 +7921,7 @@ components:
           example: Gump
           type: string
         email:
-          description: email used for billing, and to receive all invoices by email
+          description: "email used for billing, and to receive all invoices by email"
           example: forrest@gump.com
           format: email
           type: string
@@ -8996,24 +8994,24 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no application running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no application running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
-          description: |
-            Specify if the environment preview option is activated or not for this application.
-            If activated, a preview environment will be automatically cloned at each pull request.
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.\n"
           type: boolean
       required:
       - git_repository
@@ -9108,30 +9106,31 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no application running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no application running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
-          description: |
-            Specify if the environment preview option is activated or not for this application.
-            If activated, a preview environment will be automatically cloned at each pull request.
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.\n"
           type: boolean
         sticky_session:
           default: false
-          description: |
-            Specify if the sticky session option (also called persistant session) is activated or not for this application.
-            If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
+          description: "Specify if the sticky session option (also called persistant\
+            \ session) is activated or not for this application.\nIf activated, user\
+            \ will be redirected by the load balancer to the same instance each time\
+            \ he access to the application.\n"
           type: boolean
       type: object
     DeploymentHistoryResponseList:
@@ -9384,24 +9383,24 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no application running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no application running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
-          description: |
-            Specify if the environment preview option is activated or not for this application.
-            If activated, a preview environment will be automatically cloned at each pull request.
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.\n"
           type: boolean
       type: object
     CustomDomainRequest:
@@ -9568,7 +9567,7 @@ components:
       - $ref: '#/components/schemas/BaseResponse'
       properties:
         type:
-          description: type of the service (application, database, job, gateway...)
+          description: "type of the service (application, database, job, gateway...)"
           enum:
           - APPLICATION
           - DATABASE
@@ -9577,8 +9576,8 @@ components:
           description: name of the service
           type: string
         id:
-          description: uuid of the associated service (application, database, job,
-            gateway...)
+          description: "uuid of the associated service (application, database, job,\
+            \ gateway...)"
           format: uuid
           type: string
         deployed_commit_id:
@@ -9593,7 +9592,7 @@ components:
           description: global overview of resources consumption of the service
           type: number
         service_typology:
-          description: describes the typology of service (container, postgresl, redis...)
+          description: "describes the typology of service (container, postgresl, redis...)"
           example: container
           type: string
         service_version:
@@ -9802,14 +9801,14 @@ components:
           name: name
           project:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          cloud_provider: '{}'
+          cloud_provider: "{}"
         - mode: PRODUCTION
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           project:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          cloud_provider: '{}'
+          cloud_provider: "{}"
       properties:
         results:
           items:
@@ -10178,12 +10177,12 @@ components:
         results:
         - service_name: service_name
           scope: BUILT_IN
-          aliased_variable: '{}'
-          overridden_variable: '{}'
+          aliased_variable: "{}"
+          overridden_variable: "{}"
         - service_name: service_name
           scope: BUILT_IN
-          aliased_variable: '{}'
-          overridden_variable: '{}'
+          aliased_variable: "{}"
+          overridden_variable: "{}"
       properties:
         results:
           items:
@@ -10375,8 +10374,8 @@ components:
         status: READY
       properties:
         estimated_cloud_provider_cost:
-          description: This is an estimation of the cost this cluster will represent
-            on your cloud proider bill, based on your current configuration
+          description: "This is an estimation of the cost this cluster will represent\
+            \ on your cloud proider bill, based on your current configuration"
           type: integer
         status:
           enum:
@@ -10605,7 +10604,7 @@ components:
         name: name
         project:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        cloud_provider: '{}'
+        cloud_provider: "{}"
       properties:
         name:
           description: name is case insensitive
@@ -10984,8 +10983,8 @@ components:
       example:
         service_name: service_name
         scope: BUILT_IN
-        aliased_variable: '{}'
-        overridden_variable: '{}'
+        aliased_variable: "{}"
+        overridden_variable: "{}"
       properties:
         overridden_variable:
           properties:
@@ -11187,7 +11186,7 @@ components:
           example: Gump
           type: string
         email:
-          description: email used for billing, and to receive all invoices by email
+          description: "email used for billing, and to receive all invoices by email"
           example: forrest@gump.com
           format: email
           type: string

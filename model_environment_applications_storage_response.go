@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,8 +17,8 @@ import (
 
 // EnvironmentApplicationsStorageResponse struct for EnvironmentApplicationsStorageResponse
 type EnvironmentApplicationsStorageResponse struct {
-	Application string `json:"application"`
-	Disks *[]StorageDiskResponse `json:"disks,omitempty"`
+	Application string                `json:"application"`
+	Disks       []StorageDiskResponse `json:"disks,omitempty"`
 }
 
 // NewEnvironmentApplicationsStorageResponse instantiates a new EnvironmentApplicationsStorageResponse object
@@ -52,7 +52,7 @@ func (o *EnvironmentApplicationsStorageResponse) GetApplication() string {
 // GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsStorageResponse) GetApplicationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Application, true
@@ -69,12 +69,12 @@ func (o *EnvironmentApplicationsStorageResponse) GetDisks() []StorageDiskRespons
 		var ret []StorageDiskResponse
 		return ret
 	}
-	return *o.Disks
+	return o.Disks
 }
 
 // GetDisksOk returns a tuple with the Disks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsStorageResponse) GetDisksOk() (*[]StorageDiskResponse, bool) {
+func (o *EnvironmentApplicationsStorageResponse) GetDisksOk() ([]StorageDiskResponse, bool) {
 	if o == nil || o.Disks == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *EnvironmentApplicationsStorageResponse) HasDisks() bool {
 
 // SetDisks gets a reference to the given []StorageDiskResponse and assigns it to the Disks field.
 func (o *EnvironmentApplicationsStorageResponse) SetDisks(v []StorageDiskResponse) {
-	o.Disks = &v
+	o.Disks = v
 }
 
 func (o EnvironmentApplicationsStorageResponse) MarshalJSON() ([]byte, error) {
@@ -141,5 +141,3 @@ func (v *NullableEnvironmentApplicationsStorageResponse) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

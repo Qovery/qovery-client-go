@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // CommunityUsageResponse struct for CommunityUsageResponse
 type CommunityUsageResponse struct {
-	Projects *[]ProjectCurrentCostResponse `json:"projects,omitempty"`
+	Projects []ProjectCurrentCostResponse `json:"projects,omitempty"`
 }
 
 // NewCommunityUsageResponse instantiates a new CommunityUsageResponse object
@@ -43,12 +43,12 @@ func (o *CommunityUsageResponse) GetProjects() []ProjectCurrentCostResponse {
 		var ret []ProjectCurrentCostResponse
 		return ret
 	}
-	return *o.Projects
+	return o.Projects
 }
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommunityUsageResponse) GetProjectsOk() (*[]ProjectCurrentCostResponse, bool) {
+func (o *CommunityUsageResponse) GetProjectsOk() ([]ProjectCurrentCostResponse, bool) {
 	if o == nil || o.Projects == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CommunityUsageResponse) HasProjects() bool {
 
 // SetProjects gets a reference to the given []ProjectCurrentCostResponse and assigns it to the Projects field.
 func (o *CommunityUsageResponse) SetProjects(v []ProjectCurrentCostResponse) {
-	o.Projects = &v
+	o.Projects = v
 }
 
 func (o CommunityUsageResponse) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableCommunityUsageResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

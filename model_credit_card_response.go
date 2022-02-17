@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,12 +18,12 @@ import (
 
 // CreditCardResponse struct for CreditCardResponse
 type CreditCardResponse struct {
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	ExpiryMonth int32 `json:"expiry_month"`
-	ExpiryYear int32 `json:"expiry_year"`
-	LastDigit string `json:"last_digit"`
-	IsExpired bool `json:"is_expired"`
+	Id          string    `json:"id"`
+	CreatedAt   time.Time `json:"created_at"`
+	ExpiryMonth int32     `json:"expiry_month"`
+	ExpiryYear  int32     `json:"expiry_year"`
+	LastDigit   string    `json:"last_digit"`
+	IsExpired   bool      `json:"is_expired"`
 }
 
 // NewCreditCardResponse instantiates a new CreditCardResponse object
@@ -62,7 +62,7 @@ func (o *CreditCardResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -86,7 +86,7 @@ func (o *CreditCardResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -110,7 +110,7 @@ func (o *CreditCardResponse) GetExpiryMonth() int32 {
 // GetExpiryMonthOk returns a tuple with the ExpiryMonth field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardResponse) GetExpiryMonthOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExpiryMonth, true
@@ -134,7 +134,7 @@ func (o *CreditCardResponse) GetExpiryYear() int32 {
 // GetExpiryYearOk returns a tuple with the ExpiryYear field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardResponse) GetExpiryYearOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExpiryYear, true
@@ -158,7 +158,7 @@ func (o *CreditCardResponse) GetLastDigit() string {
 // GetLastDigitOk returns a tuple with the LastDigit field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardResponse) GetLastDigitOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.LastDigit, true
@@ -182,7 +182,7 @@ func (o *CreditCardResponse) GetIsExpired() bool {
 // GetIsExpiredOk returns a tuple with the IsExpired field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardResponse) GetIsExpiredOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsExpired, true
@@ -251,5 +251,3 @@ func (v *NullableCreditCardResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

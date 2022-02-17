@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ClusterFeatureResponseList struct for ClusterFeatureResponseList
 type ClusterFeatureResponseList struct {
-	Results *[]ClusterFeatureResponse `json:"results,omitempty"`
+	Results []ClusterFeatureResponse `json:"results,omitempty"`
 }
 
 // NewClusterFeatureResponseList instantiates a new ClusterFeatureResponseList object
@@ -43,12 +43,12 @@ func (o *ClusterFeatureResponseList) GetResults() []ClusterFeatureResponse {
 		var ret []ClusterFeatureResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeatureResponseList) GetResultsOk() (*[]ClusterFeatureResponse, bool) {
+func (o *ClusterFeatureResponseList) GetResultsOk() ([]ClusterFeatureResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ClusterFeatureResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ClusterFeatureResponse and assigns it to the Results field.
 func (o *ClusterFeatureResponseList) SetResults(v []ClusterFeatureResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o ClusterFeatureResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableClusterFeatureResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

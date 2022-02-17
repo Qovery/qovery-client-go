@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ApplicationPortResponse struct for ApplicationPortResponse
 type ApplicationPortResponse struct {
-	Ports *[]ApplicationPortResponsePorts `json:"ports,omitempty"`
+	Ports []ApplicationPortResponsePorts `json:"ports,omitempty"`
 }
 
 // NewApplicationPortResponse instantiates a new ApplicationPortResponse object
@@ -43,12 +43,12 @@ func (o *ApplicationPortResponse) GetPorts() []ApplicationPortResponsePorts {
 		var ret []ApplicationPortResponsePorts
 		return ret
 	}
-	return *o.Ports
+	return o.Ports
 }
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPortResponse) GetPortsOk() (*[]ApplicationPortResponsePorts, bool) {
+func (o *ApplicationPortResponse) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ApplicationPortResponse) HasPorts() bool {
 
 // SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
 func (o *ApplicationPortResponse) SetPorts(v []ApplicationPortResponsePorts) {
-	o.Ports = &v
+	o.Ports = v
 }
 
 func (o ApplicationPortResponse) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableApplicationPortResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

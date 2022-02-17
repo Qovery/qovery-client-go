@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,12 +18,12 @@ import (
 
 // ProjectResponse struct for ProjectResponse
 type ProjectResponse struct {
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
+	Name         string           `json:"name"`
+	Description  *string          `json:"description,omitempty"`
 	Organization *ReferenceObject `json:"organization,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Id           string           `json:"id"`
+	CreatedAt    time.Time        `json:"created_at"`
+	UpdatedAt    *time.Time       `json:"updated_at,omitempty"`
 }
 
 // NewProjectResponse instantiates a new ProjectResponse object
@@ -58,7 +58,7 @@ func (o *ProjectResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ProjectResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -146,7 +146,7 @@ func (o *ProjectResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ProjectResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -170,7 +170,7 @@ func (o *ProjectResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *ProjectResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -271,5 +271,3 @@ func (v *NullableProjectResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

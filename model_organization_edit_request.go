@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,12 +18,12 @@ import (
 // OrganizationEditRequest struct for OrganizationEditRequest
 type OrganizationEditRequest struct {
 	// name is case insensitive
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	WebsiteUrl NullableString `json:"website_url,omitempty"`
-	Repository NullableString `json:"repository,omitempty"`
-	LogoUrl NullableString `json:"logo_url,omitempty"`
-	IconUrl NullableString `json:"icon_url,omitempty"`
+	Name        string         `json:"name"`
+	Description *string        `json:"description,omitempty"`
+	WebsiteUrl  NullableString `json:"website_url,omitempty"`
+	Repository  NullableString `json:"repository,omitempty"`
+	LogoUrl     NullableString `json:"logo_url,omitempty"`
+	IconUrl     NullableString `json:"icon_url,omitempty"`
 }
 
 // NewOrganizationEditRequest instantiates a new OrganizationEditRequest object
@@ -57,7 +57,7 @@ func (o *OrganizationEditRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationEditRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -113,7 +113,7 @@ func (o *OrganizationEditRequest) GetWebsiteUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetWebsiteUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.WebsiteUrl.Get(), o.WebsiteUrl.IsSet()
@@ -132,6 +132,7 @@ func (o *OrganizationEditRequest) HasWebsiteUrl() bool {
 func (o *OrganizationEditRequest) SetWebsiteUrl(v string) {
 	o.WebsiteUrl.Set(&v)
 }
+
 // SetWebsiteUrlNil sets the value for WebsiteUrl to be an explicit nil
 func (o *OrganizationEditRequest) SetWebsiteUrlNil() {
 	o.WebsiteUrl.Set(nil)
@@ -155,7 +156,7 @@ func (o *OrganizationEditRequest) GetRepository() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetRepositoryOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Repository.Get(), o.Repository.IsSet()
@@ -174,6 +175,7 @@ func (o *OrganizationEditRequest) HasRepository() bool {
 func (o *OrganizationEditRequest) SetRepository(v string) {
 	o.Repository.Set(&v)
 }
+
 // SetRepositoryNil sets the value for Repository to be an explicit nil
 func (o *OrganizationEditRequest) SetRepositoryNil() {
 	o.Repository.Set(nil)
@@ -197,7 +199,7 @@ func (o *OrganizationEditRequest) GetLogoUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetLogoUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
@@ -216,6 +218,7 @@ func (o *OrganizationEditRequest) HasLogoUrl() bool {
 func (o *OrganizationEditRequest) SetLogoUrl(v string) {
 	o.LogoUrl.Set(&v)
 }
+
 // SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
 func (o *OrganizationEditRequest) SetLogoUrlNil() {
 	o.LogoUrl.Set(nil)
@@ -239,7 +242,7 @@ func (o *OrganizationEditRequest) GetIconUrl() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetIconUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.IconUrl.Get(), o.IconUrl.IsSet()
@@ -258,6 +261,7 @@ func (o *OrganizationEditRequest) HasIconUrl() bool {
 func (o *OrganizationEditRequest) SetIconUrl(v string) {
 	o.IconUrl.Set(&v)
 }
+
 // SetIconUrlNil sets the value for IconUrl to be an explicit nil
 func (o *OrganizationEditRequest) SetIconUrlNil() {
 	o.IconUrl.Set(nil)
@@ -326,5 +330,3 @@ func (v *NullableOrganizationEditRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

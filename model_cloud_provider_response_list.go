@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // CloudProviderResponseList struct for CloudProviderResponseList
 type CloudProviderResponseList struct {
-	Results *[]CloudProviderResponse `json:"results,omitempty"`
+	Results []CloudProviderResponse `json:"results,omitempty"`
 }
 
 // NewCloudProviderResponseList instantiates a new CloudProviderResponseList object
@@ -43,12 +43,12 @@ func (o *CloudProviderResponseList) GetResults() []CloudProviderResponse {
 		var ret []CloudProviderResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderResponseList) GetResultsOk() (*[]CloudProviderResponse, bool) {
+func (o *CloudProviderResponseList) GetResultsOk() ([]CloudProviderResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *CloudProviderResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []CloudProviderResponse and assigns it to the Results field.
 func (o *CloudProviderResponseList) SetResults(v []CloudProviderResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o CloudProviderResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableCloudProviderResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

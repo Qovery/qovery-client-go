@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,8 +17,8 @@ import (
 
 // DatabaseConfigurationResponse struct for DatabaseConfigurationResponse
 type DatabaseConfigurationResponse struct {
-	DatabaseType *string `json:"database_type,omitempty"`
-	Version *[]DatabaseVersionMode `json:"version,omitempty"`
+	DatabaseType *string               `json:"database_type,omitempty"`
+	Version      []DatabaseVersionMode `json:"version,omitempty"`
 }
 
 // NewDatabaseConfigurationResponse instantiates a new DatabaseConfigurationResponse object
@@ -76,12 +76,12 @@ func (o *DatabaseConfigurationResponse) GetVersion() []DatabaseVersionMode {
 		var ret []DatabaseVersionMode
 		return ret
 	}
-	return *o.Version
+	return o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseConfigurationResponse) GetVersionOk() (*[]DatabaseVersionMode, bool) {
+func (o *DatabaseConfigurationResponse) GetVersionOk() ([]DatabaseVersionMode, bool) {
 	if o == nil || o.Version == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *DatabaseConfigurationResponse) HasVersion() bool {
 
 // SetVersion gets a reference to the given []DatabaseVersionMode and assigns it to the Version field.
 func (o *DatabaseConfigurationResponse) SetVersion(v []DatabaseVersionMode) {
-	o.Version = &v
+	o.Version = v
 }
 
 func (o DatabaseConfigurationResponse) MarshalJSON() ([]byte, error) {
@@ -148,5 +148,3 @@ func (v *NullableDatabaseConfigurationResponse) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

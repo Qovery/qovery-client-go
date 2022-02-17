@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // PaginationDataResponse struct for PaginationDataResponse
 type PaginationDataResponse struct {
-	Page float32 `json:"page"`
+	Page     float32 `json:"page"`
 	PageSize float32 `json:"page_size"`
 }
 
@@ -53,7 +53,7 @@ func (o *PaginationDataResponse) GetPage() float32 {
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
 func (o *PaginationDataResponse) GetPageOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Page, true
@@ -77,7 +77,7 @@ func (o *PaginationDataResponse) GetPageSize() float32 {
 // GetPageSizeOk returns a tuple with the PageSize field value
 // and a boolean to check if the value has been set.
 func (o *PaginationDataResponse) GetPageSizeOk() (*float32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PageSize, true
@@ -134,5 +134,3 @@ func (v *NullablePaginationDataResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

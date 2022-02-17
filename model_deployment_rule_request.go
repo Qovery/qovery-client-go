@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,12 +19,12 @@ import (
 // DeploymentRuleRequest struct for DeploymentRuleRequest
 type DeploymentRuleRequest struct {
 	// name is case insensitive
-	Name string `json:"name"`
+	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
-	Mode string `json:"mode"`
-	Cluster string `json:"cluster"`
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
-	AutoStop bool `json:"auto_stop"`
+	Mode        string  `json:"mode"`
+	Cluster     string  `json:"cluster"`
+	AutoDeploy  *bool   `json:"auto_deploy,omitempty"`
+	AutoStop    bool    `json:"auto_stop"`
 	// specify value only if auto_stop = false
 	Timezone *string `json:"timezone,omitempty"`
 	// specify value only if auto_stop = false
@@ -79,7 +79,7 @@ func (o *DeploymentRuleRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentRuleRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -135,7 +135,7 @@ func (o *DeploymentRuleRequest) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentRuleRequest) GetModeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -159,7 +159,7 @@ func (o *DeploymentRuleRequest) GetCluster() string {
 // GetClusterOk returns a tuple with the Cluster field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentRuleRequest) GetClusterOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Cluster, true
@@ -215,7 +215,7 @@ func (o *DeploymentRuleRequest) GetAutoStop() bool {
 // GetAutoStopOk returns a tuple with the AutoStop field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentRuleRequest) GetAutoStopOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AutoStop, true
@@ -271,7 +271,7 @@ func (o *DeploymentRuleRequest) GetStartTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentRuleRequest) GetStartTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StartTime.Get(), o.StartTime.IsSet()
@@ -290,6 +290,7 @@ func (o *DeploymentRuleRequest) HasStartTime() bool {
 func (o *DeploymentRuleRequest) SetStartTime(v time.Time) {
 	o.StartTime.Set(&v)
 }
+
 // SetStartTimeNil sets the value for StartTime to be an explicit nil
 func (o *DeploymentRuleRequest) SetStartTimeNil() {
 	o.StartTime.Set(nil)
@@ -313,7 +314,7 @@ func (o *DeploymentRuleRequest) GetStopTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentRuleRequest) GetStopTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StopTime.Get(), o.StopTime.IsSet()
@@ -332,6 +333,7 @@ func (o *DeploymentRuleRequest) HasStopTime() bool {
 func (o *DeploymentRuleRequest) SetStopTime(v time.Time) {
 	o.StopTime.Set(&v)
 }
+
 // SetStopTimeNil sets the value for StopTime to be an explicit nil
 func (o *DeploymentRuleRequest) SetStopTimeNil() {
 	o.StopTime.Set(nil)
@@ -344,7 +346,7 @@ func (o *DeploymentRuleRequest) UnsetStopTime() {
 
 // GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentRuleRequest) GetWeekdays() []string {
-	if o == nil  {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -354,11 +356,11 @@ func (o *DeploymentRuleRequest) GetWeekdays() []string {
 // GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeploymentRuleRequest) GetWeekdaysOk() (*[]string, bool) {
+func (o *DeploymentRuleRequest) GetWeekdaysOk() ([]string, bool) {
 	if o == nil || o.Weekdays == nil {
 		return nil, false
 	}
-	return &o.Weekdays, true
+	return o.Weekdays, true
 }
 
 // HasWeekdays returns a boolean if a field has been set.
@@ -445,5 +447,3 @@ func (v *NullableDeploymentRuleRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -35,8 +35,8 @@ func main() {
     deployRequest := *openapiclient.NewDeployRequest("GitCommitId_example") // DeployRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationActionsApi.DeployApplication(context.Background(), applicationId).DeployRequest(deployRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationActionsApi.DeployApplication(context.Background(), applicationId).DeployRequest(deployRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsApi.DeployApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,8 +104,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationActionsApi.RestartApplication(context.Background(), applicationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationActionsApi.RestartApplication(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsApi.RestartApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,8 +172,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationActionsApi.StopApplication(context.Background(), applicationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationActionsApi.StopApplication(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsApi.StopApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

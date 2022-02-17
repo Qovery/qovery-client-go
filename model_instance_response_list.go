@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // InstanceResponseList struct for InstanceResponseList
 type InstanceResponseList struct {
-	Results *[]InstanceResponse `json:"results,omitempty"`
+	Results []InstanceResponse `json:"results,omitempty"`
 }
 
 // NewInstanceResponseList instantiates a new InstanceResponseList object
@@ -43,12 +43,12 @@ func (o *InstanceResponseList) GetResults() []InstanceResponse {
 		var ret []InstanceResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstanceResponseList) GetResultsOk() (*[]InstanceResponse, bool) {
+func (o *InstanceResponseList) GetResultsOk() ([]InstanceResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *InstanceResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []InstanceResponse and assigns it to the Results field.
 func (o *InstanceResponseList) SetResults(v []InstanceResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o InstanceResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableInstanceResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

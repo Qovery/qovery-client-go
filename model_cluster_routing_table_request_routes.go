@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,7 +18,7 @@ import (
 // ClusterRoutingTableRequestRoutes struct for ClusterRoutingTableRequestRoutes
 type ClusterRoutingTableRequestRoutes struct {
 	Destination string `json:"destination"`
-	Target string `json:"target"`
+	Target      string `json:"target"`
 	Description string `json:"description"`
 }
 
@@ -55,7 +55,7 @@ func (o *ClusterRoutingTableRequestRoutes) GetDestination() string {
 // GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableRequestRoutes) GetDestinationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Destination, true
@@ -79,7 +79,7 @@ func (o *ClusterRoutingTableRequestRoutes) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableRequestRoutes) GetTargetOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Target, true
@@ -103,7 +103,7 @@ func (o *ClusterRoutingTableRequestRoutes) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableRequestRoutes) GetDescriptionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Description, true
@@ -163,5 +163,3 @@ func (v *NullableClusterRoutingTableRequestRoutes) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

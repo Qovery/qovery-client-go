@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // LinkResponseList struct for LinkResponseList
 type LinkResponseList struct {
-	Results *[]LinkResponse `json:"results,omitempty"`
+	Results []LinkResponse `json:"results,omitempty"`
 }
 
 // NewLinkResponseList instantiates a new LinkResponseList object
@@ -43,12 +43,12 @@ func (o *LinkResponseList) GetResults() []LinkResponse {
 		var ret []LinkResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LinkResponseList) GetResultsOk() (*[]LinkResponse, bool) {
+func (o *LinkResponseList) GetResultsOk() ([]LinkResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *LinkResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []LinkResponse and assigns it to the Results field.
 func (o *LinkResponseList) SetResults(v []LinkResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o LinkResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableLinkResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,12 +18,12 @@ import (
 
 // DeploymentHistoryApplicationResponse struct for DeploymentHistoryApplicationResponse
 type DeploymentHistoryApplicationResponse struct {
-	Name *string `json:"name,omitempty"`
-	Commit *CommitResponse `json:"commit,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Name      *string         `json:"name,omitempty"`
+	Commit    *CommitResponse `json:"commit,omitempty"`
+	Status    *string         `json:"status,omitempty"`
+	Id        string          `json:"id"`
+	CreatedAt time.Time       `json:"created_at"`
+	UpdatedAt *time.Time      `json:"updated_at,omitempty"`
 }
 
 // NewDeploymentHistoryApplicationResponse instantiates a new DeploymentHistoryApplicationResponse object
@@ -154,7 +154,7 @@ func (o *DeploymentHistoryApplicationResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryApplicationResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -178,7 +178,7 @@ func (o *DeploymentHistoryApplicationResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryApplicationResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -279,5 +279,3 @@ func (v *NullableDeploymentHistoryApplicationResponse) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

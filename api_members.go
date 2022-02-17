@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,66 +13,65 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // MembersApiService MembersApi service
 type MembersApiService service
 
 type ApiDeleteInviteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            context.Context
+	ApiService     *MembersApiService
 	organizationId string
 }
 
-
-func (r ApiDeleteInviteMemberRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteInviteMemberRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteInviteMemberExecute(r)
 }
 
 /*
 DeleteInviteMember Remove an invited member
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiDeleteInviteMemberRequest
 */
-func (a *MembersApiService) DeleteInviteMember(ctx _context.Context, organizationId string) ApiDeleteInviteMemberRequest {
+func (a *MembersApiService) DeleteInviteMember(ctx context.Context, organizationId string) ApiDeleteInviteMemberRequest {
 	return ApiDeleteInviteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
-func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberRequest) (*_nethttp.Response, error) {
+func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.DeleteInviteMember")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/inviteMember/{inviteId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -101,15 +100,15 @@ func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -120,54 +119,53 @@ func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberReq
 }
 
 type ApiDeleteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            context.Context
+	ApiService     *MembersApiService
 	organizationId string
-	userId string
+	userId         string
 }
 
-
-func (r ApiDeleteMemberRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteMemberRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteMemberExecute(r)
 }
 
 /*
 DeleteMember Remove a member
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @param userId User ID
  @return ApiDeleteMemberRequest
 */
-func (a *MembersApiService) DeleteMember(ctx _context.Context, organizationId string, userId string) ApiDeleteMemberRequest {
+func (a *MembersApiService) DeleteMember(ctx context.Context, organizationId string, userId string) ApiDeleteMemberRequest {
 	return ApiDeleteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		userId: userId,
+		userId:         userId,
 	}
 }
 
 // Execute executes the request
-func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_nethttp.Response, error) {
+func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.DeleteMember")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/member/{userId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", _neturl.PathEscape(parameterToString(r.userId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(parameterToString(r.userId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -196,15 +194,15 @@ func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_net
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -215,52 +213,51 @@ func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*_net
 }
 
 type ApiGetOrganizationInvitedMembersRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            context.Context
+	ApiService     *MembersApiService
 	organizationId string
 }
 
-
-func (r ApiGetOrganizationInvitedMembersRequest) Execute() (InviteMemberResponseList, *_nethttp.Response, error) {
+func (r ApiGetOrganizationInvitedMembersRequest) Execute() (*InviteMemberResponseList, *http.Response, error) {
 	return r.ApiService.GetOrganizationInvitedMembersExecute(r)
 }
 
 /*
 GetOrganizationInvitedMembers Get invited members
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiGetOrganizationInvitedMembersRequest
 */
-func (a *MembersApiService) GetOrganizationInvitedMembers(ctx _context.Context, organizationId string) ApiGetOrganizationInvitedMembersRequest {
+func (a *MembersApiService) GetOrganizationInvitedMembers(ctx context.Context, organizationId string) ApiGetOrganizationInvitedMembersRequest {
 	return ApiGetOrganizationInvitedMembersRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return InviteMemberResponseList
-func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganizationInvitedMembersRequest) (InviteMemberResponseList, *_nethttp.Response, error) {
+func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganizationInvitedMembersRequest) (*InviteMemberResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InviteMemberResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InviteMemberResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.GetOrganizationInvitedMembers")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/inviteMember"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -289,15 +286,15 @@ func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganiz
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -306,7 +303,7 @@ func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganiz
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -317,52 +314,51 @@ func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganiz
 }
 
 type ApiGetOrganizationMembersRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            context.Context
+	ApiService     *MembersApiService
 	organizationId string
 }
 
-
-func (r ApiGetOrganizationMembersRequest) Execute() (MemberResponseList, *_nethttp.Response, error) {
+func (r ApiGetOrganizationMembersRequest) Execute() (*MemberResponseList, *http.Response, error) {
 	return r.ApiService.GetOrganizationMembersExecute(r)
 }
 
 /*
 GetOrganizationMembers Get organization members
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiGetOrganizationMembersRequest
 */
-func (a *MembersApiService) GetOrganizationMembers(ctx _context.Context, organizationId string) ApiGetOrganizationMembersRequest {
+func (a *MembersApiService) GetOrganizationMembers(ctx context.Context, organizationId string) ApiGetOrganizationMembersRequest {
 	return ApiGetOrganizationMembersRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return MemberResponseList
-func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMembersRequest) (MemberResponseList, *_nethttp.Response, error) {
+func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMembersRequest) (*MemberResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  MemberResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MemberResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.GetOrganizationMembers")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/member"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -391,15 +387,15 @@ func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -408,7 +404,7 @@ func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -419,56 +415,55 @@ func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMe
 }
 
 type ApiPostAcceptInviteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
+	ctx            context.Context
+	ApiService     *MembersApiService
 	organizationId string
-	inviteId string
+	inviteId       string
 }
 
-
-func (r ApiPostAcceptInviteMemberRequest) Execute() (InviteMemberResponse, *_nethttp.Response, error) {
+func (r ApiPostAcceptInviteMemberRequest) Execute() (*InviteMemberResponse, *http.Response, error) {
 	return r.ApiService.PostAcceptInviteMemberExecute(r)
 }
 
 /*
 PostAcceptInviteMember Accept Invite in the organization
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @param inviteId Invite ID
  @return ApiPostAcceptInviteMemberRequest
 */
-func (a *MembersApiService) PostAcceptInviteMember(ctx _context.Context, organizationId string, inviteId string) ApiPostAcceptInviteMemberRequest {
+func (a *MembersApiService) PostAcceptInviteMember(ctx context.Context, organizationId string, inviteId string) ApiPostAcceptInviteMemberRequest {
 	return ApiPostAcceptInviteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		inviteId: inviteId,
+		inviteId:       inviteId,
 	}
 }
 
 // Execute executes the request
 //  @return InviteMemberResponse
-func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteMemberRequest) (InviteMemberResponse, *_nethttp.Response, error) {
+func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteMemberRequest) (*InviteMemberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InviteMemberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InviteMemberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostAcceptInviteMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/inviteMember/{inviteId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"inviteId"+"}", _neturl.PathEscape(parameterToString(r.inviteId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"inviteId"+"}", url.PathEscape(parameterToString(r.inviteId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -497,15 +492,15 @@ func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -514,7 +509,7 @@ func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteM
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -525,9 +520,9 @@ func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteM
 }
 
 type ApiPostInviteMemberRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
-	organizationId string
+	ctx                 context.Context
+	ApiService          *MembersApiService
+	organizationId      string
 	inviteMemberRequest *InviteMemberRequest
 }
 
@@ -536,46 +531,46 @@ func (r ApiPostInviteMemberRequest) InviteMemberRequest(inviteMemberRequest Invi
 	return r
 }
 
-func (r ApiPostInviteMemberRequest) Execute() (InviteMemberResponse, *_nethttp.Response, error) {
+func (r ApiPostInviteMemberRequest) Execute() (*InviteMemberResponse, *http.Response, error) {
 	return r.ApiService.PostInviteMemberExecute(r)
 }
 
 /*
 PostInviteMember Invite someone in the organization
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiPostInviteMemberRequest
 */
-func (a *MembersApiService) PostInviteMember(ctx _context.Context, organizationId string) ApiPostInviteMemberRequest {
+func (a *MembersApiService) PostInviteMember(ctx context.Context, organizationId string) ApiPostInviteMemberRequest {
 	return ApiPostInviteMemberRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return InviteMemberResponse
-func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest) (InviteMemberResponse, *_nethttp.Response, error) {
+func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest) (*InviteMemberResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  InviteMemberResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InviteMemberResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostInviteMember")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/inviteMember"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -606,15 +601,15 @@ func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -623,7 +618,7 @@ func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -634,9 +629,9 @@ func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest
 }
 
 type ApiPostOrganizationTransferOwnershipRequest struct {
-	ctx _context.Context
-	ApiService *MembersApiService
-	organizationId string
+	ctx                      context.Context
+	ApiService               *MembersApiService
+	organizationId           string
 	transferOwnershipRequest *TransferOwnershipRequest
 }
 
@@ -645,44 +640,44 @@ func (r ApiPostOrganizationTransferOwnershipRequest) TransferOwnershipRequest(tr
 	return r
 }
 
-func (r ApiPostOrganizationTransferOwnershipRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiPostOrganizationTransferOwnershipRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PostOrganizationTransferOwnershipExecute(r)
 }
 
 /*
 PostOrganizationTransferOwnership Transfer organization ownership to another user
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiPostOrganizationTransferOwnershipRequest
 */
-func (a *MembersApiService) PostOrganizationTransferOwnership(ctx _context.Context, organizationId string) ApiPostOrganizationTransferOwnershipRequest {
+func (a *MembersApiService) PostOrganizationTransferOwnership(ctx context.Context, organizationId string) ApiPostOrganizationTransferOwnershipRequest {
 	return ApiPostOrganizationTransferOwnershipRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
-func (a *MembersApiService) PostOrganizationTransferOwnershipExecute(r ApiPostOrganizationTransferOwnershipRequest) (*_nethttp.Response, error) {
+func (a *MembersApiService) PostOrganizationTransferOwnershipExecute(r ApiPostOrganizationTransferOwnershipRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostOrganizationTransferOwnership")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/transferOwnership"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -713,15 +708,15 @@ func (a *MembersApiService) PostOrganizationTransferOwnershipExecute(r ApiPostOr
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}

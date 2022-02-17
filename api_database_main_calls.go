@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,68 +13,67 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // DatabaseMainCallsApiService DatabaseMainCallsApi service
 type DatabaseMainCallsApiService service
 
 type ApiDeleteDatabaseRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
 
-
-func (r ApiDeleteDatabaseRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteDatabaseRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDatabaseExecute(r)
 }
 
 /*
-DeleteDatabase Delete a database 
+DeleteDatabase Delete a database
 
 To delete a database you must have the admin permission
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiDeleteDatabaseRequest
 */
-func (a *DatabaseMainCallsApiService) DeleteDatabase(ctx _context.Context, databaseId string) ApiDeleteDatabaseRequest {
+func (a *DatabaseMainCallsApiService) DeleteDatabase(ctx context.Context, databaseId string) ApiDeleteDatabaseRequest {
 	return ApiDeleteDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
-func (a *DatabaseMainCallsApiService) DeleteDatabaseExecute(r ApiDeleteDatabaseRequest) (*_nethttp.Response, error) {
+func (a *DatabaseMainCallsApiService) DeleteDatabaseExecute(r ApiDeleteDatabaseRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.DeleteDatabase")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -103,15 +102,15 @@ func (a *DatabaseMainCallsApiService) DeleteDatabaseExecute(r ApiDeleteDatabaseR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -122,9 +121,9 @@ func (a *DatabaseMainCallsApiService) DeleteDatabaseExecute(r ApiDeleteDatabaseR
 }
 
 type ApiEditDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *DatabaseMainCallsApiService
-	databaseId string
+	ctx                 context.Context
+	ApiService          *DatabaseMainCallsApiService
+	databaseId          string
 	databaseEditRequest *DatabaseEditRequest
 }
 
@@ -133,48 +132,48 @@ func (r ApiEditDatabaseRequest) DatabaseEditRequest(databaseEditRequest Database
 	return r
 }
 
-func (r ApiEditDatabaseRequest) Execute() (DatabaseResponse, *_nethttp.Response, error) {
+func (r ApiEditDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, error) {
 	return r.ApiService.EditDatabaseExecute(r)
 }
 
 /*
-EditDatabase Edit a database 
+EditDatabase Edit a database
 
 To edit a database  you must have the admin permission
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiEditDatabaseRequest
 */
-func (a *DatabaseMainCallsApiService) EditDatabase(ctx _context.Context, databaseId string) ApiEditDatabaseRequest {
+func (a *DatabaseMainCallsApiService) EditDatabase(ctx context.Context, databaseId string) ApiEditDatabaseRequest {
 	return ApiEditDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return DatabaseResponse
-func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseRequest) (DatabaseResponse, *_nethttp.Response, error) {
+func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DatabaseResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.EditDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -205,15 +204,15 @@ func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -222,7 +221,7 @@ func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseReque
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -233,9 +232,9 @@ func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseReque
 }
 
 type ApiEditDatabaseCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *DatabaseMainCallsApiService
-	databaseId string
+	ctx                context.Context
+	ApiService         *DatabaseMainCallsApiService
+	databaseId         string
 	credentialsRequest *CredentialsRequest
 }
 
@@ -244,46 +243,46 @@ func (r ApiEditDatabaseCredentialsRequest) CredentialsRequest(credentialsRequest
 	return r
 }
 
-func (r ApiEditDatabaseCredentialsRequest) Execute() (CredentialsResponse, *_nethttp.Response, error) {
+func (r ApiEditDatabaseCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
 	return r.ApiService.EditDatabaseCredentialsExecute(r)
 }
 
 /*
 EditDatabaseCredentials Edit database  master credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiEditDatabaseCredentialsRequest
 */
-func (a *DatabaseMainCallsApiService) EditDatabaseCredentials(ctx _context.Context, databaseId string) ApiEditDatabaseCredentialsRequest {
+func (a *DatabaseMainCallsApiService) EditDatabaseCredentials(ctx context.Context, databaseId string) ApiEditDatabaseCredentialsRequest {
 	return ApiEditDatabaseCredentialsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return CredentialsResponse
-func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDatabaseCredentialsRequest) (CredentialsResponse, *_nethttp.Response, error) {
+func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDatabaseCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CredentialsResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.EditDatabaseCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/masterCredentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -314,15 +313,15 @@ func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -331,7 +330,7 @@ func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDa
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -342,52 +341,51 @@ func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDa
 }
 
 type ApiGetDatabaseRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
 
-
-func (r ApiGetDatabaseRequest) Execute() (DatabaseResponse, *_nethttp.Response, error) {
+func (r ApiGetDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, error) {
 	return r.ApiService.GetDatabaseExecute(r)
 }
 
 /*
 GetDatabase Get database by ID
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseRequest
 */
-func (a *DatabaseMainCallsApiService) GetDatabase(ctx _context.Context, databaseId string) ApiGetDatabaseRequest {
+func (a *DatabaseMainCallsApiService) GetDatabase(ctx context.Context, databaseId string) ApiGetDatabaseRequest {
 	return ApiGetDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return DatabaseResponse
-func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest) (DatabaseResponse, *_nethttp.Response, error) {
+func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  DatabaseResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -416,15 +414,15 @@ func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -433,7 +431,7 @@ func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -444,52 +442,51 @@ func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest
 }
 
 type ApiGetDatabaseMasterCredentialsRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
 
-
-func (r ApiGetDatabaseMasterCredentialsRequest) Execute() (CredentialsResponse, *_nethttp.Response, error) {
+func (r ApiGetDatabaseMasterCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
 	return r.ApiService.GetDatabaseMasterCredentialsExecute(r)
 }
 
 /*
 GetDatabaseMasterCredentials Get master credentials of the database
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseMasterCredentialsRequest
 */
-func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentials(ctx _context.Context, databaseId string) ApiGetDatabaseMasterCredentialsRequest {
+func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentials(ctx context.Context, databaseId string) ApiGetDatabaseMasterCredentialsRequest {
 	return ApiGetDatabaseMasterCredentialsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return CredentialsResponse
-func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiGetDatabaseMasterCredentialsRequest) (CredentialsResponse, *_nethttp.Response, error) {
+func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiGetDatabaseMasterCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CredentialsResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabaseMasterCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/masterCredentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -518,15 +515,15 @@ func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -535,7 +532,7 @@ func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -546,52 +543,51 @@ func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiG
 }
 
 type ApiGetDatabaseStatusRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
 
-
-func (r ApiGetDatabaseStatusRequest) Execute() (Status, *_nethttp.Response, error) {
+func (r ApiGetDatabaseStatusRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.GetDatabaseStatusExecute(r)
 }
 
 /*
 GetDatabaseStatus Get database status
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiGetDatabaseStatusRequest
 */
-func (a *DatabaseMainCallsApiService) GetDatabaseStatus(ctx _context.Context, databaseId string) ApiGetDatabaseStatusRequest {
+func (a *DatabaseMainCallsApiService) GetDatabaseStatus(ctx context.Context, databaseId string) ApiGetDatabaseStatusRequest {
 	return ApiGetDatabaseStatusRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return Status
-func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseStatusRequest) (Status, *_nethttp.Response, error) {
+func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseStatusRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  Status
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabaseStatus")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -620,15 +616,15 @@ func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -637,7 +633,7 @@ func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseS
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -648,52 +644,51 @@ func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseS
 }
 
 type ApiListDatabaseVersionRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
 
-
-func (r ApiListDatabaseVersionRequest) Execute() (VersionResponseList, *_nethttp.Response, error) {
+func (r ApiListDatabaseVersionRequest) Execute() (*VersionResponseList, *http.Response, error) {
 	return r.ApiService.ListDatabaseVersionExecute(r)
 }
 
 /*
 ListDatabaseVersion List eligible versions for the database
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiListDatabaseVersionRequest
 */
-func (a *DatabaseMainCallsApiService) ListDatabaseVersion(ctx _context.Context, databaseId string) ApiListDatabaseVersionRequest {
+func (a *DatabaseMainCallsApiService) ListDatabaseVersion(ctx context.Context, databaseId string) ApiListDatabaseVersionRequest {
 	return ApiListDatabaseVersionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return VersionResponseList
-func (a *DatabaseMainCallsApiService) ListDatabaseVersionExecute(r ApiListDatabaseVersionRequest) (VersionResponseList, *_nethttp.Response, error) {
+func (a *DatabaseMainCallsApiService) ListDatabaseVersionExecute(r ApiListDatabaseVersionRequest) (*VersionResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  VersionResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VersionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.ListDatabaseVersion")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/version"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -722,15 +717,15 @@ func (a *DatabaseMainCallsApiService) ListDatabaseVersionExecute(r ApiListDataba
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -739,7 +734,7 @@ func (a *DatabaseMainCallsApiService) ListDatabaseVersionExecute(r ApiListDataba
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

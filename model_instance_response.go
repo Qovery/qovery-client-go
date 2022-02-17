@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,10 +18,10 @@ import (
 
 // InstanceResponse struct for InstanceResponse
 type InstanceResponse struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Cpu *EnvironmentDatabasesCurrentMetricResponseCpu `json:"cpu,omitempty"`
-	Memory *EnvironmentDatabasesCurrentMetricResponseMemory `json:"memory,omitempty"`
+	CreatedAt *time.Time                                       `json:"created_at,omitempty"`
+	Name      *string                                          `json:"name,omitempty"`
+	Cpu       *EnvironmentDatabasesCurrentMetricResponseCpu    `json:"cpu,omitempty"`
+	Memory    *EnvironmentDatabasesCurrentMetricResponseMemory `json:"memory,omitempty"`
 }
 
 // NewInstanceResponse instantiates a new InstanceResponse object
@@ -221,5 +221,3 @@ func (v *NullableInstanceResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

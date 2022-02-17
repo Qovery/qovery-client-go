@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ProjectDeploymentRuleResponseList struct for ProjectDeploymentRuleResponseList
 type ProjectDeploymentRuleResponseList struct {
-	Results *[]ProjectDeploymentRuleResponse `json:"results,omitempty"`
+	Results []ProjectDeploymentRuleResponse `json:"results,omitempty"`
 }
 
 // NewProjectDeploymentRuleResponseList instantiates a new ProjectDeploymentRuleResponseList object
@@ -43,12 +43,12 @@ func (o *ProjectDeploymentRuleResponseList) GetResults() []ProjectDeploymentRule
 		var ret []ProjectDeploymentRuleResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectDeploymentRuleResponseList) GetResultsOk() (*[]ProjectDeploymentRuleResponse, bool) {
+func (o *ProjectDeploymentRuleResponseList) GetResultsOk() ([]ProjectDeploymentRuleResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ProjectDeploymentRuleResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []ProjectDeploymentRuleResponse and assigns it to the Results field.
 func (o *ProjectDeploymentRuleResponseList) SetResults(v []ProjectDeploymentRuleResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o ProjectDeploymentRuleResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableProjectDeploymentRuleResponseList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

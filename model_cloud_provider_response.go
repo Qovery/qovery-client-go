@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,10 +17,10 @@ import (
 
 // CloudProviderResponse struct for CloudProviderResponse
 type CloudProviderResponse struct {
-	ShortName *string `json:"short_name,omitempty"`
-	Name *string `json:"name,omitempty"`
-	LogoUrl *string `json:"logo_url,omitempty"`
-	Regions *[]ClusterRegionResponse `json:"regions,omitempty"`
+	ShortName *string                 `json:"short_name,omitempty"`
+	Name      *string                 `json:"name,omitempty"`
+	LogoUrl   *string                 `json:"logo_url,omitempty"`
+	Regions   []ClusterRegionResponse `json:"regions,omitempty"`
 }
 
 // NewCloudProviderResponse instantiates a new CloudProviderResponse object
@@ -142,12 +142,12 @@ func (o *CloudProviderResponse) GetRegions() []ClusterRegionResponse {
 		var ret []ClusterRegionResponse
 		return ret
 	}
-	return *o.Regions
+	return o.Regions
 }
 
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderResponse) GetRegionsOk() (*[]ClusterRegionResponse, bool) {
+func (o *CloudProviderResponse) GetRegionsOk() ([]ClusterRegionResponse, bool) {
 	if o == nil || o.Regions == nil {
 		return nil, false
 	}
@@ -165,7 +165,7 @@ func (o *CloudProviderResponse) HasRegions() bool {
 
 // SetRegions gets a reference to the given []ClusterRegionResponse and assigns it to the Regions field.
 func (o *CloudProviderResponse) SetRegions(v []ClusterRegionResponse) {
-	o.Regions = &v
+	o.Regions = v
 }
 
 func (o CloudProviderResponse) MarshalJSON() ([]byte, error) {
@@ -220,5 +220,3 @@ func (v *NullableCloudProviderResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

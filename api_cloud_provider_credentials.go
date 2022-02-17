@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,25 +13,25 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // CloudProviderCredentialsApiService CloudProviderCredentialsApi service
 type CloudProviderCredentialsApiService service
 
 type ApiCreateAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
+	ctx                   context.Context
+	ApiService            *CloudProviderCredentialsApiService
+	organizationId        string
 	awsCredentialsRequest *AwsCredentialsRequest
 }
 
@@ -40,46 +40,46 @@ func (r ApiCreateAWSCredentialsRequest) AwsCredentialsRequest(awsCredentialsRequ
 	return r
 }
 
-func (r ApiCreateAWSCredentialsRequest) Execute() (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (r ApiCreateAWSCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
 	return r.ApiService.CreateAWSCredentialsExecute(r)
 }
 
 /*
 CreateAWSCredentials Create AWS credentials set
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiCreateAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) CreateAWSCredentials(ctx _context.Context, organizationId string) ApiCreateAWSCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) CreateAWSCredentials(ctx context.Context, organizationId string) ApiCreateAWSCredentialsRequest {
 	return ApiCreateAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateAWSCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -110,15 +110,15 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -127,7 +127,7 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -138,9 +138,9 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 }
 
 type ApiCreateDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
+	ctx                  context.Context
+	ApiService           *CloudProviderCredentialsApiService
+	organizationId       string
 	doCredentialsRequest *DoCredentialsRequest
 }
 
@@ -149,46 +149,46 @@ func (r ApiCreateDOCredentialsRequest) DoCredentialsRequest(doCredentialsRequest
 	return r
 }
 
-func (r ApiCreateDOCredentialsRequest) Execute() (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (r ApiCreateDOCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
 	return r.ApiService.CreateDOCredentialsExecute(r)
 }
 
 /*
 CreateDOCredentials Create Digital Ocean credentials set
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiCreateDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) CreateDOCredentials(ctx _context.Context, organizationId string) ApiCreateDOCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) CreateDOCredentials(ctx context.Context, organizationId string) ApiCreateDOCredentialsRequest {
 	return ApiCreateDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCreateDOCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCreateDOCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateDOCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -219,15 +219,15 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -236,7 +236,7 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -247,9 +247,9 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 }
 
 type ApiCreateScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
+	ctx                        context.Context
+	ApiService                 *CloudProviderCredentialsApiService
+	organizationId             string
 	scalewayCredentialsRequest *ScalewayCredentialsRequest
 }
 
@@ -258,46 +258,46 @@ func (r ApiCreateScalewayCredentialsRequest) ScalewayCredentialsRequest(scaleway
 	return r
 }
 
-func (r ApiCreateScalewayCredentialsRequest) Execute() (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (r ApiCreateScalewayCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
 	return r.ApiService.CreateScalewayCredentialsExecute(r)
 }
 
 /*
 CreateScalewayCredentials Create Scaleway credentials set
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiCreateScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) CreateScalewayCredentials(ctx _context.Context, organizationId string) ApiCreateScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) CreateScalewayCredentials(ctx context.Context, organizationId string) ApiCreateScalewayCredentialsRequest {
 	return ApiCreateScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateScalewayCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -328,15 +328,15 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -345,7 +345,7 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -356,54 +356,53 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 }
 
 type ApiDeleteAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	credentialsId string
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsApiService
+	credentialsId  string
 	organizationId string
 }
 
-
-func (r ApiDeleteAWSCredentialsRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteAWSCredentialsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteAWSCredentialsExecute(r)
 }
 
 /*
 DeleteAWSCredentials Delete a set of AWS credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param credentialsId Credentials ID
  @param organizationId Organization ID
  @return ApiDeleteAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) DeleteAWSCredentials(ctx _context.Context, credentialsId string, organizationId string) ApiDeleteAWSCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) DeleteAWSCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteAWSCredentialsRequest {
 	return ApiDeleteAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
-		credentialsId: credentialsId,
+		ApiService:     a,
+		ctx:            ctx,
+		credentialsId:  credentialsId,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
-func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDeleteAWSCredentialsRequest) (*_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDeleteAWSCredentialsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteAWSCredentials")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", _neturl.PathEscape(parameterToString(r.credentialsId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -432,15 +431,15 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -451,54 +450,53 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDe
 }
 
 type ApiDeleteDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	credentialsId string
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsApiService
+	credentialsId  string
 	organizationId string
 }
 
-
-func (r ApiDeleteDOCredentialsRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteDOCredentialsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDOCredentialsExecute(r)
 }
 
 /*
 DeleteDOCredentials Delete a set of Digital Ocean credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param credentialsId Credentials ID
  @param organizationId Organization ID
  @return ApiDeleteDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) DeleteDOCredentials(ctx _context.Context, credentialsId string, organizationId string) ApiDeleteDOCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) DeleteDOCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteDOCredentialsRequest {
 	return ApiDeleteDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
-		credentialsId: credentialsId,
+		ApiService:     a,
+		ctx:            ctx,
+		credentialsId:  credentialsId,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
-func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDeleteDOCredentialsRequest) (*_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDeleteDOCredentialsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteDOCredentials")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", _neturl.PathEscape(parameterToString(r.credentialsId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -527,15 +525,15 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDel
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -546,54 +544,53 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDel
 }
 
 type ApiDeleteScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	credentialsId string
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsApiService
+	credentialsId  string
 	organizationId string
 }
 
-
-func (r ApiDeleteScalewayCredentialsRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteScalewayCredentialsRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteScalewayCredentialsExecute(r)
 }
 
 /*
 DeleteScalewayCredentials Delete a set of Scaleway credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param credentialsId Credentials ID
  @param organizationId Organization ID
  @return ApiDeleteScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentials(ctx _context.Context, credentialsId string, organizationId string) ApiDeleteScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteScalewayCredentialsRequest {
 	return ApiDeleteScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
-		credentialsId: credentialsId,
+		ApiService:     a,
+		ctx:            ctx,
+		credentialsId:  credentialsId,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
-func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r ApiDeleteScalewayCredentialsRequest) (*_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r ApiDeleteScalewayCredentialsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteScalewayCredentials")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", _neturl.PathEscape(parameterToString(r.credentialsId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -622,15 +619,15 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -641,10 +638,10 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r 
 }
 
 type ApiEditAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
-	credentialsId string
+	ctx                   context.Context
+	ApiService            *CloudProviderCredentialsApiService
+	organizationId        string
+	credentialsId         string
 	awsCredentialsRequest *AwsCredentialsRequest
 }
 
@@ -653,49 +650,49 @@ func (r ApiEditAWSCredentialsRequest) AwsCredentialsRequest(awsCredentialsReques
 	return r
 }
 
-func (r ApiEditAWSCredentialsRequest) Execute() (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (r ApiEditAWSCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
 	return r.ApiService.EditAWSCredentialsExecute(r)
 }
 
 /*
 EditAWSCredentials Edit a set of AWS credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @param credentialsId Credentials ID
  @return ApiEditAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) EditAWSCredentials(ctx _context.Context, organizationId string, credentialsId string) ApiEditAWSCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) EditAWSCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditAWSCredentialsRequest {
 	return ApiEditAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		credentialsId: credentialsId,
+		credentialsId:  credentialsId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditAWSCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", _neturl.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -726,15 +723,15 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -743,7 +740,7 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -754,10 +751,10 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 }
 
 type ApiEditDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
-	credentialsId string
+	ctx                  context.Context
+	ApiService           *CloudProviderCredentialsApiService
+	organizationId       string
+	credentialsId        string
 	doCredentialsRequest *DoCredentialsRequest
 }
 
@@ -766,49 +763,49 @@ func (r ApiEditDOCredentialsRequest) DoCredentialsRequest(doCredentialsRequest D
 	return r
 }
 
-func (r ApiEditDOCredentialsRequest) Execute() (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (r ApiEditDOCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
 	return r.ApiService.EditDOCredentialsExecute(r)
 }
 
 /*
 EditDOCredentials Edit a set of Digital Ocean credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @param credentialsId Credentials ID
  @return ApiEditDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) EditDOCredentials(ctx _context.Context, organizationId string, credentialsId string) ApiEditDOCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) EditDOCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditDOCredentialsRequest {
 	return ApiEditDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		credentialsId: credentialsId,
+		credentialsId:  credentialsId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditDOCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditDOCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditDOCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", _neturl.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -839,15 +836,15 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -856,7 +853,7 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -867,10 +864,10 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 }
 
 type ApiEditScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
-	organizationId string
-	credentialsId string
+	ctx                        context.Context
+	ApiService                 *CloudProviderCredentialsApiService
+	organizationId             string
+	credentialsId              string
 	scalewayCredentialsRequest *ScalewayCredentialsRequest
 }
 
@@ -879,49 +876,49 @@ func (r ApiEditScalewayCredentialsRequest) ScalewayCredentialsRequest(scalewayCr
 	return r
 }
 
-func (r ApiEditScalewayCredentialsRequest) Execute() (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (r ApiEditScalewayCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
 	return r.ApiService.EditScalewayCredentialsExecute(r)
 }
 
 /*
 EditScalewayCredentials Edit a set of Scaleway credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @param credentialsId Credentials ID
  @return ApiEditScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) EditScalewayCredentials(ctx _context.Context, organizationId string, credentialsId string) ApiEditScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) EditScalewayCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditScalewayCredentialsRequest {
 	return ApiEditScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		credentialsId: credentialsId,
+		credentialsId:  credentialsId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (ClusterCredentialsResponse, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditScalewayCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", _neturl.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -952,15 +949,15 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -969,7 +966,7 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -980,52 +977,51 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 }
 
 type ApiListAWSCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsApiService
 	organizationId string
 }
 
-
-func (r ApiListAWSCredentialsRequest) Execute() (ClusterCredentialsResponseList, *_nethttp.Response, error) {
+func (r ApiListAWSCredentialsRequest) Execute() (*ClusterCredentialsResponseList, *http.Response, error) {
 	return r.ApiService.ListAWSCredentialsExecute(r)
 }
 
 /*
 ListAWSCredentials List AWS credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiListAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) ListAWSCredentials(ctx _context.Context, organizationId string) ApiListAWSCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) ListAWSCredentials(ctx context.Context, organizationId string) ApiListAWSCredentialsRequest {
 	return ApiListAWSCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponseList
-func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiListAWSCredentialsRequest) (ClusterCredentialsResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiListAWSCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListAWSCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1054,15 +1050,15 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1071,7 +1067,7 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1082,52 +1078,51 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 }
 
 type ApiListDOCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsApiService
 	organizationId string
 }
 
-
-func (r ApiListDOCredentialsRequest) Execute() (ClusterCredentialsResponseList, *_nethttp.Response, error) {
+func (r ApiListDOCredentialsRequest) Execute() (*ClusterCredentialsResponseList, *http.Response, error) {
 	return r.ApiService.ListDOCredentialsExecute(r)
 }
 
 /*
 ListDOCredentials List DO credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiListDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) ListDOCredentials(ctx _context.Context, organizationId string) ApiListDOCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) ListDOCredentials(ctx context.Context, organizationId string) ApiListDOCredentialsRequest {
 	return ApiListDOCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponseList
-func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListDOCredentialsRequest) (ClusterCredentialsResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListDOCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListDOCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1156,15 +1151,15 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1173,7 +1168,7 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1184,52 +1179,51 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 }
 
 type ApiListScalewayCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *CloudProviderCredentialsApiService
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsApiService
 	organizationId string
 }
 
-
-func (r ApiListScalewayCredentialsRequest) Execute() (ClusterCredentialsResponseList, *_nethttp.Response, error) {
+func (r ApiListScalewayCredentialsRequest) Execute() (*ClusterCredentialsResponseList, *http.Response, error) {
 	return r.ApiService.ListScalewayCredentialsExecute(r)
 }
 
 /*
 ListScalewayCredentials List Scaleway credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @return ApiListScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) ListScalewayCredentials(ctx _context.Context, organizationId string) ApiListScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsApiService) ListScalewayCredentials(ctx context.Context, organizationId string) ApiListScalewayCredentialsRequest {
 	return ApiListScalewayCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return ClusterCredentialsResponseList
-func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r ApiListScalewayCredentialsRequest) (ClusterCredentialsResponseList, *_nethttp.Response, error) {
+func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r ApiListScalewayCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ClusterCredentialsResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListScalewayCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", _neturl.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1258,15 +1252,15 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1275,7 +1269,7 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r Ap
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -20,7 +20,7 @@ import (
 type EnvironmentDeploymentRuleEditRequest struct {
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 	AutoDelete *bool `json:"auto_delete,omitempty"`
-	AutoStop *bool `json:"auto_stop,omitempty"`
+	AutoStop   *bool `json:"auto_stop,omitempty"`
 	// specify value only if auto_stop = false
 	Timezone *string `json:"timezone,omitempty"`
 	// specify value only if auto_stop = false
@@ -205,7 +205,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetStartTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentDeploymentRuleEditRequest) GetStartTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StartTime.Get(), o.StartTime.IsSet()
@@ -224,6 +224,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) HasStartTime() bool {
 func (o *EnvironmentDeploymentRuleEditRequest) SetStartTime(v time.Time) {
 	o.StartTime.Set(&v)
 }
+
 // SetStartTimeNil sets the value for StartTime to be an explicit nil
 func (o *EnvironmentDeploymentRuleEditRequest) SetStartTimeNil() {
 	o.StartTime.Set(nil)
@@ -247,7 +248,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetStopTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentDeploymentRuleEditRequest) GetStopTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StopTime.Get(), o.StopTime.IsSet()
@@ -266,6 +267,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) HasStopTime() bool {
 func (o *EnvironmentDeploymentRuleEditRequest) SetStopTime(v time.Time) {
 	o.StopTime.Set(&v)
 }
+
 // SetStopTimeNil sets the value for StopTime to be an explicit nil
 func (o *EnvironmentDeploymentRuleEditRequest) SetStopTimeNil() {
 	o.StopTime.Set(nil)
@@ -278,7 +280,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) UnsetStopTime() {
 
 // GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []string {
-	if o == nil  {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -288,11 +290,11 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []string {
 // GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() (*[]string, bool) {
+func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() ([]string, bool) {
 	if o == nil || o.Weekdays == nil {
 		return nil, false
 	}
-	return &o.Weekdays, true
+	return o.Weekdays, true
 }
 
 // HasWeekdays returns a boolean if a field has been set.
@@ -370,5 +372,3 @@ func (v *NullableEnvironmentDeploymentRuleEditRequest) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

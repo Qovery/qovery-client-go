@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,63 +13,62 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // GitRepositoriesApiService GitRepositoriesApi service
 type GitRepositoriesApiService service
 
 type ApiGetBitbucketRepositoriesRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
 
-
-func (r ApiGetBitbucketRepositoriesRequest) Execute() (GitRepositoryResponseList, *_nethttp.Response, error) {
+func (r ApiGetBitbucketRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
 	return r.ApiService.GetBitbucketRepositoriesExecute(r)
 }
 
 /*
 GetBitbucketRepositories Get bitbucket repositories of the connected user
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBitbucketRepositoriesRequest
 */
-func (a *GitRepositoriesApiService) GetBitbucketRepositories(ctx _context.Context) ApiGetBitbucketRepositoriesRequest {
+func (a *GitRepositoriesApiService) GetBitbucketRepositories(ctx context.Context) ApiGetBitbucketRepositoriesRequest {
 	return ApiGetBitbucketRepositoriesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitbucketRepositoriesRequest) (GitRepositoryResponseList, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  GitRepositoryResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetBitbucketRepositories")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/bitbucket/repository"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -98,15 +97,15 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitb
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -115,7 +114,7 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitb
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -126,9 +125,9 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitb
 }
 
 type ApiGetBitbucketRepositoryBranchesRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
-	name *string
+	name       *string
 }
 
 // The name of the repository where to retrieve the branches
@@ -137,43 +136,43 @@ func (r ApiGetBitbucketRepositoryBranchesRequest) Name(name string) ApiGetBitbuc
 	return r
 }
 
-func (r ApiGetBitbucketRepositoryBranchesRequest) Execute() (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
+func (r ApiGetBitbucketRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
 	return r.ApiService.GetBitbucketRepositoryBranchesExecute(r)
 }
 
 /*
 GetBitbucketRepositoryBranches Get bitbucket branches of the specified repository
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetBitbucketRepositoryBranchesRequest
 */
-func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranches(ctx _context.Context) ApiGetBitbucketRepositoryBranchesRequest {
+func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranches(ctx context.Context) ApiGetBitbucketRepositoryBranchesRequest {
 	return ApiGetBitbucketRepositoryBranchesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiGetBitbucketRepositoryBranchesRequest) (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiGetBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  GitRepositoryBranchResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetBitbucketRepositoryBranches")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/bitbucket/repository/branch"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -205,15 +204,15 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -222,7 +221,7 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -233,48 +232,47 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiG
 }
 
 type ApiGetGitProviderAccountRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
 
-
-func (r ApiGetGitProviderAccountRequest) Execute() (GitAuthProviderResponseList, *_nethttp.Response, error) {
+func (r ApiGetGitProviderAccountRequest) Execute() (*GitAuthProviderResponseList, *http.Response, error) {
 	return r.ApiService.GetGitProviderAccountExecute(r)
 }
 
 /*
 GetGitProviderAccount Get git provider accounts
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetGitProviderAccountRequest
 */
-func (a *GitRepositoriesApiService) GetGitProviderAccount(ctx _context.Context) ApiGetGitProviderAccountRequest {
+func (a *GitRepositoriesApiService) GetGitProviderAccount(ctx context.Context) ApiGetGitProviderAccountRequest {
 	return ApiGetGitProviderAccountRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 //  @return GitAuthProviderResponseList
-func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProviderAccountRequest) (GitAuthProviderResponseList, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  GitAuthProviderResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitAuthProviderResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitProviderAccount")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/gitAuthProvider"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -303,15 +301,15 @@ func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -320,7 +318,7 @@ func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProv
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -331,48 +329,47 @@ func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProv
 }
 
 type ApiGetGithubRepositoriesRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
 
-
-func (r ApiGetGithubRepositoriesRequest) Execute() (GitRepositoryResponseList, *_nethttp.Response, error) {
+func (r ApiGetGithubRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
 	return r.ApiService.GetGithubRepositoriesExecute(r)
 }
 
 /*
 GetGithubRepositories Get github repositories of the connected user
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetGithubRepositoriesRequest
 */
-func (a *GitRepositoriesApiService) GetGithubRepositories(ctx _context.Context) ApiGetGithubRepositoriesRequest {
+func (a *GitRepositoriesApiService) GetGithubRepositories(ctx context.Context) ApiGetGithubRepositoriesRequest {
 	return ApiGetGithubRepositoriesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubRepositoriesRequest) (GitRepositoryResponseList, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  GitRepositoryResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGithubRepositories")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/github/repository"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -401,15 +398,15 @@ func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -418,7 +415,7 @@ func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -429,9 +426,9 @@ func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubR
 }
 
 type ApiGetGithubRepositoryBranchesRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
-	name *string
+	name       *string
 }
 
 // The name of the repository where to retrieve the branches
@@ -440,43 +437,43 @@ func (r ApiGetGithubRepositoryBranchesRequest) Name(name string) ApiGetGithubRep
 	return r
 }
 
-func (r ApiGetGithubRepositoryBranchesRequest) Execute() (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
+func (r ApiGetGithubRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
 	return r.ApiService.GetGithubRepositoryBranchesExecute(r)
 }
 
 /*
 GetGithubRepositoryBranches Get github branches of the specified repository
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetGithubRepositoryBranchesRequest
 */
-func (a *GitRepositoriesApiService) GetGithubRepositoryBranches(ctx _context.Context) ApiGetGithubRepositoryBranchesRequest {
+func (a *GitRepositoriesApiService) GetGithubRepositoryBranches(ctx context.Context) ApiGetGithubRepositoryBranchesRequest {
 	return ApiGetGithubRepositoryBranchesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetGithubRepositoryBranchesRequest) (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  GitRepositoryBranchResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGithubRepositoryBranches")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/github/repository/branch"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -508,15 +505,15 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -525,7 +522,7 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -536,48 +533,47 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetG
 }
 
 type ApiGetGitlabRepositoriesRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
 
-
-func (r ApiGetGitlabRepositoriesRequest) Execute() (GitRepositoryResponseList, *_nethttp.Response, error) {
+func (r ApiGetGitlabRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
 	return r.ApiService.GetGitlabRepositoriesExecute(r)
 }
 
 /*
 GetGitlabRepositories Get gitlab repositories of the connected user
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetGitlabRepositoriesRequest
 */
-func (a *GitRepositoriesApiService) GetGitlabRepositories(ctx _context.Context) ApiGetGitlabRepositoriesRequest {
+func (a *GitRepositoriesApiService) GetGitlabRepositories(ctx context.Context) ApiGetGitlabRepositoriesRequest {
 	return ApiGetGitlabRepositoriesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabRepositoriesRequest) (GitRepositoryResponseList, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  GitRepositoryResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositories")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/gitlab/repository"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -606,15 +602,15 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -623,7 +619,7 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabR
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -634,9 +630,9 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabR
 }
 
 type ApiGetGitlabRepositoryBranchesRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
-	name *string
+	name       *string
 }
 
 // The name of the repository to retrieve the branches
@@ -645,43 +641,43 @@ func (r ApiGetGitlabRepositoryBranchesRequest) Name(name string) ApiGetGitlabRep
 	return r
 }
 
-func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
+func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
 	return r.ApiService.GetGitlabRepositoryBranchesExecute(r)
 }
 
 /*
 GetGitlabRepositoryBranches Get gitlab branches of the specified repository
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetGitlabRepositoryBranchesRequest
 */
-func (a *GitRepositoriesApiService) GetGitlabRepositoryBranches(ctx _context.Context) ApiGetGitlabRepositoryBranchesRequest {
+func (a *GitRepositoriesApiService) GetGitlabRepositoryBranches(ctx context.Context) ApiGetGitlabRepositoryBranchesRequest {
 	return ApiGetGitlabRepositoryBranchesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (GitRepositoryBranchResponseList, *_nethttp.Response, error) {
+func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  GitRepositoryBranchResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositoryBranches")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/gitlab/repository/branch"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	if r.name != nil {
 		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
@@ -713,15 +709,15 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -730,7 +726,7 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetG
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

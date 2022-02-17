@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,12 +19,12 @@ import (
 // EnvironmentVariableResponse struct for EnvironmentVariableResponse
 type EnvironmentVariableResponse struct {
 	OverriddenVariable *map[string]interface{} `json:"overridden_variable,omitempty"`
-	AliasedVariable *map[string]interface{} `json:"aliased_variable,omitempty"`
-	Scope string `json:"scope"`
-	ServiceName *string `json:"service_name,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	AliasedVariable    *map[string]interface{} `json:"aliased_variable,omitempty"`
+	Scope              string                  `json:"scope"`
+	ServiceName        *string                 `json:"service_name,omitempty"`
+	Id                 string                  `json:"id"`
+	CreatedAt          time.Time               `json:"created_at"`
+	UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
 	// key is case sensitive
 	Key string `json:"key"`
 	// value of the env variable.
@@ -129,7 +129,7 @@ func (o *EnvironmentVariableResponse) GetScope() string {
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariableResponse) GetScopeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Scope, true
@@ -185,7 +185,7 @@ func (o *EnvironmentVariableResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariableResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -209,7 +209,7 @@ func (o *EnvironmentVariableResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariableResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -265,7 +265,7 @@ func (o *EnvironmentVariableResponse) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariableResponse) GetKeyOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Key, true
@@ -289,7 +289,7 @@ func (o *EnvironmentVariableResponse) GetValue() string {
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariableResponse) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Value, true
@@ -367,5 +367,3 @@ func (v *NullableEnvironmentVariableResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

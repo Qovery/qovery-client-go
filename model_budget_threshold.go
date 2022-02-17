@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,9 +17,9 @@ import (
 
 // BudgetThreshold struct for BudgetThreshold
 type BudgetThreshold struct {
-	TotalInCents *int32 `json:"total_in_cents,omitempty"`
-	Total *float32 `json:"total,omitempty"`
-	CurrencyCode *string `json:"currency_code,omitempty"`
+	TotalInCents *int32   `json:"total_in_cents,omitempty"`
+	Total        *float32 `json:"total,omitempty"`
+	CurrencyCode *string  `json:"currency_code,omitempty"`
 }
 
 // NewBudgetThreshold instantiates a new BudgetThreshold object
@@ -184,5 +184,3 @@ func (v *NullableBudgetThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -43,8 +43,8 @@ func main() {
     creditCardRequest := *openapiclient.NewCreditCardRequest("Number_example", "Cvv_example", int32(6), int32(2025)) // CreditCardRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.AddCreditCard(context.Background(), organizationId).CreditCardRequest(creditCardRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.AddCreditCard(context.Background(), organizationId).CreditCardRequest(creditCardRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.AddCreditCard``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,8 +113,8 @@ func main() {
     organizationCreditCodeRequest := *openapiclient.NewOrganizationCreditCodeRequest() // OrganizationCreditCodeRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.AddCreditCode(context.Background(), organizationId).OrganizationCreditCodeRequest(organizationCreditCodeRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.AddCreditCode(context.Background(), organizationId).OrganizationCreditCodeRequest(organizationCreditCodeRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.AddCreditCode``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,8 +181,8 @@ func main() {
     billingInfoRequest := *openapiclient.NewBillingInfoRequest("Forrest", "Gump", "forrest@gump.com", "21 Jenny Street", "Greenbow", "36744", "US") // BillingInfoRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.EditOrganizationBillingInfo(context.Background(), organizationId).BillingInfoRequest(billingInfoRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.EditOrganizationBillingInfo(context.Background(), organizationId).BillingInfoRequest(billingInfoRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.EditOrganizationBillingInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -253,8 +253,8 @@ func main() {
     clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.GetClusterCurrentCost(context.Background(), organizationId, clusterId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.GetClusterCurrentCost(context.Background(), organizationId, clusterId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetClusterCurrentCost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -323,8 +323,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.GetOrganizationBillingInfo(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.GetOrganizationBillingInfo(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationBillingInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -393,8 +393,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.GetOrganizationBillingStatus(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.GetOrganizationBillingStatus(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationBillingStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -461,8 +461,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.GetOrganizationCurrentCost(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.GetOrganizationCurrentCost(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationCurrentCost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -530,8 +530,8 @@ func main() {
     invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.GetOrganizationInvoice(context.Background(), organizationId, invoiceId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.GetOrganizationInvoice(context.Background(), organizationId, invoiceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationInvoice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -603,8 +603,8 @@ func main() {
     invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.GetOrganizationInvoicePDF(context.Background(), organizationId, invoiceId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.GetOrganizationInvoicePDF(context.Background(), organizationId, invoiceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationInvoicePDF``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -673,8 +673,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.ListOrganizationCreditCards(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.ListOrganizationCreditCards(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.ListOrganizationCreditCards``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -741,8 +741,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.ListOrganizationInvoice(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.ListOrganizationInvoice(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.ListOrganizationInvoice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -809,8 +809,8 @@ func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.OrganizationDownloadAllInvoices(context.Background(), organizationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.OrganizationDownloadAllInvoices(context.Background(), organizationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.OrganizationDownloadAllInvoices``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -876,8 +876,8 @@ func main() {
     creditCardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credit Card ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.BillingApi.OrganizationOrganizationIdCreditCardCreditCardIdDelete(context.Background(), organizationId, creditCardId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.OrganizationOrganizationIdCreditCardCreditCardIdDelete(context.Background(), organizationId, creditCardId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.OrganizationOrganizationIdCreditCardCreditCardIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

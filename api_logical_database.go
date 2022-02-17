@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -13,29 +13,28 @@ package qovery
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
 // Linger please
 var (
-	_ _context.Context
+	_ context.Context
 )
 
 // LogicalDatabaseApiService LogicalDatabaseApi service
 type LogicalDatabaseApiService service
 
 type ApiDeleteLogicalDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *LogicalDatabaseApiService
+	ctx               context.Context
+	ApiService        *LogicalDatabaseApiService
 	logicalDatabaseId string
 }
 
-
-func (r ApiDeleteLogicalDatabaseRequest) Execute() (*_nethttp.Response, error) {
+func (r ApiDeleteLogicalDatabaseRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteLogicalDatabaseExecute(r)
 }
 
@@ -44,37 +43,37 @@ DeleteLogicalDatabase Delete a Logical database
 
 To delete a logical database you must have the project user permission
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param logicalDatabaseId Logical Database ID
  @return ApiDeleteLogicalDatabaseRequest
 */
-func (a *LogicalDatabaseApiService) DeleteLogicalDatabase(ctx _context.Context, logicalDatabaseId string) ApiDeleteLogicalDatabaseRequest {
+func (a *LogicalDatabaseApiService) DeleteLogicalDatabase(ctx context.Context, logicalDatabaseId string) ApiDeleteLogicalDatabaseRequest {
 	return ApiDeleteLogicalDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		logicalDatabaseId: logicalDatabaseId,
 	}
 }
 
 // Execute executes the request
-func (a *LogicalDatabaseApiService) DeleteLogicalDatabaseExecute(r ApiDeleteLogicalDatabaseRequest) (*_nethttp.Response, error) {
+func (a *LogicalDatabaseApiService) DeleteLogicalDatabaseExecute(r ApiDeleteLogicalDatabaseRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.DeleteLogicalDatabase")
 	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/logicalDatabase/{logicalDatabaseId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", _neturl.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", url.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -103,15 +102,15 @@ func (a *LogicalDatabaseApiService) DeleteLogicalDatabaseExecute(r ApiDeleteLogi
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -122,9 +121,9 @@ func (a *LogicalDatabaseApiService) DeleteLogicalDatabaseExecute(r ApiDeleteLogi
 }
 
 type ApiEditLogicalDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *LogicalDatabaseApiService
-	logicalDatabaseId string
+	ctx                    context.Context
+	ApiService             *LogicalDatabaseApiService
+	logicalDatabaseId      string
 	logicalDatabaseRequest *LogicalDatabaseRequest
 }
 
@@ -133,46 +132,46 @@ func (r ApiEditLogicalDatabaseRequest) LogicalDatabaseRequest(logicalDatabaseReq
 	return r
 }
 
-func (r ApiEditLogicalDatabaseRequest) Execute() (LogicalDatabaseResponse, *_nethttp.Response, error) {
+func (r ApiEditLogicalDatabaseRequest) Execute() (*LogicalDatabaseResponse, *http.Response, error) {
 	return r.ApiService.EditLogicalDatabaseExecute(r)
 }
 
 /*
 EditLogicalDatabase Edit a logical database
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param logicalDatabaseId Logical Database ID
  @return ApiEditLogicalDatabaseRequest
 */
-func (a *LogicalDatabaseApiService) EditLogicalDatabase(ctx _context.Context, logicalDatabaseId string) ApiEditLogicalDatabaseRequest {
+func (a *LogicalDatabaseApiService) EditLogicalDatabase(ctx context.Context, logicalDatabaseId string) ApiEditLogicalDatabaseRequest {
 	return ApiEditLogicalDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		logicalDatabaseId: logicalDatabaseId,
 	}
 }
 
 // Execute executes the request
 //  @return LogicalDatabaseResponse
-func (a *LogicalDatabaseApiService) EditLogicalDatabaseExecute(r ApiEditLogicalDatabaseRequest) (LogicalDatabaseResponse, *_nethttp.Response, error) {
+func (a *LogicalDatabaseApiService) EditLogicalDatabaseExecute(r ApiEditLogicalDatabaseRequest) (*LogicalDatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LogicalDatabaseResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LogicalDatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.EditLogicalDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/logicalDatabase/{logicalDatabaseId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", _neturl.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", url.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -203,15 +202,15 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabaseExecute(r ApiEditLogicalD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -220,7 +219,7 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabaseExecute(r ApiEditLogicalD
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -231,9 +230,9 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabaseExecute(r ApiEditLogicalD
 }
 
 type ApiEditLogicalDatabaseCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *LogicalDatabaseApiService
-	logicalDatabaseId string
+	ctx                context.Context
+	ApiService         *LogicalDatabaseApiService
+	logicalDatabaseId  string
 	credentialsRequest *CredentialsRequest
 }
 
@@ -242,46 +241,46 @@ func (r ApiEditLogicalDatabaseCredentialsRequest) CredentialsRequest(credentials
 	return r
 }
 
-func (r ApiEditLogicalDatabaseCredentialsRequest) Execute() (CredentialsResponse, *_nethttp.Response, error) {
+func (r ApiEditLogicalDatabaseCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
 	return r.ApiService.EditLogicalDatabaseCredentialsExecute(r)
 }
 
 /*
 EditLogicalDatabaseCredentials Edit logical database credentials
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param logicalDatabaseId Logical Database ID
  @return ApiEditLogicalDatabaseCredentialsRequest
 */
-func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentials(ctx _context.Context, logicalDatabaseId string) ApiEditLogicalDatabaseCredentialsRequest {
+func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentials(ctx context.Context, logicalDatabaseId string) ApiEditLogicalDatabaseCredentialsRequest {
 	return ApiEditLogicalDatabaseCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		logicalDatabaseId: logicalDatabaseId,
 	}
 }
 
 // Execute executes the request
 //  @return CredentialsResponse
-func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentialsExecute(r ApiEditLogicalDatabaseCredentialsRequest) (CredentialsResponse, *_nethttp.Response, error) {
+func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentialsExecute(r ApiEditLogicalDatabaseCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CredentialsResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.EditLogicalDatabaseCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/logicalDatabase/{logicalDatabaseId}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", _neturl.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", url.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -312,15 +311,15 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentialsExecute(r ApiE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -329,7 +328,7 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentialsExecute(r ApiE
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -340,13 +339,12 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentialsExecute(r ApiE
 }
 
 type ApiGetLogicalDatabaseRequest struct {
-	ctx _context.Context
-	ApiService *LogicalDatabaseApiService
+	ctx               context.Context
+	ApiService        *LogicalDatabaseApiService
 	logicalDatabaseId string
 }
 
-
-func (r ApiGetLogicalDatabaseRequest) Execute() (LogicalDatabaseResponse, *_nethttp.Response, error) {
+func (r ApiGetLogicalDatabaseRequest) Execute() (*LogicalDatabaseResponse, *http.Response, error) {
 	return r.ApiService.GetLogicalDatabaseExecute(r)
 }
 
@@ -355,39 +353,39 @@ GetLogicalDatabase Get logical database by ID
 
 A logical database exists inside a database. The database is a service that exists within an environment, that you can deploy, and that has allocated resources. A database can have several logical databases
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param logicalDatabaseId Logical Database ID
  @return ApiGetLogicalDatabaseRequest
 */
-func (a *LogicalDatabaseApiService) GetLogicalDatabase(ctx _context.Context, logicalDatabaseId string) ApiGetLogicalDatabaseRequest {
+func (a *LogicalDatabaseApiService) GetLogicalDatabase(ctx context.Context, logicalDatabaseId string) ApiGetLogicalDatabaseRequest {
 	return ApiGetLogicalDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		logicalDatabaseId: logicalDatabaseId,
 	}
 }
 
 // Execute executes the request
 //  @return LogicalDatabaseResponse
-func (a *LogicalDatabaseApiService) GetLogicalDatabaseExecute(r ApiGetLogicalDatabaseRequest) (LogicalDatabaseResponse, *_nethttp.Response, error) {
+func (a *LogicalDatabaseApiService) GetLogicalDatabaseExecute(r ApiGetLogicalDatabaseRequest) (*LogicalDatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LogicalDatabaseResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LogicalDatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.GetLogicalDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/logicalDatabase/{logicalDatabaseId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", _neturl.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", url.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -416,15 +414,15 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabaseExecute(r ApiGetLogicalDat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -433,7 +431,7 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabaseExecute(r ApiGetLogicalDat
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -444,52 +442,51 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabaseExecute(r ApiGetLogicalDat
 }
 
 type ApiGetLogicalDatabaseCredentialsRequest struct {
-	ctx _context.Context
-	ApiService *LogicalDatabaseApiService
+	ctx               context.Context
+	ApiService        *LogicalDatabaseApiService
 	logicalDatabaseId string
 }
 
-
-func (r ApiGetLogicalDatabaseCredentialsRequest) Execute() (CredentialsResponse, *_nethttp.Response, error) {
+func (r ApiGetLogicalDatabaseCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
 	return r.ApiService.GetLogicalDatabaseCredentialsExecute(r)
 }
 
 /*
 GetLogicalDatabaseCredentials Get  credentials of the logical database
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param logicalDatabaseId Logical Database ID
  @return ApiGetLogicalDatabaseCredentialsRequest
 */
-func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentials(ctx _context.Context, logicalDatabaseId string) ApiGetLogicalDatabaseCredentialsRequest {
+func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentials(ctx context.Context, logicalDatabaseId string) ApiGetLogicalDatabaseCredentialsRequest {
 	return ApiGetLogicalDatabaseCredentialsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		logicalDatabaseId: logicalDatabaseId,
 	}
 }
 
 // Execute executes the request
 //  @return CredentialsResponse
-func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentialsExecute(r ApiGetLogicalDatabaseCredentialsRequest) (CredentialsResponse, *_nethttp.Response, error) {
+func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentialsExecute(r ApiGetLogicalDatabaseCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  CredentialsResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.GetLogicalDatabaseCredentials")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/logicalDatabase/{logicalDatabaseId}/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", _neturl.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", url.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -518,15 +515,15 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentialsExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -535,7 +532,7 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentialsExecute(r ApiGe
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -546,52 +543,51 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentialsExecute(r ApiGe
 }
 
 type ApiListLogicalDatabaseApplicationRequest struct {
-	ctx _context.Context
-	ApiService *LogicalDatabaseApiService
+	ctx               context.Context
+	ApiService        *LogicalDatabaseApiService
 	logicalDatabaseId string
 }
 
-
-func (r ApiListLogicalDatabaseApplicationRequest) Execute() (ApplicationResponseList, *_nethttp.Response, error) {
+func (r ApiListLogicalDatabaseApplicationRequest) Execute() (*ApplicationResponseList, *http.Response, error) {
 	return r.ApiService.ListLogicalDatabaseApplicationExecute(r)
 }
 
 /*
 ListLogicalDatabaseApplication List linked applications
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param logicalDatabaseId Logical Database ID
  @return ApiListLogicalDatabaseApplicationRequest
 */
-func (a *LogicalDatabaseApiService) ListLogicalDatabaseApplication(ctx _context.Context, logicalDatabaseId string) ApiListLogicalDatabaseApplicationRequest {
+func (a *LogicalDatabaseApiService) ListLogicalDatabaseApplication(ctx context.Context, logicalDatabaseId string) ApiListLogicalDatabaseApplicationRequest {
 	return ApiListLogicalDatabaseApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:        a,
+		ctx:               ctx,
 		logicalDatabaseId: logicalDatabaseId,
 	}
 }
 
 // Execute executes the request
 //  @return ApplicationResponseList
-func (a *LogicalDatabaseApiService) ListLogicalDatabaseApplicationExecute(r ApiListLogicalDatabaseApplicationRequest) (ApplicationResponseList, *_nethttp.Response, error) {
+func (a *LogicalDatabaseApiService) ListLogicalDatabaseApplicationExecute(r ApiListLogicalDatabaseApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  ApplicationResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.ListLogicalDatabaseApplication")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/logicalDatabase/{logicalDatabaseId}/application"
-	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", _neturl.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"logicalDatabaseId"+"}", url.PathEscape(parameterToString(r.logicalDatabaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -620,15 +616,15 @@ func (a *LogicalDatabaseApiService) ListLogicalDatabaseApplicationExecute(r ApiL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -637,7 +633,7 @@ func (a *LogicalDatabaseApiService) ListLogicalDatabaseApplicationExecute(r ApiL
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -648,13 +644,12 @@ func (a *LogicalDatabaseApiService) ListLogicalDatabaseApplicationExecute(r ApiL
 }
 
 type ApiListLogicalDatabaseDatabaseRequest struct {
-	ctx _context.Context
+	ctx        context.Context
 	ApiService *LogicalDatabaseApiService
 	databaseId string
 }
 
-
-func (r ApiListLogicalDatabaseDatabaseRequest) Execute() (LogicalDatabaseResponseList, *_nethttp.Response, error) {
+func (r ApiListLogicalDatabaseDatabaseRequest) Execute() (*LogicalDatabaseResponseList, *http.Response, error) {
 	return r.ApiService.ListLogicalDatabaseDatabaseExecute(r)
 }
 
@@ -663,39 +658,39 @@ ListLogicalDatabaseDatabase List logical databases of a database
 
 A logical database exists inside a database. The database is a service that exists within an environment, that you can deploy, and that has allocated resources. A database can have several logical databases
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
  @return ApiListLogicalDatabaseDatabaseRequest
 */
-func (a *LogicalDatabaseApiService) ListLogicalDatabaseDatabase(ctx _context.Context, databaseId string) ApiListLogicalDatabaseDatabaseRequest {
+func (a *LogicalDatabaseApiService) ListLogicalDatabaseDatabase(ctx context.Context, databaseId string) ApiListLogicalDatabaseDatabaseRequest {
 	return ApiListLogicalDatabaseDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //  @return LogicalDatabaseResponseList
-func (a *LogicalDatabaseApiService) ListLogicalDatabaseDatabaseExecute(r ApiListLogicalDatabaseDatabaseRequest) (LogicalDatabaseResponseList, *_nethttp.Response, error) {
+func (a *LogicalDatabaseApiService) ListLogicalDatabaseDatabaseExecute(r ApiListLogicalDatabaseDatabaseRequest) (*LogicalDatabaseResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  LogicalDatabaseResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LogicalDatabaseResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.ListLogicalDatabaseDatabase")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/logicalDatabase"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", _neturl.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -724,15 +719,15 @@ func (a *LogicalDatabaseApiService) ListLogicalDatabaseDatabaseExecute(r ApiList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -741,7 +736,7 @@ func (a *LogicalDatabaseApiService) ListLogicalDatabaseDatabaseExecute(r ApiList
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

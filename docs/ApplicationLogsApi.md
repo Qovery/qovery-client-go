@@ -32,8 +32,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationLogsApi.ListApplicationLog(context.Background(), applicationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationLogsApi.ListApplicationLog(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationLogsApi.ListApplicationLog``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

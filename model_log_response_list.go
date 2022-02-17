@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // LogResponseList struct for LogResponseList
 type LogResponseList struct {
-	Results *[]LogResponse `json:"results,omitempty"`
+	Results []LogResponse `json:"results,omitempty"`
 }
 
 // NewLogResponseList instantiates a new LogResponseList object
@@ -43,12 +43,12 @@ func (o *LogResponseList) GetResults() []LogResponse {
 		var ret []LogResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LogResponseList) GetResultsOk() (*[]LogResponse, bool) {
+func (o *LogResponseList) GetResultsOk() ([]LogResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *LogResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []LogResponse and assigns it to the Results field.
 func (o *LogResponseList) SetResults(v []LogResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o LogResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableLogResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

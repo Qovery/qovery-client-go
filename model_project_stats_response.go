@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,8 +17,8 @@ import (
 
 // ProjectStatsResponse struct for ProjectStatsResponse
 type ProjectStatsResponse struct {
-	Id string `json:"id"`
-	ServiceTotalNumber *float32 `json:"service_total_number,omitempty"`
+	Id                     string   `json:"id"`
+	ServiceTotalNumber     *float32 `json:"service_total_number,omitempty"`
 	EnvironmentTotalNumber *float32 `json:"environment_total_number,omitempty"`
 }
 
@@ -53,7 +53,7 @@ func (o *ProjectStatsResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ProjectStatsResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -177,5 +177,3 @@ func (v *NullableProjectStatsResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

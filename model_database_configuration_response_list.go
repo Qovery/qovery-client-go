@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // DatabaseConfigurationResponseList struct for DatabaseConfigurationResponseList
 type DatabaseConfigurationResponseList struct {
-	Results *[]DatabaseConfigurationResponse `json:"results,omitempty"`
+	Results []DatabaseConfigurationResponse `json:"results,omitempty"`
 }
 
 // NewDatabaseConfigurationResponseList instantiates a new DatabaseConfigurationResponseList object
@@ -43,12 +43,12 @@ func (o *DatabaseConfigurationResponseList) GetResults() []DatabaseConfiguration
 		var ret []DatabaseConfigurationResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseConfigurationResponseList) GetResultsOk() (*[]DatabaseConfigurationResponse, bool) {
+func (o *DatabaseConfigurationResponseList) GetResultsOk() ([]DatabaseConfigurationResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *DatabaseConfigurationResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []DatabaseConfigurationResponse and assigns it to the Results field.
 func (o *DatabaseConfigurationResponseList) SetResults(v []DatabaseConfigurationResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o DatabaseConfigurationResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableDatabaseConfigurationResponseList) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

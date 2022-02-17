@@ -39,8 +39,8 @@ func main() {
     environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example", "Value_example") // EnvironmentVariableRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable(context.Background(), applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable(context.Background(), applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -112,8 +112,8 @@ func main() {
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias(context.Background(), applicationId, environmentVariableId).Key(key).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias(context.Background(), applicationId, environmentVariableId).Key(key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -187,8 +187,8 @@ func main() {
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride(context.Background(), applicationId, environmentVariableId).Value(value).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride(context.Background(), applicationId, environmentVariableId).Value(value).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,8 +261,8 @@ func main() {
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.DeleteApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.DeleteApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.DeleteApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,8 +333,8 @@ func main() {
     environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example", "Value_example") // EnvironmentVariableEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -407,8 +407,8 @@ func main() {
     variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVars{*openapiclient.NewVariableImportRequestVars("Name_example", "Value_example", "Scope_example", false)}) // VariableImportRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.ImportEnvironmentVariable(context.Background(), applicationId).VariableImportRequest(variableImportRequest).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.ImportEnvironmentVariable(context.Background(), applicationId).VariableImportRequest(variableImportRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.ImportEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -476,8 +476,8 @@ func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ApplicationEnvironmentVariableApi.ListApplicationEnvironmentVariable(context.Background(), applicationId).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableApi.ListApplicationEnvironmentVariable(context.Background(), applicationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.ListApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

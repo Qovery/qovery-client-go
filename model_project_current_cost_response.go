@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,11 +17,11 @@ import (
 
 // ProjectCurrentCostResponse struct for ProjectCurrentCostResponse
 type ProjectCurrentCostResponse struct {
-	Environments *[]GenericObjectCurrentCostResponse `json:"environments,omitempty"`
-	Id string `json:"id"`
-	Name string `json:"name"`
-	ConsumedTimeInSeconds int32 `json:"consumed_time_in_seconds"`
-	Cost CostResponse `json:"cost"`
+	Environments          []GenericObjectCurrentCostResponse `json:"environments,omitempty"`
+	Id                    string                             `json:"id"`
+	Name                  string                             `json:"name"`
+	ConsumedTimeInSeconds int32                              `json:"consumed_time_in_seconds"`
+	Cost                  CostResponse                       `json:"cost"`
 }
 
 // NewProjectCurrentCostResponse instantiates a new ProjectCurrentCostResponse object
@@ -51,12 +51,12 @@ func (o *ProjectCurrentCostResponse) GetEnvironments() []GenericObjectCurrentCos
 		var ret []GenericObjectCurrentCostResponse
 		return ret
 	}
-	return *o.Environments
+	return o.Environments
 }
 
 // GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectCurrentCostResponse) GetEnvironmentsOk() (*[]GenericObjectCurrentCostResponse, bool) {
+func (o *ProjectCurrentCostResponse) GetEnvironmentsOk() ([]GenericObjectCurrentCostResponse, bool) {
 	if o == nil || o.Environments == nil {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *ProjectCurrentCostResponse) HasEnvironments() bool {
 
 // SetEnvironments gets a reference to the given []GenericObjectCurrentCostResponse and assigns it to the Environments field.
 func (o *ProjectCurrentCostResponse) SetEnvironments(v []GenericObjectCurrentCostResponse) {
-	o.Environments = &v
+	o.Environments = v
 }
 
 // GetId returns the Id field value
@@ -90,7 +90,7 @@ func (o *ProjectCurrentCostResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ProjectCurrentCostResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -114,7 +114,7 @@ func (o *ProjectCurrentCostResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ProjectCurrentCostResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -138,7 +138,7 @@ func (o *ProjectCurrentCostResponse) GetConsumedTimeInSeconds() int32 {
 // GetConsumedTimeInSecondsOk returns a tuple with the ConsumedTimeInSeconds field value
 // and a boolean to check if the value has been set.
 func (o *ProjectCurrentCostResponse) GetConsumedTimeInSecondsOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ConsumedTimeInSeconds, true
@@ -162,7 +162,7 @@ func (o *ProjectCurrentCostResponse) GetCost() CostResponse {
 // GetCostOk returns a tuple with the Cost field value
 // and a boolean to check if the value has been set.
 func (o *ProjectCurrentCostResponse) GetCostOk() (*CostResponse, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Cost, true
@@ -228,5 +228,3 @@ func (v *NullableProjectCurrentCostResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

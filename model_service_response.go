@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -33,10 +33,10 @@ type ServiceResponse struct {
 	// describes the typology of service (container, postgresl, redis...)
 	ServiceTypology *string `json:"service_typology,omitempty"`
 	// for databases this field exposes the database version
-	ServiceVersion *string `json:"service_version,omitempty"`
-	ToUpdate *bool `json:"to_update,omitempty"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	ServiceVersion *string    `json:"service_version,omitempty"`
+	ToUpdate       *bool      `json:"to_update,omitempty"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewServiceResponse instantiates a new ServiceResponse object
@@ -135,7 +135,7 @@ func (o *ServiceResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ServiceResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -351,7 +351,7 @@ func (o *ServiceResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *ServiceResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -467,5 +467,3 @@ func (v *NullableServiceResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

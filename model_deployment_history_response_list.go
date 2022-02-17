@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // DeploymentHistoryResponseList struct for DeploymentHistoryResponseList
 type DeploymentHistoryResponseList struct {
-	Results *[]DeploymentHistoryResponse `json:"results,omitempty"`
+	Results []DeploymentHistoryResponse `json:"results,omitempty"`
 }
 
 // NewDeploymentHistoryResponseList instantiates a new DeploymentHistoryResponseList object
@@ -43,12 +43,12 @@ func (o *DeploymentHistoryResponseList) GetResults() []DeploymentHistoryResponse
 		var ret []DeploymentHistoryResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryResponseList) GetResultsOk() (*[]DeploymentHistoryResponse, bool) {
+func (o *DeploymentHistoryResponseList) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *DeploymentHistoryResponseList) HasResults() bool {
 
 // SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
 func (o *DeploymentHistoryResponseList) SetResults(v []DeploymentHistoryResponse) {
-	o.Results = &v
+	o.Results = v
 }
 
 func (o DeploymentHistoryResponseList) MarshalJSON() ([]byte, error) {
@@ -112,5 +112,3 @@ func (v *NullableDeploymentHistoryResponseList) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
