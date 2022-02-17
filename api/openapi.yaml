@@ -12373,9 +12373,6 @@ components:
       properties:
         type:
           enum:
-          - SLOW_HDD
-          - HDD
-          - SSD
           - FAST_SSD
           type: string
         size:
