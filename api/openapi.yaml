@@ -16,6 +16,57 @@ servers:
 - url: https://api.qovery.com
 security:
 - bearerAuth: []
+tags:
+- name: Account
+- name: Account Info
+- name: Application
+- name: Application Actions
+- name: Application Configuration
+- name: Application Database
+- name: Application Deployment History
+- name: Application Environment Variable
+- name: Application Event
+- name: Application Logs
+- name: Application Main Calls
+- name: Application Metrics
+- name: Application Secret
+- name: Applications
+- name: Backups
+- name: Billing
+- name: Cloud Provider
+- name: Cloud Provider Credentials
+- name: Clusters
+- name: Custom Domain
+- name: Database
+- name: Database Actions
+- name: Database Application
+- name: Database Event
+- name: Database Main Calls
+- name: Database Metrics
+- name: Databases
+- name: Dependency
+- name: Environment
+- name: Environment Actions
+- name: Environment Deployment History
+- name: Environment Deployment Rule
+- name: Environment Logs
+- name: Environment Main Calls
+- name: Environment Secret
+- name: Environment Variable
+- name: Environments
+- name: Git
+- name: Git repositories
+- name: Logical Database
+- name: Members
+- name: Organization
+- name: Organization Main Calls
+- name: Project
+- name: Project Deployment Rule
+- name: Project Environment Variable
+- name: Project Main Calls
+- name: Project Secret
+- name: Projects
+- name: Referral & Rewards
 paths:
   /organization:
     get:
@@ -779,6 +830,7 @@ paths:
       - Billing
   /organization/{organizationId}/creditCard/{creditCardId}:
     delete:
+      operationId: deleteCreditCard
       parameters:
       - description: Organization ID
         explode: false
@@ -2681,6 +2733,7 @@ paths:
         - To delete a secret you must have the project user permission
         - You can't delete a BUILT_IN secret
         - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteProjectSecret
+      operationId: deleteProjectSecret
       parameters:
       - description: Project ID
         explode: false
@@ -3930,6 +3983,7 @@ paths:
         - To delete a secret you must have the project user permission
         - You can't delete a BUILT_IN secret
         - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
+      operationId: deleteEnvironmentSecret
       parameters:
       - description: Environment ID
         explode: false
@@ -6530,7 +6584,7 @@ paths:
           description: Logical Database with this name already exists on the database
       summary: Create a logical database on the database
       tags:
-      - database
+      - Logical Database
   /database/{databaseId}/application:
     get:
       operationId: listDatabaseApplication
@@ -7207,7 +7261,7 @@ paths:
           description: Resource not found
       summary: Edit logical database credentials
       tags:
-      - logicalDatabase
+      - Logical Database
   /logicalDatabase/{logicalDatabaseId}/application:
     get:
       operationId: listLogicalDatabaseApplication
@@ -8674,7 +8728,7 @@ components:
           can be injected
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        state: INITIALIZED
+        state: BUILD_ERROR
         message: message
       properties:
         id:
@@ -8689,22 +8743,22 @@ components:
           description: |
             Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
           enum:
-          - INITIALIZED
-          - QUEUED
-          - BUILDING
           - BUILD_ERROR
+          - BUILDING
           - BUILT
-          - DEPLOYING
-          - DEPLOYMENT_ERROR
-          - DEPLOYED
-          - STOPPING
-          - STOP_ERROR
-          - STOPPED
-          - DELETING
           - DELETE_ERROR
           - DELETED
+          - DELETING
+          - DEPLOYED
+          - DEPLOYING
+          - DEPLOYMENT_ERROR
+          - INITIALIZED
+          - QUEUED
           - RUNNING
           - RUNNING_ERROR
+          - STOP_ERROR
+          - STOPPED
+          - STOPPING
           type: string
         message:
           description: Log message
@@ -8929,7 +8983,7 @@ components:
       - $ref: '#/components/schemas/ApplicationStorageRequest'
       - $ref: '#/components/schemas/ApplicationPortRequest'
       example:
-        buildpack_language: GO
+        buildpack_language: CLOJURE
         min_running_instances: 0
         healthcheck:
           protocol: TCP
@@ -8971,18 +9025,17 @@ components:
         buildpack_language:
           description: Development language of the application
           enum:
-          - GO
-          - NODE_JS
           - CLOJURE
-          - PYTHON
-          - JAVA
-          - GRADLE
-          - JVM
-          - GRAILS
-          - SCALA
-          - PLAY
-          - PHP
           - GO
+          - GRADLE
+          - GRAILS
+          - JAVA
+          - JVM
+          - NODE_JS
+          - PHP
+          - PLAY
+          - PYTHON
+          - SCALA
           type: string
         cpu:
           default: 250
@@ -9053,7 +9106,7 @@ components:
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
         dockerfile_path: dockerfile_path
-        buildpack_language: GO
+        buildpack_language: CLOJURE
         healthcheck:
           protocol: TCP
           value: value
@@ -9083,18 +9136,17 @@ components:
         buildpack_language:
           description: Development language of the application
           enum:
-          - GO
-          - NODE_JS
           - CLOJURE
-          - PYTHON
-          - JAVA
-          - GRADLE
-          - JVM
-          - GRAILS
-          - SCALA
-          - PLAY
-          - PHP
           - GO
+          - GRADLE
+          - GRAILS
+          - JAVA
+          - JVM
+          - NODE_JS
+          - PHP
+          - PLAY
+          - PYTHON
+          - SCALA
           type: string
         cpu:
           default: 250
@@ -9310,7 +9362,7 @@ components:
           url: https://openapi-generator.tech
           deployed_commit_date: 2000-01-23T04:56:07.000+00:00
         dockerfile_path: dockerfile_path
-        buildpack_language: GO
+        buildpack_language: CLOJURE
         healthcheck:
           protocol: TCP
           value: value
@@ -9359,18 +9411,17 @@ components:
         buildpack_language:
           description: Development language of the application
           enum:
-          - GO
-          - NODE_JS
           - CLOJURE
-          - PYTHON
-          - JAVA
-          - GRADLE
-          - JVM
-          - GRAILS
-          - SCALA
-          - PLAY
-          - PHP
           - GO
+          - GRADLE
+          - GRAILS
+          - JAVA
+          - JVM
+          - NODE_JS
+          - PHP
+          - PLAY
+          - PYTHON
+          - SCALA
           type: string
         cpu:
           default: 250
@@ -9628,7 +9679,7 @@ components:
             url: https://openapi-generator.tech
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
           dockerfile_path: dockerfile_path
-          buildpack_language: GO
+          buildpack_language: CLOJURE
           healthcheck:
             protocol: TCP
             value: value
@@ -9657,7 +9708,7 @@ components:
             url: https://openapi-generator.tech
             deployed_commit_date: 2000-01-23T04:56:07.000+00:00
           dockerfile_path: dockerfile_path
-          buildpack_language: GO
+          buildpack_language: CLOJURE
           healthcheck:
             protocol: TCP
             value: value
@@ -10069,7 +10120,7 @@ components:
             can be injected
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: INITIALIZED
+          state: BUILD_ERROR
           message: message
         - execution_id: execution_id
           scope:
@@ -10080,7 +10131,7 @@ components:
             can be injected
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: INITIALIZED
+          state: BUILD_ERROR
           message: message
       properties:
         results:

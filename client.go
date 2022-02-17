@@ -86,8 +86,6 @@ type APIClient struct {
 
 	CustomDomainApi *CustomDomainApiService
 
-	DatabaseApi *DatabaseApiService
-
 	DatabaseActionsApi *DatabaseActionsApiService
 
 	DatabaseApplicationApi *DatabaseApplicationApiService
@@ -173,7 +171,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CloudProviderCredentialsApi = (*CloudProviderCredentialsApiService)(&c.common)
 	c.ClustersApi = (*ClustersApiService)(&c.common)
 	c.CustomDomainApi = (*CustomDomainApiService)(&c.common)
-	c.DatabaseApi = (*DatabaseApiService)(&c.common)
 	c.DatabaseActionsApi = (*DatabaseActionsApiService)(&c.common)
 	c.DatabaseApplicationApi = (*DatabaseApplicationApiService)(&c.common)
 	c.DatabaseEventApi = (*DatabaseEventApiService)(&c.common)

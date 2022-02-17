@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
 *BackupsApi* | [**RemoveDatabaseBackup**](docs/BackupsApi.md#removedatabasebackup) | **Delete** /database/{databaseId}/backup/{backupId} | Remove database  backup
 *BillingApi* | [**AddCreditCard**](docs/BillingApi.md#addcreditcard) | **Post** /organization/{organizationId}/creditCard | Add credit card
 *BillingApi* | [**AddCreditCode**](docs/BillingApi.md#addcreditcode) | **Post** /organization/{organizationId}/creditCode | Add credit code
+*BillingApi* | [**DeleteCreditCard**](docs/BillingApi.md#deletecreditcard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 *BillingApi* | [**EditOrganizationBillingInfo**](docs/BillingApi.md#editorganizationbillinginfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
 *BillingApi* | [**GetClusterCurrentCost**](docs/BillingApi.md#getclustercurrentcost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
 *BillingApi* | [**GetOrganizationBillingInfo**](docs/BillingApi.md#getorganizationbillinginfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
@@ -149,7 +150,6 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**ListOrganizationCreditCards**](docs/BillingApi.md#listorganizationcreditcards) | **Get** /organization/{organizationId}/creditCard | List organization credit cards
 *BillingApi* | [**ListOrganizationInvoice**](docs/BillingApi.md#listorganizationinvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
 *BillingApi* | [**OrganizationDownloadAllInvoices**](docs/BillingApi.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
-*BillingApi* | [**OrganizationOrganizationIdCreditCardCreditCardIdDelete**](docs/BillingApi.md#organizationorganizationidcreditcardcreditcardiddelete) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 *CloudProviderApi* | [**ListAWSFeatures**](docs/CloudProviderApi.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
 *CloudProviderApi* | [**ListAWSRegions**](docs/CloudProviderApi.md#listawsregions) | **Get** /aws/region | List AWS regions
 *CloudProviderApi* | [**ListCloudProvider**](docs/CloudProviderApi.md#listcloudprovider) | **Get** /cloudProvider | List Cloud providers available
@@ -188,7 +188,6 @@ Class | Method | HTTP request | Description
 *CustomDomainApi* | [**EditCustomDomain**](docs/CustomDomainApi.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
 *CustomDomainApi* | [**GetCustomDomainStatus**](docs/CustomDomainApi.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
 *CustomDomainApi* | [**ListApplicationCustomDomain**](docs/CustomDomainApi.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
-*DatabaseApi* | [**CreateLogicalDatabaseOnDatabase**](docs/DatabaseApi.md#createlogicaldatabaseondatabase) | **Post** /database/{databaseId}/logicalDatabase | Create a logical database on the database
 *DatabaseActionsApi* | [**DeployDatabase**](docs/DatabaseActionsApi.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
 *DatabaseActionsApi* | [**RestartDatabase**](docs/DatabaseActionsApi.md#restartdatabase) | **Post** /database/{databaseId}/restart | Retart database
 *DatabaseActionsApi* | [**StopDatabase**](docs/DatabaseActionsApi.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
@@ -233,8 +232,8 @@ Class | Method | HTTP request | Description
 *EnvironmentSecretApi* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretApi.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretApi.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretOverride**](docs/EnvironmentSecretApi.md#createenvironmentsecretoverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
+*EnvironmentSecretApi* | [**DeleteEnvironmentSecret**](docs/EnvironmentSecretApi.md#deleteenvironmentsecret) | **Delete** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
 *EnvironmentSecretApi* | [**EditEnvironmentSecret**](docs/EnvironmentSecretApi.md#editenvironmentsecret) | **Put** /environment/{environmentId}/secret/{secretId} | Edit a secret belonging to the environment
-*EnvironmentSecretApi* | [**EnvironmentEnvironmentIdSecretSecretIdDelete**](docs/EnvironmentSecretApi.md#environmentenvironmentidsecretsecretiddelete) | **Delete** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
 *EnvironmentSecretApi* | [**ListEnvironmentSecrets**](docs/EnvironmentSecretApi.md#listenvironmentsecrets) | **Get** /environment/{environmentId}/secret | List environment secrets
 *EnvironmentVariableApi* | [**CreateEnvironmentEnvironmentVariable**](docs/EnvironmentVariableApi.md#createenvironmentenvironmentvariable) | **Post** /environment/{environmentId}/environmentVariable | Add an environment variable to the environment
 *EnvironmentVariableApi* | [**CreateEnvironmentEnvironmentVariableAlias**](docs/EnvironmentVariableApi.md#createenvironmentenvironmentvariablealias) | **Post** /environment/{environmentId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the environment level
@@ -253,6 +252,7 @@ Class | Method | HTTP request | Description
 *GitRepositoriesApi* | [**GetGithubRepositoryBranches**](docs/GitRepositoriesApi.md#getgithubrepositorybranches) | **Get** /account/github/repository/branch | Get github branches of the specified repository
 *GitRepositoriesApi* | [**GetGitlabRepositories**](docs/GitRepositoriesApi.md#getgitlabrepositories) | **Get** /account/gitlab/repository | Get gitlab repositories of the connected user
 *GitRepositoriesApi* | [**GetGitlabRepositoryBranches**](docs/GitRepositoriesApi.md#getgitlabrepositorybranches) | **Get** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
+*LogicalDatabaseApi* | [**CreateLogicalDatabaseOnDatabase**](docs/LogicalDatabaseApi.md#createlogicaldatabaseondatabase) | **Post** /database/{databaseId}/logicalDatabase | Create a logical database on the database
 *LogicalDatabaseApi* | [**DeleteLogicalDatabase**](docs/LogicalDatabaseApi.md#deletelogicaldatabase) | **Delete** /logicalDatabase/{logicalDatabaseId} | Delete a Logical database
 *LogicalDatabaseApi* | [**EditLogicalDatabase**](docs/LogicalDatabaseApi.md#editlogicaldatabase) | **Put** /logicalDatabase/{logicalDatabaseId} | Edit a logical database
 *LogicalDatabaseApi* | [**EditLogicalDatabaseCredentials**](docs/LogicalDatabaseApi.md#editlogicaldatabasecredentials) | **Put** /logicalDatabase/{logicalDatabaseId}/credentials | Edit logical database credentials
@@ -289,9 +289,9 @@ Class | Method | HTTP request | Description
 *ProjectSecretApi* | [**CreateProjectSecret**](docs/ProjectSecretApi.md#createprojectsecret) | **Post** /project/{projectId}/secret | Add a secret to the project
 *ProjectSecretApi* | [**CreateProjectSecretAlias**](docs/ProjectSecretApi.md#createprojectsecretalias) | **Post** /project/{projectId}/secret/{secretId}/alias | Create a secret alias at the project level
 *ProjectSecretApi* | [**CreateProjectSecretOverride**](docs/ProjectSecretApi.md#createprojectsecretoverride) | **Post** /project/{projectId}/secret/{secretId}/override | Create a secret override at the project level
+*ProjectSecretApi* | [**DeleteProjectSecret**](docs/ProjectSecretApi.md#deleteprojectsecret) | **Delete** /project/{projectId}/secret/{secretId} | Delete a secret from a project
 *ProjectSecretApi* | [**EditProjectSecret**](docs/ProjectSecretApi.md#editprojectsecret) | **Put** /project/{projectId}/secret/{secretId} | Edit a secret belonging to the project
 *ProjectSecretApi* | [**ListProjectSecrets**](docs/ProjectSecretApi.md#listprojectsecrets) | **Get** /project/{projectId}/secret | List project secrets
-*ProjectSecretApi* | [**ProjectProjectIdSecretSecretIdDelete**](docs/ProjectSecretApi.md#projectprojectidsecretsecretiddelete) | **Delete** /project/{projectId}/secret/{secretId} | Delete a secret from a project
 *ProjectsApi* | [**CreateProject**](docs/ProjectsApi.md#createproject) | **Post** /organization/{organizationId}/project | Create a project
 *ProjectsApi* | [**GetOrganizationProjectStats**](docs/ProjectsApi.md#getorganizationprojectstats) | **Get** /organization/{organizationId}/project/stats | List total number of services and environments for each project of the organization
 *ProjectsApi* | [**ListProject**](docs/ProjectsApi.md#listproject) | **Get** /organization/{organizationId}/project | List projects

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddCreditCard**](BillingApi.md#AddCreditCard) | **Post** /organization/{organizationId}/creditCard | Add credit card
 [**AddCreditCode**](BillingApi.md#AddCreditCode) | **Post** /organization/{organizationId}/creditCode | Add credit code
+[**DeleteCreditCard**](BillingApi.md#DeleteCreditCard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 [**EditOrganizationBillingInfo**](BillingApi.md#EditOrganizationBillingInfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
 [**GetClusterCurrentCost**](BillingApi.md#GetClusterCurrentCost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
 [**GetOrganizationBillingInfo**](BillingApi.md#GetOrganizationBillingInfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
@@ -16,7 +17,6 @@ Method | HTTP request | Description
 [**ListOrganizationCreditCards**](BillingApi.md#ListOrganizationCreditCards) | **Get** /organization/{organizationId}/creditCard | List organization credit cards
 [**ListOrganizationInvoice**](BillingApi.md#ListOrganizationInvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
 [**OrganizationDownloadAllInvoices**](BillingApi.md#OrganizationDownloadAllInvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
-[**OrganizationOrganizationIdCreditCardCreditCardIdDelete**](BillingApi.md#OrganizationOrganizationIdCreditCardCreditCardIdDelete) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 
 
 
@@ -151,6 +151,75 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteCreditCard
+
+> DeleteCreditCard(ctx, organizationId, creditCardId).Execute()
+
+Delete credit card
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    creditCardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credit Card ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingApi.DeleteCreditCard(context.Background(), organizationId, creditCardId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.DeleteCreditCard``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**creditCardId** | **string** | Credit Card ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteCreditCardRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -833,75 +902,6 @@ Other parameters are passed through a pointer to a apiOrganizationDownloadAllInv
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OrganizationOrganizationIdCreditCardCreditCardIdDelete
-
-> OrganizationOrganizationIdCreditCardCreditCardIdDelete(ctx, organizationId, creditCardId).Execute()
-
-Delete credit card
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    creditCardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credit Card ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingApi.OrganizationOrganizationIdCreditCardCreditCardIdDelete(context.Background(), organizationId, creditCardId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.OrganizationOrganizationIdCreditCardCreditCardIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-**creditCardId** | **string** | Credit Card ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
 
 
 ### Return type

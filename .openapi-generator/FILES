@@ -21,7 +21,6 @@ api_cloud_provider.go
 api_cloud_provider_credentials.go
 api_clusters.go
 api_custom_domain.go
-api_database.go
 api_database_actions.go
 api_database_application.go
 api_database_event.go
@@ -146,7 +145,6 @@ docs/CustomDomainRequest.md
 docs/CustomDomainResponse.md
 docs/CustomDomainResponseList.md
 docs/DatabaseActionsApi.md
-docs/DatabaseApi.md
 docs/DatabaseApplicationApi.md
 docs/DatabaseConfigurationResponse.md
 docs/DatabaseConfigurationResponseList.md

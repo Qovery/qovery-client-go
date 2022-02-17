@@ -235,6 +235,100 @@ func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*ht
 	return localVarHTTPResponse, nil
 }
 
+type ApiDeleteCreditCardRequest struct {
+	ctx            context.Context
+	ApiService     *BillingApiService
+	organizationId string
+	creditCardId   string
+}
+
+func (r ApiDeleteCreditCardRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCreditCardExecute(r)
+}
+
+/*
+DeleteCreditCard Delete credit card
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param creditCardId Credit Card ID
+ @return ApiDeleteCreditCardRequest
+*/
+func (a *BillingApiService) DeleteCreditCard(ctx context.Context, organizationId string, creditCardId string) ApiDeleteCreditCardRequest {
+	return ApiDeleteCreditCardRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		creditCardId:   creditCardId,
+	}
+}
+
+// Execute executes the request
+func (a *BillingApiService) DeleteCreditCardExecute(r ApiDeleteCreditCardRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.DeleteCreditCard")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/creditCard/{creditCardId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"creditCardId"+"}", url.PathEscape(parameterToString(r.creditCardId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiEditOrganizationBillingInfoRequest struct {
 	ctx                context.Context
 	ApiService         *BillingApiService
@@ -1216,100 +1310,6 @@ func (a *BillingApiService) OrganizationDownloadAllInvoicesExecute(r ApiOrganiza
 
 	localVarPath := localBasePath + "/organization/{organizationId}/downloadInvoices"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest struct {
-	ctx            context.Context
-	ApiService     *BillingApiService
-	organizationId string
-	creditCardId   string
-}
-
-func (r ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.OrganizationOrganizationIdCreditCardCreditCardIdDeleteExecute(r)
-}
-
-/*
-OrganizationOrganizationIdCreditCardCreditCardIdDelete Delete credit card
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param creditCardId Credit Card ID
- @return ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest
-*/
-func (a *BillingApiService) OrganizationOrganizationIdCreditCardCreditCardIdDelete(ctx context.Context, organizationId string, creditCardId string) ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest {
-	return ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
-		creditCardId:   creditCardId,
-	}
-}
-
-// Execute executes the request
-func (a *BillingApiService) OrganizationOrganizationIdCreditCardCreditCardIdDeleteExecute(r ApiOrganizationOrganizationIdCreditCardCreditCardIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.OrganizationOrganizationIdCreditCardCreditCardIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/organization/{organizationId}/creditCard/{creditCardId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"creditCardId"+"}", url.PathEscape(parameterToString(r.creditCardId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

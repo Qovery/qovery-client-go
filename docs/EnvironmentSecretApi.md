@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**CreateEnvironmentSecret**](EnvironmentSecretApi.md#CreateEnvironmentSecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 [**CreateEnvironmentSecretAlias**](EnvironmentSecretApi.md#CreateEnvironmentSecretAlias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
 [**CreateEnvironmentSecretOverride**](EnvironmentSecretApi.md#CreateEnvironmentSecretOverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
+[**DeleteEnvironmentSecret**](EnvironmentSecretApi.md#DeleteEnvironmentSecret) | **Delete** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
 [**EditEnvironmentSecret**](EnvironmentSecretApi.md#EditEnvironmentSecret) | **Put** /environment/{environmentId}/secret/{secretId} | Edit a secret belonging to the environment
-[**EnvironmentEnvironmentIdSecretSecretIdDelete**](EnvironmentSecretApi.md#EnvironmentEnvironmentIdSecretSecretIdDelete) | **Delete** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
 [**ListEnvironmentSecrets**](EnvironmentSecretApi.md#ListEnvironmentSecrets) | **Get** /environment/{environmentId}/secret | List environment secrets
 
 
@@ -235,6 +235,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteEnvironmentSecret
+
+> DeleteEnvironmentSecret(ctx, environmentId, secretId).Execute()
+
+Delete a secret from the environment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentSecretApi.DeleteEnvironmentSecret(context.Background(), environmentId, secretId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.DeleteEnvironmentSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+**secretId** | **string** | Secret ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteEnvironmentSecretRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EditEnvironmentSecret
 
 > SecretResponse EditEnvironmentSecret(ctx, environmentId, secretId).SecretEditRequest(secretEditRequest).Execute()
@@ -304,77 +375,6 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EnvironmentEnvironmentIdSecretSecretIdDelete
-
-> EnvironmentEnvironmentIdSecretSecretIdDelete(ctx, environmentId, secretId).Execute()
-
-Delete a secret from the environment
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentSecretApi.EnvironmentEnvironmentIdSecretSecretIdDelete(context.Background(), environmentId, secretId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.EnvironmentEnvironmentIdSecretSecretIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | Environment ID | 
-**secretId** | **string** | Secret ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

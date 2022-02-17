@@ -383,6 +383,105 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDeleteEnvironmentSecretRequest struct {
+	ctx           context.Context
+	ApiService    *EnvironmentSecretApiService
+	environmentId string
+	secretId      string
+}
+
+func (r ApiDeleteEnvironmentSecretRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteEnvironmentSecretExecute(r)
+}
+
+/*
+DeleteEnvironmentSecret Delete a secret from the environment
+
+- To delete a secret you must have the project user permission
+- You can't delete a BUILT_IN secret
+- If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @param secretId Secret ID
+ @return ApiDeleteEnvironmentSecretRequest
+*/
+func (a *EnvironmentSecretApiService) DeleteEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiDeleteEnvironmentSecretRequest {
+	return ApiDeleteEnvironmentSecretRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentId: environmentId,
+		secretId:      secretId,
+	}
+}
+
+// Execute executes the request
+func (a *EnvironmentSecretApiService) DeleteEnvironmentSecretExecute(r ApiDeleteEnvironmentSecretRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.DeleteEnvironmentSecret")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiEditEnvironmentSecretRequest struct {
 	ctx               context.Context
 	ApiService        *EnvironmentSecretApiService
@@ -503,105 +602,6 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentSecretApiService
-	environmentId string
-	secretId      string
-}
-
-func (r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.EnvironmentEnvironmentIdSecretSecretIdDeleteExecute(r)
-}
-
-/*
-EnvironmentEnvironmentIdSecretSecretIdDelete Delete a secret from the environment
-
-- To delete a secret you must have the project user permission
-- You can't delete a BUILT_IN secret
-- If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @param secretId Secret ID
- @return ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest
-*/
-func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDelete(ctx context.Context, environmentId string, secretId string) ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest {
-	return ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		environmentId: environmentId,
-		secretId:      secretId,
-	}
-}
-
-// Execute executes the request
-func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDeleteExecute(r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.EnvironmentEnvironmentIdSecretSecretIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
 }
 
 type ApiListEnvironmentSecretsRequest struct {
