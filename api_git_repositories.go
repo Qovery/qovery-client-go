@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -28,10 +28,9 @@ var (
 type GitRepositoriesApiService service
 
 type ApiGetBitbucketRepositoriesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
-
 
 func (r ApiGetBitbucketRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
 	return r.ApiService.GetBitbucketRepositoriesExecute(r)
@@ -46,7 +45,7 @@ GetBitbucketRepositories Get bitbucket repositories of the connected user
 func (a *GitRepositoriesApiService) GetBitbucketRepositories(ctx context.Context) ApiGetBitbucketRepositoriesRequest {
 	return ApiGetBitbucketRepositoriesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -54,10 +53,10 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositories(ctx context.Context
 //  @return GitRepositoryResponseList
 func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitRepositoryResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetBitbucketRepositories")
@@ -126,9 +125,9 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitb
 }
 
 type ApiGetBitbucketRepositoryBranchesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
-	name *string
+	name       *string
 }
 
 // The name of the repository where to retrieve the branches
@@ -150,7 +149,7 @@ GetBitbucketRepositoryBranches Get bitbucket branches of the specified repositor
 func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranches(ctx context.Context) ApiGetBitbucketRepositoryBranchesRequest {
 	return ApiGetBitbucketRepositoryBranchesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -158,10 +157,10 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranches(ctx context.C
 //  @return GitRepositoryBranchResponseList
 func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiGetBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitRepositoryBranchResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetBitbucketRepositoryBranches")
@@ -233,10 +232,9 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiG
 }
 
 type ApiGetGitProviderAccountRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
-
 
 func (r ApiGetGitProviderAccountRequest) Execute() (*GitAuthProviderResponseList, *http.Response, error) {
 	return r.ApiService.GetGitProviderAccountExecute(r)
@@ -251,7 +249,7 @@ GetGitProviderAccount Get git provider accounts
 func (a *GitRepositoriesApiService) GetGitProviderAccount(ctx context.Context) ApiGetGitProviderAccountRequest {
 	return ApiGetGitProviderAccountRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -259,10 +257,10 @@ func (a *GitRepositoriesApiService) GetGitProviderAccount(ctx context.Context) A
 //  @return GitAuthProviderResponseList
 func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitAuthProviderResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitAuthProviderResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitProviderAccount")
@@ -331,10 +329,9 @@ func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProv
 }
 
 type ApiGetGithubRepositoriesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
-
 
 func (r ApiGetGithubRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
 	return r.ApiService.GetGithubRepositoriesExecute(r)
@@ -349,7 +346,7 @@ GetGithubRepositories Get github repositories of the connected user
 func (a *GitRepositoriesApiService) GetGithubRepositories(ctx context.Context) ApiGetGithubRepositoriesRequest {
 	return ApiGetGithubRepositoriesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -357,10 +354,10 @@ func (a *GitRepositoriesApiService) GetGithubRepositories(ctx context.Context) A
 //  @return GitRepositoryResponseList
 func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitRepositoryResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGithubRepositories")
@@ -429,9 +426,9 @@ func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubR
 }
 
 type ApiGetGithubRepositoryBranchesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
-	name *string
+	name       *string
 }
 
 // The name of the repository where to retrieve the branches
@@ -453,7 +450,7 @@ GetGithubRepositoryBranches Get github branches of the specified repository
 func (a *GitRepositoriesApiService) GetGithubRepositoryBranches(ctx context.Context) ApiGetGithubRepositoryBranchesRequest {
 	return ApiGetGithubRepositoryBranchesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -461,10 +458,10 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranches(ctx context.Cont
 //  @return GitRepositoryBranchResponseList
 func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitRepositoryBranchResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGithubRepositoryBranches")
@@ -536,10 +533,9 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetG
 }
 
 type ApiGetGitlabRepositoriesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
 }
-
 
 func (r ApiGetGitlabRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
 	return r.ApiService.GetGitlabRepositoriesExecute(r)
@@ -554,7 +550,7 @@ GetGitlabRepositories Get gitlab repositories of the connected user
 func (a *GitRepositoriesApiService) GetGitlabRepositories(ctx context.Context) ApiGetGitlabRepositoriesRequest {
 	return ApiGetGitlabRepositoriesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -562,10 +558,10 @@ func (a *GitRepositoriesApiService) GetGitlabRepositories(ctx context.Context) A
 //  @return GitRepositoryResponseList
 func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitRepositoryResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositories")
@@ -634,9 +630,9 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabR
 }
 
 type ApiGetGitlabRepositoryBranchesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *GitRepositoriesApiService
-	name *string
+	name       *string
 }
 
 // The name of the repository to retrieve the branches
@@ -658,7 +654,7 @@ GetGitlabRepositoryBranches Get gitlab branches of the specified repository
 func (a *GitRepositoriesApiService) GetGitlabRepositoryBranches(ctx context.Context) ApiGetGitlabRepositoryBranchesRequest {
 	return ApiGetGitlabRepositoryBranchesRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -666,10 +662,10 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoryBranches(ctx context.Cont
 //  @return GitRepositoryBranchResponseList
 func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GitRepositoryBranchResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositoryBranches")

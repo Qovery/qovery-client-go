@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,10 +17,10 @@ import (
 
 // CreditCardRequest struct for CreditCardRequest
 type CreditCardRequest struct {
-	Number string `json:"number"`
-	Cvv string `json:"cvv"`
-	ExpiryMonth int32 `json:"expiry_month"`
-	ExpiryYear int32 `json:"expiry_year"`
+	Number      string `json:"number"`
+	Cvv         string `json:"cvv"`
+	ExpiryMonth int32  `json:"expiry_month"`
+	ExpiryYear  int32  `json:"expiry_year"`
 }
 
 // NewCreditCardRequest instantiates a new CreditCardRequest object
@@ -57,7 +57,7 @@ func (o *CreditCardRequest) GetNumber() string {
 // GetNumberOk returns a tuple with the Number field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardRequest) GetNumberOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Number, true
@@ -81,7 +81,7 @@ func (o *CreditCardRequest) GetCvv() string {
 // GetCvvOk returns a tuple with the Cvv field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardRequest) GetCvvOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Cvv, true
@@ -105,7 +105,7 @@ func (o *CreditCardRequest) GetExpiryMonth() int32 {
 // GetExpiryMonthOk returns a tuple with the ExpiryMonth field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardRequest) GetExpiryMonthOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExpiryMonth, true
@@ -129,7 +129,7 @@ func (o *CreditCardRequest) GetExpiryYear() int32 {
 // GetExpiryYearOk returns a tuple with the ExpiryYear field value
 // and a boolean to check if the value has been set.
 func (o *CreditCardRequest) GetExpiryYearOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ExpiryYear, true
@@ -192,5 +192,3 @@ func (v *NullableCreditCardRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

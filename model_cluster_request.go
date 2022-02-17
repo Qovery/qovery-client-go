@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,18 +18,18 @@ import (
 // ClusterRequest struct for ClusterRequest
 type ClusterRequest struct {
 	// name is case-insensitive
-	Name string `json:"name"`
-	Description *string `json:"description,omitempty"`
-	CloudProvider string `json:"cloud_provider"`
-	Region string `json:"region"`
-	AutoUpdate *bool `json:"auto_update,omitempty"`
+	Name          string  `json:"name"`
+	Description   *string `json:"description,omitempty"`
+	CloudProvider string  `json:"cloud_provider"`
+	Region        string  `json:"region"`
+	AutoUpdate    *bool   `json:"auto_update,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory *int32 `json:"memory,omitempty"`
-	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
-	Features []ClusterFeatureRequestFeatures `json:"features,omitempty"`
+	Memory          *int32                          `json:"memory,omitempty"`
+	MinRunningNodes *int32                          `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32                          `json:"max_running_nodes,omitempty"`
+	Features        []ClusterFeatureRequestFeatures `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
@@ -81,7 +81,7 @@ func (o *ClusterRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -137,7 +137,7 @@ func (o *ClusterRequest) GetCloudProvider() string {
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetCloudProviderOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CloudProvider, true
@@ -161,7 +161,7 @@ func (o *ClusterRequest) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetRegionOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Region, true
@@ -434,5 +434,3 @@ func (v *NullableClusterRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

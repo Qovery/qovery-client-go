@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,8 +17,8 @@ import (
 
 // VariableImportRequest struct for VariableImportRequest
 type VariableImportRequest struct {
-	Overwrite bool `json:"overwrite"`
-	Vars []VariableImportRequestVars `json:"vars"`
+	Overwrite bool                        `json:"overwrite"`
+	Vars      []VariableImportRequestVars `json:"vars"`
 }
 
 // NewVariableImportRequest instantiates a new VariableImportRequest object
@@ -55,7 +55,7 @@ func (o *VariableImportRequest) GetOverwrite() bool {
 // GetOverwriteOk returns a tuple with the Overwrite field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportRequest) GetOverwriteOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Overwrite, true
@@ -79,7 +79,7 @@ func (o *VariableImportRequest) GetVars() []VariableImportRequestVars {
 // GetVarsOk returns a tuple with the Vars field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportRequest) GetVarsOk() ([]VariableImportRequestVars, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Vars, true
@@ -136,5 +136,3 @@ func (v *NullableVariableImportRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

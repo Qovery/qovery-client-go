@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,8 +29,8 @@ var (
 type ClustersApiService service
 
 type ApiCreateClusterRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
 	clusterRequest *ClusterRequest
 }
@@ -53,8 +53,8 @@ CreateCluster Create a cluster
 */
 func (a *ClustersApiService) CreateCluster(ctx context.Context, organizationId string) ApiCreateClusterRequest {
 	return ApiCreateClusterRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *ClustersApiService) CreateCluster(ctx context.Context, organizationId s
 //  @return ClusterResponse
 func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*ClusterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
@@ -138,12 +138,11 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*C
 }
 
 type ApiDeleteClusterRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiDeleteClusterRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteClusterExecute(r)
@@ -159,19 +158,19 @@ DeleteCluster Delete a cluster
 */
 func (a *ClustersApiService) DeleteCluster(ctx context.Context, organizationId string, clusterId string) ApiDeleteClusterRequest {
 	return ApiDeleteClusterRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
 // Execute executes the request
 func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DeleteCluster")
@@ -233,12 +232,11 @@ func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*h
 }
 
 type ApiDeployClusterRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiDeployClusterRequest) Execute() (*ClusterStatusResponse, *http.Response, error) {
 	return r.ApiService.DeployClusterExecute(r)
@@ -256,10 +254,10 @@ allows to deploy a cluster
 */
 func (a *ClustersApiService) DeployCluster(ctx context.Context, organizationId string, clusterId string) ApiDeployClusterRequest {
 	return ApiDeployClusterRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -267,10 +265,10 @@ func (a *ClustersApiService) DeployCluster(ctx context.Context, organizationId s
 //  @return ClusterStatusResponse
 func (a *ClustersApiService) DeployClusterExecute(r ApiDeployClusterRequest) (*ClusterStatusResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterStatusResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterStatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DeployCluster")
@@ -341,10 +339,10 @@ func (a *ClustersApiService) DeployClusterExecute(r ApiDeployClusterRequest) (*C
 }
 
 type ApiEditClusterRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 	clusterRequest *ClusterRequest
 }
 
@@ -367,10 +365,10 @@ EditCluster Edit a cluster
 */
 func (a *ClustersApiService) EditCluster(ctx context.Context, organizationId string, clusterId string) ApiEditClusterRequest {
 	return ApiEditClusterRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -378,10 +376,10 @@ func (a *ClustersApiService) EditCluster(ctx context.Context, organizationId str
 //  @return ClusterResponse
 func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*ClusterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.EditCluster")
@@ -454,10 +452,10 @@ func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Clust
 }
 
 type ApiEditRoutingTableRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
-	organizationId string
-	clusterId string
+	ctx                        context.Context
+	ApiService                 *ClustersApiService
+	organizationId             string
+	clusterId                  string
 	clusterRoutingTableRequest *ClusterRoutingTableRequest
 }
 
@@ -482,10 +480,10 @@ Edit routing table by returning updated table.
 */
 func (a *ClustersApiService) EditRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiEditRoutingTableRequest {
 	return ApiEditRoutingTableRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -493,10 +491,10 @@ func (a *ClustersApiService) EditRoutingTable(ctx context.Context, organizationI
 //  @return ClusterRoutingTableResponse
 func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableRequest) (*ClusterRoutingTableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterRoutingTableResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterRoutingTableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.EditRoutingTable")
@@ -569,12 +567,11 @@ func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableReques
 }
 
 type ApiGetClusterReadinessStatusRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiGetClusterReadinessStatusRequest) Execute() (*ClusterReadinessStatus, *http.Response, error) {
 	return r.ApiService.GetClusterReadinessStatusExecute(r)
@@ -590,10 +587,10 @@ GetClusterReadinessStatus Know if a cluster is ready to be deployed or not
 */
 func (a *ClustersApiService) GetClusterReadinessStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterReadinessStatusRequest {
 	return ApiGetClusterReadinessStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -601,10 +598,10 @@ func (a *ClustersApiService) GetClusterReadinessStatus(ctx context.Context, orga
 //  @return ClusterReadinessStatus
 func (a *ClustersApiService) GetClusterReadinessStatusExecute(r ApiGetClusterReadinessStatusRequest) (*ClusterReadinessStatus, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterReadinessStatus
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterReadinessStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterReadinessStatus")
@@ -675,12 +672,11 @@ func (a *ClustersApiService) GetClusterReadinessStatusExecute(r ApiGetClusterRea
 }
 
 type ApiGetClusterStatusRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiGetClusterStatusRequest) Execute() (*ClusterStatusResponse, *http.Response, error) {
 	return r.ApiService.GetClusterStatusExecute(r)
@@ -696,10 +692,10 @@ GetClusterStatus Get cluster status
 */
 func (a *ClustersApiService) GetClusterStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterStatusRequest {
 	return ApiGetClusterStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -707,10 +703,10 @@ func (a *ClustersApiService) GetClusterStatus(ctx context.Context, organizationI
 //  @return ClusterStatusResponse
 func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusRequest) (*ClusterStatusResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterStatusResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterStatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterStatus")
@@ -781,12 +777,11 @@ func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusReques
 }
 
 type ApiGetOrganizationCloudProviderInfoRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiGetOrganizationCloudProviderInfoRequest) Execute() (*ClusterCloudProviderInfoResponse, *http.Response, error) {
 	return r.ApiService.GetOrganizationCloudProviderInfoExecute(r)
@@ -802,10 +797,10 @@ GetOrganizationCloudProviderInfo Get cluster cloud provider info and credentials
 */
 func (a *ClustersApiService) GetOrganizationCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiGetOrganizationCloudProviderInfoRequest {
 	return ApiGetOrganizationCloudProviderInfoRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -813,10 +808,10 @@ func (a *ClustersApiService) GetOrganizationCloudProviderInfo(ctx context.Contex
 //  @return ClusterCloudProviderInfoResponse
 func (a *ClustersApiService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrganizationCloudProviderInfoRequest) (*ClusterCloudProviderInfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterCloudProviderInfoResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCloudProviderInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetOrganizationCloudProviderInfo")
@@ -887,11 +882,10 @@ func (a *ClustersApiService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrg
 }
 
 type ApiGetOrganizationClusterStatusRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationClusterStatusRequest) Execute() (*ClusterStatusResponseList, *http.Response, error) {
 	return r.ApiService.GetOrganizationClusterStatusExecute(r)
@@ -908,8 +902,8 @@ Returns a list of clusters with only their id and status.
 */
 func (a *ClustersApiService) GetOrganizationClusterStatus(ctx context.Context, organizationId string) ApiGetOrganizationClusterStatusRequest {
 	return ApiGetOrganizationClusterStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -918,10 +912,10 @@ func (a *ClustersApiService) GetOrganizationClusterStatus(ctx context.Context, o
 //  @return ClusterStatusResponseList
 func (a *ClustersApiService) GetOrganizationClusterStatusExecute(r ApiGetOrganizationClusterStatusRequest) (*ClusterStatusResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterStatusResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterStatusResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetOrganizationClusterStatus")
@@ -991,12 +985,11 @@ func (a *ClustersApiService) GetOrganizationClusterStatusExecute(r ApiGetOrganiz
 }
 
 type ApiGetRoutingTableRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiGetRoutingTableRequest) Execute() (*ClusterRoutingTableResponse, *http.Response, error) {
 	return r.ApiService.GetRoutingTableExecute(r)
@@ -1014,10 +1007,10 @@ Retrieve network routing table where each line corresponds to a route between a 
 */
 func (a *ClustersApiService) GetRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiGetRoutingTableRequest {
 	return ApiGetRoutingTableRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -1025,10 +1018,10 @@ func (a *ClustersApiService) GetRoutingTable(ctx context.Context, organizationId
 //  @return ClusterRoutingTableResponse
 func (a *ClustersApiService) GetRoutingTableExecute(r ApiGetRoutingTableRequest) (*ClusterRoutingTableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterRoutingTableResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterRoutingTableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetRoutingTable")
@@ -1099,11 +1092,10 @@ func (a *ClustersApiService) GetRoutingTableExecute(r ApiGetRoutingTableRequest)
 }
 
 type ApiListOrganizationClusterRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
 }
-
 
 func (r ApiListOrganizationClusterRequest) Execute() (*ClusterResponseList, *http.Response, error) {
 	return r.ApiService.ListOrganizationClusterExecute(r)
@@ -1118,8 +1110,8 @@ ListOrganizationCluster List organization clusters
 */
 func (a *ClustersApiService) ListOrganizationCluster(ctx context.Context, organizationId string) ApiListOrganizationClusterRequest {
 	return ApiListOrganizationClusterRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -1128,10 +1120,10 @@ func (a *ClustersApiService) ListOrganizationCluster(ctx context.Context, organi
 //  @return ClusterResponseList
 func (a *ClustersApiService) ListOrganizationClusterExecute(r ApiListOrganizationClusterRequest) (*ClusterResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListOrganizationCluster")
@@ -1201,10 +1193,10 @@ func (a *ClustersApiService) ListOrganizationClusterExecute(r ApiListOrganizatio
 }
 
 type ApiSpecifyClusterCloudProviderInfoRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
-	organizationId string
-	clusterId string
+	ctx                             context.Context
+	ApiService                      *ClustersApiService
+	organizationId                  string
+	clusterId                       string
 	clusterCloudProviderInfoRequest *ClusterCloudProviderInfoRequest
 }
 
@@ -1227,10 +1219,10 @@ SpecifyClusterCloudProviderInfo Specify cluster cloud provider info and credenti
 */
 func (a *ClustersApiService) SpecifyClusterCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiSpecifyClusterCloudProviderInfoRequest {
 	return ApiSpecifyClusterCloudProviderInfoRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -1238,10 +1230,10 @@ func (a *ClustersApiService) SpecifyClusterCloudProviderInfo(ctx context.Context
 //  @return ClusterCloudProviderInfoResponse
 func (a *ClustersApiService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecifyClusterCloudProviderInfoRequest) (*ClusterCloudProviderInfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterCloudProviderInfoResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCloudProviderInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.SpecifyClusterCloudProviderInfo")
@@ -1314,12 +1306,11 @@ func (a *ClustersApiService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecify
 }
 
 type ApiStopClusterRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiStopClusterRequest) Execute() (*ClusterStatusResponse, *http.Response, error) {
 	return r.ApiService.StopClusterExecute(r)
@@ -1337,10 +1328,10 @@ Cluster stop has been requester.
 */
 func (a *ClustersApiService) StopCluster(ctx context.Context, organizationId string, clusterId string) ApiStopClusterRequest {
 	return ApiStopClusterRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -1348,10 +1339,10 @@ func (a *ClustersApiService) StopCluster(ctx context.Context, organizationId str
 //  @return ClusterStatusResponse
 func (a *ClustersApiService) StopClusterExecute(r ApiStopClusterRequest) (*ClusterStatusResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterStatusResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterStatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.StopCluster")
@@ -1422,12 +1413,11 @@ func (a *ClustersApiService) StopClusterExecute(r ApiStopClusterRequest) (*Clust
 }
 
 type ApiUpdateClusterRequest struct {
-	ctx context.Context
-	ApiService *ClustersApiService
+	ctx            context.Context
+	ApiService     *ClustersApiService
 	organizationId string
-	clusterId string
+	clusterId      string
 }
-
 
 func (r ApiUpdateClusterRequest) Execute() (*ClusterStatusResponse, *http.Response, error) {
 	return r.ApiService.UpdateClusterExecute(r)
@@ -1445,10 +1435,10 @@ allows to update cluster version
 */
 func (a *ClustersApiService) UpdateCluster(ctx context.Context, organizationId string, clusterId string) ApiUpdateClusterRequest {
 	return ApiUpdateClusterRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
-		clusterId: clusterId,
+		clusterId:      clusterId,
 	}
 }
 
@@ -1456,10 +1446,10 @@ func (a *ClustersApiService) UpdateCluster(ctx context.Context, organizationId s
 //  @return ClusterStatusResponse
 func (a *ClustersApiService) UpdateClusterExecute(r ApiUpdateClusterRequest) (*ClusterStatusResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterStatusResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterStatusResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateCluster")

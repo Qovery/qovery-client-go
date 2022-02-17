@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,11 +29,10 @@ var (
 type ApplicationMetricsApiService service
 
 type ApiGetApplicationCurrentInstanceRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
 }
-
 
 func (r ApiGetApplicationCurrentInstanceRequest) Execute() (*InstanceResponseList, *http.Response, error) {
 	return r.ApiService.GetApplicationCurrentInstanceExecute(r)
@@ -48,8 +47,8 @@ GetApplicationCurrentInstance List currently running instances of the applicatio
 */
 func (a *ApplicationMetricsApiService) GetApplicationCurrentInstance(ctx context.Context, applicationId string) ApiGetApplicationCurrentInstanceRequest {
 	return ApiGetApplicationCurrentInstanceRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -58,10 +57,10 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentInstance(ctx context
 //  @return InstanceResponseList
 func (a *ApplicationMetricsApiService) GetApplicationCurrentInstanceExecute(r ApiGetApplicationCurrentInstanceRequest) (*InstanceResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *InstanceResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *InstanceResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationCurrentInstance")
@@ -131,11 +130,10 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentInstanceExecute(r Ap
 }
 
 type ApiGetApplicationCurrentScaleRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
 }
-
 
 func (r ApiGetApplicationCurrentScaleRequest) Execute() (*ApplicationCurrentScaleResponse, *http.Response, error) {
 	return r.ApiService.GetApplicationCurrentScaleExecute(r)
@@ -152,8 +150,8 @@ Returns min, max, and running number of instances of the application
 */
 func (a *ApplicationMetricsApiService) GetApplicationCurrentScale(ctx context.Context, applicationId string) ApiGetApplicationCurrentScaleRequest {
 	return ApiGetApplicationCurrentScaleRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -162,10 +160,10 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentScale(ctx context.Co
 //  @return ApplicationCurrentScaleResponse
 func (a *ApplicationMetricsApiService) GetApplicationCurrentScaleExecute(r ApiGetApplicationCurrentScaleRequest) (*ApplicationCurrentScaleResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApplicationCurrentScaleResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationCurrentScaleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationCurrentScale")
@@ -235,11 +233,10 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentScaleExecute(r ApiGe
 }
 
 type ApiGetApplicationCurrentStorageDiskRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
 }
-
 
 func (r ApiGetApplicationCurrentStorageDiskRequest) Execute() (*StorageDiskResponseList, *http.Response, error) {
 	return r.ApiService.GetApplicationCurrentStorageDiskExecute(r)
@@ -254,8 +251,8 @@ GetApplicationCurrentStorageDisk List current storage disk usage
 */
 func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDisk(ctx context.Context, applicationId string) ApiGetApplicationCurrentStorageDiskRequest {
 	return ApiGetApplicationCurrentStorageDiskRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -264,10 +261,10 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDisk(ctx cont
 //  @return StorageDiskResponseList
 func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDiskExecute(r ApiGetApplicationCurrentStorageDiskRequest) (*StorageDiskResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *StorageDiskResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *StorageDiskResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationCurrentStorageDisk")
@@ -337,10 +334,10 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDiskExecute(r
 }
 
 type ApiGetApplicationMetricCpuRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
-	lastSeconds *float32
+	lastSeconds   *float32
 }
 
 // Up to how many seconds in the past to ask analytics results
@@ -362,8 +359,8 @@ GetApplicationMetricCpu Get CPU consumption metric over time for the application
 */
 func (a *ApplicationMetricsApiService) GetApplicationMetricCpu(ctx context.Context, applicationId string) ApiGetApplicationMetricCpuRequest {
 	return ApiGetApplicationMetricCpuRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -372,10 +369,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpu(ctx context.Conte
 //  @return MetricCPUResponseList
 func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetApplicationMetricCpuRequest) (*MetricCPUResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricCPUResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricCPUResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricCpu")
@@ -449,10 +446,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetAp
 }
 
 type ApiGetApplicationMetricHealthCheckRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
-	lastSeconds *float32
+	lastSeconds   *float32
 }
 
 // Up to how many seconds in the past to ask analytics results
@@ -476,8 +473,8 @@ The value returned corresponds to the 95th centile
 */
 func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheck(ctx context.Context, applicationId string) ApiGetApplicationMetricHealthCheckRequest {
 	return ApiGetApplicationMetricHealthCheckRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -486,10 +483,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheck(ctx conte
 //  @return MetricGenericResponseList
 func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r ApiGetApplicationMetricHealthCheckRequest) (*MetricGenericResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricGenericResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricGenericResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricHealthCheck")
@@ -563,10 +560,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r 
 }
 
 type ApiGetApplicationMetricMemoryRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
-	lastSeconds *float32
+	lastSeconds   *float32
 }
 
 // Up to how many seconds in the past to ask analytics results
@@ -588,8 +585,8 @@ GetApplicationMetricMemory Get Memory consumption metric over time for the appli
 */
 func (a *ApplicationMetricsApiService) GetApplicationMetricMemory(ctx context.Context, applicationId string) ApiGetApplicationMetricMemoryRequest {
 	return ApiGetApplicationMetricMemoryRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -598,10 +595,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemory(ctx context.Co
 //  @return MetricMemoryResponseList
 func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGetApplicationMetricMemoryRequest) (*MetricMemoryResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricMemoryResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricMemoryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricMemory")
@@ -675,10 +672,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGe
 }
 
 type ApiGetApplicationMetricRestartRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
-	lastSeconds *float32
+	lastSeconds   *float32
 }
 
 // Up to how many seconds in the past to ask analytics results
@@ -702,8 +699,8 @@ Get application restart message and timestamp.
 */
 func (a *ApplicationMetricsApiService) GetApplicationMetricRestart(ctx context.Context, applicationId string) ApiGetApplicationMetricRestartRequest {
 	return ApiGetApplicationMetricRestartRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -712,10 +709,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricRestart(ctx context.C
 //  @return MetricRestartResponse
 func (a *ApplicationMetricsApiService) GetApplicationMetricRestartExecute(r ApiGetApplicationMetricRestartRequest) (*MetricRestartResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricRestartResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricRestartResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricRestart")
@@ -789,10 +786,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricRestartExecute(r ApiG
 }
 
 type ApiGetApplicationMetricStorageRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMetricsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMetricsApiService
 	applicationId string
-	lastSeconds *float32
+	lastSeconds   *float32
 }
 
 // Up to how many seconds in the past to ask analytics results
@@ -814,8 +811,8 @@ GetApplicationMetricStorage Get Storage consumption metric over time for the app
 */
 func (a *ApplicationMetricsApiService) GetApplicationMetricStorage(ctx context.Context, applicationId string) ApiGetApplicationMetricStorageRequest {
 	return ApiGetApplicationMetricStorageRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -824,10 +821,10 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricStorage(ctx context.C
 //  @return MetricStorageResponseList
 func (a *ApplicationMetricsApiService) GetApplicationMetricStorageExecute(r ApiGetApplicationMetricStorageRequest) (*MetricStorageResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricStorageResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricStorageResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricStorage")

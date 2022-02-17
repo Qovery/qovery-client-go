@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,18 +29,17 @@ var (
 type DatabaseActionsApiService service
 
 type ApiDeployDatabaseRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseActionsApiService
 	databaseId string
 }
-
 
 func (r ApiDeployDatabaseRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.DeployDatabaseExecute(r)
 }
 
 /*
-DeployDatabase Deploy database 
+DeployDatabase Deploy database
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
@@ -49,7 +48,7 @@ DeployDatabase Deploy database
 func (a *DatabaseActionsApiService) DeployDatabase(ctx context.Context, databaseId string) ApiDeployDatabaseRequest {
 	return ApiDeployDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -58,10 +57,10 @@ func (a *DatabaseActionsApiService) DeployDatabase(ctx context.Context, database
 //  @return Status
 func (a *DatabaseActionsApiService) DeployDatabaseExecute(r ApiDeployDatabaseRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Status
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsApiService.DeployDatabase")
@@ -131,11 +130,10 @@ func (a *DatabaseActionsApiService) DeployDatabaseExecute(r ApiDeployDatabaseReq
 }
 
 type ApiRestartDatabaseRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseActionsApiService
 	databaseId string
 }
-
 
 func (r ApiRestartDatabaseRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.RestartDatabaseExecute(r)
@@ -151,7 +149,7 @@ RestartDatabase Retart database
 func (a *DatabaseActionsApiService) RestartDatabase(ctx context.Context, databaseId string) ApiRestartDatabaseRequest {
 	return ApiRestartDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -160,10 +158,10 @@ func (a *DatabaseActionsApiService) RestartDatabase(ctx context.Context, databas
 //  @return Status
 func (a *DatabaseActionsApiService) RestartDatabaseExecute(r ApiRestartDatabaseRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Status
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsApiService.RestartDatabase")
@@ -233,11 +231,10 @@ func (a *DatabaseActionsApiService) RestartDatabaseExecute(r ApiRestartDatabaseR
 }
 
 type ApiStopDatabaseRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseActionsApiService
 	databaseId string
 }
-
 
 func (r ApiStopDatabaseRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.StopDatabaseExecute(r)
@@ -253,7 +250,7 @@ StopDatabase Stop database
 func (a *DatabaseActionsApiService) StopDatabase(ctx context.Context, databaseId string) ApiStopDatabaseRequest {
 	return ApiStopDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -262,10 +259,10 @@ func (a *DatabaseActionsApiService) StopDatabase(ctx context.Context, databaseId
 //  @return Status
 func (a *DatabaseActionsApiService) StopDatabaseExecute(r ApiStopDatabaseRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Status
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsApiService.StopDatabase")

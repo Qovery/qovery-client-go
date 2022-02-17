@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,9 +29,9 @@ var (
 type ProjectSecretApiService service
 
 type ApiCreateProjectSecretRequest struct {
-	ctx context.Context
-	ApiService *ProjectSecretApiService
-	projectId string
+	ctx           context.Context
+	ApiService    *ProjectSecretApiService
+	projectId     string
 	secretRequest *SecretRequest
 }
 
@@ -59,8 +59,8 @@ CreateProjectSecret Add a secret to the project
 func (a *ProjectSecretApiService) CreateProjectSecret(ctx context.Context, projectId string) ApiCreateProjectSecretRequest {
 	return ApiCreateProjectSecretRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -68,10 +68,10 @@ func (a *ProjectSecretApiService) CreateProjectSecret(ctx context.Context, proje
 //  @return SecretResponse
 func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecret")
@@ -143,11 +143,11 @@ func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectS
 }
 
 type ApiCreateProjectSecretAliasRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectSecretApiService
-	projectId string
-	secretId string
-	key *Key
+	projectId  string
+	secretId   string
+	key        *Key
 }
 
 func (r ApiCreateProjectSecretAliasRequest) Key(key Key) ApiCreateProjectSecretAliasRequest {
@@ -178,9 +178,9 @@ CreateProjectSecretAlias Create a secret alias at the project level
 func (a *ProjectSecretApiService) CreateProjectSecretAlias(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretAliasRequest {
 	return ApiCreateProjectSecretAliasRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		secretId: secretId,
+		ctx:        ctx,
+		projectId:  projectId,
+		secretId:   secretId,
 	}
 }
 
@@ -188,10 +188,10 @@ func (a *ProjectSecretApiService) CreateProjectSecretAlias(ctx context.Context, 
 //  @return SecretResponse
 func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreateProjectSecretAliasRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecretAlias")
@@ -264,11 +264,11 @@ func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreatePro
 }
 
 type ApiCreateProjectSecretOverrideRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectSecretApiService
-	projectId string
-	secretId string
-	value *Value
+	projectId  string
+	secretId   string
+	value      *Value
 }
 
 func (r ApiCreateProjectSecretOverrideRequest) Value(value Value) ApiCreateProjectSecretOverrideRequest {
@@ -298,9 +298,9 @@ CreateProjectSecretOverride Create a secret override at the project level
 func (a *ProjectSecretApiService) CreateProjectSecretOverride(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretOverrideRequest {
 	return ApiCreateProjectSecretOverrideRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		secretId: secretId,
+		ctx:        ctx,
+		projectId:  projectId,
+		secretId:   secretId,
 	}
 }
 
@@ -308,10 +308,10 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverride(ctx context.Contex
 //  @return SecretResponse
 func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreateProjectSecretOverrideRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecretOverride")
@@ -384,10 +384,10 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreate
 }
 
 type ApiEditProjectSecretRequest struct {
-	ctx context.Context
-	ApiService *ProjectSecretApiService
-	projectId string
-	secretId string
+	ctx               context.Context
+	ApiService        *ProjectSecretApiService
+	projectId         string
+	secretId          string
 	secretEditRequest *SecretEditRequest
 }
 
@@ -417,9 +417,9 @@ EditProjectSecret Edit a secret belonging to the project
 func (a *ProjectSecretApiService) EditProjectSecret(ctx context.Context, projectId string, secretId string) ApiEditProjectSecretRequest {
 	return ApiEditProjectSecretRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		secretId: secretId,
+		ctx:        ctx,
+		projectId:  projectId,
+		secretId:   secretId,
 	}
 }
 
@@ -427,10 +427,10 @@ func (a *ProjectSecretApiService) EditProjectSecret(ctx context.Context, project
 //  @return SecretResponse
 func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.EditProjectSecret")
@@ -506,11 +506,10 @@ func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecre
 }
 
 type ApiListProjectSecretsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectSecretApiService
-	projectId string
+	projectId  string
 }
-
 
 func (r ApiListProjectSecretsRequest) Execute() (*SecretResponseList, *http.Response, error) {
 	return r.ApiService.ListProjectSecretsExecute(r)
@@ -526,8 +525,8 @@ ListProjectSecrets List project secrets
 func (a *ProjectSecretApiService) ListProjectSecrets(ctx context.Context, projectId string) ApiListProjectSecretsRequest {
 	return ApiListProjectSecretsRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -535,10 +534,10 @@ func (a *ProjectSecretApiService) ListProjectSecrets(ctx context.Context, projec
 //  @return SecretResponseList
 func (a *ProjectSecretApiService) ListProjectSecretsExecute(r ApiListProjectSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.ListProjectSecrets")
@@ -608,12 +607,11 @@ func (a *ProjectSecretApiService) ListProjectSecretsExecute(r ApiListProjectSecr
 }
 
 type ApiProjectProjectIdSecretSecretIdDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectSecretApiService
-	projectId string
-	secretId string
+	projectId  string
+	secretId   string
 }
-
 
 func (r ApiProjectProjectIdSecretSecretIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ProjectProjectIdSecretSecretIdDeleteExecute(r)
@@ -635,18 +633,18 @@ ProjectProjectIdSecretSecretIdDelete Delete a secret from a project
 func (a *ProjectSecretApiService) ProjectProjectIdSecretSecretIdDelete(ctx context.Context, projectId string, secretId string) ApiProjectProjectIdSecretSecretIdDeleteRequest {
 	return ApiProjectProjectIdSecretSecretIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-		secretId: secretId,
+		ctx:        ctx,
+		projectId:  projectId,
+		secretId:   secretId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectSecretApiService) ProjectProjectIdSecretSecretIdDeleteExecute(r ApiProjectProjectIdSecretSecretIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.ProjectProjectIdSecretSecretIdDelete")

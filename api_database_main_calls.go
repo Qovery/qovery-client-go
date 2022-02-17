@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,18 +29,17 @@ var (
 type DatabaseMainCallsApiService service
 
 type ApiDeleteDatabaseRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
-
 
 func (r ApiDeleteDatabaseRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteDatabaseExecute(r)
 }
 
 /*
-DeleteDatabase Delete a database 
+DeleteDatabase Delete a database
 
 To delete a database you must have the admin permission
 
@@ -51,7 +50,7 @@ To delete a database you must have the admin permission
 func (a *DatabaseMainCallsApiService) DeleteDatabase(ctx context.Context, databaseId string) ApiDeleteDatabaseRequest {
 	return ApiDeleteDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -59,9 +58,9 @@ func (a *DatabaseMainCallsApiService) DeleteDatabase(ctx context.Context, databa
 // Execute executes the request
 func (a *DatabaseMainCallsApiService) DeleteDatabaseExecute(r ApiDeleteDatabaseRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.DeleteDatabase")
@@ -122,9 +121,9 @@ func (a *DatabaseMainCallsApiService) DeleteDatabaseExecute(r ApiDeleteDatabaseR
 }
 
 type ApiEditDatabaseRequest struct {
-	ctx context.Context
-	ApiService *DatabaseMainCallsApiService
-	databaseId string
+	ctx                 context.Context
+	ApiService          *DatabaseMainCallsApiService
+	databaseId          string
 	databaseEditRequest *DatabaseEditRequest
 }
 
@@ -138,7 +137,7 @@ func (r ApiEditDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, er
 }
 
 /*
-EditDatabase Edit a database 
+EditDatabase Edit a database
 
 To edit a database  you must have the admin permission
 
@@ -149,7 +148,7 @@ To edit a database  you must have the admin permission
 func (a *DatabaseMainCallsApiService) EditDatabase(ctx context.Context, databaseId string) ApiEditDatabaseRequest {
 	return ApiEditDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -158,10 +157,10 @@ func (a *DatabaseMainCallsApiService) EditDatabase(ctx context.Context, database
 //  @return DatabaseResponse
 func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DatabaseResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.EditDatabase")
@@ -233,9 +232,9 @@ func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseReque
 }
 
 type ApiEditDatabaseCredentialsRequest struct {
-	ctx context.Context
-	ApiService *DatabaseMainCallsApiService
-	databaseId string
+	ctx                context.Context
+	ApiService         *DatabaseMainCallsApiService
+	databaseId         string
 	credentialsRequest *CredentialsRequest
 }
 
@@ -258,7 +257,7 @@ EditDatabaseCredentials Edit database  master credentials
 func (a *DatabaseMainCallsApiService) EditDatabaseCredentials(ctx context.Context, databaseId string) ApiEditDatabaseCredentialsRequest {
 	return ApiEditDatabaseCredentialsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -267,10 +266,10 @@ func (a *DatabaseMainCallsApiService) EditDatabaseCredentials(ctx context.Contex
 //  @return CredentialsResponse
 func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDatabaseCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialsResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.EditDatabaseCredentials")
@@ -342,11 +341,10 @@ func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDa
 }
 
 type ApiGetDatabaseRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
-
 
 func (r ApiGetDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, error) {
 	return r.ApiService.GetDatabaseExecute(r)
@@ -362,7 +360,7 @@ GetDatabase Get database by ID
 func (a *DatabaseMainCallsApiService) GetDatabase(ctx context.Context, databaseId string) ApiGetDatabaseRequest {
 	return ApiGetDatabaseRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -371,10 +369,10 @@ func (a *DatabaseMainCallsApiService) GetDatabase(ctx context.Context, databaseI
 //  @return DatabaseResponse
 func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DatabaseResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabase")
@@ -444,11 +442,10 @@ func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest
 }
 
 type ApiGetDatabaseMasterCredentialsRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
-
 
 func (r ApiGetDatabaseMasterCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
 	return r.ApiService.GetDatabaseMasterCredentialsExecute(r)
@@ -464,7 +461,7 @@ GetDatabaseMasterCredentials Get master credentials of the database
 func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentials(ctx context.Context, databaseId string) ApiGetDatabaseMasterCredentialsRequest {
 	return ApiGetDatabaseMasterCredentialsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -473,10 +470,10 @@ func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentials(ctx context.C
 //  @return CredentialsResponse
 func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiGetDatabaseMasterCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CredentialsResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CredentialsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabaseMasterCredentials")
@@ -546,11 +543,10 @@ func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiG
 }
 
 type ApiGetDatabaseStatusRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
-
 
 func (r ApiGetDatabaseStatusRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.GetDatabaseStatusExecute(r)
@@ -566,7 +562,7 @@ GetDatabaseStatus Get database status
 func (a *DatabaseMainCallsApiService) GetDatabaseStatus(ctx context.Context, databaseId string) ApiGetDatabaseStatusRequest {
 	return ApiGetDatabaseStatusRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -575,10 +571,10 @@ func (a *DatabaseMainCallsApiService) GetDatabaseStatus(ctx context.Context, dat
 //  @return Status
 func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseStatusRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Status
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabaseStatus")
@@ -648,11 +644,10 @@ func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseS
 }
 
 type ApiListDatabaseVersionRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseMainCallsApiService
 	databaseId string
 }
-
 
 func (r ApiListDatabaseVersionRequest) Execute() (*VersionResponseList, *http.Response, error) {
 	return r.ApiService.ListDatabaseVersionExecute(r)
@@ -668,7 +663,7 @@ ListDatabaseVersion List eligible versions for the database
 func (a *DatabaseMainCallsApiService) ListDatabaseVersion(ctx context.Context, databaseId string) ApiListDatabaseVersionRequest {
 	return ApiListDatabaseVersionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -677,10 +672,10 @@ func (a *DatabaseMainCallsApiService) ListDatabaseVersion(ctx context.Context, d
 //  @return VersionResponseList
 func (a *DatabaseMainCallsApiService) ListDatabaseVersionExecute(r ApiListDatabaseVersionRequest) (*VersionResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VersionResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VersionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.ListDatabaseVersion")

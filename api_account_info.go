@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -28,10 +28,9 @@ var (
 type AccountInfoApiService service
 
 type ApiGetAccountInformationRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AccountInfoApiService
 }
-
 
 func (r ApiGetAccountInformationRequest) Execute() (*AccountInfoResponse, *http.Response, error) {
 	return r.ApiService.GetAccountInformationExecute(r)
@@ -46,7 +45,7 @@ GetAccountInformation Get Account information
 func (a *AccountInfoApiService) GetAccountInformation(ctx context.Context) ApiGetAccountInformationRequest {
 	return ApiGetAccountInformationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -54,10 +53,10 @@ func (a *AccountInfoApiService) GetAccountInformation(ctx context.Context) ApiGe
 //  @return AccountInfoResponse
 func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInformationRequest) (*AccountInfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccountInfoResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AccountInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountInfoApiService.GetAccountInformation")

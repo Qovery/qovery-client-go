@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,13 +18,13 @@ import (
 
 // ApplicationGitRepositoryResponse struct for ApplicationGitRepositoryResponse
 type ApplicationGitRepositoryResponse struct {
-	HasAccess *bool `json:"has_access,omitempty"`
-	Provider *string `json:"provider,omitempty"`
-	Owner *string `json:"owner,omitempty"`
-	Url *string `json:"url,omitempty"`
+	HasAccess *bool   `json:"has_access,omitempty"`
+	Provider  *string `json:"provider,omitempty"`
+	Owner     *string `json:"owner,omitempty"`
+	Url       *string `json:"url,omitempty"`
 	// repository name
-	Name *string `json:"name,omitempty"`
-	Branch *string `json:"branch,omitempty"`
+	Name     *string `json:"name,omitempty"`
+	Branch   *string `json:"branch,omitempty"`
 	RootPath *string `json:"root_path,omitempty"`
 	// Git commit ID corresponding to the deployed version of the app
 	DeployedCommitId *string `json:"deployed_commit_id,omitempty"`
@@ -32,7 +32,7 @@ type ApplicationGitRepositoryResponse struct {
 	DeployedCommitDate *time.Time `json:"deployed_commit_date,omitempty"`
 	// Git commit user corresponding to the deployed version of the app
 	DeployedCommitContributor *string `json:"deployed_commit_contributor,omitempty"`
-	DeployedCommitTag *string `json:"deployed_commit_tag,omitempty"`
+	DeployedCommitTag         *string `json:"deployed_commit_tag,omitempty"`
 }
 
 // NewApplicationGitRepositoryResponse instantiates a new ApplicationGitRepositoryResponse object
@@ -477,5 +477,3 @@ func (v *NullableApplicationGitRepositoryResponse) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

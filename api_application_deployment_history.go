@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,10 +29,10 @@ var (
 type ApplicationDeploymentHistoryApiService service
 
 type ApiListApplicationDeploymentHistoryRequest struct {
-	ctx context.Context
-	ApiService *ApplicationDeploymentHistoryApiService
+	ctx           context.Context
+	ApiService    *ApplicationDeploymentHistoryApiService
 	applicationId string
-	startId *string
+	startId       *string
 }
 
 // Starting point after which to return results
@@ -56,8 +56,8 @@ By default it returns the 20 last results. The response is paginated. In order t
 */
 func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistory(ctx context.Context, applicationId string) ApiListApplicationDeploymentHistoryRequest {
 	return ApiListApplicationDeploymentHistoryRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistor
 //  @return DeploymentHistoryPaginatedResponseList
 func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistoryExecute(r ApiListApplicationDeploymentHistoryRequest) (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeploymentHistoryPaginatedResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeploymentHistoryPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentHistoryApiService.ListApplicationDeploymentHistory")

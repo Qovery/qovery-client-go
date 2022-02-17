@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,12 +18,12 @@ import (
 
 // DeploymentHistoryEnvironmentResponse struct for DeploymentHistoryEnvironmentResponse
 type DeploymentHistoryEnvironmentResponse struct {
-	Status *string `json:"status,omitempty"`
+	Status       *string                                `json:"status,omitempty"`
 	Applications []DeploymentHistoryApplicationResponse `json:"applications,omitempty"`
-	Databases []DeploymentHistoryDatabaseResponse `json:"databases,omitempty"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Databases    []DeploymentHistoryDatabaseResponse    `json:"databases,omitempty"`
+	Id           string                                 `json:"id"`
+	CreatedAt    time.Time                              `json:"created_at"`
+	UpdatedAt    *time.Time                             `json:"updated_at,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironmentResponse instantiates a new DeploymentHistoryEnvironmentResponse object
@@ -154,7 +154,7 @@ func (o *DeploymentHistoryEnvironmentResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironmentResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -178,7 +178,7 @@ func (o *DeploymentHistoryEnvironmentResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironmentResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -279,5 +279,3 @@ func (v *NullableDeploymentHistoryEnvironmentResponse) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

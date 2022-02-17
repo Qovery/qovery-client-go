@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,8 +29,8 @@ var (
 type EnvironmentSecretApiService service
 
 type ApiCreateEnvironmentSecretRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentSecretApiService
+	ctx           context.Context
+	ApiService    *EnvironmentSecretApiService
 	environmentId string
 	secretRequest *SecretRequest
 }
@@ -58,8 +58,8 @@ CreateEnvironmentSecret Add a secret to the environment
 */
 func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx context.Context, environmentId string) ApiCreateEnvironmentSecretRequest {
 	return ApiCreateEnvironmentSecretRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -68,10 +68,10 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx context.Contex
 //  @return SecretResponse
 func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecret")
@@ -143,11 +143,11 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 }
 
 type ApiCreateEnvironmentSecretAliasRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentSecretApiService
+	ctx           context.Context
+	ApiService    *EnvironmentSecretApiService
 	environmentId string
-	secretId string
-	key *Key
+	secretId      string
+	key           *Key
 }
 
 func (r ApiCreateEnvironmentSecretAliasRequest) Key(key Key) ApiCreateEnvironmentSecretAliasRequest {
@@ -177,10 +177,10 @@ CreateEnvironmentSecretAlias Create a secret alias at the environment level
 */
 func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretAliasRequest {
 	return ApiCreateEnvironmentSecretAliasRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
-		secretId: secretId,
+		secretId:      secretId,
 	}
 }
 
@@ -188,10 +188,10 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx context.C
 //  @return SecretResponse
 func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretAlias")
@@ -264,11 +264,11 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 }
 
 type ApiCreateEnvironmentSecretOverrideRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentSecretApiService
+	ctx           context.Context
+	ApiService    *EnvironmentSecretApiService
 	environmentId string
-	secretId string
-	value *Value
+	secretId      string
+	value         *Value
 }
 
 func (r ApiCreateEnvironmentSecretOverrideRequest) Value(value Value) ApiCreateEnvironmentSecretOverrideRequest {
@@ -297,10 +297,10 @@ CreateEnvironmentSecretOverride Create a secret override at the environment leve
 */
 func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretOverrideRequest {
 	return ApiCreateEnvironmentSecretOverrideRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
-		secretId: secretId,
+		secretId:      secretId,
 	}
 }
 
@@ -308,10 +308,10 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx contex
 //  @return SecretResponse
 func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretOverride")
@@ -384,10 +384,10 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 }
 
 type ApiEditEnvironmentSecretRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentSecretApiService
-	environmentId string
-	secretId string
+	ctx               context.Context
+	ApiService        *EnvironmentSecretApiService
+	environmentId     string
+	secretId          string
 	secretEditRequest *SecretEditRequest
 }
 
@@ -416,10 +416,10 @@ EditEnvironmentSecret Edit a secret belonging to the environment
 */
 func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiEditEnvironmentSecretRequest {
 	return ApiEditEnvironmentSecretRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
-		secretId: secretId,
+		secretId:      secretId,
 	}
 }
 
@@ -427,10 +427,10 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx context.Context,
 //  @return SecretResponse
 func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.EditEnvironmentSecret")
@@ -506,12 +506,11 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 }
 
 type ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentSecretApiService
+	ctx           context.Context
+	ApiService    *EnvironmentSecretApiService
 	environmentId string
-	secretId string
+	secretId      string
 }
-
 
 func (r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.EnvironmentEnvironmentIdSecretSecretIdDeleteExecute(r)
@@ -532,19 +531,19 @@ EnvironmentEnvironmentIdSecretSecretIdDelete Delete a secret from the environmen
 */
 func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDelete(ctx context.Context, environmentId string, secretId string) ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest {
 	return ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
-		secretId: secretId,
+		secretId:      secretId,
 	}
 }
 
 // Execute executes the request
 func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDeleteExecute(r ApiEnvironmentEnvironmentIdSecretSecretIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.EnvironmentEnvironmentIdSecretSecretIdDelete")
@@ -606,11 +605,10 @@ func (a *EnvironmentSecretApiService) EnvironmentEnvironmentIdSecretSecretIdDele
 }
 
 type ApiListEnvironmentSecretsRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentSecretApiService
+	ctx           context.Context
+	ApiService    *EnvironmentSecretApiService
 	environmentId string
 }
-
 
 func (r ApiListEnvironmentSecretsRequest) Execute() (*SecretResponseList, *http.Response, error) {
 	return r.ApiService.ListEnvironmentSecretsExecute(r)
@@ -625,8 +623,8 @@ ListEnvironmentSecrets List environment secrets
 */
 func (a *EnvironmentSecretApiService) ListEnvironmentSecrets(ctx context.Context, environmentId string) ApiListEnvironmentSecretsRequest {
 	return ApiListEnvironmentSecretsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -635,10 +633,10 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecrets(ctx context.Context
 //  @return SecretResponseList
 func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnvironmentSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SecretResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SecretResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.ListEnvironmentSecrets")

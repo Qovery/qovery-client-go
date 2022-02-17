@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,8 +29,8 @@ var (
 type ProjectsApiService service
 
 type ApiCreateProjectRequest struct {
-	ctx context.Context
-	ApiService *ProjectsApiService
+	ctx            context.Context
+	ApiService     *ProjectsApiService
 	organizationId string
 	projectRequest *ProjectRequest
 }
@@ -53,8 +53,8 @@ CreateProject Create a project
 */
 func (a *ProjectsApiService) CreateProject(ctx context.Context, organizationId string) ApiCreateProjectRequest {
 	return ApiCreateProjectRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *ProjectsApiService) CreateProject(ctx context.Context, organizationId s
 //  @return ProjectResponse
 func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*ProjectResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.CreateProject")
@@ -138,11 +138,10 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*P
 }
 
 type ApiGetOrganizationProjectStatsRequest struct {
-	ctx context.Context
-	ApiService *ProjectsApiService
+	ctx            context.Context
+	ApiService     *ProjectsApiService
 	organizationId string
 }
-
 
 func (r ApiGetOrganizationProjectStatsRequest) Execute() (*ProjectStatsResponseList, *http.Response, error) {
 	return r.ApiService.GetOrganizationProjectStatsExecute(r)
@@ -159,8 +158,8 @@ Returns a list of project ids, and for each its total numberof services and envi
 */
 func (a *ProjectsApiService) GetOrganizationProjectStats(ctx context.Context, organizationId string) ApiGetOrganizationProjectStatsRequest {
 	return ApiGetOrganizationProjectStatsRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -169,10 +168,10 @@ func (a *ProjectsApiService) GetOrganizationProjectStats(ctx context.Context, or
 //  @return ProjectStatsResponseList
 func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganizationProjectStatsRequest) (*ProjectStatsResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectStatsResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectStatsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetOrganizationProjectStats")
@@ -242,11 +241,10 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 }
 
 type ApiListProjectRequest struct {
-	ctx context.Context
-	ApiService *ProjectsApiService
+	ctx            context.Context
+	ApiService     *ProjectsApiService
 	organizationId string
 }
-
 
 func (r ApiListProjectRequest) Execute() (*ProjectResponseList, *http.Response, error) {
 	return r.ApiService.ListProjectExecute(r)
@@ -261,8 +259,8 @@ ListProject List projects
 */
 func (a *ProjectsApiService) ListProject(ctx context.Context, organizationId string) ApiListProjectRequest {
 	return ApiListProjectRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		organizationId: organizationId,
 	}
 }
@@ -271,10 +269,10 @@ func (a *ProjectsApiService) ListProject(ctx context.Context, organizationId str
 //  @return ProjectResponseList
 func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (*ProjectResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProject")

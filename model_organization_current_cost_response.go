@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,11 +19,11 @@ import (
 type OrganizationCurrentCostResponse struct {
 	Plan *string `json:"plan,omitempty"`
 	// number of days remaining before the end of the trial period
-	RemainingTrialDay *int32 `json:"remaining_trial_day,omitempty"`
-	RemainingCredits *RemainingCredits `json:"remaining_credits,omitempty"`
-	Cost *Cost `json:"cost,omitempty"`
-	PaidUsage *PaidUsageResponse `json:"paid_usage,omitempty"`
-	CommunityUsage *CommunityUsageResponse `json:"community_usage,omitempty"`
+	RemainingTrialDay *int32                  `json:"remaining_trial_day,omitempty"`
+	RemainingCredits  *RemainingCredits       `json:"remaining_credits,omitempty"`
+	Cost              *Cost                   `json:"cost,omitempty"`
+	PaidUsage         *PaidUsageResponse      `json:"paid_usage,omitempty"`
+	CommunityUsage    *CommunityUsageResponse `json:"community_usage,omitempty"`
 }
 
 // NewOrganizationCurrentCostResponse instantiates a new OrganizationCurrentCostResponse object
@@ -293,5 +293,3 @@ func (v *NullableOrganizationCurrentCostResponse) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

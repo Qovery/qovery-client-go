@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,11 +29,10 @@ var (
 type EnvironmentMainCallsApiService service
 
 type ApiDeleteEnvironmentRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentMainCallsApiService
+	ctx           context.Context
+	ApiService    *EnvironmentMainCallsApiService
 	environmentId string
 }
-
 
 func (r ApiDeleteEnvironmentRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteEnvironmentExecute(r)
@@ -50,8 +49,8 @@ To delete an environment you must have the admin permission
 */
 func (a *EnvironmentMainCallsApiService) DeleteEnvironment(ctx context.Context, environmentId string) ApiDeleteEnvironmentRequest {
 	return ApiDeleteEnvironmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -59,9 +58,9 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironment(ctx context.Context, 
 // Execute executes the request
 func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.DeleteEnvironment")
@@ -122,9 +121,9 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnv
 }
 
 type ApiEditEnvironmentRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentMainCallsApiService
-	environmentId string
+	ctx                    context.Context
+	ApiService             *EnvironmentMainCallsApiService
+	environmentId          string
 	environmentEditRequest *EnvironmentEditRequest
 }
 
@@ -148,8 +147,8 @@ To edit an environment you must have the admin permission
 */
 func (a *EnvironmentMainCallsApiService) EditEnvironment(ctx context.Context, environmentId string) ApiEditEnvironmentRequest {
 	return ApiEditEnvironmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -158,10 +157,10 @@ func (a *EnvironmentMainCallsApiService) EditEnvironment(ctx context.Context, en
 //  @return EnvironmentResponse
 func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.EditEnvironment")
@@ -233,11 +232,10 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 }
 
 type ApiGetEnvironmentRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentMainCallsApiService
+	ctx           context.Context
+	ApiService    *EnvironmentMainCallsApiService
 	environmentId string
 }
-
 
 func (r ApiGetEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
 	return r.ApiService.GetEnvironmentExecute(r)
@@ -252,8 +250,8 @@ GetEnvironment Get environment by ID
 */
 func (a *EnvironmentMainCallsApiService) GetEnvironment(ctx context.Context, environmentId string) ApiGetEnvironmentRequest {
 	return ApiGetEnvironmentRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -262,10 +260,10 @@ func (a *EnvironmentMainCallsApiService) GetEnvironment(ctx context.Context, env
 //  @return EnvironmentResponse
 func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironment")
@@ -335,11 +333,10 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 }
 
 type ApiGetEnvironmentStatusRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentMainCallsApiService
+	ctx           context.Context
+	ApiService    *EnvironmentMainCallsApiService
 	environmentId string
 }
-
 
 func (r ApiGetEnvironmentStatusRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.GetEnvironmentStatusExecute(r)
@@ -354,8 +351,8 @@ GetEnvironmentStatus Get environment status
 */
 func (a *EnvironmentMainCallsApiService) GetEnvironmentStatus(ctx context.Context, environmentId string) ApiGetEnvironmentStatusRequest {
 	return ApiGetEnvironmentStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -364,10 +361,10 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatus(ctx context.Contex
 //  @return Status
 func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Status
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironmentStatus")
@@ -437,11 +434,10 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 }
 
 type ApiListEnvironmentLinksRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentMainCallsApiService
+	ctx           context.Context
+	ApiService    *EnvironmentMainCallsApiService
 	environmentId string
 }
-
 
 func (r ApiListEnvironmentLinksRequest) Execute() (*LinkResponseList, *http.Response, error) {
 	return r.ApiService.ListEnvironmentLinksExecute(r)
@@ -458,8 +454,8 @@ This will return all the custom domains and Qovery autogenerated domain for all 
 */
 func (a *EnvironmentMainCallsApiService) ListEnvironmentLinks(ctx context.Context, environmentId string) ApiListEnvironmentLinksRequest {
 	return ApiListEnvironmentLinksRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -468,10 +464,10 @@ func (a *EnvironmentMainCallsApiService) ListEnvironmentLinks(ctx context.Contex
 //  @return LinkResponseList
 func (a *EnvironmentMainCallsApiService) ListEnvironmentLinksExecute(r ApiListEnvironmentLinksRequest) (*LinkResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *LinkResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LinkResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.ListEnvironmentLinks")

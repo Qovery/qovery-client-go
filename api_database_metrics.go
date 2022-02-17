@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,18 +29,17 @@ var (
 type DatabaseMetricsApiService service
 
 type ApiGetDatabaseCurrentMetricRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseMetricsApiService
 	databaseId string
 }
-
 
 func (r ApiGetDatabaseCurrentMetricRequest) Execute() (*DatabaseCurrentMetricResponse, *http.Response, error) {
 	return r.ApiService.GetDatabaseCurrentMetricExecute(r)
 }
 
 /*
-GetDatabaseCurrentMetric Get current metric consumption of the database 
+GetDatabaseCurrentMetric Get current metric consumption of the database
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
@@ -49,7 +48,7 @@ GetDatabaseCurrentMetric Get current metric consumption of the database
 func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetric(ctx context.Context, databaseId string) ApiGetDatabaseCurrentMetricRequest {
 	return ApiGetDatabaseCurrentMetricRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -58,10 +57,10 @@ func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetric(ctx context.Context
 //  @return DatabaseCurrentMetricResponse
 func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetDatabaseCurrentMetricRequest) (*DatabaseCurrentMetricResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DatabaseCurrentMetricResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DatabaseCurrentMetricResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseCurrentMetric")
@@ -131,9 +130,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetData
 }
 
 type ApiGetDatabaseMetricCpuRequest struct {
-	ctx context.Context
-	ApiService *DatabaseMetricsApiService
-	databaseId string
+	ctx         context.Context
+	ApiService  *DatabaseMetricsApiService
+	databaseId  string
 	lastSeconds *float32
 }
 
@@ -157,7 +156,7 @@ GetDatabaseMetricCpu Get CPU consumption metric over time for the database
 func (a *DatabaseMetricsApiService) GetDatabaseMetricCpu(ctx context.Context, databaseId string) ApiGetDatabaseMetricCpuRequest {
 	return ApiGetDatabaseMetricCpuRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -166,10 +165,10 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricCpu(ctx context.Context, da
 //  @return MetricCPUDatapointResponseList
 func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabaseMetricCpuRequest) (*MetricCPUDatapointResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricCPUDatapointResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricCPUDatapointResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricCpu")
@@ -243,9 +242,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabase
 }
 
 type ApiGetDatabaseMetricHealthCheckRequest struct {
-	ctx context.Context
-	ApiService *DatabaseMetricsApiService
-	databaseId string
+	ctx         context.Context
+	ApiService  *DatabaseMetricsApiService
+	databaseId  string
 	lastSeconds *float32
 }
 
@@ -271,7 +270,7 @@ The value returned corresponds to the 95th centile
 func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheck(ctx context.Context, databaseId string) ApiGetDatabaseMetricHealthCheckRequest {
 	return ApiGetDatabaseMetricHealthCheckRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -280,10 +279,10 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheck(ctx context.Con
 //  @return MetricGenericResponseList
 func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGetDatabaseMetricHealthCheckRequest) (*MetricGenericResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricGenericResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricGenericResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricHealthCheck")
@@ -357,9 +356,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGet
 }
 
 type ApiGetDatabaseMetricMemoryRequest struct {
-	ctx context.Context
-	ApiService *DatabaseMetricsApiService
-	databaseId string
+	ctx         context.Context
+	ApiService  *DatabaseMetricsApiService
+	databaseId  string
 	lastSeconds *float32
 }
 
@@ -383,7 +382,7 @@ GetDatabaseMetricMemory Get Memory consumption metric over time for the database
 func (a *DatabaseMetricsApiService) GetDatabaseMetricMemory(ctx context.Context, databaseId string) ApiGetDatabaseMetricMemoryRequest {
 	return ApiGetDatabaseMetricMemoryRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -392,10 +391,10 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricMemory(ctx context.Context,
 //  @return MetricMemoryDatapointResponseList
 func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatabaseMetricMemoryRequest) (*MetricMemoryDatapointResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricMemoryDatapointResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricMemoryDatapointResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricMemory")
@@ -469,9 +468,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatab
 }
 
 type ApiGetDatabaseMetricRestartRequest struct {
-	ctx context.Context
-	ApiService *DatabaseMetricsApiService
-	databaseId string
+	ctx         context.Context
+	ApiService  *DatabaseMetricsApiService
+	databaseId  string
 	lastSeconds *float32
 }
 
@@ -497,7 +496,7 @@ Get database restart message and timestamp.
 func (a *DatabaseMetricsApiService) GetDatabaseMetricRestart(ctx context.Context, databaseId string) ApiGetDatabaseMetricRestartRequest {
 	return ApiGetDatabaseMetricRestartRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -506,10 +505,10 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricRestart(ctx context.Context
 //  @return MetricRestartResponse
 func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetDatabaseMetricRestartRequest) (*MetricRestartResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricRestartResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricRestartResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricRestart")
@@ -583,9 +582,9 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetData
 }
 
 type ApiGetDatabaseMetricStorageRequest struct {
-	ctx context.Context
-	ApiService *DatabaseMetricsApiService
-	databaseId string
+	ctx         context.Context
+	ApiService  *DatabaseMetricsApiService
+	databaseId  string
 	lastSeconds *float32
 }
 
@@ -609,7 +608,7 @@ GetDatabaseMetricStorage Get Storage consumption metric over time for the databa
 func (a *DatabaseMetricsApiService) GetDatabaseMetricStorage(ctx context.Context, databaseId string) ApiGetDatabaseMetricStorageRequest {
 	return ApiGetDatabaseMetricStorageRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -618,10 +617,10 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricStorage(ctx context.Context
 //  @return MetricStorageDatapointResponseList
 func (a *DatabaseMetricsApiService) GetDatabaseMetricStorageExecute(r ApiGetDatabaseMetricStorageRequest) (*MetricStorageDatapointResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MetricStorageDatapointResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MetricStorageDatapointResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricStorage")

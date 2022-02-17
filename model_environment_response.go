@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,16 +19,16 @@ import (
 // EnvironmentResponse struct for EnvironmentResponse
 type EnvironmentResponse struct {
 	// name is case insensitive
-	Name string `json:"name"`
+	Name    string           `json:"name"`
 	Project *ReferenceObject `json:"project,omitempty"`
 	// uuid of the user that made the last update
-	LastUpdatedBy *string `json:"last_updated_by,omitempty"`
+	LastUpdatedBy *string                `json:"last_updated_by,omitempty"`
 	CloudProvider map[string]interface{} `json:"cloud_provider"`
-	Mode string `json:"mode"`
-	ClusterId string `json:"cluster_id"`
-	Id string `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Mode          string                 `json:"mode"`
+	ClusterId     string                 `json:"cluster_id"`
+	Id            string                 `json:"id"`
+	CreatedAt     time.Time              `json:"created_at"`
+	UpdatedAt     *time.Time             `json:"updated_at,omitempty"`
 }
 
 // NewEnvironmentResponse instantiates a new EnvironmentResponse object
@@ -63,7 +63,7 @@ func (o *EnvironmentResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -151,7 +151,7 @@ func (o *EnvironmentResponse) GetCloudProvider() map[string]interface{} {
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentResponse) GetCloudProviderOk() (*map[string]interface{}, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CloudProvider, true
@@ -175,7 +175,7 @@ func (o *EnvironmentResponse) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentResponse) GetModeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -199,7 +199,7 @@ func (o *EnvironmentResponse) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentResponse) GetClusterIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ClusterId, true
@@ -223,7 +223,7 @@ func (o *EnvironmentResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -247,7 +247,7 @@ func (o *EnvironmentResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -357,5 +357,3 @@ func (v *NullableEnvironmentResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

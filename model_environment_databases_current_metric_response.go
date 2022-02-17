@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,10 +17,10 @@ import (
 
 // EnvironmentDatabasesCurrentMetricResponse struct for EnvironmentDatabasesCurrentMetricResponse
 type EnvironmentDatabasesCurrentMetricResponse struct {
-	Database *string `json:"database,omitempty"`
-	Cpu *EnvironmentDatabasesCurrentMetricResponseCpu `json:"cpu,omitempty"`
-	Memory *EnvironmentDatabasesCurrentMetricResponseMemory `json:"memory,omitempty"`
-	Storage *EnvironmentDatabasesCurrentMetricResponseStorage `json:"storage,omitempty"`
+	Database *string                                           `json:"database,omitempty"`
+	Cpu      *EnvironmentDatabasesCurrentMetricResponseCpu     `json:"cpu,omitempty"`
+	Memory   *EnvironmentDatabasesCurrentMetricResponseMemory  `json:"memory,omitempty"`
+	Storage  *EnvironmentDatabasesCurrentMetricResponseStorage `json:"storage,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetricResponse instantiates a new EnvironmentDatabasesCurrentMetricResponse object
@@ -220,5 +220,3 @@ func (v *NullableEnvironmentDatabasesCurrentMetricResponse) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

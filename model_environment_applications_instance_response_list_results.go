@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,8 +17,8 @@ import (
 
 // EnvironmentApplicationsInstanceResponseListResults struct for EnvironmentApplicationsInstanceResponseListResults
 type EnvironmentApplicationsInstanceResponseListResults struct {
-	Application string `json:"application"`
-	Instances []InstanceResponse `json:"instances"`
+	Application string             `json:"application"`
+	Instances   []InstanceResponse `json:"instances"`
 }
 
 // NewEnvironmentApplicationsInstanceResponseListResults instantiates a new EnvironmentApplicationsInstanceResponseListResults object
@@ -53,7 +53,7 @@ func (o *EnvironmentApplicationsInstanceResponseListResults) GetApplication() st
 // GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsInstanceResponseListResults) GetApplicationOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Application, true
@@ -77,7 +77,7 @@ func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstances() []In
 // GetInstancesOk returns a tuple with the Instances field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() ([]InstanceResponse, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Instances, true
@@ -134,5 +134,3 @@ func (v *NullableEnvironmentApplicationsInstanceResponseListResults) UnmarshalJS
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

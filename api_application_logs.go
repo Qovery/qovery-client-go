@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,11 +29,10 @@ var (
 type ApplicationLogsApiService service
 
 type ApiListApplicationLogRequest struct {
-	ctx context.Context
-	ApiService *ApplicationLogsApiService
+	ctx           context.Context
+	ApiService    *ApplicationLogsApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationLogRequest) Execute() (*LogResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationLogExecute(r)
@@ -50,8 +49,8 @@ This will list the last 1000 logs of the application
 */
 func (a *ApplicationLogsApiService) ListApplicationLog(ctx context.Context, applicationId string) ApiListApplicationLogRequest {
 	return ApiListApplicationLogRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -60,10 +59,10 @@ func (a *ApplicationLogsApiService) ListApplicationLog(ctx context.Context, appl
 //  @return LogResponseList
 func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicationLogRequest) (*LogResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *LogResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LogResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLogsApiService.ListApplicationLog")

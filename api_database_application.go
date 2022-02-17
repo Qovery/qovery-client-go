@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,11 +29,10 @@ var (
 type DatabaseApplicationApiService service
 
 type ApiListDatabaseApplicationRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseApplicationApiService
 	databaseId string
 }
-
 
 func (r ApiListDatabaseApplicationRequest) Execute() (*ApplicationResponseList, *http.Response, error) {
 	return r.ApiService.ListDatabaseApplicationExecute(r)
@@ -49,7 +48,7 @@ ListDatabaseApplication List applications using the database
 func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx context.Context, databaseId string) ApiListDatabaseApplicationRequest {
 	return ApiListDatabaseApplicationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -58,10 +57,10 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx context.Cont
 //  @return ApplicationResponseList
 func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiListDatabaseApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApplicationResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.ListDatabaseApplication")
@@ -131,19 +130,18 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 }
 
 type ApiRemoveApplicationFromDatabaseRequest struct {
-	ctx context.Context
-	ApiService *DatabaseApplicationApiService
-	databaseId string
+	ctx                 context.Context
+	ApiService          *DatabaseApplicationApiService
+	databaseId          string
 	targetApplicationId string
 }
-
 
 func (r ApiRemoveApplicationFromDatabaseRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveApplicationFromDatabaseExecute(r)
 }
 
 /*
-RemoveApplicationFromDatabase Remove an application from this database 
+RemoveApplicationFromDatabase Remove an application from this database
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
@@ -152,9 +150,9 @@ RemoveApplicationFromDatabase Remove an application from this database
 */
 func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx context.Context, databaseId string, targetApplicationId string) ApiRemoveApplicationFromDatabaseRequest {
 	return ApiRemoveApplicationFromDatabaseRequest{
-		ApiService: a,
-		ctx: ctx,
-		databaseId: databaseId,
+		ApiService:          a,
+		ctx:                 ctx,
+		databaseId:          databaseId,
 		targetApplicationId: targetApplicationId,
 	}
 }
@@ -162,9 +160,9 @@ func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx contex
 // Execute executes the request
 func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r ApiRemoveApplicationFromDatabaseRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.RemoveApplicationFromDatabase")

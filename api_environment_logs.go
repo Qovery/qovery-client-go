@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,11 +29,10 @@ var (
 type EnvironmentLogsApiService service
 
 type ApiListEnvironmentLogRequest struct {
-	ctx context.Context
-	ApiService *EnvironmentLogsApiService
+	ctx           context.Context
+	ApiService    *EnvironmentLogsApiService
 	environmentId string
 }
-
 
 func (r ApiListEnvironmentLogRequest) Execute() (*EnvironmentLogResponseList, *http.Response, error) {
 	return r.ApiService.ListEnvironmentLogExecute(r)
@@ -50,8 +49,8 @@ This returns the last 1000 environment deployment logs.
 */
 func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx context.Context, environmentId string) ApiListEnvironmentLogRequest {
 	return ApiListEnvironmentLogRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		environmentId: environmentId,
 	}
 }
@@ -60,10 +59,10 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx context.Context, envi
 //  @return EnvironmentLogResponseList
 func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironmentLogRequest) (*EnvironmentLogResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentLogResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentLogResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsApiService.ListEnvironmentLog")

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,10 +29,10 @@ var (
 type DatabaseEventApiService service
 
 type ApiListDatabaseEventRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *DatabaseEventApiService
 	databaseId string
-	startId *string
+	startId    *string
 }
 
 // Starting point after which to return results
@@ -57,7 +57,7 @@ By default it returns the 20 last results. The response is paginated. In order t
 func (a *DatabaseEventApiService) ListDatabaseEvent(ctx context.Context, databaseId string) ApiListDatabaseEventRequest {
 	return ApiListDatabaseEventRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		databaseId: databaseId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *DatabaseEventApiService) ListDatabaseEvent(ctx context.Context, databas
 //  @return EventPaginatedResponseList
 func (a *DatabaseEventApiService) ListDatabaseEventExecute(r ApiListDatabaseEventRequest) (*EventPaginatedResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EventPaginatedResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EventPaginatedResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseEventApiService.ListDatabaseEvent")

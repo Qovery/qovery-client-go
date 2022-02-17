@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -28,10 +28,9 @@ var (
 type ReferralRewardsApiService service
 
 type ApiGetAccountReferralRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ReferralRewardsApiService
 }
-
 
 func (r ApiGetAccountReferralRequest) Execute() (*ReferralResponse, *http.Response, error) {
 	return r.ApiService.GetAccountReferralExecute(r)
@@ -46,7 +45,7 @@ GetAccountReferral Get your referral information
 func (a *ReferralRewardsApiService) GetAccountReferral(ctx context.Context) ApiGetAccountReferralRequest {
 	return ApiGetAccountReferralRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -54,10 +53,10 @@ func (a *ReferralRewardsApiService) GetAccountReferral(ctx context.Context) ApiG
 //  @return ReferralResponse
 func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountReferralRequest) (*ReferralResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReferralResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ReferralResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferralRewardsApiService.GetAccountReferral")
@@ -126,8 +125,8 @@ func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountRef
 }
 
 type ApiPostAccountRewardClaimRequest struct {
-	ctx context.Context
-	ApiService *ReferralRewardsApiService
+	ctx                 context.Context
+	ApiService          *ReferralRewardsApiService
 	rewardClaimResponse *RewardClaimResponse
 }
 
@@ -151,16 +150,16 @@ A same code can be claimed only 3 times at max
 func (a *ReferralRewardsApiService) PostAccountRewardClaim(ctx context.Context) ApiPostAccountRewardClaimRequest {
 	return ApiPostAccountRewardClaimRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ReferralRewardsApiService) PostAccountRewardClaimExecute(r ApiPostAccountRewardClaimRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferralRewardsApiService.PostAccountRewardClaim")

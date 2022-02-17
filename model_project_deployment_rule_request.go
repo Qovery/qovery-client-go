@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -21,12 +21,12 @@ type ProjectDeploymentRuleRequest struct {
 	// specify here a wildcard based on environment name that will target new environments after their creation
 	EnvironmentTarget string `json:"environment_target"`
 	// name is case insensitive
-	Name string `json:"name"`
+	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
-	Mode string `json:"mode"`
-	Cluster string `json:"cluster"`
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
-	AutoStop bool `json:"auto_stop"`
+	Mode        string  `json:"mode"`
+	Cluster     string  `json:"cluster"`
+	AutoDeploy  *bool   `json:"auto_deploy,omitempty"`
+	AutoStop    bool    `json:"auto_stop"`
 	// specify value only if auto_stop = false
 	Timezone *string `json:"timezone,omitempty"`
 	// specify value only if auto_stop = false
@@ -81,7 +81,7 @@ func (o *ProjectDeploymentRuleRequest) GetEnvironmentTarget() string {
 // GetEnvironmentTargetOk returns a tuple with the EnvironmentTarget field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetEnvironmentTargetOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.EnvironmentTarget, true
@@ -105,7 +105,7 @@ func (o *ProjectDeploymentRuleRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -161,7 +161,7 @@ func (o *ProjectDeploymentRuleRequest) GetMode() string {
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetModeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Mode, true
@@ -185,7 +185,7 @@ func (o *ProjectDeploymentRuleRequest) GetCluster() string {
 // GetClusterOk returns a tuple with the Cluster field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetClusterOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Cluster, true
@@ -241,7 +241,7 @@ func (o *ProjectDeploymentRuleRequest) GetAutoStop() bool {
 // GetAutoStopOk returns a tuple with the AutoStop field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetAutoStopOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.AutoStop, true
@@ -297,7 +297,7 @@ func (o *ProjectDeploymentRuleRequest) GetStartTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleRequest) GetStartTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StartTime.Get(), o.StartTime.IsSet()
@@ -316,6 +316,7 @@ func (o *ProjectDeploymentRuleRequest) HasStartTime() bool {
 func (o *ProjectDeploymentRuleRequest) SetStartTime(v time.Time) {
 	o.StartTime.Set(&v)
 }
+
 // SetStartTimeNil sets the value for StartTime to be an explicit nil
 func (o *ProjectDeploymentRuleRequest) SetStartTimeNil() {
 	o.StartTime.Set(nil)
@@ -339,7 +340,7 @@ func (o *ProjectDeploymentRuleRequest) GetStopTime() time.Time {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleRequest) GetStopTimeOk() (*time.Time, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.StopTime.Get(), o.StopTime.IsSet()
@@ -358,6 +359,7 @@ func (o *ProjectDeploymentRuleRequest) HasStopTime() bool {
 func (o *ProjectDeploymentRuleRequest) SetStopTime(v time.Time) {
 	o.StopTime.Set(&v)
 }
+
 // SetStopTimeNil sets the value for StopTime to be an explicit nil
 func (o *ProjectDeploymentRuleRequest) SetStopTimeNil() {
 	o.StopTime.Set(nil)
@@ -370,7 +372,7 @@ func (o *ProjectDeploymentRuleRequest) UnsetStopTime() {
 
 // GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDeploymentRuleRequest) GetWeekdays() []string {
-	if o == nil  {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -474,5 +476,3 @@ func (v *NullableProjectDeploymentRuleRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

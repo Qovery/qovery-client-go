@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,9 +29,9 @@ var (
 type ApplicationEnvironmentVariableApiService service
 
 type ApiCreateApplicationEnvironmentVariableRequest struct {
-	ctx context.Context
-	ApiService *ApplicationEnvironmentVariableApiService
-	applicationId string
+	ctx                        context.Context
+	ApiService                 *ApplicationEnvironmentVariableApiService
+	applicationId              string
 	environmentVariableRequest *EnvironmentVariableRequest
 }
 
@@ -56,8 +56,8 @@ CreateApplicationEnvironmentVariable Add an environment variable to the applicat
 */
 func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariable(ctx context.Context, applicationId string) ApiCreateApplicationEnvironmentVariableRequest {
 	return ApiCreateApplicationEnvironmentVariableRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 //  @return EnvironmentVariableResponse
 func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableExecute(r ApiCreateApplicationEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentVariableResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.CreateApplicationEnvironmentVariable")
@@ -141,11 +141,11 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 }
 
 type ApiCreateApplicationEnvironmentVariableAliasRequest struct {
-	ctx context.Context
-	ApiService *ApplicationEnvironmentVariableApiService
-	applicationId string
+	ctx                   context.Context
+	ApiService            *ApplicationEnvironmentVariableApiService
+	applicationId         string
 	environmentVariableId string
-	key *Key
+	key                   *Key
 }
 
 func (r ApiCreateApplicationEnvironmentVariableAliasRequest) Key(key Key) ApiCreateApplicationEnvironmentVariableAliasRequest {
@@ -175,9 +175,9 @@ CreateApplicationEnvironmentVariableAlias Create an environment variable alias a
 */
 func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableAlias(ctx context.Context, applicationId string, environmentVariableId string) ApiCreateApplicationEnvironmentVariableAliasRequest {
 	return ApiCreateApplicationEnvironmentVariableAliasRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:            a,
+		ctx:                   ctx,
+		applicationId:         applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -186,10 +186,10 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 //  @return EnvironmentVariableResponse
 func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableAliasExecute(r ApiCreateApplicationEnvironmentVariableAliasRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentVariableResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.CreateApplicationEnvironmentVariableAlias")
@@ -262,11 +262,11 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 }
 
 type ApiCreateApplicationEnvironmentVariableOverrideRequest struct {
-	ctx context.Context
-	ApiService *ApplicationEnvironmentVariableApiService
-	applicationId string
+	ctx                   context.Context
+	ApiService            *ApplicationEnvironmentVariableApiService
+	applicationId         string
 	environmentVariableId string
-	value *Value
+	value                 *Value
 }
 
 func (r ApiCreateApplicationEnvironmentVariableOverrideRequest) Value(value Value) ApiCreateApplicationEnvironmentVariableOverrideRequest {
@@ -295,9 +295,9 @@ CreateApplicationEnvironmentVariableOverride Create an environment variable over
 */
 func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableOverride(ctx context.Context, applicationId string, environmentVariableId string) ApiCreateApplicationEnvironmentVariableOverrideRequest {
 	return ApiCreateApplicationEnvironmentVariableOverrideRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:            a,
+		ctx:                   ctx,
+		applicationId:         applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -306,10 +306,10 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 //  @return EnvironmentVariableResponse
 func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentVariableOverrideExecute(r ApiCreateApplicationEnvironmentVariableOverrideRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentVariableResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.CreateApplicationEnvironmentVariableOverride")
@@ -382,12 +382,11 @@ func (a *ApplicationEnvironmentVariableApiService) CreateApplicationEnvironmentV
 }
 
 type ApiDeleteApplicationEnvironmentVariableRequest struct {
-	ctx context.Context
-	ApiService *ApplicationEnvironmentVariableApiService
-	applicationId string
+	ctx                   context.Context
+	ApiService            *ApplicationEnvironmentVariableApiService
+	applicationId         string
 	environmentVariableId string
 }
-
 
 func (r ApiDeleteApplicationEnvironmentVariableRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteApplicationEnvironmentVariableExecute(r)
@@ -408,9 +407,9 @@ DeleteApplicationEnvironmentVariable Delete an environment variable from an appl
 */
 func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentVariable(ctx context.Context, applicationId string, environmentVariableId string) ApiDeleteApplicationEnvironmentVariableRequest {
 	return ApiDeleteApplicationEnvironmentVariableRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:            a,
+		ctx:                   ctx,
+		applicationId:         applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -418,9 +417,9 @@ func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentV
 // Execute executes the request
 func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentVariableExecute(r ApiDeleteApplicationEnvironmentVariableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.DeleteApplicationEnvironmentVariable")
@@ -482,10 +481,10 @@ func (a *ApplicationEnvironmentVariableApiService) DeleteApplicationEnvironmentV
 }
 
 type ApiEditApplicationEnvironmentVariableRequest struct {
-	ctx context.Context
-	ApiService *ApplicationEnvironmentVariableApiService
-	applicationId string
-	environmentVariableId string
+	ctx                            context.Context
+	ApiService                     *ApplicationEnvironmentVariableApiService
+	applicationId                  string
+	environmentVariableId          string
 	environmentVariableEditRequest *EnvironmentVariableEditRequest
 }
 
@@ -514,9 +513,9 @@ EditApplicationEnvironmentVariable Edit an environment variable belonging to the
 */
 func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVariable(ctx context.Context, applicationId string, environmentVariableId string) ApiEditApplicationEnvironmentVariableRequest {
 	return ApiEditApplicationEnvironmentVariableRequest{
-		ApiService: a,
-		ctx: ctx,
-		applicationId: applicationId,
+		ApiService:            a,
+		ctx:                   ctx,
+		applicationId:         applicationId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -525,10 +524,10 @@ func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVar
 //  @return EnvironmentVariableResponse
 func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVariableExecute(r ApiEditApplicationEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentVariableResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentVariableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.EditApplicationEnvironmentVariable")
@@ -604,9 +603,9 @@ func (a *ApplicationEnvironmentVariableApiService) EditApplicationEnvironmentVar
 }
 
 type ApiImportEnvironmentVariableRequest struct {
-	ctx context.Context
-	ApiService *ApplicationEnvironmentVariableApiService
-	applicationId string
+	ctx                   context.Context
+	ApiService            *ApplicationEnvironmentVariableApiService
+	applicationId         string
 	variableImportRequest *VariableImportRequest
 }
 
@@ -630,8 +629,8 @@ Import environment variables in a defined scope, with a defined visibility.
 */
 func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariable(ctx context.Context, applicationId string) ApiImportEnvironmentVariableRequest {
 	return ApiImportEnvironmentVariableRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -640,10 +639,10 @@ func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariable(ctx
 //  @return VariableImportResponse
 func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariableExecute(r ApiImportEnvironmentVariableRequest) (*VariableImportResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *VariableImportResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *VariableImportResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.ImportEnvironmentVariable")
@@ -715,11 +714,10 @@ func (a *ApplicationEnvironmentVariableApiService) ImportEnvironmentVariableExec
 }
 
 type ApiListApplicationEnvironmentVariableRequest struct {
-	ctx context.Context
-	ApiService *ApplicationEnvironmentVariableApiService
+	ctx           context.Context
+	ApiService    *ApplicationEnvironmentVariableApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationEnvironmentVariableExecute(r)
@@ -734,8 +732,8 @@ ListApplicationEnvironmentVariable List environment variables
 */
 func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVariable(ctx context.Context, applicationId string) ApiListApplicationEnvironmentVariableRequest {
 	return ApiListApplicationEnvironmentVariableRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -744,10 +742,10 @@ func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVar
 //  @return EnvironmentVariableResponseList
 func (a *ApplicationEnvironmentVariableApiService) ListApplicationEnvironmentVariableExecute(r ApiListApplicationEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnvironmentVariableResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnvironmentVariableResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationEnvironmentVariableApiService.ListApplicationEnvironmentVariable")

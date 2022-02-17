@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,10 +29,10 @@ var (
 type ApplicationMainCallsApiService service
 
 type ApiCreateApplicationTagRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
-	tagRequest *TagRequest
+	tagRequest    *TagRequest
 }
 
 func (r ApiCreateApplicationTagRequest) TagRequest(tagRequest TagRequest) ApiCreateApplicationTagRequest {
@@ -53,8 +53,8 @@ CreateApplicationTag Add application tag
 */
 func (a *ApplicationMainCallsApiService) CreateApplicationTag(ctx context.Context, applicationId string) ApiCreateApplicationTagRequest {
 	return ApiCreateApplicationTagRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *ApplicationMainCallsApiService) CreateApplicationTag(ctx context.Contex
 //  @return TagResponseList
 func (a *ApplicationMainCallsApiService) CreateApplicationTagExecute(r ApiCreateApplicationTagRequest) (*TagResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TagResponseList
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TagResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.CreateApplicationTag")
@@ -138,11 +138,10 @@ func (a *ApplicationMainCallsApiService) CreateApplicationTagExecute(r ApiCreate
 }
 
 type ApiDeleteApplicationRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
 }
-
 
 func (r ApiDeleteApplicationRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteApplicationExecute(r)
@@ -159,8 +158,8 @@ To delete the application you must have the admin permission
 */
 func (a *ApplicationMainCallsApiService) DeleteApplication(ctx context.Context, applicationId string) ApiDeleteApplicationRequest {
 	return ApiDeleteApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -168,9 +167,9 @@ func (a *ApplicationMainCallsApiService) DeleteApplication(ctx context.Context, 
 // Execute executes the request
 func (a *ApplicationMainCallsApiService) DeleteApplicationExecute(r ApiDeleteApplicationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.DeleteApplication")
@@ -231,12 +230,11 @@ func (a *ApplicationMainCallsApiService) DeleteApplicationExecute(r ApiDeleteApp
 }
 
 type ApiDeleteApplicationTagRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
-	tagId string
+	tagId         string
 }
-
 
 func (r ApiDeleteApplicationTagRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteApplicationTagExecute(r)
@@ -252,19 +250,19 @@ DeleteApplicationTag Delete application tag
 */
 func (a *ApplicationMainCallsApiService) DeleteApplicationTag(ctx context.Context, applicationId string, tagId string) ApiDeleteApplicationTagRequest {
 	return ApiDeleteApplicationTagRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
-		tagId: tagId,
+		tagId:         tagId,
 	}
 }
 
 // Execute executes the request
 func (a *ApplicationMainCallsApiService) DeleteApplicationTagExecute(r ApiDeleteApplicationTagRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.DeleteApplicationTag")
@@ -326,9 +324,9 @@ func (a *ApplicationMainCallsApiService) DeleteApplicationTagExecute(r ApiDelete
 }
 
 type ApiEditApplicationRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
-	applicationId string
+	ctx                    context.Context
+	ApiService             *ApplicationMainCallsApiService
+	applicationId          string
 	applicationEditRequest *ApplicationEditRequest
 }
 
@@ -355,8 +353,8 @@ EditApplication Edit application
 */
 func (a *ApplicationMainCallsApiService) EditApplication(ctx context.Context, applicationId string) ApiEditApplicationRequest {
 	return ApiEditApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -365,10 +363,10 @@ func (a *ApplicationMainCallsApiService) EditApplication(ctx context.Context, ap
 //  @return ApplicationResponse
 func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApplicationResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.EditApplication")
@@ -440,11 +438,10 @@ func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplica
 }
 
 type ApiGetApplicationRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
 }
-
 
 func (r ApiGetApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
 	return r.ApiService.GetApplicationExecute(r)
@@ -459,8 +456,8 @@ GetApplication Get application by ID
 */
 func (a *ApplicationMainCallsApiService) GetApplication(ctx context.Context, applicationId string) ApiGetApplicationRequest {
 	return ApiGetApplicationRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -469,10 +466,10 @@ func (a *ApplicationMainCallsApiService) GetApplication(ctx context.Context, app
 //  @return ApplicationResponse
 func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ApplicationResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.GetApplication")
@@ -542,11 +539,10 @@ func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicati
 }
 
 type ApiGetApplicationStatusRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
 }
-
 
 func (r ApiGetApplicationStatusRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.GetApplicationStatusExecute(r)
@@ -561,8 +557,8 @@ GetApplicationStatus Get application status
 */
 func (a *ApplicationMainCallsApiService) GetApplicationStatus(ctx context.Context, applicationId string) ApiGetApplicationStatusRequest {
 	return ApiGetApplicationStatusRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -571,10 +567,10 @@ func (a *ApplicationMainCallsApiService) GetApplicationStatus(ctx context.Contex
 //  @return Status
 func (a *ApplicationMainCallsApiService) GetApplicationStatusExecute(r ApiGetApplicationStatusRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Status
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.GetApplicationStatus")
@@ -644,11 +640,11 @@ func (a *ApplicationMainCallsApiService) GetApplicationStatusExecute(r ApiGetApp
 }
 
 type ApiListApplicationCommitRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
-	startId *string
-	gitCommitId *string
+	startId       *string
+	gitCommitId   *string
 }
 
 // Starting point after which to return results
@@ -656,6 +652,7 @@ func (r ApiListApplicationCommitRequest) StartId(startId string) ApiListApplicat
 	r.startId = &startId
 	return r
 }
+
 // Git Commit ID
 func (r ApiListApplicationCommitRequest) GitCommitId(gitCommitId string) ApiListApplicationCommitRequest {
 	r.gitCommitId = &gitCommitId
@@ -677,8 +674,8 @@ Returns list of the last 100 commits made on the repository linked to the applic
 */
 func (a *ApplicationMainCallsApiService) ListApplicationCommit(ctx context.Context, applicationId string) ApiListApplicationCommitRequest {
 	return ApiListApplicationCommitRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -687,10 +684,10 @@ func (a *ApplicationMainCallsApiService) ListApplicationCommit(ctx context.Conte
 //  @return CommitResponseList
 func (a *ApplicationMainCallsApiService) ListApplicationCommitExecute(r ApiListApplicationCommitRequest) (*CommitResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CommitResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.ListApplicationCommit")
@@ -766,11 +763,10 @@ func (a *ApplicationMainCallsApiService) ListApplicationCommitExecute(r ApiListA
 }
 
 type ApiListApplicationContributorRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationContributorRequest) Execute() (*UserResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationContributorExecute(r)
@@ -785,8 +781,8 @@ ListApplicationContributor List contributors
 */
 func (a *ApplicationMainCallsApiService) ListApplicationContributor(ctx context.Context, applicationId string) ApiListApplicationContributorRequest {
 	return ApiListApplicationContributorRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -795,10 +791,10 @@ func (a *ApplicationMainCallsApiService) ListApplicationContributor(ctx context.
 //  @return UserResponseList
 func (a *ApplicationMainCallsApiService) ListApplicationContributorExecute(r ApiListApplicationContributorRequest) (*UserResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.ListApplicationContributor")
@@ -868,11 +864,10 @@ func (a *ApplicationMainCallsApiService) ListApplicationContributorExecute(r Api
 }
 
 type ApiListApplicationLinksRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationLinksRequest) Execute() (*LinkResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationLinksExecute(r)
@@ -889,8 +884,8 @@ This will return all the custom domains and Qovery autogenerated domain for the 
 */
 func (a *ApplicationMainCallsApiService) ListApplicationLinks(ctx context.Context, applicationId string) ApiListApplicationLinksRequest {
 	return ApiListApplicationLinksRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -899,10 +894,10 @@ func (a *ApplicationMainCallsApiService) ListApplicationLinks(ctx context.Contex
 //  @return LinkResponseList
 func (a *ApplicationMainCallsApiService) ListApplicationLinksExecute(r ApiListApplicationLinksRequest) (*LinkResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *LinkResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *LinkResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.ListApplicationLinks")
@@ -972,11 +967,10 @@ func (a *ApplicationMainCallsApiService) ListApplicationLinksExecute(r ApiListAp
 }
 
 type ApiListApplicationTagRequest struct {
-	ctx context.Context
-	ApiService *ApplicationMainCallsApiService
+	ctx           context.Context
+	ApiService    *ApplicationMainCallsApiService
 	applicationId string
 }
-
 
 func (r ApiListApplicationTagRequest) Execute() (*TagResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationTagExecute(r)
@@ -991,8 +985,8 @@ ListApplicationTag List tags
 */
 func (a *ApplicationMainCallsApiService) ListApplicationTag(ctx context.Context, applicationId string) ApiListApplicationTagRequest {
 	return ApiListApplicationTagRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		applicationId: applicationId,
 	}
 }
@@ -1001,10 +995,10 @@ func (a *ApplicationMainCallsApiService) ListApplicationTag(ctx context.Context,
 //  @return TagResponseList
 func (a *ApplicationMainCallsApiService) ListApplicationTagExecute(r ApiListApplicationTagRequest) (*TagResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TagResponseList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TagResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.ListApplicationTag")

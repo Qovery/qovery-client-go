@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,7 +19,7 @@ import (
 type ApplicationGitRepositoryRequest struct {
 	// application git repository URL
 	Url string `json:"url"`
-	// Name of the branch to use. This is optional If not specified, then the branch used is the `main` or `master` one 
+	// Name of the branch to use. This is optional If not specified, then the branch used is the `main` or `master` one
 	Branch *string `json:"branch,omitempty"`
 	// indicates the root path of the application.
 	RootPath *string `json:"root_path,omitempty"`
@@ -60,7 +60,7 @@ func (o *ApplicationGitRepositoryRequest) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepositoryRequest) GetUrlOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Url, true
@@ -184,5 +184,3 @@ func (v *NullableApplicationGitRepositoryRequest) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

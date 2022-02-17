@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,11 +29,10 @@ var (
 type ProjectMainCallsApiService service
 
 type ApiDeleteProjectRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectMainCallsApiService
-	projectId string
+	projectId  string
 }
-
 
 func (r ApiDeleteProjectRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteProjectExecute(r)
@@ -51,17 +50,17 @@ To delete a project you must have the admin permission
 func (a *ProjectMainCallsApiService) DeleteProject(ctx context.Context, projectId string) ApiDeleteProjectRequest {
 	return ApiDeleteProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.DeleteProject")
@@ -122,9 +121,9 @@ func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequ
 }
 
 type ApiEditProjectRequest struct {
-	ctx context.Context
-	ApiService *ProjectMainCallsApiService
-	projectId string
+	ctx            context.Context
+	ApiService     *ProjectMainCallsApiService
+	projectId      string
 	projectRequest *ProjectRequest
 }
 
@@ -149,8 +148,8 @@ To edit a project you must have the admin permission
 func (a *ProjectMainCallsApiService) EditProject(ctx context.Context, projectId string) ApiEditProjectRequest {
 	return ApiEditProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -158,10 +157,10 @@ func (a *ProjectMainCallsApiService) EditProject(ctx context.Context, projectId 
 //  @return ProjectResponse
 func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest) (*ProjectResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectResponse
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.EditProject")
@@ -233,11 +232,10 @@ func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest)
 }
 
 type ApiGetProjectRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *ProjectMainCallsApiService
-	projectId string
+	projectId  string
 }
-
 
 func (r ApiGetProjectRequest) Execute() (*ProjectResponse, *http.Response, error) {
 	return r.ApiService.GetProjectExecute(r)
@@ -253,8 +251,8 @@ GetProject Get project by ID
 func (a *ProjectMainCallsApiService) GetProject(ctx context.Context, projectId string) ApiGetProjectRequest {
 	return ApiGetProjectRequest{
 		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
+		ctx:        ctx,
+		projectId:  projectId,
 	}
 }
 
@@ -262,10 +260,10 @@ func (a *ProjectMainCallsApiService) GetProject(ctx context.Context, projectId s
 //  @return ProjectResponse
 func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (*ProjectResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProjectResponse
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ProjectResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.GetProject")
