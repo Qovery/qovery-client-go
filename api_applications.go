@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,9 +29,9 @@ var (
 type ApplicationsApiService service
 
 type ApiCreateApplicationRequest struct {
-	ctx                context.Context
-	ApiService         *ApplicationsApiService
-	environmentId      string
+	ctx context.Context
+	ApiService *ApplicationsApiService
+	environmentId string
 	applicationRequest *ApplicationRequest
 }
 
@@ -53,8 +53,8 @@ CreateApplication Create an application
 */
 func (a *ApplicationsApiService) CreateApplication(ctx context.Context, environmentId string) ApiCreateApplicationRequest {
 	return ApiCreateApplicationRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -63,10 +63,10 @@ func (a *ApplicationsApiService) CreateApplication(ctx context.Context, environm
 //  @return ApplicationResponse
 func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApplicationResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.CreateApplication")
@@ -138,10 +138,11 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 }
 
 type ApiGetEnvironmentApplicationCurrentInstanceRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ctx context.Context
+	ApiService *ApplicationsApiService
 	environmentId string
 }
+
 
 func (r ApiGetEnvironmentApplicationCurrentInstanceRequest) Execute() (*EnvironmentApplicationsInstanceResponseList, *http.Response, error) {
 	return r.ApiService.GetEnvironmentApplicationCurrentInstanceExecute(r)
@@ -156,8 +157,8 @@ GetEnvironmentApplicationCurrentInstance List running instances with CPU and RAM
 */
 func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentInstance(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationCurrentInstanceRequest {
 	return ApiGetEnvironmentApplicationCurrentInstanceRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -166,10 +167,10 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentInstance(ctx co
 //  @return EnvironmentApplicationsInstanceResponseList
 func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentInstanceExecute(r ApiGetEnvironmentApplicationCurrentInstanceRequest) (*EnvironmentApplicationsInstanceResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentApplicationsInstanceResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentApplicationsInstanceResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationCurrentInstance")
@@ -239,10 +240,11 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentInstanceExecute
 }
 
 type ApiGetEnvironmentApplicationCurrentScaleRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ctx context.Context
+	ApiService *ApplicationsApiService
 	environmentId string
 }
+
 
 func (r ApiGetEnvironmentApplicationCurrentScaleRequest) Execute() (*EnvironmentApplicationsCurrentScaleResponseList, *http.Response, error) {
 	return r.ApiService.GetEnvironmentApplicationCurrentScaleExecute(r)
@@ -259,8 +261,8 @@ Returns min, max, and running number of instances for each application
 */
 func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScale(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationCurrentScaleRequest {
 	return ApiGetEnvironmentApplicationCurrentScaleRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -269,10 +271,10 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScale(ctx conte
 //  @return EnvironmentApplicationsCurrentScaleResponseList
 func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScaleExecute(r ApiGetEnvironmentApplicationCurrentScaleRequest) (*EnvironmentApplicationsCurrentScaleResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentApplicationsCurrentScaleResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentApplicationsCurrentScaleResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationCurrentScale")
@@ -342,10 +344,11 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScaleExecute(r 
 }
 
 type ApiGetEnvironmentApplicationCurrentStorageRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ctx context.Context
+	ApiService *ApplicationsApiService
 	environmentId string
 }
+
 
 func (r ApiGetEnvironmentApplicationCurrentStorageRequest) Execute() (*EnvironmentApplicationsStorageResponseList, *http.Response, error) {
 	return r.ApiService.GetEnvironmentApplicationCurrentStorageExecute(r)
@@ -360,8 +363,8 @@ GetEnvironmentApplicationCurrentStorage List current storage disk usage for each
 */
 func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorage(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationCurrentStorageRequest {
 	return ApiGetEnvironmentApplicationCurrentStorageRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -370,10 +373,10 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorage(ctx con
 //  @return EnvironmentApplicationsStorageResponseList
 func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorageExecute(r ApiGetEnvironmentApplicationCurrentStorageRequest) (*EnvironmentApplicationsStorageResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentApplicationsStorageResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentApplicationsStorageResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationCurrentStorage")
@@ -443,10 +446,11 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorageExecute(
 }
 
 type ApiGetEnvironmentApplicationStatusRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ctx context.Context
+	ApiService *ApplicationsApiService
 	environmentId string
 }
+
 
 func (r ApiGetEnvironmentApplicationStatusRequest) Execute() (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	return r.ApiService.GetEnvironmentApplicationStatusExecute(r)
@@ -463,8 +467,8 @@ Returns a list of applications with only their id and status.
 */
 func (a *ApplicationsApiService) GetEnvironmentApplicationStatus(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationStatusRequest {
 	return ApiGetEnvironmentApplicationStatusRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -473,10 +477,10 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatus(ctx context.Con
 //  @return ReferenceObjectStatusResponseList
 func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGetEnvironmentApplicationStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ReferenceObjectStatusResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ReferenceObjectStatusResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationStatus")
@@ -546,10 +550,11 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGet
 }
 
 type ApiGetEnvironmentApplicationSupportedLanguagesRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ctx context.Context
+	ApiService *ApplicationsApiService
 	environmentId string
 }
+
 
 func (r ApiGetEnvironmentApplicationSupportedLanguagesRequest) Execute() (*EnvironmentApplicationsSupportedLanguageList, *http.Response, error) {
 	return r.ApiService.GetEnvironmentApplicationSupportedLanguagesExecute(r)
@@ -566,8 +571,8 @@ Returns list of languages supported by Buildpacks.
 */
 func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguages(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationSupportedLanguagesRequest {
 	return ApiGetEnvironmentApplicationSupportedLanguagesRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -576,10 +581,10 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguages(ctx
 //  @return EnvironmentApplicationsSupportedLanguageList
 func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExecute(r ApiGetEnvironmentApplicationSupportedLanguagesRequest) (*EnvironmentApplicationsSupportedLanguageList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentApplicationsSupportedLanguageList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentApplicationsSupportedLanguageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationSupportedLanguages")
@@ -649,10 +654,10 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExec
 }
 
 type ApiListApplicationRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ctx context.Context
+	ApiService *ApplicationsApiService
 	environmentId string
-	toUpdate      *bool
+	toUpdate *bool
 }
 
 // return (or not) results that must be updated
@@ -674,8 +679,8 @@ ListApplication List applications
 */
 func (a *ApplicationsApiService) ListApplication(ctx context.Context, environmentId string) ApiListApplicationRequest {
 	return ApiListApplicationRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -684,10 +689,10 @@ func (a *ApplicationsApiService) ListApplication(ctx context.Context, environmen
 //  @return ApplicationResponseList
 func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApplicationResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.ListApplication")

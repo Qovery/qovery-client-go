@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,9 +29,9 @@ var (
 type ApplicationConfigurationApiService service
 
 type ApiEditApplicationNetworkRequest struct {
-	ctx                       context.Context
-	ApiService                *ApplicationConfigurationApiService
-	applicationId             string
+	ctx context.Context
+	ApiService *ApplicationConfigurationApiService
+	applicationId string
 	applicationNetworkRequest *ApplicationNetworkRequest
 }
 
@@ -55,8 +55,8 @@ Edit the Network settings of the application.
 */
 func (a *ApplicationConfigurationApiService) EditApplicationNetwork(ctx context.Context, applicationId string) ApiEditApplicationNetworkRequest {
 	return ApiEditApplicationNetworkRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
@@ -65,10 +65,10 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetwork(ctx context.
 //  @return ApplicationNetworkResponse
 func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r ApiEditApplicationNetworkRequest) (*ApplicationNetworkResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApplicationNetworkResponse
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationNetworkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.EditApplicationNetwork")
@@ -140,10 +140,11 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r Api
 }
 
 type ApiGetApplicationNetworkRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationConfigurationApiService
+	ctx context.Context
+	ApiService *ApplicationConfigurationApiService
 	applicationId string
 }
+
 
 func (r ApiGetApplicationNetworkRequest) Execute() (*ApplicationNetworkResponse, *http.Response, error) {
 	return r.ApiService.GetApplicationNetworkExecute(r)
@@ -160,8 +161,8 @@ Get status of the application network settings.
 */
 func (a *ApplicationConfigurationApiService) GetApplicationNetwork(ctx context.Context, applicationId string) ApiGetApplicationNetworkRequest {
 	return ApiGetApplicationNetworkRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
@@ -170,10 +171,10 @@ func (a *ApplicationConfigurationApiService) GetApplicationNetwork(ctx context.C
 //  @return ApplicationNetworkResponse
 func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiGetApplicationNetworkRequest) (*ApplicationNetworkResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApplicationNetworkResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationNetworkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.GetApplicationNetwork")

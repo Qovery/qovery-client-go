@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,8 +17,8 @@ import (
 
 // MetricMemoryResponse struct for MetricMemoryResponse
 type MetricMemoryResponse struct {
-	InstanceName string                          `json:"instance_name"`
-	Data         []MetricMemoryDatapointResponse `json:"data"`
+	InstanceName string `json:"instance_name"`
+	Data []MetricMemoryDatapointResponse `json:"data"`
 }
 
 // NewMetricMemoryResponse instantiates a new MetricMemoryResponse object
@@ -53,7 +53,7 @@ func (o *MetricMemoryResponse) GetInstanceName() string {
 // GetInstanceNameOk returns a tuple with the InstanceName field value
 // and a boolean to check if the value has been set.
 func (o *MetricMemoryResponse) GetInstanceNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.InstanceName, true
@@ -77,7 +77,7 @@ func (o *MetricMemoryResponse) GetData() []MetricMemoryDatapointResponse {
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 func (o *MetricMemoryResponse) GetDataOk() ([]MetricMemoryDatapointResponse, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Data, true
@@ -134,3 +134,5 @@ func (v *NullableMetricMemoryResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

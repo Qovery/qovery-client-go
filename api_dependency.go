@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,11 +29,12 @@ var (
 type DependencyApiService service
 
 type ApiCreateApplicationDependencyRequest struct {
-	ctx                 context.Context
-	ApiService          *DependencyApiService
-	applicationId       string
+	ctx context.Context
+	ApiService *DependencyApiService
+	applicationId string
 	targetApplicationId string
 }
+
 
 func (r ApiCreateApplicationDependencyRequest) Execute() (*ApplicationResponse, *http.Response, error) {
 	return r.ApiService.CreateApplicationDependencyExecute(r)
@@ -51,9 +52,9 @@ Add application dependency to this application to prevent this application start
 */
 func (a *DependencyApiService) CreateApplicationDependency(ctx context.Context, applicationId string, targetApplicationId string) ApiCreateApplicationDependencyRequest {
 	return ApiCreateApplicationDependencyRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		applicationId:       applicationId,
+		ApiService: a,
+		ctx: ctx,
+		applicationId: applicationId,
 		targetApplicationId: targetApplicationId,
 	}
 }
@@ -62,10 +63,10 @@ func (a *DependencyApiService) CreateApplicationDependency(ctx context.Context, 
 //  @return ApplicationResponse
 func (a *DependencyApiService) CreateApplicationDependencyExecute(r ApiCreateApplicationDependencyRequest) (*ApplicationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApplicationResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DependencyApiService.CreateApplicationDependency")
@@ -136,10 +137,11 @@ func (a *DependencyApiService) CreateApplicationDependencyExecute(r ApiCreateApp
 }
 
 type ApiListApplicationDependencyRequest struct {
-	ctx           context.Context
-	ApiService    *DependencyApiService
+	ctx context.Context
+	ApiService *DependencyApiService
 	applicationId string
 }
+
 
 func (r ApiListApplicationDependencyRequest) Execute() (*ApplicationResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationDependencyExecute(r)
@@ -154,8 +156,8 @@ ListApplicationDependency List application dependencies
 */
 func (a *DependencyApiService) ListApplicationDependency(ctx context.Context, applicationId string) ApiListApplicationDependencyRequest {
 	return ApiListApplicationDependencyRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
@@ -164,10 +166,10 @@ func (a *DependencyApiService) ListApplicationDependency(ctx context.Context, ap
 //  @return ApplicationResponseList
 func (a *DependencyApiService) ListApplicationDependencyExecute(r ApiListApplicationDependencyRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApplicationResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApplicationResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DependencyApiService.ListApplicationDependency")
@@ -237,11 +239,12 @@ func (a *DependencyApiService) ListApplicationDependencyExecute(r ApiListApplica
 }
 
 type ApiRemoveApplicationDependencyRequest struct {
-	ctx                 context.Context
-	ApiService          *DependencyApiService
-	applicationId       string
+	ctx context.Context
+	ApiService *DependencyApiService
+	applicationId string
 	targetApplicationId string
 }
+
 
 func (r ApiRemoveApplicationDependencyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RemoveApplicationDependencyExecute(r)
@@ -257,9 +260,9 @@ RemoveApplicationDependency Remove application dependency to this application.
 */
 func (a *DependencyApiService) RemoveApplicationDependency(ctx context.Context, applicationId string, targetApplicationId string) ApiRemoveApplicationDependencyRequest {
 	return ApiRemoveApplicationDependencyRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		applicationId:       applicationId,
+		ApiService: a,
+		ctx: ctx,
+		applicationId: applicationId,
 		targetApplicationId: targetApplicationId,
 	}
 }
@@ -267,9 +270,9 @@ func (a *DependencyApiService) RemoveApplicationDependency(ctx context.Context, 
 // Execute executes the request
 func (a *DependencyApiService) RemoveApplicationDependencyExecute(r ApiRemoveApplicationDependencyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DependencyApiService.RemoveApplicationDependency")

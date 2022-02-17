@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,10 +18,10 @@ import (
 
 // MetricMemoryDatapointResponse struct for MetricMemoryDatapointResponse
 type MetricMemoryDatapointResponse struct {
-	CreatedAt         time.Time `json:"created_at"`
-	RequestedInMb     int32     `json:"requested_in_mb"`
-	ConsumedInMb      int32     `json:"consumed_in_mb"`
-	ConsumedInPercent float32   `json:"consumed_in_percent"`
+	CreatedAt time.Time `json:"created_at"`
+	RequestedInMb int32 `json:"requested_in_mb"`
+	ConsumedInMb int32 `json:"consumed_in_mb"`
+	ConsumedInPercent float32 `json:"consumed_in_percent"`
 }
 
 // NewMetricMemoryDatapointResponse instantiates a new MetricMemoryDatapointResponse object
@@ -58,7 +58,7 @@ func (o *MetricMemoryDatapointResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *MetricMemoryDatapointResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -82,7 +82,7 @@ func (o *MetricMemoryDatapointResponse) GetRequestedInMb() int32 {
 // GetRequestedInMbOk returns a tuple with the RequestedInMb field value
 // and a boolean to check if the value has been set.
 func (o *MetricMemoryDatapointResponse) GetRequestedInMbOk() (*int32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.RequestedInMb, true
@@ -106,7 +106,7 @@ func (o *MetricMemoryDatapointResponse) GetConsumedInMb() int32 {
 // GetConsumedInMbOk returns a tuple with the ConsumedInMb field value
 // and a boolean to check if the value has been set.
 func (o *MetricMemoryDatapointResponse) GetConsumedInMbOk() (*int32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.ConsumedInMb, true
@@ -130,7 +130,7 @@ func (o *MetricMemoryDatapointResponse) GetConsumedInPercent() float32 {
 // GetConsumedInPercentOk returns a tuple with the ConsumedInPercent field value
 // and a boolean to check if the value has been set.
 func (o *MetricMemoryDatapointResponse) GetConsumedInPercentOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.ConsumedInPercent, true
@@ -193,3 +193,5 @@ func (v *NullableMetricMemoryDatapointResponse) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

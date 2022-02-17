@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,9 +17,9 @@ import (
 
 // LogPaginatedResponseList struct for LogPaginatedResponseList
 type LogPaginatedResponseList struct {
-	Results  []LogResponse `json:"results,omitempty"`
-	Page     float32       `json:"page"`
-	PageSize float32       `json:"page_size"`
+	Results []LogResponse `json:"results,omitempty"`
+	Page float32 `json:"page"`
+	PageSize float32 `json:"page_size"`
 }
 
 // NewLogPaginatedResponseList instantiates a new LogPaginatedResponseList object
@@ -86,7 +86,7 @@ func (o *LogPaginatedResponseList) GetPage() float32 {
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
 func (o *LogPaginatedResponseList) GetPageOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Page, true
@@ -110,7 +110,7 @@ func (o *LogPaginatedResponseList) GetPageSize() float32 {
 // GetPageSizeOk returns a tuple with the PageSize field value
 // and a boolean to check if the value has been set.
 func (o *LogPaginatedResponseList) GetPageSizeOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.PageSize, true
@@ -170,3 +170,5 @@ func (v *NullableLogPaginatedResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

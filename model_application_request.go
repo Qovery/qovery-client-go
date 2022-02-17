@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -20,9 +20,9 @@ type ApplicationRequest struct {
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this application
-	Description   *string                         `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
-	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
+	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path` 
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath *string `json:"dockerfile_path,omitempty"`
@@ -32,15 +32,15 @@ type ApplicationRequest struct {
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
-	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
+	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running. 
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
-	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
-	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool                              `json:"auto_preview,omitempty"`
-	Storage     []ApplicationStorageRequestStorage `json:"storage,omitempty"`
-	Ports       []ApplicationPortRequestPorts      `json:"ports,omitempty"`
+	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit. 
+	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
+	Healthcheck *Healthcheck `json:"healthcheck,omitempty"`
+	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request. 
+	AutoPreview *bool `json:"auto_preview,omitempty"`
+	Storage []ApplicationStorageRequestStorage `json:"storage,omitempty"`
+	Ports []ApplicationPortRequestPorts `json:"ports,omitempty"`
 }
 
 // NewApplicationRequest instantiates a new ApplicationRequest object
@@ -85,7 +85,7 @@ func (o *ApplicationRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Name, true
@@ -141,7 +141,7 @@ func (o *ApplicationRequest) GetGitRepository() ApplicationGitRepositoryRequest 
 // GetGitRepositoryOk returns a tuple with the GitRepository field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.GitRepository, true
@@ -586,3 +586,5 @@ func (v *NullableApplicationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryEnvironmentPaginatedResponseList struct for DeploymentHistoryEnvironmentPaginatedResponseList
 type DeploymentHistoryEnvironmentPaginatedResponseList struct {
-	Results  []DeploymentHistoryEnvironmentResponse `json:"results,omitempty"`
-	Page     float32                                `json:"page"`
-	PageSize float32                                `json:"page_size"`
+	Results []DeploymentHistoryEnvironmentResponse `json:"results,omitempty"`
+	Page float32 `json:"page"`
+	PageSize float32 `json:"page_size"`
 }
 
 // NewDeploymentHistoryEnvironmentPaginatedResponseList instantiates a new DeploymentHistoryEnvironmentPaginatedResponseList object
@@ -86,7 +86,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetPage() float32 {
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetPageOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Page, true
@@ -110,7 +110,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetPageSize() float3
 // GetPageSizeOk returns a tuple with the PageSize field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetPageSizeOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.PageSize, true
@@ -170,3 +170,5 @@ func (v *NullableDeploymentHistoryEnvironmentPaginatedResponseList) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

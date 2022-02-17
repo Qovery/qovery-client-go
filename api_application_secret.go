@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,8 +29,8 @@ var (
 type ApplicationSecretApiService service
 
 type ApiCreateApplicationSecretRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationSecretApiService
+	ctx context.Context
+	ApiService *ApplicationSecretApiService
 	applicationId string
 	secretRequest *SecretRequest
 }
@@ -56,8 +56,8 @@ CreateApplicationSecret Add a secret to the application
 */
 func (a *ApplicationSecretApiService) CreateApplicationSecret(ctx context.Context, applicationId string) ApiCreateApplicationSecretRequest {
 	return ApiCreateApplicationSecretRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *ApplicationSecretApiService) CreateApplicationSecret(ctx context.Contex
 //  @return SecretResponse
 func (a *ApplicationSecretApiService) CreateApplicationSecretExecute(r ApiCreateApplicationSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.CreateApplicationSecret")
@@ -141,11 +141,11 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretExecute(r ApiCreate
 }
 
 type ApiCreateApplicationSecretAliasRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationSecretApiService
+	ctx context.Context
+	ApiService *ApplicationSecretApiService
 	applicationId string
-	secretId      string
-	key           *Key
+	secretId string
+	key *Key
 }
 
 func (r ApiCreateApplicationSecretAliasRequest) Key(key Key) ApiCreateApplicationSecretAliasRequest {
@@ -175,10 +175,10 @@ CreateApplicationSecretAlias Create a secret alias at the application level
 */
 func (a *ApplicationSecretApiService) CreateApplicationSecretAlias(ctx context.Context, applicationId string, secretId string) ApiCreateApplicationSecretAliasRequest {
 	return ApiCreateApplicationSecretAliasRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
-		secretId:      secretId,
+		secretId: secretId,
 	}
 }
 
@@ -186,10 +186,10 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretAlias(ctx context.C
 //  @return SecretResponse
 func (a *ApplicationSecretApiService) CreateApplicationSecretAliasExecute(r ApiCreateApplicationSecretAliasRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.CreateApplicationSecretAlias")
@@ -262,11 +262,11 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretAliasExecute(r ApiC
 }
 
 type ApiCreateApplicationSecretOverrideRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationSecretApiService
+	ctx context.Context
+	ApiService *ApplicationSecretApiService
 	applicationId string
-	secretId      string
-	value         *Value
+	secretId string
+	value *Value
 }
 
 func (r ApiCreateApplicationSecretOverrideRequest) Value(value Value) ApiCreateApplicationSecretOverrideRequest {
@@ -295,10 +295,10 @@ CreateApplicationSecretOverride Create a secret override at the application leve
 */
 func (a *ApplicationSecretApiService) CreateApplicationSecretOverride(ctx context.Context, applicationId string, secretId string) ApiCreateApplicationSecretOverrideRequest {
 	return ApiCreateApplicationSecretOverrideRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
-		secretId:      secretId,
+		secretId: secretId,
 	}
 }
 
@@ -306,10 +306,10 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretOverride(ctx contex
 //  @return SecretResponse
 func (a *ApplicationSecretApiService) CreateApplicationSecretOverrideExecute(r ApiCreateApplicationSecretOverrideRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.CreateApplicationSecretOverride")
@@ -382,11 +382,12 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretOverrideExecute(r A
 }
 
 type ApiDeleteApplicationSecretRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationSecretApiService
+	ctx context.Context
+	ApiService *ApplicationSecretApiService
 	applicationId string
-	secretId      string
+	secretId string
 }
+
 
 func (r ApiDeleteApplicationSecretRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteApplicationSecretExecute(r)
@@ -407,19 +408,19 @@ DeleteApplicationSecret Delete a secret from an application
 */
 func (a *ApplicationSecretApiService) DeleteApplicationSecret(ctx context.Context, applicationId string, secretId string) ApiDeleteApplicationSecretRequest {
 	return ApiDeleteApplicationSecretRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
-		secretId:      secretId,
+		secretId: secretId,
 	}
 }
 
 // Execute executes the request
 func (a *ApplicationSecretApiService) DeleteApplicationSecretExecute(r ApiDeleteApplicationSecretRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.DeleteApplicationSecret")
@@ -481,10 +482,10 @@ func (a *ApplicationSecretApiService) DeleteApplicationSecretExecute(r ApiDelete
 }
 
 type ApiEditApplicationSecretRequest struct {
-	ctx               context.Context
-	ApiService        *ApplicationSecretApiService
-	applicationId     string
-	secretId          string
+	ctx context.Context
+	ApiService *ApplicationSecretApiService
+	applicationId string
+	secretId string
 	secretEditRequest *SecretEditRequest
 }
 
@@ -513,10 +514,10 @@ EditApplicationSecret Edit a secret belonging to the application
 */
 func (a *ApplicationSecretApiService) EditApplicationSecret(ctx context.Context, applicationId string, secretId string) ApiEditApplicationSecretRequest {
 	return ApiEditApplicationSecretRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
-		secretId:      secretId,
+		secretId: secretId,
 	}
 }
 
@@ -524,10 +525,10 @@ func (a *ApplicationSecretApiService) EditApplicationSecret(ctx context.Context,
 //  @return SecretResponse
 func (a *ApplicationSecretApiService) EditApplicationSecretExecute(r ApiEditApplicationSecretRequest) (*SecretResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SecretResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.EditApplicationSecret")
@@ -603,10 +604,11 @@ func (a *ApplicationSecretApiService) EditApplicationSecretExecute(r ApiEditAppl
 }
 
 type ApiListApplicationSecretsRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationSecretApiService
+	ctx context.Context
+	ApiService *ApplicationSecretApiService
 	applicationId string
 }
+
 
 func (r ApiListApplicationSecretsRequest) Execute() (*SecretResponseList, *http.Response, error) {
 	return r.ApiService.ListApplicationSecretsExecute(r)
@@ -623,8 +625,8 @@ Secrets are like environment variables, but they are secured and can't be reveal
 */
 func (a *ApplicationSecretApiService) ListApplicationSecrets(ctx context.Context, applicationId string) ApiListApplicationSecretsRequest {
 	return ApiListApplicationSecretsRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		applicationId: applicationId,
 	}
 }
@@ -633,10 +635,10 @@ func (a *ApplicationSecretApiService) ListApplicationSecrets(ctx context.Context
 //  @return SecretResponseList
 func (a *ApplicationSecretApiService) ListApplicationSecretsExecute(r ApiListApplicationSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SecretResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SecretResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.ListApplicationSecrets")

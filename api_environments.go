@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,9 +29,9 @@ var (
 type EnvironmentsApiService service
 
 type ApiCreateEnvironmentRequest struct {
-	ctx                context.Context
-	ApiService         *EnvironmentsApiService
-	projectId          string
+	ctx context.Context
+	ApiService *EnvironmentsApiService
+	projectId string
 	environmentRequest *EnvironmentRequest
 }
 
@@ -54,8 +54,8 @@ CreateEnvironment Create an environment
 func (a *EnvironmentsApiService) CreateEnvironment(ctx context.Context, projectId string) ApiCreateEnvironmentRequest {
 	return ApiCreateEnvironmentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
@@ -63,10 +63,10 @@ func (a *EnvironmentsApiService) CreateEnvironment(ctx context.Context, projectI
 //  @return EnvironmentResponse
 func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.CreateEnvironment")
@@ -138,10 +138,11 @@ func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironment
 }
 
 type ApiGetProjectEnvironmentServiceNumberRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *EnvironmentsApiService
-	projectId  string
+	projectId string
 }
+
 
 func (r ApiGetProjectEnvironmentServiceNumberRequest) Execute() (*EnvironmentStatsResponseList, *http.Response, error) {
 	return r.ApiService.GetProjectEnvironmentServiceNumberExecute(r)
@@ -159,8 +160,8 @@ Returns a list of environment ids, and for each its total numberof services
 func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumber(ctx context.Context, projectId string) ApiGetProjectEnvironmentServiceNumberRequest {
 	return ApiGetProjectEnvironmentServiceNumberRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
@@ -168,10 +169,10 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumber(ctx context.
 //  @return EnvironmentStatsResponseList
 func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r ApiGetProjectEnvironmentServiceNumberRequest) (*EnvironmentStatsResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentStatsResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentStatsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.GetProjectEnvironmentServiceNumber")
@@ -241,10 +242,11 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r Api
 }
 
 type ApiGetProjectEnvironmentStatusRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *EnvironmentsApiService
-	projectId  string
+	projectId string
 }
+
 
 func (r ApiGetProjectEnvironmentStatusRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.GetProjectEnvironmentStatusExecute(r)
@@ -262,8 +264,8 @@ Returns a list of environments with only their id and status.
 func (a *EnvironmentsApiService) GetProjectEnvironmentStatus(ctx context.Context, projectId string) ApiGetProjectEnvironmentStatusRequest {
 	return ApiGetProjectEnvironmentStatusRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
@@ -271,10 +273,10 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentStatus(ctx context.Context
 //  @return Status
 func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProjectEnvironmentStatusRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.GetProjectEnvironmentStatus")
@@ -344,10 +346,11 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProj
 }
 
 type ApiListEnvironmentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *EnvironmentsApiService
-	projectId  string
+	projectId string
 }
+
 
 func (r ApiListEnvironmentRequest) Execute() (*EnvironmentResponseList, *http.Response, error) {
 	return r.ApiService.ListEnvironmentExecute(r)
@@ -363,8 +366,8 @@ ListEnvironment List environments
 func (a *EnvironmentsApiService) ListEnvironment(ctx context.Context, projectId string) ApiListEnvironmentRequest {
 	return ApiListEnvironmentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
@@ -372,10 +375,10 @@ func (a *EnvironmentsApiService) ListEnvironment(ctx context.Context, projectId 
 //  @return EnvironmentResponseList
 func (a *EnvironmentsApiService) ListEnvironmentExecute(r ApiListEnvironmentRequest) (*EnvironmentResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponseList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.ListEnvironment")

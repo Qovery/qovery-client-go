@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,10 +29,10 @@ var (
 type EnvironmentDeploymentRuleApiService service
 
 type ApiEditEnvironmentDeploymentRuleRequest struct {
-	ctx                                  context.Context
-	ApiService                           *EnvironmentDeploymentRuleApiService
-	environmentId                        string
-	deploymentRuleId                     string
+	ctx context.Context
+	ApiService *EnvironmentDeploymentRuleApiService
+	environmentId string
+	deploymentRuleId string
 	environmentDeploymentRuleEditRequest *EnvironmentDeploymentRuleEditRequest
 }
 
@@ -55,9 +55,9 @@ EditEnvironmentDeploymentRule Edit an environment deployment rule
 */
 func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRule(ctx context.Context, environmentId string, deploymentRuleId string) ApiEditEnvironmentDeploymentRuleRequest {
 	return ApiEditEnvironmentDeploymentRuleRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		environmentId:    environmentId,
+		ApiService: a,
+		ctx: ctx,
+		environmentId: environmentId,
 		deploymentRuleId: deploymentRuleId,
 	}
 }
@@ -66,10 +66,10 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRule(ctx 
 //  @return EnvironmentDeploymentRuleResponse
 func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecute(r ApiEditEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRuleResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentDeploymentRuleResponse
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentDeploymentRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.EditEnvironmentDeploymentRule")
@@ -142,10 +142,11 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecu
 }
 
 type ApiGetEnvironmentDeploymentRuleRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentDeploymentRuleApiService
+	ctx context.Context
+	ApiService *EnvironmentDeploymentRuleApiService
 	environmentId string
 }
+
 
 func (r ApiGetEnvironmentDeploymentRuleRequest) Execute() (*EnvironmentDeploymentRuleResponse, *http.Response, error) {
 	return r.ApiService.GetEnvironmentDeploymentRuleExecute(r)
@@ -160,8 +161,8 @@ GetEnvironmentDeploymentRule Get environment deployment rule
 */
 func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRule(ctx context.Context, environmentId string) ApiGetEnvironmentDeploymentRuleRequest {
 	return ApiGetEnvironmentDeploymentRuleRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		environmentId: environmentId,
 	}
 }
@@ -170,10 +171,10 @@ func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRule(ctx c
 //  @return EnvironmentDeploymentRuleResponse
 func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecute(r ApiGetEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRuleResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnvironmentDeploymentRuleResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnvironmentDeploymentRuleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.GetEnvironmentDeploymentRule")

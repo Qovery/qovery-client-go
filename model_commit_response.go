@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,13 +18,13 @@ import (
 
 // CommitResponse struct for CommitResponse
 type CommitResponse struct {
-	CreatedAt       time.Time `json:"created_at"`
-	GitCommitId     string    `json:"git_commit_id"`
-	Tag             string    `json:"tag"`
-	Message         string    `json:"message"`
-	AuthorName      string    `json:"author_name"`
-	AuthorAvatarUrl *string   `json:"author_avatar_url,omitempty"`
-	CommitPageUrl   *string   `json:"commit_page_url,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
+	GitCommitId string `json:"git_commit_id"`
+	Tag string `json:"tag"`
+	Message string `json:"message"`
+	AuthorName string `json:"author_name"`
+	AuthorAvatarUrl *string `json:"author_avatar_url,omitempty"`
+	CommitPageUrl *string `json:"commit_page_url,omitempty"`
 }
 
 // NewCommitResponse instantiates a new CommitResponse object
@@ -62,7 +62,7 @@ func (o *CommitResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *CommitResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -86,7 +86,7 @@ func (o *CommitResponse) GetGitCommitId() string {
 // GetGitCommitIdOk returns a tuple with the GitCommitId field value
 // and a boolean to check if the value has been set.
 func (o *CommitResponse) GetGitCommitIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.GitCommitId, true
@@ -110,7 +110,7 @@ func (o *CommitResponse) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value
 // and a boolean to check if the value has been set.
 func (o *CommitResponse) GetTagOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Tag, true
@@ -134,7 +134,7 @@ func (o *CommitResponse) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 func (o *CommitResponse) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Message, true
@@ -158,7 +158,7 @@ func (o *CommitResponse) GetAuthorName() string {
 // GetAuthorNameOk returns a tuple with the AuthorName field value
 // and a boolean to check if the value has been set.
 func (o *CommitResponse) GetAuthorNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.AuthorName, true
@@ -294,3 +294,5 @@ func (v *NullableCommitResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

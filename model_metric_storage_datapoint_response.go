@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,10 +18,10 @@ import (
 
 // MetricStorageDatapointResponse struct for MetricStorageDatapointResponse
 type MetricStorageDatapointResponse struct {
-	CreatedAt         time.Time `json:"created_at"`
-	RequestedInGb     *int32    `json:"requested_in_gb,omitempty"`
-	ConsumedInGb      *float32  `json:"consumed_in_gb,omitempty"`
-	ConsumedInPercent float32   `json:"consumed_in_percent"`
+	CreatedAt time.Time `json:"created_at"`
+	RequestedInGb *int32 `json:"requested_in_gb,omitempty"`
+	ConsumedInGb *float32 `json:"consumed_in_gb,omitempty"`
+	ConsumedInPercent float32 `json:"consumed_in_percent"`
 }
 
 // NewMetricStorageDatapointResponse instantiates a new MetricStorageDatapointResponse object
@@ -56,7 +56,7 @@ func (o *MetricStorageDatapointResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *MetricStorageDatapointResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -144,7 +144,7 @@ func (o *MetricStorageDatapointResponse) GetConsumedInPercent() float32 {
 // GetConsumedInPercentOk returns a tuple with the ConsumedInPercent field value
 // and a boolean to check if the value has been set.
 func (o *MetricStorageDatapointResponse) GetConsumedInPercentOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.ConsumedInPercent, true
@@ -207,3 +207,5 @@ func (v *NullableMetricStorageDatapointResponse) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,12 +18,12 @@ import (
 
 // AccountInfoResponse struct for AccountInfoResponse
 type AccountInfoResponse struct {
-	Id                *string    `json:"id,omitempty"`
-	CreatedAt         *time.Time `json:"created_at,omitempty"`
-	Nickname          *string    `json:"nickname,omitempty"`
-	FirstName         *string    `json:"first_name,omitempty"`
-	LastName          *string    `json:"last_name,omitempty"`
-	ProfilePictureUrl *string    `json:"profile_picture_url,omitempty"`
+	Id *string `json:"id,omitempty"`
+	CreatedAt *time.Time `json:"created_at,omitempty"`
+	Nickname *string `json:"nickname,omitempty"`
+	FirstName *string `json:"first_name,omitempty"`
+	LastName *string `json:"last_name,omitempty"`
+	ProfilePictureUrl *string `json:"profile_picture_url,omitempty"`
 }
 
 // NewAccountInfoResponse instantiates a new AccountInfoResponse object
@@ -293,3 +293,5 @@ func (v *NullableAccountInfoResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **ValueType** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **NullableString** |  | [optional] 
 **IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
-**AcceptedValues** | Pointer to [**[]interface{}**](interface{}.md) |  | [optional] 
+**AcceptedValues** | Pointer to [**[]AnyOfstringboolean**](AnyOfstringboolean.md) |  | [optional] 
 
 ## Methods
 
@@ -676,20 +676,20 @@ HasIsValueUpdatable returns a boolean if a field has been set.
 
 ### GetAcceptedValues
 
-`func (o *ClusterResponse) GetAcceptedValues() []interface{}`
+`func (o *ClusterResponse) GetAcceptedValues() []AnyOfstringboolean`
 
 GetAcceptedValues returns the AcceptedValues field if non-nil, zero value otherwise.
 
 ### GetAcceptedValuesOk
 
-`func (o *ClusterResponse) GetAcceptedValuesOk() (*[]interface{}, bool)`
+`func (o *ClusterResponse) GetAcceptedValuesOk() (*[]AnyOfstringboolean, bool)`
 
 GetAcceptedValuesOk returns a tuple with the AcceptedValues field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAcceptedValues
 
-`func (o *ClusterResponse) SetAcceptedValues(v []interface{})`
+`func (o *ClusterResponse) SetAcceptedValues(v []AnyOfstringboolean)`
 
 SetAcceptedValues sets AcceptedValues field to given value.
 

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,9 +17,9 @@ import (
 
 // EnvironmentLogPaginatedResponseList struct for EnvironmentLogPaginatedResponseList
 type EnvironmentLogPaginatedResponseList struct {
-	Results  []EnvironmentLogResponse `json:"results,omitempty"`
-	Page     float32                  `json:"page"`
-	PageSize float32                  `json:"page_size"`
+	Results []EnvironmentLogResponse `json:"results,omitempty"`
+	Page float32 `json:"page"`
+	PageSize float32 `json:"page_size"`
 }
 
 // NewEnvironmentLogPaginatedResponseList instantiates a new EnvironmentLogPaginatedResponseList object
@@ -86,7 +86,7 @@ func (o *EnvironmentLogPaginatedResponseList) GetPage() float32 {
 // GetPageOk returns a tuple with the Page field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogPaginatedResponseList) GetPageOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Page, true
@@ -110,7 +110,7 @@ func (o *EnvironmentLogPaginatedResponseList) GetPageSize() float32 {
 // GetPageSizeOk returns a tuple with the PageSize field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogPaginatedResponseList) GetPageSizeOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.PageSize, true
@@ -170,3 +170,5 @@ func (v *NullableEnvironmentLogPaginatedResponseList) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

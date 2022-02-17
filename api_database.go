@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -29,9 +29,9 @@ var (
 type DatabaseApiService service
 
 type ApiCreateLogicalDatabaseOnDatabaseRequest struct {
-	ctx                    context.Context
-	ApiService             *DatabaseApiService
-	databaseId             string
+	ctx context.Context
+	ApiService *DatabaseApiService
+	databaseId string
 	logicalDatabaseRequest *LogicalDatabaseRequest
 }
 
@@ -56,7 +56,7 @@ If you don't specify credentials, Qovery will autogenerate them.
 func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabase(ctx context.Context, databaseId string) ApiCreateLogicalDatabaseOnDatabaseRequest {
 	return ApiCreateLogicalDatabaseOnDatabaseRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 		databaseId: databaseId,
 	}
 }
@@ -65,10 +65,10 @@ func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabase(ctx context.Context
 //  @return LogicalDatabaseResponse
 func (a *DatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateLogicalDatabaseOnDatabaseRequest) (*LogicalDatabaseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LogicalDatabaseResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LogicalDatabaseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApiService.CreateLogicalDatabaseOnDatabase")
