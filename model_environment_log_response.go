@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,16 +18,16 @@ import (
 
 // EnvironmentLogResponse struct for EnvironmentLogResponse
 type EnvironmentLogResponse struct {
-	Id        string                       `json:"id"`
-	CreatedAt time.Time                    `json:"created_at"`
-	Scope     *EnvironmentLogResponseScope `json:"scope,omitempty"`
-	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
+	Id string `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	Scope *EnvironmentLogResponseScope `json:"scope,omitempty"`
+	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state. 
 	State *string `json:"state,omitempty"`
 	// Log message
 	Message NullableString `json:"message"`
 	// Only for errors. Helps Qovery team to investigate.
 	ExecutionId *string `json:"execution_id,omitempty"`
-	Hint        *string `json:"hint,omitempty"`
+	Hint *string `json:"hint,omitempty"`
 }
 
 // NewEnvironmentLogResponse instantiates a new EnvironmentLogResponse object
@@ -63,7 +63,7 @@ func (o *EnvironmentLogResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogResponse) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Id, true
@@ -87,7 +87,7 @@ func (o *EnvironmentLogResponse) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.CreatedAt, true
@@ -177,7 +177,7 @@ func (o *EnvironmentLogResponse) GetMessage() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentLogResponse) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Message.Get(), o.Message.IsSet()
@@ -313,3 +313,5 @@ func (v *NullableEnvironmentLogResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

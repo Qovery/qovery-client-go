@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,7 +17,7 @@ import (
 
 // ReferralResponse struct for ReferralResponse
 type ReferralResponse struct {
-	TotalInvited   *int32  `json:"total_invited,omitempty"`
+	TotalInvited *int32 `json:"total_invited,omitempty"`
 	InvitationLink *string `json:"invitation_link,omitempty"`
 }
 
@@ -148,3 +148,5 @@ func (v *NullableReferralResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

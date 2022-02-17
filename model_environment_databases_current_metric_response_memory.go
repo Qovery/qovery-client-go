@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,12 +17,12 @@ import (
 
 // EnvironmentDatabasesCurrentMetricResponseMemory struct for EnvironmentDatabasesCurrentMetricResponseMemory
 type EnvironmentDatabasesCurrentMetricResponseMemory struct {
-	RequestedInMb             *int32   `json:"requested_in_mb,omitempty"`
-	ConsumedInMb              *int32   `json:"consumed_in_mb,omitempty"`
-	ConsumedInPercent         *float32 `json:"consumed_in_percent,omitempty"`
+	RequestedInMb *int32 `json:"requested_in_mb,omitempty"`
+	ConsumedInMb *int32 `json:"consumed_in_mb,omitempty"`
+	ConsumedInPercent *float32 `json:"consumed_in_percent,omitempty"`
 	WarningThresholdInPercent *float32 `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent   *float32 `json:"alert_threshold_in_percent,omitempty"`
-	Status                    *string  `json:"status,omitempty"`
+	AlertThresholdInPercent *float32 `json:"alert_threshold_in_percent,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetricResponseMemory instantiates a new EnvironmentDatabasesCurrentMetricResponseMemory object
@@ -292,3 +292,5 @@ func (v *NullableEnvironmentDatabasesCurrentMetricResponseMemory) UnmarshalJSON(
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

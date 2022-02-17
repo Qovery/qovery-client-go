@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,16 +17,16 @@ import (
 
 // ClusterFeatureResponse struct for ClusterFeatureResponse
 type ClusterFeatureResponse struct {
-	Id                  *string         `json:"id,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	Description         NullableString  `json:"description,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      *[]interface{}  `json:"accepted_values,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	CostPerMonthInCents NullableInt32 `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth NullableFloat32 `json:"cost_per_month,omitempty"`
+	CurrencyCode NullableString `json:"currency_code,omitempty"`
+	ValueType *string `json:"value_type,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	IsValueUpdatable *bool `json:"is_value_updatable,omitempty"`
+	AcceptedValues *[]interface{} `json:"accepted_values,omitempty"`
 }
 
 // NewClusterFeatureResponse instantiates a new ClusterFeatureResponse object
@@ -127,7 +127,7 @@ func (o *ClusterFeatureResponse) GetDescription() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Description.Get(), o.Description.IsSet()
@@ -146,7 +146,6 @@ func (o *ClusterFeatureResponse) HasDescription() bool {
 func (o *ClusterFeatureResponse) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *ClusterFeatureResponse) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -170,7 +169,7 @@ func (o *ClusterFeatureResponse) GetCostPerMonthInCents() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureResponse) GetCostPerMonthInCentsOk() (*int32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.CostPerMonthInCents.Get(), o.CostPerMonthInCents.IsSet()
@@ -189,7 +188,6 @@ func (o *ClusterFeatureResponse) HasCostPerMonthInCents() bool {
 func (o *ClusterFeatureResponse) SetCostPerMonthInCents(v int32) {
 	o.CostPerMonthInCents.Set(&v)
 }
-
 // SetCostPerMonthInCentsNil sets the value for CostPerMonthInCents to be an explicit nil
 func (o *ClusterFeatureResponse) SetCostPerMonthInCentsNil() {
 	o.CostPerMonthInCents.Set(nil)
@@ -213,7 +211,7 @@ func (o *ClusterFeatureResponse) GetCostPerMonth() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureResponse) GetCostPerMonthOk() (*float32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.CostPerMonth.Get(), o.CostPerMonth.IsSet()
@@ -232,7 +230,6 @@ func (o *ClusterFeatureResponse) HasCostPerMonth() bool {
 func (o *ClusterFeatureResponse) SetCostPerMonth(v float32) {
 	o.CostPerMonth.Set(&v)
 }
-
 // SetCostPerMonthNil sets the value for CostPerMonth to be an explicit nil
 func (o *ClusterFeatureResponse) SetCostPerMonthNil() {
 	o.CostPerMonth.Set(nil)
@@ -256,7 +253,7 @@ func (o *ClusterFeatureResponse) GetCurrencyCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureResponse) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
@@ -275,7 +272,6 @@ func (o *ClusterFeatureResponse) HasCurrencyCode() bool {
 func (o *ClusterFeatureResponse) SetCurrencyCode(v string) {
 	o.CurrencyCode.Set(&v)
 }
-
 // SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
 func (o *ClusterFeatureResponse) SetCurrencyCodeNil() {
 	o.CurrencyCode.Set(nil)
@@ -331,7 +327,7 @@ func (o *ClusterFeatureResponse) GetValue() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureResponse) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return o.Value.Get(), o.Value.IsSet()
@@ -350,7 +346,6 @@ func (o *ClusterFeatureResponse) HasValue() bool {
 func (o *ClusterFeatureResponse) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *ClusterFeatureResponse) SetValueNil() {
 	o.Value.Set(nil)
@@ -495,3 +490,5 @@ func (v *NullableClusterFeatureResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
