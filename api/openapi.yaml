@@ -2,12 +2,12 @@ openapi: 3.0.0
 info:
   contact:
     email: support+api+documentation@qovery.com
-    name: Qovery Support Team
-    url: https://discord.qovery.com
+    name: Qovery Product Team
+    url: https://www.qovery.com
   description: |
     - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider.
-    - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
-  title: '[BETA] Qovery API'
+    - ℹ️ The API is stable and still in development.
+  title: Qovery API
   version: 1.0.0
   x-logo:
     url: https://raw.githubusercontent.com/Qovery/public-resources/master/qovery_new_logo_white.svg

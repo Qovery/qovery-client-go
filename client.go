@@ -1,7 +1,7 @@
 /*
-[BETA] Qovery API
+Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the [BETA] Qovery API API v1.0.0
+// APIClient manages communication with the Qovery API API v1.0.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
