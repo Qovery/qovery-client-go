@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -19,9 +19,9 @@ import (
 type VariableImportResponseSuccessfulImportedVariables struct {
 	Name string `json:"name"`
 	// Optional if the variable is secret
-	Value *string `json:"value,omitempty"`
-	Scope string `json:"scope"`
-	IsSecret bool `json:"is_secret"`
+	Value    *string `json:"value,omitempty"`
+	Scope    string  `json:"scope"`
+	IsSecret bool    `json:"is_secret"`
 }
 
 // NewVariableImportResponseSuccessfulImportedVariables instantiates a new VariableImportResponseSuccessfulImportedVariables object
@@ -57,7 +57,7 @@ func (o *VariableImportResponseSuccessfulImportedVariables) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportResponseSuccessfulImportedVariables) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -113,7 +113,7 @@ func (o *VariableImportResponseSuccessfulImportedVariables) GetScope() string {
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportResponseSuccessfulImportedVariables) GetScopeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Scope, true
@@ -137,7 +137,7 @@ func (o *VariableImportResponseSuccessfulImportedVariables) GetIsSecret() bool {
 // GetIsSecretOk returns a tuple with the IsSecret field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportResponseSuccessfulImportedVariables) GetIsSecretOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsSecret, true
@@ -200,5 +200,3 @@ func (v *NullableVariableImportResponseSuccessfulImportedVariables) UnmarshalJSO
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,10 +17,10 @@ import (
 
 // GenericObjectCurrentCostResponse struct for GenericObjectCurrentCostResponse
 type GenericObjectCurrentCostResponse struct {
-	Id string `json:"id"`
-	Name string `json:"name"`
-	ConsumedTimeInSeconds int32 `json:"consumed_time_in_seconds"`
-	Cost CostResponse `json:"cost"`
+	Id                    string       `json:"id"`
+	Name                  string       `json:"name"`
+	ConsumedTimeInSeconds int32        `json:"consumed_time_in_seconds"`
+	Cost                  CostResponse `json:"cost"`
 }
 
 // NewGenericObjectCurrentCostResponse instantiates a new GenericObjectCurrentCostResponse object
@@ -57,7 +57,7 @@ func (o *GenericObjectCurrentCostResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *GenericObjectCurrentCostResponse) GetIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Id, true
@@ -81,7 +81,7 @@ func (o *GenericObjectCurrentCostResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *GenericObjectCurrentCostResponse) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -105,7 +105,7 @@ func (o *GenericObjectCurrentCostResponse) GetConsumedTimeInSeconds() int32 {
 // GetConsumedTimeInSecondsOk returns a tuple with the ConsumedTimeInSeconds field value
 // and a boolean to check if the value has been set.
 func (o *GenericObjectCurrentCostResponse) GetConsumedTimeInSecondsOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ConsumedTimeInSeconds, true
@@ -129,7 +129,7 @@ func (o *GenericObjectCurrentCostResponse) GetCost() CostResponse {
 // GetCostOk returns a tuple with the Cost field value
 // and a boolean to check if the value has been set.
 func (o *GenericObjectCurrentCostResponse) GetCostOk() (*CostResponse, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Cost, true
@@ -192,5 +192,3 @@ func (v *NullableGenericObjectCurrentCostResponse) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

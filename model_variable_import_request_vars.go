@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,10 +17,10 @@ import (
 
 // VariableImportRequestVars struct for VariableImportRequestVars
 type VariableImportRequestVars struct {
-	Name string `json:"name"`
-	Value string `json:"value"`
-	Scope string `json:"scope"`
-	IsSecret bool `json:"is_secret"`
+	Name     string `json:"name"`
+	Value    string `json:"value"`
+	Scope    string `json:"scope"`
+	IsSecret bool   `json:"is_secret"`
 }
 
 // NewVariableImportRequestVars instantiates a new VariableImportRequestVars object
@@ -57,7 +57,7 @@ func (o *VariableImportRequestVars) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportRequestVars) GetNameOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Name, true
@@ -81,7 +81,7 @@ func (o *VariableImportRequestVars) GetValue() string {
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportRequestVars) GetValueOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Value, true
@@ -105,7 +105,7 @@ func (o *VariableImportRequestVars) GetScope() string {
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportRequestVars) GetScopeOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Scope, true
@@ -129,7 +129,7 @@ func (o *VariableImportRequestVars) GetIsSecret() bool {
 // GetIsSecretOk returns a tuple with the IsSecret field value
 // and a boolean to check if the value has been set.
 func (o *VariableImportRequestVars) GetIsSecretOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.IsSecret, true
@@ -192,5 +192,3 @@ func (v *NullableVariableImportRequestVars) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

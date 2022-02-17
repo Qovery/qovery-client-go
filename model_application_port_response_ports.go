@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -17,15 +17,15 @@ import (
 
 // ApplicationPortResponsePorts struct for ApplicationPortResponsePorts
 type ApplicationPortResponsePorts struct {
-	Id *string `json:"id,omitempty"`
+	Id   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	// The listening port of your application
 	InternalPort int32 `json:"internal_port"`
 	// The exposed port for your application. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible bool `json:"publicly_accessible"`
-	Protocol *string `json:"protocol,omitempty"`
+	PubliclyAccessible bool    `json:"publicly_accessible"`
+	Protocol           *string `json:"protocol,omitempty"`
 }
 
 // NewApplicationPortResponsePorts instantiates a new ApplicationPortResponsePorts object
@@ -128,7 +128,7 @@ func (o *ApplicationPortResponsePorts) GetInternalPort() int32 {
 // GetInternalPortOk returns a tuple with the InternalPort field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortResponsePorts) GetInternalPortOk() (*int32, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.InternalPort, true
@@ -184,7 +184,7 @@ func (o *ApplicationPortResponsePorts) GetPubliclyAccessible() bool {
 // GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationPortResponsePorts) GetPubliclyAccessibleOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.PubliclyAccessible, true
@@ -285,5 +285,3 @@ func (v *NullableApplicationPortResponsePorts) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -1,7 +1,7 @@
 /*
 [BETA] Qovery API
 
-- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet. 
+- Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is in Beta and still in progress. Some endpoints are not available yet.
 
 API version: 1.0.0
 Contact: support+api+documentation@qovery.com
@@ -18,10 +18,10 @@ import (
 // Status struct for Status
 type Status struct {
 	Id *string `json:"id,omitempty"`
-	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state. 
+	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
 	State string `json:"state"`
 	// message related to the state
-	Message NullableString `json:"message,omitempty"`
+	Message                 NullableString `json:"message,omitempty"`
 	ServiceDeploymentStatus NullableString `json:"service_deployment_status,omitempty"`
 }
 
@@ -88,7 +88,7 @@ func (o *Status) GetState() string {
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
 func (o *Status) GetStateOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.State, true
@@ -112,7 +112,7 @@ func (o *Status) GetMessage() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Status) GetMessageOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.Message.Get(), o.Message.IsSet()
@@ -131,6 +131,7 @@ func (o *Status) HasMessage() bool {
 func (o *Status) SetMessage(v string) {
 	o.Message.Set(&v)
 }
+
 // SetMessageNil sets the value for Message to be an explicit nil
 func (o *Status) SetMessageNil() {
 	o.Message.Set(nil)
@@ -154,7 +155,7 @@ func (o *Status) GetServiceDeploymentStatus() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Status) GetServiceDeploymentStatusOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return o.ServiceDeploymentStatus.Get(), o.ServiceDeploymentStatus.IsSet()
@@ -173,6 +174,7 @@ func (o *Status) HasServiceDeploymentStatus() bool {
 func (o *Status) SetServiceDeploymentStatus(v string) {
 	o.ServiceDeploymentStatus.Set(&v)
 }
+
 // SetServiceDeploymentStatusNil sets the value for ServiceDeploymentStatus to be an explicit nil
 func (o *Status) SetServiceDeploymentStatusNil() {
 	o.ServiceDeploymentStatus.Set(nil)
@@ -235,5 +237,3 @@ func (v *NullableStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
