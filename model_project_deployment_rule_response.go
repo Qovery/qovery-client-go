@@ -18,42 +18,48 @@ import (
 
 // ProjectDeploymentRuleResponse struct for ProjectDeploymentRuleResponse
 type ProjectDeploymentRuleResponse struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	// used to select the first deployment rule to match new created environments
+	PriorityIndex *int32     `json:"priority_index,omitempty"`
+	Id            string     `json:"id"`
+	CreatedAt     time.Time  `json:"created_at"`
+	UpdatedAt     *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name        string  `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Mode        string  `json:"mode"`
-	Cluster     string  `json:"cluster"`
-	AutoDeploy  *bool   `json:"auto_deploy,omitempty"`
-	AutoStop    bool    `json:"auto_stop"`
+	Name        string         `json:"name"`
+	Description NullableString `json:"description,omitempty"`
+	Mode        string         `json:"mode"`
+	ClusterId   string         `json:"cluster_id"`
+	AutoDeploy  bool           `json:"auto_deploy"`
+	AutoStop    bool           `json:"auto_stop"`
 	// specify value only if auto_stop = false
-	Timezone *string `json:"timezone,omitempty"`
+	Timezone string `json:"timezone"`
 	// specify value only if auto_stop = false
-	StartTime NullableTime `json:"start_time,omitempty"`
+	StartTime time.Time `json:"start_time"`
 	// specify value only if auto_stop = false
-	StopTime NullableTime `json:"stop_time,omitempty"`
+	StopTime time.Time `json:"stop_time"`
 	// specify value only if auto_stop = false
-	Weekdays []string `json:"weekdays,omitempty"`
+	Weekdays []string `json:"weekdays"`
+	// wildcard pattern composed of '?' and/or '*' used to target new created environments
+	Wildcard NullableString `json:"wildcard"`
 }
 
 // NewProjectDeploymentRuleResponse instantiates a new ProjectDeploymentRuleResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDeploymentRuleResponse(id string, createdAt time.Time, name string, mode string, cluster string, autoStop bool) *ProjectDeploymentRuleResponse {
+func NewProjectDeploymentRuleResponse(id string, createdAt time.Time, name string, mode string, clusterId string, autoDeploy bool, autoStop bool, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard NullableString) *ProjectDeploymentRuleResponse {
 	this := ProjectDeploymentRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.Mode = mode
-	this.Cluster = cluster
-	var autoDeploy bool = true
-	this.AutoDeploy = &autoDeploy
+	this.ClusterId = clusterId
+	this.AutoDeploy = autoDeploy
 	this.AutoStop = autoStop
-	var timezone string = "Europe/London"
-	this.Timezone = &timezone
+	this.Timezone = timezone
+	this.StartTime = startTime
+	this.StopTime = stopTime
+	this.Weekdays = weekdays
+	this.Wildcard = wildcard
 	return &this
 }
 
@@ -62,13 +68,41 @@ func NewProjectDeploymentRuleResponse(id string, createdAt time.Time, name strin
 // but it doesn't guarantee that properties required by API are set
 func NewProjectDeploymentRuleResponseWithDefaults() *ProjectDeploymentRuleResponse {
 	this := ProjectDeploymentRuleResponse{}
-	var autoDeploy bool = true
-	this.AutoDeploy = &autoDeploy
-	var autoStop bool = false
-	this.AutoStop = autoStop
 	var timezone string = "Europe/London"
-	this.Timezone = &timezone
+	this.Timezone = timezone
 	return &this
+}
+
+// GetPriorityIndex returns the PriorityIndex field value if set, zero value otherwise.
+func (o *ProjectDeploymentRuleResponse) GetPriorityIndex() int32 {
+	if o == nil || o.PriorityIndex == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PriorityIndex
+}
+
+// GetPriorityIndexOk returns a tuple with the PriorityIndex field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDeploymentRuleResponse) GetPriorityIndexOk() (*int32, bool) {
+	if o == nil || o.PriorityIndex == nil {
+		return nil, false
+	}
+	return o.PriorityIndex, true
+}
+
+// HasPriorityIndex returns a boolean if a field has been set.
+func (o *ProjectDeploymentRuleResponse) HasPriorityIndex() bool {
+	if o != nil && o.PriorityIndex != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPriorityIndex gets a reference to the given int32 and assigns it to the PriorityIndex field.
+func (o *ProjectDeploymentRuleResponse) SetPriorityIndex(v int32) {
+	o.PriorityIndex = &v
 }
 
 // GetId returns the Id field value
@@ -175,36 +209,47 @@ func (o *ProjectDeploymentRuleResponse) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDeploymentRuleResponse) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ProjectDeploymentRuleResponse) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *ProjectDeploymentRuleResponse) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *ProjectDeploymentRuleResponse) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *ProjectDeploymentRuleResponse) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetMode returns the Mode field value
@@ -231,60 +276,52 @@ func (o *ProjectDeploymentRuleResponse) SetMode(v string) {
 	o.Mode = v
 }
 
-// GetCluster returns the Cluster field value
-func (o *ProjectDeploymentRuleResponse) GetCluster() string {
+// GetClusterId returns the ClusterId field value
+func (o *ProjectDeploymentRuleResponse) GetClusterId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Cluster
+	return o.ClusterId
 }
 
-// GetClusterOk returns a tuple with the Cluster field value
+// GetClusterIdOk returns a tuple with the ClusterId field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDeploymentRuleResponse) GetClusterOk() (*string, bool) {
+func (o *ProjectDeploymentRuleResponse) GetClusterIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Cluster, true
+	return &o.ClusterId, true
 }
 
-// SetCluster sets field value
-func (o *ProjectDeploymentRuleResponse) SetCluster(v string) {
-	o.Cluster = v
+// SetClusterId sets field value
+func (o *ProjectDeploymentRuleResponse) SetClusterId(v string) {
+	o.ClusterId = v
 }
 
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+// GetAutoDeploy returns the AutoDeploy field value
 func (o *ProjectDeploymentRuleResponse) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AutoDeploy
+
+	return o.AutoDeploy
 }
 
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoDeploy, true
+	return &o.AutoDeploy, true
 }
 
-// HasAutoDeploy returns a boolean if a field has been set.
-func (o *ProjectDeploymentRuleResponse) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+// SetAutoDeploy sets field value
 func (o *ProjectDeploymentRuleResponse) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
+	o.AutoDeploy = v
 }
 
 // GetAutoStop returns the AutoStop field value
@@ -311,159 +348,133 @@ func (o *ProjectDeploymentRuleResponse) SetAutoStop(v bool) {
 	o.AutoStop = v
 }
 
-// GetTimezone returns the Timezone field value if set, zero value otherwise.
+// GetTimezone returns the Timezone field value
 func (o *ProjectDeploymentRuleResponse) GetTimezone() string {
-	if o == nil || o.Timezone == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Timezone
+
+	return o.Timezone
 }
 
-// GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
+// GetTimezoneOk returns a tuple with the Timezone field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponse) GetTimezoneOk() (*string, bool) {
-	if o == nil || o.Timezone == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Timezone, true
+	return &o.Timezone, true
 }
 
-// HasTimezone returns a boolean if a field has been set.
-func (o *ProjectDeploymentRuleResponse) HasTimezone() bool {
-	if o != nil && o.Timezone != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTimezone gets a reference to the given string and assigns it to the Timezone field.
+// SetTimezone sets field value
 func (o *ProjectDeploymentRuleResponse) SetTimezone(v string) {
-	o.Timezone = &v
+	o.Timezone = v
 }
 
-// GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStartTime returns the StartTime field value
 func (o *ProjectDeploymentRuleResponse) GetStartTime() time.Time {
-	if o == nil || o.StartTime.Get() == nil {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.StartTime.Get()
+
+	return o.StartTime
 }
 
-// GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
+// GetStartTimeOk returns a tuple with the StartTime field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleResponse) GetStartTimeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.StartTime.Get(), o.StartTime.IsSet()
+	return &o.StartTime, true
 }
 
-// HasStartTime returns a boolean if a field has been set.
-func (o *ProjectDeploymentRuleResponse) HasStartTime() bool {
-	if o != nil && o.StartTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStartTime gets a reference to the given NullableTime and assigns it to the StartTime field.
+// SetStartTime sets field value
 func (o *ProjectDeploymentRuleResponse) SetStartTime(v time.Time) {
-	o.StartTime.Set(&v)
+	o.StartTime = v
 }
 
-// SetStartTimeNil sets the value for StartTime to be an explicit nil
-func (o *ProjectDeploymentRuleResponse) SetStartTimeNil() {
-	o.StartTime.Set(nil)
-}
-
-// UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
-func (o *ProjectDeploymentRuleResponse) UnsetStartTime() {
-	o.StartTime.Unset()
-}
-
-// GetStopTime returns the StopTime field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStopTime returns the StopTime field value
 func (o *ProjectDeploymentRuleResponse) GetStopTime() time.Time {
-	if o == nil || o.StopTime.Get() == nil {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.StopTime.Get()
+
+	return o.StopTime
 }
 
-// GetStopTimeOk returns a tuple with the StopTime field value if set, nil otherwise
+// GetStopTimeOk returns a tuple with the StopTime field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleResponse) GetStopTimeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.StopTime.Get(), o.StopTime.IsSet()
+	return &o.StopTime, true
 }
 
-// HasStopTime returns a boolean if a field has been set.
-func (o *ProjectDeploymentRuleResponse) HasStopTime() bool {
-	if o != nil && o.StopTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStopTime gets a reference to the given NullableTime and assigns it to the StopTime field.
+// SetStopTime sets field value
 func (o *ProjectDeploymentRuleResponse) SetStopTime(v time.Time) {
-	o.StopTime.Set(&v)
+	o.StopTime = v
 }
 
-// SetStopTimeNil sets the value for StopTime to be an explicit nil
-func (o *ProjectDeploymentRuleResponse) SetStopTimeNil() {
-	o.StopTime.Set(nil)
-}
-
-// UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
-func (o *ProjectDeploymentRuleResponse) UnsetStopTime() {
-	o.StopTime.Unset()
-}
-
-// GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetWeekdays returns the Weekdays field value
 func (o *ProjectDeploymentRuleResponse) GetWeekdays() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Weekdays
 }
 
-// GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
+// GetWeekdaysOk returns a tuple with the Weekdays field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleResponse) GetWeekdaysOk() ([]string, bool) {
-	if o == nil || o.Weekdays == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.Weekdays, true
 }
 
-// HasWeekdays returns a boolean if a field has been set.
-func (o *ProjectDeploymentRuleResponse) HasWeekdays() bool {
-	if o != nil && o.Weekdays != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWeekdays gets a reference to the given []string and assigns it to the Weekdays field.
+// SetWeekdays sets field value
 func (o *ProjectDeploymentRuleResponse) SetWeekdays(v []string) {
 	o.Weekdays = v
 }
 
+// GetWildcard returns the Wildcard field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ProjectDeploymentRuleResponse) GetWildcard() string {
+	if o == nil || o.Wildcard.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Wildcard.Get()
+}
+
+// GetWildcardOk returns a tuple with the Wildcard field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDeploymentRuleResponse) GetWildcardOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Wildcard.Get(), o.Wildcard.IsSet()
+}
+
+// SetWildcard sets field value
+func (o *ProjectDeploymentRuleResponse) SetWildcard(v string) {
+	o.Wildcard.Set(&v)
+}
+
 func (o ProjectDeploymentRuleResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.PriorityIndex != nil {
+		toSerialize["priority_index"] = o.PriorityIndex
+	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -476,32 +487,35 @@ func (o ProjectDeploymentRuleResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if true {
 		toSerialize["mode"] = o.Mode
 	}
 	if true {
-		toSerialize["cluster"] = o.Cluster
+		toSerialize["cluster_id"] = o.ClusterId
 	}
-	if o.AutoDeploy != nil {
+	if true {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	if true {
 		toSerialize["auto_stop"] = o.AutoStop
 	}
-	if o.Timezone != nil {
+	if true {
 		toSerialize["timezone"] = o.Timezone
 	}
-	if o.StartTime.IsSet() {
-		toSerialize["start_time"] = o.StartTime.Get()
+	if true {
+		toSerialize["start_time"] = o.StartTime
 	}
-	if o.StopTime.IsSet() {
-		toSerialize["stop_time"] = o.StopTime.Get()
+	if true {
+		toSerialize["stop_time"] = o.StopTime
 	}
-	if o.Weekdays != nil {
+	if true {
 		toSerialize["weekdays"] = o.Weekdays
+	}
+	if true {
+		toSerialize["wildcard"] = o.Wildcard.Get()
 	}
 	return json.Marshal(toSerialize)
 }

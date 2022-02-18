@@ -4,25 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**PriorityIndex** | Pointer to **int32** | used to select the first deployment rule to match new created environments | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
 **Mode** | **string** |  | 
-**Cluster** | **string** |  | 
-**AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
-**AutoStop** | **bool** |  | [default to false]
-**Timezone** | Pointer to **string** | specify value only if auto_stop &#x3D; false | [optional] [default to "Europe/London"]
-**StartTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
-**StopTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
-**Weekdays** | Pointer to **[]string** | specify value only if auto_stop &#x3D; false | [optional] 
+**ClusterId** | **string** |  | 
+**AutoDeploy** | **bool** |  | 
+**AutoStop** | **bool** |  | 
+**Timezone** | **string** | specify value only if auto_stop &#x3D; false | [default to "Europe/London"]
+**StartTime** | **time.Time** | specify value only if auto_stop &#x3D; false | 
+**StopTime** | **time.Time** | specify value only if auto_stop &#x3D; false | 
+**Weekdays** | **[]string** | specify value only if auto_stop &#x3D; false | 
+**Wildcard** | **NullableString** | wildcard pattern composed of &#39;?&#39; and/or &#39;*&#39; used to target new created environments | 
 
 ## Methods
 
 ### NewProjectDeploymentRuleResponse
 
-`func NewProjectDeploymentRuleResponse(id string, createdAt time.Time, name string, mode string, cluster string, autoStop bool, ) *ProjectDeploymentRuleResponse`
+`func NewProjectDeploymentRuleResponse(id string, createdAt time.Time, name string, mode string, clusterId string, autoDeploy bool, autoStop bool, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard NullableString, ) *ProjectDeploymentRuleResponse`
 
 NewProjectDeploymentRuleResponse instantiates a new ProjectDeploymentRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -36,6 +38,31 @@ will change when the set of required properties is changed
 NewProjectDeploymentRuleResponseWithDefaults instantiates a new ProjectDeploymentRuleResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPriorityIndex
+
+`func (o *ProjectDeploymentRuleResponse) GetPriorityIndex() int32`
+
+GetPriorityIndex returns the PriorityIndex field if non-nil, zero value otherwise.
+
+### GetPriorityIndexOk
+
+`func (o *ProjectDeploymentRuleResponse) GetPriorityIndexOk() (*int32, bool)`
+
+GetPriorityIndexOk returns a tuple with the PriorityIndex field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPriorityIndex
+
+`func (o *ProjectDeploymentRuleResponse) SetPriorityIndex(v int32)`
+
+SetPriorityIndex sets PriorityIndex field to given value.
+
+### HasPriorityIndex
+
+`func (o *ProjectDeploymentRuleResponse) HasPriorityIndex() bool`
+
+HasPriorityIndex returns a boolean if a field has been set.
 
 ### GetId
 
@@ -147,6 +174,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ProjectDeploymentRuleResponse) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ProjectDeploymentRuleResponse) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetMode
 
 `func (o *ProjectDeploymentRuleResponse) GetMode() string`
@@ -167,24 +204,24 @@ and a boolean to check if the value has been set.
 SetMode sets Mode field to given value.
 
 
-### GetCluster
+### GetClusterId
 
-`func (o *ProjectDeploymentRuleResponse) GetCluster() string`
+`func (o *ProjectDeploymentRuleResponse) GetClusterId() string`
 
-GetCluster returns the Cluster field if non-nil, zero value otherwise.
+GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
 
-### GetClusterOk
+### GetClusterIdOk
 
-`func (o *ProjectDeploymentRuleResponse) GetClusterOk() (*string, bool)`
+`func (o *ProjectDeploymentRuleResponse) GetClusterIdOk() (*string, bool)`
 
-GetClusterOk returns a tuple with the Cluster field if it's non-nil, zero value otherwise
+GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCluster
+### SetClusterId
 
-`func (o *ProjectDeploymentRuleResponse) SetCluster(v string)`
+`func (o *ProjectDeploymentRuleResponse) SetClusterId(v string)`
 
-SetCluster sets Cluster field to given value.
+SetClusterId sets ClusterId field to given value.
 
 
 ### GetAutoDeploy
@@ -206,11 +243,6 @@ and a boolean to check if the value has been set.
 
 SetAutoDeploy sets AutoDeploy field to given value.
 
-### HasAutoDeploy
-
-`func (o *ProjectDeploymentRuleResponse) HasAutoDeploy() bool`
-
-HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetAutoStop
 
@@ -251,11 +283,6 @@ and a boolean to check if the value has been set.
 
 SetTimezone sets Timezone field to given value.
 
-### HasTimezone
-
-`func (o *ProjectDeploymentRuleResponse) HasTimezone() bool`
-
-HasTimezone returns a boolean if a field has been set.
 
 ### GetStartTime
 
@@ -276,22 +303,7 @@ and a boolean to check if the value has been set.
 
 SetStartTime sets StartTime field to given value.
 
-### HasStartTime
 
-`func (o *ProjectDeploymentRuleResponse) HasStartTime() bool`
-
-HasStartTime returns a boolean if a field has been set.
-
-### SetStartTimeNil
-
-`func (o *ProjectDeploymentRuleResponse) SetStartTimeNil(b bool)`
-
- SetStartTimeNil sets the value for StartTime to be an explicit nil
-
-### UnsetStartTime
-`func (o *ProjectDeploymentRuleResponse) UnsetStartTime()`
-
-UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
 ### GetStopTime
 
 `func (o *ProjectDeploymentRuleResponse) GetStopTime() time.Time`
@@ -311,22 +323,7 @@ and a boolean to check if the value has been set.
 
 SetStopTime sets StopTime field to given value.
 
-### HasStopTime
 
-`func (o *ProjectDeploymentRuleResponse) HasStopTime() bool`
-
-HasStopTime returns a boolean if a field has been set.
-
-### SetStopTimeNil
-
-`func (o *ProjectDeploymentRuleResponse) SetStopTimeNil(b bool)`
-
- SetStopTimeNil sets the value for StopTime to be an explicit nil
-
-### UnsetStopTime
-`func (o *ProjectDeploymentRuleResponse) UnsetStopTime()`
-
-UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
 ### GetWeekdays
 
 `func (o *ProjectDeploymentRuleResponse) GetWeekdays() []string`
@@ -346,22 +343,37 @@ and a boolean to check if the value has been set.
 
 SetWeekdays sets Weekdays field to given value.
 
-### HasWeekdays
 
-`func (o *ProjectDeploymentRuleResponse) HasWeekdays() bool`
+### GetWildcard
 
-HasWeekdays returns a boolean if a field has been set.
+`func (o *ProjectDeploymentRuleResponse) GetWildcard() string`
 
-### SetWeekdaysNil
+GetWildcard returns the Wildcard field if non-nil, zero value otherwise.
 
-`func (o *ProjectDeploymentRuleResponse) SetWeekdaysNil(b bool)`
+### GetWildcardOk
 
- SetWeekdaysNil sets the value for Weekdays to be an explicit nil
+`func (o *ProjectDeploymentRuleResponse) GetWildcardOk() (*string, bool)`
 
-### UnsetWeekdays
-`func (o *ProjectDeploymentRuleResponse) UnsetWeekdays()`
+GetWildcardOk returns a tuple with the Wildcard field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
 
-UnsetWeekdays ensures that no value is present for Weekdays, not even an explicit nil
+### SetWildcard
+
+`func (o *ProjectDeploymentRuleResponse) SetWildcard(v string)`
+
+SetWildcard sets Wildcard field to given value.
+
+
+### SetWildcardNil
+
+`func (o *ProjectDeploymentRuleResponse) SetWildcardNil(b bool)`
+
+ SetWildcardNil sets the value for Wildcard to be an explicit nil
+
+### UnsetWildcard
+`func (o *ProjectDeploymentRuleResponse) UnsetWildcard()`
+
+UnsetWildcard ensures that no value is present for Wildcard, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

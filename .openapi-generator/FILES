@@ -220,6 +220,7 @@ docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponse.md
 docs/GitRepositoryResponseList.md
 docs/Healthcheck.md
+docs/InlineObject.md
 docs/InstanceResponse.md
 docs/InstanceResponseList.md
 docs/InviteMemberRequest.md
@@ -277,6 +278,7 @@ docs/ProjectDeploymentRuleResponse.md
 docs/ProjectDeploymentRuleResponseList.md
 docs/ProjectEnvironmentVariableApi.md
 docs/ProjectMainCallsApi.md
+docs/ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder.md
 docs/ProjectRequest.md
 docs/ProjectResponse.md
 docs/ProjectResponseList.md
@@ -319,6 +321,7 @@ docs/VersionResponseList.md
 git_push.sh
 go.mod
 go.sum
+model__project__project_id__deployment_rule_order_project_deployment_rule_ids_in_order.go
 model_account_info_edit_request.go
 model_account_info_response.go
 model_aliased_secret.go
@@ -457,6 +460,7 @@ model_git_repository_branch_response_list.go
 model_git_repository_response.go
 model_git_repository_response_list.go
 model_healthcheck.go
+model_inline_object.go
 model_instance_response.go
 model_instance_response_list.go
 model_invite_member_request.go

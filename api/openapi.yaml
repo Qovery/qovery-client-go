@@ -2151,7 +2151,8 @@ paths:
       - Project Main Calls
   /project/{projectId}/deploymentRule:
     get:
-      operationId: listProjectDeploymentRule
+      description: List project deployment rules
+      operationId: listProjectDeploymentRules
       parameters:
       - description: Project ID
         explode: false
@@ -2168,7 +2169,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectDeploymentRuleResponseList'
-          description: Get deployment rules
+          description: Get project deployment rules
         "401":
           description: Access token is missing or invalid
         "403":
@@ -2179,6 +2180,7 @@ paths:
       tags:
       - Project Deployment Rule
     post:
+      description: Create a deployment rule
       operationId: createDeploymentRule
       parameters:
       - description: Project ID
@@ -2215,6 +2217,7 @@ paths:
       - Project Deployment Rule
   /project/{projectId}/deploymentRule/{deploymentRuleId}:
     delete:
+      description: Delete a project deployment rule
       operationId: deleteProjectDeploymentRule
       parameters:
       - description: Project ID
@@ -2248,6 +2251,7 @@ paths:
       tags:
       - Project Deployment Rule
     get:
+      description: Get a project deployment rule
       operationId: getProjectDeploymentRule
       parameters:
       - description: Project ID
@@ -2274,17 +2278,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectDeploymentRuleResponse'
-          description: Get deployment rule
+          description: Get project deployment rule
         "401":
           description: Access token is missing or invalid
         "403":
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Get project deployment rule
+      summary: Get a project deployment rule
       tags:
       - Project Deployment Rule
     put:
+      description: Edit a project deployment rule
       operationId: editProjectDeployemtnRule
       parameters:
       - description: Project ID
@@ -2325,9 +2330,46 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-        "409":
-          description: Project name within the organization is already taken
       summary: Edit a project deployment rule
+      tags:
+      - Project Deployment Rule
+  /project/{projectId}/deploymentRule/order:
+    put:
+      description: Update deployment rules priority order
+      operationId: updateDeploymentRulesPriorityOrder
+      parameters:
+      - description: Project ID
+        explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object'
+        content:
+          application/json:
+            schema:
+              properties:
+                project_deployment_rule_ids_in_order:
+                  items:
+                    $ref: '#/components/schemas/_project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order'
+                  type: array
+              type: object
+      responses:
+        "200":
+          description: Update deployment rules priority order
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update deployment rules priority order
       tags:
       - Project Deployment Rule
   /project/{projectId}/environment:
@@ -7748,6 +7790,12 @@ components:
       schema:
         type: number
       style: form
+  requestBodies:
+    inline_object:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object'
   responses:
     "204":
       description: no content
@@ -8016,6 +8064,15 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
       - $ref: '#/components/schemas/ProjectDeploymentRuleRequest'
+      example:
+        priority_index: 0
+      properties:
+        priority_index:
+          description: used to select the first deployment rule to match new created
+            environments
+          nullable: false
+          type: integer
+      type: object
     ProjectResponseList:
       example:
         results:
@@ -9476,18 +9533,81 @@ components:
           type: array
       type: object
     ProjectDeploymentRuleRequest:
-      allOf:
-      - $ref: '#/components/schemas/DeploymentRuleRequest'
       example:
-        environment_target: ^feat
+        mode: PRODUCTION
+        start_time: 2000-01-23T04:56:07.000+00:00
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auto_deploy: true
+        stop_time: 2000-01-23T04:56:07.000+00:00
+        timezone: Europe/London
+        weekdays:
+        - MONDAY
+        - MONDAY
+        auto_stop: true
+        name: name
+        description: description
+        wildcard: wildcard
       properties:
-        environment_target:
-          description: specify here a wildcard based on environment name that will
-            target new environments after their creation
-          example: ^feat
+        name:
+          description: name is case insensitive
+          type: string
+        description:
+          nullable: true
+          type: string
+        mode:
+          enum:
+          - PRODUCTION
+          - DEVELOPMENT
+          type: string
+        cluster_id:
+          format: uuid
+          type: string
+        auto_deploy:
+          type: boolean
+        auto_stop:
+          type: boolean
+        timezone:
+          default: Europe/London
+          description: specify value only if auto_stop = false
+          type: string
+        start_time:
+          description: specify value only if auto_stop = false
+          format: date-time
+          type: string
+        stop_time:
+          description: specify value only if auto_stop = false
+          format: date-time
+          type: string
+        weekdays:
+          description: specify value only if auto_stop = false
+          items:
+            enum:
+            - MONDAY
+            - TUESDAY
+            - WEDNESDAY
+            - THURSDAY
+            - FRIDAY
+            - SATURDAY
+            - SUNDAY
+            example: MONDAY
+            type: string
+          type: array
+        wildcard:
+          description: wildcard pattern composed of '?' and/or '*' used to target
+            new created environments
+          nullable: true
           type: string
       required:
-      - environment_target
+      - auto_deploy
+      - auto_stop
+      - cluster_id
+      - mode
+      - name
+      - start_time
+      - stop_time
+      - timezone
+      - weekdays
+      - wildcard
       type: object
     EnvironmentStatsResponse:
       allOf:
@@ -10540,8 +10660,8 @@ components:
     ProjectDeploymentRuleResponseList:
       example:
         results:
-        - null
-        - null
+        - priority_index: 0
+        - priority_index: 0
       properties:
         results:
           items:
@@ -12419,6 +12539,22 @@ components:
           type: string
       required:
       - name
+      type: object
+    _project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order:
+      properties:
+        id:
+          description: project deployment rule id
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
+    inline_object:
+      properties:
+        project_deployment_rule_ids_in_order:
+          items:
+            $ref: '#/components/schemas/_project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order'
+          type: array
       type: object
     ApplicationStorageRequest_storage:
       properties:

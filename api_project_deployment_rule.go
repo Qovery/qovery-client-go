@@ -47,6 +47,8 @@ func (r ApiCreateDeploymentRuleRequest) Execute() (*ProjectDeploymentRuleRespons
 /*
 CreateDeploymentRule Create a deployment rule
 
+Create a deployment rule
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @return ApiCreateDeploymentRuleRequest
@@ -151,6 +153,8 @@ func (r ApiDeleteProjectDeploymentRuleRequest) Execute() (*http.Response, error)
 /*
 DeleteProjectDeploymentRule Delete a project deployment rule
 
+Delete a project deployment rule
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
  @param deploymentRuleId Deployment Rule ID
@@ -250,6 +254,8 @@ func (r ApiEditProjectDeployemtnRuleRequest) Execute() (*ProjectDeploymentRuleRe
 
 /*
 EditProjectDeployemtnRule Edit a project deployment rule
+
+Edit a project deployment rule
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
@@ -356,7 +362,9 @@ func (r ApiGetProjectDeploymentRuleRequest) Execute() (*ProjectDeploymentRuleRes
 }
 
 /*
-GetProjectDeploymentRule Get project deployment rule
+GetProjectDeploymentRule Get a project deployment rule
+
+Get a project deployment rule
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
@@ -449,25 +457,27 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListProjectDeploymentRuleRequest struct {
+type ApiListProjectDeploymentRulesRequest struct {
 	ctx        context.Context
 	ApiService *ProjectDeploymentRuleApiService
 	projectId  string
 }
 
-func (r ApiListProjectDeploymentRuleRequest) Execute() (*ProjectDeploymentRuleResponseList, *http.Response, error) {
-	return r.ApiService.ListProjectDeploymentRuleExecute(r)
+func (r ApiListProjectDeploymentRulesRequest) Execute() (*ProjectDeploymentRuleResponseList, *http.Response, error) {
+	return r.ApiService.ListProjectDeploymentRulesExecute(r)
 }
 
 /*
-ListProjectDeploymentRule List project deployment rules
+ListProjectDeploymentRules List project deployment rules
+
+List project deployment rules
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
- @return ApiListProjectDeploymentRuleRequest
+ @return ApiListProjectDeploymentRulesRequest
 */
-func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRule(ctx context.Context, projectId string) ApiListProjectDeploymentRuleRequest {
-	return ApiListProjectDeploymentRuleRequest{
+func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRules(ctx context.Context, projectId string) ApiListProjectDeploymentRulesRequest {
+	return ApiListProjectDeploymentRulesRequest{
 		ApiService: a,
 		ctx:        ctx,
 		projectId:  projectId,
@@ -476,7 +486,7 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRule(ctx context.
 
 // Execute executes the request
 //  @return ProjectDeploymentRuleResponseList
-func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRuleExecute(r ApiListProjectDeploymentRuleRequest) (*ProjectDeploymentRuleResponseList, *http.Response, error) {
+func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRulesExecute(r ApiListProjectDeploymentRulesRequest) (*ProjectDeploymentRuleResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -484,7 +494,7 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRuleExecute(r Api
 		localVarReturnValue *ProjectDeploymentRuleResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.ListProjectDeploymentRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.ListProjectDeploymentRules")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -548,4 +558,104 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRuleExecute(r Api
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateDeploymentRulesPriorityOrderRequest struct {
+	ctx          context.Context
+	ApiService   *ProjectDeploymentRuleApiService
+	projectId    string
+	inlineObject *InlineObject
+}
+
+func (r ApiUpdateDeploymentRulesPriorityOrderRequest) InlineObject(inlineObject InlineObject) ApiUpdateDeploymentRulesPriorityOrderRequest {
+	r.inlineObject = &inlineObject
+	return r
+}
+
+func (r ApiUpdateDeploymentRulesPriorityOrderRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdateDeploymentRulesPriorityOrderExecute(r)
+}
+
+/*
+UpdateDeploymentRulesPriorityOrder Update deployment rules priority order
+
+Update deployment rules priority order
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiUpdateDeploymentRulesPriorityOrderRequest
+*/
+func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrder(ctx context.Context, projectId string) ApiUpdateDeploymentRulesPriorityOrderRequest {
+	return ApiUpdateDeploymentRulesPriorityOrderRequest{
+		ApiService: a,
+		ctx:        ctx,
+		projectId:  projectId,
+	}
+}
+
+// Execute executes the request
+func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrderExecute(r ApiUpdateDeploymentRulesPriorityOrderRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.UpdateDeploymentRulesPriorityOrder")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/project/{projectId}/deploymentRule/order"
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.inlineObject
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }

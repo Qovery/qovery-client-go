@@ -7,8 +7,9 @@ Method | HTTP request | Description
 [**CreateDeploymentRule**](ProjectDeploymentRuleApi.md#CreateDeploymentRule) | **Post** /project/{projectId}/deploymentRule | Create a deployment rule
 [**DeleteProjectDeploymentRule**](ProjectDeploymentRuleApi.md#DeleteProjectDeploymentRule) | **Delete** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
 [**EditProjectDeployemtnRule**](ProjectDeploymentRuleApi.md#EditProjectDeployemtnRule) | **Put** /project/{projectId}/deploymentRule/{deploymentRuleId} | Edit a project deployment rule
-[**GetProjectDeploymentRule**](ProjectDeploymentRuleApi.md#GetProjectDeploymentRule) | **Get** /project/{projectId}/deploymentRule/{deploymentRuleId} | Get project deployment rule
-[**ListProjectDeploymentRule**](ProjectDeploymentRuleApi.md#ListProjectDeploymentRule) | **Get** /project/{projectId}/deploymentRule | List project deployment rules
+[**GetProjectDeploymentRule**](ProjectDeploymentRuleApi.md#GetProjectDeploymentRule) | **Get** /project/{projectId}/deploymentRule/{deploymentRuleId} | Get a project deployment rule
+[**ListProjectDeploymentRules**](ProjectDeploymentRuleApi.md#ListProjectDeploymentRules) | **Get** /project/{projectId}/deploymentRule | List project deployment rules
+[**UpdateDeploymentRulesPriorityOrder**](ProjectDeploymentRuleApi.md#UpdateDeploymentRulesPriorityOrder) | **Put** /project/{projectId}/deploymentRule/order | Update deployment rules priority order
 
 
 
@@ -17,6 +18,8 @@ Method | HTTP request | Description
 > ProjectDeploymentRuleResponse CreateDeploymentRule(ctx, projectId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
 
 Create a deployment rule
+
+
 
 ### Example
 
@@ -27,12 +30,13 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("^feat", "Name_example", "Mode_example", "Cluster_example", false) // ProjectDeploymentRuleRequest |  (optional)
+    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("Name_example", "Mode_example", "ClusterId_example", false, false, "Timezone_example", time.Now(), time.Now(), []string{"MONDAY"}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -87,6 +91,8 @@ Name | Type | Description  | Notes
 > DeleteProjectDeploymentRule(ctx, projectId, deploymentRuleId).Execute()
 
 Delete a project deployment rule
+
+
 
 ### Example
 
@@ -157,6 +163,8 @@ Name | Type | Description  | Notes
 
 Edit a project deployment rule
 
+
+
 ### Example
 
 ```go
@@ -166,13 +174,14 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
     deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
-    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("^feat", "Name_example", "Mode_example", "Cluster_example", false) // ProjectDeploymentRuleRequest |  (optional)
+    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("Name_example", "Mode_example", "ClusterId_example", false, false, "Timezone_example", time.Now(), time.Now(), []string{"MONDAY"}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -228,7 +237,9 @@ Name | Type | Description  | Notes
 
 > ProjectDeploymentRuleResponse GetProjectDeploymentRule(ctx, projectId, deploymentRuleId).Execute()
 
-Get project deployment rule
+Get a project deployment rule
+
+
 
 ### Example
 
@@ -295,11 +306,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListProjectDeploymentRule
+## ListProjectDeploymentRules
 
-> ProjectDeploymentRuleResponseList ListProjectDeploymentRule(ctx, projectId).Execute()
+> ProjectDeploymentRuleResponseList ListProjectDeploymentRules(ctx, projectId).Execute()
 
 List project deployment rules
+
+
 
 ### Example
 
@@ -318,13 +331,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectDeploymentRuleApi.ListProjectDeploymentRule(context.Background(), projectId).Execute()
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.ListProjectDeploymentRules(context.Background(), projectId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.ListProjectDeploymentRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.ListProjectDeploymentRules``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListProjectDeploymentRule`: ProjectDeploymentRuleResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleApi.ListProjectDeploymentRule`: %v\n", resp)
+    // response from `ListProjectDeploymentRules`: ProjectDeploymentRuleResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleApi.ListProjectDeploymentRules`: %v\n", resp)
 }
 ```
 
@@ -338,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListProjectDeploymentRuleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListProjectDeploymentRulesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -357,6 +370,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateDeploymentRulesPriorityOrder
+
+> UpdateDeploymentRulesPriorityOrder(ctx, projectId).InlineObject(inlineObject).Execute()
+
+Update deployment rules priority order
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    inlineObject := *openapiclient.NewInlineObject() // InlineObject |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.UpdateDeploymentRulesPriorityOrder(context.Background(), projectId).InlineObject(inlineObject).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.UpdateDeploymentRulesPriorityOrder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** | Project ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateDeploymentRulesPriorityOrderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
