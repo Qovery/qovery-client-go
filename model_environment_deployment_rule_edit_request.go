@@ -18,24 +18,20 @@ import (
 
 // EnvironmentDeploymentRuleEditRequest struct for EnvironmentDeploymentRuleEditRequest
 type EnvironmentDeploymentRuleEditRequest struct {
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
-	AutoDelete *bool `json:"auto_delete,omitempty"`
-	AutoStop   *bool `json:"auto_stop,omitempty"`
-	// specify value only if auto_stop = false
-	Timezone *string `json:"timezone,omitempty"`
-	// specify value only if auto_stop = false
-	StartTime NullableTime `json:"start_time,omitempty"`
-	// specify value only if auto_stop = false
-	StopTime NullableTime `json:"stop_time,omitempty"`
-	// specify value only if auto_stop = false
-	Weekdays []string `json:"weekdays,omitempty"`
+	AutoDeploy *bool     `json:"auto_deploy,omitempty"`
+	AutoDelete *bool     `json:"auto_delete,omitempty"`
+	AutoStop   *bool     `json:"auto_stop,omitempty"`
+	Timezone   string    `json:"timezone"`
+	StartTime  time.Time `json:"start_time"`
+	StopTime   time.Time `json:"stop_time"`
+	Weekdays   []string  `json:"weekdays"`
 }
 
 // NewEnvironmentDeploymentRuleEditRequest instantiates a new EnvironmentDeploymentRuleEditRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentDeploymentRuleEditRequest() *EnvironmentDeploymentRuleEditRequest {
+func NewEnvironmentDeploymentRuleEditRequest(timezone string, startTime time.Time, stopTime time.Time, weekdays []string) *EnvironmentDeploymentRuleEditRequest {
 	this := EnvironmentDeploymentRuleEditRequest{}
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
@@ -43,8 +39,10 @@ func NewEnvironmentDeploymentRuleEditRequest() *EnvironmentDeploymentRuleEditReq
 	this.AutoDelete = &autoDelete
 	var autoStop bool = false
 	this.AutoStop = &autoStop
-	var timezone string = "Europe/London"
-	this.Timezone = &timezone
+	this.Timezone = timezone
+	this.StartTime = startTime
+	this.StopTime = stopTime
+	this.Weekdays = weekdays
 	return &this
 }
 
@@ -59,8 +57,6 @@ func NewEnvironmentDeploymentRuleEditRequestWithDefaults() *EnvironmentDeploymen
 	this.AutoDelete = &autoDelete
 	var autoStop bool = false
 	this.AutoStop = &autoStop
-	var timezone string = "Europe/London"
-	this.Timezone = &timezone
 	return &this
 }
 
@@ -160,153 +156,98 @@ func (o *EnvironmentDeploymentRuleEditRequest) SetAutoStop(v bool) {
 	o.AutoStop = &v
 }
 
-// GetTimezone returns the Timezone field value if set, zero value otherwise.
+// GetTimezone returns the Timezone field value
 func (o *EnvironmentDeploymentRuleEditRequest) GetTimezone() string {
-	if o == nil || o.Timezone == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Timezone
+
+	return o.Timezone
 }
 
-// GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
+// GetTimezoneOk returns a tuple with the Timezone field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDeploymentRuleEditRequest) GetTimezoneOk() (*string, bool) {
-	if o == nil || o.Timezone == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Timezone, true
+	return &o.Timezone, true
 }
 
-// HasTimezone returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) HasTimezone() bool {
-	if o != nil && o.Timezone != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTimezone gets a reference to the given string and assigns it to the Timezone field.
+// SetTimezone sets field value
 func (o *EnvironmentDeploymentRuleEditRequest) SetTimezone(v string) {
-	o.Timezone = &v
+	o.Timezone = v
 }
 
-// GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStartTime returns the StartTime field value
 func (o *EnvironmentDeploymentRuleEditRequest) GetStartTime() time.Time {
-	if o == nil || o.StartTime.Get() == nil {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.StartTime.Get()
+
+	return o.StartTime
 }
 
-// GetStartTimeOk returns a tuple with the StartTime field value if set, nil otherwise
+// GetStartTimeOk returns a tuple with the StartTime field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentDeploymentRuleEditRequest) GetStartTimeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.StartTime.Get(), o.StartTime.IsSet()
+	return &o.StartTime, true
 }
 
-// HasStartTime returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) HasStartTime() bool {
-	if o != nil && o.StartTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStartTime gets a reference to the given NullableTime and assigns it to the StartTime field.
+// SetStartTime sets field value
 func (o *EnvironmentDeploymentRuleEditRequest) SetStartTime(v time.Time) {
-	o.StartTime.Set(&v)
+	o.StartTime = v
 }
 
-// SetStartTimeNil sets the value for StartTime to be an explicit nil
-func (o *EnvironmentDeploymentRuleEditRequest) SetStartTimeNil() {
-	o.StartTime.Set(nil)
-}
-
-// UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
-func (o *EnvironmentDeploymentRuleEditRequest) UnsetStartTime() {
-	o.StartTime.Unset()
-}
-
-// GetStopTime returns the StopTime field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStopTime returns the StopTime field value
 func (o *EnvironmentDeploymentRuleEditRequest) GetStopTime() time.Time {
-	if o == nil || o.StopTime.Get() == nil {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.StopTime.Get()
+
+	return o.StopTime
 }
 
-// GetStopTimeOk returns a tuple with the StopTime field value if set, nil otherwise
+// GetStopTimeOk returns a tuple with the StopTime field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentDeploymentRuleEditRequest) GetStopTimeOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.StopTime.Get(), o.StopTime.IsSet()
+	return &o.StopTime, true
 }
 
-// HasStopTime returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) HasStopTime() bool {
-	if o != nil && o.StopTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStopTime gets a reference to the given NullableTime and assigns it to the StopTime field.
+// SetStopTime sets field value
 func (o *EnvironmentDeploymentRuleEditRequest) SetStopTime(v time.Time) {
-	o.StopTime.Set(&v)
+	o.StopTime = v
 }
 
-// SetStopTimeNil sets the value for StopTime to be an explicit nil
-func (o *EnvironmentDeploymentRuleEditRequest) SetStopTimeNil() {
-	o.StopTime.Set(nil)
-}
-
-// UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
-func (o *EnvironmentDeploymentRuleEditRequest) UnsetStopTime() {
-	o.StopTime.Unset()
-}
-
-// GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetWeekdays returns the Weekdays field value
 func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Weekdays
 }
 
-// GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
+// GetWeekdaysOk returns a tuple with the Weekdays field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() ([]string, bool) {
-	if o == nil || o.Weekdays == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.Weekdays, true
 }
 
-// HasWeekdays returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) HasWeekdays() bool {
-	if o != nil && o.Weekdays != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWeekdays gets a reference to the given []string and assigns it to the Weekdays field.
+// SetWeekdays sets field value
 func (o *EnvironmentDeploymentRuleEditRequest) SetWeekdays(v []string) {
 	o.Weekdays = v
 }
@@ -322,16 +263,16 @@ func (o EnvironmentDeploymentRuleEditRequest) MarshalJSON() ([]byte, error) {
 	if o.AutoStop != nil {
 		toSerialize["auto_stop"] = o.AutoStop
 	}
-	if o.Timezone != nil {
+	if true {
 		toSerialize["timezone"] = o.Timezone
 	}
-	if o.StartTime.IsSet() {
-		toSerialize["start_time"] = o.StartTime.Get()
+	if true {
+		toSerialize["start_time"] = o.StartTime
 	}
-	if o.StopTime.IsSet() {
-		toSerialize["stop_time"] = o.StopTime.Get()
+	if true {
+		toSerialize["stop_time"] = o.StopTime
 	}
-	if o.Weekdays != nil {
+	if true {
 		toSerialize["weekdays"] = o.Weekdays
 	}
 	return json.Marshal(toSerialize)

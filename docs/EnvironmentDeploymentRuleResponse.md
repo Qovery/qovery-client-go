@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
-**Timezone** | Pointer to **string** | specify value only if auto_stop &#x3D; false | [optional] [default to "Europe/London"]
-**StartTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
-**StopTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
-**Weekdays** | Pointer to **[]string** | specify value only if auto_stop &#x3D; false | [optional] 
+**Timezone** | **string** |  | 
+**StartTime** | **time.Time** |  | 
+**StopTime** | **time.Time** |  | 
+**Weekdays** | **[]string** |  | 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironmentDeploymentRuleResponse
 
-`func NewEnvironmentDeploymentRuleResponse(id string, createdAt time.Time, ) *EnvironmentDeploymentRuleResponse`
+`func NewEnvironmentDeploymentRuleResponse(timezone string, startTime time.Time, stopTime time.Time, weekdays []string, id string, createdAt time.Time, ) *EnvironmentDeploymentRuleResponse`
 
 NewEnvironmentDeploymentRuleResponse instantiates a new EnvironmentDeploymentRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -102,11 +102,6 @@ and a boolean to check if the value has been set.
 
 SetTimezone sets Timezone field to given value.
 
-### HasTimezone
-
-`func (o *EnvironmentDeploymentRuleResponse) HasTimezone() bool`
-
-HasTimezone returns a boolean if a field has been set.
 
 ### GetStartTime
 
@@ -127,22 +122,7 @@ and a boolean to check if the value has been set.
 
 SetStartTime sets StartTime field to given value.
 
-### HasStartTime
 
-`func (o *EnvironmentDeploymentRuleResponse) HasStartTime() bool`
-
-HasStartTime returns a boolean if a field has been set.
-
-### SetStartTimeNil
-
-`func (o *EnvironmentDeploymentRuleResponse) SetStartTimeNil(b bool)`
-
- SetStartTimeNil sets the value for StartTime to be an explicit nil
-
-### UnsetStartTime
-`func (o *EnvironmentDeploymentRuleResponse) UnsetStartTime()`
-
-UnsetStartTime ensures that no value is present for StartTime, not even an explicit nil
 ### GetStopTime
 
 `func (o *EnvironmentDeploymentRuleResponse) GetStopTime() time.Time`
@@ -162,22 +142,7 @@ and a boolean to check if the value has been set.
 
 SetStopTime sets StopTime field to given value.
 
-### HasStopTime
 
-`func (o *EnvironmentDeploymentRuleResponse) HasStopTime() bool`
-
-HasStopTime returns a boolean if a field has been set.
-
-### SetStopTimeNil
-
-`func (o *EnvironmentDeploymentRuleResponse) SetStopTimeNil(b bool)`
-
- SetStopTimeNil sets the value for StopTime to be an explicit nil
-
-### UnsetStopTime
-`func (o *EnvironmentDeploymentRuleResponse) UnsetStopTime()`
-
-UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
 ### GetWeekdays
 
 `func (o *EnvironmentDeploymentRuleResponse) GetWeekdays() []string`
@@ -197,22 +162,7 @@ and a boolean to check if the value has been set.
 
 SetWeekdays sets Weekdays field to given value.
 
-### HasWeekdays
 
-`func (o *EnvironmentDeploymentRuleResponse) HasWeekdays() bool`
-
-HasWeekdays returns a boolean if a field has been set.
-
-### SetWeekdaysNil
-
-`func (o *EnvironmentDeploymentRuleResponse) SetWeekdaysNil(b bool)`
-
- SetWeekdaysNil sets the value for Weekdays to be an explicit nil
-
-### UnsetWeekdays
-`func (o *EnvironmentDeploymentRuleResponse) UnsetWeekdays()`
-
-UnsetWeekdays ensures that no value is present for Weekdays, not even an explicit nil
 ### GetId
 
 `func (o *EnvironmentDeploymentRuleResponse) GetId() string`

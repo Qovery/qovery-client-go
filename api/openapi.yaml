@@ -9896,10 +9896,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseResponse'
       example:
-        start_time: 2000-01-23T04:56:07.000+00:00
+        start_time: 1970-01-01T08:00:00Z
         auto_deploy: true
-        stop_time: 2000-01-23T04:56:07.000+00:00
-        timezone: Europe/London
+        stop_time: 1970-01-01T19:00:00Z
+        timezone: UTC
         weekdays:
         - MONDAY
         - MONDAY
@@ -9912,22 +9912,17 @@ components:
           default: false
           type: boolean
         timezone:
-          default: Europe/London
-          description: specify value only if auto_stop = false
-          nullable: false
+          example: UTC
           type: string
         start_time:
-          description: specify value only if auto_stop = false
+          example: 1970-01-01T08:00:00Z
           format: date-time
-          nullable: true
           type: string
         stop_time:
-          description: specify value only if auto_stop = false
+          example: 1970-01-01T19:00:00Z
           format: date-time
-          nullable: true
           type: string
         weekdays:
-          description: specify value only if auto_stop = false
           items:
             enum:
             - MONDAY
@@ -9939,8 +9934,12 @@ components:
             - SUNDAY
             example: MONDAY
             type: string
-          nullable: true
           type: array
+      required:
+      - start_time
+      - stop_time
+      - timezone
+      - weekdays
       type: object
     MetricMemoryDatapointResponse:
       example:
@@ -11395,10 +11394,10 @@ components:
       type: object
     EnvironmentDeploymentRuleEditRequest:
       example:
-        start_time: 2000-01-23T04:56:07.000+00:00
+        start_time: 1970-01-01T08:00:00Z
         auto_deploy: true
-        stop_time: 2000-01-23T04:56:07.000+00:00
-        timezone: Europe/London
+        stop_time: 1970-01-01T19:00:00Z
+        timezone: UTC
         weekdays:
         - MONDAY
         - MONDAY
@@ -11415,22 +11414,17 @@ components:
           default: false
           type: boolean
         timezone:
-          default: Europe/London
-          description: specify value only if auto_stop = false
-          nullable: false
+          example: UTC
           type: string
         start_time:
-          description: specify value only if auto_stop = false
+          example: 1970-01-01T08:00:00Z
           format: date-time
-          nullable: true
           type: string
         stop_time:
-          description: specify value only if auto_stop = false
+          example: 1970-01-01T19:00:00Z
           format: date-time
-          nullable: true
           type: string
         weekdays:
-          description: specify value only if auto_stop = false
           items:
             enum:
             - MONDAY
@@ -11442,8 +11436,12 @@ components:
             - SUNDAY
             example: MONDAY
             type: string
-          nullable: true
           type: array
+      required:
+      - start_time
+      - stop_time
+      - timezone
+      - weekdays
       type: object
     ReferenceObjectStatusResponseList:
       example:
