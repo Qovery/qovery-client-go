@@ -8,7 +8,7 @@ info:
     - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider.
     - ℹ️ The API is stable and still in development.
   title: Qovery API
-  version: 1.0.2
+  version: 1.0.3
   x-logo:
     url: https://raw.githubusercontent.com/Qovery/public-resources/master/qovery_new_logo_white.svg
     altText: Qovery
@@ -9079,6 +9079,7 @@ components:
         dockerfile_path:
           description: The path of the associated Dockerfile. Only if you are using
             build_mode = DOCKER
+          nullable: true
           type: string
         buildpack_language:
           description: Development language of the application
@@ -9094,6 +9095,7 @@ components:
           - PLAY
           - PYTHON
           - SCALA
+          nullable: true
           type: string
         cpu:
           default: 250
@@ -9466,6 +9468,7 @@ components:
         dockerfile_path:
           description: The path of the associated Dockerfile. Only if you are using
             build_mode = DOCKER
+          nullable: true
           type: string
         buildpack_language:
           description: Development language of the application
@@ -9481,6 +9484,7 @@ components:
           - PLAY
           - PYTHON
           - SCALA
+          nullable: true
           type: string
         cpu:
           default: 250

@@ -3,7 +3,7 @@ Qovery API
 
 - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
 
-API version: 1.0.2
+API version: 1.0.3
 Contact: support+api+documentation@qovery.com
 */
 
@@ -31,9 +31,9 @@ type ApplicationResponse struct {
 	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath *string `json:"dockerfile_path,omitempty"`
+	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
 	// Development language of the application
-	BuildpackLanguage *string `json:"buildpack_language,omitempty"`
+	BuildpackLanguage NullableString `json:"buildpack_language,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -322,68 +322,90 @@ func (o *ApplicationResponse) SetBuildMode(v string) {
 	o.BuildMode = &v
 }
 
-// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise.
+// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationResponse) GetDockerfilePath() string {
-	if o == nil || o.DockerfilePath == nil {
+	if o == nil || o.DockerfilePath.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.DockerfilePath
+	return *o.DockerfilePath.Get()
 }
 
 // GetDockerfilePathOk returns a tuple with the DockerfilePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationResponse) GetDockerfilePathOk() (*string, bool) {
-	if o == nil || o.DockerfilePath == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.DockerfilePath, true
+	return o.DockerfilePath.Get(), o.DockerfilePath.IsSet()
 }
 
 // HasDockerfilePath returns a boolean if a field has been set.
 func (o *ApplicationResponse) HasDockerfilePath() bool {
-	if o != nil && o.DockerfilePath != nil {
+	if o != nil && o.DockerfilePath.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerfilePath gets a reference to the given string and assigns it to the DockerfilePath field.
+// SetDockerfilePath gets a reference to the given NullableString and assigns it to the DockerfilePath field.
 func (o *ApplicationResponse) SetDockerfilePath(v string) {
-	o.DockerfilePath = &v
+	o.DockerfilePath.Set(&v)
 }
 
-// GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise.
+// SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
+func (o *ApplicationResponse) SetDockerfilePathNil() {
+	o.DockerfilePath.Set(nil)
+}
+
+// UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
+func (o *ApplicationResponse) UnsetDockerfilePath() {
+	o.DockerfilePath.Unset()
+}
+
+// GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationResponse) GetBuildpackLanguage() string {
-	if o == nil || o.BuildpackLanguage == nil {
+	if o == nil || o.BuildpackLanguage.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.BuildpackLanguage
+	return *o.BuildpackLanguage.Get()
 }
 
 // GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationResponse) GetBuildpackLanguageOk() (*string, bool) {
-	if o == nil || o.BuildpackLanguage == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.BuildpackLanguage, true
+	return o.BuildpackLanguage.Get(), o.BuildpackLanguage.IsSet()
 }
 
 // HasBuildpackLanguage returns a boolean if a field has been set.
 func (o *ApplicationResponse) HasBuildpackLanguage() bool {
-	if o != nil && o.BuildpackLanguage != nil {
+	if o != nil && o.BuildpackLanguage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBuildpackLanguage gets a reference to the given string and assigns it to the BuildpackLanguage field.
+// SetBuildpackLanguage gets a reference to the given NullableString and assigns it to the BuildpackLanguage field.
 func (o *ApplicationResponse) SetBuildpackLanguage(v string) {
-	o.BuildpackLanguage = &v
+	o.BuildpackLanguage.Set(&v)
+}
+
+// SetBuildpackLanguageNil sets the value for BuildpackLanguage to be an explicit nil
+func (o *ApplicationResponse) SetBuildpackLanguageNil() {
+	o.BuildpackLanguage.Set(nil)
+}
+
+// UnsetBuildpackLanguage ensures that no value is present for BuildpackLanguage, not even an explicit nil
+func (o *ApplicationResponse) UnsetBuildpackLanguage() {
+	o.BuildpackLanguage.Unset()
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -745,11 +767,11 @@ func (o ApplicationResponse) MarshalJSON() ([]byte, error) {
 	if o.BuildMode != nil {
 		toSerialize["build_mode"] = o.BuildMode
 	}
-	if o.DockerfilePath != nil {
-		toSerialize["dockerfile_path"] = o.DockerfilePath
+	if o.DockerfilePath.IsSet() {
+		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
 	}
-	if o.BuildpackLanguage != nil {
-		toSerialize["buildpack_language"] = o.BuildpackLanguage
+	if o.BuildpackLanguage.IsSet() {
+		toSerialize["buildpack_language"] = o.BuildpackLanguage.Get()
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu

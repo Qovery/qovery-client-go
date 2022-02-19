@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
 **Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] [default to "BUILDPACKS"]
-**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
-**BuildpackLanguage** | Pointer to **string** | Development language of the application | [optional] 
+**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
+**BuildpackLanguage** | Pointer to **NullableString** | Development language of the application | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
@@ -254,6 +254,16 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
+### SetDockerfilePathNil
+
+`func (o *ApplicationResponse) SetDockerfilePathNil(b bool)`
+
+ SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
+
+### UnsetDockerfilePath
+`func (o *ApplicationResponse) UnsetDockerfilePath()`
+
+UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetBuildpackLanguage
 
 `func (o *ApplicationResponse) GetBuildpackLanguage() string`
@@ -279,6 +289,16 @@ SetBuildpackLanguage sets BuildpackLanguage field to given value.
 
 HasBuildpackLanguage returns a boolean if a field has been set.
 
+### SetBuildpackLanguageNil
+
+`func (o *ApplicationResponse) SetBuildpackLanguageNil(b bool)`
+
+ SetBuildpackLanguageNil sets the value for BuildpackLanguage to be an explicit nil
+
+### UnsetBuildpackLanguage
+`func (o *ApplicationResponse) UnsetBuildpackLanguage()`
+
+UnsetBuildpackLanguage ensures that no value is present for BuildpackLanguage, not even an explicit nil
 ### GetCpu
 
 `func (o *ApplicationResponse) GetCpu() int32`

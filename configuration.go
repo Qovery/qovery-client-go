@@ -3,7 +3,7 @@ Qovery API
 
 - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
 
-API version: 1.0.2
+API version: 1.0.3
 Contact: support+api+documentation@qovery.com
 */
 
@@ -102,7 +102,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "OpenAPI-Generator/1.0.2/go",
+		UserAgent:     "OpenAPI-Generator/1.0.3/go",
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
