@@ -8,7 +8,7 @@ info:
     - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider.
     - ℹ️ The API is stable and still in development.
   title: Qovery API
-  version: 1.0.0
+  version: 1.0.1
   x-logo:
     url: https://raw.githubusercontent.com/Qovery/public-resources/master/qovery_new_logo_white.svg
     altText: Qovery
