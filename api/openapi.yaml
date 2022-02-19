@@ -12731,6 +12731,7 @@ components:
           format: uuid
           type: string
         name:
+          nullable: true
           type: string
         internal_port:
           description: The listening port of your application
@@ -12837,6 +12838,7 @@ components:
     ApplicationPortRequest_ports:
       properties:
         name:
+          nullable: true
           type: string
         internal_port:
           description: The listening port of your application

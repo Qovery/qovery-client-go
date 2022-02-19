@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] 
 **InternalPort** | **int32** | The listening port of your application | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your application. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
@@ -54,6 +54,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *ApplicationPortRequestPorts) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *ApplicationPortRequestPorts) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetInternalPort
 
 `func (o *ApplicationPortRequestPorts) GetInternalPort() int32`
