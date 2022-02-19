@@ -3,7 +3,7 @@ Qovery API
 
 - Qovery is the fastest way to deploy your full-stack apps on any Cloud provider. - ℹ️ The API is stable and still in development.
 
-API version: 1.0.1
+API version: 1.0.2
 Contact: support+api+documentation@qovery.com
 */
 
@@ -20,7 +20,7 @@ type ApplicationRequest struct {
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this application
-	Description   *string                         `json:"description,omitempty"`
+	Description   NullableString                  `json:"description,omitempty"`
 	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
 	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
 	BuildMode *string `json:"build_mode,omitempty"`
@@ -96,36 +96,47 @@ func (o *ApplicationRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *ApplicationRequest) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *ApplicationRequest) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *ApplicationRequest) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetGitRepository returns the GitRepository field value
@@ -509,8 +520,8 @@ func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if true {
 		toSerialize["git_repository"] = o.GitRepository

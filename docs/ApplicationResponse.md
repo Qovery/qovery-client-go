@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
-**Description** | Pointer to **string** | give a description to this application | [optional] 
+**Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] [default to "BUILDPACKS"]
 **DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **BuildpackLanguage** | Pointer to **string** | Development language of the application | [optional] 
@@ -194,6 +194,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ApplicationResponse) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ApplicationResponse) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetBuildMode
 
 `func (o *ApplicationResponse) GetBuildMode() string`
