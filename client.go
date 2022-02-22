@@ -60,6 +60,8 @@ type APIClient struct {
 
 	ApplicationDeploymentHistoryApi *ApplicationDeploymentHistoryApiService
 
+	ApplicationDeploymentRuleApi *ApplicationDeploymentRuleApiService
+
 	ApplicationEnvironmentVariableApi *ApplicationEnvironmentVariableApiService
 
 	ApplicationEventApi *ApplicationEventApiService
@@ -158,6 +160,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationConfigurationApi = (*ApplicationConfigurationApiService)(&c.common)
 	c.ApplicationDatabaseApi = (*ApplicationDatabaseApiService)(&c.common)
 	c.ApplicationDeploymentHistoryApi = (*ApplicationDeploymentHistoryApiService)(&c.common)
+	c.ApplicationDeploymentRuleApi = (*ApplicationDeploymentRuleApiService)(&c.common)
 	c.ApplicationEnvironmentVariableApi = (*ApplicationEnvironmentVariableApiService)(&c.common)
 	c.ApplicationEventApi = (*ApplicationEventApiService)(&c.common)
 	c.ApplicationLogsApi = (*ApplicationLogsApiService)(&c.common)

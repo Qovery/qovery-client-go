@@ -23,6 +23,7 @@ tags:
 - name: Application Actions
 - name: Application Configuration
 - name: Application Database
+- name: Application Deployment rule
 - name: Application Deployment History
 - name: Application Environment Variable
 - name: Application Event
@@ -4398,6 +4399,82 @@ paths:
       summary: Get application status
       tags:
       - Application Main Calls
+  /application/{applicationId}/deploymentRule:
+    get:
+      description: Get application deployment rule
+      operationId: getApplicationDeploymentRule
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationDeploymentRuleResponse'
+          description: Get application deployment rule
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get application deployment rule
+      tags:
+      - Application Deployment Rule
+  /application/{applicationId}/deploymentRule/{deploymentRuleId}:
+    put:
+      description: Edit an application deployment rule
+      operationId: editApplicationDeploymentRule
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Deployment Rule ID
+        explode: false
+        in: path
+        name: deploymentRuleId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationDeploymentRuleEditRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationDeploymentRuleResponse'
+          description: Edit application deployment rule
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit an application deployment rule
+      tags:
+      - Application Deployment Rule
   /application/{applicationId}/contributor:
     get:
       operationId: listApplicationContributor
@@ -9878,6 +9955,65 @@ components:
             \ he access to the application. \n"
           type: boolean
       type: object
+    ApplicationDeploymentRuleResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      example:
+        deployment_restrictions:
+        - mode: MATCH
+          type: PATH
+          value: value
+        - mode: MATCH
+          type: PATH
+          value: value
+      properties:
+        deployment_restrictions:
+          items:
+            $ref: '#/components/schemas/ApplicationDeploymentRestriction'
+          type: array
+      type: object
+    ApplicationDeploymentRuleEditRequest:
+      example:
+        deployment_restrictions:
+        - mode: MATCH
+          type: PATH
+          value: value
+        - mode: MATCH
+          type: PATH
+          value: value
+      properties:
+        deployment_restrictions:
+          items:
+            $ref: '#/components/schemas/ApplicationDeploymentRestriction'
+          type: array
+      type: object
+    ApplicationDeploymentRestriction:
+      example:
+        mode: MATCH
+        type: PATH
+        value: value
+      properties:
+        mode:
+          description: Match mode will rebuild app only if specified items are updated.
+            Exclude mode will not rebuild app if specified items are updated.
+          enum:
+          - MATCH
+          - EXCLUDE
+          example: MATCH
+          type: string
+        type:
+          enum:
+          - FILE
+          - PATH
+          example: PATH
+          type: string
+        value:
+          type: string
+      required:
+      - mode
+      - type
+      - value
+      type: object
     RemainingCredits:
       allOf:
       - $ref: '#/components/schemas/CostResponse'
@@ -12980,6 +13116,7 @@ x-tagGroups:
   - Application Metrics
   - Application Database
   - Application Logs
+  - Application Deployment Rule
   - Application Deployment History
   - Application Environment Variable
   - Application Secret
