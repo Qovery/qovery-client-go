@@ -23,31 +23,32 @@ type ProjectDeploymentRuleRequest struct {
 	Description NullableString `json:"description,omitempty"`
 	Mode        string         `json:"mode"`
 	ClusterId   string         `json:"cluster_id"`
-	AutoDeploy  bool           `json:"auto_deploy"`
-	AutoStop    bool           `json:"auto_stop"`
-	// specify value only if auto_stop = false
-	Timezone string `json:"timezone"`
-	// specify value only if auto_stop = false
-	StartTime time.Time `json:"start_time"`
-	// specify value only if auto_stop = false
-	StopTime time.Time `json:"stop_time"`
-	// specify value only if auto_stop = false
-	Weekdays []string `json:"weekdays"`
+	AutoDeploy  *bool          `json:"auto_deploy,omitempty"`
+	AutoStop    *bool          `json:"auto_stop,omitempty"`
+	AutoDelete  *bool          `json:"auto_delete,omitempty"`
+	Timezone    string         `json:"timezone"`
+	StartTime   time.Time      `json:"start_time"`
+	StopTime    time.Time      `json:"stop_time"`
+	Weekdays    []string       `json:"weekdays"`
 	// wildcard pattern composed of '?' and/or '*' used to target new created environments
-	Wildcard NullableString `json:"wildcard"`
+	Wildcard string `json:"wildcard"`
 }
 
 // NewProjectDeploymentRuleRequest instantiates a new ProjectDeploymentRuleRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDeploymentRuleRequest(name string, mode string, clusterId string, autoDeploy bool, autoStop bool, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard NullableString) *ProjectDeploymentRuleRequest {
+func NewProjectDeploymentRuleRequest(name string, mode string, clusterId string, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard string) *ProjectDeploymentRuleRequest {
 	this := ProjectDeploymentRuleRequest{}
 	this.Name = name
 	this.Mode = mode
 	this.ClusterId = clusterId
-	this.AutoDeploy = autoDeploy
-	this.AutoStop = autoStop
+	var autoDeploy bool = false
+	this.AutoDeploy = &autoDeploy
+	var autoStop bool = false
+	this.AutoStop = &autoStop
+	var autoDelete bool = false
+	this.AutoDelete = &autoDelete
 	this.Timezone = timezone
 	this.StartTime = startTime
 	this.StopTime = stopTime
@@ -61,8 +62,14 @@ func NewProjectDeploymentRuleRequest(name string, mode string, clusterId string,
 // but it doesn't guarantee that properties required by API are set
 func NewProjectDeploymentRuleRequestWithDefaults() *ProjectDeploymentRuleRequest {
 	this := ProjectDeploymentRuleRequest{}
-	var timezone string = "Europe/London"
-	this.Timezone = timezone
+	var autoDeploy bool = false
+	this.AutoDeploy = &autoDeploy
+	var autoStop bool = false
+	this.AutoStop = &autoStop
+	var autoDelete bool = false
+	this.AutoDelete = &autoDelete
+	var wildcard string = ""
+	this.Wildcard = wildcard
 	return &this
 }
 
@@ -181,52 +188,100 @@ func (o *ProjectDeploymentRuleRequest) SetClusterId(v string) {
 	o.ClusterId = v
 }
 
-// GetAutoDeploy returns the AutoDeploy field value
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
 func (o *ProjectDeploymentRuleRequest) GetAutoDeploy() bool {
-	if o == nil {
+	if o == nil || o.AutoDeploy == nil {
 		var ret bool
 		return ret
 	}
-
-	return o.AutoDeploy
+	return *o.AutoDeploy
 }
 
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetAutoDeployOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || o.AutoDeploy == nil {
 		return nil, false
 	}
-	return &o.AutoDeploy, true
+	return o.AutoDeploy, true
 }
 
-// SetAutoDeploy sets field value
+// HasAutoDeploy returns a boolean if a field has been set.
+func (o *ProjectDeploymentRuleRequest) HasAutoDeploy() bool {
+	if o != nil && o.AutoDeploy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
 func (o *ProjectDeploymentRuleRequest) SetAutoDeploy(v bool) {
-	o.AutoDeploy = v
+	o.AutoDeploy = &v
 }
 
-// GetAutoStop returns the AutoStop field value
+// GetAutoStop returns the AutoStop field value if set, zero value otherwise.
 func (o *ProjectDeploymentRuleRequest) GetAutoStop() bool {
-	if o == nil {
+	if o == nil || o.AutoStop == nil {
 		var ret bool
 		return ret
 	}
-
-	return o.AutoStop
+	return *o.AutoStop
 }
 
-// GetAutoStopOk returns a tuple with the AutoStop field value
+// GetAutoStopOk returns a tuple with the AutoStop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetAutoStopOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || o.AutoStop == nil {
 		return nil, false
 	}
-	return &o.AutoStop, true
+	return o.AutoStop, true
 }
 
-// SetAutoStop sets field value
+// HasAutoStop returns a boolean if a field has been set.
+func (o *ProjectDeploymentRuleRequest) HasAutoStop() bool {
+	if o != nil && o.AutoStop != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoStop gets a reference to the given bool and assigns it to the AutoStop field.
 func (o *ProjectDeploymentRuleRequest) SetAutoStop(v bool) {
-	o.AutoStop = v
+	o.AutoStop = &v
+}
+
+// GetAutoDelete returns the AutoDelete field value if set, zero value otherwise.
+func (o *ProjectDeploymentRuleRequest) GetAutoDelete() bool {
+	if o == nil || o.AutoDelete == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDelete
+}
+
+// GetAutoDeleteOk returns a tuple with the AutoDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDeploymentRuleRequest) GetAutoDeleteOk() (*bool, bool) {
+	if o == nil || o.AutoDelete == nil {
+		return nil, false
+	}
+	return o.AutoDelete, true
+}
+
+// HasAutoDelete returns a boolean if a field has been set.
+func (o *ProjectDeploymentRuleRequest) HasAutoDelete() bool {
+	if o != nil && o.AutoDelete != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDelete gets a reference to the given bool and assigns it to the AutoDelete field.
+func (o *ProjectDeploymentRuleRequest) SetAutoDelete(v bool) {
+	o.AutoDelete = &v
 }
 
 // GetTimezone returns the Timezone field value
@@ -326,29 +381,27 @@ func (o *ProjectDeploymentRuleRequest) SetWeekdays(v []string) {
 }
 
 // GetWildcard returns the Wildcard field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDeploymentRuleRequest) GetWildcard() string {
-	if o == nil || o.Wildcard.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Wildcard.Get()
+	return o.Wildcard
 }
 
 // GetWildcardOk returns a tuple with the Wildcard field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRuleRequest) GetWildcardOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Wildcard.Get(), o.Wildcard.IsSet()
+	return &o.Wildcard, true
 }
 
 // SetWildcard sets field value
 func (o *ProjectDeploymentRuleRequest) SetWildcard(v string) {
-	o.Wildcard.Set(&v)
+	o.Wildcard = v
 }
 
 func (o ProjectDeploymentRuleRequest) MarshalJSON() ([]byte, error) {
@@ -365,11 +418,14 @@ func (o ProjectDeploymentRuleRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["cluster_id"] = o.ClusterId
 	}
-	if true {
+	if o.AutoDeploy != nil {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
-	if true {
+	if o.AutoStop != nil {
 		toSerialize["auto_stop"] = o.AutoStop
+	}
+	if o.AutoDelete != nil {
+		toSerialize["auto_delete"] = o.AutoDelete
 	}
 	if true {
 		toSerialize["timezone"] = o.Timezone
@@ -384,7 +440,7 @@ func (o ProjectDeploymentRuleRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["weekdays"] = o.Weekdays
 	}
 	if true {
-		toSerialize["wildcard"] = o.Wildcard.Get()
+		toSerialize["wildcard"] = o.Wildcard
 	}
 	return json.Marshal(toSerialize)
 }

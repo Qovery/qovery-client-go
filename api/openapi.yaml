@@ -9540,52 +9540,59 @@ components:
       type: object
     ProjectDeploymentRuleRequest:
       example:
-        mode: PRODUCTION
-        start_time: 2000-01-23T04:56:07.000+00:00
+        mode: DEVELOPMENT
+        start_time: 1970-01-01T08:00:00Z
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        auto_deploy: true
-        stop_time: 2000-01-23T04:56:07.000+00:00
-        timezone: Europe/London
+        auto_deploy: false
+        stop_time: 1970-01-01T19:00:00Z
+        timezone: UTC
         weekdays:
         - MONDAY
         - MONDAY
-        auto_stop: true
-        name: name
-        description: description
+        auto_stop: false
+        name: project-rule
+        auto_delete: false
+        description: description project rule
         wildcard: wildcard
       properties:
         name:
           description: name is case insensitive
+          example: project-rule
           type: string
         description:
+          example: description project rule
           nullable: true
           type: string
         mode:
           enum:
-          - PRODUCTION
           - DEVELOPMENT
+          - STAGING
+          - PRODUCTION
           type: string
         cluster_id:
           format: uuid
           type: string
         auto_deploy:
+          default: false
           type: boolean
         auto_stop:
+          default: false
+          type: boolean
+        auto_delete:
+          default: false
           type: boolean
         timezone:
-          default: Europe/London
-          description: specify value only if auto_stop = false
+          example: UTC
           type: string
         start_time:
-          description: specify value only if auto_stop = false
+          example: 1970-01-01T08:00:00Z
           format: date-time
           type: string
         stop_time:
-          description: specify value only if auto_stop = false
+          example: 1970-01-01T19:00:00Z
           format: date-time
           type: string
         weekdays:
-          description: specify value only if auto_stop = false
           items:
             enum:
             - MONDAY
@@ -9599,13 +9606,11 @@ components:
             type: string
           type: array
         wildcard:
+          default: ""
           description: wildcard pattern composed of '?' and/or '*' used to target
             new created environments
-          nullable: true
           type: string
       required:
-      - auto_deploy
-      - auto_stop
       - cluster_id
       - mode
       - name
@@ -9910,11 +9915,19 @@ components:
         - MONDAY
         - MONDAY
         auto_stop: false
+        auto_delete: false
+        auto_preview: false
       properties:
         auto_deploy:
           default: true
           type: boolean
         auto_stop:
+          default: false
+          type: boolean
+        auto_delete:
+          default: false
+          type: boolean
+        auto_preview:
           default: false
           type: boolean
         timezone:

@@ -8,19 +8,20 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Mode** | **string** |  | 
 **ClusterId** | **string** |  | 
-**AutoDeploy** | **bool** |  | 
-**AutoStop** | **bool** |  | 
-**Timezone** | **string** | specify value only if auto_stop &#x3D; false | [default to "Europe/London"]
-**StartTime** | **time.Time** | specify value only if auto_stop &#x3D; false | 
-**StopTime** | **time.Time** | specify value only if auto_stop &#x3D; false | 
-**Weekdays** | **[]string** | specify value only if auto_stop &#x3D; false | 
-**Wildcard** | **NullableString** | wildcard pattern composed of &#39;?&#39; and/or &#39;*&#39; used to target new created environments | 
+**AutoDeploy** | Pointer to **bool** |  | [optional] [default to false]
+**AutoStop** | Pointer to **bool** |  | [optional] [default to false]
+**AutoDelete** | Pointer to **bool** |  | [optional] [default to false]
+**Timezone** | **string** |  | 
+**StartTime** | **time.Time** |  | 
+**StopTime** | **time.Time** |  | 
+**Weekdays** | **[]string** |  | 
+**Wildcard** | **string** | wildcard pattern composed of &#39;?&#39; and/or &#39;*&#39; used to target new created environments | [default to ""]
 
 ## Methods
 
 ### NewProjectDeploymentRuleRequest
 
-`func NewProjectDeploymentRuleRequest(name string, mode string, clusterId string, autoDeploy bool, autoStop bool, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard NullableString, ) *ProjectDeploymentRuleRequest`
+`func NewProjectDeploymentRuleRequest(name string, mode string, clusterId string, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard string, ) *ProjectDeploymentRuleRequest`
 
 NewProjectDeploymentRuleRequest instantiates a new ProjectDeploymentRuleRequest object
 This constructor will assign default values to properties that have it defined,
@@ -149,6 +150,11 @@ and a boolean to check if the value has been set.
 
 SetAutoDeploy sets AutoDeploy field to given value.
 
+### HasAutoDeploy
+
+`func (o *ProjectDeploymentRuleRequest) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetAutoStop
 
@@ -169,6 +175,36 @@ and a boolean to check if the value has been set.
 
 SetAutoStop sets AutoStop field to given value.
 
+### HasAutoStop
+
+`func (o *ProjectDeploymentRuleRequest) HasAutoStop() bool`
+
+HasAutoStop returns a boolean if a field has been set.
+
+### GetAutoDelete
+
+`func (o *ProjectDeploymentRuleRequest) GetAutoDelete() bool`
+
+GetAutoDelete returns the AutoDelete field if non-nil, zero value otherwise.
+
+### GetAutoDeleteOk
+
+`func (o *ProjectDeploymentRuleRequest) GetAutoDeleteOk() (*bool, bool)`
+
+GetAutoDeleteOk returns a tuple with the AutoDelete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDelete
+
+`func (o *ProjectDeploymentRuleRequest) SetAutoDelete(v bool)`
+
+SetAutoDelete sets AutoDelete field to given value.
+
+### HasAutoDelete
+
+`func (o *ProjectDeploymentRuleRequest) HasAutoDelete() bool`
+
+HasAutoDelete returns a boolean if a field has been set.
 
 ### GetTimezone
 
@@ -270,16 +306,6 @@ and a boolean to check if the value has been set.
 SetWildcard sets Wildcard field to given value.
 
 
-### SetWildcardNil
-
-`func (o *ProjectDeploymentRuleRequest) SetWildcardNil(b bool)`
-
- SetWildcardNil sets the value for Wildcard to be an explicit nil
-
-### UnsetWildcard
-`func (o *ProjectDeploymentRuleRequest) UnsetWildcard()`
-
-UnsetWildcard ensures that no value is present for Wildcard, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,15 +18,17 @@ import (
 
 // EnvironmentDeploymentRuleResponse struct for EnvironmentDeploymentRuleResponse
 type EnvironmentDeploymentRuleResponse struct {
-	AutoDeploy *bool      `json:"auto_deploy,omitempty"`
-	AutoStop   *bool      `json:"auto_stop,omitempty"`
-	Timezone   string     `json:"timezone"`
-	StartTime  time.Time  `json:"start_time"`
-	StopTime   time.Time  `json:"stop_time"`
-	Weekdays   []string   `json:"weekdays"`
-	Id         string     `json:"id"`
-	CreatedAt  time.Time  `json:"created_at"`
-	UpdatedAt  *time.Time `json:"updated_at,omitempty"`
+	AutoDeploy  *bool      `json:"auto_deploy,omitempty"`
+	AutoStop    *bool      `json:"auto_stop,omitempty"`
+	AutoDelete  *bool      `json:"auto_delete,omitempty"`
+	AutoPreview *bool      `json:"auto_preview,omitempty"`
+	Timezone    string     `json:"timezone"`
+	StartTime   time.Time  `json:"start_time"`
+	StopTime    time.Time  `json:"stop_time"`
+	Weekdays    []string   `json:"weekdays"`
+	Id          string     `json:"id"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewEnvironmentDeploymentRuleResponse instantiates a new EnvironmentDeploymentRuleResponse object
@@ -49,6 +51,10 @@ func NewEnvironmentDeploymentRuleResponseWithDefaults() *EnvironmentDeploymentRu
 	this.AutoDeploy = &autoDeploy
 	var autoStop bool = false
 	this.AutoStop = &autoStop
+	var autoDelete bool = false
+	this.AutoDelete = &autoDelete
+	var autoPreview bool = false
+	this.AutoPreview = &autoPreview
 	return &this
 }
 
@@ -114,6 +120,70 @@ func (o *EnvironmentDeploymentRuleResponse) HasAutoStop() bool {
 // SetAutoStop gets a reference to the given bool and assigns it to the AutoStop field.
 func (o *EnvironmentDeploymentRuleResponse) SetAutoStop(v bool) {
 	o.AutoStop = &v
+}
+
+// GetAutoDelete returns the AutoDelete field value if set, zero value otherwise.
+func (o *EnvironmentDeploymentRuleResponse) GetAutoDelete() bool {
+	if o == nil || o.AutoDelete == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDelete
+}
+
+// GetAutoDeleteOk returns a tuple with the AutoDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleResponse) GetAutoDeleteOk() (*bool, bool) {
+	if o == nil || o.AutoDelete == nil {
+		return nil, false
+	}
+	return o.AutoDelete, true
+}
+
+// HasAutoDelete returns a boolean if a field has been set.
+func (o *EnvironmentDeploymentRuleResponse) HasAutoDelete() bool {
+	if o != nil && o.AutoDelete != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDelete gets a reference to the given bool and assigns it to the AutoDelete field.
+func (o *EnvironmentDeploymentRuleResponse) SetAutoDelete(v bool) {
+	o.AutoDelete = &v
+}
+
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+func (o *EnvironmentDeploymentRuleResponse) GetAutoPreview() bool {
+	if o == nil || o.AutoPreview == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoPreview
+}
+
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleResponse) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil || o.AutoPreview == nil {
+		return nil, false
+	}
+	return o.AutoPreview, true
+}
+
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *EnvironmentDeploymentRuleResponse) HasAutoPreview() bool {
+	if o != nil && o.AutoPreview != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+func (o *EnvironmentDeploymentRuleResponse) SetAutoPreview(v bool) {
+	o.AutoPreview = &v
 }
 
 // GetTimezone returns the Timezone field value
@@ -299,6 +369,12 @@ func (o EnvironmentDeploymentRuleResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoStop != nil {
 		toSerialize["auto_stop"] = o.AutoStop
+	}
+	if o.AutoDelete != nil {
+		toSerialize["auto_delete"] = o.AutoDelete
+	}
+	if o.AutoPreview != nil {
+		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	if true {
 		toSerialize["timezone"] = o.Timezone
