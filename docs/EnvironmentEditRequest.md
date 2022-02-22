@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
+**Mode** | Pointer to **string** | PREVIEW value is reserved for preview environments only | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetName sets Name field to given value.
 `func (o *EnvironmentEditRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetMode
+
+`func (o *EnvironmentEditRequest) GetMode() string`
+
+GetMode returns the Mode field if non-nil, zero value otherwise.
+
+### GetModeOk
+
+`func (o *EnvironmentEditRequest) GetModeOk() (*string, bool)`
+
+GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMode
+
+`func (o *EnvironmentEditRequest) SetMode(v string)`
+
+SetMode sets Mode field to given value.
+
+### HasMode
+
+`func (o *EnvironmentEditRequest) HasMode() bool`
+
+HasMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

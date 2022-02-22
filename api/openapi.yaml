@@ -11049,9 +11049,18 @@ components:
       type: object
     EnvironmentEditRequest:
       example:
+        mode: DEVELOPMENT
         name: name
       properties:
         name:
+          type: string
+        mode:
+          description: PREVIEW value is reserved for preview environments only
+          enum:
+          - DEVELOPMENT
+          - STAGING
+          - PRODUCTION
+          - PREVIEW
           type: string
       type: object
     OrganizationCurrentCostResponse:

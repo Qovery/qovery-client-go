@@ -18,6 +18,8 @@ import (
 // EnvironmentEditRequest struct for EnvironmentEditRequest
 type EnvironmentEditRequest struct {
 	Name *string `json:"name,omitempty"`
+	// PREVIEW value is reserved for preview environments only
+	Mode *string `json:"mode,omitempty"`
 }
 
 // NewEnvironmentEditRequest instantiates a new EnvironmentEditRequest object
@@ -69,10 +71,45 @@ func (o *EnvironmentEditRequest) SetName(v string) {
 	o.Name = &v
 }
 
+// GetMode returns the Mode field value if set, zero value otherwise.
+func (o *EnvironmentEditRequest) GetMode() string {
+	if o == nil || o.Mode == nil {
+		var ret string
+		return ret
+	}
+	return *o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentEditRequest) GetModeOk() (*string, bool) {
+	if o == nil || o.Mode == nil {
+		return nil, false
+	}
+	return o.Mode, true
+}
+
+// HasMode returns a boolean if a field has been set.
+func (o *EnvironmentEditRequest) HasMode() bool {
+	if o != nil && o.Mode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMode gets a reference to the given string and assigns it to the Mode field.
+func (o *EnvironmentEditRequest) SetMode(v string) {
+	o.Mode = &v
+}
+
 func (o EnvironmentEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
+	}
+	if o.Mode != nil {
+		toSerialize["mode"] = o.Mode
 	}
 	return json.Marshal(toSerialize)
 }
