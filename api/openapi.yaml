@@ -3617,6 +3617,51 @@ paths:
       summary: List supported languages
       tags:
       - Applications
+  /environment/{environmentId}/application/deploy:
+    post:
+      description: Deploy to the last commit the applications you specified.
+      operationId: deployAllApplications
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object_1'
+        content:
+          application/json:
+            schema:
+              properties:
+                applications:
+                  items:
+                    $ref: '#/components/schemas/_environment__environmentId__application_deploy_applications'
+                  type: array
+              type: object
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deployed applications
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Deploy applications
+      tags:
+      - Applications
   /environment/{environmentId}/log:
     get:
       description: This returns the last 1000 environment deployment logs.
@@ -7868,6 +7913,11 @@ components:
         type: number
       style: form
   requestBodies:
+    inline_object_1:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_1'
     inline_object:
       content:
         application/json:
@@ -11497,6 +11547,26 @@ components:
         project_deployment_rule_ids_in_order:
           items:
             $ref: '#/components/schemas/_project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order'
+          type: array
+      type: object
+    _environment__environmentId__application_deploy_applications:
+      properties:
+        application_id:
+          description: id of the application to be deployed.
+          format: uuid
+          type: string
+        git_commit_id:
+          description: Commit ID to deploy.
+          type: string
+      required:
+      - application_id
+      - git_commit_id
+      type: object
+    inline_object_1:
+      properties:
+        applications:
+          items:
+            $ref: '#/components/schemas/_environment__environmentId__application_deploy_applications'
           type: array
       type: object
     ApplicationStorageRequest_storage:

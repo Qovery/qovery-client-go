@@ -209,6 +209,7 @@ docs/EnvironmentDeploymentRuleEditRequest.md
 docs/EnvironmentDeploymentRuleResponse.md
 docs/EnvironmentDeploymentRuleResponseAllOf.md
 docs/EnvironmentEditRequest.md
+docs/EnvironmentEnvironmentIdApplicationDeployApplications.md
 docs/EnvironmentLogPaginatedResponseList.md
 docs/EnvironmentLogPaginatedResponseListAllOf.md
 docs/EnvironmentLogResponse.md
@@ -250,6 +251,7 @@ docs/GitRepositoryResponse.md
 docs/GitRepositoryResponseList.md
 docs/Healthcheck.md
 docs/InlineObject.md
+docs/InlineObject1.md
 docs/InstanceResponse.md
 docs/InstanceResponseList.md
 docs/InviteMemberRequest.md
@@ -361,6 +363,7 @@ docs/VersionResponseList.md
 git_push.sh
 go.mod
 go.sum
+model__environment__environment_id__application_deploy_applications.go
 model__project__project_id__deployment_rule_order_project_deployment_rule_ids_in_order.go
 model_account_info_edit_request.go
 model_account_info_response.go
@@ -528,6 +531,7 @@ model_git_repository_response.go
 model_git_repository_response_list.go
 model_healthcheck.go
 model_inline_object.go
+model_inline_object_1.go
 model_instance_response.go
 model_instance_response_list.go
 model_invite_member_request.go
