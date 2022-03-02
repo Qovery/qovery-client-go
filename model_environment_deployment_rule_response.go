@@ -18,6 +18,9 @@ import (
 
 // EnvironmentDeploymentRuleResponse struct for EnvironmentDeploymentRuleResponse
 type EnvironmentDeploymentRuleResponse struct {
+	Id          string     `json:"id"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
 	AutoDeploy  *bool      `json:"auto_deploy,omitempty"`
 	AutoStop    *bool      `json:"auto_stop,omitempty"`
 	AutoDelete  *bool      `json:"auto_delete,omitempty"`
@@ -26,19 +29,28 @@ type EnvironmentDeploymentRuleResponse struct {
 	StartTime   time.Time  `json:"start_time"`
 	StopTime    time.Time  `json:"stop_time"`
 	Weekdays    []string   `json:"weekdays"`
-	Id          string     `json:"id"`
-	CreatedAt   time.Time  `json:"created_at"`
-	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewEnvironmentDeploymentRuleResponse instantiates a new EnvironmentDeploymentRuleResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentDeploymentRuleResponse(timezone string, startTime time.Time, stopTime time.Time, weekdays []string, id string, createdAt time.Time) *EnvironmentDeploymentRuleResponse {
+func NewEnvironmentDeploymentRuleResponse(id string, createdAt time.Time, timezone string, startTime time.Time, stopTime time.Time, weekdays []string) *EnvironmentDeploymentRuleResponse {
 	this := EnvironmentDeploymentRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	var autoDeploy bool = true
+	this.AutoDeploy = &autoDeploy
+	var autoStop bool = false
+	this.AutoStop = &autoStop
+	var autoDelete bool = false
+	this.AutoDelete = &autoDelete
+	var autoPreview bool = false
+	this.AutoPreview = &autoPreview
+	this.Timezone = timezone
+	this.StartTime = startTime
+	this.StopTime = stopTime
+	this.Weekdays = weekdays
 	return &this
 }
 
@@ -56,6 +68,86 @@ func NewEnvironmentDeploymentRuleResponseWithDefaults() *EnvironmentDeploymentRu
 	var autoPreview bool = false
 	this.AutoPreview = &autoPreview
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *EnvironmentDeploymentRuleResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleResponse) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *EnvironmentDeploymentRuleResponse) SetId(v string) {
+	o.Id = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *EnvironmentDeploymentRuleResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleResponse) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *EnvironmentDeploymentRuleResponse) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *EnvironmentDeploymentRuleResponse) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *EnvironmentDeploymentRuleResponse) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
 }
 
 // GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
@@ -282,88 +374,17 @@ func (o *EnvironmentDeploymentRuleResponse) SetWeekdays(v []string) {
 	o.Weekdays = v
 }
 
-// GetId returns the Id field value
-func (o *EnvironmentDeploymentRuleResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *EnvironmentDeploymentRuleResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *EnvironmentDeploymentRuleResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *EnvironmentDeploymentRuleResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *EnvironmentDeploymentRuleResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
 func (o EnvironmentDeploymentRuleResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
 	if o.AutoDeploy != nil {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
@@ -387,15 +408,6 @@ func (o EnvironmentDeploymentRuleResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["weekdays"] = o.Weekdays
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return json.Marshal(toSerialize)
 }

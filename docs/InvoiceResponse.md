@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**CreatedAt** | **time.Time** |  | 
-**Status** | **string** |  | 
 **TotalInCents** | **int32** |  | 
 **Total** | **float32** |  | 
 **CurrencyCode** | **string** |  | 
+**Id** | **string** |  | 
+**CreatedAt** | **time.Time** |  | 
+**Status** | **string** |  | 
 
 ## Methods
 
 ### NewInvoiceResponse
 
-`func NewInvoiceResponse(id string, createdAt time.Time, status string, totalInCents int32, total float32, currencyCode string, ) *InvoiceResponse`
+`func NewInvoiceResponse(totalInCents int32, total float32, currencyCode string, id string, createdAt time.Time, status string, ) *InvoiceResponse`
 
 NewInvoiceResponse instantiates a new InvoiceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -29,66 +29,6 @@ will change when the set of required properties is changed
 NewInvoiceResponseWithDefaults instantiates a new InvoiceResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *InvoiceResponse) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *InvoiceResponse) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *InvoiceResponse) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetCreatedAt
-
-`func (o *InvoiceResponse) GetCreatedAt() time.Time`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *InvoiceResponse) GetCreatedAtOk() (*time.Time, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *InvoiceResponse) SetCreatedAt(v time.Time)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-
-### GetStatus
-
-`func (o *InvoiceResponse) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *InvoiceResponse) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *InvoiceResponse) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
 
 ### GetTotalInCents
 
@@ -148,6 +88,66 @@ and a boolean to check if the value has been set.
 `func (o *InvoiceResponse) SetCurrencyCode(v string)`
 
 SetCurrencyCode sets CurrencyCode field to given value.
+
+
+### GetId
+
+`func (o *InvoiceResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *InvoiceResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *InvoiceResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetCreatedAt
+
+`func (o *InvoiceResponse) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *InvoiceResponse) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *InvoiceResponse) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetStatus
+
+`func (o *InvoiceResponse) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *InvoiceResponse) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *InvoiceResponse) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
 
 
 

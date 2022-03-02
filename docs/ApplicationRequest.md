@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Storage** | Pointer to [**[]ApplicationStorageRequestStorage**](ApplicationStorageRequestStorage.md) |  | [optional] 
+**Ports** | Pointer to [**[]ApplicationPortRequestPorts**](ApplicationPortRequestPorts.md) |  | [optional] 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
 **BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] [default to "BUILDPACKS"]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
-**BuildpackLanguage** | Pointer to **NullableString** | Development language of the application | [optional] 
+**BuildpackLanguage** | Pointer to [**NullableBuildPackLanguageEnum**](BuildPackLanguageEnum.md) |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
-**Storage** | Pointer to [**[]ApplicationStorageRequestStorage**](ApplicationStorageRequestStorage.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortRequestPorts**](ApplicationPortRequestPorts.md) |  | [optional] 
 
 ## Methods
 
@@ -37,6 +37,56 @@ will change when the set of required properties is changed
 NewApplicationRequestWithDefaults instantiates a new ApplicationRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetStorage
+
+`func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorage`
+
+GetStorage returns the Storage field if non-nil, zero value otherwise.
+
+### GetStorageOk
+
+`func (o *ApplicationRequest) GetStorageOk() (*[]ApplicationStorageRequestStorage, bool)`
+
+GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorage
+
+`func (o *ApplicationRequest) SetStorage(v []ApplicationStorageRequestStorage)`
+
+SetStorage sets Storage field to given value.
+
+### HasStorage
+
+`func (o *ApplicationRequest) HasStorage() bool`
+
+HasStorage returns a boolean if a field has been set.
+
+### GetPorts
+
+`func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPorts`
+
+GetPorts returns the Ports field if non-nil, zero value otherwise.
+
+### GetPortsOk
+
+`func (o *ApplicationRequest) GetPortsOk() (*[]ApplicationPortRequestPorts, bool)`
+
+GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPorts
+
+`func (o *ApplicationRequest) SetPorts(v []ApplicationPortRequestPorts)`
+
+SetPorts sets Ports field to given value.
+
+### HasPorts
+
+`func (o *ApplicationRequest) HasPorts() bool`
+
+HasPorts returns a boolean if a field has been set.
 
 ### GetName
 
@@ -175,20 +225,20 @@ HasDockerfilePath returns a boolean if a field has been set.
 UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetBuildpackLanguage
 
-`func (o *ApplicationRequest) GetBuildpackLanguage() string`
+`func (o *ApplicationRequest) GetBuildpackLanguage() BuildPackLanguageEnum`
 
 GetBuildpackLanguage returns the BuildpackLanguage field if non-nil, zero value otherwise.
 
 ### GetBuildpackLanguageOk
 
-`func (o *ApplicationRequest) GetBuildpackLanguageOk() (*string, bool)`
+`func (o *ApplicationRequest) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool)`
 
 GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuildpackLanguage
 
-`func (o *ApplicationRequest) SetBuildpackLanguage(v string)`
+`func (o *ApplicationRequest) SetBuildpackLanguage(v BuildPackLanguageEnum)`
 
 SetBuildpackLanguage sets BuildpackLanguage field to given value.
 
@@ -357,56 +407,6 @@ SetAutoPreview sets AutoPreview field to given value.
 `func (o *ApplicationRequest) HasAutoPreview() bool`
 
 HasAutoPreview returns a boolean if a field has been set.
-
-### GetStorage
-
-`func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorage`
-
-GetStorage returns the Storage field if non-nil, zero value otherwise.
-
-### GetStorageOk
-
-`func (o *ApplicationRequest) GetStorageOk() (*[]ApplicationStorageRequestStorage, bool)`
-
-GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStorage
-
-`func (o *ApplicationRequest) SetStorage(v []ApplicationStorageRequestStorage)`
-
-SetStorage sets Storage field to given value.
-
-### HasStorage
-
-`func (o *ApplicationRequest) HasStorage() bool`
-
-HasStorage returns a boolean if a field has been set.
-
-### GetPorts
-
-`func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPorts`
-
-GetPorts returns the Ports field if non-nil, zero value otherwise.
-
-### GetPortsOk
-
-`func (o *ApplicationRequest) GetPortsOk() (*[]ApplicationPortRequestPorts, bool)`
-
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPorts
-
-`func (o *ApplicationRequest) SetPorts(v []ApplicationPortRequestPorts)`
-
-SetPorts sets Ports field to given value.
-
-### HasPorts
-
-`func (o *ApplicationRequest) HasPorts() bool`
-
-HasPorts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

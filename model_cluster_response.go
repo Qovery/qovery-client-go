@@ -18,15 +18,9 @@ import (
 
 // ClusterResponse struct for ClusterResponse
 type ClusterResponse struct {
-	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *int32     `json:"estimated_cloud_provider_cost,omitempty"`
-	Status                     *string    `json:"status,omitempty"`
-	HasAccess                  *bool      `json:"has_access,omitempty"`
-	Version                    *string    `json:"version,omitempty"`
-	IsDefault                  *bool      `json:"is_default,omitempty"`
-	Id                         string     `json:"id"`
-	CreatedAt                  time.Time  `json:"created_at"`
-	UpdatedAt                  *time.Time `json:"updated_at,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case-insensitive
 	Name          string         `json:"name"`
 	Description   NullableString `json:"description,omitempty"`
@@ -36,17 +30,23 @@ type ClusterResponse struct {
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory              *int32          `json:"memory,omitempty"`
-	MinRunningNodes     *int32          `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes     *int32          `json:"max_running_nodes,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      []interface{}   `json:"accepted_values,omitempty"`
+	Memory              *int32               `json:"memory,omitempty"`
+	MinRunningNodes     *int32               `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes     *int32               `json:"max_running_nodes,omitempty"`
+	Title               *string              `json:"title,omitempty"`
+	CostPerMonthInCents NullableInt32        `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32      `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString       `json:"currency_code,omitempty"`
+	ValueType           *string              `json:"value_type,omitempty"`
+	Value               NullableString       `json:"value,omitempty"`
+	IsValueUpdatable    *bool                `json:"is_value_updatable,omitempty"`
+	AcceptedValues      []OneOfstringboolean `json:"accepted_values,omitempty"`
+	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
+	EstimatedCloudProviderCost *int32  `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *string `json:"status,omitempty"`
+	HasAccess                  *bool   `json:"has_access,omitempty"`
+	Version                    *string `json:"version,omitempty"`
+	IsDefault                  *bool   `json:"is_default,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
@@ -89,166 +89,6 @@ func NewClusterResponseWithDefaults() *ClusterResponse {
 	var isValueUpdatable bool = false
 	this.IsValueUpdatable = &isValueUpdatable
 	return &this
-}
-
-// GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
-func (o *ClusterResponse) GetEstimatedCloudProviderCost() int32 {
-	if o == nil || o.EstimatedCloudProviderCost == nil {
-		var ret int32
-		return ret
-	}
-	return *o.EstimatedCloudProviderCost
-}
-
-// GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*int32, bool) {
-	if o == nil || o.EstimatedCloudProviderCost == nil {
-		return nil, false
-	}
-	return o.EstimatedCloudProviderCost, true
-}
-
-// HasEstimatedCloudProviderCost returns a boolean if a field has been set.
-func (o *ClusterResponse) HasEstimatedCloudProviderCost() bool {
-	if o != nil && o.EstimatedCloudProviderCost != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEstimatedCloudProviderCost gets a reference to the given int32 and assigns it to the EstimatedCloudProviderCost field.
-func (o *ClusterResponse) SetEstimatedCloudProviderCost(v int32) {
-	o.EstimatedCloudProviderCost = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ClusterResponse) GetStatus() string {
-	if o == nil || o.Status == nil {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *ClusterResponse) HasStatus() bool {
-	if o != nil && o.Status != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ClusterResponse) SetStatus(v string) {
-	o.Status = &v
-}
-
-// GetHasAccess returns the HasAccess field value if set, zero value otherwise.
-func (o *ClusterResponse) GetHasAccess() bool {
-	if o == nil || o.HasAccess == nil {
-		var ret bool
-		return ret
-	}
-	return *o.HasAccess
-}
-
-// GetHasAccessOk returns a tuple with the HasAccess field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetHasAccessOk() (*bool, bool) {
-	if o == nil || o.HasAccess == nil {
-		return nil, false
-	}
-	return o.HasAccess, true
-}
-
-// HasHasAccess returns a boolean if a field has been set.
-func (o *ClusterResponse) HasHasAccess() bool {
-	if o != nil && o.HasAccess != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHasAccess gets a reference to the given bool and assigns it to the HasAccess field.
-func (o *ClusterResponse) SetHasAccess(v bool) {
-	o.HasAccess = &v
-}
-
-// GetVersion returns the Version field value if set, zero value otherwise.
-func (o *ClusterResponse) GetVersion() string {
-	if o == nil || o.Version == nil {
-		var ret string
-		return ret
-	}
-	return *o.Version
-}
-
-// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
-		return nil, false
-	}
-	return o.Version, true
-}
-
-// HasVersion returns a boolean if a field has been set.
-func (o *ClusterResponse) HasVersion() bool {
-	if o != nil && o.Version != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *ClusterResponse) SetVersion(v string) {
-	o.Version = &v
-}
-
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
-func (o *ClusterResponse) GetIsDefault() bool {
-	if o == nil || o.IsDefault == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsDefault
-}
-
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || o.IsDefault == nil {
-		return nil, false
-	}
-	return o.IsDefault, true
-}
-
-// HasIsDefault returns a boolean if a field has been set.
-func (o *ClusterResponse) HasIsDefault() bool {
-	if o != nil && o.IsDefault != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
-func (o *ClusterResponse) SetIsDefault(v bool) {
-	o.IsDefault = &v
 }
 
 // GetId returns the Id field value
@@ -875,9 +715,9 @@ func (o *ClusterResponse) SetIsValueUpdatable(v bool) {
 }
 
 // GetAcceptedValues returns the AcceptedValues field value if set, zero value otherwise.
-func (o *ClusterResponse) GetAcceptedValues() []interface{} {
+func (o *ClusterResponse) GetAcceptedValues() []OneOfstringboolean {
 	if o == nil || o.AcceptedValues == nil {
-		var ret []interface{}
+		var ret []OneOfstringboolean
 		return ret
 	}
 	return o.AcceptedValues
@@ -885,7 +725,7 @@ func (o *ClusterResponse) GetAcceptedValues() []interface{} {
 
 // GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetAcceptedValuesOk() ([]interface{}, bool) {
+func (o *ClusterResponse) GetAcceptedValuesOk() ([]OneOfstringboolean, bool) {
 	if o == nil || o.AcceptedValues == nil {
 		return nil, false
 	}
@@ -901,28 +741,173 @@ func (o *ClusterResponse) HasAcceptedValues() bool {
 	return false
 }
 
-// SetAcceptedValues gets a reference to the given []interface{} and assigns it to the AcceptedValues field.
-func (o *ClusterResponse) SetAcceptedValues(v []interface{}) {
+// SetAcceptedValues gets a reference to the given []OneOfstringboolean and assigns it to the AcceptedValues field.
+func (o *ClusterResponse) SetAcceptedValues(v []OneOfstringboolean) {
 	o.AcceptedValues = v
+}
+
+// GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
+func (o *ClusterResponse) GetEstimatedCloudProviderCost() int32 {
+	if o == nil || o.EstimatedCloudProviderCost == nil {
+		var ret int32
+		return ret
+	}
+	return *o.EstimatedCloudProviderCost
+}
+
+// GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*int32, bool) {
+	if o == nil || o.EstimatedCloudProviderCost == nil {
+		return nil, false
+	}
+	return o.EstimatedCloudProviderCost, true
+}
+
+// HasEstimatedCloudProviderCost returns a boolean if a field has been set.
+func (o *ClusterResponse) HasEstimatedCloudProviderCost() bool {
+	if o != nil && o.EstimatedCloudProviderCost != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEstimatedCloudProviderCost gets a reference to the given int32 and assigns it to the EstimatedCloudProviderCost field.
+func (o *ClusterResponse) SetEstimatedCloudProviderCost(v int32) {
+	o.EstimatedCloudProviderCost = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ClusterResponse) GetStatus() string {
+	if o == nil || o.Status == nil {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterResponse) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ClusterResponse) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ClusterResponse) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetHasAccess returns the HasAccess field value if set, zero value otherwise.
+func (o *ClusterResponse) GetHasAccess() bool {
+	if o == nil || o.HasAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.HasAccess
+}
+
+// GetHasAccessOk returns a tuple with the HasAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterResponse) GetHasAccessOk() (*bool, bool) {
+	if o == nil || o.HasAccess == nil {
+		return nil, false
+	}
+	return o.HasAccess, true
+}
+
+// HasHasAccess returns a boolean if a field has been set.
+func (o *ClusterResponse) HasHasAccess() bool {
+	if o != nil && o.HasAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHasAccess gets a reference to the given bool and assigns it to the HasAccess field.
+func (o *ClusterResponse) SetHasAccess(v bool) {
+	o.HasAccess = &v
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ClusterResponse) GetVersion() string {
+	if o == nil || o.Version == nil {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterResponse) GetVersionOk() (*string, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *ClusterResponse) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *ClusterResponse) SetVersion(v string) {
+	o.Version = &v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *ClusterResponse) GetIsDefault() bool {
+	if o == nil || o.IsDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterResponse) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || o.IsDefault == nil {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *ClusterResponse) HasIsDefault() bool {
+	if o != nil && o.IsDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *ClusterResponse) SetIsDefault(v bool) {
+	o.IsDefault = &v
 }
 
 func (o ClusterResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EstimatedCloudProviderCost != nil {
-		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.HasAccess != nil {
-		toSerialize["has_access"] = o.HasAccess
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.IsDefault != nil {
-		toSerialize["is_default"] = o.IsDefault
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -982,6 +967,21 @@ func (o ClusterResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.AcceptedValues != nil {
 		toSerialize["accepted_values"] = o.AcceptedValues
+	}
+	if o.EstimatedCloudProviderCost != nil {
+		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
+	}
+	if o.HasAccess != nil {
+		toSerialize["has_access"] = o.HasAccess
+	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
+	}
+	if o.IsDefault != nil {
+		toSerialize["is_default"] = o.IsDefault
 	}
 	return json.Marshal(toSerialize)
 }

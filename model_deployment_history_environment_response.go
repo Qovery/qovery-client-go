@@ -18,12 +18,12 @@ import (
 
 // DeploymentHistoryEnvironmentResponse struct for DeploymentHistoryEnvironmentResponse
 type DeploymentHistoryEnvironmentResponse struct {
-	Status       *string                                `json:"status,omitempty"`
-	Applications []DeploymentHistoryApplicationResponse `json:"applications,omitempty"`
-	Databases    []DeploymentHistoryDatabaseResponse    `json:"databases,omitempty"`
 	Id           string                                 `json:"id"`
 	CreatedAt    time.Time                              `json:"created_at"`
 	UpdatedAt    *time.Time                             `json:"updated_at,omitempty"`
+	Status       *string                                `json:"status,omitempty"`
+	Applications []DeploymentHistoryApplicationResponse `json:"applications,omitempty"`
+	Databases    []DeploymentHistoryDatabaseResponse    `json:"databases,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironmentResponse instantiates a new DeploymentHistoryEnvironmentResponse object
@@ -43,6 +43,86 @@ func NewDeploymentHistoryEnvironmentResponse(id string, createdAt time.Time) *De
 func NewDeploymentHistoryEnvironmentResponseWithDefaults() *DeploymentHistoryEnvironmentResponse {
 	this := DeploymentHistoryEnvironmentResponse{}
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *DeploymentHistoryEnvironmentResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironmentResponse) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *DeploymentHistoryEnvironmentResponse) SetId(v string) {
+	o.Id = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *DeploymentHistoryEnvironmentResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironmentResponse) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *DeploymentHistoryEnvironmentResponse) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *DeploymentHistoryEnvironmentResponse) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironmentResponse) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *DeploymentHistoryEnvironmentResponse) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *DeploymentHistoryEnvironmentResponse) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -141,97 +221,8 @@ func (o *DeploymentHistoryEnvironmentResponse) SetDatabases(v []DeploymentHistor
 	o.Databases = v
 }
 
-// GetId returns the Id field value
-func (o *DeploymentHistoryEnvironmentResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *DeploymentHistoryEnvironmentResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *DeploymentHistoryEnvironmentResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *DeploymentHistoryEnvironmentResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *DeploymentHistoryEnvironmentResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *DeploymentHistoryEnvironmentResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *DeploymentHistoryEnvironmentResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
 func (o DeploymentHistoryEnvironmentResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.Applications != nil {
-		toSerialize["applications"] = o.Applications
-	}
-	if o.Databases != nil {
-		toSerialize["databases"] = o.Databases
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -240,6 +231,15 @@ func (o DeploymentHistoryEnvironmentResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
+	}
+	if o.Applications != nil {
+		toSerialize["applications"] = o.Applications
+	}
+	if o.Databases != nil {
+		toSerialize["databases"] = o.Databases
 	}
 	return json.Marshal(toSerialize)
 }

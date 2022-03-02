@@ -18,12 +18,14 @@ import (
 
 // ServiceResponse struct for ServiceResponse
 type ServiceResponse struct {
+	// uuid of the associated service (application, database, job, gateway...)
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// type of the service (application, database, job, gateway...)
 	Type *string `json:"type,omitempty"`
 	// name of the service
 	Name *string `json:"name,omitempty"`
-	// uuid of the associated service (application, database, job, gateway...)
-	Id string `json:"id"`
 	// Git commit ID corresponding to the deployed version of the application
 	DeployedCommitId *string `json:"deployed_commit_id,omitempty"`
 	// uuid of the user that made the last update
@@ -33,10 +35,8 @@ type ServiceResponse struct {
 	// describes the typology of service (container, postgresl, redis...)
 	ServiceTypology *string `json:"service_typology,omitempty"`
 	// for databases this field exposes the database version
-	ServiceVersion *string    `json:"service_version,omitempty"`
-	ToUpdate       *bool      `json:"to_update,omitempty"`
-	CreatedAt      time.Time  `json:"created_at"`
-	UpdatedAt      *time.Time `json:"updated_at,omitempty"`
+	ServiceVersion *string `json:"service_version,omitempty"`
+	ToUpdate       *bool   `json:"to_update,omitempty"`
 }
 
 // NewServiceResponse instantiates a new ServiceResponse object
@@ -56,6 +56,86 @@ func NewServiceResponse(id string, createdAt time.Time) *ServiceResponse {
 func NewServiceResponseWithDefaults() *ServiceResponse {
 	this := ServiceResponse{}
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *ServiceResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *ServiceResponse) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *ServiceResponse) SetId(v string) {
+	o.Id = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *ServiceResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ServiceResponse) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *ServiceResponse) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *ServiceResponse) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceResponse) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *ServiceResponse) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *ServiceResponse) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -120,30 +200,6 @@ func (o *ServiceResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServiceResponse) SetName(v string) {
 	o.Name = &v
-}
-
-// GetId returns the Id field value
-func (o *ServiceResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *ServiceResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *ServiceResponse) SetId(v string) {
-	o.Id = v
 }
 
 // GetDeployedCommitId returns the DeployedCommitId field value if set, zero value otherwise.
@@ -338,72 +394,22 @@ func (o *ServiceResponse) SetToUpdate(v bool) {
 	o.ToUpdate = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value
-func (o *ServiceResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *ServiceResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *ServiceResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ServiceResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *ServiceResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *ServiceResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
 func (o ServiceResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["id"] = o.Id
 	}
 	if o.DeployedCommitId != nil {
 		toSerialize["deployed_commit_id"] = o.DeployedCommitId
@@ -422,12 +428,6 @@ func (o ServiceResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.ToUpdate != nil {
 		toSerialize["to_update"] = o.ToUpdate
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return json.Marshal(toSerialize)
 }

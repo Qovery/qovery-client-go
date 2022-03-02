@@ -4,6 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** |  | [readonly] 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**Storage** | Pointer to [**[]ApplicationStorageResponseStorage**](ApplicationStorageResponseStorage.md) |  | [optional] 
+**Ports** | Pointer to [**[]ApplicationPortResponsePorts**](ApplicationPortResponsePorts.md) |  | [optional] 
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryResponse**](ApplicationGitRepositoryResponse.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
@@ -12,18 +17,13 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] [default to "BUILDPACKS"]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
-**BuildpackLanguage** | Pointer to **NullableString** | Development language of the application | [optional] 
+**BuildpackLanguage** | Pointer to [**NullableBuildPackLanguageEnum**](BuildPackLanguageEnum.md) |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
-**Id** | **string** |  | [readonly] 
-**CreatedAt** | **time.Time** |  | [readonly] 
-**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Storage** | Pointer to [**[]ApplicationStorageResponseStorage**](ApplicationStorageResponseStorage.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortResponsePorts**](ApplicationPortResponsePorts.md) |  | [optional] 
 
 ## Methods
 
@@ -43,6 +43,121 @@ will change when the set of required properties is changed
 NewApplicationResponseWithDefaults instantiates a new ApplicationResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ApplicationResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ApplicationResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ApplicationResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetCreatedAt
+
+`func (o *ApplicationResponse) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *ApplicationResponse) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *ApplicationResponse) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *ApplicationResponse) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *ApplicationResponse) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *ApplicationResponse) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *ApplicationResponse) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
+
+### GetStorage
+
+`func (o *ApplicationResponse) GetStorage() []ApplicationStorageResponseStorage`
+
+GetStorage returns the Storage field if non-nil, zero value otherwise.
+
+### GetStorageOk
+
+`func (o *ApplicationResponse) GetStorageOk() (*[]ApplicationStorageResponseStorage, bool)`
+
+GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorage
+
+`func (o *ApplicationResponse) SetStorage(v []ApplicationStorageResponseStorage)`
+
+SetStorage sets Storage field to given value.
+
+### HasStorage
+
+`func (o *ApplicationResponse) HasStorage() bool`
+
+HasStorage returns a boolean if a field has been set.
+
+### GetPorts
+
+`func (o *ApplicationResponse) GetPorts() []ApplicationPortResponsePorts`
+
+GetPorts returns the Ports field if non-nil, zero value otherwise.
+
+### GetPortsOk
+
+`func (o *ApplicationResponse) GetPortsOk() (*[]ApplicationPortResponsePorts, bool)`
+
+GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPorts
+
+`func (o *ApplicationResponse) SetPorts(v []ApplicationPortResponsePorts)`
+
+SetPorts sets Ports field to given value.
+
+### HasPorts
+
+`func (o *ApplicationResponse) HasPorts() bool`
+
+HasPorts returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -266,20 +381,20 @@ HasDockerfilePath returns a boolean if a field has been set.
 UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetBuildpackLanguage
 
-`func (o *ApplicationResponse) GetBuildpackLanguage() string`
+`func (o *ApplicationResponse) GetBuildpackLanguage() BuildPackLanguageEnum`
 
 GetBuildpackLanguage returns the BuildpackLanguage field if non-nil, zero value otherwise.
 
 ### GetBuildpackLanguageOk
 
-`func (o *ApplicationResponse) GetBuildpackLanguageOk() (*string, bool)`
+`func (o *ApplicationResponse) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool)`
 
 GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuildpackLanguage
 
-`func (o *ApplicationResponse) SetBuildpackLanguage(v string)`
+`func (o *ApplicationResponse) SetBuildpackLanguage(v BuildPackLanguageEnum)`
 
 SetBuildpackLanguage sets BuildpackLanguage field to given value.
 
@@ -448,121 +563,6 @@ SetAutoPreview sets AutoPreview field to given value.
 `func (o *ApplicationResponse) HasAutoPreview() bool`
 
 HasAutoPreview returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *ApplicationResponse) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ApplicationResponse) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ApplicationResponse) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetCreatedAt
-
-`func (o *ApplicationResponse) GetCreatedAt() time.Time`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *ApplicationResponse) GetCreatedAtOk() (*time.Time, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *ApplicationResponse) SetCreatedAt(v time.Time)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-
-### GetUpdatedAt
-
-`func (o *ApplicationResponse) GetUpdatedAt() time.Time`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *ApplicationResponse) GetUpdatedAtOk() (*time.Time, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *ApplicationResponse) SetUpdatedAt(v time.Time)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
-
-### HasUpdatedAt
-
-`func (o *ApplicationResponse) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
-
-### GetStorage
-
-`func (o *ApplicationResponse) GetStorage() []ApplicationStorageResponseStorage`
-
-GetStorage returns the Storage field if non-nil, zero value otherwise.
-
-### GetStorageOk
-
-`func (o *ApplicationResponse) GetStorageOk() (*[]ApplicationStorageResponseStorage, bool)`
-
-GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStorage
-
-`func (o *ApplicationResponse) SetStorage(v []ApplicationStorageResponseStorage)`
-
-SetStorage sets Storage field to given value.
-
-### HasStorage
-
-`func (o *ApplicationResponse) HasStorage() bool`
-
-HasStorage returns a boolean if a field has been set.
-
-### GetPorts
-
-`func (o *ApplicationResponse) GetPorts() []ApplicationPortResponsePorts`
-
-GetPorts returns the Ports field if non-nil, zero value otherwise.
-
-### GetPortsOk
-
-`func (o *ApplicationResponse) GetPortsOk() (*[]ApplicationPortResponsePorts, bool)`
-
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPorts
-
-`func (o *ApplicationResponse) SetPorts(v []ApplicationPortResponsePorts)`
-
-SetPorts sets Ports field to given value.
-
-### HasPorts
-
-`func (o *ApplicationResponse) HasPorts() bool`
-
-HasPorts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

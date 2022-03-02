@@ -18,12 +18,12 @@ import (
 
 // BackupResponse struct for BackupResponse
 type BackupResponse struct {
-	Status    *Status    `json:"status,omitempty"`
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	Name      string     `json:"name"`
 	Message   string     `json:"message"`
+	Status    *Status    `json:"status,omitempty"`
 }
 
 // NewBackupResponse instantiates a new BackupResponse object
@@ -45,38 +45,6 @@ func NewBackupResponse(id string, createdAt time.Time, name string, message stri
 func NewBackupResponseWithDefaults() *BackupResponse {
 	this := BackupResponse{}
 	return &this
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *BackupResponse) GetStatus() Status {
-	if o == nil || o.Status == nil {
-		var ret Status
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BackupResponse) GetStatusOk() (*Status, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *BackupResponse) HasStatus() bool {
-	if o != nil && o.Status != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given Status and assigns it to the Status field.
-func (o *BackupResponse) SetStatus(v Status) {
-	o.Status = &v
 }
 
 // GetId returns the Id field value
@@ -207,11 +175,40 @@ func (o *BackupResponse) SetMessage(v string) {
 	o.Message = v
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *BackupResponse) GetStatus() Status {
+	if o == nil || o.Status == nil {
+		var ret Status
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupResponse) GetStatusOk() (*Status, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *BackupResponse) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given Status and assigns it to the Status field.
+func (o *BackupResponse) SetStatus(v Status) {
+	o.Status = &v
+}
+
 func (o BackupResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -226,6 +223,9 @@ func (o BackupResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["message"] = o.Message
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

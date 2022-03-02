@@ -18,11 +18,9 @@ import (
 
 // ProjectDeploymentRuleResponse struct for ProjectDeploymentRuleResponse
 type ProjectDeploymentRuleResponse struct {
-	// used to select the first deployment rule to match new created environments
-	PriorityIndex *int32     `json:"priority_index,omitempty"`
-	Id            string     `json:"id"`
-	CreatedAt     time.Time  `json:"created_at"`
-	UpdatedAt     *time.Time `json:"updated_at,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
 	Name        string         `json:"name"`
 	Description NullableString `json:"description,omitempty"`
@@ -37,6 +35,8 @@ type ProjectDeploymentRuleResponse struct {
 	Weekdays    []string       `json:"weekdays"`
 	// wildcard pattern composed of '?' and/or '*' used to target new created environments
 	Wildcard string `json:"wildcard"`
+	// used to select the first deployment rule to match new created environments
+	PriorityIndex *int32 `json:"priority_index,omitempty"`
 }
 
 // NewProjectDeploymentRuleResponse instantiates a new ProjectDeploymentRuleResponse object
@@ -78,38 +78,6 @@ func NewProjectDeploymentRuleResponseWithDefaults() *ProjectDeploymentRuleRespon
 	var wildcard string = ""
 	this.Wildcard = wildcard
 	return &this
-}
-
-// GetPriorityIndex returns the PriorityIndex field value if set, zero value otherwise.
-func (o *ProjectDeploymentRuleResponse) GetPriorityIndex() int32 {
-	if o == nil || o.PriorityIndex == nil {
-		var ret int32
-		return ret
-	}
-	return *o.PriorityIndex
-}
-
-// GetPriorityIndexOk returns a tuple with the PriorityIndex field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectDeploymentRuleResponse) GetPriorityIndexOk() (*int32, bool) {
-	if o == nil || o.PriorityIndex == nil {
-		return nil, false
-	}
-	return o.PriorityIndex, true
-}
-
-// HasPriorityIndex returns a boolean if a field has been set.
-func (o *ProjectDeploymentRuleResponse) HasPriorityIndex() bool {
-	if o != nil && o.PriorityIndex != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPriorityIndex gets a reference to the given int32 and assigns it to the PriorityIndex field.
-func (o *ProjectDeploymentRuleResponse) SetPriorityIndex(v int32) {
-	o.PriorityIndex = &v
 }
 
 // GetId returns the Id field value
@@ -523,11 +491,40 @@ func (o *ProjectDeploymentRuleResponse) SetWildcard(v string) {
 	o.Wildcard = v
 }
 
+// GetPriorityIndex returns the PriorityIndex field value if set, zero value otherwise.
+func (o *ProjectDeploymentRuleResponse) GetPriorityIndex() int32 {
+	if o == nil || o.PriorityIndex == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PriorityIndex
+}
+
+// GetPriorityIndexOk returns a tuple with the PriorityIndex field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDeploymentRuleResponse) GetPriorityIndexOk() (*int32, bool) {
+	if o == nil || o.PriorityIndex == nil {
+		return nil, false
+	}
+	return o.PriorityIndex, true
+}
+
+// HasPriorityIndex returns a boolean if a field has been set.
+func (o *ProjectDeploymentRuleResponse) HasPriorityIndex() bool {
+	if o != nil && o.PriorityIndex != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPriorityIndex gets a reference to the given int32 and assigns it to the PriorityIndex field.
+func (o *ProjectDeploymentRuleResponse) SetPriorityIndex(v int32) {
+	o.PriorityIndex = &v
+}
+
 func (o ProjectDeploymentRuleResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.PriorityIndex != nil {
-		toSerialize["priority_index"] = o.PriorityIndex
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -572,6 +569,9 @@ func (o ProjectDeploymentRuleResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["wildcard"] = o.Wildcard
+	}
+	if o.PriorityIndex != nil {
+		toSerialize["priority_index"] = o.PriorityIndex
 	}
 	return json.Marshal(toSerialize)
 }

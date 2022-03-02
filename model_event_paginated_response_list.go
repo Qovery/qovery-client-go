@@ -17,9 +17,9 @@ import (
 
 // EventPaginatedResponseList struct for EventPaginatedResponseList
 type EventPaginatedResponseList struct {
-	Results  []EventResponse `json:"results,omitempty"`
 	Page     float32         `json:"page"`
 	PageSize float32         `json:"page_size"`
+	Results  []EventResponse `json:"results,omitempty"`
 }
 
 // NewEventPaginatedResponseList instantiates a new EventPaginatedResponseList object
@@ -39,38 +39,6 @@ func NewEventPaginatedResponseList(page float32, pageSize float32) *EventPaginat
 func NewEventPaginatedResponseListWithDefaults() *EventPaginatedResponseList {
 	this := EventPaginatedResponseList{}
 	return &this
-}
-
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *EventPaginatedResponseList) GetResults() []EventResponse {
-	if o == nil || o.Results == nil {
-		var ret []EventResponse
-		return ret
-	}
-	return o.Results
-}
-
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EventPaginatedResponseList) GetResultsOk() ([]EventResponse, bool) {
-	if o == nil || o.Results == nil {
-		return nil, false
-	}
-	return o.Results, true
-}
-
-// HasResults returns a boolean if a field has been set.
-func (o *EventPaginatedResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []EventResponse and assigns it to the Results field.
-func (o *EventPaginatedResponseList) SetResults(v []EventResponse) {
-	o.Results = v
 }
 
 // GetPage returns the Page field value
@@ -121,16 +89,48 @@ func (o *EventPaginatedResponseList) SetPageSize(v float32) {
 	o.PageSize = v
 }
 
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *EventPaginatedResponseList) GetResults() []EventResponse {
+	if o == nil || o.Results == nil {
+		var ret []EventResponse
+		return ret
+	}
+	return o.Results
+}
+
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventPaginatedResponseList) GetResultsOk() ([]EventResponse, bool) {
+	if o == nil || o.Results == nil {
+		return nil, false
+	}
+	return o.Results, true
+}
+
+// HasResults returns a boolean if a field has been set.
+func (o *EventPaginatedResponseList) HasResults() bool {
+	if o != nil && o.Results != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResults gets a reference to the given []EventResponse and assigns it to the Results field.
+func (o *EventPaginatedResponseList) SetResults(v []EventResponse) {
+	o.Results = v
+}
+
 func (o EventPaginatedResponseList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
-	}
 	if true {
 		toSerialize["page"] = o.Page
 	}
 	if true {
 		toSerialize["page_size"] = o.PageSize
+	}
+	if o.Results != nil {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
 }

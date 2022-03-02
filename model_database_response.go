@@ -18,18 +18,9 @@ import (
 
 // DatabaseResponse struct for DatabaseResponse
 type DatabaseResponse struct {
-	Environment *ReferenceObject `json:"environment,omitempty"`
-	Host        *string          `json:"host,omitempty"`
-	Port        *int32           `json:"port,omitempty"`
-	// Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
-	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
-	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
-	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
-	// indicates if the database disk is encrypted or not
-	DiskEncrypted *bool      `json:"disk_encrypted,omitempty"`
-	Id            string     `json:"id"`
-	CreatedAt     time.Time  `json:"created_at"`
-	UpdatedAt     *time.Time `json:"updated_at,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
 	Name          string  `json:"name"`
 	Type          string  `json:"type"`
@@ -41,7 +32,16 @@ type DatabaseResponse struct {
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is MB
-	Storage *int32 `json:"storage,omitempty"`
+	Storage     *int32           `json:"storage,omitempty"`
+	Environment *ReferenceObject `json:"environment,omitempty"`
+	Host        *string          `json:"host,omitempty"`
+	Port        *int32           `json:"port,omitempty"`
+	// Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
+	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
+	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
+	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
+	// indicates if the database disk is encrypted or not
+	DiskEncrypted *bool `json:"disk_encrypted,omitempty"`
 }
 
 // NewDatabaseResponse instantiates a new DatabaseResponse object
@@ -64,6 +64,10 @@ func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ stri
 	this.Memory = &memory
 	var storage int32 = 10240
 	this.Storage = &storage
+	var maximumCpu int32 = 250
+	this.MaximumCpu = &maximumCpu
+	var maximumMemory int32 = 256
+	this.MaximumMemory = &maximumMemory
 	return &this
 }
 
@@ -72,10 +76,6 @@ func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ stri
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseResponseWithDefaults() *DatabaseResponse {
 	this := DatabaseResponse{}
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
 	var accessibility string = "PRIVATE"
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
@@ -84,199 +84,11 @@ func NewDatabaseResponseWithDefaults() *DatabaseResponse {
 	this.Memory = &memory
 	var storage int32 = 10240
 	this.Storage = &storage
+	var maximumCpu int32 = 250
+	this.MaximumCpu = &maximumCpu
+	var maximumMemory int32 = 256
+	this.MaximumMemory = &maximumMemory
 	return &this
-}
-
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetEnvironment() ReferenceObject {
-	if o == nil || o.Environment == nil {
-		var ret ReferenceObject
-		return ret
-	}
-	return *o.Environment
-}
-
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
-	if o == nil || o.Environment == nil {
-		return nil, false
-	}
-	return o.Environment, true
-}
-
-// HasEnvironment returns a boolean if a field has been set.
-func (o *DatabaseResponse) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given ReferenceObject and assigns it to the Environment field.
-func (o *DatabaseResponse) SetEnvironment(v ReferenceObject) {
-	o.Environment = &v
-}
-
-// GetHost returns the Host field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetHost() string {
-	if o == nil || o.Host == nil {
-		var ret string
-		return ret
-	}
-	return *o.Host
-}
-
-// GetHostOk returns a tuple with the Host field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetHostOk() (*string, bool) {
-	if o == nil || o.Host == nil {
-		return nil, false
-	}
-	return o.Host, true
-}
-
-// HasHost returns a boolean if a field has been set.
-func (o *DatabaseResponse) HasHost() bool {
-	if o != nil && o.Host != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHost gets a reference to the given string and assigns it to the Host field.
-func (o *DatabaseResponse) SetHost(v string) {
-	o.Host = &v
-}
-
-// GetPort returns the Port field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetPort() int32 {
-	if o == nil || o.Port == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Port
-}
-
-// GetPortOk returns a tuple with the Port field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
-		return nil, false
-	}
-	return o.Port, true
-}
-
-// HasPort returns a boolean if a field has been set.
-func (o *DatabaseResponse) HasPort() bool {
-	if o != nil && o.Port != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *DatabaseResponse) SetPort(v int32) {
-	o.Port = &v
-}
-
-// GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetMaximumCpu() int32 {
-	if o == nil || o.MaximumCpu == nil {
-		var ret int32
-		return ret
-	}
-	return *o.MaximumCpu
-}
-
-// GetMaximumCpuOk returns a tuple with the MaximumCpu field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetMaximumCpuOk() (*int32, bool) {
-	if o == nil || o.MaximumCpu == nil {
-		return nil, false
-	}
-	return o.MaximumCpu, true
-}
-
-// HasMaximumCpu returns a boolean if a field has been set.
-func (o *DatabaseResponse) HasMaximumCpu() bool {
-	if o != nil && o.MaximumCpu != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaximumCpu gets a reference to the given int32 and assigns it to the MaximumCpu field.
-func (o *DatabaseResponse) SetMaximumCpu(v int32) {
-	o.MaximumCpu = &v
-}
-
-// GetMaximumMemory returns the MaximumMemory field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetMaximumMemory() int32 {
-	if o == nil || o.MaximumMemory == nil {
-		var ret int32
-		return ret
-	}
-	return *o.MaximumMemory
-}
-
-// GetMaximumMemoryOk returns a tuple with the MaximumMemory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetMaximumMemoryOk() (*int32, bool) {
-	if o == nil || o.MaximumMemory == nil {
-		return nil, false
-	}
-	return o.MaximumMemory, true
-}
-
-// HasMaximumMemory returns a boolean if a field has been set.
-func (o *DatabaseResponse) HasMaximumMemory() bool {
-	if o != nil && o.MaximumMemory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaximumMemory gets a reference to the given int32 and assigns it to the MaximumMemory field.
-func (o *DatabaseResponse) SetMaximumMemory(v int32) {
-	o.MaximumMemory = &v
-}
-
-// GetDiskEncrypted returns the DiskEncrypted field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetDiskEncrypted() bool {
-	if o == nil || o.DiskEncrypted == nil {
-		var ret bool
-		return ret
-	}
-	return *o.DiskEncrypted
-}
-
-// GetDiskEncryptedOk returns a tuple with the DiskEncrypted field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetDiskEncryptedOk() (*bool, bool) {
-	if o == nil || o.DiskEncrypted == nil {
-		return nil, false
-	}
-	return o.DiskEncrypted, true
-}
-
-// HasDiskEncrypted returns a boolean if a field has been set.
-func (o *DatabaseResponse) HasDiskEncrypted() bool {
-	if o != nil && o.DiskEncrypted != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDiskEncrypted gets a reference to the given bool and assigns it to the DiskEncrypted field.
-func (o *DatabaseResponse) SetDiskEncrypted(v bool) {
-	o.DiskEncrypted = &v
 }
 
 // GetId returns the Id field value
@@ -583,26 +395,200 @@ func (o *DatabaseResponse) SetStorage(v int32) {
 	o.Storage = &v
 }
 
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *DatabaseResponse) GetEnvironment() ReferenceObject {
+	if o == nil || o.Environment == nil {
+		var ret ReferenceObject
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
+	if o == nil || o.Environment == nil {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *DatabaseResponse) HasEnvironment() bool {
+	if o != nil && o.Environment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ReferenceObject and assigns it to the Environment field.
+func (o *DatabaseResponse) SetEnvironment(v ReferenceObject) {
+	o.Environment = &v
+}
+
+// GetHost returns the Host field value if set, zero value otherwise.
+func (o *DatabaseResponse) GetHost() string {
+	if o == nil || o.Host == nil {
+		var ret string
+		return ret
+	}
+	return *o.Host
+}
+
+// GetHostOk returns a tuple with the Host field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseResponse) GetHostOk() (*string, bool) {
+	if o == nil || o.Host == nil {
+		return nil, false
+	}
+	return o.Host, true
+}
+
+// HasHost returns a boolean if a field has been set.
+func (o *DatabaseResponse) HasHost() bool {
+	if o != nil && o.Host != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHost gets a reference to the given string and assigns it to the Host field.
+func (o *DatabaseResponse) SetHost(v string) {
+	o.Host = &v
+}
+
+// GetPort returns the Port field value if set, zero value otherwise.
+func (o *DatabaseResponse) GetPort() int32 {
+	if o == nil || o.Port == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseResponse) GetPortOk() (*int32, bool) {
+	if o == nil || o.Port == nil {
+		return nil, false
+	}
+	return o.Port, true
+}
+
+// HasPort returns a boolean if a field has been set.
+func (o *DatabaseResponse) HasPort() bool {
+	if o != nil && o.Port != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPort gets a reference to the given int32 and assigns it to the Port field.
+func (o *DatabaseResponse) SetPort(v int32) {
+	o.Port = &v
+}
+
+// GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
+func (o *DatabaseResponse) GetMaximumCpu() int32 {
+	if o == nil || o.MaximumCpu == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaximumCpu
+}
+
+// GetMaximumCpuOk returns a tuple with the MaximumCpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseResponse) GetMaximumCpuOk() (*int32, bool) {
+	if o == nil || o.MaximumCpu == nil {
+		return nil, false
+	}
+	return o.MaximumCpu, true
+}
+
+// HasMaximumCpu returns a boolean if a field has been set.
+func (o *DatabaseResponse) HasMaximumCpu() bool {
+	if o != nil && o.MaximumCpu != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaximumCpu gets a reference to the given int32 and assigns it to the MaximumCpu field.
+func (o *DatabaseResponse) SetMaximumCpu(v int32) {
+	o.MaximumCpu = &v
+}
+
+// GetMaximumMemory returns the MaximumMemory field value if set, zero value otherwise.
+func (o *DatabaseResponse) GetMaximumMemory() int32 {
+	if o == nil || o.MaximumMemory == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaximumMemory
+}
+
+// GetMaximumMemoryOk returns a tuple with the MaximumMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseResponse) GetMaximumMemoryOk() (*int32, bool) {
+	if o == nil || o.MaximumMemory == nil {
+		return nil, false
+	}
+	return o.MaximumMemory, true
+}
+
+// HasMaximumMemory returns a boolean if a field has been set.
+func (o *DatabaseResponse) HasMaximumMemory() bool {
+	if o != nil && o.MaximumMemory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaximumMemory gets a reference to the given int32 and assigns it to the MaximumMemory field.
+func (o *DatabaseResponse) SetMaximumMemory(v int32) {
+	o.MaximumMemory = &v
+}
+
+// GetDiskEncrypted returns the DiskEncrypted field value if set, zero value otherwise.
+func (o *DatabaseResponse) GetDiskEncrypted() bool {
+	if o == nil || o.DiskEncrypted == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DiskEncrypted
+}
+
+// GetDiskEncryptedOk returns a tuple with the DiskEncrypted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseResponse) GetDiskEncryptedOk() (*bool, bool) {
+	if o == nil || o.DiskEncrypted == nil {
+		return nil, false
+	}
+	return o.DiskEncrypted, true
+}
+
+// HasDiskEncrypted returns a boolean if a field has been set.
+func (o *DatabaseResponse) HasDiskEncrypted() bool {
+	if o != nil && o.DiskEncrypted != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskEncrypted gets a reference to the given bool and assigns it to the DiskEncrypted field.
+func (o *DatabaseResponse) SetDiskEncrypted(v bool) {
+	o.DiskEncrypted = &v
+}
+
 func (o DatabaseResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Environment != nil {
-		toSerialize["environment"] = o.Environment
-	}
-	if o.Host != nil {
-		toSerialize["host"] = o.Host
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.MaximumCpu != nil {
-		toSerialize["maximum_cpu"] = o.MaximumCpu
-	}
-	if o.MaximumMemory != nil {
-		toSerialize["maximum_memory"] = o.MaximumMemory
-	}
-	if o.DiskEncrypted != nil {
-		toSerialize["disk_encrypted"] = o.DiskEncrypted
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -635,6 +621,24 @@ func (o DatabaseResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
+	}
+	if o.Environment != nil {
+		toSerialize["environment"] = o.Environment
+	}
+	if o.Host != nil {
+		toSerialize["host"] = o.Host
+	}
+	if o.Port != nil {
+		toSerialize["port"] = o.Port
+	}
+	if o.MaximumCpu != nil {
+		toSerialize["maximum_cpu"] = o.MaximumCpu
+	}
+	if o.MaximumMemory != nil {
+		toSerialize["maximum_memory"] = o.MaximumMemory
+	}
+	if o.DiskEncrypted != nil {
+		toSerialize["disk_encrypted"] = o.DiskEncrypted
 	}
 	return json.Marshal(toSerialize)
 }

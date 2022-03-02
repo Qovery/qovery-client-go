@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Owner** | Pointer to **string** | uuid of the user owning the organization | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -15,6 +14,7 @@ Name | Type | Description | Notes
 **Repository** | Pointer to **NullableString** |  | [optional] 
 **LogoUrl** | Pointer to **NullableString** |  | [optional] 
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
+**Owner** | Pointer to **string** | uuid of the user owning the organization | [optional] 
 
 ## Methods
 
@@ -34,31 +34,6 @@ will change when the set of required properties is changed
 NewOrganizationResponseWithDefaults instantiates a new OrganizationResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetOwner
-
-`func (o *OrganizationResponse) GetOwner() string`
-
-GetOwner returns the Owner field if non-nil, zero value otherwise.
-
-### GetOwnerOk
-
-`func (o *OrganizationResponse) GetOwnerOk() (*string, bool)`
-
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwner
-
-`func (o *OrganizationResponse) SetOwner(v string)`
-
-SetOwner sets Owner field to given value.
-
-### HasOwner
-
-`func (o *OrganizationResponse) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
 
 ### GetId
 
@@ -330,6 +305,31 @@ HasIconUrl returns a boolean if a field has been set.
 `func (o *OrganizationResponse) UnsetIconUrl()`
 
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+### GetOwner
+
+`func (o *OrganizationResponse) GetOwner() string`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *OrganizationResponse) GetOwnerOk() (*string, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *OrganizationResponse) SetOwner(v string)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *OrganizationResponse) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,14 +18,14 @@ import (
 
 // CustomDomainResponse struct for CustomDomainResponse
 type CustomDomainResponse struct {
-	// URL provided by Qovery. You must create a CNAME on your DNS provider using that URL
-	ValidationDomain *string    `json:"validation_domain,omitempty"`
-	Status           *string    `json:"status,omitempty"`
-	Id               string     `json:"id"`
-	CreatedAt        time.Time  `json:"created_at"`
-	UpdatedAt        *time.Time `json:"updated_at,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// your custom domain
 	Domain string `json:"domain"`
+	// URL provided by Qovery. You must create a CNAME on your DNS provider using that URL
+	ValidationDomain *string `json:"validation_domain,omitempty"`
+	Status           *string `json:"status,omitempty"`
 }
 
 // NewCustomDomainResponse instantiates a new CustomDomainResponse object
@@ -46,70 +46,6 @@ func NewCustomDomainResponse(id string, createdAt time.Time, domain string) *Cus
 func NewCustomDomainResponseWithDefaults() *CustomDomainResponse {
 	this := CustomDomainResponse{}
 	return &this
-}
-
-// GetValidationDomain returns the ValidationDomain field value if set, zero value otherwise.
-func (o *CustomDomainResponse) GetValidationDomain() string {
-	if o == nil || o.ValidationDomain == nil {
-		var ret string
-		return ret
-	}
-	return *o.ValidationDomain
-}
-
-// GetValidationDomainOk returns a tuple with the ValidationDomain field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomDomainResponse) GetValidationDomainOk() (*string, bool) {
-	if o == nil || o.ValidationDomain == nil {
-		return nil, false
-	}
-	return o.ValidationDomain, true
-}
-
-// HasValidationDomain returns a boolean if a field has been set.
-func (o *CustomDomainResponse) HasValidationDomain() bool {
-	if o != nil && o.ValidationDomain != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetValidationDomain gets a reference to the given string and assigns it to the ValidationDomain field.
-func (o *CustomDomainResponse) SetValidationDomain(v string) {
-	o.ValidationDomain = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *CustomDomainResponse) GetStatus() string {
-	if o == nil || o.Status == nil {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CustomDomainResponse) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *CustomDomainResponse) HasStatus() bool {
-	if o != nil && o.Status != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *CustomDomainResponse) SetStatus(v string) {
-	o.Status = &v
 }
 
 // GetId returns the Id field value
@@ -216,14 +152,72 @@ func (o *CustomDomainResponse) SetDomain(v string) {
 	o.Domain = v
 }
 
+// GetValidationDomain returns the ValidationDomain field value if set, zero value otherwise.
+func (o *CustomDomainResponse) GetValidationDomain() string {
+	if o == nil || o.ValidationDomain == nil {
+		var ret string
+		return ret
+	}
+	return *o.ValidationDomain
+}
+
+// GetValidationDomainOk returns a tuple with the ValidationDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomDomainResponse) GetValidationDomainOk() (*string, bool) {
+	if o == nil || o.ValidationDomain == nil {
+		return nil, false
+	}
+	return o.ValidationDomain, true
+}
+
+// HasValidationDomain returns a boolean if a field has been set.
+func (o *CustomDomainResponse) HasValidationDomain() bool {
+	if o != nil && o.ValidationDomain != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetValidationDomain gets a reference to the given string and assigns it to the ValidationDomain field.
+func (o *CustomDomainResponse) SetValidationDomain(v string) {
+	o.ValidationDomain = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *CustomDomainResponse) GetStatus() string {
+	if o == nil || o.Status == nil {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomDomainResponse) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *CustomDomainResponse) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *CustomDomainResponse) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o CustomDomainResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ValidationDomain != nil {
-		toSerialize["validation_domain"] = o.ValidationDomain
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -235,6 +229,12 @@ func (o CustomDomainResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["domain"] = o.Domain
+	}
+	if o.ValidationDomain != nil {
+		toSerialize["validation_domain"] = o.ValidationDomain
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

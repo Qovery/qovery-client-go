@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Database** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
+**Database** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 
 ## Methods
 
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewLogicalDatabaseResponseWithDefaults instantiates a new LogicalDatabaseResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDatabase
-
-`func (o *LogicalDatabaseResponse) GetDatabase() ReferenceObject`
-
-GetDatabase returns the Database field if non-nil, zero value otherwise.
-
-### GetDatabaseOk
-
-`func (o *LogicalDatabaseResponse) GetDatabaseOk() (*ReferenceObject, bool)`
-
-GetDatabaseOk returns a tuple with the Database field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDatabase
-
-`func (o *LogicalDatabaseResponse) SetDatabase(v ReferenceObject)`
-
-SetDatabase sets Database field to given value.
-
-### HasDatabase
-
-`func (o *LogicalDatabaseResponse) HasDatabase() bool`
-
-HasDatabase returns a boolean if a field has been set.
 
 ### GetId
 
@@ -164,6 +139,31 @@ SetDescription sets Description field to given value.
 `func (o *LogicalDatabaseResponse) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDatabase
+
+`func (o *LogicalDatabaseResponse) GetDatabase() ReferenceObject`
+
+GetDatabase returns the Database field if non-nil, zero value otherwise.
+
+### GetDatabaseOk
+
+`func (o *LogicalDatabaseResponse) GetDatabaseOk() (*ReferenceObject, bool)`
+
+GetDatabaseOk returns a tuple with the Database field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabase
+
+`func (o *LogicalDatabaseResponse) SetDatabase(v ReferenceObject)`
+
+SetDatabase sets Database field to given value.
+
+### HasDatabase
+
+`func (o *LogicalDatabaseResponse) HasDatabase() bool`
+
+HasDatabase returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

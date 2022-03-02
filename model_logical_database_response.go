@@ -18,13 +18,13 @@ import (
 
 // LogicalDatabaseResponse struct for LogicalDatabaseResponse
 type LogicalDatabaseResponse struct {
-	Database  *ReferenceObject `json:"database,omitempty"`
-	Id        string           `json:"id"`
-	CreatedAt time.Time        `json:"created_at"`
-	UpdatedAt *time.Time       `json:"updated_at,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name        string  `json:"name"`
-	Description *string `json:"description,omitempty"`
+	Name        string           `json:"name"`
+	Description *string          `json:"description,omitempty"`
+	Database    *ReferenceObject `json:"database,omitempty"`
 }
 
 // NewLogicalDatabaseResponse instantiates a new LogicalDatabaseResponse object
@@ -45,38 +45,6 @@ func NewLogicalDatabaseResponse(id string, createdAt time.Time, name string) *Lo
 func NewLogicalDatabaseResponseWithDefaults() *LogicalDatabaseResponse {
 	this := LogicalDatabaseResponse{}
 	return &this
-}
-
-// GetDatabase returns the Database field value if set, zero value otherwise.
-func (o *LogicalDatabaseResponse) GetDatabase() ReferenceObject {
-	if o == nil || o.Database == nil {
-		var ret ReferenceObject
-		return ret
-	}
-	return *o.Database
-}
-
-// GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LogicalDatabaseResponse) GetDatabaseOk() (*ReferenceObject, bool) {
-	if o == nil || o.Database == nil {
-		return nil, false
-	}
-	return o.Database, true
-}
-
-// HasDatabase returns a boolean if a field has been set.
-func (o *LogicalDatabaseResponse) HasDatabase() bool {
-	if o != nil && o.Database != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDatabase gets a reference to the given ReferenceObject and assigns it to the Database field.
-func (o *LogicalDatabaseResponse) SetDatabase(v ReferenceObject) {
-	o.Database = &v
 }
 
 // GetId returns the Id field value
@@ -215,11 +183,40 @@ func (o *LogicalDatabaseResponse) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetDatabase returns the Database field value if set, zero value otherwise.
+func (o *LogicalDatabaseResponse) GetDatabase() ReferenceObject {
+	if o == nil || o.Database == nil {
+		var ret ReferenceObject
+		return ret
+	}
+	return *o.Database
+}
+
+// GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogicalDatabaseResponse) GetDatabaseOk() (*ReferenceObject, bool) {
+	if o == nil || o.Database == nil {
+		return nil, false
+	}
+	return o.Database, true
+}
+
+// HasDatabase returns a boolean if a field has been set.
+func (o *LogicalDatabaseResponse) HasDatabase() bool {
+	if o != nil && o.Database != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabase gets a reference to the given ReferenceObject and assigns it to the Database field.
+func (o *LogicalDatabaseResponse) SetDatabase(v ReferenceObject) {
+	o.Database = &v
+}
+
 func (o LogicalDatabaseResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Database != nil {
-		toSerialize["database"] = o.Database
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -234,6 +231,9 @@ func (o LogicalDatabaseResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
+	}
+	if o.Database != nil {
+		toSerialize["database"] = o.Database
 	}
 	return json.Marshal(toSerialize)
 }

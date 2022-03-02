@@ -4,12 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
-**Host** | Pointer to **string** |  | [optional] 
-**Port** | Pointer to **int32** |  | [optional] 
-**MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
-**DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -21,6 +15,12 @@ Name | Type | Description | Notes
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **Storage** | Pointer to **int32** | unit is MB | [optional] [default to 10240]
+**Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
+**Host** | Pointer to **string** |  | [optional] 
+**Port** | Pointer to **int32** |  | [optional] 
+**MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
 
 ## Methods
 
@@ -40,156 +40,6 @@ will change when the set of required properties is changed
 NewDatabaseResponseWithDefaults instantiates a new DatabaseResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEnvironment
-
-`func (o *DatabaseResponse) GetEnvironment() ReferenceObject`
-
-GetEnvironment returns the Environment field if non-nil, zero value otherwise.
-
-### GetEnvironmentOk
-
-`func (o *DatabaseResponse) GetEnvironmentOk() (*ReferenceObject, bool)`
-
-GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvironment
-
-`func (o *DatabaseResponse) SetEnvironment(v ReferenceObject)`
-
-SetEnvironment sets Environment field to given value.
-
-### HasEnvironment
-
-`func (o *DatabaseResponse) HasEnvironment() bool`
-
-HasEnvironment returns a boolean if a field has been set.
-
-### GetHost
-
-`func (o *DatabaseResponse) GetHost() string`
-
-GetHost returns the Host field if non-nil, zero value otherwise.
-
-### GetHostOk
-
-`func (o *DatabaseResponse) GetHostOk() (*string, bool)`
-
-GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHost
-
-`func (o *DatabaseResponse) SetHost(v string)`
-
-SetHost sets Host field to given value.
-
-### HasHost
-
-`func (o *DatabaseResponse) HasHost() bool`
-
-HasHost returns a boolean if a field has been set.
-
-### GetPort
-
-`func (o *DatabaseResponse) GetPort() int32`
-
-GetPort returns the Port field if non-nil, zero value otherwise.
-
-### GetPortOk
-
-`func (o *DatabaseResponse) GetPortOk() (*int32, bool)`
-
-GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPort
-
-`func (o *DatabaseResponse) SetPort(v int32)`
-
-SetPort sets Port field to given value.
-
-### HasPort
-
-`func (o *DatabaseResponse) HasPort() bool`
-
-HasPort returns a boolean if a field has been set.
-
-### GetMaximumCpu
-
-`func (o *DatabaseResponse) GetMaximumCpu() int32`
-
-GetMaximumCpu returns the MaximumCpu field if non-nil, zero value otherwise.
-
-### GetMaximumCpuOk
-
-`func (o *DatabaseResponse) GetMaximumCpuOk() (*int32, bool)`
-
-GetMaximumCpuOk returns a tuple with the MaximumCpu field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaximumCpu
-
-`func (o *DatabaseResponse) SetMaximumCpu(v int32)`
-
-SetMaximumCpu sets MaximumCpu field to given value.
-
-### HasMaximumCpu
-
-`func (o *DatabaseResponse) HasMaximumCpu() bool`
-
-HasMaximumCpu returns a boolean if a field has been set.
-
-### GetMaximumMemory
-
-`func (o *DatabaseResponse) GetMaximumMemory() int32`
-
-GetMaximumMemory returns the MaximumMemory field if non-nil, zero value otherwise.
-
-### GetMaximumMemoryOk
-
-`func (o *DatabaseResponse) GetMaximumMemoryOk() (*int32, bool)`
-
-GetMaximumMemoryOk returns a tuple with the MaximumMemory field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaximumMemory
-
-`func (o *DatabaseResponse) SetMaximumMemory(v int32)`
-
-SetMaximumMemory sets MaximumMemory field to given value.
-
-### HasMaximumMemory
-
-`func (o *DatabaseResponse) HasMaximumMemory() bool`
-
-HasMaximumMemory returns a boolean if a field has been set.
-
-### GetDiskEncrypted
-
-`func (o *DatabaseResponse) GetDiskEncrypted() bool`
-
-GetDiskEncrypted returns the DiskEncrypted field if non-nil, zero value otherwise.
-
-### GetDiskEncryptedOk
-
-`func (o *DatabaseResponse) GetDiskEncryptedOk() (*bool, bool)`
-
-GetDiskEncryptedOk returns a tuple with the DiskEncrypted field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDiskEncrypted
-
-`func (o *DatabaseResponse) SetDiskEncrypted(v bool)`
-
-SetDiskEncrypted sets DiskEncrypted field to given value.
-
-### HasDiskEncrypted
-
-`func (o *DatabaseResponse) HasDiskEncrypted() bool`
-
-HasDiskEncrypted returns a boolean if a field has been set.
 
 ### GetId
 
@@ -435,6 +285,156 @@ SetStorage sets Storage field to given value.
 `func (o *DatabaseResponse) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *DatabaseResponse) GetEnvironment() ReferenceObject`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *DatabaseResponse) GetEnvironmentOk() (*ReferenceObject, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *DatabaseResponse) SetEnvironment(v ReferenceObject)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *DatabaseResponse) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
+
+### GetHost
+
+`func (o *DatabaseResponse) GetHost() string`
+
+GetHost returns the Host field if non-nil, zero value otherwise.
+
+### GetHostOk
+
+`func (o *DatabaseResponse) GetHostOk() (*string, bool)`
+
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHost
+
+`func (o *DatabaseResponse) SetHost(v string)`
+
+SetHost sets Host field to given value.
+
+### HasHost
+
+`func (o *DatabaseResponse) HasHost() bool`
+
+HasHost returns a boolean if a field has been set.
+
+### GetPort
+
+`func (o *DatabaseResponse) GetPort() int32`
+
+GetPort returns the Port field if non-nil, zero value otherwise.
+
+### GetPortOk
+
+`func (o *DatabaseResponse) GetPortOk() (*int32, bool)`
+
+GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPort
+
+`func (o *DatabaseResponse) SetPort(v int32)`
+
+SetPort sets Port field to given value.
+
+### HasPort
+
+`func (o *DatabaseResponse) HasPort() bool`
+
+HasPort returns a boolean if a field has been set.
+
+### GetMaximumCpu
+
+`func (o *DatabaseResponse) GetMaximumCpu() int32`
+
+GetMaximumCpu returns the MaximumCpu field if non-nil, zero value otherwise.
+
+### GetMaximumCpuOk
+
+`func (o *DatabaseResponse) GetMaximumCpuOk() (*int32, bool)`
+
+GetMaximumCpuOk returns a tuple with the MaximumCpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumCpu
+
+`func (o *DatabaseResponse) SetMaximumCpu(v int32)`
+
+SetMaximumCpu sets MaximumCpu field to given value.
+
+### HasMaximumCpu
+
+`func (o *DatabaseResponse) HasMaximumCpu() bool`
+
+HasMaximumCpu returns a boolean if a field has been set.
+
+### GetMaximumMemory
+
+`func (o *DatabaseResponse) GetMaximumMemory() int32`
+
+GetMaximumMemory returns the MaximumMemory field if non-nil, zero value otherwise.
+
+### GetMaximumMemoryOk
+
+`func (o *DatabaseResponse) GetMaximumMemoryOk() (*int32, bool)`
+
+GetMaximumMemoryOk returns a tuple with the MaximumMemory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumMemory
+
+`func (o *DatabaseResponse) SetMaximumMemory(v int32)`
+
+SetMaximumMemory sets MaximumMemory field to given value.
+
+### HasMaximumMemory
+
+`func (o *DatabaseResponse) HasMaximumMemory() bool`
+
+HasMaximumMemory returns a boolean if a field has been set.
+
+### GetDiskEncrypted
+
+`func (o *DatabaseResponse) GetDiskEncrypted() bool`
+
+GetDiskEncrypted returns the DiskEncrypted field if non-nil, zero value otherwise.
+
+### GetDiskEncryptedOk
+
+`func (o *DatabaseResponse) GetDiskEncryptedOk() (*bool, bool)`
+
+GetDiskEncryptedOk returns a tuple with the DiskEncrypted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskEncrypted
+
+`func (o *DatabaseResponse) SetDiskEncrypted(v bool)`
+
+SetDiskEncrypted sets DiskEncrypted field to given value.
+
+### HasDiskEncrypted
+
+`func (o *DatabaseResponse) HasDiskEncrypted() bool`
+
+HasDiskEncrypted returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

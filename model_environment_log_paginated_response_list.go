@@ -17,9 +17,9 @@ import (
 
 // EnvironmentLogPaginatedResponseList struct for EnvironmentLogPaginatedResponseList
 type EnvironmentLogPaginatedResponseList struct {
-	Results  []EnvironmentLogResponse `json:"results,omitempty"`
 	Page     float32                  `json:"page"`
 	PageSize float32                  `json:"page_size"`
+	Results  []EnvironmentLogResponse `json:"results,omitempty"`
 }
 
 // NewEnvironmentLogPaginatedResponseList instantiates a new EnvironmentLogPaginatedResponseList object
@@ -39,38 +39,6 @@ func NewEnvironmentLogPaginatedResponseList(page float32, pageSize float32) *Env
 func NewEnvironmentLogPaginatedResponseListWithDefaults() *EnvironmentLogPaginatedResponseList {
 	this := EnvironmentLogPaginatedResponseList{}
 	return &this
-}
-
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLogResponse {
-	if o == nil || o.Results == nil {
-		var ret []EnvironmentLogResponse
-		return ret
-	}
-	return o.Results
-}
-
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() ([]EnvironmentLogResponse, bool) {
-	if o == nil || o.Results == nil {
-		return nil, false
-	}
-	return o.Results, true
-}
-
-// HasResults returns a boolean if a field has been set.
-func (o *EnvironmentLogPaginatedResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []EnvironmentLogResponse and assigns it to the Results field.
-func (o *EnvironmentLogPaginatedResponseList) SetResults(v []EnvironmentLogResponse) {
-	o.Results = v
 }
 
 // GetPage returns the Page field value
@@ -121,16 +89,48 @@ func (o *EnvironmentLogPaginatedResponseList) SetPageSize(v float32) {
 	o.PageSize = v
 }
 
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLogResponse {
+	if o == nil || o.Results == nil {
+		var ret []EnvironmentLogResponse
+		return ret
+	}
+	return o.Results
+}
+
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() ([]EnvironmentLogResponse, bool) {
+	if o == nil || o.Results == nil {
+		return nil, false
+	}
+	return o.Results, true
+}
+
+// HasResults returns a boolean if a field has been set.
+func (o *EnvironmentLogPaginatedResponseList) HasResults() bool {
+	if o != nil && o.Results != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResults gets a reference to the given []EnvironmentLogResponse and assigns it to the Results field.
+func (o *EnvironmentLogPaginatedResponseList) SetResults(v []EnvironmentLogResponse) {
+	o.Results = v
+}
+
 func (o EnvironmentLogPaginatedResponseList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
-	}
 	if true {
 		toSerialize["page"] = o.Page
 	}
 	if true {
 		toSerialize["page_size"] = o.PageSize
+	}
+	if o.Results != nil {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
 }

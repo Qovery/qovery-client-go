@@ -18,8 +18,6 @@ import (
 
 // OrganizationResponse struct for OrganizationResponse
 type OrganizationResponse struct {
-	// uuid of the user owning the organization
-	Owner     *string    `json:"owner,omitempty"`
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
@@ -31,6 +29,8 @@ type OrganizationResponse struct {
 	Repository  NullableString `json:"repository,omitempty"`
 	LogoUrl     NullableString `json:"logo_url,omitempty"`
 	IconUrl     NullableString `json:"icon_url,omitempty"`
+	// uuid of the user owning the organization
+	Owner *string `json:"owner,omitempty"`
 }
 
 // NewOrganizationResponse instantiates a new OrganizationResponse object
@@ -52,38 +52,6 @@ func NewOrganizationResponse(id string, createdAt time.Time, name string, plan s
 func NewOrganizationResponseWithDefaults() *OrganizationResponse {
 	this := OrganizationResponse{}
 	return &this
-}
-
-// GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *OrganizationResponse) GetOwner() string {
-	if o == nil || o.Owner == nil {
-		var ret string
-		return ret
-	}
-	return *o.Owner
-}
-
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationResponse) GetOwnerOk() (*string, bool) {
-	if o == nil || o.Owner == nil {
-		return nil, false
-	}
-	return o.Owner, true
-}
-
-// HasOwner returns a boolean if a field has been set.
-func (o *OrganizationResponse) HasOwner() bool {
-	if o != nil && o.Owner != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given string and assigns it to the Owner field.
-func (o *OrganizationResponse) SetOwner(v string) {
-	o.Owner = &v
 }
 
 // GetId returns the Id field value
@@ -418,11 +386,40 @@ func (o *OrganizationResponse) UnsetIconUrl() {
 	o.IconUrl.Unset()
 }
 
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *OrganizationResponse) GetOwner() string {
+	if o == nil || o.Owner == nil {
+		var ret string
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationResponse) GetOwnerOk() (*string, bool) {
+	if o == nil || o.Owner == nil {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *OrganizationResponse) HasOwner() bool {
+	if o != nil && o.Owner != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given string and assigns it to the Owner field.
+func (o *OrganizationResponse) SetOwner(v string) {
+	o.Owner = &v
+}
+
 func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Owner != nil {
-		toSerialize["owner"] = o.Owner
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -452,6 +449,9 @@ func (o OrganizationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.IconUrl.IsSet() {
 		toSerialize["icon_url"] = o.IconUrl.Get()
+	}
+	if o.Owner != nil {
+		toSerialize["owner"] = o.Owner
 	}
 	return json.Marshal(toSerialize)
 }

@@ -17,6 +17,8 @@ import (
 
 // ApplicationEditRequest struct for ApplicationEditRequest
 type ApplicationEditRequest struct {
+	Storage []ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports   []ApplicationPortResponsePorts      `json:"ports,omitempty"`
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
@@ -25,9 +27,8 @@ type ApplicationEditRequest struct {
 	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile
-	DockerfilePath *string `json:"dockerfile_path,omitempty"`
-	// Development language of the application
-	BuildpackLanguage *string `json:"buildpack_language,omitempty"`
+	DockerfilePath    *string                       `json:"dockerfile_path,omitempty"`
+	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -40,9 +41,7 @@ type ApplicationEditRequest struct {
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession *bool                               `json:"sticky_session,omitempty"`
-	Storage       []ApplicationStorageResponseStorage `json:"storage,omitempty"`
-	Ports         []ApplicationPortResponsePorts      `json:"ports,omitempty"`
+	StickySession *bool `json:"sticky_session,omitempty"`
 }
 
 // NewApplicationEditRequest instantiates a new ApplicationEditRequest object
@@ -51,6 +50,18 @@ type ApplicationEditRequest struct {
 // will change when the set of required properties is changed
 func NewApplicationEditRequest() *ApplicationEditRequest {
 	this := ApplicationEditRequest{}
+	var cpu int32 = 250
+	this.Cpu = &cpu
+	var memory int32 = 256
+	this.Memory = &memory
+	var minRunningInstances int32 = 1
+	this.MinRunningInstances = &minRunningInstances
+	var maxRunningInstances int32 = 1
+	this.MaxRunningInstances = &maxRunningInstances
+	var autoPreview bool = true
+	this.AutoPreview = &autoPreview
+	var stickySession bool = false
+	this.StickySession = &stickySession
 	return &this
 }
 
@@ -72,6 +83,70 @@ func NewApplicationEditRequestWithDefaults() *ApplicationEditRequest {
 	var stickySession bool = false
 	this.StickySession = &stickySession
 	return &this
+}
+
+// GetStorage returns the Storage field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetStorage() []ApplicationStorageResponseStorage {
+	if o == nil || o.Storage == nil {
+		var ret []ApplicationStorageResponseStorage
+		return ret
+	}
+	return o.Storage
+}
+
+// GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationEditRequest) GetStorageOk() ([]ApplicationStorageResponseStorage, bool) {
+	if o == nil || o.Storage == nil {
+		return nil, false
+	}
+	return o.Storage, true
+}
+
+// HasStorage returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasStorage() bool {
+	if o != nil && o.Storage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
+func (o *ApplicationEditRequest) SetStorage(v []ApplicationStorageResponseStorage) {
+	o.Storage = v
+}
+
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetPorts() []ApplicationPortResponsePorts {
+	if o == nil || o.Ports == nil {
+		var ret []ApplicationPortResponsePorts
+		return ret
+	}
+	return o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationEditRequest) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
+	if o == nil || o.Ports == nil {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasPorts() bool {
+	if o != nil && o.Ports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
+func (o *ApplicationEditRequest) SetPorts(v []ApplicationPortResponsePorts) {
+	o.Ports = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -234,36 +309,47 @@ func (o *ApplicationEditRequest) SetDockerfilePath(v string) {
 	o.DockerfilePath = &v
 }
 
-// GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetBuildpackLanguage() string {
-	if o == nil || o.BuildpackLanguage == nil {
-		var ret string
+// GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationEditRequest) GetBuildpackLanguage() BuildPackLanguageEnum {
+	if o == nil || o.BuildpackLanguage.Get() == nil {
+		var ret BuildPackLanguageEnum
 		return ret
 	}
-	return *o.BuildpackLanguage
+	return *o.BuildpackLanguage.Get()
 }
 
 // GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetBuildpackLanguageOk() (*string, bool) {
-	if o == nil || o.BuildpackLanguage == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationEditRequest) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BuildpackLanguage, true
+	return o.BuildpackLanguage.Get(), o.BuildpackLanguage.IsSet()
 }
 
 // HasBuildpackLanguage returns a boolean if a field has been set.
 func (o *ApplicationEditRequest) HasBuildpackLanguage() bool {
-	if o != nil && o.BuildpackLanguage != nil {
+	if o != nil && o.BuildpackLanguage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBuildpackLanguage gets a reference to the given string and assigns it to the BuildpackLanguage field.
-func (o *ApplicationEditRequest) SetBuildpackLanguage(v string) {
-	o.BuildpackLanguage = &v
+// SetBuildpackLanguage gets a reference to the given NullableBuildPackLanguageEnum and assigns it to the BuildpackLanguage field.
+func (o *ApplicationEditRequest) SetBuildpackLanguage(v BuildPackLanguageEnum) {
+	o.BuildpackLanguage.Set(&v)
+}
+
+// SetBuildpackLanguageNil sets the value for BuildpackLanguage to be an explicit nil
+func (o *ApplicationEditRequest) SetBuildpackLanguageNil() {
+	o.BuildpackLanguage.Set(nil)
+}
+
+// UnsetBuildpackLanguage ensures that no value is present for BuildpackLanguage, not even an explicit nil
+func (o *ApplicationEditRequest) UnsetBuildpackLanguage() {
+	o.BuildpackLanguage.Unset()
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -490,72 +576,14 @@ func (o *ApplicationEditRequest) SetStickySession(v bool) {
 	o.StickySession = &v
 }
 
-// GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetStorage() []ApplicationStorageResponseStorage {
-	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageResponseStorage
-		return ret
-	}
-	return o.Storage
-}
-
-// GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetStorageOk() ([]ApplicationStorageResponseStorage, bool) {
-	if o == nil || o.Storage == nil {
-		return nil, false
-	}
-	return o.Storage, true
-}
-
-// HasStorage returns a boolean if a field has been set.
-func (o *ApplicationEditRequest) HasStorage() bool {
-	if o != nil && o.Storage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
-func (o *ApplicationEditRequest) SetStorage(v []ApplicationStorageResponseStorage) {
-	o.Storage = v
-}
-
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetPorts() []ApplicationPortResponsePorts {
-	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortResponsePorts
-		return ret
-	}
-	return o.Ports
-}
-
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
-	if o == nil || o.Ports == nil {
-		return nil, false
-	}
-	return o.Ports, true
-}
-
-// HasPorts returns a boolean if a field has been set.
-func (o *ApplicationEditRequest) HasPorts() bool {
-	if o != nil && o.Ports != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
-func (o *ApplicationEditRequest) SetPorts(v []ApplicationPortResponsePorts) {
-	o.Ports = v
-}
-
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Storage != nil {
+		toSerialize["storage"] = o.Storage
+	}
+	if o.Ports != nil {
+		toSerialize["ports"] = o.Ports
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
@@ -571,8 +599,8 @@ func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	if o.DockerfilePath != nil {
 		toSerialize["dockerfile_path"] = o.DockerfilePath
 	}
-	if o.BuildpackLanguage != nil {
-		toSerialize["buildpack_language"] = o.BuildpackLanguage
+	if o.BuildpackLanguage.IsSet() {
+		toSerialize["buildpack_language"] = o.BuildpackLanguage.Get()
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
@@ -594,12 +622,6 @@ func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.StickySession != nil {
 		toSerialize["sticky_session"] = o.StickySession
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }

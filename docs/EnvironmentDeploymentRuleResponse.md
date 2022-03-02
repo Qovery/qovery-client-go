@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** |  | [readonly] 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
 **AutoDelete** | Pointer to **bool** |  | [optional] [default to false]
@@ -12,15 +15,12 @@ Name | Type | Description | Notes
 **StartTime** | **time.Time** |  | 
 **StopTime** | **time.Time** |  | 
 **Weekdays** | **[]string** |  | 
-**Id** | **string** |  | [readonly] 
-**CreatedAt** | **time.Time** |  | [readonly] 
-**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 
 ## Methods
 
 ### NewEnvironmentDeploymentRuleResponse
 
-`func NewEnvironmentDeploymentRuleResponse(timezone string, startTime time.Time, stopTime time.Time, weekdays []string, id string, createdAt time.Time, ) *EnvironmentDeploymentRuleResponse`
+`func NewEnvironmentDeploymentRuleResponse(id string, createdAt time.Time, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, ) *EnvironmentDeploymentRuleResponse`
 
 NewEnvironmentDeploymentRuleResponse instantiates a new EnvironmentDeploymentRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -34,6 +34,71 @@ will change when the set of required properties is changed
 NewEnvironmentDeploymentRuleResponseWithDefaults instantiates a new EnvironmentDeploymentRuleResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *EnvironmentDeploymentRuleResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *EnvironmentDeploymentRuleResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *EnvironmentDeploymentRuleResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetCreatedAt
+
+`func (o *EnvironmentDeploymentRuleResponse) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *EnvironmentDeploymentRuleResponse) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *EnvironmentDeploymentRuleResponse) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *EnvironmentDeploymentRuleResponse) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *EnvironmentDeploymentRuleResponse) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetAutoDeploy
 
@@ -214,71 +279,6 @@ and a boolean to check if the value has been set.
 
 SetWeekdays sets Weekdays field to given value.
 
-
-### GetId
-
-`func (o *EnvironmentDeploymentRuleResponse) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *EnvironmentDeploymentRuleResponse) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *EnvironmentDeploymentRuleResponse) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetCreatedAt
-
-`func (o *EnvironmentDeploymentRuleResponse) GetCreatedAt() time.Time`
-
-GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
-
-### GetCreatedAtOk
-
-`func (o *EnvironmentDeploymentRuleResponse) GetCreatedAtOk() (*time.Time, bool)`
-
-GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedAt
-
-`func (o *EnvironmentDeploymentRuleResponse) SetCreatedAt(v time.Time)`
-
-SetCreatedAt sets CreatedAt field to given value.
-
-
-### GetUpdatedAt
-
-`func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAt() time.Time`
-
-GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
-
-### GetUpdatedAtOk
-
-`func (o *EnvironmentDeploymentRuleResponse) GetUpdatedAtOk() (*time.Time, bool)`
-
-GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUpdatedAt
-
-`func (o *EnvironmentDeploymentRuleResponse) SetUpdatedAt(v time.Time)`
-
-SetUpdatedAt sets UpdatedAt field to given value.
-
-### HasUpdatedAt
-
-`func (o *EnvironmentDeploymentRuleResponse) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

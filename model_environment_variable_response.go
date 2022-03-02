@@ -18,29 +18,30 @@ import (
 
 // EnvironmentVariableResponse struct for EnvironmentVariableResponse
 type EnvironmentVariableResponse struct {
-	OverriddenVariable *map[string]interface{} `json:"overridden_variable,omitempty"`
-	AliasedVariable    *map[string]interface{} `json:"aliased_variable,omitempty"`
-	Scope              string                  `json:"scope"`
-	ServiceName        *string                 `json:"service_name,omitempty"`
-	Id                 string                  `json:"id"`
-	CreatedAt          time.Time               `json:"created_at"`
-	UpdatedAt          *time.Time              `json:"updated_at,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// key is case sensitive
 	Key string `json:"key"`
 	// value of the env variable.
-	Value string `json:"value"`
+	Value              string                                              `json:"value"`
+	OverriddenVariable *EnvironmentVariableResponseAllOfOverriddenVariable `json:"overridden_variable,omitempty"`
+	AliasedVariable    *EnvironmentVariableResponseAllOfAliasedVariable    `json:"aliased_variable,omitempty"`
+	Scope              string                                              `json:"scope"`
+	ServiceName        *string                                             `json:"service_name,omitempty"`
 }
 
 // NewEnvironmentVariableResponse instantiates a new EnvironmentVariableResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentVariableResponse(scope string, id string, createdAt time.Time, key string, value string) *EnvironmentVariableResponse {
+func NewEnvironmentVariableResponse(id string, createdAt time.Time, key string, value string, scope string) *EnvironmentVariableResponse {
 	this := EnvironmentVariableResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Key = key
 	this.Value = value
+	this.Scope = scope
 	return &this
 }
 
@@ -50,126 +51,6 @@ func NewEnvironmentVariableResponse(scope string, id string, createdAt time.Time
 func NewEnvironmentVariableResponseWithDefaults() *EnvironmentVariableResponse {
 	this := EnvironmentVariableResponse{}
 	return &this
-}
-
-// GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
-func (o *EnvironmentVariableResponse) GetOverriddenVariable() map[string]interface{} {
-	if o == nil || o.OverriddenVariable == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.OverriddenVariable
-}
-
-// GetOverriddenVariableOk returns a tuple with the OverriddenVariable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentVariableResponse) GetOverriddenVariableOk() (*map[string]interface{}, bool) {
-	if o == nil || o.OverriddenVariable == nil {
-		return nil, false
-	}
-	return o.OverriddenVariable, true
-}
-
-// HasOverriddenVariable returns a boolean if a field has been set.
-func (o *EnvironmentVariableResponse) HasOverriddenVariable() bool {
-	if o != nil && o.OverriddenVariable != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOverriddenVariable gets a reference to the given map[string]interface{} and assigns it to the OverriddenVariable field.
-func (o *EnvironmentVariableResponse) SetOverriddenVariable(v map[string]interface{}) {
-	o.OverriddenVariable = &v
-}
-
-// GetAliasedVariable returns the AliasedVariable field value if set, zero value otherwise.
-func (o *EnvironmentVariableResponse) GetAliasedVariable() map[string]interface{} {
-	if o == nil || o.AliasedVariable == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return *o.AliasedVariable
-}
-
-// GetAliasedVariableOk returns a tuple with the AliasedVariable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentVariableResponse) GetAliasedVariableOk() (*map[string]interface{}, bool) {
-	if o == nil || o.AliasedVariable == nil {
-		return nil, false
-	}
-	return o.AliasedVariable, true
-}
-
-// HasAliasedVariable returns a boolean if a field has been set.
-func (o *EnvironmentVariableResponse) HasAliasedVariable() bool {
-	if o != nil && o.AliasedVariable != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAliasedVariable gets a reference to the given map[string]interface{} and assigns it to the AliasedVariable field.
-func (o *EnvironmentVariableResponse) SetAliasedVariable(v map[string]interface{}) {
-	o.AliasedVariable = &v
-}
-
-// GetScope returns the Scope field value
-func (o *EnvironmentVariableResponse) GetScope() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Scope
-}
-
-// GetScopeOk returns a tuple with the Scope field value
-// and a boolean to check if the value has been set.
-func (o *EnvironmentVariableResponse) GetScopeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Scope, true
-}
-
-// SetScope sets field value
-func (o *EnvironmentVariableResponse) SetScope(v string) {
-	o.Scope = v
-}
-
-// GetServiceName returns the ServiceName field value if set, zero value otherwise.
-func (o *EnvironmentVariableResponse) GetServiceName() string {
-	if o == nil || o.ServiceName == nil {
-		var ret string
-		return ret
-	}
-	return *o.ServiceName
-}
-
-// GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentVariableResponse) GetServiceNameOk() (*string, bool) {
-	if o == nil || o.ServiceName == nil {
-		return nil, false
-	}
-	return o.ServiceName, true
-}
-
-// HasServiceName returns a boolean if a field has been set.
-func (o *EnvironmentVariableResponse) HasServiceName() bool {
-	if o != nil && o.ServiceName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceName gets a reference to the given string and assigns it to the ServiceName field.
-func (o *EnvironmentVariableResponse) SetServiceName(v string) {
-	o.ServiceName = &v
 }
 
 // GetId returns the Id field value
@@ -300,20 +181,128 @@ func (o *EnvironmentVariableResponse) SetValue(v string) {
 	o.Value = v
 }
 
+// GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
+func (o *EnvironmentVariableResponse) GetOverriddenVariable() EnvironmentVariableResponseAllOfOverriddenVariable {
+	if o == nil || o.OverriddenVariable == nil {
+		var ret EnvironmentVariableResponseAllOfOverriddenVariable
+		return ret
+	}
+	return *o.OverriddenVariable
+}
+
+// GetOverriddenVariableOk returns a tuple with the OverriddenVariable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableResponse) GetOverriddenVariableOk() (*EnvironmentVariableResponseAllOfOverriddenVariable, bool) {
+	if o == nil || o.OverriddenVariable == nil {
+		return nil, false
+	}
+	return o.OverriddenVariable, true
+}
+
+// HasOverriddenVariable returns a boolean if a field has been set.
+func (o *EnvironmentVariableResponse) HasOverriddenVariable() bool {
+	if o != nil && o.OverriddenVariable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverriddenVariable gets a reference to the given EnvironmentVariableResponseAllOfOverriddenVariable and assigns it to the OverriddenVariable field.
+func (o *EnvironmentVariableResponse) SetOverriddenVariable(v EnvironmentVariableResponseAllOfOverriddenVariable) {
+	o.OverriddenVariable = &v
+}
+
+// GetAliasedVariable returns the AliasedVariable field value if set, zero value otherwise.
+func (o *EnvironmentVariableResponse) GetAliasedVariable() EnvironmentVariableResponseAllOfAliasedVariable {
+	if o == nil || o.AliasedVariable == nil {
+		var ret EnvironmentVariableResponseAllOfAliasedVariable
+		return ret
+	}
+	return *o.AliasedVariable
+}
+
+// GetAliasedVariableOk returns a tuple with the AliasedVariable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableResponse) GetAliasedVariableOk() (*EnvironmentVariableResponseAllOfAliasedVariable, bool) {
+	if o == nil || o.AliasedVariable == nil {
+		return nil, false
+	}
+	return o.AliasedVariable, true
+}
+
+// HasAliasedVariable returns a boolean if a field has been set.
+func (o *EnvironmentVariableResponse) HasAliasedVariable() bool {
+	if o != nil && o.AliasedVariable != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAliasedVariable gets a reference to the given EnvironmentVariableResponseAllOfAliasedVariable and assigns it to the AliasedVariable field.
+func (o *EnvironmentVariableResponse) SetAliasedVariable(v EnvironmentVariableResponseAllOfAliasedVariable) {
+	o.AliasedVariable = &v
+}
+
+// GetScope returns the Scope field value
+func (o *EnvironmentVariableResponse) GetScope() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Scope
+}
+
+// GetScopeOk returns a tuple with the Scope field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableResponse) GetScopeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Scope, true
+}
+
+// SetScope sets field value
+func (o *EnvironmentVariableResponse) SetScope(v string) {
+	o.Scope = v
+}
+
+// GetServiceName returns the ServiceName field value if set, zero value otherwise.
+func (o *EnvironmentVariableResponse) GetServiceName() string {
+	if o == nil || o.ServiceName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceName
+}
+
+// GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableResponse) GetServiceNameOk() (*string, bool) {
+	if o == nil || o.ServiceName == nil {
+		return nil, false
+	}
+	return o.ServiceName, true
+}
+
+// HasServiceName returns a boolean if a field has been set.
+func (o *EnvironmentVariableResponse) HasServiceName() bool {
+	if o != nil && o.ServiceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceName gets a reference to the given string and assigns it to the ServiceName field.
+func (o *EnvironmentVariableResponse) SetServiceName(v string) {
+	o.ServiceName = &v
+}
+
 func (o EnvironmentVariableResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.OverriddenVariable != nil {
-		toSerialize["overridden_variable"] = o.OverriddenVariable
-	}
-	if o.AliasedVariable != nil {
-		toSerialize["aliased_variable"] = o.AliasedVariable
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if o.ServiceName != nil {
-		toSerialize["service_name"] = o.ServiceName
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -328,6 +317,18 @@ func (o EnvironmentVariableResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["value"] = o.Value
+	}
+	if o.OverriddenVariable != nil {
+		toSerialize["overridden_variable"] = o.OverriddenVariable
+	}
+	if o.AliasedVariable != nil {
+		toSerialize["aliased_variable"] = o.AliasedVariable
+	}
+	if true {
+		toSerialize["scope"] = o.Scope
+	}
+	if o.ServiceName != nil {
+		toSerialize["service_name"] = o.ServiceName
 	}
 	return json.Marshal(toSerialize)
 }

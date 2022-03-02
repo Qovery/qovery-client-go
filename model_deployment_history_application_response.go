@@ -18,12 +18,12 @@ import (
 
 // DeploymentHistoryApplicationResponse struct for DeploymentHistoryApplicationResponse
 type DeploymentHistoryApplicationResponse struct {
-	Name      *string         `json:"name,omitempty"`
-	Commit    *CommitResponse `json:"commit,omitempty"`
-	Status    *string         `json:"status,omitempty"`
 	Id        string          `json:"id"`
 	CreatedAt time.Time       `json:"created_at"`
 	UpdatedAt *time.Time      `json:"updated_at,omitempty"`
+	Name      *string         `json:"name,omitempty"`
+	Commit    *CommitResponse `json:"commit,omitempty"`
+	Status    *string         `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryApplicationResponse instantiates a new DeploymentHistoryApplicationResponse object
@@ -43,6 +43,86 @@ func NewDeploymentHistoryApplicationResponse(id string, createdAt time.Time) *De
 func NewDeploymentHistoryApplicationResponseWithDefaults() *DeploymentHistoryApplicationResponse {
 	this := DeploymentHistoryApplicationResponse{}
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *DeploymentHistoryApplicationResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryApplicationResponse) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *DeploymentHistoryApplicationResponse) SetId(v string) {
+	o.Id = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *DeploymentHistoryApplicationResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryApplicationResponse) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *DeploymentHistoryApplicationResponse) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *DeploymentHistoryApplicationResponse) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryApplicationResponse) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *DeploymentHistoryApplicationResponse) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *DeploymentHistoryApplicationResponse) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -141,97 +221,8 @@ func (o *DeploymentHistoryApplicationResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetId returns the Id field value
-func (o *DeploymentHistoryApplicationResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryApplicationResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *DeploymentHistoryApplicationResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *DeploymentHistoryApplicationResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryApplicationResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *DeploymentHistoryApplicationResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *DeploymentHistoryApplicationResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryApplicationResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *DeploymentHistoryApplicationResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *DeploymentHistoryApplicationResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
 func (o DeploymentHistoryApplicationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Commit != nil {
-		toSerialize["commit"] = o.Commit
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -240,6 +231,15 @@ func (o DeploymentHistoryApplicationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.Commit != nil {
+		toSerialize["commit"] = o.Commit
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

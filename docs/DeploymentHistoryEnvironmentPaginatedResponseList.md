@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]DeploymentHistoryEnvironmentResponse**](DeploymentHistoryEnvironmentResponse.md) |  | [optional] 
 **Page** | **float32** |  | 
 **PageSize** | **float32** |  | 
+**Results** | Pointer to [**[]DeploymentHistoryEnvironmentResponse**](DeploymentHistoryEnvironmentResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewDeploymentHistoryEnvironmentPaginatedResponseListWithDefaults instantiates a new DeploymentHistoryEnvironmentPaginatedResponseList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetResults
-
-`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResults() []DeploymentHistoryEnvironmentResponse`
-
-GetResults returns the Results field if non-nil, zero value otherwise.
-
-### GetResultsOk
-
-`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResultsOk() (*[]DeploymentHistoryEnvironmentResponse, bool)`
-
-GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResults
-
-`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) SetResults(v []DeploymentHistoryEnvironmentResponse)`
-
-SetResults sets Results field to given value.
-
-### HasResults
-
-`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) HasResults() bool`
-
-HasResults returns a boolean if a field has been set.
 
 ### GetPage
 
@@ -91,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetPageSize sets PageSize field to given value.
 
+
+### GetResults
+
+`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResults() []DeploymentHistoryEnvironmentResponse`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResultsOk() (*[]DeploymentHistoryEnvironmentResponse, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) SetResults(v []DeploymentHistoryEnvironmentResponse)`
+
+SetResults sets Results field to given value.
+
+### HasResults
+
+`func (o *DeploymentHistoryEnvironmentPaginatedResponseList) HasResults() bool`
+
+HasResults returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

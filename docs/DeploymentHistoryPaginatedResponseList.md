@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]DeploymentHistoryResponse**](DeploymentHistoryResponse.md) |  | [optional] 
 **Page** | **float32** |  | 
 **PageSize** | **float32** |  | 
+**Results** | Pointer to [**[]DeploymentHistoryResponse**](DeploymentHistoryResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewDeploymentHistoryPaginatedResponseListWithDefaults instantiates a new DeploymentHistoryPaginatedResponseList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetResults
-
-`func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistoryResponse`
-
-GetResults returns the Results field if non-nil, zero value otherwise.
-
-### GetResultsOk
-
-`func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() (*[]DeploymentHistoryResponse, bool)`
-
-GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResults
-
-`func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse)`
-
-SetResults sets Results field to given value.
-
-### HasResults
-
-`func (o *DeploymentHistoryPaginatedResponseList) HasResults() bool`
-
-HasResults returns a boolean if a field has been set.
 
 ### GetPage
 
@@ -91,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetPageSize sets PageSize field to given value.
 
+
+### GetResults
+
+`func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistoryResponse`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() (*[]DeploymentHistoryResponse, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse)`
+
+SetResults sets Results field to given value.
+
+### HasResults
+
+`func (o *DeploymentHistoryPaginatedResponseList) HasResults() bool`
+
+HasResults returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

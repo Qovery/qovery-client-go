@@ -18,8 +18,13 @@ import (
 
 // ApplicationResponse struct for ApplicationResponse
 type ApplicationResponse struct {
-	Environment   *ReferenceObject                  `json:"environment,omitempty"`
-	GitRepository *ApplicationGitRepositoryResponse `json:"git_repository,omitempty"`
+	Id            string                              `json:"id"`
+	CreatedAt     time.Time                           `json:"created_at"`
+	UpdatedAt     *time.Time                          `json:"updated_at,omitempty"`
+	Storage       []ApplicationStorageResponseStorage `json:"storage,omitempty"`
+	Ports         []ApplicationPortResponsePorts      `json:"ports,omitempty"`
+	Environment   *ReferenceObject                    `json:"environment,omitempty"`
+	GitRepository *ApplicationGitRepositoryResponse   `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -31,9 +36,8 @@ type ApplicationResponse struct {
 	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
-	// Development language of the application
-	BuildpackLanguage NullableString `json:"buildpack_language,omitempty"`
+	DockerfilePath    NullableString                `json:"dockerfile_path,omitempty"`
+	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -44,12 +48,7 @@ type ApplicationResponse struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool                               `json:"auto_preview,omitempty"`
-	Id          string                              `json:"id"`
-	CreatedAt   time.Time                           `json:"created_at"`
-	UpdatedAt   *time.Time                          `json:"updated_at,omitempty"`
-	Storage     []ApplicationStorageResponseStorage `json:"storage,omitempty"`
-	Ports       []ApplicationPortResponsePorts      `json:"ports,omitempty"`
+	AutoPreview *bool `json:"auto_preview,omitempty"`
 }
 
 // NewApplicationResponse instantiates a new ApplicationResponse object
@@ -60,6 +59,22 @@ func NewApplicationResponse(id string, createdAt time.Time) *ApplicationResponse
 	this := ApplicationResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	var maximumCpu int32 = 250
+	this.MaximumCpu = &maximumCpu
+	var maximumMemory int32 = 256
+	this.MaximumMemory = &maximumMemory
+	var buildMode string = "BUILDPACKS"
+	this.BuildMode = &buildMode
+	var cpu int32 = 250
+	this.Cpu = &cpu
+	var memory int32 = 256
+	this.Memory = &memory
+	var minRunningInstances int32 = 1
+	this.MinRunningInstances = &minRunningInstances
+	var maxRunningInstances int32 = 1
+	this.MaxRunningInstances = &maxRunningInstances
+	var autoPreview bool = true
+	this.AutoPreview = &autoPreview
 	return &this
 }
 
@@ -85,6 +100,150 @@ func NewApplicationResponseWithDefaults() *ApplicationResponse {
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *ApplicationResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *ApplicationResponse) SetId(v string) {
+	o.Id = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *ApplicationResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *ApplicationResponse) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *ApplicationResponse) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
+}
+
+// GetStorage returns the Storage field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetStorage() []ApplicationStorageResponseStorage {
+	if o == nil || o.Storage == nil {
+		var ret []ApplicationStorageResponseStorage
+		return ret
+	}
+	return o.Storage
+}
+
+// GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetStorageOk() ([]ApplicationStorageResponseStorage, bool) {
+	if o == nil || o.Storage == nil {
+		return nil, false
+	}
+	return o.Storage, true
+}
+
+// HasStorage returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasStorage() bool {
+	if o != nil && o.Storage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
+func (o *ApplicationResponse) SetStorage(v []ApplicationStorageResponseStorage) {
+	o.Storage = v
+}
+
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *ApplicationResponse) GetPorts() []ApplicationPortResponsePorts {
+	if o == nil || o.Ports == nil {
+		var ret []ApplicationPortResponsePorts
+		return ret
+	}
+	return o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResponse) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
+	if o == nil || o.Ports == nil {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *ApplicationResponse) HasPorts() bool {
+	if o != nil && o.Ports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
+func (o *ApplicationResponse) SetPorts(v []ApplicationPortResponsePorts) {
+	o.Ports = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -366,9 +525,9 @@ func (o *ApplicationResponse) UnsetDockerfilePath() {
 }
 
 // GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApplicationResponse) GetBuildpackLanguage() string {
+func (o *ApplicationResponse) GetBuildpackLanguage() BuildPackLanguageEnum {
 	if o == nil || o.BuildpackLanguage.Get() == nil {
-		var ret string
+		var ret BuildPackLanguageEnum
 		return ret
 	}
 	return *o.BuildpackLanguage.Get()
@@ -377,7 +536,7 @@ func (o *ApplicationResponse) GetBuildpackLanguage() string {
 // GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationResponse) GetBuildpackLanguageOk() (*string, bool) {
+func (o *ApplicationResponse) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -393,8 +552,8 @@ func (o *ApplicationResponse) HasBuildpackLanguage() bool {
 	return false
 }
 
-// SetBuildpackLanguage gets a reference to the given NullableString and assigns it to the BuildpackLanguage field.
-func (o *ApplicationResponse) SetBuildpackLanguage(v string) {
+// SetBuildpackLanguage gets a reference to the given NullableBuildPackLanguageEnum and assigns it to the BuildpackLanguage field.
+func (o *ApplicationResponse) SetBuildpackLanguage(v BuildPackLanguageEnum) {
 	o.BuildpackLanguage.Set(&v)
 }
 
@@ -600,152 +759,23 @@ func (o *ApplicationResponse) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetId returns the Id field value
-func (o *ApplicationResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *ApplicationResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *ApplicationResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *ApplicationResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *ApplicationResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *ApplicationResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
-// GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetStorage() []ApplicationStorageResponseStorage {
-	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageResponseStorage
-		return ret
-	}
-	return o.Storage
-}
-
-// GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetStorageOk() ([]ApplicationStorageResponseStorage, bool) {
-	if o == nil || o.Storage == nil {
-		return nil, false
-	}
-	return o.Storage, true
-}
-
-// HasStorage returns a boolean if a field has been set.
-func (o *ApplicationResponse) HasStorage() bool {
-	if o != nil && o.Storage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStorage gets a reference to the given []ApplicationStorageResponseStorage and assigns it to the Storage field.
-func (o *ApplicationResponse) SetStorage(v []ApplicationStorageResponseStorage) {
-	o.Storage = v
-}
-
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetPorts() []ApplicationPortResponsePorts {
-	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortResponsePorts
-		return ret
-	}
-	return o.Ports
-}
-
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetPortsOk() ([]ApplicationPortResponsePorts, bool) {
-	if o == nil || o.Ports == nil {
-		return nil, false
-	}
-	return o.Ports, true
-}
-
-// HasPorts returns a boolean if a field has been set.
-func (o *ApplicationResponse) HasPorts() bool {
-	if o != nil && o.Ports != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given []ApplicationPortResponsePorts and assigns it to the Ports field.
-func (o *ApplicationResponse) SetPorts(v []ApplicationPortResponsePorts) {
-	o.Ports = v
-}
-
 func (o ApplicationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if o.Storage != nil {
+		toSerialize["storage"] = o.Storage
+	}
+	if o.Ports != nil {
+		toSerialize["ports"] = o.Ports
+	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
 	}
@@ -790,21 +820,6 @@ func (o ApplicationResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }

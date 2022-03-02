@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryPaginatedResponseList struct for DeploymentHistoryPaginatedResponseList
 type DeploymentHistoryPaginatedResponseList struct {
-	Results  []DeploymentHistoryResponse `json:"results,omitempty"`
 	Page     float32                     `json:"page"`
 	PageSize float32                     `json:"page_size"`
+	Results  []DeploymentHistoryResponse `json:"results,omitempty"`
 }
 
 // NewDeploymentHistoryPaginatedResponseList instantiates a new DeploymentHistoryPaginatedResponseList object
@@ -39,38 +39,6 @@ func NewDeploymentHistoryPaginatedResponseList(page float32, pageSize float32) *
 func NewDeploymentHistoryPaginatedResponseListWithDefaults() *DeploymentHistoryPaginatedResponseList {
 	this := DeploymentHistoryPaginatedResponseList{}
 	return &this
-}
-
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistoryResponse {
-	if o == nil || o.Results == nil {
-		var ret []DeploymentHistoryResponse
-		return ret
-	}
-	return o.Results
-}
-
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
-	if o == nil || o.Results == nil {
-		return nil, false
-	}
-	return o.Results, true
-}
-
-// HasResults returns a boolean if a field has been set.
-func (o *DeploymentHistoryPaginatedResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
-func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse) {
-	o.Results = v
 }
 
 // GetPage returns the Page field value
@@ -121,16 +89,48 @@ func (o *DeploymentHistoryPaginatedResponseList) SetPageSize(v float32) {
 	o.PageSize = v
 }
 
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistoryResponse {
+	if o == nil || o.Results == nil {
+		var ret []DeploymentHistoryResponse
+		return ret
+	}
+	return o.Results
+}
+
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
+	if o == nil || o.Results == nil {
+		return nil, false
+	}
+	return o.Results, true
+}
+
+// HasResults returns a boolean if a field has been set.
+func (o *DeploymentHistoryPaginatedResponseList) HasResults() bool {
+	if o != nil && o.Results != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
+func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse) {
+	o.Results = v
+}
+
 func (o DeploymentHistoryPaginatedResponseList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
-	}
 	if true {
 		toSerialize["page"] = o.Page
 	}
 	if true {
 		toSerialize["page_size"] = o.PageSize
+	}
+	if o.Results != nil {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
 }

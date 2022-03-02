@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PriorityIndex** | Pointer to **int32** | used to select the first deployment rule to match new created environments | [optional] 
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -20,6 +19,7 @@ Name | Type | Description | Notes
 **StopTime** | **time.Time** |  | 
 **Weekdays** | **[]string** |  | 
 **Wildcard** | **string** | wildcard pattern composed of &#39;?&#39; and/or &#39;*&#39; used to target new created environments | [default to ""]
+**PriorityIndex** | Pointer to **int32** | used to select the first deployment rule to match new created environments | [optional] 
 
 ## Methods
 
@@ -39,31 +39,6 @@ will change when the set of required properties is changed
 NewProjectDeploymentRuleResponseWithDefaults instantiates a new ProjectDeploymentRuleResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetPriorityIndex
-
-`func (o *ProjectDeploymentRuleResponse) GetPriorityIndex() int32`
-
-GetPriorityIndex returns the PriorityIndex field if non-nil, zero value otherwise.
-
-### GetPriorityIndexOk
-
-`func (o *ProjectDeploymentRuleResponse) GetPriorityIndexOk() (*int32, bool)`
-
-GetPriorityIndexOk returns a tuple with the PriorityIndex field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPriorityIndex
-
-`func (o *ProjectDeploymentRuleResponse) SetPriorityIndex(v int32)`
-
-SetPriorityIndex sets PriorityIndex field to given value.
-
-### HasPriorityIndex
-
-`func (o *ProjectDeploymentRuleResponse) HasPriorityIndex() bool`
-
-HasPriorityIndex returns a boolean if a field has been set.
 
 ### GetId
 
@@ -399,6 +374,31 @@ and a boolean to check if the value has been set.
 
 SetWildcard sets Wildcard field to given value.
 
+
+### GetPriorityIndex
+
+`func (o *ProjectDeploymentRuleResponse) GetPriorityIndex() int32`
+
+GetPriorityIndex returns the PriorityIndex field if non-nil, zero value otherwise.
+
+### GetPriorityIndexOk
+
+`func (o *ProjectDeploymentRuleResponse) GetPriorityIndexOk() (*int32, bool)`
+
+GetPriorityIndexOk returns a tuple with the PriorityIndex field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPriorityIndex
+
+`func (o *ProjectDeploymentRuleResponse) SetPriorityIndex(v int32)`
+
+SetPriorityIndex sets PriorityIndex field to given value.
+
+### HasPriorityIndex
+
+`func (o *ProjectDeploymentRuleResponse) HasPriorityIndex() bool`
+
+HasPriorityIndex returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

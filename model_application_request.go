@@ -17,6 +17,8 @@ import (
 
 // ApplicationRequest struct for ApplicationRequest
 type ApplicationRequest struct {
+	Storage []ApplicationStorageRequestStorage `json:"storage,omitempty"`
+	Ports   []ApplicationPortRequestPorts      `json:"ports,omitempty"`
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this application
@@ -25,9 +27,8 @@ type ApplicationRequest struct {
 	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
 	BuildMode *string `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
-	// Development language of the application
-	BuildpackLanguage NullableString `json:"buildpack_language,omitempty"`
+	DockerfilePath    NullableString                `json:"dockerfile_path,omitempty"`
+	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -38,9 +39,7 @@ type ApplicationRequest struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool                              `json:"auto_preview,omitempty"`
-	Storage     []ApplicationStorageRequestStorage `json:"storage,omitempty"`
-	Ports       []ApplicationPortRequestPorts      `json:"ports,omitempty"`
+	AutoPreview *bool `json:"auto_preview,omitempty"`
 }
 
 // NewApplicationRequest instantiates a new ApplicationRequest object
@@ -49,6 +48,20 @@ type ApplicationRequest struct {
 // will change when the set of required properties is changed
 func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRequest) *ApplicationRequest {
 	this := ApplicationRequest{}
+	this.Name = name
+	this.GitRepository = gitRepository
+	var buildMode string = "BUILDPACKS"
+	this.BuildMode = &buildMode
+	var cpu int32 = 250
+	this.Cpu = &cpu
+	var memory int32 = 256
+	this.Memory = &memory
+	var minRunningInstances int32 = 1
+	this.MinRunningInstances = &minRunningInstances
+	var maxRunningInstances int32 = 1
+	this.MaxRunningInstances = &maxRunningInstances
+	var autoPreview bool = true
+	this.AutoPreview = &autoPreview
 	return &this
 }
 
@@ -70,6 +83,70 @@ func NewApplicationRequestWithDefaults() *ApplicationRequest {
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
 	return &this
+}
+
+// GetStorage returns the Storage field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorage {
+	if o == nil || o.Storage == nil {
+		var ret []ApplicationStorageRequestStorage
+		return ret
+	}
+	return o.Storage
+}
+
+// GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetStorageOk() ([]ApplicationStorageRequestStorage, bool) {
+	if o == nil || o.Storage == nil {
+		return nil, false
+	}
+	return o.Storage, true
+}
+
+// HasStorage returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasStorage() bool {
+	if o != nil && o.Storage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStorage gets a reference to the given []ApplicationStorageRequestStorage and assigns it to the Storage field.
+func (o *ApplicationRequest) SetStorage(v []ApplicationStorageRequestStorage) {
+	o.Storage = v
+}
+
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPorts {
+	if o == nil || o.Ports == nil {
+		var ret []ApplicationPortRequestPorts
+		return ret
+	}
+	return o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetPortsOk() ([]ApplicationPortRequestPorts, bool) {
+	if o == nil || o.Ports == nil {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasPorts() bool {
+	if o != nil && o.Ports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given []ApplicationPortRequestPorts and assigns it to the Ports field.
+func (o *ApplicationRequest) SetPorts(v []ApplicationPortRequestPorts) {
+	o.Ports = v
 }
 
 // GetName returns the Name field value
@@ -239,9 +316,9 @@ func (o *ApplicationRequest) UnsetDockerfilePath() {
 }
 
 // GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApplicationRequest) GetBuildpackLanguage() string {
+func (o *ApplicationRequest) GetBuildpackLanguage() BuildPackLanguageEnum {
 	if o == nil || o.BuildpackLanguage.Get() == nil {
-		var ret string
+		var ret BuildPackLanguageEnum
 		return ret
 	}
 	return *o.BuildpackLanguage.Get()
@@ -250,7 +327,7 @@ func (o *ApplicationRequest) GetBuildpackLanguage() string {
 // GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationRequest) GetBuildpackLanguageOk() (*string, bool) {
+func (o *ApplicationRequest) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -266,8 +343,8 @@ func (o *ApplicationRequest) HasBuildpackLanguage() bool {
 	return false
 }
 
-// SetBuildpackLanguage gets a reference to the given NullableString and assigns it to the BuildpackLanguage field.
-func (o *ApplicationRequest) SetBuildpackLanguage(v string) {
+// SetBuildpackLanguage gets a reference to the given NullableBuildPackLanguageEnum and assigns it to the BuildpackLanguage field.
+func (o *ApplicationRequest) SetBuildpackLanguage(v BuildPackLanguageEnum) {
 	o.BuildpackLanguage.Set(&v)
 }
 
@@ -473,72 +550,14 @@ func (o *ApplicationRequest) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorage {
-	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageRequestStorage
-		return ret
-	}
-	return o.Storage
-}
-
-// GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetStorageOk() ([]ApplicationStorageRequestStorage, bool) {
-	if o == nil || o.Storage == nil {
-		return nil, false
-	}
-	return o.Storage, true
-}
-
-// HasStorage returns a boolean if a field has been set.
-func (o *ApplicationRequest) HasStorage() bool {
-	if o != nil && o.Storage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStorage gets a reference to the given []ApplicationStorageRequestStorage and assigns it to the Storage field.
-func (o *ApplicationRequest) SetStorage(v []ApplicationStorageRequestStorage) {
-	o.Storage = v
-}
-
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPorts {
-	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortRequestPorts
-		return ret
-	}
-	return o.Ports
-}
-
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetPortsOk() ([]ApplicationPortRequestPorts, bool) {
-	if o == nil || o.Ports == nil {
-		return nil, false
-	}
-	return o.Ports, true
-}
-
-// HasPorts returns a boolean if a field has been set.
-func (o *ApplicationRequest) HasPorts() bool {
-	if o != nil && o.Ports != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given []ApplicationPortRequestPorts and assigns it to the Ports field.
-func (o *ApplicationRequest) SetPorts(v []ApplicationPortRequestPorts) {
-	o.Ports = v
-}
-
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Storage != nil {
+		toSerialize["storage"] = o.Storage
+	}
+	if o.Ports != nil {
+		toSerialize["ports"] = o.Ports
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -574,12 +593,6 @@ func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }

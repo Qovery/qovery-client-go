@@ -18,11 +18,11 @@ import (
 
 // DeploymentHistoryDatabaseResponse struct for DeploymentHistoryDatabaseResponse
 type DeploymentHistoryDatabaseResponse struct {
-	Name      *string    `json:"name,omitempty"`
-	Status    *string    `json:"status,omitempty"`
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Name      *string    `json:"name,omitempty"`
+	Status    *string    `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryDatabaseResponse instantiates a new DeploymentHistoryDatabaseResponse object
@@ -42,70 +42,6 @@ func NewDeploymentHistoryDatabaseResponse(id string, createdAt time.Time) *Deplo
 func NewDeploymentHistoryDatabaseResponseWithDefaults() *DeploymentHistoryDatabaseResponse {
 	this := DeploymentHistoryDatabaseResponse{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *DeploymentHistoryDatabaseResponse) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryDatabaseResponse) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *DeploymentHistoryDatabaseResponse) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *DeploymentHistoryDatabaseResponse) SetName(v string) {
-	o.Name = &v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryDatabaseResponse) GetStatus() string {
-	if o == nil || o.Status == nil {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryDatabaseResponse) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
-	}
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *DeploymentHistoryDatabaseResponse) HasStatus() bool {
-	if o != nil && o.Status != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *DeploymentHistoryDatabaseResponse) SetStatus(v string) {
-	o.Status = &v
 }
 
 // GetId returns the Id field value
@@ -188,14 +124,72 @@ func (o *DeploymentHistoryDatabaseResponse) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *DeploymentHistoryDatabaseResponse) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryDatabaseResponse) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *DeploymentHistoryDatabaseResponse) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *DeploymentHistoryDatabaseResponse) SetName(v string) {
+	o.Name = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *DeploymentHistoryDatabaseResponse) GetStatus() string {
+	if o == nil || o.Status == nil {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryDatabaseResponse) GetStatusOk() (*string, bool) {
+	if o == nil || o.Status == nil {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *DeploymentHistoryDatabaseResponse) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *DeploymentHistoryDatabaseResponse) SetStatus(v string) {
+	o.Status = &v
+}
+
 func (o DeploymentHistoryDatabaseResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -204,6 +198,12 @@ func (o DeploymentHistoryDatabaseResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)
 }

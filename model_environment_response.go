@@ -18,27 +18,31 @@ import (
 
 // EnvironmentResponse struct for EnvironmentResponse
 type EnvironmentResponse struct {
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
 	Name    string           `json:"name"`
 	Project *ReferenceObject `json:"project,omitempty"`
 	// uuid of the user that made the last update
-	LastUpdatedBy *string                `json:"last_updated_by,omitempty"`
-	CloudProvider map[string]interface{} `json:"cloud_provider"`
-	Mode          string                 `json:"mode"`
-	ClusterId     string                 `json:"cluster_id"`
-	Id            string                 `json:"id"`
-	CreatedAt     time.Time              `json:"created_at"`
-	UpdatedAt     *time.Time             `json:"updated_at,omitempty"`
+	LastUpdatedBy *string                               `json:"last_updated_by,omitempty"`
+	CloudProvider EnvironmentResponseAllOfCloudProvider `json:"cloud_provider"`
+	Mode          string                                `json:"mode"`
+	ClusterId     string                                `json:"cluster_id"`
 }
 
 // NewEnvironmentResponse instantiates a new EnvironmentResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentResponse(name string, cloudProvider map[string]interface{}, mode string, clusterId string, id string, createdAt time.Time) *EnvironmentResponse {
+func NewEnvironmentResponse(id string, createdAt time.Time, name string, cloudProvider EnvironmentResponseAllOfCloudProvider, mode string, clusterId string) *EnvironmentResponse {
 	this := EnvironmentResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Name = name
+	this.CloudProvider = cloudProvider
+	this.Mode = mode
+	this.ClusterId = clusterId
 	return &this
 }
 
@@ -48,6 +52,86 @@ func NewEnvironmentResponse(name string, cloudProvider map[string]interface{}, m
 func NewEnvironmentResponseWithDefaults() *EnvironmentResponse {
 	this := EnvironmentResponse{}
 	return &this
+}
+
+// GetId returns the Id field value
+func (o *EnvironmentResponse) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentResponse) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *EnvironmentResponse) SetId(v string) {
+	o.Id = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *EnvironmentResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentResponse) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *EnvironmentResponse) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *EnvironmentResponse) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentResponse) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *EnvironmentResponse) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *EnvironmentResponse) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
 }
 
 // GetName returns the Name field value
@@ -139,9 +223,9 @@ func (o *EnvironmentResponse) SetLastUpdatedBy(v string) {
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *EnvironmentResponse) GetCloudProvider() map[string]interface{} {
+func (o *EnvironmentResponse) GetCloudProvider() EnvironmentResponseAllOfCloudProvider {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret EnvironmentResponseAllOfCloudProvider
 		return ret
 	}
 
@@ -150,7 +234,7 @@ func (o *EnvironmentResponse) GetCloudProvider() map[string]interface{} {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentResponse) GetCloudProviderOk() (*map[string]interface{}, bool) {
+func (o *EnvironmentResponse) GetCloudProviderOk() (*EnvironmentResponseAllOfCloudProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -158,7 +242,7 @@ func (o *EnvironmentResponse) GetCloudProviderOk() (*map[string]interface{}, boo
 }
 
 // SetCloudProvider sets field value
-func (o *EnvironmentResponse) SetCloudProvider(v map[string]interface{}) {
+func (o *EnvironmentResponse) SetCloudProvider(v EnvironmentResponseAllOfCloudProvider) {
 	o.CloudProvider = v
 }
 
@@ -210,88 +294,17 @@ func (o *EnvironmentResponse) SetClusterId(v string) {
 	o.ClusterId = v
 }
 
-// GetId returns the Id field value
-func (o *EnvironmentResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *EnvironmentResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *EnvironmentResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *EnvironmentResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *EnvironmentResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *EnvironmentResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *EnvironmentResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *EnvironmentResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *EnvironmentResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
 func (o EnvironmentResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
 	if true {
 		toSerialize["name"] = o.Name
 	}
@@ -309,15 +322,6 @@ func (o EnvironmentResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return json.Marshal(toSerialize)
 }

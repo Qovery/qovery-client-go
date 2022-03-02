@@ -17,11 +17,11 @@ import (
 
 // ProjectCurrentCostResponse struct for ProjectCurrentCostResponse
 type ProjectCurrentCostResponse struct {
-	Environments          []GenericObjectCurrentCostResponse `json:"environments,omitempty"`
 	Id                    string                             `json:"id"`
 	Name                  string                             `json:"name"`
 	ConsumedTimeInSeconds int32                              `json:"consumed_time_in_seconds"`
 	Cost                  CostResponse                       `json:"cost"`
+	Environments          []GenericObjectCurrentCostResponse `json:"environments,omitempty"`
 }
 
 // NewProjectCurrentCostResponse instantiates a new ProjectCurrentCostResponse object
@@ -43,38 +43,6 @@ func NewProjectCurrentCostResponse(id string, name string, consumedTimeInSeconds
 func NewProjectCurrentCostResponseWithDefaults() *ProjectCurrentCostResponse {
 	this := ProjectCurrentCostResponse{}
 	return &this
-}
-
-// GetEnvironments returns the Environments field value if set, zero value otherwise.
-func (o *ProjectCurrentCostResponse) GetEnvironments() []GenericObjectCurrentCostResponse {
-	if o == nil || o.Environments == nil {
-		var ret []GenericObjectCurrentCostResponse
-		return ret
-	}
-	return o.Environments
-}
-
-// GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectCurrentCostResponse) GetEnvironmentsOk() ([]GenericObjectCurrentCostResponse, bool) {
-	if o == nil || o.Environments == nil {
-		return nil, false
-	}
-	return o.Environments, true
-}
-
-// HasEnvironments returns a boolean if a field has been set.
-func (o *ProjectCurrentCostResponse) HasEnvironments() bool {
-	if o != nil && o.Environments != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironments gets a reference to the given []GenericObjectCurrentCostResponse and assigns it to the Environments field.
-func (o *ProjectCurrentCostResponse) SetEnvironments(v []GenericObjectCurrentCostResponse) {
-	o.Environments = v
 }
 
 // GetId returns the Id field value
@@ -173,11 +141,40 @@ func (o *ProjectCurrentCostResponse) SetCost(v CostResponse) {
 	o.Cost = v
 }
 
+// GetEnvironments returns the Environments field value if set, zero value otherwise.
+func (o *ProjectCurrentCostResponse) GetEnvironments() []GenericObjectCurrentCostResponse {
+	if o == nil || o.Environments == nil {
+		var ret []GenericObjectCurrentCostResponse
+		return ret
+	}
+	return o.Environments
+}
+
+// GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectCurrentCostResponse) GetEnvironmentsOk() ([]GenericObjectCurrentCostResponse, bool) {
+	if o == nil || o.Environments == nil {
+		return nil, false
+	}
+	return o.Environments, true
+}
+
+// HasEnvironments returns a boolean if a field has been set.
+func (o *ProjectCurrentCostResponse) HasEnvironments() bool {
+	if o != nil && o.Environments != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironments gets a reference to the given []GenericObjectCurrentCostResponse and assigns it to the Environments field.
+func (o *ProjectCurrentCostResponse) SetEnvironments(v []GenericObjectCurrentCostResponse) {
+	o.Environments = v
+}
+
 func (o ProjectCurrentCostResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Environments != nil {
-		toSerialize["environments"] = o.Environments
-	}
 	if true {
 		toSerialize["id"] = o.Id
 	}
@@ -189,6 +186,9 @@ func (o ProjectCurrentCostResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cost"] = o.Cost
+	}
+	if o.Environments != nil {
+		toSerialize["environments"] = o.Environments
 	}
 	return json.Marshal(toSerialize)
 }

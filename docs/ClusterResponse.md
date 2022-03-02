@@ -4,11 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**HasAccess** | Pointer to **bool** |  | [optional] 
-**Version** | Pointer to **string** |  | [optional] 
-**IsDefault** | Pointer to **bool** |  | [optional] 
 **Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -28,7 +23,12 @@ Name | Type | Description | Notes
 **ValueType** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **NullableString** |  | [optional] 
 **IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
-**AcceptedValues** | Pointer to [**[]interface{}**](interface{}.md) |  | [optional] 
+**AcceptedValues** | Pointer to [**[]OneOfstringboolean**](OneOfstringboolean.md) |  | [optional] 
+**EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
+**Status** | Pointer to **string** |  | [optional] 
+**HasAccess** | Pointer to **bool** |  | [optional] 
+**Version** | Pointer to **string** |  | [optional] 
+**IsDefault** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -48,131 +48,6 @@ will change when the set of required properties is changed
 NewClusterResponseWithDefaults instantiates a new ClusterResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEstimatedCloudProviderCost
-
-`func (o *ClusterResponse) GetEstimatedCloudProviderCost() int32`
-
-GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field if non-nil, zero value otherwise.
-
-### GetEstimatedCloudProviderCostOk
-
-`func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*int32, bool)`
-
-GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEstimatedCloudProviderCost
-
-`func (o *ClusterResponse) SetEstimatedCloudProviderCost(v int32)`
-
-SetEstimatedCloudProviderCost sets EstimatedCloudProviderCost field to given value.
-
-### HasEstimatedCloudProviderCost
-
-`func (o *ClusterResponse) HasEstimatedCloudProviderCost() bool`
-
-HasEstimatedCloudProviderCost returns a boolean if a field has been set.
-
-### GetStatus
-
-`func (o *ClusterResponse) GetStatus() string`
-
-GetStatus returns the Status field if non-nil, zero value otherwise.
-
-### GetStatusOk
-
-`func (o *ClusterResponse) GetStatusOk() (*string, bool)`
-
-GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStatus
-
-`func (o *ClusterResponse) SetStatus(v string)`
-
-SetStatus sets Status field to given value.
-
-### HasStatus
-
-`func (o *ClusterResponse) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
-
-### GetHasAccess
-
-`func (o *ClusterResponse) GetHasAccess() bool`
-
-GetHasAccess returns the HasAccess field if non-nil, zero value otherwise.
-
-### GetHasAccessOk
-
-`func (o *ClusterResponse) GetHasAccessOk() (*bool, bool)`
-
-GetHasAccessOk returns a tuple with the HasAccess field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHasAccess
-
-`func (o *ClusterResponse) SetHasAccess(v bool)`
-
-SetHasAccess sets HasAccess field to given value.
-
-### HasHasAccess
-
-`func (o *ClusterResponse) HasHasAccess() bool`
-
-HasHasAccess returns a boolean if a field has been set.
-
-### GetVersion
-
-`func (o *ClusterResponse) GetVersion() string`
-
-GetVersion returns the Version field if non-nil, zero value otherwise.
-
-### GetVersionOk
-
-`func (o *ClusterResponse) GetVersionOk() (*string, bool)`
-
-GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVersion
-
-`func (o *ClusterResponse) SetVersion(v string)`
-
-SetVersion sets Version field to given value.
-
-### HasVersion
-
-`func (o *ClusterResponse) HasVersion() bool`
-
-HasVersion returns a boolean if a field has been set.
-
-### GetIsDefault
-
-`func (o *ClusterResponse) GetIsDefault() bool`
-
-GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
-
-### GetIsDefaultOk
-
-`func (o *ClusterResponse) GetIsDefaultOk() (*bool, bool)`
-
-GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsDefault
-
-`func (o *ClusterResponse) SetIsDefault(v bool)`
-
-SetIsDefault sets IsDefault field to given value.
-
-### HasIsDefault
-
-`func (o *ClusterResponse) HasIsDefault() bool`
-
-HasIsDefault returns a boolean if a field has been set.
 
 ### GetId
 
@@ -676,20 +551,20 @@ HasIsValueUpdatable returns a boolean if a field has been set.
 
 ### GetAcceptedValues
 
-`func (o *ClusterResponse) GetAcceptedValues() []interface{}`
+`func (o *ClusterResponse) GetAcceptedValues() []OneOfstringboolean`
 
 GetAcceptedValues returns the AcceptedValues field if non-nil, zero value otherwise.
 
 ### GetAcceptedValuesOk
 
-`func (o *ClusterResponse) GetAcceptedValuesOk() (*[]interface{}, bool)`
+`func (o *ClusterResponse) GetAcceptedValuesOk() (*[]OneOfstringboolean, bool)`
 
 GetAcceptedValuesOk returns a tuple with the AcceptedValues field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAcceptedValues
 
-`func (o *ClusterResponse) SetAcceptedValues(v []interface{})`
+`func (o *ClusterResponse) SetAcceptedValues(v []OneOfstringboolean)`
 
 SetAcceptedValues sets AcceptedValues field to given value.
 
@@ -698,6 +573,131 @@ SetAcceptedValues sets AcceptedValues field to given value.
 `func (o *ClusterResponse) HasAcceptedValues() bool`
 
 HasAcceptedValues returns a boolean if a field has been set.
+
+### GetEstimatedCloudProviderCost
+
+`func (o *ClusterResponse) GetEstimatedCloudProviderCost() int32`
+
+GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field if non-nil, zero value otherwise.
+
+### GetEstimatedCloudProviderCostOk
+
+`func (o *ClusterResponse) GetEstimatedCloudProviderCostOk() (*int32, bool)`
+
+GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEstimatedCloudProviderCost
+
+`func (o *ClusterResponse) SetEstimatedCloudProviderCost(v int32)`
+
+SetEstimatedCloudProviderCost sets EstimatedCloudProviderCost field to given value.
+
+### HasEstimatedCloudProviderCost
+
+`func (o *ClusterResponse) HasEstimatedCloudProviderCost() bool`
+
+HasEstimatedCloudProviderCost returns a boolean if a field has been set.
+
+### GetStatus
+
+`func (o *ClusterResponse) GetStatus() string`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *ClusterResponse) GetStatusOk() (*string, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *ClusterResponse) SetStatus(v string)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *ClusterResponse) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
+
+### GetHasAccess
+
+`func (o *ClusterResponse) GetHasAccess() bool`
+
+GetHasAccess returns the HasAccess field if non-nil, zero value otherwise.
+
+### GetHasAccessOk
+
+`func (o *ClusterResponse) GetHasAccessOk() (*bool, bool)`
+
+GetHasAccessOk returns a tuple with the HasAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasAccess
+
+`func (o *ClusterResponse) SetHasAccess(v bool)`
+
+SetHasAccess sets HasAccess field to given value.
+
+### HasHasAccess
+
+`func (o *ClusterResponse) HasHasAccess() bool`
+
+HasHasAccess returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *ClusterResponse) GetVersion() string`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *ClusterResponse) GetVersionOk() (*string, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *ClusterResponse) SetVersion(v string)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *ClusterResponse) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
+
+### GetIsDefault
+
+`func (o *ClusterResponse) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *ClusterResponse) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *ClusterResponse) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *ClusterResponse) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
