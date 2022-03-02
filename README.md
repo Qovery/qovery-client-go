@@ -270,6 +270,9 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**PostAcceptInviteMember**](docs/MembersApi.md#postacceptinvitemember) | **Post** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization
 *MembersApi* | [**PostInviteMember**](docs/MembersApi.md#postinvitemember) | **Post** /organization/{organizationId}/inviteMember | Invite someone in the organization
 *MembersApi* | [**PostOrganizationTransferOwnership**](docs/MembersApi.md#postorganizationtransferownership) | **Post** /organization/{organizationId}/transferOwnership | Transfer organization ownership to another user
+*OrganizationApiTokenApi* | [**CreateOrganizationApiToken**](docs/OrganizationApiTokenApi.md#createorganizationapitoken) | **Post** /organization/{organizationId}/apiToken | Create an organization api token
+*OrganizationApiTokenApi* | [**DeleteOrganizationApiToken**](docs/OrganizationApiTokenApi.md#deleteorganizationapitoken) | **Delete** /organization/{organizationId}/apiToken/{apiTokenId} | Delete organization api token
+*OrganizationApiTokenApi* | [**ListOrganizationApiTokens**](docs/OrganizationApiTokenApi.md#listorganizationapitokens) | **Get** /organization/{organizationId}/apiToken | List organization api tokens
 *OrganizationMainCallsApi* | [**CreateOrganization**](docs/OrganizationMainCallsApi.md#createorganization) | **Post** /organization | Create an organization
 *OrganizationMainCallsApi* | [**DeleteOrganization**](docs/OrganizationMainCallsApi.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
 *OrganizationMainCallsApi* | [**EditOrganization**](docs/OrganizationMainCallsApi.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
@@ -514,6 +517,13 @@ Class | Method | HTTP request | Description
  - [MetricStorageResponse](docs/MetricStorageResponse.md)
  - [MetricStorageResponseList](docs/MetricStorageResponseList.md)
  - [Name](docs/Name.md)
+ - [OrganizationApiTokenCreateRequest](docs/OrganizationApiTokenCreateRequest.md)
+ - [OrganizationApiTokenCreateResponse](docs/OrganizationApiTokenCreateResponse.md)
+ - [OrganizationApiTokenCreateResponseAllOf](docs/OrganizationApiTokenCreateResponseAllOf.md)
+ - [OrganizationApiTokenResponse](docs/OrganizationApiTokenResponse.md)
+ - [OrganizationApiTokenResponseAllOf](docs/OrganizationApiTokenResponseAllOf.md)
+ - [OrganizationApiTokenResponseList](docs/OrganizationApiTokenResponseList.md)
+ - [OrganizationApiTokenScope](docs/OrganizationApiTokenScope.md)
  - [OrganizationCreditCodeRequest](docs/OrganizationCreditCodeRequest.md)
  - [OrganizationCurrentCostResponse](docs/OrganizationCurrentCostResponse.md)
  - [OrganizationEditRequest](docs/OrganizationEditRequest.md)

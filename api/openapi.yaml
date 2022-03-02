@@ -61,6 +61,7 @@ tags:
 - name: Members
 - name: Organization
 - name: Organization Main Calls
+- name: Organization Api Token
 - name: Project
 - name: Project Deployment Rule
 - name: Project Environment Variable
@@ -207,6 +208,109 @@ paths:
       summary: Edit an organization
       tags:
       - Organization Main Calls
+  /organization/{organizationId}/apiToken:
+    get:
+      description: List organization api tokens
+      operationId: listOrganizationApiTokens
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationApiTokenResponseList'
+          description: List organization api tokens
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization api tokens
+      tags:
+      - Organization Api Token
+    post:
+      description: Create an organization api token
+      operationId: createOrganizationApiToken
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationApiTokenCreateRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationApiTokenCreateResponse'
+          description: Organization api token created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Organization Api Token name is already taken
+      summary: Create an organization api token
+      tags:
+      - Organization Api Token
+  /organization/{organizationId}/apiToken/{apiTokenId}:
+    delete:
+      description: Delete organization api token
+      operationId: deleteOrganizationApiToken
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization Api Token ID
+        explode: false
+        in: path
+        name: apiTokenId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete organization api token
+      tags:
+      - Organization Api Token
   /organization/{organizationId}/member:
     get:
       operationId: getOrganizationMembers
@@ -11533,6 +11637,44 @@ components:
       - SCALA
       nullable: true
       type: string
+    OrganizationApiTokenScope:
+      enum:
+      - ADMIN
+      type: string
+    OrganizationApiTokenCreateRequest:
+      example:
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        scope:
+          $ref: '#/components/schemas/OrganizationApiTokenScope'
+      required:
+      - name
+      - scope
+      type: object
+    OrganizationApiTokenResponseList:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationApiTokenResponse'
+          type: array
+      type: object
+    OrganizationApiTokenResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/OrganizationApiTokenResponse_allOf'
+    OrganizationApiTokenCreateResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/OrganizationApiTokenCreateResponse_allOf'
     _project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order:
       properties:
         id:
@@ -12661,6 +12803,28 @@ components:
       - destination
       - target
       type: object
+    OrganizationApiTokenResponse_allOf:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        scope:
+          $ref: '#/components/schemas/OrganizationApiTokenScope'
+      type: object
+    OrganizationApiTokenCreateResponse_allOf:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        token:
+          description: the generated token to send in 'Authorization' header prefixed
+            by 'Token '
+          type: string
+        scope:
+          $ref: '#/components/schemas/OrganizationApiTokenScope'
+      type: object
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
@@ -12670,6 +12834,7 @@ x-tagGroups:
 - name: Organization
   tags:
   - Organization Main Calls
+  - Organization Api Token
   - Projects
   - Members
   - Billing

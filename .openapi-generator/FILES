@@ -40,6 +40,7 @@ api_environments.go
 api_git_repositories.go
 api_logical_database.go
 api_members.go
+api_organization_api_token.go
 api_organization_main_calls.go
 api_project_deployment_rule.go
 api_project_environment_variable.go
@@ -295,6 +296,14 @@ docs/MetricStorageDatapointResponseList.md
 docs/MetricStorageResponse.md
 docs/MetricStorageResponseList.md
 docs/Name.md
+docs/OrganizationApiTokenApi.md
+docs/OrganizationApiTokenCreateRequest.md
+docs/OrganizationApiTokenCreateResponse.md
+docs/OrganizationApiTokenCreateResponseAllOf.md
+docs/OrganizationApiTokenResponse.md
+docs/OrganizationApiTokenResponseAllOf.md
+docs/OrganizationApiTokenResponseList.md
+docs/OrganizationApiTokenScope.md
 docs/OrganizationCreditCodeRequest.md
 docs/OrganizationCurrentCostResponse.md
 docs/OrganizationEditRequest.md
@@ -573,6 +582,13 @@ model_metric_storage_datapoint_response_list.go
 model_metric_storage_response.go
 model_metric_storage_response_list.go
 model_name.go
+model_organization_api_token_create_request.go
+model_organization_api_token_create_response.go
+model_organization_api_token_create_response_all_of.go
+model_organization_api_token_response.go
+model_organization_api_token_response_all_of.go
+model_organization_api_token_response_list.go
+model_organization_api_token_scope.go
 model_organization_credit_code_request.go
 model_organization_current_cost_response.go
 model_organization_edit_request.go
