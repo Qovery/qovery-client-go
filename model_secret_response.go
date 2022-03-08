@@ -22,17 +22,17 @@ type SecretResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// key is case sensitive
-	Key              *string           `json:"key,omitempty"`
-	OverriddenSecret *OverriddenSecret `json:"overridden_secret,omitempty"`
-	AliasedSecret    *AliasedSecret    `json:"aliased_secret,omitempty"`
-	Scope            string            `json:"scope"`
+	Key              *string                      `json:"key,omitempty"`
+	OverriddenSecret *OverriddenSecret            `json:"overridden_secret,omitempty"`
+	AliasedSecret    *AliasedSecret               `json:"aliased_secret,omitempty"`
+	Scope            EnvironmentVariableScopeEnum `json:"scope"`
 }
 
 // NewSecretResponse instantiates a new SecretResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretResponse(id string, createdAt time.Time, scope string) *SecretResponse {
+func NewSecretResponse(id string, createdAt time.Time, scope EnvironmentVariableScopeEnum) *SecretResponse {
 	this := SecretResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -225,9 +225,9 @@ func (o *SecretResponse) SetAliasedSecret(v AliasedSecret) {
 }
 
 // GetScope returns the Scope field value
-func (o *SecretResponse) GetScope() string {
+func (o *SecretResponse) GetScope() EnvironmentVariableScopeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentVariableScopeEnum
 		return ret
 	}
 
@@ -236,7 +236,7 @@ func (o *SecretResponse) GetScope() string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponse) GetScopeOk() (*string, bool) {
+func (o *SecretResponse) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -244,7 +244,7 @@ func (o *SecretResponse) GetScopeOk() (*string, bool) {
 }
 
 // SetScope sets field value
-func (o *SecretResponse) SetScope(v string) {
+func (o *SecretResponse) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = v
 }
 

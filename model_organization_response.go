@@ -24,7 +24,7 @@ type OrganizationResponse struct {
 	// name is case insensitive
 	Name        string         `json:"name"`
 	Description *string        `json:"description,omitempty"`
-	Plan        string         `json:"plan"`
+	Plan        PlanEnum       `json:"plan"`
 	WebsiteUrl  NullableString `json:"website_url,omitempty"`
 	Repository  NullableString `json:"repository,omitempty"`
 	LogoUrl     NullableString `json:"logo_url,omitempty"`
@@ -37,7 +37,7 @@ type OrganizationResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationResponse(id string, createdAt time.Time, name string, plan string) *OrganizationResponse {
+func NewOrganizationResponse(id string, createdAt time.Time, name string, plan PlanEnum) *OrganizationResponse {
 	this := OrganizationResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -191,9 +191,9 @@ func (o *OrganizationResponse) SetDescription(v string) {
 }
 
 // GetPlan returns the Plan field value
-func (o *OrganizationResponse) GetPlan() string {
+func (o *OrganizationResponse) GetPlan() PlanEnum {
 	if o == nil {
-		var ret string
+		var ret PlanEnum
 		return ret
 	}
 
@@ -202,7 +202,7 @@ func (o *OrganizationResponse) GetPlan() string {
 
 // GetPlanOk returns a tuple with the Plan field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationResponse) GetPlanOk() (*string, bool) {
+func (o *OrganizationResponse) GetPlanOk() (*PlanEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -210,7 +210,7 @@ func (o *OrganizationResponse) GetPlanOk() (*string, bool) {
 }
 
 // SetPlan sets field value
-func (o *OrganizationResponse) SetPlan(v string) {
+func (o *OrganizationResponse) SetPlan(v PlanEnum) {
 	o.Plan = v
 }
 

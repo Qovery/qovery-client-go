@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatus() string`
+`func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatus() GlobalDeploymentStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatusOk() (*string, bool)`
+`func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatusOk() (*GlobalDeploymentStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *DeploymentHistoryDatabaseResponseAllOf) SetStatus(v string)`
+`func (o *DeploymentHistoryDatabaseResponseAllOf) SetStatus(v GlobalDeploymentStatus)`
 
 SetStatus sets Status field to given value.
 

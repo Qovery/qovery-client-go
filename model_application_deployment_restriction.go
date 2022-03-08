@@ -17,17 +17,16 @@ import (
 
 // ApplicationDeploymentRestriction struct for ApplicationDeploymentRestriction
 type ApplicationDeploymentRestriction struct {
-	// Match mode will rebuild app only if specified items are updated. Exclude mode will not rebuild app if specified items are updated.
-	Mode  string `json:"mode"`
-	Type  string `json:"type"`
-	Value string `json:"value"`
+	Mode  DeploymentRestrictionModeEnum `json:"mode"`
+	Type  DeploymentRestrictionTypeEnum `json:"type"`
+	Value string                        `json:"value"`
 }
 
 // NewApplicationDeploymentRestriction instantiates a new ApplicationDeploymentRestriction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationDeploymentRestriction(mode string, type_ string, value string) *ApplicationDeploymentRestriction {
+func NewApplicationDeploymentRestriction(mode DeploymentRestrictionModeEnum, type_ DeploymentRestrictionTypeEnum, value string) *ApplicationDeploymentRestriction {
 	this := ApplicationDeploymentRestriction{}
 	this.Mode = mode
 	this.Type = type_
@@ -44,9 +43,9 @@ func NewApplicationDeploymentRestrictionWithDefaults() *ApplicationDeploymentRes
 }
 
 // GetMode returns the Mode field value
-func (o *ApplicationDeploymentRestriction) GetMode() string {
+func (o *ApplicationDeploymentRestriction) GetMode() DeploymentRestrictionModeEnum {
 	if o == nil {
-		var ret string
+		var ret DeploymentRestrictionModeEnum
 		return ret
 	}
 
@@ -55,7 +54,7 @@ func (o *ApplicationDeploymentRestriction) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationDeploymentRestriction) GetModeOk() (*string, bool) {
+func (o *ApplicationDeploymentRestriction) GetModeOk() (*DeploymentRestrictionModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,14 +62,14 @@ func (o *ApplicationDeploymentRestriction) GetModeOk() (*string, bool) {
 }
 
 // SetMode sets field value
-func (o *ApplicationDeploymentRestriction) SetMode(v string) {
+func (o *ApplicationDeploymentRestriction) SetMode(v DeploymentRestrictionModeEnum) {
 	o.Mode = v
 }
 
 // GetType returns the Type field value
-func (o *ApplicationDeploymentRestriction) GetType() string {
+func (o *ApplicationDeploymentRestriction) GetType() DeploymentRestrictionTypeEnum {
 	if o == nil {
-		var ret string
+		var ret DeploymentRestrictionTypeEnum
 		return ret
 	}
 
@@ -79,7 +78,7 @@ func (o *ApplicationDeploymentRestriction) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationDeploymentRestriction) GetTypeOk() (*string, bool) {
+func (o *ApplicationDeploymentRestriction) GetTypeOk() (*DeploymentRestrictionTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +86,7 @@ func (o *ApplicationDeploymentRestriction) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *ApplicationDeploymentRestriction) SetType(v string) {
+func (o *ApplicationDeploymentRestriction) SetType(v DeploymentRestrictionTypeEnum) {
 	o.Type = v
 }
 

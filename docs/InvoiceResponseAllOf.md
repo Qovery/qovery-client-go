@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | 
-**Status** | **string** |  | 
+**Status** | [**InvoiceStatusEnum**](InvoiceStatusEnum.md) |  | 
 
 ## Methods
 
 ### NewInvoiceResponseAllOf
 
-`func NewInvoiceResponseAllOf(id string, createdAt time.Time, status string, ) *InvoiceResponseAllOf`
+`func NewInvoiceResponseAllOf(id string, createdAt time.Time, status InvoiceStatusEnum, ) *InvoiceResponseAllOf`
 
 NewInvoiceResponseAllOf instantiates a new InvoiceResponseAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetCreatedAt sets CreatedAt field to given value.
 
 ### GetStatus
 
-`func (o *InvoiceResponseAllOf) GetStatus() string`
+`func (o *InvoiceResponseAllOf) GetStatus() InvoiceStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *InvoiceResponseAllOf) GetStatusOk() (*string, bool)`
+`func (o *InvoiceResponseAllOf) GetStatusOk() (*InvoiceStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *InvoiceResponseAllOf) SetStatus(v string)`
+`func (o *InvoiceResponseAllOf) SetStatus(v InvoiceStatusEnum)`
 
 SetStatus sets Status field to given value.
 

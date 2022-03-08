@@ -17,17 +17,17 @@ import (
 
 // VariableImportRequestVars struct for VariableImportRequestVars
 type VariableImportRequestVars struct {
-	Name     string `json:"name"`
-	Value    string `json:"value"`
-	Scope    string `json:"scope"`
-	IsSecret bool   `json:"is_secret"`
+	Name     string                       `json:"name"`
+	Value    string                       `json:"value"`
+	Scope    EnvironmentVariableScopeEnum `json:"scope"`
+	IsSecret bool                         `json:"is_secret"`
 }
 
 // NewVariableImportRequestVars instantiates a new VariableImportRequestVars object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableImportRequestVars(name string, value string, scope string, isSecret bool) *VariableImportRequestVars {
+func NewVariableImportRequestVars(name string, value string, scope EnvironmentVariableScopeEnum, isSecret bool) *VariableImportRequestVars {
 	this := VariableImportRequestVars{}
 	this.Name = name
 	this.Value = value
@@ -93,9 +93,9 @@ func (o *VariableImportRequestVars) SetValue(v string) {
 }
 
 // GetScope returns the Scope field value
-func (o *VariableImportRequestVars) GetScope() string {
+func (o *VariableImportRequestVars) GetScope() EnvironmentVariableScopeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentVariableScopeEnum
 		return ret
 	}
 
@@ -104,7 +104,7 @@ func (o *VariableImportRequestVars) GetScope() string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *VariableImportRequestVars) GetScopeOk() (*string, bool) {
+func (o *VariableImportRequestVars) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *VariableImportRequestVars) GetScopeOk() (*string, bool) {
 }
 
 // SetScope sets field value
-func (o *VariableImportRequestVars) SetScope(v string) {
+func (o *VariableImportRequestVars) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = v
 }
 

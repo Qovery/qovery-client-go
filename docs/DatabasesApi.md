@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    databaseRequest := *openapiclient.NewDatabaseRequest("Name_example", "Type_example", "10.1", "Mode_example") // DatabaseRequest |  (optional)
+    databaseRequest := *openapiclient.NewDatabaseRequest("Name_example", openapiclient.DatabaseTypeEnum("POSTGRESQL"), "10.1", openapiclient.DatabaseModeEnum("MANAGED")) // DatabaseRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

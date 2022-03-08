@@ -17,8 +17,8 @@ import (
 
 // DeploymentHistoryResponseAllOf struct for DeploymentHistoryResponseAllOf
 type DeploymentHistoryResponseAllOf struct {
-	Commit *CommitResponse `json:"commit,omitempty"`
-	Status *string         `json:"status,omitempty"`
+	Commit *CommitResponse              `json:"commit,omitempty"`
+	Status *DeploymentHistoryStatusEnum `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryResponseAllOf instantiates a new DeploymentHistoryResponseAllOf object
@@ -71,9 +71,9 @@ func (o *DeploymentHistoryResponseAllOf) SetCommit(v CommitResponse) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryResponseAllOf) GetStatus() string {
+func (o *DeploymentHistoryResponseAllOf) GetStatus() DeploymentHistoryStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret DeploymentHistoryStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -81,7 +81,7 @@ func (o *DeploymentHistoryResponseAllOf) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryResponseAllOf) GetStatusOk() (*string, bool) {
+func (o *DeploymentHistoryResponseAllOf) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *DeploymentHistoryResponseAllOf) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *DeploymentHistoryResponseAllOf) SetStatus(v string) {
+// SetStatus gets a reference to the given DeploymentHistoryStatusEnum and assigns it to the Status field.
+func (o *DeploymentHistoryResponseAllOf) SetStatus(v DeploymentHistoryStatusEnum) {
 	o.Status = &v
 }
 

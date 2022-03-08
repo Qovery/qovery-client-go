@@ -18,10 +18,10 @@ import (
 
 // ApplicationGitRepositoryResponse struct for ApplicationGitRepositoryResponse
 type ApplicationGitRepositoryResponse struct {
-	HasAccess *bool   `json:"has_access,omitempty"`
-	Provider  *string `json:"provider,omitempty"`
-	Owner     *string `json:"owner,omitempty"`
-	Url       *string `json:"url,omitempty"`
+	HasAccess *bool            `json:"has_access,omitempty"`
+	Provider  *GitProviderEnum `json:"provider,omitempty"`
+	Owner     *string          `json:"owner,omitempty"`
+	Url       *string          `json:"url,omitempty"`
 	// repository name
 	Name     *string `json:"name,omitempty"`
 	Branch   *string `json:"branch,omitempty"`
@@ -85,9 +85,9 @@ func (o *ApplicationGitRepositoryResponse) SetHasAccess(v bool) {
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
-func (o *ApplicationGitRepositoryResponse) GetProvider() string {
+func (o *ApplicationGitRepositoryResponse) GetProvider() GitProviderEnum {
 	if o == nil || o.Provider == nil {
-		var ret string
+		var ret GitProviderEnum
 		return ret
 	}
 	return *o.Provider
@@ -95,7 +95,7 @@ func (o *ApplicationGitRepositoryResponse) GetProvider() string {
 
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationGitRepositoryResponse) GetProviderOk() (*string, bool) {
+func (o *ApplicationGitRepositoryResponse) GetProviderOk() (*GitProviderEnum, bool) {
 	if o == nil || o.Provider == nil {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *ApplicationGitRepositoryResponse) HasProvider() bool {
 	return false
 }
 
-// SetProvider gets a reference to the given string and assigns it to the Provider field.
-func (o *ApplicationGitRepositoryResponse) SetProvider(v string) {
+// SetProvider gets a reference to the given GitProviderEnum and assigns it to the Provider field.
+func (o *ApplicationGitRepositoryResponse) SetProvider(v GitProviderEnum) {
 	o.Provider = &v
 }
 

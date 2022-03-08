@@ -18,11 +18,11 @@ import (
 // Cluster struct for Cluster
 type Cluster struct {
 	// name is case-insensitive
-	Name          string  `json:"name"`
-	Description   *string `json:"description,omitempty"`
-	CloudProvider string  `json:"cloud_provider"`
-	Region        string  `json:"region"`
-	AutoUpdate    *bool   `json:"auto_update,omitempty"`
+	Name          string            `json:"name"`
+	Description   *string           `json:"description,omitempty"`
+	CloudProvider CloudProviderEnum `json:"cloud_provider"`
+	Region        string            `json:"region"`
+	AutoUpdate    *bool             `json:"auto_update,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -35,7 +35,7 @@ type Cluster struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCluster(name string, cloudProvider string, region string) *Cluster {
+func NewCluster(name string, cloudProvider CloudProviderEnum, region string) *Cluster {
 	this := Cluster{}
 	this.Name = name
 	this.CloudProvider = cloudProvider
@@ -124,9 +124,9 @@ func (o *Cluster) SetDescription(v string) {
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *Cluster) GetCloudProvider() string {
+func (o *Cluster) GetCloudProvider() CloudProviderEnum {
 	if o == nil {
-		var ret string
+		var ret CloudProviderEnum
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *Cluster) GetCloudProvider() string {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetCloudProviderOk() (*string, bool) {
+func (o *Cluster) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *Cluster) GetCloudProviderOk() (*string, bool) {
 }
 
 // SetCloudProvider sets field value
-func (o *Cluster) SetCloudProvider(v string) {
+func (o *Cluster) SetCloudProvider(v CloudProviderEnum) {
 	o.CloudProvider = v
 }
 

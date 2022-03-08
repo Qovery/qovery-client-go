@@ -23,7 +23,7 @@ type EnvironmentResponseAllOf struct {
 	// uuid of the user that made the last update
 	LastUpdatedBy *string                               `json:"last_updated_by,omitempty"`
 	CloudProvider EnvironmentResponseAllOfCloudProvider `json:"cloud_provider"`
-	Mode          string                                `json:"mode"`
+	Mode          EnvironmentModeEnum                   `json:"mode"`
 	ClusterId     string                                `json:"cluster_id"`
 }
 
@@ -31,7 +31,7 @@ type EnvironmentResponseAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentResponseAllOf(name string, cloudProvider EnvironmentResponseAllOfCloudProvider, mode string, clusterId string) *EnvironmentResponseAllOf {
+func NewEnvironmentResponseAllOf(name string, cloudProvider EnvironmentResponseAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string) *EnvironmentResponseAllOf {
 	this := EnvironmentResponseAllOf{}
 	this.Name = name
 	this.CloudProvider = cloudProvider
@@ -161,9 +161,9 @@ func (o *EnvironmentResponseAllOf) SetCloudProvider(v EnvironmentResponseAllOfCl
 }
 
 // GetMode returns the Mode field value
-func (o *EnvironmentResponseAllOf) GetMode() string {
+func (o *EnvironmentResponseAllOf) GetMode() EnvironmentModeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentModeEnum
 		return ret
 	}
 
@@ -172,7 +172,7 @@ func (o *EnvironmentResponseAllOf) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentResponseAllOf) GetModeOk() (*string, bool) {
+func (o *EnvironmentResponseAllOf) GetModeOk() (*EnvironmentModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -180,7 +180,7 @@ func (o *EnvironmentResponseAllOf) GetModeOk() (*string, bool) {
 }
 
 // SetMode sets field value
-func (o *EnvironmentResponseAllOf) SetMode(v string) {
+func (o *EnvironmentResponseAllOf) SetMode(v EnvironmentModeEnum) {
 	o.Mode = v
 }
 

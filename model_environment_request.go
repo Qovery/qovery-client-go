@@ -18,9 +18,9 @@ import (
 // EnvironmentRequest struct for EnvironmentRequest
 type EnvironmentRequest struct {
 	// name is case insensitive
-	Name    string  `json:"name"`
-	Cluster *string `json:"cluster,omitempty"`
-	Mode    *string `json:"mode,omitempty"`
+	Name    string               `json:"name"`
+	Cluster *string              `json:"cluster,omitempty"`
+	Mode    *EnvironmentModeEnum `json:"mode,omitempty"`
 }
 
 // NewEnvironmentRequest instantiates a new EnvironmentRequest object
@@ -98,9 +98,9 @@ func (o *EnvironmentRequest) SetCluster(v string) {
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *EnvironmentRequest) GetMode() string {
+func (o *EnvironmentRequest) GetMode() EnvironmentModeEnum {
 	if o == nil || o.Mode == nil {
-		var ret string
+		var ret EnvironmentModeEnum
 		return ret
 	}
 	return *o.Mode
@@ -108,7 +108,7 @@ func (o *EnvironmentRequest) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentRequest) GetModeOk() (*string, bool) {
+func (o *EnvironmentRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 	if o == nil || o.Mode == nil {
 		return nil, false
 	}
@@ -124,8 +124,8 @@ func (o *EnvironmentRequest) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
-func (o *EnvironmentRequest) SetMode(v string) {
+// SetMode gets a reference to the given EnvironmentModeEnum and assigns it to the Mode field.
+func (o *EnvironmentRequest) SetMode(v EnvironmentModeEnum) {
 	o.Mode = &v
 }
 

@@ -19,16 +19,16 @@ import (
 type VariableImportResponseSuccessfulImportedVariables struct {
 	Name string `json:"name"`
 	// Optional if the variable is secret
-	Value    *string `json:"value,omitempty"`
-	Scope    string  `json:"scope"`
-	IsSecret bool    `json:"is_secret"`
+	Value    *string                      `json:"value,omitempty"`
+	Scope    EnvironmentVariableScopeEnum `json:"scope"`
+	IsSecret bool                         `json:"is_secret"`
 }
 
 // NewVariableImportResponseSuccessfulImportedVariables instantiates a new VariableImportResponseSuccessfulImportedVariables object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableImportResponseSuccessfulImportedVariables(name string, scope string, isSecret bool) *VariableImportResponseSuccessfulImportedVariables {
+func NewVariableImportResponseSuccessfulImportedVariables(name string, scope EnvironmentVariableScopeEnum, isSecret bool) *VariableImportResponseSuccessfulImportedVariables {
 	this := VariableImportResponseSuccessfulImportedVariables{}
 	this.Name = name
 	this.Scope = scope
@@ -101,9 +101,9 @@ func (o *VariableImportResponseSuccessfulImportedVariables) SetValue(v string) {
 }
 
 // GetScope returns the Scope field value
-func (o *VariableImportResponseSuccessfulImportedVariables) GetScope() string {
+func (o *VariableImportResponseSuccessfulImportedVariables) GetScope() EnvironmentVariableScopeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentVariableScopeEnum
 		return ret
 	}
 
@@ -112,7 +112,7 @@ func (o *VariableImportResponseSuccessfulImportedVariables) GetScope() string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *VariableImportResponseSuccessfulImportedVariables) GetScopeOk() (*string, bool) {
+func (o *VariableImportResponseSuccessfulImportedVariables) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *VariableImportResponseSuccessfulImportedVariables) GetScopeOk() (*strin
 }
 
 // SetScope sets field value
-func (o *VariableImportResponseSuccessfulImportedVariables) SetScope(v string) {
+func (o *VariableImportResponseSuccessfulImportedVariables) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = v
 }
 

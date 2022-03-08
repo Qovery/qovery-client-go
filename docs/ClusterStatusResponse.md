@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**ClusterDeploymentStatusEnum**](ClusterDeploymentStatusEnum.md) |  | [optional] 
 **IsDeployed** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasClusterId returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ClusterStatusResponse) GetStatus() string`
+`func (o *ClusterStatusResponse) GetStatus() ClusterDeploymentStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ClusterStatusResponse) GetStatusOk() (*string, bool)`
+`func (o *ClusterStatusResponse) GetStatusOk() (*ClusterDeploymentStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ClusterStatusResponse) SetStatus(v string)`
+`func (o *ClusterStatusResponse) SetStatus(v ClusterDeploymentStatusEnum)`
 
 SetStatus sets Status field to given value.
 

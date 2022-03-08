@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
-**Scope** | Pointer to **string** |  | [optional] 
+**Scope** | Pointer to [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasValue returns a boolean if a field has been set.
 
 ### GetScope
 
-`func (o *EnvironmentVariableResponseAllOfAliasedVariable) GetScope() string`
+`func (o *EnvironmentVariableResponseAllOfAliasedVariable) GetScope() EnvironmentVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *EnvironmentVariableResponseAllOfAliasedVariable) GetScopeOk() (*string, bool)`
+`func (o *EnvironmentVariableResponseAllOfAliasedVariable) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *EnvironmentVariableResponseAllOfAliasedVariable) SetScope(v string)`
+`func (o *EnvironmentVariableResponseAllOfAliasedVariable) SetScope(v EnvironmentVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

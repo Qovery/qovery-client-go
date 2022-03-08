@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryApplicationResponseAllOf struct for DeploymentHistoryApplicationResponseAllOf
 type DeploymentHistoryApplicationResponseAllOf struct {
-	Name   *string         `json:"name,omitempty"`
-	Commit *CommitResponse `json:"commit,omitempty"`
-	Status *string         `json:"status,omitempty"`
+	Name   *string                 `json:"name,omitempty"`
+	Commit *CommitResponse         `json:"commit,omitempty"`
+	Status *GlobalDeploymentStatus `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryApplicationResponseAllOf instantiates a new DeploymentHistoryApplicationResponseAllOf object
@@ -104,9 +104,9 @@ func (o *DeploymentHistoryApplicationResponseAllOf) SetCommit(v CommitResponse) 
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryApplicationResponseAllOf) GetStatus() string {
+func (o *DeploymentHistoryApplicationResponseAllOf) GetStatus() GlobalDeploymentStatus {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret GlobalDeploymentStatus
 		return ret
 	}
 	return *o.Status
@@ -114,7 +114,7 @@ func (o *DeploymentHistoryApplicationResponseAllOf) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryApplicationResponseAllOf) GetStatusOk() (*string, bool) {
+func (o *DeploymentHistoryApplicationResponseAllOf) GetStatusOk() (*GlobalDeploymentStatus, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -130,8 +130,8 @@ func (o *DeploymentHistoryApplicationResponseAllOf) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *DeploymentHistoryApplicationResponseAllOf) SetStatus(v string) {
+// SetStatus gets a reference to the given GlobalDeploymentStatus and assigns it to the Status field.
+func (o *DeploymentHistoryApplicationResponseAllOf) SetStatus(v GlobalDeploymentStatus) {
 	o.Status = &v
 }
 

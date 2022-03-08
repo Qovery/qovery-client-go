@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Email** | **string** |  | 
-**Role** | **string** |  | 
+**Role** | [**InviteMemberRoleEnum**](InviteMemberRoleEnum.md) |  | 
 **InvitationLink** | **string** |  | 
-**InvitationStatus** | **string** |  | 
+**InvitationStatus** | [**InviteStatusEnum**](InviteStatusEnum.md) |  | 
 **Inviter** | **string** |  | 
 **LogoUrl** | Pointer to **string** |  | [optional] 
 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewInviteMemberResponse
 
-`func NewInviteMemberResponse(id string, createdAt time.Time, email string, role string, invitationLink string, invitationStatus string, inviter string, ) *InviteMemberResponse`
+`func NewInviteMemberResponse(id string, createdAt time.Time, email string, role InviteMemberRoleEnum, invitationLink string, invitationStatus InviteStatusEnum, inviter string, ) *InviteMemberResponse`
 
 NewInviteMemberResponse instantiates a new InviteMemberResponse object
 This constructor will assign default values to properties that have it defined,
@@ -120,20 +120,20 @@ SetEmail sets Email field to given value.
 
 ### GetRole
 
-`func (o *InviteMemberResponse) GetRole() string`
+`func (o *InviteMemberResponse) GetRole() InviteMemberRoleEnum`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *InviteMemberResponse) GetRoleOk() (*string, bool)`
+`func (o *InviteMemberResponse) GetRoleOk() (*InviteMemberRoleEnum, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *InviteMemberResponse) SetRole(v string)`
+`func (o *InviteMemberResponse) SetRole(v InviteMemberRoleEnum)`
 
 SetRole sets Role field to given value.
 
@@ -160,20 +160,20 @@ SetInvitationLink sets InvitationLink field to given value.
 
 ### GetInvitationStatus
 
-`func (o *InviteMemberResponse) GetInvitationStatus() string`
+`func (o *InviteMemberResponse) GetInvitationStatus() InviteStatusEnum`
 
 GetInvitationStatus returns the InvitationStatus field if non-nil, zero value otherwise.
 
 ### GetInvitationStatusOk
 
-`func (o *InviteMemberResponse) GetInvitationStatusOk() (*string, bool)`
+`func (o *InviteMemberResponse) GetInvitationStatusOk() (*InviteStatusEnum, bool)`
 
 GetInvitationStatusOk returns a tuple with the InvitationStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInvitationStatus
 
-`func (o *InviteMemberResponse) SetInvitationStatus(v string)`
+`func (o *InviteMemberResponse) SetInvitationStatus(v InviteStatusEnum)`
 
 SetInvitationStatus sets InvitationStatus field to given value.
 

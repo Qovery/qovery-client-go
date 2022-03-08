@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ConsumedInPercent** | Pointer to **float32** |  | [optional] 
 **WarningThresholdInPercent** | Pointer to **float32** |  | [optional] 
 **AlertThresholdInPercent** | Pointer to **float32** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**ThresholdMetricStatusEnum**](ThresholdMetricStatusEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasAlertThresholdInPercent returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *EnvironmentDatabasesCurrentMetricResponseCpu) GetStatus() string`
+`func (o *EnvironmentDatabasesCurrentMetricResponseCpu) GetStatus() ThresholdMetricStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *EnvironmentDatabasesCurrentMetricResponseCpu) GetStatusOk() (*string, bool)`
+`func (o *EnvironmentDatabasesCurrentMetricResponseCpu) GetStatusOk() (*ThresholdMetricStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *EnvironmentDatabasesCurrentMetricResponseCpu) SetStatus(v string)`
+`func (o *EnvironmentDatabasesCurrentMetricResponseCpu) SetStatus(v ThresholdMetricStatusEnum)`
 
 SetStatus sets Status field to given value.
 

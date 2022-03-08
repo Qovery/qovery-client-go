@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
-**Plan** | **string** |  | 
+**Plan** | [**PlanEnum**](PlanEnum.md) |  | 
 **WebsiteUrl** | Pointer to **NullableString** |  | [optional] 
 **Repository** | Pointer to **NullableString** |  | [optional] 
 **LogoUrl** | Pointer to **NullableString** |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationResponse
 
-`func NewOrganizationResponse(id string, createdAt time.Time, name string, plan string, ) *OrganizationResponse`
+`func NewOrganizationResponse(id string, createdAt time.Time, name string, plan PlanEnum, ) *OrganizationResponse`
 
 NewOrganizationResponse instantiates a new OrganizationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -147,20 +147,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetPlan
 
-`func (o *OrganizationResponse) GetPlan() string`
+`func (o *OrganizationResponse) GetPlan() PlanEnum`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *OrganizationResponse) GetPlanOk() (*string, bool)`
+`func (o *OrganizationResponse) GetPlanOk() (*PlanEnum, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *OrganizationResponse) SetPlan(v string)`
+`func (o *OrganizationResponse) SetPlan(v PlanEnum)`
 
 SetPlan sets Plan field to given value.
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ConsumedInPercent** | Pointer to **float32** |  | [optional] 
 **WarningThresholdInPercent** | Pointer to **float32** |  | [optional] 
 **AlertThresholdInPercent** | Pointer to **float32** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**ThresholdMetricStatusEnum**](ThresholdMetricStatusEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -209,20 +209,20 @@ HasAlertThresholdInPercent returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *StorageDiskResponse) GetStatus() string`
+`func (o *StorageDiskResponse) GetStatus() ThresholdMetricStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *StorageDiskResponse) GetStatusOk() (*string, bool)`
+`func (o *StorageDiskResponse) GetStatusOk() (*ThresholdMetricStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *StorageDiskResponse) SetStatus(v string)`
+`func (o *StorageDiskResponse) SetStatus(v ThresholdMetricStatusEnum)`
 
 SetStatus sets Status field to given value.
 

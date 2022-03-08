@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
-**Plan** | **string** |  | 
+**Plan** | [**PlanEnum**](PlanEnum.md) |  | 
 **WebsiteUrl** | Pointer to **NullableString** |  | [optional] 
 **Repository** | Pointer to **NullableString** |  | [optional] 
 **LogoUrl** | Pointer to **NullableString** |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationRequest
 
-`func NewOrganizationRequest(name string, plan string, ) *OrganizationRequest`
+`func NewOrganizationRequest(name string, plan PlanEnum, ) *OrganizationRequest`
 
 NewOrganizationRequest instantiates a new OrganizationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -78,20 +78,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetPlan
 
-`func (o *OrganizationRequest) GetPlan() string`
+`func (o *OrganizationRequest) GetPlan() PlanEnum`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *OrganizationRequest) GetPlanOk() (*string, bool)`
+`func (o *OrganizationRequest) GetPlanOk() (*PlanEnum, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *OrganizationRequest) SetPlan(v string)`
+`func (o *OrganizationRequest) SetPlan(v PlanEnum)`
 
 SetPlan sets Plan field to given value.
 

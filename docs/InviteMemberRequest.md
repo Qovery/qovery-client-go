@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Email** | **string** |  | 
-**Role** | **string** |  | 
+**Role** | [**InviteMemberRoleEnum**](InviteMemberRoleEnum.md) |  | 
 
 ## Methods
 
 ### NewInviteMemberRequest
 
-`func NewInviteMemberRequest(email string, role string, ) *InviteMemberRequest`
+`func NewInviteMemberRequest(email string, role InviteMemberRoleEnum, ) *InviteMemberRequest`
 
 NewInviteMemberRequest instantiates a new InviteMemberRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetEmail sets Email field to given value.
 
 ### GetRole
 
-`func (o *InviteMemberRequest) GetRole() string`
+`func (o *InviteMemberRequest) GetRole() InviteMemberRoleEnum`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *InviteMemberRequest) GetRoleOk() (*string, bool)`
+`func (o *InviteMemberRequest) GetRoleOk() (*InviteMemberRoleEnum, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *InviteMemberRequest) SetRole(v string)`
+`func (o *InviteMemberRequest) SetRole(v InviteMemberRoleEnum)`
 
 SetRole sets Role field to given value.
 

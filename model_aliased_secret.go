@@ -17,9 +17,9 @@ import (
 
 // AliasedSecret struct for AliasedSecret
 type AliasedSecret struct {
-	Id    *string `json:"id,omitempty"`
-	Key   *string `json:"key,omitempty"`
-	Scope *string `json:"scope,omitempty"`
+	Id    *string                       `json:"id,omitempty"`
+	Key   *string                       `json:"key,omitempty"`
+	Scope *EnvironmentVariableScopeEnum `json:"scope,omitempty"`
 }
 
 // NewAliasedSecret instantiates a new AliasedSecret object
@@ -104,9 +104,9 @@ func (o *AliasedSecret) SetKey(v string) {
 }
 
 // GetScope returns the Scope field value if set, zero value otherwise.
-func (o *AliasedSecret) GetScope() string {
+func (o *AliasedSecret) GetScope() EnvironmentVariableScopeEnum {
 	if o == nil || o.Scope == nil {
-		var ret string
+		var ret EnvironmentVariableScopeEnum
 		return ret
 	}
 	return *o.Scope
@@ -114,7 +114,7 @@ func (o *AliasedSecret) GetScope() string {
 
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AliasedSecret) GetScopeOk() (*string, bool) {
+func (o *AliasedSecret) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
 	if o == nil || o.Scope == nil {
 		return nil, false
 	}
@@ -130,8 +130,8 @@ func (o *AliasedSecret) HasScope() bool {
 	return false
 }
 
-// SetScope gets a reference to the given string and assigns it to the Scope field.
-func (o *AliasedSecret) SetScope(v string) {
+// SetScope gets a reference to the given EnvironmentVariableScopeEnum and assigns it to the Scope field.
+func (o *AliasedSecret) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = &v
 }
 

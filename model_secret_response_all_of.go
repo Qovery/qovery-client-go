@@ -18,17 +18,17 @@ import (
 // SecretResponseAllOf struct for SecretResponseAllOf
 type SecretResponseAllOf struct {
 	// key is case sensitive
-	Key              *string           `json:"key,omitempty"`
-	OverriddenSecret *OverriddenSecret `json:"overridden_secret,omitempty"`
-	AliasedSecret    *AliasedSecret    `json:"aliased_secret,omitempty"`
-	Scope            string            `json:"scope"`
+	Key              *string                      `json:"key,omitempty"`
+	OverriddenSecret *OverriddenSecret            `json:"overridden_secret,omitempty"`
+	AliasedSecret    *AliasedSecret               `json:"aliased_secret,omitempty"`
+	Scope            EnvironmentVariableScopeEnum `json:"scope"`
 }
 
 // NewSecretResponseAllOf instantiates a new SecretResponseAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretResponseAllOf(scope string) *SecretResponseAllOf {
+func NewSecretResponseAllOf(scope EnvironmentVariableScopeEnum) *SecretResponseAllOf {
 	this := SecretResponseAllOf{}
 	this.Scope = scope
 	return &this
@@ -139,9 +139,9 @@ func (o *SecretResponseAllOf) SetAliasedSecret(v AliasedSecret) {
 }
 
 // GetScope returns the Scope field value
-func (o *SecretResponseAllOf) GetScope() string {
+func (o *SecretResponseAllOf) GetScope() EnvironmentVariableScopeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentVariableScopeEnum
 		return ret
 	}
 
@@ -150,7 +150,7 @@ func (o *SecretResponseAllOf) GetScope() string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponseAllOf) GetScopeOk() (*string, bool) {
+func (o *SecretResponseAllOf) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *SecretResponseAllOf) GetScopeOk() (*string, bool) {
 }
 
 // SetScope sets field value
-func (o *SecretResponseAllOf) SetScope(v string) {
+func (o *SecretResponseAllOf) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = v
 }
 

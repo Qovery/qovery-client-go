@@ -18,14 +18,14 @@ import (
 
 // StorageDiskResponse struct for StorageDiskResponse
 type StorageDiskResponse struct {
-	CreatedAt                 *time.Time `json:"created_at,omitempty"`
-	StorageId                 *string    `json:"storage_id,omitempty"`
-	RequestedInGb             *int32     `json:"requested_in_gb,omitempty"`
-	ConsumedInGb              *float32   `json:"consumed_in_gb,omitempty"`
-	ConsumedInPercent         *float32   `json:"consumed_in_percent,omitempty"`
-	WarningThresholdInPercent *float32   `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent   *float32   `json:"alert_threshold_in_percent,omitempty"`
-	Status                    *string    `json:"status,omitempty"`
+	CreatedAt                 *time.Time                 `json:"created_at,omitempty"`
+	StorageId                 *string                    `json:"storage_id,omitempty"`
+	RequestedInGb             *int32                     `json:"requested_in_gb,omitempty"`
+	ConsumedInGb              *float32                   `json:"consumed_in_gb,omitempty"`
+	ConsumedInPercent         *float32                   `json:"consumed_in_percent,omitempty"`
+	WarningThresholdInPercent *float32                   `json:"warning_threshold_in_percent,omitempty"`
+	AlertThresholdInPercent   *float32                   `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *ThresholdMetricStatusEnum `json:"status,omitempty"`
 }
 
 // NewStorageDiskResponse instantiates a new StorageDiskResponse object
@@ -270,9 +270,9 @@ func (o *StorageDiskResponse) SetAlertThresholdInPercent(v float32) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *StorageDiskResponse) GetStatus() string {
+func (o *StorageDiskResponse) GetStatus() ThresholdMetricStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret ThresholdMetricStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -280,7 +280,7 @@ func (o *StorageDiskResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDiskResponse) GetStatusOk() (*string, bool) {
+func (o *StorageDiskResponse) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -296,8 +296,8 @@ func (o *StorageDiskResponse) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *StorageDiskResponse) SetStatus(v string) {
+// SetStatus gets a reference to the given ThresholdMetricStatusEnum and assigns it to the Status field.
+func (o *StorageDiskResponse) SetStatus(v ThresholdMetricStatusEnum) {
 	o.Status = &v
 }
 

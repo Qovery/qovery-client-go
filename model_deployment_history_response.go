@@ -18,11 +18,11 @@ import (
 
 // DeploymentHistoryResponse struct for DeploymentHistoryResponse
 type DeploymentHistoryResponse struct {
-	Id        string          `json:"id"`
-	CreatedAt time.Time       `json:"created_at"`
-	UpdatedAt *time.Time      `json:"updated_at,omitempty"`
-	Commit    *CommitResponse `json:"commit,omitempty"`
-	Status    *string         `json:"status,omitempty"`
+	Id        string                       `json:"id"`
+	CreatedAt time.Time                    `json:"created_at"`
+	UpdatedAt *time.Time                   `json:"updated_at,omitempty"`
+	Commit    *CommitResponse              `json:"commit,omitempty"`
+	Status    *DeploymentHistoryStatusEnum `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryResponse instantiates a new DeploymentHistoryResponse object
@@ -157,9 +157,9 @@ func (o *DeploymentHistoryResponse) SetCommit(v CommitResponse) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryResponse) GetStatus() string {
+func (o *DeploymentHistoryResponse) GetStatus() DeploymentHistoryStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret DeploymentHistoryStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -167,7 +167,7 @@ func (o *DeploymentHistoryResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryResponse) GetStatusOk() (*string, bool) {
+func (o *DeploymentHistoryResponse) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -183,8 +183,8 @@ func (o *DeploymentHistoryResponse) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *DeploymentHistoryResponse) SetStatus(v string) {
+// SetStatus gets a reference to the given DeploymentHistoryStatusEnum and assigns it to the Status field.
+func (o *DeploymentHistoryResponse) SetStatus(v DeploymentHistoryStatusEnum) {
 	o.Status = &v
 }
 

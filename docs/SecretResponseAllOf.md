@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Key** | Pointer to **string** | key is case sensitive | [optional] 
 **OverriddenSecret** | Pointer to [**OverriddenSecret**](OverriddenSecret.md) |  | [optional] 
 **AliasedSecret** | Pointer to [**AliasedSecret**](AliasedSecret.md) |  | [optional] 
-**Scope** | **string** |  | 
+**Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
 
 ## Methods
 
 ### NewSecretResponseAllOf
 
-`func NewSecretResponseAllOf(scope string, ) *SecretResponseAllOf`
+`func NewSecretResponseAllOf(scope EnvironmentVariableScopeEnum, ) *SecretResponseAllOf`
 
 NewSecretResponseAllOf instantiates a new SecretResponseAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -105,20 +105,20 @@ HasAliasedSecret returns a boolean if a field has been set.
 
 ### GetScope
 
-`func (o *SecretResponseAllOf) GetScope() string`
+`func (o *SecretResponseAllOf) GetScope() EnvironmentVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *SecretResponseAllOf) GetScopeOk() (*string, bool)`
+`func (o *SecretResponseAllOf) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *SecretResponseAllOf) SetScope(v string)`
+`func (o *SecretResponseAllOf) SetScope(v EnvironmentVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

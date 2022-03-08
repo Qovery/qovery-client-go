@@ -17,15 +17,15 @@ import (
 
 // InviteMemberRequest struct for InviteMemberRequest
 type InviteMemberRequest struct {
-	Email string `json:"email"`
-	Role  string `json:"role"`
+	Email string               `json:"email"`
+	Role  InviteMemberRoleEnum `json:"role"`
 }
 
 // NewInviteMemberRequest instantiates a new InviteMemberRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInviteMemberRequest(email string, role string) *InviteMemberRequest {
+func NewInviteMemberRequest(email string, role InviteMemberRoleEnum) *InviteMemberRequest {
 	this := InviteMemberRequest{}
 	this.Email = email
 	this.Role = role
@@ -65,9 +65,9 @@ func (o *InviteMemberRequest) SetEmail(v string) {
 }
 
 // GetRole returns the Role field value
-func (o *InviteMemberRequest) GetRole() string {
+func (o *InviteMemberRequest) GetRole() InviteMemberRoleEnum {
 	if o == nil {
-		var ret string
+		var ret InviteMemberRoleEnum
 		return ret
 	}
 
@@ -76,7 +76,7 @@ func (o *InviteMemberRequest) GetRole() string {
 
 // GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
-func (o *InviteMemberRequest) GetRoleOk() (*string, bool) {
+func (o *InviteMemberRequest) GetRoleOk() (*InviteMemberRoleEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *InviteMemberRequest) GetRoleOk() (*string, bool) {
 }
 
 // SetRole sets field value
-func (o *InviteMemberRequest) SetRole(v string) {
+func (o *InviteMemberRequest) SetRole(v InviteMemberRoleEnum) {
 	o.Role = v
 }
 

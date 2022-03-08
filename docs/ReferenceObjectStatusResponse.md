@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**State** | **string** | Status is a state machine. It starts with &#x60;BUILDING&#x60; or &#x60;DEPLOYING&#x60; state (or &#x60;INITIALIZED&#x60;if auto-deploy is deactivated). Then finish with &#x60;*_ERROR&#x60; or any termination state.  | 
+**State** | [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
-**ServiceDeploymentStatus** | Pointer to **NullableString** |  | [optional] 
+**ServiceDeploymentStatus** | Pointer to [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | [optional] 
 
 ## Methods
 
 ### NewReferenceObjectStatusResponse
 
-`func NewReferenceObjectStatusResponse(id string, state string, ) *ReferenceObjectStatusResponse`
+`func NewReferenceObjectStatusResponse(id string, state GlobalDeploymentStatus, ) *ReferenceObjectStatusResponse`
 
 NewReferenceObjectStatusResponse instantiates a new ReferenceObjectStatusResponse object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetId sets Id field to given value.
 
 ### GetState
 
-`func (o *ReferenceObjectStatusResponse) GetState() string`
+`func (o *ReferenceObjectStatusResponse) GetState() GlobalDeploymentStatus`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *ReferenceObjectStatusResponse) GetStateOk() (*string, bool)`
+`func (o *ReferenceObjectStatusResponse) GetStateOk() (*GlobalDeploymentStatus, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *ReferenceObjectStatusResponse) SetState(v string)`
+`func (o *ReferenceObjectStatusResponse) SetState(v GlobalDeploymentStatus)`
 
 SetState sets State field to given value.
 
@@ -105,20 +105,20 @@ HasMessage returns a boolean if a field has been set.
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
 ### GetServiceDeploymentStatus
 
-`func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatus() string`
+`func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum`
 
 GetServiceDeploymentStatus returns the ServiceDeploymentStatus field if non-nil, zero value otherwise.
 
 ### GetServiceDeploymentStatusOk
 
-`func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatusOk() (*string, bool)`
+`func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, bool)`
 
 GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceDeploymentStatus
 
-`func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatus(v string)`
+`func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatus(v ServiceDeploymentStatusEnum)`
 
 SetServiceDeploymentStatus sets ServiceDeploymentStatus field to given value.
 

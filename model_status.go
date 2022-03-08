@@ -17,19 +17,18 @@ import (
 
 // Status struct for Status
 type Status struct {
-	Id *string `json:"id,omitempty"`
-	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
-	State string `json:"state"`
+	Id    *string                `json:"id,omitempty"`
+	State GlobalDeploymentStatus `json:"state"`
 	// message related to the state
-	Message                 NullableString `json:"message,omitempty"`
-	ServiceDeploymentStatus NullableString `json:"service_deployment_status,omitempty"`
+	Message                 NullableString                      `json:"message,omitempty"`
+	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status,omitempty"`
 }
 
 // NewStatus instantiates a new Status object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatus(state string) *Status {
+func NewStatus(state GlobalDeploymentStatus) *Status {
 	this := Status{}
 	this.State = state
 	return &this
@@ -76,9 +75,9 @@ func (o *Status) SetId(v string) {
 }
 
 // GetState returns the State field value
-func (o *Status) GetState() string {
+func (o *Status) GetState() GlobalDeploymentStatus {
 	if o == nil {
-		var ret string
+		var ret GlobalDeploymentStatus
 		return ret
 	}
 
@@ -87,7 +86,7 @@ func (o *Status) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *Status) GetStateOk() (*string, bool) {
+func (o *Status) GetStateOk() (*GlobalDeploymentStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,7 +94,7 @@ func (o *Status) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *Status) SetState(v string) {
+func (o *Status) SetState(v GlobalDeploymentStatus) {
 	o.State = v
 }
 
@@ -143,9 +142,9 @@ func (o *Status) UnsetMessage() {
 }
 
 // GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Status) GetServiceDeploymentStatus() string {
+func (o *Status) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum {
 	if o == nil || o.ServiceDeploymentStatus.Get() == nil {
-		var ret string
+		var ret ServiceDeploymentStatusEnum
 		return ret
 	}
 	return *o.ServiceDeploymentStatus.Get()
@@ -154,7 +153,7 @@ func (o *Status) GetServiceDeploymentStatus() string {
 // GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Status) GetServiceDeploymentStatusOk() (*string, bool) {
+func (o *Status) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,8 +169,8 @@ func (o *Status) HasServiceDeploymentStatus() bool {
 	return false
 }
 
-// SetServiceDeploymentStatus gets a reference to the given NullableString and assigns it to the ServiceDeploymentStatus field.
-func (o *Status) SetServiceDeploymentStatus(v string) {
+// SetServiceDeploymentStatus gets a reference to the given NullableServiceDeploymentStatusEnum and assigns it to the ServiceDeploymentStatus field.
+func (o *Status) SetServiceDeploymentStatus(v ServiceDeploymentStatusEnum) {
 	o.ServiceDeploymentStatus.Set(&v)
 }
 

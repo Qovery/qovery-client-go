@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Plan** | Pointer to **string** |  | [optional] 
+**Plan** | Pointer to [**PlanEnum**](PlanEnum.md) |  | [optional] 
 **RemainingTrialDay** | Pointer to **int32** | number of days remaining before the end of the trial period | [optional] 
 **RemainingCredits** | Pointer to [**RemainingCredits**](RemainingCredits.md) |  | [optional] 
 **Cost** | Pointer to [**Cost**](Cost.md) |  | [optional] 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPlan
 
-`func (o *OrganizationCurrentCostResponse) GetPlan() string`
+`func (o *OrganizationCurrentCostResponse) GetPlan() PlanEnum`
 
 GetPlan returns the Plan field if non-nil, zero value otherwise.
 
 ### GetPlanOk
 
-`func (o *OrganizationCurrentCostResponse) GetPlanOk() (*string, bool)`
+`func (o *OrganizationCurrentCostResponse) GetPlanOk() (*PlanEnum, bool)`
 
 GetPlanOk returns a tuple with the Plan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlan
 
-`func (o *OrganizationCurrentCostResponse) SetPlan(v string)`
+`func (o *OrganizationCurrentCostResponse) SetPlan(v PlanEnum)`
 
 SetPlan sets Plan field to given value.
 

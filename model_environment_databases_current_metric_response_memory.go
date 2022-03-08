@@ -17,12 +17,12 @@ import (
 
 // EnvironmentDatabasesCurrentMetricResponseMemory struct for EnvironmentDatabasesCurrentMetricResponseMemory
 type EnvironmentDatabasesCurrentMetricResponseMemory struct {
-	RequestedInMb             *int32   `json:"requested_in_mb,omitempty"`
-	ConsumedInMb              *int32   `json:"consumed_in_mb,omitempty"`
-	ConsumedInPercent         *float32 `json:"consumed_in_percent,omitempty"`
-	WarningThresholdInPercent *float32 `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent   *float32 `json:"alert_threshold_in_percent,omitempty"`
-	Status                    *string  `json:"status,omitempty"`
+	RequestedInMb             *int32                     `json:"requested_in_mb,omitempty"`
+	ConsumedInMb              *int32                     `json:"consumed_in_mb,omitempty"`
+	ConsumedInPercent         *float32                   `json:"consumed_in_percent,omitempty"`
+	WarningThresholdInPercent *float32                   `json:"warning_threshold_in_percent,omitempty"`
+	AlertThresholdInPercent   *float32                   `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *ThresholdMetricStatusEnum `json:"status,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetricResponseMemory instantiates a new EnvironmentDatabasesCurrentMetricResponseMemory object
@@ -203,9 +203,9 @@ func (o *EnvironmentDatabasesCurrentMetricResponseMemory) SetAlertThresholdInPer
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *EnvironmentDatabasesCurrentMetricResponseMemory) GetStatus() string {
+func (o *EnvironmentDatabasesCurrentMetricResponseMemory) GetStatus() ThresholdMetricStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret ThresholdMetricStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -213,7 +213,7 @@ func (o *EnvironmentDatabasesCurrentMetricResponseMemory) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDatabasesCurrentMetricResponseMemory) GetStatusOk() (*string, bool) {
+func (o *EnvironmentDatabasesCurrentMetricResponseMemory) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -229,8 +229,8 @@ func (o *EnvironmentDatabasesCurrentMetricResponseMemory) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *EnvironmentDatabasesCurrentMetricResponseMemory) SetStatus(v string) {
+// SetStatus gets a reference to the given ThresholdMetricStatusEnum and assigns it to the Status field.
+func (o *EnvironmentDatabasesCurrentMetricResponseMemory) SetStatus(v ThresholdMetricStatusEnum) {
 	o.Status = &v
 }
 

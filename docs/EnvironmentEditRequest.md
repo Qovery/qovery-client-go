@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Mode** | Pointer to **string** | PREVIEW value is reserved for preview environments only | [optional] 
+**Mode** | Pointer to [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *EnvironmentEditRequest) GetMode() string`
+`func (o *EnvironmentEditRequest) GetMode() EnvironmentModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *EnvironmentEditRequest) GetModeOk() (*string, bool)`
+`func (o *EnvironmentEditRequest) GetModeOk() (*EnvironmentModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *EnvironmentEditRequest) SetMode(v string)`
+`func (o *EnvironmentEditRequest) SetMode(v EnvironmentModeEnum)`
 
 SetMode sets Mode field to given value.
 

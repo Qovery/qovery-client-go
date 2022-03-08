@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HasAccess** | Pointer to **bool** |  | [optional] 
-**Provider** | Pointer to **string** |  | [optional] 
+**Provider** | Pointer to [**GitProviderEnum**](GitProviderEnum.md) |  | [optional] 
 **Owner** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** | repository name | [optional] 
@@ -62,20 +62,20 @@ HasHasAccess returns a boolean if a field has been set.
 
 ### GetProvider
 
-`func (o *ApplicationGitRepositoryResponse) GetProvider() string`
+`func (o *ApplicationGitRepositoryResponse) GetProvider() GitProviderEnum`
 
 GetProvider returns the Provider field if non-nil, zero value otherwise.
 
 ### GetProviderOk
 
-`func (o *ApplicationGitRepositoryResponse) GetProviderOk() (*string, bool)`
+`func (o *ApplicationGitRepositoryResponse) GetProviderOk() (*GitProviderEnum, bool)`
 
 GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvider
 
-`func (o *ApplicationGitRepositoryResponse) SetProvider(v string)`
+`func (o *ApplicationGitRepositoryResponse) SetProvider(v GitProviderEnum)`
 
 SetProvider sets Provider field to given value.
 

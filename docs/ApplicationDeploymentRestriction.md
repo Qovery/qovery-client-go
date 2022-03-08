@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Mode** | **string** | Match mode will rebuild app only if specified items are updated. Exclude mode will not rebuild app if specified items are updated. | 
-**Type** | **string** |  | 
+**Mode** | [**DeploymentRestrictionModeEnum**](DeploymentRestrictionModeEnum.md) |  | 
+**Type** | [**DeploymentRestrictionTypeEnum**](DeploymentRestrictionTypeEnum.md) |  | 
 **Value** | **string** |  | 
 
 ## Methods
 
 ### NewApplicationDeploymentRestriction
 
-`func NewApplicationDeploymentRestriction(mode string, type_ string, value string, ) *ApplicationDeploymentRestriction`
+`func NewApplicationDeploymentRestriction(mode DeploymentRestrictionModeEnum, type_ DeploymentRestrictionTypeEnum, value string, ) *ApplicationDeploymentRestriction`
 
 NewApplicationDeploymentRestriction instantiates a new ApplicationDeploymentRestriction object
 This constructor will assign default values to properties that have it defined,
@@ -29,40 +29,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMode
 
-`func (o *ApplicationDeploymentRestriction) GetMode() string`
+`func (o *ApplicationDeploymentRestriction) GetMode() DeploymentRestrictionModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *ApplicationDeploymentRestriction) GetModeOk() (*string, bool)`
+`func (o *ApplicationDeploymentRestriction) GetModeOk() (*DeploymentRestrictionModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *ApplicationDeploymentRestriction) SetMode(v string)`
+`func (o *ApplicationDeploymentRestriction) SetMode(v DeploymentRestrictionModeEnum)`
 
 SetMode sets Mode field to given value.
 
 
 ### GetType
 
-`func (o *ApplicationDeploymentRestriction) GetType() string`
+`func (o *ApplicationDeploymentRestriction) GetType() DeploymentRestrictionTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ApplicationDeploymentRestriction) GetTypeOk() (*string, bool)`
+`func (o *ApplicationDeploymentRestriction) GetTypeOk() (*DeploymentRestrictionTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ApplicationDeploymentRestriction) SetType(v string)`
+`func (o *ApplicationDeploymentRestriction) SetType(v DeploymentRestrictionTypeEnum)`
 
 SetType sets Type field to given value.
 

@@ -18,16 +18,16 @@ import (
 
 // InvoiceResponseAllOf struct for InvoiceResponseAllOf
 type InvoiceResponseAllOf struct {
-	Id        string    `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	Status    string    `json:"status"`
+	Id        string            `json:"id"`
+	CreatedAt time.Time         `json:"created_at"`
+	Status    InvoiceStatusEnum `json:"status"`
 }
 
 // NewInvoiceResponseAllOf instantiates a new InvoiceResponseAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvoiceResponseAllOf(id string, createdAt time.Time, status string) *InvoiceResponseAllOf {
+func NewInvoiceResponseAllOf(id string, createdAt time.Time, status InvoiceStatusEnum) *InvoiceResponseAllOf {
 	this := InvoiceResponseAllOf{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -92,9 +92,9 @@ func (o *InvoiceResponseAllOf) SetCreatedAt(v time.Time) {
 }
 
 // GetStatus returns the Status field value
-func (o *InvoiceResponseAllOf) GetStatus() string {
+func (o *InvoiceResponseAllOf) GetStatus() InvoiceStatusEnum {
 	if o == nil {
-		var ret string
+		var ret InvoiceStatusEnum
 		return ret
 	}
 
@@ -103,7 +103,7 @@ func (o *InvoiceResponseAllOf) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *InvoiceResponseAllOf) GetStatusOk() (*string, bool) {
+func (o *InvoiceResponseAllOf) GetStatusOk() (*InvoiceStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -111,7 +111,7 @@ func (o *InvoiceResponseAllOf) GetStatusOk() (*string, bool) {
 }
 
 // SetStatus sets field value
-func (o *InvoiceResponseAllOf) SetStatus(v string) {
+func (o *InvoiceResponseAllOf) SetStatus(v InvoiceStatusEnum) {
 	o.Status = v
 }
 

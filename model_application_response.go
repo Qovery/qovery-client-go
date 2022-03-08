@@ -33,8 +33,7 @@ type ApplicationResponse struct {
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
 	Description NullableString `json:"description,omitempty"`
-	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
-	BuildMode *string `json:"build_mode,omitempty"`
+	BuildMode   *BuildModeEnum `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath    NullableString                `json:"dockerfile_path,omitempty"`
 	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
@@ -63,7 +62,7 @@ func NewApplicationResponse(id string, createdAt time.Time) *ApplicationResponse
 	this.MaximumCpu = &maximumCpu
 	var maximumMemory int32 = 256
 	this.MaximumMemory = &maximumMemory
-	var buildMode string = "BUILDPACKS"
+	var buildMode BuildModeEnum = BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -87,7 +86,7 @@ func NewApplicationResponseWithDefaults() *ApplicationResponse {
 	this.MaximumCpu = &maximumCpu
 	var maximumMemory int32 = 256
 	this.MaximumMemory = &maximumMemory
-	var buildMode string = "BUILDPACKS"
+	var buildMode BuildModeEnum = BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -450,9 +449,9 @@ func (o *ApplicationResponse) UnsetDescription() {
 }
 
 // GetBuildMode returns the BuildMode field value if set, zero value otherwise.
-func (o *ApplicationResponse) GetBuildMode() string {
+func (o *ApplicationResponse) GetBuildMode() BuildModeEnum {
 	if o == nil || o.BuildMode == nil {
-		var ret string
+		var ret BuildModeEnum
 		return ret
 	}
 	return *o.BuildMode
@@ -460,7 +459,7 @@ func (o *ApplicationResponse) GetBuildMode() string {
 
 // GetBuildModeOk returns a tuple with the BuildMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponse) GetBuildModeOk() (*string, bool) {
+func (o *ApplicationResponse) GetBuildModeOk() (*BuildModeEnum, bool) {
 	if o == nil || o.BuildMode == nil {
 		return nil, false
 	}
@@ -476,8 +475,8 @@ func (o *ApplicationResponse) HasBuildMode() bool {
 	return false
 }
 
-// SetBuildMode gets a reference to the given string and assigns it to the BuildMode field.
-func (o *ApplicationResponse) SetBuildMode(v string) {
+// SetBuildMode gets a reference to the given BuildModeEnum and assigns it to the BuildMode field.
+func (o *ApplicationResponse) SetBuildMode(v BuildModeEnum) {
 	o.BuildMode = &v
 }
 

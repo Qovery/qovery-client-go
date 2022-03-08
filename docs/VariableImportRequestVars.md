@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Value** | **string** |  | 
-**Scope** | **string** |  | 
+**Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
 **IsSecret** | **bool** |  | 
 
 ## Methods
 
 ### NewVariableImportRequestVars
 
-`func NewVariableImportRequestVars(name string, value string, scope string, isSecret bool, ) *VariableImportRequestVars`
+`func NewVariableImportRequestVars(name string, value string, scope EnvironmentVariableScopeEnum, isSecret bool, ) *VariableImportRequestVars`
 
 NewVariableImportRequestVars instantiates a new VariableImportRequestVars object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetValue sets Value field to given value.
 
 ### GetScope
 
-`func (o *VariableImportRequestVars) GetScope() string`
+`func (o *VariableImportRequestVars) GetScope() EnvironmentVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *VariableImportRequestVars) GetScopeOk() (*string, bool)`
+`func (o *VariableImportRequestVars) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *VariableImportRequestVars) SetScope(v string)`
+`func (o *VariableImportRequestVars) SetScope(v EnvironmentVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

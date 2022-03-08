@@ -17,8 +17,8 @@ import (
 
 // ApplicationStorageResponseStorage struct for ApplicationStorageResponseStorage
 type ApplicationStorageResponseStorage struct {
-	Id   *string `json:"id,omitempty"`
-	Type string  `json:"type"`
+	Id   *string         `json:"id,omitempty"`
+	Type StorageTypeEnum `json:"type"`
 	// unit is GB
 	Size       int32  `json:"size"`
 	MountPoint string `json:"mount_point"`
@@ -28,7 +28,7 @@ type ApplicationStorageResponseStorage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationStorageResponseStorage(type_ string, size int32, mountPoint string) *ApplicationStorageResponseStorage {
+func NewApplicationStorageResponseStorage(type_ StorageTypeEnum, size int32, mountPoint string) *ApplicationStorageResponseStorage {
 	this := ApplicationStorageResponseStorage{}
 	this.Type = type_
 	this.Size = size
@@ -77,9 +77,9 @@ func (o *ApplicationStorageResponseStorage) SetId(v string) {
 }
 
 // GetType returns the Type field value
-func (o *ApplicationStorageResponseStorage) GetType() string {
+func (o *ApplicationStorageResponseStorage) GetType() StorageTypeEnum {
 	if o == nil {
-		var ret string
+		var ret StorageTypeEnum
 		return ret
 	}
 
@@ -88,7 +88,7 @@ func (o *ApplicationStorageResponseStorage) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationStorageResponseStorage) GetTypeOk() (*string, bool) {
+func (o *ApplicationStorageResponseStorage) GetTypeOk() (*StorageTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *ApplicationStorageResponseStorage) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *ApplicationStorageResponseStorage) SetType(v string) {
+func (o *ApplicationStorageResponseStorage) SetType(v StorageTypeEnum) {
 	o.Type = v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DatabaseType** | Pointer to **string** |  | [optional] 
+**DatabaseType** | Pointer to [**DatabaseTypeEnum**](DatabaseTypeEnum.md) |  | [optional] 
 **Version** | Pointer to [**[]DatabaseVersionMode**](DatabaseVersionMode.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDatabaseType
 
-`func (o *DatabaseConfigurationResponse) GetDatabaseType() string`
+`func (o *DatabaseConfigurationResponse) GetDatabaseType() DatabaseTypeEnum`
 
 GetDatabaseType returns the DatabaseType field if non-nil, zero value otherwise.
 
 ### GetDatabaseTypeOk
 
-`func (o *DatabaseConfigurationResponse) GetDatabaseTypeOk() (*string, bool)`
+`func (o *DatabaseConfigurationResponse) GetDatabaseTypeOk() (*DatabaseTypeEnum, bool)`
 
 GetDatabaseTypeOk returns a tuple with the DatabaseType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDatabaseType
 
-`func (o *DatabaseConfigurationResponse) SetDatabaseType(v string)`
+`func (o *DatabaseConfigurationResponse) SetDatabaseType(v DatabaseTypeEnum)`
 
 SetDatabaseType sets DatabaseType field to given value.
 

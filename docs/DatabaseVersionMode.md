@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**SupportedMode** | Pointer to **string** |  | [optional] 
+**SupportedMode** | Pointer to [**DatabaseModeEnum**](DatabaseModeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetSupportedMode
 
-`func (o *DatabaseVersionMode) GetSupportedMode() string`
+`func (o *DatabaseVersionMode) GetSupportedMode() DatabaseModeEnum`
 
 GetSupportedMode returns the SupportedMode field if non-nil, zero value otherwise.
 
 ### GetSupportedModeOk
 
-`func (o *DatabaseVersionMode) GetSupportedModeOk() (*string, bool)`
+`func (o *DatabaseVersionMode) GetSupportedModeOk() (*DatabaseModeEnum, bool)`
 
 GetSupportedModeOk returns a tuple with the SupportedMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedMode
 
-`func (o *DatabaseVersionMode) SetSupportedMode(v string)`
+`func (o *DatabaseVersionMode) SetSupportedMode(v DatabaseModeEnum)`
 
 SetSupportedMode sets SupportedMode field to given value.
 

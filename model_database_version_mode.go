@@ -17,8 +17,8 @@ import (
 
 // DatabaseVersionMode struct for DatabaseVersionMode
 type DatabaseVersionMode struct {
-	Name          *string `json:"name,omitempty"`
-	SupportedMode *string `json:"supported_mode,omitempty"`
+	Name          *string           `json:"name,omitempty"`
+	SupportedMode *DatabaseModeEnum `json:"supported_mode,omitempty"`
 }
 
 // NewDatabaseVersionMode instantiates a new DatabaseVersionMode object
@@ -71,9 +71,9 @@ func (o *DatabaseVersionMode) SetName(v string) {
 }
 
 // GetSupportedMode returns the SupportedMode field value if set, zero value otherwise.
-func (o *DatabaseVersionMode) GetSupportedMode() string {
+func (o *DatabaseVersionMode) GetSupportedMode() DatabaseModeEnum {
 	if o == nil || o.SupportedMode == nil {
-		var ret string
+		var ret DatabaseModeEnum
 		return ret
 	}
 	return *o.SupportedMode
@@ -81,7 +81,7 @@ func (o *DatabaseVersionMode) GetSupportedMode() string {
 
 // GetSupportedModeOk returns a tuple with the SupportedMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseVersionMode) GetSupportedModeOk() (*string, bool) {
+func (o *DatabaseVersionMode) GetSupportedModeOk() (*DatabaseModeEnum, bool) {
 	if o == nil || o.SupportedMode == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *DatabaseVersionMode) HasSupportedMode() bool {
 	return false
 }
 
-// SetSupportedMode gets a reference to the given string and assigns it to the SupportedMode field.
-func (o *DatabaseVersionMode) SetSupportedMode(v string) {
+// SetSupportedMode gets a reference to the given DatabaseModeEnum and assigns it to the SupportedMode field.
+func (o *DatabaseVersionMode) SetSupportedMode(v DatabaseModeEnum) {
 	o.SupportedMode = &v
 }
 

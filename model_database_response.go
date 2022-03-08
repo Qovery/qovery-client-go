@@ -22,11 +22,11 @@ type DatabaseResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name          string  `json:"name"`
-	Type          string  `json:"type"`
-	Version       string  `json:"version"`
-	Mode          string  `json:"mode"`
-	Accessibility *string `json:"accessibility,omitempty"`
+	Name          string                     `json:"name"`
+	Type          DatabaseTypeEnum           `json:"type"`
+	Version       string                     `json:"version"`
+	Mode          DatabaseModeEnum           `json:"mode"`
+	Accessibility *DatabaseAccessibilityEnum `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -48,7 +48,7 @@ type DatabaseResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ string, version string, mode string) *DatabaseResponse {
+func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum) *DatabaseResponse {
 	this := DatabaseResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -56,7 +56,7 @@ func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ stri
 	this.Type = type_
 	this.Version = version
 	this.Mode = mode
-	var accessibility string = "PRIVATE"
+	var accessibility DatabaseAccessibilityEnum = PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -76,7 +76,7 @@ func NewDatabaseResponse(id string, createdAt time.Time, name string, type_ stri
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseResponseWithDefaults() *DatabaseResponse {
 	this := DatabaseResponse{}
-	var accessibility string = "PRIVATE"
+	var accessibility DatabaseAccessibilityEnum = PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -196,9 +196,9 @@ func (o *DatabaseResponse) SetName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *DatabaseResponse) GetType() string {
+func (o *DatabaseResponse) GetType() DatabaseTypeEnum {
 	if o == nil {
-		var ret string
+		var ret DatabaseTypeEnum
 		return ret
 	}
 
@@ -207,7 +207,7 @@ func (o *DatabaseResponse) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetTypeOk() (*string, bool) {
+func (o *DatabaseResponse) GetTypeOk() (*DatabaseTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -215,7 +215,7 @@ func (o *DatabaseResponse) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *DatabaseResponse) SetType(v string) {
+func (o *DatabaseResponse) SetType(v DatabaseTypeEnum) {
 	o.Type = v
 }
 
@@ -244,9 +244,9 @@ func (o *DatabaseResponse) SetVersion(v string) {
 }
 
 // GetMode returns the Mode field value
-func (o *DatabaseResponse) GetMode() string {
+func (o *DatabaseResponse) GetMode() DatabaseModeEnum {
 	if o == nil {
-		var ret string
+		var ret DatabaseModeEnum
 		return ret
 	}
 
@@ -255,7 +255,7 @@ func (o *DatabaseResponse) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetModeOk() (*string, bool) {
+func (o *DatabaseResponse) GetModeOk() (*DatabaseModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -263,14 +263,14 @@ func (o *DatabaseResponse) GetModeOk() (*string, bool) {
 }
 
 // SetMode sets field value
-func (o *DatabaseResponse) SetMode(v string) {
+func (o *DatabaseResponse) SetMode(v DatabaseModeEnum) {
 	o.Mode = v
 }
 
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
-func (o *DatabaseResponse) GetAccessibility() string {
+func (o *DatabaseResponse) GetAccessibility() DatabaseAccessibilityEnum {
 	if o == nil || o.Accessibility == nil {
-		var ret string
+		var ret DatabaseAccessibilityEnum
 		return ret
 	}
 	return *o.Accessibility
@@ -278,7 +278,7 @@ func (o *DatabaseResponse) GetAccessibility() string {
 
 // GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponse) GetAccessibilityOk() (*string, bool) {
+func (o *DatabaseResponse) GetAccessibilityOk() (*DatabaseAccessibilityEnum, bool) {
 	if o == nil || o.Accessibility == nil {
 		return nil, false
 	}
@@ -294,8 +294,8 @@ func (o *DatabaseResponse) HasAccessibility() bool {
 	return false
 }
 
-// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
-func (o *DatabaseResponse) SetAccessibility(v string) {
+// SetAccessibility gets a reference to the given DatabaseAccessibilityEnum and assigns it to the Accessibility field.
+func (o *DatabaseResponse) SetAccessibility(v DatabaseAccessibilityEnum) {
 	o.Accessibility = &v
 }
 

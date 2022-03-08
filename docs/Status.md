@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**State** | **string** | Status is a state machine. It starts with &#x60;BUILDING&#x60; or &#x60;DEPLOYING&#x60; state (or &#x60;INITIALIZED&#x60;if auto-deploy is deactivated). Then finish with &#x60;*_ERROR&#x60; or any termination state.  | 
+**State** | [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
-**ServiceDeploymentStatus** | Pointer to **NullableString** |  | [optional] 
+**ServiceDeploymentStatus** | Pointer to [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | [optional] 
 
 ## Methods
 
 ### NewStatus
 
-`func NewStatus(state string, ) *Status`
+`func NewStatus(state GlobalDeploymentStatus, ) *Status`
 
 NewStatus instantiates a new Status object
 This constructor will assign default values to properties that have it defined,
@@ -55,20 +55,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *Status) GetState() string`
+`func (o *Status) GetState() GlobalDeploymentStatus`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *Status) GetStateOk() (*string, bool)`
+`func (o *Status) GetStateOk() (*GlobalDeploymentStatus, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *Status) SetState(v string)`
+`func (o *Status) SetState(v GlobalDeploymentStatus)`
 
 SetState sets State field to given value.
 
@@ -110,20 +110,20 @@ HasMessage returns a boolean if a field has been set.
 UnsetMessage ensures that no value is present for Message, not even an explicit nil
 ### GetServiceDeploymentStatus
 
-`func (o *Status) GetServiceDeploymentStatus() string`
+`func (o *Status) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum`
 
 GetServiceDeploymentStatus returns the ServiceDeploymentStatus field if non-nil, zero value otherwise.
 
 ### GetServiceDeploymentStatusOk
 
-`func (o *Status) GetServiceDeploymentStatusOk() (*string, bool)`
+`func (o *Status) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, bool)`
 
 GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceDeploymentStatus
 
-`func (o *Status) SetServiceDeploymentStatus(v string)`
+`func (o *Status) SetServiceDeploymentStatus(v ServiceDeploymentStatusEnum)`
 
 SetServiceDeploymentStatus sets ServiceDeploymentStatus field to given value.
 

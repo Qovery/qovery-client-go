@@ -18,24 +18,24 @@ import (
 
 // EnvironmentDeploymentRuleResponse struct for EnvironmentDeploymentRuleResponse
 type EnvironmentDeploymentRuleResponse struct {
-	Id          string     `json:"id"`
-	CreatedAt   time.Time  `json:"created_at"`
-	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
-	AutoDeploy  *bool      `json:"auto_deploy,omitempty"`
-	AutoStop    *bool      `json:"auto_stop,omitempty"`
-	AutoDelete  *bool      `json:"auto_delete,omitempty"`
-	AutoPreview *bool      `json:"auto_preview,omitempty"`
-	Timezone    string     `json:"timezone"`
-	StartTime   time.Time  `json:"start_time"`
-	StopTime    time.Time  `json:"stop_time"`
-	Weekdays    []string   `json:"weekdays"`
+	Id          string        `json:"id"`
+	CreatedAt   time.Time     `json:"created_at"`
+	UpdatedAt   *time.Time    `json:"updated_at,omitempty"`
+	AutoDeploy  *bool         `json:"auto_deploy,omitempty"`
+	AutoStop    *bool         `json:"auto_stop,omitempty"`
+	AutoDelete  *bool         `json:"auto_delete,omitempty"`
+	AutoPreview *bool         `json:"auto_preview,omitempty"`
+	Timezone    string        `json:"timezone"`
+	StartTime   time.Time     `json:"start_time"`
+	StopTime    time.Time     `json:"stop_time"`
+	Weekdays    []WeekdayEnum `json:"weekdays"`
 }
 
 // NewEnvironmentDeploymentRuleResponse instantiates a new EnvironmentDeploymentRuleResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentDeploymentRuleResponse(id string, createdAt time.Time, timezone string, startTime time.Time, stopTime time.Time, weekdays []string) *EnvironmentDeploymentRuleResponse {
+func NewEnvironmentDeploymentRuleResponse(id string, createdAt time.Time, timezone string, startTime time.Time, stopTime time.Time, weekdays []WeekdayEnum) *EnvironmentDeploymentRuleResponse {
 	this := EnvironmentDeploymentRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -351,9 +351,9 @@ func (o *EnvironmentDeploymentRuleResponse) SetStopTime(v time.Time) {
 }
 
 // GetWeekdays returns the Weekdays field value
-func (o *EnvironmentDeploymentRuleResponse) GetWeekdays() []string {
+func (o *EnvironmentDeploymentRuleResponse) GetWeekdays() []WeekdayEnum {
 	if o == nil {
-		var ret []string
+		var ret []WeekdayEnum
 		return ret
 	}
 
@@ -362,7 +362,7 @@ func (o *EnvironmentDeploymentRuleResponse) GetWeekdays() []string {
 
 // GetWeekdaysOk returns a tuple with the Weekdays field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleResponse) GetWeekdaysOk() ([]string, bool) {
+func (o *EnvironmentDeploymentRuleResponse) GetWeekdaysOk() ([]WeekdayEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -370,7 +370,7 @@ func (o *EnvironmentDeploymentRuleResponse) GetWeekdaysOk() ([]string, bool) {
 }
 
 // SetWeekdays sets field value
-func (o *EnvironmentDeploymentRuleResponse) SetWeekdays(v []string) {
+func (o *EnvironmentDeploymentRuleResponse) SetWeekdays(v []WeekdayEnum) {
 	o.Weekdays = v
 }
 

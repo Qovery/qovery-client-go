@@ -18,19 +18,19 @@ import (
 
 // InvoiceResponse struct for InvoiceResponse
 type InvoiceResponse struct {
-	TotalInCents int32     `json:"total_in_cents"`
-	Total        float32   `json:"total"`
-	CurrencyCode string    `json:"currency_code"`
-	Id           string    `json:"id"`
-	CreatedAt    time.Time `json:"created_at"`
-	Status       string    `json:"status"`
+	TotalInCents int32             `json:"total_in_cents"`
+	Total        float32           `json:"total"`
+	CurrencyCode string            `json:"currency_code"`
+	Id           string            `json:"id"`
+	CreatedAt    time.Time         `json:"created_at"`
+	Status       InvoiceStatusEnum `json:"status"`
 }
 
 // NewInvoiceResponse instantiates a new InvoiceResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvoiceResponse(totalInCents int32, total float32, currencyCode string, id string, createdAt time.Time, status string) *InvoiceResponse {
+func NewInvoiceResponse(totalInCents int32, total float32, currencyCode string, id string, createdAt time.Time, status InvoiceStatusEnum) *InvoiceResponse {
 	this := InvoiceResponse{}
 	this.TotalInCents = totalInCents
 	this.Total = total
@@ -170,9 +170,9 @@ func (o *InvoiceResponse) SetCreatedAt(v time.Time) {
 }
 
 // GetStatus returns the Status field value
-func (o *InvoiceResponse) GetStatus() string {
+func (o *InvoiceResponse) GetStatus() InvoiceStatusEnum {
 	if o == nil {
-		var ret string
+		var ret InvoiceStatusEnum
 		return ret
 	}
 
@@ -181,7 +181,7 @@ func (o *InvoiceResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *InvoiceResponse) GetStatusOk() (*string, bool) {
+func (o *InvoiceResponse) GetStatusOk() (*InvoiceStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -189,7 +189,7 @@ func (o *InvoiceResponse) GetStatusOk() (*string, bool) {
 }
 
 // SetStatus sets field value
-func (o *InvoiceResponse) SetStatus(v string) {
+func (o *InvoiceResponse) SetStatus(v InvoiceStatusEnum) {
 	o.Status = v
 }
 

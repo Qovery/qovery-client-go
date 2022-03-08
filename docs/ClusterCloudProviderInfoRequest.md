@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | Pointer to **string** |  | [optional] 
+**CloudProvider** | Pointer to [**CloudProviderEnum**](CloudProviderEnum.md) |  | [optional] 
 **Credentials** | Pointer to [**ClusterCloudProviderInfoRequestCredentials**](ClusterCloudProviderInfoRequestCredentials.md) |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCloudProvider
 
-`func (o *ClusterCloudProviderInfoRequest) GetCloudProvider() string`
+`func (o *ClusterCloudProviderInfoRequest) GetCloudProvider() CloudProviderEnum`
 
 GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
 
 ### GetCloudProviderOk
 
-`func (o *ClusterCloudProviderInfoRequest) GetCloudProviderOk() (*string, bool)`
+`func (o *ClusterCloudProviderInfoRequest) GetCloudProviderOk() (*CloudProviderEnum, bool)`
 
 GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloudProvider
 
-`func (o *ClusterCloudProviderInfoRequest) SetCloudProvider(v string)`
+`func (o *ClusterCloudProviderInfoRequest) SetCloudProvider(v CloudProviderEnum)`
 
 SetCloudProvider sets CloudProvider field to given value.
 

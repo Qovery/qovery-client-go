@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Email** | **string** |  | 
 **ProfilePictureUrl** | Pointer to **string** |  | [optional] 
 **LastActivityAt** | Pointer to **time.Time** | last time the user was connected | [optional] 
-**Role** | Pointer to **string** |  | [optional] 
+**Role** | Pointer to [**InviteMemberRoleEnum**](InviteMemberRoleEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -220,20 +220,20 @@ HasLastActivityAt returns a boolean if a field has been set.
 
 ### GetRole
 
-`func (o *MemberResponse) GetRole() string`
+`func (o *MemberResponse) GetRole() InviteMemberRoleEnum`
 
 GetRole returns the Role field if non-nil, zero value otherwise.
 
 ### GetRoleOk
 
-`func (o *MemberResponse) GetRoleOk() (*string, bool)`
+`func (o *MemberResponse) GetRoleOk() (*InviteMemberRoleEnum, bool)`
 
 GetRoleOk returns a tuple with the Role field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRole
 
-`func (o *MemberResponse) SetRole(v string)`
+`func (o *MemberResponse) SetRole(v InviteMemberRoleEnum)`
 
 SetRole sets Role field to given value.
 

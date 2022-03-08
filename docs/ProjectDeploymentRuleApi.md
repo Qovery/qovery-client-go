@@ -36,7 +36,7 @@ import (
 
 func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", "Mode_example", "ClusterId_example", "UTC", time.Now(), time.Now(), []string{"MONDAY"}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
+    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", openapiclient.EnvironmentModeEnum("PRODUCTION"), "ClusterId_example", "UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -181,7 +181,7 @@ import (
 func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
     deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
-    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", "Mode_example", "ClusterId_example", "UTC", time.Now(), time.Now(), []string{"MONDAY"}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
+    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", openapiclient.EnvironmentModeEnum("PRODUCTION"), "ClusterId_example", "UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

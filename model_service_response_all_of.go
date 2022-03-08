@@ -17,8 +17,7 @@ import (
 
 // ServiceResponseAllOf struct for ServiceResponseAllOf
 type ServiceResponseAllOf struct {
-	// type of the service (application, database, job, gateway...)
-	Type *string `json:"type,omitempty"`
+	Type *ServiceTypeEnum `json:"type,omitempty"`
 	// name of the service
 	Name *string `json:"name,omitempty"`
 	// uuid of the associated service (application, database, job, gateway...)
@@ -55,9 +54,9 @@ func NewServiceResponseAllOfWithDefaults() *ServiceResponseAllOf {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ServiceResponseAllOf) GetType() string {
+func (o *ServiceResponseAllOf) GetType() ServiceTypeEnum {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret ServiceTypeEnum
 		return ret
 	}
 	return *o.Type
@@ -65,7 +64,7 @@ func (o *ServiceResponseAllOf) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceResponseAllOf) GetTypeOk() (*string, bool) {
+func (o *ServiceResponseAllOf) GetTypeOk() (*ServiceTypeEnum, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -81,8 +80,8 @@ func (o *ServiceResponseAllOf) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ServiceResponseAllOf) SetType(v string) {
+// SetType gets a reference to the given ServiceTypeEnum and assigns it to the Type field.
+func (o *ServiceResponseAllOf) SetType(v ServiceTypeEnum) {
 	o.Type = &v
 }
 

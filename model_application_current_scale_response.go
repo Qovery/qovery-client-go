@@ -18,14 +18,14 @@ import (
 
 // ApplicationCurrentScaleResponse struct for ApplicationCurrentScaleResponse
 type ApplicationCurrentScaleResponse struct {
-	Min                       *int32     `json:"min,omitempty"`
-	Max                       *int32     `json:"max,omitempty"`
-	Running                   *int32     `json:"running,omitempty"`
-	RunningInPercent          *float32   `json:"running_in_percent,omitempty"`
-	WarningThresholdInPercent *float32   `json:"warning_threshold_in_percent,omitempty"`
-	AlertThresholdInPercent   *float32   `json:"alert_threshold_in_percent,omitempty"`
-	Status                    *string    `json:"status,omitempty"`
-	UpdatedAt                 *time.Time `json:"updated_at,omitempty"`
+	Min                       *int32                     `json:"min,omitempty"`
+	Max                       *int32                     `json:"max,omitempty"`
+	Running                   *int32                     `json:"running,omitempty"`
+	RunningInPercent          *float32                   `json:"running_in_percent,omitempty"`
+	WarningThresholdInPercent *float32                   `json:"warning_threshold_in_percent,omitempty"`
+	AlertThresholdInPercent   *float32                   `json:"alert_threshold_in_percent,omitempty"`
+	Status                    *ThresholdMetricStatusEnum `json:"status,omitempty"`
+	UpdatedAt                 *time.Time                 `json:"updated_at,omitempty"`
 }
 
 // NewApplicationCurrentScaleResponse instantiates a new ApplicationCurrentScaleResponse object
@@ -238,9 +238,9 @@ func (o *ApplicationCurrentScaleResponse) SetAlertThresholdInPercent(v float32) 
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ApplicationCurrentScaleResponse) GetStatus() string {
+func (o *ApplicationCurrentScaleResponse) GetStatus() ThresholdMetricStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret ThresholdMetricStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -248,7 +248,7 @@ func (o *ApplicationCurrentScaleResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationCurrentScaleResponse) GetStatusOk() (*string, bool) {
+func (o *ApplicationCurrentScaleResponse) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -264,8 +264,8 @@ func (o *ApplicationCurrentScaleResponse) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ApplicationCurrentScaleResponse) SetStatus(v string) {
+// SetStatus gets a reference to the given ThresholdMetricStatusEnum and assigns it to the Status field.
+func (o *ApplicationCurrentScaleResponse) SetStatus(v ThresholdMetricStatusEnum) {
 	o.Status = &v
 }
 

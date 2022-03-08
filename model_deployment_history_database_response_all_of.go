@@ -17,8 +17,8 @@ import (
 
 // DeploymentHistoryDatabaseResponseAllOf struct for DeploymentHistoryDatabaseResponseAllOf
 type DeploymentHistoryDatabaseResponseAllOf struct {
-	Name   *string `json:"name,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Name   *string                 `json:"name,omitempty"`
+	Status *GlobalDeploymentStatus `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryDatabaseResponseAllOf instantiates a new DeploymentHistoryDatabaseResponseAllOf object
@@ -71,9 +71,9 @@ func (o *DeploymentHistoryDatabaseResponseAllOf) SetName(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatus() string {
+func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatus() GlobalDeploymentStatus {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret GlobalDeploymentStatus
 		return ret
 	}
 	return *o.Status
@@ -81,7 +81,7 @@ func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatusOk() (*string, bool) {
+func (o *DeploymentHistoryDatabaseResponseAllOf) GetStatusOk() (*GlobalDeploymentStatus, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *DeploymentHistoryDatabaseResponseAllOf) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *DeploymentHistoryDatabaseResponseAllOf) SetStatus(v string) {
+// SetStatus gets a reference to the given GlobalDeploymentStatus and assigns it to the Status field.
+func (o *DeploymentHistoryDatabaseResponseAllOf) SetStatus(v GlobalDeploymentStatus) {
 	o.Status = &v
 }
 

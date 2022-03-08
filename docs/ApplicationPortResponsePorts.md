@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **InternalPort** | **int32** | The listening port of your application | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your application. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
-**Protocol** | Pointer to **string** |  | [optional] [default to "HTTP"]
+**Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to HTTP]
 
 ## Methods
 
@@ -157,20 +157,20 @@ SetPubliclyAccessible sets PubliclyAccessible field to given value.
 
 ### GetProtocol
 
-`func (o *ApplicationPortResponsePorts) GetProtocol() string`
+`func (o *ApplicationPortResponsePorts) GetProtocol() PortProtocolEnum`
 
 GetProtocol returns the Protocol field if non-nil, zero value otherwise.
 
 ### GetProtocolOk
 
-`func (o *ApplicationPortResponsePorts) GetProtocolOk() (*string, bool)`
+`func (o *ApplicationPortResponsePorts) GetProtocolOk() (*PortProtocolEnum, bool)`
 
 GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocol
 
-`func (o *ApplicationPortResponsePorts) SetProtocol(v string)`
+`func (o *ApplicationPortResponsePorts) SetProtocol(v PortProtocolEnum)`
 
 SetProtocol sets Protocol field to given value.
 

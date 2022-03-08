@@ -11,13 +11,13 @@ Name | Type | Description | Notes
 **Timezone** | **string** |  | 
 **StartTime** | **time.Time** |  | 
 **StopTime** | **time.Time** |  | 
-**Weekdays** | **[]string** |  | 
+**Weekdays** | [**[]WeekdayEnum**](WeekdayEnum.md) |  | 
 
 ## Methods
 
 ### NewEnvironmentDeploymentRuleResponseAllOf
 
-`func NewEnvironmentDeploymentRuleResponseAllOf(timezone string, startTime time.Time, stopTime time.Time, weekdays []string, ) *EnvironmentDeploymentRuleResponseAllOf`
+`func NewEnvironmentDeploymentRuleResponseAllOf(timezone string, startTime time.Time, stopTime time.Time, weekdays []WeekdayEnum, ) *EnvironmentDeploymentRuleResponseAllOf`
 
 NewEnvironmentDeploymentRuleResponseAllOf instantiates a new EnvironmentDeploymentRuleResponseAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -194,20 +194,20 @@ SetStopTime sets StopTime field to given value.
 
 ### GetWeekdays
 
-`func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdays() []string`
+`func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdays() []WeekdayEnum`
 
 GetWeekdays returns the Weekdays field if non-nil, zero value otherwise.
 
 ### GetWeekdaysOk
 
-`func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdaysOk() (*[]string, bool)`
+`func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdaysOk() (*[]WeekdayEnum, bool)`
 
 GetWeekdaysOk returns a tuple with the Weekdays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeekdays
 
-`func (o *EnvironmentDeploymentRuleResponseAllOf) SetWeekdays(v []string)`
+`func (o *EnvironmentDeploymentRuleResponseAllOf) SetWeekdays(v []WeekdayEnum)`
 
 SetWeekdays sets Weekdays field to given value.
 

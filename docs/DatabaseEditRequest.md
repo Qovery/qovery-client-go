@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | name is case-insensitive | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
-**Accessibility** | Pointer to **string** |  | [optional] 
+**Accessibility** | Pointer to [**DatabaseAccessibilityEnum**](DatabaseAccessibilityEnum.md) |  | [optional] [default to PRIVATE]
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **Storage** | Pointer to **int32** | unit is GB | [optional] 
@@ -82,20 +82,20 @@ HasVersion returns a boolean if a field has been set.
 
 ### GetAccessibility
 
-`func (o *DatabaseEditRequest) GetAccessibility() string`
+`func (o *DatabaseEditRequest) GetAccessibility() DatabaseAccessibilityEnum`
 
 GetAccessibility returns the Accessibility field if non-nil, zero value otherwise.
 
 ### GetAccessibilityOk
 
-`func (o *DatabaseEditRequest) GetAccessibilityOk() (*string, bool)`
+`func (o *DatabaseEditRequest) GetAccessibilityOk() (*DatabaseAccessibilityEnum, bool)`
 
 GetAccessibilityOk returns a tuple with the Accessibility field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessibility
 
-`func (o *DatabaseEditRequest) SetAccessibility(v string)`
+`func (o *DatabaseEditRequest) SetAccessibility(v DatabaseAccessibilityEnum)`
 
 SetAccessibility sets Accessibility field to given value.
 

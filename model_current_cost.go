@@ -17,7 +17,7 @@ import (
 
 // CurrentCost struct for CurrentCost
 type CurrentCost struct {
-	Plan *string `json:"plan,omitempty"`
+	Plan *PlanEnum `json:"plan,omitempty"`
 	// number of days remaining before the end of the trial period
 	RemainingTrialDay *int32            `json:"remaining_trial_day,omitempty"`
 	RemainingCredits  *RemainingCredits `json:"remaining_credits,omitempty"`
@@ -42,9 +42,9 @@ func NewCurrentCostWithDefaults() *CurrentCost {
 }
 
 // GetPlan returns the Plan field value if set, zero value otherwise.
-func (o *CurrentCost) GetPlan() string {
+func (o *CurrentCost) GetPlan() PlanEnum {
 	if o == nil || o.Plan == nil {
-		var ret string
+		var ret PlanEnum
 		return ret
 	}
 	return *o.Plan
@@ -52,7 +52,7 @@ func (o *CurrentCost) GetPlan() string {
 
 // GetPlanOk returns a tuple with the Plan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentCost) GetPlanOk() (*string, bool) {
+func (o *CurrentCost) GetPlanOk() (*PlanEnum, bool) {
 	if o == nil || o.Plan == nil {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *CurrentCost) HasPlan() bool {
 	return false
 }
 
-// SetPlan gets a reference to the given string and assigns it to the Plan field.
-func (o *CurrentCost) SetPlan(v string) {
+// SetPlan gets a reference to the given PlanEnum and assigns it to the Plan field.
+func (o *CurrentCost) SetPlan(v PlanEnum) {
 	o.Plan = &v
 }
 

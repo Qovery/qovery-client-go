@@ -17,7 +17,7 @@ import (
 
 // DatabaseConfigurationResponse struct for DatabaseConfigurationResponse
 type DatabaseConfigurationResponse struct {
-	DatabaseType *string               `json:"database_type,omitempty"`
+	DatabaseType *DatabaseTypeEnum     `json:"database_type,omitempty"`
 	Version      []DatabaseVersionMode `json:"version,omitempty"`
 }
 
@@ -39,9 +39,9 @@ func NewDatabaseConfigurationResponseWithDefaults() *DatabaseConfigurationRespon
 }
 
 // GetDatabaseType returns the DatabaseType field value if set, zero value otherwise.
-func (o *DatabaseConfigurationResponse) GetDatabaseType() string {
+func (o *DatabaseConfigurationResponse) GetDatabaseType() DatabaseTypeEnum {
 	if o == nil || o.DatabaseType == nil {
-		var ret string
+		var ret DatabaseTypeEnum
 		return ret
 	}
 	return *o.DatabaseType
@@ -49,7 +49,7 @@ func (o *DatabaseConfigurationResponse) GetDatabaseType() string {
 
 // GetDatabaseTypeOk returns a tuple with the DatabaseType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseConfigurationResponse) GetDatabaseTypeOk() (*string, bool) {
+func (o *DatabaseConfigurationResponse) GetDatabaseTypeOk() (*DatabaseTypeEnum, bool) {
 	if o == nil || o.DatabaseType == nil {
 		return nil, false
 	}
@@ -65,8 +65,8 @@ func (o *DatabaseConfigurationResponse) HasDatabaseType() bool {
 	return false
 }
 
-// SetDatabaseType gets a reference to the given string and assigns it to the DatabaseType field.
-func (o *DatabaseConfigurationResponse) SetDatabaseType(v string) {
+// SetDatabaseType gets a reference to the given DatabaseTypeEnum and assigns it to the DatabaseType field.
+func (o *DatabaseConfigurationResponse) SetDatabaseType(v DatabaseTypeEnum) {
 	o.DatabaseType = &v
 }
 

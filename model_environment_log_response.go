@@ -21,8 +21,7 @@ type EnvironmentLogResponse struct {
 	Id        string                       `json:"id"`
 	CreatedAt time.Time                    `json:"created_at"`
 	Scope     *EnvironmentLogResponseScope `json:"scope,omitempty"`
-	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
-	State *string `json:"state,omitempty"`
+	State     *GlobalDeploymentStatus      `json:"state,omitempty"`
 	// Log message
 	Message NullableString `json:"message"`
 	// Only for errors. Helps Qovery team to investigate.
@@ -131,9 +130,9 @@ func (o *EnvironmentLogResponse) SetScope(v EnvironmentLogResponseScope) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *EnvironmentLogResponse) GetState() string {
+func (o *EnvironmentLogResponse) GetState() GlobalDeploymentStatus {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret GlobalDeploymentStatus
 		return ret
 	}
 	return *o.State
@@ -141,7 +140,7 @@ func (o *EnvironmentLogResponse) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentLogResponse) GetStateOk() (*string, bool) {
+func (o *EnvironmentLogResponse) GetStateOk() (*GlobalDeploymentStatus, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -157,8 +156,8 @@ func (o *EnvironmentLogResponse) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *EnvironmentLogResponse) SetState(v string) {
+// SetState gets a reference to the given GlobalDeploymentStatus and assigns it to the State field.
+func (o *EnvironmentLogResponse) SetState(v GlobalDeploymentStatus) {
 	o.State = &v
 }
 

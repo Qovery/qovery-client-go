@@ -19,12 +19,12 @@ import (
 // DeploymentRuleRequest struct for DeploymentRuleRequest
 type DeploymentRuleRequest struct {
 	// name is case insensitive
-	Name        string  `json:"name"`
-	Description *string `json:"description,omitempty"`
-	Mode        string  `json:"mode"`
-	Cluster     string  `json:"cluster"`
-	AutoDeploy  *bool   `json:"auto_deploy,omitempty"`
-	AutoStop    bool    `json:"auto_stop"`
+	Name        string              `json:"name"`
+	Description *string             `json:"description,omitempty"`
+	Mode        EnvironmentModeEnum `json:"mode"`
+	Cluster     string              `json:"cluster"`
+	AutoDeploy  *bool               `json:"auto_deploy,omitempty"`
+	AutoStop    bool                `json:"auto_stop"`
 	// specify value only if auto_stop = false
 	Timezone *string `json:"timezone,omitempty"`
 	// specify value only if auto_stop = false
@@ -32,14 +32,14 @@ type DeploymentRuleRequest struct {
 	// specify value only if auto_stop = false
 	StopTime NullableTime `json:"stop_time,omitempty"`
 	// specify value only if auto_stop = false
-	Weekdays []string `json:"weekdays,omitempty"`
+	Weekdays []WeekdayEnum `json:"weekdays,omitempty"`
 }
 
 // NewDeploymentRuleRequest instantiates a new DeploymentRuleRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentRuleRequest(name string, mode string, cluster string, autoStop bool) *DeploymentRuleRequest {
+func NewDeploymentRuleRequest(name string, mode EnvironmentModeEnum, cluster string, autoStop bool) *DeploymentRuleRequest {
 	this := DeploymentRuleRequest{}
 	this.Name = name
 	this.Mode = mode
@@ -123,9 +123,9 @@ func (o *DeploymentRuleRequest) SetDescription(v string) {
 }
 
 // GetMode returns the Mode field value
-func (o *DeploymentRuleRequest) GetMode() string {
+func (o *DeploymentRuleRequest) GetMode() EnvironmentModeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentModeEnum
 		return ret
 	}
 
@@ -134,7 +134,7 @@ func (o *DeploymentRuleRequest) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *DeploymentRuleRequest) GetModeOk() (*string, bool) {
+func (o *DeploymentRuleRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -142,7 +142,7 @@ func (o *DeploymentRuleRequest) GetModeOk() (*string, bool) {
 }
 
 // SetMode sets field value
-func (o *DeploymentRuleRequest) SetMode(v string) {
+func (o *DeploymentRuleRequest) SetMode(v EnvironmentModeEnum) {
 	o.Mode = v
 }
 
@@ -345,9 +345,9 @@ func (o *DeploymentRuleRequest) UnsetStopTime() {
 }
 
 // GetWeekdays returns the Weekdays field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeploymentRuleRequest) GetWeekdays() []string {
+func (o *DeploymentRuleRequest) GetWeekdays() []WeekdayEnum {
 	if o == nil {
-		var ret []string
+		var ret []WeekdayEnum
 		return ret
 	}
 	return o.Weekdays
@@ -356,7 +356,7 @@ func (o *DeploymentRuleRequest) GetWeekdays() []string {
 // GetWeekdaysOk returns a tuple with the Weekdays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeploymentRuleRequest) GetWeekdaysOk() ([]string, bool) {
+func (o *DeploymentRuleRequest) GetWeekdaysOk() ([]WeekdayEnum, bool) {
 	if o == nil || o.Weekdays == nil {
 		return nil, false
 	}
@@ -372,8 +372,8 @@ func (o *DeploymentRuleRequest) HasWeekdays() bool {
 	return false
 }
 
-// SetWeekdays gets a reference to the given []string and assigns it to the Weekdays field.
-func (o *DeploymentRuleRequest) SetWeekdays(v []string) {
+// SetWeekdays gets a reference to the given []WeekdayEnum and assigns it to the Weekdays field.
+func (o *DeploymentRuleRequest) SetWeekdays(v []WeekdayEnum) {
 	o.Weekdays = v
 }
 

@@ -18,9 +18,9 @@ import (
 // CloneRequest struct for CloneRequest
 type CloneRequest struct {
 	// name is case insensitive
-	Name      string  `json:"name"`
-	ClusterId *string `json:"cluster_id,omitempty"`
-	Mode      *string `json:"mode,omitempty"`
+	Name      string               `json:"name"`
+	ClusterId *string              `json:"cluster_id,omitempty"`
+	Mode      *EnvironmentModeEnum `json:"mode,omitempty"`
 }
 
 // NewCloneRequest instantiates a new CloneRequest object
@@ -98,9 +98,9 @@ func (o *CloneRequest) SetClusterId(v string) {
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *CloneRequest) GetMode() string {
+func (o *CloneRequest) GetMode() EnvironmentModeEnum {
 	if o == nil || o.Mode == nil {
-		var ret string
+		var ret EnvironmentModeEnum
 		return ret
 	}
 	return *o.Mode
@@ -108,7 +108,7 @@ func (o *CloneRequest) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloneRequest) GetModeOk() (*string, bool) {
+func (o *CloneRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 	if o == nil || o.Mode == nil {
 		return nil, false
 	}
@@ -124,8 +124,8 @@ func (o *CloneRequest) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
-func (o *CloneRequest) SetMode(v string) {
+// SetMode gets a reference to the given EnvironmentModeEnum and assigns it to the Mode field.
+func (o *CloneRequest) SetMode(v EnvironmentModeEnum) {
 	o.Mode = &v
 }
 

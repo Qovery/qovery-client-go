@@ -18,21 +18,21 @@ import (
 
 // EnvironmentDeploymentRuleResponseAllOf struct for EnvironmentDeploymentRuleResponseAllOf
 type EnvironmentDeploymentRuleResponseAllOf struct {
-	AutoDeploy  *bool     `json:"auto_deploy,omitempty"`
-	AutoStop    *bool     `json:"auto_stop,omitempty"`
-	AutoDelete  *bool     `json:"auto_delete,omitempty"`
-	AutoPreview *bool     `json:"auto_preview,omitempty"`
-	Timezone    string    `json:"timezone"`
-	StartTime   time.Time `json:"start_time"`
-	StopTime    time.Time `json:"stop_time"`
-	Weekdays    []string  `json:"weekdays"`
+	AutoDeploy  *bool         `json:"auto_deploy,omitempty"`
+	AutoStop    *bool         `json:"auto_stop,omitempty"`
+	AutoDelete  *bool         `json:"auto_delete,omitempty"`
+	AutoPreview *bool         `json:"auto_preview,omitempty"`
+	Timezone    string        `json:"timezone"`
+	StartTime   time.Time     `json:"start_time"`
+	StopTime    time.Time     `json:"stop_time"`
+	Weekdays    []WeekdayEnum `json:"weekdays"`
 }
 
 // NewEnvironmentDeploymentRuleResponseAllOf instantiates a new EnvironmentDeploymentRuleResponseAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentDeploymentRuleResponseAllOf(timezone string, startTime time.Time, stopTime time.Time, weekdays []string) *EnvironmentDeploymentRuleResponseAllOf {
+func NewEnvironmentDeploymentRuleResponseAllOf(timezone string, startTime time.Time, stopTime time.Time, weekdays []WeekdayEnum) *EnvironmentDeploymentRuleResponseAllOf {
 	this := EnvironmentDeploymentRuleResponseAllOf{}
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
@@ -266,9 +266,9 @@ func (o *EnvironmentDeploymentRuleResponseAllOf) SetStopTime(v time.Time) {
 }
 
 // GetWeekdays returns the Weekdays field value
-func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdays() []string {
+func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdays() []WeekdayEnum {
 	if o == nil {
-		var ret []string
+		var ret []WeekdayEnum
 		return ret
 	}
 
@@ -277,7 +277,7 @@ func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdays() []string {
 
 // GetWeekdaysOk returns a tuple with the Weekdays field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdaysOk() ([]string, bool) {
+func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdaysOk() ([]WeekdayEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -285,7 +285,7 @@ func (o *EnvironmentDeploymentRuleResponseAllOf) GetWeekdaysOk() ([]string, bool
 }
 
 // SetWeekdays sets field value
-func (o *EnvironmentDeploymentRuleResponseAllOf) SetWeekdays(v []string) {
+func (o *EnvironmentDeploymentRuleResponseAllOf) SetWeekdays(v []WeekdayEnum) {
 	o.Weekdays = v
 }
 

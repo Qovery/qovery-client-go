@@ -19,11 +19,10 @@ import (
 // ServiceResponse struct for ServiceResponse
 type ServiceResponse struct {
 	// uuid of the associated service (application, database, job, gateway...)
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	// type of the service (application, database, job, gateway...)
-	Type *string `json:"type,omitempty"`
+	Id        string           `json:"id"`
+	CreatedAt time.Time        `json:"created_at"`
+	UpdatedAt *time.Time       `json:"updated_at,omitempty"`
+	Type      *ServiceTypeEnum `json:"type,omitempty"`
 	// name of the service
 	Name *string `json:"name,omitempty"`
 	// Git commit ID corresponding to the deployed version of the application
@@ -139,9 +138,9 @@ func (o *ServiceResponse) SetUpdatedAt(v time.Time) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ServiceResponse) GetType() string {
+func (o *ServiceResponse) GetType() ServiceTypeEnum {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret ServiceTypeEnum
 		return ret
 	}
 	return *o.Type
@@ -149,7 +148,7 @@ func (o *ServiceResponse) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceResponse) GetTypeOk() (*string, bool) {
+func (o *ServiceResponse) GetTypeOk() (*ServiceTypeEnum, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -165,8 +164,8 @@ func (o *ServiceResponse) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ServiceResponse) SetType(v string) {
+// SetType gets a reference to the given ServiceTypeEnum and assigns it to the Type field.
+func (o *ServiceResponse) SetType(v ServiceTypeEnum) {
 	o.Type = &v
 }
 

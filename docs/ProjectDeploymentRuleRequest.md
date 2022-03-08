@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Mode** | **string** |  | 
+**Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **ClusterId** | **string** |  | 
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to false]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
@@ -14,14 +14,14 @@ Name | Type | Description | Notes
 **Timezone** | **string** |  | 
 **StartTime** | **time.Time** |  | 
 **StopTime** | **time.Time** |  | 
-**Weekdays** | **[]string** |  | 
+**Weekdays** | [**[]WeekdayEnum**](WeekdayEnum.md) |  | 
 **Wildcard** | **string** | wildcard pattern composed of &#39;?&#39; and/or &#39;*&#39; used to target new created environments | [default to ""]
 
 ## Methods
 
 ### NewProjectDeploymentRuleRequest
 
-`func NewProjectDeploymentRuleRequest(name string, mode string, clusterId string, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard string, ) *ProjectDeploymentRuleRequest`
+`func NewProjectDeploymentRuleRequest(name string, mode EnvironmentModeEnum, clusterId string, timezone string, startTime time.Time, stopTime time.Time, weekdays []WeekdayEnum, wildcard string, ) *ProjectDeploymentRuleRequest`
 
 NewProjectDeploymentRuleRequest instantiates a new ProjectDeploymentRuleRequest object
 This constructor will assign default values to properties that have it defined,
@@ -93,20 +93,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetMode
 
-`func (o *ProjectDeploymentRuleRequest) GetMode() string`
+`func (o *ProjectDeploymentRuleRequest) GetMode() EnvironmentModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *ProjectDeploymentRuleRequest) GetModeOk() (*string, bool)`
+`func (o *ProjectDeploymentRuleRequest) GetModeOk() (*EnvironmentModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *ProjectDeploymentRuleRequest) SetMode(v string)`
+`func (o *ProjectDeploymentRuleRequest) SetMode(v EnvironmentModeEnum)`
 
 SetMode sets Mode field to given value.
 
@@ -268,20 +268,20 @@ SetStopTime sets StopTime field to given value.
 
 ### GetWeekdays
 
-`func (o *ProjectDeploymentRuleRequest) GetWeekdays() []string`
+`func (o *ProjectDeploymentRuleRequest) GetWeekdays() []WeekdayEnum`
 
 GetWeekdays returns the Weekdays field if non-nil, zero value otherwise.
 
 ### GetWeekdaysOk
 
-`func (o *ProjectDeploymentRuleRequest) GetWeekdaysOk() (*[]string, bool)`
+`func (o *ProjectDeploymentRuleRequest) GetWeekdaysOk() (*[]WeekdayEnum, bool)`
 
 GetWeekdaysOk returns a tuple with the Weekdays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeekdays
 
-`func (o *ProjectDeploymentRuleRequest) SetWeekdays(v []string)`
+`func (o *ProjectDeploymentRuleRequest) SetWeekdays(v []WeekdayEnum)`
 
 SetWeekdays sets Weekdays field to given value.
 

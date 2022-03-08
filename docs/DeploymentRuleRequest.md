@@ -6,20 +6,20 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
-**Mode** | **string** |  | 
+**Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **Cluster** | **string** |  | 
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
 **AutoStop** | **bool** |  | [default to false]
 **Timezone** | Pointer to **string** | specify value only if auto_stop &#x3D; false | [optional] [default to "Europe/London"]
 **StartTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
 **StopTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
-**Weekdays** | Pointer to **[]string** | specify value only if auto_stop &#x3D; false | [optional] 
+**Weekdays** | Pointer to [**[]WeekdayEnum**](WeekdayEnum.md) | specify value only if auto_stop &#x3D; false | [optional] 
 
 ## Methods
 
 ### NewDeploymentRuleRequest
 
-`func NewDeploymentRuleRequest(name string, mode string, cluster string, autoStop bool, ) *DeploymentRuleRequest`
+`func NewDeploymentRuleRequest(name string, mode EnvironmentModeEnum, cluster string, autoStop bool, ) *DeploymentRuleRequest`
 
 NewDeploymentRuleRequest instantiates a new DeploymentRuleRequest object
 This constructor will assign default values to properties that have it defined,
@@ -81,20 +81,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *DeploymentRuleRequest) GetMode() string`
+`func (o *DeploymentRuleRequest) GetMode() EnvironmentModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *DeploymentRuleRequest) GetModeOk() (*string, bool)`
+`func (o *DeploymentRuleRequest) GetModeOk() (*EnvironmentModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *DeploymentRuleRequest) SetMode(v string)`
+`func (o *DeploymentRuleRequest) SetMode(v EnvironmentModeEnum)`
 
 SetMode sets Mode field to given value.
 
@@ -261,20 +261,20 @@ HasStopTime returns a boolean if a field has been set.
 UnsetStopTime ensures that no value is present for StopTime, not even an explicit nil
 ### GetWeekdays
 
-`func (o *DeploymentRuleRequest) GetWeekdays() []string`
+`func (o *DeploymentRuleRequest) GetWeekdays() []WeekdayEnum`
 
 GetWeekdays returns the Weekdays field if non-nil, zero value otherwise.
 
 ### GetWeekdaysOk
 
-`func (o *DeploymentRuleRequest) GetWeekdaysOk() (*[]string, bool)`
+`func (o *DeploymentRuleRequest) GetWeekdaysOk() (*[]WeekdayEnum, bool)`
 
 GetWeekdaysOk returns a tuple with the Weekdays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeekdays
 
-`func (o *DeploymentRuleRequest) SetWeekdays(v []string)`
+`func (o *DeploymentRuleRequest) SetWeekdays(v []WeekdayEnum)`
 
 SetWeekdays sets Weekdays field to given value.
 

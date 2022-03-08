@@ -17,9 +17,9 @@ import (
 
 // EnvironmentLogResponseScope struct for EnvironmentLogResponseScope
 type EnvironmentLogResponseScope struct {
-	Type *string `json:"type,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Id   *string `json:"id,omitempty"`
+	Type *EnvironmentLogTypeEnum `json:"type,omitempty"`
+	Name *string                 `json:"name,omitempty"`
+	Id   *string                 `json:"id,omitempty"`
 }
 
 // NewEnvironmentLogResponseScope instantiates a new EnvironmentLogResponseScope object
@@ -40,9 +40,9 @@ func NewEnvironmentLogResponseScopeWithDefaults() *EnvironmentLogResponseScope {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *EnvironmentLogResponseScope) GetType() string {
+func (o *EnvironmentLogResponseScope) GetType() EnvironmentLogTypeEnum {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnvironmentLogTypeEnum
 		return ret
 	}
 	return *o.Type
@@ -50,7 +50,7 @@ func (o *EnvironmentLogResponseScope) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentLogResponseScope) GetTypeOk() (*string, bool) {
+func (o *EnvironmentLogResponseScope) GetTypeOk() (*EnvironmentLogTypeEnum, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *EnvironmentLogResponseScope) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *EnvironmentLogResponseScope) SetType(v string) {
+// SetType gets a reference to the given EnvironmentLogTypeEnum and assigns it to the Type field.
+func (o *EnvironmentLogResponseScope) SetType(v EnvironmentLogTypeEnum) {
 	o.Type = &v
 }
 

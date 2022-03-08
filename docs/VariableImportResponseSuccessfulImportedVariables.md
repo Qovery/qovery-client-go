@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Value** | Pointer to **string** | Optional if the variable is secret | [optional] 
-**Scope** | **string** |  | 
+**Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
 **IsSecret** | **bool** |  | 
 
 ## Methods
 
 ### NewVariableImportResponseSuccessfulImportedVariables
 
-`func NewVariableImportResponseSuccessfulImportedVariables(name string, scope string, isSecret bool, ) *VariableImportResponseSuccessfulImportedVariables`
+`func NewVariableImportResponseSuccessfulImportedVariables(name string, scope EnvironmentVariableScopeEnum, isSecret bool, ) *VariableImportResponseSuccessfulImportedVariables`
 
 NewVariableImportResponseSuccessfulImportedVariables instantiates a new VariableImportResponseSuccessfulImportedVariables object
 This constructor will assign default values to properties that have it defined,
@@ -75,20 +75,20 @@ HasValue returns a boolean if a field has been set.
 
 ### GetScope
 
-`func (o *VariableImportResponseSuccessfulImportedVariables) GetScope() string`
+`func (o *VariableImportResponseSuccessfulImportedVariables) GetScope() EnvironmentVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *VariableImportResponseSuccessfulImportedVariables) GetScopeOk() (*string, bool)`
+`func (o *VariableImportResponseSuccessfulImportedVariables) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *VariableImportResponseSuccessfulImportedVariables) SetScope(v string)`
+`func (o *VariableImportResponseSuccessfulImportedVariables) SetScope(v EnvironmentVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

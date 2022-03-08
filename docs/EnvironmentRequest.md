@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
 **Cluster** | Pointer to **string** |  | [optional] 
-**Mode** | Pointer to **string** |  | [optional] 
+**Mode** | Pointer to [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -74,20 +74,20 @@ HasCluster returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *EnvironmentRequest) GetMode() string`
+`func (o *EnvironmentRequest) GetMode() EnvironmentModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *EnvironmentRequest) GetModeOk() (*string, bool)`
+`func (o *EnvironmentRequest) GetModeOk() (*EnvironmentModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *EnvironmentRequest) SetMode(v string)`
+`func (o *EnvironmentRequest) SetMode(v EnvironmentModeEnum)`
 
 SetMode sets Mode field to given value.
 

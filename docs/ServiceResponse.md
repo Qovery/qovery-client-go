@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | uuid of the associated service (application, database, job, gateway...) | 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Type** | Pointer to **string** | type of the service (application, database, job, gateway...) | [optional] 
+**Type** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
 **Name** | Pointer to **string** | name of the service | [optional] 
 **DeployedCommitId** | Pointer to **string** | Git commit ID corresponding to the deployed version of the application | [optional] 
 **LastUpdatedBy** | Pointer to **string** | uuid of the user that made the last update | [optional] 
@@ -102,20 +102,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *ServiceResponse) GetType() string`
+`func (o *ServiceResponse) GetType() ServiceTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ServiceResponse) GetTypeOk() (*string, bool)`
+`func (o *ServiceResponse) GetTypeOk() (*ServiceTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ServiceResponse) SetType(v string)`
+`func (o *ServiceResponse) SetType(v ServiceTypeEnum)`
 
 SetType sets Type field to given value.
 

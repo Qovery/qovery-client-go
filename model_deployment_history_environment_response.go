@@ -21,7 +21,7 @@ type DeploymentHistoryEnvironmentResponse struct {
 	Id           string                                 `json:"id"`
 	CreatedAt    time.Time                              `json:"created_at"`
 	UpdatedAt    *time.Time                             `json:"updated_at,omitempty"`
-	Status       *string                                `json:"status,omitempty"`
+	Status       *GlobalDeploymentStatus                `json:"status,omitempty"`
 	Applications []DeploymentHistoryApplicationResponse `json:"applications,omitempty"`
 	Databases    []DeploymentHistoryDatabaseResponse    `json:"databases,omitempty"`
 }
@@ -126,9 +126,9 @@ func (o *DeploymentHistoryEnvironmentResponse) SetUpdatedAt(v time.Time) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryEnvironmentResponse) GetStatus() string {
+func (o *DeploymentHistoryEnvironmentResponse) GetStatus() GlobalDeploymentStatus {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret GlobalDeploymentStatus
 		return ret
 	}
 	return *o.Status
@@ -136,7 +136,7 @@ func (o *DeploymentHistoryEnvironmentResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentResponse) GetStatusOk() (*string, bool) {
+func (o *DeploymentHistoryEnvironmentResponse) GetStatusOk() (*GlobalDeploymentStatus, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -152,8 +152,8 @@ func (o *DeploymentHistoryEnvironmentResponse) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *DeploymentHistoryEnvironmentResponse) SetStatus(v string) {
+// SetStatus gets a reference to the given GlobalDeploymentStatus and assigns it to the Status field.
+func (o *DeploymentHistoryEnvironmentResponse) SetStatus(v GlobalDeploymentStatus) {
 	o.Status = &v
 }
 

@@ -22,11 +22,11 @@ type ClusterResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case-insensitive
-	Name          string         `json:"name"`
-	Description   NullableString `json:"description,omitempty"`
-	CloudProvider string         `json:"cloud_provider"`
-	Region        string         `json:"region"`
-	AutoUpdate    *bool          `json:"auto_update,omitempty"`
+	Name          string            `json:"name"`
+	Description   NullableString    `json:"description,omitempty"`
+	CloudProvider CloudProviderEnum `json:"cloud_provider"`
+	Region        string            `json:"region"`
+	AutoUpdate    *bool             `json:"auto_update,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -42,18 +42,18 @@ type ClusterResponse struct {
 	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
 	AcceptedValues      []interface{}   `json:"accepted_values,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *int32  `json:"estimated_cloud_provider_cost,omitempty"`
-	Status                     *string `json:"status,omitempty"`
-	HasAccess                  *bool   `json:"has_access,omitempty"`
-	Version                    *string `json:"version,omitempty"`
-	IsDefault                  *bool   `json:"is_default,omitempty"`
+	EstimatedCloudProviderCost *int32             `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *ClusterStatusEnum `json:"status,omitempty"`
+	HasAccess                  *bool              `json:"has_access,omitempty"`
+	Version                    *string            `json:"version,omitempty"`
+	IsDefault                  *bool              `json:"is_default,omitempty"`
 }
 
 // NewClusterResponse instantiates a new ClusterResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterResponse(id string, createdAt time.Time, name string, cloudProvider string, region string) *ClusterResponse {
+func NewClusterResponse(id string, createdAt time.Time, name string, cloudProvider CloudProviderEnum, region string) *ClusterResponse {
 	this := ClusterResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -239,9 +239,9 @@ func (o *ClusterResponse) UnsetDescription() {
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *ClusterResponse) GetCloudProvider() string {
+func (o *ClusterResponse) GetCloudProvider() CloudProviderEnum {
 	if o == nil {
-		var ret string
+		var ret CloudProviderEnum
 		return ret
 	}
 
@@ -250,7 +250,7 @@ func (o *ClusterResponse) GetCloudProvider() string {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetCloudProviderOk() (*string, bool) {
+func (o *ClusterResponse) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -258,7 +258,7 @@ func (o *ClusterResponse) GetCloudProviderOk() (*string, bool) {
 }
 
 // SetCloudProvider sets field value
-func (o *ClusterResponse) SetCloudProvider(v string) {
+func (o *ClusterResponse) SetCloudProvider(v CloudProviderEnum) {
 	o.CloudProvider = v
 }
 
@@ -779,9 +779,9 @@ func (o *ClusterResponse) SetEstimatedCloudProviderCost(v int32) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ClusterResponse) GetStatus() string {
+func (o *ClusterResponse) GetStatus() ClusterStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret ClusterStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -789,7 +789,7 @@ func (o *ClusterResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponse) GetStatusOk() (*string, bool) {
+func (o *ClusterResponse) GetStatusOk() (*ClusterStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -805,8 +805,8 @@ func (o *ClusterResponse) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ClusterResponse) SetStatus(v string) {
+// SetStatus gets a reference to the given ClusterStatusEnum and assigns it to the Status field.
+func (o *ClusterResponse) SetStatus(v ClusterStatusEnum) {
 	o.Status = &v
 }
 

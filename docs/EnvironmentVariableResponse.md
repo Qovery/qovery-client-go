@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **Value** | **string** | value of the env variable. | 
 **OverriddenVariable** | Pointer to [**EnvironmentVariableResponseAllOfOverriddenVariable**](EnvironmentVariableResponseAllOfOverriddenVariable.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableResponseAllOfAliasedVariable**](EnvironmentVariableResponseAllOfAliasedVariable.md) |  | [optional] 
-**Scope** | **string** |  | 
+**Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
 **ServiceName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewEnvironmentVariableResponse
 
-`func NewEnvironmentVariableResponse(id string, createdAt time.Time, key string, value string, scope string, ) *EnvironmentVariableResponse`
+`func NewEnvironmentVariableResponse(id string, createdAt time.Time, key string, value string, scope EnvironmentVariableScopeEnum, ) *EnvironmentVariableResponse`
 
 NewEnvironmentVariableResponse instantiates a new EnvironmentVariableResponse object
 This constructor will assign default values to properties that have it defined,
@@ -190,20 +190,20 @@ HasAliasedVariable returns a boolean if a field has been set.
 
 ### GetScope
 
-`func (o *EnvironmentVariableResponse) GetScope() string`
+`func (o *EnvironmentVariableResponse) GetScope() EnvironmentVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *EnvironmentVariableResponse) GetScopeOk() (*string, bool)`
+`func (o *EnvironmentVariableResponse) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *EnvironmentVariableResponse) SetScope(v string)`
+`func (o *EnvironmentVariableResponse) SetScope(v EnvironmentVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

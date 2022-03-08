@@ -19,17 +19,17 @@ import (
 // ProjectDeploymentRuleRequest struct for ProjectDeploymentRuleRequest
 type ProjectDeploymentRuleRequest struct {
 	// name is case insensitive
-	Name        string         `json:"name"`
-	Description NullableString `json:"description,omitempty"`
-	Mode        string         `json:"mode"`
-	ClusterId   string         `json:"cluster_id"`
-	AutoDeploy  *bool          `json:"auto_deploy,omitempty"`
-	AutoStop    *bool          `json:"auto_stop,omitempty"`
-	AutoDelete  *bool          `json:"auto_delete,omitempty"`
-	Timezone    string         `json:"timezone"`
-	StartTime   time.Time      `json:"start_time"`
-	StopTime    time.Time      `json:"stop_time"`
-	Weekdays    []string       `json:"weekdays"`
+	Name        string              `json:"name"`
+	Description NullableString      `json:"description,omitempty"`
+	Mode        EnvironmentModeEnum `json:"mode"`
+	ClusterId   string              `json:"cluster_id"`
+	AutoDeploy  *bool               `json:"auto_deploy,omitempty"`
+	AutoStop    *bool               `json:"auto_stop,omitempty"`
+	AutoDelete  *bool               `json:"auto_delete,omitempty"`
+	Timezone    string              `json:"timezone"`
+	StartTime   time.Time           `json:"start_time"`
+	StopTime    time.Time           `json:"stop_time"`
+	Weekdays    []WeekdayEnum       `json:"weekdays"`
 	// wildcard pattern composed of '?' and/or '*' used to target new created environments
 	Wildcard string `json:"wildcard"`
 }
@@ -38,7 +38,7 @@ type ProjectDeploymentRuleRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDeploymentRuleRequest(name string, mode string, clusterId string, timezone string, startTime time.Time, stopTime time.Time, weekdays []string, wildcard string) *ProjectDeploymentRuleRequest {
+func NewProjectDeploymentRuleRequest(name string, mode EnvironmentModeEnum, clusterId string, timezone string, startTime time.Time, stopTime time.Time, weekdays []WeekdayEnum, wildcard string) *ProjectDeploymentRuleRequest {
 	this := ProjectDeploymentRuleRequest{}
 	this.Name = name
 	this.Mode = mode
@@ -141,9 +141,9 @@ func (o *ProjectDeploymentRuleRequest) UnsetDescription() {
 }
 
 // GetMode returns the Mode field value
-func (o *ProjectDeploymentRuleRequest) GetMode() string {
+func (o *ProjectDeploymentRuleRequest) GetMode() EnvironmentModeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentModeEnum
 		return ret
 	}
 
@@ -152,7 +152,7 @@ func (o *ProjectDeploymentRuleRequest) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDeploymentRuleRequest) GetModeOk() (*string, bool) {
+func (o *ProjectDeploymentRuleRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -160,7 +160,7 @@ func (o *ProjectDeploymentRuleRequest) GetModeOk() (*string, bool) {
 }
 
 // SetMode sets field value
-func (o *ProjectDeploymentRuleRequest) SetMode(v string) {
+func (o *ProjectDeploymentRuleRequest) SetMode(v EnvironmentModeEnum) {
 	o.Mode = v
 }
 
@@ -357,9 +357,9 @@ func (o *ProjectDeploymentRuleRequest) SetStopTime(v time.Time) {
 }
 
 // GetWeekdays returns the Weekdays field value
-func (o *ProjectDeploymentRuleRequest) GetWeekdays() []string {
+func (o *ProjectDeploymentRuleRequest) GetWeekdays() []WeekdayEnum {
 	if o == nil {
-		var ret []string
+		var ret []WeekdayEnum
 		return ret
 	}
 
@@ -368,7 +368,7 @@ func (o *ProjectDeploymentRuleRequest) GetWeekdays() []string {
 
 // GetWeekdaysOk returns a tuple with the Weekdays field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDeploymentRuleRequest) GetWeekdaysOk() ([]string, bool) {
+func (o *ProjectDeploymentRuleRequest) GetWeekdaysOk() ([]WeekdayEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -376,7 +376,7 @@ func (o *ProjectDeploymentRuleRequest) GetWeekdaysOk() ([]string, bool) {
 }
 
 // SetWeekdays sets field value
-func (o *ProjectDeploymentRuleRequest) SetWeekdays(v []string) {
+func (o *ProjectDeploymentRuleRequest) SetWeekdays(v []WeekdayEnum) {
 	o.Weekdays = v
 }
 

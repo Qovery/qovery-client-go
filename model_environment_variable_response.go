@@ -27,7 +27,7 @@ type EnvironmentVariableResponse struct {
 	Value              string                                              `json:"value"`
 	OverriddenVariable *EnvironmentVariableResponseAllOfOverriddenVariable `json:"overridden_variable,omitempty"`
 	AliasedVariable    *EnvironmentVariableResponseAllOfAliasedVariable    `json:"aliased_variable,omitempty"`
-	Scope              string                                              `json:"scope"`
+	Scope              EnvironmentVariableScopeEnum                        `json:"scope"`
 	ServiceName        *string                                             `json:"service_name,omitempty"`
 }
 
@@ -35,7 +35,7 @@ type EnvironmentVariableResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentVariableResponse(id string, createdAt time.Time, key string, value string, scope string) *EnvironmentVariableResponse {
+func NewEnvironmentVariableResponse(id string, createdAt time.Time, key string, value string, scope EnvironmentVariableScopeEnum) *EnvironmentVariableResponse {
 	this := EnvironmentVariableResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -246,9 +246,9 @@ func (o *EnvironmentVariableResponse) SetAliasedVariable(v EnvironmentVariableRe
 }
 
 // GetScope returns the Scope field value
-func (o *EnvironmentVariableResponse) GetScope() string {
+func (o *EnvironmentVariableResponse) GetScope() EnvironmentVariableScopeEnum {
 	if o == nil {
-		var ret string
+		var ret EnvironmentVariableScopeEnum
 		return ret
 	}
 
@@ -257,7 +257,7 @@ func (o *EnvironmentVariableResponse) GetScope() string {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableResponse) GetScopeOk() (*string, bool) {
+func (o *EnvironmentVariableResponse) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -265,7 +265,7 @@ func (o *EnvironmentVariableResponse) GetScopeOk() (*string, bool) {
 }
 
 // SetScope sets field value
-func (o *EnvironmentVariableResponse) SetScope(v string) {
+func (o *EnvironmentVariableResponse) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = v
 }
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
-**BuildMode** | Pointer to **string** | &#x60;DOCKER&#x60; requires &#x60;dockerfile_path&#x60; &#x60;BUILDPACKS&#x60; does not require any &#x60;dockerfile_path&#x60;  | [optional] [default to "BUILDPACKS"]
+**BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDPACKS]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **BuildpackLanguage** | Pointer to [**NullableBuildPackLanguageEnum**](BuildPackLanguageEnum.md) |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
@@ -165,20 +165,20 @@ SetGitRepository sets GitRepository field to given value.
 
 ### GetBuildMode
 
-`func (o *ApplicationRequest) GetBuildMode() string`
+`func (o *ApplicationRequest) GetBuildMode() BuildModeEnum`
 
 GetBuildMode returns the BuildMode field if non-nil, zero value otherwise.
 
 ### GetBuildModeOk
 
-`func (o *ApplicationRequest) GetBuildModeOk() (*string, bool)`
+`func (o *ApplicationRequest) GetBuildModeOk() (*BuildModeEnum, bool)`
 
 GetBuildModeOk returns a tuple with the BuildMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuildMode
 
-`func (o *ApplicationRequest) SetBuildMode(v string)`
+`func (o *ApplicationRequest) SetBuildMode(v BuildModeEnum)`
 
 SetBuildMode sets BuildMode field to given value.
 

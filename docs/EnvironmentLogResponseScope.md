@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to [**EnvironmentLogTypeEnum**](EnvironmentLogTypeEnum.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *EnvironmentLogResponseScope) GetType() string`
+`func (o *EnvironmentLogResponseScope) GetType() EnvironmentLogTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *EnvironmentLogResponseScope) GetTypeOk() (*string, bool)`
+`func (o *EnvironmentLogResponseScope) GetTypeOk() (*EnvironmentLogTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *EnvironmentLogResponseScope) SetType(v string)`
+`func (o *EnvironmentLogResponseScope) SetType(v EnvironmentLogTypeEnum)`
 
 SetType sets Type field to given value.
 

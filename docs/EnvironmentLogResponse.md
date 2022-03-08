@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | 
 **Scope** | Pointer to [**EnvironmentLogResponseScope**](EnvironmentLogResponseScope.md) |  | [optional] 
-**State** | Pointer to **string** | Status is a state machine. It starts with &#x60;BUILDING&#x60; or &#x60;DEPLOYING&#x60; state (or &#x60;INITIALIZED&#x60;if auto-deploy is deactivated). Then finish with &#x60;*_ERROR&#x60; or any termination state.  | [optional] 
+**State** | Pointer to [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | [optional] 
 **Message** | **NullableString** | Log message | 
 **ExecutionId** | Pointer to **string** | Only for errors. Helps Qovery team to investigate. | [optional] 
 **Hint** | Pointer to **string** |  | [optional] 
@@ -98,20 +98,20 @@ HasScope returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *EnvironmentLogResponse) GetState() string`
+`func (o *EnvironmentLogResponse) GetState() GlobalDeploymentStatus`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *EnvironmentLogResponse) GetStateOk() (*string, bool)`
+`func (o *EnvironmentLogResponse) GetStateOk() (*GlobalDeploymentStatus, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *EnvironmentLogResponse) SetState(v string)`
+`func (o *EnvironmentLogResponse) SetState(v GlobalDeploymentStatus)`
 
 SetState sets State field to given value.
 

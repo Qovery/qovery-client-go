@@ -26,8 +26,8 @@ type MemberResponse struct {
 	Email             string     `json:"email"`
 	ProfilePictureUrl *string    `json:"profile_picture_url,omitempty"`
 	// last time the user was connected
-	LastActivityAt *time.Time `json:"last_activity_at,omitempty"`
-	Role           *string    `json:"role,omitempty"`
+	LastActivityAt *time.Time            `json:"last_activity_at,omitempty"`
+	Role           *InviteMemberRoleEnum `json:"role,omitempty"`
 }
 
 // NewMemberResponse instantiates a new MemberResponse object
@@ -283,9 +283,9 @@ func (o *MemberResponse) SetLastActivityAt(v time.Time) {
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
-func (o *MemberResponse) GetRole() string {
+func (o *MemberResponse) GetRole() InviteMemberRoleEnum {
 	if o == nil || o.Role == nil {
-		var ret string
+		var ret InviteMemberRoleEnum
 		return ret
 	}
 	return *o.Role
@@ -293,7 +293,7 @@ func (o *MemberResponse) GetRole() string {
 
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberResponse) GetRoleOk() (*string, bool) {
+func (o *MemberResponse) GetRoleOk() (*InviteMemberRoleEnum, bool) {
 	if o == nil || o.Role == nil {
 		return nil, false
 	}
@@ -309,8 +309,8 @@ func (o *MemberResponse) HasRole() bool {
 	return false
 }
 
-// SetRole gets a reference to the given string and assigns it to the Role field.
-func (o *MemberResponse) SetRole(v string) {
+// SetRole gets a reference to the given InviteMemberRoleEnum and assigns it to the Role field.
+func (o *MemberResponse) SetRole(v InviteMemberRoleEnum) {
 	o.Role = &v
 }
 

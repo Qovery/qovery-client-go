@@ -18,9 +18,9 @@ import (
 // DatabaseEditRequest struct for DatabaseEditRequest
 type DatabaseEditRequest struct {
 	// name is case-insensitive
-	Name          *string `json:"name,omitempty"`
-	Version       *string `json:"version,omitempty"`
-	Accessibility *string `json:"accessibility,omitempty"`
+	Name          *string                    `json:"name,omitempty"`
+	Version       *string                    `json:"version,omitempty"`
+	Accessibility *DatabaseAccessibilityEnum `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -35,6 +35,8 @@ type DatabaseEditRequest struct {
 // will change when the set of required properties is changed
 func NewDatabaseEditRequest() *DatabaseEditRequest {
 	this := DatabaseEditRequest{}
+	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
 	var memory int32 = 256
@@ -47,6 +49,8 @@ func NewDatabaseEditRequest() *DatabaseEditRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseEditRequestWithDefaults() *DatabaseEditRequest {
 	this := DatabaseEditRequest{}
+	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
 	var memory int32 = 256
@@ -119,9 +123,9 @@ func (o *DatabaseEditRequest) SetVersion(v string) {
 }
 
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
-func (o *DatabaseEditRequest) GetAccessibility() string {
+func (o *DatabaseEditRequest) GetAccessibility() DatabaseAccessibilityEnum {
 	if o == nil || o.Accessibility == nil {
-		var ret string
+		var ret DatabaseAccessibilityEnum
 		return ret
 	}
 	return *o.Accessibility
@@ -129,7 +133,7 @@ func (o *DatabaseEditRequest) GetAccessibility() string {
 
 // GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseEditRequest) GetAccessibilityOk() (*string, bool) {
+func (o *DatabaseEditRequest) GetAccessibilityOk() (*DatabaseAccessibilityEnum, bool) {
 	if o == nil || o.Accessibility == nil {
 		return nil, false
 	}
@@ -145,8 +149,8 @@ func (o *DatabaseEditRequest) HasAccessibility() bool {
 	return false
 }
 
-// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
-func (o *DatabaseEditRequest) SetAccessibility(v string) {
+// SetAccessibility gets a reference to the given DatabaseAccessibilityEnum and assigns it to the Accessibility field.
+func (o *DatabaseEditRequest) SetAccessibility(v DatabaseAccessibilityEnum) {
 	o.Accessibility = &v
 }
 

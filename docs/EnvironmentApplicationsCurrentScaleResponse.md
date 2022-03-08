@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **RunningInPercent** | Pointer to **float32** |  | [optional] 
 **WarningThresholdInPercent** | Pointer to **float32** |  | [optional] 
 **AlertThresholdInPercent** | Pointer to **float32** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**ThresholdMetricStatusEnum**](ThresholdMetricStatusEnum.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 
 ## Methods
@@ -210,20 +210,20 @@ HasAlertThresholdInPercent returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *EnvironmentApplicationsCurrentScaleResponse) GetStatus() string`
+`func (o *EnvironmentApplicationsCurrentScaleResponse) GetStatus() ThresholdMetricStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *EnvironmentApplicationsCurrentScaleResponse) GetStatusOk() (*string, bool)`
+`func (o *EnvironmentApplicationsCurrentScaleResponse) GetStatusOk() (*ThresholdMetricStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *EnvironmentApplicationsCurrentScaleResponse) SetStatus(v string)`
+`func (o *EnvironmentApplicationsCurrentScaleResponse) SetStatus(v ThresholdMetricStatusEnum)`
 
 SetStatus sets Status field to given value.
 

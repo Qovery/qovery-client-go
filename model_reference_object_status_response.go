@@ -17,19 +17,18 @@ import (
 
 // ReferenceObjectStatusResponse struct for ReferenceObjectStatusResponse
 type ReferenceObjectStatusResponse struct {
-	Id string `json:"id"`
-	// Status is a state machine. It starts with `BUILDING` or `DEPLOYING` state (or `INITIALIZED`if auto-deploy is deactivated). Then finish with `*_ERROR` or any termination state.
-	State string `json:"state"`
+	Id    string                 `json:"id"`
+	State GlobalDeploymentStatus `json:"state"`
 	// message related to the state
-	Message                 NullableString `json:"message,omitempty"`
-	ServiceDeploymentStatus NullableString `json:"service_deployment_status,omitempty"`
+	Message                 NullableString                      `json:"message,omitempty"`
+	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status,omitempty"`
 }
 
 // NewReferenceObjectStatusResponse instantiates a new ReferenceObjectStatusResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReferenceObjectStatusResponse(id string, state string) *ReferenceObjectStatusResponse {
+func NewReferenceObjectStatusResponse(id string, state GlobalDeploymentStatus) *ReferenceObjectStatusResponse {
 	this := ReferenceObjectStatusResponse{}
 	this.Id = id
 	this.State = state
@@ -69,9 +68,9 @@ func (o *ReferenceObjectStatusResponse) SetId(v string) {
 }
 
 // GetState returns the State field value
-func (o *ReferenceObjectStatusResponse) GetState() string {
+func (o *ReferenceObjectStatusResponse) GetState() GlobalDeploymentStatus {
 	if o == nil {
-		var ret string
+		var ret GlobalDeploymentStatus
 		return ret
 	}
 
@@ -80,7 +79,7 @@ func (o *ReferenceObjectStatusResponse) GetState() string {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *ReferenceObjectStatusResponse) GetStateOk() (*string, bool) {
+func (o *ReferenceObjectStatusResponse) GetStateOk() (*GlobalDeploymentStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,7 +87,7 @@ func (o *ReferenceObjectStatusResponse) GetStateOk() (*string, bool) {
 }
 
 // SetState sets field value
-func (o *ReferenceObjectStatusResponse) SetState(v string) {
+func (o *ReferenceObjectStatusResponse) SetState(v GlobalDeploymentStatus) {
 	o.State = v
 }
 
@@ -136,9 +135,9 @@ func (o *ReferenceObjectStatusResponse) UnsetMessage() {
 }
 
 // GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatus() string {
+func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum {
 	if o == nil || o.ServiceDeploymentStatus.Get() == nil {
-		var ret string
+		var ret ServiceDeploymentStatusEnum
 		return ret
 	}
 	return *o.ServiceDeploymentStatus.Get()
@@ -147,7 +146,7 @@ func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatus() string {
 // GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatusOk() (*string, bool) {
+func (o *ReferenceObjectStatusResponse) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -163,8 +162,8 @@ func (o *ReferenceObjectStatusResponse) HasServiceDeploymentStatus() bool {
 	return false
 }
 
-// SetServiceDeploymentStatus gets a reference to the given NullableString and assigns it to the ServiceDeploymentStatus field.
-func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatus(v string) {
+// SetServiceDeploymentStatus gets a reference to the given NullableServiceDeploymentStatusEnum and assigns it to the ServiceDeploymentStatus field.
+func (o *ReferenceObjectStatusResponse) SetServiceDeploymentStatus(v ServiceDeploymentStatusEnum) {
 	o.ServiceDeploymentStatus.Set(&v)
 }
 

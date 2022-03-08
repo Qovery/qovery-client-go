@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Type** | **string** |  | 
+**Type** | [**StorageTypeEnum**](StorageTypeEnum.md) |  | 
 **Size** | **int32** | unit is GB | 
 **MountPoint** | **string** |  | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationStorageResponseStorage
 
-`func NewApplicationStorageResponseStorage(type_ string, size int32, mountPoint string, ) *ApplicationStorageResponseStorage`
+`func NewApplicationStorageResponseStorage(type_ StorageTypeEnum, size int32, mountPoint string, ) *ApplicationStorageResponseStorage`
 
 NewApplicationStorageResponseStorage instantiates a new ApplicationStorageResponseStorage object
 This constructor will assign default values to properties that have it defined,
@@ -55,20 +55,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *ApplicationStorageResponseStorage) GetType() string`
+`func (o *ApplicationStorageResponseStorage) GetType() StorageTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ApplicationStorageResponseStorage) GetTypeOk() (*string, bool)`
+`func (o *ApplicationStorageResponseStorage) GetTypeOk() (*StorageTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ApplicationStorageResponseStorage) SetType(v string)`
+`func (o *ApplicationStorageResponseStorage) SetType(v StorageTypeEnum)`
 
 SetType sets Type field to given value.
 

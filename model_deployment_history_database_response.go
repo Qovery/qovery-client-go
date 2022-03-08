@@ -18,11 +18,11 @@ import (
 
 // DeploymentHistoryDatabaseResponse struct for DeploymentHistoryDatabaseResponse
 type DeploymentHistoryDatabaseResponse struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Name      *string    `json:"name,omitempty"`
-	Status    *string    `json:"status,omitempty"`
+	Id        string                  `json:"id"`
+	CreatedAt time.Time               `json:"created_at"`
+	UpdatedAt *time.Time              `json:"updated_at,omitempty"`
+	Name      *string                 `json:"name,omitempty"`
+	Status    *GlobalDeploymentStatus `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryDatabaseResponse instantiates a new DeploymentHistoryDatabaseResponse object
@@ -157,9 +157,9 @@ func (o *DeploymentHistoryDatabaseResponse) SetName(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryDatabaseResponse) GetStatus() string {
+func (o *DeploymentHistoryDatabaseResponse) GetStatus() GlobalDeploymentStatus {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret GlobalDeploymentStatus
 		return ret
 	}
 	return *o.Status
@@ -167,7 +167,7 @@ func (o *DeploymentHistoryDatabaseResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryDatabaseResponse) GetStatusOk() (*string, bool) {
+func (o *DeploymentHistoryDatabaseResponse) GetStatusOk() (*GlobalDeploymentStatus, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -183,8 +183,8 @@ func (o *DeploymentHistoryDatabaseResponse) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *DeploymentHistoryDatabaseResponse) SetStatus(v string) {
+// SetStatus gets a reference to the given GlobalDeploymentStatus and assigns it to the Status field.
+func (o *DeploymentHistoryDatabaseResponse) SetStatus(v GlobalDeploymentStatus) {
 	o.Status = &v
 }
 

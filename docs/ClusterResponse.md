@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case-insensitive | 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**CloudProvider** | **string** |  | 
+**CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
 **Region** | **string** |  | 
 **AutoUpdate** | Pointer to **bool** |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
 **AcceptedValues** | Pointer to [**[]interface{}**](interface{}.md) |  | [optional] 
 **EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**ClusterStatusEnum**](ClusterStatusEnum.md) |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewClusterResponse
 
-`func NewClusterResponse(id string, createdAt time.Time, name string, cloudProvider string, region string, ) *ClusterResponse`
+`func NewClusterResponse(id string, createdAt time.Time, name string, cloudProvider CloudProviderEnum, region string, ) *ClusterResponse`
 
 NewClusterResponse instantiates a new ClusterResponse object
 This constructor will assign default values to properties that have it defined,
@@ -171,20 +171,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetCloudProvider
 
-`func (o *ClusterResponse) GetCloudProvider() string`
+`func (o *ClusterResponse) GetCloudProvider() CloudProviderEnum`
 
 GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
 
 ### GetCloudProviderOk
 
-`func (o *ClusterResponse) GetCloudProviderOk() (*string, bool)`
+`func (o *ClusterResponse) GetCloudProviderOk() (*CloudProviderEnum, bool)`
 
 GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloudProvider
 
-`func (o *ClusterResponse) SetCloudProvider(v string)`
+`func (o *ClusterResponse) SetCloudProvider(v CloudProviderEnum)`
 
 SetCloudProvider sets CloudProvider field to given value.
 
@@ -601,20 +601,20 @@ HasEstimatedCloudProviderCost returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ClusterResponse) GetStatus() string`
+`func (o *ClusterResponse) GetStatus() ClusterStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ClusterResponse) GetStatusOk() (*string, bool)`
+`func (o *ClusterResponse) GetStatusOk() (*ClusterStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ClusterResponse) SetStatus(v string)`
+`func (o *ClusterResponse) SetStatus(v ClusterStatusEnum)`
 
 SetStatus sets Status field to given value.
 

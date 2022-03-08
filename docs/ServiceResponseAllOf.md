@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | type of the service (application, database, job, gateway...) | [optional] 
+**Type** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
 **Name** | Pointer to **string** | name of the service | [optional] 
 **Id** | **string** | uuid of the associated service (application, database, job, gateway...) | 
 **DeployedCommitId** | Pointer to **string** | Git commit ID corresponding to the deployed version of the application | [optional] 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ServiceResponseAllOf) GetType() string`
+`func (o *ServiceResponseAllOf) GetType() ServiceTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ServiceResponseAllOf) GetTypeOk() (*string, bool)`
+`func (o *ServiceResponseAllOf) GetTypeOk() (*ServiceTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ServiceResponseAllOf) SetType(v string)`
+`func (o *ServiceResponseAllOf) SetType(v ServiceTypeEnum)`
 
 SetType sets Type field to given value.
 

@@ -24,8 +24,8 @@ type ApplicationPortResponsePorts struct {
 	// The exposed port for your application. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible bool    `json:"publicly_accessible"`
-	Protocol           *string `json:"protocol,omitempty"`
+	PubliclyAccessible bool              `json:"publicly_accessible"`
+	Protocol           *PortProtocolEnum `json:"protocol,omitempty"`
 }
 
 // NewApplicationPortResponsePorts instantiates a new ApplicationPortResponsePorts object
@@ -36,7 +36,7 @@ func NewApplicationPortResponsePorts(internalPort int32, publiclyAccessible bool
 	this := ApplicationPortResponsePorts{}
 	this.InternalPort = internalPort
 	this.PubliclyAccessible = publiclyAccessible
-	var protocol string = "HTTP"
+	var protocol PortProtocolEnum = HTTP
 	this.Protocol = &protocol
 	return &this
 }
@@ -46,7 +46,7 @@ func NewApplicationPortResponsePorts(internalPort int32, publiclyAccessible bool
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationPortResponsePortsWithDefaults() *ApplicationPortResponsePorts {
 	this := ApplicationPortResponsePorts{}
-	var protocol string = "HTTP"
+	var protocol PortProtocolEnum = HTTP
 	this.Protocol = &protocol
 	return &this
 }
@@ -207,9 +207,9 @@ func (o *ApplicationPortResponsePorts) SetPubliclyAccessible(v bool) {
 }
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *ApplicationPortResponsePorts) GetProtocol() string {
+func (o *ApplicationPortResponsePorts) GetProtocol() PortProtocolEnum {
 	if o == nil || o.Protocol == nil {
-		var ret string
+		var ret PortProtocolEnum
 		return ret
 	}
 	return *o.Protocol
@@ -217,7 +217,7 @@ func (o *ApplicationPortResponsePorts) GetProtocol() string {
 
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPortResponsePorts) GetProtocolOk() (*string, bool) {
+func (o *ApplicationPortResponsePorts) GetProtocolOk() (*PortProtocolEnum, bool) {
 	if o == nil || o.Protocol == nil {
 		return nil, false
 	}
@@ -233,8 +233,8 @@ func (o *ApplicationPortResponsePorts) HasProtocol() bool {
 	return false
 }
 
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *ApplicationPortResponsePorts) SetProtocol(v string) {
+// SetProtocol gets a reference to the given PortProtocolEnum and assigns it to the Protocol field.
+func (o *ApplicationPortResponsePorts) SetProtocol(v PortProtocolEnum) {
 	o.Protocol = &v
 }
 

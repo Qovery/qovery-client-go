@@ -17,7 +17,7 @@ import (
 
 // ClusterCloudProviderInfoResponse struct for ClusterCloudProviderInfoResponse
 type ClusterCloudProviderInfoResponse struct {
-	CloudProvider *string                                     `json:"cloud_provider,omitempty"`
+	CloudProvider *CloudProviderEnum                          `json:"cloud_provider,omitempty"`
 	Credentials   *ClusterCloudProviderInfoRequestCredentials `json:"credentials,omitempty"`
 	Region        *string                                     `json:"region,omitempty"`
 }
@@ -40,9 +40,9 @@ func NewClusterCloudProviderInfoResponseWithDefaults() *ClusterCloudProviderInfo
 }
 
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
-func (o *ClusterCloudProviderInfoResponse) GetCloudProvider() string {
+func (o *ClusterCloudProviderInfoResponse) GetCloudProvider() CloudProviderEnum {
 	if o == nil || o.CloudProvider == nil {
-		var ret string
+		var ret CloudProviderEnum
 		return ret
 	}
 	return *o.CloudProvider
@@ -50,7 +50,7 @@ func (o *ClusterCloudProviderInfoResponse) GetCloudProvider() string {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterCloudProviderInfoResponse) GetCloudProviderOk() (*string, bool) {
+func (o *ClusterCloudProviderInfoResponse) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 	if o == nil || o.CloudProvider == nil {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *ClusterCloudProviderInfoResponse) HasCloudProvider() bool {
 	return false
 }
 
-// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
-func (o *ClusterCloudProviderInfoResponse) SetCloudProvider(v string) {
+// SetCloudProvider gets a reference to the given CloudProviderEnum and assigns it to the CloudProvider field.
+func (o *ClusterCloudProviderInfoResponse) SetCloudProvider(v CloudProviderEnum) {
 	o.CloudProvider = &v
 }
 

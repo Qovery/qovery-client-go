@@ -18,20 +18,20 @@ import (
 
 // EnvironmentDeploymentRuleEditRequest struct for EnvironmentDeploymentRuleEditRequest
 type EnvironmentDeploymentRuleEditRequest struct {
-	AutoDeploy *bool     `json:"auto_deploy,omitempty"`
-	AutoDelete *bool     `json:"auto_delete,omitempty"`
-	AutoStop   *bool     `json:"auto_stop,omitempty"`
-	Timezone   string    `json:"timezone"`
-	StartTime  time.Time `json:"start_time"`
-	StopTime   time.Time `json:"stop_time"`
-	Weekdays   []string  `json:"weekdays"`
+	AutoDeploy *bool         `json:"auto_deploy,omitempty"`
+	AutoDelete *bool         `json:"auto_delete,omitempty"`
+	AutoStop   *bool         `json:"auto_stop,omitempty"`
+	Timezone   string        `json:"timezone"`
+	StartTime  time.Time     `json:"start_time"`
+	StopTime   time.Time     `json:"stop_time"`
+	Weekdays   []WeekdayEnum `json:"weekdays"`
 }
 
 // NewEnvironmentDeploymentRuleEditRequest instantiates a new EnvironmentDeploymentRuleEditRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentDeploymentRuleEditRequest(timezone string, startTime time.Time, stopTime time.Time, weekdays []string) *EnvironmentDeploymentRuleEditRequest {
+func NewEnvironmentDeploymentRuleEditRequest(timezone string, startTime time.Time, stopTime time.Time, weekdays []WeekdayEnum) *EnvironmentDeploymentRuleEditRequest {
 	this := EnvironmentDeploymentRuleEditRequest{}
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
@@ -229,9 +229,9 @@ func (o *EnvironmentDeploymentRuleEditRequest) SetStopTime(v time.Time) {
 }
 
 // GetWeekdays returns the Weekdays field value
-func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []string {
+func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []WeekdayEnum {
 	if o == nil {
-		var ret []string
+		var ret []WeekdayEnum
 		return ret
 	}
 
@@ -240,7 +240,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdays() []string {
 
 // GetWeekdaysOk returns a tuple with the Weekdays field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() ([]string, bool) {
+func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() ([]WeekdayEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -248,7 +248,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetWeekdaysOk() ([]string, bool) 
 }
 
 // SetWeekdays sets field value
-func (o *EnvironmentDeploymentRuleEditRequest) SetWeekdays(v []string) {
+func (o *EnvironmentDeploymentRuleEditRequest) SetWeekdays(v []WeekdayEnum) {
 	o.Weekdays = v
 }
 

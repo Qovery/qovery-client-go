@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **Project** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **LastUpdatedBy** | Pointer to **string** | uuid of the user that made the last update | [optional] 
 **CloudProvider** | [**EnvironmentResponseAllOfCloudProvider**](EnvironmentResponseAllOfCloudProvider.md) |  | 
-**Mode** | **string** |  | 
+**Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **ClusterId** | **string** |  | 
 
 ## Methods
 
 ### NewEnvironmentResponseAllOf
 
-`func NewEnvironmentResponseAllOf(name string, cloudProvider EnvironmentResponseAllOfCloudProvider, mode string, clusterId string, ) *EnvironmentResponseAllOf`
+`func NewEnvironmentResponseAllOf(name string, cloudProvider EnvironmentResponseAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string, ) *EnvironmentResponseAllOf`
 
 NewEnvironmentResponseAllOf instantiates a new EnvironmentResponseAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -122,20 +122,20 @@ SetCloudProvider sets CloudProvider field to given value.
 
 ### GetMode
 
-`func (o *EnvironmentResponseAllOf) GetMode() string`
+`func (o *EnvironmentResponseAllOf) GetMode() EnvironmentModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *EnvironmentResponseAllOf) GetModeOk() (*string, bool)`
+`func (o *EnvironmentResponseAllOf) GetModeOk() (*EnvironmentModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *EnvironmentResponseAllOf) SetMode(v string)`
+`func (o *EnvironmentResponseAllOf) SetMode(v EnvironmentModeEnum)`
 
 SetMode sets Mode field to given value.
 

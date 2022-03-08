@@ -22,8 +22,7 @@ type ApplicationRequestAllOf struct {
 	// give a description to this application
 	Description   NullableString                  `json:"description,omitempty"`
 	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
-	// `DOCKER` requires `dockerfile_path` `BUILDPACKS` does not require any `dockerfile_path`
-	BuildMode *string `json:"build_mode,omitempty"`
+	BuildMode     *BuildModeEnum                  `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath    NullableString                `json:"dockerfile_path,omitempty"`
 	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
@@ -48,7 +47,7 @@ func NewApplicationRequestAllOf(name string, gitRepository ApplicationGitReposit
 	this := ApplicationRequestAllOf{}
 	this.Name = name
 	this.GitRepository = gitRepository
-	var buildMode string = "BUILDPACKS"
+	var buildMode BuildModeEnum = BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -68,7 +67,7 @@ func NewApplicationRequestAllOf(name string, gitRepository ApplicationGitReposit
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationRequestAllOfWithDefaults() *ApplicationRequestAllOf {
 	this := ApplicationRequestAllOf{}
-	var buildMode string = "BUILDPACKS"
+	var buildMode BuildModeEnum = BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -175,9 +174,9 @@ func (o *ApplicationRequestAllOf) SetGitRepository(v ApplicationGitRepositoryReq
 }
 
 // GetBuildMode returns the BuildMode field value if set, zero value otherwise.
-func (o *ApplicationRequestAllOf) GetBuildMode() string {
+func (o *ApplicationRequestAllOf) GetBuildMode() BuildModeEnum {
 	if o == nil || o.BuildMode == nil {
-		var ret string
+		var ret BuildModeEnum
 		return ret
 	}
 	return *o.BuildMode
@@ -185,7 +184,7 @@ func (o *ApplicationRequestAllOf) GetBuildMode() string {
 
 // GetBuildModeOk returns a tuple with the BuildMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequestAllOf) GetBuildModeOk() (*string, bool) {
+func (o *ApplicationRequestAllOf) GetBuildModeOk() (*BuildModeEnum, bool) {
 	if o == nil || o.BuildMode == nil {
 		return nil, false
 	}
@@ -201,8 +200,8 @@ func (o *ApplicationRequestAllOf) HasBuildMode() bool {
 	return false
 }
 
-// SetBuildMode gets a reference to the given string and assigns it to the BuildMode field.
-func (o *ApplicationRequestAllOf) SetBuildMode(v string) {
+// SetBuildMode gets a reference to the given BuildModeEnum and assigns it to the BuildMode field.
+func (o *ApplicationRequestAllOf) SetBuildMode(v BuildModeEnum) {
 	o.BuildMode = &v
 }
 

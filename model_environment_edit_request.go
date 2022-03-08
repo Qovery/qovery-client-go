@@ -17,9 +17,8 @@ import (
 
 // EnvironmentEditRequest struct for EnvironmentEditRequest
 type EnvironmentEditRequest struct {
-	Name *string `json:"name,omitempty"`
-	// PREVIEW value is reserved for preview environments only
-	Mode *string `json:"mode,omitempty"`
+	Name *string              `json:"name,omitempty"`
+	Mode *EnvironmentModeEnum `json:"mode,omitempty"`
 }
 
 // NewEnvironmentEditRequest instantiates a new EnvironmentEditRequest object
@@ -72,9 +71,9 @@ func (o *EnvironmentEditRequest) SetName(v string) {
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *EnvironmentEditRequest) GetMode() string {
+func (o *EnvironmentEditRequest) GetMode() EnvironmentModeEnum {
 	if o == nil || o.Mode == nil {
-		var ret string
+		var ret EnvironmentModeEnum
 		return ret
 	}
 	return *o.Mode
@@ -82,7 +81,7 @@ func (o *EnvironmentEditRequest) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentEditRequest) GetModeOk() (*string, bool) {
+func (o *EnvironmentEditRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 	if o == nil || o.Mode == nil {
 		return nil, false
 	}
@@ -98,8 +97,8 @@ func (o *EnvironmentEditRequest) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
-func (o *EnvironmentEditRequest) SetMode(v string) {
+// SetMode gets a reference to the given EnvironmentModeEnum and assigns it to the Mode field.
+func (o *EnvironmentEditRequest) SetMode(v EnvironmentModeEnum) {
 	o.Mode = &v
 }
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Commit** | Pointer to [**CommitResponse**](CommitResponse.md) |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**DeploymentHistoryStatusEnum**](DeploymentHistoryStatusEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasCommit returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *DeploymentHistoryResponseAllOf) GetStatus() string`
+`func (o *DeploymentHistoryResponseAllOf) GetStatus() DeploymentHistoryStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *DeploymentHistoryResponseAllOf) GetStatusOk() (*string, bool)`
+`func (o *DeploymentHistoryResponseAllOf) GetStatusOk() (*DeploymentHistoryStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *DeploymentHistoryResponseAllOf) SetStatus(v string)`
+`func (o *DeploymentHistoryResponseAllOf) SetStatus(v DeploymentHistoryStatusEnum)`
 
 SetStatus sets Status field to given value.
 

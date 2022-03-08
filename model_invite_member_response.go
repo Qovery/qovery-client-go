@@ -18,22 +18,22 @@ import (
 
 // InviteMemberResponse struct for InviteMemberResponse
 type InviteMemberResponse struct {
-	Id               string     `json:"id"`
-	CreatedAt        time.Time  `json:"created_at"`
-	UpdatedAt        *time.Time `json:"updated_at,omitempty"`
-	Email            string     `json:"email"`
-	Role             string     `json:"role"`
-	InvitationLink   string     `json:"invitation_link"`
-	InvitationStatus string     `json:"invitation_status"`
-	Inviter          string     `json:"inviter"`
-	LogoUrl          *string    `json:"logo_url,omitempty"`
+	Id               string               `json:"id"`
+	CreatedAt        time.Time            `json:"created_at"`
+	UpdatedAt        *time.Time           `json:"updated_at,omitempty"`
+	Email            string               `json:"email"`
+	Role             InviteMemberRoleEnum `json:"role"`
+	InvitationLink   string               `json:"invitation_link"`
+	InvitationStatus InviteStatusEnum     `json:"invitation_status"`
+	Inviter          string               `json:"inviter"`
+	LogoUrl          *string              `json:"logo_url,omitempty"`
 }
 
 // NewInviteMemberResponse instantiates a new InviteMemberResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInviteMemberResponse(id string, createdAt time.Time, email string, role string, invitationLink string, invitationStatus string, inviter string) *InviteMemberResponse {
+func NewInviteMemberResponse(id string, createdAt time.Time, email string, role InviteMemberRoleEnum, invitationLink string, invitationStatus InviteStatusEnum, inviter string) *InviteMemberResponse {
 	this := InviteMemberResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -158,9 +158,9 @@ func (o *InviteMemberResponse) SetEmail(v string) {
 }
 
 // GetRole returns the Role field value
-func (o *InviteMemberResponse) GetRole() string {
+func (o *InviteMemberResponse) GetRole() InviteMemberRoleEnum {
 	if o == nil {
-		var ret string
+		var ret InviteMemberRoleEnum
 		return ret
 	}
 
@@ -169,7 +169,7 @@ func (o *InviteMemberResponse) GetRole() string {
 
 // GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
-func (o *InviteMemberResponse) GetRoleOk() (*string, bool) {
+func (o *InviteMemberResponse) GetRoleOk() (*InviteMemberRoleEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,7 +177,7 @@ func (o *InviteMemberResponse) GetRoleOk() (*string, bool) {
 }
 
 // SetRole sets field value
-func (o *InviteMemberResponse) SetRole(v string) {
+func (o *InviteMemberResponse) SetRole(v InviteMemberRoleEnum) {
 	o.Role = v
 }
 
@@ -206,9 +206,9 @@ func (o *InviteMemberResponse) SetInvitationLink(v string) {
 }
 
 // GetInvitationStatus returns the InvitationStatus field value
-func (o *InviteMemberResponse) GetInvitationStatus() string {
+func (o *InviteMemberResponse) GetInvitationStatus() InviteStatusEnum {
 	if o == nil {
-		var ret string
+		var ret InviteStatusEnum
 		return ret
 	}
 
@@ -217,7 +217,7 @@ func (o *InviteMemberResponse) GetInvitationStatus() string {
 
 // GetInvitationStatusOk returns a tuple with the InvitationStatus field value
 // and a boolean to check if the value has been set.
-func (o *InviteMemberResponse) GetInvitationStatusOk() (*string, bool) {
+func (o *InviteMemberResponse) GetInvitationStatusOk() (*InviteStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *InviteMemberResponse) GetInvitationStatusOk() (*string, bool) {
 }
 
 // SetInvitationStatus sets field value
-func (o *InviteMemberResponse) SetInvitationStatus(v string) {
+func (o *InviteMemberResponse) SetInvitationStatus(v InviteStatusEnum) {
 	o.InvitationStatus = v
 }
 

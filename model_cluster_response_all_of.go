@@ -18,11 +18,11 @@ import (
 // ClusterResponseAllOf struct for ClusterResponseAllOf
 type ClusterResponseAllOf struct {
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *int32  `json:"estimated_cloud_provider_cost,omitempty"`
-	Status                     *string `json:"status,omitempty"`
-	HasAccess                  *bool   `json:"has_access,omitempty"`
-	Version                    *string `json:"version,omitempty"`
-	IsDefault                  *bool   `json:"is_default,omitempty"`
+	EstimatedCloudProviderCost *int32             `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *ClusterStatusEnum `json:"status,omitempty"`
+	HasAccess                  *bool              `json:"has_access,omitempty"`
+	Version                    *string            `json:"version,omitempty"`
+	IsDefault                  *bool              `json:"is_default,omitempty"`
 }
 
 // NewClusterResponseAllOf instantiates a new ClusterResponseAllOf object
@@ -75,9 +75,9 @@ func (o *ClusterResponseAllOf) SetEstimatedCloudProviderCost(v int32) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ClusterResponseAllOf) GetStatus() string {
+func (o *ClusterResponseAllOf) GetStatus() ClusterStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret ClusterStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -85,7 +85,7 @@ func (o *ClusterResponseAllOf) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterResponseAllOf) GetStatusOk() (*string, bool) {
+func (o *ClusterResponseAllOf) GetStatusOk() (*ClusterStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *ClusterResponseAllOf) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ClusterResponseAllOf) SetStatus(v string) {
+// SetStatus gets a reference to the given ClusterStatusEnum and assigns it to the Status field.
+func (o *ClusterResponseAllOf) SetStatus(v ClusterStatusEnum) {
 	o.Status = &v
 }
 
