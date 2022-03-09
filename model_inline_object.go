@@ -17,7 +17,7 @@ import (
 
 // InlineObject struct for InlineObject
 type InlineObject struct {
-	ProjectDeploymentRuleIdsInOrder []ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder `json:"project_deployment_rule_ids_in_order,omitempty"`
+	ProjectDeploymentRuleIdsInOrder []string `json:"project_deployment_rule_ids_in_order,omitempty"`
 }
 
 // NewInlineObject instantiates a new InlineObject object
@@ -38,9 +38,9 @@ func NewInlineObjectWithDefaults() *InlineObject {
 }
 
 // GetProjectDeploymentRuleIdsInOrder returns the ProjectDeploymentRuleIdsInOrder field value if set, zero value otherwise.
-func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder {
+func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []string {
 	if o == nil || o.ProjectDeploymentRuleIdsInOrder == nil {
-		var ret []ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder
+		var ret []string
 		return ret
 	}
 	return o.ProjectDeploymentRuleIdsInOrder
@@ -48,7 +48,7 @@ func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []ProjectProjectIdDe
 
 // GetProjectDeploymentRuleIdsInOrderOk returns a tuple with the ProjectDeploymentRuleIdsInOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject) GetProjectDeploymentRuleIdsInOrderOk() ([]ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder, bool) {
+func (o *InlineObject) GetProjectDeploymentRuleIdsInOrderOk() ([]string, bool) {
 	if o == nil || o.ProjectDeploymentRuleIdsInOrder == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *InlineObject) HasProjectDeploymentRuleIdsInOrder() bool {
 	return false
 }
 
-// SetProjectDeploymentRuleIdsInOrder gets a reference to the given []ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder and assigns it to the ProjectDeploymentRuleIdsInOrder field.
-func (o *InlineObject) SetProjectDeploymentRuleIdsInOrder(v []ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder) {
+// SetProjectDeploymentRuleIdsInOrder gets a reference to the given []string and assigns it to the ProjectDeploymentRuleIdsInOrder field.
+func (o *InlineObject) SetProjectDeploymentRuleIdsInOrder(v []string) {
 	o.ProjectDeploymentRuleIdsInOrder = v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProjectDeploymentRuleIdsInOrder** | Pointer to [**[]ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder**](ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder.md) |  | [optional] 
+**ProjectDeploymentRuleIdsInOrder** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetProjectDeploymentRuleIdsInOrder
 
-`func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder`
+`func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []string`
 
 GetProjectDeploymentRuleIdsInOrder returns the ProjectDeploymentRuleIdsInOrder field if non-nil, zero value otherwise.
 
 ### GetProjectDeploymentRuleIdsInOrderOk
 
-`func (o *InlineObject) GetProjectDeploymentRuleIdsInOrderOk() (*[]ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder, bool)`
+`func (o *InlineObject) GetProjectDeploymentRuleIdsInOrderOk() (*[]string, bool)`
 
 GetProjectDeploymentRuleIdsInOrderOk returns a tuple with the ProjectDeploymentRuleIdsInOrder field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProjectDeploymentRuleIdsInOrder
 
-`func (o *InlineObject) SetProjectDeploymentRuleIdsInOrder(v []ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder)`
+`func (o *InlineObject) SetProjectDeploymentRuleIdsInOrder(v []string)`
 
 SetProjectDeploymentRuleIdsInOrder sets ProjectDeploymentRuleIdsInOrder field to given value.
 

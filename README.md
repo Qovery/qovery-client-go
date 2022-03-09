@@ -562,7 +562,6 @@ Class | Method | HTTP request | Description
  - [ProjectDeploymentRuleResponse](docs/ProjectDeploymentRuleResponse.md)
  - [ProjectDeploymentRuleResponseAllOf](docs/ProjectDeploymentRuleResponseAllOf.md)
  - [ProjectDeploymentRuleResponseList](docs/ProjectDeploymentRuleResponseList.md)
- - [ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder](docs/ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder.md)
  - [ProjectRequest](docs/ProjectRequest.md)
  - [ProjectResponse](docs/ProjectResponse.md)
  - [ProjectResponseAllOf](docs/ProjectResponseAllOf.md)

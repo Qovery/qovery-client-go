@@ -346,7 +346,6 @@ docs/ProjectDeploymentRuleResponseAllOf.md
 docs/ProjectDeploymentRuleResponseList.md
 docs/ProjectEnvironmentVariableApi.md
 docs/ProjectMainCallsApi.md
-docs/ProjectProjectIdDeploymentRuleOrderProjectDeploymentRuleIdsInOrder.md
 docs/ProjectRequest.md
 docs/ProjectResponse.md
 docs/ProjectResponseAllOf.md
@@ -398,7 +397,6 @@ git_push.sh
 go.mod
 go.sum
 model__environment__environment_id__application_deploy_applications.go
-model__project__project_id__deployment_rule_order_project_deployment_rule_ids_in_order.go
 model_account_info_edit_request.go
 model_account_info_response.go
 model_aliased_secret.go

@@ -2460,7 +2460,9 @@ paths:
               properties:
                 project_deployment_rule_ids_in_order:
                   items:
-                    $ref: '#/components/schemas/_project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order'
+                    description: project deployment rule id
+                    format: uuid
+                    type: string
                   type: array
               type: object
       responses:
@@ -11610,20 +11612,13 @@ components:
       - DIGITAL_OCEAN
       - SCALEWAY
       type: string
-    _project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order:
-      properties:
-        id:
-          description: project deployment rule id
-          format: uuid
-          type: string
-      required:
-      - id
-      type: object
     inline_object:
       properties:
         project_deployment_rule_ids_in_order:
           items:
-            $ref: '#/components/schemas/_project__projectId__deploymentRule_order_project_deployment_rule_ids_in_order'
+            description: project deployment rule id
+            format: uuid
+            type: string
           type: array
       type: object
     _environment__environmentId__application_deploy_applications:
