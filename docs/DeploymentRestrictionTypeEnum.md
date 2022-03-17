@@ -3,8 +3,6 @@
 ## Enum
 
 
-* `FILE` (value: `"FILE"`)
-
 * `PATH` (value: `"PATH"`)
 
 

@@ -23,7 +23,7 @@ tags:
 - name: Application Actions
 - name: Application Configuration
 - name: Application Database
-- name: Application Deployment rule
+- name: Application Deployment Restriction
 - name: Application Deployment History
 - name: Application Environment Variable
 - name: Application Event
@@ -4550,10 +4550,10 @@ paths:
       summary: Get application status
       tags:
       - Application Main Calls
-  /application/{applicationId}/deploymentRule:
+  /application/{applicationId}/deploymentRestriction:
     get:
-      description: Get application deployment rule
-      operationId: getApplicationDeploymentRule
+      description: Get application deployment restrictions
+      operationId: getApplicationDeploymentRestrictions
       parameters:
       - description: Application ID
         explode: false
@@ -4569,35 +4569,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationDeploymentRuleResponse'
-          description: Get application deployment rule
+                $ref: '#/components/schemas/ApplicationDeploymentRestrictionResponse'
+          description: Get application deployment restrictions
         "401":
           description: Access token is missing or invalid
         "403":
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Get application deployment rule
+      summary: Get application deployment restrictions
       tags:
-      - Application Deployment Rule
-  /application/{applicationId}/deploymentRule/{deploymentRuleId}:
-    put:
-      description: Edit an application deployment rule
-      operationId: editApplicationDeploymentRule
+      - Application Deployment Restriction
+    post:
+      description: Create an application deployment restriction
+      operationId: createApplicationDeploymentRestriction
       parameters:
       - description: Application ID
         explode: false
         in: path
         name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Deployment Rule ID
-        explode: false
-        in: path
-        name: deploymentRuleId
         required: true
         schema:
           format: uuid
@@ -4607,14 +4597,88 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApplicationDeploymentRuleEditRequest'
+              $ref: '#/components/schemas/ApplicationDeploymentRestrictionRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BaseResponse'
+                - $ref: '#/components/schemas/ApplicationDeploymentRestrictionRequest'
+          description: Added an environment variable
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "409":
+          description: An application deployment restriction with same properties
+            already exists for this application
+      summary: Create an application deployment restriction
+      tags:
+      - Application Deployment Restriction
+  /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}:
+    delete:
+      description: Delete an application deployment restriction
+      operationId: deleteApplicationDeploymentRestriction
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete an application deployment restriction
+      tags:
+      - Application Deployment Restriction
+    put:
+      description: Edit an application deployment restriction
+      operationId: editApplicationDeploymentRestriction
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Deployment Restriction ID
+        explode: false
+        in: path
+        name: deploymentRestrictionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationDeploymentRestrictionRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationDeploymentRuleResponse'
-          description: Edit application deployment rule
+                $ref: '#/paths/~1application~1%7BapplicationId%7D~1deploymentRestriction/post/responses/201/content/application~1json/schema'
+          description: Edit an application deployment restriction
         "400":
           description: Bad request
         "401":
@@ -4623,9 +4687,9 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Edit an application deployment rule
+      summary: Edit an application deployment restriction
       tags:
-      - Application Deployment Rule
+      - Application Deployment Restriction
   /application/{applicationId}/contributor:
     get:
       operationId: listApplicationContributor
@@ -9283,55 +9347,38 @@ components:
             \ he access to the application. \n"
           type: boolean
       type: object
-    ApplicationDeploymentRuleResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      example:
-        deployment_restrictions:
-        - mode: MATCH
-          type: PATH
-          value: value
-        - mode: MATCH
-          type: PATH
-          value: value
-      properties:
-        deployment_restrictions:
-          items:
-            $ref: '#/components/schemas/ApplicationDeploymentRestriction'
-          type: array
-      type: object
-    ApplicationDeploymentRuleEditRequest:
-      example:
-        deployment_restrictions:
-        - mode: MATCH
-          type: PATH
-          value: value
-        - mode: MATCH
-          type: PATH
-          value: value
-      properties:
-        deployment_restrictions:
-          items:
-            $ref: '#/components/schemas/ApplicationDeploymentRestriction'
-          type: array
-      type: object
-    ApplicationDeploymentRestriction:
+    ApplicationDeploymentRestrictionRequest:
       example:
         mode: MATCH
         type: PATH
-        value: value
+        value: application1/src/
       properties:
         mode:
           $ref: '#/components/schemas/DeploymentRestrictionModeEnum'
         type:
           $ref: '#/components/schemas/DeploymentRestrictionTypeEnum'
         value:
+          description: For `PATH` restrictions, the value must not start with `/`
+          example: application1/src/
           type: string
       required:
       - mode
       - type
       - value
       type: object
+    ApplicationDeploymentRestrictionResponse:
+      example:
+        deployment_restrictions:
+        - '{}'
+        - '{}'
+      properties:
+        deployment_restrictions:
+          items:
+            $ref: '#/paths/~1application~1%7BapplicationId%7D~1deploymentRestriction/post/responses/201/content/application~1json/schema'
+          type: array
+      type: object
+    ApplicationDeploymentRestrictionResponseList:
+      $ref: '#/components/schemas/ApplicationDeploymentRestrictionResponse'
     RemainingCredits:
       allOf:
       - $ref: '#/components/schemas/CostResponse'
@@ -11530,7 +11577,6 @@ components:
       type: string
     DeploymentRestrictionTypeEnum:
       enum:
-      - FILE
       - PATH
       example: PATH
       type: string
@@ -12604,7 +12650,7 @@ x-tagGroups:
   - Application Metrics
   - Application Database
   - Application Logs
-  - Application Deployment Rule
+  - Application Deployment Restriction
   - Application Deployment History
   - Application Environment Variable
   - Application Secret

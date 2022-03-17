@@ -21,13 +21,11 @@ type DeploymentRestrictionTypeEnum string
 
 // List of DeploymentRestrictionTypeEnum
 const (
-	FILE DeploymentRestrictionTypeEnum = "FILE"
 	PATH DeploymentRestrictionTypeEnum = "PATH"
 )
 
 // All allowed values of DeploymentRestrictionTypeEnum enum
 var AllowedDeploymentRestrictionTypeEnumEnumValues = []DeploymentRestrictionTypeEnum{
-	"FILE",
 	"PATH",
 }
 

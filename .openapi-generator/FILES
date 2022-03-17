@@ -8,7 +8,7 @@ api_application_actions.go
 api_application_configuration.go
 api_application_database.go
 api_application_deployment_history.go
-api_application_deployment_rule.go
+api_application_deployment_restriction.go
 api_application_environment_variable.go
 api_application_event.go
 api_application_logs.go
@@ -60,10 +60,9 @@ docs/ApplicationCurrentScaleResponse.md
 docs/ApplicationDatabaseApi.md
 docs/ApplicationDependencyRequest.md
 docs/ApplicationDeploymentHistoryApi.md
-docs/ApplicationDeploymentRestriction.md
-docs/ApplicationDeploymentRuleApi.md
-docs/ApplicationDeploymentRuleEditRequest.md
-docs/ApplicationDeploymentRuleResponse.md
+docs/ApplicationDeploymentRestrictionApi.md
+docs/ApplicationDeploymentRestrictionRequest.md
+docs/ApplicationDeploymentRestrictionResponse.md
 docs/ApplicationEditRequest.md
 docs/ApplicationEditRequestAllOf.md
 docs/ApplicationEnvironmentVariableApi.md
@@ -402,9 +401,8 @@ model_account_info_response.go
 model_aliased_secret.go
 model_application_current_scale_response.go
 model_application_dependency_request.go
-model_application_deployment_restriction.go
-model_application_deployment_rule_edit_request.go
-model_application_deployment_rule_response.go
+model_application_deployment_restriction_request.go
+model_application_deployment_restriction_response.go
 model_application_edit_request.go
 model_application_edit_request_all_of.go
 model_application_git_repository_request.go

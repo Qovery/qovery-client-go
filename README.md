@@ -94,8 +94,10 @@ Class | Method | HTTP request | Description
 *ApplicationDatabaseApi* | [**RemoveDatabaseFromApplication**](docs/ApplicationDatabaseApi.md#removedatabasefromapplication) | **Delete** /application/{applicationId}/database/{targetDatabaseId} | Remove database link to this application.
 *ApplicationDatabaseApi* | [**RemoveLogicalDatabaseFromApplication**](docs/ApplicationDatabaseApi.md#removelogicaldatabasefromapplication) | **Delete** /application/{applicationId}/logicalDatabase/{targetLogicalDatabaseId} | Remove logical database link to this application.
 *ApplicationDeploymentHistoryApi* | [**ListApplicationDeploymentHistory**](docs/ApplicationDeploymentHistoryApi.md#listapplicationdeploymenthistory) | **Get** /application/{applicationId}/deploymentHistory | List application deploys
-*ApplicationDeploymentRuleApi* | [**EditApplicationDeploymentRule**](docs/ApplicationDeploymentRuleApi.md#editapplicationdeploymentrule) | **Put** /application/{applicationId}/deploymentRule/{deploymentRuleId} | Edit an application deployment rule
-*ApplicationDeploymentRuleApi* | [**GetApplicationDeploymentRule**](docs/ApplicationDeploymentRuleApi.md#getapplicationdeploymentrule) | **Get** /application/{applicationId}/deploymentRule | Get application deployment rule
+*ApplicationDeploymentRestrictionApi* | [**CreateApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionApi.md#createapplicationdeploymentrestriction) | **Post** /application/{applicationId}/deploymentRestriction | Create an application deployment restriction
+*ApplicationDeploymentRestrictionApi* | [**DeleteApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionApi.md#deleteapplicationdeploymentrestriction) | **Delete** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Delete an application deployment restriction
+*ApplicationDeploymentRestrictionApi* | [**EditApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionApi.md#editapplicationdeploymentrestriction) | **Put** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Edit an application deployment restriction
+*ApplicationDeploymentRestrictionApi* | [**GetApplicationDeploymentRestrictions**](docs/ApplicationDeploymentRestrictionApi.md#getapplicationdeploymentrestrictions) | **Get** /application/{applicationId}/deploymentRestriction | Get application deployment restrictions
 *ApplicationEnvironmentVariableApi* | [**CreateApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#createapplicationenvironmentvariable) | **Post** /application/{applicationId}/environmentVariable | Add an environment variable to the application
 *ApplicationEnvironmentVariableApi* | [**CreateApplicationEnvironmentVariableAlias**](docs/ApplicationEnvironmentVariableApi.md#createapplicationenvironmentvariablealias) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the application level
 *ApplicationEnvironmentVariableApi* | [**CreateApplicationEnvironmentVariableOverride**](docs/ApplicationEnvironmentVariableApi.md#createapplicationenvironmentvariableoverride) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the application level
@@ -313,9 +315,8 @@ Class | Method | HTTP request | Description
  - [AliasedSecret](docs/AliasedSecret.md)
  - [ApplicationCurrentScaleResponse](docs/ApplicationCurrentScaleResponse.md)
  - [ApplicationDependencyRequest](docs/ApplicationDependencyRequest.md)
- - [ApplicationDeploymentRestriction](docs/ApplicationDeploymentRestriction.md)
- - [ApplicationDeploymentRuleEditRequest](docs/ApplicationDeploymentRuleEditRequest.md)
- - [ApplicationDeploymentRuleResponse](docs/ApplicationDeploymentRuleResponse.md)
+ - [ApplicationDeploymentRestrictionRequest](docs/ApplicationDeploymentRestrictionRequest.md)
+ - [ApplicationDeploymentRestrictionResponse](docs/ApplicationDeploymentRestrictionResponse.md)
  - [ApplicationEditRequest](docs/ApplicationEditRequest.md)
  - [ApplicationEditRequestAllOf](docs/ApplicationEditRequestAllOf.md)
  - [ApplicationGitRepositoryRequest](docs/ApplicationGitRepositoryRequest.md)
