@@ -306,6 +306,8 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | [**ListProject**](docs/ProjectsApi.md#listproject) | **Get** /organization/{organizationId}/project | List projects
 *ReferralRewardsApi* | [**GetAccountReferral**](docs/ReferralRewardsApi.md#getaccountreferral) | **Get** /account/referral | Get your referral information
 *ReferralRewardsApi* | [**PostAccountRewardClaim**](docs/ReferralRewardsApi.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
+*UserSignUpApi* | [**CreateUserSignUp**](docs/UserSignUpApi.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
+*UserSignUpApi* | [**GetUserSignUp**](docs/UserSignUpApi.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information
 
 
 ## Documentation For Models
@@ -492,6 +494,7 @@ Class | Method | HTTP request | Description
  - [Healthcheck](docs/Healthcheck.md)
  - [InlineObject](docs/InlineObject.md)
  - [InlineObject1](docs/InlineObject1.md)
+ - [InlineObject2](docs/InlineObject2.md)
  - [InstanceResponse](docs/InstanceResponse.md)
  - [InstanceResponseList](docs/InstanceResponseList.md)
  - [InviteMemberRequest](docs/InviteMemberRequest.md)

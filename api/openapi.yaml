@@ -19,6 +19,7 @@ security:
 tags:
 - name: Account
 - name: Account Info
+- name: Admin
 - name: Application
 - name: Application Actions
 - name: Application Configuration
@@ -69,6 +70,7 @@ tags:
 - name: Project Secret
 - name: Projects
 - name: Referral & Rewards
+- name: User Sign Up
 paths:
   /organization:
     get:
@@ -7802,6 +7804,99 @@ paths:
       summary: Claim a reward
       tags:
       - Referral & Rewards
+  /admin/userSignUp:
+    get:
+      description: Retrieve the Sign Up information of the user
+      operationId: getUserSignUp
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BaseResponse'
+                - $ref: '#/paths/~1admin~1userSignUp/post/requestBody/content/application~1json/schema'
+          description: If a previous sign up request for the same user has been found,
+            the information is returned in the payload
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get Sign up information
+      tags:
+      - User Sign Up
+    post:
+      description: Send a Sign Up request containing the user information
+      operationId: createUserSignUp
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object_2'
+        content:
+          application/json:
+            schema:
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                user_email:
+                  type: string
+                type_of_use:
+                  enum:
+                  - PERSONAL
+                  - WORK
+                  - SCHOOL
+                  type: string
+                qovery_usage:
+                  type: string
+                company_name:
+                  nullable: true
+                  type: string
+                company_size:
+                  enum:
+                  - 1-10
+                  - 11-50
+                  - 51-200
+                  - 201-500
+                  - 500+
+                  type: string
+                user_role:
+                  nullable: true
+                  type: string
+                qovery_usage_other:
+                  nullable: true
+                  type: string
+                user_questions:
+                  nullable: true
+                  type: string
+                current_step:
+                  nullable: true
+                  type: string
+                dx_auth:
+                  nullable: true
+                  type: boolean
+              required:
+              - first_name
+              - last_name
+              - qovery_usage
+              - type_of_use
+              - user_email
+              type: object
+      responses:
+        "200":
+          description: Sign up request stored
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Send Sign Up request
+      tags:
+      - User Sign Up
 components:
   parameters:
     targetLogicalDatabaseId:
@@ -8093,6 +8188,11 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/inline_object'
+    inline_object_2:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_2'
   responses:
     "204":
       description: no content
@@ -11687,6 +11787,55 @@ components:
             $ref: '#/components/schemas/_environment__environmentId__application_deploy_applications'
           type: array
       type: object
+    inline_object_2:
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        user_email:
+          type: string
+        type_of_use:
+          enum:
+          - PERSONAL
+          - WORK
+          - SCHOOL
+          type: string
+        qovery_usage:
+          type: string
+        company_name:
+          nullable: true
+          type: string
+        company_size:
+          enum:
+          - 1-10
+          - 11-50
+          - 51-200
+          - 201-500
+          - 500+
+          type: string
+        user_role:
+          nullable: true
+          type: string
+        qovery_usage_other:
+          nullable: true
+          type: string
+        user_questions:
+          nullable: true
+          type: string
+        current_step:
+          nullable: true
+          type: string
+        dx_auth:
+          nullable: true
+          type: boolean
+      required:
+      - first_name
+      - last_name
+      - qovery_usage
+      - type_of_use
+      - user_email
+      type: object
     ApplicationStorageRequest_storage:
       properties:
         type:
@@ -12673,3 +12822,6 @@ x-tagGroups:
 - name: Git
   tags:
   - Git repositories
+- name: Admin
+  tags:
+  - User Sign Up
