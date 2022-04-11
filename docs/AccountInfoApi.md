@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetAccountInformation
 
-> AccountInfoResponse GetAccountInformation(ctx).Execute()
+> AccountInfo GetAccountInformation(ctx).Execute()
 
 Get Account information
 
@@ -35,7 +35,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountInfoApi.GetAccountInformation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccountInformation`: AccountInfoResponse
+    // response from `GetAccountInformation`: AccountInfo
     fmt.Fprintf(os.Stdout, "Response from `AccountInfoApi.GetAccountInformation`: %v\n", resp)
 }
 ```
@@ -51,7 +51,7 @@ Other parameters are passed through a pointer to a apiGetAccountInformationReque
 
 ### Return type
 
-[**AccountInfoResponse**](AccountInfoResponse.md)
+[**AccountInfo**](AccountInfo.md)
 
 ### Authorization
 

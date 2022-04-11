@@ -17,7 +17,7 @@ import (
 
 // SecretResponseList struct for SecretResponseList
 type SecretResponseList struct {
-	Results []SecretResponse `json:"results,omitempty"`
+	Results []Secret `json:"results,omitempty"`
 }
 
 // NewSecretResponseList instantiates a new SecretResponseList object
@@ -38,9 +38,9 @@ func NewSecretResponseListWithDefaults() *SecretResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *SecretResponseList) GetResults() []SecretResponse {
+func (o *SecretResponseList) GetResults() []Secret {
 	if o == nil || o.Results == nil {
-		var ret []SecretResponse
+		var ret []Secret
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *SecretResponseList) GetResults() []SecretResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SecretResponseList) GetResultsOk() ([]SecretResponse, bool) {
+func (o *SecretResponseList) GetResultsOk() ([]Secret, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *SecretResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []SecretResponse and assigns it to the Results field.
-func (o *SecretResponseList) SetResults(v []SecretResponse) {
+// SetResults gets a reference to the given []Secret and assigns it to the Results field.
+func (o *SecretResponseList) SetResults(v []Secret) {
 	o.Results = v
 }
 

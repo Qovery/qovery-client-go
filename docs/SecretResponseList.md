@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]SecretResponse**](SecretResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Secret**](Secret.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *SecretResponseList) GetResults() []SecretResponse`
+`func (o *SecretResponseList) GetResults() []Secret`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *SecretResponseList) GetResultsOk() (*[]SecretResponse, bool)`
+`func (o *SecretResponseList) GetResultsOk() (*[]Secret, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *SecretResponseList) SetResults(v []SecretResponse)`
+`func (o *SecretResponseList) SetResults(v []Secret)`
 
 SetResults sets Results field to given value.
 

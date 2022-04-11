@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## GetDatabaseCurrentMetric
 
-> DatabaseCurrentMetricResponse GetDatabaseCurrentMetric(ctx, databaseId).Execute()
+> DatabaseCurrentMetric GetDatabaseCurrentMetric(ctx, databaseId).Execute()
 
 Get current metric consumption of the database 
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseCurrentMetric``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDatabaseCurrentMetric`: DatabaseCurrentMetricResponse
+    // response from `GetDatabaseCurrentMetric`: DatabaseCurrentMetric
     fmt.Fprintf(os.Stdout, "Response from `DatabaseMetricsApi.GetDatabaseCurrentMetric`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DatabaseCurrentMetricResponse**](DatabaseCurrentMetricResponse.md)
+[**DatabaseCurrentMetric**](DatabaseCurrentMetric.md)
 
 ### Authorization
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabaseMetricRestart
 
-> MetricRestartResponse GetDatabaseMetricRestart(ctx, databaseId).LastSeconds(lastSeconds).Execute()
+> MetricRestart GetDatabaseMetricRestart(ctx, databaseId).LastSeconds(lastSeconds).Execute()
 
 List database restarts
 
@@ -324,7 +324,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMetricsApi.GetDatabaseMetricRestart``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDatabaseMetricRestart`: MetricRestartResponse
+    // response from `GetDatabaseMetricRestart`: MetricRestart
     fmt.Fprintf(os.Stdout, "Response from `DatabaseMetricsApi.GetDatabaseMetricRestart`: %v\n", resp)
 }
 ```
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetricRestartResponse**](MetricRestartResponse.md)
+[**MetricRestart**](MetricRestart.md)
 
 ### Authorization
 

@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## EditEnvironment
 
-> EnvironmentResponse EditEnvironment(ctx, environmentId).EnvironmentEditRequest(environmentEditRequest).Execute()
+> Environment EditEnvironment(ctx, environmentId).EnvironmentEditRequest(environmentEditRequest).Execute()
 
 Edit an environment
 
@@ -111,7 +111,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsApi.EditEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditEnvironment`: EnvironmentResponse
+    // response from `EditEnvironment`: Environment
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsApi.EditEnvironment`: %v\n", resp)
 }
 ```
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentResponse**](EnvironmentResponse.md)
+[**Environment**](Environment.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## GetEnvironment
 
-> EnvironmentResponse GetEnvironment(ctx, environmentId).Execute()
+> Environment GetEnvironment(ctx, environmentId).Execute()
 
 Get environment by ID
 
@@ -180,7 +180,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsApi.GetEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEnvironment`: EnvironmentResponse
+    // response from `GetEnvironment`: Environment
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsApi.GetEnvironment`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentResponse**](EnvironmentResponse.md)
+[**Environment**](Environment.md)
 
 ### Authorization
 

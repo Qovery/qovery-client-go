@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## EditApplicationNetwork
 
-> ApplicationNetworkResponse EditApplicationNetwork(ctx, applicationId).ApplicationNetworkRequest(applicationNetworkRequest).Execute()
+> ApplicationNetwork EditApplicationNetwork(ctx, applicationId).ApplicationNetworkRequest(applicationNetworkRequest).Execute()
 
 Edit Application Network
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationApi.EditApplicationNetwork``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditApplicationNetwork`: ApplicationNetworkResponse
+    // response from `EditApplicationNetwork`: ApplicationNetwork
     fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationApi.EditApplicationNetwork`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationNetworkResponse**](ApplicationNetworkResponse.md)
+[**ApplicationNetwork**](ApplicationNetwork.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## GetApplicationNetwork
 
-> ApplicationNetworkResponse GetApplicationNetwork(ctx, applicationId).Execute()
+> ApplicationNetwork GetApplicationNetwork(ctx, applicationId).Execute()
 
 Get Application Network information
 
@@ -111,7 +111,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationApi.GetApplicationNetwork``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplicationNetwork`: ApplicationNetworkResponse
+    // response from `GetApplicationNetwork`: ApplicationNetwork
     fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationApi.GetApplicationNetwork`: %v\n", resp)
 }
 ```
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationNetworkResponse**](ApplicationNetworkResponse.md)
+[**ApplicationNetwork**](ApplicationNetwork.md)
 
 ### Authorization
 

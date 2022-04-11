@@ -40,7 +40,7 @@ func (r ApiCreateApplicationRequest) ApplicationRequest(applicationRequest Appli
 	return r
 }
 
-func (r ApiCreateApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
+func (r ApiCreateApplicationRequest) Execute() (*Application, *http.Response, error) {
 	return r.ApiService.CreateApplicationExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *ApplicationsApiService) CreateApplication(ctx context.Context, environm
 }
 
 // Execute executes the request
-//  @return ApplicationResponse
-func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*ApplicationResponse, *http.Response, error) {
+//  @return Application
+func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApplicationResponse
+		localVarReturnValue *Application
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.CreateApplication")

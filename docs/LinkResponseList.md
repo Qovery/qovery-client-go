@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]LinkResponse**](LinkResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Link**](Link.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *LinkResponseList) GetResults() []LinkResponse`
+`func (o *LinkResponseList) GetResults() []Link`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *LinkResponseList) GetResultsOk() (*[]LinkResponse, bool)`
+`func (o *LinkResponseList) GetResultsOk() (*[]Link, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *LinkResponseList) SetResults(v []LinkResponse)`
+`func (o *LinkResponseList) SetResults(v []Link)`
 
 SetResults sets Results field to given value.
 

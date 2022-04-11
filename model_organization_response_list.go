@@ -17,7 +17,7 @@ import (
 
 // OrganizationResponseList struct for OrganizationResponseList
 type OrganizationResponseList struct {
-	Results []OrganizationResponse `json:"results,omitempty"`
+	Results []Organization `json:"results,omitempty"`
 }
 
 // NewOrganizationResponseList instantiates a new OrganizationResponseList object
@@ -38,9 +38,9 @@ func NewOrganizationResponseListWithDefaults() *OrganizationResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *OrganizationResponseList) GetResults() []OrganizationResponse {
+func (o *OrganizationResponseList) GetResults() []Organization {
 	if o == nil || o.Results == nil {
-		var ret []OrganizationResponse
+		var ret []Organization
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *OrganizationResponseList) GetResults() []OrganizationResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationResponseList) GetResultsOk() ([]OrganizationResponse, bool) {
+func (o *OrganizationResponseList) GetResultsOk() ([]Organization, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *OrganizationResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []OrganizationResponse and assigns it to the Results field.
-func (o *OrganizationResponseList) SetResults(v []OrganizationResponse) {
+// SetResults gets a reference to the given []Organization and assigns it to the Results field.
+func (o *OrganizationResponseList) SetResults(v []Organization) {
 	o.Results = v
 }
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateApplicationDeploymentRestriction
 
-> BaseResponse CreateApplicationDeploymentRestriction(ctx, applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
+> Base CreateApplicationDeploymentRestriction(ctx, applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
 
 Create an application deployment restriction
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionApi.CreateApplicationDeploymentRestriction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationDeploymentRestriction`: BaseResponse
+    // response from `CreateApplicationDeploymentRestriction`: Base
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionApi.CreateApplicationDeploymentRestriction`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseResponse**](BaseResponse.md)
+[**Base**](Base.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## GetApplicationDeploymentRestrictions
 
-> ApplicationDeploymentRestrictionResponse GetApplicationDeploymentRestrictions(ctx, applicationId).Execute()
+> ApplicationDeploymentRestriction GetApplicationDeploymentRestrictions(ctx, applicationId).Execute()
 
 Get application deployment restrictions
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionApi.GetApplicationDeploymentRestrictions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplicationDeploymentRestrictions`: ApplicationDeploymentRestrictionResponse
+    // response from `GetApplicationDeploymentRestrictions`: ApplicationDeploymentRestriction
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionApi.GetApplicationDeploymentRestrictions`: %v\n", resp)
 }
 ```
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationDeploymentRestrictionResponse**](ApplicationDeploymentRestrictionResponse.md)
+[**ApplicationDeploymentRestriction**](ApplicationDeploymentRestriction.md)
 
 ### Authorization
 

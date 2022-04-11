@@ -40,7 +40,7 @@ func (r ApiCreateApplicationCustomDomainRequest) CustomDomainRequest(customDomai
 	return r
 }
 
-func (r ApiCreateApplicationCustomDomainRequest) Execute() (*CustomDomainResponse, *http.Response, error) {
+func (r ApiCreateApplicationCustomDomainRequest) Execute() (*CustomDomain, *http.Response, error) {
 	return r.ApiService.CreateApplicationCustomDomainExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *CustomDomainApiService) CreateApplicationCustomDomain(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return CustomDomainResponse
-func (a *CustomDomainApiService) CreateApplicationCustomDomainExecute(r ApiCreateApplicationCustomDomainRequest) (*CustomDomainResponse, *http.Response, error) {
+//  @return CustomDomain
+func (a *CustomDomainApiService) CreateApplicationCustomDomainExecute(r ApiCreateApplicationCustomDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CustomDomainResponse
+		localVarReturnValue *CustomDomain
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDomainApiService.CreateApplicationCustomDomain")
@@ -248,7 +248,7 @@ func (r ApiEditCustomDomainRequest) CustomDomainRequest(customDomainRequest Cust
 	return r
 }
 
-func (r ApiEditCustomDomainRequest) Execute() (*CustomDomainResponse, *http.Response, error) {
+func (r ApiEditCustomDomainRequest) Execute() (*CustomDomain, *http.Response, error) {
 	return r.ApiService.EditCustomDomainExecute(r)
 }
 
@@ -272,13 +272,13 @@ func (a *CustomDomainApiService) EditCustomDomain(ctx context.Context, applicati
 }
 
 // Execute executes the request
-//  @return CustomDomainResponse
-func (a *CustomDomainApiService) EditCustomDomainExecute(r ApiEditCustomDomainRequest) (*CustomDomainResponse, *http.Response, error) {
+//  @return CustomDomain
+func (a *CustomDomainApiService) EditCustomDomainExecute(r ApiEditCustomDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CustomDomainResponse
+		localVarReturnValue *CustomDomain
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDomainApiService.EditCustomDomain")
@@ -357,7 +357,7 @@ type ApiGetCustomDomainStatusRequest struct {
 	customDomainId string
 }
 
-func (r ApiGetCustomDomainStatusRequest) Execute() (*CustomDomainResponse, *http.Response, error) {
+func (r ApiGetCustomDomainStatusRequest) Execute() (*CustomDomain, *http.Response, error) {
 	return r.ApiService.GetCustomDomainStatusExecute(r)
 }
 
@@ -379,13 +379,13 @@ func (a *CustomDomainApiService) GetCustomDomainStatus(ctx context.Context, appl
 }
 
 // Execute executes the request
-//  @return CustomDomainResponse
-func (a *CustomDomainApiService) GetCustomDomainStatusExecute(r ApiGetCustomDomainStatusRequest) (*CustomDomainResponse, *http.Response, error) {
+//  @return CustomDomain
+func (a *CustomDomainApiService) GetCustomDomainStatusExecute(r ApiGetCustomDomainStatusRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CustomDomainResponse
+		localVarReturnValue *CustomDomain
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDomainApiService.GetCustomDomainStatus")

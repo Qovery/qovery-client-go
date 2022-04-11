@@ -17,15 +17,15 @@ import (
 
 // EnvironmentApplicationsInstanceResponseListResults struct for EnvironmentApplicationsInstanceResponseListResults
 type EnvironmentApplicationsInstanceResponseListResults struct {
-	Application string             `json:"application"`
-	Instances   []InstanceResponse `json:"instances"`
+	Application string     `json:"application"`
+	Instances   []Instance `json:"instances"`
 }
 
 // NewEnvironmentApplicationsInstanceResponseListResults instantiates a new EnvironmentApplicationsInstanceResponseListResults object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentApplicationsInstanceResponseListResults(application string, instances []InstanceResponse) *EnvironmentApplicationsInstanceResponseListResults {
+func NewEnvironmentApplicationsInstanceResponseListResults(application string, instances []Instance) *EnvironmentApplicationsInstanceResponseListResults {
 	this := EnvironmentApplicationsInstanceResponseListResults{}
 	this.Application = application
 	this.Instances = instances
@@ -65,9 +65,9 @@ func (o *EnvironmentApplicationsInstanceResponseListResults) SetApplication(v st
 }
 
 // GetInstances returns the Instances field value
-func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstances() []InstanceResponse {
+func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstances() []Instance {
 	if o == nil {
-		var ret []InstanceResponse
+		var ret []Instance
 		return ret
 	}
 
@@ -76,7 +76,7 @@ func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstances() []In
 
 // GetInstancesOk returns a tuple with the Instances field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() ([]InstanceResponse, bool) {
+func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() ([]Instance, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() ([
 }
 
 // SetInstances sets field value
-func (o *EnvironmentApplicationsInstanceResponseListResults) SetInstances(v []InstanceResponse) {
+func (o *EnvironmentApplicationsInstanceResponseListResults) SetInstances(v []Instance) {
 	o.Instances = v
 }
 

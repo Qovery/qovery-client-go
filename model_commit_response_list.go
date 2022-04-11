@@ -17,7 +17,7 @@ import (
 
 // CommitResponseList struct for CommitResponseList
 type CommitResponseList struct {
-	Results []CommitResponse `json:"results,omitempty"`
+	Results []Commit `json:"results,omitempty"`
 }
 
 // NewCommitResponseList instantiates a new CommitResponseList object
@@ -38,9 +38,9 @@ func NewCommitResponseListWithDefaults() *CommitResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *CommitResponseList) GetResults() []CommitResponse {
+func (o *CommitResponseList) GetResults() []Commit {
 	if o == nil || o.Results == nil {
-		var ret []CommitResponse
+		var ret []Commit
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *CommitResponseList) GetResults() []CommitResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommitResponseList) GetResultsOk() ([]CommitResponse, bool) {
+func (o *CommitResponseList) GetResultsOk() ([]Commit, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *CommitResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []CommitResponse and assigns it to the Results field.
-func (o *CommitResponseList) SetResults(v []CommitResponse) {
+// SetResults gets a reference to the given []Commit and assigns it to the Results field.
+func (o *CommitResponseList) SetResults(v []Commit) {
 	o.Results = v
 }
 

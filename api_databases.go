@@ -40,7 +40,7 @@ func (r ApiCreateDatabaseRequest) DatabaseRequest(databaseRequest DatabaseReques
 	return r
 }
 
-func (r ApiCreateDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, error) {
+func (r ApiCreateDatabaseRequest) Execute() (*Database, *http.Response, error) {
 	return r.ApiService.CreateDatabaseExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *DatabasesApiService) CreateDatabase(ctx context.Context, environmentId 
 }
 
 // Execute executes the request
-//  @return DatabaseResponse
-func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
+//  @return Database
+func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseResponse
+		localVarReturnValue *Database
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.CreateDatabase")

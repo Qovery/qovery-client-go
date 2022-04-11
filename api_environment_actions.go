@@ -143,7 +143,7 @@ func (r ApiCloneEnvironmentRequest) CloneRequest(cloneRequest CloneRequest) ApiC
 	return r
 }
 
-func (r ApiCloneEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
+func (r ApiCloneEnvironmentRequest) Execute() (*Environment, *http.Response, error) {
 	return r.ApiService.CloneEnvironmentExecute(r)
 }
 
@@ -165,13 +165,13 @@ func (a *EnvironmentActionsApiService) CloneEnvironment(ctx context.Context, env
 }
 
 // Execute executes the request
-//  @return EnvironmentResponse
-func (a *EnvironmentActionsApiService) CloneEnvironmentExecute(r ApiCloneEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
+//  @return Environment
+func (a *EnvironmentActionsApiService) CloneEnvironmentExecute(r ApiCloneEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarReturnValue *Environment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.CloneEnvironment")

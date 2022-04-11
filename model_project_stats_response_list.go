@@ -17,7 +17,7 @@ import (
 
 // ProjectStatsResponseList struct for ProjectStatsResponseList
 type ProjectStatsResponseList struct {
-	Results []ProjectStatsResponse `json:"results,omitempty"`
+	Results []ProjectStats `json:"results,omitempty"`
 }
 
 // NewProjectStatsResponseList instantiates a new ProjectStatsResponseList object
@@ -38,9 +38,9 @@ func NewProjectStatsResponseListWithDefaults() *ProjectStatsResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ProjectStatsResponseList) GetResults() []ProjectStatsResponse {
+func (o *ProjectStatsResponseList) GetResults() []ProjectStats {
 	if o == nil || o.Results == nil {
-		var ret []ProjectStatsResponse
+		var ret []ProjectStats
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ProjectStatsResponseList) GetResults() []ProjectStatsResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectStatsResponseList) GetResultsOk() ([]ProjectStatsResponse, bool) {
+func (o *ProjectStatsResponseList) GetResultsOk() ([]ProjectStats, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ProjectStatsResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ProjectStatsResponse and assigns it to the Results field.
-func (o *ProjectStatsResponseList) SetResults(v []ProjectStatsResponse) {
+// SetResults gets a reference to the given []ProjectStats and assigns it to the Results field.
+func (o *ProjectStatsResponseList) SetResults(v []ProjectStats) {
 	o.Results = v
 }
 

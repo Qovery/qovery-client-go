@@ -421,7 +421,7 @@ type ApiPostAcceptInviteMemberRequest struct {
 	inviteId       string
 }
 
-func (r ApiPostAcceptInviteMemberRequest) Execute() (*InviteMemberResponse, *http.Response, error) {
+func (r ApiPostAcceptInviteMemberRequest) Execute() (*InviteMember, *http.Response, error) {
 	return r.ApiService.PostAcceptInviteMemberExecute(r)
 }
 
@@ -443,13 +443,13 @@ func (a *MembersApiService) PostAcceptInviteMember(ctx context.Context, organiza
 }
 
 // Execute executes the request
-//  @return InviteMemberResponse
-func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteMemberRequest) (*InviteMemberResponse, *http.Response, error) {
+//  @return InviteMember
+func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteMemberRequest) (*InviteMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InviteMemberResponse
+		localVarReturnValue *InviteMember
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostAcceptInviteMember")
@@ -531,7 +531,7 @@ func (r ApiPostInviteMemberRequest) InviteMemberRequest(inviteMemberRequest Invi
 	return r
 }
 
-func (r ApiPostInviteMemberRequest) Execute() (*InviteMemberResponse, *http.Response, error) {
+func (r ApiPostInviteMemberRequest) Execute() (*InviteMember, *http.Response, error) {
 	return r.ApiService.PostInviteMemberExecute(r)
 }
 
@@ -551,13 +551,13 @@ func (a *MembersApiService) PostInviteMember(ctx context.Context, organizationId
 }
 
 // Execute executes the request
-//  @return InviteMemberResponse
-func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest) (*InviteMemberResponse, *http.Response, error) {
+//  @return InviteMember
+func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest) (*InviteMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InviteMemberResponse
+		localVarReturnValue *InviteMember
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.PostInviteMember")

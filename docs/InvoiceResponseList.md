@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]InvoiceResponse**](InvoiceResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Invoice**](Invoice.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *InvoiceResponseList) GetResults() []InvoiceResponse`
+`func (o *InvoiceResponseList) GetResults() []Invoice`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *InvoiceResponseList) GetResultsOk() (*[]InvoiceResponse, bool)`
+`func (o *InvoiceResponseList) GetResultsOk() (*[]Invoice, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *InvoiceResponseList) SetResults(v []InvoiceResponse)`
+`func (o *InvoiceResponseList) SetResults(v []Invoice)`
 
 SetResults sets Results field to given value.
 

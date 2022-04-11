@@ -40,7 +40,7 @@ func (r ApiCreateAWSCredentialsRequest) AwsCredentialsRequest(awsCredentialsRequ
 	return r
 }
 
-func (r ApiCreateAWSCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
+func (r ApiCreateAWSCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
 	return r.ApiService.CreateAWSCredentialsExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentials(ctx context.Co
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterCredentialsResponse
+		localVarReturnValue *ClusterCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateAWSCredentials")
@@ -149,7 +149,7 @@ func (r ApiCreateDOCredentialsRequest) DoCredentialsRequest(doCredentialsRequest
 	return r
 }
 
-func (r ApiCreateDOCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
+func (r ApiCreateDOCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
 	return r.ApiService.CreateDOCredentialsExecute(r)
 }
 
@@ -169,13 +169,13 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentials(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCreateDOCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCreateDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterCredentialsResponse
+		localVarReturnValue *ClusterCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateDOCredentials")
@@ -258,7 +258,7 @@ func (r ApiCreateScalewayCredentialsRequest) ScalewayCredentialsRequest(scaleway
 	return r
 }
 
-func (r ApiCreateScalewayCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
+func (r ApiCreateScalewayCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
 	return r.ApiService.CreateScalewayCredentialsExecute(r)
 }
 
@@ -278,13 +278,13 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentials(ctx conte
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterCredentialsResponse
+		localVarReturnValue *ClusterCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateScalewayCredentials")
@@ -650,7 +650,7 @@ func (r ApiEditAWSCredentialsRequest) AwsCredentialsRequest(awsCredentialsReques
 	return r
 }
 
-func (r ApiEditAWSCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
+func (r ApiEditAWSCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
 	return r.ApiService.EditAWSCredentialsExecute(r)
 }
 
@@ -672,13 +672,13 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentials(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterCredentialsResponse
+		localVarReturnValue *ClusterCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditAWSCredentials")
@@ -763,7 +763,7 @@ func (r ApiEditDOCredentialsRequest) DoCredentialsRequest(doCredentialsRequest D
 	return r
 }
 
-func (r ApiEditDOCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
+func (r ApiEditDOCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
 	return r.ApiService.EditDOCredentialsExecute(r)
 }
 
@@ -785,13 +785,13 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentials(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditDOCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterCredentialsResponse
+		localVarReturnValue *ClusterCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditDOCredentials")
@@ -876,7 +876,7 @@ func (r ApiEditScalewayCredentialsRequest) ScalewayCredentialsRequest(scalewayCr
 	return r
 }
 
-func (r ApiEditScalewayCredentialsRequest) Execute() (*ClusterCredentialsResponse, *http.Response, error) {
+func (r ApiEditScalewayCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
 	return r.ApiService.EditScalewayCredentialsExecute(r)
 }
 
@@ -898,13 +898,13 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentials(ctx context
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponse
-func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (*ClusterCredentialsResponse, *http.Response, error) {
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterCredentialsResponse
+		localVarReturnValue *ClusterCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditScalewayCredentials")

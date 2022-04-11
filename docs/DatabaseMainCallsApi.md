@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## EditDatabase
 
-> DatabaseResponse EditDatabase(ctx, databaseId).DatabaseEditRequest(databaseEditRequest).Execute()
+> Database EditDatabase(ctx, databaseId).DatabaseEditRequest(databaseEditRequest).Execute()
 
 Edit a database 
 
@@ -113,7 +113,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.EditDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditDatabase`: DatabaseResponse
+    // response from `EditDatabase`: Database
     fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsApi.EditDatabase`: %v\n", resp)
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DatabaseResponse**](DatabaseResponse.md)
+[**Database**](Database.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## EditDatabaseCredentials
 
-> CredentialsResponse EditDatabaseCredentials(ctx, databaseId).CredentialsRequest(credentialsRequest).Execute()
+> Credentials EditDatabaseCredentials(ctx, databaseId).CredentialsRequest(credentialsRequest).Execute()
 
 Edit database  master credentials
 
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.EditDatabaseCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditDatabaseCredentials`: CredentialsResponse
+    // response from `EditDatabaseCredentials`: Credentials
     fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsApi.EditDatabaseCredentials`: %v\n", resp)
 }
 ```
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CredentialsResponse**](CredentialsResponse.md)
+[**Credentials**](Credentials.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabase
 
-> DatabaseResponse GetDatabase(ctx, databaseId).Execute()
+> Database GetDatabase(ctx, databaseId).Execute()
 
 Get database by ID
 
@@ -252,7 +252,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.GetDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDatabase`: DatabaseResponse
+    // response from `GetDatabase`: Database
     fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsApi.GetDatabase`: %v\n", resp)
 }
 ```
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DatabaseResponse**](DatabaseResponse.md)
+[**Database**](Database.md)
 
 ### Authorization
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabaseMasterCredentials
 
-> CredentialsResponse GetDatabaseMasterCredentials(ctx, databaseId).Execute()
+> Credentials GetDatabaseMasterCredentials(ctx, databaseId).Execute()
 
 Get master credentials of the database
 
@@ -320,7 +320,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsApi.GetDatabaseMasterCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDatabaseMasterCredentials`: CredentialsResponse
+    // response from `GetDatabaseMasterCredentials`: Credentials
     fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsApi.GetDatabaseMasterCredentials`: %v\n", resp)
 }
 ```
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CredentialsResponse**](CredentialsResponse.md)
+[**Credentials**](Credentials.md)
 
 ### Authorization
 

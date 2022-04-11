@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]UserResponse**](UserResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]User**](User.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *UserResponseList) GetResults() []UserResponse`
+`func (o *UserResponseList) GetResults() []User`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *UserResponseList) GetResultsOk() (*[]UserResponse, bool)`
+`func (o *UserResponseList) GetResultsOk() (*[]User, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *UserResponseList) SetResults(v []UserResponse)`
+`func (o *UserResponseList) SetResults(v []User)`
 
 SetResults sets Results field to given value.
 

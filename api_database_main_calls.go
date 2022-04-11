@@ -132,7 +132,7 @@ func (r ApiEditDatabaseRequest) DatabaseEditRequest(databaseEditRequest Database
 	return r
 }
 
-func (r ApiEditDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, error) {
+func (r ApiEditDatabaseRequest) Execute() (*Database, *http.Response, error) {
 	return r.ApiService.EditDatabaseExecute(r)
 }
 
@@ -154,13 +154,13 @@ func (a *DatabaseMainCallsApiService) EditDatabase(ctx context.Context, database
 }
 
 // Execute executes the request
-//  @return DatabaseResponse
-func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
+//  @return Database
+func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseResponse
+		localVarReturnValue *Database
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.EditDatabase")
@@ -243,7 +243,7 @@ func (r ApiEditDatabaseCredentialsRequest) CredentialsRequest(credentialsRequest
 	return r
 }
 
-func (r ApiEditDatabaseCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
+func (r ApiEditDatabaseCredentialsRequest) Execute() (*Credentials, *http.Response, error) {
 	return r.ApiService.EditDatabaseCredentialsExecute(r)
 }
 
@@ -263,13 +263,13 @@ func (a *DatabaseMainCallsApiService) EditDatabaseCredentials(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return CredentialsResponse
-func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDatabaseCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
+//  @return Credentials
+func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDatabaseCredentialsRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CredentialsResponse
+		localVarReturnValue *Credentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.EditDatabaseCredentials")
@@ -346,7 +346,7 @@ type ApiGetDatabaseRequest struct {
 	databaseId string
 }
 
-func (r ApiGetDatabaseRequest) Execute() (*DatabaseResponse, *http.Response, error) {
+func (r ApiGetDatabaseRequest) Execute() (*Database, *http.Response, error) {
 	return r.ApiService.GetDatabaseExecute(r)
 }
 
@@ -366,13 +366,13 @@ func (a *DatabaseMainCallsApiService) GetDatabase(ctx context.Context, databaseI
 }
 
 // Execute executes the request
-//  @return DatabaseResponse
-func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest) (*DatabaseResponse, *http.Response, error) {
+//  @return Database
+func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseResponse
+		localVarReturnValue *Database
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabase")
@@ -447,7 +447,7 @@ type ApiGetDatabaseMasterCredentialsRequest struct {
 	databaseId string
 }
 
-func (r ApiGetDatabaseMasterCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
+func (r ApiGetDatabaseMasterCredentialsRequest) Execute() (*Credentials, *http.Response, error) {
 	return r.ApiService.GetDatabaseMasterCredentialsExecute(r)
 }
 
@@ -467,13 +467,13 @@ func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentials(ctx context.C
 }
 
 // Execute executes the request
-//  @return CredentialsResponse
-func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiGetDatabaseMasterCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
+//  @return Credentials
+func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiGetDatabaseMasterCredentialsRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CredentialsResponse
+		localVarReturnValue *Credentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMainCallsApiService.GetDatabaseMasterCredentials")

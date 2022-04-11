@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]OrganizationApiTokenResponse**](OrganizationApiTokenResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]OrganizationApiToken**](OrganizationApiToken.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *OrganizationApiTokenResponseList) GetResults() []OrganizationApiTokenResponse`
+`func (o *OrganizationApiTokenResponseList) GetResults() []OrganizationApiToken`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *OrganizationApiTokenResponseList) GetResultsOk() (*[]OrganizationApiTokenResponse, bool)`
+`func (o *OrganizationApiTokenResponseList) GetResultsOk() (*[]OrganizationApiToken, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *OrganizationApiTokenResponseList) SetResults(v []OrganizationApiTokenResponse)`
+`func (o *OrganizationApiTokenResponseList) SetResults(v []OrganizationApiToken)`
 
 SetResults sets Results field to given value.
 

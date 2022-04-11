@@ -103,7 +103,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationResponse'
+                $ref: '#/components/schemas/Organization'
           description: Create organization
         "400":
           description: Bad request
@@ -161,7 +161,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationResponse'
+                $ref: '#/components/schemas/Organization'
           description: Get organization by ID
         "401":
           description: Access token is missing or invalid
@@ -195,7 +195,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationResponse'
+                $ref: '#/components/schemas/Organization'
           description: Edit an organization
         "400":
           description: Bad request
@@ -263,7 +263,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationApiTokenCreateResponse'
+                $ref: '#/components/schemas/OrganizationApiTokenCreate'
           description: Organization api token created
         "400":
           description: Bad request
@@ -427,7 +427,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InviteMemberResponse'
+                $ref: '#/components/schemas/InviteMember'
           description: User invited
         "400":
           description: Bad request
@@ -493,7 +493,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InviteMemberResponse'
+                $ref: '#/components/schemas/InviteMember'
           description: User invited
         "400":
           description: Bad request
@@ -558,7 +558,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationCurrentCostResponse'
+                $ref: '#/components/schemas/OrganizationCurrentCost'
           description: Get Cost
         "401":
           description: Access token is missing or invalid
@@ -631,7 +631,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CostRangeResponse'
+                $ref: '#/components/schemas/CostRange'
           description: Get cluster cost
         "401":
           description: Access token is missing or invalid
@@ -660,7 +660,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BillingInfoResponse'
+                $ref: '#/components/schemas/BillingInfo'
           description: Get Billing Info
         "401":
           description: Access token is missing or invalid
@@ -693,7 +693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BillingInfoResponse'
+                $ref: '#/components/schemas/BillingInfo'
           description: Edit billing info
         "400":
           description: Bad request
@@ -796,7 +796,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/InvoiceResponse'
+                $ref: '#/components/schemas/Invoice'
           description: Get Invoice
         "401":
           description: Access token is missing or invalid
@@ -835,7 +835,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LinkResponse'
+                $ref: '#/components/schemas/Link'
           description: Get invoice PDF
         "401":
           description: Access token is missing or invalid
@@ -922,7 +922,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreditCardResponse'
+                $ref: '#/components/schemas/CreditCard'
           description: Add credit card
         "400":
           description: Bad request
@@ -1020,7 +1020,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
+                $ref: '#/components/schemas/Project'
           description: Create project
         "400":
           description: Bad request
@@ -1118,7 +1118,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterResponse'
+                $ref: '#/components/schemas/Cluster'
           description: Create cluster
         "400":
           description: Bad request
@@ -1226,7 +1226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterResponse'
+                $ref: '#/components/schemas/Cluster'
           description: Edited the cluster
         "400":
           description: Bad request
@@ -1266,7 +1266,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterStatusResponse'
+                $ref: '#/components/schemas/ClusterStatus'
           description: Get status
         "401":
           description: Access token is missing or invalid
@@ -1306,7 +1306,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterRoutingTableResponse'
+                $ref: '#/components/schemas/ClusterRoutingTable'
           description: Routing table
         "401":
           description: Access token is missing or invalid
@@ -1349,7 +1349,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterRoutingTableResponse'
+                $ref: '#/components/schemas/ClusterRoutingTable'
           description: Updated routing table
         "400":
           description: Bad request
@@ -1413,7 +1413,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCredentialsResponse'
+                $ref: '#/components/schemas/ClusterCredentials'
           description: Credentials created
         "400":
           description: Bad request
@@ -1491,7 +1491,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCredentialsResponse'
+                $ref: '#/components/schemas/ClusterCredentials'
           description: Edit a CustomDomain
         "400":
           description: Bad request
@@ -1555,7 +1555,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCredentialsResponse'
+                $ref: '#/components/schemas/ClusterCredentials'
           description: Credentials created
         "400":
           description: Bad request
@@ -1633,7 +1633,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCredentialsResponse'
+                $ref: '#/components/schemas/ClusterCredentials'
           description: Edit a CustomDomain
         "400":
           description: Bad request
@@ -1697,7 +1697,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCredentialsResponse'
+                $ref: '#/components/schemas/ClusterCredentials'
           description: Credentials created
         "400":
           description: Bad request
@@ -1775,7 +1775,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCredentialsResponse'
+                $ref: '#/components/schemas/ClusterCredentials'
           description: Edit a CustomDomain
         "400":
           description: Bad request
@@ -1948,7 +1948,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCloudProviderInfoResponse'
+                $ref: '#/components/schemas/ClusterCloudProviderInfo'
           description: get cloud provider info and credentials
         "401":
           description: Access token is missing or invalid
@@ -1990,7 +1990,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterCloudProviderInfoResponse'
+                $ref: '#/components/schemas/ClusterCloudProviderInfo'
           description: Create cluster
         "400":
           description: Bad request
@@ -2069,7 +2069,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterStatusResponse'
+                $ref: '#/components/schemas/ClusterStatus'
           description: Deploy cluster
         "400":
           description: Bad request
@@ -2110,7 +2110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterStatusResponse'
+                $ref: '#/components/schemas/ClusterStatus'
           description: Update cluster
         "400":
           description: Bad request
@@ -2151,7 +2151,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterStatusResponse'
+                $ref: '#/components/schemas/ClusterStatus'
           description: Update cluster
         "401":
           description: Access token is missing or invalid
@@ -2207,7 +2207,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
+                $ref: '#/components/schemas/Project'
           description: Get project by ID
         "401":
           description: Access token is missing or invalid
@@ -2241,7 +2241,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
+                $ref: '#/components/schemas/Project'
           description: Edit a project
         "400":
           description: Bad request
@@ -2309,7 +2309,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectDeploymentRuleResponse'
+                $ref: '#/components/schemas/ProjectDeploymentRule'
           description: Create deployment rule
         "400":
           description: Bad request
@@ -2384,7 +2384,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectDeploymentRuleResponse'
+                $ref: '#/components/schemas/ProjectDeploymentRule'
           description: Get project deployment rule
         "401":
           description: Access token is missing or invalid
@@ -2427,7 +2427,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectDeploymentRuleResponse'
+                $ref: '#/components/schemas/ProjectDeploymentRule'
           description: Edit a project deployment rule
         "400":
           description: Bad request
@@ -2532,7 +2532,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentResponse'
+                $ref: '#/components/schemas/Environment'
           description: Create environment
         "400":
           description: Bad request
@@ -2602,7 +2602,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Added an environment variable
         "400":
           description: Bad request
@@ -2690,7 +2690,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Edited the environment variable value
         "400":
           description: Bad request
@@ -2741,7 +2741,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Create variable override
         "400":
           description: Can't create an override on a higher scope. Overrides can only
@@ -2795,7 +2795,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Create variable alias
         "400":
           description: Can't create an alias on a higher scope. Aliases can only be
@@ -2865,7 +2865,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Added a secret
         "400":
           description: Bad request
@@ -2953,7 +2953,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Edited the secret value
         "400":
           description: Bad request
@@ -3004,7 +3004,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Create secret override
         "400":
           description: Can't create an override on a higher scope. Overrides can only
@@ -3058,7 +3058,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Create secret alias
         "400":
           description: Can't create an alias on a higher scope. Aliases can only be
@@ -3177,7 +3177,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentResponse'
+                $ref: '#/components/schemas/Environment'
           description: Get environment by ID
         "401":
           description: Access token is missing or invalid
@@ -3211,7 +3211,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentResponse'
+                $ref: '#/components/schemas/Environment'
           description: Edit an environment
         "400":
           description: Bad request
@@ -3273,7 +3273,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentDeploymentRuleResponse'
+                $ref: '#/components/schemas/EnvironmentDeploymentRule'
           description: Get deployment rule
         "401":
           description: Access token is missing or invalid
@@ -3316,7 +3316,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentDeploymentRuleResponse'
+                $ref: '#/components/schemas/EnvironmentDeploymentRule'
           description: Edit environment deployment rule
         "400":
           description: Bad request
@@ -3488,7 +3488,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentResponse'
+                $ref: '#/components/schemas/Environment'
           description: Environment clone has been requested
         "401":
           description: Access token is missing or invalid
@@ -3561,7 +3561,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationResponse'
+                $ref: '#/components/schemas/Application'
           description: Create application
         "400":
           description: Bad request
@@ -3897,7 +3897,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Added an environment variable
         "400":
           description: Bad request
@@ -3985,7 +3985,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Edited the environment variable value
         "400":
           description: Bad request
@@ -4036,7 +4036,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Create variable override
         "400":
           description: Can't create an override on a higher scope. Overrides can only
@@ -4090,7 +4090,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Create variable alias
         "400":
           description: Can't create an alias on a higher scope. Aliases can only be
@@ -4160,7 +4160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Added a secret
         "400":
           description: Bad request
@@ -4248,7 +4248,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Edited the secret value
         "400":
           description: Bad request
@@ -4299,7 +4299,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Create secret override
         "400":
           description: Can't create an override on a higher scope. Overrides can only
@@ -4353,7 +4353,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Create secret alias
         "400":
           description: Can't create an alias on a higher scope. Aliases can only be
@@ -4471,7 +4471,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationResponse'
+                $ref: '#/components/schemas/Application'
           description: Get application by ID
         "401":
           description: Access token is missing or invalid
@@ -4508,7 +4508,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationResponse'
+                $ref: '#/components/schemas/Application'
           description: Edit application
         "400":
           description: Bad request
@@ -4571,7 +4571,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationDeploymentRestrictionResponse'
+                $ref: '#/components/schemas/ApplicationDeploymentRestriction'
           description: Get application deployment restrictions
         "401":
           description: Access token is missing or invalid
@@ -4606,7 +4606,7 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/BaseResponse'
+                - $ref: '#/components/schemas/Base'
                 - $ref: '#/components/schemas/ApplicationDeploymentRestrictionRequest'
           description: Added an environment variable
         "400":
@@ -4898,7 +4898,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationCurrentScaleResponse'
+                $ref: '#/components/schemas/ApplicationCurrentScale'
           description: Get current scaling of the application
         "401":
           description: Access token is missing or invalid
@@ -5085,7 +5085,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetricRestartResponse'
+                $ref: '#/components/schemas/MetricRestart'
           description: Restarts
         "401":
           description: Access token is missing or invalid
@@ -5187,7 +5187,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationResponse'
+                $ref: '#/components/schemas/Application'
           description: Add application dependencies
         "400":
           description: Bad request
@@ -5484,7 +5484,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Added an environment variable
         "400":
           description: Bad request
@@ -5522,7 +5522,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VariableImportResponse'
+                $ref: '#/components/schemas/VariableImport'
           description: Import environment variables
         "400":
           description: Bad request
@@ -5610,7 +5610,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Edited the environment variable value
         "400":
           description: Bad request
@@ -5661,7 +5661,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Create variable override
         "400":
           description: Can't create an override on a higher scope. Overrides can only
@@ -5715,7 +5715,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentVariableResponse'
+                $ref: '#/components/schemas/EnvironmentVariable'
           description: Create variable alias
         "400":
           description: Can't create an alias on a higher scope. Aliases can only be
@@ -5785,7 +5785,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Add a secret
         "400":
           description: Bad request
@@ -5873,7 +5873,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Edited the secret value
         "400":
           description: Bad request
@@ -5924,7 +5924,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Create secret override
         "400":
           description: Can't create an override on a higher scope. Overrides can only
@@ -5978,7 +5978,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Create secret alias
         "400":
           description: Can't create an alias on a higher scope. Aliases can only be
@@ -6046,7 +6046,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomDomainResponse'
+                $ref: '#/components/schemas/CustomDomain'
           description: Added application custom domain
         "400":
           description: Bad request
@@ -6126,7 +6126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomDomainResponse'
+                $ref: '#/components/schemas/CustomDomain'
           description: Edit a CustomDomain
         "400":
           description: Bad request
@@ -6166,7 +6166,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomDomainResponse'
+                $ref: '#/components/schemas/CustomDomain'
           description: Get status
         "401":
           description: Access token is missing or invalid
@@ -6226,7 +6226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationNetworkResponse'
+                $ref: '#/components/schemas/ApplicationNetwork'
           description: Network information
         "401":
           description: Access token is missing or invalid
@@ -6260,7 +6260,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationNetworkResponse'
+                $ref: '#/components/schemas/ApplicationNetwork'
           description: Updated application network setting
         "400":
           description: Bad request
@@ -6362,7 +6362,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatabaseResponse'
+                $ref: '#/components/schemas/Database'
           description: Linked the database to the application
         "400":
           description: Bad request
@@ -6466,7 +6466,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LogicalDatabaseResponse'
+                $ref: '#/components/schemas/LogicalDatabase'
           description: Linked the Logical database to the application
         "400":
           description: Bad request
@@ -6563,7 +6563,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatabaseResponse'
+                $ref: '#/components/schemas/Database'
           description: 'Create database '
         "400":
           description: Bad request
@@ -6680,7 +6680,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatabaseResponse'
+                $ref: '#/components/schemas/Database'
           description: Get database  by ID
         "401":
           description: Access token is missing or invalid
@@ -6714,7 +6714,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatabaseResponse'
+                $ref: '#/components/schemas/Database'
           description: 'Edit a database '
         "400":
           description: Bad request
@@ -6805,7 +6805,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CredentialsResponse'
+                $ref: '#/components/schemas/Credentials'
           description: get credentials
         "401":
           description: Access token is missing or invalid
@@ -6838,7 +6838,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CredentialsResponse'
+                $ref: '#/components/schemas/Credentials'
           description: Edit database credentials
         "400":
           description: Bad request
@@ -6906,7 +6906,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LogicalDatabaseResponse'
+                $ref: '#/components/schemas/LogicalDatabase'
           description: Created database on the database
         "400":
           description: Bad request
@@ -7095,7 +7095,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DatabaseCurrentMetricResponse'
+                $ref: '#/components/schemas/DatabaseCurrentMetric'
           description: Get database  current metric
         "401":
           description: Access token is missing or invalid
@@ -7282,7 +7282,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetricRestartResponse'
+                $ref: '#/components/schemas/MetricRestart'
           description: Restarts
         "401":
           description: Access token is missing or invalid
@@ -7355,7 +7355,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BackupResponse'
+                $ref: '#/components/schemas/Backup'
           description: Added backup
         "400":
           description: Bad request
@@ -7488,7 +7488,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LogicalDatabaseResponse'
+                $ref: '#/components/schemas/LogicalDatabase'
           description: Get logical database by ID
         "401":
           description: Access token is missing or invalid
@@ -7521,7 +7521,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LogicalDatabaseResponse'
+                $ref: '#/components/schemas/LogicalDatabase'
           description: Edit a Logical Database
         "400":
           description: Bad request
@@ -7552,7 +7552,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CredentialsResponse'
+                $ref: '#/components/schemas/Credentials'
           description: get credentials
         "401":
           description: Access token is missing or invalid
@@ -7585,7 +7585,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CredentialsResponse'
+                $ref: '#/components/schemas/Credentials'
           description: Edit logical database credentials
         "400":
           description: Bad request
@@ -7635,7 +7635,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountInfoResponse'
+                $ref: '#/components/schemas/AccountInfo'
           description: Get account info
         "401":
           description: Access token is missing or invalid
@@ -7782,7 +7782,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ReferralResponse'
+                $ref: '#/components/schemas/Referral'
           description: Get referral info
         "401":
           description: Access token is missing or invalid
@@ -7797,7 +7797,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RewardClaimResponse'
+              $ref: '#/components/schemas/RewardClaim'
       responses:
         "200":
           description: Claim reward
@@ -7814,7 +7814,7 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/BaseResponse'
+                - $ref: '#/components/schemas/Base'
                 - $ref: '#/paths/~1admin~1userSignUp/post/requestBody/content/application~1json/schema'
           description: If a previous sign up request for the same user has been found,
             the information is returned in the payload
@@ -8263,7 +8263,7 @@ components:
       - name
       - plan
       type: object
-    MetricCPUResponse:
+    MetricCPU:
       example:
         instance_name: instance 1
         data:
@@ -8281,7 +8281,7 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/MetricCPUDatapointResponse'
+            $ref: '#/components/schemas/MetricCPUDatapoint'
           type: array
       required:
       - data
@@ -8304,10 +8304,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterStatusResponse'
+            $ref: '#/components/schemas/ClusterStatus'
           type: array
       type: object
-    MetricGenericResponse:
+    MetricGeneric:
       example:
         instance_name: instance 1
         data:
@@ -8321,17 +8321,17 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/MetricGenericDatapointResponse'
+            $ref: '#/components/schemas/MetricGenericDatapoint'
           type: array
       required:
       - data
       - instance_name
       type: object
-    ApplicationStorageResponse:
+    ApplicationStorage:
       properties:
         storage:
           items:
-            $ref: '#/components/schemas/ApplicationStorageResponse_storage'
+            $ref: '#/components/schemas/ApplicationStorage_storage'
           type: array
       type: object
     ApplicationDependencyRequest:
@@ -8343,12 +8343,12 @@ components:
       required:
       - id
       type: object
-    OrganizationResponse:
+    Organization:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/OrganizationRequest'
-      - $ref: '#/components/schemas/OrganizationResponse_allOf'
-    MetricStorageDatapointResponse:
+      - $ref: '#/components/schemas/Organization_allOf'
+    MetricStorageDatapoint:
       example:
         requested_in_gb: 0
         consumed_in_percent: 1.4658129805029452
@@ -8438,11 +8438,11 @@ components:
       - last_name
       - zip
       type: object
-    ProjectDeploymentRuleResponse:
+    ProjectDeploymentRule:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ProjectDeploymentRuleRequest'
-      - $ref: '#/components/schemas/ProjectDeploymentRuleResponse_allOf'
+      - $ref: '#/components/schemas/ProjectDeploymentRule_allOf'
     ProjectResponseList:
       example:
         results:
@@ -8451,7 +8451,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ProjectResponse'
+            $ref: '#/components/schemas/Project'
           type: array
       type: object
     ProjectStatsResponseList:
@@ -8462,7 +8462,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ProjectStatsResponse'
+            $ref: '#/components/schemas/ProjectStats'
           type: array
       type: object
     Value:
@@ -8474,11 +8474,11 @@ components:
       required:
       - value
       type: object
-    DatabaseResponse:
+    Database:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/DatabaseRequest'
-      - $ref: '#/components/schemas/DatabaseResponse_allOf'
+      - $ref: '#/components/schemas/Database_allOf'
     SecretRequest:
       example:
         value: value
@@ -8525,7 +8525,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentApplicationsCurrentScaleResponse'
+            $ref: '#/components/schemas/EnvironmentApplicationsCurrentScale'
           type: array
       type: object
     MemberResponseList:
@@ -8536,7 +8536,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MemberResponse'
+            $ref: '#/components/schemas/Member'
           type: array
       type: object
     DatabaseRequest:
@@ -8579,7 +8579,7 @@ components:
       - type
       - version
       type: object
-    PaginationDataResponse:
+    PaginationData:
       properties:
         page:
           example: 1
@@ -8599,10 +8599,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/DatabaseResponse'
+            $ref: '#/components/schemas/Database'
           type: array
       type: object
-    LinkResponse:
+    Link:
       example:
         url: url
       properties:
@@ -8623,14 +8623,14 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricStorageDatapointResponse'
+            $ref: '#/components/schemas/MetricStorageDatapoint'
           type: array
       type: object
-    DeploymentHistoryEnvironmentResponse:
+    DeploymentHistoryEnvironment:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/DeploymentHistoryEnvironmentResponse_allOf'
-    LogResponse:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentHistoryEnvironment_allOf'
+    Log:
       example:
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -8650,7 +8650,7 @@ components:
       - message
       - status
       type: object
-    MetricMemoryResponse:
+    MetricMemory:
       example:
         instance_name: instance 1
         data:
@@ -8668,7 +8668,7 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/MetricMemoryDatapointResponse'
+            $ref: '#/components/schemas/MetricMemoryDatapoint'
           type: array
       required:
       - data
@@ -8681,7 +8681,7 @@ components:
       required:
       - number
       type: object
-    EnvironmentApplicationsStorageResponse:
+    EnvironmentApplicationsStorage:
       example:
         application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         disks:
@@ -8705,13 +8705,13 @@ components:
           type: string
         disks:
           items:
-            $ref: '#/components/schemas/StorageDiskResponse'
+            $ref: '#/components/schemas/StorageDisk'
           type: array
       required:
       - application
       - instances
       type: object
-    MetricCPUDatapointResponse:
+    MetricCPUDatapoint:
       example:
         consumed_in_percent: 1.4658129805029452
         consumed_in_number: 6.027456183070403
@@ -8733,7 +8733,7 @@ components:
       - created_at
       - requested_in_float
       type: object
-    VersionResponse:
+    Version:
       example:
         name: "10.1"
       properties:
@@ -8776,24 +8776,15 @@ components:
       type: object
     DeploymentHistoryPaginatedResponseList:
       allOf:
-      - $ref: '#/components/schemas/PaginationDataResponse'
+      - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/DeploymentHistoryPaginatedResponseList_allOf'
     ClusterCredentialsRequest:
-      properties:
-        name:
-          type: string
-        access_key_id:
-          type: string
-        secret_access_key:
-          type: string
-      required:
-      - name
-      type: object
-    MemberResponse:
+      $ref: '#/components/schemas/CluserCredentials'
+    Member:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/MemberResponse_allOf'
-    ClusterStatusResponse:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/Member_allOf'
+    ClusterStatus:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_deployed: true
@@ -8814,7 +8805,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/InvoiceResponse'
+            $ref: '#/components/schemas/Invoice'
           type: array
       type: object
     EnvironmentApplicationsInstanceResponseList:
@@ -8886,11 +8877,11 @@ components:
             $ref: '#/components/schemas/EnvironmentApplicationsInstanceResponseList_results'
           type: array
       type: object
-    InvoiceResponse:
+    Invoice:
       allOf:
-      - $ref: '#/components/schemas/CostResponse'
-      - $ref: '#/components/schemas/InvoiceResponse_allOf'
-    EnvironmentLogResponse:
+      - $ref: '#/components/schemas/Cost'
+      - $ref: '#/components/schemas/Invoice_allOf'
+    EnvironmentLog:
       example:
         execution_id: execution_id
         scope:
@@ -8909,7 +8900,7 @@ components:
           format: date-time
           type: string
         scope:
-          $ref: '#/components/schemas/EnvironmentLogResponse_scope'
+          $ref: '#/components/schemas/EnvironmentLog_scope'
         state:
           $ref: '#/components/schemas/GlobalDeploymentStatus'
         message:
@@ -8930,7 +8921,7 @@ components:
       - service
       - status
       type: object
-    GitAuthProviderResponse:
+    GitAuthProvider:
       example:
         owner: John Doe
         name: GITHUB
@@ -8992,7 +8983,7 @@ components:
         region:
           type: string
       type: object
-    MetricGenericDatapointResponse:
+    MetricGenericDatapoint:
       example:
         created_at: 2000-01-23T04:56:07.000+00:00
         value: 0.8008281904610115
@@ -9050,14 +9041,14 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/BackupResponse'
+            $ref: '#/components/schemas/Backup'
           type: array
       type: object
     ProjectCurrentCostResponseList:
       properties:
         projects:
           items:
-            $ref: '#/components/schemas/ProjectCurrentCostResponse'
+            $ref: '#/components/schemas/ProjectCurrentCost'
           type: array
       type: object
     Healthcheck:
@@ -9071,7 +9062,7 @@ components:
         value:
           type: string
       type: object
-    CommitResponse:
+    Commit:
       example:
         author_name: author_name
         git_commit_id: git_commit_id
@@ -9104,7 +9095,7 @@ components:
       - message
       - tag
       type: object
-    GenericObjectCurrentCostResponse:
+    GenericObjectCurrentCost:
       properties:
         id:
           format: uuid
@@ -9115,7 +9106,7 @@ components:
           example: 3600
           type: integer
         cost:
-          $ref: '#/components/schemas/CostResponse'
+          $ref: '#/components/schemas/Cost'
       required:
       - consumed_time_in_seconds
       - cost
@@ -9127,7 +9118,7 @@ components:
       - $ref: '#/components/schemas/ApplicationStorageRequest'
       - $ref: '#/components/schemas/ApplicationPortRequest'
       - $ref: '#/components/schemas/ApplicationRequest_allOf'
-    BaseResponse:
+    Base:
       properties:
         id:
           format: uuid
@@ -9147,38 +9138,38 @@ components:
       type: object
     ApplicationEditRequest:
       allOf:
-      - $ref: '#/components/schemas/ApplicationStorageResponse'
-      - $ref: '#/components/schemas/ApplicationPortResponse'
+      - $ref: '#/components/schemas/ApplicationStorage'
+      - $ref: '#/components/schemas/ApplicationPort'
       - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
     DeploymentHistoryResponseList:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/DeploymentHistoryResponse'
+            $ref: '#/components/schemas/DeploymentHistory'
           type: array
       type: object
     BudgetThreshold:
       allOf:
-      - $ref: '#/components/schemas/BudgetResponse'
+      - $ref: '#/components/schemas/Budget'
     EventResponseList:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EventResponse'
+            $ref: '#/components/schemas/Event'
           type: array
       type: object
-    DeploymentHistoryResponse:
+    DeploymentHistory:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/DeploymentHistoryResponse_allOf'
-    DeploymentHistoryApplicationResponse:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentHistory_allOf'
+    DeploymentHistoryApplication:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/DeploymentHistoryApplicationResponse_allOf'
-    DeploymentHistoryDatabaseResponse:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentHistoryApplication_allOf'
+    DeploymentHistoryDatabase:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/DeploymentHistoryDatabaseResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentHistoryDatabase_allOf'
     OrganizationResponseList:
       example:
         results:
@@ -9187,19 +9178,19 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/OrganizationResponse'
+            $ref: '#/components/schemas/Organization'
           type: array
       type: object
     ClusterRequest:
       allOf:
-      - $ref: '#/components/schemas/Cluster'
+      - $ref: '#/components/schemas/Cluster/allOf/1'
       - $ref: '#/components/schemas/ClusterFeatureRequest'
       - required:
         - cloud_provider
         - name
         - region
         type: object
-    ClusterCloudProviderInfoResponse:
+    ClusterCloudProviderInfo:
       example:
         credentials:
           name: name
@@ -9213,12 +9204,12 @@ components:
         region:
           type: string
       type: object
-    ApplicationResponse:
+    Application:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/ApplicationStorageResponse'
-      - $ref: '#/components/schemas/ApplicationPortResponse'
-      - $ref: '#/components/schemas/ApplicationResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ApplicationStorage'
+      - $ref: '#/components/schemas/ApplicationPort'
+      - $ref: '#/components/schemas/Application_allOf'
     CustomDomainRequest:
       example:
         domain: my.domain.tld
@@ -9232,7 +9223,7 @@ components:
       type: object
     EnvironmentLogPaginatedResponseList:
       allOf:
-      - $ref: '#/components/schemas/PaginationDataResponse'
+      - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/EnvironmentLogPaginatedResponseList_allOf'
     ProjectDeploymentRuleRequest:
       example:
@@ -9302,7 +9293,7 @@ components:
       - weekdays
       - wildcard
       type: object
-    EnvironmentStatsResponse:
+    EnvironmentStats:
       allOf:
       - $ref: '#/components/schemas/ReferenceObject'
       - $ref: '#/components/schemas/ServiceTotalNumber'
@@ -9354,7 +9345,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/InstanceResponse'
+            $ref: '#/components/schemas/Instance'
           type: array
       type: object
     ClusterReadinessStatus:
@@ -9364,12 +9355,12 @@ components:
         is_ready:
           type: boolean
       type: object
-    CustomDomainResponse:
+    CustomDomain:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/CustomDomainRequest'
-      - $ref: '#/components/schemas/CustomDomainResponse_allOf'
-    AccountInfoResponse:
+      - $ref: '#/components/schemas/CustomDomain_allOf'
+    AccountInfo:
       example:
         profile_picture_url: profile_picture_url
         nickname: nickname
@@ -9408,10 +9399,10 @@ components:
       required:
       - name
       type: object
-    ServiceResponse:
+    Service:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/ServiceResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/Service_allOf'
     ApplicationResponseList:
       example:
         results:
@@ -9420,10 +9411,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ApplicationResponse'
+            $ref: '#/components/schemas/Application'
           type: array
       type: object
-    ApplicationNetworkResponse:
+    ApplicationNetwork:
       example:
         sticky_session: false
       properties:
@@ -9466,7 +9457,7 @@ components:
       - type
       - value
       type: object
-    ApplicationDeploymentRestrictionResponse:
+    ApplicationDeploymentRestriction:
       example:
         deployment_restrictions:
         - '{}'
@@ -9478,10 +9469,10 @@ components:
           type: array
       type: object
     ApplicationDeploymentRestrictionResponseList:
-      $ref: '#/components/schemas/ApplicationDeploymentRestrictionResponse'
+      $ref: '#/components/schemas/ApplicationDeploymentRestriction'
     RemainingCredits:
       allOf:
-      - $ref: '#/components/schemas/CostResponse'
+      - $ref: '#/components/schemas/Cost'
       - type: object
     BillingStatus:
       example:
@@ -9493,22 +9484,18 @@ components:
         message:
           type: string
       type: object
-    Cost:
-      allOf:
-      - $ref: '#/components/schemas/CostResponse'
-      - type: object
     ServiceResponseList:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ServiceResponse'
+            $ref: '#/components/schemas/Service'
           type: array
       type: object
-    EnvironmentDeploymentRuleResponse:
+    EnvironmentDeploymentRule:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/EnvironmentDeploymentRuleResponse_allOf'
-    MetricMemoryDatapointResponse:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/EnvironmentDeploymentRule_allOf'
+    MetricMemoryDatapoint:
       example:
         consumed_in_percent: 1.4658129805029452
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -9538,14 +9525,14 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentResponse'
+            $ref: '#/components/schemas/Environment'
           type: array
       type: object
-    LogicalDatabaseResponse:
+    LogicalDatabase:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/LogicalDatabaseRequest'
-      - $ref: '#/components/schemas/LogicalDatabaseResponse_allOf'
+      - $ref: '#/components/schemas/LogicalDatabase_allOf'
     CurrentCost:
       properties:
         plan:
@@ -9559,11 +9546,6 @@ components:
           $ref: '#/components/schemas/Cost'
       type: object
     PaidUsage:
-      properties:
-        paid_usage:
-          $ref: '#/components/schemas/PaidUsageResponse'
-      type: object
-    PaidUsageResponse:
       properties:
         max_deployments_per_month:
           type: integer
@@ -9583,11 +9565,6 @@ components:
           type: string
       type: object
     CommunityUsage:
-      properties:
-        community_usage:
-          $ref: '#/components/schemas/CommunityUsageResponse'
-      type: object
-    CommunityUsageResponse:
       allOf:
       - $ref: '#/components/schemas/ProjectCurrentCostResponseList'
     DatabaseVersionMode:
@@ -9600,10 +9577,10 @@ components:
         supported_mode:
           $ref: '#/components/schemas/DatabaseModeEnum'
       type: object
-    ProjectResponse:
+    Project:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/ProjectResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/Project_allOf'
     GitAuthProviderResponseList:
       example:
         results:
@@ -9616,7 +9593,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/GitAuthProviderResponse'
+            $ref: '#/components/schemas/GitAuthProvider'
           type: array
       type: object
     LinkResponseList:
@@ -9627,10 +9604,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/LinkResponse'
+            $ref: '#/components/schemas/Link'
           type: array
       type: object
-    ClusterRegionResponse:
+    ClusterRegion:
       example:
         country_code: country_code
         country: country
@@ -9664,7 +9641,7 @@ components:
       - login
       - password
       type: object
-    BudgetResponse:
+    Budget:
       properties:
         total_in_cents:
           example: 30000
@@ -9676,7 +9653,7 @@ components:
           example: USD
           type: string
       type: object
-    CreditCardResponse:
+    CreditCard:
       example:
         expiry_month: 6
         is_expired: true
@@ -9714,7 +9691,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/BillingStart'
       - $ref: '#/components/schemas/BillingEnd'
-    MetricStorageResponse:
+    MetricStorage:
       example:
         data:
         - requested_in_gb: 0
@@ -9731,7 +9708,7 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/MetricStorageDatapointResponse'
+            $ref: '#/components/schemas/MetricStorageDatapoint'
           type: array
       required:
       - data
@@ -9776,12 +9753,12 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentLogResponse'
+            $ref: '#/components/schemas/EnvironmentLog'
           type: array
       type: object
     DeploymentHistoryEnvironmentPaginatedResponseList:
       allOf:
-      - $ref: '#/components/schemas/PaginationDataResponse'
+      - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/DeploymentHistoryEnvironmentPaginatedResponseList_allOf'
     AliasedSecret:
       properties:
@@ -9802,7 +9779,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentVariableResponse'
+            $ref: '#/components/schemas/EnvironmentVariable'
           type: array
       type: object
     VariableImportRequest:
@@ -9827,7 +9804,7 @@ components:
       - overwrite
       - vars
       type: object
-    VariableImportResponse:
+    VariableImport:
       example:
         total_variables_to_import: 0.8008281904610115
         successful_imported_variables:
@@ -9842,7 +9819,7 @@ components:
           type: number
         successful_imported_variables:
           items:
-            $ref: '#/components/schemas/VariableImportResponse_successful_imported_variables'
+            $ref: '#/components/schemas/VariableImport_successful_imported_variables'
           type: array
       required:
       - successful_imported_variables
@@ -9869,7 +9846,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/LogResponse'
+            $ref: '#/components/schemas/Log'
           type: array
       type: object
     MetricCPUDatapointResponseList:
@@ -9886,7 +9863,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricCPUDatapointResponse'
+            $ref: '#/components/schemas/MetricCPUDatapoint'
           type: array
       type: object
     MetricGenericResponseList:
@@ -9907,7 +9884,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricGenericResponse'
+            $ref: '#/components/schemas/MetricGeneric'
           type: array
       type: object
     EnvironmentRequest:
@@ -9956,18 +9933,18 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricMemoryDatapointResponse'
+            $ref: '#/components/schemas/MetricMemoryDatapoint'
           type: array
       type: object
-    ClusterResponse:
+    Cluster:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/Cluster'
-      - $ref: '#/components/schemas/ClusterFeatureResponse'
-      - $ref: '#/components/schemas/ClusterResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/Cluster_allOf'
+      - $ref: '#/components/schemas/ClusterFeature'
+      - $ref: '#/components/schemas/Cluster_allOf_1'
     BackupPaginatedResponseList:
       allOf:
-      - $ref: '#/components/schemas/PaginationDataResponse'
+      - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/BackupResponseList'
     TagRequest:
       example:
@@ -9978,7 +9955,7 @@ components:
       required:
       - name
       type: object
-    RewardClaimResponse:
+    RewardClaim:
       example:
         code: xDowkWEl
         type: INVITATION
@@ -10005,10 +9982,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterRegionResponse'
+            $ref: '#/components/schemas/ClusterRegion'
           type: array
       type: object
-    CredentialsResponse:
+    Credentials:
       example:
         password: password
         login: login
@@ -10029,7 +10006,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/LogicalDatabaseResponse'
+            $ref: '#/components/schemas/LogicalDatabase'
           type: array
       type: object
     EnvironmentVariableRequest:
@@ -10047,7 +10024,7 @@ components:
       - key
       - value
       type: object
-    ClusterCredentialsResponse:
+    ClusterCredentials:
       example:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10066,7 +10043,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ProjectDeploymentRuleResponse'
+            $ref: '#/components/schemas/ProjectDeploymentRule'
           type: array
       type: object
     MetricCPUResponseList:
@@ -10095,7 +10072,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricCPUResponse'
+            $ref: '#/components/schemas/MetricCPU'
           type: array
       type: object
     DatabaseConfigurationResponseList:
@@ -10110,10 +10087,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/DatabaseConfigurationResponse'
+            $ref: '#/components/schemas/DatabaseConfiguration'
           type: array
       type: object
-    ProjectStatsResponse:
+    ProjectStats:
       allOf:
       - $ref: '#/components/schemas/ReferenceObject'
       - $ref: '#/components/schemas/ServiceTotalNumber'
@@ -10140,14 +10117,14 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/SecretResponse'
+            $ref: '#/components/schemas/Secret'
           type: array
       type: object
-    EnvironmentResponse:
+    Environment:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/EnvironmentResponse_allOf'
-    CostResponse:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/Environment_allOf'
+    Cost:
       properties:
         total_in_cents:
           example: 30000
@@ -10189,7 +10166,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricMemoryResponse'
+            $ref: '#/components/schemas/MetricMemory'
           type: array
       type: object
     CreditCardRequest:
@@ -10223,7 +10200,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/CustomDomainResponse'
+            $ref: '#/components/schemas/CustomDomain'
           type: array
       type: object
     EnvironmentEditRequest:
@@ -10235,11 +10212,10 @@ components:
         mode:
           $ref: '#/components/schemas/EnvironmentModeEnum'
       type: object
-    OrganizationCurrentCostResponse:
+    OrganizationCurrentCost:
       allOf:
       - $ref: '#/components/schemas/CurrentCost'
-      - $ref: '#/components/schemas/PaidUsage'
-      - $ref: '#/components/schemas/CommunityUsage'
+      - $ref: '#/components/schemas/OrganizationCurrentCost_allOf'
     GitRepositoryResponseList:
       example:
         results:
@@ -10256,14 +10232,14 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/GitRepositoryResponse'
+            $ref: '#/components/schemas/GitRepository'
           type: array
       type: object
-    ApplicationPortResponse:
+    ApplicationPort:
       properties:
         ports:
           items:
-            $ref: '#/components/schemas/ApplicationPortResponse_ports'
+            $ref: '#/components/schemas/ApplicationPort_ports'
           type: array
       type: object
     OrganizationCreditCodeRequest:
@@ -10281,13 +10257,13 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentStatsResponse'
+            $ref: '#/components/schemas/EnvironmentStats'
           type: array
       type: object
-    SecretResponse:
+    Secret:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/SecretResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/Secret_allOf'
     Status:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -10307,7 +10283,7 @@ components:
       required:
       - state
       type: object
-    EnvironmentDatabasesCurrentMetricResponse:
+    EnvironmentDatabasesCurrentMetric:
       example:
         database: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         memory:
@@ -10333,17 +10309,17 @@ components:
           format: uuid
           type: string
         cpu:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_cpu'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_cpu'
         memory:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_memory'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_memory'
         storage:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_storage'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_storage'
       type: object
-    BackupResponse:
+    Backup:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/BackupRequest'
-      - $ref: '#/components/schemas/BackupResponse_allOf'
+      - $ref: '#/components/schemas/Backup_allOf'
     DeploymentRuleRequest:
       properties:
         name:
@@ -10389,16 +10365,16 @@ components:
       - mode
       - name
       type: object
-    ProjectCurrentCostResponse:
+    ProjectCurrentCost:
       allOf:
-      - $ref: '#/components/schemas/GenericObjectCurrentCostResponse'
-      - $ref: '#/components/schemas/ProjectCurrentCostResponse_allOf'
-    EnvironmentVariableResponse:
+      - $ref: '#/components/schemas/GenericObjectCurrentCost'
+      - $ref: '#/components/schemas/ProjectCurrentCost_allOf'
+    EnvironmentVariable:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
+      - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/EnvironmentVariableRequest'
-      - $ref: '#/components/schemas/EnvironmentVariableResponse_allOf'
-    ReferralResponse:
+      - $ref: '#/components/schemas/EnvironmentVariable_allOf'
+    Referral:
       example:
         invitation_link: https://join.qovery.com/xDowkWEl
         total_invited: 2
@@ -10436,7 +10412,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/UserResponse'
+            $ref: '#/components/schemas/User'
           type: array
       type: object
     CreditCardResponseList:
@@ -10457,10 +10433,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/CreditCardResponse'
+            $ref: '#/components/schemas/CreditCard'
           type: array
       type: object
-    ReferenceObjectStatusResponse:
+    ReferenceObjectStatus:
       allOf:
       - $ref: '#/components/schemas/ReferenceObject'
       - $ref: '#/components/schemas/Status'
@@ -10481,13 +10457,13 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterCredentialsResponse'
+            $ref: '#/components/schemas/ClusterCredentials'
           type: array
       type: object
     CommitPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/CommitPaginatedResponseList_allOf'
-      - $ref: '#/components/schemas/PaginationDataResponse'
+      - $ref: '#/components/schemas/PaginationData'
     ClusterResponseList:
       example:
         results:
@@ -10496,7 +10472,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterResponse'
+            $ref: '#/components/schemas/Cluster'
           type: array
       type: object
     OverriddenSecret:
@@ -10509,7 +10485,7 @@ components:
         scope:
           $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
       type: object
-    BillingInfoResponse:
+    BillingInfo:
       example:
         zip: "36744"
         country_code: US
@@ -10614,10 +10590,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ReferenceObjectStatusResponse'
+            $ref: '#/components/schemas/ReferenceObjectStatus'
           type: array
       type: object
-    UserResponse:
+    User:
       example:
         updated_at: 2000-01-23T04:56:07.000+00:00
         profile_picture_url: https://openapi-generator.tech
@@ -10650,7 +10626,7 @@ components:
           format: uri
           type: string
       type: object
-    StorageDiskResponse:
+    StorageDisk:
       example:
         requested_in_gb: 0
         consumed_in_percent: 1.4658129805029452
@@ -10678,7 +10654,7 @@ components:
         status:
           $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
-    ApplicationGitRepositoryResponse:
+    ApplicationGitRepository:
       properties:
         has_access:
           type: boolean
@@ -10727,7 +10703,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/TagResponse'
+            $ref: '#/components/schemas/Tag'
           type: array
       type: object
     SecretEditRequest:
@@ -10742,9 +10718,9 @@ components:
       type: object
     EventPaginatedResponseList:
       allOf:
-      - $ref: '#/components/schemas/PaginationDataResponse'
+      - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/EventPaginatedResponseList_allOf'
-    InstanceResponse:
+    Instance:
       example:
         memory:
           consumed_in_percent: 9.301444243932576
@@ -10768,9 +10744,9 @@ components:
           example: instance 1
           type: string
         cpu:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_cpu'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_cpu'
         memory:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_memory'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_memory'
       type: object
     MetricStorageResponseList:
       example:
@@ -10798,10 +10774,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricStorageResponse'
+            $ref: '#/components/schemas/MetricStorage'
           type: array
       type: object
-    MetricRestartResponse:
+    MetricRestart:
       example:
         results:
         - datetime: 2000-01-23T04:56:07.000+00:00
@@ -10811,13 +10787,13 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricRestartResponse_results'
+            $ref: '#/components/schemas/MetricRestart_results'
           type: array
       type: object
-    EventResponse:
+    Event:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/EventResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/Event_allOf'
     EnvironmentDatabasesCurrentMetricResponseList:
       example:
         results:
@@ -10862,10 +10838,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse'
+            $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric'
           type: array
       type: object
-    ApplicationCurrentScaleResponse:
+    ApplicationCurrentScale:
       example:
         running: 1
         warning_threshold_in_percent: 5.637376656633329
@@ -10902,7 +10878,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/VersionResponse'
+            $ref: '#/components/schemas/Version'
           type: array
       type: object
     CommitResponseList:
@@ -10925,10 +10901,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/CommitResponse'
+            $ref: '#/components/schemas/Commit'
           type: array
       type: object
-    EnvironmentApplicationsCurrentScaleResponse:
+    EnvironmentApplicationsCurrentScale:
       example:
         running: 1
         warning_threshold_in_percent: 5.637376656633329
@@ -10961,7 +10937,7 @@ components:
           readOnly: true
           type: string
       type: object
-    TagResponse:
+    Tag:
       example:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -11012,7 +10988,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentApplicationsStorageResponse'
+            $ref: '#/components/schemas/EnvironmentApplicationsStorage'
           type: array
       type: object
     EnvironmentApplicationsSupportedLanguageList:
@@ -11036,7 +11012,7 @@ components:
       required:
       - name
       type: object
-    DatabaseConfigurationResponse:
+    DatabaseConfiguration:
       example:
         version:
         - name: "10.1"
@@ -11049,7 +11025,7 @@ components:
             $ref: '#/components/schemas/DatabaseVersionMode'
           type: array
       type: object
-    DatabaseCurrentMetricResponse:
+    DatabaseCurrentMetric:
       example:
         memory:
           consumed_in_percent: 9.301444243932576
@@ -11071,13 +11047,13 @@ components:
           alert_threshold_in_percent: 5.637376656633329
       properties:
         cpu:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_cpu'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_cpu'
         memory:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_memory'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_memory'
         storage:
-          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetricResponse_storage'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_storage'
       type: object
-    GitRepositoryResponse:
+    GitRepository:
       example:
         is_private: true
         name: simple-node-app
@@ -11105,7 +11081,7 @@ components:
       type: object
     LogPaginatedResponseList:
       allOf:
-      - $ref: '#/components/schemas/PaginationDataResponse'
+      - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/LogPaginatedResponseList_allOf'
     StorageDiskResponseList:
       example:
@@ -11127,10 +11103,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/StorageDiskResponse'
+            $ref: '#/components/schemas/StorageDisk'
           type: array
       type: object
-    CostRangeResponse:
+    CostRange:
       example:
         max_cost: 300
         min_cost: 150
@@ -11158,7 +11134,7 @@ components:
       - total
       - total_in_cents
       type: object
-    CloudProviderResponse:
+    CloudProvider:
       example:
         regions:
         - country_code: country_code
@@ -11181,13 +11157,13 @@ components:
           type: string
         regions:
           items:
-            $ref: '#/components/schemas/ClusterRegionResponse'
+            $ref: '#/components/schemas/ClusterRegion'
           type: array
       type: object
-    InviteMemberResponse:
+    InviteMember:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/InviteMemberResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/InviteMember_allOf'
     TransferOwnershipRequest:
       example:
         user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -11198,8 +11174,17 @@ components:
       required:
       - user_id
       type: object
-    CluserCredentialsResponse:
-      $ref: '#/components/schemas/ClusterCredentialsRequest'
+    CluserCredentials:
+      properties:
+        name:
+          type: string
+        access_key_id:
+          type: string
+        secret_access_key:
+          type: string
+      required:
+      - name
+      type: object
     AwsCredentialsRequest:
       example:
         access_key_id: access_key_id
@@ -11270,45 +11255,7 @@ components:
             $ref: '#/components/schemas/ClusterFeatureRequest_features'
           type: array
       type: object
-    EnvironmentApplicationsSupportedLanguageResponse:
-      $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguage'
-    EnvironmentApplicationsSupportedLanguageResponseList:
-      $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguageList'
-    Cluster:
-      properties:
-        name:
-          description: name is case-insensitive
-          type: string
-        description:
-          type: string
-        cloud_provider:
-          $ref: '#/components/schemas/CloudProviderEnum'
-        region:
-          type: string
-        auto_update:
-          type: boolean
-        cpu:
-          default: 250
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 256
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_nodes:
-          default: 1
-          type: integer
-        max_running_nodes:
-          default: 1
-          type: integer
-      required:
-      - cloud_provider
-      - name
-      - region
-      type: object
-    ClusterFeatureResponse:
+    ClusterFeature:
       example:
         accepted_values:
         - ""
@@ -11362,7 +11309,7 @@ components:
             - type: boolean
           type: array
       type: object
-    ClusterRoutingTableResponse:
+    ClusterRoutingTable:
       example:
         results:
         - destination: destination
@@ -11374,7 +11321,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterRoutingTableResponse_results'
+            $ref: '#/components/schemas/ClusterRoutingTable_results'
           type: array
       type: object
     ClusterRoutingTableRequest:
@@ -11424,7 +11371,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterFeatureResponse'
+            $ref: '#/components/schemas/ClusterFeature'
           type: array
       type: object
     InviteMemberResponseList:
@@ -11435,7 +11382,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/InviteMemberResponse'
+            $ref: '#/components/schemas/InviteMember'
           type: array
       type: object
     CloudProviderResponseList:
@@ -11468,7 +11415,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/CloudProviderResponse'
+            $ref: '#/components/schemas/CloudProvider'
           type: array
       type: object
     GitRepositoryBranchResponseList:
@@ -11479,10 +11426,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/GitRepositoryBranchResponse'
+            $ref: '#/components/schemas/GitRepositoryBranch'
           type: array
       type: object
-    GitRepositoryBranchResponse:
+    GitRepositoryBranch:
       example:
         name: main
       properties:
@@ -11535,17 +11482,17 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/OrganizationApiTokenResponse'
+            $ref: '#/components/schemas/OrganizationApiToken'
           type: array
       type: object
-    OrganizationApiTokenResponse:
+    OrganizationApiToken:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/OrganizationApiTokenResponse_allOf'
-    OrganizationApiTokenCreateResponse:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/OrganizationApiToken_allOf'
+    OrganizationApiTokenCreate:
       allOf:
-      - $ref: '#/components/schemas/BaseResponse'
-      - $ref: '#/components/schemas/OrganizationApiTokenCreateResponse_allOf'
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/OrganizationApiTokenCreate_allOf'
     BuildModeEnum:
       default: BUILDPACKS
       description: |
@@ -11854,7 +11801,7 @@ components:
       - size
       - type
       type: object
-    ApplicationStorageResponse_storage:
+    ApplicationStorage_storage:
       properties:
         id:
           format: uuid
@@ -11873,14 +11820,14 @@ components:
       - size
       - type
       type: object
-    OrganizationResponse_allOf:
+    Organization_allOf:
       properties:
         owner:
           description: uuid of the user owning the organization
           format: uuid
           type: string
       type: object
-    ProjectDeploymentRuleResponse_allOf:
+    ProjectDeploymentRule_allOf:
       properties:
         priority_index:
           description: used to select the first deployment rule to match new created
@@ -11888,7 +11835,7 @@ components:
           nullable: false
           type: integer
       type: object
-    DatabaseResponse_allOf:
+    Database_allOf:
       properties:
         environment:
           $ref: '#/components/schemas/ReferenceObject'
@@ -11914,27 +11861,27 @@ components:
           description: indicates if the database disk is encrypted or not
           type: boolean
       type: object
-    DeploymentHistoryEnvironmentResponse_allOf:
+    DeploymentHistoryEnvironment_allOf:
       properties:
         status:
           $ref: '#/components/schemas/GlobalDeploymentStatus'
         applications:
           items:
-            $ref: '#/components/schemas/DeploymentHistoryApplicationResponse'
+            $ref: '#/components/schemas/DeploymentHistoryApplication'
           type: array
         databases:
           items:
-            $ref: '#/components/schemas/DeploymentHistoryDatabaseResponse'
+            $ref: '#/components/schemas/DeploymentHistoryDatabase'
           type: array
       type: object
     DeploymentHistoryPaginatedResponseList_allOf:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/DeploymentHistoryResponse'
+            $ref: '#/components/schemas/DeploymentHistory'
           type: array
       type: object
-    MemberResponse_allOf:
+    Member_allOf:
       properties:
         name:
           type: string
@@ -11993,13 +11940,13 @@ components:
           type: string
         instances:
           items:
-            $ref: '#/components/schemas/InstanceResponse'
+            $ref: '#/components/schemas/Instance'
           type: array
       required:
       - application
       - instances
       type: object
-    InvoiceResponse_allOf:
+    Invoice_allOf:
       properties:
         id:
           format: uuid
@@ -12017,7 +11964,7 @@ components:
       - total
       - total_in_cents
       type: object
-    EnvironmentLogResponse_scope:
+    EnvironmentLog_scope:
       example:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12151,35 +12098,35 @@ components:
             If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
           type: boolean
       type: object
-    DeploymentHistoryResponse_allOf:
+    DeploymentHistory_allOf:
       properties:
         commit:
-          $ref: '#/components/schemas/CommitResponse'
+          $ref: '#/components/schemas/Commit'
         status:
           $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
       type: object
-    DeploymentHistoryApplicationResponse_allOf:
+    DeploymentHistoryApplication_allOf:
       properties:
         name:
           type: string
         commit:
-          $ref: '#/components/schemas/CommitResponse'
+          $ref: '#/components/schemas/Commit'
         status:
           $ref: '#/components/schemas/GlobalDeploymentStatus'
       type: object
-    DeploymentHistoryDatabaseResponse_allOf:
+    DeploymentHistoryDatabase_allOf:
       properties:
         name:
           type: string
         status:
           $ref: '#/components/schemas/GlobalDeploymentStatus'
       type: object
-    ApplicationResponse_allOf:
+    Application_allOf:
       properties:
         environment:
           $ref: '#/components/schemas/ReferenceObject'
         git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepositoryResponse'
+          $ref: '#/components/schemas/ApplicationGitRepository'
         maximum_cpu:
           default: 250
           description: Maximum cpu that can be allocated to the application based
@@ -12245,10 +12192,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentLogResponse'
+            $ref: '#/components/schemas/EnvironmentLog'
           type: array
       type: object
-    CustomDomainResponse_allOf:
+    CustomDomain_allOf:
       properties:
         validation_domain:
           description: URL provided by Qovery. You must create a CNAME on your DNS
@@ -12262,7 +12209,7 @@ components:
           - error
           type: string
       type: object
-    ServiceResponse_allOf:
+    Service_allOf:
       properties:
         type:
           $ref: '#/components/schemas/ServiceTypeEnum'
@@ -12298,7 +12245,7 @@ components:
       required:
       - id
       type: object
-    EnvironmentDeploymentRuleResponse_allOf:
+    EnvironmentDeploymentRule_allOf:
       properties:
         auto_deploy:
           default: true
@@ -12333,12 +12280,12 @@ components:
       - timezone
       - weekdays
       type: object
-    LogicalDatabaseResponse_allOf:
+    LogicalDatabase_allOf:
       properties:
         database:
           $ref: '#/components/schemas/ReferenceObject'
       type: object
-    ProjectResponse_allOf:
+    Project_allOf:
       properties:
         name:
           type: string
@@ -12353,7 +12300,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/DeploymentHistoryEnvironmentResponse'
+            $ref: '#/components/schemas/DeploymentHistoryEnvironment'
           type: array
       type: object
     VariableImportRequest_vars:
@@ -12376,7 +12323,7 @@ components:
       - scope
       - value
       type: object
-    VariableImportResponse_successful_imported_variables:
+    VariableImport_successful_imported_variables:
       example:
         is_secret: true
         name: name
@@ -12396,7 +12343,41 @@ components:
       - name
       - scope
       type: object
-    ClusterResponse_allOf:
+    Cluster_allOf:
+      properties:
+        name:
+          description: name is case-insensitive
+          type: string
+        description:
+          type: string
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+        region:
+          type: string
+        auto_update:
+          type: boolean
+        cpu:
+          default: 250
+          description: unit is millicores (m). 1000m = 1 cpu
+          example: 1250
+          type: integer
+        memory:
+          default: 256
+          description: unit is MB. 1024 MB = 1GB
+          example: 1024
+          type: integer
+        min_running_nodes:
+          default: 1
+          type: integer
+        max_running_nodes:
+          default: 1
+          type: integer
+      required:
+      - cloud_provider
+      - name
+      - region
+      type: object
+    Cluster_allOf_1:
       properties:
         estimated_cloud_provider_cost:
           description: This is an estimation of the cost this cluster will represent
@@ -12411,7 +12392,7 @@ components:
         is_default:
           type: boolean
       type: object
-    EnvironmentResponse_allOf_cloud_provider:
+    Environment_allOf_cloud_provider:
       properties:
         provider:
           example: aws
@@ -12420,7 +12401,7 @@ components:
           example: us-east-2
           type: string
       type: object
-    EnvironmentResponse_allOf:
+    Environment_allOf:
       properties:
         name:
           description: name is case insensitive
@@ -12432,7 +12413,7 @@ components:
           format: uuid
           type: string
         cloud_provider:
-          $ref: '#/components/schemas/EnvironmentResponse_allOf_cloud_provider'
+          $ref: '#/components/schemas/Environment_allOf_cloud_provider'
         mode:
           $ref: '#/components/schemas/EnvironmentModeEnum'
         cluster_id:
@@ -12444,7 +12425,14 @@ components:
       - mode
       - name
       type: object
-    ApplicationPortResponse_ports:
+    OrganizationCurrentCost_allOf:
+      properties:
+        paid_usage:
+          $ref: '#/components/schemas/PaidUsage'
+        community_usage:
+          $ref: '#/components/schemas/CommunityUsage'
+      type: object
+    ApplicationPort_ports:
       properties:
         id:
           format: uuid
@@ -12470,7 +12458,7 @@ components:
       - internal_port
       - publicly_accessible
       type: object
-    SecretResponse_allOf:
+    Secret_allOf:
       properties:
         key:
           description: key is case sensitive
@@ -12484,7 +12472,7 @@ components:
       required:
       - scope
       type: object
-    EnvironmentDatabasesCurrentMetricResponse_cpu:
+    EnvironmentDatabasesCurrentMetric_cpu:
       example:
         consumed_in_percent: 1.4658129805029452
         warning_threshold_in_percent: 5.962133916683182
@@ -12505,7 +12493,7 @@ components:
         status:
           $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
-    EnvironmentDatabasesCurrentMetricResponse_memory:
+    EnvironmentDatabasesCurrentMetric_memory:
       example:
         consumed_in_percent: 9.301444243932576
         warning_threshold_in_percent: 3.616076749251911
@@ -12526,7 +12514,7 @@ components:
         status:
           $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
-    EnvironmentDatabasesCurrentMetricResponse_storage:
+    EnvironmentDatabasesCurrentMetric_storage:
       example:
         requested_in_gb: 0
         consumed_in_percent: 1.4658129805029452
@@ -12547,19 +12535,19 @@ components:
         status:
           $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
-    BackupResponse_allOf:
+    Backup_allOf:
       properties:
         status:
           $ref: '#/components/schemas/Status'
       type: object
-    ProjectCurrentCostResponse_allOf:
+    ProjectCurrentCost_allOf:
       properties:
         environments:
           items:
-            $ref: '#/components/schemas/GenericObjectCurrentCostResponse'
+            $ref: '#/components/schemas/GenericObjectCurrentCost'
           type: array
       type: object
-    EnvironmentVariableResponse_allOf_overridden_variable:
+    EnvironmentVariable_allOf_overridden_variable:
       properties:
         id:
           format: uuid
@@ -12571,7 +12559,7 @@ components:
         scope:
           $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
       type: object
-    EnvironmentVariableResponse_allOf_aliased_variable:
+    EnvironmentVariable_allOf_aliased_variable:
       properties:
         id:
           format: uuid
@@ -12584,12 +12572,12 @@ components:
         scope:
           $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
       type: object
-    EnvironmentVariableResponse_allOf:
+    EnvironmentVariable_allOf:
       properties:
         overridden_variable:
-          $ref: '#/components/schemas/EnvironmentVariableResponse_allOf_overridden_variable'
+          $ref: '#/components/schemas/EnvironmentVariable_allOf_overridden_variable'
         aliased_variable:
-          $ref: '#/components/schemas/EnvironmentVariableResponse_allOf_aliased_variable'
+          $ref: '#/components/schemas/EnvironmentVariable_allOf_aliased_variable'
         scope:
           $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
         service_name:
@@ -12624,17 +12612,17 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/CommitResponse'
+            $ref: '#/components/schemas/Commit'
           type: array
       type: object
     EventPaginatedResponseList_allOf:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EventResponse'
+            $ref: '#/components/schemas/Event'
           type: array
       type: object
-    MetricRestartResponse_results:
+    MetricRestart_results:
       example:
         datetime: 2000-01-23T04:56:07.000+00:00
         message: message
@@ -12648,12 +12636,12 @@ components:
       - datetime
       - message
       type: object
-    EventResponse_allOf:
+    Event_allOf:
       properties:
         user:
-          $ref: '#/components/schemas/UserResponse'
+          $ref: '#/components/schemas/User'
         commit:
-          $ref: '#/components/schemas/CommitResponse'
+          $ref: '#/components/schemas/Commit'
         status:
           $ref: '#/components/schemas/Status'
         type:
@@ -12666,10 +12654,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/LogResponse'
+            $ref: '#/components/schemas/Log'
           type: array
       type: object
-    InviteMemberResponse_allOf:
+    InviteMember_allOf:
       properties:
         email:
           format: email
@@ -12703,7 +12691,7 @@ components:
           nullable: true
           type: string
       type: object
-    ClusterRoutingTableResponse_results:
+    ClusterRoutingTable_results:
       example:
         destination: destination
         description: description
@@ -12733,7 +12721,7 @@ components:
       - destination
       - target
       type: object
-    OrganizationApiTokenResponse_allOf:
+    OrganizationApiToken_allOf:
       properties:
         name:
           type: string
@@ -12742,7 +12730,7 @@ components:
         scope:
           $ref: '#/components/schemas/OrganizationApiTokenScope'
       type: object
-    OrganizationApiTokenCreateResponse_allOf:
+    OrganizationApiTokenCreate_allOf:
       properties:
         name:
           type: string

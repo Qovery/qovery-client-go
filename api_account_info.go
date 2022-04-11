@@ -32,7 +32,7 @@ type ApiGetAccountInformationRequest struct {
 	ApiService *AccountInfoApiService
 }
 
-func (r ApiGetAccountInformationRequest) Execute() (*AccountInfoResponse, *http.Response, error) {
+func (r ApiGetAccountInformationRequest) Execute() (*AccountInfo, *http.Response, error) {
 	return r.ApiService.GetAccountInformationExecute(r)
 }
 
@@ -50,13 +50,13 @@ func (a *AccountInfoApiService) GetAccountInformation(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//  @return AccountInfoResponse
-func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInformationRequest) (*AccountInfoResponse, *http.Response, error) {
+//  @return AccountInfo
+func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInformationRequest) (*AccountInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AccountInfoResponse
+		localVarReturnValue *AccountInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountInfoApiService.GetAccountInformation")

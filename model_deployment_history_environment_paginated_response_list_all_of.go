@@ -17,7 +17,7 @@ import (
 
 // DeploymentHistoryEnvironmentPaginatedResponseListAllOf struct for DeploymentHistoryEnvironmentPaginatedResponseListAllOf
 type DeploymentHistoryEnvironmentPaginatedResponseListAllOf struct {
-	Results []DeploymentHistoryEnvironmentResponse `json:"results,omitempty"`
+	Results []DeploymentHistoryEnvironment `json:"results,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironmentPaginatedResponseListAllOf instantiates a new DeploymentHistoryEnvironmentPaginatedResponseListAllOf object
@@ -38,9 +38,9 @@ func NewDeploymentHistoryEnvironmentPaginatedResponseListAllOfWithDefaults() *De
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) GetResults() []DeploymentHistoryEnvironmentResponse {
+func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) GetResults() []DeploymentHistoryEnvironment {
 	if o == nil || o.Results == nil {
-		var ret []DeploymentHistoryEnvironmentResponse
+		var ret []DeploymentHistoryEnvironment
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) GetResults() []
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) GetResultsOk() ([]DeploymentHistoryEnvironmentResponse, bool) {
+func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) GetResultsOk() ([]DeploymentHistoryEnvironment, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) HasResults() bo
 	return false
 }
 
-// SetResults gets a reference to the given []DeploymentHistoryEnvironmentResponse and assigns it to the Results field.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) SetResults(v []DeploymentHistoryEnvironmentResponse) {
+// SetResults gets a reference to the given []DeploymentHistoryEnvironment and assigns it to the Results field.
+func (o *DeploymentHistoryEnvironmentPaginatedResponseListAllOf) SetResults(v []DeploymentHistoryEnvironment) {
 	o.Results = v
 }
 

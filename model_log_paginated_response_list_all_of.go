@@ -17,7 +17,7 @@ import (
 
 // LogPaginatedResponseListAllOf struct for LogPaginatedResponseListAllOf
 type LogPaginatedResponseListAllOf struct {
-	Results []LogResponse `json:"results,omitempty"`
+	Results []Log `json:"results,omitempty"`
 }
 
 // NewLogPaginatedResponseListAllOf instantiates a new LogPaginatedResponseListAllOf object
@@ -38,9 +38,9 @@ func NewLogPaginatedResponseListAllOfWithDefaults() *LogPaginatedResponseListAll
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *LogPaginatedResponseListAllOf) GetResults() []LogResponse {
+func (o *LogPaginatedResponseListAllOf) GetResults() []Log {
 	if o == nil || o.Results == nil {
-		var ret []LogResponse
+		var ret []Log
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *LogPaginatedResponseListAllOf) GetResults() []LogResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LogPaginatedResponseListAllOf) GetResultsOk() ([]LogResponse, bool) {
+func (o *LogPaginatedResponseListAllOf) GetResultsOk() ([]Log, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *LogPaginatedResponseListAllOf) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []LogResponse and assigns it to the Results field.
-func (o *LogPaginatedResponseListAllOf) SetResults(v []LogResponse) {
+// SetResults gets a reference to the given []Log and assigns it to the Results field.
+func (o *LogPaginatedResponseListAllOf) SetResults(v []Log) {
 	o.Results = v
 }
 

@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ## PostAcceptInviteMember
 
-> InviteMemberResponse PostAcceptInviteMember(ctx, organizationId, inviteId).Execute()
+> InviteMember PostAcceptInviteMember(ctx, organizationId, inviteId).Execute()
 
 Accept Invite in the organization
 
@@ -314,7 +314,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.PostAcceptInviteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PostAcceptInviteMember`: InviteMemberResponse
+    // response from `PostAcceptInviteMember`: InviteMember
     fmt.Fprintf(os.Stdout, "Response from `MembersApi.PostAcceptInviteMember`: %v\n", resp)
 }
 ```
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InviteMemberResponse**](InviteMemberResponse.md)
+[**InviteMember**](InviteMember.md)
 
 ### Authorization
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ## PostInviteMember
 
-> InviteMemberResponse PostInviteMember(ctx, organizationId).InviteMemberRequest(inviteMemberRequest).Execute()
+> InviteMember PostInviteMember(ctx, organizationId).InviteMemberRequest(inviteMemberRequest).Execute()
 
 Invite someone in the organization
 
@@ -385,7 +385,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.PostInviteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PostInviteMember`: InviteMemberResponse
+    // response from `PostInviteMember`: InviteMember
     fmt.Fprintf(os.Stdout, "Response from `MembersApi.PostInviteMember`: %v\n", resp)
 }
 ```
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InviteMemberResponse**](InviteMemberResponse.md)
+[**InviteMember**](InviteMember.md)
 
 ### Authorization
 

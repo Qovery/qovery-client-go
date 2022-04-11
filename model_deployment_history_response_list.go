@@ -17,7 +17,7 @@ import (
 
 // DeploymentHistoryResponseList struct for DeploymentHistoryResponseList
 type DeploymentHistoryResponseList struct {
-	Results []DeploymentHistoryResponse `json:"results,omitempty"`
+	Results []DeploymentHistory `json:"results,omitempty"`
 }
 
 // NewDeploymentHistoryResponseList instantiates a new DeploymentHistoryResponseList object
@@ -38,9 +38,9 @@ func NewDeploymentHistoryResponseListWithDefaults() *DeploymentHistoryResponseLi
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DeploymentHistoryResponseList) GetResults() []DeploymentHistoryResponse {
+func (o *DeploymentHistoryResponseList) GetResults() []DeploymentHistory {
 	if o == nil || o.Results == nil {
-		var ret []DeploymentHistoryResponse
+		var ret []DeploymentHistory
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *DeploymentHistoryResponseList) GetResults() []DeploymentHistoryResponse
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryResponseList) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
+func (o *DeploymentHistoryResponseList) GetResultsOk() ([]DeploymentHistory, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *DeploymentHistoryResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
-func (o *DeploymentHistoryResponseList) SetResults(v []DeploymentHistoryResponse) {
+// SetResults gets a reference to the given []DeploymentHistory and assigns it to the Results field.
+func (o *DeploymentHistoryResponseList) SetResults(v []DeploymentHistory) {
 	o.Results = v
 }
 

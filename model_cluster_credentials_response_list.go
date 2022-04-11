@@ -17,7 +17,7 @@ import (
 
 // ClusterCredentialsResponseList struct for ClusterCredentialsResponseList
 type ClusterCredentialsResponseList struct {
-	Results []ClusterCredentialsResponse `json:"results,omitempty"`
+	Results []ClusterCredentials `json:"results,omitempty"`
 }
 
 // NewClusterCredentialsResponseList instantiates a new ClusterCredentialsResponseList object
@@ -38,9 +38,9 @@ func NewClusterCredentialsResponseListWithDefaults() *ClusterCredentialsResponse
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentialsResponse {
+func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentials {
 	if o == nil || o.Results == nil {
-		var ret []ClusterCredentialsResponse
+		var ret []ClusterCredentials
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentialsRespon
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterCredentialsResponseList) GetResultsOk() ([]ClusterCredentialsResponse, bool) {
+func (o *ClusterCredentialsResponseList) GetResultsOk() ([]ClusterCredentials, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ClusterCredentialsResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ClusterCredentialsResponse and assigns it to the Results field.
-func (o *ClusterCredentialsResponseList) SetResults(v []ClusterCredentialsResponse) {
+// SetResults gets a reference to the given []ClusterCredentials and assigns it to the Results field.
+func (o *ClusterCredentialsResponseList) SetResults(v []ClusterCredentials) {
 	o.Results = v
 }
 

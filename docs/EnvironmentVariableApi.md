@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateEnvironmentEnvironmentVariable
 
-> EnvironmentVariableResponse CreateEnvironmentEnvironmentVariable(ctx, environmentId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+> EnvironmentVariable CreateEnvironmentEnvironmentVariable(ctx, environmentId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
 
 Add an environment variable to the environment
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentVariableApi.CreateEnvironmentEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateEnvironmentEnvironmentVariable`: EnvironmentVariableResponse
+    // response from `CreateEnvironmentEnvironmentVariable`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentVariableApi.CreateEnvironmentEnvironmentVariable`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CreateEnvironmentEnvironmentVariableAlias
 
-> EnvironmentVariableResponse CreateEnvironmentEnvironmentVariableAlias(ctx, environmentId, environmentVariableId).Key(key).Execute()
+> EnvironmentVariable CreateEnvironmentEnvironmentVariableAlias(ctx, environmentId, environmentVariableId).Key(key).Execute()
 
 Create an environment variable alias at the environment level
 
@@ -117,7 +117,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentVariableApi.CreateEnvironmentEnvironmentVariableAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateEnvironmentEnvironmentVariableAlias`: EnvironmentVariableResponse
+    // response from `CreateEnvironmentEnvironmentVariableAlias`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentVariableApi.CreateEnvironmentEnvironmentVariableAlias`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## CreateEnvironmentEnvironmentVariableOverride
 
-> EnvironmentVariableResponse CreateEnvironmentEnvironmentVariableOverride(ctx, environmentId, environmentVariableId).Value(value).Execute()
+> EnvironmentVariable CreateEnvironmentEnvironmentVariableOverride(ctx, environmentId, environmentVariableId).Value(value).Execute()
 
 Create an environment variable override at the environment level
 
@@ -192,7 +192,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentVariableApi.CreateEnvironmentEnvironmentVariableOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateEnvironmentEnvironmentVariableOverride`: EnvironmentVariableResponse
+    // response from `CreateEnvironmentEnvironmentVariableOverride`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentVariableApi.CreateEnvironmentEnvironmentVariableOverride`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## EditEnvironmentEnvironmentVariable
 
-> EnvironmentVariableResponse EditEnvironmentEnvironmentVariable(ctx, environmentId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+> EnvironmentVariable EditEnvironmentEnvironmentVariable(ctx, environmentId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
 
 Edit an environment variable belonging to the environment
 
@@ -338,7 +338,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentVariableApi.EditEnvironmentEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditEnvironmentEnvironmentVariable`: EnvironmentVariableResponse
+    // response from `EditEnvironmentEnvironmentVariable`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentVariableApi.EditEnvironmentEnvironmentVariable`: %v\n", resp)
 }
 ```
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 

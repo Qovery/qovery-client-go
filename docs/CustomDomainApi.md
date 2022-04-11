@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateApplicationCustomDomain
 
-> CustomDomainResponse CreateApplicationCustomDomain(ctx, applicationId).CustomDomainRequest(customDomainRequest).Execute()
+> CustomDomain CreateApplicationCustomDomain(ctx, applicationId).CustomDomainRequest(customDomainRequest).Execute()
 
 Add custom domain to the application.
 
@@ -43,7 +43,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainApi.CreateApplicationCustomDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationCustomDomain`: CustomDomainResponse
+    // response from `CreateApplicationCustomDomain`: CustomDomain
     fmt.Fprintf(os.Stdout, "Response from `CustomDomainApi.CreateApplicationCustomDomain`: %v\n", resp)
 }
 ```
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomDomainResponse**](CustomDomainResponse.md)
+[**CustomDomain**](CustomDomain.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## EditCustomDomain
 
-> CustomDomainResponse EditCustomDomain(ctx, applicationId, customDomainId).CustomDomainRequest(customDomainRequest).Execute()
+> CustomDomain EditCustomDomain(ctx, applicationId, customDomainId).CustomDomainRequest(customDomainRequest).Execute()
 
 Edit a Custom Domain
 
@@ -187,7 +187,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainApi.EditCustomDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditCustomDomain`: CustomDomainResponse
+    // response from `EditCustomDomain`: CustomDomain
     fmt.Fprintf(os.Stdout, "Response from `CustomDomainApi.EditCustomDomain`: %v\n", resp)
 }
 ```
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomDomainResponse**](CustomDomainResponse.md)
+[**CustomDomain**](CustomDomain.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## GetCustomDomainStatus
 
-> CustomDomainResponse GetCustomDomainStatus(ctx, applicationId, customDomainId).Execute()
+> CustomDomain GetCustomDomainStatus(ctx, applicationId, customDomainId).Execute()
 
 Get Custom Domain status
 
@@ -259,7 +259,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainApi.GetCustomDomainStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetCustomDomainStatus`: CustomDomainResponse
+    // response from `GetCustomDomainStatus`: CustomDomain
     fmt.Fprintf(os.Stdout, "Response from `CustomDomainApi.GetCustomDomainStatus`: %v\n", resp)
 }
 ```
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomDomainResponse**](CustomDomainResponse.md)
+[**CustomDomain**](CustomDomain.md)
 
 ### Authorization
 

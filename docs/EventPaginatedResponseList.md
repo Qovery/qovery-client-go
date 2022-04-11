@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Page** | **float32** |  | 
 **PageSize** | **float32** |  | 
-**Results** | Pointer to [**[]EventResponse**](EventResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Event**](Event.md) |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetPageSize sets PageSize field to given value.
 
 ### GetResults
 
-`func (o *EventPaginatedResponseList) GetResults() []EventResponse`
+`func (o *EventPaginatedResponseList) GetResults() []Event`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *EventPaginatedResponseList) GetResultsOk() (*[]EventResponse, bool)`
+`func (o *EventPaginatedResponseList) GetResultsOk() (*[]Event, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *EventPaginatedResponseList) SetResults(v []EventResponse)`
+`func (o *EventPaginatedResponseList) SetResults(v []Event)`
 
 SetResults sets Results field to given value.
 

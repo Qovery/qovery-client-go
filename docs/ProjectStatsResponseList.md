@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]ProjectStatsResponse**](ProjectStatsResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]ProjectStats**](ProjectStats.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ProjectStatsResponseList) GetResults() []ProjectStatsResponse`
+`func (o *ProjectStatsResponseList) GetResults() []ProjectStats`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ProjectStatsResponseList) GetResultsOk() (*[]ProjectStatsResponse, bool)`
+`func (o *ProjectStatsResponseList) GetResultsOk() (*[]ProjectStats, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ProjectStatsResponseList) SetResults(v []ProjectStatsResponse)`
+`func (o *ProjectStatsResponseList) SetResults(v []ProjectStats)`
 
 SetResults sets Results field to given value.
 

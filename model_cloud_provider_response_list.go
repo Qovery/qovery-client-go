@@ -17,7 +17,7 @@ import (
 
 // CloudProviderResponseList struct for CloudProviderResponseList
 type CloudProviderResponseList struct {
-	Results []CloudProviderResponse `json:"results,omitempty"`
+	Results []CloudProvider `json:"results,omitempty"`
 }
 
 // NewCloudProviderResponseList instantiates a new CloudProviderResponseList object
@@ -38,9 +38,9 @@ func NewCloudProviderResponseListWithDefaults() *CloudProviderResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *CloudProviderResponseList) GetResults() []CloudProviderResponse {
+func (o *CloudProviderResponseList) GetResults() []CloudProvider {
 	if o == nil || o.Results == nil {
-		var ret []CloudProviderResponse
+		var ret []CloudProvider
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *CloudProviderResponseList) GetResults() []CloudProviderResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderResponseList) GetResultsOk() ([]CloudProviderResponse, bool) {
+func (o *CloudProviderResponseList) GetResultsOk() ([]CloudProvider, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *CloudProviderResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []CloudProviderResponse and assigns it to the Results field.
-func (o *CloudProviderResponseList) SetResults(v []CloudProviderResponse) {
+// SetResults gets a reference to the given []CloudProvider and assigns it to the Results field.
+func (o *CloudProviderResponseList) SetResults(v []CloudProvider) {
 	o.Results = v
 }
 

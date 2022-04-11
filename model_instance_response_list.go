@@ -17,7 +17,7 @@ import (
 
 // InstanceResponseList struct for InstanceResponseList
 type InstanceResponseList struct {
-	Results []InstanceResponse `json:"results,omitempty"`
+	Results []Instance `json:"results,omitempty"`
 }
 
 // NewInstanceResponseList instantiates a new InstanceResponseList object
@@ -38,9 +38,9 @@ func NewInstanceResponseListWithDefaults() *InstanceResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *InstanceResponseList) GetResults() []InstanceResponse {
+func (o *InstanceResponseList) GetResults() []Instance {
 	if o == nil || o.Results == nil {
-		var ret []InstanceResponse
+		var ret []Instance
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *InstanceResponseList) GetResults() []InstanceResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstanceResponseList) GetResultsOk() ([]InstanceResponse, bool) {
+func (o *InstanceResponseList) GetResultsOk() ([]Instance, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *InstanceResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []InstanceResponse and assigns it to the Results field.
-func (o *InstanceResponseList) SetResults(v []InstanceResponse) {
+// SetResults gets a reference to the given []Instance and assigns it to the Results field.
+func (o *InstanceResponseList) SetResults(v []Instance) {
 	o.Results = v
 }
 

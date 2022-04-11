@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateApplication
 
-> ApplicationResponse CreateApplication(ctx, environmentId).ApplicationRequest(applicationRequest).Execute()
+> Application CreateApplication(ctx, environmentId).ApplicationRequest(applicationRequest).Execute()
 
 Create an application
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.CreateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplication`: ApplicationResponse
+    // response from `CreateApplication`: Application
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.CreateApplication`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationResponse**](ApplicationResponse.md)
+[**Application**](Application.md)
 
 ### Authorization
 

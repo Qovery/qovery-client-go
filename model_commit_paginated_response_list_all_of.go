@@ -17,7 +17,7 @@ import (
 
 // CommitPaginatedResponseListAllOf struct for CommitPaginatedResponseListAllOf
 type CommitPaginatedResponseListAllOf struct {
-	Results []CommitResponse `json:"results,omitempty"`
+	Results []Commit `json:"results,omitempty"`
 }
 
 // NewCommitPaginatedResponseListAllOf instantiates a new CommitPaginatedResponseListAllOf object
@@ -38,9 +38,9 @@ func NewCommitPaginatedResponseListAllOfWithDefaults() *CommitPaginatedResponseL
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *CommitPaginatedResponseListAllOf) GetResults() []CommitResponse {
+func (o *CommitPaginatedResponseListAllOf) GetResults() []Commit {
 	if o == nil || o.Results == nil {
-		var ret []CommitResponse
+		var ret []Commit
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *CommitPaginatedResponseListAllOf) GetResults() []CommitResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommitPaginatedResponseListAllOf) GetResultsOk() ([]CommitResponse, bool) {
+func (o *CommitPaginatedResponseListAllOf) GetResultsOk() ([]Commit, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *CommitPaginatedResponseListAllOf) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []CommitResponse and assigns it to the Results field.
-func (o *CommitPaginatedResponseListAllOf) SetResults(v []CommitResponse) {
+// SetResults gets a reference to the given []Commit and assigns it to the Results field.
+func (o *CommitPaginatedResponseListAllOf) SetResults(v []Commit) {
 	o.Results = v
 }
 

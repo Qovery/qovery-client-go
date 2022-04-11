@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateApplicationEnvironmentVariable
 
-> EnvironmentVariableResponse CreateApplicationEnvironmentVariable(ctx, applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+> EnvironmentVariable CreateApplicationEnvironmentVariable(ctx, applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
 
 Add an environment variable to the application
 
@@ -45,7 +45,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationEnvironmentVariable`: EnvironmentVariableResponse
+    // response from `CreateApplicationEnvironmentVariable`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariable`: %v\n", resp)
 }
 ```
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## CreateApplicationEnvironmentVariableAlias
 
-> EnvironmentVariableResponse CreateApplicationEnvironmentVariableAlias(ctx, applicationId, environmentVariableId).Key(key).Execute()
+> EnvironmentVariable CreateApplicationEnvironmentVariableAlias(ctx, applicationId, environmentVariableId).Key(key).Execute()
 
 Create an environment variable alias at the application level
 
@@ -118,7 +118,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationEnvironmentVariableAlias`: EnvironmentVariableResponse
+    // response from `CreateApplicationEnvironmentVariableAlias`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableAlias`: %v\n", resp)
 }
 ```
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## CreateApplicationEnvironmentVariableOverride
 
-> EnvironmentVariableResponse CreateApplicationEnvironmentVariableOverride(ctx, applicationId, environmentVariableId).Value(value).Execute()
+> EnvironmentVariable CreateApplicationEnvironmentVariableOverride(ctx, applicationId, environmentVariableId).Value(value).Execute()
 
 Create an environment variable override at the application level
 
@@ -193,7 +193,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationEnvironmentVariableOverride`: EnvironmentVariableResponse
+    // response from `CreateApplicationEnvironmentVariableOverride`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableApi.CreateApplicationEnvironmentVariableOverride`: %v\n", resp)
 }
 ```
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## EditApplicationEnvironmentVariable
 
-> EnvironmentVariableResponse EditApplicationEnvironmentVariable(ctx, applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+> EnvironmentVariable EditApplicationEnvironmentVariable(ctx, applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
 
 Edit an environment variable belonging to the application
 
@@ -339,7 +339,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditApplicationEnvironmentVariable`: EnvironmentVariableResponse
+    // response from `EditApplicationEnvironmentVariable`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableApi.EditApplicationEnvironmentVariable`: %v\n", resp)
 }
 ```
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 
 ## ImportEnvironmentVariable
 
-> VariableImportResponse ImportEnvironmentVariable(ctx, applicationId).VariableImportRequest(variableImportRequest).Execute()
+> VariableImport ImportEnvironmentVariable(ctx, applicationId).VariableImportRequest(variableImportRequest).Execute()
 
 Import variables
 
@@ -413,7 +413,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableApi.ImportEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ImportEnvironmentVariable`: VariableImportResponse
+    // response from `ImportEnvironmentVariable`: VariableImport
     fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableApi.ImportEnvironmentVariable`: %v\n", resp)
 }
 ```
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VariableImportResponse**](VariableImportResponse.md)
+[**VariableImport**](VariableImport.md)
 
 ### Authorization
 

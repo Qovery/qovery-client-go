@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]EnvironmentVariableResponse**](EnvironmentVariableResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]EnvironmentVariable**](EnvironmentVariable.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariableResponse`
+`func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariable`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *EnvironmentVariableResponseList) GetResultsOk() (*[]EnvironmentVariableResponse, bool)`
+`func (o *EnvironmentVariableResponseList) GetResultsOk() (*[]EnvironmentVariable, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *EnvironmentVariableResponseList) SetResults(v []EnvironmentVariableResponse)`
+`func (o *EnvironmentVariableResponseList) SetResults(v []EnvironmentVariable)`
 
 SetResults sets Results field to given value.
 

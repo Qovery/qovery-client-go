@@ -40,7 +40,7 @@ func (r ApiCreateApplicationSecretRequest) SecretRequest(secretRequest SecretReq
 	return r
 }
 
-func (r ApiCreateApplicationSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateApplicationSecretRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateApplicationSecretExecute(r)
 }
 
@@ -63,13 +63,13 @@ func (a *ApplicationSecretApiService) CreateApplicationSecret(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ApplicationSecretApiService) CreateApplicationSecretExecute(r ApiCreateApplicationSecretRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ApplicationSecretApiService) CreateApplicationSecretExecute(r ApiCreateApplicationSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.CreateApplicationSecret")
@@ -153,7 +153,7 @@ func (r ApiCreateApplicationSecretAliasRequest) Key(key Key) ApiCreateApplicatio
 	return r
 }
 
-func (r ApiCreateApplicationSecretAliasRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateApplicationSecretAliasRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateApplicationSecretAliasExecute(r)
 }
 
@@ -183,13 +183,13 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretAlias(ctx context.C
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ApplicationSecretApiService) CreateApplicationSecretAliasExecute(r ApiCreateApplicationSecretAliasRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ApplicationSecretApiService) CreateApplicationSecretAliasExecute(r ApiCreateApplicationSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.CreateApplicationSecretAlias")
@@ -274,7 +274,7 @@ func (r ApiCreateApplicationSecretOverrideRequest) Value(value Value) ApiCreateA
 	return r
 }
 
-func (r ApiCreateApplicationSecretOverrideRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateApplicationSecretOverrideRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateApplicationSecretOverrideExecute(r)
 }
 
@@ -303,13 +303,13 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretOverride(ctx contex
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ApplicationSecretApiService) CreateApplicationSecretOverrideExecute(r ApiCreateApplicationSecretOverrideRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ApplicationSecretApiService) CreateApplicationSecretOverrideExecute(r ApiCreateApplicationSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.CreateApplicationSecretOverride")
@@ -493,7 +493,7 @@ func (r ApiEditApplicationSecretRequest) SecretEditRequest(secretEditRequest Sec
 	return r
 }
 
-func (r ApiEditApplicationSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiEditApplicationSecretRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.EditApplicationSecretExecute(r)
 }
 
@@ -521,13 +521,13 @@ func (a *ApplicationSecretApiService) EditApplicationSecret(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ApplicationSecretApiService) EditApplicationSecretExecute(r ApiEditApplicationSecretRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ApplicationSecretApiService) EditApplicationSecretExecute(r ApiEditApplicationSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.EditApplicationSecret")

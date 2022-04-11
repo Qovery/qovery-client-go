@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryEnvironmentPaginatedResponseList struct for DeploymentHistoryEnvironmentPaginatedResponseList
 type DeploymentHistoryEnvironmentPaginatedResponseList struct {
-	Page     float32                                `json:"page"`
-	PageSize float32                                `json:"page_size"`
-	Results  []DeploymentHistoryEnvironmentResponse `json:"results,omitempty"`
+	Page     float32                        `json:"page"`
+	PageSize float32                        `json:"page_size"`
+	Results  []DeploymentHistoryEnvironment `json:"results,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironmentPaginatedResponseList instantiates a new DeploymentHistoryEnvironmentPaginatedResponseList object
@@ -90,9 +90,9 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) SetPageSize(v float3
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResults() []DeploymentHistoryEnvironmentResponse {
+func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResults() []DeploymentHistoryEnvironment {
 	if o == nil || o.Results == nil {
-		var ret []DeploymentHistoryEnvironmentResponse
+		var ret []DeploymentHistoryEnvironment
 		return ret
 	}
 	return o.Results
@@ -100,7 +100,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResults() []Deplo
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryEnvironmentResponse, bool) {
+func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryEnvironment, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DeploymentHistoryEnvironmentResponse and assigns it to the Results field.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseList) SetResults(v []DeploymentHistoryEnvironmentResponse) {
+// SetResults gets a reference to the given []DeploymentHistoryEnvironment and assigns it to the Results field.
+func (o *DeploymentHistoryEnvironmentPaginatedResponseList) SetResults(v []DeploymentHistoryEnvironment) {
 	o.Results = v
 }
 

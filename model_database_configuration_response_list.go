@@ -17,7 +17,7 @@ import (
 
 // DatabaseConfigurationResponseList struct for DatabaseConfigurationResponseList
 type DatabaseConfigurationResponseList struct {
-	Results []DatabaseConfigurationResponse `json:"results,omitempty"`
+	Results []DatabaseConfiguration `json:"results,omitempty"`
 }
 
 // NewDatabaseConfigurationResponseList instantiates a new DatabaseConfigurationResponseList object
@@ -38,9 +38,9 @@ func NewDatabaseConfigurationResponseListWithDefaults() *DatabaseConfigurationRe
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DatabaseConfigurationResponseList) GetResults() []DatabaseConfigurationResponse {
+func (o *DatabaseConfigurationResponseList) GetResults() []DatabaseConfiguration {
 	if o == nil || o.Results == nil {
-		var ret []DatabaseConfigurationResponse
+		var ret []DatabaseConfiguration
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *DatabaseConfigurationResponseList) GetResults() []DatabaseConfiguration
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseConfigurationResponseList) GetResultsOk() ([]DatabaseConfigurationResponse, bool) {
+func (o *DatabaseConfigurationResponseList) GetResultsOk() ([]DatabaseConfiguration, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *DatabaseConfigurationResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DatabaseConfigurationResponse and assigns it to the Results field.
-func (o *DatabaseConfigurationResponseList) SetResults(v []DatabaseConfigurationResponse) {
+// SetResults gets a reference to the given []DatabaseConfiguration and assigns it to the Results field.
+func (o *DatabaseConfigurationResponseList) SetResults(v []DatabaseConfiguration) {
 	o.Results = v
 }
 

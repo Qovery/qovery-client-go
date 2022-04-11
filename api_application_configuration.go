@@ -40,7 +40,7 @@ func (r ApiEditApplicationNetworkRequest) ApplicationNetworkRequest(applicationN
 	return r
 }
 
-func (r ApiEditApplicationNetworkRequest) Execute() (*ApplicationNetworkResponse, *http.Response, error) {
+func (r ApiEditApplicationNetworkRequest) Execute() (*ApplicationNetwork, *http.Response, error) {
 	return r.ApiService.EditApplicationNetworkExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetwork(ctx context.
 }
 
 // Execute executes the request
-//  @return ApplicationNetworkResponse
-func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r ApiEditApplicationNetworkRequest) (*ApplicationNetworkResponse, *http.Response, error) {
+//  @return ApplicationNetwork
+func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r ApiEditApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApplicationNetworkResponse
+		localVarReturnValue *ApplicationNetwork
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.EditApplicationNetwork")
@@ -145,7 +145,7 @@ type ApiGetApplicationNetworkRequest struct {
 	applicationId string
 }
 
-func (r ApiGetApplicationNetworkRequest) Execute() (*ApplicationNetworkResponse, *http.Response, error) {
+func (r ApiGetApplicationNetworkRequest) Execute() (*ApplicationNetwork, *http.Response, error) {
 	return r.ApiService.GetApplicationNetworkExecute(r)
 }
 
@@ -167,13 +167,13 @@ func (a *ApplicationConfigurationApiService) GetApplicationNetwork(ctx context.C
 }
 
 // Execute executes the request
-//  @return ApplicationNetworkResponse
-func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiGetApplicationNetworkRequest) (*ApplicationNetworkResponse, *http.Response, error) {
+//  @return ApplicationNetwork
+func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiGetApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApplicationNetworkResponse
+		localVarReturnValue *ApplicationNetwork
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.GetApplicationNetwork")

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## CreateCluster
 
-> ClusterResponse CreateCluster(ctx, organizationId).ClusterRequest(clusterRequest).Execute()
+> Cluster CreateCluster(ctx, organizationId).ClusterRequest(clusterRequest).Execute()
 
 Create a cluster
 
@@ -41,7 +41,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    clusterRequest := *openapiclient.NewClusterRequest("Name_example", openapiclient.CloudProviderEnum("AWS"), "Region_example") // ClusterRequest |  (optional)
+    clusterRequest := *openapiclient.NewClusterRequest() // ClusterRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -50,7 +50,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.CreateCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateCluster`: ClusterResponse
+    // response from `CreateCluster`: Cluster
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.CreateCluster`: %v\n", resp)
 }
 ```
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterResponse**](ClusterResponse.md)
+[**Cluster**](Cluster.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## DeployCluster
 
-> ClusterStatusResponse DeployCluster(ctx, organizationId, clusterId).Execute()
+> ClusterStatus DeployCluster(ctx, organizationId, clusterId).Execute()
 
 Deploy a cluster
 
@@ -191,7 +191,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.DeployCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeployCluster`: ClusterStatusResponse
+    // response from `DeployCluster`: ClusterStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.DeployCluster`: %v\n", resp)
 }
 ```
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterStatusResponse**](ClusterStatusResponse.md)
+[**ClusterStatus**](ClusterStatus.md)
 
 ### Authorization
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## EditCluster
 
-> ClusterResponse EditCluster(ctx, organizationId, clusterId).ClusterRequest(clusterRequest).Execute()
+> Cluster EditCluster(ctx, organizationId, clusterId).ClusterRequest(clusterRequest).Execute()
 
 Edit a cluster
 
@@ -254,7 +254,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-    clusterRequest := *openapiclient.NewClusterRequest("Name_example", openapiclient.CloudProviderEnum("AWS"), "Region_example") // ClusterRequest |  (optional)
+    clusterRequest := *openapiclient.NewClusterRequest() // ClusterRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -263,7 +263,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.EditCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditCluster`: ClusterResponse
+    // response from `EditCluster`: Cluster
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.EditCluster`: %v\n", resp)
 }
 ```
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterResponse**](ClusterResponse.md)
+[**Cluster**](Cluster.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## EditRoutingTable
 
-> ClusterRoutingTableResponse EditRoutingTable(ctx, organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
+> ClusterRoutingTable EditRoutingTable(ctx, organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
 
 Edit routing table
 
@@ -338,7 +338,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.EditRoutingTable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditRoutingTable`: ClusterRoutingTableResponse
+    // response from `EditRoutingTable`: ClusterRoutingTable
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.EditRoutingTable`: %v\n", resp)
 }
 ```
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterRoutingTableResponse**](ClusterRoutingTableResponse.md)
+[**ClusterRoutingTable**](ClusterRoutingTable.md)
 
 ### Authorization
 
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterStatus
 
-> ClusterStatusResponse GetClusterStatus(ctx, organizationId, clusterId).Execute()
+> ClusterStatus GetClusterStatus(ctx, organizationId, clusterId).Execute()
 
 Get cluster status
 
@@ -481,7 +481,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetClusterStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClusterStatus`: ClusterStatusResponse
+    // response from `GetClusterStatus`: ClusterStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterStatus`: %v\n", resp)
 }
 ```
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterStatusResponse**](ClusterStatusResponse.md)
+[**ClusterStatus**](ClusterStatus.md)
 
 ### Authorization
 
@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationCloudProviderInfo
 
-> ClusterCloudProviderInfoResponse GetOrganizationCloudProviderInfo(ctx, organizationId, clusterId).Execute()
+> ClusterCloudProviderInfo GetOrganizationCloudProviderInfo(ctx, organizationId, clusterId).Execute()
 
 Get cluster cloud provider info and credentials
 
@@ -552,7 +552,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetOrganizationCloudProviderInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationCloudProviderInfo`: ClusterCloudProviderInfoResponse
+    // response from `GetOrganizationCloudProviderInfo`: ClusterCloudProviderInfo
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetOrganizationCloudProviderInfo`: %v\n", resp)
 }
 ```
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCloudProviderInfoResponse**](ClusterCloudProviderInfoResponse.md)
+[**ClusterCloudProviderInfo**](ClusterCloudProviderInfo.md)
 
 ### Authorization
 
@@ -666,7 +666,7 @@ Name | Type | Description  | Notes
 
 ## GetRoutingTable
 
-> ClusterRoutingTableResponse GetRoutingTable(ctx, organizationId, clusterId).Execute()
+> ClusterRoutingTable GetRoutingTable(ctx, organizationId, clusterId).Execute()
 
 Get routing table
 
@@ -695,7 +695,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetRoutingTable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRoutingTable`: ClusterRoutingTableResponse
+    // response from `GetRoutingTable`: ClusterRoutingTable
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetRoutingTable`: %v\n", resp)
 }
 ```
@@ -721,7 +721,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterRoutingTableResponse**](ClusterRoutingTableResponse.md)
+[**ClusterRoutingTable**](ClusterRoutingTable.md)
 
 ### Authorization
 
@@ -807,7 +807,7 @@ Name | Type | Description  | Notes
 
 ## SpecifyClusterCloudProviderInfo
 
-> ClusterCloudProviderInfoResponse SpecifyClusterCloudProviderInfo(ctx, organizationId, clusterId).ClusterCloudProviderInfoRequest(clusterCloudProviderInfoRequest).Execute()
+> ClusterCloudProviderInfo SpecifyClusterCloudProviderInfo(ctx, organizationId, clusterId).ClusterCloudProviderInfoRequest(clusterCloudProviderInfoRequest).Execute()
 
 Specify cluster cloud provider info and credentials
 
@@ -835,7 +835,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.SpecifyClusterCloudProviderInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpecifyClusterCloudProviderInfo`: ClusterCloudProviderInfoResponse
+    // response from `SpecifyClusterCloudProviderInfo`: ClusterCloudProviderInfo
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.SpecifyClusterCloudProviderInfo`: %v\n", resp)
 }
 ```
@@ -862,7 +862,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCloudProviderInfoResponse**](ClusterCloudProviderInfoResponse.md)
+[**ClusterCloudProviderInfo**](ClusterCloudProviderInfo.md)
 
 ### Authorization
 
@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 
 ## StopCluster
 
-> ClusterStatusResponse StopCluster(ctx, organizationId, clusterId).Execute()
+> ClusterStatus StopCluster(ctx, organizationId, clusterId).Execute()
 
 Stop cluster
 
@@ -909,7 +909,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.StopCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StopCluster`: ClusterStatusResponse
+    // response from `StopCluster`: ClusterStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.StopCluster`: %v\n", resp)
 }
 ```
@@ -935,7 +935,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterStatusResponse**](ClusterStatusResponse.md)
+[**ClusterStatus**](ClusterStatus.md)
 
 ### Authorization
 
@@ -953,7 +953,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCluster
 
-> ClusterStatusResponse UpdateCluster(ctx, organizationId, clusterId).Execute()
+> ClusterStatus UpdateCluster(ctx, organizationId, clusterId).Execute()
 
 Update a cluster Version
 
@@ -982,7 +982,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateCluster`: ClusterStatusResponse
+    // response from `UpdateCluster`: ClusterStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateCluster`: %v\n", resp)
 }
 ```
@@ -1008,7 +1008,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterStatusResponse**](ClusterStatusResponse.md)
+[**ClusterStatus**](ClusterStatus.md)
 
 ### Authorization
 

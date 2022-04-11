@@ -17,7 +17,7 @@ import (
 
 // CustomDomainResponseList struct for CustomDomainResponseList
 type CustomDomainResponseList struct {
-	Results []CustomDomainResponse `json:"results,omitempty"`
+	Results []CustomDomain `json:"results,omitempty"`
 }
 
 // NewCustomDomainResponseList instantiates a new CustomDomainResponseList object
@@ -38,9 +38,9 @@ func NewCustomDomainResponseListWithDefaults() *CustomDomainResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *CustomDomainResponseList) GetResults() []CustomDomainResponse {
+func (o *CustomDomainResponseList) GetResults() []CustomDomain {
 	if o == nil || o.Results == nil {
-		var ret []CustomDomainResponse
+		var ret []CustomDomain
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *CustomDomainResponseList) GetResults() []CustomDomainResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomDomainResponseList) GetResultsOk() ([]CustomDomainResponse, bool) {
+func (o *CustomDomainResponseList) GetResultsOk() ([]CustomDomain, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *CustomDomainResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []CustomDomainResponse and assigns it to the Results field.
-func (o *CustomDomainResponseList) SetResults(v []CustomDomainResponse) {
+// SetResults gets a reference to the given []CustomDomain and assigns it to the Results field.
+func (o *CustomDomainResponseList) SetResults(v []CustomDomain) {
 	o.Results = v
 }
 

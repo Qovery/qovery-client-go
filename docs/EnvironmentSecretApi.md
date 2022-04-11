@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateEnvironmentSecret
 
-> SecretResponse CreateEnvironmentSecret(ctx, environmentId).SecretRequest(secretRequest).Execute()
+> Secret CreateEnvironmentSecret(ctx, environmentId).SecretRequest(secretRequest).Execute()
 
 Add a secret to the environment
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.CreateEnvironmentSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateEnvironmentSecret`: SecretResponse
+    // response from `CreateEnvironmentSecret`: Secret
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretApi.CreateEnvironmentSecret`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CreateEnvironmentSecretAlias
 
-> SecretResponse CreateEnvironmentSecretAlias(ctx, environmentId, secretId).Key(key).Execute()
+> Secret CreateEnvironmentSecretAlias(ctx, environmentId, secretId).Key(key).Execute()
 
 Create a secret alias at the environment level
 
@@ -117,7 +117,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.CreateEnvironmentSecretAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateEnvironmentSecretAlias`: SecretResponse
+    // response from `CreateEnvironmentSecretAlias`: Secret
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretApi.CreateEnvironmentSecretAlias`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## CreateEnvironmentSecretOverride
 
-> SecretResponse CreateEnvironmentSecretOverride(ctx, environmentId, secretId).Value(value).Execute()
+> Secret CreateEnvironmentSecretOverride(ctx, environmentId, secretId).Value(value).Execute()
 
 Create a secret override at the environment level
 
@@ -192,7 +192,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.CreateEnvironmentSecretOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateEnvironmentSecretOverride`: SecretResponse
+    // response from `CreateEnvironmentSecretOverride`: Secret
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretApi.CreateEnvironmentSecretOverride`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## EditEnvironmentSecret
 
-> SecretResponse EditEnvironmentSecret(ctx, environmentId, secretId).SecretEditRequest(secretEditRequest).Execute()
+> Secret EditEnvironmentSecret(ctx, environmentId, secretId).SecretEditRequest(secretEditRequest).Execute()
 
 Edit a secret belonging to the environment
 
@@ -338,7 +338,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretApi.EditEnvironmentSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditEnvironmentSecret`: SecretResponse
+    // response from `EditEnvironmentSecret`: Secret
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretApi.EditEnvironmentSecret`: %v\n", resp)
 }
 ```
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 

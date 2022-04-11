@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]GitAuthProviderResponse**](GitAuthProviderResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]GitAuthProvider**](GitAuthProvider.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *GitAuthProviderResponseList) GetResults() []GitAuthProviderResponse`
+`func (o *GitAuthProviderResponseList) GetResults() []GitAuthProvider`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *GitAuthProviderResponseList) GetResultsOk() (*[]GitAuthProviderResponse, bool)`
+`func (o *GitAuthProviderResponseList) GetResultsOk() (*[]GitAuthProvider, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *GitAuthProviderResponseList) SetResults(v []GitAuthProviderResponse)`
+`func (o *GitAuthProviderResponseList) SetResults(v []GitAuthProvider)`
 
 SetResults sets Results field to given value.
 

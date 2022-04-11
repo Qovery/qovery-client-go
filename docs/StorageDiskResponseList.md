@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]StorageDiskResponse**](StorageDiskResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]StorageDisk**](StorageDisk.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *StorageDiskResponseList) GetResults() []StorageDiskResponse`
+`func (o *StorageDiskResponseList) GetResults() []StorageDisk`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *StorageDiskResponseList) GetResultsOk() (*[]StorageDiskResponse, bool)`
+`func (o *StorageDiskResponseList) GetResultsOk() (*[]StorageDisk, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *StorageDiskResponseList) SetResults(v []StorageDiskResponse)`
+`func (o *StorageDiskResponseList) SetResults(v []StorageDisk)`
 
 SetResults sets Results field to given value.
 

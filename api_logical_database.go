@@ -40,7 +40,7 @@ func (r ApiCreateLogicalDatabaseOnDatabaseRequest) LogicalDatabaseRequest(logica
 	return r
 }
 
-func (r ApiCreateLogicalDatabaseOnDatabaseRequest) Execute() (*LogicalDatabaseResponse, *http.Response, error) {
+func (r ApiCreateLogicalDatabaseOnDatabaseRequest) Execute() (*LogicalDatabase, *http.Response, error) {
 	return r.ApiService.CreateLogicalDatabaseOnDatabaseExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *LogicalDatabaseApiService) CreateLogicalDatabaseOnDatabase(ctx context.
 }
 
 // Execute executes the request
-//  @return LogicalDatabaseResponse
-func (a *LogicalDatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateLogicalDatabaseOnDatabaseRequest) (*LogicalDatabaseResponse, *http.Response, error) {
+//  @return LogicalDatabase
+func (a *LogicalDatabaseApiService) CreateLogicalDatabaseOnDatabaseExecute(r ApiCreateLogicalDatabaseOnDatabaseRequest) (*LogicalDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LogicalDatabaseResponse
+		localVarReturnValue *LogicalDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.CreateLogicalDatabaseOnDatabase")
@@ -243,7 +243,7 @@ func (r ApiEditLogicalDatabaseRequest) LogicalDatabaseRequest(logicalDatabaseReq
 	return r
 }
 
-func (r ApiEditLogicalDatabaseRequest) Execute() (*LogicalDatabaseResponse, *http.Response, error) {
+func (r ApiEditLogicalDatabaseRequest) Execute() (*LogicalDatabase, *http.Response, error) {
 	return r.ApiService.EditLogicalDatabaseExecute(r)
 }
 
@@ -263,13 +263,13 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabase(ctx context.Context, log
 }
 
 // Execute executes the request
-//  @return LogicalDatabaseResponse
-func (a *LogicalDatabaseApiService) EditLogicalDatabaseExecute(r ApiEditLogicalDatabaseRequest) (*LogicalDatabaseResponse, *http.Response, error) {
+//  @return LogicalDatabase
+func (a *LogicalDatabaseApiService) EditLogicalDatabaseExecute(r ApiEditLogicalDatabaseRequest) (*LogicalDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LogicalDatabaseResponse
+		localVarReturnValue *LogicalDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.EditLogicalDatabase")
@@ -352,7 +352,7 @@ func (r ApiEditLogicalDatabaseCredentialsRequest) CredentialsRequest(credentials
 	return r
 }
 
-func (r ApiEditLogicalDatabaseCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
+func (r ApiEditLogicalDatabaseCredentialsRequest) Execute() (*Credentials, *http.Response, error) {
 	return r.ApiService.EditLogicalDatabaseCredentialsExecute(r)
 }
 
@@ -372,13 +372,13 @@ func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentials(ctx context.C
 }
 
 // Execute executes the request
-//  @return CredentialsResponse
-func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentialsExecute(r ApiEditLogicalDatabaseCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
+//  @return Credentials
+func (a *LogicalDatabaseApiService) EditLogicalDatabaseCredentialsExecute(r ApiEditLogicalDatabaseCredentialsRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CredentialsResponse
+		localVarReturnValue *Credentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.EditLogicalDatabaseCredentials")
@@ -455,7 +455,7 @@ type ApiGetLogicalDatabaseRequest struct {
 	logicalDatabaseId string
 }
 
-func (r ApiGetLogicalDatabaseRequest) Execute() (*LogicalDatabaseResponse, *http.Response, error) {
+func (r ApiGetLogicalDatabaseRequest) Execute() (*LogicalDatabase, *http.Response, error) {
 	return r.ApiService.GetLogicalDatabaseExecute(r)
 }
 
@@ -477,13 +477,13 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabase(ctx context.Context, logi
 }
 
 // Execute executes the request
-//  @return LogicalDatabaseResponse
-func (a *LogicalDatabaseApiService) GetLogicalDatabaseExecute(r ApiGetLogicalDatabaseRequest) (*LogicalDatabaseResponse, *http.Response, error) {
+//  @return LogicalDatabase
+func (a *LogicalDatabaseApiService) GetLogicalDatabaseExecute(r ApiGetLogicalDatabaseRequest) (*LogicalDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LogicalDatabaseResponse
+		localVarReturnValue *LogicalDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.GetLogicalDatabase")
@@ -558,7 +558,7 @@ type ApiGetLogicalDatabaseCredentialsRequest struct {
 	logicalDatabaseId string
 }
 
-func (r ApiGetLogicalDatabaseCredentialsRequest) Execute() (*CredentialsResponse, *http.Response, error) {
+func (r ApiGetLogicalDatabaseCredentialsRequest) Execute() (*Credentials, *http.Response, error) {
 	return r.ApiService.GetLogicalDatabaseCredentialsExecute(r)
 }
 
@@ -578,13 +578,13 @@ func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentials(ctx context.Co
 }
 
 // Execute executes the request
-//  @return CredentialsResponse
-func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentialsExecute(r ApiGetLogicalDatabaseCredentialsRequest) (*CredentialsResponse, *http.Response, error) {
+//  @return Credentials
+func (a *LogicalDatabaseApiService) GetLogicalDatabaseCredentialsExecute(r ApiGetLogicalDatabaseCredentialsRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CredentialsResponse
+		localVarReturnValue *Credentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogicalDatabaseApiService.GetLogicalDatabaseCredentials")

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]TagResponse**](TagResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Tag**](Tag.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *TagResponseList) GetResults() []TagResponse`
+`func (o *TagResponseList) GetResults() []Tag`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *TagResponseList) GetResultsOk() (*[]TagResponse, bool)`
+`func (o *TagResponseList) GetResultsOk() (*[]Tag, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *TagResponseList) SetResults(v []TagResponse)`
+`func (o *TagResponseList) SetResults(v []Tag)`
 
 SetResults sets Results field to given value.
 

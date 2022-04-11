@@ -40,7 +40,7 @@ func (r ApiCreateEnvironmentEnvironmentVariableRequest) EnvironmentVariableReque
 	return r
 }
 
-func (r ApiCreateEnvironmentEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentEnvironmentVariableRequest) Execute() (*EnvironmentVariable, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentEnvironmentVariableExecute(r)
 }
 
@@ -65,13 +65,13 @@ func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariable(ctx
 }
 
 // Execute executes the request
-//  @return EnvironmentVariableResponse
-func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableExecute(r ApiCreateEnvironmentEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+//  @return EnvironmentVariable
+func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableExecute(r ApiCreateEnvironmentEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariable
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentVariableApiService.CreateEnvironmentEnvironmentVariable")
@@ -155,7 +155,7 @@ func (r ApiCreateEnvironmentEnvironmentVariableAliasRequest) Key(key Key) ApiCre
 	return r
 }
 
-func (r ApiCreateEnvironmentEnvironmentVariableAliasRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentEnvironmentVariableAliasRequest) Execute() (*EnvironmentVariable, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentEnvironmentVariableAliasExecute(r)
 }
 
@@ -185,13 +185,13 @@ func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableAlia
 }
 
 // Execute executes the request
-//  @return EnvironmentVariableResponse
-func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableAliasExecute(r ApiCreateEnvironmentEnvironmentVariableAliasRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+//  @return EnvironmentVariable
+func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableAliasExecute(r ApiCreateEnvironmentEnvironmentVariableAliasRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariable
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentVariableApiService.CreateEnvironmentEnvironmentVariableAlias")
@@ -276,7 +276,7 @@ func (r ApiCreateEnvironmentEnvironmentVariableOverrideRequest) Value(value Valu
 	return r
 }
 
-func (r ApiCreateEnvironmentEnvironmentVariableOverrideRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentEnvironmentVariableOverrideRequest) Execute() (*EnvironmentVariable, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentEnvironmentVariableOverrideExecute(r)
 }
 
@@ -305,13 +305,13 @@ func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableOver
 }
 
 // Execute executes the request
-//  @return EnvironmentVariableResponse
-func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableOverrideExecute(r ApiCreateEnvironmentEnvironmentVariableOverrideRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+//  @return EnvironmentVariable
+func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableOverrideExecute(r ApiCreateEnvironmentEnvironmentVariableOverrideRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariable
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentVariableApiService.CreateEnvironmentEnvironmentVariableOverride")
@@ -495,7 +495,7 @@ func (r ApiEditEnvironmentEnvironmentVariableRequest) EnvironmentVariableEditReq
 	return r
 }
 
-func (r ApiEditEnvironmentEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponse, *http.Response, error) {
+func (r ApiEditEnvironmentEnvironmentVariableRequest) Execute() (*EnvironmentVariable, *http.Response, error) {
 	return r.ApiService.EditEnvironmentEnvironmentVariableExecute(r)
 }
 
@@ -523,13 +523,13 @@ func (a *EnvironmentVariableApiService) EditEnvironmentEnvironmentVariable(ctx c
 }
 
 // Execute executes the request
-//  @return EnvironmentVariableResponse
-func (a *EnvironmentVariableApiService) EditEnvironmentEnvironmentVariableExecute(r ApiEditEnvironmentEnvironmentVariableRequest) (*EnvironmentVariableResponse, *http.Response, error) {
+//  @return EnvironmentVariable
+func (a *EnvironmentVariableApiService) EditEnvironmentEnvironmentVariableExecute(r ApiEditEnvironmentEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentVariableResponse
+		localVarReturnValue *EnvironmentVariable
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentVariableApiService.EditEnvironmentEnvironmentVariable")

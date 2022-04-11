@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Page** | **float32** |  | 
 **PageSize** | **float32** |  | 
-**Results** | Pointer to [**[]BackupResponse**](BackupResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Backup**](Backup.md) |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetPageSize sets PageSize field to given value.
 
 ### GetResults
 
-`func (o *BackupPaginatedResponseList) GetResults() []BackupResponse`
+`func (o *BackupPaginatedResponseList) GetResults() []Backup`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *BackupPaginatedResponseList) GetResultsOk() (*[]BackupResponse, bool)`
+`func (o *BackupPaginatedResponseList) GetResultsOk() (*[]Backup, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *BackupPaginatedResponseList) SetResults(v []BackupResponse)`
+`func (o *BackupPaginatedResponseList) SetResults(v []Backup)`
 
 SetResults sets Results field to given value.
 

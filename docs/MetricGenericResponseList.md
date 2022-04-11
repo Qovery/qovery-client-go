@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]MetricGenericResponse**](MetricGenericResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]MetricGeneric**](MetricGeneric.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *MetricGenericResponseList) GetResults() []MetricGenericResponse`
+`func (o *MetricGenericResponseList) GetResults() []MetricGeneric`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *MetricGenericResponseList) GetResultsOk() (*[]MetricGenericResponse, bool)`
+`func (o *MetricGenericResponseList) GetResultsOk() (*[]MetricGeneric, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *MetricGenericResponseList) SetResults(v []MetricGenericResponse)`
+`func (o *MetricGenericResponseList) SetResults(v []MetricGeneric)`
 
 SetResults sets Results field to given value.
 

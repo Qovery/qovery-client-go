@@ -17,7 +17,7 @@ import (
 
 // StorageDiskResponseList struct for StorageDiskResponseList
 type StorageDiskResponseList struct {
-	Results []StorageDiskResponse `json:"results,omitempty"`
+	Results []StorageDisk `json:"results,omitempty"`
 }
 
 // NewStorageDiskResponseList instantiates a new StorageDiskResponseList object
@@ -38,9 +38,9 @@ func NewStorageDiskResponseListWithDefaults() *StorageDiskResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *StorageDiskResponseList) GetResults() []StorageDiskResponse {
+func (o *StorageDiskResponseList) GetResults() []StorageDisk {
 	if o == nil || o.Results == nil {
-		var ret []StorageDiskResponse
+		var ret []StorageDisk
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *StorageDiskResponseList) GetResults() []StorageDiskResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDiskResponseList) GetResultsOk() ([]StorageDiskResponse, bool) {
+func (o *StorageDiskResponseList) GetResultsOk() ([]StorageDisk, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *StorageDiskResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []StorageDiskResponse and assigns it to the Results field.
-func (o *StorageDiskResponseList) SetResults(v []StorageDiskResponse) {
+// SetResults gets a reference to the given []StorageDisk and assigns it to the Results field.
+func (o *StorageDiskResponseList) SetResults(v []StorageDisk) {
 	o.Results = v
 }
 

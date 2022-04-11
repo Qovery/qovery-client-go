@@ -17,7 +17,7 @@ import (
 
 // EnvironmentLogPaginatedResponseListAllOf struct for EnvironmentLogPaginatedResponseListAllOf
 type EnvironmentLogPaginatedResponseListAllOf struct {
-	Results []EnvironmentLogResponse `json:"results,omitempty"`
+	Results []EnvironmentLog `json:"results,omitempty"`
 }
 
 // NewEnvironmentLogPaginatedResponseListAllOf instantiates a new EnvironmentLogPaginatedResponseListAllOf object
@@ -38,9 +38,9 @@ func NewEnvironmentLogPaginatedResponseListAllOfWithDefaults() *EnvironmentLogPa
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentLogPaginatedResponseListAllOf) GetResults() []EnvironmentLogResponse {
+func (o *EnvironmentLogPaginatedResponseListAllOf) GetResults() []EnvironmentLog {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentLogResponse
+		var ret []EnvironmentLog
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentLogPaginatedResponseListAllOf) GetResults() []EnvironmentLog
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentLogPaginatedResponseListAllOf) GetResultsOk() ([]EnvironmentLogResponse, bool) {
+func (o *EnvironmentLogPaginatedResponseListAllOf) GetResultsOk() ([]EnvironmentLog, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentLogPaginatedResponseListAllOf) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentLogResponse and assigns it to the Results field.
-func (o *EnvironmentLogPaginatedResponseListAllOf) SetResults(v []EnvironmentLogResponse) {
+// SetResults gets a reference to the given []EnvironmentLog and assigns it to the Results field.
+func (o *EnvironmentLogPaginatedResponseListAllOf) SetResults(v []EnvironmentLog) {
 	o.Results = v
 }
 

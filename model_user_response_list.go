@@ -17,7 +17,7 @@ import (
 
 // UserResponseList struct for UserResponseList
 type UserResponseList struct {
-	Results []UserResponse `json:"results,omitempty"`
+	Results []User `json:"results,omitempty"`
 }
 
 // NewUserResponseList instantiates a new UserResponseList object
@@ -38,9 +38,9 @@ func NewUserResponseListWithDefaults() *UserResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *UserResponseList) GetResults() []UserResponse {
+func (o *UserResponseList) GetResults() []User {
 	if o == nil || o.Results == nil {
-		var ret []UserResponse
+		var ret []User
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *UserResponseList) GetResults() []UserResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserResponseList) GetResultsOk() ([]UserResponse, bool) {
+func (o *UserResponseList) GetResultsOk() ([]User, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *UserResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []UserResponse and assigns it to the Results field.
-func (o *UserResponseList) SetResults(v []UserResponse) {
+// SetResults gets a reference to the given []User and assigns it to the Results field.
+func (o *UserResponseList) SetResults(v []User) {
 	o.Results = v
 }
 

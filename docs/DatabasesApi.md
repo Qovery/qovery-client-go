@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateDatabase
 
-> DatabaseResponse CreateDatabase(ctx, environmentId).DatabaseRequest(databaseRequest).Execute()
+> Database CreateDatabase(ctx, environmentId).DatabaseRequest(databaseRequest).Execute()
 
 Create a database
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabasesApi.CreateDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDatabase`: DatabaseResponse
+    // response from `CreateDatabase`: Database
     fmt.Fprintf(os.Stdout, "Response from `DatabasesApi.CreateDatabase`: %v\n", resp)
 }
 ```
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DatabaseResponse**](DatabaseResponse.md)
+[**Database**](Database.md)
 
 ### Authorization
 

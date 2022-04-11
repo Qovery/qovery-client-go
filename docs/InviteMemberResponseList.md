@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]InviteMemberResponse**](InviteMemberResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]InviteMember**](InviteMember.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *InviteMemberResponseList) GetResults() []InviteMemberResponse`
+`func (o *InviteMemberResponseList) GetResults() []InviteMember`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *InviteMemberResponseList) GetResultsOk() (*[]InviteMemberResponse, bool)`
+`func (o *InviteMemberResponseList) GetResultsOk() (*[]InviteMember, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *InviteMemberResponseList) SetResults(v []InviteMemberResponse)`
+`func (o *InviteMemberResponseList) SetResults(v []InviteMember)`
 
 SetResults sets Results field to given value.
 

@@ -132,7 +132,7 @@ func (r ApiEditProjectRequest) ProjectRequest(projectRequest ProjectRequest) Api
 	return r
 }
 
-func (r ApiEditProjectRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ApiEditProjectRequest) Execute() (*Project, *http.Response, error) {
 	return r.ApiService.EditProjectExecute(r)
 }
 
@@ -154,13 +154,13 @@ func (a *ProjectMainCallsApiService) EditProject(ctx context.Context, projectId 
 }
 
 // Execute executes the request
-//  @return ProjectResponse
-func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest) (*ProjectResponse, *http.Response, error) {
+//  @return Project
+func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectResponse
+		localVarReturnValue *Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.EditProject")
@@ -237,7 +237,7 @@ type ApiGetProjectRequest struct {
 	projectId  string
 }
 
-func (r ApiGetProjectRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ApiGetProjectRequest) Execute() (*Project, *http.Response, error) {
 	return r.ApiService.GetProjectExecute(r)
 }
 
@@ -257,13 +257,13 @@ func (a *ProjectMainCallsApiService) GetProject(ctx context.Context, projectId s
 }
 
 // Execute executes the request
-//  @return ProjectResponse
-func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (*ProjectResponse, *http.Response, error) {
+//  @return Project
+func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectResponse
+		localVarReturnValue *Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.GetProject")

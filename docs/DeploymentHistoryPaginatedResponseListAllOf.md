@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]DeploymentHistoryResponse**](DeploymentHistoryResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]DeploymentHistory**](DeploymentHistory.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResults() []DeploymentHistoryResponse`
+`func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResults() []DeploymentHistory`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResultsOk() (*[]DeploymentHistoryResponse, bool)`
+`func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResultsOk() (*[]DeploymentHistory, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *DeploymentHistoryPaginatedResponseListAllOf) SetResults(v []DeploymentHistoryResponse)`
+`func (o *DeploymentHistoryPaginatedResponseListAllOf) SetResults(v []DeploymentHistory)`
 
 SetResults sets Results field to given value.
 

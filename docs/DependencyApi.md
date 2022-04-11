@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CreateApplicationDependency
 
-> ApplicationResponse CreateApplicationDependency(ctx, applicationId, targetApplicationId).Execute()
+> Application CreateApplicationDependency(ctx, applicationId, targetApplicationId).Execute()
 
 Add application dependency to this application.
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DependencyApi.CreateApplicationDependency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationDependency`: ApplicationResponse
+    // response from `CreateApplicationDependency`: Application
     fmt.Fprintf(os.Stdout, "Response from `DependencyApi.CreateApplicationDependency`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationResponse**](ApplicationResponse.md)
+[**Application**](Application.md)
 
 ### Authorization
 

@@ -17,7 +17,7 @@ import (
 
 // MetricCPUDatapointResponseList struct for MetricCPUDatapointResponseList
 type MetricCPUDatapointResponseList struct {
-	Results []MetricCPUDatapointResponse `json:"results,omitempty"`
+	Results []MetricCPUDatapoint `json:"results,omitempty"`
 }
 
 // NewMetricCPUDatapointResponseList instantiates a new MetricCPUDatapointResponseList object
@@ -38,9 +38,9 @@ func NewMetricCPUDatapointResponseListWithDefaults() *MetricCPUDatapointResponse
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *MetricCPUDatapointResponseList) GetResults() []MetricCPUDatapointResponse {
+func (o *MetricCPUDatapointResponseList) GetResults() []MetricCPUDatapoint {
 	if o == nil || o.Results == nil {
-		var ret []MetricCPUDatapointResponse
+		var ret []MetricCPUDatapoint
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *MetricCPUDatapointResponseList) GetResults() []MetricCPUDatapointRespon
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricCPUDatapointResponseList) GetResultsOk() ([]MetricCPUDatapointResponse, bool) {
+func (o *MetricCPUDatapointResponseList) GetResultsOk() ([]MetricCPUDatapoint, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *MetricCPUDatapointResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []MetricCPUDatapointResponse and assigns it to the Results field.
-func (o *MetricCPUDatapointResponseList) SetResults(v []MetricCPUDatapointResponse) {
+// SetResults gets a reference to the given []MetricCPUDatapoint and assigns it to the Results field.
+func (o *MetricCPUDatapointResponseList) SetResults(v []MetricCPUDatapoint) {
 	o.Results = v
 }
 

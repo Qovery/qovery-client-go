@@ -40,7 +40,7 @@ func (r ApiAddBackupDatabaseRequest) BackupRequest(backupRequest BackupRequest) 
 	return r
 }
 
-func (r ApiAddBackupDatabaseRequest) Execute() (*BackupResponse, *http.Response, error) {
+func (r ApiAddBackupDatabaseRequest) Execute() (*Backup, *http.Response, error) {
 	return r.ApiService.AddBackupDatabaseExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *BackupsApiService) AddBackupDatabase(ctx context.Context, databaseId st
 }
 
 // Execute executes the request
-//  @return BackupResponse
-func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseRequest) (*BackupResponse, *http.Response, error) {
+//  @return Backup
+func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseRequest) (*Backup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BackupResponse
+		localVarReturnValue *Backup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.AddBackupDatabase")

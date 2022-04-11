@@ -40,7 +40,7 @@ func (r ApiCreateEnvironmentSecretRequest) SecretRequest(secretRequest SecretReq
 	return r
 }
 
-func (r ApiCreateEnvironmentSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentSecretRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentSecretExecute(r)
 }
 
@@ -65,13 +65,13 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecret")
@@ -155,7 +155,7 @@ func (r ApiCreateEnvironmentSecretAliasRequest) Key(key Key) ApiCreateEnvironmen
 	return r
 }
 
-func (r ApiCreateEnvironmentSecretAliasRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentSecretAliasRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentSecretAliasExecute(r)
 }
 
@@ -185,13 +185,13 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx context.C
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretAlias")
@@ -276,7 +276,7 @@ func (r ApiCreateEnvironmentSecretOverrideRequest) Value(value Value) ApiCreateE
 	return r
 }
 
-func (r ApiCreateEnvironmentSecretOverrideRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentSecretOverrideRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentSecretOverrideExecute(r)
 }
 
@@ -305,13 +305,13 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx contex
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretOverride")
@@ -495,7 +495,7 @@ func (r ApiEditEnvironmentSecretRequest) SecretEditRequest(secretEditRequest Sec
 	return r
 }
 
-func (r ApiEditEnvironmentSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiEditEnvironmentSecretRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.EditEnvironmentSecretExecute(r)
 }
 
@@ -523,13 +523,13 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.EditEnvironmentSecret")

@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryPaginatedResponseList struct for DeploymentHistoryPaginatedResponseList
 type DeploymentHistoryPaginatedResponseList struct {
-	Page     float32                     `json:"page"`
-	PageSize float32                     `json:"page_size"`
-	Results  []DeploymentHistoryResponse `json:"results,omitempty"`
+	Page     float32             `json:"page"`
+	PageSize float32             `json:"page_size"`
+	Results  []DeploymentHistory `json:"results,omitempty"`
 }
 
 // NewDeploymentHistoryPaginatedResponseList instantiates a new DeploymentHistoryPaginatedResponseList object
@@ -90,9 +90,9 @@ func (o *DeploymentHistoryPaginatedResponseList) SetPageSize(v float32) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistoryResponse {
+func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistory {
 	if o == nil || o.Results == nil {
-		var ret []DeploymentHistoryResponse
+		var ret []DeploymentHistory
 		return ret
 	}
 	return o.Results
@@ -100,7 +100,7 @@ func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistor
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
+func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() ([]DeploymentHistory, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *DeploymentHistoryPaginatedResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
-func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse) {
+// SetResults gets a reference to the given []DeploymentHistory and assigns it to the Results field.
+func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistory) {
 	o.Results = v
 }
 

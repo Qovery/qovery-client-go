@@ -335,7 +335,7 @@ func (r ApiEditApplicationRequest) ApplicationEditRequest(applicationEditRequest
 	return r
 }
 
-func (r ApiEditApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
+func (r ApiEditApplicationRequest) Execute() (*Application, *http.Response, error) {
 	return r.ApiService.EditApplicationExecute(r)
 }
 
@@ -360,13 +360,13 @@ func (a *ApplicationMainCallsApiService) EditApplication(ctx context.Context, ap
 }
 
 // Execute executes the request
-//  @return ApplicationResponse
-func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplicationRequest) (*ApplicationResponse, *http.Response, error) {
+//  @return Application
+func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApplicationResponse
+		localVarReturnValue *Application
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.EditApplication")
@@ -443,7 +443,7 @@ type ApiGetApplicationRequest struct {
 	applicationId string
 }
 
-func (r ApiGetApplicationRequest) Execute() (*ApplicationResponse, *http.Response, error) {
+func (r ApiGetApplicationRequest) Execute() (*Application, *http.Response, error) {
 	return r.ApiService.GetApplicationExecute(r)
 }
 
@@ -463,13 +463,13 @@ func (a *ApplicationMainCallsApiService) GetApplication(ctx context.Context, app
 }
 
 // Execute executes the request
-//  @return ApplicationResponse
-func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicationRequest) (*ApplicationResponse, *http.Response, error) {
+//  @return Application
+func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApplicationResponse
+		localVarReturnValue *Application
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.GetApplication")

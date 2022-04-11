@@ -17,7 +17,7 @@ import (
 
 // ClusterFeatureResponseList struct for ClusterFeatureResponseList
 type ClusterFeatureResponseList struct {
-	Results []ClusterFeatureResponse `json:"results,omitempty"`
+	Results []ClusterFeature `json:"results,omitempty"`
 }
 
 // NewClusterFeatureResponseList instantiates a new ClusterFeatureResponseList object
@@ -38,9 +38,9 @@ func NewClusterFeatureResponseListWithDefaults() *ClusterFeatureResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClusterFeatureResponseList) GetResults() []ClusterFeatureResponse {
+func (o *ClusterFeatureResponseList) GetResults() []ClusterFeature {
 	if o == nil || o.Results == nil {
-		var ret []ClusterFeatureResponse
+		var ret []ClusterFeature
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ClusterFeatureResponseList) GetResults() []ClusterFeatureResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeatureResponseList) GetResultsOk() ([]ClusterFeatureResponse, bool) {
+func (o *ClusterFeatureResponseList) GetResultsOk() ([]ClusterFeature, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ClusterFeatureResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ClusterFeatureResponse and assigns it to the Results field.
-func (o *ClusterFeatureResponseList) SetResults(v []ClusterFeatureResponse) {
+// SetResults gets a reference to the given []ClusterFeature and assigns it to the Results field.
+func (o *ClusterFeatureResponseList) SetResults(v []ClusterFeature) {
 	o.Results = v
 }
 

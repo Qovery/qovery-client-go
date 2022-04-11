@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateEnvironment
 
-> EnvironmentResponse CreateEnvironment(ctx, projectId).EnvironmentRequest(environmentRequest).Execute()
+> Environment CreateEnvironment(ctx, projectId).EnvironmentRequest(environmentRequest).Execute()
 
 Create an environment
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsApi.CreateEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateEnvironment`: EnvironmentResponse
+    // response from `CreateEnvironment`: Environment
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentsApi.CreateEnvironment`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentResponse**](EnvironmentResponse.md)
+[**Environment**](Environment.md)
 
 ### Authorization
 

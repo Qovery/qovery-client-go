@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateApplicationSecret
 
-> SecretResponse CreateApplicationSecret(ctx, applicationId).SecretRequest(secretRequest).Execute()
+> Secret CreateApplicationSecret(ctx, applicationId).SecretRequest(secretRequest).Execute()
 
 Add a secret to the application
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecretApi.CreateApplicationSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationSecret`: SecretResponse
+    // response from `CreateApplicationSecret`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ApplicationSecretApi.CreateApplicationSecret`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CreateApplicationSecretAlias
 
-> SecretResponse CreateApplicationSecretAlias(ctx, applicationId, secretId).Key(key).Execute()
+> Secret CreateApplicationSecretAlias(ctx, applicationId, secretId).Key(key).Execute()
 
 Create a secret alias at the application level
 
@@ -117,7 +117,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecretApi.CreateApplicationSecretAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationSecretAlias`: SecretResponse
+    // response from `CreateApplicationSecretAlias`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ApplicationSecretApi.CreateApplicationSecretAlias`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## CreateApplicationSecretOverride
 
-> SecretResponse CreateApplicationSecretOverride(ctx, applicationId, secretId).Value(value).Execute()
+> Secret CreateApplicationSecretOverride(ctx, applicationId, secretId).Value(value).Execute()
 
 Create a secret override at the application level
 
@@ -192,7 +192,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecretApi.CreateApplicationSecretOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationSecretOverride`: SecretResponse
+    // response from `CreateApplicationSecretOverride`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ApplicationSecretApi.CreateApplicationSecretOverride`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## EditApplicationSecret
 
-> SecretResponse EditApplicationSecret(ctx, applicationId, secretId).SecretEditRequest(secretEditRequest).Execute()
+> Secret EditApplicationSecret(ctx, applicationId, secretId).SecretEditRequest(secretEditRequest).Execute()
 
 Edit a secret belonging to the application
 
@@ -338,7 +338,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationSecretApi.EditApplicationSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditApplicationSecret`: SecretResponse
+    // response from `EditApplicationSecret`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ApplicationSecretApi.EditApplicationSecret`: %v\n", resp)
 }
 ```
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 

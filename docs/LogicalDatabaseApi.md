@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateLogicalDatabaseOnDatabase
 
-> LogicalDatabaseResponse CreateLogicalDatabaseOnDatabase(ctx, databaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
+> LogicalDatabase CreateLogicalDatabaseOnDatabase(ctx, databaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
 
 Create a logical database on the database
 
@@ -46,7 +46,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.CreateLogicalDatabaseOnDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateLogicalDatabaseOnDatabase`: LogicalDatabaseResponse
+    // response from `CreateLogicalDatabaseOnDatabase`: LogicalDatabase
     fmt.Fprintf(os.Stdout, "Response from `LogicalDatabaseApi.CreateLogicalDatabaseOnDatabase`: %v\n", resp)
 }
 ```
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LogicalDatabaseResponse**](LogicalDatabaseResponse.md)
+[**LogicalDatabase**](LogicalDatabase.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## EditLogicalDatabase
 
-> LogicalDatabaseResponse EditLogicalDatabase(ctx, logicalDatabaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
+> LogicalDatabase EditLogicalDatabase(ctx, logicalDatabaseId).LogicalDatabaseRequest(logicalDatabaseRequest).Execute()
 
 Edit a logical database
 
@@ -184,7 +184,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.EditLogicalDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditLogicalDatabase`: LogicalDatabaseResponse
+    // response from `EditLogicalDatabase`: LogicalDatabase
     fmt.Fprintf(os.Stdout, "Response from `LogicalDatabaseApi.EditLogicalDatabase`: %v\n", resp)
 }
 ```
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LogicalDatabaseResponse**](LogicalDatabaseResponse.md)
+[**LogicalDatabase**](LogicalDatabase.md)
 
 ### Authorization
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## EditLogicalDatabaseCredentials
 
-> CredentialsResponse EditLogicalDatabaseCredentials(ctx, logicalDatabaseId).CredentialsRequest(credentialsRequest).Execute()
+> Credentials EditLogicalDatabaseCredentials(ctx, logicalDatabaseId).CredentialsRequest(credentialsRequest).Execute()
 
 Edit logical database credentials
 
@@ -254,7 +254,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.EditLogicalDatabaseCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditLogicalDatabaseCredentials`: CredentialsResponse
+    // response from `EditLogicalDatabaseCredentials`: Credentials
     fmt.Fprintf(os.Stdout, "Response from `LogicalDatabaseApi.EditLogicalDatabaseCredentials`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CredentialsResponse**](CredentialsResponse.md)
+[**Credentials**](Credentials.md)
 
 ### Authorization
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## GetLogicalDatabase
 
-> LogicalDatabaseResponse GetLogicalDatabase(ctx, logicalDatabaseId).Execute()
+> LogicalDatabase GetLogicalDatabase(ctx, logicalDatabaseId).Execute()
 
 Get logical database by ID
 
@@ -325,7 +325,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.GetLogicalDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetLogicalDatabase`: LogicalDatabaseResponse
+    // response from `GetLogicalDatabase`: LogicalDatabase
     fmt.Fprintf(os.Stdout, "Response from `LogicalDatabaseApi.GetLogicalDatabase`: %v\n", resp)
 }
 ```
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LogicalDatabaseResponse**](LogicalDatabaseResponse.md)
+[**LogicalDatabase**](LogicalDatabase.md)
 
 ### Authorization
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ## GetLogicalDatabaseCredentials
 
-> CredentialsResponse GetLogicalDatabaseCredentials(ctx, logicalDatabaseId).Execute()
+> Credentials GetLogicalDatabaseCredentials(ctx, logicalDatabaseId).Execute()
 
 Get  credentials of the logical database
 
@@ -393,7 +393,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.GetLogicalDatabaseCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetLogicalDatabaseCredentials`: CredentialsResponse
+    // response from `GetLogicalDatabaseCredentials`: Credentials
     fmt.Fprintf(os.Stdout, "Response from `LogicalDatabaseApi.GetLogicalDatabaseCredentials`: %v\n", resp)
 }
 ```
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CredentialsResponse**](CredentialsResponse.md)
+[**Credentials**](Credentials.md)
 
 ### Authorization
 

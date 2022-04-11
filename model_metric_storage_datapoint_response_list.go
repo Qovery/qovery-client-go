@@ -17,7 +17,7 @@ import (
 
 // MetricStorageDatapointResponseList struct for MetricStorageDatapointResponseList
 type MetricStorageDatapointResponseList struct {
-	Results []MetricStorageDatapointResponse `json:"results,omitempty"`
+	Results []MetricStorageDatapoint `json:"results,omitempty"`
 }
 
 // NewMetricStorageDatapointResponseList instantiates a new MetricStorageDatapointResponseList object
@@ -38,9 +38,9 @@ func NewMetricStorageDatapointResponseListWithDefaults() *MetricStorageDatapoint
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *MetricStorageDatapointResponseList) GetResults() []MetricStorageDatapointResponse {
+func (o *MetricStorageDatapointResponseList) GetResults() []MetricStorageDatapoint {
 	if o == nil || o.Results == nil {
-		var ret []MetricStorageDatapointResponse
+		var ret []MetricStorageDatapoint
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *MetricStorageDatapointResponseList) GetResults() []MetricStorageDatapoi
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricStorageDatapointResponseList) GetResultsOk() ([]MetricStorageDatapointResponse, bool) {
+func (o *MetricStorageDatapointResponseList) GetResultsOk() ([]MetricStorageDatapoint, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *MetricStorageDatapointResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []MetricStorageDatapointResponse and assigns it to the Results field.
-func (o *MetricStorageDatapointResponseList) SetResults(v []MetricStorageDatapointResponse) {
+// SetResults gets a reference to the given []MetricStorageDatapoint and assigns it to the Results field.
+func (o *MetricStorageDatapointResponseList) SetResults(v []MetricStorageDatapoint) {
 	o.Results = v
 }
 

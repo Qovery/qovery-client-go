@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ## GetUserSignUp
 
-> BaseResponse GetUserSignUp(ctx).Execute()
+> Base GetUserSignUp(ctx).Execute()
 
 Get Sign up information
 
@@ -102,7 +102,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserSignUpApi.GetUserSignUp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUserSignUp`: BaseResponse
+    // response from `GetUserSignUp`: Base
     fmt.Fprintf(os.Stdout, "Response from `UserSignUpApi.GetUserSignUp`: %v\n", resp)
 }
 ```
@@ -118,7 +118,7 @@ Other parameters are passed through a pointer to a apiGetUserSignUpRequest struc
 
 ### Return type
 
-[**BaseResponse**](BaseResponse.md)
+[**Base**](Base.md)
 
 ### Authorization
 

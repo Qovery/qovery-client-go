@@ -17,7 +17,7 @@ import (
 
 // LogResponseList struct for LogResponseList
 type LogResponseList struct {
-	Results []LogResponse `json:"results,omitempty"`
+	Results []Log `json:"results,omitempty"`
 }
 
 // NewLogResponseList instantiates a new LogResponseList object
@@ -38,9 +38,9 @@ func NewLogResponseListWithDefaults() *LogResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *LogResponseList) GetResults() []LogResponse {
+func (o *LogResponseList) GetResults() []Log {
 	if o == nil || o.Results == nil {
-		var ret []LogResponse
+		var ret []Log
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *LogResponseList) GetResults() []LogResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LogResponseList) GetResultsOk() ([]LogResponse, bool) {
+func (o *LogResponseList) GetResultsOk() ([]Log, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *LogResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []LogResponse and assigns it to the Results field.
-func (o *LogResponseList) SetResults(v []LogResponse) {
+// SetResults gets a reference to the given []Log and assigns it to the Results field.
+func (o *LogResponseList) SetResults(v []Log) {
 	o.Results = v
 }
 

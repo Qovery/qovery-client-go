@@ -17,7 +17,7 @@ import (
 
 // InvoiceResponseList struct for InvoiceResponseList
 type InvoiceResponseList struct {
-	Results []InvoiceResponse `json:"results,omitempty"`
+	Results []Invoice `json:"results,omitempty"`
 }
 
 // NewInvoiceResponseList instantiates a new InvoiceResponseList object
@@ -38,9 +38,9 @@ func NewInvoiceResponseListWithDefaults() *InvoiceResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *InvoiceResponseList) GetResults() []InvoiceResponse {
+func (o *InvoiceResponseList) GetResults() []Invoice {
 	if o == nil || o.Results == nil {
-		var ret []InvoiceResponse
+		var ret []Invoice
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *InvoiceResponseList) GetResults() []InvoiceResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InvoiceResponseList) GetResultsOk() ([]InvoiceResponse, bool) {
+func (o *InvoiceResponseList) GetResultsOk() ([]Invoice, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *InvoiceResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []InvoiceResponse and assigns it to the Results field.
-func (o *InvoiceResponseList) SetResults(v []InvoiceResponse) {
+// SetResults gets a reference to the given []Invoice and assigns it to the Results field.
+func (o *InvoiceResponseList) SetResults(v []Invoice) {
 	o.Results = v
 }
 

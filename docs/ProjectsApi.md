@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CreateProject
 
-> ProjectResponse CreateProject(ctx, organizationId).ProjectRequest(projectRequest).Execute()
+> Project CreateProject(ctx, organizationId).ProjectRequest(projectRequest).Execute()
 
 Create a project
 
@@ -39,7 +39,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProject`: ProjectResponse
+    // response from `CreateProject`: Project
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.CreateProject`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectResponse**](ProjectResponse.md)
+[**Project**](Project.md)
 
 ### Authorization
 

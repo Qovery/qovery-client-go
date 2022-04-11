@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]DatabaseConfigurationResponse**](DatabaseConfigurationResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]DatabaseConfiguration**](DatabaseConfiguration.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *DatabaseConfigurationResponseList) GetResults() []DatabaseConfigurationResponse`
+`func (o *DatabaseConfigurationResponseList) GetResults() []DatabaseConfiguration`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *DatabaseConfigurationResponseList) GetResultsOk() (*[]DatabaseConfigurationResponse, bool)`
+`func (o *DatabaseConfigurationResponseList) GetResultsOk() (*[]DatabaseConfiguration, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *DatabaseConfigurationResponseList) SetResults(v []DatabaseConfigurationResponse)`
+`func (o *DatabaseConfigurationResponseList) SetResults(v []DatabaseConfiguration)`
 
 SetResults sets Results field to given value.
 

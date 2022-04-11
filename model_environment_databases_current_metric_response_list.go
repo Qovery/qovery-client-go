@@ -17,7 +17,7 @@ import (
 
 // EnvironmentDatabasesCurrentMetricResponseList struct for EnvironmentDatabasesCurrentMetricResponseList
 type EnvironmentDatabasesCurrentMetricResponseList struct {
-	Results []EnvironmentDatabasesCurrentMetricResponse `json:"results,omitempty"`
+	Results []EnvironmentDatabasesCurrentMetric `json:"results,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetricResponseList instantiates a new EnvironmentDatabasesCurrentMetricResponseList object
@@ -38,9 +38,9 @@ func NewEnvironmentDatabasesCurrentMetricResponseListWithDefaults() *Environment
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResults() []EnvironmentDatabasesCurrentMetricResponse {
+func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResults() []EnvironmentDatabasesCurrentMetric {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentDatabasesCurrentMetricResponse
+		var ret []EnvironmentDatabasesCurrentMetric
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResults() []Environme
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResultsOk() ([]EnvironmentDatabasesCurrentMetricResponse, bool) {
+func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResultsOk() ([]EnvironmentDatabasesCurrentMetric, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentDatabasesCurrentMetricResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentDatabasesCurrentMetricResponse and assigns it to the Results field.
-func (o *EnvironmentDatabasesCurrentMetricResponseList) SetResults(v []EnvironmentDatabasesCurrentMetricResponse) {
+// SetResults gets a reference to the given []EnvironmentDatabasesCurrentMetric and assigns it to the Results field.
+func (o *EnvironmentDatabasesCurrentMetricResponseList) SetResults(v []EnvironmentDatabasesCurrentMetric) {
 	o.Results = v
 }
 

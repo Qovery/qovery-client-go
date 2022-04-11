@@ -17,7 +17,7 @@ import (
 
 // DeploymentHistoryPaginatedResponseListAllOf struct for DeploymentHistoryPaginatedResponseListAllOf
 type DeploymentHistoryPaginatedResponseListAllOf struct {
-	Results []DeploymentHistoryResponse `json:"results,omitempty"`
+	Results []DeploymentHistory `json:"results,omitempty"`
 }
 
 // NewDeploymentHistoryPaginatedResponseListAllOf instantiates a new DeploymentHistoryPaginatedResponseListAllOf object
@@ -38,9 +38,9 @@ func NewDeploymentHistoryPaginatedResponseListAllOfWithDefaults() *DeploymentHis
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResults() []DeploymentHistoryResponse {
+func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResults() []DeploymentHistory {
 	if o == nil || o.Results == nil {
-		var ret []DeploymentHistoryResponse
+		var ret []DeploymentHistory
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResults() []DeploymentH
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResultsOk() ([]DeploymentHistoryResponse, bool) {
+func (o *DeploymentHistoryPaginatedResponseListAllOf) GetResultsOk() ([]DeploymentHistory, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *DeploymentHistoryPaginatedResponseListAllOf) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DeploymentHistoryResponse and assigns it to the Results field.
-func (o *DeploymentHistoryPaginatedResponseListAllOf) SetResults(v []DeploymentHistoryResponse) {
+// SetResults gets a reference to the given []DeploymentHistory and assigns it to the Results field.
+func (o *DeploymentHistoryPaginatedResponseListAllOf) SetResults(v []DeploymentHistory) {
 	o.Results = v
 }
 

@@ -17,7 +17,7 @@ import (
 
 // DatabaseResponseList struct for DatabaseResponseList
 type DatabaseResponseList struct {
-	Results []DatabaseResponse `json:"results,omitempty"`
+	Results []Database `json:"results,omitempty"`
 }
 
 // NewDatabaseResponseList instantiates a new DatabaseResponseList object
@@ -38,9 +38,9 @@ func NewDatabaseResponseListWithDefaults() *DatabaseResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DatabaseResponseList) GetResults() []DatabaseResponse {
+func (o *DatabaseResponseList) GetResults() []Database {
 	if o == nil || o.Results == nil {
-		var ret []DatabaseResponse
+		var ret []Database
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *DatabaseResponseList) GetResults() []DatabaseResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseResponseList) GetResultsOk() ([]DatabaseResponse, bool) {
+func (o *DatabaseResponseList) GetResultsOk() ([]Database, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *DatabaseResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DatabaseResponse and assigns it to the Results field.
-func (o *DatabaseResponseList) SetResults(v []DatabaseResponse) {
+// SetResults gets a reference to the given []Database and assigns it to the Results field.
+func (o *DatabaseResponseList) SetResults(v []Database) {
 	o.Results = v
 }
 

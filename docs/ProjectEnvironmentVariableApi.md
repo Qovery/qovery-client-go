@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateProjectEnvironmentVariable
 
-> EnvironmentVariableResponse CreateProjectEnvironmentVariable(ctx, projectId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+> EnvironmentVariable CreateProjectEnvironmentVariable(ctx, projectId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
 
 Add an environment variable to the project
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProjectEnvironmentVariable`: EnvironmentVariableResponse
+    // response from `CreateProjectEnvironmentVariable`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariable`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectEnvironmentVariableAlias
 
-> EnvironmentVariableResponse CreateProjectEnvironmentVariableAlias(ctx, projectId, environmentVariableId).Key(key).Execute()
+> EnvironmentVariable CreateProjectEnvironmentVariableAlias(ctx, projectId, environmentVariableId).Key(key).Execute()
 
 Create an environment variable alias at the project level
 
@@ -117,7 +117,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProjectEnvironmentVariableAlias`: EnvironmentVariableResponse
+    // response from `CreateProjectEnvironmentVariableAlias`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableAlias`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectEnvironmentVariableOverride
 
-> EnvironmentVariableResponse CreateProjectEnvironmentVariableOverride(ctx, projectId, environmentVariableId).Value(value).Execute()
+> EnvironmentVariable CreateProjectEnvironmentVariableOverride(ctx, projectId, environmentVariableId).Value(value).Execute()
 
 Create an environment variable override at the project level
 
@@ -192,7 +192,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProjectEnvironmentVariableOverride`: EnvironmentVariableResponse
+    // response from `CreateProjectEnvironmentVariableOverride`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableApi.CreateProjectEnvironmentVariableOverride`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## EditProjectEnvironmentVariable
 
-> EnvironmentVariableResponse EditProjectEnvironmentVariable(ctx, projectId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+> EnvironmentVariable EditProjectEnvironmentVariable(ctx, projectId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
 
 Edit an environment variable belonging to the project
 
@@ -338,7 +338,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableApi.EditProjectEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditProjectEnvironmentVariable`: EnvironmentVariableResponse
+    // response from `EditProjectEnvironmentVariable`: EnvironmentVariable
     fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableApi.EditProjectEnvironmentVariable`: %v\n", resp)
 }
 ```
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentVariableResponse**](EnvironmentVariableResponse.md)
+[**EnvironmentVariable**](EnvironmentVariable.md)
 
 ### Authorization
 

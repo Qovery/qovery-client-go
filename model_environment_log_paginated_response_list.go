@@ -17,9 +17,9 @@ import (
 
 // EnvironmentLogPaginatedResponseList struct for EnvironmentLogPaginatedResponseList
 type EnvironmentLogPaginatedResponseList struct {
-	Page     float32                  `json:"page"`
-	PageSize float32                  `json:"page_size"`
-	Results  []EnvironmentLogResponse `json:"results,omitempty"`
+	Page     float32          `json:"page"`
+	PageSize float32          `json:"page_size"`
+	Results  []EnvironmentLog `json:"results,omitempty"`
 }
 
 // NewEnvironmentLogPaginatedResponseList instantiates a new EnvironmentLogPaginatedResponseList object
@@ -90,9 +90,9 @@ func (o *EnvironmentLogPaginatedResponseList) SetPageSize(v float32) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLogResponse {
+func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLog {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentLogResponse
+		var ret []EnvironmentLog
 		return ret
 	}
 	return o.Results
@@ -100,7 +100,7 @@ func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLogRespo
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() ([]EnvironmentLogResponse, bool) {
+func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() ([]EnvironmentLog, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *EnvironmentLogPaginatedResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentLogResponse and assigns it to the Results field.
-func (o *EnvironmentLogPaginatedResponseList) SetResults(v []EnvironmentLogResponse) {
+// SetResults gets a reference to the given []EnvironmentLog and assigns it to the Results field.
+func (o *EnvironmentLogPaginatedResponseList) SetResults(v []EnvironmentLog) {
 	o.Results = v
 }
 

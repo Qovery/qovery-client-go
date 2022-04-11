@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]MetricMemoryDatapointResponse**](MetricMemoryDatapointResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]MetricMemoryDatapoint**](MetricMemoryDatapoint.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *MetricMemoryDatapointResponseList) GetResults() []MetricMemoryDatapointResponse`
+`func (o *MetricMemoryDatapointResponseList) GetResults() []MetricMemoryDatapoint`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *MetricMemoryDatapointResponseList) GetResultsOk() (*[]MetricMemoryDatapointResponse, bool)`
+`func (o *MetricMemoryDatapointResponseList) GetResultsOk() (*[]MetricMemoryDatapoint, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *MetricMemoryDatapointResponseList) SetResults(v []MetricMemoryDatapointResponse)`
+`func (o *MetricMemoryDatapointResponseList) SetResults(v []MetricMemoryDatapoint)`
 
 SetResults sets Results field to given value.
 

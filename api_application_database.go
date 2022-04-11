@@ -35,7 +35,7 @@ type ApiAttachDatabasetoApplicationRequest struct {
 	targetDatabaseId string
 }
 
-func (r ApiAttachDatabasetoApplicationRequest) Execute() (*DatabaseResponse, *http.Response, error) {
+func (r ApiAttachDatabasetoApplicationRequest) Execute() (*Database, *http.Response, error) {
 	return r.ApiService.AttachDatabasetoApplicationExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *ApplicationDatabaseApiService) AttachDatabasetoApplication(ctx context.
 }
 
 // Execute executes the request
-//  @return DatabaseResponse
-func (a *ApplicationDatabaseApiService) AttachDatabasetoApplicationExecute(r ApiAttachDatabasetoApplicationRequest) (*DatabaseResponse, *http.Response, error) {
+//  @return Database
+func (a *ApplicationDatabaseApiService) AttachDatabasetoApplicationExecute(r ApiAttachDatabasetoApplicationRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseResponse
+		localVarReturnValue *Database
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.AttachDatabasetoApplication")
@@ -140,7 +140,7 @@ type ApiAttachLogicalDatabasetoApplicationRequest struct {
 	targetLogicalDatabaseId string
 }
 
-func (r ApiAttachLogicalDatabasetoApplicationRequest) Execute() (*LogicalDatabaseResponse, *http.Response, error) {
+func (r ApiAttachLogicalDatabasetoApplicationRequest) Execute() (*LogicalDatabase, *http.Response, error) {
 	return r.ApiService.AttachLogicalDatabasetoApplicationExecute(r)
 }
 
@@ -162,13 +162,13 @@ func (a *ApplicationDatabaseApiService) AttachLogicalDatabasetoApplication(ctx c
 }
 
 // Execute executes the request
-//  @return LogicalDatabaseResponse
-func (a *ApplicationDatabaseApiService) AttachLogicalDatabasetoApplicationExecute(r ApiAttachLogicalDatabasetoApplicationRequest) (*LogicalDatabaseResponse, *http.Response, error) {
+//  @return LogicalDatabase
+func (a *ApplicationDatabaseApiService) AttachLogicalDatabasetoApplicationExecute(r ApiAttachLogicalDatabasetoApplicationRequest) (*LogicalDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LogicalDatabaseResponse
+		localVarReturnValue *LogicalDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDatabaseApiService.AttachLogicalDatabasetoApplication")

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateProjectSecret
 
-> SecretResponse CreateProjectSecret(ctx, projectId).SecretRequest(secretRequest).Execute()
+> Secret CreateProjectSecret(ctx, projectId).SecretRequest(secretRequest).Execute()
 
 Add a secret to the project
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.CreateProjectSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProjectSecret`: SecretResponse
+    // response from `CreateProjectSecret`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ProjectSecretApi.CreateProjectSecret`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectSecretAlias
 
-> SecretResponse CreateProjectSecretAlias(ctx, projectId, secretId).Key(key).Execute()
+> Secret CreateProjectSecretAlias(ctx, projectId, secretId).Key(key).Execute()
 
 Create a secret alias at the project level
 
@@ -117,7 +117,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.CreateProjectSecretAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProjectSecretAlias`: SecretResponse
+    // response from `CreateProjectSecretAlias`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ProjectSecretApi.CreateProjectSecretAlias`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectSecretOverride
 
-> SecretResponse CreateProjectSecretOverride(ctx, projectId, secretId).Value(value).Execute()
+> Secret CreateProjectSecretOverride(ctx, projectId, secretId).Value(value).Execute()
 
 Create a secret override at the project level
 
@@ -192,7 +192,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.CreateProjectSecretOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateProjectSecretOverride`: SecretResponse
+    // response from `CreateProjectSecretOverride`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ProjectSecretApi.CreateProjectSecretOverride`: %v\n", resp)
 }
 ```
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## EditProjectSecret
 
-> SecretResponse EditProjectSecret(ctx, projectId, secretId).SecretEditRequest(secretEditRequest).Execute()
+> Secret EditProjectSecret(ctx, projectId, secretId).SecretEditRequest(secretEditRequest).Execute()
 
 Edit a secret belonging to the project
 
@@ -338,7 +338,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretApi.EditProjectSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditProjectSecret`: SecretResponse
+    // response from `EditProjectSecret`: Secret
     fmt.Fprintf(os.Stdout, "Response from `ProjectSecretApi.EditProjectSecret`: %v\n", resp)
 }
 ```
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 

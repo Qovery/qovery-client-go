@@ -17,7 +17,7 @@ import (
 
 // EnvironmentStatsResponseList struct for EnvironmentStatsResponseList
 type EnvironmentStatsResponseList struct {
-	Results []EnvironmentStatsResponse `json:"results,omitempty"`
+	Results []EnvironmentStats `json:"results,omitempty"`
 }
 
 // NewEnvironmentStatsResponseList instantiates a new EnvironmentStatsResponseList object
@@ -38,9 +38,9 @@ func NewEnvironmentStatsResponseListWithDefaults() *EnvironmentStatsResponseList
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentStatsResponseList) GetResults() []EnvironmentStatsResponse {
+func (o *EnvironmentStatsResponseList) GetResults() []EnvironmentStats {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentStatsResponse
+		var ret []EnvironmentStats
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentStatsResponseList) GetResults() []EnvironmentStatsResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentStatsResponseList) GetResultsOk() ([]EnvironmentStatsResponse, bool) {
+func (o *EnvironmentStatsResponseList) GetResultsOk() ([]EnvironmentStats, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentStatsResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentStatsResponse and assigns it to the Results field.
-func (o *EnvironmentStatsResponseList) SetResults(v []EnvironmentStatsResponse) {
+// SetResults gets a reference to the given []EnvironmentStats and assigns it to the Results field.
+func (o *EnvironmentStatsResponseList) SetResults(v []EnvironmentStats) {
 	o.Results = v
 }
 

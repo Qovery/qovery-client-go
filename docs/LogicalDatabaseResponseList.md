@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]LogicalDatabaseResponse**](LogicalDatabaseResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]LogicalDatabase**](LogicalDatabase.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *LogicalDatabaseResponseList) GetResults() []LogicalDatabaseResponse`
+`func (o *LogicalDatabaseResponseList) GetResults() []LogicalDatabase`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *LogicalDatabaseResponseList) GetResultsOk() (*[]LogicalDatabaseResponse, bool)`
+`func (o *LogicalDatabaseResponseList) GetResultsOk() (*[]LogicalDatabase, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *LogicalDatabaseResponseList) SetResults(v []LogicalDatabaseResponse)`
+`func (o *LogicalDatabaseResponseList) SetResults(v []LogicalDatabase)`
 
 SetResults sets Results field to given value.
 

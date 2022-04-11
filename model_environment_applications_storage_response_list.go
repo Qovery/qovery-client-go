@@ -17,7 +17,7 @@ import (
 
 // EnvironmentApplicationsStorageResponseList struct for EnvironmentApplicationsStorageResponseList
 type EnvironmentApplicationsStorageResponseList struct {
-	Results []EnvironmentApplicationsStorageResponse `json:"results,omitempty"`
+	Results []EnvironmentApplicationsStorage `json:"results,omitempty"`
 }
 
 // NewEnvironmentApplicationsStorageResponseList instantiates a new EnvironmentApplicationsStorageResponseList object
@@ -38,9 +38,9 @@ func NewEnvironmentApplicationsStorageResponseListWithDefaults() *EnvironmentApp
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentApplicationsStorageResponseList) GetResults() []EnvironmentApplicationsStorageResponse {
+func (o *EnvironmentApplicationsStorageResponseList) GetResults() []EnvironmentApplicationsStorage {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentApplicationsStorageResponse
+		var ret []EnvironmentApplicationsStorage
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentApplicationsStorageResponseList) GetResults() []EnvironmentA
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsStorageResponseList) GetResultsOk() ([]EnvironmentApplicationsStorageResponse, bool) {
+func (o *EnvironmentApplicationsStorageResponseList) GetResultsOk() ([]EnvironmentApplicationsStorage, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentApplicationsStorageResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentApplicationsStorageResponse and assigns it to the Results field.
-func (o *EnvironmentApplicationsStorageResponseList) SetResults(v []EnvironmentApplicationsStorageResponse) {
+// SetResults gets a reference to the given []EnvironmentApplicationsStorage and assigns it to the Results field.
+func (o *EnvironmentApplicationsStorageResponseList) SetResults(v []EnvironmentApplicationsStorage) {
 	o.Results = v
 }
 

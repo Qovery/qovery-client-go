@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateDeploymentRule
 
-> ProjectDeploymentRuleResponse CreateDeploymentRule(ctx, projectId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
+> ProjectDeploymentRule CreateDeploymentRule(ctx, projectId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
 
 Create a deployment rule
 
@@ -45,7 +45,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.CreateDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDeploymentRule`: ProjectDeploymentRuleResponse
+    // response from `CreateDeploymentRule`: ProjectDeploymentRule
     fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleApi.CreateDeploymentRule`: %v\n", resp)
 }
 ```
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectDeploymentRuleResponse**](ProjectDeploymentRuleResponse.md)
+[**ProjectDeploymentRule**](ProjectDeploymentRule.md)
 
 ### Authorization
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## EditProjectDeployemtnRule
 
-> ProjectDeploymentRuleResponse EditProjectDeployemtnRule(ctx, projectId, deploymentRuleId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
+> ProjectDeploymentRule EditProjectDeployemtnRule(ctx, projectId, deploymentRuleId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
 
 Edit a project deployment rule
 
@@ -190,7 +190,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.EditProjectDeployemtnRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditProjectDeployemtnRule`: ProjectDeploymentRuleResponse
+    // response from `EditProjectDeployemtnRule`: ProjectDeploymentRule
     fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleApi.EditProjectDeployemtnRule`: %v\n", resp)
 }
 ```
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectDeploymentRuleResponse**](ProjectDeploymentRuleResponse.md)
+[**ProjectDeploymentRule**](ProjectDeploymentRule.md)
 
 ### Authorization
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## GetProjectDeploymentRule
 
-> ProjectDeploymentRuleResponse GetProjectDeploymentRule(ctx, projectId, deploymentRuleId).Execute()
+> ProjectDeploymentRule GetProjectDeploymentRule(ctx, projectId, deploymentRuleId).Execute()
 
 Get a project deployment rule
 
@@ -264,7 +264,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.GetProjectDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProjectDeploymentRule`: ProjectDeploymentRuleResponse
+    // response from `GetProjectDeploymentRule`: ProjectDeploymentRule
     fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleApi.GetProjectDeploymentRule`: %v\n", resp)
 }
 ```
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectDeploymentRuleResponse**](ProjectDeploymentRuleResponse.md)
+[**ProjectDeploymentRule**](ProjectDeploymentRule.md)
 
 ### Authorization
 

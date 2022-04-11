@@ -17,7 +17,7 @@ import (
 
 // OrganizationApiTokenResponseList struct for OrganizationApiTokenResponseList
 type OrganizationApiTokenResponseList struct {
-	Results []OrganizationApiTokenResponse `json:"results,omitempty"`
+	Results []OrganizationApiToken `json:"results,omitempty"`
 }
 
 // NewOrganizationApiTokenResponseList instantiates a new OrganizationApiTokenResponseList object
@@ -38,9 +38,9 @@ func NewOrganizationApiTokenResponseListWithDefaults() *OrganizationApiTokenResp
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *OrganizationApiTokenResponseList) GetResults() []OrganizationApiTokenResponse {
+func (o *OrganizationApiTokenResponseList) GetResults() []OrganizationApiToken {
 	if o == nil || o.Results == nil {
-		var ret []OrganizationApiTokenResponse
+		var ret []OrganizationApiToken
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *OrganizationApiTokenResponseList) GetResults() []OrganizationApiTokenRe
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationApiTokenResponseList) GetResultsOk() ([]OrganizationApiTokenResponse, bool) {
+func (o *OrganizationApiTokenResponseList) GetResultsOk() ([]OrganizationApiToken, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *OrganizationApiTokenResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []OrganizationApiTokenResponse and assigns it to the Results field.
-func (o *OrganizationApiTokenResponseList) SetResults(v []OrganizationApiTokenResponse) {
+// SetResults gets a reference to the given []OrganizationApiToken and assigns it to the Results field.
+func (o *OrganizationApiTokenResponseList) SetResults(v []OrganizationApiToken) {
 	o.Results = v
 }
 

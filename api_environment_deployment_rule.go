@@ -41,7 +41,7 @@ func (r ApiEditEnvironmentDeploymentRuleRequest) EnvironmentDeploymentRuleEditRe
 	return r
 }
 
-func (r ApiEditEnvironmentDeploymentRuleRequest) Execute() (*EnvironmentDeploymentRuleResponse, *http.Response, error) {
+func (r ApiEditEnvironmentDeploymentRuleRequest) Execute() (*EnvironmentDeploymentRule, *http.Response, error) {
 	return r.ApiService.EditEnvironmentDeploymentRuleExecute(r)
 }
 
@@ -63,13 +63,13 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRule(ctx 
 }
 
 // Execute executes the request
-//  @return EnvironmentDeploymentRuleResponse
-func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecute(r ApiEditEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRuleResponse, *http.Response, error) {
+//  @return EnvironmentDeploymentRule
+func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecute(r ApiEditEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentDeploymentRuleResponse
+		localVarReturnValue *EnvironmentDeploymentRule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.EditEnvironmentDeploymentRule")
@@ -147,7 +147,7 @@ type ApiGetEnvironmentDeploymentRuleRequest struct {
 	environmentId string
 }
 
-func (r ApiGetEnvironmentDeploymentRuleRequest) Execute() (*EnvironmentDeploymentRuleResponse, *http.Response, error) {
+func (r ApiGetEnvironmentDeploymentRuleRequest) Execute() (*EnvironmentDeploymentRule, *http.Response, error) {
 	return r.ApiService.GetEnvironmentDeploymentRuleExecute(r)
 }
 
@@ -167,13 +167,13 @@ func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRule(ctx c
 }
 
 // Execute executes the request
-//  @return EnvironmentDeploymentRuleResponse
-func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecute(r ApiGetEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRuleResponse, *http.Response, error) {
+//  @return EnvironmentDeploymentRule
+func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecute(r ApiGetEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentDeploymentRuleResponse
+		localVarReturnValue *EnvironmentDeploymentRule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.GetEnvironmentDeploymentRule")

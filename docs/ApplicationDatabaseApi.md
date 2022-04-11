@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## AttachDatabasetoApplication
 
-> DatabaseResponse AttachDatabasetoApplication(ctx, applicationId, targetDatabaseId).Execute()
+> Database AttachDatabasetoApplication(ctx, applicationId, targetDatabaseId).Execute()
 
 Link a database to the application
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.AttachDatabasetoApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AttachDatabasetoApplication`: DatabaseResponse
+    // response from `AttachDatabasetoApplication`: Database
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDatabaseApi.AttachDatabasetoApplication`: %v\n", resp)
 }
 ```
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DatabaseResponse**](DatabaseResponse.md)
+[**Database**](Database.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## AttachLogicalDatabasetoApplication
 
-> LogicalDatabaseResponse AttachLogicalDatabasetoApplication(ctx, applicationId, targetLogicalDatabaseId).Execute()
+> LogicalDatabase AttachLogicalDatabasetoApplication(ctx, applicationId, targetLogicalDatabaseId).Execute()
 
 Link a logical database to the application
 
@@ -113,7 +113,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDatabaseApi.AttachLogicalDatabasetoApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AttachLogicalDatabasetoApplication`: LogicalDatabaseResponse
+    // response from `AttachLogicalDatabasetoApplication`: LogicalDatabase
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDatabaseApi.AttachLogicalDatabasetoApplication`: %v\n", resp)
 }
 ```
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LogicalDatabaseResponse**](LogicalDatabaseResponse.md)
+[**LogicalDatabase**](LogicalDatabase.md)
 
 ### Authorization
 

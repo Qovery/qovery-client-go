@@ -17,7 +17,7 @@ import (
 
 // EnvironmentVariableResponseList struct for EnvironmentVariableResponseList
 type EnvironmentVariableResponseList struct {
-	Results []EnvironmentVariableResponse `json:"results,omitempty"`
+	Results []EnvironmentVariable `json:"results,omitempty"`
 }
 
 // NewEnvironmentVariableResponseList instantiates a new EnvironmentVariableResponseList object
@@ -38,9 +38,9 @@ func NewEnvironmentVariableResponseListWithDefaults() *EnvironmentVariableRespon
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariableResponse {
+func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariable {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentVariableResponse
+		var ret []EnvironmentVariable
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariableResp
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableResponseList) GetResultsOk() ([]EnvironmentVariableResponse, bool) {
+func (o *EnvironmentVariableResponseList) GetResultsOk() ([]EnvironmentVariable, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentVariableResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentVariableResponse and assigns it to the Results field.
-func (o *EnvironmentVariableResponseList) SetResults(v []EnvironmentVariableResponse) {
+// SetResults gets a reference to the given []EnvironmentVariable and assigns it to the Results field.
+func (o *EnvironmentVariableResponseList) SetResults(v []EnvironmentVariable) {
 	o.Results = v
 }
 

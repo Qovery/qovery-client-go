@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]CreditCardResponse**](CreditCardResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]CreditCard**](CreditCard.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *CreditCardResponseList) GetResults() []CreditCardResponse`
+`func (o *CreditCardResponseList) GetResults() []CreditCard`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *CreditCardResponseList) GetResultsOk() (*[]CreditCardResponse, bool)`
+`func (o *CreditCardResponseList) GetResultsOk() (*[]CreditCard, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *CreditCardResponseList) SetResults(v []CreditCardResponse)`
+`func (o *CreditCardResponseList) SetResults(v []CreditCard)`
 
 SetResults sets Results field to given value.
 

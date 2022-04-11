@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CreateOrganizationApiToken
 
-> OrganizationApiTokenCreateResponse CreateOrganizationApiToken(ctx, organizationId).OrganizationApiTokenCreateRequest(organizationApiTokenCreateRequest).Execute()
+> OrganizationApiTokenCreate CreateOrganizationApiToken(ctx, organizationId).OrganizationApiTokenCreateRequest(organizationApiTokenCreateRequest).Execute()
 
 Create an organization api token
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenApi.CreateOrganizationApiToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateOrganizationApiToken`: OrganizationApiTokenCreateResponse
+    // response from `CreateOrganizationApiToken`: OrganizationApiTokenCreate
     fmt.Fprintf(os.Stdout, "Response from `OrganizationApiTokenApi.CreateOrganizationApiToken`: %v\n", resp)
 }
 ```
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationApiTokenCreateResponse**](OrganizationApiTokenCreateResponse.md)
+[**OrganizationApiTokenCreate**](OrganizationApiTokenCreate.md)
 
 ### Authorization
 

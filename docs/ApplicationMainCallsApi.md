@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## EditApplication
 
-> ApplicationResponse EditApplication(ctx, applicationId).ApplicationEditRequest(applicationEditRequest).Execute()
+> Application EditApplication(ctx, applicationId).ApplicationEditRequest(applicationEditRequest).Execute()
 
 Edit application
 
@@ -255,7 +255,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsApi.EditApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditApplication`: ApplicationResponse
+    // response from `EditApplication`: Application
     fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsApi.EditApplication`: %v\n", resp)
 }
 ```
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationResponse**](ApplicationResponse.md)
+[**Application**](Application.md)
 
 ### Authorization
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## GetApplication
 
-> ApplicationResponse GetApplication(ctx, applicationId).Execute()
+> Application GetApplication(ctx, applicationId).Execute()
 
 Get application by ID
 
@@ -324,7 +324,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsApi.GetApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplication`: ApplicationResponse
+    // response from `GetApplication`: Application
     fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsApi.GetApplication`: %v\n", resp)
 }
 ```
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationResponse**](ApplicationResponse.md)
+[**Application**](Application.md)
 
 ### Authorization
 

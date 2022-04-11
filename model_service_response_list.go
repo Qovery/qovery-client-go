@@ -17,7 +17,7 @@ import (
 
 // ServiceResponseList struct for ServiceResponseList
 type ServiceResponseList struct {
-	Results []ServiceResponse `json:"results,omitempty"`
+	Results []Service `json:"results,omitempty"`
 }
 
 // NewServiceResponseList instantiates a new ServiceResponseList object
@@ -38,9 +38,9 @@ func NewServiceResponseListWithDefaults() *ServiceResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ServiceResponseList) GetResults() []ServiceResponse {
+func (o *ServiceResponseList) GetResults() []Service {
 	if o == nil || o.Results == nil {
-		var ret []ServiceResponse
+		var ret []Service
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ServiceResponseList) GetResults() []ServiceResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceResponseList) GetResultsOk() ([]ServiceResponse, bool) {
+func (o *ServiceResponseList) GetResultsOk() ([]Service, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ServiceResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ServiceResponse and assigns it to the Results field.
-func (o *ServiceResponseList) SetResults(v []ServiceResponse) {
+// SetResults gets a reference to the given []Service and assigns it to the Results field.
+func (o *ServiceResponseList) SetResults(v []Service) {
 	o.Results = v
 }
 

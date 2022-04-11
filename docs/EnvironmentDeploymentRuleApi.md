@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## EditEnvironmentDeploymentRule
 
-> EnvironmentDeploymentRuleResponse EditEnvironmentDeploymentRule(ctx, environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
+> EnvironmentDeploymentRule EditEnvironmentDeploymentRule(ctx, environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
 
 Edit an environment deployment rule
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleApi.EditEnvironmentDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditEnvironmentDeploymentRule`: EnvironmentDeploymentRuleResponse
+    // response from `EditEnvironmentDeploymentRule`: EnvironmentDeploymentRule
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleApi.EditEnvironmentDeploymentRule`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentDeploymentRuleResponse**](EnvironmentDeploymentRuleResponse.md)
+[**EnvironmentDeploymentRule**](EnvironmentDeploymentRule.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## GetEnvironmentDeploymentRule
 
-> EnvironmentDeploymentRuleResponse GetEnvironmentDeploymentRule(ctx, environmentId).Execute()
+> EnvironmentDeploymentRule GetEnvironmentDeploymentRule(ctx, environmentId).Execute()
 
 Get environment deployment rule
 
@@ -111,7 +111,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleApi.GetEnvironmentDeploymentRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEnvironmentDeploymentRule`: EnvironmentDeploymentRuleResponse
+    // response from `GetEnvironmentDeploymentRule`: EnvironmentDeploymentRule
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleApi.GetEnvironmentDeploymentRule`: %v\n", resp)
 }
 ```
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentDeploymentRuleResponse**](EnvironmentDeploymentRuleResponse.md)
+[**EnvironmentDeploymentRule**](EnvironmentDeploymentRule.md)
 
 ### Authorization
 

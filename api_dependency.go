@@ -35,7 +35,7 @@ type ApiCreateApplicationDependencyRequest struct {
 	targetApplicationId string
 }
 
-func (r ApiCreateApplicationDependencyRequest) Execute() (*ApplicationResponse, *http.Response, error) {
+func (r ApiCreateApplicationDependencyRequest) Execute() (*Application, *http.Response, error) {
 	return r.ApiService.CreateApplicationDependencyExecute(r)
 }
 
@@ -59,13 +59,13 @@ func (a *DependencyApiService) CreateApplicationDependency(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return ApplicationResponse
-func (a *DependencyApiService) CreateApplicationDependencyExecute(r ApiCreateApplicationDependencyRequest) (*ApplicationResponse, *http.Response, error) {
+//  @return Application
+func (a *DependencyApiService) CreateApplicationDependencyExecute(r ApiCreateApplicationDependencyRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApplicationResponse
+		localVarReturnValue *Application
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DependencyApiService.CreateApplicationDependency")

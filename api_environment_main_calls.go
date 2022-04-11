@@ -132,7 +132,7 @@ func (r ApiEditEnvironmentRequest) EnvironmentEditRequest(environmentEditRequest
 	return r
 }
 
-func (r ApiEditEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
+func (r ApiEditEnvironmentRequest) Execute() (*Environment, *http.Response, error) {
 	return r.ApiService.EditEnvironmentExecute(r)
 }
 
@@ -154,13 +154,13 @@ func (a *EnvironmentMainCallsApiService) EditEnvironment(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return EnvironmentResponse
-func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
+//  @return Environment
+func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarReturnValue *Environment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.EditEnvironment")
@@ -237,7 +237,7 @@ type ApiGetEnvironmentRequest struct {
 	environmentId string
 }
 
-func (r ApiGetEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
+func (r ApiGetEnvironmentRequest) Execute() (*Environment, *http.Response, error) {
 	return r.ApiService.GetEnvironmentExecute(r)
 }
 
@@ -257,13 +257,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironment(ctx context.Context, env
 }
 
 // Execute executes the request
-//  @return EnvironmentResponse
-func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
+//  @return Environment
+func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarReturnValue *Environment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironment")

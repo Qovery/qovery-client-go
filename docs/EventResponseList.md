@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]EventResponse**](EventResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Event**](Event.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *EventResponseList) GetResults() []EventResponse`
+`func (o *EventResponseList) GetResults() []Event`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *EventResponseList) GetResultsOk() (*[]EventResponse, bool)`
+`func (o *EventResponseList) GetResultsOk() (*[]Event, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *EventResponseList) SetResults(v []EventResponse)`
+`func (o *EventResponseList) SetResults(v []Event)`
 
 SetResults sets Results field to given value.
 

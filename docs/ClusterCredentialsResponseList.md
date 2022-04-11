@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]ClusterCredentialsResponse**](ClusterCredentialsResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]ClusterCredentials**](ClusterCredentials.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentialsResponse`
+`func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentials`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ClusterCredentialsResponseList) GetResultsOk() (*[]ClusterCredentialsResponse, bool)`
+`func (o *ClusterCredentialsResponseList) GetResultsOk() (*[]ClusterCredentials, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ClusterCredentialsResponseList) SetResults(v []ClusterCredentialsResponse)`
+`func (o *ClusterCredentialsResponseList) SetResults(v []ClusterCredentials)`
 
 SetResults sets Results field to given value.
 

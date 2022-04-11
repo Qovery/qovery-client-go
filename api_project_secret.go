@@ -40,7 +40,7 @@ func (r ApiCreateProjectSecretRequest) SecretRequest(secretRequest SecretRequest
 	return r
 }
 
-func (r ApiCreateProjectSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateProjectSecretRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateProjectSecretExecute(r)
 }
 
@@ -65,13 +65,13 @@ func (a *ProjectSecretApiService) CreateProjectSecret(ctx context.Context, proje
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectSecretRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecret")
@@ -155,7 +155,7 @@ func (r ApiCreateProjectSecretAliasRequest) Key(key Key) ApiCreateProjectSecretA
 	return r
 }
 
-func (r ApiCreateProjectSecretAliasRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateProjectSecretAliasRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateProjectSecretAliasExecute(r)
 }
 
@@ -185,13 +185,13 @@ func (a *ProjectSecretApiService) CreateProjectSecretAlias(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreateProjectSecretAliasRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreateProjectSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecretAlias")
@@ -276,7 +276,7 @@ func (r ApiCreateProjectSecretOverrideRequest) Value(value Value) ApiCreateProje
 	return r
 }
 
-func (r ApiCreateProjectSecretOverrideRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiCreateProjectSecretOverrideRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.CreateProjectSecretOverrideExecute(r)
 }
 
@@ -305,13 +305,13 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverride(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreateProjectSecretOverrideRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreateProjectSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecretOverride")
@@ -495,7 +495,7 @@ func (r ApiEditProjectSecretRequest) SecretEditRequest(secretEditRequest SecretE
 	return r
 }
 
-func (r ApiEditProjectSecretRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r ApiEditProjectSecretRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.EditProjectSecretExecute(r)
 }
 
@@ -523,13 +523,13 @@ func (a *ProjectSecretApiService) EditProjectSecret(ctx context.Context, project
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecretRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SecretResponse
+		localVarReturnValue *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.EditProjectSecret")

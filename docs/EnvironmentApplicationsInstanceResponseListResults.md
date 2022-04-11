@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Application** | **string** |  | 
-**Instances** | [**[]InstanceResponse**](InstanceResponse.md) |  | 
+**Instances** | [**[]Instance**](Instance.md) |  | 
 
 ## Methods
 
 ### NewEnvironmentApplicationsInstanceResponseListResults
 
-`func NewEnvironmentApplicationsInstanceResponseListResults(application string, instances []InstanceResponse, ) *EnvironmentApplicationsInstanceResponseListResults`
+`func NewEnvironmentApplicationsInstanceResponseListResults(application string, instances []Instance, ) *EnvironmentApplicationsInstanceResponseListResults`
 
 NewEnvironmentApplicationsInstanceResponseListResults instantiates a new EnvironmentApplicationsInstanceResponseListResults object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetApplication sets Application field to given value.
 
 ### GetInstances
 
-`func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstances() []InstanceResponse`
+`func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstances() []Instance`
 
 GetInstances returns the Instances field if non-nil, zero value otherwise.
 
 ### GetInstancesOk
 
-`func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() (*[]InstanceResponse, bool)`
+`func (o *EnvironmentApplicationsInstanceResponseListResults) GetInstancesOk() (*[]Instance, bool)`
 
 GetInstancesOk returns a tuple with the Instances field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInstances
 
-`func (o *EnvironmentApplicationsInstanceResponseListResults) SetInstances(v []InstanceResponse)`
+`func (o *EnvironmentApplicationsInstanceResponseListResults) SetInstances(v []Instance)`
 
 SetInstances sets Instances field to given value.
 

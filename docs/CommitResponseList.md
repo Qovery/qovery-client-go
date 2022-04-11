@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]CommitResponse**](CommitResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Commit**](Commit.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *CommitResponseList) GetResults() []CommitResponse`
+`func (o *CommitResponseList) GetResults() []Commit`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *CommitResponseList) GetResultsOk() (*[]CommitResponse, bool)`
+`func (o *CommitResponseList) GetResultsOk() (*[]Commit, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *CommitResponseList) SetResults(v []CommitResponse)`
+`func (o *CommitResponseList) SetResults(v []Commit)`
 
 SetResults sets Results field to given value.
 

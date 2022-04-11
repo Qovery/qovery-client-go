@@ -17,7 +17,7 @@ import (
 
 // ReferenceObjectStatusResponseList struct for ReferenceObjectStatusResponseList
 type ReferenceObjectStatusResponseList struct {
-	Results []ReferenceObjectStatusResponse `json:"results,omitempty"`
+	Results []ReferenceObjectStatus `json:"results,omitempty"`
 }
 
 // NewReferenceObjectStatusResponseList instantiates a new ReferenceObjectStatusResponseList object
@@ -38,9 +38,9 @@ func NewReferenceObjectStatusResponseListWithDefaults() *ReferenceObjectStatusRe
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ReferenceObjectStatusResponseList) GetResults() []ReferenceObjectStatusResponse {
+func (o *ReferenceObjectStatusResponseList) GetResults() []ReferenceObjectStatus {
 	if o == nil || o.Results == nil {
-		var ret []ReferenceObjectStatusResponse
+		var ret []ReferenceObjectStatus
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ReferenceObjectStatusResponseList) GetResults() []ReferenceObjectStatus
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReferenceObjectStatusResponseList) GetResultsOk() ([]ReferenceObjectStatusResponse, bool) {
+func (o *ReferenceObjectStatusResponseList) GetResultsOk() ([]ReferenceObjectStatus, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ReferenceObjectStatusResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ReferenceObjectStatusResponse and assigns it to the Results field.
-func (o *ReferenceObjectStatusResponseList) SetResults(v []ReferenceObjectStatusResponse) {
+// SetResults gets a reference to the given []ReferenceObjectStatus and assigns it to the Results field.
+func (o *ReferenceObjectStatusResponseList) SetResults(v []ReferenceObjectStatus) {
 	o.Results = v
 }
 

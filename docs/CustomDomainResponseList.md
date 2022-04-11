@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]CustomDomainResponse**](CustomDomainResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]CustomDomain**](CustomDomain.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *CustomDomainResponseList) GetResults() []CustomDomainResponse`
+`func (o *CustomDomainResponseList) GetResults() []CustomDomain`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *CustomDomainResponseList) GetResultsOk() (*[]CustomDomainResponse, bool)`
+`func (o *CustomDomainResponseList) GetResultsOk() (*[]CustomDomain, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *CustomDomainResponseList) SetResults(v []CustomDomainResponse)`
+`func (o *CustomDomainResponseList) SetResults(v []CustomDomain)`
 
 SetResults sets Results field to given value.
 

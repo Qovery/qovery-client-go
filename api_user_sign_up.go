@@ -128,7 +128,7 @@ type ApiGetUserSignUpRequest struct {
 	ApiService *UserSignUpApiService
 }
 
-func (r ApiGetUserSignUpRequest) Execute() (*BaseResponse, *http.Response, error) {
+func (r ApiGetUserSignUpRequest) Execute() (*Base, *http.Response, error) {
 	return r.ApiService.GetUserSignUpExecute(r)
 }
 
@@ -148,13 +148,13 @@ func (a *UserSignUpApiService) GetUserSignUp(ctx context.Context) ApiGetUserSign
 }
 
 // Execute executes the request
-//  @return BaseResponse
-func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (*BaseResponse, *http.Response, error) {
+//  @return Base
+func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (*Base, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BaseResponse
+		localVarReturnValue *Base
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSignUpApiService.GetUserSignUp")

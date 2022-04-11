@@ -40,7 +40,7 @@ func (r ApiCreateProjectRequest) ProjectRequest(projectRequest ProjectRequest) A
 	return r
 }
 
-func (r ApiCreateProjectRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ApiCreateProjectRequest) Execute() (*Project, *http.Response, error) {
 	return r.ApiService.CreateProjectExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *ProjectsApiService) CreateProject(ctx context.Context, organizationId s
 }
 
 // Execute executes the request
-//  @return ProjectResponse
-func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*ProjectResponse, *http.Response, error) {
+//  @return Project
+func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ProjectResponse
+		localVarReturnValue *Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.CreateProject")

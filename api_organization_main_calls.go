@@ -39,7 +39,7 @@ func (r ApiCreateOrganizationRequest) OrganizationRequest(organizationRequest Or
 	return r
 }
 
-func (r ApiCreateOrganizationRequest) Execute() (*OrganizationResponse, *http.Response, error) {
+func (r ApiCreateOrganizationRequest) Execute() (*Organization, *http.Response, error) {
 	return r.ApiService.CreateOrganizationExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *OrganizationMainCallsApiService) CreateOrganization(ctx context.Context
 }
 
 // Execute executes the request
-//  @return OrganizationResponse
-func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateOrganizationRequest) (*OrganizationResponse, *http.Response, error) {
+//  @return Organization
+func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationResponse
+		localVarReturnValue *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.CreateOrganization")
@@ -237,7 +237,7 @@ func (r ApiEditOrganizationRequest) OrganizationEditRequest(organizationEditRequ
 	return r
 }
 
-func (r ApiEditOrganizationRequest) Execute() (*OrganizationResponse, *http.Response, error) {
+func (r ApiEditOrganizationRequest) Execute() (*Organization, *http.Response, error) {
 	return r.ApiService.EditOrganizationExecute(r)
 }
 
@@ -259,13 +259,13 @@ func (a *OrganizationMainCallsApiService) EditOrganization(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return OrganizationResponse
-func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrganizationRequest) (*OrganizationResponse, *http.Response, error) {
+//  @return Organization
+func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationResponse
+		localVarReturnValue *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.EditOrganization")
@@ -342,7 +342,7 @@ type ApiGetOrganizationRequest struct {
 	organizationId string
 }
 
-func (r ApiGetOrganizationRequest) Execute() (*OrganizationResponse, *http.Response, error) {
+func (r ApiGetOrganizationRequest) Execute() (*Organization, *http.Response, error) {
 	return r.ApiService.GetOrganizationExecute(r)
 }
 
@@ -362,13 +362,13 @@ func (a *OrganizationMainCallsApiService) GetOrganization(ctx context.Context, o
 }
 
 // Execute executes the request
-//  @return OrganizationResponse
-func (a *OrganizationMainCallsApiService) GetOrganizationExecute(r ApiGetOrganizationRequest) (*OrganizationResponse, *http.Response, error) {
+//  @return Organization
+func (a *OrganizationMainCallsApiService) GetOrganizationExecute(r ApiGetOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationResponse
+		localVarReturnValue *Organization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.GetOrganization")

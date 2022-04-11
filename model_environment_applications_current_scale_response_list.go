@@ -17,7 +17,7 @@ import (
 
 // EnvironmentApplicationsCurrentScaleResponseList struct for EnvironmentApplicationsCurrentScaleResponseList
 type EnvironmentApplicationsCurrentScaleResponseList struct {
-	Results []EnvironmentApplicationsCurrentScaleResponse `json:"results,omitempty"`
+	Results []EnvironmentApplicationsCurrentScale `json:"results,omitempty"`
 }
 
 // NewEnvironmentApplicationsCurrentScaleResponseList instantiates a new EnvironmentApplicationsCurrentScaleResponseList object
@@ -38,9 +38,9 @@ func NewEnvironmentApplicationsCurrentScaleResponseListWithDefaults() *Environme
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResults() []EnvironmentApplicationsCurrentScaleResponse {
+func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResults() []EnvironmentApplicationsCurrentScale {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentApplicationsCurrentScaleResponse
+		var ret []EnvironmentApplicationsCurrentScale
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResults() []Environ
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResultsOk() ([]EnvironmentApplicationsCurrentScaleResponse, bool) {
+func (o *EnvironmentApplicationsCurrentScaleResponseList) GetResultsOk() ([]EnvironmentApplicationsCurrentScale, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentApplicationsCurrentScaleResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentApplicationsCurrentScaleResponse and assigns it to the Results field.
-func (o *EnvironmentApplicationsCurrentScaleResponseList) SetResults(v []EnvironmentApplicationsCurrentScaleResponse) {
+// SetResults gets a reference to the given []EnvironmentApplicationsCurrentScale and assigns it to the Results field.
+func (o *EnvironmentApplicationsCurrentScaleResponseList) SetResults(v []EnvironmentApplicationsCurrentScale) {
 	o.Results = v
 }
 

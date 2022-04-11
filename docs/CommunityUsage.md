@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CommunityUsage** | Pointer to [**CommunityUsageResponse**](CommunityUsageResponse.md) |  | [optional] 
+**Projects** | Pointer to [**[]ProjectCurrentCost**](ProjectCurrentCost.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewCommunityUsageWithDefaults instantiates a new CommunityUsage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCommunityUsage
+### GetProjects
 
-`func (o *CommunityUsage) GetCommunityUsage() CommunityUsageResponse`
+`func (o *CommunityUsage) GetProjects() []ProjectCurrentCost`
 
-GetCommunityUsage returns the CommunityUsage field if non-nil, zero value otherwise.
+GetProjects returns the Projects field if non-nil, zero value otherwise.
 
-### GetCommunityUsageOk
+### GetProjectsOk
 
-`func (o *CommunityUsage) GetCommunityUsageOk() (*CommunityUsageResponse, bool)`
+`func (o *CommunityUsage) GetProjectsOk() (*[]ProjectCurrentCost, bool)`
 
-GetCommunityUsageOk returns a tuple with the CommunityUsage field if it's non-nil, zero value otherwise
+GetProjectsOk returns a tuple with the Projects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCommunityUsage
+### SetProjects
 
-`func (o *CommunityUsage) SetCommunityUsage(v CommunityUsageResponse)`
+`func (o *CommunityUsage) SetProjects(v []ProjectCurrentCost)`
 
-SetCommunityUsage sets CommunityUsage field to given value.
+SetProjects sets Projects field to given value.
 
-### HasCommunityUsage
+### HasProjects
 
-`func (o *CommunityUsage) HasCommunityUsage() bool`
+`func (o *CommunityUsage) HasProjects() bool`
 
-HasCommunityUsage returns a boolean if a field has been set.
+HasProjects returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

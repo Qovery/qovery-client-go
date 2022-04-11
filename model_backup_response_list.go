@@ -17,7 +17,7 @@ import (
 
 // BackupResponseList struct for BackupResponseList
 type BackupResponseList struct {
-	Results []BackupResponse `json:"results,omitempty"`
+	Results []Backup `json:"results,omitempty"`
 }
 
 // NewBackupResponseList instantiates a new BackupResponseList object
@@ -38,9 +38,9 @@ func NewBackupResponseListWithDefaults() *BackupResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *BackupResponseList) GetResults() []BackupResponse {
+func (o *BackupResponseList) GetResults() []Backup {
 	if o == nil || o.Results == nil {
-		var ret []BackupResponse
+		var ret []Backup
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *BackupResponseList) GetResults() []BackupResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupResponseList) GetResultsOk() ([]BackupResponse, bool) {
+func (o *BackupResponseList) GetResultsOk() ([]Backup, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *BackupResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []BackupResponse and assigns it to the Results field.
-func (o *BackupResponseList) SetResults(v []BackupResponse) {
+// SetResults gets a reference to the given []Backup and assigns it to the Results field.
+func (o *BackupResponseList) SetResults(v []Backup) {
 	o.Results = v
 }
 

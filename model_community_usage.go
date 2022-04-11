@@ -17,7 +17,7 @@ import (
 
 // CommunityUsage struct for CommunityUsage
 type CommunityUsage struct {
-	CommunityUsage *CommunityUsageResponse `json:"community_usage,omitempty"`
+	Projects []ProjectCurrentCost `json:"projects,omitempty"`
 }
 
 // NewCommunityUsage instantiates a new CommunityUsage object
@@ -37,42 +37,42 @@ func NewCommunityUsageWithDefaults() *CommunityUsage {
 	return &this
 }
 
-// GetCommunityUsage returns the CommunityUsage field value if set, zero value otherwise.
-func (o *CommunityUsage) GetCommunityUsage() CommunityUsageResponse {
-	if o == nil || o.CommunityUsage == nil {
-		var ret CommunityUsageResponse
+// GetProjects returns the Projects field value if set, zero value otherwise.
+func (o *CommunityUsage) GetProjects() []ProjectCurrentCost {
+	if o == nil || o.Projects == nil {
+		var ret []ProjectCurrentCost
 		return ret
 	}
-	return *o.CommunityUsage
+	return o.Projects
 }
 
-// GetCommunityUsageOk returns a tuple with the CommunityUsage field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommunityUsage) GetCommunityUsageOk() (*CommunityUsageResponse, bool) {
-	if o == nil || o.CommunityUsage == nil {
+func (o *CommunityUsage) GetProjectsOk() ([]ProjectCurrentCost, bool) {
+	if o == nil || o.Projects == nil {
 		return nil, false
 	}
-	return o.CommunityUsage, true
+	return o.Projects, true
 }
 
-// HasCommunityUsage returns a boolean if a field has been set.
-func (o *CommunityUsage) HasCommunityUsage() bool {
-	if o != nil && o.CommunityUsage != nil {
+// HasProjects returns a boolean if a field has been set.
+func (o *CommunityUsage) HasProjects() bool {
+	if o != nil && o.Projects != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCommunityUsage gets a reference to the given CommunityUsageResponse and assigns it to the CommunityUsage field.
-func (o *CommunityUsage) SetCommunityUsage(v CommunityUsageResponse) {
-	o.CommunityUsage = &v
+// SetProjects gets a reference to the given []ProjectCurrentCost and assigns it to the Projects field.
+func (o *CommunityUsage) SetProjects(v []ProjectCurrentCost) {
+	o.Projects = v
 }
 
 func (o CommunityUsage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CommunityUsage != nil {
-		toSerialize["community_usage"] = o.CommunityUsage
+	if o.Projects != nil {
+		toSerialize["projects"] = o.Projects
 	}
 	return json.Marshal(toSerialize)
 }

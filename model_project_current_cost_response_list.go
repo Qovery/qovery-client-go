@@ -17,7 +17,7 @@ import (
 
 // ProjectCurrentCostResponseList struct for ProjectCurrentCostResponseList
 type ProjectCurrentCostResponseList struct {
-	Projects []ProjectCurrentCostResponse `json:"projects,omitempty"`
+	Projects []ProjectCurrentCost `json:"projects,omitempty"`
 }
 
 // NewProjectCurrentCostResponseList instantiates a new ProjectCurrentCostResponseList object
@@ -38,9 +38,9 @@ func NewProjectCurrentCostResponseListWithDefaults() *ProjectCurrentCostResponse
 }
 
 // GetProjects returns the Projects field value if set, zero value otherwise.
-func (o *ProjectCurrentCostResponseList) GetProjects() []ProjectCurrentCostResponse {
+func (o *ProjectCurrentCostResponseList) GetProjects() []ProjectCurrentCost {
 	if o == nil || o.Projects == nil {
-		var ret []ProjectCurrentCostResponse
+		var ret []ProjectCurrentCost
 		return ret
 	}
 	return o.Projects
@@ -48,7 +48,7 @@ func (o *ProjectCurrentCostResponseList) GetProjects() []ProjectCurrentCostRespo
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectCurrentCostResponseList) GetProjectsOk() ([]ProjectCurrentCostResponse, bool) {
+func (o *ProjectCurrentCostResponseList) GetProjectsOk() ([]ProjectCurrentCost, bool) {
 	if o == nil || o.Projects == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ProjectCurrentCostResponseList) HasProjects() bool {
 	return false
 }
 
-// SetProjects gets a reference to the given []ProjectCurrentCostResponse and assigns it to the Projects field.
-func (o *ProjectCurrentCostResponseList) SetProjects(v []ProjectCurrentCostResponse) {
+// SetProjects gets a reference to the given []ProjectCurrentCost and assigns it to the Projects field.
+func (o *ProjectCurrentCostResponseList) SetProjects(v []ProjectCurrentCost) {
 	o.Projects = v
 }
 

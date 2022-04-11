@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## AddCreditCard
 
-> CreditCardResponse AddCreditCard(ctx, organizationId).CreditCardRequest(creditCardRequest).Execute()
+> CreditCard AddCreditCard(ctx, organizationId).CreditCardRequest(creditCardRequest).Execute()
 
 Add credit card
 
@@ -49,7 +49,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.AddCreditCard``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddCreditCard`: CreditCardResponse
+    // response from `AddCreditCard`: CreditCard
     fmt.Fprintf(os.Stdout, "Response from `BillingApi.AddCreditCard`: %v\n", resp)
 }
 ```
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreditCardResponse**](CreditCardResponse.md)
+[**CreditCard**](CreditCard.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationBillingInfo
 
-> BillingInfoResponse EditOrganizationBillingInfo(ctx, organizationId).BillingInfoRequest(billingInfoRequest).Execute()
+> BillingInfo EditOrganizationBillingInfo(ctx, organizationId).BillingInfoRequest(billingInfoRequest).Execute()
 
 Edit Organization Billing Info
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.EditOrganizationBillingInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditOrganizationBillingInfo`: BillingInfoResponse
+    // response from `EditOrganizationBillingInfo`: BillingInfo
     fmt.Fprintf(os.Stdout, "Response from `BillingApi.EditOrganizationBillingInfo`: %v\n", resp)
 }
 ```
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BillingInfoResponse**](BillingInfoResponse.md)
+[**BillingInfo**](BillingInfo.md)
 
 ### Authorization
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterCurrentCost
 
-> CostRangeResponse GetClusterCurrentCost(ctx, organizationId, clusterId).Execute()
+> CostRange GetClusterCurrentCost(ctx, organizationId, clusterId).Execute()
 
 Get cluster current cost
 
@@ -328,7 +328,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetClusterCurrentCost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClusterCurrentCost`: CostRangeResponse
+    // response from `GetClusterCurrentCost`: CostRange
     fmt.Fprintf(os.Stdout, "Response from `BillingApi.GetClusterCurrentCost`: %v\n", resp)
 }
 ```
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CostRangeResponse**](CostRangeResponse.md)
+[**CostRange**](CostRange.md)
 
 ### Authorization
 
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationBillingInfo
 
-> BillingInfoResponse GetOrganizationBillingInfo(ctx, organizationId).Execute()
+> BillingInfo GetOrganizationBillingInfo(ctx, organizationId).Execute()
 
 Get organization billing info
 
@@ -398,7 +398,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationBillingInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationBillingInfo`: BillingInfoResponse
+    // response from `GetOrganizationBillingInfo`: BillingInfo
     fmt.Fprintf(os.Stdout, "Response from `BillingApi.GetOrganizationBillingInfo`: %v\n", resp)
 }
 ```
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BillingInfoResponse**](BillingInfoResponse.md)
+[**BillingInfo**](BillingInfo.md)
 
 ### Authorization
 
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationCurrentCost
 
-> OrganizationCurrentCostResponse GetOrganizationCurrentCost(ctx, organizationId).Execute()
+> OrganizationCurrentCost GetOrganizationCurrentCost(ctx, organizationId).Execute()
 
 Get organization current cost
 
@@ -536,7 +536,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationCurrentCost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationCurrentCost`: OrganizationCurrentCostResponse
+    // response from `GetOrganizationCurrentCost`: OrganizationCurrentCost
     fmt.Fprintf(os.Stdout, "Response from `BillingApi.GetOrganizationCurrentCost`: %v\n", resp)
 }
 ```
@@ -560,7 +560,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationCurrentCostResponse**](OrganizationCurrentCostResponse.md)
+[**OrganizationCurrentCost**](OrganizationCurrentCost.md)
 
 ### Authorization
 
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationInvoice
 
-> InvoiceResponse GetOrganizationInvoice(ctx, organizationId, invoiceId).Execute()
+> Invoice GetOrganizationInvoice(ctx, organizationId, invoiceId).Execute()
 
 Get organization invoice
 
@@ -605,7 +605,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationInvoice``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationInvoice`: InvoiceResponse
+    // response from `GetOrganizationInvoice`: Invoice
     fmt.Fprintf(os.Stdout, "Response from `BillingApi.GetOrganizationInvoice`: %v\n", resp)
 }
 ```
@@ -631,7 +631,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InvoiceResponse**](InvoiceResponse.md)
+[**Invoice**](Invoice.md)
 
 ### Authorization
 
@@ -649,7 +649,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationInvoicePDF
 
-> LinkResponse GetOrganizationInvoicePDF(ctx, organizationId, invoiceId).Execute()
+> Link GetOrganizationInvoicePDF(ctx, organizationId, invoiceId).Execute()
 
 Get invoice link
 
@@ -678,7 +678,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.GetOrganizationInvoicePDF``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationInvoicePDF`: LinkResponse
+    // response from `GetOrganizationInvoicePDF`: Link
     fmt.Fprintf(os.Stdout, "Response from `BillingApi.GetOrganizationInvoicePDF`: %v\n", resp)
 }
 ```
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LinkResponse**](LinkResponse.md)
+[**Link**](Link.md)
 
 ### Authorization
 

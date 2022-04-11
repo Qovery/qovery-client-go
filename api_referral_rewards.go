@@ -32,7 +32,7 @@ type ApiGetAccountReferralRequest struct {
 	ApiService *ReferralRewardsApiService
 }
 
-func (r ApiGetAccountReferralRequest) Execute() (*ReferralResponse, *http.Response, error) {
+func (r ApiGetAccountReferralRequest) Execute() (*Referral, *http.Response, error) {
 	return r.ApiService.GetAccountReferralExecute(r)
 }
 
@@ -50,13 +50,13 @@ func (a *ReferralRewardsApiService) GetAccountReferral(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return ReferralResponse
-func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountReferralRequest) (*ReferralResponse, *http.Response, error) {
+//  @return Referral
+func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountReferralRequest) (*Referral, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ReferralResponse
+		localVarReturnValue *Referral
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferralRewardsApiService.GetAccountReferral")
@@ -125,13 +125,13 @@ func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountRef
 }
 
 type ApiPostAccountRewardClaimRequest struct {
-	ctx                 context.Context
-	ApiService          *ReferralRewardsApiService
-	rewardClaimResponse *RewardClaimResponse
+	ctx         context.Context
+	ApiService  *ReferralRewardsApiService
+	rewardClaim *RewardClaim
 }
 
-func (r ApiPostAccountRewardClaimRequest) RewardClaimResponse(rewardClaimResponse RewardClaimResponse) ApiPostAccountRewardClaimRequest {
-	r.rewardClaimResponse = &rewardClaimResponse
+func (r ApiPostAccountRewardClaimRequest) RewardClaim(rewardClaim RewardClaim) ApiPostAccountRewardClaimRequest {
+	r.rewardClaim = &rewardClaim
 	return r
 }
 
@@ -191,7 +191,7 @@ func (a *ReferralRewardsApiService) PostAccountRewardClaimExecute(r ApiPostAccou
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rewardClaimResponse
+	localVarPostBody = r.rewardClaim
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

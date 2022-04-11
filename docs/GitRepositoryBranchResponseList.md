@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]GitRepositoryBranchResponse**](GitRepositoryBranchResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]GitRepositoryBranch**](GitRepositoryBranch.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *GitRepositoryBranchResponseList) GetResults() []GitRepositoryBranchResponse`
+`func (o *GitRepositoryBranchResponseList) GetResults() []GitRepositoryBranch`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *GitRepositoryBranchResponseList) GetResultsOk() (*[]GitRepositoryBranchResponse, bool)`
+`func (o *GitRepositoryBranchResponseList) GetResultsOk() (*[]GitRepositoryBranch, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *GitRepositoryBranchResponseList) SetResults(v []GitRepositoryBranchResponse)`
+`func (o *GitRepositoryBranchResponseList) SetResults(v []GitRepositoryBranch)`
 
 SetResults sets Results field to given value.
 

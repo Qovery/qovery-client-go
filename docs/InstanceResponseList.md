@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]InstanceResponse**](InstanceResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Instance**](Instance.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *InstanceResponseList) GetResults() []InstanceResponse`
+`func (o *InstanceResponseList) GetResults() []Instance`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *InstanceResponseList) GetResultsOk() (*[]InstanceResponse, bool)`
+`func (o *InstanceResponseList) GetResultsOk() (*[]Instance, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *InstanceResponseList) SetResults(v []InstanceResponse)`
+`func (o *InstanceResponseList) SetResults(v []Instance)`
 
 SetResults sets Results field to given value.
 

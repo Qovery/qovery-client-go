@@ -34,7 +34,7 @@ type ApiGetDatabaseCurrentMetricRequest struct {
 	databaseId string
 }
 
-func (r ApiGetDatabaseCurrentMetricRequest) Execute() (*DatabaseCurrentMetricResponse, *http.Response, error) {
+func (r ApiGetDatabaseCurrentMetricRequest) Execute() (*DatabaseCurrentMetric, *http.Response, error) {
 	return r.ApiService.GetDatabaseCurrentMetricExecute(r)
 }
 
@@ -54,13 +54,13 @@ func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetric(ctx context.Context
 }
 
 // Execute executes the request
-//  @return DatabaseCurrentMetricResponse
-func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetDatabaseCurrentMetricRequest) (*DatabaseCurrentMetricResponse, *http.Response, error) {
+//  @return DatabaseCurrentMetric
+func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetDatabaseCurrentMetricRequest) (*DatabaseCurrentMetric, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseCurrentMetricResponse
+		localVarReturnValue *DatabaseCurrentMetric
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseCurrentMetric")
@@ -480,7 +480,7 @@ func (r ApiGetDatabaseMetricRestartRequest) LastSeconds(lastSeconds float32) Api
 	return r
 }
 
-func (r ApiGetDatabaseMetricRestartRequest) Execute() (*MetricRestartResponse, *http.Response, error) {
+func (r ApiGetDatabaseMetricRestartRequest) Execute() (*MetricRestart, *http.Response, error) {
 	return r.ApiService.GetDatabaseMetricRestartExecute(r)
 }
 
@@ -502,13 +502,13 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricRestart(ctx context.Context
 }
 
 // Execute executes the request
-//  @return MetricRestartResponse
-func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetDatabaseMetricRestartRequest) (*MetricRestartResponse, *http.Response, error) {
+//  @return MetricRestart
+func (a *DatabaseMetricsApiService) GetDatabaseMetricRestartExecute(r ApiGetDatabaseMetricRestartRequest) (*MetricRestart, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *MetricRestartResponse
+		localVarReturnValue *MetricRestart
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseMetricsApiService.GetDatabaseMetricRestart")

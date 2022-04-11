@@ -17,7 +17,7 @@ import (
 
 // MetricGenericResponseList struct for MetricGenericResponseList
 type MetricGenericResponseList struct {
-	Results []MetricGenericResponse `json:"results,omitempty"`
+	Results []MetricGeneric `json:"results,omitempty"`
 }
 
 // NewMetricGenericResponseList instantiates a new MetricGenericResponseList object
@@ -38,9 +38,9 @@ func NewMetricGenericResponseListWithDefaults() *MetricGenericResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *MetricGenericResponseList) GetResults() []MetricGenericResponse {
+func (o *MetricGenericResponseList) GetResults() []MetricGeneric {
 	if o == nil || o.Results == nil {
-		var ret []MetricGenericResponse
+		var ret []MetricGeneric
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *MetricGenericResponseList) GetResults() []MetricGenericResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricGenericResponseList) GetResultsOk() ([]MetricGenericResponse, bool) {
+func (o *MetricGenericResponseList) GetResultsOk() ([]MetricGeneric, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *MetricGenericResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []MetricGenericResponse and assigns it to the Results field.
-func (o *MetricGenericResponseList) SetResults(v []MetricGenericResponse) {
+// SetResults gets a reference to the given []MetricGeneric and assigns it to the Results field.
+func (o *MetricGenericResponseList) SetResults(v []MetricGeneric) {
 	o.Results = v
 }
 

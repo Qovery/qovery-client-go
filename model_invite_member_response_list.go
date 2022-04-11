@@ -17,7 +17,7 @@ import (
 
 // InviteMemberResponseList struct for InviteMemberResponseList
 type InviteMemberResponseList struct {
-	Results []InviteMemberResponse `json:"results,omitempty"`
+	Results []InviteMember `json:"results,omitempty"`
 }
 
 // NewInviteMemberResponseList instantiates a new InviteMemberResponseList object
@@ -38,9 +38,9 @@ func NewInviteMemberResponseListWithDefaults() *InviteMemberResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *InviteMemberResponseList) GetResults() []InviteMemberResponse {
+func (o *InviteMemberResponseList) GetResults() []InviteMember {
 	if o == nil || o.Results == nil {
-		var ret []InviteMemberResponse
+		var ret []InviteMember
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *InviteMemberResponseList) GetResults() []InviteMemberResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InviteMemberResponseList) GetResultsOk() ([]InviteMemberResponse, bool) {
+func (o *InviteMemberResponseList) GetResultsOk() ([]InviteMember, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *InviteMemberResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []InviteMemberResponse and assigns it to the Results field.
-func (o *InviteMemberResponseList) SetResults(v []InviteMemberResponse) {
+// SetResults gets a reference to the given []InviteMember and assigns it to the Results field.
+func (o *InviteMemberResponseList) SetResults(v []InviteMember) {
 	o.Results = v
 }
 

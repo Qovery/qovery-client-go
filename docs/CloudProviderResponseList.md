@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]CloudProviderResponse**](CloudProviderResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]CloudProvider**](CloudProvider.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *CloudProviderResponseList) GetResults() []CloudProviderResponse`
+`func (o *CloudProviderResponseList) GetResults() []CloudProvider`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *CloudProviderResponseList) GetResultsOk() (*[]CloudProviderResponse, bool)`
+`func (o *CloudProviderResponseList) GetResultsOk() (*[]CloudProvider, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *CloudProviderResponseList) SetResults(v []CloudProviderResponse)`
+`func (o *CloudProviderResponseList) SetResults(v []CloudProvider)`
 
 SetResults sets Results field to given value.
 

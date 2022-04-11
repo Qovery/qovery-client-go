@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]VersionResponse**](VersionResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Version**](Version.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *VersionResponseList) GetResults() []VersionResponse`
+`func (o *VersionResponseList) GetResults() []Version`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *VersionResponseList) GetResultsOk() (*[]VersionResponse, bool)`
+`func (o *VersionResponseList) GetResultsOk() (*[]Version, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *VersionResponseList) SetResults(v []VersionResponse)`
+`func (o *VersionResponseList) SetResults(v []Version)`
 
 SetResults sets Results field to given value.
 

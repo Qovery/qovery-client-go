@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateOrganization
 
-> OrganizationResponse CreateOrganization(ctx).OrganizationRequest(organizationRequest).Execute()
+> Organization CreateOrganization(ctx).OrganizationRequest(organizationRequest).Execute()
 
 Create an organization
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsApi.CreateOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateOrganization`: OrganizationResponse
+    // response from `CreateOrganization`: Organization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsApi.CreateOrganization`: %v\n", resp)
 }
 ```
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationResponse**](OrganizationResponse.md)
+[**Organization**](Organization.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganization
 
-> OrganizationResponse EditOrganization(ctx, organizationId).OrganizationEditRequest(organizationEditRequest).Execute()
+> Organization EditOrganization(ctx, organizationId).OrganizationEditRequest(organizationEditRequest).Execute()
 
 Edit an organization
 
@@ -175,7 +175,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsApi.EditOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditOrganization`: OrganizationResponse
+    // response from `EditOrganization`: Organization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsApi.EditOrganization`: %v\n", resp)
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationResponse**](OrganizationResponse.md)
+[**Organization**](Organization.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganization
 
-> OrganizationResponse GetOrganization(ctx, organizationId).Execute()
+> Organization GetOrganization(ctx, organizationId).Execute()
 
 Get organization by ID
 
@@ -244,7 +244,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsApi.GetOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganization`: OrganizationResponse
+    // response from `GetOrganization`: Organization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsApi.GetOrganization`: %v\n", resp)
 }
 ```
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationResponse**](OrganizationResponse.md)
+[**Organization**](Organization.md)
 
 ### Authorization
 

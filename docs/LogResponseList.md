@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]LogResponse**](LogResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]Log**](Log.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *LogResponseList) GetResults() []LogResponse`
+`func (o *LogResponseList) GetResults() []Log`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *LogResponseList) GetResultsOk() (*[]LogResponse, bool)`
+`func (o *LogResponseList) GetResultsOk() (*[]Log, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *LogResponseList) SetResults(v []LogResponse)`
+`func (o *LogResponseList) SetResults(v []Log)`
 
 SetResults sets Results field to given value.
 

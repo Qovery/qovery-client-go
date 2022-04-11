@@ -17,7 +17,7 @@ import (
 
 // LogicalDatabaseResponseList struct for LogicalDatabaseResponseList
 type LogicalDatabaseResponseList struct {
-	Results []LogicalDatabaseResponse `json:"results,omitempty"`
+	Results []LogicalDatabase `json:"results,omitempty"`
 }
 
 // NewLogicalDatabaseResponseList instantiates a new LogicalDatabaseResponseList object
@@ -38,9 +38,9 @@ func NewLogicalDatabaseResponseListWithDefaults() *LogicalDatabaseResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *LogicalDatabaseResponseList) GetResults() []LogicalDatabaseResponse {
+func (o *LogicalDatabaseResponseList) GetResults() []LogicalDatabase {
 	if o == nil || o.Results == nil {
-		var ret []LogicalDatabaseResponse
+		var ret []LogicalDatabase
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *LogicalDatabaseResponseList) GetResults() []LogicalDatabaseResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LogicalDatabaseResponseList) GetResultsOk() ([]LogicalDatabaseResponse, bool) {
+func (o *LogicalDatabaseResponseList) GetResultsOk() ([]LogicalDatabase, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *LogicalDatabaseResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []LogicalDatabaseResponse and assigns it to the Results field.
-func (o *LogicalDatabaseResponseList) SetResults(v []LogicalDatabaseResponse) {
+// SetResults gets a reference to the given []LogicalDatabase and assigns it to the Results field.
+func (o *LogicalDatabaseResponseList) SetResults(v []LogicalDatabase) {
 	o.Results = v
 }
 

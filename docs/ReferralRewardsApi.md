@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetAccountReferral
 
-> ReferralResponse GetAccountReferral(ctx).Execute()
+> Referral GetAccountReferral(ctx).Execute()
 
 Get your referral information
 
@@ -36,7 +36,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ReferralRewardsApi.GetAccountReferral``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAccountReferral`: ReferralResponse
+    // response from `GetAccountReferral`: Referral
     fmt.Fprintf(os.Stdout, "Response from `ReferralRewardsApi.GetAccountReferral`: %v\n", resp)
 }
 ```
@@ -52,7 +52,7 @@ Other parameters are passed through a pointer to a apiGetAccountReferralRequest 
 
 ### Return type
 
-[**ReferralResponse**](ReferralResponse.md)
+[**Referral**](Referral.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ Other parameters are passed through a pointer to a apiGetAccountReferralRequest 
 
 ## PostAccountRewardClaim
 
-> PostAccountRewardClaim(ctx).RewardClaimResponse(rewardClaimResponse).Execute()
+> PostAccountRewardClaim(ctx).RewardClaim(rewardClaim).Execute()
 
 Claim a reward
 
@@ -89,11 +89,11 @@ import (
 )
 
 func main() {
-    rewardClaimResponse := *openapiclient.NewRewardClaimResponse() // RewardClaimResponse |  (optional)
+    rewardClaim := *openapiclient.NewRewardClaim() // RewardClaim |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReferralRewardsApi.PostAccountRewardClaim(context.Background()).RewardClaimResponse(rewardClaimResponse).Execute()
+    resp, r, err := apiClient.ReferralRewardsApi.PostAccountRewardClaim(context.Background()).RewardClaim(rewardClaim).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ReferralRewardsApi.PostAccountRewardClaim``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -112,7 +112,7 @@ Other parameters are passed through a pointer to a apiPostAccountRewardClaimRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **rewardClaimResponse** | [**RewardClaimResponse**](RewardClaimResponse.md) |  | 
+ **rewardClaim** | [**RewardClaim**](RewardClaim.md) |  | 
 
 ### Return type
 

@@ -40,7 +40,7 @@ func (r ApiCreateOrganizationApiTokenRequest) OrganizationApiTokenCreateRequest(
 	return r
 }
 
-func (r ApiCreateOrganizationApiTokenRequest) Execute() (*OrganizationApiTokenCreateResponse, *http.Response, error) {
+func (r ApiCreateOrganizationApiTokenRequest) Execute() (*OrganizationApiTokenCreate, *http.Response, error) {
 	return r.ApiService.CreateOrganizationApiTokenExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *OrganizationApiTokenApiService) CreateOrganizationApiToken(ctx context.
 }
 
 // Execute executes the request
-//  @return OrganizationApiTokenCreateResponse
-func (a *OrganizationApiTokenApiService) CreateOrganizationApiTokenExecute(r ApiCreateOrganizationApiTokenRequest) (*OrganizationApiTokenCreateResponse, *http.Response, error) {
+//  @return OrganizationApiTokenCreate
+func (a *OrganizationApiTokenApiService) CreateOrganizationApiTokenExecute(r ApiCreateOrganizationApiTokenRequest) (*OrganizationApiTokenCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationApiTokenCreateResponse
+		localVarReturnValue *OrganizationApiTokenCreate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiTokenApiService.CreateOrganizationApiToken")

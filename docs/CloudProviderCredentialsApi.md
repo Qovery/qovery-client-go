@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## CreateAWSCredentials
 
-> ClusterCredentialsResponse CreateAWSCredentials(ctx, organizationId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
+> ClusterCredentials CreateAWSCredentials(ctx, organizationId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
 
 Create AWS credentials set
 
@@ -48,7 +48,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.CreateAWSCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateAWSCredentials`: ClusterCredentialsResponse
+    // response from `CreateAWSCredentials`: ClusterCredentials
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.CreateAWSCredentials`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCredentialsResponse**](ClusterCredentialsResponse.md)
+[**ClusterCredentials**](ClusterCredentials.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## CreateDOCredentials
 
-> ClusterCredentialsResponse CreateDOCredentials(ctx, organizationId).DoCredentialsRequest(doCredentialsRequest).Execute()
+> ClusterCredentials CreateDOCredentials(ctx, organizationId).DoCredentialsRequest(doCredentialsRequest).Execute()
 
 Create Digital Ocean credentials set
 
@@ -118,7 +118,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.CreateDOCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDOCredentials`: ClusterCredentialsResponse
+    // response from `CreateDOCredentials`: ClusterCredentials
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.CreateDOCredentials`: %v\n", resp)
 }
 ```
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCredentialsResponse**](ClusterCredentialsResponse.md)
+[**ClusterCredentials**](ClusterCredentials.md)
 
 ### Authorization
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## CreateScalewayCredentials
 
-> ClusterCredentialsResponse CreateScalewayCredentials(ctx, organizationId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
+> ClusterCredentials CreateScalewayCredentials(ctx, organizationId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
 
 Create Scaleway credentials set
 
@@ -188,7 +188,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.CreateScalewayCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateScalewayCredentials`: ClusterCredentialsResponse
+    // response from `CreateScalewayCredentials`: ClusterCredentials
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.CreateScalewayCredentials`: %v\n", resp)
 }
 ```
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCredentialsResponse**](ClusterCredentialsResponse.md)
+[**ClusterCredentials**](ClusterCredentials.md)
 
 ### Authorization
 
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ## EditAWSCredentials
 
-> ClusterCredentialsResponse EditAWSCredentials(ctx, organizationId, credentialsId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
+> ClusterCredentials EditAWSCredentials(ctx, organizationId, credentialsId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
 
 Edit a set of AWS credentials
 
@@ -466,7 +466,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.EditAWSCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditAWSCredentials`: ClusterCredentialsResponse
+    // response from `EditAWSCredentials`: ClusterCredentials
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.EditAWSCredentials`: %v\n", resp)
 }
 ```
@@ -493,7 +493,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCredentialsResponse**](ClusterCredentialsResponse.md)
+[**ClusterCredentials**](ClusterCredentials.md)
 
 ### Authorization
 
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 ## EditDOCredentials
 
-> ClusterCredentialsResponse EditDOCredentials(ctx, organizationId, credentialsId).DoCredentialsRequest(doCredentialsRequest).Execute()
+> ClusterCredentials EditDOCredentials(ctx, organizationId, credentialsId).DoCredentialsRequest(doCredentialsRequest).Execute()
 
 Edit a set of Digital Ocean credentials
 
@@ -539,7 +539,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.EditDOCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditDOCredentials`: ClusterCredentialsResponse
+    // response from `EditDOCredentials`: ClusterCredentials
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.EditDOCredentials`: %v\n", resp)
 }
 ```
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCredentialsResponse**](ClusterCredentialsResponse.md)
+[**ClusterCredentials**](ClusterCredentials.md)
 
 ### Authorization
 
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
 
 ## EditScalewayCredentials
 
-> ClusterCredentialsResponse EditScalewayCredentials(ctx, organizationId, credentialsId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
+> ClusterCredentials EditScalewayCredentials(ctx, organizationId, credentialsId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
 
 Edit a set of Scaleway credentials
 
@@ -612,7 +612,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.EditScalewayCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditScalewayCredentials`: ClusterCredentialsResponse
+    // response from `EditScalewayCredentials`: ClusterCredentials
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.EditScalewayCredentials`: %v\n", resp)
 }
 ```
@@ -639,7 +639,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterCredentialsResponse**](ClusterCredentialsResponse.md)
+[**ClusterCredentials**](ClusterCredentials.md)
 
 ### Authorization
 

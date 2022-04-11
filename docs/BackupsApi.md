@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## AddBackupDatabase
 
-> BackupResponse AddBackupDatabase(ctx, databaseId).BackupRequest(backupRequest).Execute()
+> Backup AddBackupDatabase(ctx, databaseId).BackupRequest(backupRequest).Execute()
 
 Add a backup to the Database 
 
@@ -39,7 +39,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BackupsApi.AddBackupDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddBackupDatabase`: BackupResponse
+    // response from `AddBackupDatabase`: Backup
     fmt.Fprintf(os.Stdout, "Response from `BackupsApi.AddBackupDatabase`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BackupResponse**](BackupResponse.md)
+[**Backup**](Backup.md)
 
 ### Authorization
 

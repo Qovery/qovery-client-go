@@ -40,7 +40,7 @@ func (r ApiAddCreditCardRequest) CreditCardRequest(creditCardRequest CreditCardR
 	return r
 }
 
-func (r ApiAddCreditCardRequest) Execute() (*CreditCardResponse, *http.Response, error) {
+func (r ApiAddCreditCardRequest) Execute() (*CreditCard, *http.Response, error) {
 	return r.ApiService.AddCreditCardExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *BillingApiService) AddCreditCard(ctx context.Context, organizationId st
 }
 
 // Execute executes the request
-//  @return CreditCardResponse
-func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*CreditCardResponse, *http.Response, error) {
+//  @return CreditCard
+func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*CreditCard, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CreditCardResponse
+		localVarReturnValue *CreditCard
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.AddCreditCard")
@@ -341,7 +341,7 @@ func (r ApiEditOrganizationBillingInfoRequest) BillingInfoRequest(billingInfoReq
 	return r
 }
 
-func (r ApiEditOrganizationBillingInfoRequest) Execute() (*BillingInfoResponse, *http.Response, error) {
+func (r ApiEditOrganizationBillingInfoRequest) Execute() (*BillingInfo, *http.Response, error) {
 	return r.ApiService.EditOrganizationBillingInfoExecute(r)
 }
 
@@ -361,13 +361,13 @@ func (a *BillingApiService) EditOrganizationBillingInfo(ctx context.Context, org
 }
 
 // Execute executes the request
-//  @return BillingInfoResponse
-func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganizationBillingInfoRequest) (*BillingInfoResponse, *http.Response, error) {
+//  @return BillingInfo
+func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BillingInfoResponse
+		localVarReturnValue *BillingInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.EditOrganizationBillingInfo")
@@ -445,7 +445,7 @@ type ApiGetClusterCurrentCostRequest struct {
 	clusterId      string
 }
 
-func (r ApiGetClusterCurrentCostRequest) Execute() (*CostRangeResponse, *http.Response, error) {
+func (r ApiGetClusterCurrentCostRequest) Execute() (*CostRange, *http.Response, error) {
 	return r.ApiService.GetClusterCurrentCostExecute(r)
 }
 
@@ -471,13 +471,13 @@ func (a *BillingApiService) GetClusterCurrentCost(ctx context.Context, organizat
 }
 
 // Execute executes the request
-//  @return CostRangeResponse
-func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (*CostRangeResponse, *http.Response, error) {
+//  @return CostRange
+func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (*CostRange, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CostRangeResponse
+		localVarReturnValue *CostRange
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetClusterCurrentCost")
@@ -553,7 +553,7 @@ type ApiGetOrganizationBillingInfoRequest struct {
 	organizationId string
 }
 
-func (r ApiGetOrganizationBillingInfoRequest) Execute() (*BillingInfoResponse, *http.Response, error) {
+func (r ApiGetOrganizationBillingInfoRequest) Execute() (*BillingInfo, *http.Response, error) {
 	return r.ApiService.GetOrganizationBillingInfoExecute(r)
 }
 
@@ -573,13 +573,13 @@ func (a *BillingApiService) GetOrganizationBillingInfo(ctx context.Context, orga
 }
 
 // Execute executes the request
-//  @return BillingInfoResponse
-func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizationBillingInfoRequest) (*BillingInfoResponse, *http.Response, error) {
+//  @return BillingInfo
+func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BillingInfoResponse
+		localVarReturnValue *BillingInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationBillingInfo")
@@ -761,7 +761,7 @@ type ApiGetOrganizationCurrentCostRequest struct {
 	organizationId string
 }
 
-func (r ApiGetOrganizationCurrentCostRequest) Execute() (*OrganizationCurrentCostResponse, *http.Response, error) {
+func (r ApiGetOrganizationCurrentCostRequest) Execute() (*OrganizationCurrentCost, *http.Response, error) {
 	return r.ApiService.GetOrganizationCurrentCostExecute(r)
 }
 
@@ -781,13 +781,13 @@ func (a *BillingApiService) GetOrganizationCurrentCost(ctx context.Context, orga
 }
 
 // Execute executes the request
-//  @return OrganizationCurrentCostResponse
-func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizationCurrentCostRequest) (*OrganizationCurrentCostResponse, *http.Response, error) {
+//  @return OrganizationCurrentCost
+func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizationCurrentCostRequest) (*OrganizationCurrentCost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationCurrentCostResponse
+		localVarReturnValue *OrganizationCurrentCost
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationCurrentCost")
@@ -863,7 +863,7 @@ type ApiGetOrganizationInvoiceRequest struct {
 	invoiceId      string
 }
 
-func (r ApiGetOrganizationInvoiceRequest) Execute() (*InvoiceResponse, *http.Response, error) {
+func (r ApiGetOrganizationInvoiceRequest) Execute() (*Invoice, *http.Response, error) {
 	return r.ApiService.GetOrganizationInvoiceExecute(r)
 }
 
@@ -885,13 +885,13 @@ func (a *BillingApiService) GetOrganizationInvoice(ctx context.Context, organiza
 }
 
 // Execute executes the request
-//  @return InvoiceResponse
-func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationInvoiceRequest) (*InvoiceResponse, *http.Response, error) {
+//  @return Invoice
+func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationInvoiceRequest) (*Invoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InvoiceResponse
+		localVarReturnValue *Invoice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationInvoice")
@@ -968,7 +968,7 @@ type ApiGetOrganizationInvoicePDFRequest struct {
 	invoiceId      string
 }
 
-func (r ApiGetOrganizationInvoicePDFRequest) Execute() (*LinkResponse, *http.Response, error) {
+func (r ApiGetOrganizationInvoicePDFRequest) Execute() (*Link, *http.Response, error) {
 	return r.ApiService.GetOrganizationInvoicePDFExecute(r)
 }
 
@@ -992,13 +992,13 @@ func (a *BillingApiService) GetOrganizationInvoicePDF(ctx context.Context, organ
 }
 
 // Execute executes the request
-//  @return LinkResponse
-func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizationInvoicePDFRequest) (*LinkResponse, *http.Response, error) {
+//  @return Link
+func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizationInvoicePDFRequest) (*Link, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LinkResponse
+		localVarReturnValue *Link
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationInvoicePDF")

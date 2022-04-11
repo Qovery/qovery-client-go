@@ -40,7 +40,7 @@ func (r ApiCreateEnvironmentRequest) EnvironmentRequest(environmentRequest Envir
 	return r
 }
 
-func (r ApiCreateEnvironmentRequest) Execute() (*EnvironmentResponse, *http.Response, error) {
+func (r ApiCreateEnvironmentRequest) Execute() (*Environment, *http.Response, error) {
 	return r.ApiService.CreateEnvironmentExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *EnvironmentsApiService) CreateEnvironment(ctx context.Context, projectI
 }
 
 // Execute executes the request
-//  @return EnvironmentResponse
-func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironmentRequest) (*EnvironmentResponse, *http.Response, error) {
+//  @return Environment
+func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EnvironmentResponse
+		localVarReturnValue *Environment
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.CreateEnvironment")

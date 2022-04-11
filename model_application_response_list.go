@@ -17,7 +17,7 @@ import (
 
 // ApplicationResponseList struct for ApplicationResponseList
 type ApplicationResponseList struct {
-	Results []ApplicationResponse `json:"results,omitempty"`
+	Results []Application `json:"results,omitempty"`
 }
 
 // NewApplicationResponseList instantiates a new ApplicationResponseList object
@@ -38,9 +38,9 @@ func NewApplicationResponseListWithDefaults() *ApplicationResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ApplicationResponseList) GetResults() []ApplicationResponse {
+func (o *ApplicationResponseList) GetResults() []Application {
 	if o == nil || o.Results == nil {
-		var ret []ApplicationResponse
+		var ret []Application
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ApplicationResponseList) GetResults() []ApplicationResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResponseList) GetResultsOk() ([]ApplicationResponse, bool) {
+func (o *ApplicationResponseList) GetResultsOk() ([]Application, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ApplicationResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ApplicationResponse and assigns it to the Results field.
-func (o *ApplicationResponseList) SetResults(v []ApplicationResponse) {
+// SetResults gets a reference to the given []Application and assigns it to the Results field.
+func (o *ApplicationResponseList) SetResults(v []Application) {
 	o.Results = v
 }
 

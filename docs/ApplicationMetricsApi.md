@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## GetApplicationCurrentScale
 
-> ApplicationCurrentScaleResponse GetApplicationCurrentScale(ctx, applicationId).Execute()
+> ApplicationCurrentScale GetApplicationCurrentScale(ctx, applicationId).Execute()
 
 Get current scaling of the application
 
@@ -113,7 +113,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationCurrentScale``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplicationCurrentScale`: ApplicationCurrentScaleResponse
+    // response from `GetApplicationCurrentScale`: ApplicationCurrentScale
     fmt.Fprintf(os.Stdout, "Response from `ApplicationMetricsApi.GetApplicationCurrentScale`: %v\n", resp)
 }
 ```
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationCurrentScaleResponse**](ApplicationCurrentScaleResponse.md)
+[**ApplicationCurrentScale**](ApplicationCurrentScale.md)
 
 ### Authorization
 
@@ -435,7 +435,7 @@ Name | Type | Description  | Notes
 
 ## GetApplicationMetricRestart
 
-> MetricRestartResponse GetApplicationMetricRestart(ctx, applicationId).LastSeconds(lastSeconds).Execute()
+> MetricRestart GetApplicationMetricRestart(ctx, applicationId).LastSeconds(lastSeconds).Execute()
 
 List application restarts
 
@@ -464,7 +464,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationMetricRestart``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplicationMetricRestart`: MetricRestartResponse
+    // response from `GetApplicationMetricRestart`: MetricRestart
     fmt.Fprintf(os.Stdout, "Response from `ApplicationMetricsApi.GetApplicationMetricRestart`: %v\n", resp)
 }
 ```
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetricRestartResponse**](MetricRestartResponse.md)
+[**MetricRestart**](MetricRestart.md)
 
 ### Authorization
 

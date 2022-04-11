@@ -17,7 +17,7 @@ import (
 
 // GitRepositoryResponseList struct for GitRepositoryResponseList
 type GitRepositoryResponseList struct {
-	Results []GitRepositoryResponse `json:"results,omitempty"`
+	Results []GitRepository `json:"results,omitempty"`
 }
 
 // NewGitRepositoryResponseList instantiates a new GitRepositoryResponseList object
@@ -38,9 +38,9 @@ func NewGitRepositoryResponseListWithDefaults() *GitRepositoryResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *GitRepositoryResponseList) GetResults() []GitRepositoryResponse {
+func (o *GitRepositoryResponseList) GetResults() []GitRepository {
 	if o == nil || o.Results == nil {
-		var ret []GitRepositoryResponse
+		var ret []GitRepository
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *GitRepositoryResponseList) GetResults() []GitRepositoryResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GitRepositoryResponseList) GetResultsOk() ([]GitRepositoryResponse, bool) {
+func (o *GitRepositoryResponseList) GetResultsOk() ([]GitRepository, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *GitRepositoryResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []GitRepositoryResponse and assigns it to the Results field.
-func (o *GitRepositoryResponseList) SetResults(v []GitRepositoryResponse) {
+// SetResults gets a reference to the given []GitRepository and assigns it to the Results field.
+func (o *GitRepositoryResponseList) SetResults(v []GitRepository) {
 	o.Results = v
 }
 

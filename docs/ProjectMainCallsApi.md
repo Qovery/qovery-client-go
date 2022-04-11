@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## EditProject
 
-> ProjectResponse EditProject(ctx, projectId).ProjectRequest(projectRequest).Execute()
+> Project EditProject(ctx, projectId).ProjectRequest(projectRequest).Execute()
 
 Edit a project
 
@@ -109,7 +109,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsApi.EditProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditProject`: ProjectResponse
+    // response from `EditProject`: Project
     fmt.Fprintf(os.Stdout, "Response from `ProjectMainCallsApi.EditProject`: %v\n", resp)
 }
 ```
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectResponse**](ProjectResponse.md)
+[**Project**](Project.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## GetProject
 
-> ProjectResponse GetProject(ctx, projectId).Execute()
+> Project GetProject(ctx, projectId).Execute()
 
 Get project by ID
 
@@ -178,7 +178,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsApi.GetProject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProject`: ProjectResponse
+    // response from `GetProject`: Project
     fmt.Fprintf(os.Stdout, "Response from `ProjectMainCallsApi.GetProject`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectResponse**](ProjectResponse.md)
+[**Project**](Project.md)
 
 ### Authorization
 

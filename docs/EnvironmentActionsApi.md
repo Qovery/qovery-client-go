@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## CloneEnvironment
 
-> EnvironmentResponse CloneEnvironment(ctx, environmentId).CloneRequest(cloneRequest).Execute()
+> Environment CloneEnvironment(ctx, environmentId).CloneRequest(cloneRequest).Execute()
 
 Clone environment
 
@@ -113,7 +113,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.CloneEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CloneEnvironment`: EnvironmentResponse
+    // response from `CloneEnvironment`: Environment
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsApi.CloneEnvironment`: %v\n", resp)
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentResponse**](EnvironmentResponse.md)
+[**Environment**](Environment.md)
 
 ### Authorization
 

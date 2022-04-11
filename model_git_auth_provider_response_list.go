@@ -17,7 +17,7 @@ import (
 
 // GitAuthProviderResponseList struct for GitAuthProviderResponseList
 type GitAuthProviderResponseList struct {
-	Results []GitAuthProviderResponse `json:"results,omitempty"`
+	Results []GitAuthProvider `json:"results,omitempty"`
 }
 
 // NewGitAuthProviderResponseList instantiates a new GitAuthProviderResponseList object
@@ -38,9 +38,9 @@ func NewGitAuthProviderResponseListWithDefaults() *GitAuthProviderResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *GitAuthProviderResponseList) GetResults() []GitAuthProviderResponse {
+func (o *GitAuthProviderResponseList) GetResults() []GitAuthProvider {
 	if o == nil || o.Results == nil {
-		var ret []GitAuthProviderResponse
+		var ret []GitAuthProvider
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *GitAuthProviderResponseList) GetResults() []GitAuthProviderResponse {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GitAuthProviderResponseList) GetResultsOk() ([]GitAuthProviderResponse, bool) {
+func (o *GitAuthProviderResponseList) GetResultsOk() ([]GitAuthProvider, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *GitAuthProviderResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []GitAuthProviderResponse and assigns it to the Results field.
-func (o *GitAuthProviderResponseList) SetResults(v []GitAuthProviderResponse) {
+// SetResults gets a reference to the given []GitAuthProvider and assigns it to the Results field.
+func (o *GitAuthProviderResponseList) SetResults(v []GitAuthProvider) {
 	o.Results = v
 }
 

@@ -17,7 +17,7 @@ import (
 
 // ProjectDeploymentRuleResponseList struct for ProjectDeploymentRuleResponseList
 type ProjectDeploymentRuleResponseList struct {
-	Results []ProjectDeploymentRuleResponse `json:"results,omitempty"`
+	Results []ProjectDeploymentRule `json:"results,omitempty"`
 }
 
 // NewProjectDeploymentRuleResponseList instantiates a new ProjectDeploymentRuleResponseList object
@@ -38,9 +38,9 @@ func NewProjectDeploymentRuleResponseListWithDefaults() *ProjectDeploymentRuleRe
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ProjectDeploymentRuleResponseList) GetResults() []ProjectDeploymentRuleResponse {
+func (o *ProjectDeploymentRuleResponseList) GetResults() []ProjectDeploymentRule {
 	if o == nil || o.Results == nil {
-		var ret []ProjectDeploymentRuleResponse
+		var ret []ProjectDeploymentRule
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ProjectDeploymentRuleResponseList) GetResults() []ProjectDeploymentRule
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectDeploymentRuleResponseList) GetResultsOk() ([]ProjectDeploymentRuleResponse, bool) {
+func (o *ProjectDeploymentRuleResponseList) GetResultsOk() ([]ProjectDeploymentRule, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ProjectDeploymentRuleResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ProjectDeploymentRuleResponse and assigns it to the Results field.
-func (o *ProjectDeploymentRuleResponseList) SetResults(v []ProjectDeploymentRuleResponse) {
+// SetResults gets a reference to the given []ProjectDeploymentRule and assigns it to the Results field.
+func (o *ProjectDeploymentRuleResponseList) SetResults(v []ProjectDeploymentRule) {
 	o.Results = v
 }
 

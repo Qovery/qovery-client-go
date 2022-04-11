@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Page** | **float32** |  | 
 **PageSize** | **float32** |  | 
-**Results** | Pointer to [**[]EnvironmentLogResponse**](EnvironmentLogResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]EnvironmentLog**](EnvironmentLog.md) |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetPageSize sets PageSize field to given value.
 
 ### GetResults
 
-`func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLogResponse`
+`func (o *EnvironmentLogPaginatedResponseList) GetResults() []EnvironmentLog`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() (*[]EnvironmentLogResponse, bool)`
+`func (o *EnvironmentLogPaginatedResponseList) GetResultsOk() (*[]EnvironmentLog, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *EnvironmentLogPaginatedResponseList) SetResults(v []EnvironmentLogResponse)`
+`func (o *EnvironmentLogPaginatedResponseList) SetResults(v []EnvironmentLog)`
 
 SetResults sets Results field to given value.
 

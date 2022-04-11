@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Page** | **float32** |  | 
 **PageSize** | **float32** |  | 
-**Results** | Pointer to [**[]DeploymentHistoryResponse**](DeploymentHistoryResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]DeploymentHistory**](DeploymentHistory.md) |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetPageSize sets PageSize field to given value.
 
 ### GetResults
 
-`func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistoryResponse`
+`func (o *DeploymentHistoryPaginatedResponseList) GetResults() []DeploymentHistory`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() (*[]DeploymentHistoryResponse, bool)`
+`func (o *DeploymentHistoryPaginatedResponseList) GetResultsOk() (*[]DeploymentHistory, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistoryResponse)`
+`func (o *DeploymentHistoryPaginatedResponseList) SetResults(v []DeploymentHistory)`
 
 SetResults sets Results field to given value.
 
