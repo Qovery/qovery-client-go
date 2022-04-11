@@ -1,4 +1,4 @@
-# EnvironmentEnvironmentIdApplicationDeployApplications
+# DeployAllRequestApplications
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewEnvironmentEnvironmentIdApplicationDeployApplications
+### NewDeployAllRequestApplications
 
-`func NewEnvironmentEnvironmentIdApplicationDeployApplications(applicationId string, gitCommitId string, ) *EnvironmentEnvironmentIdApplicationDeployApplications`
+`func NewDeployAllRequestApplications(applicationId string, gitCommitId string, ) *DeployAllRequestApplications`
 
-NewEnvironmentEnvironmentIdApplicationDeployApplications instantiates a new EnvironmentEnvironmentIdApplicationDeployApplications object
+NewDeployAllRequestApplications instantiates a new DeployAllRequestApplications object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEnvironmentEnvironmentIdApplicationDeployApplicationsWithDefaults
+### NewDeployAllRequestApplicationsWithDefaults
 
-`func NewEnvironmentEnvironmentIdApplicationDeployApplicationsWithDefaults() *EnvironmentEnvironmentIdApplicationDeployApplications`
+`func NewDeployAllRequestApplicationsWithDefaults() *DeployAllRequestApplications`
 
-NewEnvironmentEnvironmentIdApplicationDeployApplicationsWithDefaults instantiates a new EnvironmentEnvironmentIdApplicationDeployApplications object
+NewDeployAllRequestApplicationsWithDefaults instantiates a new DeployAllRequestApplications object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetApplicationId
 
-`func (o *EnvironmentEnvironmentIdApplicationDeployApplications) GetApplicationId() string`
+`func (o *DeployAllRequestApplications) GetApplicationId() string`
 
 GetApplicationId returns the ApplicationId field if non-nil, zero value otherwise.
 
 ### GetApplicationIdOk
 
-`func (o *EnvironmentEnvironmentIdApplicationDeployApplications) GetApplicationIdOk() (*string, bool)`
+`func (o *DeployAllRequestApplications) GetApplicationIdOk() (*string, bool)`
 
 GetApplicationIdOk returns a tuple with the ApplicationId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplicationId
 
-`func (o *EnvironmentEnvironmentIdApplicationDeployApplications) SetApplicationId(v string)`
+`func (o *DeployAllRequestApplications) SetApplicationId(v string)`
 
 SetApplicationId sets ApplicationId field to given value.
 
 
 ### GetGitCommitId
 
-`func (o *EnvironmentEnvironmentIdApplicationDeployApplications) GetGitCommitId() string`
+`func (o *DeployAllRequestApplications) GetGitCommitId() string`
 
 GetGitCommitId returns the GitCommitId field if non-nil, zero value otherwise.
 
 ### GetGitCommitIdOk
 
-`func (o *EnvironmentEnvironmentIdApplicationDeployApplications) GetGitCommitIdOk() (*string, bool)`
+`func (o *DeployAllRequestApplications) GetGitCommitIdOk() (*string, bool)`
 
 GetGitCommitIdOk returns a tuple with the GitCommitId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGitCommitId
 
-`func (o *EnvironmentEnvironmentIdApplicationDeployApplications) SetGitCommitId(v string)`
+`func (o *DeployAllRequestApplications) SetGitCommitId(v string)`
 
 SetGitCommitId sets GitCommitId field to given value.
 

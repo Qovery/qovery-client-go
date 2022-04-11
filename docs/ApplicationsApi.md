@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DeployAllApplications
 
-> Status DeployAllApplications(ctx, environmentId).InlineObject1(inlineObject1).Execute()
+> Status DeployAllApplications(ctx, environmentId).DeployAllRequest(deployAllRequest).Execute()
 
 Deploy applications
 
@@ -107,11 +107,11 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    inlineObject1 := *openapiclient.NewInlineObject1() // InlineObject1 |  (optional)
+    deployAllRequest := *openapiclient.NewDeployAllRequest() // DeployAllRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApi.DeployAllApplications(context.Background(), environmentId).InlineObject1(inlineObject1).Execute()
+    resp, r, err := apiClient.ApplicationsApi.DeployAllApplications(context.Background(), environmentId).DeployAllRequest(deployAllRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.DeployAllApplications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +137,7 @@ Other parameters are passed through a pointer to a apiDeployAllApplicationsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inlineObject1** | [**InlineObject1**](InlineObject1.md) |  | 
+ **deployAllRequest** | [**DeployAllRequest**](DeployAllRequest.md) |  | 
 
 ### Return type
 

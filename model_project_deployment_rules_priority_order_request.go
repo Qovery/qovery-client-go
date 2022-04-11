@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// InlineObject struct for InlineObject
-type InlineObject struct {
+// ProjectDeploymentRulesPriorityOrderRequest struct for ProjectDeploymentRulesPriorityOrderRequest
+type ProjectDeploymentRulesPriorityOrderRequest struct {
 	ProjectDeploymentRuleIdsInOrder []string `json:"project_deployment_rule_ids_in_order,omitempty"`
 }
 
-// NewInlineObject instantiates a new InlineObject object
+// NewProjectDeploymentRulesPriorityOrderRequest instantiates a new ProjectDeploymentRulesPriorityOrderRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineObject() *InlineObject {
-	this := InlineObject{}
+func NewProjectDeploymentRulesPriorityOrderRequest() *ProjectDeploymentRulesPriorityOrderRequest {
+	this := ProjectDeploymentRulesPriorityOrderRequest{}
 	return &this
 }
 
-// NewInlineObjectWithDefaults instantiates a new InlineObject object
+// NewProjectDeploymentRulesPriorityOrderRequestWithDefaults instantiates a new ProjectDeploymentRulesPriorityOrderRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineObjectWithDefaults() *InlineObject {
-	this := InlineObject{}
+func NewProjectDeploymentRulesPriorityOrderRequestWithDefaults() *ProjectDeploymentRulesPriorityOrderRequest {
+	this := ProjectDeploymentRulesPriorityOrderRequest{}
 	return &this
 }
 
 // GetProjectDeploymentRuleIdsInOrder returns the ProjectDeploymentRuleIdsInOrder field value if set, zero value otherwise.
-func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []string {
+func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIdsInOrder() []string {
 	if o == nil || o.ProjectDeploymentRuleIdsInOrder == nil {
 		var ret []string
 		return ret
@@ -48,7 +48,7 @@ func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []string {
 
 // GetProjectDeploymentRuleIdsInOrderOk returns a tuple with the ProjectDeploymentRuleIdsInOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject) GetProjectDeploymentRuleIdsInOrderOk() ([]string, bool) {
+func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIdsInOrderOk() ([]string, bool) {
 	if o == nil || o.ProjectDeploymentRuleIdsInOrder == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *InlineObject) GetProjectDeploymentRuleIdsInOrderOk() ([]string, bool) {
 }
 
 // HasProjectDeploymentRuleIdsInOrder returns a boolean if a field has been set.
-func (o *InlineObject) HasProjectDeploymentRuleIdsInOrder() bool {
+func (o *ProjectDeploymentRulesPriorityOrderRequest) HasProjectDeploymentRuleIdsInOrder() bool {
 	if o != nil && o.ProjectDeploymentRuleIdsInOrder != nil {
 		return true
 	}
@@ -65,11 +65,11 @@ func (o *InlineObject) HasProjectDeploymentRuleIdsInOrder() bool {
 }
 
 // SetProjectDeploymentRuleIdsInOrder gets a reference to the given []string and assigns it to the ProjectDeploymentRuleIdsInOrder field.
-func (o *InlineObject) SetProjectDeploymentRuleIdsInOrder(v []string) {
+func (o *ProjectDeploymentRulesPriorityOrderRequest) SetProjectDeploymentRuleIdsInOrder(v []string) {
 	o.ProjectDeploymentRuleIdsInOrder = v
 }
 
-func (o InlineObject) MarshalJSON() ([]byte, error) {
+func (o ProjectDeploymentRulesPriorityOrderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ProjectDeploymentRuleIdsInOrder != nil {
 		toSerialize["project_deployment_rule_ids_in_order"] = o.ProjectDeploymentRuleIdsInOrder
@@ -77,38 +77,38 @@ func (o InlineObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineObject struct {
-	value *InlineObject
+type NullableProjectDeploymentRulesPriorityOrderRequest struct {
+	value *ProjectDeploymentRulesPriorityOrderRequest
 	isSet bool
 }
 
-func (v NullableInlineObject) Get() *InlineObject {
+func (v NullableProjectDeploymentRulesPriorityOrderRequest) Get() *ProjectDeploymentRulesPriorityOrderRequest {
 	return v.value
 }
 
-func (v *NullableInlineObject) Set(val *InlineObject) {
+func (v *NullableProjectDeploymentRulesPriorityOrderRequest) Set(val *ProjectDeploymentRulesPriorityOrderRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineObject) IsSet() bool {
+func (v NullableProjectDeploymentRulesPriorityOrderRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineObject) Unset() {
+func (v *NullableProjectDeploymentRulesPriorityOrderRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineObject(val *InlineObject) *NullableInlineObject {
-	return &NullableInlineObject{value: val, isSet: true}
+func NewNullableProjectDeploymentRulesPriorityOrderRequest(val *ProjectDeploymentRulesPriorityOrderRequest) *NullableProjectDeploymentRulesPriorityOrderRequest {
+	return &NullableProjectDeploymentRulesPriorityOrderRequest{value: val, isSet: true}
 }
 
-func (v NullableInlineObject) MarshalJSON() ([]byte, error) {
+func (v NullableProjectDeploymentRulesPriorityOrderRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineObject) UnmarshalJSON(src []byte) error {
+func (v *NullableProjectDeploymentRulesPriorityOrderRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

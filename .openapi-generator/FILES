@@ -147,6 +147,7 @@ docs/CommitPaginatedResponseList.md
 docs/CommitPaginatedResponseListAllOf.md
 docs/CommitResponseList.md
 docs/CommunityUsage.md
+docs/CompanySizeEnum.md
 docs/Cost.md
 docs/CostRange.md
 docs/Credentials.md
@@ -179,6 +180,8 @@ docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesApi.md
 docs/DependencyApi.md
+docs/DeployAllRequest.md
+docs/DeployAllRequestApplications.md
 docs/DeployRequest.md
 docs/DeploymentHistory.md
 docs/DeploymentHistoryAllOf.md
@@ -221,7 +224,6 @@ docs/EnvironmentDeploymentRuleAllOf.md
 docs/EnvironmentDeploymentRuleApi.md
 docs/EnvironmentDeploymentRuleEditRequest.md
 docs/EnvironmentEditRequest.md
-docs/EnvironmentEnvironmentIdApplicationDeployApplications.md
 docs/EnvironmentLog.md
 docs/EnvironmentLogPaginatedResponseList.md
 docs/EnvironmentLogPaginatedResponseListAllOf.md
@@ -264,9 +266,6 @@ docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponseList.md
 docs/GlobalDeploymentStatus.md
 docs/Healthcheck.md
-docs/InlineObject.md
-docs/InlineObject1.md
-docs/InlineObject2.md
 docs/Instance.md
 docs/InstanceResponseList.md
 docs/InviteMember.md
@@ -345,6 +344,7 @@ docs/ProjectDeploymentRuleAllOf.md
 docs/ProjectDeploymentRuleApi.md
 docs/ProjectDeploymentRuleRequest.md
 docs/ProjectDeploymentRuleResponseList.md
+docs/ProjectDeploymentRulesPriorityOrderRequest.md
 docs/ProjectEnvironmentVariableApi.md
 docs/ProjectMainCallsApi.md
 docs/ProjectRequest.md
@@ -372,6 +372,8 @@ docs/ServiceDeploymentStatusEnum.md
 docs/ServiceResponseList.md
 docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
+docs/SignUp.md
+docs/SignUpRequest.md
 docs/Status.md
 docs/StorageDisk.md
 docs/StorageDiskResponseList.md
@@ -381,6 +383,7 @@ docs/TagRequest.md
 docs/TagResponseList.md
 docs/ThresholdMetricStatusEnum.md
 docs/TransferOwnershipRequest.md
+docs/TypeOfUseEnum.md
 docs/UnexpectedError.md
 docs/User.md
 docs/UserResponseList.md
@@ -396,7 +399,6 @@ docs/WeekdayEnum.md
 git_push.sh
 go.mod
 go.sum
-model__environment__environment_id__application_deploy_applications.go
 model_account_info.go
 model_account_info_edit_request.go
 model_aliased_secret.go
@@ -475,6 +477,7 @@ model_commit_paginated_response_list.go
 model_commit_paginated_response_list_all_of.go
 model_commit_response_list.go
 model_community_usage.go
+model_company_size_enum.go
 model_cost.go
 model_cost_range.go
 model_credentials.go
@@ -499,6 +502,8 @@ model_database_request.go
 model_database_response_list.go
 model_database_type_enum.go
 model_database_version_mode.go
+model_deploy_all_request.go
+model_deploy_all_request_applications.go
 model_deploy_request.go
 model_deployment_history.go
 model_deployment_history_all_of.go
@@ -574,9 +579,6 @@ model_git_repository_branch_response_list.go
 model_git_repository_response_list.go
 model_global_deployment_status.go
 model_healthcheck.go
-model_inline_object.go
-model_inline_object_1.go
-model_inline_object_2.go
 model_instance.go
 model_instance_response_list.go
 model_invite_member.go
@@ -650,6 +652,7 @@ model_project_deployment_rule.go
 model_project_deployment_rule_all_of.go
 model_project_deployment_rule_request.go
 model_project_deployment_rule_response_list.go
+model_project_deployment_rules_priority_order_request.go
 model_project_request.go
 model_project_response_list.go
 model_project_stats.go
@@ -672,6 +675,8 @@ model_service_deployment_status_enum.go
 model_service_response_list.go
 model_service_total_number.go
 model_service_type_enum.go
+model_sign_up.go
+model_sign_up_request.go
 model_status.go
 model_storage_disk.go
 model_storage_disk_response_list.go
@@ -681,6 +686,7 @@ model_tag_request.go
 model_tag_response_list.go
 model_threshold_metric_status_enum.go
 model_transfer_ownership_request.go
+model_type_of_use_enum.go
 model_unexpected_error.go
 model_user.go
 model_user_response_list.go

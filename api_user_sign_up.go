@@ -30,11 +30,11 @@ type UserSignUpApiService service
 type ApiCreateUserSignUpRequest struct {
 	ctx           context.Context
 	ApiService    *UserSignUpApiService
-	inlineObject2 *InlineObject2
+	signUpRequest *SignUpRequest
 }
 
-func (r ApiCreateUserSignUpRequest) InlineObject2(inlineObject2 InlineObject2) ApiCreateUserSignUpRequest {
-	r.inlineObject2 = &inlineObject2
+func (r ApiCreateUserSignUpRequest) SignUpRequest(signUpRequest SignUpRequest) ApiCreateUserSignUpRequest {
+	r.signUpRequest = &signUpRequest
 	return r
 }
 
@@ -94,7 +94,7 @@ func (a *UserSignUpApiService) CreateUserSignUpExecute(r ApiCreateUserSignUpRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject2
+	localVarPostBody = r.signUpRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -128,7 +128,7 @@ type ApiGetUserSignUpRequest struct {
 	ApiService *UserSignUpApiService
 }
 
-func (r ApiGetUserSignUpRequest) Execute() (*Base, *http.Response, error) {
+func (r ApiGetUserSignUpRequest) Execute() (*SignUp, *http.Response, error) {
 	return r.ApiService.GetUserSignUpExecute(r)
 }
 
@@ -148,13 +148,13 @@ func (a *UserSignUpApiService) GetUserSignUp(ctx context.Context) ApiGetUserSign
 }
 
 // Execute executes the request
-//  @return Base
-func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (*Base, *http.Response, error) {
+//  @return SignUp
+func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (*SignUp, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Base
+		localVarReturnValue *SignUp
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSignUpApiService.GetUserSignUp")

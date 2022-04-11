@@ -138,14 +138,14 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 }
 
 type ApiDeployAllApplicationsRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationsApiService
-	environmentId string
-	inlineObject1 *InlineObject1
+	ctx              context.Context
+	ApiService       *ApplicationsApiService
+	environmentId    string
+	deployAllRequest *DeployAllRequest
 }
 
-func (r ApiDeployAllApplicationsRequest) InlineObject1(inlineObject1 InlineObject1) ApiDeployAllApplicationsRequest {
-	r.inlineObject1 = &inlineObject1
+func (r ApiDeployAllApplicationsRequest) DeployAllRequest(deployAllRequest DeployAllRequest) ApiDeployAllApplicationsRequest {
+	r.deployAllRequest = &deployAllRequest
 	return r
 }
 
@@ -210,7 +210,7 @@ func (a *ApplicationsApiService) DeployAllApplicationsExecute(r ApiDeployAllAppl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject1
+	localVarPostBody = r.deployAllRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

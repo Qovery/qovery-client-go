@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDeploymentRulesPriorityOrder
 
-> UpdateDeploymentRulesPriorityOrder(ctx, projectId).InlineObject(inlineObject).Execute()
+> UpdateDeploymentRulesPriorityOrder(ctx, projectId).ProjectDeploymentRulesPriorityOrderRequest(projectDeploymentRulesPriorityOrderRequest).Execute()
 
 Update deployment rules priority order
 
@@ -398,11 +398,11 @@ import (
 
 func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    inlineObject := *openapiclient.NewInlineObject() // InlineObject |  (optional)
+    projectDeploymentRulesPriorityOrderRequest := *openapiclient.NewProjectDeploymentRulesPriorityOrderRequest() // ProjectDeploymentRulesPriorityOrderRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectDeploymentRuleApi.UpdateDeploymentRulesPriorityOrder(context.Background(), projectId).InlineObject(inlineObject).Execute()
+    resp, r, err := apiClient.ProjectDeploymentRuleApi.UpdateDeploymentRulesPriorityOrder(context.Background(), projectId).ProjectDeploymentRulesPriorityOrderRequest(projectDeploymentRulesPriorityOrderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleApi.UpdateDeploymentRulesPriorityOrder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -426,7 +426,7 @@ Other parameters are passed through a pointer to a apiUpdateDeploymentRulesPrior
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
+ **projectDeploymentRulesPriorityOrderRequest** | [**ProjectDeploymentRulesPriorityOrderRequest**](ProjectDeploymentRulesPriorityOrderRequest.md) |  | 
 
 ### Return type
 

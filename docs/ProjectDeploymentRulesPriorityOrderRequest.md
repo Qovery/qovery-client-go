@@ -1,4 +1,4 @@
-# InlineObject
+# ProjectDeploymentRulesPriorityOrderRequest
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewInlineObject
+### NewProjectDeploymentRulesPriorityOrderRequest
 
-`func NewInlineObject() *InlineObject`
+`func NewProjectDeploymentRulesPriorityOrderRequest() *ProjectDeploymentRulesPriorityOrderRequest`
 
-NewInlineObject instantiates a new InlineObject object
+NewProjectDeploymentRulesPriorityOrderRequest instantiates a new ProjectDeploymentRulesPriorityOrderRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewInlineObjectWithDefaults
+### NewProjectDeploymentRulesPriorityOrderRequestWithDefaults
 
-`func NewInlineObjectWithDefaults() *InlineObject`
+`func NewProjectDeploymentRulesPriorityOrderRequestWithDefaults() *ProjectDeploymentRulesPriorityOrderRequest`
 
-NewInlineObjectWithDefaults instantiates a new InlineObject object
+NewProjectDeploymentRulesPriorityOrderRequestWithDefaults instantiates a new ProjectDeploymentRulesPriorityOrderRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetProjectDeploymentRuleIdsInOrder
 
-`func (o *InlineObject) GetProjectDeploymentRuleIdsInOrder() []string`
+`func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIdsInOrder() []string`
 
 GetProjectDeploymentRuleIdsInOrder returns the ProjectDeploymentRuleIdsInOrder field if non-nil, zero value otherwise.
 
 ### GetProjectDeploymentRuleIdsInOrderOk
 
-`func (o *InlineObject) GetProjectDeploymentRuleIdsInOrderOk() (*[]string, bool)`
+`func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIdsInOrderOk() (*[]string, bool)`
 
 GetProjectDeploymentRuleIdsInOrderOk returns a tuple with the ProjectDeploymentRuleIdsInOrder field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProjectDeploymentRuleIdsInOrder
 
-`func (o *InlineObject) SetProjectDeploymentRuleIdsInOrder(v []string)`
+`func (o *ProjectDeploymentRulesPriorityOrderRequest) SetProjectDeploymentRuleIdsInOrder(v []string)`
 
 SetProjectDeploymentRuleIdsInOrder sets ProjectDeploymentRuleIdsInOrder field to given value.
 
 ### HasProjectDeploymentRuleIdsInOrder
 
-`func (o *InlineObject) HasProjectDeploymentRuleIdsInOrder() bool`
+`func (o *ProjectDeploymentRulesPriorityOrderRequest) HasProjectDeploymentRuleIdsInOrder() bool`
 
 HasProjectDeploymentRuleIdsInOrder returns a boolean if a field has been set.
 

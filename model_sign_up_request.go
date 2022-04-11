@@ -15,28 +15,28 @@ import (
 	"encoding/json"
 )
 
-// InlineObject2 struct for InlineObject2
-type InlineObject2 struct {
-	FirstName        string         `json:"first_name"`
-	LastName         string         `json:"last_name"`
-	UserEmail        string         `json:"user_email"`
-	TypeOfUse        string         `json:"type_of_use"`
-	QoveryUsage      string         `json:"qovery_usage"`
-	CompanyName      NullableString `json:"company_name,omitempty"`
-	CompanySize      *string        `json:"company_size,omitempty"`
-	UserRole         NullableString `json:"user_role,omitempty"`
-	QoveryUsageOther NullableString `json:"qovery_usage_other,omitempty"`
-	UserQuestions    NullableString `json:"user_questions,omitempty"`
-	CurrentStep      NullableString `json:"current_step,omitempty"`
-	DxAuth           NullableBool   `json:"dx_auth,omitempty"`
+// SignUpRequest struct for SignUpRequest
+type SignUpRequest struct {
+	FirstName        string           `json:"first_name"`
+	LastName         string           `json:"last_name"`
+	UserEmail        string           `json:"user_email"`
+	TypeOfUse        TypeOfUseEnum    `json:"type_of_use"`
+	QoveryUsage      string           `json:"qovery_usage"`
+	CompanyName      NullableString   `json:"company_name,omitempty"`
+	CompanySize      *CompanySizeEnum `json:"company_size,omitempty"`
+	UserRole         NullableString   `json:"user_role,omitempty"`
+	QoveryUsageOther NullableString   `json:"qovery_usage_other,omitempty"`
+	UserQuestions    NullableString   `json:"user_questions,omitempty"`
+	CurrentStep      NullableString   `json:"current_step,omitempty"`
+	DxAuth           NullableBool     `json:"dx_auth,omitempty"`
 }
 
-// NewInlineObject2 instantiates a new InlineObject2 object
+// NewSignUpRequest instantiates a new SignUpRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineObject2(firstName string, lastName string, userEmail string, typeOfUse string, qoveryUsage string) *InlineObject2 {
-	this := InlineObject2{}
+func NewSignUpRequest(firstName string, lastName string, userEmail string, typeOfUse TypeOfUseEnum, qoveryUsage string) *SignUpRequest {
+	this := SignUpRequest{}
 	this.FirstName = firstName
 	this.LastName = lastName
 	this.UserEmail = userEmail
@@ -45,16 +45,16 @@ func NewInlineObject2(firstName string, lastName string, userEmail string, typeO
 	return &this
 }
 
-// NewInlineObject2WithDefaults instantiates a new InlineObject2 object
+// NewSignUpRequestWithDefaults instantiates a new SignUpRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineObject2WithDefaults() *InlineObject2 {
-	this := InlineObject2{}
+func NewSignUpRequestWithDefaults() *SignUpRequest {
+	this := SignUpRequest{}
 	return &this
 }
 
 // GetFirstName returns the FirstName field value
-func (o *InlineObject2) GetFirstName() string {
+func (o *SignUpRequest) GetFirstName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -65,7 +65,7 @@ func (o *InlineObject2) GetFirstName() string {
 
 // GetFirstNameOk returns a tuple with the FirstName field value
 // and a boolean to check if the value has been set.
-func (o *InlineObject2) GetFirstNameOk() (*string, bool) {
+func (o *SignUpRequest) GetFirstNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,12 +73,12 @@ func (o *InlineObject2) GetFirstNameOk() (*string, bool) {
 }
 
 // SetFirstName sets field value
-func (o *InlineObject2) SetFirstName(v string) {
+func (o *SignUpRequest) SetFirstName(v string) {
 	o.FirstName = v
 }
 
 // GetLastName returns the LastName field value
-func (o *InlineObject2) GetLastName() string {
+func (o *SignUpRequest) GetLastName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *InlineObject2) GetLastName() string {
 
 // GetLastNameOk returns a tuple with the LastName field value
 // and a boolean to check if the value has been set.
-func (o *InlineObject2) GetLastNameOk() (*string, bool) {
+func (o *SignUpRequest) GetLastNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,12 +97,12 @@ func (o *InlineObject2) GetLastNameOk() (*string, bool) {
 }
 
 // SetLastName sets field value
-func (o *InlineObject2) SetLastName(v string) {
+func (o *SignUpRequest) SetLastName(v string) {
 	o.LastName = v
 }
 
 // GetUserEmail returns the UserEmail field value
-func (o *InlineObject2) GetUserEmail() string {
+func (o *SignUpRequest) GetUserEmail() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -113,7 +113,7 @@ func (o *InlineObject2) GetUserEmail() string {
 
 // GetUserEmailOk returns a tuple with the UserEmail field value
 // and a boolean to check if the value has been set.
-func (o *InlineObject2) GetUserEmailOk() (*string, bool) {
+func (o *SignUpRequest) GetUserEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,14 +121,14 @@ func (o *InlineObject2) GetUserEmailOk() (*string, bool) {
 }
 
 // SetUserEmail sets field value
-func (o *InlineObject2) SetUserEmail(v string) {
+func (o *SignUpRequest) SetUserEmail(v string) {
 	o.UserEmail = v
 }
 
 // GetTypeOfUse returns the TypeOfUse field value
-func (o *InlineObject2) GetTypeOfUse() string {
+func (o *SignUpRequest) GetTypeOfUse() TypeOfUseEnum {
 	if o == nil {
-		var ret string
+		var ret TypeOfUseEnum
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *InlineObject2) GetTypeOfUse() string {
 
 // GetTypeOfUseOk returns a tuple with the TypeOfUse field value
 // and a boolean to check if the value has been set.
-func (o *InlineObject2) GetTypeOfUseOk() (*string, bool) {
+func (o *SignUpRequest) GetTypeOfUseOk() (*TypeOfUseEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,12 +145,12 @@ func (o *InlineObject2) GetTypeOfUseOk() (*string, bool) {
 }
 
 // SetTypeOfUse sets field value
-func (o *InlineObject2) SetTypeOfUse(v string) {
+func (o *SignUpRequest) SetTypeOfUse(v TypeOfUseEnum) {
 	o.TypeOfUse = v
 }
 
 // GetQoveryUsage returns the QoveryUsage field value
-func (o *InlineObject2) GetQoveryUsage() string {
+func (o *SignUpRequest) GetQoveryUsage() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -161,7 +161,7 @@ func (o *InlineObject2) GetQoveryUsage() string {
 
 // GetQoveryUsageOk returns a tuple with the QoveryUsage field value
 // and a boolean to check if the value has been set.
-func (o *InlineObject2) GetQoveryUsageOk() (*string, bool) {
+func (o *SignUpRequest) GetQoveryUsageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,12 +169,12 @@ func (o *InlineObject2) GetQoveryUsageOk() (*string, bool) {
 }
 
 // SetQoveryUsage sets field value
-func (o *InlineObject2) SetQoveryUsage(v string) {
+func (o *SignUpRequest) SetQoveryUsage(v string) {
 	o.QoveryUsage = v
 }
 
 // GetCompanyName returns the CompanyName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InlineObject2) GetCompanyName() string {
+func (o *SignUpRequest) GetCompanyName() string {
 	if o == nil || o.CompanyName.Get() == nil {
 		var ret string
 		return ret
@@ -185,7 +185,7 @@ func (o *InlineObject2) GetCompanyName() string {
 // GetCompanyNameOk returns a tuple with the CompanyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InlineObject2) GetCompanyNameOk() (*string, bool) {
+func (o *SignUpRequest) GetCompanyNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -193,7 +193,7 @@ func (o *InlineObject2) GetCompanyNameOk() (*string, bool) {
 }
 
 // HasCompanyName returns a boolean if a field has been set.
-func (o *InlineObject2) HasCompanyName() bool {
+func (o *SignUpRequest) HasCompanyName() bool {
 	if o != nil && o.CompanyName.IsSet() {
 		return true
 	}
@@ -202,24 +202,24 @@ func (o *InlineObject2) HasCompanyName() bool {
 }
 
 // SetCompanyName gets a reference to the given NullableString and assigns it to the CompanyName field.
-func (o *InlineObject2) SetCompanyName(v string) {
+func (o *SignUpRequest) SetCompanyName(v string) {
 	o.CompanyName.Set(&v)
 }
 
 // SetCompanyNameNil sets the value for CompanyName to be an explicit nil
-func (o *InlineObject2) SetCompanyNameNil() {
+func (o *SignUpRequest) SetCompanyNameNil() {
 	o.CompanyName.Set(nil)
 }
 
 // UnsetCompanyName ensures that no value is present for CompanyName, not even an explicit nil
-func (o *InlineObject2) UnsetCompanyName() {
+func (o *SignUpRequest) UnsetCompanyName() {
 	o.CompanyName.Unset()
 }
 
 // GetCompanySize returns the CompanySize field value if set, zero value otherwise.
-func (o *InlineObject2) GetCompanySize() string {
+func (o *SignUpRequest) GetCompanySize() CompanySizeEnum {
 	if o == nil || o.CompanySize == nil {
-		var ret string
+		var ret CompanySizeEnum
 		return ret
 	}
 	return *o.CompanySize
@@ -227,7 +227,7 @@ func (o *InlineObject2) GetCompanySize() string {
 
 // GetCompanySizeOk returns a tuple with the CompanySize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject2) GetCompanySizeOk() (*string, bool) {
+func (o *SignUpRequest) GetCompanySizeOk() (*CompanySizeEnum, bool) {
 	if o == nil || o.CompanySize == nil {
 		return nil, false
 	}
@@ -235,7 +235,7 @@ func (o *InlineObject2) GetCompanySizeOk() (*string, bool) {
 }
 
 // HasCompanySize returns a boolean if a field has been set.
-func (o *InlineObject2) HasCompanySize() bool {
+func (o *SignUpRequest) HasCompanySize() bool {
 	if o != nil && o.CompanySize != nil {
 		return true
 	}
@@ -243,13 +243,13 @@ func (o *InlineObject2) HasCompanySize() bool {
 	return false
 }
 
-// SetCompanySize gets a reference to the given string and assigns it to the CompanySize field.
-func (o *InlineObject2) SetCompanySize(v string) {
+// SetCompanySize gets a reference to the given CompanySizeEnum and assigns it to the CompanySize field.
+func (o *SignUpRequest) SetCompanySize(v CompanySizeEnum) {
 	o.CompanySize = &v
 }
 
 // GetUserRole returns the UserRole field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InlineObject2) GetUserRole() string {
+func (o *SignUpRequest) GetUserRole() string {
 	if o == nil || o.UserRole.Get() == nil {
 		var ret string
 		return ret
@@ -260,7 +260,7 @@ func (o *InlineObject2) GetUserRole() string {
 // GetUserRoleOk returns a tuple with the UserRole field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InlineObject2) GetUserRoleOk() (*string, bool) {
+func (o *SignUpRequest) GetUserRoleOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -268,7 +268,7 @@ func (o *InlineObject2) GetUserRoleOk() (*string, bool) {
 }
 
 // HasUserRole returns a boolean if a field has been set.
-func (o *InlineObject2) HasUserRole() bool {
+func (o *SignUpRequest) HasUserRole() bool {
 	if o != nil && o.UserRole.IsSet() {
 		return true
 	}
@@ -277,22 +277,22 @@ func (o *InlineObject2) HasUserRole() bool {
 }
 
 // SetUserRole gets a reference to the given NullableString and assigns it to the UserRole field.
-func (o *InlineObject2) SetUserRole(v string) {
+func (o *SignUpRequest) SetUserRole(v string) {
 	o.UserRole.Set(&v)
 }
 
 // SetUserRoleNil sets the value for UserRole to be an explicit nil
-func (o *InlineObject2) SetUserRoleNil() {
+func (o *SignUpRequest) SetUserRoleNil() {
 	o.UserRole.Set(nil)
 }
 
 // UnsetUserRole ensures that no value is present for UserRole, not even an explicit nil
-func (o *InlineObject2) UnsetUserRole() {
+func (o *SignUpRequest) UnsetUserRole() {
 	o.UserRole.Unset()
 }
 
 // GetQoveryUsageOther returns the QoveryUsageOther field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InlineObject2) GetQoveryUsageOther() string {
+func (o *SignUpRequest) GetQoveryUsageOther() string {
 	if o == nil || o.QoveryUsageOther.Get() == nil {
 		var ret string
 		return ret
@@ -303,7 +303,7 @@ func (o *InlineObject2) GetQoveryUsageOther() string {
 // GetQoveryUsageOtherOk returns a tuple with the QoveryUsageOther field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InlineObject2) GetQoveryUsageOtherOk() (*string, bool) {
+func (o *SignUpRequest) GetQoveryUsageOtherOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -311,7 +311,7 @@ func (o *InlineObject2) GetQoveryUsageOtherOk() (*string, bool) {
 }
 
 // HasQoveryUsageOther returns a boolean if a field has been set.
-func (o *InlineObject2) HasQoveryUsageOther() bool {
+func (o *SignUpRequest) HasQoveryUsageOther() bool {
 	if o != nil && o.QoveryUsageOther.IsSet() {
 		return true
 	}
@@ -320,22 +320,22 @@ func (o *InlineObject2) HasQoveryUsageOther() bool {
 }
 
 // SetQoveryUsageOther gets a reference to the given NullableString and assigns it to the QoveryUsageOther field.
-func (o *InlineObject2) SetQoveryUsageOther(v string) {
+func (o *SignUpRequest) SetQoveryUsageOther(v string) {
 	o.QoveryUsageOther.Set(&v)
 }
 
 // SetQoveryUsageOtherNil sets the value for QoveryUsageOther to be an explicit nil
-func (o *InlineObject2) SetQoveryUsageOtherNil() {
+func (o *SignUpRequest) SetQoveryUsageOtherNil() {
 	o.QoveryUsageOther.Set(nil)
 }
 
 // UnsetQoveryUsageOther ensures that no value is present for QoveryUsageOther, not even an explicit nil
-func (o *InlineObject2) UnsetQoveryUsageOther() {
+func (o *SignUpRequest) UnsetQoveryUsageOther() {
 	o.QoveryUsageOther.Unset()
 }
 
 // GetUserQuestions returns the UserQuestions field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InlineObject2) GetUserQuestions() string {
+func (o *SignUpRequest) GetUserQuestions() string {
 	if o == nil || o.UserQuestions.Get() == nil {
 		var ret string
 		return ret
@@ -346,7 +346,7 @@ func (o *InlineObject2) GetUserQuestions() string {
 // GetUserQuestionsOk returns a tuple with the UserQuestions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InlineObject2) GetUserQuestionsOk() (*string, bool) {
+func (o *SignUpRequest) GetUserQuestionsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -354,7 +354,7 @@ func (o *InlineObject2) GetUserQuestionsOk() (*string, bool) {
 }
 
 // HasUserQuestions returns a boolean if a field has been set.
-func (o *InlineObject2) HasUserQuestions() bool {
+func (o *SignUpRequest) HasUserQuestions() bool {
 	if o != nil && o.UserQuestions.IsSet() {
 		return true
 	}
@@ -363,22 +363,22 @@ func (o *InlineObject2) HasUserQuestions() bool {
 }
 
 // SetUserQuestions gets a reference to the given NullableString and assigns it to the UserQuestions field.
-func (o *InlineObject2) SetUserQuestions(v string) {
+func (o *SignUpRequest) SetUserQuestions(v string) {
 	o.UserQuestions.Set(&v)
 }
 
 // SetUserQuestionsNil sets the value for UserQuestions to be an explicit nil
-func (o *InlineObject2) SetUserQuestionsNil() {
+func (o *SignUpRequest) SetUserQuestionsNil() {
 	o.UserQuestions.Set(nil)
 }
 
 // UnsetUserQuestions ensures that no value is present for UserQuestions, not even an explicit nil
-func (o *InlineObject2) UnsetUserQuestions() {
+func (o *SignUpRequest) UnsetUserQuestions() {
 	o.UserQuestions.Unset()
 }
 
 // GetCurrentStep returns the CurrentStep field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InlineObject2) GetCurrentStep() string {
+func (o *SignUpRequest) GetCurrentStep() string {
 	if o == nil || o.CurrentStep.Get() == nil {
 		var ret string
 		return ret
@@ -389,7 +389,7 @@ func (o *InlineObject2) GetCurrentStep() string {
 // GetCurrentStepOk returns a tuple with the CurrentStep field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InlineObject2) GetCurrentStepOk() (*string, bool) {
+func (o *SignUpRequest) GetCurrentStepOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -397,7 +397,7 @@ func (o *InlineObject2) GetCurrentStepOk() (*string, bool) {
 }
 
 // HasCurrentStep returns a boolean if a field has been set.
-func (o *InlineObject2) HasCurrentStep() bool {
+func (o *SignUpRequest) HasCurrentStep() bool {
 	if o != nil && o.CurrentStep.IsSet() {
 		return true
 	}
@@ -406,22 +406,22 @@ func (o *InlineObject2) HasCurrentStep() bool {
 }
 
 // SetCurrentStep gets a reference to the given NullableString and assigns it to the CurrentStep field.
-func (o *InlineObject2) SetCurrentStep(v string) {
+func (o *SignUpRequest) SetCurrentStep(v string) {
 	o.CurrentStep.Set(&v)
 }
 
 // SetCurrentStepNil sets the value for CurrentStep to be an explicit nil
-func (o *InlineObject2) SetCurrentStepNil() {
+func (o *SignUpRequest) SetCurrentStepNil() {
 	o.CurrentStep.Set(nil)
 }
 
 // UnsetCurrentStep ensures that no value is present for CurrentStep, not even an explicit nil
-func (o *InlineObject2) UnsetCurrentStep() {
+func (o *SignUpRequest) UnsetCurrentStep() {
 	o.CurrentStep.Unset()
 }
 
 // GetDxAuth returns the DxAuth field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *InlineObject2) GetDxAuth() bool {
+func (o *SignUpRequest) GetDxAuth() bool {
 	if o == nil || o.DxAuth.Get() == nil {
 		var ret bool
 		return ret
@@ -432,7 +432,7 @@ func (o *InlineObject2) GetDxAuth() bool {
 // GetDxAuthOk returns a tuple with the DxAuth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *InlineObject2) GetDxAuthOk() (*bool, bool) {
+func (o *SignUpRequest) GetDxAuthOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -440,7 +440,7 @@ func (o *InlineObject2) GetDxAuthOk() (*bool, bool) {
 }
 
 // HasDxAuth returns a boolean if a field has been set.
-func (o *InlineObject2) HasDxAuth() bool {
+func (o *SignUpRequest) HasDxAuth() bool {
 	if o != nil && o.DxAuth.IsSet() {
 		return true
 	}
@@ -449,21 +449,21 @@ func (o *InlineObject2) HasDxAuth() bool {
 }
 
 // SetDxAuth gets a reference to the given NullableBool and assigns it to the DxAuth field.
-func (o *InlineObject2) SetDxAuth(v bool) {
+func (o *SignUpRequest) SetDxAuth(v bool) {
 	o.DxAuth.Set(&v)
 }
 
 // SetDxAuthNil sets the value for DxAuth to be an explicit nil
-func (o *InlineObject2) SetDxAuthNil() {
+func (o *SignUpRequest) SetDxAuthNil() {
 	o.DxAuth.Set(nil)
 }
 
 // UnsetDxAuth ensures that no value is present for DxAuth, not even an explicit nil
-func (o *InlineObject2) UnsetDxAuth() {
+func (o *SignUpRequest) UnsetDxAuth() {
 	o.DxAuth.Unset()
 }
 
-func (o InlineObject2) MarshalJSON() ([]byte, error) {
+func (o SignUpRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["first_name"] = o.FirstName
@@ -504,38 +504,38 @@ func (o InlineObject2) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineObject2 struct {
-	value *InlineObject2
+type NullableSignUpRequest struct {
+	value *SignUpRequest
 	isSet bool
 }
 
-func (v NullableInlineObject2) Get() *InlineObject2 {
+func (v NullableSignUpRequest) Get() *SignUpRequest {
 	return v.value
 }
 
-func (v *NullableInlineObject2) Set(val *InlineObject2) {
+func (v *NullableSignUpRequest) Set(val *SignUpRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineObject2) IsSet() bool {
+func (v NullableSignUpRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineObject2) Unset() {
+func (v *NullableSignUpRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineObject2(val *InlineObject2) *NullableInlineObject2 {
-	return &NullableInlineObject2{value: val, isSet: true}
+func NewNullableSignUpRequest(val *SignUpRequest) *NullableSignUpRequest {
+	return &NullableSignUpRequest{value: val, isSet: true}
 }
 
-func (v NullableInlineObject2) MarshalJSON() ([]byte, error) {
+func (v NullableSignUpRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineObject2) UnmarshalJSON(src []byte) error {
+func (v *NullableSignUpRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

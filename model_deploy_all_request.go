@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// InlineObject1 struct for InlineObject1
-type InlineObject1 struct {
-	Applications []EnvironmentEnvironmentIdApplicationDeployApplications `json:"applications,omitempty"`
+// DeployAllRequest struct for DeployAllRequest
+type DeployAllRequest struct {
+	Applications []DeployAllRequestApplications `json:"applications,omitempty"`
 }
 
-// NewInlineObject1 instantiates a new InlineObject1 object
+// NewDeployAllRequest instantiates a new DeployAllRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineObject1() *InlineObject1 {
-	this := InlineObject1{}
+func NewDeployAllRequest() *DeployAllRequest {
+	this := DeployAllRequest{}
 	return &this
 }
 
-// NewInlineObject1WithDefaults instantiates a new InlineObject1 object
+// NewDeployAllRequestWithDefaults instantiates a new DeployAllRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineObject1WithDefaults() *InlineObject1 {
-	this := InlineObject1{}
+func NewDeployAllRequestWithDefaults() *DeployAllRequest {
+	this := DeployAllRequest{}
 	return &this
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *InlineObject1) GetApplications() []EnvironmentEnvironmentIdApplicationDeployApplications {
+func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplications {
 	if o == nil || o.Applications == nil {
-		var ret []EnvironmentEnvironmentIdApplicationDeployApplications
+		var ret []DeployAllRequestApplications
 		return ret
 	}
 	return o.Applications
@@ -48,7 +48,7 @@ func (o *InlineObject1) GetApplications() []EnvironmentEnvironmentIdApplicationD
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineObject1) GetApplicationsOk() ([]EnvironmentEnvironmentIdApplicationDeployApplications, bool) {
+func (o *DeployAllRequest) GetApplicationsOk() ([]DeployAllRequestApplications, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *InlineObject1) GetApplicationsOk() ([]EnvironmentEnvironmentIdApplicati
 }
 
 // HasApplications returns a boolean if a field has been set.
-func (o *InlineObject1) HasApplications() bool {
+func (o *DeployAllRequest) HasApplications() bool {
 	if o != nil && o.Applications != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *InlineObject1) HasApplications() bool {
 	return false
 }
 
-// SetApplications gets a reference to the given []EnvironmentEnvironmentIdApplicationDeployApplications and assigns it to the Applications field.
-func (o *InlineObject1) SetApplications(v []EnvironmentEnvironmentIdApplicationDeployApplications) {
+// SetApplications gets a reference to the given []DeployAllRequestApplications and assigns it to the Applications field.
+func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplications) {
 	o.Applications = v
 }
 
-func (o InlineObject1) MarshalJSON() ([]byte, error) {
+func (o DeployAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Applications != nil {
 		toSerialize["applications"] = o.Applications
@@ -77,38 +77,38 @@ func (o InlineObject1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineObject1 struct {
-	value *InlineObject1
+type NullableDeployAllRequest struct {
+	value *DeployAllRequest
 	isSet bool
 }
 
-func (v NullableInlineObject1) Get() *InlineObject1 {
+func (v NullableDeployAllRequest) Get() *DeployAllRequest {
 	return v.value
 }
 
-func (v *NullableInlineObject1) Set(val *InlineObject1) {
+func (v *NullableDeployAllRequest) Set(val *DeployAllRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineObject1) IsSet() bool {
+func (v NullableDeployAllRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineObject1) Unset() {
+func (v *NullableDeployAllRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineObject1(val *InlineObject1) *NullableInlineObject1 {
-	return &NullableInlineObject1{value: val, isSet: true}
+func NewNullableDeployAllRequest(val *DeployAllRequest) *NullableDeployAllRequest {
+	return &NullableDeployAllRequest{value: val, isSet: true}
 }
 
-func (v NullableInlineObject1) MarshalJSON() ([]byte, error) {
+func (v NullableDeployAllRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineObject1) UnmarshalJSON(src []byte) error {
+func (v *NullableDeployAllRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

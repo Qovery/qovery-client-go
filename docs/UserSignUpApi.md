@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## CreateUserSignUp
 
-> CreateUserSignUp(ctx).InlineObject2(inlineObject2).Execute()
+> CreateUserSignUp(ctx).SignUpRequest(signUpRequest).Execute()
 
 Send Sign Up request
 
@@ -30,11 +30,11 @@ import (
 )
 
 func main() {
-    inlineObject2 := *openapiclient.NewInlineObject2("FirstName_example", "LastName_example", "UserEmail_example", "TypeOfUse_example", "QoveryUsage_example") // InlineObject2 |  (optional)
+    signUpRequest := *openapiclient.NewSignUpRequest("FirstName_example", "LastName_example", "UserEmail_example", openapiclient.TypeOfUseEnum("PERSONAL"), "QoveryUsage_example") // SignUpRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserSignUpApi.CreateUserSignUp(context.Background()).InlineObject2(inlineObject2).Execute()
+    resp, r, err := apiClient.UserSignUpApi.CreateUserSignUp(context.Background()).SignUpRequest(signUpRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserSignUpApi.CreateUserSignUp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +53,7 @@ Other parameters are passed through a pointer to a apiCreateUserSignUpRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject2** | [**InlineObject2**](InlineObject2.md) |  | 
+ **signUpRequest** | [**SignUpRequest**](SignUpRequest.md) |  | 
 
 ### Return type
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ## GetUserSignUp
 
-> Base GetUserSignUp(ctx).Execute()
+> SignUp GetUserSignUp(ctx).Execute()
 
 Get Sign up information
 
@@ -102,7 +102,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `UserSignUpApi.GetUserSignUp``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUserSignUp`: Base
+    // response from `GetUserSignUp`: SignUp
     fmt.Fprintf(os.Stdout, "Response from `UserSignUpApi.GetUserSignUp`: %v\n", resp)
 }
 ```
@@ -118,7 +118,7 @@ Other parameters are passed through a pointer to a apiGetUserSignUpRequest struc
 
 ### Return type
 
-[**Base**](Base.md)
+[**SignUp**](SignUp.md)
 
 ### Authorization
 

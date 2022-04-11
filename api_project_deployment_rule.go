@@ -561,14 +561,14 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRulesExecute(r Ap
 }
 
 type ApiUpdateDeploymentRulesPriorityOrderRequest struct {
-	ctx          context.Context
-	ApiService   *ProjectDeploymentRuleApiService
-	projectId    string
-	inlineObject *InlineObject
+	ctx                                        context.Context
+	ApiService                                 *ProjectDeploymentRuleApiService
+	projectId                                  string
+	projectDeploymentRulesPriorityOrderRequest *ProjectDeploymentRulesPriorityOrderRequest
 }
 
-func (r ApiUpdateDeploymentRulesPriorityOrderRequest) InlineObject(inlineObject InlineObject) ApiUpdateDeploymentRulesPriorityOrderRequest {
-	r.inlineObject = &inlineObject
+func (r ApiUpdateDeploymentRulesPriorityOrderRequest) ProjectDeploymentRulesPriorityOrderRequest(projectDeploymentRulesPriorityOrderRequest ProjectDeploymentRulesPriorityOrderRequest) ApiUpdateDeploymentRulesPriorityOrderRequest {
+	r.projectDeploymentRulesPriorityOrderRequest = &projectDeploymentRulesPriorityOrderRequest
 	return r
 }
 
@@ -631,7 +631,7 @@ func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrderExec
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject
+	localVarPostBody = r.projectDeploymentRulesPriorityOrderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

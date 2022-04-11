@@ -2455,18 +2455,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object'
         content:
           application/json:
             schema:
-              properties:
-                project_deployment_rule_ids_in_order:
-                  items:
-                    description: project deployment rule id
-                    format: uuid
-                    type: string
-                  type: array
-              type: object
+              $ref: '#/components/schemas/ProjectDeploymentRulesPriorityOrderRequest'
       responses:
         "200":
           description: Update deployment rules priority order
@@ -3740,16 +3732,10 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_1'
         content:
           application/json:
             schema:
-              properties:
-                applications:
-                  items:
-                    $ref: '#/components/schemas/_environment__environmentId__application_deploy_applications'
-                  type: array
-              type: object
+              $ref: '#/components/schemas/DeployAllRequest'
       responses:
         "202":
           content:
@@ -7813,9 +7799,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/Base'
-                - $ref: '#/paths/~1admin~1userSignUp/post/requestBody/content/application~1json/schema'
+                $ref: '#/components/schemas/SignUp'
           description: If a previous sign up request for the same user has been found,
             the information is returned in the payload
         "401":
@@ -7831,58 +7815,10 @@ paths:
       description: Send a Sign Up request containing the user information
       operationId: createUserSignUp
       requestBody:
-        $ref: '#/components/requestBodies/inline_object_2'
         content:
           application/json:
             schema:
-              properties:
-                first_name:
-                  type: string
-                last_name:
-                  type: string
-                user_email:
-                  type: string
-                type_of_use:
-                  enum:
-                  - PERSONAL
-                  - WORK
-                  - SCHOOL
-                  type: string
-                qovery_usage:
-                  type: string
-                company_name:
-                  nullable: true
-                  type: string
-                company_size:
-                  enum:
-                  - 1-10
-                  - 11-50
-                  - 51-200
-                  - 201-500
-                  - 500+
-                  type: string
-                user_role:
-                  nullable: true
-                  type: string
-                qovery_usage_other:
-                  nullable: true
-                  type: string
-                user_questions:
-                  nullable: true
-                  type: string
-                current_step:
-                  nullable: true
-                  type: string
-                dx_auth:
-                  nullable: true
-                  type: boolean
-              required:
-              - first_name
-              - last_name
-              - qovery_usage
-              - type_of_use
-              - user_email
-              type: object
+              $ref: '#/components/schemas/SignUpRequest'
       responses:
         "200":
           description: Sign up request stored
@@ -8177,22 +8113,6 @@ components:
       schema:
         type: number
       style: form
-  requestBodies:
-    inline_object_1:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_1'
-    inline_object:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object'
-    inline_object_2:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/inline_object_2'
   responses:
     "204":
       description: no content
@@ -8443,6 +8363,32 @@ components:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ProjectDeploymentRuleRequest'
       - $ref: '#/components/schemas/ProjectDeploymentRule_allOf'
+    ProjectDeploymentRulesPriorityOrderRequest:
+      example:
+        project_deployment_rule_ids_in_order:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        project_deployment_rule_ids_in_order:
+          items:
+            description: project deployment rule id
+            format: uuid
+            type: string
+          type: array
+      type: object
+    DeployAllRequest:
+      example:
+        applications:
+        - git_commit_id: git_commit_id
+          application_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_commit_id: git_commit_id
+          application_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        applications:
+          items:
+            $ref: '#/components/schemas/DeployAllRequest_applications'
+          type: array
+      type: object
     ProjectResponseList:
       example:
         results:
@@ -11493,6 +11439,74 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/OrganizationApiTokenCreate_allOf'
+    SignUp:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/SignUpRequest'
+    SignUpRequest:
+      example:
+        user_role: user_role
+        qovery_usage_other: qovery_usage_other
+        user_email: user_email
+        user_questions: user_questions
+        company_name: company_name
+        last_name: last_name
+        first_name: first_name
+        qovery_usage: qovery_usage
+        dx_auth: true
+        current_step: current_step
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        user_email:
+          type: string
+        type_of_use:
+          $ref: '#/components/schemas/TypeOfUseEnum'
+        qovery_usage:
+          type: string
+        company_name:
+          nullable: true
+          type: string
+        company_size:
+          $ref: '#/components/schemas/CompanySizeEnum'
+        user_role:
+          nullable: true
+          type: string
+        qovery_usage_other:
+          nullable: true
+          type: string
+        user_questions:
+          nullable: true
+          type: string
+        current_step:
+          nullable: true
+          type: string
+        dx_auth:
+          nullable: true
+          type: boolean
+      required:
+      - first_name
+      - last_name
+      - qovery_usage
+      - type_of_use
+      - user_email
+      type: object
+    TypeOfUseEnum:
+      enum:
+      - PERSONAL
+      - WORK
+      - SCHOOL
+      type: string
+    CompanySizeEnum:
+      enum:
+      - 1-10
+      - 11-50
+      - 51-200
+      - 201-500
+      - 500+
+      type: string
     BuildModeEnum:
       default: BUILDPACKS
       description: |
@@ -11705,84 +11719,6 @@ components:
       - DIGITAL_OCEAN
       - SCALEWAY
       type: string
-    inline_object:
-      properties:
-        project_deployment_rule_ids_in_order:
-          items:
-            description: project deployment rule id
-            format: uuid
-            type: string
-          type: array
-      type: object
-    _environment__environmentId__application_deploy_applications:
-      properties:
-        application_id:
-          description: id of the application to be deployed.
-          format: uuid
-          type: string
-        git_commit_id:
-          description: Commit ID to deploy.
-          type: string
-      required:
-      - application_id
-      - git_commit_id
-      type: object
-    inline_object_1:
-      properties:
-        applications:
-          items:
-            $ref: '#/components/schemas/_environment__environmentId__application_deploy_applications'
-          type: array
-      type: object
-    inline_object_2:
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        user_email:
-          type: string
-        type_of_use:
-          enum:
-          - PERSONAL
-          - WORK
-          - SCHOOL
-          type: string
-        qovery_usage:
-          type: string
-        company_name:
-          nullable: true
-          type: string
-        company_size:
-          enum:
-          - 1-10
-          - 11-50
-          - 51-200
-          - 201-500
-          - 500+
-          type: string
-        user_role:
-          nullable: true
-          type: string
-        qovery_usage_other:
-          nullable: true
-          type: string
-        user_questions:
-          nullable: true
-          type: string
-        current_step:
-          nullable: true
-          type: string
-        dx_auth:
-          nullable: true
-          type: boolean
-      required:
-      - first_name
-      - last_name
-      - qovery_usage
-      - type_of_use
-      - user_email
-      type: object
     ApplicationStorageRequest_storage:
       properties:
         type:
@@ -11834,6 +11770,22 @@ components:
             environments
           nullable: false
           type: integer
+      type: object
+    DeployAllRequest_applications:
+      example:
+        git_commit_id: git_commit_id
+        application_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        application_id:
+          description: id of the application to be deployed.
+          format: uuid
+          type: string
+        git_commit_id:
+          description: Commit ID to deploy.
+          type: string
+      required:
+      - application_id
+      - git_commit_id
       type: object
     Database_allOf:
       properties:
