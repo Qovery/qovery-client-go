@@ -25,6 +25,7 @@ const (
 	FREE         PlanEnum = "FREE"
 	PROFESSIONAL PlanEnum = "PROFESSIONAL"
 	BUSINESS     PlanEnum = "BUSINESS"
+	ENTERPRISE   PlanEnum = "ENTERPRISE"
 )
 
 // All allowed values of PlanEnum enum
@@ -33,6 +34,7 @@ var AllowedPlanEnumEnumValues = []PlanEnum{
 	"FREE",
 	"PROFESSIONAL",
 	"BUSINESS",
+	"ENTERPRISE",
 }
 
 func (v *PlanEnum) UnmarshalJSON(src []byte) error {

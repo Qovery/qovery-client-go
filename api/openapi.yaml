@@ -11696,6 +11696,7 @@ components:
       - FREE
       - PROFESSIONAL
       - BUSINESS
+      - ENTERPRISE
       type: string
     InvoiceStatusEnum:
       enum:
