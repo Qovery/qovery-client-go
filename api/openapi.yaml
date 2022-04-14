@@ -1845,6 +1845,25 @@ paths:
       summary: List AWS features available
       tags:
       - Cloud Provider
+  /aws/instanceType:
+    get:
+      operationId: listAWSInstanceType
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: list the instance types available for AWS cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List AWS available instance types
+      tags:
+      - Cloud Provider
   /digitalOcean/region:
     get:
       operationId: listDORegions
@@ -1883,6 +1902,25 @@ paths:
       summary: List DO features available
       tags:
       - Cloud Provider
+  /digitalOcean/instanceType:
+    get:
+      operationId: listDOInstanceType
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1aws~1instanceType/get/responses/200/content/application~1json/schema'
+          description: list the instance types available for Digital Ocean cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List DO available instance types
+      tags:
+      - Cloud Provider
   /scaleway/region:
     get:
       operationId: listScalewayRegions
@@ -1919,6 +1957,25 @@ paths:
         "404":
           description: Resource not found
       summary: List Scaleway features available
+      tags:
+      - Cloud Provider
+  /scaleway/instanceType:
+    get:
+      operationId: listScalewayInstanceType
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1aws~1instanceType/get/responses/200/content/application~1json/schema'
+          description: list the instance types available for Scaleway cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Scaleway available instance types
       tags:
       - Cloud Provider
   /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo:
@@ -11720,6 +11777,48 @@ components:
       - DIGITAL_OCEAN
       - SCALEWAY
       type: string
+    inline_response_200_results:
+      example:
+        name: t3a.xlarge
+        cpu: 2
+        type: T3A_XLARGE
+        ram_in_gb: 8
+      properties:
+        type:
+          example: T3A_XLARGE
+          type: string
+        name:
+          example: t3a.xlarge
+          type: string
+        cpu:
+          example: 2
+          type: integer
+        ram_in_gb:
+          example: 8
+          type: integer
+      required:
+      - cpu
+      - name
+      - ram_in_gb
+      - type
+      type: object
+    inline_response_200:
+      example:
+        results:
+        - name: t3a.xlarge
+          cpu: 2
+          type: T3A_XLARGE
+          ram_in_gb: 8
+        - name: t3a.xlarge
+          cpu: 2
+          type: T3A_XLARGE
+          ram_in_gb: 8
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/inline_response_200_results'
+          type: array
+      type: object
     ApplicationStorageRequest_storage:
       properties:
         type:

@@ -266,6 +266,8 @@ docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponseList.md
 docs/GlobalDeploymentStatus.md
 docs/Healthcheck.md
+docs/InlineResponse200.md
+docs/InlineResponse200Results.md
 docs/Instance.md
 docs/InstanceResponseList.md
 docs/InviteMember.md
@@ -579,6 +581,8 @@ model_git_repository_branch_response_list.go
 model_git_repository_response_list.go
 model_global_deployment_status.go
 model_healthcheck.go
+model_inline_response_200.go
+model_inline_response_200_results.go
 model_instance.go
 model_instance_response_list.go
 model_invite_member.go

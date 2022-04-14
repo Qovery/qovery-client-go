@@ -5,11 +5,14 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ListAWSFeatures**](CloudProviderApi.md#ListAWSFeatures) | **Get** /aws/clusterFeature | List AWS features available
+[**ListAWSInstanceType**](CloudProviderApi.md#ListAWSInstanceType) | **Get** /aws/instanceType | List AWS available instance types
 [**ListAWSRegions**](CloudProviderApi.md#ListAWSRegions) | **Get** /aws/region | List AWS regions
 [**ListCloudProvider**](CloudProviderApi.md#ListCloudProvider) | **Get** /cloudProvider | List Cloud providers available
 [**ListDOFeatures**](CloudProviderApi.md#ListDOFeatures) | **Get** /digitalOcean/clusterFeature | List DO features available
+[**ListDOInstanceType**](CloudProviderApi.md#ListDOInstanceType) | **Get** /digitalOcean/instanceType | List DO available instance types
 [**ListDORegions**](CloudProviderApi.md#ListDORegions) | **Get** /digitalOcean/region | List DO regions
 [**ListScalewayFeatures**](CloudProviderApi.md#ListScalewayFeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
+[**ListScalewayInstanceType**](CloudProviderApi.md#ListScalewayInstanceType) | **Get** /scaleway/instanceType | List Scaleway available instance types
 [**ListScalewayRegions**](CloudProviderApi.md#ListScalewayRegions) | **Get** /scaleway/region | List Scaleway regions
 
 
@@ -58,6 +61,65 @@ Other parameters are passed through a pointer to a apiListAWSFeaturesRequest str
 ### Return type
 
 [**ClusterFeatureResponseList**](ClusterFeatureResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAWSInstanceType
+
+> InlineResponse200 ListAWSInstanceType(ctx).Execute()
+
+List AWS available instance types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListAWSInstanceType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListAWSInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSInstanceType`: InlineResponse200
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListAWSInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAWSInstanceTypeRequest struct via the builder pattern
+
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -250,6 +312,65 @@ Other parameters are passed through a pointer to a apiListDOFeaturesRequest stru
 [[Back to README]](../README.md)
 
 
+## ListDOInstanceType
+
+> Object ListDOInstanceType(ctx).Execute()
+
+List DO available instance types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListDOInstanceType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListDOInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListDOInstanceType`: Object
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListDOInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListDOInstanceTypeRequest struct via the builder pattern
+
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListDORegions
 
 > ClusterRegionResponseList ListDORegions(ctx).Execute()
@@ -353,6 +474,65 @@ Other parameters are passed through a pointer to a apiListScalewayFeaturesReques
 ### Return type
 
 [**ClusterFeatureResponseList**](ClusterFeatureResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListScalewayInstanceType
+
+> Object ListScalewayInstanceType(ctx).Execute()
+
+List Scaleway available instance types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListScalewayInstanceType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListScalewayInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListScalewayInstanceType`: Object
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListScalewayInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListScalewayInstanceTypeRequest struct via the builder pattern
+
+
+### Return type
+
+[**Object**](Object.md)
 
 ### Authorization
 
