@@ -30,9 +30,11 @@ type Cluster struct {
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory              *int32          `json:"memory,omitempty"`
-	MinRunningNodes     *int32          `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes     *int32          `json:"max_running_nodes,omitempty"`
+	Memory          *int32 `json:"memory,omitempty"`
+	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
+	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
+	InstanceType        *string         `json:"instance_type,omitempty"`
 	Title               *string         `json:"title,omitempty"`
 	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
 	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
@@ -444,6 +446,38 @@ func (o *Cluster) HasMaxRunningNodes() bool {
 // SetMaxRunningNodes gets a reference to the given int32 and assigns it to the MaxRunningNodes field.
 func (o *Cluster) SetMaxRunningNodes(v int32) {
 	o.MaxRunningNodes = &v
+}
+
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *Cluster) GetInstanceType() string {
+	if o == nil || o.InstanceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || o.InstanceType == nil {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *Cluster) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *Cluster) SetInstanceType(v string) {
+	o.InstanceType = &v
 }
 
 // GetTitle returns the Title field value if set, zero value otherwise.
@@ -943,6 +977,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxRunningNodes != nil {
 		toSerialize["max_running_nodes"] = o.MaxRunningNodes
+	}
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	if o.Title != nil {
 		toSerialize["title"] = o.Title

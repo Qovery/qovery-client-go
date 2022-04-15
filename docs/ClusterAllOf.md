@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
+**InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 
 ## Methods
 
@@ -242,6 +243,31 @@ SetMaxRunningNodes sets MaxRunningNodes field to given value.
 `func (o *ClusterAllOf) HasMaxRunningNodes() bool`
 
 HasMaxRunningNodes returns a boolean if a field has been set.
+
+### GetInstanceType
+
+`func (o *ClusterAllOf) GetInstanceType() string`
+
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
+
+### GetInstanceTypeOk
+
+`func (o *ClusterAllOf) GetInstanceTypeOk() (*string, bool)`
+
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceType
+
+`func (o *ClusterAllOf) SetInstanceType(v string)`
+
+SetInstanceType sets InstanceType field to given value.
+
+### HasInstanceType
+
+`func (o *ClusterAllOf) HasInstanceType() bool`
+
+HasInstanceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

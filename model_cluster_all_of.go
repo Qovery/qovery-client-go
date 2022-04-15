@@ -29,6 +29,8 @@ type ClusterAllOf struct {
 	Memory          *int32 `json:"memory,omitempty"`
 	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
+	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
+	InstanceType *string `json:"instance_type,omitempty"`
 }
 
 // NewClusterAllOf instantiates a new ClusterAllOf object
@@ -331,6 +333,38 @@ func (o *ClusterAllOf) SetMaxRunningNodes(v int32) {
 	o.MaxRunningNodes = &v
 }
 
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *ClusterAllOf) GetInstanceType() string {
+	if o == nil || o.InstanceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAllOf) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || o.InstanceType == nil {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *ClusterAllOf) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *ClusterAllOf) SetInstanceType(v string) {
+	o.InstanceType = &v
+}
+
 func (o ClusterAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -359,6 +393,9 @@ func (o ClusterAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxRunningNodes != nil {
 		toSerialize["max_running_nodes"] = o.MaxRunningNodes
+	}
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	return json.Marshal(toSerialize)
 }

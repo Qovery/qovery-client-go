@@ -12424,6 +12424,11 @@ components:
         max_running_nodes:
           default: 1
           type: integer
+        instance_type:
+          description: the instance type to be used for this cluster. The list of
+            values can be retrieved via the endpoint /{CloudProvider}/instanceType
+          example: T3A_LARGE
+          type: string
       required:
       - cloud_provider
       - name
