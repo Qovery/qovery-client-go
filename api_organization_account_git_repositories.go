@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // Linger please
@@ -24,37 +25,37 @@ var (
 	_ context.Context
 )
 
-// GitRepositoriesApiService GitRepositoriesApi service
-type GitRepositoriesApiService service
+// OrganizationAccountGitRepositoriesApiService OrganizationAccountGitRepositoriesApi service
+type OrganizationAccountGitRepositoriesApiService service
 
-type ApiGetBitbucketRepositoriesRequest struct {
-	ctx        context.Context
-	ApiService *GitRepositoriesApiService
+type ApiGetOrganizationBitbucketRepositoriesRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationAccountGitRepositoriesApiService
+	organizationId string
 }
 
-func (r ApiGetBitbucketRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
-	return r.ApiService.GetBitbucketRepositoriesExecute(r)
+func (r ApiGetOrganizationBitbucketRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
+	return r.ApiService.GetOrganizationBitbucketRepositoriesExecute(r)
 }
 
 /*
-GetBitbucketRepositories Get bitbucket repositories of the connected user
+GetOrganizationBitbucketRepositories Get bitbucket repositories of the connected user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetBitbucketRepositoriesRequest
-
-Deprecated
+ @param organizationId Organization ID
+ @return ApiGetOrganizationBitbucketRepositoriesRequest
 */
-func (a *GitRepositoriesApiService) GetBitbucketRepositories(ctx context.Context) ApiGetBitbucketRepositoriesRequest {
-	return ApiGetBitbucketRepositoriesRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositories(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoriesRequest {
+	return ApiGetOrganizationBitbucketRepositoriesRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-// Deprecated
-func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositoriesExecute(r ApiGetOrganizationBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -62,12 +63,13 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitb
 		localVarReturnValue *GitRepositoryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetBitbucketRepositories")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationBitbucketRepositories")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/account/bitbucket/repository"
+	localVarPath := localBasePath + "/organization/{organizationId}/account/bitbucket/repository"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -127,41 +129,41 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitb
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetBitbucketRepositoryBranchesRequest struct {
-	ctx        context.Context
-	ApiService *GitRepositoriesApiService
-	name       *string
+type ApiGetOrganizationBitbucketRepositoryBranchesRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationAccountGitRepositoriesApiService
+	organizationId string
+	name           *string
 }
 
 // The name of the repository where to retrieve the branches
-func (r ApiGetBitbucketRepositoryBranchesRequest) Name(name string) ApiGetBitbucketRepositoryBranchesRequest {
+func (r ApiGetOrganizationBitbucketRepositoryBranchesRequest) Name(name string) ApiGetOrganizationBitbucketRepositoryBranchesRequest {
 	r.name = &name
 	return r
 }
 
-func (r ApiGetBitbucketRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
-	return r.ApiService.GetBitbucketRepositoryBranchesExecute(r)
+func (r ApiGetOrganizationBitbucketRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
+	return r.ApiService.GetOrganizationBitbucketRepositoryBranchesExecute(r)
 }
 
 /*
-GetBitbucketRepositoryBranches Get bitbucket branches of the specified repository
+GetOrganizationBitbucketRepositoryBranches Get bitbucket branches of the specified repository
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetBitbucketRepositoryBranchesRequest
-
-Deprecated
+ @param organizationId Organization ID
+ @return ApiGetOrganizationBitbucketRepositoryBranchesRequest
 */
-func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranches(ctx context.Context) ApiGetBitbucketRepositoryBranchesRequest {
-	return ApiGetBitbucketRepositoryBranchesRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoryBranchesRequest {
+	return ApiGetOrganizationBitbucketRepositoryBranchesRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-// Deprecated
-func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiGetBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositoryBranchesExecute(r ApiGetOrganizationBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -169,12 +171,13 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiG
 		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetBitbucketRepositoryBranches")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationBitbucketRepositoryBranches")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/account/bitbucket/repository/branch"
+	localVarPath := localBasePath + "/organization/{organizationId}/account/bitbucket/repository/branch"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -237,34 +240,34 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetGitProviderAccountRequest struct {
-	ctx        context.Context
-	ApiService *GitRepositoriesApiService
+type ApiGetOrganizationGitProviderAccountRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationAccountGitRepositoriesApiService
+	organizationId string
 }
 
-func (r ApiGetGitProviderAccountRequest) Execute() (*GitAuthProviderResponseList, *http.Response, error) {
-	return r.ApiService.GetGitProviderAccountExecute(r)
+func (r ApiGetOrganizationGitProviderAccountRequest) Execute() (*GitAuthProviderResponseList, *http.Response, error) {
+	return r.ApiService.GetOrganizationGitProviderAccountExecute(r)
 }
 
 /*
-GetGitProviderAccount Get git provider accounts
+GetOrganizationGitProviderAccount Get git provider accounts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGitProviderAccountRequest
-
-Deprecated
+ @param organizationId Organization ID
+ @return ApiGetOrganizationGitProviderAccountRequest
 */
-func (a *GitRepositoriesApiService) GetGitProviderAccount(ctx context.Context) ApiGetGitProviderAccountRequest {
-	return ApiGetGitProviderAccountRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProviderAccount(ctx context.Context, organizationId string) ApiGetOrganizationGitProviderAccountRequest {
+	return ApiGetOrganizationGitProviderAccountRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return GitAuthProviderResponseList
-// Deprecated
-func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProviderAccountExecute(r ApiGetOrganizationGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -272,12 +275,13 @@ func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProv
 		localVarReturnValue *GitAuthProviderResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitProviderAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGitProviderAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/account/gitAuthProvider"
+	localVarPath := localBasePath + "/organization/{organizationId}/account/gitAuthProvider"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -337,34 +341,34 @@ func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetGithubRepositoriesRequest struct {
-	ctx        context.Context
-	ApiService *GitRepositoriesApiService
+type ApiGetOrganizationGithubRepositoriesRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationAccountGitRepositoriesApiService
+	organizationId string
 }
 
-func (r ApiGetGithubRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
-	return r.ApiService.GetGithubRepositoriesExecute(r)
+func (r ApiGetOrganizationGithubRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
+	return r.ApiService.GetOrganizationGithubRepositoriesExecute(r)
 }
 
 /*
-GetGithubRepositories Get github repositories of the connected user
+GetOrganizationGithubRepositories Get github repositories of the connected user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGithubRepositoriesRequest
-
-Deprecated
+ @param organizationId Organization ID
+ @return ApiGetOrganizationGithubRepositoriesRequest
 */
-func (a *GitRepositoriesApiService) GetGithubRepositories(ctx context.Context) ApiGetGithubRepositoriesRequest {
-	return ApiGetGithubRepositoriesRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoriesRequest {
+	return ApiGetOrganizationGithubRepositoriesRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-// Deprecated
-func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositoriesExecute(r ApiGetOrganizationGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -372,12 +376,13 @@ func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubR
 		localVarReturnValue *GitRepositoryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGithubRepositories")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGithubRepositories")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/account/github/repository"
+	localVarPath := localBasePath + "/organization/{organizationId}/account/github/repository"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -437,41 +442,41 @@ func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetGithubRepositoryBranchesRequest struct {
-	ctx        context.Context
-	ApiService *GitRepositoriesApiService
-	name       *string
+type ApiGetOrganizationGithubRepositoryBranchesRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationAccountGitRepositoriesApiService
+	organizationId string
+	name           *string
 }
 
 // The name of the repository where to retrieve the branches
-func (r ApiGetGithubRepositoryBranchesRequest) Name(name string) ApiGetGithubRepositoryBranchesRequest {
+func (r ApiGetOrganizationGithubRepositoryBranchesRequest) Name(name string) ApiGetOrganizationGithubRepositoryBranchesRequest {
 	r.name = &name
 	return r
 }
 
-func (r ApiGetGithubRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
-	return r.ApiService.GetGithubRepositoryBranchesExecute(r)
+func (r ApiGetOrganizationGithubRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
+	return r.ApiService.GetOrganizationGithubRepositoryBranchesExecute(r)
 }
 
 /*
-GetGithubRepositoryBranches Get github branches of the specified repository
+GetOrganizationGithubRepositoryBranches Get github branches of the specified repository
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGithubRepositoryBranchesRequest
-
-Deprecated
+ @param organizationId Organization ID
+ @return ApiGetOrganizationGithubRepositoryBranchesRequest
 */
-func (a *GitRepositoriesApiService) GetGithubRepositoryBranches(ctx context.Context) ApiGetGithubRepositoryBranchesRequest {
-	return ApiGetGithubRepositoryBranchesRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoryBranchesRequest {
+	return ApiGetOrganizationGithubRepositoryBranchesRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-// Deprecated
-func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositoryBranchesExecute(r ApiGetOrganizationGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -479,12 +484,13 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetG
 		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGithubRepositoryBranches")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGithubRepositoryBranches")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/account/github/repository/branch"
+	localVarPath := localBasePath + "/organization/{organizationId}/account/github/repository/branch"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -547,34 +553,34 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetGitlabRepositoriesRequest struct {
-	ctx        context.Context
-	ApiService *GitRepositoriesApiService
+type ApiGetOrganizationGitlabRepositoriesRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationAccountGitRepositoriesApiService
+	organizationId string
 }
 
-func (r ApiGetGitlabRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
-	return r.ApiService.GetGitlabRepositoriesExecute(r)
+func (r ApiGetOrganizationGitlabRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
+	return r.ApiService.GetOrganizationGitlabRepositoriesExecute(r)
 }
 
 /*
-GetGitlabRepositories Get gitlab repositories of the connected user
+GetOrganizationGitlabRepositories Get gitlab repositories of the connected user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGitlabRepositoriesRequest
-
-Deprecated
+ @param organizationId Organization ID
+ @return ApiGetOrganizationGitlabRepositoriesRequest
 */
-func (a *GitRepositoriesApiService) GetGitlabRepositories(ctx context.Context) ApiGetGitlabRepositoriesRequest {
-	return ApiGetGitlabRepositoriesRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoriesRequest {
+	return ApiGetOrganizationGitlabRepositoriesRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-// Deprecated
-func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositoriesExecute(r ApiGetOrganizationGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -582,12 +588,13 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabR
 		localVarReturnValue *GitRepositoryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositories")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGitlabRepositories")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/account/gitlab/repository"
+	localVarPath := localBasePath + "/organization/{organizationId}/account/gitlab/repository"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -647,41 +654,41 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetGitlabRepositoryBranchesRequest struct {
-	ctx        context.Context
-	ApiService *GitRepositoriesApiService
-	name       *string
+type ApiGetOrganizationGitlabRepositoryBranchesRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationAccountGitRepositoriesApiService
+	organizationId string
+	name           *string
 }
 
 // The name of the repository to retrieve the branches
-func (r ApiGetGitlabRepositoryBranchesRequest) Name(name string) ApiGetGitlabRepositoryBranchesRequest {
+func (r ApiGetOrganizationGitlabRepositoryBranchesRequest) Name(name string) ApiGetOrganizationGitlabRepositoryBranchesRequest {
 	r.name = &name
 	return r
 }
 
-func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
-	return r.ApiService.GetGitlabRepositoryBranchesExecute(r)
+func (r ApiGetOrganizationGitlabRepositoryBranchesRequest) Execute() (*GitRepositoryBranchResponseList, *http.Response, error) {
+	return r.ApiService.GetOrganizationGitlabRepositoryBranchesExecute(r)
 }
 
 /*
-GetGitlabRepositoryBranches Get gitlab branches of the specified repository
+GetOrganizationGitlabRepositoryBranches Get gitlab branches of the specified repository
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGitlabRepositoryBranchesRequest
-
-Deprecated
+ @param organizationId Organization ID
+ @return ApiGetOrganizationGitlabRepositoryBranchesRequest
 */
-func (a *GitRepositoriesApiService) GetGitlabRepositoryBranches(ctx context.Context) ApiGetGitlabRepositoryBranchesRequest {
-	return ApiGetGitlabRepositoryBranchesRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoryBranchesRequest {
+	return ApiGetOrganizationGitlabRepositoryBranchesRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-// Deprecated
-func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositoryBranchesExecute(r ApiGetOrganizationGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -689,12 +696,13 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetG
 		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GitRepositoriesApiService.GetGitlabRepositoryBranches")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGitlabRepositoryBranches")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/account/gitlab/repository/branch"
+	localVarPath := localBasePath + "/organization/{organizationId}/account/gitlab/repository/branch"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

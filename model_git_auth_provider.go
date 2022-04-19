@@ -17,9 +17,10 @@ import (
 
 // GitAuthProvider struct for GitAuthProvider
 type GitAuthProvider struct {
-	Id    *string `json:"id,omitempty"`
-	Name  string  `json:"name"`
-	Owner string  `json:"owner"`
+	Id     *string `json:"id,omitempty"`
+	Name   string  `json:"name"`
+	Owner  string  `json:"owner"`
+	UseBot *bool   `json:"use_bot,omitempty"`
 }
 
 // NewGitAuthProvider instantiates a new GitAuthProvider object
@@ -121,6 +122,38 @@ func (o *GitAuthProvider) SetOwner(v string) {
 	o.Owner = v
 }
 
+// GetUseBot returns the UseBot field value if set, zero value otherwise.
+func (o *GitAuthProvider) GetUseBot() bool {
+	if o == nil || o.UseBot == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UseBot
+}
+
+// GetUseBotOk returns a tuple with the UseBot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GitAuthProvider) GetUseBotOk() (*bool, bool) {
+	if o == nil || o.UseBot == nil {
+		return nil, false
+	}
+	return o.UseBot, true
+}
+
+// HasUseBot returns a boolean if a field has been set.
+func (o *GitAuthProvider) HasUseBot() bool {
+	if o != nil && o.UseBot != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUseBot gets a reference to the given bool and assigns it to the UseBot field.
+func (o *GitAuthProvider) SetUseBot(v bool) {
+	o.UseBot = &v
+}
+
 func (o GitAuthProvider) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -131,6 +164,9 @@ func (o GitAuthProvider) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["owner"] = o.Owner
+	}
+	if o.UseBot != nil {
+		toSerialize["use_bot"] = o.UseBot
 	}
 	return json.Marshal(toSerialize)
 }

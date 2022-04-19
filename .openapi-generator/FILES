@@ -40,6 +40,7 @@ api_environments.go
 api_git_repositories.go
 api_logical_database.go
 api_members.go
+api_organization_account_git_repositories.go
 api_organization_api_token.go
 api_organization_main_calls.go
 api_project_deployment_rule.go
@@ -315,6 +316,7 @@ docs/MetricStorageDatapointResponseList.md
 docs/MetricStorageResponseList.md
 docs/Name.md
 docs/Organization.md
+docs/OrganizationAccountGitRepositoriesApi.md
 docs/OrganizationAllOf.md
 docs/OrganizationApiToken.md
 docs/OrganizationApiTokenAllOf.md

@@ -1788,6 +1788,205 @@ paths:
       summary: Edit a set of Scaleway credentials
       tags:
       - Cloud Provider Credentials
+  /organization/{organizationId}/account/gitAuthProvider:
+    get:
+      operationId: getOrganizationGitProviderAccount
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitAuthProviderResponseList'
+          description: Get account
+        "401":
+          description: Access token is missing or invalid
+      summary: Get git provider accounts
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/github/repository:
+    get:
+      operationId: getOrganizationGithubRepositories
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryResponseList'
+          description: Get github repositories
+        "401":
+          description: Access token is missing or invalid
+      summary: Get github repositories of the connected user
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/github/repository/branch:
+    get:
+      operationId: getOrganizationGithubRepositoryBranches
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The name of the repository where to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
+          description: Get github repository branches
+        "401":
+          description: Access token is missing or invalid
+      summary: Get github branches of the specified repository
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/gitlab/repository:
+    get:
+      operationId: getOrganizationGitlabRepositories
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryResponseList'
+          description: Get gitlab repositories
+        "401":
+          description: Access token is missing or invalid
+      summary: Get gitlab repositories of the connected user
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/gitlab/repository/branch:
+    get:
+      operationId: getOrganizationGitlabRepositoryBranches
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The name of the repository to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
+          description: Get gitlab repository branches
+        "401":
+          description: Access token is missing or invalid
+      summary: Get gitlab branches of the specified repository
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/bitbucket/repository:
+    get:
+      operationId: getOrganizationBitbucketRepositories
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryResponseList'
+          description: Get bitbucket repositories
+        "401":
+          description: Access token is missing or invalid
+      summary: Get bitbucket repositories of the connected user
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/bitbucket/repository/branch:
+    get:
+      operationId: getOrganizationBitbucketRepositoryBranches
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The name of the repository where to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
+          description: Get bitbucket repository branches
+        "401":
+          description: Access token is missing or invalid
+      summary: Get bitbucket branches of the specified repository
+      tags:
+      - Organization Account Git Repositories
   /cloudProvider:
     get:
       operationId: listCloudProvider
@@ -7687,6 +7886,7 @@ paths:
       - Account Info
   /account/gitAuthProvider:
     get:
+      deprecated: true
       operationId: getGitProviderAccount
       responses:
         "200":
@@ -7702,6 +7902,7 @@ paths:
       - Git repositories
   /account/github/repository:
     get:
+      deprecated: true
       operationId: getGithubRepositories
       responses:
         "200":
@@ -7717,6 +7918,7 @@ paths:
       - Git repositories
   /account/github/repository/branch:
     get:
+      deprecated: true
       operationId: getGithubRepositoryBranches
       parameters:
       - description: The name of the repository where to retrieve the branches
@@ -7741,6 +7943,7 @@ paths:
       - Git repositories
   /account/gitlab/repository:
     get:
+      deprecated: true
       operationId: getGitlabRepositories
       responses:
         "200":
@@ -7756,6 +7959,7 @@ paths:
       - Git repositories
   /account/gitlab/repository/branch:
     get:
+      deprecated: true
       operationId: getGitlabRepositoryBranches
       parameters:
       - description: The name of the repository to retrieve the branches
@@ -7780,6 +7984,7 @@ paths:
       - Git repositories
   /account/bitbucket/repository:
     get:
+      deprecated: true
       operationId: getBitbucketRepositories
       responses:
         "200":
@@ -7795,6 +8000,7 @@ paths:
       - Git repositories
   /account/bitbucket/repository/branch:
     get:
+      deprecated: true
       operationId: getBitbucketRepositoryBranches
       parameters:
       - description: The name of the repository where to retrieve the branches
@@ -8929,6 +9135,7 @@ components:
         owner: John Doe
         name: GITHUB
         id: id
+        use_bot: true
       properties:
         id:
           type: string
@@ -8938,6 +9145,8 @@ components:
         owner:
           example: John Doe
           type: string
+        use_bot:
+          type: boolean
       required:
       - name
       - owner
@@ -9590,9 +9799,11 @@ components:
         - owner: John Doe
           name: GITHUB
           id: id
+          use_bot: true
         - owner: John Doe
           name: GITHUB
           id: id
+          use_bot: true
       properties:
         results:
           items:
@@ -12810,6 +13021,7 @@ x-tagGroups:
   tags:
   - Organization Main Calls
   - Organization Api Token
+  - Organization Account Git Repositories
   - Projects
   - Members
   - Billing

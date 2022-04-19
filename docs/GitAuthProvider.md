@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | **string** |  | 
 **Owner** | **string** |  | 
+**UseBot** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ and a boolean to check if the value has been set.
 
 SetOwner sets Owner field to given value.
 
+
+### GetUseBot
+
+`func (o *GitAuthProvider) GetUseBot() bool`
+
+GetUseBot returns the UseBot field if non-nil, zero value otherwise.
+
+### GetUseBotOk
+
+`func (o *GitAuthProvider) GetUseBotOk() (*bool, bool)`
+
+GetUseBotOk returns a tuple with the UseBot field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseBot
+
+`func (o *GitAuthProvider) SetUseBot(v bool)`
+
+SetUseBot sets UseBot field to given value.
+
+### HasUseBot
+
+`func (o *GitAuthProvider) HasUseBot() bool`
+
+HasUseBot returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

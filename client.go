@@ -124,6 +124,8 @@ type APIClient struct {
 
 	MembersApi *MembersApiService
 
+	OrganizationAccountGitRepositoriesApi *OrganizationAccountGitRepositoriesApiService
+
 	OrganizationApiTokenApi *OrganizationApiTokenApiService
 
 	OrganizationMainCallsApi *OrganizationMainCallsApiService
@@ -196,6 +198,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.GitRepositoriesApi = (*GitRepositoriesApiService)(&c.common)
 	c.LogicalDatabaseApi = (*LogicalDatabaseApiService)(&c.common)
 	c.MembersApi = (*MembersApiService)(&c.common)
+	c.OrganizationAccountGitRepositoriesApi = (*OrganizationAccountGitRepositoriesApiService)(&c.common)
 	c.OrganizationApiTokenApi = (*OrganizationApiTokenApiService)(&c.common)
 	c.OrganizationMainCallsApi = (*OrganizationMainCallsApiService)(&c.common)
 	c.ProjectDeploymentRuleApi = (*ProjectDeploymentRuleApiService)(&c.common)
