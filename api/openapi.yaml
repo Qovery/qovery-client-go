@@ -8841,23 +8841,32 @@ components:
       - $ref: '#/components/schemas/DeploymentHistoryEnvironment_allOf'
     Log:
       example:
-        created_at: 2000-01-23T04:56:07.000+00:00
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        created_at: 2022-04-19T15:36:12.024Z
+        id: 4aa76065-68b3-41ef-aa1d-46be67012bef
         message: message
+        application_commit_id: 2bfd61fe45946c74f318050b26210be486c43a39
+        pod_name: app-z4aa76065-57d84cbbdb-xcg8v
       properties:
         id:
+          example: 4aa76065-68b3-41ef-aa1d-46be67012bef
           format: uuid
           type: string
         created_at:
+          example: 2022-04-19T15:36:12.024Z
           format: date-time
           type: string
         message:
+          type: string
+        pod_name:
+          example: app-z4aa76065-57d84cbbdb-xcg8v
+          type: string
+        application_commit_id:
+          example: 2bfd61fe45946c74f318050b26210be486c43a39
           type: string
       required:
       - created_at
       - id
       - message
-      - status
       type: object
     MetricMemory:
       example:
@@ -10051,12 +10060,16 @@ components:
     LogResponseList:
       example:
         results:
-        - created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - created_at: 2022-04-19T15:36:12.024Z
+          id: 4aa76065-68b3-41ef-aa1d-46be67012bef
           message: message
-        - created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          application_commit_id: 2bfd61fe45946c74f318050b26210be486c43a39
+          pod_name: app-z4aa76065-57d84cbbdb-xcg8v
+        - created_at: 2022-04-19T15:36:12.024Z
+          id: 4aa76065-68b3-41ef-aa1d-46be67012bef
           message: message
+          application_commit_id: 2bfd61fe45946c74f318050b26210be486c43a39
+          pod_name: app-z4aa76065-57d84cbbdb-xcg8v
       properties:
         results:
           items:

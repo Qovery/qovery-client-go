@@ -18,9 +18,11 @@ import (
 
 // Log struct for Log
 type Log struct {
-	Id        string    `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	Message   string    `json:"message"`
+	Id                  string    `json:"id"`
+	CreatedAt           time.Time `json:"created_at"`
+	Message             string    `json:"message"`
+	PodName             *string   `json:"pod_name,omitempty"`
+	ApplicationCommitId *string   `json:"application_commit_id,omitempty"`
 }
 
 // NewLog instantiates a new Log object
@@ -115,6 +117,70 @@ func (o *Log) SetMessage(v string) {
 	o.Message = v
 }
 
+// GetPodName returns the PodName field value if set, zero value otherwise.
+func (o *Log) GetPodName() string {
+	if o == nil || o.PodName == nil {
+		var ret string
+		return ret
+	}
+	return *o.PodName
+}
+
+// GetPodNameOk returns a tuple with the PodName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Log) GetPodNameOk() (*string, bool) {
+	if o == nil || o.PodName == nil {
+		return nil, false
+	}
+	return o.PodName, true
+}
+
+// HasPodName returns a boolean if a field has been set.
+func (o *Log) HasPodName() bool {
+	if o != nil && o.PodName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPodName gets a reference to the given string and assigns it to the PodName field.
+func (o *Log) SetPodName(v string) {
+	o.PodName = &v
+}
+
+// GetApplicationCommitId returns the ApplicationCommitId field value if set, zero value otherwise.
+func (o *Log) GetApplicationCommitId() string {
+	if o == nil || o.ApplicationCommitId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ApplicationCommitId
+}
+
+// GetApplicationCommitIdOk returns a tuple with the ApplicationCommitId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Log) GetApplicationCommitIdOk() (*string, bool) {
+	if o == nil || o.ApplicationCommitId == nil {
+		return nil, false
+	}
+	return o.ApplicationCommitId, true
+}
+
+// HasApplicationCommitId returns a boolean if a field has been set.
+func (o *Log) HasApplicationCommitId() bool {
+	if o != nil && o.ApplicationCommitId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationCommitId gets a reference to the given string and assigns it to the ApplicationCommitId field.
+func (o *Log) SetApplicationCommitId(v string) {
+	o.ApplicationCommitId = &v
+}
+
 func (o Log) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -125,6 +191,12 @@ func (o Log) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["message"] = o.Message
+	}
+	if o.PodName != nil {
+		toSerialize["pod_name"] = o.PodName
+	}
+	if o.ApplicationCommitId != nil {
+		toSerialize["application_commit_id"] = o.ApplicationCommitId
 	}
 	return json.Marshal(toSerialize)
 }
