@@ -47,7 +47,7 @@ func (r ApiCreateOrganizationApiTokenRequest) Execute() (*OrganizationApiTokenCr
 /*
 CreateOrganizationApiToken Create an organization api token
 
-Create an organization api token
+Create an organization api token. You can use the generated token to interact in a programmatic way with our API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID

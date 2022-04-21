@@ -241,7 +241,8 @@ paths:
       tags:
       - Organization Api Token
     post:
-      description: Create an organization api token
+      description: Create an organization api token. You can use the generated token
+        to interact in a programmatic way with our API.
       operationId: createOrganizationApiToken
       parameters:
       - description: Organization ID
