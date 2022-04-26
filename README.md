@@ -251,7 +251,7 @@ Class | Method | HTTP request | Description
 *EnvironmentVariableApi* | [**ListEnvironmentEnvironmentVariable**](docs/EnvironmentVariableApi.md#listenvironmentenvironmentvariable) | **Get** /environment/{environmentId}/environmentVariable | List environment variables
 *EnvironmentsApi* | [**CreateEnvironment**](docs/EnvironmentsApi.md#createenvironment) | **Post** /project/{projectId}/environment | Create an environment
 *EnvironmentsApi* | [**GetProjectEnvironmentServiceNumber**](docs/EnvironmentsApi.md#getprojectenvironmentservicenumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
-*EnvironmentsApi* | [**GetProjectEnvironmentStatus**](docs/EnvironmentsApi.md#getprojectenvironmentstatus) | **Get** /project/{projectId}/environment/status | List environments statuses
+*EnvironmentsApi* | [**GetProjectEnvironmentsStatus**](docs/EnvironmentsApi.md#getprojectenvironmentsstatus) | **Get** /project/{projectId}/environment/status | List environments statuses
 *EnvironmentsApi* | [**ListEnvironment**](docs/EnvironmentsApi.md#listenvironment) | **Get** /project/{projectId}/environment | List environments
 *GitRepositoriesApi* | [**GetBitbucketRepositories**](docs/GitRepositoriesApi.md#getbitbucketrepositories) | **Get** /account/bitbucket/repository | Get bitbucket repositories of the connected user
 *GitRepositoriesApi* | [**GetBitbucketRepositoryBranches**](docs/GitRepositoriesApi.md#getbitbucketrepositorybranches) | **Get** /account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
@@ -478,6 +478,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentRestartRequest](docs/EnvironmentRestartRequest.md)
  - [EnvironmentStats](docs/EnvironmentStats.md)
  - [EnvironmentStatsResponseList](docs/EnvironmentStatsResponseList.md)
+ - [EnvironmentStatusList](docs/EnvironmentStatusList.md)
  - [EnvironmentTotalNumber](docs/EnvironmentTotalNumber.md)
  - [EnvironmentVariable](docs/EnvironmentVariable.md)
  - [EnvironmentVariableAllOf](docs/EnvironmentVariableAllOf.md)

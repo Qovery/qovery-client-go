@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateEnvironment**](EnvironmentsApi.md#CreateEnvironment) | **Post** /project/{projectId}/environment | Create an environment
 [**GetProjectEnvironmentServiceNumber**](EnvironmentsApi.md#GetProjectEnvironmentServiceNumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
-[**GetProjectEnvironmentStatus**](EnvironmentsApi.md#GetProjectEnvironmentStatus) | **Get** /project/{projectId}/environment/status | List environments statuses
+[**GetProjectEnvironmentsStatus**](EnvironmentsApi.md#GetProjectEnvironmentsStatus) | **Get** /project/{projectId}/environment/status | List environments statuses
 [**ListEnvironment**](EnvironmentsApi.md#ListEnvironment) | **Get** /project/{projectId}/environment | List environments
 
 
@@ -151,9 +151,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProjectEnvironmentStatus
+## GetProjectEnvironmentsStatus
 
-> Status GetProjectEnvironmentStatus(ctx, projectId).Execute()
+> EnvironmentStatusList GetProjectEnvironmentsStatus(ctx, projectId).Execute()
 
 List environments statuses
 
@@ -176,13 +176,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentsApi.GetProjectEnvironmentStatus(context.Background(), projectId).Execute()
+    resp, r, err := apiClient.EnvironmentsApi.GetProjectEnvironmentsStatus(context.Background(), projectId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsApi.GetProjectEnvironmentStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsApi.GetProjectEnvironmentsStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetProjectEnvironmentStatus`: Status
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentsApi.GetProjectEnvironmentStatus`: %v\n", resp)
+    // response from `GetProjectEnvironmentsStatus`: EnvironmentStatusList
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentsApi.GetProjectEnvironmentsStatus`: %v\n", resp)
 }
 ```
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetProjectEnvironmentStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetProjectEnvironmentsStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**EnvironmentStatusList**](EnvironmentStatusList.md)
 
 ### Authorization
 

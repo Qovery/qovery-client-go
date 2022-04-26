@@ -3325,7 +3325,7 @@ paths:
   /project/{projectId}/environment/status:
     get:
       description: Returns a list of environments with only their id and status.
-      operationId: getProjectEnvironmentStatus
+      operationId: getProjectEnvironmentsStatus
       parameters:
       - description: Project ID
         explode: false
@@ -3341,7 +3341,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/EnvironmentStatusList'
           description: Get status
         "401":
           description: Access token is missing or invalid
@@ -10486,6 +10486,19 @@ components:
         results:
           items:
             $ref: '#/components/schemas/EnvironmentStats'
+          type: array
+      type: object
+    EnvironmentStatusList:
+      example:
+        results:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          message: message
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          message: message
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/Status'
           type: array
       type: object
     Secret:

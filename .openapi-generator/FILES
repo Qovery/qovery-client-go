@@ -240,6 +240,7 @@ docs/EnvironmentRestartRequest.md
 docs/EnvironmentSecretApi.md
 docs/EnvironmentStats.md
 docs/EnvironmentStatsResponseList.md
+docs/EnvironmentStatusList.md
 docs/EnvironmentTotalNumber.md
 docs/EnvironmentVariable.md
 docs/EnvironmentVariableAllOf.md
@@ -559,6 +560,7 @@ model_environment_response_list.go
 model_environment_restart_request.go
 model_environment_stats.go
 model_environment_stats_response_list.go
+model_environment_status_list.go
 model_environment_total_number.go
 model_environment_variable.go
 model_environment_variable_all_of.go

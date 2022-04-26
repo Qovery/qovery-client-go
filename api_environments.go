@@ -240,27 +240,27 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentServiceNumberExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetProjectEnvironmentStatusRequest struct {
+type ApiGetProjectEnvironmentsStatusRequest struct {
 	ctx        context.Context
 	ApiService *EnvironmentsApiService
 	projectId  string
 }
 
-func (r ApiGetProjectEnvironmentStatusRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.GetProjectEnvironmentStatusExecute(r)
+func (r ApiGetProjectEnvironmentsStatusRequest) Execute() (*EnvironmentStatusList, *http.Response, error) {
+	return r.ApiService.GetProjectEnvironmentsStatusExecute(r)
 }
 
 /*
-GetProjectEnvironmentStatus List environments statuses
+GetProjectEnvironmentsStatus List environments statuses
 
 Returns a list of environments with only their id and status.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID
- @return ApiGetProjectEnvironmentStatusRequest
+ @return ApiGetProjectEnvironmentsStatusRequest
 */
-func (a *EnvironmentsApiService) GetProjectEnvironmentStatus(ctx context.Context, projectId string) ApiGetProjectEnvironmentStatusRequest {
-	return ApiGetProjectEnvironmentStatusRequest{
+func (a *EnvironmentsApiService) GetProjectEnvironmentsStatus(ctx context.Context, projectId string) ApiGetProjectEnvironmentsStatusRequest {
+	return ApiGetProjectEnvironmentsStatusRequest{
 		ApiService: a,
 		ctx:        ctx,
 		projectId:  projectId,
@@ -268,16 +268,16 @@ func (a *EnvironmentsApiService) GetProjectEnvironmentStatus(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Status
-func (a *EnvironmentsApiService) GetProjectEnvironmentStatusExecute(r ApiGetProjectEnvironmentStatusRequest) (*Status, *http.Response, error) {
+//  @return EnvironmentStatusList
+func (a *EnvironmentsApiService) GetProjectEnvironmentsStatusExecute(r ApiGetProjectEnvironmentsStatusRequest) (*EnvironmentStatusList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarReturnValue *EnvironmentStatusList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.GetProjectEnvironmentStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentsApiService.GetProjectEnvironmentsStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
