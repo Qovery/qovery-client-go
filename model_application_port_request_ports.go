@@ -35,7 +35,7 @@ func NewApplicationPortRequestPorts(internalPort int32, publiclyAccessible bool)
 	this := ApplicationPortRequestPorts{}
 	this.InternalPort = internalPort
 	this.PubliclyAccessible = publiclyAccessible
-	var protocol PortProtocolEnum = HTTP
+	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
 	this.Protocol = &protocol
 	return &this
 }
@@ -45,7 +45,7 @@ func NewApplicationPortRequestPorts(internalPort int32, publiclyAccessible bool)
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationPortRequestPortsWithDefaults() *ApplicationPortRequestPorts {
 	this := ApplicationPortRequestPorts{}
-	var protocol PortProtocolEnum = HTTP
+	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
 	this.Protocol = &protocol
 	return &this
 }

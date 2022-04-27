@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **InternalPort** | **int32** | The listening port of your application | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your application. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
-**Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to HTTP]
+**Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to PORTPROTOCOLENUM_HTTP]
 
 ## Methods
 

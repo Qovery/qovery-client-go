@@ -21,10 +21,10 @@ type PortProtocolEnum string
 
 // List of PortProtocolEnum
 const (
-	HTTPS PortProtocolEnum = "HTTPS"
-	HTTP  PortProtocolEnum = "HTTP"
-	TCP   PortProtocolEnum = "TCP"
-	UDP   PortProtocolEnum = "UDP"
+	PORTPROTOCOLENUM_HTTPS PortProtocolEnum = "HTTPS"
+	PORTPROTOCOLENUM_HTTP  PortProtocolEnum = "HTTP"
+	PORTPROTOCOLENUM_TCP   PortProtocolEnum = "TCP"
+	PORTPROTOCOLENUM_UDP   PortProtocolEnum = "UDP"
 )
 
 // All allowed values of PortProtocolEnum enum

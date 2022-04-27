@@ -47,7 +47,7 @@ func NewApplicationRequestAllOf(name string, gitRepository ApplicationGitReposit
 	this := ApplicationRequestAllOf{}
 	this.Name = name
 	this.GitRepository = gitRepository
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -67,7 +67,7 @@ func NewApplicationRequestAllOf(name string, gitRepository ApplicationGitReposit
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationRequestAllOfWithDefaults() *ApplicationRequestAllOf {
 	this := ApplicationRequestAllOf{}
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu

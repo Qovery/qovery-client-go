@@ -21,7 +21,7 @@ type DeploymentRestrictionTypeEnum string
 
 // List of DeploymentRestrictionTypeEnum
 const (
-	PATH DeploymentRestrictionTypeEnum = "PATH"
+	DEPLOYMENTRESTRICTIONTYPEENUM_PATH DeploymentRestrictionTypeEnum = "PATH"
 )
 
 // All allowed values of DeploymentRestrictionTypeEnum enum

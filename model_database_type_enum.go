@@ -21,10 +21,10 @@ type DatabaseTypeEnum string
 
 // List of DatabaseTypeEnum
 const (
-	POSTGRESQL DatabaseTypeEnum = "POSTGRESQL"
-	MYSQL      DatabaseTypeEnum = "MYSQL"
-	MONGODB    DatabaseTypeEnum = "MONGODB"
-	REDIS      DatabaseTypeEnum = "REDIS"
+	DATABASETYPEENUM_POSTGRESQL DatabaseTypeEnum = "POSTGRESQL"
+	DATABASETYPEENUM_MYSQL      DatabaseTypeEnum = "MYSQL"
+	DATABASETYPEENUM_MONGODB    DatabaseTypeEnum = "MONGODB"
+	DATABASETYPEENUM_REDIS      DatabaseTypeEnum = "REDIS"
 )
 
 // All allowed values of DatabaseTypeEnum enum

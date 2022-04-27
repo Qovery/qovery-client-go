@@ -21,13 +21,13 @@ type WeekdayEnum string
 
 // List of WeekdayEnum
 const (
-	MONDAY    WeekdayEnum = "MONDAY"
-	TUESDAY   WeekdayEnum = "TUESDAY"
-	WEDNESDAY WeekdayEnum = "WEDNESDAY"
-	THURSDAY  WeekdayEnum = "THURSDAY"
-	FRIDAY    WeekdayEnum = "FRIDAY"
-	SATURDAY  WeekdayEnum = "SATURDAY"
-	SUNDAY    WeekdayEnum = "SUNDAY"
+	WEEKDAYENUM_MONDAY    WeekdayEnum = "MONDAY"
+	WEEKDAYENUM_TUESDAY   WeekdayEnum = "TUESDAY"
+	WEEKDAYENUM_WEDNESDAY WeekdayEnum = "WEDNESDAY"
+	WEEKDAYENUM_THURSDAY  WeekdayEnum = "THURSDAY"
+	WEEKDAYENUM_FRIDAY    WeekdayEnum = "FRIDAY"
+	WEEKDAYENUM_SATURDAY  WeekdayEnum = "SATURDAY"
+	WEEKDAYENUM_SUNDAY    WeekdayEnum = "SUNDAY"
 )
 
 // All allowed values of WeekdayEnum enum

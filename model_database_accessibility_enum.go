@@ -21,8 +21,8 @@ type DatabaseAccessibilityEnum string
 
 // List of DatabaseAccessibilityEnum
 const (
-	PUBLIC  DatabaseAccessibilityEnum = "PUBLIC"
-	PRIVATE DatabaseAccessibilityEnum = "PRIVATE"
+	DATABASEACCESSIBILITYENUM_PUBLIC  DatabaseAccessibilityEnum = "PUBLIC"
+	DATABASEACCESSIBILITYENUM_PRIVATE DatabaseAccessibilityEnum = "PRIVATE"
 )
 
 // All allowed values of DatabaseAccessibilityEnum enum

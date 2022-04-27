@@ -21,8 +21,8 @@ type DeploymentRestrictionModeEnum string
 
 // List of DeploymentRestrictionModeEnum
 const (
-	MATCH   DeploymentRestrictionModeEnum = "MATCH"
-	EXCLUDE DeploymentRestrictionModeEnum = "EXCLUDE"
+	DEPLOYMENTRESTRICTIONMODEENUM_MATCH   DeploymentRestrictionModeEnum = "MATCH"
+	DEPLOYMENTRESTRICTIONMODEENUM_EXCLUDE DeploymentRestrictionModeEnum = "EXCLUDE"
 )
 
 // All allowed values of DeploymentRestrictionModeEnum enum

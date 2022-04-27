@@ -21,8 +21,8 @@ type DeploymentHistoryStatusEnum string
 
 // List of DeploymentHistoryStatusEnum
 const (
-	SUCCESS DeploymentHistoryStatusEnum = "SUCCESS"
-	FAILED  DeploymentHistoryStatusEnum = "FAILED"
+	DEPLOYMENTHISTORYSTATUSENUM_SUCCESS DeploymentHistoryStatusEnum = "SUCCESS"
+	DEPLOYMENTHISTORYSTATUSENUM_FAILED  DeploymentHistoryStatusEnum = "FAILED"
 )
 
 // All allowed values of DeploymentHistoryStatusEnum enum

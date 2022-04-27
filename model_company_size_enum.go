@@ -21,11 +21,11 @@ type CompanySizeEnum string
 
 // List of CompanySizeEnum
 const (
-	_1_10    CompanySizeEnum = "1-10"
-	_11_50   CompanySizeEnum = "11-50"
-	_51_200  CompanySizeEnum = "51-200"
-	_201_500 CompanySizeEnum = "201-500"
-	_500     CompanySizeEnum = "500+"
+	COMPANYSIZEENUM__1_10    CompanySizeEnum = "1-10"
+	COMPANYSIZEENUM__11_50   CompanySizeEnum = "11-50"
+	COMPANYSIZEENUM__51_200  CompanySizeEnum = "51-200"
+	COMPANYSIZEENUM__201_500 CompanySizeEnum = "201-500"
+	COMPANYSIZEENUM__500     CompanySizeEnum = "500+"
 )
 
 // All allowed values of CompanySizeEnum enum

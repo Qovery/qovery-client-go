@@ -21,11 +21,11 @@ type PlanEnum string
 
 // List of PlanEnum
 const (
-	COMMUNITY    PlanEnum = "COMMUNITY"
-	FREE         PlanEnum = "FREE"
-	PROFESSIONAL PlanEnum = "PROFESSIONAL"
-	BUSINESS     PlanEnum = "BUSINESS"
-	ENTERPRISE   PlanEnum = "ENTERPRISE"
+	PLANENUM_COMMUNITY    PlanEnum = "COMMUNITY"
+	PLANENUM_FREE         PlanEnum = "FREE"
+	PLANENUM_PROFESSIONAL PlanEnum = "PROFESSIONAL"
+	PLANENUM_BUSINESS     PlanEnum = "BUSINESS"
+	PLANENUM_ENTERPRISE   PlanEnum = "ENTERPRISE"
 )
 
 // All allowed values of PlanEnum enum

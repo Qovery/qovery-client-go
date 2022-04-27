@@ -21,8 +21,8 @@ type InviteStatusEnum string
 
 // List of InviteStatusEnum
 const (
-	PENDING InviteStatusEnum = "PENDING"
-	EXPIRED InviteStatusEnum = "EXPIRED"
+	INVITESTATUSENUM_PENDING InviteStatusEnum = "PENDING"
+	INVITESTATUSENUM_EXPIRED InviteStatusEnum = "EXPIRED"
 )
 
 // All allowed values of InviteStatusEnum enum

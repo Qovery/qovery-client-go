@@ -35,7 +35,7 @@ type DatabaseEditRequest struct {
 // will change when the set of required properties is changed
 func NewDatabaseEditRequest() *DatabaseEditRequest {
 	this := DatabaseEditRequest{}
-	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	var accessibility DatabaseAccessibilityEnum = DATABASEACCESSIBILITYENUM_PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -49,7 +49,7 @@ func NewDatabaseEditRequest() *DatabaseEditRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseEditRequestWithDefaults() *DatabaseEditRequest {
 	this := DatabaseEditRequest{}
-	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	var accessibility DatabaseAccessibilityEnum = DATABASEACCESSIBILITYENUM_PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu

@@ -21,7 +21,7 @@ type OrganizationApiTokenScope string
 
 // List of OrganizationApiTokenScope
 const (
-	ADMIN OrganizationApiTokenScope = "ADMIN"
+	ORGANIZATIONAPITOKENSCOPE_ADMIN OrganizationApiTokenScope = "ADMIN"
 )
 
 // All allowed values of OrganizationApiTokenScope enum

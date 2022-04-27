@@ -21,8 +21,8 @@ type DatabaseModeEnum string
 
 // List of DatabaseModeEnum
 const (
-	MANAGED   DatabaseModeEnum = "MANAGED"
-	CONTAINER DatabaseModeEnum = "CONTAINER"
+	DATABASEMODEENUM_MANAGED   DatabaseModeEnum = "MANAGED"
+	DATABASEMODEENUM_CONTAINER DatabaseModeEnum = "CONTAINER"
 )
 
 // All allowed values of DatabaseModeEnum enum

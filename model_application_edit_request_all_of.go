@@ -47,7 +47,7 @@ type ApplicationEditRequestAllOf struct {
 // will change when the set of required properties is changed
 func NewApplicationEditRequestAllOf() *ApplicationEditRequestAllOf {
 	this := ApplicationEditRequestAllOf{}
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -69,7 +69,7 @@ func NewApplicationEditRequestAllOf() *ApplicationEditRequestAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationEditRequestAllOfWithDefaults() *ApplicationEditRequestAllOf {
 	this := ApplicationEditRequestAllOf{}
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu

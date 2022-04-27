@@ -21,13 +21,13 @@ type InvoiceStatusEnum string
 
 // List of InvoiceStatusEnum
 const (
-	PAID        InvoiceStatusEnum = "PAID"
-	POSTED      InvoiceStatusEnum = "POSTED"
-	PAYMENT_DUE InvoiceStatusEnum = "PAYMENT_DUE"
-	NOT_PAID    InvoiceStatusEnum = "NOT_PAID"
-	VOIDED      InvoiceStatusEnum = "VOIDED"
-	PENDING     InvoiceStatusEnum = "PENDING"
-	UNKNOWN     InvoiceStatusEnum = "UNKNOWN"
+	INVOICESTATUSENUM_PAID        InvoiceStatusEnum = "PAID"
+	INVOICESTATUSENUM_POSTED      InvoiceStatusEnum = "POSTED"
+	INVOICESTATUSENUM_PAYMENT_DUE InvoiceStatusEnum = "PAYMENT_DUE"
+	INVOICESTATUSENUM_NOT_PAID    InvoiceStatusEnum = "NOT_PAID"
+	INVOICESTATUSENUM_VOIDED      InvoiceStatusEnum = "VOIDED"
+	INVOICESTATUSENUM_PENDING     InvoiceStatusEnum = "PENDING"
+	INVOICESTATUSENUM_UNKNOWN     InvoiceStatusEnum = "UNKNOWN"
 )
 
 // All allowed values of InvoiceStatusEnum enum

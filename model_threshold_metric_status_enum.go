@@ -21,9 +21,9 @@ type ThresholdMetricStatusEnum string
 
 // List of ThresholdMetricStatusEnum
 const (
-	OK      ThresholdMetricStatusEnum = "OK"
-	WARNING ThresholdMetricStatusEnum = "Warning"
-	ALERT   ThresholdMetricStatusEnum = "Alert"
+	THRESHOLDMETRICSTATUSENUM_OK      ThresholdMetricStatusEnum = "OK"
+	THRESHOLDMETRICSTATUSENUM_WARNING ThresholdMetricStatusEnum = "Warning"
+	THRESHOLDMETRICSTATUSENUM_ALERT   ThresholdMetricStatusEnum = "Alert"
 )
 
 // All allowed values of ThresholdMetricStatusEnum enum

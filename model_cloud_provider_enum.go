@@ -21,9 +21,9 @@ type CloudProviderEnum string
 
 // List of CloudProviderEnum
 const (
-	AWS           CloudProviderEnum = "AWS"
-	DIGITAL_OCEAN CloudProviderEnum = "DIGITAL_OCEAN"
-	SCALEWAY      CloudProviderEnum = "SCALEWAY"
+	CLOUDPROVIDERENUM_AWS           CloudProviderEnum = "AWS"
+	CLOUDPROVIDERENUM_DIGITAL_OCEAN CloudProviderEnum = "DIGITAL_OCEAN"
+	CLOUDPROVIDERENUM_SCALEWAY      CloudProviderEnum = "SCALEWAY"
 )
 
 // All allowed values of CloudProviderEnum enum

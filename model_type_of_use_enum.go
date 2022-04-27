@@ -21,9 +21,9 @@ type TypeOfUseEnum string
 
 // List of TypeOfUseEnum
 const (
-	PERSONAL TypeOfUseEnum = "PERSONAL"
-	WORK     TypeOfUseEnum = "WORK"
-	SCHOOL   TypeOfUseEnum = "SCHOOL"
+	TYPEOFUSEENUM_PERSONAL TypeOfUseEnum = "PERSONAL"
+	TYPEOFUSEENUM_WORK     TypeOfUseEnum = "WORK"
+	TYPEOFUSEENUM_SCHOOL   TypeOfUseEnum = "SCHOOL"
 )
 
 // All allowed values of TypeOfUseEnum enum

@@ -21,9 +21,9 @@ type EnvironmentLogTypeEnum string
 
 // List of EnvironmentLogTypeEnum
 const (
-	APPLICATION EnvironmentLogTypeEnum = "APPLICATION"
-	DATABASE    EnvironmentLogTypeEnum = "DATABASE"
-	ENVIRONMENT EnvironmentLogTypeEnum = "ENVIRONMENT"
+	ENVIRONMENTLOGTYPEENUM_APPLICATION EnvironmentLogTypeEnum = "APPLICATION"
+	ENVIRONMENTLOGTYPEENUM_DATABASE    EnvironmentLogTypeEnum = "DATABASE"
+	ENVIRONMENTLOGTYPEENUM_ENVIRONMENT EnvironmentLogTypeEnum = "ENVIRONMENT"
 )
 
 // All allowed values of EnvironmentLogTypeEnum enum

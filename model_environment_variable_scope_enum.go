@@ -21,10 +21,10 @@ type EnvironmentVariableScopeEnum string
 
 // List of EnvironmentVariableScopeEnum
 const (
-	BUILT_IN    EnvironmentVariableScopeEnum = "BUILT_IN"
-	ENVIRONMENT EnvironmentVariableScopeEnum = "ENVIRONMENT"
-	PROJECT     EnvironmentVariableScopeEnum = "PROJECT"
-	APPLICATION EnvironmentVariableScopeEnum = "APPLICATION"
+	ENVIRONMENTVARIABLESCOPEENUM_BUILT_IN    EnvironmentVariableScopeEnum = "BUILT_IN"
+	ENVIRONMENTVARIABLESCOPEENUM_ENVIRONMENT EnvironmentVariableScopeEnum = "ENVIRONMENT"
+	ENVIRONMENTVARIABLESCOPEENUM_PROJECT     EnvironmentVariableScopeEnum = "PROJECT"
+	ENVIRONMENTVARIABLESCOPEENUM_APPLICATION EnvironmentVariableScopeEnum = "APPLICATION"
 )
 
 // All allowed values of EnvironmentVariableScopeEnum enum

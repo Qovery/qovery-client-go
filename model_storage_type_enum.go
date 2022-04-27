@@ -21,9 +21,9 @@ type StorageTypeEnum string
 
 // List of StorageTypeEnum
 const (
-	AWS           StorageTypeEnum = "AWS"
-	DIGITAL_OCEAN StorageTypeEnum = "DIGITAL_OCEAN"
-	SCALEWAY      StorageTypeEnum = "SCALEWAY"
+	STORAGETYPEENUM_AWS           StorageTypeEnum = "AWS"
+	STORAGETYPEENUM_DIGITAL_OCEAN StorageTypeEnum = "DIGITAL_OCEAN"
+	STORAGETYPEENUM_SCALEWAY      StorageTypeEnum = "SCALEWAY"
 )
 
 // All allowed values of StorageTypeEnum enum

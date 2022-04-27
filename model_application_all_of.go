@@ -54,7 +54,7 @@ func NewApplicationAllOf() *ApplicationAllOf {
 	this.MaximumCpu = &maximumCpu
 	var maximumMemory int32 = 256
 	this.MaximumMemory = &maximumMemory
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -78,7 +78,7 @@ func NewApplicationAllOfWithDefaults() *ApplicationAllOf {
 	this.MaximumCpu = &maximumCpu
 	var maximumMemory int32 = 256
 	this.MaximumMemory = &maximumMemory
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu

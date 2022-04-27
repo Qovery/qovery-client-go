@@ -41,7 +41,7 @@ func NewDatabaseRequest(name string, type_ DatabaseTypeEnum, version string, mod
 	this.Type = type_
 	this.Version = version
 	this.Mode = mode
-	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	var accessibility DatabaseAccessibilityEnum = DATABASEACCESSIBILITYENUM_PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -57,7 +57,7 @@ func NewDatabaseRequest(name string, type_ DatabaseTypeEnum, version string, mod
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseRequestWithDefaults() *DatabaseRequest {
 	this := DatabaseRequest{}
-	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	var accessibility DatabaseAccessibilityEnum = DATABASEACCESSIBILITYENUM_PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu

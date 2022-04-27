@@ -21,10 +21,10 @@ type EnvironmentModeEnum string
 
 // List of EnvironmentModeEnum
 const (
-	PRODUCTION  EnvironmentModeEnum = "PRODUCTION"
-	DEVELOPMENT EnvironmentModeEnum = "DEVELOPMENT"
-	STAGING     EnvironmentModeEnum = "STAGING"
-	PREVIEW     EnvironmentModeEnum = "PREVIEW"
+	ENVIRONMENTMODEENUM_PRODUCTION  EnvironmentModeEnum = "PRODUCTION"
+	ENVIRONMENTMODEENUM_DEVELOPMENT EnvironmentModeEnum = "DEVELOPMENT"
+	ENVIRONMENTMODEENUM_STAGING     EnvironmentModeEnum = "STAGING"
+	ENVIRONMENTMODEENUM_PREVIEW     EnvironmentModeEnum = "PREVIEW"
 )
 
 // All allowed values of EnvironmentModeEnum enum

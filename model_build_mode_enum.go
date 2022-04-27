@@ -21,8 +21,8 @@ type BuildModeEnum string
 
 // List of BuildModeEnum
 const (
-	DOCKER     BuildModeEnum = "DOCKER"
-	BUILDPACKS BuildModeEnum = "BUILDPACKS"
+	BUILDMODEENUM_DOCKER     BuildModeEnum = "DOCKER"
+	BUILDMODEENUM_BUILDPACKS BuildModeEnum = "BUILDPACKS"
 )
 
 // All allowed values of BuildModeEnum enum

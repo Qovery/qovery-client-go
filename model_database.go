@@ -56,7 +56,7 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 	this.Type = type_
 	this.Version = version
 	this.Mode = mode
-	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	var accessibility DatabaseAccessibilityEnum = DATABASEACCESSIBILITYENUM_PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -76,7 +76,7 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseWithDefaults() *Database {
 	this := Database{}
-	var accessibility DatabaseAccessibilityEnum = PRIVATE
+	var accessibility DatabaseAccessibilityEnum = DATABASEACCESSIBILITYENUM_PRIVATE
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu

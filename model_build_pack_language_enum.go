@@ -21,17 +21,17 @@ type BuildPackLanguageEnum string
 
 // List of BuildPackLanguageEnum
 const (
-	CLOJURE BuildPackLanguageEnum = "CLOJURE"
-	GO      BuildPackLanguageEnum = "GO"
-	GRADLE  BuildPackLanguageEnum = "GRADLE"
-	GRAILS  BuildPackLanguageEnum = "GRAILS"
-	JAVA    BuildPackLanguageEnum = "JAVA"
-	JVM     BuildPackLanguageEnum = "JVM"
-	NODE_JS BuildPackLanguageEnum = "NODE_JS"
-	PHP     BuildPackLanguageEnum = "PHP"
-	PLAY    BuildPackLanguageEnum = "PLAY"
-	PYTHON  BuildPackLanguageEnum = "PYTHON"
-	SCALA   BuildPackLanguageEnum = "SCALA"
+	BUILDPACKLANGUAGEENUM_CLOJURE BuildPackLanguageEnum = "CLOJURE"
+	BUILDPACKLANGUAGEENUM_GO      BuildPackLanguageEnum = "GO"
+	BUILDPACKLANGUAGEENUM_GRADLE  BuildPackLanguageEnum = "GRADLE"
+	BUILDPACKLANGUAGEENUM_GRAILS  BuildPackLanguageEnum = "GRAILS"
+	BUILDPACKLANGUAGEENUM_JAVA    BuildPackLanguageEnum = "JAVA"
+	BUILDPACKLANGUAGEENUM_JVM     BuildPackLanguageEnum = "JVM"
+	BUILDPACKLANGUAGEENUM_NODE_JS BuildPackLanguageEnum = "NODE_JS"
+	BUILDPACKLANGUAGEENUM_PHP     BuildPackLanguageEnum = "PHP"
+	BUILDPACKLANGUAGEENUM_PLAY    BuildPackLanguageEnum = "PLAY"
+	BUILDPACKLANGUAGEENUM_PYTHON  BuildPackLanguageEnum = "PYTHON"
+	BUILDPACKLANGUAGEENUM_SCALA   BuildPackLanguageEnum = "SCALA"
 )
 
 // All allowed values of BuildPackLanguageEnum enum

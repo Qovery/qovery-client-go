@@ -21,8 +21,8 @@ type ServiceTypeEnum string
 
 // List of ServiceTypeEnum
 const (
-	APPLICATION ServiceTypeEnum = "APPLICATION"
-	DATABASE    ServiceTypeEnum = "DATABASE"
+	SERVICETYPEENUM_APPLICATION ServiceTypeEnum = "APPLICATION"
+	SERVICETYPEENUM_DATABASE    ServiceTypeEnum = "DATABASE"
 )
 
 // All allowed values of ServiceTypeEnum enum

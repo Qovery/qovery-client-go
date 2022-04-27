@@ -49,7 +49,7 @@ func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRe
 	this := ApplicationRequest{}
 	this.Name = name
 	this.GitRepository = gitRepository
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
@@ -69,7 +69,7 @@ func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRe
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationRequestWithDefaults() *ApplicationRequest {
 	this := ApplicationRequest{}
-	var buildMode BuildModeEnum = BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var cpu int32 = 250
 	this.Cpu = &cpu
