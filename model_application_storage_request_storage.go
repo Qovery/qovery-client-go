@@ -17,7 +17,7 @@ import (
 
 // ApplicationStorageRequestStorage struct for ApplicationStorageRequestStorage
 type ApplicationStorageRequestStorage struct {
-	Type string `json:"type"`
+	Type StorageTypeEnum `json:"type"`
 	// unit is GB
 	Size       int32  `json:"size"`
 	MountPoint string `json:"mount_point"`
@@ -27,7 +27,7 @@ type ApplicationStorageRequestStorage struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationStorageRequestStorage(type_ string, size int32, mountPoint string) *ApplicationStorageRequestStorage {
+func NewApplicationStorageRequestStorage(type_ StorageTypeEnum, size int32, mountPoint string) *ApplicationStorageRequestStorage {
 	this := ApplicationStorageRequestStorage{}
 	this.Type = type_
 	this.Size = size
@@ -44,9 +44,9 @@ func NewApplicationStorageRequestStorageWithDefaults() *ApplicationStorageReques
 }
 
 // GetType returns the Type field value
-func (o *ApplicationStorageRequestStorage) GetType() string {
+func (o *ApplicationStorageRequestStorage) GetType() StorageTypeEnum {
 	if o == nil {
-		var ret string
+		var ret StorageTypeEnum
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *ApplicationStorageRequestStorage) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationStorageRequestStorage) GetTypeOk() (*string, bool) {
+func (o *ApplicationStorageRequestStorage) GetTypeOk() (*StorageTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *ApplicationStorageRequestStorage) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *ApplicationStorageRequestStorage) SetType(v string) {
+func (o *ApplicationStorageRequestStorage) SetType(v StorageTypeEnum) {
 	o.Type = v
 }
 

@@ -21,16 +21,12 @@ type StorageTypeEnum string
 
 // List of StorageTypeEnum
 const (
-	STORAGETYPEENUM_AWS           StorageTypeEnum = "AWS"
-	STORAGETYPEENUM_DIGITAL_OCEAN StorageTypeEnum = "DIGITAL_OCEAN"
-	STORAGETYPEENUM_SCALEWAY      StorageTypeEnum = "SCALEWAY"
+	STORAGETYPEENUM_FAST_SSD StorageTypeEnum = "FAST_SSD"
 )
 
 // All allowed values of StorageTypeEnum enum
 var AllowedStorageTypeEnumEnumValues = []StorageTypeEnum{
-	"AWS",
-	"DIGITAL_OCEAN",
-	"SCALEWAY",
+	"FAST_SSD",
 }
 
 func (v *StorageTypeEnum) UnmarshalJSON(src []byte) error {

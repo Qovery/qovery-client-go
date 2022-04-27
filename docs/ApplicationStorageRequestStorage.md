@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
+**Type** | [**StorageTypeEnum**](StorageTypeEnum.md) |  | 
 **Size** | **int32** | unit is GB | 
 **MountPoint** | **string** |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationStorageRequestStorage
 
-`func NewApplicationStorageRequestStorage(type_ string, size int32, mountPoint string, ) *ApplicationStorageRequestStorage`
+`func NewApplicationStorageRequestStorage(type_ StorageTypeEnum, size int32, mountPoint string, ) *ApplicationStorageRequestStorage`
 
 NewApplicationStorageRequestStorage instantiates a new ApplicationStorageRequestStorage object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ApplicationStorageRequestStorage) GetType() string`
+`func (o *ApplicationStorageRequestStorage) GetType() StorageTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ApplicationStorageRequestStorage) GetTypeOk() (*string, bool)`
+`func (o *ApplicationStorageRequestStorage) GetTypeOk() (*StorageTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ApplicationStorageRequestStorage) SetType(v string)`
+`func (o *ApplicationStorageRequestStorage) SetType(v StorageTypeEnum)`
 
 SetType sets Type field to given value.
 
