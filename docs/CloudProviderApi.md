@@ -78,7 +78,7 @@ Other parameters are passed through a pointer to a apiListAWSFeaturesRequest str
 
 ## ListAWSInstanceType
 
-> InlineResponse200 ListAWSInstanceType(ctx).Execute()
+> ClusterInstanceTypeResponseList ListAWSInstanceType(ctx).Execute()
 
 List AWS available instance types
 
@@ -103,7 +103,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListAWSInstanceType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAWSInstanceType`: InlineResponse200
+    // response from `ListAWSInstanceType`: ClusterInstanceTypeResponseList
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListAWSInstanceType`: %v\n", resp)
 }
 ```
@@ -119,7 +119,7 @@ Other parameters are passed through a pointer to a apiListAWSInstanceTypeRequest
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
 
 ### Authorization
 
@@ -314,7 +314,7 @@ Other parameters are passed through a pointer to a apiListDOFeaturesRequest stru
 
 ## ListDOInstanceType
 
-> Object ListDOInstanceType(ctx).Execute()
+> ClusterInstanceTypeResponseList ListDOInstanceType(ctx).Execute()
 
 List DO available instance types
 
@@ -339,7 +339,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListDOInstanceType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListDOInstanceType`: Object
+    // response from `ListDOInstanceType`: ClusterInstanceTypeResponseList
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListDOInstanceType`: %v\n", resp)
 }
 ```
@@ -355,7 +355,7 @@ Other parameters are passed through a pointer to a apiListDOInstanceTypeRequest 
 
 ### Return type
 
-[**Object**](Object.md)
+[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
 
 ### Authorization
 
@@ -491,7 +491,7 @@ Other parameters are passed through a pointer to a apiListScalewayFeaturesReques
 
 ## ListScalewayInstanceType
 
-> Object ListScalewayInstanceType(ctx).Execute()
+> ClusterInstanceTypeResponseList ListScalewayInstanceType(ctx).Execute()
 
 List Scaleway available instance types
 
@@ -516,7 +516,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListScalewayInstanceType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListScalewayInstanceType`: Object
+    // response from `ListScalewayInstanceType`: ClusterInstanceTypeResponseList
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListScalewayInstanceType`: %v\n", resp)
 }
 ```
@@ -532,7 +532,7 @@ Other parameters are passed through a pointer to a apiListScalewayInstanceTypeRe
 
 ### Return type
 
-[**Object**](Object.md)
+[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
 
 ### Authorization
 

@@ -129,7 +129,7 @@ type ApiListAWSInstanceTypeRequest struct {
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListAWSInstanceTypeRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiListAWSInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	return r.ApiService.ListAWSInstanceTypeExecute(r)
 }
 
@@ -147,13 +147,13 @@ func (a *CloudProviderApiService) ListAWSInstanceType(ctx context.Context) ApiLi
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanceTypeRequest) (*InlineResponse200, *http.Response, error) {
+//  @return ClusterInstanceTypeResponseList
+func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InlineResponse200
+		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSInstanceType")
@@ -517,7 +517,7 @@ type ApiListDOInstanceTypeRequest struct {
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListDOInstanceTypeRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiListDOInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	return r.ApiService.ListDOInstanceTypeExecute(r)
 }
 
@@ -535,13 +535,13 @@ func (a *CloudProviderApiService) ListDOInstanceType(ctx context.Context) ApiLis
 }
 
 // Execute executes the request
-//  @return Object
-func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceTypeRequest) (*Object, *http.Response, error) {
+//  @return ClusterInstanceTypeResponseList
+func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Object
+		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOInstanceType")
@@ -808,7 +808,7 @@ type ApiListScalewayInstanceTypeRequest struct {
 	ApiService *CloudProviderApiService
 }
 
-func (r ApiListScalewayInstanceTypeRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiListScalewayInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	return r.ApiService.ListScalewayInstanceTypeExecute(r)
 }
 
@@ -826,13 +826,13 @@ func (a *CloudProviderApiService) ListScalewayInstanceType(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return Object
-func (a *CloudProviderApiService) ListScalewayInstanceTypeExecute(r ApiListScalewayInstanceTypeRequest) (*Object, *http.Response, error) {
+//  @return ClusterInstanceTypeResponseList
+func (a *CloudProviderApiService) ListScalewayInstanceTypeExecute(r ApiListScalewayInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Object
+		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayInstanceType")

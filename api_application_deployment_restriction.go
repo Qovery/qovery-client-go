@@ -40,7 +40,7 @@ func (r ApiCreateApplicationDeploymentRestrictionRequest) ApplicationDeploymentR
 	return r
 }
 
-func (r ApiCreateApplicationDeploymentRestrictionRequest) Execute() (*Base, *http.Response, error) {
+func (r ApiCreateApplicationDeploymentRestrictionRequest) Execute() (*ApplicationDeploymentRestriction, *http.Response, error) {
 	return r.ApiService.CreateApplicationDeploymentRestrictionExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeployment
 }
 
 // Execute executes the request
-//  @return Base
-func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeploymentRestrictionExecute(r ApiCreateApplicationDeploymentRestrictionRequest) (*Base, *http.Response, error) {
+//  @return ApplicationDeploymentRestriction
+func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeploymentRestrictionExecute(r ApiCreateApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Base
+		localVarReturnValue *ApplicationDeploymentRestriction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionApiService.CreateApplicationDeploymentRestriction")
@@ -244,7 +244,7 @@ func (r ApiEditApplicationDeploymentRestrictionRequest) ApplicationDeploymentRes
 	return r
 }
 
-func (r ApiEditApplicationDeploymentRestrictionRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiEditApplicationDeploymentRestrictionRequest) Execute() (*ApplicationDeploymentRestriction, *http.Response, error) {
 	return r.ApiService.EditApplicationDeploymentRestrictionExecute(r)
 }
 
@@ -268,13 +268,13 @@ func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRe
 }
 
 // Execute executes the request
-//  @return Object
-func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRestrictionExecute(r ApiEditApplicationDeploymentRestrictionRequest) (*Object, *http.Response, error) {
+//  @return ApplicationDeploymentRestriction
+func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRestrictionExecute(r ApiEditApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Object
+		localVarReturnValue *ApplicationDeploymentRestriction
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionApiService.EditApplicationDeploymentRestriction")
@@ -352,7 +352,7 @@ type ApiGetApplicationDeploymentRestrictionsRequest struct {
 	applicationId string
 }
 
-func (r ApiGetApplicationDeploymentRestrictionsRequest) Execute() (*ApplicationDeploymentRestriction, *http.Response, error) {
+func (r ApiGetApplicationDeploymentRestrictionsRequest) Execute() (*ApplicationDeploymentRestrictionResponseList, *http.Response, error) {
 	return r.ApiService.GetApplicationDeploymentRestrictionsExecute(r)
 }
 
@@ -374,13 +374,13 @@ func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRes
 }
 
 // Execute executes the request
-//  @return ApplicationDeploymentRestriction
-func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRestrictionsExecute(r ApiGetApplicationDeploymentRestrictionsRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
+//  @return ApplicationDeploymentRestrictionResponseList
+func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRestrictionsExecute(r ApiGetApplicationDeploymentRestrictionsRequest) (*ApplicationDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ApplicationDeploymentRestriction
+		localVarReturnValue *ApplicationDeploymentRestrictionResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionApiService.GetApplicationDeploymentRestrictions")

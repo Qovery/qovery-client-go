@@ -2053,7 +2053,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
           description: list the instance types available for AWS cloud provider
         "401":
           description: Access token is missing or invalid
@@ -2110,7 +2110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1aws~1instanceType/get/responses/200/content/application~1json/schema'
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
           description: list the instance types available for Digital Ocean cloud provider
         "401":
           description: Access token is missing or invalid
@@ -2167,7 +2167,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1aws~1instanceType/get/responses/200/content/application~1json/schema'
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
           description: list the instance types available for Scaleway cloud provider
         "401":
           description: Access token is missing or invalid
@@ -4814,7 +4814,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationDeploymentRestriction'
+                $ref: '#/components/schemas/ApplicationDeploymentRestrictionResponseList'
           description: Get application deployment restrictions
         "401":
           description: Access token is missing or invalid
@@ -4848,9 +4848,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/Base'
-                - $ref: '#/components/schemas/ApplicationDeploymentRestrictionRequest'
+                $ref: '#/components/schemas/ApplicationDeploymentRestriction'
           description: Added an environment variable
         "400":
           description: Bad request
@@ -4922,7 +4920,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1application~1%7BapplicationId%7D~1deploymentRestriction/post/responses/201/content/application~1json/schema'
+                $ref: '#/components/schemas/ApplicationDeploymentRestriction'
           description: Edit an application deployment restriction
         "400":
           description: Bad request
@@ -8491,6 +8489,23 @@ components:
             $ref: '#/components/schemas/ClusterStatus'
           type: array
       type: object
+    ClusterInstanceTypeResponseList:
+      example:
+        results:
+        - name: t3a.xlarge
+          cpu: 2
+          type: T3A_XLARGE
+          ram_in_gb: 8
+        - name: t3a.xlarge
+          cpu: 2
+          type: T3A_XLARGE
+          ram_in_gb: 8
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterInstanceTypeResponseList_results'
+          type: array
+      type: object
     MetricGeneric:
       example:
         instance_name: instance 1
@@ -9680,18 +9695,20 @@ components:
       - value
       type: object
     ApplicationDeploymentRestriction:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ApplicationDeploymentRestrictionRequest'
+    ApplicationDeploymentRestrictionResponseList:
       example:
         deployment_restrictions:
-        - '{}'
-        - '{}'
+        - null
+        - null
       properties:
         deployment_restrictions:
           items:
-            $ref: '#/paths/~1application~1%7BapplicationId%7D~1deploymentRestriction/post/responses/201/content/application~1json/schema'
+            $ref: '#/components/schemas/ApplicationDeploymentRestriction'
           type: array
       type: object
-    ApplicationDeploymentRestrictionResponseList:
-      $ref: '#/components/schemas/ApplicationDeploymentRestriction'
     RemainingCredits:
       allOf:
       - $ref: '#/components/schemas/Cost'
@@ -12015,7 +12032,25 @@ components:
       - DIGITAL_OCEAN
       - SCALEWAY
       type: string
-    inline_response_200_results:
+    ApplicationStorageRequest_storage:
+      properties:
+        type:
+          enum:
+          - FAST_SSD
+          type: string
+        size:
+          description: unit is GB
+          example: 16
+          type: integer
+        mount_point:
+          example: /mnt/images
+          type: string
+      required:
+      - mount_point
+      - size
+      - type
+      type: object
+    ClusterInstanceTypeResponseList_results:
       example:
         name: t3a.xlarge
         cpu: 2
@@ -12038,41 +12073,6 @@ components:
       - cpu
       - name
       - ram_in_gb
-      - type
-      type: object
-    inline_response_200:
-      example:
-        results:
-        - name: t3a.xlarge
-          cpu: 2
-          type: T3A_XLARGE
-          ram_in_gb: 8
-        - name: t3a.xlarge
-          cpu: 2
-          type: T3A_XLARGE
-          ram_in_gb: 8
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/inline_response_200_results'
-          type: array
-      type: object
-    ApplicationStorageRequest_storage:
-      properties:
-        type:
-          enum:
-          - FAST_SSD
-          type: string
-        size:
-          description: unit is GB
-          example: 16
-          type: integer
-        mount_point:
-          example: /mnt/images
-          type: string
-      required:
-      - mount_point
-      - size
       - type
       type: object
     ApplicationStorage_storage:

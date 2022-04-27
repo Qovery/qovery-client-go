@@ -67,6 +67,7 @@ docs/ApplicationDeploymentHistoryApi.md
 docs/ApplicationDeploymentRestriction.md
 docs/ApplicationDeploymentRestrictionApi.md
 docs/ApplicationDeploymentRestrictionRequest.md
+docs/ApplicationDeploymentRestrictionResponseList.md
 docs/ApplicationEditRequest.md
 docs/ApplicationEditRequestAllOf.md
 docs/ApplicationEnvironmentVariableApi.md
@@ -130,6 +131,8 @@ docs/ClusterFeature.md
 docs/ClusterFeatureRequest.md
 docs/ClusterFeatureRequestFeatures.md
 docs/ClusterFeatureResponseList.md
+docs/ClusterInstanceTypeResponseList.md
+docs/ClusterInstanceTypeResponseListResults.md
 docs/ClusterReadinessStatus.md
 docs/ClusterRegion.md
 docs/ClusterRegionResponseList.md
@@ -268,8 +271,6 @@ docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponseList.md
 docs/GlobalDeploymentStatus.md
 docs/Healthcheck.md
-docs/InlineResponse200.md
-docs/InlineResponse200Results.md
 docs/Instance.md
 docs/InstanceResponseList.md
 docs/InviteMember.md
@@ -413,6 +414,7 @@ model_application_current_scale.go
 model_application_dependency_request.go
 model_application_deployment_restriction.go
 model_application_deployment_restriction_request.go
+model_application_deployment_restriction_response_list.go
 model_application_edit_request.go
 model_application_edit_request_all_of.go
 model_application_git_repository.go
@@ -465,6 +467,8 @@ model_cluster_feature.go
 model_cluster_feature_request.go
 model_cluster_feature_request_features.go
 model_cluster_feature_response_list.go
+model_cluster_instance_type_response_list.go
+model_cluster_instance_type_response_list_results.go
 model_cluster_readiness_status.go
 model_cluster_region.go
 model_cluster_region_response_list.go
@@ -585,8 +589,6 @@ model_git_repository_branch_response_list.go
 model_git_repository_response_list.go
 model_global_deployment_status.go
 model_healthcheck.go
-model_inline_response_200.go
-model_inline_response_200_results.go
 model_instance.go
 model_instance_response_list.go
 model_invite_member.go

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateApplicationDeploymentRestriction
 
-> Base CreateApplicationDeploymentRestriction(ctx, applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
+> ApplicationDeploymentRestriction CreateApplicationDeploymentRestriction(ctx, applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
 
 Create an application deployment restriction
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionApi.CreateApplicationDeploymentRestriction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationDeploymentRestriction`: Base
+    // response from `CreateApplicationDeploymentRestriction`: ApplicationDeploymentRestriction
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionApi.CreateApplicationDeploymentRestriction`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Base**](Base.md)
+[**ApplicationDeploymentRestriction**](ApplicationDeploymentRestriction.md)
 
 ### Authorization
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## EditApplicationDeploymentRestriction
 
-> Object EditApplicationDeploymentRestriction(ctx, applicationId, deploymentRestrictionId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
+> ApplicationDeploymentRestriction EditApplicationDeploymentRestriction(ctx, applicationId, deploymentRestrictionId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
 
 Edit an application deployment restriction
 
@@ -183,7 +183,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionApi.EditApplicationDeploymentRestriction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditApplicationDeploymentRestriction`: Object
+    // response from `EditApplicationDeploymentRestriction`: ApplicationDeploymentRestriction
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionApi.EditApplicationDeploymentRestriction`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ApplicationDeploymentRestriction**](ApplicationDeploymentRestriction.md)
 
 ### Authorization
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## GetApplicationDeploymentRestrictions
 
-> ApplicationDeploymentRestriction GetApplicationDeploymentRestrictions(ctx, applicationId).Execute()
+> ApplicationDeploymentRestrictionResponseList GetApplicationDeploymentRestrictions(ctx, applicationId).Execute()
 
 Get application deployment restrictions
 
@@ -256,7 +256,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionApi.GetApplicationDeploymentRestrictions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplicationDeploymentRestrictions`: ApplicationDeploymentRestriction
+    // response from `GetApplicationDeploymentRestrictions`: ApplicationDeploymentRestrictionResponseList
     fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionApi.GetApplicationDeploymentRestrictions`: %v\n", resp)
 }
 ```
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApplicationDeploymentRestriction**](ApplicationDeploymentRestriction.md)
+[**ApplicationDeploymentRestrictionResponseList**](ApplicationDeploymentRestrictionResponseList.md)
 
 ### Authorization
 

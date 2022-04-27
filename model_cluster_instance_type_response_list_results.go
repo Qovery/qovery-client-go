@@ -15,20 +15,20 @@ import (
 	"encoding/json"
 )
 
-// InlineResponse200Results struct for InlineResponse200Results
-type InlineResponse200Results struct {
+// ClusterInstanceTypeResponseListResults struct for ClusterInstanceTypeResponseListResults
+type ClusterInstanceTypeResponseListResults struct {
 	Type    string `json:"type"`
 	Name    string `json:"name"`
 	Cpu     int32  `json:"cpu"`
 	RamInGb int32  `json:"ram_in_gb"`
 }
 
-// NewInlineResponse200Results instantiates a new InlineResponse200Results object
+// NewClusterInstanceTypeResponseListResults instantiates a new ClusterInstanceTypeResponseListResults object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineResponse200Results(type_ string, name string, cpu int32, ramInGb int32) *InlineResponse200Results {
-	this := InlineResponse200Results{}
+func NewClusterInstanceTypeResponseListResults(type_ string, name string, cpu int32, ramInGb int32) *ClusterInstanceTypeResponseListResults {
+	this := ClusterInstanceTypeResponseListResults{}
 	this.Type = type_
 	this.Name = name
 	this.Cpu = cpu
@@ -36,16 +36,16 @@ func NewInlineResponse200Results(type_ string, name string, cpu int32, ramInGb i
 	return &this
 }
 
-// NewInlineResponse200ResultsWithDefaults instantiates a new InlineResponse200Results object
+// NewClusterInstanceTypeResponseListResultsWithDefaults instantiates a new ClusterInstanceTypeResponseListResults object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineResponse200ResultsWithDefaults() *InlineResponse200Results {
-	this := InlineResponse200Results{}
+func NewClusterInstanceTypeResponseListResultsWithDefaults() *ClusterInstanceTypeResponseListResults {
+	this := ClusterInstanceTypeResponseListResults{}
 	return &this
 }
 
 // GetType returns the Type field value
-func (o *InlineResponse200Results) GetType() string {
+func (o *ClusterInstanceTypeResponseListResults) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -56,7 +56,7 @@ func (o *InlineResponse200Results) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200Results) GetTypeOk() (*string, bool) {
+func (o *ClusterInstanceTypeResponseListResults) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,12 +64,12 @@ func (o *InlineResponse200Results) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *InlineResponse200Results) SetType(v string) {
+func (o *ClusterInstanceTypeResponseListResults) SetType(v string) {
 	o.Type = v
 }
 
 // GetName returns the Name field value
-func (o *InlineResponse200Results) GetName() string {
+func (o *ClusterInstanceTypeResponseListResults) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -80,7 +80,7 @@ func (o *InlineResponse200Results) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200Results) GetNameOk() (*string, bool) {
+func (o *ClusterInstanceTypeResponseListResults) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,12 +88,12 @@ func (o *InlineResponse200Results) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *InlineResponse200Results) SetName(v string) {
+func (o *ClusterInstanceTypeResponseListResults) SetName(v string) {
 	o.Name = v
 }
 
 // GetCpu returns the Cpu field value
-func (o *InlineResponse200Results) GetCpu() int32 {
+func (o *ClusterInstanceTypeResponseListResults) GetCpu() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -104,7 +104,7 @@ func (o *InlineResponse200Results) GetCpu() int32 {
 
 // GetCpuOk returns a tuple with the Cpu field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200Results) GetCpuOk() (*int32, bool) {
+func (o *ClusterInstanceTypeResponseListResults) GetCpuOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,12 +112,12 @@ func (o *InlineResponse200Results) GetCpuOk() (*int32, bool) {
 }
 
 // SetCpu sets field value
-func (o *InlineResponse200Results) SetCpu(v int32) {
+func (o *ClusterInstanceTypeResponseListResults) SetCpu(v int32) {
 	o.Cpu = v
 }
 
 // GetRamInGb returns the RamInGb field value
-func (o *InlineResponse200Results) GetRamInGb() int32 {
+func (o *ClusterInstanceTypeResponseListResults) GetRamInGb() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -128,7 +128,7 @@ func (o *InlineResponse200Results) GetRamInGb() int32 {
 
 // GetRamInGbOk returns a tuple with the RamInGb field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200Results) GetRamInGbOk() (*int32, bool) {
+func (o *ClusterInstanceTypeResponseListResults) GetRamInGbOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -136,11 +136,11 @@ func (o *InlineResponse200Results) GetRamInGbOk() (*int32, bool) {
 }
 
 // SetRamInGb sets field value
-func (o *InlineResponse200Results) SetRamInGb(v int32) {
+func (o *ClusterInstanceTypeResponseListResults) SetRamInGb(v int32) {
 	o.RamInGb = v
 }
 
-func (o InlineResponse200Results) MarshalJSON() ([]byte, error) {
+func (o ClusterInstanceTypeResponseListResults) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["type"] = o.Type
@@ -157,38 +157,38 @@ func (o InlineResponse200Results) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineResponse200Results struct {
-	value *InlineResponse200Results
+type NullableClusterInstanceTypeResponseListResults struct {
+	value *ClusterInstanceTypeResponseListResults
 	isSet bool
 }
 
-func (v NullableInlineResponse200Results) Get() *InlineResponse200Results {
+func (v NullableClusterInstanceTypeResponseListResults) Get() *ClusterInstanceTypeResponseListResults {
 	return v.value
 }
 
-func (v *NullableInlineResponse200Results) Set(val *InlineResponse200Results) {
+func (v *NullableClusterInstanceTypeResponseListResults) Set(val *ClusterInstanceTypeResponseListResults) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineResponse200Results) IsSet() bool {
+func (v NullableClusterInstanceTypeResponseListResults) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineResponse200Results) Unset() {
+func (v *NullableClusterInstanceTypeResponseListResults) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineResponse200Results(val *InlineResponse200Results) *NullableInlineResponse200Results {
-	return &NullableInlineResponse200Results{value: val, isSet: true}
+func NewNullableClusterInstanceTypeResponseListResults(val *ClusterInstanceTypeResponseListResults) *NullableClusterInstanceTypeResponseListResults {
+	return &NullableClusterInstanceTypeResponseListResults{value: val, isSet: true}
 }
 
-func (v NullableInlineResponse200Results) MarshalJSON() ([]byte, error) {
+func (v NullableClusterInstanceTypeResponseListResults) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineResponse200Results) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterInstanceTypeResponseListResults) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
