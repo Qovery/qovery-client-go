@@ -12646,7 +12646,9 @@ components:
         status:
           $ref: '#/components/schemas/StateEnum'
         features:
-          $ref: '#/components/schemas/ClusterFeature'
+          items:
+            $ref: '#/components/schemas/ClusterFeature'
+          type: array
         has_access:
           type: boolean
         version:

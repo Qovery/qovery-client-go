@@ -18,12 +18,12 @@ import (
 // ClusterAllOf struct for ClusterAllOf
 type ClusterAllOf struct {
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *int32          `json:"estimated_cloud_provider_cost,omitempty"`
-	Status                     *StateEnum      `json:"status,omitempty"`
-	Features                   *ClusterFeature `json:"features,omitempty"`
-	HasAccess                  *bool           `json:"has_access,omitempty"`
-	Version                    *string         `json:"version,omitempty"`
-	IsDefault                  *bool           `json:"is_default,omitempty"`
+	EstimatedCloudProviderCost *int32           `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *StateEnum       `json:"status,omitempty"`
+	Features                   []ClusterFeature `json:"features,omitempty"`
+	HasAccess                  *bool            `json:"has_access,omitempty"`
+	Version                    *string          `json:"version,omitempty"`
+	IsDefault                  *bool            `json:"is_default,omitempty"`
 }
 
 // NewClusterAllOf instantiates a new ClusterAllOf object
@@ -108,17 +108,17 @@ func (o *ClusterAllOf) SetStatus(v StateEnum) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetFeatures() ClusterFeature {
+func (o *ClusterAllOf) GetFeatures() []ClusterFeature {
 	if o == nil || o.Features == nil {
-		var ret ClusterFeature
+		var ret []ClusterFeature
 		return ret
 	}
-	return *o.Features
+	return o.Features
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetFeaturesOk() (*ClusterFeature, bool) {
+func (o *ClusterAllOf) GetFeaturesOk() ([]ClusterFeature, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -134,9 +134,9 @@ func (o *ClusterAllOf) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given ClusterFeature and assigns it to the Features field.
-func (o *ClusterAllOf) SetFeatures(v ClusterFeature) {
-	o.Features = &v
+// SetFeatures gets a reference to the given []ClusterFeature and assigns it to the Features field.
+func (o *ClusterAllOf) SetFeatures(v []ClusterFeature) {
+	o.Features = v
 }
 
 // GetHasAccess returns the HasAccess field value if set, zero value otherwise.

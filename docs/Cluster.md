@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
 **Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
-**Features** | Pointer to [**ClusterFeature**](ClusterFeature.md) |  | [optional] 
+**Features** | Pointer to [**[]ClusterFeature**](ClusterFeature.md) |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
@@ -395,20 +395,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetFeatures
 
-`func (o *Cluster) GetFeatures() ClusterFeature`
+`func (o *Cluster) GetFeatures() []ClusterFeature`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *Cluster) GetFeaturesOk() (*ClusterFeature, bool)`
+`func (o *Cluster) GetFeaturesOk() (*[]ClusterFeature, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *Cluster) SetFeatures(v ClusterFeature)`
+`func (o *Cluster) SetFeatures(v []ClusterFeature)`
 
 SetFeatures sets Features field to given value.
 
