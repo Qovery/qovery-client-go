@@ -18,10 +18,10 @@ import (
 
 // EnvironmentLog struct for EnvironmentLog
 type EnvironmentLog struct {
-	Id        string                  `json:"id"`
-	CreatedAt time.Time               `json:"created_at"`
-	Scope     *EnvironmentLogScope    `json:"scope,omitempty"`
-	State     *GlobalDeploymentStatus `json:"state,omitempty"`
+	Id        string               `json:"id"`
+	CreatedAt time.Time            `json:"created_at"`
+	Scope     *EnvironmentLogScope `json:"scope,omitempty"`
+	State     *StatusKindEnum      `json:"state,omitempty"`
 	// Log message
 	Message NullableString `json:"message"`
 	// Only for errors. Helps Qovery team to investigate.
@@ -130,9 +130,9 @@ func (o *EnvironmentLog) SetScope(v EnvironmentLogScope) {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *EnvironmentLog) GetState() GlobalDeploymentStatus {
+func (o *EnvironmentLog) GetState() StatusKindEnum {
 	if o == nil || o.State == nil {
-		var ret GlobalDeploymentStatus
+		var ret StatusKindEnum
 		return ret
 	}
 	return *o.State
@@ -140,7 +140,7 @@ func (o *EnvironmentLog) GetState() GlobalDeploymentStatus {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentLog) GetStateOk() (*GlobalDeploymentStatus, bool) {
+func (o *EnvironmentLog) GetStateOk() (*StatusKindEnum, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -156,8 +156,8 @@ func (o *EnvironmentLog) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given GlobalDeploymentStatus and assigns it to the State field.
-func (o *EnvironmentLog) SetState(v GlobalDeploymentStatus) {
+// SetState gets a reference to the given StatusKindEnum and assigns it to the State field.
+func (o *EnvironmentLog) SetState(v StatusKindEnum) {
 	o.State = &v
 }
 

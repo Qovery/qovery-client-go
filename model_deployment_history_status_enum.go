@@ -21,14 +21,14 @@ type DeploymentHistoryStatusEnum string
 
 // List of DeploymentHistoryStatusEnum
 const (
-	DEPLOYMENTHISTORYSTATUSENUM_SUCCESS DeploymentHistoryStatusEnum = "SUCCESS"
 	DEPLOYMENTHISTORYSTATUSENUM_FAILED  DeploymentHistoryStatusEnum = "FAILED"
+	DEPLOYMENTHISTORYSTATUSENUM_SUCCESS DeploymentHistoryStatusEnum = "SUCCESS"
 )
 
 // All allowed values of DeploymentHistoryStatusEnum enum
 var AllowedDeploymentHistoryStatusEnumEnumValues = []DeploymentHistoryStatusEnum{
-	"SUCCESS",
 	"FAILED",
+	"SUCCESS",
 }
 
 func (v *DeploymentHistoryStatusEnum) UnmarshalJSON(src []byte) error {

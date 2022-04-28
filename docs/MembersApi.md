@@ -376,7 +376,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    inviteMemberRequest := *openapiclient.NewInviteMemberRequest("Email_example", openapiclient.InviteMemberRoleEnum("OWNER")) // InviteMemberRequest |  (optional)
+    inviteMemberRequest := *openapiclient.NewInviteMemberRequest("Email_example", openapiclient.InviteMemberRoleEnum("ADMIN")) // InviteMemberRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

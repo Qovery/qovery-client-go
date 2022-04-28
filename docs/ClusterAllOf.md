@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
-**Status** | Pointer to [**ClusterStatusEnum**](ClusterStatusEnum.md) |  | [optional] 
+**Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **Features** | Pointer to [**ClusterFeature**](ClusterFeature.md) |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
@@ -57,20 +57,20 @@ HasEstimatedCloudProviderCost returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ClusterAllOf) GetStatus() ClusterStatusEnum`
+`func (o *ClusterAllOf) GetStatus() StateEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ClusterAllOf) GetStatusOk() (*ClusterStatusEnum, bool)`
+`func (o *ClusterAllOf) GetStatusOk() (*StateEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ClusterAllOf) SetStatus(v ClusterStatusEnum)`
+`func (o *ClusterAllOf) SetStatus(v StateEnum)`
 
 SetStatus sets Status field to given value.
 

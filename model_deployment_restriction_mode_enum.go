@@ -21,14 +21,14 @@ type DeploymentRestrictionModeEnum string
 
 // List of DeploymentRestrictionModeEnum
 const (
-	DEPLOYMENTRESTRICTIONMODEENUM_MATCH   DeploymentRestrictionModeEnum = "MATCH"
 	DEPLOYMENTRESTRICTIONMODEENUM_EXCLUDE DeploymentRestrictionModeEnum = "EXCLUDE"
+	DEPLOYMENTRESTRICTIONMODEENUM_MATCH   DeploymentRestrictionModeEnum = "MATCH"
 )
 
 // All allowed values of DeploymentRestrictionModeEnum enum
 var AllowedDeploymentRestrictionModeEnumEnumValues = []DeploymentRestrictionModeEnum{
-	"MATCH",
 	"EXCLUDE",
+	"MATCH",
 }
 
 func (v *DeploymentRestrictionModeEnum) UnmarshalJSON(src []byte) error {

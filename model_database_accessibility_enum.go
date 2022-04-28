@@ -21,14 +21,14 @@ type DatabaseAccessibilityEnum string
 
 // List of DatabaseAccessibilityEnum
 const (
-	DATABASEACCESSIBILITYENUM_PUBLIC  DatabaseAccessibilityEnum = "PUBLIC"
 	DATABASEACCESSIBILITYENUM_PRIVATE DatabaseAccessibilityEnum = "PRIVATE"
+	DATABASEACCESSIBILITYENUM_PUBLIC  DatabaseAccessibilityEnum = "PUBLIC"
 )
 
 // All allowed values of DatabaseAccessibilityEnum enum
 var AllowedDatabaseAccessibilityEnumEnumValues = []DatabaseAccessibilityEnum{
-	"PUBLIC",
 	"PRIVATE",
+	"PUBLIC",
 }
 
 func (v *DatabaseAccessibilityEnum) UnmarshalJSON(src []byte) error {

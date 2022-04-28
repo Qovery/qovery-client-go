@@ -21,17 +21,17 @@ type DatabaseTypeEnum string
 
 // List of DatabaseTypeEnum
 const (
-	DATABASETYPEENUM_POSTGRESQL DatabaseTypeEnum = "POSTGRESQL"
-	DATABASETYPEENUM_MYSQL      DatabaseTypeEnum = "MYSQL"
 	DATABASETYPEENUM_MONGODB    DatabaseTypeEnum = "MONGODB"
+	DATABASETYPEENUM_MYSQL      DatabaseTypeEnum = "MYSQL"
+	DATABASETYPEENUM_POSTGRESQL DatabaseTypeEnum = "POSTGRESQL"
 	DATABASETYPEENUM_REDIS      DatabaseTypeEnum = "REDIS"
 )
 
 // All allowed values of DatabaseTypeEnum enum
 var AllowedDatabaseTypeEnumEnumValues = []DatabaseTypeEnum{
-	"POSTGRESQL",
-	"MYSQL",
 	"MONGODB",
+	"MYSQL",
+	"POSTGRESQL",
 	"REDIS",
 }
 

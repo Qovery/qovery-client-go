@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | 
 **Scope** | Pointer to [**EnvironmentLogScope**](EnvironmentLogScope.md) |  | [optional] 
-**State** | Pointer to [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | [optional] 
+**State** | Pointer to [**StatusKindEnum**](StatusKindEnum.md) |  | [optional] 
 **Message** | **NullableString** | Log message | 
 **ExecutionId** | Pointer to **string** | Only for errors. Helps Qovery team to investigate. | [optional] 
 **Hint** | Pointer to **string** |  | [optional] 
@@ -98,20 +98,20 @@ HasScope returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *EnvironmentLog) GetState() GlobalDeploymentStatus`
+`func (o *EnvironmentLog) GetState() StatusKindEnum`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *EnvironmentLog) GetStateOk() (*GlobalDeploymentStatus, bool)`
+`func (o *EnvironmentLog) GetStateOk() (*StatusKindEnum, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *EnvironmentLog) SetState(v GlobalDeploymentStatus)`
+`func (o *EnvironmentLog) SetState(v StatusKindEnum)`
 
 SetState sets State field to given value.
 

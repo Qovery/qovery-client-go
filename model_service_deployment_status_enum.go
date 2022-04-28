@@ -22,15 +22,15 @@ type ServiceDeploymentStatusEnum string
 // List of ServiceDeploymentStatusEnum
 const (
 	SERVICEDEPLOYMENTSTATUSENUM_NEVER_DEPLOYED ServiceDeploymentStatusEnum = "NEVER_DEPLOYED"
-	SERVICEDEPLOYMENTSTATUSENUM_UP_TO_DATE     ServiceDeploymentStatusEnum = "UP_TO_DATE"
 	SERVICEDEPLOYMENTSTATUSENUM_OUT_OF_DATE    ServiceDeploymentStatusEnum = "OUT_OF_DATE"
+	SERVICEDEPLOYMENTSTATUSENUM_UP_TO_DATE     ServiceDeploymentStatusEnum = "UP_TO_DATE"
 )
 
 // All allowed values of ServiceDeploymentStatusEnum enum
 var AllowedServiceDeploymentStatusEnumEnumValues = []ServiceDeploymentStatusEnum{
 	"NEVER_DEPLOYED",
-	"UP_TO_DATE",
 	"OUT_OF_DATE",
+	"UP_TO_DATE",
 }
 
 func (v *ServiceDeploymentStatusEnum) UnmarshalJSON(src []byte) error {

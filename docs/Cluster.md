@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
-**Status** | Pointer to [**ClusterStatusEnum**](ClusterStatusEnum.md) |  | [optional] 
+**Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **Features** | Pointer to [**ClusterFeature**](ClusterFeature.md) |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
@@ -370,20 +370,20 @@ HasEstimatedCloudProviderCost returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *Cluster) GetStatus() ClusterStatusEnum`
+`func (o *Cluster) GetStatus() StateEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *Cluster) GetStatusOk() (*ClusterStatusEnum, bool)`
+`func (o *Cluster) GetStatusOk() (*StateEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *Cluster) SetStatus(v ClusterStatusEnum)`
+`func (o *Cluster) SetStatus(v StateEnum)`
 
 SetStatus sets Status field to given value.
 

@@ -3,11 +3,11 @@
 ## Enum
 
 
-* `POSTGRESQL` (value: `"POSTGRESQL"`)
+* `MONGODB` (value: `"MONGODB"`)
 
 * `MYSQL` (value: `"MYSQL"`)
 
-* `MONGODB` (value: `"MONGODB"`)
+* `POSTGRESQL` (value: `"POSTGRESQL"`)
 
 * `REDIS` (value: `"REDIS"`)
 

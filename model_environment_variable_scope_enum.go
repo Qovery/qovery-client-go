@@ -21,18 +21,18 @@ type EnvironmentVariableScopeEnum string
 
 // List of EnvironmentVariableScopeEnum
 const (
+	ENVIRONMENTVARIABLESCOPEENUM_APPLICATION EnvironmentVariableScopeEnum = "APPLICATION"
 	ENVIRONMENTVARIABLESCOPEENUM_BUILT_IN    EnvironmentVariableScopeEnum = "BUILT_IN"
 	ENVIRONMENTVARIABLESCOPEENUM_ENVIRONMENT EnvironmentVariableScopeEnum = "ENVIRONMENT"
 	ENVIRONMENTVARIABLESCOPEENUM_PROJECT     EnvironmentVariableScopeEnum = "PROJECT"
-	ENVIRONMENTVARIABLESCOPEENUM_APPLICATION EnvironmentVariableScopeEnum = "APPLICATION"
 )
 
 // All allowed values of EnvironmentVariableScopeEnum enum
 var AllowedEnvironmentVariableScopeEnumEnumValues = []EnvironmentVariableScopeEnum{
+	"APPLICATION",
 	"BUILT_IN",
 	"ENVIRONMENT",
 	"PROJECT",
-	"APPLICATION",
 }
 
 func (v *EnvironmentVariableScopeEnum) UnmarshalJSON(src []byte) error {

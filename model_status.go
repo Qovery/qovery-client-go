@@ -17,8 +17,8 @@ import (
 
 // Status struct for Status
 type Status struct {
-	Id    *string                `json:"id,omitempty"`
-	State GlobalDeploymentStatus `json:"state"`
+	Id    *string   `json:"id,omitempty"`
+	State StateEnum `json:"state"`
 	// message related to the state
 	Message                 NullableString                      `json:"message,omitempty"`
 	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status,omitempty"`
@@ -28,7 +28,7 @@ type Status struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatus(state GlobalDeploymentStatus) *Status {
+func NewStatus(state StateEnum) *Status {
 	this := Status{}
 	this.State = state
 	return &this
@@ -75,9 +75,9 @@ func (o *Status) SetId(v string) {
 }
 
 // GetState returns the State field value
-func (o *Status) GetState() GlobalDeploymentStatus {
+func (o *Status) GetState() StateEnum {
 	if o == nil {
-		var ret GlobalDeploymentStatus
+		var ret StateEnum
 		return ret
 	}
 
@@ -86,7 +86,7 @@ func (o *Status) GetState() GlobalDeploymentStatus {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *Status) GetStateOk() (*GlobalDeploymentStatus, bool) {
+func (o *Status) GetStateOk() (*StateEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *Status) GetStateOk() (*GlobalDeploymentStatus, bool) {
 }
 
 // SetState sets field value
-func (o *Status) SetState(v GlobalDeploymentStatus) {
+func (o *Status) SetState(v StateEnum) {
 	o.State = v
 }
 

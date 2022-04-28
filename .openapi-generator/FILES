@@ -126,7 +126,6 @@ docs/ClusterCloudProviderInfoRequest.md
 docs/ClusterCloudProviderInfoRequestCredentials.md
 docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
-docs/ClusterDeploymentStatusEnum.md
 docs/ClusterFeature.md
 docs/ClusterFeatureRequest.md
 docs/ClusterFeatureRequestFeatures.md
@@ -143,7 +142,6 @@ docs/ClusterRoutingTableRequest.md
 docs/ClusterRoutingTableRequestRoutes.md
 docs/ClusterRoutingTableResults.md
 docs/ClusterStatus.md
-docs/ClusterStatusEnum.md
 docs/ClusterStatusResponseList.md
 docs/ClustersApi.md
 docs/Commit.md
@@ -269,7 +267,6 @@ docs/GitRepository.md
 docs/GitRepositoryBranch.md
 docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponseList.md
-docs/GlobalDeploymentStatus.md
 docs/Healthcheck.md
 docs/Instance.md
 docs/InstanceResponseList.md
@@ -380,7 +377,9 @@ docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
 docs/SignUp.md
 docs/SignUpRequest.md
+docs/StateEnum.md
 docs/Status.md
+docs/StatusKindEnum.md
 docs/StorageDisk.md
 docs/StorageDiskResponseList.md
 docs/StorageTypeEnum.md
@@ -462,7 +461,6 @@ model_cluster_cloud_provider_info_request.go
 model_cluster_cloud_provider_info_request_credentials.go
 model_cluster_credentials.go
 model_cluster_credentials_response_list.go
-model_cluster_deployment_status_enum.go
 model_cluster_feature.go
 model_cluster_feature_request.go
 model_cluster_feature_request_features.go
@@ -479,7 +477,6 @@ model_cluster_routing_table_request.go
 model_cluster_routing_table_request_routes.go
 model_cluster_routing_table_results.go
 model_cluster_status.go
-model_cluster_status_enum.go
 model_cluster_status_response_list.go
 model_commit.go
 model_commit_paginated_response_list.go
@@ -587,7 +584,6 @@ model_git_repository.go
 model_git_repository_branch.go
 model_git_repository_branch_response_list.go
 model_git_repository_response_list.go
-model_global_deployment_status.go
 model_healthcheck.go
 model_instance.go
 model_instance_response_list.go
@@ -687,7 +683,9 @@ model_service_total_number.go
 model_service_type_enum.go
 model_sign_up.go
 model_sign_up_request.go
+model_state_enum.go
 model_status.go
+model_status_kind_enum.go
 model_storage_disk.go
 model_storage_disk_response_list.go
 model_storage_type_enum.go

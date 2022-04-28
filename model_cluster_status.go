@@ -17,9 +17,9 @@ import (
 
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
-	ClusterId  *string                      `json:"cluster_id,omitempty"`
-	Status     *ClusterDeploymentStatusEnum `json:"status,omitempty"`
-	IsDeployed *bool                        `json:"is_deployed,omitempty"`
+	ClusterId  *string    `json:"cluster_id,omitempty"`
+	Status     *StateEnum `json:"status,omitempty"`
+	IsDeployed *bool      `json:"is_deployed,omitempty"`
 }
 
 // NewClusterStatus instantiates a new ClusterStatus object
@@ -72,9 +72,9 @@ func (o *ClusterStatus) SetClusterId(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ClusterStatus) GetStatus() ClusterDeploymentStatusEnum {
+func (o *ClusterStatus) GetStatus() StateEnum {
 	if o == nil || o.Status == nil {
-		var ret ClusterDeploymentStatusEnum
+		var ret StateEnum
 		return ret
 	}
 	return *o.Status
@@ -82,7 +82,7 @@ func (o *ClusterStatus) GetStatus() ClusterDeploymentStatusEnum {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterStatus) GetStatusOk() (*ClusterDeploymentStatusEnum, bool) {
+func (o *ClusterStatus) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *ClusterStatus) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ClusterDeploymentStatusEnum and assigns it to the Status field.
-func (o *ClusterStatus) SetStatus(v ClusterDeploymentStatusEnum) {
+// SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
+func (o *ClusterStatus) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 

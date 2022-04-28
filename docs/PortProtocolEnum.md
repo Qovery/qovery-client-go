@@ -3,9 +3,9 @@
 ## Enum
 
 
-* `HTTPS` (value: `"HTTPS"`)
-
 * `HTTP` (value: `"HTTP"`)
+
+* `HTTPS` (value: `"HTTPS"`)
 
 * `TCP` (value: `"TCP"`)
 

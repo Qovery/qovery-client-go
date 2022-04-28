@@ -33,7 +33,7 @@ import (
 
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("MATCH"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
+    applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -174,7 +174,7 @@ import (
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
     deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
-    applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("MATCH"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
+    applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

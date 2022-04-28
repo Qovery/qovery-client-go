@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryApplicationAllOf struct for DeploymentHistoryApplicationAllOf
 type DeploymentHistoryApplicationAllOf struct {
-	Name   *string                 `json:"name,omitempty"`
-	Commit *Commit                 `json:"commit,omitempty"`
-	Status *GlobalDeploymentStatus `json:"status,omitempty"`
+	Name   *string    `json:"name,omitempty"`
+	Commit *Commit    `json:"commit,omitempty"`
+	Status *StateEnum `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryApplicationAllOf instantiates a new DeploymentHistoryApplicationAllOf object
@@ -104,9 +104,9 @@ func (o *DeploymentHistoryApplicationAllOf) SetCommit(v Commit) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryApplicationAllOf) GetStatus() GlobalDeploymentStatus {
+func (o *DeploymentHistoryApplicationAllOf) GetStatus() StateEnum {
 	if o == nil || o.Status == nil {
-		var ret GlobalDeploymentStatus
+		var ret StateEnum
 		return ret
 	}
 	return *o.Status
@@ -114,7 +114,7 @@ func (o *DeploymentHistoryApplicationAllOf) GetStatus() GlobalDeploymentStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryApplicationAllOf) GetStatusOk() (*GlobalDeploymentStatus, bool) {
+func (o *DeploymentHistoryApplicationAllOf) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -130,8 +130,8 @@ func (o *DeploymentHistoryApplicationAllOf) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given GlobalDeploymentStatus and assigns it to the Status field.
-func (o *DeploymentHistoryApplicationAllOf) SetStatus(v GlobalDeploymentStatus) {
+// SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
+func (o *DeploymentHistoryApplicationAllOf) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 

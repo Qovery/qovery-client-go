@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    organizationRequest := *openapiclient.NewOrganizationRequest("Name_example", openapiclient.PlanEnum("COMMUNITY")) // OrganizationRequest |  (optional)
+    organizationRequest := *openapiclient.NewOrganizationRequest("Name_example", openapiclient.PlanEnum("BUSINESS")) // OrganizationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

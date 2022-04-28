@@ -21,16 +21,16 @@ type PortProtocolEnum string
 
 // List of PortProtocolEnum
 const (
-	PORTPROTOCOLENUM_HTTPS PortProtocolEnum = "HTTPS"
 	PORTPROTOCOLENUM_HTTP  PortProtocolEnum = "HTTP"
+	PORTPROTOCOLENUM_HTTPS PortProtocolEnum = "HTTPS"
 	PORTPROTOCOLENUM_TCP   PortProtocolEnum = "TCP"
 	PORTPROTOCOLENUM_UDP   PortProtocolEnum = "UDP"
 )
 
 // All allowed values of PortProtocolEnum enum
 var AllowedPortProtocolEnumEnumValues = []PortProtocolEnum{
-	"HTTPS",
 	"HTTP",
+	"HTTPS",
 	"TCP",
 	"UDP",
 }

@@ -18,11 +18,11 @@ import (
 
 // DeploymentHistoryDatabase struct for DeploymentHistoryDatabase
 type DeploymentHistoryDatabase struct {
-	Id        string                  `json:"id"`
-	CreatedAt time.Time               `json:"created_at"`
-	UpdatedAt *time.Time              `json:"updated_at,omitempty"`
-	Name      *string                 `json:"name,omitempty"`
-	Status    *GlobalDeploymentStatus `json:"status,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Name      *string    `json:"name,omitempty"`
+	Status    *StateEnum `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryDatabase instantiates a new DeploymentHistoryDatabase object
@@ -157,9 +157,9 @@ func (o *DeploymentHistoryDatabase) SetName(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryDatabase) GetStatus() GlobalDeploymentStatus {
+func (o *DeploymentHistoryDatabase) GetStatus() StateEnum {
 	if o == nil || o.Status == nil {
-		var ret GlobalDeploymentStatus
+		var ret StateEnum
 		return ret
 	}
 	return *o.Status
@@ -167,7 +167,7 @@ func (o *DeploymentHistoryDatabase) GetStatus() GlobalDeploymentStatus {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryDatabase) GetStatusOk() (*GlobalDeploymentStatus, bool) {
+func (o *DeploymentHistoryDatabase) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -183,8 +183,8 @@ func (o *DeploymentHistoryDatabase) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given GlobalDeploymentStatus and assigns it to the Status field.
-func (o *DeploymentHistoryDatabase) SetStatus(v GlobalDeploymentStatus) {
+// SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
+func (o *DeploymentHistoryDatabase) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 

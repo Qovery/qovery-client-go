@@ -21,14 +21,14 @@ type DatabaseModeEnum string
 
 // List of DatabaseModeEnum
 const (
-	DATABASEMODEENUM_MANAGED   DatabaseModeEnum = "MANAGED"
 	DATABASEMODEENUM_CONTAINER DatabaseModeEnum = "CONTAINER"
+	DATABASEMODEENUM_MANAGED   DatabaseModeEnum = "MANAGED"
 )
 
 // All allowed values of DatabaseModeEnum enum
 var AllowedDatabaseModeEnumEnumValues = []DatabaseModeEnum{
-	"MANAGED",
 	"CONTAINER",
+	"MANAGED",
 }
 
 func (v *DatabaseModeEnum) UnmarshalJSON(src []byte) error {

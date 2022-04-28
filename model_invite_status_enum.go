@@ -21,14 +21,14 @@ type InviteStatusEnum string
 
 // List of InviteStatusEnum
 const (
-	INVITESTATUSENUM_PENDING InviteStatusEnum = "PENDING"
 	INVITESTATUSENUM_EXPIRED InviteStatusEnum = "EXPIRED"
+	INVITESTATUSENUM_PENDING InviteStatusEnum = "PENDING"
 )
 
 // All allowed values of InviteStatusEnum enum
 var AllowedInviteStatusEnumEnumValues = []InviteStatusEnum{
-	"PENDING",
 	"EXPIRED",
+	"PENDING",
 }
 
 func (v *InviteStatusEnum) UnmarshalJSON(src []byte) error {

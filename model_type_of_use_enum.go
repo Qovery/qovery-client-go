@@ -22,15 +22,15 @@ type TypeOfUseEnum string
 // List of TypeOfUseEnum
 const (
 	TYPEOFUSEENUM_PERSONAL TypeOfUseEnum = "PERSONAL"
-	TYPEOFUSEENUM_WORK     TypeOfUseEnum = "WORK"
 	TYPEOFUSEENUM_SCHOOL   TypeOfUseEnum = "SCHOOL"
+	TYPEOFUSEENUM_WORK     TypeOfUseEnum = "WORK"
 )
 
 // All allowed values of TypeOfUseEnum enum
 var AllowedTypeOfUseEnumEnumValues = []TypeOfUseEnum{
 	"PERSONAL",
-	"WORK",
 	"SCHOOL",
+	"WORK",
 }
 
 func (v *TypeOfUseEnum) UnmarshalJSON(src []byte) error {

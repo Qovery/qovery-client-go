@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Status** | Pointer to [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | [optional] 
+**Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **Applications** | Pointer to [**[]DeploymentHistoryApplication**](DeploymentHistoryApplication.md) |  | [optional] 
 **Databases** | Pointer to [**[]DeploymentHistoryDatabase**](DeploymentHistoryDatabase.md) |  | [optional] 
 
@@ -97,20 +97,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *DeploymentHistoryEnvironment) GetStatus() GlobalDeploymentStatus`
+`func (o *DeploymentHistoryEnvironment) GetStatus() StateEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *DeploymentHistoryEnvironment) GetStatusOk() (*GlobalDeploymentStatus, bool)`
+`func (o *DeploymentHistoryEnvironment) GetStatusOk() (*StateEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *DeploymentHistoryEnvironment) SetStatus(v GlobalDeploymentStatus)`
+`func (o *DeploymentHistoryEnvironment) SetStatus(v StateEnum)`
 
 SetStatus sets Status field to given value.
 

@@ -21,17 +21,17 @@ type InviteMemberRoleEnum string
 
 // List of InviteMemberRoleEnum
 const (
-	INVITEMEMBERROLEENUM_OWNER     InviteMemberRoleEnum = "OWNER"
 	INVITEMEMBERROLEENUM_ADMIN     InviteMemberRoleEnum = "ADMIN"
 	INVITEMEMBERROLEENUM_DEVELOPER InviteMemberRoleEnum = "DEVELOPER"
+	INVITEMEMBERROLEENUM_OWNER     InviteMemberRoleEnum = "OWNER"
 	INVITEMEMBERROLEENUM_VIEWER    InviteMemberRoleEnum = "VIEWER"
 )
 
 // All allowed values of InviteMemberRoleEnum enum
 var AllowedInviteMemberRoleEnumEnumValues = []InviteMemberRoleEnum{
-	"OWNER",
 	"ADMIN",
 	"DEVELOPER",
+	"OWNER",
 	"VIEWER",
 }
 

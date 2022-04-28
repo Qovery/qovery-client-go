@@ -21,24 +21,24 @@ type InvoiceStatusEnum string
 
 // List of InvoiceStatusEnum
 const (
-	INVOICESTATUSENUM_PAID        InvoiceStatusEnum = "PAID"
-	INVOICESTATUSENUM_POSTED      InvoiceStatusEnum = "POSTED"
-	INVOICESTATUSENUM_PAYMENT_DUE InvoiceStatusEnum = "PAYMENT_DUE"
 	INVOICESTATUSENUM_NOT_PAID    InvoiceStatusEnum = "NOT_PAID"
-	INVOICESTATUSENUM_VOIDED      InvoiceStatusEnum = "VOIDED"
+	INVOICESTATUSENUM_PAID        InvoiceStatusEnum = "PAID"
+	INVOICESTATUSENUM_PAYMENT_DUE InvoiceStatusEnum = "PAYMENT_DUE"
 	INVOICESTATUSENUM_PENDING     InvoiceStatusEnum = "PENDING"
+	INVOICESTATUSENUM_POSTED      InvoiceStatusEnum = "POSTED"
 	INVOICESTATUSENUM_UNKNOWN     InvoiceStatusEnum = "UNKNOWN"
+	INVOICESTATUSENUM_VOIDED      InvoiceStatusEnum = "VOIDED"
 )
 
 // All allowed values of InvoiceStatusEnum enum
 var AllowedInvoiceStatusEnumEnumValues = []InvoiceStatusEnum{
-	"PAID",
-	"POSTED",
-	"PAYMENT_DUE",
 	"NOT_PAID",
-	"VOIDED",
+	"PAID",
+	"PAYMENT_DUE",
 	"PENDING",
+	"POSTED",
 	"UNKNOWN",
+	"VOIDED",
 }
 
 func (v *InvoiceStatusEnum) UnmarshalJSON(src []byte) error {

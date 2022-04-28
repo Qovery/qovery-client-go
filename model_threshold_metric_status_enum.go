@@ -21,16 +21,16 @@ type ThresholdMetricStatusEnum string
 
 // List of ThresholdMetricStatusEnum
 const (
+	THRESHOLDMETRICSTATUSENUM_ALERT   ThresholdMetricStatusEnum = "Alert"
 	THRESHOLDMETRICSTATUSENUM_OK      ThresholdMetricStatusEnum = "OK"
 	THRESHOLDMETRICSTATUSENUM_WARNING ThresholdMetricStatusEnum = "Warning"
-	THRESHOLDMETRICSTATUSENUM_ALERT   ThresholdMetricStatusEnum = "Alert"
 )
 
 // All allowed values of ThresholdMetricStatusEnum enum
 var AllowedThresholdMetricStatusEnumEnumValues = []ThresholdMetricStatusEnum{
+	"Alert",
 	"OK",
 	"Warning",
-	"Alert",
 }
 
 func (v *ThresholdMetricStatusEnum) UnmarshalJSON(src []byte) error {

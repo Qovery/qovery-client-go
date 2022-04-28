@@ -21,12 +21,14 @@ type GitProviderEnum string
 
 // List of GitProviderEnum
 const (
-	GITPROVIDERENUM_GITHUB GitProviderEnum = "GITHUB"
-	GITPROVIDERENUM_GITLAB GitProviderEnum = "GITLAB"
+	GITPROVIDERENUM_BITBUCKET GitProviderEnum = "BITBUCKET"
+	GITPROVIDERENUM_GITHUB    GitProviderEnum = "GITHUB"
+	GITPROVIDERENUM_GITLAB    GitProviderEnum = "GITLAB"
 )
 
 // All allowed values of GitProviderEnum enum
 var AllowedGitProviderEnumEnumValues = []GitProviderEnum{
+	"BITBUCKET",
 	"GITHUB",
 	"GITLAB",
 }

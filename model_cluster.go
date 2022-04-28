@@ -36,12 +36,12 @@ type Cluster struct {
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string `json:"instance_type,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *int32             `json:"estimated_cloud_provider_cost,omitempty"`
-	Status                     *ClusterStatusEnum `json:"status,omitempty"`
-	Features                   *ClusterFeature    `json:"features,omitempty"`
-	HasAccess                  *bool              `json:"has_access,omitempty"`
-	Version                    *string            `json:"version,omitempty"`
-	IsDefault                  *bool              `json:"is_default,omitempty"`
+	EstimatedCloudProviderCost *int32          `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *StateEnum      `json:"status,omitempty"`
+	Features                   *ClusterFeature `json:"features,omitempty"`
+	HasAccess                  *bool           `json:"has_access,omitempty"`
+	Version                    *string         `json:"version,omitempty"`
+	IsDefault                  *bool           `json:"is_default,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
@@ -491,9 +491,9 @@ func (o *Cluster) SetEstimatedCloudProviderCost(v int32) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *Cluster) GetStatus() ClusterStatusEnum {
+func (o *Cluster) GetStatus() StateEnum {
 	if o == nil || o.Status == nil {
-		var ret ClusterStatusEnum
+		var ret StateEnum
 		return ret
 	}
 	return *o.Status
@@ -501,7 +501,7 @@ func (o *Cluster) GetStatus() ClusterStatusEnum {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetStatusOk() (*ClusterStatusEnum, bool) {
+func (o *Cluster) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -517,8 +517,8 @@ func (o *Cluster) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given ClusterStatusEnum and assigns it to the Status field.
-func (o *Cluster) SetStatus(v ClusterStatusEnum) {
+// SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
+func (o *Cluster) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 

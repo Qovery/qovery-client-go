@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | [optional] 
+**Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **Applications** | Pointer to [**[]DeploymentHistoryApplication**](DeploymentHistoryApplication.md) |  | [optional] 
 **Databases** | Pointer to [**[]DeploymentHistoryDatabase**](DeploymentHistoryDatabase.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStatus
 
-`func (o *DeploymentHistoryEnvironmentAllOf) GetStatus() GlobalDeploymentStatus`
+`func (o *DeploymentHistoryEnvironmentAllOf) GetStatus() StateEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *DeploymentHistoryEnvironmentAllOf) GetStatusOk() (*GlobalDeploymentStatus, bool)`
+`func (o *DeploymentHistoryEnvironmentAllOf) GetStatusOk() (*StateEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *DeploymentHistoryEnvironmentAllOf) SetStatus(v GlobalDeploymentStatus)`
+`func (o *DeploymentHistoryEnvironmentAllOf) SetStatus(v StateEnum)`
 
 SetStatus sets Status field to given value.
 

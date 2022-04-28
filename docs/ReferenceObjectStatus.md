@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**State** | [**GlobalDeploymentStatus**](GlobalDeploymentStatus.md) |  | 
+**State** | [**StateEnum**](StateEnum.md) |  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
 **ServiceDeploymentStatus** | Pointer to [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | [optional] 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewReferenceObjectStatus
 
-`func NewReferenceObjectStatus(id string, state GlobalDeploymentStatus, ) *ReferenceObjectStatus`
+`func NewReferenceObjectStatus(id string, state StateEnum, ) *ReferenceObjectStatus`
 
 NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetId sets Id field to given value.
 
 ### GetState
 
-`func (o *ReferenceObjectStatus) GetState() GlobalDeploymentStatus`
+`func (o *ReferenceObjectStatus) GetState() StateEnum`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *ReferenceObjectStatus) GetStateOk() (*GlobalDeploymentStatus, bool)`
+`func (o *ReferenceObjectStatus) GetStateOk() (*StateEnum, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *ReferenceObjectStatus) SetState(v GlobalDeploymentStatus)`
+`func (o *ReferenceObjectStatus) SetState(v StateEnum)`
 
 SetState sets State field to given value.
 

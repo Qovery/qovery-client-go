@@ -21,18 +21,18 @@ type EnvironmentModeEnum string
 
 // List of EnvironmentModeEnum
 const (
-	ENVIRONMENTMODEENUM_PRODUCTION  EnvironmentModeEnum = "PRODUCTION"
 	ENVIRONMENTMODEENUM_DEVELOPMENT EnvironmentModeEnum = "DEVELOPMENT"
-	ENVIRONMENTMODEENUM_STAGING     EnvironmentModeEnum = "STAGING"
 	ENVIRONMENTMODEENUM_PREVIEW     EnvironmentModeEnum = "PREVIEW"
+	ENVIRONMENTMODEENUM_PRODUCTION  EnvironmentModeEnum = "PRODUCTION"
+	ENVIRONMENTMODEENUM_STAGING     EnvironmentModeEnum = "STAGING"
 )
 
 // All allowed values of EnvironmentModeEnum enum
 var AllowedEnvironmentModeEnumEnumValues = []EnvironmentModeEnum{
-	"PRODUCTION",
 	"DEVELOPMENT",
-	"STAGING",
 	"PREVIEW",
+	"PRODUCTION",
+	"STAGING",
 }
 
 func (v *EnvironmentModeEnum) UnmarshalJSON(src []byte) error {

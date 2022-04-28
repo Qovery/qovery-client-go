@@ -21,14 +21,14 @@ type BuildModeEnum string
 
 // List of BuildModeEnum
 const (
-	BUILDMODEENUM_DOCKER     BuildModeEnum = "DOCKER"
 	BUILDMODEENUM_BUILDPACKS BuildModeEnum = "BUILDPACKS"
+	BUILDMODEENUM_DOCKER     BuildModeEnum = "DOCKER"
 )
 
 // All allowed values of BuildModeEnum enum
 var AllowedBuildModeEnumEnumValues = []BuildModeEnum{
-	"DOCKER",
 	"BUILDPACKS",
+	"DOCKER",
 }
 
 func (v *BuildModeEnum) UnmarshalJSON(src []byte) error {
