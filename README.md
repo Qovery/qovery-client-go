@@ -373,7 +373,7 @@ Class | Method | HTTP request | Description
  - [CluserCredentials](docs/CluserCredentials.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterAllOf](docs/ClusterAllOf.md)
- - [ClusterAllOf1](docs/ClusterAllOf1.md)
+ - [ClusterBase](docs/ClusterBase.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)
  - [ClusterCloudProviderInfoRequest](docs/ClusterCloudProviderInfoRequest.md)
  - [ClusterCloudProviderInfoRequestCredentials](docs/ClusterCloudProviderInfoRequestCredentials.md)

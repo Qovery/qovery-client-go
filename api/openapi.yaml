@@ -9420,13 +9420,8 @@ components:
       type: object
     ClusterRequest:
       allOf:
-      - $ref: '#/components/schemas/Cluster/allOf/1'
+      - $ref: '#/components/schemas/ClusterBase'
       - $ref: '#/components/schemas/ClusterFeatureRequest'
-      - required:
-        - cloud_provider
-        - name
-        - region
-        type: object
     ClusterCloudProviderInfo:
       example:
         credentials:
@@ -10181,12 +10176,50 @@ components:
             $ref: '#/components/schemas/MetricMemoryDatapoint'
           type: array
       type: object
+    ClusterBase:
+      properties:
+        name:
+          description: name is case-insensitive
+          type: string
+        description:
+          type: string
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+        region:
+          type: string
+        auto_update:
+          type: boolean
+        cpu:
+          default: 250
+          description: unit is millicores (m). 1000m = 1 cpu
+          example: 1250
+          type: integer
+        memory:
+          default: 256
+          description: unit is MB. 1024 MB = 1GB
+          example: 1024
+          type: integer
+        min_running_nodes:
+          default: 1
+          type: integer
+        max_running_nodes:
+          default: 1
+          type: integer
+        instance_type:
+          description: the instance type to be used for this cluster. The list of
+            values can be retrieved via the endpoint /{CloudProvider}/instanceType
+          example: T3A_LARGE
+          type: string
+      required:
+      - cloud_provider
+      - name
+      - region
+      type: object
     Cluster:
       allOf:
       - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ClusterBase'
       - $ref: '#/components/schemas/Cluster_allOf'
-      - $ref: '#/components/schemas/ClusterFeature'
-      - $ref: '#/components/schemas/Cluster_allOf_1'
     BackupPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
@@ -12631,51 +12664,14 @@ components:
       type: object
     Cluster_allOf:
       properties:
-        name:
-          description: name is case-insensitive
-          type: string
-        description:
-          type: string
-        cloud_provider:
-          $ref: '#/components/schemas/CloudProviderEnum'
-        region:
-          type: string
-        auto_update:
-          type: boolean
-        cpu:
-          default: 250
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 256
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_nodes:
-          default: 1
-          type: integer
-        max_running_nodes:
-          default: 1
-          type: integer
-        instance_type:
-          description: the instance type to be used for this cluster. The list of
-            values can be retrieved via the endpoint /{CloudProvider}/instanceType
-          example: T3A_LARGE
-          type: string
-      required:
-      - cloud_provider
-      - name
-      - region
-      type: object
-    Cluster_allOf_1:
-      properties:
         estimated_cloud_provider_cost:
           description: This is an estimation of the cost this cluster will represent
             on your cloud proider bill, based on your current configuration
           type: integer
         status:
           $ref: '#/components/schemas/ClusterStatusEnum'
+        features:
+          $ref: '#/components/schemas/ClusterFeature'
         has_access:
           type: boolean
         version:

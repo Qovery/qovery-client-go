@@ -23,7 +23,7 @@ type Cluster struct {
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case-insensitive
 	Name          string            `json:"name"`
-	Description   NullableString    `json:"description,omitempty"`
+	Description   *string           `json:"description,omitempty"`
 	CloudProvider CloudProviderEnum `json:"cloud_provider"`
 	Region        string            `json:"region"`
 	AutoUpdate    *bool             `json:"auto_update,omitempty"`
@@ -34,18 +34,11 @@ type Cluster struct {
 	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
-	InstanceType        *string         `json:"instance_type,omitempty"`
-	Title               *string         `json:"title,omitempty"`
-	CostPerMonthInCents NullableInt32   `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
-	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
-	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
-	AcceptedValues      []interface{}   `json:"accepted_values,omitempty"`
+	InstanceType *string `json:"instance_type,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
 	EstimatedCloudProviderCost *int32             `json:"estimated_cloud_provider_cost,omitempty"`
 	Status                     *ClusterStatusEnum `json:"status,omitempty"`
+	Features                   *ClusterFeature    `json:"features,omitempty"`
 	HasAccess                  *bool              `json:"has_access,omitempty"`
 	Version                    *string            `json:"version,omitempty"`
 	IsDefault                  *bool              `json:"is_default,omitempty"`
@@ -70,8 +63,6 @@ func NewCluster(id string, createdAt time.Time, name string, cloudProvider Cloud
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
-	var isValueUpdatable bool = false
-	this.IsValueUpdatable = &isValueUpdatable
 	return &this
 }
 
@@ -88,8 +79,6 @@ func NewClusterWithDefaults() *Cluster {
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
-	var isValueUpdatable bool = false
-	this.IsValueUpdatable = &isValueUpdatable
 	return &this
 }
 
@@ -197,47 +186,36 @@ func (o *Cluster) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Cluster) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || o.Description == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Cluster) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Description == nil {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Cluster) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && o.Description != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Cluster) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *Cluster) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *Cluster) UnsetDescription() {
-	o.Description.Unset()
+	o.Description = &v
 }
 
 // GetCloudProvider returns the CloudProvider field value
@@ -480,306 +458,6 @@ func (o *Cluster) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *Cluster) GetTitle() string {
-	if o == nil || o.Title == nil {
-		var ret string
-		return ret
-	}
-	return *o.Title
-}
-
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
-		return nil, false
-	}
-	return o.Title, true
-}
-
-// HasTitle returns a boolean if a field has been set.
-func (o *Cluster) HasTitle() bool {
-	if o != nil && o.Title != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *Cluster) SetTitle(v string) {
-	o.Title = &v
-}
-
-// GetCostPerMonthInCents returns the CostPerMonthInCents field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Cluster) GetCostPerMonthInCents() int32 {
-	if o == nil || o.CostPerMonthInCents.Get() == nil {
-		var ret int32
-		return ret
-	}
-	return *o.CostPerMonthInCents.Get()
-}
-
-// GetCostPerMonthInCentsOk returns a tuple with the CostPerMonthInCents field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Cluster) GetCostPerMonthInCentsOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CostPerMonthInCents.Get(), o.CostPerMonthInCents.IsSet()
-}
-
-// HasCostPerMonthInCents returns a boolean if a field has been set.
-func (o *Cluster) HasCostPerMonthInCents() bool {
-	if o != nil && o.CostPerMonthInCents.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCostPerMonthInCents gets a reference to the given NullableInt32 and assigns it to the CostPerMonthInCents field.
-func (o *Cluster) SetCostPerMonthInCents(v int32) {
-	o.CostPerMonthInCents.Set(&v)
-}
-
-// SetCostPerMonthInCentsNil sets the value for CostPerMonthInCents to be an explicit nil
-func (o *Cluster) SetCostPerMonthInCentsNil() {
-	o.CostPerMonthInCents.Set(nil)
-}
-
-// UnsetCostPerMonthInCents ensures that no value is present for CostPerMonthInCents, not even an explicit nil
-func (o *Cluster) UnsetCostPerMonthInCents() {
-	o.CostPerMonthInCents.Unset()
-}
-
-// GetCostPerMonth returns the CostPerMonth field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Cluster) GetCostPerMonth() float32 {
-	if o == nil || o.CostPerMonth.Get() == nil {
-		var ret float32
-		return ret
-	}
-	return *o.CostPerMonth.Get()
-}
-
-// GetCostPerMonthOk returns a tuple with the CostPerMonth field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Cluster) GetCostPerMonthOk() (*float32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CostPerMonth.Get(), o.CostPerMonth.IsSet()
-}
-
-// HasCostPerMonth returns a boolean if a field has been set.
-func (o *Cluster) HasCostPerMonth() bool {
-	if o != nil && o.CostPerMonth.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCostPerMonth gets a reference to the given NullableFloat32 and assigns it to the CostPerMonth field.
-func (o *Cluster) SetCostPerMonth(v float32) {
-	o.CostPerMonth.Set(&v)
-}
-
-// SetCostPerMonthNil sets the value for CostPerMonth to be an explicit nil
-func (o *Cluster) SetCostPerMonthNil() {
-	o.CostPerMonth.Set(nil)
-}
-
-// UnsetCostPerMonth ensures that no value is present for CostPerMonth, not even an explicit nil
-func (o *Cluster) UnsetCostPerMonth() {
-	o.CostPerMonth.Unset()
-}
-
-// GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Cluster) GetCurrencyCode() string {
-	if o == nil || o.CurrencyCode.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.CurrencyCode.Get()
-}
-
-// GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Cluster) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.CurrencyCode.Get(), o.CurrencyCode.IsSet()
-}
-
-// HasCurrencyCode returns a boolean if a field has been set.
-func (o *Cluster) HasCurrencyCode() bool {
-	if o != nil && o.CurrencyCode.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrencyCode gets a reference to the given NullableString and assigns it to the CurrencyCode field.
-func (o *Cluster) SetCurrencyCode(v string) {
-	o.CurrencyCode.Set(&v)
-}
-
-// SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
-func (o *Cluster) SetCurrencyCodeNil() {
-	o.CurrencyCode.Set(nil)
-}
-
-// UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
-func (o *Cluster) UnsetCurrencyCode() {
-	o.CurrencyCode.Unset()
-}
-
-// GetValueType returns the ValueType field value if set, zero value otherwise.
-func (o *Cluster) GetValueType() string {
-	if o == nil || o.ValueType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ValueType
-}
-
-// GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetValueTypeOk() (*string, bool) {
-	if o == nil || o.ValueType == nil {
-		return nil, false
-	}
-	return o.ValueType, true
-}
-
-// HasValueType returns a boolean if a field has been set.
-func (o *Cluster) HasValueType() bool {
-	if o != nil && o.ValueType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetValueType gets a reference to the given string and assigns it to the ValueType field.
-func (o *Cluster) SetValueType(v string) {
-	o.ValueType = &v
-}
-
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Cluster) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.Value.Get()
-}
-
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Cluster) GetValueOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Value.Get(), o.Value.IsSet()
-}
-
-// HasValue returns a boolean if a field has been set.
-func (o *Cluster) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
-func (o *Cluster) SetValue(v string) {
-	o.Value.Set(&v)
-}
-
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *Cluster) SetValueNil() {
-	o.Value.Set(nil)
-}
-
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *Cluster) UnsetValue() {
-	o.Value.Unset()
-}
-
-// GetIsValueUpdatable returns the IsValueUpdatable field value if set, zero value otherwise.
-func (o *Cluster) GetIsValueUpdatable() bool {
-	if o == nil || o.IsValueUpdatable == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsValueUpdatable
-}
-
-// GetIsValueUpdatableOk returns a tuple with the IsValueUpdatable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetIsValueUpdatableOk() (*bool, bool) {
-	if o == nil || o.IsValueUpdatable == nil {
-		return nil, false
-	}
-	return o.IsValueUpdatable, true
-}
-
-// HasIsValueUpdatable returns a boolean if a field has been set.
-func (o *Cluster) HasIsValueUpdatable() bool {
-	if o != nil && o.IsValueUpdatable != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsValueUpdatable gets a reference to the given bool and assigns it to the IsValueUpdatable field.
-func (o *Cluster) SetIsValueUpdatable(v bool) {
-	o.IsValueUpdatable = &v
-}
-
-// GetAcceptedValues returns the AcceptedValues field value if set, zero value otherwise.
-func (o *Cluster) GetAcceptedValues() []interface{} {
-	if o == nil || o.AcceptedValues == nil {
-		var ret []interface{}
-		return ret
-	}
-	return o.AcceptedValues
-}
-
-// GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetAcceptedValuesOk() ([]interface{}, bool) {
-	if o == nil || o.AcceptedValues == nil {
-		return nil, false
-	}
-	return o.AcceptedValues, true
-}
-
-// HasAcceptedValues returns a boolean if a field has been set.
-func (o *Cluster) HasAcceptedValues() bool {
-	if o != nil && o.AcceptedValues != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAcceptedValues gets a reference to the given []interface{} and assigns it to the AcceptedValues field.
-func (o *Cluster) SetAcceptedValues(v []interface{}) {
-	o.AcceptedValues = v
-}
-
 // GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
 func (o *Cluster) GetEstimatedCloudProviderCost() int32 {
 	if o == nil || o.EstimatedCloudProviderCost == nil {
@@ -842,6 +520,38 @@ func (o *Cluster) HasStatus() bool {
 // SetStatus gets a reference to the given ClusterStatusEnum and assigns it to the Status field.
 func (o *Cluster) SetStatus(v ClusterStatusEnum) {
 	o.Status = &v
+}
+
+// GetFeatures returns the Features field value if set, zero value otherwise.
+func (o *Cluster) GetFeatures() ClusterFeature {
+	if o == nil || o.Features == nil {
+		var ret ClusterFeature
+		return ret
+	}
+	return *o.Features
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetFeaturesOk() (*ClusterFeature, bool) {
+	if o == nil || o.Features == nil {
+		return nil, false
+	}
+	return o.Features, true
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *Cluster) HasFeatures() bool {
+	if o != nil && o.Features != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given ClusterFeature and assigns it to the Features field.
+func (o *Cluster) SetFeatures(v ClusterFeature) {
+	o.Features = &v
 }
 
 // GetHasAccess returns the HasAccess field value if set, zero value otherwise.
@@ -954,8 +664,8 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["cloud_provider"] = o.CloudProvider
@@ -981,35 +691,14 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	if o.InstanceType != nil {
 		toSerialize["instance_type"] = o.InstanceType
 	}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
-	}
-	if o.CostPerMonthInCents.IsSet() {
-		toSerialize["cost_per_month_in_cents"] = o.CostPerMonthInCents.Get()
-	}
-	if o.CostPerMonth.IsSet() {
-		toSerialize["cost_per_month"] = o.CostPerMonth.Get()
-	}
-	if o.CurrencyCode.IsSet() {
-		toSerialize["currency_code"] = o.CurrencyCode.Get()
-	}
-	if o.ValueType != nil {
-		toSerialize["value_type"] = o.ValueType
-	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
-	}
-	if o.IsValueUpdatable != nil {
-		toSerialize["is_value_updatable"] = o.IsValueUpdatable
-	}
-	if o.AcceptedValues != nil {
-		toSerialize["accepted_values"] = o.AcceptedValues
-	}
 	if o.EstimatedCloudProviderCost != nil {
 		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
+	}
+	if o.Features != nil {
+		toSerialize["features"] = o.Features
 	}
 	if o.HasAccess != nil {
 		toSerialize["has_access"] = o.HasAccess

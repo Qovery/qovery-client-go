@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// ClusterRequest struct for ClusterRequest
-type ClusterRequest struct {
+// ClusterBase struct for ClusterBase
+type ClusterBase struct {
 	// name is case-insensitive
 	Name          string            `json:"name"`
 	Description   *string           `json:"description,omitempty"`
@@ -30,16 +30,15 @@ type ClusterRequest struct {
 	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
-	InstanceType *string                         `json:"instance_type,omitempty"`
-	Features     []ClusterFeatureRequestFeatures `json:"features,omitempty"`
+	InstanceType *string `json:"instance_type,omitempty"`
 }
 
-// NewClusterRequest instantiates a new ClusterRequest object
+// NewClusterBase instantiates a new ClusterBase object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterRequest(name string, cloudProvider CloudProviderEnum, region string) *ClusterRequest {
-	this := ClusterRequest{}
+func NewClusterBase(name string, cloudProvider CloudProviderEnum, region string) *ClusterBase {
+	this := ClusterBase{}
 	this.Name = name
 	this.CloudProvider = cloudProvider
 	this.Region = region
@@ -54,11 +53,11 @@ func NewClusterRequest(name string, cloudProvider CloudProviderEnum, region stri
 	return &this
 }
 
-// NewClusterRequestWithDefaults instantiates a new ClusterRequest object
+// NewClusterBaseWithDefaults instantiates a new ClusterBase object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterRequestWithDefaults() *ClusterRequest {
-	this := ClusterRequest{}
+func NewClusterBaseWithDefaults() *ClusterBase {
+	this := ClusterBase{}
 	var cpu int32 = 250
 	this.Cpu = &cpu
 	var memory int32 = 256
@@ -71,7 +70,7 @@ func NewClusterRequestWithDefaults() *ClusterRequest {
 }
 
 // GetName returns the Name field value
-func (o *ClusterRequest) GetName() string {
+func (o *ClusterBase) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -82,7 +81,7 @@ func (o *ClusterRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetNameOk() (*string, bool) {
+func (o *ClusterBase) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,12 +89,12 @@ func (o *ClusterRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *ClusterRequest) SetName(v string) {
+func (o *ClusterBase) SetName(v string) {
 	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *ClusterRequest) GetDescription() string {
+func (o *ClusterBase) GetDescription() string {
 	if o == nil || o.Description == nil {
 		var ret string
 		return ret
@@ -105,7 +104,7 @@ func (o *ClusterRequest) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetDescriptionOk() (*string, bool) {
+func (o *ClusterBase) GetDescriptionOk() (*string, bool) {
 	if o == nil || o.Description == nil {
 		return nil, false
 	}
@@ -113,7 +112,7 @@ func (o *ClusterRequest) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *ClusterRequest) HasDescription() bool {
+func (o *ClusterBase) HasDescription() bool {
 	if o != nil && o.Description != nil {
 		return true
 	}
@@ -122,12 +121,12 @@ func (o *ClusterRequest) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *ClusterRequest) SetDescription(v string) {
+func (o *ClusterBase) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *ClusterRequest) GetCloudProvider() CloudProviderEnum {
+func (o *ClusterBase) GetCloudProvider() CloudProviderEnum {
 	if o == nil {
 		var ret CloudProviderEnum
 		return ret
@@ -138,7 +137,7 @@ func (o *ClusterRequest) GetCloudProvider() CloudProviderEnum {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool) {
+func (o *ClusterBase) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,12 +145,12 @@ func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 }
 
 // SetCloudProvider sets field value
-func (o *ClusterRequest) SetCloudProvider(v CloudProviderEnum) {
+func (o *ClusterBase) SetCloudProvider(v CloudProviderEnum) {
 	o.CloudProvider = v
 }
 
 // GetRegion returns the Region field value
-func (o *ClusterRequest) GetRegion() string {
+func (o *ClusterBase) GetRegion() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -162,7 +161,7 @@ func (o *ClusterRequest) GetRegion() string {
 
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetRegionOk() (*string, bool) {
+func (o *ClusterBase) GetRegionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,12 +169,12 @@ func (o *ClusterRequest) GetRegionOk() (*string, bool) {
 }
 
 // SetRegion sets field value
-func (o *ClusterRequest) SetRegion(v string) {
+func (o *ClusterBase) SetRegion(v string) {
 	o.Region = v
 }
 
 // GetAutoUpdate returns the AutoUpdate field value if set, zero value otherwise.
-func (o *ClusterRequest) GetAutoUpdate() bool {
+func (o *ClusterBase) GetAutoUpdate() bool {
 	if o == nil || o.AutoUpdate == nil {
 		var ret bool
 		return ret
@@ -185,7 +184,7 @@ func (o *ClusterRequest) GetAutoUpdate() bool {
 
 // GetAutoUpdateOk returns a tuple with the AutoUpdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetAutoUpdateOk() (*bool, bool) {
+func (o *ClusterBase) GetAutoUpdateOk() (*bool, bool) {
 	if o == nil || o.AutoUpdate == nil {
 		return nil, false
 	}
@@ -193,7 +192,7 @@ func (o *ClusterRequest) GetAutoUpdateOk() (*bool, bool) {
 }
 
 // HasAutoUpdate returns a boolean if a field has been set.
-func (o *ClusterRequest) HasAutoUpdate() bool {
+func (o *ClusterBase) HasAutoUpdate() bool {
 	if o != nil && o.AutoUpdate != nil {
 		return true
 	}
@@ -202,12 +201,12 @@ func (o *ClusterRequest) HasAutoUpdate() bool {
 }
 
 // SetAutoUpdate gets a reference to the given bool and assigns it to the AutoUpdate field.
-func (o *ClusterRequest) SetAutoUpdate(v bool) {
+func (o *ClusterBase) SetAutoUpdate(v bool) {
 	o.AutoUpdate = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *ClusterRequest) GetCpu() int32 {
+func (o *ClusterBase) GetCpu() int32 {
 	if o == nil || o.Cpu == nil {
 		var ret int32
 		return ret
@@ -217,7 +216,7 @@ func (o *ClusterRequest) GetCpu() int32 {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetCpuOk() (*int32, bool) {
+func (o *ClusterBase) GetCpuOk() (*int32, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -225,7 +224,7 @@ func (o *ClusterRequest) GetCpuOk() (*int32, bool) {
 }
 
 // HasCpu returns a boolean if a field has been set.
-func (o *ClusterRequest) HasCpu() bool {
+func (o *ClusterBase) HasCpu() bool {
 	if o != nil && o.Cpu != nil {
 		return true
 	}
@@ -234,12 +233,12 @@ func (o *ClusterRequest) HasCpu() bool {
 }
 
 // SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
-func (o *ClusterRequest) SetCpu(v int32) {
+func (o *ClusterBase) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *ClusterRequest) GetMemory() int32 {
+func (o *ClusterBase) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
 		var ret int32
 		return ret
@@ -249,7 +248,7 @@ func (o *ClusterRequest) GetMemory() int32 {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetMemoryOk() (*int32, bool) {
+func (o *ClusterBase) GetMemoryOk() (*int32, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -257,7 +256,7 @@ func (o *ClusterRequest) GetMemoryOk() (*int32, bool) {
 }
 
 // HasMemory returns a boolean if a field has been set.
-func (o *ClusterRequest) HasMemory() bool {
+func (o *ClusterBase) HasMemory() bool {
 	if o != nil && o.Memory != nil {
 		return true
 	}
@@ -266,12 +265,12 @@ func (o *ClusterRequest) HasMemory() bool {
 }
 
 // SetMemory gets a reference to the given int32 and assigns it to the Memory field.
-func (o *ClusterRequest) SetMemory(v int32) {
+func (o *ClusterBase) SetMemory(v int32) {
 	o.Memory = &v
 }
 
 // GetMinRunningNodes returns the MinRunningNodes field value if set, zero value otherwise.
-func (o *ClusterRequest) GetMinRunningNodes() int32 {
+func (o *ClusterBase) GetMinRunningNodes() int32 {
 	if o == nil || o.MinRunningNodes == nil {
 		var ret int32
 		return ret
@@ -281,7 +280,7 @@ func (o *ClusterRequest) GetMinRunningNodes() int32 {
 
 // GetMinRunningNodesOk returns a tuple with the MinRunningNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetMinRunningNodesOk() (*int32, bool) {
+func (o *ClusterBase) GetMinRunningNodesOk() (*int32, bool) {
 	if o == nil || o.MinRunningNodes == nil {
 		return nil, false
 	}
@@ -289,7 +288,7 @@ func (o *ClusterRequest) GetMinRunningNodesOk() (*int32, bool) {
 }
 
 // HasMinRunningNodes returns a boolean if a field has been set.
-func (o *ClusterRequest) HasMinRunningNodes() bool {
+func (o *ClusterBase) HasMinRunningNodes() bool {
 	if o != nil && o.MinRunningNodes != nil {
 		return true
 	}
@@ -298,12 +297,12 @@ func (o *ClusterRequest) HasMinRunningNodes() bool {
 }
 
 // SetMinRunningNodes gets a reference to the given int32 and assigns it to the MinRunningNodes field.
-func (o *ClusterRequest) SetMinRunningNodes(v int32) {
+func (o *ClusterBase) SetMinRunningNodes(v int32) {
 	o.MinRunningNodes = &v
 }
 
 // GetMaxRunningNodes returns the MaxRunningNodes field value if set, zero value otherwise.
-func (o *ClusterRequest) GetMaxRunningNodes() int32 {
+func (o *ClusterBase) GetMaxRunningNodes() int32 {
 	if o == nil || o.MaxRunningNodes == nil {
 		var ret int32
 		return ret
@@ -313,7 +312,7 @@ func (o *ClusterRequest) GetMaxRunningNodes() int32 {
 
 // GetMaxRunningNodesOk returns a tuple with the MaxRunningNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetMaxRunningNodesOk() (*int32, bool) {
+func (o *ClusterBase) GetMaxRunningNodesOk() (*int32, bool) {
 	if o == nil || o.MaxRunningNodes == nil {
 		return nil, false
 	}
@@ -321,7 +320,7 @@ func (o *ClusterRequest) GetMaxRunningNodesOk() (*int32, bool) {
 }
 
 // HasMaxRunningNodes returns a boolean if a field has been set.
-func (o *ClusterRequest) HasMaxRunningNodes() bool {
+func (o *ClusterBase) HasMaxRunningNodes() bool {
 	if o != nil && o.MaxRunningNodes != nil {
 		return true
 	}
@@ -330,12 +329,12 @@ func (o *ClusterRequest) HasMaxRunningNodes() bool {
 }
 
 // SetMaxRunningNodes gets a reference to the given int32 and assigns it to the MaxRunningNodes field.
-func (o *ClusterRequest) SetMaxRunningNodes(v int32) {
+func (o *ClusterBase) SetMaxRunningNodes(v int32) {
 	o.MaxRunningNodes = &v
 }
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
-func (o *ClusterRequest) GetInstanceType() string {
+func (o *ClusterBase) GetInstanceType() string {
 	if o == nil || o.InstanceType == nil {
 		var ret string
 		return ret
@@ -345,7 +344,7 @@ func (o *ClusterRequest) GetInstanceType() string {
 
 // GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetInstanceTypeOk() (*string, bool) {
+func (o *ClusterBase) GetInstanceTypeOk() (*string, bool) {
 	if o == nil || o.InstanceType == nil {
 		return nil, false
 	}
@@ -353,7 +352,7 @@ func (o *ClusterRequest) GetInstanceTypeOk() (*string, bool) {
 }
 
 // HasInstanceType returns a boolean if a field has been set.
-func (o *ClusterRequest) HasInstanceType() bool {
+func (o *ClusterBase) HasInstanceType() bool {
 	if o != nil && o.InstanceType != nil {
 		return true
 	}
@@ -362,43 +361,11 @@ func (o *ClusterRequest) HasInstanceType() bool {
 }
 
 // SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
-func (o *ClusterRequest) SetInstanceType(v string) {
+func (o *ClusterBase) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
-// GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures {
-	if o == nil || o.Features == nil {
-		var ret []ClusterFeatureRequestFeatures
-		return ret
-	}
-	return o.Features
-}
-
-// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetFeaturesOk() ([]ClusterFeatureRequestFeatures, bool) {
-	if o == nil || o.Features == nil {
-		return nil, false
-	}
-	return o.Features, true
-}
-
-// HasFeatures returns a boolean if a field has been set.
-func (o *ClusterRequest) HasFeatures() bool {
-	if o != nil && o.Features != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFeatures gets a reference to the given []ClusterFeatureRequestFeatures and assigns it to the Features field.
-func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeatures) {
-	o.Features = v
-}
-
-func (o ClusterRequest) MarshalJSON() ([]byte, error) {
+func (o ClusterBase) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
@@ -430,44 +397,41 @@ func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	if o.InstanceType != nil {
 		toSerialize["instance_type"] = o.InstanceType
 	}
-	if o.Features != nil {
-		toSerialize["features"] = o.Features
-	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableClusterRequest struct {
-	value *ClusterRequest
+type NullableClusterBase struct {
+	value *ClusterBase
 	isSet bool
 }
 
-func (v NullableClusterRequest) Get() *ClusterRequest {
+func (v NullableClusterBase) Get() *ClusterBase {
 	return v.value
 }
 
-func (v *NullableClusterRequest) Set(val *ClusterRequest) {
+func (v *NullableClusterBase) Set(val *ClusterBase) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableClusterRequest) IsSet() bool {
+func (v NullableClusterBase) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableClusterRequest) Unset() {
+func (v *NullableClusterBase) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableClusterRequest(val *ClusterRequest) *NullableClusterRequest {
-	return &NullableClusterRequest{value: val, isSet: true}
+func NewNullableClusterBase(val *ClusterBase) *NullableClusterBase {
+	return &NullableClusterBase{value: val, isSet: true}
 }
 
-func (v NullableClusterRequest) MarshalJSON() ([]byte, error) {
+func (v NullableClusterBase) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableClusterRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterBase) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

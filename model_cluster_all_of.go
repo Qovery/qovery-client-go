@@ -17,39 +17,21 @@ import (
 
 // ClusterAllOf struct for ClusterAllOf
 type ClusterAllOf struct {
-	// name is case-insensitive
-	Name          string            `json:"name"`
-	Description   *string           `json:"description,omitempty"`
-	CloudProvider CloudProviderEnum `json:"cloud_provider"`
-	Region        string            `json:"region"`
-	AutoUpdate    *bool             `json:"auto_update,omitempty"`
-	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *int32 `json:"cpu,omitempty"`
-	// unit is MB. 1024 MB = 1GB
-	Memory          *int32 `json:"memory,omitempty"`
-	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
-	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
-	InstanceType *string `json:"instance_type,omitempty"`
+	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
+	EstimatedCloudProviderCost *int32             `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *ClusterStatusEnum `json:"status,omitempty"`
+	Features                   *ClusterFeature    `json:"features,omitempty"`
+	HasAccess                  *bool              `json:"has_access,omitempty"`
+	Version                    *string            `json:"version,omitempty"`
+	IsDefault                  *bool              `json:"is_default,omitempty"`
 }
 
 // NewClusterAllOf instantiates a new ClusterAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterAllOf(name string, cloudProvider CloudProviderEnum, region string) *ClusterAllOf {
+func NewClusterAllOf() *ClusterAllOf {
 	this := ClusterAllOf{}
-	this.Name = name
-	this.CloudProvider = cloudProvider
-	this.Region = region
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
-	var minRunningNodes int32 = 1
-	this.MinRunningNodes = &minRunningNodes
-	var maxRunningNodes int32 = 1
-	this.MaxRunningNodes = &maxRunningNodes
 	return &this
 }
 
@@ -58,344 +40,220 @@ func NewClusterAllOf(name string, cloudProvider CloudProviderEnum, region string
 // but it doesn't guarantee that properties required by API are set
 func NewClusterAllOfWithDefaults() *ClusterAllOf {
 	this := ClusterAllOf{}
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
-	var minRunningNodes int32 = 1
-	this.MinRunningNodes = &minRunningNodes
-	var maxRunningNodes int32 = 1
-	this.MaxRunningNodes = &maxRunningNodes
 	return &this
 }
 
-// GetName returns the Name field value
-func (o *ClusterAllOf) GetName() string {
-	if o == nil {
-		var ret string
+// GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
+func (o *ClusterAllOf) GetEstimatedCloudProviderCost() int32 {
+	if o == nil || o.EstimatedCloudProviderCost == nil {
+		var ret int32
 		return ret
 	}
-
-	return o.Name
+	return *o.EstimatedCloudProviderCost
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetNameOk() (*string, bool) {
-	if o == nil {
+func (o *ClusterAllOf) GetEstimatedCloudProviderCostOk() (*int32, bool) {
+	if o == nil || o.EstimatedCloudProviderCost == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.EstimatedCloudProviderCost, true
 }
 
-// SetName sets field value
-func (o *ClusterAllOf) SetName(v string) {
-	o.Name = v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetDescription() string {
-	if o == nil || o.Description == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *ClusterAllOf) HasDescription() bool {
-	if o != nil && o.Description != nil {
+// HasEstimatedCloudProviderCost returns a boolean if a field has been set.
+func (o *ClusterAllOf) HasEstimatedCloudProviderCost() bool {
+	if o != nil && o.EstimatedCloudProviderCost != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *ClusterAllOf) SetDescription(v string) {
-	o.Description = &v
+// SetEstimatedCloudProviderCost gets a reference to the given int32 and assigns it to the EstimatedCloudProviderCost field.
+func (o *ClusterAllOf) SetEstimatedCloudProviderCost(v int32) {
+	o.EstimatedCloudProviderCost = &v
 }
 
-// GetCloudProvider returns the CloudProvider field value
-func (o *ClusterAllOf) GetCloudProvider() CloudProviderEnum {
-	if o == nil {
-		var ret CloudProviderEnum
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ClusterAllOf) GetStatus() ClusterStatusEnum {
+	if o == nil || o.Status == nil {
+		var ret ClusterStatusEnum
 		return ret
 	}
-
-	return o.CloudProvider
+	return *o.Status
 }
 
-// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetCloudProviderOk() (*CloudProviderEnum, bool) {
-	if o == nil {
+func (o *ClusterAllOf) GetStatusOk() (*ClusterStatusEnum, bool) {
+	if o == nil || o.Status == nil {
 		return nil, false
 	}
-	return &o.CloudProvider, true
+	return o.Status, true
 }
 
-// SetCloudProvider sets field value
-func (o *ClusterAllOf) SetCloudProvider(v CloudProviderEnum) {
-	o.CloudProvider = v
+// HasStatus returns a boolean if a field has been set.
+func (o *ClusterAllOf) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
 }
 
-// GetRegion returns the Region field value
-func (o *ClusterAllOf) GetRegion() string {
-	if o == nil {
-		var ret string
+// SetStatus gets a reference to the given ClusterStatusEnum and assigns it to the Status field.
+func (o *ClusterAllOf) SetStatus(v ClusterStatusEnum) {
+	o.Status = &v
+}
+
+// GetFeatures returns the Features field value if set, zero value otherwise.
+func (o *ClusterAllOf) GetFeatures() ClusterFeature {
+	if o == nil || o.Features == nil {
+		var ret ClusterFeature
 		return ret
 	}
-
-	return o.Region
+	return *o.Features
 }
 
-// GetRegionOk returns a tuple with the Region field value
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetRegionOk() (*string, bool) {
-	if o == nil {
+func (o *ClusterAllOf) GetFeaturesOk() (*ClusterFeature, bool) {
+	if o == nil || o.Features == nil {
 		return nil, false
 	}
-	return &o.Region, true
+	return o.Features, true
 }
 
-// SetRegion sets field value
-func (o *ClusterAllOf) SetRegion(v string) {
-	o.Region = v
+// HasFeatures returns a boolean if a field has been set.
+func (o *ClusterAllOf) HasFeatures() bool {
+	if o != nil && o.Features != nil {
+		return true
+	}
+
+	return false
 }
 
-// GetAutoUpdate returns the AutoUpdate field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetAutoUpdate() bool {
-	if o == nil || o.AutoUpdate == nil {
+// SetFeatures gets a reference to the given ClusterFeature and assigns it to the Features field.
+func (o *ClusterAllOf) SetFeatures(v ClusterFeature) {
+	o.Features = &v
+}
+
+// GetHasAccess returns the HasAccess field value if set, zero value otherwise.
+func (o *ClusterAllOf) GetHasAccess() bool {
+	if o == nil || o.HasAccess == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AutoUpdate
+	return *o.HasAccess
 }
 
-// GetAutoUpdateOk returns a tuple with the AutoUpdate field value if set, nil otherwise
+// GetHasAccessOk returns a tuple with the HasAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetAutoUpdateOk() (*bool, bool) {
-	if o == nil || o.AutoUpdate == nil {
+func (o *ClusterAllOf) GetHasAccessOk() (*bool, bool) {
+	if o == nil || o.HasAccess == nil {
 		return nil, false
 	}
-	return o.AutoUpdate, true
+	return o.HasAccess, true
 }
 
-// HasAutoUpdate returns a boolean if a field has been set.
-func (o *ClusterAllOf) HasAutoUpdate() bool {
-	if o != nil && o.AutoUpdate != nil {
+// HasHasAccess returns a boolean if a field has been set.
+func (o *ClusterAllOf) HasHasAccess() bool {
+	if o != nil && o.HasAccess != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoUpdate gets a reference to the given bool and assigns it to the AutoUpdate field.
-func (o *ClusterAllOf) SetAutoUpdate(v bool) {
-	o.AutoUpdate = &v
+// SetHasAccess gets a reference to the given bool and assigns it to the HasAccess field.
+func (o *ClusterAllOf) SetHasAccess(v bool) {
+	o.HasAccess = &v
 }
 
-// GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Cpu
-}
-
-// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
-		return nil, false
-	}
-	return o.Cpu, true
-}
-
-// HasCpu returns a boolean if a field has been set.
-func (o *ClusterAllOf) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
-func (o *ClusterAllOf) SetCpu(v int32) {
-	o.Cpu = &v
-}
-
-// GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Memory
-}
-
-// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
-		return nil, false
-	}
-	return o.Memory, true
-}
-
-// HasMemory returns a boolean if a field has been set.
-func (o *ClusterAllOf) HasMemory() bool {
-	if o != nil && o.Memory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
-func (o *ClusterAllOf) SetMemory(v int32) {
-	o.Memory = &v
-}
-
-// GetMinRunningNodes returns the MinRunningNodes field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetMinRunningNodes() int32 {
-	if o == nil || o.MinRunningNodes == nil {
-		var ret int32
-		return ret
-	}
-	return *o.MinRunningNodes
-}
-
-// GetMinRunningNodesOk returns a tuple with the MinRunningNodes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetMinRunningNodesOk() (*int32, bool) {
-	if o == nil || o.MinRunningNodes == nil {
-		return nil, false
-	}
-	return o.MinRunningNodes, true
-}
-
-// HasMinRunningNodes returns a boolean if a field has been set.
-func (o *ClusterAllOf) HasMinRunningNodes() bool {
-	if o != nil && o.MinRunningNodes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMinRunningNodes gets a reference to the given int32 and assigns it to the MinRunningNodes field.
-func (o *ClusterAllOf) SetMinRunningNodes(v int32) {
-	o.MinRunningNodes = &v
-}
-
-// GetMaxRunningNodes returns the MaxRunningNodes field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetMaxRunningNodes() int32 {
-	if o == nil || o.MaxRunningNodes == nil {
-		var ret int32
-		return ret
-	}
-	return *o.MaxRunningNodes
-}
-
-// GetMaxRunningNodesOk returns a tuple with the MaxRunningNodes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetMaxRunningNodesOk() (*int32, bool) {
-	if o == nil || o.MaxRunningNodes == nil {
-		return nil, false
-	}
-	return o.MaxRunningNodes, true
-}
-
-// HasMaxRunningNodes returns a boolean if a field has been set.
-func (o *ClusterAllOf) HasMaxRunningNodes() bool {
-	if o != nil && o.MaxRunningNodes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxRunningNodes gets a reference to the given int32 and assigns it to the MaxRunningNodes field.
-func (o *ClusterAllOf) SetMaxRunningNodes(v int32) {
-	o.MaxRunningNodes = &v
-}
-
-// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetInstanceType() string {
-	if o == nil || o.InstanceType == nil {
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *ClusterAllOf) GetVersion() string {
+	if o == nil || o.Version == nil {
 		var ret string
 		return ret
 	}
-	return *o.InstanceType
+	return *o.Version
 }
 
-// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetInstanceTypeOk() (*string, bool) {
-	if o == nil || o.InstanceType == nil {
+func (o *ClusterAllOf) GetVersionOk() (*string, bool) {
+	if o == nil || o.Version == nil {
 		return nil, false
 	}
-	return o.InstanceType, true
+	return o.Version, true
 }
 
-// HasInstanceType returns a boolean if a field has been set.
-func (o *ClusterAllOf) HasInstanceType() bool {
-	if o != nil && o.InstanceType != nil {
+// HasVersion returns a boolean if a field has been set.
+func (o *ClusterAllOf) HasVersion() bool {
+	if o != nil && o.Version != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
-func (o *ClusterAllOf) SetInstanceType(v string) {
-	o.InstanceType = &v
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *ClusterAllOf) SetVersion(v string) {
+	o.Version = &v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *ClusterAllOf) GetIsDefault() bool {
+	if o == nil || o.IsDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAllOf) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || o.IsDefault == nil {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *ClusterAllOf) HasIsDefault() bool {
+	if o != nil && o.IsDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *ClusterAllOf) SetIsDefault(v bool) {
+	o.IsDefault = &v
 }
 
 func (o ClusterAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	if o.EstimatedCloudProviderCost != nil {
+		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	if o.Status != nil {
+		toSerialize["status"] = o.Status
 	}
-	if true {
-		toSerialize["cloud_provider"] = o.CloudProvider
+	if o.Features != nil {
+		toSerialize["features"] = o.Features
 	}
-	if true {
-		toSerialize["region"] = o.Region
+	if o.HasAccess != nil {
+		toSerialize["has_access"] = o.HasAccess
 	}
-	if o.AutoUpdate != nil {
-		toSerialize["auto_update"] = o.AutoUpdate
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
 	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.MinRunningNodes != nil {
-		toSerialize["min_running_nodes"] = o.MinRunningNodes
-	}
-	if o.MaxRunningNodes != nil {
-		toSerialize["max_running_nodes"] = o.MaxRunningNodes
-	}
-	if o.InstanceType != nil {
-		toSerialize["instance_type"] = o.InstanceType
+	if o.IsDefault != nil {
+		toSerialize["is_default"] = o.IsDefault
 	}
 	return json.Marshal(toSerialize)
 }

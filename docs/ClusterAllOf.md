@@ -4,22 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | name is case-insensitive | 
-**Description** | Pointer to **string** |  | [optional] 
-**CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
-**Region** | **string** |  | 
-**AutoUpdate** | Pointer to **bool** |  | [optional] 
-**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
-**MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
-**MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
-**InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
+**EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
+**Status** | Pointer to [**ClusterStatusEnum**](ClusterStatusEnum.md) |  | [optional] 
+**Features** | Pointer to [**ClusterFeature**](ClusterFeature.md) |  | [optional] 
+**HasAccess** | Pointer to **bool** |  | [optional] 
+**Version** | Pointer to **string** |  | [optional] 
+**IsDefault** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
 ### NewClusterAllOf
 
-`func NewClusterAllOf(name string, cloudProvider CloudProviderEnum, region string, ) *ClusterAllOf`
+`func NewClusterAllOf() *ClusterAllOf`
 
 NewClusterAllOf instantiates a new ClusterAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -34,240 +30,155 @@ NewClusterAllOfWithDefaults instantiates a new ClusterAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetName
+### GetEstimatedCloudProviderCost
 
-`func (o *ClusterAllOf) GetName() string`
+`func (o *ClusterAllOf) GetEstimatedCloudProviderCost() int32`
 
-GetName returns the Name field if non-nil, zero value otherwise.
+GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field if non-nil, zero value otherwise.
 
-### GetNameOk
+### GetEstimatedCloudProviderCostOk
 
-`func (o *ClusterAllOf) GetNameOk() (*string, bool)`
+`func (o *ClusterAllOf) GetEstimatedCloudProviderCostOk() (*int32, bool)`
 
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetEstimatedCloudProviderCost
 
-`func (o *ClusterAllOf) SetName(v string)`
+`func (o *ClusterAllOf) SetEstimatedCloudProviderCost(v int32)`
 
-SetName sets Name field to given value.
+SetEstimatedCloudProviderCost sets EstimatedCloudProviderCost field to given value.
 
+### HasEstimatedCloudProviderCost
 
-### GetDescription
+`func (o *ClusterAllOf) HasEstimatedCloudProviderCost() bool`
 
-`func (o *ClusterAllOf) GetDescription() string`
+HasEstimatedCloudProviderCost returns a boolean if a field has been set.
 
-GetDescription returns the Description field if non-nil, zero value otherwise.
+### GetStatus
 
-### GetDescriptionOk
+`func (o *ClusterAllOf) GetStatus() ClusterStatusEnum`
 
-`func (o *ClusterAllOf) GetDescriptionOk() (*string, bool)`
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+### GetStatusOk
+
+`func (o *ClusterAllOf) GetStatusOk() (*ClusterStatusEnum, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDescription
+### SetStatus
 
-`func (o *ClusterAllOf) SetDescription(v string)`
+`func (o *ClusterAllOf) SetStatus(v ClusterStatusEnum)`
 
-SetDescription sets Description field to given value.
+SetStatus sets Status field to given value.
 
-### HasDescription
+### HasStatus
 
-`func (o *ClusterAllOf) HasDescription() bool`
+`func (o *ClusterAllOf) HasStatus() bool`
 
-HasDescription returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
 
-### GetCloudProvider
+### GetFeatures
 
-`func (o *ClusterAllOf) GetCloudProvider() CloudProviderEnum`
+`func (o *ClusterAllOf) GetFeatures() ClusterFeature`
 
-GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+GetFeatures returns the Features field if non-nil, zero value otherwise.
 
-### GetCloudProviderOk
+### GetFeaturesOk
 
-`func (o *ClusterAllOf) GetCloudProviderOk() (*CloudProviderEnum, bool)`
+`func (o *ClusterAllOf) GetFeaturesOk() (*ClusterFeature, bool)`
 
-GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCloudProvider
+### SetFeatures
 
-`func (o *ClusterAllOf) SetCloudProvider(v CloudProviderEnum)`
+`func (o *ClusterAllOf) SetFeatures(v ClusterFeature)`
 
-SetCloudProvider sets CloudProvider field to given value.
+SetFeatures sets Features field to given value.
 
+### HasFeatures
 
-### GetRegion
+`func (o *ClusterAllOf) HasFeatures() bool`
 
-`func (o *ClusterAllOf) GetRegion() string`
+HasFeatures returns a boolean if a field has been set.
 
-GetRegion returns the Region field if non-nil, zero value otherwise.
+### GetHasAccess
 
-### GetRegionOk
+`func (o *ClusterAllOf) GetHasAccess() bool`
 
-`func (o *ClusterAllOf) GetRegionOk() (*string, bool)`
+GetHasAccess returns the HasAccess field if non-nil, zero value otherwise.
 
-GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+### GetHasAccessOk
+
+`func (o *ClusterAllOf) GetHasAccessOk() (*bool, bool)`
+
+GetHasAccessOk returns a tuple with the HasAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRegion
+### SetHasAccess
 
-`func (o *ClusterAllOf) SetRegion(v string)`
+`func (o *ClusterAllOf) SetHasAccess(v bool)`
 
-SetRegion sets Region field to given value.
+SetHasAccess sets HasAccess field to given value.
 
+### HasHasAccess
 
-### GetAutoUpdate
+`func (o *ClusterAllOf) HasHasAccess() bool`
 
-`func (o *ClusterAllOf) GetAutoUpdate() bool`
+HasHasAccess returns a boolean if a field has been set.
 
-GetAutoUpdate returns the AutoUpdate field if non-nil, zero value otherwise.
+### GetVersion
 
-### GetAutoUpdateOk
+`func (o *ClusterAllOf) GetVersion() string`
 
-`func (o *ClusterAllOf) GetAutoUpdateOk() (*bool, bool)`
+GetVersion returns the Version field if non-nil, zero value otherwise.
 
-GetAutoUpdateOk returns a tuple with the AutoUpdate field if it's non-nil, zero value otherwise
+### GetVersionOk
+
+`func (o *ClusterAllOf) GetVersionOk() (*string, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAutoUpdate
+### SetVersion
 
-`func (o *ClusterAllOf) SetAutoUpdate(v bool)`
+`func (o *ClusterAllOf) SetVersion(v string)`
 
-SetAutoUpdate sets AutoUpdate field to given value.
+SetVersion sets Version field to given value.
 
-### HasAutoUpdate
+### HasVersion
 
-`func (o *ClusterAllOf) HasAutoUpdate() bool`
+`func (o *ClusterAllOf) HasVersion() bool`
 
-HasAutoUpdate returns a boolean if a field has been set.
+HasVersion returns a boolean if a field has been set.
 
-### GetCpu
+### GetIsDefault
 
-`func (o *ClusterAllOf) GetCpu() int32`
+`func (o *ClusterAllOf) GetIsDefault() bool`
 
-GetCpu returns the Cpu field if non-nil, zero value otherwise.
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
 
-### GetCpuOk
+### GetIsDefaultOk
 
-`func (o *ClusterAllOf) GetCpuOk() (*int32, bool)`
+`func (o *ClusterAllOf) GetIsDefaultOk() (*bool, bool)`
 
-GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCpu
+### SetIsDefault
 
-`func (o *ClusterAllOf) SetCpu(v int32)`
+`func (o *ClusterAllOf) SetIsDefault(v bool)`
 
-SetCpu sets Cpu field to given value.
+SetIsDefault sets IsDefault field to given value.
 
-### HasCpu
+### HasIsDefault
 
-`func (o *ClusterAllOf) HasCpu() bool`
+`func (o *ClusterAllOf) HasIsDefault() bool`
 
-HasCpu returns a boolean if a field has been set.
-
-### GetMemory
-
-`func (o *ClusterAllOf) GetMemory() int32`
-
-GetMemory returns the Memory field if non-nil, zero value otherwise.
-
-### GetMemoryOk
-
-`func (o *ClusterAllOf) GetMemoryOk() (*int32, bool)`
-
-GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMemory
-
-`func (o *ClusterAllOf) SetMemory(v int32)`
-
-SetMemory sets Memory field to given value.
-
-### HasMemory
-
-`func (o *ClusterAllOf) HasMemory() bool`
-
-HasMemory returns a boolean if a field has been set.
-
-### GetMinRunningNodes
-
-`func (o *ClusterAllOf) GetMinRunningNodes() int32`
-
-GetMinRunningNodes returns the MinRunningNodes field if non-nil, zero value otherwise.
-
-### GetMinRunningNodesOk
-
-`func (o *ClusterAllOf) GetMinRunningNodesOk() (*int32, bool)`
-
-GetMinRunningNodesOk returns a tuple with the MinRunningNodes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMinRunningNodes
-
-`func (o *ClusterAllOf) SetMinRunningNodes(v int32)`
-
-SetMinRunningNodes sets MinRunningNodes field to given value.
-
-### HasMinRunningNodes
-
-`func (o *ClusterAllOf) HasMinRunningNodes() bool`
-
-HasMinRunningNodes returns a boolean if a field has been set.
-
-### GetMaxRunningNodes
-
-`func (o *ClusterAllOf) GetMaxRunningNodes() int32`
-
-GetMaxRunningNodes returns the MaxRunningNodes field if non-nil, zero value otherwise.
-
-### GetMaxRunningNodesOk
-
-`func (o *ClusterAllOf) GetMaxRunningNodesOk() (*int32, bool)`
-
-GetMaxRunningNodesOk returns a tuple with the MaxRunningNodes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaxRunningNodes
-
-`func (o *ClusterAllOf) SetMaxRunningNodes(v int32)`
-
-SetMaxRunningNodes sets MaxRunningNodes field to given value.
-
-### HasMaxRunningNodes
-
-`func (o *ClusterAllOf) HasMaxRunningNodes() bool`
-
-HasMaxRunningNodes returns a boolean if a field has been set.
-
-### GetInstanceType
-
-`func (o *ClusterAllOf) GetInstanceType() string`
-
-GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
-
-### GetInstanceTypeOk
-
-`func (o *ClusterAllOf) GetInstanceTypeOk() (*string, bool)`
-
-GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInstanceType
-
-`func (o *ClusterAllOf) SetInstanceType(v string)`
-
-SetInstanceType sets InstanceType field to given value.
-
-### HasInstanceType
-
-`func (o *ClusterAllOf) HasInstanceType() bool`
-
-HasInstanceType returns a boolean if a field has been set.
+HasIsDefault returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

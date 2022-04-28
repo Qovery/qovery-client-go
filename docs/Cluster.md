@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case-insensitive | 
-**Description** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
 **Region** | **string** |  | 
 **AutoUpdate** | Pointer to **bool** |  | [optional] 
@@ -17,16 +17,9 @@ Name | Type | Description | Notes
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
-**Title** | Pointer to **string** |  | [optional] 
-**CostPerMonthInCents** | Pointer to **NullableInt32** |  | [optional] 
-**CostPerMonth** | Pointer to **NullableFloat32** |  | [optional] 
-**CurrencyCode** | Pointer to **NullableString** |  | [optional] 
-**ValueType** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **NullableString** |  | [optional] 
-**IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
-**AcceptedValues** | Pointer to [**[]interface{}**](interface{}.md) |  | [optional] 
 **EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
 **Status** | Pointer to [**ClusterStatusEnum**](ClusterStatusEnum.md) |  | [optional] 
+**Features** | Pointer to [**ClusterFeature**](ClusterFeature.md) |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
@@ -160,16 +153,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *Cluster) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *Cluster) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetCloudProvider
 
 `func (o *Cluster) GetCloudProvider() CloudProviderEnum`
@@ -360,246 +343,6 @@ SetInstanceType sets InstanceType field to given value.
 
 HasInstanceType returns a boolean if a field has been set.
 
-### GetTitle
-
-`func (o *Cluster) GetTitle() string`
-
-GetTitle returns the Title field if non-nil, zero value otherwise.
-
-### GetTitleOk
-
-`func (o *Cluster) GetTitleOk() (*string, bool)`
-
-GetTitleOk returns a tuple with the Title field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTitle
-
-`func (o *Cluster) SetTitle(v string)`
-
-SetTitle sets Title field to given value.
-
-### HasTitle
-
-`func (o *Cluster) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
-
-### GetCostPerMonthInCents
-
-`func (o *Cluster) GetCostPerMonthInCents() int32`
-
-GetCostPerMonthInCents returns the CostPerMonthInCents field if non-nil, zero value otherwise.
-
-### GetCostPerMonthInCentsOk
-
-`func (o *Cluster) GetCostPerMonthInCentsOk() (*int32, bool)`
-
-GetCostPerMonthInCentsOk returns a tuple with the CostPerMonthInCents field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCostPerMonthInCents
-
-`func (o *Cluster) SetCostPerMonthInCents(v int32)`
-
-SetCostPerMonthInCents sets CostPerMonthInCents field to given value.
-
-### HasCostPerMonthInCents
-
-`func (o *Cluster) HasCostPerMonthInCents() bool`
-
-HasCostPerMonthInCents returns a boolean if a field has been set.
-
-### SetCostPerMonthInCentsNil
-
-`func (o *Cluster) SetCostPerMonthInCentsNil(b bool)`
-
- SetCostPerMonthInCentsNil sets the value for CostPerMonthInCents to be an explicit nil
-
-### UnsetCostPerMonthInCents
-`func (o *Cluster) UnsetCostPerMonthInCents()`
-
-UnsetCostPerMonthInCents ensures that no value is present for CostPerMonthInCents, not even an explicit nil
-### GetCostPerMonth
-
-`func (o *Cluster) GetCostPerMonth() float32`
-
-GetCostPerMonth returns the CostPerMonth field if non-nil, zero value otherwise.
-
-### GetCostPerMonthOk
-
-`func (o *Cluster) GetCostPerMonthOk() (*float32, bool)`
-
-GetCostPerMonthOk returns a tuple with the CostPerMonth field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCostPerMonth
-
-`func (o *Cluster) SetCostPerMonth(v float32)`
-
-SetCostPerMonth sets CostPerMonth field to given value.
-
-### HasCostPerMonth
-
-`func (o *Cluster) HasCostPerMonth() bool`
-
-HasCostPerMonth returns a boolean if a field has been set.
-
-### SetCostPerMonthNil
-
-`func (o *Cluster) SetCostPerMonthNil(b bool)`
-
- SetCostPerMonthNil sets the value for CostPerMonth to be an explicit nil
-
-### UnsetCostPerMonth
-`func (o *Cluster) UnsetCostPerMonth()`
-
-UnsetCostPerMonth ensures that no value is present for CostPerMonth, not even an explicit nil
-### GetCurrencyCode
-
-`func (o *Cluster) GetCurrencyCode() string`
-
-GetCurrencyCode returns the CurrencyCode field if non-nil, zero value otherwise.
-
-### GetCurrencyCodeOk
-
-`func (o *Cluster) GetCurrencyCodeOk() (*string, bool)`
-
-GetCurrencyCodeOk returns a tuple with the CurrencyCode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCurrencyCode
-
-`func (o *Cluster) SetCurrencyCode(v string)`
-
-SetCurrencyCode sets CurrencyCode field to given value.
-
-### HasCurrencyCode
-
-`func (o *Cluster) HasCurrencyCode() bool`
-
-HasCurrencyCode returns a boolean if a field has been set.
-
-### SetCurrencyCodeNil
-
-`func (o *Cluster) SetCurrencyCodeNil(b bool)`
-
- SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
-
-### UnsetCurrencyCode
-`func (o *Cluster) UnsetCurrencyCode()`
-
-UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
-### GetValueType
-
-`func (o *Cluster) GetValueType() string`
-
-GetValueType returns the ValueType field if non-nil, zero value otherwise.
-
-### GetValueTypeOk
-
-`func (o *Cluster) GetValueTypeOk() (*string, bool)`
-
-GetValueTypeOk returns a tuple with the ValueType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValueType
-
-`func (o *Cluster) SetValueType(v string)`
-
-SetValueType sets ValueType field to given value.
-
-### HasValueType
-
-`func (o *Cluster) HasValueType() bool`
-
-HasValueType returns a boolean if a field has been set.
-
-### GetValue
-
-`func (o *Cluster) GetValue() string`
-
-GetValue returns the Value field if non-nil, zero value otherwise.
-
-### GetValueOk
-
-`func (o *Cluster) GetValueOk() (*string, bool)`
-
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValue
-
-`func (o *Cluster) SetValue(v string)`
-
-SetValue sets Value field to given value.
-
-### HasValue
-
-`func (o *Cluster) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
-
-### SetValueNil
-
-`func (o *Cluster) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *Cluster) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
-### GetIsValueUpdatable
-
-`func (o *Cluster) GetIsValueUpdatable() bool`
-
-GetIsValueUpdatable returns the IsValueUpdatable field if non-nil, zero value otherwise.
-
-### GetIsValueUpdatableOk
-
-`func (o *Cluster) GetIsValueUpdatableOk() (*bool, bool)`
-
-GetIsValueUpdatableOk returns a tuple with the IsValueUpdatable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsValueUpdatable
-
-`func (o *Cluster) SetIsValueUpdatable(v bool)`
-
-SetIsValueUpdatable sets IsValueUpdatable field to given value.
-
-### HasIsValueUpdatable
-
-`func (o *Cluster) HasIsValueUpdatable() bool`
-
-HasIsValueUpdatable returns a boolean if a field has been set.
-
-### GetAcceptedValues
-
-`func (o *Cluster) GetAcceptedValues() []interface{}`
-
-GetAcceptedValues returns the AcceptedValues field if non-nil, zero value otherwise.
-
-### GetAcceptedValuesOk
-
-`func (o *Cluster) GetAcceptedValuesOk() (*[]interface{}, bool)`
-
-GetAcceptedValuesOk returns a tuple with the AcceptedValues field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAcceptedValues
-
-`func (o *Cluster) SetAcceptedValues(v []interface{})`
-
-SetAcceptedValues sets AcceptedValues field to given value.
-
-### HasAcceptedValues
-
-`func (o *Cluster) HasAcceptedValues() bool`
-
-HasAcceptedValues returns a boolean if a field has been set.
-
 ### GetEstimatedCloudProviderCost
 
 `func (o *Cluster) GetEstimatedCloudProviderCost() int32`
@@ -649,6 +392,31 @@ SetStatus sets Status field to given value.
 `func (o *Cluster) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetFeatures
+
+`func (o *Cluster) GetFeatures() ClusterFeature`
+
+GetFeatures returns the Features field if non-nil, zero value otherwise.
+
+### GetFeaturesOk
+
+`func (o *Cluster) GetFeaturesOk() (*ClusterFeature, bool)`
+
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatures
+
+`func (o *Cluster) SetFeatures(v ClusterFeature)`
+
+SetFeatures sets Features field to given value.
+
+### HasFeatures
+
+`func (o *Cluster) HasFeatures() bool`
+
+HasFeatures returns a boolean if a field has been set.
 
 ### GetHasAccess
 
