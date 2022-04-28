@@ -5,9 +5,9 @@
 
 * `BUILDING` (value: `"BUILDING"`)
 
-* `BUILD_ERROR` (value: `"BUILD_ERROR"`)
+* `CANCELED` (value: `"CANCELED"`)
 
-* `BUILT` (value: `"BUILT"`)
+* `CANCELING` (value: `"CANCELING"`)
 
 * `DELETED` (value: `"DELETED"`)
 
@@ -23,13 +23,13 @@
 
 * `DEPLOYMENT_ERROR` (value: `"DEPLOYMENT_ERROR"`)
 
+* `DEPLOYMENT_QUEUED` (value: `"DEPLOYMENT_QUEUED"`)
+
 * `QUEUED` (value: `"QUEUED"`)
 
 * `READY` (value: `"READY"`)
 
 * `RUNNING` (value: `"RUNNING"`)
-
-* `RUNNING_ERROR` (value: `"RUNNING_ERROR"`)
 
 * `STOPPED` (value: `"STOPPED"`)
 
