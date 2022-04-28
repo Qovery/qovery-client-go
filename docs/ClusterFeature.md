@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **CostPerMonth** | Pointer to **NullableFloat32** |  | [optional] 
 **CurrencyCode** | Pointer to **NullableString** |  | [optional] 
 **ValueType** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **NullableString** |  | [optional] 
+**Value** | Pointer to [**interface{}**](oneOf&lt;string,boolean&gt;.md) |  | [optional] 
 **IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
 **AcceptedValues** | Pointer to [**[]interface{}**](interface{}.md) |  | [optional] 
 
@@ -251,20 +251,20 @@ HasValueType returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *ClusterFeature) GetValue() string`
+`func (o *ClusterFeature) GetValue() interface{}`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *ClusterFeature) GetValueOk() (*string, bool)`
+`func (o *ClusterFeature) GetValueOk() (*interface{}, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *ClusterFeature) SetValue(v string)`
+`func (o *ClusterFeature) SetValue(v interface{})`
 
 SetValue sets Value field to given value.
 

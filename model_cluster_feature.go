@@ -24,7 +24,7 @@ type ClusterFeature struct {
 	CostPerMonth        NullableFloat32 `json:"cost_per_month,omitempty"`
 	CurrencyCode        NullableString  `json:"currency_code,omitempty"`
 	ValueType           *string         `json:"value_type,omitempty"`
-	Value               NullableString  `json:"value,omitempty"`
+	Value               interface{}     `json:"value,omitempty"`
 	IsValueUpdatable    *bool           `json:"is_value_updatable,omitempty"`
 	AcceptedValues      []interface{}   `json:"accepted_values,omitempty"`
 }
@@ -319,46 +319,36 @@ func (o *ClusterFeature) SetValueType(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterFeature) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
-		var ret string
+func (o *ClusterFeature) GetValue() interface{} {
+	if o == nil {
+		var ret interface{}
 		return ret
 	}
-	return *o.Value.Get()
+	return o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterFeature) GetValueOk() (*string, bool) {
-	if o == nil {
+func (o *ClusterFeature) GetValueOk() (*interface{}, bool) {
+	if o == nil || o.Value == nil {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return &o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *ClusterFeature) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
+	if o != nil && o.Value != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
-func (o *ClusterFeature) SetValue(v string) {
-	o.Value.Set(&v)
-}
-
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *ClusterFeature) SetValueNil() {
-	o.Value.Set(nil)
-}
-
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *ClusterFeature) UnsetValue() {
-	o.Value.Unset()
+// SetValue gets a reference to the given interface{} and assigns it to the Value field.
+func (o *ClusterFeature) SetValue(v interface{}) {
+	o.Value = v
 }
 
 // GetIsValueUpdatable returns the IsValueUpdatable field value if set, zero value otherwise.
@@ -448,8 +438,8 @@ func (o ClusterFeature) MarshalJSON() ([]byte, error) {
 	if o.ValueType != nil {
 		toSerialize["value_type"] = o.ValueType
 	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
+	if o.Value != nil {
+		toSerialize["value"] = o.Value
 	}
 	if o.IsValueUpdatable != nil {
 		toSerialize["is_value_updatable"] = o.IsValueUpdatable

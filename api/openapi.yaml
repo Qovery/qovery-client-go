@@ -11557,7 +11557,7 @@ components:
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         title: title
-        value: value
+        value: ""
         cost_per_month: 99
         currency_code: USD
       properties:
@@ -11589,7 +11589,9 @@ components:
           type: string
         value:
           nullable: true
-          type: string
+          oneOf:
+          - type: string
+          - type: boolean
         is_value_updatable:
           default: false
           type: boolean
@@ -11644,7 +11646,7 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           title: title
-          value: value
+          value: ""
           cost_per_month: 99
           currency_code: USD
         - accepted_values:
@@ -11656,7 +11658,7 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           title: title
-          value: value
+          value: ""
           cost_per_month: 99
           currency_code: USD
       properties:
