@@ -35,6 +35,8 @@ type Cluster struct {
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string `json:"instance_type,omitempty"`
+	// the disk size to be used for the node configuration
+	DiskSize *int32 `json:"disk_size,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
 	EstimatedCloudProviderCost *int32           `json:"estimated_cloud_provider_cost,omitempty"`
 	Status                     *StateEnum       `json:"status,omitempty"`
@@ -63,6 +65,8 @@ func NewCluster(id string, createdAt time.Time, name string, cloudProvider Cloud
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
+	var diskSize int32 = 20
+	this.DiskSize = &diskSize
 	return &this
 }
 
@@ -79,6 +83,8 @@ func NewClusterWithDefaults() *Cluster {
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
+	var diskSize int32 = 20
+	this.DiskSize = &diskSize
 	return &this
 }
 
@@ -458,6 +464,38 @@ func (o *Cluster) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
+// GetDiskSize returns the DiskSize field value if set, zero value otherwise.
+func (o *Cluster) GetDiskSize() int32 {
+	if o == nil || o.DiskSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DiskSize
+}
+
+// GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetDiskSizeOk() (*int32, bool) {
+	if o == nil || o.DiskSize == nil {
+		return nil, false
+	}
+	return o.DiskSize, true
+}
+
+// HasDiskSize returns a boolean if a field has been set.
+func (o *Cluster) HasDiskSize() bool {
+	if o != nil && o.DiskSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskSize gets a reference to the given int32 and assigns it to the DiskSize field.
+func (o *Cluster) SetDiskSize(v int32) {
+	o.DiskSize = &v
+}
+
 // GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
 func (o *Cluster) GetEstimatedCloudProviderCost() int32 {
 	if o == nil || o.EstimatedCloudProviderCost == nil {
@@ -690,6 +728,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.InstanceType != nil {
 		toSerialize["instance_type"] = o.InstanceType
+	}
+	if o.DiskSize != nil {
+		toSerialize["disk_size"] = o.DiskSize
 	}
 	if o.EstimatedCloudProviderCost != nil {
 		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost

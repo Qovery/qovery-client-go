@@ -30,8 +30,10 @@ type ClusterRequest struct {
 	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
-	InstanceType *string                         `json:"instance_type,omitempty"`
-	Features     []ClusterFeatureRequestFeatures `json:"features,omitempty"`
+	InstanceType *string `json:"instance_type,omitempty"`
+	// the disk size to be used for the node configuration
+	DiskSize *int32                          `json:"disk_size,omitempty"`
+	Features []ClusterFeatureRequestFeatures `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
@@ -51,6 +53,8 @@ func NewClusterRequest(name string, cloudProvider CloudProviderEnum, region stri
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
+	var diskSize int32 = 20
+	this.DiskSize = &diskSize
 	return &this
 }
 
@@ -67,6 +71,8 @@ func NewClusterRequestWithDefaults() *ClusterRequest {
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
+	var diskSize int32 = 20
+	this.DiskSize = &diskSize
 	return &this
 }
 
@@ -366,6 +372,38 @@ func (o *ClusterRequest) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
+// GetDiskSize returns the DiskSize field value if set, zero value otherwise.
+func (o *ClusterRequest) GetDiskSize() int32 {
+	if o == nil || o.DiskSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DiskSize
+}
+
+// GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetDiskSizeOk() (*int32, bool) {
+	if o == nil || o.DiskSize == nil {
+		return nil, false
+	}
+	return o.DiskSize, true
+}
+
+// HasDiskSize returns a boolean if a field has been set.
+func (o *ClusterRequest) HasDiskSize() bool {
+	if o != nil && o.DiskSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskSize gets a reference to the given int32 and assigns it to the DiskSize field.
+func (o *ClusterRequest) SetDiskSize(v int32) {
+	o.DiskSize = &v
+}
+
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures {
 	if o == nil || o.Features == nil {
@@ -429,6 +467,9 @@ func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.InstanceType != nil {
 		toSerialize["instance_type"] = o.InstanceType
+	}
+	if o.DiskSize != nil {
+		toSerialize["disk_size"] = o.DiskSize
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features

@@ -10210,6 +10210,11 @@ components:
             values can be retrieved via the endpoint /{CloudProvider}/instanceType
           example: T3A_LARGE
           type: string
+        disk_size:
+          default: 20
+          description: the disk size to be used for the node configuration
+          example: 50
+          type: integer
       required:
       - cloud_provider
       - name

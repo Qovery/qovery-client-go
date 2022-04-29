@@ -31,6 +31,8 @@ type ClusterBase struct {
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string `json:"instance_type,omitempty"`
+	// the disk size to be used for the node configuration
+	DiskSize *int32 `json:"disk_size,omitempty"`
 }
 
 // NewClusterBase instantiates a new ClusterBase object
@@ -50,6 +52,8 @@ func NewClusterBase(name string, cloudProvider CloudProviderEnum, region string)
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
+	var diskSize int32 = 20
+	this.DiskSize = &diskSize
 	return &this
 }
 
@@ -66,6 +70,8 @@ func NewClusterBaseWithDefaults() *ClusterBase {
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
+	var diskSize int32 = 20
+	this.DiskSize = &diskSize
 	return &this
 }
 
@@ -365,6 +371,38 @@ func (o *ClusterBase) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
+// GetDiskSize returns the DiskSize field value if set, zero value otherwise.
+func (o *ClusterBase) GetDiskSize() int32 {
+	if o == nil || o.DiskSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DiskSize
+}
+
+// GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterBase) GetDiskSizeOk() (*int32, bool) {
+	if o == nil || o.DiskSize == nil {
+		return nil, false
+	}
+	return o.DiskSize, true
+}
+
+// HasDiskSize returns a boolean if a field has been set.
+func (o *ClusterBase) HasDiskSize() bool {
+	if o != nil && o.DiskSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskSize gets a reference to the given int32 and assigns it to the DiskSize field.
+func (o *ClusterBase) SetDiskSize(v int32) {
+	o.DiskSize = &v
+}
+
 func (o ClusterBase) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -396,6 +434,9 @@ func (o ClusterBase) MarshalJSON() ([]byte, error) {
 	}
 	if o.InstanceType != nil {
 		toSerialize["instance_type"] = o.InstanceType
+	}
+	if o.DiskSize != nil {
+		toSerialize["disk_size"] = o.DiskSize
 	}
 	return json.Marshal(toSerialize)
 }
