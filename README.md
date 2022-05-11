@@ -85,7 +85,9 @@ Class | Method | HTTP request | Description
 *ApplicationActionsApi* | [**DeployApplication**](docs/ApplicationActionsApi.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsApi* | [**RestartApplication**](docs/ApplicationActionsApi.md#restartapplication) | **Post** /application/{applicationId}/restart | Restart application
 *ApplicationActionsApi* | [**StopApplication**](docs/ApplicationActionsApi.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
+*ApplicationConfigurationApi* | [**EditAdvancedSettings**](docs/ApplicationConfigurationApi.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
 *ApplicationConfigurationApi* | [**EditApplicationNetwork**](docs/ApplicationConfigurationApi.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
+*ApplicationConfigurationApi* | [**GetAdvancedSettings**](docs/ApplicationConfigurationApi.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
 *ApplicationConfigurationApi* | [**GetApplicationNetwork**](docs/ApplicationConfigurationApi.md#getapplicationnetwork) | **Get** /application/{applicationId}/network | Get Application Network information
 *ApplicationDatabaseApi* | [**AttachDatabasetoApplication**](docs/ApplicationDatabaseApi.md#attachdatabasetoapplication) | **Post** /application/{applicationId}/database/{targetDatabaseId} | Link a database to the application
 *ApplicationDatabaseApi* | [**AttachLogicalDatabasetoApplication**](docs/ApplicationDatabaseApi.md#attachlogicaldatabasetoapplication) | **Post** /application/{applicationId}/logicalDatabase/{targetLogicalDatabaseId} | Link a logical database to the application
@@ -503,6 +505,7 @@ Class | Method | HTTP request | Description
  - [GitRepositoryBranchResponseList](docs/GitRepositoryBranchResponseList.md)
  - [GitRepositoryResponseList](docs/GitRepositoryResponseList.md)
  - [Healthcheck](docs/Healthcheck.md)
+ - [InlineResponse200](docs/InlineResponse200.md)
  - [Instance](docs/Instance.md)
  - [InstanceResponseList](docs/InstanceResponseList.md)
  - [InviteMember](docs/InviteMember.md)
