@@ -29,18 +29,18 @@ var (
 type ApplicationConfigurationApiService service
 
 type ApiEditAdvancedSettingsRequest struct {
-	ctx               context.Context
-	ApiService        *ApplicationConfigurationApiService
-	applicationId     string
-	inlineResponse200 *[]InlineResponse200
+	ctx                         context.Context
+	ApiService                  *ApplicationConfigurationApiService
+	applicationId               string
+	applicationAdvancedSettings *[]ApplicationAdvancedSettings
 }
 
-func (r ApiEditAdvancedSettingsRequest) InlineResponse200(inlineResponse200 []InlineResponse200) ApiEditAdvancedSettingsRequest {
-	r.inlineResponse200 = &inlineResponse200
+func (r ApiEditAdvancedSettingsRequest) ApplicationAdvancedSettings(applicationAdvancedSettings []ApplicationAdvancedSettings) ApiEditAdvancedSettingsRequest {
+	r.applicationAdvancedSettings = &applicationAdvancedSettings
 	return r
 }
 
-func (r ApiEditAdvancedSettingsRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiEditAdvancedSettingsRequest) Execute() ([]ApplicationAdvancedSettings, *http.Response, error) {
 	return r.ApiService.EditAdvancedSettingsExecute(r)
 }
 
@@ -62,13 +62,13 @@ func (a *ApplicationConfigurationApiService) EditAdvancedSettings(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Object
-func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEditAdvancedSettingsRequest) (*Object, *http.Response, error) {
+//  @return []ApplicationAdvancedSettings
+func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEditAdvancedSettingsRequest) ([]ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Object
+		localVarReturnValue []ApplicationAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.EditAdvancedSettings")
@@ -101,7 +101,7 @@ func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEd
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineResponse200
+	localVarPostBody = r.applicationAdvancedSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -256,7 +256,7 @@ type ApiGetAdvancedSettingsRequest struct {
 	applicationId string
 }
 
-func (r ApiGetAdvancedSettingsRequest) Execute() ([]InlineResponse200, *http.Response, error) {
+func (r ApiGetAdvancedSettingsRequest) Execute() ([]ApplicationAdvancedSettings, *http.Response, error) {
 	return r.ApiService.GetAdvancedSettingsExecute(r)
 }
 
@@ -278,13 +278,13 @@ func (a *ApplicationConfigurationApiService) GetAdvancedSettings(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []InlineResponse200
-func (a *ApplicationConfigurationApiService) GetAdvancedSettingsExecute(r ApiGetAdvancedSettingsRequest) ([]InlineResponse200, *http.Response, error) {
+//  @return []ApplicationAdvancedSettings
+func (a *ApplicationConfigurationApiService) GetAdvancedSettingsExecute(r ApiGetAdvancedSettingsRequest) ([]ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []InlineResponse200
+		localVarReturnValue []ApplicationAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.GetAdvancedSettings")

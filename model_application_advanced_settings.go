@@ -15,31 +15,31 @@ import (
 	"encoding/json"
 )
 
-// InlineResponse200 struct for InlineResponse200
-type InlineResponse200 struct {
+// ApplicationAdvancedSettings struct for ApplicationAdvancedSettings
+type ApplicationAdvancedSettings struct {
 	DeploymentDelayStartTimeSec *int32 `json:"deployment.delay_start_time_sec,omitempty"`
 	BuildTimeoutMaxSec          *int32 `json:"build.timeout_max_sec,omitempty"`
 }
 
-// NewInlineResponse200 instantiates a new InlineResponse200 object
+// NewApplicationAdvancedSettings instantiates a new ApplicationAdvancedSettings object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineResponse200() *InlineResponse200 {
-	this := InlineResponse200{}
+func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
+	this := ApplicationAdvancedSettings{}
 	return &this
 }
 
-// NewInlineResponse200WithDefaults instantiates a new InlineResponse200 object
+// NewApplicationAdvancedSettingsWithDefaults instantiates a new ApplicationAdvancedSettings object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineResponse200WithDefaults() *InlineResponse200 {
-	this := InlineResponse200{}
+func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
+	this := ApplicationAdvancedSettings{}
 	return &this
 }
 
 // GetDeploymentDelayStartTimeSec returns the DeploymentDelayStartTimeSec field value if set, zero value otherwise.
-func (o *InlineResponse200) GetDeploymentDelayStartTimeSec() int32 {
+func (o *ApplicationAdvancedSettings) GetDeploymentDelayStartTimeSec() int32 {
 	if o == nil || o.DeploymentDelayStartTimeSec == nil {
 		var ret int32
 		return ret
@@ -49,7 +49,7 @@ func (o *InlineResponse200) GetDeploymentDelayStartTimeSec() int32 {
 
 // GetDeploymentDelayStartTimeSecOk returns a tuple with the DeploymentDelayStartTimeSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200) GetDeploymentDelayStartTimeSecOk() (*int32, bool) {
+func (o *ApplicationAdvancedSettings) GetDeploymentDelayStartTimeSecOk() (*int32, bool) {
 	if o == nil || o.DeploymentDelayStartTimeSec == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *InlineResponse200) GetDeploymentDelayStartTimeSecOk() (*int32, bool) {
 }
 
 // HasDeploymentDelayStartTimeSec returns a boolean if a field has been set.
-func (o *InlineResponse200) HasDeploymentDelayStartTimeSec() bool {
+func (o *ApplicationAdvancedSettings) HasDeploymentDelayStartTimeSec() bool {
 	if o != nil && o.DeploymentDelayStartTimeSec != nil {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *InlineResponse200) HasDeploymentDelayStartTimeSec() bool {
 }
 
 // SetDeploymentDelayStartTimeSec gets a reference to the given int32 and assigns it to the DeploymentDelayStartTimeSec field.
-func (o *InlineResponse200) SetDeploymentDelayStartTimeSec(v int32) {
+func (o *ApplicationAdvancedSettings) SetDeploymentDelayStartTimeSec(v int32) {
 	o.DeploymentDelayStartTimeSec = &v
 }
 
 // GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
-func (o *InlineResponse200) GetBuildTimeoutMaxSec() int32 {
+func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 	if o == nil || o.BuildTimeoutMaxSec == nil {
 		var ret int32
 		return ret
@@ -81,7 +81,7 @@ func (o *InlineResponse200) GetBuildTimeoutMaxSec() int32 {
 
 // GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200) GetBuildTimeoutMaxSecOk() (*int32, bool) {
+func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
 	if o == nil || o.BuildTimeoutMaxSec == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *InlineResponse200) GetBuildTimeoutMaxSecOk() (*int32, bool) {
 }
 
 // HasBuildTimeoutMaxSec returns a boolean if a field has been set.
-func (o *InlineResponse200) HasBuildTimeoutMaxSec() bool {
+func (o *ApplicationAdvancedSettings) HasBuildTimeoutMaxSec() bool {
 	if o != nil && o.BuildTimeoutMaxSec != nil {
 		return true
 	}
@@ -98,11 +98,11 @@ func (o *InlineResponse200) HasBuildTimeoutMaxSec() bool {
 }
 
 // SetBuildTimeoutMaxSec gets a reference to the given int32 and assigns it to the BuildTimeoutMaxSec field.
-func (o *InlineResponse200) SetBuildTimeoutMaxSec(v int32) {
+func (o *ApplicationAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
 	o.BuildTimeoutMaxSec = &v
 }
 
-func (o InlineResponse200) MarshalJSON() ([]byte, error) {
+func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeploymentDelayStartTimeSec != nil {
 		toSerialize["deployment.delay_start_time_sec"] = o.DeploymentDelayStartTimeSec
@@ -113,38 +113,38 @@ func (o InlineResponse200) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineResponse200 struct {
-	value *InlineResponse200
+type NullableApplicationAdvancedSettings struct {
+	value *ApplicationAdvancedSettings
 	isSet bool
 }
 
-func (v NullableInlineResponse200) Get() *InlineResponse200 {
+func (v NullableApplicationAdvancedSettings) Get() *ApplicationAdvancedSettings {
 	return v.value
 }
 
-func (v *NullableInlineResponse200) Set(val *InlineResponse200) {
+func (v *NullableApplicationAdvancedSettings) Set(val *ApplicationAdvancedSettings) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineResponse200) IsSet() bool {
+func (v NullableApplicationAdvancedSettings) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineResponse200) Unset() {
+func (v *NullableApplicationAdvancedSettings) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineResponse200(val *InlineResponse200) *NullableInlineResponse200 {
-	return &NullableInlineResponse200{value: val, isSet: true}
+func NewNullableApplicationAdvancedSettings(val *ApplicationAdvancedSettings) *NullableApplicationAdvancedSettings {
+	return &NullableApplicationAdvancedSettings{value: val, isSet: true}
 }
 
-func (v NullableInlineResponse200) MarshalJSON() ([]byte, error) {
+func (v NullableApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineResponse200) UnmarshalJSON(src []byte) error {
+func (v *NullableApplicationAdvancedSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

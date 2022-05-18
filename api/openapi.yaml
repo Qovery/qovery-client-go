@@ -4952,9 +4952,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/inline_response_200'
-                type: array
+                $ref: '#/components/schemas/ApplicationAdvancedSettingsResponse'
           description: Advanced settings list
         "401":
           description: Access token is missing or invalid
@@ -4982,15 +4980,13 @@ paths:
         content:
           application/json:
             schema:
-              items:
-                $ref: '#/components/schemas/inline_response_200'
-              type: array
+              $ref: '#/components/schemas/ApplicationAdvancedSettingsRequest'
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1application~1%7BapplicationId%7D~1advancedSettings/get/responses/200/content/application~1json/schema'
+                $ref: '#/components/schemas/ApplicationAdvancedSettingsResponse'
           description: Updated advanced settings
         "400":
           description: Bad request
@@ -11207,6 +11203,24 @@ components:
             $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric'
           type: array
       type: object
+    ApplicationAdvancedSettings:
+      example:
+        build.timeout_max_sec: 6
+        deployment.delay_start_time_sec: 0
+      properties:
+        deployment.delay_start_time_sec:
+          type: integer
+        build.timeout_max_sec:
+          type: integer
+      type: object
+    ApplicationAdvancedSettingsRequest:
+      items:
+        $ref: '#/components/schemas/ApplicationAdvancedSettings'
+      type: array
+    ApplicationAdvancedSettingsResponse:
+      items:
+        $ref: '#/components/schemas/ApplicationAdvancedSettings'
+      type: array
     ApplicationCurrentScale:
       example:
         running: 1
@@ -12115,16 +12129,6 @@ components:
       - STOP_ERROR
       - STOP_QUEUED
       type: string
-    inline_response_200:
-      example:
-        build.timeout_max_sec: 6
-        deployment.delay_start_time_sec: 0
-      properties:
-        deployment.delay_start_time_sec:
-          type: integer
-        build.timeout_max_sec:
-          type: integer
-      type: object
     ApplicationStorageRequest_storage:
       properties:
         type:

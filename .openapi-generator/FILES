@@ -58,6 +58,7 @@ docs/AccountInfoEditRequest.md
 docs/AliasedSecret.md
 docs/Application.md
 docs/ApplicationActionsApi.md
+docs/ApplicationAdvancedSettings.md
 docs/ApplicationAllOf.md
 docs/ApplicationConfigurationApi.md
 docs/ApplicationCurrentScale.md
@@ -268,7 +269,6 @@ docs/GitRepositoryBranch.md
 docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponseList.md
 docs/Healthcheck.md
-docs/InlineResponse200.md
 docs/Instance.md
 docs/InstanceResponseList.md
 docs/InviteMember.md
@@ -409,6 +409,7 @@ model_account_info.go
 model_account_info_edit_request.go
 model_aliased_secret.go
 model_application.go
+model_application_advanced_settings.go
 model_application_all_of.go
 model_application_current_scale.go
 model_application_dependency_request.go
@@ -586,7 +587,6 @@ model_git_repository_branch.go
 model_git_repository_branch_response_list.go
 model_git_repository_response_list.go
 model_healthcheck.go
-model_inline_response_200.go
 model_instance.go
 model_instance_response_list.go
 model_invite_member.go

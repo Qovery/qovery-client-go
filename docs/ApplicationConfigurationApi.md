@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## EditAdvancedSettings
 
-> Object EditAdvancedSettings(ctx, applicationId).InlineResponse200(inlineResponse200).Execute()
+> []ApplicationAdvancedSettings EditAdvancedSettings(ctx, applicationId).ApplicationAdvancedSettings(applicationAdvancedSettings).Execute()
 
 Edit advanced settings
 
@@ -33,16 +33,16 @@ import (
 
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    inlineResponse200 := []openapiclient.InlineResponse200{*openapiclient.NewInlineResponse200()} // []InlineResponse200 |  (optional)
+    applicationAdvancedSettings := []openapiclient.ApplicationAdvancedSettings{*openapiclient.NewApplicationAdvancedSettings()} // []ApplicationAdvancedSettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationConfigurationApi.EditAdvancedSettings(context.Background(), applicationId).InlineResponse200(inlineResponse200).Execute()
+    resp, r, err := apiClient.ApplicationConfigurationApi.EditAdvancedSettings(context.Background(), applicationId).ApplicationAdvancedSettings(applicationAdvancedSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationApi.EditAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditAdvancedSettings`: Object
+    // response from `EditAdvancedSettings`: []ApplicationAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationApi.EditAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -63,11 +63,11 @@ Other parameters are passed through a pointer to a apiEditAdvancedSettingsReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **inlineResponse200** | [**[]InlineResponse200**](InlineResponse200.md) |  | 
+ **applicationAdvancedSettings** | [**[]ApplicationAdvancedSettings**](ApplicationAdvancedSettings.md) |  | 
 
 ### Return type
 
-[**Object**](Object.md)
+[**[]ApplicationAdvancedSettings**](ApplicationAdvancedSettings.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## GetAdvancedSettings
 
-> []InlineResponse200 GetAdvancedSettings(ctx, applicationId).Execute()
+> []ApplicationAdvancedSettings GetAdvancedSettings(ctx, applicationId).Execute()
 
 Get advanced settings
 
@@ -185,7 +185,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationApi.GetAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAdvancedSettings`: []InlineResponse200
+    // response from `GetAdvancedSettings`: []ApplicationAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationApi.GetAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]InlineResponse200**](InlineResponse200.md)
+[**[]ApplicationAdvancedSettings**](ApplicationAdvancedSettings.md)
 
 ### Authorization
 
