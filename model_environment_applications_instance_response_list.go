@@ -17,7 +17,7 @@ import (
 
 // EnvironmentApplicationsInstanceResponseList struct for EnvironmentApplicationsInstanceResponseList
 type EnvironmentApplicationsInstanceResponseList struct {
-	Results []EnvironmentApplicationsInstanceResponseListResults `json:"results,omitempty"`
+	Results []InlineResponse2001Results `json:"results,omitempty"`
 }
 
 // NewEnvironmentApplicationsInstanceResponseList instantiates a new EnvironmentApplicationsInstanceResponseList object
@@ -38,9 +38,9 @@ func NewEnvironmentApplicationsInstanceResponseListWithDefaults() *EnvironmentAp
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []EnvironmentApplicationsInstanceResponseListResults {
+func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []InlineResponse2001Results {
 	if o == nil || o.Results == nil {
-		var ret []EnvironmentApplicationsInstanceResponseListResults
+		var ret []InlineResponse2001Results
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []Environment
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() ([]EnvironmentApplicationsInstanceResponseListResults, bool) {
+func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() ([]InlineResponse2001Results, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentApplicationsInstanceResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []EnvironmentApplicationsInstanceResponseListResults and assigns it to the Results field.
-func (o *EnvironmentApplicationsInstanceResponseList) SetResults(v []EnvironmentApplicationsInstanceResponseListResults) {
+// SetResults gets a reference to the given []InlineResponse2001Results and assigns it to the Results field.
+func (o *EnvironmentApplicationsInstanceResponseList) SetResults(v []InlineResponse2001Results) {
 	o.Results = v
 }
 

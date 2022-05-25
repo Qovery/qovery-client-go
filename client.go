@@ -86,11 +86,43 @@ type APIClient struct {
 
 	ClustersApi *ClustersApiService
 
+	ContainerActionsApi *ContainerActionsApiService
+
+	ContainerConfigurationApi *ContainerConfigurationApiService
+
+	ContainerCustomDomainApi *ContainerCustomDomainApiService
+
+	ContainerDatabaseApi *ContainerDatabaseApiService
+
+	ContainerDependencyApi *ContainerDependencyApiService
+
+	ContainerDeploymentRestrictionApi *ContainerDeploymentRestrictionApiService
+
+	ContainerEnvironmentVariableApi *ContainerEnvironmentVariableApiService
+
+	ContainerEventApi *ContainerEventApiService
+
+	ContainerLogsApi *ContainerLogsApiService
+
+	ContainerMainCallsApi *ContainerMainCallsApiService
+
+	ContainerMetricsApi *ContainerMetricsApiService
+
+	ContainerRegistriesApi *ContainerRegistriesApiService
+
+	ContainerRegistryApi *ContainerRegistryApiService
+
+	ContainerSecretApi *ContainerSecretApiService
+
+	ContainersApi *ContainersApiService
+
 	CustomDomainApi *CustomDomainApiService
 
 	DatabaseActionsApi *DatabaseActionsApiService
 
 	DatabaseApplicationApi *DatabaseApplicationApiService
+
+	DatabaseContainerApi *DatabaseContainerApiService
 
 	DatabaseEventApi *DatabaseEventApiService
 
@@ -119,6 +151,8 @@ type APIClient struct {
 	EnvironmentsApi *EnvironmentsApiService
 
 	GitRepositoriesApi *GitRepositoriesApiService
+
+	GithubAppApi *GithubAppApiService
 
 	LogicalDatabaseApi *LogicalDatabaseApiService
 
@@ -179,9 +213,25 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CloudProviderApi = (*CloudProviderApiService)(&c.common)
 	c.CloudProviderCredentialsApi = (*CloudProviderCredentialsApiService)(&c.common)
 	c.ClustersApi = (*ClustersApiService)(&c.common)
+	c.ContainerActionsApi = (*ContainerActionsApiService)(&c.common)
+	c.ContainerConfigurationApi = (*ContainerConfigurationApiService)(&c.common)
+	c.ContainerCustomDomainApi = (*ContainerCustomDomainApiService)(&c.common)
+	c.ContainerDatabaseApi = (*ContainerDatabaseApiService)(&c.common)
+	c.ContainerDependencyApi = (*ContainerDependencyApiService)(&c.common)
+	c.ContainerDeploymentRestrictionApi = (*ContainerDeploymentRestrictionApiService)(&c.common)
+	c.ContainerEnvironmentVariableApi = (*ContainerEnvironmentVariableApiService)(&c.common)
+	c.ContainerEventApi = (*ContainerEventApiService)(&c.common)
+	c.ContainerLogsApi = (*ContainerLogsApiService)(&c.common)
+	c.ContainerMainCallsApi = (*ContainerMainCallsApiService)(&c.common)
+	c.ContainerMetricsApi = (*ContainerMetricsApiService)(&c.common)
+	c.ContainerRegistriesApi = (*ContainerRegistriesApiService)(&c.common)
+	c.ContainerRegistryApi = (*ContainerRegistryApiService)(&c.common)
+	c.ContainerSecretApi = (*ContainerSecretApiService)(&c.common)
+	c.ContainersApi = (*ContainersApiService)(&c.common)
 	c.CustomDomainApi = (*CustomDomainApiService)(&c.common)
 	c.DatabaseActionsApi = (*DatabaseActionsApiService)(&c.common)
 	c.DatabaseApplicationApi = (*DatabaseApplicationApiService)(&c.common)
+	c.DatabaseContainerApi = (*DatabaseContainerApiService)(&c.common)
 	c.DatabaseEventApi = (*DatabaseEventApiService)(&c.common)
 	c.DatabaseMainCallsApi = (*DatabaseMainCallsApiService)(&c.common)
 	c.DatabaseMetricsApi = (*DatabaseMetricsApiService)(&c.common)
@@ -196,6 +246,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EnvironmentVariableApi = (*EnvironmentVariableApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.GitRepositoriesApi = (*GitRepositoriesApiService)(&c.common)
+	c.GithubAppApi = (*GithubAppApiService)(&c.common)
 	c.LogicalDatabaseApi = (*LogicalDatabaseApiService)(&c.common)
 	c.MembersApi = (*MembersApiService)(&c.common)
 	c.OrganizationAccountGitRepositoriesApi = (*OrganizationAccountGitRepositoriesApiService)(&c.common)

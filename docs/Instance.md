@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Cpu** | Pointer to [**EnvironmentDatabasesCurrentMetricCpu**](EnvironmentDatabasesCurrentMetricCpu.md) |  | [optional] 
-**Memory** | Pointer to [**EnvironmentDatabasesCurrentMetricMemory**](EnvironmentDatabasesCurrentMetricMemory.md) |  | [optional] 
+**Cpu** | Pointer to [**DatabaseCurrentMetricCpu**](DatabaseCurrentMetricCpu.md) |  | [optional] 
+**Memory** | Pointer to [**DatabaseCurrentMetricMemory**](DatabaseCurrentMetricMemory.md) |  | [optional] 
 
 ## Methods
 
@@ -80,20 +80,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *Instance) GetCpu() EnvironmentDatabasesCurrentMetricCpu`
+`func (o *Instance) GetCpu() DatabaseCurrentMetricCpu`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *Instance) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool)`
+`func (o *Instance) GetCpuOk() (*DatabaseCurrentMetricCpu, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *Instance) SetCpu(v EnvironmentDatabasesCurrentMetricCpu)`
+`func (o *Instance) SetCpu(v DatabaseCurrentMetricCpu)`
 
 SetCpu sets Cpu field to given value.
 
@@ -105,20 +105,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *Instance) GetMemory() EnvironmentDatabasesCurrentMetricMemory`
+`func (o *Instance) GetMemory() DatabaseCurrentMetricMemory`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *Instance) GetMemoryOk() (*EnvironmentDatabasesCurrentMetricMemory, bool)`
+`func (o *Instance) GetMemoryOk() (*DatabaseCurrentMetricMemory, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *Instance) SetMemory(v EnvironmentDatabasesCurrentMetricMemory)`
+`func (o *Instance) SetMemory(v DatabaseCurrentMetricMemory)`
 
 SetMemory sets Memory field to given value.
 

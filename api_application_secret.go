@@ -381,6 +381,126 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretOverrideExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateContainerSecretOverrideRequest struct {
+	ctx         context.Context
+	ApiService  *ApplicationSecretApiService
+	containerId string
+	secretId    string
+	value       *Value
+}
+
+func (r ApiCreateContainerSecretOverrideRequest) Value(value Value) ApiCreateContainerSecretOverrideRequest {
+	r.value = &value
+	return r
+}
+
+func (r ApiCreateContainerSecretOverrideRequest) Execute() (*Secret, *http.Response, error) {
+	return r.ApiService.CreateContainerSecretOverrideExecute(r)
+}
+
+/*
+CreateContainerSecretOverride Create a secret override at the container level
+
+- Allows you to override at container level a secret that has a higher scope.
+- You only have to specify a value in the request body
+- The system will create a new secret at container level with the same key as the one corresponding to the secret id in the path
+- The response body will contain the newly created secret
+- Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @param secretId Secret ID
+ @return ApiCreateContainerSecretOverrideRequest
+*/
+func (a *ApplicationSecretApiService) CreateContainerSecretOverride(ctx context.Context, containerId string, secretId string) ApiCreateContainerSecretOverrideRequest {
+	return ApiCreateContainerSecretOverrideRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		containerId: containerId,
+		secretId:    secretId,
+	}
+}
+
+// Execute executes the request
+//  @return Secret
+func (a *ApplicationSecretApiService) CreateContainerSecretOverrideExecute(r ApiCreateContainerSecretOverrideRequest) (*Secret, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Secret
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationSecretApiService.CreateContainerSecretOverride")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/container/{containerId}/secret/{secretId}/override"
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.value
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteApplicationSecretRequest struct {
 	ctx           context.Context
 	ApiService    *ApplicationSecretApiService

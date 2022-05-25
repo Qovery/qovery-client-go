@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]EnvironmentApplicationsInstanceResponseListResults**](EnvironmentApplicationsInstanceResponseListResults.md) |  | [optional] 
+**Results** | Pointer to [**[]InlineResponse2001Results**](InlineResponse2001Results.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []EnvironmentApplicationsInstanceResponseListResults`
+`func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []InlineResponse2001Results`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() (*[]EnvironmentApplicationsInstanceResponseListResults, bool)`
+`func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() (*[]InlineResponse2001Results, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *EnvironmentApplicationsInstanceResponseList) SetResults(v []EnvironmentApplicationsInstanceResponseListResults)`
+`func (o *EnvironmentApplicationsInstanceResponseList) SetResults(v []InlineResponse2001Results)`
 
 SetResults sets Results field to given value.
 

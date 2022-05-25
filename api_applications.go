@@ -763,13 +763,6 @@ type ApiListApplicationRequest struct {
 	ctx           context.Context
 	ApiService    *ApplicationsApiService
 	environmentId string
-	toUpdate      *bool
-}
-
-// return (or not) results that must be updated
-func (r ApiListApplicationRequest) ToUpdate(toUpdate bool) ApiListApplicationRequest {
-	r.toUpdate = &toUpdate
-	return r
 }
 
 func (r ApiListApplicationRequest) Execute() (*ApplicationResponseList, *http.Response, error) {
@@ -813,9 +806,6 @@ func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequ
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.toUpdate != nil {
-		localVarQueryParams.Add("toUpdate", parameterToString(*r.toUpdate, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

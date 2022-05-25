@@ -17,9 +17,9 @@ import (
 
 // ClusterCloudProviderInfoRequest struct for ClusterCloudProviderInfoRequest
 type ClusterCloudProviderInfoRequest struct {
-	CloudProvider *CloudProviderEnum                          `json:"cloud_provider,omitempty"`
-	Credentials   *ClusterCloudProviderInfoRequestCredentials `json:"credentials,omitempty"`
-	Region        *string                                     `json:"region,omitempty"`
+	CloudProvider *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
+	Credentials   *ClusterCloudProviderInfoCredentials `json:"credentials,omitempty"`
+	Region        *string                              `json:"region,omitempty"`
 }
 
 // NewClusterCloudProviderInfoRequest instantiates a new ClusterCloudProviderInfoRequest object
@@ -72,9 +72,9 @@ func (o *ClusterCloudProviderInfoRequest) SetCloudProvider(v CloudProviderEnum) 
 }
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
-func (o *ClusterCloudProviderInfoRequest) GetCredentials() ClusterCloudProviderInfoRequestCredentials {
+func (o *ClusterCloudProviderInfoRequest) GetCredentials() ClusterCloudProviderInfoCredentials {
 	if o == nil || o.Credentials == nil {
-		var ret ClusterCloudProviderInfoRequestCredentials
+		var ret ClusterCloudProviderInfoCredentials
 		return ret
 	}
 	return *o.Credentials
@@ -82,7 +82,7 @@ func (o *ClusterCloudProviderInfoRequest) GetCredentials() ClusterCloudProviderI
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterCloudProviderInfoRequest) GetCredentialsOk() (*ClusterCloudProviderInfoRequestCredentials, bool) {
+func (o *ClusterCloudProviderInfoRequest) GetCredentialsOk() (*ClusterCloudProviderInfoCredentials, bool) {
 	if o == nil || o.Credentials == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *ClusterCloudProviderInfoRequest) HasCredentials() bool {
 	return false
 }
 
-// SetCredentials gets a reference to the given ClusterCloudProviderInfoRequestCredentials and assigns it to the Credentials field.
-func (o *ClusterCloudProviderInfoRequest) SetCredentials(v ClusterCloudProviderInfoRequestCredentials) {
+// SetCredentials gets a reference to the given ClusterCloudProviderInfoCredentials and assigns it to the Credentials field.
+func (o *ClusterCloudProviderInfoRequest) SetCredentials(v ClusterCloudProviderInfoCredentials) {
 	o.Credentials = &v
 }
 

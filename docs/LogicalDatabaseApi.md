@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetLogicalDatabase**](LogicalDatabaseApi.md#GetLogicalDatabase) | **Get** /logicalDatabase/{logicalDatabaseId} | Get logical database by ID
 [**GetLogicalDatabaseCredentials**](LogicalDatabaseApi.md#GetLogicalDatabaseCredentials) | **Get** /logicalDatabase/{logicalDatabaseId}/credentials | Get  credentials of the logical database
 [**ListLogicalDatabaseApplication**](LogicalDatabaseApi.md#ListLogicalDatabaseApplication) | **Get** /logicalDatabase/{logicalDatabaseId}/application | List linked applications
+[**ListLogicalDatabaseContainer**](LogicalDatabaseApi.md#ListLogicalDatabaseContainer) | **Get** /logicalDatabase/{logicalDatabaseId}/container | List linked containers
 [**ListLogicalDatabaseDatabase**](LogicalDatabaseApi.md#ListLogicalDatabaseDatabase) | **Get** /database/{databaseId}/logicalDatabase | List logical databases of a database
 
 
@@ -486,6 +487,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApplicationResponseList**](ApplicationResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListLogicalDatabaseContainer
+
+> ContainerResponseList ListLogicalDatabaseContainer(ctx, logicalDatabaseId).Execute()
+
+List linked containers
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    logicalDatabaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Logical Database ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LogicalDatabaseApi.ListLogicalDatabaseContainer(context.Background(), logicalDatabaseId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogicalDatabaseApi.ListLogicalDatabaseContainer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListLogicalDatabaseContainer`: ContainerResponseList
+    fmt.Fprintf(os.Stdout, "Response from `LogicalDatabaseApi.ListLogicalDatabaseContainer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**logicalDatabaseId** | **string** | Logical Database ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListLogicalDatabaseContainerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ContainerResponseList**](ContainerResponseList.md)
 
 ### Authorization
 
