@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Overwrite** | **bool** |  | [default to false]
-**Vars** | [**[]VariableImportRequestVars**](VariableImportRequestVars.md) |  | 
+**Vars** | [**[]VariableImportRequestVarsInner**](VariableImportRequestVarsInner.md) |  | 
 
 ## Methods
 
 ### NewVariableImportRequest
 
-`func NewVariableImportRequest(overwrite bool, vars []VariableImportRequestVars, ) *VariableImportRequest`
+`func NewVariableImportRequest(overwrite bool, vars []VariableImportRequestVarsInner, ) *VariableImportRequest`
 
 NewVariableImportRequest instantiates a new VariableImportRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetOverwrite sets Overwrite field to given value.
 
 ### GetVars
 
-`func (o *VariableImportRequest) GetVars() []VariableImportRequestVars`
+`func (o *VariableImportRequest) GetVars() []VariableImportRequestVarsInner`
 
 GetVars returns the Vars field if non-nil, zero value otherwise.
 
 ### GetVarsOk
 
-`func (o *VariableImportRequest) GetVarsOk() (*[]VariableImportRequestVars, bool)`
+`func (o *VariableImportRequest) GetVarsOk() (*[]VariableImportRequestVarsInner, bool)`
 
 GetVarsOk returns a tuple with the Vars field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVars
 
-`func (o *VariableImportRequest) SetVars(v []VariableImportRequestVars)`
+`func (o *VariableImportRequest) SetVars(v []VariableImportRequestVarsInner)`
 
 SetVars sets Vars field to given value.
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]ClusterRoutingTableResults**](ClusterRoutingTableResults.md) |  | [optional] 
+**Results** | Pointer to [**[]ClusterRoutingTableResultsInner**](ClusterRoutingTableResultsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ClusterRoutingTable) GetResults() []ClusterRoutingTableResults`
+`func (o *ClusterRoutingTable) GetResults() []ClusterRoutingTableResultsInner`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ClusterRoutingTable) GetResultsOk() (*[]ClusterRoutingTableResults, bool)`
+`func (o *ClusterRoutingTable) GetResultsOk() (*[]ClusterRoutingTableResultsInner, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ClusterRoutingTable) SetResults(v []ClusterRoutingTableResults)`
+`func (o *ClusterRoutingTable) SetResults(v []ClusterRoutingTableResultsInner)`
 
 SetResults sets Results field to given value.
 

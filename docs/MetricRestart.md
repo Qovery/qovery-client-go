@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]MetricRestartResults**](MetricRestartResults.md) |  | [optional] 
+**Results** | Pointer to [**[]MetricRestartResultsInner**](MetricRestartResultsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *MetricRestart) GetResults() []MetricRestartResults`
+`func (o *MetricRestart) GetResults() []MetricRestartResultsInner`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *MetricRestart) GetResultsOk() (*[]MetricRestartResults, bool)`
+`func (o *MetricRestart) GetResultsOk() (*[]MetricRestartResultsInner, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *MetricRestart) SetResults(v []MetricRestartResults)`
+`func (o *MetricRestart) SetResults(v []MetricRestartResultsInner)`
 
 SetResults sets Results field to given value.
 

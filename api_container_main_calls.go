@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ContainerMainCallsApiService ContainerMainCallsApi service
 type ContainerMainCallsApiService service
 
@@ -645,7 +640,7 @@ type ApiGetContainerTagsRequest struct {
 	containerId string
 }
 
-func (r ApiGetContainerTagsRequest) Execute() (*InlineResponse2002, *http.Response, error) {
+func (r ApiGetContainerTagsRequest) Execute() (*GetContainerTags200Response, *http.Response, error) {
 	return r.ApiService.GetContainerTagsExecute(r)
 }
 
@@ -667,13 +662,13 @@ func (a *ContainerMainCallsApiService) GetContainerTags(ctx context.Context, con
 }
 
 // Execute executes the request
-//  @return InlineResponse2002
-func (a *ContainerMainCallsApiService) GetContainerTagsExecute(r ApiGetContainerTagsRequest) (*InlineResponse2002, *http.Response, error) {
+//  @return GetContainerTags200Response
+func (a *ContainerMainCallsApiService) GetContainerTagsExecute(r ApiGetContainerTagsRequest) (*GetContainerTags200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InlineResponse2002
+		localVarReturnValue *GetContainerTags200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerMainCallsApiService.GetContainerTags")

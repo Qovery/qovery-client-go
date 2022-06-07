@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Applications** | Pointer to [**[]DeployAllRequestApplications**](DeployAllRequestApplications.md) |  | [optional] 
+**Applications** | Pointer to [**[]DeployAllRequestApplicationsInner**](DeployAllRequestApplicationsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetApplications
 
-`func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplications`
+`func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplicationsInner`
 
 GetApplications returns the Applications field if non-nil, zero value otherwise.
 
 ### GetApplicationsOk
 
-`func (o *DeployAllRequest) GetApplicationsOk() (*[]DeployAllRequestApplications, bool)`
+`func (o *DeployAllRequest) GetApplicationsOk() (*[]DeployAllRequestApplicationsInner, bool)`
 
 GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplications
 
-`func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplications)`
+`func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplicationsInner)`
 
 SetApplications sets Applications field to given value.
 

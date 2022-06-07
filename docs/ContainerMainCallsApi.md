@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 ## GetContainerTags
 
-> InlineResponse2002 GetContainerTags(ctx, containerId).Execute()
+> GetContainerTags200Response GetContainerTags(ctx, containerId).Execute()
 
 List image tags
 
@@ -462,7 +462,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsApi.GetContainerTags``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetContainerTags`: InlineResponse2002
+    // response from `GetContainerTags`: GetContainerTags200Response
     fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsApi.GetContainerTags`: %v\n", resp)
 }
 ```
@@ -486,7 +486,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**GetContainerTags200Response**](GetContainerTags200Response.md)
 
 ### Authorization
 

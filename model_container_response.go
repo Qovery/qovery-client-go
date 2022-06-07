@@ -18,12 +18,12 @@ import (
 
 // ContainerResponse struct for ContainerResponse
 type ContainerResponse struct {
-	Id          string                      `json:"id"`
-	CreatedAt   time.Time                   `json:"created_at"`
-	UpdatedAt   *time.Time                  `json:"updated_at,omitempty"`
-	Storage     []ApplicationStorageStorage `json:"storage,omitempty"`
-	Ports       []ApplicationPortPorts      `json:"ports,omitempty"`
-	Environment *ReferenceObject            `json:"environment,omitempty"`
+	Id          string                           `json:"id"`
+	CreatedAt   time.Time                        `json:"created_at"`
+	UpdatedAt   *time.Time                       `json:"updated_at,omitempty"`
+	Storage     []ApplicationStorageStorageInner `json:"storage,omitempty"`
+	Ports       []ApplicationPortPortsInner      `json:"ports,omitempty"`
+	Environment *ReferenceObject                 `json:"environment,omitempty"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -172,9 +172,9 @@ func (o *ContainerResponse) SetUpdatedAt(v time.Time) {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ContainerResponse) GetStorage() []ApplicationStorageStorage {
+func (o *ContainerResponse) GetStorage() []ApplicationStorageStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageStorage
+		var ret []ApplicationStorageStorageInner
 		return ret
 	}
 	return o.Storage
@@ -182,7 +182,7 @@ func (o *ContainerResponse) GetStorage() []ApplicationStorageStorage {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetStorageOk() ([]ApplicationStorageStorage, bool) {
+func (o *ContainerResponse) GetStorageOk() ([]ApplicationStorageStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -198,15 +198,15 @@ func (o *ContainerResponse) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageStorage and assigns it to the Storage field.
-func (o *ContainerResponse) SetStorage(v []ApplicationStorageStorage) {
+// SetStorage gets a reference to the given []ApplicationStorageStorageInner and assigns it to the Storage field.
+func (o *ContainerResponse) SetStorage(v []ApplicationStorageStorageInner) {
 	o.Storage = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ContainerResponse) GetPorts() []ApplicationPortPorts {
+func (o *ContainerResponse) GetPorts() []ApplicationPortPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortPorts
+		var ret []ApplicationPortPortsInner
 		return ret
 	}
 	return o.Ports
@@ -214,7 +214,7 @@ func (o *ContainerResponse) GetPorts() []ApplicationPortPorts {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetPortsOk() ([]ApplicationPortPorts, bool) {
+func (o *ContainerResponse) GetPortsOk() ([]ApplicationPortPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -230,8 +230,8 @@ func (o *ContainerResponse) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortPorts and assigns it to the Ports field.
-func (o *ContainerResponse) SetPorts(v []ApplicationPortPorts) {
+// SetPorts gets a reference to the given []ApplicationPortPortsInner and assigns it to the Ports field.
+func (o *ContainerResponse) SetPorts(v []ApplicationPortPortsInner) {
 	o.Ports = v
 }
 

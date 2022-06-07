@@ -17,7 +17,7 @@ import (
 
 // ApplicationStorageRequest struct for ApplicationStorageRequest
 type ApplicationStorageRequest struct {
-	Storage []ApplicationStorageRequestStorage `json:"storage,omitempty"`
+	Storage []ApplicationStorageRequestStorageInner `json:"storage,omitempty"`
 }
 
 // NewApplicationStorageRequest instantiates a new ApplicationStorageRequest object
@@ -38,9 +38,9 @@ func NewApplicationStorageRequestWithDefaults() *ApplicationStorageRequest {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationStorageRequest) GetStorage() []ApplicationStorageRequestStorage {
+func (o *ApplicationStorageRequest) GetStorage() []ApplicationStorageRequestStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageRequestStorage
+		var ret []ApplicationStorageRequestStorageInner
 		return ret
 	}
 	return o.Storage
@@ -48,7 +48,7 @@ func (o *ApplicationStorageRequest) GetStorage() []ApplicationStorageRequestStor
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationStorageRequest) GetStorageOk() ([]ApplicationStorageRequestStorage, bool) {
+func (o *ApplicationStorageRequest) GetStorageOk() ([]ApplicationStorageRequestStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ApplicationStorageRequest) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageRequestStorage and assigns it to the Storage field.
-func (o *ApplicationStorageRequest) SetStorage(v []ApplicationStorageRequestStorage) {
+// SetStorage gets a reference to the given []ApplicationStorageRequestStorageInner and assigns it to the Storage field.
+func (o *ApplicationStorageRequest) SetStorage(v []ApplicationStorageRequestStorageInner) {
 	o.Storage = v
 }
 

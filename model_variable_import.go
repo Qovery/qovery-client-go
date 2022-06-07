@@ -17,15 +17,15 @@ import (
 
 // VariableImport struct for VariableImport
 type VariableImport struct {
-	TotalVariablesToImport      float32                                     `json:"total_variables_to_import"`
-	SuccessfulImportedVariables []VariableImportSuccessfulImportedVariables `json:"successful_imported_variables"`
+	TotalVariablesToImport      float32                                          `json:"total_variables_to_import"`
+	SuccessfulImportedVariables []VariableImportSuccessfulImportedVariablesInner `json:"successful_imported_variables"`
 }
 
 // NewVariableImport instantiates a new VariableImport object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableImport(totalVariablesToImport float32, successfulImportedVariables []VariableImportSuccessfulImportedVariables) *VariableImport {
+func NewVariableImport(totalVariablesToImport float32, successfulImportedVariables []VariableImportSuccessfulImportedVariablesInner) *VariableImport {
 	this := VariableImport{}
 	this.TotalVariablesToImport = totalVariablesToImport
 	this.SuccessfulImportedVariables = successfulImportedVariables
@@ -65,9 +65,9 @@ func (o *VariableImport) SetTotalVariablesToImport(v float32) {
 }
 
 // GetSuccessfulImportedVariables returns the SuccessfulImportedVariables field value
-func (o *VariableImport) GetSuccessfulImportedVariables() []VariableImportSuccessfulImportedVariables {
+func (o *VariableImport) GetSuccessfulImportedVariables() []VariableImportSuccessfulImportedVariablesInner {
 	if o == nil {
-		var ret []VariableImportSuccessfulImportedVariables
+		var ret []VariableImportSuccessfulImportedVariablesInner
 		return ret
 	}
 
@@ -76,7 +76,7 @@ func (o *VariableImport) GetSuccessfulImportedVariables() []VariableImportSucces
 
 // GetSuccessfulImportedVariablesOk returns a tuple with the SuccessfulImportedVariables field value
 // and a boolean to check if the value has been set.
-func (o *VariableImport) GetSuccessfulImportedVariablesOk() ([]VariableImportSuccessfulImportedVariables, bool) {
+func (o *VariableImport) GetSuccessfulImportedVariablesOk() ([]VariableImportSuccessfulImportedVariablesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *VariableImport) GetSuccessfulImportedVariablesOk() ([]VariableImportSuc
 }
 
 // SetSuccessfulImportedVariables sets field value
-func (o *VariableImport) SetSuccessfulImportedVariables(v []VariableImportSuccessfulImportedVariables) {
+func (o *VariableImport) SetSuccessfulImportedVariables(v []VariableImportSuccessfulImportedVariablesInner) {
 	o.SuccessfulImportedVariables = v
 }
 

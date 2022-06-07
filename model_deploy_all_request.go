@@ -17,7 +17,7 @@ import (
 
 // DeployAllRequest struct for DeployAllRequest
 type DeployAllRequest struct {
-	Applications []DeployAllRequestApplications `json:"applications,omitempty"`
+	Applications []DeployAllRequestApplicationsInner `json:"applications,omitempty"`
 }
 
 // NewDeployAllRequest instantiates a new DeployAllRequest object
@@ -38,9 +38,9 @@ func NewDeployAllRequestWithDefaults() *DeployAllRequest {
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplications {
+func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplicationsInner {
 	if o == nil || o.Applications == nil {
-		var ret []DeployAllRequestApplications
+		var ret []DeployAllRequestApplicationsInner
 		return ret
 	}
 	return o.Applications
@@ -48,7 +48,7 @@ func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplications {
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeployAllRequest) GetApplicationsOk() ([]DeployAllRequestApplications, bool) {
+func (o *DeployAllRequest) GetApplicationsOk() ([]DeployAllRequestApplicationsInner, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *DeployAllRequest) HasApplications() bool {
 	return false
 }
 
-// SetApplications gets a reference to the given []DeployAllRequestApplications and assigns it to the Applications field.
-func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplications) {
+// SetApplications gets a reference to the given []DeployAllRequestApplicationsInner and assigns it to the Applications field.
+func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplicationsInner) {
 	o.Applications = v
 }
 

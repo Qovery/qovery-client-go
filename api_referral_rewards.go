@@ -19,11 +19,6 @@ import (
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ReferralRewardsApiService ReferralRewardsApi service
 type ReferralRewardsApiService service
 

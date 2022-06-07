@@ -17,8 +17,8 @@ import (
 
 // AvailableContainerRegistryResponse struct for AvailableContainerRegistryResponse
 type AvailableContainerRegistryResponse struct {
-	Kind           *ContainerRegistryKind            `json:"kind,omitempty"`
-	RequiredConfig map[string]map[string]interface{} `json:"required_config,omitempty"`
+	Kind           *ContainerRegistryKind `json:"kind,omitempty"`
+	RequiredConfig map[string]interface{} `json:"required_config,omitempty"`
 }
 
 // NewAvailableContainerRegistryResponse instantiates a new AvailableContainerRegistryResponse object
@@ -75,9 +75,9 @@ func (o *AvailableContainerRegistryResponse) SetKind(v ContainerRegistryKind) {
 }
 
 // GetRequiredConfig returns the RequiredConfig field value if set, zero value otherwise.
-func (o *AvailableContainerRegistryResponse) GetRequiredConfig() map[string]map[string]interface{} {
+func (o *AvailableContainerRegistryResponse) GetRequiredConfig() map[string]interface{} {
 	if o == nil || o.RequiredConfig == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.RequiredConfig
@@ -85,7 +85,7 @@ func (o *AvailableContainerRegistryResponse) GetRequiredConfig() map[string]map[
 
 // GetRequiredConfigOk returns a tuple with the RequiredConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AvailableContainerRegistryResponse) GetRequiredConfigOk() (map[string]map[string]interface{}, bool) {
+func (o *AvailableContainerRegistryResponse) GetRequiredConfigOk() (map[string]interface{}, bool) {
 	if o == nil || o.RequiredConfig == nil {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *AvailableContainerRegistryResponse) HasRequiredConfig() bool {
 	return false
 }
 
-// SetRequiredConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the RequiredConfig field.
-func (o *AvailableContainerRegistryResponse) SetRequiredConfig(v map[string]map[string]interface{}) {
+// SetRequiredConfig gets a reference to the given map[string]interface{} and assigns it to the RequiredConfig field.
+func (o *AvailableContainerRegistryResponse) SetRequiredConfig(v map[string]interface{}) {
 	o.RequiredConfig = v
 }
 

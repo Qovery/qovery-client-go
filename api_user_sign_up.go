@@ -19,11 +19,6 @@ import (
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // UserSignUpApiService UserSignUpApi service
 type UserSignUpApiService service
 

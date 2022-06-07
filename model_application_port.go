@@ -17,7 +17,7 @@ import (
 
 // ApplicationPort struct for ApplicationPort
 type ApplicationPort struct {
-	Ports []ApplicationPortPorts `json:"ports,omitempty"`
+	Ports []ApplicationPortPortsInner `json:"ports,omitempty"`
 }
 
 // NewApplicationPort instantiates a new ApplicationPort object
@@ -38,9 +38,9 @@ func NewApplicationPortWithDefaults() *ApplicationPort {
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationPort) GetPorts() []ApplicationPortPorts {
+func (o *ApplicationPort) GetPorts() []ApplicationPortPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortPorts
+		var ret []ApplicationPortPortsInner
 		return ret
 	}
 	return o.Ports
@@ -48,7 +48,7 @@ func (o *ApplicationPort) GetPorts() []ApplicationPortPorts {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPort) GetPortsOk() ([]ApplicationPortPorts, bool) {
+func (o *ApplicationPort) GetPortsOk() ([]ApplicationPortPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ApplicationPort) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortPorts and assigns it to the Ports field.
-func (o *ApplicationPort) SetPorts(v []ApplicationPortPorts) {
+// SetPorts gets a reference to the given []ApplicationPortPortsInner and assigns it to the Ports field.
+func (o *ApplicationPort) SetPorts(v []ApplicationPortPortsInner) {
 	o.Ports = v
 }
 

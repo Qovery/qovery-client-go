@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ports** | Pointer to [**[]ApplicationPortRequestPorts**](ApplicationPortRequestPorts.md) |  | [optional] 
+**Ports** | Pointer to [**[]ApplicationPortRequestPortsInner**](ApplicationPortRequestPortsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPorts
 
-`func (o *ApplicationPortRequest) GetPorts() []ApplicationPortRequestPorts`
+`func (o *ApplicationPortRequest) GetPorts() []ApplicationPortRequestPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ApplicationPortRequest) GetPortsOk() (*[]ApplicationPortRequestPorts, bool)`
+`func (o *ApplicationPortRequest) GetPortsOk() (*[]ApplicationPortRequestPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ApplicationPortRequest) SetPorts(v []ApplicationPortRequestPorts)`
+`func (o *ApplicationPortRequest) SetPorts(v []ApplicationPortRequestPortsInner)`
 
 SetPorts sets Ports field to given value.
 

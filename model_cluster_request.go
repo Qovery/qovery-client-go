@@ -32,8 +32,8 @@ type ClusterRequest struct {
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string `json:"instance_type,omitempty"`
 	// the disk size to be used for the node configuration
-	DiskSize *int32                          `json:"disk_size,omitempty"`
-	Features []ClusterFeatureRequestFeatures `json:"features,omitempty"`
+	DiskSize *int32                               `json:"disk_size,omitempty"`
+	Features []ClusterFeatureRequestFeaturesInner `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
@@ -405,9 +405,9 @@ func (o *ClusterRequest) SetDiskSize(v int32) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures {
+func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeaturesInner {
 	if o == nil || o.Features == nil {
-		var ret []ClusterFeatureRequestFeatures
+		var ret []ClusterFeatureRequestFeaturesInner
 		return ret
 	}
 	return o.Features
@@ -415,7 +415,7 @@ func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetFeaturesOk() ([]ClusterFeatureRequestFeatures, bool) {
+func (o *ClusterRequest) GetFeaturesOk() ([]ClusterFeatureRequestFeaturesInner, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -431,8 +431,8 @@ func (o *ClusterRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given []ClusterFeatureRequestFeatures and assigns it to the Features field.
-func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeatures) {
+// SetFeatures gets a reference to the given []ClusterFeatureRequestFeaturesInner and assigns it to the Features field.
+func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeaturesInner) {
 	o.Features = v
 }
 

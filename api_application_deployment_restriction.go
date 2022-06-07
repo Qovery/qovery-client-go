@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ApplicationDeploymentRestrictionApiService ApplicationDeploymentRestrictionApi service
 type ApplicationDeploymentRestrictionApiService service
 

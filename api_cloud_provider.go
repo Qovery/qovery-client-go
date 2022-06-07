@@ -19,11 +19,6 @@ import (
 	"net/url"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // CloudProviderApiService CloudProviderApi service
 type CloudProviderApiService service
 

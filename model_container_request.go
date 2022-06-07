@@ -17,8 +17,8 @@ import (
 
 // ContainerRequest struct for ContainerRequest
 type ContainerRequest struct {
-	Storage []ApplicationStorageRequestStorage `json:"storage,omitempty"`
-	Ports   []ApplicationPortRequestPorts      `json:"ports,omitempty"`
+	Storage []ApplicationStorageRequestStorageInner `json:"storage,omitempty"`
+	Ports   []ApplicationPortRequestPortsInner      `json:"ports,omitempty"`
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this container
@@ -76,9 +76,9 @@ func NewContainerRequestWithDefaults() *ContainerRequest {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ContainerRequest) GetStorage() []ApplicationStorageRequestStorage {
+func (o *ContainerRequest) GetStorage() []ApplicationStorageRequestStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageRequestStorage
+		var ret []ApplicationStorageRequestStorageInner
 		return ret
 	}
 	return o.Storage
@@ -86,7 +86,7 @@ func (o *ContainerRequest) GetStorage() []ApplicationStorageRequestStorage {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRequest) GetStorageOk() ([]ApplicationStorageRequestStorage, bool) {
+func (o *ContainerRequest) GetStorageOk() ([]ApplicationStorageRequestStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -102,15 +102,15 @@ func (o *ContainerRequest) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageRequestStorage and assigns it to the Storage field.
-func (o *ContainerRequest) SetStorage(v []ApplicationStorageRequestStorage) {
+// SetStorage gets a reference to the given []ApplicationStorageRequestStorageInner and assigns it to the Storage field.
+func (o *ContainerRequest) SetStorage(v []ApplicationStorageRequestStorageInner) {
 	o.Storage = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ContainerRequest) GetPorts() []ApplicationPortRequestPorts {
+func (o *ContainerRequest) GetPorts() []ApplicationPortRequestPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortRequestPorts
+		var ret []ApplicationPortRequestPortsInner
 		return ret
 	}
 	return o.Ports
@@ -118,7 +118,7 @@ func (o *ContainerRequest) GetPorts() []ApplicationPortRequestPorts {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRequest) GetPortsOk() ([]ApplicationPortRequestPorts, bool) {
+func (o *ContainerRequest) GetPortsOk() ([]ApplicationPortRequestPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *ContainerRequest) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortRequestPorts and assigns it to the Ports field.
-func (o *ContainerRequest) SetPorts(v []ApplicationPortRequestPorts) {
+// SetPorts gets a reference to the given []ApplicationPortRequestPortsInner and assigns it to the Ports field.
+func (o *ContainerRequest) SetPorts(v []ApplicationPortRequestPortsInner) {
 	o.Ports = v
 }
 

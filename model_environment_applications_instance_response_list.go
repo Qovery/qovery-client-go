@@ -17,7 +17,7 @@ import (
 
 // EnvironmentApplicationsInstanceResponseList struct for EnvironmentApplicationsInstanceResponseList
 type EnvironmentApplicationsInstanceResponseList struct {
-	Results []InlineResponse2001Results `json:"results,omitempty"`
+	Results []GetEnvironmentContainerCurrentInstance200ResponseResultsInner `json:"results,omitempty"`
 }
 
 // NewEnvironmentApplicationsInstanceResponseList instantiates a new EnvironmentApplicationsInstanceResponseList object
@@ -38,9 +38,9 @@ func NewEnvironmentApplicationsInstanceResponseListWithDefaults() *EnvironmentAp
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []InlineResponse2001Results {
+func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []GetEnvironmentContainerCurrentInstance200ResponseResultsInner {
 	if o == nil || o.Results == nil {
-		var ret []InlineResponse2001Results
+		var ret []GetEnvironmentContainerCurrentInstance200ResponseResultsInner
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []InlineRespo
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() ([]InlineResponse2001Results, bool) {
+func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() ([]GetEnvironmentContainerCurrentInstance200ResponseResultsInner, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *EnvironmentApplicationsInstanceResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []InlineResponse2001Results and assigns it to the Results field.
-func (o *EnvironmentApplicationsInstanceResponseList) SetResults(v []InlineResponse2001Results) {
+// SetResults gets a reference to the given []GetEnvironmentContainerCurrentInstance200ResponseResultsInner and assigns it to the Results field.
+func (o *EnvironmentApplicationsInstanceResponseList) SetResults(v []GetEnvironmentContainerCurrentInstance200ResponseResultsInner) {
 	o.Results = v
 }
 

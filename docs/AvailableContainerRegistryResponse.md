@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Kind** | Pointer to [**ContainerRegistryKind**](ContainerRegistryKind.md) |  | [optional] [default to CONTAINERREGISTRYKIND_ECR]
-**RequiredConfig** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**RequiredConfig** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasKind returns a boolean if a field has been set.
 
 ### GetRequiredConfig
 
-`func (o *AvailableContainerRegistryResponse) GetRequiredConfig() map[string]map[string]interface{}`
+`func (o *AvailableContainerRegistryResponse) GetRequiredConfig() map[string]interface{}`
 
 GetRequiredConfig returns the RequiredConfig field if non-nil, zero value otherwise.
 
 ### GetRequiredConfigOk
 
-`func (o *AvailableContainerRegistryResponse) GetRequiredConfigOk() (*map[string]map[string]interface{}, bool)`
+`func (o *AvailableContainerRegistryResponse) GetRequiredConfigOk() (*map[string]interface{}, bool)`
 
 GetRequiredConfigOk returns a tuple with the RequiredConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequiredConfig
 
-`func (o *AvailableContainerRegistryResponse) SetRequiredConfig(v map[string]map[string]interface{})`
+`func (o *AvailableContainerRegistryResponse) SetRequiredConfig(v map[string]interface{})`
 
 SetRequiredConfig sets RequiredConfig field to given value.
 

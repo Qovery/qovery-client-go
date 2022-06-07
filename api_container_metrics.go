@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ContainerMetricsApiService ContainerMetricsApi service
 type ContainerMetricsApiService service
 

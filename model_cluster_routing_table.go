@@ -17,7 +17,7 @@ import (
 
 // ClusterRoutingTable struct for ClusterRoutingTable
 type ClusterRoutingTable struct {
-	Results []ClusterRoutingTableResults `json:"results,omitempty"`
+	Results []ClusterRoutingTableResultsInner `json:"results,omitempty"`
 }
 
 // NewClusterRoutingTable instantiates a new ClusterRoutingTable object
@@ -38,9 +38,9 @@ func NewClusterRoutingTableWithDefaults() *ClusterRoutingTable {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClusterRoutingTable) GetResults() []ClusterRoutingTableResults {
+func (o *ClusterRoutingTable) GetResults() []ClusterRoutingTableResultsInner {
 	if o == nil || o.Results == nil {
-		var ret []ClusterRoutingTableResults
+		var ret []ClusterRoutingTableResultsInner
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ClusterRoutingTable) GetResults() []ClusterRoutingTableResults {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRoutingTable) GetResultsOk() ([]ClusterRoutingTableResults, bool) {
+func (o *ClusterRoutingTable) GetResultsOk() ([]ClusterRoutingTableResultsInner, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ClusterRoutingTable) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ClusterRoutingTableResults and assigns it to the Results field.
-func (o *ClusterRoutingTable) SetResults(v []ClusterRoutingTableResults) {
+// SetResults gets a reference to the given []ClusterRoutingTableResultsInner and assigns it to the Results field.
+func (o *ClusterRoutingTable) SetResults(v []ClusterRoutingTableResultsInner) {
 	o.Results = v
 }
 

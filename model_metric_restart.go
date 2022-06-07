@@ -17,7 +17,7 @@ import (
 
 // MetricRestart struct for MetricRestart
 type MetricRestart struct {
-	Results []MetricRestartResults `json:"results,omitempty"`
+	Results []MetricRestartResultsInner `json:"results,omitempty"`
 }
 
 // NewMetricRestart instantiates a new MetricRestart object
@@ -38,9 +38,9 @@ func NewMetricRestartWithDefaults() *MetricRestart {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *MetricRestart) GetResults() []MetricRestartResults {
+func (o *MetricRestart) GetResults() []MetricRestartResultsInner {
 	if o == nil || o.Results == nil {
-		var ret []MetricRestartResults
+		var ret []MetricRestartResultsInner
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *MetricRestart) GetResults() []MetricRestartResults {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricRestart) GetResultsOk() ([]MetricRestartResults, bool) {
+func (o *MetricRestart) GetResultsOk() ([]MetricRestartResultsInner, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *MetricRestart) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []MetricRestartResults and assigns it to the Results field.
-func (o *MetricRestart) SetResults(v []MetricRestartResults) {
+// SetResults gets a reference to the given []MetricRestartResultsInner and assigns it to the Results field.
+func (o *MetricRestart) SetResults(v []MetricRestartResultsInner) {
 	o.Results = v
 }
 

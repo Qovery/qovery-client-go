@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ContainerRegistriesApiService ContainerRegistriesApi service
 type ContainerRegistriesApiService service
 
@@ -336,7 +331,7 @@ type ApiListContainerRegistryRequest struct {
 	organizationId string
 }
 
-func (r ApiListContainerRegistryRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiListContainerRegistryRequest) Execute() (*ListContainerRegistry200Response, *http.Response, error) {
 	return r.ApiService.ListContainerRegistryExecute(r)
 }
 
@@ -356,13 +351,13 @@ func (a *ContainerRegistriesApiService) ListContainerRegistry(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListContainerRegistryRequest) (*InlineResponse200, *http.Response, error) {
+//  @return ListContainerRegistry200Response
+func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListContainerRegistryRequest) (*ListContainerRegistry200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InlineResponse200
+		localVarReturnValue *ListContainerRegistry200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.ListContainerRegistry")

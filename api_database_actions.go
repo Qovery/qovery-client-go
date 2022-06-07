@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // DatabaseActionsApiService DatabaseActionsApi service
 type DatabaseActionsApiService service
 

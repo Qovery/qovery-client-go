@@ -23,14 +23,14 @@ type ContainerRegistryRequest struct {
 	// URL of the container registry
 	Url string `json:"url"`
 	// authentification configuration
-	Config map[string]map[string]interface{} `json:"config"`
+	Config map[string]interface{} `json:"config"`
 }
 
 // NewContainerRegistryRequest instantiates a new ContainerRegistryRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRegistryRequest(name string, kind ContainerRegistryKind, url string, config map[string]map[string]interface{}) *ContainerRegistryRequest {
+func NewContainerRegistryRequest(name string, kind ContainerRegistryKind, url string, config map[string]interface{}) *ContainerRegistryRequest {
 	this := ContainerRegistryRequest{}
 	this.Name = name
 	this.Kind = kind
@@ -154,9 +154,9 @@ func (o *ContainerRegistryRequest) SetUrl(v string) {
 }
 
 // GetConfig returns the Config field value
-func (o *ContainerRegistryRequest) GetConfig() map[string]map[string]interface{} {
+func (o *ContainerRegistryRequest) GetConfig() map[string]interface{} {
 	if o == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -165,7 +165,7 @@ func (o *ContainerRegistryRequest) GetConfig() map[string]map[string]interface{}
 
 // GetConfigOk returns a tuple with the Config field value
 // and a boolean to check if the value has been set.
-func (o *ContainerRegistryRequest) GetConfigOk() (map[string]map[string]interface{}, bool) {
+func (o *ContainerRegistryRequest) GetConfigOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -173,7 +173,7 @@ func (o *ContainerRegistryRequest) GetConfigOk() (map[string]map[string]interfac
 }
 
 // SetConfig sets field value
-func (o *ContainerRegistryRequest) SetConfig(v map[string]map[string]interface{}) {
+func (o *ContainerRegistryRequest) SetConfig(v map[string]interface{}) {
 	o.Config = v
 }
 

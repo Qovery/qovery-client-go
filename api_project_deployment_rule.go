@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ProjectDeploymentRuleApiService ProjectDeploymentRuleApi service
 type ProjectDeploymentRuleApiService service
 

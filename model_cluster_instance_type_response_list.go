@@ -17,7 +17,7 @@ import (
 
 // ClusterInstanceTypeResponseList struct for ClusterInstanceTypeResponseList
 type ClusterInstanceTypeResponseList struct {
-	Results []ClusterInstanceTypeResponseListResults `json:"results,omitempty"`
+	Results []ClusterInstanceTypeResponseListResultsInner `json:"results,omitempty"`
 }
 
 // NewClusterInstanceTypeResponseList instantiates a new ClusterInstanceTypeResponseList object
@@ -38,9 +38,9 @@ func NewClusterInstanceTypeResponseListWithDefaults() *ClusterInstanceTypeRespon
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClusterInstanceTypeResponseList) GetResults() []ClusterInstanceTypeResponseListResults {
+func (o *ClusterInstanceTypeResponseList) GetResults() []ClusterInstanceTypeResponseListResultsInner {
 	if o == nil || o.Results == nil {
-		var ret []ClusterInstanceTypeResponseListResults
+		var ret []ClusterInstanceTypeResponseListResultsInner
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ClusterInstanceTypeResponseList) GetResults() []ClusterInstanceTypeResp
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterInstanceTypeResponseList) GetResultsOk() ([]ClusterInstanceTypeResponseListResults, bool) {
+func (o *ClusterInstanceTypeResponseList) GetResultsOk() ([]ClusterInstanceTypeResponseListResultsInner, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ClusterInstanceTypeResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ClusterInstanceTypeResponseListResults and assigns it to the Results field.
-func (o *ClusterInstanceTypeResponseList) SetResults(v []ClusterInstanceTypeResponseListResults) {
+// SetResults gets a reference to the given []ClusterInstanceTypeResponseListResultsInner and assigns it to the Results field.
+func (o *ClusterInstanceTypeResponseList) SetResults(v []ClusterInstanceTypeResponseListResultsInner) {
 	o.Results = v
 }
 

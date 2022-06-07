@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Storage** | Pointer to [**[]ApplicationStorageRequestStorage**](ApplicationStorageRequestStorage.md) |  | [optional] 
+**Storage** | Pointer to [**[]ApplicationStorageRequestStorageInner**](ApplicationStorageRequestStorageInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStorage
 
-`func (o *ApplicationStorageRequest) GetStorage() []ApplicationStorageRequestStorage`
+`func (o *ApplicationStorageRequest) GetStorage() []ApplicationStorageRequestStorageInner`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *ApplicationStorageRequest) GetStorageOk() (*[]ApplicationStorageRequestStorage, bool)`
+`func (o *ApplicationStorageRequest) GetStorageOk() (*[]ApplicationStorageRequestStorageInner, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *ApplicationStorageRequest) SetStorage(v []ApplicationStorageRequestStorage)`
+`func (o *ApplicationStorageRequest) SetStorage(v []ApplicationStorageRequestStorageInner)`
 
 SetStorage sets Storage field to given value.
 

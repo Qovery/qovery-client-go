@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ApplicationEnvironmentVariableApiService ApplicationEnvironmentVariableApi service
 type ApplicationEnvironmentVariableApiService service
 

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Storage** | Pointer to [**[]ApplicationStorageStorage**](ApplicationStorageStorage.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortPorts**](ApplicationPortPorts.md) |  | [optional] 
+**Storage** | Pointer to [**[]ApplicationStorageStorageInner**](ApplicationStorageStorageInner.md) |  | [optional] 
+**Ports** | Pointer to [**[]ApplicationPortPortsInner**](ApplicationPortPortsInner.md) |  | [optional] 
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
@@ -111,20 +111,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetStorage
 
-`func (o *Application) GetStorage() []ApplicationStorageStorage`
+`func (o *Application) GetStorage() []ApplicationStorageStorageInner`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *Application) GetStorageOk() (*[]ApplicationStorageStorage, bool)`
+`func (o *Application) GetStorageOk() (*[]ApplicationStorageStorageInner, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *Application) SetStorage(v []ApplicationStorageStorage)`
+`func (o *Application) SetStorage(v []ApplicationStorageStorageInner)`
 
 SetStorage sets Storage field to given value.
 
@@ -136,20 +136,20 @@ HasStorage returns a boolean if a field has been set.
 
 ### GetPorts
 
-`func (o *Application) GetPorts() []ApplicationPortPorts`
+`func (o *Application) GetPorts() []ApplicationPortPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *Application) GetPortsOk() (*[]ApplicationPortPorts, bool)`
+`func (o *Application) GetPortsOk() (*[]ApplicationPortPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *Application) SetPorts(v []ApplicationPortPorts)`
+`func (o *Application) SetPorts(v []ApplicationPortPortsInner)`
 
 SetPorts sets Ports field to given value.
 

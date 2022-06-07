@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Features** | Pointer to [**[]ClusterFeatureRequestFeatures**](ClusterFeatureRequestFeatures.md) |  | [optional] 
+**Features** | Pointer to [**[]ClusterFeatureRequestFeaturesInner**](ClusterFeatureRequestFeaturesInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFeatures
 
-`func (o *ClusterFeatureRequest) GetFeatures() []ClusterFeatureRequestFeatures`
+`func (o *ClusterFeatureRequest) GetFeatures() []ClusterFeatureRequestFeaturesInner`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *ClusterFeatureRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeatures, bool)`
+`func (o *ClusterFeatureRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeaturesInner, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *ClusterFeatureRequest) SetFeatures(v []ClusterFeatureRequestFeatures)`
+`func (o *ClusterFeatureRequest) SetFeatures(v []ClusterFeatureRequestFeaturesInner)`
 
 SetFeatures sets Features field to given value.
 

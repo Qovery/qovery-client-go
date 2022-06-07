@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalVariablesToImport** | **float32** |  | 
-**SuccessfulImportedVariables** | [**[]VariableImportSuccessfulImportedVariables**](VariableImportSuccessfulImportedVariables.md) |  | 
+**SuccessfulImportedVariables** | [**[]VariableImportSuccessfulImportedVariablesInner**](VariableImportSuccessfulImportedVariablesInner.md) |  | 
 
 ## Methods
 
 ### NewVariableImport
 
-`func NewVariableImport(totalVariablesToImport float32, successfulImportedVariables []VariableImportSuccessfulImportedVariables, ) *VariableImport`
+`func NewVariableImport(totalVariablesToImport float32, successfulImportedVariables []VariableImportSuccessfulImportedVariablesInner, ) *VariableImport`
 
 NewVariableImport instantiates a new VariableImport object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetTotalVariablesToImport sets TotalVariablesToImport field to given value.
 
 ### GetSuccessfulImportedVariables
 
-`func (o *VariableImport) GetSuccessfulImportedVariables() []VariableImportSuccessfulImportedVariables`
+`func (o *VariableImport) GetSuccessfulImportedVariables() []VariableImportSuccessfulImportedVariablesInner`
 
 GetSuccessfulImportedVariables returns the SuccessfulImportedVariables field if non-nil, zero value otherwise.
 
 ### GetSuccessfulImportedVariablesOk
 
-`func (o *VariableImport) GetSuccessfulImportedVariablesOk() (*[]VariableImportSuccessfulImportedVariables, bool)`
+`func (o *VariableImport) GetSuccessfulImportedVariablesOk() (*[]VariableImportSuccessfulImportedVariablesInner, bool)`
 
 GetSuccessfulImportedVariablesOk returns a tuple with the SuccessfulImportedVariables field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSuccessfulImportedVariables
 
-`func (o *VariableImport) SetSuccessfulImportedVariables(v []VariableImportSuccessfulImportedVariables)`
+`func (o *VariableImport) SetSuccessfulImportedVariables(v []VariableImportSuccessfulImportedVariablesInner)`
 
 SetSuccessfulImportedVariables sets SuccessfulImportedVariables field to given value.
 

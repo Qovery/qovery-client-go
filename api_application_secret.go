@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ApplicationSecretApiService ApplicationSecretApi service
 type ApplicationSecretApiService service
 

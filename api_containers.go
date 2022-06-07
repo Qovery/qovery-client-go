@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ContainersApiService ContainersApi service
 type ContainersApiService service
 
@@ -254,7 +249,7 @@ type ApiGetEnvironmentContainerCurrentInstanceRequest struct {
 	environmentId string
 }
 
-func (r ApiGetEnvironmentContainerCurrentInstanceRequest) Execute() (*InlineResponse2001, *http.Response, error) {
+func (r ApiGetEnvironmentContainerCurrentInstanceRequest) Execute() (*GetEnvironmentContainerCurrentInstance200Response, *http.Response, error) {
 	return r.ApiService.GetEnvironmentContainerCurrentInstanceExecute(r)
 }
 
@@ -274,13 +269,13 @@ func (a *ContainersApiService) GetEnvironmentContainerCurrentInstance(ctx contex
 }
 
 // Execute executes the request
-//  @return InlineResponse2001
-func (a *ContainersApiService) GetEnvironmentContainerCurrentInstanceExecute(r ApiGetEnvironmentContainerCurrentInstanceRequest) (*InlineResponse2001, *http.Response, error) {
+//  @return GetEnvironmentContainerCurrentInstance200Response
+func (a *ContainersApiService) GetEnvironmentContainerCurrentInstanceExecute(r ApiGetEnvironmentContainerCurrentInstanceRequest) (*GetEnvironmentContainerCurrentInstance200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InlineResponse2001
+		localVarReturnValue *GetEnvironmentContainerCurrentInstance200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainersApiService.GetEnvironmentContainerCurrentInstance")

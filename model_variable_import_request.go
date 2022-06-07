@@ -17,15 +17,15 @@ import (
 
 // VariableImportRequest struct for VariableImportRequest
 type VariableImportRequest struct {
-	Overwrite bool                        `json:"overwrite"`
-	Vars      []VariableImportRequestVars `json:"vars"`
+	Overwrite bool                             `json:"overwrite"`
+	Vars      []VariableImportRequestVarsInner `json:"vars"`
 }
 
 // NewVariableImportRequest instantiates a new VariableImportRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableImportRequest(overwrite bool, vars []VariableImportRequestVars) *VariableImportRequest {
+func NewVariableImportRequest(overwrite bool, vars []VariableImportRequestVarsInner) *VariableImportRequest {
 	this := VariableImportRequest{}
 	this.Overwrite = overwrite
 	this.Vars = vars
@@ -67,9 +67,9 @@ func (o *VariableImportRequest) SetOverwrite(v bool) {
 }
 
 // GetVars returns the Vars field value
-func (o *VariableImportRequest) GetVars() []VariableImportRequestVars {
+func (o *VariableImportRequest) GetVars() []VariableImportRequestVarsInner {
 	if o == nil {
-		var ret []VariableImportRequestVars
+		var ret []VariableImportRequestVarsInner
 		return ret
 	}
 
@@ -78,7 +78,7 @@ func (o *VariableImportRequest) GetVars() []VariableImportRequestVars {
 
 // GetVarsOk returns a tuple with the Vars field value
 // and a boolean to check if the value has been set.
-func (o *VariableImportRequest) GetVarsOk() ([]VariableImportRequestVars, bool) {
+func (o *VariableImportRequest) GetVarsOk() ([]VariableImportRequestVarsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,7 +86,7 @@ func (o *VariableImportRequest) GetVarsOk() ([]VariableImportRequestVars, bool) 
 }
 
 // SetVars sets field value
-func (o *VariableImportRequest) SetVars(v []VariableImportRequestVars) {
+func (o *VariableImportRequest) SetVars(v []VariableImportRequestVarsInner) {
 	o.Vars = v
 }
 

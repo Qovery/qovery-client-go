@@ -727,11 +727,11 @@ paths:
       - Billing
   /organization/{organizationId}/billingStatus:
     get:
-      description: |
-        This endpoint returns a "is_valid" boolean field reflecting the billing status of the organization:
-        - If true, the organization billing is valid
-        - For Startup organization, it returns false if there is at least 1 invoice unpaid since 1 week
-        - For Community organization, it returns false if there is no credit left
+      description: "This endpoint returns a \"is_valid\" boolean field reflecting\
+        \ the billing status of the organization:\n- If true, the organization billing\
+        \ is valid\n- For Startup organization, it returns false if there is at least\
+        \ 1 invoice unpaid since 1 week\n- For Community organization, it returns\
+        \ false if there is no credit left\n"
       operationId: getOrganizationBillingStatus
       parameters:
       - description: Organization ID
@@ -1056,8 +1056,8 @@ paths:
       - Projects
   /organization/{organizationId}/project/stats:
     get:
-      description: Returns a list of project ids, and for each its total numberof
-        services and environments
+      description: "Returns a list of project ids, and for each its total numberof\
+        \ services and environments"
       operationId: getOrganizationProjectStats
       parameters:
       - description: Organization ID
@@ -2514,7 +2514,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/listContainerRegistry_200_response'
           description: List container registries
         "401":
           description: Access token is missing or invalid
@@ -3065,10 +3065,10 @@ paths:
       tags:
       - Project Environment Variable
     post:
-      description: |
-        - Add an environment variable to the project.
-          - If the environment variable key already exists, then it will be replaced by the new one.
-          - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
+      description: "- Add an environment variable to the project.\n  - If the environment\
+        \ variable key already exists, then it will be replaced by the new one.\n\
+        \  - If the environment variable value points toward an existing environment\
+        \ variable key, it will be considered as an alias.\n"
       operationId: createProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -3105,10 +3105,10 @@ paths:
       - Project Environment Variable
   /project/{projectId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: |
-        - To delete an environment variable you must have the project user permission
-        - You can't delete a BUILT_IN variable
-        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete an environment variable you must have the project\
+        \ user permission\n- You can't delete a BUILT_IN variable\n- If you delete\
+        \ a variable having override or alias, the associated override/alias will\
+        \ be deleted as well\n"
       operationId: deleteProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -3142,11 +3142,10 @@ paths:
       tags:
       - Project Environment Variable
     put:
-      description: |
-        - You can't edit a BUILT_IN variable
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -3246,13 +3245,14 @@ paths:
       - Project Environment Variable
   /project/{projectId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at project level on an existing environment variable having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new environment variable at project level with the same value as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at project level on an existing environment\
+        \ variable having higher scope, in order to customize its key.\n- You only\
+        \ have to specify a key in the request body\n- The system will create a new\
+        \ environment variable at project level with the same value as the one corresponding\
+        \ to the variable id in the path\n- The response body will contain the newly\
+        \ created variable\n- Information regarding the aliased_variable will be exposed\
+        \ in the \"aliased_variable\" field of the newly created variable\n- Only\
+        \ 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createProjectEnvironmentVariableAlias
       parameters:
       - description: Project ID
@@ -3328,10 +3328,9 @@ paths:
       tags:
       - Project Secret
     post:
-      description: |
-        - Add a secret to the project.
-          - If the secret key already exists, then it will be replaced by the new one.
-          - If the secret value points toward an existing secret key, it will be considered as an alias.
+      description: "- Add a secret to the project.\n  - If the secret key already\
+        \ exists, then it will be replaced by the new one.\n  - If the secret value\
+        \ points toward an existing secret key, it will be considered as an alias.\n"
       operationId: createProjectSecret
       parameters:
       - description: Project ID
@@ -3368,10 +3367,10 @@ paths:
       - Project Secret
   /project/{projectId}/secret/{secretId}:
     delete:
-      description: |
-        - To delete a secret you must have the project user permission
-        - You can't delete a BUILT_IN secret
-        - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteProjectSecret
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well  operationId:\
+        \ deleteProjectSecret\n"
       operationId: deleteProjectSecret
       parameters:
       - description: Project ID
@@ -3405,11 +3404,10 @@ paths:
       tags:
       - Project Secret
     put:
-      description: |
-        - You can't edit a BUILT_IN secret
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editProjectSecret
       parameters:
       - description: Project ID
@@ -3509,13 +3507,14 @@ paths:
       - Project Secret
   /project/{projectId}/secret/{secretId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at project level on an existing secret having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new secret at project level with the same value as the one corresponding to the secret id in the path
-        - The response body will contain the newly created secret
-        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at project level on an existing secret\
+        \ having higher scope, in order to customize its key.\n- You only have to\
+        \ specify a key in the request body\n- The system will create a new secret\
+        \ at project level with the same value as the one corresponding to the secret\
+        \ id in the path\n- The response body will contain the newly created secret\n\
+        - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
+        \ field of the newly created secret\n- Only 1 alias level is allowed. You\
+        \ can't create an alias on an alias\n"
       operationId: createProjectSecretAlias
       parameters:
       - description: Project ID
@@ -3593,8 +3592,8 @@ paths:
       - Environments
   /project/{projectId}/environment/stats:
     get:
-      description: Returns a list of environment ids, and for each its total numberof
-        services
+      description: "Returns a list of environment ids, and for each its total numberof\
+        \ services"
       operationId: getProjectEnvironmentServiceNumber
       parameters:
       - description: Project ID
@@ -3952,9 +3951,9 @@ paths:
       - Environment Actions
   /environment/{environmentId}/clone:
     post:
-      description: You must provide a name. This will create a new environment, with
-        the same configuration, and same applications and databases. Database data
-        is not cloned.
+      description: "You must provide a name. This will create a new environment, with\
+        \ the same configuration, and same applications and databases. Database data\
+        \ is not cloned."
       operationId: cloneEnvironment
       parameters:
       - description: Environment ID
@@ -4146,7 +4145,7 @@ paths:
       - Applications
   /environment/{environmentId}/application/currentScale:
     get:
-      description: Returns min, max, and running number of instances for each application
+      description: "Returns min, max, and running number of instances for each application"
       operationId: getEnvironmentApplicationCurrentScale
       parameters:
       - description: Environment ID
@@ -4366,7 +4365,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_1'
+                $ref: '#/components/schemas/getEnvironmentContainerCurrentInstance_200_response'
           description: Know current resource consumption for each container of the
             environment
         "401":
@@ -4409,7 +4408,7 @@ paths:
       - Containers
   /environment/{environmentId}/container/currentScale:
     get:
-      description: Returns min, max, and running number of instances for each container
+      description: "Returns min, max, and running number of instances for each container"
       operationId: getEnvironmentContainerCurrentScale
       parameters:
       - description: Environment ID
@@ -4508,10 +4507,10 @@ paths:
       - Environment Logs
   /environment/{environmentId}/deploymentHistory:
     get:
-      description: List previous and current environment deployments with the status
-        deployment and the related services. By default it returns the 20 last results.
-        The response is paginated. In order to request the next page, you can use
-        the startId query parameter
+      description: "List previous and current environment deployments with the status\
+        \ deployment and the related services. By default it returns the 20 last results.\
+        \ The response is paginated. In order to request the next page, you can use\
+        \ the startId query parameter"
       operationId: listEnvironmentDeploymentHistory
       parameters:
       - description: Environment ID
@@ -4578,10 +4577,10 @@ paths:
       tags:
       - Environment Variable
     post:
-      description: |
-        - Add an environment variable to the environment.
-          - If the environment variable key already exists, then it will be replaced by the new one.
-          - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
+      description: "- Add an environment variable to the environment.\n  - If the\
+        \ environment variable key already exists, then it will be replaced by the\
+        \ new one.\n  - If the environment variable value points toward an existing\
+        \ environment variable key, it will be considered as an alias.\n"
       operationId: createEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -4618,10 +4617,10 @@ paths:
       - Environment Variable
   /environment/{environmentId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: |
-        - To delete an environment variable you must have the project user permission
-        - You can't delete a BUILT_IN variable
-        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete an environment variable you must have the project\
+        \ user permission\n- You can't delete a BUILT_IN variable\n- If you delete\
+        \ a variable having override or alias, the associated override/alias will\
+        \ be deleted as well\n"
       operationId: deleteEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -4655,11 +4654,10 @@ paths:
       tags:
       - Environment Variable
     put:
-      description: |
-        - You can't edit a BUILT_IN variable
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -4759,13 +4757,14 @@ paths:
       - Environment Variable
   /environment/{environmentId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at environment level on an existing environment variable having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new environment variable at environment level with the same value as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at environment level on an existing\
+        \ environment variable having higher scope, in order to customize its key.\n\
+        - You only have to specify a key in the request body\n- The system will create\
+        \ a new environment variable at environment level with the same value as the\
+        \ one corresponding to the variable id in the path\n- The response body will\
+        \ contain the newly created variable\n- Information regarding the aliased_variable\
+        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
+        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createEnvironmentEnvironmentVariableAlias
       parameters:
       - description: Environment ID
@@ -4841,10 +4840,9 @@ paths:
       tags:
       - Environment Secret
     post:
-      description: |
-        - Add a secret to the environment.
-          - If the secret key already exists, then it will be replaced by the new one.
-          - If the secret value points toward an existing secret key, it will be considered as an alias.
+      description: "- Add a secret to the environment.\n  - If the secret key already\
+        \ exists, then it will be replaced by the new one.\n  - If the secret value\
+        \ points toward an existing secret key, it will be considered as an alias.\n"
       operationId: createEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -4881,10 +4879,10 @@ paths:
       - Environment Secret
   /environment/{environmentId}/secret/{secretId}:
     delete:
-      description: |
-        - To delete a secret you must have the project user permission
-        - You can't delete a BUILT_IN secret
-        - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well  operationId:\
+        \ deleteEnvironmentSecret\n"
       operationId: deleteEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -4918,11 +4916,10 @@ paths:
       tags:
       - Environment Secret
     put:
-      description: |
-        - You can't edit a BUILT_IN secret
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -5022,13 +5019,14 @@ paths:
       - Environment Secret
   /environment/{environmentId}/secret/{secretId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at environment level on an existing secret having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new secret at environment level with the same value as the one corresponding to the secret id in the path
-        - The response body will contain the newly created secret
-        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at environment level on an existing\
+        \ secret having higher scope, in order to customize its key.\n- You only have\
+        \ to specify a key in the request body\n- The system will create a new secret\
+        \ at environment level with the same value as the one corresponding to the\
+        \ secret id in the path\n- The response body will contain the newly created\
+        \ secret\n- Information regarding the aliased_secret will be exposed in the\
+        \ \"aliased_secret\" field of the newly created secret\n- Only 1 alias level\
+        \ is allowed. You can't create an alias on an alias\n"
       operationId: createEnvironmentSecretAlias
       parameters:
       - description: Environment ID
@@ -5131,7 +5129,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: List eligible database types, versions and modes for the environment
+      summary: "List eligible database types, versions and modes for the environment"
       tags:
       - Databases
   /application/{applicationId}:
@@ -5189,10 +5187,12 @@ paths:
       tags:
       - Application Main Calls
     put:
-      description: |
-        - To edit the application you must have the admin permission.
-        - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
-        - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
+      description: "- To edit the application you must have the admin permission.\n\
+        - For port edition, if you provide a port id, we will update the corresponding\
+        \ port. If you don't we will create a new one. If you remove a port from the\
+        \ payload, we will delete it.\n- For storage edition, if you provide a storage\
+        \ id, we will update the corresponding storage. If you don't we will create\
+        \ a new one. If you remove a storage from the payload, we will delete it.\n"
       operationId: editApplication
       parameters:
       - description: Application ID
@@ -5576,7 +5576,7 @@ paths:
       - Application Metrics
   /application/{applicationId}/currentScale:
     get:
-      description: Returns min, max, and running number of instances of the application
+      description: "Returns min, max, and running number of instances of the application"
       operationId: getApplicationCurrentScale
       parameters:
       - description: Application ID
@@ -6047,9 +6047,9 @@ paths:
       - Application Actions
   /application/{applicationId}/deploymentHistory:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter.
-        You can also filter by status (FAILED or SUCCESS), and git_commit_id
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter.\
+        \ You can also filter by status (FAILED or SUCCESS), and git_commit_id"
       operationId: listApplicationDeploymentHistory
       parameters:
       - description: Application ID
@@ -6088,8 +6088,8 @@ paths:
       - Application Deployment History
   /application/{applicationId}/event:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter"
       operationId: listApplicationEvent
       parameters:
       - description: Application ID
@@ -6194,8 +6194,8 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/import:
     post:
-      description: Import environment variables in a defined scope, with a defined
-        visibility.
+      description: "Import environment variables in a defined scope, with a defined\
+        \ visibility."
       operationId: importEnvironmentVariable
       parameters:
       - description: Application ID
@@ -6232,10 +6232,10 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: |
-        - To delete an environment variable from an application you must have the project user permission
-        - You can't delete a BUILT_IN variable
-        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete an environment variable from an application you must\
+        \ have the project user permission\n- You can't delete a BUILT_IN variable\n\
+        - If you delete a variable having override or alias, the associated override/alias\
+        \ will be deleted as well\n"
       operationId: deleteApplicationEnvironmentVariable
       parameters:
       - description: Application ID
@@ -6269,11 +6269,10 @@ paths:
       tags:
       - Application Environment Variable
     put:
-      description: |
-        - You can't edit a BUILT_IN variable
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editApplicationEnvironmentVariable
       parameters:
       - description: Application ID
@@ -6373,13 +6372,14 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at application level on an existing environment variable having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new environment variable at application level with the same value as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at application level on an existing\
+        \ environment variable having higher scope, in order to customize its key.\n\
+        - You only have to specify a key in the request body\n- The system will create\
+        \ a new environment variable at application level with the same value as the\
+        \ one corresponding to the variable id in the path\n- The response body will\
+        \ contain the newly created variable\n- Information regarding the aliased_variable\
+        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
+        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createApplicationEnvironmentVariableAlias
       parameters:
       - description: Application ID
@@ -6427,8 +6427,8 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/secret:
     get:
-      description: Secrets are like environment variables, but they are secured and
-        can't be revealed.
+      description: "Secrets are like environment variables, but they are secured and\
+        \ can't be revealed."
       operationId: listApplicationSecrets
       parameters:
       - description: Application ID
@@ -6495,10 +6495,9 @@ paths:
       - Application Secret
   /application/{applicationId}/secret/{secretId}:
     delete:
-      description: |
-        - To delete a secret you must have the project user permission
-        - You can't delete a BUILT_IN secret
-        - If you delete a secret having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well\n"
       operationId: deleteApplicationSecret
       parameters:
       - description: Application ID
@@ -6532,11 +6531,10 @@ paths:
       tags:
       - Application Secret
     put:
-      description: |
-        - You can't edit a BUILT_IN secret
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
       operationId: editApplicationSecret
       parameters:
       - description: Application ID
@@ -6636,13 +6634,14 @@ paths:
       - Application Secret
   /application/{applicationId}/secret/{secretId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at application level on an existing secret having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new secret at application level with the same value as the one corresponding to the secret id in the path
-        - The response body will contain the newly created secret
-        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at application level on an existing\
+        \ secret having higher scope, in order to customize its key.\n- You only have\
+        \ to specify a key in the request body\n- The system will create a new secret\
+        \ at application level with the same value as the one corresponding to the\
+        \ secret id in the path\n- The response body will contain the newly created\
+        \ secret\n- Information regarding the aliased_secret will be exposed in the\
+        \ \"aliased_secret\" field of the newly created secret\n- Only 1 alias level\
+        \ is allowed. You can't create an alias on an alias\n"
       operationId: createApplicationSecretAlias
       parameters:
       - description: Application ID
@@ -7328,10 +7327,12 @@ paths:
       tags:
       - Container Main Calls
     put:
-      description: |
-        - To edit the container you must have the admin permission.
-        - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
-        - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
+      description: "- To edit the container you must have the admin permission.\n\
+        - For port edition, if you provide a port id, we will update the corresponding\
+        \ port. If you don't we will create a new one. If you remove a port from the\
+        \ payload, we will delete it.\n- For storage edition, if you provide a storage\
+        \ id, we will update the corresponding storage. If you don't we will create\
+        \ a new one. If you remove a storage from the payload, we will delete it.\n"
       operationId: editContainer
       parameters:
       - description: Container ID
@@ -7790,7 +7791,7 @@ paths:
       - Container Metrics
   /container/{containerId}/currentScale:
     get:
-      description: Returns min, max, and running number of instances of the application
+      description: "Returns min, max, and running number of instances of the application"
       operationId: getContainerCurrentScale
       parameters:
       - description: Container ID
@@ -8188,7 +8189,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_2'
+                $ref: '#/components/schemas/getContainerTags_200_response'
           description: Get tags
         "401":
           description: Access token is missing or invalid
@@ -8263,8 +8264,8 @@ paths:
       - Container Actions
   /container/{containerId}/event:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter"
       operationId: listContainerEvent
       parameters:
       - description: Container ID
@@ -8369,8 +8370,8 @@ paths:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/import:
     post:
-      description: Import environment variables in a defined scope, with a defined
-        visibility.
+      description: "Import environment variables in a defined scope, with a defined\
+        \ visibility."
       operationId: importContainerEnvironmentVariable
       parameters:
       - description: Container ID
@@ -8407,10 +8408,10 @@ paths:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: |
-        - To delete an environment variable from an container you must have the project user permission
-        - You can't delete a BUILT_IN variable
-        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete an environment variable from an container you must\
+        \ have the project user permission\n- You can't delete a BUILT_IN variable\n\
+        - If you delete a variable having override or alias, the associated override/alias\
+        \ will be deleted as well\n"
       operationId: deleteContainerEnvironmentVariable
       parameters:
       - description: Container ID
@@ -8444,11 +8445,10 @@ paths:
       tags:
       - Container Environment Variable
     put:
-      description: |
-        - You can't edit a BUILT_IN variable
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
       operationId: editContainerEnvironmentVariable
       parameters:
       - description: Container ID
@@ -8548,13 +8548,14 @@ paths:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at container level on an existing environment variable having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new environment variable at container level with the same value as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at container level on an existing\
+        \ environment variable having higher scope, in order to customize its key.\n\
+        - You only have to specify a key in the request body\n- The system will create\
+        \ a new environment variable at container level with the same value as the\
+        \ one corresponding to the variable id in the path\n- The response body will\
+        \ contain the newly created variable\n- Information regarding the aliased_variable\
+        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
+        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createContainerEnvironmentVariableAlias
       parameters:
       - description: Container ID
@@ -8602,8 +8603,8 @@ paths:
       - Container Environment Variable
   /container/{containerId}/secret:
     get:
-      description: Secrets are like environment variables, but they are secured and
-        can't be revealed.
+      description: "Secrets are like environment variables, but they are secured and\
+        \ can't be revealed."
       operationId: listContainerSecrets
       parameters:
       - description: Container ID
@@ -8670,10 +8671,9 @@ paths:
       - Container Secret
   /container/{containerId}/secret/{secretId}:
     delete:
-      description: |
-        - To delete a secret you must have the project user permission
-        - You can't delete a BUILT_IN secret
-        - If you delete a secret having override or alias, the associated override/alias will be deleted as well
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well\n"
       operationId: deleteContainerSecret
       parameters:
       - description: Container ID
@@ -8707,11 +8707,10 @@ paths:
       tags:
       - Container Secret
     put:
-      description: |
-        - You can't edit a BUILT_IN secret
-        - For an override, you can't edit the key
-        - For an alias, you can't edit the value
-        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
       operationId: editContainerSecret
       parameters:
       - description: Container ID
@@ -8811,13 +8810,14 @@ paths:
       - Application Secret
   /container/{containerId}/secret/{secretId}/alias:
     post:
-      description: |
-        - Allows you to add an alias at container level on an existing secret having higher scope, in order to customize its key.
-        - You only have to specify a key in the request body
-        - The system will create a new secret at container level with the same value as the one corresponding to the secret id in the path
-        - The response body will contain the newly created secret
-        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-        - Only 1 alias level is allowed. You can't create an alias on an alias
+      description: "- Allows you to add an alias at container level on an existing\
+        \ secret having higher scope, in order to customize its key.\n- You only have\
+        \ to specify a key in the request body\n- The system will create a new secret\
+        \ at container level with the same value as the one corresponding to the secret\
+        \ id in the path\n- The response body will contain the newly created secret\n\
+        - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
+        \ field of the newly created secret\n- Only 1 alias level is allowed. You\
+        \ can't create an alias on an alias\n"
       operationId: createContainerSecretAlias
       parameters:
       - description: Container ID
@@ -9723,9 +9723,9 @@ paths:
       - Database Main Calls
   /database/{databaseId}/logicalDatabase:
     get:
-      description: A logical database exists inside a database. The database is a
-        service that exists within an environment, that you can deploy, and that has
-        allocated resources. A database can have several logical databases
+      description: "A logical database exists inside a database. The database is a\
+        \ service that exists within an environment, that you can deploy, and that\
+        \ has allocated resources. A database can have several logical databases"
       operationId: listLogicalDatabaseDatabase
       parameters:
       - description: Database ID
@@ -9754,7 +9754,7 @@ paths:
       tags:
       - Logical Database
     post:
-      description: If you don't specify credentials, Qovery will autogenerate them.
+      description: "If you don't specify credentials, Qovery will autogenerate them."
       operationId: createLogicalDatabaseOnDatabase
       parameters:
       - description: Database ID
@@ -10228,8 +10228,8 @@ paths:
       - Database Metrics
   /database/{databaseId}/backup:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter"
       operationId: listDatabaseBackup
       parameters:
       - description: Database ID
@@ -10337,8 +10337,8 @@ paths:
       - Backups
   /database/{databaseId}/event:
     get:
-      description: By default it returns the 20 last results. The response is paginated.
-        In order to request the next page, you can use the startId query parameter
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter"
       operationId: listDatabaseEvent
       parameters:
       - description: Database ID
@@ -10402,9 +10402,9 @@ paths:
       tags:
       - Logical Database
     get:
-      description: A logical database exists inside a database. The database is a
-        service that exists within an environment, that you can deploy, and that has
-        allocated resources. A database can have several logical databases
+      description: "A logical database exists inside a database. The database is a\
+        \ service that exists within an environment, that you can deploy, and that\
+        \ has allocated resources. A database can have several logical databases"
       operationId: getLogicalDatabase
       parameters:
       - description: Logical Database ID
@@ -10783,8 +10783,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignUp'
-          description: If a previous sign up request for the same user has been found,
-            the information is returned in the payload
+          description: "If a previous sign up request for the same user has been found,\
+            \ the information is returned in the payload"
         "401":
           description: Access token is missing or invalid
         "403":
@@ -11201,6 +11201,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         max: 6
         alert_threshold_in_percent: 2.3021358869347655
+        status: null
       properties:
         min:
           type: integer
@@ -11238,7 +11239,7 @@ components:
         type:
           $ref: '#/components/schemas/DeploymentRestrictionTypeEnum'
         value:
-          description: For `PATH` restrictions, the value must not start with `/`
+          description: "For `PATH` restrictions, the value must not start with `/`"
           example: application1/src/
           type: string
       required:
@@ -11308,9 +11309,8 @@ components:
           example: https://github.com/Qovery/simple-node-app
           type: string
         branch:
-          description: |
-            Name of the branch to use. This is optional
-            If not specified, then the branch used is the `main` or `master` one
+          description: "Name of the branch to use. This is optional\nIf not specified,\
+            \ then the branch used is the `main` or `master` one\n"
           example: feat/text_xxx
           type: string
         root_path:
@@ -11351,14 +11351,14 @@ components:
       properties:
         ports:
           items:
-            $ref: '#/components/schemas/ApplicationPort_ports'
+            $ref: '#/components/schemas/ApplicationPort_ports_inner'
           type: array
       type: object
     ApplicationPortRequest:
       properties:
         ports:
           items:
-            $ref: '#/components/schemas/ApplicationPortRequest_ports'
+            $ref: '#/components/schemas/ApplicationPortRequest_ports_inner'
           type: array
       type: object
     ApplicationRequest:
@@ -11381,20 +11381,21 @@ components:
       properties:
         storage:
           items:
-            $ref: '#/components/schemas/ApplicationStorage_storage'
+            $ref: '#/components/schemas/ApplicationStorage_storage_inner'
           type: array
       type: object
     ApplicationStorageRequest:
       properties:
         storage:
           items:
-            $ref: '#/components/schemas/ApplicationStorageRequest_storage'
+            $ref: '#/components/schemas/ApplicationStorageRequest_storage_inner'
           type: array
       type: object
     AvailableContainerRegistryResponse:
       example:
         required_config:
-          key: '{}'
+          key: ""
+        kind: null
       properties:
         kind:
           $ref: '#/components/schemas/ContainerRegistryKind'
@@ -11490,7 +11491,7 @@ components:
           example: Gump
           type: string
         email:
-          description: email used for billing, and to receive all invoices by email
+          description: "email used for billing, and to receive all invoices by email"
           example: forrest@gump.com
           format: email
           type: string
@@ -11545,7 +11546,7 @@ components:
           example: Gump
           type: string
         email:
-          description: email used for billing, and to receive all invoices by email
+          description: "email used for billing, and to receive all invoices by email"
           example: forrest@gump.com
           format: email
           type: string
@@ -11642,6 +11643,7 @@ components:
       type: string
     CloneRequest:
       example:
+        mode: null
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
       properties:
@@ -11767,8 +11769,8 @@ components:
           default: 1
           type: integer
         instance_type:
-          description: the instance type to be used for this cluster. The list of
-            values can be retrieved via the endpoint /{CloudProvider}/instanceType
+          description: "the instance type to be used for this cluster. The list of\
+            \ values can be retrieved via the endpoint /{CloudProvider}/instanceType"
           example: T3A_LARGE
           type: string
         disk_size:
@@ -11786,6 +11788,7 @@ components:
         credentials:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        cloud_provider: null
         region: region
       properties:
         cloud_provider:
@@ -11800,6 +11803,7 @@ components:
         credentials:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        cloud_provider: null
         region: region
       properties:
         cloud_provider:
@@ -11838,15 +11842,15 @@ components:
     ClusterFeature:
       example:
         accepted_values:
-        - ""
-        - ""
+        - null
+        - null
         value_type: BOOLEAN
         cost_per_month_in_cents: 9900
         is_value_updatable: false
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         title: title
-        value: ""
+        value: null
         cost_per_month: 99
         currency_code: USD
       properties:
@@ -11877,52 +11881,47 @@ components:
           nullable: false
           type: string
         value:
-          nullable: true
-          oneOf:
-          - type: string
-          - type: boolean
+          $ref: '#/components/schemas/ClusterFeature_value'
         is_value_updatable:
           default: false
           type: boolean
         accepted_values:
           items:
-            oneOf:
-            - type: string
-            - type: boolean
+            $ref: '#/components/schemas/ClusterFeature_accepted_values_inner'
           type: array
       type: object
     ClusterFeatureRequest:
       properties:
         features:
           items:
-            $ref: '#/components/schemas/ClusterFeatureRequest_features'
+            $ref: '#/components/schemas/ClusterFeatureRequest_features_inner'
           type: array
       type: object
     ClusterFeatureResponseList:
       example:
         results:
         - accepted_values:
-          - ""
-          - ""
+          - null
+          - null
           value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           title: title
-          value: ""
+          value: null
           cost_per_month: 99
           currency_code: USD
         - accepted_values:
-          - ""
-          - ""
+          - null
+          - null
           value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           title: title
-          value: ""
+          value: null
           cost_per_month: 99
           currency_code: USD
       properties:
@@ -11945,7 +11944,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterInstanceTypeResponseList_results'
+            $ref: '#/components/schemas/ClusterInstanceTypeResponseList_results_inner'
           type: array
       type: object
     ClusterReadinessStatus:
@@ -12020,7 +12019,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterRoutingTable_results'
+            $ref: '#/components/schemas/ClusterRoutingTable_results_inner'
           type: array
       type: object
     ClusterRoutingTableRequest:
@@ -12035,7 +12034,7 @@ components:
       properties:
         routes:
           items:
-            $ref: '#/components/schemas/ClusterRoutingTableRequest_routes'
+            $ref: '#/components/schemas/ClusterRoutingTableRequest_routes_inner'
           type: array
       required:
       - routes
@@ -12044,6 +12043,7 @@ components:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         is_deployed: true
+        status: null
       properties:
         cluster_id:
           format: uuid
@@ -12058,8 +12058,10 @@ components:
         results:
         - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_deployed: true
+          status: null
         - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           is_deployed: true
+          status: null
       properties:
         results:
           items:
@@ -12170,6 +12172,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         max: 6
         alert_threshold_in_percent: 2.3021358869347655
+        status: null
       properties:
         min:
           type: integer
@@ -12214,7 +12217,7 @@ components:
         type:
           $ref: '#/components/schemas/DeploymentRestrictionTypeEnum'
         value:
-          description: For `PATH` restrictions, the value must not start with `/`
+          description: "For `PATH` restrictions, the value must not start with `/`"
           example: application1/src/
           type: string
       required:
@@ -12288,10 +12291,11 @@ components:
       type: string
     ContainerRegistryRequest:
       example:
+        kind: null
         name: name
         description: description
         config:
-          key: '{}'
+          key: ""
         url: https://openapi-generator.tech
       properties:
         name:
@@ -12316,6 +12320,7 @@ components:
       type: object
     ContainerRegistryResponse:
       example:
+        kind: null
         name: name
         description: description
         config: config
@@ -12559,9 +12564,12 @@ components:
       type: string
     DatabaseConfiguration:
       example:
+        database_type: null
         version:
         - name: "10.1"
+          supported_mode: null
         - name: "10.1"
+          supported_mode: null
       properties:
         database_type:
           $ref: '#/components/schemas/DatabaseTypeEnum'
@@ -12573,12 +12581,18 @@ components:
     DatabaseConfigurationResponseList:
       example:
         results:
-        - version:
+        - database_type: null
+          version:
           - name: "10.1"
+            supported_mode: null
           - name: "10.1"
-        - version:
+            supported_mode: null
+        - database_type: null
+          version:
           - name: "10.1"
+            supported_mode: null
           - name: "10.1"
+            supported_mode: null
       properties:
         results:
           items:
@@ -12593,18 +12607,21 @@ components:
           requested_in_mb: 2
           consumed_in_mb: 7
           alert_threshold_in_percent: 2.027123023002322
+          status: null
         cpu:
           consumed_in_percent: 1.4658129805029452
           warning_threshold_in_percent: 5.962133916683182
           consumed_in_number: 6.027456183070403
           requested_in_float: 0.8008281904610115
           alert_threshold_in_percent: 5.637376656633329
+          status: null
         storage:
           requested_in_gb: 0
           consumed_in_percent: 1.4658129805029452
           warning_threshold_in_percent: 5.962133916683182
           consumed_in_gb: 6
           alert_threshold_in_percent: 5.637376656633329
+          status: null
       properties:
         cpu:
           $ref: '#/components/schemas/DatabaseCurrentMetric_cpu'
@@ -12616,6 +12633,7 @@ components:
     DatabaseEditRequest:
       example:
         memory: 1024
+        accessibility: null
         name: name
         cpu: 1250
         storage: 4
@@ -12651,10 +12669,13 @@ components:
       type: string
     DatabaseRequest:
       example:
+        mode: null
         memory: 1024
+        accessibility: null
         name: name
         cpu: 1250
         storage: 0
+        type: null
         version: "10.1"
       properties:
         name:
@@ -12710,6 +12731,7 @@ components:
     DatabaseVersionMode:
       example:
         name: "10.1"
+        supported_mode: null
       properties:
         name:
           example: "10.1"
@@ -12727,7 +12749,7 @@ components:
       properties:
         applications:
           items:
-            $ref: '#/components/schemas/DeployAllRequest_applications'
+            $ref: '#/components/schemas/DeployAllRequest_applications_inner'
           type: array
       type: object
     DeployRequest:
@@ -12866,6 +12888,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         max: 6
         alert_threshold_in_percent: 2.3021358869347655
+        status: null
       properties:
         application:
           format: uuid
@@ -12900,6 +12923,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           max: 6
           alert_threshold_in_percent: 2.3021358869347655
+          status: null
         - running: 1
           warning_threshold_in_percent: 5.637376656633329
           running_in_percent: 5.962133916683182
@@ -12908,6 +12932,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           max: 6
           alert_threshold_in_percent: 2.3021358869347655
+          status: null
       properties:
         results:
           items:
@@ -12925,6 +12950,7 @@ components:
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -12933,12 +12959,14 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
           - memory:
               consumed_in_percent: 9.301444243932576
               warning_threshold_in_percent: 3.616076749251911
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -12947,6 +12975,7 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
         - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           instances:
           - memory:
@@ -12955,6 +12984,7 @@ components:
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -12963,12 +12993,14 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
           - memory:
               consumed_in_percent: 9.301444243932576
               warning_threshold_in_percent: 3.616076749251911
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -12977,10 +13009,11 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
       properties:
         results:
           items:
-            $ref: '#/components/schemas/inline_response_200_1_results'
+            $ref: '#/components/schemas/getEnvironmentContainerCurrentInstance_200_response_results_inner'
           type: array
       type: object
     EnvironmentApplicationsStorage:
@@ -12994,6 +13027,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           consumed_in_gb: 6.027456183070403
           alert_threshold_in_percent: 5.637376656633329
+          status: null
         - requested_in_gb: 0
           consumed_in_percent: 1.4658129805029452
           warning_threshold_in_percent: 5.962133916683182
@@ -13001,6 +13035,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           consumed_in_gb: 6.027456183070403
           alert_threshold_in_percent: 5.637376656633329
+          status: null
       properties:
         application:
           format: uuid
@@ -13025,6 +13060,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
           - requested_in_gb: 0
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
@@ -13032,6 +13068,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
         - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           disks:
           - requested_in_gb: 0
@@ -13041,6 +13078,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
           - requested_in_gb: 0
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
@@ -13048,6 +13086,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
       properties:
         results:
           items:
@@ -13085,6 +13124,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         max: 6
         alert_threshold_in_percent: 2.3021358869347655
+        status: null
       properties:
         container:
           format: uuid
@@ -13119,6 +13159,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           max: 6
           alert_threshold_in_percent: 2.3021358869347655
+          status: null
         - container: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           running: 1
           warning_threshold_in_percent: 5.637376656633329
@@ -13127,6 +13168,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           max: 6
           alert_threshold_in_percent: 2.3021358869347655
+          status: null
       properties:
         results:
           items:
@@ -13144,6 +13186,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           consumed_in_gb: 6.027456183070403
           alert_threshold_in_percent: 5.637376656633329
+          status: null
         - requested_in_gb: 0
           consumed_in_percent: 1.4658129805029452
           warning_threshold_in_percent: 5.962133916683182
@@ -13151,6 +13194,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           consumed_in_gb: 6.027456183070403
           alert_threshold_in_percent: 5.637376656633329
+          status: null
       properties:
         container:
           format: uuid
@@ -13175,6 +13219,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
           - requested_in_gb: 0
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
@@ -13182,6 +13227,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
         - container: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           disks:
           - requested_in_gb: 0
@@ -13191,6 +13237,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
           - requested_in_gb: 0
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
@@ -13198,6 +13245,7 @@ components:
             created_at: 2000-01-23T04:56:07.000+00:00
             consumed_in_gb: 6.027456183070403
             alert_threshold_in_percent: 5.637376656633329
+            status: null
       properties:
         results:
           items:
@@ -13213,18 +13261,21 @@ components:
           requested_in_mb: 2
           consumed_in_mb: 7
           alert_threshold_in_percent: 2.027123023002322
+          status: null
         cpu:
           consumed_in_percent: 1.4658129805029452
           warning_threshold_in_percent: 5.962133916683182
           consumed_in_number: 6.027456183070403
           requested_in_float: 0.8008281904610115
           alert_threshold_in_percent: 5.637376656633329
+          status: null
         storage:
           requested_in_gb: 0
           consumed_in_percent: 1.4658129805029452
           warning_threshold_in_percent: 5.962133916683182
           consumed_in_gb: 6
           alert_threshold_in_percent: 5.637376656633329
+          status: null
       properties:
         database:
           format: uuid
@@ -13246,18 +13297,21 @@ components:
             requested_in_mb: 2
             consumed_in_mb: 7
             alert_threshold_in_percent: 2.027123023002322
+            status: null
           cpu:
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
             consumed_in_number: 6.027456183070403
             requested_in_float: 0.8008281904610115
             alert_threshold_in_percent: 5.637376656633329
+            status: null
           storage:
             requested_in_gb: 0
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
             consumed_in_gb: 6
             alert_threshold_in_percent: 5.637376656633329
+            status: null
         - database: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           memory:
             consumed_in_percent: 9.301444243932576
@@ -13265,18 +13319,21 @@ components:
             requested_in_mb: 2
             consumed_in_mb: 7
             alert_threshold_in_percent: 2.027123023002322
+            status: null
           cpu:
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
             consumed_in_number: 6.027456183070403
             requested_in_float: 0.8008281904610115
             alert_threshold_in_percent: 5.637376656633329
+            status: null
           storage:
             requested_in_gb: 0
             consumed_in_percent: 1.4658129805029452
             warning_threshold_in_percent: 5.962133916683182
             consumed_in_gb: 6
             alert_threshold_in_percent: 5.637376656633329
+            status: null
       properties:
         results:
           items:
@@ -13331,6 +13388,7 @@ components:
       type: object
     EnvironmentEditRequest:
       example:
+        mode: null
         name: name
       properties:
         name:
@@ -13344,10 +13402,12 @@ components:
         scope:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: null
         hint: only for errors. it gives a possible action to the user -- Markdown
           can be injected
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: null
         message: message
       properties:
         id:
@@ -13389,19 +13449,23 @@ components:
           scope:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: null
           hint: only for errors. it gives a possible action to the user -- Markdown
             can be injected
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
           message: message
         - execution_id: execution_id
           scope:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: null
           hint: only for errors. it gives a possible action to the user -- Markdown
             can be injected
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
           message: message
       properties:
         results:
@@ -13424,6 +13488,7 @@ components:
       type: string
     EnvironmentRequest:
       example:
+        mode: null
         cluster: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
       properties:
@@ -13476,9 +13541,13 @@ components:
       example:
         results:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
           message: message
+          service_deployment_status: null
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
           message: message
+          service_deployment_status: null
       properties:
         results:
           items:
@@ -13707,6 +13776,7 @@ components:
           requested_in_mb: 2
           consumed_in_mb: 7
           alert_threshold_in_percent: 2.027123023002322
+          status: null
         name: instance 1
         created_at: 2000-01-23T04:56:07.000+00:00
         cpu:
@@ -13715,6 +13785,7 @@ components:
           consumed_in_number: 6.027456183070403
           requested_in_float: 0.8008281904610115
           alert_threshold_in_percent: 5.637376656633329
+          status: null
       properties:
         created_at:
           format: date-time
@@ -13736,6 +13807,7 @@ components:
             requested_in_mb: 2
             consumed_in_mb: 7
             alert_threshold_in_percent: 2.027123023002322
+            status: null
           name: instance 1
           created_at: 2000-01-23T04:56:07.000+00:00
           cpu:
@@ -13744,12 +13816,14 @@ components:
             consumed_in_number: 6.027456183070403
             requested_in_float: 0.8008281904610115
             alert_threshold_in_percent: 5.637376656633329
+            status: null
         - memory:
             consumed_in_percent: 9.301444243932576
             warning_threshold_in_percent: 3.616076749251911
             requested_in_mb: 2
             consumed_in_mb: 7
             alert_threshold_in_percent: 2.027123023002322
+            status: null
           name: instance 1
           created_at: 2000-01-23T04:56:07.000+00:00
           cpu:
@@ -13758,6 +13832,7 @@ components:
             consumed_in_number: 6.027456183070403
             requested_in_float: 0.8008281904610115
             alert_threshold_in_percent: 5.637376656633329
+            status: null
       properties:
         results:
           items:
@@ -13770,6 +13845,7 @@ components:
       - $ref: '#/components/schemas/InviteMember_allOf'
     InviteMemberRequest:
       example:
+        role: null
         email: email
       properties:
         email:
@@ -14201,7 +14277,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/MetricRestart_results'
+            $ref: '#/components/schemas/MetricRestart_results_inner'
           type: array
       type: object
     MetricStorage:
@@ -14317,6 +14393,7 @@ components:
       - $ref: '#/components/schemas/OrganizationApiTokenCreate_allOf'
     OrganizationApiTokenCreateRequest:
       example:
+        scope: null
         name: name
         description: description
       properties:
@@ -14407,6 +14484,7 @@ components:
         name: name
         description: description
         repository: repository
+        plan: null
       properties:
         name:
           description: name is case insensitive
@@ -14521,6 +14599,7 @@ components:
       - $ref: '#/components/schemas/ProjectDeploymentRule_allOf'
     ProjectDeploymentRuleRequest:
       example:
+        mode: null
         start_time: 1970-01-01T08:00:00Z
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auto_deploy: false
@@ -14788,7 +14867,7 @@ components:
       - number
       type: object
     ServiceTypeEnum:
-      description: type of the service (application, database, job, gateway...)
+      description: "type of the service (application, database, job, gateway...)"
       enum:
       - APPLICATION
       - DATABASE
@@ -14803,11 +14882,13 @@ components:
         qovery_usage_other: qovery_usage_other
         user_email: user_email
         user_questions: user_questions
+        type_of_use: null
         company_name: company_name
         last_name: last_name
         first_name: first_name
         qovery_usage: qovery_usage
         dx_auth: true
+        company_size: null
         current_step: current_step
       properties:
         first_name:
@@ -14871,7 +14952,9 @@ components:
     Status:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: null
         message: message
+        service_deployment_status: null
       properties:
         id:
           format: uuid
@@ -14912,6 +14995,7 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         consumed_in_gb: 6.027456183070403
         alert_threshold_in_percent: 5.637376656633329
+        status: null
       properties:
         created_at:
           format: date-time
@@ -14941,6 +15025,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           consumed_in_gb: 6.027456183070403
           alert_threshold_in_percent: 5.637376656633329
+          status: null
         - requested_in_gb: 0
           consumed_in_percent: 1.4658129805029452
           warning_threshold_in_percent: 5.962133916683182
@@ -14948,6 +15033,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           consumed_in_gb: 6.027456183070403
           alert_threshold_in_percent: 5.637376656633329
+          status: null
       properties:
         results:
           items:
@@ -15092,9 +15178,11 @@ components:
         total_variables_to_import: 0.8008281904610115
         successful_imported_variables:
         - is_secret: true
+          scope: null
           name: name
           value: value
         - is_secret: true
+          scope: null
           name: name
           value: value
       properties:
@@ -15102,7 +15190,7 @@ components:
           type: number
         successful_imported_variables:
           items:
-            $ref: '#/components/schemas/VariableImport_successful_imported_variables'
+            $ref: '#/components/schemas/VariableImport_successful_imported_variables_inner'
           type: array
       required:
       - successful_imported_variables
@@ -15112,9 +15200,11 @@ components:
       example:
         vars:
         - is_secret: true
+          scope: null
           name: name
           value: value
         - is_secret: true
+          scope: null
           name: name
           value: value
         overwrite: false
@@ -15124,7 +15214,7 @@ components:
           type: boolean
         vars:
           items:
-            $ref: '#/components/schemas/VariableImportRequest_vars'
+            $ref: '#/components/schemas/VariableImportRequest_vars_inner'
           type: array
       required:
       - overwrite
@@ -15162,14 +15252,16 @@ components:
       - SUNDAY
       example: MONDAY
       type: string
-    inline_response_200:
+    listContainerRegistry_200_response:
       example:
         results:
-        - name: name
+        - kind: null
+          name: name
           description: description
           config: config
           url: url
-        - name: name
+        - kind: null
+          name: name
           description: description
           config: config
           url: url
@@ -15179,7 +15271,7 @@ components:
             $ref: '#/components/schemas/ContainerRegistryResponse'
           type: array
       type: object
-    inline_response_200_1_results:
+    getEnvironmentContainerCurrentInstance_200_response_results_inner:
       example:
         application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         instances:
@@ -15189,6 +15281,7 @@ components:
             requested_in_mb: 2
             consumed_in_mb: 7
             alert_threshold_in_percent: 2.027123023002322
+            status: null
           name: instance 1
           created_at: 2000-01-23T04:56:07.000+00:00
           cpu:
@@ -15197,12 +15290,14 @@ components:
             consumed_in_number: 6.027456183070403
             requested_in_float: 0.8008281904610115
             alert_threshold_in_percent: 5.637376656633329
+            status: null
         - memory:
             consumed_in_percent: 9.301444243932576
             warning_threshold_in_percent: 3.616076749251911
             requested_in_mb: 2
             consumed_in_mb: 7
             alert_threshold_in_percent: 2.027123023002322
+            status: null
           name: instance 1
           created_at: 2000-01-23T04:56:07.000+00:00
           cpu:
@@ -15211,6 +15306,7 @@ components:
             consumed_in_number: 6.027456183070403
             requested_in_float: 0.8008281904610115
             alert_threshold_in_percent: 5.637376656633329
+            status: null
       properties:
         application:
           format: uuid
@@ -15223,7 +15319,7 @@ components:
       - application
       - instances
       type: object
-    inline_response_200_1:
+    getEnvironmentContainerCurrentInstance_200_response:
       example:
         results:
         - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -15234,6 +15330,7 @@ components:
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -15242,12 +15339,14 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
           - memory:
               consumed_in_percent: 9.301444243932576
               warning_threshold_in_percent: 3.616076749251911
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -15256,6 +15355,7 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
         - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           instances:
           - memory:
@@ -15264,6 +15364,7 @@ components:
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -15272,12 +15373,14 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
           - memory:
               consumed_in_percent: 9.301444243932576
               warning_threshold_in_percent: 3.616076749251911
               requested_in_mb: 2
               consumed_in_mb: 7
               alert_threshold_in_percent: 2.027123023002322
+              status: null
             name: instance 1
             created_at: 2000-01-23T04:56:07.000+00:00
             cpu:
@@ -15286,13 +15389,14 @@ components:
               consumed_in_number: 6.027456183070403
               requested_in_float: 0.8008281904610115
               alert_threshold_in_percent: 5.637376656633329
+              status: null
       properties:
         results:
           items:
-            $ref: '#/components/schemas/inline_response_200_1_results'
+            $ref: '#/components/schemas/getEnvironmentContainerCurrentInstance_200_response_results_inner'
           type: array
       type: object
-    inline_response_200_2:
+    getContainerTags_200_response:
       example:
         results:
         - results
@@ -15350,24 +15454,24 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no application running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no application running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
-          description: |
-            Specify if the environment preview option is activated or not for this application.
-            If activated, a preview environment will be automatically cloned at each pull request.
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.\n"
           type: boolean
       type: object
     ApplicationEditRequest_allOf:
@@ -15399,33 +15503,34 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no application running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no application running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
-          description: |
-            Specify if the environment preview option is activated or not for this application.
-            If activated, a preview environment will be automatically cloned at each pull request.
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.\n"
           type: boolean
         sticky_session:
           default: false
-          description: |
-            Specify if the sticky session option (also called persistant session) is activated or not for this application.
-            If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
+          description: "Specify if the sticky session option (also called persistant\
+            \ session) is activated or not for this application.\nIf activated, user\
+            \ will be redirected by the load balancer to the same instance each time\
+            \ he access to the application.\n"
           type: boolean
       type: object
-    ApplicationPort_ports:
+    ApplicationPort_ports_inner:
       properties:
         id:
           format: uuid
@@ -15451,7 +15556,7 @@ components:
       - internal_port
       - publicly_accessible
       type: object
-    ApplicationPortRequest_ports:
+    ApplicationPortRequest_ports_inner:
       properties:
         name:
           nullable: true
@@ -15506,30 +15611,30 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no application running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no application running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
-          description: |
-            Specify if the environment preview option is activated or not for this application.
-            If activated, a preview environment will be automatically cloned at each pull request.
+          description: "Specify if the environment preview option is activated or\
+            \ not for this application.\nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.\n"
           type: boolean
       required:
       - git_repository
       - name
       type: object
-    ApplicationStorage_storage:
+    ApplicationStorage_storage_inner:
       properties:
         id:
           format: uuid
@@ -15548,7 +15653,7 @@ components:
       - size
       - type
       type: object
-    ApplicationStorageRequest_storage:
+    ApplicationStorageRequest_storage_inner:
       properties:
         type:
           $ref: '#/components/schemas/StorageTypeEnum'
@@ -15572,8 +15677,8 @@ components:
     Cluster_allOf:
       properties:
         estimated_cloud_provider_cost:
-          description: This is an estimation of the cost this cluster will represent
-            on your cloud proider bill, based on your current configuration
+          description: "This is an estimation of the cost this cluster will represent\
+            \ on your cloud proider bill, based on your current configuration"
           type: integer
         status:
           $ref: '#/components/schemas/StateEnum'
@@ -15599,7 +15704,16 @@ components:
         name:
           type: string
       type: object
-    ClusterFeatureRequest_features:
+    ClusterFeature_value:
+      nullable: true
+      oneOf:
+      - type: string
+      - type: boolean
+    ClusterFeature_accepted_values_inner:
+      oneOf:
+      - type: string
+      - type: boolean
+    ClusterFeatureRequest_features_inner:
       properties:
         id:
           format: uuid
@@ -15609,7 +15723,7 @@ components:
           nullable: true
           type: string
       type: object
-    ClusterInstanceTypeResponseList_results:
+    ClusterInstanceTypeResponseList_results_inner:
       example:
         name: t3a.xlarge
         cpu: 2
@@ -15634,7 +15748,7 @@ components:
       - ram_in_gb
       - type
       type: object
-    ClusterRoutingTable_results:
+    ClusterRoutingTable_results_inner:
       example:
         destination: destination
         description: description
@@ -15647,7 +15761,7 @@ components:
         description:
           type: string
       type: object
-    ClusterRoutingTableRequest_routes:
+    ClusterRoutingTableRequest_routes_inner:
       example:
         destination: destination
         description: description
@@ -15699,24 +15813,25 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no application running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no application running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
         sticky_session:
           default: false
-          description: |
-            Specify if the sticky session option (also called persistant session) is activated or not for this application.
-            If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
+          description: "Specify if the sticky session option (also called persistant\
+            \ session) is activated or not for this application.\nIf activated, user\
+            \ will be redirected by the load balancer to the same instance each time\
+            \ he access to the application.\n"
           type: boolean
       type: object
     ContainerRequest_allOf:
@@ -15748,16 +15863,16 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no container running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no container running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
@@ -15810,16 +15925,16 @@ components:
           type: integer
         min_running_instances:
           default: 1
-          description: |
-            Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: 0 means that there is no container running.
+          description: "Minimum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
+            \ no container running.\n"
           minimum: 0
           type: integer
         max_running_instances:
           default: 1
-          description: |
-            Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
-            Note: -1 means that there is no limit.
+          description: "Maximum number of instances running. This resource auto-scale\
+            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
+            \ is no limit.\n"
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
@@ -15871,6 +15986,7 @@ components:
         consumed_in_number: 6.027456183070403
         requested_in_float: 0.8008281904610115
         alert_threshold_in_percent: 5.637376656633329
+        status: null
       properties:
         requested_in_float:
           type: number
@@ -15892,6 +16008,7 @@ components:
         requested_in_mb: 2
         consumed_in_mb: 7
         alert_threshold_in_percent: 2.027123023002322
+        status: null
       properties:
         requested_in_mb:
           type: integer
@@ -15913,6 +16030,7 @@ components:
         warning_threshold_in_percent: 5.962133916683182
         consumed_in_gb: 6
         alert_threshold_in_percent: 5.637376656633329
+        status: null
       properties:
         requested_in_gb:
           type: integer
@@ -15927,7 +16045,7 @@ components:
         status:
           $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
-    DeployAllRequest_applications:
+    DeployAllRequest_applications_inner:
       example:
         git_commit_id: git_commit_id
         application_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -16065,6 +16183,7 @@ components:
       example:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: null
       properties:
         type:
           $ref: '#/components/schemas/EnvironmentLogTypeEnum'
@@ -16215,7 +16334,7 @@ components:
       required:
       - email
       type: object
-    MetricRestart_results:
+    MetricRestart_results_inner:
       example:
         datetime: 2000-01-23T04:56:07.000+00:00
         message: message
@@ -16313,8 +16432,8 @@ components:
           description: name of the service
           type: string
         id:
-          description: uuid of the associated service (application, database, job,
-            gateway...)
+          description: "uuid of the associated service (application, database, job,\
+            \ gateway...)"
           format: uuid
           type: string
         deployed_commit_id:
@@ -16329,7 +16448,7 @@ components:
           description: global overview of resources consumption of the service
           type: number
         service_typology:
-          description: describes the typology of service (container, postgresl, redis...)
+          description: "describes the typology of service (container, postgresl, redis...)"
           example: container
           type: string
         service_version:
@@ -16341,9 +16460,10 @@ components:
       required:
       - id
       type: object
-    VariableImport_successful_imported_variables:
+    VariableImport_successful_imported_variables_inner:
       example:
         is_secret: true
+        scope: null
         name: name
         value: value
       properties:
@@ -16361,9 +16481,10 @@ components:
       - name
       - scope
       type: object
-    VariableImportRequest_vars:
+    VariableImportRequest_vars_inner:
       example:
         is_secret: true
+        scope: null
         name: name
         value: value
       properties:

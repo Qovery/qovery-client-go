@@ -11,9 +11,9 @@ Name | Type | Description | Notes
 **CostPerMonth** | Pointer to **NullableFloat32** |  | [optional] 
 **CurrencyCode** | Pointer to **NullableString** |  | [optional] 
 **ValueType** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to [**interface{}**](oneOf&lt;string,boolean&gt;.md) |  | [optional] 
+**Value** | Pointer to [**NullableClusterFeatureValue**](ClusterFeatureValue.md) |  | [optional] 
 **IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
-**AcceptedValues** | Pointer to [**[]interface{}**](interface{}.md) |  | [optional] 
+**AcceptedValues** | Pointer to [**[]ClusterFeatureAcceptedValuesInner**](ClusterFeatureAcceptedValuesInner.md) |  | [optional] 
 
 ## Methods
 
@@ -251,20 +251,20 @@ HasValueType returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *ClusterFeature) GetValue() interface{}`
+`func (o *ClusterFeature) GetValue() ClusterFeatureValue`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *ClusterFeature) GetValueOk() (*interface{}, bool)`
+`func (o *ClusterFeature) GetValueOk() (*ClusterFeatureValue, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *ClusterFeature) SetValue(v interface{})`
+`func (o *ClusterFeature) SetValue(v ClusterFeatureValue)`
 
 SetValue sets Value field to given value.
 
@@ -311,20 +311,20 @@ HasIsValueUpdatable returns a boolean if a field has been set.
 
 ### GetAcceptedValues
 
-`func (o *ClusterFeature) GetAcceptedValues() []interface{}`
+`func (o *ClusterFeature) GetAcceptedValues() []ClusterFeatureAcceptedValuesInner`
 
 GetAcceptedValues returns the AcceptedValues field if non-nil, zero value otherwise.
 
 ### GetAcceptedValuesOk
 
-`func (o *ClusterFeature) GetAcceptedValuesOk() (*[]interface{}, bool)`
+`func (o *ClusterFeature) GetAcceptedValuesOk() (*[]ClusterFeatureAcceptedValuesInner, bool)`
 
 GetAcceptedValuesOk returns a tuple with the AcceptedValues field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAcceptedValues
 
-`func (o *ClusterFeature) SetAcceptedValues(v []interface{})`
+`func (o *ClusterFeature) SetAcceptedValues(v []ClusterFeatureAcceptedValuesInner)`
 
 SetAcceptedValues sets AcceptedValues field to given value.
 

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **DiskSize** | Pointer to **int32** | the disk size to be used for the node configuration | [optional] [default to 20]
-**Features** | Pointer to [**[]ClusterFeatureRequestFeatures**](ClusterFeatureRequestFeatures.md) |  | [optional] 
+**Features** | Pointer to [**[]ClusterFeatureRequestFeaturesInner**](ClusterFeatureRequestFeaturesInner.md) |  | [optional] 
 
 ## Methods
 
@@ -298,20 +298,20 @@ HasDiskSize returns a boolean if a field has been set.
 
 ### GetFeatures
 
-`func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeatures`
+`func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeaturesInner`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *ClusterRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeatures, bool)`
+`func (o *ClusterRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeaturesInner, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeatures)`
+`func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeaturesInner)`
 
 SetFeatures sets Features field to given value.
 

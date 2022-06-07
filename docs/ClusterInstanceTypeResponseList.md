@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]ClusterInstanceTypeResponseListResults**](ClusterInstanceTypeResponseListResults.md) |  | [optional] 
+**Results** | Pointer to [**[]ClusterInstanceTypeResponseListResultsInner**](ClusterInstanceTypeResponseListResultsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ClusterInstanceTypeResponseList) GetResults() []ClusterInstanceTypeResponseListResults`
+`func (o *ClusterInstanceTypeResponseList) GetResults() []ClusterInstanceTypeResponseListResultsInner`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ClusterInstanceTypeResponseList) GetResultsOk() (*[]ClusterInstanceTypeResponseListResults, bool)`
+`func (o *ClusterInstanceTypeResponseList) GetResultsOk() (*[]ClusterInstanceTypeResponseListResultsInner, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ClusterInstanceTypeResponseList) SetResults(v []ClusterInstanceTypeResponseListResults)`
+`func (o *ClusterInstanceTypeResponseList) SetResults(v []ClusterInstanceTypeResponseListResultsInner)`
 
 SetResults sets Results field to given value.
 

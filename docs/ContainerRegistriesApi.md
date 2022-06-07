@@ -31,7 +31,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    containerRegistryRequest := *openapiclient.NewContainerRegistryRequest("Name_example", openapiclient.ContainerRegistryKind("ECR"), "Url_example", map[string]map[string]interface{}{"key": map[string]interface{}(123)}) // ContainerRegistryRequest |  (optional)
+    containerRegistryRequest := *openapiclient.NewContainerRegistryRequest("Name_example", openapiclient.ContainerRegistryKind("ECR"), "Url_example", map[string]interface{}{"key": interface{}(123)}) // ContainerRegistryRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ## ListContainerRegistry
 
-> InlineResponse200 ListContainerRegistry(ctx, organizationId).Execute()
+> ListContainerRegistry200Response ListContainerRegistry(ctx, organizationId).Execute()
 
 List organization container registries
 
@@ -245,7 +245,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesApi.ListContainerRegistry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListContainerRegistry`: InlineResponse200
+    // response from `ListContainerRegistry`: ListContainerRegistry200Response
     fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesApi.ListContainerRegistry`: %v\n", resp)
 }
 ```
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**ListContainerRegistry200Response**](ListContainerRegistry200Response.md)
 
 ### Authorization
 

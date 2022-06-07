@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## GetEnvironmentContainerCurrentInstance
 
-> InlineResponse2001 GetEnvironmentContainerCurrentInstance(ctx, environmentId).Execute()
+> GetEnvironmentContainerCurrentInstance200Response GetEnvironmentContainerCurrentInstance(ctx, environmentId).Execute()
 
 List running instances with CPU and RAM usage for each container
 
@@ -184,7 +184,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.GetEnvironmentContainerCurrentInstance``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEnvironmentContainerCurrentInstance`: InlineResponse2001
+    // response from `GetEnvironmentContainerCurrentInstance`: GetEnvironmentContainerCurrentInstance200Response
     fmt.Fprintf(os.Stdout, "Response from `ContainersApi.GetEnvironmentContainerCurrentInstance`: %v\n", resp)
 }
 ```
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**GetEnvironmentContainerCurrentInstance200Response**](GetEnvironmentContainerCurrentInstance200Response.md)
 
 ### Authorization
 

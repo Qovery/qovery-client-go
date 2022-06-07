@@ -20,11 +20,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // CloudProviderCredentialsApiService CloudProviderCredentialsApi service
 type CloudProviderCredentialsApiService service
 

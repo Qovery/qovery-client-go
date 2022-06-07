@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Kind** | [**ContainerRegistryKind**](ContainerRegistryKind.md) |  | [default to CONTAINERREGISTRYKIND_ECR]
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | **string** | URL of the container registry | 
-**Config** | **map[string]map[string]interface{}** | authentification configuration | 
+**Config** | **map[string]interface{}** | authentification configuration | 
 
 ## Methods
 
 ### NewContainerRegistryRequest
 
-`func NewContainerRegistryRequest(name string, kind ContainerRegistryKind, url string, config map[string]map[string]interface{}, ) *ContainerRegistryRequest`
+`func NewContainerRegistryRequest(name string, kind ContainerRegistryKind, url string, config map[string]interface{}, ) *ContainerRegistryRequest`
 
 NewContainerRegistryRequest instantiates a new ContainerRegistryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetUrl sets Url field to given value.
 
 ### GetConfig
 
-`func (o *ContainerRegistryRequest) GetConfig() map[string]map[string]interface{}`
+`func (o *ContainerRegistryRequest) GetConfig() map[string]interface{}`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *ContainerRegistryRequest) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+`func (o *ContainerRegistryRequest) GetConfigOk() (*map[string]interface{}, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *ContainerRegistryRequest) SetConfig(v map[string]map[string]interface{})`
+`func (o *ContainerRegistryRequest) SetConfig(v map[string]interface{})`
 
 SetConfig sets Config field to given value.
 
