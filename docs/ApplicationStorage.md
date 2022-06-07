@@ -1,4 +1,4 @@
-# ContainerStorage
+# ApplicationStorage
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewContainerStorage
+### NewApplicationStorage
 
-`func NewContainerStorage() *ContainerStorage`
+`func NewApplicationStorage() *ApplicationStorage`
 
-NewContainerStorage instantiates a new ContainerStorage object
+NewApplicationStorage instantiates a new ApplicationStorage object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewContainerStorageWithDefaults
+### NewApplicationStorageWithDefaults
 
-`func NewContainerStorageWithDefaults() *ContainerStorage`
+`func NewApplicationStorageWithDefaults() *ApplicationStorage`
 
-NewContainerStorageWithDefaults instantiates a new ContainerStorage object
+NewApplicationStorageWithDefaults instantiates a new ApplicationStorage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetStorage
 
-`func (o *ContainerStorage) GetStorage() []ApplicationStorageStorage`
+`func (o *ApplicationStorage) GetStorage() []ApplicationStorageStorage`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *ContainerStorage) GetStorageOk() (*[]ApplicationStorageStorage, bool)`
+`func (o *ApplicationStorage) GetStorageOk() (*[]ApplicationStorageStorage, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *ContainerStorage) SetStorage(v []ApplicationStorageStorage)`
+`func (o *ApplicationStorage) SetStorage(v []ApplicationStorageStorage)`
 
 SetStorage sets Storage field to given value.
 
 ### HasStorage
 
-`func (o *ContainerStorage) HasStorage() bool`
+`func (o *ApplicationStorage) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
 

@@ -11171,7 +11171,7 @@ components:
     Application:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/ContainerStorage'
+      - $ref: '#/components/schemas/ApplicationStorage'
       - $ref: '#/components/schemas/ApplicationPort'
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
@@ -11259,7 +11259,7 @@ components:
       type: object
     ApplicationEditRequest:
       allOf:
-      - $ref: '#/components/schemas/ContainerStorage'
+      - $ref: '#/components/schemas/ApplicationStorage'
       - $ref: '#/components/schemas/ApplicationPort'
       - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
     ApplicationGitRepository:
@@ -11378,7 +11378,12 @@ components:
           type: array
       type: object
     ApplicationStorage:
-      $ref: '#/components/schemas/ContainerStorage'
+      properties:
+        storage:
+          items:
+            $ref: '#/components/schemas/ApplicationStorage_storage'
+          type: array
+      type: object
     ApplicationStorageRequest:
       properties:
         storage:
@@ -12230,7 +12235,7 @@ components:
       type: object
     ContainerEditRequest:
       allOf:
-      - $ref: '#/components/schemas/ContainerStorage'
+      - $ref: '#/components/schemas/ApplicationStorage'
       - $ref: '#/components/schemas/ApplicationPort'
       - $ref: '#/components/schemas/ContainerEditRequest_allOf'
     ContainerNetwork:
@@ -12337,7 +12342,7 @@ components:
     ContainerResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/ContainerStorage'
+      - $ref: '#/components/schemas/ApplicationStorage'
       - $ref: '#/components/schemas/ApplicationPort'
       - $ref: '#/components/schemas/ContainerResponse_allOf'
     ContainerResponseList:
@@ -12352,12 +12357,8 @@ components:
           type: array
       type: object
     ContainerStorage:
-      properties:
-        storage:
-          items:
-            $ref: '#/components/schemas/ContainerStorage_storage'
-          type: array
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/ApplicationStorage'
     Cost:
       properties:
         total_in_cents:
@@ -15528,6 +15529,25 @@ components:
       - git_repository
       - name
       type: object
+    ApplicationStorage_storage:
+      properties:
+        id:
+          format: uuid
+          type: string
+        type:
+          $ref: '#/components/schemas/StorageTypeEnum'
+        size:
+          description: unit is GB
+          example: 16
+          type: integer
+        mount_point:
+          example: /mnt/images
+          type: string
+      required:
+      - mount_point
+      - size
+      - type
+      type: object
     ApplicationStorageRequest_storage:
       properties:
         type:
@@ -15803,25 +15823,6 @@ components:
           type: integer
         healthcheck:
           $ref: '#/components/schemas/Healthcheck'
-      type: object
-    ContainerStorage_storage:
-      properties:
-        id:
-          format: uuid
-          type: string
-        type:
-          $ref: '#/components/schemas/StorageTypeEnum'
-        size:
-          description: unit is GB
-          example: 16
-          type: integer
-        mount_point:
-          example: /mnt/images
-          type: string
-      required:
-      - mount_point
-      - size
-      - type
       type: object
     CustomDomain_allOf:
       properties:

@@ -17,8 +17,8 @@ import (
 
 // ApplicationEditRequest struct for ApplicationEditRequest
 type ApplicationEditRequest struct {
-	Storage []ContainerStorageStorage `json:"storage,omitempty"`
-	Ports   []ApplicationPortPorts    `json:"ports,omitempty"`
+	Storage []ApplicationStorageStorage `json:"storage,omitempty"`
+	Ports   []ApplicationPortPorts      `json:"ports,omitempty"`
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
@@ -89,9 +89,9 @@ func NewApplicationEditRequestWithDefaults() *ApplicationEditRequest {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetStorage() []ContainerStorageStorage {
+func (o *ApplicationEditRequest) GetStorage() []ApplicationStorageStorage {
 	if o == nil || o.Storage == nil {
-		var ret []ContainerStorageStorage
+		var ret []ApplicationStorageStorage
 		return ret
 	}
 	return o.Storage
@@ -99,7 +99,7 @@ func (o *ApplicationEditRequest) GetStorage() []ContainerStorageStorage {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetStorageOk() ([]ContainerStorageStorage, bool) {
+func (o *ApplicationEditRequest) GetStorageOk() ([]ApplicationStorageStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -115,8 +115,8 @@ func (o *ApplicationEditRequest) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ContainerStorageStorage and assigns it to the Storage field.
-func (o *ApplicationEditRequest) SetStorage(v []ContainerStorageStorage) {
+// SetStorage gets a reference to the given []ApplicationStorageStorage and assigns it to the Storage field.
+func (o *ApplicationEditRequest) SetStorage(v []ApplicationStorageStorage) {
 	o.Storage = v
 }
 

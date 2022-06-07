@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Storage** | Pointer to [**[]ContainerStorageStorage**](ContainerStorageStorage.md) |  | [optional] 
+**Storage** | Pointer to [**[]ApplicationStorageStorage**](ApplicationStorageStorage.md) |  | [optional] 
 **Ports** | Pointer to [**[]ApplicationPortPorts**](ApplicationPortPorts.md) |  | [optional] 
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
@@ -109,20 +109,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetStorage
 
-`func (o *ContainerResponse) GetStorage() []ContainerStorageStorage`
+`func (o *ContainerResponse) GetStorage() []ApplicationStorageStorage`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *ContainerResponse) GetStorageOk() (*[]ContainerStorageStorage, bool)`
+`func (o *ContainerResponse) GetStorageOk() (*[]ApplicationStorageStorage, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *ContainerResponse) SetStorage(v []ContainerStorageStorage)`
+`func (o *ContainerResponse) SetStorage(v []ApplicationStorageStorage)`
 
 SetStorage sets Storage field to given value.
 

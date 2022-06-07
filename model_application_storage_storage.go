@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// ContainerStorageStorage struct for ContainerStorageStorage
-type ContainerStorageStorage struct {
+// ApplicationStorageStorage struct for ApplicationStorageStorage
+type ApplicationStorageStorage struct {
 	Id   *string         `json:"id,omitempty"`
 	Type StorageTypeEnum `json:"type"`
 	// unit is GB
@@ -24,28 +24,28 @@ type ContainerStorageStorage struct {
 	MountPoint string `json:"mount_point"`
 }
 
-// NewContainerStorageStorage instantiates a new ContainerStorageStorage object
+// NewApplicationStorageStorage instantiates a new ApplicationStorageStorage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerStorageStorage(type_ StorageTypeEnum, size int32, mountPoint string) *ContainerStorageStorage {
-	this := ContainerStorageStorage{}
+func NewApplicationStorageStorage(type_ StorageTypeEnum, size int32, mountPoint string) *ApplicationStorageStorage {
+	this := ApplicationStorageStorage{}
 	this.Type = type_
 	this.Size = size
 	this.MountPoint = mountPoint
 	return &this
 }
 
-// NewContainerStorageStorageWithDefaults instantiates a new ContainerStorageStorage object
+// NewApplicationStorageStorageWithDefaults instantiates a new ApplicationStorageStorage object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewContainerStorageStorageWithDefaults() *ContainerStorageStorage {
-	this := ContainerStorageStorage{}
+func NewApplicationStorageStorageWithDefaults() *ApplicationStorageStorage {
+	this := ApplicationStorageStorage{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ContainerStorageStorage) GetId() string {
+func (o *ApplicationStorageStorage) GetId() string {
 	if o == nil || o.Id == nil {
 		var ret string
 		return ret
@@ -55,7 +55,7 @@ func (o *ContainerStorageStorage) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerStorageStorage) GetIdOk() (*string, bool) {
+func (o *ApplicationStorageStorage) GetIdOk() (*string, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *ContainerStorageStorage) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ContainerStorageStorage) HasId() bool {
+func (o *ApplicationStorageStorage) HasId() bool {
 	if o != nil && o.Id != nil {
 		return true
 	}
@@ -72,12 +72,12 @@ func (o *ContainerStorageStorage) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ContainerStorageStorage) SetId(v string) {
+func (o *ApplicationStorageStorage) SetId(v string) {
 	o.Id = &v
 }
 
 // GetType returns the Type field value
-func (o *ContainerStorageStorage) GetType() StorageTypeEnum {
+func (o *ApplicationStorageStorage) GetType() StorageTypeEnum {
 	if o == nil {
 		var ret StorageTypeEnum
 		return ret
@@ -88,7 +88,7 @@ func (o *ContainerStorageStorage) GetType() StorageTypeEnum {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ContainerStorageStorage) GetTypeOk() (*StorageTypeEnum, bool) {
+func (o *ApplicationStorageStorage) GetTypeOk() (*StorageTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,12 +96,12 @@ func (o *ContainerStorageStorage) GetTypeOk() (*StorageTypeEnum, bool) {
 }
 
 // SetType sets field value
-func (o *ContainerStorageStorage) SetType(v StorageTypeEnum) {
+func (o *ApplicationStorageStorage) SetType(v StorageTypeEnum) {
 	o.Type = v
 }
 
 // GetSize returns the Size field value
-func (o *ContainerStorageStorage) GetSize() int32 {
+func (o *ApplicationStorageStorage) GetSize() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -112,7 +112,7 @@ func (o *ContainerStorageStorage) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value
 // and a boolean to check if the value has been set.
-func (o *ContainerStorageStorage) GetSizeOk() (*int32, bool) {
+func (o *ApplicationStorageStorage) GetSizeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,12 +120,12 @@ func (o *ContainerStorageStorage) GetSizeOk() (*int32, bool) {
 }
 
 // SetSize sets field value
-func (o *ContainerStorageStorage) SetSize(v int32) {
+func (o *ApplicationStorageStorage) SetSize(v int32) {
 	o.Size = v
 }
 
 // GetMountPoint returns the MountPoint field value
-func (o *ContainerStorageStorage) GetMountPoint() string {
+func (o *ApplicationStorageStorage) GetMountPoint() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -136,7 +136,7 @@ func (o *ContainerStorageStorage) GetMountPoint() string {
 
 // GetMountPointOk returns a tuple with the MountPoint field value
 // and a boolean to check if the value has been set.
-func (o *ContainerStorageStorage) GetMountPointOk() (*string, bool) {
+func (o *ApplicationStorageStorage) GetMountPointOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,11 +144,11 @@ func (o *ContainerStorageStorage) GetMountPointOk() (*string, bool) {
 }
 
 // SetMountPoint sets field value
-func (o *ContainerStorageStorage) SetMountPoint(v string) {
+func (o *ApplicationStorageStorage) SetMountPoint(v string) {
 	o.MountPoint = v
 }
 
-func (o ContainerStorageStorage) MarshalJSON() ([]byte, error) {
+func (o ApplicationStorageStorage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
@@ -165,38 +165,38 @@ func (o ContainerStorageStorage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableContainerStorageStorage struct {
-	value *ContainerStorageStorage
+type NullableApplicationStorageStorage struct {
+	value *ApplicationStorageStorage
 	isSet bool
 }
 
-func (v NullableContainerStorageStorage) Get() *ContainerStorageStorage {
+func (v NullableApplicationStorageStorage) Get() *ApplicationStorageStorage {
 	return v.value
 }
 
-func (v *NullableContainerStorageStorage) Set(val *ContainerStorageStorage) {
+func (v *NullableApplicationStorageStorage) Set(val *ApplicationStorageStorage) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableContainerStorageStorage) IsSet() bool {
+func (v NullableApplicationStorageStorage) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableContainerStorageStorage) Unset() {
+func (v *NullableApplicationStorageStorage) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableContainerStorageStorage(val *ContainerStorageStorage) *NullableContainerStorageStorage {
-	return &NullableContainerStorageStorage{value: val, isSet: true}
+func NewNullableApplicationStorageStorage(val *ApplicationStorageStorage) *NullableApplicationStorageStorage {
+	return &NullableApplicationStorageStorage{value: val, isSet: true}
 }
 
-func (v NullableContainerStorageStorage) MarshalJSON() ([]byte, error) {
+func (v NullableApplicationStorageStorage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableContainerStorageStorage) UnmarshalJSON(src []byte) error {
+func (v *NullableApplicationStorageStorage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

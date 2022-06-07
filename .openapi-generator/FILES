@@ -104,8 +104,10 @@ docs/ApplicationRequest.md
 docs/ApplicationRequestAllOf.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretApi.md
+docs/ApplicationStorage.md
 docs/ApplicationStorageRequest.md
 docs/ApplicationStorageRequestStorage.md
+docs/ApplicationStorageStorage.md
 docs/ApplicationsApi.md
 docs/AvailableContainerRegistryResponse.md
 docs/AwsCredentialsRequest.md
@@ -201,7 +203,6 @@ docs/ContainerResponseAllOf.md
 docs/ContainerResponseList.md
 docs/ContainerSecretApi.md
 docs/ContainerStorage.md
-docs/ContainerStorageStorage.md
 docs/ContainersApi.md
 docs/Cost.md
 docs/CostRange.md
@@ -490,8 +491,10 @@ model_application_port_request_ports.go
 model_application_request.go
 model_application_request_all_of.go
 model_application_response_list.go
+model_application_storage.go
 model_application_storage_request.go
 model_application_storage_request_storage.go
+model_application_storage_storage.go
 model_available_container_registry_response.go
 model_aws_credentials_request.go
 model_backup.go
@@ -567,7 +570,6 @@ model_container_response.go
 model_container_response_all_of.go
 model_container_response_list.go
 model_container_storage.go
-model_container_storage_storage.go
 model_cost.go
 model_cost_range.go
 model_credentials.go
