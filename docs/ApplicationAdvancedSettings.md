@@ -5,7 +5,27 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeploymentDelayStartTimeSec** | Pointer to **int32** |  | [optional] 
+**DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying an application | [optional] 
 **BuildTimeoutMaxSec** | Pointer to **int32** |  | [optional] 
+**NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] 
+**NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] 
+**NetworkIngressCorsAllowOrigin** | Pointer to **string** |  | [optional] 
+**NetworkIngressCorsAllowMethods** | Pointer to **string** |  | [optional] 
+**NetworkIngressCorsAllowHeaders** | Pointer to **string** |  | [optional] 
+**ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] 
+**ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
+**ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] 
+**ReadinessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] 
+**ReadinessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] 
+**ReadinessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] 
+**ReadinessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] 
+**LivenessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable liveness probe &#x60;TCP&#x60; enable TCP liveness probe &#x60;HTTP&#x60; enable HTTP liveness probe  | [optional] 
+**LivenessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
+**LivenessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] 
+**LivenessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] 
+**LivenessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] 
+**LivenessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] 
+**LivenessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] 
 
 ## Methods
 
@@ -51,6 +71,31 @@ SetDeploymentDelayStartTimeSec sets DeploymentDelayStartTimeSec field to given v
 
 HasDeploymentDelayStartTimeSec returns a boolean if a field has been set.
 
+### GetDeploymentCustomDomainCheckEnabled
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentCustomDomainCheckEnabled() bool`
+
+GetDeploymentCustomDomainCheckEnabled returns the DeploymentCustomDomainCheckEnabled field if non-nil, zero value otherwise.
+
+### GetDeploymentCustomDomainCheckEnabledOk
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentCustomDomainCheckEnabledOk() (*bool, bool)`
+
+GetDeploymentCustomDomainCheckEnabledOk returns a tuple with the DeploymentCustomDomainCheckEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentCustomDomainCheckEnabled
+
+`func (o *ApplicationAdvancedSettings) SetDeploymentCustomDomainCheckEnabled(v bool)`
+
+SetDeploymentCustomDomainCheckEnabled sets DeploymentCustomDomainCheckEnabled field to given value.
+
+### HasDeploymentCustomDomainCheckEnabled
+
+`func (o *ApplicationAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool`
+
+HasDeploymentCustomDomainCheckEnabled returns a boolean if a field has been set.
+
 ### GetBuildTimeoutMaxSec
 
 `func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSec() int32`
@@ -75,6 +120,481 @@ SetBuildTimeoutMaxSec sets BuildTimeoutMaxSec field to given value.
 `func (o *ApplicationAdvancedSettings) HasBuildTimeoutMaxSec() bool`
 
 HasBuildTimeoutMaxSec returns a boolean if a field has been set.
+
+### GetNetworkIngressProxyBodySizeMb
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBodySizeMb() int32`
+
+GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field if non-nil, zero value otherwise.
+
+### GetNetworkIngressProxyBodySizeMbOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBodySizeMbOk() (*int32, bool)`
+
+GetNetworkIngressProxyBodySizeMbOk returns a tuple with the NetworkIngressProxyBodySizeMb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressProxyBodySizeMb
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBodySizeMb(v int32)`
+
+SetNetworkIngressProxyBodySizeMb sets NetworkIngressProxyBodySizeMb field to given value.
+
+### HasNetworkIngressProxyBodySizeMb
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBodySizeMb() bool`
+
+HasNetworkIngressProxyBodySizeMb returns a boolean if a field has been set.
+
+### GetNetworkIngressEnableCors
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableCors() bool`
+
+GetNetworkIngressEnableCors returns the NetworkIngressEnableCors field if non-nil, zero value otherwise.
+
+### GetNetworkIngressEnableCorsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableCorsOk() (*bool, bool)`
+
+GetNetworkIngressEnableCorsOk returns a tuple with the NetworkIngressEnableCors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressEnableCors
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressEnableCors(v bool)`
+
+SetNetworkIngressEnableCors sets NetworkIngressEnableCors field to given value.
+
+### HasNetworkIngressEnableCors
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressEnableCors() bool`
+
+HasNetworkIngressEnableCors returns a boolean if a field has been set.
+
+### GetNetworkIngressCorsAllowOrigin
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowOrigin() string`
+
+GetNetworkIngressCorsAllowOrigin returns the NetworkIngressCorsAllowOrigin field if non-nil, zero value otherwise.
+
+### GetNetworkIngressCorsAllowOriginOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowOriginOk() (*string, bool)`
+
+GetNetworkIngressCorsAllowOriginOk returns a tuple with the NetworkIngressCorsAllowOrigin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressCorsAllowOrigin
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressCorsAllowOrigin(v string)`
+
+SetNetworkIngressCorsAllowOrigin sets NetworkIngressCorsAllowOrigin field to given value.
+
+### HasNetworkIngressCorsAllowOrigin
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressCorsAllowOrigin() bool`
+
+HasNetworkIngressCorsAllowOrigin returns a boolean if a field has been set.
+
+### GetNetworkIngressCorsAllowMethods
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowMethods() string`
+
+GetNetworkIngressCorsAllowMethods returns the NetworkIngressCorsAllowMethods field if non-nil, zero value otherwise.
+
+### GetNetworkIngressCorsAllowMethodsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowMethodsOk() (*string, bool)`
+
+GetNetworkIngressCorsAllowMethodsOk returns a tuple with the NetworkIngressCorsAllowMethods field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressCorsAllowMethods
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressCorsAllowMethods(v string)`
+
+SetNetworkIngressCorsAllowMethods sets NetworkIngressCorsAllowMethods field to given value.
+
+### HasNetworkIngressCorsAllowMethods
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressCorsAllowMethods() bool`
+
+HasNetworkIngressCorsAllowMethods returns a boolean if a field has been set.
+
+### GetNetworkIngressCorsAllowHeaders
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowHeaders() string`
+
+GetNetworkIngressCorsAllowHeaders returns the NetworkIngressCorsAllowHeaders field if non-nil, zero value otherwise.
+
+### GetNetworkIngressCorsAllowHeadersOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowHeadersOk() (*string, bool)`
+
+GetNetworkIngressCorsAllowHeadersOk returns a tuple with the NetworkIngressCorsAllowHeaders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressCorsAllowHeaders
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressCorsAllowHeaders(v string)`
+
+SetNetworkIngressCorsAllowHeaders sets NetworkIngressCorsAllowHeaders field to given value.
+
+### HasNetworkIngressCorsAllowHeaders
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressCorsAllowHeaders() bool`
+
+HasNetworkIngressCorsAllowHeaders returns a boolean if a field has been set.
+
+### GetReadinessProbeType
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeType() string`
+
+GetReadinessProbeType returns the ReadinessProbeType field if non-nil, zero value otherwise.
+
+### GetReadinessProbeTypeOk
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeTypeOk() (*string, bool)`
+
+GetReadinessProbeTypeOk returns a tuple with the ReadinessProbeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadinessProbeType
+
+`func (o *ApplicationAdvancedSettings) SetReadinessProbeType(v string)`
+
+SetReadinessProbeType sets ReadinessProbeType field to given value.
+
+### HasReadinessProbeType
+
+`func (o *ApplicationAdvancedSettings) HasReadinessProbeType() bool`
+
+HasReadinessProbeType returns a boolean if a field has been set.
+
+### GetReadinessProbeHttpGetPath
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeHttpGetPath() string`
+
+GetReadinessProbeHttpGetPath returns the ReadinessProbeHttpGetPath field if non-nil, zero value otherwise.
+
+### GetReadinessProbeHttpGetPathOk
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeHttpGetPathOk() (*string, bool)`
+
+GetReadinessProbeHttpGetPathOk returns a tuple with the ReadinessProbeHttpGetPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadinessProbeHttpGetPath
+
+`func (o *ApplicationAdvancedSettings) SetReadinessProbeHttpGetPath(v string)`
+
+SetReadinessProbeHttpGetPath sets ReadinessProbeHttpGetPath field to given value.
+
+### HasReadinessProbeHttpGetPath
+
+`func (o *ApplicationAdvancedSettings) HasReadinessProbeHttpGetPath() bool`
+
+HasReadinessProbeHttpGetPath returns a boolean if a field has been set.
+
+### GetReadinessProbeInitialDelaySeconds
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeInitialDelaySeconds() int32`
+
+GetReadinessProbeInitialDelaySeconds returns the ReadinessProbeInitialDelaySeconds field if non-nil, zero value otherwise.
+
+### GetReadinessProbeInitialDelaySecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeInitialDelaySecondsOk() (*int32, bool)`
+
+GetReadinessProbeInitialDelaySecondsOk returns a tuple with the ReadinessProbeInitialDelaySeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadinessProbeInitialDelaySeconds
+
+`func (o *ApplicationAdvancedSettings) SetReadinessProbeInitialDelaySeconds(v int32)`
+
+SetReadinessProbeInitialDelaySeconds sets ReadinessProbeInitialDelaySeconds field to given value.
+
+### HasReadinessProbeInitialDelaySeconds
+
+`func (o *ApplicationAdvancedSettings) HasReadinessProbeInitialDelaySeconds() bool`
+
+HasReadinessProbeInitialDelaySeconds returns a boolean if a field has been set.
+
+### GetReadinessProbePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbePeriodSeconds() int32`
+
+GetReadinessProbePeriodSeconds returns the ReadinessProbePeriodSeconds field if non-nil, zero value otherwise.
+
+### GetReadinessProbePeriodSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbePeriodSecondsOk() (*int32, bool)`
+
+GetReadinessProbePeriodSecondsOk returns a tuple with the ReadinessProbePeriodSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadinessProbePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) SetReadinessProbePeriodSeconds(v int32)`
+
+SetReadinessProbePeriodSeconds sets ReadinessProbePeriodSeconds field to given value.
+
+### HasReadinessProbePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) HasReadinessProbePeriodSeconds() bool`
+
+HasReadinessProbePeriodSeconds returns a boolean if a field has been set.
+
+### GetReadinessProbeTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeTimeoutSeconds() int32`
+
+GetReadinessProbeTimeoutSeconds returns the ReadinessProbeTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetReadinessProbeTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeTimeoutSecondsOk() (*int32, bool)`
+
+GetReadinessProbeTimeoutSecondsOk returns a tuple with the ReadinessProbeTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadinessProbeTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetReadinessProbeTimeoutSeconds(v int32)`
+
+SetReadinessProbeTimeoutSeconds sets ReadinessProbeTimeoutSeconds field to given value.
+
+### HasReadinessProbeTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasReadinessProbeTimeoutSeconds() bool`
+
+HasReadinessProbeTimeoutSeconds returns a boolean if a field has been set.
+
+### GetReadinessProbeSuccessThreshold
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeSuccessThreshold() int32`
+
+GetReadinessProbeSuccessThreshold returns the ReadinessProbeSuccessThreshold field if non-nil, zero value otherwise.
+
+### GetReadinessProbeSuccessThresholdOk
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeSuccessThresholdOk() (*int32, bool)`
+
+GetReadinessProbeSuccessThresholdOk returns a tuple with the ReadinessProbeSuccessThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadinessProbeSuccessThreshold
+
+`func (o *ApplicationAdvancedSettings) SetReadinessProbeSuccessThreshold(v int32)`
+
+SetReadinessProbeSuccessThreshold sets ReadinessProbeSuccessThreshold field to given value.
+
+### HasReadinessProbeSuccessThreshold
+
+`func (o *ApplicationAdvancedSettings) HasReadinessProbeSuccessThreshold() bool`
+
+HasReadinessProbeSuccessThreshold returns a boolean if a field has been set.
+
+### GetReadinessProbeFailureThreshold
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeFailureThreshold() int32`
+
+GetReadinessProbeFailureThreshold returns the ReadinessProbeFailureThreshold field if non-nil, zero value otherwise.
+
+### GetReadinessProbeFailureThresholdOk
+
+`func (o *ApplicationAdvancedSettings) GetReadinessProbeFailureThresholdOk() (*int32, bool)`
+
+GetReadinessProbeFailureThresholdOk returns a tuple with the ReadinessProbeFailureThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadinessProbeFailureThreshold
+
+`func (o *ApplicationAdvancedSettings) SetReadinessProbeFailureThreshold(v int32)`
+
+SetReadinessProbeFailureThreshold sets ReadinessProbeFailureThreshold field to given value.
+
+### HasReadinessProbeFailureThreshold
+
+`func (o *ApplicationAdvancedSettings) HasReadinessProbeFailureThreshold() bool`
+
+HasReadinessProbeFailureThreshold returns a boolean if a field has been set.
+
+### GetLivenessProbeType
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeType() string`
+
+GetLivenessProbeType returns the LivenessProbeType field if non-nil, zero value otherwise.
+
+### GetLivenessProbeTypeOk
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeTypeOk() (*string, bool)`
+
+GetLivenessProbeTypeOk returns a tuple with the LivenessProbeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLivenessProbeType
+
+`func (o *ApplicationAdvancedSettings) SetLivenessProbeType(v string)`
+
+SetLivenessProbeType sets LivenessProbeType field to given value.
+
+### HasLivenessProbeType
+
+`func (o *ApplicationAdvancedSettings) HasLivenessProbeType() bool`
+
+HasLivenessProbeType returns a boolean if a field has been set.
+
+### GetLivenessProbeHttpGetPath
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeHttpGetPath() string`
+
+GetLivenessProbeHttpGetPath returns the LivenessProbeHttpGetPath field if non-nil, zero value otherwise.
+
+### GetLivenessProbeHttpGetPathOk
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeHttpGetPathOk() (*string, bool)`
+
+GetLivenessProbeHttpGetPathOk returns a tuple with the LivenessProbeHttpGetPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLivenessProbeHttpGetPath
+
+`func (o *ApplicationAdvancedSettings) SetLivenessProbeHttpGetPath(v string)`
+
+SetLivenessProbeHttpGetPath sets LivenessProbeHttpGetPath field to given value.
+
+### HasLivenessProbeHttpGetPath
+
+`func (o *ApplicationAdvancedSettings) HasLivenessProbeHttpGetPath() bool`
+
+HasLivenessProbeHttpGetPath returns a boolean if a field has been set.
+
+### GetLivenessProbeInitialDelaySeconds
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeInitialDelaySeconds() int32`
+
+GetLivenessProbeInitialDelaySeconds returns the LivenessProbeInitialDelaySeconds field if non-nil, zero value otherwise.
+
+### GetLivenessProbeInitialDelaySecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeInitialDelaySecondsOk() (*int32, bool)`
+
+GetLivenessProbeInitialDelaySecondsOk returns a tuple with the LivenessProbeInitialDelaySeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLivenessProbeInitialDelaySeconds
+
+`func (o *ApplicationAdvancedSettings) SetLivenessProbeInitialDelaySeconds(v int32)`
+
+SetLivenessProbeInitialDelaySeconds sets LivenessProbeInitialDelaySeconds field to given value.
+
+### HasLivenessProbeInitialDelaySeconds
+
+`func (o *ApplicationAdvancedSettings) HasLivenessProbeInitialDelaySeconds() bool`
+
+HasLivenessProbeInitialDelaySeconds returns a boolean if a field has been set.
+
+### GetLivenessProbePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbePeriodSeconds() int32`
+
+GetLivenessProbePeriodSeconds returns the LivenessProbePeriodSeconds field if non-nil, zero value otherwise.
+
+### GetLivenessProbePeriodSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbePeriodSecondsOk() (*int32, bool)`
+
+GetLivenessProbePeriodSecondsOk returns a tuple with the LivenessProbePeriodSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLivenessProbePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) SetLivenessProbePeriodSeconds(v int32)`
+
+SetLivenessProbePeriodSeconds sets LivenessProbePeriodSeconds field to given value.
+
+### HasLivenessProbePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) HasLivenessProbePeriodSeconds() bool`
+
+HasLivenessProbePeriodSeconds returns a boolean if a field has been set.
+
+### GetLivenessProbeTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeTimeoutSeconds() int32`
+
+GetLivenessProbeTimeoutSeconds returns the LivenessProbeTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetLivenessProbeTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeTimeoutSecondsOk() (*int32, bool)`
+
+GetLivenessProbeTimeoutSecondsOk returns a tuple with the LivenessProbeTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLivenessProbeTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetLivenessProbeTimeoutSeconds(v int32)`
+
+SetLivenessProbeTimeoutSeconds sets LivenessProbeTimeoutSeconds field to given value.
+
+### HasLivenessProbeTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasLivenessProbeTimeoutSeconds() bool`
+
+HasLivenessProbeTimeoutSeconds returns a boolean if a field has been set.
+
+### GetLivenessProbeSuccessThreshold
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeSuccessThreshold() int32`
+
+GetLivenessProbeSuccessThreshold returns the LivenessProbeSuccessThreshold field if non-nil, zero value otherwise.
+
+### GetLivenessProbeSuccessThresholdOk
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeSuccessThresholdOk() (*int32, bool)`
+
+GetLivenessProbeSuccessThresholdOk returns a tuple with the LivenessProbeSuccessThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLivenessProbeSuccessThreshold
+
+`func (o *ApplicationAdvancedSettings) SetLivenessProbeSuccessThreshold(v int32)`
+
+SetLivenessProbeSuccessThreshold sets LivenessProbeSuccessThreshold field to given value.
+
+### HasLivenessProbeSuccessThreshold
+
+`func (o *ApplicationAdvancedSettings) HasLivenessProbeSuccessThreshold() bool`
+
+HasLivenessProbeSuccessThreshold returns a boolean if a field has been set.
+
+### GetLivenessProbeFailureThreshold
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeFailureThreshold() int32`
+
+GetLivenessProbeFailureThreshold returns the LivenessProbeFailureThreshold field if non-nil, zero value otherwise.
+
+### GetLivenessProbeFailureThresholdOk
+
+`func (o *ApplicationAdvancedSettings) GetLivenessProbeFailureThresholdOk() (*int32, bool)`
+
+GetLivenessProbeFailureThresholdOk returns a tuple with the LivenessProbeFailureThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLivenessProbeFailureThreshold
+
+`func (o *ApplicationAdvancedSettings) SetLivenessProbeFailureThreshold(v int32)`
+
+SetLivenessProbeFailureThreshold sets LivenessProbeFailureThreshold field to given value.
+
+### HasLivenessProbeFailureThreshold
+
+`func (o *ApplicationAdvancedSettings) HasLivenessProbeFailureThreshold() bool`
+
+HasLivenessProbeFailureThreshold returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
