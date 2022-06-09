@@ -14465,7 +14465,7 @@ components:
         admin_emails:
           items:
             type: string
-          nullable: false
+          nullable: true
           type: array
       required:
       - name
@@ -14519,7 +14519,7 @@ components:
         admin_emails:
           items:
             type: string
-          nullable: false
+          nullable: true
           type: array
       required:
       - name

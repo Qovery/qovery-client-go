@@ -331,6 +331,16 @@ SetAdminEmails sets AdminEmails field to given value.
 
 HasAdminEmails returns a boolean if a field has been set.
 
+### SetAdminEmailsNil
+
+`func (o *Organization) SetAdminEmailsNil(b bool)`
+
+ SetAdminEmailsNil sets the value for AdminEmails to be an explicit nil
+
+### UnsetAdminEmails
+`func (o *Organization) UnsetAdminEmails()`
+
+UnsetAdminEmails ensures that no value is present for AdminEmails, not even an explicit nil
 ### GetOwner
 
 `func (o *Organization) GetOwner() string`

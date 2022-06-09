@@ -273,9 +273,9 @@ func (o *OrganizationEditRequest) UnsetIconUrl() {
 	o.IconUrl.Unset()
 }
 
-// GetAdminEmails returns the AdminEmails field value if set, zero value otherwise.
+// GetAdminEmails returns the AdminEmails field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetAdminEmails() []string {
-	if o == nil || o.AdminEmails == nil {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -284,6 +284,7 @@ func (o *OrganizationEditRequest) GetAdminEmails() []string {
 
 // GetAdminEmailsOk returns a tuple with the AdminEmails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetAdminEmailsOk() ([]string, bool) {
 	if o == nil || o.AdminEmails == nil {
 		return nil, false
