@@ -241,16 +241,6 @@ SetAdminEmails sets AdminEmails field to given value.
 
 HasAdminEmails returns a boolean if a field has been set.
 
-### SetAdminEmailsNil
-
-`func (o *OrganizationEditRequest) SetAdminEmailsNil(b bool)`
-
- SetAdminEmailsNil sets the value for AdminEmails to be an explicit nil
-
-### UnsetAdminEmails
-`func (o *OrganizationEditRequest) UnsetAdminEmails()`
-
-UnsetAdminEmails ensures that no value is present for AdminEmails, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
