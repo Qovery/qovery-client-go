@@ -24,6 +24,7 @@ type OrganizationEditRequest struct {
 	Repository  NullableString `json:"repository,omitempty"`
 	LogoUrl     NullableString `json:"logo_url,omitempty"`
 	IconUrl     NullableString `json:"icon_url,omitempty"`
+	AdminEmails []string       `json:"admin_emails,omitempty"`
 }
 
 // NewOrganizationEditRequest instantiates a new OrganizationEditRequest object
@@ -272,6 +273,39 @@ func (o *OrganizationEditRequest) UnsetIconUrl() {
 	o.IconUrl.Unset()
 }
 
+// GetAdminEmails returns the AdminEmails field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationEditRequest) GetAdminEmails() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.AdminEmails
+}
+
+// GetAdminEmailsOk returns a tuple with the AdminEmails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationEditRequest) GetAdminEmailsOk() ([]string, bool) {
+	if o == nil || o.AdminEmails == nil {
+		return nil, false
+	}
+	return o.AdminEmails, true
+}
+
+// HasAdminEmails returns a boolean if a field has been set.
+func (o *OrganizationEditRequest) HasAdminEmails() bool {
+	if o != nil && o.AdminEmails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminEmails gets a reference to the given []string and assigns it to the AdminEmails field.
+func (o *OrganizationEditRequest) SetAdminEmails(v []string) {
+	o.AdminEmails = v
+}
+
 func (o OrganizationEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -291,6 +325,9 @@ func (o OrganizationEditRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.IconUrl.IsSet() {
 		toSerialize["icon_url"] = o.IconUrl.Get()
+	}
+	if o.AdminEmails != nil {
+		toSerialize["admin_emails"] = o.AdminEmails
 	}
 	return json.Marshal(toSerialize)
 }

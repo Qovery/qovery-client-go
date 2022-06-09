@@ -14436,6 +14436,9 @@ components:
     OrganizationEditRequest:
       example:
         icon_url: icon_url
+        admin_emails:
+        - admin_emails
+        - admin_emails
         website_url: website_url
         logo_url: logo_url
         name: name
@@ -14459,6 +14462,11 @@ components:
         icon_url:
           nullable: true
           type: string
+        admin_emails:
+          items:
+            type: string
+          nullable: true
+          type: array
       required:
       - name
       - plan
@@ -14479,6 +14487,9 @@ components:
     OrganizationRequest:
       example:
         icon_url: icon_url
+        admin_emails:
+        - admin_emails
+        - admin_emails
         website_url: website_url
         logo_url: logo_url
         name: name
@@ -14505,6 +14516,11 @@ components:
         icon_url:
           nullable: true
           type: string
+        admin_emails:
+          items:
+            type: string
+          nullable: true
+          type: array
       required:
       - name
       - plan

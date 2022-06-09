@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Repository** | Pointer to **NullableString** |  | [optional] 
 **LogoUrl** | Pointer to **NullableString** |  | [optional] 
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
+**AdminEmails** | Pointer to **[]string** |  | [optional] 
 **Owner** | Pointer to **string** | uuid of the user owning the organization | [optional] 
 
 ## Methods
@@ -305,6 +306,41 @@ HasIconUrl returns a boolean if a field has been set.
 `func (o *Organization) UnsetIconUrl()`
 
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+### GetAdminEmails
+
+`func (o *Organization) GetAdminEmails() []string`
+
+GetAdminEmails returns the AdminEmails field if non-nil, zero value otherwise.
+
+### GetAdminEmailsOk
+
+`func (o *Organization) GetAdminEmailsOk() (*[]string, bool)`
+
+GetAdminEmailsOk returns a tuple with the AdminEmails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdminEmails
+
+`func (o *Organization) SetAdminEmails(v []string)`
+
+SetAdminEmails sets AdminEmails field to given value.
+
+### HasAdminEmails
+
+`func (o *Organization) HasAdminEmails() bool`
+
+HasAdminEmails returns a boolean if a field has been set.
+
+### SetAdminEmailsNil
+
+`func (o *Organization) SetAdminEmailsNil(b bool)`
+
+ SetAdminEmailsNil sets the value for AdminEmails to be an explicit nil
+
+### UnsetAdminEmails
+`func (o *Organization) UnsetAdminEmails()`
+
+UnsetAdminEmails ensures that no value is present for AdminEmails, not even an explicit nil
 ### GetOwner
 
 `func (o *Organization) GetOwner() string`

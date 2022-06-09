@@ -29,6 +29,7 @@ type Organization struct {
 	Repository  NullableString `json:"repository,omitempty"`
 	LogoUrl     NullableString `json:"logo_url,omitempty"`
 	IconUrl     NullableString `json:"icon_url,omitempty"`
+	AdminEmails []string       `json:"admin_emails,omitempty"`
 	// uuid of the user owning the organization
 	Owner *string `json:"owner,omitempty"`
 }
@@ -386,6 +387,39 @@ func (o *Organization) UnsetIconUrl() {
 	o.IconUrl.Unset()
 }
 
+// GetAdminEmails returns the AdminEmails field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Organization) GetAdminEmails() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.AdminEmails
+}
+
+// GetAdminEmailsOk returns a tuple with the AdminEmails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Organization) GetAdminEmailsOk() ([]string, bool) {
+	if o == nil || o.AdminEmails == nil {
+		return nil, false
+	}
+	return o.AdminEmails, true
+}
+
+// HasAdminEmails returns a boolean if a field has been set.
+func (o *Organization) HasAdminEmails() bool {
+	if o != nil && o.AdminEmails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdminEmails gets a reference to the given []string and assigns it to the AdminEmails field.
+func (o *Organization) SetAdminEmails(v []string) {
+	o.AdminEmails = v
+}
+
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *Organization) GetOwner() string {
 	if o == nil || o.Owner == nil {
@@ -449,6 +483,9 @@ func (o Organization) MarshalJSON() ([]byte, error) {
 	}
 	if o.IconUrl.IsSet() {
 		toSerialize["icon_url"] = o.IconUrl.Get()
+	}
+	if o.AdminEmails != nil {
+		toSerialize["admin_emails"] = o.AdminEmails
 	}
 	if o.Owner != nil {
 		toSerialize["owner"] = o.Owner

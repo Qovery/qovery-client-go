@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Repository** | Pointer to **NullableString** |  | [optional] 
 **LogoUrl** | Pointer to **NullableString** |  | [optional] 
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
+**AdminEmails** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -215,6 +216,41 @@ HasIconUrl returns a boolean if a field has been set.
 `func (o *OrganizationEditRequest) UnsetIconUrl()`
 
 UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+### GetAdminEmails
+
+`func (o *OrganizationEditRequest) GetAdminEmails() []string`
+
+GetAdminEmails returns the AdminEmails field if non-nil, zero value otherwise.
+
+### GetAdminEmailsOk
+
+`func (o *OrganizationEditRequest) GetAdminEmailsOk() (*[]string, bool)`
+
+GetAdminEmailsOk returns a tuple with the AdminEmails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdminEmails
+
+`func (o *OrganizationEditRequest) SetAdminEmails(v []string)`
+
+SetAdminEmails sets AdminEmails field to given value.
+
+### HasAdminEmails
+
+`func (o *OrganizationEditRequest) HasAdminEmails() bool`
+
+HasAdminEmails returns a boolean if a field has been set.
+
+### SetAdminEmailsNil
+
+`func (o *OrganizationEditRequest) SetAdminEmailsNil(b bool)`
+
+ SetAdminEmailsNil sets the value for AdminEmails to be an explicit nil
+
+### UnsetAdminEmails
+`func (o *OrganizationEditRequest) UnsetAdminEmails()`
+
+UnsetAdminEmails ensures that no value is present for AdminEmails, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
