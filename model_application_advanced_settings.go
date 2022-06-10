@@ -56,6 +56,8 @@ type ApplicationAdvancedSettings struct {
 	LivenessProbeSuccessThreshold *int32 `json:"liveness_probe.success_threshold,omitempty"`
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
 	LivenessProbeFailureThreshold *int32 `json:"liveness_probe.failure_threshold,omitempty"`
+	// Percentage value of cpu usage at which point pods should scale up.
+	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
 }
 
 // NewApplicationAdvancedSettings instantiates a new ApplicationAdvancedSettings object
@@ -108,6 +110,8 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
 	var livenessProbeFailureThreshold int32 = 3
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
+	var hpaCpuAverageUtilizationPercent int32 = 60
+	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
 	return &this
 }
 
@@ -160,6 +164,8 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
 	var livenessProbeFailureThreshold int32 = 3
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
+	var hpaCpuAverageUtilizationPercent int32 = 60
+	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
 	return &this
 }
 
@@ -870,6 +876,38 @@ func (o *ApplicationAdvancedSettings) SetLivenessProbeFailureThreshold(v int32) 
 	o.LivenessProbeFailureThreshold = &v
 }
 
+// GetHpaCpuAverageUtilizationPercent returns the HpaCpuAverageUtilizationPercent field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32 {
+	if o == nil || o.HpaCpuAverageUtilizationPercent == nil {
+		var ret int32
+		return ret
+	}
+	return *o.HpaCpuAverageUtilizationPercent
+}
+
+// GetHpaCpuAverageUtilizationPercentOk returns a tuple with the HpaCpuAverageUtilizationPercent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercentOk() (*int32, bool) {
+	if o == nil || o.HpaCpuAverageUtilizationPercent == nil {
+		return nil, false
+	}
+	return o.HpaCpuAverageUtilizationPercent, true
+}
+
+// HasHpaCpuAverageUtilizationPercent returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasHpaCpuAverageUtilizationPercent() bool {
+	if o != nil && o.HpaCpuAverageUtilizationPercent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHpaCpuAverageUtilizationPercent gets a reference to the given int32 and assigns it to the HpaCpuAverageUtilizationPercent field.
+func (o *ApplicationAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32) {
+	o.HpaCpuAverageUtilizationPercent = &v
+}
+
 func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeploymentDelayStartTimeSec != nil {
@@ -937,6 +975,9 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.LivenessProbeFailureThreshold != nil {
 		toSerialize["liveness_probe.failure_threshold"] = o.LivenessProbeFailureThreshold
+	}
+	if o.HpaCpuAverageUtilizationPercent != nil {
+		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
 	}
 	return json.Marshal(toSerialize)
 }

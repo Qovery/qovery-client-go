@@ -11184,6 +11184,7 @@ components:
         liveness_probe.success_threshold: 7
         liveness_probe.failure_threshold: 1
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        hpa.cpu.average_utilization_percent: 1
         readiness_probe.type: TCP
         liveness_probe.timeout_seconds: 4
         readiness_probe.failure_threshold: 9
@@ -11302,6 +11303,11 @@ components:
           default: 3
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
+          type: integer
+        hpa.cpu.average_utilization_percent:
+          default: 60
+          description: Percentage value of cpu usage at which point pods should scale
+            up.
           type: integer
       type: object
     ApplicationAdvancedSettingsRequest:
