@@ -17,6 +17,8 @@ import (
 
 // ContainerAdvancedSettingsResponse struct for ContainerAdvancedSettingsResponse
 type ContainerAdvancedSettingsResponse struct {
+	// please use `readiness_probe.initial_delay_seconds` and `liveness_probe.initial_delay_seconds` instead
+	// Deprecated
 	DeploymentDelayStartTimeSec *int32 `json:"deployment.delay_start_time_sec,omitempty"`
 	// disable custom domain check when deploying an application
 	DeploymentCustomDomainCheckEnabled *bool   `json:"deployment.custom_domain_check_enabled,omitempty"`
@@ -62,10 +64,50 @@ type ContainerAdvancedSettingsResponse struct {
 // will change when the set of required properties is changed
 func NewContainerAdvancedSettingsResponse() *ContainerAdvancedSettingsResponse {
 	this := ContainerAdvancedSettingsResponse{}
+	var deploymentDelayStartTimeSec int32 = 30
+	this.DeploymentDelayStartTimeSec = &deploymentDelayStartTimeSec
+	var deploymentCustomDomainCheckEnabled bool = true
+	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
+	var buildTimeoutMaxSec int32 = 1800
+	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
+	var networkIngressProxyBodySizeMb int32 = 100
+	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
+	var networkIngressEnableCors bool = false
+	this.NetworkIngressEnableCors = &networkIngressEnableCors
+	var networkIngressCorsAllowOrigin string = "*"
+	this.NetworkIngressCorsAllowOrigin = &networkIngressCorsAllowOrigin
+	var networkIngressCorsAllowMethods string = "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+	this.NetworkIngressCorsAllowMethods = &networkIngressCorsAllowMethods
+	var networkIngressCorsAllowHeaders string = "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
+	var readinessProbeType string = "TCP"
+	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
 	this.ReadinessProbeHttpGetPath = &readinessProbeHttpGetPath
+	var readinessProbeInitialDelaySeconds int32 = 30
+	this.ReadinessProbeInitialDelaySeconds = &readinessProbeInitialDelaySeconds
+	var readinessProbePeriodSeconds int32 = 10
+	this.ReadinessProbePeriodSeconds = &readinessProbePeriodSeconds
+	var readinessProbeTimeoutSeconds int32 = 1
+	this.ReadinessProbeTimeoutSeconds = &readinessProbeTimeoutSeconds
+	var readinessProbeSuccessThreshold int32 = 1
+	this.ReadinessProbeSuccessThreshold = &readinessProbeSuccessThreshold
+	var readinessProbeFailureThreshold int32 = 3
+	this.ReadinessProbeFailureThreshold = &readinessProbeFailureThreshold
+	var livenessProbeType string = "TCP"
+	this.LivenessProbeType = &livenessProbeType
 	var livenessProbeHttpGetPath string = "/"
 	this.LivenessProbeHttpGetPath = &livenessProbeHttpGetPath
+	var livenessProbeInitialDelaySeconds int32 = 30
+	this.LivenessProbeInitialDelaySeconds = &livenessProbeInitialDelaySeconds
+	var livenessProbePeriodSeconds int32 = 10
+	this.LivenessProbePeriodSeconds = &livenessProbePeriodSeconds
+	var livenessProbeTimeoutSeconds int32 = 5
+	this.LivenessProbeTimeoutSeconds = &livenessProbeTimeoutSeconds
+	var livenessProbeSuccessThreshold int32 = 1
+	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
+	var livenessProbeFailureThreshold int32 = 3
+	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	return &this
 }
 
@@ -74,14 +116,55 @@ func NewContainerAdvancedSettingsResponse() *ContainerAdvancedSettingsResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewContainerAdvancedSettingsResponseWithDefaults() *ContainerAdvancedSettingsResponse {
 	this := ContainerAdvancedSettingsResponse{}
+	var deploymentDelayStartTimeSec int32 = 30
+	this.DeploymentDelayStartTimeSec = &deploymentDelayStartTimeSec
+	var deploymentCustomDomainCheckEnabled bool = true
+	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
+	var buildTimeoutMaxSec int32 = 1800
+	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
+	var networkIngressProxyBodySizeMb int32 = 100
+	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
+	var networkIngressEnableCors bool = false
+	this.NetworkIngressEnableCors = &networkIngressEnableCors
+	var networkIngressCorsAllowOrigin string = "*"
+	this.NetworkIngressCorsAllowOrigin = &networkIngressCorsAllowOrigin
+	var networkIngressCorsAllowMethods string = "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+	this.NetworkIngressCorsAllowMethods = &networkIngressCorsAllowMethods
+	var networkIngressCorsAllowHeaders string = "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
+	var readinessProbeType string = "TCP"
+	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
 	this.ReadinessProbeHttpGetPath = &readinessProbeHttpGetPath
+	var readinessProbeInitialDelaySeconds int32 = 30
+	this.ReadinessProbeInitialDelaySeconds = &readinessProbeInitialDelaySeconds
+	var readinessProbePeriodSeconds int32 = 10
+	this.ReadinessProbePeriodSeconds = &readinessProbePeriodSeconds
+	var readinessProbeTimeoutSeconds int32 = 1
+	this.ReadinessProbeTimeoutSeconds = &readinessProbeTimeoutSeconds
+	var readinessProbeSuccessThreshold int32 = 1
+	this.ReadinessProbeSuccessThreshold = &readinessProbeSuccessThreshold
+	var readinessProbeFailureThreshold int32 = 3
+	this.ReadinessProbeFailureThreshold = &readinessProbeFailureThreshold
+	var livenessProbeType string = "TCP"
+	this.LivenessProbeType = &livenessProbeType
 	var livenessProbeHttpGetPath string = "/"
 	this.LivenessProbeHttpGetPath = &livenessProbeHttpGetPath
+	var livenessProbeInitialDelaySeconds int32 = 30
+	this.LivenessProbeInitialDelaySeconds = &livenessProbeInitialDelaySeconds
+	var livenessProbePeriodSeconds int32 = 10
+	this.LivenessProbePeriodSeconds = &livenessProbePeriodSeconds
+	var livenessProbeTimeoutSeconds int32 = 5
+	this.LivenessProbeTimeoutSeconds = &livenessProbeTimeoutSeconds
+	var livenessProbeSuccessThreshold int32 = 1
+	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
+	var livenessProbeFailureThreshold int32 = 3
+	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	return &this
 }
 
 // GetDeploymentDelayStartTimeSec returns the DeploymentDelayStartTimeSec field value if set, zero value otherwise.
+// Deprecated
 func (o *ContainerAdvancedSettingsResponse) GetDeploymentDelayStartTimeSec() int32 {
 	if o == nil || o.DeploymentDelayStartTimeSec == nil {
 		var ret int32
@@ -92,6 +175,7 @@ func (o *ContainerAdvancedSettingsResponse) GetDeploymentDelayStartTimeSec() int
 
 // GetDeploymentDelayStartTimeSecOk returns a tuple with the DeploymentDelayStartTimeSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ContainerAdvancedSettingsResponse) GetDeploymentDelayStartTimeSecOk() (*int32, bool) {
 	if o == nil || o.DeploymentDelayStartTimeSec == nil {
 		return nil, false
@@ -109,6 +193,7 @@ func (o *ContainerAdvancedSettingsResponse) HasDeploymentDelayStartTimeSec() boo
 }
 
 // SetDeploymentDelayStartTimeSec gets a reference to the given int32 and assigns it to the DeploymentDelayStartTimeSec field.
+// Deprecated
 func (o *ContainerAdvancedSettingsResponse) SetDeploymentDelayStartTimeSec(v int32) {
 	o.DeploymentDelayStartTimeSec = &v
 }

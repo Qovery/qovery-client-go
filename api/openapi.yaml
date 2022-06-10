@@ -11179,44 +11179,56 @@ components:
         readiness_probe.timeout_seconds: 2
         deployment.delay_start_time_sec: 0
         network.ingress.proxy_body_size_mb: 1
-        liveness_probe.type: NONE
+        liveness_probe.type: TCP
         liveness_probe.initial_delay_seconds: 3
         liveness_probe.success_threshold: 7
         liveness_probe.failure_threshold: 1
-        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        readiness_probe.type: NONE
+        network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        readiness_probe.type: TCP
         liveness_probe.timeout_seconds: 4
         readiness_probe.failure_threshold: 9
         build.timeout_max_sec: 6
         liveness_probe.period_seconds: 2
         deployment.custom_domain_check_enabled: true
         readiness_probe.http_get.path: /
-        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
-        network.ingress.enable_cors: true
+        network.ingress.cors_allow_origin: '*'
+        network.ingress.enable_cors: false
         readiness_probe.success_threshold: 7
         readiness_probe.initial_delay_seconds: 5
-        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
+        network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
         readiness_probe.period_seconds: 5
         liveness_probe.http_get.path: /
       properties:
         deployment.delay_start_time_sec:
+          default: 30
+          deprecated: true
+          description: please use `readiness_probe.initial_delay_seconds` and `liveness_probe.initial_delay_seconds`
+            instead
           type: integer
         deployment.custom_domain_check_enabled:
+          default: true
           description: disable custom domain check when deploying an application
           type: boolean
         build.timeout_max_sec:
+          default: 1800
           type: integer
         network.ingress.proxy_body_size_mb:
+          default: 100
           type: integer
         network.ingress.enable_cors:
+          default: false
           type: boolean
         network.ingress.cors_allow_origin:
+          default: '*'
           type: string
         network.ingress.cors_allow_methods:
+          default: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
           type: string
         network.ingress.cors_allow_headers:
+          default: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
           type: string
         readiness_probe.type:
+          default: TCP
           description: |
             `NONE` disable readiness probe
             `TCP` enable TCP readiness probe
@@ -11232,23 +11244,29 @@ components:
             - only usable with TYPE = HTTP
           type: string
         readiness_probe.initial_delay_seconds:
+          default: 30
           description: Delay before liveness probe is initiated
           type: integer
         readiness_probe.period_seconds:
+          default: 10
           description: How often to perform the probe
           type: integer
         readiness_probe.timeout_seconds:
+          default: 1
           description: When the probe times out
           type: integer
         readiness_probe.success_threshold:
+          default: 1
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         readiness_probe.failure_threshold:
+          default: 3
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
         liveness_probe.type:
+          default: TCP
           description: |
             `NONE` disable liveness probe
             `TCP` enable TCP liveness probe
@@ -11264,19 +11282,24 @@ components:
             - only usable with TYPE = HTTP
           type: string
         liveness_probe.initial_delay_seconds:
+          default: 30
           description: Delay before liveness probe is initiated
           type: integer
         liveness_probe.period_seconds:
+          default: 10
           description: How often to perform the probe
           type: integer
         liveness_probe.timeout_seconds:
+          default: 5
           description: When the probe times out
           type: integer
         liveness_probe.success_threshold:
+          default: 1
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         liveness_probe.failure_threshold:
+          default: 3
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
@@ -12241,44 +12264,56 @@ components:
         readiness_probe.timeout_seconds: 2
         deployment.delay_start_time_sec: 0
         network.ingress.proxy_body_size_mb: 1
-        liveness_probe.type: NONE
+        liveness_probe.type: TCP
         liveness_probe.initial_delay_seconds: 3
         liveness_probe.success_threshold: 7
         liveness_probe.failure_threshold: 1
-        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        readiness_probe.type: NONE
+        network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        readiness_probe.type: TCP
         liveness_probe.timeout_seconds: 4
         readiness_probe.failure_threshold: 9
         build.timeout_max_sec: 6
         liveness_probe.period_seconds: 2
         deployment.custom_domain_check_enabled: true
         readiness_probe.http_get.path: /
-        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
-        network.ingress.enable_cors: true
+        network.ingress.cors_allow_origin: '*'
+        network.ingress.enable_cors: false
         readiness_probe.success_threshold: 7
         readiness_probe.initial_delay_seconds: 5
-        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
+        network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
         readiness_probe.period_seconds: 5
         liveness_probe.http_get.path: /
       properties:
         deployment.delay_start_time_sec:
+          default: 30
+          deprecated: true
+          description: please use `readiness_probe.initial_delay_seconds` and `liveness_probe.initial_delay_seconds`
+            instead
           type: integer
         deployment.custom_domain_check_enabled:
+          default: true
           description: disable custom domain check when deploying an application
           type: boolean
         build.timeout_max_sec:
+          default: 1800
           type: integer
         network.ingress.proxy_body_size_mb:
+          default: 100
           type: integer
         network.ingress.enable_cors:
+          default: false
           type: boolean
         network.ingress.cors_allow_origin:
+          default: '*'
           type: string
         network.ingress.cors_allow_methods:
+          default: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
           type: string
         network.ingress.cors_allow_headers:
+          default: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
           type: string
         readiness_probe.type:
+          default: TCP
           description: |
             `NONE` disable readiness probe
             `TCP` enable TCP readiness probe
@@ -12294,23 +12329,29 @@ components:
             - only usable with TYPE = HTTP
           type: string
         readiness_probe.initial_delay_seconds:
+          default: 30
           description: Delay before liveness probe is initiated
           type: integer
         readiness_probe.period_seconds:
+          default: 10
           description: How often to perform the probe
           type: integer
         readiness_probe.timeout_seconds:
+          default: 1
           description: When the probe times out
           type: integer
         readiness_probe.success_threshold:
+          default: 1
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         readiness_probe.failure_threshold:
+          default: 3
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
         liveness_probe.type:
+          default: TCP
           description: |
             `NONE` disable liveness probe
             `TCP` enable TCP liveness probe
@@ -12326,19 +12367,24 @@ components:
             - only usable with TYPE = HTTP
           type: string
         liveness_probe.initial_delay_seconds:
+          default: 30
           description: Delay before liveness probe is initiated
           type: integer
         liveness_probe.period_seconds:
+          default: 10
           description: How often to perform the probe
           type: integer
         liveness_probe.timeout_seconds:
+          default: 5
           description: When the probe times out
           type: integer
         liveness_probe.success_threshold:
+          default: 1
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         liveness_probe.failure_threshold:
+          default: 3
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
@@ -12352,44 +12398,56 @@ components:
         readiness_probe.timeout_seconds: 2
         deployment.delay_start_time_sec: 0
         network.ingress.proxy_body_size_mb: 1
-        liveness_probe.type: NONE
+        liveness_probe.type: TCP
         liveness_probe.initial_delay_seconds: 3
         liveness_probe.success_threshold: 7
         liveness_probe.failure_threshold: 1
-        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        readiness_probe.type: NONE
+        network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        readiness_probe.type: TCP
         liveness_probe.timeout_seconds: 4
         readiness_probe.failure_threshold: 9
         build.timeout_max_sec: 6
         liveness_probe.period_seconds: 2
         deployment.custom_domain_check_enabled: true
         readiness_probe.http_get.path: /
-        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
-        network.ingress.enable_cors: true
+        network.ingress.cors_allow_origin: '*'
+        network.ingress.enable_cors: false
         readiness_probe.success_threshold: 7
         readiness_probe.initial_delay_seconds: 5
-        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
+        network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
         readiness_probe.period_seconds: 5
         liveness_probe.http_get.path: /
       properties:
         deployment.delay_start_time_sec:
+          default: 30
+          deprecated: true
+          description: please use `readiness_probe.initial_delay_seconds` and `liveness_probe.initial_delay_seconds`
+            instead
           type: integer
         deployment.custom_domain_check_enabled:
+          default: true
           description: disable custom domain check when deploying an application
           type: boolean
         build.timeout_max_sec:
+          default: 1800
           type: integer
         network.ingress.proxy_body_size_mb:
+          default: 100
           type: integer
         network.ingress.enable_cors:
+          default: false
           type: boolean
         network.ingress.cors_allow_origin:
+          default: '*'
           type: string
         network.ingress.cors_allow_methods:
+          default: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
           type: string
         network.ingress.cors_allow_headers:
+          default: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
           type: string
         readiness_probe.type:
+          default: TCP
           description: |
             `NONE` disable readiness probe
             `TCP` enable TCP readiness probe
@@ -12405,23 +12463,29 @@ components:
             - only usable with TYPE = HTTP
           type: string
         readiness_probe.initial_delay_seconds:
+          default: 30
           description: Delay before liveness probe is initiated
           type: integer
         readiness_probe.period_seconds:
+          default: 10
           description: How often to perform the probe
           type: integer
         readiness_probe.timeout_seconds:
+          default: 1
           description: When the probe times out
           type: integer
         readiness_probe.success_threshold:
+          default: 1
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         readiness_probe.failure_threshold:
+          default: 3
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
         liveness_probe.type:
+          default: TCP
           description: |
             `NONE` disable liveness probe
             `TCP` enable TCP liveness probe
@@ -12437,19 +12501,24 @@ components:
             - only usable with TYPE = HTTP
           type: string
         liveness_probe.initial_delay_seconds:
+          default: 30
           description: Delay before liveness probe is initiated
           type: integer
         liveness_probe.period_seconds:
+          default: 10
           description: How often to perform the probe
           type: integer
         liveness_probe.timeout_seconds:
+          default: 5
           description: When the probe times out
           type: integer
         liveness_probe.success_threshold:
+          default: 1
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         liveness_probe.failure_threshold:
+          default: 3
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
