@@ -13067,8 +13067,8 @@ components:
           example: 1024
           type: integer
         storage:
-          default: 10240
-          description: unit is MB
+          default: 10
+          description: unit is GB
           type: integer
       required:
       - mode

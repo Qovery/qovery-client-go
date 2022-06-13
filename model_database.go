@@ -31,7 +31,7 @@ type Database struct {
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
-	// unit is MB
+	// unit is GB
 	Storage     *int32           `json:"storage,omitempty"`
 	Environment *ReferenceObject `json:"environment,omitempty"`
 	Host        *string          `json:"host,omitempty"`
@@ -62,7 +62,7 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 	this.Cpu = &cpu
 	var memory int32 = 256
 	this.Memory = &memory
-	var storage int32 = 10240
+	var storage int32 = 10
 	this.Storage = &storage
 	var maximumCpu int32 = 250
 	this.MaximumCpu = &maximumCpu
@@ -82,7 +82,7 @@ func NewDatabaseWithDefaults() *Database {
 	this.Cpu = &cpu
 	var memory int32 = 256
 	this.Memory = &memory
-	var storage int32 = 10240
+	var storage int32 = 10
 	this.Storage = &storage
 	var maximumCpu int32 = 250
 	this.MaximumCpu = &maximumCpu

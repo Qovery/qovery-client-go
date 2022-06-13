@@ -27,7 +27,7 @@ type DatabaseRequest struct {
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
-	// unit is MB
+	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
 }
 
@@ -47,7 +47,7 @@ func NewDatabaseRequest(name string, type_ DatabaseTypeEnum, version string, mod
 	this.Cpu = &cpu
 	var memory int32 = 256
 	this.Memory = &memory
-	var storage int32 = 10240
+	var storage int32 = 10
 	this.Storage = &storage
 	return &this
 }
@@ -63,7 +63,7 @@ func NewDatabaseRequestWithDefaults() *DatabaseRequest {
 	this.Cpu = &cpu
 	var memory int32 = 256
 	this.Memory = &memory
-	var storage int32 = 10240
+	var storage int32 = 10
 	this.Storage = &storage
 	return &this
 }
