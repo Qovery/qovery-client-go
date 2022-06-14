@@ -368,6 +368,11 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsApi* | [**EditOrganization**](docs/OrganizationMainCallsApi.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
 *OrganizationMainCallsApi* | [**GetOrganization**](docs/OrganizationMainCallsApi.md#getorganization) | **Get** /organization/{organizationId} | Get organization by ID
 *OrganizationMainCallsApi* | [**ListOrganization**](docs/OrganizationMainCallsApi.md#listorganization) | **Get** /organization | List user organizations
+*OrganizationWebhookApi* | [**CreateOrganizationWebhook**](docs/OrganizationWebhookApi.md#createorganizationwebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
+*OrganizationWebhookApi* | [**DeleteOrganizationWebhook**](docs/OrganizationWebhookApi.md#deleteorganizationwebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
+*OrganizationWebhookApi* | [**EditOrganizationWebhook**](docs/OrganizationWebhookApi.md#editorganizationwebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
+*OrganizationWebhookApi* | [**GetOrganizationWebhook**](docs/OrganizationWebhookApi.md#getorganizationwebhook) | **Get** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
+*OrganizationWebhookApi* | [**ListOrganizationWebHooks**](docs/OrganizationWebhookApi.md#listorganizationwebhooks) | **Get** /organization/{organizationId}/webhook | List organization webhooks
 *ProjectDeploymentRuleApi* | [**CreateDeploymentRule**](docs/ProjectDeploymentRuleApi.md#createdeploymentrule) | **Post** /project/{projectId}/deploymentRule | Create a deployment rule
 *ProjectDeploymentRuleApi* | [**DeleteProjectDeploymentRule**](docs/ProjectDeploymentRuleApi.md#deleteprojectdeploymentrule) | **Delete** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
 *ProjectDeploymentRuleApi* | [**EditProjectDeployemtnRule**](docs/ProjectDeploymentRuleApi.md#editprojectdeployemtnrule) | **Put** /project/{projectId}/deploymentRule/{deploymentRuleId} | Edit a project deployment rule
@@ -506,6 +511,9 @@ Class | Method | HTTP request | Description
  - [ContainerStorage](docs/ContainerStorage.md)
  - [Cost](docs/Cost.md)
  - [CostRange](docs/CostRange.md)
+ - [CreateOrganizationWebhook201Response](docs/CreateOrganizationWebhook201Response.md)
+ - [CreateOrganizationWebhook201ResponseAllOf](docs/CreateOrganizationWebhook201ResponseAllOf.md)
+ - [CreateOrganizationWebhookRequest](docs/CreateOrganizationWebhookRequest.md)
  - [Credentials](docs/Credentials.md)
  - [CredentialsRequest](docs/CredentialsRequest.md)
  - [CreditCard](docs/CreditCard.md)
@@ -627,6 +635,7 @@ Class | Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LinkResponseList](docs/LinkResponseList.md)
  - [ListContainerRegistry200Response](docs/ListContainerRegistry200Response.md)
+ - [ListOrganizationWebHooks200Response](docs/ListOrganizationWebHooks200Response.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogPaginatedResponseListAllOf](docs/LogPaginatedResponseListAllOf.md)

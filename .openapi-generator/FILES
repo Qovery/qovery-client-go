@@ -60,6 +60,7 @@ api_members.go
 api_organization_account_git_repositories.go
 api_organization_api_token.go
 api_organization_main_calls.go
+api_organization_webhook.go
 api_project_deployment_rule.go
 api_project_environment_variable.go
 api_project_main_calls.go
@@ -208,6 +209,9 @@ docs/ContainerStorage.md
 docs/ContainersApi.md
 docs/Cost.md
 docs/CostRange.md
+docs/CreateOrganizationWebhook201Response.md
+docs/CreateOrganizationWebhook201ResponseAllOf.md
+docs/CreateOrganizationWebhookRequest.md
 docs/Credentials.md
 docs/CredentialsRequest.md
 docs/CreditCard.md
@@ -348,6 +352,7 @@ docs/Key.md
 docs/Link.md
 docs/LinkResponseList.md
 docs/ListContainerRegistry200Response.md
+docs/ListOrganizationWebHooks200Response.md
 docs/Log.md
 docs/LogPaginatedResponseList.md
 docs/LogPaginatedResponseListAllOf.md
@@ -398,6 +403,7 @@ docs/OrganizationGithubAppConnectRequest.md
 docs/OrganizationMainCallsApi.md
 docs/OrganizationRequest.md
 docs/OrganizationResponseList.md
+docs/OrganizationWebhookApi.md
 docs/OverriddenSecret.md
 docs/PaginationData.md
 docs/PaidUsage.md
@@ -576,6 +582,9 @@ model_container_response_list.go
 model_container_storage.go
 model_cost.go
 model_cost_range.go
+model_create_organization_webhook_201_response.go
+model_create_organization_webhook_201_response_all_of.go
+model_create_organization_webhook_request.go
 model_credentials.go
 model_credentials_request.go
 model_credit_card.go
@@ -697,6 +706,7 @@ model_key.go
 model_link.go
 model_link_response_list.go
 model_list_container_registry_200_response.go
+model_list_organization_web_hooks_200_response.go
 model_log.go
 model_log_paginated_response_list.go
 model_log_paginated_response_list_all_of.go

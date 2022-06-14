@@ -80,6 +80,7 @@ tags:
 - name: Organization
 - name: Organization Main Calls
 - name: Organization Api Token
+- name: Organization Webhook
 - name: Project
 - name: Project Deployment Rule
 - name: Project Environment Variable
@@ -2063,6 +2064,170 @@ paths:
       summary: Get bitbucket branches of the specified repository
       tags:
       - Organization Account Git Repositories
+  /organization/{organizationId}/webhook:
+    get:
+      description: List organization webhooks
+      operationId: listOrganizationWebHooks
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOrganizationWebHooks_200_response'
+          description: List organization webhooks
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization webhooks
+      tags:
+      - Organization Webhook
+    post:
+      description: Create an organization webhook.
+      operationId: createOrganizationWebhook
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createOrganizationWebhook_request'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOrganizationWebhook_201_response'
+          description: Organization webhook created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: Create an organization webhook
+      tags:
+      - Organization Webhook
+  /organization/{organizationId}/webhook/{webhookId}:
+    delete:
+      description: Delete organization webhook
+      operationId: deleteOrganizationWebhook
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete organization webhook
+      tags:
+      - Organization Webhook
+    get:
+      description: Get an Organization webhook
+      operationId: getOrganizationWebhook
+      parameters:
+      - description: Project ID
+        explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Webhook ID
+        explode: false
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createOrganizationWebhook_201_response'
+          description: Get organization webhook
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get an Organization webhook
+      tags:
+      - Organization Webhook
+    put:
+      description: Edit an organization webhook
+      operationId: editOrganizationWebhook
+      parameters:
+      - description: Project ID
+        explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/requestBody/content/application~1json/schema'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/responses/201/content/application~1json/schema'
+          description: Edit an organization webhook
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit an organization webhook
+      tags:
+      - Organization Webhook
   /cloudProvider:
     get:
       operationId: listCloudProvider
@@ -15634,6 +15799,88 @@ components:
       - SUNDAY
       example: MONDAY
       type: string
+    listOrganizationWebHooks_200_response:
+      example:
+        results:
+        - "{}"
+        - "{}"
+      properties:
+        results:
+          items:
+            $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook~1%7BwebhookId%7D/get/responses/200/content/application~1json/schema'
+          type: array
+      type: object
+    createOrganizationWebhook_request:
+      properties:
+        kind:
+          description: Define the type of the webhook. `SLACK` is a special webhook
+            type to push notifications directly to slack. The `target_url` must be
+            a Slack compatible endpoint.
+          enum:
+          - STANDARD
+          - SLACK
+          example: STANDARD
+          type: string
+        target_url:
+          description: |
+            Set the public HTTP or HTTPS endpoint that will receive the specified events.
+            The target URL must starts with `http://` or `https://`
+          type: string
+        target_secret:
+          description: "Make sure you receive a payload to sign the Qovery request\
+            \ with your secret.\nQovery will add a HTTP header `Qovery-Signature:\
+            \ <Your Secret>` to every webhook requests sent to your target URL.\n"
+          type: string
+        description:
+          type: string
+        enabled:
+          description: Turn on or off your endpoint.
+          type: boolean
+        events:
+          items:
+            description: |
+              Events to subscribe to and send to the `target_url`.
+              - `DEPLOYMENT_STARTED` send an event when a deployment is started and going to be executed
+              - `DEPLOYMENT_CANCELLED` send an event when a deployment is cancelled
+              - `DEPLOYMENT_FAILURE` send an event when a deployment failed
+              - `DEPLOYMENT_SUCCESSFUL` send an event when a deployment is successful
+            enum:
+            - DEPLOYMENT_STARTED
+            - DEPLOYMENT_CANCELLED
+            - DEPLOYMENT_FAILURE
+            - DEPLOYMENT_SUCCESSFUL
+            type: string
+          type: array
+      required:
+      - events
+      - kind
+      - target_url
+      type: object
+    createOrganizationWebhook_201_response_allOf:
+      properties:
+        kind:
+          $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/requestBody/content/application~1json/schema/properties/kind'
+        target_url:
+          description: |
+            Set the public HTTP or HTTPS endpoint that will receive the specified events.
+            The target URL must starts with `http://` or `https://`
+          type: string
+        target_secret_set:
+          type: boolean
+        description:
+          type: string
+        enabled:
+          description: Turn on or off your endpoint.
+          type: boolean
+        events:
+          items:
+            $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/requestBody/content/application~1json/schema/properties/events/items'
+          type: array
+      type: object
+    createOrganizationWebhook_201_response:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/createOrganizationWebhook_201_response_allOf'
     listContainerRegistry_200_response:
       example:
         results:
@@ -16895,6 +17142,7 @@ x-tagGroups:
   - Organization Main Calls
   - Organization Api Token
   - Organization Account Git Repositories
+  - Organization Webhook
   - Projects
   - Members
   - Billing
