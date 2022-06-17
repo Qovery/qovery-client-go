@@ -2158,10 +2158,10 @@ paths:
       description: Get an Organization webhook
       operationId: getOrganizationWebhook
       parameters:
-      - description: Project ID
+      - description: Organization ID
         explode: false
         in: path
-        name: projectId
+        name: organizationId
         required: true
         schema:
           format: uuid
@@ -2196,10 +2196,10 @@ paths:
       description: Edit an organization webhook
       operationId: editOrganizationWebhook
       parameters:
-      - description: Project ID
+      - description: Organization ID
         explode: false
         in: path
-        name: projectId
+        name: organizationId
         required: true
         schema:
           format: uuid
@@ -7390,7 +7390,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationAdvancedSettingsResponse'
+                $ref: '#/components/schemas/ApplicationAdvancedSettings'
           description: Advanced settings list
         "401":
           description: Access token is missing or invalid
@@ -7418,13 +7418,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApplicationAdvancedSettingsRequest'
+              $ref: '#/components/schemas/ApplicationAdvancedSettings'
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicationAdvancedSettingsResponse'
+                $ref: '#/components/schemas/ApplicationAdvancedSettings'
           description: Updated advanced settings
         "400":
           description: Bad request
@@ -11475,14 +11475,6 @@ components:
             up.
           type: integer
       type: object
-    ApplicationAdvancedSettingsRequest:
-      items:
-        $ref: '#/components/schemas/ApplicationAdvancedSettings'
-      type: array
-    ApplicationAdvancedSettingsResponse:
-      items:
-        $ref: '#/components/schemas/ApplicationAdvancedSettings'
-      type: array
     ApplicationCurrentScale:
       example:
         running: 1

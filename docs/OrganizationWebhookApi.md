@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationWebhook
 
-> Object EditOrganizationWebhook(ctx, projectId).Body(body).Execute()
+> Object EditOrganizationWebhook(ctx, organizationId).Body(body).Execute()
 
 Edit an organization webhook
 
@@ -173,12 +173,12 @@ import (
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     body := Object(987) // Object |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookApi.EditOrganizationWebhook(context.Background(), projectId).Body(body).Execute()
+    resp, r, err := apiClient.OrganizationWebhookApi.EditOrganizationWebhook(context.Background(), organizationId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.EditOrganizationWebhook``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -194,7 +194,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | **string** | Project ID | 
+**organizationId** | **string** | Organization ID | 
 
 ### Other Parameters
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationWebhook
 
-> CreateOrganizationWebhook201Response GetOrganizationWebhook(ctx, projectId, webhookId).Execute()
+> CreateOrganizationWebhook201Response GetOrganizationWebhook(ctx, organizationId, webhookId).Execute()
 
 Get an Organization webhook
 
@@ -245,12 +245,12 @@ import (
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookApi.GetOrganizationWebhook(context.Background(), projectId, webhookId).Execute()
+    resp, r, err := apiClient.OrganizationWebhookApi.GetOrganizationWebhook(context.Background(), organizationId, webhookId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.GetOrganizationWebhook``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -266,7 +266,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | **string** | Project ID | 
+**organizationId** | **string** | Organization ID | 
 **webhookId** | **string** | Webhook ID | 
 
 ### Other Parameters

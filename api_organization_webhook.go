@@ -227,10 +227,10 @@ func (a *OrganizationWebhookApiService) DeleteOrganizationWebhookExecute(r ApiDe
 }
 
 type ApiEditOrganizationWebhookRequest struct {
-	ctx        context.Context
-	ApiService *OrganizationWebhookApiService
-	projectId  string
-	body       *Object
+	ctx            context.Context
+	ApiService     *OrganizationWebhookApiService
+	organizationId string
+	body           *Object
 }
 
 func (r ApiEditOrganizationWebhookRequest) Body(body Object) ApiEditOrganizationWebhookRequest {
@@ -248,14 +248,14 @@ EditOrganizationWebhook Edit an organization webhook
 Edit an organization webhook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
+ @param organizationId Organization ID
  @return ApiEditOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) EditOrganizationWebhook(ctx context.Context, projectId string) ApiEditOrganizationWebhookRequest {
+func (a *OrganizationWebhookApiService) EditOrganizationWebhook(ctx context.Context, organizationId string) ApiEditOrganizationWebhookRequest {
 	return ApiEditOrganizationWebhookRequest{
-		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
@@ -275,7 +275,7 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -338,10 +338,10 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 }
 
 type ApiGetOrganizationWebhookRequest struct {
-	ctx        context.Context
-	ApiService *OrganizationWebhookApiService
-	projectId  string
-	webhookId  string
+	ctx            context.Context
+	ApiService     *OrganizationWebhookApiService
+	organizationId string
+	webhookId      string
 }
 
 func (r ApiGetOrganizationWebhookRequest) Execute() (*CreateOrganizationWebhook201Response, *http.Response, error) {
@@ -354,16 +354,16 @@ GetOrganizationWebhook Get an Organization webhook
 Get an Organization webhook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
+ @param organizationId Organization ID
  @param webhookId Webhook ID
  @return ApiGetOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) GetOrganizationWebhook(ctx context.Context, projectId string, webhookId string) ApiGetOrganizationWebhookRequest {
+func (a *OrganizationWebhookApiService) GetOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiGetOrganizationWebhookRequest {
 	return ApiGetOrganizationWebhookRequest{
-		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
-		webhookId:  webhookId,
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		webhookId:      webhookId,
 	}
 }
 
@@ -383,7 +383,7 @@ func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOr
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterToString(r.webhookId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
