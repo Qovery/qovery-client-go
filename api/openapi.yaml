@@ -44,6 +44,7 @@ tags:
 - name: Container Logs
 - name: Container Main Calls
 - name: Container Metrics
+- name: Container Registry
 - name: Container Secret
 - name: Containers
 - name: Backups
@@ -78,6 +79,7 @@ tags:
 - name: Logical Database
 - name: Members
 - name: Organization
+- name: Organization Account Git Repositories
 - name: Organization Main Calls
 - name: Organization Api Token
 - name: Organization Webhook
@@ -1853,6 +1855,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Indicates if the github app should be disconnected despite github
+          applications linked to organization
+        explode: true
+        in: query
+        name: force
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "204":
           description: Github App disconnected
@@ -12058,7 +12069,7 @@ components:
           type: string
         disk_size:
           default: 20
-          description: the disk size to be used for the node configuration
+          description: Unit is in GB. The disk size to be used for the node configuration
           example: 50
           type: integer
       required:
@@ -13139,11 +13150,11 @@ components:
           alert_threshold_in_percent: 5.637376656633329
           status: null
         storage:
-          requested_in_gb: 0
-          consumed_in_percent: 1.4658129805029452
-          warning_threshold_in_percent: 5.962133916683182
-          consumed_in_gb: 6
-          alert_threshold_in_percent: 5.637376656633329
+          requested_in_gb: 4
+          consumed_in_percent: 1.2315135367772556
+          warning_threshold_in_percent: 1.0246457001441578
+          consumed_in_gb: 7
+          alert_threshold_in_percent: 1.4894159098541704
           status: null
       properties:
         cpu:
@@ -13779,11 +13790,11 @@ components:
       example:
         database: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         memory:
-          consumed_in_percent: 9.301444243932576
-          warning_threshold_in_percent: 3.616076749251911
-          requested_in_mb: 2
-          consumed_in_mb: 7
-          alert_threshold_in_percent: 2.027123023002322
+          consumed_in_percent: 1.4658129805029452
+          warning_threshold_in_percent: 5.962133916683182
+          requested_in_mb: 0
+          consumed_in_mb: 6
+          alert_threshold_in_percent: 5.637376656633329
           status: null
         cpu:
           consumed_in_percent: 1.4658129805029452
@@ -13793,33 +13804,33 @@ components:
           alert_threshold_in_percent: 5.637376656633329
           status: null
         storage:
-          requested_in_gb: 0
-          consumed_in_percent: 1.4658129805029452
-          warning_threshold_in_percent: 5.962133916683182
-          consumed_in_gb: 6
-          alert_threshold_in_percent: 5.637376656633329
+          requested_in_gb: 2
+          consumed_in_percent: 9.301444243932576
+          warning_threshold_in_percent: 3.616076749251911
+          consumed_in_gb: 7
+          alert_threshold_in_percent: 2.027123023002322
           status: null
       properties:
         database:
           format: uuid
           type: string
         cpu:
-          $ref: '#/components/schemas/DatabaseCurrentMetric_cpu'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_cpu'
         memory:
-          $ref: '#/components/schemas/DatabaseCurrentMetric_memory'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_memory'
         storage:
-          $ref: '#/components/schemas/DatabaseCurrentMetric_storage'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_storage'
       type: object
     EnvironmentDatabasesCurrentMetricResponseList:
       example:
         results:
         - database: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           memory:
-            consumed_in_percent: 9.301444243932576
-            warning_threshold_in_percent: 3.616076749251911
-            requested_in_mb: 2
-            consumed_in_mb: 7
-            alert_threshold_in_percent: 2.027123023002322
+            consumed_in_percent: 1.4658129805029452
+            warning_threshold_in_percent: 5.962133916683182
+            requested_in_mb: 0
+            consumed_in_mb: 6
+            alert_threshold_in_percent: 5.637376656633329
             status: null
           cpu:
             consumed_in_percent: 1.4658129805029452
@@ -13829,19 +13840,19 @@ components:
             alert_threshold_in_percent: 5.637376656633329
             status: null
           storage:
-            requested_in_gb: 0
-            consumed_in_percent: 1.4658129805029452
-            warning_threshold_in_percent: 5.962133916683182
-            consumed_in_gb: 6
-            alert_threshold_in_percent: 5.637376656633329
+            requested_in_gb: 2
+            consumed_in_percent: 9.301444243932576
+            warning_threshold_in_percent: 3.616076749251911
+            consumed_in_gb: 7
+            alert_threshold_in_percent: 2.027123023002322
             status: null
         - database: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           memory:
-            consumed_in_percent: 9.301444243932576
-            warning_threshold_in_percent: 3.616076749251911
-            requested_in_mb: 2
-            consumed_in_mb: 7
-            alert_threshold_in_percent: 2.027123023002322
+            consumed_in_percent: 1.4658129805029452
+            warning_threshold_in_percent: 5.962133916683182
+            requested_in_mb: 0
+            consumed_in_mb: 6
+            alert_threshold_in_percent: 5.637376656633329
             status: null
           cpu:
             consumed_in_percent: 1.4658129805029452
@@ -13851,11 +13862,11 @@ components:
             alert_threshold_in_percent: 5.637376656633329
             status: null
           storage:
-            requested_in_gb: 0
-            consumed_in_percent: 1.4658129805029452
-            warning_threshold_in_percent: 5.962133916683182
-            consumed_in_gb: 6
-            alert_threshold_in_percent: 5.637376656633329
+            requested_in_gb: 2
+            consumed_in_percent: 9.301444243932576
+            warning_threshold_in_percent: 3.616076749251911
+            consumed_in_gb: 7
+            alert_threshold_in_percent: 2.027123023002322
             status: null
       properties:
         results:
@@ -14317,9 +14328,9 @@ components:
           example: instance 1
           type: string
         cpu:
-          $ref: '#/components/schemas/DatabaseCurrentMetric_cpu'
+          $ref: '#/components/schemas/EnvironmentDatabasesCurrentMetric_cpu'
         memory:
-          $ref: '#/components/schemas/DatabaseCurrentMetric_memory'
+          $ref: '#/components/schemas/Instance_memory'
       type: object
     InstanceResponseList:
       example:
@@ -14585,8 +14596,10 @@ components:
           format: date-time
           type: string
         requested_in_number:
+          description: unit is millicores (m). 1000m = 1 cpu
           type: number
         consumed_in_number:
+          description: unit is millicores (m). 1000m = 1 cpu
           type: number
         consumed_in_percent:
           type: number
@@ -14733,8 +14746,10 @@ components:
           format: date-time
           type: string
         requested_in_mb:
+          description: unit is MB. 1024 MB = 1GB
           type: integer
         consumed_in_mb:
+          description: unit is MB. 1024 MB = 1GB
           type: integer
         consumed_in_percent:
           type: number
@@ -14837,8 +14852,10 @@ components:
           format: date-time
           type: string
         requested_in_gb:
+          description: Unit is in GB.
           type: integer
         consumed_in_gb:
+          description: Unit is in GB.
           type: number
         consumed_in_percent:
           type: number
@@ -15542,8 +15559,10 @@ components:
         storage_id:
           type: string
         requested_in_gb:
+          description: Unit is in GB.
           type: integer
         consumed_in_gb:
+          description: Unit is in GB.
           type: number
         consumed_in_percent:
           type: number
@@ -15843,6 +15862,17 @@ components:
             - DEPLOYMENT_SUCCESSFUL
             type: string
           type: array
+        project_id_filter:
+          items:
+            description: "Specify the project IDs you want to filter to. \nThis webhook\
+              \ will be triggered only if the event is coming from the specified Project\
+              \ IDs.\n"
+            type: string
+          type: array
+        environment_types_filter:
+          items:
+            $ref: '#/components/schemas/EnvironmentModeEnum'
+          type: array
       required:
       - events
       - kind
@@ -15867,6 +15897,17 @@ components:
         events:
           items:
             $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/requestBody/content/application~1json/schema/properties/events/items'
+          type: array
+        project_id_filter:
+          items:
+            description: "Specify the project IDs you want to filter to. \nThis webhook\
+              \ will be triggered only if the event is coming from the specified Project\
+              \ IDs.\n"
+            type: string
+          type: array
+        environment_types_filter:
+          items:
+            $ref: '#/components/schemas/EnvironmentModeEnum'
           type: array
       type: object
     createOrganizationWebhook_201_response:
@@ -16646,11 +16687,11 @@ components:
       type: object
     DatabaseCurrentMetric_storage:
       example:
-        requested_in_gb: 0
-        consumed_in_percent: 1.4658129805029452
-        warning_threshold_in_percent: 5.962133916683182
-        consumed_in_gb: 6
-        alert_threshold_in_percent: 5.637376656633329
+        requested_in_gb: 4
+        consumed_in_percent: 1.2315135367772556
+        warning_threshold_in_percent: 1.0246457001441578
+        consumed_in_gb: 7
+        alert_threshold_in_percent: 1.4894159098541704
         status: null
       properties:
         requested_in_gb:
@@ -16764,6 +16805,78 @@ components:
       - cluster_id
       - mode
       - name
+      type: object
+    EnvironmentDatabasesCurrentMetric_cpu:
+      example:
+        consumed_in_percent: 1.4658129805029452
+        warning_threshold_in_percent: 5.962133916683182
+        consumed_in_number: 6.027456183070403
+        requested_in_float: 0.8008281904610115
+        alert_threshold_in_percent: 5.637376656633329
+        status: null
+      properties:
+        requested_in_float:
+          description: unit is millicores (m). 1000m = 1 cpu
+          type: number
+        consumed_in_number:
+          description: unit is millicores (m). 1000m = 1 cpu
+          type: number
+        consumed_in_percent:
+          type: number
+        warning_threshold_in_percent:
+          type: number
+        alert_threshold_in_percent:
+          type: number
+        status:
+          $ref: '#/components/schemas/ThresholdMetricStatusEnum'
+      type: object
+    EnvironmentDatabasesCurrentMetric_memory:
+      example:
+        consumed_in_percent: 1.4658129805029452
+        warning_threshold_in_percent: 5.962133916683182
+        requested_in_mb: 0
+        consumed_in_mb: 6
+        alert_threshold_in_percent: 5.637376656633329
+        status: null
+      properties:
+        requested_in_mb:
+          description: unit is MB. 1024 MB = 1GB
+          type: integer
+        consumed_in_mb:
+          description: unit is MB. 1024 MB = 1GB
+          type: integer
+        consumed_in_percent:
+          type: number
+        warning_threshold_in_percent:
+          type: number
+        alert_threshold_in_percent:
+          type: number
+        status:
+          $ref: '#/components/schemas/ThresholdMetricStatusEnum'
+      type: object
+    EnvironmentDatabasesCurrentMetric_storage:
+      example:
+        requested_in_gb: 2
+        consumed_in_percent: 9.301444243932576
+        warning_threshold_in_percent: 3.616076749251911
+        consumed_in_gb: 7
+        alert_threshold_in_percent: 2.027123023002322
+        status: null
+      properties:
+        requested_in_gb:
+          description: Unit is in GB.
+          type: integer
+        consumed_in_gb:
+          description: Unit is in GB.
+          type: integer
+        consumed_in_percent:
+          type: number
+        warning_threshold_in_percent:
+          type: number
+        alert_threshold_in_percent:
+          type: number
+        status:
+          $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
     EnvironmentDeploymentRule_allOf:
       properties:
@@ -16879,6 +16992,30 @@ components:
           items:
             $ref: '#/components/schemas/Event'
           type: array
+      type: object
+    Instance_memory:
+      example:
+        consumed_in_percent: 9.301444243932576
+        warning_threshold_in_percent: 3.616076749251911
+        requested_in_mb: 2
+        consumed_in_mb: 7
+        alert_threshold_in_percent: 2.027123023002322
+        status: null
+      properties:
+        requested_in_mb:
+          description: unit is MB. 1024 MB = 1GB.
+          type: integer
+        consumed_in_mb:
+          description: unit is MB. 1024 MB = 1GB.
+          type: integer
+        consumed_in_percent:
+          type: number
+        warning_threshold_in_percent:
+          type: number
+        alert_threshold_in_percent:
+          type: number
+        status:
+          $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
     InviteMember_allOf:
       properties:
@@ -17190,6 +17327,7 @@ x-tagGroups:
   - Container Deployment Restriction
   - Container Deployment History
   - Container Environment Variable
+  - Container Registry
   - Container Secret
   - Container Event
 - name: Database

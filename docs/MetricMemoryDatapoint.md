@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **time.Time** |  | 
-**RequestedInMb** | **int32** |  | 
-**ConsumedInMb** | **int32** |  | 
+**RequestedInMb** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
+**ConsumedInMb** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
 **ConsumedInPercent** | **float32** |  | 
 
 ## Methods

@@ -125,6 +125,13 @@ type ApiOrganizationGithubAppDisconnectRequest struct {
 	ctx            context.Context
 	ApiService     *GithubAppApiService
 	organizationId string
+	force          *bool
+}
+
+// Indicates if the github app should be disconnected despite github applications linked to organization
+func (r ApiOrganizationGithubAppDisconnectRequest) Force(force bool) ApiOrganizationGithubAppDisconnectRequest {
+	r.force = &force
+	return r
 }
 
 func (r ApiOrganizationGithubAppDisconnectRequest) Execute() (*http.Response, error) {
@@ -166,6 +173,9 @@ func (a *GithubAppApiService) OrganizationGithubAppDisconnectExecute(r ApiOrgani
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.force != nil {
+		localVarQueryParams.Add("force", parameterToString(*r.force, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

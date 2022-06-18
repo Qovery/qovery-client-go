@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **time.Time** |  | 
-**RequestedInGb** | Pointer to **int32** |  | [optional] 
-**ConsumedInGb** | Pointer to **float32** |  | [optional] 
+**RequestedInGb** | Pointer to **int32** | Unit is in GB. | [optional] 
+**ConsumedInGb** | Pointer to **float32** | Unit is in GB. | [optional] 
 **ConsumedInPercent** | **float32** |  | 
 
 ## Methods

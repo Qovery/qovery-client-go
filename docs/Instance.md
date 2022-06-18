@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Cpu** | Pointer to [**DatabaseCurrentMetricCpu**](DatabaseCurrentMetricCpu.md) |  | [optional] 
-**Memory** | Pointer to [**DatabaseCurrentMetricMemory**](DatabaseCurrentMetricMemory.md) |  | [optional] 
+**Cpu** | Pointer to [**EnvironmentDatabasesCurrentMetricCpu**](EnvironmentDatabasesCurrentMetricCpu.md) |  | [optional] 
+**Memory** | Pointer to [**InstanceMemory**](InstanceMemory.md) |  | [optional] 
 
 ## Methods
 
@@ -80,20 +80,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *Instance) GetCpu() DatabaseCurrentMetricCpu`
+`func (o *Instance) GetCpu() EnvironmentDatabasesCurrentMetricCpu`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *Instance) GetCpuOk() (*DatabaseCurrentMetricCpu, bool)`
+`func (o *Instance) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *Instance) SetCpu(v DatabaseCurrentMetricCpu)`
+`func (o *Instance) SetCpu(v EnvironmentDatabasesCurrentMetricCpu)`
 
 SetCpu sets Cpu field to given value.
 
@@ -105,20 +105,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *Instance) GetMemory() DatabaseCurrentMetricMemory`
+`func (o *Instance) GetMemory() InstanceMemory`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *Instance) GetMemoryOk() (*DatabaseCurrentMetricMemory, bool)`
+`func (o *Instance) GetMemoryOk() (*InstanceMemory, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *Instance) SetMemory(v DatabaseCurrentMetricMemory)`
+`func (o *Instance) SetMemory(v InstanceMemory)`
 
 SetMemory sets Memory field to given value.
 

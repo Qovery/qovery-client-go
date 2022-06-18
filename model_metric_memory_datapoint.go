@@ -18,10 +18,12 @@ import (
 
 // MetricMemoryDatapoint struct for MetricMemoryDatapoint
 type MetricMemoryDatapoint struct {
-	CreatedAt         time.Time `json:"created_at"`
-	RequestedInMb     int32     `json:"requested_in_mb"`
-	ConsumedInMb      int32     `json:"consumed_in_mb"`
-	ConsumedInPercent float32   `json:"consumed_in_percent"`
+	CreatedAt time.Time `json:"created_at"`
+	// unit is MB. 1024 MB = 1GB
+	RequestedInMb int32 `json:"requested_in_mb"`
+	// unit is MB. 1024 MB = 1GB
+	ConsumedInMb      int32   `json:"consumed_in_mb"`
+	ConsumedInPercent float32 `json:"consumed_in_percent"`
 }
 
 // NewMetricMemoryDatapoint instantiates a new MetricMemoryDatapoint object

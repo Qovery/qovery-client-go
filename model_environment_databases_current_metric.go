@@ -17,10 +17,10 @@ import (
 
 // EnvironmentDatabasesCurrentMetric struct for EnvironmentDatabasesCurrentMetric
 type EnvironmentDatabasesCurrentMetric struct {
-	Database *string                       `json:"database,omitempty"`
-	Cpu      *DatabaseCurrentMetricCpu     `json:"cpu,omitempty"`
-	Memory   *DatabaseCurrentMetricMemory  `json:"memory,omitempty"`
-	Storage  *DatabaseCurrentMetricStorage `json:"storage,omitempty"`
+	Database *string                                   `json:"database,omitempty"`
+	Cpu      *EnvironmentDatabasesCurrentMetricCpu     `json:"cpu,omitempty"`
+	Memory   *EnvironmentDatabasesCurrentMetricMemory  `json:"memory,omitempty"`
+	Storage  *EnvironmentDatabasesCurrentMetricStorage `json:"storage,omitempty"`
 }
 
 // NewEnvironmentDatabasesCurrentMetric instantiates a new EnvironmentDatabasesCurrentMetric object
@@ -73,9 +73,9 @@ func (o *EnvironmentDatabasesCurrentMetric) SetDatabase(v string) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *EnvironmentDatabasesCurrentMetric) GetCpu() DatabaseCurrentMetricCpu {
+func (o *EnvironmentDatabasesCurrentMetric) GetCpu() EnvironmentDatabasesCurrentMetricCpu {
 	if o == nil || o.Cpu == nil {
-		var ret DatabaseCurrentMetricCpu
+		var ret EnvironmentDatabasesCurrentMetricCpu
 		return ret
 	}
 	return *o.Cpu
@@ -83,7 +83,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetCpu() DatabaseCurrentMetricCpu {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDatabasesCurrentMetric) GetCpuOk() (*DatabaseCurrentMetricCpu, bool) {
+func (o *EnvironmentDatabasesCurrentMetric) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -99,15 +99,15 @@ func (o *EnvironmentDatabasesCurrentMetric) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given DatabaseCurrentMetricCpu and assigns it to the Cpu field.
-func (o *EnvironmentDatabasesCurrentMetric) SetCpu(v DatabaseCurrentMetricCpu) {
+// SetCpu gets a reference to the given EnvironmentDatabasesCurrentMetricCpu and assigns it to the Cpu field.
+func (o *EnvironmentDatabasesCurrentMetric) SetCpu(v EnvironmentDatabasesCurrentMetricCpu) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *EnvironmentDatabasesCurrentMetric) GetMemory() DatabaseCurrentMetricMemory {
+func (o *EnvironmentDatabasesCurrentMetric) GetMemory() EnvironmentDatabasesCurrentMetricMemory {
 	if o == nil || o.Memory == nil {
-		var ret DatabaseCurrentMetricMemory
+		var ret EnvironmentDatabasesCurrentMetricMemory
 		return ret
 	}
 	return *o.Memory
@@ -115,7 +115,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetMemory() DatabaseCurrentMetricMem
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDatabasesCurrentMetric) GetMemoryOk() (*DatabaseCurrentMetricMemory, bool) {
+func (o *EnvironmentDatabasesCurrentMetric) GetMemoryOk() (*EnvironmentDatabasesCurrentMetricMemory, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -131,15 +131,15 @@ func (o *EnvironmentDatabasesCurrentMetric) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given DatabaseCurrentMetricMemory and assigns it to the Memory field.
-func (o *EnvironmentDatabasesCurrentMetric) SetMemory(v DatabaseCurrentMetricMemory) {
+// SetMemory gets a reference to the given EnvironmentDatabasesCurrentMetricMemory and assigns it to the Memory field.
+func (o *EnvironmentDatabasesCurrentMetric) SetMemory(v EnvironmentDatabasesCurrentMetricMemory) {
 	o.Memory = &v
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *EnvironmentDatabasesCurrentMetric) GetStorage() DatabaseCurrentMetricStorage {
+func (o *EnvironmentDatabasesCurrentMetric) GetStorage() EnvironmentDatabasesCurrentMetricStorage {
 	if o == nil || o.Storage == nil {
-		var ret DatabaseCurrentMetricStorage
+		var ret EnvironmentDatabasesCurrentMetricStorage
 		return ret
 	}
 	return *o.Storage
@@ -147,7 +147,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetStorage() DatabaseCurrentMetricSt
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentDatabasesCurrentMetric) GetStorageOk() (*DatabaseCurrentMetricStorage, bool) {
+func (o *EnvironmentDatabasesCurrentMetric) GetStorageOk() (*EnvironmentDatabasesCurrentMetricStorage, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -163,8 +163,8 @@ func (o *EnvironmentDatabasesCurrentMetric) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given DatabaseCurrentMetricStorage and assigns it to the Storage field.
-func (o *EnvironmentDatabasesCurrentMetric) SetStorage(v DatabaseCurrentMetricStorage) {
+// SetStorage gets a reference to the given EnvironmentDatabasesCurrentMetricStorage and assigns it to the Storage field.
+func (o *EnvironmentDatabasesCurrentMetric) SetStorage(v EnvironmentDatabasesCurrentMetricStorage) {
 	o.Storage = &v
 }
 

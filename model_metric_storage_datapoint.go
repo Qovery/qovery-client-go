@@ -18,10 +18,12 @@ import (
 
 // MetricStorageDatapoint struct for MetricStorageDatapoint
 type MetricStorageDatapoint struct {
-	CreatedAt         time.Time `json:"created_at"`
-	RequestedInGb     *int32    `json:"requested_in_gb,omitempty"`
-	ConsumedInGb      *float32  `json:"consumed_in_gb,omitempty"`
-	ConsumedInPercent float32   `json:"consumed_in_percent"`
+	CreatedAt time.Time `json:"created_at"`
+	// Unit is in GB.
+	RequestedInGb *int32 `json:"requested_in_gb,omitempty"`
+	// Unit is in GB.
+	ConsumedInGb      *float32 `json:"consumed_in_gb,omitempty"`
+	ConsumedInPercent float32  `json:"consumed_in_percent"`
 }
 
 // NewMetricStorageDatapoint instantiates a new MetricStorageDatapoint object

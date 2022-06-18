@@ -18,10 +18,12 @@ import (
 
 // MetricCPUDatapoint struct for MetricCPUDatapoint
 type MetricCPUDatapoint struct {
-	CreatedAt         time.Time `json:"created_at"`
-	RequestedInNumber *float32  `json:"requested_in_number,omitempty"`
-	ConsumedInNumber  float32   `json:"consumed_in_number"`
-	ConsumedInPercent float32   `json:"consumed_in_percent"`
+	CreatedAt time.Time `json:"created_at"`
+	// unit is millicores (m). 1000m = 1 cpu
+	RequestedInNumber *float32 `json:"requested_in_number,omitempty"`
+	// unit is millicores (m). 1000m = 1 cpu
+	ConsumedInNumber  float32 `json:"consumed_in_number"`
+	ConsumedInPercent float32 `json:"consumed_in_percent"`
 }
 
 // NewMetricCPUDatapoint instantiates a new MetricCPUDatapoint object

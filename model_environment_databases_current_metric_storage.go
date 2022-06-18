@@ -13,106 +13,39 @@ package qovery
 
 import (
 	"encoding/json"
-	"time"
 )
 
-// StorageDisk struct for StorageDisk
-type StorageDisk struct {
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	StorageId *string    `json:"storage_id,omitempty"`
+// EnvironmentDatabasesCurrentMetricStorage struct for EnvironmentDatabasesCurrentMetricStorage
+type EnvironmentDatabasesCurrentMetricStorage struct {
 	// Unit is in GB.
 	RequestedInGb *int32 `json:"requested_in_gb,omitempty"`
 	// Unit is in GB.
-	ConsumedInGb              *float32                   `json:"consumed_in_gb,omitempty"`
+	ConsumedInGb              *int32                     `json:"consumed_in_gb,omitempty"`
 	ConsumedInPercent         *float32                   `json:"consumed_in_percent,omitempty"`
 	WarningThresholdInPercent *float32                   `json:"warning_threshold_in_percent,omitempty"`
 	AlertThresholdInPercent   *float32                   `json:"alert_threshold_in_percent,omitempty"`
 	Status                    *ThresholdMetricStatusEnum `json:"status,omitempty"`
 }
 
-// NewStorageDisk instantiates a new StorageDisk object
+// NewEnvironmentDatabasesCurrentMetricStorage instantiates a new EnvironmentDatabasesCurrentMetricStorage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorageDisk() *StorageDisk {
-	this := StorageDisk{}
+func NewEnvironmentDatabasesCurrentMetricStorage() *EnvironmentDatabasesCurrentMetricStorage {
+	this := EnvironmentDatabasesCurrentMetricStorage{}
 	return &this
 }
 
-// NewStorageDiskWithDefaults instantiates a new StorageDisk object
+// NewEnvironmentDatabasesCurrentMetricStorageWithDefaults instantiates a new EnvironmentDatabasesCurrentMetricStorage object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStorageDiskWithDefaults() *StorageDisk {
-	this := StorageDisk{}
+func NewEnvironmentDatabasesCurrentMetricStorageWithDefaults() *EnvironmentDatabasesCurrentMetricStorage {
+	this := EnvironmentDatabasesCurrentMetricStorage{}
 	return &this
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *StorageDisk) GetCreatedAt() time.Time {
-	if o == nil || o.CreatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StorageDisk) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *StorageDisk) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *StorageDisk) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
-}
-
-// GetStorageId returns the StorageId field value if set, zero value otherwise.
-func (o *StorageDisk) GetStorageId() string {
-	if o == nil || o.StorageId == nil {
-		var ret string
-		return ret
-	}
-	return *o.StorageId
-}
-
-// GetStorageIdOk returns a tuple with the StorageId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *StorageDisk) GetStorageIdOk() (*string, bool) {
-	if o == nil || o.StorageId == nil {
-		return nil, false
-	}
-	return o.StorageId, true
-}
-
-// HasStorageId returns a boolean if a field has been set.
-func (o *StorageDisk) HasStorageId() bool {
-	if o != nil && o.StorageId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStorageId gets a reference to the given string and assigns it to the StorageId field.
-func (o *StorageDisk) SetStorageId(v string) {
-	o.StorageId = &v
 }
 
 // GetRequestedInGb returns the RequestedInGb field value if set, zero value otherwise.
-func (o *StorageDisk) GetRequestedInGb() int32 {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetRequestedInGb() int32 {
 	if o == nil || o.RequestedInGb == nil {
 		var ret int32
 		return ret
@@ -122,7 +55,7 @@ func (o *StorageDisk) GetRequestedInGb() int32 {
 
 // GetRequestedInGbOk returns a tuple with the RequestedInGb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDisk) GetRequestedInGbOk() (*int32, bool) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetRequestedInGbOk() (*int32, bool) {
 	if o == nil || o.RequestedInGb == nil {
 		return nil, false
 	}
@@ -130,7 +63,7 @@ func (o *StorageDisk) GetRequestedInGbOk() (*int32, bool) {
 }
 
 // HasRequestedInGb returns a boolean if a field has been set.
-func (o *StorageDisk) HasRequestedInGb() bool {
+func (o *EnvironmentDatabasesCurrentMetricStorage) HasRequestedInGb() bool {
 	if o != nil && o.RequestedInGb != nil {
 		return true
 	}
@@ -139,14 +72,14 @@ func (o *StorageDisk) HasRequestedInGb() bool {
 }
 
 // SetRequestedInGb gets a reference to the given int32 and assigns it to the RequestedInGb field.
-func (o *StorageDisk) SetRequestedInGb(v int32) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) SetRequestedInGb(v int32) {
 	o.RequestedInGb = &v
 }
 
 // GetConsumedInGb returns the ConsumedInGb field value if set, zero value otherwise.
-func (o *StorageDisk) GetConsumedInGb() float32 {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetConsumedInGb() int32 {
 	if o == nil || o.ConsumedInGb == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.ConsumedInGb
@@ -154,7 +87,7 @@ func (o *StorageDisk) GetConsumedInGb() float32 {
 
 // GetConsumedInGbOk returns a tuple with the ConsumedInGb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDisk) GetConsumedInGbOk() (*float32, bool) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetConsumedInGbOk() (*int32, bool) {
 	if o == nil || o.ConsumedInGb == nil {
 		return nil, false
 	}
@@ -162,7 +95,7 @@ func (o *StorageDisk) GetConsumedInGbOk() (*float32, bool) {
 }
 
 // HasConsumedInGb returns a boolean if a field has been set.
-func (o *StorageDisk) HasConsumedInGb() bool {
+func (o *EnvironmentDatabasesCurrentMetricStorage) HasConsumedInGb() bool {
 	if o != nil && o.ConsumedInGb != nil {
 		return true
 	}
@@ -170,13 +103,13 @@ func (o *StorageDisk) HasConsumedInGb() bool {
 	return false
 }
 
-// SetConsumedInGb gets a reference to the given float32 and assigns it to the ConsumedInGb field.
-func (o *StorageDisk) SetConsumedInGb(v float32) {
+// SetConsumedInGb gets a reference to the given int32 and assigns it to the ConsumedInGb field.
+func (o *EnvironmentDatabasesCurrentMetricStorage) SetConsumedInGb(v int32) {
 	o.ConsumedInGb = &v
 }
 
 // GetConsumedInPercent returns the ConsumedInPercent field value if set, zero value otherwise.
-func (o *StorageDisk) GetConsumedInPercent() float32 {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetConsumedInPercent() float32 {
 	if o == nil || o.ConsumedInPercent == nil {
 		var ret float32
 		return ret
@@ -186,7 +119,7 @@ func (o *StorageDisk) GetConsumedInPercent() float32 {
 
 // GetConsumedInPercentOk returns a tuple with the ConsumedInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDisk) GetConsumedInPercentOk() (*float32, bool) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetConsumedInPercentOk() (*float32, bool) {
 	if o == nil || o.ConsumedInPercent == nil {
 		return nil, false
 	}
@@ -194,7 +127,7 @@ func (o *StorageDisk) GetConsumedInPercentOk() (*float32, bool) {
 }
 
 // HasConsumedInPercent returns a boolean if a field has been set.
-func (o *StorageDisk) HasConsumedInPercent() bool {
+func (o *EnvironmentDatabasesCurrentMetricStorage) HasConsumedInPercent() bool {
 	if o != nil && o.ConsumedInPercent != nil {
 		return true
 	}
@@ -203,12 +136,12 @@ func (o *StorageDisk) HasConsumedInPercent() bool {
 }
 
 // SetConsumedInPercent gets a reference to the given float32 and assigns it to the ConsumedInPercent field.
-func (o *StorageDisk) SetConsumedInPercent(v float32) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) SetConsumedInPercent(v float32) {
 	o.ConsumedInPercent = &v
 }
 
 // GetWarningThresholdInPercent returns the WarningThresholdInPercent field value if set, zero value otherwise.
-func (o *StorageDisk) GetWarningThresholdInPercent() float32 {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetWarningThresholdInPercent() float32 {
 	if o == nil || o.WarningThresholdInPercent == nil {
 		var ret float32
 		return ret
@@ -218,7 +151,7 @@ func (o *StorageDisk) GetWarningThresholdInPercent() float32 {
 
 // GetWarningThresholdInPercentOk returns a tuple with the WarningThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDisk) GetWarningThresholdInPercentOk() (*float32, bool) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetWarningThresholdInPercentOk() (*float32, bool) {
 	if o == nil || o.WarningThresholdInPercent == nil {
 		return nil, false
 	}
@@ -226,7 +159,7 @@ func (o *StorageDisk) GetWarningThresholdInPercentOk() (*float32, bool) {
 }
 
 // HasWarningThresholdInPercent returns a boolean if a field has been set.
-func (o *StorageDisk) HasWarningThresholdInPercent() bool {
+func (o *EnvironmentDatabasesCurrentMetricStorage) HasWarningThresholdInPercent() bool {
 	if o != nil && o.WarningThresholdInPercent != nil {
 		return true
 	}
@@ -235,12 +168,12 @@ func (o *StorageDisk) HasWarningThresholdInPercent() bool {
 }
 
 // SetWarningThresholdInPercent gets a reference to the given float32 and assigns it to the WarningThresholdInPercent field.
-func (o *StorageDisk) SetWarningThresholdInPercent(v float32) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) SetWarningThresholdInPercent(v float32) {
 	o.WarningThresholdInPercent = &v
 }
 
 // GetAlertThresholdInPercent returns the AlertThresholdInPercent field value if set, zero value otherwise.
-func (o *StorageDisk) GetAlertThresholdInPercent() float32 {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetAlertThresholdInPercent() float32 {
 	if o == nil || o.AlertThresholdInPercent == nil {
 		var ret float32
 		return ret
@@ -250,7 +183,7 @@ func (o *StorageDisk) GetAlertThresholdInPercent() float32 {
 
 // GetAlertThresholdInPercentOk returns a tuple with the AlertThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDisk) GetAlertThresholdInPercentOk() (*float32, bool) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetAlertThresholdInPercentOk() (*float32, bool) {
 	if o == nil || o.AlertThresholdInPercent == nil {
 		return nil, false
 	}
@@ -258,7 +191,7 @@ func (o *StorageDisk) GetAlertThresholdInPercentOk() (*float32, bool) {
 }
 
 // HasAlertThresholdInPercent returns a boolean if a field has been set.
-func (o *StorageDisk) HasAlertThresholdInPercent() bool {
+func (o *EnvironmentDatabasesCurrentMetricStorage) HasAlertThresholdInPercent() bool {
 	if o != nil && o.AlertThresholdInPercent != nil {
 		return true
 	}
@@ -267,12 +200,12 @@ func (o *StorageDisk) HasAlertThresholdInPercent() bool {
 }
 
 // SetAlertThresholdInPercent gets a reference to the given float32 and assigns it to the AlertThresholdInPercent field.
-func (o *StorageDisk) SetAlertThresholdInPercent(v float32) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) SetAlertThresholdInPercent(v float32) {
 	o.AlertThresholdInPercent = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *StorageDisk) GetStatus() ThresholdMetricStatusEnum {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetStatus() ThresholdMetricStatusEnum {
 	if o == nil || o.Status == nil {
 		var ret ThresholdMetricStatusEnum
 		return ret
@@ -282,7 +215,7 @@ func (o *StorageDisk) GetStatus() ThresholdMetricStatusEnum {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StorageDisk) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -290,7 +223,7 @@ func (o *StorageDisk) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *StorageDisk) HasStatus() bool {
+func (o *EnvironmentDatabasesCurrentMetricStorage) HasStatus() bool {
 	if o != nil && o.Status != nil {
 		return true
 	}
@@ -299,18 +232,12 @@ func (o *StorageDisk) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given ThresholdMetricStatusEnum and assigns it to the Status field.
-func (o *StorageDisk) SetStatus(v ThresholdMetricStatusEnum) {
+func (o *EnvironmentDatabasesCurrentMetricStorage) SetStatus(v ThresholdMetricStatusEnum) {
 	o.Status = &v
 }
 
-func (o StorageDisk) MarshalJSON() ([]byte, error) {
+func (o EnvironmentDatabasesCurrentMetricStorage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.StorageId != nil {
-		toSerialize["storage_id"] = o.StorageId
-	}
 	if o.RequestedInGb != nil {
 		toSerialize["requested_in_gb"] = o.RequestedInGb
 	}
@@ -332,38 +259,38 @@ func (o StorageDisk) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableStorageDisk struct {
-	value *StorageDisk
+type NullableEnvironmentDatabasesCurrentMetricStorage struct {
+	value *EnvironmentDatabasesCurrentMetricStorage
 	isSet bool
 }
 
-func (v NullableStorageDisk) Get() *StorageDisk {
+func (v NullableEnvironmentDatabasesCurrentMetricStorage) Get() *EnvironmentDatabasesCurrentMetricStorage {
 	return v.value
 }
 
-func (v *NullableStorageDisk) Set(val *StorageDisk) {
+func (v *NullableEnvironmentDatabasesCurrentMetricStorage) Set(val *EnvironmentDatabasesCurrentMetricStorage) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableStorageDisk) IsSet() bool {
+func (v NullableEnvironmentDatabasesCurrentMetricStorage) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableStorageDisk) Unset() {
+func (v *NullableEnvironmentDatabasesCurrentMetricStorage) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableStorageDisk(val *StorageDisk) *NullableStorageDisk {
-	return &NullableStorageDisk{value: val, isSet: true}
+func NewNullableEnvironmentDatabasesCurrentMetricStorage(val *EnvironmentDatabasesCurrentMetricStorage) *NullableEnvironmentDatabasesCurrentMetricStorage {
+	return &NullableEnvironmentDatabasesCurrentMetricStorage{value: val, isSet: true}
 }
 
-func (v NullableStorageDisk) MarshalJSON() ([]byte, error) {
+func (v NullableEnvironmentDatabasesCurrentMetricStorage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableStorageDisk) UnmarshalJSON(src []byte) error {
+func (v *NullableEnvironmentDatabasesCurrentMetricStorage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

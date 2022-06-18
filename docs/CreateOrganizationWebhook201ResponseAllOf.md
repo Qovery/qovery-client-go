@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** | Turn on or off your endpoint. | [optional] 
 **Events** | Pointer to [**[]Object**](Object.md) |  | [optional] 
+**ProjectIdFilter** | Pointer to **[]string** |  | [optional] 
+**EnvironmentTypesFilter** | Pointer to [**[]EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +181,56 @@ SetEvents sets Events field to given value.
 `func (o *CreateOrganizationWebhook201ResponseAllOf) HasEvents() bool`
 
 HasEvents returns a boolean if a field has been set.
+
+### GetProjectIdFilter
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) GetProjectIdFilter() []string`
+
+GetProjectIdFilter returns the ProjectIdFilter field if non-nil, zero value otherwise.
+
+### GetProjectIdFilterOk
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) GetProjectIdFilterOk() (*[]string, bool)`
+
+GetProjectIdFilterOk returns a tuple with the ProjectIdFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectIdFilter
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) SetProjectIdFilter(v []string)`
+
+SetProjectIdFilter sets ProjectIdFilter field to given value.
+
+### HasProjectIdFilter
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) HasProjectIdFilter() bool`
+
+HasProjectIdFilter returns a boolean if a field has been set.
+
+### GetEnvironmentTypesFilter
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) GetEnvironmentTypesFilter() []EnvironmentModeEnum`
+
+GetEnvironmentTypesFilter returns the EnvironmentTypesFilter field if non-nil, zero value otherwise.
+
+### GetEnvironmentTypesFilterOk
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) GetEnvironmentTypesFilterOk() (*[]EnvironmentModeEnum, bool)`
+
+GetEnvironmentTypesFilterOk returns a tuple with the EnvironmentTypesFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentTypesFilter
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) SetEnvironmentTypesFilter(v []EnvironmentModeEnum)`
+
+SetEnvironmentTypesFilter sets EnvironmentTypesFilter field to given value.
+
+### HasEnvironmentTypesFilter
+
+`func (o *CreateOrganizationWebhook201ResponseAllOf) HasEnvironmentTypesFilter() bool`
+
+HasEnvironmentTypesFilter returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

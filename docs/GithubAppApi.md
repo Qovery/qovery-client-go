@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## OrganizationGithubAppDisconnect
 
-> OrganizationGithubAppDisconnect(ctx, organizationId).Execute()
+> OrganizationGithubAppDisconnect(ctx, organizationId).Force(force).Execute()
 
 Disconnect a github account from an organization
 
@@ -97,10 +97,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    force := true // bool | Indicates if the github app should be disconnected despite github applications linked to organization (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GithubAppApi.OrganizationGithubAppDisconnect(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.GithubAppApi.OrganizationGithubAppDisconnect(context.Background(), organizationId).Force(force).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GithubAppApi.OrganizationGithubAppDisconnect``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -124,6 +125,7 @@ Other parameters are passed through a pointer to a apiOrganizationGithubAppDisco
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **force** | **bool** | Indicates if the github app should be disconnected despite github applications linked to organization | 
 
 ### Return type
 

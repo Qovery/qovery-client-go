@@ -18,10 +18,10 @@ import (
 
 // Instance struct for Instance
 type Instance struct {
-	CreatedAt *time.Time                   `json:"created_at,omitempty"`
-	Name      *string                      `json:"name,omitempty"`
-	Cpu       *DatabaseCurrentMetricCpu    `json:"cpu,omitempty"`
-	Memory    *DatabaseCurrentMetricMemory `json:"memory,omitempty"`
+	CreatedAt *time.Time                            `json:"created_at,omitempty"`
+	Name      *string                               `json:"name,omitempty"`
+	Cpu       *EnvironmentDatabasesCurrentMetricCpu `json:"cpu,omitempty"`
+	Memory    *InstanceMemory                       `json:"memory,omitempty"`
 }
 
 // NewInstance instantiates a new Instance object
@@ -106,9 +106,9 @@ func (o *Instance) SetName(v string) {
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *Instance) GetCpu() DatabaseCurrentMetricCpu {
+func (o *Instance) GetCpu() EnvironmentDatabasesCurrentMetricCpu {
 	if o == nil || o.Cpu == nil {
-		var ret DatabaseCurrentMetricCpu
+		var ret EnvironmentDatabasesCurrentMetricCpu
 		return ret
 	}
 	return *o.Cpu
@@ -116,7 +116,7 @@ func (o *Instance) GetCpu() DatabaseCurrentMetricCpu {
 
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Instance) GetCpuOk() (*DatabaseCurrentMetricCpu, bool) {
+func (o *Instance) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool) {
 	if o == nil || o.Cpu == nil {
 		return nil, false
 	}
@@ -132,15 +132,15 @@ func (o *Instance) HasCpu() bool {
 	return false
 }
 
-// SetCpu gets a reference to the given DatabaseCurrentMetricCpu and assigns it to the Cpu field.
-func (o *Instance) SetCpu(v DatabaseCurrentMetricCpu) {
+// SetCpu gets a reference to the given EnvironmentDatabasesCurrentMetricCpu and assigns it to the Cpu field.
+func (o *Instance) SetCpu(v EnvironmentDatabasesCurrentMetricCpu) {
 	o.Cpu = &v
 }
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *Instance) GetMemory() DatabaseCurrentMetricMemory {
+func (o *Instance) GetMemory() InstanceMemory {
 	if o == nil || o.Memory == nil {
-		var ret DatabaseCurrentMetricMemory
+		var ret InstanceMemory
 		return ret
 	}
 	return *o.Memory
@@ -148,7 +148,7 @@ func (o *Instance) GetMemory() DatabaseCurrentMetricMemory {
 
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Instance) GetMemoryOk() (*DatabaseCurrentMetricMemory, bool) {
+func (o *Instance) GetMemoryOk() (*InstanceMemory, bool) {
 	if o == nil || o.Memory == nil {
 		return nil, false
 	}
@@ -164,8 +164,8 @@ func (o *Instance) HasMemory() bool {
 	return false
 }
 
-// SetMemory gets a reference to the given DatabaseCurrentMetricMemory and assigns it to the Memory field.
-func (o *Instance) SetMemory(v DatabaseCurrentMetricMemory) {
+// SetMemory gets a reference to the given InstanceMemory and assigns it to the Memory field.
+func (o *Instance) SetMemory(v InstanceMemory) {
 	o.Memory = &v
 }
 

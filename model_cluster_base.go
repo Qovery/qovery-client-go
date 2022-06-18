@@ -31,7 +31,7 @@ type ClusterBase struct {
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string `json:"instance_type,omitempty"`
-	// the disk size to be used for the node configuration
+	// Unit is in GB. The disk size to be used for the node configuration
 	DiskSize *int32 `json:"disk_size,omitempty"`
 }
 

@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Database** | Pointer to **string** |  | [optional] 
-**Cpu** | Pointer to [**DatabaseCurrentMetricCpu**](DatabaseCurrentMetricCpu.md) |  | [optional] 
-**Memory** | Pointer to [**DatabaseCurrentMetricMemory**](DatabaseCurrentMetricMemory.md) |  | [optional] 
-**Storage** | Pointer to [**DatabaseCurrentMetricStorage**](DatabaseCurrentMetricStorage.md) |  | [optional] 
+**Cpu** | Pointer to [**EnvironmentDatabasesCurrentMetricCpu**](EnvironmentDatabasesCurrentMetricCpu.md) |  | [optional] 
+**Memory** | Pointer to [**EnvironmentDatabasesCurrentMetricMemory**](EnvironmentDatabasesCurrentMetricMemory.md) |  | [optional] 
+**Storage** | Pointer to [**EnvironmentDatabasesCurrentMetricStorage**](EnvironmentDatabasesCurrentMetricStorage.md) |  | [optional] 
 
 ## Methods
 
@@ -55,20 +55,20 @@ HasDatabase returns a boolean if a field has been set.
 
 ### GetCpu
 
-`func (o *EnvironmentDatabasesCurrentMetric) GetCpu() DatabaseCurrentMetricCpu`
+`func (o *EnvironmentDatabasesCurrentMetric) GetCpu() EnvironmentDatabasesCurrentMetricCpu`
 
 GetCpu returns the Cpu field if non-nil, zero value otherwise.
 
 ### GetCpuOk
 
-`func (o *EnvironmentDatabasesCurrentMetric) GetCpuOk() (*DatabaseCurrentMetricCpu, bool)`
+`func (o *EnvironmentDatabasesCurrentMetric) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool)`
 
 GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCpu
 
-`func (o *EnvironmentDatabasesCurrentMetric) SetCpu(v DatabaseCurrentMetricCpu)`
+`func (o *EnvironmentDatabasesCurrentMetric) SetCpu(v EnvironmentDatabasesCurrentMetricCpu)`
 
 SetCpu sets Cpu field to given value.
 
@@ -80,20 +80,20 @@ HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
-`func (o *EnvironmentDatabasesCurrentMetric) GetMemory() DatabaseCurrentMetricMemory`
+`func (o *EnvironmentDatabasesCurrentMetric) GetMemory() EnvironmentDatabasesCurrentMetricMemory`
 
 GetMemory returns the Memory field if non-nil, zero value otherwise.
 
 ### GetMemoryOk
 
-`func (o *EnvironmentDatabasesCurrentMetric) GetMemoryOk() (*DatabaseCurrentMetricMemory, bool)`
+`func (o *EnvironmentDatabasesCurrentMetric) GetMemoryOk() (*EnvironmentDatabasesCurrentMetricMemory, bool)`
 
 GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemory
 
-`func (o *EnvironmentDatabasesCurrentMetric) SetMemory(v DatabaseCurrentMetricMemory)`
+`func (o *EnvironmentDatabasesCurrentMetric) SetMemory(v EnvironmentDatabasesCurrentMetricMemory)`
 
 SetMemory sets Memory field to given value.
 
@@ -105,20 +105,20 @@ HasMemory returns a boolean if a field has been set.
 
 ### GetStorage
 
-`func (o *EnvironmentDatabasesCurrentMetric) GetStorage() DatabaseCurrentMetricStorage`
+`func (o *EnvironmentDatabasesCurrentMetric) GetStorage() EnvironmentDatabasesCurrentMetricStorage`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *EnvironmentDatabasesCurrentMetric) GetStorageOk() (*DatabaseCurrentMetricStorage, bool)`
+`func (o *EnvironmentDatabasesCurrentMetric) GetStorageOk() (*EnvironmentDatabasesCurrentMetricStorage, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *EnvironmentDatabasesCurrentMetric) SetStorage(v DatabaseCurrentMetricStorage)`
+`func (o *EnvironmentDatabasesCurrentMetric) SetStorage(v EnvironmentDatabasesCurrentMetricStorage)`
 
 SetStorage sets Storage field to given value.
 

@@ -25,8 +25,10 @@ type CreateOrganizationWebhookRequest struct {
 	TargetSecret *string `json:"target_secret,omitempty"`
 	Description  *string `json:"description,omitempty"`
 	// Turn on or off your endpoint.
-	Enabled *bool    `json:"enabled,omitempty"`
-	Events  []string `json:"events"`
+	Enabled                *bool                 `json:"enabled,omitempty"`
+	Events                 []string              `json:"events"`
+	ProjectIdFilter        []string              `json:"project_id_filter,omitempty"`
+	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
 }
 
 // NewCreateOrganizationWebhookRequest instantiates a new CreateOrganizationWebhookRequest object
@@ -217,6 +219,70 @@ func (o *CreateOrganizationWebhookRequest) SetEvents(v []string) {
 	o.Events = v
 }
 
+// GetProjectIdFilter returns the ProjectIdFilter field value if set, zero value otherwise.
+func (o *CreateOrganizationWebhookRequest) GetProjectIdFilter() []string {
+	if o == nil || o.ProjectIdFilter == nil {
+		var ret []string
+		return ret
+	}
+	return o.ProjectIdFilter
+}
+
+// GetProjectIdFilterOk returns a tuple with the ProjectIdFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOrganizationWebhookRequest) GetProjectIdFilterOk() ([]string, bool) {
+	if o == nil || o.ProjectIdFilter == nil {
+		return nil, false
+	}
+	return o.ProjectIdFilter, true
+}
+
+// HasProjectIdFilter returns a boolean if a field has been set.
+func (o *CreateOrganizationWebhookRequest) HasProjectIdFilter() bool {
+	if o != nil && o.ProjectIdFilter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectIdFilter gets a reference to the given []string and assigns it to the ProjectIdFilter field.
+func (o *CreateOrganizationWebhookRequest) SetProjectIdFilter(v []string) {
+	o.ProjectIdFilter = v
+}
+
+// GetEnvironmentTypesFilter returns the EnvironmentTypesFilter field value if set, zero value otherwise.
+func (o *CreateOrganizationWebhookRequest) GetEnvironmentTypesFilter() []EnvironmentModeEnum {
+	if o == nil || o.EnvironmentTypesFilter == nil {
+		var ret []EnvironmentModeEnum
+		return ret
+	}
+	return o.EnvironmentTypesFilter
+}
+
+// GetEnvironmentTypesFilterOk returns a tuple with the EnvironmentTypesFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOrganizationWebhookRequest) GetEnvironmentTypesFilterOk() ([]EnvironmentModeEnum, bool) {
+	if o == nil || o.EnvironmentTypesFilter == nil {
+		return nil, false
+	}
+	return o.EnvironmentTypesFilter, true
+}
+
+// HasEnvironmentTypesFilter returns a boolean if a field has been set.
+func (o *CreateOrganizationWebhookRequest) HasEnvironmentTypesFilter() bool {
+	if o != nil && o.EnvironmentTypesFilter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironmentTypesFilter gets a reference to the given []EnvironmentModeEnum and assigns it to the EnvironmentTypesFilter field.
+func (o *CreateOrganizationWebhookRequest) SetEnvironmentTypesFilter(v []EnvironmentModeEnum) {
+	o.EnvironmentTypesFilter = v
+}
+
 func (o CreateOrganizationWebhookRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -236,6 +302,12 @@ func (o CreateOrganizationWebhookRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["events"] = o.Events
+	}
+	if o.ProjectIdFilter != nil {
+		toSerialize["project_id_filter"] = o.ProjectIdFilter
+	}
+	if o.EnvironmentTypesFilter != nil {
+		toSerialize["environment_types_filter"] = o.EnvironmentTypesFilter
 	}
 	return json.Marshal(toSerialize)
 }

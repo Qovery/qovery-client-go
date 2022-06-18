@@ -35,7 +35,7 @@ type Cluster struct {
 	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string `json:"instance_type,omitempty"`
-	// the disk size to be used for the node configuration
+	// Unit is in GB. The disk size to be used for the node configuration
 	DiskSize *int32 `json:"disk_size,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
 	EstimatedCloudProviderCost *int32           `json:"estimated_cloud_provider_cost,omitempty"`

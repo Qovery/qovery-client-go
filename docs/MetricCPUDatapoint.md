@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | **time.Time** |  | 
-**RequestedInNumber** | Pointer to **float32** |  | [optional] 
-**ConsumedInNumber** | **float32** |  | 
+**RequestedInNumber** | Pointer to **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
+**ConsumedInNumber** | **float32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **ConsumedInPercent** | **float32** |  | 
 
 ## Methods
