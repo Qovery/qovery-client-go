@@ -17,6 +17,8 @@ import (
 
 // Credentials struct for Credentials
 type Credentials struct {
+	Host     string `json:"host"`
+	Port     int32  `json:"port"`
 	Login    string `json:"login"`
 	Password string `json:"password"`
 }
@@ -25,8 +27,10 @@ type Credentials struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCredentials(login string, password string) *Credentials {
+func NewCredentials(host string, port int32, login string, password string) *Credentials {
 	this := Credentials{}
+	this.Host = host
+	this.Port = port
 	this.Login = login
 	this.Password = password
 	return &this
@@ -38,6 +42,54 @@ func NewCredentials(login string, password string) *Credentials {
 func NewCredentialsWithDefaults() *Credentials {
 	this := Credentials{}
 	return &this
+}
+
+// GetHost returns the Host field value
+func (o *Credentials) GetHost() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Host
+}
+
+// GetHostOk returns a tuple with the Host field value
+// and a boolean to check if the value has been set.
+func (o *Credentials) GetHostOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Host, true
+}
+
+// SetHost sets field value
+func (o *Credentials) SetHost(v string) {
+	o.Host = v
+}
+
+// GetPort returns the Port field value
+func (o *Credentials) GetPort() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value
+// and a boolean to check if the value has been set.
+func (o *Credentials) GetPortOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Port, true
+}
+
+// SetPort sets field value
+func (o *Credentials) SetPort(v int32) {
+	o.Port = v
 }
 
 // GetLogin returns the Login field value
@@ -90,6 +142,12 @@ func (o *Credentials) SetPassword(v string) {
 
 func (o Credentials) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["host"] = o.Host
+	}
+	if true {
+		toSerialize["port"] = o.Port
+	}
 	if true {
 		toSerialize["login"] = o.Login
 	}

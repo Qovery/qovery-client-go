@@ -17,8 +17,8 @@ import (
 
 // AvailableContainerRegistryResponse struct for AvailableContainerRegistryResponse
 type AvailableContainerRegistryResponse struct {
-	Kind           *ContainerRegistryKind `json:"kind,omitempty"`
-	RequiredConfig map[string]interface{} `json:"required_config,omitempty"`
+	Kind           *ContainerRegistryKindEnum `json:"kind,omitempty"`
+	RequiredConfig map[string]interface{}     `json:"required_config,omitempty"`
 }
 
 // NewAvailableContainerRegistryResponse instantiates a new AvailableContainerRegistryResponse object
@@ -27,7 +27,7 @@ type AvailableContainerRegistryResponse struct {
 // will change when the set of required properties is changed
 func NewAvailableContainerRegistryResponse() *AvailableContainerRegistryResponse {
 	this := AvailableContainerRegistryResponse{}
-	var kind ContainerRegistryKind = CONTAINERREGISTRYKIND_ECR
+	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
 	this.Kind = &kind
 	return &this
 }
@@ -37,15 +37,15 @@ func NewAvailableContainerRegistryResponse() *AvailableContainerRegistryResponse
 // but it doesn't guarantee that properties required by API are set
 func NewAvailableContainerRegistryResponseWithDefaults() *AvailableContainerRegistryResponse {
 	this := AvailableContainerRegistryResponse{}
-	var kind ContainerRegistryKind = CONTAINERREGISTRYKIND_ECR
+	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
 	this.Kind = &kind
 	return &this
 }
 
 // GetKind returns the Kind field value if set, zero value otherwise.
-func (o *AvailableContainerRegistryResponse) GetKind() ContainerRegistryKind {
+func (o *AvailableContainerRegistryResponse) GetKind() ContainerRegistryKindEnum {
 	if o == nil || o.Kind == nil {
-		var ret ContainerRegistryKind
+		var ret ContainerRegistryKindEnum
 		return ret
 	}
 	return *o.Kind
@@ -53,7 +53,7 @@ func (o *AvailableContainerRegistryResponse) GetKind() ContainerRegistryKind {
 
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AvailableContainerRegistryResponse) GetKindOk() (*ContainerRegistryKind, bool) {
+func (o *AvailableContainerRegistryResponse) GetKindOk() (*ContainerRegistryKindEnum, bool) {
 	if o == nil || o.Kind == nil {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *AvailableContainerRegistryResponse) HasKind() bool {
 	return false
 }
 
-// SetKind gets a reference to the given ContainerRegistryKind and assigns it to the Kind field.
-func (o *AvailableContainerRegistryResponse) SetKind(v ContainerRegistryKind) {
+// SetKind gets a reference to the given ContainerRegistryKindEnum and assigns it to the Kind field.
+func (o *AvailableContainerRegistryResponse) SetKind(v ContainerRegistryKindEnum) {
 	o.Kind = &v
 }
 

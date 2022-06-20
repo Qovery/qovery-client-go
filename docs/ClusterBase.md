@@ -11,16 +11,18 @@ Name | Type | Description | Notes
 **AutoUpdate** | Pointer to **bool** |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Kubernetes** | [**KubernetesEnum**](KubernetesEnum.md) |  | 
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 20]
+**SshKey** | Pointer to [**ClusterBaseSshKey**](ClusterBaseSshKey.md) |  | [optional] 
 
 ## Methods
 
 ### NewClusterBase
 
-`func NewClusterBase(name string, cloudProvider CloudProviderEnum, region string, ) *ClusterBase`
+`func NewClusterBase(name string, cloudProvider CloudProviderEnum, region string, kubernetes KubernetesEnum, ) *ClusterBase`
 
 NewClusterBase instantiates a new ClusterBase object
 This constructor will assign default values to properties that have it defined,
@@ -195,6 +197,26 @@ SetMemory sets Memory field to given value.
 
 HasMemory returns a boolean if a field has been set.
 
+### GetKubernetes
+
+`func (o *ClusterBase) GetKubernetes() KubernetesEnum`
+
+GetKubernetes returns the Kubernetes field if non-nil, zero value otherwise.
+
+### GetKubernetesOk
+
+`func (o *ClusterBase) GetKubernetesOk() (*KubernetesEnum, bool)`
+
+GetKubernetesOk returns a tuple with the Kubernetes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKubernetes
+
+`func (o *ClusterBase) SetKubernetes(v KubernetesEnum)`
+
+SetKubernetes sets Kubernetes field to given value.
+
+
 ### GetMinRunningNodes
 
 `func (o *ClusterBase) GetMinRunningNodes() int32`
@@ -294,6 +316,31 @@ SetDiskSize sets DiskSize field to given value.
 `func (o *ClusterBase) HasDiskSize() bool`
 
 HasDiskSize returns a boolean if a field has been set.
+
+### GetSshKey
+
+`func (o *ClusterBase) GetSshKey() ClusterBaseSshKey`
+
+GetSshKey returns the SshKey field if non-nil, zero value otherwise.
+
+### GetSshKeyOk
+
+`func (o *ClusterBase) GetSshKeyOk() (*ClusterBaseSshKey, bool)`
+
+GetSshKeyOk returns a tuple with the SshKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshKey
+
+`func (o *ClusterBase) SetSshKey(v ClusterBaseSshKey)`
+
+SetSshKey sets SshKey field to given value.
+
+### HasSshKey
+
+`func (o *ClusterBase) HasSshKey() bool`
+
+HasSshKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

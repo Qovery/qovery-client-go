@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | Pointer to [**ContainerRegistryKind**](ContainerRegistryKind.md) |  | [optional] [default to CONTAINERREGISTRYKIND_ECR]
+**Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] [default to CONTAINERREGISTRYKINDENUM_ECR]
 **RequiredConfig** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetKind
 
-`func (o *AvailableContainerRegistryResponse) GetKind() ContainerRegistryKind`
+`func (o *AvailableContainerRegistryResponse) GetKind() ContainerRegistryKindEnum`
 
 GetKind returns the Kind field if non-nil, zero value otherwise.
 
 ### GetKindOk
 
-`func (o *AvailableContainerRegistryResponse) GetKindOk() (*ContainerRegistryKind, bool)`
+`func (o *AvailableContainerRegistryResponse) GetKindOk() (*ContainerRegistryKindEnum, bool)`
 
 GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKind
 
-`func (o *AvailableContainerRegistryResponse) SetKind(v ContainerRegistryKind)`
+`func (o *AvailableContainerRegistryResponse) SetKind(v ContainerRegistryKindEnum)`
 
 SetKind sets Kind field to given value.
 

@@ -1,4 +1,4 @@
-# ContainerRegistryKind
+# ContainerRegistryKindEnum
 
 ## Enum
 

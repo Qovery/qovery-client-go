@@ -140,6 +140,7 @@ docs/CluserCredentials.md
 docs/Cluster.md
 docs/ClusterAllOf.md
 docs/ClusterBase.md
+docs/ClusterBaseSshKey.md
 docs/ClusterCloudProviderInfo.md
 docs/ClusterCloudProviderInfoCredentials.md
 docs/ClusterCloudProviderInfoRequest.md
@@ -196,7 +197,7 @@ docs/ContainerNetwork.md
 docs/ContainerNetworkRequest.md
 docs/ContainerRegistriesApi.md
 docs/ContainerRegistryApi.md
-docs/ContainerRegistryKind.md
+docs/ContainerRegistryKindEnum.md
 docs/ContainerRegistryRequest.md
 docs/ContainerRegistryResponse.md
 docs/ContainerRequest.md
@@ -209,9 +210,6 @@ docs/ContainerStorage.md
 docs/ContainersApi.md
 docs/Cost.md
 docs/CostRange.md
-docs/CreateOrganizationWebhook201Response.md
-docs/CreateOrganizationWebhook201ResponseAllOf.md
-docs/CreateOrganizationWebhookRequest.md
 docs/Credentials.md
 docs/CredentialsRequest.md
 docs/CreditCard.md
@@ -353,10 +351,10 @@ docs/InvoiceAllOf.md
 docs/InvoiceResponseList.md
 docs/InvoiceStatusEnum.md
 docs/Key.md
+docs/KubernetesEnum.md
 docs/Link.md
 docs/LinkResponseList.md
 docs/ListContainerRegistry200Response.md
-docs/ListOrganizationWebHooks200Response.md
 docs/Log.md
 docs/LogPaginatedResponseList.md
 docs/LogPaginatedResponseListAllOf.md
@@ -408,6 +406,11 @@ docs/OrganizationMainCallsApi.md
 docs/OrganizationRequest.md
 docs/OrganizationResponseList.md
 docs/OrganizationWebhookApi.md
+docs/OrganizationWebhookCreateRequest.md
+docs/OrganizationWebhookCreateResponse.md
+docs/OrganizationWebhookCreateResponseAllOf.md
+docs/OrganizationWebhookResponse.md
+docs/OrganizationWebhookResponseList.md
 docs/OverriddenSecret.md
 docs/PaginationData.md
 docs/PaidUsage.md
@@ -533,6 +536,7 @@ model_cluser_credentials.go
 model_cluster.go
 model_cluster_all_of.go
 model_cluster_base.go
+model_cluster_base_ssh_key.go
 model_cluster_cloud_provider_info.go
 model_cluster_cloud_provider_info_credentials.go
 model_cluster_cloud_provider_info_request.go
@@ -575,7 +579,7 @@ model_container_edit_request.go
 model_container_edit_request_all_of.go
 model_container_network.go
 model_container_network_request.go
-model_container_registry_kind.go
+model_container_registry_kind_enum.go
 model_container_registry_request.go
 model_container_registry_response.go
 model_container_request.go
@@ -586,9 +590,6 @@ model_container_response_list.go
 model_container_storage.go
 model_cost.go
 model_cost_range.go
-model_create_organization_webhook_201_response.go
-model_create_organization_webhook_201_response_all_of.go
-model_create_organization_webhook_request.go
 model_credentials.go
 model_credentials_request.go
 model_credit_card.go
@@ -711,10 +712,10 @@ model_invoice_all_of.go
 model_invoice_response_list.go
 model_invoice_status_enum.go
 model_key.go
+model_kubernetes_enum.go
 model_link.go
 model_link_response_list.go
 model_list_container_registry_200_response.go
-model_list_organization_web_hooks_200_response.go
 model_log.go
 model_log_paginated_response_list.go
 model_log_paginated_response_list_all_of.go
@@ -760,6 +761,11 @@ model_organization_edit_request.go
 model_organization_github_app_connect_request.go
 model_organization_request.go
 model_organization_response_list.go
+model_organization_webhook_create_request.go
+model_organization_webhook_create_response.go
+model_organization_webhook_create_response_all_of.go
+model_organization_webhook_response.go
+model_organization_webhook_response_list.go
 model_overridden_secret.go
 model_pagination_data.go
 model_paid_usage.go

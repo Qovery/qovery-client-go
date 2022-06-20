@@ -30,13 +30,15 @@ type Cluster struct {
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory          *int32 `json:"memory,omitempty"`
-	MinRunningNodes *int32 `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32 `json:"max_running_nodes,omitempty"`
+	Memory          *int32         `json:"memory,omitempty"`
+	Kubernetes      KubernetesEnum `json:"kubernetes"`
+	MinRunningNodes *int32         `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32         `json:"max_running_nodes,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string `json:"instance_type,omitempty"`
 	// Unit is in GB. The disk size to be used for the node configuration
-	DiskSize *int32 `json:"disk_size,omitempty"`
+	DiskSize *int32             `json:"disk_size,omitempty"`
+	SshKey   *ClusterBaseSshKey `json:"ssh_key,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
 	EstimatedCloudProviderCost *int32           `json:"estimated_cloud_provider_cost,omitempty"`
 	Status                     *StateEnum       `json:"status,omitempty"`
@@ -50,7 +52,7 @@ type Cluster struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCluster(id string, createdAt time.Time, name string, cloudProvider CloudProviderEnum, region string) *Cluster {
+func NewCluster(id string, createdAt time.Time, name string, cloudProvider CloudProviderEnum, region string, kubernetes KubernetesEnum) *Cluster {
 	this := Cluster{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -61,6 +63,7 @@ func NewCluster(id string, createdAt time.Time, name string, cloudProvider Cloud
 	this.Cpu = &cpu
 	var memory int32 = 256
 	this.Memory = &memory
+	this.Kubernetes = kubernetes
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
@@ -368,6 +371,30 @@ func (o *Cluster) SetMemory(v int32) {
 	o.Memory = &v
 }
 
+// GetKubernetes returns the Kubernetes field value
+func (o *Cluster) GetKubernetes() KubernetesEnum {
+	if o == nil {
+		var ret KubernetesEnum
+		return ret
+	}
+
+	return o.Kubernetes
+}
+
+// GetKubernetesOk returns a tuple with the Kubernetes field value
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetKubernetesOk() (*KubernetesEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Kubernetes, true
+}
+
+// SetKubernetes sets field value
+func (o *Cluster) SetKubernetes(v KubernetesEnum) {
+	o.Kubernetes = v
+}
+
 // GetMinRunningNodes returns the MinRunningNodes field value if set, zero value otherwise.
 func (o *Cluster) GetMinRunningNodes() int32 {
 	if o == nil || o.MinRunningNodes == nil {
@@ -494,6 +521,38 @@ func (o *Cluster) HasDiskSize() bool {
 // SetDiskSize gets a reference to the given int32 and assigns it to the DiskSize field.
 func (o *Cluster) SetDiskSize(v int32) {
 	o.DiskSize = &v
+}
+
+// GetSshKey returns the SshKey field value if set, zero value otherwise.
+func (o *Cluster) GetSshKey() ClusterBaseSshKey {
+	if o == nil || o.SshKey == nil {
+		var ret ClusterBaseSshKey
+		return ret
+	}
+	return *o.SshKey
+}
+
+// GetSshKeyOk returns a tuple with the SshKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetSshKeyOk() (*ClusterBaseSshKey, bool) {
+	if o == nil || o.SshKey == nil {
+		return nil, false
+	}
+	return o.SshKey, true
+}
+
+// HasSshKey returns a boolean if a field has been set.
+func (o *Cluster) HasSshKey() bool {
+	if o != nil && o.SshKey != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSshKey gets a reference to the given ClusterBaseSshKey and assigns it to the SshKey field.
+func (o *Cluster) SetSshKey(v ClusterBaseSshKey) {
+	o.SshKey = &v
 }
 
 // GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
@@ -720,6 +779,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	if o.Memory != nil {
 		toSerialize["memory"] = o.Memory
 	}
+	if true {
+		toSerialize["kubernetes"] = o.Kubernetes
+	}
 	if o.MinRunningNodes != nil {
 		toSerialize["min_running_nodes"] = o.MinRunningNodes
 	}
@@ -731,6 +793,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.DiskSize != nil {
 		toSerialize["disk_size"] = o.DiskSize
+	}
+	if o.SshKey != nil {
+		toSerialize["ssh_key"] = o.SshKey
 	}
 	if o.EstimatedCloudProviderCost != nil {
 		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost

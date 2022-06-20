@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Host** | **string** |  | 
+**Port** | **int32** |  | 
 **Login** | **string** |  | 
 **Password** | **string** |  | 
 
@@ -11,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewCredentials
 
-`func NewCredentials(login string, password string, ) *Credentials`
+`func NewCredentials(host string, port int32, login string, password string, ) *Credentials`
 
 NewCredentials instantiates a new Credentials object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +27,46 @@ will change when the set of required properties is changed
 NewCredentialsWithDefaults instantiates a new Credentials object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHost
+
+`func (o *Credentials) GetHost() string`
+
+GetHost returns the Host field if non-nil, zero value otherwise.
+
+### GetHostOk
+
+`func (o *Credentials) GetHostOk() (*string, bool)`
+
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHost
+
+`func (o *Credentials) SetHost(v string)`
+
+SetHost sets Host field to given value.
+
+
+### GetPort
+
+`func (o *Credentials) GetPort() int32`
+
+GetPort returns the Port field if non-nil, zero value otherwise.
+
+### GetPortOk
+
+`func (o *Credentials) GetPortOk() (*int32, bool)`
+
+GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPort
+
+`func (o *Credentials) SetPort(v int32)`
+
+SetPort sets Port field to given value.
+
 
 ### GetLogin
 

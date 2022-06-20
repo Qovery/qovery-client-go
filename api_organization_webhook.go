@@ -27,15 +27,15 @@ type ApiCreateOrganizationWebhookRequest struct {
 	ctx                              context.Context
 	ApiService                       *OrganizationWebhookApiService
 	organizationId                   string
-	createOrganizationWebhookRequest *CreateOrganizationWebhookRequest
+	organizationWebhookCreateRequest *OrganizationWebhookCreateRequest
 }
 
-func (r ApiCreateOrganizationWebhookRequest) CreateOrganizationWebhookRequest(createOrganizationWebhookRequest CreateOrganizationWebhookRequest) ApiCreateOrganizationWebhookRequest {
-	r.createOrganizationWebhookRequest = &createOrganizationWebhookRequest
+func (r ApiCreateOrganizationWebhookRequest) OrganizationWebhookCreateRequest(organizationWebhookCreateRequest OrganizationWebhookCreateRequest) ApiCreateOrganizationWebhookRequest {
+	r.organizationWebhookCreateRequest = &organizationWebhookCreateRequest
 	return r
 }
 
-func (r ApiCreateOrganizationWebhookRequest) Execute() (*CreateOrganizationWebhook201Response, *http.Response, error) {
+func (r ApiCreateOrganizationWebhookRequest) Execute() (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateOrganizationWebhookExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *OrganizationWebhookApiService) CreateOrganizationWebhook(ctx context.Co
 }
 
 // Execute executes the request
-//  @return CreateOrganizationWebhook201Response
-func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCreateOrganizationWebhookRequest) (*CreateOrganizationWebhook201Response, *http.Response, error) {
+//  @return OrganizationWebhookCreateResponse
+func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCreateOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CreateOrganizationWebhook201Response
+		localVarReturnValue *OrganizationWebhookCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.CreateOrganizationWebhook")
@@ -96,7 +96,7 @@ func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createOrganizationWebhookRequest
+	localVarPostBody = r.organizationWebhookCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -227,18 +227,18 @@ func (a *OrganizationWebhookApiService) DeleteOrganizationWebhookExecute(r ApiDe
 }
 
 type ApiEditOrganizationWebhookRequest struct {
-	ctx            context.Context
-	ApiService     *OrganizationWebhookApiService
-	organizationId string
-	body           *Object
+	ctx                              context.Context
+	ApiService                       *OrganizationWebhookApiService
+	organizationId                   string
+	organizationWebhookCreateRequest *OrganizationWebhookCreateRequest
 }
 
-func (r ApiEditOrganizationWebhookRequest) Body(body Object) ApiEditOrganizationWebhookRequest {
-	r.body = &body
+func (r ApiEditOrganizationWebhookRequest) OrganizationWebhookCreateRequest(organizationWebhookCreateRequest OrganizationWebhookCreateRequest) ApiEditOrganizationWebhookRequest {
+	r.organizationWebhookCreateRequest = &organizationWebhookCreateRequest
 	return r
 }
 
-func (r ApiEditOrganizationWebhookRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiEditOrganizationWebhookRequest) Execute() (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	return r.ApiService.EditOrganizationWebhookExecute(r)
 }
 
@@ -260,13 +260,13 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhook(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return Object
-func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEditOrganizationWebhookRequest) (*Object, *http.Response, error) {
+//  @return OrganizationWebhookCreateResponse
+func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEditOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Object
+		localVarReturnValue *OrganizationWebhookCreateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.EditOrganizationWebhook")
@@ -299,7 +299,7 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.organizationWebhookCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -344,7 +344,7 @@ type ApiGetOrganizationWebhookRequest struct {
 	webhookId      string
 }
 
-func (r ApiGetOrganizationWebhookRequest) Execute() (*CreateOrganizationWebhook201Response, *http.Response, error) {
+func (r ApiGetOrganizationWebhookRequest) Execute() (*OrganizationWebhookResponse, *http.Response, error) {
 	return r.ApiService.GetOrganizationWebhookExecute(r)
 }
 
@@ -368,13 +368,13 @@ func (a *OrganizationWebhookApiService) GetOrganizationWebhook(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return CreateOrganizationWebhook201Response
-func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOrganizationWebhookRequest) (*CreateOrganizationWebhook201Response, *http.Response, error) {
+//  @return OrganizationWebhookResponse
+func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOrganizationWebhookRequest) (*OrganizationWebhookResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CreateOrganizationWebhook201Response
+		localVarReturnValue *OrganizationWebhookResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.GetOrganizationWebhook")
@@ -450,7 +450,7 @@ type ApiListOrganizationWebHooksRequest struct {
 	organizationId string
 }
 
-func (r ApiListOrganizationWebHooksRequest) Execute() (*ListOrganizationWebHooks200Response, *http.Response, error) {
+func (r ApiListOrganizationWebHooksRequest) Execute() (*OrganizationWebhookResponseList, *http.Response, error) {
 	return r.ApiService.ListOrganizationWebHooksExecute(r)
 }
 
@@ -472,13 +472,13 @@ func (a *OrganizationWebhookApiService) ListOrganizationWebHooks(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ListOrganizationWebHooks200Response
-func (a *OrganizationWebhookApiService) ListOrganizationWebHooksExecute(r ApiListOrganizationWebHooksRequest) (*ListOrganizationWebHooks200Response, *http.Response, error) {
+//  @return OrganizationWebhookResponseList
+func (a *OrganizationWebhookApiService) ListOrganizationWebHooksExecute(r ApiListOrganizationWebHooksRequest) (*OrganizationWebhookResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ListOrganizationWebHooks200Response
+		localVarReturnValue *OrganizationWebhookResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.ListOrganizationWebHooks")

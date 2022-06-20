@@ -13,129 +13,43 @@ package qovery
 
 import (
 	"encoding/json"
-	"time"
 )
 
-// CreateOrganizationWebhook201Response struct for CreateOrganizationWebhook201Response
-type CreateOrganizationWebhook201Response struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Kind      *Object    `json:"kind,omitempty"`
+// OrganizationWebhookCreateResponseAllOf struct for OrganizationWebhookCreateResponseAllOf
+type OrganizationWebhookCreateResponseAllOf struct {
+	Kind *Kind `json:"kind,omitempty"`
 	// Set the public HTTP or HTTPS endpoint that will receive the specified events. The target URL must starts with `http://` or `https://`
 	TargetUrl       *string `json:"target_url,omitempty"`
 	TargetSecretSet *bool   `json:"target_secret_set,omitempty"`
 	Description     *string `json:"description,omitempty"`
 	// Turn on or off your endpoint.
 	Enabled                *bool                 `json:"enabled,omitempty"`
-	Events                 []Object              `json:"events,omitempty"`
+	Events                 []Items               `json:"events,omitempty"`
 	ProjectIdFilter        []string              `json:"project_id_filter,omitempty"`
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
 }
 
-// NewCreateOrganizationWebhook201Response instantiates a new CreateOrganizationWebhook201Response object
+// NewOrganizationWebhookCreateResponseAllOf instantiates a new OrganizationWebhookCreateResponseAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateOrganizationWebhook201Response(id string, createdAt time.Time) *CreateOrganizationWebhook201Response {
-	this := CreateOrganizationWebhook201Response{}
-	this.Id = id
-	this.CreatedAt = createdAt
+func NewOrganizationWebhookCreateResponseAllOf() *OrganizationWebhookCreateResponseAllOf {
+	this := OrganizationWebhookCreateResponseAllOf{}
 	return &this
 }
 
-// NewCreateOrganizationWebhook201ResponseWithDefaults instantiates a new CreateOrganizationWebhook201Response object
+// NewOrganizationWebhookCreateResponseAllOfWithDefaults instantiates a new OrganizationWebhookCreateResponseAllOf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateOrganizationWebhook201ResponseWithDefaults() *CreateOrganizationWebhook201Response {
-	this := CreateOrganizationWebhook201Response{}
+func NewOrganizationWebhookCreateResponseAllOfWithDefaults() *OrganizationWebhookCreateResponseAllOf {
+	this := OrganizationWebhookCreateResponseAllOf{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *CreateOrganizationWebhook201Response) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *CreateOrganizationWebhook201Response) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *CreateOrganizationWebhook201Response) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *CreateOrganizationWebhook201Response) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *CreateOrganizationWebhook201Response) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
 }
 
 // GetKind returns the Kind field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetKind() Object {
+func (o *OrganizationWebhookCreateResponseAllOf) GetKind() Kind {
 	if o == nil || o.Kind == nil {
-		var ret Object
+		var ret Kind
 		return ret
 	}
 	return *o.Kind
@@ -143,7 +57,7 @@ func (o *CreateOrganizationWebhook201Response) GetKind() Object {
 
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetKindOk() (*Object, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetKindOk() (*Kind, bool) {
 	if o == nil || o.Kind == nil {
 		return nil, false
 	}
@@ -151,7 +65,7 @@ func (o *CreateOrganizationWebhook201Response) GetKindOk() (*Object, bool) {
 }
 
 // HasKind returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasKind() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasKind() bool {
 	if o != nil && o.Kind != nil {
 		return true
 	}
@@ -159,13 +73,13 @@ func (o *CreateOrganizationWebhook201Response) HasKind() bool {
 	return false
 }
 
-// SetKind gets a reference to the given Object and assigns it to the Kind field.
-func (o *CreateOrganizationWebhook201Response) SetKind(v Object) {
+// SetKind gets a reference to the given Kind and assigns it to the Kind field.
+func (o *OrganizationWebhookCreateResponseAllOf) SetKind(v Kind) {
 	o.Kind = &v
 }
 
 // GetTargetUrl returns the TargetUrl field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetTargetUrl() string {
+func (o *OrganizationWebhookCreateResponseAllOf) GetTargetUrl() string {
 	if o == nil || o.TargetUrl == nil {
 		var ret string
 		return ret
@@ -175,7 +89,7 @@ func (o *CreateOrganizationWebhook201Response) GetTargetUrl() string {
 
 // GetTargetUrlOk returns a tuple with the TargetUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetTargetUrlOk() (*string, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetTargetUrlOk() (*string, bool) {
 	if o == nil || o.TargetUrl == nil {
 		return nil, false
 	}
@@ -183,7 +97,7 @@ func (o *CreateOrganizationWebhook201Response) GetTargetUrlOk() (*string, bool) 
 }
 
 // HasTargetUrl returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasTargetUrl() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasTargetUrl() bool {
 	if o != nil && o.TargetUrl != nil {
 		return true
 	}
@@ -192,12 +106,12 @@ func (o *CreateOrganizationWebhook201Response) HasTargetUrl() bool {
 }
 
 // SetTargetUrl gets a reference to the given string and assigns it to the TargetUrl field.
-func (o *CreateOrganizationWebhook201Response) SetTargetUrl(v string) {
+func (o *OrganizationWebhookCreateResponseAllOf) SetTargetUrl(v string) {
 	o.TargetUrl = &v
 }
 
 // GetTargetSecretSet returns the TargetSecretSet field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetTargetSecretSet() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) GetTargetSecretSet() bool {
 	if o == nil || o.TargetSecretSet == nil {
 		var ret bool
 		return ret
@@ -207,7 +121,7 @@ func (o *CreateOrganizationWebhook201Response) GetTargetSecretSet() bool {
 
 // GetTargetSecretSetOk returns a tuple with the TargetSecretSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetTargetSecretSetOk() (*bool, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetTargetSecretSetOk() (*bool, bool) {
 	if o == nil || o.TargetSecretSet == nil {
 		return nil, false
 	}
@@ -215,7 +129,7 @@ func (o *CreateOrganizationWebhook201Response) GetTargetSecretSetOk() (*bool, bo
 }
 
 // HasTargetSecretSet returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasTargetSecretSet() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasTargetSecretSet() bool {
 	if o != nil && o.TargetSecretSet != nil {
 		return true
 	}
@@ -224,12 +138,12 @@ func (o *CreateOrganizationWebhook201Response) HasTargetSecretSet() bool {
 }
 
 // SetTargetSecretSet gets a reference to the given bool and assigns it to the TargetSecretSet field.
-func (o *CreateOrganizationWebhook201Response) SetTargetSecretSet(v bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) SetTargetSecretSet(v bool) {
 	o.TargetSecretSet = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetDescription() string {
+func (o *OrganizationWebhookCreateResponseAllOf) GetDescription() string {
 	if o == nil || o.Description == nil {
 		var ret string
 		return ret
@@ -239,7 +153,7 @@ func (o *CreateOrganizationWebhook201Response) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetDescriptionOk() (*string, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetDescriptionOk() (*string, bool) {
 	if o == nil || o.Description == nil {
 		return nil, false
 	}
@@ -247,7 +161,7 @@ func (o *CreateOrganizationWebhook201Response) GetDescriptionOk() (*string, bool
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasDescription() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasDescription() bool {
 	if o != nil && o.Description != nil {
 		return true
 	}
@@ -256,12 +170,12 @@ func (o *CreateOrganizationWebhook201Response) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *CreateOrganizationWebhook201Response) SetDescription(v string) {
+func (o *OrganizationWebhookCreateResponseAllOf) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetEnabled() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) GetEnabled() bool {
 	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
@@ -271,7 +185,7 @@ func (o *CreateOrganizationWebhook201Response) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetEnabledOk() (*bool, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetEnabledOk() (*bool, bool) {
 	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
@@ -279,7 +193,7 @@ func (o *CreateOrganizationWebhook201Response) GetEnabledOk() (*bool, bool) {
 }
 
 // HasEnabled returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasEnabled() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasEnabled() bool {
 	if o != nil && o.Enabled != nil {
 		return true
 	}
@@ -288,14 +202,14 @@ func (o *CreateOrganizationWebhook201Response) HasEnabled() bool {
 }
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *CreateOrganizationWebhook201Response) SetEnabled(v bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
 // GetEvents returns the Events field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetEvents() []Object {
+func (o *OrganizationWebhookCreateResponseAllOf) GetEvents() []Items {
 	if o == nil || o.Events == nil {
-		var ret []Object
+		var ret []Items
 		return ret
 	}
 	return o.Events
@@ -303,7 +217,7 @@ func (o *CreateOrganizationWebhook201Response) GetEvents() []Object {
 
 // GetEventsOk returns a tuple with the Events field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetEventsOk() ([]Object, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetEventsOk() ([]Items, bool) {
 	if o == nil || o.Events == nil {
 		return nil, false
 	}
@@ -311,7 +225,7 @@ func (o *CreateOrganizationWebhook201Response) GetEventsOk() ([]Object, bool) {
 }
 
 // HasEvents returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasEvents() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasEvents() bool {
 	if o != nil && o.Events != nil {
 		return true
 	}
@@ -319,13 +233,13 @@ func (o *CreateOrganizationWebhook201Response) HasEvents() bool {
 	return false
 }
 
-// SetEvents gets a reference to the given []Object and assigns it to the Events field.
-func (o *CreateOrganizationWebhook201Response) SetEvents(v []Object) {
+// SetEvents gets a reference to the given []Items and assigns it to the Events field.
+func (o *OrganizationWebhookCreateResponseAllOf) SetEvents(v []Items) {
 	o.Events = v
 }
 
 // GetProjectIdFilter returns the ProjectIdFilter field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetProjectIdFilter() []string {
+func (o *OrganizationWebhookCreateResponseAllOf) GetProjectIdFilter() []string {
 	if o == nil || o.ProjectIdFilter == nil {
 		var ret []string
 		return ret
@@ -335,7 +249,7 @@ func (o *CreateOrganizationWebhook201Response) GetProjectIdFilter() []string {
 
 // GetProjectIdFilterOk returns a tuple with the ProjectIdFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetProjectIdFilterOk() ([]string, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetProjectIdFilterOk() ([]string, bool) {
 	if o == nil || o.ProjectIdFilter == nil {
 		return nil, false
 	}
@@ -343,7 +257,7 @@ func (o *CreateOrganizationWebhook201Response) GetProjectIdFilterOk() ([]string,
 }
 
 // HasProjectIdFilter returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasProjectIdFilter() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasProjectIdFilter() bool {
 	if o != nil && o.ProjectIdFilter != nil {
 		return true
 	}
@@ -352,12 +266,12 @@ func (o *CreateOrganizationWebhook201Response) HasProjectIdFilter() bool {
 }
 
 // SetProjectIdFilter gets a reference to the given []string and assigns it to the ProjectIdFilter field.
-func (o *CreateOrganizationWebhook201Response) SetProjectIdFilter(v []string) {
+func (o *OrganizationWebhookCreateResponseAllOf) SetProjectIdFilter(v []string) {
 	o.ProjectIdFilter = v
 }
 
 // GetEnvironmentTypesFilter returns the EnvironmentTypesFilter field value if set, zero value otherwise.
-func (o *CreateOrganizationWebhook201Response) GetEnvironmentTypesFilter() []EnvironmentModeEnum {
+func (o *OrganizationWebhookCreateResponseAllOf) GetEnvironmentTypesFilter() []EnvironmentModeEnum {
 	if o == nil || o.EnvironmentTypesFilter == nil {
 		var ret []EnvironmentModeEnum
 		return ret
@@ -367,7 +281,7 @@ func (o *CreateOrganizationWebhook201Response) GetEnvironmentTypesFilter() []Env
 
 // GetEnvironmentTypesFilterOk returns a tuple with the EnvironmentTypesFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationWebhook201Response) GetEnvironmentTypesFilterOk() ([]EnvironmentModeEnum, bool) {
+func (o *OrganizationWebhookCreateResponseAllOf) GetEnvironmentTypesFilterOk() ([]EnvironmentModeEnum, bool) {
 	if o == nil || o.EnvironmentTypesFilter == nil {
 		return nil, false
 	}
@@ -375,7 +289,7 @@ func (o *CreateOrganizationWebhook201Response) GetEnvironmentTypesFilterOk() ([]
 }
 
 // HasEnvironmentTypesFilter returns a boolean if a field has been set.
-func (o *CreateOrganizationWebhook201Response) HasEnvironmentTypesFilter() bool {
+func (o *OrganizationWebhookCreateResponseAllOf) HasEnvironmentTypesFilter() bool {
 	if o != nil && o.EnvironmentTypesFilter != nil {
 		return true
 	}
@@ -384,21 +298,12 @@ func (o *CreateOrganizationWebhook201Response) HasEnvironmentTypesFilter() bool 
 }
 
 // SetEnvironmentTypesFilter gets a reference to the given []EnvironmentModeEnum and assigns it to the EnvironmentTypesFilter field.
-func (o *CreateOrganizationWebhook201Response) SetEnvironmentTypesFilter(v []EnvironmentModeEnum) {
+func (o *OrganizationWebhookCreateResponseAllOf) SetEnvironmentTypesFilter(v []EnvironmentModeEnum) {
 	o.EnvironmentTypesFilter = v
 }
 
-func (o CreateOrganizationWebhook201Response) MarshalJSON() ([]byte, error) {
+func (o OrganizationWebhookCreateResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
 	if o.Kind != nil {
 		toSerialize["kind"] = o.Kind
 	}
@@ -426,38 +331,38 @@ func (o CreateOrganizationWebhook201Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableCreateOrganizationWebhook201Response struct {
-	value *CreateOrganizationWebhook201Response
+type NullableOrganizationWebhookCreateResponseAllOf struct {
+	value *OrganizationWebhookCreateResponseAllOf
 	isSet bool
 }
 
-func (v NullableCreateOrganizationWebhook201Response) Get() *CreateOrganizationWebhook201Response {
+func (v NullableOrganizationWebhookCreateResponseAllOf) Get() *OrganizationWebhookCreateResponseAllOf {
 	return v.value
 }
 
-func (v *NullableCreateOrganizationWebhook201Response) Set(val *CreateOrganizationWebhook201Response) {
+func (v *NullableOrganizationWebhookCreateResponseAllOf) Set(val *OrganizationWebhookCreateResponseAllOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateOrganizationWebhook201Response) IsSet() bool {
+func (v NullableOrganizationWebhookCreateResponseAllOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateOrganizationWebhook201Response) Unset() {
+func (v *NullableOrganizationWebhookCreateResponseAllOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateOrganizationWebhook201Response(val *CreateOrganizationWebhook201Response) *NullableCreateOrganizationWebhook201Response {
-	return &NullableCreateOrganizationWebhook201Response{value: val, isSet: true}
+func NewNullableOrganizationWebhookCreateResponseAllOf(val *OrganizationWebhookCreateResponseAllOf) *NullableOrganizationWebhookCreateResponseAllOf {
+	return &NullableOrganizationWebhookCreateResponseAllOf{value: val, isSet: true}
 }
 
-func (v NullableCreateOrganizationWebhook201Response) MarshalJSON() ([]byte, error) {
+func (v NullableOrganizationWebhookCreateResponseAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateOrganizationWebhook201Response) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganizationWebhookCreateResponseAllOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

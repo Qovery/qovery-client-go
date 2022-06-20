@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Kind** | Pointer to [**ContainerRegistryKind**](ContainerRegistryKind.md) |  | [optional] [default to CONTAINERREGISTRYKIND_ECR]
+**Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] [default to CONTAINERREGISTRYKINDENUM_ECR]
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the container registry | [optional] 
 **Config** | Pointer to **string** | authentification configuration | [optional] 
@@ -56,20 +56,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetKind
 
-`func (o *ContainerRegistryResponse) GetKind() ContainerRegistryKind`
+`func (o *ContainerRegistryResponse) GetKind() ContainerRegistryKindEnum`
 
 GetKind returns the Kind field if non-nil, zero value otherwise.
 
 ### GetKindOk
 
-`func (o *ContainerRegistryResponse) GetKindOk() (*ContainerRegistryKind, bool)`
+`func (o *ContainerRegistryResponse) GetKindOk() (*ContainerRegistryKindEnum, bool)`
 
 GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKind
 
-`func (o *ContainerRegistryResponse) SetKind(v ContainerRegistryKind)`
+`func (o *ContainerRegistryResponse) SetKind(v ContainerRegistryKindEnum)`
 
 SetKind sets Kind field to given value.
 

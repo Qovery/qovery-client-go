@@ -2094,7 +2094,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listOrganizationWebHooks_200_response'
+                $ref: '#/components/schemas/OrganizationWebhookResponseList'
           description: List organization webhooks
         "401":
           description: Access token is missing or invalid
@@ -2122,13 +2122,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createOrganizationWebhook_request'
+              $ref: '#/components/schemas/OrganizationWebhookCreateRequest'
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createOrganizationWebhook_201_response'
+                $ref: '#/components/schemas/OrganizationWebhookCreateResponse'
           description: Organization webhook created
         "400":
           description: Bad request
@@ -2192,7 +2192,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createOrganizationWebhook_201_response'
+                $ref: '#/components/schemas/OrganizationWebhookResponse'
           description: Get organization webhook
         "401":
           description: Access token is missing or invalid
@@ -2220,13 +2220,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/requestBody/content/application~1json/schema'
+              $ref: '#/components/schemas/OrganizationWebhookCreateRequest'
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/responses/201/content/application~1json/schema'
+                $ref: '#/components/schemas/OrganizationWebhookCreateResponse'
           description: Edit an organization webhook
         "400":
           description: Bad request
@@ -11692,7 +11692,7 @@ components:
         kind: null
       properties:
         kind:
-          $ref: '#/components/schemas/ContainerRegistryKind'
+          $ref: '#/components/schemas/ContainerRegistryKindEnum'
         required_config:
           additionalProperties: true
           type: object
@@ -11937,7 +11937,7 @@ components:
       type: string
     CloneRequest:
       example:
-        mode: null
+        mode: PRODUCTION
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
       properties:
@@ -12056,6 +12056,8 @@ components:
           description: unit is MB. 1024 MB = 1GB
           example: 1024
           type: integer
+        kubernetes:
+          $ref: '#/components/schemas/KubernetesEnum'
         min_running_nodes:
           default: 1
           type: integer
@@ -12072,8 +12074,11 @@ components:
           description: Unit is in GB. The disk size to be used for the node configuration
           example: 50
           type: integer
+        ssh_key:
+          $ref: '#/components/schemas/ClusterBase_ssh_key'
       required:
       - cloud_provider
+      - kubernetes
       - name
       - region
       type: object
@@ -12809,7 +12814,7 @@ components:
       required:
       - image_tag
       type: object
-    ContainerRegistryKind:
+    ContainerRegistryKindEnum:
       default: ECR
       description: "ECR needs the following parameters - region, access_key_id, secret_access_key\n\
         DOCR needs the following parameters - token \nSCALEWAY_CR needs the following\
@@ -12835,7 +12840,7 @@ components:
         name:
           type: string
         kind:
-          $ref: '#/components/schemas/ContainerRegistryKind'
+          $ref: '#/components/schemas/ContainerRegistryKindEnum'
         description:
           type: string
         url:
@@ -12863,7 +12868,7 @@ components:
         name:
           type: string
         kind:
-          $ref: '#/components/schemas/ContainerRegistryKind'
+          $ref: '#/components/schemas/ContainerRegistryKindEnum'
         description:
           type: string
         url:
@@ -12945,15 +12950,23 @@ components:
     Credentials:
       example:
         password: password
+        port: 0
+        host: host
         login: login
       properties:
+        host:
+          type: string
+        port:
+          type: integer
         login:
           type: string
         password:
           type: string
       required:
+      - host
       - login
       - password
+      - port
       type: object
     CredentialsRequest:
       example:
@@ -13922,7 +13935,7 @@ components:
       type: object
     EnvironmentEditRequest:
       example:
-        mode: null
+        mode: PRODUCTION
         name: name
       properties:
         name:
@@ -14019,10 +14032,11 @@ components:
       - PREVIEW
       - PRODUCTION
       - STAGING
+      example: PRODUCTION
       type: string
     EnvironmentRequest:
       example:
-        mode: null
+        mode: PRODUCTION
         cluster: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
       properties:
@@ -14447,6 +14461,11 @@ components:
       required:
       - key
       type: object
+    KubernetesEnum:
+      enum:
+      - K3S
+      - MANAGED
+      type: string
     Link:
       example:
         url: url
@@ -15086,6 +15105,97 @@ components:
         scope:
           $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
       type: object
+    OrganizationWebhookCreateRequest:
+      example:
+        project_id_filter:
+        - project_id_filter
+        - project_id_filter
+        environment_types_filter:
+        - PRODUCTION
+        - PRODUCTION
+        kind: STANDARD
+        target_url: target_url
+        target_secret: target_secret
+        description: description
+        enabled: true
+        events:
+        - DEPLOYMENT_STARTED
+        - DEPLOYMENT_STARTED
+      properties:
+        kind:
+          description: Define the type of the webhook. `SLACK` is a special webhook
+            type to push notifications directly to slack. The `target_url` must be
+            a Slack compatible endpoint.
+          enum:
+          - STANDARD
+          - SLACK
+          example: STANDARD
+          type: string
+        target_url:
+          description: |
+            Set the public HTTP or HTTPS endpoint that will receive the specified events.
+            The target URL must starts with `http://` or `https://`
+          type: string
+        target_secret:
+          description: "Make sure you receive a payload to sign the Qovery request\
+            \ with your secret.\nQovery will add a HTTP header `Qovery-Signature:\
+            \ <Your Secret>` to every webhook requests sent to your target URL.\n"
+          type: string
+        description:
+          type: string
+        enabled:
+          description: Turn on or off your endpoint.
+          type: boolean
+        events:
+          items:
+            description: |
+              Events to subscribe to and send to the `target_url`.
+              - `DEPLOYMENT_STARTED` send an event when a deployment is started and going to be executed
+              - `DEPLOYMENT_CANCELLED` send an event when a deployment is cancelled
+              - `DEPLOYMENT_FAILURE` send an event when a deployment failed
+              - `DEPLOYMENT_SUCCESSFUL` send an event when a deployment is successful
+            enum:
+            - DEPLOYMENT_STARTED
+            - DEPLOYMENT_CANCELLED
+            - DEPLOYMENT_FAILURE
+            - DEPLOYMENT_SUCCESSFUL
+            type: string
+          type: array
+        project_id_filter:
+          items:
+            description: "Specify the project IDs you want to filter to. \nThis webhook\
+              \ will be triggered only if the event is coming from the specified Project\
+              \ IDs.\n"
+            type: string
+          type: array
+        environment_types_filter:
+          items:
+            $ref: '#/components/schemas/EnvironmentModeEnum'
+          type: array
+      required:
+      - events
+      - kind
+      - target_url
+      type: object
+    OrganizationWebhookCreateResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/OrganizationWebhookCreateResponse_allOf'
+    OrganizationWebhookResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/OrganizationWebhookCreateResponse_allOf'
+    OrganizationWebhookResponseList:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationWebhookResponse'
+          type: array
+      type: object
     PaginationData:
       properties:
         page:
@@ -15155,7 +15265,7 @@ components:
       - $ref: '#/components/schemas/ProjectDeploymentRule_allOf'
     ProjectDeploymentRuleRequest:
       example:
-        mode: null
+        mode: PRODUCTION
         start_time: 1970-01-01T08:00:00Z
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         auto_deploy: false
@@ -15810,110 +15920,6 @@ components:
       - SUNDAY
       example: MONDAY
       type: string
-    listOrganizationWebHooks_200_response:
-      example:
-        results:
-        - "{}"
-        - "{}"
-      properties:
-        results:
-          items:
-            $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook~1%7BwebhookId%7D/get/responses/200/content/application~1json/schema'
-          type: array
-      type: object
-    createOrganizationWebhook_request:
-      properties:
-        kind:
-          description: Define the type of the webhook. `SLACK` is a special webhook
-            type to push notifications directly to slack. The `target_url` must be
-            a Slack compatible endpoint.
-          enum:
-          - STANDARD
-          - SLACK
-          example: STANDARD
-          type: string
-        target_url:
-          description: |
-            Set the public HTTP or HTTPS endpoint that will receive the specified events.
-            The target URL must starts with `http://` or `https://`
-          type: string
-        target_secret:
-          description: "Make sure you receive a payload to sign the Qovery request\
-            \ with your secret.\nQovery will add a HTTP header `Qovery-Signature:\
-            \ <Your Secret>` to every webhook requests sent to your target URL.\n"
-          type: string
-        description:
-          type: string
-        enabled:
-          description: Turn on or off your endpoint.
-          type: boolean
-        events:
-          items:
-            description: |
-              Events to subscribe to and send to the `target_url`.
-              - `DEPLOYMENT_STARTED` send an event when a deployment is started and going to be executed
-              - `DEPLOYMENT_CANCELLED` send an event when a deployment is cancelled
-              - `DEPLOYMENT_FAILURE` send an event when a deployment failed
-              - `DEPLOYMENT_SUCCESSFUL` send an event when a deployment is successful
-            enum:
-            - DEPLOYMENT_STARTED
-            - DEPLOYMENT_CANCELLED
-            - DEPLOYMENT_FAILURE
-            - DEPLOYMENT_SUCCESSFUL
-            type: string
-          type: array
-        project_id_filter:
-          items:
-            description: "Specify the project IDs you want to filter to. \nThis webhook\
-              \ will be triggered only if the event is coming from the specified Project\
-              \ IDs.\n"
-            type: string
-          type: array
-        environment_types_filter:
-          items:
-            $ref: '#/components/schemas/EnvironmentModeEnum'
-          type: array
-      required:
-      - events
-      - kind
-      - target_url
-      type: object
-    createOrganizationWebhook_201_response_allOf:
-      properties:
-        kind:
-          $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/requestBody/content/application~1json/schema/properties/kind'
-        target_url:
-          description: |
-            Set the public HTTP or HTTPS endpoint that will receive the specified events.
-            The target URL must starts with `http://` or `https://`
-          type: string
-        target_secret_set:
-          type: boolean
-        description:
-          type: string
-        enabled:
-          description: Turn on or off your endpoint.
-          type: boolean
-        events:
-          items:
-            $ref: '#/paths/~1organization~1%7BorganizationId%7D~1webhook/post/requestBody/content/application~1json/schema/properties/events/items'
-          type: array
-        project_id_filter:
-          items:
-            description: "Specify the project IDs you want to filter to. \nThis webhook\
-              \ will be triggered only if the event is coming from the specified Project\
-              \ IDs.\n"
-            type: string
-          type: array
-        environment_types_filter:
-          items:
-            $ref: '#/components/schemas/EnvironmentModeEnum'
-          type: array
-      type: object
-    createOrganizationWebhook_201_response:
-      allOf:
-      - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/createOrganizationWebhook_201_response_allOf'
     listContainerRegistry_200_response:
       example:
         results:
@@ -16354,6 +16360,14 @@ components:
           type: string
         is_default:
           type: boolean
+      type: object
+    ClusterBase_ssh_key:
+      description: Indicate your public ssh_key to remotely connect to your EC2 instance.
+      properties:
+        results:
+          items:
+            type: string
+          type: array
       type: object
     ClusterCloudProviderInfo_credentials:
       example:
@@ -17141,6 +17155,38 @@ components:
           $ref: '#/components/schemas/PaidUsage'
         community_usage:
           $ref: '#/components/schemas/CommunityUsage'
+      type: object
+    OrganizationWebhookCreateResponse_allOf:
+      properties:
+        kind:
+          $ref: '#/components/schemas/OrganizationWebhookCreateRequest/properties/kind'
+        target_url:
+          description: |
+            Set the public HTTP or HTTPS endpoint that will receive the specified events.
+            The target URL must starts with `http://` or `https://`
+          type: string
+        target_secret_set:
+          type: boolean
+        description:
+          type: string
+        enabled:
+          description: Turn on or off your endpoint.
+          type: boolean
+        events:
+          items:
+            $ref: '#/components/schemas/OrganizationWebhookCreateRequest/properties/events/items'
+          type: array
+        project_id_filter:
+          items:
+            description: "Specify the project IDs you want to filter to. \nThis webhook\
+              \ will be triggered only if the event is coming from the specified Project\
+              \ IDs.\n"
+            type: string
+          type: array
+        environment_types_filter:
+          items:
+            $ref: '#/components/schemas/EnvironmentModeEnum'
+          type: array
       type: object
     Project_allOf:
       properties:

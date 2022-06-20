@@ -1,4 +1,4 @@
-# CreateOrganizationWebhookRequest
+# OrganizationWebhookCreateRequest
 
 ## Properties
 
@@ -15,205 +15,205 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateOrganizationWebhookRequest
+### NewOrganizationWebhookCreateRequest
 
-`func NewCreateOrganizationWebhookRequest(kind string, targetUrl string, events []string, ) *CreateOrganizationWebhookRequest`
+`func NewOrganizationWebhookCreateRequest(kind string, targetUrl string, events []string, ) *OrganizationWebhookCreateRequest`
 
-NewCreateOrganizationWebhookRequest instantiates a new CreateOrganizationWebhookRequest object
+NewOrganizationWebhookCreateRequest instantiates a new OrganizationWebhookCreateRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateOrganizationWebhookRequestWithDefaults
+### NewOrganizationWebhookCreateRequestWithDefaults
 
-`func NewCreateOrganizationWebhookRequestWithDefaults() *CreateOrganizationWebhookRequest`
+`func NewOrganizationWebhookCreateRequestWithDefaults() *OrganizationWebhookCreateRequest`
 
-NewCreateOrganizationWebhookRequestWithDefaults instantiates a new CreateOrganizationWebhookRequest object
+NewOrganizationWebhookCreateRequestWithDefaults instantiates a new OrganizationWebhookCreateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetKind
 
-`func (o *CreateOrganizationWebhookRequest) GetKind() string`
+`func (o *OrganizationWebhookCreateRequest) GetKind() string`
 
 GetKind returns the Kind field if non-nil, zero value otherwise.
 
 ### GetKindOk
 
-`func (o *CreateOrganizationWebhookRequest) GetKindOk() (*string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetKindOk() (*string, bool)`
 
 GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKind
 
-`func (o *CreateOrganizationWebhookRequest) SetKind(v string)`
+`func (o *OrganizationWebhookCreateRequest) SetKind(v string)`
 
 SetKind sets Kind field to given value.
 
 
 ### GetTargetUrl
 
-`func (o *CreateOrganizationWebhookRequest) GetTargetUrl() string`
+`func (o *OrganizationWebhookCreateRequest) GetTargetUrl() string`
 
 GetTargetUrl returns the TargetUrl field if non-nil, zero value otherwise.
 
 ### GetTargetUrlOk
 
-`func (o *CreateOrganizationWebhookRequest) GetTargetUrlOk() (*string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetTargetUrlOk() (*string, bool)`
 
 GetTargetUrlOk returns a tuple with the TargetUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetUrl
 
-`func (o *CreateOrganizationWebhookRequest) SetTargetUrl(v string)`
+`func (o *OrganizationWebhookCreateRequest) SetTargetUrl(v string)`
 
 SetTargetUrl sets TargetUrl field to given value.
 
 
 ### GetTargetSecret
 
-`func (o *CreateOrganizationWebhookRequest) GetTargetSecret() string`
+`func (o *OrganizationWebhookCreateRequest) GetTargetSecret() string`
 
 GetTargetSecret returns the TargetSecret field if non-nil, zero value otherwise.
 
 ### GetTargetSecretOk
 
-`func (o *CreateOrganizationWebhookRequest) GetTargetSecretOk() (*string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetTargetSecretOk() (*string, bool)`
 
 GetTargetSecretOk returns a tuple with the TargetSecret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTargetSecret
 
-`func (o *CreateOrganizationWebhookRequest) SetTargetSecret(v string)`
+`func (o *OrganizationWebhookCreateRequest) SetTargetSecret(v string)`
 
 SetTargetSecret sets TargetSecret field to given value.
 
 ### HasTargetSecret
 
-`func (o *CreateOrganizationWebhookRequest) HasTargetSecret() bool`
+`func (o *OrganizationWebhookCreateRequest) HasTargetSecret() bool`
 
 HasTargetSecret returns a boolean if a field has been set.
 
 ### GetDescription
 
-`func (o *CreateOrganizationWebhookRequest) GetDescription() string`
+`func (o *OrganizationWebhookCreateRequest) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *CreateOrganizationWebhookRequest) GetDescriptionOk() (*string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *CreateOrganizationWebhookRequest) SetDescription(v string)`
+`func (o *OrganizationWebhookCreateRequest) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *CreateOrganizationWebhookRequest) HasDescription() bool`
+`func (o *OrganizationWebhookCreateRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *CreateOrganizationWebhookRequest) GetEnabled() bool`
+`func (o *OrganizationWebhookCreateRequest) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *CreateOrganizationWebhookRequest) GetEnabledOk() (*bool, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *CreateOrganizationWebhookRequest) SetEnabled(v bool)`
+`func (o *OrganizationWebhookCreateRequest) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 ### HasEnabled
 
-`func (o *CreateOrganizationWebhookRequest) HasEnabled() bool`
+`func (o *OrganizationWebhookCreateRequest) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
 
 ### GetEvents
 
-`func (o *CreateOrganizationWebhookRequest) GetEvents() []string`
+`func (o *OrganizationWebhookCreateRequest) GetEvents() []string`
 
 GetEvents returns the Events field if non-nil, zero value otherwise.
 
 ### GetEventsOk
 
-`func (o *CreateOrganizationWebhookRequest) GetEventsOk() (*[]string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetEventsOk() (*[]string, bool)`
 
 GetEventsOk returns a tuple with the Events field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvents
 
-`func (o *CreateOrganizationWebhookRequest) SetEvents(v []string)`
+`func (o *OrganizationWebhookCreateRequest) SetEvents(v []string)`
 
 SetEvents sets Events field to given value.
 
 
 ### GetProjectIdFilter
 
-`func (o *CreateOrganizationWebhookRequest) GetProjectIdFilter() []string`
+`func (o *OrganizationWebhookCreateRequest) GetProjectIdFilter() []string`
 
 GetProjectIdFilter returns the ProjectIdFilter field if non-nil, zero value otherwise.
 
 ### GetProjectIdFilterOk
 
-`func (o *CreateOrganizationWebhookRequest) GetProjectIdFilterOk() (*[]string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetProjectIdFilterOk() (*[]string, bool)`
 
 GetProjectIdFilterOk returns a tuple with the ProjectIdFilter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProjectIdFilter
 
-`func (o *CreateOrganizationWebhookRequest) SetProjectIdFilter(v []string)`
+`func (o *OrganizationWebhookCreateRequest) SetProjectIdFilter(v []string)`
 
 SetProjectIdFilter sets ProjectIdFilter field to given value.
 
 ### HasProjectIdFilter
 
-`func (o *CreateOrganizationWebhookRequest) HasProjectIdFilter() bool`
+`func (o *OrganizationWebhookCreateRequest) HasProjectIdFilter() bool`
 
 HasProjectIdFilter returns a boolean if a field has been set.
 
 ### GetEnvironmentTypesFilter
 
-`func (o *CreateOrganizationWebhookRequest) GetEnvironmentTypesFilter() []EnvironmentModeEnum`
+`func (o *OrganizationWebhookCreateRequest) GetEnvironmentTypesFilter() []EnvironmentModeEnum`
 
 GetEnvironmentTypesFilter returns the EnvironmentTypesFilter field if non-nil, zero value otherwise.
 
 ### GetEnvironmentTypesFilterOk
 
-`func (o *CreateOrganizationWebhookRequest) GetEnvironmentTypesFilterOk() (*[]EnvironmentModeEnum, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetEnvironmentTypesFilterOk() (*[]EnvironmentModeEnum, bool)`
 
 GetEnvironmentTypesFilterOk returns a tuple with the EnvironmentTypesFilter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironmentTypesFilter
 
-`func (o *CreateOrganizationWebhookRequest) SetEnvironmentTypesFilter(v []EnvironmentModeEnum)`
+`func (o *OrganizationWebhookCreateRequest) SetEnvironmentTypesFilter(v []EnvironmentModeEnum)`
 
 SetEnvironmentTypesFilter sets EnvironmentTypesFilter field to given value.
 
 ### HasEnvironmentTypesFilter
 
-`func (o *CreateOrganizationWebhookRequest) HasEnvironmentTypesFilter() bool`
+`func (o *OrganizationWebhookCreateRequest) HasEnvironmentTypesFilter() bool`
 
 HasEnvironmentTypesFilter returns a boolean if a field has been set.
 

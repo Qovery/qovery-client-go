@@ -17,9 +17,9 @@ import (
 
 // ContainerRegistryRequest struct for ContainerRegistryRequest
 type ContainerRegistryRequest struct {
-	Name        string                `json:"name"`
-	Kind        ContainerRegistryKind `json:"kind"`
-	Description *string               `json:"description,omitempty"`
+	Name        string                    `json:"name"`
+	Kind        ContainerRegistryKindEnum `json:"kind"`
+	Description *string                   `json:"description,omitempty"`
 	// URL of the container registry
 	Url string `json:"url"`
 	// authentification configuration
@@ -30,7 +30,7 @@ type ContainerRegistryRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRegistryRequest(name string, kind ContainerRegistryKind, url string, config map[string]interface{}) *ContainerRegistryRequest {
+func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config map[string]interface{}) *ContainerRegistryRequest {
 	this := ContainerRegistryRequest{}
 	this.Name = name
 	this.Kind = kind
@@ -44,7 +44,7 @@ func NewContainerRegistryRequest(name string, kind ContainerRegistryKind, url st
 // but it doesn't guarantee that properties required by API are set
 func NewContainerRegistryRequestWithDefaults() *ContainerRegistryRequest {
 	this := ContainerRegistryRequest{}
-	var kind ContainerRegistryKind = CONTAINERREGISTRYKIND_ECR
+	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
 	this.Kind = kind
 	return &this
 }
@@ -74,9 +74,9 @@ func (o *ContainerRegistryRequest) SetName(v string) {
 }
 
 // GetKind returns the Kind field value
-func (o *ContainerRegistryRequest) GetKind() ContainerRegistryKind {
+func (o *ContainerRegistryRequest) GetKind() ContainerRegistryKindEnum {
 	if o == nil {
-		var ret ContainerRegistryKind
+		var ret ContainerRegistryKindEnum
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *ContainerRegistryRequest) GetKind() ContainerRegistryKind {
 
 // GetKindOk returns a tuple with the Kind field value
 // and a boolean to check if the value has been set.
-func (o *ContainerRegistryRequest) GetKindOk() (*ContainerRegistryKind, bool) {
+func (o *ContainerRegistryRequest) GetKindOk() (*ContainerRegistryKindEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *ContainerRegistryRequest) GetKindOk() (*ContainerRegistryKind, bool) {
 }
 
 // SetKind sets field value
-func (o *ContainerRegistryRequest) SetKind(v ContainerRegistryKind) {
+func (o *ContainerRegistryRequest) SetKind(v ContainerRegistryKindEnum) {
 	o.Kind = v
 }
 

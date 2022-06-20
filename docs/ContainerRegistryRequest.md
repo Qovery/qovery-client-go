@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Kind** | [**ContainerRegistryKind**](ContainerRegistryKind.md) |  | [default to CONTAINERREGISTRYKIND_ECR]
+**Kind** | [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [default to CONTAINERREGISTRYKINDENUM_ECR]
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | **string** | URL of the container registry | 
 **Config** | **map[string]interface{}** | authentification configuration | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewContainerRegistryRequest
 
-`func NewContainerRegistryRequest(name string, kind ContainerRegistryKind, url string, config map[string]interface{}, ) *ContainerRegistryRequest`
+`func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config map[string]interface{}, ) *ContainerRegistryRequest`
 
 NewContainerRegistryRequest instantiates a new ContainerRegistryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -51,20 +51,20 @@ SetName sets Name field to given value.
 
 ### GetKind
 
-`func (o *ContainerRegistryRequest) GetKind() ContainerRegistryKind`
+`func (o *ContainerRegistryRequest) GetKind() ContainerRegistryKindEnum`
 
 GetKind returns the Kind field if non-nil, zero value otherwise.
 
 ### GetKindOk
 
-`func (o *ContainerRegistryRequest) GetKindOk() (*ContainerRegistryKind, bool)`
+`func (o *ContainerRegistryRequest) GetKindOk() (*ContainerRegistryKindEnum, bool)`
 
 GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKind
 
-`func (o *ContainerRegistryRequest) SetKind(v ContainerRegistryKind)`
+`func (o *ContainerRegistryRequest) SetKind(v ContainerRegistryKindEnum)`
 
 SetKind sets Kind field to given value.
 

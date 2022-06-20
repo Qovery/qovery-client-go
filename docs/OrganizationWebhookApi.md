@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateOrganizationWebhook
 
-> CreateOrganizationWebhook201Response CreateOrganizationWebhook(ctx, organizationId).CreateOrganizationWebhookRequest(createOrganizationWebhookRequest).Execute()
+> OrganizationWebhookCreateResponse CreateOrganizationWebhook(ctx, organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
 
 Create an organization webhook
 
@@ -34,16 +34,16 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    createOrganizationWebhookRequest := *openapiclient.NewCreateOrganizationWebhookRequest("STANDARD", "TargetUrl_example", []string{"Events_example"}) // CreateOrganizationWebhookRequest |  (optional)
+    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest("STANDARD", "TargetUrl_example", []string{"Events_example"}) // OrganizationWebhookCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookApi.CreateOrganizationWebhook(context.Background(), organizationId).CreateOrganizationWebhookRequest(createOrganizationWebhookRequest).Execute()
+    resp, r, err := apiClient.OrganizationWebhookApi.CreateOrganizationWebhook(context.Background(), organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.CreateOrganizationWebhook``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateOrganizationWebhook`: CreateOrganizationWebhook201Response
+    // response from `CreateOrganizationWebhook`: OrganizationWebhookCreateResponse
     fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookApi.CreateOrganizationWebhook`: %v\n", resp)
 }
 ```
@@ -64,11 +64,11 @@ Other parameters are passed through a pointer to a apiCreateOrganizationWebhookR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createOrganizationWebhookRequest** | [**CreateOrganizationWebhookRequest**](CreateOrganizationWebhookRequest.md) |  | 
+ **organizationWebhookCreateRequest** | [**OrganizationWebhookCreateRequest**](OrganizationWebhookCreateRequest.md) |  | 
 
 ### Return type
 
-[**CreateOrganizationWebhook201Response**](CreateOrganizationWebhook201Response.md)
+[**OrganizationWebhookCreateResponse**](OrganizationWebhookCreateResponse.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationWebhook
 
-> Object EditOrganizationWebhook(ctx, organizationId).Body(body).Execute()
+> OrganizationWebhookCreateResponse EditOrganizationWebhook(ctx, organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
 
 Edit an organization webhook
 
@@ -174,16 +174,16 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    body := Object(987) // Object |  (optional)
+    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest("STANDARD", "TargetUrl_example", []string{"Events_example"}) // OrganizationWebhookCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookApi.EditOrganizationWebhook(context.Background(), organizationId).Body(body).Execute()
+    resp, r, err := apiClient.OrganizationWebhookApi.EditOrganizationWebhook(context.Background(), organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.EditOrganizationWebhook``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditOrganizationWebhook`: Object
+    // response from `EditOrganizationWebhook`: OrganizationWebhookCreateResponse
     fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookApi.EditOrganizationWebhook`: %v\n", resp)
 }
 ```
@@ -204,11 +204,11 @@ Other parameters are passed through a pointer to a apiEditOrganizationWebhookReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **Object** |  | 
+ **organizationWebhookCreateRequest** | [**OrganizationWebhookCreateRequest**](OrganizationWebhookCreateRequest.md) |  | 
 
 ### Return type
 
-[**Object**](Object.md)
+[**OrganizationWebhookCreateResponse**](OrganizationWebhookCreateResponse.md)
 
 ### Authorization
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationWebhook
 
-> CreateOrganizationWebhook201Response GetOrganizationWebhook(ctx, organizationId, webhookId).Execute()
+> OrganizationWebhookResponse GetOrganizationWebhook(ctx, organizationId, webhookId).Execute()
 
 Get an Organization webhook
 
@@ -255,7 +255,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.GetOrganizationWebhook``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationWebhook`: CreateOrganizationWebhook201Response
+    // response from `GetOrganizationWebhook`: OrganizationWebhookResponse
     fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookApi.GetOrganizationWebhook`: %v\n", resp)
 }
 ```
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateOrganizationWebhook201Response**](CreateOrganizationWebhook201Response.md)
+[**OrganizationWebhookResponse**](OrganizationWebhookResponse.md)
 
 ### Authorization
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## ListOrganizationWebHooks
 
-> ListOrganizationWebHooks200Response ListOrganizationWebHooks(ctx, organizationId).Execute()
+> OrganizationWebhookResponseList ListOrganizationWebHooks(ctx, organizationId).Execute()
 
 List organization webhooks
 
@@ -327,7 +327,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.ListOrganizationWebHooks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListOrganizationWebHooks`: ListOrganizationWebHooks200Response
+    // response from `ListOrganizationWebHooks`: OrganizationWebhookResponseList
     fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookApi.ListOrganizationWebHooks`: %v\n", resp)
 }
 ```
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListOrganizationWebHooks200Response**](ListOrganizationWebHooks200Response.md)
+[**OrganizationWebhookResponseList**](OrganizationWebhookResponseList.md)
 
 ### Authorization
 
