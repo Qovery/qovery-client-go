@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ClusterBaseSshKey Indicate your public ssh_key to remotely connect to your EC2 instance.
-type ClusterBaseSshKey struct {
+// ClusterAllOfSshKeys Indicate your public ssh_key to remotely connect to your EC2 instance.
+type ClusterAllOfSshKeys struct {
 	Results []string `json:"results,omitempty"`
 }
 
-// NewClusterBaseSshKey instantiates a new ClusterBaseSshKey object
+// NewClusterAllOfSshKeys instantiates a new ClusterAllOfSshKeys object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterBaseSshKey() *ClusterBaseSshKey {
-	this := ClusterBaseSshKey{}
+func NewClusterAllOfSshKeys() *ClusterAllOfSshKeys {
+	this := ClusterAllOfSshKeys{}
 	return &this
 }
 
-// NewClusterBaseSshKeyWithDefaults instantiates a new ClusterBaseSshKey object
+// NewClusterAllOfSshKeysWithDefaults instantiates a new ClusterAllOfSshKeys object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterBaseSshKeyWithDefaults() *ClusterBaseSshKey {
-	this := ClusterBaseSshKey{}
+func NewClusterAllOfSshKeysWithDefaults() *ClusterAllOfSshKeys {
+	this := ClusterAllOfSshKeys{}
 	return &this
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClusterBaseSshKey) GetResults() []string {
+func (o *ClusterAllOfSshKeys) GetResults() []string {
 	if o == nil || o.Results == nil {
 		var ret []string
 		return ret
@@ -48,7 +48,7 @@ func (o *ClusterBaseSshKey) GetResults() []string {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterBaseSshKey) GetResultsOk() ([]string, bool) {
+func (o *ClusterAllOfSshKeys) GetResultsOk() ([]string, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ClusterBaseSshKey) GetResultsOk() ([]string, bool) {
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *ClusterBaseSshKey) HasResults() bool {
+func (o *ClusterAllOfSshKeys) HasResults() bool {
 	if o != nil && o.Results != nil {
 		return true
 	}
@@ -65,11 +65,11 @@ func (o *ClusterBaseSshKey) HasResults() bool {
 }
 
 // SetResults gets a reference to the given []string and assigns it to the Results field.
-func (o *ClusterBaseSshKey) SetResults(v []string) {
+func (o *ClusterAllOfSshKeys) SetResults(v []string) {
 	o.Results = v
 }
 
-func (o ClusterBaseSshKey) MarshalJSON() ([]byte, error) {
+func (o ClusterAllOfSshKeys) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Results != nil {
 		toSerialize["results"] = o.Results
@@ -77,38 +77,38 @@ func (o ClusterBaseSshKey) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableClusterBaseSshKey struct {
-	value *ClusterBaseSshKey
+type NullableClusterAllOfSshKeys struct {
+	value *ClusterAllOfSshKeys
 	isSet bool
 }
 
-func (v NullableClusterBaseSshKey) Get() *ClusterBaseSshKey {
+func (v NullableClusterAllOfSshKeys) Get() *ClusterAllOfSshKeys {
 	return v.value
 }
 
-func (v *NullableClusterBaseSshKey) Set(val *ClusterBaseSshKey) {
+func (v *NullableClusterAllOfSshKeys) Set(val *ClusterAllOfSshKeys) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableClusterBaseSshKey) IsSet() bool {
+func (v NullableClusterAllOfSshKeys) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableClusterBaseSshKey) Unset() {
+func (v *NullableClusterAllOfSshKeys) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableClusterBaseSshKey(val *ClusterBaseSshKey) *NullableClusterBaseSshKey {
-	return &NullableClusterBaseSshKey{value: val, isSet: true}
+func NewNullableClusterAllOfSshKeys(val *ClusterAllOfSshKeys) *NullableClusterAllOfSshKeys {
+	return &NullableClusterAllOfSshKeys{value: val, isSet: true}
 }
 
-func (v NullableClusterBaseSshKey) MarshalJSON() ([]byte, error) {
+func (v NullableClusterAllOfSshKeys) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableClusterBaseSshKey) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterAllOfSshKeys) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

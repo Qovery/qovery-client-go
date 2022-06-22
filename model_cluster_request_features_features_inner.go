@@ -15,31 +15,31 @@ import (
 	"encoding/json"
 )
 
-// ClusterFeatureRequestFeaturesInner struct for ClusterFeatureRequestFeaturesInner
-type ClusterFeatureRequestFeaturesInner struct {
+// ClusterRequestFeaturesFeaturesInner struct for ClusterRequestFeaturesFeaturesInner
+type ClusterRequestFeaturesFeaturesInner struct {
 	Id    *string        `json:"id,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
 
-// NewClusterFeatureRequestFeaturesInner instantiates a new ClusterFeatureRequestFeaturesInner object
+// NewClusterRequestFeaturesFeaturesInner instantiates a new ClusterRequestFeaturesFeaturesInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterFeatureRequestFeaturesInner() *ClusterFeatureRequestFeaturesInner {
-	this := ClusterFeatureRequestFeaturesInner{}
+func NewClusterRequestFeaturesFeaturesInner() *ClusterRequestFeaturesFeaturesInner {
+	this := ClusterRequestFeaturesFeaturesInner{}
 	return &this
 }
 
-// NewClusterFeatureRequestFeaturesInnerWithDefaults instantiates a new ClusterFeatureRequestFeaturesInner object
+// NewClusterRequestFeaturesFeaturesInnerWithDefaults instantiates a new ClusterRequestFeaturesFeaturesInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterFeatureRequestFeaturesInnerWithDefaults() *ClusterFeatureRequestFeaturesInner {
-	this := ClusterFeatureRequestFeaturesInner{}
+func NewClusterRequestFeaturesFeaturesInnerWithDefaults() *ClusterRequestFeaturesFeaturesInner {
+	this := ClusterRequestFeaturesFeaturesInner{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ClusterFeatureRequestFeaturesInner) GetId() string {
+func (o *ClusterRequestFeaturesFeaturesInner) GetId() string {
 	if o == nil || o.Id == nil {
 		var ret string
 		return ret
@@ -49,7 +49,7 @@ func (o *ClusterFeatureRequestFeaturesInner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeatureRequestFeaturesInner) GetIdOk() (*string, bool) {
+func (o *ClusterRequestFeaturesFeaturesInner) GetIdOk() (*string, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *ClusterFeatureRequestFeaturesInner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ClusterFeatureRequestFeaturesInner) HasId() bool {
+func (o *ClusterRequestFeaturesFeaturesInner) HasId() bool {
 	if o != nil && o.Id != nil {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *ClusterFeatureRequestFeaturesInner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ClusterFeatureRequestFeaturesInner) SetId(v string) {
+func (o *ClusterRequestFeaturesFeaturesInner) SetId(v string) {
 	o.Id = &v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterFeatureRequestFeaturesInner) GetValue() string {
+func (o *ClusterRequestFeaturesFeaturesInner) GetValue() string {
 	if o == nil || o.Value.Get() == nil {
 		var ret string
 		return ret
@@ -82,7 +82,7 @@ func (o *ClusterFeatureRequestFeaturesInner) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterFeatureRequestFeaturesInner) GetValueOk() (*string, bool) {
+func (o *ClusterRequestFeaturesFeaturesInner) GetValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *ClusterFeatureRequestFeaturesInner) GetValueOk() (*string, bool) {
 }
 
 // HasValue returns a boolean if a field has been set.
-func (o *ClusterFeatureRequestFeaturesInner) HasValue() bool {
+func (o *ClusterRequestFeaturesFeaturesInner) HasValue() bool {
 	if o != nil && o.Value.IsSet() {
 		return true
 	}
@@ -99,21 +99,21 @@ func (o *ClusterFeatureRequestFeaturesInner) HasValue() bool {
 }
 
 // SetValue gets a reference to the given NullableString and assigns it to the Value field.
-func (o *ClusterFeatureRequestFeaturesInner) SetValue(v string) {
+func (o *ClusterRequestFeaturesFeaturesInner) SetValue(v string) {
 	o.Value.Set(&v)
 }
 
 // SetValueNil sets the value for Value to be an explicit nil
-func (o *ClusterFeatureRequestFeaturesInner) SetValueNil() {
+func (o *ClusterRequestFeaturesFeaturesInner) SetValueNil() {
 	o.Value.Set(nil)
 }
 
 // UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *ClusterFeatureRequestFeaturesInner) UnsetValue() {
+func (o *ClusterRequestFeaturesFeaturesInner) UnsetValue() {
 	o.Value.Unset()
 }
 
-func (o ClusterFeatureRequestFeaturesInner) MarshalJSON() ([]byte, error) {
+func (o ClusterRequestFeaturesFeaturesInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
@@ -124,38 +124,38 @@ func (o ClusterFeatureRequestFeaturesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableClusterFeatureRequestFeaturesInner struct {
-	value *ClusterFeatureRequestFeaturesInner
+type NullableClusterRequestFeaturesFeaturesInner struct {
+	value *ClusterRequestFeaturesFeaturesInner
 	isSet bool
 }
 
-func (v NullableClusterFeatureRequestFeaturesInner) Get() *ClusterFeatureRequestFeaturesInner {
+func (v NullableClusterRequestFeaturesFeaturesInner) Get() *ClusterRequestFeaturesFeaturesInner {
 	return v.value
 }
 
-func (v *NullableClusterFeatureRequestFeaturesInner) Set(val *ClusterFeatureRequestFeaturesInner) {
+func (v *NullableClusterRequestFeaturesFeaturesInner) Set(val *ClusterRequestFeaturesFeaturesInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableClusterFeatureRequestFeaturesInner) IsSet() bool {
+func (v NullableClusterRequestFeaturesFeaturesInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableClusterFeatureRequestFeaturesInner) Unset() {
+func (v *NullableClusterRequestFeaturesFeaturesInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableClusterFeatureRequestFeaturesInner(val *ClusterFeatureRequestFeaturesInner) *NullableClusterFeatureRequestFeaturesInner {
-	return &NullableClusterFeatureRequestFeaturesInner{value: val, isSet: true}
+func NewNullableClusterRequestFeaturesFeaturesInner(val *ClusterRequestFeaturesFeaturesInner) *NullableClusterRequestFeaturesFeaturesInner {
+	return &NullableClusterRequestFeaturesFeaturesInner{value: val, isSet: true}
 }
 
-func (v NullableClusterFeatureRequestFeaturesInner) MarshalJSON() ([]byte, error) {
+func (v NullableClusterRequestFeaturesFeaturesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableClusterFeatureRequestFeaturesInner) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterRequestFeaturesFeaturesInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

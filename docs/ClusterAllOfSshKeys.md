@@ -1,4 +1,4 @@
-# ClusterBaseSshKey
+# ClusterAllOfSshKeys
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewClusterBaseSshKey
+### NewClusterAllOfSshKeys
 
-`func NewClusterBaseSshKey() *ClusterBaseSshKey`
+`func NewClusterAllOfSshKeys() *ClusterAllOfSshKeys`
 
-NewClusterBaseSshKey instantiates a new ClusterBaseSshKey object
+NewClusterAllOfSshKeys instantiates a new ClusterAllOfSshKeys object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewClusterBaseSshKeyWithDefaults
+### NewClusterAllOfSshKeysWithDefaults
 
-`func NewClusterBaseSshKeyWithDefaults() *ClusterBaseSshKey`
+`func NewClusterAllOfSshKeysWithDefaults() *ClusterAllOfSshKeys`
 
-NewClusterBaseSshKeyWithDefaults instantiates a new ClusterBaseSshKey object
+NewClusterAllOfSshKeysWithDefaults instantiates a new ClusterAllOfSshKeys object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ClusterBaseSshKey) GetResults() []string`
+`func (o *ClusterAllOfSshKeys) GetResults() []string`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ClusterBaseSshKey) GetResultsOk() (*[]string, bool)`
+`func (o *ClusterAllOfSshKeys) GetResultsOk() (*[]string, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ClusterBaseSshKey) SetResults(v []string)`
+`func (o *ClusterAllOfSshKeys) SetResults(v []string)`
 
 SetResults sets Results field to given value.
 
 ### HasResults
 
-`func (o *ClusterBaseSshKey) HasResults() bool`
+`func (o *ClusterAllOfSshKeys) HasResults() bool`
 
 HasResults returns a boolean if a field has been set.
 

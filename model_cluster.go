@@ -22,48 +22,42 @@ type Cluster struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case-insensitive
-	Name          string            `json:"name"`
-	Description   *string           `json:"description,omitempty"`
-	CloudProvider CloudProviderEnum `json:"cloud_provider"`
-	Region        string            `json:"region"`
-	AutoUpdate    *bool             `json:"auto_update,omitempty"`
+	Name            string            `json:"name"`
+	Description     *string           `json:"description,omitempty"`
+	Region          string            `json:"region"`
+	CloudProvider   CloudProviderEnum `json:"cloud_provider"`
+	MinRunningNodes *int32            `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32            `json:"max_running_nodes,omitempty"`
+	// Unit is in GB. The disk size to be used for the node configuration
+	DiskSize *int32 `json:"disk_size,omitempty"`
+	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
+	InstanceType *string         `json:"instance_type,omitempty"`
+	Kubernetes   *KubernetesEnum `json:"kubernetes,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
-	Memory          *int32         `json:"memory,omitempty"`
-	Kubernetes      KubernetesEnum `json:"kubernetes"`
-	MinRunningNodes *int32         `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32         `json:"max_running_nodes,omitempty"`
-	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
-	InstanceType *string `json:"instance_type,omitempty"`
-	// Unit is in GB. The disk size to be used for the node configuration
-	DiskSize *int32             `json:"disk_size,omitempty"`
-	SshKey   *ClusterBaseSshKey `json:"ssh_key,omitempty"`
+	Memory *int32 `json:"memory,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *int32           `json:"estimated_cloud_provider_cost,omitempty"`
-	Status                     *StateEnum       `json:"status,omitempty"`
-	Features                   []ClusterFeature `json:"features,omitempty"`
-	HasAccess                  *bool            `json:"has_access,omitempty"`
-	Version                    *string          `json:"version,omitempty"`
-	IsDefault                  *bool            `json:"is_default,omitempty"`
+	EstimatedCloudProviderCost *int32                 `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *StateEnum             `json:"status,omitempty"`
+	HasAccess                  *bool                  `json:"has_access,omitempty"`
+	Version                    *string                `json:"version,omitempty"`
+	IsDefault                  *bool                  `json:"is_default,omitempty"`
+	SshKeys                    *ClusterAllOfSshKeys   `json:"ssh_keys,omitempty"`
+	Features                   []ClusterAllOfFeatures `json:"features,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCluster(id string, createdAt time.Time, name string, cloudProvider CloudProviderEnum, region string, kubernetes KubernetesEnum) *Cluster {
+func NewCluster(id string, createdAt time.Time, name string, region string, cloudProvider CloudProviderEnum) *Cluster {
 	this := Cluster{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
-	this.CloudProvider = cloudProvider
 	this.Region = region
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
-	this.Kubernetes = kubernetes
+	this.CloudProvider = cloudProvider
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
@@ -78,10 +72,6 @@ func NewCluster(id string, createdAt time.Time, name string, cloudProvider Cloud
 // but it doesn't guarantee that properties required by API are set
 func NewClusterWithDefaults() *Cluster {
 	this := Cluster{}
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
@@ -227,30 +217,6 @@ func (o *Cluster) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetCloudProvider returns the CloudProvider field value
-func (o *Cluster) GetCloudProvider() CloudProviderEnum {
-	if o == nil {
-		var ret CloudProviderEnum
-		return ret
-	}
-
-	return o.CloudProvider
-}
-
-// GetCloudProviderOk returns a tuple with the CloudProvider field value
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetCloudProviderOk() (*CloudProviderEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CloudProvider, true
-}
-
-// SetCloudProvider sets field value
-func (o *Cluster) SetCloudProvider(v CloudProviderEnum) {
-	o.CloudProvider = v
-}
-
 // GetRegion returns the Region field value
 func (o *Cluster) GetRegion() string {
 	if o == nil {
@@ -275,124 +241,28 @@ func (o *Cluster) SetRegion(v string) {
 	o.Region = v
 }
 
-// GetAutoUpdate returns the AutoUpdate field value if set, zero value otherwise.
-func (o *Cluster) GetAutoUpdate() bool {
-	if o == nil || o.AutoUpdate == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AutoUpdate
-}
-
-// GetAutoUpdateOk returns a tuple with the AutoUpdate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetAutoUpdateOk() (*bool, bool) {
-	if o == nil || o.AutoUpdate == nil {
-		return nil, false
-	}
-	return o.AutoUpdate, true
-}
-
-// HasAutoUpdate returns a boolean if a field has been set.
-func (o *Cluster) HasAutoUpdate() bool {
-	if o != nil && o.AutoUpdate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoUpdate gets a reference to the given bool and assigns it to the AutoUpdate field.
-func (o *Cluster) SetAutoUpdate(v bool) {
-	o.AutoUpdate = &v
-}
-
-// GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *Cluster) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Cpu
-}
-
-// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
-		return nil, false
-	}
-	return o.Cpu, true
-}
-
-// HasCpu returns a boolean if a field has been set.
-func (o *Cluster) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
-func (o *Cluster) SetCpu(v int32) {
-	o.Cpu = &v
-}
-
-// GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *Cluster) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Memory
-}
-
-// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
-		return nil, false
-	}
-	return o.Memory, true
-}
-
-// HasMemory returns a boolean if a field has been set.
-func (o *Cluster) HasMemory() bool {
-	if o != nil && o.Memory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
-func (o *Cluster) SetMemory(v int32) {
-	o.Memory = &v
-}
-
-// GetKubernetes returns the Kubernetes field value
-func (o *Cluster) GetKubernetes() KubernetesEnum {
+// GetCloudProvider returns the CloudProvider field value
+func (o *Cluster) GetCloudProvider() CloudProviderEnum {
 	if o == nil {
-		var ret KubernetesEnum
+		var ret CloudProviderEnum
 		return ret
 	}
 
-	return o.Kubernetes
+	return o.CloudProvider
 }
 
-// GetKubernetesOk returns a tuple with the Kubernetes field value
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetKubernetesOk() (*KubernetesEnum, bool) {
+func (o *Cluster) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Kubernetes, true
+	return &o.CloudProvider, true
 }
 
-// SetKubernetes sets field value
-func (o *Cluster) SetKubernetes(v KubernetesEnum) {
-	o.Kubernetes = v
+// SetCloudProvider sets field value
+func (o *Cluster) SetCloudProvider(v CloudProviderEnum) {
+	o.CloudProvider = v
 }
 
 // GetMinRunningNodes returns the MinRunningNodes field value if set, zero value otherwise.
@@ -459,38 +329,6 @@ func (o *Cluster) SetMaxRunningNodes(v int32) {
 	o.MaxRunningNodes = &v
 }
 
-// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
-func (o *Cluster) GetInstanceType() string {
-	if o == nil || o.InstanceType == nil {
-		var ret string
-		return ret
-	}
-	return *o.InstanceType
-}
-
-// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetInstanceTypeOk() (*string, bool) {
-	if o == nil || o.InstanceType == nil {
-		return nil, false
-	}
-	return o.InstanceType, true
-}
-
-// HasInstanceType returns a boolean if a field has been set.
-func (o *Cluster) HasInstanceType() bool {
-	if o != nil && o.InstanceType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
-func (o *Cluster) SetInstanceType(v string) {
-	o.InstanceType = &v
-}
-
 // GetDiskSize returns the DiskSize field value if set, zero value otherwise.
 func (o *Cluster) GetDiskSize() int32 {
 	if o == nil || o.DiskSize == nil {
@@ -523,36 +361,132 @@ func (o *Cluster) SetDiskSize(v int32) {
 	o.DiskSize = &v
 }
 
-// GetSshKey returns the SshKey field value if set, zero value otherwise.
-func (o *Cluster) GetSshKey() ClusterBaseSshKey {
-	if o == nil || o.SshKey == nil {
-		var ret ClusterBaseSshKey
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *Cluster) GetInstanceType() string {
+	if o == nil || o.InstanceType == nil {
+		var ret string
 		return ret
 	}
-	return *o.SshKey
+	return *o.InstanceType
 }
 
-// GetSshKeyOk returns a tuple with the SshKey field value if set, nil otherwise
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetSshKeyOk() (*ClusterBaseSshKey, bool) {
-	if o == nil || o.SshKey == nil {
+func (o *Cluster) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || o.InstanceType == nil {
 		return nil, false
 	}
-	return o.SshKey, true
+	return o.InstanceType, true
 }
 
-// HasSshKey returns a boolean if a field has been set.
-func (o *Cluster) HasSshKey() bool {
-	if o != nil && o.SshKey != nil {
+// HasInstanceType returns a boolean if a field has been set.
+func (o *Cluster) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSshKey gets a reference to the given ClusterBaseSshKey and assigns it to the SshKey field.
-func (o *Cluster) SetSshKey(v ClusterBaseSshKey) {
-	o.SshKey = &v
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *Cluster) SetInstanceType(v string) {
+	o.InstanceType = &v
+}
+
+// GetKubernetes returns the Kubernetes field value if set, zero value otherwise.
+func (o *Cluster) GetKubernetes() KubernetesEnum {
+	if o == nil || o.Kubernetes == nil {
+		var ret KubernetesEnum
+		return ret
+	}
+	return *o.Kubernetes
+}
+
+// GetKubernetesOk returns a tuple with the Kubernetes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetKubernetesOk() (*KubernetesEnum, bool) {
+	if o == nil || o.Kubernetes == nil {
+		return nil, false
+	}
+	return o.Kubernetes, true
+}
+
+// HasKubernetes returns a boolean if a field has been set.
+func (o *Cluster) HasKubernetes() bool {
+	if o != nil && o.Kubernetes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetes gets a reference to the given KubernetesEnum and assigns it to the Kubernetes field.
+func (o *Cluster) SetKubernetes(v KubernetesEnum) {
+	o.Kubernetes = &v
+}
+
+// GetCpu returns the Cpu field value if set, zero value otherwise.
+func (o *Cluster) GetCpu() int32 {
+	if o == nil || o.Cpu == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Cpu
+}
+
+// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetCpuOk() (*int32, bool) {
+	if o == nil || o.Cpu == nil {
+		return nil, false
+	}
+	return o.Cpu, true
+}
+
+// HasCpu returns a boolean if a field has been set.
+func (o *Cluster) HasCpu() bool {
+	if o != nil && o.Cpu != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+func (o *Cluster) SetCpu(v int32) {
+	o.Cpu = &v
+}
+
+// GetMemory returns the Memory field value if set, zero value otherwise.
+func (o *Cluster) GetMemory() int32 {
+	if o == nil || o.Memory == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Memory
+}
+
+// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetMemoryOk() (*int32, bool) {
+	if o == nil || o.Memory == nil {
+		return nil, false
+	}
+	return o.Memory, true
+}
+
+// HasMemory returns a boolean if a field has been set.
+func (o *Cluster) HasMemory() bool {
+	if o != nil && o.Memory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+func (o *Cluster) SetMemory(v int32) {
+	o.Memory = &v
 }
 
 // GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
@@ -617,38 +551,6 @@ func (o *Cluster) HasStatus() bool {
 // SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
 func (o *Cluster) SetStatus(v StateEnum) {
 	o.Status = &v
-}
-
-// GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *Cluster) GetFeatures() []ClusterFeature {
-	if o == nil || o.Features == nil {
-		var ret []ClusterFeature
-		return ret
-	}
-	return o.Features
-}
-
-// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Cluster) GetFeaturesOk() ([]ClusterFeature, bool) {
-	if o == nil || o.Features == nil {
-		return nil, false
-	}
-	return o.Features, true
-}
-
-// HasFeatures returns a boolean if a field has been set.
-func (o *Cluster) HasFeatures() bool {
-	if o != nil && o.Features != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFeatures gets a reference to the given []ClusterFeature and assigns it to the Features field.
-func (o *Cluster) SetFeatures(v []ClusterFeature) {
-	o.Features = v
 }
 
 // GetHasAccess returns the HasAccess field value if set, zero value otherwise.
@@ -747,6 +649,70 @@ func (o *Cluster) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
+// GetSshKeys returns the SshKeys field value if set, zero value otherwise.
+func (o *Cluster) GetSshKeys() ClusterAllOfSshKeys {
+	if o == nil || o.SshKeys == nil {
+		var ret ClusterAllOfSshKeys
+		return ret
+	}
+	return *o.SshKeys
+}
+
+// GetSshKeysOk returns a tuple with the SshKeys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetSshKeysOk() (*ClusterAllOfSshKeys, bool) {
+	if o == nil || o.SshKeys == nil {
+		return nil, false
+	}
+	return o.SshKeys, true
+}
+
+// HasSshKeys returns a boolean if a field has been set.
+func (o *Cluster) HasSshKeys() bool {
+	if o != nil && o.SshKeys != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSshKeys gets a reference to the given ClusterAllOfSshKeys and assigns it to the SshKeys field.
+func (o *Cluster) SetSshKeys(v ClusterAllOfSshKeys) {
+	o.SshKeys = &v
+}
+
+// GetFeatures returns the Features field value if set, zero value otherwise.
+func (o *Cluster) GetFeatures() []ClusterAllOfFeatures {
+	if o == nil || o.Features == nil {
+		var ret []ClusterAllOfFeatures
+		return ret
+	}
+	return o.Features
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetFeaturesOk() ([]ClusterAllOfFeatures, bool) {
+	if o == nil || o.Features == nil {
+		return nil, false
+	}
+	return o.Features, true
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *Cluster) HasFeatures() bool {
+	if o != nil && o.Features != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given []ClusterAllOfFeatures and assigns it to the Features field.
+func (o *Cluster) SetFeatures(v []ClusterAllOfFeatures) {
+	o.Features = v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -765,22 +731,10 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 		toSerialize["description"] = o.Description
 	}
 	if true {
-		toSerialize["cloud_provider"] = o.CloudProvider
-	}
-	if true {
 		toSerialize["region"] = o.Region
 	}
-	if o.AutoUpdate != nil {
-		toSerialize["auto_update"] = o.AutoUpdate
-	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
 	if true {
-		toSerialize["kubernetes"] = o.Kubernetes
+		toSerialize["cloud_provider"] = o.CloudProvider
 	}
 	if o.MinRunningNodes != nil {
 		toSerialize["min_running_nodes"] = o.MinRunningNodes
@@ -788,23 +742,26 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	if o.MaxRunningNodes != nil {
 		toSerialize["max_running_nodes"] = o.MaxRunningNodes
 	}
-	if o.InstanceType != nil {
-		toSerialize["instance_type"] = o.InstanceType
-	}
 	if o.DiskSize != nil {
 		toSerialize["disk_size"] = o.DiskSize
 	}
-	if o.SshKey != nil {
-		toSerialize["ssh_key"] = o.SshKey
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
+	}
+	if o.Kubernetes != nil {
+		toSerialize["kubernetes"] = o.Kubernetes
+	}
+	if o.Cpu != nil {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if o.Memory != nil {
+		toSerialize["memory"] = o.Memory
 	}
 	if o.EstimatedCloudProviderCost != nil {
 		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
-	}
-	if o.Features != nil {
-		toSerialize["features"] = o.Features
 	}
 	if o.HasAccess != nil {
 		toSerialize["has_access"] = o.HasAccess
@@ -814,6 +771,12 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsDefault != nil {
 		toSerialize["is_default"] = o.IsDefault
+	}
+	if o.SshKeys != nil {
+		toSerialize["ssh_keys"] = o.SshKeys
+	}
+	if o.Features != nil {
+		toSerialize["features"] = o.Features
 	}
 	return json.Marshal(toSerialize)
 }

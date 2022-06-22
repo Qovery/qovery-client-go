@@ -12031,57 +12031,7 @@ components:
     Cluster:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/ClusterBase'
       - $ref: '#/components/schemas/Cluster_allOf'
-    ClusterBase:
-      properties:
-        name:
-          description: name is case-insensitive
-          type: string
-        description:
-          type: string
-        cloud_provider:
-          $ref: '#/components/schemas/CloudProviderEnum'
-        region:
-          type: string
-        auto_update:
-          type: boolean
-        cpu:
-          default: 250
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 256
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        kubernetes:
-          $ref: '#/components/schemas/KubernetesEnum'
-        min_running_nodes:
-          default: 1
-          type: integer
-        max_running_nodes:
-          default: 1
-          type: integer
-        instance_type:
-          description: "the instance type to be used for this cluster. The list of\
-            \ values can be retrieved via the endpoint /{CloudProvider}/instanceType"
-          example: T3A_LARGE
-          type: string
-        disk_size:
-          default: 20
-          description: Unit is in GB. The disk size to be used for the node configuration
-          example: 50
-          type: integer
-        ssh_key:
-          $ref: '#/components/schemas/ClusterBase_ssh_key'
-      required:
-      - cloud_provider
-      - kubernetes
-      - name
-      - region
-      type: object
     ClusterCloudProviderInfo:
       example:
         credentials:
@@ -12189,13 +12139,6 @@ components:
             $ref: '#/components/schemas/ClusterFeature_accepted_values_inner'
           type: array
       type: object
-    ClusterFeatureRequest:
-      properties:
-        features:
-          items:
-            $ref: '#/components/schemas/ClusterFeatureRequest_features_inner'
-          type: array
-      type: object
     ClusterFeatureResponseList:
       example:
         results:
@@ -12292,9 +12235,63 @@ components:
           type: array
       type: object
     ClusterRequest:
-      allOf:
-      - $ref: '#/components/schemas/ClusterBase'
-      - $ref: '#/components/schemas/ClusterFeatureRequest'
+      example:
+        kubernetes: null
+        features:
+          features:
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            value: value
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            value: value
+        ssh_keys:
+          results:
+          - results
+          - results
+        max_running_nodes: 6
+        name: name
+        description: description
+        min_running_nodes: 0
+        disk_size: 50
+        cloud_provider: null
+        region: region
+        instance_type: T3A_LARGE
+      properties:
+        name:
+          description: name is case-insensitive
+          type: string
+        description:
+          type: string
+        region:
+          type: string
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+        min_running_nodes:
+          default: 1
+          type: integer
+        max_running_nodes:
+          default: 1
+          type: integer
+        disk_size:
+          default: 20
+          description: Unit is in GB. The disk size to be used for the node configuration
+          example: 50
+          type: integer
+        instance_type:
+          description: "the instance type to be used for this cluster. The list of\
+            \ values can be retrieved via the endpoint /{CloudProvider}/instanceType"
+          example: T3A_LARGE
+          type: string
+        kubernetes:
+          $ref: '#/components/schemas/KubernetesEnum'
+        ssh_keys:
+          $ref: '#/components/schemas/Cluster_allOf_ssh_keys'
+        features:
+          $ref: '#/components/schemas/ClusterRequest_features'
+      required:
+      - cloud_provider
+      - name
+      - region
+      type: object
     ClusterResponseList:
       example:
         results:
@@ -16342,32 +16339,116 @@ components:
         status:
           $ref: '#/components/schemas/Status'
       type: object
+    Cluster_allOf_ssh_keys:
+      description: Indicate your public ssh_key to remotely connect to your EC2 instance.
+      example:
+        results:
+        - results
+        - results
+      properties:
+        results:
+          items:
+            type: string
+          type: array
+      type: object
+    Cluster_allOf_features:
+      properties:
+        id:
+          format: uuid
+          type: string
+        title:
+          nullable: false
+          type: string
+        description:
+          nullable: true
+          type: string
+        cost_per_month_in_cents:
+          example: 9900
+          nullable: true
+          type: integer
+        cost_per_month:
+          example: 99
+          nullable: true
+          type: number
+        value_type:
+          enum:
+          - BOOLEAN
+          nullable: false
+          type: string
+        value:
+          nullable: true
+          oneOf:
+          - type: string
+          - type: boolean
+        is_value_updatable:
+          default: false
+          type: boolean
+        accepted_values:
+          items:
+            oneOf:
+            - type: string
+            - type: boolean
+          type: array
+      type: object
     Cluster_allOf:
       properties:
+        name:
+          description: name is case-insensitive
+          type: string
+        description:
+          type: string
+        region:
+          type: string
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+        min_running_nodes:
+          default: 1
+          type: integer
+        max_running_nodes:
+          default: 1
+          type: integer
+        disk_size:
+          default: 20
+          description: Unit is in GB. The disk size to be used for the node configuration
+          example: 50
+          type: integer
+        instance_type:
+          description: "the instance type to be used for this cluster. The list of\
+            \ values can be retrieved via the endpoint /{CloudProvider}/instanceType"
+          example: T3A_LARGE
+          type: string
+        kubernetes:
+          $ref: '#/components/schemas/KubernetesEnum'
+        cpu:
+          description: unit is millicores (m). 1000m = 1 cpu
+          example: 10000
+          type: integer
+        memory:
+          description: unit is MB. 1024 MB = 1GB
+          example: 4096
+          type: integer
         estimated_cloud_provider_cost:
           description: "This is an estimation of the cost this cluster will represent\
             \ on your cloud proider bill, based on your current configuration"
           type: integer
         status:
           $ref: '#/components/schemas/StateEnum'
-        features:
-          items:
-            $ref: '#/components/schemas/ClusterFeature'
-          type: array
         has_access:
           type: boolean
         version:
           type: string
         is_default:
           type: boolean
-      type: object
-    ClusterBase_ssh_key:
-      description: Indicate your public ssh_key to remotely connect to your EC2 instance.
-      properties:
-        results:
+        ssh_keys:
+          $ref: '#/components/schemas/Cluster_allOf_ssh_keys'
+        features:
           items:
-            type: string
+            $ref: '#/components/schemas/Cluster_allOf_features'
           type: array
+      required:
+      - cloud_provider
+      - name
+      - region
       type: object
     ClusterCloudProviderInfo_credentials:
       example:
@@ -16389,16 +16470,6 @@ components:
       oneOf:
       - type: string
       - type: boolean
-    ClusterFeatureRequest_features_inner:
-      properties:
-        id:
-          format: uuid
-          nullable: false
-          type: string
-        value:
-          nullable: true
-          type: string
-      type: object
     ClusterInstanceTypeResponseList_results_inner:
       example:
         name: t3a.xlarge
@@ -16423,6 +16494,32 @@ components:
       - name
       - ram_in_gb
       - type
+      type: object
+    ClusterRequest_features_features_inner:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        value: value
+      properties:
+        id:
+          format: uuid
+          nullable: false
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    ClusterRequest_features:
+      example:
+        features:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          value: value
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          value: value
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/ClusterRequest_features_features_inner'
+          type: array
       type: object
     ClusterRoutingTable_results_inner:
       example:

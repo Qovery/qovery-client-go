@@ -6,24 +6,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case-insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
-**CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
 **Region** | **string** |  | 
-**AutoUpdate** | Pointer to **bool** |  | [optional] 
-**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
-**Kubernetes** | [**KubernetesEnum**](KubernetesEnum.md) |  | 
+**CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
-**InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 20]
-**SshKey** | Pointer to [**ClusterBaseSshKey**](ClusterBaseSshKey.md) |  | [optional] 
-**Features** | Pointer to [**[]ClusterFeatureRequestFeaturesInner**](ClusterFeatureRequestFeaturesInner.md) |  | [optional] 
+**InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
+**Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] 
+**SshKeys** | Pointer to [**ClusterAllOfSshKeys**](ClusterAllOfSshKeys.md) |  | [optional] 
+**Features** | Pointer to [**ClusterRequestFeatures**](ClusterRequestFeatures.md) |  | [optional] 
 
 ## Methods
 
 ### NewClusterRequest
 
-`func NewClusterRequest(name string, cloudProvider CloudProviderEnum, region string, kubernetes KubernetesEnum, ) *ClusterRequest`
+`func NewClusterRequest(name string, region string, cloudProvider CloudProviderEnum, ) *ClusterRequest`
 
 NewClusterRequest instantiates a new ClusterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -83,26 +80,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetCloudProvider
-
-`func (o *ClusterRequest) GetCloudProvider() CloudProviderEnum`
-
-GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
-
-### GetCloudProviderOk
-
-`func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool)`
-
-GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudProvider
-
-`func (o *ClusterRequest) SetCloudProvider(v CloudProviderEnum)`
-
-SetCloudProvider sets CloudProvider field to given value.
-
-
 ### GetRegion
 
 `func (o *ClusterRequest) GetRegion() string`
@@ -123,99 +100,24 @@ and a boolean to check if the value has been set.
 SetRegion sets Region field to given value.
 
 
-### GetAutoUpdate
+### GetCloudProvider
 
-`func (o *ClusterRequest) GetAutoUpdate() bool`
+`func (o *ClusterRequest) GetCloudProvider() CloudProviderEnum`
 
-GetAutoUpdate returns the AutoUpdate field if non-nil, zero value otherwise.
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
 
-### GetAutoUpdateOk
+### GetCloudProviderOk
 
-`func (o *ClusterRequest) GetAutoUpdateOk() (*bool, bool)`
+`func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool)`
 
-GetAutoUpdateOk returns a tuple with the AutoUpdate field if it's non-nil, zero value otherwise
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAutoUpdate
+### SetCloudProvider
 
-`func (o *ClusterRequest) SetAutoUpdate(v bool)`
+`func (o *ClusterRequest) SetCloudProvider(v CloudProviderEnum)`
 
-SetAutoUpdate sets AutoUpdate field to given value.
-
-### HasAutoUpdate
-
-`func (o *ClusterRequest) HasAutoUpdate() bool`
-
-HasAutoUpdate returns a boolean if a field has been set.
-
-### GetCpu
-
-`func (o *ClusterRequest) GetCpu() int32`
-
-GetCpu returns the Cpu field if non-nil, zero value otherwise.
-
-### GetCpuOk
-
-`func (o *ClusterRequest) GetCpuOk() (*int32, bool)`
-
-GetCpuOk returns a tuple with the Cpu field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCpu
-
-`func (o *ClusterRequest) SetCpu(v int32)`
-
-SetCpu sets Cpu field to given value.
-
-### HasCpu
-
-`func (o *ClusterRequest) HasCpu() bool`
-
-HasCpu returns a boolean if a field has been set.
-
-### GetMemory
-
-`func (o *ClusterRequest) GetMemory() int32`
-
-GetMemory returns the Memory field if non-nil, zero value otherwise.
-
-### GetMemoryOk
-
-`func (o *ClusterRequest) GetMemoryOk() (*int32, bool)`
-
-GetMemoryOk returns a tuple with the Memory field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMemory
-
-`func (o *ClusterRequest) SetMemory(v int32)`
-
-SetMemory sets Memory field to given value.
-
-### HasMemory
-
-`func (o *ClusterRequest) HasMemory() bool`
-
-HasMemory returns a boolean if a field has been set.
-
-### GetKubernetes
-
-`func (o *ClusterRequest) GetKubernetes() KubernetesEnum`
-
-GetKubernetes returns the Kubernetes field if non-nil, zero value otherwise.
-
-### GetKubernetesOk
-
-`func (o *ClusterRequest) GetKubernetesOk() (*KubernetesEnum, bool)`
-
-GetKubernetesOk returns a tuple with the Kubernetes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKubernetes
-
-`func (o *ClusterRequest) SetKubernetes(v KubernetesEnum)`
-
-SetKubernetes sets Kubernetes field to given value.
+SetCloudProvider sets CloudProvider field to given value.
 
 
 ### GetMinRunningNodes
@@ -268,31 +170,6 @@ SetMaxRunningNodes sets MaxRunningNodes field to given value.
 
 HasMaxRunningNodes returns a boolean if a field has been set.
 
-### GetInstanceType
-
-`func (o *ClusterRequest) GetInstanceType() string`
-
-GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
-
-### GetInstanceTypeOk
-
-`func (o *ClusterRequest) GetInstanceTypeOk() (*string, bool)`
-
-GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInstanceType
-
-`func (o *ClusterRequest) SetInstanceType(v string)`
-
-SetInstanceType sets InstanceType field to given value.
-
-### HasInstanceType
-
-`func (o *ClusterRequest) HasInstanceType() bool`
-
-HasInstanceType returns a boolean if a field has been set.
-
 ### GetDiskSize
 
 `func (o *ClusterRequest) GetDiskSize() int32`
@@ -318,47 +195,97 @@ SetDiskSize sets DiskSize field to given value.
 
 HasDiskSize returns a boolean if a field has been set.
 
-### GetSshKey
+### GetInstanceType
 
-`func (o *ClusterRequest) GetSshKey() ClusterBaseSshKey`
+`func (o *ClusterRequest) GetInstanceType() string`
 
-GetSshKey returns the SshKey field if non-nil, zero value otherwise.
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
 
-### GetSshKeyOk
+### GetInstanceTypeOk
 
-`func (o *ClusterRequest) GetSshKeyOk() (*ClusterBaseSshKey, bool)`
+`func (o *ClusterRequest) GetInstanceTypeOk() (*string, bool)`
 
-GetSshKeyOk returns a tuple with the SshKey field if it's non-nil, zero value otherwise
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSshKey
+### SetInstanceType
 
-`func (o *ClusterRequest) SetSshKey(v ClusterBaseSshKey)`
+`func (o *ClusterRequest) SetInstanceType(v string)`
 
-SetSshKey sets SshKey field to given value.
+SetInstanceType sets InstanceType field to given value.
 
-### HasSshKey
+### HasInstanceType
 
-`func (o *ClusterRequest) HasSshKey() bool`
+`func (o *ClusterRequest) HasInstanceType() bool`
 
-HasSshKey returns a boolean if a field has been set.
+HasInstanceType returns a boolean if a field has been set.
+
+### GetKubernetes
+
+`func (o *ClusterRequest) GetKubernetes() KubernetesEnum`
+
+GetKubernetes returns the Kubernetes field if non-nil, zero value otherwise.
+
+### GetKubernetesOk
+
+`func (o *ClusterRequest) GetKubernetesOk() (*KubernetesEnum, bool)`
+
+GetKubernetesOk returns a tuple with the Kubernetes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKubernetes
+
+`func (o *ClusterRequest) SetKubernetes(v KubernetesEnum)`
+
+SetKubernetes sets Kubernetes field to given value.
+
+### HasKubernetes
+
+`func (o *ClusterRequest) HasKubernetes() bool`
+
+HasKubernetes returns a boolean if a field has been set.
+
+### GetSshKeys
+
+`func (o *ClusterRequest) GetSshKeys() ClusterAllOfSshKeys`
+
+GetSshKeys returns the SshKeys field if non-nil, zero value otherwise.
+
+### GetSshKeysOk
+
+`func (o *ClusterRequest) GetSshKeysOk() (*ClusterAllOfSshKeys, bool)`
+
+GetSshKeysOk returns a tuple with the SshKeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSshKeys
+
+`func (o *ClusterRequest) SetSshKeys(v ClusterAllOfSshKeys)`
+
+SetSshKeys sets SshKeys field to given value.
+
+### HasSshKeys
+
+`func (o *ClusterRequest) HasSshKeys() bool`
+
+HasSshKeys returns a boolean if a field has been set.
 
 ### GetFeatures
 
-`func (o *ClusterRequest) GetFeatures() []ClusterFeatureRequestFeaturesInner`
+`func (o *ClusterRequest) GetFeatures() ClusterRequestFeatures`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *ClusterRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeaturesInner, bool)`
+`func (o *ClusterRequest) GetFeaturesOk() (*ClusterRequestFeatures, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *ClusterRequest) SetFeatures(v []ClusterFeatureRequestFeaturesInner)`
+`func (o *ClusterRequest) SetFeatures(v ClusterRequestFeatures)`
 
 SetFeatures sets Features field to given value.
 

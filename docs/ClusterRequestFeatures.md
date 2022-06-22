@@ -1,52 +1,52 @@
-# ClusterFeatureRequest
+# ClusterRequestFeatures
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Features** | Pointer to [**[]ClusterFeatureRequestFeaturesInner**](ClusterFeatureRequestFeaturesInner.md) |  | [optional] 
+**Features** | Pointer to [**[]ClusterRequestFeaturesFeaturesInner**](ClusterRequestFeaturesFeaturesInner.md) |  | [optional] 
 
 ## Methods
 
-### NewClusterFeatureRequest
+### NewClusterRequestFeatures
 
-`func NewClusterFeatureRequest() *ClusterFeatureRequest`
+`func NewClusterRequestFeatures() *ClusterRequestFeatures`
 
-NewClusterFeatureRequest instantiates a new ClusterFeatureRequest object
+NewClusterRequestFeatures instantiates a new ClusterRequestFeatures object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewClusterFeatureRequestWithDefaults
+### NewClusterRequestFeaturesWithDefaults
 
-`func NewClusterFeatureRequestWithDefaults() *ClusterFeatureRequest`
+`func NewClusterRequestFeaturesWithDefaults() *ClusterRequestFeatures`
 
-NewClusterFeatureRequestWithDefaults instantiates a new ClusterFeatureRequest object
+NewClusterRequestFeaturesWithDefaults instantiates a new ClusterRequestFeatures object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetFeatures
 
-`func (o *ClusterFeatureRequest) GetFeatures() []ClusterFeatureRequestFeaturesInner`
+`func (o *ClusterRequestFeatures) GetFeatures() []ClusterRequestFeaturesFeaturesInner`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *ClusterFeatureRequest) GetFeaturesOk() (*[]ClusterFeatureRequestFeaturesInner, bool)`
+`func (o *ClusterRequestFeatures) GetFeaturesOk() (*[]ClusterRequestFeaturesFeaturesInner, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *ClusterFeatureRequest) SetFeatures(v []ClusterFeatureRequestFeaturesInner)`
+`func (o *ClusterRequestFeatures) SetFeatures(v []ClusterRequestFeaturesFeaturesInner)`
 
 SetFeatures sets Features field to given value.
 
 ### HasFeatures
 
-`func (o *ClusterFeatureRequest) HasFeatures() bool`
+`func (o *ClusterRequestFeatures) HasFeatures() bool`
 
 HasFeatures returns a boolean if a field has been set.
 

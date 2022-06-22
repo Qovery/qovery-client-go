@@ -139,8 +139,8 @@ docs/CloudProviderResponseList.md
 docs/CluserCredentials.md
 docs/Cluster.md
 docs/ClusterAllOf.md
-docs/ClusterBase.md
-docs/ClusterBaseSshKey.md
+docs/ClusterAllOfFeatures.md
+docs/ClusterAllOfSshKeys.md
 docs/ClusterCloudProviderInfo.md
 docs/ClusterCloudProviderInfoCredentials.md
 docs/ClusterCloudProviderInfoRequest.md
@@ -148,8 +148,6 @@ docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
 docs/ClusterFeature.md
 docs/ClusterFeatureAcceptedValuesInner.md
-docs/ClusterFeatureRequest.md
-docs/ClusterFeatureRequestFeaturesInner.md
 docs/ClusterFeatureResponseList.md
 docs/ClusterFeatureValue.md
 docs/ClusterInstanceTypeResponseList.md
@@ -158,6 +156,8 @@ docs/ClusterReadinessStatus.md
 docs/ClusterRegion.md
 docs/ClusterRegionResponseList.md
 docs/ClusterRequest.md
+docs/ClusterRequestFeatures.md
+docs/ClusterRequestFeaturesFeaturesInner.md
 docs/ClusterResponseList.md
 docs/ClusterRoutingTable.md
 docs/ClusterRoutingTableRequest.md
@@ -535,8 +535,8 @@ model_cloud_provider_response_list.go
 model_cluser_credentials.go
 model_cluster.go
 model_cluster_all_of.go
-model_cluster_base.go
-model_cluster_base_ssh_key.go
+model_cluster_all_of_features.go
+model_cluster_all_of_ssh_keys.go
 model_cluster_cloud_provider_info.go
 model_cluster_cloud_provider_info_credentials.go
 model_cluster_cloud_provider_info_request.go
@@ -544,8 +544,6 @@ model_cluster_credentials.go
 model_cluster_credentials_response_list.go
 model_cluster_feature.go
 model_cluster_feature_accepted_values_inner.go
-model_cluster_feature_request.go
-model_cluster_feature_request_features_inner.go
 model_cluster_feature_response_list.go
 model_cluster_feature_value.go
 model_cluster_instance_type_response_list.go
@@ -554,6 +552,8 @@ model_cluster_readiness_status.go
 model_cluster_region.go
 model_cluster_region_response_list.go
 model_cluster_request.go
+model_cluster_request_features.go
+model_cluster_request_features_features_inner.go
 model_cluster_response_list.go
 model_cluster_routing_table.go
 model_cluster_routing_table_request.go
