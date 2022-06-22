@@ -1384,6 +1384,45 @@ paths:
       summary: Edit routing table
       tags:
       - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/logs:
+    get:
+      description: List Cluster Logs
+      operationId: listClusterLogs
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listClusterLogs_200_response'
+          description: list cluster logs
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Cluster Logs
+      tags:
+      - Clusters
   /organization/{organizationId}/aws/credentials:
     get:
       operationId: listAWSCredentials
@@ -12032,6 +12071,71 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/Cluster_allOf'
+    ClusterLogs:
+      example:
+        step: Create
+        details:
+          provider_kind: aws
+          region: eu-west-3
+          transmitter:
+            name: cluster-name
+            id: za6ecdf3f
+            type: kubernetes
+        type: info
+        message:
+          safe_message: Preparing to delete EKS cluster.
+        error:
+          link: link
+          event_details:
+            provider_kind: aws
+            region: eu-west-3
+            transmitter:
+              name: cluster-name
+              id: za6ecdf3f
+              type: kubernetes
+            underlying_error:
+              message: message
+          tag: CANNOT_UNINSTALL_HELM_CHART
+          hint_message: hint_message
+          user_log_message: Wasn't able to delete all objects type Cert-Manager
+        timestamp: 2022-06-22T14:20:17.733084815Z
+      properties:
+        type:
+          description: log level
+          example: info
+          type: string
+        timestamp:
+          description: log date creation
+          example: 2022-06-22T14:20:17.733084815Z
+          format: date-time
+          type: string
+        step:
+          description: log step
+          enum:
+          - LoadConfiguration
+          - Create
+          - Created
+          - CreateError
+          - Pause
+          - Paused
+          - PauseError
+          - Delete
+          - Deleted
+          - DeleteError
+          - RetrieveClusterConfig
+          - RetrieveClusterResources
+          - ValidateSystemRequirements
+          - UnderMigration
+          - Unknown
+          example: Create
+          type: string
+        message:
+          $ref: '#/components/schemas/ClusterLogs_message'
+        error:
+          $ref: '#/components/schemas/ClusterLogs_error'
+        details:
+          $ref: '#/components/schemas/ClusterLogs_details'
+      type: object
     ClusterCloudProviderInfo:
       example:
         credentials:
@@ -12308,6 +12412,8 @@ components:
             $ref: '#/components/schemas/Cluster'
           type: array
       type: object
+    ClusterLogsResponseList:
+      $ref: '#/components/schemas/ClusterResponseList'
     ClusterRoutingTable:
       example:
         results:
@@ -15922,6 +16028,67 @@ components:
       - SUNDAY
       example: MONDAY
       type: string
+    listClusterLogs_200_response:
+      example:
+        results:
+        - step: Create
+          details:
+            provider_kind: aws
+            region: eu-west-3
+            transmitter:
+              name: cluster-name
+              id: za6ecdf3f
+              type: kubernetes
+          type: info
+          message:
+            safe_message: Preparing to delete EKS cluster.
+          error:
+            link: link
+            event_details:
+              provider_kind: aws
+              region: eu-west-3
+              transmitter:
+                name: cluster-name
+                id: za6ecdf3f
+                type: kubernetes
+              underlying_error:
+                message: message
+            tag: CANNOT_UNINSTALL_HELM_CHART
+            hint_message: hint_message
+            user_log_message: Wasn't able to delete all objects type Cert-Manager
+          timestamp: 2022-06-22T14:20:17.733084815Z
+        - step: Create
+          details:
+            provider_kind: aws
+            region: eu-west-3
+            transmitter:
+              name: cluster-name
+              id: za6ecdf3f
+              type: kubernetes
+          type: info
+          message:
+            safe_message: Preparing to delete EKS cluster.
+          error:
+            link: link
+            event_details:
+              provider_kind: aws
+              region: eu-west-3
+              transmitter:
+                name: cluster-name
+                id: za6ecdf3f
+                type: kubernetes
+              underlying_error:
+                message: message
+            tag: CANNOT_UNINSTALL_HELM_CHART
+            hint_message: hint_message
+            user_log_message: Wasn't able to delete all objects type Cert-Manager
+          timestamp: 2022-06-22T14:20:17.733084815Z
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterLogs'
+          type: array
+      type: object
     listContainerRegistry_200_response:
       example:
         results:
@@ -16458,6 +16625,116 @@ components:
       - cloud_provider
       - name
       - region
+      type: object
+    ClusterLogs_message:
+      example:
+        safe_message: Preparing to delete EKS cluster.
+      properties:
+        safe_message:
+          description: log global message
+          example: Preparing to delete EKS cluster.
+          type: string
+      type: object
+    ClusterLogs_error_event_details_transmitter:
+      example:
+        name: cluster-name
+        id: za6ecdf3f
+        type: kubernetes
+      properties:
+        type:
+          example: kubernetes
+          type: string
+        id:
+          example: za6ecdf3f
+          type: string
+        name:
+          example: cluster-name
+          type: string
+      type: object
+    ClusterLogs_error_event_details_underlying_error:
+      example:
+        message: message
+      properties:
+        message:
+          description: technical details about the error
+          type: string
+      type: object
+    ClusterLogs_error_event_details:
+      example:
+        provider_kind: aws
+        region: eu-west-3
+        transmitter:
+          name: cluster-name
+          id: za6ecdf3f
+          type: kubernetes
+        underlying_error:
+          message: message
+      properties:
+        provider_kind:
+          description: cloud provider used
+          example: aws
+          type: string
+        region:
+          example: eu-west-3
+          type: string
+        transmitter:
+          $ref: '#/components/schemas/ClusterLogs_error_event_details_transmitter'
+        underlying_error:
+          $ref: '#/components/schemas/ClusterLogs_error_event_details_underlying_error'
+      type: object
+    ClusterLogs_error:
+      description: Present only for `error` log
+      example:
+        link: link
+        event_details:
+          provider_kind: aws
+          region: eu-west-3
+          transmitter:
+            name: cluster-name
+            id: za6ecdf3f
+            type: kubernetes
+          underlying_error:
+            message: message
+        tag: CANNOT_UNINSTALL_HELM_CHART
+        hint_message: hint_message
+        user_log_message: Wasn't able to delete all objects type Cert-Manager
+      properties:
+        tag:
+          description: log error tag
+          example: CANNOT_UNINSTALL_HELM_CHART
+          type: string
+        user_log_message:
+          description: log details about the error
+          example: Wasn't able to delete all objects type Cert-Manager
+          type: string
+        link:
+          description: link to our documentation
+          type: string
+        hint_message:
+          description: hint the user can follow
+          type: string
+        event_details:
+          $ref: '#/components/schemas/ClusterLogs_error_event_details'
+      type: object
+    ClusterLogs_details:
+      description: "Present only for `info`, `warning` and `debug` logs"
+      example:
+        provider_kind: aws
+        region: eu-west-3
+        transmitter:
+          name: cluster-name
+          id: za6ecdf3f
+          type: kubernetes
+      properties:
+        provider_kind:
+          description: cloud provider used
+          example: aws
+          type: string
+        region:
+          example: eu-west-3
+          type: string
+        transmitter:
+          $ref: '#/components/schemas/ClusterLogs_error_event_details_transmitter'
       type: object
     ClusterCloudProviderInfo_credentials:
       example:
