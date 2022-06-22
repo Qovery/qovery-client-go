@@ -38,13 +38,15 @@ type Cluster struct {
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
 	// This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration
-	EstimatedCloudProviderCost *int32                 `json:"estimated_cloud_provider_cost,omitempty"`
-	Status                     *StateEnum             `json:"status,omitempty"`
-	HasAccess                  *bool                  `json:"has_access,omitempty"`
-	Version                    *string                `json:"version,omitempty"`
-	IsDefault                  *bool                  `json:"is_default,omitempty"`
-	SshKeys                    *ClusterAllOfSshKeys   `json:"ssh_keys,omitempty"`
-	Features                   []ClusterAllOfFeatures `json:"features,omitempty"`
+	EstimatedCloudProviderCost *int32     `json:"estimated_cloud_provider_cost,omitempty"`
+	Status                     *StateEnum `json:"status,omitempty"`
+	HasAccess                  *bool      `json:"has_access,omitempty"`
+	Version                    *string    `json:"version,omitempty"`
+	IsDefault                  *bool      `json:"is_default,omitempty"`
+	// specific flag to indicate that this cluster is a production one
+	Production *bool                  `json:"production,omitempty"`
+	SshKeys    *ClusterAllOfSshKeys   `json:"ssh_keys,omitempty"`
+	Features   []ClusterAllOfFeatures `json:"features,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
@@ -649,6 +651,38 @@ func (o *Cluster) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
+// GetProduction returns the Production field value if set, zero value otherwise.
+func (o *Cluster) GetProduction() bool {
+	if o == nil || o.Production == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Production
+}
+
+// GetProductionOk returns a tuple with the Production field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetProductionOk() (*bool, bool) {
+	if o == nil || o.Production == nil {
+		return nil, false
+	}
+	return o.Production, true
+}
+
+// HasProduction returns a boolean if a field has been set.
+func (o *Cluster) HasProduction() bool {
+	if o != nil && o.Production != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProduction gets a reference to the given bool and assigns it to the Production field.
+func (o *Cluster) SetProduction(v bool) {
+	o.Production = &v
+}
+
 // GetSshKeys returns the SshKeys field value if set, zero value otherwise.
 func (o *Cluster) GetSshKeys() ClusterAllOfSshKeys {
 	if o == nil || o.SshKeys == nil {
@@ -771,6 +805,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsDefault != nil {
 		toSerialize["is_default"] = o.IsDefault
+	}
+	if o.Production != nil {
+		toSerialize["production"] = o.Production
 	}
 	if o.SshKeys != nil {
 		toSerialize["ssh_keys"] = o.SshKeys

@@ -27,10 +27,12 @@ type ClusterRequest struct {
 	// Unit is in GB. The disk size to be used for the node configuration
 	DiskSize *int32 `json:"disk_size,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
-	InstanceType *string                 `json:"instance_type,omitempty"`
-	Kubernetes   *KubernetesEnum         `json:"kubernetes,omitempty"`
-	SshKeys      *ClusterAllOfSshKeys    `json:"ssh_keys,omitempty"`
-	Features     *ClusterRequestFeatures `json:"features,omitempty"`
+	InstanceType *string         `json:"instance_type,omitempty"`
+	Kubernetes   *KubernetesEnum `json:"kubernetes,omitempty"`
+	// specific flag to indicate that this cluster is a production one
+	Production *bool                   `json:"production,omitempty"`
+	SshKeys    *ClusterAllOfSshKeys    `json:"ssh_keys,omitempty"`
+	Features   *ClusterRequestFeatures `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
@@ -329,6 +331,38 @@ func (o *ClusterRequest) SetKubernetes(v KubernetesEnum) {
 	o.Kubernetes = &v
 }
 
+// GetProduction returns the Production field value if set, zero value otherwise.
+func (o *ClusterRequest) GetProduction() bool {
+	if o == nil || o.Production == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Production
+}
+
+// GetProductionOk returns a tuple with the Production field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetProductionOk() (*bool, bool) {
+	if o == nil || o.Production == nil {
+		return nil, false
+	}
+	return o.Production, true
+}
+
+// HasProduction returns a boolean if a field has been set.
+func (o *ClusterRequest) HasProduction() bool {
+	if o != nil && o.Production != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProduction gets a reference to the given bool and assigns it to the Production field.
+func (o *ClusterRequest) SetProduction(v bool) {
+	o.Production = &v
+}
+
 // GetSshKeys returns the SshKeys field value if set, zero value otherwise.
 func (o *ClusterRequest) GetSshKeys() ClusterAllOfSshKeys {
 	if o == nil || o.SshKeys == nil {
@@ -421,6 +455,9 @@ func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Kubernetes != nil {
 		toSerialize["kubernetes"] = o.Kubernetes
+	}
+	if o.Production != nil {
+		toSerialize["production"] = o.Production
 	}
 	if o.SshKeys != nil {
 		toSerialize["ssh_keys"] = o.SshKeys

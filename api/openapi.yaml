@@ -12247,6 +12247,7 @@ components:
           results:
           - results
           - results
+        production: true
         max_running_nodes: 6
         name: name
         description: description
@@ -12283,6 +12284,10 @@ components:
           type: string
         kubernetes:
           $ref: '#/components/schemas/KubernetesEnum'
+        production:
+          description: specific flag to indicate that this cluster is a production
+            one
+          type: boolean
         ssh_keys:
           $ref: '#/components/schemas/Cluster_allOf_ssh_keys'
         features:
@@ -16438,6 +16443,10 @@ components:
         version:
           type: string
         is_default:
+          type: boolean
+        production:
+          description: specific flag to indicate that this cluster is a production
+            one
           type: boolean
         ssh_keys:
           $ref: '#/components/schemas/Cluster_allOf_ssh_keys'

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 20]
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] 
+**Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to [**ClusterAllOfSshKeys**](ClusterAllOfSshKeys.md) |  | [optional] 
 **Features** | Pointer to [**ClusterRequestFeatures**](ClusterRequestFeatures.md) |  | [optional] 
 
@@ -244,6 +245,31 @@ SetKubernetes sets Kubernetes field to given value.
 `func (o *ClusterRequest) HasKubernetes() bool`
 
 HasKubernetes returns a boolean if a field has been set.
+
+### GetProduction
+
+`func (o *ClusterRequest) GetProduction() bool`
+
+GetProduction returns the Production field if non-nil, zero value otherwise.
+
+### GetProductionOk
+
+`func (o *ClusterRequest) GetProductionOk() (*bool, bool)`
+
+GetProductionOk returns a tuple with the Production field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProduction
+
+`func (o *ClusterRequest) SetProduction(v bool)`
+
+SetProduction sets Production field to given value.
+
+### HasProduction
+
+`func (o *ClusterRequest) HasProduction() bool`
+
+HasProduction returns a boolean if a field has been set.
 
 ### GetSshKeys
 

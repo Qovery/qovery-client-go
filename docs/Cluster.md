@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
+**Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to [**ClusterAllOfSshKeys**](ClusterAllOfSshKeys.md) |  | [optional] 
 **Features** | Pointer to [**[]ClusterAllOfFeatures**](ClusterAllOfFeatures.md) |  | [optional] 
 
@@ -494,6 +495,31 @@ SetIsDefault sets IsDefault field to given value.
 `func (o *Cluster) HasIsDefault() bool`
 
 HasIsDefault returns a boolean if a field has been set.
+
+### GetProduction
+
+`func (o *Cluster) GetProduction() bool`
+
+GetProduction returns the Production field if non-nil, zero value otherwise.
+
+### GetProductionOk
+
+`func (o *Cluster) GetProductionOk() (*bool, bool)`
+
+GetProductionOk returns a tuple with the Production field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProduction
+
+`func (o *Cluster) SetProduction(v bool)`
+
+SetProduction sets Production field to given value.
+
+### HasProduction
+
+`func (o *Cluster) HasProduction() bool`
+
+HasProduction returns a boolean if a field has been set.
 
 ### GetSshKeys
 
