@@ -13212,7 +13212,7 @@ components:
     CustomDomainStatusEnum:
       enum:
       - VALIDATION_PENDING
-      example: VALIDATION_PENDING
+      example: deploying
       type: string
     Database:
       allOf:
