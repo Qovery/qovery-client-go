@@ -16538,45 +16538,6 @@ components:
             type: string
           type: array
       type: object
-    Cluster_allOf_features:
-      properties:
-        id:
-          format: uuid
-          type: string
-        title:
-          nullable: false
-          type: string
-        description:
-          nullable: true
-          type: string
-        cost_per_month_in_cents:
-          example: 9900
-          nullable: true
-          type: integer
-        cost_per_month:
-          example: 99
-          nullable: true
-          type: number
-        value_type:
-          enum:
-          - BOOLEAN
-          nullable: false
-          type: string
-        value:
-          nullable: true
-          oneOf:
-          - type: string
-          - type: boolean
-        is_value_updatable:
-          default: false
-          type: boolean
-        accepted_values:
-          items:
-            oneOf:
-            - type: string
-            - type: boolean
-          type: array
-      type: object
     Cluster_allOf:
       properties:
         name:
@@ -16634,7 +16595,7 @@ components:
           $ref: '#/components/schemas/Cluster_allOf_ssh_keys'
         features:
           items:
-            $ref: '#/components/schemas/Cluster_allOf_features'
+            $ref: '#/components/schemas/ClusterFeature'
           type: array
       required:
       - cloud_provider

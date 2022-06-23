@@ -40,9 +40,9 @@ type ClusterAllOf struct {
 	Version                    *string    `json:"version,omitempty"`
 	IsDefault                  *bool      `json:"is_default,omitempty"`
 	// specific flag to indicate that this cluster is a production one
-	Production *bool                  `json:"production,omitempty"`
-	SshKeys    *ClusterAllOfSshKeys   `json:"ssh_keys,omitempty"`
-	Features   []ClusterAllOfFeatures `json:"features,omitempty"`
+	Production *bool                `json:"production,omitempty"`
+	SshKeys    *ClusterAllOfSshKeys `json:"ssh_keys,omitempty"`
+	Features   []ClusterFeature     `json:"features,omitempty"`
 }
 
 // NewClusterAllOf instantiates a new ClusterAllOf object
@@ -630,9 +630,9 @@ func (o *ClusterAllOf) SetSshKeys(v ClusterAllOfSshKeys) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetFeatures() []ClusterAllOfFeatures {
+func (o *ClusterAllOf) GetFeatures() []ClusterFeature {
 	if o == nil || o.Features == nil {
-		var ret []ClusterAllOfFeatures
+		var ret []ClusterFeature
 		return ret
 	}
 	return o.Features
@@ -640,7 +640,7 @@ func (o *ClusterAllOf) GetFeatures() []ClusterAllOfFeatures {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetFeaturesOk() ([]ClusterAllOfFeatures, bool) {
+func (o *ClusterAllOf) GetFeaturesOk() ([]ClusterFeature, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -656,8 +656,8 @@ func (o *ClusterAllOf) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given []ClusterAllOfFeatures and assigns it to the Features field.
-func (o *ClusterAllOf) SetFeatures(v []ClusterAllOfFeatures) {
+// SetFeatures gets a reference to the given []ClusterFeature and assigns it to the Features field.
+func (o *ClusterAllOf) SetFeatures(v []ClusterFeature) {
 	o.Features = v
 }
 

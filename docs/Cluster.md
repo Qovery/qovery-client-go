@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **IsDefault** | Pointer to **bool** |  | [optional] 
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to [**ClusterAllOfSshKeys**](ClusterAllOfSshKeys.md) |  | [optional] 
-**Features** | Pointer to [**[]ClusterAllOfFeatures**](ClusterAllOfFeatures.md) |  | [optional] 
+**Features** | Pointer to [**[]ClusterFeature**](ClusterFeature.md) |  | [optional] 
 
 ## Methods
 
@@ -548,20 +548,20 @@ HasSshKeys returns a boolean if a field has been set.
 
 ### GetFeatures
 
-`func (o *Cluster) GetFeatures() []ClusterAllOfFeatures`
+`func (o *Cluster) GetFeatures() []ClusterFeature`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *Cluster) GetFeaturesOk() (*[]ClusterAllOfFeatures, bool)`
+`func (o *Cluster) GetFeaturesOk() (*[]ClusterFeature, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *Cluster) SetFeatures(v []ClusterAllOfFeatures)`
+`func (o *Cluster) SetFeatures(v []ClusterFeature)`
 
 SetFeatures sets Features field to given value.
 

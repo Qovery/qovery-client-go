@@ -139,7 +139,6 @@ docs/CloudProviderResponseList.md
 docs/CluserCredentials.md
 docs/Cluster.md
 docs/ClusterAllOf.md
-docs/ClusterAllOfFeatures.md
 docs/ClusterAllOfSshKeys.md
 docs/ClusterCloudProviderInfo.md
 docs/ClusterCloudProviderInfoCredentials.md
@@ -547,7 +546,6 @@ model_cloud_provider_response_list.go
 model_cluser_credentials.go
 model_cluster.go
 model_cluster_all_of.go
-model_cluster_all_of_features.go
 model_cluster_all_of_ssh_keys.go
 model_cluster_cloud_provider_info.go
 model_cluster_cloud_provider_info_credentials.go
