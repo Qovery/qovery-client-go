@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** | Turn on or off your endpoint. | [optional] 
 **Events** | Pointer to [**[]OrganizationWebhookEventEnum**](OrganizationWebhookEventEnum.md) |  | [optional] 
-**ProjectIdFilter** | Pointer to **[]string** |  | [optional] 
+**ProjectNamesFilter** | Pointer to **[]string** |  | [optional] 
 **EnvironmentTypesFilter** | Pointer to [**[]EnvironmentModeEnum**](EnvironmentModeEnum.md) | Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.  | [optional] 
 
 ## Methods
@@ -250,30 +250,30 @@ SetEvents sets Events field to given value.
 
 HasEvents returns a boolean if a field has been set.
 
-### GetProjectIdFilter
+### GetProjectNamesFilter
 
-`func (o *OrganizationWebhookCreateResponse) GetProjectIdFilter() []string`
+`func (o *OrganizationWebhookCreateResponse) GetProjectNamesFilter() []string`
 
-GetProjectIdFilter returns the ProjectIdFilter field if non-nil, zero value otherwise.
+GetProjectNamesFilter returns the ProjectNamesFilter field if non-nil, zero value otherwise.
 
-### GetProjectIdFilterOk
+### GetProjectNamesFilterOk
 
-`func (o *OrganizationWebhookCreateResponse) GetProjectIdFilterOk() (*[]string, bool)`
+`func (o *OrganizationWebhookCreateResponse) GetProjectNamesFilterOk() (*[]string, bool)`
 
-GetProjectIdFilterOk returns a tuple with the ProjectIdFilter field if it's non-nil, zero value otherwise
+GetProjectNamesFilterOk returns a tuple with the ProjectNamesFilter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProjectIdFilter
+### SetProjectNamesFilter
 
-`func (o *OrganizationWebhookCreateResponse) SetProjectIdFilter(v []string)`
+`func (o *OrganizationWebhookCreateResponse) SetProjectNamesFilter(v []string)`
 
-SetProjectIdFilter sets ProjectIdFilter field to given value.
+SetProjectNamesFilter sets ProjectNamesFilter field to given value.
 
-### HasProjectIdFilter
+### HasProjectNamesFilter
 
-`func (o *OrganizationWebhookCreateResponse) HasProjectIdFilter() bool`
+`func (o *OrganizationWebhookCreateResponse) HasProjectNamesFilter() bool`
 
-HasProjectIdFilter returns a boolean if a field has been set.
+HasProjectNamesFilter returns a boolean if a field has been set.
 
 ### GetEnvironmentTypesFilter
 

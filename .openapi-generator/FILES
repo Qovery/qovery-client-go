@@ -419,7 +419,6 @@ docs/OrganizationWebhookCreateResponseAllOf.md
 docs/OrganizationWebhookEventEnum.md
 docs/OrganizationWebhookKindEnum.md
 docs/OrganizationWebhookResponse.md
-docs/OrganizationWebhookResponseAllOf.md
 docs/OrganizationWebhookResponseList.md
 docs/OverriddenSecret.md
 docs/PaginationData.md
@@ -784,7 +783,6 @@ model_organization_webhook_create_response_all_of.go
 model_organization_webhook_event_enum.go
 model_organization_webhook_kind_enum.go
 model_organization_webhook_response.go
-model_organization_webhook_response_all_of.go
 model_organization_webhook_response_list.go
 model_overridden_secret.go
 model_pagination_data.go

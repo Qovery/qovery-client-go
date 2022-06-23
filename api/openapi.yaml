@@ -15226,9 +15226,6 @@ components:
       type: object
     OrganizationWebhookCreateRequest:
       example:
-        project_id_filter:
-        - project_id_filter
-        - project_id_filter
         environment_types_filter:
         - PRODUCTION
         - PRODUCTION
@@ -15240,6 +15237,9 @@ components:
         events:
         - null
         - null
+        project_names_filter:
+        - project_names_filter
+        - project_names_filter
       properties:
         kind:
           $ref: '#/components/schemas/OrganizationWebhookKindEnum'
@@ -15262,11 +15262,12 @@ components:
           items:
             $ref: '#/components/schemas/OrganizationWebhookEventEnum'
           type: array
-        project_id_filter:
+        project_names_filter:
           items:
-            description: "Specify the project IDs you want to filter to. \nThis webhook\
-              \ will be triggered only if the event is coming from the specified Project\
-              \ IDs.\n"
+            description: "Specify the project names you want to filter to. \nThis\
+              \ webhook will be triggered only if the event is coming from the specified\
+              \ Project IDs.\nNotes:\n  1. Wildcard is accepted E.g. `product*`.\n\
+              \  2. Name is case insensitive.\n"
             type: string
           type: array
         environment_types_filter:
@@ -15310,7 +15311,7 @@ components:
     OrganizationWebhookResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/OrganizationWebhookResponse_allOf'
+      - $ref: '#/components/schemas/OrganizationWebhookCreateResponse_allOf'
     OrganizationWebhookResponseList:
       example:
         results:
@@ -17525,46 +17526,12 @@ components:
           items:
             $ref: '#/components/schemas/OrganizationWebhookEventEnum'
           type: array
-        project_id_filter:
+        project_names_filter:
           items:
-            description: "Specify the project IDs you want to filter to. \nThis webhook\
-              \ will be triggered only if the event is coming from the specified Project\
-              \ IDs.\n"
-            type: string
-          type: array
-        environment_types_filter:
-          description: |
-            Specify the environment modes you want to filter to.
-            This webhook will be triggered only if the event is coming from an environment with the specified mode.
-          items:
-            $ref: '#/components/schemas/EnvironmentModeEnum'
-          type: array
-      type: object
-    OrganizationWebhookResponse_allOf:
-      properties:
-        kind:
-          $ref: '#/components/schemas/OrganizationWebhookKindEnum'
-        target_url:
-          description: |
-            Set the public HTTP or HTTPS endpoint that will receive the specified events.
-            The target URL must starts with `http://` or `https://`
-          type: string
-        target_secret_set:
-          type: boolean
-        description:
-          type: string
-        enabled:
-          description: Turn on or off your endpoint.
-          type: boolean
-        events:
-          items:
-            $ref: '#/components/schemas/OrganizationWebhookEventEnum'
-          type: array
-        project_id_filter:
-          items:
-            description: |
-              Specify the project IDs you want to filter to.
-              This webhook will be triggered only if the event is coming from the specified Project IDs.
+            description: "Specify the project names you want to filter to. \nThis\
+              \ webhook will be triggered only if the event is coming from the specified\
+              \ Project IDs.\nNotes:\n  1. Wildcard is accepted E.g. `product*`.\n\
+              \  2. Name is case insensitive.\n"
             type: string
           type: array
         environment_types_filter:

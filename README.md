@@ -697,7 +697,6 @@ Class | Method | HTTP request | Description
  - [OrganizationWebhookEventEnum](docs/OrganizationWebhookEventEnum.md)
  - [OrganizationWebhookKindEnum](docs/OrganizationWebhookKindEnum.md)
  - [OrganizationWebhookResponse](docs/OrganizationWebhookResponse.md)
- - [OrganizationWebhookResponseAllOf](docs/OrganizationWebhookResponseAllOf.md)
  - [OrganizationWebhookResponseList](docs/OrganizationWebhookResponseList.md)
  - [OverriddenSecret](docs/OverriddenSecret.md)
  - [PaginationData](docs/PaginationData.md)
