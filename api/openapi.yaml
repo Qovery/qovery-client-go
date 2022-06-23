@@ -13206,6 +13206,14 @@ components:
             $ref: '#/components/schemas/CustomDomain'
           type: array
       type: object
+    CustomDomainStatusEnum:
+      enum:
+      - deploying
+      - checking
+      - ready
+      - error
+      example: deploying
+      type: string
     Database:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -17005,12 +17013,7 @@ components:
             provider using that URL
           type: string
         status:
-          enum:
-          - deploying
-          - checking
-          - ready
-          - error
-          type: string
+          $ref: '#/components/schemas/CustomDomainStatusEnum'
       type: object
     Database_allOf:
       properties:

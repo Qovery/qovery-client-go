@@ -530,6 +530,7 @@ Class | Method | HTTP request | Description
  - [CustomDomainAllOf](docs/CustomDomainAllOf.md)
  - [CustomDomainRequest](docs/CustomDomainRequest.md)
  - [CustomDomainResponseList](docs/CustomDomainResponseList.md)
+ - [CustomDomainStatusEnum](docs/CustomDomainStatusEnum.md)
  - [Database](docs/Database.md)
  - [DatabaseAccessibilityEnum](docs/DatabaseAccessibilityEnum.md)
  - [DatabaseAllOf](docs/DatabaseAllOf.md)

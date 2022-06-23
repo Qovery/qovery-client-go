@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Domain** | **string** | your custom domain | 
 **ValidationDomain** | Pointer to **string** | URL provided by Qovery. You must create a CNAME on your DNS provider using that URL | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
+**Status** | Pointer to [**CustomDomainStatusEnum**](CustomDomainStatusEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -142,20 +142,20 @@ HasValidationDomain returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *CustomDomain) GetStatus() string`
+`func (o *CustomDomain) GetStatus() CustomDomainStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *CustomDomain) GetStatusOk() (*string, bool)`
+`func (o *CustomDomain) GetStatusOk() (*CustomDomainStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *CustomDomain) SetStatus(v string)`
+`func (o *CustomDomain) SetStatus(v CustomDomainStatusEnum)`
 
 SetStatus sets Status field to given value.
 

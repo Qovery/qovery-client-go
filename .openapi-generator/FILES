@@ -228,6 +228,7 @@ docs/CustomDomainAllOf.md
 docs/CustomDomainApi.md
 docs/CustomDomainRequest.md
 docs/CustomDomainResponseList.md
+docs/CustomDomainStatusEnum.md
 docs/Database.md
 docs/DatabaseAccessibilityEnum.md
 docs/DatabaseActionsApi.md
@@ -615,6 +616,7 @@ model_custom_domain.go
 model_custom_domain_all_of.go
 model_custom_domain_request.go
 model_custom_domain_response_list.go
+model_custom_domain_status_enum.go
 model_database.go
 model_database_accessibility_enum.go
 model_database_all_of.go

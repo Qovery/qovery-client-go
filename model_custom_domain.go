@@ -24,8 +24,8 @@ type CustomDomain struct {
 	// your custom domain
 	Domain string `json:"domain"`
 	// URL provided by Qovery. You must create a CNAME on your DNS provider using that URL
-	ValidationDomain *string `json:"validation_domain,omitempty"`
-	Status           *string `json:"status,omitempty"`
+	ValidationDomain *string                 `json:"validation_domain,omitempty"`
+	Status           *CustomDomainStatusEnum `json:"status,omitempty"`
 }
 
 // NewCustomDomain instantiates a new CustomDomain object
@@ -185,9 +185,9 @@ func (o *CustomDomain) SetValidationDomain(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *CustomDomain) GetStatus() string {
+func (o *CustomDomain) GetStatus() CustomDomainStatusEnum {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret CustomDomainStatusEnum
 		return ret
 	}
 	return *o.Status
@@ -195,7 +195,7 @@ func (o *CustomDomain) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomDomain) GetStatusOk() (*string, bool) {
+func (o *CustomDomain) GetStatusOk() (*CustomDomainStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -211,8 +211,8 @@ func (o *CustomDomain) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *CustomDomain) SetStatus(v string) {
+// SetStatus gets a reference to the given CustomDomainStatusEnum and assigns it to the Status field.
+func (o *CustomDomain) SetStatus(v CustomDomainStatusEnum) {
 	o.Status = &v
 }
 
