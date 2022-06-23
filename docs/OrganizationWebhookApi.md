@@ -34,7 +34,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest("STANDARD", "TargetUrl_example", []string{"Events_example"}) // OrganizationWebhookCreateRequest |  (optional)
+    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -174,7 +174,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest("STANDARD", "TargetUrl_example", []string{"Events_example"}) // OrganizationWebhookCreateRequest |  (optional)
+    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

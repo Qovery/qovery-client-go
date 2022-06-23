@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | **string** | Define the type of the webhook. &#x60;SLACK&#x60; is a special webhook type to push notifications directly to slack. The &#x60;target_url&#x60; must be a Slack compatible endpoint. | 
+**Kind** | [**OrganizationWebhookKindEnum**](OrganizationWebhookKindEnum.md) |  | 
 **TargetUrl** | **string** | Set the public HTTP or HTTPS endpoint that will receive the specified events. The target URL must starts with &#x60;http://&#x60; or &#x60;https://&#x60;  | 
 **TargetSecret** | Pointer to **string** | Make sure you receive a payload to sign the Qovery request with your secret. Qovery will add a HTTP header &#x60;Qovery-Signature: &lt;Your Secret&gt;&#x60; to every webhook requests sent to your target URL.  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** | Turn on or off your endpoint. | [optional] 
-**Events** | **[]string** |  | 
+**Events** | [**[]OrganizationWebhookEventEnum**](OrganizationWebhookEventEnum.md) |  | 
 **ProjectIdFilter** | Pointer to **[]string** |  | [optional] 
-**EnvironmentTypesFilter** | Pointer to [**[]EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
+**EnvironmentTypesFilter** | Pointer to [**[]EnvironmentModeEnum**](EnvironmentModeEnum.md) | Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.  | [optional] 
 
 ## Methods
 
 ### NewOrganizationWebhookCreateRequest
 
-`func NewOrganizationWebhookCreateRequest(kind string, targetUrl string, events []string, ) *OrganizationWebhookCreateRequest`
+`func NewOrganizationWebhookCreateRequest(kind OrganizationWebhookKindEnum, targetUrl string, events []OrganizationWebhookEventEnum, ) *OrganizationWebhookCreateRequest`
 
 NewOrganizationWebhookCreateRequest instantiates a new OrganizationWebhookCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetKind
 
-`func (o *OrganizationWebhookCreateRequest) GetKind() string`
+`func (o *OrganizationWebhookCreateRequest) GetKind() OrganizationWebhookKindEnum`
 
 GetKind returns the Kind field if non-nil, zero value otherwise.
 
 ### GetKindOk
 
-`func (o *OrganizationWebhookCreateRequest) GetKindOk() (*string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetKindOk() (*OrganizationWebhookKindEnum, bool)`
 
 GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKind
 
-`func (o *OrganizationWebhookCreateRequest) SetKind(v string)`
+`func (o *OrganizationWebhookCreateRequest) SetKind(v OrganizationWebhookKindEnum)`
 
 SetKind sets Kind field to given value.
 
@@ -149,20 +149,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetEvents
 
-`func (o *OrganizationWebhookCreateRequest) GetEvents() []string`
+`func (o *OrganizationWebhookCreateRequest) GetEvents() []OrganizationWebhookEventEnum`
 
 GetEvents returns the Events field if non-nil, zero value otherwise.
 
 ### GetEventsOk
 
-`func (o *OrganizationWebhookCreateRequest) GetEventsOk() (*[]string, bool)`
+`func (o *OrganizationWebhookCreateRequest) GetEventsOk() (*[]OrganizationWebhookEventEnum, bool)`
 
 GetEventsOk returns a tuple with the Events field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvents
 
-`func (o *OrganizationWebhookCreateRequest) SetEvents(v []string)`
+`func (o *OrganizationWebhookCreateRequest) SetEvents(v []OrganizationWebhookEventEnum)`
 
 SetEvents sets Events field to given value.
 

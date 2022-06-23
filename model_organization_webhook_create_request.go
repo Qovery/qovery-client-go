@@ -17,17 +17,17 @@ import (
 
 // OrganizationWebhookCreateRequest struct for OrganizationWebhookCreateRequest
 type OrganizationWebhookCreateRequest struct {
-	// Define the type of the webhook. `SLACK` is a special webhook type to push notifications directly to slack. The `target_url` must be a Slack compatible endpoint.
-	Kind string `json:"kind"`
+	Kind OrganizationWebhookKindEnum `json:"kind"`
 	// Set the public HTTP or HTTPS endpoint that will receive the specified events. The target URL must starts with `http://` or `https://`
 	TargetUrl string `json:"target_url"`
 	// Make sure you receive a payload to sign the Qovery request with your secret. Qovery will add a HTTP header `Qovery-Signature: <Your Secret>` to every webhook requests sent to your target URL.
 	TargetSecret *string `json:"target_secret,omitempty"`
 	Description  *string `json:"description,omitempty"`
 	// Turn on or off your endpoint.
-	Enabled                *bool                 `json:"enabled,omitempty"`
-	Events                 []string              `json:"events"`
-	ProjectIdFilter        []string              `json:"project_id_filter,omitempty"`
+	Enabled         *bool                          `json:"enabled,omitempty"`
+	Events          []OrganizationWebhookEventEnum `json:"events"`
+	ProjectIdFilter []string                       `json:"project_id_filter,omitempty"`
+	// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
 }
 
@@ -35,7 +35,7 @@ type OrganizationWebhookCreateRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationWebhookCreateRequest(kind string, targetUrl string, events []string) *OrganizationWebhookCreateRequest {
+func NewOrganizationWebhookCreateRequest(kind OrganizationWebhookKindEnum, targetUrl string, events []OrganizationWebhookEventEnum) *OrganizationWebhookCreateRequest {
 	this := OrganizationWebhookCreateRequest{}
 	this.Kind = kind
 	this.TargetUrl = targetUrl
@@ -52,9 +52,9 @@ func NewOrganizationWebhookCreateRequestWithDefaults() *OrganizationWebhookCreat
 }
 
 // GetKind returns the Kind field value
-func (o *OrganizationWebhookCreateRequest) GetKind() string {
+func (o *OrganizationWebhookCreateRequest) GetKind() OrganizationWebhookKindEnum {
 	if o == nil {
-		var ret string
+		var ret OrganizationWebhookKindEnum
 		return ret
 	}
 
@@ -63,7 +63,7 @@ func (o *OrganizationWebhookCreateRequest) GetKind() string {
 
 // GetKindOk returns a tuple with the Kind field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationWebhookCreateRequest) GetKindOk() (*string, bool) {
+func (o *OrganizationWebhookCreateRequest) GetKindOk() (*OrganizationWebhookKindEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *OrganizationWebhookCreateRequest) GetKindOk() (*string, bool) {
 }
 
 // SetKind sets field value
-func (o *OrganizationWebhookCreateRequest) SetKind(v string) {
+func (o *OrganizationWebhookCreateRequest) SetKind(v OrganizationWebhookKindEnum) {
 	o.Kind = v
 }
 
@@ -196,9 +196,9 @@ func (o *OrganizationWebhookCreateRequest) SetEnabled(v bool) {
 }
 
 // GetEvents returns the Events field value
-func (o *OrganizationWebhookCreateRequest) GetEvents() []string {
+func (o *OrganizationWebhookCreateRequest) GetEvents() []OrganizationWebhookEventEnum {
 	if o == nil {
-		var ret []string
+		var ret []OrganizationWebhookEventEnum
 		return ret
 	}
 
@@ -207,7 +207,7 @@ func (o *OrganizationWebhookCreateRequest) GetEvents() []string {
 
 // GetEventsOk returns a tuple with the Events field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationWebhookCreateRequest) GetEventsOk() ([]string, bool) {
+func (o *OrganizationWebhookCreateRequest) GetEventsOk() ([]OrganizationWebhookEventEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -215,7 +215,7 @@ func (o *OrganizationWebhookCreateRequest) GetEventsOk() ([]string, bool) {
 }
 
 // SetEvents sets field value
-func (o *OrganizationWebhookCreateRequest) SetEvents(v []string) {
+func (o *OrganizationWebhookCreateRequest) SetEvents(v []OrganizationWebhookEventEnum) {
 	o.Events = v
 }
 

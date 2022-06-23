@@ -18,18 +18,19 @@ import (
 
 // OrganizationWebhookResponse struct for OrganizationWebhookResponse
 type OrganizationWebhookResponse struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	Kind      *Kind      `json:"kind,omitempty"`
+	Id        string                       `json:"id"`
+	CreatedAt time.Time                    `json:"created_at"`
+	UpdatedAt *time.Time                   `json:"updated_at,omitempty"`
+	Kind      *OrganizationWebhookKindEnum `json:"kind,omitempty"`
 	// Set the public HTTP or HTTPS endpoint that will receive the specified events. The target URL must starts with `http://` or `https://`
 	TargetUrl       *string `json:"target_url,omitempty"`
 	TargetSecretSet *bool   `json:"target_secret_set,omitempty"`
 	Description     *string `json:"description,omitempty"`
 	// Turn on or off your endpoint.
-	Enabled                *bool                 `json:"enabled,omitempty"`
-	Events                 []Items               `json:"events,omitempty"`
-	ProjectIdFilter        []string              `json:"project_id_filter,omitempty"`
+	Enabled         *bool                          `json:"enabled,omitempty"`
+	Events          []OrganizationWebhookEventEnum `json:"events,omitempty"`
+	ProjectIdFilter []string                       `json:"project_id_filter,omitempty"`
+	// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
 }
 
@@ -133,9 +134,9 @@ func (o *OrganizationWebhookResponse) SetUpdatedAt(v time.Time) {
 }
 
 // GetKind returns the Kind field value if set, zero value otherwise.
-func (o *OrganizationWebhookResponse) GetKind() Kind {
+func (o *OrganizationWebhookResponse) GetKind() OrganizationWebhookKindEnum {
 	if o == nil || o.Kind == nil {
-		var ret Kind
+		var ret OrganizationWebhookKindEnum
 		return ret
 	}
 	return *o.Kind
@@ -143,7 +144,7 @@ func (o *OrganizationWebhookResponse) GetKind() Kind {
 
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationWebhookResponse) GetKindOk() (*Kind, bool) {
+func (o *OrganizationWebhookResponse) GetKindOk() (*OrganizationWebhookKindEnum, bool) {
 	if o == nil || o.Kind == nil {
 		return nil, false
 	}
@@ -159,8 +160,8 @@ func (o *OrganizationWebhookResponse) HasKind() bool {
 	return false
 }
 
-// SetKind gets a reference to the given Kind and assigns it to the Kind field.
-func (o *OrganizationWebhookResponse) SetKind(v Kind) {
+// SetKind gets a reference to the given OrganizationWebhookKindEnum and assigns it to the Kind field.
+func (o *OrganizationWebhookResponse) SetKind(v OrganizationWebhookKindEnum) {
 	o.Kind = &v
 }
 
@@ -293,9 +294,9 @@ func (o *OrganizationWebhookResponse) SetEnabled(v bool) {
 }
 
 // GetEvents returns the Events field value if set, zero value otherwise.
-func (o *OrganizationWebhookResponse) GetEvents() []Items {
+func (o *OrganizationWebhookResponse) GetEvents() []OrganizationWebhookEventEnum {
 	if o == nil || o.Events == nil {
-		var ret []Items
+		var ret []OrganizationWebhookEventEnum
 		return ret
 	}
 	return o.Events
@@ -303,7 +304,7 @@ func (o *OrganizationWebhookResponse) GetEvents() []Items {
 
 // GetEventsOk returns a tuple with the Events field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationWebhookResponse) GetEventsOk() ([]Items, bool) {
+func (o *OrganizationWebhookResponse) GetEventsOk() ([]OrganizationWebhookEventEnum, bool) {
 	if o == nil || o.Events == nil {
 		return nil, false
 	}
@@ -319,8 +320,8 @@ func (o *OrganizationWebhookResponse) HasEvents() bool {
 	return false
 }
 
-// SetEvents gets a reference to the given []Items and assigns it to the Events field.
-func (o *OrganizationWebhookResponse) SetEvents(v []Items) {
+// SetEvents gets a reference to the given []OrganizationWebhookEventEnum and assigns it to the Events field.
+func (o *OrganizationWebhookResponse) SetEvents(v []OrganizationWebhookEventEnum) {
 	o.Events = v
 }
 

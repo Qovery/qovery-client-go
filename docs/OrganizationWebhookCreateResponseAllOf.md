@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | Pointer to [**Kind**](Kind.md) |  | [optional] 
+**Kind** | Pointer to [**OrganizationWebhookKindEnum**](OrganizationWebhookKindEnum.md) |  | [optional] 
 **TargetUrl** | Pointer to **string** | Set the public HTTP or HTTPS endpoint that will receive the specified events. The target URL must starts with &#x60;http://&#x60; or &#x60;https://&#x60;  | [optional] 
 **TargetSecretSet** | Pointer to **bool** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** | Turn on or off your endpoint. | [optional] 
-**Events** | Pointer to [**[]Items**](Items.md) |  | [optional] 
+**Events** | Pointer to [**[]OrganizationWebhookEventEnum**](OrganizationWebhookEventEnum.md) |  | [optional] 
 **ProjectIdFilter** | Pointer to **[]string** |  | [optional] 
-**EnvironmentTypesFilter** | Pointer to [**[]EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
+**EnvironmentTypesFilter** | Pointer to [**[]EnvironmentModeEnum**](EnvironmentModeEnum.md) | Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.  | [optional] 
 
 ## Methods
 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetKind
 
-`func (o *OrganizationWebhookCreateResponseAllOf) GetKind() Kind`
+`func (o *OrganizationWebhookCreateResponseAllOf) GetKind() OrganizationWebhookKindEnum`
 
 GetKind returns the Kind field if non-nil, zero value otherwise.
 
 ### GetKindOk
 
-`func (o *OrganizationWebhookCreateResponseAllOf) GetKindOk() (*Kind, bool)`
+`func (o *OrganizationWebhookCreateResponseAllOf) GetKindOk() (*OrganizationWebhookKindEnum, bool)`
 
 GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKind
 
-`func (o *OrganizationWebhookCreateResponseAllOf) SetKind(v Kind)`
+`func (o *OrganizationWebhookCreateResponseAllOf) SetKind(v OrganizationWebhookKindEnum)`
 
 SetKind sets Kind field to given value.
 
@@ -159,20 +159,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetEvents
 
-`func (o *OrganizationWebhookCreateResponseAllOf) GetEvents() []Items`
+`func (o *OrganizationWebhookCreateResponseAllOf) GetEvents() []OrganizationWebhookEventEnum`
 
 GetEvents returns the Events field if non-nil, zero value otherwise.
 
 ### GetEventsOk
 
-`func (o *OrganizationWebhookCreateResponseAllOf) GetEventsOk() (*[]Items, bool)`
+`func (o *OrganizationWebhookCreateResponseAllOf) GetEventsOk() (*[]OrganizationWebhookEventEnum, bool)`
 
 GetEventsOk returns a tuple with the Events field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvents
 
-`func (o *OrganizationWebhookCreateResponseAllOf) SetEvents(v []Items)`
+`func (o *OrganizationWebhookCreateResponseAllOf) SetEvents(v []OrganizationWebhookEventEnum)`
 
 SetEvents sets Events field to given value.
 
