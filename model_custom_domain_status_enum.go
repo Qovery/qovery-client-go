@@ -21,18 +21,12 @@ type CustomDomainStatusEnum string
 
 // List of CustomDomainStatusEnum
 const (
-	CUSTOMDOMAINSTATUSENUM_DEPLOYING CustomDomainStatusEnum = "deploying"
-	CUSTOMDOMAINSTATUSENUM_CHECKING  CustomDomainStatusEnum = "checking"
-	CUSTOMDOMAINSTATUSENUM_READY     CustomDomainStatusEnum = "ready"
-	CUSTOMDOMAINSTATUSENUM_ERROR     CustomDomainStatusEnum = "error"
+	CUSTOMDOMAINSTATUSENUM_VALIDATION_PENDING CustomDomainStatusEnum = "VALIDATION_PENDING"
 )
 
 // All allowed values of CustomDomainStatusEnum enum
 var AllowedCustomDomainStatusEnumEnumValues = []CustomDomainStatusEnum{
-	"deploying",
-	"checking",
-	"ready",
-	"error",
+	"VALIDATION_PENDING",
 }
 
 func (v *CustomDomainStatusEnum) UnmarshalJSON(src []byte) error {

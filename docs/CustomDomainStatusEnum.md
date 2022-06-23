@@ -3,13 +3,7 @@
 ## Enum
 
 
-* `DEPLOYING` (value: `"deploying"`)
-
-* `CHECKING` (value: `"checking"`)
-
-* `READY` (value: `"ready"`)
-
-* `ERROR` (value: `"error"`)
+* `VALIDATION_PENDING` (value: `"VALIDATION_PENDING"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

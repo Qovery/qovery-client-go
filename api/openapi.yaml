@@ -13211,11 +13211,8 @@ components:
       type: object
     CustomDomainStatusEnum:
       enum:
-      - deploying
-      - checking
-      - ready
-      - error
-      example: deploying
+      - VALIDATION_PENDING
+      example: VALIDATION_PENDING
       type: string
     Database:
       allOf:
