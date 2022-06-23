@@ -12348,9 +12348,8 @@ components:
           - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             value: value
         ssh_keys:
-          results:
-          - results
-          - results
+        - ssh_keys
+        - ssh_keys
         production: true
         max_running_nodes: 6
         name: name
@@ -12393,7 +12392,11 @@ components:
             one
           type: boolean
         ssh_keys:
-          $ref: '#/components/schemas/Cluster_allOf_ssh_keys'
+          description: Indicate your public ssh_key to remotely connect to your EC2
+            instance.
+          items:
+            type: string
+          type: array
         features:
           $ref: '#/components/schemas/ClusterRequest_features'
       required:
@@ -16526,18 +16529,6 @@ components:
         status:
           $ref: '#/components/schemas/Status'
       type: object
-    Cluster_allOf_ssh_keys:
-      description: Indicate your public ssh_key to remotely connect to your EC2 instance.
-      example:
-        results:
-        - results
-        - results
-      properties:
-        results:
-          items:
-            type: string
-          type: array
-      type: object
     Cluster_allOf:
       properties:
         name:
@@ -16592,7 +16583,11 @@ components:
             one
           type: boolean
         ssh_keys:
-          $ref: '#/components/schemas/Cluster_allOf_ssh_keys'
+          description: Indicate your public ssh_key to remotely connect to your EC2
+            instance.
+          items:
+            type: string
+          type: array
         features:
           items:
             $ref: '#/components/schemas/ClusterFeature'

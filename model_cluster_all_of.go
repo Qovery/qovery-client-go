@@ -40,9 +40,10 @@ type ClusterAllOf struct {
 	Version                    *string    `json:"version,omitempty"`
 	IsDefault                  *bool      `json:"is_default,omitempty"`
 	// specific flag to indicate that this cluster is a production one
-	Production *bool                `json:"production,omitempty"`
-	SshKeys    *ClusterAllOfSshKeys `json:"ssh_keys,omitempty"`
-	Features   []ClusterFeature     `json:"features,omitempty"`
+	Production *bool `json:"production,omitempty"`
+	// Indicate your public ssh_key to remotely connect to your EC2 instance.
+	SshKeys  []string         `json:"ssh_keys,omitempty"`
+	Features []ClusterFeature `json:"features,omitempty"`
 }
 
 // NewClusterAllOf instantiates a new ClusterAllOf object
@@ -598,17 +599,17 @@ func (o *ClusterAllOf) SetProduction(v bool) {
 }
 
 // GetSshKeys returns the SshKeys field value if set, zero value otherwise.
-func (o *ClusterAllOf) GetSshKeys() ClusterAllOfSshKeys {
+func (o *ClusterAllOf) GetSshKeys() []string {
 	if o == nil || o.SshKeys == nil {
-		var ret ClusterAllOfSshKeys
+		var ret []string
 		return ret
 	}
-	return *o.SshKeys
+	return o.SshKeys
 }
 
 // GetSshKeysOk returns a tuple with the SshKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAllOf) GetSshKeysOk() (*ClusterAllOfSshKeys, bool) {
+func (o *ClusterAllOf) GetSshKeysOk() ([]string, bool) {
 	if o == nil || o.SshKeys == nil {
 		return nil, false
 	}
@@ -624,9 +625,9 @@ func (o *ClusterAllOf) HasSshKeys() bool {
 	return false
 }
 
-// SetSshKeys gets a reference to the given ClusterAllOfSshKeys and assigns it to the SshKeys field.
-func (o *ClusterAllOf) SetSshKeys(v ClusterAllOfSshKeys) {
-	o.SshKeys = &v
+// SetSshKeys gets a reference to the given []string and assigns it to the SshKeys field.
+func (o *ClusterAllOf) SetSshKeys(v []string) {
+	o.SshKeys = v
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.

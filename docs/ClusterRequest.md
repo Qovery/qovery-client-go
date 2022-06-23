@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] 
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
-**SshKeys** | Pointer to [**ClusterAllOfSshKeys**](ClusterAllOfSshKeys.md) |  | [optional] 
+**SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**ClusterRequestFeatures**](ClusterRequestFeatures.md) |  | [optional] 
 
 ## Methods
@@ -273,20 +273,20 @@ HasProduction returns a boolean if a field has been set.
 
 ### GetSshKeys
 
-`func (o *ClusterRequest) GetSshKeys() ClusterAllOfSshKeys`
+`func (o *ClusterRequest) GetSshKeys() []string`
 
 GetSshKeys returns the SshKeys field if non-nil, zero value otherwise.
 
 ### GetSshKeysOk
 
-`func (o *ClusterRequest) GetSshKeysOk() (*ClusterAllOfSshKeys, bool)`
+`func (o *ClusterRequest) GetSshKeysOk() (*[]string, bool)`
 
 GetSshKeysOk returns a tuple with the SshKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSshKeys
 
-`func (o *ClusterRequest) SetSshKeys(v ClusterAllOfSshKeys)`
+`func (o *ClusterRequest) SetSshKeys(v []string)`
 
 SetSshKeys sets SshKeys field to given value.
 

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
-**SshKeys** | Pointer to [**ClusterAllOfSshKeys**](ClusterAllOfSshKeys.md) |  | [optional] 
+**SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**[]ClusterFeature**](ClusterFeature.md) |  | [optional] 
 
 ## Methods
@@ -455,20 +455,20 @@ HasProduction returns a boolean if a field has been set.
 
 ### GetSshKeys
 
-`func (o *ClusterAllOf) GetSshKeys() ClusterAllOfSshKeys`
+`func (o *ClusterAllOf) GetSshKeys() []string`
 
 GetSshKeys returns the SshKeys field if non-nil, zero value otherwise.
 
 ### GetSshKeysOk
 
-`func (o *ClusterAllOf) GetSshKeysOk() (*ClusterAllOfSshKeys, bool)`
+`func (o *ClusterAllOf) GetSshKeysOk() (*[]string, bool)`
 
 GetSshKeysOk returns a tuple with the SshKeys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSshKeys
 
-`func (o *ClusterAllOf) SetSshKeys(v ClusterAllOfSshKeys)`
+`func (o *ClusterAllOf) SetSshKeys(v []string)`
 
 SetSshKeys sets SshKeys field to given value.
 

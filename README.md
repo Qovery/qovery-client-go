@@ -458,7 +458,6 @@ Class | Method | HTTP request | Description
  - [CluserCredentials](docs/CluserCredentials.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterAllOf](docs/ClusterAllOf.md)
- - [ClusterAllOfSshKeys](docs/ClusterAllOfSshKeys.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)
  - [ClusterCloudProviderInfoCredentials](docs/ClusterCloudProviderInfoCredentials.md)
  - [ClusterCloudProviderInfoRequest](docs/ClusterCloudProviderInfoRequest.md)
