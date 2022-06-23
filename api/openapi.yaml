@@ -15266,8 +15266,8 @@ components:
           items:
             description: "Specify the project names you want to filter to. \nThis\
               \ webhook will be triggered only if the event is coming from the specified\
-              \ Project IDs.\nNotes:\n  1. Wildcard is accepted E.g. `product*`.\n\
-              \  2. Name is case insensitive.\n"
+              \ Project IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name\
+              \ is case insensitive.\n"
             type: string
           type: array
         environment_types_filter:
@@ -17530,8 +17530,8 @@ components:
           items:
             description: "Specify the project names you want to filter to. \nThis\
               \ webhook will be triggered only if the event is coming from the specified\
-              \ Project IDs.\nNotes:\n  1. Wildcard is accepted E.g. `product*`.\n\
-              \  2. Name is case insensitive.\n"
+              \ Project IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name\
+              \ is case insensitive.\n"
             type: string
           type: array
         environment_types_filter:
