@@ -647,6 +647,8 @@ Class | Method | HTTP request | Description
  - [LinkResponseList](docs/LinkResponseList.md)
  - [ListClusterLogs200Response](docs/ListClusterLogs200Response.md)
  - [ListContainerRegistry200Response](docs/ListContainerRegistry200Response.md)
+ - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
+ - [ListDatabaseDeploymentHistory200ResponseAllOf](docs/ListDatabaseDeploymentHistory200ResponseAllOf.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogPaginatedResponseListAllOf](docs/LogPaginatedResponseListAllOf.md)

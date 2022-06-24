@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ListDatabaseDeploymentHistory
 
-> DeploymentHistoryPaginatedResponseList ListDatabaseDeploymentHistory(ctx, databaseId).Execute()
+> ListDatabaseDeploymentHistory200Response ListDatabaseDeploymentHistory(ctx, databaseId).Execute()
 
 List database deploys
 
@@ -38,7 +38,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseDeploymentHistoryApi.ListDatabaseDeploymentHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListDatabaseDeploymentHistory`: DeploymentHistoryPaginatedResponseList
+    // response from `ListDatabaseDeploymentHistory`: ListDatabaseDeploymentHistory200Response
     fmt.Fprintf(os.Stdout, "Response from `DatabaseDeploymentHistoryApi.ListDatabaseDeploymentHistory`: %v\n", resp)
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeploymentHistoryPaginatedResponseList**](DeploymentHistoryPaginatedResponseList.md)
+[**ListDatabaseDeploymentHistory200Response**](ListDatabaseDeploymentHistory200Response.md)
 
 ### Authorization
 

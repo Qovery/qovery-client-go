@@ -29,7 +29,7 @@ type ApiListDatabaseDeploymentHistoryRequest struct {
 	databaseId string
 }
 
-func (r ApiListDatabaseDeploymentHistoryRequest) Execute() (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
+func (r ApiListDatabaseDeploymentHistoryRequest) Execute() (*ListDatabaseDeploymentHistory200Response, *http.Response, error) {
 	return r.ApiService.ListDatabaseDeploymentHistoryExecute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *DatabaseDeploymentHistoryApiService) ListDatabaseDeploymentHistory(ctx 
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryPaginatedResponseList
-func (a *DatabaseDeploymentHistoryApiService) ListDatabaseDeploymentHistoryExecute(r ApiListDatabaseDeploymentHistoryRequest) (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
+//  @return ListDatabaseDeploymentHistory200Response
+func (a *DatabaseDeploymentHistoryApiService) ListDatabaseDeploymentHistoryExecute(r ApiListDatabaseDeploymentHistoryRequest) (*ListDatabaseDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DeploymentHistoryPaginatedResponseList
+		localVarReturnValue *ListDatabaseDeploymentHistory200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseDeploymentHistoryApiService.ListDatabaseDeploymentHistory")

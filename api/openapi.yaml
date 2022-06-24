@@ -10245,7 +10245,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeploymentHistoryPaginatedResponseList'
+                $ref: '#/components/schemas/listDatabaseDeploymentHistory_200_response'
           description: List deployment history
         "401":
           description: Access token is missing or invalid
@@ -16291,6 +16291,17 @@ components:
             type: string
           type: array
       type: object
+    listDatabaseDeploymentHistory_200_response_allOf:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryDatabase'
+          type: array
+      type: object
+    listDatabaseDeploymentHistory_200_response:
+      allOf:
+      - $ref: '#/components/schemas/PaginationData'
+      - $ref: '#/components/schemas/listDatabaseDeploymentHistory_200_response_allOf'
     Application_allOf:
       properties:
         environment:
