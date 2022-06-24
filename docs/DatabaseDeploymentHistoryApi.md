@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ListDatabaseDeploymentHistory
 
-> ListDatabaseDeploymentHistory200Response ListDatabaseDeploymentHistory(ctx, databaseId).Execute()
+> ListDatabaseDeploymentHistory200Response ListDatabaseDeploymentHistory(ctx, databaseId).StartId(startId).Execute()
 
 List database deploys
 
@@ -30,10 +30,11 @@ import (
 
 func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseDeploymentHistoryApi.ListDatabaseDeploymentHistory(context.Background(), databaseId).Execute()
+    resp, r, err := apiClient.DatabaseDeploymentHistoryApi.ListDatabaseDeploymentHistory(context.Background(), databaseId).StartId(startId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseDeploymentHistoryApi.ListDatabaseDeploymentHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,6 +60,7 @@ Other parameters are passed through a pointer to a apiListDatabaseDeploymentHist
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **startId** | **string** | Starting point after which to return results | 
 
 ### Return type
 

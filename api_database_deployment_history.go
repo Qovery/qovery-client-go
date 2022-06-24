@@ -27,6 +27,13 @@ type ApiListDatabaseDeploymentHistoryRequest struct {
 	ctx        context.Context
 	ApiService *DatabaseDeploymentHistoryApiService
 	databaseId string
+	startId    *string
+}
+
+// Starting point after which to return results
+func (r ApiListDatabaseDeploymentHistoryRequest) StartId(startId string) ApiListDatabaseDeploymentHistoryRequest {
+	r.startId = &startId
+	return r
 }
 
 func (r ApiListDatabaseDeploymentHistoryRequest) Execute() (*ListDatabaseDeploymentHistory200Response, *http.Response, error) {
@@ -72,6 +79,9 @@ func (a *DatabaseDeploymentHistoryApiService) ListDatabaseDeploymentHistoryExecu
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.startId != nil {
+		localVarQueryParams.Add("startId", parameterToString(*r.startId, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

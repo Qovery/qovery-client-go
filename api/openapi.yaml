@@ -10240,6 +10240,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Starting point after which to return results
+        explode: true
+        in: query
+        name: startId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
