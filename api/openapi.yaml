@@ -13212,7 +13212,7 @@ components:
     CustomDomainStatusEnum:
       enum:
       - VALIDATION_PENDING
-      example: deploying
+      example: VALIDATION_PENDING
       type: string
     Database:
       allOf:
@@ -15260,11 +15260,11 @@ components:
             $ref: '#/components/schemas/OrganizationWebhookEventEnum'
           type: array
         project_names_filter:
+          description: "Specify the project names you want to filter to. \nThis webhook\
+            \ will be triggered only if the event is coming from the specified Project\
+            \ IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name is case\
+            \ insensitive.\n"
           items:
-            description: "Specify the project names you want to filter to. \nThis\
-              \ webhook will be triggered only if the event is coming from the specified\
-              \ Project IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name\
-              \ is case insensitive.\n"
             type: string
           type: array
         environment_types_filter:
@@ -17524,11 +17524,11 @@ components:
             $ref: '#/components/schemas/OrganizationWebhookEventEnum'
           type: array
         project_names_filter:
+          description: "Specify the project names you want to filter to. \nThis webhook\
+            \ will be triggered only if the event is coming from the specified Project\
+            \ IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name is case\
+            \ insensitive.\n"
           items:
-            description: "Specify the project names you want to filter to. \nThis\
-              \ webhook will be triggered only if the event is coming from the specified\
-              \ Project IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name\
-              \ is case insensitive.\n"
             type: string
           type: array
         environment_types_filter:

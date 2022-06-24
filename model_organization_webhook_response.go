@@ -27,9 +27,10 @@ type OrganizationWebhookResponse struct {
 	TargetSecretSet *bool   `json:"target_secret_set,omitempty"`
 	Description     *string `json:"description,omitempty"`
 	// Turn on or off your endpoint.
-	Enabled            *bool                          `json:"enabled,omitempty"`
-	Events             []OrganizationWebhookEventEnum `json:"events,omitempty"`
-	ProjectNamesFilter []string                       `json:"project_names_filter,omitempty"`
+	Enabled *bool                          `json:"enabled,omitempty"`
+	Events  []OrganizationWebhookEventEnum `json:"events,omitempty"`
+	// Specify the project names you want to filter to.  This webhook will be triggered only if the event is coming from the specified Project IDs. Notes: 1. Wildcard is accepted E.g. `product*`. 2. Name is case insensitive.
+	ProjectNamesFilter []string `json:"project_names_filter,omitempty"`
 	// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
 }

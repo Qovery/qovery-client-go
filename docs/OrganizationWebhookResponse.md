@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** | Turn on or off your endpoint. | [optional] 
 **Events** | Pointer to [**[]OrganizationWebhookEventEnum**](OrganizationWebhookEventEnum.md) |  | [optional] 
-**ProjectNamesFilter** | Pointer to **[]string** |  | [optional] 
+**ProjectNamesFilter** | Pointer to **[]string** | Specify the project names you want to filter to.  This webhook will be triggered only if the event is coming from the specified Project IDs. Notes: 1. Wildcard is accepted E.g. &#x60;product*&#x60;. 2. Name is case insensitive.  | [optional] 
 **EnvironmentTypesFilter** | Pointer to [**[]EnvironmentModeEnum**](EnvironmentModeEnum.md) | Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.  | [optional] 
 
 ## Methods
