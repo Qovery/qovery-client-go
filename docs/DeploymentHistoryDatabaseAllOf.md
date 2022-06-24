@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
+**Name** | Pointer to **string** | name of the service | [optional] 
+**Status** | Pointer to [**DeploymentHistoryStatusEnum**](DeploymentHistoryStatusEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *DeploymentHistoryDatabaseAllOf) GetStatus() StateEnum`
+`func (o *DeploymentHistoryDatabaseAllOf) GetStatus() DeploymentHistoryStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *DeploymentHistoryDatabaseAllOf) GetStatusOk() (*StateEnum, bool)`
+`func (o *DeploymentHistoryDatabaseAllOf) GetStatusOk() (*DeploymentHistoryStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *DeploymentHistoryDatabaseAllOf) SetStatus(v StateEnum)`
+`func (o *DeploymentHistoryDatabaseAllOf) SetStatus(v DeploymentHistoryStatusEnum)`
 
 SetStatus sets Status field to given value.
 

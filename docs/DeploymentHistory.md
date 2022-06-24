@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**Name** | Pointer to **string** | name of the service | [optional] 
 **Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
 **Status** | Pointer to [**DeploymentHistoryStatusEnum**](DeploymentHistoryStatusEnum.md) |  | [optional] 
 
@@ -93,6 +94,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *DeploymentHistory) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *DeploymentHistory) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *DeploymentHistory) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *DeploymentHistory) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *DeploymentHistory) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetCommit
 

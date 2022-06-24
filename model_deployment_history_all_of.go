@@ -17,6 +17,8 @@ import (
 
 // DeploymentHistoryAllOf struct for DeploymentHistoryAllOf
 type DeploymentHistoryAllOf struct {
+	// name of the service
+	Name   *string                      `json:"name,omitempty"`
 	Commit *Commit                      `json:"commit,omitempty"`
 	Status *DeploymentHistoryStatusEnum `json:"status,omitempty"`
 }
@@ -36,6 +38,38 @@ func NewDeploymentHistoryAllOf() *DeploymentHistoryAllOf {
 func NewDeploymentHistoryAllOfWithDefaults() *DeploymentHistoryAllOf {
 	this := DeploymentHistoryAllOf{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *DeploymentHistoryAllOf) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryAllOf) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *DeploymentHistoryAllOf) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *DeploymentHistoryAllOf) SetName(v string) {
+	o.Name = &v
 }
 
 // GetCommit returns the Commit field value if set, zero value otherwise.
@@ -104,6 +138,9 @@ func (o *DeploymentHistoryAllOf) SetStatus(v DeploymentHistoryStatusEnum) {
 
 func (o DeploymentHistoryAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
 	if o.Commit != nil {
 		toSerialize["commit"] = o.Commit
 	}

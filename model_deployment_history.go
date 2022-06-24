@@ -18,11 +18,13 @@ import (
 
 // DeploymentHistory struct for DeploymentHistory
 type DeploymentHistory struct {
-	Id        string                       `json:"id"`
-	CreatedAt time.Time                    `json:"created_at"`
-	UpdatedAt *time.Time                   `json:"updated_at,omitempty"`
-	Commit    *Commit                      `json:"commit,omitempty"`
-	Status    *DeploymentHistoryStatusEnum `json:"status,omitempty"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	// name of the service
+	Name   *string                      `json:"name,omitempty"`
+	Commit *Commit                      `json:"commit,omitempty"`
+	Status *DeploymentHistoryStatusEnum `json:"status,omitempty"`
 }
 
 // NewDeploymentHistory instantiates a new DeploymentHistory object
@@ -124,6 +126,38 @@ func (o *DeploymentHistory) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *DeploymentHistory) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistory) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *DeploymentHistory) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *DeploymentHistory) SetName(v string) {
+	o.Name = &v
+}
+
 // GetCommit returns the Commit field value if set, zero value otherwise.
 func (o *DeploymentHistory) GetCommit() Commit {
 	if o == nil || o.Commit == nil {
@@ -198,6 +232,9 @@ func (o DeploymentHistory) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.Commit != nil {
 		toSerialize["commit"] = o.Commit

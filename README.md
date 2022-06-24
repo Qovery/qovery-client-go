@@ -277,6 +277,7 @@ Class | Method | HTTP request | Description
 *DatabaseApplicationApi* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationApi.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
 *DatabaseContainerApi* | [**ListDatabaseContainer**](docs/DatabaseContainerApi.md#listdatabasecontainer) | **Get** /database/{databaseId}/container | List container using the database
 *DatabaseContainerApi* | [**RemoveContainerFromDatabase**](docs/DatabaseContainerApi.md#removecontainerfromdatabase) | **Delete** /database/{databaseId}/container/{targetContainerId} | Remove an container from this database 
+*DatabaseDeploymentHistoryApi* | [**ListDatabaseDeploymentHistory**](docs/DatabaseDeploymentHistoryApi.md#listdatabasedeploymenthistory) | **Get** /database/{databaseId}/deploymentHistory | List database deploys
 *DatabaseEventApi* | [**ListDatabaseEvent**](docs/DatabaseEventApi.md#listdatabaseevent) | **Get** /database/{databaseId}/event | List database  events
 *DatabaseMainCallsApi* | [**DeleteDatabase**](docs/DatabaseMainCallsApi.md#deletedatabase) | **Delete** /database/{databaseId} | Delete a database 
 *DatabaseMainCallsApi* | [**EditDatabase**](docs/DatabaseMainCallsApi.md#editdatabase) | **Put** /database/{databaseId} | Edit a database 

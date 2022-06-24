@@ -58,6 +58,7 @@ tags:
 - name: Database Actions
 - name: Database Application
 - name: Database Container
+- name: Database Deployment History
 - name: Database Event
 - name: Database Main Calls
 - name: Database Metrics
@@ -10225,6 +10226,36 @@ paths:
       summary: 'Deploy database '
       tags:
       - Database Actions
+  /database/{databaseId}/deploymentHistory:
+    get:
+      description: By default it returns the 20 last results. The response is paginated.
+      operationId: listDatabaseDeploymentHistory
+      parameters:
+      - description: Database ID
+        explode: false
+        in: path
+        name: databaseId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryPaginatedResponseList'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List database deploys
+      tags:
+      - Database Deployment History
   /database/{databaseId}/currentMetric:
     get:
       operationId: getDatabaseCurrentMetric
@@ -17086,6 +17117,9 @@ components:
       type: object
     DeploymentHistory_allOf:
       properties:
+        name:
+          description: name of the service
+          type: string
         commit:
           $ref: '#/components/schemas/Commit'
         status:
@@ -17103,9 +17137,10 @@ components:
     DeploymentHistoryDatabase_allOf:
       properties:
         name:
+          description: name of the service
           type: string
         status:
-          $ref: '#/components/schemas/StateEnum'
+          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
       type: object
     DeploymentHistoryEnvironment_allOf:
       properties:
@@ -17733,6 +17768,7 @@ x-tagGroups:
   - Database Actions
   - Database Metrics
   - Database Applications
+  - Database Deployment History
   - Database Containers
   - Logical Database
   - Database Application
