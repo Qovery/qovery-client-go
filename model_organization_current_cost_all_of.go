@@ -17,8 +17,7 @@ import (
 
 // OrganizationCurrentCostAllOf struct for OrganizationCurrentCostAllOf
 type OrganizationCurrentCostAllOf struct {
-	PaidUsage      *PaidUsage      `json:"paid_usage,omitempty"`
-	CommunityUsage *CommunityUsage `json:"community_usage,omitempty"`
+	PaidUsage *PaidUsage `json:"paid_usage,omitempty"`
 }
 
 // NewOrganizationCurrentCostAllOf instantiates a new OrganizationCurrentCostAllOf object
@@ -70,45 +69,10 @@ func (o *OrganizationCurrentCostAllOf) SetPaidUsage(v PaidUsage) {
 	o.PaidUsage = &v
 }
 
-// GetCommunityUsage returns the CommunityUsage field value if set, zero value otherwise.
-func (o *OrganizationCurrentCostAllOf) GetCommunityUsage() CommunityUsage {
-	if o == nil || o.CommunityUsage == nil {
-		var ret CommunityUsage
-		return ret
-	}
-	return *o.CommunityUsage
-}
-
-// GetCommunityUsageOk returns a tuple with the CommunityUsage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCostAllOf) GetCommunityUsageOk() (*CommunityUsage, bool) {
-	if o == nil || o.CommunityUsage == nil {
-		return nil, false
-	}
-	return o.CommunityUsage, true
-}
-
-// HasCommunityUsage returns a boolean if a field has been set.
-func (o *OrganizationCurrentCostAllOf) HasCommunityUsage() bool {
-	if o != nil && o.CommunityUsage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCommunityUsage gets a reference to the given CommunityUsage and assigns it to the CommunityUsage field.
-func (o *OrganizationCurrentCostAllOf) SetCommunityUsage(v CommunityUsage) {
-	o.CommunityUsage = &v
-}
-
 func (o OrganizationCurrentCostAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.PaidUsage != nil {
 		toSerialize["paid_usage"] = o.PaidUsage
-	}
-	if o.CommunityUsage != nil {
-		toSerialize["community_usage"] = o.CommunityUsage
 	}
 	return json.Marshal(toSerialize)
 }

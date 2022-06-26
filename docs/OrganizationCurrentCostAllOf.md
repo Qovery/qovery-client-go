@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PaidUsage** | Pointer to [**PaidUsage**](PaidUsage.md) |  | [optional] 
-**CommunityUsage** | Pointer to [**CommunityUsage**](CommunityUsage.md) |  | [optional] 
 
 ## Methods
 
@@ -50,31 +49,6 @@ SetPaidUsage sets PaidUsage field to given value.
 `func (o *OrganizationCurrentCostAllOf) HasPaidUsage() bool`
 
 HasPaidUsage returns a boolean if a field has been set.
-
-### GetCommunityUsage
-
-`func (o *OrganizationCurrentCostAllOf) GetCommunityUsage() CommunityUsage`
-
-GetCommunityUsage returns the CommunityUsage field if non-nil, zero value otherwise.
-
-### GetCommunityUsageOk
-
-`func (o *OrganizationCurrentCostAllOf) GetCommunityUsageOk() (*CommunityUsage, bool)`
-
-GetCommunityUsageOk returns a tuple with the CommunityUsage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCommunityUsage
-
-`func (o *OrganizationCurrentCostAllOf) SetCommunityUsage(v CommunityUsage)`
-
-SetCommunityUsage sets CommunityUsage field to given value.
-
-### HasCommunityUsage
-
-`func (o *OrganizationCurrentCostAllOf) HasCommunityUsage() bool`
-
-HasCommunityUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

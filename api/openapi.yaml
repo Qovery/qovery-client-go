@@ -15393,11 +15393,10 @@ components:
       type: object
     PlanEnum:
       enum:
-      - BUSINESS
-      - COMMUNITY
-      - ENTERPRISE
       - FREE
       - PROFESSIONAL
+      - BUSINESS
+      - ENTERPRISE
       type: string
     PortProtocolEnum:
       default: HTTP
@@ -17555,8 +17554,6 @@ components:
       properties:
         paid_usage:
           $ref: '#/components/schemas/PaidUsage'
-        community_usage:
-          $ref: '#/components/schemas/CommunityUsage'
       type: object
     OrganizationWebhookCreateResponse_allOf:
       properties:
