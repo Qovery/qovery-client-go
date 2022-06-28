@@ -17,10 +17,11 @@ import (
 
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
-	ClusterId       *string    `json:"cluster_id,omitempty"`
-	Status          *StateEnum `json:"status,omitempty"`
-	IsDeployed      *bool      `json:"is_deployed,omitempty"`
-	LastExecutionId *string    `json:"last_execution_id,omitempty"`
+	ClusterId  *string    `json:"cluster_id,omitempty"`
+	Status     *StateEnum `json:"status,omitempty"`
+	IsDeployed *bool      `json:"is_deployed,omitempty"`
+	// Only set for /organization/{organizationId}/cluster/status
+	LastExecutionId *string `json:"last_execution_id,omitempty"`
 }
 
 // NewClusterStatus instantiates a new ClusterStatus object

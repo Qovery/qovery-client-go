@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ClusterId** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **IsDeployed** | Pointer to **bool** |  | [optional] 
-**LastExecutionId** | Pointer to **string** |  | [optional] 
+**LastExecutionId** | Pointer to **string** | Only set for /organization/{organizationId}/cluster/status | [optional] 
 
 ## Methods
 

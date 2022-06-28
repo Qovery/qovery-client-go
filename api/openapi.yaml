@@ -12504,6 +12504,7 @@ components:
         is_deployed:
           type: boolean
         last_execution_id:
+          description: "Only set for /organization/{organizationId}/cluster/status"
           example: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           type: string
       type: object
