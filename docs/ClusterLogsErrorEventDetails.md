@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **ProviderKind** | Pointer to **string** | cloud provider used | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **Transmitter** | Pointer to [**ClusterLogsErrorEventDetailsTransmitter**](ClusterLogsErrorEventDetailsTransmitter.md) |  | [optional] 
-**UnderlyingError** | Pointer to [**ClusterLogsErrorEventDetailsUnderlyingError**](ClusterLogsErrorEventDetailsUnderlyingError.md) |  | [optional] 
 
 ## Methods
 
@@ -102,31 +101,6 @@ SetTransmitter sets Transmitter field to given value.
 `func (o *ClusterLogsErrorEventDetails) HasTransmitter() bool`
 
 HasTransmitter returns a boolean if a field has been set.
-
-### GetUnderlyingError
-
-`func (o *ClusterLogsErrorEventDetails) GetUnderlyingError() ClusterLogsErrorEventDetailsUnderlyingError`
-
-GetUnderlyingError returns the UnderlyingError field if non-nil, zero value otherwise.
-
-### GetUnderlyingErrorOk
-
-`func (o *ClusterLogsErrorEventDetails) GetUnderlyingErrorOk() (*ClusterLogsErrorEventDetailsUnderlyingError, bool)`
-
-GetUnderlyingErrorOk returns a tuple with the UnderlyingError field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUnderlyingError
-
-`func (o *ClusterLogsErrorEventDetails) SetUnderlyingError(v ClusterLogsErrorEventDetailsUnderlyingError)`
-
-SetUnderlyingError sets UnderlyingError field to given value.
-
-### HasUnderlyingError
-
-`func (o *ClusterLogsErrorEventDetails) HasUnderlyingError() bool`
-
-HasUnderlyingError returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

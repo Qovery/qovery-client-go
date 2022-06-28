@@ -1,4 +1,4 @@
-# ClusterLogsErrorEventDetailsUnderlyingError
+# ClusterLogsErrorUnderlyingError
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewClusterLogsErrorEventDetailsUnderlyingError
+### NewClusterLogsErrorUnderlyingError
 
-`func NewClusterLogsErrorEventDetailsUnderlyingError() *ClusterLogsErrorEventDetailsUnderlyingError`
+`func NewClusterLogsErrorUnderlyingError() *ClusterLogsErrorUnderlyingError`
 
-NewClusterLogsErrorEventDetailsUnderlyingError instantiates a new ClusterLogsErrorEventDetailsUnderlyingError object
+NewClusterLogsErrorUnderlyingError instantiates a new ClusterLogsErrorUnderlyingError object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewClusterLogsErrorEventDetailsUnderlyingErrorWithDefaults
+### NewClusterLogsErrorUnderlyingErrorWithDefaults
 
-`func NewClusterLogsErrorEventDetailsUnderlyingErrorWithDefaults() *ClusterLogsErrorEventDetailsUnderlyingError`
+`func NewClusterLogsErrorUnderlyingErrorWithDefaults() *ClusterLogsErrorUnderlyingError`
 
-NewClusterLogsErrorEventDetailsUnderlyingErrorWithDefaults instantiates a new ClusterLogsErrorEventDetailsUnderlyingError object
+NewClusterLogsErrorUnderlyingErrorWithDefaults instantiates a new ClusterLogsErrorUnderlyingError object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetMessage
 
-`func (o *ClusterLogsErrorEventDetailsUnderlyingError) GetMessage() string`
+`func (o *ClusterLogsErrorUnderlyingError) GetMessage() string`
 
 GetMessage returns the Message field if non-nil, zero value otherwise.
 
 ### GetMessageOk
 
-`func (o *ClusterLogsErrorEventDetailsUnderlyingError) GetMessageOk() (*string, bool)`
+`func (o *ClusterLogsErrorUnderlyingError) GetMessageOk() (*string, bool)`
 
 GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMessage
 
-`func (o *ClusterLogsErrorEventDetailsUnderlyingError) SetMessage(v string)`
+`func (o *ClusterLogsErrorUnderlyingError) SetMessage(v string)`
 
 SetMessage sets Message field to given value.
 
 ### HasMessage
 
-`func (o *ClusterLogsErrorEventDetailsUnderlyingError) HasMessage() bool`
+`func (o *ClusterLogsErrorUnderlyingError) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
 

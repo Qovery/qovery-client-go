@@ -156,7 +156,7 @@ docs/ClusterLogsDetails.md
 docs/ClusterLogsError.md
 docs/ClusterLogsErrorEventDetails.md
 docs/ClusterLogsErrorEventDetailsTransmitter.md
-docs/ClusterLogsErrorEventDetailsUnderlyingError.md
+docs/ClusterLogsErrorUnderlyingError.md
 docs/ClusterLogsMessage.md
 docs/ClusterReadinessStatus.md
 docs/ClusterRegion.md
@@ -564,7 +564,7 @@ model_cluster_logs_details.go
 model_cluster_logs_error.go
 model_cluster_logs_error_event_details.go
 model_cluster_logs_error_event_details_transmitter.go
-model_cluster_logs_error_event_details_underlying_error.go
+model_cluster_logs_error_underlying_error.go
 model_cluster_logs_message.go
 model_cluster_readiness_status.go
 model_cluster_region.go

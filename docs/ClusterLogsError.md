@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Link** | Pointer to **string** | link to our documentation | [optional] 
 **HintMessage** | Pointer to **string** | hint the user can follow | [optional] 
 **EventDetails** | Pointer to [**ClusterLogsErrorEventDetails**](ClusterLogsErrorEventDetails.md) |  | [optional] 
+**UnderlyingError** | Pointer to [**ClusterLogsErrorUnderlyingError**](ClusterLogsErrorUnderlyingError.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetEventDetails sets EventDetails field to given value.
 `func (o *ClusterLogsError) HasEventDetails() bool`
 
 HasEventDetails returns a boolean if a field has been set.
+
+### GetUnderlyingError
+
+`func (o *ClusterLogsError) GetUnderlyingError() ClusterLogsErrorUnderlyingError`
+
+GetUnderlyingError returns the UnderlyingError field if non-nil, zero value otherwise.
+
+### GetUnderlyingErrorOk
+
+`func (o *ClusterLogsError) GetUnderlyingErrorOk() (*ClusterLogsErrorUnderlyingError, bool)`
+
+GetUnderlyingErrorOk returns a tuple with the UnderlyingError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnderlyingError
+
+`func (o *ClusterLogsError) SetUnderlyingError(v ClusterLogsErrorUnderlyingError)`
+
+SetUnderlyingError sets UnderlyingError field to given value.
+
+### HasUnderlyingError
+
+`func (o *ClusterLogsError) HasUnderlyingError() bool`
+
+HasUnderlyingError returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,8 +24,9 @@ type ClusterLogsError struct {
 	// link to our documentation
 	Link *string `json:"link,omitempty"`
 	// hint the user can follow
-	HintMessage  *string                       `json:"hint_message,omitempty"`
-	EventDetails *ClusterLogsErrorEventDetails `json:"event_details,omitempty"`
+	HintMessage     *string                          `json:"hint_message,omitempty"`
+	EventDetails    *ClusterLogsErrorEventDetails    `json:"event_details,omitempty"`
+	UnderlyingError *ClusterLogsErrorUnderlyingError `json:"underlying_error,omitempty"`
 }
 
 // NewClusterLogsError instantiates a new ClusterLogsError object
@@ -205,6 +206,38 @@ func (o *ClusterLogsError) SetEventDetails(v ClusterLogsErrorEventDetails) {
 	o.EventDetails = &v
 }
 
+// GetUnderlyingError returns the UnderlyingError field value if set, zero value otherwise.
+func (o *ClusterLogsError) GetUnderlyingError() ClusterLogsErrorUnderlyingError {
+	if o == nil || o.UnderlyingError == nil {
+		var ret ClusterLogsErrorUnderlyingError
+		return ret
+	}
+	return *o.UnderlyingError
+}
+
+// GetUnderlyingErrorOk returns a tuple with the UnderlyingError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterLogsError) GetUnderlyingErrorOk() (*ClusterLogsErrorUnderlyingError, bool) {
+	if o == nil || o.UnderlyingError == nil {
+		return nil, false
+	}
+	return o.UnderlyingError, true
+}
+
+// HasUnderlyingError returns a boolean if a field has been set.
+func (o *ClusterLogsError) HasUnderlyingError() bool {
+	if o != nil && o.UnderlyingError != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUnderlyingError gets a reference to the given ClusterLogsErrorUnderlyingError and assigns it to the UnderlyingError field.
+func (o *ClusterLogsError) SetUnderlyingError(v ClusterLogsErrorUnderlyingError) {
+	o.UnderlyingError = &v
+}
+
 func (o ClusterLogsError) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tag != nil {
@@ -221,6 +254,9 @@ func (o ClusterLogsError) MarshalJSON() ([]byte, error) {
 	}
 	if o.EventDetails != nil {
 		toSerialize["event_details"] = o.EventDetails
+	}
+	if o.UnderlyingError != nil {
+		toSerialize["underlying_error"] = o.UnderlyingError
 	}
 	return json.Marshal(toSerialize)
 }

@@ -18,10 +18,9 @@ import (
 // ClusterLogsErrorEventDetails struct for ClusterLogsErrorEventDetails
 type ClusterLogsErrorEventDetails struct {
 	// cloud provider used
-	ProviderKind    *string                                      `json:"provider_kind,omitempty"`
-	Region          *string                                      `json:"region,omitempty"`
-	Transmitter     *ClusterLogsErrorEventDetailsTransmitter     `json:"transmitter,omitempty"`
-	UnderlyingError *ClusterLogsErrorEventDetailsUnderlyingError `json:"underlying_error,omitempty"`
+	ProviderKind *string                                  `json:"provider_kind,omitempty"`
+	Region       *string                                  `json:"region,omitempty"`
+	Transmitter  *ClusterLogsErrorEventDetailsTransmitter `json:"transmitter,omitempty"`
 }
 
 // NewClusterLogsErrorEventDetails instantiates a new ClusterLogsErrorEventDetails object
@@ -137,38 +136,6 @@ func (o *ClusterLogsErrorEventDetails) SetTransmitter(v ClusterLogsErrorEventDet
 	o.Transmitter = &v
 }
 
-// GetUnderlyingError returns the UnderlyingError field value if set, zero value otherwise.
-func (o *ClusterLogsErrorEventDetails) GetUnderlyingError() ClusterLogsErrorEventDetailsUnderlyingError {
-	if o == nil || o.UnderlyingError == nil {
-		var ret ClusterLogsErrorEventDetailsUnderlyingError
-		return ret
-	}
-	return *o.UnderlyingError
-}
-
-// GetUnderlyingErrorOk returns a tuple with the UnderlyingError field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterLogsErrorEventDetails) GetUnderlyingErrorOk() (*ClusterLogsErrorEventDetailsUnderlyingError, bool) {
-	if o == nil || o.UnderlyingError == nil {
-		return nil, false
-	}
-	return o.UnderlyingError, true
-}
-
-// HasUnderlyingError returns a boolean if a field has been set.
-func (o *ClusterLogsErrorEventDetails) HasUnderlyingError() bool {
-	if o != nil && o.UnderlyingError != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUnderlyingError gets a reference to the given ClusterLogsErrorEventDetailsUnderlyingError and assigns it to the UnderlyingError field.
-func (o *ClusterLogsErrorEventDetails) SetUnderlyingError(v ClusterLogsErrorEventDetailsUnderlyingError) {
-	o.UnderlyingError = &v
-}
-
 func (o ClusterLogsErrorEventDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ProviderKind != nil {
@@ -179,9 +146,6 @@ func (o ClusterLogsErrorEventDetails) MarshalJSON() ([]byte, error) {
 	}
 	if o.Transmitter != nil {
 		toSerialize["transmitter"] = o.Transmitter
-	}
-	if o.UnderlyingError != nil {
-		toSerialize["underlying_error"] = o.UnderlyingError
 	}
 	return json.Marshal(toSerialize)
 }

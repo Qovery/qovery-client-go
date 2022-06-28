@@ -12133,11 +12133,11 @@ components:
               name: cluster-name
               id: za6ecdf3f
               type: kubernetes
-            underlying_error:
-              message: message
           tag: CANNOT_UNINSTALL_HELM_CHART
           hint_message: hint_message
           user_log_message: Wasn't able to delete all objects type Cert-Manager
+          underlying_error:
+            message: message
         timestamp: 2022-06-22T14:20:17.733084815Z
       properties:
         type:
@@ -16112,11 +16112,11 @@ components:
                 name: cluster-name
                 id: za6ecdf3f
                 type: kubernetes
-              underlying_error:
-                message: message
             tag: CANNOT_UNINSTALL_HELM_CHART
             hint_message: hint_message
             user_log_message: Wasn't able to delete all objects type Cert-Manager
+            underlying_error:
+              message: message
           timestamp: 2022-06-22T14:20:17.733084815Z
         - step: Create
           details:
@@ -16138,11 +16138,11 @@ components:
                 name: cluster-name
                 id: za6ecdf3f
                 type: kubernetes
-              underlying_error:
-                message: message
             tag: CANNOT_UNINSTALL_HELM_CHART
             hint_message: hint_message
             user_log_message: Wasn't able to delete all objects type Cert-Manager
+            underlying_error:
+              message: message
           timestamp: 2022-06-22T14:20:17.733084815Z
       properties:
         results:
@@ -16676,14 +16676,6 @@ components:
           example: cluster-name
           type: string
       type: object
-    ClusterLogs_error_event_details_underlying_error:
-      example:
-        message: message
-      properties:
-        message:
-          description: technical details about the error
-          type: string
-      type: object
     ClusterLogs_error_event_details:
       example:
         provider_kind: aws
@@ -16692,8 +16684,6 @@ components:
           name: cluster-name
           id: za6ecdf3f
           type: kubernetes
-        underlying_error:
-          message: message
       properties:
         provider_kind:
           description: cloud provider used
@@ -16704,8 +16694,14 @@ components:
           type: string
         transmitter:
           $ref: '#/components/schemas/ClusterLogs_error_event_details_transmitter'
-        underlying_error:
-          $ref: '#/components/schemas/ClusterLogs_error_event_details_underlying_error'
+      type: object
+    ClusterLogs_error_underlying_error:
+      example:
+        message: message
+      properties:
+        message:
+          description: technical details about the error
+          type: string
       type: object
     ClusterLogs_error:
       description: Present only for `error` log
@@ -16718,11 +16714,11 @@ components:
             name: cluster-name
             id: za6ecdf3f
             type: kubernetes
-          underlying_error:
-            message: message
         tag: CANNOT_UNINSTALL_HELM_CHART
         hint_message: hint_message
         user_log_message: Wasn't able to delete all objects type Cert-Manager
+        underlying_error:
+          message: message
       properties:
         tag:
           description: log error tag
@@ -16740,6 +16736,8 @@ components:
           type: string
         event_details:
           $ref: '#/components/schemas/ClusterLogs_error_event_details'
+        underlying_error:
+          $ref: '#/components/schemas/ClusterLogs_error_underlying_error'
       type: object
     ClusterLogs_details:
       description: "Present only for `info`, `warning` and `debug` logs"
