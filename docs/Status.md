@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **State** | [**StateEnum**](StateEnum.md) |  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
 **ServiceDeploymentStatus** | Pointer to [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | [optional] 
+**LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -143,6 +144,31 @@ HasServiceDeploymentStatus returns a boolean if a field has been set.
 `func (o *Status) UnsetServiceDeploymentStatus()`
 
 UnsetServiceDeploymentStatus ensures that no value is present for ServiceDeploymentStatus, not even an explicit nil
+### GetLastDeploymentDate
+
+`func (o *Status) GetLastDeploymentDate() time.Time`
+
+GetLastDeploymentDate returns the LastDeploymentDate field if non-nil, zero value otherwise.
+
+### GetLastDeploymentDateOk
+
+`func (o *Status) GetLastDeploymentDateOk() (*time.Time, bool)`
+
+GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastDeploymentDate
+
+`func (o *Status) SetLastDeploymentDate(v time.Time)`
+
+SetLastDeploymentDate sets LastDeploymentDate field to given value.
+
+### HasLastDeploymentDate
+
+`func (o *Status) HasLastDeploymentDate() bool`
+
+HasLastDeploymentDate returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

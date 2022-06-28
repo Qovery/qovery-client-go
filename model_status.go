@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Status struct for Status
@@ -22,6 +23,7 @@ type Status struct {
 	// message related to the state
 	Message                 NullableString                      `json:"message,omitempty"`
 	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status,omitempty"`
+	LastDeploymentDate      *time.Time                          `json:"last_deployment_date,omitempty"`
 }
 
 // NewStatus instantiates a new Status object
@@ -184,6 +186,38 @@ func (o *Status) UnsetServiceDeploymentStatus() {
 	o.ServiceDeploymentStatus.Unset()
 }
 
+// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
+func (o *Status) GetLastDeploymentDate() time.Time {
+	if o == nil || o.LastDeploymentDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastDeploymentDate
+}
+
+// GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Status) GetLastDeploymentDateOk() (*time.Time, bool) {
+	if o == nil || o.LastDeploymentDate == nil {
+		return nil, false
+	}
+	return o.LastDeploymentDate, true
+}
+
+// HasLastDeploymentDate returns a boolean if a field has been set.
+func (o *Status) HasLastDeploymentDate() bool {
+	if o != nil && o.LastDeploymentDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastDeploymentDate gets a reference to the given time.Time and assigns it to the LastDeploymentDate field.
+func (o *Status) SetLastDeploymentDate(v time.Time) {
+	o.LastDeploymentDate = &v
+}
+
 func (o Status) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -197,6 +231,9 @@ func (o Status) MarshalJSON() ([]byte, error) {
 	}
 	if o.ServiceDeploymentStatus.IsSet() {
 		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus.Get()
+	}
+	if o.LastDeploymentDate != nil {
+		toSerialize["last_deployment_date"] = o.LastDeploymentDate
 	}
 	return json.Marshal(toSerialize)
 }

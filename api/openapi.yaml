@@ -14244,11 +14244,13 @@ components:
     EnvironmentStatusList:
       example:
         results:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
           message: message
           service_deployment_status: null
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
           message: message
           service_deployment_status: null
@@ -15780,6 +15782,7 @@ components:
       type: string
     Status:
       example:
+        last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: null
         message: message
@@ -15796,6 +15799,9 @@ components:
           type: string
         service_deployment_status:
           $ref: '#/components/schemas/ServiceDeploymentStatusEnum'
+        last_deployment_date:
+          format: date-time
+          type: string
       required:
       - state
       type: object

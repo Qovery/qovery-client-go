@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // ReferenceObjectStatus struct for ReferenceObjectStatus
@@ -22,6 +23,7 @@ type ReferenceObjectStatus struct {
 	// message related to the state
 	Message                 NullableString                      `json:"message,omitempty"`
 	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status,omitempty"`
+	LastDeploymentDate      *time.Time                          `json:"last_deployment_date,omitempty"`
 }
 
 // NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
@@ -177,6 +179,38 @@ func (o *ReferenceObjectStatus) UnsetServiceDeploymentStatus() {
 	o.ServiceDeploymentStatus.Unset()
 }
 
+// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
+func (o *ReferenceObjectStatus) GetLastDeploymentDate() time.Time {
+	if o == nil || o.LastDeploymentDate == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastDeploymentDate
+}
+
+// GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReferenceObjectStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
+	if o == nil || o.LastDeploymentDate == nil {
+		return nil, false
+	}
+	return o.LastDeploymentDate, true
+}
+
+// HasLastDeploymentDate returns a boolean if a field has been set.
+func (o *ReferenceObjectStatus) HasLastDeploymentDate() bool {
+	if o != nil && o.LastDeploymentDate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastDeploymentDate gets a reference to the given time.Time and assigns it to the LastDeploymentDate field.
+func (o *ReferenceObjectStatus) SetLastDeploymentDate(v time.Time) {
+	o.LastDeploymentDate = &v
+}
+
 func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -190,6 +224,9 @@ func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	}
 	if o.ServiceDeploymentStatus.IsSet() {
 		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus.Get()
+	}
+	if o.LastDeploymentDate != nil {
+		toSerialize["last_deployment_date"] = o.LastDeploymentDate
 	}
 	return json.Marshal(toSerialize)
 }
