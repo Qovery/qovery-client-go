@@ -17,9 +17,10 @@ import (
 
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
-	ClusterId  *string    `json:"cluster_id,omitempty"`
-	Status     *StateEnum `json:"status,omitempty"`
-	IsDeployed *bool      `json:"is_deployed,omitempty"`
+	ClusterId       *string    `json:"cluster_id,omitempty"`
+	Status          *StateEnum `json:"status,omitempty"`
+	IsDeployed      *bool      `json:"is_deployed,omitempty"`
+	LastExecutionId *string    `json:"last_execution_id,omitempty"`
 }
 
 // NewClusterStatus instantiates a new ClusterStatus object
@@ -135,6 +136,38 @@ func (o *ClusterStatus) SetIsDeployed(v bool) {
 	o.IsDeployed = &v
 }
 
+// GetLastExecutionId returns the LastExecutionId field value if set, zero value otherwise.
+func (o *ClusterStatus) GetLastExecutionId() string {
+	if o == nil || o.LastExecutionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastExecutionId
+}
+
+// GetLastExecutionIdOk returns a tuple with the LastExecutionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterStatus) GetLastExecutionIdOk() (*string, bool) {
+	if o == nil || o.LastExecutionId == nil {
+		return nil, false
+	}
+	return o.LastExecutionId, true
+}
+
+// HasLastExecutionId returns a boolean if a field has been set.
+func (o *ClusterStatus) HasLastExecutionId() bool {
+	if o != nil && o.LastExecutionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastExecutionId gets a reference to the given string and assigns it to the LastExecutionId field.
+func (o *ClusterStatus) SetLastExecutionId(v string) {
+	o.LastExecutionId = &v
+}
+
 func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClusterId != nil {
@@ -145,6 +178,9 @@ func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsDeployed != nil {
 		toSerialize["is_deployed"] = o.IsDeployed
+	}
+	if o.LastExecutionId != nil {
+		toSerialize["last_execution_id"] = o.LastExecutionId
 	}
 	return json.Marshal(toSerialize)
 }

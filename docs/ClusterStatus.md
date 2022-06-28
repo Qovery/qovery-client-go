@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClusterId** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **IsDeployed** | Pointer to **bool** |  | [optional] 
+**LastExecutionId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetIsDeployed sets IsDeployed field to given value.
 `func (o *ClusterStatus) HasIsDeployed() bool`
 
 HasIsDeployed returns a boolean if a field has been set.
+
+### GetLastExecutionId
+
+`func (o *ClusterStatus) GetLastExecutionId() string`
+
+GetLastExecutionId returns the LastExecutionId field if non-nil, zero value otherwise.
+
+### GetLastExecutionIdOk
+
+`func (o *ClusterStatus) GetLastExecutionIdOk() (*string, bool)`
+
+GetLastExecutionIdOk returns a tuple with the LastExecutionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastExecutionId
+
+`func (o *ClusterStatus) SetLastExecutionId(v string)`
+
+SetLastExecutionId sets LastExecutionId field to given value.
+
+### HasLastExecutionId
+
+`func (o *ClusterStatus) HasLastExecutionId() bool`
+
+HasLastExecutionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
