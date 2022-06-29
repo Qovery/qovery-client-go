@@ -1289,7 +1289,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterStatus'
+                $ref: '#/components/schemas/ClusterStatusGet'
           description: Get status
         "401":
           description: Access token is missing or invalid
@@ -12492,6 +12492,20 @@ components:
     ClusterStatus:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        is_deployed: true
+        status: null
+      properties:
+        cluster_id:
+          format: uuid
+          type: string
+        status:
+          $ref: '#/components/schemas/StateEnum'
+        is_deployed:
+          type: boolean
+      type: object
+    ClusterStatusGet:
+      example:
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
         is_deployed: true
         status: null
@@ -12504,7 +12518,6 @@ components:
         is_deployed:
           type: boolean
         last_execution_id:
-          description: "Only set for /organization/{organizationId}/cluster/status"
           example: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           type: string
       type: object
@@ -12522,7 +12535,7 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterStatus'
+            $ref: '#/components/schemas/ClusterStatusGet'
           type: array
       type: object
     Commit:

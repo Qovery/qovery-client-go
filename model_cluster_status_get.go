@@ -15,32 +15,33 @@ import (
 	"encoding/json"
 )
 
-// ClusterStatus struct for ClusterStatus
-type ClusterStatus struct {
-	ClusterId  *string    `json:"cluster_id,omitempty"`
-	Status     *StateEnum `json:"status,omitempty"`
-	IsDeployed *bool      `json:"is_deployed,omitempty"`
+// ClusterStatusGet struct for ClusterStatusGet
+type ClusterStatusGet struct {
+	ClusterId       *string    `json:"cluster_id,omitempty"`
+	Status          *StateEnum `json:"status,omitempty"`
+	IsDeployed      *bool      `json:"is_deployed,omitempty"`
+	LastExecutionId *string    `json:"last_execution_id,omitempty"`
 }
 
-// NewClusterStatus instantiates a new ClusterStatus object
+// NewClusterStatusGet instantiates a new ClusterStatusGet object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterStatus() *ClusterStatus {
-	this := ClusterStatus{}
+func NewClusterStatusGet() *ClusterStatusGet {
+	this := ClusterStatusGet{}
 	return &this
 }
 
-// NewClusterStatusWithDefaults instantiates a new ClusterStatus object
+// NewClusterStatusGetWithDefaults instantiates a new ClusterStatusGet object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterStatusWithDefaults() *ClusterStatus {
-	this := ClusterStatus{}
+func NewClusterStatusGetWithDefaults() *ClusterStatusGet {
+	this := ClusterStatusGet{}
 	return &this
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
-func (o *ClusterStatus) GetClusterId() string {
+func (o *ClusterStatusGet) GetClusterId() string {
 	if o == nil || o.ClusterId == nil {
 		var ret string
 		return ret
@@ -50,7 +51,7 @@ func (o *ClusterStatus) GetClusterId() string {
 
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterStatus) GetClusterIdOk() (*string, bool) {
+func (o *ClusterStatusGet) GetClusterIdOk() (*string, bool) {
 	if o == nil || o.ClusterId == nil {
 		return nil, false
 	}
@@ -58,7 +59,7 @@ func (o *ClusterStatus) GetClusterIdOk() (*string, bool) {
 }
 
 // HasClusterId returns a boolean if a field has been set.
-func (o *ClusterStatus) HasClusterId() bool {
+func (o *ClusterStatusGet) HasClusterId() bool {
 	if o != nil && o.ClusterId != nil {
 		return true
 	}
@@ -67,12 +68,12 @@ func (o *ClusterStatus) HasClusterId() bool {
 }
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
-func (o *ClusterStatus) SetClusterId(v string) {
+func (o *ClusterStatusGet) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ClusterStatus) GetStatus() StateEnum {
+func (o *ClusterStatusGet) GetStatus() StateEnum {
 	if o == nil || o.Status == nil {
 		var ret StateEnum
 		return ret
@@ -82,7 +83,7 @@ func (o *ClusterStatus) GetStatus() StateEnum {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterStatus) GetStatusOk() (*StateEnum, bool) {
+func (o *ClusterStatusGet) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -90,7 +91,7 @@ func (o *ClusterStatus) GetStatusOk() (*StateEnum, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *ClusterStatus) HasStatus() bool {
+func (o *ClusterStatusGet) HasStatus() bool {
 	if o != nil && o.Status != nil {
 		return true
 	}
@@ -99,12 +100,12 @@ func (o *ClusterStatus) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
-func (o *ClusterStatus) SetStatus(v StateEnum) {
+func (o *ClusterStatusGet) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 
 // GetIsDeployed returns the IsDeployed field value if set, zero value otherwise.
-func (o *ClusterStatus) GetIsDeployed() bool {
+func (o *ClusterStatusGet) GetIsDeployed() bool {
 	if o == nil || o.IsDeployed == nil {
 		var ret bool
 		return ret
@@ -114,7 +115,7 @@ func (o *ClusterStatus) GetIsDeployed() bool {
 
 // GetIsDeployedOk returns a tuple with the IsDeployed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterStatus) GetIsDeployedOk() (*bool, bool) {
+func (o *ClusterStatusGet) GetIsDeployedOk() (*bool, bool) {
 	if o == nil || o.IsDeployed == nil {
 		return nil, false
 	}
@@ -122,7 +123,7 @@ func (o *ClusterStatus) GetIsDeployedOk() (*bool, bool) {
 }
 
 // HasIsDeployed returns a boolean if a field has been set.
-func (o *ClusterStatus) HasIsDeployed() bool {
+func (o *ClusterStatusGet) HasIsDeployed() bool {
 	if o != nil && o.IsDeployed != nil {
 		return true
 	}
@@ -131,11 +132,43 @@ func (o *ClusterStatus) HasIsDeployed() bool {
 }
 
 // SetIsDeployed gets a reference to the given bool and assigns it to the IsDeployed field.
-func (o *ClusterStatus) SetIsDeployed(v bool) {
+func (o *ClusterStatusGet) SetIsDeployed(v bool) {
 	o.IsDeployed = &v
 }
 
-func (o ClusterStatus) MarshalJSON() ([]byte, error) {
+// GetLastExecutionId returns the LastExecutionId field value if set, zero value otherwise.
+func (o *ClusterStatusGet) GetLastExecutionId() string {
+	if o == nil || o.LastExecutionId == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastExecutionId
+}
+
+// GetLastExecutionIdOk returns a tuple with the LastExecutionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterStatusGet) GetLastExecutionIdOk() (*string, bool) {
+	if o == nil || o.LastExecutionId == nil {
+		return nil, false
+	}
+	return o.LastExecutionId, true
+}
+
+// HasLastExecutionId returns a boolean if a field has been set.
+func (o *ClusterStatusGet) HasLastExecutionId() bool {
+	if o != nil && o.LastExecutionId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastExecutionId gets a reference to the given string and assigns it to the LastExecutionId field.
+func (o *ClusterStatusGet) SetLastExecutionId(v string) {
+	o.LastExecutionId = &v
+}
+
+func (o ClusterStatusGet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ClusterId != nil {
 		toSerialize["cluster_id"] = o.ClusterId
@@ -146,41 +179,44 @@ func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 	if o.IsDeployed != nil {
 		toSerialize["is_deployed"] = o.IsDeployed
 	}
+	if o.LastExecutionId != nil {
+		toSerialize["last_execution_id"] = o.LastExecutionId
+	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableClusterStatus struct {
-	value *ClusterStatus
+type NullableClusterStatusGet struct {
+	value *ClusterStatusGet
 	isSet bool
 }
 
-func (v NullableClusterStatus) Get() *ClusterStatus {
+func (v NullableClusterStatusGet) Get() *ClusterStatusGet {
 	return v.value
 }
 
-func (v *NullableClusterStatus) Set(val *ClusterStatus) {
+func (v *NullableClusterStatusGet) Set(val *ClusterStatusGet) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableClusterStatus) IsSet() bool {
+func (v NullableClusterStatusGet) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableClusterStatus) Unset() {
+func (v *NullableClusterStatusGet) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableClusterStatus(val *ClusterStatus) *NullableClusterStatus {
-	return &NullableClusterStatus{value: val, isSet: true}
+func NewNullableClusterStatusGet(val *ClusterStatusGet) *NullableClusterStatusGet {
+	return &NullableClusterStatusGet{value: val, isSet: true}
 }
 
-func (v NullableClusterStatus) MarshalJSON() ([]byte, error) {
+func (v NullableClusterStatusGet) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableClusterStatus) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterStatusGet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -489,6 +489,7 @@ Class | Method | HTTP request | Description
  - [ClusterRoutingTableRequestRoutesInner](docs/ClusterRoutingTableRequestRoutesInner.md)
  - [ClusterRoutingTableResultsInner](docs/ClusterRoutingTableResultsInner.md)
  - [ClusterStatus](docs/ClusterStatus.md)
+ - [ClusterStatusGet](docs/ClusterStatusGet.md)
  - [ClusterStatusResponseList](docs/ClusterStatusResponseList.md)
  - [Commit](docs/Commit.md)
  - [CommitPaginatedResponseList](docs/CommitPaginatedResponseList.md)

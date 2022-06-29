@@ -17,7 +17,7 @@ import (
 
 // ClusterStatusResponseList struct for ClusterStatusResponseList
 type ClusterStatusResponseList struct {
-	Results []ClusterStatus `json:"results,omitempty"`
+	Results []ClusterStatusGet `json:"results,omitempty"`
 }
 
 // NewClusterStatusResponseList instantiates a new ClusterStatusResponseList object
@@ -38,9 +38,9 @@ func NewClusterStatusResponseListWithDefaults() *ClusterStatusResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClusterStatusResponseList) GetResults() []ClusterStatus {
+func (o *ClusterStatusResponseList) GetResults() []ClusterStatusGet {
 	if o == nil || o.Results == nil {
-		var ret []ClusterStatus
+		var ret []ClusterStatusGet
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ClusterStatusResponseList) GetResults() []ClusterStatus {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterStatusResponseList) GetResultsOk() ([]ClusterStatus, bool) {
+func (o *ClusterStatusResponseList) GetResultsOk() ([]ClusterStatusGet, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ClusterStatusResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ClusterStatus and assigns it to the Results field.
-func (o *ClusterStatusResponseList) SetResults(v []ClusterStatus) {
+// SetResults gets a reference to the given []ClusterStatusGet and assigns it to the Results field.
+func (o *ClusterStatusResponseList) SetResults(v []ClusterStatusGet) {
 	o.Results = v
 }
 

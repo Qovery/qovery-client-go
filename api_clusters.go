@@ -673,7 +673,7 @@ type ApiGetClusterStatusRequest struct {
 	clusterId      string
 }
 
-func (r ApiGetClusterStatusRequest) Execute() (*ClusterStatus, *http.Response, error) {
+func (r ApiGetClusterStatusRequest) Execute() (*ClusterStatusGet, *http.Response, error) {
 	return r.ApiService.GetClusterStatusExecute(r)
 }
 
@@ -695,13 +695,13 @@ func (a *ClustersApiService) GetClusterStatus(ctx context.Context, organizationI
 }
 
 // Execute executes the request
-//  @return ClusterStatus
-func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusRequest) (*ClusterStatus, *http.Response, error) {
+//  @return ClusterStatusGet
+func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusRequest) (*ClusterStatusGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterStatus
+		localVarReturnValue *ClusterStatusGet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterStatus")

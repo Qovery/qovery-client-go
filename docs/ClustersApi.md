@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterStatus
 
-> ClusterStatus GetClusterStatus(ctx, organizationId, clusterId).Execute()
+> ClusterStatusGet GetClusterStatus(ctx, organizationId, clusterId).Execute()
 
 Get cluster status
 
@@ -482,7 +482,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetClusterStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClusterStatus`: ClusterStatus
+    // response from `GetClusterStatus`: ClusterStatusGet
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterStatus`: %v\n", resp)
 }
 ```
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterStatus**](ClusterStatus.md)
+[**ClusterStatusGet**](ClusterStatusGet.md)
 
 ### Authorization
 
