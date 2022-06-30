@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] 
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
-**Features** | Pointer to [**ClusterRequestFeatures**](ClusterRequestFeatures.md) |  | [optional] 
+**Features** | Pointer to [**[]ClusterRequestFeaturesInner**](ClusterRequestFeaturesInner.md) |  | [optional] 
 
 ## Methods
 
@@ -298,20 +298,20 @@ HasSshKeys returns a boolean if a field has been set.
 
 ### GetFeatures
 
-`func (o *ClusterRequest) GetFeatures() ClusterRequestFeatures`
+`func (o *ClusterRequest) GetFeatures() []ClusterRequestFeaturesInner`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *ClusterRequest) GetFeaturesOk() (*ClusterRequestFeatures, bool)`
+`func (o *ClusterRequest) GetFeaturesOk() (*[]ClusterRequestFeaturesInner, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *ClusterRequest) SetFeatures(v ClusterRequestFeatures)`
+`func (o *ClusterRequest) SetFeatures(v []ClusterRequestFeaturesInner)`
 
 SetFeatures sets Features field to given value.
 

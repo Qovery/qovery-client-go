@@ -12382,11 +12382,10 @@ components:
       example:
         kubernetes: null
         features:
-          features:
-          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            value: value
-          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            value: value
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          value: value
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          value: value
         ssh_keys:
         - ssh_keys
         - ssh_keys
@@ -12438,7 +12437,9 @@ components:
             type: string
           type: array
         features:
-          $ref: '#/components/schemas/ClusterRequest_features'
+          items:
+            $ref: '#/components/schemas/ClusterRequest_features_inner'
+          type: array
       required:
       - cloud_provider
       - name
@@ -16824,7 +16825,7 @@ components:
       - ram_in_gb
       - type
       type: object
-    ClusterRequest_features_features_inner:
+    ClusterRequest_features_inner:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         value: value
@@ -16836,19 +16837,6 @@ components:
         value:
           nullable: true
           type: string
-      type: object
-    ClusterRequest_features:
-      example:
-        features:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          value: value
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          value: value
-      properties:
-        features:
-          items:
-            $ref: '#/components/schemas/ClusterRequest_features_features_inner'
-          type: array
       type: object
     ClusterRoutingTable_results_inner:
       example:

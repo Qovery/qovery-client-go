@@ -32,8 +32,8 @@ type ClusterRequest struct {
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
-	SshKeys  []string                `json:"ssh_keys,omitempty"`
-	Features *ClusterRequestFeatures `json:"features,omitempty"`
+	SshKeys  []string                      `json:"ssh_keys,omitempty"`
+	Features []ClusterRequestFeaturesInner `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
@@ -397,17 +397,17 @@ func (o *ClusterRequest) SetSshKeys(v []string) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *ClusterRequest) GetFeatures() ClusterRequestFeatures {
+func (o *ClusterRequest) GetFeatures() []ClusterRequestFeaturesInner {
 	if o == nil || o.Features == nil {
-		var ret ClusterRequestFeatures
+		var ret []ClusterRequestFeaturesInner
 		return ret
 	}
-	return *o.Features
+	return o.Features
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetFeaturesOk() (*ClusterRequestFeatures, bool) {
+func (o *ClusterRequest) GetFeaturesOk() ([]ClusterRequestFeaturesInner, bool) {
 	if o == nil || o.Features == nil {
 		return nil, false
 	}
@@ -423,9 +423,9 @@ func (o *ClusterRequest) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given ClusterRequestFeatures and assigns it to the Features field.
-func (o *ClusterRequest) SetFeatures(v ClusterRequestFeatures) {
-	o.Features = &v
+// SetFeatures gets a reference to the given []ClusterRequestFeaturesInner and assigns it to the Features field.
+func (o *ClusterRequest) SetFeatures(v []ClusterRequestFeaturesInner) {
+	o.Features = v
 }
 
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
