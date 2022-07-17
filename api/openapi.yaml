@@ -624,6 +624,42 @@ paths:
       summary: Add credit code
       tags:
       - Billing
+  /organization/{organizationId}/changePlan:
+    post:
+      operationId: changePlan
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/changePlan_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: plan has been successfully changed
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Change organization plan
+      tags:
+      - Billing
   /organization/{organizationId}/cluster/{clusterId}/currentCost:
     get:
       description: |
@@ -16110,6 +16146,11 @@ components:
       - SUNDAY
       example: MONDAY
       type: string
+    changePlan_request:
+      properties:
+        plan:
+          type: string
+      type: object
     listClusterLogs_200_response:
       example:
         results:

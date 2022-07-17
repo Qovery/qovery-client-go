@@ -131,6 +131,7 @@ docs/Budget.md
 docs/BudgetThreshold.md
 docs/BuildModeEnum.md
 docs/BuildPackLanguageEnum.md
+docs/ChangePlanRequest.md
 docs/CloneRequest.md
 docs/CloudProvider.md
 docs/CloudProviderApi.md
@@ -541,6 +542,7 @@ model_budget.go
 model_budget_threshold.go
 model_build_mode_enum.go
 model_build_pack_language_enum.go
+model_change_plan_request.go
 model_clone_request.go
 model_cloud_provider.go
 model_cloud_provider_enum.go
