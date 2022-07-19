@@ -17435,7 +17435,18 @@ components:
           $ref: '#/components/schemas/EnvironmentVariable_allOf_aliased_variable'
         scope:
           $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+        service_id:
+          description: present only for `BUILT_IN` variable
+          format: uuid
+          type: string
         service_name:
+          description: present only for `BUILT_IN` variable
+          type: string
+        service_type:
+          description: present only for `BUILT_IN` variable
+          enum:
+          - APPLICATION
+          - DATABASE
           type: string
       required:
       - scope

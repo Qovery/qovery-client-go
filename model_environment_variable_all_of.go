@@ -20,7 +20,12 @@ type EnvironmentVariableAllOf struct {
 	OverriddenVariable *EnvironmentVariableAllOfOverriddenVariable `json:"overridden_variable,omitempty"`
 	AliasedVariable    *EnvironmentVariableAllOfAliasedVariable    `json:"aliased_variable,omitempty"`
 	Scope              EnvironmentVariableScopeEnum                `json:"scope"`
-	ServiceName        *string                                     `json:"service_name,omitempty"`
+	// present only for `BUILT_IN` variable
+	ServiceId *string `json:"service_id,omitempty"`
+	// present only for `BUILT_IN` variable
+	ServiceName *string `json:"service_name,omitempty"`
+	// present only for `BUILT_IN` variable
+	ServiceType *string `json:"service_type,omitempty"`
 }
 
 // NewEnvironmentVariableAllOf instantiates a new EnvironmentVariableAllOf object
@@ -129,6 +134,38 @@ func (o *EnvironmentVariableAllOf) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = v
 }
 
+// GetServiceId returns the ServiceId field value if set, zero value otherwise.
+func (o *EnvironmentVariableAllOf) GetServiceId() string {
+	if o == nil || o.ServiceId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceId
+}
+
+// GetServiceIdOk returns a tuple with the ServiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableAllOf) GetServiceIdOk() (*string, bool) {
+	if o == nil || o.ServiceId == nil {
+		return nil, false
+	}
+	return o.ServiceId, true
+}
+
+// HasServiceId returns a boolean if a field has been set.
+func (o *EnvironmentVariableAllOf) HasServiceId() bool {
+	if o != nil && o.ServiceId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceId gets a reference to the given string and assigns it to the ServiceId field.
+func (o *EnvironmentVariableAllOf) SetServiceId(v string) {
+	o.ServiceId = &v
+}
+
 // GetServiceName returns the ServiceName field value if set, zero value otherwise.
 func (o *EnvironmentVariableAllOf) GetServiceName() string {
 	if o == nil || o.ServiceName == nil {
@@ -161,6 +198,38 @@ func (o *EnvironmentVariableAllOf) SetServiceName(v string) {
 	o.ServiceName = &v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *EnvironmentVariableAllOf) GetServiceType() string {
+	if o == nil || o.ServiceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableAllOf) GetServiceTypeOk() (*string, bool) {
+	if o == nil || o.ServiceType == nil {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *EnvironmentVariableAllOf) HasServiceType() bool {
+	if o != nil && o.ServiceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given string and assigns it to the ServiceType field.
+func (o *EnvironmentVariableAllOf) SetServiceType(v string) {
+	o.ServiceType = &v
+}
+
 func (o EnvironmentVariableAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.OverriddenVariable != nil {
@@ -172,8 +241,14 @@ func (o EnvironmentVariableAllOf) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["scope"] = o.Scope
 	}
+	if o.ServiceId != nil {
+		toSerialize["service_id"] = o.ServiceId
+	}
 	if o.ServiceName != nil {
 		toSerialize["service_name"] = o.ServiceName
+	}
+	if o.ServiceType != nil {
+		toSerialize["service_type"] = o.ServiceType
 	}
 	return json.Marshal(toSerialize)
 }

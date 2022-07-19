@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **OverriddenVariable** | Pointer to [**EnvironmentVariableAllOfOverriddenVariable**](EnvironmentVariableAllOfOverriddenVariable.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAllOfAliasedVariable**](EnvironmentVariableAllOfAliasedVariable.md) |  | [optional] 
 **Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
-**ServiceName** | Pointer to **string** |  | [optional] 
+**ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
+**ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
+**ServiceType** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 
 ## Methods
 
@@ -98,6 +100,31 @@ and a boolean to check if the value has been set.
 SetScope sets Scope field to given value.
 
 
+### GetServiceId
+
+`func (o *EnvironmentVariableAllOf) GetServiceId() string`
+
+GetServiceId returns the ServiceId field if non-nil, zero value otherwise.
+
+### GetServiceIdOk
+
+`func (o *EnvironmentVariableAllOf) GetServiceIdOk() (*string, bool)`
+
+GetServiceIdOk returns a tuple with the ServiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceId
+
+`func (o *EnvironmentVariableAllOf) SetServiceId(v string)`
+
+SetServiceId sets ServiceId field to given value.
+
+### HasServiceId
+
+`func (o *EnvironmentVariableAllOf) HasServiceId() bool`
+
+HasServiceId returns a boolean if a field has been set.
+
 ### GetServiceName
 
 `func (o *EnvironmentVariableAllOf) GetServiceName() string`
@@ -122,6 +149,31 @@ SetServiceName sets ServiceName field to given value.
 `func (o *EnvironmentVariableAllOf) HasServiceName() bool`
 
 HasServiceName returns a boolean if a field has been set.
+
+### GetServiceType
+
+`func (o *EnvironmentVariableAllOf) GetServiceType() string`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *EnvironmentVariableAllOf) GetServiceTypeOk() (*string, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *EnvironmentVariableAllOf) SetServiceType(v string)`
+
+SetServiceType sets ServiceType field to given value.
+
+### HasServiceType
+
+`func (o *EnvironmentVariableAllOf) HasServiceType() bool`
+
+HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
