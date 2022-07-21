@@ -513,6 +513,7 @@ Class | Method | HTTP request | Description
  - [ContainerRegistryKindEnum](docs/ContainerRegistryKindEnum.md)
  - [ContainerRegistryRequest](docs/ContainerRegistryRequest.md)
  - [ContainerRegistryResponse](docs/ContainerRegistryResponse.md)
+ - [ContainerRegistryResponseAllOf](docs/ContainerRegistryResponseAllOf.md)
  - [ContainerRequest](docs/ContainerRequest.md)
  - [ContainerRequestAllOf](docs/ContainerRequestAllOf.md)
  - [ContainerResponse](docs/ContainerResponse.md)

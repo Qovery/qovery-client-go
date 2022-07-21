@@ -207,6 +207,7 @@ docs/ContainerRegistryApi.md
 docs/ContainerRegistryKindEnum.md
 docs/ContainerRegistryRequest.md
 docs/ContainerRegistryResponse.md
+docs/ContainerRegistryResponseAllOf.md
 docs/ContainerRequest.md
 docs/ContainerRequestAllOf.md
 docs/ContainerResponse.md
@@ -602,6 +603,7 @@ model_container_network_request.go
 model_container_registry_kind_enum.go
 model_container_registry_request.go
 model_container_registry_response.go
+model_container_registry_response_all_of.go
 model_container_request.go
 model_container_request_all_of.go
 model_container_response.go

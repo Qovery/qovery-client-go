@@ -13066,26 +13066,9 @@ components:
       - url
       type: object
     ContainerRegistryResponse:
-      example:
-        kind: null
-        name: name
-        description: description
-        config: config
-        url: url
-      properties:
-        name:
-          type: string
-        kind:
-          $ref: '#/components/schemas/ContainerRegistryKindEnum'
-        description:
-          type: string
-        url:
-          description: URL of the container registry
-          type: string
-        config:
-          description: authentification configuration
-          type: string
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ContainerRegistryResponse_allOf'
     ContainerRequest:
       allOf:
       - $ref: '#/components/schemas/ApplicationStorageRequest'
@@ -16215,16 +16198,8 @@ components:
     listContainerRegistry_200_response:
       example:
         results:
-        - kind: null
-          name: name
-          description: description
-          config: config
-          url: url
-        - kind: null
-          name: name
-          description: description
-          config: config
-          url: url
+        - null
+        - null
       properties:
         results:
           items:
@@ -16964,6 +16939,21 @@ components:
             \ will be redirected by the load balancer to the same instance each time\
             \ he access to the application.\n"
           type: boolean
+      type: object
+    ContainerRegistryResponse_allOf:
+      properties:
+        name:
+          type: string
+        kind:
+          $ref: '#/components/schemas/ContainerRegistryKindEnum'
+        description:
+          type: string
+        url:
+          description: URL of the container registry
+          type: string
+        config:
+          description: authentification configuration
+          type: string
       type: object
     ContainerRequest_allOf:
       properties:

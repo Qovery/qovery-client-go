@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **string** |  | [readonly] 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | Pointer to **string** |  | [optional] 
 **Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] [default to CONTAINERREGISTRYKINDENUM_ECR]
 **Description** | Pointer to **string** |  | [optional] 
@@ -14,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewContainerRegistryResponse
 
-`func NewContainerRegistryResponse() *ContainerRegistryResponse`
+`func NewContainerRegistryResponse(id string, createdAt time.Time, ) *ContainerRegistryResponse`
 
 NewContainerRegistryResponse instantiates a new ContainerRegistryResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +31,71 @@ will change when the set of required properties is changed
 NewContainerRegistryResponseWithDefaults instantiates a new ContainerRegistryResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ContainerRegistryResponse) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ContainerRegistryResponse) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ContainerRegistryResponse) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetCreatedAt
+
+`func (o *ContainerRegistryResponse) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *ContainerRegistryResponse) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *ContainerRegistryResponse) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *ContainerRegistryResponse) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *ContainerRegistryResponse) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *ContainerRegistryResponse) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *ContainerRegistryResponse) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetName
 
