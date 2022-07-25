@@ -4,10 +4,10 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeployContainer**](ContainerActionsApi.md#DeployContainer) | **Post** /container/{containerId}/deploy | Deploy container
-[**PreviewEnvironmentContainer**](ContainerActionsApi.md#PreviewEnvironmentContainer) | **Post** /container/{containerId}/previewEnvironment | Deploy a preview environment with your container application
-[**RestartContainer**](ContainerActionsApi.md#RestartContainer) | **Post** /container/{containerId}/restart | Restart container
-[**StopContainer**](ContainerActionsApi.md#StopContainer) | **Post** /container/{containerId}/stop | Stop container
+[**DeployContainer**](ContainerActionsApi.md#DeployContainer) | **Post** /container/{containerId}/deploy | NOT YET IMPLEMENTED - Deploy container
+[**PreviewEnvironmentContainer**](ContainerActionsApi.md#PreviewEnvironmentContainer) | **Post** /container/{containerId}/previewEnvironment | NOT YET IMPLEMENTED - Deploy a preview environment with your container application
+[**RestartContainer**](ContainerActionsApi.md#RestartContainer) | **Post** /container/{containerId}/restart | NOT YET IMPLEMENTED - Restart container
+[**StopContainer**](ContainerActionsApi.md#StopContainer) | **Post** /container/{containerId}/stop | NOT YET IMPLEMENTED - Stop container
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > Status DeployContainer(ctx, containerId).ContainerDeployRequest(containerDeployRequest).Execute()
 
-Deploy container
+NOT YET IMPLEMENTED - Deploy container
 
 
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > Status PreviewEnvironmentContainer(ctx, containerId).ContainerDeployRequest(containerDeployRequest).Execute()
 
-Deploy a preview environment with your container application
+NOT YET IMPLEMENTED - Deploy a preview environment with your container application
 
 
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 > Status RestartContainer(ctx, containerId).Execute()
 
-Restart container
+NOT YET IMPLEMENTED - Restart container
 
 ### Example
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 > Status StopContainer(ctx, containerId).Execute()
 
-Stop container
+NOT YET IMPLEMENTED - Stop container
 
 ### Example
 

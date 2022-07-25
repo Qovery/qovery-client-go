@@ -4,10 +4,10 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateContainerDeploymentRestriction**](ContainerDeploymentRestrictionApi.md#CreateContainerDeploymentRestriction) | **Post** /container/{containerId}/deploymentRestriction | Create an container deployment restriction
-[**DeleteContainerDeploymentRestriction**](ContainerDeploymentRestrictionApi.md#DeleteContainerDeploymentRestriction) | **Delete** /container/{containerId}/deploymentRestriction/{deploymentRestrictionId} | Delete a container deployment restriction
-[**EditContainerDeploymentRestriction**](ContainerDeploymentRestrictionApi.md#EditContainerDeploymentRestriction) | **Put** /container/{containerId}/deploymentRestriction/{deploymentRestrictionId} | Edit a container deployment restriction
-[**GetContainerDeploymentRestrictions**](ContainerDeploymentRestrictionApi.md#GetContainerDeploymentRestrictions) | **Get** /container/{containerId}/deploymentRestriction | Get container deployment restrictions
+[**CreateContainerDeploymentRestriction**](ContainerDeploymentRestrictionApi.md#CreateContainerDeploymentRestriction) | **Post** /container/{containerId}/deploymentRestriction | NOT YET IMPLEMENTED - Create an container deployment restriction
+[**DeleteContainerDeploymentRestriction**](ContainerDeploymentRestrictionApi.md#DeleteContainerDeploymentRestriction) | **Delete** /container/{containerId}/deploymentRestriction/{deploymentRestrictionId} | NOT YET IMPLEMENTED - Delete a container deployment restriction
+[**EditContainerDeploymentRestriction**](ContainerDeploymentRestrictionApi.md#EditContainerDeploymentRestriction) | **Put** /container/{containerId}/deploymentRestriction/{deploymentRestrictionId} | NOT YET IMPLEMENTED - Edit a container deployment restriction
+[**GetContainerDeploymentRestrictions**](ContainerDeploymentRestrictionApi.md#GetContainerDeploymentRestrictions) | **Get** /container/{containerId}/deploymentRestriction | NOT YET IMPLEMENTED - Get container deployment restrictions
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > ContainerDeploymentRestriction CreateContainerDeploymentRestriction(ctx, containerId).ContainerDeploymentRestrictionRequest(containerDeploymentRestrictionRequest).Execute()
 
-Create an container deployment restriction
+NOT YET IMPLEMENTED - Create an container deployment restriction
 
 
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > DeleteContainerDeploymentRestriction(ctx, containerId).Execute()
 
-Delete a container deployment restriction
+NOT YET IMPLEMENTED - Delete a container deployment restriction
 
 
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 > ContainerDeploymentRestriction EditContainerDeploymentRestriction(ctx, containerId, deploymentRestrictionId).ContainerDeploymentRestrictionRequest(containerDeploymentRestrictionRequest).Execute()
 
-Edit a container deployment restriction
+NOT YET IMPLEMENTED - Edit a container deployment restriction
 
 
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 > ContainerDeploymentRestrictionResponseList GetContainerDeploymentRestrictions(ctx, containerId).Execute()
 
-Get container deployment restrictions
+NOT YET IMPLEMENTED - Get container deployment restrictions
 
 
 

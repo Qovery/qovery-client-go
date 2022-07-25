@@ -4,7 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListContainerLog**](ContainerLogsApi.md#ListContainerLog) | **Get** /container/{containerId}/log | List logs
+[**ListContainerLog**](ContainerLogsApi.md#ListContainerLog) | **Get** /container/{containerId}/log | NOT YET IMPLEMENTED - List logs
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > LogResponseList ListContainerLog(ctx, containerId).Execute()
 
-List logs
+NOT YET IMPLEMENTED - List logs
 
 
 

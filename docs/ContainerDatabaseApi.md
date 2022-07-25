@@ -4,12 +4,12 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AttachDatabaseToContainer**](ContainerDatabaseApi.md#AttachDatabaseToContainer) | **Post** /container/{containerId}/database/{targetDatabaseId} | Link a database to the container
-[**AttachLogicalDatabaseToContainer**](ContainerDatabaseApi.md#AttachLogicalDatabaseToContainer) | **Post** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | Link a logical database to the container
-[**ListContainerDatabase**](ContainerDatabaseApi.md#ListContainerDatabase) | **Get** /container/{containerId}/database | List linked databases
-[**ListContainerLogicalDatabase**](ContainerDatabaseApi.md#ListContainerLogicalDatabase) | **Get** /container/{containerId}/logicalDatabase | List linked logical databases
-[**RemoveDatabaseFromContainer**](ContainerDatabaseApi.md#RemoveDatabaseFromContainer) | **Delete** /container/{containerId}/database/{targetDatabaseId} | Remove database link to this container.
-[**RemoveLogicalDatabaseFromContainer**](ContainerDatabaseApi.md#RemoveLogicalDatabaseFromContainer) | **Delete** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | Remove logical database link to this container.
+[**AttachDatabaseToContainer**](ContainerDatabaseApi.md#AttachDatabaseToContainer) | **Post** /container/{containerId}/database/{targetDatabaseId} | NOT YET IMPLEMENTED - Link a database to the container
+[**AttachLogicalDatabaseToContainer**](ContainerDatabaseApi.md#AttachLogicalDatabaseToContainer) | **Post** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | NOT YET IMPLEMENTED - Link a logical database to the container
+[**ListContainerDatabase**](ContainerDatabaseApi.md#ListContainerDatabase) | **Get** /container/{containerId}/database | NOT YET IMPLEMENTED - List linked databases
+[**ListContainerLogicalDatabase**](ContainerDatabaseApi.md#ListContainerLogicalDatabase) | **Get** /container/{containerId}/logicalDatabase | NOT YET IMPLEMENTED - List linked logical databases
+[**RemoveDatabaseFromContainer**](ContainerDatabaseApi.md#RemoveDatabaseFromContainer) | **Delete** /container/{containerId}/database/{targetDatabaseId} | NOT YET IMPLEMENTED - Remove database link to this container.
+[**RemoveLogicalDatabaseFromContainer**](ContainerDatabaseApi.md#RemoveLogicalDatabaseFromContainer) | **Delete** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | NOT YET IMPLEMENTED - Remove logical database link to this container.
 
 
 
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 > Database AttachDatabaseToContainer(ctx, containerId, targetDatabaseId).Execute()
 
-Link a database to the container
+NOT YET IMPLEMENTED - Link a database to the container
 
 ### Example
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > LogicalDatabase AttachLogicalDatabaseToContainer(ctx, containerId, targetLogicalDatabaseId).Execute()
 
-Link a logical database to the container
+NOT YET IMPLEMENTED - Link a logical database to the container
 
 ### Example
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 > DatabaseResponseList ListContainerDatabase(ctx, containerId).Execute()
 
-List linked databases
+NOT YET IMPLEMENTED - List linked databases
 
 ### Example
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 > LogicalDatabaseResponseList ListContainerLogicalDatabase(ctx, containerId).Execute()
 
-List linked logical databases
+NOT YET IMPLEMENTED - List linked logical databases
 
 ### Example
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 > RemoveDatabaseFromContainer(ctx, containerId, targetDatabaseId).Execute()
 
-Remove database link to this container.
+NOT YET IMPLEMENTED - Remove database link to this container.
 
 ### Example
 
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 > RemoveLogicalDatabaseFromContainer(ctx, containerId, targetLogicalDatabaseId).Execute()
 
-Remove logical database link to this container.
+NOT YET IMPLEMENTED - Remove logical database link to this container.
 
 ### Example
 

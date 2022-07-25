@@ -4,11 +4,11 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateContainerCustomDomain**](ContainerCustomDomainApi.md#CreateContainerCustomDomain) | **Post** /container/{containerId}/customDomain | Add custom domain to the container.
-[**DeleteContainerCustomDomain**](ContainerCustomDomainApi.md#DeleteContainerCustomDomain) | **Delete** /container/{containerId}/customDomain/{customDomainId} | Delete a Custom Domain
-[**EditContainerCustomDomain**](ContainerCustomDomainApi.md#EditContainerCustomDomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
-[**GetContainerCustomDomainStatus**](ContainerCustomDomainApi.md#GetContainerCustomDomainStatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
-[**ListContainerCustomDomain**](ContainerCustomDomainApi.md#ListContainerCustomDomain) | **Get** /container/{containerId}/customDomain | List container custom domains
+[**CreateContainerCustomDomain**](ContainerCustomDomainApi.md#CreateContainerCustomDomain) | **Post** /container/{containerId}/customDomain | NOT YET IMPLEMENTED - Add custom domain to the container.
+[**DeleteContainerCustomDomain**](ContainerCustomDomainApi.md#DeleteContainerCustomDomain) | **Delete** /container/{containerId}/customDomain/{customDomainId} | NOT YET IMPLEMENTED - Delete a Custom Domain
+[**EditContainerCustomDomain**](ContainerCustomDomainApi.md#EditContainerCustomDomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | NOT YET IMPLEMENTED - Edit a Custom Domain
+[**GetContainerCustomDomainStatus**](ContainerCustomDomainApi.md#GetContainerCustomDomainStatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | NOT YET IMPLEMENTED - Get Custom Domain status
+[**ListContainerCustomDomain**](ContainerCustomDomainApi.md#ListContainerCustomDomain) | **Get** /container/{containerId}/customDomain | NOT YET IMPLEMENTED - List container custom domains
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > CustomDomain CreateContainerCustomDomain(ctx, containerId).CustomDomainRequest(customDomainRequest).Execute()
 
-Add custom domain to the container.
+NOT YET IMPLEMENTED - Add custom domain to the container.
 
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > DeleteContainerCustomDomain(ctx, containerId, customDomainId).Execute()
 
-Delete a Custom Domain
+NOT YET IMPLEMENTED - Delete a Custom Domain
 
 
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 > CustomDomain EditContainerCustomDomain(ctx, containerId, customDomainId).CustomDomainRequest(customDomainRequest).Execute()
 
-Edit a Custom Domain
+NOT YET IMPLEMENTED - Edit a Custom Domain
 
 
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 > CustomDomain GetContainerCustomDomainStatus(ctx, containerId, customDomainId).Execute()
 
-Get Custom Domain status
+NOT YET IMPLEMENTED - Get Custom Domain status
 
 ### Example
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 > CustomDomainResponseList ListContainerCustomDomain(ctx, containerId).Execute()
 
-List container custom domains
+NOT YET IMPLEMENTED - List container custom domains
 
 ### Example
 

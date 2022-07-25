@@ -4,7 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListContainerEvent**](ContainerEventApi.md#ListContainerEvent) | **Get** /container/{containerId}/event | List container events
+[**ListContainerEvent**](ContainerEventApi.md#ListContainerEvent) | **Get** /container/{containerId}/event | NOT YET IMPLEMENTED - List container events
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > EventPaginatedResponseList ListContainerEvent(ctx, containerId).StartId(startId).Execute()
 
-List container events
+NOT YET IMPLEMENTED - List container events
 
 
 

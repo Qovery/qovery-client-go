@@ -40,7 +40,7 @@ func (r ApiCreateContainerSecretRequest) Execute() (*Secret, *http.Response, err
 }
 
 /*
-CreateContainerSecret Add a secret to the container
+CreateContainerSecret NOT YET IMPLEMENTED - Add a secret to the container
 
 - Add a secret to the container.
 
@@ -153,7 +153,7 @@ func (r ApiCreateContainerSecretAliasRequest) Execute() (*Secret, *http.Response
 }
 
 /*
-CreateContainerSecretAlias Create a secret alias at the container level
+CreateContainerSecretAlias NOT YET IMPLEMENTED - Create a secret alias at the container level
 
 - Allows you to add an alias at container level on an existing secret having higher scope, in order to customize its key.
 - You only have to specify a key in the request body
@@ -268,7 +268,7 @@ func (r ApiDeleteContainerSecretRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteContainerSecret Delete a secret from an container
+DeleteContainerSecret NOT YET IMPLEMENTED - Delete a secret from an container
 
 - To delete a secret you must have the project user permission
 - You can't delete a BUILT_IN secret
@@ -373,7 +373,7 @@ func (r ApiEditContainerSecretRequest) Execute() (*Secret, *http.Response, error
 }
 
 /*
-EditContainerSecret Edit a secret belonging to the container
+EditContainerSecret NOT YET IMPLEMENTED - Edit a secret belonging to the container
 
 - You can't edit a BUILT_IN secret
 - For an override, you can't edit the key
@@ -488,7 +488,7 @@ func (r ApiListContainerSecretsRequest) Execute() (*SecretResponseList, *http.Re
 }
 
 /*
-ListContainerSecrets List container secrets
+ListContainerSecrets NOT YET IMPLEMENTED - List container secrets
 
 Secrets are like environment variables, but they are secured and can't be revealed.
 

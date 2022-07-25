@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**CreateApplicationSecret**](ApplicationSecretApi.md#CreateApplicationSecret) | **Post** /application/{applicationId}/secret | Add a secret to the application
 [**CreateApplicationSecretAlias**](ApplicationSecretApi.md#CreateApplicationSecretAlias) | **Post** /application/{applicationId}/secret/{secretId}/alias | Create a secret alias at the application level
 [**CreateApplicationSecretOverride**](ApplicationSecretApi.md#CreateApplicationSecretOverride) | **Post** /application/{applicationId}/secret/{secretId}/override | Create a secret override at the application level
-[**CreateContainerSecretOverride**](ApplicationSecretApi.md#CreateContainerSecretOverride) | **Post** /container/{containerId}/secret/{secretId}/override | Create a secret override at the container level
+[**CreateContainerSecretOverride**](ApplicationSecretApi.md#CreateContainerSecretOverride) | **Post** /container/{containerId}/secret/{secretId}/override | NOT YET IMPLEMENTED - Create a secret override at the container level
 [**DeleteApplicationSecret**](ApplicationSecretApi.md#DeleteApplicationSecret) | **Delete** /application/{applicationId}/secret/{secretId} | Delete a secret from an application
 [**EditApplicationSecret**](ApplicationSecretApi.md#EditApplicationSecret) | **Put** /application/{applicationId}/secret/{secretId} | Edit a secret belonging to the application
 [**ListApplicationSecrets**](ApplicationSecretApi.md#ListApplicationSecrets) | **Get** /application/{applicationId}/secret | List application secrets
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 > Secret CreateContainerSecretOverride(ctx, containerId, secretId).Value(value).Execute()
 
-Create a secret override at the container level
+NOT YET IMPLEMENTED - Create a secret override at the container level
 
 
 

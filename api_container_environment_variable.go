@@ -153,7 +153,7 @@ func (r ApiCreateContainerEnvironmentVariableAliasRequest) Execute() (*Environme
 }
 
 /*
-CreateContainerEnvironmentVariableAlias Create an environment variable alias at the container level
+CreateContainerEnvironmentVariableAlias NOT YET IMPLEMENTED - Create an environment variable alias at the container level
 
 - Allows you to add an alias at container level on an existing environment variable having higher scope, in order to customize its key.
 - You only have to specify a key in the request body
@@ -274,7 +274,7 @@ func (r ApiCreateContainerEnvironmentVariableOverrideRequest) Execute() (*Enviro
 }
 
 /*
-CreateContainerEnvironmentVariableOverride Create an environment variable override at the container level
+CreateContainerEnvironmentVariableOverride NOT YET IMPLEMENTED - Create an environment variable override at the container level
 
 - Allows you to override at container level an environment variable that has a higher scope.
 - You only have to specify a value in the request body
@@ -388,7 +388,7 @@ func (r ApiDeleteContainerEnvironmentVariableRequest) Execute() (*http.Response,
 }
 
 /*
-DeleteContainerEnvironmentVariable Delete an environment variable from a container
+DeleteContainerEnvironmentVariable NOT YET IMPLEMENTED - Delete an environment variable from a container
 
 - To delete an environment variable from an container you must have the project user permission
 - You can't delete a BUILT_IN variable
@@ -493,7 +493,7 @@ func (r ApiEditContainerEnvironmentVariableRequest) Execute() (*EnvironmentVaria
 }
 
 /*
-EditContainerEnvironmentVariable Edit an environment variable belonging to the container
+EditContainerEnvironmentVariable NOT YET IMPLEMENTED - Edit an environment variable belonging to the container
 
 - You can't edit a BUILT_IN variable
 - For an override, you can't edit the key
@@ -614,7 +614,7 @@ func (r ApiImportContainerEnvironmentVariableRequest) Execute() (*VariableImport
 }
 
 /*
-ImportContainerEnvironmentVariable Import variables
+ImportContainerEnvironmentVariable NOT YET IMPLEMENTED - Import variables
 
 Import environment variables in a defined scope, with a defined visibility.
 
@@ -719,7 +719,7 @@ func (r ApiListContainerEnvironmentVariableRequest) Execute() (*EnvironmentVaria
 }
 
 /*
-ListContainerEnvironmentVariable List environment variables
+ListContainerEnvironmentVariable NOT YET IMPLEMENTED - List environment variables
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID

@@ -41,7 +41,7 @@ func (r ApiListContainerEventRequest) Execute() (*EventPaginatedResponseList, *h
 }
 
 /*
-ListContainerEvent List container events
+ListContainerEvent NOT YET IMPLEMENTED - List container events
 
 By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
 

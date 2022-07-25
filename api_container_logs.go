@@ -34,7 +34,7 @@ func (r ApiListContainerLogRequest) Execute() (*LogResponseList, *http.Response,
 }
 
 /*
-ListContainerLog List logs
+ListContainerLog NOT YET IMPLEMENTED - List logs
 
 This will list the last 1000 logs of the container
 

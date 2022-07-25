@@ -40,7 +40,7 @@ func (r ApiCreateContainerDeploymentRestrictionRequest) Execute() (*ContainerDep
 }
 
 /*
-CreateContainerDeploymentRestriction Create an container deployment restriction
+CreateContainerDeploymentRestriction NOT YET IMPLEMENTED - Create an container deployment restriction
 
 Create an container deployment restriction
 
@@ -145,7 +145,7 @@ func (r ApiDeleteContainerDeploymentRestrictionRequest) Execute() (*http.Respons
 }
 
 /*
-DeleteContainerDeploymentRestriction Delete a container deployment restriction
+DeleteContainerDeploymentRestriction NOT YET IMPLEMENTED - Delete a container deployment restriction
 
 Delete a container deployment restriction
 
@@ -244,7 +244,7 @@ func (r ApiEditContainerDeploymentRestrictionRequest) Execute() (*ContainerDeplo
 }
 
 /*
-EditContainerDeploymentRestriction Edit a container deployment restriction
+EditContainerDeploymentRestriction NOT YET IMPLEMENTED - Edit a container deployment restriction
 
 Edit a container deployment restriction
 
@@ -352,7 +352,7 @@ func (r ApiGetContainerDeploymentRestrictionsRequest) Execute() (*ContainerDeplo
 }
 
 /*
-GetContainerDeploymentRestrictions Get container deployment restrictions
+GetContainerDeploymentRestrictions NOT YET IMPLEMENTED - Get container deployment restrictions
 
 Get container deployment restrictions
 

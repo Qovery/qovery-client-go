@@ -34,7 +34,7 @@ func (r ApiCreateContainerDependencyRequest) Execute() (*ContainerResponse, *htt
 }
 
 /*
-CreateContainerDependency Add container dependency to this application.
+CreateContainerDependency NOT YET IMPLEMENTED - Add container dependency to this application.
 
 Add container dependency to this container to prevent this container starting before the linked dependencies
 
@@ -137,7 +137,7 @@ func (r ApiListContainerDependencyRequest) Execute() (*ContainerResponseList, *h
 }
 
 /*
-ListContainerDependency List container dependencies
+ListContainerDependency NOT YET IMPLEMENTED - List container dependencies
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -238,7 +238,7 @@ func (r ApiRemoveContainerDependencyRequest) Execute() (*http.Response, error) {
 }
 
 /*
-RemoveContainerDependency Remove container dependency to this container.
+RemoveContainerDependency NOT YET IMPLEMENTED - Remove container dependency to this container.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID

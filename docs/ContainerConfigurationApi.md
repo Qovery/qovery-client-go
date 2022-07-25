@@ -4,10 +4,10 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EditContainerAdvancedSettings**](ContainerConfigurationApi.md#EditContainerAdvancedSettings) | **Put** /container/{containerId}/advancedSettings | Edit advanced settings
-[**EditContainerNetwork**](ContainerConfigurationApi.md#EditContainerNetwork) | **Put** /container/{containerId}/network | Edit Container Network
-[**GetContainerAdvancedSettings**](ContainerConfigurationApi.md#GetContainerAdvancedSettings) | **Get** /container/{containerId}/advancedSettings | Get advanced settings
-[**GetContainerNetwork**](ContainerConfigurationApi.md#GetContainerNetwork) | **Get** /container/{containerId}/network | Get Container Network information
+[**EditContainerAdvancedSettings**](ContainerConfigurationApi.md#EditContainerAdvancedSettings) | **Put** /container/{containerId}/advancedSettings | NOT YET IMPLEMENTED - Edit advanced settings
+[**EditContainerNetwork**](ContainerConfigurationApi.md#EditContainerNetwork) | **Put** /container/{containerId}/network | NOT YET IMPLEMENTED - Edit Container Network
+[**GetContainerAdvancedSettings**](ContainerConfigurationApi.md#GetContainerAdvancedSettings) | **Get** /container/{containerId}/advancedSettings | NOT YET IMPLEMENTED - Get advanced settings
+[**GetContainerNetwork**](ContainerConfigurationApi.md#GetContainerNetwork) | **Get** /container/{containerId}/network | NOT YET IMPLEMENTED - Get Container Network information
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > ContainerAdvancedSettingsResponse EditContainerAdvancedSettings(ctx, containerId).ContainerAdvancedSettings(containerAdvancedSettings).Execute()
 
-Edit advanced settings
+NOT YET IMPLEMENTED - Edit advanced settings
 
 
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > ContainerNetwork EditContainerNetwork(ctx, containerId).ContainerNetworkRequest(containerNetworkRequest).Execute()
 
-Edit Container Network
+NOT YET IMPLEMENTED - Edit Container Network
 
 
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 > ContainerAdvancedSettingsResponse GetContainerAdvancedSettings(ctx, containerId).Execute()
 
-Get advanced settings
+NOT YET IMPLEMENTED - Get advanced settings
 
 
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 > ContainerNetwork GetContainerNetwork(ctx, containerId).Execute()
 
-Get Container Network information
+NOT YET IMPLEMENTED - Get Container Network information
 
 
 

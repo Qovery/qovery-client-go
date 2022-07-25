@@ -34,7 +34,7 @@ func (r ApiGetContainerCurrentInstanceRequest) Execute() (*InstanceResponseList,
 }
 
 /*
-GetContainerCurrentInstance List currently running instances of the container with their CPU and RAM metrics
+GetContainerCurrentInstance NOT YET IMPLEMENTED - List currently running instances of the container with their CPU and RAM metrics
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -135,7 +135,7 @@ func (r ApiGetContainerCurrentScaleRequest) Execute() (*ContainerCurrentScale, *
 }
 
 /*
-GetContainerCurrentScale Get current scaling of the container
+GetContainerCurrentScale NOT YET IMPLEMENTED - Get current scaling of the container
 
 Returns min, max, and running number of instances of the application
 
@@ -238,7 +238,7 @@ func (r ApiGetContainerCurrentStorageDiskRequest) Execute() (*StorageDiskRespons
 }
 
 /*
-GetContainerCurrentStorageDisk List current storage disk usage
+GetContainerCurrentStorageDisk NOT YET IMPLEMENTED - List current storage disk usage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -346,7 +346,7 @@ func (r ApiGetContainerMetricCpuRequest) Execute() (*MetricCPUResponseList, *htt
 }
 
 /*
-GetContainerMetricCpu Get CPU consumption metric over time for the container
+GetContainerMetricCpu NOT YET IMPLEMENTED - Get CPU consumption metric over time for the container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -458,7 +458,7 @@ func (r ApiGetContainerMetricHealthCheckRequest) Execute() (*MetricGenericRespon
 }
 
 /*
-GetContainerMetricHealthCheck Get Health Check latency  metric over time for the container
+GetContainerMetricHealthCheck NOT YET IMPLEMENTED - Get Health Check latency  metric over time for the container
 
 The value returned corresponds to the 95th centile
 
@@ -572,7 +572,7 @@ func (r ApiGetContainerMetricMemoryRequest) Execute() (*MetricMemoryResponseList
 }
 
 /*
-GetContainerMetricMemory Get Memory consumption metric over time for the container
+GetContainerMetricMemory NOT YET IMPLEMENTED - Get Memory consumption metric over time for the container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -684,7 +684,7 @@ func (r ApiGetContainerMetricRestartRequest) Execute() (*MetricRestart, *http.Re
 }
 
 /*
-GetContainerMetricRestart List container restarts
+GetContainerMetricRestart NOT YET IMPLEMENTED - List container restarts
 
 Get container restart message and timestamp.
 
@@ -798,7 +798,7 @@ func (r ApiGetContainerMetricStorageRequest) Execute() (*MetricStorageResponseLi
 }
 
 /*
-GetContainerMetricStorage Get Storage consumption metric over time for the container
+GetContainerMetricStorage NOT YET IMPLEMENTED - Get Storage consumption metric over time for the container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID

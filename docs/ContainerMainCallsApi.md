@@ -4,16 +4,16 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateContainerTag**](ContainerMainCallsApi.md#CreateContainerTag) | **Post** /container/{containerId}/tag | Add container tag
-[**DeleteContainer**](ContainerMainCallsApi.md#DeleteContainer) | **Delete** /container/{containerId} | Delete container
-[**DeleteContainerTag**](ContainerMainCallsApi.md#DeleteContainerTag) | **Delete** /container/{containerId}/tag/{tagId} | Delete container tag
-[**EditContainer**](ContainerMainCallsApi.md#EditContainer) | **Put** /container/{containerId} | Edit container
-[**GetContainer**](ContainerMainCallsApi.md#GetContainer) | **Get** /container/{containerId} | Get container by ID
-[**GetContainerStatus**](ContainerMainCallsApi.md#GetContainerStatus) | **Get** /container/{containerId}/status | Get container status
-[**GetContainerTags**](ContainerMainCallsApi.md#GetContainerTags) | **Get** /container/{containerId}/tagHistory | List image tags
-[**ListContainerContributor**](ContainerMainCallsApi.md#ListContainerContributor) | **Get** /container/{containerId}/contributor | List contributors
-[**ListContainerLinks**](ContainerMainCallsApi.md#ListContainerLinks) | **Get** /container/{containerId}/link | List all URLs of the container
-[**ListContainerTag**](ContainerMainCallsApi.md#ListContainerTag) | **Get** /container/{containerId}/tag | List tags
+[**CreateContainerTag**](ContainerMainCallsApi.md#CreateContainerTag) | **Post** /container/{containerId}/tag | NOT YET IMPLEMENTED - Add container tag
+[**DeleteContainer**](ContainerMainCallsApi.md#DeleteContainer) | **Delete** /container/{containerId} | NOT YET IMPLEMENTED - Delete container
+[**DeleteContainerTag**](ContainerMainCallsApi.md#DeleteContainerTag) | **Delete** /container/{containerId}/tag/{tagId} | NOT YET IMPLEMENTED - Delete container tag
+[**EditContainer**](ContainerMainCallsApi.md#EditContainer) | **Put** /container/{containerId} | NOT YET IMPLEMENTED - Edit container
+[**GetContainer**](ContainerMainCallsApi.md#GetContainer) | **Get** /container/{containerId} | NOT YET IMPLEMENTED - Get container by ID
+[**GetContainerStatus**](ContainerMainCallsApi.md#GetContainerStatus) | **Get** /container/{containerId}/status | NOT YET IMPLEMENTED - Get container status
+[**GetContainerTags**](ContainerMainCallsApi.md#GetContainerTags) | **Get** /container/{containerId}/tagHistory | NOT YET IMPLEMENTED - List image tags
+[**ListContainerContributor**](ContainerMainCallsApi.md#ListContainerContributor) | **Get** /container/{containerId}/contributor | NOT YET IMPLEMENTED -List contributors
+[**ListContainerLinks**](ContainerMainCallsApi.md#ListContainerLinks) | **Get** /container/{containerId}/link | NOT YET IMPLEMENTED - List all URLs of the container
+[**ListContainerTag**](ContainerMainCallsApi.md#ListContainerTag) | **Get** /container/{containerId}/tag | NOT YET IMPLEMENTED - List tags
 
 
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 > TagResponseList CreateContainerTag(ctx, containerId).TagRequest(tagRequest).Execute()
 
-Add container tag
+NOT YET IMPLEMENTED - Add container tag
 
 ### Example
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 > DeleteContainer(ctx, containerId).Execute()
 
-Delete container
+NOT YET IMPLEMENTED - Delete container
 
 
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 > DeleteContainerTag(ctx, containerId, tagId).Execute()
 
-Delete container tag
+NOT YET IMPLEMENTED - Delete container tag
 
 ### Example
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 > ContainerResponse EditContainer(ctx, containerId).ContainerEditRequest(containerEditRequest).Execute()
 
-Edit container
+NOT YET IMPLEMENTED - Edit container
 
 
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 > ContainerResponse GetContainer(ctx, containerId).Execute()
 
-Get container by ID
+NOT YET IMPLEMENTED - Get container by ID
 
 ### Example
 
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 
 > Status GetContainerStatus(ctx, containerId).Execute()
 
-Get container status
+NOT YET IMPLEMENTED - Get container status
 
 ### Example
 
@@ -436,7 +436,7 @@ Name | Type | Description  | Notes
 
 > GetContainerTags200Response GetContainerTags(ctx, containerId).Execute()
 
-List image tags
+NOT YET IMPLEMENTED - List image tags
 
 
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 > UserResponseList ListContainerContributor(ctx, containerId).Execute()
 
-List contributors
+NOT YET IMPLEMENTED -List contributors
 
 ### Example
 
@@ -574,7 +574,7 @@ Name | Type | Description  | Notes
 
 > LinkResponseList ListContainerLinks(ctx, containerId).Execute()
 
-List all URLs of the container
+NOT YET IMPLEMENTED - List all URLs of the container
 
 
 
@@ -644,7 +644,7 @@ Name | Type | Description  | Notes
 
 > TagResponseList ListContainerTag(ctx, containerId).Execute()
 
-List tags
+NOT YET IMPLEMENTED - List tags
 
 ### Example
 

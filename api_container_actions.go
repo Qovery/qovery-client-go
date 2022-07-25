@@ -40,7 +40,7 @@ func (r ApiDeployContainerRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-DeployContainer Deploy container
+DeployContainer NOT YET IMPLEMENTED - Deploy container
 
 You must provide a git commit id
 
@@ -151,7 +151,7 @@ func (r ApiPreviewEnvironmentContainerRequest) Execute() (*Status, *http.Respons
 }
 
 /*
-PreviewEnvironmentContainer Deploy a preview environment with your container application
+PreviewEnvironmentContainer NOT YET IMPLEMENTED - Deploy a preview environment with your container application
 
 You must provide the image tag.
 
@@ -256,7 +256,7 @@ func (r ApiRestartContainerRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-RestartContainer Restart container
+RestartContainer NOT YET IMPLEMENTED - Restart container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -357,7 +357,7 @@ func (r ApiStopContainerRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-StopContainer Stop container
+StopContainer NOT YET IMPLEMENTED - Stop container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
