@@ -22,8 +22,6 @@ type ContainerRegistryResponseAllOf struct {
 	Description *string                    `json:"description,omitempty"`
 	// URL of the container registry
 	Url *string `json:"url,omitempty"`
-	// authentification configuration
-	Config *string `json:"config,omitempty"`
 }
 
 // NewContainerRegistryResponseAllOf instantiates a new ContainerRegistryResponseAllOf object
@@ -175,38 +173,6 @@ func (o *ContainerRegistryResponseAllOf) SetUrl(v string) {
 	o.Url = &v
 }
 
-// GetConfig returns the Config field value if set, zero value otherwise.
-func (o *ContainerRegistryResponseAllOf) GetConfig() string {
-	if o == nil || o.Config == nil {
-		var ret string
-		return ret
-	}
-	return *o.Config
-}
-
-// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerRegistryResponseAllOf) GetConfigOk() (*string, bool) {
-	if o == nil || o.Config == nil {
-		return nil, false
-	}
-	return o.Config, true
-}
-
-// HasConfig returns a boolean if a field has been set.
-func (o *ContainerRegistryResponseAllOf) HasConfig() bool {
-	if o != nil && o.Config != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfig gets a reference to the given string and assigns it to the Config field.
-func (o *ContainerRegistryResponseAllOf) SetConfig(v string) {
-	o.Config = &v
-}
-
 func (o ContainerRegistryResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -220,9 +186,6 @@ func (o ContainerRegistryResponseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
-	}
-	if o.Config != nil {
-		toSerialize["config"] = o.Config
 	}
 	return json.Marshal(toSerialize)
 }

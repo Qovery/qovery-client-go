@@ -16959,9 +16959,6 @@ components:
         url:
           description: URL of the container registry
           type: string
-        config:
-          description: authentification configuration
-          type: string
       type: object
     ContainerRequest_allOf:
       properties:

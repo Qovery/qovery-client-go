@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] [default to CONTAINERREGISTRYKINDENUM_ECR]
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the container registry | [optional] 
-**Config** | Pointer to **string** | authentification configuration | [optional] 
 
 ## Methods
 
@@ -196,31 +195,6 @@ SetUrl sets Url field to given value.
 `func (o *ContainerRegistryResponse) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
-
-### GetConfig
-
-`func (o *ContainerRegistryResponse) GetConfig() string`
-
-GetConfig returns the Config field if non-nil, zero value otherwise.
-
-### GetConfigOk
-
-`func (o *ContainerRegistryResponse) GetConfigOk() (*string, bool)`
-
-GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfig
-
-`func (o *ContainerRegistryResponse) SetConfig(v string)`
-
-SetConfig sets Config field to given value.
-
-### HasConfig
-
-`func (o *ContainerRegistryResponse) HasConfig() bool`
-
-HasConfig returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
