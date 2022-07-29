@@ -17,8 +17,8 @@ import (
 
 // ApplicationRequest struct for ApplicationRequest
 type ApplicationRequest struct {
-	Storage []ApplicationStorageRequestStorageInner `json:"storage,omitempty"`
-	Ports   []ApplicationPortRequestPortsInner      `json:"ports,omitempty"`
+	Storage []ServiceStorageRequestStorageInner `json:"storage,omitempty"`
+	Ports   []ServicePortRequestPortsInner      `json:"ports,omitempty"`
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this application
@@ -85,9 +85,9 @@ func NewApplicationRequestWithDefaults() *ApplicationRequest {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorageInner {
+func (o *ApplicationRequest) GetStorage() []ServiceStorageRequestStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageRequestStorageInner
+		var ret []ServiceStorageRequestStorageInner
 		return ret
 	}
 	return o.Storage
@@ -95,7 +95,7 @@ func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorageInne
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetStorageOk() ([]ApplicationStorageRequestStorageInner, bool) {
+func (o *ApplicationRequest) GetStorageOk() ([]ServiceStorageRequestStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -111,15 +111,15 @@ func (o *ApplicationRequest) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageRequestStorageInner and assigns it to the Storage field.
-func (o *ApplicationRequest) SetStorage(v []ApplicationStorageRequestStorageInner) {
+// SetStorage gets a reference to the given []ServiceStorageRequestStorageInner and assigns it to the Storage field.
+func (o *ApplicationRequest) SetStorage(v []ServiceStorageRequestStorageInner) {
 	o.Storage = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPortsInner {
+func (o *ApplicationRequest) GetPorts() []ServicePortRequestPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortRequestPortsInner
+		var ret []ServicePortRequestPortsInner
 		return ret
 	}
 	return o.Ports
@@ -127,7 +127,7 @@ func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPortsInner {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetPortsOk() ([]ApplicationPortRequestPortsInner, bool) {
+func (o *ApplicationRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -143,8 +143,8 @@ func (o *ApplicationRequest) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortRequestPortsInner and assigns it to the Ports field.
-func (o *ApplicationRequest) SetPorts(v []ApplicationPortRequestPortsInner) {
+// SetPorts gets a reference to the given []ServicePortRequestPortsInner and assigns it to the Ports field.
+func (o *ApplicationRequest) SetPorts(v []ServicePortRequestPortsInner) {
 	o.Ports = v
 }
 

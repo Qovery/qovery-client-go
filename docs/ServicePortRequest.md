@@ -1,52 +1,52 @@
-# ApplicationPortRequest
+# ServicePortRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Ports** | Pointer to [**[]ApplicationPortRequestPortsInner**](ApplicationPortRequestPortsInner.md) |  | [optional] 
+**Ports** | Pointer to [**[]ServicePortRequestPortsInner**](ServicePortRequestPortsInner.md) |  | [optional] 
 
 ## Methods
 
-### NewApplicationPortRequest
+### NewServicePortRequest
 
-`func NewApplicationPortRequest() *ApplicationPortRequest`
+`func NewServicePortRequest() *ServicePortRequest`
 
-NewApplicationPortRequest instantiates a new ApplicationPortRequest object
+NewServicePortRequest instantiates a new ServicePortRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApplicationPortRequestWithDefaults
+### NewServicePortRequestWithDefaults
 
-`func NewApplicationPortRequestWithDefaults() *ApplicationPortRequest`
+`func NewServicePortRequestWithDefaults() *ServicePortRequest`
 
-NewApplicationPortRequestWithDefaults instantiates a new ApplicationPortRequest object
+NewServicePortRequestWithDefaults instantiates a new ServicePortRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPorts
 
-`func (o *ApplicationPortRequest) GetPorts() []ApplicationPortRequestPortsInner`
+`func (o *ServicePortRequest) GetPorts() []ServicePortRequestPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ApplicationPortRequest) GetPortsOk() (*[]ApplicationPortRequestPortsInner, bool)`
+`func (o *ServicePortRequest) GetPortsOk() (*[]ServicePortRequestPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ApplicationPortRequest) SetPorts(v []ApplicationPortRequestPortsInner)`
+`func (o *ServicePortRequest) SetPorts(v []ServicePortRequestPortsInner)`
 
 SetPorts sets Ports field to given value.
 
 ### HasPorts
 
-`func (o *ApplicationPortRequest) HasPorts() bool`
+`func (o *ServicePortRequest) HasPorts() bool`
 
 HasPorts returns a boolean if a field has been set.
 

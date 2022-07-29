@@ -17,17 +17,19 @@ import (
 
 // ContainerRequest struct for ContainerRequest
 type ContainerRequest struct {
-	Storage []ApplicationStorageRequestStorageInner `json:"storage,omitempty"`
-	Ports   []ApplicationPortRequestPortsInner      `json:"ports,omitempty"`
+	Storage []ServiceStorageRequestStorageInner `json:"storage,omitempty"`
+	Ports   []ServicePortRequestPortsInner      `json:"ports,omitempty"`
 	// name is case insensitive
 	Name string `json:"name"`
-	// give a description to this container
-	Description NullableString `json:"description,omitempty"`
 	// id of the linked registry
 	RegistryId string `json:"registry_id"`
 	// name of the image container
-	ImageName string  `json:"image_name"`
-	Arguments *string `json:"arguments,omitempty"`
+	ImageName string `json:"image_name"`
+	// tag of the image container
+	Tag       string   `json:"tag"`
+	Arguments []string `json:"arguments,omitempty"`
+	// optional entrypoint when launching container
+	Entrypoint *string `json:"entrypoint,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -35,22 +37,22 @@ type ContainerRequest struct {
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
+	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
 }
 
 // NewContainerRequest instantiates a new ContainerRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRequest(name string, registryId string, imageName string) *ContainerRequest {
+func NewContainerRequest(name string, registryId string, imageName string, tag string) *ContainerRequest {
 	this := ContainerRequest{}
 	this.Name = name
 	this.RegistryId = registryId
 	this.ImageName = imageName
-	var cpu int32 = 250
+	this.Tag = tag
+	var cpu int32 = 500
 	this.Cpu = &cpu
-	var memory int32 = 256
+	var memory int32 = 512
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
@@ -64,9 +66,9 @@ func NewContainerRequest(name string, registryId string, imageName string) *Cont
 // but it doesn't guarantee that properties required by API are set
 func NewContainerRequestWithDefaults() *ContainerRequest {
 	this := ContainerRequest{}
-	var cpu int32 = 250
+	var cpu int32 = 500
 	this.Cpu = &cpu
-	var memory int32 = 256
+	var memory int32 = 512
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
@@ -76,9 +78,9 @@ func NewContainerRequestWithDefaults() *ContainerRequest {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ContainerRequest) GetStorage() []ApplicationStorageRequestStorageInner {
+func (o *ContainerRequest) GetStorage() []ServiceStorageRequestStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageRequestStorageInner
+		var ret []ServiceStorageRequestStorageInner
 		return ret
 	}
 	return o.Storage
@@ -86,7 +88,7 @@ func (o *ContainerRequest) GetStorage() []ApplicationStorageRequestStorageInner 
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRequest) GetStorageOk() ([]ApplicationStorageRequestStorageInner, bool) {
+func (o *ContainerRequest) GetStorageOk() ([]ServiceStorageRequestStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -102,15 +104,15 @@ func (o *ContainerRequest) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageRequestStorageInner and assigns it to the Storage field.
-func (o *ContainerRequest) SetStorage(v []ApplicationStorageRequestStorageInner) {
+// SetStorage gets a reference to the given []ServiceStorageRequestStorageInner and assigns it to the Storage field.
+func (o *ContainerRequest) SetStorage(v []ServiceStorageRequestStorageInner) {
 	o.Storage = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ContainerRequest) GetPorts() []ApplicationPortRequestPortsInner {
+func (o *ContainerRequest) GetPorts() []ServicePortRequestPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortRequestPortsInner
+		var ret []ServicePortRequestPortsInner
 		return ret
 	}
 	return o.Ports
@@ -118,7 +120,7 @@ func (o *ContainerRequest) GetPorts() []ApplicationPortRequestPortsInner {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRequest) GetPortsOk() ([]ApplicationPortRequestPortsInner, bool) {
+func (o *ContainerRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -134,8 +136,8 @@ func (o *ContainerRequest) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortRequestPortsInner and assigns it to the Ports field.
-func (o *ContainerRequest) SetPorts(v []ApplicationPortRequestPortsInner) {
+// SetPorts gets a reference to the given []ServicePortRequestPortsInner and assigns it to the Ports field.
+func (o *ContainerRequest) SetPorts(v []ServicePortRequestPortsInner) {
 	o.Ports = v
 }
 
@@ -161,49 +163,6 @@ func (o *ContainerRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ContainerRequest) SetName(v string) {
 	o.Name = v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ContainerRequest) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ContainerRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *ContainerRequest) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *ContainerRequest) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ContainerRequest) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ContainerRequest) UnsetDescription() {
-	o.Description.Unset()
 }
 
 // GetRegistryId returns the RegistryId field value
@@ -254,18 +213,42 @@ func (o *ContainerRequest) SetImageName(v string) {
 	o.ImageName = v
 }
 
-// GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *ContainerRequest) GetArguments() string {
-	if o == nil || o.Arguments == nil {
+// GetTag returns the Tag field value
+func (o *ContainerRequest) GetTag() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Arguments
+
+	return o.Tag
+}
+
+// GetTagOk returns a tuple with the Tag field value
+// and a boolean to check if the value has been set.
+func (o *ContainerRequest) GetTagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Tag, true
+}
+
+// SetTag sets field value
+func (o *ContainerRequest) SetTag(v string) {
+	o.Tag = v
+}
+
+// GetArguments returns the Arguments field value if set, zero value otherwise.
+func (o *ContainerRequest) GetArguments() []string {
+	if o == nil || o.Arguments == nil {
+		var ret []string
+		return ret
+	}
+	return o.Arguments
 }
 
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRequest) GetArgumentsOk() (*string, bool) {
+func (o *ContainerRequest) GetArgumentsOk() ([]string, bool) {
 	if o == nil || o.Arguments == nil {
 		return nil, false
 	}
@@ -281,9 +264,41 @@ func (o *ContainerRequest) HasArguments() bool {
 	return false
 }
 
-// SetArguments gets a reference to the given string and assigns it to the Arguments field.
-func (o *ContainerRequest) SetArguments(v string) {
-	o.Arguments = &v
+// SetArguments gets a reference to the given []string and assigns it to the Arguments field.
+func (o *ContainerRequest) SetArguments(v []string) {
+	o.Arguments = v
+}
+
+// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
+func (o *ContainerRequest) GetEntrypoint() string {
+	if o == nil || o.Entrypoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.Entrypoint
+}
+
+// GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRequest) GetEntrypointOk() (*string, bool) {
+	if o == nil || o.Entrypoint == nil {
+		return nil, false
+	}
+	return o.Entrypoint, true
+}
+
+// HasEntrypoint returns a boolean if a field has been set.
+func (o *ContainerRequest) HasEntrypoint() bool {
+	if o != nil && o.Entrypoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
+func (o *ContainerRequest) SetEntrypoint(v string) {
+	o.Entrypoint = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -414,38 +429,6 @@ func (o *ContainerRequest) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = &v
 }
 
-// GetHealthcheck returns the Healthcheck field value if set, zero value otherwise.
-func (o *ContainerRequest) GetHealthcheck() Healthcheck {
-	if o == nil || o.Healthcheck == nil {
-		var ret Healthcheck
-		return ret
-	}
-	return *o.Healthcheck
-}
-
-// GetHealthcheckOk returns a tuple with the Healthcheck field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerRequest) GetHealthcheckOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthcheck == nil {
-		return nil, false
-	}
-	return o.Healthcheck, true
-}
-
-// HasHealthcheck returns a boolean if a field has been set.
-func (o *ContainerRequest) HasHealthcheck() bool {
-	if o != nil && o.Healthcheck != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthcheck gets a reference to the given Healthcheck and assigns it to the Healthcheck field.
-func (o *ContainerRequest) SetHealthcheck(v Healthcheck) {
-	o.Healthcheck = &v
-}
-
 func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Storage != nil {
@@ -457,17 +440,20 @@ func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
 	if true {
 		toSerialize["registry_id"] = o.RegistryId
 	}
 	if true {
 		toSerialize["image_name"] = o.ImageName
 	}
+	if true {
+		toSerialize["tag"] = o.Tag
+	}
 	if o.Arguments != nil {
 		toSerialize["arguments"] = o.Arguments
+	}
+	if o.Entrypoint != nil {
+		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
@@ -480,9 +466,6 @@ func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxRunningInstances != nil {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
-	}
-	if o.Healthcheck != nil {
-		toSerialize["healthcheck"] = o.Healthcheck
 	}
 	return json.Marshal(toSerialize)
 }

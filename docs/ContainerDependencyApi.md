@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CreateContainerDependency
 
-> ContainerResponse CreateContainerDependency(ctx, containerId).Execute()
+> ContainerResponse CreateContainerDependency(ctx, containerId, targetContainerId).Execute()
 
 NOT YET IMPLEMENTED - Add container dependency to this application.
 
@@ -32,10 +32,11 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    targetContainerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Target container ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerDependencyApi.CreateContainerDependency(context.Background(), containerId).Execute()
+    resp, r, err := apiClient.ContainerDependencyApi.CreateContainerDependency(context.Background(), containerId, targetContainerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerDependencyApi.CreateContainerDependency``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -52,6 +53,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **containerId** | **string** | Container ID | 
+**targetContainerId** | **string** | Target container ID | 
 
 ### Other Parameters
 
@@ -60,6 +62,7 @@ Other parameters are passed through a pointer to a apiCreateContainerDependencyR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

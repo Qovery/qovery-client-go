@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeploymentDelayStartTimeSec** | Pointer to **int32** | please use &#x60;readiness_probe.initial_delay_seconds&#x60; and &#x60;liveness_probe.initial_delay_seconds&#x60; instead | [optional] [default to 30]
 **DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying an application | [optional] [default to true]
-**BuildTimeoutMaxSec** | Pointer to **int32** |  | [optional] [default to 1800]
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] [default to 100]
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] [default to false]
 **NetworkIngressCorsAllowOrigin** | Pointer to **string** |  | [optional] [default to "*"]
@@ -46,31 +44,6 @@ NewContainerAdvancedSettingsWithDefaults instantiates a new ContainerAdvancedSet
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetDeploymentDelayStartTimeSec
-
-`func (o *ContainerAdvancedSettings) GetDeploymentDelayStartTimeSec() int32`
-
-GetDeploymentDelayStartTimeSec returns the DeploymentDelayStartTimeSec field if non-nil, zero value otherwise.
-
-### GetDeploymentDelayStartTimeSecOk
-
-`func (o *ContainerAdvancedSettings) GetDeploymentDelayStartTimeSecOk() (*int32, bool)`
-
-GetDeploymentDelayStartTimeSecOk returns a tuple with the DeploymentDelayStartTimeSec field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeploymentDelayStartTimeSec
-
-`func (o *ContainerAdvancedSettings) SetDeploymentDelayStartTimeSec(v int32)`
-
-SetDeploymentDelayStartTimeSec sets DeploymentDelayStartTimeSec field to given value.
-
-### HasDeploymentDelayStartTimeSec
-
-`func (o *ContainerAdvancedSettings) HasDeploymentDelayStartTimeSec() bool`
-
-HasDeploymentDelayStartTimeSec returns a boolean if a field has been set.
-
 ### GetDeploymentCustomDomainCheckEnabled
 
 `func (o *ContainerAdvancedSettings) GetDeploymentCustomDomainCheckEnabled() bool`
@@ -95,31 +68,6 @@ SetDeploymentCustomDomainCheckEnabled sets DeploymentCustomDomainCheckEnabled fi
 `func (o *ContainerAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool`
 
 HasDeploymentCustomDomainCheckEnabled returns a boolean if a field has been set.
-
-### GetBuildTimeoutMaxSec
-
-`func (o *ContainerAdvancedSettings) GetBuildTimeoutMaxSec() int32`
-
-GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field if non-nil, zero value otherwise.
-
-### GetBuildTimeoutMaxSecOk
-
-`func (o *ContainerAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool)`
-
-GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBuildTimeoutMaxSec
-
-`func (o *ContainerAdvancedSettings) SetBuildTimeoutMaxSec(v int32)`
-
-SetBuildTimeoutMaxSec sets BuildTimeoutMaxSec field to given value.
-
-### HasBuildTimeoutMaxSec
-
-`func (o *ContainerAdvancedSettings) HasBuildTimeoutMaxSec() bool`
-
-HasBuildTimeoutMaxSec returns a boolean if a field has been set.
 
 ### GetNetworkIngressProxyBodySizeMb
 

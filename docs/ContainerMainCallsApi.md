@@ -246,7 +246,7 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    containerEditRequest := *openapiclient.NewContainerEditRequest() // ContainerEditRequest |  (optional)
+    containerEditRequest := *openapiclient.NewContainerEditRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example") // ContainerEditRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

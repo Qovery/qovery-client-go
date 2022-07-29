@@ -5,24 +5,23 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Storage** | Pointer to [**[]ApplicationStorageStorageInner**](ApplicationStorageStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortPortsInner**](ApplicationPortPortsInner.md) |  | [optional] 
-**Name** | Pointer to **string** | name is case insensitive | [optional] 
-**Description** | Pointer to **string** | give a description to this application | [optional] 
-**RegistryId** | Pointer to **string** | id of the linked registry | [optional] 
-**ImageName** | Pointer to **string** | name of the image container | [optional] 
-**Arguments** | Pointer to **string** |  | [optional] 
-**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
+**Name** | **string** | name is case insensitive | 
+**RegistryId** | **string** | id of the linked registry | 
+**ImageName** | **string** | name of the image container | 
+**Tag** | **string** | tag of the image container | 
+**Arguments** | Pointer to **[]string** |  | [optional] 
+**Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
-**Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
-**StickySession** | Pointer to **bool** | Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  | [optional] [default to false]
 
 ## Methods
 
 ### NewContainerEditRequest
 
-`func NewContainerEditRequest() *ContainerEditRequest`
+`func NewContainerEditRequest(name string, registryId string, imageName string, tag string, ) *ContainerEditRequest`
 
 NewContainerEditRequest instantiates a new ContainerEditRequest object
 This constructor will assign default values to properties that have it defined,
@@ -64,20 +63,20 @@ HasStorage returns a boolean if a field has been set.
 
 ### GetPorts
 
-`func (o *ContainerEditRequest) GetPorts() []ApplicationPortPortsInner`
+`func (o *ContainerEditRequest) GetPorts() []ServicePortPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ContainerEditRequest) GetPortsOk() (*[]ApplicationPortPortsInner, bool)`
+`func (o *ContainerEditRequest) GetPortsOk() (*[]ServicePortPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ContainerEditRequest) SetPorts(v []ApplicationPortPortsInner)`
+`func (o *ContainerEditRequest) SetPorts(v []ServicePortPortsInner)`
 
 SetPorts sets Ports field to given value.
 
@@ -106,36 +105,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ContainerEditRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### GetDescription
-
-`func (o *ContainerEditRequest) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *ContainerEditRequest) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *ContainerEditRequest) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *ContainerEditRequest) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetRegistryId
 
@@ -156,11 +125,6 @@ and a boolean to check if the value has been set.
 
 SetRegistryId sets RegistryId field to given value.
 
-### HasRegistryId
-
-`func (o *ContainerEditRequest) HasRegistryId() bool`
-
-HasRegistryId returns a boolean if a field has been set.
 
 ### GetImageName
 
@@ -181,28 +145,43 @@ and a boolean to check if the value has been set.
 
 SetImageName sets ImageName field to given value.
 
-### HasImageName
 
-`func (o *ContainerEditRequest) HasImageName() bool`
+### GetTag
 
-HasImageName returns a boolean if a field has been set.
+`func (o *ContainerEditRequest) GetTag() string`
+
+GetTag returns the Tag field if non-nil, zero value otherwise.
+
+### GetTagOk
+
+`func (o *ContainerEditRequest) GetTagOk() (*string, bool)`
+
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTag
+
+`func (o *ContainerEditRequest) SetTag(v string)`
+
+SetTag sets Tag field to given value.
+
 
 ### GetArguments
 
-`func (o *ContainerEditRequest) GetArguments() string`
+`func (o *ContainerEditRequest) GetArguments() []string`
 
 GetArguments returns the Arguments field if non-nil, zero value otherwise.
 
 ### GetArgumentsOk
 
-`func (o *ContainerEditRequest) GetArgumentsOk() (*string, bool)`
+`func (o *ContainerEditRequest) GetArgumentsOk() (*[]string, bool)`
 
 GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArguments
 
-`func (o *ContainerEditRequest) SetArguments(v string)`
+`func (o *ContainerEditRequest) SetArguments(v []string)`
 
 SetArguments sets Arguments field to given value.
 
@@ -211,6 +190,31 @@ SetArguments sets Arguments field to given value.
 `func (o *ContainerEditRequest) HasArguments() bool`
 
 HasArguments returns a boolean if a field has been set.
+
+### GetEntrypoint
+
+`func (o *ContainerEditRequest) GetEntrypoint() string`
+
+GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
+
+### GetEntrypointOk
+
+`func (o *ContainerEditRequest) GetEntrypointOk() (*string, bool)`
+
+GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntrypoint
+
+`func (o *ContainerEditRequest) SetEntrypoint(v string)`
+
+SetEntrypoint sets Entrypoint field to given value.
+
+### HasEntrypoint
+
+`func (o *ContainerEditRequest) HasEntrypoint() bool`
+
+HasEntrypoint returns a boolean if a field has been set.
 
 ### GetCpu
 
@@ -311,56 +315,6 @@ SetMaxRunningInstances sets MaxRunningInstances field to given value.
 `func (o *ContainerEditRequest) HasMaxRunningInstances() bool`
 
 HasMaxRunningInstances returns a boolean if a field has been set.
-
-### GetHealthcheck
-
-`func (o *ContainerEditRequest) GetHealthcheck() Healthcheck`
-
-GetHealthcheck returns the Healthcheck field if non-nil, zero value otherwise.
-
-### GetHealthcheckOk
-
-`func (o *ContainerEditRequest) GetHealthcheckOk() (*Healthcheck, bool)`
-
-GetHealthcheckOk returns a tuple with the Healthcheck field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHealthcheck
-
-`func (o *ContainerEditRequest) SetHealthcheck(v Healthcheck)`
-
-SetHealthcheck sets Healthcheck field to given value.
-
-### HasHealthcheck
-
-`func (o *ContainerEditRequest) HasHealthcheck() bool`
-
-HasHealthcheck returns a boolean if a field has been set.
-
-### GetStickySession
-
-`func (o *ContainerEditRequest) GetStickySession() bool`
-
-GetStickySession returns the StickySession field if non-nil, zero value otherwise.
-
-### GetStickySessionOk
-
-`func (o *ContainerEditRequest) GetStickySessionOk() (*bool, bool)`
-
-GetStickySessionOk returns a tuple with the StickySession field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStickySession
-
-`func (o *ContainerEditRequest) SetStickySession(v bool)`
-
-SetStickySession sets StickySession field to given value.
-
-### HasStickySession
-
-`func (o *ContainerEditRequest) HasStickySession() bool`
-
-HasStickySession returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

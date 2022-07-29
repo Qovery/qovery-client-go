@@ -1,52 +1,52 @@
-# ApplicationStorageRequest
+# ServiceStorageRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Storage** | Pointer to [**[]ApplicationStorageRequestStorageInner**](ApplicationStorageRequestStorageInner.md) |  | [optional] 
+**Storage** | Pointer to [**[]ServiceStorageRequestStorageInner**](ServiceStorageRequestStorageInner.md) |  | [optional] 
 
 ## Methods
 
-### NewApplicationStorageRequest
+### NewServiceStorageRequest
 
-`func NewApplicationStorageRequest() *ApplicationStorageRequest`
+`func NewServiceStorageRequest() *ServiceStorageRequest`
 
-NewApplicationStorageRequest instantiates a new ApplicationStorageRequest object
+NewServiceStorageRequest instantiates a new ServiceStorageRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApplicationStorageRequestWithDefaults
+### NewServiceStorageRequestWithDefaults
 
-`func NewApplicationStorageRequestWithDefaults() *ApplicationStorageRequest`
+`func NewServiceStorageRequestWithDefaults() *ServiceStorageRequest`
 
-NewApplicationStorageRequestWithDefaults instantiates a new ApplicationStorageRequest object
+NewServiceStorageRequestWithDefaults instantiates a new ServiceStorageRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetStorage
 
-`func (o *ApplicationStorageRequest) GetStorage() []ApplicationStorageRequestStorageInner`
+`func (o *ServiceStorageRequest) GetStorage() []ServiceStorageRequestStorageInner`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *ApplicationStorageRequest) GetStorageOk() (*[]ApplicationStorageRequestStorageInner, bool)`
+`func (o *ServiceStorageRequest) GetStorageOk() (*[]ServiceStorageRequestStorageInner, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *ApplicationStorageRequest) SetStorage(v []ApplicationStorageRequestStorageInner)`
+`func (o *ServiceStorageRequest) SetStorage(v []ServiceStorageRequestStorageInner)`
 
 SetStorage sets Storage field to given value.
 
 ### HasStorage
 
-`func (o *ApplicationStorageRequest) HasStorage() bool`
+`func (o *ServiceStorageRequest) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
 

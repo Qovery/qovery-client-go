@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## EditContainerAdvancedSettings
 
-> ContainerAdvancedSettingsResponse EditContainerAdvancedSettings(ctx, containerId).ContainerAdvancedSettings(containerAdvancedSettings).Execute()
+> []ContainerAdvancedSettings EditContainerAdvancedSettings(ctx, containerId).ContainerAdvancedSettings(containerAdvancedSettings).Execute()
 
 NOT YET IMPLEMENTED - Edit advanced settings
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationApi.EditContainerAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditContainerAdvancedSettings`: ContainerAdvancedSettingsResponse
+    // response from `EditContainerAdvancedSettings`: []ContainerAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationApi.EditContainerAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ContainerAdvancedSettingsResponse**](ContainerAdvancedSettingsResponse.md)
+[**[]ContainerAdvancedSettings**](ContainerAdvancedSettings.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## GetContainerAdvancedSettings
 
-> ContainerAdvancedSettingsResponse GetContainerAdvancedSettings(ctx, containerId).Execute()
+> []ContainerAdvancedSettings GetContainerAdvancedSettings(ctx, containerId).Execute()
 
 NOT YET IMPLEMENTED - Get advanced settings
 
@@ -185,7 +185,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationApi.GetContainerAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetContainerAdvancedSettings`: ContainerAdvancedSettingsResponse
+    // response from `GetContainerAdvancedSettings`: []ContainerAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationApi.GetContainerAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ContainerAdvancedSettingsResponse**](ContainerAdvancedSettingsResponse.md)
+[**[]ContainerAdvancedSettings**](ContainerAdvancedSettings.md)
 
 ### Authorization
 

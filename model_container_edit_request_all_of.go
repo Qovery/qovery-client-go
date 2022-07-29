@@ -18,14 +18,16 @@ import (
 // ContainerEditRequestAllOf struct for ContainerEditRequestAllOf
 type ContainerEditRequestAllOf struct {
 	// name is case insensitive
-	Name *string `json:"name,omitempty"`
-	// give a description to this application
-	Description *string `json:"description,omitempty"`
+	Name string `json:"name"`
 	// id of the linked registry
-	RegistryId *string `json:"registry_id,omitempty"`
+	RegistryId string `json:"registry_id"`
 	// name of the image container
-	ImageName *string `json:"image_name,omitempty"`
-	Arguments *string `json:"arguments,omitempty"`
+	ImageName string `json:"image_name"`
+	// tag of the image container
+	Tag       string   `json:"tag"`
+	Arguments []string `json:"arguments,omitempty"`
+	// optional entrypoint when launching container
+	Entrypoint *string `json:"entrypoint,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -33,28 +35,27 @@ type ContainerEditRequestAllOf struct {
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
-	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession *bool `json:"sticky_session,omitempty"`
+	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
 }
 
 // NewContainerEditRequestAllOf instantiates a new ContainerEditRequestAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerEditRequestAllOf() *ContainerEditRequestAllOf {
+func NewContainerEditRequestAllOf(name string, registryId string, imageName string, tag string) *ContainerEditRequestAllOf {
 	this := ContainerEditRequestAllOf{}
-	var cpu int32 = 250
+	this.Name = name
+	this.RegistryId = registryId
+	this.ImageName = imageName
+	this.Tag = tag
+	var cpu int32 = 500
 	this.Cpu = &cpu
-	var memory int32 = 256
+	var memory int32 = 512
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
-	var stickySession bool = false
-	this.StickySession = &stickySession
 	return &this
 }
 
@@ -63,159 +64,125 @@ func NewContainerEditRequestAllOf() *ContainerEditRequestAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewContainerEditRequestAllOfWithDefaults() *ContainerEditRequestAllOf {
 	this := ContainerEditRequestAllOf{}
-	var cpu int32 = 250
+	var cpu int32 = 500
 	this.Cpu = &cpu
-	var memory int32 = 256
+	var memory int32 = 512
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
-	var stickySession bool = false
-	this.StickySession = &stickySession
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ContainerEditRequestAllOf) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ContainerEditRequestAllOf) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ContainerEditRequestAllOf) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ContainerEditRequestAllOf) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *ContainerEditRequestAllOf) GetDescription() string {
-	if o == nil || o.Description == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerEditRequestAllOf) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *ContainerEditRequestAllOf) HasDescription() bool {
-	if o != nil && o.Description != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *ContainerEditRequestAllOf) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetRegistryId returns the RegistryId field value if set, zero value otherwise.
+// GetRegistryId returns the RegistryId field value
 func (o *ContainerEditRequestAllOf) GetRegistryId() string {
-	if o == nil || o.RegistryId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.RegistryId
+
+	return o.RegistryId
 }
 
-// GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
+// GetRegistryIdOk returns a tuple with the RegistryId field value
 // and a boolean to check if the value has been set.
 func (o *ContainerEditRequestAllOf) GetRegistryIdOk() (*string, bool) {
-	if o == nil || o.RegistryId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RegistryId, true
+	return &o.RegistryId, true
 }
 
-// HasRegistryId returns a boolean if a field has been set.
-func (o *ContainerEditRequestAllOf) HasRegistryId() bool {
-	if o != nil && o.RegistryId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistryId gets a reference to the given string and assigns it to the RegistryId field.
+// SetRegistryId sets field value
 func (o *ContainerEditRequestAllOf) SetRegistryId(v string) {
-	o.RegistryId = &v
+	o.RegistryId = v
 }
 
-// GetImageName returns the ImageName field value if set, zero value otherwise.
+// GetImageName returns the ImageName field value
 func (o *ContainerEditRequestAllOf) GetImageName() string {
-	if o == nil || o.ImageName == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ImageName
+
+	return o.ImageName
 }
 
-// GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
+// GetImageNameOk returns a tuple with the ImageName field value
 // and a boolean to check if the value has been set.
 func (o *ContainerEditRequestAllOf) GetImageNameOk() (*string, bool) {
-	if o == nil || o.ImageName == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ImageName, true
+	return &o.ImageName, true
 }
 
-// HasImageName returns a boolean if a field has been set.
-func (o *ContainerEditRequestAllOf) HasImageName() bool {
-	if o != nil && o.ImageName != nil {
-		return true
+// SetImageName sets field value
+func (o *ContainerEditRequestAllOf) SetImageName(v string) {
+	o.ImageName = v
+}
+
+// GetTag returns the Tag field value
+func (o *ContainerEditRequestAllOf) GetTag() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.Tag
 }
 
-// SetImageName gets a reference to the given string and assigns it to the ImageName field.
-func (o *ContainerEditRequestAllOf) SetImageName(v string) {
-	o.ImageName = &v
+// GetTagOk returns a tuple with the Tag field value
+// and a boolean to check if the value has been set.
+func (o *ContainerEditRequestAllOf) GetTagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Tag, true
+}
+
+// SetTag sets field value
+func (o *ContainerEditRequestAllOf) SetTag(v string) {
+	o.Tag = v
 }
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *ContainerEditRequestAllOf) GetArguments() string {
+func (o *ContainerEditRequestAllOf) GetArguments() []string {
 	if o == nil || o.Arguments == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
-	return *o.Arguments
+	return o.Arguments
 }
 
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerEditRequestAllOf) GetArgumentsOk() (*string, bool) {
+func (o *ContainerEditRequestAllOf) GetArgumentsOk() ([]string, bool) {
 	if o == nil || o.Arguments == nil {
 		return nil, false
 	}
@@ -231,9 +198,41 @@ func (o *ContainerEditRequestAllOf) HasArguments() bool {
 	return false
 }
 
-// SetArguments gets a reference to the given string and assigns it to the Arguments field.
-func (o *ContainerEditRequestAllOf) SetArguments(v string) {
-	o.Arguments = &v
+// SetArguments gets a reference to the given []string and assigns it to the Arguments field.
+func (o *ContainerEditRequestAllOf) SetArguments(v []string) {
+	o.Arguments = v
+}
+
+// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
+func (o *ContainerEditRequestAllOf) GetEntrypoint() string {
+	if o == nil || o.Entrypoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.Entrypoint
+}
+
+// GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerEditRequestAllOf) GetEntrypointOk() (*string, bool) {
+	if o == nil || o.Entrypoint == nil {
+		return nil, false
+	}
+	return o.Entrypoint, true
+}
+
+// HasEntrypoint returns a boolean if a field has been set.
+func (o *ContainerEditRequestAllOf) HasEntrypoint() bool {
+	if o != nil && o.Entrypoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
+func (o *ContainerEditRequestAllOf) SetEntrypoint(v string) {
+	o.Entrypoint = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -364,86 +363,25 @@ func (o *ContainerEditRequestAllOf) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = &v
 }
 
-// GetHealthcheck returns the Healthcheck field value if set, zero value otherwise.
-func (o *ContainerEditRequestAllOf) GetHealthcheck() Healthcheck {
-	if o == nil || o.Healthcheck == nil {
-		var ret Healthcheck
-		return ret
-	}
-	return *o.Healthcheck
-}
-
-// GetHealthcheckOk returns a tuple with the Healthcheck field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerEditRequestAllOf) GetHealthcheckOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthcheck == nil {
-		return nil, false
-	}
-	return o.Healthcheck, true
-}
-
-// HasHealthcheck returns a boolean if a field has been set.
-func (o *ContainerEditRequestAllOf) HasHealthcheck() bool {
-	if o != nil && o.Healthcheck != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthcheck gets a reference to the given Healthcheck and assigns it to the Healthcheck field.
-func (o *ContainerEditRequestAllOf) SetHealthcheck(v Healthcheck) {
-	o.Healthcheck = &v
-}
-
-// GetStickySession returns the StickySession field value if set, zero value otherwise.
-func (o *ContainerEditRequestAllOf) GetStickySession() bool {
-	if o == nil || o.StickySession == nil {
-		var ret bool
-		return ret
-	}
-	return *o.StickySession
-}
-
-// GetStickySessionOk returns a tuple with the StickySession field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerEditRequestAllOf) GetStickySessionOk() (*bool, bool) {
-	if o == nil || o.StickySession == nil {
-		return nil, false
-	}
-	return o.StickySession, true
-}
-
-// HasStickySession returns a boolean if a field has been set.
-func (o *ContainerEditRequestAllOf) HasStickySession() bool {
-	if o != nil && o.StickySession != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStickySession gets a reference to the given bool and assigns it to the StickySession field.
-func (o *ContainerEditRequestAllOf) SetStickySession(v bool) {
-	o.StickySession = &v
-}
-
 func (o ContainerEditRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.RegistryId != nil {
+	if true {
 		toSerialize["registry_id"] = o.RegistryId
 	}
-	if o.ImageName != nil {
+	if true {
 		toSerialize["image_name"] = o.ImageName
+	}
+	if true {
+		toSerialize["tag"] = o.Tag
 	}
 	if o.Arguments != nil {
 		toSerialize["arguments"] = o.Arguments
+	}
+	if o.Entrypoint != nil {
+		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
@@ -456,12 +394,6 @@ func (o ContainerEditRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxRunningInstances != nil {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
-	}
-	if o.Healthcheck != nil {
-		toSerialize["healthcheck"] = o.Healthcheck
-	}
-	if o.StickySession != nil {
-		toSerialize["sticky_session"] = o.StickySession
 	}
 	return json.Marshal(toSerialize)
 }

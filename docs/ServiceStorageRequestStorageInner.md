@@ -1,4 +1,4 @@
-# ApplicationStorageRequestStorageInner
+# ServiceStorageRequestStorageInner
 
 ## Properties
 
@@ -10,79 +10,79 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewApplicationStorageRequestStorageInner
+### NewServiceStorageRequestStorageInner
 
-`func NewApplicationStorageRequestStorageInner(type_ StorageTypeEnum, size int32, mountPoint string, ) *ApplicationStorageRequestStorageInner`
+`func NewServiceStorageRequestStorageInner(type_ StorageTypeEnum, size int32, mountPoint string, ) *ServiceStorageRequestStorageInner`
 
-NewApplicationStorageRequestStorageInner instantiates a new ApplicationStorageRequestStorageInner object
+NewServiceStorageRequestStorageInner instantiates a new ServiceStorageRequestStorageInner object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApplicationStorageRequestStorageInnerWithDefaults
+### NewServiceStorageRequestStorageInnerWithDefaults
 
-`func NewApplicationStorageRequestStorageInnerWithDefaults() *ApplicationStorageRequestStorageInner`
+`func NewServiceStorageRequestStorageInnerWithDefaults() *ServiceStorageRequestStorageInner`
 
-NewApplicationStorageRequestStorageInnerWithDefaults instantiates a new ApplicationStorageRequestStorageInner object
+NewServiceStorageRequestStorageInnerWithDefaults instantiates a new ServiceStorageRequestStorageInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ApplicationStorageRequestStorageInner) GetType() StorageTypeEnum`
+`func (o *ServiceStorageRequestStorageInner) GetType() StorageTypeEnum`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ApplicationStorageRequestStorageInner) GetTypeOk() (*StorageTypeEnum, bool)`
+`func (o *ServiceStorageRequestStorageInner) GetTypeOk() (*StorageTypeEnum, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ApplicationStorageRequestStorageInner) SetType(v StorageTypeEnum)`
+`func (o *ServiceStorageRequestStorageInner) SetType(v StorageTypeEnum)`
 
 SetType sets Type field to given value.
 
 
 ### GetSize
 
-`func (o *ApplicationStorageRequestStorageInner) GetSize() int32`
+`func (o *ServiceStorageRequestStorageInner) GetSize() int32`
 
 GetSize returns the Size field if non-nil, zero value otherwise.
 
 ### GetSizeOk
 
-`func (o *ApplicationStorageRequestStorageInner) GetSizeOk() (*int32, bool)`
+`func (o *ServiceStorageRequestStorageInner) GetSizeOk() (*int32, bool)`
 
 GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSize
 
-`func (o *ApplicationStorageRequestStorageInner) SetSize(v int32)`
+`func (o *ServiceStorageRequestStorageInner) SetSize(v int32)`
 
 SetSize sets Size field to given value.
 
 
 ### GetMountPoint
 
-`func (o *ApplicationStorageRequestStorageInner) GetMountPoint() string`
+`func (o *ServiceStorageRequestStorageInner) GetMountPoint() string`
 
 GetMountPoint returns the MountPoint field if non-nil, zero value otherwise.
 
 ### GetMountPointOk
 
-`func (o *ApplicationStorageRequestStorageInner) GetMountPointOk() (*string, bool)`
+`func (o *ServiceStorageRequestStorageInner) GetMountPointOk() (*string, bool)`
 
 GetMountPointOk returns a tuple with the MountPoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMountPoint
 
-`func (o *ApplicationStorageRequestStorageInner) SetMountPoint(v string)`
+`func (o *ServiceStorageRequestStorageInner) SetMountPoint(v string)`
 
 SetMountPoint sets MountPoint field to given value.
 

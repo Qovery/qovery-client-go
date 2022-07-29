@@ -22,7 +22,7 @@ type Application struct {
 	CreatedAt     time.Time                        `json:"created_at"`
 	UpdatedAt     *time.Time                       `json:"updated_at,omitempty"`
 	Storage       []ApplicationStorageStorageInner `json:"storage,omitempty"`
-	Ports         []ApplicationPortPortsInner      `json:"ports,omitempty"`
+	Ports         []ServicePortPortsInner          `json:"ports,omitempty"`
 	Environment   *ReferenceObject                 `json:"environment,omitempty"`
 	GitRepository *ApplicationGitRepository        `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
@@ -214,9 +214,9 @@ func (o *Application) SetStorage(v []ApplicationStorageStorageInner) {
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *Application) GetPorts() []ApplicationPortPortsInner {
+func (o *Application) GetPorts() []ServicePortPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortPortsInner
+		var ret []ServicePortPortsInner
 		return ret
 	}
 	return o.Ports
@@ -224,7 +224,7 @@ func (o *Application) GetPorts() []ApplicationPortPortsInner {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Application) GetPortsOk() ([]ApplicationPortPortsInner, bool) {
+func (o *Application) GetPortsOk() ([]ServicePortPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -240,8 +240,8 @@ func (o *Application) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortPortsInner and assigns it to the Ports field.
-func (o *Application) SetPorts(v []ApplicationPortPortsInner) {
+// SetPorts gets a reference to the given []ServicePortPortsInner and assigns it to the Ports field.
+func (o *Application) SetPorts(v []ServicePortPortsInner) {
 	o.Ports = v
 }
 

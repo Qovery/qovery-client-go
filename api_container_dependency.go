@@ -24,9 +24,10 @@ import (
 type ContainerDependencyApiService service
 
 type ApiCreateContainerDependencyRequest struct {
-	ctx         context.Context
-	ApiService  *ContainerDependencyApiService
-	containerId string
+	ctx               context.Context
+	ApiService        *ContainerDependencyApiService
+	containerId       string
+	targetContainerId string
 }
 
 func (r ApiCreateContainerDependencyRequest) Execute() (*ContainerResponse, *http.Response, error) {
@@ -40,13 +41,15 @@ Add container dependency to this container to prevent this container starting be
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
+ @param targetContainerId Target container ID
  @return ApiCreateContainerDependencyRequest
 */
-func (a *ContainerDependencyApiService) CreateContainerDependency(ctx context.Context, containerId string) ApiCreateContainerDependencyRequest {
+func (a *ContainerDependencyApiService) CreateContainerDependency(ctx context.Context, containerId string, targetContainerId string) ApiCreateContainerDependencyRequest {
 	return ApiCreateContainerDependencyRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		containerId: containerId,
+		ApiService:        a,
+		ctx:               ctx,
+		containerId:       containerId,
+		targetContainerId: targetContainerId,
 	}
 }
 
@@ -67,6 +70,7 @@ func (a *ContainerDependencyApiService) CreateContainerDependencyExecute(r ApiCr
 
 	localVarPath := localBasePath + "/container/{containerId}/dependency/{targetContainerId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"targetContainerId"+"}", url.PathEscape(parameterToString(r.targetContainerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

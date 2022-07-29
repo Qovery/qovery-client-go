@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Storage** | Pointer to [**[]ApplicationStorageStorageInner**](ApplicationStorageStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortPortsInner**](ApplicationPortPortsInner.md) |  | [optional] 
+**Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
@@ -66,20 +66,20 @@ HasStorage returns a boolean if a field has been set.
 
 ### GetPorts
 
-`func (o *ApplicationEditRequest) GetPorts() []ApplicationPortPortsInner`
+`func (o *ApplicationEditRequest) GetPorts() []ServicePortPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ApplicationEditRequest) GetPortsOk() (*[]ApplicationPortPortsInner, bool)`
+`func (o *ApplicationEditRequest) GetPortsOk() (*[]ServicePortPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ApplicationEditRequest) SetPorts(v []ApplicationPortPortsInner)`
+`func (o *ApplicationEditRequest) SetPorts(v []ServicePortPortsInner)`
 
 SetPorts sets Ports field to given value.
 

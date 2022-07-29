@@ -1,156 +1,182 @@
-# ApplicationPortRequestPortsInner
+# ServicePortPortsInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
-**InternalPort** | **int32** | The listening port of your application | 
-**ExternalPort** | Pointer to **int32** | The exposed port for your application. This is optional. If not set a default port will be used. | [optional] 
+**InternalPort** | **int32** | The listening port of your service. | 
+**ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
 **Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to PORTPROTOCOLENUM_HTTP]
 
 ## Methods
 
-### NewApplicationPortRequestPortsInner
+### NewServicePortPortsInner
 
-`func NewApplicationPortRequestPortsInner(internalPort int32, publiclyAccessible bool, ) *ApplicationPortRequestPortsInner`
+`func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool, ) *ServicePortPortsInner`
 
-NewApplicationPortRequestPortsInner instantiates a new ApplicationPortRequestPortsInner object
+NewServicePortPortsInner instantiates a new ServicePortPortsInner object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApplicationPortRequestPortsInnerWithDefaults
+### NewServicePortPortsInnerWithDefaults
 
-`func NewApplicationPortRequestPortsInnerWithDefaults() *ApplicationPortRequestPortsInner`
+`func NewServicePortPortsInnerWithDefaults() *ServicePortPortsInner`
 
-NewApplicationPortRequestPortsInnerWithDefaults instantiates a new ApplicationPortRequestPortsInner object
+NewServicePortPortsInnerWithDefaults instantiates a new ServicePortPortsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetId
+
+`func (o *ServicePortPortsInner) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ServicePortPortsInner) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ServicePortPortsInner) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ServicePortPortsInner) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
 ### GetName
 
-`func (o *ApplicationPortRequestPortsInner) GetName() string`
+`func (o *ServicePortPortsInner) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ApplicationPortRequestPortsInner) GetNameOk() (*string, bool)`
+`func (o *ServicePortPortsInner) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ApplicationPortRequestPortsInner) SetName(v string)`
+`func (o *ServicePortPortsInner) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *ApplicationPortRequestPortsInner) HasName() bool`
+`func (o *ServicePortPortsInner) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### SetNameNil
 
-`func (o *ApplicationPortRequestPortsInner) SetNameNil(b bool)`
+`func (o *ServicePortPortsInner) SetNameNil(b bool)`
 
  SetNameNil sets the value for Name to be an explicit nil
 
 ### UnsetName
-`func (o *ApplicationPortRequestPortsInner) UnsetName()`
+`func (o *ServicePortPortsInner) UnsetName()`
 
 UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetInternalPort
 
-`func (o *ApplicationPortRequestPortsInner) GetInternalPort() int32`
+`func (o *ServicePortPortsInner) GetInternalPort() int32`
 
 GetInternalPort returns the InternalPort field if non-nil, zero value otherwise.
 
 ### GetInternalPortOk
 
-`func (o *ApplicationPortRequestPortsInner) GetInternalPortOk() (*int32, bool)`
+`func (o *ServicePortPortsInner) GetInternalPortOk() (*int32, bool)`
 
 GetInternalPortOk returns a tuple with the InternalPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalPort
 
-`func (o *ApplicationPortRequestPortsInner) SetInternalPort(v int32)`
+`func (o *ServicePortPortsInner) SetInternalPort(v int32)`
 
 SetInternalPort sets InternalPort field to given value.
 
 
 ### GetExternalPort
 
-`func (o *ApplicationPortRequestPortsInner) GetExternalPort() int32`
+`func (o *ServicePortPortsInner) GetExternalPort() int32`
 
 GetExternalPort returns the ExternalPort field if non-nil, zero value otherwise.
 
 ### GetExternalPortOk
 
-`func (o *ApplicationPortRequestPortsInner) GetExternalPortOk() (*int32, bool)`
+`func (o *ServicePortPortsInner) GetExternalPortOk() (*int32, bool)`
 
 GetExternalPortOk returns a tuple with the ExternalPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalPort
 
-`func (o *ApplicationPortRequestPortsInner) SetExternalPort(v int32)`
+`func (o *ServicePortPortsInner) SetExternalPort(v int32)`
 
 SetExternalPort sets ExternalPort field to given value.
 
 ### HasExternalPort
 
-`func (o *ApplicationPortRequestPortsInner) HasExternalPort() bool`
+`func (o *ServicePortPortsInner) HasExternalPort() bool`
 
 HasExternalPort returns a boolean if a field has been set.
 
 ### GetPubliclyAccessible
 
-`func (o *ApplicationPortRequestPortsInner) GetPubliclyAccessible() bool`
+`func (o *ServicePortPortsInner) GetPubliclyAccessible() bool`
 
 GetPubliclyAccessible returns the PubliclyAccessible field if non-nil, zero value otherwise.
 
 ### GetPubliclyAccessibleOk
 
-`func (o *ApplicationPortRequestPortsInner) GetPubliclyAccessibleOk() (*bool, bool)`
+`func (o *ServicePortPortsInner) GetPubliclyAccessibleOk() (*bool, bool)`
 
 GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPubliclyAccessible
 
-`func (o *ApplicationPortRequestPortsInner) SetPubliclyAccessible(v bool)`
+`func (o *ServicePortPortsInner) SetPubliclyAccessible(v bool)`
 
 SetPubliclyAccessible sets PubliclyAccessible field to given value.
 
 
 ### GetProtocol
 
-`func (o *ApplicationPortRequestPortsInner) GetProtocol() PortProtocolEnum`
+`func (o *ServicePortPortsInner) GetProtocol() PortProtocolEnum`
 
 GetProtocol returns the Protocol field if non-nil, zero value otherwise.
 
 ### GetProtocolOk
 
-`func (o *ApplicationPortRequestPortsInner) GetProtocolOk() (*PortProtocolEnum, bool)`
+`func (o *ServicePortPortsInner) GetProtocolOk() (*PortProtocolEnum, bool)`
 
 GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocol
 
-`func (o *ApplicationPortRequestPortsInner) SetProtocol(v PortProtocolEnum)`
+`func (o *ServicePortPortsInner) SetProtocol(v PortProtocolEnum)`
 
 SetProtocol sets Protocol field to given value.
 
 ### HasProtocol
 
-`func (o *ApplicationPortRequestPortsInner) HasProtocol() bool`
+`func (o *ServicePortPortsInner) HasProtocol() bool`
 
 HasProtocol returns a boolean if a field has been set.
 

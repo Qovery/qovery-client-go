@@ -17,12 +17,8 @@ import (
 
 // ContainerAdvancedSettings struct for ContainerAdvancedSettings
 type ContainerAdvancedSettings struct {
-	// please use `readiness_probe.initial_delay_seconds` and `liveness_probe.initial_delay_seconds` instead
-	// Deprecated
-	DeploymentDelayStartTimeSec *int32 `json:"deployment.delay_start_time_sec,omitempty"`
 	// disable custom domain check when deploying an application
 	DeploymentCustomDomainCheckEnabled *bool   `json:"deployment.custom_domain_check_enabled,omitempty"`
-	BuildTimeoutMaxSec                 *int32  `json:"build.timeout_max_sec,omitempty"`
 	NetworkIngressProxyBodySizeMb      *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
 	NetworkIngressEnableCors           *bool   `json:"network.ingress.enable_cors,omitempty"`
 	NetworkIngressCorsAllowOrigin      *string `json:"network.ingress.cors_allow_origin,omitempty"`
@@ -64,12 +60,8 @@ type ContainerAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this := ContainerAdvancedSettings{}
-	var deploymentDelayStartTimeSec int32 = 30
-	this.DeploymentDelayStartTimeSec = &deploymentDelayStartTimeSec
 	var deploymentCustomDomainCheckEnabled bool = true
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
-	var buildTimeoutMaxSec int32 = 1800
-	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
 	var networkIngressProxyBodySizeMb int32 = 100
 	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
 	var networkIngressEnableCors bool = false
@@ -116,12 +108,8 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this := ContainerAdvancedSettings{}
-	var deploymentDelayStartTimeSec int32 = 30
-	this.DeploymentDelayStartTimeSec = &deploymentDelayStartTimeSec
 	var deploymentCustomDomainCheckEnabled bool = true
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
-	var buildTimeoutMaxSec int32 = 1800
-	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
 	var networkIngressProxyBodySizeMb int32 = 100
 	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
 	var networkIngressEnableCors bool = false
@@ -163,41 +151,6 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	return &this
 }
 
-// GetDeploymentDelayStartTimeSec returns the DeploymentDelayStartTimeSec field value if set, zero value otherwise.
-// Deprecated
-func (o *ContainerAdvancedSettings) GetDeploymentDelayStartTimeSec() int32 {
-	if o == nil || o.DeploymentDelayStartTimeSec == nil {
-		var ret int32
-		return ret
-	}
-	return *o.DeploymentDelayStartTimeSec
-}
-
-// GetDeploymentDelayStartTimeSecOk returns a tuple with the DeploymentDelayStartTimeSec field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *ContainerAdvancedSettings) GetDeploymentDelayStartTimeSecOk() (*int32, bool) {
-	if o == nil || o.DeploymentDelayStartTimeSec == nil {
-		return nil, false
-	}
-	return o.DeploymentDelayStartTimeSec, true
-}
-
-// HasDeploymentDelayStartTimeSec returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasDeploymentDelayStartTimeSec() bool {
-	if o != nil && o.DeploymentDelayStartTimeSec != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeploymentDelayStartTimeSec gets a reference to the given int32 and assigns it to the DeploymentDelayStartTimeSec field.
-// Deprecated
-func (o *ContainerAdvancedSettings) SetDeploymentDelayStartTimeSec(v int32) {
-	o.DeploymentDelayStartTimeSec = &v
-}
-
 // GetDeploymentCustomDomainCheckEnabled returns the DeploymentCustomDomainCheckEnabled field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetDeploymentCustomDomainCheckEnabled() bool {
 	if o == nil || o.DeploymentCustomDomainCheckEnabled == nil {
@@ -228,38 +181,6 @@ func (o *ContainerAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool
 // SetDeploymentCustomDomainCheckEnabled gets a reference to the given bool and assigns it to the DeploymentCustomDomainCheckEnabled field.
 func (o *ContainerAdvancedSettings) SetDeploymentCustomDomainCheckEnabled(v bool) {
 	o.DeploymentCustomDomainCheckEnabled = &v
-}
-
-// GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
-	if o == nil || o.BuildTimeoutMaxSec == nil {
-		var ret int32
-		return ret
-	}
-	return *o.BuildTimeoutMaxSec
-}
-
-// GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
-	if o == nil || o.BuildTimeoutMaxSec == nil {
-		return nil, false
-	}
-	return o.BuildTimeoutMaxSec, true
-}
-
-// HasBuildTimeoutMaxSec returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasBuildTimeoutMaxSec() bool {
-	if o != nil && o.BuildTimeoutMaxSec != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBuildTimeoutMaxSec gets a reference to the given int32 and assigns it to the BuildTimeoutMaxSec field.
-func (o *ContainerAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
-	o.BuildTimeoutMaxSec = &v
 }
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
@@ -872,14 +793,8 @@ func (o *ContainerAdvancedSettings) SetLivenessProbeFailureThreshold(v int32) {
 
 func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeploymentDelayStartTimeSec != nil {
-		toSerialize["deployment.delay_start_time_sec"] = o.DeploymentDelayStartTimeSec
-	}
 	if o.DeploymentCustomDomainCheckEnabled != nil {
 		toSerialize["deployment.custom_domain_check_enabled"] = o.DeploymentCustomDomainCheckEnabled
-	}
-	if o.BuildTimeoutMaxSec != nil {
-		toSerialize["build.timeout_max_sec"] = o.BuildTimeoutMaxSec
 	}
 	if o.NetworkIngressProxyBodySizeMb != nil {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb

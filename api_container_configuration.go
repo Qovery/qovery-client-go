@@ -35,7 +35,7 @@ func (r ApiEditContainerAdvancedSettingsRequest) ContainerAdvancedSettings(conta
 	return r
 }
 
-func (r ApiEditContainerAdvancedSettingsRequest) Execute() (*ContainerAdvancedSettingsResponse, *http.Response, error) {
+func (r ApiEditContainerAdvancedSettingsRequest) Execute() ([]ContainerAdvancedSettings, *http.Response, error) {
 	return r.ApiService.EditContainerAdvancedSettingsExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *ContainerConfigurationApiService) EditContainerAdvancedSettings(ctx con
 }
 
 // Execute executes the request
-//  @return ContainerAdvancedSettingsResponse
-func (a *ContainerConfigurationApiService) EditContainerAdvancedSettingsExecute(r ApiEditContainerAdvancedSettingsRequest) (*ContainerAdvancedSettingsResponse, *http.Response, error) {
+//  @return []ContainerAdvancedSettings
+func (a *ContainerConfigurationApiService) EditContainerAdvancedSettingsExecute(r ApiEditContainerAdvancedSettingsRequest) ([]ContainerAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ContainerAdvancedSettingsResponse
+		localVarReturnValue []ContainerAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationApiService.EditContainerAdvancedSettings")
@@ -251,7 +251,7 @@ type ApiGetContainerAdvancedSettingsRequest struct {
 	containerId string
 }
 
-func (r ApiGetContainerAdvancedSettingsRequest) Execute() (*ContainerAdvancedSettingsResponse, *http.Response, error) {
+func (r ApiGetContainerAdvancedSettingsRequest) Execute() ([]ContainerAdvancedSettings, *http.Response, error) {
 	return r.ApiService.GetContainerAdvancedSettingsExecute(r)
 }
 
@@ -273,13 +273,13 @@ func (a *ContainerConfigurationApiService) GetContainerAdvancedSettings(ctx cont
 }
 
 // Execute executes the request
-//  @return ContainerAdvancedSettingsResponse
-func (a *ContainerConfigurationApiService) GetContainerAdvancedSettingsExecute(r ApiGetContainerAdvancedSettingsRequest) (*ContainerAdvancedSettingsResponse, *http.Response, error) {
+//  @return []ContainerAdvancedSettings
+func (a *ContainerConfigurationApiService) GetContainerAdvancedSettingsExecute(r ApiGetContainerAdvancedSettingsRequest) ([]ContainerAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ContainerAdvancedSettingsResponse
+		localVarReturnValue []ContainerAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationApiService.GetContainerAdvancedSettings")

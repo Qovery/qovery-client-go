@@ -8,20 +8,20 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ApplicationStorageStorageInner**](ApplicationStorageStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortPortsInner**](ApplicationPortPortsInner.md) |  | [optional] 
+**Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
-**MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Registry** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
+**MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
+**MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
-**Description** | Pointer to **NullableString** | give a description to this container | [optional] 
-**RegistryId** | Pointer to **string** | id of the linked registry | [optional] 
 **ImageName** | Pointer to **string** | name of the image container | [optional] 
-**Arguments** | Pointer to **string** |  | [optional] 
-**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Tag** | Pointer to **string** | tag of the image container | [optional] 
+**Arguments** | Pointer to **[]string** |  | [optional] 
+**Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
-**Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 
 ## Methods
 
@@ -134,20 +134,20 @@ HasStorage returns a boolean if a field has been set.
 
 ### GetPorts
 
-`func (o *ContainerResponse) GetPorts() []ApplicationPortPortsInner`
+`func (o *ContainerResponse) GetPorts() []ServicePortPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ContainerResponse) GetPortsOk() (*[]ApplicationPortPortsInner, bool)`
+`func (o *ContainerResponse) GetPortsOk() (*[]ServicePortPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ContainerResponse) SetPorts(v []ApplicationPortPortsInner)`
+`func (o *ContainerResponse) SetPorts(v []ServicePortPortsInner)`
 
 SetPorts sets Ports field to given value.
 
@@ -181,6 +181,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *ContainerResponse) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetRegistry
+
+`func (o *ContainerResponse) GetRegistry() ReferenceObject`
+
+GetRegistry returns the Registry field if non-nil, zero value otherwise.
+
+### GetRegistryOk
+
+`func (o *ContainerResponse) GetRegistryOk() (*ReferenceObject, bool)`
+
+GetRegistryOk returns a tuple with the Registry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegistry
+
+`func (o *ContainerResponse) SetRegistry(v ReferenceObject)`
+
+SetRegistry sets Registry field to given value.
+
+### HasRegistry
+
+`func (o *ContainerResponse) HasRegistry() bool`
+
+HasRegistry returns a boolean if a field has been set.
 
 ### GetMaximumCpu
 
@@ -257,66 +282,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### GetDescription
-
-`func (o *ContainerResponse) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *ContainerResponse) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *ContainerResponse) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *ContainerResponse) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *ContainerResponse) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *ContainerResponse) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetRegistryId
-
-`func (o *ContainerResponse) GetRegistryId() string`
-
-GetRegistryId returns the RegistryId field if non-nil, zero value otherwise.
-
-### GetRegistryIdOk
-
-`func (o *ContainerResponse) GetRegistryIdOk() (*string, bool)`
-
-GetRegistryIdOk returns a tuple with the RegistryId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegistryId
-
-`func (o *ContainerResponse) SetRegistryId(v string)`
-
-SetRegistryId sets RegistryId field to given value.
-
-### HasRegistryId
-
-`func (o *ContainerResponse) HasRegistryId() bool`
-
-HasRegistryId returns a boolean if a field has been set.
-
 ### GetImageName
 
 `func (o *ContainerResponse) GetImageName() string`
@@ -342,22 +307,47 @@ SetImageName sets ImageName field to given value.
 
 HasImageName returns a boolean if a field has been set.
 
+### GetTag
+
+`func (o *ContainerResponse) GetTag() string`
+
+GetTag returns the Tag field if non-nil, zero value otherwise.
+
+### GetTagOk
+
+`func (o *ContainerResponse) GetTagOk() (*string, bool)`
+
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTag
+
+`func (o *ContainerResponse) SetTag(v string)`
+
+SetTag sets Tag field to given value.
+
+### HasTag
+
+`func (o *ContainerResponse) HasTag() bool`
+
+HasTag returns a boolean if a field has been set.
+
 ### GetArguments
 
-`func (o *ContainerResponse) GetArguments() string`
+`func (o *ContainerResponse) GetArguments() []string`
 
 GetArguments returns the Arguments field if non-nil, zero value otherwise.
 
 ### GetArgumentsOk
 
-`func (o *ContainerResponse) GetArgumentsOk() (*string, bool)`
+`func (o *ContainerResponse) GetArgumentsOk() (*[]string, bool)`
 
 GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArguments
 
-`func (o *ContainerResponse) SetArguments(v string)`
+`func (o *ContainerResponse) SetArguments(v []string)`
 
 SetArguments sets Arguments field to given value.
 
@@ -366,6 +356,31 @@ SetArguments sets Arguments field to given value.
 `func (o *ContainerResponse) HasArguments() bool`
 
 HasArguments returns a boolean if a field has been set.
+
+### GetEntrypoint
+
+`func (o *ContainerResponse) GetEntrypoint() string`
+
+GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
+
+### GetEntrypointOk
+
+`func (o *ContainerResponse) GetEntrypointOk() (*string, bool)`
+
+GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntrypoint
+
+`func (o *ContainerResponse) SetEntrypoint(v string)`
+
+SetEntrypoint sets Entrypoint field to given value.
+
+### HasEntrypoint
+
+`func (o *ContainerResponse) HasEntrypoint() bool`
+
+HasEntrypoint returns a boolean if a field has been set.
 
 ### GetCpu
 
@@ -466,31 +481,6 @@ SetMaxRunningInstances sets MaxRunningInstances field to given value.
 `func (o *ContainerResponse) HasMaxRunningInstances() bool`
 
 HasMaxRunningInstances returns a boolean if a field has been set.
-
-### GetHealthcheck
-
-`func (o *ContainerResponse) GetHealthcheck() Healthcheck`
-
-GetHealthcheck returns the Healthcheck field if non-nil, zero value otherwise.
-
-### GetHealthcheckOk
-
-`func (o *ContainerResponse) GetHealthcheckOk() (*Healthcheck, bool)`
-
-GetHealthcheckOk returns a tuple with the Healthcheck field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHealthcheck
-
-`func (o *ContainerResponse) SetHealthcheck(v Healthcheck)`
-
-SetHealthcheck sets Healthcheck field to given value.
-
-### HasHealthcheck
-
-`func (o *ContainerResponse) HasHealthcheck() bool`
-
-HasHealthcheck returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

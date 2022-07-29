@@ -15,24 +15,25 @@ import (
 	"encoding/json"
 )
 
-// ApplicationPortRequestPortsInner struct for ApplicationPortRequestPortsInner
-type ApplicationPortRequestPortsInner struct {
+// ServicePortPortsInner struct for ServicePortPortsInner
+type ServicePortPortsInner struct {
+	Id   *string        `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
-	// The listening port of your application
+	// The listening port of your service.
 	InternalPort int32 `json:"internal_port"`
-	// The exposed port for your application. This is optional. If not set a default port will be used.
+	// The exposed port for your service. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
 	PubliclyAccessible bool              `json:"publicly_accessible"`
 	Protocol           *PortProtocolEnum `json:"protocol,omitempty"`
 }
 
-// NewApplicationPortRequestPortsInner instantiates a new ApplicationPortRequestPortsInner object
+// NewServicePortPortsInner instantiates a new ServicePortPortsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationPortRequestPortsInner(internalPort int32, publiclyAccessible bool) *ApplicationPortRequestPortsInner {
-	this := ApplicationPortRequestPortsInner{}
+func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool) *ServicePortPortsInner {
+	this := ServicePortPortsInner{}
 	this.InternalPort = internalPort
 	this.PubliclyAccessible = publiclyAccessible
 	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
@@ -40,18 +41,50 @@ func NewApplicationPortRequestPortsInner(internalPort int32, publiclyAccessible 
 	return &this
 }
 
-// NewApplicationPortRequestPortsInnerWithDefaults instantiates a new ApplicationPortRequestPortsInner object
+// NewServicePortPortsInnerWithDefaults instantiates a new ServicePortPortsInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApplicationPortRequestPortsInnerWithDefaults() *ApplicationPortRequestPortsInner {
-	this := ApplicationPortRequestPortsInner{}
+func NewServicePortPortsInnerWithDefaults() *ServicePortPortsInner {
+	this := ServicePortPortsInner{}
 	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
 	this.Protocol = &protocol
 	return &this
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ServicePortPortsInner) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePortPortsInner) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ServicePortPortsInner) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ServicePortPortsInner) SetId(v string) {
+	o.Id = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApplicationPortRequestPortsInner) GetName() string {
+func (o *ServicePortPortsInner) GetName() string {
 	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
@@ -62,7 +95,7 @@ func (o *ApplicationPortRequestPortsInner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationPortRequestPortsInner) GetNameOk() (*string, bool) {
+func (o *ServicePortPortsInner) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -70,7 +103,7 @@ func (o *ApplicationPortRequestPortsInner) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ApplicationPortRequestPortsInner) HasName() bool {
+func (o *ServicePortPortsInner) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -79,22 +112,22 @@ func (o *ApplicationPortRequestPortsInner) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *ApplicationPortRequestPortsInner) SetName(v string) {
+func (o *ServicePortPortsInner) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *ApplicationPortRequestPortsInner) SetNameNil() {
+func (o *ServicePortPortsInner) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ApplicationPortRequestPortsInner) UnsetName() {
+func (o *ServicePortPortsInner) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetInternalPort returns the InternalPort field value
-func (o *ApplicationPortRequestPortsInner) GetInternalPort() int32 {
+func (o *ServicePortPortsInner) GetInternalPort() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -105,7 +138,7 @@ func (o *ApplicationPortRequestPortsInner) GetInternalPort() int32 {
 
 // GetInternalPortOk returns a tuple with the InternalPort field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationPortRequestPortsInner) GetInternalPortOk() (*int32, bool) {
+func (o *ServicePortPortsInner) GetInternalPortOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -113,12 +146,12 @@ func (o *ApplicationPortRequestPortsInner) GetInternalPortOk() (*int32, bool) {
 }
 
 // SetInternalPort sets field value
-func (o *ApplicationPortRequestPortsInner) SetInternalPort(v int32) {
+func (o *ServicePortPortsInner) SetInternalPort(v int32) {
 	o.InternalPort = v
 }
 
 // GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
-func (o *ApplicationPortRequestPortsInner) GetExternalPort() int32 {
+func (o *ServicePortPortsInner) GetExternalPort() int32 {
 	if o == nil || o.ExternalPort == nil {
 		var ret int32
 		return ret
@@ -128,7 +161,7 @@ func (o *ApplicationPortRequestPortsInner) GetExternalPort() int32 {
 
 // GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPortRequestPortsInner) GetExternalPortOk() (*int32, bool) {
+func (o *ServicePortPortsInner) GetExternalPortOk() (*int32, bool) {
 	if o == nil || o.ExternalPort == nil {
 		return nil, false
 	}
@@ -136,7 +169,7 @@ func (o *ApplicationPortRequestPortsInner) GetExternalPortOk() (*int32, bool) {
 }
 
 // HasExternalPort returns a boolean if a field has been set.
-func (o *ApplicationPortRequestPortsInner) HasExternalPort() bool {
+func (o *ServicePortPortsInner) HasExternalPort() bool {
 	if o != nil && o.ExternalPort != nil {
 		return true
 	}
@@ -145,12 +178,12 @@ func (o *ApplicationPortRequestPortsInner) HasExternalPort() bool {
 }
 
 // SetExternalPort gets a reference to the given int32 and assigns it to the ExternalPort field.
-func (o *ApplicationPortRequestPortsInner) SetExternalPort(v int32) {
+func (o *ServicePortPortsInner) SetExternalPort(v int32) {
 	o.ExternalPort = &v
 }
 
 // GetPubliclyAccessible returns the PubliclyAccessible field value
-func (o *ApplicationPortRequestPortsInner) GetPubliclyAccessible() bool {
+func (o *ServicePortPortsInner) GetPubliclyAccessible() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -161,7 +194,7 @@ func (o *ApplicationPortRequestPortsInner) GetPubliclyAccessible() bool {
 
 // GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationPortRequestPortsInner) GetPubliclyAccessibleOk() (*bool, bool) {
+func (o *ServicePortPortsInner) GetPubliclyAccessibleOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,12 +202,12 @@ func (o *ApplicationPortRequestPortsInner) GetPubliclyAccessibleOk() (*bool, boo
 }
 
 // SetPubliclyAccessible sets field value
-func (o *ApplicationPortRequestPortsInner) SetPubliclyAccessible(v bool) {
+func (o *ServicePortPortsInner) SetPubliclyAccessible(v bool) {
 	o.PubliclyAccessible = v
 }
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *ApplicationPortRequestPortsInner) GetProtocol() PortProtocolEnum {
+func (o *ServicePortPortsInner) GetProtocol() PortProtocolEnum {
 	if o == nil || o.Protocol == nil {
 		var ret PortProtocolEnum
 		return ret
@@ -184,7 +217,7 @@ func (o *ApplicationPortRequestPortsInner) GetProtocol() PortProtocolEnum {
 
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPortRequestPortsInner) GetProtocolOk() (*PortProtocolEnum, bool) {
+func (o *ServicePortPortsInner) GetProtocolOk() (*PortProtocolEnum, bool) {
 	if o == nil || o.Protocol == nil {
 		return nil, false
 	}
@@ -192,7 +225,7 @@ func (o *ApplicationPortRequestPortsInner) GetProtocolOk() (*PortProtocolEnum, b
 }
 
 // HasProtocol returns a boolean if a field has been set.
-func (o *ApplicationPortRequestPortsInner) HasProtocol() bool {
+func (o *ServicePortPortsInner) HasProtocol() bool {
 	if o != nil && o.Protocol != nil {
 		return true
 	}
@@ -201,12 +234,15 @@ func (o *ApplicationPortRequestPortsInner) HasProtocol() bool {
 }
 
 // SetProtocol gets a reference to the given PortProtocolEnum and assigns it to the Protocol field.
-func (o *ApplicationPortRequestPortsInner) SetProtocol(v PortProtocolEnum) {
+func (o *ServicePortPortsInner) SetProtocol(v PortProtocolEnum) {
 	o.Protocol = &v
 }
 
-func (o ApplicationPortRequestPortsInner) MarshalJSON() ([]byte, error) {
+func (o ServicePortPortsInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -225,38 +261,38 @@ func (o ApplicationPortRequestPortsInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableApplicationPortRequestPortsInner struct {
-	value *ApplicationPortRequestPortsInner
+type NullableServicePortPortsInner struct {
+	value *ServicePortPortsInner
 	isSet bool
 }
 
-func (v NullableApplicationPortRequestPortsInner) Get() *ApplicationPortRequestPortsInner {
+func (v NullableServicePortPortsInner) Get() *ServicePortPortsInner {
 	return v.value
 }
 
-func (v *NullableApplicationPortRequestPortsInner) Set(val *ApplicationPortRequestPortsInner) {
+func (v *NullableServicePortPortsInner) Set(val *ServicePortPortsInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableApplicationPortRequestPortsInner) IsSet() bool {
+func (v NullableServicePortPortsInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableApplicationPortRequestPortsInner) Unset() {
+func (v *NullableServicePortPortsInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableApplicationPortRequestPortsInner(val *ApplicationPortRequestPortsInner) *NullableApplicationPortRequestPortsInner {
-	return &NullableApplicationPortRequestPortsInner{value: val, isSet: true}
+func NewNullableServicePortPortsInner(val *ServicePortPortsInner) *NullableServicePortPortsInner {
+	return &NullableServicePortPortsInner{value: val, isSet: true}
 }
 
-func (v NullableApplicationPortRequestPortsInner) MarshalJSON() ([]byte, error) {
+func (v NullableServicePortPortsInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableApplicationPortRequestPortsInner) UnmarshalJSON(src []byte) error {
+func (v *NullableServicePortPortsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

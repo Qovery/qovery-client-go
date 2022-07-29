@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// ApplicationPort struct for ApplicationPort
-type ApplicationPort struct {
-	Ports []ApplicationPortPortsInner `json:"ports,omitempty"`
+// ServicePortRequest struct for ServicePortRequest
+type ServicePortRequest struct {
+	Ports []ServicePortRequestPortsInner `json:"ports,omitempty"`
 }
 
-// NewApplicationPort instantiates a new ApplicationPort object
+// NewServicePortRequest instantiates a new ServicePortRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationPort() *ApplicationPort {
-	this := ApplicationPort{}
+func NewServicePortRequest() *ServicePortRequest {
+	this := ServicePortRequest{}
 	return &this
 }
 
-// NewApplicationPortWithDefaults instantiates a new ApplicationPort object
+// NewServicePortRequestWithDefaults instantiates a new ServicePortRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApplicationPortWithDefaults() *ApplicationPort {
-	this := ApplicationPort{}
+func NewServicePortRequestWithDefaults() *ServicePortRequest {
+	this := ServicePortRequest{}
 	return &this
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationPort) GetPorts() []ApplicationPortPortsInner {
+func (o *ServicePortRequest) GetPorts() []ServicePortRequestPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortPortsInner
+		var ret []ServicePortRequestPortsInner
 		return ret
 	}
 	return o.Ports
@@ -48,7 +48,7 @@ func (o *ApplicationPort) GetPorts() []ApplicationPortPortsInner {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationPort) GetPortsOk() ([]ApplicationPortPortsInner, bool) {
+func (o *ServicePortRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ApplicationPort) GetPortsOk() ([]ApplicationPortPortsInner, bool) {
 }
 
 // HasPorts returns a boolean if a field has been set.
-func (o *ApplicationPort) HasPorts() bool {
+func (o *ServicePortRequest) HasPorts() bool {
 	if o != nil && o.Ports != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *ApplicationPort) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortPortsInner and assigns it to the Ports field.
-func (o *ApplicationPort) SetPorts(v []ApplicationPortPortsInner) {
+// SetPorts gets a reference to the given []ServicePortRequestPortsInner and assigns it to the Ports field.
+func (o *ServicePortRequest) SetPorts(v []ServicePortRequestPortsInner) {
 	o.Ports = v
 }
 
-func (o ApplicationPort) MarshalJSON() ([]byte, error) {
+func (o ServicePortRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Ports != nil {
 		toSerialize["ports"] = o.Ports
@@ -77,38 +77,38 @@ func (o ApplicationPort) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableApplicationPort struct {
-	value *ApplicationPort
+type NullableServicePortRequest struct {
+	value *ServicePortRequest
 	isSet bool
 }
 
-func (v NullableApplicationPort) Get() *ApplicationPort {
+func (v NullableServicePortRequest) Get() *ServicePortRequest {
 	return v.value
 }
 
-func (v *NullableApplicationPort) Set(val *ApplicationPort) {
+func (v *NullableServicePortRequest) Set(val *ServicePortRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableApplicationPort) IsSet() bool {
+func (v NullableServicePortRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableApplicationPort) Unset() {
+func (v *NullableServicePortRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableApplicationPort(val *ApplicationPort) *NullableApplicationPort {
-	return &NullableApplicationPort{value: val, isSet: true}
+func NewNullableServicePortRequest(val *ServicePortRequest) *NullableServicePortRequest {
+	return &NullableServicePortRequest{value: val, isSet: true}
 }
 
-func (v NullableApplicationPort) MarshalJSON() ([]byte, error) {
+func (v NullableServicePortRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableApplicationPort) UnmarshalJSON(src []byte) error {
+func (v *NullableServicePortRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

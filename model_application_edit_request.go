@@ -18,7 +18,7 @@ import (
 // ApplicationEditRequest struct for ApplicationEditRequest
 type ApplicationEditRequest struct {
 	Storage []ApplicationStorageStorageInner `json:"storage,omitempty"`
-	Ports   []ApplicationPortPortsInner      `json:"ports,omitempty"`
+	Ports   []ServicePortPortsInner          `json:"ports,omitempty"`
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
@@ -121,9 +121,9 @@ func (o *ApplicationEditRequest) SetStorage(v []ApplicationStorageStorageInner) 
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetPorts() []ApplicationPortPortsInner {
+func (o *ApplicationEditRequest) GetPorts() []ServicePortPortsInner {
 	if o == nil || o.Ports == nil {
-		var ret []ApplicationPortPortsInner
+		var ret []ServicePortPortsInner
 		return ret
 	}
 	return o.Ports
@@ -131,7 +131,7 @@ func (o *ApplicationEditRequest) GetPorts() []ApplicationPortPortsInner {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetPortsOk() ([]ApplicationPortPortsInner, bool) {
+func (o *ApplicationEditRequest) GetPortsOk() ([]ServicePortPortsInner, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -147,8 +147,8 @@ func (o *ApplicationEditRequest) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ApplicationPortPortsInner and assigns it to the Ports field.
-func (o *ApplicationEditRequest) SetPorts(v []ApplicationPortPortsInner) {
+// SetPorts gets a reference to the given []ServicePortPortsInner and assigns it to the Ports field.
+func (o *ApplicationEditRequest) SetPorts(v []ServicePortPortsInner) {
 	o.Ports = v
 }
 

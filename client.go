@@ -122,8 +122,6 @@ type APIClient struct {
 
 	DatabaseApplicationApi *DatabaseApplicationApiService
 
-	DatabaseContainerApi *DatabaseContainerApiService
-
 	DatabaseDeploymentHistoryApi *DatabaseDeploymentHistoryApiService
 
 	DatabaseEventApi *DatabaseEventApiService
@@ -235,7 +233,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CustomDomainApi = (*CustomDomainApiService)(&c.common)
 	c.DatabaseActionsApi = (*DatabaseActionsApiService)(&c.common)
 	c.DatabaseApplicationApi = (*DatabaseApplicationApiService)(&c.common)
-	c.DatabaseContainerApi = (*DatabaseContainerApiService)(&c.common)
 	c.DatabaseDeploymentHistoryApi = (*DatabaseDeploymentHistoryApiService)(&c.common)
 	c.DatabaseEventApi = (*DatabaseEventApiService)(&c.common)
 	c.DatabaseMainCallsApi = (*DatabaseMainCallsApiService)(&c.common)

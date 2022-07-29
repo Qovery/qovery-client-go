@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Storage** | Pointer to [**[]ApplicationStorageRequestStorageInner**](ApplicationStorageRequestStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortRequestPortsInner**](ApplicationPortRequestPortsInner.md) |  | [optional] 
+**Storage** | Pointer to [**[]ServiceStorageRequestStorageInner**](ServiceStorageRequestStorageInner.md) |  | [optional] 
+**Ports** | Pointer to [**[]ServicePortRequestPortsInner**](ServicePortRequestPortsInner.md) |  | [optional] 
 **Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **NullableString** | give a description to this container | [optional] 
 **RegistryId** | **string** | id of the linked registry | 
 **ImageName** | **string** | name of the image container | 
-**Arguments** | Pointer to **string** |  | [optional] 
-**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Tag** | **string** | tag of the image container | 
+**Arguments** | Pointer to **[]string** |  | [optional] 
+**Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
-**Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 
 ## Methods
 
 ### NewContainerRequest
 
-`func NewContainerRequest(name string, registryId string, imageName string, ) *ContainerRequest`
+`func NewContainerRequest(name string, registryId string, imageName string, tag string, ) *ContainerRequest`
 
 NewContainerRequest instantiates a new ContainerRequest object
 This constructor will assign default values to properties that have it defined,
@@ -38,20 +38,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStorage
 
-`func (o *ContainerRequest) GetStorage() []ApplicationStorageRequestStorageInner`
+`func (o *ContainerRequest) GetStorage() []ServiceStorageRequestStorageInner`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *ContainerRequest) GetStorageOk() (*[]ApplicationStorageRequestStorageInner, bool)`
+`func (o *ContainerRequest) GetStorageOk() (*[]ServiceStorageRequestStorageInner, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *ContainerRequest) SetStorage(v []ApplicationStorageRequestStorageInner)`
+`func (o *ContainerRequest) SetStorage(v []ServiceStorageRequestStorageInner)`
 
 SetStorage sets Storage field to given value.
 
@@ -63,20 +63,20 @@ HasStorage returns a boolean if a field has been set.
 
 ### GetPorts
 
-`func (o *ContainerRequest) GetPorts() []ApplicationPortRequestPortsInner`
+`func (o *ContainerRequest) GetPorts() []ServicePortRequestPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ContainerRequest) GetPortsOk() (*[]ApplicationPortRequestPortsInner, bool)`
+`func (o *ContainerRequest) GetPortsOk() (*[]ServicePortRequestPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ContainerRequest) SetPorts(v []ApplicationPortRequestPortsInner)`
+`func (o *ContainerRequest) SetPorts(v []ServicePortRequestPortsInner)`
 
 SetPorts sets Ports field to given value.
 
@@ -106,41 +106,6 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetDescription
-
-`func (o *ContainerRequest) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *ContainerRequest) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *ContainerRequest) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *ContainerRequest) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *ContainerRequest) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *ContainerRequest) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetRegistryId
 
 `func (o *ContainerRequest) GetRegistryId() string`
@@ -181,22 +146,42 @@ and a boolean to check if the value has been set.
 SetImageName sets ImageName field to given value.
 
 
+### GetTag
+
+`func (o *ContainerRequest) GetTag() string`
+
+GetTag returns the Tag field if non-nil, zero value otherwise.
+
+### GetTagOk
+
+`func (o *ContainerRequest) GetTagOk() (*string, bool)`
+
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTag
+
+`func (o *ContainerRequest) SetTag(v string)`
+
+SetTag sets Tag field to given value.
+
+
 ### GetArguments
 
-`func (o *ContainerRequest) GetArguments() string`
+`func (o *ContainerRequest) GetArguments() []string`
 
 GetArguments returns the Arguments field if non-nil, zero value otherwise.
 
 ### GetArgumentsOk
 
-`func (o *ContainerRequest) GetArgumentsOk() (*string, bool)`
+`func (o *ContainerRequest) GetArgumentsOk() (*[]string, bool)`
 
 GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArguments
 
-`func (o *ContainerRequest) SetArguments(v string)`
+`func (o *ContainerRequest) SetArguments(v []string)`
 
 SetArguments sets Arguments field to given value.
 
@@ -205,6 +190,31 @@ SetArguments sets Arguments field to given value.
 `func (o *ContainerRequest) HasArguments() bool`
 
 HasArguments returns a boolean if a field has been set.
+
+### GetEntrypoint
+
+`func (o *ContainerRequest) GetEntrypoint() string`
+
+GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
+
+### GetEntrypointOk
+
+`func (o *ContainerRequest) GetEntrypointOk() (*string, bool)`
+
+GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntrypoint
+
+`func (o *ContainerRequest) SetEntrypoint(v string)`
+
+SetEntrypoint sets Entrypoint field to given value.
+
+### HasEntrypoint
+
+`func (o *ContainerRequest) HasEntrypoint() bool`
+
+HasEntrypoint returns a boolean if a field has been set.
 
 ### GetCpu
 
@@ -305,31 +315,6 @@ SetMaxRunningInstances sets MaxRunningInstances field to given value.
 `func (o *ContainerRequest) HasMaxRunningInstances() bool`
 
 HasMaxRunningInstances returns a boolean if a field has been set.
-
-### GetHealthcheck
-
-`func (o *ContainerRequest) GetHealthcheck() Healthcheck`
-
-GetHealthcheck returns the Healthcheck field if non-nil, zero value otherwise.
-
-### GetHealthcheckOk
-
-`func (o *ContainerRequest) GetHealthcheckOk() (*Healthcheck, bool)`
-
-GetHealthcheckOk returns a tuple with the Healthcheck field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHealthcheck
-
-`func (o *ContainerRequest) SetHealthcheck(v Healthcheck)`
-
-SetHealthcheck sets Healthcheck field to given value.
-
-### HasHealthcheck
-
-`func (o *ContainerRequest) HasHealthcheck() bool`
-
-HasHealthcheck returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

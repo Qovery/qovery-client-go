@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Storage** | Pointer to [**[]ApplicationStorageRequestStorageInner**](ApplicationStorageRequestStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ApplicationPortRequestPortsInner**](ApplicationPortRequestPortsInner.md) |  | [optional] 
+**Storage** | Pointer to [**[]ServiceStorageRequestStorageInner**](ServiceStorageRequestStorageInner.md) |  | [optional] 
+**Ports** | Pointer to [**[]ServicePortRequestPortsInner**](ServicePortRequestPortsInner.md) |  | [optional] 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStorage
 
-`func (o *ApplicationRequest) GetStorage() []ApplicationStorageRequestStorageInner`
+`func (o *ApplicationRequest) GetStorage() []ServiceStorageRequestStorageInner`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *ApplicationRequest) GetStorageOk() (*[]ApplicationStorageRequestStorageInner, bool)`
+`func (o *ApplicationRequest) GetStorageOk() (*[]ServiceStorageRequestStorageInner, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *ApplicationRequest) SetStorage(v []ApplicationStorageRequestStorageInner)`
+`func (o *ApplicationRequest) SetStorage(v []ServiceStorageRequestStorageInner)`
 
 SetStorage sets Storage field to given value.
 
@@ -65,20 +65,20 @@ HasStorage returns a boolean if a field has been set.
 
 ### GetPorts
 
-`func (o *ApplicationRequest) GetPorts() []ApplicationPortRequestPortsInner`
+`func (o *ApplicationRequest) GetPorts() []ServicePortRequestPortsInner`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ApplicationRequest) GetPortsOk() (*[]ApplicationPortRequestPortsInner, bool)`
+`func (o *ApplicationRequest) GetPortsOk() (*[]ServicePortRequestPortsInner, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ApplicationRequest) SetPorts(v []ApplicationPortRequestPortsInner)`
+`func (o *ApplicationRequest) SetPorts(v []ServicePortRequestPortsInner)`
 
 SetPorts sets Ports field to given value.
 

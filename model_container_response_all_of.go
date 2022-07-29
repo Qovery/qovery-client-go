@@ -18,19 +18,20 @@ import (
 // ContainerResponseAllOf struct for ContainerResponseAllOf
 type ContainerResponseAllOf struct {
 	Environment *ReferenceObject `json:"environment,omitempty"`
+	Registry    *ReferenceObject `json:"registry,omitempty"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
-	// give a description to this container
-	Description NullableString `json:"description,omitempty"`
-	// id of the linked registry
-	RegistryId *string `json:"registry_id,omitempty"`
 	// name of the image container
 	ImageName *string `json:"image_name,omitempty"`
-	Arguments *string `json:"arguments,omitempty"`
+	// tag of the image container
+	Tag       *string  `json:"tag,omitempty"`
+	Arguments []string `json:"arguments,omitempty"`
+	// optional entrypoint when launching container
+	Entrypoint *string `json:"entrypoint,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -38,8 +39,7 @@ type ContainerResponseAllOf struct {
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
+	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
 }
 
 // NewContainerResponseAllOf instantiates a new ContainerResponseAllOf object
@@ -48,14 +48,6 @@ type ContainerResponseAllOf struct {
 // will change when the set of required properties is changed
 func NewContainerResponseAllOf() *ContainerResponseAllOf {
 	this := ContainerResponseAllOf{}
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -68,14 +60,6 @@ func NewContainerResponseAllOf() *ContainerResponseAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewContainerResponseAllOfWithDefaults() *ContainerResponseAllOf {
 	this := ContainerResponseAllOf{}
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -113,6 +97,38 @@ func (o *ContainerResponseAllOf) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ReferenceObject and assigns it to the Environment field.
 func (o *ContainerResponseAllOf) SetEnvironment(v ReferenceObject) {
 	o.Environment = &v
+}
+
+// GetRegistry returns the Registry field value if set, zero value otherwise.
+func (o *ContainerResponseAllOf) GetRegistry() ReferenceObject {
+	if o == nil || o.Registry == nil {
+		var ret ReferenceObject
+		return ret
+	}
+	return *o.Registry
+}
+
+// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponseAllOf) GetRegistryOk() (*ReferenceObject, bool) {
+	if o == nil || o.Registry == nil {
+		return nil, false
+	}
+	return o.Registry, true
+}
+
+// HasRegistry returns a boolean if a field has been set.
+func (o *ContainerResponseAllOf) HasRegistry() bool {
+	if o != nil && o.Registry != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistry gets a reference to the given ReferenceObject and assigns it to the Registry field.
+func (o *ContainerResponseAllOf) SetRegistry(v ReferenceObject) {
+	o.Registry = &v
 }
 
 // GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
@@ -211,81 +227,6 @@ func (o *ContainerResponseAllOf) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ContainerResponseAllOf) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ContainerResponseAllOf) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *ContainerResponseAllOf) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *ContainerResponseAllOf) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ContainerResponseAllOf) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ContainerResponseAllOf) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetRegistryId returns the RegistryId field value if set, zero value otherwise.
-func (o *ContainerResponseAllOf) GetRegistryId() string {
-	if o == nil || o.RegistryId == nil {
-		var ret string
-		return ret
-	}
-	return *o.RegistryId
-}
-
-// GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerResponseAllOf) GetRegistryIdOk() (*string, bool) {
-	if o == nil || o.RegistryId == nil {
-		return nil, false
-	}
-	return o.RegistryId, true
-}
-
-// HasRegistryId returns a boolean if a field has been set.
-func (o *ContainerResponseAllOf) HasRegistryId() bool {
-	if o != nil && o.RegistryId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistryId gets a reference to the given string and assigns it to the RegistryId field.
-func (o *ContainerResponseAllOf) SetRegistryId(v string) {
-	o.RegistryId = &v
-}
-
 // GetImageName returns the ImageName field value if set, zero value otherwise.
 func (o *ContainerResponseAllOf) GetImageName() string {
 	if o == nil || o.ImageName == nil {
@@ -318,18 +259,50 @@ func (o *ContainerResponseAllOf) SetImageName(v string) {
 	o.ImageName = &v
 }
 
-// GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *ContainerResponseAllOf) GetArguments() string {
-	if o == nil || o.Arguments == nil {
+// GetTag returns the Tag field value if set, zero value otherwise.
+func (o *ContainerResponseAllOf) GetTag() string {
+	if o == nil || o.Tag == nil {
 		var ret string
 		return ret
 	}
-	return *o.Arguments
+	return *o.Tag
+}
+
+// GetTagOk returns a tuple with the Tag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponseAllOf) GetTagOk() (*string, bool) {
+	if o == nil || o.Tag == nil {
+		return nil, false
+	}
+	return o.Tag, true
+}
+
+// HasTag returns a boolean if a field has been set.
+func (o *ContainerResponseAllOf) HasTag() bool {
+	if o != nil && o.Tag != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTag gets a reference to the given string and assigns it to the Tag field.
+func (o *ContainerResponseAllOf) SetTag(v string) {
+	o.Tag = &v
+}
+
+// GetArguments returns the Arguments field value if set, zero value otherwise.
+func (o *ContainerResponseAllOf) GetArguments() []string {
+	if o == nil || o.Arguments == nil {
+		var ret []string
+		return ret
+	}
+	return o.Arguments
 }
 
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerResponseAllOf) GetArgumentsOk() (*string, bool) {
+func (o *ContainerResponseAllOf) GetArgumentsOk() ([]string, bool) {
 	if o == nil || o.Arguments == nil {
 		return nil, false
 	}
@@ -345,9 +318,41 @@ func (o *ContainerResponseAllOf) HasArguments() bool {
 	return false
 }
 
-// SetArguments gets a reference to the given string and assigns it to the Arguments field.
-func (o *ContainerResponseAllOf) SetArguments(v string) {
-	o.Arguments = &v
+// SetArguments gets a reference to the given []string and assigns it to the Arguments field.
+func (o *ContainerResponseAllOf) SetArguments(v []string) {
+	o.Arguments = v
+}
+
+// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
+func (o *ContainerResponseAllOf) GetEntrypoint() string {
+	if o == nil || o.Entrypoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.Entrypoint
+}
+
+// GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponseAllOf) GetEntrypointOk() (*string, bool) {
+	if o == nil || o.Entrypoint == nil {
+		return nil, false
+	}
+	return o.Entrypoint, true
+}
+
+// HasEntrypoint returns a boolean if a field has been set.
+func (o *ContainerResponseAllOf) HasEntrypoint() bool {
+	if o != nil && o.Entrypoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
+func (o *ContainerResponseAllOf) SetEntrypoint(v string) {
+	o.Entrypoint = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -478,42 +483,13 @@ func (o *ContainerResponseAllOf) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = &v
 }
 
-// GetHealthcheck returns the Healthcheck field value if set, zero value otherwise.
-func (o *ContainerResponseAllOf) GetHealthcheck() Healthcheck {
-	if o == nil || o.Healthcheck == nil {
-		var ret Healthcheck
-		return ret
-	}
-	return *o.Healthcheck
-}
-
-// GetHealthcheckOk returns a tuple with the Healthcheck field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerResponseAllOf) GetHealthcheckOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthcheck == nil {
-		return nil, false
-	}
-	return o.Healthcheck, true
-}
-
-// HasHealthcheck returns a boolean if a field has been set.
-func (o *ContainerResponseAllOf) HasHealthcheck() bool {
-	if o != nil && o.Healthcheck != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthcheck gets a reference to the given Healthcheck and assigns it to the Healthcheck field.
-func (o *ContainerResponseAllOf) SetHealthcheck(v Healthcheck) {
-	o.Healthcheck = &v
-}
-
 func (o ContainerResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
+	}
+	if o.Registry != nil {
+		toSerialize["registry"] = o.Registry
 	}
 	if o.MaximumCpu != nil {
 		toSerialize["maximum_cpu"] = o.MaximumCpu
@@ -524,17 +500,17 @@ func (o ContainerResponseAllOf) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if o.RegistryId != nil {
-		toSerialize["registry_id"] = o.RegistryId
-	}
 	if o.ImageName != nil {
 		toSerialize["image_name"] = o.ImageName
 	}
+	if o.Tag != nil {
+		toSerialize["tag"] = o.Tag
+	}
 	if o.Arguments != nil {
 		toSerialize["arguments"] = o.Arguments
+	}
+	if o.Entrypoint != nil {
+		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
@@ -547,9 +523,6 @@ func (o ContainerResponseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxRunningInstances != nil {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
-	}
-	if o.Healthcheck != nil {
-		toSerialize["healthcheck"] = o.Healthcheck
 	}
 	return json.Marshal(toSerialize)
 }
