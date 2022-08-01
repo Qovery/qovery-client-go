@@ -31,9 +31,8 @@ type EnvironmentVariable struct {
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
-	ServiceName *string `json:"service_name,omitempty"`
-	// present only for `BUILT_IN` variable
-	ServiceType *string `json:"service_type,omitempty"`
+	ServiceName *string      `json:"service_name,omitempty"`
+	ServiceType *ServiceType `json:"service_type,omitempty"`
 }
 
 // NewEnvironmentVariable instantiates a new EnvironmentVariable object
@@ -339,9 +338,9 @@ func (o *EnvironmentVariable) SetServiceName(v string) {
 }
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
-func (o *EnvironmentVariable) GetServiceType() string {
+func (o *EnvironmentVariable) GetServiceType() ServiceType {
 	if o == nil || o.ServiceType == nil {
-		var ret string
+		var ret ServiceType
 		return ret
 	}
 	return *o.ServiceType
@@ -349,7 +348,7 @@ func (o *EnvironmentVariable) GetServiceType() string {
 
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariable) GetServiceTypeOk() (*string, bool) {
+func (o *EnvironmentVariable) GetServiceTypeOk() (*ServiceType, bool) {
 	if o == nil || o.ServiceType == nil {
 		return nil, false
 	}
@@ -365,8 +364,8 @@ func (o *EnvironmentVariable) HasServiceType() bool {
 	return false
 }
 
-// SetServiceType gets a reference to the given string and assigns it to the ServiceType field.
-func (o *EnvironmentVariable) SetServiceType(v string) {
+// SetServiceType gets a reference to the given ServiceType and assigns it to the ServiceType field.
+func (o *EnvironmentVariable) SetServiceType(v ServiceType) {
 	o.ServiceType = &v
 }
 

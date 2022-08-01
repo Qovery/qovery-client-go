@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **OverriddenSecret** | Pointer to [**OverriddenSecret**](OverriddenSecret.md) |  | [optional] 
 **AliasedSecret** | Pointer to [**AliasedSecret**](AliasedSecret.md) |  | [optional] 
 **Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
+**ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
+**ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
+**ServiceType** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 
 ## Methods
 
@@ -122,6 +125,81 @@ and a boolean to check if the value has been set.
 
 SetScope sets Scope field to given value.
 
+
+### GetServiceId
+
+`func (o *SecretAllOf) GetServiceId() string`
+
+GetServiceId returns the ServiceId field if non-nil, zero value otherwise.
+
+### GetServiceIdOk
+
+`func (o *SecretAllOf) GetServiceIdOk() (*string, bool)`
+
+GetServiceIdOk returns a tuple with the ServiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceId
+
+`func (o *SecretAllOf) SetServiceId(v string)`
+
+SetServiceId sets ServiceId field to given value.
+
+### HasServiceId
+
+`func (o *SecretAllOf) HasServiceId() bool`
+
+HasServiceId returns a boolean if a field has been set.
+
+### GetServiceName
+
+`func (o *SecretAllOf) GetServiceName() string`
+
+GetServiceName returns the ServiceName field if non-nil, zero value otherwise.
+
+### GetServiceNameOk
+
+`func (o *SecretAllOf) GetServiceNameOk() (*string, bool)`
+
+GetServiceNameOk returns a tuple with the ServiceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceName
+
+`func (o *SecretAllOf) SetServiceName(v string)`
+
+SetServiceName sets ServiceName field to given value.
+
+### HasServiceName
+
+`func (o *SecretAllOf) HasServiceName() bool`
+
+HasServiceName returns a boolean if a field has been set.
+
+### GetServiceType
+
+`func (o *SecretAllOf) GetServiceType() string`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *SecretAllOf) GetServiceTypeOk() (*string, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *SecretAllOf) SetServiceType(v string)`
+
+SetServiceType sets ServiceType field to given value.
+
+### HasServiceType
+
+`func (o *SecretAllOf) HasServiceType() bool`
+
+HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

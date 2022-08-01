@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
 **ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
-**ServiceType** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
+**ServiceType** | Pointer to [**ServiceType**](ServiceType.md) |  | [optional] 
 
 ## Methods
 
@@ -152,20 +152,20 @@ HasServiceName returns a boolean if a field has been set.
 
 ### GetServiceType
 
-`func (o *EnvironmentVariableAllOf) GetServiceType() string`
+`func (o *EnvironmentVariableAllOf) GetServiceType() ServiceType`
 
 GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
 
 ### GetServiceTypeOk
 
-`func (o *EnvironmentVariableAllOf) GetServiceTypeOk() (*string, bool)`
+`func (o *EnvironmentVariableAllOf) GetServiceTypeOk() (*ServiceType, bool)`
 
 GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceType
 
-`func (o *EnvironmentVariableAllOf) SetServiceType(v string)`
+`func (o *EnvironmentVariableAllOf) SetServiceType(v ServiceType)`
 
 SetServiceType sets ServiceType field to given value.
 

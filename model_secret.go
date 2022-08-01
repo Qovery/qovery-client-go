@@ -26,6 +26,12 @@ type Secret struct {
 	OverriddenSecret *OverriddenSecret            `json:"overridden_secret,omitempty"`
 	AliasedSecret    *AliasedSecret               `json:"aliased_secret,omitempty"`
 	Scope            EnvironmentVariableScopeEnum `json:"scope"`
+	// present only for `BUILT_IN` variable
+	ServiceId *string `json:"service_id,omitempty"`
+	// present only for `BUILT_IN` variable
+	ServiceName *string `json:"service_name,omitempty"`
+	// present only for `BUILT_IN` variable
+	ServiceType *string `json:"service_type,omitempty"`
 }
 
 // NewSecret instantiates a new Secret object
@@ -248,6 +254,102 @@ func (o *Secret) SetScope(v EnvironmentVariableScopeEnum) {
 	o.Scope = v
 }
 
+// GetServiceId returns the ServiceId field value if set, zero value otherwise.
+func (o *Secret) GetServiceId() string {
+	if o == nil || o.ServiceId == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceId
+}
+
+// GetServiceIdOk returns a tuple with the ServiceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Secret) GetServiceIdOk() (*string, bool) {
+	if o == nil || o.ServiceId == nil {
+		return nil, false
+	}
+	return o.ServiceId, true
+}
+
+// HasServiceId returns a boolean if a field has been set.
+func (o *Secret) HasServiceId() bool {
+	if o != nil && o.ServiceId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceId gets a reference to the given string and assigns it to the ServiceId field.
+func (o *Secret) SetServiceId(v string) {
+	o.ServiceId = &v
+}
+
+// GetServiceName returns the ServiceName field value if set, zero value otherwise.
+func (o *Secret) GetServiceName() string {
+	if o == nil || o.ServiceName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceName
+}
+
+// GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Secret) GetServiceNameOk() (*string, bool) {
+	if o == nil || o.ServiceName == nil {
+		return nil, false
+	}
+	return o.ServiceName, true
+}
+
+// HasServiceName returns a boolean if a field has been set.
+func (o *Secret) HasServiceName() bool {
+	if o != nil && o.ServiceName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceName gets a reference to the given string and assigns it to the ServiceName field.
+func (o *Secret) SetServiceName(v string) {
+	o.ServiceName = &v
+}
+
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *Secret) GetServiceType() string {
+	if o == nil || o.ServiceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Secret) GetServiceTypeOk() (*string, bool) {
+	if o == nil || o.ServiceType == nil {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *Secret) HasServiceType() bool {
+	if o != nil && o.ServiceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given string and assigns it to the ServiceType field.
+func (o *Secret) SetServiceType(v string) {
+	o.ServiceType = &v
+}
+
 func (o Secret) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -270,6 +372,15 @@ func (o Secret) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["scope"] = o.Scope
+	}
+	if o.ServiceId != nil {
+		toSerialize["service_id"] = o.ServiceId
+	}
+	if o.ServiceName != nil {
+		toSerialize["service_name"] = o.ServiceName
+	}
+	if o.ServiceType != nil {
+		toSerialize["service_type"] = o.ServiceType
 	}
 	return json.Marshal(toSerialize)
 }
