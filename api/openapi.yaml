@@ -14499,6 +14499,13 @@ components:
             $ref: '#/components/schemas/Link'
           type: array
       type: object
+    LinkedServiceTypeEnum:
+      description: "type of the service (application, database, job, gateway...) \
+        \ \npresent only for `BUILT_IN` variable\n"
+      enum:
+      - APPLICATION
+      - DATABASE
+      type: string
     Log:
       example:
         created_at: 2022-04-19T15:36:12.024Z
@@ -17248,7 +17255,7 @@ components:
           description: present only for `BUILT_IN` variable
           type: string
         service_type:
-          $ref: '#/components/schemas/Secret/allOf/1/properties/service_type'
+          $ref: '#/components/schemas/LinkedServiceTypeEnum'
       required:
       - scope
       type: object
@@ -17501,11 +17508,7 @@ components:
           description: present only for `BUILT_IN` variable
           type: string
         service_type:
-          description: present only for `BUILT_IN` variable
-          enum:
-          - APPLICATION
-          - DATABASE
-          type: string
+          $ref: '#/components/schemas/LinkedServiceTypeEnum'
       required:
       - scope
       type: object

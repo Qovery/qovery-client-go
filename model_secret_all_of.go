@@ -25,9 +25,8 @@ type SecretAllOf struct {
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
-	ServiceName *string `json:"service_name,omitempty"`
-	// present only for `BUILT_IN` variable
-	ServiceType *string `json:"service_type,omitempty"`
+	ServiceName *string                `json:"service_name,omitempty"`
+	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 }
 
 // NewSecretAllOf instantiates a new SecretAllOf object
@@ -233,9 +232,9 @@ func (o *SecretAllOf) SetServiceName(v string) {
 }
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
-func (o *SecretAllOf) GetServiceType() string {
+func (o *SecretAllOf) GetServiceType() LinkedServiceTypeEnum {
 	if o == nil || o.ServiceType == nil {
-		var ret string
+		var ret LinkedServiceTypeEnum
 		return ret
 	}
 	return *o.ServiceType
@@ -243,7 +242,7 @@ func (o *SecretAllOf) GetServiceType() string {
 
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SecretAllOf) GetServiceTypeOk() (*string, bool) {
+func (o *SecretAllOf) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) {
 	if o == nil || o.ServiceType == nil {
 		return nil, false
 	}
@@ -259,8 +258,8 @@ func (o *SecretAllOf) HasServiceType() bool {
 	return false
 }
 
-// SetServiceType gets a reference to the given string and assigns it to the ServiceType field.
-func (o *SecretAllOf) SetServiceType(v string) {
+// SetServiceType gets a reference to the given LinkedServiceTypeEnum and assigns it to the ServiceType field.
+func (o *SecretAllOf) SetServiceType(v LinkedServiceTypeEnum) {
 	o.ServiceType = &v
 }
 

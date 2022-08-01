@@ -31,8 +31,8 @@ type EnvironmentVariable struct {
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
-	ServiceName *string      `json:"service_name,omitempty"`
-	ServiceType *ServiceType `json:"service_type,omitempty"`
+	ServiceName *string                `json:"service_name,omitempty"`
+	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 }
 
 // NewEnvironmentVariable instantiates a new EnvironmentVariable object
@@ -338,9 +338,9 @@ func (o *EnvironmentVariable) SetServiceName(v string) {
 }
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
-func (o *EnvironmentVariable) GetServiceType() ServiceType {
+func (o *EnvironmentVariable) GetServiceType() LinkedServiceTypeEnum {
 	if o == nil || o.ServiceType == nil {
-		var ret ServiceType
+		var ret LinkedServiceTypeEnum
 		return ret
 	}
 	return *o.ServiceType
@@ -348,7 +348,7 @@ func (o *EnvironmentVariable) GetServiceType() ServiceType {
 
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariable) GetServiceTypeOk() (*ServiceType, bool) {
+func (o *EnvironmentVariable) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) {
 	if o == nil || o.ServiceType == nil {
 		return nil, false
 	}
@@ -364,8 +364,8 @@ func (o *EnvironmentVariable) HasServiceType() bool {
 	return false
 }
 
-// SetServiceType gets a reference to the given ServiceType and assigns it to the ServiceType field.
-func (o *EnvironmentVariable) SetServiceType(v ServiceType) {
+// SetServiceType gets a reference to the given LinkedServiceTypeEnum and assigns it to the ServiceType field.
+func (o *EnvironmentVariable) SetServiceType(v LinkedServiceTypeEnum) {
 	o.ServiceType = &v
 }
 

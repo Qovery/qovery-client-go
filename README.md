@@ -639,6 +639,7 @@ Class | Method | HTTP request | Description
  - [KubernetesEnum](docs/KubernetesEnum.md)
  - [Link](docs/Link.md)
  - [LinkResponseList](docs/LinkResponseList.md)
+ - [LinkedServiceTypeEnum](docs/LinkedServiceTypeEnum.md)
  - [ListClusterLogs200Response](docs/ListClusterLogs200Response.md)
  - [ListContainerRegistry200Response](docs/ListContainerRegistry200Response.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)

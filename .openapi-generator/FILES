@@ -355,6 +355,7 @@ docs/Key.md
 docs/KubernetesEnum.md
 docs/Link.md
 docs/LinkResponseList.md
+docs/LinkedServiceTypeEnum.md
 docs/ListClusterLogs200Response.md
 docs/ListContainerRegistry200Response.md
 docs/ListDatabaseDeploymentHistory200Response.md
@@ -728,6 +729,7 @@ model_key.go
 model_kubernetes_enum.go
 model_link.go
 model_link_response_list.go
+model_linked_service_type_enum.go
 model_list_cluster_logs_200_response.go
 model_list_container_registry_200_response.go
 model_list_database_deployment_history_200_response.go
