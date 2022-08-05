@@ -17,18 +17,20 @@ import (
 
 // AwsCredentialsRequest struct for AwsCredentialsRequest
 type AwsCredentialsRequest struct {
-	Name            string  `json:"name"`
-	AccessKeyId     *string `json:"access_key_id,omitempty"`
-	SecretAccessKey *string `json:"secret_access_key,omitempty"`
+	Name            string `json:"name"`
+	AccessKeyId     string `json:"access_key_id"`
+	SecretAccessKey string `json:"secret_access_key"`
 }
 
 // NewAwsCredentialsRequest instantiates a new AwsCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsCredentialsRequest(name string) *AwsCredentialsRequest {
+func NewAwsCredentialsRequest(name string, accessKeyId string, secretAccessKey string) *AwsCredentialsRequest {
 	this := AwsCredentialsRequest{}
 	this.Name = name
+	this.AccessKeyId = accessKeyId
+	this.SecretAccessKey = secretAccessKey
 	return &this
 }
 
@@ -64,68 +66,52 @@ func (o *AwsCredentialsRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
+// GetAccessKeyId returns the AccessKeyId field value
 func (o *AwsCredentialsRequest) GetAccessKeyId() string {
-	if o == nil || o.AccessKeyId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccessKeyId
+
+	return o.AccessKeyId
 }
 
-// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value if set, nil otherwise
+// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value
 // and a boolean to check if the value has been set.
 func (o *AwsCredentialsRequest) GetAccessKeyIdOk() (*string, bool) {
-	if o == nil || o.AccessKeyId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccessKeyId, true
+	return &o.AccessKeyId, true
 }
 
-// HasAccessKeyId returns a boolean if a field has been set.
-func (o *AwsCredentialsRequest) HasAccessKeyId() bool {
-	if o != nil && o.AccessKeyId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessKeyId gets a reference to the given string and assigns it to the AccessKeyId field.
+// SetAccessKeyId sets field value
 func (o *AwsCredentialsRequest) SetAccessKeyId(v string) {
-	o.AccessKeyId = &v
+	o.AccessKeyId = v
 }
 
-// GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise.
+// GetSecretAccessKey returns the SecretAccessKey field value
 func (o *AwsCredentialsRequest) GetSecretAccessKey() string {
-	if o == nil || o.SecretAccessKey == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SecretAccessKey
+
+	return o.SecretAccessKey
 }
 
-// GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value if set, nil otherwise
+// GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value
 // and a boolean to check if the value has been set.
 func (o *AwsCredentialsRequest) GetSecretAccessKeyOk() (*string, bool) {
-	if o == nil || o.SecretAccessKey == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecretAccessKey, true
+	return &o.SecretAccessKey, true
 }
 
-// HasSecretAccessKey returns a boolean if a field has been set.
-func (o *AwsCredentialsRequest) HasSecretAccessKey() bool {
-	if o != nil && o.SecretAccessKey != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSecretAccessKey gets a reference to the given string and assigns it to the SecretAccessKey field.
+// SetSecretAccessKey sets field value
 func (o *AwsCredentialsRequest) SetSecretAccessKey(v string) {
-	o.SecretAccessKey = &v
+	o.SecretAccessKey = v
 }
 
 func (o AwsCredentialsRequest) MarshalJSON() ([]byte, error) {
@@ -133,10 +119,10 @@ func (o AwsCredentialsRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.AccessKeyId != nil {
+	if true {
 		toSerialize["access_key_id"] = o.AccessKeyId
 	}
-	if o.SecretAccessKey != nil {
+	if true {
 		toSerialize["secret_access_key"] = o.SecretAccessKey
 	}
 	return json.Marshal(toSerialize)

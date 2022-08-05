@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**AccessKeyId** | Pointer to **string** |  | [optional] 
-**SecretAccessKey** | Pointer to **string** |  | [optional] 
+**AccessKeyId** | **string** |  | 
+**SecretAccessKey** | **string** |  | 
 
 ## Methods
 
 ### NewAwsCredentialsRequest
 
-`func NewAwsCredentialsRequest(name string, ) *AwsCredentialsRequest`
+`func NewAwsCredentialsRequest(name string, accessKeyId string, secretAccessKey string, ) *AwsCredentialsRequest`
 
 NewAwsCredentialsRequest instantiates a new AwsCredentialsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -66,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetAccessKeyId sets AccessKeyId field to given value.
 
-### HasAccessKeyId
-
-`func (o *AwsCredentialsRequest) HasAccessKeyId() bool`
-
-HasAccessKeyId returns a boolean if a field has been set.
 
 ### GetSecretAccessKey
 
@@ -91,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetSecretAccessKey sets SecretAccessKey field to given value.
 
-### HasSecretAccessKey
-
-`func (o *AwsCredentialsRequest) HasSecretAccessKey() bool`
-
-HasSecretAccessKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

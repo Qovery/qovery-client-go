@@ -11779,7 +11779,9 @@ components:
         secret_access_key:
           type: string
       required:
+      - access_key_id
       - name
+      - secret_access_key
       type: object
     Backup:
       allOf:
