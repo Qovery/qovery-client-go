@@ -29,6 +29,7 @@ type Environment struct {
 	CloudProvider EnvironmentAllOfCloudProvider `json:"cloud_provider"`
 	Mode          EnvironmentModeEnum           `json:"mode"`
 	ClusterId     string                        `json:"cluster_id"`
+	ClusterName   *string                       `json:"cluster_name,omitempty"`
 }
 
 // NewEnvironment instantiates a new Environment object
@@ -294,6 +295,38 @@ func (o *Environment) SetClusterId(v string) {
 	o.ClusterId = v
 }
 
+// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+func (o *Environment) GetClusterName() string {
+	if o == nil || o.ClusterName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ClusterName
+}
+
+// GetClusterNameOk returns a tuple with the ClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetClusterNameOk() (*string, bool) {
+	if o == nil || o.ClusterName == nil {
+		return nil, false
+	}
+	return o.ClusterName, true
+}
+
+// HasClusterName returns a boolean if a field has been set.
+func (o *Environment) HasClusterName() bool {
+	if o != nil && o.ClusterName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
+func (o *Environment) SetClusterName(v string) {
+	o.ClusterName = &v
+}
+
 func (o Environment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -322,6 +355,9 @@ func (o Environment) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if o.ClusterName != nil {
+		toSerialize["cluster_name"] = o.ClusterName
 	}
 	return json.Marshal(toSerialize)
 }

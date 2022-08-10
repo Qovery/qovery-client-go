@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CloudProvider** | [**EnvironmentAllOfCloudProvider**](EnvironmentAllOfCloudProvider.md) |  | 
 **Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **ClusterId** | **string** |  | 
+**ClusterName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -227,6 +228,31 @@ and a boolean to check if the value has been set.
 
 SetClusterId sets ClusterId field to given value.
 
+
+### GetClusterName
+
+`func (o *Environment) GetClusterName() string`
+
+GetClusterName returns the ClusterName field if non-nil, zero value otherwise.
+
+### GetClusterNameOk
+
+`func (o *Environment) GetClusterNameOk() (*string, bool)`
+
+GetClusterNameOk returns a tuple with the ClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterName
+
+`func (o *Environment) SetClusterName(v string)`
+
+SetClusterName sets ClusterName field to given value.
+
+### HasClusterName
+
+`func (o *Environment) HasClusterName() bool`
+
+HasClusterName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

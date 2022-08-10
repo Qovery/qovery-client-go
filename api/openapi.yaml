@@ -17082,6 +17082,9 @@ components:
         cluster_id:
           format: uuid
           type: string
+        cluster_name:
+          format: string
+          type: string
       required:
       - cloud_provider
       - cluster_id
