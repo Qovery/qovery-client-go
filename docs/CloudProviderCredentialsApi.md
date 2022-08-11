@@ -13,6 +13,9 @@ Method | HTTP request | Description
 [**EditAWSCredentials**](CloudProviderCredentialsApi.md#EditAWSCredentials) | **Put** /organization/{organizationId}/aws/credentials/{credentialsId} | Edit a set of AWS credentials
 [**EditDOCredentials**](CloudProviderCredentialsApi.md#EditDOCredentials) | **Put** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Edit a set of Digital Ocean credentials
 [**EditScalewayCredentials**](CloudProviderCredentialsApi.md#EditScalewayCredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
+[**GetAWSCredentials**](CloudProviderCredentialsApi.md#GetAWSCredentials) | **Get** /organization/{organizationId}/aws/credentials/{credentialsId} | Get a set of AWS credentials
+[**GetDOCredentials**](CloudProviderCredentialsApi.md#GetDOCredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Get a set of Digital Ocean credentials
+[**GetScalewayCredentials**](CloudProviderCredentialsApi.md#GetScalewayCredentials) | **Get** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Get a set of Scaleway credentials
 [**ListAWSCredentials**](CloudProviderCredentialsApi.md#ListAWSCredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
 [**ListDOCredentials**](CloudProviderCredentialsApi.md#ListDOCredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials | List DO credentials
 [**ListScalewayCredentials**](CloudProviderCredentialsApi.md#ListScalewayCredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
@@ -648,6 +651,219 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAWSCredentials
+
+> ClusterCredentials GetAWSCredentials(ctx, organizationId, credentialsId).Execute()
+
+Get a set of AWS credentials
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderCredentialsApi.GetAWSCredentials(context.Background(), organizationId, credentialsId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.GetAWSCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAWSCredentials`: ClusterCredentials
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.GetAWSCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAWSCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterCredentials**](ClusterCredentials.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDOCredentials
+
+> ClusterCredentials GetDOCredentials(ctx, organizationId, credentialsId).Execute()
+
+Get a set of Digital Ocean credentials
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderCredentialsApi.GetDOCredentials(context.Background(), organizationId, credentialsId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.GetDOCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDOCredentials`: ClusterCredentials
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.GetDOCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDOCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterCredentials**](ClusterCredentials.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetScalewayCredentials
+
+> ClusterCredentials GetScalewayCredentials(ctx, organizationId, credentialsId).Execute()
+
+Get a set of Scaleway credentials
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderCredentialsApi.GetScalewayCredentials(context.Background(), organizationId, credentialsId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsApi.GetScalewayCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetScalewayCredentials`: ClusterCredentials
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsApi.GetScalewayCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetScalewayCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterCredentials**](ClusterCredentials.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
