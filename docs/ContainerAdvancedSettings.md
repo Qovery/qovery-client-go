@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **NetworkIngressCorsAllowOrigin** | Pointer to **string** |  | [optional] [default to "*"]
 **NetworkIngressCorsAllowMethods** | Pointer to **string** |  | [optional] [default to "GET, PUT, POST, DELETE, PATCH, OPTIONS"]
 **NetworkIngressCorsAllowHeaders** | Pointer to **string** |  | [optional] [default to "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"]
+**NetworkIngressProxyBufferSizeKb** | Pointer to **int32** | header buffer size used while reading response header from upstream | [optional] [default to 4]
 **ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
 **ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
 **ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
@@ -193,6 +194,31 @@ SetNetworkIngressCorsAllowHeaders sets NetworkIngressCorsAllowHeaders field to g
 `func (o *ContainerAdvancedSettings) HasNetworkIngressCorsAllowHeaders() bool`
 
 HasNetworkIngressCorsAllowHeaders returns a boolean if a field has been set.
+
+### GetNetworkIngressProxyBufferSizeKb
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressProxyBufferSizeKb() int32`
+
+GetNetworkIngressProxyBufferSizeKb returns the NetworkIngressProxyBufferSizeKb field if non-nil, zero value otherwise.
+
+### GetNetworkIngressProxyBufferSizeKbOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressProxyBufferSizeKbOk() (*int32, bool)`
+
+GetNetworkIngressProxyBufferSizeKbOk returns a tuple with the NetworkIngressProxyBufferSizeKb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressProxyBufferSizeKb
+
+`func (o *ContainerAdvancedSettings) SetNetworkIngressProxyBufferSizeKb(v int32)`
+
+SetNetworkIngressProxyBufferSizeKb sets NetworkIngressProxyBufferSizeKb field to given value.
+
+### HasNetworkIngressProxyBufferSizeKb
+
+`func (o *ContainerAdvancedSettings) HasNetworkIngressProxyBufferSizeKb() bool`
+
+HasNetworkIngressProxyBufferSizeKb returns a boolean if a field has been set.
 
 ### GetReadinessProbeType
 

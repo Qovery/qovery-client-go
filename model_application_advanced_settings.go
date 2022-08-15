@@ -28,6 +28,8 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressCorsAllowOrigin      *string `json:"network.ingress.cors_allow_origin,omitempty"`
 	NetworkIngressCorsAllowMethods     *string `json:"network.ingress.cors_allow_methods,omitempty"`
 	NetworkIngressCorsAllowHeaders     *string `json:"network.ingress.cors_allow_headers,omitempty"`
+	// header buffer size used while reading response header from upstream
+	NetworkIngressProxyBufferSizeKb *int32 `json:"network.ingress.proxy_buffer_size_kb,omitempty"`
 	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
 	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
 	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
@@ -82,6 +84,8 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.NetworkIngressCorsAllowMethods = &networkIngressCorsAllowMethods
 	var networkIngressCorsAllowHeaders string = "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
 	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
+	var networkIngressProxyBufferSizeKb int32 = 4
+	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -136,6 +140,8 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.NetworkIngressCorsAllowMethods = &networkIngressCorsAllowMethods
 	var networkIngressCorsAllowHeaders string = "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
 	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
+	var networkIngressProxyBufferSizeKb int32 = 4
+	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -426,6 +432,38 @@ func (o *ApplicationAdvancedSettings) HasNetworkIngressCorsAllowHeaders() bool {
 // SetNetworkIngressCorsAllowHeaders gets a reference to the given string and assigns it to the NetworkIngressCorsAllowHeaders field.
 func (o *ApplicationAdvancedSettings) SetNetworkIngressCorsAllowHeaders(v string) {
 	o.NetworkIngressCorsAllowHeaders = &v
+}
+
+// GetNetworkIngressProxyBufferSizeKb returns the NetworkIngressProxyBufferSizeKb field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferSizeKb() int32 {
+	if o == nil || o.NetworkIngressProxyBufferSizeKb == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressProxyBufferSizeKb
+}
+
+// GetNetworkIngressProxyBufferSizeKbOk returns a tuple with the NetworkIngressProxyBufferSizeKb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferSizeKbOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressProxyBufferSizeKb == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxyBufferSizeKb, true
+}
+
+// HasNetworkIngressProxyBufferSizeKb returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBufferSizeKb() bool {
+	if o != nil && o.NetworkIngressProxyBufferSizeKb != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxyBufferSizeKb gets a reference to the given int32 and assigns it to the NetworkIngressProxyBufferSizeKb field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBufferSizeKb(v int32) {
+	o.NetworkIngressProxyBufferSizeKb = &v
 }
 
 // GetReadinessProbeType returns the ReadinessProbeType field value if set, zero value otherwise.
@@ -933,6 +971,9 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressCorsAllowHeaders != nil {
 		toSerialize["network.ingress.cors_allow_headers"] = o.NetworkIngressCorsAllowHeaders
+	}
+	if o.NetworkIngressProxyBufferSizeKb != nil {
+		toSerialize["network.ingress.proxy_buffer_size_kb"] = o.NetworkIngressProxyBufferSizeKb
 	}
 	if o.ReadinessProbeType != nil {
 		toSerialize["readiness_probe.type"] = o.ReadinessProbeType
