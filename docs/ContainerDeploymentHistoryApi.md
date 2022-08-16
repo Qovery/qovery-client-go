@@ -1,18 +1,18 @@
-# \ContainerEventApi
+# \ContainerDeploymentHistoryApi
 
 All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListContainerEvent**](ContainerEventApi.md#ListContainerEvent) | **Get** /container/{containerId}/event | NOT YET IMPLEMENTED - List container events
+[**ListContainerDeploymentHistory**](ContainerDeploymentHistoryApi.md#ListContainerDeploymentHistory) | **Get** /container/{containerId}/deploymentHistory | NOT YET IMPLEMENTED - List container deployments
 
 
 
-## ListContainerEvent
+## ListContainerDeploymentHistory
 
-> EventPaginatedResponseList ListContainerEvent(ctx, containerId).StartId(startId).Execute()
+> ListContainerDeploymentHistory200Response ListContainerDeploymentHistory(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List container events
+NOT YET IMPLEMENTED - List container deployments
 
 
 
@@ -30,17 +30,16 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerEventApi.ListContainerEvent(context.Background(), containerId).StartId(startId).Execute()
+    resp, r, err := apiClient.ContainerDeploymentHistoryApi.ListContainerDeploymentHistory(context.Background(), containerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerEventApi.ListContainerEvent``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerDeploymentHistoryApi.ListContainerDeploymentHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListContainerEvent`: EventPaginatedResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ContainerEventApi.ListContainerEvent`: %v\n", resp)
+    // response from `ListContainerDeploymentHistory`: ListContainerDeploymentHistory200Response
+    fmt.Fprintf(os.Stdout, "Response from `ContainerDeploymentHistoryApi.ListContainerDeploymentHistory`: %v\n", resp)
 }
 ```
 
@@ -54,17 +53,16 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListContainerEventRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListContainerDeploymentHistoryRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **startId** | **string** | Starting point after which to return results | 
 
 ### Return type
 
-[**EventPaginatedResponseList**](EventPaginatedResponseList.md)
+[**ListContainerDeploymentHistory200Response**](ListContainerDeploymentHistory200Response.md)
 
 ### Authorization
 

@@ -5,7 +5,6 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployContainer**](ContainerActionsApi.md#DeployContainer) | **Post** /container/{containerId}/deploy | NOT YET IMPLEMENTED - Deploy container
-[**PreviewEnvironmentContainer**](ContainerActionsApi.md#PreviewEnvironmentContainer) | **Post** /container/{containerId}/previewEnvironment | NOT YET IMPLEMENTED - Deploy a preview environment with your container application
 [**RestartContainer**](ContainerActionsApi.md#RestartContainer) | **Post** /container/{containerId}/restart | NOT YET IMPLEMENTED - Restart container
 [**StopContainer**](ContainerActionsApi.md#StopContainer) | **Post** /container/{containerId}/stop | NOT YET IMPLEMENTED - Stop container
 
@@ -58,78 +57,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeployContainerRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **containerDeployRequest** | [**ContainerDeployRequest**](ContainerDeployRequest.md) |  | 
-
-### Return type
-
-[**Status**](Status.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## PreviewEnvironmentContainer
-
-> Status PreviewEnvironmentContainer(ctx, containerId).ContainerDeployRequest(containerDeployRequest).Execute()
-
-NOT YET IMPLEMENTED - Deploy a preview environment with your container application
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    containerDeployRequest := *openapiclient.NewContainerDeployRequest("ImageTag_example") // ContainerDeployRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerActionsApi.PreviewEnvironmentContainer(context.Background(), containerId).ContainerDeployRequest(containerDeployRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsApi.PreviewEnvironmentContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PreviewEnvironmentContainer`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainerActionsApi.PreviewEnvironmentContainer`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**containerId** | **string** | Container ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPreviewEnvironmentContainerRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

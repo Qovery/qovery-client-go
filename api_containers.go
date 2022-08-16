@@ -23,6 +23,120 @@ import (
 // ContainersApiService ContainersApi service
 type ContainersApiService service
 
+type ApiAutoDeployContainerEnvironmentsRequest struct {
+	ctx                                    context.Context
+	ApiService                             *ContainersApiService
+	organizationId                         string
+	autoDeployContainerEnvironmentsRequest *AutoDeployContainerEnvironmentsRequest
+}
+
+func (r ApiAutoDeployContainerEnvironmentsRequest) AutoDeployContainerEnvironmentsRequest(autoDeployContainerEnvironmentsRequest AutoDeployContainerEnvironmentsRequest) ApiAutoDeployContainerEnvironmentsRequest {
+	r.autoDeployContainerEnvironmentsRequest = &autoDeployContainerEnvironmentsRequest
+	return r
+}
+
+func (r ApiAutoDeployContainerEnvironmentsRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.AutoDeployContainerEnvironmentsExecute(r)
+}
+
+/*
+AutoDeployContainerEnvironments NOT YET IMPLEMENTED - Auto deploy containers
+
+Triggers a new container deploy in each environment matching the following conditions
+- environment should have the auto-deploy enabled
+- the container should have the same image name and a different tag
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiAutoDeployContainerEnvironmentsRequest
+*/
+func (a *ContainersApiService) AutoDeployContainerEnvironments(ctx context.Context, organizationId string) ApiAutoDeployContainerEnvironmentsRequest {
+	return ApiAutoDeployContainerEnvironmentsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//  @return Status
+func (a *ContainersApiService) AutoDeployContainerEnvironmentsExecute(r ApiAutoDeployContainerEnvironmentsRequest) (*Status, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainersApiService.AutoDeployContainerEnvironments")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/container/deploy"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.autoDeployContainerEnvironmentsRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCreateContainerRequest struct {
 	ctx              context.Context
 	ApiService       *ContainersApiService
@@ -206,107 +320,6 @@ func (a *ContainersApiService) DeployAllContainersExecute(r ApiDeployAllContaine
 	}
 	// body params
 	localVarPostBody = r.deployAllRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetEnvironmentContainerCurrentInstanceRequest struct {
-	ctx           context.Context
-	ApiService    *ContainersApiService
-	environmentId string
-}
-
-func (r ApiGetEnvironmentContainerCurrentInstanceRequest) Execute() (*GetEnvironmentContainerCurrentInstance200Response, *http.Response, error) {
-	return r.ApiService.GetEnvironmentContainerCurrentInstanceExecute(r)
-}
-
-/*
-GetEnvironmentContainerCurrentInstance List running instances with CPU and RAM usage for each container
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentContainerCurrentInstanceRequest
-*/
-func (a *ContainersApiService) GetEnvironmentContainerCurrentInstance(ctx context.Context, environmentId string) ApiGetEnvironmentContainerCurrentInstanceRequest {
-	return ApiGetEnvironmentContainerCurrentInstanceRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		environmentId: environmentId,
-	}
-}
-
-// Execute executes the request
-//  @return GetEnvironmentContainerCurrentInstance200Response
-func (a *ContainersApiService) GetEnvironmentContainerCurrentInstanceExecute(r ApiGetEnvironmentContainerCurrentInstanceRequest) (*GetEnvironmentContainerCurrentInstance200Response, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GetEnvironmentContainerCurrentInstance200Response
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainersApiService.GetEnvironmentContainerCurrentInstance")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/environment/{environmentId}/container/instance"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -725,6 +738,120 @@ func (a *ContainersApiService) ListContainerExecute(r ApiListContainerRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPreviewContainerEnvironmentsRequest struct {
+	ctx                                 context.Context
+	ApiService                          *ContainersApiService
+	organizationId                      string
+	previewContainerEnvironmentsRequest *PreviewContainerEnvironmentsRequest
+}
+
+func (r ApiPreviewContainerEnvironmentsRequest) PreviewContainerEnvironmentsRequest(previewContainerEnvironmentsRequest PreviewContainerEnvironmentsRequest) ApiPreviewContainerEnvironmentsRequest {
+	r.previewContainerEnvironmentsRequest = &previewContainerEnvironmentsRequest
+	return r
+}
+
+func (r ApiPreviewContainerEnvironmentsRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.PreviewContainerEnvironmentsExecute(r)
+}
+
+/*
+PreviewContainerEnvironments NOT YET IMPLEMENTED - Preview container environments
+
+Triggers a new container preview for each environment matching the following conditions
+- preview environment feature should be enabled for the container
+- the container should have the same image name and a different tag
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiPreviewContainerEnvironmentsRequest
+*/
+func (a *ContainersApiService) PreviewContainerEnvironments(ctx context.Context, organizationId string) ApiPreviewContainerEnvironmentsRequest {
+	return ApiPreviewContainerEnvironmentsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//  @return Status
+func (a *ContainersApiService) PreviewContainerEnvironmentsExecute(r ApiPreviewContainerEnvironmentsRequest) (*Status, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainersApiService.PreviewContainerEnvironments")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/container/preview"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.previewContainerEnvironmentsRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

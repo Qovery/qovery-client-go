@@ -26,9 +26,8 @@ api_container_configuration.go
 api_container_custom_domain.go
 api_container_database.go
 api_container_dependency.go
-api_container_deployment_restriction.go
+api_container_deployment_history.go
 api_container_environment_variable.go
-api_container_event.go
 api_container_logs.go
 api_container_main_calls.go
 api_container_metrics.go
@@ -104,6 +103,7 @@ docs/ApplicationSecretApi.md
 docs/ApplicationStorage.md
 docs/ApplicationStorageStorageInner.md
 docs/ApplicationsApi.md
+docs/AutoDeployContainerEnvironmentsRequest.md
 docs/AvailableContainerRegistryResponse.md
 docs/AwsCredentialsRequest.md
 docs/Backup.md
@@ -181,14 +181,10 @@ docs/ContainerDatabaseApi.md
 docs/ContainerDependencyApi.md
 docs/ContainerDependencyRequest.md
 docs/ContainerDeployRequest.md
-docs/ContainerDeploymentRestriction.md
-docs/ContainerDeploymentRestrictionApi.md
-docs/ContainerDeploymentRestrictionRequest.md
-docs/ContainerDeploymentRestrictionResponseList.md
+docs/ContainerDeploymentHistoryApi.md
 docs/ContainerEditRequest.md
 docs/ContainerEditRequestAllOf.md
 docs/ContainerEnvironmentVariableApi.md
-docs/ContainerEventApi.md
 docs/ContainerLogsApi.md
 docs/ContainerMainCallsApi.md
 docs/ContainerMetricsApi.md
@@ -273,6 +269,7 @@ docs/EnvironmentAllOfCloudProvider.md
 docs/EnvironmentApplicationsCurrentScale.md
 docs/EnvironmentApplicationsCurrentScaleResponseList.md
 docs/EnvironmentApplicationsInstanceResponseList.md
+docs/EnvironmentApplicationsInstanceResponseListResultsInner.md
 docs/EnvironmentApplicationsStorage.md
 docs/EnvironmentApplicationsStorageResponseList.md
 docs/EnvironmentApplicationsSupportedLanguage.md
@@ -325,9 +322,6 @@ docs/EventPaginatedResponseList.md
 docs/EventPaginatedResponseListAllOf.md
 docs/EventResponseList.md
 docs/GenericObjectCurrentCost.md
-docs/GetContainerTags200Response.md
-docs/GetEnvironmentContainerCurrentInstance200Response.md
-docs/GetEnvironmentContainerCurrentInstance200ResponseResultsInner.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitProviderEnum.md
@@ -357,6 +351,10 @@ docs/Link.md
 docs/LinkResponseList.md
 docs/LinkedServiceTypeEnum.md
 docs/ListClusterLogs200Response.md
+docs/ListContainerDeploymentHistory200Response.md
+docs/ListContainerDeploymentHistory200ResponseAllOf.md
+docs/ListContainerDeploymentHistory200ResponseAllOfResultsInner.md
+docs/ListContainerDeploymentHistory200ResponseAllOfResultsInnerAllOf.md
 docs/ListContainerRegistry200Response.md
 docs/ListDatabaseDeploymentHistory200Response.md
 docs/ListDatabaseDeploymentHistory200ResponseAllOf.md
@@ -423,6 +421,7 @@ docs/PaginationData.md
 docs/PaidUsage.md
 docs/PlanEnum.md
 docs/PortProtocolEnum.md
+docs/PreviewContainerEnvironmentsRequest.md
 docs/Project.md
 docs/ProjectAllOf.md
 docs/ProjectCurrentCost.md
@@ -517,6 +516,7 @@ model_application_request_all_of.go
 model_application_response_list.go
 model_application_storage.go
 model_application_storage_storage_inner.go
+model_auto_deploy_container_environments_request.go
 model_available_container_registry_response.go
 model_aws_credentials_request.go
 model_backup.go
@@ -584,9 +584,6 @@ model_container_advanced_settings.go
 model_container_current_scale.go
 model_container_dependency_request.go
 model_container_deploy_request.go
-model_container_deployment_restriction.go
-model_container_deployment_restriction_request.go
-model_container_deployment_restriction_response_list.go
 model_container_edit_request.go
 model_container_edit_request_all_of.go
 model_container_network.go
@@ -656,6 +653,7 @@ model_environment_all_of_cloud_provider.go
 model_environment_applications_current_scale.go
 model_environment_applications_current_scale_response_list.go
 model_environment_applications_instance_response_list.go
+model_environment_applications_instance_response_list_results_inner.go
 model_environment_applications_storage.go
 model_environment_applications_storage_response_list.go
 model_environment_applications_supported_language.go
@@ -701,9 +699,6 @@ model_event_paginated_response_list.go
 model_event_paginated_response_list_all_of.go
 model_event_response_list.go
 model_generic_object_current_cost.go
-model_get_container_tags_200_response.go
-model_get_environment_container_current_instance_200_response.go
-model_get_environment_container_current_instance_200_response_results_inner.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
 model_git_provider_enum.go
@@ -731,6 +726,10 @@ model_link.go
 model_link_response_list.go
 model_linked_service_type_enum.go
 model_list_cluster_logs_200_response.go
+model_list_container_deployment_history_200_response.go
+model_list_container_deployment_history_200_response_all_of.go
+model_list_container_deployment_history_200_response_all_of_results_inner.go
+model_list_container_deployment_history_200_response_all_of_results_inner_all_of.go
 model_list_container_registry_200_response.go
 model_list_database_deployment_history_200_response.go
 model_list_database_deployment_history_200_response_all_of.go
@@ -791,6 +790,7 @@ model_pagination_data.go
 model_paid_usage.go
 model_plan_enum.go
 model_port_protocol_enum.go
+model_preview_container_environments_request.go
 model_project.go
 model_project_all_of.go
 model_project_current_cost.go

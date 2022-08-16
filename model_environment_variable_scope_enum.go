@@ -25,6 +25,7 @@ const (
 	ENVIRONMENTVARIABLESCOPEENUM_BUILT_IN    EnvironmentVariableScopeEnum = "BUILT_IN"
 	ENVIRONMENTVARIABLESCOPEENUM_ENVIRONMENT EnvironmentVariableScopeEnum = "ENVIRONMENT"
 	ENVIRONMENTVARIABLESCOPEENUM_PROJECT     EnvironmentVariableScopeEnum = "PROJECT"
+	ENVIRONMENTVARIABLESCOPEENUM_CONTAINER   EnvironmentVariableScopeEnum = "CONTAINER"
 )
 
 // All allowed values of EnvironmentVariableScopeEnum enum
@@ -33,6 +34,7 @@ var AllowedEnvironmentVariableScopeEnumEnumValues = []EnvironmentVariableScopeEn
 	"BUILT_IN",
 	"ENVIRONMENT",
 	"PROJECT",
+	"CONTAINER",
 }
 
 func (v *EnvironmentVariableScopeEnum) UnmarshalJSON(src []byte) error {

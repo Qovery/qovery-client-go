@@ -5,9 +5,9 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateContainerRegistry**](ContainerRegistriesApi.md#CreateContainerRegistry) | **Post** /organization/{organizationId}/containerRegistry | Create a container registry
-[**DeleteContainerRegistry**](ContainerRegistriesApi.md#DeleteContainerRegistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
+[**DeleteContainerRegistry**](ContainerRegistriesApi.md#DeleteContainerRegistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | NOT YET IMPLEMENTED - Delete a container registry
 [**ListAvailableContainerRegistry**](ContainerRegistriesApi.md#ListAvailableContainerRegistry) | **Get** /organization/{organizationId}/availableContainerRegistry | List supported container registries
-[**ListContainerRegistry**](ContainerRegistriesApi.md#ListContainerRegistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
+[**ListContainerRegistry**](ContainerRegistriesApi.md#ListContainerRegistry) | **Get** /organization/{organizationId}/containerRegistry | NOT YET IMPLEMENTED - List organization container registries
 
 
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 > DeleteContainerRegistry(ctx, organizationId).Execute()
 
-Delete a container registry
+NOT YET IMPLEMENTED - Delete a container registry
 
 ### Example
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 > ListContainerRegistry200Response ListContainerRegistry(ctx, organizationId).Execute()
 
-List organization container registries
+NOT YET IMPLEMENTED - List organization container registries
 
 ### Example
 

@@ -136,7 +136,6 @@ Class | Method | HTTP request | Description
 *ApplicationSecretApi* | [**ListApplicationSecrets**](docs/ApplicationSecretApi.md#listapplicationsecrets) | **Get** /application/{applicationId}/secret | List application secrets
 *ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **Post** /environment/{environmentId}/application | Create an application
 *ApplicationsApi* | [**DeployAllApplications**](docs/ApplicationsApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
-*ApplicationsApi* | [**GetEnvironmentApplicationCurrentInstance**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentinstance) | **Get** /environment/{environmentId}/application/instance | List running instances with CPU and RAM usage for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentScale**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentscale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentStorage**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentstorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsApi.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
@@ -200,7 +199,6 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**StopCluster**](docs/ClustersApi.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 *ClustersApi* | [**UpdateCluster**](docs/ClustersApi.md#updatecluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/update | Update a cluster Version
 *ContainerActionsApi* | [**DeployContainer**](docs/ContainerActionsApi.md#deploycontainer) | **Post** /container/{containerId}/deploy | NOT YET IMPLEMENTED - Deploy container
-*ContainerActionsApi* | [**PreviewEnvironmentContainer**](docs/ContainerActionsApi.md#previewenvironmentcontainer) | **Post** /container/{containerId}/previewEnvironment | NOT YET IMPLEMENTED - Deploy a preview environment with your container application
 *ContainerActionsApi* | [**RestartContainer**](docs/ContainerActionsApi.md#restartcontainer) | **Post** /container/{containerId}/restart | NOT YET IMPLEMENTED - Restart container
 *ContainerActionsApi* | [**StopContainer**](docs/ContainerActionsApi.md#stopcontainer) | **Post** /container/{containerId}/stop | NOT YET IMPLEMENTED - Stop container
 *ContainerConfigurationApi* | [**EditContainerAdvancedSettings**](docs/ContainerConfigurationApi.md#editcontaineradvancedsettings) | **Put** /container/{containerId}/advancedSettings | NOT YET IMPLEMENTED - Edit advanced settings
@@ -212,19 +210,13 @@ Class | Method | HTTP request | Description
 *ContainerCustomDomainApi* | [**EditContainerCustomDomain**](docs/ContainerCustomDomainApi.md#editcontainercustomdomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | NOT YET IMPLEMENTED - Edit a Custom Domain
 *ContainerCustomDomainApi* | [**GetContainerCustomDomainStatus**](docs/ContainerCustomDomainApi.md#getcontainercustomdomainstatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | NOT YET IMPLEMENTED - Get Custom Domain status
 *ContainerCustomDomainApi* | [**ListContainerCustomDomain**](docs/ContainerCustomDomainApi.md#listcontainercustomdomain) | **Get** /container/{containerId}/customDomain | NOT YET IMPLEMENTED - List container custom domains
-*ContainerDatabaseApi* | [**AttachDatabaseToContainer**](docs/ContainerDatabaseApi.md#attachdatabasetocontainer) | **Post** /container/{containerId}/database/{targetDatabaseId} | NOT YET IMPLEMENTED - Link a database to the container
 *ContainerDatabaseApi* | [**AttachLogicalDatabaseToContainer**](docs/ContainerDatabaseApi.md#attachlogicaldatabasetocontainer) | **Post** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | NOT YET IMPLEMENTED - Link a logical database to the container
-*ContainerDatabaseApi* | [**ListContainerDatabase**](docs/ContainerDatabaseApi.md#listcontainerdatabase) | **Get** /container/{containerId}/database | NOT YET IMPLEMENTED - List linked databases
 *ContainerDatabaseApi* | [**ListContainerLogicalDatabase**](docs/ContainerDatabaseApi.md#listcontainerlogicaldatabase) | **Get** /container/{containerId}/logicalDatabase | NOT YET IMPLEMENTED - List linked logical databases
-*ContainerDatabaseApi* | [**RemoveDatabaseFromContainer**](docs/ContainerDatabaseApi.md#removedatabasefromcontainer) | **Delete** /container/{containerId}/database/{targetDatabaseId} | NOT YET IMPLEMENTED - Remove database link to this container.
 *ContainerDatabaseApi* | [**RemoveLogicalDatabaseFromContainer**](docs/ContainerDatabaseApi.md#removelogicaldatabasefromcontainer) | **Delete** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | NOT YET IMPLEMENTED - Remove logical database link to this container.
 *ContainerDependencyApi* | [**CreateContainerDependency**](docs/ContainerDependencyApi.md#createcontainerdependency) | **Post** /container/{containerId}/dependency/{targetContainerId} | NOT YET IMPLEMENTED - Add container dependency to this application.
 *ContainerDependencyApi* | [**ListContainerDependency**](docs/ContainerDependencyApi.md#listcontainerdependency) | **Get** /container/{containerId}/dependency | NOT YET IMPLEMENTED - List container dependencies
 *ContainerDependencyApi* | [**RemoveContainerDependency**](docs/ContainerDependencyApi.md#removecontainerdependency) | **Delete** /container/{containerId}/dependency/{targetContainerId} | NOT YET IMPLEMENTED - Remove container dependency to this container.
-*ContainerDeploymentRestrictionApi* | [**CreateContainerDeploymentRestriction**](docs/ContainerDeploymentRestrictionApi.md#createcontainerdeploymentrestriction) | **Post** /container/{containerId}/deploymentRestriction | NOT YET IMPLEMENTED - Create an container deployment restriction
-*ContainerDeploymentRestrictionApi* | [**DeleteContainerDeploymentRestriction**](docs/ContainerDeploymentRestrictionApi.md#deletecontainerdeploymentrestriction) | **Delete** /container/{containerId}/deploymentRestriction/{deploymentRestrictionId} | NOT YET IMPLEMENTED - Delete a container deployment restriction
-*ContainerDeploymentRestrictionApi* | [**EditContainerDeploymentRestriction**](docs/ContainerDeploymentRestrictionApi.md#editcontainerdeploymentrestriction) | **Put** /container/{containerId}/deploymentRestriction/{deploymentRestrictionId} | NOT YET IMPLEMENTED - Edit a container deployment restriction
-*ContainerDeploymentRestrictionApi* | [**GetContainerDeploymentRestrictions**](docs/ContainerDeploymentRestrictionApi.md#getcontainerdeploymentrestrictions) | **Get** /container/{containerId}/deploymentRestriction | NOT YET IMPLEMENTED - Get container deployment restrictions
+*ContainerDeploymentHistoryApi* | [**ListContainerDeploymentHistory**](docs/ContainerDeploymentHistoryApi.md#listcontainerdeploymenthistory) | **Get** /container/{containerId}/deploymentHistory | NOT YET IMPLEMENTED - List container deployments
 *ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable | Add an environment variable to the container
 *ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariableAlias**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariablealias) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/alias | NOT YET IMPLEMENTED - Create an environment variable alias at the container level
 *ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariableOverride**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariableoverride) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/override | NOT YET IMPLEMENTED - Create an environment variable override at the container level
@@ -232,43 +224,33 @@ Class | Method | HTTP request | Description
 *ContainerEnvironmentVariableApi* | [**EditContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#editcontainerenvironmentvariable) | **Put** /container/{containerId}/environmentVariable/{environmentVariableId} | NOT YET IMPLEMENTED - Edit an environment variable belonging to the container
 *ContainerEnvironmentVariableApi* | [**ImportContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#importcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable/import | NOT YET IMPLEMENTED - Import variables
 *ContainerEnvironmentVariableApi* | [**ListContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#listcontainerenvironmentvariable) | **Get** /container/{containerId}/environmentVariable | NOT YET IMPLEMENTED - List environment variables
-*ContainerEventApi* | [**ListContainerEvent**](docs/ContainerEventApi.md#listcontainerevent) | **Get** /container/{containerId}/event | NOT YET IMPLEMENTED - List container events
 *ContainerLogsApi* | [**ListContainerLog**](docs/ContainerLogsApi.md#listcontainerlog) | **Get** /container/{containerId}/log | NOT YET IMPLEMENTED - List logs
-*ContainerMainCallsApi* | [**CreateContainerTag**](docs/ContainerMainCallsApi.md#createcontainertag) | **Post** /container/{containerId}/tag | NOT YET IMPLEMENTED - Add container tag
 *ContainerMainCallsApi* | [**DeleteContainer**](docs/ContainerMainCallsApi.md#deletecontainer) | **Delete** /container/{containerId} | NOT YET IMPLEMENTED - Delete container
-*ContainerMainCallsApi* | [**DeleteContainerTag**](docs/ContainerMainCallsApi.md#deletecontainertag) | **Delete** /container/{containerId}/tag/{tagId} | NOT YET IMPLEMENTED - Delete container tag
 *ContainerMainCallsApi* | [**EditContainer**](docs/ContainerMainCallsApi.md#editcontainer) | **Put** /container/{containerId} | NOT YET IMPLEMENTED - Edit container
 *ContainerMainCallsApi* | [**GetContainer**](docs/ContainerMainCallsApi.md#getcontainer) | **Get** /container/{containerId} | NOT YET IMPLEMENTED - Get container by ID
 *ContainerMainCallsApi* | [**GetContainerStatus**](docs/ContainerMainCallsApi.md#getcontainerstatus) | **Get** /container/{containerId}/status | NOT YET IMPLEMENTED - Get container status
-*ContainerMainCallsApi* | [**GetContainerTags**](docs/ContainerMainCallsApi.md#getcontainertags) | **Get** /container/{containerId}/tagHistory | NOT YET IMPLEMENTED - List image tags
-*ContainerMainCallsApi* | [**ListContainerContributor**](docs/ContainerMainCallsApi.md#listcontainercontributor) | **Get** /container/{containerId}/contributor | NOT YET IMPLEMENTED -List contributors
 *ContainerMainCallsApi* | [**ListContainerLinks**](docs/ContainerMainCallsApi.md#listcontainerlinks) | **Get** /container/{containerId}/link | NOT YET IMPLEMENTED - List all URLs of the container
-*ContainerMainCallsApi* | [**ListContainerTag**](docs/ContainerMainCallsApi.md#listcontainertag) | **Get** /container/{containerId}/tag | NOT YET IMPLEMENTED - List tags
 *ContainerMetricsApi* | [**GetContainerCurrentInstance**](docs/ContainerMetricsApi.md#getcontainercurrentinstance) | **Get** /container/{containerId}/instance | NOT YET IMPLEMENTED - List currently running instances of the container with their CPU and RAM metrics
 *ContainerMetricsApi* | [**GetContainerCurrentScale**](docs/ContainerMetricsApi.md#getcontainercurrentscale) | **Get** /container/{containerId}/currentScale | NOT YET IMPLEMENTED - Get current scaling of the container
 *ContainerMetricsApi* | [**GetContainerCurrentStorageDisk**](docs/ContainerMetricsApi.md#getcontainercurrentstoragedisk) | **Get** /container/{containerId}/currentStorage | NOT YET IMPLEMENTED - List current storage disk usage
-*ContainerMetricsApi* | [**GetContainerMetricCpu**](docs/ContainerMetricsApi.md#getcontainermetriccpu) | **Get** /container/{containerId}/metric/cpu | NOT YET IMPLEMENTED - Get CPU consumption metric over time for the container
-*ContainerMetricsApi* | [**GetContainerMetricHealthCheck**](docs/ContainerMetricsApi.md#getcontainermetrichealthcheck) | **Get** /container/{containerId}/metric/healthCheck | NOT YET IMPLEMENTED - Get Health Check latency  metric over time for the container
-*ContainerMetricsApi* | [**GetContainerMetricMemory**](docs/ContainerMetricsApi.md#getcontainermetricmemory) | **Get** /container/{containerId}/metric/memory | NOT YET IMPLEMENTED - Get Memory consumption metric over time for the container
-*ContainerMetricsApi* | [**GetContainerMetricRestart**](docs/ContainerMetricsApi.md#getcontainermetricrestart) | **Get** /container/{containerId}/metric/restart | NOT YET IMPLEMENTED - List container restarts
-*ContainerMetricsApi* | [**GetContainerMetricStorage**](docs/ContainerMetricsApi.md#getcontainermetricstorage) | **Get** /container/{containerId}/metric/storage | NOT YET IMPLEMENTED - Get Storage consumption metric over time for the container 
 *ContainerRegistriesApi* | [**CreateContainerRegistry**](docs/ContainerRegistriesApi.md#createcontainerregistry) | **Post** /organization/{organizationId}/containerRegistry | Create a container registry
-*ContainerRegistriesApi* | [**DeleteContainerRegistry**](docs/ContainerRegistriesApi.md#deletecontainerregistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
+*ContainerRegistriesApi* | [**DeleteContainerRegistry**](docs/ContainerRegistriesApi.md#deletecontainerregistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | NOT YET IMPLEMENTED - Delete a container registry
 *ContainerRegistriesApi* | [**ListAvailableContainerRegistry**](docs/ContainerRegistriesApi.md#listavailablecontainerregistry) | **Get** /organization/{organizationId}/availableContainerRegistry | List supported container registries
-*ContainerRegistriesApi* | [**ListContainerRegistry**](docs/ContainerRegistriesApi.md#listcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
+*ContainerRegistriesApi* | [**ListContainerRegistry**](docs/ContainerRegistriesApi.md#listcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry | NOT YET IMPLEMENTED - List organization container registries
 *ContainerRegistryApi* | [**EditContainerRegistry**](docs/ContainerRegistryApi.md#editcontainerregistry) | **Put** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Edit a container registry
 *ContainerSecretApi* | [**CreateContainerSecret**](docs/ContainerSecretApi.md#createcontainersecret) | **Post** /container/{containerId}/secret | NOT YET IMPLEMENTED - Add a secret to the container
 *ContainerSecretApi* | [**CreateContainerSecretAlias**](docs/ContainerSecretApi.md#createcontainersecretalias) | **Post** /container/{containerId}/secret/{secretId}/alias | NOT YET IMPLEMENTED - Create a secret alias at the container level
 *ContainerSecretApi* | [**DeleteContainerSecret**](docs/ContainerSecretApi.md#deletecontainersecret) | **Delete** /container/{containerId}/secret/{secretId} | NOT YET IMPLEMENTED - Delete a secret from an container
 *ContainerSecretApi* | [**EditContainerSecret**](docs/ContainerSecretApi.md#editcontainersecret) | **Put** /container/{containerId}/secret/{secretId} | NOT YET IMPLEMENTED - Edit a secret belonging to the container
 *ContainerSecretApi* | [**ListContainerSecrets**](docs/ContainerSecretApi.md#listcontainersecrets) | **Get** /container/{containerId}/secret | NOT YET IMPLEMENTED - List container secrets
+*ContainersApi* | [**AutoDeployContainerEnvironments**](docs/ContainersApi.md#autodeploycontainerenvironments) | **Post** /organization/{organizationId}/container/deploy | NOT YET IMPLEMENTED - Auto deploy containers
 *ContainersApi* | [**CreateContainer**](docs/ContainersApi.md#createcontainer) | **Post** /environment/{environmentId}/container | Create a container
 *ContainersApi* | [**DeployAllContainers**](docs/ContainersApi.md#deployallcontainers) | **Post** /environment/{environmentId}/container/deploy | Deploy containers
-*ContainersApi* | [**GetEnvironmentContainerCurrentInstance**](docs/ContainersApi.md#getenvironmentcontainercurrentinstance) | **Get** /environment/{environmentId}/container/instance | List running instances with CPU and RAM usage for each container
 *ContainersApi* | [**GetEnvironmentContainerCurrentScale**](docs/ContainersApi.md#getenvironmentcontainercurrentscale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
 *ContainersApi* | [**GetEnvironmentContainerCurrentStorage**](docs/ContainersApi.md#getenvironmentcontainercurrentstorage) | **Get** /environment/{environmentId}/container/currentStorage | List current storage disk usage for each containers
 *ContainersApi* | [**GetEnvironmentContainerStatus**](docs/ContainersApi.md#getenvironmentcontainerstatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
 *ContainersApi* | [**ListContainer**](docs/ContainersApi.md#listcontainer) | **Get** /environment/{environmentId}/container | List containers
+*ContainersApi* | [**PreviewContainerEnvironments**](docs/ContainersApi.md#previewcontainerenvironments) | **Post** /organization/{organizationId}/container/preview | NOT YET IMPLEMENTED - Preview container environments
 *CustomDomainApi* | [**CreateApplicationCustomDomain**](docs/CustomDomainApi.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
 *CustomDomainApi* | [**DeleteCustomDomain**](docs/CustomDomainApi.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 *CustomDomainApi* | [**EditCustomDomain**](docs/CustomDomainApi.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
@@ -430,6 +412,7 @@ Class | Method | HTTP request | Description
  - [ApplicationResponseList](docs/ApplicationResponseList.md)
  - [ApplicationStorage](docs/ApplicationStorage.md)
  - [ApplicationStorageStorageInner](docs/ApplicationStorageStorageInner.md)
+ - [AutoDeployContainerEnvironmentsRequest](docs/AutoDeployContainerEnvironmentsRequest.md)
  - [AvailableContainerRegistryResponse](docs/AvailableContainerRegistryResponse.md)
  - [AwsCredentialsRequest](docs/AwsCredentialsRequest.md)
  - [Backup](docs/Backup.md)
@@ -497,9 +480,6 @@ Class | Method | HTTP request | Description
  - [ContainerCurrentScale](docs/ContainerCurrentScale.md)
  - [ContainerDependencyRequest](docs/ContainerDependencyRequest.md)
  - [ContainerDeployRequest](docs/ContainerDeployRequest.md)
- - [ContainerDeploymentRestriction](docs/ContainerDeploymentRestriction.md)
- - [ContainerDeploymentRestrictionRequest](docs/ContainerDeploymentRestrictionRequest.md)
- - [ContainerDeploymentRestrictionResponseList](docs/ContainerDeploymentRestrictionResponseList.md)
  - [ContainerEditRequest](docs/ContainerEditRequest.md)
  - [ContainerEditRequestAllOf](docs/ContainerEditRequestAllOf.md)
  - [ContainerNetwork](docs/ContainerNetwork.md)
@@ -569,6 +549,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentApplicationsCurrentScale](docs/EnvironmentApplicationsCurrentScale.md)
  - [EnvironmentApplicationsCurrentScaleResponseList](docs/EnvironmentApplicationsCurrentScaleResponseList.md)
  - [EnvironmentApplicationsInstanceResponseList](docs/EnvironmentApplicationsInstanceResponseList.md)
+ - [EnvironmentApplicationsInstanceResponseListResultsInner](docs/EnvironmentApplicationsInstanceResponseListResultsInner.md)
  - [EnvironmentApplicationsStorage](docs/EnvironmentApplicationsStorage.md)
  - [EnvironmentApplicationsStorageResponseList](docs/EnvironmentApplicationsStorageResponseList.md)
  - [EnvironmentApplicationsSupportedLanguage](docs/EnvironmentApplicationsSupportedLanguage.md)
@@ -614,9 +595,6 @@ Class | Method | HTTP request | Description
  - [EventPaginatedResponseListAllOf](docs/EventPaginatedResponseListAllOf.md)
  - [EventResponseList](docs/EventResponseList.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
- - [GetContainerTags200Response](docs/GetContainerTags200Response.md)
- - [GetEnvironmentContainerCurrentInstance200Response](docs/GetEnvironmentContainerCurrentInstance200Response.md)
- - [GetEnvironmentContainerCurrentInstance200ResponseResultsInner](docs/GetEnvironmentContainerCurrentInstance200ResponseResultsInner.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitProviderEnum](docs/GitProviderEnum.md)
@@ -644,6 +622,10 @@ Class | Method | HTTP request | Description
  - [LinkResponseList](docs/LinkResponseList.md)
  - [LinkedServiceTypeEnum](docs/LinkedServiceTypeEnum.md)
  - [ListClusterLogs200Response](docs/ListClusterLogs200Response.md)
+ - [ListContainerDeploymentHistory200Response](docs/ListContainerDeploymentHistory200Response.md)
+ - [ListContainerDeploymentHistory200ResponseAllOf](docs/ListContainerDeploymentHistory200ResponseAllOf.md)
+ - [ListContainerDeploymentHistory200ResponseAllOfResultsInner](docs/ListContainerDeploymentHistory200ResponseAllOfResultsInner.md)
+ - [ListContainerDeploymentHistory200ResponseAllOfResultsInnerAllOf](docs/ListContainerDeploymentHistory200ResponseAllOfResultsInnerAllOf.md)
  - [ListContainerRegistry200Response](docs/ListContainerRegistry200Response.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
  - [ListDatabaseDeploymentHistory200ResponseAllOf](docs/ListDatabaseDeploymentHistory200ResponseAllOf.md)
@@ -704,6 +686,7 @@ Class | Method | HTTP request | Description
  - [PaidUsage](docs/PaidUsage.md)
  - [PlanEnum](docs/PlanEnum.md)
  - [PortProtocolEnum](docs/PortProtocolEnum.md)
+ - [PreviewContainerEnvironmentsRequest](docs/PreviewContainerEnvironmentsRequest.md)
  - [Project](docs/Project.md)
  - [ProjectAllOf](docs/ProjectAllOf.md)
  - [ProjectCurrentCost](docs/ProjectCurrentCost.md)

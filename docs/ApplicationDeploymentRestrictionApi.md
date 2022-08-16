@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## EditApplicationDeploymentRestriction
 
-> ApplicationDeploymentRestriction EditApplicationDeploymentRestriction(ctx, applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
+> ApplicationDeploymentRestriction EditApplicationDeploymentRestriction(ctx, applicationId, deploymentRestrictionId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
 
 Edit an application deployment restriction
 
@@ -173,11 +173,12 @@ import (
 
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
     applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDeploymentRestrictionApi.EditApplicationDeploymentRestriction(context.Background(), applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
+    resp, r, err := apiClient.ApplicationDeploymentRestrictionApi.EditApplicationDeploymentRestriction(context.Background(), applicationId, deploymentRestrictionId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionApi.EditApplicationDeploymentRestriction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -194,6 +195,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **applicationId** | **string** | Application ID | 
+**deploymentRestrictionId** | **string** | Deployment Restriction ID | 
 
 ### Other Parameters
 
@@ -202,6 +204,7 @@ Other parameters are passed through a pointer to a apiEditApplicationDeploymentR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **applicationDeploymentRestrictionRequest** | [**ApplicationDeploymentRestrictionRequest**](ApplicationDeploymentRestrictionRequest.md) |  | 
 

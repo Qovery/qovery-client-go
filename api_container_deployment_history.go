@@ -20,37 +20,30 @@ import (
 	"strings"
 )
 
-// ContainerEventApiService ContainerEventApi service
-type ContainerEventApiService service
+// ContainerDeploymentHistoryApiService ContainerDeploymentHistoryApi service
+type ContainerDeploymentHistoryApiService service
 
-type ApiListContainerEventRequest struct {
+type ApiListContainerDeploymentHistoryRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerEventApiService
+	ApiService  *ContainerDeploymentHistoryApiService
 	containerId string
-	startId     *string
 }
 
-// Starting point after which to return results
-func (r ApiListContainerEventRequest) StartId(startId string) ApiListContainerEventRequest {
-	r.startId = &startId
-	return r
-}
-
-func (r ApiListContainerEventRequest) Execute() (*EventPaginatedResponseList, *http.Response, error) {
-	return r.ApiService.ListContainerEventExecute(r)
+func (r ApiListContainerDeploymentHistoryRequest) Execute() (*ListContainerDeploymentHistory200Response, *http.Response, error) {
+	return r.ApiService.ListContainerDeploymentHistoryExecute(r)
 }
 
 /*
-ListContainerEvent NOT YET IMPLEMENTED - List container events
+ListContainerDeploymentHistory NOT YET IMPLEMENTED - List container deployments
 
-By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
+Returns the 20 last container deployments
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
- @return ApiListContainerEventRequest
+ @return ApiListContainerDeploymentHistoryRequest
 */
-func (a *ContainerEventApiService) ListContainerEvent(ctx context.Context, containerId string) ApiListContainerEventRequest {
-	return ApiListContainerEventRequest{
+func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistory(ctx context.Context, containerId string) ApiListContainerDeploymentHistoryRequest {
+	return ApiListContainerDeploymentHistoryRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		containerId: containerId,
@@ -58,30 +51,27 @@ func (a *ContainerEventApiService) ListContainerEvent(ctx context.Context, conta
 }
 
 // Execute executes the request
-//  @return EventPaginatedResponseList
-func (a *ContainerEventApiService) ListContainerEventExecute(r ApiListContainerEventRequest) (*EventPaginatedResponseList, *http.Response, error) {
+//  @return ListContainerDeploymentHistory200Response
+func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistoryExecute(r ApiListContainerDeploymentHistoryRequest) (*ListContainerDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *EventPaginatedResponseList
+		localVarReturnValue *ListContainerDeploymentHistory200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEventApiService.ListContainerEvent")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerDeploymentHistoryApiService.ListContainerDeploymentHistory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/container/{containerId}/event"
+	localVarPath := localBasePath + "/container/{containerId}/deploymentHistory"
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.startId != nil {
-		localVarQueryParams.Add("startId", parameterToString(*r.startId, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -4,14 +4,87 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AutoDeployContainerEnvironments**](ContainersApi.md#AutoDeployContainerEnvironments) | **Post** /organization/{organizationId}/container/deploy | NOT YET IMPLEMENTED - Auto deploy containers
 [**CreateContainer**](ContainersApi.md#CreateContainer) | **Post** /environment/{environmentId}/container | Create a container
 [**DeployAllContainers**](ContainersApi.md#DeployAllContainers) | **Post** /environment/{environmentId}/container/deploy | Deploy containers
-[**GetEnvironmentContainerCurrentInstance**](ContainersApi.md#GetEnvironmentContainerCurrentInstance) | **Get** /environment/{environmentId}/container/instance | List running instances with CPU and RAM usage for each container
 [**GetEnvironmentContainerCurrentScale**](ContainersApi.md#GetEnvironmentContainerCurrentScale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
 [**GetEnvironmentContainerCurrentStorage**](ContainersApi.md#GetEnvironmentContainerCurrentStorage) | **Get** /environment/{environmentId}/container/currentStorage | List current storage disk usage for each containers
 [**GetEnvironmentContainerStatus**](ContainersApi.md#GetEnvironmentContainerStatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
 [**ListContainer**](ContainersApi.md#ListContainer) | **Get** /environment/{environmentId}/container | List containers
+[**PreviewContainerEnvironments**](ContainersApi.md#PreviewContainerEnvironments) | **Post** /organization/{organizationId}/container/preview | NOT YET IMPLEMENTED - Preview container environments
 
+
+
+## AutoDeployContainerEnvironments
+
+> Status AutoDeployContainerEnvironments(ctx, organizationId).AutoDeployContainerEnvironmentsRequest(autoDeployContainerEnvironmentsRequest).Execute()
+
+NOT YET IMPLEMENTED - Auto deploy containers
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    autoDeployContainerEnvironmentsRequest := *openapiclient.NewAutoDeployContainerEnvironmentsRequest() // AutoDeployContainerEnvironmentsRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersApi.AutoDeployContainerEnvironments(context.Background(), organizationId).AutoDeployContainerEnvironmentsRequest(autoDeployContainerEnvironmentsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.AutoDeployContainerEnvironments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AutoDeployContainerEnvironments`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ContainersApi.AutoDeployContainerEnvironments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAutoDeployContainerEnvironmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **autoDeployContainerEnvironmentsRequest** | [**AutoDeployContainerEnvironmentsRequest**](AutoDeployContainerEnvironmentsRequest.md) |  | 
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateContainer
@@ -149,74 +222,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetEnvironmentContainerCurrentInstance
-
-> GetEnvironmentContainerCurrentInstance200Response GetEnvironmentContainerCurrentInstance(ctx, environmentId).Execute()
-
-List running instances with CPU and RAM usage for each container
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainersApi.GetEnvironmentContainerCurrentInstance(context.Background(), environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.GetEnvironmentContainerCurrentInstance``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetEnvironmentContainerCurrentInstance`: GetEnvironmentContainerCurrentInstance200Response
-    fmt.Fprintf(os.Stdout, "Response from `ContainersApi.GetEnvironmentContainerCurrentInstance`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | Environment ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetEnvironmentContainerCurrentInstanceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**GetEnvironmentContainerCurrentInstance200Response**](GetEnvironmentContainerCurrentInstance200Response.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -495,6 +500,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PreviewContainerEnvironments
+
+> Status PreviewContainerEnvironments(ctx, organizationId).PreviewContainerEnvironmentsRequest(previewContainerEnvironmentsRequest).Execute()
+
+NOT YET IMPLEMENTED - Preview container environments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    previewContainerEnvironmentsRequest := *openapiclient.NewPreviewContainerEnvironmentsRequest() // PreviewContainerEnvironmentsRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersApi.PreviewContainerEnvironments(context.Background(), organizationId).PreviewContainerEnvironmentsRequest(previewContainerEnvironmentsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.PreviewContainerEnvironments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PreviewContainerEnvironments`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ContainersApi.PreviewContainerEnvironments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPreviewContainerEnvironmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **previewContainerEnvironmentsRequest** | [**PreviewContainerEnvironmentsRequest**](PreviewContainerEnvironmentsRequest.md) |  | 
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

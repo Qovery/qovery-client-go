@@ -143,7 +143,7 @@ func (r ApiDeleteContainerRegistryRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteContainerRegistry Delete a container registry
+DeleteContainerRegistry NOT YET IMPLEMENTED - Delete a container registry
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
@@ -336,7 +336,7 @@ func (r ApiListContainerRegistryRequest) Execute() (*ListContainerRegistry200Res
 }
 
 /*
-ListContainerRegistry List organization container registries
+ListContainerRegistry NOT YET IMPLEMENTED - List organization container registries
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID

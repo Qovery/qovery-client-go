@@ -2891,7 +2891,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: List organization container registries
+      summary: NOT YET IMPLEMENTED - List organization container registries
       tags:
       - Container Registries
     post:
@@ -2951,7 +2951,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Delete a container registry
+      summary: NOT YET IMPLEMENTED - Delete a container registry
       tags:
       - Container Registries
     put:
@@ -4453,36 +4453,6 @@ paths:
       summary: List all environment applications statuses
       tags:
       - Applications
-  /environment/{environmentId}/application/instance:
-    get:
-      operationId: getEnvironmentApplicationCurrentInstance
-      parameters:
-      - description: Environment ID
-        explode: false
-        in: path
-        name: environmentId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvironmentApplicationsInstanceResponseList'
-          description: Know current resource consumption for each application of the
-            environment
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List running instances with CPU and RAM usage for each application
-      tags:
-      - Applications
   /environment/{environmentId}/application/currentStorage:
     get:
       operationId: getEnvironmentApplicationCurrentStorage
@@ -4716,36 +4686,6 @@ paths:
       summary: List all environment container statuses
       tags:
       - Containers
-  /environment/{environmentId}/container/instance:
-    get:
-      operationId: getEnvironmentContainerCurrentInstance
-      parameters:
-      - description: Environment ID
-        explode: false
-        in: path
-        name: environmentId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getEnvironmentContainerCurrentInstance_200_response'
-          description: Know current resource consumption for each container of the
-            environment
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List running instances with CPU and RAM usage for each container
-      tags:
-      - Containers
   /environment/{environmentId}/container/currentStorage:
     get:
       operationId: getEnvironmentContainerCurrentStorage
@@ -4842,6 +4782,90 @@ paths:
         "409":
           description: Operation is in progress
       summary: Deploy containers
+      tags:
+      - Containers
+  /organization/{organizationId}/container/deploy:
+    post:
+      description: |
+        Triggers a new container deploy in each environment matching the following conditions
+        - environment should have the auto-deploy enabled
+        - the container should have the same image name and a different tag
+      operationId: autoDeployContainerEnvironments
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/autoDeployContainerEnvironments_request'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deployed containers
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: NOT YET IMPLEMENTED - Auto deploy containers
+      tags:
+      - Containers
+  /organization/{organizationId}/container/preview:
+    post:
+      description: |
+        Triggers a new container preview for each environment matching the following conditions
+        - preview environment feature should be enabled for the container
+        - the container should have the same image name and a different tag
+      operationId: previewContainerEnvironments
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/previewContainerEnvironments_request'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Preview environments processing
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: NOT YET IMPLEMENTED - Preview container environments
       tags:
       - Containers
   /environment/{environmentId}/log:
@@ -5728,6 +5752,15 @@ paths:
         explode: false
         in: path
         name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Deployment Restriction ID
+        explode: false
+        in: path
+        name: deploymentRestrictionId
         required: true
         schema:
           format: uuid
@@ -7767,10 +7800,10 @@ paths:
       summary: NOT YET IMPLEMENTED - Get container status
       tags:
       - Container Main Calls
-  /container/{containerId}/deploymentRestriction:
+  /container/{containerId}/deploymentHistory:
     get:
-      description: Get container deployment restrictions
-      operationId: getContainerDeploymentRestrictions
+      description: Returns the 20 last container deployments
+      operationId: listContainerDeploymentHistory
       parameters:
       - description: Container ID
         explode: false
@@ -7786,125 +7819,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContainerDeploymentRestrictionResponseList'
-          description: Get container deployment restrictions
+                $ref: '#/components/schemas/listContainerDeploymentHistory_200_response'
+          description: List deployment history
         "401":
           description: Access token is missing or invalid
         "403":
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get container deployment restrictions
+      summary: NOT YET IMPLEMENTED - List container deployments
       tags:
-      - Container Deployment Restriction
-    post:
-      description: Create an container deployment restriction
-      operationId: createContainerDeploymentRestriction
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ContainerDeploymentRestrictionRequest'
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContainerDeploymentRestriction'
-          description: Added an environment variable
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "409":
-          description: An Container deployment restriction with same properties already
-            exists for this Container
-      summary: NOT YET IMPLEMENTED - Create an container deployment restriction
-      tags:
-      - Container Deployment Restriction
-  /container/{containerId}/deploymentRestriction/{deploymentRestrictionId}:
-    delete:
-      description: Delete a container deployment restriction
-      operationId: deleteContainerDeploymentRestriction
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: The resource was deleted successfully
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Delete a container deployment restriction
-      tags:
-      - Container Deployment Restriction
-    put:
-      description: Edit a container deployment restriction
-      operationId: editContainerDeploymentRestriction
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Deployment Restriction ID
-        explode: false
-        in: path
-        name: deploymentRestrictionId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ContainerDeploymentRestrictionRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContainerDeploymentRestriction'
-          description: Edit a container deployment restriction
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Edit a container deployment restriction
-      tags:
-      - Container Deployment Restriction
+      - Container Deployment History
   /container/{containerId}/advancedSettings:
     get:
       description: Get list and values of the advanced settings of the container.
@@ -7971,133 +7896,6 @@ paths:
       summary: NOT YET IMPLEMENTED - Edit advanced settings
       tags:
       - Container Configuration
-  /container/{containerId}/contributor:
-    get:
-      operationId: listContainerContributor
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserResponseList'
-          description: List container contributors
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED -List contributors
-      tags:
-      - Container Main Calls
-  /container/{containerId}/tag:
-    get:
-      operationId: listContainerTag
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResponseList'
-          description: List container tags
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - List tags
-      tags:
-      - Container Main Calls
-    post:
-      operationId: createContainerTag
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TagRequest'
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TagResponseList'
-          description: Create container
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Add container tag
-      tags:
-      - Container Main Calls
-  /container/{containerId}/tag/{tagId}:
-    delete:
-      operationId: deleteContainerTag
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Tag ID
-        explode: false
-        in: path
-        name: tagId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: The resource was deleted successfully
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Delete container tag
-      tags:
-      - Container Main Calls
   /container/{containerId}/instance:
     get:
       operationId: getContainerCurrentInstance
@@ -8186,197 +7984,6 @@ paths:
         "404":
           description: Resource not found
       summary: NOT YET IMPLEMENTED - Get current scaling of the container
-      tags:
-      - Container Metrics
-  /container/{containerId}/metric/cpu:
-    get:
-      operationId: getContainerMetricCpu
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Up to how many seconds in the past to ask analytics results
-        explode: true
-        in: query
-        name: lastSeconds
-        required: true
-        schema:
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetricCPUResponseList'
-          description: CPU consumption
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get CPU consumption metric over time for the
-        container
-      tags:
-      - Container Metrics
-  /container/{containerId}/metric/memory:
-    get:
-      operationId: getContainerMetricMemory
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Up to how many seconds in the past to ask analytics results
-        explode: true
-        in: query
-        name: lastSeconds
-        required: true
-        schema:
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetricMemoryResponseList'
-          description: Memory consumption
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get Memory consumption metric over time for the
-        container
-      tags:
-      - Container Metrics
-  /container/{containerId}/metric/healthCheck:
-    get:
-      description: The value returned corresponds to the 95th centile
-      operationId: getContainerMetricHealthCheck
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Up to how many seconds in the past to ask analytics results
-        explode: true
-        in: query
-        name: lastSeconds
-        required: true
-        schema:
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetricGenericResponseList'
-          description: Health Check Latency
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get Health Check latency  metric over time for
-        the container
-      tags:
-      - Container Metrics
-  /container/{containerId}/metric/storage:
-    get:
-      operationId: getContainerMetricStorage
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Up to how many seconds in the past to ask analytics results
-        explode: true
-        in: query
-        name: lastSeconds
-        required: true
-        schema:
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetricStorageResponseList'
-          description: Storage consumption
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: 'NOT YET IMPLEMENTED - Get Storage consumption metric over time for
-        the container '
-      tags:
-      - Container Metrics
-  /container/{containerId}/metric/restart:
-    get:
-      description: Get container restart message and timestamp.
-      operationId: getContainerMetricRestart
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Up to how many seconds in the past to ask analytics results
-        explode: true
-        in: query
-        name: lastSeconds
-        required: true
-        schema:
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetricRestart'
-          description: Restarts
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - List container restarts
       tags:
       - Container Metrics
   /container/{containerId}/dependency:
@@ -8513,76 +8120,6 @@ paths:
       summary: NOT YET IMPLEMENTED - Deploy container
       tags:
       - Container Actions
-  /container/{containerId}/previewEnvironment:
-    post:
-      description: You must provide the image tag.
-      operationId: previewEnvironmentContainer
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ContainerDeployRequest'
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Deploy container
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: NOT YET IMPLEMENTED - Deploy a preview environment with your container
-        application
-      tags:
-      - Container Actions
-  /container/{containerId}/tagHistory:
-    get:
-      description: List all image container tags already deployed in the Qovery environment.
-      operationId: getContainerTags
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/getContainerTags_200_response'
-          description: Get tags
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - List image tags
-      tags:
-      - Container Main Calls
   /container/{containerId}/stop:
     post:
       operationId: stopContainer
@@ -8645,46 +8182,6 @@ paths:
       summary: NOT YET IMPLEMENTED - Restart container
       tags:
       - Container Actions
-  /container/{containerId}/event:
-    get:
-      description: "By default it returns the 20 last results. The response is paginated.\
-        \ In order to request the next page, you can use the startId query parameter"
-      operationId: listContainerEvent
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Starting point after which to return results
-        explode: true
-        in: query
-        name: startId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EventPaginatedResponseList'
-          description: List events
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - List container events
-      tags:
-      - Container Event
   /container/{containerId}/environmentVariable:
     get:
       operationId: listContainerEnvironmentVariable
@@ -8976,7 +8473,7 @@ paths:
         "400":
           description: Can't create an alias on a higher scope. Aliases can only be
             created from one scope to a lower scope. Scope hierarchy is BUILT_IN >
-            PROJECT > ENVIRONMENT > APPLICATION
+            PROJECT > ENVIRONMENT > CONTAINER
         "401":
           description: Access token is missing or invalid
         "403":
@@ -9529,110 +9026,6 @@ paths:
       summary: NOT YET IMPLEMENTED - Edit Container Network
       tags:
       - Container Configuration
-  /container/{containerId}/database:
-    get:
-      operationId: listContainerDatabase
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DatabaseResponseList'
-          description: List linked databases
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - List linked databases
-      tags:
-      - Container Database
-  /container/{containerId}/database/{targetDatabaseId}:
-    delete:
-      operationId: removeDatabaseFromContainer
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Target database ID
-        explode: false
-        in: path
-        name: targetDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: no content
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: NOT YET IMPLEMENTED - Remove database link to this container.
-      tags:
-      - Container Database
-    post:
-      operationId: attachDatabaseToContainer
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Target database ID
-        explode: false
-        in: path
-        name: targetDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Database'
-          description: Linked the database to the container
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: This database is already linked to the container
-      summary: NOT YET IMPLEMENTED - Link a database to the container
-      tags:
-      - Container Database
   /container/{containerId}/logicalDatabase:
     get:
       operationId: listContainerLogicalDatabase
@@ -9740,7 +9133,7 @@ paths:
   /container/{containerId}/link:
     get:
       description: This will return all the custom domains and Qovery autogenerated
-        domain for the given application
+        domain for the given container
       operationId: listContainerLinks
       parameters:
       - description: Container ID
@@ -12897,40 +12290,6 @@ components:
       required:
       - id
       type: object
-    ContainerDeploymentRestriction:
-      allOf:
-      - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/ContainerDeploymentRestrictionRequest'
-    ContainerDeploymentRestrictionRequest:
-      example:
-        mode: MATCH
-        type: PATH
-        value: application1/src/
-      properties:
-        mode:
-          $ref: '#/components/schemas/DeploymentRestrictionModeEnum'
-        type:
-          $ref: '#/components/schemas/DeploymentRestrictionTypeEnum'
-        value:
-          description: "For `PATH` restrictions, the value must not start with `/`"
-          example: application1/src/
-          type: string
-      required:
-      - mode
-      - type
-      - value
-      type: object
-    ContainerDeploymentRestrictionResponseList:
-      example:
-        deployment_restrictions:
-        - null
-        - null
-      properties:
-        deployment_restrictions:
-          items:
-            $ref: '#/components/schemas/ContainerDeploymentRestriction'
-          type: array
-      type: object
     ContainerEditRequest:
       allOf:
       - $ref: '#/components/schemas/ApplicationStorage'
@@ -13631,80 +12990,10 @@ components:
           type: array
       type: object
     EnvironmentApplicationsInstanceResponseList:
-      example:
-        results:
-        - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          instances:
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
-        - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          instances:
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
       properties:
         results:
           items:
-            $ref: '#/components/schemas/getEnvironmentContainerCurrentInstance_200_response_results_inner'
+            $ref: '#/components/schemas/EnvironmentApplicationsInstanceResponseList_results_inner'
           type: array
       type: object
     EnvironmentApplicationsStorage:
@@ -14307,6 +13596,7 @@ components:
       - BUILT_IN
       - ENVIRONMENT
       - PROJECT
+      - CONTAINER
       type: string
     Event:
       allOf:
@@ -16161,142 +15451,57 @@ components:
             $ref: '#/components/schemas/ContainerRegistryResponse'
           type: array
       type: object
-    getEnvironmentContainerCurrentInstance_200_response_results_inner:
-      example:
-        application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        instances:
-        - memory:
-            consumed_in_percent: 9.301444243932576
-            warning_threshold_in_percent: 3.616076749251911
-            requested_in_mb: 2
-            consumed_in_mb: 7
-            alert_threshold_in_percent: 2.027123023002322
-            status: null
-          name: instance 1
-          created_at: 2000-01-23T04:56:07.000+00:00
-          cpu:
-            consumed_in_percent: 1.4658129805029452
-            warning_threshold_in_percent: 5.962133916683182
-            consumed_in_number: 6.027456183070403
-            requested_in_float: 0.8008281904610115
-            alert_threshold_in_percent: 5.637376656633329
-            status: null
-        - memory:
-            consumed_in_percent: 9.301444243932576
-            warning_threshold_in_percent: 3.616076749251911
-            requested_in_mb: 2
-            consumed_in_mb: 7
-            alert_threshold_in_percent: 2.027123023002322
-            status: null
-          name: instance 1
-          created_at: 2000-01-23T04:56:07.000+00:00
-          cpu:
-            consumed_in_percent: 1.4658129805029452
-            warning_threshold_in_percent: 5.962133916683182
-            consumed_in_number: 6.027456183070403
-            requested_in_float: 0.8008281904610115
-            alert_threshold_in_percent: 5.637376656633329
-            status: null
+    autoDeployContainerEnvironments_request:
       properties:
-        application:
-          format: uuid
+        image_name:
+          description: the container image name to deploy
           type: string
-        instances:
-          items:
-            $ref: '#/components/schemas/Instance'
-          type: array
-      required:
-      - application
-      - instances
+        tag:
+          description: the new tag to deploy
+          type: string
       type: object
-    getEnvironmentContainerCurrentInstance_200_response:
-      example:
-        results:
-        - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          instances:
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
-        - application: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          instances:
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
-          - memory:
-              consumed_in_percent: 9.301444243932576
-              warning_threshold_in_percent: 3.616076749251911
-              requested_in_mb: 2
-              consumed_in_mb: 7
-              alert_threshold_in_percent: 2.027123023002322
-              status: null
-            name: instance 1
-            created_at: 2000-01-23T04:56:07.000+00:00
-            cpu:
-              consumed_in_percent: 1.4658129805029452
-              warning_threshold_in_percent: 5.962133916683182
-              consumed_in_number: 6.027456183070403
-              requested_in_float: 0.8008281904610115
-              alert_threshold_in_percent: 5.637376656633329
-              status: null
+    previewContainerEnvironments_request:
       properties:
-        results:
-          items:
-            $ref: '#/components/schemas/getEnvironmentContainerCurrentInstance_200_response_results_inner'
-          type: array
+        image_name:
+          description: the container image name to trigger preview environment
+          type: string
+        tag:
+          description: the tag to be used in the preview environment
+          type: string
       type: object
-    getContainerTags_200_response:
-      example:
-        results:
-        - results
-        - results
+    listContainerDeploymentHistory_200_response_allOf_results_inner_allOf:
       properties:
-        results:
+        name:
+          description: name of the container
+          type: string
+        status:
+          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+        image_name:
+          type: string
+        tag:
+          type: string
+        arguments:
           items:
             type: string
           type: array
+        entrypoint:
+          type: string
       type: object
+    listContainerDeploymentHistory_200_response_allOf_results_inner:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/listContainerDeploymentHistory_200_response_allOf_results_inner_allOf'
+    listContainerDeploymentHistory_200_response_allOf:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/listContainerDeploymentHistory_200_response_allOf_results_inner'
+          type: array
+      type: object
+    listContainerDeploymentHistory_200_response:
+      allOf:
+      - $ref: '#/components/schemas/PaginationData'
+      - $ref: '#/components/schemas/listContainerDeploymentHistory_200_response_allOf'
     listDatabaseDeploymentHistory_200_response_allOf:
       properties:
         results:
@@ -17219,6 +16424,19 @@ components:
       - cluster_id
       - mode
       - name
+      type: object
+    EnvironmentApplicationsInstanceResponseList_results_inner:
+      properties:
+        application:
+          format: uuid
+          type: string
+        instances:
+          items:
+            $ref: '#/components/schemas/Instance'
+          type: array
+      required:
+      - application
+      - instances
       type: object
     EnvironmentDatabasesCurrentMetric_cpu:
       example:

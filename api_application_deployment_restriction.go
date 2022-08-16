@@ -230,6 +230,7 @@ type ApiEditApplicationDeploymentRestrictionRequest struct {
 	ctx                                     context.Context
 	ApiService                              *ApplicationDeploymentRestrictionApiService
 	applicationId                           string
+	deploymentRestrictionId                 string
 	applicationDeploymentRestrictionRequest *ApplicationDeploymentRestrictionRequest
 }
 
@@ -249,13 +250,15 @@ Edit an application deployment restriction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
+ @param deploymentRestrictionId Deployment Restriction ID
  @return ApiEditApplicationDeploymentRestrictionRequest
 */
-func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRestriction(ctx context.Context, applicationId string) ApiEditApplicationDeploymentRestrictionRequest {
+func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiEditApplicationDeploymentRestrictionRequest {
 	return ApiEditApplicationDeploymentRestrictionRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		applicationId: applicationId,
+		ApiService:              a,
+		ctx:                     ctx,
+		applicationId:           applicationId,
+		deploymentRestrictionId: deploymentRestrictionId,
 	}
 }
 
@@ -276,6 +279,7 @@ func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRe
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterToString(r.deploymentRestrictionId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
