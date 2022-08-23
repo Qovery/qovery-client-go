@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Kind** | [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [default to CONTAINERREGISTRYKINDENUM_ECR]
 **Description** | Pointer to **string** |  | [optional] 
-**Url** | **string** | URL of the container registry | 
+**Url** | **string** | URL of the container registry.  Must start by &#39;https://&#39; and for docker_hub should be &#39;https://docker.io&#39;  | 
 **Config** | **map[string]interface{}** | authentification configuration | 
 
 ## Methods

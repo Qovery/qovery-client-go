@@ -12433,7 +12433,8 @@ components:
         description:
           type: string
         url:
-          description: URL of the container registry
+          description: "URL of the container registry. \nMust start by 'https://'\
+            \ and for docker_hub should be 'https://docker.io'\n"
           format: uri
           type: string
         config:

@@ -20,7 +20,7 @@ type ContainerRegistryRequest struct {
 	Name        string                    `json:"name"`
 	Kind        ContainerRegistryKindEnum `json:"kind"`
 	Description *string                   `json:"description,omitempty"`
-	// URL of the container registry
+	// URL of the container registry.  Must start by 'https://' and for docker_hub should be 'https://docker.io'
 	Url string `json:"url"`
 	// authentification configuration
 	Config map[string]interface{} `json:"config"`
