@@ -223,9 +223,8 @@ func (a *ContainerRegistriesApiService) DeleteContainerRegistryExecute(r ApiDele
 }
 
 type ApiListAvailableContainerRegistryRequest struct {
-	ctx            context.Context
-	ApiService     *ContainerRegistriesApiService
-	organizationId string
+	ctx        context.Context
+	ApiService *ContainerRegistriesApiService
 }
 
 func (r ApiListAvailableContainerRegistryRequest) Execute() (*AvailableContainerRegistryResponse, *http.Response, error) {
@@ -238,14 +237,12 @@ ListAvailableContainerRegistry List supported container registries
 List supported container registries by Qovery and get the mandatory authentification configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
  @return ApiListAvailableContainerRegistryRequest
 */
-func (a *ContainerRegistriesApiService) ListAvailableContainerRegistry(ctx context.Context, organizationId string) ApiListAvailableContainerRegistryRequest {
+func (a *ContainerRegistriesApiService) ListAvailableContainerRegistry(ctx context.Context) ApiListAvailableContainerRegistryRequest {
 	return ApiListAvailableContainerRegistryRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
+		ApiService: a,
+		ctx:        ctx,
 	}
 }
 
@@ -264,8 +261,7 @@ func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r 
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}/availableContainerRegistry"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath := localBasePath + "/availableContainerRegistry"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

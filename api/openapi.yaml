@@ -3082,21 +3082,11 @@ paths:
       summary: Edit a container registry
       tags:
       - Container Registry
-  /organization/{organizationId}/availableContainerRegistry:
+  /availableContainerRegistry:
     get:
       description: List supported container registries by Qovery and get the mandatory
         authentification configuration.
       operationId: listAvailableContainerRegistry
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
       responses:
         "200":
           content:

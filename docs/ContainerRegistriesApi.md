@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateContainerRegistry**](ContainerRegistriesApi.md#CreateContainerRegistry) | **Post** /organization/{organizationId}/containerRegistry | Create a container registry
 [**DeleteContainerRegistry**](ContainerRegistriesApi.md#DeleteContainerRegistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | NOT YET IMPLEMENTED - Delete a container registry
-[**ListAvailableContainerRegistry**](ContainerRegistriesApi.md#ListAvailableContainerRegistry) | **Get** /organization/{organizationId}/availableContainerRegistry | List supported container registries
+[**ListAvailableContainerRegistry**](ContainerRegistriesApi.md#ListAvailableContainerRegistry) | **Get** /availableContainerRegistry | List supported container registries
 [**ListContainerRegistry**](ContainerRegistriesApi.md#ListContainerRegistry) | **Get** /organization/{organizationId}/containerRegistry | NOT YET IMPLEMENTED - List organization container registries
 
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ## ListAvailableContainerRegistry
 
-> AvailableContainerRegistryResponse ListAvailableContainerRegistry(ctx, organizationId).Execute()
+> AvailableContainerRegistryResponse ListAvailableContainerRegistry(ctx).Execute()
 
 List supported container registries
 
@@ -168,11 +168,10 @@ import (
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerRegistriesApi.ListAvailableContainerRegistry(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.ContainerRegistriesApi.ListAvailableContainerRegistry(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesApi.ListAvailableContainerRegistry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -184,19 +183,11 @@ func main() {
 
 ### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListAvailableContainerRegistryRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
 
 
 ### Return type
