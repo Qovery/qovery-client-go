@@ -187,7 +187,9 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 *ClustersApi* | [**DeployCluster**](docs/ClustersApi.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 *ClustersApi* | [**EditCluster**](docs/ClustersApi.md#editcluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
+*ClustersApi* | [**EditClusterAdvancedSettings**](docs/ClustersApi.md#editclusteradvancedsettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
 *ClustersApi* | [**EditRoutingTable**](docs/ClustersApi.md#editroutingtable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
+*ClustersApi* | [**GetClusterAdvancedSettings**](docs/ClustersApi.md#getclusteradvancedsettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 *ClustersApi* | [**GetClusterReadinessStatus**](docs/ClustersApi.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersApi* | [**GetClusterStatus**](docs/ClustersApi.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersApi* | [**GetOrganizationCloudProviderInfo**](docs/ClustersApi.md#getorganizationcloudproviderinfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
@@ -543,6 +545,7 @@ Class | Method | HTTP request | Description
  - [DeploymentRestrictionTypeEnum](docs/DeploymentRestrictionTypeEnum.md)
  - [DeploymentRuleRequest](docs/DeploymentRuleRequest.md)
  - [DoCredentialsRequest](docs/DoCredentialsRequest.md)
+ - [EditClusterAdvancedSettingsRequest](docs/EditClusterAdvancedSettingsRequest.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOf](docs/EnvironmentAllOf.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)

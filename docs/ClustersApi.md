@@ -8,7 +8,9 @@ Method | HTTP request | Description
 [**DeleteCluster**](ClustersApi.md#DeleteCluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 [**DeployCluster**](ClustersApi.md#DeployCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 [**EditCluster**](ClustersApi.md#EditCluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
+[**EditClusterAdvancedSettings**](ClustersApi.md#EditClusterAdvancedSettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
 [**EditRoutingTable**](ClustersApi.md#EditRoutingTable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
+[**GetClusterAdvancedSettings**](ClustersApi.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 [**GetClusterReadinessStatus**](ClustersApi.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**GetOrganizationCloudProviderInfo**](ClustersApi.md#GetOrganizationCloudProviderInfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
@@ -307,6 +309,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EditClusterAdvancedSettings
+
+> Object EditClusterAdvancedSettings(ctx, organizationId, clusterId).EditClusterAdvancedSettingsRequest(editClusterAdvancedSettingsRequest).Execute()
+
+Edit advanced settings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    editClusterAdvancedSettingsRequest := *openapiclient.NewEditClusterAdvancedSettingsRequest() // EditClusterAdvancedSettingsRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersApi.EditClusterAdvancedSettings(context.Background(), organizationId, clusterId).EditClusterAdvancedSettingsRequest(editClusterAdvancedSettingsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.EditClusterAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditClusterAdvancedSettings`: Object
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.EditClusterAdvancedSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditClusterAdvancedSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **editClusterAdvancedSettingsRequest** | [**EditClusterAdvancedSettingsRequest**](EditClusterAdvancedSettingsRequest.md) |  | 
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EditRoutingTable
 
 > ClusterRoutingTable EditRoutingTable(ctx, organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
@@ -375,6 +452,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterAdvancedSettings
+
+> Object GetClusterAdvancedSettings(ctx, organizationId, clusterId).Execute()
+
+Get advanced settings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersApi.GetClusterAdvancedSettings(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetClusterAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetClusterAdvancedSettings`: Object
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterAdvancedSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterAdvancedSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**Object**](Object.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

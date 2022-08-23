@@ -446,6 +446,121 @@ func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Clust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiEditClusterAdvancedSettingsRequest struct {
+	ctx                                context.Context
+	ApiService                         *ClustersApiService
+	organizationId                     string
+	clusterId                          string
+	editClusterAdvancedSettingsRequest *EditClusterAdvancedSettingsRequest
+}
+
+func (r ApiEditClusterAdvancedSettingsRequest) EditClusterAdvancedSettingsRequest(editClusterAdvancedSettingsRequest EditClusterAdvancedSettingsRequest) ApiEditClusterAdvancedSettingsRequest {
+	r.editClusterAdvancedSettingsRequest = &editClusterAdvancedSettingsRequest
+	return r
+}
+
+func (r ApiEditClusterAdvancedSettingsRequest) Execute() (*Object, *http.Response, error) {
+	return r.ApiService.EditClusterAdvancedSettingsExecute(r)
+}
+
+/*
+EditClusterAdvancedSettings Edit advanced settings
+
+Edit advanced settings by returning table of advanced settings.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param clusterId Cluster ID
+ @return ApiEditClusterAdvancedSettingsRequest
+*/
+func (a *ClustersApiService) EditClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiEditClusterAdvancedSettingsRequest {
+	return ApiEditClusterAdvancedSettingsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		clusterId:      clusterId,
+	}
+}
+
+// Execute executes the request
+//  @return Object
+func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditClusterAdvancedSettingsRequest) (*Object, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Object
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.EditClusterAdvancedSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/advancedSettings"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.editClusterAdvancedSettingsRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEditRoutingTableRequest struct {
 	ctx                        context.Context
 	ApiService                 *ClustersApiService
@@ -524,6 +639,113 @@ func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableReques
 	}
 	// body params
 	localVarPostBody = r.clusterRoutingTableRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetClusterAdvancedSettingsRequest struct {
+	ctx            context.Context
+	ApiService     *ClustersApiService
+	organizationId string
+	clusterId      string
+}
+
+func (r ApiGetClusterAdvancedSettingsRequest) Execute() (*Object, *http.Response, error) {
+	return r.ApiService.GetClusterAdvancedSettingsExecute(r)
+}
+
+/*
+GetClusterAdvancedSettings Get advanced settings
+
+Get list and values of the advanced settings of the cluster.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param clusterId Cluster ID
+ @return ApiGetClusterAdvancedSettingsRequest
+*/
+func (a *ClustersApiService) GetClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiGetClusterAdvancedSettingsRequest {
+	return ApiGetClusterAdvancedSettingsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		clusterId:      clusterId,
+	}
+}
+
+// Execute executes the request
+//  @return Object
+func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAdvancedSettingsRequest) (*Object, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Object
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterAdvancedSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/advancedSettings"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
