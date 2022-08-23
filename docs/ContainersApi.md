@@ -4,14 +4,14 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AutoDeployContainerEnvironments**](ContainersApi.md#AutoDeployContainerEnvironments) | **Post** /organization/{organizationId}/container/deploy | NOT YET IMPLEMENTED - Auto deploy containers
+[**AutoDeployContainerEnvironments**](ContainersApi.md#AutoDeployContainerEnvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
 [**CreateContainer**](ContainersApi.md#CreateContainer) | **Post** /environment/{environmentId}/container | Create a container
 [**DeployAllContainers**](ContainersApi.md#DeployAllContainers) | **Post** /environment/{environmentId}/container/deploy | Deploy containers
 [**GetEnvironmentContainerCurrentScale**](ContainersApi.md#GetEnvironmentContainerCurrentScale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
 [**GetEnvironmentContainerCurrentStorage**](ContainersApi.md#GetEnvironmentContainerCurrentStorage) | **Get** /environment/{environmentId}/container/currentStorage | List current storage disk usage for each containers
 [**GetEnvironmentContainerStatus**](ContainersApi.md#GetEnvironmentContainerStatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
 [**ListContainer**](ContainersApi.md#ListContainer) | **Get** /environment/{environmentId}/container | List containers
-[**PreviewContainerEnvironments**](ContainersApi.md#PreviewContainerEnvironments) | **Post** /organization/{organizationId}/container/preview | NOT YET IMPLEMENTED - Preview container environments
+[**PreviewContainerEnvironments**](ContainersApi.md#PreviewContainerEnvironments) | **Post** /organization/{organizationId}/container/preview | Preview container environments
 
 
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > Status AutoDeployContainerEnvironments(ctx, organizationId).AutoDeployContainerEnvironmentsRequest(autoDeployContainerEnvironmentsRequest).Execute()
 
-NOT YET IMPLEMENTED - Auto deploy containers
+Auto deploy containers
 
 
 
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 > Status PreviewContainerEnvironments(ctx, organizationId).PreviewContainerEnvironmentsRequest(previewContainerEnvironmentsRequest).Execute()
 
-NOT YET IMPLEMENTED - Preview container environments
+Preview container environments
 
 
 

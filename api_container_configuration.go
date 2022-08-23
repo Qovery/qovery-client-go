@@ -40,7 +40,7 @@ func (r ApiEditContainerAdvancedSettingsRequest) Execute() ([]ContainerAdvancedS
 }
 
 /*
-EditContainerAdvancedSettings NOT YET IMPLEMENTED - Edit advanced settings
+EditContainerAdvancedSettings Edit advanced settings
 
 Edit advanced settings by returning table of advanced settings.
 
@@ -151,7 +151,7 @@ func (r ApiEditContainerNetworkRequest) Execute() (*ContainerNetwork, *http.Resp
 }
 
 /*
-EditContainerNetwork NOT YET IMPLEMENTED - Edit Container Network
+EditContainerNetwork Edit Container Network
 
 Edit the Network settings of the container.
 
@@ -256,7 +256,7 @@ func (r ApiGetContainerAdvancedSettingsRequest) Execute() ([]ContainerAdvancedSe
 }
 
 /*
-GetContainerAdvancedSettings NOT YET IMPLEMENTED - Get advanced settings
+GetContainerAdvancedSettings Get advanced settings
 
 Get list and values of the advanced settings of the container.
 
@@ -359,7 +359,7 @@ func (r ApiGetContainerNetworkRequest) Execute() (*ContainerNetwork, *http.Respo
 }
 
 /*
-GetContainerNetwork NOT YET IMPLEMENTED - Get Container Network information
+GetContainerNetwork Get Container Network information
 
 Get status of the container network settings.
 

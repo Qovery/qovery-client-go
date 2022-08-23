@@ -4,11 +4,11 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteContainer**](ContainerMainCallsApi.md#DeleteContainer) | **Delete** /container/{containerId} | NOT YET IMPLEMENTED - Delete container
-[**EditContainer**](ContainerMainCallsApi.md#EditContainer) | **Put** /container/{containerId} | NOT YET IMPLEMENTED - Edit container
-[**GetContainer**](ContainerMainCallsApi.md#GetContainer) | **Get** /container/{containerId} | NOT YET IMPLEMENTED - Get container by ID
-[**GetContainerStatus**](ContainerMainCallsApi.md#GetContainerStatus) | **Get** /container/{containerId}/status | NOT YET IMPLEMENTED - Get container status
-[**ListContainerLinks**](ContainerMainCallsApi.md#ListContainerLinks) | **Get** /container/{containerId}/link | NOT YET IMPLEMENTED - List all URLs of the container
+[**DeleteContainer**](ContainerMainCallsApi.md#DeleteContainer) | **Delete** /container/{containerId} | Delete container
+[**EditContainer**](ContainerMainCallsApi.md#EditContainer) | **Put** /container/{containerId} | Edit container
+[**GetContainer**](ContainerMainCallsApi.md#GetContainer) | **Get** /container/{containerId} | Get container by ID
+[**GetContainerStatus**](ContainerMainCallsApi.md#GetContainerStatus) | **Get** /container/{containerId}/status | Get container status
+[**ListContainerLinks**](ContainerMainCallsApi.md#ListContainerLinks) | **Get** /container/{containerId}/link | List all URLs of the container
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > DeleteContainer(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - Delete container
+Delete container
 
 
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 > ContainerResponse EditContainer(ctx, containerId).ContainerEditRequest(containerEditRequest).Execute()
 
-NOT YET IMPLEMENTED - Edit container
+Edit container
 
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 > ContainerResponse GetContainer(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - Get container by ID
+Get container by ID
 
 ### Example
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 > Status GetContainerStatus(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - Get container status
+Get container status
 
 ### Example
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 > LinkResponseList ListContainerLinks(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List all URLs of the container
+List all URLs of the container
 
 
 

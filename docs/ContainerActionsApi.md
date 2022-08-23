@@ -4,9 +4,9 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeployContainer**](ContainerActionsApi.md#DeployContainer) | **Post** /container/{containerId}/deploy | NOT YET IMPLEMENTED - Deploy container
-[**RestartContainer**](ContainerActionsApi.md#RestartContainer) | **Post** /container/{containerId}/restart | NOT YET IMPLEMENTED - Restart container
-[**StopContainer**](ContainerActionsApi.md#StopContainer) | **Post** /container/{containerId}/stop | NOT YET IMPLEMENTED - Stop container
+[**DeployContainer**](ContainerActionsApi.md#DeployContainer) | **Post** /container/{containerId}/deploy | Deploy container
+[**RestartContainer**](ContainerActionsApi.md#RestartContainer) | **Post** /container/{containerId}/restart | Restart container
+[**StopContainer**](ContainerActionsApi.md#StopContainer) | **Post** /container/{containerId}/stop | Stop container
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > Status DeployContainer(ctx, containerId).ContainerDeployRequest(containerDeployRequest).Execute()
 
-NOT YET IMPLEMENTED - Deploy container
+Deploy container
 
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > Status RestartContainer(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - Restart container
+Restart container
 
 ### Example
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 > Status StopContainer(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - Stop container
+Stop container
 
 ### Example
 

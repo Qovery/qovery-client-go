@@ -4,7 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListContainerDeploymentHistory**](ContainerDeploymentHistoryApi.md#ListContainerDeploymentHistory) | **Get** /container/{containerId}/deploymentHistory | NOT YET IMPLEMENTED - List container deployments
+[**ListContainerDeploymentHistory**](ContainerDeploymentHistoryApi.md#ListContainerDeploymentHistory) | **Get** /container/{containerId}/deploymentHistory | List container deployments
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > ListContainerDeploymentHistory200Response ListContainerDeploymentHistory(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List container deployments
+List container deployments
 
 
 

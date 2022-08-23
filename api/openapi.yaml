@@ -2975,7 +2975,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List organization container registries
+      summary: List organization container registries
       tags:
       - Container Registries
     post:
@@ -3035,7 +3035,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Delete a container registry
+      summary: Delete a container registry
       tags:
       - Container Registries
     put:
@@ -4897,7 +4897,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: NOT YET IMPLEMENTED - Auto deploy containers
+      summary: Auto deploy containers
       tags:
       - Containers
   /organization/{organizationId}/container/preview:
@@ -4939,7 +4939,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: NOT YET IMPLEMENTED - Preview container environments
+      summary: Preview container environments
       tags:
       - Containers
   /environment/{environmentId}/log:
@@ -7771,7 +7771,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Delete container
+      summary: Delete container
       tags:
       - Container Main Calls
     get:
@@ -7799,7 +7799,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get container by ID
+      summary: Get container by ID
       tags:
       - Container Main Calls
     put:
@@ -7842,7 +7842,7 @@ paths:
           description: Resource not found
         "409":
           description: Container name within the environment is already taken
-      summary: NOT YET IMPLEMENTED - Edit container
+      summary: Edit container
       tags:
       - Container Main Calls
   /container/{containerId}/status:
@@ -7871,7 +7871,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get container status
+      summary: Get container status
       tags:
       - Container Main Calls
   /container/{containerId}/deploymentHistory:
@@ -7901,7 +7901,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List container deployments
+      summary: List container deployments
       tags:
       - Container Deployment History
   /container/{containerId}/advancedSettings:
@@ -7931,7 +7931,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get advanced settings
+      summary: Get advanced settings
       tags:
       - Container Configuration
     put:
@@ -7967,7 +7967,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Edit advanced settings
+      summary: Edit advanced settings
       tags:
       - Container Configuration
   /container/{containerId}/instance:
@@ -7997,8 +7997,8 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List currently running instances of the container
-        with their CPU and RAM metrics
+      summary: List currently running instances of the container with their CPU and
+        RAM metrics
       tags:
       - Container Metrics
   /container/{containerId}/currentStorage:
@@ -8027,7 +8027,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List current storage disk usage
+      summary: List current storage disk usage
       tags:
       - Container Metrics
   /container/{containerId}/currentScale:
@@ -8057,7 +8057,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get current scaling of the container
+      summary: Get current scaling of the container
       tags:
       - Container Metrics
   /container/{containerId}/dependency:
@@ -8086,7 +8086,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List container dependencies
+      summary: List container dependencies
       tags:
       - Container Dependency
   /container/{containerId}/dependency/{targetContainerId}:
@@ -8111,7 +8111,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Remove container dependency to this container.
+      summary: Remove container dependency to this container.
       tags:
       - Container Dependency
     post:
@@ -8152,7 +8152,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Add container dependency to this application.
+      summary: Add container dependency to this application.
       tags:
       - Container Dependency
   /container/{containerId}/deploy:
@@ -8191,7 +8191,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: NOT YET IMPLEMENTED - Deploy container
+      summary: Deploy container
       tags:
       - Container Actions
   /container/{containerId}/stop:
@@ -8222,7 +8222,7 @@ paths:
           description: Resource not found
         "409":
           description: Container is already stopped or an operation is in progress
-      summary: NOT YET IMPLEMENTED - Stop container
+      summary: Stop container
       tags:
       - Container Actions
   /container/{containerId}/restart:
@@ -8253,7 +8253,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: NOT YET IMPLEMENTED - Restart container
+      summary: Restart container
       tags:
       - Container Actions
   /container/{containerId}/environmentVariable:
@@ -8282,7 +8282,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List environment variables
+      summary: List environment variables
       tags:
       - Container Environment Variable
     post:
@@ -8357,7 +8357,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Import variables
+      summary: Import variables
       tags:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/{environmentVariableId}:
@@ -8395,7 +8395,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Delete an environment variable from a container
+      summary: Delete an environment variable from a container
       tags:
       - Container Environment Variable
     put:
@@ -8444,8 +8444,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Edit an environment variable belonging to the
-        container
+      summary: Edit an environment variable belonging to the container
       tags:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/{environmentVariableId}/override:
@@ -8498,8 +8497,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Create an environment variable override at the
-        container level
+      summary: Create an environment variable override at the container level
       tags:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/{environmentVariableId}/alias:
@@ -8554,8 +8552,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Create an environment variable alias at the container
-        level
+      summary: Create an environment variable alias at the container level
       tags:
       - Container Environment Variable
   /container/{containerId}/secret:
@@ -8586,7 +8583,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List container secrets
+      summary: List container secrets
       tags:
       - Container Secret
     post:
@@ -8623,7 +8620,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Add a secret to the container
+      summary: Add a secret to the container
       tags:
       - Container Secret
   /container/{containerId}/secret/{secretId}:
@@ -8660,7 +8657,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Delete a secret from an container
+      summary: Delete a secret from an container
       tags:
       - Container Secret
     put:
@@ -8709,7 +8706,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Edit a secret belonging to the container
+      summary: Edit a secret belonging to the container
       tags:
       - Container Secret
   /container/{containerId}/secret/{secretId}/override:
@@ -8762,7 +8759,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Create a secret override at the container level
+      summary: Create a secret override at the container level
       tags:
       - Application Secret
   /container/{containerId}/secret/{secretId}/alias:
@@ -8817,7 +8814,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Create a secret alias at the container level
+      summary: Create a secret alias at the container level
       tags:
       - Container Secret
   /container/{containerId}/customDomain:
@@ -8846,7 +8843,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List container custom domains
+      summary: List container custom domains
       tags:
       - Container Custom Domain
     post:
@@ -8883,7 +8880,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Add custom domain to the container.
+      summary: Add custom domain to the container.
       tags:
       - Container Custom Domain
   /container/{containerId}/customDomain/{customDomainId}:
@@ -8918,7 +8915,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Delete a Custom Domain
+      summary: Delete a Custom Domain
       tags:
       - Container Custom Domain
     put:
@@ -8963,7 +8960,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Edit a Custom Domain
+      summary: Edit a Custom Domain
       tags:
       - Container Custom Domain
   /container/{containerId}/customDomain/{customDomainId}/status:
@@ -9001,7 +8998,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get Custom Domain status
+      summary: Get Custom Domain status
       tags:
       - Container Custom Domain
   /container/{containerId}/log:
@@ -9031,7 +9028,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List logs
+      summary: List logs
       tags:
       - Container Logs
   /container/{containerId}/network:
@@ -9061,7 +9058,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Get Container Network information
+      summary: Get Container Network information
       tags:
       - Container Configuration
     put:
@@ -9097,7 +9094,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Edit Container Network
+      summary: Edit Container Network
       tags:
       - Container Configuration
   /container/{containerId}/logicalDatabase:
@@ -9126,7 +9123,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List linked logical databases
+      summary: List linked logical databases
       tags:
       - Container Database
   /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId}:
@@ -9160,7 +9157,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - Remove logical database link to this container.
+      summary: Remove logical database link to this container.
       tags:
       - Container Database
     post:
@@ -9201,7 +9198,7 @@ paths:
           description: Resource not found
         "409":
           description: This logical database is already linked to the container
-      summary: NOT YET IMPLEMENTED - Link a logical database to the container
+      summary: Link a logical database to the container
       tags:
       - Container Database
   /container/{containerId}/link:
@@ -9232,7 +9229,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: NOT YET IMPLEMENTED - List all URLs of the container
+      summary: List all URLs of the container
       tags:
       - Container Main Calls
   /environment/{environmentId}/database:

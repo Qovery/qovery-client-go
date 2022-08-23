@@ -40,7 +40,7 @@ func (r ApiAutoDeployContainerEnvironmentsRequest) Execute() (*Status, *http.Res
 }
 
 /*
-AutoDeployContainerEnvironments NOT YET IMPLEMENTED - Auto deploy containers
+AutoDeployContainerEnvironments Auto deploy containers
 
 Triggers a new container deploy in each environment matching the following conditions
 - environment should have the auto-deploy enabled
@@ -792,7 +792,7 @@ func (r ApiPreviewContainerEnvironmentsRequest) Execute() (*Status, *http.Respon
 }
 
 /*
-PreviewContainerEnvironments NOT YET IMPLEMENTED - Preview container environments
+PreviewContainerEnvironments Preview container environments
 
 Triggers a new container preview for each environment matching the following conditions
 - preview environment feature should be enabled for the container

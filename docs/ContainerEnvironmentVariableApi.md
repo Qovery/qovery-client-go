@@ -5,12 +5,12 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#CreateContainerEnvironmentVariable) | **Post** /container/{containerId}/environmentVariable | Add an environment variable to the container
-[**CreateContainerEnvironmentVariableAlias**](ContainerEnvironmentVariableApi.md#CreateContainerEnvironmentVariableAlias) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/alias | NOT YET IMPLEMENTED - Create an environment variable alias at the container level
-[**CreateContainerEnvironmentVariableOverride**](ContainerEnvironmentVariableApi.md#CreateContainerEnvironmentVariableOverride) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/override | NOT YET IMPLEMENTED - Create an environment variable override at the container level
-[**DeleteContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#DeleteContainerEnvironmentVariable) | **Delete** /container/{containerId}/environmentVariable/{environmentVariableId} | NOT YET IMPLEMENTED - Delete an environment variable from a container
-[**EditContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#EditContainerEnvironmentVariable) | **Put** /container/{containerId}/environmentVariable/{environmentVariableId} | NOT YET IMPLEMENTED - Edit an environment variable belonging to the container
-[**ImportContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#ImportContainerEnvironmentVariable) | **Post** /container/{containerId}/environmentVariable/import | NOT YET IMPLEMENTED - Import variables
-[**ListContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#ListContainerEnvironmentVariable) | **Get** /container/{containerId}/environmentVariable | NOT YET IMPLEMENTED - List environment variables
+[**CreateContainerEnvironmentVariableAlias**](ContainerEnvironmentVariableApi.md#CreateContainerEnvironmentVariableAlias) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the container level
+[**CreateContainerEnvironmentVariableOverride**](ContainerEnvironmentVariableApi.md#CreateContainerEnvironmentVariableOverride) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the container level
+[**DeleteContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#DeleteContainerEnvironmentVariable) | **Delete** /container/{containerId}/environmentVariable/{environmentVariableId} | Delete an environment variable from a container
+[**EditContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#EditContainerEnvironmentVariable) | **Put** /container/{containerId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the container
+[**ImportContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#ImportContainerEnvironmentVariable) | **Post** /container/{containerId}/environmentVariable/import | Import variables
+[**ListContainerEnvironmentVariable**](ContainerEnvironmentVariableApi.md#ListContainerEnvironmentVariable) | **Get** /container/{containerId}/environmentVariable | List environment variables
 
 
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 > EnvironmentVariable CreateContainerEnvironmentVariableAlias(ctx, containerId, environmentVariableId).Key(key).Execute()
 
-NOT YET IMPLEMENTED - Create an environment variable alias at the container level
+Create an environment variable alias at the container level
 
 
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 > EnvironmentVariable CreateContainerEnvironmentVariableOverride(ctx, containerId, environmentVariableId).Value(value).Execute()
 
-NOT YET IMPLEMENTED - Create an environment variable override at the container level
+Create an environment variable override at the container level
 
 
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 > DeleteContainerEnvironmentVariable(ctx, containerId, environmentVariableId).Execute()
 
-NOT YET IMPLEMENTED - Delete an environment variable from a container
+Delete an environment variable from a container
 
 
 
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 > EnvironmentVariable EditContainerEnvironmentVariable(ctx, containerId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
 
-NOT YET IMPLEMENTED - Edit an environment variable belonging to the container
+Edit an environment variable belonging to the container
 
 
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 > VariableImport ImportContainerEnvironmentVariable(ctx, containerId).VariableImportRequest(variableImportRequest).Execute()
 
-NOT YET IMPLEMENTED - Import variables
+Import variables
 
 
 
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 > EnvironmentVariableResponseList ListContainerEnvironmentVariable(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List environment variables
+List environment variables
 
 ### Example
 

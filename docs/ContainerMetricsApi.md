@@ -4,9 +4,9 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetContainerCurrentInstance**](ContainerMetricsApi.md#GetContainerCurrentInstance) | **Get** /container/{containerId}/instance | NOT YET IMPLEMENTED - List currently running instances of the container with their CPU and RAM metrics
-[**GetContainerCurrentScale**](ContainerMetricsApi.md#GetContainerCurrentScale) | **Get** /container/{containerId}/currentScale | NOT YET IMPLEMENTED - Get current scaling of the container
-[**GetContainerCurrentStorageDisk**](ContainerMetricsApi.md#GetContainerCurrentStorageDisk) | **Get** /container/{containerId}/currentStorage | NOT YET IMPLEMENTED - List current storage disk usage
+[**GetContainerCurrentInstance**](ContainerMetricsApi.md#GetContainerCurrentInstance) | **Get** /container/{containerId}/instance | List currently running instances of the container with their CPU and RAM metrics
+[**GetContainerCurrentScale**](ContainerMetricsApi.md#GetContainerCurrentScale) | **Get** /container/{containerId}/currentScale | Get current scaling of the container
+[**GetContainerCurrentStorageDisk**](ContainerMetricsApi.md#GetContainerCurrentStorageDisk) | **Get** /container/{containerId}/currentStorage | List current storage disk usage
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > InstanceResponseList GetContainerCurrentInstance(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List currently running instances of the container with their CPU and RAM metrics
+List currently running instances of the container with their CPU and RAM metrics
 
 ### Example
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 > ContainerCurrentScale GetContainerCurrentScale(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - Get current scaling of the container
+Get current scaling of the container
 
 
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 > StorageDiskResponseList GetContainerCurrentStorageDisk(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List current storage disk usage
+List current storage disk usage
 
 ### Example
 

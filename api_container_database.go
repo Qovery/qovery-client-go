@@ -35,7 +35,7 @@ func (r ApiAttachLogicalDatabaseToContainerRequest) Execute() (*LogicalDatabase,
 }
 
 /*
-AttachLogicalDatabaseToContainer NOT YET IMPLEMENTED - Link a logical database to the container
+AttachLogicalDatabaseToContainer Link a logical database to the container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -139,7 +139,7 @@ func (r ApiListContainerLogicalDatabaseRequest) Execute() (*LogicalDatabaseRespo
 }
 
 /*
-ListContainerLogicalDatabase NOT YET IMPLEMENTED - List linked logical databases
+ListContainerLogicalDatabase List linked logical databases
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -241,7 +241,7 @@ func (r ApiRemoveLogicalDatabaseFromContainerRequest) Execute() (*http.Response,
 }
 
 /*
-RemoveLogicalDatabaseFromContainer NOT YET IMPLEMENTED - Remove logical database link to this container.
+RemoveLogicalDatabaseFromContainer Remove logical database link to this container.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID

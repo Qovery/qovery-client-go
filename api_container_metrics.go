@@ -34,7 +34,7 @@ func (r ApiGetContainerCurrentInstanceRequest) Execute() (*InstanceResponseList,
 }
 
 /*
-GetContainerCurrentInstance NOT YET IMPLEMENTED - List currently running instances of the container with their CPU and RAM metrics
+GetContainerCurrentInstance List currently running instances of the container with their CPU and RAM metrics
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -135,7 +135,7 @@ func (r ApiGetContainerCurrentScaleRequest) Execute() (*ContainerCurrentScale, *
 }
 
 /*
-GetContainerCurrentScale NOT YET IMPLEMENTED - Get current scaling of the container
+GetContainerCurrentScale Get current scaling of the container
 
 Returns min, max, and running number of instances of the application
 
@@ -238,7 +238,7 @@ func (r ApiGetContainerCurrentStorageDiskRequest) Execute() (*StorageDiskRespons
 }
 
 /*
-GetContainerCurrentStorageDisk NOT YET IMPLEMENTED - List current storage disk usage
+GetContainerCurrentStorageDisk List current storage disk usage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID

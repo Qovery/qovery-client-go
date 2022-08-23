@@ -34,7 +34,7 @@ func (r ApiListContainerDeploymentHistoryRequest) Execute() (*ListContainerDeplo
 }
 
 /*
-ListContainerDeploymentHistory NOT YET IMPLEMENTED - List container deployments
+ListContainerDeploymentHistory List container deployments
 
 Returns the 20 last container deployments
 

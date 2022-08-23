@@ -40,7 +40,7 @@ func (r ApiDeployContainerRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-DeployContainer NOT YET IMPLEMENTED - Deploy container
+DeployContainer Deploy container
 
 You must provide a git commit id
 
@@ -145,7 +145,7 @@ func (r ApiRestartContainerRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-RestartContainer NOT YET IMPLEMENTED - Restart container
+RestartContainer Restart container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
@@ -246,7 +246,7 @@ func (r ApiStopContainerRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-StopContainer NOT YET IMPLEMENTED - Stop container
+StopContainer Stop container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID

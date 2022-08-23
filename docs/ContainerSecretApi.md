@@ -4,11 +4,11 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateContainerSecret**](ContainerSecretApi.md#CreateContainerSecret) | **Post** /container/{containerId}/secret | NOT YET IMPLEMENTED - Add a secret to the container
-[**CreateContainerSecretAlias**](ContainerSecretApi.md#CreateContainerSecretAlias) | **Post** /container/{containerId}/secret/{secretId}/alias | NOT YET IMPLEMENTED - Create a secret alias at the container level
-[**DeleteContainerSecret**](ContainerSecretApi.md#DeleteContainerSecret) | **Delete** /container/{containerId}/secret/{secretId} | NOT YET IMPLEMENTED - Delete a secret from an container
-[**EditContainerSecret**](ContainerSecretApi.md#EditContainerSecret) | **Put** /container/{containerId}/secret/{secretId} | NOT YET IMPLEMENTED - Edit a secret belonging to the container
-[**ListContainerSecrets**](ContainerSecretApi.md#ListContainerSecrets) | **Get** /container/{containerId}/secret | NOT YET IMPLEMENTED - List container secrets
+[**CreateContainerSecret**](ContainerSecretApi.md#CreateContainerSecret) | **Post** /container/{containerId}/secret | Add a secret to the container
+[**CreateContainerSecretAlias**](ContainerSecretApi.md#CreateContainerSecretAlias) | **Post** /container/{containerId}/secret/{secretId}/alias | Create a secret alias at the container level
+[**DeleteContainerSecret**](ContainerSecretApi.md#DeleteContainerSecret) | **Delete** /container/{containerId}/secret/{secretId} | Delete a secret from an container
+[**EditContainerSecret**](ContainerSecretApi.md#EditContainerSecret) | **Put** /container/{containerId}/secret/{secretId} | Edit a secret belonging to the container
+[**ListContainerSecrets**](ContainerSecretApi.md#ListContainerSecrets) | **Get** /container/{containerId}/secret | List container secrets
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > Secret CreateContainerSecret(ctx, containerId).SecretRequest(secretRequest).Execute()
 
-NOT YET IMPLEMENTED - Add a secret to the container
+Add a secret to the container
 
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > Secret CreateContainerSecretAlias(ctx, containerId, secretId).Key(key).Execute()
 
-NOT YET IMPLEMENTED - Create a secret alias at the container level
+Create a secret alias at the container level
 
 
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 > DeleteContainerSecret(ctx, containerId, secretId).Execute()
 
-NOT YET IMPLEMENTED - Delete a secret from an container
+Delete a secret from an container
 
 
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 > Secret EditContainerSecret(ctx, containerId, secretId).SecretEditRequest(secretEditRequest).Execute()
 
-NOT YET IMPLEMENTED - Edit a secret belonging to the container
+Edit a secret belonging to the container
 
 
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 > SecretResponseList ListContainerSecrets(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List container secrets
+List container secrets
 
 
 

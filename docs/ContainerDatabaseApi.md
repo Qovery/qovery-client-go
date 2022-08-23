@@ -4,9 +4,9 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AttachLogicalDatabaseToContainer**](ContainerDatabaseApi.md#AttachLogicalDatabaseToContainer) | **Post** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | NOT YET IMPLEMENTED - Link a logical database to the container
-[**ListContainerLogicalDatabase**](ContainerDatabaseApi.md#ListContainerLogicalDatabase) | **Get** /container/{containerId}/logicalDatabase | NOT YET IMPLEMENTED - List linked logical databases
-[**RemoveLogicalDatabaseFromContainer**](ContainerDatabaseApi.md#RemoveLogicalDatabaseFromContainer) | **Delete** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | NOT YET IMPLEMENTED - Remove logical database link to this container.
+[**AttachLogicalDatabaseToContainer**](ContainerDatabaseApi.md#AttachLogicalDatabaseToContainer) | **Post** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | Link a logical database to the container
+[**ListContainerLogicalDatabase**](ContainerDatabaseApi.md#ListContainerLogicalDatabase) | **Get** /container/{containerId}/logicalDatabase | List linked logical databases
+[**RemoveLogicalDatabaseFromContainer**](ContainerDatabaseApi.md#RemoveLogicalDatabaseFromContainer) | **Delete** /container/{containerId}/logicalDatabase/{targetLogicalDatabaseId} | Remove logical database link to this container.
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > LogicalDatabase AttachLogicalDatabaseToContainer(ctx, containerId, targetLogicalDatabaseId).Execute()
 
-NOT YET IMPLEMENTED - Link a logical database to the container
+Link a logical database to the container
 
 ### Example
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 > LogicalDatabaseResponseList ListContainerLogicalDatabase(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List linked logical databases
+List linked logical databases
 
 ### Example
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 > RemoveLogicalDatabaseFromContainer(ctx, containerId, targetLogicalDatabaseId).Execute()
 
-NOT YET IMPLEMENTED - Remove logical database link to this container.
+Remove logical database link to this container.
 
 ### Example
 

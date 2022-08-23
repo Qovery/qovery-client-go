@@ -4,9 +4,9 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateContainerDependency**](ContainerDependencyApi.md#CreateContainerDependency) | **Post** /container/{containerId}/dependency/{targetContainerId} | NOT YET IMPLEMENTED - Add container dependency to this application.
-[**ListContainerDependency**](ContainerDependencyApi.md#ListContainerDependency) | **Get** /container/{containerId}/dependency | NOT YET IMPLEMENTED - List container dependencies
-[**RemoveContainerDependency**](ContainerDependencyApi.md#RemoveContainerDependency) | **Delete** /container/{containerId}/dependency/{targetContainerId} | NOT YET IMPLEMENTED - Remove container dependency to this container.
+[**CreateContainerDependency**](ContainerDependencyApi.md#CreateContainerDependency) | **Post** /container/{containerId}/dependency/{targetContainerId} | Add container dependency to this application.
+[**ListContainerDependency**](ContainerDependencyApi.md#ListContainerDependency) | **Get** /container/{containerId}/dependency | List container dependencies
+[**RemoveContainerDependency**](ContainerDependencyApi.md#RemoveContainerDependency) | **Delete** /container/{containerId}/dependency/{targetContainerId} | Remove container dependency to this container.
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > ContainerResponse CreateContainerDependency(ctx, containerId, targetContainerId).Execute()
 
-NOT YET IMPLEMENTED - Add container dependency to this application.
+Add container dependency to this application.
 
 
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > ContainerResponseList ListContainerDependency(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - List container dependencies
+List container dependencies
 
 ### Example
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 > RemoveContainerDependency(ctx, containerId).Execute()
 
-NOT YET IMPLEMENTED - Remove container dependency to this container.
+Remove container dependency to this container.
 
 ### Example
 

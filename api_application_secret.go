@@ -394,7 +394,7 @@ func (r ApiCreateContainerSecretOverrideRequest) Execute() (*Secret, *http.Respo
 }
 
 /*
-CreateContainerSecretOverride NOT YET IMPLEMENTED - Create a secret override at the container level
+CreateContainerSecretOverride Create a secret override at the container level
 
 - Allows you to override at container level a secret that has a higher scope.
 - You only have to specify a value in the request body
