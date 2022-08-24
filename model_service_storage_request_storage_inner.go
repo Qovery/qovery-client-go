@@ -18,7 +18,7 @@ import (
 // ServiceStorageRequestStorageInner struct for ServiceStorageRequestStorageInner
 type ServiceStorageRequestStorageInner struct {
 	Type StorageTypeEnum `json:"type"`
-	// unit is GB
+	// unit is GB Minimum size is 4 GB
 	Size       int32  `json:"size"`
 	MountPoint string `json:"mount_point"`
 }

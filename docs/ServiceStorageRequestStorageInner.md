@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**StorageTypeEnum**](StorageTypeEnum.md) |  | 
-**Size** | **int32** | unit is GB | 
+**Size** | **int32** | unit is GB Minimum size is 4 GB  | 
 **MountPoint** | **string** |  | 
 
 ## Methods
