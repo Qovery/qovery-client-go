@@ -50,16 +50,8 @@ type ApplicationAllOf struct {
 // will change when the set of required properties is changed
 func NewApplicationAllOf() *ApplicationAllOf {
 	this := ApplicationAllOf{}
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -74,16 +66,8 @@ func NewApplicationAllOf() *ApplicationAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationAllOfWithDefaults() *ApplicationAllOf {
 	this := ApplicationAllOf{}
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
-	var cpu int32 = 250
-	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1

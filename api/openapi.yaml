@@ -12775,8 +12775,9 @@ components:
           example: 1250
           type: integer
         memory:
-          default: 256
-          description: unit is MB. 1024 MB = 1GB
+          description: "unit is MB. 1024 MB = 1GB  \nDefault value is linked to the\
+            \ database type:\n- MANAGED: 100\n- CONTAINER\n  - POSTGRES: 100\n  -\
+            \ REDIS: 100\n  - MYSQL: 512\n  - MONGODB: 256\n"
           example: 1024
           type: integer
         storage:
@@ -12818,8 +12819,9 @@ components:
           example: 1250
           type: integer
         memory:
-          default: 256
-          description: unit is MB. 1024 MB = 1GB
+          description: "unit is MB. 1024 MB = 1GB  \nDefault value is linked to the\
+            \ database type:\n- MANAGED: `100`\n- CONTAINER\n  - POSTGRES: `100`\n\
+            \  - REDIS: `100`\n  - MYSQL: `512`\n  - MONGODB: `256`\n"
           example: 1024
           type: integer
         storage:
@@ -15613,17 +15615,15 @@ components:
         git_repository:
           $ref: '#/components/schemas/ApplicationGitRepository'
         maximum_cpu:
-          default: 250
           description: Maximum cpu that can be allocated to the application based
             on organization cluster configuration. unit is millicores (m). 1000m =
             1 cpu
-          example: 1250
+          example: 16000
           type: integer
         maximum_memory:
-          default: 256
           description: Maximum memory that can be allocated to the application based
             on organization cluster configuration. unit is MB. 1024 MB = 1GB
-          example: 1024
+          example: 16384
           type: integer
         name:
           description: name is case insensitive
@@ -15642,12 +15642,10 @@ components:
         buildpack_language:
           $ref: '#/components/schemas/BuildPackLanguageEnum'
         cpu:
-          default: 250
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
           type: integer
         memory:
-          default: 256
           description: unit is MB. 1024 MB = 1GB
           example: 1024
           type: integer
@@ -15691,12 +15689,12 @@ components:
         buildpack_language:
           $ref: '#/components/schemas/BuildPackLanguageEnum'
         cpu:
-          default: 250
+          default: 500
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
           type: integer
         memory:
-          default: 256
+          default: 512
           description: unit is MB. 1024 MB = 1GB
           example: 1024
           type: integer
@@ -15799,12 +15797,12 @@ components:
         buildpack_language:
           $ref: '#/components/schemas/BuildPackLanguageEnum'
         cpu:
-          default: 250
+          default: 500
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
           type: integer
         memory:
-          default: 256
+          default: 512
           description: unit is MB. 1024 MB = 1GB
           example: 1024
           type: integer
@@ -16332,14 +16330,12 @@ components:
           example: 5432
           type: integer
         maximum_cpu:
-          default: 250
           description: Maximum cpu that can be allocated to the database based on
             organization cluster configuration. unit is millicores (m). 1000m = 1
             cpu
           example: 1250
           type: integer
         maximum_memory:
-          default: 256
           description: Maximum memory that can be allocated to the database based
             on organization cluster configuration. unit is MB. 1024 MB = 1GB
           example: 1024

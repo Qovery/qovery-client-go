@@ -49,9 +49,9 @@ func NewApplicationEditRequestAllOf() *ApplicationEditRequestAllOf {
 	this := ApplicationEditRequestAllOf{}
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
-	var cpu int32 = 250
+	var cpu int32 = 500
 	this.Cpu = &cpu
-	var memory int32 = 256
+	var memory int32 = 512
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
@@ -71,9 +71,9 @@ func NewApplicationEditRequestAllOfWithDefaults() *ApplicationEditRequestAllOf {
 	this := ApplicationEditRequestAllOf{}
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
-	var cpu int32 = 250
+	var cpu int32 = 500
 	this.Cpu = &cpu
-	var memory int32 = 256
+	var memory int32 = 512
 	this.Memory = &memory
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances

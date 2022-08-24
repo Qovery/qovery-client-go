@@ -34,10 +34,6 @@ type DatabaseAllOf struct {
 // will change when the set of required properties is changed
 func NewDatabaseAllOf() *DatabaseAllOf {
 	this := DatabaseAllOf{}
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
 	return &this
 }
 
@@ -46,10 +42,6 @@ func NewDatabaseAllOf() *DatabaseAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewDatabaseAllOfWithDefaults() *DatabaseAllOf {
 	this := DatabaseAllOf{}
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
 	return &this
 }
 

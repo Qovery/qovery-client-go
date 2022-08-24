@@ -29,7 +29,7 @@ type Database struct {
 	Accessibility *DatabaseAccessibilityEnum `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
-	// unit is MB. 1024 MB = 1GB
+	// unit is MB. 1024 MB = 1GB   Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
 	Storage     *int32           `json:"storage,omitempty"`
@@ -60,14 +60,8 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	var storage int32 = 10
 	this.Storage = &storage
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
 	return &this
 }
 
@@ -80,14 +74,8 @@ func NewDatabaseWithDefaults() *Database {
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	var storage int32 = 10
 	this.Storage = &storage
-	var maximumCpu int32 = 250
-	this.MaximumCpu = &maximumCpu
-	var maximumMemory int32 = 256
-	this.MaximumMemory = &maximumMemory
 	return &this
 }
 

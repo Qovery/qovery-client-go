@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Version** | Pointer to **string** |  | [optional] 
 **Accessibility** | Pointer to [**DatabaseAccessibilityEnum**](DatabaseAccessibilityEnum.md) |  | [optional] [default to DATABASEACCESSIBILITYENUM_PRIVATE]
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
-**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 256]
+**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB   Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] 
 
 ## Methods

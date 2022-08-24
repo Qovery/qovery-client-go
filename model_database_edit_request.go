@@ -23,7 +23,7 @@ type DatabaseEditRequest struct {
 	Accessibility *DatabaseAccessibilityEnum `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
-	// unit is MB. 1024 MB = 1GB
+	// unit is MB. 1024 MB = 1GB   Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
@@ -39,8 +39,6 @@ func NewDatabaseEditRequest() *DatabaseEditRequest {
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	return &this
 }
 
@@ -53,8 +51,6 @@ func NewDatabaseEditRequestWithDefaults() *DatabaseEditRequest {
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
-	var memory int32 = 256
-	this.Memory = &memory
 	return &this
 }
 
