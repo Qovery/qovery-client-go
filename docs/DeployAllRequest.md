@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Applications** | Pointer to [**[]DeployAllRequestApplicationsInner**](DeployAllRequestApplicationsInner.md) |  | [optional] 
+**Containers** | Pointer to [**[]DeployAllRequestContainersInner**](DeployAllRequestContainersInner.md) |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetApplications sets Applications field to given value.
 `func (o *DeployAllRequest) HasApplications() bool`
 
 HasApplications returns a boolean if a field has been set.
+
+### GetContainers
+
+`func (o *DeployAllRequest) GetContainers() []DeployAllRequestContainersInner`
+
+GetContainers returns the Containers field if non-nil, zero value otherwise.
+
+### GetContainersOk
+
+`func (o *DeployAllRequest) GetContainersOk() (*[]DeployAllRequestContainersInner, bool)`
+
+GetContainersOk returns a tuple with the Containers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContainers
+
+`func (o *DeployAllRequest) SetContainers(v []DeployAllRequestContainersInner)`
+
+SetContainers sets Containers field to given value.
+
+### HasContainers
+
+`func (o *DeployAllRequest) HasContainers() bool`
+
+HasContainers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

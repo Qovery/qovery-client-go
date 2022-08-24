@@ -18,6 +18,7 @@ import (
 // DeployAllRequest struct for DeployAllRequest
 type DeployAllRequest struct {
 	Applications []DeployAllRequestApplicationsInner `json:"applications,omitempty"`
+	Containers   []DeployAllRequestContainersInner   `json:"containers,omitempty"`
 }
 
 // NewDeployAllRequest instantiates a new DeployAllRequest object
@@ -69,10 +70,45 @@ func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplicationsInner
 	o.Applications = v
 }
 
+// GetContainers returns the Containers field value if set, zero value otherwise.
+func (o *DeployAllRequest) GetContainers() []DeployAllRequestContainersInner {
+	if o == nil || o.Containers == nil {
+		var ret []DeployAllRequestContainersInner
+		return ret
+	}
+	return o.Containers
+}
+
+// GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployAllRequest) GetContainersOk() ([]DeployAllRequestContainersInner, bool) {
+	if o == nil || o.Containers == nil {
+		return nil, false
+	}
+	return o.Containers, true
+}
+
+// HasContainers returns a boolean if a field has been set.
+func (o *DeployAllRequest) HasContainers() bool {
+	if o != nil && o.Containers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContainers gets a reference to the given []DeployAllRequestContainersInner and assigns it to the Containers field.
+func (o *DeployAllRequest) SetContainers(v []DeployAllRequestContainersInner) {
+	o.Containers = v
+}
+
 func (o DeployAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Applications != nil {
 		toSerialize["applications"] = o.Applications
+	}
+	if o.Containers != nil {
+		toSerialize["containers"] = o.Containers
 	}
 	return json.Marshal(toSerialize)
 }

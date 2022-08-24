@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AutoDeployContainerEnvironments**](ContainersApi.md#AutoDeployContainerEnvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
 [**CreateContainer**](ContainersApi.md#CreateContainer) | **Post** /environment/{environmentId}/container | Create a container
-[**DeployAllContainers**](ContainersApi.md#DeployAllContainers) | **Post** /environment/{environmentId}/container/deploy | Deploy containers
+[**DeployAllServices**](ContainersApi.md#DeployAllServices) | **Post** /environment/{environmentId}/container/deploy | Deploy services
 [**GetEnvironmentContainerCurrentScale**](ContainersApi.md#GetEnvironmentContainerCurrentScale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
 [**GetEnvironmentContainerCurrentStorage**](ContainersApi.md#GetEnvironmentContainerCurrentStorage) | **Get** /environment/{environmentId}/container/currentStorage | List current storage disk usage for each containers
 [**GetEnvironmentContainerStatus**](ContainersApi.md#GetEnvironmentContainerStatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
@@ -157,11 +157,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeployAllContainers
+## DeployAllServices
 
-> Status DeployAllContainers(ctx, environmentId).DeployAllRequest(deployAllRequest).Execute()
+> Status DeployAllServices(ctx, environmentId).DeployAllRequest(deployAllRequest).Execute()
 
-Deploy containers
+Deploy services
 
 
 
@@ -183,13 +183,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainersApi.DeployAllContainers(context.Background(), environmentId).DeployAllRequest(deployAllRequest).Execute()
+    resp, r, err := apiClient.ContainersApi.DeployAllServices(context.Background(), environmentId).DeployAllRequest(deployAllRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.DeployAllContainers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.DeployAllServices``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeployAllContainers`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainersApi.DeployAllContainers`: %v\n", resp)
+    // response from `DeployAllServices`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ContainersApi.DeployAllServices`: %v\n", resp)
 }
 ```
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeployAllContainersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeployAllServicesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -246,33 +246,33 @@ func (a *ContainersApiService) CreateContainerExecute(r ApiCreateContainerReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeployAllContainersRequest struct {
+type ApiDeployAllServicesRequest struct {
 	ctx              context.Context
 	ApiService       *ContainersApiService
 	environmentId    string
 	deployAllRequest *DeployAllRequest
 }
 
-func (r ApiDeployAllContainersRequest) DeployAllRequest(deployAllRequest DeployAllRequest) ApiDeployAllContainersRequest {
+func (r ApiDeployAllServicesRequest) DeployAllRequest(deployAllRequest DeployAllRequest) ApiDeployAllServicesRequest {
 	r.deployAllRequest = &deployAllRequest
 	return r
 }
 
-func (r ApiDeployAllContainersRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.DeployAllContainersExecute(r)
+func (r ApiDeployAllServicesRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.DeployAllServicesExecute(r)
 }
 
 /*
-DeployAllContainers Deploy containers
+DeployAllServices Deploy services
 
-Deploy to the last commit the containers you specified.
+Update and deploy the selected services
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
- @return ApiDeployAllContainersRequest
+ @return ApiDeployAllServicesRequest
 */
-func (a *ContainersApiService) DeployAllContainers(ctx context.Context, environmentId string) ApiDeployAllContainersRequest {
-	return ApiDeployAllContainersRequest{
+func (a *ContainersApiService) DeployAllServices(ctx context.Context, environmentId string) ApiDeployAllServicesRequest {
+	return ApiDeployAllServicesRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentId: environmentId,
@@ -281,7 +281,7 @@ func (a *ContainersApiService) DeployAllContainers(ctx context.Context, environm
 
 // Execute executes the request
 //  @return Status
-func (a *ContainersApiService) DeployAllContainersExecute(r ApiDeployAllContainersRequest) (*Status, *http.Response, error) {
+func (a *ContainersApiService) DeployAllServicesExecute(r ApiDeployAllServicesRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -289,7 +289,7 @@ func (a *ContainersApiService) DeployAllContainersExecute(r ApiDeployAllContaine
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainersApiService.DeployAllContainers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainersApiService.DeployAllServices")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

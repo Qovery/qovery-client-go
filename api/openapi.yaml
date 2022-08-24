@@ -4821,8 +4821,8 @@ paths:
       - Containers
   /environment/{environmentId}/container/deploy:
     post:
-      description: Deploy to the last commit the containers you specified.
-      operationId: deployAllContainers
+      description: Update and deploy the selected services
+      operationId: deployAllServices
       parameters:
       - description: Environment ID
         explode: false
@@ -4844,7 +4844,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Deployed containers
+          description: Deployed services
         "400":
           description: Bad request
         "401":
@@ -4855,9 +4855,10 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Deploy containers
+      summary: Deploy services
       tags:
       - Containers
+      - Applications
   /organization/{organizationId}/container/deploy:
     post:
       description: |
@@ -12882,6 +12883,11 @@ components:
       type: object
     DeployAllRequest:
       example:
+        containers:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          image_tag: image_tag
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          image_tag: image_tag
         applications:
         - git_commit_id: git_commit_id
           application_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -12891,6 +12897,10 @@ components:
         applications:
           items:
             $ref: '#/components/schemas/DeployAllRequest_applications_inner'
+          type: array
+        containers:
+          items:
+            $ref: '#/components/schemas/DeployAllRequest_containers_inner'
           type: array
       type: object
     DeployRequest:
@@ -16442,6 +16452,22 @@ components:
       required:
       - application_id
       - git_commit_id
+      type: object
+    DeployAllRequest_containers_inner:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        image_tag: image_tag
+      properties:
+        id:
+          description: id of the container to be updated.
+          format: uuid
+          type: string
+        image_tag:
+          description: new tag for the container.
+          type: string
+      required:
+      - id
+      - image_tag
       type: object
     DeploymentHistory_allOf:
       properties:
