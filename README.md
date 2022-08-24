@@ -136,6 +136,7 @@ Class | Method | HTTP request | Description
 *ApplicationSecretApi* | [**ListApplicationSecrets**](docs/ApplicationSecretApi.md#listapplicationsecrets) | **Get** /application/{applicationId}/secret | List application secrets
 *ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **Post** /environment/{environmentId}/application | Create an application
 *ApplicationsApi* | [**DeployAllApplications**](docs/ApplicationsApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
+*ApplicationsApi* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsApi.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentScale**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentscale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentStorage**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentstorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsApi.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses

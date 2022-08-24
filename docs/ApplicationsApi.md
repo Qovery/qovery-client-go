@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateApplication**](ApplicationsApi.md#CreateApplication) | **Post** /environment/{environmentId}/application | Create an application
 [**DeployAllApplications**](ApplicationsApi.md#DeployAllApplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
+[**GetDefaultApplicationAdvancedSettings**](ApplicationsApi.md#GetDefaultApplicationAdvancedSettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 [**GetEnvironmentApplicationCurrentScale**](ApplicationsApi.md#GetEnvironmentApplicationCurrentScale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
 [**GetEnvironmentApplicationCurrentStorage**](ApplicationsApi.md#GetEnvironmentApplicationCurrentStorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
 [**GetEnvironmentApplicationStatus**](ApplicationsApi.md#GetEnvironmentApplicationStatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
@@ -149,6 +150,65 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDefaultApplicationAdvancedSettings
+
+> ApplicationAdvancedSettings GetDefaultApplicationAdvancedSettings(ctx).Execute()
+
+List default application advanced settings
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationsApi.GetDefaultApplicationAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.GetDefaultApplicationAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultApplicationAdvancedSettings`: ApplicationAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.GetDefaultApplicationAdvancedSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDefaultApplicationAdvancedSettingsRequest struct via the builder pattern
+
+
+### Return type
+
+[**ApplicationAdvancedSettings**](ApplicationAdvancedSettings.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

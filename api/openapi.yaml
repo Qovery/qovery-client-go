@@ -5599,6 +5599,23 @@ paths:
       summary: "List eligible database types, versions and modes for the environment"
       tags:
       - Databases
+  /defaultApplicationAdvancedSettings:
+    get:
+      operationId: getDefaultApplicationAdvancedSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationAdvancedSettings'
+          description: Default application advanced settings
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: List default application advanced settings
+      tags:
+      - Applications
   /application/{applicationId}:
     delete:
       description: To delete the application you must have the admin permission
