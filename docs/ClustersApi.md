@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ## EditClusterAdvancedSettings
 
-> Object EditClusterAdvancedSettings(ctx, organizationId, clusterId).EditClusterAdvancedSettingsRequest(editClusterAdvancedSettingsRequest).Execute()
+> ClusterAdvancedSettings EditClusterAdvancedSettings(ctx, organizationId, clusterId).ClusterAdvancedSettings(clusterAdvancedSettings).Execute()
 
 Edit advanced settings
 
@@ -332,16 +332,16 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-    editClusterAdvancedSettingsRequest := *openapiclient.NewEditClusterAdvancedSettingsRequest() // EditClusterAdvancedSettingsRequest |  (optional)
+    clusterAdvancedSettings := *openapiclient.NewClusterAdvancedSettings() // ClusterAdvancedSettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClustersApi.EditClusterAdvancedSettings(context.Background(), organizationId, clusterId).EditClusterAdvancedSettingsRequest(editClusterAdvancedSettingsRequest).Execute()
+    resp, r, err := apiClient.ClustersApi.EditClusterAdvancedSettings(context.Background(), organizationId, clusterId).ClusterAdvancedSettings(clusterAdvancedSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.EditClusterAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditClusterAdvancedSettings`: Object
+    // response from `EditClusterAdvancedSettings`: ClusterAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.EditClusterAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -364,11 +364,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **editClusterAdvancedSettingsRequest** | [**EditClusterAdvancedSettingsRequest**](EditClusterAdvancedSettingsRequest.md) |  | 
+ **clusterAdvancedSettings** | [**ClusterAdvancedSettings**](ClusterAdvancedSettings.md) |  | 
 
 ### Return type
 
-[**Object**](Object.md)
+[**ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
 
 ### Authorization
 
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterAdvancedSettings
 
-> Object GetClusterAdvancedSettings(ctx, organizationId, clusterId).Execute()
+> ClusterAdvancedSettings GetClusterAdvancedSettings(ctx, organizationId, clusterId).Execute()
 
 Get advanced settings
 
@@ -490,7 +490,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetClusterAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClusterAdvancedSettings`: Object
+    // response from `GetClusterAdvancedSettings`: ClusterAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetClusterAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -516,7 +516,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
 
 ### Authorization
 

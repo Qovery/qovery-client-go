@@ -447,19 +447,19 @@ func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Clust
 }
 
 type ApiEditClusterAdvancedSettingsRequest struct {
-	ctx                                context.Context
-	ApiService                         *ClustersApiService
-	organizationId                     string
-	clusterId                          string
-	editClusterAdvancedSettingsRequest *EditClusterAdvancedSettingsRequest
+	ctx                     context.Context
+	ApiService              *ClustersApiService
+	organizationId          string
+	clusterId               string
+	clusterAdvancedSettings *ClusterAdvancedSettings
 }
 
-func (r ApiEditClusterAdvancedSettingsRequest) EditClusterAdvancedSettingsRequest(editClusterAdvancedSettingsRequest EditClusterAdvancedSettingsRequest) ApiEditClusterAdvancedSettingsRequest {
-	r.editClusterAdvancedSettingsRequest = &editClusterAdvancedSettingsRequest
+func (r ApiEditClusterAdvancedSettingsRequest) ClusterAdvancedSettings(clusterAdvancedSettings ClusterAdvancedSettings) ApiEditClusterAdvancedSettingsRequest {
+	r.clusterAdvancedSettings = &clusterAdvancedSettings
 	return r
 }
 
-func (r ApiEditClusterAdvancedSettingsRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiEditClusterAdvancedSettingsRequest) Execute() (*ClusterAdvancedSettings, *http.Response, error) {
 	return r.ApiService.EditClusterAdvancedSettingsExecute(r)
 }
 
@@ -483,13 +483,13 @@ func (a *ClustersApiService) EditClusterAdvancedSettings(ctx context.Context, or
 }
 
 // Execute executes the request
-//  @return Object
-func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditClusterAdvancedSettingsRequest) (*Object, *http.Response, error) {
+//  @return ClusterAdvancedSettings
+func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Object
+		localVarReturnValue *ClusterAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.EditClusterAdvancedSettings")
@@ -523,7 +523,7 @@ func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditCluster
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.editClusterAdvancedSettingsRequest
+	localVarPostBody = r.clusterAdvancedSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -683,7 +683,7 @@ type ApiGetClusterAdvancedSettingsRequest struct {
 	clusterId      string
 }
 
-func (r ApiGetClusterAdvancedSettingsRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiGetClusterAdvancedSettingsRequest) Execute() (*ClusterAdvancedSettings, *http.Response, error) {
 	return r.ApiService.GetClusterAdvancedSettingsExecute(r)
 }
 
@@ -707,13 +707,13 @@ func (a *ClustersApiService) GetClusterAdvancedSettings(ctx context.Context, org
 }
 
 // Execute executes the request
-//  @return Object
-func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAdvancedSettingsRequest) (*Object, *http.Response, error) {
+//  @return ClusterAdvancedSettings
+func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Object
+		localVarReturnValue *ClusterAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterAdvancedSettings")

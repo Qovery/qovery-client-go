@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// EditClusterAdvancedSettingsRequest struct for EditClusterAdvancedSettingsRequest
-type EditClusterAdvancedSettingsRequest struct {
+// ClusterAdvancedSettings struct for ClusterAdvancedSettings
+type ClusterAdvancedSettings struct {
 	// Configure the number of seconds before cleaning images in the registry
 	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
 	// Select the size of the main load_balancer (only effective for Scaleway)
@@ -27,12 +27,12 @@ type EditClusterAdvancedSettingsRequest struct {
 	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
 }
 
-// NewEditClusterAdvancedSettingsRequest instantiates a new EditClusterAdvancedSettingsRequest object
+// NewClusterAdvancedSettings instantiates a new ClusterAdvancedSettings object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditClusterAdvancedSettingsRequest() *EditClusterAdvancedSettingsRequest {
-	this := EditClusterAdvancedSettingsRequest{}
+func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
+	this := ClusterAdvancedSettings{}
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var loadBalancerSize string = "lb-s"
@@ -44,11 +44,11 @@ func NewEditClusterAdvancedSettingsRequest() *EditClusterAdvancedSettingsRequest
 	return &this
 }
 
-// NewEditClusterAdvancedSettingsRequestWithDefaults instantiates a new EditClusterAdvancedSettingsRequest object
+// NewClusterAdvancedSettingsWithDefaults instantiates a new ClusterAdvancedSettings object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEditClusterAdvancedSettingsRequestWithDefaults() *EditClusterAdvancedSettingsRequest {
-	this := EditClusterAdvancedSettingsRequest{}
+func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
+	this := ClusterAdvancedSettings{}
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var loadBalancerSize string = "lb-s"
@@ -61,7 +61,7 @@ func NewEditClusterAdvancedSettingsRequestWithDefaults() *EditClusterAdvancedSet
 }
 
 // GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field value if set, zero value otherwise.
-func (o *EditClusterAdvancedSettingsRequest) GetRegistryImageRetentionTime() int32 {
+func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTime() int32 {
 	if o == nil || o.RegistryImageRetentionTime == nil {
 		var ret int32
 		return ret
@@ -71,7 +71,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetRegistryImageRetentionTime() int
 
 // GetRegistryImageRetentionTimeOk returns a tuple with the RegistryImageRetentionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditClusterAdvancedSettingsRequest) GetRegistryImageRetentionTimeOk() (*int32, bool) {
+func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTimeOk() (*int32, bool) {
 	if o == nil || o.RegistryImageRetentionTime == nil {
 		return nil, false
 	}
@@ -79,7 +79,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetRegistryImageRetentionTimeOk() (
 }
 
 // HasRegistryImageRetentionTime returns a boolean if a field has been set.
-func (o *EditClusterAdvancedSettingsRequest) HasRegistryImageRetentionTime() bool {
+func (o *ClusterAdvancedSettings) HasRegistryImageRetentionTime() bool {
 	if o != nil && o.RegistryImageRetentionTime != nil {
 		return true
 	}
@@ -88,12 +88,12 @@ func (o *EditClusterAdvancedSettingsRequest) HasRegistryImageRetentionTime() boo
 }
 
 // SetRegistryImageRetentionTime gets a reference to the given int32 and assigns it to the RegistryImageRetentionTime field.
-func (o *EditClusterAdvancedSettingsRequest) SetRegistryImageRetentionTime(v int32) {
+func (o *ClusterAdvancedSettings) SetRegistryImageRetentionTime(v int32) {
 	o.RegistryImageRetentionTime = &v
 }
 
 // GetLoadBalancerSize returns the LoadBalancerSize field value if set, zero value otherwise.
-func (o *EditClusterAdvancedSettingsRequest) GetLoadBalancerSize() string {
+func (o *ClusterAdvancedSettings) GetLoadBalancerSize() string {
 	if o == nil || o.LoadBalancerSize == nil {
 		var ret string
 		return ret
@@ -103,7 +103,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetLoadBalancerSize() string {
 
 // GetLoadBalancerSizeOk returns a tuple with the LoadBalancerSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditClusterAdvancedSettingsRequest) GetLoadBalancerSizeOk() (*string, bool) {
+func (o *ClusterAdvancedSettings) GetLoadBalancerSizeOk() (*string, bool) {
 	if o == nil || o.LoadBalancerSize == nil {
 		return nil, false
 	}
@@ -111,7 +111,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetLoadBalancerSizeOk() (*string, b
 }
 
 // HasLoadBalancerSize returns a boolean if a field has been set.
-func (o *EditClusterAdvancedSettingsRequest) HasLoadBalancerSize() bool {
+func (o *ClusterAdvancedSettings) HasLoadBalancerSize() bool {
 	if o != nil && o.LoadBalancerSize != nil {
 		return true
 	}
@@ -120,13 +120,13 @@ func (o *EditClusterAdvancedSettingsRequest) HasLoadBalancerSize() bool {
 }
 
 // SetLoadBalancerSize gets a reference to the given string and assigns it to the LoadBalancerSize field.
-func (o *EditClusterAdvancedSettingsRequest) SetLoadBalancerSize(v string) {
+func (o *ClusterAdvancedSettings) SetLoadBalancerSize(v string) {
 	o.LoadBalancerSize = &v
 }
 
 // GetPlecoResourcesTtl returns the PlecoResourcesTtl field value if set, zero value otherwise.
 // Deprecated
-func (o *EditClusterAdvancedSettingsRequest) GetPlecoResourcesTtl() int32 {
+func (o *ClusterAdvancedSettings) GetPlecoResourcesTtl() int32 {
 	if o == nil || o.PlecoResourcesTtl == nil {
 		var ret int32
 		return ret
@@ -137,7 +137,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetPlecoResourcesTtl() int32 {
 // GetPlecoResourcesTtlOk returns a tuple with the PlecoResourcesTtl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *EditClusterAdvancedSettingsRequest) GetPlecoResourcesTtlOk() (*int32, bool) {
+func (o *ClusterAdvancedSettings) GetPlecoResourcesTtlOk() (*int32, bool) {
 	if o == nil || o.PlecoResourcesTtl == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetPlecoResourcesTtlOk() (*int32, b
 }
 
 // HasPlecoResourcesTtl returns a boolean if a field has been set.
-func (o *EditClusterAdvancedSettingsRequest) HasPlecoResourcesTtl() bool {
+func (o *ClusterAdvancedSettings) HasPlecoResourcesTtl() bool {
 	if o != nil && o.PlecoResourcesTtl != nil {
 		return true
 	}
@@ -155,12 +155,12 @@ func (o *EditClusterAdvancedSettingsRequest) HasPlecoResourcesTtl() bool {
 
 // SetPlecoResourcesTtl gets a reference to the given int32 and assigns it to the PlecoResourcesTtl field.
 // Deprecated
-func (o *EditClusterAdvancedSettingsRequest) SetPlecoResourcesTtl(v int32) {
+func (o *ClusterAdvancedSettings) SetPlecoResourcesTtl(v int32) {
 	o.PlecoResourcesTtl = &v
 }
 
 // GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field value if set, zero value otherwise.
-func (o *EditClusterAdvancedSettingsRequest) GetLokiLogRetentionInWeek() int32 {
+func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32 {
 	if o == nil || o.LokiLogRetentionInWeek == nil {
 		var ret int32
 		return ret
@@ -170,7 +170,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetLokiLogRetentionInWeek() int32 {
 
 // GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EditClusterAdvancedSettingsRequest) GetLokiLogRetentionInWeekOk() (*int32, bool) {
+func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool) {
 	if o == nil || o.LokiLogRetentionInWeek == nil {
 		return nil, false
 	}
@@ -178,7 +178,7 @@ func (o *EditClusterAdvancedSettingsRequest) GetLokiLogRetentionInWeekOk() (*int
 }
 
 // HasLokiLogRetentionInWeek returns a boolean if a field has been set.
-func (o *EditClusterAdvancedSettingsRequest) HasLokiLogRetentionInWeek() bool {
+func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool {
 	if o != nil && o.LokiLogRetentionInWeek != nil {
 		return true
 	}
@@ -187,11 +187,11 @@ func (o *EditClusterAdvancedSettingsRequest) HasLokiLogRetentionInWeek() bool {
 }
 
 // SetLokiLogRetentionInWeek gets a reference to the given int32 and assigns it to the LokiLogRetentionInWeek field.
-func (o *EditClusterAdvancedSettingsRequest) SetLokiLogRetentionInWeek(v int32) {
+func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32) {
 	o.LokiLogRetentionInWeek = &v
 }
 
-func (o EditClusterAdvancedSettingsRequest) MarshalJSON() ([]byte, error) {
+func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.RegistryImageRetentionTime != nil {
 		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
@@ -208,38 +208,38 @@ func (o EditClusterAdvancedSettingsRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableEditClusterAdvancedSettingsRequest struct {
-	value *EditClusterAdvancedSettingsRequest
+type NullableClusterAdvancedSettings struct {
+	value *ClusterAdvancedSettings
 	isSet bool
 }
 
-func (v NullableEditClusterAdvancedSettingsRequest) Get() *EditClusterAdvancedSettingsRequest {
+func (v NullableClusterAdvancedSettings) Get() *ClusterAdvancedSettings {
 	return v.value
 }
 
-func (v *NullableEditClusterAdvancedSettingsRequest) Set(val *EditClusterAdvancedSettingsRequest) {
+func (v *NullableClusterAdvancedSettings) Set(val *ClusterAdvancedSettings) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEditClusterAdvancedSettingsRequest) IsSet() bool {
+func (v NullableClusterAdvancedSettings) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEditClusterAdvancedSettingsRequest) Unset() {
+func (v *NullableClusterAdvancedSettings) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEditClusterAdvancedSettingsRequest(val *EditClusterAdvancedSettingsRequest) *NullableEditClusterAdvancedSettingsRequest {
-	return &NullableEditClusterAdvancedSettingsRequest{value: val, isSet: true}
+func NewNullableClusterAdvancedSettings(val *ClusterAdvancedSettings) *NullableClusterAdvancedSettings {
+	return &NullableClusterAdvancedSettings{value: val, isSet: true}
 }
 
-func (v NullableEditClusterAdvancedSettingsRequest) MarshalJSON() ([]byte, error) {
+func (v NullableClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEditClusterAdvancedSettingsRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterAdvancedSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1364,7 +1364,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1organization~1%7BorganizationId%7D~1cluster~1%7BclusterId%7D~1advancedSettings/put/requestBody/content/application~1json/schema'
+                $ref: '#/components/schemas/ClusterAdvancedSettings'
           description: Advanced settings list
         "401":
           description: Access token is missing or invalid
@@ -1401,13 +1401,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editClusterAdvancedSettings_request'
+              $ref: '#/components/schemas/ClusterAdvancedSettings'
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/paths/~1organization~1%7BorganizationId%7D~1cluster~1%7BclusterId%7D~1advancedSettings/put/requestBody/content/application~1json/schema'
+                $ref: '#/components/schemas/ClusterAdvancedSettings'
           description: Updated advanced settings
         "400":
           description: Bad request
@@ -12136,6 +12136,32 @@ components:
             $ref: '#/components/schemas/ClusterStatusGet'
           type: array
       type: object
+    ClusterAdvancedSettings:
+      example:
+        loki.log_retention_in_week: 1
+        registry.image_retention_time: 0
+        load_balancer.size: lb-s
+        pleco.resources_ttl: 6
+      properties:
+        registry.image_retention_time:
+          default: 31536000
+          description: Configure the number of seconds before cleaning images in the
+            registry
+          type: integer
+        load_balancer.size:
+          default: lb-s
+          description: Select the size of the main load_balancer (only effective for
+            Scaleway)
+          type: string
+        pleco.resources_ttl:
+          default: -1
+          deprecated: true
+          type: integer
+        loki.log_retention_in_week:
+          default: 12
+          description: For how long in week loki is going to keep logs of your applications
+          type: integer
+      type: object
     Commit:
       example:
         author_name: author_name
@@ -15479,27 +15505,6 @@ components:
       properties:
         plan:
           type: string
-      type: object
-    editClusterAdvancedSettings_request:
-      properties:
-        registry.image_retention_time:
-          default: 31536000
-          description: Configure the number of seconds before cleaning images in the
-            registry
-          type: integer
-        load_balancer.size:
-          default: lb-s
-          description: Select the size of the main load_balancer (only effective for
-            Scaleway)
-          type: string
-        pleco.resources_ttl:
-          default: -1
-          deprecated: true
-          type: integer
-        loki.log_retention_in_week:
-          default: 12
-          description: For how long in week loki is going to keep logs of your applications
-          type: integer
       type: object
     listClusterLogs_200_response:
       example:
