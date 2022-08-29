@@ -4858,7 +4858,6 @@ paths:
       summary: Deploy services
       tags:
       - Containers
-      - Applications
   /organization/{organizationId}/container/deploy:
     post:
       description: |
