@@ -12445,17 +12445,13 @@ components:
       type: object
     ContainerRegistryKindEnum:
       default: ECR
-      description: "ECR needs the following parameters - region, access_key_id, secret_access_key\n\
-        DOCR needs the following parameters - token \nSCALEWAY_CR needs the following\
-        \ parameters - scaleway_access_key, scaleway_secret_key\nDOCKER_HUB needs\
-        \ the following parameters - username, password \nPUBLIC_ECR needs the followinf\
-        \ parameters - access_key_id, secret_access_key\n"
+      description: The type of your container registry
       enum:
       - ECR
-      - DOCR
       - SCALEWAY_CR
       - DOCKER_HUB
       - PUBLIC_ECR
+      - DOCR
       type: string
     ContainerRegistryRequest:
       example:
@@ -12473,13 +12469,18 @@ components:
         description:
           type: string
         url:
-          description: "URL of the container registry. \nMust start by 'https://'\
-            \ and for docker_hub should be 'https://docker.io'\n"
+          description: "URL of the container registry:\n* For `DOCKER_HUB`: should\
+            \ be `https://docker.io`\n* For others: must start by `https://`\n"
           format: uri
           type: string
         config:
           additionalProperties: true
-          description: authentification configuration
+          description: "This field is dependent of the container registry kind:\n\
+            * `ECR` needs in the config: region, access_key_id, secret_access_key\n\
+            * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key\n\
+            * `DOCKER_HUB` needs in the config: username, password\n* `PUBLIC_ECR`\
+            \ needs in the config: access_key_id, secret_access_key\n* `DOCR` is not\
+            \ supported anymore\n"
           type: object
       required:
       - config
@@ -16184,7 +16185,9 @@ components:
           description: id of the linked registry
           type: string
         image_name:
-          description: name of the image container
+          description: "The image name pattern differs according to chosen container\
+            \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
+            * `DOCKER_HUB`: `namespace/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
           type: string
         tag:
           description: tag of the image container
@@ -16246,7 +16249,9 @@ components:
           description: id of the linked registry
           type: string
         image_name:
-          description: name of the image container
+          description: "The image name pattern differs according to chosen container\
+            \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
+            * `DOCKER_HUB`: `namespace/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
           type: string
         tag:
           description: tag of the image container

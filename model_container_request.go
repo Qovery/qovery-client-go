@@ -23,7 +23,7 @@ type ContainerRequest struct {
 	Name string `json:"name"`
 	// id of the linked registry
 	RegistryId string `json:"registry_id"`
-	// name of the image container
+	// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `namespace/image` * `PUBLIC_ECR`: `registry_alias/repository`
 	ImageName string `json:"image_name"`
 	// tag of the image container
 	Tag       string   `json:"tag"`

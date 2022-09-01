@@ -16,25 +16,25 @@ import (
 	"fmt"
 )
 
-// ContainerRegistryKindEnum ECR needs the following parameters - region, access_key_id, secret_access_key DOCR needs the following parameters - token  SCALEWAY_CR needs the following parameters - scaleway_access_key, scaleway_secret_key DOCKER_HUB needs the following parameters - username, password  PUBLIC_ECR needs the followinf parameters - access_key_id, secret_access_key
+// ContainerRegistryKindEnum The type of your container registry
 type ContainerRegistryKindEnum string
 
 // List of ContainerRegistryKindEnum
 const (
 	CONTAINERREGISTRYKINDENUM_ECR         ContainerRegistryKindEnum = "ECR"
-	CONTAINERREGISTRYKINDENUM_DOCR        ContainerRegistryKindEnum = "DOCR"
 	CONTAINERREGISTRYKINDENUM_SCALEWAY_CR ContainerRegistryKindEnum = "SCALEWAY_CR"
 	CONTAINERREGISTRYKINDENUM_DOCKER_HUB  ContainerRegistryKindEnum = "DOCKER_HUB"
 	CONTAINERREGISTRYKINDENUM_PUBLIC_ECR  ContainerRegistryKindEnum = "PUBLIC_ECR"
+	CONTAINERREGISTRYKINDENUM_DOCR        ContainerRegistryKindEnum = "DOCR"
 )
 
 // All allowed values of ContainerRegistryKindEnum enum
 var AllowedContainerRegistryKindEnumEnumValues = []ContainerRegistryKindEnum{
 	"ECR",
-	"DOCR",
 	"SCALEWAY_CR",
 	"DOCKER_HUB",
 	"PUBLIC_ECR",
+	"DOCR",
 }
 
 func (v *ContainerRegistryKindEnum) UnmarshalJSON(src []byte) error {

@@ -20,9 +20,9 @@ type ContainerRegistryRequest struct {
 	Name        string                    `json:"name"`
 	Kind        ContainerRegistryKindEnum `json:"kind"`
 	Description *string                   `json:"description,omitempty"`
-	// URL of the container registry.  Must start by 'https://' and for docker_hub should be 'https://docker.io'
+	// URL of the container registry: * For `DOCKER_HUB`: should be `https://docker.io` * For others: must start by `https://`
 	Url string `json:"url"`
-	// authentification configuration
+	// This field is dependent of the container registry kind: * `ECR` needs in the config: region, access_key_id, secret_access_key * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key * `DOCKER_HUB` needs in the config: username, password * `PUBLIC_ECR` needs in the config: access_key_id, secret_access_key * `DOCR` is not supported anymore
 	Config map[string]interface{} `json:"config"`
 }
 
