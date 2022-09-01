@@ -238,6 +238,7 @@ Class | Method | HTTP request | Description
 *ContainerMetricsApi* | [**GetContainerCurrentStorageDisk**](docs/ContainerMetricsApi.md#getcontainercurrentstoragedisk) | **Get** /container/{containerId}/currentStorage | List current storage disk usage
 *ContainerRegistriesApi* | [**CreateContainerRegistry**](docs/ContainerRegistriesApi.md#createcontainerregistry) | **Post** /organization/{organizationId}/containerRegistry | Create a container registry
 *ContainerRegistriesApi* | [**DeleteContainerRegistry**](docs/ContainerRegistriesApi.md#deletecontainerregistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
+*ContainerRegistriesApi* | [**GetContainerRegistry**](docs/ContainerRegistriesApi.md#getcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Get a container registry
 *ContainerRegistriesApi* | [**ListAvailableContainerRegistry**](docs/ContainerRegistriesApi.md#listavailablecontainerregistry) | **Get** /availableContainerRegistry | List supported container registries
 *ContainerRegistriesApi* | [**ListContainerRegistry**](docs/ContainerRegistriesApi.md#listcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
 *ContainerRegistryApi* | [**EditContainerRegistry**](docs/ContainerRegistryApi.md#editcontainerregistry) | **Put** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Edit a container registry

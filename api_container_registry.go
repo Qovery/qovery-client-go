@@ -27,7 +27,6 @@ type ApiEditContainerRegistryRequest struct {
 	ctx                      context.Context
 	ApiService               *ContainerRegistryApiService
 	organizationId           string
-	containerRegistryId      string
 	containerRegistryRequest *ContainerRegistryRequest
 }
 
@@ -45,15 +44,13 @@ EditContainerRegistry Edit a container registry
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
- @param containerRegistryId Container Registry ID
  @return ApiEditContainerRegistryRequest
 */
-func (a *ContainerRegistryApiService) EditContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiEditContainerRegistryRequest {
+func (a *ContainerRegistryApiService) EditContainerRegistry(ctx context.Context, organizationId string) ApiEditContainerRegistryRequest {
 	return ApiEditContainerRegistryRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		organizationId:      organizationId,
-		containerRegistryId: containerRegistryId,
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
@@ -74,7 +71,6 @@ func (a *ContainerRegistryApiService) EditContainerRegistryExecute(r ApiEditCont
 
 	localVarPath := localBasePath + "/organization/{organizationId}/containerRegistry/{containerRegistryId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterToString(r.containerRegistryId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

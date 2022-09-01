@@ -3038,8 +3038,8 @@ paths:
       summary: Delete a container registry
       tags:
       - Container Registries
-    put:
-      operationId: editContainerRegistry
+    get:
+      operationId: getContainerRegistry
       parameters:
       - description: Organization ID
         explode: false
@@ -3054,6 +3054,34 @@ paths:
         explode: false
         in: path
         name: containerRegistryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerRegistryResponse'
+          description: The container registry
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a container registry
+      tags:
+      - Container Registries
+    put:
+      operationId: editContainerRegistry
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
         required: true
         schema:
           format: uuid

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## EditContainerRegistry
 
-> ContainerRegistryResponse EditContainerRegistry(ctx, organizationId, containerRegistryId).ContainerRegistryRequest(containerRegistryRequest).Execute()
+> ContainerRegistryResponse EditContainerRegistry(ctx, organizationId).ContainerRegistryRequest(containerRegistryRequest).Execute()
 
 Edit a container registry
 
@@ -28,12 +28,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
     containerRegistryRequest := *openapiclient.NewContainerRegistryRequest("Name_example", openapiclient.ContainerRegistryKindEnum("ECR"), "Url_example", map[string]interface{}{"key": interface{}(123)}) // ContainerRegistryRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerRegistryApi.EditContainerRegistry(context.Background(), organizationId, containerRegistryId).ContainerRegistryRequest(containerRegistryRequest).Execute()
+    resp, r, err := apiClient.ContainerRegistryApi.EditContainerRegistry(context.Background(), organizationId).ContainerRegistryRequest(containerRegistryRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistryApi.EditContainerRegistry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -50,7 +49,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
-**containerRegistryId** | **string** | Container Registry ID | 
 
 ### Other Parameters
 
@@ -59,7 +57,6 @@ Other parameters are passed through a pointer to a apiEditContainerRegistryReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
  **containerRegistryRequest** | [**ContainerRegistryRequest**](ContainerRegistryRequest.md) |  | 
 
