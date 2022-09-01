@@ -3109,7 +3109,7 @@ paths:
           description: Resource not found
       summary: Edit a container registry
       tags:
-      - Container Registry
+      - Container Registries
   /availableContainerRegistry:
     get:
       description: List supported container registries by Qovery and get the mandatory
@@ -17180,7 +17180,6 @@ x-tagGroups:
   - Container Deployment Restriction
   - Container Deployment History
   - Container Environment Variable
-  - Container Registry
   - Container Secret
   - Container Event
 - name: Database

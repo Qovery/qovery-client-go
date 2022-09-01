@@ -108,8 +108,6 @@ type APIClient struct {
 
 	ContainerRegistriesApi *ContainerRegistriesApiService
 
-	ContainerRegistryApi *ContainerRegistryApiService
-
 	ContainerSecretApi *ContainerSecretApiService
 
 	ContainersApi *ContainersApiService
@@ -224,7 +222,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContainerMainCallsApi = (*ContainerMainCallsApiService)(&c.common)
 	c.ContainerMetricsApi = (*ContainerMetricsApiService)(&c.common)
 	c.ContainerRegistriesApi = (*ContainerRegistriesApiService)(&c.common)
-	c.ContainerRegistryApi = (*ContainerRegistryApiService)(&c.common)
 	c.ContainerSecretApi = (*ContainerSecretApiService)(&c.common)
 	c.ContainersApi = (*ContainersApiService)(&c.common)
 	c.CustomDomainApi = (*CustomDomainApiService)(&c.common)
