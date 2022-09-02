@@ -11047,27 +11047,28 @@ components:
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
       example:
-        readiness_probe.timeout_seconds: 7
         deployment.delay_start_time_sec: 0
+        liveness_probe.initial_delay_seconds: 2
+        liveness_probe.failure_threshold: 1
+        liveness_probe.timeout_seconds: 7
+        liveness_probe.period_seconds: 4
+        deployment.custom_domain_check_enabled: true
+        network.ingress.enable_cors: false
+        network.ingress.whitelist_source_range: 0.0.0.0/0
+        readiness_probe.initial_delay_seconds: 5
+        readiness_probe.timeout_seconds: 7
         network.ingress.proxy_body_size_mb: 1
         liveness_probe.type: TCP
-        liveness_probe.initial_delay_seconds: 2
         liveness_probe.success_threshold: 1
-        liveness_probe.failure_threshold: 1
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
         hpa.cpu.average_utilization_percent: 1
         readiness_probe.type: TCP
-        liveness_probe.timeout_seconds: 7
         readiness_probe.failure_threshold: 3
         network.ingress.proxy_buffer_size_kb: 5
         build.timeout_max_sec: 6
-        liveness_probe.period_seconds: 4
-        deployment.custom_domain_check_enabled: true
         readiness_probe.http_get.path: /
         network.ingress.cors_allow_origin: '*'
-        network.ingress.enable_cors: false
         readiness_probe.success_threshold: 9
-        readiness_probe.initial_delay_seconds: 5
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
         readiness_probe.period_seconds: 2
         liveness_probe.http_get.path: /
@@ -11105,6 +11106,13 @@ components:
           description: header buffer size used while reading response header from
             upstream
           type: integer
+        network.ingress.whitelist_source_range:
+          default: 0.0.0.0/0
+          description: "list of source ranges to allow access to ingress proxy. \n\
+            This property can be used to whitelist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
+            To allow all source ranges, set 0.0.0.0/0.\n"
+          type: string
         readiness_probe.type:
           default: TCP
           description: |
@@ -12278,6 +12286,7 @@ components:
         readiness_probe.http_get.path: /
         network.ingress.cors_allow_origin: '*'
         network.ingress.enable_cors: false
+        network.ingress.whitelist_source_range: 0.0.0.0/0
         readiness_probe.success_threshold: 2
         readiness_probe.initial_delay_seconds: 1
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
@@ -12308,6 +12317,13 @@ components:
           description: header buffer size used while reading response header from
             upstream
           type: integer
+        network.ingress.whitelist_source_range:
+          default: 0.0.0.0/0
+          description: "list of source ranges to allow access to ingress proxy. \n\
+            This property can be used to whitelist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
+            To allow all source ranges, set 0.0.0.0/0.\n"
+          type: string
         readiness_probe.type:
           default: TCP
           description: |

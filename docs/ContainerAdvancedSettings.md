@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **NetworkIngressCorsAllowMethods** | Pointer to **string** |  | [optional] [default to "GET, PUT, POST, DELETE, PATCH, OPTIONS"]
 **NetworkIngressCorsAllowHeaders** | Pointer to **string** |  | [optional] [default to "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"]
 **NetworkIngressProxyBufferSizeKb** | Pointer to **int32** | header buffer size used while reading response header from upstream | [optional] [default to 4]
+**NetworkIngressWhitelistSourceRange** | Pointer to **string** | list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.  | [optional] [default to "0.0.0.0/0"]
 **ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
 **ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
 **ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
@@ -219,6 +220,31 @@ SetNetworkIngressProxyBufferSizeKb sets NetworkIngressProxyBufferSizeKb field to
 `func (o *ContainerAdvancedSettings) HasNetworkIngressProxyBufferSizeKb() bool`
 
 HasNetworkIngressProxyBufferSizeKb returns a boolean if a field has been set.
+
+### GetNetworkIngressWhitelistSourceRange
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string`
+
+GetNetworkIngressWhitelistSourceRange returns the NetworkIngressWhitelistSourceRange field if non-nil, zero value otherwise.
+
+### GetNetworkIngressWhitelistSourceRangeOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressWhitelistSourceRangeOk() (*string, bool)`
+
+GetNetworkIngressWhitelistSourceRangeOk returns a tuple with the NetworkIngressWhitelistSourceRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressWhitelistSourceRange
+
+`func (o *ContainerAdvancedSettings) SetNetworkIngressWhitelistSourceRange(v string)`
+
+SetNetworkIngressWhitelistSourceRange sets NetworkIngressWhitelistSourceRange field to given value.
+
+### HasNetworkIngressWhitelistSourceRange
+
+`func (o *ContainerAdvancedSettings) HasNetworkIngressWhitelistSourceRange() bool`
+
+HasNetworkIngressWhitelistSourceRange returns a boolean if a field has been set.
 
 ### GetReadinessProbeType
 

@@ -30,6 +30,8 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressCorsAllowHeaders     *string `json:"network.ingress.cors_allow_headers,omitempty"`
 	// header buffer size used while reading response header from upstream
 	NetworkIngressProxyBufferSizeKb *int32 `json:"network.ingress.proxy_buffer_size_kb,omitempty"`
+	// list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.
+	NetworkIngressWhitelistSourceRange *string `json:"network.ingress.whitelist_source_range,omitempty"`
 	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
 	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
 	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
@@ -86,6 +88,8 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
 	var networkIngressProxyBufferSizeKb int32 = 4
 	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
+	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
+	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -142,6 +146,8 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
 	var networkIngressProxyBufferSizeKb int32 = 4
 	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
+	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
+	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -464,6 +470,38 @@ func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBufferSizeKb() bool 
 // SetNetworkIngressProxyBufferSizeKb gets a reference to the given int32 and assigns it to the NetworkIngressProxyBufferSizeKb field.
 func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBufferSizeKb(v int32) {
 	o.NetworkIngressProxyBufferSizeKb = &v
+}
+
+// GetNetworkIngressWhitelistSourceRange returns the NetworkIngressWhitelistSourceRange field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string {
+	if o == nil || o.NetworkIngressWhitelistSourceRange == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressWhitelistSourceRange
+}
+
+// GetNetworkIngressWhitelistSourceRangeOk returns a tuple with the NetworkIngressWhitelistSourceRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRangeOk() (*string, bool) {
+	if o == nil || o.NetworkIngressWhitelistSourceRange == nil {
+		return nil, false
+	}
+	return o.NetworkIngressWhitelistSourceRange, true
+}
+
+// HasNetworkIngressWhitelistSourceRange returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressWhitelistSourceRange() bool {
+	if o != nil && o.NetworkIngressWhitelistSourceRange != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressWhitelistSourceRange gets a reference to the given string and assigns it to the NetworkIngressWhitelistSourceRange field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressWhitelistSourceRange(v string) {
+	o.NetworkIngressWhitelistSourceRange = &v
 }
 
 // GetReadinessProbeType returns the ReadinessProbeType field value if set, zero value otherwise.
@@ -974,6 +1012,9 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressProxyBufferSizeKb != nil {
 		toSerialize["network.ingress.proxy_buffer_size_kb"] = o.NetworkIngressProxyBufferSizeKb
+	}
+	if o.NetworkIngressWhitelistSourceRange != nil {
+		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange
 	}
 	if o.ReadinessProbeType != nil {
 		toSerialize["readiness_probe.type"] = o.ReadinessProbeType
