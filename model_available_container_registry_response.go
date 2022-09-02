@@ -27,8 +27,6 @@ type AvailableContainerRegistryResponse struct {
 // will change when the set of required properties is changed
 func NewAvailableContainerRegistryResponse() *AvailableContainerRegistryResponse {
 	this := AvailableContainerRegistryResponse{}
-	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
-	this.Kind = &kind
 	return &this
 }
 
@@ -37,8 +35,6 @@ func NewAvailableContainerRegistryResponse() *AvailableContainerRegistryResponse
 // but it doesn't guarantee that properties required by API are set
 func NewAvailableContainerRegistryResponseWithDefaults() *AvailableContainerRegistryResponse {
 	this := AvailableContainerRegistryResponse{}
-	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
-	this.Kind = &kind
 	return &this
 }
 

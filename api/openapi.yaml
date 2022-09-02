@@ -12472,7 +12472,6 @@ components:
       - image_tag
       type: object
     ContainerRegistryKindEnum:
-      default: ECR
       description: The type of your container registry
       enum:
       - ECR

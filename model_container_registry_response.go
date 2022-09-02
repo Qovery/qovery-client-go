@@ -36,8 +36,6 @@ func NewContainerRegistryResponse(id string, createdAt time.Time) *ContainerRegi
 	this := ContainerRegistryResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
-	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
-	this.Kind = &kind
 	return &this
 }
 
@@ -46,8 +44,6 @@ func NewContainerRegistryResponse(id string, createdAt time.Time) *ContainerRegi
 // but it doesn't guarantee that properties required by API are set
 func NewContainerRegistryResponseWithDefaults() *ContainerRegistryResponse {
 	this := ContainerRegistryResponse{}
-	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
-	this.Kind = &kind
 	return &this
 }
 

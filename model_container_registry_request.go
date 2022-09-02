@@ -44,8 +44,6 @@ func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, ur
 // but it doesn't guarantee that properties required by API are set
 func NewContainerRegistryRequestWithDefaults() *ContainerRegistryRequest {
 	this := ContainerRegistryRequest{}
-	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
-	this.Kind = kind
 	return &this
 }
 

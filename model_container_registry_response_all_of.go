@@ -30,8 +30,6 @@ type ContainerRegistryResponseAllOf struct {
 // will change when the set of required properties is changed
 func NewContainerRegistryResponseAllOf() *ContainerRegistryResponseAllOf {
 	this := ContainerRegistryResponseAllOf{}
-	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
-	this.Kind = &kind
 	return &this
 }
 
@@ -40,8 +38,6 @@ func NewContainerRegistryResponseAllOf() *ContainerRegistryResponseAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewContainerRegistryResponseAllOfWithDefaults() *ContainerRegistryResponseAllOf {
 	this := ContainerRegistryResponseAllOf{}
-	var kind ContainerRegistryKindEnum = CONTAINERREGISTRYKINDENUM_ECR
-	this.Kind = &kind
 	return &this
 }
 
