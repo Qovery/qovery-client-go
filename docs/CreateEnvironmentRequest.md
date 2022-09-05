@@ -1,4 +1,4 @@
-# EnvironmentRequest
+# CreateEnvironmentRequest
 
 ## Properties
 
@@ -6,94 +6,94 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
 **Cluster** | Pointer to **string** |  | [optional] 
-**Mode** | Pointer to [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
+**Mode** | Pointer to [**CreateEnvironmentModeEnum**](CreateEnvironmentModeEnum.md) |  | [optional] 
 
 ## Methods
 
-### NewEnvironmentRequest
+### NewCreateEnvironmentRequest
 
-`func NewEnvironmentRequest(name string, ) *EnvironmentRequest`
+`func NewCreateEnvironmentRequest(name string, ) *CreateEnvironmentRequest`
 
-NewEnvironmentRequest instantiates a new EnvironmentRequest object
+NewCreateEnvironmentRequest instantiates a new CreateEnvironmentRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEnvironmentRequestWithDefaults
+### NewCreateEnvironmentRequestWithDefaults
 
-`func NewEnvironmentRequestWithDefaults() *EnvironmentRequest`
+`func NewCreateEnvironmentRequestWithDefaults() *CreateEnvironmentRequest`
 
-NewEnvironmentRequestWithDefaults instantiates a new EnvironmentRequest object
+NewCreateEnvironmentRequestWithDefaults instantiates a new CreateEnvironmentRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *EnvironmentRequest) GetName() string`
+`func (o *CreateEnvironmentRequest) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *EnvironmentRequest) GetNameOk() (*string, bool)`
+`func (o *CreateEnvironmentRequest) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *EnvironmentRequest) SetName(v string)`
+`func (o *CreateEnvironmentRequest) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetCluster
 
-`func (o *EnvironmentRequest) GetCluster() string`
+`func (o *CreateEnvironmentRequest) GetCluster() string`
 
 GetCluster returns the Cluster field if non-nil, zero value otherwise.
 
 ### GetClusterOk
 
-`func (o *EnvironmentRequest) GetClusterOk() (*string, bool)`
+`func (o *CreateEnvironmentRequest) GetClusterOk() (*string, bool)`
 
 GetClusterOk returns a tuple with the Cluster field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCluster
 
-`func (o *EnvironmentRequest) SetCluster(v string)`
+`func (o *CreateEnvironmentRequest) SetCluster(v string)`
 
 SetCluster sets Cluster field to given value.
 
 ### HasCluster
 
-`func (o *EnvironmentRequest) HasCluster() bool`
+`func (o *CreateEnvironmentRequest) HasCluster() bool`
 
 HasCluster returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *EnvironmentRequest) GetMode() EnvironmentModeEnum`
+`func (o *CreateEnvironmentRequest) GetMode() CreateEnvironmentModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *EnvironmentRequest) GetModeOk() (*EnvironmentModeEnum, bool)`
+`func (o *CreateEnvironmentRequest) GetModeOk() (*CreateEnvironmentModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *EnvironmentRequest) SetMode(v EnvironmentModeEnum)`
+`func (o *CreateEnvironmentRequest) SetMode(v CreateEnvironmentModeEnum)`
 
 SetMode sets Mode field to given value.
 
 ### HasMode
 
-`func (o *EnvironmentRequest) HasMode() bool`
+`func (o *CreateEnvironmentRequest) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
 

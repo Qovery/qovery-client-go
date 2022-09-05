@@ -24,14 +24,14 @@ import (
 type EnvironmentsApiService service
 
 type ApiCreateEnvironmentRequest struct {
-	ctx                context.Context
-	ApiService         *EnvironmentsApiService
-	projectId          string
-	environmentRequest *EnvironmentRequest
+	ctx                      context.Context
+	ApiService               *EnvironmentsApiService
+	projectId                string
+	createEnvironmentRequest *CreateEnvironmentRequest
 }
 
-func (r ApiCreateEnvironmentRequest) EnvironmentRequest(environmentRequest EnvironmentRequest) ApiCreateEnvironmentRequest {
-	r.environmentRequest = &environmentRequest
+func (r ApiCreateEnvironmentRequest) CreateEnvironmentRequest(createEnvironmentRequest CreateEnvironmentRequest) ApiCreateEnvironmentRequest {
+	r.createEnvironmentRequest = &createEnvironmentRequest
 	return r
 }
 
@@ -94,7 +94,7 @@ func (a *EnvironmentsApiService) CreateEnvironmentExecute(r ApiCreateEnvironment
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.environmentRequest
+	localVarPostBody = r.createEnvironmentRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

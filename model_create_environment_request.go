@@ -15,34 +15,34 @@ import (
 	"encoding/json"
 )
 
-// EnvironmentRequest struct for EnvironmentRequest
-type EnvironmentRequest struct {
+// CreateEnvironmentRequest struct for CreateEnvironmentRequest
+type CreateEnvironmentRequest struct {
 	// name is case insensitive
-	Name    string               `json:"name"`
-	Cluster *string              `json:"cluster,omitempty"`
-	Mode    *EnvironmentModeEnum `json:"mode,omitempty"`
+	Name    string                     `json:"name"`
+	Cluster *string                    `json:"cluster,omitempty"`
+	Mode    *CreateEnvironmentModeEnum `json:"mode,omitempty"`
 }
 
-// NewEnvironmentRequest instantiates a new EnvironmentRequest object
+// NewCreateEnvironmentRequest instantiates a new CreateEnvironmentRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentRequest(name string) *EnvironmentRequest {
-	this := EnvironmentRequest{}
+func NewCreateEnvironmentRequest(name string) *CreateEnvironmentRequest {
+	this := CreateEnvironmentRequest{}
 	this.Name = name
 	return &this
 }
 
-// NewEnvironmentRequestWithDefaults instantiates a new EnvironmentRequest object
+// NewCreateEnvironmentRequestWithDefaults instantiates a new CreateEnvironmentRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEnvironmentRequestWithDefaults() *EnvironmentRequest {
-	this := EnvironmentRequest{}
+func NewCreateEnvironmentRequestWithDefaults() *CreateEnvironmentRequest {
+	this := CreateEnvironmentRequest{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *EnvironmentRequest) GetName() string {
+func (o *CreateEnvironmentRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *EnvironmentRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentRequest) GetNameOk() (*string, bool) {
+func (o *CreateEnvironmentRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -61,12 +61,12 @@ func (o *EnvironmentRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *EnvironmentRequest) SetName(v string) {
+func (o *CreateEnvironmentRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetCluster returns the Cluster field value if set, zero value otherwise.
-func (o *EnvironmentRequest) GetCluster() string {
+func (o *CreateEnvironmentRequest) GetCluster() string {
 	if o == nil || o.Cluster == nil {
 		var ret string
 		return ret
@@ -76,7 +76,7 @@ func (o *EnvironmentRequest) GetCluster() string {
 
 // GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentRequest) GetClusterOk() (*string, bool) {
+func (o *CreateEnvironmentRequest) GetClusterOk() (*string, bool) {
 	if o == nil || o.Cluster == nil {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *EnvironmentRequest) GetClusterOk() (*string, bool) {
 }
 
 // HasCluster returns a boolean if a field has been set.
-func (o *EnvironmentRequest) HasCluster() bool {
+func (o *CreateEnvironmentRequest) HasCluster() bool {
 	if o != nil && o.Cluster != nil {
 		return true
 	}
@@ -93,14 +93,14 @@ func (o *EnvironmentRequest) HasCluster() bool {
 }
 
 // SetCluster gets a reference to the given string and assigns it to the Cluster field.
-func (o *EnvironmentRequest) SetCluster(v string) {
+func (o *CreateEnvironmentRequest) SetCluster(v string) {
 	o.Cluster = &v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *EnvironmentRequest) GetMode() EnvironmentModeEnum {
+func (o *CreateEnvironmentRequest) GetMode() CreateEnvironmentModeEnum {
 	if o == nil || o.Mode == nil {
-		var ret EnvironmentModeEnum
+		var ret CreateEnvironmentModeEnum
 		return ret
 	}
 	return *o.Mode
@@ -108,7 +108,7 @@ func (o *EnvironmentRequest) GetMode() EnvironmentModeEnum {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
+func (o *CreateEnvironmentRequest) GetModeOk() (*CreateEnvironmentModeEnum, bool) {
 	if o == nil || o.Mode == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *EnvironmentRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 }
 
 // HasMode returns a boolean if a field has been set.
-func (o *EnvironmentRequest) HasMode() bool {
+func (o *CreateEnvironmentRequest) HasMode() bool {
 	if o != nil && o.Mode != nil {
 		return true
 	}
@@ -124,12 +124,12 @@ func (o *EnvironmentRequest) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given EnvironmentModeEnum and assigns it to the Mode field.
-func (o *EnvironmentRequest) SetMode(v EnvironmentModeEnum) {
+// SetMode gets a reference to the given CreateEnvironmentModeEnum and assigns it to the Mode field.
+func (o *CreateEnvironmentRequest) SetMode(v CreateEnvironmentModeEnum) {
 	o.Mode = &v
 }
 
-func (o EnvironmentRequest) MarshalJSON() ([]byte, error) {
+func (o CreateEnvironmentRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
@@ -143,38 +143,38 @@ func (o EnvironmentRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableEnvironmentRequest struct {
-	value *EnvironmentRequest
+type NullableCreateEnvironmentRequest struct {
+	value *CreateEnvironmentRequest
 	isSet bool
 }
 
-func (v NullableEnvironmentRequest) Get() *EnvironmentRequest {
+func (v NullableCreateEnvironmentRequest) Get() *CreateEnvironmentRequest {
 	return v.value
 }
 
-func (v *NullableEnvironmentRequest) Set(val *EnvironmentRequest) {
+func (v *NullableCreateEnvironmentRequest) Set(val *CreateEnvironmentRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEnvironmentRequest) IsSet() bool {
+func (v NullableCreateEnvironmentRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEnvironmentRequest) Unset() {
+func (v *NullableCreateEnvironmentRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEnvironmentRequest(val *EnvironmentRequest) *NullableEnvironmentRequest {
-	return &NullableEnvironmentRequest{value: val, isSet: true}
+func NewNullableCreateEnvironmentRequest(val *CreateEnvironmentRequest) *NullableCreateEnvironmentRequest {
+	return &NullableCreateEnvironmentRequest{value: val, isSet: true}
 }
 
-func (v NullableEnvironmentRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCreateEnvironmentRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEnvironmentRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateEnvironmentRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

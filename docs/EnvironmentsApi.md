@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## CreateEnvironment
 
-> Environment CreateEnvironment(ctx, projectId).EnvironmentRequest(environmentRequest).Execute()
+> Environment CreateEnvironment(ctx, projectId).CreateEnvironmentRequest(createEnvironmentRequest).Execute()
 
 Create an environment
 
@@ -31,11 +31,11 @@ import (
 
 func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    environmentRequest := *openapiclient.NewEnvironmentRequest("Name_example") // EnvironmentRequest |  (optional)
+    createEnvironmentRequest := *openapiclient.NewCreateEnvironmentRequest("Name_example") // CreateEnvironmentRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentsApi.CreateEnvironment(context.Background(), projectId).EnvironmentRequest(environmentRequest).Execute()
+    resp, r, err := apiClient.EnvironmentsApi.CreateEnvironment(context.Background(), projectId).CreateEnvironmentRequest(createEnvironmentRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsApi.CreateEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,7 +61,7 @@ Other parameters are passed through a pointer to a apiCreateEnvironmentRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentRequest** | [**EnvironmentRequest**](EnvironmentRequest.md) |  | 
+ **createEnvironmentRequest** | [**CreateEnvironmentRequest**](CreateEnvironmentRequest.md) |  | 
 
 ### Return type
 
