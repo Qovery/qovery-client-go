@@ -12502,7 +12502,7 @@ components:
         name: name
         description: description
         config:
-          key: ""
+          key: config
         url: https://openapi-generator.tech
       properties:
         name:
@@ -12517,7 +12517,8 @@ components:
           format: uri
           type: string
         config:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           description: "This field is dependent of the container registry kind:\n\
             * `ECR` needs in the config: region, access_key_id, secret_access_key\n\
             * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key\n\

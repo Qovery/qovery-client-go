@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Kind** | [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | **string** | URL of the container registry: * For &#x60;DOCKER_HUB&#x60;: should be &#x60;https://docker.io&#x60; * For others: must start by &#x60;https://&#x60;  | 
-**Config** | **map[string]interface{}** | This field is dependent of the container registry kind: * &#x60;ECR&#x60; needs in the config: region, access_key_id, secret_access_key * &#x60;SCALEWAY_CR&#x60; needs in the config: region, scaleway_access_key, scaleway_secret_key * &#x60;DOCKER_HUB&#x60; needs in the config: username, password * &#x60;PUBLIC_ECR&#x60; needs in the config: access_key_id, secret_access_key * &#x60;DOCR&#x60; is not supported anymore  | 
+**Config** | **map[string]string** | This field is dependent of the container registry kind: * &#x60;ECR&#x60; needs in the config: region, access_key_id, secret_access_key * &#x60;SCALEWAY_CR&#x60; needs in the config: region, scaleway_access_key, scaleway_secret_key * &#x60;DOCKER_HUB&#x60; needs in the config: username, password * &#x60;PUBLIC_ECR&#x60; needs in the config: access_key_id, secret_access_key * &#x60;DOCR&#x60; is not supported anymore  | 
 
 ## Methods
 
 ### NewContainerRegistryRequest
 
-`func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config map[string]interface{}, ) *ContainerRegistryRequest`
+`func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config map[string]string, ) *ContainerRegistryRequest`
 
 NewContainerRegistryRequest instantiates a new ContainerRegistryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetUrl sets Url field to given value.
 
 ### GetConfig
 
-`func (o *ContainerRegistryRequest) GetConfig() map[string]interface{}`
+`func (o *ContainerRegistryRequest) GetConfig() map[string]string`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *ContainerRegistryRequest) GetConfigOk() (*map[string]interface{}, bool)`
+`func (o *ContainerRegistryRequest) GetConfigOk() (*map[string]string, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *ContainerRegistryRequest) SetConfig(v map[string]interface{})`
+`func (o *ContainerRegistryRequest) SetConfig(v map[string]string)`
 
 SetConfig sets Config field to given value.
 
