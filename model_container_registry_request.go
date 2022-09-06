@@ -21,16 +21,15 @@ type ContainerRegistryRequest struct {
 	Kind        ContainerRegistryKindEnum `json:"kind"`
 	Description *string                   `json:"description,omitempty"`
 	// URL of the container registry: * For `DOCKER_HUB`: should be `https://docker.io` * For others: must start by `https://`
-	Url string `json:"url"`
-	// This field is dependent of the container registry kind: * `ECR` needs in the config: region, access_key_id, secret_access_key * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key * `DOCKER_HUB` needs in the config: username, password * `PUBLIC_ECR` needs in the config: access_key_id, secret_access_key * `DOCR` is not supported anymore
-	Config map[string]string `json:"config"`
+	Url    string                         `json:"url"`
+	Config ContainerRegistryRequestConfig `json:"config"`
 }
 
 // NewContainerRegistryRequest instantiates a new ContainerRegistryRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config map[string]string) *ContainerRegistryRequest {
+func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config ContainerRegistryRequestConfig) *ContainerRegistryRequest {
 	this := ContainerRegistryRequest{}
 	this.Name = name
 	this.Kind = kind
@@ -152,9 +151,9 @@ func (o *ContainerRegistryRequest) SetUrl(v string) {
 }
 
 // GetConfig returns the Config field value
-func (o *ContainerRegistryRequest) GetConfig() map[string]string {
+func (o *ContainerRegistryRequest) GetConfig() ContainerRegistryRequestConfig {
 	if o == nil {
-		var ret map[string]string
+		var ret ContainerRegistryRequestConfig
 		return ret
 	}
 
@@ -163,7 +162,7 @@ func (o *ContainerRegistryRequest) GetConfig() map[string]string {
 
 // GetConfigOk returns a tuple with the Config field value
 // and a boolean to check if the value has been set.
-func (o *ContainerRegistryRequest) GetConfigOk() (*map[string]string, bool) {
+func (o *ContainerRegistryRequest) GetConfigOk() (*ContainerRegistryRequestConfig, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -171,7 +170,7 @@ func (o *ContainerRegistryRequest) GetConfigOk() (*map[string]string, bool) {
 }
 
 // SetConfig sets field value
-func (o *ContainerRegistryRequest) SetConfig(v map[string]string) {
+func (o *ContainerRegistryRequest) SetConfig(v ContainerRegistryRequestConfig) {
 	o.Config = v
 }
 
