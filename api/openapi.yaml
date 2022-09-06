@@ -3026,6 +3026,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Container Registry ID
+        explode: false
+        in: path
+        name: containerRegistryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: The resource was deleted successfully
@@ -3082,6 +3091,15 @@ paths:
         explode: false
         in: path
         name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Container Registry ID
+        explode: false
+        in: path
+        name: containerRegistryId
         required: true
         schema:
           format: uuid
@@ -10724,6 +10742,16 @@ components:
       explode: false
       in: path
       name: containerId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    containerRegistryId:
+      description: Container Registry ID
+      explode: false
+      in: path
+      name: containerRegistryId
       required: true
       schema:
         format: uuid
