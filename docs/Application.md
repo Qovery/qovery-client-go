@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Storage** | Pointer to [**[]ApplicationStorageStorageInner**](ApplicationStorageStorageInner.md) |  | [optional] 
+**Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
 **Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
@@ -111,20 +111,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetStorage
 
-`func (o *Application) GetStorage() []ApplicationStorageStorageInner`
+`func (o *Application) GetStorage() []ServiceStorageStorageInner`
 
 GetStorage returns the Storage field if non-nil, zero value otherwise.
 
 ### GetStorageOk
 
-`func (o *Application) GetStorageOk() (*[]ApplicationStorageStorageInner, bool)`
+`func (o *Application) GetStorageOk() (*[]ServiceStorageStorageInner, bool)`
 
 GetStorageOk returns a tuple with the Storage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorage
 
-`func (o *Application) SetStorage(v []ApplicationStorageStorageInner)`
+`func (o *Application) SetStorage(v []ServiceStorageStorageInner)`
 
 SetStorage sets Storage field to given value.
 

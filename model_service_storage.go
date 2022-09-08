@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// ApplicationStorage struct for ApplicationStorage
-type ApplicationStorage struct {
-	Storage []ApplicationStorageStorageInner `json:"storage,omitempty"`
+// ServiceStorage struct for ServiceStorage
+type ServiceStorage struct {
+	Storage []ServiceStorageStorageInner `json:"storage,omitempty"`
 }
 
-// NewApplicationStorage instantiates a new ApplicationStorage object
+// NewServiceStorage instantiates a new ServiceStorage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationStorage() *ApplicationStorage {
-	this := ApplicationStorage{}
+func NewServiceStorage() *ServiceStorage {
+	this := ServiceStorage{}
 	return &this
 }
 
-// NewApplicationStorageWithDefaults instantiates a new ApplicationStorage object
+// NewServiceStorageWithDefaults instantiates a new ServiceStorage object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApplicationStorageWithDefaults() *ApplicationStorage {
-	this := ApplicationStorage{}
+func NewServiceStorageWithDefaults() *ServiceStorage {
+	this := ServiceStorage{}
 	return &this
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ApplicationStorage) GetStorage() []ApplicationStorageStorageInner {
+func (o *ServiceStorage) GetStorage() []ServiceStorageStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageStorageInner
+		var ret []ServiceStorageStorageInner
 		return ret
 	}
 	return o.Storage
@@ -48,7 +48,7 @@ func (o *ApplicationStorage) GetStorage() []ApplicationStorageStorageInner {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationStorage) GetStorageOk() ([]ApplicationStorageStorageInner, bool) {
+func (o *ServiceStorage) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ApplicationStorage) GetStorageOk() ([]ApplicationStorageStorageInner, b
 }
 
 // HasStorage returns a boolean if a field has been set.
-func (o *ApplicationStorage) HasStorage() bool {
+func (o *ServiceStorage) HasStorage() bool {
 	if o != nil && o.Storage != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *ApplicationStorage) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageStorageInner and assigns it to the Storage field.
-func (o *ApplicationStorage) SetStorage(v []ApplicationStorageStorageInner) {
+// SetStorage gets a reference to the given []ServiceStorageStorageInner and assigns it to the Storage field.
+func (o *ServiceStorage) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
 }
 
-func (o ApplicationStorage) MarshalJSON() ([]byte, error) {
+func (o ServiceStorage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
@@ -77,38 +77,38 @@ func (o ApplicationStorage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableApplicationStorage struct {
-	value *ApplicationStorage
+type NullableServiceStorage struct {
+	value *ServiceStorage
 	isSet bool
 }
 
-func (v NullableApplicationStorage) Get() *ApplicationStorage {
+func (v NullableServiceStorage) Get() *ServiceStorage {
 	return v.value
 }
 
-func (v *NullableApplicationStorage) Set(val *ApplicationStorage) {
+func (v *NullableServiceStorage) Set(val *ServiceStorage) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableApplicationStorage) IsSet() bool {
+func (v NullableServiceStorage) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableApplicationStorage) Unset() {
+func (v *NullableServiceStorage) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableApplicationStorage(val *ApplicationStorage) *NullableApplicationStorage {
-	return &NullableApplicationStorage{value: val, isSet: true}
+func NewNullableServiceStorage(val *ServiceStorage) *NullableServiceStorage {
+	return &NullableServiceStorage{value: val, isSet: true}
 }
 
-func (v NullableApplicationStorage) MarshalJSON() ([]byte, error) {
+func (v NullableServiceStorage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableApplicationStorage) UnmarshalJSON(src []byte) error {
+func (v *NullableServiceStorage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

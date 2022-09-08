@@ -99,8 +99,6 @@ docs/ApplicationRequest.md
 docs/ApplicationRequestAllOf.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretApi.md
-docs/ApplicationStorage.md
-docs/ApplicationStorageStorageInner.md
 docs/ApplicationsApi.md
 docs/AutoDeployContainerEnvironmentsRequest.md
 docs/AvailableContainerRegistryResponse.md
@@ -462,8 +460,10 @@ docs/ServicePortPortsInner.md
 docs/ServicePortRequest.md
 docs/ServicePortRequestPortsInner.md
 docs/ServiceResponseList.md
+docs/ServiceStorage.md
 docs/ServiceStorageRequest.md
 docs/ServiceStorageRequestStorageInner.md
+docs/ServiceStorageStorageInner.md
 docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
 docs/SignUp.md
@@ -514,8 +514,6 @@ model_application_network_request.go
 model_application_request.go
 model_application_request_all_of.go
 model_application_response_list.go
-model_application_storage.go
-model_application_storage_storage_inner.go
 model_auto_deploy_container_environments_request.go
 model_available_container_registry_response.go
 model_aws_credentials_request.go
@@ -827,8 +825,10 @@ model_service_port_ports_inner.go
 model_service_port_request.go
 model_service_port_request_ports_inner.go
 model_service_response_list.go
+model_service_storage.go
 model_service_storage_request.go
 model_service_storage_request_storage_inner.go
+model_service_storage_storage_inner.go
 model_service_total_number.go
 model_service_type_enum.go
 model_sign_up.go

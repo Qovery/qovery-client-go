@@ -18,13 +18,13 @@ import (
 
 // Application struct for Application
 type Application struct {
-	Id            string                           `json:"id"`
-	CreatedAt     time.Time                        `json:"created_at"`
-	UpdatedAt     *time.Time                       `json:"updated_at,omitempty"`
-	Storage       []ApplicationStorageStorageInner `json:"storage,omitempty"`
-	Ports         []ServicePortPortsInner          `json:"ports,omitempty"`
-	Environment   *ReferenceObject                 `json:"environment,omitempty"`
-	GitRepository *ApplicationGitRepository        `json:"git_repository,omitempty"`
+	Id            string                       `json:"id"`
+	CreatedAt     time.Time                    `json:"created_at"`
+	UpdatedAt     *time.Time                   `json:"updated_at,omitempty"`
+	Storage       []ServiceStorageStorageInner `json:"storage,omitempty"`
+	Ports         []ServicePortPortsInner      `json:"ports,omitempty"`
+	Environment   *ReferenceObject             `json:"environment,omitempty"`
+	GitRepository *ApplicationGitRepository    `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -166,9 +166,9 @@ func (o *Application) SetUpdatedAt(v time.Time) {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *Application) GetStorage() []ApplicationStorageStorageInner {
+func (o *Application) GetStorage() []ServiceStorageStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageStorageInner
+		var ret []ServiceStorageStorageInner
 		return ret
 	}
 	return o.Storage
@@ -176,7 +176,7 @@ func (o *Application) GetStorage() []ApplicationStorageStorageInner {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Application) GetStorageOk() ([]ApplicationStorageStorageInner, bool) {
+func (o *Application) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -192,8 +192,8 @@ func (o *Application) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageStorageInner and assigns it to the Storage field.
-func (o *Application) SetStorage(v []ApplicationStorageStorageInner) {
+// SetStorage gets a reference to the given []ServiceStorageStorageInner and assigns it to the Storage field.
+func (o *Application) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
 }
 

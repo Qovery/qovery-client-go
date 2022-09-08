@@ -17,7 +17,7 @@ import (
 
 // ContainerStorage struct for ContainerStorage
 type ContainerStorage struct {
-	Storage []ApplicationStorageStorageInner `json:"storage,omitempty"`
+	Storage []ServiceStorageStorageInner `json:"storage,omitempty"`
 }
 
 // NewContainerStorage instantiates a new ContainerStorage object
@@ -38,9 +38,9 @@ func NewContainerStorageWithDefaults() *ContainerStorage {
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
-func (o *ContainerStorage) GetStorage() []ApplicationStorageStorageInner {
+func (o *ContainerStorage) GetStorage() []ServiceStorageStorageInner {
 	if o == nil || o.Storage == nil {
-		var ret []ApplicationStorageStorageInner
+		var ret []ServiceStorageStorageInner
 		return ret
 	}
 	return o.Storage
@@ -48,7 +48,7 @@ func (o *ContainerStorage) GetStorage() []ApplicationStorageStorageInner {
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerStorage) GetStorageOk() ([]ApplicationStorageStorageInner, bool) {
+func (o *ContainerStorage) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
 	if o == nil || o.Storage == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ContainerStorage) HasStorage() bool {
 	return false
 }
 
-// SetStorage gets a reference to the given []ApplicationStorageStorageInner and assigns it to the Storage field.
-func (o *ContainerStorage) SetStorage(v []ApplicationStorageStorageInner) {
+// SetStorage gets a reference to the given []ServiceStorageStorageInner and assigns it to the Storage field.
+func (o *ContainerStorage) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
 }
 

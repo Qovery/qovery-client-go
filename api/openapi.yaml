@@ -11070,7 +11070,7 @@ components:
     Application:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/ApplicationStorage'
+      - $ref: '#/components/schemas/ServiceStorage'
       - $ref: '#/components/schemas/ServicePort'
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
@@ -11408,11 +11408,11 @@ components:
             $ref: '#/components/schemas/Application'
           type: array
       type: object
-    ApplicationStorage:
+    ServiceStorage:
       properties:
         storage:
           items:
-            $ref: '#/components/schemas/ApplicationStorage_storage_inner'
+            $ref: '#/components/schemas/ServiceStorage_storage_inner'
           type: array
       type: object
     ServiceStorageRequest:
@@ -12565,7 +12565,7 @@ components:
     ContainerResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/ApplicationStorage'
+      - $ref: '#/components/schemas/ServiceStorage'
       - $ref: '#/components/schemas/ServicePort'
       - $ref: '#/components/schemas/ContainerResponse_allOf'
     ContainerResponseList:
@@ -12581,7 +12581,7 @@ components:
       type: object
     ContainerStorage:
       allOf:
-      - $ref: '#/components/schemas/ApplicationStorage'
+      - $ref: '#/components/schemas/ServiceStorage'
     Cost:
       properties:
         total_in_cents:
@@ -15936,7 +15936,7 @@ components:
       - git_repository
       - name
       type: object
-    ApplicationStorage_storage_inner:
+    ServiceStorage_storage_inner:
       properties:
         id:
           format: uuid
