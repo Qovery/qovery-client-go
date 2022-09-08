@@ -485,8 +485,6 @@ Class | Method | HTTP request | Description
  - [ContainerCurrentScale](docs/ContainerCurrentScale.md)
  - [ContainerDependencyRequest](docs/ContainerDependencyRequest.md)
  - [ContainerDeployRequest](docs/ContainerDeployRequest.md)
- - [ContainerEditRequest](docs/ContainerEditRequest.md)
- - [ContainerEditRequestAllOf](docs/ContainerEditRequestAllOf.md)
  - [ContainerNetwork](docs/ContainerNetwork.md)
  - [ContainerNetworkRequest](docs/ContainerNetworkRequest.md)
  - [ContainerRegistryKindEnum](docs/ContainerRegistryKindEnum.md)

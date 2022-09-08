@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## EditContainer
 
-> ContainerResponse EditContainer(ctx, containerId).ContainerEditRequest(containerEditRequest).Execute()
+> ContainerResponse EditContainer(ctx, containerId).ContainerRequest(containerRequest).Execute()
 
 Edit container
 
@@ -102,11 +102,11 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    containerEditRequest := *openapiclient.NewContainerEditRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example") // ContainerEditRequest |  (optional)
+    containerRequest := *openapiclient.NewContainerRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example") // ContainerRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerMainCallsApi.EditContainer(context.Background(), containerId).ContainerEditRequest(containerEditRequest).Execute()
+    resp, r, err := apiClient.ContainerMainCallsApi.EditContainer(context.Background(), containerId).ContainerRequest(containerRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsApi.EditContainer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +132,7 @@ Other parameters are passed through a pointer to a apiEditContainerRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **containerEditRequest** | [**ContainerEditRequest**](ContainerEditRequest.md) |  | 
+ **containerRequest** | [**ContainerRequest**](ContainerRequest.md) |  | 
 
 ### Return type
 

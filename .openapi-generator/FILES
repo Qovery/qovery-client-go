@@ -182,8 +182,6 @@ docs/ContainerDependencyApi.md
 docs/ContainerDependencyRequest.md
 docs/ContainerDeployRequest.md
 docs/ContainerDeploymentHistoryApi.md
-docs/ContainerEditRequest.md
-docs/ContainerEditRequestAllOf.md
 docs/ContainerEnvironmentVariableApi.md
 docs/ContainerLogsApi.md
 docs/ContainerMainCallsApi.md
@@ -587,8 +585,6 @@ model_container_advanced_settings.go
 model_container_current_scale.go
 model_container_dependency_request.go
 model_container_deploy_request.go
-model_container_edit_request.go
-model_container_edit_request_all_of.go
 model_container_network.go
 model_container_network_request.go
 model_container_registry_kind_enum.go

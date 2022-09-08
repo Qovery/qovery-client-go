@@ -116,14 +116,14 @@ func (a *ContainerMainCallsApiService) DeleteContainerExecute(r ApiDeleteContain
 }
 
 type ApiEditContainerRequest struct {
-	ctx                  context.Context
-	ApiService           *ContainerMainCallsApiService
-	containerId          string
-	containerEditRequest *ContainerEditRequest
+	ctx              context.Context
+	ApiService       *ContainerMainCallsApiService
+	containerId      string
+	containerRequest *ContainerRequest
 }
 
-func (r ApiEditContainerRequest) ContainerEditRequest(containerEditRequest ContainerEditRequest) ApiEditContainerRequest {
-	r.containerEditRequest = &containerEditRequest
+func (r ApiEditContainerRequest) ContainerRequest(containerRequest ContainerRequest) ApiEditContainerRequest {
+	r.containerRequest = &containerRequest
 	return r
 }
 
@@ -191,7 +191,7 @@ func (a *ContainerMainCallsApiService) EditContainerExecute(r ApiEditContainerRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.containerEditRequest
+	localVarPostBody = r.containerRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

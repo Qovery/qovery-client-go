@@ -7887,7 +7887,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ContainerEditRequest'
+              $ref: '#/components/schemas/ContainerRequest'
       responses:
         "200":
           content:
@@ -12476,11 +12476,6 @@ components:
       required:
       - id
       type: object
-    ContainerEditRequest:
-      allOf:
-      - $ref: '#/components/schemas/ApplicationStorage'
-      - $ref: '#/components/schemas/ServicePort'
-      - $ref: '#/components/schemas/ContainerEditRequest_allOf'
     ContainerNetwork:
       example:
         sticky_session: false
@@ -16253,58 +16248,6 @@ components:
           items:
             $ref: '#/components/schemas/Commit'
           type: array
-      type: object
-    ContainerEditRequest_allOf:
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        registry_id:
-          description: id of the linked registry
-          type: string
-        image_name:
-          description: "The image name pattern differs according to chosen container\
-            \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
-            * `DOCKER_HUB`: `namespace/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
-          type: string
-        tag:
-          description: tag of the image container
-          type: string
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
-        cpu:
-          default: 500
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 512
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_instances:
-          default: 1
-          description: "Minimum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
-            \ no application running.\n"
-          minimum: 0
-          type: integer
-        max_running_instances:
-          default: 1
-          description: "Maximum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
-            \ is no limit.\n"
-          type: integer
-      required:
-      - image_name
-      - name
-      - registry_id
-      - tag
       type: object
     ContainerRegistryRequest_config:
       description: "This field is dependent of the container registry kind:\n* `ECR`\
