@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **State** | [**StateEnum**](StateEnum.md) |  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
-**ServiceDeploymentStatus** | Pointer to [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | [optional] 
+**ServiceDeploymentStatus** | [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
 ### NewReferenceObjectStatus
 
-`func NewReferenceObjectStatus(id string, state StateEnum, ) *ReferenceObjectStatus`
+`func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus NullableServiceDeploymentStatusEnum, ) *ReferenceObjectStatus`
 
 NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
 This constructor will assign default values to properties that have it defined,
@@ -123,11 +123,6 @@ and a boolean to check if the value has been set.
 
 SetServiceDeploymentStatus sets ServiceDeploymentStatus field to given value.
 
-### HasServiceDeploymentStatus
-
-`func (o *ReferenceObjectStatus) HasServiceDeploymentStatus() bool`
-
-HasServiceDeploymentStatus returns a boolean if a field has been set.
 
 ### SetServiceDeploymentStatusNil
 

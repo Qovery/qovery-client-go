@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | **string** |  | 
 **State** | [**StateEnum**](StateEnum.md) |  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
-**ServiceDeploymentStatus** | Pointer to [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | [optional] 
+**ServiceDeploymentStatus** | [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
 ### NewStatus
 
-`func NewStatus(state StateEnum, ) *Status`
+`func NewStatus(id string, state StateEnum, serviceDeploymentStatus NullableServiceDeploymentStatusEnum, ) *Status`
 
 NewStatus instantiates a new Status object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *Status) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetState
 
@@ -128,11 +123,6 @@ and a boolean to check if the value has been set.
 
 SetServiceDeploymentStatus sets ServiceDeploymentStatus field to given value.
 
-### HasServiceDeploymentStatus
-
-`func (o *Status) HasServiceDeploymentStatus() bool`
-
-HasServiceDeploymentStatus returns a boolean if a field has been set.
 
 ### SetServiceDeploymentStatusNil
 

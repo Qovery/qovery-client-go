@@ -15287,6 +15287,8 @@ components:
           format: date-time
           type: string
       required:
+      - id
+      - service_deployment_status
       - state
       type: object
     StatusKindEnum:

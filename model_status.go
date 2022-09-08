@@ -18,11 +18,11 @@ import (
 
 // Status struct for Status
 type Status struct {
-	Id    *string   `json:"id,omitempty"`
+	Id    string    `json:"id"`
 	State StateEnum `json:"state"`
 	// message related to the state
 	Message                 NullableString                      `json:"message,omitempty"`
-	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status,omitempty"`
+	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status"`
 	LastDeploymentDate      *time.Time                          `json:"last_deployment_date,omitempty"`
 }
 
@@ -30,9 +30,11 @@ type Status struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatus(state StateEnum) *Status {
+func NewStatus(id string, state StateEnum, serviceDeploymentStatus NullableServiceDeploymentStatusEnum) *Status {
 	this := Status{}
+	this.Id = id
 	this.State = state
+	this.ServiceDeploymentStatus = serviceDeploymentStatus
 	return &this
 }
 
@@ -44,36 +46,28 @@ func NewStatusWithDefaults() *Status {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *Status) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Status) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Status) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *Status) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetState returns the State field value
@@ -143,16 +137,18 @@ func (o *Status) UnsetMessage() {
 	o.Message.Unset()
 }
 
-// GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value
+// If the value is explicit nil, the zero value for ServiceDeploymentStatusEnum will be returned
 func (o *Status) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum {
 	if o == nil || o.ServiceDeploymentStatus.Get() == nil {
 		var ret ServiceDeploymentStatusEnum
 		return ret
 	}
+
 	return *o.ServiceDeploymentStatus.Get()
 }
 
-// GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field value if set, nil otherwise
+// GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Status) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, bool) {
@@ -162,28 +158,9 @@ func (o *Status) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, b
 	return o.ServiceDeploymentStatus.Get(), o.ServiceDeploymentStatus.IsSet()
 }
 
-// HasServiceDeploymentStatus returns a boolean if a field has been set.
-func (o *Status) HasServiceDeploymentStatus() bool {
-	if o != nil && o.ServiceDeploymentStatus.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceDeploymentStatus gets a reference to the given NullableServiceDeploymentStatusEnum and assigns it to the ServiceDeploymentStatus field.
+// SetServiceDeploymentStatus sets field value
 func (o *Status) SetServiceDeploymentStatus(v ServiceDeploymentStatusEnum) {
 	o.ServiceDeploymentStatus.Set(&v)
-}
-
-// SetServiceDeploymentStatusNil sets the value for ServiceDeploymentStatus to be an explicit nil
-func (o *Status) SetServiceDeploymentStatusNil() {
-	o.ServiceDeploymentStatus.Set(nil)
-}
-
-// UnsetServiceDeploymentStatus ensures that no value is present for ServiceDeploymentStatus, not even an explicit nil
-func (o *Status) UnsetServiceDeploymentStatus() {
-	o.ServiceDeploymentStatus.Unset()
 }
 
 // GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
@@ -220,7 +197,7 @@ func (o *Status) SetLastDeploymentDate(v time.Time) {
 
 func (o Status) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if true {
 		toSerialize["id"] = o.Id
 	}
 	if true {
@@ -229,7 +206,7 @@ func (o Status) MarshalJSON() ([]byte, error) {
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
-	if o.ServiceDeploymentStatus.IsSet() {
+	if true {
 		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus.Get()
 	}
 	if o.LastDeploymentDate != nil {
