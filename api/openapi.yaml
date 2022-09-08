@@ -16461,6 +16461,22 @@ components:
             \ based on the CPU and Memory consumption.\nNote: -1 means that there\
             \ is no limit.\n"
           type: integer
+        auto_preview:
+          description: "Specify if the environment preview option is activated or\
+            \ not for this container.\nIf activated, a preview environment will be\
+            \ automatically cloned at each pull request.\n"
+          type: boolean
+      required:
+      - auto_preview
+      - cpu
+      - image_name
+      - max_running_instances
+      - maximum_cpu
+      - maximum_memory
+      - memory
+      - min_running_instances
+      - name
+      - tag
       type: object
     CustomDomain_allOf:
       properties:

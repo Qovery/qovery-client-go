@@ -11,23 +11,24 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **Registry** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
-**MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
-**MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
-**Name** | Pointer to **string** | name is case insensitive | [optional] 
-**ImageName** | Pointer to **string** | name of the image container | [optional] 
-**Tag** | Pointer to **string** | tag of the image container | [optional] 
+**MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
+**MaximumMemory** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
+**Name** | **string** | name is case insensitive | 
+**ImageName** | **string** | name of the image container | 
+**Tag** | **string** | tag of the image container | 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
-**Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
-**Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] 
-**MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [optional] [default to 1]
-**MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
+**Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
+**Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
+**MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
+**MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
+**AutoPreview** | **bool** | Specify if the environment preview option is activated or not for this container. If activated, a preview environment will be automatically cloned at each pull request.  | 
 
 ## Methods
 
 ### NewContainerResponse
 
-`func NewContainerResponse(id string, createdAt time.Time, ) *ContainerResponse`
+`func NewContainerResponse(id string, createdAt time.Time, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, autoPreview bool, ) *ContainerResponse`
 
 NewContainerResponse instantiates a new ContainerResponse object
 This constructor will assign default values to properties that have it defined,
@@ -226,11 +227,6 @@ and a boolean to check if the value has been set.
 
 SetMaximumCpu sets MaximumCpu field to given value.
 
-### HasMaximumCpu
-
-`func (o *ContainerResponse) HasMaximumCpu() bool`
-
-HasMaximumCpu returns a boolean if a field has been set.
 
 ### GetMaximumMemory
 
@@ -251,11 +247,6 @@ and a boolean to check if the value has been set.
 
 SetMaximumMemory sets MaximumMemory field to given value.
 
-### HasMaximumMemory
-
-`func (o *ContainerResponse) HasMaximumMemory() bool`
-
-HasMaximumMemory returns a boolean if a field has been set.
 
 ### GetName
 
@@ -276,11 +267,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ContainerResponse) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetImageName
 
@@ -301,11 +287,6 @@ and a boolean to check if the value has been set.
 
 SetImageName sets ImageName field to given value.
 
-### HasImageName
-
-`func (o *ContainerResponse) HasImageName() bool`
-
-HasImageName returns a boolean if a field has been set.
 
 ### GetTag
 
@@ -326,11 +307,6 @@ and a boolean to check if the value has been set.
 
 SetTag sets Tag field to given value.
 
-### HasTag
-
-`func (o *ContainerResponse) HasTag() bool`
-
-HasTag returns a boolean if a field has been set.
 
 ### GetArguments
 
@@ -401,11 +377,6 @@ and a boolean to check if the value has been set.
 
 SetCpu sets Cpu field to given value.
 
-### HasCpu
-
-`func (o *ContainerResponse) HasCpu() bool`
-
-HasCpu returns a boolean if a field has been set.
 
 ### GetMemory
 
@@ -426,11 +397,6 @@ and a boolean to check if the value has been set.
 
 SetMemory sets Memory field to given value.
 
-### HasMemory
-
-`func (o *ContainerResponse) HasMemory() bool`
-
-HasMemory returns a boolean if a field has been set.
 
 ### GetMinRunningInstances
 
@@ -451,11 +417,6 @@ and a boolean to check if the value has been set.
 
 SetMinRunningInstances sets MinRunningInstances field to given value.
 
-### HasMinRunningInstances
-
-`func (o *ContainerResponse) HasMinRunningInstances() bool`
-
-HasMinRunningInstances returns a boolean if a field has been set.
 
 ### GetMaxRunningInstances
 
@@ -476,11 +437,26 @@ and a boolean to check if the value has been set.
 
 SetMaxRunningInstances sets MaxRunningInstances field to given value.
 
-### HasMaxRunningInstances
 
-`func (o *ContainerResponse) HasMaxRunningInstances() bool`
+### GetAutoPreview
 
-HasMaxRunningInstances returns a boolean if a field has been set.
+`func (o *ContainerResponse) GetAutoPreview() bool`
+
+GetAutoPreview returns the AutoPreview field if non-nil, zero value otherwise.
+
+### GetAutoPreviewOk
+
+`func (o *ContainerResponse) GetAutoPreviewOk() (*bool, bool)`
+
+GetAutoPreviewOk returns a tuple with the AutoPreview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoPreview
+
+`func (o *ContainerResponse) SetAutoPreview(v bool)`
+
+SetAutoPreview sets AutoPreview field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

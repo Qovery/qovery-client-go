@@ -26,40 +26,48 @@ type ContainerResponse struct {
 	Environment *ReferenceObject                 `json:"environment,omitempty"`
 	Registry    *ReferenceObject                 `json:"registry,omitempty"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
-	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
+	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
-	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
+	MaximumMemory int32 `json:"maximum_memory"`
 	// name is case insensitive
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// name of the image container
-	ImageName *string `json:"image_name,omitempty"`
+	ImageName string `json:"image_name"`
 	// tag of the image container
-	Tag       *string  `json:"tag,omitempty"`
+	Tag       string   `json:"tag"`
 	Arguments []string `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
-	Cpu *int32 `json:"cpu,omitempty"`
+	Cpu int32 `json:"cpu"`
 	// unit is MB. 1024 MB = 1GB
-	Memory *int32 `json:"memory,omitempty"`
+	Memory int32 `json:"memory"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
-	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
+	MinRunningInstances int32 `json:"min_running_instances"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
+	MaxRunningInstances int32 `json:"max_running_instances"`
+	// Specify if the environment preview option is activated or not for this container. If activated, a preview environment will be automatically cloned at each pull request.
+	AutoPreview bool `json:"auto_preview"`
 }
 
 // NewContainerResponse instantiates a new ContainerResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponse(id string, createdAt time.Time) *ContainerResponse {
+func NewContainerResponse(id string, createdAt time.Time, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, autoPreview bool) *ContainerResponse {
 	this := ContainerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
-	var minRunningInstances int32 = 1
-	this.MinRunningInstances = &minRunningInstances
-	var maxRunningInstances int32 = 1
-	this.MaxRunningInstances = &maxRunningInstances
+	this.MaximumCpu = maximumCpu
+	this.MaximumMemory = maximumMemory
+	this.Name = name
+	this.ImageName = imageName
+	this.Tag = tag
+	this.Cpu = cpu
+	this.Memory = memory
+	this.MinRunningInstances = minRunningInstances
+	this.MaxRunningInstances = maxRunningInstances
+	this.AutoPreview = autoPreview
 	return &this
 }
 
@@ -69,9 +77,9 @@ func NewContainerResponse(id string, createdAt time.Time) *ContainerResponse {
 func NewContainerResponseWithDefaults() *ContainerResponse {
 	this := ContainerResponse{}
 	var minRunningInstances int32 = 1
-	this.MinRunningInstances = &minRunningInstances
+	this.MinRunningInstances = minRunningInstances
 	var maxRunningInstances int32 = 1
-	this.MaxRunningInstances = &maxRunningInstances
+	this.MaxRunningInstances = maxRunningInstances
 	return &this
 }
 
@@ -283,164 +291,124 @@ func (o *ContainerResponse) SetRegistry(v ReferenceObject) {
 	o.Registry = &v
 }
 
-// GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
+// GetMaximumCpu returns the MaximumCpu field value
 func (o *ContainerResponse) GetMaximumCpu() int32 {
-	if o == nil || o.MaximumCpu == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaximumCpu
+
+	return o.MaximumCpu
 }
 
-// GetMaximumCpuOk returns a tuple with the MaximumCpu field value if set, nil otherwise
+// GetMaximumCpuOk returns a tuple with the MaximumCpu field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetMaximumCpuOk() (*int32, bool) {
-	if o == nil || o.MaximumCpu == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaximumCpu, true
+	return &o.MaximumCpu, true
 }
 
-// HasMaximumCpu returns a boolean if a field has been set.
-func (o *ContainerResponse) HasMaximumCpu() bool {
-	if o != nil && o.MaximumCpu != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaximumCpu gets a reference to the given int32 and assigns it to the MaximumCpu field.
+// SetMaximumCpu sets field value
 func (o *ContainerResponse) SetMaximumCpu(v int32) {
-	o.MaximumCpu = &v
+	o.MaximumCpu = v
 }
 
-// GetMaximumMemory returns the MaximumMemory field value if set, zero value otherwise.
+// GetMaximumMemory returns the MaximumMemory field value
 func (o *ContainerResponse) GetMaximumMemory() int32 {
-	if o == nil || o.MaximumMemory == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaximumMemory
+
+	return o.MaximumMemory
 }
 
-// GetMaximumMemoryOk returns a tuple with the MaximumMemory field value if set, nil otherwise
+// GetMaximumMemoryOk returns a tuple with the MaximumMemory field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetMaximumMemoryOk() (*int32, bool) {
-	if o == nil || o.MaximumMemory == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaximumMemory, true
+	return &o.MaximumMemory, true
 }
 
-// HasMaximumMemory returns a boolean if a field has been set.
-func (o *ContainerResponse) HasMaximumMemory() bool {
-	if o != nil && o.MaximumMemory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaximumMemory gets a reference to the given int32 and assigns it to the MaximumMemory field.
+// SetMaximumMemory sets field value
 func (o *ContainerResponse) SetMaximumMemory(v int32) {
-	o.MaximumMemory = &v
+	o.MaximumMemory = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ContainerResponse) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ContainerResponse) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ContainerResponse) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetImageName returns the ImageName field value if set, zero value otherwise.
+// GetImageName returns the ImageName field value
 func (o *ContainerResponse) GetImageName() string {
-	if o == nil || o.ImageName == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ImageName
+
+	return o.ImageName
 }
 
-// GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
+// GetImageNameOk returns a tuple with the ImageName field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetImageNameOk() (*string, bool) {
-	if o == nil || o.ImageName == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ImageName, true
+	return &o.ImageName, true
 }
 
-// HasImageName returns a boolean if a field has been set.
-func (o *ContainerResponse) HasImageName() bool {
-	if o != nil && o.ImageName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetImageName gets a reference to the given string and assigns it to the ImageName field.
+// SetImageName sets field value
 func (o *ContainerResponse) SetImageName(v string) {
-	o.ImageName = &v
+	o.ImageName = v
 }
 
-// GetTag returns the Tag field value if set, zero value otherwise.
+// GetTag returns the Tag field value
 func (o *ContainerResponse) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Tag
+
+	return o.Tag
 }
 
-// GetTagOk returns a tuple with the Tag field value if set, nil otherwise
+// GetTagOk returns a tuple with the Tag field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tag, true
+	return &o.Tag, true
 }
 
-// HasTag returns a boolean if a field has been set.
-func (o *ContainerResponse) HasTag() bool {
-	if o != nil && o.Tag != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTag gets a reference to the given string and assigns it to the Tag field.
+// SetTag sets field value
 func (o *ContainerResponse) SetTag(v string) {
-	o.Tag = &v
+	o.Tag = v
 }
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
@@ -507,132 +475,124 @@ func (o *ContainerResponse) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
-// GetCpu returns the Cpu field value if set, zero value otherwise.
+// GetCpu returns the Cpu field value
 func (o *ContainerResponse) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Cpu
+
+	return o.Cpu
 }
 
-// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
+// GetCpuOk returns a tuple with the Cpu field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cpu, true
+	return &o.Cpu, true
 }
 
-// HasCpu returns a boolean if a field has been set.
-func (o *ContainerResponse) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+// SetCpu sets field value
 func (o *ContainerResponse) SetCpu(v int32) {
-	o.Cpu = &v
+	o.Cpu = v
 }
 
-// GetMemory returns the Memory field value if set, zero value otherwise.
+// GetMemory returns the Memory field value
 func (o *ContainerResponse) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Memory
+
+	return o.Memory
 }
 
-// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
+// GetMemoryOk returns a tuple with the Memory field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Memory, true
+	return &o.Memory, true
 }
 
-// HasMemory returns a boolean if a field has been set.
-func (o *ContainerResponse) HasMemory() bool {
-	if o != nil && o.Memory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMemory gets a reference to the given int32 and assigns it to the Memory field.
+// SetMemory sets field value
 func (o *ContainerResponse) SetMemory(v int32) {
-	o.Memory = &v
+	o.Memory = v
 }
 
-// GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
+// GetMinRunningInstances returns the MinRunningInstances field value
 func (o *ContainerResponse) GetMinRunningInstances() int32 {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MinRunningInstances
+
+	return o.MinRunningInstances
 }
 
-// GetMinRunningInstancesOk returns a tuple with the MinRunningInstances field value if set, nil otherwise
+// GetMinRunningInstancesOk returns a tuple with the MinRunningInstances field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetMinRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinRunningInstances, true
+	return &o.MinRunningInstances, true
 }
 
-// HasMinRunningInstances returns a boolean if a field has been set.
-func (o *ContainerResponse) HasMinRunningInstances() bool {
-	if o != nil && o.MinRunningInstances != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMinRunningInstances gets a reference to the given int32 and assigns it to the MinRunningInstances field.
+// SetMinRunningInstances sets field value
 func (o *ContainerResponse) SetMinRunningInstances(v int32) {
-	o.MinRunningInstances = &v
+	o.MinRunningInstances = v
 }
 
-// GetMaxRunningInstances returns the MaxRunningInstances field value if set, zero value otherwise.
+// GetMaxRunningInstances returns the MaxRunningInstances field value
 func (o *ContainerResponse) GetMaxRunningInstances() int32 {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaxRunningInstances
+
+	return o.MaxRunningInstances
 }
 
-// GetMaxRunningInstancesOk returns a tuple with the MaxRunningInstances field value if set, nil otherwise
+// GetMaxRunningInstancesOk returns a tuple with the MaxRunningInstances field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetMaxRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxRunningInstances, true
+	return &o.MaxRunningInstances, true
 }
 
-// HasMaxRunningInstances returns a boolean if a field has been set.
-func (o *ContainerResponse) HasMaxRunningInstances() bool {
-	if o != nil && o.MaxRunningInstances != nil {
-		return true
+// SetMaxRunningInstances sets field value
+func (o *ContainerResponse) SetMaxRunningInstances(v int32) {
+	o.MaxRunningInstances = v
+}
+
+// GetAutoPreview returns the AutoPreview field value
+func (o *ContainerResponse) GetAutoPreview() bool {
+	if o == nil {
+		var ret bool
+		return ret
 	}
 
-	return false
+	return o.AutoPreview
 }
 
-// SetMaxRunningInstances gets a reference to the given int32 and assigns it to the MaxRunningInstances field.
-func (o *ContainerResponse) SetMaxRunningInstances(v int32) {
-	o.MaxRunningInstances = &v
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AutoPreview, true
+}
+
+// SetAutoPreview sets field value
+func (o *ContainerResponse) SetAutoPreview(v bool) {
+	o.AutoPreview = v
 }
 
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
@@ -658,19 +618,19 @@ func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	if o.Registry != nil {
 		toSerialize["registry"] = o.Registry
 	}
-	if o.MaximumCpu != nil {
+	if true {
 		toSerialize["maximum_cpu"] = o.MaximumCpu
 	}
-	if o.MaximumMemory != nil {
+	if true {
 		toSerialize["maximum_memory"] = o.MaximumMemory
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.ImageName != nil {
+	if true {
 		toSerialize["image_name"] = o.ImageName
 	}
-	if o.Tag != nil {
+	if true {
 		toSerialize["tag"] = o.Tag
 	}
 	if o.Arguments != nil {
@@ -679,17 +639,20 @@ func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	if o.Entrypoint != nil {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
-	if o.Cpu != nil {
+	if true {
 		toSerialize["cpu"] = o.Cpu
 	}
-	if o.Memory != nil {
+	if true {
 		toSerialize["memory"] = o.Memory
 	}
-	if o.MinRunningInstances != nil {
+	if true {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
 	}
-	if o.MaxRunningInstances != nil {
+	if true {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
+	}
+	if true {
+		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	return json.Marshal(toSerialize)
 }
