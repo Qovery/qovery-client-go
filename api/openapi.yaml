@@ -15837,7 +15837,6 @@ components:
           format: uuid
           type: string
         name:
-          nullable: true
           type: string
         internal_port:
           description: The listening port of your service.
