@@ -23,8 +23,8 @@ type ContainerResponse struct {
 	UpdatedAt   *time.Time                       `json:"updated_at,omitempty"`
 	Storage     []ApplicationStorageStorageInner `json:"storage,omitempty"`
 	Ports       []ServicePortPortsInner          `json:"ports,omitempty"`
-	Environment *ReferenceObject                 `json:"environment,omitempty"`
-	Registry    *ReferenceObject                 `json:"registry,omitempty"`
+	Environment ReferenceObject                  `json:"environment"`
+	Registry    ReferenceObject                  `json:"registry"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -54,10 +54,12 @@ type ContainerResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponse(id string, createdAt time.Time, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, autoPreview bool) *ContainerResponse {
+func NewContainerResponse(id string, createdAt time.Time, environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, autoPreview bool) *ContainerResponse {
 	this := ContainerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Environment = environment
+	this.Registry = registry
 	this.MaximumCpu = maximumCpu
 	this.MaximumMemory = maximumMemory
 	this.Name = name
@@ -227,68 +229,52 @@ func (o *ContainerResponse) SetPorts(v []ServicePortPortsInner) {
 	o.Ports = v
 }
 
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
+// GetEnvironment returns the Environment field value
 func (o *ContainerResponse) GetEnvironment() ReferenceObject {
-	if o == nil || o.Environment == nil {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Environment
+
+	return o.Environment
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// GetEnvironmentOk returns a tuple with the Environment field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
-	if o == nil || o.Environment == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Environment, true
+	return &o.Environment, true
 }
 
-// HasEnvironment returns a boolean if a field has been set.
-func (o *ContainerResponse) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given ReferenceObject and assigns it to the Environment field.
+// SetEnvironment sets field value
 func (o *ContainerResponse) SetEnvironment(v ReferenceObject) {
-	o.Environment = &v
+	o.Environment = v
 }
 
-// GetRegistry returns the Registry field value if set, zero value otherwise.
+// GetRegistry returns the Registry field value
 func (o *ContainerResponse) GetRegistry() ReferenceObject {
-	if o == nil || o.Registry == nil {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Registry
+
+	return o.Registry
 }
 
-// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
+// GetRegistryOk returns a tuple with the Registry field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetRegistryOk() (*ReferenceObject, bool) {
-	if o == nil || o.Registry == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Registry, true
+	return &o.Registry, true
 }
 
-// HasRegistry returns a boolean if a field has been set.
-func (o *ContainerResponse) HasRegistry() bool {
-	if o != nil && o.Registry != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistry gets a reference to the given ReferenceObject and assigns it to the Registry field.
+// SetRegistry sets field value
 func (o *ContainerResponse) SetRegistry(v ReferenceObject) {
-	o.Registry = &v
+	o.Registry = v
 }
 
 // GetMaximumCpu returns the MaximumCpu field value
@@ -612,10 +598,10 @@ func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	if o.Ports != nil {
 		toSerialize["ports"] = o.Ports
 	}
-	if o.Environment != nil {
+	if true {
 		toSerialize["environment"] = o.Environment
 	}
-	if o.Registry != nil {
+	if true {
 		toSerialize["registry"] = o.Registry
 	}
 	if true {

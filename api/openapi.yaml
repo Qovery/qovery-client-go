@@ -16413,6 +16413,7 @@ components:
       required:
       - auto_preview
       - cpu
+      - environment
       - image_name
       - max_running_instances
       - maximum_cpu
@@ -16420,6 +16421,7 @@ components:
       - memory
       - min_running_instances
       - name
+      - registry
       - tag
       type: object
     CustomDomain_allOf:
