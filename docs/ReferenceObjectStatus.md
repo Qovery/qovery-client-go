@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **State** | [**StateEnum**](StateEnum.md) |  | 
 **Message** | Pointer to **NullableString** | message related to the state | [optional] 
-**ServiceDeploymentStatus** | [**NullableServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
+**ServiceDeploymentStatus** | [**ServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
 ### NewReferenceObjectStatus
 
-`func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus NullableServiceDeploymentStatusEnum, ) *ReferenceObjectStatus`
+`func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum, ) *ReferenceObjectStatus`
 
 NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
 This constructor will assign default values to properties that have it defined,
@@ -124,16 +124,6 @@ and a boolean to check if the value has been set.
 SetServiceDeploymentStatus sets ServiceDeploymentStatus field to given value.
 
 
-### SetServiceDeploymentStatusNil
-
-`func (o *ReferenceObjectStatus) SetServiceDeploymentStatusNil(b bool)`
-
- SetServiceDeploymentStatusNil sets the value for ServiceDeploymentStatus to be an explicit nil
-
-### UnsetServiceDeploymentStatus
-`func (o *ReferenceObjectStatus) UnsetServiceDeploymentStatus()`
-
-UnsetServiceDeploymentStatus ensures that no value is present for ServiceDeploymentStatus, not even an explicit nil
 ### GetLastDeploymentDate
 
 `func (o *ReferenceObjectStatus) GetLastDeploymentDate() time.Time`

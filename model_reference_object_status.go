@@ -21,16 +21,16 @@ type ReferenceObjectStatus struct {
 	Id    string    `json:"id"`
 	State StateEnum `json:"state"`
 	// message related to the state
-	Message                 NullableString                      `json:"message,omitempty"`
-	ServiceDeploymentStatus NullableServiceDeploymentStatusEnum `json:"service_deployment_status"`
-	LastDeploymentDate      *time.Time                          `json:"last_deployment_date,omitempty"`
+	Message                 NullableString              `json:"message,omitempty"`
+	ServiceDeploymentStatus ServiceDeploymentStatusEnum `json:"service_deployment_status"`
+	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 }
 
 // NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus NullableServiceDeploymentStatusEnum) *ReferenceObjectStatus {
+func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum) *ReferenceObjectStatus {
 	this := ReferenceObjectStatus{}
 	this.Id = id
 	this.State = state
@@ -138,29 +138,27 @@ func (o *ReferenceObjectStatus) UnsetMessage() {
 }
 
 // GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value
-// If the value is explicit nil, the zero value for ServiceDeploymentStatusEnum will be returned
 func (o *ReferenceObjectStatus) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum {
-	if o == nil || o.ServiceDeploymentStatus.Get() == nil {
+	if o == nil {
 		var ret ServiceDeploymentStatusEnum
 		return ret
 	}
 
-	return *o.ServiceDeploymentStatus.Get()
+	return o.ServiceDeploymentStatus
 }
 
 // GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ReferenceObjectStatus) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ServiceDeploymentStatus.Get(), o.ServiceDeploymentStatus.IsSet()
+	return &o.ServiceDeploymentStatus, true
 }
 
 // SetServiceDeploymentStatus sets field value
 func (o *ReferenceObjectStatus) SetServiceDeploymentStatus(v ServiceDeploymentStatusEnum) {
-	o.ServiceDeploymentStatus.Set(&v)
+	o.ServiceDeploymentStatus = v
 }
 
 // GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
@@ -207,7 +205,7 @@ func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 		toSerialize["message"] = o.Message.Get()
 	}
 	if true {
-		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus.Get()
+		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus
 	}
 	if o.LastDeploymentDate != nil {
 		toSerialize["last_deployment_date"] = o.LastDeploymentDate

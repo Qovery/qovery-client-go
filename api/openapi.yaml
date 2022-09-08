@@ -15165,7 +15165,6 @@ components:
       - NEVER_DEPLOYED
       - OUT_OF_DATE
       - UP_TO_DATE
-      nullable: true
       type: string
     ServiceResponseList:
       properties:
