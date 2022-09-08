@@ -15854,6 +15854,7 @@ components:
         protocol:
           $ref: '#/components/schemas/PortProtocolEnum'
       required:
+      - id
       - internal_port
       - protocol
       - publicly_accessible
@@ -15861,7 +15862,6 @@ components:
     ServicePortRequest_ports_inner:
       properties:
         name:
-          nullable: true
           type: string
         internal_port:
           description: The listening port of your service.

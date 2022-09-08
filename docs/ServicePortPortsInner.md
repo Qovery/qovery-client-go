@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
+**Id** | **string** |  | 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **InternalPort** | **int32** | The listening port of your service. | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewServicePortPortsInner
 
-`func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum, ) *ServicePortPortsInner`
+`func NewServicePortPortsInner(id string, internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum, ) *ServicePortPortsInner`
 
 NewServicePortPortsInner instantiates a new ServicePortPortsInner object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ServicePortPortsInner) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 

@@ -17,7 +17,7 @@ import (
 
 // ServicePortPortsInner struct for ServicePortPortsInner
 type ServicePortPortsInner struct {
-	Id   *string        `json:"id,omitempty"`
+	Id   string         `json:"id"`
 	Name NullableString `json:"name,omitempty"`
 	// The listening port of your service.
 	InternalPort int32 `json:"internal_port"`
@@ -32,8 +32,9 @@ type ServicePortPortsInner struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum) *ServicePortPortsInner {
+func NewServicePortPortsInner(id string, internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum) *ServicePortPortsInner {
 	this := ServicePortPortsInner{}
+	this.Id = id
 	this.InternalPort = internalPort
 	this.PubliclyAccessible = publiclyAccessible
 	this.Protocol = protocol
@@ -50,36 +51,28 @@ func NewServicePortPortsInnerWithDefaults() *ServicePortPortsInner {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ServicePortPortsInner) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ServicePortPortsInner) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ServicePortPortsInner) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *ServicePortPortsInner) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -231,7 +224,7 @@ func (o *ServicePortPortsInner) SetProtocol(v PortProtocolEnum) {
 
 func (o ServicePortPortsInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if true {
 		toSerialize["id"] = o.Id
 	}
 	if o.Name.IsSet() {

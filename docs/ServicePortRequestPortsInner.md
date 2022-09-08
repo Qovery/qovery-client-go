@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **NullableString** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 **InternalPort** | **int32** | The listening port of your service. | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
@@ -54,16 +54,6 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
-### SetNameNil
-
-`func (o *ServicePortRequestPortsInner) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *ServicePortRequestPortsInner) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetInternalPort
 
 `func (o *ServicePortRequestPortsInner) GetInternalPort() int32`
