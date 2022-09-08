@@ -11291,7 +11291,7 @@ components:
       type: object
     ApplicationEditRequest:
       allOf:
-      - $ref: '#/components/schemas/ApplicationStorage'
+      - $ref: '#/components/schemas/ServiceStorageRequest'
       - $ref: '#/components/schemas/ServicePort'
       - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
     ApplicationGitRepository:
@@ -15951,6 +15951,7 @@ components:
           example: /mnt/images
           type: string
       required:
+      - id
       - mount_point
       - size
       - type
