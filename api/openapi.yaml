@@ -15278,7 +15278,6 @@ components:
           $ref: '#/components/schemas/StateEnum'
         message:
           description: message related to the state
-          nullable: true
           type: string
         service_deployment_status:
           $ref: '#/components/schemas/ServiceDeploymentStatusEnum'

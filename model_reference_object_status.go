@@ -21,7 +21,7 @@ type ReferenceObjectStatus struct {
 	Id    string    `json:"id"`
 	State StateEnum `json:"state"`
 	// message related to the state
-	Message                 NullableString              `json:"message,omitempty"`
+	Message                 *string                     `json:"message,omitempty"`
 	ServiceDeploymentStatus ServiceDeploymentStatusEnum `json:"service_deployment_status"`
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 }
@@ -94,47 +94,36 @@ func (o *ReferenceObjectStatus) SetState(v StateEnum) {
 	o.State = v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *ReferenceObjectStatus) GetMessage() string {
-	if o == nil || o.Message.Get() == nil {
+	if o == nil || o.Message == nil {
 		var ret string
 		return ret
 	}
-	return *o.Message.Get()
+	return *o.Message
 }
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ReferenceObjectStatus) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Message == nil {
 		return nil, false
 	}
-	return o.Message.Get(), o.Message.IsSet()
+	return o.Message, true
 }
 
 // HasMessage returns a boolean if a field has been set.
 func (o *ReferenceObjectStatus) HasMessage() bool {
-	if o != nil && o.Message.IsSet() {
+	if o != nil && o.Message != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
+// SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *ReferenceObjectStatus) SetMessage(v string) {
-	o.Message.Set(&v)
-}
-
-// SetMessageNil sets the value for Message to be an explicit nil
-func (o *ReferenceObjectStatus) SetMessageNil() {
-	o.Message.Set(nil)
-}
-
-// UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *ReferenceObjectStatus) UnsetMessage() {
-	o.Message.Unset()
+	o.Message = &v
 }
 
 // GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value
@@ -201,8 +190,8 @@ func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["state"] = o.State
 	}
-	if o.Message.IsSet() {
-		toSerialize["message"] = o.Message.Get()
+	if o.Message != nil {
+		toSerialize["message"] = o.Message
 	}
 	if true {
 		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus
