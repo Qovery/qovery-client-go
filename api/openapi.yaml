@@ -15860,6 +15860,7 @@ components:
           $ref: '#/components/schemas/PortProtocolEnum'
       required:
       - internal_port
+      - protocol
       - publicly_accessible
       type: object
     ServicePortRequest_ports_inner:

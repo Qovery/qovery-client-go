@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **InternalPort** | **int32** | The listening port of your service. | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
-**Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to PORTPROTOCOLENUM_HTTP]
+**Protocol** | [**PortProtocolEnum**](PortProtocolEnum.md) |  | [default to PORTPROTOCOLENUM_HTTP]
 
 ## Methods
 
 ### NewServicePortPortsInner
 
-`func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool, ) *ServicePortPortsInner`
+`func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum, ) *ServicePortPortsInner`
 
 NewServicePortPortsInner instantiates a new ServicePortPortsInner object
 This constructor will assign default values to properties that have it defined,
@@ -174,11 +174,6 @@ and a boolean to check if the value has been set.
 
 SetProtocol sets Protocol field to given value.
 
-### HasProtocol
-
-`func (o *ServicePortPortsInner) HasProtocol() bool`
-
-HasProtocol returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

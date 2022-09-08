@@ -24,20 +24,19 @@ type ServicePortPortsInner struct {
 	// The exposed port for your service. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible bool              `json:"publicly_accessible"`
-	Protocol           *PortProtocolEnum `json:"protocol,omitempty"`
+	PubliclyAccessible bool             `json:"publicly_accessible"`
+	Protocol           PortProtocolEnum `json:"protocol"`
 }
 
 // NewServicePortPortsInner instantiates a new ServicePortPortsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool) *ServicePortPortsInner {
+func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum) *ServicePortPortsInner {
 	this := ServicePortPortsInner{}
 	this.InternalPort = internalPort
 	this.PubliclyAccessible = publiclyAccessible
-	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
-	this.Protocol = &protocol
+	this.Protocol = protocol
 	return &this
 }
 
@@ -47,7 +46,7 @@ func NewServicePortPortsInner(internalPort int32, publiclyAccessible bool) *Serv
 func NewServicePortPortsInnerWithDefaults() *ServicePortPortsInner {
 	this := ServicePortPortsInner{}
 	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
-	this.Protocol = &protocol
+	this.Protocol = protocol
 	return &this
 }
 
@@ -206,36 +205,28 @@ func (o *ServicePortPortsInner) SetPubliclyAccessible(v bool) {
 	o.PubliclyAccessible = v
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
+// GetProtocol returns the Protocol field value
 func (o *ServicePortPortsInner) GetProtocol() PortProtocolEnum {
-	if o == nil || o.Protocol == nil {
+	if o == nil {
 		var ret PortProtocolEnum
 		return ret
 	}
-	return *o.Protocol
+
+	return o.Protocol
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 func (o *ServicePortPortsInner) GetProtocolOk() (*PortProtocolEnum, bool) {
-	if o == nil || o.Protocol == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Protocol, true
+	return &o.Protocol, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *ServicePortPortsInner) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocol gets a reference to the given PortProtocolEnum and assigns it to the Protocol field.
+// SetProtocol sets field value
 func (o *ServicePortPortsInner) SetProtocol(v PortProtocolEnum) {
-	o.Protocol = &v
+	o.Protocol = v
 }
 
 func (o ServicePortPortsInner) MarshalJSON() ([]byte, error) {
@@ -255,7 +246,7 @@ func (o ServicePortPortsInner) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["publicly_accessible"] = o.PubliclyAccessible
 	}
-	if o.Protocol != nil {
+	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
 	return json.Marshal(toSerialize)
