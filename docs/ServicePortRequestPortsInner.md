@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **InternalPort** | **int32** | The listening port of your service. | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
+**IsDefault** | Pointer to **bool** | is the default port to use for domain &amp; probes check | [optional] 
 **Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to PORTPROTOCOLENUM_HTTP]
 
 ## Methods
@@ -118,6 +119,31 @@ and a boolean to check if the value has been set.
 
 SetPubliclyAccessible sets PubliclyAccessible field to given value.
 
+
+### GetIsDefault
+
+`func (o *ServicePortRequestPortsInner) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *ServicePortRequestPortsInner) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *ServicePortRequestPortsInner) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *ServicePortRequestPortsInner) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
 
 ### GetProtocol
 

@@ -23,8 +23,10 @@ type ServicePortRequestPortsInner struct {
 	// The exposed port for your service. This is optional. If not set a default port will be used.
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
-	PubliclyAccessible bool              `json:"publicly_accessible"`
-	Protocol           *PortProtocolEnum `json:"protocol,omitempty"`
+	PubliclyAccessible bool `json:"publicly_accessible"`
+	// is the default port to use for domain & probes check
+	IsDefault *bool             `json:"is_default,omitempty"`
+	Protocol  *PortProtocolEnum `json:"protocol,omitempty"`
 }
 
 // NewServicePortRequestPortsInner instantiates a new ServicePortRequestPortsInner object
@@ -162,6 +164,38 @@ func (o *ServicePortRequestPortsInner) SetPubliclyAccessible(v bool) {
 	o.PubliclyAccessible = v
 }
 
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *ServicePortRequestPortsInner) GetIsDefault() bool {
+	if o == nil || o.IsDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePortRequestPortsInner) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || o.IsDefault == nil {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *ServicePortRequestPortsInner) HasIsDefault() bool {
+	if o != nil && o.IsDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *ServicePortRequestPortsInner) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *ServicePortRequestPortsInner) GetProtocol() PortProtocolEnum {
 	if o == nil || o.Protocol == nil {
@@ -207,6 +241,9 @@ func (o ServicePortRequestPortsInner) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["publicly_accessible"] = o.PubliclyAccessible
+	}
+	if o.IsDefault != nil {
+		toSerialize["is_default"] = o.IsDefault
 	}
 	if o.Protocol != nil {
 		toSerialize["protocol"] = o.Protocol
