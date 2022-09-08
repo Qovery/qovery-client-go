@@ -15957,6 +15957,9 @@ components:
       type: object
     ServiceStorageRequest_storage_inner:
       properties:
+        id:
+          format: uuid
+          type: string
         type:
           $ref: '#/components/schemas/StorageTypeEnum'
         size:

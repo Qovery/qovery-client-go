@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** |  | [optional] 
 **Type** | [**StorageTypeEnum**](StorageTypeEnum.md) |  | 
 **Size** | **int32** | unit is GB Minimum size is 4 GB  | 
 **MountPoint** | **string** |  | 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewServiceStorageRequestStorageInnerWithDefaults instantiates a new ServiceStorageRequestStorageInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *ServiceStorageRequestStorageInner) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ServiceStorageRequestStorageInner) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ServiceStorageRequestStorageInner) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ServiceStorageRequestStorageInner) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetType
 

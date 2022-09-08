@@ -17,6 +17,7 @@ import (
 
 // ServiceStorageRequestStorageInner struct for ServiceStorageRequestStorageInner
 type ServiceStorageRequestStorageInner struct {
+	Id   *string         `json:"id,omitempty"`
 	Type StorageTypeEnum `json:"type"`
 	// unit is GB Minimum size is 4 GB
 	Size       int32  `json:"size"`
@@ -41,6 +42,38 @@ func NewServiceStorageRequestStorageInner(type_ StorageTypeEnum, size int32, mou
 func NewServiceStorageRequestStorageInnerWithDefaults() *ServiceStorageRequestStorageInner {
 	this := ServiceStorageRequestStorageInner{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *ServiceStorageRequestStorageInner) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceStorageRequestStorageInner) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ServiceStorageRequestStorageInner) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *ServiceStorageRequestStorageInner) SetId(v string) {
+	o.Id = &v
 }
 
 // GetType returns the Type field value
@@ -117,6 +150,9 @@ func (o *ServiceStorageRequestStorageInner) SetMountPoint(v string) {
 
 func (o ServiceStorageRequestStorageInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
