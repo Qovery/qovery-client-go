@@ -12065,9 +12065,9 @@ components:
         kubernetes: null
         features:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          value: value
+          value: null
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          value: value
+          value: null
         ssh_keys:
         - ssh_keys
         - ssh_keys
@@ -16245,15 +16245,14 @@ components:
     ClusterRequest_features_inner:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        value: value
+        value: null
       properties:
         id:
           format: uuid
           nullable: false
           type: string
         value:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/ClusterFeature_value'
       type: object
     ClusterRoutingTable_results_inner:
       example:
