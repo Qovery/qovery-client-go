@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Value** | **string** | value of the env variable. | 
 **OverriddenVariable** | Pointer to [**EnvironmentVariableAllOfOverriddenVariable**](EnvironmentVariableAllOfOverriddenVariable.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAllOfAliasedVariable**](EnvironmentVariableAllOfAliasedVariable.md) |  | [optional] 
-**Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
+**Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironmentVariable
 
-`func NewEnvironmentVariable(id string, createdAt time.Time, key string, value string, scope EnvironmentVariableScopeEnum, ) *EnvironmentVariable`
+`func NewEnvironmentVariable(id string, createdAt time.Time, key string, value string, scope APIVariableScopeEnum, ) *EnvironmentVariable`
 
 NewEnvironmentVariable instantiates a new EnvironmentVariable object
 This constructor will assign default values to properties that have it defined,
@@ -192,20 +192,20 @@ HasAliasedVariable returns a boolean if a field has been set.
 
 ### GetScope
 
-`func (o *EnvironmentVariable) GetScope() EnvironmentVariableScopeEnum`
+`func (o *EnvironmentVariable) GetScope() APIVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *EnvironmentVariable) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
+`func (o *EnvironmentVariable) GetScopeOk() (*APIVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *EnvironmentVariable) SetScope(v EnvironmentVariableScopeEnum)`
+`func (o *EnvironmentVariable) SetScope(v APIVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

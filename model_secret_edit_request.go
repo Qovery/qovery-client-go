@@ -17,16 +17,18 @@ import (
 
 // SecretEditRequest struct for SecretEditRequest
 type SecretEditRequest struct {
-	Value *string `json:"value,omitempty"`
-	Key   *string `json:"key,omitempty"`
+	Value string `json:"value"`
+	Key   string `json:"key"`
 }
 
 // NewSecretEditRequest instantiates a new SecretEditRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretEditRequest() *SecretEditRequest {
+func NewSecretEditRequest(value string, key string) *SecretEditRequest {
 	this := SecretEditRequest{}
+	this.Value = value
+	this.Key = key
 	return &this
 }
 
@@ -38,76 +40,60 @@ func NewSecretEditRequestWithDefaults() *SecretEditRequest {
 	return &this
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value
 func (o *SecretEditRequest) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value
+
+	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *SecretEditRequest) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *SecretEditRequest) HasValue() bool {
-	if o != nil && o.Value != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue sets field value
 func (o *SecretEditRequest) SetValue(v string) {
-	o.Value = &v
+	o.Value = v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value
 func (o *SecretEditRequest) GetKey() string {
-	if o == nil || o.Key == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Key
+
+	return o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *SecretEditRequest) GetKeyOk() (*string, bool) {
-	if o == nil || o.Key == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Key, true
+	return &o.Key, true
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *SecretEditRequest) HasKey() bool {
-	if o != nil && o.Key != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
+// SetKey sets field value
 func (o *SecretEditRequest) SetKey(v string) {
-	o.Key = &v
+	o.Key = v
 }
 
 func (o SecretEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Value != nil {
+	if true {
 		toSerialize["value"] = o.Value
 	}
-	if o.Key != nil {
+	if true {
 		toSerialize["key"] = o.Key
 	}
 	return json.Marshal(toSerialize)

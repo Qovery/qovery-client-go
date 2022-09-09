@@ -68,10 +68,10 @@ api_referral_rewards.go
 api_user_sign_up.go
 client.go
 configuration.go
+docs/APIVariableScopeEnum.md
 docs/AccountInfo.md
 docs/AccountInfoApi.md
 docs/AccountInfoEditRequest.md
-docs/AliasedSecret.md
 docs/Application.md
 docs/ApplicationActionsApi.md
 docs/ApplicationAdvancedSettings.md
@@ -312,7 +312,6 @@ docs/EnvironmentVariableApi.md
 docs/EnvironmentVariableEditRequest.md
 docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
-docs/EnvironmentVariableScopeEnum.md
 docs/EnvironmentsApi.md
 docs/Event.md
 docs/EventAllOf.md
@@ -414,7 +413,6 @@ docs/OrganizationWebhookEventEnum.md
 docs/OrganizationWebhookKindEnum.md
 docs/OrganizationWebhookResponse.md
 docs/OrganizationWebhookResponseList.md
-docs/OverriddenSecret.md
 docs/PaginationData.md
 docs/PaidUsage.md
 docs/PlanEnum.md
@@ -448,8 +446,10 @@ docs/RemainingCredits.md
 docs/RewardClaim.md
 docs/ScalewayCredentialsRequest.md
 docs/Secret.md
+docs/SecretAlias.md
 docs/SecretAllOf.md
 docs/SecretEditRequest.md
+docs/SecretOverride.md
 docs/SecretRequest.md
 docs/SecretResponseList.md
 docs/Service.md
@@ -497,7 +497,7 @@ go.mod
 go.sum
 model_account_info.go
 model_account_info_edit_request.go
-model_aliased_secret.go
+model_api_variable_scope_enum.go
 model_application.go
 model_application_advanced_settings.go
 model_application_all_of.go
@@ -692,7 +692,6 @@ model_environment_variable_all_of_overridden_variable.go
 model_environment_variable_edit_request.go
 model_environment_variable_request.go
 model_environment_variable_response_list.go
-model_environment_variable_scope_enum.go
 model_event.go
 model_event_all_of.go
 model_event_paginated_response_list.go
@@ -785,7 +784,6 @@ model_organization_webhook_event_enum.go
 model_organization_webhook_kind_enum.go
 model_organization_webhook_response.go
 model_organization_webhook_response_list.go
-model_overridden_secret.go
 model_pagination_data.go
 model_paid_usage.go
 model_plan_enum.go
@@ -813,8 +811,10 @@ model_remaining_credits.go
 model_reward_claim.go
 model_scaleway_credentials_request.go
 model_secret.go
+model_secret_alias.go
 model_secret_all_of.go
 model_secret_edit_request.go
+model_secret_override.go
 model_secret_request.go
 model_secret_response_list.go
 model_service.go

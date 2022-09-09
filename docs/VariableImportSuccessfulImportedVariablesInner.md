@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Value** | Pointer to **string** | Optional if the variable is secret | [optional] 
-**Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
+**Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **IsSecret** | **bool** |  | 
 
 ## Methods
 
 ### NewVariableImportSuccessfulImportedVariablesInner
 
-`func NewVariableImportSuccessfulImportedVariablesInner(name string, scope EnvironmentVariableScopeEnum, isSecret bool, ) *VariableImportSuccessfulImportedVariablesInner`
+`func NewVariableImportSuccessfulImportedVariablesInner(name string, scope APIVariableScopeEnum, isSecret bool, ) *VariableImportSuccessfulImportedVariablesInner`
 
 NewVariableImportSuccessfulImportedVariablesInner instantiates a new VariableImportSuccessfulImportedVariablesInner object
 This constructor will assign default values to properties that have it defined,
@@ -75,20 +75,20 @@ HasValue returns a boolean if a field has been set.
 
 ### GetScope
 
-`func (o *VariableImportSuccessfulImportedVariablesInner) GetScope() EnvironmentVariableScopeEnum`
+`func (o *VariableImportSuccessfulImportedVariablesInner) GetScope() APIVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *VariableImportSuccessfulImportedVariablesInner) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
+`func (o *VariableImportSuccessfulImportedVariablesInner) GetScopeOk() (*APIVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *VariableImportSuccessfulImportedVariablesInner) SetScope(v EnvironmentVariableScopeEnum)`
+`func (o *VariableImportSuccessfulImportedVariablesInner) SetScope(v APIVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

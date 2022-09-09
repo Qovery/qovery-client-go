@@ -1,4 +1,4 @@
-# EnvironmentVariableScopeEnum
+# APIVariableScopeEnum
 
 ## Enum
 

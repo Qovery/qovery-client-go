@@ -17,10 +17,10 @@ import (
 
 // EnvironmentVariableAllOfAliasedVariable struct for EnvironmentVariableAllOfAliasedVariable
 type EnvironmentVariableAllOfAliasedVariable struct {
-	Id    *string                       `json:"id,omitempty"`
-	Key   *string                       `json:"key,omitempty"`
-	Value *string                       `json:"value,omitempty"`
-	Scope *EnvironmentVariableScopeEnum `json:"scope,omitempty"`
+	Id    *string               `json:"id,omitempty"`
+	Key   *string               `json:"key,omitempty"`
+	Value *string               `json:"value,omitempty"`
+	Scope *APIVariableScopeEnum `json:"scope,omitempty"`
 }
 
 // NewEnvironmentVariableAllOfAliasedVariable instantiates a new EnvironmentVariableAllOfAliasedVariable object
@@ -137,9 +137,9 @@ func (o *EnvironmentVariableAllOfAliasedVariable) SetValue(v string) {
 }
 
 // GetScope returns the Scope field value if set, zero value otherwise.
-func (o *EnvironmentVariableAllOfAliasedVariable) GetScope() EnvironmentVariableScopeEnum {
+func (o *EnvironmentVariableAllOfAliasedVariable) GetScope() APIVariableScopeEnum {
 	if o == nil || o.Scope == nil {
-		var ret EnvironmentVariableScopeEnum
+		var ret APIVariableScopeEnum
 		return ret
 	}
 	return *o.Scope
@@ -147,7 +147,7 @@ func (o *EnvironmentVariableAllOfAliasedVariable) GetScope() EnvironmentVariable
 
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableAllOfAliasedVariable) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
+func (o *EnvironmentVariableAllOfAliasedVariable) GetScopeOk() (*APIVariableScopeEnum, bool) {
 	if o == nil || o.Scope == nil {
 		return nil, false
 	}
@@ -163,8 +163,8 @@ func (o *EnvironmentVariableAllOfAliasedVariable) HasScope() bool {
 	return false
 }
 
-// SetScope gets a reference to the given EnvironmentVariableScopeEnum and assigns it to the Scope field.
-func (o *EnvironmentVariableAllOfAliasedVariable) SetScope(v EnvironmentVariableScopeEnum) {
+// SetScope gets a reference to the given APIVariableScopeEnum and assigns it to the Scope field.
+func (o *EnvironmentVariableAllOfAliasedVariable) SetScope(v APIVariableScopeEnum) {
 	o.Scope = &v
 }
 

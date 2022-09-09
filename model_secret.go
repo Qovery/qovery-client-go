@@ -22,10 +22,10 @@ type Secret struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// key is case sensitive
-	Key              *string                      `json:"key,omitempty"`
-	OverriddenSecret *OverriddenSecret            `json:"overridden_secret,omitempty"`
-	AliasedSecret    *AliasedSecret               `json:"aliased_secret,omitempty"`
-	Scope            EnvironmentVariableScopeEnum `json:"scope"`
+	Key              string               `json:"key"`
+	OverriddenSecret *SecretOverride      `json:"overridden_secret,omitempty"`
+	AliasedSecret    *SecretAlias         `json:"aliased_secret,omitempty"`
+	Scope            APIVariableScopeEnum `json:"scope"`
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
@@ -37,10 +37,11 @@ type Secret struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecret(id string, createdAt time.Time, scope EnvironmentVariableScopeEnum) *Secret {
+func NewSecret(id string, createdAt time.Time, key string, scope APIVariableScopeEnum) *Secret {
 	this := Secret{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Key = key
 	this.Scope = scope
 	return &this
 }
@@ -133,42 +134,34 @@ func (o *Secret) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value
 func (o *Secret) GetKey() string {
-	if o == nil || o.Key == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Key
+
+	return o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 func (o *Secret) GetKeyOk() (*string, bool) {
-	if o == nil || o.Key == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Key, true
+	return &o.Key, true
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *Secret) HasKey() bool {
-	if o != nil && o.Key != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
+// SetKey sets field value
 func (o *Secret) SetKey(v string) {
-	o.Key = &v
+	o.Key = v
 }
 
 // GetOverriddenSecret returns the OverriddenSecret field value if set, zero value otherwise.
-func (o *Secret) GetOverriddenSecret() OverriddenSecret {
+func (o *Secret) GetOverriddenSecret() SecretOverride {
 	if o == nil || o.OverriddenSecret == nil {
-		var ret OverriddenSecret
+		var ret SecretOverride
 		return ret
 	}
 	return *o.OverriddenSecret
@@ -176,7 +169,7 @@ func (o *Secret) GetOverriddenSecret() OverriddenSecret {
 
 // GetOverriddenSecretOk returns a tuple with the OverriddenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Secret) GetOverriddenSecretOk() (*OverriddenSecret, bool) {
+func (o *Secret) GetOverriddenSecretOk() (*SecretOverride, bool) {
 	if o == nil || o.OverriddenSecret == nil {
 		return nil, false
 	}
@@ -192,15 +185,15 @@ func (o *Secret) HasOverriddenSecret() bool {
 	return false
 }
 
-// SetOverriddenSecret gets a reference to the given OverriddenSecret and assigns it to the OverriddenSecret field.
-func (o *Secret) SetOverriddenSecret(v OverriddenSecret) {
+// SetOverriddenSecret gets a reference to the given SecretOverride and assigns it to the OverriddenSecret field.
+func (o *Secret) SetOverriddenSecret(v SecretOverride) {
 	o.OverriddenSecret = &v
 }
 
 // GetAliasedSecret returns the AliasedSecret field value if set, zero value otherwise.
-func (o *Secret) GetAliasedSecret() AliasedSecret {
+func (o *Secret) GetAliasedSecret() SecretAlias {
 	if o == nil || o.AliasedSecret == nil {
-		var ret AliasedSecret
+		var ret SecretAlias
 		return ret
 	}
 	return *o.AliasedSecret
@@ -208,7 +201,7 @@ func (o *Secret) GetAliasedSecret() AliasedSecret {
 
 // GetAliasedSecretOk returns a tuple with the AliasedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Secret) GetAliasedSecretOk() (*AliasedSecret, bool) {
+func (o *Secret) GetAliasedSecretOk() (*SecretAlias, bool) {
 	if o == nil || o.AliasedSecret == nil {
 		return nil, false
 	}
@@ -224,15 +217,15 @@ func (o *Secret) HasAliasedSecret() bool {
 	return false
 }
 
-// SetAliasedSecret gets a reference to the given AliasedSecret and assigns it to the AliasedSecret field.
-func (o *Secret) SetAliasedSecret(v AliasedSecret) {
+// SetAliasedSecret gets a reference to the given SecretAlias and assigns it to the AliasedSecret field.
+func (o *Secret) SetAliasedSecret(v SecretAlias) {
 	o.AliasedSecret = &v
 }
 
 // GetScope returns the Scope field value
-func (o *Secret) GetScope() EnvironmentVariableScopeEnum {
+func (o *Secret) GetScope() APIVariableScopeEnum {
 	if o == nil {
-		var ret EnvironmentVariableScopeEnum
+		var ret APIVariableScopeEnum
 		return ret
 	}
 
@@ -241,7 +234,7 @@ func (o *Secret) GetScope() EnvironmentVariableScopeEnum {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *Secret) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
+func (o *Secret) GetScopeOk() (*APIVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -249,7 +242,7 @@ func (o *Secret) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
 }
 
 // SetScope sets field value
-func (o *Secret) SetScope(v EnvironmentVariableScopeEnum) {
+func (o *Secret) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
 }
 
@@ -360,7 +353,7 @@ func (o Secret) MarshalJSON() ([]byte, error) {
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if o.Key != nil {
+	if true {
 		toSerialize["key"] = o.Key
 	}
 	if o.OverriddenSecret != nil {

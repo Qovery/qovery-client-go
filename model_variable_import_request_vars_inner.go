@@ -17,17 +17,17 @@ import (
 
 // VariableImportRequestVarsInner struct for VariableImportRequestVarsInner
 type VariableImportRequestVarsInner struct {
-	Name     string                       `json:"name"`
-	Value    string                       `json:"value"`
-	Scope    EnvironmentVariableScopeEnum `json:"scope"`
-	IsSecret bool                         `json:"is_secret"`
+	Name     string               `json:"name"`
+	Value    string               `json:"value"`
+	Scope    APIVariableScopeEnum `json:"scope"`
+	IsSecret bool                 `json:"is_secret"`
 }
 
 // NewVariableImportRequestVarsInner instantiates a new VariableImportRequestVarsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableImportRequestVarsInner(name string, value string, scope EnvironmentVariableScopeEnum, isSecret bool) *VariableImportRequestVarsInner {
+func NewVariableImportRequestVarsInner(name string, value string, scope APIVariableScopeEnum, isSecret bool) *VariableImportRequestVarsInner {
 	this := VariableImportRequestVarsInner{}
 	this.Name = name
 	this.Value = value
@@ -93,9 +93,9 @@ func (o *VariableImportRequestVarsInner) SetValue(v string) {
 }
 
 // GetScope returns the Scope field value
-func (o *VariableImportRequestVarsInner) GetScope() EnvironmentVariableScopeEnum {
+func (o *VariableImportRequestVarsInner) GetScope() APIVariableScopeEnum {
 	if o == nil {
-		var ret EnvironmentVariableScopeEnum
+		var ret APIVariableScopeEnum
 		return ret
 	}
 
@@ -104,7 +104,7 @@ func (o *VariableImportRequestVarsInner) GetScope() EnvironmentVariableScopeEnum
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *VariableImportRequestVarsInner) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
+func (o *VariableImportRequestVarsInner) GetScopeOk() (*APIVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -112,7 +112,7 @@ func (o *VariableImportRequestVarsInner) GetScopeOk() (*EnvironmentVariableScope
 }
 
 // SetScope sets field value
-func (o *VariableImportRequestVarsInner) SetScope(v EnvironmentVariableScopeEnum) {
+func (o *VariableImportRequestVarsInner) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
 }
 

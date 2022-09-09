@@ -11056,7 +11056,7 @@ components:
         profile_picture_url:
           type: string
       type: object
-    AliasedSecret:
+    SecretAlias:
       properties:
         id:
           format: uuid
@@ -11065,7 +11065,11 @@ components:
           example: QOVERY_DATABASE_PSQL_NAME
           type: string
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+      required:
+      - id
+      - key
+      - scope
       type: object
     Application:
       allOf:
@@ -13789,7 +13793,7 @@ components:
             $ref: '#/components/schemas/EnvironmentVariable'
           type: array
       type: object
-    EnvironmentVariableScopeEnum:
+    APIVariableScopeEnum:
       enum:
       - APPLICATION
       - BUILT_IN
@@ -14737,7 +14741,7 @@ components:
             $ref: '#/components/schemas/Organization'
           type: array
       type: object
-    OverriddenSecret:
+    SecretOverride:
       properties:
         id:
           format: uuid
@@ -14745,7 +14749,11 @@ components:
         key:
           type: string
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+      required:
+      - id
+      - key
+      - scope
       type: object
     OrganizationWebhookCreateRequest:
       example:
@@ -15129,6 +15137,9 @@ components:
           type: string
         key:
           type: string
+      required:
+      - key
+      - value
       type: object
     SecretRequest:
       example:
@@ -16805,7 +16816,7 @@ components:
         value:
           type: string
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
       type: object
     EnvironmentVariable_allOf_aliased_variable:
       properties:
@@ -16818,7 +16829,7 @@ components:
         value:
           type: string
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
       type: object
     EnvironmentVariable_allOf:
       properties:
@@ -16827,7 +16838,7 @@ components:
         aliased_variable:
           $ref: '#/components/schemas/EnvironmentVariable_allOf_aliased_variable'
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
         service_id:
           description: present only for `BUILT_IN` variable
           format: uuid
@@ -17076,11 +17087,11 @@ components:
           description: key is case sensitive
           type: string
         overridden_secret:
-          $ref: '#/components/schemas/OverriddenSecret'
+          $ref: '#/components/schemas/SecretOverride'
         aliased_secret:
-          $ref: '#/components/schemas/AliasedSecret'
+          $ref: '#/components/schemas/SecretAlias'
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
         service_id:
           description: present only for `BUILT_IN` variable
           format: uuid
@@ -17091,6 +17102,7 @@ components:
         service_type:
           $ref: '#/components/schemas/LinkedServiceTypeEnum'
       required:
+      - key
       - scope
       type: object
     Service_allOf:
@@ -17142,7 +17154,7 @@ components:
           description: Optional if the variable is secret
           type: string
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
         is_secret:
           type: boolean
       required:
@@ -17162,7 +17174,7 @@ components:
         value:
           type: string
         scope:
-          $ref: '#/components/schemas/EnvironmentVariableScopeEnum'
+          $ref: '#/components/schemas/APIVariableScopeEnum'
         is_secret:
           type: boolean
       required:

@@ -395,9 +395,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [APIVariableScopeEnum](docs/APIVariableScopeEnum.md)
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
- - [AliasedSecret](docs/AliasedSecret.md)
  - [Application](docs/Application.md)
  - [ApplicationAdvancedSettings](docs/ApplicationAdvancedSettings.md)
  - [ApplicationAllOf](docs/ApplicationAllOf.md)
@@ -592,7 +592,6 @@ Class | Method | HTTP request | Description
  - [EnvironmentVariableEditRequest](docs/EnvironmentVariableEditRequest.md)
  - [EnvironmentVariableRequest](docs/EnvironmentVariableRequest.md)
  - [EnvironmentVariableResponseList](docs/EnvironmentVariableResponseList.md)
- - [EnvironmentVariableScopeEnum](docs/EnvironmentVariableScopeEnum.md)
  - [Event](docs/Event.md)
  - [EventAllOf](docs/EventAllOf.md)
  - [EventPaginatedResponseList](docs/EventPaginatedResponseList.md)
@@ -685,7 +684,6 @@ Class | Method | HTTP request | Description
  - [OrganizationWebhookKindEnum](docs/OrganizationWebhookKindEnum.md)
  - [OrganizationWebhookResponse](docs/OrganizationWebhookResponse.md)
  - [OrganizationWebhookResponseList](docs/OrganizationWebhookResponseList.md)
- - [OverriddenSecret](docs/OverriddenSecret.md)
  - [PaginationData](docs/PaginationData.md)
  - [PaidUsage](docs/PaidUsage.md)
  - [PlanEnum](docs/PlanEnum.md)
@@ -713,8 +711,10 @@ Class | Method | HTTP request | Description
  - [RewardClaim](docs/RewardClaim.md)
  - [ScalewayCredentialsRequest](docs/ScalewayCredentialsRequest.md)
  - [Secret](docs/Secret.md)
+ - [SecretAlias](docs/SecretAlias.md)
  - [SecretAllOf](docs/SecretAllOf.md)
  - [SecretEditRequest](docs/SecretEditRequest.md)
+ - [SecretOverride](docs/SecretOverride.md)
  - [SecretRequest](docs/SecretRequest.md)
  - [SecretResponseList](docs/SecretResponseList.md)
  - [Service](docs/Service.md)

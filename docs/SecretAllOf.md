@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | key is case sensitive | [optional] 
-**OverriddenSecret** | Pointer to [**OverriddenSecret**](OverriddenSecret.md) |  | [optional] 
-**AliasedSecret** | Pointer to [**AliasedSecret**](AliasedSecret.md) |  | [optional] 
-**Scope** | [**EnvironmentVariableScopeEnum**](EnvironmentVariableScopeEnum.md) |  | 
+**Key** | **string** | key is case sensitive | 
+**OverriddenSecret** | Pointer to [**SecretOverride**](SecretOverride.md) |  | [optional] 
+**AliasedSecret** | Pointer to [**SecretAlias**](SecretAlias.md) |  | [optional] 
+**Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewSecretAllOf
 
-`func NewSecretAllOf(scope EnvironmentVariableScopeEnum, ) *SecretAllOf`
+`func NewSecretAllOf(key string, scope APIVariableScopeEnum, ) *SecretAllOf`
 
 NewSecretAllOf instantiates a new SecretAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -50,28 +50,23 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
-### HasKey
-
-`func (o *SecretAllOf) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
 
 ### GetOverriddenSecret
 
-`func (o *SecretAllOf) GetOverriddenSecret() OverriddenSecret`
+`func (o *SecretAllOf) GetOverriddenSecret() SecretOverride`
 
 GetOverriddenSecret returns the OverriddenSecret field if non-nil, zero value otherwise.
 
 ### GetOverriddenSecretOk
 
-`func (o *SecretAllOf) GetOverriddenSecretOk() (*OverriddenSecret, bool)`
+`func (o *SecretAllOf) GetOverriddenSecretOk() (*SecretOverride, bool)`
 
 GetOverriddenSecretOk returns a tuple with the OverriddenSecret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOverriddenSecret
 
-`func (o *SecretAllOf) SetOverriddenSecret(v OverriddenSecret)`
+`func (o *SecretAllOf) SetOverriddenSecret(v SecretOverride)`
 
 SetOverriddenSecret sets OverriddenSecret field to given value.
 
@@ -83,20 +78,20 @@ HasOverriddenSecret returns a boolean if a field has been set.
 
 ### GetAliasedSecret
 
-`func (o *SecretAllOf) GetAliasedSecret() AliasedSecret`
+`func (o *SecretAllOf) GetAliasedSecret() SecretAlias`
 
 GetAliasedSecret returns the AliasedSecret field if non-nil, zero value otherwise.
 
 ### GetAliasedSecretOk
 
-`func (o *SecretAllOf) GetAliasedSecretOk() (*AliasedSecret, bool)`
+`func (o *SecretAllOf) GetAliasedSecretOk() (*SecretAlias, bool)`
 
 GetAliasedSecretOk returns a tuple with the AliasedSecret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAliasedSecret
 
-`func (o *SecretAllOf) SetAliasedSecret(v AliasedSecret)`
+`func (o *SecretAllOf) SetAliasedSecret(v SecretAlias)`
 
 SetAliasedSecret sets AliasedSecret field to given value.
 
@@ -108,20 +103,20 @@ HasAliasedSecret returns a boolean if a field has been set.
 
 ### GetScope
 
-`func (o *SecretAllOf) GetScope() EnvironmentVariableScopeEnum`
+`func (o *SecretAllOf) GetScope() APIVariableScopeEnum`
 
 GetScope returns the Scope field if non-nil, zero value otherwise.
 
 ### GetScopeOk
 
-`func (o *SecretAllOf) GetScopeOk() (*EnvironmentVariableScopeEnum, bool)`
+`func (o *SecretAllOf) GetScopeOk() (*APIVariableScopeEnum, bool)`
 
 GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScope
 
-`func (o *SecretAllOf) SetScope(v EnvironmentVariableScopeEnum)`
+`func (o *SecretAllOf) SetScope(v APIVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
 

@@ -329,7 +329,7 @@ import (
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-    secretEditRequest := *openapiclient.NewSecretEditRequest() // SecretEditRequest | 
+    secretEditRequest := *openapiclient.NewSecretEditRequest("Value_example", "Key_example") // SecretEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

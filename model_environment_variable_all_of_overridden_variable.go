@@ -17,10 +17,10 @@ import (
 
 // EnvironmentVariableAllOfOverriddenVariable struct for EnvironmentVariableAllOfOverriddenVariable
 type EnvironmentVariableAllOfOverriddenVariable struct {
-	Id    *string                       `json:"id,omitempty"`
-	Key   *string                       `json:"key,omitempty"`
-	Value *string                       `json:"value,omitempty"`
-	Scope *EnvironmentVariableScopeEnum `json:"scope,omitempty"`
+	Id    *string               `json:"id,omitempty"`
+	Key   *string               `json:"key,omitempty"`
+	Value *string               `json:"value,omitempty"`
+	Scope *APIVariableScopeEnum `json:"scope,omitempty"`
 }
 
 // NewEnvironmentVariableAllOfOverriddenVariable instantiates a new EnvironmentVariableAllOfOverriddenVariable object
@@ -137,9 +137,9 @@ func (o *EnvironmentVariableAllOfOverriddenVariable) SetValue(v string) {
 }
 
 // GetScope returns the Scope field value if set, zero value otherwise.
-func (o *EnvironmentVariableAllOfOverriddenVariable) GetScope() EnvironmentVariableScopeEnum {
+func (o *EnvironmentVariableAllOfOverriddenVariable) GetScope() APIVariableScopeEnum {
 	if o == nil || o.Scope == nil {
-		var ret EnvironmentVariableScopeEnum
+		var ret APIVariableScopeEnum
 		return ret
 	}
 	return *o.Scope
@@ -147,7 +147,7 @@ func (o *EnvironmentVariableAllOfOverriddenVariable) GetScope() EnvironmentVaria
 
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableAllOfOverriddenVariable) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
+func (o *EnvironmentVariableAllOfOverriddenVariable) GetScopeOk() (*APIVariableScopeEnum, bool) {
 	if o == nil || o.Scope == nil {
 		return nil, false
 	}
@@ -163,8 +163,8 @@ func (o *EnvironmentVariableAllOfOverriddenVariable) HasScope() bool {
 	return false
 }
 
-// SetScope gets a reference to the given EnvironmentVariableScopeEnum and assigns it to the Scope field.
-func (o *EnvironmentVariableAllOfOverriddenVariable) SetScope(v EnvironmentVariableScopeEnum) {
+// SetScope gets a reference to the given APIVariableScopeEnum and assigns it to the Scope field.
+func (o *EnvironmentVariableAllOfOverriddenVariable) SetScope(v APIVariableScopeEnum) {
 	o.Scope = &v
 }
 

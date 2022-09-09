@@ -19,7 +19,7 @@ import (
 type EnvironmentVariableAllOf struct {
 	OverriddenVariable *EnvironmentVariableAllOfOverriddenVariable `json:"overridden_variable,omitempty"`
 	AliasedVariable    *EnvironmentVariableAllOfAliasedVariable    `json:"aliased_variable,omitempty"`
-	Scope              EnvironmentVariableScopeEnum                `json:"scope"`
+	Scope              APIVariableScopeEnum                        `json:"scope"`
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
@@ -31,7 +31,7 @@ type EnvironmentVariableAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentVariableAllOf(scope EnvironmentVariableScopeEnum) *EnvironmentVariableAllOf {
+func NewEnvironmentVariableAllOf(scope APIVariableScopeEnum) *EnvironmentVariableAllOf {
 	this := EnvironmentVariableAllOf{}
 	this.Scope = scope
 	return &this
@@ -110,9 +110,9 @@ func (o *EnvironmentVariableAllOf) SetAliasedVariable(v EnvironmentVariableAllOf
 }
 
 // GetScope returns the Scope field value
-func (o *EnvironmentVariableAllOf) GetScope() EnvironmentVariableScopeEnum {
+func (o *EnvironmentVariableAllOf) GetScope() APIVariableScopeEnum {
 	if o == nil {
-		var ret EnvironmentVariableScopeEnum
+		var ret APIVariableScopeEnum
 		return ret
 	}
 
@@ -121,7 +121,7 @@ func (o *EnvironmentVariableAllOf) GetScope() EnvironmentVariableScopeEnum {
 
 // GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableAllOf) GetScopeOk() (*EnvironmentVariableScopeEnum, bool) {
+func (o *EnvironmentVariableAllOf) GetScopeOk() (*APIVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *EnvironmentVariableAllOf) GetScopeOk() (*EnvironmentVariableScopeEnum, 
 }
 
 // SetScope sets field value
-func (o *EnvironmentVariableAllOf) SetScope(v EnvironmentVariableScopeEnum) {
+func (o *EnvironmentVariableAllOf) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
 }
 
