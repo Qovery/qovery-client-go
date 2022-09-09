@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Storage** | Pointer to [**[]ServiceStorageRequestStorageInner**](ServiceStorageRequestStorageInner.md) |  | [optional] 
-**Results** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
@@ -19,6 +18,7 @@ Name | Type | Description | Notes
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
 **StickySession** | Pointer to **bool** | Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  | [optional] [default to false]
+**Ports** | Pointer to [**ServicePortResponseList**](ServicePortResponseList.md) |  | [optional] 
 
 ## Methods
 
@@ -63,31 +63,6 @@ SetStorage sets Storage field to given value.
 `func (o *ApplicationEditRequest) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
-
-### GetResults
-
-`func (o *ApplicationEditRequest) GetResults() []ServicePort`
-
-GetResults returns the Results field if non-nil, zero value otherwise.
-
-### GetResultsOk
-
-`func (o *ApplicationEditRequest) GetResultsOk() (*[]ServicePort, bool)`
-
-GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResults
-
-`func (o *ApplicationEditRequest) SetResults(v []ServicePort)`
-
-SetResults sets Results field to given value.
-
-### HasResults
-
-`func (o *ApplicationEditRequest) HasResults() bool`
-
-HasResults returns a boolean if a field has been set.
 
 ### GetName
 
@@ -423,6 +398,31 @@ SetStickySession sets StickySession field to given value.
 `func (o *ApplicationEditRequest) HasStickySession() bool`
 
 HasStickySession returns a boolean if a field has been set.
+
+### GetPorts
+
+`func (o *ApplicationEditRequest) GetPorts() ServicePortResponseList`
+
+GetPorts returns the Ports field if non-nil, zero value otherwise.
+
+### GetPortsOk
+
+`func (o *ApplicationEditRequest) GetPortsOk() (*ServicePortResponseList, bool)`
+
+GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPorts
+
+`func (o *ApplicationEditRequest) SetPorts(v ServicePortResponseList)`
+
+SetPorts sets Ports field to given value.
+
+### HasPorts
+
+`func (o *ApplicationEditRequest) HasPorts() bool`
+
+HasPorts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

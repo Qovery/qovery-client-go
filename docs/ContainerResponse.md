@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
-**Results** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Registry** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
@@ -23,6 +22,7 @@ Name | Type | Description | Notes
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
 **AutoPreview** | **bool** | Specify if the environment preview option is activated or not for this container. If activated, a preview environment will be automatically cloned at each pull request.  | 
+**Ports** | Pointer to [**ServicePortResponseList**](ServicePortResponseList.md) |  | [optional] 
 
 ## Methods
 
@@ -132,31 +132,6 @@ SetStorage sets Storage field to given value.
 `func (o *ContainerResponse) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
-
-### GetResults
-
-`func (o *ContainerResponse) GetResults() []ServicePort`
-
-GetResults returns the Results field if non-nil, zero value otherwise.
-
-### GetResultsOk
-
-`func (o *ContainerResponse) GetResultsOk() (*[]ServicePort, bool)`
-
-GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetResults
-
-`func (o *ContainerResponse) SetResults(v []ServicePort)`
-
-SetResults sets Results field to given value.
-
-### HasResults
-
-`func (o *ContainerResponse) HasResults() bool`
-
-HasResults returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -447,6 +422,31 @@ and a boolean to check if the value has been set.
 
 SetAutoPreview sets AutoPreview field to given value.
 
+
+### GetPorts
+
+`func (o *ContainerResponse) GetPorts() ServicePortResponseList`
+
+GetPorts returns the Ports field if non-nil, zero value otherwise.
+
+### GetPortsOk
+
+`func (o *ContainerResponse) GetPortsOk() (*ServicePortResponseList, bool)`
+
+GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPorts
+
+`func (o *ContainerResponse) SetPorts(v ServicePortResponseList)`
+
+SetPorts sets Ports field to given value.
+
+### HasPorts
+
+`func (o *ContainerResponse) HasPorts() bool`
+
+HasPorts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -22,7 +22,6 @@ type Application struct {
 	CreatedAt     time.Time                    `json:"created_at"`
 	UpdatedAt     *time.Time                   `json:"updated_at,omitempty"`
 	Storage       []ServiceStorageStorageInner `json:"storage,omitempty"`
-	Results       []ServicePort                `json:"results,omitempty"`
 	Environment   *ReferenceObject             `json:"environment,omitempty"`
 	GitRepository *ApplicationGitRepository    `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
@@ -47,7 +46,8 @@ type Application struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool `json:"auto_preview,omitempty"`
+	AutoPreview *bool                    `json:"auto_preview,omitempty"`
+	Ports       *ServicePortResponseList `json:"ports,omitempty"`
 }
 
 // NewApplication instantiates a new Application object
@@ -195,38 +195,6 @@ func (o *Application) HasStorage() bool {
 // SetStorage gets a reference to the given []ServiceStorageStorageInner and assigns it to the Storage field.
 func (o *Application) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
-}
-
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *Application) GetResults() []ServicePort {
-	if o == nil || o.Results == nil {
-		var ret []ServicePort
-		return ret
-	}
-	return o.Results
-}
-
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Application) GetResultsOk() ([]ServicePort, bool) {
-	if o == nil || o.Results == nil {
-		return nil, false
-	}
-	return o.Results, true
-}
-
-// HasResults returns a boolean if a field has been set.
-func (o *Application) HasResults() bool {
-	if o != nil && o.Results != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []ServicePort and assigns it to the Results field.
-func (o *Application) SetResults(v []ServicePort) {
-	o.Results = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -742,6 +710,38 @@ func (o *Application) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *Application) GetPorts() ServicePortResponseList {
+	if o == nil || o.Ports == nil {
+		var ret ServicePortResponseList
+		return ret
+	}
+	return *o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetPortsOk() (*ServicePortResponseList, bool) {
+	if o == nil || o.Ports == nil {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *Application) HasPorts() bool {
+	if o != nil && o.Ports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given ServicePortResponseList and assigns it to the Ports field.
+func (o *Application) SetPorts(v ServicePortResponseList) {
+	o.Ports = &v
+}
+
 func (o Application) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -755,9 +755,6 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	}
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
 	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
@@ -803,6 +800,9 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
+	}
+	if o.Ports != nil {
+		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }

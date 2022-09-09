@@ -18,7 +18,6 @@ import (
 // ApplicationEditRequest struct for ApplicationEditRequest
 type ApplicationEditRequest struct {
 	Storage []ServiceStorageRequestStorageInner `json:"storage,omitempty"`
-	Results []ServicePort                       `json:"results,omitempty"`
 	// name is case insensitive
 	Name *string `json:"name,omitempty"`
 	// give a description to this application
@@ -40,7 +39,8 @@ type ApplicationEditRequest struct {
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession *bool `json:"sticky_session,omitempty"`
+	StickySession *bool                    `json:"sticky_session,omitempty"`
+	Ports         *ServicePortResponseList `json:"ports,omitempty"`
 }
 
 // NewApplicationEditRequest instantiates a new ApplicationEditRequest object
@@ -118,38 +118,6 @@ func (o *ApplicationEditRequest) HasStorage() bool {
 // SetStorage gets a reference to the given []ServiceStorageRequestStorageInner and assigns it to the Storage field.
 func (o *ApplicationEditRequest) SetStorage(v []ServiceStorageRequestStorageInner) {
 	o.Storage = v
-}
-
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetResults() []ServicePort {
-	if o == nil || o.Results == nil {
-		var ret []ServicePort
-		return ret
-	}
-	return o.Results
-}
-
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetResultsOk() ([]ServicePort, bool) {
-	if o == nil || o.Results == nil {
-		return nil, false
-	}
-	return o.Results, true
-}
-
-// HasResults returns a boolean if a field has been set.
-func (o *ApplicationEditRequest) HasResults() bool {
-	if o != nil && o.Results != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []ServicePort and assigns it to the Results field.
-func (o *ApplicationEditRequest) SetResults(v []ServicePort) {
-	o.Results = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -579,13 +547,42 @@ func (o *ApplicationEditRequest) SetStickySession(v bool) {
 	o.StickySession = &v
 }
 
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetPorts() ServicePortResponseList {
+	if o == nil || o.Ports == nil {
+		var ret ServicePortResponseList
+		return ret
+	}
+	return *o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationEditRequest) GetPortsOk() (*ServicePortResponseList, bool) {
+	if o == nil || o.Ports == nil {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasPorts() bool {
+	if o != nil && o.Ports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given ServicePortResponseList and assigns it to the Ports field.
+func (o *ApplicationEditRequest) SetPorts(v ServicePortResponseList) {
+	o.Ports = &v
+}
+
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
@@ -625,6 +622,9 @@ func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.StickySession != nil {
 		toSerialize["sticky_session"] = o.StickySession
+	}
+	if o.Ports != nil {
+		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }

@@ -11075,7 +11075,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
-      - $ref: '#/components/schemas/ServicePortResponseList'
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
       example:
@@ -11296,7 +11295,6 @@ components:
     ApplicationEditRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
-      - $ref: '#/components/schemas/ServicePortResponseList'
       - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
     ApplicationGitRepository:
       properties:
@@ -12590,7 +12588,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
-      - $ref: '#/components/schemas/ServicePortResponseList'
       - $ref: '#/components/schemas/ContainerResponse_allOf'
     ContainerResponseList:
       example:
@@ -15837,6 +15834,8 @@ components:
             \ not for this application.\nIf activated, a preview environment will\
             \ be automatically cloned at each pull request.\n"
           type: boolean
+        ports:
+          $ref: '#/components/schemas/ServicePortResponseList'
       type: object
     ApplicationEditRequest_allOf:
       properties:
@@ -15893,6 +15892,8 @@ components:
             \ will be redirected by the load balancer to the same instance each time\
             \ he access to the application.\n"
           type: boolean
+        ports:
+          $ref: '#/components/schemas/ServicePortResponseList'
       type: object
     ServicePortRequest_ports_inner:
       properties:
@@ -16452,6 +16453,8 @@ components:
             \ not for this container.\nIf activated, a preview environment will be\
             \ automatically cloned at each pull request.\n"
           type: boolean
+        ports:
+          $ref: '#/components/schemas/ServicePortResponseList'
       required:
       - auto_preview
       - cpu
