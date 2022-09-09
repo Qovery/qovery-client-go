@@ -130,7 +130,6 @@ Class | Method | HTTP request | Description
 *ApplicationSecretApi* | [**CreateApplicationSecret**](docs/ApplicationSecretApi.md#createapplicationsecret) | **Post** /application/{applicationId}/secret | Add a secret to the application
 *ApplicationSecretApi* | [**CreateApplicationSecretAlias**](docs/ApplicationSecretApi.md#createapplicationsecretalias) | **Post** /application/{applicationId}/secret/{secretId}/alias | Create a secret alias at the application level
 *ApplicationSecretApi* | [**CreateApplicationSecretOverride**](docs/ApplicationSecretApi.md#createapplicationsecretoverride) | **Post** /application/{applicationId}/secret/{secretId}/override | Create a secret override at the application level
-*ApplicationSecretApi* | [**CreateContainerSecretOverride**](docs/ApplicationSecretApi.md#createcontainersecretoverride) | **Post** /container/{containerId}/secret/{secretId}/override | Create a secret override at the container level
 *ApplicationSecretApi* | [**DeleteApplicationSecret**](docs/ApplicationSecretApi.md#deleteapplicationsecret) | **Delete** /application/{applicationId}/secret/{secretId} | Delete a secret from an application
 *ApplicationSecretApi* | [**EditApplicationSecret**](docs/ApplicationSecretApi.md#editapplicationsecret) | **Put** /application/{applicationId}/secret/{secretId} | Edit a secret belonging to the application
 *ApplicationSecretApi* | [**ListApplicationSecrets**](docs/ApplicationSecretApi.md#listapplicationsecrets) | **Get** /application/{applicationId}/secret | List application secrets
@@ -244,6 +243,7 @@ Class | Method | HTTP request | Description
 *ContainerRegistriesApi* | [**ListContainerRegistry**](docs/ContainerRegistriesApi.md#listcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
 *ContainerSecretApi* | [**CreateContainerSecret**](docs/ContainerSecretApi.md#createcontainersecret) | **Post** /container/{containerId}/secret | Add a secret to the container
 *ContainerSecretApi* | [**CreateContainerSecretAlias**](docs/ContainerSecretApi.md#createcontainersecretalias) | **Post** /container/{containerId}/secret/{secretId}/alias | Create a secret alias at the container level
+*ContainerSecretApi* | [**CreateContainerSecretOverride**](docs/ContainerSecretApi.md#createcontainersecretoverride) | **Post** /container/{containerId}/secret/{secretId}/override | Create a secret override at the container level
 *ContainerSecretApi* | [**DeleteContainerSecret**](docs/ContainerSecretApi.md#deletecontainersecret) | **Delete** /container/{containerId}/secret/{secretId} | Delete a secret from an container
 *ContainerSecretApi* | [**EditContainerSecret**](docs/ContainerSecretApi.md#editcontainersecret) | **Put** /container/{containerId}/secret/{secretId} | Edit a secret belonging to the container
 *ContainerSecretApi* | [**ListContainerSecrets**](docs/ContainerSecretApi.md#listcontainersecrets) | **Get** /container/{containerId}/secret | List container secrets

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateContainerSecret**](ContainerSecretApi.md#CreateContainerSecret) | **Post** /container/{containerId}/secret | Add a secret to the container
 [**CreateContainerSecretAlias**](ContainerSecretApi.md#CreateContainerSecretAlias) | **Post** /container/{containerId}/secret/{secretId}/alias | Create a secret alias at the container level
+[**CreateContainerSecretOverride**](ContainerSecretApi.md#CreateContainerSecretOverride) | **Post** /container/{containerId}/secret/{secretId}/override | Create a secret override at the container level
 [**DeleteContainerSecret**](ContainerSecretApi.md#DeleteContainerSecret) | **Delete** /container/{containerId}/secret/{secretId} | Delete a secret from an container
 [**EditContainerSecret**](ContainerSecretApi.md#EditContainerSecret) | **Put** /container/{containerId}/secret/{secretId} | Edit a secret belonging to the container
 [**ListContainerSecrets**](ContainerSecretApi.md#ListContainerSecrets) | **Get** /container/{containerId}/secret | List container secrets
@@ -140,6 +141,81 @@ Name | Type | Description  | Notes
 
 
  **key** | [**Key**](Key.md) |  | 
+
+### Return type
+
+[**Secret**](Secret.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateContainerSecretOverride
+
+> Secret CreateContainerSecretOverride(ctx, containerId, secretId).Value(value).Execute()
+
+Create a secret override at the container level
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    value := *openapiclient.NewValue("Value_example") // Value |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerSecretApi.CreateContainerSecretOverride(context.Background(), containerId, secretId).Value(value).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretApi.CreateContainerSecretOverride``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContainerSecretOverride`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `ContainerSecretApi.CreateContainerSecretOverride`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**containerId** | **string** | Container ID | 
+**secretId** | **string** | Secret ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateContainerSecretOverrideRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **value** | [**Value**](Value.md) |  | 
 
 ### Return type
 

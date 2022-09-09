@@ -8824,7 +8824,7 @@ paths:
           description: Resource not found
       summary: Create a secret override at the container level
       tags:
-      - Application Secret
+      - Container Secret
   /container/{containerId}/secret/{secretId}/alias:
     post:
       description: "- Allows you to add an alias at container level on an existing\
