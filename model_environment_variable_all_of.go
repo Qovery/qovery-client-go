@@ -17,9 +17,9 @@ import (
 
 // EnvironmentVariableAllOf struct for EnvironmentVariableAllOf
 type EnvironmentVariableAllOf struct {
-	OverriddenVariable *EnvironmentVariableAllOfOverriddenVariable `json:"overridden_variable,omitempty"`
-	AliasedVariable    *EnvironmentVariableAllOfAliasedVariable    `json:"aliased_variable,omitempty"`
-	Scope              APIVariableScopeEnum                        `json:"scope"`
+	OverriddenVariable *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
+	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
+	Scope              APIVariableScopeEnum         `json:"scope"`
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
@@ -46,9 +46,9 @@ func NewEnvironmentVariableAllOfWithDefaults() *EnvironmentVariableAllOf {
 }
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
-func (o *EnvironmentVariableAllOf) GetOverriddenVariable() EnvironmentVariableAllOfOverriddenVariable {
+func (o *EnvironmentVariableAllOf) GetOverriddenVariable() EnvironmentVariableOverride {
 	if o == nil || o.OverriddenVariable == nil {
-		var ret EnvironmentVariableAllOfOverriddenVariable
+		var ret EnvironmentVariableOverride
 		return ret
 	}
 	return *o.OverriddenVariable
@@ -56,7 +56,7 @@ func (o *EnvironmentVariableAllOf) GetOverriddenVariable() EnvironmentVariableAl
 
 // GetOverriddenVariableOk returns a tuple with the OverriddenVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableAllOf) GetOverriddenVariableOk() (*EnvironmentVariableAllOfOverriddenVariable, bool) {
+func (o *EnvironmentVariableAllOf) GetOverriddenVariableOk() (*EnvironmentVariableOverride, bool) {
 	if o == nil || o.OverriddenVariable == nil {
 		return nil, false
 	}
@@ -72,15 +72,15 @@ func (o *EnvironmentVariableAllOf) HasOverriddenVariable() bool {
 	return false
 }
 
-// SetOverriddenVariable gets a reference to the given EnvironmentVariableAllOfOverriddenVariable and assigns it to the OverriddenVariable field.
-func (o *EnvironmentVariableAllOf) SetOverriddenVariable(v EnvironmentVariableAllOfOverriddenVariable) {
+// SetOverriddenVariable gets a reference to the given EnvironmentVariableOverride and assigns it to the OverriddenVariable field.
+func (o *EnvironmentVariableAllOf) SetOverriddenVariable(v EnvironmentVariableOverride) {
 	o.OverriddenVariable = &v
 }
 
 // GetAliasedVariable returns the AliasedVariable field value if set, zero value otherwise.
-func (o *EnvironmentVariableAllOf) GetAliasedVariable() EnvironmentVariableAllOfAliasedVariable {
+func (o *EnvironmentVariableAllOf) GetAliasedVariable() EnvironmentVariableAlias {
 	if o == nil || o.AliasedVariable == nil {
-		var ret EnvironmentVariableAllOfAliasedVariable
+		var ret EnvironmentVariableAlias
 		return ret
 	}
 	return *o.AliasedVariable
@@ -88,7 +88,7 @@ func (o *EnvironmentVariableAllOf) GetAliasedVariable() EnvironmentVariableAllOf
 
 // GetAliasedVariableOk returns a tuple with the AliasedVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariableAllOf) GetAliasedVariableOk() (*EnvironmentVariableAllOfAliasedVariable, bool) {
+func (o *EnvironmentVariableAllOf) GetAliasedVariableOk() (*EnvironmentVariableAlias, bool) {
 	if o == nil || o.AliasedVariable == nil {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *EnvironmentVariableAllOf) HasAliasedVariable() bool {
 	return false
 }
 
-// SetAliasedVariable gets a reference to the given EnvironmentVariableAllOfAliasedVariable and assigns it to the AliasedVariable field.
-func (o *EnvironmentVariableAllOf) SetAliasedVariable(v EnvironmentVariableAllOfAliasedVariable) {
+// SetAliasedVariable gets a reference to the given EnvironmentVariableAlias and assigns it to the AliasedVariable field.
+func (o *EnvironmentVariableAllOf) SetAliasedVariable(v EnvironmentVariableAlias) {
 	o.AliasedVariable = &v
 }
 

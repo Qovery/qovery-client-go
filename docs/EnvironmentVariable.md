@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Key** | **string** | key is case sensitive | 
 **Value** | **string** | value of the env variable. | 
-**OverriddenVariable** | Pointer to [**EnvironmentVariableAllOfOverriddenVariable**](EnvironmentVariableAllOfOverriddenVariable.md) |  | [optional] 
-**AliasedVariable** | Pointer to [**EnvironmentVariableAllOfAliasedVariable**](EnvironmentVariableAllOfAliasedVariable.md) |  | [optional] 
+**OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
+**AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
@@ -142,20 +142,20 @@ SetValue sets Value field to given value.
 
 ### GetOverriddenVariable
 
-`func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableAllOfOverriddenVariable`
+`func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverride`
 
 GetOverriddenVariable returns the OverriddenVariable field if non-nil, zero value otherwise.
 
 ### GetOverriddenVariableOk
 
-`func (o *EnvironmentVariable) GetOverriddenVariableOk() (*EnvironmentVariableAllOfOverriddenVariable, bool)`
+`func (o *EnvironmentVariable) GetOverriddenVariableOk() (*EnvironmentVariableOverride, bool)`
 
 GetOverriddenVariableOk returns a tuple with the OverriddenVariable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOverriddenVariable
 
-`func (o *EnvironmentVariable) SetOverriddenVariable(v EnvironmentVariableAllOfOverriddenVariable)`
+`func (o *EnvironmentVariable) SetOverriddenVariable(v EnvironmentVariableOverride)`
 
 SetOverriddenVariable sets OverriddenVariable field to given value.
 
@@ -167,20 +167,20 @@ HasOverriddenVariable returns a boolean if a field has been set.
 
 ### GetAliasedVariable
 
-`func (o *EnvironmentVariable) GetAliasedVariable() EnvironmentVariableAllOfAliasedVariable`
+`func (o *EnvironmentVariable) GetAliasedVariable() EnvironmentVariableAlias`
 
 GetAliasedVariable returns the AliasedVariable field if non-nil, zero value otherwise.
 
 ### GetAliasedVariableOk
 
-`func (o *EnvironmentVariable) GetAliasedVariableOk() (*EnvironmentVariableAllOfAliasedVariable, bool)`
+`func (o *EnvironmentVariable) GetAliasedVariableOk() (*EnvironmentVariableAlias, bool)`
 
 GetAliasedVariableOk returns a tuple with the AliasedVariable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAliasedVariable
 
-`func (o *EnvironmentVariable) SetAliasedVariable(v EnvironmentVariableAllOfAliasedVariable)`
+`func (o *EnvironmentVariable) SetAliasedVariable(v EnvironmentVariableAlias)`
 
 SetAliasedVariable sets AliasedVariable field to given value.
 

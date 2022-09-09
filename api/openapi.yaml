@@ -11075,7 +11075,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
-      - $ref: '#/components/schemas/ServicePort'
+      - $ref: '#/components/schemas/ServicePortResponseList'
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
       example:
@@ -11296,7 +11296,7 @@ components:
     ApplicationEditRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
-      - $ref: '#/components/schemas/ServicePort'
+      - $ref: '#/components/schemas/ServicePortResponseList'
       - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
     ApplicationGitRepository:
       properties:
@@ -11384,9 +11384,39 @@ components:
       type: object
     ServicePort:
       properties:
-        ports:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        internal_port:
+          description: The listening port of your service.
+          example: 8080
+          type: integer
+        external_port:
+          description: The exposed port for your service. This is optional. If not
+            set a default port will be used.
+          example: 8080
+          type: integer
+        publicly_accessible:
+          description: Expose the port to the world
+          type: boolean
+        is_default:
+          description: is the default port to use for domain & probes check
+          type: boolean
+        protocol:
+          $ref: '#/components/schemas/PortProtocolEnum'
+      required:
+      - id
+      - internal_port
+      - protocol
+      - publicly_accessible
+      type: object
+    ServicePortResponseList:
+      properties:
+        results:
           items:
-            $ref: '#/components/schemas/ServicePort_ports_inner'
+            $ref: '#/components/schemas/ServicePort'
           type: array
       type: object
     ServicePortRequest:
@@ -11760,17 +11790,6 @@ components:
             $ref: '#/components/schemas/CloudProvider'
           type: array
       type: object
-    CluserCredentials:
-      properties:
-        name:
-          type: string
-        access_key_id:
-          type: string
-        secret_access_key:
-          type: string
-      required:
-      - name
-      type: object
     Cluster:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -11880,9 +11899,10 @@ components:
           type: string
         name:
           type: string
+      required:
+      - id
+      - name
       type: object
-    ClusterCredentialsRequest:
-      $ref: '#/components/schemas/CluserCredentials'
     ClusterCredentialsResponseList:
       example:
         results:
@@ -12570,7 +12590,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
-      - $ref: '#/components/schemas/ServicePort'
+      - $ref: '#/components/schemas/ServicePortResponseList'
       - $ref: '#/components/schemas/ContainerResponse_allOf'
     ContainerResponseList:
       example:
@@ -12583,9 +12603,6 @@ components:
             $ref: '#/components/schemas/ContainerResponse'
           type: array
       type: object
-    ContainerStorage:
-      allOf:
-      - $ref: '#/components/schemas/ServiceStorage'
     Cost:
       properties:
         total_in_cents:
@@ -13752,6 +13769,41 @@ components:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/EnvironmentVariableRequest'
       - $ref: '#/components/schemas/EnvironmentVariable_allOf'
+    EnvironmentVariableAlias:
+      properties:
+        id:
+          format: uuid
+          type: string
+        key:
+          example: QOVERY_DATABASE_PSQL_NAME
+          type: string
+        value:
+          type: string
+        scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+      required:
+      - id
+      - key
+      - scope
+      - value
+      type: object
+    EnvironmentVariableOverride:
+      properties:
+        id:
+          format: uuid
+          type: string
+        key:
+          type: string
+        value:
+          type: string
+        scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+      required:
+      - id
+      - key
+      - scope
+      - value
+      type: object
     EnvironmentVariableEditRequest:
       example:
         value: value
@@ -15842,36 +15894,6 @@ components:
             \ he access to the application.\n"
           type: boolean
       type: object
-    ServicePort_ports_inner:
-      properties:
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
-        internal_port:
-          description: The listening port of your service.
-          example: 8080
-          type: integer
-        external_port:
-          description: The exposed port for your service. This is optional. If not
-            set a default port will be used.
-          example: 8080
-          type: integer
-        publicly_accessible:
-          description: Expose the port to the world
-          type: boolean
-        is_default:
-          description: is the default port to use for domain & probes check
-          type: boolean
-        protocol:
-          $ref: '#/components/schemas/PortProtocolEnum'
-      required:
-      - id
-      - internal_port
-      - protocol
-      - publicly_accessible
-      type: object
     ServicePortRequest_ports_inner:
       properties:
         name:
@@ -16806,37 +16828,12 @@ components:
             $ref: '#/components/schemas/EnvironmentLog'
           type: array
       type: object
-    EnvironmentVariable_allOf_overridden_variable:
-      properties:
-        id:
-          format: uuid
-          type: string
-        key:
-          type: string
-        value:
-          type: string
-        scope:
-          $ref: '#/components/schemas/APIVariableScopeEnum'
-      type: object
-    EnvironmentVariable_allOf_aliased_variable:
-      properties:
-        id:
-          format: uuid
-          type: string
-        key:
-          example: QOVERY_DATABASE_PSQL_NAME
-          type: string
-        value:
-          type: string
-        scope:
-          $ref: '#/components/schemas/APIVariableScopeEnum'
-      type: object
     EnvironmentVariable_allOf:
       properties:
         overridden_variable:
-          $ref: '#/components/schemas/EnvironmentVariable_allOf_overridden_variable'
+          $ref: '#/components/schemas/EnvironmentVariableOverride'
         aliased_variable:
-          $ref: '#/components/schemas/EnvironmentVariable_allOf_aliased_variable'
+          $ref: '#/components/schemas/EnvironmentVariableAlias'
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         service_id:

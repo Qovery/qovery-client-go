@@ -24,10 +24,10 @@ type EnvironmentVariable struct {
 	// key is case sensitive
 	Key string `json:"key"`
 	// value of the env variable.
-	Value              string                                      `json:"value"`
-	OverriddenVariable *EnvironmentVariableAllOfOverriddenVariable `json:"overridden_variable,omitempty"`
-	AliasedVariable    *EnvironmentVariableAllOfAliasedVariable    `json:"aliased_variable,omitempty"`
-	Scope              APIVariableScopeEnum                        `json:"scope"`
+	Value              string                       `json:"value"`
+	OverriddenVariable *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
+	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
+	Scope              APIVariableScopeEnum         `json:"scope"`
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
@@ -186,9 +186,9 @@ func (o *EnvironmentVariable) SetValue(v string) {
 }
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
-func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableAllOfOverriddenVariable {
+func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverride {
 	if o == nil || o.OverriddenVariable == nil {
-		var ret EnvironmentVariableAllOfOverriddenVariable
+		var ret EnvironmentVariableOverride
 		return ret
 	}
 	return *o.OverriddenVariable
@@ -196,7 +196,7 @@ func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableAllOfOv
 
 // GetOverriddenVariableOk returns a tuple with the OverriddenVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariable) GetOverriddenVariableOk() (*EnvironmentVariableAllOfOverriddenVariable, bool) {
+func (o *EnvironmentVariable) GetOverriddenVariableOk() (*EnvironmentVariableOverride, bool) {
 	if o == nil || o.OverriddenVariable == nil {
 		return nil, false
 	}
@@ -212,15 +212,15 @@ func (o *EnvironmentVariable) HasOverriddenVariable() bool {
 	return false
 }
 
-// SetOverriddenVariable gets a reference to the given EnvironmentVariableAllOfOverriddenVariable and assigns it to the OverriddenVariable field.
-func (o *EnvironmentVariable) SetOverriddenVariable(v EnvironmentVariableAllOfOverriddenVariable) {
+// SetOverriddenVariable gets a reference to the given EnvironmentVariableOverride and assigns it to the OverriddenVariable field.
+func (o *EnvironmentVariable) SetOverriddenVariable(v EnvironmentVariableOverride) {
 	o.OverriddenVariable = &v
 }
 
 // GetAliasedVariable returns the AliasedVariable field value if set, zero value otherwise.
-func (o *EnvironmentVariable) GetAliasedVariable() EnvironmentVariableAllOfAliasedVariable {
+func (o *EnvironmentVariable) GetAliasedVariable() EnvironmentVariableAlias {
 	if o == nil || o.AliasedVariable == nil {
-		var ret EnvironmentVariableAllOfAliasedVariable
+		var ret EnvironmentVariableAlias
 		return ret
 	}
 	return *o.AliasedVariable
@@ -228,7 +228,7 @@ func (o *EnvironmentVariable) GetAliasedVariable() EnvironmentVariableAllOfAlias
 
 // GetAliasedVariableOk returns a tuple with the AliasedVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentVariable) GetAliasedVariableOk() (*EnvironmentVariableAllOfAliasedVariable, bool) {
+func (o *EnvironmentVariable) GetAliasedVariableOk() (*EnvironmentVariableAlias, bool) {
 	if o == nil || o.AliasedVariable == nil {
 		return nil, false
 	}
@@ -244,8 +244,8 @@ func (o *EnvironmentVariable) HasAliasedVariable() bool {
 	return false
 }
 
-// SetAliasedVariable gets a reference to the given EnvironmentVariableAllOfAliasedVariable and assigns it to the AliasedVariable field.
-func (o *EnvironmentVariable) SetAliasedVariable(v EnvironmentVariableAllOfAliasedVariable) {
+// SetAliasedVariable gets a reference to the given EnvironmentVariableAlias and assigns it to the AliasedVariable field.
+func (o *EnvironmentVariable) SetAliasedVariable(v EnvironmentVariableAlias) {
 	o.AliasedVariable = &v
 }
 

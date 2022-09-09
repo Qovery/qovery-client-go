@@ -17,15 +17,29 @@ import (
 
 // ServicePort struct for ServicePort
 type ServicePort struct {
-	Ports []ServicePortPortsInner `json:"ports,omitempty"`
+	Id   string  `json:"id"`
+	Name *string `json:"name,omitempty"`
+	// The listening port of your service.
+	InternalPort int32 `json:"internal_port"`
+	// The exposed port for your service. This is optional. If not set a default port will be used.
+	ExternalPort *int32 `json:"external_port,omitempty"`
+	// Expose the port to the world
+	PubliclyAccessible bool `json:"publicly_accessible"`
+	// is the default port to use for domain & probes check
+	IsDefault *bool            `json:"is_default,omitempty"`
+	Protocol  PortProtocolEnum `json:"protocol"`
 }
 
 // NewServicePort instantiates a new ServicePort object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServicePort() *ServicePort {
+func NewServicePort(id string, internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum) *ServicePort {
 	this := ServicePort{}
+	this.Id = id
+	this.InternalPort = internalPort
+	this.PubliclyAccessible = publiclyAccessible
+	this.Protocol = protocol
 	return &this
 }
 
@@ -34,45 +48,225 @@ func NewServicePort() *ServicePort {
 // but it doesn't guarantee that properties required by API are set
 func NewServicePortWithDefaults() *ServicePort {
 	this := ServicePort{}
+	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
+	this.Protocol = protocol
 	return &this
 }
 
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ServicePort) GetPorts() []ServicePortPortsInner {
-	if o == nil || o.Ports == nil {
-		var ret []ServicePortPortsInner
+// GetId returns the Id field value
+func (o *ServicePort) GetId() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return o.Ports
+
+	return o.Id
 }
 
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ServicePort) GetPortsOk() ([]ServicePortPortsInner, bool) {
-	if o == nil || o.Ports == nil {
+func (o *ServicePort) GetIdOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ports, true
+	return &o.Id, true
 }
 
-// HasPorts returns a boolean if a field has been set.
-func (o *ServicePort) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+// SetId sets field value
+func (o *ServicePort) SetId(v string) {
+	o.Id = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *ServicePort) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePort) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *ServicePort) HasName() bool {
+	if o != nil && o.Name != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPorts gets a reference to the given []ServicePortPortsInner and assigns it to the Ports field.
-func (o *ServicePort) SetPorts(v []ServicePortPortsInner) {
-	o.Ports = v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *ServicePort) SetName(v string) {
+	o.Name = &v
+}
+
+// GetInternalPort returns the InternalPort field value
+func (o *ServicePort) GetInternalPort() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.InternalPort
+}
+
+// GetInternalPortOk returns a tuple with the InternalPort field value
+// and a boolean to check if the value has been set.
+func (o *ServicePort) GetInternalPortOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InternalPort, true
+}
+
+// SetInternalPort sets field value
+func (o *ServicePort) SetInternalPort(v int32) {
+	o.InternalPort = v
+}
+
+// GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
+func (o *ServicePort) GetExternalPort() int32 {
+	if o == nil || o.ExternalPort == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ExternalPort
+}
+
+// GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePort) GetExternalPortOk() (*int32, bool) {
+	if o == nil || o.ExternalPort == nil {
+		return nil, false
+	}
+	return o.ExternalPort, true
+}
+
+// HasExternalPort returns a boolean if a field has been set.
+func (o *ServicePort) HasExternalPort() bool {
+	if o != nil && o.ExternalPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalPort gets a reference to the given int32 and assigns it to the ExternalPort field.
+func (o *ServicePort) SetExternalPort(v int32) {
+	o.ExternalPort = &v
+}
+
+// GetPubliclyAccessible returns the PubliclyAccessible field value
+func (o *ServicePort) GetPubliclyAccessible() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.PubliclyAccessible
+}
+
+// GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value
+// and a boolean to check if the value has been set.
+func (o *ServicePort) GetPubliclyAccessibleOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PubliclyAccessible, true
+}
+
+// SetPubliclyAccessible sets field value
+func (o *ServicePort) SetPubliclyAccessible(v bool) {
+	o.PubliclyAccessible = v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *ServicePort) GetIsDefault() bool {
+	if o == nil || o.IsDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePort) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || o.IsDefault == nil {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *ServicePort) HasIsDefault() bool {
+	if o != nil && o.IsDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *ServicePort) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
+// GetProtocol returns the Protocol field value
+func (o *ServicePort) GetProtocol() PortProtocolEnum {
+	if o == nil {
+		var ret PortProtocolEnum
+		return ret
+	}
+
+	return o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value
+// and a boolean to check if the value has been set.
+func (o *ServicePort) GetProtocolOk() (*PortProtocolEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Protocol, true
+}
+
+// SetProtocol sets field value
+func (o *ServicePort) SetProtocol(v PortProtocolEnum) {
+	o.Protocol = v
 }
 
 func (o ServicePort) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
+	if true {
+		toSerialize["id"] = o.Id
+	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["internal_port"] = o.InternalPort
+	}
+	if o.ExternalPort != nil {
+		toSerialize["external_port"] = o.ExternalPort
+	}
+	if true {
+		toSerialize["publicly_accessible"] = o.PubliclyAccessible
+	}
+	if o.IsDefault != nil {
+		toSerialize["is_default"] = o.IsDefault
+	}
+	if true {
+		toSerialize["protocol"] = o.Protocol
 	}
 	return json.Marshal(toSerialize)
 }

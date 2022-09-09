@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
+**Results** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Registry** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
@@ -133,30 +133,30 @@ SetStorage sets Storage field to given value.
 
 HasStorage returns a boolean if a field has been set.
 
-### GetPorts
+### GetResults
 
-`func (o *ContainerResponse) GetPorts() []ServicePortPortsInner`
+`func (o *ContainerResponse) GetResults() []ServicePort`
 
-GetPorts returns the Ports field if non-nil, zero value otherwise.
+GetResults returns the Results field if non-nil, zero value otherwise.
 
-### GetPortsOk
+### GetResultsOk
 
-`func (o *ContainerResponse) GetPortsOk() (*[]ServicePortPortsInner, bool)`
+`func (o *ContainerResponse) GetResultsOk() (*[]ServicePort, bool)`
 
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPorts
+### SetResults
 
-`func (o *ContainerResponse) SetPorts(v []ServicePortPortsInner)`
+`func (o *ContainerResponse) SetResults(v []ServicePort)`
 
-SetPorts sets Ports field to given value.
+SetResults sets Results field to given value.
 
-### HasPorts
+### HasResults
 
-`func (o *ContainerResponse) HasPorts() bool`
+`func (o *ContainerResponse) HasResults() bool`
 
-HasPorts returns a boolean if a field has been set.
+HasResults returns a boolean if a field has been set.
 
 ### GetEnvironment
 

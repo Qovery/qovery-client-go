@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
+**Results** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
@@ -134,30 +134,30 @@ SetStorage sets Storage field to given value.
 
 HasStorage returns a boolean if a field has been set.
 
-### GetPorts
+### GetResults
 
-`func (o *Application) GetPorts() []ServicePortPortsInner`
+`func (o *Application) GetResults() []ServicePort`
 
-GetPorts returns the Ports field if non-nil, zero value otherwise.
+GetResults returns the Results field if non-nil, zero value otherwise.
 
-### GetPortsOk
+### GetResultsOk
 
-`func (o *Application) GetPortsOk() (*[]ServicePortPortsInner, bool)`
+`func (o *Application) GetResultsOk() (*[]ServicePort, bool)`
 
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPorts
+### SetResults
 
-`func (o *Application) SetPorts(v []ServicePortPortsInner)`
+`func (o *Application) SetResults(v []ServicePort)`
 
-SetPorts sets Ports field to given value.
+SetResults sets Results field to given value.
 
-### HasPorts
+### HasResults
 
-`func (o *Application) HasPorts() bool`
+`func (o *Application) HasResults() bool`
 
-HasPorts returns a boolean if a field has been set.
+HasResults returns a boolean if a field has been set.
 
 ### GetEnvironment
 

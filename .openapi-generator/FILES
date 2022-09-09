@@ -128,7 +128,6 @@ docs/CloudProviderApi.md
 docs/CloudProviderCredentialsApi.md
 docs/CloudProviderEnum.md
 docs/CloudProviderResponseList.md
-docs/CluserCredentials.md
 docs/Cluster.md
 docs/ClusterAdvancedSettings.md
 docs/ClusterAllOf.md
@@ -198,7 +197,6 @@ docs/ContainerResponse.md
 docs/ContainerResponseAllOf.md
 docs/ContainerResponseList.md
 docs/ContainerSecretApi.md
-docs/ContainerStorage.md
 docs/ContainersApi.md
 docs/Cost.md
 docs/CostRange.md
@@ -305,11 +303,11 @@ docs/EnvironmentStatsResponseList.md
 docs/EnvironmentStatusList.md
 docs/EnvironmentTotalNumber.md
 docs/EnvironmentVariable.md
+docs/EnvironmentVariableAlias.md
 docs/EnvironmentVariableAllOf.md
-docs/EnvironmentVariableAllOfAliasedVariable.md
-docs/EnvironmentVariableAllOfOverriddenVariable.md
 docs/EnvironmentVariableApi.md
 docs/EnvironmentVariableEditRequest.md
+docs/EnvironmentVariableOverride.md
 docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsApi.md
@@ -456,9 +454,9 @@ docs/Service.md
 docs/ServiceAllOf.md
 docs/ServiceDeploymentStatusEnum.md
 docs/ServicePort.md
-docs/ServicePortPortsInner.md
 docs/ServicePortRequest.md
 docs/ServicePortRequestPortsInner.md
+docs/ServicePortResponseList.md
 docs/ServiceResponseList.md
 docs/ServiceStorage.md
 docs/ServiceStorageRequest.md
@@ -538,7 +536,6 @@ model_clone_request.go
 model_cloud_provider.go
 model_cloud_provider_enum.go
 model_cloud_provider_response_list.go
-model_cluser_credentials.go
 model_cluster.go
 model_cluster_advanced_settings.go
 model_cluster_all_of.go
@@ -595,7 +592,6 @@ model_container_request_all_of.go
 model_container_response.go
 model_container_response_all_of.go
 model_container_response_list.go
-model_container_storage.go
 model_cost.go
 model_cost_range.go
 model_create_environment_mode_enum.go
@@ -686,10 +682,10 @@ model_environment_stats_response_list.go
 model_environment_status_list.go
 model_environment_total_number.go
 model_environment_variable.go
+model_environment_variable_alias.go
 model_environment_variable_all_of.go
-model_environment_variable_all_of_aliased_variable.go
-model_environment_variable_all_of_overridden_variable.go
 model_environment_variable_edit_request.go
+model_environment_variable_override.go
 model_environment_variable_request.go
 model_environment_variable_response_list.go
 model_event.go
@@ -821,9 +817,9 @@ model_service.go
 model_service_all_of.go
 model_service_deployment_status_enum.go
 model_service_port.go
-model_service_port_ports_inner.go
 model_service_port_request.go
 model_service_port_request_ports_inner.go
+model_service_port_response_list.go
 model_service_response_list.go
 model_service_storage.go
 model_service_storage_request.go

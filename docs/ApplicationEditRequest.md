@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Storage** | Pointer to [**[]ServiceStorageRequestStorageInner**](ServiceStorageRequestStorageInner.md) |  | [optional] 
-**Ports** | Pointer to [**[]ServicePortPortsInner**](ServicePortPortsInner.md) |  | [optional] 
+**Results** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
@@ -64,30 +64,30 @@ SetStorage sets Storage field to given value.
 
 HasStorage returns a boolean if a field has been set.
 
-### GetPorts
+### GetResults
 
-`func (o *ApplicationEditRequest) GetPorts() []ServicePortPortsInner`
+`func (o *ApplicationEditRequest) GetResults() []ServicePort`
 
-GetPorts returns the Ports field if non-nil, zero value otherwise.
+GetResults returns the Results field if non-nil, zero value otherwise.
 
-### GetPortsOk
+### GetResultsOk
 
-`func (o *ApplicationEditRequest) GetPortsOk() (*[]ServicePortPortsInner, bool)`
+`func (o *ApplicationEditRequest) GetResultsOk() (*[]ServicePort, bool)`
 
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPorts
+### SetResults
 
-`func (o *ApplicationEditRequest) SetPorts(v []ServicePortPortsInner)`
+`func (o *ApplicationEditRequest) SetResults(v []ServicePort)`
 
-SetPorts sets Ports field to given value.
+SetResults sets Results field to given value.
 
-### HasPorts
+### HasResults
 
-`func (o *ApplicationEditRequest) HasPorts() bool`
+`func (o *ApplicationEditRequest) HasResults() bool`
 
-HasPorts returns a boolean if a field has been set.
+HasResults returns a boolean if a field has been set.
 
 ### GetName
 

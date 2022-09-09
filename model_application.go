@@ -22,7 +22,7 @@ type Application struct {
 	CreatedAt     time.Time                    `json:"created_at"`
 	UpdatedAt     *time.Time                   `json:"updated_at,omitempty"`
 	Storage       []ServiceStorageStorageInner `json:"storage,omitempty"`
-	Ports         []ServicePortPortsInner      `json:"ports,omitempty"`
+	Results       []ServicePort                `json:"results,omitempty"`
 	Environment   *ReferenceObject             `json:"environment,omitempty"`
 	GitRepository *ApplicationGitRepository    `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
@@ -197,36 +197,36 @@ func (o *Application) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
 }
 
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *Application) GetPorts() []ServicePortPortsInner {
-	if o == nil || o.Ports == nil {
-		var ret []ServicePortPortsInner
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *Application) GetResults() []ServicePort {
+	if o == nil || o.Results == nil {
+		var ret []ServicePort
 		return ret
 	}
-	return o.Ports
+	return o.Results
 }
 
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Application) GetPortsOk() ([]ServicePortPortsInner, bool) {
-	if o == nil || o.Ports == nil {
+func (o *Application) GetResultsOk() ([]ServicePort, bool) {
+	if o == nil || o.Results == nil {
 		return nil, false
 	}
-	return o.Ports, true
+	return o.Results, true
 }
 
-// HasPorts returns a boolean if a field has been set.
-func (o *Application) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+// HasResults returns a boolean if a field has been set.
+func (o *Application) HasResults() bool {
+	if o != nil && o.Results != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPorts gets a reference to the given []ServicePortPortsInner and assigns it to the Ports field.
-func (o *Application) SetPorts(v []ServicePortPortsInner) {
-	o.Ports = v
+// SetResults gets a reference to the given []ServicePort and assigns it to the Results field.
+func (o *Application) SetResults(v []ServicePort) {
+	o.Results = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -756,8 +756,8 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
 	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
+	if o.Results != nil {
+		toSerialize["results"] = o.Results
 	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
