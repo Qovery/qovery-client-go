@@ -17,7 +17,7 @@ import (
 
 // ListContainerDeploymentHistory200ResponseAllOf struct for ListContainerDeploymentHistory200ResponseAllOf
 type ListContainerDeploymentHistory200ResponseAllOf struct {
-	Results []ListContainerDeploymentHistory200ResponseAllOfResultsInner `json:"results,omitempty"`
+	Results []DeploymentHistoryContainer `json:"results,omitempty"`
 }
 
 // NewListContainerDeploymentHistory200ResponseAllOf instantiates a new ListContainerDeploymentHistory200ResponseAllOf object
@@ -38,9 +38,9 @@ func NewListContainerDeploymentHistory200ResponseAllOfWithDefaults() *ListContai
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResults() []ListContainerDeploymentHistory200ResponseAllOfResultsInner {
+func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResults() []DeploymentHistoryContainer {
 	if o == nil || o.Results == nil {
-		var ret []ListContainerDeploymentHistory200ResponseAllOfResultsInner
+		var ret []DeploymentHistoryContainer
 		return ret
 	}
 	return o.Results
@@ -48,7 +48,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResults() []ListCont
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResultsOk() ([]ListContainerDeploymentHistory200ResponseAllOfResultsInner, bool) {
+func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResultsOk() ([]DeploymentHistoryContainer, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ListContainerDeploymentHistory200ResponseAllOf) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ListContainerDeploymentHistory200ResponseAllOfResultsInner and assigns it to the Results field.
-func (o *ListContainerDeploymentHistory200ResponseAllOf) SetResults(v []ListContainerDeploymentHistory200ResponseAllOfResultsInner) {
+// SetResults gets a reference to the given []DeploymentHistoryContainer and assigns it to the Results field.
+func (o *ListContainerDeploymentHistory200ResponseAllOf) SetResults(v []DeploymentHistoryContainer) {
 	o.Results = v
 }
 

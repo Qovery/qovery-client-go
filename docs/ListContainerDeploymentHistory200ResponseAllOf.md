@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]ListContainerDeploymentHistory200ResponseAllOfResultsInner**](ListContainerDeploymentHistory200ResponseAllOfResultsInner.md) |  | [optional] 
+**Results** | Pointer to [**[]DeploymentHistoryContainer**](DeploymentHistoryContainer.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResults() []ListContainerDeploymentHistory200ResponseAllOfResultsInner`
+`func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResults() []DeploymentHistoryContainer`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResultsOk() (*[]ListContainerDeploymentHistory200ResponseAllOfResultsInner, bool)`
+`func (o *ListContainerDeploymentHistory200ResponseAllOf) GetResultsOk() (*[]DeploymentHistoryContainer, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOf) SetResults(v []ListContainerDeploymentHistory200ResponseAllOfResultsInner)`
+`func (o *ListContainerDeploymentHistory200ResponseAllOf) SetResults(v []DeploymentHistoryContainer)`
 
 SetResults sets Results field to given value.
 

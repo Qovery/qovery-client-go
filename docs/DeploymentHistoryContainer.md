@@ -1,4 +1,4 @@
-# ListContainerDeploymentHistory200ResponseAllOfResultsInner
+# DeploymentHistoryContainer
 
 ## Properties
 
@@ -16,235 +16,235 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewListContainerDeploymentHistory200ResponseAllOfResultsInner
+### NewDeploymentHistoryContainer
 
-`func NewListContainerDeploymentHistory200ResponseAllOfResultsInner(id string, createdAt time.Time, ) *ListContainerDeploymentHistory200ResponseAllOfResultsInner`
+`func NewDeploymentHistoryContainer(id string, createdAt time.Time, ) *DeploymentHistoryContainer`
 
-NewListContainerDeploymentHistory200ResponseAllOfResultsInner instantiates a new ListContainerDeploymentHistory200ResponseAllOfResultsInner object
+NewDeploymentHistoryContainer instantiates a new DeploymentHistoryContainer object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewListContainerDeploymentHistory200ResponseAllOfResultsInnerWithDefaults
+### NewDeploymentHistoryContainerWithDefaults
 
-`func NewListContainerDeploymentHistory200ResponseAllOfResultsInnerWithDefaults() *ListContainerDeploymentHistory200ResponseAllOfResultsInner`
+`func NewDeploymentHistoryContainerWithDefaults() *DeploymentHistoryContainer`
 
-NewListContainerDeploymentHistory200ResponseAllOfResultsInnerWithDefaults instantiates a new ListContainerDeploymentHistory200ResponseAllOfResultsInner object
+NewDeploymentHistoryContainerWithDefaults instantiates a new DeploymentHistoryContainer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetId() string`
+`func (o *DeploymentHistoryContainer) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetIdOk() (*string, bool)`
+`func (o *DeploymentHistoryContainer) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetId(v string)`
+`func (o *DeploymentHistoryContainer) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
 ### GetCreatedAt
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAt() time.Time`
+`func (o *DeploymentHistoryContainer) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *DeploymentHistoryContainer) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetCreatedAt(v time.Time)`
+`func (o *DeploymentHistoryContainer) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAt() time.Time`
+`func (o *DeploymentHistoryContainer) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *DeploymentHistoryContainer) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetUpdatedAt(v time.Time)`
+`func (o *DeploymentHistoryContainer) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 ### HasUpdatedAt
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasUpdatedAt() bool`
+`func (o *DeploymentHistoryContainer) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetName() string`
+`func (o *DeploymentHistoryContainer) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetNameOk() (*string, bool)`
+`func (o *DeploymentHistoryContainer) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetName(v string)`
+`func (o *DeploymentHistoryContainer) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasName() bool`
+`func (o *DeploymentHistoryContainer) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetStatus() DeploymentHistoryStatusEnum`
+`func (o *DeploymentHistoryContainer) GetStatus() DeploymentHistoryStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetStatusOk() (*DeploymentHistoryStatusEnum, bool)`
+`func (o *DeploymentHistoryContainer) GetStatusOk() (*DeploymentHistoryStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetStatus(v DeploymentHistoryStatusEnum)`
+`func (o *DeploymentHistoryContainer) SetStatus(v DeploymentHistoryStatusEnum)`
 
 SetStatus sets Status field to given value.
 
 ### HasStatus
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasStatus() bool`
+`func (o *DeploymentHistoryContainer) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
 
 ### GetImageName
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetImageName() string`
+`func (o *DeploymentHistoryContainer) GetImageName() string`
 
 GetImageName returns the ImageName field if non-nil, zero value otherwise.
 
 ### GetImageNameOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetImageNameOk() (*string, bool)`
+`func (o *DeploymentHistoryContainer) GetImageNameOk() (*string, bool)`
 
 GetImageNameOk returns a tuple with the ImageName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImageName
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetImageName(v string)`
+`func (o *DeploymentHistoryContainer) SetImageName(v string)`
 
 SetImageName sets ImageName field to given value.
 
 ### HasImageName
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasImageName() bool`
+`func (o *DeploymentHistoryContainer) HasImageName() bool`
 
 HasImageName returns a boolean if a field has been set.
 
 ### GetTag
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetTag() string`
+`func (o *DeploymentHistoryContainer) GetTag() string`
 
 GetTag returns the Tag field if non-nil, zero value otherwise.
 
 ### GetTagOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetTagOk() (*string, bool)`
+`func (o *DeploymentHistoryContainer) GetTagOk() (*string, bool)`
 
 GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTag
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetTag(v string)`
+`func (o *DeploymentHistoryContainer) SetTag(v string)`
 
 SetTag sets Tag field to given value.
 
 ### HasTag
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasTag() bool`
+`func (o *DeploymentHistoryContainer) HasTag() bool`
 
 HasTag returns a boolean if a field has been set.
 
 ### GetArguments
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetArguments() []string`
+`func (o *DeploymentHistoryContainer) GetArguments() []string`
 
 GetArguments returns the Arguments field if non-nil, zero value otherwise.
 
 ### GetArgumentsOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetArgumentsOk() (*[]string, bool)`
+`func (o *DeploymentHistoryContainer) GetArgumentsOk() (*[]string, bool)`
 
 GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArguments
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetArguments(v []string)`
+`func (o *DeploymentHistoryContainer) SetArguments(v []string)`
 
 SetArguments sets Arguments field to given value.
 
 ### HasArguments
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasArguments() bool`
+`func (o *DeploymentHistoryContainer) HasArguments() bool`
 
 HasArguments returns a boolean if a field has been set.
 
 ### GetEntrypoint
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetEntrypoint() string`
+`func (o *DeploymentHistoryContainer) GetEntrypoint() string`
 
 GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
 
 ### GetEntrypointOk
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetEntrypointOk() (*string, bool)`
+`func (o *DeploymentHistoryContainer) GetEntrypointOk() (*string, bool)`
 
 GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntrypoint
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetEntrypoint(v string)`
+`func (o *DeploymentHistoryContainer) SetEntrypoint(v string)`
 
 SetEntrypoint sets Entrypoint field to given value.
 
 ### HasEntrypoint
 
-`func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasEntrypoint() bool`
+`func (o *DeploymentHistoryContainer) HasEntrypoint() bool`
 
 HasEntrypoint returns a boolean if a field has been set.
 

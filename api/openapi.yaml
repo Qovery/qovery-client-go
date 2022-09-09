@@ -13034,6 +13034,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/DeploymentHistoryDatabase_allOf'
+    DeploymentHistoryContainer:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentHistoryContainer_allOf'
     DeploymentHistoryEnvironment:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -15728,33 +15732,11 @@ components:
           description: the tag to be used in the preview environment
           type: string
       type: object
-    listContainerDeploymentHistory_200_response_allOf_results_inner_allOf:
-      properties:
-        name:
-          description: name of the container
-          type: string
-        status:
-          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
-        image_name:
-          type: string
-        tag:
-          type: string
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          type: string
-      type: object
-    listContainerDeploymentHistory_200_response_allOf_results_inner:
-      allOf:
-      - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/listContainerDeploymentHistory_200_response_allOf_results_inner_allOf'
     listContainerDeploymentHistory_200_response_allOf:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/listContainerDeploymentHistory_200_response_allOf_results_inner'
+            $ref: '#/components/schemas/DeploymentHistoryContainer'
           type: array
       type: object
     listContainerDeploymentHistory_200_response:
@@ -16625,6 +16607,24 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+      type: object
+    DeploymentHistoryContainer_allOf:
+      properties:
+        name:
+          description: name of the container
+          type: string
+        status:
+          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+        image_name:
+          type: string
+        tag:
+          type: string
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          type: string
       type: object
     DeploymentHistoryEnvironment_allOf:
       properties:

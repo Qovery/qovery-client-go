@@ -16,8 +16,8 @@ import (
 	"time"
 )
 
-// ListContainerDeploymentHistory200ResponseAllOfResultsInner struct for ListContainerDeploymentHistory200ResponseAllOfResultsInner
-type ListContainerDeploymentHistory200ResponseAllOfResultsInner struct {
+// DeploymentHistoryContainer struct for DeploymentHistoryContainer
+type DeploymentHistoryContainer struct {
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
@@ -30,27 +30,27 @@ type ListContainerDeploymentHistory200ResponseAllOfResultsInner struct {
 	Entrypoint *string                      `json:"entrypoint,omitempty"`
 }
 
-// NewListContainerDeploymentHistory200ResponseAllOfResultsInner instantiates a new ListContainerDeploymentHistory200ResponseAllOfResultsInner object
+// NewDeploymentHistoryContainer instantiates a new DeploymentHistoryContainer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListContainerDeploymentHistory200ResponseAllOfResultsInner(id string, createdAt time.Time) *ListContainerDeploymentHistory200ResponseAllOfResultsInner {
-	this := ListContainerDeploymentHistory200ResponseAllOfResultsInner{}
+func NewDeploymentHistoryContainer(id string, createdAt time.Time) *DeploymentHistoryContainer {
+	this := DeploymentHistoryContainer{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	return &this
 }
 
-// NewListContainerDeploymentHistory200ResponseAllOfResultsInnerWithDefaults instantiates a new ListContainerDeploymentHistory200ResponseAllOfResultsInner object
+// NewDeploymentHistoryContainerWithDefaults instantiates a new DeploymentHistoryContainer object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListContainerDeploymentHistory200ResponseAllOfResultsInnerWithDefaults() *ListContainerDeploymentHistory200ResponseAllOfResultsInner {
-	this := ListContainerDeploymentHistory200ResponseAllOfResultsInner{}
+func NewDeploymentHistoryContainerWithDefaults() *DeploymentHistoryContainer {
+	this := DeploymentHistoryContainer{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetId() string {
+func (o *DeploymentHistoryContainer) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetId() str
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetIdOk() (*string, bool) {
+func (o *DeploymentHistoryContainer) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetIdOk() (
 }
 
 // SetId sets field value
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetId(v string) {
+func (o *DeploymentHistoryContainer) SetId(v string) {
 	o.Id = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAt() time.Time {
+func (o *DeploymentHistoryContainer) GetCreatedAt() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -85,7 +85,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetCreatedA
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAtOk() (*time.Time, bool) {
+func (o *DeploymentHistoryContainer) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,12 +93,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetCreatedA
 }
 
 // SetCreatedAt sets field value
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetCreatedAt(v time.Time) {
+func (o *DeploymentHistoryContainer) SetCreatedAt(v time.Time) {
 	o.CreatedAt = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAt() time.Time {
+func (o *DeploymentHistoryContainer) GetUpdatedAt() time.Time {
 	if o == nil || o.UpdatedAt == nil {
 		var ret time.Time
 		return ret
@@ -108,7 +108,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedA
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *DeploymentHistoryContainer) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedA
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasUpdatedAt() bool {
+func (o *DeploymentHistoryContainer) HasUpdatedAt() bool {
 	if o != nil && o.UpdatedAt != nil {
 		return true
 	}
@@ -125,12 +125,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasUpdatedA
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetUpdatedAt(v time.Time) {
+func (o *DeploymentHistoryContainer) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetName() string {
+func (o *DeploymentHistoryContainer) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -140,7 +140,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetName() s
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetNameOk() (*string, bool) {
+func (o *DeploymentHistoryContainer) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -148,7 +148,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetNameOk()
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasName() bool {
+func (o *DeploymentHistoryContainer) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -157,12 +157,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasName() b
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetName(v string) {
+func (o *DeploymentHistoryContainer) SetName(v string) {
 	o.Name = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetStatus() DeploymentHistoryStatusEnum {
+func (o *DeploymentHistoryContainer) GetStatus() DeploymentHistoryStatusEnum {
 	if o == nil || o.Status == nil {
 		var ret DeploymentHistoryStatusEnum
 		return ret
@@ -172,7 +172,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetStatus()
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
+func (o *DeploymentHistoryContainer) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -180,7 +180,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetStatusOk
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasStatus() bool {
+func (o *DeploymentHistoryContainer) HasStatus() bool {
 	if o != nil && o.Status != nil {
 		return true
 	}
@@ -189,12 +189,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasStatus()
 }
 
 // SetStatus gets a reference to the given DeploymentHistoryStatusEnum and assigns it to the Status field.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetStatus(v DeploymentHistoryStatusEnum) {
+func (o *DeploymentHistoryContainer) SetStatus(v DeploymentHistoryStatusEnum) {
 	o.Status = &v
 }
 
 // GetImageName returns the ImageName field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetImageName() string {
+func (o *DeploymentHistoryContainer) GetImageName() string {
 	if o == nil || o.ImageName == nil {
 		var ret string
 		return ret
@@ -204,7 +204,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetImageNam
 
 // GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetImageNameOk() (*string, bool) {
+func (o *DeploymentHistoryContainer) GetImageNameOk() (*string, bool) {
 	if o == nil || o.ImageName == nil {
 		return nil, false
 	}
@@ -212,7 +212,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetImageNam
 }
 
 // HasImageName returns a boolean if a field has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasImageName() bool {
+func (o *DeploymentHistoryContainer) HasImageName() bool {
 	if o != nil && o.ImageName != nil {
 		return true
 	}
@@ -221,12 +221,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasImageNam
 }
 
 // SetImageName gets a reference to the given string and assigns it to the ImageName field.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetImageName(v string) {
+func (o *DeploymentHistoryContainer) SetImageName(v string) {
 	o.ImageName = &v
 }
 
 // GetTag returns the Tag field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetTag() string {
+func (o *DeploymentHistoryContainer) GetTag() string {
 	if o == nil || o.Tag == nil {
 		var ret string
 		return ret
@@ -236,7 +236,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetTag() st
 
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetTagOk() (*string, bool) {
+func (o *DeploymentHistoryContainer) GetTagOk() (*string, bool) {
 	if o == nil || o.Tag == nil {
 		return nil, false
 	}
@@ -244,7 +244,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetTagOk() 
 }
 
 // HasTag returns a boolean if a field has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasTag() bool {
+func (o *DeploymentHistoryContainer) HasTag() bool {
 	if o != nil && o.Tag != nil {
 		return true
 	}
@@ -253,12 +253,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasTag() bo
 }
 
 // SetTag gets a reference to the given string and assigns it to the Tag field.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetTag(v string) {
+func (o *DeploymentHistoryContainer) SetTag(v string) {
 	o.Tag = &v
 }
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetArguments() []string {
+func (o *DeploymentHistoryContainer) GetArguments() []string {
 	if o == nil || o.Arguments == nil {
 		var ret []string
 		return ret
@@ -268,7 +268,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetArgument
 
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetArgumentsOk() ([]string, bool) {
+func (o *DeploymentHistoryContainer) GetArgumentsOk() ([]string, bool) {
 	if o == nil || o.Arguments == nil {
 		return nil, false
 	}
@@ -276,7 +276,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetArgument
 }
 
 // HasArguments returns a boolean if a field has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasArguments() bool {
+func (o *DeploymentHistoryContainer) HasArguments() bool {
 	if o != nil && o.Arguments != nil {
 		return true
 	}
@@ -285,12 +285,12 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasArgument
 }
 
 // SetArguments gets a reference to the given []string and assigns it to the Arguments field.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetArguments(v []string) {
+func (o *DeploymentHistoryContainer) SetArguments(v []string) {
 	o.Arguments = v
 }
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetEntrypoint() string {
+func (o *DeploymentHistoryContainer) GetEntrypoint() string {
 	if o == nil || o.Entrypoint == nil {
 		var ret string
 		return ret
@@ -300,7 +300,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetEntrypoi
 
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetEntrypointOk() (*string, bool) {
+func (o *DeploymentHistoryContainer) GetEntrypointOk() (*string, bool) {
 	if o == nil || o.Entrypoint == nil {
 		return nil, false
 	}
@@ -308,7 +308,7 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) GetEntrypoi
 }
 
 // HasEntrypoint returns a boolean if a field has been set.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasEntrypoint() bool {
+func (o *DeploymentHistoryContainer) HasEntrypoint() bool {
 	if o != nil && o.Entrypoint != nil {
 		return true
 	}
@@ -317,11 +317,11 @@ func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) HasEntrypoi
 }
 
 // SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
-func (o *ListContainerDeploymentHistory200ResponseAllOfResultsInner) SetEntrypoint(v string) {
+func (o *DeploymentHistoryContainer) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
-func (o ListContainerDeploymentHistory200ResponseAllOfResultsInner) MarshalJSON() ([]byte, error) {
+func (o DeploymentHistoryContainer) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
@@ -353,38 +353,38 @@ func (o ListContainerDeploymentHistory200ResponseAllOfResultsInner) MarshalJSON(
 	return json.Marshal(toSerialize)
 }
 
-type NullableListContainerDeploymentHistory200ResponseAllOfResultsInner struct {
-	value *ListContainerDeploymentHistory200ResponseAllOfResultsInner
+type NullableDeploymentHistoryContainer struct {
+	value *DeploymentHistoryContainer
 	isSet bool
 }
 
-func (v NullableListContainerDeploymentHistory200ResponseAllOfResultsInner) Get() *ListContainerDeploymentHistory200ResponseAllOfResultsInner {
+func (v NullableDeploymentHistoryContainer) Get() *DeploymentHistoryContainer {
 	return v.value
 }
 
-func (v *NullableListContainerDeploymentHistory200ResponseAllOfResultsInner) Set(val *ListContainerDeploymentHistory200ResponseAllOfResultsInner) {
+func (v *NullableDeploymentHistoryContainer) Set(val *DeploymentHistoryContainer) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListContainerDeploymentHistory200ResponseAllOfResultsInner) IsSet() bool {
+func (v NullableDeploymentHistoryContainer) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListContainerDeploymentHistory200ResponseAllOfResultsInner) Unset() {
+func (v *NullableDeploymentHistoryContainer) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListContainerDeploymentHistory200ResponseAllOfResultsInner(val *ListContainerDeploymentHistory200ResponseAllOfResultsInner) *NullableListContainerDeploymentHistory200ResponseAllOfResultsInner {
-	return &NullableListContainerDeploymentHistory200ResponseAllOfResultsInner{value: val, isSet: true}
+func NewNullableDeploymentHistoryContainer(val *DeploymentHistoryContainer) *NullableDeploymentHistoryContainer {
+	return &NullableDeploymentHistoryContainer{value: val, isSet: true}
 }
 
-func (v NullableListContainerDeploymentHistory200ResponseAllOfResultsInner) MarshalJSON() ([]byte, error) {
+func (v NullableDeploymentHistoryContainer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListContainerDeploymentHistory200ResponseAllOfResultsInner) UnmarshalJSON(src []byte) error {
+func (v *NullableDeploymentHistoryContainer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
