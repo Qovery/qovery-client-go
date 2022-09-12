@@ -11295,6 +11295,7 @@ components:
     ApplicationEditRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
+      - $ref: '#/components/schemas/ServicePortRequest'
       - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
     ApplicationGitRepository:
       properties:
@@ -15874,8 +15875,6 @@ components:
             \ will be redirected by the load balancer to the same instance each time\
             \ he access to the application.\n"
           type: boolean
-        ports:
-          $ref: '#/components/schemas/ServicePortResponseList'
       type: object
     ServicePortRequest_ports_inner:
       properties:

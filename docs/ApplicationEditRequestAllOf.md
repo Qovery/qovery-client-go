@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
 **StickySession** | Pointer to **bool** | Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  | [optional] [default to false]
-**Ports** | Pointer to [**ServicePortResponseList**](ServicePortResponseList.md) |  | [optional] 
 
 ## Methods
 
@@ -372,31 +371,6 @@ SetStickySession sets StickySession field to given value.
 `func (o *ApplicationEditRequestAllOf) HasStickySession() bool`
 
 HasStickySession returns a boolean if a field has been set.
-
-### GetPorts
-
-`func (o *ApplicationEditRequestAllOf) GetPorts() ServicePortResponseList`
-
-GetPorts returns the Ports field if non-nil, zero value otherwise.
-
-### GetPortsOk
-
-`func (o *ApplicationEditRequestAllOf) GetPortsOk() (*ServicePortResponseList, bool)`
-
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPorts
-
-`func (o *ApplicationEditRequestAllOf) SetPorts(v ServicePortResponseList)`
-
-SetPorts sets Ports field to given value.
-
-### HasPorts
-
-`func (o *ApplicationEditRequestAllOf) HasPorts() bool`
-
-HasPorts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
