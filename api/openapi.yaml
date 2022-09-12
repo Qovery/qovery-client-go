@@ -16634,6 +16634,10 @@ components:
           items:
             $ref: '#/components/schemas/DeploymentHistoryApplication'
           type: array
+        containers:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryContainer'
+          type: array
         databases:
           items:
             $ref: '#/components/schemas/DeploymentHistoryDatabase'

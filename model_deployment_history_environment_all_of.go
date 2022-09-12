@@ -19,6 +19,7 @@ import (
 type DeploymentHistoryEnvironmentAllOf struct {
 	Status       *StateEnum                     `json:"status,omitempty"`
 	Applications []DeploymentHistoryApplication `json:"applications,omitempty"`
+	Containers   []DeploymentHistoryContainer   `json:"containers,omitempty"`
 	Databases    []DeploymentHistoryDatabase    `json:"databases,omitempty"`
 }
 
@@ -103,6 +104,38 @@ func (o *DeploymentHistoryEnvironmentAllOf) SetApplications(v []DeploymentHistor
 	o.Applications = v
 }
 
+// GetContainers returns the Containers field value if set, zero value otherwise.
+func (o *DeploymentHistoryEnvironmentAllOf) GetContainers() []DeploymentHistoryContainer {
+	if o == nil || o.Containers == nil {
+		var ret []DeploymentHistoryContainer
+		return ret
+	}
+	return o.Containers
+}
+
+// GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironmentAllOf) GetContainersOk() ([]DeploymentHistoryContainer, bool) {
+	if o == nil || o.Containers == nil {
+		return nil, false
+	}
+	return o.Containers, true
+}
+
+// HasContainers returns a boolean if a field has been set.
+func (o *DeploymentHistoryEnvironmentAllOf) HasContainers() bool {
+	if o != nil && o.Containers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetContainers gets a reference to the given []DeploymentHistoryContainer and assigns it to the Containers field.
+func (o *DeploymentHistoryEnvironmentAllOf) SetContainers(v []DeploymentHistoryContainer) {
+	o.Containers = v
+}
+
 // GetDatabases returns the Databases field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironmentAllOf) GetDatabases() []DeploymentHistoryDatabase {
 	if o == nil || o.Databases == nil {
@@ -142,6 +175,9 @@ func (o DeploymentHistoryEnvironmentAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Applications != nil {
 		toSerialize["applications"] = o.Applications
+	}
+	if o.Containers != nil {
+		toSerialize["containers"] = o.Containers
 	}
 	if o.Databases != nil {
 		toSerialize["databases"] = o.Databases

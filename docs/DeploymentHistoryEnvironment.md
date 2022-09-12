@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **Applications** | Pointer to [**[]DeploymentHistoryApplication**](DeploymentHistoryApplication.md) |  | [optional] 
+**Containers** | Pointer to [**[]DeploymentHistoryContainer**](DeploymentHistoryContainer.md) |  | [optional] 
 **Databases** | Pointer to [**[]DeploymentHistoryDatabase**](DeploymentHistoryDatabase.md) |  | [optional] 
 
 ## Methods
@@ -144,6 +145,31 @@ SetApplications sets Applications field to given value.
 `func (o *DeploymentHistoryEnvironment) HasApplications() bool`
 
 HasApplications returns a boolean if a field has been set.
+
+### GetContainers
+
+`func (o *DeploymentHistoryEnvironment) GetContainers() []DeploymentHistoryContainer`
+
+GetContainers returns the Containers field if non-nil, zero value otherwise.
+
+### GetContainersOk
+
+`func (o *DeploymentHistoryEnvironment) GetContainersOk() (*[]DeploymentHistoryContainer, bool)`
+
+GetContainersOk returns a tuple with the Containers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContainers
+
+`func (o *DeploymentHistoryEnvironment) SetContainers(v []DeploymentHistoryContainer)`
+
+SetContainers sets Containers field to given value.
+
+### HasContainers
+
+`func (o *DeploymentHistoryEnvironment) HasContainers() bool`
+
+HasContainers returns a boolean if a field has been set.
 
 ### GetDatabases
 
