@@ -624,6 +624,7 @@ Class | Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LinkResponseList](docs/LinkResponseList.md)
  - [LinkedServiceTypeEnum](docs/LinkedServiceTypeEnum.md)
+ - [ListAvailableContainerRegistry200Response](docs/ListAvailableContainerRegistry200Response.md)
  - [ListClusterLogs200Response](docs/ListClusterLogs200Response.md)
  - [ListContainerDeploymentHistory200Response](docs/ListContainerDeploymentHistory200Response.md)
  - [ListContainerDeploymentHistory200ResponseAllOf](docs/ListContainerDeploymentHistory200ResponseAllOf.md)

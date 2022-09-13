@@ -3138,7 +3138,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AvailableContainerRegistryResponse'
+                $ref: '#/components/schemas/listAvailableContainerRegistry_200_response'
           description: supported container registries
         "401":
           description: Access token is missing or invalid
@@ -15708,6 +15708,21 @@ components:
         results:
           items:
             $ref: '#/components/schemas/ContainerRegistryResponse'
+          type: array
+      type: object
+    listAvailableContainerRegistry_200_response:
+      example:
+        results:
+        - required_config:
+            key: ""
+          kind: null
+        - required_config:
+            key: ""
+          kind: null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/AvailableContainerRegistryResponse'
           type: array
       type: object
     autoDeployContainerEnvironments_request:

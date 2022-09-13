@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## ListAvailableContainerRegistry
 
-> AvailableContainerRegistryResponse ListAvailableContainerRegistry(ctx).Execute()
+> ListAvailableContainerRegistry200Response ListAvailableContainerRegistry(ctx).Execute()
 
 List supported container registries
 
@@ -325,7 +325,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesApi.ListAvailableContainerRegistry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAvailableContainerRegistry`: AvailableContainerRegistryResponse
+    // response from `ListAvailableContainerRegistry`: ListAvailableContainerRegistry200Response
     fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesApi.ListAvailableContainerRegistry`: %v\n", resp)
 }
 ```
@@ -341,7 +341,7 @@ Other parameters are passed through a pointer to a apiListAvailableContainerRegi
 
 ### Return type
 
-[**AvailableContainerRegistryResponse**](AvailableContainerRegistryResponse.md)
+[**ListAvailableContainerRegistry200Response**](ListAvailableContainerRegistry200Response.md)
 
 ### Authorization
 

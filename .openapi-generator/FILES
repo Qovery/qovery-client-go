@@ -347,6 +347,7 @@ docs/KubernetesEnum.md
 docs/Link.md
 docs/LinkResponseList.md
 docs/LinkedServiceTypeEnum.md
+docs/ListAvailableContainerRegistry200Response.md
 docs/ListClusterLogs200Response.md
 docs/ListContainerDeploymentHistory200Response.md
 docs/ListContainerDeploymentHistory200ResponseAllOf.md
@@ -721,6 +722,7 @@ model_kubernetes_enum.go
 model_link.go
 model_link_response_list.go
 model_linked_service_type_enum.go
+model_list_available_container_registry_200_response.go
 model_list_cluster_logs_200_response.go
 model_list_container_deployment_history_200_response.go
 model_list_container_deployment_history_200_response_all_of.go
