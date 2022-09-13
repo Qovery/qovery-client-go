@@ -11295,7 +11295,6 @@ components:
     ApplicationEditRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
-      - $ref: '#/components/schemas/ServicePortRequest'
       - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
     ApplicationGitRepository:
       properties:
@@ -11412,12 +11411,9 @@ components:
       - publicly_accessible
       type: object
     ServicePortResponseList:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/ServicePort'
-          type: array
-      type: object
+      items:
+        $ref: '#/components/schemas/ServicePort'
+      type: array
     ServicePortRequest:
       properties:
         ports:
@@ -11428,7 +11424,6 @@ components:
     ApplicationRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
-      - $ref: '#/components/schemas/ServicePortRequest'
       - $ref: '#/components/schemas/ApplicationRequest_allOf'
     ApplicationResponseList:
       example:
@@ -15818,7 +15813,9 @@ components:
             \ be automatically cloned at each pull request.\n"
           type: boolean
         ports:
-          $ref: '#/components/schemas/ServicePortResponseList'
+          items:
+            $ref: '#/components/schemas/ServicePort'
+          type: array
       type: object
     ApplicationEditRequest_allOf:
       properties:
@@ -15875,6 +15872,10 @@ components:
             \ will be redirected by the load balancer to the same instance each time\
             \ he access to the application.\n"
           type: boolean
+        ports:
+          items:
+            $ref: '#/components/schemas/ServicePort'
+          type: array
       type: object
     ServicePortRequest_ports_inner:
       properties:
@@ -15952,6 +15953,10 @@ components:
             \ not for this application.\nIf activated, a preview environment will\
             \ be automatically cloned at each pull request.\n"
           type: boolean
+        ports:
+          items:
+            $ref: '#/components/schemas/ServicePort'
+          type: array
       required:
       - git_repository
       - name
@@ -16434,7 +16439,9 @@ components:
             \ automatically cloned at each pull request.\n"
           type: boolean
         ports:
-          $ref: '#/components/schemas/ServicePortResponseList'
+          items:
+            $ref: '#/components/schemas/ServicePort'
+          type: array
       required:
       - auto_preview
       - cpu

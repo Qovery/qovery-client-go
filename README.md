@@ -721,7 +721,6 @@ Class | Method | HTTP request | Description
  - [ServicePort](docs/ServicePort.md)
  - [ServicePortRequest](docs/ServicePortRequest.md)
  - [ServicePortRequestPortsInner](docs/ServicePortRequestPortsInner.md)
- - [ServicePortResponseList](docs/ServicePortResponseList.md)
  - [ServiceResponseList](docs/ServiceResponseList.md)
  - [ServiceStorage](docs/ServiceStorage.md)
  - [ServiceStorageRequest](docs/ServiceStorageRequest.md)

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
 **AutoPreview** | **bool** | Specify if the environment preview option is activated or not for this container. If activated, a preview environment will be automatically cloned at each pull request.  | 
-**Ports** | Pointer to [**ServicePortResponseList**](ServicePortResponseList.md) |  | [optional] 
+**Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 
 ## Methods
 
@@ -331,20 +331,20 @@ SetAutoPreview sets AutoPreview field to given value.
 
 ### GetPorts
 
-`func (o *ContainerResponseAllOf) GetPorts() ServicePortResponseList`
+`func (o *ContainerResponseAllOf) GetPorts() []ServicePort`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ContainerResponseAllOf) GetPortsOk() (*ServicePortResponseList, bool)`
+`func (o *ContainerResponseAllOf) GetPortsOk() (*[]ServicePort, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ContainerResponseAllOf) SetPorts(v ServicePortResponseList)`
+`func (o *ContainerResponseAllOf) SetPorts(v []ServicePort)`
 
 SetPorts sets Ports field to given value.
 

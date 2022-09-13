@@ -456,7 +456,6 @@ docs/ServiceDeploymentStatusEnum.md
 docs/ServicePort.md
 docs/ServicePortRequest.md
 docs/ServicePortRequestPortsInner.md
-docs/ServicePortResponseList.md
 docs/ServiceResponseList.md
 docs/ServiceStorage.md
 docs/ServiceStorageRequest.md
@@ -819,7 +818,6 @@ model_service_deployment_status_enum.go
 model_service_port.go
 model_service_port_request.go
 model_service_port_request_ports_inner.go
-model_service_port_response_list.go
 model_service_response_list.go
 model_service_storage.go
 model_service_storage_request.go

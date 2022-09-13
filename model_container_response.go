@@ -46,8 +46,8 @@ type ContainerResponse struct {
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
 	MaxRunningInstances int32 `json:"max_running_instances"`
 	// Specify if the environment preview option is activated or not for this container. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview bool                     `json:"auto_preview"`
-	Ports       *ServicePortResponseList `json:"ports,omitempty"`
+	AutoPreview bool          `json:"auto_preview"`
+	Ports       []ServicePort `json:"ports,omitempty"`
 }
 
 // NewContainerResponse instantiates a new ContainerResponse object
@@ -550,17 +550,17 @@ func (o *ContainerResponse) SetAutoPreview(v bool) {
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ContainerResponse) GetPorts() ServicePortResponseList {
+func (o *ContainerResponse) GetPorts() []ServicePort {
 	if o == nil || o.Ports == nil {
-		var ret ServicePortResponseList
+		var ret []ServicePort
 		return ret
 	}
-	return *o.Ports
+	return o.Ports
 }
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetPortsOk() (*ServicePortResponseList, bool) {
+func (o *ContainerResponse) GetPortsOk() ([]ServicePort, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -576,9 +576,9 @@ func (o *ContainerResponse) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given ServicePortResponseList and assigns it to the Ports field.
-func (o *ContainerResponse) SetPorts(v ServicePortResponseList) {
-	o.Ports = &v
+// SetPorts gets a reference to the given []ServicePort and assigns it to the Ports field.
+func (o *ContainerResponse) SetPorts(v []ServicePort) {
+	o.Ports = v
 }
 
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
