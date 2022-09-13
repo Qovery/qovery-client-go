@@ -27,11 +27,11 @@ type ApiAutoDeployContainerEnvironmentsRequest struct {
 	ctx                                    context.Context
 	ApiService                             *ContainersApiService
 	organizationId                         string
-	autoDeployContainerEnvironmentsRequest *AutoDeployContainerEnvironmentsRequest
+	organizationContainerAutoDeployRequest *OrganizationContainerAutoDeployRequest
 }
 
-func (r ApiAutoDeployContainerEnvironmentsRequest) AutoDeployContainerEnvironmentsRequest(autoDeployContainerEnvironmentsRequest AutoDeployContainerEnvironmentsRequest) ApiAutoDeployContainerEnvironmentsRequest {
-	r.autoDeployContainerEnvironmentsRequest = &autoDeployContainerEnvironmentsRequest
+func (r ApiAutoDeployContainerEnvironmentsRequest) OrganizationContainerAutoDeployRequest(organizationContainerAutoDeployRequest OrganizationContainerAutoDeployRequest) ApiAutoDeployContainerEnvironmentsRequest {
+	r.organizationContainerAutoDeployRequest = &organizationContainerAutoDeployRequest
 	return r
 }
 
@@ -99,7 +99,7 @@ func (a *ContainersApiService) AutoDeployContainerEnvironmentsExecute(r ApiAutoD
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.autoDeployContainerEnvironmentsRequest
+	localVarPostBody = r.organizationContainerAutoDeployRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -779,11 +779,11 @@ type ApiPreviewContainerEnvironmentsRequest struct {
 	ctx                                 context.Context
 	ApiService                          *ContainersApiService
 	organizationId                      string
-	previewContainerEnvironmentsRequest *PreviewContainerEnvironmentsRequest
+	organizationContainerPreviewRequest *OrganizationContainerPreviewRequest
 }
 
-func (r ApiPreviewContainerEnvironmentsRequest) PreviewContainerEnvironmentsRequest(previewContainerEnvironmentsRequest PreviewContainerEnvironmentsRequest) ApiPreviewContainerEnvironmentsRequest {
-	r.previewContainerEnvironmentsRequest = &previewContainerEnvironmentsRequest
+func (r ApiPreviewContainerEnvironmentsRequest) OrganizationContainerPreviewRequest(organizationContainerPreviewRequest OrganizationContainerPreviewRequest) ApiPreviewContainerEnvironmentsRequest {
+	r.organizationContainerPreviewRequest = &organizationContainerPreviewRequest
 	return r
 }
 
@@ -851,7 +851,7 @@ func (a *ContainersApiService) PreviewContainerEnvironmentsExecute(r ApiPreviewC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.previewContainerEnvironmentsRequest
+	localVarPostBody = r.organizationContainerPreviewRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

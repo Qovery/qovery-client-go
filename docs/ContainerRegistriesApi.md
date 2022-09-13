@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 ## ListAvailableContainerRegistry
 
-> ListAvailableContainerRegistry200Response ListAvailableContainerRegistry(ctx).Execute()
+> AvailableContainerRegistryResponseList ListAvailableContainerRegistry(ctx).Execute()
 
 List supported container registries
 
@@ -325,7 +325,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesApi.ListAvailableContainerRegistry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAvailableContainerRegistry`: ListAvailableContainerRegistry200Response
+    // response from `ListAvailableContainerRegistry`: AvailableContainerRegistryResponseList
     fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesApi.ListAvailableContainerRegistry`: %v\n", resp)
 }
 ```
@@ -341,7 +341,7 @@ Other parameters are passed through a pointer to a apiListAvailableContainerRegi
 
 ### Return type
 
-[**ListAvailableContainerRegistry200Response**](ListAvailableContainerRegistry200Response.md)
+[**AvailableContainerRegistryResponseList**](AvailableContainerRegistryResponseList.md)
 
 ### Authorization
 
@@ -359,7 +359,7 @@ Other parameters are passed through a pointer to a apiListAvailableContainerRegi
 
 ## ListContainerRegistry
 
-> ListContainerRegistry200Response ListContainerRegistry(ctx, organizationId).Execute()
+> ContainerRegistryResponseList ListContainerRegistry(ctx, organizationId).Execute()
 
 List organization container registries
 
@@ -385,7 +385,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesApi.ListContainerRegistry``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListContainerRegistry`: ListContainerRegistry200Response
+    // response from `ListContainerRegistry`: ContainerRegistryResponseList
     fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesApi.ListContainerRegistry`: %v\n", resp)
 }
 ```
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListContainerRegistry200Response**](ListContainerRegistry200Response.md)
+[**ContainerRegistryResponseList**](ContainerRegistryResponseList.md)
 
 ### Authorization
 

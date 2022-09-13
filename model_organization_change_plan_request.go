@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ChangePlanRequest struct for ChangePlanRequest
-type ChangePlanRequest struct {
+// OrganizationChangePlanRequest struct for OrganizationChangePlanRequest
+type OrganizationChangePlanRequest struct {
 	Plan *string `json:"plan,omitempty"`
 }
 
-// NewChangePlanRequest instantiates a new ChangePlanRequest object
+// NewOrganizationChangePlanRequest instantiates a new OrganizationChangePlanRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChangePlanRequest() *ChangePlanRequest {
-	this := ChangePlanRequest{}
+func NewOrganizationChangePlanRequest() *OrganizationChangePlanRequest {
+	this := OrganizationChangePlanRequest{}
 	return &this
 }
 
-// NewChangePlanRequestWithDefaults instantiates a new ChangePlanRequest object
+// NewOrganizationChangePlanRequestWithDefaults instantiates a new OrganizationChangePlanRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewChangePlanRequestWithDefaults() *ChangePlanRequest {
-	this := ChangePlanRequest{}
+func NewOrganizationChangePlanRequestWithDefaults() *OrganizationChangePlanRequest {
+	this := OrganizationChangePlanRequest{}
 	return &this
 }
 
 // GetPlan returns the Plan field value if set, zero value otherwise.
-func (o *ChangePlanRequest) GetPlan() string {
+func (o *OrganizationChangePlanRequest) GetPlan() string {
 	if o == nil || o.Plan == nil {
 		var ret string
 		return ret
@@ -48,7 +48,7 @@ func (o *ChangePlanRequest) GetPlan() string {
 
 // GetPlanOk returns a tuple with the Plan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChangePlanRequest) GetPlanOk() (*string, bool) {
+func (o *OrganizationChangePlanRequest) GetPlanOk() (*string, bool) {
 	if o == nil || o.Plan == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ChangePlanRequest) GetPlanOk() (*string, bool) {
 }
 
 // HasPlan returns a boolean if a field has been set.
-func (o *ChangePlanRequest) HasPlan() bool {
+func (o *OrganizationChangePlanRequest) HasPlan() bool {
 	if o != nil && o.Plan != nil {
 		return true
 	}
@@ -65,11 +65,11 @@ func (o *ChangePlanRequest) HasPlan() bool {
 }
 
 // SetPlan gets a reference to the given string and assigns it to the Plan field.
-func (o *ChangePlanRequest) SetPlan(v string) {
+func (o *OrganizationChangePlanRequest) SetPlan(v string) {
 	o.Plan = &v
 }
 
-func (o ChangePlanRequest) MarshalJSON() ([]byte, error) {
+func (o OrganizationChangePlanRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Plan != nil {
 		toSerialize["plan"] = o.Plan
@@ -77,38 +77,38 @@ func (o ChangePlanRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableChangePlanRequest struct {
-	value *ChangePlanRequest
+type NullableOrganizationChangePlanRequest struct {
+	value *OrganizationChangePlanRequest
 	isSet bool
 }
 
-func (v NullableChangePlanRequest) Get() *ChangePlanRequest {
+func (v NullableOrganizationChangePlanRequest) Get() *OrganizationChangePlanRequest {
 	return v.value
 }
 
-func (v *NullableChangePlanRequest) Set(val *ChangePlanRequest) {
+func (v *NullableOrganizationChangePlanRequest) Set(val *OrganizationChangePlanRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableChangePlanRequest) IsSet() bool {
+func (v NullableOrganizationChangePlanRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableChangePlanRequest) Unset() {
+func (v *NullableOrganizationChangePlanRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableChangePlanRequest(val *ChangePlanRequest) *NullableChangePlanRequest {
-	return &NullableChangePlanRequest{value: val, isSet: true}
+func NewNullableOrganizationChangePlanRequest(val *OrganizationChangePlanRequest) *NullableOrganizationChangePlanRequest {
+	return &NullableOrganizationChangePlanRequest{value: val, isSet: true}
 }
 
-func (v NullableChangePlanRequest) MarshalJSON() ([]byte, error) {
+func (v NullableOrganizationChangePlanRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableChangePlanRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganizationChangePlanRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

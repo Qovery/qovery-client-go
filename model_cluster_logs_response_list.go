@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ListClusterLogs200Response struct for ListClusterLogs200Response
-type ListClusterLogs200Response struct {
+// ClusterLogsResponseList struct for ClusterLogsResponseList
+type ClusterLogsResponseList struct {
 	Results []ClusterLogs `json:"results,omitempty"`
 }
 
-// NewListClusterLogs200Response instantiates a new ListClusterLogs200Response object
+// NewClusterLogsResponseList instantiates a new ClusterLogsResponseList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListClusterLogs200Response() *ListClusterLogs200Response {
-	this := ListClusterLogs200Response{}
+func NewClusterLogsResponseList() *ClusterLogsResponseList {
+	this := ClusterLogsResponseList{}
 	return &this
 }
 
-// NewListClusterLogs200ResponseWithDefaults instantiates a new ListClusterLogs200Response object
+// NewClusterLogsResponseListWithDefaults instantiates a new ClusterLogsResponseList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListClusterLogs200ResponseWithDefaults() *ListClusterLogs200Response {
-	this := ListClusterLogs200Response{}
+func NewClusterLogsResponseListWithDefaults() *ClusterLogsResponseList {
+	this := ClusterLogsResponseList{}
 	return &this
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ListClusterLogs200Response) GetResults() []ClusterLogs {
+func (o *ClusterLogsResponseList) GetResults() []ClusterLogs {
 	if o == nil || o.Results == nil {
 		var ret []ClusterLogs
 		return ret
@@ -48,7 +48,7 @@ func (o *ListClusterLogs200Response) GetResults() []ClusterLogs {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListClusterLogs200Response) GetResultsOk() ([]ClusterLogs, bool) {
+func (o *ClusterLogsResponseList) GetResultsOk() ([]ClusterLogs, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ListClusterLogs200Response) GetResultsOk() ([]ClusterLogs, bool) {
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *ListClusterLogs200Response) HasResults() bool {
+func (o *ClusterLogsResponseList) HasResults() bool {
 	if o != nil && o.Results != nil {
 		return true
 	}
@@ -65,11 +65,11 @@ func (o *ListClusterLogs200Response) HasResults() bool {
 }
 
 // SetResults gets a reference to the given []ClusterLogs and assigns it to the Results field.
-func (o *ListClusterLogs200Response) SetResults(v []ClusterLogs) {
+func (o *ClusterLogsResponseList) SetResults(v []ClusterLogs) {
 	o.Results = v
 }
 
-func (o ListClusterLogs200Response) MarshalJSON() ([]byte, error) {
+func (o ClusterLogsResponseList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Results != nil {
 		toSerialize["results"] = o.Results
@@ -77,38 +77,38 @@ func (o ListClusterLogs200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableListClusterLogs200Response struct {
-	value *ListClusterLogs200Response
+type NullableClusterLogsResponseList struct {
+	value *ClusterLogsResponseList
 	isSet bool
 }
 
-func (v NullableListClusterLogs200Response) Get() *ListClusterLogs200Response {
+func (v NullableClusterLogsResponseList) Get() *ClusterLogsResponseList {
 	return v.value
 }
 
-func (v *NullableListClusterLogs200Response) Set(val *ListClusterLogs200Response) {
+func (v *NullableClusterLogsResponseList) Set(val *ClusterLogsResponseList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListClusterLogs200Response) IsSet() bool {
+func (v NullableClusterLogsResponseList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListClusterLogs200Response) Unset() {
+func (v *NullableClusterLogsResponseList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListClusterLogs200Response(val *ListClusterLogs200Response) *NullableListClusterLogs200Response {
-	return &NullableListClusterLogs200Response{value: val, isSet: true}
+func NewNullableClusterLogsResponseList(val *ClusterLogsResponseList) *NullableClusterLogsResponseList {
+	return &NullableClusterLogsResponseList{value: val, isSet: true}
 }
 
-func (v NullableListClusterLogs200Response) MarshalJSON() ([]byte, error) {
+func (v NullableClusterLogsResponseList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListClusterLogs200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterLogsResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

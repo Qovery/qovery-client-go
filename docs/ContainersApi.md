@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## AutoDeployContainerEnvironments
 
-> Status AutoDeployContainerEnvironments(ctx, organizationId).AutoDeployContainerEnvironmentsRequest(autoDeployContainerEnvironmentsRequest).Execute()
+> Status AutoDeployContainerEnvironments(ctx, organizationId).OrganizationContainerAutoDeployRequest(organizationContainerAutoDeployRequest).Execute()
 
 Auto deploy containers
 
@@ -37,11 +37,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    autoDeployContainerEnvironmentsRequest := *openapiclient.NewAutoDeployContainerEnvironmentsRequest() // AutoDeployContainerEnvironmentsRequest |  (optional)
+    organizationContainerAutoDeployRequest := *openapiclient.NewOrganizationContainerAutoDeployRequest() // OrganizationContainerAutoDeployRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainersApi.AutoDeployContainerEnvironments(context.Background(), organizationId).AutoDeployContainerEnvironmentsRequest(autoDeployContainerEnvironmentsRequest).Execute()
+    resp, r, err := apiClient.ContainersApi.AutoDeployContainerEnvironments(context.Background(), organizationId).OrganizationContainerAutoDeployRequest(organizationContainerAutoDeployRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.AutoDeployContainerEnvironments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,7 +67,7 @@ Other parameters are passed through a pointer to a apiAutoDeployContainerEnviron
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **autoDeployContainerEnvironmentsRequest** | [**AutoDeployContainerEnvironmentsRequest**](AutoDeployContainerEnvironmentsRequest.md) |  | 
+ **organizationContainerAutoDeployRequest** | [**OrganizationContainerAutoDeployRequest**](OrganizationContainerAutoDeployRequest.md) |  | 
 
 ### Return type
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 ## PreviewContainerEnvironments
 
-> Status PreviewContainerEnvironments(ctx, organizationId).PreviewContainerEnvironmentsRequest(previewContainerEnvironmentsRequest).Execute()
+> Status PreviewContainerEnvironments(ctx, organizationId).OrganizationContainerPreviewRequest(organizationContainerPreviewRequest).Execute()
 
 Preview container environments
 
@@ -529,11 +529,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    previewContainerEnvironmentsRequest := *openapiclient.NewPreviewContainerEnvironmentsRequest() // PreviewContainerEnvironmentsRequest |  (optional)
+    organizationContainerPreviewRequest := *openapiclient.NewOrganizationContainerPreviewRequest() // OrganizationContainerPreviewRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainersApi.PreviewContainerEnvironments(context.Background(), organizationId).PreviewContainerEnvironmentsRequest(previewContainerEnvironmentsRequest).Execute()
+    resp, r, err := apiClient.ContainersApi.PreviewContainerEnvironments(context.Background(), organizationId).OrganizationContainerPreviewRequest(organizationContainerPreviewRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.PreviewContainerEnvironments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -559,7 +559,7 @@ Other parameters are passed through a pointer to a apiPreviewContainerEnvironmen
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **previewContainerEnvironmentsRequest** | [**PreviewContainerEnvironmentsRequest**](PreviewContainerEnvironmentsRequest.md) |  | 
+ **organizationContainerPreviewRequest** | [**OrganizationContainerPreviewRequest**](OrganizationContainerPreviewRequest.md) |  | 
 
 ### Return type
 

@@ -449,7 +449,7 @@ type ApiListAvailableContainerRegistryRequest struct {
 	ApiService *ContainerRegistriesApiService
 }
 
-func (r ApiListAvailableContainerRegistryRequest) Execute() (*ListAvailableContainerRegistry200Response, *http.Response, error) {
+func (r ApiListAvailableContainerRegistryRequest) Execute() (*AvailableContainerRegistryResponseList, *http.Response, error) {
 	return r.ApiService.ListAvailableContainerRegistryExecute(r)
 }
 
@@ -469,13 +469,13 @@ func (a *ContainerRegistriesApiService) ListAvailableContainerRegistry(ctx conte
 }
 
 // Execute executes the request
-//  @return ListAvailableContainerRegistry200Response
-func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r ApiListAvailableContainerRegistryRequest) (*ListAvailableContainerRegistry200Response, *http.Response, error) {
+//  @return AvailableContainerRegistryResponseList
+func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r ApiListAvailableContainerRegistryRequest) (*AvailableContainerRegistryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ListAvailableContainerRegistry200Response
+		localVarReturnValue *AvailableContainerRegistryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.ListAvailableContainerRegistry")
@@ -549,7 +549,7 @@ type ApiListContainerRegistryRequest struct {
 	organizationId string
 }
 
-func (r ApiListContainerRegistryRequest) Execute() (*ListContainerRegistry200Response, *http.Response, error) {
+func (r ApiListContainerRegistryRequest) Execute() (*ContainerRegistryResponseList, *http.Response, error) {
 	return r.ApiService.ListContainerRegistryExecute(r)
 }
 
@@ -569,13 +569,13 @@ func (a *ContainerRegistriesApiService) ListContainerRegistry(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return ListContainerRegistry200Response
-func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListContainerRegistryRequest) (*ListContainerRegistry200Response, *http.Response, error) {
+//  @return ContainerRegistryResponseList
+func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListContainerRegistryRequest) (*ContainerRegistryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ListContainerRegistry200Response
+		localVarReturnValue *ContainerRegistryResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.ListContainerRegistry")

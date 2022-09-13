@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 
 ## ListClusterLogs
 
-> ListClusterLogs200Response ListClusterLogs(ctx, organizationId, clusterId).Execute()
+> ClusterLogsResponseList ListClusterLogs(ctx, organizationId, clusterId).Execute()
 
 List Cluster Logs
 
@@ -919,7 +919,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClusterLogs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListClusterLogs`: ListClusterLogs200Response
+    // response from `ListClusterLogs`: ClusterLogsResponseList
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClusterLogs`: %v\n", resp)
 }
 ```
@@ -945,7 +945,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListClusterLogs200Response**](ListClusterLogs200Response.md)
+[**ClusterLogsResponseList**](ClusterLogsResponseList.md)
 
 ### Authorization
 

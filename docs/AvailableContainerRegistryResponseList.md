@@ -1,4 +1,4 @@
-# ListAvailableContainerRegistry200Response
+# AvailableContainerRegistryResponseList
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewListAvailableContainerRegistry200Response
+### NewAvailableContainerRegistryResponseList
 
-`func NewListAvailableContainerRegistry200Response() *ListAvailableContainerRegistry200Response`
+`func NewAvailableContainerRegistryResponseList() *AvailableContainerRegistryResponseList`
 
-NewListAvailableContainerRegistry200Response instantiates a new ListAvailableContainerRegistry200Response object
+NewAvailableContainerRegistryResponseList instantiates a new AvailableContainerRegistryResponseList object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewListAvailableContainerRegistry200ResponseWithDefaults
+### NewAvailableContainerRegistryResponseListWithDefaults
 
-`func NewListAvailableContainerRegistry200ResponseWithDefaults() *ListAvailableContainerRegistry200Response`
+`func NewAvailableContainerRegistryResponseListWithDefaults() *AvailableContainerRegistryResponseList`
 
-NewListAvailableContainerRegistry200ResponseWithDefaults instantiates a new ListAvailableContainerRegistry200Response object
+NewAvailableContainerRegistryResponseListWithDefaults instantiates a new AvailableContainerRegistryResponseList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ListAvailableContainerRegistry200Response) GetResults() []AvailableContainerRegistryResponse`
+`func (o *AvailableContainerRegistryResponseList) GetResults() []AvailableContainerRegistryResponse`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ListAvailableContainerRegistry200Response) GetResultsOk() (*[]AvailableContainerRegistryResponse, bool)`
+`func (o *AvailableContainerRegistryResponseList) GetResultsOk() (*[]AvailableContainerRegistryResponse, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ListAvailableContainerRegistry200Response) SetResults(v []AvailableContainerRegistryResponse)`
+`func (o *AvailableContainerRegistryResponseList) SetResults(v []AvailableContainerRegistryResponse)`
 
 SetResults sets Results field to given value.
 
 ### HasResults
 
-`func (o *ListAvailableContainerRegistry200Response) HasResults() bool`
+`func (o *AvailableContainerRegistryResponseList) HasResults() bool`
 
 HasResults returns a boolean if a field has been set.
 

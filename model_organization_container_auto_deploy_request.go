@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// PreviewContainerEnvironmentsRequest struct for PreviewContainerEnvironmentsRequest
-type PreviewContainerEnvironmentsRequest struct {
-	// the container image name to trigger preview environment
+// OrganizationContainerAutoDeployRequest struct for OrganizationContainerAutoDeployRequest
+type OrganizationContainerAutoDeployRequest struct {
+	// the container image name to deploy
 	ImageName *string `json:"image_name,omitempty"`
-	// the tag to be used in the preview environment
+	// the new tag to deploy
 	Tag *string `json:"tag,omitempty"`
 }
 
-// NewPreviewContainerEnvironmentsRequest instantiates a new PreviewContainerEnvironmentsRequest object
+// NewOrganizationContainerAutoDeployRequest instantiates a new OrganizationContainerAutoDeployRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPreviewContainerEnvironmentsRequest() *PreviewContainerEnvironmentsRequest {
-	this := PreviewContainerEnvironmentsRequest{}
+func NewOrganizationContainerAutoDeployRequest() *OrganizationContainerAutoDeployRequest {
+	this := OrganizationContainerAutoDeployRequest{}
 	return &this
 }
 
-// NewPreviewContainerEnvironmentsRequestWithDefaults instantiates a new PreviewContainerEnvironmentsRequest object
+// NewOrganizationContainerAutoDeployRequestWithDefaults instantiates a new OrganizationContainerAutoDeployRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPreviewContainerEnvironmentsRequestWithDefaults() *PreviewContainerEnvironmentsRequest {
-	this := PreviewContainerEnvironmentsRequest{}
+func NewOrganizationContainerAutoDeployRequestWithDefaults() *OrganizationContainerAutoDeployRequest {
+	this := OrganizationContainerAutoDeployRequest{}
 	return &this
 }
 
 // GetImageName returns the ImageName field value if set, zero value otherwise.
-func (o *PreviewContainerEnvironmentsRequest) GetImageName() string {
+func (o *OrganizationContainerAutoDeployRequest) GetImageName() string {
 	if o == nil || o.ImageName == nil {
 		var ret string
 		return ret
@@ -51,7 +51,7 @@ func (o *PreviewContainerEnvironmentsRequest) GetImageName() string {
 
 // GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PreviewContainerEnvironmentsRequest) GetImageNameOk() (*string, bool) {
+func (o *OrganizationContainerAutoDeployRequest) GetImageNameOk() (*string, bool) {
 	if o == nil || o.ImageName == nil {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *PreviewContainerEnvironmentsRequest) GetImageNameOk() (*string, bool) {
 }
 
 // HasImageName returns a boolean if a field has been set.
-func (o *PreviewContainerEnvironmentsRequest) HasImageName() bool {
+func (o *OrganizationContainerAutoDeployRequest) HasImageName() bool {
 	if o != nil && o.ImageName != nil {
 		return true
 	}
@@ -68,12 +68,12 @@ func (o *PreviewContainerEnvironmentsRequest) HasImageName() bool {
 }
 
 // SetImageName gets a reference to the given string and assigns it to the ImageName field.
-func (o *PreviewContainerEnvironmentsRequest) SetImageName(v string) {
+func (o *OrganizationContainerAutoDeployRequest) SetImageName(v string) {
 	o.ImageName = &v
 }
 
 // GetTag returns the Tag field value if set, zero value otherwise.
-func (o *PreviewContainerEnvironmentsRequest) GetTag() string {
+func (o *OrganizationContainerAutoDeployRequest) GetTag() string {
 	if o == nil || o.Tag == nil {
 		var ret string
 		return ret
@@ -83,7 +83,7 @@ func (o *PreviewContainerEnvironmentsRequest) GetTag() string {
 
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PreviewContainerEnvironmentsRequest) GetTagOk() (*string, bool) {
+func (o *OrganizationContainerAutoDeployRequest) GetTagOk() (*string, bool) {
 	if o == nil || o.Tag == nil {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *PreviewContainerEnvironmentsRequest) GetTagOk() (*string, bool) {
 }
 
 // HasTag returns a boolean if a field has been set.
-func (o *PreviewContainerEnvironmentsRequest) HasTag() bool {
+func (o *OrganizationContainerAutoDeployRequest) HasTag() bool {
 	if o != nil && o.Tag != nil {
 		return true
 	}
@@ -100,11 +100,11 @@ func (o *PreviewContainerEnvironmentsRequest) HasTag() bool {
 }
 
 // SetTag gets a reference to the given string and assigns it to the Tag field.
-func (o *PreviewContainerEnvironmentsRequest) SetTag(v string) {
+func (o *OrganizationContainerAutoDeployRequest) SetTag(v string) {
 	o.Tag = &v
 }
 
-func (o PreviewContainerEnvironmentsRequest) MarshalJSON() ([]byte, error) {
+func (o OrganizationContainerAutoDeployRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ImageName != nil {
 		toSerialize["image_name"] = o.ImageName
@@ -115,38 +115,38 @@ func (o PreviewContainerEnvironmentsRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullablePreviewContainerEnvironmentsRequest struct {
-	value *PreviewContainerEnvironmentsRequest
+type NullableOrganizationContainerAutoDeployRequest struct {
+	value *OrganizationContainerAutoDeployRequest
 	isSet bool
 }
 
-func (v NullablePreviewContainerEnvironmentsRequest) Get() *PreviewContainerEnvironmentsRequest {
+func (v NullableOrganizationContainerAutoDeployRequest) Get() *OrganizationContainerAutoDeployRequest {
 	return v.value
 }
 
-func (v *NullablePreviewContainerEnvironmentsRequest) Set(val *PreviewContainerEnvironmentsRequest) {
+func (v *NullableOrganizationContainerAutoDeployRequest) Set(val *OrganizationContainerAutoDeployRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePreviewContainerEnvironmentsRequest) IsSet() bool {
+func (v NullableOrganizationContainerAutoDeployRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePreviewContainerEnvironmentsRequest) Unset() {
+func (v *NullableOrganizationContainerAutoDeployRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePreviewContainerEnvironmentsRequest(val *PreviewContainerEnvironmentsRequest) *NullablePreviewContainerEnvironmentsRequest {
-	return &NullablePreviewContainerEnvironmentsRequest{value: val, isSet: true}
+func NewNullableOrganizationContainerAutoDeployRequest(val *OrganizationContainerAutoDeployRequest) *NullableOrganizationContainerAutoDeployRequest {
+	return &NullableOrganizationContainerAutoDeployRequest{value: val, isSet: true}
 }
 
-func (v NullablePreviewContainerEnvironmentsRequest) MarshalJSON() ([]byte, error) {
+func (v NullableOrganizationContainerAutoDeployRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePreviewContainerEnvironmentsRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganizationContainerAutoDeployRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

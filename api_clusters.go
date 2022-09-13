@@ -1315,7 +1315,7 @@ type ApiListClusterLogsRequest struct {
 	clusterId      string
 }
 
-func (r ApiListClusterLogsRequest) Execute() (*ListClusterLogs200Response, *http.Response, error) {
+func (r ApiListClusterLogsRequest) Execute() (*ClusterLogsResponseList, *http.Response, error) {
 	return r.ApiService.ListClusterLogsExecute(r)
 }
 
@@ -1339,13 +1339,13 @@ func (a *ClustersApiService) ListClusterLogs(ctx context.Context, organizationId
 }
 
 // Execute executes the request
-//  @return ListClusterLogs200Response
-func (a *ClustersApiService) ListClusterLogsExecute(r ApiListClusterLogsRequest) (*ListClusterLogs200Response, *http.Response, error) {
+//  @return ClusterLogsResponseList
+func (a *ClustersApiService) ListClusterLogsExecute(r ApiListClusterLogsRequest) (*ClusterLogsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ListClusterLogs200Response
+		localVarReturnValue *ClusterLogsResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusterLogs")

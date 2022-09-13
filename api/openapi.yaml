@@ -641,7 +641,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/changePlan_request'
+              $ref: '#/components/schemas/OrganizationChangePlanRequest'
       responses:
         "200":
           content:
@@ -1533,7 +1533,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listClusterLogs_200_response'
+                $ref: '#/components/schemas/ClusterLogsResponseList'
           description: list cluster logs
         "401":
           description: Access token is missing or invalid
@@ -2967,7 +2967,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listContainerRegistry_200_response'
+                $ref: '#/components/schemas/ContainerRegistryResponseList'
           description: List container registries
         "401":
           description: Access token is missing or invalid
@@ -3138,7 +3138,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listAvailableContainerRegistry_200_response'
+                $ref: '#/components/schemas/AvailableContainerRegistryResponseList'
           description: supported container registries
         "401":
           description: Access token is missing or invalid
@@ -4925,7 +4925,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/autoDeployContainerEnvironments_request'
+              $ref: '#/components/schemas/OrganizationContainerAutoDeployRequest'
       responses:
         "202":
           content:
@@ -4967,7 +4967,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/previewContainerEnvironments_request'
+              $ref: '#/components/schemas/OrganizationContainerPreviewRequest'
       responses:
         "202":
           content:
@@ -11462,6 +11462,21 @@ components:
           additionalProperties: true
           type: object
       type: object
+    AvailableContainerRegistryResponseList:
+      example:
+        results:
+        - required_config:
+            key: ""
+          kind: null
+        - required_config:
+            key: ""
+          kind: null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/AvailableContainerRegistryResponse'
+          type: array
+      type: object
     AwsCredentialsRequest:
       example:
         access_key_id: access_key_id
@@ -12135,7 +12150,66 @@ components:
           type: array
       type: object
     ClusterLogsResponseList:
-      $ref: '#/components/schemas/ClusterResponseList'
+      example:
+        results:
+        - step: Create
+          details:
+            provider_kind: aws
+            region: eu-west-3
+            transmitter:
+              name: cluster-name
+              id: za6ecdf3f
+              type: kubernetes
+          type: info
+          message:
+            safe_message: Preparing to delete EKS cluster.
+          error:
+            link: link
+            event_details:
+              provider_kind: aws
+              region: eu-west-3
+              transmitter:
+                name: cluster-name
+                id: za6ecdf3f
+                type: kubernetes
+            tag: CANNOT_UNINSTALL_HELM_CHART
+            hint_message: hint_message
+            user_log_message: Wasn't able to delete all objects type Cert-Manager
+            underlying_error:
+              message: message
+          timestamp: 2022-06-22T14:20:17.733084815Z
+        - step: Create
+          details:
+            provider_kind: aws
+            region: eu-west-3
+            transmitter:
+              name: cluster-name
+              id: za6ecdf3f
+              type: kubernetes
+          type: info
+          message:
+            safe_message: Preparing to delete EKS cluster.
+          error:
+            link: link
+            event_details:
+              provider_kind: aws
+              region: eu-west-3
+              transmitter:
+                name: cluster-name
+                id: za6ecdf3f
+                type: kubernetes
+            tag: CANNOT_UNINSTALL_HELM_CHART
+            hint_message: hint_message
+            user_log_message: Wasn't able to delete all objects type Cert-Manager
+            underlying_error:
+              message: message
+          timestamp: 2022-06-22T14:20:17.733084815Z
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterLogs'
+          type: array
+      type: object
     ClusterRoutingTable:
       example:
         results:
@@ -12575,6 +12649,17 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ContainerRegistryResponse_allOf'
+    ContainerRegistryResponseList:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ContainerRegistryResponse'
+          type: array
+      type: object
     ContainerRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
@@ -14676,6 +14761,37 @@ components:
       enum:
       - ADMIN
       type: string
+    OrganizationChangePlanRequest:
+      example:
+        plan: plan
+      properties:
+        plan:
+          type: string
+      type: object
+    OrganizationContainerAutoDeployRequest:
+      example:
+        image_name: image_name
+        tag: tag
+      properties:
+        image_name:
+          description: the container image name to deploy
+          type: string
+        tag:
+          description: the new tag to deploy
+          type: string
+      type: object
+    OrganizationContainerPreviewRequest:
+      example:
+        image_name: image_name
+        tag: tag
+      properties:
+        image_name:
+          description: the container image name to trigger preview environment
+          type: string
+        tag:
+          description: the tag to be used in the preview environment
+          type: string
+      type: object
     OrganizationCreditCodeRequest:
       example:
         code: code
@@ -15633,116 +15749,6 @@ components:
       - SUNDAY
       example: MONDAY
       type: string
-    changePlan_request:
-      properties:
-        plan:
-          type: string
-      type: object
-    listClusterLogs_200_response:
-      example:
-        results:
-        - step: Create
-          details:
-            provider_kind: aws
-            region: eu-west-3
-            transmitter:
-              name: cluster-name
-              id: za6ecdf3f
-              type: kubernetes
-          type: info
-          message:
-            safe_message: Preparing to delete EKS cluster.
-          error:
-            link: link
-            event_details:
-              provider_kind: aws
-              region: eu-west-3
-              transmitter:
-                name: cluster-name
-                id: za6ecdf3f
-                type: kubernetes
-            tag: CANNOT_UNINSTALL_HELM_CHART
-            hint_message: hint_message
-            user_log_message: Wasn't able to delete all objects type Cert-Manager
-            underlying_error:
-              message: message
-          timestamp: 2022-06-22T14:20:17.733084815Z
-        - step: Create
-          details:
-            provider_kind: aws
-            region: eu-west-3
-            transmitter:
-              name: cluster-name
-              id: za6ecdf3f
-              type: kubernetes
-          type: info
-          message:
-            safe_message: Preparing to delete EKS cluster.
-          error:
-            link: link
-            event_details:
-              provider_kind: aws
-              region: eu-west-3
-              transmitter:
-                name: cluster-name
-                id: za6ecdf3f
-                type: kubernetes
-            tag: CANNOT_UNINSTALL_HELM_CHART
-            hint_message: hint_message
-            user_log_message: Wasn't able to delete all objects type Cert-Manager
-            underlying_error:
-              message: message
-          timestamp: 2022-06-22T14:20:17.733084815Z
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/ClusterLogs'
-          type: array
-      type: object
-    listContainerRegistry_200_response:
-      example:
-        results:
-        - null
-        - null
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/ContainerRegistryResponse'
-          type: array
-      type: object
-    listAvailableContainerRegistry_200_response:
-      example:
-        results:
-        - required_config:
-            key: ""
-          kind: null
-        - required_config:
-            key: ""
-          kind: null
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/AvailableContainerRegistryResponse'
-          type: array
-      type: object
-    autoDeployContainerEnvironments_request:
-      properties:
-        image_name:
-          description: the container image name to deploy
-          type: string
-        tag:
-          description: the new tag to deploy
-          type: string
-      type: object
-    previewContainerEnvironments_request:
-      properties:
-        image_name:
-          description: the container image name to trigger preview environment
-          type: string
-        tag:
-          description: the tag to be used in the preview environment
-          type: string
-      type: object
     listContainerDeploymentHistory_200_response_allOf:
       properties:
         results:

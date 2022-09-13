@@ -100,8 +100,8 @@ docs/ApplicationRequestAllOf.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretApi.md
 docs/ApplicationsApi.md
-docs/AutoDeployContainerEnvironmentsRequest.md
 docs/AvailableContainerRegistryResponse.md
+docs/AvailableContainerRegistryResponseList.md
 docs/AwsCredentialsRequest.md
 docs/Backup.md
 docs/BackupAllOf.md
@@ -121,7 +121,6 @@ docs/Budget.md
 docs/BudgetThreshold.md
 docs/BuildModeEnum.md
 docs/BuildPackLanguageEnum.md
-docs/ChangePlanRequest.md
 docs/CloneRequest.md
 docs/CloudProvider.md
 docs/CloudProviderApi.md
@@ -149,6 +148,7 @@ docs/ClusterLogsErrorEventDetails.md
 docs/ClusterLogsErrorEventDetailsTransmitter.md
 docs/ClusterLogsErrorUnderlyingError.md
 docs/ClusterLogsMessage.md
+docs/ClusterLogsResponseList.md
 docs/ClusterReadinessStatus.md
 docs/ClusterRegion.md
 docs/ClusterRegionResponseList.md
@@ -191,6 +191,7 @@ docs/ContainerRegistryRequest.md
 docs/ContainerRegistryRequestConfig.md
 docs/ContainerRegistryResponse.md
 docs/ContainerRegistryResponseAllOf.md
+docs/ContainerRegistryResponseList.md
 docs/ContainerRequest.md
 docs/ContainerRequestAllOf.md
 docs/ContainerResponse.md
@@ -347,11 +348,8 @@ docs/KubernetesEnum.md
 docs/Link.md
 docs/LinkResponseList.md
 docs/LinkedServiceTypeEnum.md
-docs/ListAvailableContainerRegistry200Response.md
-docs/ListClusterLogs200Response.md
 docs/ListContainerDeploymentHistory200Response.md
 docs/ListContainerDeploymentHistory200ResponseAllOf.md
-docs/ListContainerRegistry200Response.md
 docs/ListDatabaseDeploymentHistory200Response.md
 docs/ListDatabaseDeploymentHistory200ResponseAllOf.md
 docs/Log.md
@@ -396,6 +394,9 @@ docs/OrganizationApiTokenCreateAllOf.md
 docs/OrganizationApiTokenCreateRequest.md
 docs/OrganizationApiTokenResponseList.md
 docs/OrganizationApiTokenScope.md
+docs/OrganizationChangePlanRequest.md
+docs/OrganizationContainerAutoDeployRequest.md
+docs/OrganizationContainerPreviewRequest.md
 docs/OrganizationCreditCodeRequest.md
 docs/OrganizationCurrentCost.md
 docs/OrganizationCurrentCostAllOf.md
@@ -416,7 +417,6 @@ docs/PaginationData.md
 docs/PaidUsage.md
 docs/PlanEnum.md
 docs/PortProtocolEnum.md
-docs/PreviewContainerEnvironmentsRequest.md
 docs/Project.md
 docs/ProjectAllOf.md
 docs/ProjectCurrentCost.md
@@ -512,8 +512,8 @@ model_application_network_request.go
 model_application_request.go
 model_application_request_all_of.go
 model_application_response_list.go
-model_auto_deploy_container_environments_request.go
 model_available_container_registry_response.go
+model_available_container_registry_response_list.go
 model_aws_credentials_request.go
 model_backup.go
 model_backup_all_of.go
@@ -531,7 +531,6 @@ model_budget.go
 model_budget_threshold.go
 model_build_mode_enum.go
 model_build_pack_language_enum.go
-model_change_plan_request.go
 model_clone_request.go
 model_cloud_provider.go
 model_cloud_provider_enum.go
@@ -557,6 +556,7 @@ model_cluster_logs_error_event_details.go
 model_cluster_logs_error_event_details_transmitter.go
 model_cluster_logs_error_underlying_error.go
 model_cluster_logs_message.go
+model_cluster_logs_response_list.go
 model_cluster_readiness_status.go
 model_cluster_region.go
 model_cluster_region_response_list.go
@@ -587,6 +587,7 @@ model_container_registry_request.go
 model_container_registry_request_config.go
 model_container_registry_response.go
 model_container_registry_response_all_of.go
+model_container_registry_response_list.go
 model_container_request.go
 model_container_request_all_of.go
 model_container_response.go
@@ -722,11 +723,8 @@ model_kubernetes_enum.go
 model_link.go
 model_link_response_list.go
 model_linked_service_type_enum.go
-model_list_available_container_registry_200_response.go
-model_list_cluster_logs_200_response.go
 model_list_container_deployment_history_200_response.go
 model_list_container_deployment_history_200_response_all_of.go
-model_list_container_registry_200_response.go
 model_list_database_deployment_history_200_response.go
 model_list_database_deployment_history_200_response_all_of.go
 model_log.go
@@ -767,6 +765,9 @@ model_organization_api_token_create_all_of.go
 model_organization_api_token_create_request.go
 model_organization_api_token_response_list.go
 model_organization_api_token_scope.go
+model_organization_change_plan_request.go
+model_organization_container_auto_deploy_request.go
+model_organization_container_preview_request.go
 model_organization_credit_code_request.go
 model_organization_current_cost.go
 model_organization_current_cost_all_of.go
@@ -785,7 +786,6 @@ model_pagination_data.go
 model_paid_usage.go
 model_plan_enum.go
 model_port_protocol_enum.go
-model_preview_container_environments_request.go
 model_project.go
 model_project_all_of.go
 model_project_current_cost.go

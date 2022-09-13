@@ -231,14 +231,14 @@ func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*ht
 }
 
 type ApiChangePlanRequest struct {
-	ctx               context.Context
-	ApiService        *BillingApiService
-	organizationId    string
-	changePlanRequest *ChangePlanRequest
+	ctx                           context.Context
+	ApiService                    *BillingApiService
+	organizationId                string
+	organizationChangePlanRequest *OrganizationChangePlanRequest
 }
 
-func (r ApiChangePlanRequest) ChangePlanRequest(changePlanRequest ChangePlanRequest) ApiChangePlanRequest {
-	r.changePlanRequest = &changePlanRequest
+func (r ApiChangePlanRequest) OrganizationChangePlanRequest(organizationChangePlanRequest OrganizationChangePlanRequest) ApiChangePlanRequest {
+	r.organizationChangePlanRequest = &organizationChangePlanRequest
 	return r
 }
 
@@ -301,7 +301,7 @@ func (a *BillingApiService) ChangePlanExecute(r ApiChangePlanRequest) (*Organiza
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.changePlanRequest
+	localVarPostBody = r.organizationChangePlanRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

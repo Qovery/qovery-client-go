@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ListContainerRegistry200Response struct for ListContainerRegistry200Response
-type ListContainerRegistry200Response struct {
+// ContainerRegistryResponseList struct for ContainerRegistryResponseList
+type ContainerRegistryResponseList struct {
 	Results []ContainerRegistryResponse `json:"results,omitempty"`
 }
 
-// NewListContainerRegistry200Response instantiates a new ListContainerRegistry200Response object
+// NewContainerRegistryResponseList instantiates a new ContainerRegistryResponseList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListContainerRegistry200Response() *ListContainerRegistry200Response {
-	this := ListContainerRegistry200Response{}
+func NewContainerRegistryResponseList() *ContainerRegistryResponseList {
+	this := ContainerRegistryResponseList{}
 	return &this
 }
 
-// NewListContainerRegistry200ResponseWithDefaults instantiates a new ListContainerRegistry200Response object
+// NewContainerRegistryResponseListWithDefaults instantiates a new ContainerRegistryResponseList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListContainerRegistry200ResponseWithDefaults() *ListContainerRegistry200Response {
-	this := ListContainerRegistry200Response{}
+func NewContainerRegistryResponseListWithDefaults() *ContainerRegistryResponseList {
+	this := ContainerRegistryResponseList{}
 	return &this
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ListContainerRegistry200Response) GetResults() []ContainerRegistryResponse {
+func (o *ContainerRegistryResponseList) GetResults() []ContainerRegistryResponse {
 	if o == nil || o.Results == nil {
 		var ret []ContainerRegistryResponse
 		return ret
@@ -48,7 +48,7 @@ func (o *ListContainerRegistry200Response) GetResults() []ContainerRegistryRespo
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListContainerRegistry200Response) GetResultsOk() ([]ContainerRegistryResponse, bool) {
+func (o *ContainerRegistryResponseList) GetResultsOk() ([]ContainerRegistryResponse, bool) {
 	if o == nil || o.Results == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ListContainerRegistry200Response) GetResultsOk() ([]ContainerRegistryRe
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *ListContainerRegistry200Response) HasResults() bool {
+func (o *ContainerRegistryResponseList) HasResults() bool {
 	if o != nil && o.Results != nil {
 		return true
 	}
@@ -65,11 +65,11 @@ func (o *ListContainerRegistry200Response) HasResults() bool {
 }
 
 // SetResults gets a reference to the given []ContainerRegistryResponse and assigns it to the Results field.
-func (o *ListContainerRegistry200Response) SetResults(v []ContainerRegistryResponse) {
+func (o *ContainerRegistryResponseList) SetResults(v []ContainerRegistryResponse) {
 	o.Results = v
 }
 
-func (o ListContainerRegistry200Response) MarshalJSON() ([]byte, error) {
+func (o ContainerRegistryResponseList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Results != nil {
 		toSerialize["results"] = o.Results
@@ -77,38 +77,38 @@ func (o ListContainerRegistry200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableListContainerRegistry200Response struct {
-	value *ListContainerRegistry200Response
+type NullableContainerRegistryResponseList struct {
+	value *ContainerRegistryResponseList
 	isSet bool
 }
 
-func (v NullableListContainerRegistry200Response) Get() *ListContainerRegistry200Response {
+func (v NullableContainerRegistryResponseList) Get() *ContainerRegistryResponseList {
 	return v.value
 }
 
-func (v *NullableListContainerRegistry200Response) Set(val *ListContainerRegistry200Response) {
+func (v *NullableContainerRegistryResponseList) Set(val *ContainerRegistryResponseList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListContainerRegistry200Response) IsSet() bool {
+func (v NullableContainerRegistryResponseList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListContainerRegistry200Response) Unset() {
+func (v *NullableContainerRegistryResponseList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListContainerRegistry200Response(val *ListContainerRegistry200Response) *NullableListContainerRegistry200Response {
-	return &NullableListContainerRegistry200Response{value: val, isSet: true}
+func NewNullableContainerRegistryResponseList(val *ContainerRegistryResponseList) *NullableContainerRegistryResponseList {
+	return &NullableContainerRegistryResponseList{value: val, isSet: true}
 }
 
-func (v NullableListContainerRegistry200Response) MarshalJSON() ([]byte, error) {
+func (v NullableContainerRegistryResponseList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListContainerRegistry200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableContainerRegistryResponseList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

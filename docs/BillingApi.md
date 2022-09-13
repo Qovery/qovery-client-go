@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ## ChangePlan
 
-> Organization ChangePlan(ctx, organizationId).ChangePlanRequest(changePlanRequest).Execute()
+> Organization ChangePlan(ctx, organizationId).OrganizationChangePlanRequest(organizationChangePlanRequest).Execute()
 
 Change organization plan
 
@@ -179,11 +179,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    changePlanRequest := *openapiclient.NewChangePlanRequest() // ChangePlanRequest |  (optional)
+    organizationChangePlanRequest := *openapiclient.NewOrganizationChangePlanRequest() // OrganizationChangePlanRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingApi.ChangePlan(context.Background(), organizationId).ChangePlanRequest(changePlanRequest).Execute()
+    resp, r, err := apiClient.BillingApi.ChangePlan(context.Background(), organizationId).OrganizationChangePlanRequest(organizationChangePlanRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BillingApi.ChangePlan``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -209,7 +209,7 @@ Other parameters are passed through a pointer to a apiChangePlanRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **changePlanRequest** | [**ChangePlanRequest**](ChangePlanRequest.md) |  | 
+ **organizationChangePlanRequest** | [**OrganizationChangePlanRequest**](OrganizationChangePlanRequest.md) |  | 
 
 ### Return type
 
