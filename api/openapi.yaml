@@ -11075,7 +11075,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
-      - $ref: '#/components/schemas/ServicePort'
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
       example:
@@ -15818,6 +15817,8 @@ components:
             \ not for this application.\nIf activated, a preview environment will\
             \ be automatically cloned at each pull request.\n"
           type: boolean
+        ports:
+          $ref: '#/components/schemas/ServicePortResponseList'
       type: object
     ApplicationEditRequest_allOf:
       properties:
