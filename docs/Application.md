@@ -4,15 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [readonly] 
+**Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
+**Name** | Pointer to **string** | name is case insensitive | [optional] 
+**InternalPort** | **int32** | The listening port of your service. | 
+**ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
+**PubliclyAccessible** | **bool** | Expose the port to the world | 
+**IsDefault** | Pointer to **bool** | is the default port to use for domain &amp; probes check | [optional] 
+**Protocol** | [**PortProtocolEnum**](PortProtocolEnum.md) |  | [default to PORTPROTOCOLENUM_HTTP]
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
-**Name** | Pointer to **string** | name is case insensitive | [optional] 
 **Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_BUILDPACKS]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
@@ -23,13 +28,12 @@ Name | Type | Description | Notes
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
-**Ports** | Pointer to [**ServicePortResponseList**](ServicePortResponseList.md) |  | [optional] 
 
 ## Methods
 
 ### NewApplication
 
-`func NewApplication(id string, createdAt time.Time, ) *Application`
+`func NewApplication(id string, createdAt time.Time, internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -134,6 +138,141 @@ SetStorage sets Storage field to given value.
 
 HasStorage returns a boolean if a field has been set.
 
+### GetName
+
+`func (o *Application) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *Application) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *Application) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *Application) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### GetInternalPort
+
+`func (o *Application) GetInternalPort() int32`
+
+GetInternalPort returns the InternalPort field if non-nil, zero value otherwise.
+
+### GetInternalPortOk
+
+`func (o *Application) GetInternalPortOk() (*int32, bool)`
+
+GetInternalPortOk returns a tuple with the InternalPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInternalPort
+
+`func (o *Application) SetInternalPort(v int32)`
+
+SetInternalPort sets InternalPort field to given value.
+
+
+### GetExternalPort
+
+`func (o *Application) GetExternalPort() int32`
+
+GetExternalPort returns the ExternalPort field if non-nil, zero value otherwise.
+
+### GetExternalPortOk
+
+`func (o *Application) GetExternalPortOk() (*int32, bool)`
+
+GetExternalPortOk returns a tuple with the ExternalPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalPort
+
+`func (o *Application) SetExternalPort(v int32)`
+
+SetExternalPort sets ExternalPort field to given value.
+
+### HasExternalPort
+
+`func (o *Application) HasExternalPort() bool`
+
+HasExternalPort returns a boolean if a field has been set.
+
+### GetPubliclyAccessible
+
+`func (o *Application) GetPubliclyAccessible() bool`
+
+GetPubliclyAccessible returns the PubliclyAccessible field if non-nil, zero value otherwise.
+
+### GetPubliclyAccessibleOk
+
+`func (o *Application) GetPubliclyAccessibleOk() (*bool, bool)`
+
+GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPubliclyAccessible
+
+`func (o *Application) SetPubliclyAccessible(v bool)`
+
+SetPubliclyAccessible sets PubliclyAccessible field to given value.
+
+
+### GetIsDefault
+
+`func (o *Application) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *Application) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *Application) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *Application) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
+
+### GetProtocol
+
+`func (o *Application) GetProtocol() PortProtocolEnum`
+
+GetProtocol returns the Protocol field if non-nil, zero value otherwise.
+
+### GetProtocolOk
+
+`func (o *Application) GetProtocolOk() (*PortProtocolEnum, bool)`
+
+GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtocol
+
+`func (o *Application) SetProtocol(v PortProtocolEnum)`
+
+SetProtocol sets Protocol field to given value.
+
+
 ### GetEnvironment
 
 `func (o *Application) GetEnvironment() ReferenceObject`
@@ -233,31 +372,6 @@ SetMaximumMemory sets MaximumMemory field to given value.
 `func (o *Application) HasMaximumMemory() bool`
 
 HasMaximumMemory returns a boolean if a field has been set.
-
-### GetName
-
-`func (o *Application) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *Application) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *Application) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *Application) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -538,31 +652,6 @@ SetAutoPreview sets AutoPreview field to given value.
 `func (o *Application) HasAutoPreview() bool`
 
 HasAutoPreview returns a boolean if a field has been set.
-
-### GetPorts
-
-`func (o *Application) GetPorts() ServicePortResponseList`
-
-GetPorts returns the Ports field if non-nil, zero value otherwise.
-
-### GetPortsOk
-
-`func (o *Application) GetPortsOk() (*ServicePortResponseList, bool)`
-
-GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPorts
-
-`func (o *Application) SetPorts(v ServicePortResponseList)`
-
-SetPorts sets Ports field to given value.
-
-### HasPorts
-
-`func (o *Application) HasPorts() bool`
-
-HasPorts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -18,18 +18,27 @@ import (
 
 // Application struct for Application
 type Application struct {
-	Id            string                       `json:"id"`
-	CreatedAt     time.Time                    `json:"created_at"`
-	UpdatedAt     *time.Time                   `json:"updated_at,omitempty"`
-	Storage       []ServiceStorageStorageInner `json:"storage,omitempty"`
-	Environment   *ReferenceObject             `json:"environment,omitempty"`
-	GitRepository *ApplicationGitRepository    `json:"git_repository,omitempty"`
+	Id        string                       `json:"id"`
+	CreatedAt time.Time                    `json:"created_at"`
+	UpdatedAt *time.Time                   `json:"updated_at,omitempty"`
+	Storage   []ServiceStorageStorageInner `json:"storage,omitempty"`
+	// name is case insensitive
+	Name *string `json:"name,omitempty"`
+	// The listening port of your service.
+	InternalPort int32 `json:"internal_port"`
+	// The exposed port for your service. This is optional. If not set a default port will be used.
+	ExternalPort *int32 `json:"external_port,omitempty"`
+	// Expose the port to the world
+	PubliclyAccessible bool `json:"publicly_accessible"`
+	// is the default port to use for domain & probes check
+	IsDefault     *bool                     `json:"is_default,omitempty"`
+	Protocol      PortProtocolEnum          `json:"protocol"`
+	Environment   *ReferenceObject          `json:"environment,omitempty"`
+	GitRepository *ApplicationGitRepository `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
-	// name is case insensitive
-	Name *string `json:"name,omitempty"`
 	// give a description to this application
 	Description NullableString `json:"description,omitempty"`
 	BuildMode   *BuildModeEnum `json:"build_mode,omitempty"`
@@ -46,18 +55,20 @@ type Application struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool                    `json:"auto_preview,omitempty"`
-	Ports       *ServicePortResponseList `json:"ports,omitempty"`
+	AutoPreview *bool `json:"auto_preview,omitempty"`
 }
 
 // NewApplication instantiates a new Application object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(id string, createdAt time.Time) *Application {
+func NewApplication(id string, createdAt time.Time, internalPort int32, publiclyAccessible bool, protocol PortProtocolEnum) *Application {
 	this := Application{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.InternalPort = internalPort
+	this.PubliclyAccessible = publiclyAccessible
+	this.Protocol = protocol
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var minRunningInstances int32 = 1
@@ -74,6 +85,8 @@ func NewApplication(id string, createdAt time.Time) *Application {
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationWithDefaults() *Application {
 	this := Application{}
+	var protocol PortProtocolEnum = PORTPROTOCOLENUM_HTTP
+	this.Protocol = protocol
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var minRunningInstances int32 = 1
@@ -195,6 +208,174 @@ func (o *Application) HasStorage() bool {
 // SetStorage gets a reference to the given []ServiceStorageStorageInner and assigns it to the Storage field.
 func (o *Application) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *Application) GetName() string {
+	if o == nil || o.Name == nil {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetNameOk() (*string, bool) {
+	if o == nil || o.Name == nil {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *Application) HasName() bool {
+	if o != nil && o.Name != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *Application) SetName(v string) {
+	o.Name = &v
+}
+
+// GetInternalPort returns the InternalPort field value
+func (o *Application) GetInternalPort() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.InternalPort
+}
+
+// GetInternalPortOk returns a tuple with the InternalPort field value
+// and a boolean to check if the value has been set.
+func (o *Application) GetInternalPortOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.InternalPort, true
+}
+
+// SetInternalPort sets field value
+func (o *Application) SetInternalPort(v int32) {
+	o.InternalPort = v
+}
+
+// GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
+func (o *Application) GetExternalPort() int32 {
+	if o == nil || o.ExternalPort == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ExternalPort
+}
+
+// GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetExternalPortOk() (*int32, bool) {
+	if o == nil || o.ExternalPort == nil {
+		return nil, false
+	}
+	return o.ExternalPort, true
+}
+
+// HasExternalPort returns a boolean if a field has been set.
+func (o *Application) HasExternalPort() bool {
+	if o != nil && o.ExternalPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalPort gets a reference to the given int32 and assigns it to the ExternalPort field.
+func (o *Application) SetExternalPort(v int32) {
+	o.ExternalPort = &v
+}
+
+// GetPubliclyAccessible returns the PubliclyAccessible field value
+func (o *Application) GetPubliclyAccessible() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.PubliclyAccessible
+}
+
+// GetPubliclyAccessibleOk returns a tuple with the PubliclyAccessible field value
+// and a boolean to check if the value has been set.
+func (o *Application) GetPubliclyAccessibleOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PubliclyAccessible, true
+}
+
+// SetPubliclyAccessible sets field value
+func (o *Application) SetPubliclyAccessible(v bool) {
+	o.PubliclyAccessible = v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *Application) GetIsDefault() bool {
+	if o == nil || o.IsDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || o.IsDefault == nil {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *Application) HasIsDefault() bool {
+	if o != nil && o.IsDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *Application) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
+// GetProtocol returns the Protocol field value
+func (o *Application) GetProtocol() PortProtocolEnum {
+	if o == nil {
+		var ret PortProtocolEnum
+		return ret
+	}
+
+	return o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value
+// and a boolean to check if the value has been set.
+func (o *Application) GetProtocolOk() (*PortProtocolEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Protocol, true
+}
+
+// SetProtocol sets field value
+func (o *Application) SetProtocol(v PortProtocolEnum) {
+	o.Protocol = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -323,38 +504,6 @@ func (o *Application) HasMaximumMemory() bool {
 // SetMaximumMemory gets a reference to the given int32 and assigns it to the MaximumMemory field.
 func (o *Application) SetMaximumMemory(v int32) {
 	o.MaximumMemory = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Application) GetName() string {
-	if o == nil || o.Name == nil {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Application) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *Application) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Application) SetName(v string) {
-	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -710,38 +859,6 @@ func (o *Application) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *Application) GetPorts() ServicePortResponseList {
-	if o == nil || o.Ports == nil {
-		var ret ServicePortResponseList
-		return ret
-	}
-	return *o.Ports
-}
-
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Application) GetPortsOk() (*ServicePortResponseList, bool) {
-	if o == nil || o.Ports == nil {
-		return nil, false
-	}
-	return o.Ports, true
-}
-
-// HasPorts returns a boolean if a field has been set.
-func (o *Application) HasPorts() bool {
-	if o != nil && o.Ports != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given ServicePortResponseList and assigns it to the Ports field.
-func (o *Application) SetPorts(v ServicePortResponseList) {
-	o.Ports = &v
-}
-
 func (o Application) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -756,6 +873,24 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
 	}
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
+	}
+	if true {
+		toSerialize["internal_port"] = o.InternalPort
+	}
+	if o.ExternalPort != nil {
+		toSerialize["external_port"] = o.ExternalPort
+	}
+	if true {
+		toSerialize["publicly_accessible"] = o.PubliclyAccessible
+	}
+	if o.IsDefault != nil {
+		toSerialize["is_default"] = o.IsDefault
+	}
+	if true {
+		toSerialize["protocol"] = o.Protocol
+	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
 	}
@@ -767,9 +902,6 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaximumMemory != nil {
 		toSerialize["maximum_memory"] = o.MaximumMemory
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
@@ -800,9 +932,6 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }
