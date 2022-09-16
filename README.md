@@ -301,7 +301,6 @@ Class | Method | HTTP request | Description
 *EnvironmentMainCallsApi* | [**EditEnvironment**](docs/EnvironmentMainCallsApi.md#editenvironment) | **Put** /environment/{environmentId} | Edit an environment
 *EnvironmentMainCallsApi* | [**GetEnvironment**](docs/EnvironmentMainCallsApi.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
 *EnvironmentMainCallsApi* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsApi.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
-*EnvironmentMainCallsApi* | [**ListEnvironmentLinks**](docs/EnvironmentMainCallsApi.md#listenvironmentlinks) | **Get** /environment/{environmentId}/link | List all URLs of the environment
 *EnvironmentSecretApi* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretApi.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretApi.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretOverride**](docs/EnvironmentSecretApi.md#createenvironmentsecretoverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level

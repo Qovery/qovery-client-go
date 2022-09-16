@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**EditEnvironment**](EnvironmentMainCallsApi.md#EditEnvironment) | **Put** /environment/{environmentId} | Edit an environment
 [**GetEnvironment**](EnvironmentMainCallsApi.md#GetEnvironment) | **Get** /environment/{environmentId} | Get environment by ID
 [**GetEnvironmentStatus**](EnvironmentMainCallsApi.md#GetEnvironmentStatus) | **Get** /environment/{environmentId}/status | Get environment status
-[**ListEnvironmentLinks**](EnvironmentMainCallsApi.md#ListEnvironmentLinks) | **Get** /environment/{environmentId}/link | List all URLs of the environment
 
 
 
@@ -273,76 +272,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Status**](Status.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListEnvironmentLinks
-
-> LinkResponseList ListEnvironmentLinks(ctx, environmentId).Execute()
-
-List all URLs of the environment
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentMainCallsApi.ListEnvironmentLinks(context.Background(), environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsApi.ListEnvironmentLinks``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListEnvironmentLinks`: LinkResponseList
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsApi.ListEnvironmentLinks`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | Environment ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListEnvironmentLinksRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**LinkResponseList**](LinkResponseList.md)
 
 ### Authorization
 
