@@ -36,8 +36,8 @@ type ApplicationRequestAllOf struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool         `json:"auto_preview,omitempty"`
-	Ports       []ServicePort `json:"ports,omitempty"`
+	AutoPreview *bool                `json:"auto_preview,omitempty"`
+	Ports       []ServicePortRequest `json:"ports,omitempty"`
 }
 
 // NewApplicationRequestAllOf instantiates a new ApplicationRequestAllOf object
@@ -485,9 +485,9 @@ func (o *ApplicationRequestAllOf) SetAutoPreview(v bool) {
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationRequestAllOf) GetPorts() []ServicePort {
+func (o *ApplicationRequestAllOf) GetPorts() []ServicePortRequest {
 	if o == nil || o.Ports == nil {
-		var ret []ServicePort
+		var ret []ServicePortRequest
 		return ret
 	}
 	return o.Ports
@@ -495,7 +495,7 @@ func (o *ApplicationRequestAllOf) GetPorts() []ServicePort {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRequestAllOf) GetPortsOk() ([]ServicePort, bool) {
+func (o *ApplicationRequestAllOf) GetPortsOk() ([]ServicePortRequest, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -511,8 +511,8 @@ func (o *ApplicationRequestAllOf) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []ServicePort and assigns it to the Ports field.
-func (o *ApplicationRequestAllOf) SetPorts(v []ServicePort) {
+// SetPorts gets a reference to the given []ServicePortRequest and assigns it to the Ports field.
+func (o *ApplicationRequestAllOf) SetPorts(v []ServicePortRequest) {
 	o.Ports = v
 }
 

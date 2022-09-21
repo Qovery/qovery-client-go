@@ -21,18 +21,12 @@ type PortProtocolEnum string
 
 // List of PortProtocolEnum
 const (
-	PORTPROTOCOLENUM_HTTP  PortProtocolEnum = "HTTP"
-	PORTPROTOCOLENUM_HTTPS PortProtocolEnum = "HTTPS"
-	PORTPROTOCOLENUM_TCP   PortProtocolEnum = "TCP"
-	PORTPROTOCOLENUM_UDP   PortProtocolEnum = "UDP"
+	PORTPROTOCOLENUM_HTTP PortProtocolEnum = "HTTP"
 )
 
 // All allowed values of PortProtocolEnum enum
 var AllowedPortProtocolEnumEnumValues = []PortProtocolEnum{
 	"HTTP",
-	"HTTPS",
-	"TCP",
-	"UDP",
 }
 
 func (v *PortProtocolEnum) UnmarshalJSON(src []byte) error {

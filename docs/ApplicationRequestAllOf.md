@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.  | [optional] [default to true]
-**Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
+**Ports** | Pointer to [**[]ServicePortRequest**](ServicePortRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -359,20 +359,20 @@ HasAutoPreview returns a boolean if a field has been set.
 
 ### GetPorts
 
-`func (o *ApplicationRequestAllOf) GetPorts() []ServicePort`
+`func (o *ApplicationRequestAllOf) GetPorts() []ServicePortRequest`
 
 GetPorts returns the Ports field if non-nil, zero value otherwise.
 
 ### GetPortsOk
 
-`func (o *ApplicationRequestAllOf) GetPortsOk() (*[]ServicePort, bool)`
+`func (o *ApplicationRequestAllOf) GetPortsOk() (*[]ServicePortRequest, bool)`
 
 GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPorts
 
-`func (o *ApplicationRequestAllOf) SetPorts(v []ServicePort)`
+`func (o *ApplicationRequestAllOf) SetPorts(v []ServicePortRequest)`
 
 SetPorts sets Ports field to given value.
 

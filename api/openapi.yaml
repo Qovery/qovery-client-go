@@ -15030,9 +15030,6 @@ components:
       default: HTTP
       enum:
       - HTTP
-      - HTTPS
-      - TCP
-      - UDP
       type: string
     Project:
       allOf:
@@ -15275,6 +15272,10 @@ components:
       - key
       - value
       type: object
+    ServicePortRequestList:
+      items:
+        $ref: '#/components/schemas/ServicePortRequest'
+      type: array
     SecretRequest:
       example:
         value: value
@@ -15945,7 +15946,7 @@ components:
           type: boolean
         ports:
           items:
-            $ref: '#/components/schemas/ServicePort'
+            $ref: '#/components/schemas/ServicePortRequest'
           type: array
       required:
       - git_repository
