@@ -11393,6 +11393,7 @@ components:
     ApplicationRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
+      - $ref: '#/components/schemas/ServicePortRequest'
       - $ref: '#/components/schemas/ApplicationRequest_allOf'
     ApplicationResponseList:
       example:
@@ -15272,10 +15273,6 @@ components:
       - key
       - value
       type: object
-    ServicePortRequestList:
-      items:
-        $ref: '#/components/schemas/ServicePortRequest'
-      type: array
     SecretRequest:
       example:
         value: value
@@ -15944,10 +15941,6 @@ components:
             \ not for this application.\nIf activated, a preview environment will\
             \ be automatically cloned at each pull request.\n"
           type: boolean
-        ports:
-          items:
-            $ref: '#/components/schemas/ServicePortRequest'
-          type: array
       required:
       - git_repository
       - name

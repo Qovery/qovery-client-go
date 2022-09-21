@@ -36,8 +36,7 @@ type ApplicationRequestAllOf struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool                `json:"auto_preview,omitempty"`
-	Ports       []ServicePortRequest `json:"ports,omitempty"`
+	AutoPreview *bool `json:"auto_preview,omitempty"`
 }
 
 // NewApplicationRequestAllOf instantiates a new ApplicationRequestAllOf object
@@ -484,38 +483,6 @@ func (o *ApplicationRequestAllOf) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationRequestAllOf) GetPorts() []ServicePortRequest {
-	if o == nil || o.Ports == nil {
-		var ret []ServicePortRequest
-		return ret
-	}
-	return o.Ports
-}
-
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationRequestAllOf) GetPortsOk() ([]ServicePortRequest, bool) {
-	if o == nil || o.Ports == nil {
-		return nil, false
-	}
-	return o.Ports, true
-}
-
-// HasPorts returns a boolean if a field has been set.
-func (o *ApplicationRequestAllOf) HasPorts() bool {
-	if o != nil && o.Ports != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given []ServicePortRequest and assigns it to the Ports field.
-func (o *ApplicationRequestAllOf) SetPorts(v []ServicePortRequest) {
-	o.Ports = v
-}
-
 func (o ApplicationRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -553,9 +520,6 @@ func (o ApplicationRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }

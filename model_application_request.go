@@ -18,6 +18,7 @@ import (
 // ApplicationRequest struct for ApplicationRequest
 type ApplicationRequest struct {
 	Storage []ServiceStorageRequestStorageInner `json:"storage,omitempty"`
+	Ports   []ServicePortRequestPortsInner      `json:"ports,omitempty"`
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this application
@@ -37,8 +38,7 @@ type ApplicationRequest struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application. If activated, a preview environment will be automatically cloned at each pull request.
-	AutoPreview *bool                `json:"auto_preview,omitempty"`
-	Ports       []ServicePortRequest `json:"ports,omitempty"`
+	AutoPreview *bool `json:"auto_preview,omitempty"`
 }
 
 // NewApplicationRequest instantiates a new ApplicationRequest object
@@ -114,6 +114,38 @@ func (o *ApplicationRequest) HasStorage() bool {
 // SetStorage gets a reference to the given []ServiceStorageRequestStorageInner and assigns it to the Storage field.
 func (o *ApplicationRequest) SetStorage(v []ServiceStorageRequestStorageInner) {
 	o.Storage = v
+}
+
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetPorts() []ServicePortRequestPortsInner {
+	if o == nil || o.Ports == nil {
+		var ret []ServicePortRequestPortsInner
+		return ret
+	}
+	return o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
+	if o == nil || o.Ports == nil {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasPorts() bool {
+	if o != nil && o.Ports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given []ServicePortRequestPortsInner and assigns it to the Ports field.
+func (o *ApplicationRequest) SetPorts(v []ServicePortRequestPortsInner) {
+	o.Ports = v
 }
 
 // GetName returns the Name field value
@@ -517,42 +549,13 @@ func (o *ApplicationRequest) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *ApplicationRequest) GetPorts() []ServicePortRequest {
-	if o == nil || o.Ports == nil {
-		var ret []ServicePortRequest
-		return ret
-	}
-	return o.Ports
-}
-
-// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationRequest) GetPortsOk() ([]ServicePortRequest, bool) {
-	if o == nil || o.Ports == nil {
-		return nil, false
-	}
-	return o.Ports, true
-}
-
-// HasPorts returns a boolean if a field has been set.
-func (o *ApplicationRequest) HasPorts() bool {
-	if o != nil && o.Ports != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPorts gets a reference to the given []ServicePortRequest and assigns it to the Ports field.
-func (o *ApplicationRequest) SetPorts(v []ServicePortRequest) {
-	o.Ports = v
-}
-
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
+	}
+	if o.Ports != nil {
+		toSerialize["ports"] = o.Ports
 	}
 	if true {
 		toSerialize["name"] = o.Name
@@ -589,9 +592,6 @@ func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
 	}
 	return json.Marshal(toSerialize)
 }
