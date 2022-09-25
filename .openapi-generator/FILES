@@ -43,6 +43,7 @@ api_database_main_calls.go
 api_database_metrics.go
 api_databases.go
 api_dependency.go
+api_environment.go
 api_environment_actions.go
 api_environment_deployment_history.go
 api_environment_deployment_rule.go
@@ -266,6 +267,7 @@ docs/Environment.md
 docs/EnvironmentActionsApi.md
 docs/EnvironmentAllOf.md
 docs/EnvironmentAllOfCloudProvider.md
+docs/EnvironmentApi.md
 docs/EnvironmentApplicationsCurrentScale.md
 docs/EnvironmentApplicationsCurrentScaleResponseList.md
 docs/EnvironmentApplicationsInstanceResponseList.md

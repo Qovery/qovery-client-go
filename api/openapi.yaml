@@ -4664,7 +4664,11 @@ paths:
       - Applications
   /environment/{environmentId}/application/deploy:
     post:
-      description: Deploy to the last commit the applications you specified.
+      description: "Start a deployment of the environment. Any of the services within\
+        \ the chosen environment based on the following rule: a service is deployed\
+        \ only if a new version is specified in the payload for that application/container\
+        \ or if there was a change in its configuration that needs to be applied (vCPU,RAM\
+        \ etc..)"
       operationId: deployAllApplications
       parameters:
       - description: Environment ID
@@ -4700,7 +4704,7 @@ paths:
           description: Operation is in progress
       summary: Deploy applications
       tags:
-      - Applications
+      - Environment
   /environment/{environmentId}/container:
     get:
       operationId: listContainer

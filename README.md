@@ -134,7 +134,6 @@ Class | Method | HTTP request | Description
 *ApplicationSecretApi* | [**EditApplicationSecret**](docs/ApplicationSecretApi.md#editapplicationsecret) | **Put** /application/{applicationId}/secret/{secretId} | Edit a secret belonging to the application
 *ApplicationSecretApi* | [**ListApplicationSecrets**](docs/ApplicationSecretApi.md#listapplicationsecrets) | **Get** /application/{applicationId}/secret | List application secrets
 *ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **Post** /environment/{environmentId}/application | Create an application
-*ApplicationsApi* | [**DeployAllApplications**](docs/ApplicationsApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *ApplicationsApi* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsApi.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentScale**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentscale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentStorage**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentstorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
@@ -288,6 +287,7 @@ Class | Method | HTTP request | Description
 *DependencyApi* | [**CreateApplicationDependency**](docs/DependencyApi.md#createapplicationdependency) | **Post** /application/{applicationId}/dependency/{targetApplicationId} | Add application dependency to this application.
 *DependencyApi* | [**ListApplicationDependency**](docs/DependencyApi.md#listapplicationdependency) | **Get** /application/{applicationId}/dependency | List application dependencies
 *DependencyApi* | [**RemoveApplicationDependency**](docs/DependencyApi.md#removeapplicationdependency) | **Delete** /application/{applicationId}/dependency/{targetApplicationId} | Remove application dependency to this application.
+*EnvironmentApi* | [**DeployAllApplications**](docs/EnvironmentApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsApi* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsApi.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsApi* | [**CloneEnvironment**](docs/EnvironmentActionsApi.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
 *EnvironmentActionsApi* | [**DeployEnvironment**](docs/EnvironmentActionsApi.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
