@@ -20,8 +20,8 @@ type OrganizationCustomRoleProjectPermissionsInner struct {
 	ProjectId   *string `json:"project_id,omitempty"`
 	ProjectName *string `json:"project_name,omitempty"`
 	// If `is_admin` is `true`, the user is: - automatically `MANAGER` for each environment type - allowed to manage project deployment rules - able to delete the project Note that `permissions` can then be ignored for this project
-	IsAdmin     *bool                                                                  `json:"is_admin,omitempty"`
-	Permissions []OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner `json:"permissions,omitempty"`
+	IsAdmin     *bool                                                                        `json:"is_admin,omitempty"`
+	Permissions []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner `json:"permissions,omitempty"`
 }
 
 // NewOrganizationCustomRoleProjectPermissionsInner instantiates a new OrganizationCustomRoleProjectPermissionsInner object
@@ -142,9 +142,9 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) SetIsAdmin(v bool) {
 }
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
-func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissions() []OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner {
+func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissions() []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
 	if o == nil || o.Permissions == nil {
-		var ret []OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner
+		var ret []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 		return ret
 	}
 	return o.Permissions
@@ -152,7 +152,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissions() []Organ
 
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissionsOk() ([]OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner, bool) {
+func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissionsOk() ([]OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner, bool) {
 	if o == nil || o.Permissions == nil {
 		return nil, false
 	}
@@ -168,8 +168,8 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) HasPermissions() bool {
 	return false
 }
 
-// SetPermissions gets a reference to the given []OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner and assigns it to the Permissions field.
-func (o *OrganizationCustomRoleProjectPermissionsInner) SetPermissions(v []OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner) {
+// SetPermissions gets a reference to the given []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner and assigns it to the Permissions field.
+func (o *OrganizationCustomRoleProjectPermissionsInner) SetPermissions(v []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) {
 	o.Permissions = v
 }
 

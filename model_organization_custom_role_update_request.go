@@ -15,38 +15,38 @@ import (
 	"encoding/json"
 )
 
-// OrganizationCustomRoleRequest struct for OrganizationCustomRoleRequest
-type OrganizationCustomRoleRequest struct {
+// OrganizationCustomRoleUpdateRequest struct for OrganizationCustomRoleUpdateRequest
+type OrganizationCustomRoleUpdateRequest struct {
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
 	// Should contain an entry for every existing cluster
-	ClusterPermissions []OrganizationCustomRoleRequestClusterPermissionsInner `json:"cluster_permissions"`
+	ClusterPermissions []OrganizationCustomRoleUpdateRequestClusterPermissionsInner `json:"cluster_permissions"`
 	// Should contain an entry for every existing project
-	ProjectPermissions []OrganizationCustomRoleRequestProjectPermissionsInner `json:"project_permissions"`
+	ProjectPermissions []OrganizationCustomRoleUpdateRequestProjectPermissionsInner `json:"project_permissions"`
 }
 
-// NewOrganizationCustomRoleRequest instantiates a new OrganizationCustomRoleRequest object
+// NewOrganizationCustomRoleUpdateRequest instantiates a new OrganizationCustomRoleUpdateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationCustomRoleRequest(name string, clusterPermissions []OrganizationCustomRoleRequestClusterPermissionsInner, projectPermissions []OrganizationCustomRoleRequestProjectPermissionsInner) *OrganizationCustomRoleRequest {
-	this := OrganizationCustomRoleRequest{}
+func NewOrganizationCustomRoleUpdateRequest(name string, clusterPermissions []OrganizationCustomRoleUpdateRequestClusterPermissionsInner, projectPermissions []OrganizationCustomRoleUpdateRequestProjectPermissionsInner) *OrganizationCustomRoleUpdateRequest {
+	this := OrganizationCustomRoleUpdateRequest{}
 	this.Name = name
 	this.ClusterPermissions = clusterPermissions
 	this.ProjectPermissions = projectPermissions
 	return &this
 }
 
-// NewOrganizationCustomRoleRequestWithDefaults instantiates a new OrganizationCustomRoleRequest object
+// NewOrganizationCustomRoleUpdateRequestWithDefaults instantiates a new OrganizationCustomRoleUpdateRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOrganizationCustomRoleRequestWithDefaults() *OrganizationCustomRoleRequest {
-	this := OrganizationCustomRoleRequest{}
+func NewOrganizationCustomRoleUpdateRequestWithDefaults() *OrganizationCustomRoleUpdateRequest {
+	this := OrganizationCustomRoleUpdateRequest{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *OrganizationCustomRoleRequest) GetName() string {
+func (o *OrganizationCustomRoleUpdateRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *OrganizationCustomRoleRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationCustomRoleRequest) GetNameOk() (*string, bool) {
+func (o *OrganizationCustomRoleUpdateRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,12 +65,12 @@ func (o *OrganizationCustomRoleRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *OrganizationCustomRoleRequest) SetName(v string) {
+func (o *OrganizationCustomRoleUpdateRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *OrganizationCustomRoleRequest) GetDescription() string {
+func (o *OrganizationCustomRoleUpdateRequest) GetDescription() string {
 	if o == nil || o.Description == nil {
 		var ret string
 		return ret
@@ -80,7 +80,7 @@ func (o *OrganizationCustomRoleRequest) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCustomRoleRequest) GetDescriptionOk() (*string, bool) {
+func (o *OrganizationCustomRoleUpdateRequest) GetDescriptionOk() (*string, bool) {
 	if o == nil || o.Description == nil {
 		return nil, false
 	}
@@ -88,7 +88,7 @@ func (o *OrganizationCustomRoleRequest) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *OrganizationCustomRoleRequest) HasDescription() bool {
+func (o *OrganizationCustomRoleUpdateRequest) HasDescription() bool {
 	if o != nil && o.Description != nil {
 		return true
 	}
@@ -97,14 +97,14 @@ func (o *OrganizationCustomRoleRequest) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *OrganizationCustomRoleRequest) SetDescription(v string) {
+func (o *OrganizationCustomRoleUpdateRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetClusterPermissions returns the ClusterPermissions field value
-func (o *OrganizationCustomRoleRequest) GetClusterPermissions() []OrganizationCustomRoleRequestClusterPermissionsInner {
+func (o *OrganizationCustomRoleUpdateRequest) GetClusterPermissions() []OrganizationCustomRoleUpdateRequestClusterPermissionsInner {
 	if o == nil {
-		var ret []OrganizationCustomRoleRequestClusterPermissionsInner
+		var ret []OrganizationCustomRoleUpdateRequestClusterPermissionsInner
 		return ret
 	}
 
@@ -113,7 +113,7 @@ func (o *OrganizationCustomRoleRequest) GetClusterPermissions() []OrganizationCu
 
 // GetClusterPermissionsOk returns a tuple with the ClusterPermissions field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationCustomRoleRequest) GetClusterPermissionsOk() ([]OrganizationCustomRoleRequestClusterPermissionsInner, bool) {
+func (o *OrganizationCustomRoleUpdateRequest) GetClusterPermissionsOk() ([]OrganizationCustomRoleUpdateRequestClusterPermissionsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,14 +121,14 @@ func (o *OrganizationCustomRoleRequest) GetClusterPermissionsOk() ([]Organizatio
 }
 
 // SetClusterPermissions sets field value
-func (o *OrganizationCustomRoleRequest) SetClusterPermissions(v []OrganizationCustomRoleRequestClusterPermissionsInner) {
+func (o *OrganizationCustomRoleUpdateRequest) SetClusterPermissions(v []OrganizationCustomRoleUpdateRequestClusterPermissionsInner) {
 	o.ClusterPermissions = v
 }
 
 // GetProjectPermissions returns the ProjectPermissions field value
-func (o *OrganizationCustomRoleRequest) GetProjectPermissions() []OrganizationCustomRoleRequestProjectPermissionsInner {
+func (o *OrganizationCustomRoleUpdateRequest) GetProjectPermissions() []OrganizationCustomRoleUpdateRequestProjectPermissionsInner {
 	if o == nil {
-		var ret []OrganizationCustomRoleRequestProjectPermissionsInner
+		var ret []OrganizationCustomRoleUpdateRequestProjectPermissionsInner
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *OrganizationCustomRoleRequest) GetProjectPermissions() []OrganizationCu
 
 // GetProjectPermissionsOk returns a tuple with the ProjectPermissions field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationCustomRoleRequest) GetProjectPermissionsOk() ([]OrganizationCustomRoleRequestProjectPermissionsInner, bool) {
+func (o *OrganizationCustomRoleUpdateRequest) GetProjectPermissionsOk() ([]OrganizationCustomRoleUpdateRequestProjectPermissionsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,11 +145,11 @@ func (o *OrganizationCustomRoleRequest) GetProjectPermissionsOk() ([]Organizatio
 }
 
 // SetProjectPermissions sets field value
-func (o *OrganizationCustomRoleRequest) SetProjectPermissions(v []OrganizationCustomRoleRequestProjectPermissionsInner) {
+func (o *OrganizationCustomRoleUpdateRequest) SetProjectPermissions(v []OrganizationCustomRoleUpdateRequestProjectPermissionsInner) {
 	o.ProjectPermissions = v
 }
 
-func (o OrganizationCustomRoleRequest) MarshalJSON() ([]byte, error) {
+func (o OrganizationCustomRoleUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
@@ -166,38 +166,38 @@ func (o OrganizationCustomRoleRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableOrganizationCustomRoleRequest struct {
-	value *OrganizationCustomRoleRequest
+type NullableOrganizationCustomRoleUpdateRequest struct {
+	value *OrganizationCustomRoleUpdateRequest
 	isSet bool
 }
 
-func (v NullableOrganizationCustomRoleRequest) Get() *OrganizationCustomRoleRequest {
+func (v NullableOrganizationCustomRoleUpdateRequest) Get() *OrganizationCustomRoleUpdateRequest {
 	return v.value
 }
 
-func (v *NullableOrganizationCustomRoleRequest) Set(val *OrganizationCustomRoleRequest) {
+func (v *NullableOrganizationCustomRoleUpdateRequest) Set(val *OrganizationCustomRoleUpdateRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOrganizationCustomRoleRequest) IsSet() bool {
+func (v NullableOrganizationCustomRoleUpdateRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOrganizationCustomRoleRequest) Unset() {
+func (v *NullableOrganizationCustomRoleUpdateRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOrganizationCustomRoleRequest(val *OrganizationCustomRoleRequest) *NullableOrganizationCustomRoleRequest {
-	return &NullableOrganizationCustomRoleRequest{value: val, isSet: true}
+func NewNullableOrganizationCustomRoleUpdateRequest(val *OrganizationCustomRoleUpdateRequest) *NullableOrganizationCustomRoleUpdateRequest {
+	return &NullableOrganizationCustomRoleUpdateRequest{value: val, isSet: true}
 }
 
-func (v NullableOrganizationCustomRoleRequest) MarshalJSON() ([]byte, error) {
+func (v NullableOrganizationCustomRoleUpdateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOrganizationCustomRoleRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganizationCustomRoleUpdateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

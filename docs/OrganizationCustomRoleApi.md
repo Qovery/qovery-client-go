@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateOrganizationCustomRole
 
-> OrganizationCustomRole CreateOrganizationCustomRole(ctx, organizationId).OrganizationCustomRoleRequest(organizationCustomRoleRequest).Execute()
+> OrganizationCustomRole CreateOrganizationCustomRole(ctx, organizationId).OrganizationCustomRoleCreateRequest(organizationCustomRoleCreateRequest).Execute()
 
 Create an organization custom role
 
@@ -34,11 +34,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationCustomRoleRequest := *openapiclient.NewOrganizationCustomRoleRequest("Name_example", []openapiclient.OrganizationCustomRoleRequestClusterPermissionsInner{*openapiclient.NewOrganizationCustomRoleRequestClusterPermissionsInner()}, []openapiclient.OrganizationCustomRoleRequestProjectPermissionsInner{*openapiclient.NewOrganizationCustomRoleRequestProjectPermissionsInner()}) // OrganizationCustomRoleRequest |  (optional)
+    organizationCustomRoleCreateRequest := *openapiclient.NewOrganizationCustomRoleCreateRequest("Name_example") // OrganizationCustomRoleCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationCustomRoleApi.CreateOrganizationCustomRole(context.Background(), organizationId).OrganizationCustomRoleRequest(organizationCustomRoleRequest).Execute()
+    resp, r, err := apiClient.OrganizationCustomRoleApi.CreateOrganizationCustomRole(context.Background(), organizationId).OrganizationCustomRoleCreateRequest(organizationCustomRoleCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleApi.CreateOrganizationCustomRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiCreateOrganizationCustomRo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **organizationCustomRoleRequest** | [**OrganizationCustomRoleRequest**](OrganizationCustomRoleRequest.md) |  | 
+ **organizationCustomRoleCreateRequest** | [**OrganizationCustomRoleCreateRequest**](OrganizationCustomRoleCreateRequest.md) |  | 
 
 ### Return type
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationCustomRole
 
-> OrganizationCustomRole EditOrganizationCustomRole(ctx, organizationId).OrganizationCustomRoleRequest(organizationCustomRoleRequest).Execute()
+> OrganizationCustomRole EditOrganizationCustomRole(ctx, organizationId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
 
 Edit an organization custom role
 
@@ -174,11 +174,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationCustomRoleRequest := *openapiclient.NewOrganizationCustomRoleRequest("Name_example", []openapiclient.OrganizationCustomRoleRequestClusterPermissionsInner{*openapiclient.NewOrganizationCustomRoleRequestClusterPermissionsInner()}, []openapiclient.OrganizationCustomRoleRequestProjectPermissionsInner{*openapiclient.NewOrganizationCustomRoleRequestProjectPermissionsInner()}) // OrganizationCustomRoleRequest |  (optional)
+    organizationCustomRoleUpdateRequest := *openapiclient.NewOrganizationCustomRoleUpdateRequest("Name_example", []openapiclient.OrganizationCustomRoleUpdateRequestClusterPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestClusterPermissionsInner()}, []openapiclient.OrganizationCustomRoleUpdateRequestProjectPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestProjectPermissionsInner()}) // OrganizationCustomRoleUpdateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationCustomRoleApi.EditOrganizationCustomRole(context.Background(), organizationId).OrganizationCustomRoleRequest(organizationCustomRoleRequest).Execute()
+    resp, r, err := apiClient.OrganizationCustomRoleApi.EditOrganizationCustomRole(context.Background(), organizationId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleApi.EditOrganizationCustomRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,7 +204,7 @@ Other parameters are passed through a pointer to a apiEditOrganizationCustomRole
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **organizationCustomRoleRequest** | [**OrganizationCustomRoleRequest**](OrganizationCustomRoleRequest.md) |  | 
+ **organizationCustomRoleUpdateRequest** | [**OrganizationCustomRoleUpdateRequest**](OrganizationCustomRoleUpdateRequest.md) |  | 
 
 ### Return type
 

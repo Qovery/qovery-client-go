@@ -2626,7 +2626,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrganizationCustomRoleRequest'
+              $ref: '#/components/schemas/OrganizationCustomRoleCreateRequest'
       responses:
         "201":
           content:
@@ -2724,7 +2724,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrganizationCustomRoleRequest'
+              $ref: '#/components/schemas/OrganizationCustomRoleUpdateRequest'
       responses:
         "200":
           content:
@@ -15063,7 +15063,19 @@ components:
       allOf:
       - $ref: '#/components/schemas/CurrentCost'
       - $ref: '#/components/schemas/OrganizationCurrentCost_allOf'
-    OrganizationCustomRoleRequest:
+    OrganizationCustomRoleCreateRequest:
+      example:
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      type: object
+    OrganizationCustomRoleUpdateRequest:
       example:
         cluster_permissions:
         - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -15095,12 +15107,12 @@ components:
         cluster_permissions:
           description: Should contain an entry for every existing cluster
           items:
-            $ref: '#/components/schemas/OrganizationCustomRoleRequest_cluster_permissions_inner'
+            $ref: '#/components/schemas/OrganizationCustomRoleUpdateRequest_cluster_permissions_inner'
           type: array
         project_permissions:
           description: Should contain an entry for every existing project
           items:
-            $ref: '#/components/schemas/OrganizationCustomRoleRequest_project_permissions_inner'
+            $ref: '#/components/schemas/OrganizationCustomRoleUpdateRequest_project_permissions_inner'
           type: array
       required:
       - cluster_permissions
@@ -17477,7 +17489,7 @@ components:
         paid_usage:
           $ref: '#/components/schemas/PaidUsage'
       type: object
-    OrganizationCustomRoleRequest_cluster_permissions_inner:
+    OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         permission: VIEWER
@@ -17488,7 +17500,7 @@ components:
         permission:
           $ref: '#/components/schemas/OrganizationCustomRoleClusterPermission'
       type: object
-    OrganizationCustomRoleRequest_project_permissions_inner_permissions_inner:
+    OrganizationCustomRoleUpdateRequest_project_permissions_inner_permissions_inner:
       example:
         permission: NO_ACCESS
         environment_type: PRODUCTION
@@ -17498,7 +17510,7 @@ components:
         permission:
           $ref: '#/components/schemas/OrganizationCustomRoleProjectPermission'
       type: object
-    OrganizationCustomRoleRequest_project_permissions_inner:
+    OrganizationCustomRoleUpdateRequest_project_permissions_inner:
       example:
         is_admin: false
         project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -17523,7 +17535,7 @@ components:
             \ for every environment type:\n- `DEVELOPMENT`\n- `PREVIEW`\n- `STAGING`\n\
             - `PRODUCTION`\n"
           items:
-            $ref: '#/components/schemas/OrganizationCustomRoleRequest_project_permissions_inner_permissions_inner'
+            $ref: '#/components/schemas/OrganizationCustomRoleUpdateRequest_project_permissions_inner_permissions_inner'
           type: array
       type: object
     OrganizationCustomRole_cluster_permissions_inner:
@@ -17565,7 +17577,7 @@ components:
           type: boolean
         permissions:
           items:
-            $ref: '#/components/schemas/OrganizationCustomRoleRequest_project_permissions_inner_permissions_inner'
+            $ref: '#/components/schemas/OrganizationCustomRoleUpdateRequest_project_permissions_inner_permissions_inner'
           type: array
       type: object
     OrganizationWebhookCreateResponse_allOf:

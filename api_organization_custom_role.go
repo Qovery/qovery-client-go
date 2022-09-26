@@ -24,14 +24,14 @@ import (
 type OrganizationCustomRoleApiService service
 
 type ApiCreateOrganizationCustomRoleRequest struct {
-	ctx                           context.Context
-	ApiService                    *OrganizationCustomRoleApiService
-	organizationId                string
-	organizationCustomRoleRequest *OrganizationCustomRoleRequest
+	ctx                                 context.Context
+	ApiService                          *OrganizationCustomRoleApiService
+	organizationId                      string
+	organizationCustomRoleCreateRequest *OrganizationCustomRoleCreateRequest
 }
 
-func (r ApiCreateOrganizationCustomRoleRequest) OrganizationCustomRoleRequest(organizationCustomRoleRequest OrganizationCustomRoleRequest) ApiCreateOrganizationCustomRoleRequest {
-	r.organizationCustomRoleRequest = &organizationCustomRoleRequest
+func (r ApiCreateOrganizationCustomRoleRequest) OrganizationCustomRoleCreateRequest(organizationCustomRoleCreateRequest OrganizationCustomRoleCreateRequest) ApiCreateOrganizationCustomRoleRequest {
+	r.organizationCustomRoleCreateRequest = &organizationCustomRoleCreateRequest
 	return r
 }
 
@@ -96,7 +96,7 @@ func (a *OrganizationCustomRoleApiService) CreateOrganizationCustomRoleExecute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationCustomRoleRequest
+	localVarPostBody = r.organizationCustomRoleCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -227,14 +227,14 @@ func (a *OrganizationCustomRoleApiService) DeleteOrganizationCustomRoleExecute(r
 }
 
 type ApiEditOrganizationCustomRoleRequest struct {
-	ctx                           context.Context
-	ApiService                    *OrganizationCustomRoleApiService
-	organizationId                string
-	organizationCustomRoleRequest *OrganizationCustomRoleRequest
+	ctx                                 context.Context
+	ApiService                          *OrganizationCustomRoleApiService
+	organizationId                      string
+	organizationCustomRoleUpdateRequest *OrganizationCustomRoleUpdateRequest
 }
 
-func (r ApiEditOrganizationCustomRoleRequest) OrganizationCustomRoleRequest(organizationCustomRoleRequest OrganizationCustomRoleRequest) ApiEditOrganizationCustomRoleRequest {
-	r.organizationCustomRoleRequest = &organizationCustomRoleRequest
+func (r ApiEditOrganizationCustomRoleRequest) OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest OrganizationCustomRoleUpdateRequest) ApiEditOrganizationCustomRoleRequest {
+	r.organizationCustomRoleUpdateRequest = &organizationCustomRoleUpdateRequest
 	return r
 }
 
@@ -299,7 +299,7 @@ func (a *OrganizationCustomRoleApiService) EditOrganizationCustomRoleExecute(r A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationCustomRoleRequest
+	localVarPostBody = r.organizationCustomRoleUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

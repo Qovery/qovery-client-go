@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ProjectId** | Pointer to **string** |  | [optional] 
 **ProjectName** | Pointer to **string** |  | [optional] 
 **IsAdmin** | Pointer to **bool** | If &#x60;is_admin&#x60; is &#x60;true&#x60;, the user is: - automatically &#x60;MANAGER&#x60; for each environment type - allowed to manage project deployment rules - able to delete the project Note that &#x60;permissions&#x60; can then be ignored for this project  | [optional] [default to false]
-**Permissions** | Pointer to [**[]OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner**](OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner.md) |  | [optional] 
+**Permissions** | Pointer to [**[]OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner**](OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasIsAdmin returns a boolean if a field has been set.
 
 ### GetPermissions
 
-`func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissions() []OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner`
+`func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissions() []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner`
 
 GetPermissions returns the Permissions field if non-nil, zero value otherwise.
 
 ### GetPermissionsOk
 
-`func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissionsOk() (*[]OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner, bool)`
+`func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissionsOk() (*[]OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner, bool)`
 
 GetPermissionsOk returns a tuple with the Permissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPermissions
 
-`func (o *OrganizationCustomRoleProjectPermissionsInner) SetPermissions(v []OrganizationCustomRoleRequestProjectPermissionsInnerPermissionsInner)`
+`func (o *OrganizationCustomRoleProjectPermissionsInner) SetPermissions(v []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner)`
 
 SetPermissions sets Permissions field to given value.
 
