@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteInviteMember**](MembersApi.md#DeleteInviteMember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
 [**DeleteMember**](MembersApi.md#DeleteMember) | **Delete** /organization/{organizationId}/member/{userId} | Remove a member
+[**EditOrganizationMemberRole**](MembersApi.md#EditOrganizationMemberRole) | **Put** /organization/{organizationId}/member | Edit an organization member role
 [**GetOrganizationInvitedMembers**](MembersApi.md#GetOrganizationInvitedMembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
 [**GetOrganizationMembers**](MembersApi.md#GetOrganizationMembers) | **Get** /organization/{organizationId}/member | Get organization members
 [**PostAcceptInviteMember**](MembersApi.md#PostAcceptInviteMember) | **Post** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization
@@ -142,6 +143,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EditOrganizationMemberRole
+
+> EditOrganizationMemberRole(ctx, organizationId).MemberRoleUpdateRequest(memberRoleUpdateRequest).Execute()
+
+Edit an organization member role
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    memberRoleUpdateRequest := *openapiclient.NewMemberRoleUpdateRequest() // MemberRoleUpdateRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.EditOrganizationMemberRole(context.Background(), organizationId).MemberRoleUpdateRequest(memberRoleUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.EditOrganizationMemberRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditOrganizationMemberRoleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **memberRoleUpdateRequest** | [**MemberRoleUpdateRequest**](MemberRoleUpdateRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

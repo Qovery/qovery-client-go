@@ -207,6 +207,106 @@ func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*http
 	return localVarHTTPResponse, nil
 }
 
+type ApiEditOrganizationMemberRoleRequest struct {
+	ctx                     context.Context
+	ApiService              *MembersApiService
+	organizationId          string
+	memberRoleUpdateRequest *MemberRoleUpdateRequest
+}
+
+func (r ApiEditOrganizationMemberRoleRequest) MemberRoleUpdateRequest(memberRoleUpdateRequest MemberRoleUpdateRequest) ApiEditOrganizationMemberRoleRequest {
+	r.memberRoleUpdateRequest = &memberRoleUpdateRequest
+	return r
+}
+
+func (r ApiEditOrganizationMemberRoleRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EditOrganizationMemberRoleExecute(r)
+}
+
+/*
+EditOrganizationMemberRole Edit an organization member role
+
+Edit an organization member role
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiEditOrganizationMemberRoleRequest
+*/
+func (a *MembersApiService) EditOrganizationMemberRole(ctx context.Context, organizationId string) ApiEditOrganizationMemberRoleRequest {
+	return ApiEditOrganizationMemberRoleRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+func (a *MembersApiService) EditOrganizationMemberRoleExecute(r ApiEditOrganizationMemberRoleRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MembersApiService.EditOrganizationMemberRole")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/member"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.memberRoleUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiGetOrganizationInvitedMembersRequest struct {
 	ctx            context.Context
 	ApiService     *MembersApiService

@@ -28,6 +28,8 @@ type Member struct {
 	// last time the user was connected
 	LastActivityAt *time.Time            `json:"last_activity_at,omitempty"`
 	Role           *InviteMemberRoleEnum `json:"role,omitempty"`
+	// the role linked to the user
+	RoleName *string `json:"role_name,omitempty"`
 }
 
 // NewMember instantiates a new Member object
@@ -314,6 +316,38 @@ func (o *Member) SetRole(v InviteMemberRoleEnum) {
 	o.Role = &v
 }
 
+// GetRoleName returns the RoleName field value if set, zero value otherwise.
+func (o *Member) GetRoleName() string {
+	if o == nil || o.RoleName == nil {
+		var ret string
+		return ret
+	}
+	return *o.RoleName
+}
+
+// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Member) GetRoleNameOk() (*string, bool) {
+	if o == nil || o.RoleName == nil {
+		return nil, false
+	}
+	return o.RoleName, true
+}
+
+// HasRoleName returns a boolean if a field has been set.
+func (o *Member) HasRoleName() bool {
+	if o != nil && o.RoleName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleName gets a reference to the given string and assigns it to the RoleName field.
+func (o *Member) SetRoleName(v string) {
+	o.RoleName = &v
+}
+
 func (o Member) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -342,6 +376,9 @@ func (o Member) MarshalJSON() ([]byte, error) {
 	}
 	if o.Role != nil {
 		toSerialize["role"] = o.Role
+	}
+	if o.RoleName != nil {
+		toSerialize["role_name"] = o.RoleName
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// InviteMemberRoleEnum the model 'InviteMemberRoleEnum'
+// InviteMemberRoleEnum deprecated
 type InviteMemberRoleEnum string
 
 // List of InviteMemberRoleEnum

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**EditOrganization**](OrganizationMainCallsApi.md#EditOrganization) | **Put** /organization/{organizationId} | Edit an organization
 [**GetOrganization**](OrganizationMainCallsApi.md#GetOrganization) | **Get** /organization/{organizationId} | Get organization by ID
 [**ListOrganization**](OrganizationMainCallsApi.md#ListOrganization) | **Get** /organization | List user organizations
+[**ListOrganizationAvailableRoles**](OrganizationMainCallsApi.md#ListOrganizationAvailableRoles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
 
 
 
@@ -328,6 +329,76 @@ Other parameters are passed through a pointer to a apiListOrganizationRequest st
 ### Return type
 
 [**OrganizationResponseList**](OrganizationResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOrganizationAvailableRoles
+
+> OrganizationAvailableRoleList ListOrganizationAvailableRoles(ctx, organizationId).Execute()
+
+List organization available roles
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationMainCallsApi.ListOrganizationAvailableRoles(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsApi.ListOrganizationAvailableRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListOrganizationAvailableRoles`: OrganizationAvailableRoleList
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsApi.ListOrganizationAvailableRoles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOrganizationAvailableRolesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OrganizationAvailableRoleList**](OrganizationAvailableRoleList.md)
 
 ### Authorization
 

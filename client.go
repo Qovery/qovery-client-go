@@ -160,6 +160,8 @@ type APIClient struct {
 
 	OrganizationApiTokenApi *OrganizationApiTokenApiService
 
+	OrganizationCustomRoleApi *OrganizationCustomRoleApiService
+
 	OrganizationMainCallsApi *OrganizationMainCallsApiService
 
 	OrganizationWebhookApi *OrganizationWebhookApiService
@@ -250,6 +252,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MembersApi = (*MembersApiService)(&c.common)
 	c.OrganizationAccountGitRepositoriesApi = (*OrganizationAccountGitRepositoriesApiService)(&c.common)
 	c.OrganizationApiTokenApi = (*OrganizationApiTokenApiService)(&c.common)
+	c.OrganizationCustomRoleApi = (*OrganizationCustomRoleApiService)(&c.common)
 	c.OrganizationMainCallsApi = (*OrganizationMainCallsApiService)(&c.common)
 	c.OrganizationWebhookApi = (*OrganizationWebhookApiService)(&c.common)
 	c.ProjectDeploymentRuleApi = (*ProjectDeploymentRuleApiService)(&c.common)

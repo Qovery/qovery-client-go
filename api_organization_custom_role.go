@@ -20,53 +20,59 @@ import (
 	"strings"
 )
 
-// OrganizationMainCallsApiService OrganizationMainCallsApi service
-type OrganizationMainCallsApiService service
+// OrganizationCustomRoleApiService OrganizationCustomRoleApi service
+type OrganizationCustomRoleApiService service
 
-type ApiCreateOrganizationRequest struct {
-	ctx                 context.Context
-	ApiService          *OrganizationMainCallsApiService
-	organizationRequest *OrganizationRequest
+type ApiCreateOrganizationCustomRoleRequest struct {
+	ctx                           context.Context
+	ApiService                    *OrganizationCustomRoleApiService
+	organizationId                string
+	organizationCustomRoleRequest *OrganizationCustomRoleRequest
 }
 
-func (r ApiCreateOrganizationRequest) OrganizationRequest(organizationRequest OrganizationRequest) ApiCreateOrganizationRequest {
-	r.organizationRequest = &organizationRequest
+func (r ApiCreateOrganizationCustomRoleRequest) OrganizationCustomRoleRequest(organizationCustomRoleRequest OrganizationCustomRoleRequest) ApiCreateOrganizationCustomRoleRequest {
+	r.organizationCustomRoleRequest = &organizationCustomRoleRequest
 	return r
 }
 
-func (r ApiCreateOrganizationRequest) Execute() (*Organization, *http.Response, error) {
-	return r.ApiService.CreateOrganizationExecute(r)
+func (r ApiCreateOrganizationCustomRoleRequest) Execute() (*OrganizationCustomRole, *http.Response, error) {
+	return r.ApiService.CreateOrganizationCustomRoleExecute(r)
 }
 
 /*
-CreateOrganization Create an organization
+CreateOrganizationCustomRole Create an organization custom role
+
+Create an organization custom role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateOrganizationRequest
+ @param organizationId Organization ID
+ @return ApiCreateOrganizationCustomRoleRequest
 */
-func (a *OrganizationMainCallsApiService) CreateOrganization(ctx context.Context) ApiCreateOrganizationRequest {
-	return ApiCreateOrganizationRequest{
-		ApiService: a,
-		ctx:        ctx,
+func (a *OrganizationCustomRoleApiService) CreateOrganizationCustomRole(ctx context.Context, organizationId string) ApiCreateOrganizationCustomRoleRequest {
+	return ApiCreateOrganizationCustomRoleRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
 	}
 }
 
 // Execute executes the request
-//  @return Organization
-func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateOrganizationRequest) (*Organization, *http.Response, error) {
+//  @return OrganizationCustomRole
+func (a *OrganizationCustomRoleApiService) CreateOrganizationCustomRoleExecute(r ApiCreateOrganizationCustomRoleRequest) (*OrganizationCustomRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarReturnValue *OrganizationCustomRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.CreateOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationCustomRoleApiService.CreateOrganizationCustomRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization"
+	localVarPath := localBasePath + "/organization/{organizationId}/customRole"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -90,7 +96,7 @@ func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateO
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationRequest
+	localVarPostBody = r.organizationCustomRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -128,27 +134,27 @@ func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateO
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteOrganizationRequest struct {
+type ApiDeleteOrganizationCustomRoleRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationMainCallsApiService
+	ApiService     *OrganizationCustomRoleApiService
 	organizationId string
 }
 
-func (r ApiDeleteOrganizationRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteOrganizationExecute(r)
+func (r ApiDeleteOrganizationCustomRoleRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOrganizationCustomRoleExecute(r)
 }
 
 /*
-DeleteOrganization Delete an organization
+DeleteOrganizationCustomRole Delete organization custom role
 
-To delete an organization you must have the admin permission
+Delete organization custom role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
- @return ApiDeleteOrganizationRequest
+ @return ApiDeleteOrganizationCustomRoleRequest
 */
-func (a *OrganizationMainCallsApiService) DeleteOrganization(ctx context.Context, organizationId string) ApiDeleteOrganizationRequest {
-	return ApiDeleteOrganizationRequest{
+func (a *OrganizationCustomRoleApiService) DeleteOrganizationCustomRole(ctx context.Context, organizationId string) ApiDeleteOrganizationCustomRoleRequest {
+	return ApiDeleteOrganizationCustomRoleRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
@@ -156,19 +162,19 @@ func (a *OrganizationMainCallsApiService) DeleteOrganization(ctx context.Context
 }
 
 // Execute executes the request
-func (a *OrganizationMainCallsApiService) DeleteOrganizationExecute(r ApiDeleteOrganizationRequest) (*http.Response, error) {
+func (a *OrganizationCustomRoleApiService) DeleteOrganizationCustomRoleExecute(r ApiDeleteOrganizationCustomRoleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.DeleteOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationCustomRoleApiService.DeleteOrganizationCustomRole")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}"
+	localVarPath := localBasePath + "/organization/{organizationId}/customRole/{customRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -220,33 +226,33 @@ func (a *OrganizationMainCallsApiService) DeleteOrganizationExecute(r ApiDeleteO
 	return localVarHTTPResponse, nil
 }
 
-type ApiEditOrganizationRequest struct {
-	ctx                     context.Context
-	ApiService              *OrganizationMainCallsApiService
-	organizationId          string
-	organizationEditRequest *OrganizationEditRequest
+type ApiEditOrganizationCustomRoleRequest struct {
+	ctx                           context.Context
+	ApiService                    *OrganizationCustomRoleApiService
+	organizationId                string
+	organizationCustomRoleRequest *OrganizationCustomRoleRequest
 }
 
-func (r ApiEditOrganizationRequest) OrganizationEditRequest(organizationEditRequest OrganizationEditRequest) ApiEditOrganizationRequest {
-	r.organizationEditRequest = &organizationEditRequest
+func (r ApiEditOrganizationCustomRoleRequest) OrganizationCustomRoleRequest(organizationCustomRoleRequest OrganizationCustomRoleRequest) ApiEditOrganizationCustomRoleRequest {
+	r.organizationCustomRoleRequest = &organizationCustomRoleRequest
 	return r
 }
 
-func (r ApiEditOrganizationRequest) Execute() (*Organization, *http.Response, error) {
-	return r.ApiService.EditOrganizationExecute(r)
+func (r ApiEditOrganizationCustomRoleRequest) Execute() (*OrganizationCustomRole, *http.Response, error) {
+	return r.ApiService.EditOrganizationCustomRoleExecute(r)
 }
 
 /*
-EditOrganization Edit an organization
+EditOrganizationCustomRole Edit an organization custom role
 
-To edit an organization you must have the admin permission
+Edit an organization custom role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
- @return ApiEditOrganizationRequest
+ @return ApiEditOrganizationCustomRoleRequest
 */
-func (a *OrganizationMainCallsApiService) EditOrganization(ctx context.Context, organizationId string) ApiEditOrganizationRequest {
-	return ApiEditOrganizationRequest{
+func (a *OrganizationCustomRoleApiService) EditOrganizationCustomRole(ctx context.Context, organizationId string) ApiEditOrganizationCustomRoleRequest {
+	return ApiEditOrganizationCustomRoleRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
@@ -254,21 +260,21 @@ func (a *OrganizationMainCallsApiService) EditOrganization(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Organization
-func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrganizationRequest) (*Organization, *http.Response, error) {
+//  @return OrganizationCustomRole
+func (a *OrganizationCustomRoleApiService) EditOrganizationCustomRoleExecute(r ApiEditOrganizationCustomRoleRequest) (*OrganizationCustomRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarReturnValue *OrganizationCustomRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.EditOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationCustomRoleApiService.EditOrganizationCustomRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}"
+	localVarPath := localBasePath + "/organization/{organizationId}/customRole/{customRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -293,7 +299,7 @@ func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrgan
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationEditRequest
+	localVarPostBody = r.organizationCustomRoleRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -331,48 +337,54 @@ func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrgan
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetOrganizationRequest struct {
+type ApiGetOrganizationCustomRoleRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationMainCallsApiService
+	ApiService     *OrganizationCustomRoleApiService
 	organizationId string
+	customRoleId   string
 }
 
-func (r ApiGetOrganizationRequest) Execute() (*Organization, *http.Response, error) {
-	return r.ApiService.GetOrganizationExecute(r)
+func (r ApiGetOrganizationCustomRoleRequest) Execute() (*OrganizationCustomRole, *http.Response, error) {
+	return r.ApiService.GetOrganizationCustomRoleExecute(r)
 }
 
 /*
-GetOrganization Get organization by ID
+GetOrganizationCustomRole Get an organization custom role
+
+Get an organization custom role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
- @return ApiGetOrganizationRequest
+ @param customRoleId Custom Role ID
+ @return ApiGetOrganizationCustomRoleRequest
 */
-func (a *OrganizationMainCallsApiService) GetOrganization(ctx context.Context, organizationId string) ApiGetOrganizationRequest {
-	return ApiGetOrganizationRequest{
+func (a *OrganizationCustomRoleApiService) GetOrganizationCustomRole(ctx context.Context, organizationId string, customRoleId string) ApiGetOrganizationCustomRoleRequest {
+	return ApiGetOrganizationCustomRoleRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		customRoleId:   customRoleId,
 	}
 }
 
 // Execute executes the request
-//  @return Organization
-func (a *OrganizationMainCallsApiService) GetOrganizationExecute(r ApiGetOrganizationRequest) (*Organization, *http.Response, error) {
+//  @return OrganizationCustomRole
+func (a *OrganizationCustomRoleApiService) GetOrganizationCustomRoleExecute(r ApiGetOrganizationCustomRoleRequest) (*OrganizationCustomRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarReturnValue *OrganizationCustomRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.GetOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationCustomRoleApiService.GetOrganizationCustomRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}"
+	localVarPath := localBasePath + "/organization/{organizationId}/customRole/{customRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"customRoleId"+"}", url.PathEscape(parameterToString(r.customRoleId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -432,124 +444,27 @@ func (a *OrganizationMainCallsApiService) GetOrganizationExecute(r ApiGetOrganiz
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListOrganizationRequest struct {
-	ctx        context.Context
-	ApiService *OrganizationMainCallsApiService
-}
-
-func (r ApiListOrganizationRequest) Execute() (*OrganizationResponseList, *http.Response, error) {
-	return r.ApiService.ListOrganizationExecute(r)
-}
-
-/*
-ListOrganization List user organizations
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListOrganizationRequest
-*/
-func (a *OrganizationMainCallsApiService) ListOrganization(ctx context.Context) ApiListOrganizationRequest {
-	return ApiListOrganizationRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//  @return OrganizationResponseList
-func (a *OrganizationMainCallsApiService) ListOrganizationExecute(r ApiListOrganizationRequest) (*OrganizationResponseList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OrganizationResponseList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.ListOrganization")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/organization"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListOrganizationAvailableRolesRequest struct {
+type ApiListOrganizationCustomRolesRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationMainCallsApiService
+	ApiService     *OrganizationCustomRoleApiService
 	organizationId string
 }
 
-func (r ApiListOrganizationAvailableRolesRequest) Execute() (*OrganizationAvailableRoleList, *http.Response, error) {
-	return r.ApiService.ListOrganizationAvailableRolesExecute(r)
+func (r ApiListOrganizationCustomRolesRequest) Execute() (*OrganizationCustomRoleList, *http.Response, error) {
+	return r.ApiService.ListOrganizationCustomRolesExecute(r)
 }
 
 /*
-ListOrganizationAvailableRoles List organization available roles
+ListOrganizationCustomRoles List organization custom roles
 
-List organization available roles
+List organization custom roles
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
- @return ApiListOrganizationAvailableRolesRequest
+ @return ApiListOrganizationCustomRolesRequest
 */
-func (a *OrganizationMainCallsApiService) ListOrganizationAvailableRoles(ctx context.Context, organizationId string) ApiListOrganizationAvailableRolesRequest {
-	return ApiListOrganizationAvailableRolesRequest{
+func (a *OrganizationCustomRoleApiService) ListOrganizationCustomRoles(ctx context.Context, organizationId string) ApiListOrganizationCustomRolesRequest {
+	return ApiListOrganizationCustomRolesRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
@@ -557,21 +472,21 @@ func (a *OrganizationMainCallsApiService) ListOrganizationAvailableRoles(ctx con
 }
 
 // Execute executes the request
-//  @return OrganizationAvailableRoleList
-func (a *OrganizationMainCallsApiService) ListOrganizationAvailableRolesExecute(r ApiListOrganizationAvailableRolesRequest) (*OrganizationAvailableRoleList, *http.Response, error) {
+//  @return OrganizationCustomRoleList
+func (a *OrganizationCustomRoleApiService) ListOrganizationCustomRolesExecute(r ApiListOrganizationCustomRolesRequest) (*OrganizationCustomRoleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationAvailableRoleList
+		localVarReturnValue *OrganizationCustomRoleList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsApiService.ListOrganizationAvailableRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationCustomRoleApiService.ListOrganizationCustomRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}/availableRole"
+	localVarPath := localBasePath + "/organization/{organizationId}/customRole"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

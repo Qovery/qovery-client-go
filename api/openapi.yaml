@@ -82,6 +82,7 @@ tags:
 - name: Organization
 - name: Organization Account Git Repositories
 - name: Organization Main Calls
+- name: Organization Custom Role
 - name: Organization Api Token
 - name: Organization Webhook
 - name: Project
@@ -336,6 +337,36 @@ paths:
       summary: Delete organization api token
       tags:
       - Organization Api Token
+  /organization/{organizationId}/availableRole:
+    get:
+      description: List organization available roles
+      operationId: listOrganizationAvailableRoles
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationAvailableRoleList'
+          description: List organization available roles
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization available roles
+      tags:
+      - Organization Main Calls
   /organization/{organizationId}/member:
     get:
       operationId: getOrganizationMembers
@@ -363,6 +394,38 @@ paths:
         "404":
           description: Resource not found
       summary: Get organization members
+      tags:
+      - Members
+    put:
+      description: Edit an organization member role
+      operationId: editOrganizationMemberRole
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberRoleUpdateRequest'
+      responses:
+        "200":
+          description: Edit an organization member role
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit an organization member role
       tags:
       - Members
   /organization/{organizationId}/member/{userId}:
@@ -2516,6 +2579,170 @@ paths:
       summary: Edit an organization webhook
       tags:
       - Organization Webhook
+  /organization/{organizationId}/customRole:
+    get:
+      description: List organization custom roles
+      operationId: listOrganizationCustomRoles
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCustomRoleList'
+          description: List organization custom roles
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization custom roles
+      tags:
+      - Organization Custom Role
+    post:
+      description: Create an organization custom role
+      operationId: createOrganizationCustomRole
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationCustomRoleRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCustomRole'
+          description: Organization custom role created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: Create an organization custom role
+      tags:
+      - Organization Custom Role
+  /organization/{organizationId}/customRole/{customRoleId}:
+    delete:
+      description: Delete organization custom role
+      operationId: deleteOrganizationCustomRole
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete organization custom role
+      tags:
+      - Organization Custom Role
+    get:
+      description: 'Get an organization custom role '
+      operationId: getOrganizationCustomRole
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Custom Role ID
+        explode: false
+        in: path
+        name: customRoleId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCustomRole'
+          description: 'Get an organization custom role '
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: 'Get an organization custom role '
+      tags:
+      - Organization Custom Role
+    put:
+      description: Edit an organization custom role
+      operationId: editOrganizationCustomRole
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationCustomRoleRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCustomRole'
+          description: Edit an organization custom role
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit an organization custom role
+      tags:
+      - Organization Custom Role
   /cloudProvider:
     get:
       operationId: listCloudProvider
@@ -13045,6 +13272,14 @@ components:
         supported_mode:
           $ref: '#/components/schemas/DatabaseModeEnum'
       type: object
+    DefaultMemberRole:
+      description: "used to specify a default role, otherwise `null`"
+      enum:
+      - VIEWER
+      - BILLING
+      - DEVOPS
+      - ADMIN
+      type: string
     DeployAllRequest:
       example:
         containers:
@@ -14163,6 +14398,7 @@ components:
           type: array
       type: object
     InviteMemberRoleEnum:
+      description: deprecated
       enum:
       - ADMIN
       - DEVELOPER
@@ -14333,6 +14569,22 @@ components:
           items:
             $ref: '#/components/schemas/Member'
           type: array
+      type: object
+    MemberRoleUpdateRequest:
+      example:
+        default_role_name: null
+        user_id: user_id
+        custom_role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        user_id:
+          description: specify the git provider user id
+          type: string
+        custom_role_id:
+          description: "used to specify an organization custom role, otherwise `null`"
+          format: uuid
+          type: string
+        default_role_name:
+          $ref: '#/components/schemas/DefaultMemberRole'
       type: object
     MetricCPU:
       example:
@@ -14735,6 +14987,40 @@ components:
       enum:
       - ADMIN
       type: string
+    OrganizationAvailableRole:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        is_default: true
+      properties:
+        id:
+          description: Filled only for an organization custom role
+          format: uuid
+          type: string
+        name:
+          description: It can be either a custom role name or a default role name
+          type: string
+        is_default:
+          description: |
+            - `true` if it is a Qovery role
+            - `false` if it is a custom role
+          type: boolean
+      type: object
+    OrganizationAvailableRoleList:
+      example:
+        results:
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_default: true
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_default: true
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationAvailableRole'
+          type: array
+      type: object
     OrganizationChangePlanRequest:
       example:
         plan: plan
@@ -14777,6 +15063,178 @@ components:
       allOf:
       - $ref: '#/components/schemas/CurrentCost'
       - $ref: '#/components/schemas/OrganizationCurrentCost_allOf'
+    OrganizationCustomRoleRequest:
+      example:
+        cluster_permissions:
+        - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permission: VIEWER
+        - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permission: VIEWER
+        name: name
+        description: description
+        project_permissions:
+        - is_admin: false
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permissions:
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+        - is_admin: false
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permissions:
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        cluster_permissions:
+          description: Should contain an entry for every existing cluster
+          items:
+            $ref: '#/components/schemas/OrganizationCustomRoleRequest_cluster_permissions_inner'
+          type: array
+        project_permissions:
+          description: Should contain an entry for every existing project
+          items:
+            $ref: '#/components/schemas/OrganizationCustomRoleRequest_project_permissions_inner'
+          type: array
+      required:
+      - cluster_permissions
+      - name
+      - project_permissions
+      type: object
+    OrganizationCustomRole:
+      example:
+        cluster_permissions:
+        - cluster_name: cluster_name
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permission: VIEWER
+        - cluster_name: cluster_name
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permission: VIEWER
+        name: name
+        description: description
+        project_permissions:
+        - is_admin: false
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permissions:
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+          project_name: project_name
+        - is_admin: false
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          permissions:
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+          - permission: NO_ACCESS
+            environment_type: PRODUCTION
+          project_name: project_name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        cluster_permissions:
+          items:
+            $ref: '#/components/schemas/OrganizationCustomRole_cluster_permissions_inner'
+          type: array
+        project_permissions:
+          items:
+            $ref: '#/components/schemas/OrganizationCustomRole_project_permissions_inner'
+          type: array
+      type: object
+    OrganizationCustomRoleList:
+      example:
+        results:
+        - cluster_permissions:
+          - cluster_name: cluster_name
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permission: VIEWER
+          - cluster_name: cluster_name
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permission: VIEWER
+          name: name
+          description: description
+          project_permissions:
+          - is_admin: false
+            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permissions:
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            project_name: project_name
+          - is_admin: false
+            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permissions:
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            project_name: project_name
+        - cluster_permissions:
+          - cluster_name: cluster_name
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permission: VIEWER
+          - cluster_name: cluster_name
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permission: VIEWER
+          name: name
+          description: description
+          project_permissions:
+          - is_admin: false
+            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permissions:
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            project_name: project_name
+          - is_admin: false
+            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            permissions:
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            - permission: NO_ACCESS
+              environment_type: PRODUCTION
+            project_name: project_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationCustomRole'
+          type: array
+      type: object
+    OrganizationCustomRoleProjectPermission:
+      description: "Indicates the permission for a target project and a given environment\
+        \ type, from the lowest to the highest:\n- `NO_ACCESS` user has no access\n\
+        - `VIEWER` user can access the environment (and applications / containers\
+        \ / databases / variables)\n- `DEPLOYER` user can deploy the environment (dependent\
+        \ on the required cluster permission `ENV_CREATOR`)\n- `MANAGER` user can\
+        \ create an environment (and applications / containers / databases / variables)\n"
+      enum:
+      - NO_ACCESS
+      - VIEWER
+      - DEPLOYER
+      - MANAGER
+      example: NO_ACCESS
+      type: string
+    OrganizationCustomRoleClusterPermission:
+      description: "Indicates the permission for a target cluster, from the lowest\
+        \ to the highest:\n- `VIEWER` user has only read access on target cluster\n\
+        - `ENV_CREATOR` user can deploy on the cluster\n- `ADMIN` user can modify\
+        \ the cluster settings\n"
+      enum:
+      - VIEWER
+      - ENV_CREATOR
+      - ADMIN
+      example: VIEWER
+      type: string
     OrganizationEditRequest:
       example:
         icon_url: icon_url
@@ -16965,6 +17423,9 @@ components:
           type: string
         role:
           $ref: '#/components/schemas/InviteMemberRoleEnum'
+        role_name:
+          description: the role linked to the user
+          type: string
       required:
       - email
       type: object
@@ -17015,6 +17476,97 @@ components:
       properties:
         paid_usage:
           $ref: '#/components/schemas/PaidUsage'
+      type: object
+    OrganizationCustomRoleRequest_cluster_permissions_inner:
+      example:
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        permission: VIEWER
+      properties:
+        cluster_id:
+          format: uuid
+          type: string
+        permission:
+          $ref: '#/components/schemas/OrganizationCustomRoleClusterPermission'
+      type: object
+    OrganizationCustomRoleRequest_project_permissions_inner_permissions_inner:
+      example:
+        permission: NO_ACCESS
+        environment_type: PRODUCTION
+      properties:
+        environment_type:
+          $ref: '#/components/schemas/EnvironmentModeEnum'
+        permission:
+          $ref: '#/components/schemas/OrganizationCustomRoleProjectPermission'
+      type: object
+    OrganizationCustomRoleRequest_project_permissions_inner:
+      example:
+        is_admin: false
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        permissions:
+        - permission: NO_ACCESS
+          environment_type: PRODUCTION
+        - permission: NO_ACCESS
+          environment_type: PRODUCTION
+      properties:
+        project_id:
+          format: uuid
+          type: string
+        is_admin:
+          default: false
+          description: "If `is_admin` is `true`, the user is:\n- automatically `MANAGER`\
+            \ for each environment type\n- allowed to manage project deployment rules\n\
+            - able to delete the project\nNote that `permissions` can then be ignored\
+            \ for this project\n"
+          type: boolean
+        permissions:
+          description: "Mandatory if `is_admin` is `false`  \nShould contain an entry\
+            \ for every environment type:\n- `DEVELOPMENT`\n- `PREVIEW`\n- `STAGING`\n\
+            - `PRODUCTION`\n"
+          items:
+            $ref: '#/components/schemas/OrganizationCustomRoleRequest_project_permissions_inner_permissions_inner'
+          type: array
+      type: object
+    OrganizationCustomRole_cluster_permissions_inner:
+      example:
+        cluster_name: cluster_name
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        permission: VIEWER
+      properties:
+        cluster_id:
+          format: uuid
+          type: string
+        cluster_name:
+          type: string
+        permission:
+          $ref: '#/components/schemas/OrganizationCustomRoleClusterPermission'
+      type: object
+    OrganizationCustomRole_project_permissions_inner:
+      example:
+        is_admin: false
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        permissions:
+        - permission: NO_ACCESS
+          environment_type: PRODUCTION
+        - permission: NO_ACCESS
+          environment_type: PRODUCTION
+        project_name: project_name
+      properties:
+        project_id:
+          format: uuid
+          type: string
+        project_name:
+          type: string
+        is_admin:
+          default: false
+          description: "If `is_admin` is `true`, the user is:\n- automatically `MANAGER`\
+            \ for each environment type\n- allowed to manage project deployment rules\n\
+            - able to delete the project\nNote that `permissions` can then be ignored\
+            \ for this project\n"
+          type: boolean
+        permissions:
+          items:
+            $ref: '#/components/schemas/OrganizationCustomRoleRequest_project_permissions_inner_permissions_inner'
+          type: array
       type: object
     OrganizationWebhookCreateResponse_allOf:
       properties:
@@ -17192,6 +17744,7 @@ x-tagGroups:
   - Organization Api Token
   - Organization Account Git Repositories
   - Organization Webhook
+  - Organization Custom Role
   - Projects
   - Members
   - Billing
