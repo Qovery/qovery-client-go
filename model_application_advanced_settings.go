@@ -30,6 +30,18 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressCorsAllowHeaders     *string `json:"network.ingress.cors_allow_headers,omitempty"`
 	// header buffer size used while reading response header from upstream
 	NetworkIngressProxyBufferSizeKb *int32 `json:"network.ingress.proxy_buffer_size_kb,omitempty"`
+	// Limits the maximum time (in seconds) during which requests can be processed through one keepalive connection
+	NetworkIngressKeepaliveTimeSeconds *int32 `json:"network.ingress.keepalive_time_seconds,omitempty"`
+	// Sets a timeout (in seconds) during which an idle keepalive connection to an upstream server will stay open.
+	NetworkIngressKeepaliveTimeoutSeconds *int32 `json:"network.ingress.keepalive_timeout_seconds,omitempty"`
+	// Sets a timeout (in seconds) for transmitting a response to the client
+	NetworkIngressSendTimeoutSeconds *int32 `json:"network.ingress.send_timeout_seconds,omitempty"`
+	// Sets a timeout (in seconds) for establishing a connection to a proxied server
+	NetworkIngressProxyConnectTimeoutSeconds *int32 `json:"network.ingress.proxy_connect_timeout_seconds,omitempty"`
+	// Sets a timeout (in seconds) for transmitting a request to the proxied server
+	NetworkIngressProxySendTimeoutSeconds *int32 `json:"network.ingress.proxy_send_timeout_seconds,omitempty"`
+	// Sets a timeout (in seconds) for reading a response from the proxied server
+	NetworkIngressProxyReadTimeoutSeconds *int32 `json:"network.ingress.proxy_read_timeout_seconds,omitempty"`
 	// list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.
 	NetworkIngressWhitelistSourceRange *string `json:"network.ingress.whitelist_source_range,omitempty"`
 	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
@@ -88,6 +100,18 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
 	var networkIngressProxyBufferSizeKb int32 = 4
 	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
+	var networkIngressKeepaliveTimeSeconds int32 = 3600
+	this.NetworkIngressKeepaliveTimeSeconds = &networkIngressKeepaliveTimeSeconds
+	var networkIngressKeepaliveTimeoutSeconds int32 = 60
+	this.NetworkIngressKeepaliveTimeoutSeconds = &networkIngressKeepaliveTimeoutSeconds
+	var networkIngressSendTimeoutSeconds int32 = 60
+	this.NetworkIngressSendTimeoutSeconds = &networkIngressSendTimeoutSeconds
+	var networkIngressProxyConnectTimeoutSeconds int32 = 60
+	this.NetworkIngressProxyConnectTimeoutSeconds = &networkIngressProxyConnectTimeoutSeconds
+	var networkIngressProxySendTimeoutSeconds int32 = 60
+	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
+	var networkIngressProxyReadTimeoutSeconds int32 = 60
+	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var readinessProbeType string = "TCP"
@@ -146,6 +170,18 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
 	var networkIngressProxyBufferSizeKb int32 = 4
 	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
+	var networkIngressKeepaliveTimeSeconds int32 = 3600
+	this.NetworkIngressKeepaliveTimeSeconds = &networkIngressKeepaliveTimeSeconds
+	var networkIngressKeepaliveTimeoutSeconds int32 = 60
+	this.NetworkIngressKeepaliveTimeoutSeconds = &networkIngressKeepaliveTimeoutSeconds
+	var networkIngressSendTimeoutSeconds int32 = 60
+	this.NetworkIngressSendTimeoutSeconds = &networkIngressSendTimeoutSeconds
+	var networkIngressProxyConnectTimeoutSeconds int32 = 60
+	this.NetworkIngressProxyConnectTimeoutSeconds = &networkIngressProxyConnectTimeoutSeconds
+	var networkIngressProxySendTimeoutSeconds int32 = 60
+	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
+	var networkIngressProxyReadTimeoutSeconds int32 = 60
+	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var readinessProbeType string = "TCP"
@@ -470,6 +506,198 @@ func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBufferSizeKb() bool 
 // SetNetworkIngressProxyBufferSizeKb gets a reference to the given int32 and assigns it to the NetworkIngressProxyBufferSizeKb field.
 func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBufferSizeKb(v int32) {
 	o.NetworkIngressProxyBufferSizeKb = &v
+}
+
+// GetNetworkIngressKeepaliveTimeSeconds returns the NetworkIngressKeepaliveTimeSeconds field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSeconds() int32 {
+	if o == nil || o.NetworkIngressKeepaliveTimeSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressKeepaliveTimeSeconds
+}
+
+// GetNetworkIngressKeepaliveTimeSecondsOk returns a tuple with the NetworkIngressKeepaliveTimeSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressKeepaliveTimeSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressKeepaliveTimeSeconds, true
+}
+
+// HasNetworkIngressKeepaliveTimeSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressKeepaliveTimeSeconds() bool {
+	if o != nil && o.NetworkIngressKeepaliveTimeSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressKeepaliveTimeSeconds gets a reference to the given int32 and assigns it to the NetworkIngressKeepaliveTimeSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressKeepaliveTimeSeconds(v int32) {
+	o.NetworkIngressKeepaliveTimeSeconds = &v
+}
+
+// GetNetworkIngressKeepaliveTimeoutSeconds returns the NetworkIngressKeepaliveTimeoutSeconds field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSeconds() int32 {
+	if o == nil || o.NetworkIngressKeepaliveTimeoutSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressKeepaliveTimeoutSeconds
+}
+
+// GetNetworkIngressKeepaliveTimeoutSecondsOk returns a tuple with the NetworkIngressKeepaliveTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressKeepaliveTimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressKeepaliveTimeoutSeconds, true
+}
+
+// HasNetworkIngressKeepaliveTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressKeepaliveTimeoutSeconds() bool {
+	if o != nil && o.NetworkIngressKeepaliveTimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressKeepaliveTimeoutSeconds gets a reference to the given int32 and assigns it to the NetworkIngressKeepaliveTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressKeepaliveTimeoutSeconds(v int32) {
+	o.NetworkIngressKeepaliveTimeoutSeconds = &v
+}
+
+// GetNetworkIngressSendTimeoutSeconds returns the NetworkIngressSendTimeoutSeconds field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSeconds() int32 {
+	if o == nil || o.NetworkIngressSendTimeoutSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressSendTimeoutSeconds
+}
+
+// GetNetworkIngressSendTimeoutSecondsOk returns a tuple with the NetworkIngressSendTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressSendTimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressSendTimeoutSeconds, true
+}
+
+// HasNetworkIngressSendTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressSendTimeoutSeconds() bool {
+	if o != nil && o.NetworkIngressSendTimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressSendTimeoutSeconds gets a reference to the given int32 and assigns it to the NetworkIngressSendTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressSendTimeoutSeconds(v int32) {
+	o.NetworkIngressSendTimeoutSeconds = &v
+}
+
+// GetNetworkIngressProxyConnectTimeoutSeconds returns the NetworkIngressProxyConnectTimeoutSeconds field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSeconds() int32 {
+	if o == nil || o.NetworkIngressProxyConnectTimeoutSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressProxyConnectTimeoutSeconds
+}
+
+// GetNetworkIngressProxyConnectTimeoutSecondsOk returns a tuple with the NetworkIngressProxyConnectTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressProxyConnectTimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxyConnectTimeoutSeconds, true
+}
+
+// HasNetworkIngressProxyConnectTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyConnectTimeoutSeconds() bool {
+	if o != nil && o.NetworkIngressProxyConnectTimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxyConnectTimeoutSeconds gets a reference to the given int32 and assigns it to the NetworkIngressProxyConnectTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyConnectTimeoutSeconds(v int32) {
+	o.NetworkIngressProxyConnectTimeoutSeconds = &v
+}
+
+// GetNetworkIngressProxySendTimeoutSeconds returns the NetworkIngressProxySendTimeoutSeconds field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSeconds() int32 {
+	if o == nil || o.NetworkIngressProxySendTimeoutSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressProxySendTimeoutSeconds
+}
+
+// GetNetworkIngressProxySendTimeoutSecondsOk returns a tuple with the NetworkIngressProxySendTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressProxySendTimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxySendTimeoutSeconds, true
+}
+
+// HasNetworkIngressProxySendTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressProxySendTimeoutSeconds() bool {
+	if o != nil && o.NetworkIngressProxySendTimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxySendTimeoutSeconds gets a reference to the given int32 and assigns it to the NetworkIngressProxySendTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressProxySendTimeoutSeconds(v int32) {
+	o.NetworkIngressProxySendTimeoutSeconds = &v
+}
+
+// GetNetworkIngressProxyReadTimeoutSeconds returns the NetworkIngressProxyReadTimeoutSeconds field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSeconds() int32 {
+	if o == nil || o.NetworkIngressProxyReadTimeoutSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressProxyReadTimeoutSeconds
+}
+
+// GetNetworkIngressProxyReadTimeoutSecondsOk returns a tuple with the NetworkIngressProxyReadTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressProxyReadTimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxyReadTimeoutSeconds, true
+}
+
+// HasNetworkIngressProxyReadTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyReadTimeoutSeconds() bool {
+	if o != nil && o.NetworkIngressProxyReadTimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxyReadTimeoutSeconds gets a reference to the given int32 and assigns it to the NetworkIngressProxyReadTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyReadTimeoutSeconds(v int32) {
+	o.NetworkIngressProxyReadTimeoutSeconds = &v
 }
 
 // GetNetworkIngressWhitelistSourceRange returns the NetworkIngressWhitelistSourceRange field value if set, zero value otherwise.
@@ -1012,6 +1240,24 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressProxyBufferSizeKb != nil {
 		toSerialize["network.ingress.proxy_buffer_size_kb"] = o.NetworkIngressProxyBufferSizeKb
+	}
+	if o.NetworkIngressKeepaliveTimeSeconds != nil {
+		toSerialize["network.ingress.keepalive_time_seconds"] = o.NetworkIngressKeepaliveTimeSeconds
+	}
+	if o.NetworkIngressKeepaliveTimeoutSeconds != nil {
+		toSerialize["network.ingress.keepalive_timeout_seconds"] = o.NetworkIngressKeepaliveTimeoutSeconds
+	}
+	if o.NetworkIngressSendTimeoutSeconds != nil {
+		toSerialize["network.ingress.send_timeout_seconds"] = o.NetworkIngressSendTimeoutSeconds
+	}
+	if o.NetworkIngressProxyConnectTimeoutSeconds != nil {
+		toSerialize["network.ingress.proxy_connect_timeout_seconds"] = o.NetworkIngressProxyConnectTimeoutSeconds
+	}
+	if o.NetworkIngressProxySendTimeoutSeconds != nil {
+		toSerialize["network.ingress.proxy_send_timeout_seconds"] = o.NetworkIngressProxySendTimeoutSeconds
+	}
+	if o.NetworkIngressProxyReadTimeoutSeconds != nil {
+		toSerialize["network.ingress.proxy_read_timeout_seconds"] = o.NetworkIngressProxyReadTimeoutSeconds
 	}
 	if o.NetworkIngressWhitelistSourceRange != nil {
 		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange

@@ -11278,30 +11278,36 @@ components:
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
       example:
+        network.ingress.send_timeout_seconds: 7
         deployment.delay_start_time_sec: 0
-        liveness_probe.initial_delay_seconds: 2
-        liveness_probe.failure_threshold: 1
-        liveness_probe.timeout_seconds: 7
-        liveness_probe.period_seconds: 4
+        network.ingress.proxy_send_timeout_seconds: 3
+        liveness_probe.initial_delay_seconds: 6
+        liveness_probe.failure_threshold: 5
+        network.ingress.keepalive_time_seconds: 5
+        liveness_probe.timeout_seconds: 1
+        liveness_probe.period_seconds: 7
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
-        readiness_probe.initial_delay_seconds: 5
-        readiness_probe.timeout_seconds: 7
+        readiness_probe.initial_delay_seconds: 4
+        readiness_probe.timeout_seconds: 1
         network.ingress.proxy_body_size_mb: 1
         liveness_probe.type: TCP
-        liveness_probe.success_threshold: 1
+        liveness_probe.success_threshold: 4
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-        hpa.cpu.average_utilization_percent: 1
+        hpa.cpu.average_utilization_percent: 9
+        network.ingress.keepalive_timeout_seconds: 2
         readiness_probe.type: TCP
-        readiness_probe.failure_threshold: 3
+        network.ingress.proxy_connect_timeout_seconds: 9
+        readiness_probe.failure_threshold: 1
         network.ingress.proxy_buffer_size_kb: 5
+        network.ingress.proxy_read_timeout_seconds: 2
         build.timeout_max_sec: 6
         readiness_probe.http_get.path: /
         network.ingress.cors_allow_origin: '*'
-        readiness_probe.success_threshold: 9
+        readiness_probe.success_threshold: 1
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-        readiness_probe.period_seconds: 2
+        readiness_probe.period_seconds: 7
         liveness_probe.http_get.path: /
       properties:
         deployment.delay_start_time_sec:
@@ -11336,6 +11342,36 @@ components:
           default: 4
           description: header buffer size used while reading response header from
             upstream
+          type: integer
+        network.ingress.keepalive_time_seconds:
+          default: 3600
+          description: Limits the maximum time (in seconds) during which requests
+            can be processed through one keepalive connection
+          type: integer
+        network.ingress.keepalive_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) during which an idle keepalive
+            connection to an upstream server will stay open.
+          type: integer
+        network.ingress.send_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a response to
+            the client
+          type: integer
+        network.ingress.proxy_connect_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for establishing a connection to
+            a proxied server
+          type: integer
+        network.ingress.proxy_send_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            proxied server
+          type: integer
+        network.ingress.proxy_read_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for reading a response from the
+            proxied server
           type: integer
         network.ingress.whitelist_source_range:
           default: 0.0.0.0/0

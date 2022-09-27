@@ -13,6 +13,12 @@ Name | Type | Description | Notes
 **NetworkIngressCorsAllowMethods** | Pointer to **string** |  | [optional] [default to "GET, PUT, POST, DELETE, PATCH, OPTIONS"]
 **NetworkIngressCorsAllowHeaders** | Pointer to **string** |  | [optional] [default to "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"]
 **NetworkIngressProxyBufferSizeKb** | Pointer to **int32** | header buffer size used while reading response header from upstream | [optional] [default to 4]
+**NetworkIngressKeepaliveTimeSeconds** | Pointer to **int32** | Limits the maximum time (in seconds) during which requests can be processed through one keepalive connection | [optional] [default to 3600]
+**NetworkIngressKeepaliveTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) during which an idle keepalive connection to an upstream server will stay open. | [optional] [default to 60]
+**NetworkIngressSendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a response to the client | [optional] [default to 60]
+**NetworkIngressProxyConnectTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for establishing a connection to a proxied server | [optional] [default to 60]
+**NetworkIngressProxySendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the proxied server | [optional] [default to 60]
+**NetworkIngressProxyReadTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for reading a response from the proxied server | [optional] [default to 60]
 **NetworkIngressWhitelistSourceRange** | Pointer to **string** | list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.  | [optional] [default to "0.0.0.0/0"]
 **ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
 **ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
@@ -273,6 +279,156 @@ SetNetworkIngressProxyBufferSizeKb sets NetworkIngressProxyBufferSizeKb field to
 `func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBufferSizeKb() bool`
 
 HasNetworkIngressProxyBufferSizeKb returns a boolean if a field has been set.
+
+### GetNetworkIngressKeepaliveTimeSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSeconds() int32`
+
+GetNetworkIngressKeepaliveTimeSeconds returns the NetworkIngressKeepaliveTimeSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressKeepaliveTimeSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSecondsOk() (*int32, bool)`
+
+GetNetworkIngressKeepaliveTimeSecondsOk returns a tuple with the NetworkIngressKeepaliveTimeSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressKeepaliveTimeSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressKeepaliveTimeSeconds(v int32)`
+
+SetNetworkIngressKeepaliveTimeSeconds sets NetworkIngressKeepaliveTimeSeconds field to given value.
+
+### HasNetworkIngressKeepaliveTimeSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressKeepaliveTimeSeconds() bool`
+
+HasNetworkIngressKeepaliveTimeSeconds returns a boolean if a field has been set.
+
+### GetNetworkIngressKeepaliveTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSeconds() int32`
+
+GetNetworkIngressKeepaliveTimeoutSeconds returns the NetworkIngressKeepaliveTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressKeepaliveTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkIngressKeepaliveTimeoutSecondsOk returns a tuple with the NetworkIngressKeepaliveTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressKeepaliveTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressKeepaliveTimeoutSeconds(v int32)`
+
+SetNetworkIngressKeepaliveTimeoutSeconds sets NetworkIngressKeepaliveTimeoutSeconds field to given value.
+
+### HasNetworkIngressKeepaliveTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressKeepaliveTimeoutSeconds() bool`
+
+HasNetworkIngressKeepaliveTimeoutSeconds returns a boolean if a field has been set.
+
+### GetNetworkIngressSendTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSeconds() int32`
+
+GetNetworkIngressSendTimeoutSeconds returns the NetworkIngressSendTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressSendTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkIngressSendTimeoutSecondsOk returns a tuple with the NetworkIngressSendTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressSendTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressSendTimeoutSeconds(v int32)`
+
+SetNetworkIngressSendTimeoutSeconds sets NetworkIngressSendTimeoutSeconds field to given value.
+
+### HasNetworkIngressSendTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressSendTimeoutSeconds() bool`
+
+HasNetworkIngressSendTimeoutSeconds returns a boolean if a field has been set.
+
+### GetNetworkIngressProxyConnectTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSeconds() int32`
+
+GetNetworkIngressProxyConnectTimeoutSeconds returns the NetworkIngressProxyConnectTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressProxyConnectTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkIngressProxyConnectTimeoutSecondsOk returns a tuple with the NetworkIngressProxyConnectTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressProxyConnectTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyConnectTimeoutSeconds(v int32)`
+
+SetNetworkIngressProxyConnectTimeoutSeconds sets NetworkIngressProxyConnectTimeoutSeconds field to given value.
+
+### HasNetworkIngressProxyConnectTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyConnectTimeoutSeconds() bool`
+
+HasNetworkIngressProxyConnectTimeoutSeconds returns a boolean if a field has been set.
+
+### GetNetworkIngressProxySendTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSeconds() int32`
+
+GetNetworkIngressProxySendTimeoutSeconds returns the NetworkIngressProxySendTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressProxySendTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkIngressProxySendTimeoutSecondsOk returns a tuple with the NetworkIngressProxySendTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressProxySendTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressProxySendTimeoutSeconds(v int32)`
+
+SetNetworkIngressProxySendTimeoutSeconds sets NetworkIngressProxySendTimeoutSeconds field to given value.
+
+### HasNetworkIngressProxySendTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressProxySendTimeoutSeconds() bool`
+
+HasNetworkIngressProxySendTimeoutSeconds returns a boolean if a field has been set.
+
+### GetNetworkIngressProxyReadTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSeconds() int32`
+
+GetNetworkIngressProxyReadTimeoutSeconds returns the NetworkIngressProxyReadTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressProxyReadTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkIngressProxyReadTimeoutSecondsOk returns a tuple with the NetworkIngressProxyReadTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressProxyReadTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyReadTimeoutSeconds(v int32)`
+
+SetNetworkIngressProxyReadTimeoutSeconds sets NetworkIngressProxyReadTimeoutSeconds field to given value.
+
+### HasNetworkIngressProxyReadTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyReadTimeoutSeconds() bool`
+
+HasNetworkIngressProxyReadTimeoutSeconds returns a boolean if a field has been set.
 
 ### GetNetworkIngressWhitelistSourceRange
 
