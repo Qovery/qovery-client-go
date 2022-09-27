@@ -12627,27 +12627,33 @@ components:
       type: string
     ContainerAdvancedSettings:
       example:
-        readiness_probe.timeout_seconds: 5
-        network.ingress.proxy_body_size_mb: 0
-        liveness_probe.type: TCP
-        liveness_probe.initial_delay_seconds: 9
-        liveness_probe.success_threshold: 4
-        liveness_probe.failure_threshold: 7
-        network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-        readiness_probe.type: TCP
-        liveness_probe.timeout_seconds: 2
-        readiness_probe.failure_threshold: 7
-        network.ingress.proxy_buffer_size_kb: 6
-        liveness_probe.period_seconds: 3
+        network.ingress.send_timeout_seconds: 5
+        network.ingress.proxy_send_timeout_seconds: 7
+        liveness_probe.initial_delay_seconds: 1
+        liveness_probe.failure_threshold: 1
+        network.ingress.keepalive_time_seconds: 1
+        liveness_probe.timeout_seconds: 6
+        liveness_probe.period_seconds: 1
         deployment.custom_domain_check_enabled: true
-        readiness_probe.http_get.path: /
-        network.ingress.cors_allow_origin: '*'
         network.ingress.enable_cors: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
-        readiness_probe.success_threshold: 2
-        readiness_probe.initial_delay_seconds: 1
+        readiness_probe.initial_delay_seconds: 3
+        readiness_probe.timeout_seconds: 4
+        network.ingress.proxy_body_size_mb: 0
+        liveness_probe.type: TCP
+        liveness_probe.success_threshold: 7
+        network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        network.ingress.keepalive_timeout_seconds: 5
+        readiness_probe.type: TCP
+        network.ingress.proxy_connect_timeout_seconds: 2
+        readiness_probe.failure_threshold: 1
+        network.ingress.proxy_buffer_size_kb: 6
+        network.ingress.proxy_read_timeout_seconds: 9
+        readiness_probe.http_get.path: /
+        network.ingress.cors_allow_origin: '*'
+        readiness_probe.success_threshold: 7
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-        readiness_probe.period_seconds: 5
+        readiness_probe.period_seconds: 2
         liveness_probe.http_get.path: /
       properties:
         deployment.custom_domain_check_enabled:
@@ -12673,6 +12679,36 @@ components:
           default: 4
           description: header buffer size used while reading response header from
             upstream
+          type: integer
+        network.ingress.keepalive_time_seconds:
+          default: 3600
+          description: Limits the maximum time (in seconds) during which requests
+            can be processed through one keepalive connection
+          type: integer
+        network.ingress.keepalive_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) during which an idle keepalive
+            connection to an upstream server will stay open.
+          type: integer
+        network.ingress.send_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a response to
+            the client
+          type: integer
+        network.ingress.proxy_connect_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for establishing a connection to
+            a proxied server
+          type: integer
+        network.ingress.proxy_send_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            proxied server
+          type: integer
+        network.ingress.proxy_read_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for reading a response from the
+            proxied server
           type: integer
         network.ingress.whitelist_source_range:
           default: 0.0.0.0/0
