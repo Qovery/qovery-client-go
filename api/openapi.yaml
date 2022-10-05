@@ -17593,8 +17593,8 @@ components:
           default: false
           description: "If `is_admin` is `true`, the user is:\n- automatically `MANAGER`\
             \ for each environment type\n- allowed to manage project deployment rules\n\
-            - able to delete the project\nNote that `permissions` can then be ignored\
-            \ for this project\n"
+            - able to delete the project  \n\nNote that `permissions` can then be\
+            \ ignored for this project\n"
           type: boolean
         permissions:
           description: "Mandatory if `is_admin` is `false`  \nShould contain an entry\
@@ -17638,8 +17638,8 @@ components:
           default: false
           description: "If `is_admin` is `true`, the user is:\n- automatically `MANAGER`\
             \ for each environment type\n- allowed to manage project deployment rules\n\
-            - able to delete the project\nNote that `permissions` can then be ignored\
-            \ for this project\n"
+            - able to delete the project  \n\nNote that `permissions` can then be\
+            \ ignored for this project\n"
           type: boolean
         permissions:
           items:

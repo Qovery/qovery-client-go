@@ -18,7 +18,7 @@ import (
 // OrganizationCustomRoleUpdateRequestProjectPermissionsInner struct for OrganizationCustomRoleUpdateRequestProjectPermissionsInner
 type OrganizationCustomRoleUpdateRequestProjectPermissionsInner struct {
 	ProjectId *string `json:"project_id,omitempty"`
-	// If `is_admin` is `true`, the user is: - automatically `MANAGER` for each environment type - allowed to manage project deployment rules - able to delete the project Note that `permissions` can then be ignored for this project
+	// If `is_admin` is `true`, the user is: - automatically `MANAGER` for each environment type - allowed to manage project deployment rules - able to delete the project    Note that `permissions` can then be ignored for this project
 	IsAdmin *bool `json:"is_admin,omitempty"`
 	// Mandatory if `is_admin` is `false`   Should contain an entry for every environment type: - `DEVELOPMENT` - `PREVIEW` - `STAGING` - `PRODUCTION`
 	Permissions []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner `json:"permissions,omitempty"`

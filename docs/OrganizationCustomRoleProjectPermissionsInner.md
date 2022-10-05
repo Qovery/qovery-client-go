@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ProjectId** | Pointer to **string** |  | [optional] 
 **ProjectName** | Pointer to **string** |  | [optional] 
-**IsAdmin** | Pointer to **bool** | If &#x60;is_admin&#x60; is &#x60;true&#x60;, the user is: - automatically &#x60;MANAGER&#x60; for each environment type - allowed to manage project deployment rules - able to delete the project Note that &#x60;permissions&#x60; can then be ignored for this project  | [optional] [default to false]
+**IsAdmin** | Pointer to **bool** | If &#x60;is_admin&#x60; is &#x60;true&#x60;, the user is: - automatically &#x60;MANAGER&#x60; for each environment type - allowed to manage project deployment rules - able to delete the project    Note that &#x60;permissions&#x60; can then be ignored for this project  | [optional] [default to false]
 **Permissions** | Pointer to [**[]OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner**](OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner.md) |  | [optional] 
 
 ## Methods
