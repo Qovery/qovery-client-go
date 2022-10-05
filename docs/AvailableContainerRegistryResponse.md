@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] 
 **RequiredConfig** | Pointer to **map[string]interface{}** |  | [optional] 
+**IsMandatory** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetRequiredConfig sets RequiredConfig field to given value.
 `func (o *AvailableContainerRegistryResponse) HasRequiredConfig() bool`
 
 HasRequiredConfig returns a boolean if a field has been set.
+
+### GetIsMandatory
+
+`func (o *AvailableContainerRegistryResponse) GetIsMandatory() bool`
+
+GetIsMandatory returns the IsMandatory field if non-nil, zero value otherwise.
+
+### GetIsMandatoryOk
+
+`func (o *AvailableContainerRegistryResponse) GetIsMandatoryOk() (*bool, bool)`
+
+GetIsMandatoryOk returns a tuple with the IsMandatory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsMandatory
+
+`func (o *AvailableContainerRegistryResponse) SetIsMandatory(v bool)`
+
+SetIsMandatory sets IsMandatory field to given value.
+
+### HasIsMandatory
+
+`func (o *AvailableContainerRegistryResponse) HasIsMandatory() bool`
+
+HasIsMandatory returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

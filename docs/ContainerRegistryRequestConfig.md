@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** | Required if kind is &#x60;ECR&#x60; or &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewayAccessKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewaySecretKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
-**Username** | Pointer to **string** | Required if kind is &#x60;DOCKER_HUB&#x60; | [optional] 
-**Password** | Pointer to **string** | Required if kind is &#x60;DOCKER_HUB&#x60; | [optional] 
+**Username** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
+**Password** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
 
 ## Methods
 

@@ -19,9 +19,7 @@ import (
 type MemberRoleUpdateRequest struct {
 	// specify the git provider user id
 	UserId *string `json:"user_id,omitempty"`
-	// used to specify an organization custom role, otherwise `null`
-	CustomRoleId    *string            `json:"custom_role_id,omitempty"`
-	DefaultRoleName *DefaultMemberRole `json:"default_role_name,omitempty"`
+	RoleId *string `json:"role_id,omitempty"`
 }
 
 // NewMemberRoleUpdateRequest instantiates a new MemberRoleUpdateRequest object
@@ -73,68 +71,36 @@ func (o *MemberRoleUpdateRequest) SetUserId(v string) {
 	o.UserId = &v
 }
 
-// GetCustomRoleId returns the CustomRoleId field value if set, zero value otherwise.
-func (o *MemberRoleUpdateRequest) GetCustomRoleId() string {
-	if o == nil || o.CustomRoleId == nil {
+// GetRoleId returns the RoleId field value if set, zero value otherwise.
+func (o *MemberRoleUpdateRequest) GetRoleId() string {
+	if o == nil || o.RoleId == nil {
 		var ret string
 		return ret
 	}
-	return *o.CustomRoleId
+	return *o.RoleId
 }
 
-// GetCustomRoleIdOk returns a tuple with the CustomRoleId field value if set, nil otherwise
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemberRoleUpdateRequest) GetCustomRoleIdOk() (*string, bool) {
-	if o == nil || o.CustomRoleId == nil {
+func (o *MemberRoleUpdateRequest) GetRoleIdOk() (*string, bool) {
+	if o == nil || o.RoleId == nil {
 		return nil, false
 	}
-	return o.CustomRoleId, true
+	return o.RoleId, true
 }
 
-// HasCustomRoleId returns a boolean if a field has been set.
-func (o *MemberRoleUpdateRequest) HasCustomRoleId() bool {
-	if o != nil && o.CustomRoleId != nil {
+// HasRoleId returns a boolean if a field has been set.
+func (o *MemberRoleUpdateRequest) HasRoleId() bool {
+	if o != nil && o.RoleId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomRoleId gets a reference to the given string and assigns it to the CustomRoleId field.
-func (o *MemberRoleUpdateRequest) SetCustomRoleId(v string) {
-	o.CustomRoleId = &v
-}
-
-// GetDefaultRoleName returns the DefaultRoleName field value if set, zero value otherwise.
-func (o *MemberRoleUpdateRequest) GetDefaultRoleName() DefaultMemberRole {
-	if o == nil || o.DefaultRoleName == nil {
-		var ret DefaultMemberRole
-		return ret
-	}
-	return *o.DefaultRoleName
-}
-
-// GetDefaultRoleNameOk returns a tuple with the DefaultRoleName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MemberRoleUpdateRequest) GetDefaultRoleNameOk() (*DefaultMemberRole, bool) {
-	if o == nil || o.DefaultRoleName == nil {
-		return nil, false
-	}
-	return o.DefaultRoleName, true
-}
-
-// HasDefaultRoleName returns a boolean if a field has been set.
-func (o *MemberRoleUpdateRequest) HasDefaultRoleName() bool {
-	if o != nil && o.DefaultRoleName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultRoleName gets a reference to the given DefaultMemberRole and assigns it to the DefaultRoleName field.
-func (o *MemberRoleUpdateRequest) SetDefaultRoleName(v DefaultMemberRole) {
-	o.DefaultRoleName = &v
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *MemberRoleUpdateRequest) SetRoleId(v string) {
+	o.RoleId = &v
 }
 
 func (o MemberRoleUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -142,11 +108,8 @@ func (o MemberRoleUpdateRequest) MarshalJSON() ([]byte, error) {
 	if o.UserId != nil {
 		toSerialize["user_id"] = o.UserId
 	}
-	if o.CustomRoleId != nil {
-		toSerialize["custom_role_id"] = o.CustomRoleId
-	}
-	if o.DefaultRoleName != nil {
-		toSerialize["default_role_name"] = o.DefaultRoleName
+	if o.RoleId != nil {
+		toSerialize["role_id"] = o.RoleId
 	}
 	return json.Marshal(toSerialize)
 }

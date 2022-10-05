@@ -20,8 +20,8 @@ type ContainerRegistryRequest struct {
 	Name        string                    `json:"name"`
 	Kind        ContainerRegistryKindEnum `json:"kind"`
 	Description *string                   `json:"description,omitempty"`
-	// URL of the container registry: * For `DOCKER_HUB`: should be `https://docker.io` * For others: must start by `https://`
-	Url    string                         `json:"url"`
+	// URL of the container registry: * For `DOCKER_HUB`: it must be `https://docker.io` (default with 'https://docker.io' if no url provided for DOCKER_HUB) * For others: it's required and must start by `https://`
+	Url    *string                        `json:"url,omitempty"`
 	Config ContainerRegistryRequestConfig `json:"config"`
 }
 
@@ -29,11 +29,10 @@ type ContainerRegistryRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config ContainerRegistryRequestConfig) *ContainerRegistryRequest {
+func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, config ContainerRegistryRequestConfig) *ContainerRegistryRequest {
 	this := ContainerRegistryRequest{}
 	this.Name = name
 	this.Kind = kind
-	this.Url = url
 	this.Config = config
 	return &this
 }
@@ -126,28 +125,36 @@ func (o *ContainerRegistryRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *ContainerRegistryRequest) GetUrl() string {
-	if o == nil {
+	if o == nil || o.Url == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequest) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Url == nil {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *ContainerRegistryRequest) HasUrl() bool {
+	if o != nil && o.Url != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *ContainerRegistryRequest) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 // GetConfig returns the Config field value
@@ -185,7 +192,7 @@ func (o ContainerRegistryRequest) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if true {
+	if o.Url != nil {
 		toSerialize["url"] = o.Url
 	}
 	if true {

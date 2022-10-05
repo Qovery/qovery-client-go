@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 )
 
-// ContainerRegistryRequestConfig This field is dependent of the container registry kind: * `ECR` needs in the config: region, access_key_id, secret_access_key * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key * `DOCKER_HUB` needs in the config: username, password * `PUBLIC_ECR` needs in the config: access_key_id, secret_access_key * `DOCR` is not supported anymore
+// ContainerRegistryRequestConfig This field is dependent of the container registry kind: * `ECR` needs in the config: region, access_key_id, secret_access_key * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key * `DOCKER_HUB` needs in the config (optional): username, password * `PUBLIC_ECR` doesn't need credentials info * `DOCR` is not supported anymore
 type ContainerRegistryRequestConfig struct {
 	// Required if kind is `ECR` or `PUBLIC_ECR`
 	AccessKeyId *string `json:"access_key_id,omitempty"`
@@ -27,9 +27,9 @@ type ContainerRegistryRequestConfig struct {
 	ScalewayAccessKey *string `json:"scaleway_access_key,omitempty"`
 	// Required if kind is `SCALEWAY_CR`
 	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
-	// Required if kind is `DOCKER_HUB`
+	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
 	Username *string `json:"username,omitempty"`
-	// Required if kind is `DOCKER_HUB`
+	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
 	Password *string `json:"password,omitempty"`
 }
 

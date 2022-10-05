@@ -17,12 +17,8 @@ import (
 
 // OrganizationAvailableRole struct for OrganizationAvailableRole
 type OrganizationAvailableRole struct {
-	// Filled only for an organization custom role
-	Id *string `json:"id,omitempty"`
-	// It can be either a custom role name or a default role name
+	Id   *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	// - `true` if it is a Qovery role - `false` if it is a custom role
-	IsDefault *bool `json:"is_default,omitempty"`
 }
 
 // NewOrganizationAvailableRole instantiates a new OrganizationAvailableRole object
@@ -106,38 +102,6 @@ func (o *OrganizationAvailableRole) SetName(v string) {
 	o.Name = &v
 }
 
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
-func (o *OrganizationAvailableRole) GetIsDefault() bool {
-	if o == nil || o.IsDefault == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsDefault
-}
-
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationAvailableRole) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || o.IsDefault == nil {
-		return nil, false
-	}
-	return o.IsDefault, true
-}
-
-// HasIsDefault returns a boolean if a field has been set.
-func (o *OrganizationAvailableRole) HasIsDefault() bool {
-	if o != nil && o.IsDefault != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
-func (o *OrganizationAvailableRole) SetIsDefault(v bool) {
-	o.IsDefault = &v
-}
-
 func (o OrganizationAvailableRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -145,9 +109,6 @@ func (o OrganizationAvailableRole) MarshalJSON() ([]byte, error) {
 	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
-	}
-	if o.IsDefault != nil {
-		toSerialize["is_default"] = o.IsDefault
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Filled only for an organization custom role | [optional] 
-**Name** | Pointer to **string** | It can be either a custom role name or a default role name | [optional] 
-**IsDefault** | Pointer to **bool** | - &#x60;true&#x60; if it is a Qovery role - &#x60;false&#x60; if it is a custom role  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -76,31 +75,6 @@ SetName sets Name field to given value.
 `func (o *OrganizationAvailableRole) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
-### GetIsDefault
-
-`func (o *OrganizationAvailableRole) GetIsDefault() bool`
-
-GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
-
-### GetIsDefaultOk
-
-`func (o *OrganizationAvailableRole) GetIsDefaultOk() (*bool, bool)`
-
-GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsDefault
-
-`func (o *OrganizationAvailableRole) SetIsDefault(v bool)`
-
-SetIsDefault sets IsDefault field to given value.
-
-### HasIsDefault
-
-`func (o *OrganizationAvailableRole) HasIsDefault() bool`
-
-HasIsDefault returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

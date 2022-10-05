@@ -19,6 +19,7 @@ import (
 type AvailableContainerRegistryResponse struct {
 	Kind           *ContainerRegistryKindEnum `json:"kind,omitempty"`
 	RequiredConfig map[string]interface{}     `json:"required_config,omitempty"`
+	IsMandatory    *bool                      `json:"is_mandatory,omitempty"`
 }
 
 // NewAvailableContainerRegistryResponse instantiates a new AvailableContainerRegistryResponse object
@@ -102,6 +103,38 @@ func (o *AvailableContainerRegistryResponse) SetRequiredConfig(v map[string]inte
 	o.RequiredConfig = v
 }
 
+// GetIsMandatory returns the IsMandatory field value if set, zero value otherwise.
+func (o *AvailableContainerRegistryResponse) GetIsMandatory() bool {
+	if o == nil || o.IsMandatory == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsMandatory
+}
+
+// GetIsMandatoryOk returns a tuple with the IsMandatory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AvailableContainerRegistryResponse) GetIsMandatoryOk() (*bool, bool) {
+	if o == nil || o.IsMandatory == nil {
+		return nil, false
+	}
+	return o.IsMandatory, true
+}
+
+// HasIsMandatory returns a boolean if a field has been set.
+func (o *AvailableContainerRegistryResponse) HasIsMandatory() bool {
+	if o != nil && o.IsMandatory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMandatory gets a reference to the given bool and assigns it to the IsMandatory field.
+func (o *AvailableContainerRegistryResponse) SetIsMandatory(v bool) {
+	o.IsMandatory = &v
+}
+
 func (o AvailableContainerRegistryResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Kind != nil {
@@ -109,6 +142,9 @@ func (o AvailableContainerRegistryResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.RequiredConfig != nil {
 		toSerialize["required_config"] = o.RequiredConfig
+	}
+	if o.IsMandatory != nil {
+		toSerialize["is_mandatory"] = o.IsMandatory
 	}
 	return json.Marshal(toSerialize)
 }

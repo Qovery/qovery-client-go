@@ -11692,12 +11692,15 @@ components:
         required_config:
           key: ""
         kind: null
+        is_mandatory: true
       properties:
         kind:
           $ref: '#/components/schemas/ContainerRegistryKindEnum'
         required_config:
           additionalProperties: true
           type: object
+        is_mandatory:
+          type: boolean
       type: object
     AvailableContainerRegistryResponseList:
       example:
@@ -11705,9 +11708,11 @@ components:
         - required_config:
             key: ""
           kind: null
+          is_mandatory: true
         - required_config:
             key: ""
           kind: null
+          is_mandatory: true
       properties:
         results:
           items:
@@ -12906,8 +12911,9 @@ components:
         description:
           type: string
         url:
-          description: "URL of the container registry:\n* For `DOCKER_HUB`: should\
-            \ be `https://docker.io`\n* For others: must start by `https://`\n"
+          description: "URL of the container registry:\n* For `DOCKER_HUB`: it must\
+            \ be `https://docker.io` (default with 'https://docker.io' if no url provided\
+            \ for DOCKER_HUB)\n* For others: it's required and must start by `https://`\n"
           format: uri
           type: string
         config:
@@ -12916,7 +12922,6 @@ components:
       - config
       - kind
       - name
-      - url
       type: object
     ContainerRegistryResponse:
       allOf:
@@ -14644,19 +14649,15 @@ components:
       type: object
     MemberRoleUpdateRequest:
       example:
-        default_role_name: null
         user_id: user_id
-        custom_role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         user_id:
           description: specify the git provider user id
           type: string
-        custom_role_id:
-          description: "used to specify an organization custom role, otherwise `null`"
+        role_id:
           format: uuid
           type: string
-        default_role_name:
-          $ref: '#/components/schemas/DefaultMemberRole'
       type: object
     MetricCPU:
       example:
@@ -15063,30 +15064,20 @@ components:
       example:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        is_default: true
       properties:
         id:
-          description: Filled only for an organization custom role
           format: uuid
           type: string
         name:
-          description: It can be either a custom role name or a default role name
           type: string
-        is_default:
-          description: |
-            - `true` if it is a Qovery role
-            - `false` if it is a custom role
-          type: boolean
       type: object
     OrganizationAvailableRoleList:
       example:
         results:
         - name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          is_default: true
         - name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          is_default: true
       properties:
         results:
           items:
@@ -16811,9 +16802,8 @@ components:
       description: "This field is dependent of the container registry kind:\n* `ECR`\
         \ needs in the config: region, access_key_id, secret_access_key\n* `SCALEWAY_CR`\
         \ needs in the config: region, scaleway_access_key, scaleway_secret_key\n\
-        * `DOCKER_HUB` needs in the config: username, password\n* `PUBLIC_ECR` needs\
-        \ in the config: access_key_id, secret_access_key\n* `DOCR` is not supported\
-        \ anymore\n"
+        * `DOCKER_HUB` needs in the config (optional): username, password\n* `PUBLIC_ECR`\
+        \ doesn't need credentials info\n* `DOCR` is not supported anymore\n"
       example:
         access_key_id: access_key_id
         password: password
@@ -16839,10 +16829,12 @@ components:
           description: Required if kind is `SCALEWAY_CR`
           type: string
         username:
-          description: Required if kind is `DOCKER_HUB`
+          description: "optional, for kind `DOCKER_HUB`  \nWe encourage you to set\
+            \ credentials for Docker Hub due to the limits on the pull rate\n"
           type: string
         password:
-          description: Required if kind is `DOCKER_HUB`
+          description: "optional, for kind `DOCKER_HUB`  \nWe encourage you to set\
+            \ credentials for Docker Hub due to the limits on the pull rate\n"
           type: string
       type: object
     ContainerRegistryResponse_allOf:
@@ -16868,7 +16860,7 @@ components:
         image_name:
           description: "The image name pattern differs according to chosen container\
             \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
-            * `DOCKER_HUB`: `namespace/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
+            * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
           type: string
         tag:
           description: tag of the image container

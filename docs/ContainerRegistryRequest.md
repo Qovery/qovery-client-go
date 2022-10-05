@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Kind** | [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Url** | **string** | URL of the container registry: * For &#x60;DOCKER_HUB&#x60;: should be &#x60;https://docker.io&#x60; * For others: must start by &#x60;https://&#x60;  | 
+**Url** | Pointer to **string** | URL of the container registry: * For &#x60;DOCKER_HUB&#x60;: it must be &#x60;https://docker.io&#x60; (default with &#39;https://docker.io&#39; if no url provided for DOCKER_HUB) * For others: it&#39;s required and must start by &#x60;https://&#x60;  | [optional] 
 **Config** | [**ContainerRegistryRequestConfig**](ContainerRegistryRequestConfig.md) |  | 
 
 ## Methods
 
 ### NewContainerRegistryRequest
 
-`func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, url string, config ContainerRegistryRequestConfig, ) *ContainerRegistryRequest`
+`func NewContainerRegistryRequest(name string, kind ContainerRegistryKindEnum, config ContainerRegistryRequestConfig, ) *ContainerRegistryRequest`
 
 NewContainerRegistryRequest instantiates a new ContainerRegistryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -113,6 +113,11 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
+### HasUrl
+
+`func (o *ContainerRegistryRequest) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
 
 ### GetConfig
 
