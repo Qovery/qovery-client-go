@@ -18,16 +18,18 @@ import (
 // MemberRoleUpdateRequest struct for MemberRoleUpdateRequest
 type MemberRoleUpdateRequest struct {
 	// specify the git provider user id
-	UserId *string `json:"user_id,omitempty"`
-	RoleId *string `json:"role_id,omitempty"`
+	UserId string `json:"user_id"`
+	RoleId string `json:"role_id"`
 }
 
 // NewMemberRoleUpdateRequest instantiates a new MemberRoleUpdateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMemberRoleUpdateRequest() *MemberRoleUpdateRequest {
+func NewMemberRoleUpdateRequest(userId string, roleId string) *MemberRoleUpdateRequest {
 	this := MemberRoleUpdateRequest{}
+	this.UserId = userId
+	this.RoleId = roleId
 	return &this
 }
 
@@ -39,76 +41,60 @@ func NewMemberRoleUpdateRequestWithDefaults() *MemberRoleUpdateRequest {
 	return &this
 }
 
-// GetUserId returns the UserId field value if set, zero value otherwise.
+// GetUserId returns the UserId field value
 func (o *MemberRoleUpdateRequest) GetUserId() string {
-	if o == nil || o.UserId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserId
+
+	return o.UserId
 }
 
-// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// GetUserIdOk returns a tuple with the UserId field value
 // and a boolean to check if the value has been set.
 func (o *MemberRoleUpdateRequest) GetUserIdOk() (*string, bool) {
-	if o == nil || o.UserId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserId, true
+	return &o.UserId, true
 }
 
-// HasUserId returns a boolean if a field has been set.
-func (o *MemberRoleUpdateRequest) HasUserId() bool {
-	if o != nil && o.UserId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUserId gets a reference to the given string and assigns it to the UserId field.
+// SetUserId sets field value
 func (o *MemberRoleUpdateRequest) SetUserId(v string) {
-	o.UserId = &v
+	o.UserId = v
 }
 
-// GetRoleId returns the RoleId field value if set, zero value otherwise.
+// GetRoleId returns the RoleId field value
 func (o *MemberRoleUpdateRequest) GetRoleId() string {
-	if o == nil || o.RoleId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.RoleId
+
+	return o.RoleId
 }
 
-// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// GetRoleIdOk returns a tuple with the RoleId field value
 // and a boolean to check if the value has been set.
 func (o *MemberRoleUpdateRequest) GetRoleIdOk() (*string, bool) {
-	if o == nil || o.RoleId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RoleId, true
+	return &o.RoleId, true
 }
 
-// HasRoleId returns a boolean if a field has been set.
-func (o *MemberRoleUpdateRequest) HasRoleId() bool {
-	if o != nil && o.RoleId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+// SetRoleId sets field value
 func (o *MemberRoleUpdateRequest) SetRoleId(v string) {
-	o.RoleId = &v
+	o.RoleId = v
 }
 
 func (o MemberRoleUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.UserId != nil {
+	if true {
 		toSerialize["user_id"] = o.UserId
 	}
-	if o.RoleId != nil {
+	if true {
 		toSerialize["role_id"] = o.RoleId
 	}
 	return json.Marshal(toSerialize)

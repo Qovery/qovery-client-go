@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | Pointer to **string** | specify the git provider user id | [optional] 
-**RoleId** | Pointer to **string** |  | [optional] 
+**UserId** | **string** | specify the git provider user id | 
+**RoleId** | **string** |  | 
 
 ## Methods
 
 ### NewMemberRoleUpdateRequest
 
-`func NewMemberRoleUpdateRequest() *MemberRoleUpdateRequest`
+`func NewMemberRoleUpdateRequest(userId string, roleId string, ) *MemberRoleUpdateRequest`
 
 NewMemberRoleUpdateRequest instantiates a new MemberRoleUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetUserId sets UserId field to given value.
 
-### HasUserId
-
-`func (o *MemberRoleUpdateRequest) HasUserId() bool`
-
-HasUserId returns a boolean if a field has been set.
 
 ### GetRoleId
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetRoleId sets RoleId field to given value.
 
-### HasRoleId
-
-`func (o *MemberRoleUpdateRequest) HasRoleId() bool`
-
-HasRoleId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

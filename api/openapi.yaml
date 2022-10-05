@@ -14654,6 +14654,9 @@ components:
         role_id:
           format: uuid
           type: string
+      required:
+      - role_id
+      - user_id
       type: object
     MetricCPU:
       example:
@@ -17450,6 +17453,11 @@ components:
         logo_url:
           format: uri
           type: string
+        role_id:
+          format: uuid
+          type: string
+        role_name:
+          type: string
       required:
       - email
       - invitation_link
@@ -17507,6 +17515,9 @@ components:
           $ref: '#/components/schemas/InviteMemberRoleEnum'
         role_name:
           description: the role linked to the user
+          type: string
+        role_id:
+          format: uuid
           type: string
       required:
       - email

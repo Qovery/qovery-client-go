@@ -27,6 +27,8 @@ type InviteMember struct {
 	InvitationStatus InviteStatusEnum     `json:"invitation_status"`
 	Inviter          string               `json:"inviter"`
 	LogoUrl          *string              `json:"logo_url,omitempty"`
+	RoleId           *string              `json:"role_id,omitempty"`
+	RoleName         *string              `json:"role_name,omitempty"`
 }
 
 // NewInviteMember instantiates a new InviteMember object
@@ -285,6 +287,70 @@ func (o *InviteMember) SetLogoUrl(v string) {
 	o.LogoUrl = &v
 }
 
+// GetRoleId returns the RoleId field value if set, zero value otherwise.
+func (o *InviteMember) GetRoleId() string {
+	if o == nil || o.RoleId == nil {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteMember) GetRoleIdOk() (*string, bool) {
+	if o == nil || o.RoleId == nil {
+		return nil, false
+	}
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *InviteMember) HasRoleId() bool {
+	if o != nil && o.RoleId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *InviteMember) SetRoleId(v string) {
+	o.RoleId = &v
+}
+
+// GetRoleName returns the RoleName field value if set, zero value otherwise.
+func (o *InviteMember) GetRoleName() string {
+	if o == nil || o.RoleName == nil {
+		var ret string
+		return ret
+	}
+	return *o.RoleName
+}
+
+// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteMember) GetRoleNameOk() (*string, bool) {
+	if o == nil || o.RoleName == nil {
+		return nil, false
+	}
+	return o.RoleName, true
+}
+
+// HasRoleName returns a boolean if a field has been set.
+func (o *InviteMember) HasRoleName() bool {
+	if o != nil && o.RoleName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleName gets a reference to the given string and assigns it to the RoleName field.
+func (o *InviteMember) SetRoleName(v string) {
+	o.RoleName = &v
+}
+
 func (o InviteMember) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -313,6 +379,12 @@ func (o InviteMember) MarshalJSON() ([]byte, error) {
 	}
 	if o.LogoUrl != nil {
 		toSerialize["logo_url"] = o.LogoUrl
+	}
+	if o.RoleId != nil {
+		toSerialize["role_id"] = o.RoleId
+	}
+	if o.RoleName != nil {
+		toSerialize["role_name"] = o.RoleName
 	}
 	return json.Marshal(toSerialize)
 }

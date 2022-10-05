@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **LastActivityAt** | Pointer to **time.Time** | last time the user was connected | [optional] 
 **Role** | Pointer to [**InviteMemberRoleEnum**](InviteMemberRoleEnum.md) |  | [optional] 
 **RoleName** | Pointer to **string** | the role linked to the user | [optional] 
+**RoleId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -268,6 +269,31 @@ SetRoleName sets RoleName field to given value.
 `func (o *Member) HasRoleName() bool`
 
 HasRoleName returns a boolean if a field has been set.
+
+### GetRoleId
+
+`func (o *Member) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *Member) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *Member) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *Member) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

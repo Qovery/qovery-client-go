@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **InvitationStatus** | [**InviteStatusEnum**](InviteStatusEnum.md) |  | 
 **Inviter** | **string** |  | 
 **LogoUrl** | Pointer to **string** |  | [optional] 
+**RoleId** | Pointer to **string** |  | [optional] 
+**RoleName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -154,6 +156,56 @@ SetLogoUrl sets LogoUrl field to given value.
 `func (o *InviteMemberAllOf) HasLogoUrl() bool`
 
 HasLogoUrl returns a boolean if a field has been set.
+
+### GetRoleId
+
+`func (o *InviteMemberAllOf) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *InviteMemberAllOf) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *InviteMemberAllOf) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *InviteMemberAllOf) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
+
+### GetRoleName
+
+`func (o *InviteMemberAllOf) GetRoleName() string`
+
+GetRoleName returns the RoleName field if non-nil, zero value otherwise.
+
+### GetRoleNameOk
+
+`func (o *InviteMemberAllOf) GetRoleNameOk() (*string, bool)`
+
+GetRoleNameOk returns a tuple with the RoleName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleName
+
+`func (o *InviteMemberAllOf) SetRoleName(v string)`
+
+SetRoleName sets RoleName field to given value.
+
+### HasRoleName
+
+`func (o *InviteMemberAllOf) HasRoleName() bool`
+
+HasRoleName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
