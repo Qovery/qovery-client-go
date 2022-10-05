@@ -14445,15 +14445,19 @@ components:
     InviteMemberRequest:
       example:
         role: null
+        role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         email: email
       properties:
         email:
           type: string
         role:
           $ref: '#/components/schemas/InviteMemberRoleEnum'
+        role_id:
+          description: the target role to attribute to the new member
+          format: uuid
+          type: string
       required:
       - email
-      - role
       type: object
     InviteMemberResponseList:
       example:

@@ -17,18 +17,19 @@ import (
 
 // InviteMemberRequest struct for InviteMemberRequest
 type InviteMemberRequest struct {
-	Email string               `json:"email"`
-	Role  InviteMemberRoleEnum `json:"role"`
+	Email string                `json:"email"`
+	Role  *InviteMemberRoleEnum `json:"role,omitempty"`
+	// the target role to attribute to the new member
+	RoleId *string `json:"role_id,omitempty"`
 }
 
 // NewInviteMemberRequest instantiates a new InviteMemberRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInviteMemberRequest(email string, role InviteMemberRoleEnum) *InviteMemberRequest {
+func NewInviteMemberRequest(email string) *InviteMemberRequest {
 	this := InviteMemberRequest{}
 	this.Email = email
-	this.Role = role
 	return &this
 }
 
@@ -64,28 +65,68 @@ func (o *InviteMemberRequest) SetEmail(v string) {
 	o.Email = v
 }
 
-// GetRole returns the Role field value
+// GetRole returns the Role field value if set, zero value otherwise.
 func (o *InviteMemberRequest) GetRole() InviteMemberRoleEnum {
-	if o == nil {
+	if o == nil || o.Role == nil {
 		var ret InviteMemberRoleEnum
 		return ret
 	}
-
-	return o.Role
+	return *o.Role
 }
 
-// GetRoleOk returns a tuple with the Role field value
+// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMemberRequest) GetRoleOk() (*InviteMemberRoleEnum, bool) {
-	if o == nil {
+	if o == nil || o.Role == nil {
 		return nil, false
 	}
-	return &o.Role, true
+	return o.Role, true
 }
 
-// SetRole sets field value
+// HasRole returns a boolean if a field has been set.
+func (o *InviteMemberRequest) HasRole() bool {
+	if o != nil && o.Role != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRole gets a reference to the given InviteMemberRoleEnum and assigns it to the Role field.
 func (o *InviteMemberRequest) SetRole(v InviteMemberRoleEnum) {
-	o.Role = v
+	o.Role = &v
+}
+
+// GetRoleId returns the RoleId field value if set, zero value otherwise.
+func (o *InviteMemberRequest) GetRoleId() string {
+	if o == nil || o.RoleId == nil {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteMemberRequest) GetRoleIdOk() (*string, bool) {
+	if o == nil || o.RoleId == nil {
+		return nil, false
+	}
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *InviteMemberRequest) HasRoleId() bool {
+	if o != nil && o.RoleId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *InviteMemberRequest) SetRoleId(v string) {
+	o.RoleId = &v
 }
 
 func (o InviteMemberRequest) MarshalJSON() ([]byte, error) {
@@ -93,8 +134,11 @@ func (o InviteMemberRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["email"] = o.Email
 	}
-	if true {
+	if o.Role != nil {
 		toSerialize["role"] = o.Role
+	}
+	if o.RoleId != nil {
+		toSerialize["role_id"] = o.RoleId
 	}
 	return json.Marshal(toSerialize)
 }
