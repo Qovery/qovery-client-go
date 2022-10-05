@@ -531,7 +531,6 @@ Class | Method | HTTP request | Description
  - [DatabaseResponseList](docs/DatabaseResponseList.md)
  - [DatabaseTypeEnum](docs/DatabaseTypeEnum.md)
  - [DatabaseVersionMode](docs/DatabaseVersionMode.md)
- - [DefaultMemberRole](docs/DefaultMemberRole.md)
  - [DeployAllRequest](docs/DeployAllRequest.md)
  - [DeployAllRequestApplicationsInner](docs/DeployAllRequestApplicationsInner.md)
  - [DeployAllRequestContainersInner](docs/DeployAllRequestContainersInner.md)

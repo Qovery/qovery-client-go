@@ -239,7 +239,6 @@ docs/DatabaseResponseList.md
 docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesApi.md
-docs/DefaultMemberRole.md
 docs/DependencyApi.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
@@ -642,7 +641,6 @@ model_database_request.go
 model_database_response_list.go
 model_database_type_enum.go
 model_database_version_mode.go
-model_default_member_role.go
 model_deploy_all_request.go
 model_deploy_all_request_applications_inner.go
 model_deploy_all_request_containers_inner.go

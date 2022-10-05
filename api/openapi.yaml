@@ -13349,14 +13349,6 @@ components:
         supported_mode:
           $ref: '#/components/schemas/DatabaseModeEnum'
       type: object
-    DefaultMemberRole:
-      description: "used to specify a default role, otherwise `null`"
-      enum:
-      - VIEWER
-      - BILLING
-      - DEVOPS
-      - ADMIN
-      type: string
     DeployAllRequest:
       example:
         containers:
