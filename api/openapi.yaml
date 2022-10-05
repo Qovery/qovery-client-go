@@ -16334,8 +16334,9 @@ components:
         auto_preview:
           default: true
           description: "Specify if the environment preview option is activated or\
-            \ not for this application.\nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request.\n"
+            \ not for this application.  \nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.  \nIf not specified, it\
+            \ takes the value of the `auto_preview` property from the associated environment.\n"
           type: boolean
         ports:
           items:
@@ -16387,8 +16388,9 @@ components:
         auto_preview:
           default: true
           description: "Specify if the environment preview option is activated or\
-            \ not for this application.\nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request.\n"
+            \ not for this application.  \nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.  \nIf not specified, it\
+            \ takes the value of the `auto_preview` property from the associated environment.\n"
           type: boolean
         sticky_session:
           default: false
@@ -16475,8 +16477,9 @@ components:
         auto_preview:
           default: true
           description: "Specify if the environment preview option is activated or\
-            \ not for this application.\nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request.\n"
+            \ not for this application.  \nIf activated, a preview environment will\
+            \ be automatically cloned at each pull request.  \nIf not specified, it\
+            \ takes the value of the `auto_preview` property from the associated environment.\n"
           type: boolean
       required:
       - git_repository
@@ -16895,6 +16898,12 @@ components:
             \ based on the CPU and Memory consumption.\nNote: -1 means that there\
             \ is no limit.\n"
           type: integer
+        auto_preview:
+          description: "Indicates if the 'environment preview option' is enabled for\
+            \ this container.  \nIf enabled, a preview environment will be automatically\
+            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
+            \ the value of the `auto_preview` property from the associated environment.\n"
+          type: boolean
       required:
       - image_name
       - name
@@ -16956,9 +16965,10 @@ components:
             \ is no limit.\n"
           type: integer
         auto_preview:
-          description: "Specify if the environment preview option is activated or\
-            \ not for this container.\nIf activated, a preview environment will be\
-            \ automatically cloned at each pull request.\n"
+          description: "Indicates if the 'environment preview option' is enabled for\
+            \ this container.  \nIf enabled, a preview environment will be automatically\
+            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
+            \ the value of the `auto_preview` property from the associated environment.\n"
           type: boolean
         ports:
           items:

@@ -45,7 +45,7 @@ type ContainerResponse struct {
 	MinRunningInstances int32 `json:"min_running_instances"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
 	MaxRunningInstances int32 `json:"max_running_instances"`
-	// Specify if the environment preview option is activated or not for this container. If activated, a preview environment will be automatically cloned at each pull request.
+	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool          `json:"auto_preview"`
 	Ports       []ServicePort `json:"ports,omitempty"`
 }

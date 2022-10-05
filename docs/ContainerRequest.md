@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
+**AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 
 ## Methods
 
@@ -315,6 +316,31 @@ SetMaxRunningInstances sets MaxRunningInstances field to given value.
 `func (o *ContainerRequest) HasMaxRunningInstances() bool`
 
 HasMaxRunningInstances returns a boolean if a field has been set.
+
+### GetAutoPreview
+
+`func (o *ContainerRequest) GetAutoPreview() bool`
+
+GetAutoPreview returns the AutoPreview field if non-nil, zero value otherwise.
+
+### GetAutoPreviewOk
+
+`func (o *ContainerRequest) GetAutoPreviewOk() (*bool, bool)`
+
+GetAutoPreviewOk returns a tuple with the AutoPreview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoPreview
+
+`func (o *ContainerRequest) SetAutoPreview(v bool)`
+
+SetAutoPreview sets AutoPreview field to given value.
+
+### HasAutoPreview
+
+`func (o *ContainerRequest) HasAutoPreview() bool`
+
+HasAutoPreview returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -36,6 +36,8 @@ type ContainerRequestAllOf struct {
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
 	MaxRunningInstances *int32 `json:"max_running_instances,omitempty"`
+	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
+	AutoPreview *bool `json:"auto_preview,omitempty"`
 }
 
 // NewContainerRequestAllOf instantiates a new ContainerRequestAllOf object
@@ -363,6 +365,38 @@ func (o *ContainerRequestAllOf) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = &v
 }
 
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+func (o *ContainerRequestAllOf) GetAutoPreview() bool {
+	if o == nil || o.AutoPreview == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoPreview
+}
+
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRequestAllOf) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil || o.AutoPreview == nil {
+		return nil, false
+	}
+	return o.AutoPreview, true
+}
+
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *ContainerRequestAllOf) HasAutoPreview() bool {
+	if o != nil && o.AutoPreview != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+func (o *ContainerRequestAllOf) SetAutoPreview(v bool) {
+	o.AutoPreview = &v
+}
+
 func (o ContainerRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -394,6 +428,9 @@ func (o ContainerRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaxRunningInstances != nil {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
+	}
+	if o.AutoPreview != nil {
+		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	return json.Marshal(toSerialize)
 }
