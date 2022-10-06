@@ -17,6 +17,7 @@ import (
 
 // OrganizationCustomRole struct for OrganizationCustomRole
 type OrganizationCustomRole struct {
+	Id                 *string                                         `json:"id,omitempty"`
 	Name               *string                                         `json:"name,omitempty"`
 	Description        *string                                         `json:"description,omitempty"`
 	ClusterPermissions []OrganizationCustomRoleClusterPermissionsInner `json:"cluster_permissions,omitempty"`
@@ -38,6 +39,38 @@ func NewOrganizationCustomRole() *OrganizationCustomRole {
 func NewOrganizationCustomRoleWithDefaults() *OrganizationCustomRole {
 	this := OrganizationCustomRole{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *OrganizationCustomRole) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationCustomRole) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *OrganizationCustomRole) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *OrganizationCustomRole) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -170,6 +203,9 @@ func (o *OrganizationCustomRole) SetProjectPermissions(v []OrganizationCustomRol
 
 func (o OrganizationCustomRole) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
