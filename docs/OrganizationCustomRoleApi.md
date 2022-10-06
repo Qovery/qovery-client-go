@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationCustomRole
 
-> DeleteOrganizationCustomRole(ctx, organizationId).Execute()
+> DeleteOrganizationCustomRole(ctx, organizationId, customRoleId).Execute()
 
 Delete organization custom role
 
@@ -106,10 +106,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationCustomRoleApi.DeleteOrganizationCustomRole(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationCustomRoleApi.DeleteOrganizationCustomRole(context.Background(), organizationId, customRoleId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleApi.DeleteOrganizationCustomRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -124,6 +125,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**customRoleId** | **string** | Custom Role ID | 
 
 ### Other Parameters
 
@@ -132,6 +134,7 @@ Other parameters are passed through a pointer to a apiDeleteOrganizationCustomRo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -154,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationCustomRole
 
-> OrganizationCustomRole EditOrganizationCustomRole(ctx, organizationId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
+> OrganizationCustomRole EditOrganizationCustomRole(ctx, organizationId, customRoleId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
 
 Edit an organization custom role
 
@@ -174,11 +177,12 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
     organizationCustomRoleUpdateRequest := *openapiclient.NewOrganizationCustomRoleUpdateRequest("Name_example", []openapiclient.OrganizationCustomRoleUpdateRequestClusterPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestClusterPermissionsInner()}, []openapiclient.OrganizationCustomRoleUpdateRequestProjectPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestProjectPermissionsInner()}) // OrganizationCustomRoleUpdateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationCustomRoleApi.EditOrganizationCustomRole(context.Background(), organizationId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
+    resp, r, err := apiClient.OrganizationCustomRoleApi.EditOrganizationCustomRole(context.Background(), organizationId, customRoleId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleApi.EditOrganizationCustomRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,6 +199,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**customRoleId** | **string** | Custom Role ID | 
 
 ### Other Parameters
 
@@ -203,6 +208,7 @@ Other parameters are passed through a pointer to a apiEditOrganizationCustomRole
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **organizationCustomRoleUpdateRequest** | [**OrganizationCustomRoleUpdateRequest**](OrganizationCustomRoleUpdateRequest.md) |  | 
 

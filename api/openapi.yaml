@@ -2657,6 +2657,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Custom Role ID
+        explode: false
+        in: path
+        name: customRoleId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: no content
@@ -2715,6 +2724,15 @@ paths:
         explode: false
         in: path
         name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Custom Role ID
+        explode: false
+        in: path
+        name: customRoleId
         required: true
         schema:
           format: uuid
@@ -10982,6 +11000,16 @@ components:
       explode: false
       in: path
       name: customDomainId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    customRoleId:
+      description: Custom Role ID
+      explode: false
+      in: path
+      name: customRoleId
       required: true
       schema:
         format: uuid

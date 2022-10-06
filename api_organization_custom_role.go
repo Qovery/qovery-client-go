@@ -138,6 +138,7 @@ type ApiDeleteOrganizationCustomRoleRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationCustomRoleApiService
 	organizationId string
+	customRoleId   string
 }
 
 func (r ApiDeleteOrganizationCustomRoleRequest) Execute() (*http.Response, error) {
@@ -151,13 +152,15 @@ Delete organization custom role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param customRoleId Custom Role ID
  @return ApiDeleteOrganizationCustomRoleRequest
 */
-func (a *OrganizationCustomRoleApiService) DeleteOrganizationCustomRole(ctx context.Context, organizationId string) ApiDeleteOrganizationCustomRoleRequest {
+func (a *OrganizationCustomRoleApiService) DeleteOrganizationCustomRole(ctx context.Context, organizationId string, customRoleId string) ApiDeleteOrganizationCustomRoleRequest {
 	return ApiDeleteOrganizationCustomRoleRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		customRoleId:   customRoleId,
 	}
 }
 
@@ -176,6 +179,7 @@ func (a *OrganizationCustomRoleApiService) DeleteOrganizationCustomRoleExecute(r
 
 	localVarPath := localBasePath + "/organization/{organizationId}/customRole/{customRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"customRoleId"+"}", url.PathEscape(parameterToString(r.customRoleId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -230,6 +234,7 @@ type ApiEditOrganizationCustomRoleRequest struct {
 	ctx                                 context.Context
 	ApiService                          *OrganizationCustomRoleApiService
 	organizationId                      string
+	customRoleId                        string
 	organizationCustomRoleUpdateRequest *OrganizationCustomRoleUpdateRequest
 }
 
@@ -249,13 +254,15 @@ Edit an organization custom role
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param customRoleId Custom Role ID
  @return ApiEditOrganizationCustomRoleRequest
 */
-func (a *OrganizationCustomRoleApiService) EditOrganizationCustomRole(ctx context.Context, organizationId string) ApiEditOrganizationCustomRoleRequest {
+func (a *OrganizationCustomRoleApiService) EditOrganizationCustomRole(ctx context.Context, organizationId string, customRoleId string) ApiEditOrganizationCustomRoleRequest {
 	return ApiEditOrganizationCustomRoleRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		customRoleId:   customRoleId,
 	}
 }
 
@@ -276,6 +283,7 @@ func (a *OrganizationCustomRoleApiService) EditOrganizationCustomRoleExecute(r A
 
 	localVarPath := localBasePath + "/organization/{organizationId}/customRole/{customRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"customRoleId"+"}", url.PathEscape(parameterToString(r.customRoleId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
