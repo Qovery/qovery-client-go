@@ -21,18 +21,20 @@ type PlanEnum string
 
 // List of PlanEnum
 const (
-	PLANENUM_FREE         PlanEnum = "FREE"
-	PLANENUM_PROFESSIONAL PlanEnum = "PROFESSIONAL"
-	PLANENUM_BUSINESS     PlanEnum = "BUSINESS"
-	PLANENUM_ENTERPRISE   PlanEnum = "ENTERPRISE"
+	PLANENUM_FREE              PlanEnum = "FREE"
+	PLANENUM_TEAM              PlanEnum = "TEAM"
+	PLANENUM_TEAM_YEARLY       PlanEnum = "TEAM_YEARLY"
+	PLANENUM_ENTERPRISE        PlanEnum = "ENTERPRISE"
+	PLANENUM_ENTERPRISE_YEARLY PlanEnum = "ENTERPRISE_YEARLY"
 )
 
 // All allowed values of PlanEnum enum
 var AllowedPlanEnumEnumValues = []PlanEnum{
 	"FREE",
-	"PROFESSIONAL",
-	"BUSINESS",
+	"TEAM",
+	"TEAM_YEARLY",
 	"ENTERPRISE",
+	"ENTERPRISE_YEARLY",
 }
 
 func (v *PlanEnum) UnmarshalJSON(src []byte) error {
