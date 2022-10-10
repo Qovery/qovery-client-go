@@ -25,9 +25,8 @@ type ContainerRegistryResponse struct {
 	Kind        *ContainerRegistryKindEnum `json:"kind,omitempty"`
 	Description *string                    `json:"description,omitempty"`
 	// URL of the container registry
-	Url *string `json:"url,omitempty"`
-	// If this registry is used by a cluster
-	BelongsToCluster *bool `json:"belongs_to_cluster,omitempty"`
+	Url     *string      `json:"url,omitempty"`
+	Cluster NullableBase `json:"cluster,omitempty"`
 }
 
 // NewContainerRegistryResponse instantiates a new ContainerRegistryResponse object
@@ -257,36 +256,47 @@ func (o *ContainerRegistryResponse) SetUrl(v string) {
 	o.Url = &v
 }
 
-// GetBelongsToCluster returns the BelongsToCluster field value if set, zero value otherwise.
-func (o *ContainerRegistryResponse) GetBelongsToCluster() bool {
-	if o == nil || o.BelongsToCluster == nil {
-		var ret bool
+// GetCluster returns the Cluster field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerRegistryResponse) GetCluster() Base {
+	if o == nil || o.Cluster.Get() == nil {
+		var ret Base
 		return ret
 	}
-	return *o.BelongsToCluster
+	return *o.Cluster.Get()
 }
 
-// GetBelongsToClusterOk returns a tuple with the BelongsToCluster field value if set, nil otherwise
+// GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRegistryResponse) GetBelongsToClusterOk() (*bool, bool) {
-	if o == nil || o.BelongsToCluster == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerRegistryResponse) GetClusterOk() (*Base, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BelongsToCluster, true
+	return o.Cluster.Get(), o.Cluster.IsSet()
 }
 
-// HasBelongsToCluster returns a boolean if a field has been set.
-func (o *ContainerRegistryResponse) HasBelongsToCluster() bool {
-	if o != nil && o.BelongsToCluster != nil {
+// HasCluster returns a boolean if a field has been set.
+func (o *ContainerRegistryResponse) HasCluster() bool {
+	if o != nil && o.Cluster.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBelongsToCluster gets a reference to the given bool and assigns it to the BelongsToCluster field.
-func (o *ContainerRegistryResponse) SetBelongsToCluster(v bool) {
-	o.BelongsToCluster = &v
+// SetCluster gets a reference to the given NullableBase and assigns it to the Cluster field.
+func (o *ContainerRegistryResponse) SetCluster(v Base) {
+	o.Cluster.Set(&v)
+}
+
+// SetClusterNil sets the value for Cluster to be an explicit nil
+func (o *ContainerRegistryResponse) SetClusterNil() {
+	o.Cluster.Set(nil)
+}
+
+// UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
+func (o *ContainerRegistryResponse) UnsetCluster() {
+	o.Cluster.Unset()
 }
 
 func (o ContainerRegistryResponse) MarshalJSON() ([]byte, error) {
@@ -312,8 +322,8 @@ func (o ContainerRegistryResponse) MarshalJSON() ([]byte, error) {
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
 	}
-	if o.BelongsToCluster != nil {
-		toSerialize["belongs_to_cluster"] = o.BelongsToCluster
+	if o.Cluster.IsSet() {
+		toSerialize["cluster"] = o.Cluster.Get()
 	}
 	return json.Marshal(toSerialize)
 }

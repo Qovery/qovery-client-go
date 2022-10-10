@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the container registry | [optional] 
-**BelongsToCluster** | Pointer to **bool** | If this registry is used by a cluster | [optional] 
+**Cluster** | Pointer to [**NullableBase**](Base.md) |  | [optional] 
 
 ## Methods
 
@@ -197,31 +197,41 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
-### GetBelongsToCluster
+### GetCluster
 
-`func (o *ContainerRegistryResponse) GetBelongsToCluster() bool`
+`func (o *ContainerRegistryResponse) GetCluster() Base`
 
-GetBelongsToCluster returns the BelongsToCluster field if non-nil, zero value otherwise.
+GetCluster returns the Cluster field if non-nil, zero value otherwise.
 
-### GetBelongsToClusterOk
+### GetClusterOk
 
-`func (o *ContainerRegistryResponse) GetBelongsToClusterOk() (*bool, bool)`
+`func (o *ContainerRegistryResponse) GetClusterOk() (*Base, bool)`
 
-GetBelongsToClusterOk returns a tuple with the BelongsToCluster field if it's non-nil, zero value otherwise
+GetClusterOk returns a tuple with the Cluster field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBelongsToCluster
+### SetCluster
 
-`func (o *ContainerRegistryResponse) SetBelongsToCluster(v bool)`
+`func (o *ContainerRegistryResponse) SetCluster(v Base)`
 
-SetBelongsToCluster sets BelongsToCluster field to given value.
+SetCluster sets Cluster field to given value.
 
-### HasBelongsToCluster
+### HasCluster
 
-`func (o *ContainerRegistryResponse) HasBelongsToCluster() bool`
+`func (o *ContainerRegistryResponse) HasCluster() bool`
 
-HasBelongsToCluster returns a boolean if a field has been set.
+HasCluster returns a boolean if a field has been set.
 
+### SetClusterNil
+
+`func (o *ContainerRegistryResponse) SetClusterNil(b bool)`
+
+ SetClusterNil sets the value for Cluster to be an explicit nil
+
+### UnsetCluster
+`func (o *ContainerRegistryResponse) UnsetCluster()`
+
+UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
