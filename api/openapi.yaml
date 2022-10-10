@@ -16889,6 +16889,7 @@ components:
           - properties:
               id:
                 description: Id of the cluster of which the registry belongs to
+                format: uuid
                 type: string
               name:
                 description: Name of the cluster of which the registry belongs to
