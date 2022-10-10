@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the container registry | [optional] 
+**BelongsToCluster** | Pointer to **bool** | If this registry is used by a cluster | [optional] 
 
 ## Methods
 
@@ -195,6 +196,31 @@ SetUrl sets Url field to given value.
 `func (o *ContainerRegistryResponse) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetBelongsToCluster
+
+`func (o *ContainerRegistryResponse) GetBelongsToCluster() bool`
+
+GetBelongsToCluster returns the BelongsToCluster field if non-nil, zero value otherwise.
+
+### GetBelongsToClusterOk
+
+`func (o *ContainerRegistryResponse) GetBelongsToClusterOk() (*bool, bool)`
+
+GetBelongsToClusterOk returns a tuple with the BelongsToCluster field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBelongsToCluster
+
+`func (o *ContainerRegistryResponse) SetBelongsToCluster(v bool)`
+
+SetBelongsToCluster sets BelongsToCluster field to given value.
+
+### HasBelongsToCluster
+
+`func (o *ContainerRegistryResponse) HasBelongsToCluster() bool`
+
+HasBelongsToCluster returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

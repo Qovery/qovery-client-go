@@ -16883,6 +16883,9 @@ components:
         url:
           description: URL of the container registry
           type: string
+        belongs_to_cluster:
+          description: If this registry is used by a cluster
+          type: boolean
       type: object
     ContainerRequest_allOf:
       properties:

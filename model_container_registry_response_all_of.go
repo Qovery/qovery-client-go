@@ -22,6 +22,8 @@ type ContainerRegistryResponseAllOf struct {
 	Description *string                    `json:"description,omitempty"`
 	// URL of the container registry
 	Url *string `json:"url,omitempty"`
+	// If this registry is used by a cluster
+	BelongsToCluster *bool `json:"belongs_to_cluster,omitempty"`
 }
 
 // NewContainerRegistryResponseAllOf instantiates a new ContainerRegistryResponseAllOf object
@@ -169,6 +171,38 @@ func (o *ContainerRegistryResponseAllOf) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetBelongsToCluster returns the BelongsToCluster field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOf) GetBelongsToCluster() bool {
+	if o == nil || o.BelongsToCluster == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BelongsToCluster
+}
+
+// GetBelongsToClusterOk returns a tuple with the BelongsToCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOf) GetBelongsToClusterOk() (*bool, bool) {
+	if o == nil || o.BelongsToCluster == nil {
+		return nil, false
+	}
+	return o.BelongsToCluster, true
+}
+
+// HasBelongsToCluster returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOf) HasBelongsToCluster() bool {
+	if o != nil && o.BelongsToCluster != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBelongsToCluster gets a reference to the given bool and assigns it to the BelongsToCluster field.
+func (o *ContainerRegistryResponseAllOf) SetBelongsToCluster(v bool) {
+	o.BelongsToCluster = &v
+}
+
 func (o ContainerRegistryResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -182,6 +216,9 @@ func (o ContainerRegistryResponseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.BelongsToCluster != nil {
+		toSerialize["belongs_to_cluster"] = o.BelongsToCluster
 	}
 	return json.Marshal(toSerialize)
 }
