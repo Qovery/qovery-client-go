@@ -22,12 +22,14 @@ type LinkedServiceTypeEnum string
 // List of LinkedServiceTypeEnum
 const (
 	LINKEDSERVICETYPEENUM_APPLICATION LinkedServiceTypeEnum = "APPLICATION"
+	LINKEDSERVICETYPEENUM_CONTAINER   LinkedServiceTypeEnum = "CONTAINER"
 	LINKEDSERVICETYPEENUM_DATABASE    LinkedServiceTypeEnum = "DATABASE"
 )
 
 // All allowed values of LinkedServiceTypeEnum enum
 var AllowedLinkedServiceTypeEnumEnumValues = []LinkedServiceTypeEnum{
 	"APPLICATION",
+	"CONTAINER",
 	"DATABASE",
 }
 

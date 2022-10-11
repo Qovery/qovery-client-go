@@ -5,6 +5,8 @@
 
 * `APPLICATION` (value: `"APPLICATION"`)
 
+* `CONTAINER` (value: `"CONTAINER"`)
+
 * `DATABASE` (value: `"DATABASE"`)
 
 

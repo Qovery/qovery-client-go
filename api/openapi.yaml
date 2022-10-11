@@ -14573,6 +14573,7 @@ components:
         \ \npresent only for `BUILT_IN` variable\n"
       enum:
       - APPLICATION
+      - CONTAINER
       - DATABASE
       type: string
     Log:
