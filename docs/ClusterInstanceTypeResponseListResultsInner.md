@@ -8,12 +8,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Cpu** | **int32** |  | 
 **RamInGb** | **int32** |  | 
+**BandwidthInGbps** | **string** |  | 
+**BandwidthGuarantee** | **string** |  | 
 
 ## Methods
 
 ### NewClusterInstanceTypeResponseListResultsInner
 
-`func NewClusterInstanceTypeResponseListResultsInner(type_ string, name string, cpu int32, ramInGb int32, ) *ClusterInstanceTypeResponseListResultsInner`
+`func NewClusterInstanceTypeResponseListResultsInner(type_ string, name string, cpu int32, ramInGb int32, bandwidthInGbps string, bandwidthGuarantee string, ) *ClusterInstanceTypeResponseListResultsInner`
 
 NewClusterInstanceTypeResponseListResultsInner instantiates a new ClusterInstanceTypeResponseListResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +108,46 @@ and a boolean to check if the value has been set.
 `func (o *ClusterInstanceTypeResponseListResultsInner) SetRamInGb(v int32)`
 
 SetRamInGb sets RamInGb field to given value.
+
+
+### GetBandwidthInGbps
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthInGbps() string`
+
+GetBandwidthInGbps returns the BandwidthInGbps field if non-nil, zero value otherwise.
+
+### GetBandwidthInGbpsOk
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthInGbpsOk() (*string, bool)`
+
+GetBandwidthInGbpsOk returns a tuple with the BandwidthInGbps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBandwidthInGbps
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) SetBandwidthInGbps(v string)`
+
+SetBandwidthInGbps sets BandwidthInGbps field to given value.
+
+
+### GetBandwidthGuarantee
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthGuarantee() string`
+
+GetBandwidthGuarantee returns the BandwidthGuarantee field if non-nil, zero value otherwise.
+
+### GetBandwidthGuaranteeOk
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthGuaranteeOk() (*string, bool)`
+
+GetBandwidthGuaranteeOk returns a tuple with the BandwidthGuarantee field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBandwidthGuarantee
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) SetBandwidthGuarantee(v string)`
+
+SetBandwidthGuarantee sets BandwidthGuarantee field to given value.
 
 
 

@@ -157,6 +157,8 @@ Class | Method | HTTP request | Description
 *BillingApi* | [**ListOrganizationCreditCards**](docs/BillingApi.md#listorganizationcreditcards) | **Get** /organization/{organizationId}/creditCard | List organization credit cards
 *BillingApi* | [**ListOrganizationInvoice**](docs/BillingApi.md#listorganizationinvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
 *BillingApi* | [**OrganizationDownloadAllInvoices**](docs/BillingApi.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
+*CloudProviderApi* | [**ListAWSEKSInstanceType**](docs/CloudProviderApi.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
+*CloudProviderApi* | [**ListAWSEc2InstanceType**](docs/CloudProviderApi.md#listawsec2instancetype) | **Get** /aws/ec2/instanceType/{region} | List AWS EC2 available instance types
 *CloudProviderApi* | [**ListAWSFeatures**](docs/CloudProviderApi.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
 *CloudProviderApi* | [**ListAWSInstanceType**](docs/CloudProviderApi.md#listawsinstancetype) | **Get** /aws/instanceType | List AWS available instance types
 *CloudProviderApi* | [**ListAWSRegions**](docs/CloudProviderApi.md#listawsregions) | **Get** /aws/region | List AWS regions
@@ -166,6 +168,7 @@ Class | Method | HTTP request | Description
 *CloudProviderApi* | [**ListDORegions**](docs/CloudProviderApi.md#listdoregions) | **Get** /digitalOcean/region | List DO regions
 *CloudProviderApi* | [**ListScalewayFeatures**](docs/CloudProviderApi.md#listscalewayfeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
 *CloudProviderApi* | [**ListScalewayInstanceType**](docs/CloudProviderApi.md#listscalewayinstancetype) | **Get** /scaleway/instanceType | List Scaleway available instance types
+*CloudProviderApi* | [**ListScalewayKapsuleInstanceType**](docs/CloudProviderApi.md#listscalewaykapsuleinstancetype) | **Get** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
 *CloudProviderApi* | [**ListScalewayRegions**](docs/CloudProviderApi.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
 *CloudProviderCredentialsApi* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsApi.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 *CloudProviderCredentialsApi* | [**CreateDOCredentials**](docs/CloudProviderCredentialsApi.md#createdocredentials) | **Post** /organization/{organizationId}/digitalOcean/credentials | Create Digital Ocean credentials set

@@ -17,22 +17,26 @@ import (
 
 // ClusterInstanceTypeResponseListResultsInner struct for ClusterInstanceTypeResponseListResultsInner
 type ClusterInstanceTypeResponseListResultsInner struct {
-	Type    string `json:"type"`
-	Name    string `json:"name"`
-	Cpu     int32  `json:"cpu"`
-	RamInGb int32  `json:"ram_in_gb"`
+	Type               string `json:"type"`
+	Name               string `json:"name"`
+	Cpu                int32  `json:"cpu"`
+	RamInGb            int32  `json:"ram_in_gb"`
+	BandwidthInGbps    string `json:"bandwidth_in_gbps"`
+	BandwidthGuarantee string `json:"bandwidth_guarantee"`
 }
 
 // NewClusterInstanceTypeResponseListResultsInner instantiates a new ClusterInstanceTypeResponseListResultsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterInstanceTypeResponseListResultsInner(type_ string, name string, cpu int32, ramInGb int32) *ClusterInstanceTypeResponseListResultsInner {
+func NewClusterInstanceTypeResponseListResultsInner(type_ string, name string, cpu int32, ramInGb int32, bandwidthInGbps string, bandwidthGuarantee string) *ClusterInstanceTypeResponseListResultsInner {
 	this := ClusterInstanceTypeResponseListResultsInner{}
 	this.Type = type_
 	this.Name = name
 	this.Cpu = cpu
 	this.RamInGb = ramInGb
+	this.BandwidthInGbps = bandwidthInGbps
+	this.BandwidthGuarantee = bandwidthGuarantee
 	return &this
 }
 
@@ -140,6 +144,54 @@ func (o *ClusterInstanceTypeResponseListResultsInner) SetRamInGb(v int32) {
 	o.RamInGb = v
 }
 
+// GetBandwidthInGbps returns the BandwidthInGbps field value
+func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthInGbps() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BandwidthInGbps
+}
+
+// GetBandwidthInGbpsOk returns a tuple with the BandwidthInGbps field value
+// and a boolean to check if the value has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthInGbpsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BandwidthInGbps, true
+}
+
+// SetBandwidthInGbps sets field value
+func (o *ClusterInstanceTypeResponseListResultsInner) SetBandwidthInGbps(v string) {
+	o.BandwidthInGbps = v
+}
+
+// GetBandwidthGuarantee returns the BandwidthGuarantee field value
+func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthGuarantee() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BandwidthGuarantee
+}
+
+// GetBandwidthGuaranteeOk returns a tuple with the BandwidthGuarantee field value
+// and a boolean to check if the value has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetBandwidthGuaranteeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BandwidthGuarantee, true
+}
+
+// SetBandwidthGuarantee sets field value
+func (o *ClusterInstanceTypeResponseListResultsInner) SetBandwidthGuarantee(v string) {
+	o.BandwidthGuarantee = v
+}
+
 func (o ClusterInstanceTypeResponseListResultsInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -153,6 +205,12 @@ func (o ClusterInstanceTypeResponseListResultsInner) MarshalJSON() ([]byte, erro
 	}
 	if true {
 		toSerialize["ram_in_gb"] = o.RamInGb
+	}
+	if true {
+		toSerialize["bandwidth_in_gbps"] = o.BandwidthInGbps
+	}
+	if true {
+		toSerialize["bandwidth_guarantee"] = o.BandwidthGuarantee
 	}
 	return json.Marshal(toSerialize)
 }

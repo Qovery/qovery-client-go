@@ -2837,6 +2837,55 @@ paths:
       summary: List AWS available instance types
       tags:
       - Cloud Provider
+  /aws/ec2/instanceType/{region}:
+    get:
+      operationId: listAWSEc2InstanceType
+      parameters:
+      - description: region name
+        explode: false
+        in: path
+        name: region
+        required: true
+        schema:
+          example: us-east-2
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
+          description: list the instance types available for AWS Ec2 by region
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List AWS EC2 available instance types
+      tags:
+      - Cloud Provider
+  /aws/eks/instanceType/{region}:
+    get:
+      operationId: listAWSEKSInstanceType
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
+          description: list the instance types available for AWS EKS by region
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List AWS EKS available instance types
+      tags:
+      - Cloud Provider
   /digitalOcean/region:
     get:
       operationId: listDORegions
@@ -2949,6 +2998,35 @@ paths:
         "404":
           description: Resource not found
       summary: List Scaleway available instance types
+      tags:
+      - Cloud Provider
+  /scaleway/instanceType/{zone}:
+    get:
+      operationId: listScalewayKapsuleInstanceType
+      parameters:
+      - description: zone name
+        explode: false
+        in: path
+        name: zone
+        required: true
+        schema:
+          example: fr-par-1
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
+          description: list the instance types available for Scaleway Kapsule by region
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Scaleway Kapsule available instance types
       tags:
       - Cloud Provider
   /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo:
@@ -12284,11 +12362,15 @@ components:
         results:
         - name: t3a.xlarge
           cpu: 2
+          bandwidth_in_gbps: "5.2"
           type: T3A_XLARGE
+          bandwidth_guarantee: UpTo
           ram_in_gb: 8
         - name: t3a.xlarge
           cpu: 2
+          bandwidth_in_gbps: "5.2"
           type: T3A_XLARGE
+          bandwidth_guarantee: UpTo
           ram_in_gb: 8
       properties:
         results:
@@ -16765,7 +16847,9 @@ components:
       example:
         name: t3a.xlarge
         cpu: 2
+        bandwidth_in_gbps: "5.2"
         type: T3A_XLARGE
+        bandwidth_guarantee: UpTo
         ram_in_gb: 8
       properties:
         type:
@@ -16780,7 +16864,15 @@ components:
         ram_in_gb:
           example: 8
           type: integer
+        bandwidth_in_gbps:
+          example: "5.2"
+          type: string
+        bandwidth_guarantee:
+          example: UpTo
+          type: string
       required:
+      - bandwidth_guarantee
+      - bandwidth_in_gbps
       - cpu
       - name
       - ram_in_gb
