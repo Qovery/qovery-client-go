@@ -114,10 +114,15 @@ func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberReq
 }
 
 type ApiDeleteMemberRequest struct {
-	ctx            context.Context
-	ApiService     *MembersApiService
-	organizationId string
-	userId         string
+	ctx                 context.Context
+	ApiService          *MembersApiService
+	organizationId      string
+	deleteMemberRequest *DeleteMemberRequest
+}
+
+func (r ApiDeleteMemberRequest) DeleteMemberRequest(deleteMemberRequest DeleteMemberRequest) ApiDeleteMemberRequest {
+	r.deleteMemberRequest = &deleteMemberRequest
+	return r
 }
 
 func (r ApiDeleteMemberRequest) Execute() (*http.Response, error) {
@@ -129,15 +134,13 @@ DeleteMember Remove a member
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
- @param userId User ID
  @return ApiDeleteMemberRequest
 */
-func (a *MembersApiService) DeleteMember(ctx context.Context, organizationId string, userId string) ApiDeleteMemberRequest {
+func (a *MembersApiService) DeleteMember(ctx context.Context, organizationId string) ApiDeleteMemberRequest {
 	return ApiDeleteMemberRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
-		userId:         userId,
 	}
 }
 
@@ -154,16 +157,15 @@ func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*http
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}/member/{userId}"
+	localVarPath := localBasePath + "/organization/{organizationId}/member"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(parameterToString(r.userId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -179,6 +181,8 @@ func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*http
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.deleteMemberRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

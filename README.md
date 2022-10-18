@@ -339,7 +339,7 @@ Class | Method | HTTP request | Description
 *LogicalDatabaseApi* | [**ListLogicalDatabaseContainer**](docs/LogicalDatabaseApi.md#listlogicaldatabasecontainer) | **Get** /logicalDatabase/{logicalDatabaseId}/container | List linked containers
 *LogicalDatabaseApi* | [**ListLogicalDatabaseDatabase**](docs/LogicalDatabaseApi.md#listlogicaldatabasedatabase) | **Get** /database/{databaseId}/logicalDatabase | List logical databases of a database
 *MembersApi* | [**DeleteInviteMember**](docs/MembersApi.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
-*MembersApi* | [**DeleteMember**](docs/MembersApi.md#deletemember) | **Delete** /organization/{organizationId}/member/{userId} | Remove a member
+*MembersApi* | [**DeleteMember**](docs/MembersApi.md#deletemember) | **Delete** /organization/{organizationId}/member | Remove a member
 *MembersApi* | [**EditOrganizationMemberRole**](docs/MembersApi.md#editorganizationmemberrole) | **Put** /organization/{organizationId}/member | Edit an organization member role
 *MembersApi* | [**GetOrganizationInvitedMembers**](docs/MembersApi.md#getorganizationinvitedmembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
 *MembersApi* | [**GetOrganizationMembers**](docs/MembersApi.md#getorganizationmembers) | **Get** /organization/{organizationId}/member | Get organization members
@@ -534,6 +534,7 @@ Class | Method | HTTP request | Description
  - [DatabaseResponseList](docs/DatabaseResponseList.md)
  - [DatabaseTypeEnum](docs/DatabaseTypeEnum.md)
  - [DatabaseVersionMode](docs/DatabaseVersionMode.md)
+ - [DeleteMemberRequest](docs/DeleteMemberRequest.md)
  - [DeployAllRequest](docs/DeployAllRequest.md)
  - [DeployAllRequestApplicationsInner](docs/DeployAllRequestApplicationsInner.md)
  - [DeployAllRequestContainersInner](docs/DeployAllRequestContainersInner.md)

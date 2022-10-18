@@ -5,7 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteInviteMember**](MembersApi.md#DeleteInviteMember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
-[**DeleteMember**](MembersApi.md#DeleteMember) | **Delete** /organization/{organizationId}/member/{userId} | Remove a member
+[**DeleteMember**](MembersApi.md#DeleteMember) | **Delete** /organization/{organizationId}/member | Remove a member
 [**EditOrganizationMemberRole**](MembersApi.md#EditOrganizationMemberRole) | **Put** /organization/{organizationId}/member | Edit an organization member role
 [**GetOrganizationInvitedMembers**](MembersApi.md#GetOrganizationInvitedMembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
 [**GetOrganizationMembers**](MembersApi.md#GetOrganizationMembers) | **Get** /organization/{organizationId}/member | Get organization members
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## DeleteMember
 
-> DeleteMember(ctx, organizationId, userId).Execute()
+> DeleteMember(ctx, organizationId).DeleteMemberRequest(deleteMemberRequest).Execute()
 
 Remove a member
 
@@ -101,11 +101,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    userId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | User ID
+    deleteMemberRequest := *openapiclient.NewDeleteMemberRequest("UserId_example") // DeleteMemberRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MembersApi.DeleteMember(context.Background(), organizationId, userId).Execute()
+    resp, r, err := apiClient.MembersApi.DeleteMember(context.Background(), organizationId).DeleteMemberRequest(deleteMemberRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.DeleteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -120,7 +120,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
-**userId** | **string** | User ID | 
 
 ### Other Parameters
 
@@ -130,7 +129,7 @@ Other parameters are passed through a pointer to a apiDeleteMemberRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
+ **deleteMemberRequest** | [**DeleteMemberRequest**](DeleteMemberRequest.md) |  | 
 
 ### Return type
 
@@ -142,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
