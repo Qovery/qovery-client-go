@@ -21,16 +21,16 @@ type CloudProviderEnum string
 
 // List of CloudProviderEnum
 const (
-	CLOUDPROVIDERENUM_AWS           CloudProviderEnum = "AWS"
-	CLOUDPROVIDERENUM_DIGITAL_OCEAN CloudProviderEnum = "DIGITAL_OCEAN"
-	CLOUDPROVIDERENUM_SCALEWAY      CloudProviderEnum = "SCALEWAY"
+	CLOUDPROVIDERENUM_AWS CloudProviderEnum = "AWS"
+	CLOUDPROVIDERENUM_DO  CloudProviderEnum = "DO"
+	CLOUDPROVIDERENUM_SCW CloudProviderEnum = "SCW"
 )
 
 // All allowed values of CloudProviderEnum enum
 var AllowedCloudProviderEnumEnumValues = []CloudProviderEnum{
 	"AWS",
-	"DIGITAL_OCEAN",
-	"SCALEWAY",
+	"DO",
+	"SCW",
 }
 
 func (v *CloudProviderEnum) UnmarshalJSON(src []byte) error {

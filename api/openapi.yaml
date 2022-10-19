@@ -12106,8 +12106,8 @@ components:
     CloudProviderEnum:
       enum:
       - AWS
-      - DIGITAL_OCEAN
-      - SCALEWAY
+      - DO
+      - SCW
       type: string
     CloudProviderResponseList:
       example:
