@@ -3446,6 +3446,45 @@ paths:
       summary: Edit a container registry
       tags:
       - Container Registries
+  /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status:
+    get:
+      description: Returns a list of containers with only their id and status.
+      operationId: getContainerRegistryContainerStatus
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Container Registry ID
+        explode: false
+        in: path
+        name: containerRegistryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceObjectStatusResponseList'
+          description: Get status
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List all container registry container statuses
+      tags:
+      - Containers
   /availableContainerRegistry:
     get:
       description: List supported container registries by Qovery and get the mandatory

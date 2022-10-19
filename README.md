@@ -252,6 +252,7 @@ Class | Method | HTTP request | Description
 *ContainersApi* | [**AutoDeployContainerEnvironments**](docs/ContainersApi.md#autodeploycontainerenvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
 *ContainersApi* | [**CreateContainer**](docs/ContainersApi.md#createcontainer) | **Post** /environment/{environmentId}/container | Create a container
 *ContainersApi* | [**DeployAllServices**](docs/ContainersApi.md#deployallservices) | **Post** /environment/{environmentId}/container/deploy | Deploy services
+*ContainersApi* | [**GetContainerRegistryContainerStatus**](docs/ContainersApi.md#getcontainerregistrycontainerstatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
 *ContainersApi* | [**GetEnvironmentContainerCurrentScale**](docs/ContainersApi.md#getenvironmentcontainercurrentscale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
 *ContainersApi* | [**GetEnvironmentContainerCurrentStorage**](docs/ContainersApi.md#getenvironmentcontainercurrentstorage) | **Get** /environment/{environmentId}/container/currentStorage | List current storage disk usage for each containers
 *ContainersApi* | [**GetEnvironmentContainerStatus**](docs/ContainersApi.md#getenvironmentcontainerstatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
