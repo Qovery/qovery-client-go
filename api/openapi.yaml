@@ -536,6 +536,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Invite ID
+        explode: false
+        in: path
+        name: inviteId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: The resource was deleted successfully
@@ -11172,6 +11181,16 @@ components:
       explode: false
       in: path
       name: eventId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    inviteId:
+      description: Invite ID
+      explode: false
+      in: path
+      name: inviteId
       required: true
       schema:
         format: uuid

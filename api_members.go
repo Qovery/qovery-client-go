@@ -27,6 +27,7 @@ type ApiDeleteInviteMemberRequest struct {
 	ctx            context.Context
 	ApiService     *MembersApiService
 	organizationId string
+	inviteId       string
 }
 
 func (r ApiDeleteInviteMemberRequest) Execute() (*http.Response, error) {
@@ -38,13 +39,15 @@ DeleteInviteMember Remove an invited member
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param inviteId Invite ID
  @return ApiDeleteInviteMemberRequest
 */
-func (a *MembersApiService) DeleteInviteMember(ctx context.Context, organizationId string) ApiDeleteInviteMemberRequest {
+func (a *MembersApiService) DeleteInviteMember(ctx context.Context, organizationId string, inviteId string) ApiDeleteInviteMemberRequest {
 	return ApiDeleteInviteMemberRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		inviteId:       inviteId,
 	}
 }
 
@@ -63,6 +66,7 @@ func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberReq
 
 	localVarPath := localBasePath + "/organization/{organizationId}/inviteMember/{inviteId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"inviteId"+"}", url.PathEscape(parameterToString(r.inviteId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

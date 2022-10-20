@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## DeleteInviteMember
 
-> DeleteInviteMember(ctx, organizationId).Execute()
+> DeleteInviteMember(ctx, organizationId, inviteId).Execute()
 
 Remove an invited member
 
@@ -35,10 +35,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MembersApi.DeleteInviteMember(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.MembersApi.DeleteInviteMember(context.Background(), organizationId, inviteId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.DeleteInviteMember``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,6 +54,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**inviteId** | **string** | Invite ID | 
 
 ### Other Parameters
 
@@ -61,6 +63,7 @@ Other parameters are passed through a pointer to a apiDeleteInviteMemberRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
