@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// PlanEnum the model 'PlanEnum'
+// PlanEnum BUSINESS & PROFESSIONAL are deprecated
 type PlanEnum string
 
 // List of PlanEnum
@@ -26,6 +26,8 @@ const (
 	PLANENUM_TEAM_YEARLY       PlanEnum = "TEAM_YEARLY"
 	PLANENUM_ENTERPRISE        PlanEnum = "ENTERPRISE"
 	PLANENUM_ENTERPRISE_YEARLY PlanEnum = "ENTERPRISE_YEARLY"
+	PLANENUM_PROFESSIONAL      PlanEnum = "PROFESSIONAL"
+	PLANENUM_BUSINESS          PlanEnum = "BUSINESS"
 )
 
 // All allowed values of PlanEnum enum
@@ -35,6 +37,8 @@ var AllowedPlanEnumEnumValues = []PlanEnum{
 	"TEAM_YEARLY",
 	"ENTERPRISE",
 	"ENTERPRISE_YEARLY",
+	"PROFESSIONAL",
+	"BUSINESS",
 }
 
 func (v *PlanEnum) UnmarshalJSON(src []byte) error {

@@ -15707,12 +15707,15 @@ components:
           type: string
       type: object
     PlanEnum:
+      description: BUSINESS & PROFESSIONAL are deprecated
       enum:
       - FREE
       - TEAM
       - TEAM_YEARLY
       - ENTERPRISE
       - ENTERPRISE_YEARLY
+      - PROFESSIONAL
+      - BUSINESS
       type: string
     PortProtocolEnum:
       default: HTTP
