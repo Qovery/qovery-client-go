@@ -6,7 +6,6 @@ api/openapi.yaml
 api_account_info.go
 api_application_actions.go
 api_application_configuration.go
-api_application_database.go
 api_application_deployment_history.go
 api_application_deployment_restriction.go
 api_application_environment_variable.go
@@ -24,7 +23,6 @@ api_clusters.go
 api_container_actions.go
 api_container_configuration.go
 api_container_custom_domain.go
-api_container_database.go
 api_container_dependency.go
 api_container_deployment_history.go
 api_container_environment_variable.go
@@ -80,7 +78,6 @@ docs/ApplicationAdvancedSettings.md
 docs/ApplicationAllOf.md
 docs/ApplicationConfigurationApi.md
 docs/ApplicationCurrentScale.md
-docs/ApplicationDatabaseApi.md
 docs/ApplicationDeploymentHistoryApi.md
 docs/ApplicationDeploymentRestriction.md
 docs/ApplicationDeploymentRestrictionApi.md
@@ -176,7 +173,6 @@ docs/ContainerAdvancedSettings.md
 docs/ContainerConfigurationApi.md
 docs/ContainerCurrentScale.md
 docs/ContainerCustomDomainApi.md
-docs/ContainerDatabaseApi.md
 docs/ContainerDependencyApi.md
 docs/ContainerDependencyRequest.md
 docs/ContainerDeployRequest.md

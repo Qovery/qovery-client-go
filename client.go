@@ -56,8 +56,6 @@ type APIClient struct {
 
 	ApplicationConfigurationApi *ApplicationConfigurationApiService
 
-	ApplicationDatabaseApi *ApplicationDatabaseApiService
-
 	ApplicationDeploymentHistoryApi *ApplicationDeploymentHistoryApiService
 
 	ApplicationDeploymentRestrictionApi *ApplicationDeploymentRestrictionApiService
@@ -91,8 +89,6 @@ type APIClient struct {
 	ContainerConfigurationApi *ContainerConfigurationApiService
 
 	ContainerCustomDomainApi *ContainerCustomDomainApiService
-
-	ContainerDatabaseApi *ContainerDatabaseApiService
 
 	ContainerDependencyApi *ContainerDependencyApiService
 
@@ -200,7 +196,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountInfoApi = (*AccountInfoApiService)(&c.common)
 	c.ApplicationActionsApi = (*ApplicationActionsApiService)(&c.common)
 	c.ApplicationConfigurationApi = (*ApplicationConfigurationApiService)(&c.common)
-	c.ApplicationDatabaseApi = (*ApplicationDatabaseApiService)(&c.common)
 	c.ApplicationDeploymentHistoryApi = (*ApplicationDeploymentHistoryApiService)(&c.common)
 	c.ApplicationDeploymentRestrictionApi = (*ApplicationDeploymentRestrictionApiService)(&c.common)
 	c.ApplicationEnvironmentVariableApi = (*ApplicationEnvironmentVariableApiService)(&c.common)
@@ -218,7 +213,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContainerActionsApi = (*ContainerActionsApiService)(&c.common)
 	c.ContainerConfigurationApi = (*ContainerConfigurationApiService)(&c.common)
 	c.ContainerCustomDomainApi = (*ContainerCustomDomainApiService)(&c.common)
-	c.ContainerDatabaseApi = (*ContainerDatabaseApiService)(&c.common)
 	c.ContainerDependencyApi = (*ContainerDependencyApiService)(&c.common)
 	c.ContainerDeploymentHistoryApi = (*ContainerDeploymentHistoryApiService)(&c.common)
 	c.ContainerEnvironmentVariableApi = (*ContainerEnvironmentVariableApiService)(&c.common)
