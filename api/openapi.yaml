@@ -47,6 +47,20 @@ tags:
 - name: Container Registry
 - name: Container Secret
 - name: Containers
+- name: Job
+- name: Job Actions
+- name: Job Configuration
+- name: Job Database
+- name: Job Deployment Restriction
+- name: Job Deployment History
+- name: Job Environment Variable
+- name: Job Event
+- name: Job Logs
+- name: Job Main Calls
+- name: Job Metrics
+- name: Job Registry
+- name: Job Secret
+- name: Jobs
 - name: Backups
 - name: Billing
 - name: Cloud Provider
@@ -5084,15 +5098,6 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: return (or not) results that must be updated
-        explode: true
-        in: query
-        name: toUpdate
-        required: false
-        schema:
-          default: false
-          type: boolean
-        style: form
       responses:
         "200":
           content:
@@ -10762,6 +10767,833 @@ paths:
       summary: Send Sign Up request
       tags:
       - User Sign Up
+  /environment/{environmentId}/job:
+    get:
+      operationId: listJobs
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: return (or not) results that must be updated
+        explode: true
+        in: query
+        name: toUpdate
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponseList'
+          description: List jobs
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List jobs
+      tags:
+      - Jobs
+    post:
+      operationId: createJob
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+          description: Create job
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Job name within the environment is already taken
+      summary: Create a job
+      tags:
+      - Jobs
+  /environment/{environmentId}/job/status:
+    get:
+      description: Returns a list of jobs with only their id and status.
+      operationId: getEnvironmentJobStatus
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceObjectStatusResponseList'
+          description: Get status
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List all environment job statuses
+      tags:
+      - Jobs
+  /job/{jobId}:
+    delete:
+      description: To delete the job you must have the admin permission
+      operationId: deleteJob
+      parameters: []
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete job
+      tags:
+      - Job Main Calls
+    get:
+      operationId: getJob
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+          description: Get job by ID
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get job by ID
+      tags:
+      - Job Main Calls
+    put:
+      description: |
+        - To edit the job you must have the admin permission.
+      operationId: editJob
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+          description: Edit job
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Job name within the environment is already taken
+      summary: Edit job
+      tags:
+      - Job Main Calls
+  /job/{jobId}/advancedSettings:
+    get:
+      description: Get list and values of the advanced settings of the job.
+      operationId: getJobAdvancedSettings
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAdvancedSettings'
+          description: Advanced settings list
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get advanced settings
+      tags:
+      - Job Configuration
+    put:
+      description: Edit advanced settings by returning table of advanced settings.
+      operationId: editJobAdvancedSettings
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobAdvancedSettings'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAdvancedSettings'
+          description: Updated advanced settings
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit advanced settings
+      tags:
+      - Job Configuration
+  /job/{jobId}/deploy:
+    post:
+      description: You must provide a git commit id
+      operationId: deployJob
+      parameters:
+      - description: Enable or Disable the force trigger of the job
+        explode: true
+        in: query
+        name: force
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobDeployRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deploy job
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Deploy job
+      tags:
+      - Job Actions
+  /job/{jobId}/restart:
+    post:
+      operationId: restartJob
+      parameters:
+      - description: Enable or Disable the force trigger of the job
+        explode: true
+        in: query
+        name: force
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Job restart has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Restart job
+      tags:
+      - Job Actions
+  /job/{jobId}/stop:
+    post:
+      operationId: stopJob
+      parameters: []
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Job stop has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Job is already stopped or an operation is in progress
+      summary: Stop job
+      tags:
+      - Job Actions
+  /job/{jobId}/status:
+    get:
+      operationId: getJobStatus
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Get status
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get job status
+      tags:
+      - Job Main Calls
+  /job/{jobId}/deploymentHistory:
+    get:
+      description: Returns the 20 last job deployments
+      operationId: listJobDeploymentHistory
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listJobDeploymentHistory_200_response'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List job deployments
+      tags:
+      - Job Deployment History
+  /job/{jobId}/instance:
+    get:
+      operationId: getJobCurrentInstance
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstanceResponseList'
+          description: Know current resource consumption of the job for each running
+            instance
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List currently running instances of the job with their CPU and RAM
+        metrics
+      tags:
+      - Job Metrics
+  /job/{jobId}/environmentVariable:
+    get:
+      operationId: listJobEnvironmentVariable
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentVariableResponseList'
+          description: List environment variables
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environment variables
+      tags:
+      - Job Environment Variable
+    post:
+      description: |
+        - Add an environment variable to the job.
+      operationId: createJobEnvironmentVariable
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentVariableRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentVariable'
+          description: Added an environment variable
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Add an environment variable to the job
+      tags:
+      - Job Environment Variable
+  /job/{jobId}/environmentVariable/import:
+    post:
+      description: "Import environment variables in a defined scope, with a defined\
+        \ visibility."
+      operationId: importJobEnvironmentVariable
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableImportRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableImport'
+          description: Import environment variables
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Import variables
+      tags:
+      - Job Environment Variable
+  /job/{jobId}/environmentVariable/{environmentVariableId}:
+    delete:
+      description: "- To delete an environment variable from an job you must have\
+        \ the project user permission\n- You can't delete a BUILT_IN variable\n- If\
+        \ you delete a variable having override or alias, the associated override/alias\
+        \ will be deleted as well\n"
+      operationId: deleteJobEnvironmentVariable
+      parameters:
+      - description: Environment Variable ID
+        explode: false
+        in: path
+        name: environmentVariableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete an environment variable from a job
+      tags:
+      - Job Environment Variable
+    put:
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
+      operationId: editJobEnvironmentVariable
+      parameters:
+      - description: Environment Variable ID
+        explode: false
+        in: path
+        name: environmentVariableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentVariableEditRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentVariable'
+          description: Edited the environment variable value
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit an environment variable belonging to the job
+      tags:
+      - Job Environment Variable
+  /job/{jobId}/environmentVariable/{environmentVariableId}/override:
+    post:
+      description: |
+        - Allows you to override at job level an environment variable that has a higher scope.
+        - You only have to specify a value in the request body
+        - The system will create a new environment variable at job level with the same key as the one corresponding to the variable id in the path
+        - The response body will contain the newly created variable
+        - Information regarding the overridden_variable will be exposed in the "overridden_variable" field of the newly created variable
+      operationId: createJobEnvironmentVariableOverride
+      parameters:
+      - description: Environment Variable ID
+        explode: false
+        in: path
+        name: environmentVariableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Value'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentVariable'
+          description: Create variable override
+        "400":
+          description: Can't create an override on a higher scope. Overrides can only
+            be created from one scope to a lower scope. Scope hierarchy is BUILT_IN
+            > PROJECT > ENVIRONMENT > CONTAINER
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create an environment variable override at the job level
+      tags:
+      - Job Environment Variable
+  /job/{jobId}/environmentVariable/{environmentVariableId}/alias:
+    post:
+      description: "- Allows you to add an alias at job level on an existing environment\
+        \ variable having higher scope, in order to customize its key.\n- You only\
+        \ have to specify a key in the request body\n- The system will create a new\
+        \ environment variable at job level with the same value as the one corresponding\
+        \ to the variable id in the path\n- The response body will contain the newly\
+        \ created variable\n- Information regarding the aliased_variable will be exposed\
+        \ in the \"aliased_variable\" field of the newly created variable\n- Only\
+        \ 1 alias level is allowed. You can't create an alias on an alias\n"
+      operationId: createJobEnvironmentVariableAlias
+      parameters:
+      - description: Environment Variable ID
+        explode: false
+        in: path
+        name: environmentVariableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Key'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentVariable'
+          description: Create variable alias
+        "400":
+          description: Can't create an alias on a higher scope. Aliases can only be
+            created from one scope to a lower scope. Scope hierarchy is BUILT_IN >
+            PROJECT > ENVIRONMENT > CONTAINER
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create an environment variable alias at the job level
+      tags:
+      - Job Environment Variable
+  /job/{jobId}/secret:
+    get:
+      description: "Secrets are like environment variables, but they are secured and\
+        \ can't be revealed."
+      operationId: listJobSecrets
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecretResponseList'
+          description: List secrets
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List job secrets
+      tags:
+      - Job Secret
+    post:
+      description: |
+        - Add a secret to the job.
+      operationId: createJobSecret
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecretRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Add a secret
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Add a secret to the job
+      tags:
+      - Job Secret
+  /job/{jobId}/secret/{secretId}:
+    delete:
+      description: "- To delete a secret you must have the project user permission\n\
+        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
+        \ or alias, the associated override/alias will be deleted as well\n"
+      operationId: deleteJobSecret
+      parameters:
+      - description: Secret ID
+        explode: false
+        in: path
+        name: secretId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a secret from an job
+      tags:
+      - Job Secret
+    put:
+      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
+        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
+        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
+      operationId: editJobSecret
+      parameters:
+      - description: Secret ID
+        explode: false
+        in: path
+        name: secretId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecretEditRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Edited the secret value
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a secret belonging to the job
+      tags:
+      - Job Secret
+  /job/{jobId}/secret/{secretId}/override:
+    post:
+      description: |
+        - Allows you to override at job level a secret that has a higher scope.
+        - You only have to specify a value in the request body
+        - The system will create a new secret at job level with the same key as the one corresponding to the secret id in the path
+        - The response body will contain the newly created secret
+        - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
+      operationId: createJobSecretOverride
+      parameters:
+      - description: Secret ID
+        explode: false
+        in: path
+        name: secretId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Value'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Create secret override
+        "400":
+          description: Can't create an override on a higher scope. Overrides can only
+            be created from one scope to a lower scope. Scope hierarchy is BUILT_IN
+            > PROJECT > ENVIRONMENT > APPLICATION
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a secret override at the job level
+      tags:
+      - Job Secret
+  /job/{jobId}/secret/{secretId}/alias:
+    post:
+      description: "- Allows you to add an alias at job level on an existing secret\
+        \ having higher scope, in order to customize its key.\n- You only have to\
+        \ specify a key in the request body\n- The system will create a new secret\
+        \ at job level with the same value as the one corresponding to the secret\
+        \ id in the path\n- The response body will contain the newly created secret\n\
+        - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
+        \ field of the newly created secret\n- Only 1 alias level is allowed. You\
+        \ can't create an alias on an alias\n"
+      operationId: createJobSecretAlias
+      parameters:
+      - description: Secret ID
+        explode: false
+        in: path
+        name: secretId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Key'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Create secret alias
+        "400":
+          description: Can't create an alias on a higher scope. Aliases can only be
+            created from one scope to a lower scope. Scope hierarchy is BUILT_IN >
+            PROJECT > ENVIRONMENT > APPLICATION
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a secret alias at the job level
+      tags:
+      - Job Secret
 components:
   parameters:
     applicationId:
@@ -14436,6 +15268,160 @@ components:
       - UNKNOWN
       - VOIDED
       type: string
+    JobRequest:
+      allOf:
+      - $ref: '#/components/schemas/JobRequest_allOf'
+    JobResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/JobResponse_allOf'
+    JobResponseList:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/JobResponse'
+          type: array
+      type: object
+    JobAdvancedSettings:
+      example:
+        readiness_probe.timeout_seconds: 2
+        liveness_probe.type: TCP
+        liveness_probe.initial_delay_seconds: 3
+        liveness_probe.success_threshold: 7
+        job.delete_ttl_seconds_after_finished: 0
+        liveness_probe.failure_threshold: 1
+        cronjob.success_jobs_history_limit: 1
+        readiness_probe.type: TCP
+        liveness_probe.timeout_seconds: 4
+        readiness_probe.failure_threshold: 9
+        liveness_probe.period_seconds: 2
+        readiness_probe.http_get.path: /
+        cronjob.failed_jobs_history_limit: 6
+        cronjob.concurrency_policy: Forbid
+        readiness_probe.success_threshold: 7
+        readiness_probe.initial_delay_seconds: 5
+        readiness_probe.period_seconds: 5
+        liveness_probe.http_get.path: /
+      properties:
+        job.delete_ttl_seconds_after_finished:
+          nullable: true
+          type: integer
+        cronjob.concurrency_policy:
+          default: Forbid
+          type: string
+        cronjob.failed_jobs_history_limit:
+          default: 1
+          type: integer
+        cronjob.success_jobs_history_limit:
+          default: 1
+          type: integer
+        readiness_probe.type:
+          default: TCP
+          description: |
+            `NONE` disable readiness probe
+            `TCP` enable TCP readiness probe
+            `HTTP` enable HTTP readiness probe
+          enum:
+          - NONE
+          - TCP
+          - HTTP
+          type: string
+        readiness_probe.http_get.path:
+          default: /
+          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
+            - only usable with TYPE = HTTP
+          type: string
+        readiness_probe.initial_delay_seconds:
+          default: 30
+          description: Delay before liveness probe is initiated
+          type: integer
+        readiness_probe.period_seconds:
+          default: 10
+          description: How often to perform the probe
+          type: integer
+        readiness_probe.timeout_seconds:
+          default: 1
+          description: When the probe times out
+          type: integer
+        readiness_probe.success_threshold:
+          default: 1
+          description: Minimum consecutive successes for the probe to be considered
+            successful after having failed.
+          type: integer
+        readiness_probe.failure_threshold:
+          default: 3
+          description: Minimum consecutive failures for the probe to be considered
+            failed after having succeeded.
+          type: integer
+        liveness_probe.type:
+          default: TCP
+          description: |
+            `NONE` disable liveness probe
+            `TCP` enable TCP liveness probe
+            `HTTP` enable HTTP liveness probe
+          enum:
+          - NONE
+          - TCP
+          - HTTP
+          type: string
+        liveness_probe.http_get.path:
+          default: /
+          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
+            - only usable with TYPE = HTTP
+          type: string
+        liveness_probe.initial_delay_seconds:
+          default: 30
+          description: Delay before liveness probe is initiated
+          type: integer
+        liveness_probe.period_seconds:
+          default: 10
+          description: How often to perform the probe
+          type: integer
+        liveness_probe.timeout_seconds:
+          default: 5
+          description: When the probe times out
+          type: integer
+        liveness_probe.success_threshold:
+          default: 1
+          description: Minimum consecutive successes for the probe to be considered
+            successful after having failed.
+          type: integer
+        liveness_probe.failure_threshold:
+          default: 3
+          description: Minimum consecutive failures for the probe to be considered
+            failed after having succeeded.
+          type: integer
+      type: object
+    JobDeployRequest:
+      example:
+        image_tag: image_tag
+      properties:
+        image_tag:
+          description: Image tag to deploy
+          type: string
+      required:
+      - image_tag
+      type: object
+    JobScheduleEvent:
+      description: |
+        On which event the job is going to run.
+        ON_START means when a deployment is requested for the environment
+        ON_STOP means when a stop of the environment is requested
+        CRON means at a scheduled interval
+      enum:
+      - ON_START
+      - ON_STOP
+      - ON_DELETE
+      - CRON
+      type: string
+    DeploymentHistoryJobResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentHistoryJobResponse_allOf'
     Key:
       example:
         key: key
@@ -16220,6 +17206,17 @@ components:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/listDatabaseDeploymentHistory_200_response_allOf'
+    listJobDeploymentHistory_200_response_allOf:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryJobResponse'
+          type: array
+      type: object
+    listJobDeploymentHistory_200_response:
+      allOf:
+      - $ref: '#/components/schemas/PaginationData'
+      - $ref: '#/components/schemas/listJobDeploymentHistory_200_response_allOf'
     Application_allOf:
       properties:
         environment:
@@ -17540,6 +18537,215 @@ components:
       - total
       - total_in_cents
       type: object
+    JobRequest_allOf_source_image:
+      nullable: true
+      properties:
+        image_name:
+          description: "The image name pattern differs according to chosen container\
+            \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
+            * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
+          type: string
+        tag:
+          description: tag of the image container
+          type: string
+        registry_id:
+          description: tag of the image container
+          type: string
+      type: object
+    JobRequest_allOf_source_docker:
+      nullable: true
+      properties:
+        dockerfile_path:
+          description: The path of the associated Dockerfile. Only if you are using
+            build_mode = DOCKER
+          nullable: true
+          type: string
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+      type: object
+    JobRequest_allOf_source:
+      properties:
+        image:
+          $ref: '#/components/schemas/JobRequest_allOf_source_image'
+        docker:
+          $ref: '#/components/schemas/JobRequest_allOf_source_docker'
+      type: object
+    JobRequest_allOf_schedule:
+      properties:
+        event:
+          $ref: '#/components/schemas/JobScheduleEvent'
+        schedule_at:
+          description: "Can only be set if the event is CRON.\nRepresent the cron\
+            \ format for the job schedule without seconds.\nFor example: `* * * *\
+            \ *` represent the cron to launch the job every minute.\nSee https://crontab.guru/\
+            \ to WISIWIG interface.\nTimezone is UTC\n"
+          format: cron
+          nullable: true
+          type: string
+      type: object
+    JobRequest_allOf:
+      properties:
+        name:
+          description: name is case insensitive
+          type: string
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
+        cpu:
+          default: 500
+          description: unit is millicores (m). 1000m = 1 cpu
+          example: 1250
+          type: integer
+        memory:
+          default: 512
+          description: unit is MB. 1024 MB = 1GB
+          example: 1024
+          type: integer
+        max_nb_restart:
+          description: |
+            Maximum number of restart allowed before the job is considered as failed
+            0 means that no restart/crash of the job is allowed
+          minimum: 0
+          type: integer
+        max_duration_seconds:
+          description: |
+            Maximum number of seconds allowed for the job to run before killing it and mark it as failed
+          minimum: 0
+          type: integer
+        auto_preview:
+          description: "Indicates if the 'environment preview option' is enabled for\
+            \ this container.  \nIf enabled, a preview environment will be automatically\
+            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
+            \ the value of the `auto_preview` property from the associated environment.\n"
+          type: boolean
+        port:
+          description: Port where to run readiness and liveliness probes checks. The
+            port will not be exposed externally
+          minimum: 1
+          nullable: true
+          type: integer
+        source:
+          $ref: '#/components/schemas/JobRequest_allOf_source'
+        schedule:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule'
+      required:
+      - name
+      type: object
+    JobResponse_allOf_source_docker:
+      nullable: true
+      properties:
+        dockerfile_path:
+          description: The path of the associated Dockerfile. Only if you are using
+            build_mode = DOCKER
+          nullable: true
+          type: string
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepository'
+      type: object
+    JobResponse_allOf_source:
+      properties:
+        image:
+          $ref: '#/components/schemas/JobRequest_allOf_source_image'
+        docker:
+          $ref: '#/components/schemas/JobResponse_allOf_source_docker'
+      type: object
+    JobResponse_allOf:
+      properties:
+        environment:
+          $ref: '#/components/schemas/ReferenceObject'
+        registry:
+          $ref: '#/components/schemas/ReferenceObject'
+        maximum_cpu:
+          description: Maximum cpu that can be allocated to the job based on organization
+            cluster configuration. unit is millicores (m). 1000m = 1 cpu
+          example: 16000
+          type: integer
+        maximum_memory:
+          description: Maximum memory that can be allocated to the job based on organization
+            cluster configuration. unit is MB. 1024 MB = 1GB
+          example: 16384
+          type: integer
+        name:
+          description: name is case insensitive
+          type: string
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
+        cpu:
+          description: unit is millicores (m). 1000m = 1 cpu
+          example: 1250
+          type: integer
+        memory:
+          description: unit is MB. 1024 MB = 1GB
+          example: 1024
+          type: integer
+        max_nb_restart:
+          description: |
+            Maximum number of restart allowed before the job is considered as failed
+            0 means that no restart/crash of the job is allowed
+          minimum: 0
+          type: integer
+        max_duration_seconds:
+          description: |
+            Maximum number of seconds allowed for the job to run before killing it and mark it as failed
+          minimum: 0
+          type: integer
+        auto_preview:
+          description: "Indicates if the 'environment preview option' is enabled for\
+            \ this container.  \nIf enabled, a preview environment will be automatically\
+            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
+            \ the value of the `auto_preview` property from the associated environment.\n"
+          type: boolean
+        port:
+          description: Port where to run readiness and liveliness probes checks. The
+            port will not be exposed externally
+          minimum: 1
+          nullable: true
+          type: integer
+        source:
+          $ref: '#/components/schemas/JobResponse_allOf_source'
+        schedule:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule'
+      required:
+      - auto_preview
+      - cpu
+      - environment
+      - image_name
+      - max_running_instances
+      - maximum_cpu
+      - maximum_memory
+      - memory
+      - min_running_instances
+      - name
+      - registry
+      - tag
+      type: object
+    DeploymentHistoryJobResponse_allOf:
+      properties:
+        name:
+          description: name of the job
+          type: string
+        status:
+          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+        image_name:
+          type: string
+        tag:
+          type: string
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          type: string
+      type: object
     LogPaginatedResponseList_allOf:
       properties:
         results:
@@ -17916,6 +19122,7 @@ x-tagGroups:
   - Applications
   - Containers
   - Databases
+  - Jobs
   - Environment Actions
   - Environment Logs
   - Environment Deployment History
@@ -17965,6 +19172,18 @@ x-tagGroups:
   - Database Container
   - Backups
   - Database Event
+- name: Job
+  tags:
+  - Job Main Calls
+  - Job Actions
+  - Job Configuration
+  - Job Custom Domain
+  - Job Dependency
+  - Job Metrics
+  - Job Deployment History
+  - Job Environment Variable
+  - Job Secret
+  - Job Event
 - name: Account
   tags:
   - Account Info

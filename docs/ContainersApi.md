@@ -513,7 +513,7 @@ Name | Type | Description  | Notes
 
 ## ListContainer
 
-> ContainerResponseList ListContainer(ctx, environmentId).ToUpdate(toUpdate).Execute()
+> ContainerResponseList ListContainer(ctx, environmentId).Execute()
 
 List containers
 
@@ -531,11 +531,10 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    toUpdate := true // bool | return (or not) results that must be updated (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainersApi.ListContainer(context.Background(), environmentId).ToUpdate(toUpdate).Execute()
+    resp, r, err := apiClient.ContainersApi.ListContainer(context.Background(), environmentId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.ListContainer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -561,7 +560,6 @@ Other parameters are passed through a pointer to a apiListContainerRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **toUpdate** | **bool** | return (or not) results that must be updated | [default to false]
 
 ### Return type
 

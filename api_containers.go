@@ -775,13 +775,6 @@ type ApiListContainerRequest struct {
 	ctx           context.Context
 	ApiService    *ContainersApiService
 	environmentId string
-	toUpdate      *bool
-}
-
-// return (or not) results that must be updated
-func (r ApiListContainerRequest) ToUpdate(toUpdate bool) ApiListContainerRequest {
-	r.toUpdate = &toUpdate
-	return r
 }
 
 func (r ApiListContainerRequest) Execute() (*ContainerResponseList, *http.Response, error) {
@@ -825,9 +818,6 @@ func (a *ContainersApiService) ListContainerExecute(r ApiListContainerRequest) (
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.toUpdate != nil {
-		localVarQueryParams.Add("toUpdate", parameterToString(*r.toUpdate, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

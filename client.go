@@ -148,6 +148,22 @@ type APIClient struct {
 
 	GithubAppApi *GithubAppApiService
 
+	JobActionsApi *JobActionsApiService
+
+	JobConfigurationApi *JobConfigurationApiService
+
+	JobDeploymentHistoryApi *JobDeploymentHistoryApiService
+
+	JobEnvironmentVariableApi *JobEnvironmentVariableApiService
+
+	JobMainCallsApi *JobMainCallsApiService
+
+	JobMetricsApi *JobMetricsApiService
+
+	JobSecretApi *JobSecretApiService
+
+	JobsApi *JobsApiService
+
 	LogicalDatabaseApi *LogicalDatabaseApiService
 
 	MembersApi *MembersApiService
@@ -242,6 +258,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.GitRepositoriesApi = (*GitRepositoriesApiService)(&c.common)
 	c.GithubAppApi = (*GithubAppApiService)(&c.common)
+	c.JobActionsApi = (*JobActionsApiService)(&c.common)
+	c.JobConfigurationApi = (*JobConfigurationApiService)(&c.common)
+	c.JobDeploymentHistoryApi = (*JobDeploymentHistoryApiService)(&c.common)
+	c.JobEnvironmentVariableApi = (*JobEnvironmentVariableApiService)(&c.common)
+	c.JobMainCallsApi = (*JobMainCallsApiService)(&c.common)
+	c.JobMetricsApi = (*JobMetricsApiService)(&c.common)
+	c.JobSecretApi = (*JobSecretApiService)(&c.common)
+	c.JobsApi = (*JobsApiService)(&c.common)
 	c.LogicalDatabaseApi = (*LogicalDatabaseApiService)(&c.common)
 	c.MembersApi = (*MembersApiService)(&c.common)
 	c.OrganizationAccountGitRepositoriesApi = (*OrganizationAccountGitRepositoriesApiService)(&c.common)
