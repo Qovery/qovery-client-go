@@ -292,6 +292,7 @@ Class | Method | HTTP request | Description
 *EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
 *EnvironmentDeploymentRuleApi* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
 *EnvironmentLogsApi* | [**ListEnvironmentLog**](docs/EnvironmentLogsApi.md#listenvironmentlog) | **Get** /environment/{environmentId}/log | List environment deployment logs
+*EnvironmentLogsApi* | [**ListEnvironmentLogs**](docs/EnvironmentLogsApi.md#listenvironmentlogs) | **Get** /environment/{environmentId}/logs | List environment deployment logs v2
 *EnvironmentMainCallsApi* | [**DeleteEnvironment**](docs/EnvironmentMainCallsApi.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
 *EnvironmentMainCallsApi* | [**EditEnvironment**](docs/EnvironmentMainCallsApi.md#editenvironment) | **Put** /environment/{environmentId} | Edit an environment
 *EnvironmentMainCallsApi* | [**GetEnvironment**](docs/EnvironmentMainCallsApi.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
@@ -631,6 +632,13 @@ Class | Method | HTTP request | Description
  - [ListContainerDeploymentHistory200ResponseAllOf](docs/ListContainerDeploymentHistory200ResponseAllOf.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
  - [ListDatabaseDeploymentHistory200ResponseAllOf](docs/ListDatabaseDeploymentHistory200ResponseAllOf.md)
+ - [ListEnvironmentLogs200ResponseInner](docs/ListEnvironmentLogs200ResponseInner.md)
+ - [ListEnvironmentLogs200ResponseInnerDetails](docs/ListEnvironmentLogs200ResponseInnerDetails.md)
+ - [ListEnvironmentLogs200ResponseInnerDetailsStage](docs/ListEnvironmentLogs200ResponseInnerDetailsStage.md)
+ - [ListEnvironmentLogs200ResponseInnerDetailsTransmitter](docs/ListEnvironmentLogs200ResponseInnerDetailsTransmitter.md)
+ - [ListEnvironmentLogs200ResponseInnerError](docs/ListEnvironmentLogs200ResponseInnerError.md)
+ - [ListEnvironmentLogs200ResponseInnerErrorUnderlyingError](docs/ListEnvironmentLogs200ResponseInnerErrorUnderlyingError.md)
+ - [ListEnvironmentLogs200ResponseInnerMessage](docs/ListEnvironmentLogs200ResponseInnerMessage.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogPaginatedResponseListAllOf](docs/LogPaginatedResponseListAllOf.md)

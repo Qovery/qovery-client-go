@@ -5388,6 +5388,38 @@ paths:
       summary: List environment deployment logs
       tags:
       - Environment Logs
+  /environment/{environmentId}/logs:
+    get:
+      description: This returns the last 1000 environment deployment logs v2
+      operationId: listEnvironmentLogs
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listEnvironmentLogs_200_response_inner'
+                type: array
+          description: List logs v2
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environment deployment logs v2
+      tags:
+      - Environment Logs
   /environment/{environmentId}/deploymentHistory:
     get:
       description: "List previous and current environment deployments with the status\
@@ -16120,6 +16152,138 @@ components:
           type: string
       required:
       - user_id
+      type: object
+    listEnvironmentLogs_200_response_inner_details_transmitter:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: type
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      type: object
+    listEnvironmentLogs_200_response_inner_details_stage:
+      example:
+        step: step
+      properties:
+        step:
+          type: string
+      type: object
+    listEnvironmentLogs_200_response_inner_details:
+      example:
+        execution_id: execution_id
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        stage:
+          step: step
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        transmitter:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: type
+      properties:
+        organization_id:
+          format: uuid
+          type: string
+        cluster_id:
+          format: uuid
+          type: string
+        execution_id:
+          type: string
+        transmitter:
+          $ref: '#/components/schemas/listEnvironmentLogs_200_response_inner_details_transmitter'
+        stage:
+          $ref: '#/components/schemas/listEnvironmentLogs_200_response_inner_details_stage'
+      type: object
+    listEnvironmentLogs_200_response_inner_error_underlying_error:
+      example:
+        full_details: full_details
+        message: message
+      properties:
+        message:
+          type: string
+        full_details:
+          type: string
+      type: object
+    listEnvironmentLogs_200_response_inner_error:
+      example:
+        link: link
+        tag: tag
+        hint_message: hint_message
+        user_log_message: user_log_message
+        underlying_error:
+          full_details: full_details
+          message: message
+      nullable: true
+      properties:
+        tag:
+          type: string
+        user_log_message:
+          type: string
+        link:
+          type: string
+        hint_message:
+          type: string
+        underlying_error:
+          $ref: '#/components/schemas/listEnvironmentLogs_200_response_inner_error_underlying_error'
+      type: object
+    listEnvironmentLogs_200_response_inner_message:
+      example:
+        full_details: full_details
+        safe_message: safe_message
+      nullable: true
+      properties:
+        safe_message:
+          type: string
+        full_details:
+          type: string
+      type: object
+    listEnvironmentLogs_200_response_inner:
+      example:
+        details:
+          execution_id: execution_id
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          stage:
+            step: step
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          transmitter:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: type
+        id: id
+        error:
+          link: link
+          tag: tag
+          hint_message: hint_message
+          user_log_message: user_log_message
+          underlying_error:
+            full_details: full_details
+            message: message
+        message:
+          full_details: full_details
+          safe_message: safe_message
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: string
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+        details:
+          $ref: '#/components/schemas/listEnvironmentLogs_200_response_inner_details'
+        error:
+          $ref: '#/components/schemas/listEnvironmentLogs_200_response_inner_error'
+        message:
+          $ref: '#/components/schemas/listEnvironmentLogs_200_response_inner_message'
+      required:
+      - details
+      - id
+      - timestamp
       type: object
     listContainerDeploymentHistory_200_response_allOf:
       properties:
