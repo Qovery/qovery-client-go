@@ -15,31 +15,31 @@ import (
 	"encoding/json"
 )
 
-// ListEnvironmentLogs200ResponseInnerMessage struct for ListEnvironmentLogs200ResponseInnerMessage
-type ListEnvironmentLogs200ResponseInnerMessage struct {
+// EnvironmentLogsMessage struct for EnvironmentLogsMessage
+type EnvironmentLogsMessage struct {
 	SafeMessage *string `json:"safe_message,omitempty"`
 	FullDetails *string `json:"full_details,omitempty"`
 }
 
-// NewListEnvironmentLogs200ResponseInnerMessage instantiates a new ListEnvironmentLogs200ResponseInnerMessage object
+// NewEnvironmentLogsMessage instantiates a new EnvironmentLogsMessage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListEnvironmentLogs200ResponseInnerMessage() *ListEnvironmentLogs200ResponseInnerMessage {
-	this := ListEnvironmentLogs200ResponseInnerMessage{}
+func NewEnvironmentLogsMessage() *EnvironmentLogsMessage {
+	this := EnvironmentLogsMessage{}
 	return &this
 }
 
-// NewListEnvironmentLogs200ResponseInnerMessageWithDefaults instantiates a new ListEnvironmentLogs200ResponseInnerMessage object
+// NewEnvironmentLogsMessageWithDefaults instantiates a new EnvironmentLogsMessage object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListEnvironmentLogs200ResponseInnerMessageWithDefaults() *ListEnvironmentLogs200ResponseInnerMessage {
-	this := ListEnvironmentLogs200ResponseInnerMessage{}
+func NewEnvironmentLogsMessageWithDefaults() *EnvironmentLogsMessage {
+	this := EnvironmentLogsMessage{}
 	return &this
 }
 
 // GetSafeMessage returns the SafeMessage field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) GetSafeMessage() string {
+func (o *EnvironmentLogsMessage) GetSafeMessage() string {
 	if o == nil || o.SafeMessage == nil {
 		var ret string
 		return ret
@@ -49,7 +49,7 @@ func (o *ListEnvironmentLogs200ResponseInnerMessage) GetSafeMessage() string {
 
 // GetSafeMessageOk returns a tuple with the SafeMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) GetSafeMessageOk() (*string, bool) {
+func (o *EnvironmentLogsMessage) GetSafeMessageOk() (*string, bool) {
 	if o == nil || o.SafeMessage == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *ListEnvironmentLogs200ResponseInnerMessage) GetSafeMessageOk() (*string
 }
 
 // HasSafeMessage returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) HasSafeMessage() bool {
+func (o *EnvironmentLogsMessage) HasSafeMessage() bool {
 	if o != nil && o.SafeMessage != nil {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *ListEnvironmentLogs200ResponseInnerMessage) HasSafeMessage() bool {
 }
 
 // SetSafeMessage gets a reference to the given string and assigns it to the SafeMessage field.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) SetSafeMessage(v string) {
+func (o *EnvironmentLogsMessage) SetSafeMessage(v string) {
 	o.SafeMessage = &v
 }
 
 // GetFullDetails returns the FullDetails field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) GetFullDetails() string {
+func (o *EnvironmentLogsMessage) GetFullDetails() string {
 	if o == nil || o.FullDetails == nil {
 		var ret string
 		return ret
@@ -81,7 +81,7 @@ func (o *ListEnvironmentLogs200ResponseInnerMessage) GetFullDetails() string {
 
 // GetFullDetailsOk returns a tuple with the FullDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) GetFullDetailsOk() (*string, bool) {
+func (o *EnvironmentLogsMessage) GetFullDetailsOk() (*string, bool) {
 	if o == nil || o.FullDetails == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *ListEnvironmentLogs200ResponseInnerMessage) GetFullDetailsOk() (*string
 }
 
 // HasFullDetails returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) HasFullDetails() bool {
+func (o *EnvironmentLogsMessage) HasFullDetails() bool {
 	if o != nil && o.FullDetails != nil {
 		return true
 	}
@@ -98,11 +98,11 @@ func (o *ListEnvironmentLogs200ResponseInnerMessage) HasFullDetails() bool {
 }
 
 // SetFullDetails gets a reference to the given string and assigns it to the FullDetails field.
-func (o *ListEnvironmentLogs200ResponseInnerMessage) SetFullDetails(v string) {
+func (o *EnvironmentLogsMessage) SetFullDetails(v string) {
 	o.FullDetails = &v
 }
 
-func (o ListEnvironmentLogs200ResponseInnerMessage) MarshalJSON() ([]byte, error) {
+func (o EnvironmentLogsMessage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.SafeMessage != nil {
 		toSerialize["safe_message"] = o.SafeMessage
@@ -113,38 +113,38 @@ func (o ListEnvironmentLogs200ResponseInnerMessage) MarshalJSON() ([]byte, error
 	return json.Marshal(toSerialize)
 }
 
-type NullableListEnvironmentLogs200ResponseInnerMessage struct {
-	value *ListEnvironmentLogs200ResponseInnerMessage
+type NullableEnvironmentLogsMessage struct {
+	value *EnvironmentLogsMessage
 	isSet bool
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerMessage) Get() *ListEnvironmentLogs200ResponseInnerMessage {
+func (v NullableEnvironmentLogsMessage) Get() *EnvironmentLogsMessage {
 	return v.value
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerMessage) Set(val *ListEnvironmentLogs200ResponseInnerMessage) {
+func (v *NullableEnvironmentLogsMessage) Set(val *EnvironmentLogsMessage) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerMessage) IsSet() bool {
+func (v NullableEnvironmentLogsMessage) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerMessage) Unset() {
+func (v *NullableEnvironmentLogsMessage) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListEnvironmentLogs200ResponseInnerMessage(val *ListEnvironmentLogs200ResponseInnerMessage) *NullableListEnvironmentLogs200ResponseInnerMessage {
-	return &NullableListEnvironmentLogs200ResponseInnerMessage{value: val, isSet: true}
+func NewNullableEnvironmentLogsMessage(val *EnvironmentLogsMessage) *NullableEnvironmentLogsMessage {
+	return &NullableEnvironmentLogsMessage{value: val, isSet: true}
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerMessage) MarshalJSON() ([]byte, error) {
+func (v NullableEnvironmentLogsMessage) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerMessage) UnmarshalJSON(src []byte) error {
+func (v *NullableEnvironmentLogsMessage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

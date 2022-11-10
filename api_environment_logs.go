@@ -132,7 +132,7 @@ type ApiListEnvironmentLogsRequest struct {
 	environmentId string
 }
 
-func (r ApiListEnvironmentLogsRequest) Execute() ([]ListEnvironmentLogs200ResponseInner, *http.Response, error) {
+func (r ApiListEnvironmentLogsRequest) Execute() ([]EnvironmentLogs, *http.Response, error) {
 	return r.ApiService.ListEnvironmentLogsExecute(r)
 }
 
@@ -154,13 +154,13 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogs(ctx context.Context, env
 }
 
 // Execute executes the request
-//  @return []ListEnvironmentLogs200ResponseInner
-func (a *EnvironmentLogsApiService) ListEnvironmentLogsExecute(r ApiListEnvironmentLogsRequest) ([]ListEnvironmentLogs200ResponseInner, *http.Response, error) {
+//  @return []EnvironmentLogs
+func (a *EnvironmentLogsApiService) ListEnvironmentLogsExecute(r ApiListEnvironmentLogsRequest) ([]EnvironmentLogs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ListEnvironmentLogs200ResponseInner
+		localVarReturnValue []EnvironmentLogs
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsApiService.ListEnvironmentLogs")

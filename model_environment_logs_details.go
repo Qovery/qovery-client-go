@@ -15,34 +15,34 @@ import (
 	"encoding/json"
 )
 
-// ListEnvironmentLogs200ResponseInnerDetails struct for ListEnvironmentLogs200ResponseInnerDetails
-type ListEnvironmentLogs200ResponseInnerDetails struct {
-	OrganizationId *string                                                `json:"organization_id,omitempty"`
-	ClusterId      *string                                                `json:"cluster_id,omitempty"`
-	ExecutionId    *string                                                `json:"execution_id,omitempty"`
-	Transmitter    *ListEnvironmentLogs200ResponseInnerDetailsTransmitter `json:"transmitter,omitempty"`
-	Stage          *ListEnvironmentLogs200ResponseInnerDetailsStage       `json:"stage,omitempty"`
+// EnvironmentLogsDetails struct for EnvironmentLogsDetails
+type EnvironmentLogsDetails struct {
+	OrganizationId *string                            `json:"organization_id,omitempty"`
+	ClusterId      *string                            `json:"cluster_id,omitempty"`
+	ExecutionId    *string                            `json:"execution_id,omitempty"`
+	Transmitter    *EnvironmentLogsDetailsTransmitter `json:"transmitter,omitempty"`
+	Stage          *EnvironmentLogsDetailsStage       `json:"stage,omitempty"`
 }
 
-// NewListEnvironmentLogs200ResponseInnerDetails instantiates a new ListEnvironmentLogs200ResponseInnerDetails object
+// NewEnvironmentLogsDetails instantiates a new EnvironmentLogsDetails object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListEnvironmentLogs200ResponseInnerDetails() *ListEnvironmentLogs200ResponseInnerDetails {
-	this := ListEnvironmentLogs200ResponseInnerDetails{}
+func NewEnvironmentLogsDetails() *EnvironmentLogsDetails {
+	this := EnvironmentLogsDetails{}
 	return &this
 }
 
-// NewListEnvironmentLogs200ResponseInnerDetailsWithDefaults instantiates a new ListEnvironmentLogs200ResponseInnerDetails object
+// NewEnvironmentLogsDetailsWithDefaults instantiates a new EnvironmentLogsDetails object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListEnvironmentLogs200ResponseInnerDetailsWithDefaults() *ListEnvironmentLogs200ResponseInnerDetails {
-	this := ListEnvironmentLogs200ResponseInnerDetails{}
+func NewEnvironmentLogsDetailsWithDefaults() *EnvironmentLogsDetails {
+	this := EnvironmentLogsDetails{}
 	return &this
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetOrganizationId() string {
+func (o *EnvironmentLogsDetails) GetOrganizationId() string {
 	if o == nil || o.OrganizationId == nil {
 		var ret string
 		return ret
@@ -52,7 +52,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetOrganizationId() string 
 
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetOrganizationIdOk() (*string, bool) {
+func (o *EnvironmentLogsDetails) GetOrganizationIdOk() (*string, bool) {
 	if o == nil || o.OrganizationId == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetOrganizationIdOk() (*str
 }
 
 // HasOrganizationId returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) HasOrganizationId() bool {
+func (o *EnvironmentLogsDetails) HasOrganizationId() bool {
 	if o != nil && o.OrganizationId != nil {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) HasOrganizationId() bool {
 }
 
 // SetOrganizationId gets a reference to the given string and assigns it to the OrganizationId field.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) SetOrganizationId(v string) {
+func (o *EnvironmentLogsDetails) SetOrganizationId(v string) {
 	o.OrganizationId = &v
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetClusterId() string {
+func (o *EnvironmentLogsDetails) GetClusterId() string {
 	if o == nil || o.ClusterId == nil {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetClusterId() string {
 
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetClusterIdOk() (*string, bool) {
+func (o *EnvironmentLogsDetails) GetClusterIdOk() (*string, bool) {
 	if o == nil || o.ClusterId == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetClusterIdOk() (*string, 
 }
 
 // HasClusterId returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) HasClusterId() bool {
+func (o *EnvironmentLogsDetails) HasClusterId() bool {
 	if o != nil && o.ClusterId != nil {
 		return true
 	}
@@ -101,12 +101,12 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) HasClusterId() bool {
 }
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) SetClusterId(v string) {
+func (o *EnvironmentLogsDetails) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
 // GetExecutionId returns the ExecutionId field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetExecutionId() string {
+func (o *EnvironmentLogsDetails) GetExecutionId() string {
 	if o == nil || o.ExecutionId == nil {
 		var ret string
 		return ret
@@ -116,7 +116,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetExecutionId() string {
 
 // GetExecutionIdOk returns a tuple with the ExecutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetExecutionIdOk() (*string, bool) {
+func (o *EnvironmentLogsDetails) GetExecutionIdOk() (*string, bool) {
 	if o == nil || o.ExecutionId == nil {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetExecutionIdOk() (*string
 }
 
 // HasExecutionId returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) HasExecutionId() bool {
+func (o *EnvironmentLogsDetails) HasExecutionId() bool {
 	if o != nil && o.ExecutionId != nil {
 		return true
 	}
@@ -133,14 +133,14 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) HasExecutionId() bool {
 }
 
 // SetExecutionId gets a reference to the given string and assigns it to the ExecutionId field.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) SetExecutionId(v string) {
+func (o *EnvironmentLogsDetails) SetExecutionId(v string) {
 	o.ExecutionId = &v
 }
 
 // GetTransmitter returns the Transmitter field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetTransmitter() ListEnvironmentLogs200ResponseInnerDetailsTransmitter {
+func (o *EnvironmentLogsDetails) GetTransmitter() EnvironmentLogsDetailsTransmitter {
 	if o == nil || o.Transmitter == nil {
-		var ret ListEnvironmentLogs200ResponseInnerDetailsTransmitter
+		var ret EnvironmentLogsDetailsTransmitter
 		return ret
 	}
 	return *o.Transmitter
@@ -148,7 +148,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetTransmitter() ListEnviro
 
 // GetTransmitterOk returns a tuple with the Transmitter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetTransmitterOk() (*ListEnvironmentLogs200ResponseInnerDetailsTransmitter, bool) {
+func (o *EnvironmentLogsDetails) GetTransmitterOk() (*EnvironmentLogsDetailsTransmitter, bool) {
 	if o == nil || o.Transmitter == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetTransmitterOk() (*ListEn
 }
 
 // HasTransmitter returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) HasTransmitter() bool {
+func (o *EnvironmentLogsDetails) HasTransmitter() bool {
 	if o != nil && o.Transmitter != nil {
 		return true
 	}
@@ -164,15 +164,15 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) HasTransmitter() bool {
 	return false
 }
 
-// SetTransmitter gets a reference to the given ListEnvironmentLogs200ResponseInnerDetailsTransmitter and assigns it to the Transmitter field.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) SetTransmitter(v ListEnvironmentLogs200ResponseInnerDetailsTransmitter) {
+// SetTransmitter gets a reference to the given EnvironmentLogsDetailsTransmitter and assigns it to the Transmitter field.
+func (o *EnvironmentLogsDetails) SetTransmitter(v EnvironmentLogsDetailsTransmitter) {
 	o.Transmitter = &v
 }
 
 // GetStage returns the Stage field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetStage() ListEnvironmentLogs200ResponseInnerDetailsStage {
+func (o *EnvironmentLogsDetails) GetStage() EnvironmentLogsDetailsStage {
 	if o == nil || o.Stage == nil {
-		var ret ListEnvironmentLogs200ResponseInnerDetailsStage
+		var ret EnvironmentLogsDetailsStage
 		return ret
 	}
 	return *o.Stage
@@ -180,7 +180,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetStage() ListEnvironmentL
 
 // GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) GetStageOk() (*ListEnvironmentLogs200ResponseInnerDetailsStage, bool) {
+func (o *EnvironmentLogsDetails) GetStageOk() (*EnvironmentLogsDetailsStage, bool) {
 	if o == nil || o.Stage == nil {
 		return nil, false
 	}
@@ -188,7 +188,7 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) GetStageOk() (*ListEnvironm
 }
 
 // HasStage returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) HasStage() bool {
+func (o *EnvironmentLogsDetails) HasStage() bool {
 	if o != nil && o.Stage != nil {
 		return true
 	}
@@ -196,12 +196,12 @@ func (o *ListEnvironmentLogs200ResponseInnerDetails) HasStage() bool {
 	return false
 }
 
-// SetStage gets a reference to the given ListEnvironmentLogs200ResponseInnerDetailsStage and assigns it to the Stage field.
-func (o *ListEnvironmentLogs200ResponseInnerDetails) SetStage(v ListEnvironmentLogs200ResponseInnerDetailsStage) {
+// SetStage gets a reference to the given EnvironmentLogsDetailsStage and assigns it to the Stage field.
+func (o *EnvironmentLogsDetails) SetStage(v EnvironmentLogsDetailsStage) {
 	o.Stage = &v
 }
 
-func (o ListEnvironmentLogs200ResponseInnerDetails) MarshalJSON() ([]byte, error) {
+func (o EnvironmentLogsDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.OrganizationId != nil {
 		toSerialize["organization_id"] = o.OrganizationId
@@ -221,38 +221,38 @@ func (o ListEnvironmentLogs200ResponseInnerDetails) MarshalJSON() ([]byte, error
 	return json.Marshal(toSerialize)
 }
 
-type NullableListEnvironmentLogs200ResponseInnerDetails struct {
-	value *ListEnvironmentLogs200ResponseInnerDetails
+type NullableEnvironmentLogsDetails struct {
+	value *EnvironmentLogsDetails
 	isSet bool
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerDetails) Get() *ListEnvironmentLogs200ResponseInnerDetails {
+func (v NullableEnvironmentLogsDetails) Get() *EnvironmentLogsDetails {
 	return v.value
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerDetails) Set(val *ListEnvironmentLogs200ResponseInnerDetails) {
+func (v *NullableEnvironmentLogsDetails) Set(val *EnvironmentLogsDetails) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerDetails) IsSet() bool {
+func (v NullableEnvironmentLogsDetails) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerDetails) Unset() {
+func (v *NullableEnvironmentLogsDetails) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListEnvironmentLogs200ResponseInnerDetails(val *ListEnvironmentLogs200ResponseInnerDetails) *NullableListEnvironmentLogs200ResponseInnerDetails {
-	return &NullableListEnvironmentLogs200ResponseInnerDetails{value: val, isSet: true}
+func NewNullableEnvironmentLogsDetails(val *EnvironmentLogsDetails) *NullableEnvironmentLogsDetails {
+	return &NullableEnvironmentLogsDetails{value: val, isSet: true}
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerDetails) MarshalJSON() ([]byte, error) {
+func (v NullableEnvironmentLogsDetails) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerDetails) UnmarshalJSON(src []byte) error {
+func (v *NullableEnvironmentLogsDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

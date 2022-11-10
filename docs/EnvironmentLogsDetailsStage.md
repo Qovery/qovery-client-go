@@ -1,4 +1,4 @@
-# ListEnvironmentLogs200ResponseInnerDetailsStage
+# EnvironmentLogsDetailsStage
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewListEnvironmentLogs200ResponseInnerDetailsStage
+### NewEnvironmentLogsDetailsStage
 
-`func NewListEnvironmentLogs200ResponseInnerDetailsStage() *ListEnvironmentLogs200ResponseInnerDetailsStage`
+`func NewEnvironmentLogsDetailsStage() *EnvironmentLogsDetailsStage`
 
-NewListEnvironmentLogs200ResponseInnerDetailsStage instantiates a new ListEnvironmentLogs200ResponseInnerDetailsStage object
+NewEnvironmentLogsDetailsStage instantiates a new EnvironmentLogsDetailsStage object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewListEnvironmentLogs200ResponseInnerDetailsStageWithDefaults
+### NewEnvironmentLogsDetailsStageWithDefaults
 
-`func NewListEnvironmentLogs200ResponseInnerDetailsStageWithDefaults() *ListEnvironmentLogs200ResponseInnerDetailsStage`
+`func NewEnvironmentLogsDetailsStageWithDefaults() *EnvironmentLogsDetailsStage`
 
-NewListEnvironmentLogs200ResponseInnerDetailsStageWithDefaults instantiates a new ListEnvironmentLogs200ResponseInnerDetailsStage object
+NewEnvironmentLogsDetailsStageWithDefaults instantiates a new EnvironmentLogsDetailsStage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetStep
 
-`func (o *ListEnvironmentLogs200ResponseInnerDetailsStage) GetStep() string`
+`func (o *EnvironmentLogsDetailsStage) GetStep() string`
 
 GetStep returns the Step field if non-nil, zero value otherwise.
 
 ### GetStepOk
 
-`func (o *ListEnvironmentLogs200ResponseInnerDetailsStage) GetStepOk() (*string, bool)`
+`func (o *EnvironmentLogsDetailsStage) GetStepOk() (*string, bool)`
 
 GetStepOk returns a tuple with the Step field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStep
 
-`func (o *ListEnvironmentLogs200ResponseInnerDetailsStage) SetStep(v string)`
+`func (o *EnvironmentLogsDetailsStage) SetStep(v string)`
 
 SetStep sets Step field to given value.
 
 ### HasStep
 
-`func (o *ListEnvironmentLogs200ResponseInnerDetailsStage) HasStep() bool`
+`func (o *EnvironmentLogsDetailsStage) HasStep() bool`
 
 HasStep returns a boolean if a field has been set.
 

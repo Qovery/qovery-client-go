@@ -15,34 +15,34 @@ import (
 	"encoding/json"
 )
 
-// ListEnvironmentLogs200ResponseInnerError struct for ListEnvironmentLogs200ResponseInnerError
-type ListEnvironmentLogs200ResponseInnerError struct {
-	Tag             *string                                                  `json:"tag,omitempty"`
-	UserLogMessage  *string                                                  `json:"user_log_message,omitempty"`
-	Link            *string                                                  `json:"link,omitempty"`
-	HintMessage     *string                                                  `json:"hint_message,omitempty"`
-	UnderlyingError *ListEnvironmentLogs200ResponseInnerErrorUnderlyingError `json:"underlying_error,omitempty"`
+// EnvironmentLogsError struct for EnvironmentLogsError
+type EnvironmentLogsError struct {
+	Tag             *string                              `json:"tag,omitempty"`
+	UserLogMessage  *string                              `json:"user_log_message,omitempty"`
+	Link            *string                              `json:"link,omitempty"`
+	HintMessage     *string                              `json:"hint_message,omitempty"`
+	UnderlyingError *EnvironmentLogsErrorUnderlyingError `json:"underlying_error,omitempty"`
 }
 
-// NewListEnvironmentLogs200ResponseInnerError instantiates a new ListEnvironmentLogs200ResponseInnerError object
+// NewEnvironmentLogsError instantiates a new EnvironmentLogsError object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListEnvironmentLogs200ResponseInnerError() *ListEnvironmentLogs200ResponseInnerError {
-	this := ListEnvironmentLogs200ResponseInnerError{}
+func NewEnvironmentLogsError() *EnvironmentLogsError {
+	this := EnvironmentLogsError{}
 	return &this
 }
 
-// NewListEnvironmentLogs200ResponseInnerErrorWithDefaults instantiates a new ListEnvironmentLogs200ResponseInnerError object
+// NewEnvironmentLogsErrorWithDefaults instantiates a new EnvironmentLogsError object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListEnvironmentLogs200ResponseInnerErrorWithDefaults() *ListEnvironmentLogs200ResponseInnerError {
-	this := ListEnvironmentLogs200ResponseInnerError{}
+func NewEnvironmentLogsErrorWithDefaults() *EnvironmentLogsError {
+	this := EnvironmentLogsError{}
 	return &this
 }
 
 // GetTag returns the Tag field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetTag() string {
+func (o *EnvironmentLogsError) GetTag() string {
 	if o == nil || o.Tag == nil {
 		var ret string
 		return ret
@@ -52,7 +52,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetTag() string {
 
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetTagOk() (*string, bool) {
+func (o *EnvironmentLogsError) GetTagOk() (*string, bool) {
 	if o == nil || o.Tag == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetTagOk() (*string, bool) {
 }
 
 // HasTag returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) HasTag() bool {
+func (o *EnvironmentLogsError) HasTag() bool {
 	if o != nil && o.Tag != nil {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *ListEnvironmentLogs200ResponseInnerError) HasTag() bool {
 }
 
 // SetTag gets a reference to the given string and assigns it to the Tag field.
-func (o *ListEnvironmentLogs200ResponseInnerError) SetTag(v string) {
+func (o *EnvironmentLogsError) SetTag(v string) {
 	o.Tag = &v
 }
 
 // GetUserLogMessage returns the UserLogMessage field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetUserLogMessage() string {
+func (o *EnvironmentLogsError) GetUserLogMessage() string {
 	if o == nil || o.UserLogMessage == nil {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetUserLogMessage() string {
 
 // GetUserLogMessageOk returns a tuple with the UserLogMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetUserLogMessageOk() (*string, bool) {
+func (o *EnvironmentLogsError) GetUserLogMessageOk() (*string, bool) {
 	if o == nil || o.UserLogMessage == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetUserLogMessageOk() (*strin
 }
 
 // HasUserLogMessage returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) HasUserLogMessage() bool {
+func (o *EnvironmentLogsError) HasUserLogMessage() bool {
 	if o != nil && o.UserLogMessage != nil {
 		return true
 	}
@@ -101,12 +101,12 @@ func (o *ListEnvironmentLogs200ResponseInnerError) HasUserLogMessage() bool {
 }
 
 // SetUserLogMessage gets a reference to the given string and assigns it to the UserLogMessage field.
-func (o *ListEnvironmentLogs200ResponseInnerError) SetUserLogMessage(v string) {
+func (o *EnvironmentLogsError) SetUserLogMessage(v string) {
 	o.UserLogMessage = &v
 }
 
 // GetLink returns the Link field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetLink() string {
+func (o *EnvironmentLogsError) GetLink() string {
 	if o == nil || o.Link == nil {
 		var ret string
 		return ret
@@ -116,7 +116,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetLink() string {
 
 // GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetLinkOk() (*string, bool) {
+func (o *EnvironmentLogsError) GetLinkOk() (*string, bool) {
 	if o == nil || o.Link == nil {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetLinkOk() (*string, bool) {
 }
 
 // HasLink returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) HasLink() bool {
+func (o *EnvironmentLogsError) HasLink() bool {
 	if o != nil && o.Link != nil {
 		return true
 	}
@@ -133,12 +133,12 @@ func (o *ListEnvironmentLogs200ResponseInnerError) HasLink() bool {
 }
 
 // SetLink gets a reference to the given string and assigns it to the Link field.
-func (o *ListEnvironmentLogs200ResponseInnerError) SetLink(v string) {
+func (o *EnvironmentLogsError) SetLink(v string) {
 	o.Link = &v
 }
 
 // GetHintMessage returns the HintMessage field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetHintMessage() string {
+func (o *EnvironmentLogsError) GetHintMessage() string {
 	if o == nil || o.HintMessage == nil {
 		var ret string
 		return ret
@@ -148,7 +148,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetHintMessage() string {
 
 // GetHintMessageOk returns a tuple with the HintMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetHintMessageOk() (*string, bool) {
+func (o *EnvironmentLogsError) GetHintMessageOk() (*string, bool) {
 	if o == nil || o.HintMessage == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetHintMessageOk() (*string, 
 }
 
 // HasHintMessage returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) HasHintMessage() bool {
+func (o *EnvironmentLogsError) HasHintMessage() bool {
 	if o != nil && o.HintMessage != nil {
 		return true
 	}
@@ -165,14 +165,14 @@ func (o *ListEnvironmentLogs200ResponseInnerError) HasHintMessage() bool {
 }
 
 // SetHintMessage gets a reference to the given string and assigns it to the HintMessage field.
-func (o *ListEnvironmentLogs200ResponseInnerError) SetHintMessage(v string) {
+func (o *EnvironmentLogsError) SetHintMessage(v string) {
 	o.HintMessage = &v
 }
 
 // GetUnderlyingError returns the UnderlyingError field value if set, zero value otherwise.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetUnderlyingError() ListEnvironmentLogs200ResponseInnerErrorUnderlyingError {
+func (o *EnvironmentLogsError) GetUnderlyingError() EnvironmentLogsErrorUnderlyingError {
 	if o == nil || o.UnderlyingError == nil {
-		var ret ListEnvironmentLogs200ResponseInnerErrorUnderlyingError
+		var ret EnvironmentLogsErrorUnderlyingError
 		return ret
 	}
 	return *o.UnderlyingError
@@ -180,7 +180,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetUnderlyingError() ListEnvi
 
 // GetUnderlyingErrorOk returns a tuple with the UnderlyingError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) GetUnderlyingErrorOk() (*ListEnvironmentLogs200ResponseInnerErrorUnderlyingError, bool) {
+func (o *EnvironmentLogsError) GetUnderlyingErrorOk() (*EnvironmentLogsErrorUnderlyingError, bool) {
 	if o == nil || o.UnderlyingError == nil {
 		return nil, false
 	}
@@ -188,7 +188,7 @@ func (o *ListEnvironmentLogs200ResponseInnerError) GetUnderlyingErrorOk() (*List
 }
 
 // HasUnderlyingError returns a boolean if a field has been set.
-func (o *ListEnvironmentLogs200ResponseInnerError) HasUnderlyingError() bool {
+func (o *EnvironmentLogsError) HasUnderlyingError() bool {
 	if o != nil && o.UnderlyingError != nil {
 		return true
 	}
@@ -196,12 +196,12 @@ func (o *ListEnvironmentLogs200ResponseInnerError) HasUnderlyingError() bool {
 	return false
 }
 
-// SetUnderlyingError gets a reference to the given ListEnvironmentLogs200ResponseInnerErrorUnderlyingError and assigns it to the UnderlyingError field.
-func (o *ListEnvironmentLogs200ResponseInnerError) SetUnderlyingError(v ListEnvironmentLogs200ResponseInnerErrorUnderlyingError) {
+// SetUnderlyingError gets a reference to the given EnvironmentLogsErrorUnderlyingError and assigns it to the UnderlyingError field.
+func (o *EnvironmentLogsError) SetUnderlyingError(v EnvironmentLogsErrorUnderlyingError) {
 	o.UnderlyingError = &v
 }
 
-func (o ListEnvironmentLogs200ResponseInnerError) MarshalJSON() ([]byte, error) {
+func (o EnvironmentLogsError) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tag != nil {
 		toSerialize["tag"] = o.Tag
@@ -221,38 +221,38 @@ func (o ListEnvironmentLogs200ResponseInnerError) MarshalJSON() ([]byte, error) 
 	return json.Marshal(toSerialize)
 }
 
-type NullableListEnvironmentLogs200ResponseInnerError struct {
-	value *ListEnvironmentLogs200ResponseInnerError
+type NullableEnvironmentLogsError struct {
+	value *EnvironmentLogsError
 	isSet bool
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerError) Get() *ListEnvironmentLogs200ResponseInnerError {
+func (v NullableEnvironmentLogsError) Get() *EnvironmentLogsError {
 	return v.value
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerError) Set(val *ListEnvironmentLogs200ResponseInnerError) {
+func (v *NullableEnvironmentLogsError) Set(val *EnvironmentLogsError) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerError) IsSet() bool {
+func (v NullableEnvironmentLogsError) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerError) Unset() {
+func (v *NullableEnvironmentLogsError) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListEnvironmentLogs200ResponseInnerError(val *ListEnvironmentLogs200ResponseInnerError) *NullableListEnvironmentLogs200ResponseInnerError {
-	return &NullableListEnvironmentLogs200ResponseInnerError{value: val, isSet: true}
+func NewNullableEnvironmentLogsError(val *EnvironmentLogsError) *NullableEnvironmentLogsError {
+	return &NullableEnvironmentLogsError{value: val, isSet: true}
 }
 
-func (v NullableListEnvironmentLogs200ResponseInnerError) MarshalJSON() ([]byte, error) {
+func (v NullableEnvironmentLogsError) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListEnvironmentLogs200ResponseInnerError) UnmarshalJSON(src []byte) error {
+func (v *NullableEnvironmentLogsError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

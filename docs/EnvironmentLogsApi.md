@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## ListEnvironmentLogs
 
-> []ListEnvironmentLogs200ResponseInner ListEnvironmentLogs(ctx, environmentId).Execute()
+> []EnvironmentLogs ListEnvironmentLogs(ctx, environmentId).Execute()
 
 List environment deployment logs v2
 
@@ -109,7 +109,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentLogsApi.ListEnvironmentLogs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListEnvironmentLogs`: []ListEnvironmentLogs200ResponseInner
+    // response from `ListEnvironmentLogs`: []EnvironmentLogs
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentLogsApi.ListEnvironmentLogs`: %v\n", resp)
 }
 ```
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ListEnvironmentLogs200ResponseInner**](ListEnvironmentLogs200ResponseInner.md)
+[**[]EnvironmentLogs**](EnvironmentLogs.md)
 
 ### Authorization
 
