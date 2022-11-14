@@ -18,7 +18,7 @@ import (
 
 // EnvironmentLogs struct for EnvironmentLogs
 type EnvironmentLogs struct {
-	Id        string                         `json:"id"`
+	Type      string                         `json:"type"`
 	Timestamp time.Time                      `json:"timestamp"`
 	Details   EnvironmentLogsDetails         `json:"details"`
 	Error     NullableEnvironmentLogsError   `json:"error,omitempty"`
@@ -29,9 +29,9 @@ type EnvironmentLogs struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentLogs(id string, timestamp time.Time, details EnvironmentLogsDetails) *EnvironmentLogs {
+func NewEnvironmentLogs(type_ string, timestamp time.Time, details EnvironmentLogsDetails) *EnvironmentLogs {
 	this := EnvironmentLogs{}
-	this.Id = id
+	this.Type = type_
 	this.Timestamp = timestamp
 	this.Details = details
 	return &this
@@ -45,28 +45,28 @@ func NewEnvironmentLogsWithDefaults() *EnvironmentLogs {
 	return &this
 }
 
-// GetId returns the Id field value
-func (o *EnvironmentLogs) GetId() string {
+// GetType returns the Type field value
+func (o *EnvironmentLogs) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Id
+	return o.Type
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentLogs) GetIdOk() (*string, bool) {
+func (o *EnvironmentLogs) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return &o.Type, true
 }
 
-// SetId sets field value
-func (o *EnvironmentLogs) SetId(v string) {
-	o.Id = v
+// SetType sets field value
+func (o *EnvironmentLogs) SetType(v string) {
+	o.Type = v
 }
 
 // GetTimestamp returns the Timestamp field value
@@ -206,7 +206,7 @@ func (o *EnvironmentLogs) UnsetMessage() {
 func (o EnvironmentLogs) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["id"] = o.Id
+		toSerialize["type"] = o.Type
 	}
 	if true {
 		toSerialize["timestamp"] = o.Timestamp

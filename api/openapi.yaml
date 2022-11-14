@@ -14716,7 +14716,7 @@ components:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             type: type
-        id: id
+        type: type
         error:
           link: link
           tag: tag
@@ -14730,7 +14730,7 @@ components:
           safe_message: safe_message
         timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
-        id:
+        type:
           format: string
           type: string
         timestamp:
@@ -14744,8 +14744,8 @@ components:
           $ref: '#/components/schemas/EnvironmentLogs_message'
       required:
       - details
-      - id
       - timestamp
+      - type
       type: object
     EnvironmentLogPaginatedResponseList:
       allOf:

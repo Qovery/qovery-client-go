@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Type** | **string** |  | 
 **Timestamp** | **time.Time** |  | 
 **Details** | [**EnvironmentLogsDetails**](EnvironmentLogsDetails.md) |  | 
 **Error** | Pointer to [**NullableEnvironmentLogsError**](EnvironmentLogsError.md) |  | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironmentLogs
 
-`func NewEnvironmentLogs(id string, timestamp time.Time, details EnvironmentLogsDetails, ) *EnvironmentLogs`
+`func NewEnvironmentLogs(type_ string, timestamp time.Time, details EnvironmentLogsDetails, ) *EnvironmentLogs`
 
 NewEnvironmentLogs instantiates a new EnvironmentLogs object
 This constructor will assign default values to properties that have it defined,
@@ -29,24 +29,24 @@ NewEnvironmentLogsWithDefaults instantiates a new EnvironmentLogs object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetType
 
-`func (o *EnvironmentLogs) GetId() string`
+`func (o *EnvironmentLogs) GetType() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetTypeOk
 
-`func (o *EnvironmentLogs) GetIdOk() (*string, bool)`
+`func (o *EnvironmentLogs) GetTypeOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetType
 
-`func (o *EnvironmentLogs) SetId(v string)`
+`func (o *EnvironmentLogs) SetType(v string)`
 
-SetId sets Id field to given value.
+SetType sets Type field to given value.
 
 
 ### GetTimestamp
