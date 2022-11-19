@@ -6036,6 +6036,23 @@ paths:
       summary: List default application advanced settings
       tags:
       - Applications
+  /defaultContainerAdvancedSettings:
+    get:
+      operationId: getDefaultContainerAdvancedSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerAdvancedSettings'
+          description: Default container advanced settings
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: List default container advanced settings
+      tags:
+      - Containers
   /application/{applicationId}:
     delete:
       description: To delete the application you must have the admin permission
