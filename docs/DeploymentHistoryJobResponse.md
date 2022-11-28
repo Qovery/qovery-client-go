@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Status** | Pointer to [**DeploymentHistoryStatusEnum**](DeploymentHistoryStatusEnum.md) |  | [optional] 
 **ImageName** | Pointer to **string** |  | [optional] 
 **Tag** | Pointer to **string** |  | [optional] 
+**Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
+**Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** |  | [optional] 
 
@@ -197,6 +199,56 @@ SetTag sets Tag field to given value.
 `func (o *DeploymentHistoryJobResponse) HasTag() bool`
 
 HasTag returns a boolean if a field has been set.
+
+### GetCommit
+
+`func (o *DeploymentHistoryJobResponse) GetCommit() Commit`
+
+GetCommit returns the Commit field if non-nil, zero value otherwise.
+
+### GetCommitOk
+
+`func (o *DeploymentHistoryJobResponse) GetCommitOk() (*Commit, bool)`
+
+GetCommitOk returns a tuple with the Commit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommit
+
+`func (o *DeploymentHistoryJobResponse) SetCommit(v Commit)`
+
+SetCommit sets Commit field to given value.
+
+### HasCommit
+
+`func (o *DeploymentHistoryJobResponse) HasCommit() bool`
+
+HasCommit returns a boolean if a field has been set.
+
+### GetSchedule
+
+`func (o *DeploymentHistoryJobResponse) GetSchedule() JobRequestAllOfSchedule`
+
+GetSchedule returns the Schedule field if non-nil, zero value otherwise.
+
+### GetScheduleOk
+
+`func (o *DeploymentHistoryJobResponse) GetScheduleOk() (*JobRequestAllOfSchedule, bool)`
+
+GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedule
+
+`func (o *DeploymentHistoryJobResponse) SetSchedule(v JobRequestAllOfSchedule)`
+
+SetSchedule sets Schedule field to given value.
+
+### HasSchedule
+
+`func (o *DeploymentHistoryJobResponse) HasSchedule() bool`
+
+HasSchedule returns a boolean if a field has been set.
 
 ### GetArguments
 

@@ -22,6 +22,8 @@ type DeploymentHistoryJobResponseAllOf struct {
 	Status     *DeploymentHistoryStatusEnum `json:"status,omitempty"`
 	ImageName  *string                      `json:"image_name,omitempty"`
 	Tag        *string                      `json:"tag,omitempty"`
+	Commit     *Commit                      `json:"commit,omitempty"`
+	Schedule   *JobRequestAllOfSchedule     `json:"schedule,omitempty"`
 	Arguments  []string                     `json:"arguments,omitempty"`
 	Entrypoint *string                      `json:"entrypoint,omitempty"`
 }
@@ -171,6 +173,70 @@ func (o *DeploymentHistoryJobResponseAllOf) SetTag(v string) {
 	o.Tag = &v
 }
 
+// GetCommit returns the Commit field value if set, zero value otherwise.
+func (o *DeploymentHistoryJobResponseAllOf) GetCommit() Commit {
+	if o == nil || o.Commit == nil {
+		var ret Commit
+		return ret
+	}
+	return *o.Commit
+}
+
+// GetCommitOk returns a tuple with the Commit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryJobResponseAllOf) GetCommitOk() (*Commit, bool) {
+	if o == nil || o.Commit == nil {
+		return nil, false
+	}
+	return o.Commit, true
+}
+
+// HasCommit returns a boolean if a field has been set.
+func (o *DeploymentHistoryJobResponseAllOf) HasCommit() bool {
+	if o != nil && o.Commit != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCommit gets a reference to the given Commit and assigns it to the Commit field.
+func (o *DeploymentHistoryJobResponseAllOf) SetCommit(v Commit) {
+	o.Commit = &v
+}
+
+// GetSchedule returns the Schedule field value if set, zero value otherwise.
+func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobRequestAllOfSchedule {
+	if o == nil || o.Schedule == nil {
+		var ret JobRequestAllOfSchedule
+		return ret
+	}
+	return *o.Schedule
+}
+
+// GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*JobRequestAllOfSchedule, bool) {
+	if o == nil || o.Schedule == nil {
+		return nil, false
+	}
+	return o.Schedule, true
+}
+
+// HasSchedule returns a boolean if a field has been set.
+func (o *DeploymentHistoryJobResponseAllOf) HasSchedule() bool {
+	if o != nil && o.Schedule != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSchedule gets a reference to the given JobRequestAllOfSchedule and assigns it to the Schedule field.
+func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v JobRequestAllOfSchedule) {
+	o.Schedule = &v
+}
+
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *DeploymentHistoryJobResponseAllOf) GetArguments() []string {
 	if o == nil || o.Arguments == nil {
@@ -248,6 +314,12 @@ func (o DeploymentHistoryJobResponseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Tag != nil {
 		toSerialize["tag"] = o.Tag
+	}
+	if o.Commit != nil {
+		toSerialize["commit"] = o.Commit
+	}
+	if o.Schedule != nil {
+		toSerialize["schedule"] = o.Schedule
 	}
 	if o.Arguments != nil {
 		toSerialize["arguments"] = o.Arguments

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Status** | Pointer to [**DeploymentHistoryStatusEnum**](DeploymentHistoryStatusEnum.md) |  | [optional] 
 **ImageName** | Pointer to **string** |  | [optional] 
 **Tag** | Pointer to **string** |  | [optional] 
+**Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
+**Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** |  | [optional] 
 
@@ -129,6 +131,56 @@ SetTag sets Tag field to given value.
 `func (o *DeploymentHistoryJobResponseAllOf) HasTag() bool`
 
 HasTag returns a boolean if a field has been set.
+
+### GetCommit
+
+`func (o *DeploymentHistoryJobResponseAllOf) GetCommit() Commit`
+
+GetCommit returns the Commit field if non-nil, zero value otherwise.
+
+### GetCommitOk
+
+`func (o *DeploymentHistoryJobResponseAllOf) GetCommitOk() (*Commit, bool)`
+
+GetCommitOk returns a tuple with the Commit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommit
+
+`func (o *DeploymentHistoryJobResponseAllOf) SetCommit(v Commit)`
+
+SetCommit sets Commit field to given value.
+
+### HasCommit
+
+`func (o *DeploymentHistoryJobResponseAllOf) HasCommit() bool`
+
+HasCommit returns a boolean if a field has been set.
+
+### GetSchedule
+
+`func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobRequestAllOfSchedule`
+
+GetSchedule returns the Schedule field if non-nil, zero value otherwise.
+
+### GetScheduleOk
+
+`func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*JobRequestAllOfSchedule, bool)`
+
+GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedule
+
+`func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v JobRequestAllOfSchedule)`
+
+SetSchedule sets Schedule field to given value.
+
+### HasSchedule
+
+`func (o *DeploymentHistoryJobResponseAllOf) HasSchedule() bool`
+
+HasSchedule returns a boolean if a field has been set.
 
 ### GetArguments
 

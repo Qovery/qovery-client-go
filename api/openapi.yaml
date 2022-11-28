@@ -18760,6 +18760,10 @@ components:
           type: string
         tag:
           type: string
+        commit:
+          $ref: '#/components/schemas/Commit'
+        schedule:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule'
         arguments:
           items:
             type: string
