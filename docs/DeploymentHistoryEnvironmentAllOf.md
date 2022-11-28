@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Applications** | Pointer to [**[]DeploymentHistoryApplication**](DeploymentHistoryApplication.md) |  | [optional] 
 **Containers** | Pointer to [**[]DeploymentHistoryContainer**](DeploymentHistoryContainer.md) |  | [optional] 
 **Databases** | Pointer to [**[]DeploymentHistoryDatabase**](DeploymentHistoryDatabase.md) |  | [optional] 
+**Jobs** | Pointer to [**[]DeploymentHistoryJobResponse**](DeploymentHistoryJobResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetDatabases sets Databases field to given value.
 `func (o *DeploymentHistoryEnvironmentAllOf) HasDatabases() bool`
 
 HasDatabases returns a boolean if a field has been set.
+
+### GetJobs
+
+`func (o *DeploymentHistoryEnvironmentAllOf) GetJobs() []DeploymentHistoryJobResponse`
+
+GetJobs returns the Jobs field if non-nil, zero value otherwise.
+
+### GetJobsOk
+
+`func (o *DeploymentHistoryEnvironmentAllOf) GetJobsOk() (*[]DeploymentHistoryJobResponse, bool)`
+
+GetJobsOk returns a tuple with the Jobs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobs
+
+`func (o *DeploymentHistoryEnvironmentAllOf) SetJobs(v []DeploymentHistoryJobResponse)`
+
+SetJobs sets Jobs field to given value.
+
+### HasJobs
+
+`func (o *DeploymentHistoryEnvironmentAllOf) HasJobs() bool`
+
+HasJobs returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

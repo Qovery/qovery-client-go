@@ -21,6 +21,7 @@ type DeploymentHistoryEnvironmentAllOf struct {
 	Applications []DeploymentHistoryApplication `json:"applications,omitempty"`
 	Containers   []DeploymentHistoryContainer   `json:"containers,omitempty"`
 	Databases    []DeploymentHistoryDatabase    `json:"databases,omitempty"`
+	Jobs         []DeploymentHistoryJobResponse `json:"jobs,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironmentAllOf instantiates a new DeploymentHistoryEnvironmentAllOf object
@@ -168,6 +169,38 @@ func (o *DeploymentHistoryEnvironmentAllOf) SetDatabases(v []DeploymentHistoryDa
 	o.Databases = v
 }
 
+// GetJobs returns the Jobs field value if set, zero value otherwise.
+func (o *DeploymentHistoryEnvironmentAllOf) GetJobs() []DeploymentHistoryJobResponse {
+	if o == nil || o.Jobs == nil {
+		var ret []DeploymentHistoryJobResponse
+		return ret
+	}
+	return o.Jobs
+}
+
+// GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironmentAllOf) GetJobsOk() ([]DeploymentHistoryJobResponse, bool) {
+	if o == nil || o.Jobs == nil {
+		return nil, false
+	}
+	return o.Jobs, true
+}
+
+// HasJobs returns a boolean if a field has been set.
+func (o *DeploymentHistoryEnvironmentAllOf) HasJobs() bool {
+	if o != nil && o.Jobs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJobs gets a reference to the given []DeploymentHistoryJobResponse and assigns it to the Jobs field.
+func (o *DeploymentHistoryEnvironmentAllOf) SetJobs(v []DeploymentHistoryJobResponse) {
+	o.Jobs = v
+}
+
 func (o DeploymentHistoryEnvironmentAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Status != nil {
@@ -181,6 +214,9 @@ func (o DeploymentHistoryEnvironmentAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Databases != nil {
 		toSerialize["databases"] = o.Databases
+	}
+	if o.Jobs != nil {
+		toSerialize["jobs"] = o.Jobs
 	}
 	return json.Marshal(toSerialize)
 }

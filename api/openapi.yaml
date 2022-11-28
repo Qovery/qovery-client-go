@@ -18161,6 +18161,10 @@ components:
           items:
             $ref: '#/components/schemas/DeploymentHistoryDatabase'
           type: array
+        jobs:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryJobResponse'
+          type: array
       type: object
     DeploymentHistoryEnvironmentPaginatedResponseList_allOf:
       properties:
