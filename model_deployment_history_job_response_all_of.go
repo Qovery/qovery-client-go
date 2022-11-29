@@ -23,7 +23,7 @@ type DeploymentHistoryJobResponseAllOf struct {
 	ImageName  *string                      `json:"image_name,omitempty"`
 	Tag        *string                      `json:"tag,omitempty"`
 	Commit     *Commit                      `json:"commit,omitempty"`
-	Schedule   *JobRequestAllOfSchedule     `json:"schedule,omitempty"`
+	Schedule   *JobResponseAllOfSchedule    `json:"schedule,omitempty"`
 	Arguments  []string                     `json:"arguments,omitempty"`
 	Entrypoint *string                      `json:"entrypoint,omitempty"`
 }
@@ -206,9 +206,9 @@ func (o *DeploymentHistoryJobResponseAllOf) SetCommit(v Commit) {
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobRequestAllOfSchedule {
+func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobResponseAllOfSchedule {
 	if o == nil || o.Schedule == nil {
-		var ret JobRequestAllOfSchedule
+		var ret JobResponseAllOfSchedule
 		return ret
 	}
 	return *o.Schedule
@@ -216,7 +216,7 @@ func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobRequestAllOfSchedul
 
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*JobRequestAllOfSchedule, bool) {
+func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*JobResponseAllOfSchedule, bool) {
 	if o == nil || o.Schedule == nil {
 		return nil, false
 	}
@@ -232,8 +232,8 @@ func (o *DeploymentHistoryJobResponseAllOf) HasSchedule() bool {
 	return false
 }
 
-// SetSchedule gets a reference to the given JobRequestAllOfSchedule and assigns it to the Schedule field.
-func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v JobRequestAllOfSchedule) {
+// SetSchedule gets a reference to the given JobResponseAllOfSchedule and assigns it to the Schedule field.
+func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v JobResponseAllOfSchedule) {
 	o.Schedule = &v
 }
 

@@ -18,8 +18,9 @@ import (
 // JobRequest struct for JobRequest
 type JobRequest struct {
 	// name is case insensitive
-	Name      string   `json:"name"`
-	Arguments []string `json:"arguments,omitempty"`
+	Name        string   `json:"name"`
+	Description *string  `json:"description,omitempty"`
+	Arguments   []string `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
@@ -90,6 +91,38 @@ func (o *JobRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *JobRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *JobRequest) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *JobRequest) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *JobRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
@@ -427,6 +460,9 @@ func (o JobRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if o.Arguments != nil {
 		toSerialize["arguments"] = o.Arguments

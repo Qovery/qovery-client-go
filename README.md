@@ -670,6 +670,7 @@ Class | Method | HTTP request | Description
  - [JobRequestAllOfSourceImage](docs/JobRequestAllOfSourceImage.md)
  - [JobResponse](docs/JobResponse.md)
  - [JobResponseAllOf](docs/JobResponseAllOf.md)
+ - [JobResponseAllOfSchedule](docs/JobResponseAllOfSchedule.md)
  - [JobResponseAllOfSource](docs/JobResponseAllOfSource.md)
  - [JobResponseAllOfSourceDocker](docs/JobResponseAllOfSourceDocker.md)
  - [JobResponseList](docs/JobResponseList.md)

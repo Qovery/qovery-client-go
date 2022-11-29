@@ -39,9 +39,9 @@ type JobResponseAllOf struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port     NullableInt32            `json:"port,omitempty"`
-	Source   *JobResponseAllOfSource  `json:"source,omitempty"`
-	Schedule *JobRequestAllOfSchedule `json:"schedule,omitempty"`
+	Port     NullableInt32             `json:"port,omitempty"`
+	Source   *JobResponseAllOfSource   `json:"source,omitempty"`
+	Schedule *JobResponseAllOfSchedule `json:"schedule,omitempty"`
 }
 
 // NewJobResponseAllOf instantiates a new JobResponseAllOf object
@@ -465,9 +465,9 @@ func (o *JobResponseAllOf) SetSource(v JobResponseAllOfSource) {
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *JobResponseAllOf) GetSchedule() JobRequestAllOfSchedule {
+func (o *JobResponseAllOf) GetSchedule() JobResponseAllOfSchedule {
 	if o == nil || o.Schedule == nil {
-		var ret JobRequestAllOfSchedule
+		var ret JobResponseAllOfSchedule
 		return ret
 	}
 	return *o.Schedule
@@ -475,7 +475,7 @@ func (o *JobResponseAllOf) GetSchedule() JobRequestAllOfSchedule {
 
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobResponseAllOf) GetScheduleOk() (*JobRequestAllOfSchedule, bool) {
+func (o *JobResponseAllOf) GetScheduleOk() (*JobResponseAllOfSchedule, bool) {
 	if o == nil || o.Schedule == nil {
 		return nil, false
 	}
@@ -491,8 +491,8 @@ func (o *JobResponseAllOf) HasSchedule() bool {
 	return false
 }
 
-// SetSchedule gets a reference to the given JobRequestAllOfSchedule and assigns it to the Schedule field.
-func (o *JobResponseAllOf) SetSchedule(v JobRequestAllOfSchedule) {
+// SetSchedule gets a reference to the given JobResponseAllOfSchedule and assigns it to the Schedule field.
+func (o *JobResponseAllOf) SetSchedule(v JobResponseAllOfSchedule) {
 	o.Schedule = &v
 }
 

@@ -27,7 +27,7 @@ type DeploymentHistoryJobResponse struct {
 	ImageName  *string                      `json:"image_name,omitempty"`
 	Tag        *string                      `json:"tag,omitempty"`
 	Commit     *Commit                      `json:"commit,omitempty"`
-	Schedule   *JobRequestAllOfSchedule     `json:"schedule,omitempty"`
+	Schedule   *JobResponseAllOfSchedule    `json:"schedule,omitempty"`
 	Arguments  []string                     `json:"arguments,omitempty"`
 	Entrypoint *string                      `json:"entrypoint,omitempty"`
 }
@@ -292,9 +292,9 @@ func (o *DeploymentHistoryJobResponse) SetCommit(v Commit) {
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *DeploymentHistoryJobResponse) GetSchedule() JobRequestAllOfSchedule {
+func (o *DeploymentHistoryJobResponse) GetSchedule() JobResponseAllOfSchedule {
 	if o == nil || o.Schedule == nil {
-		var ret JobRequestAllOfSchedule
+		var ret JobResponseAllOfSchedule
 		return ret
 	}
 	return *o.Schedule
@@ -302,7 +302,7 @@ func (o *DeploymentHistoryJobResponse) GetSchedule() JobRequestAllOfSchedule {
 
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryJobResponse) GetScheduleOk() (*JobRequestAllOfSchedule, bool) {
+func (o *DeploymentHistoryJobResponse) GetScheduleOk() (*JobResponseAllOfSchedule, bool) {
 	if o == nil || o.Schedule == nil {
 		return nil, false
 	}
@@ -318,8 +318,8 @@ func (o *DeploymentHistoryJobResponse) HasSchedule() bool {
 	return false
 }
 
-// SetSchedule gets a reference to the given JobRequestAllOfSchedule and assigns it to the Schedule field.
-func (o *DeploymentHistoryJobResponse) SetSchedule(v JobRequestAllOfSchedule) {
+// SetSchedule gets a reference to the given JobResponseAllOfSchedule and assigns it to the Schedule field.
+func (o *DeploymentHistoryJobResponse) SetSchedule(v JobResponseAllOfSchedule) {
 	o.Schedule = &v
 }
 

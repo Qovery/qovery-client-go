@@ -376,6 +376,7 @@ docs/JobRequestAllOfSourceDocker.md
 docs/JobRequestAllOfSourceImage.md
 docs/JobResponse.md
 docs/JobResponseAllOf.md
+docs/JobResponseAllOfSchedule.md
 docs/JobResponseAllOfSource.md
 docs/JobResponseAllOfSourceDocker.md
 docs/JobResponseList.md
@@ -794,6 +795,7 @@ model_job_request_all_of_source_docker.go
 model_job_request_all_of_source_image.go
 model_job_response.go
 model_job_response_all_of.go
+model_job_response_all_of_schedule.go
 model_job_response_all_of_source.go
 model_job_response_all_of_source_docker.go
 model_job_response_list.go

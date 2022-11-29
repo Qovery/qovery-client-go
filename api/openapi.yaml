@@ -18812,7 +18812,7 @@ components:
       properties:
         event:
           $ref: '#/components/schemas/JobScheduleEvent'
-        schedule_at:
+        scheduled_at:
           description: "Can only be set if the event is CRON.\nRepresent the cron\
             \ format for the job schedule without seconds.\nFor example: `* * * *\
             \ *` represent the cron to launch the job every minute.\nSee https://crontab.guru/\
@@ -18825,6 +18825,8 @@ components:
       properties:
         name:
           description: name is case insensitive
+          type: string
+        description:
           type: string
         arguments:
           items:
@@ -18892,6 +18894,19 @@ components:
         docker:
           $ref: '#/components/schemas/JobResponse_allOf_source_docker'
       type: object
+    JobResponse_allOf_schedule:
+      properties:
+        event:
+          $ref: '#/components/schemas/JobScheduleEvent'
+        schedule_at:
+          description: "Can only be set if the event is CRON.\nRepresent the cron\
+            \ format for the job schedule without seconds.\nFor example: `* * * *\
+            \ *` represent the cron to launch the job every minute.\nSee https://crontab.guru/\
+            \ to WISIWIG interface.\nTimezone is UTC\n"
+          format: cron
+          nullable: true
+          type: string
+      type: object
     JobResponse_allOf:
       properties:
         environment:
@@ -18952,7 +18967,7 @@ components:
         source:
           $ref: '#/components/schemas/JobResponse_allOf_source'
         schedule:
-          $ref: '#/components/schemas/JobRequest_allOf_schedule'
+          $ref: '#/components/schemas/JobResponse_allOf_schedule'
       required:
       - auto_preview
       - cpu
@@ -18981,7 +18996,7 @@ components:
         commit:
           $ref: '#/components/schemas/Commit'
         schedule:
-          $ref: '#/components/schemas/JobRequest_allOf_schedule'
+          $ref: '#/components/schemas/JobResponse_allOf_schedule'
         arguments:
           items:
             type: string

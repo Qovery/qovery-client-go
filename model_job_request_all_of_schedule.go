@@ -19,7 +19,7 @@ import (
 type JobRequestAllOfSchedule struct {
 	Event *JobScheduleEvent `json:"event,omitempty"`
 	// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC
-	ScheduleAt NullableString `json:"schedule_at,omitempty"`
+	ScheduledAt NullableString `json:"scheduled_at,omitempty"`
 }
 
 // NewJobRequestAllOfSchedule instantiates a new JobRequestAllOfSchedule object
@@ -71,47 +71,47 @@ func (o *JobRequestAllOfSchedule) SetEvent(v JobScheduleEvent) {
 	o.Event = &v
 }
 
-// GetScheduleAt returns the ScheduleAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JobRequestAllOfSchedule) GetScheduleAt() string {
-	if o == nil || o.ScheduleAt.Get() == nil {
+// GetScheduledAt returns the ScheduledAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobRequestAllOfSchedule) GetScheduledAt() string {
+	if o == nil || o.ScheduledAt.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScheduleAt.Get()
+	return *o.ScheduledAt.Get()
 }
 
-// GetScheduleAtOk returns a tuple with the ScheduleAt field value if set, nil otherwise
+// GetScheduledAtOk returns a tuple with the ScheduledAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JobRequestAllOfSchedule) GetScheduleAtOk() (*string, bool) {
+func (o *JobRequestAllOfSchedule) GetScheduledAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ScheduleAt.Get(), o.ScheduleAt.IsSet()
+	return o.ScheduledAt.Get(), o.ScheduledAt.IsSet()
 }
 
-// HasScheduleAt returns a boolean if a field has been set.
-func (o *JobRequestAllOfSchedule) HasScheduleAt() bool {
-	if o != nil && o.ScheduleAt.IsSet() {
+// HasScheduledAt returns a boolean if a field has been set.
+func (o *JobRequestAllOfSchedule) HasScheduledAt() bool {
+	if o != nil && o.ScheduledAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleAt gets a reference to the given NullableString and assigns it to the ScheduleAt field.
-func (o *JobRequestAllOfSchedule) SetScheduleAt(v string) {
-	o.ScheduleAt.Set(&v)
+// SetScheduledAt gets a reference to the given NullableString and assigns it to the ScheduledAt field.
+func (o *JobRequestAllOfSchedule) SetScheduledAt(v string) {
+	o.ScheduledAt.Set(&v)
 }
 
-// SetScheduleAtNil sets the value for ScheduleAt to be an explicit nil
-func (o *JobRequestAllOfSchedule) SetScheduleAtNil() {
-	o.ScheduleAt.Set(nil)
+// SetScheduledAtNil sets the value for ScheduledAt to be an explicit nil
+func (o *JobRequestAllOfSchedule) SetScheduledAtNil() {
+	o.ScheduledAt.Set(nil)
 }
 
-// UnsetScheduleAt ensures that no value is present for ScheduleAt, not even an explicit nil
-func (o *JobRequestAllOfSchedule) UnsetScheduleAt() {
-	o.ScheduleAt.Unset()
+// UnsetScheduledAt ensures that no value is present for ScheduledAt, not even an explicit nil
+func (o *JobRequestAllOfSchedule) UnsetScheduledAt() {
+	o.ScheduledAt.Unset()
 }
 
 func (o JobRequestAllOfSchedule) MarshalJSON() ([]byte, error) {
@@ -119,8 +119,8 @@ func (o JobRequestAllOfSchedule) MarshalJSON() ([]byte, error) {
 	if o.Event != nil {
 		toSerialize["event"] = o.Event
 	}
-	if o.ScheduleAt.IsSet() {
-		toSerialize["schedule_at"] = o.ScheduleAt.Get()
+	if o.ScheduledAt.IsSet() {
+		toSerialize["scheduled_at"] = o.ScheduledAt.Get()
 	}
 	return json.Marshal(toSerialize)
 }
