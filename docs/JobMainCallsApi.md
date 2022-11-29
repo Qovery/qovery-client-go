@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## DeleteJob
 
-> DeleteJob(ctx).Execute()
+> DeleteJob(ctx, jobId).Execute()
 
 Delete job
 
@@ -32,10 +32,11 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMainCallsApi.DeleteJob(context.Background()).Execute()
+    resp, r, err := apiClient.JobMainCallsApi.DeleteJob(context.Background(), jobId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsApi.DeleteJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -45,11 +46,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -72,7 +81,7 @@ Other parameters are passed through a pointer to a apiDeleteJobRequest struct vi
 
 ## EditJob
 
-> JobResponse EditJob(ctx).JobRequest(jobRequest).Execute()
+> JobResponse EditJob(ctx, jobId).JobRequest(jobRequest).Execute()
 
 Edit job
 
@@ -91,11 +100,12 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     jobRequest := *openapiclient.NewJobRequest("Name_example") // JobRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMainCallsApi.EditJob(context.Background()).JobRequest(jobRequest).Execute()
+    resp, r, err := apiClient.JobMainCallsApi.EditJob(context.Background(), jobId).JobRequest(jobRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsApi.EditJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -108,6 +118,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
@@ -116,6 +130,7 @@ Other parameters are passed through a pointer to a apiEditJobRequest struct via 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **jobRequest** | [**JobRequest**](JobRequest.md) |  | 
 
 ### Return type
@@ -206,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## GetJobStatus
 
-> Status GetJobStatus(ctx).Execute()
+> Status GetJobStatus(ctx, jobId).Execute()
 
 Get job status
 
@@ -223,10 +238,11 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMainCallsApi.GetJobStatus(context.Background()).Execute()
+    resp, r, err := apiClient.JobMainCallsApi.GetJobStatus(context.Background(), jobId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsApi.GetJobStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -238,11 +254,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetJobStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

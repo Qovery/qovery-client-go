@@ -26,6 +26,7 @@ type JobEnvironmentVariableApiService service
 type ApiCreateJobEnvironmentVariableRequest struct {
 	ctx                        context.Context
 	ApiService                 *JobEnvironmentVariableApiService
+	jobId                      string
 	environmentVariableRequest *EnvironmentVariableRequest
 }
 
@@ -45,12 +46,14 @@ CreateJobEnvironmentVariable Add an environment variable to the job
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiCreateJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariable(ctx context.Context) ApiCreateJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariable(ctx context.Context, jobId string) ApiCreateJobEnvironmentVariableRequest {
 	return ApiCreateJobEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -70,6 +73,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableExecute(r
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -134,6 +138,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableExecute(r
 type ApiCreateJobEnvironmentVariableAliasRequest struct {
 	ctx                   context.Context
 	ApiService            *JobEnvironmentVariableApiService
+	jobId                 string
 	environmentVariableId string
 	key                   *Key
 }
@@ -159,13 +164,15 @@ CreateJobEnvironmentVariableAlias Create an environment variable alias at the jo
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param environmentVariableId Environment Variable ID
  @return ApiCreateJobEnvironmentVariableAliasRequest
 */
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAlias(ctx context.Context, environmentVariableId string) ApiCreateJobEnvironmentVariableAliasRequest {
+func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAlias(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableAliasRequest {
 	return ApiCreateJobEnvironmentVariableAliasRequest{
 		ApiService:            a,
 		ctx:                   ctx,
+		jobId:                 jobId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -186,6 +193,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAliasExec
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}/alias"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -251,6 +259,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAliasExec
 type ApiCreateJobEnvironmentVariableOverrideRequest struct {
 	ctx                   context.Context
 	ApiService            *JobEnvironmentVariableApiService
+	jobId                 string
 	environmentVariableId string
 	value                 *Value
 }
@@ -275,13 +284,15 @@ CreateJobEnvironmentVariableOverride Create an environment variable override at 
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param environmentVariableId Environment Variable ID
  @return ApiCreateJobEnvironmentVariableOverrideRequest
 */
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverride(ctx context.Context, environmentVariableId string) ApiCreateJobEnvironmentVariableOverrideRequest {
+func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverride(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableOverrideRequest {
 	return ApiCreateJobEnvironmentVariableOverrideRequest{
 		ApiService:            a,
 		ctx:                   ctx,
+		jobId:                 jobId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -302,6 +313,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverrideE
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}/override"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -367,6 +379,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverrideE
 type ApiDeleteJobEnvironmentVariableRequest struct {
 	ctx                   context.Context
 	ApiService            *JobEnvironmentVariableApiService
+	jobId                 string
 	environmentVariableId string
 }
 
@@ -383,13 +396,15 @@ DeleteJobEnvironmentVariable Delete an environment variable from a job
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param environmentVariableId Environment Variable ID
  @return ApiDeleteJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariable(ctx context.Context, environmentVariableId string) ApiDeleteJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiDeleteJobEnvironmentVariableRequest {
 	return ApiDeleteJobEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
+		jobId:                 jobId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -408,6 +423,7 @@ func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariableExecute(r
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -462,6 +478,7 @@ func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariableExecute(r
 type ApiEditJobEnvironmentVariableRequest struct {
 	ctx                            context.Context
 	ApiService                     *JobEnvironmentVariableApiService
+	jobId                          string
 	environmentVariableId          string
 	environmentVariableEditRequest *EnvironmentVariableEditRequest
 }
@@ -485,13 +502,15 @@ EditJobEnvironmentVariable Edit an environment variable belonging to the job
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param environmentVariableId Environment Variable ID
  @return ApiEditJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariable(ctx context.Context, environmentVariableId string) ApiEditJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiEditJobEnvironmentVariableRequest {
 	return ApiEditJobEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
+		jobId:                 jobId,
 		environmentVariableId: environmentVariableId,
 	}
 }
@@ -512,6 +531,7 @@ func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariableExecute(r A
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -580,6 +600,7 @@ func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariableExecute(r A
 type ApiImportJobEnvironmentVariableRequest struct {
 	ctx                   context.Context
 	ApiService            *JobEnvironmentVariableApiService
+	jobId                 string
 	variableImportRequest *VariableImportRequest
 }
 
@@ -598,12 +619,14 @@ ImportJobEnvironmentVariable Import variables
 Import environment variables in a defined scope, with a defined visibility.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiImportJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariable(ctx context.Context) ApiImportJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariable(ctx context.Context, jobId string) ApiImportJobEnvironmentVariableRequest {
 	return ApiImportJobEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -623,6 +646,7 @@ func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariableExecute(r
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/import"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -687,6 +711,7 @@ func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariableExecute(r
 type ApiListJobEnvironmentVariableRequest struct {
 	ctx        context.Context
 	ApiService *JobEnvironmentVariableApiService
+	jobId      string
 }
 
 func (r ApiListJobEnvironmentVariableRequest) Execute() (*EnvironmentVariableResponseList, *http.Response, error) {
@@ -697,12 +722,14 @@ func (r ApiListJobEnvironmentVariableRequest) Execute() (*EnvironmentVariableRes
 ListJobEnvironmentVariable List environment variables
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiListJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariable(ctx context.Context) ApiListJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariable(ctx context.Context, jobId string) ApiListJobEnvironmentVariableRequest {
 	return ApiListJobEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -722,6 +749,7 @@ func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariableExecute(r A
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

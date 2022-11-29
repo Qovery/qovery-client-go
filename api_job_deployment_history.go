@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // JobDeploymentHistoryApiService JobDeploymentHistoryApi service
@@ -25,6 +26,7 @@ type JobDeploymentHistoryApiService service
 type ApiListJobDeploymentHistoryRequest struct {
 	ctx        context.Context
 	ApiService *JobDeploymentHistoryApiService
+	jobId      string
 }
 
 func (r ApiListJobDeploymentHistoryRequest) Execute() (*ListJobDeploymentHistory200Response, *http.Response, error) {
@@ -37,12 +39,14 @@ ListJobDeploymentHistory List job deployments
 Returns the 20 last job deployments
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiListJobDeploymentHistoryRequest
 */
-func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistory(ctx context.Context) ApiListJobDeploymentHistoryRequest {
+func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistory(ctx context.Context, jobId string) ApiListJobDeploymentHistoryRequest {
 	return ApiListJobDeploymentHistoryRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -62,6 +66,7 @@ func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistoryExecute(r ApiLi
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploymentHistory"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

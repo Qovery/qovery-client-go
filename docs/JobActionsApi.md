@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## DeployJob
 
-> Status DeployJob(ctx).Force(force).JobDeployRequest(jobDeployRequest).Execute()
+> Status DeployJob(ctx, jobId).Force(force).JobDeployRequest(jobDeployRequest).Execute()
 
 Deploy job
 
@@ -31,12 +31,13 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     force := true // bool | Enable or Disable the force trigger of the job (optional) (default to false)
     jobDeployRequest := *openapiclient.NewJobDeployRequest("ImageTag_example") // JobDeployRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobActionsApi.DeployJob(context.Background()).Force(force).JobDeployRequest(jobDeployRequest).Execute()
+    resp, r, err := apiClient.JobActionsApi.DeployJob(context.Background(), jobId).Force(force).JobDeployRequest(jobDeployRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobActionsApi.DeployJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -49,6 +50,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
@@ -57,6 +62,7 @@ Other parameters are passed through a pointer to a apiDeployJobRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **force** | **bool** | Enable or Disable the force trigger of the job | [default to false]
  **jobDeployRequest** | [**JobDeployRequest**](JobDeployRequest.md) |  | 
 
@@ -80,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## RestartJob
 
-> Status RestartJob(ctx).Force(force).Execute()
+> Status RestartJob(ctx, jobId).Force(force).Execute()
 
 Restart job
 
@@ -97,11 +103,12 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     force := true // bool | Enable or Disable the force trigger of the job (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobActionsApi.RestartJob(context.Background()).Force(force).Execute()
+    resp, r, err := apiClient.JobActionsApi.RestartJob(context.Background(), jobId).Force(force).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobActionsApi.RestartJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -114,6 +121,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
@@ -122,6 +133,7 @@ Other parameters are passed through a pointer to a apiRestartJobRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **force** | **bool** | Enable or Disable the force trigger of the job | [default to false]
 
 ### Return type
@@ -144,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## StopJob
 
-> Status StopJob(ctx).Execute()
+> Status StopJob(ctx, jobId).Execute()
 
 Stop job
 
@@ -161,10 +173,11 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobActionsApi.StopJob(context.Background()).Execute()
+    resp, r, err := apiClient.JobActionsApi.StopJob(context.Background(), jobId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobActionsApi.StopJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -176,11 +189,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStopJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

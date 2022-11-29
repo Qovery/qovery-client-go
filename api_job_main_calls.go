@@ -26,6 +26,7 @@ type JobMainCallsApiService service
 type ApiDeleteJobRequest struct {
 	ctx        context.Context
 	ApiService *JobMainCallsApiService
+	jobId      string
 }
 
 func (r ApiDeleteJobRequest) Execute() (*http.Response, error) {
@@ -38,12 +39,14 @@ DeleteJob Delete job
 To delete the job you must have the admin permission
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiDeleteJobRequest
 */
-func (a *JobMainCallsApiService) DeleteJob(ctx context.Context) ApiDeleteJobRequest {
+func (a *JobMainCallsApiService) DeleteJob(ctx context.Context, jobId string) ApiDeleteJobRequest {
 	return ApiDeleteJobRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -61,6 +64,7 @@ func (a *JobMainCallsApiService) DeleteJobExecute(r ApiDeleteJobRequest) (*http.
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -114,6 +118,7 @@ func (a *JobMainCallsApiService) DeleteJobExecute(r ApiDeleteJobRequest) (*http.
 type ApiEditJobRequest struct {
 	ctx        context.Context
 	ApiService *JobMainCallsApiService
+	jobId      string
 	jobRequest *JobRequest
 }
 
@@ -133,12 +138,14 @@ EditJob Edit job
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiEditJobRequest
 */
-func (a *JobMainCallsApiService) EditJob(ctx context.Context) ApiEditJobRequest {
+func (a *JobMainCallsApiService) EditJob(ctx context.Context, jobId string) ApiEditJobRequest {
 	return ApiEditJobRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -158,6 +165,7 @@ func (a *JobMainCallsApiService) EditJobExecute(r ApiEditJobRequest) (*JobRespon
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -323,6 +331,7 @@ func (a *JobMainCallsApiService) GetJobExecute(r ApiGetJobRequest) (*JobResponse
 type ApiGetJobStatusRequest struct {
 	ctx        context.Context
 	ApiService *JobMainCallsApiService
+	jobId      string
 }
 
 func (r ApiGetJobStatusRequest) Execute() (*Status, *http.Response, error) {
@@ -333,12 +342,14 @@ func (r ApiGetJobStatusRequest) Execute() (*Status, *http.Response, error) {
 GetJobStatus Get job status
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiGetJobStatusRequest
 */
-func (a *JobMainCallsApiService) GetJobStatus(ctx context.Context) ApiGetJobStatusRequest {
+func (a *JobMainCallsApiService) GetJobStatus(ctx context.Context, jobId string) ApiGetJobStatusRequest {
 	return ApiGetJobStatusRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -358,6 +369,7 @@ func (a *JobMainCallsApiService) GetJobStatusExecute(r ApiGetJobStatusRequest) (
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/status"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

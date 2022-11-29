@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // JobConfigurationApiService JobConfigurationApi service
@@ -25,6 +26,7 @@ type JobConfigurationApiService service
 type ApiEditJobAdvancedSettingsRequest struct {
 	ctx                 context.Context
 	ApiService          *JobConfigurationApiService
+	jobId               string
 	jobAdvancedSettings *JobAdvancedSettings
 }
 
@@ -43,12 +45,14 @@ EditJobAdvancedSettings Edit advanced settings
 Edit advanced settings by returning table of advanced settings.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiEditJobAdvancedSettingsRequest
 */
-func (a *JobConfigurationApiService) EditJobAdvancedSettings(ctx context.Context) ApiEditJobAdvancedSettingsRequest {
+func (a *JobConfigurationApiService) EditJobAdvancedSettings(ctx context.Context, jobId string) ApiEditJobAdvancedSettingsRequest {
 	return ApiEditJobAdvancedSettingsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -68,6 +72,7 @@ func (a *JobConfigurationApiService) EditJobAdvancedSettingsExecute(r ApiEditJob
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/advancedSettings"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -132,6 +137,7 @@ func (a *JobConfigurationApiService) EditJobAdvancedSettingsExecute(r ApiEditJob
 type ApiGetJobAdvancedSettingsRequest struct {
 	ctx        context.Context
 	ApiService *JobConfigurationApiService
+	jobId      string
 }
 
 func (r ApiGetJobAdvancedSettingsRequest) Execute() (*JobAdvancedSettings, *http.Response, error) {
@@ -144,12 +150,14 @@ GetJobAdvancedSettings Get advanced settings
 Get list and values of the advanced settings of the job.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiGetJobAdvancedSettingsRequest
 */
-func (a *JobConfigurationApiService) GetJobAdvancedSettings(ctx context.Context) ApiGetJobAdvancedSettingsRequest {
+func (a *JobConfigurationApiService) GetJobAdvancedSettings(ctx context.Context, jobId string) ApiGetJobAdvancedSettingsRequest {
 	return ApiGetJobAdvancedSettingsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -169,6 +177,7 @@ func (a *JobConfigurationApiService) GetJobAdvancedSettingsExecute(r ApiGetJobAd
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/advancedSettings"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

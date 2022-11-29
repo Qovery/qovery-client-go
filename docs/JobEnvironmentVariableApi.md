@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CreateJobEnvironmentVariable
 
-> EnvironmentVariable CreateJobEnvironmentVariable(ctx).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+> EnvironmentVariable CreateJobEnvironmentVariable(ctx, jobId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
 
 Add an environment variable to the job
 
@@ -35,11 +35,12 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example", "Value_example") // EnvironmentVariableRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableApi.CreateJobEnvironmentVariable(context.Background()).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+    resp, r, err := apiClient.JobEnvironmentVariableApi.CreateJobEnvironmentVariable(context.Background(), jobId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableApi.CreateJobEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -52,6 +53,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
@@ -60,6 +65,7 @@ Other parameters are passed through a pointer to a apiCreateJobEnvironmentVariab
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **environmentVariableRequest** | [**EnvironmentVariableRequest**](EnvironmentVariableRequest.md) |  | 
 
 ### Return type
@@ -82,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## CreateJobEnvironmentVariableAlias
 
-> EnvironmentVariable CreateJobEnvironmentVariableAlias(ctx, environmentVariableId).Key(key).Execute()
+> EnvironmentVariable CreateJobEnvironmentVariableAlias(ctx, jobId, environmentVariableId).Key(key).Execute()
 
 Create an environment variable alias at the job level
 
@@ -101,12 +107,13 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableApi.CreateJobEnvironmentVariableAlias(context.Background(), environmentVariableId).Key(key).Execute()
+    resp, r, err := apiClient.JobEnvironmentVariableApi.CreateJobEnvironmentVariableAlias(context.Background(), jobId, environmentVariableId).Key(key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableApi.CreateJobEnvironmentVariableAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -122,6 +129,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
@@ -131,6 +139,7 @@ Other parameters are passed through a pointer to a apiCreateJobEnvironmentVariab
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **key** | [**Key**](Key.md) |  | 
 
@@ -154,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## CreateJobEnvironmentVariableOverride
 
-> EnvironmentVariable CreateJobEnvironmentVariableOverride(ctx, environmentVariableId).Value(value).Execute()
+> EnvironmentVariable CreateJobEnvironmentVariableOverride(ctx, jobId, environmentVariableId).Value(value).Execute()
 
 Create an environment variable override at the job level
 
@@ -173,12 +182,13 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableApi.CreateJobEnvironmentVariableOverride(context.Background(), environmentVariableId).Value(value).Execute()
+    resp, r, err := apiClient.JobEnvironmentVariableApi.CreateJobEnvironmentVariableOverride(context.Background(), jobId, environmentVariableId).Value(value).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableApi.CreateJobEnvironmentVariableOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -194,6 +204,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
@@ -203,6 +214,7 @@ Other parameters are passed through a pointer to a apiCreateJobEnvironmentVariab
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **value** | [**Value**](Value.md) |  | 
 
@@ -226,7 +238,7 @@ Name | Type | Description  | Notes
 
 ## DeleteJobEnvironmentVariable
 
-> DeleteJobEnvironmentVariable(ctx, environmentVariableId).Execute()
+> DeleteJobEnvironmentVariable(ctx, jobId, environmentVariableId).Execute()
 
 Delete an environment variable from a job
 
@@ -245,11 +257,12 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableApi.DeleteJobEnvironmentVariable(context.Background(), environmentVariableId).Execute()
+    resp, r, err := apiClient.JobEnvironmentVariableApi.DeleteJobEnvironmentVariable(context.Background(), jobId, environmentVariableId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableApi.DeleteJobEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -263,6 +276,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
@@ -272,6 +286,7 @@ Other parameters are passed through a pointer to a apiDeleteJobEnvironmentVariab
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -294,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## EditJobEnvironmentVariable
 
-> EnvironmentVariable EditJobEnvironmentVariable(ctx, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+> EnvironmentVariable EditJobEnvironmentVariable(ctx, jobId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
 
 Edit an environment variable belonging to the job
 
@@ -313,12 +328,13 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
     environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example", "Value_example") // EnvironmentVariableEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableApi.EditJobEnvironmentVariable(context.Background(), environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+    resp, r, err := apiClient.JobEnvironmentVariableApi.EditJobEnvironmentVariable(context.Background(), jobId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableApi.EditJobEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -334,6 +350,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **environmentVariableId** | **string** | Environment Variable ID | 
 
 ### Other Parameters
@@ -343,6 +360,7 @@ Other parameters are passed through a pointer to a apiEditJobEnvironmentVariable
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **environmentVariableEditRequest** | [**EnvironmentVariableEditRequest**](EnvironmentVariableEditRequest.md) |  | 
 
@@ -366,7 +384,7 @@ Name | Type | Description  | Notes
 
 ## ImportJobEnvironmentVariable
 
-> VariableImport ImportJobEnvironmentVariable(ctx).VariableImportRequest(variableImportRequest).Execute()
+> VariableImport ImportJobEnvironmentVariable(ctx, jobId).VariableImportRequest(variableImportRequest).Execute()
 
 Import variables
 
@@ -385,11 +403,12 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableApi.ImportJobEnvironmentVariable(context.Background()).VariableImportRequest(variableImportRequest).Execute()
+    resp, r, err := apiClient.JobEnvironmentVariableApi.ImportJobEnvironmentVariable(context.Background(), jobId).VariableImportRequest(variableImportRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableApi.ImportJobEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -402,6 +421,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
@@ -410,6 +433,7 @@ Other parameters are passed through a pointer to a apiImportJobEnvironmentVariab
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **variableImportRequest** | [**VariableImportRequest**](VariableImportRequest.md) |  | 
 
 ### Return type
@@ -432,7 +456,7 @@ Name | Type | Description  | Notes
 
 ## ListJobEnvironmentVariable
 
-> EnvironmentVariableResponseList ListJobEnvironmentVariable(ctx).Execute()
+> EnvironmentVariableResponseList ListJobEnvironmentVariable(ctx, jobId).Execute()
 
 List environment variables
 
@@ -449,10 +473,11 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableApi.ListJobEnvironmentVariable(context.Background()).Execute()
+    resp, r, err := apiClient.JobEnvironmentVariableApi.ListJobEnvironmentVariable(context.Background(), jobId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableApi.ListJobEnvironmentVariable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -464,11 +489,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListJobEnvironmentVariableRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

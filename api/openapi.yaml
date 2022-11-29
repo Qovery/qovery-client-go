@@ -10893,7 +10893,16 @@ paths:
     delete:
       description: To delete the job you must have the admin permission
       operationId: deleteJob
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: The resource was deleted successfully
@@ -10938,7 +10947,16 @@ paths:
       description: |
         - To edit the job you must have the admin permission.
       operationId: editJob
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -10968,7 +10986,16 @@ paths:
     get:
       description: Get list and values of the advanced settings of the job.
       operationId: getJobAdvancedSettings
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -10988,7 +11015,16 @@ paths:
     put:
       description: Edit advanced settings by returning table of advanced settings.
       operationId: editJobAdvancedSettings
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -11017,6 +11053,15 @@ paths:
       description: You must provide a git commit id
       operationId: deployJob
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Enable or Disable the force trigger of the job
         explode: true
         in: query
@@ -11055,6 +11100,15 @@ paths:
     post:
       operationId: restartJob
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Enable or Disable the force trigger of the job
         explode: true
         in: query
@@ -11085,7 +11139,16 @@ paths:
   /job/{jobId}/stop:
     post:
       operationId: stopJob
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "202":
           content:
@@ -11107,7 +11170,16 @@ paths:
   /job/{jobId}/status:
     get:
       operationId: getJobStatus
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -11128,7 +11200,16 @@ paths:
     get:
       description: Returns the 20 last job deployments
       operationId: listJobDeploymentHistory
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -11148,7 +11229,16 @@ paths:
   /job/{jobId}/instance:
     get:
       operationId: getJobCurrentInstance
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -11170,7 +11260,16 @@ paths:
   /job/{jobId}/environmentVariable:
     get:
       operationId: listJobEnvironmentVariable
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -11191,7 +11290,16 @@ paths:
       description: |
         - Add an environment variable to the job.
       operationId: createJobEnvironmentVariable
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -11220,7 +11328,16 @@ paths:
       description: "Import environment variables in a defined scope, with a defined\
         \ visibility."
       operationId: importJobEnvironmentVariable
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -11252,6 +11369,15 @@ paths:
         \ will be deleted as well\n"
       operationId: deleteJobEnvironmentVariable
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Environment Variable ID
         explode: false
         in: path
@@ -11280,6 +11406,15 @@ paths:
         \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
       operationId: editJobEnvironmentVariable
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Environment Variable ID
         explode: false
         in: path
@@ -11323,6 +11458,15 @@ paths:
         - Information regarding the overridden_variable will be exposed in the "overridden_variable" field of the newly created variable
       operationId: createJobEnvironmentVariableOverride
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Environment Variable ID
         explode: false
         in: path
@@ -11369,6 +11513,15 @@ paths:
         \ 1 alias level is allowed. You can't create an alias on an alias\n"
       operationId: createJobEnvironmentVariableAlias
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Environment Variable ID
         explode: false
         in: path
@@ -11408,7 +11561,16 @@ paths:
       description: "Secrets are like environment variables, but they are secured and\
         \ can't be revealed."
       operationId: listJobSecrets
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -11429,7 +11591,16 @@ paths:
       description: |
         - Add a secret to the job.
       operationId: createJobSecret
-      parameters: []
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
@@ -11460,6 +11631,15 @@ paths:
         \ or alias, the associated override/alias will be deleted as well\n"
       operationId: deleteJobSecret
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Secret ID
         explode: false
         in: path
@@ -11488,6 +11668,15 @@ paths:
         \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
       operationId: editJobSecret
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Secret ID
         explode: false
         in: path
@@ -11531,6 +11720,15 @@ paths:
         - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
       operationId: createJobSecretOverride
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Secret ID
         explode: false
         in: path
@@ -11577,6 +11775,15 @@ paths:
         \ can't create an alias on an alias\n"
       operationId: createJobSecretAlias
       parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Secret ID
         explode: false
         in: path
@@ -11758,6 +11965,16 @@ components:
       explode: false
       in: path
       name: inviteId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    jobId:
+      description: Job ID
+      explode: false
+      in: path
+      name: jobId
       required: true
       schema:
         format: uuid

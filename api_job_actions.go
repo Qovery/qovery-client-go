@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // JobActionsApiService JobActionsApi service
@@ -25,6 +26,7 @@ type JobActionsApiService service
 type ApiDeployJobRequest struct {
 	ctx              context.Context
 	ApiService       *JobActionsApiService
+	jobId            string
 	force            *bool
 	jobDeployRequest *JobDeployRequest
 }
@@ -50,12 +52,14 @@ DeployJob Deploy job
 You must provide a git commit id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiDeployJobRequest
 */
-func (a *JobActionsApiService) DeployJob(ctx context.Context) ApiDeployJobRequest {
+func (a *JobActionsApiService) DeployJob(ctx context.Context, jobId string) ApiDeployJobRequest {
 	return ApiDeployJobRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -75,6 +79,7 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploy"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -142,6 +147,7 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 type ApiRestartJobRequest struct {
 	ctx        context.Context
 	ApiService *JobActionsApiService
+	jobId      string
 	force      *bool
 }
 
@@ -159,12 +165,14 @@ func (r ApiRestartJobRequest) Execute() (*Status, *http.Response, error) {
 RestartJob Restart job
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiRestartJobRequest
 */
-func (a *JobActionsApiService) RestartJob(ctx context.Context) ApiRestartJobRequest {
+func (a *JobActionsApiService) RestartJob(ctx context.Context, jobId string) ApiRestartJobRequest {
 	return ApiRestartJobRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -184,6 +192,7 @@ func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/restart"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -249,6 +258,7 @@ func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 type ApiStopJobRequest struct {
 	ctx        context.Context
 	ApiService *JobActionsApiService
+	jobId      string
 }
 
 func (r ApiStopJobRequest) Execute() (*Status, *http.Response, error) {
@@ -259,12 +269,14 @@ func (r ApiStopJobRequest) Execute() (*Status, *http.Response, error) {
 StopJob Stop job
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiStopJobRequest
 */
-func (a *JobActionsApiService) StopJob(ctx context.Context) ApiStopJobRequest {
+func (a *JobActionsApiService) StopJob(ctx context.Context, jobId string) ApiStopJobRequest {
 	return ApiStopJobRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -284,6 +296,7 @@ func (a *JobActionsApiService) StopJobExecute(r ApiStopJobRequest) (*Status, *ht
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/stop"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -26,6 +26,7 @@ type JobSecretApiService service
 type ApiCreateJobSecretRequest struct {
 	ctx           context.Context
 	ApiService    *JobSecretApiService
+	jobId         string
 	secretRequest *SecretRequest
 }
 
@@ -45,12 +46,14 @@ CreateJobSecret Add a secret to the job
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiCreateJobSecretRequest
 */
-func (a *JobSecretApiService) CreateJobSecret(ctx context.Context) ApiCreateJobSecretRequest {
+func (a *JobSecretApiService) CreateJobSecret(ctx context.Context, jobId string) ApiCreateJobSecretRequest {
 	return ApiCreateJobSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -70,6 +73,7 @@ func (a *JobSecretApiService) CreateJobSecretExecute(r ApiCreateJobSecretRequest
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -134,6 +138,7 @@ func (a *JobSecretApiService) CreateJobSecretExecute(r ApiCreateJobSecretRequest
 type ApiCreateJobSecretAliasRequest struct {
 	ctx        context.Context
 	ApiService *JobSecretApiService
+	jobId      string
 	secretId   string
 	key        *Key
 }
@@ -159,13 +164,15 @@ CreateJobSecretAlias Create a secret alias at the job level
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param secretId Secret ID
  @return ApiCreateJobSecretAliasRequest
 */
-func (a *JobSecretApiService) CreateJobSecretAlias(ctx context.Context, secretId string) ApiCreateJobSecretAliasRequest {
+func (a *JobSecretApiService) CreateJobSecretAlias(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretAliasRequest {
 	return ApiCreateJobSecretAliasRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 		secretId:   secretId,
 	}
 }
@@ -186,6 +193,7 @@ func (a *JobSecretApiService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAl
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}/alias"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -251,6 +259,7 @@ func (a *JobSecretApiService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAl
 type ApiCreateJobSecretOverrideRequest struct {
 	ctx        context.Context
 	ApiService *JobSecretApiService
+	jobId      string
 	secretId   string
 	value      *Value
 }
@@ -275,13 +284,15 @@ CreateJobSecretOverride Create a secret override at the job level
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param secretId Secret ID
  @return ApiCreateJobSecretOverrideRequest
 */
-func (a *JobSecretApiService) CreateJobSecretOverride(ctx context.Context, secretId string) ApiCreateJobSecretOverrideRequest {
+func (a *JobSecretApiService) CreateJobSecretOverride(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretOverrideRequest {
 	return ApiCreateJobSecretOverrideRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 		secretId:   secretId,
 	}
 }
@@ -302,6 +313,7 @@ func (a *JobSecretApiService) CreateJobSecretOverrideExecute(r ApiCreateJobSecre
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}/override"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -367,6 +379,7 @@ func (a *JobSecretApiService) CreateJobSecretOverrideExecute(r ApiCreateJobSecre
 type ApiDeleteJobSecretRequest struct {
 	ctx        context.Context
 	ApiService *JobSecretApiService
+	jobId      string
 	secretId   string
 }
 
@@ -383,13 +396,15 @@ DeleteJobSecret Delete a secret from an job
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param secretId Secret ID
  @return ApiDeleteJobSecretRequest
 */
-func (a *JobSecretApiService) DeleteJobSecret(ctx context.Context, secretId string) ApiDeleteJobSecretRequest {
+func (a *JobSecretApiService) DeleteJobSecret(ctx context.Context, jobId string, secretId string) ApiDeleteJobSecretRequest {
 	return ApiDeleteJobSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 		secretId:   secretId,
 	}
 }
@@ -408,6 +423,7 @@ func (a *JobSecretApiService) DeleteJobSecretExecute(r ApiDeleteJobSecretRequest
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -462,6 +478,7 @@ func (a *JobSecretApiService) DeleteJobSecretExecute(r ApiDeleteJobSecretRequest
 type ApiEditJobSecretRequest struct {
 	ctx               context.Context
 	ApiService        *JobSecretApiService
+	jobId             string
 	secretId          string
 	secretEditRequest *SecretEditRequest
 }
@@ -485,13 +502,15 @@ EditJobSecret Edit a secret belonging to the job
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @param secretId Secret ID
  @return ApiEditJobSecretRequest
 */
-func (a *JobSecretApiService) EditJobSecret(ctx context.Context, secretId string) ApiEditJobSecretRequest {
+func (a *JobSecretApiService) EditJobSecret(ctx context.Context, jobId string, secretId string) ApiEditJobSecretRequest {
 	return ApiEditJobSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 		secretId:   secretId,
 	}
 }
@@ -512,6 +531,7 @@ func (a *JobSecretApiService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -580,6 +600,7 @@ func (a *JobSecretApiService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*
 type ApiListJobSecretsRequest struct {
 	ctx        context.Context
 	ApiService *JobSecretApiService
+	jobId      string
 }
 
 func (r ApiListJobSecretsRequest) Execute() (*SecretResponseList, *http.Response, error) {
@@ -592,12 +613,14 @@ ListJobSecrets List job secrets
 Secrets are like environment variables, but they are secured and can't be revealed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiListJobSecretsRequest
 */
-func (a *JobSecretApiService) ListJobSecrets(ctx context.Context) ApiListJobSecretsRequest {
+func (a *JobSecretApiService) ListJobSecrets(ctx context.Context, jobId string) ApiListJobSecretsRequest {
 	return ApiListJobSecretsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -617,6 +640,7 @@ func (a *JobSecretApiService) ListJobSecretsExecute(r ApiListJobSecretsRequest) 
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

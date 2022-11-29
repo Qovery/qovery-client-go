@@ -17,6 +17,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 // JobMetricsApiService JobMetricsApi service
@@ -25,6 +26,7 @@ type JobMetricsApiService service
 type ApiGetJobCurrentInstanceRequest struct {
 	ctx        context.Context
 	ApiService *JobMetricsApiService
+	jobId      string
 }
 
 func (r ApiGetJobCurrentInstanceRequest) Execute() (*InstanceResponseList, *http.Response, error) {
@@ -35,12 +37,14 @@ func (r ApiGetJobCurrentInstanceRequest) Execute() (*InstanceResponseList, *http
 GetJobCurrentInstance List currently running instances of the job with their CPU and RAM metrics
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
  @return ApiGetJobCurrentInstanceRequest
 */
-func (a *JobMetricsApiService) GetJobCurrentInstance(ctx context.Context) ApiGetJobCurrentInstanceRequest {
+func (a *JobMetricsApiService) GetJobCurrentInstance(ctx context.Context, jobId string) ApiGetJobCurrentInstanceRequest {
 	return ApiGetJobCurrentInstanceRequest{
 		ApiService: a,
 		ctx:        ctx,
+		jobId:      jobId,
 	}
 }
 
@@ -60,6 +64,7 @@ func (a *JobMetricsApiService) GetJobCurrentInstanceExecute(r ApiGetJobCurrentIn
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/instance"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

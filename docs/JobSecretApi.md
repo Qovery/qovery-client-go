@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateJobSecret
 
-> Secret CreateJobSecret(ctx).SecretRequest(secretRequest).Execute()
+> Secret CreateJobSecret(ctx, jobId).SecretRequest(secretRequest).Execute()
 
 Add a secret to the job
 
@@ -34,11 +34,12 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     secretRequest := *openapiclient.NewSecretRequest("Key_example", "Value_example") // SecretRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobSecretApi.CreateJobSecret(context.Background()).SecretRequest(secretRequest).Execute()
+    resp, r, err := apiClient.JobSecretApi.CreateJobSecret(context.Background(), jobId).SecretRequest(secretRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobSecretApi.CreateJobSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -51,6 +52,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
@@ -59,6 +64,7 @@ Other parameters are passed through a pointer to a apiCreateJobSecretRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **secretRequest** | [**SecretRequest**](SecretRequest.md) |  | 
 
 ### Return type
@@ -81,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CreateJobSecretAlias
 
-> Secret CreateJobSecretAlias(ctx, secretId).Key(key).Execute()
+> Secret CreateJobSecretAlias(ctx, jobId, secretId).Key(key).Execute()
 
 Create a secret alias at the job level
 
@@ -100,12 +106,13 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobSecretApi.CreateJobSecretAlias(context.Background(), secretId).Key(key).Execute()
+    resp, r, err := apiClient.JobSecretApi.CreateJobSecretAlias(context.Background(), jobId, secretId).Key(key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobSecretApi.CreateJobSecretAlias``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -121,6 +128,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **secretId** | **string** | Secret ID | 
 
 ### Other Parameters
@@ -130,6 +138,7 @@ Other parameters are passed through a pointer to a apiCreateJobSecretAliasReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **key** | [**Key**](Key.md) |  | 
 
@@ -153,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## CreateJobSecretOverride
 
-> Secret CreateJobSecretOverride(ctx, secretId).Value(value).Execute()
+> Secret CreateJobSecretOverride(ctx, jobId, secretId).Value(value).Execute()
 
 Create a secret override at the job level
 
@@ -172,12 +181,13 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     value := *openapiclient.NewValue("Value_example") // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobSecretApi.CreateJobSecretOverride(context.Background(), secretId).Value(value).Execute()
+    resp, r, err := apiClient.JobSecretApi.CreateJobSecretOverride(context.Background(), jobId, secretId).Value(value).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobSecretApi.CreateJobSecretOverride``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -193,6 +203,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **secretId** | **string** | Secret ID | 
 
 ### Other Parameters
@@ -202,6 +213,7 @@ Other parameters are passed through a pointer to a apiCreateJobSecretOverrideReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **value** | [**Value**](Value.md) |  | 
 
@@ -225,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## DeleteJobSecret
 
-> DeleteJobSecret(ctx, secretId).Execute()
+> DeleteJobSecret(ctx, jobId, secretId).Execute()
 
 Delete a secret from an job
 
@@ -244,11 +256,12 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobSecretApi.DeleteJobSecret(context.Background(), secretId).Execute()
+    resp, r, err := apiClient.JobSecretApi.DeleteJobSecret(context.Background(), jobId, secretId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobSecretApi.DeleteJobSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -262,6 +275,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **secretId** | **string** | Secret ID | 
 
 ### Other Parameters
@@ -271,6 +285,7 @@ Other parameters are passed through a pointer to a apiDeleteJobSecretRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -293,7 +308,7 @@ Name | Type | Description  | Notes
 
 ## EditJobSecret
 
-> Secret EditJobSecret(ctx, secretId).SecretEditRequest(secretEditRequest).Execute()
+> Secret EditJobSecret(ctx, jobId, secretId).SecretEditRequest(secretEditRequest).Execute()
 
 Edit a secret belonging to the job
 
@@ -312,12 +327,13 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
     secretEditRequest := *openapiclient.NewSecretEditRequest("Value_example", "Key_example") // SecretEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobSecretApi.EditJobSecret(context.Background(), secretId).SecretEditRequest(secretEditRequest).Execute()
+    resp, r, err := apiClient.JobSecretApi.EditJobSecret(context.Background(), jobId, secretId).SecretEditRequest(secretEditRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobSecretApi.EditJobSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -333,6 +349,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 **secretId** | **string** | Secret ID | 
 
 ### Other Parameters
@@ -342,6 +359,7 @@ Other parameters are passed through a pointer to a apiEditJobSecretRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **secretEditRequest** | [**SecretEditRequest**](SecretEditRequest.md) |  | 
 
@@ -365,7 +383,7 @@ Name | Type | Description  | Notes
 
 ## ListJobSecrets
 
-> SecretResponseList ListJobSecrets(ctx).Execute()
+> SecretResponseList ListJobSecrets(ctx, jobId).Execute()
 
 List job secrets
 
@@ -384,10 +402,11 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobSecretApi.ListJobSecrets(context.Background()).Execute()
+    resp, r, err := apiClient.JobSecretApi.ListJobSecrets(context.Background(), jobId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobSecretApi.ListJobSecrets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -399,11 +418,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListJobSecretsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

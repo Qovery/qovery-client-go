@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetJobCurrentInstance
 
-> InstanceResponseList GetJobCurrentInstance(ctx).Execute()
+> InstanceResponseList GetJobCurrentInstance(ctx, jobId).Execute()
 
 List currently running instances of the job with their CPU and RAM metrics
 
@@ -27,10 +27,11 @@ import (
 )
 
 func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMetricsApi.GetJobCurrentInstance(context.Background()).Execute()
+    resp, r, err := apiClient.JobMetricsApi.GetJobCurrentInstance(context.Background(), jobId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobMetricsApi.GetJobCurrentInstance``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -42,11 +43,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetJobCurrentInstanceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type
