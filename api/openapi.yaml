@@ -15523,23 +15523,23 @@ components:
     JobAdvancedSettings:
       example:
         readiness_probe.timeout_seconds: 2
-        liveness_probe.type: TCP
+        liveness_probe.type: NONE
         liveness_probe.initial_delay_seconds: 3
         liveness_probe.success_threshold: 7
         job.delete_ttl_seconds_after_finished: 0
         liveness_probe.failure_threshold: 1
         cronjob.success_jobs_history_limit: 1
-        readiness_probe.type: TCP
+        readiness_probe.type: NONE
         liveness_probe.timeout_seconds: 4
         readiness_probe.failure_threshold: 9
         liveness_probe.period_seconds: 2
-        readiness_probe.http_get.path: /
+        readiness_probe.http_get.path: readiness_probe.http_get.path
         cronjob.failed_jobs_history_limit: 6
         cronjob.concurrency_policy: Forbid
         readiness_probe.success_threshold: 7
         readiness_probe.initial_delay_seconds: 5
         readiness_probe.period_seconds: 5
-        liveness_probe.http_get.path: /
+        liveness_probe.http_get.path: liveness_probe.http_get.path
       properties:
         job.delete_ttl_seconds_after_finished:
           nullable: true
@@ -15554,7 +15554,7 @@ components:
           default: 1
           type: integer
         readiness_probe.type:
-          default: TCP
+          default: NONE
           description: |
             `NONE` disable readiness probe
             `TCP` enable TCP readiness probe
@@ -15565,34 +15565,34 @@ components:
           - HTTP
           type: string
         readiness_probe.http_get.path:
-          default: /
+          default: ""
           description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
             - only usable with TYPE = HTTP
           type: string
         readiness_probe.initial_delay_seconds:
-          default: 30
+          default: 0
           description: Delay before liveness probe is initiated
           type: integer
         readiness_probe.period_seconds:
-          default: 10
+          default: 0
           description: How often to perform the probe
           type: integer
         readiness_probe.timeout_seconds:
-          default: 1
+          default: 0
           description: When the probe times out
           type: integer
         readiness_probe.success_threshold:
-          default: 1
+          default: 0
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         readiness_probe.failure_threshold:
-          default: 3
+          default: 0
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
         liveness_probe.type:
-          default: TCP
+          default: NONE
           description: |
             `NONE` disable liveness probe
             `TCP` enable TCP liveness probe
@@ -15603,29 +15603,29 @@ components:
           - HTTP
           type: string
         liveness_probe.http_get.path:
-          default: /
+          default: ""
           description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
             - only usable with TYPE = HTTP
           type: string
         liveness_probe.initial_delay_seconds:
-          default: 30
+          default: 0
           description: Delay before liveness probe is initiated
           type: integer
         liveness_probe.period_seconds:
-          default: 10
+          default: 0
           description: How often to perform the probe
           type: integer
         liveness_probe.timeout_seconds:
-          default: 5
+          default: 0
           description: When the probe times out
           type: integer
         liveness_probe.success_threshold:
-          default: 1
+          default: 0
           description: Minimum consecutive successes for the probe to be considered
             successful after having failed.
           type: integer
         liveness_probe.failure_threshold:
-          default: 3
+          default: 0
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
@@ -18844,6 +18844,7 @@ components:
           example: 1024
           type: integer
         max_nb_restart:
+          default: 0
           description: |
             Maximum number of restart allowed before the job is considered as failed
             0 means that no restart/crash of the job is allowed

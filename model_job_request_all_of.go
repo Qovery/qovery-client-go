@@ -49,6 +49,8 @@ func NewJobRequestAllOf(name string) *JobRequestAllOf {
 	this.Cpu = &cpu
 	var memory int32 = 512
 	this.Memory = &memory
+	var maxNbRestart int32 = 0
+	this.MaxNbRestart = &maxNbRestart
 	return &this
 }
 
@@ -61,6 +63,8 @@ func NewJobRequestAllOfWithDefaults() *JobRequestAllOf {
 	this.Cpu = &cpu
 	var memory int32 = 512
 	this.Memory = &memory
+	var maxNbRestart int32 = 0
+	this.MaxNbRestart = &maxNbRestart
 	return &this
 }
 
