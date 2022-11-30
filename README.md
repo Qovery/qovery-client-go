@@ -298,6 +298,7 @@ Class | Method | HTTP request | Description
 *EnvironmentMainCallsApi* | [**EditEnvironment**](docs/EnvironmentMainCallsApi.md#editenvironment) | **Put** /environment/{environmentId} | Edit an environment
 *EnvironmentMainCallsApi* | [**GetEnvironment**](docs/EnvironmentMainCallsApi.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
 *EnvironmentMainCallsApi* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsApi.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
+*EnvironmentMainCallsApi* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsApi.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 *EnvironmentSecretApi* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretApi.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretApi.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretOverride**](docs/EnvironmentSecretApi.md#createenvironmentsecretoverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
@@ -639,6 +640,7 @@ Class | Method | HTTP request | Description
  - [EventPaginatedResponseListAllOf](docs/EventPaginatedResponseListAllOf.md)
  - [EventResponseList](docs/EventResponseList.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
+ - [GetEnvironmentStatuses200Response](docs/GetEnvironmentStatuses200Response.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitProviderEnum](docs/GitProviderEnum.md)

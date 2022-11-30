@@ -337,6 +337,7 @@ docs/EventPaginatedResponseList.md
 docs/EventPaginatedResponseListAllOf.md
 docs/EventResponseList.md
 docs/GenericObjectCurrentCost.md
+docs/GetEnvironmentStatuses200Response.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitProviderEnum.md
@@ -764,6 +765,7 @@ model_event_paginated_response_list.go
 model_event_paginated_response_list_all_of.go
 model_event_response_list.go
 model_generic_object_current_cost.go
+model_get_environment_statuses_200_response.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
 model_git_provider_enum.go

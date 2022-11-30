@@ -4611,6 +4611,35 @@ paths:
       summary: Get environment status
       tags:
       - Environment Main Calls
+  /environment/{environmentId}/statuses:
+    get:
+      operationId: getEnvironmentStatuses
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getEnvironmentStatuses_200_response'
+          description: Get statuses
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get environment statuses with services status
+      tags:
+      - Environment Main Calls
   /environment/{environmentId}/deploymentRule:
     get:
       operationId: getEnvironmentDeploymentRule
@@ -17417,6 +17446,78 @@ components:
           type: string
       required:
       - user_id
+      type: object
+    getEnvironmentStatuses_200_response:
+      example:
+        databases:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        environment:
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        jobs:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        containers:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        applications:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          message: message
+          service_deployment_status: null
+      properties:
+        environment:
+          $ref: '#/components/schemas/Status'
+        applications:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+        containers:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+        jobs:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+        databases:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
       type: object
     listContainerDeploymentHistory_200_response_allOf:
       properties:
