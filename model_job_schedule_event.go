@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// JobScheduleEvent On which event the job is going to run. ON_START means when a deployment is requested for the environment ON_STOP means when a stop of the environment is requested CRON means at a scheduled interval
+// JobScheduleEvent On which event the job is going to run.   ON_START means when a deployment is requested for the environment   ON_STOP means when a stop of the environment is requested   ON_DELETE means when an environment delete is requested CRON means at a scheduled interval
 type JobScheduleEvent string
 
 // List of JobScheduleEvent

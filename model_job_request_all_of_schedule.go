@@ -18,7 +18,7 @@ import (
 // JobRequestAllOfSchedule struct for JobRequestAllOfSchedule
 type JobRequestAllOfSchedule struct {
 	Event *JobScheduleEvent `json:"event,omitempty"`
-	// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC
+	// Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: `* * * * *` represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UTC
 	ScheduledAt NullableString `json:"scheduled_at,omitempty"`
 }
 

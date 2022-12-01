@@ -15670,11 +15670,10 @@ components:
       - image_tag
       type: object
     JobScheduleEvent:
-      description: |
-        On which event the job is going to run.
-        ON_START means when a deployment is requested for the environment
-        ON_STOP means when a stop of the environment is requested
-        CRON means at a scheduled interval
+      description: "On which event the job is going to run.  \nON_START means when\
+        \ a deployment is requested for the environment  \nON_STOP means when a stop\
+        \ of the environment is requested  \nON_DELETE means when an environment delete\
+        \ is requested\nCRON means at a scheduled interval  \n"
       enum:
       - ON_START
       - ON_STOP
@@ -18914,10 +18913,10 @@ components:
         event:
           $ref: '#/components/schemas/JobScheduleEvent'
         scheduled_at:
-          description: "Can only be set if the event is CRON.\nRepresent the cron\
-            \ format for the job schedule without seconds.\nFor example: `* * * *\
-            \ *` represent the cron to launch the job every minute.\nSee https://crontab.guru/\
-            \ to WISIWIG interface.\nTimezone is UTC\n"
+          description: "Can only be set if the event is CRON.  \nRepresent the cron\
+            \ format for the job schedule without seconds.  \nFor example: `* * *\
+            \ * *` represent the cron to launch the job every minute.  \nSee https://crontab.guru/\
+            \ to WISIWIG interface.  \nTimezone is UTC  \n"
           format: cron
           nullable: true
           type: string
