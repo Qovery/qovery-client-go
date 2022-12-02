@@ -18958,13 +18958,6 @@ components:
           type: string
         description:
           type: string
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
         cpu:
           default: 500
           description: unit is millicores (m). 1000m = 1 cpu

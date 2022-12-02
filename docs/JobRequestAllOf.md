@@ -6,8 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
-**Arguments** | Pointer to **[]string** |  | [optional] 
-**Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] [default to 0]
@@ -80,56 +78,6 @@ SetDescription sets Description field to given value.
 `func (o *JobRequestAllOf) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetArguments
-
-`func (o *JobRequestAllOf) GetArguments() []string`
-
-GetArguments returns the Arguments field if non-nil, zero value otherwise.
-
-### GetArgumentsOk
-
-`func (o *JobRequestAllOf) GetArgumentsOk() (*[]string, bool)`
-
-GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetArguments
-
-`func (o *JobRequestAllOf) SetArguments(v []string)`
-
-SetArguments sets Arguments field to given value.
-
-### HasArguments
-
-`func (o *JobRequestAllOf) HasArguments() bool`
-
-HasArguments returns a boolean if a field has been set.
-
-### GetEntrypoint
-
-`func (o *JobRequestAllOf) GetEntrypoint() string`
-
-GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
-
-### GetEntrypointOk
-
-`func (o *JobRequestAllOf) GetEntrypointOk() (*string, bool)`
-
-GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntrypoint
-
-`func (o *JobRequestAllOf) SetEntrypoint(v string)`
-
-SetEntrypoint sets Entrypoint field to given value.
-
-### HasEntrypoint
-
-`func (o *JobRequestAllOf) HasEntrypoint() bool`
-
-HasEntrypoint returns a boolean if a field has been set.
 
 ### GetCpu
 

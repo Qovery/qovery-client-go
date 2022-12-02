@@ -18,11 +18,8 @@ import (
 // JobRequestAllOf struct for JobRequestAllOf
 type JobRequestAllOf struct {
 	// name is case insensitive
-	Name        string   `json:"name"`
-	Description *string  `json:"description,omitempty"`
-	Arguments   []string `json:"arguments,omitempty"`
-	// optional entrypoint when launching container
-	Entrypoint *string `json:"entrypoint,omitempty"`
+	Name        string  `json:"name"`
+	Description *string `json:"description,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -123,70 +120,6 @@ func (o *JobRequestAllOf) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *JobRequestAllOf) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *JobRequestAllOf) GetArguments() []string {
-	if o == nil || o.Arguments == nil {
-		var ret []string
-		return ret
-	}
-	return o.Arguments
-}
-
-// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobRequestAllOf) GetArgumentsOk() ([]string, bool) {
-	if o == nil || o.Arguments == nil {
-		return nil, false
-	}
-	return o.Arguments, true
-}
-
-// HasArguments returns a boolean if a field has been set.
-func (o *JobRequestAllOf) HasArguments() bool {
-	if o != nil && o.Arguments != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetArguments gets a reference to the given []string and assigns it to the Arguments field.
-func (o *JobRequestAllOf) SetArguments(v []string) {
-	o.Arguments = v
-}
-
-// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
-func (o *JobRequestAllOf) GetEntrypoint() string {
-	if o == nil || o.Entrypoint == nil {
-		var ret string
-		return ret
-	}
-	return *o.Entrypoint
-}
-
-// GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobRequestAllOf) GetEntrypointOk() (*string, bool) {
-	if o == nil || o.Entrypoint == nil {
-		return nil, false
-	}
-	return o.Entrypoint, true
-}
-
-// HasEntrypoint returns a boolean if a field has been set.
-func (o *JobRequestAllOf) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
-func (o *JobRequestAllOf) SetEntrypoint(v string) {
-	o.Entrypoint = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -463,12 +396,6 @@ func (o JobRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
-	}
-	if o.Arguments != nil {
-		toSerialize["arguments"] = o.Arguments
-	}
-	if o.Entrypoint != nil {
-		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
