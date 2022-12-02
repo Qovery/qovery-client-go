@@ -12,8 +12,7 @@ Name | Type | Description | Notes
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **Name** | **string** | name is case insensitive | 
-**Arguments** | Pointer to **[]string** |  | [optional] 
-**Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] 
@@ -207,55 +206,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetArguments
+### GetDescription
 
-`func (o *JobResponse) GetArguments() []string`
+`func (o *JobResponse) GetDescription() string`
 
-GetArguments returns the Arguments field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetArgumentsOk
+### GetDescriptionOk
 
-`func (o *JobResponse) GetArgumentsOk() (*[]string, bool)`
+`func (o *JobResponse) GetDescriptionOk() (*string, bool)`
 
-GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetArguments
+### SetDescription
 
-`func (o *JobResponse) SetArguments(v []string)`
+`func (o *JobResponse) SetDescription(v string)`
 
-SetArguments sets Arguments field to given value.
+SetDescription sets Description field to given value.
 
-### HasArguments
+### HasDescription
 
-`func (o *JobResponse) HasArguments() bool`
+`func (o *JobResponse) HasDescription() bool`
 
-HasArguments returns a boolean if a field has been set.
-
-### GetEntrypoint
-
-`func (o *JobResponse) GetEntrypoint() string`
-
-GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
-
-### GetEntrypointOk
-
-`func (o *JobResponse) GetEntrypointOk() (*string, bool)`
-
-GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntrypoint
-
-`func (o *JobResponse) SetEntrypoint(v string)`
-
-SetEntrypoint sets Entrypoint field to given value.
-
-### HasEntrypoint
-
-`func (o *JobResponse) HasEntrypoint() bool`
-
-HasEntrypoint returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
 ### GetCpu
 

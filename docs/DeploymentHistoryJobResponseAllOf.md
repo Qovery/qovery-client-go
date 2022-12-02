@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ImageName** | Pointer to **string** |  | [optional] 
 **Tag** | Pointer to **string** |  | [optional] 
 **Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
-**Schedule** | Pointer to [**JobResponseAllOfSchedule**](JobResponseAllOfSchedule.md) |  | [optional] 
+**Schedule** | Pointer to [**DeploymentHistoryJobResponseAllOfSchedule**](DeploymentHistoryJobResponseAllOfSchedule.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** |  | [optional] 
 
@@ -159,20 +159,20 @@ HasCommit returns a boolean if a field has been set.
 
 ### GetSchedule
 
-`func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobResponseAllOfSchedule`
+`func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() DeploymentHistoryJobResponseAllOfSchedule`
 
 GetSchedule returns the Schedule field if non-nil, zero value otherwise.
 
 ### GetScheduleOk
 
-`func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*JobResponseAllOfSchedule, bool)`
+`func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*DeploymentHistoryJobResponseAllOfSchedule, bool)`
 
 GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchedule
 
-`func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v JobResponseAllOfSchedule)`
+`func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v DeploymentHistoryJobResponseAllOfSchedule)`
 
 SetSchedule sets Schedule field to given value.
 

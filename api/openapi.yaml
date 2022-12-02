@@ -15673,7 +15673,7 @@ components:
       description: "On which event the job is going to run.  \nON_START means when\
         \ a deployment is requested for the environment  \nON_STOP means when a stop\
         \ of the environment is requested  \nON_DELETE means when an environment delete\
-        \ is requested\nCRON means at a scheduled interval  \n"
+        \ is requested  \nCRON means at a scheduled interval  \n"
       enum:
       - ON_START
       - ON_STOP
@@ -18908,18 +18908,48 @@ components:
         docker:
           $ref: '#/components/schemas/JobRequest_allOf_source_docker'
       type: object
-    JobRequest_allOf_schedule:
+    JobRequest_allOf_schedule_on_start:
       properties:
-        event:
-          $ref: '#/components/schemas/JobScheduleEvent'
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
+      type: object
+    JobRequest_allOf_schedule_cronjob:
+      properties:
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
         scheduled_at:
           description: "Can only be set if the event is CRON.  \nRepresent the cron\
             \ format for the job schedule without seconds.  \nFor example: `* * *\
             \ * *` represent the cron to launch the job every minute.  \nSee https://crontab.guru/\
-            \ to WISIWIG interface.  \nTimezone is UTC  \n"
+            \ to WISIWIG interface.  \nTimezone is UTC\n"
           format: cron
-          nullable: true
           type: string
+      required:
+      - scheduled_at
+      type: object
+    JobRequest_allOf_schedule:
+      description: "If you want to define a Cron job, only the `cronjob` property\
+        \ must be filled  \nA Lifecycle job should contain at least one property `on_XXX`\
+        \ among the 3 properties: `on_start`, `on_stop`, `on_delete`\n"
+      properties:
+        on_start:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        on_stop:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        on_delete:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        cronjob:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_cronjob'
       type: object
     JobRequest_allOf:
       properties:
@@ -18994,18 +19024,38 @@ components:
         docker:
           $ref: '#/components/schemas/JobResponse_allOf_source_docker'
       type: object
-    JobResponse_allOf_schedule:
+    JobResponse_allOf_schedule_cronjob:
       properties:
-        event:
-          $ref: '#/components/schemas/JobScheduleEvent'
-        schedule_at:
-          description: "Can only be set if the event is CRON.\nRepresent the cron\
-            \ format for the job schedule without seconds.\nFor example: `* * * *\
-            \ *` represent the cron to launch the job every minute.\nSee https://crontab.guru/\
-            \ to WISIWIG interface.\nTimezone is UTC\n"
-          format: cron
-          nullable: true
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
           type: string
+        scheduled_at:
+          description: "Can only be set if the event is CRON.  \nRepresent the cron\
+            \ format for the job schedule without seconds.  \nFor example: `* * *\
+            \ * *` represent the cron to launch the job every minute.  \nSee https://crontab.guru/\
+            \ to WISIWIG interface.  \nTimezone is UT\n"
+          format: cron
+          type: string
+      required:
+      - scheduled_at
+      type: object
+    JobResponse_allOf_schedule:
+      description: "If you want to define a Cron job, only the `cronjob` property\
+        \ must be filled  \nA Lifecycle job should contain at least one property `on_XXX`\
+        \ among the 3 properties: `on_start`, `on_stop`, `on_delete`\n"
+      properties:
+        on_start:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        on_stop:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        on_delete:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        cronjob:
+          $ref: '#/components/schemas/JobResponse_allOf_schedule_cronjob'
       type: object
     JobResponse_allOf:
       properties:
@@ -19026,12 +19076,7 @@ components:
         name:
           description: name is case insensitive
           type: string
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
+        description:
           type: string
         cpu:
           description: unit is millicores (m). 1000m = 1 cpu
@@ -19082,6 +19127,19 @@ components:
       - registry
       - tag
       type: object
+    DeploymentHistoryJobResponse_allOf_schedule:
+      properties:
+        event:
+          $ref: '#/components/schemas/JobScheduleEvent'
+        schedule_at:
+          description: "Can only be set if the event is CRON.\nRepresent the cron\
+            \ format for the job schedule without seconds.\nFor example: `* * * *\
+            \ *` represent the cron to launch the job every minute.\nSee https://crontab.guru/\
+            \ to WISIWIG interface.\nTimezone is UTC\n"
+          format: cron
+          nullable: true
+          type: string
+      type: object
     DeploymentHistoryJobResponse_allOf:
       properties:
         name:
@@ -19096,7 +19154,7 @@ components:
         commit:
           $ref: '#/components/schemas/Commit'
         schedule:
-          $ref: '#/components/schemas/JobResponse_allOf_schedule'
+          $ref: '#/components/schemas/DeploymentHistoryJobResponse_allOf_schedule'
         arguments:
           items:
             type: string

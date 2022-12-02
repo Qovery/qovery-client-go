@@ -15,11 +15,12 @@ import (
 	"encoding/json"
 )
 
-// JobResponseAllOfSchedule struct for JobResponseAllOfSchedule
+// JobResponseAllOfSchedule If you want to define a Cron job, only the `cronjob` property must be filled   A Lifecycle job should contain at least one property `on_XXX` among the 3 properties: `on_start`, `on_stop`, `on_delete`
 type JobResponseAllOfSchedule struct {
-	Event *JobScheduleEvent `json:"event,omitempty"`
-	// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC
-	ScheduleAt NullableString `json:"schedule_at,omitempty"`
+	OnStart  *JobRequestAllOfScheduleOnStart  `json:"on_start,omitempty"`
+	OnStop   *JobRequestAllOfScheduleOnStart  `json:"on_stop,omitempty"`
+	OnDelete *JobRequestAllOfScheduleOnStart  `json:"on_delete,omitempty"`
+	Cronjob  *JobResponseAllOfScheduleCronjob `json:"cronjob,omitempty"`
 }
 
 // NewJobResponseAllOfSchedule instantiates a new JobResponseAllOfSchedule object
@@ -39,88 +40,147 @@ func NewJobResponseAllOfScheduleWithDefaults() *JobResponseAllOfSchedule {
 	return &this
 }
 
-// GetEvent returns the Event field value if set, zero value otherwise.
-func (o *JobResponseAllOfSchedule) GetEvent() JobScheduleEvent {
-	if o == nil || o.Event == nil {
-		var ret JobScheduleEvent
+// GetOnStart returns the OnStart field value if set, zero value otherwise.
+func (o *JobResponseAllOfSchedule) GetOnStart() JobRequestAllOfScheduleOnStart {
+	if o == nil || o.OnStart == nil {
+		var ret JobRequestAllOfScheduleOnStart
 		return ret
 	}
-	return *o.Event
+	return *o.OnStart
 }
 
-// GetEventOk returns a tuple with the Event field value if set, nil otherwise
+// GetOnStartOk returns a tuple with the OnStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobResponseAllOfSchedule) GetEventOk() (*JobScheduleEvent, bool) {
-	if o == nil || o.Event == nil {
+func (o *JobResponseAllOfSchedule) GetOnStartOk() (*JobRequestAllOfScheduleOnStart, bool) {
+	if o == nil || o.OnStart == nil {
 		return nil, false
 	}
-	return o.Event, true
+	return o.OnStart, true
 }
 
-// HasEvent returns a boolean if a field has been set.
-func (o *JobResponseAllOfSchedule) HasEvent() bool {
-	if o != nil && o.Event != nil {
+// HasOnStart returns a boolean if a field has been set.
+func (o *JobResponseAllOfSchedule) HasOnStart() bool {
+	if o != nil && o.OnStart != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEvent gets a reference to the given JobScheduleEvent and assigns it to the Event field.
-func (o *JobResponseAllOfSchedule) SetEvent(v JobScheduleEvent) {
-	o.Event = &v
+// SetOnStart gets a reference to the given JobRequestAllOfScheduleOnStart and assigns it to the OnStart field.
+func (o *JobResponseAllOfSchedule) SetOnStart(v JobRequestAllOfScheduleOnStart) {
+	o.OnStart = &v
 }
 
-// GetScheduleAt returns the ScheduleAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JobResponseAllOfSchedule) GetScheduleAt() string {
-	if o == nil || o.ScheduleAt.Get() == nil {
-		var ret string
+// GetOnStop returns the OnStop field value if set, zero value otherwise.
+func (o *JobResponseAllOfSchedule) GetOnStop() JobRequestAllOfScheduleOnStart {
+	if o == nil || o.OnStop == nil {
+		var ret JobRequestAllOfScheduleOnStart
 		return ret
 	}
-	return *o.ScheduleAt.Get()
+	return *o.OnStop
 }
 
-// GetScheduleAtOk returns a tuple with the ScheduleAt field value if set, nil otherwise
+// GetOnStopOk returns a tuple with the OnStop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JobResponseAllOfSchedule) GetScheduleAtOk() (*string, bool) {
-	if o == nil {
+func (o *JobResponseAllOfSchedule) GetOnStopOk() (*JobRequestAllOfScheduleOnStart, bool) {
+	if o == nil || o.OnStop == nil {
 		return nil, false
 	}
-	return o.ScheduleAt.Get(), o.ScheduleAt.IsSet()
+	return o.OnStop, true
 }
 
-// HasScheduleAt returns a boolean if a field has been set.
-func (o *JobResponseAllOfSchedule) HasScheduleAt() bool {
-	if o != nil && o.ScheduleAt.IsSet() {
+// HasOnStop returns a boolean if a field has been set.
+func (o *JobResponseAllOfSchedule) HasOnStop() bool {
+	if o != nil && o.OnStop != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleAt gets a reference to the given NullableString and assigns it to the ScheduleAt field.
-func (o *JobResponseAllOfSchedule) SetScheduleAt(v string) {
-	o.ScheduleAt.Set(&v)
+// SetOnStop gets a reference to the given JobRequestAllOfScheduleOnStart and assigns it to the OnStop field.
+func (o *JobResponseAllOfSchedule) SetOnStop(v JobRequestAllOfScheduleOnStart) {
+	o.OnStop = &v
 }
 
-// SetScheduleAtNil sets the value for ScheduleAt to be an explicit nil
-func (o *JobResponseAllOfSchedule) SetScheduleAtNil() {
-	o.ScheduleAt.Set(nil)
+// GetOnDelete returns the OnDelete field value if set, zero value otherwise.
+func (o *JobResponseAllOfSchedule) GetOnDelete() JobRequestAllOfScheduleOnStart {
+	if o == nil || o.OnDelete == nil {
+		var ret JobRequestAllOfScheduleOnStart
+		return ret
+	}
+	return *o.OnDelete
 }
 
-// UnsetScheduleAt ensures that no value is present for ScheduleAt, not even an explicit nil
-func (o *JobResponseAllOfSchedule) UnsetScheduleAt() {
-	o.ScheduleAt.Unset()
+// GetOnDeleteOk returns a tuple with the OnDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobResponseAllOfSchedule) GetOnDeleteOk() (*JobRequestAllOfScheduleOnStart, bool) {
+	if o == nil || o.OnDelete == nil {
+		return nil, false
+	}
+	return o.OnDelete, true
+}
+
+// HasOnDelete returns a boolean if a field has been set.
+func (o *JobResponseAllOfSchedule) HasOnDelete() bool {
+	if o != nil && o.OnDelete != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOnDelete gets a reference to the given JobRequestAllOfScheduleOnStart and assigns it to the OnDelete field.
+func (o *JobResponseAllOfSchedule) SetOnDelete(v JobRequestAllOfScheduleOnStart) {
+	o.OnDelete = &v
+}
+
+// GetCronjob returns the Cronjob field value if set, zero value otherwise.
+func (o *JobResponseAllOfSchedule) GetCronjob() JobResponseAllOfScheduleCronjob {
+	if o == nil || o.Cronjob == nil {
+		var ret JobResponseAllOfScheduleCronjob
+		return ret
+	}
+	return *o.Cronjob
+}
+
+// GetCronjobOk returns a tuple with the Cronjob field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobResponseAllOfSchedule) GetCronjobOk() (*JobResponseAllOfScheduleCronjob, bool) {
+	if o == nil || o.Cronjob == nil {
+		return nil, false
+	}
+	return o.Cronjob, true
+}
+
+// HasCronjob returns a boolean if a field has been set.
+func (o *JobResponseAllOfSchedule) HasCronjob() bool {
+	if o != nil && o.Cronjob != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCronjob gets a reference to the given JobResponseAllOfScheduleCronjob and assigns it to the Cronjob field.
+func (o *JobResponseAllOfSchedule) SetCronjob(v JobResponseAllOfScheduleCronjob) {
+	o.Cronjob = &v
 }
 
 func (o JobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Event != nil {
-		toSerialize["event"] = o.Event
+	if o.OnStart != nil {
+		toSerialize["on_start"] = o.OnStart
 	}
-	if o.ScheduleAt.IsSet() {
-		toSerialize["schedule_at"] = o.ScheduleAt.Get()
+	if o.OnStop != nil {
+		toSerialize["on_stop"] = o.OnStop
+	}
+	if o.OnDelete != nil {
+		toSerialize["on_delete"] = o.OnDelete
+	}
+	if o.Cronjob != nil {
+		toSerialize["cronjob"] = o.Cronjob
 	}
 	return json.Marshal(toSerialize)
 }

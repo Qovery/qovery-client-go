@@ -263,6 +263,7 @@ docs/DeploymentHistoryEnvironmentPaginatedResponseList.md
 docs/DeploymentHistoryEnvironmentPaginatedResponseListAllOf.md
 docs/DeploymentHistoryJobResponse.md
 docs/DeploymentHistoryJobResponseAllOf.md
+docs/DeploymentHistoryJobResponseAllOfSchedule.md
 docs/DeploymentHistoryPaginatedResponseList.md
 docs/DeploymentHistoryPaginatedResponseListAllOf.md
 docs/DeploymentHistoryResponseList.md
@@ -372,12 +373,15 @@ docs/JobMetricsApi.md
 docs/JobRequest.md
 docs/JobRequestAllOf.md
 docs/JobRequestAllOfSchedule.md
+docs/JobRequestAllOfScheduleCronjob.md
+docs/JobRequestAllOfScheduleOnStart.md
 docs/JobRequestAllOfSource.md
 docs/JobRequestAllOfSourceDocker.md
 docs/JobRequestAllOfSourceImage.md
 docs/JobResponse.md
 docs/JobResponseAllOf.md
 docs/JobResponseAllOfSchedule.md
+docs/JobResponseAllOfScheduleCronjob.md
 docs/JobResponseAllOfSource.md
 docs/JobResponseAllOfSourceDocker.md
 docs/JobResponseList.md
@@ -700,6 +704,7 @@ model_deployment_history_environment_paginated_response_list.go
 model_deployment_history_environment_paginated_response_list_all_of.go
 model_deployment_history_job_response.go
 model_deployment_history_job_response_all_of.go
+model_deployment_history_job_response_all_of_schedule.go
 model_deployment_history_paginated_response_list.go
 model_deployment_history_paginated_response_list_all_of.go
 model_deployment_history_response_list.go
@@ -792,12 +797,15 @@ model_job_deploy_request.go
 model_job_request.go
 model_job_request_all_of.go
 model_job_request_all_of_schedule.go
+model_job_request_all_of_schedule_cronjob.go
+model_job_request_all_of_schedule_on_start.go
 model_job_request_all_of_source.go
 model_job_request_all_of_source_docker.go
 model_job_request_all_of_source_image.go
 model_job_response.go
 model_job_response_all_of.go
 model_job_response_all_of_schedule.go
+model_job_response_all_of_schedule_cronjob.go
 model_job_response_all_of_source.go
 model_job_response_all_of_source_docker.go
 model_job_response_list.go

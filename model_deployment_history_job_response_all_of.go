@@ -18,14 +18,14 @@ import (
 // DeploymentHistoryJobResponseAllOf struct for DeploymentHistoryJobResponseAllOf
 type DeploymentHistoryJobResponseAllOf struct {
 	// name of the job
-	Name       *string                      `json:"name,omitempty"`
-	Status     *DeploymentHistoryStatusEnum `json:"status,omitempty"`
-	ImageName  *string                      `json:"image_name,omitempty"`
-	Tag        *string                      `json:"tag,omitempty"`
-	Commit     *Commit                      `json:"commit,omitempty"`
-	Schedule   *JobResponseAllOfSchedule    `json:"schedule,omitempty"`
-	Arguments  []string                     `json:"arguments,omitempty"`
-	Entrypoint *string                      `json:"entrypoint,omitempty"`
+	Name       *string                                    `json:"name,omitempty"`
+	Status     *DeploymentHistoryStatusEnum               `json:"status,omitempty"`
+	ImageName  *string                                    `json:"image_name,omitempty"`
+	Tag        *string                                    `json:"tag,omitempty"`
+	Commit     *Commit                                    `json:"commit,omitempty"`
+	Schedule   *DeploymentHistoryJobResponseAllOfSchedule `json:"schedule,omitempty"`
+	Arguments  []string                                   `json:"arguments,omitempty"`
+	Entrypoint *string                                    `json:"entrypoint,omitempty"`
 }
 
 // NewDeploymentHistoryJobResponseAllOf instantiates a new DeploymentHistoryJobResponseAllOf object
@@ -206,9 +206,9 @@ func (o *DeploymentHistoryJobResponseAllOf) SetCommit(v Commit) {
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobResponseAllOfSchedule {
+func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() DeploymentHistoryJobResponseAllOfSchedule {
 	if o == nil || o.Schedule == nil {
-		var ret JobResponseAllOfSchedule
+		var ret DeploymentHistoryJobResponseAllOfSchedule
 		return ret
 	}
 	return *o.Schedule
@@ -216,7 +216,7 @@ func (o *DeploymentHistoryJobResponseAllOf) GetSchedule() JobResponseAllOfSchedu
 
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*JobResponseAllOfSchedule, bool) {
+func (o *DeploymentHistoryJobResponseAllOf) GetScheduleOk() (*DeploymentHistoryJobResponseAllOfSchedule, bool) {
 	if o == nil || o.Schedule == nil {
 		return nil, false
 	}
@@ -232,8 +232,8 @@ func (o *DeploymentHistoryJobResponseAllOf) HasSchedule() bool {
 	return false
 }
 
-// SetSchedule gets a reference to the given JobResponseAllOfSchedule and assigns it to the Schedule field.
-func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v JobResponseAllOfSchedule) {
+// SetSchedule gets a reference to the given DeploymentHistoryJobResponseAllOfSchedule and assigns it to the Schedule field.
+func (o *DeploymentHistoryJobResponseAllOf) SetSchedule(v DeploymentHistoryJobResponseAllOfSchedule) {
 	o.Schedule = &v
 }
 

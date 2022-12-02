@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Event** | Pointer to [**JobScheduleEvent**](JobScheduleEvent.md) |  | [optional] 
-**ScheduleAt** | Pointer to **NullableString** | Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: &#x60;* * * * *&#x60; represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC  | [optional] 
+**OnStart** | Pointer to [**JobRequestAllOfScheduleOnStart**](JobRequestAllOfScheduleOnStart.md) |  | [optional] 
+**OnStop** | Pointer to [**JobRequestAllOfScheduleOnStart**](JobRequestAllOfScheduleOnStart.md) |  | [optional] 
+**OnDelete** | Pointer to [**JobRequestAllOfScheduleOnStart**](JobRequestAllOfScheduleOnStart.md) |  | [optional] 
+**Cronjob** | Pointer to [**JobResponseAllOfScheduleCronjob**](JobResponseAllOfScheduleCronjob.md) |  | [optional] 
 
 ## Methods
 
@@ -26,66 +28,106 @@ NewJobResponseAllOfScheduleWithDefaults instantiates a new JobResponseAllOfSched
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEvent
+### GetOnStart
 
-`func (o *JobResponseAllOfSchedule) GetEvent() JobScheduleEvent`
+`func (o *JobResponseAllOfSchedule) GetOnStart() JobRequestAllOfScheduleOnStart`
 
-GetEvent returns the Event field if non-nil, zero value otherwise.
+GetOnStart returns the OnStart field if non-nil, zero value otherwise.
 
-### GetEventOk
+### GetOnStartOk
 
-`func (o *JobResponseAllOfSchedule) GetEventOk() (*JobScheduleEvent, bool)`
+`func (o *JobResponseAllOfSchedule) GetOnStartOk() (*JobRequestAllOfScheduleOnStart, bool)`
 
-GetEventOk returns a tuple with the Event field if it's non-nil, zero value otherwise
+GetOnStartOk returns a tuple with the OnStart field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEvent
+### SetOnStart
 
-`func (o *JobResponseAllOfSchedule) SetEvent(v JobScheduleEvent)`
+`func (o *JobResponseAllOfSchedule) SetOnStart(v JobRequestAllOfScheduleOnStart)`
 
-SetEvent sets Event field to given value.
+SetOnStart sets OnStart field to given value.
 
-### HasEvent
+### HasOnStart
 
-`func (o *JobResponseAllOfSchedule) HasEvent() bool`
+`func (o *JobResponseAllOfSchedule) HasOnStart() bool`
 
-HasEvent returns a boolean if a field has been set.
+HasOnStart returns a boolean if a field has been set.
 
-### GetScheduleAt
+### GetOnStop
 
-`func (o *JobResponseAllOfSchedule) GetScheduleAt() string`
+`func (o *JobResponseAllOfSchedule) GetOnStop() JobRequestAllOfScheduleOnStart`
 
-GetScheduleAt returns the ScheduleAt field if non-nil, zero value otherwise.
+GetOnStop returns the OnStop field if non-nil, zero value otherwise.
 
-### GetScheduleAtOk
+### GetOnStopOk
 
-`func (o *JobResponseAllOfSchedule) GetScheduleAtOk() (*string, bool)`
+`func (o *JobResponseAllOfSchedule) GetOnStopOk() (*JobRequestAllOfScheduleOnStart, bool)`
 
-GetScheduleAtOk returns a tuple with the ScheduleAt field if it's non-nil, zero value otherwise
+GetOnStopOk returns a tuple with the OnStop field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetScheduleAt
+### SetOnStop
 
-`func (o *JobResponseAllOfSchedule) SetScheduleAt(v string)`
+`func (o *JobResponseAllOfSchedule) SetOnStop(v JobRequestAllOfScheduleOnStart)`
 
-SetScheduleAt sets ScheduleAt field to given value.
+SetOnStop sets OnStop field to given value.
 
-### HasScheduleAt
+### HasOnStop
 
-`func (o *JobResponseAllOfSchedule) HasScheduleAt() bool`
+`func (o *JobResponseAllOfSchedule) HasOnStop() bool`
 
-HasScheduleAt returns a boolean if a field has been set.
+HasOnStop returns a boolean if a field has been set.
 
-### SetScheduleAtNil
+### GetOnDelete
 
-`func (o *JobResponseAllOfSchedule) SetScheduleAtNil(b bool)`
+`func (o *JobResponseAllOfSchedule) GetOnDelete() JobRequestAllOfScheduleOnStart`
 
- SetScheduleAtNil sets the value for ScheduleAt to be an explicit nil
+GetOnDelete returns the OnDelete field if non-nil, zero value otherwise.
 
-### UnsetScheduleAt
-`func (o *JobResponseAllOfSchedule) UnsetScheduleAt()`
+### GetOnDeleteOk
 
-UnsetScheduleAt ensures that no value is present for ScheduleAt, not even an explicit nil
+`func (o *JobResponseAllOfSchedule) GetOnDeleteOk() (*JobRequestAllOfScheduleOnStart, bool)`
+
+GetOnDeleteOk returns a tuple with the OnDelete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnDelete
+
+`func (o *JobResponseAllOfSchedule) SetOnDelete(v JobRequestAllOfScheduleOnStart)`
+
+SetOnDelete sets OnDelete field to given value.
+
+### HasOnDelete
+
+`func (o *JobResponseAllOfSchedule) HasOnDelete() bool`
+
+HasOnDelete returns a boolean if a field has been set.
+
+### GetCronjob
+
+`func (o *JobResponseAllOfSchedule) GetCronjob() JobResponseAllOfScheduleCronjob`
+
+GetCronjob returns the Cronjob field if non-nil, zero value otherwise.
+
+### GetCronjobOk
+
+`func (o *JobResponseAllOfSchedule) GetCronjobOk() (*JobResponseAllOfScheduleCronjob, bool)`
+
+GetCronjobOk returns a tuple with the Cronjob field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCronjob
+
+`func (o *JobResponseAllOfSchedule) SetCronjob(v JobResponseAllOfScheduleCronjob)`
+
+SetCronjob sets Cronjob field to given value.
+
+### HasCronjob
+
+`func (o *JobResponseAllOfSchedule) HasCronjob() bool`
+
+HasCronjob returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
