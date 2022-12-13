@@ -15235,6 +15235,7 @@ components:
       - ENVIRONMENT
       - PROJECT
       - CONTAINER
+      - JOB
       type: string
     Event:
       allOf:
