@@ -5269,7 +5269,7 @@ paths:
       summary: List current scaling information for each container
       tags:
       - Containers
-  /environment/{environmentId}/container/deploy:
+  /environment/{environmentId}/service/deploy:
     post:
       description: Update and deploy the selected services
       operationId: deployAllServices
@@ -5307,7 +5307,7 @@ paths:
           description: Operation is in progress
       summary: Deploy services
       tags:
-      - Containers
+      - Environment Actions
   /organization/{organizationId}/container/deploy:
     post:
       description: |
@@ -14327,6 +14327,16 @@ components:
       type: object
     DeployAllRequest:
       example:
+        databases:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        jobs:
+        - git_commit_id: git_commit_id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          image_tag: image_tag
+        - git_commit_id: git_commit_id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          image_tag: image_tag
         containers:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           image_tag: image_tag
@@ -14342,9 +14352,18 @@ components:
           items:
             $ref: '#/components/schemas/DeployAllRequest_applications_inner'
           type: array
+        databases:
+          items:
+            format: uuid
+            type: string
+          type: array
         containers:
           items:
             $ref: '#/components/schemas/DeployAllRequest_containers_inner'
+          type: array
+        jobs:
+          items:
+            $ref: '#/components/schemas/DeployAllRequest_jobs_inner'
           type: array
       type: object
     DeployRequest:
@@ -18417,6 +18436,23 @@ components:
       required:
       - id
       - image_tag
+      type: object
+    DeployAllRequest_jobs_inner:
+      example:
+        git_commit_id: git_commit_id
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        image_tag: image_tag
+      properties:
+        id:
+          description: id of the job to be updated.
+          format: uuid
+          type: string
+        image_tag:
+          description: new tag for the job image. Use only if job is an image source
+          type: string
+        git_commit_id:
+          description: Commit ID to deploy. Use only if job is a repository source
+          type: string
       type: object
     DeploymentHistory_allOf:
       properties:

@@ -18,7 +18,9 @@ import (
 // DeployAllRequest struct for DeployAllRequest
 type DeployAllRequest struct {
 	Applications []DeployAllRequestApplicationsInner `json:"applications,omitempty"`
+	Databases    []string                            `json:"databases,omitempty"`
 	Containers   []DeployAllRequestContainersInner   `json:"containers,omitempty"`
+	Jobs         []DeployAllRequestJobsInner         `json:"jobs,omitempty"`
 }
 
 // NewDeployAllRequest instantiates a new DeployAllRequest object
@@ -70,6 +72,38 @@ func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplicationsInner
 	o.Applications = v
 }
 
+// GetDatabases returns the Databases field value if set, zero value otherwise.
+func (o *DeployAllRequest) GetDatabases() []string {
+	if o == nil || o.Databases == nil {
+		var ret []string
+		return ret
+	}
+	return o.Databases
+}
+
+// GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployAllRequest) GetDatabasesOk() ([]string, bool) {
+	if o == nil || o.Databases == nil {
+		return nil, false
+	}
+	return o.Databases, true
+}
+
+// HasDatabases returns a boolean if a field has been set.
+func (o *DeployAllRequest) HasDatabases() bool {
+	if o != nil && o.Databases != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabases gets a reference to the given []string and assigns it to the Databases field.
+func (o *DeployAllRequest) SetDatabases(v []string) {
+	o.Databases = v
+}
+
 // GetContainers returns the Containers field value if set, zero value otherwise.
 func (o *DeployAllRequest) GetContainers() []DeployAllRequestContainersInner {
 	if o == nil || o.Containers == nil {
@@ -102,13 +136,51 @@ func (o *DeployAllRequest) SetContainers(v []DeployAllRequestContainersInner) {
 	o.Containers = v
 }
 
+// GetJobs returns the Jobs field value if set, zero value otherwise.
+func (o *DeployAllRequest) GetJobs() []DeployAllRequestJobsInner {
+	if o == nil || o.Jobs == nil {
+		var ret []DeployAllRequestJobsInner
+		return ret
+	}
+	return o.Jobs
+}
+
+// GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployAllRequest) GetJobsOk() ([]DeployAllRequestJobsInner, bool) {
+	if o == nil || o.Jobs == nil {
+		return nil, false
+	}
+	return o.Jobs, true
+}
+
+// HasJobs returns a boolean if a field has been set.
+func (o *DeployAllRequest) HasJobs() bool {
+	if o != nil && o.Jobs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetJobs gets a reference to the given []DeployAllRequestJobsInner and assigns it to the Jobs field.
+func (o *DeployAllRequest) SetJobs(v []DeployAllRequestJobsInner) {
+	o.Jobs = v
+}
+
 func (o DeployAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Applications != nil {
 		toSerialize["applications"] = o.Applications
 	}
+	if o.Databases != nil {
+		toSerialize["databases"] = o.Databases
+	}
 	if o.Containers != nil {
 		toSerialize["containers"] = o.Containers
+	}
+	if o.Jobs != nil {
+		toSerialize["jobs"] = o.Jobs
 	}
 	return json.Marshal(toSerialize)
 }

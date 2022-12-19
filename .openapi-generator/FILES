@@ -248,6 +248,7 @@ docs/DependencyApi.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
 docs/DeployAllRequestContainersInner.md
+docs/DeployAllRequestJobsInner.md
 docs/DeployRequest.md
 docs/DeploymentHistory.md
 docs/DeploymentHistoryAllOf.md
@@ -689,6 +690,7 @@ model_delete_member_request.go
 model_deploy_all_request.go
 model_deploy_all_request_applications_inner.go
 model_deploy_all_request_containers_inner.go
+model_deploy_all_request_jobs_inner.go
 model_deploy_request.go
 model_deployment_history.go
 model_deployment_history_all_of.go

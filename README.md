@@ -242,7 +242,6 @@ Class | Method | HTTP request | Description
 *ContainerSecretApi* | [**ListContainerSecrets**](docs/ContainerSecretApi.md#listcontainersecrets) | **Get** /container/{containerId}/secret | List container secrets
 *ContainersApi* | [**AutoDeployContainerEnvironments**](docs/ContainersApi.md#autodeploycontainerenvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
 *ContainersApi* | [**CreateContainer**](docs/ContainersApi.md#createcontainer) | **Post** /environment/{environmentId}/container | Create a container
-*ContainersApi* | [**DeployAllServices**](docs/ContainersApi.md#deployallservices) | **Post** /environment/{environmentId}/container/deploy | Deploy services
 *ContainersApi* | [**GetContainerRegistryContainerStatus**](docs/ContainersApi.md#getcontainerregistrycontainerstatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
 *ContainersApi* | [**GetDefaultContainerAdvancedSettings**](docs/ContainersApi.md#getdefaultcontaineradvancedsettings) | **Get** /defaultContainerAdvancedSettings | List default container advanced settings
 *ContainersApi* | [**GetEnvironmentContainerCurrentScale**](docs/ContainersApi.md#getenvironmentcontainercurrentscale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
@@ -286,6 +285,7 @@ Class | Method | HTTP request | Description
 *EnvironmentApi* | [**DeployAllApplications**](docs/EnvironmentApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsApi* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsApi.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsApi* | [**CloneEnvironment**](docs/EnvironmentActionsApi.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
+*EnvironmentActionsApi* | [**DeployAllServices**](docs/EnvironmentActionsApi.md#deployallservices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
 *EnvironmentActionsApi* | [**DeployEnvironment**](docs/EnvironmentActionsApi.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
 *EnvironmentActionsApi* | [**RestartEnvironment**](docs/EnvironmentActionsApi.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Restart environment
 *EnvironmentActionsApi* | [**StopEnvironment**](docs/EnvironmentActionsApi.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
@@ -560,6 +560,7 @@ Class | Method | HTTP request | Description
  - [DeployAllRequest](docs/DeployAllRequest.md)
  - [DeployAllRequestApplicationsInner](docs/DeployAllRequestApplicationsInner.md)
  - [DeployAllRequestContainersInner](docs/DeployAllRequestContainersInner.md)
+ - [DeployAllRequestJobsInner](docs/DeployAllRequestJobsInner.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeploymentHistory](docs/DeploymentHistory.md)
  - [DeploymentHistoryAllOf](docs/DeploymentHistoryAllOf.md)

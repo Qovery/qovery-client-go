@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Applications** | Pointer to [**[]DeployAllRequestApplicationsInner**](DeployAllRequestApplicationsInner.md) |  | [optional] 
+**Databases** | Pointer to **[]string** |  | [optional] 
 **Containers** | Pointer to [**[]DeployAllRequestContainersInner**](DeployAllRequestContainersInner.md) |  | [optional] 
+**Jobs** | Pointer to [**[]DeployAllRequestJobsInner**](DeployAllRequestJobsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -51,6 +53,31 @@ SetApplications sets Applications field to given value.
 
 HasApplications returns a boolean if a field has been set.
 
+### GetDatabases
+
+`func (o *DeployAllRequest) GetDatabases() []string`
+
+GetDatabases returns the Databases field if non-nil, zero value otherwise.
+
+### GetDatabasesOk
+
+`func (o *DeployAllRequest) GetDatabasesOk() (*[]string, bool)`
+
+GetDatabasesOk returns a tuple with the Databases field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabases
+
+`func (o *DeployAllRequest) SetDatabases(v []string)`
+
+SetDatabases sets Databases field to given value.
+
+### HasDatabases
+
+`func (o *DeployAllRequest) HasDatabases() bool`
+
+HasDatabases returns a boolean if a field has been set.
+
 ### GetContainers
 
 `func (o *DeployAllRequest) GetContainers() []DeployAllRequestContainersInner`
@@ -75,6 +102,31 @@ SetContainers sets Containers field to given value.
 `func (o *DeployAllRequest) HasContainers() bool`
 
 HasContainers returns a boolean if a field has been set.
+
+### GetJobs
+
+`func (o *DeployAllRequest) GetJobs() []DeployAllRequestJobsInner`
+
+GetJobs returns the Jobs field if non-nil, zero value otherwise.
+
+### GetJobsOk
+
+`func (o *DeployAllRequest) GetJobsOk() (*[]DeployAllRequestJobsInner, bool)`
+
+GetJobsOk returns a tuple with the Jobs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobs
+
+`func (o *DeployAllRequest) SetJobs(v []DeployAllRequestJobsInner)`
+
+SetJobs sets Jobs field to given value.
+
+### HasJobs
+
+`func (o *DeployAllRequest) HasJobs() bool`
+
+HasJobs returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
