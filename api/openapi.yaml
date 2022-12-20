@@ -17688,13 +17688,6 @@ components:
             \ be automatically cloned at each pull request.  \nIf not specified, it\
             \ takes the value of the `auto_preview` property from the associated environment.\n"
           type: boolean
-        sticky_session:
-          default: false
-          description: "Specify if the sticky session option (also called persistant\
-            \ session) is activated or not for this application.\nIf activated, user\
-            \ will be redirected by the load balancer to the same instance each time\
-            \ he access to the application.\n"
-          type: boolean
         ports:
           items:
             $ref: '#/components/schemas/ServicePort'

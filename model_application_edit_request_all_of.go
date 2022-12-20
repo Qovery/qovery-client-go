@@ -36,10 +36,8 @@ type ApplicationEditRequestAllOf struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
-	AutoPreview *bool `json:"auto_preview,omitempty"`
-	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession *bool         `json:"sticky_session,omitempty"`
-	Ports         []ServicePort `json:"ports,omitempty"`
+	AutoPreview *bool         `json:"auto_preview,omitempty"`
+	Ports       []ServicePort `json:"ports,omitempty"`
 }
 
 // NewApplicationEditRequestAllOf instantiates a new ApplicationEditRequestAllOf object
@@ -60,8 +58,6 @@ func NewApplicationEditRequestAllOf() *ApplicationEditRequestAllOf {
 	this.MaxRunningInstances = &maxRunningInstances
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
-	var stickySession bool = false
-	this.StickySession = &stickySession
 	return &this
 }
 
@@ -82,8 +78,6 @@ func NewApplicationEditRequestAllOfWithDefaults() *ApplicationEditRequestAllOf {
 	this.MaxRunningInstances = &maxRunningInstances
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
-	var stickySession bool = false
-	this.StickySession = &stickySession
 	return &this
 }
 
@@ -482,38 +476,6 @@ func (o *ApplicationEditRequestAllOf) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetStickySession returns the StickySession field value if set, zero value otherwise.
-func (o *ApplicationEditRequestAllOf) GetStickySession() bool {
-	if o == nil || o.StickySession == nil {
-		var ret bool
-		return ret
-	}
-	return *o.StickySession
-}
-
-// GetStickySessionOk returns a tuple with the StickySession field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationEditRequestAllOf) GetStickySessionOk() (*bool, bool) {
-	if o == nil || o.StickySession == nil {
-		return nil, false
-	}
-	return o.StickySession, true
-}
-
-// HasStickySession returns a boolean if a field has been set.
-func (o *ApplicationEditRequestAllOf) HasStickySession() bool {
-	if o != nil && o.StickySession != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStickySession gets a reference to the given bool and assigns it to the StickySession field.
-func (o *ApplicationEditRequestAllOf) SetStickySession(v bool) {
-	o.StickySession = &v
-}
-
 // GetPorts returns the Ports field value if set, zero value otherwise.
 func (o *ApplicationEditRequestAllOf) GetPorts() []ServicePort {
 	if o == nil || o.Ports == nil {
@@ -583,9 +545,6 @@ func (o ApplicationEditRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.StickySession != nil {
-		toSerialize["sticky_session"] = o.StickySession
 	}
 	if o.Ports != nil {
 		toSerialize["ports"] = o.Ports

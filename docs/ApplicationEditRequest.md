@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
-**StickySession** | Pointer to **bool** | Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.  | [optional] [default to false]
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 
 ## Methods
@@ -373,31 +372,6 @@ SetAutoPreview sets AutoPreview field to given value.
 `func (o *ApplicationEditRequest) HasAutoPreview() bool`
 
 HasAutoPreview returns a boolean if a field has been set.
-
-### GetStickySession
-
-`func (o *ApplicationEditRequest) GetStickySession() bool`
-
-GetStickySession returns the StickySession field if non-nil, zero value otherwise.
-
-### GetStickySessionOk
-
-`func (o *ApplicationEditRequest) GetStickySessionOk() (*bool, bool)`
-
-GetStickySessionOk returns a tuple with the StickySession field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetStickySession
-
-`func (o *ApplicationEditRequest) SetStickySession(v bool)`
-
-SetStickySession sets StickySession field to given value.
-
-### HasStickySession
-
-`func (o *ApplicationEditRequest) HasStickySession() bool`
-
-HasStickySession returns a boolean if a field has been set.
 
 ### GetPorts
 
