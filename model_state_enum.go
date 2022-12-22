@@ -24,6 +24,7 @@ const (
 	STATEENUM_BUILDING          StateEnum = "BUILDING"
 	STATEENUM_CANCELED          StateEnum = "CANCELED"
 	STATEENUM_CANCELING         StateEnum = "CANCELING"
+	STATEENUM_COMPLETED         StateEnum = "COMPLETED"
 	STATEENUM_DELETED           StateEnum = "DELETED"
 	STATEENUM_DELETE_ERROR      StateEnum = "DELETE_ERROR"
 	STATEENUM_DELETE_QUEUED     StateEnum = "DELETE_QUEUED"
@@ -46,6 +47,7 @@ var AllowedStateEnumEnumValues = []StateEnum{
 	"BUILDING",
 	"CANCELED",
 	"CANCELING",
+	"COMPLETED",
 	"DELETED",
 	"DELETE_ERROR",
 	"DELETE_QUEUED",

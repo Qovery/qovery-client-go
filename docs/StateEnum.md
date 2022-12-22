@@ -9,6 +9,8 @@
 
 * `CANCELING` (value: `"CANCELING"`)
 
+* `COMPLETED` (value: `"COMPLETED"`)
+
 * `DELETED` (value: `"DELETED"`)
 
 * `DELETE_ERROR` (value: `"DELETE_ERROR"`)

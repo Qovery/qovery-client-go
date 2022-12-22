@@ -17132,6 +17132,7 @@ components:
       - BUILDING
       - CANCELED
       - CANCELING
+      - COMPLETED
       - DELETED
       - DELETE_ERROR
       - DELETE_QUEUED
