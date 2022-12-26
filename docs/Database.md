@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
+**Description** | Pointer to **string** | give a description to this database | [optional] 
 **Type** | [**DatabaseTypeEnum**](DatabaseTypeEnum.md) |  | 
 **Version** | **string** |  | 
 **Mode** | [**DatabaseModeEnum**](DatabaseModeEnum.md) |  | 
@@ -125,6 +126,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetDescription
+
+`func (o *Database) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Database) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Database) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *Database) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetType
 

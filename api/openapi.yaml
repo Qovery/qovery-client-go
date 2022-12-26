@@ -14219,12 +14219,16 @@ components:
         memory: 1024
         accessibility: null
         name: name
+        description: description
         cpu: 1250
         storage: 4
         version: "10.1"
       properties:
         name:
           description: name is case-insensitive
+          type: string
+        description:
+          description: give a description to this database
           type: string
         version:
           example: "10.1"
@@ -14258,6 +14262,7 @@ components:
         memory: 1024
         accessibility: null
         name: name
+        description: description
         cpu: 1250
         storage: 0
         type: null
@@ -14265,6 +14270,9 @@ components:
       properties:
         name:
           description: name is case insensitive
+          type: string
+        description:
+          description: give a description to this database
           type: string
         type:
           $ref: '#/components/schemas/DatabaseTypeEnum'
@@ -18167,6 +18175,9 @@ components:
       properties:
         name:
           description: name is case insensitive
+          type: string
+        description:
+          description: give a description to this container
           type: string
         registry_id:
           description: id of the linked registry

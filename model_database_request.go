@@ -18,7 +18,9 @@ import (
 // DatabaseRequest struct for DatabaseRequest
 type DatabaseRequest struct {
 	// name is case insensitive
-	Name          string                     `json:"name"`
+	Name string `json:"name"`
+	// give a description to this database
+	Description   *string                    `json:"description,omitempty"`
 	Type          DatabaseTypeEnum           `json:"type"`
 	Version       string                     `json:"version"`
 	Mode          DatabaseModeEnum           `json:"mode"`
@@ -86,6 +88,38 @@ func (o *DatabaseRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DatabaseRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *DatabaseRequest) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *DatabaseRequest) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *DatabaseRequest) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetType returns the Type field value
@@ -292,6 +326,9 @@ func (o DatabaseRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["type"] = o.Type
