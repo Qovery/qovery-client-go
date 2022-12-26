@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **Name** | **string** | name is case insensitive | 
+**Description** | Pointer to **string** | give a description to this container | [optional] 
 **ImageName** | **string** | name of the image container | 
 **Tag** | **string** | tag of the image container | 
 **Arguments** | Pointer to **[]string** |  | [optional] 
@@ -138,6 +139,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetDescription
+
+`func (o *ContainerResponseAllOf) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *ContainerResponseAllOf) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *ContainerResponseAllOf) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *ContainerResponseAllOf) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetImageName
 

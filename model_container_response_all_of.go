@@ -25,6 +25,8 @@ type ContainerResponseAllOf struct {
 	MaximumMemory int32 `json:"maximum_memory"`
 	// name is case insensitive
 	Name string `json:"name"`
+	// give a description to this container
+	Description *string `json:"description,omitempty"`
 	// name of the image container
 	ImageName string `json:"image_name"`
 	// tag of the image container
@@ -196,6 +198,38 @@ func (o *ContainerResponseAllOf) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ContainerResponseAllOf) SetName(v string) {
 	o.Name = v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ContainerResponseAllOf) GetDescription() string {
+	if o == nil || o.Description == nil {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponseAllOf) GetDescriptionOk() (*string, bool) {
+	if o == nil || o.Description == nil {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ContainerResponseAllOf) HasDescription() bool {
+	if o != nil && o.Description != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ContainerResponseAllOf) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetImageName returns the ImageName field value
@@ -478,6 +512,9 @@ func (o ContainerResponseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Description != nil {
+		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["image_name"] = o.ImageName

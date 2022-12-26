@@ -18252,6 +18252,9 @@ components:
         name:
           description: name is case insensitive
           type: string
+        description:
+          description: give a description to this container
+          type: string
         image_name:
           description: name of the image container
           type: string
