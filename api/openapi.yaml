@@ -11847,6 +11847,55 @@ paths:
       summary: Create a secret alias at the job level
       tags:
       - Job Secret
+  /job/{jobId}/commit:
+    get:
+      description: Returns list of the last 100 commits made on the repository linked
+        to the job
+      operationId: listJobCommit
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Starting point after which to return results
+        explode: true
+        in: query
+        name: startId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Git Commit ID
+        explode: true
+        in: query
+        name: gitCommitId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitResponseList'
+          description: List job commits
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List last job commits
+      tags:
+      - Job Main Calls
 components:
   parameters:
     applicationId:

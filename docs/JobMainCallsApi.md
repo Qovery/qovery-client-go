@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**EditJob**](JobMainCallsApi.md#EditJob) | **Put** /job/{jobId} | Edit job
 [**GetJob**](JobMainCallsApi.md#GetJob) | **Get** /job/{jobId} | Get job by ID
 [**GetJobStatus**](JobMainCallsApi.md#GetJobStatus) | **Get** /job/{jobId}/status | Get job status
+[**ListJobCommit**](JobMainCallsApi.md#ListJobCommit) | **Get** /job/{jobId}/commit | List last job commits
 
 
 
@@ -272,6 +273,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListJobCommit
+
+> CommitResponseList ListJobCommit(ctx, jobId).StartId(startId).GitCommitId(gitCommitId).Execute()
+
+List last job commits
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
+    gitCommitId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Commit ID (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobMainCallsApi.ListJobCommit(context.Background(), jobId).StartId(startId).GitCommitId(gitCommitId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsApi.ListJobCommit``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListJobCommit`: CommitResponseList
+    fmt.Fprintf(os.Stdout, "Response from `JobMainCallsApi.ListJobCommit`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListJobCommitRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **startId** | **string** | Starting point after which to return results | 
+ **gitCommitId** | **string** | Git Commit ID | 
+
+### Return type
+
+[**CommitResponseList**](CommitResponseList.md)
 
 ### Authorization
 

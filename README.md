@@ -341,6 +341,7 @@ Class | Method | HTTP request | Description
 *JobMainCallsApi* | [**EditJob**](docs/JobMainCallsApi.md#editjob) | **Put** /job/{jobId} | Edit job
 *JobMainCallsApi* | [**GetJob**](docs/JobMainCallsApi.md#getjob) | **Get** /job/{jobId} | Get job by ID
 *JobMainCallsApi* | [**GetJobStatus**](docs/JobMainCallsApi.md#getjobstatus) | **Get** /job/{jobId}/status | Get job status
+*JobMainCallsApi* | [**ListJobCommit**](docs/JobMainCallsApi.md#listjobcommit) | **Get** /job/{jobId}/commit | List last job commits
 *JobMetricsApi* | [**GetJobCurrentInstance**](docs/JobMetricsApi.md#getjobcurrentinstance) | **Get** /job/{jobId}/instance | List currently running instances of the job with their CPU and RAM metrics
 *JobSecretApi* | [**CreateJobSecret**](docs/JobSecretApi.md#createjobsecret) | **Post** /job/{jobId}/secret | Add a secret to the job
 *JobSecretApi* | [**CreateJobSecretAlias**](docs/JobSecretApi.md#createjobsecretalias) | **Post** /job/{jobId}/secret/{secretId}/alias | Create a secret alias at the job level
