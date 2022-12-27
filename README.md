@@ -350,6 +350,7 @@ Class | Method | HTTP request | Description
 *JobSecretApi* | [**EditJobSecret**](docs/JobSecretApi.md#editjobsecret) | **Put** /job/{jobId}/secret/{secretId} | Edit a secret belonging to the job
 *JobSecretApi* | [**ListJobSecrets**](docs/JobSecretApi.md#listjobsecrets) | **Get** /job/{jobId}/secret | List job secrets
 *JobsApi* | [**CreateJob**](docs/JobsApi.md#createjob) | **Post** /environment/{environmentId}/job | Create a job
+*JobsApi* | [**GetDefaultJobAdvancedSettings**](docs/JobsApi.md#getdefaultjobadvancedsettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
 *JobsApi* | [**GetEnvironmentJobStatus**](docs/JobsApi.md#getenvironmentjobstatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
 *JobsApi* | [**ListJobs**](docs/JobsApi.md#listjobs) | **Get** /environment/{environmentId}/job | List jobs
 *LogicalDatabaseApi* | [**CreateLogicalDatabaseOnDatabase**](docs/LogicalDatabaseApi.md#createlogicaldatabaseondatabase) | **Post** /database/{databaseId}/logicalDatabase | Create a logical database on the database

@@ -6082,6 +6082,23 @@ paths:
       summary: List default container advanced settings
       tags:
       - Containers
+  /defaultJobAdvancedSettings:
+    get:
+      operationId: getDefaultJobAdvancedSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAdvancedSettings'
+          description: Default job advanced settings
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: List default job advanced settings
+      tags:
+      - Jobs
   /application/{applicationId}:
     delete:
       description: To delete the application you must have the admin permission

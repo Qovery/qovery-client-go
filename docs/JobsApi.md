@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateJob**](JobsApi.md#CreateJob) | **Post** /environment/{environmentId}/job | Create a job
+[**GetDefaultJobAdvancedSettings**](JobsApi.md#GetDefaultJobAdvancedSettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
 [**GetEnvironmentJobStatus**](JobsApi.md#GetEnvironmentJobStatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
 [**ListJobs**](JobsApi.md#ListJobs) | **Get** /environment/{environmentId}/job | List jobs
 
@@ -73,6 +74,65 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDefaultJobAdvancedSettings
+
+> JobAdvancedSettings GetDefaultJobAdvancedSettings(ctx).Execute()
+
+List default job advanced settings
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.GetDefaultJobAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.GetDefaultJobAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultJobAdvancedSettings`: JobAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `JobsApi.GetDefaultJobAdvancedSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDefaultJobAdvancedSettingsRequest struct via the builder pattern
+
+
+### Return type
+
+[**JobAdvancedSettings**](JobAdvancedSettings.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
