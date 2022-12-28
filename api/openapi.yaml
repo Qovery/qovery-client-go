@@ -15755,13 +15755,18 @@ components:
       type: object
     JobDeployRequest:
       example:
+        git_commit_id: git_commit_id
         image_tag: image_tag
       properties:
         image_tag:
-          description: Image tag to deploy
+          description: "Image tag to deploy.  \nCannot be set if `git_commit_id` is\
+            \ defined\n"
           type: string
-      required:
-      - image_tag
+        git_commit_id:
+          description: |
+            Commit to deploy
+            Cannot be set if `image_tag` is defined
+          type: string
       type: object
     JobScheduleEvent:
       description: "On which event the job is going to run.  \nON_START means when\

@@ -33,7 +33,7 @@ import (
 func main() {
     jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
     force := true // bool | Enable or Disable the force trigger of the job (optional) (default to false)
-    jobDeployRequest := *openapiclient.NewJobDeployRequest("ImageTag_example") // JobDeployRequest |  (optional)
+    jobDeployRequest := *openapiclient.NewJobDeployRequest() // JobDeployRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

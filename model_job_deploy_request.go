@@ -17,17 +17,18 @@ import (
 
 // JobDeployRequest struct for JobDeployRequest
 type JobDeployRequest struct {
-	// Image tag to deploy
-	ImageTag string `json:"image_tag"`
+	// Image tag to deploy.   Cannot be set if `git_commit_id` is defined
+	ImageTag *string `json:"image_tag,omitempty"`
+	// Commit to deploy Cannot be set if `image_tag` is defined
+	GitCommitId *string `json:"git_commit_id,omitempty"`
 }
 
 // NewJobDeployRequest instantiates a new JobDeployRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobDeployRequest(imageTag string) *JobDeployRequest {
+func NewJobDeployRequest() *JobDeployRequest {
 	this := JobDeployRequest{}
-	this.ImageTag = imageTag
 	return &this
 }
 
@@ -39,34 +40,77 @@ func NewJobDeployRequestWithDefaults() *JobDeployRequest {
 	return &this
 }
 
-// GetImageTag returns the ImageTag field value
+// GetImageTag returns the ImageTag field value if set, zero value otherwise.
 func (o *JobDeployRequest) GetImageTag() string {
-	if o == nil {
+	if o == nil || o.ImageTag == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ImageTag
+	return *o.ImageTag
 }
 
-// GetImageTagOk returns a tuple with the ImageTag field value
+// GetImageTagOk returns a tuple with the ImageTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobDeployRequest) GetImageTagOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.ImageTag == nil {
 		return nil, false
 	}
-	return &o.ImageTag, true
+	return o.ImageTag, true
 }
 
-// SetImageTag sets field value
+// HasImageTag returns a boolean if a field has been set.
+func (o *JobDeployRequest) HasImageTag() bool {
+	if o != nil && o.ImageTag != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImageTag gets a reference to the given string and assigns it to the ImageTag field.
 func (o *JobDeployRequest) SetImageTag(v string) {
-	o.ImageTag = v
+	o.ImageTag = &v
+}
+
+// GetGitCommitId returns the GitCommitId field value if set, zero value otherwise.
+func (o *JobDeployRequest) GetGitCommitId() string {
+	if o == nil || o.GitCommitId == nil {
+		var ret string
+		return ret
+	}
+	return *o.GitCommitId
+}
+
+// GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobDeployRequest) GetGitCommitIdOk() (*string, bool) {
+	if o == nil || o.GitCommitId == nil {
+		return nil, false
+	}
+	return o.GitCommitId, true
+}
+
+// HasGitCommitId returns a boolean if a field has been set.
+func (o *JobDeployRequest) HasGitCommitId() bool {
+	if o != nil && o.GitCommitId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitCommitId gets a reference to the given string and assigns it to the GitCommitId field.
+func (o *JobDeployRequest) SetGitCommitId(v string) {
+	o.GitCommitId = &v
 }
 
 func (o JobDeployRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.ImageTag != nil {
 		toSerialize["image_tag"] = o.ImageTag
+	}
+	if o.GitCommitId != nil {
+		toSerialize["git_commit_id"] = o.GitCommitId
 	}
 	return json.Marshal(toSerialize)
 }
