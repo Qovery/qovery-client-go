@@ -49,7 +49,7 @@ func (r ApiDeployJobRequest) Execute() (*Status, *http.Response, error) {
 /*
 DeployJob Deploy job
 
-You must provide a git commit id
+You must provide a git commit id or an image tag depending on the source location of your code (git vs image repository).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param jobId Job ID

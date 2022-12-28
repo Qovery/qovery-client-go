@@ -11096,7 +11096,8 @@ paths:
       - Job Configuration
   /job/{jobId}/deploy:
     post:
-      description: You must provide a git commit id
+      description: You must provide a git commit id or an image tag depending on the
+        source location of your code (git vs image repository).
       operationId: deployJob
       parameters:
       - description: Job ID
