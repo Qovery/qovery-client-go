@@ -15823,6 +15823,7 @@ components:
       - APPLICATION
       - CONTAINER
       - DATABASE
+      - JOB
       type: string
     Log:
       example:
