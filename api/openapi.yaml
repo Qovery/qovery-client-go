@@ -571,6 +571,43 @@ paths:
       summary: Remove an invited member
       tags:
       - Members
+    get:
+      operationId: getMemberInvitation
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Invite ID
+        explode: false
+        in: path
+        name: inviteId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteMember'
+          description: Get member invitation
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get member invitation
+      tags:
+      - Members
     post:
       operationId: postAcceptInviteMember
       parameters:

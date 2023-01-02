@@ -365,6 +365,7 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**DeleteInviteMember**](docs/MembersApi.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
 *MembersApi* | [**DeleteMember**](docs/MembersApi.md#deletemember) | **Delete** /organization/{organizationId}/member | Remove a member
 *MembersApi* | [**EditOrganizationMemberRole**](docs/MembersApi.md#editorganizationmemberrole) | **Put** /organization/{organizationId}/member | Edit an organization member role
+*MembersApi* | [**GetMemberInvitation**](docs/MembersApi.md#getmemberinvitation) | **Get** /organization/{organizationId}/inviteMember/{inviteId} | Get member invitation
 *MembersApi* | [**GetOrganizationInvitedMembers**](docs/MembersApi.md#getorganizationinvitedmembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
 *MembersApi* | [**GetOrganizationMembers**](docs/MembersApi.md#getorganizationmembers) | **Get** /organization/{organizationId}/member | Get organization members
 *MembersApi* | [**PostAcceptInviteMember**](docs/MembersApi.md#postacceptinvitemember) | **Post** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization

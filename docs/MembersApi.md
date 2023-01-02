@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**DeleteInviteMember**](MembersApi.md#DeleteInviteMember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
 [**DeleteMember**](MembersApi.md#DeleteMember) | **Delete** /organization/{organizationId}/member | Remove a member
 [**EditOrganizationMemberRole**](MembersApi.md#EditOrganizationMemberRole) | **Put** /organization/{organizationId}/member | Edit an organization member role
+[**GetMemberInvitation**](MembersApi.md#GetMemberInvitation) | **Get** /organization/{organizationId}/inviteMember/{inviteId} | Get member invitation
 [**GetOrganizationInvitedMembers**](MembersApi.md#GetOrganizationInvitedMembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
 [**GetOrganizationMembers**](MembersApi.md#GetOrganizationMembers) | **Get** /organization/{organizationId}/member | Get organization members
 [**PostAcceptInviteMember**](MembersApi.md#PostAcceptInviteMember) | **Post** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization
@@ -216,6 +217,77 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMemberInvitation
+
+> InviteMember GetMemberInvitation(ctx, organizationId, inviteId).Execute()
+
+Get member invitation
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MembersApi.GetMemberInvitation(context.Background(), organizationId, inviteId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MembersApi.GetMemberInvitation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMemberInvitation`: InviteMember
+    fmt.Fprintf(os.Stdout, "Response from `MembersApi.GetMemberInvitation`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**inviteId** | **string** | Invite ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMemberInvitationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**InviteMember**](InviteMember.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
