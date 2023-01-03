@@ -27,13 +27,13 @@ type ApiDeployJobRequest struct {
 	ctx              context.Context
 	ApiService       *JobActionsApiService
 	jobId            string
-	force            *JobForceEvent
+	forceEvent       *JobForceEvent
 	jobDeployRequest *JobDeployRequest
 }
 
 // When filled, it indicates the target event to be deployed.   If the concerned job hasn&#39;t the target event provided, the job won&#39;t be deployed.
-func (r ApiDeployJobRequest) Force(force JobForceEvent) ApiDeployJobRequest {
-	r.force = &force
+func (r ApiDeployJobRequest) ForceEvent(forceEvent JobForceEvent) ApiDeployJobRequest {
+	r.forceEvent = &forceEvent
 	return r
 }
 
@@ -85,8 +85,8 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.force != nil {
-		localVarQueryParams.Add("force", parameterToString(*r.force, ""))
+	if r.forceEvent != nil {
+		localVarQueryParams.Add("forceEvent", parameterToString(*r.forceEvent, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -148,12 +148,12 @@ type ApiRestartJobRequest struct {
 	ctx        context.Context
 	ApiService *JobActionsApiService
 	jobId      string
-	force      *bool
+	forceEvent *JobForceEvent
 }
 
-// Enable or Disable the force trigger of the job
-func (r ApiRestartJobRequest) Force(force bool) ApiRestartJobRequest {
-	r.force = &force
+// When filled, it indicates the target event to be deployed.   If the concerned job hasn&#39;t the target event provided, the job won&#39;t be deployed.
+func (r ApiRestartJobRequest) ForceEvent(forceEvent JobForceEvent) ApiRestartJobRequest {
+	r.forceEvent = &forceEvent
 	return r
 }
 
@@ -198,8 +198,8 @@ func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.force != nil {
-		localVarQueryParams.Add("force", parameterToString(*r.force, ""))
+	if r.forceEvent != nil {
+		localVarQueryParams.Add("forceEvent", parameterToString(*r.forceEvent, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
