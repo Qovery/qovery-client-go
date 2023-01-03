@@ -11146,14 +11146,15 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: Enable or Disable the force trigger of the job
+      - description: "When filled, it indicates the target event to be deployed. \
+          \ \nIf the concerned job hasn't the target event provided, the job won't\
+          \ be deployed.\n"
         explode: true
         in: query
         name: force
         required: false
         schema:
-          default: false
-          type: boolean
+          $ref: '#/components/schemas/JobForceEvent'
         style: form
       requestBody:
         content:
@@ -15815,6 +15816,13 @@ components:
       - ON_START
       - ON_STOP
       - ON_DELETE
+      - CRON
+      type: string
+    JobForceEvent:
+      enum:
+      - START
+      - STOP
+      - DELETE
       - CRON
       type: string
     DeploymentHistoryJobResponse:

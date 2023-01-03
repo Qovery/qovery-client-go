@@ -32,7 +32,7 @@ import (
 
 func main() {
     jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    force := true // bool | Enable or Disable the force trigger of the job (optional) (default to false)
+    force := openapiclient.JobForceEvent("START") // JobForceEvent | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  (optional)
     jobDeployRequest := *openapiclient.NewJobDeployRequest() // JobDeployRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -63,7 +63,7 @@ Other parameters are passed through a pointer to a apiDeployJobRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **force** | **bool** | Enable or Disable the force trigger of the job | [default to false]
+ **force** | [**JobForceEvent**](JobForceEvent.md) | When filled, it indicates the target event to be deployed.   If the concerned job hasn&#39;t the target event provided, the job won&#39;t be deployed.  | 
  **jobDeployRequest** | [**JobDeployRequest**](JobDeployRequest.md) |  | 
 
 ### Return type

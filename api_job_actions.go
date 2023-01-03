@@ -27,12 +27,12 @@ type ApiDeployJobRequest struct {
 	ctx              context.Context
 	ApiService       *JobActionsApiService
 	jobId            string
-	force            *bool
+	force            *JobForceEvent
 	jobDeployRequest *JobDeployRequest
 }
 
-// Enable or Disable the force trigger of the job
-func (r ApiDeployJobRequest) Force(force bool) ApiDeployJobRequest {
+// When filled, it indicates the target event to be deployed.   If the concerned job hasn&#39;t the target event provided, the job won&#39;t be deployed.
+func (r ApiDeployJobRequest) Force(force JobForceEvent) ApiDeployJobRequest {
 	r.force = &force
 	return r
 }

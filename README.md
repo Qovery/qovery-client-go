@@ -669,6 +669,7 @@ Class | Method | HTTP request | Description
  - [InvoiceStatusEnum](docs/InvoiceStatusEnum.md)
  - [JobAdvancedSettings](docs/JobAdvancedSettings.md)
  - [JobDeployRequest](docs/JobDeployRequest.md)
+ - [JobForceEvent](docs/JobForceEvent.md)
  - [JobRequest](docs/JobRequest.md)
  - [JobRequestAllOf](docs/JobRequestAllOf.md)
  - [JobRequestAllOfSchedule](docs/JobRequestAllOfSchedule.md)

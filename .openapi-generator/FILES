@@ -369,6 +369,7 @@ docs/JobConfigurationApi.md
 docs/JobDeployRequest.md
 docs/JobDeploymentHistoryApi.md
 docs/JobEnvironmentVariableApi.md
+docs/JobForceEvent.md
 docs/JobMainCallsApi.md
 docs/JobMetricsApi.md
 docs/JobRequest.md
@@ -796,6 +797,7 @@ model_invoice_response_list.go
 model_invoice_status_enum.go
 model_job_advanced_settings.go
 model_job_deploy_request.go
+model_job_force_event.go
 model_job_request.go
 model_job_request_all_of.go
 model_job_request_all_of_schedule.go
