@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeploymentDelayStartTimeSec** | Pointer to **int32** | please use &#x60;readiness_probe.initial_delay_seconds&#x60; and &#x60;liveness_probe.initial_delay_seconds&#x60; instead | [optional] [default to 30]
 **DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying an application | [optional] [default to true]
+**DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
 **BuildTimeoutMaxSec** | Pointer to **int32** |  | [optional] [default to 1800]
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] [default to 100]
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] [default to false]
@@ -104,6 +105,31 @@ SetDeploymentCustomDomainCheckEnabled sets DeploymentCustomDomainCheckEnabled fi
 `func (o *ApplicationAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool`
 
 HasDeploymentCustomDomainCheckEnabled returns a boolean if a field has been set.
+
+### GetDeploymentTerminationGracePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32`
+
+GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field if non-nil, zero value otherwise.
+
+### GetDeploymentTerminationGracePeriodSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*int32, bool)`
+
+GetDeploymentTerminationGracePeriodSecondsOk returns a tuple with the DeploymentTerminationGracePeriodSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentTerminationGracePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32)`
+
+SetDeploymentTerminationGracePeriodSeconds sets DeploymentTerminationGracePeriodSeconds field to given value.
+
+### HasDeploymentTerminationGracePeriodSeconds
+
+`func (o *ApplicationAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool`
+
+HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
 
 ### GetBuildTimeoutMaxSec
 

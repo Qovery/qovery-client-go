@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
 **JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
 **CronjobConcurrencyPolicy** | Pointer to **string** |  | [optional] [default to "Forbid"]
 **CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
@@ -41,6 +42,31 @@ will change when the set of required properties is changed
 NewJobAdvancedSettingsWithDefaults instantiates a new JobAdvancedSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeploymentTerminationGracePeriodSeconds
+
+`func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32`
+
+GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field if non-nil, zero value otherwise.
+
+### GetDeploymentTerminationGracePeriodSecondsOk
+
+`func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*int32, bool)`
+
+GetDeploymentTerminationGracePeriodSecondsOk returns a tuple with the DeploymentTerminationGracePeriodSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentTerminationGracePeriodSeconds
+
+`func (o *JobAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32)`
+
+SetDeploymentTerminationGracePeriodSeconds sets DeploymentTerminationGracePeriodSeconds field to given value.
+
+### HasDeploymentTerminationGracePeriodSeconds
+
+`func (o *JobAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool`
+
+HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
 
 ### GetJobDeleteTtlSecondsAfterFinished
 

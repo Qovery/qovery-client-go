@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying an application | [optional] [default to true]
+**DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] [default to 100]
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] [default to false]
 **NetworkIngressCorsAllowOrigin** | Pointer to **string** |  | [optional] [default to "*"]
@@ -76,6 +77,31 @@ SetDeploymentCustomDomainCheckEnabled sets DeploymentCustomDomainCheckEnabled fi
 `func (o *ContainerAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool`
 
 HasDeploymentCustomDomainCheckEnabled returns a boolean if a field has been set.
+
+### GetDeploymentTerminationGracePeriodSeconds
+
+`func (o *ContainerAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32`
+
+GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field if non-nil, zero value otherwise.
+
+### GetDeploymentTerminationGracePeriodSecondsOk
+
+`func (o *ContainerAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*int32, bool)`
+
+GetDeploymentTerminationGracePeriodSecondsOk returns a tuple with the DeploymentTerminationGracePeriodSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentTerminationGracePeriodSeconds
+
+`func (o *ContainerAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32)`
+
+SetDeploymentTerminationGracePeriodSeconds sets DeploymentTerminationGracePeriodSeconds field to given value.
+
+### HasDeploymentTerminationGracePeriodSeconds
+
+`func (o *ContainerAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool`
+
+HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
 
 ### GetNetworkIngressProxyBodySizeMb
 

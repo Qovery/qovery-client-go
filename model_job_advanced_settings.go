@@ -17,10 +17,12 @@ import (
 
 // JobAdvancedSettings struct for JobAdvancedSettings
 type JobAdvancedSettings struct {
-	JobDeleteTtlSecondsAfterFinished NullableInt32 `json:"job.delete_ttl_seconds_after_finished,omitempty"`
-	CronjobConcurrencyPolicy         *string       `json:"cronjob.concurrency_policy,omitempty"`
-	CronjobFailedJobsHistoryLimit    *int32        `json:"cronjob.failed_jobs_history_limit,omitempty"`
-	CronjobSuccessJobsHistoryLimit   *int32        `json:"cronjob.success_jobs_history_limit,omitempty"`
+	// define how long in seconds an application is supposed to be stopped gracefully
+	DeploymentTerminationGracePeriodSeconds *int32        `json:"deployment.termination_grace_period_seconds,omitempty"`
+	JobDeleteTtlSecondsAfterFinished        NullableInt32 `json:"job.delete_ttl_seconds_after_finished,omitempty"`
+	CronjobConcurrencyPolicy                *string       `json:"cronjob.concurrency_policy,omitempty"`
+	CronjobFailedJobsHistoryLimit           *int32        `json:"cronjob.failed_jobs_history_limit,omitempty"`
+	CronjobSuccessJobsHistoryLimit          *int32        `json:"cronjob.success_jobs_history_limit,omitempty"`
 	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
 	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
 	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
@@ -57,6 +59,8 @@ type JobAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewJobAdvancedSettings() *JobAdvancedSettings {
 	this := JobAdvancedSettings{}
+	var deploymentTerminationGracePeriodSeconds int32 = 60
+	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
 	var cronjobConcurrencyPolicy string = "Forbid"
 	this.CronjobConcurrencyPolicy = &cronjobConcurrencyPolicy
 	var cronjobFailedJobsHistoryLimit int32 = 1
@@ -99,6 +103,8 @@ func NewJobAdvancedSettings() *JobAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 	this := JobAdvancedSettings{}
+	var deploymentTerminationGracePeriodSeconds int32 = 60
+	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
 	var cronjobConcurrencyPolicy string = "Forbid"
 	this.CronjobConcurrencyPolicy = &cronjobConcurrencyPolicy
 	var cronjobFailedJobsHistoryLimit int32 = 1
@@ -134,6 +140,38 @@ func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 	var livenessProbeFailureThreshold int32 = 0
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	return &this
+}
+
+// GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32 {
+	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DeploymentTerminationGracePeriodSeconds
+}
+
+// GetDeploymentTerminationGracePeriodSecondsOk returns a tuple with the DeploymentTerminationGracePeriodSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*int32, bool) {
+	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+		return nil, false
+	}
+	return o.DeploymentTerminationGracePeriodSeconds, true
+}
+
+// HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool {
+	if o != nil && o.DeploymentTerminationGracePeriodSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentTerminationGracePeriodSeconds gets a reference to the given int32 and assigns it to the DeploymentTerminationGracePeriodSeconds field.
+func (o *JobAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32) {
+	o.DeploymentTerminationGracePeriodSeconds = &v
 }
 
 // GetJobDeleteTtlSecondsAfterFinished returns the JobDeleteTtlSecondsAfterFinished field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -725,6 +763,9 @@ func (o *JobAdvancedSettings) SetLivenessProbeFailureThreshold(v int32) {
 
 func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.DeploymentTerminationGracePeriodSeconds != nil {
+		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
+	}
 	if o.JobDeleteTtlSecondsAfterFinished.IsSet() {
 		toSerialize["job.delete_ttl_seconds_after_finished"] = o.JobDeleteTtlSecondsAfterFinished.Get()
 	}

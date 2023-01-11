@@ -18,12 +18,14 @@ import (
 // ContainerAdvancedSettings struct for ContainerAdvancedSettings
 type ContainerAdvancedSettings struct {
 	// disable custom domain check when deploying an application
-	DeploymentCustomDomainCheckEnabled *bool   `json:"deployment.custom_domain_check_enabled,omitempty"`
-	NetworkIngressProxyBodySizeMb      *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
-	NetworkIngressEnableCors           *bool   `json:"network.ingress.enable_cors,omitempty"`
-	NetworkIngressCorsAllowOrigin      *string `json:"network.ingress.cors_allow_origin,omitempty"`
-	NetworkIngressCorsAllowMethods     *string `json:"network.ingress.cors_allow_methods,omitempty"`
-	NetworkIngressCorsAllowHeaders     *string `json:"network.ingress.cors_allow_headers,omitempty"`
+	DeploymentCustomDomainCheckEnabled *bool `json:"deployment.custom_domain_check_enabled,omitempty"`
+	// define how long in seconds an application is supposed to be stopped gracefully
+	DeploymentTerminationGracePeriodSeconds *int32  `json:"deployment.termination_grace_period_seconds,omitempty"`
+	NetworkIngressProxyBodySizeMb           *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
+	NetworkIngressEnableCors                *bool   `json:"network.ingress.enable_cors,omitempty"`
+	NetworkIngressCorsAllowOrigin           *string `json:"network.ingress.cors_allow_origin,omitempty"`
+	NetworkIngressCorsAllowMethods          *string `json:"network.ingress.cors_allow_methods,omitempty"`
+	NetworkIngressCorsAllowHeaders          *string `json:"network.ingress.cors_allow_headers,omitempty"`
 	// header buffer size used while reading response header from upstream
 	NetworkIngressProxyBufferSizeKb *int32 `json:"network.ingress.proxy_buffer_size_kb,omitempty"`
 	// Limits the maximum time (in seconds) during which requests can be processed through one keepalive connection
@@ -78,6 +80,8 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this := ContainerAdvancedSettings{}
 	var deploymentCustomDomainCheckEnabled bool = true
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
+	var deploymentTerminationGracePeriodSeconds int32 = 60
+	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
 	var networkIngressProxyBodySizeMb int32 = 100
 	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
 	var networkIngressEnableCors bool = false
@@ -142,6 +146,8 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this := ContainerAdvancedSettings{}
 	var deploymentCustomDomainCheckEnabled bool = true
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
+	var deploymentTerminationGracePeriodSeconds int32 = 60
+	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
 	var networkIngressProxyBodySizeMb int32 = 100
 	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
 	var networkIngressEnableCors bool = false
@@ -229,6 +235,38 @@ func (o *ContainerAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool
 // SetDeploymentCustomDomainCheckEnabled gets a reference to the given bool and assigns it to the DeploymentCustomDomainCheckEnabled field.
 func (o *ContainerAdvancedSettings) SetDeploymentCustomDomainCheckEnabled(v bool) {
 	o.DeploymentCustomDomainCheckEnabled = &v
+}
+
+// GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32 {
+	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DeploymentTerminationGracePeriodSeconds
+}
+
+// GetDeploymentTerminationGracePeriodSecondsOk returns a tuple with the DeploymentTerminationGracePeriodSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*int32, bool) {
+	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+		return nil, false
+	}
+	return o.DeploymentTerminationGracePeriodSeconds, true
+}
+
+// HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool {
+	if o != nil && o.DeploymentTerminationGracePeriodSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentTerminationGracePeriodSeconds gets a reference to the given int32 and assigns it to the DeploymentTerminationGracePeriodSeconds field.
+func (o *ContainerAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32) {
+	o.DeploymentTerminationGracePeriodSeconds = &v
 }
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
@@ -1099,6 +1137,9 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeploymentCustomDomainCheckEnabled != nil {
 		toSerialize["deployment.custom_domain_check_enabled"] = o.DeploymentCustomDomainCheckEnabled
+	}
+	if o.DeploymentTerminationGracePeriodSeconds != nil {
+		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
 	}
 	if o.NetworkIngressProxyBodySizeMb != nil {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
