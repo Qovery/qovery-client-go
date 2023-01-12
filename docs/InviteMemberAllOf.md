@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Role** | [**InviteMemberRoleEnum**](InviteMemberRoleEnum.md) |  | 
 **InvitationLink** | **string** |  | 
 **InvitationStatus** | [**InviteStatusEnum**](InviteStatusEnum.md) |  | 
+**OrganizationName** | Pointer to **string** |  | [optional] 
 **Inviter** | **string** |  | 
 **LogoUrl** | Pointer to **string** |  | [optional] 
 **RoleId** | Pointer to **string** |  | [optional] 
@@ -111,6 +112,31 @@ and a boolean to check if the value has been set.
 
 SetInvitationStatus sets InvitationStatus field to given value.
 
+
+### GetOrganizationName
+
+`func (o *InviteMemberAllOf) GetOrganizationName() string`
+
+GetOrganizationName returns the OrganizationName field if non-nil, zero value otherwise.
+
+### GetOrganizationNameOk
+
+`func (o *InviteMemberAllOf) GetOrganizationNameOk() (*string, bool)`
+
+GetOrganizationNameOk returns a tuple with the OrganizationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationName
+
+`func (o *InviteMemberAllOf) SetOrganizationName(v string)`
+
+SetOrganizationName sets OrganizationName field to given value.
+
+### HasOrganizationName
+
+`func (o *InviteMemberAllOf) HasOrganizationName() bool`
+
+HasOrganizationName returns a boolean if a field has been set.
 
 ### GetInviter
 

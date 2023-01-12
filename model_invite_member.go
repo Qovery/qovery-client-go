@@ -25,6 +25,7 @@ type InviteMember struct {
 	Role             InviteMemberRoleEnum `json:"role"`
 	InvitationLink   string               `json:"invitation_link"`
 	InvitationStatus InviteStatusEnum     `json:"invitation_status"`
+	OrganizationName *string              `json:"organization_name,omitempty"`
 	Inviter          string               `json:"inviter"`
 	LogoUrl          *string              `json:"logo_url,omitempty"`
 	RoleId           *string              `json:"role_id,omitempty"`
@@ -231,6 +232,38 @@ func (o *InviteMember) SetInvitationStatus(v InviteStatusEnum) {
 	o.InvitationStatus = v
 }
 
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+func (o *InviteMember) GetOrganizationName() string {
+	if o == nil || o.OrganizationName == nil {
+		var ret string
+		return ret
+	}
+	return *o.OrganizationName
+}
+
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InviteMember) GetOrganizationNameOk() (*string, bool) {
+	if o == nil || o.OrganizationName == nil {
+		return nil, false
+	}
+	return o.OrganizationName, true
+}
+
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *InviteMember) HasOrganizationName() bool {
+	if o != nil && o.OrganizationName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+func (o *InviteMember) SetOrganizationName(v string) {
+	o.OrganizationName = &v
+}
+
 // GetInviter returns the Inviter field value
 func (o *InviteMember) GetInviter() string {
 	if o == nil {
@@ -373,6 +406,9 @@ func (o InviteMember) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["invitation_status"] = o.InvitationStatus
+	}
+	if o.OrganizationName != nil {
+		toSerialize["organization_name"] = o.OrganizationName
 	}
 	if true {
 		toSerialize["inviter"] = o.Inviter
