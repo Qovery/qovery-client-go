@@ -17,14 +17,17 @@ import (
 
 // ClusterAdvancedSettings struct for ClusterAdvancedSettings
 type ClusterAdvancedSettings struct {
+	// For how long in week loki is going to keep logs of your applications
+	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
+	// Enable flow logs for on the VPC and store them in an S3 bucket
+	AwsVpcEnableS3FlowLogs *bool `json:"aws.vpc.enable_s3_flow_logs,omitempty"`
 	// Configure the number of seconds before cleaning images in the registry
-	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
+	RegistryImageRetentionTime         *int32                                                     `json:"registry.image_retention_time,omitempty"`
+	CloudProviderContainerRegistryTags *ClusterAdvancedSettingsCloudProviderContainerRegistryTags `json:"cloud_provider_container_registry_tags,omitempty"`
 	// Select the size of the main load_balancer (only effective for Scaleway)
 	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deprecated
 	PlecoResourcesTtl *int32 `json:"pleco.resources_ttl,omitempty"`
-	// For how long in week loki is going to keep logs of your applications
-	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
 }
 
 // NewClusterAdvancedSettings instantiates a new ClusterAdvancedSettings object
@@ -33,14 +36,16 @@ type ClusterAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
+	var lokiLogRetentionInWeek int32 = 12
+	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
+	var awsVpcEnableS3FlowLogs bool = false
+	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var loadBalancerSize string = "lb-s"
 	this.LoadBalancerSize = &loadBalancerSize
 	var plecoResourcesTtl int32 = -1
 	this.PlecoResourcesTtl = &plecoResourcesTtl
-	var lokiLogRetentionInWeek int32 = 12
-	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
 	return &this
 }
 
@@ -49,15 +54,81 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
+	var lokiLogRetentionInWeek int32 = 12
+	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
+	var awsVpcEnableS3FlowLogs bool = false
+	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var loadBalancerSize string = "lb-s"
 	this.LoadBalancerSize = &loadBalancerSize
 	var plecoResourcesTtl int32 = -1
 	this.PlecoResourcesTtl = &plecoResourcesTtl
-	var lokiLogRetentionInWeek int32 = 12
-	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
 	return &this
+}
+
+// GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32 {
+	if o == nil || o.LokiLogRetentionInWeek == nil {
+		var ret int32
+		return ret
+	}
+	return *o.LokiLogRetentionInWeek
+}
+
+// GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool) {
+	if o == nil || o.LokiLogRetentionInWeek == nil {
+		return nil, false
+	}
+	return o.LokiLogRetentionInWeek, true
+}
+
+// HasLokiLogRetentionInWeek returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool {
+	if o != nil && o.LokiLogRetentionInWeek != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLokiLogRetentionInWeek gets a reference to the given int32 and assigns it to the LokiLogRetentionInWeek field.
+func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32) {
+	o.LokiLogRetentionInWeek = &v
+}
+
+// GetAwsVpcEnableS3FlowLogs returns the AwsVpcEnableS3FlowLogs field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsVpcEnableS3FlowLogs() bool {
+	if o == nil || o.AwsVpcEnableS3FlowLogs == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AwsVpcEnableS3FlowLogs
+}
+
+// GetAwsVpcEnableS3FlowLogsOk returns a tuple with the AwsVpcEnableS3FlowLogs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsVpcEnableS3FlowLogsOk() (*bool, bool) {
+	if o == nil || o.AwsVpcEnableS3FlowLogs == nil {
+		return nil, false
+	}
+	return o.AwsVpcEnableS3FlowLogs, true
+}
+
+// HasAwsVpcEnableS3FlowLogs returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsVpcEnableS3FlowLogs() bool {
+	if o != nil && o.AwsVpcEnableS3FlowLogs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsVpcEnableS3FlowLogs gets a reference to the given bool and assigns it to the AwsVpcEnableS3FlowLogs field.
+func (o *ClusterAdvancedSettings) SetAwsVpcEnableS3FlowLogs(v bool) {
+	o.AwsVpcEnableS3FlowLogs = &v
 }
 
 // GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field value if set, zero value otherwise.
@@ -90,6 +161,38 @@ func (o *ClusterAdvancedSettings) HasRegistryImageRetentionTime() bool {
 // SetRegistryImageRetentionTime gets a reference to the given int32 and assigns it to the RegistryImageRetentionTime field.
 func (o *ClusterAdvancedSettings) SetRegistryImageRetentionTime(v int32) {
 	o.RegistryImageRetentionTime = &v
+}
+
+// GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() ClusterAdvancedSettingsCloudProviderContainerRegistryTags {
+	if o == nil || o.CloudProviderContainerRegistryTags == nil {
+		var ret ClusterAdvancedSettingsCloudProviderContainerRegistryTags
+		return ret
+	}
+	return *o.CloudProviderContainerRegistryTags
+}
+
+// GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*ClusterAdvancedSettingsCloudProviderContainerRegistryTags, bool) {
+	if o == nil || o.CloudProviderContainerRegistryTags == nil {
+		return nil, false
+	}
+	return o.CloudProviderContainerRegistryTags, true
+}
+
+// HasCloudProviderContainerRegistryTags returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool {
+	if o != nil && o.CloudProviderContainerRegistryTags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProviderContainerRegistryTags gets a reference to the given ClusterAdvancedSettingsCloudProviderContainerRegistryTags and assigns it to the CloudProviderContainerRegistryTags field.
+func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v ClusterAdvancedSettingsCloudProviderContainerRegistryTags) {
+	o.CloudProviderContainerRegistryTags = &v
 }
 
 // GetLoadBalancerSize returns the LoadBalancerSize field value if set, zero value otherwise.
@@ -159,51 +262,25 @@ func (o *ClusterAdvancedSettings) SetPlecoResourcesTtl(v int32) {
 	o.PlecoResourcesTtl = &v
 }
 
-// GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32 {
-	if o == nil || o.LokiLogRetentionInWeek == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LokiLogRetentionInWeek
-}
-
-// GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool) {
-	if o == nil || o.LokiLogRetentionInWeek == nil {
-		return nil, false
-	}
-	return o.LokiLogRetentionInWeek, true
-}
-
-// HasLokiLogRetentionInWeek returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool {
-	if o != nil && o.LokiLogRetentionInWeek != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLokiLogRetentionInWeek gets a reference to the given int32 and assigns it to the LokiLogRetentionInWeek field.
-func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32) {
-	o.LokiLogRetentionInWeek = &v
-}
-
 func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.LokiLogRetentionInWeek != nil {
+		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
+	}
+	if o.AwsVpcEnableS3FlowLogs != nil {
+		toSerialize["aws.vpc.enable_s3_flow_logs"] = o.AwsVpcEnableS3FlowLogs
+	}
 	if o.RegistryImageRetentionTime != nil {
 		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
+	}
+	if o.CloudProviderContainerRegistryTags != nil {
+		toSerialize["cloud_provider_container_registry_tags"] = o.CloudProviderContainerRegistryTags
 	}
 	if o.LoadBalancerSize != nil {
 		toSerialize["load_balancer.size"] = o.LoadBalancerSize
 	}
 	if o.PlecoResourcesTtl != nil {
 		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
-	}
-	if o.LokiLogRetentionInWeek != nil {
-		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
 	}
 	return json.Marshal(toSerialize)
 }

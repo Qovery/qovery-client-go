@@ -13623,16 +13623,30 @@ components:
       type: object
     ClusterAdvancedSettings:
       example:
-        loki.log_retention_in_week: 1
-        registry.image_retention_time: 0
+        loki.log_retention_in_week: 0
+        aws.vpc.enable_s3_flow_logs: false
+        registry.image_retention_time: 6
         load_balancer.size: lb-s
-        pleco.resources_ttl: 6
+        pleco.resources_ttl: 1
+        cloud_provider_container_registry_tags:
+          value: value
+          key: key
       properties:
+        loki.log_retention_in_week:
+          default: 12
+          description: For how long in week loki is going to keep logs of your applications
+          type: integer
+        aws.vpc.enable_s3_flow_logs:
+          default: false
+          description: Enable flow logs for on the VPC and store them in an S3 bucket
+          type: boolean
         registry.image_retention_time:
           default: 31536000
           description: Configure the number of seconds before cleaning images in the
             registry
           type: integer
+        cloud_provider_container_registry_tags:
+          $ref: '#/components/schemas/ClusterAdvancedSettings_cloud_provider_container_registry_tags'
         load_balancer.size:
           default: lb-s
           description: Select the size of the main load_balancer (only effective for
@@ -13641,10 +13655,6 @@ components:
         pleco.resources_ttl:
           default: -1
           deprecated: true
-          type: integer
-        loki.log_retention_in_week:
-          default: 12
-          description: For how long in week loki is going to keep logs of your applications
           type: integer
       type: object
     Commit:
@@ -18237,6 +18247,17 @@ components:
       - description
       - destination
       - target
+      type: object
+    ClusterAdvancedSettings_cloud_provider_container_registry_tags:
+      description: Add additional tags on the cluster dedicated registry
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
       type: object
     CommitPaginatedResponseList_allOf:
       properties:

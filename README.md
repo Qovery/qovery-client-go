@@ -473,6 +473,7 @@ Class | Method | HTTP request | Description
  - [CloudProviderResponseList](docs/CloudProviderResponseList.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterAdvancedSettings](docs/ClusterAdvancedSettings.md)
+ - [ClusterAdvancedSettingsCloudProviderContainerRegistryTags](docs/ClusterAdvancedSettingsCloudProviderContainerRegistryTags.md)
  - [ClusterAllOf](docs/ClusterAllOf.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)
  - [ClusterCloudProviderInfoCredentials](docs/ClusterCloudProviderInfoCredentials.md)
