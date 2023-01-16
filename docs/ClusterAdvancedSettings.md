@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LokiLogRetentionInWeek** | Pointer to **int32** | For how long in week loki is going to keep logs of your applications | [optional] [default to 12]
 **AwsVpcEnableS3FlowLogs** | Pointer to **bool** | Enable flow logs for on the VPC and store them in an S3 bucket | [optional] [default to false]
+**AwsVpcFlowLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for flow logs. Disable with value \&quot;0\&quot; | [optional] [default to 365]
 **RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] [default to 31536000]
 **CloudProviderContainerRegistryTags** | Pointer to [**ClusterAdvancedSettingsCloudProviderContainerRegistryTags**](ClusterAdvancedSettingsCloudProviderContainerRegistryTags.md) |  | [optional] 
 **LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] [default to "lb-s"]
@@ -79,6 +80,31 @@ SetAwsVpcEnableS3FlowLogs sets AwsVpcEnableS3FlowLogs field to given value.
 `func (o *ClusterAdvancedSettings) HasAwsVpcEnableS3FlowLogs() bool`
 
 HasAwsVpcEnableS3FlowLogs returns a boolean if a field has been set.
+
+### GetAwsVpcFlowLogsRetentionDays
+
+`func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDays() int32`
+
+GetAwsVpcFlowLogsRetentionDays returns the AwsVpcFlowLogsRetentionDays field if non-nil, zero value otherwise.
+
+### GetAwsVpcFlowLogsRetentionDaysOk
+
+`func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDaysOk() (*int32, bool)`
+
+GetAwsVpcFlowLogsRetentionDaysOk returns a tuple with the AwsVpcFlowLogsRetentionDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsVpcFlowLogsRetentionDays
+
+`func (o *ClusterAdvancedSettings) SetAwsVpcFlowLogsRetentionDays(v int32)`
+
+SetAwsVpcFlowLogsRetentionDays sets AwsVpcFlowLogsRetentionDays field to given value.
+
+### HasAwsVpcFlowLogsRetentionDays
+
+`func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool`
+
+HasAwsVpcFlowLogsRetentionDays returns a boolean if a field has been set.
 
 ### GetRegistryImageRetentionTime
 

@@ -13624,10 +13624,11 @@ components:
     ClusterAdvancedSettings:
       example:
         loki.log_retention_in_week: 0
+        aws.vpc.flow_logs_retention_days: 6
         aws.vpc.enable_s3_flow_logs: false
-        registry.image_retention_time: 6
+        registry.image_retention_time: 1
         load_balancer.size: lb-s
-        pleco.resources_ttl: 1
+        pleco.resources_ttl: 5
         cloud_provider_container_registry_tags:
           value: value
           key: key
@@ -13640,6 +13641,11 @@ components:
           default: false
           description: Enable flow logs for on the VPC and store them in an S3 bucket
           type: boolean
+        aws.vpc.flow_logs_retention_days:
+          default: 365
+          description: Set the number of retention days for flow logs. Disable with
+            value "0"
+          type: integer
         registry.image_retention_time:
           default: 31536000
           description: Configure the number of seconds before cleaning images in the

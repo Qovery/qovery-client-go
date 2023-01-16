@@ -21,6 +21,8 @@ type ClusterAdvancedSettings struct {
 	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
 	// Enable flow logs for on the VPC and store them in an S3 bucket
 	AwsVpcEnableS3FlowLogs *bool `json:"aws.vpc.enable_s3_flow_logs,omitempty"`
+	// Set the number of retention days for flow logs. Disable with value \"0\"
+	AwsVpcFlowLogsRetentionDays *int32 `json:"aws.vpc.flow_logs_retention_days,omitempty"`
 	// Configure the number of seconds before cleaning images in the registry
 	RegistryImageRetentionTime         *int32                                                     `json:"registry.image_retention_time,omitempty"`
 	CloudProviderContainerRegistryTags *ClusterAdvancedSettingsCloudProviderContainerRegistryTags `json:"cloud_provider_container_registry_tags,omitempty"`
@@ -40,6 +42,8 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
 	var awsVpcEnableS3FlowLogs bool = false
 	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
+	var awsVpcFlowLogsRetentionDays int32 = 365
+	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var loadBalancerSize string = "lb-s"
@@ -58,6 +62,8 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
 	var awsVpcEnableS3FlowLogs bool = false
 	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
+	var awsVpcFlowLogsRetentionDays int32 = 365
+	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var loadBalancerSize string = "lb-s"
@@ -129,6 +135,38 @@ func (o *ClusterAdvancedSettings) HasAwsVpcEnableS3FlowLogs() bool {
 // SetAwsVpcEnableS3FlowLogs gets a reference to the given bool and assigns it to the AwsVpcEnableS3FlowLogs field.
 func (o *ClusterAdvancedSettings) SetAwsVpcEnableS3FlowLogs(v bool) {
 	o.AwsVpcEnableS3FlowLogs = &v
+}
+
+// GetAwsVpcFlowLogsRetentionDays returns the AwsVpcFlowLogsRetentionDays field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDays() int32 {
+	if o == nil || o.AwsVpcFlowLogsRetentionDays == nil {
+		var ret int32
+		return ret
+	}
+	return *o.AwsVpcFlowLogsRetentionDays
+}
+
+// GetAwsVpcFlowLogsRetentionDaysOk returns a tuple with the AwsVpcFlowLogsRetentionDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDaysOk() (*int32, bool) {
+	if o == nil || o.AwsVpcFlowLogsRetentionDays == nil {
+		return nil, false
+	}
+	return o.AwsVpcFlowLogsRetentionDays, true
+}
+
+// HasAwsVpcFlowLogsRetentionDays returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool {
+	if o != nil && o.AwsVpcFlowLogsRetentionDays != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsVpcFlowLogsRetentionDays gets a reference to the given int32 and assigns it to the AwsVpcFlowLogsRetentionDays field.
+func (o *ClusterAdvancedSettings) SetAwsVpcFlowLogsRetentionDays(v int32) {
+	o.AwsVpcFlowLogsRetentionDays = &v
 }
 
 // GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field value if set, zero value otherwise.
@@ -269,6 +307,9 @@ func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.AwsVpcEnableS3FlowLogs != nil {
 		toSerialize["aws.vpc.enable_s3_flow_logs"] = o.AwsVpcEnableS3FlowLogs
+	}
+	if o.AwsVpcFlowLogsRetentionDays != nil {
+		toSerialize["aws.vpc.flow_logs_retention_days"] = o.AwsVpcFlowLogsRetentionDays
 	}
 	if o.RegistryImageRetentionTime != nil {
 		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
