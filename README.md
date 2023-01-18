@@ -430,6 +430,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [APIVariableScopeEnum](docs/APIVariableScopeEnum.md)
+ - [APIVariableTypeEnum](docs/APIVariableTypeEnum.md)
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
  - [Application](docs/Application.md)

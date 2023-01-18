@@ -15365,14 +15365,20 @@ components:
       type: object
     EnvironmentVariableRequest:
       example:
+        mount_path: mount_path
         value: value
         key: key
       properties:
         key:
-          description: key is case sensitive
+          description: key is case sensitive.
           type: string
         value:
           description: value of the env variable.
+          type: string
+        mount_path:
+          description: should be set for file only. variable mount path makes variable
+            a file (where file should be mounted).
+          nullable: true
           type: string
       required:
       - key
@@ -15397,6 +15403,16 @@ components:
       - PROJECT
       - CONTAINER
       - JOB
+      type: string
+    APIVariableTypeEnum:
+      description: "type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE\
+        \ or BUIT_IN) \n"
+      enum:
+      - VALUE
+      - ALIAS
+      - OVERRIDE
+      - BUILT_IN
+      - FILE
       type: string
     Event:
       allOf:
@@ -17178,6 +17194,7 @@ components:
       type: object
     SecretRequest:
       example:
+        mount_path: mount_path
         value: value
         key: key
       properties:
@@ -17186,6 +17203,11 @@ components:
           type: string
         value:
           description: value of the secret. Clear value will never be returned
+          type: string
+        mount_path:
+          description: should be set for file only. variable mount path make secret
+            a file (where file should be mounted).
+          nullable: true
           type: string
       required:
       - key
@@ -18979,6 +19001,8 @@ components:
           $ref: '#/components/schemas/EnvironmentVariableAlias'
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
+        type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
         service_id:
           description: present only for `BUILT_IN` variable
           format: uuid
@@ -19616,6 +19640,8 @@ components:
           $ref: '#/components/schemas/SecretAlias'
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
+        type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
         service_id:
           description: present only for `BUILT_IN` variable
           format: uuid

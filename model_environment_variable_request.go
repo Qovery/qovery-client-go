@@ -17,10 +17,12 @@ import (
 
 // EnvironmentVariableRequest struct for EnvironmentVariableRequest
 type EnvironmentVariableRequest struct {
-	// key is case sensitive
+	// key is case sensitive.
 	Key string `json:"key"`
 	// value of the env variable.
 	Value string `json:"value"`
+	// should be set for file only. variable mount path makes variable a file (where file should be mounted).
+	MountPath NullableString `json:"mount_path,omitempty"`
 }
 
 // NewEnvironmentVariableRequest instantiates a new EnvironmentVariableRequest object
@@ -90,6 +92,49 @@ func (o *EnvironmentVariableRequest) SetValue(v string) {
 	o.Value = v
 }
 
+// GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentVariableRequest) GetMountPath() string {
+	if o == nil || o.MountPath.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.MountPath.Get()
+}
+
+// GetMountPathOk returns a tuple with the MountPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentVariableRequest) GetMountPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MountPath.Get(), o.MountPath.IsSet()
+}
+
+// HasMountPath returns a boolean if a field has been set.
+func (o *EnvironmentVariableRequest) HasMountPath() bool {
+	if o != nil && o.MountPath.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMountPath gets a reference to the given NullableString and assigns it to the MountPath field.
+func (o *EnvironmentVariableRequest) SetMountPath(v string) {
+	o.MountPath.Set(&v)
+}
+
+// SetMountPathNil sets the value for MountPath to be an explicit nil
+func (o *EnvironmentVariableRequest) SetMountPathNil() {
+	o.MountPath.Set(nil)
+}
+
+// UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+func (o *EnvironmentVariableRequest) UnsetMountPath() {
+	o.MountPath.Unset()
+}
+
 func (o EnvironmentVariableRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -97,6 +142,9 @@ func (o EnvironmentVariableRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["value"] = o.Value
+	}
+	if o.MountPath.IsSet() {
+		toSerialize["mount_path"] = o.MountPath.Get()
 	}
 	return json.Marshal(toSerialize)
 }

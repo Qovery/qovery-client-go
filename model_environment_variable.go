@@ -21,13 +21,16 @@ type EnvironmentVariable struct {
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	// key is case sensitive
+	// key is case sensitive.
 	Key string `json:"key"`
 	// value of the env variable.
-	Value              string                       `json:"value"`
+	Value string `json:"value"`
+	// should be set for file only. variable mount path makes variable a file (where file should be mounted).
+	MountPath          NullableString               `json:"mount_path,omitempty"`
 	OverriddenVariable *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
 	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
 	Scope              APIVariableScopeEnum         `json:"scope"`
+	Type               *APIVariableTypeEnum         `json:"type,omitempty"`
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
@@ -185,6 +188,49 @@ func (o *EnvironmentVariable) SetValue(v string) {
 	o.Value = v
 }
 
+// GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentVariable) GetMountPath() string {
+	if o == nil || o.MountPath.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.MountPath.Get()
+}
+
+// GetMountPathOk returns a tuple with the MountPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentVariable) GetMountPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MountPath.Get(), o.MountPath.IsSet()
+}
+
+// HasMountPath returns a boolean if a field has been set.
+func (o *EnvironmentVariable) HasMountPath() bool {
+	if o != nil && o.MountPath.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMountPath gets a reference to the given NullableString and assigns it to the MountPath field.
+func (o *EnvironmentVariable) SetMountPath(v string) {
+	o.MountPath.Set(&v)
+}
+
+// SetMountPathNil sets the value for MountPath to be an explicit nil
+func (o *EnvironmentVariable) SetMountPathNil() {
+	o.MountPath.Set(nil)
+}
+
+// UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+func (o *EnvironmentVariable) UnsetMountPath() {
+	o.MountPath.Unset()
+}
+
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverride {
 	if o == nil || o.OverriddenVariable == nil {
@@ -271,6 +317,38 @@ func (o *EnvironmentVariable) GetScopeOk() (*APIVariableScopeEnum, bool) {
 // SetScope sets field value
 func (o *EnvironmentVariable) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *EnvironmentVariable) GetType() APIVariableTypeEnum {
+	if o == nil || o.Type == nil {
+		var ret APIVariableTypeEnum
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariable) GetTypeOk() (*APIVariableTypeEnum, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *EnvironmentVariable) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given APIVariableTypeEnum and assigns it to the Type field.
+func (o *EnvironmentVariable) SetType(v APIVariableTypeEnum) {
+	o.Type = &v
 }
 
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
@@ -386,6 +464,9 @@ func (o EnvironmentVariable) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["value"] = o.Value
 	}
+	if o.MountPath.IsSet() {
+		toSerialize["mount_path"] = o.MountPath.Get()
+	}
 	if o.OverriddenVariable != nil {
 		toSerialize["overridden_variable"] = o.OverriddenVariable
 	}
@@ -394,6 +475,9 @@ func (o EnvironmentVariable) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["scope"] = o.Scope
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.ServiceId != nil {
 		toSerialize["service_id"] = o.ServiceId

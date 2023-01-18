@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** | key is case sensitive | 
+**Key** | **string** | key is case sensitive. | 
 **Value** | **string** | value of the env variable. | 
+**MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
 
 ## Methods
 
@@ -66,6 +67,41 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
+### GetMountPath
+
+`func (o *EnvironmentVariableRequest) GetMountPath() string`
+
+GetMountPath returns the MountPath field if non-nil, zero value otherwise.
+
+### GetMountPathOk
+
+`func (o *EnvironmentVariableRequest) GetMountPathOk() (*string, bool)`
+
+GetMountPathOk returns a tuple with the MountPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMountPath
+
+`func (o *EnvironmentVariableRequest) SetMountPath(v string)`
+
+SetMountPath sets MountPath field to given value.
+
+### HasMountPath
+
+`func (o *EnvironmentVariableRequest) HasMountPath() bool`
+
+HasMountPath returns a boolean if a field has been set.
+
+### SetMountPathNil
+
+`func (o *EnvironmentVariableRequest) SetMountPathNil(b bool)`
+
+ SetMountPathNil sets the value for MountPath to be an explicit nil
+
+### UnsetMountPath
+`func (o *EnvironmentVariableRequest) UnsetMountPath()`
+
+UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

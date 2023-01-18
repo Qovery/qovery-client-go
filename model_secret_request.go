@@ -21,6 +21,8 @@ type SecretRequest struct {
 	Key string `json:"key"`
 	// value of the secret. Clear value will never be returned
 	Value string `json:"value"`
+	// should be set for file only. variable mount path make secret a file (where file should be mounted).
+	MountPath NullableString `json:"mount_path,omitempty"`
 }
 
 // NewSecretRequest instantiates a new SecretRequest object
@@ -90,6 +92,49 @@ func (o *SecretRequest) SetValue(v string) {
 	o.Value = v
 }
 
+// GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SecretRequest) GetMountPath() string {
+	if o == nil || o.MountPath.Get() == nil {
+		var ret string
+		return ret
+	}
+	return *o.MountPath.Get()
+}
+
+// GetMountPathOk returns a tuple with the MountPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SecretRequest) GetMountPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MountPath.Get(), o.MountPath.IsSet()
+}
+
+// HasMountPath returns a boolean if a field has been set.
+func (o *SecretRequest) HasMountPath() bool {
+	if o != nil && o.MountPath.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMountPath gets a reference to the given NullableString and assigns it to the MountPath field.
+func (o *SecretRequest) SetMountPath(v string) {
+	o.MountPath.Set(&v)
+}
+
+// SetMountPathNil sets the value for MountPath to be an explicit nil
+func (o *SecretRequest) SetMountPathNil() {
+	o.MountPath.Set(nil)
+}
+
+// UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+func (o *SecretRequest) UnsetMountPath() {
+	o.MountPath.Unset()
+}
+
 func (o SecretRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -97,6 +142,9 @@ func (o SecretRequest) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["value"] = o.Value
+	}
+	if o.MountPath.IsSet() {
+		toSerialize["mount_path"] = o.MountPath.Get()
 	}
 	return json.Marshal(toSerialize)
 }

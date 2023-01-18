@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **OverriddenSecret** | Pointer to [**SecretOverride**](SecretOverride.md) |  | [optional] 
 **AliasedSecret** | Pointer to [**SecretAlias**](SecretAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
+**Type** | Pointer to [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | [optional] 
 **ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
@@ -188,6 +189,31 @@ and a boolean to check if the value has been set.
 
 SetScope sets Scope field to given value.
 
+
+### GetType
+
+`func (o *Secret) GetType() APIVariableTypeEnum`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *Secret) GetTypeOk() (*APIVariableTypeEnum, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Secret) SetType(v APIVariableTypeEnum)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *Secret) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetServiceId
 

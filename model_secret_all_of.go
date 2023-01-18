@@ -22,6 +22,7 @@ type SecretAllOf struct {
 	OverriddenSecret *SecretOverride      `json:"overridden_secret,omitempty"`
 	AliasedSecret    *SecretAlias         `json:"aliased_secret,omitempty"`
 	Scope            APIVariableScopeEnum `json:"scope"`
+	Type             *APIVariableTypeEnum `json:"type,omitempty"`
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
@@ -160,6 +161,38 @@ func (o *SecretAllOf) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *SecretAllOf) GetType() APIVariableTypeEnum {
+	if o == nil || o.Type == nil {
+		var ret APIVariableTypeEnum
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretAllOf) GetTypeOk() (*APIVariableTypeEnum, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *SecretAllOf) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given APIVariableTypeEnum and assigns it to the Type field.
+func (o *SecretAllOf) SetType(v APIVariableTypeEnum) {
+	o.Type = &v
+}
+
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
 func (o *SecretAllOf) GetServiceId() string {
 	if o == nil || o.ServiceId == nil {
@@ -269,6 +302,9 @@ func (o SecretAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["scope"] = o.Scope
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.ServiceId != nil {
 		toSerialize["service_id"] = o.ServiceId

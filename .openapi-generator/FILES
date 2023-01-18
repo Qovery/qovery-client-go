@@ -77,6 +77,7 @@ api_user_sign_up.go
 client.go
 configuration.go
 docs/APIVariableScopeEnum.md
+docs/APIVariableTypeEnum.md
 docs/AccountInfo.md
 docs/AccountInfoApi.md
 docs/AccountInfoEditRequest.md
@@ -561,6 +562,7 @@ go.sum
 model_account_info.go
 model_account_info_edit_request.go
 model_api_variable_scope_enum.go
+model_api_variable_type_enum.go
 model_application.go
 model_application_advanced_settings.go
 model_application_all_of.go

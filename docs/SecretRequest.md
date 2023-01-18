@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | key is case sensitive | 
 **Value** | **string** | value of the secret. Clear value will never be returned | 
+**MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path make secret a file (where file should be mounted). | [optional] 
 
 ## Methods
 
@@ -66,6 +67,41 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
+### GetMountPath
+
+`func (o *SecretRequest) GetMountPath() string`
+
+GetMountPath returns the MountPath field if non-nil, zero value otherwise.
+
+### GetMountPathOk
+
+`func (o *SecretRequest) GetMountPathOk() (*string, bool)`
+
+GetMountPathOk returns a tuple with the MountPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMountPath
+
+`func (o *SecretRequest) SetMountPath(v string)`
+
+SetMountPath sets MountPath field to given value.
+
+### HasMountPath
+
+`func (o *SecretRequest) HasMountPath() bool`
+
+HasMountPath returns a boolean if a field has been set.
+
+### SetMountPathNil
+
+`func (o *SecretRequest) SetMountPathNil(b bool)`
+
+ SetMountPathNil sets the value for MountPath to be an explicit nil
+
+### UnsetMountPath
+`func (o *SecretRequest) UnsetMountPath()`
+
+UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
