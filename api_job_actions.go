@@ -144,6 +144,117 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRedeployJobRequest struct {
+	ctx        context.Context
+	ApiService *JobActionsApiService
+	jobId      string
+	forceEvent *JobForceEvent
+}
+
+// When filled, it indicates the target event to be deployed.   If the concerned job hasn&#39;t the target event provided, the job won&#39;t be deployed.
+func (r ApiRedeployJobRequest) ForceEvent(forceEvent JobForceEvent) ApiRedeployJobRequest {
+	r.forceEvent = &forceEvent
+	return r
+}
+
+func (r ApiRedeployJobRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployJobExecute(r)
+}
+
+/*
+RedeployJob Redeploy job
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiRedeployJobRequest
+*/
+func (a *JobActionsApiService) RedeployJob(ctx context.Context, jobId string) ApiRedeployJobRequest {
+	return ApiRedeployJobRequest{
+		ApiService: a,
+		ctx:        ctx,
+		jobId:      jobId,
+	}
+}
+
+// Execute executes the request
+//  @return Status
+func (a *JobActionsApiService) RedeployJobExecute(r ApiRedeployJobRequest) (*Status, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsApiService.RedeployJob")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobId}/redeploy"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.forceEvent != nil {
+		localVarQueryParams.Add("forceEvent", parameterToString(*r.forceEvent, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRestartJobRequest struct {
 	ctx        context.Context
 	ApiService *JobActionsApiService
@@ -162,7 +273,9 @@ func (r ApiRestartJobRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-RestartJob Restart job
+RestartJob Deprecated - Restart job
+
+**Deprecated** - Please use the "Redeploy job" endpoint now
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param jobId Job ID

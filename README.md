@@ -83,7 +83,9 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountInfoApi* | [**GetAccountInformation**](docs/AccountInfoApi.md#getaccountinformation) | **Get** /account | Get Account information
 *ApplicationActionsApi* | [**DeployApplication**](docs/ApplicationActionsApi.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
-*ApplicationActionsApi* | [**RestartApplication**](docs/ApplicationActionsApi.md#restartapplication) | **Post** /application/{applicationId}/restart | Restart application
+*ApplicationActionsApi* | [**RebootApplication**](docs/ApplicationActionsApi.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application
+*ApplicationActionsApi* | [**RedeployApplication**](docs/ApplicationActionsApi.md#redeployapplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
+*ApplicationActionsApi* | [**RestartApplication**](docs/ApplicationActionsApi.md#restartapplication) | **Post** /application/{applicationId}/restart | Deprecated - Restart application
 *ApplicationActionsApi* | [**StopApplication**](docs/ApplicationActionsApi.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
 *ApplicationConfigurationApi* | [**EditAdvancedSettings**](docs/ApplicationConfigurationApi.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
 *ApplicationConfigurationApi* | [**EditApplicationNetwork**](docs/ApplicationConfigurationApi.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
@@ -197,7 +199,9 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**StopCluster**](docs/ClustersApi.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 *ClustersApi* | [**UpdateCluster**](docs/ClustersApi.md#updatecluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/update | Update a cluster Version
 *ContainerActionsApi* | [**DeployContainer**](docs/ContainerActionsApi.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
-*ContainerActionsApi* | [**RestartContainer**](docs/ContainerActionsApi.md#restartcontainer) | **Post** /container/{containerId}/restart | Restart container
+*ContainerActionsApi* | [**RebootContainer**](docs/ContainerActionsApi.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
+*ContainerActionsApi* | [**RedeployContainer**](docs/ContainerActionsApi.md#redeploycontainer) | **Post** /container/{containerId}/redeploy | Redeploy container
+*ContainerActionsApi* | [**RestartContainer**](docs/ContainerActionsApi.md#restartcontainer) | **Post** /container/{containerId}/restart | Deprecated - Restart container
 *ContainerActionsApi* | [**StopContainer**](docs/ContainerActionsApi.md#stopcontainer) | **Post** /container/{containerId}/stop | Stop container
 *ContainerConfigurationApi* | [**EditContainerAdvancedSettings**](docs/ContainerConfigurationApi.md#editcontaineradvancedsettings) | **Put** /container/{containerId}/advancedSettings | Edit advanced settings
 *ContainerConfigurationApi* | [**EditContainerNetwork**](docs/ContainerConfigurationApi.md#editcontainernetwork) | **Put** /container/{containerId}/network | Edit Container Network
@@ -255,7 +259,9 @@ Class | Method | HTTP request | Description
 *CustomDomainApi* | [**GetCustomDomainStatus**](docs/CustomDomainApi.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
 *CustomDomainApi* | [**ListApplicationCustomDomain**](docs/CustomDomainApi.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
 *DatabaseActionsApi* | [**DeployDatabase**](docs/DatabaseActionsApi.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
-*DatabaseActionsApi* | [**RestartDatabase**](docs/DatabaseActionsApi.md#restartdatabase) | **Post** /database/{databaseId}/restart | Retart database
+*DatabaseActionsApi* | [**RebootDatabase**](docs/DatabaseActionsApi.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
+*DatabaseActionsApi* | [**RedeployDatabase**](docs/DatabaseActionsApi.md#redeploydatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
+*DatabaseActionsApi* | [**RestartDatabase**](docs/DatabaseActionsApi.md#restartdatabase) | **Post** /database/{databaseId}/restart | Deprecated - Restart database
 *DatabaseActionsApi* | [**StopDatabase**](docs/DatabaseActionsApi.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
 *DatabaseApplicationApi* | [**ListDatabaseApplication**](docs/DatabaseApplicationApi.md#listdatabaseapplication) | **Get** /database/{databaseId}/application | List applications using the database
 *DatabaseApplicationApi* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationApi.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
@@ -287,7 +293,9 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsApi* | [**CloneEnvironment**](docs/EnvironmentActionsApi.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
 *EnvironmentActionsApi* | [**DeployAllServices**](docs/EnvironmentActionsApi.md#deployallservices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
 *EnvironmentActionsApi* | [**DeployEnvironment**](docs/EnvironmentActionsApi.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
-*EnvironmentActionsApi* | [**RestartEnvironment**](docs/EnvironmentActionsApi.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Restart environment
+*EnvironmentActionsApi* | [**RebootServices**](docs/EnvironmentActionsApi.md#rebootservices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
+*EnvironmentActionsApi* | [**RedeployEnvironment**](docs/EnvironmentActionsApi.md#redeployenvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
+*EnvironmentActionsApi* | [**RestartEnvironment**](docs/EnvironmentActionsApi.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Deprecated - Restart environment
 *EnvironmentActionsApi* | [**StopEnvironment**](docs/EnvironmentActionsApi.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 *EnvironmentDeploymentHistoryApi* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryApi.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
 *EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
@@ -325,7 +333,8 @@ Class | Method | HTTP request | Description
 *GithubAppApi* | [**OrganizationGithubAppConnect**](docs/GithubAppApi.md#organizationgithubappconnect) | **Post** /organization/{organizationId}/github/connect | Connect a github account to an organization
 *GithubAppApi* | [**OrganizationGithubAppDisconnect**](docs/GithubAppApi.md#organizationgithubappdisconnect) | **Delete** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
 *JobActionsApi* | [**DeployJob**](docs/JobActionsApi.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
-*JobActionsApi* | [**RestartJob**](docs/JobActionsApi.md#restartjob) | **Post** /job/{jobId}/restart | Restart job
+*JobActionsApi* | [**RedeployJob**](docs/JobActionsApi.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
+*JobActionsApi* | [**RestartJob**](docs/JobActionsApi.md#restartjob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
 *JobActionsApi* | [**StopJob**](docs/JobActionsApi.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
 *JobConfigurationApi* | [**EditJobAdvancedSettings**](docs/JobConfigurationApi.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
 *JobConfigurationApi* | [**GetJobAdvancedSettings**](docs/JobConfigurationApi.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
@@ -629,7 +638,6 @@ Class | Method | HTTP request | Description
  - [EnvironmentLogsMessage](docs/EnvironmentLogsMessage.md)
  - [EnvironmentModeEnum](docs/EnvironmentModeEnum.md)
  - [EnvironmentResponseList](docs/EnvironmentResponseList.md)
- - [EnvironmentRestartRequest](docs/EnvironmentRestartRequest.md)
  - [EnvironmentStats](docs/EnvironmentStats.md)
  - [EnvironmentStatsResponseList](docs/EnvironmentStatsResponseList.md)
  - [EnvironmentStatusList](docs/EnvironmentStatusList.md)
@@ -786,6 +794,7 @@ Class | Method | HTTP request | Description
  - [ProjectResponseList](docs/ProjectResponseList.md)
  - [ProjectStats](docs/ProjectStats.md)
  - [ProjectStatsResponseList](docs/ProjectStatsResponseList.md)
+ - [RebootServicesRequest](docs/RebootServicesRequest.md)
  - [ReferenceObject](docs/ReferenceObject.md)
  - [ReferenceObjectStatus](docs/ReferenceObjectStatus.md)
  - [ReferenceObjectStatusResponseList](docs/ReferenceObjectStatusResponseList.md)

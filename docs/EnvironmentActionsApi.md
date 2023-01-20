@@ -8,7 +8,9 @@ Method | HTTP request | Description
 [**CloneEnvironment**](EnvironmentActionsApi.md#CloneEnvironment) | **Post** /environment/{environmentId}/clone | Clone environment
 [**DeployAllServices**](EnvironmentActionsApi.md#DeployAllServices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
 [**DeployEnvironment**](EnvironmentActionsApi.md#DeployEnvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
-[**RestartEnvironment**](EnvironmentActionsApi.md#RestartEnvironment) | **Post** /environment/{environmentId}/restart | Restart environment
+[**RebootServices**](EnvironmentActionsApi.md#RebootServices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
+[**RedeployEnvironment**](EnvironmentActionsApi.md#RedeployEnvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
+[**RestartEnvironment**](EnvironmentActionsApi.md#RestartEnvironment) | **Post** /environment/{environmentId}/restart | Deprecated - Restart environment
 [**StopEnvironment**](EnvironmentActionsApi.md#StopEnvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 
 
@@ -297,11 +299,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RestartEnvironment
+## RebootServices
 
-> Status RestartEnvironment(ctx, environmentId).EnvironmentRestartRequest(environmentRestartRequest).Execute()
+> Status RebootServices(ctx, environmentId).RebootServicesRequest(rebootServicesRequest).Execute()
 
-Restart environment
+Reboot services
+
+
 
 ### Example
 
@@ -317,11 +321,150 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    environmentRestartRequest := *openapiclient.NewEnvironmentRestartRequest() // EnvironmentRestartRequest |  (optional)
+    rebootServicesRequest := *openapiclient.NewRebootServicesRequest() // RebootServicesRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentActionsApi.RestartEnvironment(context.Background(), environmentId).EnvironmentRestartRequest(environmentRestartRequest).Execute()
+    resp, r, err := apiClient.EnvironmentActionsApi.RebootServices(context.Background(), environmentId).RebootServicesRequest(rebootServicesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.RebootServices``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RebootServices`: Status
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsApi.RebootServices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRebootServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **rebootServicesRequest** | [**RebootServicesRequest**](RebootServicesRequest.md) |  | 
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RedeployEnvironment
+
+> Status RedeployEnvironment(ctx, environmentId).Execute()
+
+Redeploy environment
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentActionsApi.RedeployEnvironment(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.RedeployEnvironment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RedeployEnvironment`: Status
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsApi.RedeployEnvironment`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRedeployEnvironmentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RestartEnvironment
+
+> Status RestartEnvironment(ctx, environmentId).Execute()
+
+Deprecated - Restart environment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentActionsApi.RestartEnvironment(context.Background(), environmentId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.RestartEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -347,7 +490,6 @@ Other parameters are passed through a pointer to a apiRestartEnvironmentRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **environmentRestartRequest** | [**EnvironmentRestartRequest**](EnvironmentRestartRequest.md) |  | 
 
 ### Return type
 
@@ -359,7 +501,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

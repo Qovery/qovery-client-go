@@ -320,7 +320,6 @@ docs/EnvironmentLogsMessage.md
 docs/EnvironmentMainCallsApi.md
 docs/EnvironmentModeEnum.md
 docs/EnvironmentResponseList.md
-docs/EnvironmentRestartRequest.md
 docs/EnvironmentSecretApi.md
 docs/EnvironmentStats.md
 docs/EnvironmentStatsResponseList.md
@@ -502,6 +501,7 @@ docs/ProjectSecretApi.md
 docs/ProjectStats.md
 docs/ProjectStatsResponseList.md
 docs/ProjectsApi.md
+docs/RebootServicesRequest.md
 docs/ReferenceObject.md
 docs/ReferenceObjectStatus.md
 docs/ReferenceObjectStatusResponseList.md
@@ -759,7 +759,6 @@ model_environment_logs_error_underlying_error.go
 model_environment_logs_message.go
 model_environment_mode_enum.go
 model_environment_response_list.go
-model_environment_restart_request.go
 model_environment_stats.go
 model_environment_stats_response_list.go
 model_environment_status_list.go
@@ -916,6 +915,7 @@ model_project_request.go
 model_project_response_list.go
 model_project_stats.go
 model_project_stats_response_list.go
+model_reboot_services_request.go
 model_reference_object.go
 model_reference_object_status.go
 model_reference_object_status_response_list.go

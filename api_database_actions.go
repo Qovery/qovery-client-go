@@ -124,6 +124,208 @@ func (a *DatabaseActionsApiService) DeployDatabaseExecute(r ApiDeployDatabaseReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRebootDatabaseRequest struct {
+	ctx        context.Context
+	ApiService *DatabaseActionsApiService
+	databaseId string
+}
+
+func (r ApiRebootDatabaseRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RebootDatabaseExecute(r)
+}
+
+/*
+RebootDatabase Retart database
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param databaseId Database ID
+ @return ApiRebootDatabaseRequest
+*/
+func (a *DatabaseActionsApiService) RebootDatabase(ctx context.Context, databaseId string) ApiRebootDatabaseRequest {
+	return ApiRebootDatabaseRequest{
+		ApiService: a,
+		ctx:        ctx,
+		databaseId: databaseId,
+	}
+}
+
+// Execute executes the request
+//  @return Status
+func (a *DatabaseActionsApiService) RebootDatabaseExecute(r ApiRebootDatabaseRequest) (*Status, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsApiService.RebootDatabase")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/database/{databaseId}/restart-service"
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRedeployDatabaseRequest struct {
+	ctx        context.Context
+	ApiService *DatabaseActionsApiService
+	databaseId string
+}
+
+func (r ApiRedeployDatabaseRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployDatabaseExecute(r)
+}
+
+/*
+RedeployDatabase Redeploy database
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param databaseId Database ID
+ @return ApiRedeployDatabaseRequest
+*/
+func (a *DatabaseActionsApiService) RedeployDatabase(ctx context.Context, databaseId string) ApiRedeployDatabaseRequest {
+	return ApiRedeployDatabaseRequest{
+		ApiService: a,
+		ctx:        ctx,
+		databaseId: databaseId,
+	}
+}
+
+// Execute executes the request
+//  @return Status
+func (a *DatabaseActionsApiService) RedeployDatabaseExecute(r ApiRedeployDatabaseRequest) (*Status, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsApiService.RedeployDatabase")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/database/{databaseId}/redeploy"
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRestartDatabaseRequest struct {
 	ctx        context.Context
 	ApiService *DatabaseActionsApiService
@@ -135,7 +337,9 @@ func (r ApiRestartDatabaseRequest) Execute() (*Status, *http.Response, error) {
 }
 
 /*
-RestartDatabase Retart database
+RestartDatabase Deprecated - Restart database
+
+**Deprecated** - Please use the "Redeploy database" endpoint now
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID

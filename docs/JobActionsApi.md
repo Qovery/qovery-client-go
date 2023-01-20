@@ -5,7 +5,8 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployJob**](JobActionsApi.md#DeployJob) | **Post** /job/{jobId}/deploy | Deploy job
-[**RestartJob**](JobActionsApi.md#RestartJob) | **Post** /job/{jobId}/restart | Restart job
+[**RedeployJob**](JobActionsApi.md#RedeployJob) | **Post** /job/{jobId}/redeploy | Redeploy job
+[**RestartJob**](JobActionsApi.md#RestartJob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
 [**StopJob**](JobActionsApi.md#StopJob) | **Post** /job/{jobId}/stop | Stop job
 
 
@@ -84,11 +85,83 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RedeployJob
+
+> Status RedeployJob(ctx, jobId).ForceEvent(forceEvent).Execute()
+
+Redeploy job
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+    forceEvent := openapiclient.JobForceEvent("START") // JobForceEvent | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobActionsApi.RedeployJob(context.Background(), jobId).ForceEvent(forceEvent).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobActionsApi.RedeployJob``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RedeployJob`: Status
+    fmt.Fprintf(os.Stdout, "Response from `JobActionsApi.RedeployJob`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRedeployJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **forceEvent** | [**JobForceEvent**](JobForceEvent.md) | When filled, it indicates the target event to be deployed.   If the concerned job hasn&#39;t the target event provided, the job won&#39;t be deployed.  | 
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RestartJob
 
 > Status RestartJob(ctx, jobId).ForceEvent(forceEvent).Execute()
 
-Restart job
+Deprecated - Restart job
+
+
 
 ### Example
 

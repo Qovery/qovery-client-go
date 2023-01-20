@@ -4817,6 +4817,8 @@ paths:
       - Environment Actions
   /environment/{environmentId}/restart:
     post:
+      description: '**Deprecated** - Please use the "Redeploy environment" endpoint
+        now'
       operationId: restartEnvironment
       parameters:
       - description: Environment ID
@@ -4828,11 +4830,6 @@ paths:
           format: uuid
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EnvironmentRestartRequest'
       responses:
         "202":
           content:
@@ -4848,7 +4845,38 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Restart environment
+      summary: Deprecated - Restart environment
+      tags:
+      - Environment Actions
+  /environment/{environmentId}/redeploy:
+    post:
+      operationId: redeployEnvironment
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Environment redeploy has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Redeploy environment
       tags:
       - Environment Actions
   /environment/{environmentId}/cancelDeployment:
@@ -5343,6 +5371,45 @@ paths:
         "409":
           description: Operation is in progress
       summary: Deploy services
+      tags:
+      - Environment Actions
+  /environment/{environmentId}/service/restart-service:
+    post:
+      description: Update and reboot the selected services
+      operationId: rebootServices
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RebootServicesRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Reboot services
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Reboot services
       tags:
       - Environment Actions
   /organization/{organizationId}/container/deploy:
@@ -7029,6 +7096,8 @@ paths:
       - Application Actions
   /application/{applicationId}/restart:
     post:
+      description: '**Deprecated** - Please use the "Redeploy application" endpoint
+        now'
       operationId: restartApplication
       parameters:
       - description: Application ID
@@ -7055,7 +7124,69 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Restart application
+      summary: Deprecated - Restart application
+      tags:
+      - Application Actions
+  /application/{applicationId}/redeploy:
+    post:
+      operationId: redeployApplication
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Application redeploy has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Redeploy application
+      tags:
+      - Application Actions
+  /application/{applicationId}/restart-service:
+    post:
+      operationId: rebootApplication
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Application reboot has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Reboot application
       tags:
       - Application Actions
   /application/{applicationId}/deploymentHistory:
@@ -8556,6 +8687,8 @@ paths:
       - Container Actions
   /container/{containerId}/restart:
     post:
+      description: '**Deprecated** - Please use the "Redeploy container" endpoint
+        now'
       operationId: restartContainer
       parameters:
       - description: Container ID
@@ -8582,7 +8715,69 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Restart container
+      summary: Deprecated - Restart container
+      tags:
+      - Container Actions
+  /container/{containerId}/redeploy:
+    post:
+      operationId: redeployContainer
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Container redeploy has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Redeploy container
+      tags:
+      - Container Actions
+  /container/{containerId}/restart-service:
+    post:
+      operationId: rebootContainer
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Container reboot has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Reboot container
       tags:
       - Container Actions
   /container/{containerId}/environmentVariable:
@@ -9931,6 +10126,7 @@ paths:
       - Database Application
   /database/{databaseId}/restart:
     post:
+      description: '**Deprecated** - Please use the "Redeploy database" endpoint now'
       operationId: restartDatabase
       parameters:
       - description: Database ID
@@ -9949,6 +10145,68 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
           description: Database  restart has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Deprecated - Restart database
+      tags:
+      - Database Actions
+  /database/{databaseId}/redeploy:
+    post:
+      operationId: redeployDatabase
+      parameters:
+      - description: Database ID
+        explode: false
+        in: path
+        name: databaseId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Database redeploy has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Redeploy database
+      tags:
+      - Database Actions
+  /database/{databaseId}/restart-service:
+    post:
+      operationId: rebootDatabase
+      parameters:
+      - description: Database ID
+        explode: false
+        in: path
+        name: databaseId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Database reboot has been requested
         "401":
           description: Access token is missing or invalid
         "403":
@@ -11183,6 +11441,7 @@ paths:
       - Job Actions
   /job/{jobId}/restart:
     post:
+      description: '**Deprecated** - Please use the "Redeploy job" endpoint now'
       operationId: restartJob
       parameters:
       - description: Job ID
@@ -11219,7 +11478,48 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Restart job
+      summary: Deprecated - Restart job
+      tags:
+      - Job Actions
+  /job/{jobId}/redeploy:
+    post:
+      operationId: redeployJob
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "When filled, it indicates the target event to be deployed. \
+          \ \nIf the concerned job hasn't the target event provided, the job won't\
+          \ be deployed.\n"
+        explode: true
+        in: query
+        name: forceEvent
+        required: false
+        schema:
+          $ref: '#/components/schemas/JobForceEvent'
+        style: form
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Job redeploy has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Redeploy job
       tags:
       - Job Actions
   /job/{jobId}/stop:
@@ -15259,14 +15559,6 @@ components:
             $ref: '#/components/schemas/Environment'
           type: array
       type: object
-    EnvironmentRestartRequest:
-      example:
-        restart_db: false
-      properties:
-        restart_db:
-          default: false
-          type: boolean
-      type: object
     EnvironmentStats:
       allOf:
       - $ref: '#/components/schemas/ReferenceObject'
@@ -17102,6 +17394,34 @@ components:
         results:
           items:
             $ref: '#/components/schemas/ProjectStats'
+          type: array
+      type: object
+    RebootServicesRequest:
+      example:
+        containerIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        databaseIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        applicationIds:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        applicationIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        databaseIds:
+          items:
+            format: uuid
+            type: string
+          type: array
+        containerIds:
+          items:
+            format: uuid
+            type: string
           type: array
       type: object
     ReferenceObject:

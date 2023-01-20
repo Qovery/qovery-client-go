@@ -451,16 +451,222 @@ func (a *EnvironmentActionsApiService) DeployEnvironmentExecute(r ApiDeployEnvir
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRestartEnvironmentRequest struct {
-	ctx                       context.Context
-	ApiService                *EnvironmentActionsApiService
-	environmentId             string
-	environmentRestartRequest *EnvironmentRestartRequest
+type ApiRebootServicesRequest struct {
+	ctx                   context.Context
+	ApiService            *EnvironmentActionsApiService
+	environmentId         string
+	rebootServicesRequest *RebootServicesRequest
 }
 
-func (r ApiRestartEnvironmentRequest) EnvironmentRestartRequest(environmentRestartRequest EnvironmentRestartRequest) ApiRestartEnvironmentRequest {
-	r.environmentRestartRequest = &environmentRestartRequest
+func (r ApiRebootServicesRequest) RebootServicesRequest(rebootServicesRequest RebootServicesRequest) ApiRebootServicesRequest {
+	r.rebootServicesRequest = &rebootServicesRequest
 	return r
+}
+
+func (r ApiRebootServicesRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RebootServicesExecute(r)
+}
+
+/*
+RebootServices Reboot services
+
+Update and reboot the selected services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiRebootServicesRequest
+*/
+func (a *EnvironmentActionsApiService) RebootServices(ctx context.Context, environmentId string) ApiRebootServicesRequest {
+	return ApiRebootServicesRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentId: environmentId,
+	}
+}
+
+// Execute executes the request
+//  @return Status
+func (a *EnvironmentActionsApiService) RebootServicesExecute(r ApiRebootServicesRequest) (*Status, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.RebootServices")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environment/{environmentId}/service/restart-service"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.rebootServicesRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRedeployEnvironmentRequest struct {
+	ctx           context.Context
+	ApiService    *EnvironmentActionsApiService
+	environmentId string
+}
+
+func (r ApiRedeployEnvironmentRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployEnvironmentExecute(r)
+}
+
+/*
+RedeployEnvironment Redeploy environment
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiRedeployEnvironmentRequest
+*/
+func (a *EnvironmentActionsApiService) RedeployEnvironment(ctx context.Context, environmentId string) ApiRedeployEnvironmentRequest {
+	return ApiRedeployEnvironmentRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentId: environmentId,
+	}
+}
+
+// Execute executes the request
+//  @return Status
+func (a *EnvironmentActionsApiService) RedeployEnvironmentExecute(r ApiRedeployEnvironmentRequest) (*Status, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.RedeployEnvironment")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environment/{environmentId}/redeploy"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRestartEnvironmentRequest struct {
+	ctx           context.Context
+	ApiService    *EnvironmentActionsApiService
+	environmentId string
 }
 
 func (r ApiRestartEnvironmentRequest) Execute() (*Status, *http.Response, error) {
@@ -468,7 +674,9 @@ func (r ApiRestartEnvironmentRequest) Execute() (*Status, *http.Response, error)
 }
 
 /*
-RestartEnvironment Restart environment
+RestartEnvironment Deprecated - Restart environment
+
+**Deprecated** - Please use the "Redeploy environment" endpoint now
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
@@ -505,7 +713,7 @@ func (a *EnvironmentActionsApiService) RestartEnvironmentExecute(r ApiRestartEnv
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -521,8 +729,6 @@ func (a *EnvironmentActionsApiService) RestartEnvironmentExecute(r ApiRestartEnv
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.environmentRestartRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
