@@ -6185,7 +6185,7 @@ paths:
           description: Access forbidden
       summary: List default cluster advanced settings
       tags:
-      - Applications
+      - Clusters
   /defaultContainerAdvancedSettings:
     get:
       operationId: getDefaultContainerAdvancedSettings
