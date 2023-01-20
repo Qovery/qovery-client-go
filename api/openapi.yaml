@@ -6169,6 +6169,23 @@ paths:
       summary: List default application advanced settings
       tags:
       - Applications
+  /defaultClusterAdvancedSettings:
+    get:
+      operationId: getDefaultClusterAdvancedSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterAdvancedSettings'
+          description: Default cluster advanced settings
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: List default cluster advanced settings
+      tags:
+      - Applications
   /defaultContainerAdvancedSettings:
     get:
       operationId: getDefaultContainerAdvancedSettings

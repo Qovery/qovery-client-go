@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateApplication**](ApplicationsApi.md#CreateApplication) | **Post** /environment/{environmentId}/application | Create an application
 [**GetDefaultApplicationAdvancedSettings**](ApplicationsApi.md#GetDefaultApplicationAdvancedSettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
+[**GetDefaultClusterAdvancedSettings**](ApplicationsApi.md#GetDefaultClusterAdvancedSettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
 [**GetEnvironmentApplicationCurrentScale**](ApplicationsApi.md#GetEnvironmentApplicationCurrentScale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
 [**GetEnvironmentApplicationCurrentStorage**](ApplicationsApi.md#GetEnvironmentApplicationCurrentStorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
 [**GetEnvironmentApplicationStatus**](ApplicationsApi.md#GetEnvironmentApplicationStatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
@@ -128,6 +129,65 @@ Other parameters are passed through a pointer to a apiGetDefaultApplicationAdvan
 ### Return type
 
 [**ApplicationAdvancedSettings**](ApplicationAdvancedSettings.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDefaultClusterAdvancedSettings
+
+> ClusterAdvancedSettings GetDefaultClusterAdvancedSettings(ctx).Execute()
+
+List default cluster advanced settings
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationsApi.GetDefaultClusterAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.GetDefaultClusterAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultClusterAdvancedSettings`: ClusterAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.GetDefaultClusterAdvancedSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDefaultClusterAdvancedSettingsRequest struct via the builder pattern
+
+
+### Return type
+
+[**ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
 
 ### Authorization
 
