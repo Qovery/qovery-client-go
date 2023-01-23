@@ -39,14 +39,6 @@
 
 * `STOP_QUEUED` (value: `"STOP_QUEUED"`)
 
-* `RESTART_QUEUED` (value: `"RESTART_QUEUED"`)
-
-* `RESTARTING` (value: `"RESTARTING"`)
-
-* `RESTARTED` (value: `"RESTARTED"`)
-
-* `RESTARTED_ERROR` (value: `"RESTARTED_ERROR"`)
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
