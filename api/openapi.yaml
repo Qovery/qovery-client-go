@@ -13940,8 +13940,9 @@ components:
       type: object
     ClusterAdvancedSettings:
       example:
-        loki.log_retention_in_week: 0
+        aws.cloudwatch.eks_logs_retention_days: 0
         aws.vpc.flow_logs_retention_days: 6
+        loki.log_retention_in_week: 5
         aws.vpc.enable_s3_flow_logs: false
         registry.image_retention_time: 1
         load_balancer.size: lb-s
@@ -13950,9 +13951,9 @@ components:
           value: value
           key: key
       properties:
-        loki.log_retention_in_week:
-          default: 12
-          description: For how long in week loki is going to keep logs of your applications
+        aws.cloudwatch.eks_logs_retention_days:
+          default: 90
+          description: Set the number of retention days for EKS Cloudwatch logs
           type: integer
         aws.vpc.enable_s3_flow_logs:
           default: false
@@ -13967,6 +13968,10 @@ components:
           default: 31536000
           description: Configure the number of seconds before cleaning images in the
             registry
+          type: integer
+        loki.log_retention_in_week:
+          default: 12
+          description: For how long in week loki is going to keep logs of your applications
           type: integer
         cloud_provider_container_registry_tags:
           $ref: '#/components/schemas/ClusterAdvancedSettings_cloud_provider_container_registry_tags'
