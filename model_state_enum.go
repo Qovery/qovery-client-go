@@ -39,6 +39,10 @@ const (
 	STATEENUM_STOPPING          StateEnum = "STOPPING"
 	STATEENUM_STOP_ERROR        StateEnum = "STOP_ERROR"
 	STATEENUM_STOP_QUEUED       StateEnum = "STOP_QUEUED"
+	STATEENUM_RESTART_QUEUED    StateEnum = "RESTART_QUEUED"
+	STATEENUM_RESTARTING        StateEnum = "RESTARTING"
+	STATEENUM_RESTARTED         StateEnum = "RESTARTED"
+	STATEENUM_RESTARTED_ERROR   StateEnum = "RESTARTED_ERROR"
 )
 
 // All allowed values of StateEnum enum
@@ -61,6 +65,10 @@ var AllowedStateEnumEnumValues = []StateEnum{
 	"STOPPING",
 	"STOP_ERROR",
 	"STOP_QUEUED",
+	"RESTART_QUEUED",
+	"RESTARTING",
+	"RESTARTED",
+	"RESTARTED_ERROR",
 }
 
 func (v *StateEnum) UnmarshalJSON(src []byte) error {
