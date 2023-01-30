@@ -26,6 +26,7 @@ type CloudProviderApiService service
 type ApiListAWSEKSInstanceTypeRequest struct {
 	ctx        context.Context
 	ApiService *CloudProviderApiService
+	region     string
 }
 
 func (r ApiListAWSEKSInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
@@ -36,12 +37,14 @@ func (r ApiListAWSEKSInstanceTypeRequest) Execute() (*ClusterInstanceTypeRespons
 ListAWSEKSInstanceType List AWS EKS available instance types
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region region name
  @return ApiListAWSEKSInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListAWSEKSInstanceType(ctx context.Context) ApiListAWSEKSInstanceTypeRequest {
+func (a *CloudProviderApiService) ListAWSEKSInstanceType(ctx context.Context, region string) ApiListAWSEKSInstanceTypeRequest {
 	return ApiListAWSEKSInstanceTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
+		region:     region,
 	}
 }
 
@@ -61,6 +64,7 @@ func (a *CloudProviderApiService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 	}
 
 	localVarPath := localBasePath + "/aws/eks/instanceType/{region}"
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterToString(r.region, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

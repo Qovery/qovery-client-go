@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## ListAWSEKSInstanceType
 
-> ClusterInstanceTypeResponseList ListAWSEKSInstanceType(ctx).Execute()
+> ClusterInstanceTypeResponseList ListAWSEKSInstanceType(ctx, region).Execute()
 
 List AWS EKS available instance types
 
@@ -39,10 +39,11 @@ import (
 )
 
 func main() {
+    region := "us-east-2" // string | region name
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderApi.ListAWSEKSInstanceType(context.Background()).Execute()
+    resp, r, err := apiClient.CloudProviderApi.ListAWSEKSInstanceType(context.Background(), region).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListAWSEKSInstanceType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,11 +55,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**region** | **string** | region name | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListAWSEKSInstanceTypeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

@@ -2924,7 +2924,16 @@ paths:
   /aws/eks/instanceType/{region}:
     get:
       operationId: listAWSEKSInstanceType
-      parameters: []
+      parameters:
+      - description: region name
+        explode: false
+        in: path
+        name: region
+        required: true
+        schema:
+          example: us-east-2
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -12420,6 +12429,16 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+      style: simple
+    region:
+      description: region name
+      explode: false
+      in: path
+      name: region
+      required: true
+      schema:
+        example: us-east-2
         type: string
       style: simple
     jobId:
