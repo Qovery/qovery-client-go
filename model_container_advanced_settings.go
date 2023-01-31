@@ -42,6 +42,10 @@ type ContainerAdvancedSettings struct {
 	NetworkIngressProxyReadTimeoutSeconds *int32 `json:"network.ingress.proxy_read_timeout_seconds,omitempty"`
 	// list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.
 	NetworkIngressWhitelistSourceRange *string `json:"network.ingress.whitelist_source_range,omitempty"`
+	// list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1
+	NetworkIngressDenylistSourceRange *string `json:"network.ingress.denylist_source_range,omitempty"`
+	// Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
+	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
 	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
 	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
 	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
@@ -108,6 +112,10 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
+	var networkIngressDenylistSourceRange string = ""
+	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
+	var networkIngressBasicAuthEnvVar string = ""
+	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -174,6 +182,10 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
+	var networkIngressDenylistSourceRange string = ""
+	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
+	var networkIngressBasicAuthEnvVar string = ""
+	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -685,6 +697,70 @@ func (o *ContainerAdvancedSettings) SetNetworkIngressWhitelistSourceRange(v stri
 	o.NetworkIngressWhitelistSourceRange = &v
 }
 
+// GetNetworkIngressDenylistSourceRange returns the NetworkIngressDenylistSourceRange field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetNetworkIngressDenylistSourceRange() string {
+	if o == nil || o.NetworkIngressDenylistSourceRange == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressDenylistSourceRange
+}
+
+// GetNetworkIngressDenylistSourceRangeOk returns a tuple with the NetworkIngressDenylistSourceRange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetNetworkIngressDenylistSourceRangeOk() (*string, bool) {
+	if o == nil || o.NetworkIngressDenylistSourceRange == nil {
+		return nil, false
+	}
+	return o.NetworkIngressDenylistSourceRange, true
+}
+
+// HasNetworkIngressDenylistSourceRange returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkIngressDenylistSourceRange() bool {
+	if o != nil && o.NetworkIngressDenylistSourceRange != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressDenylistSourceRange gets a reference to the given string and assigns it to the NetworkIngressDenylistSourceRange field.
+func (o *ContainerAdvancedSettings) SetNetworkIngressDenylistSourceRange(v string) {
+	o.NetworkIngressDenylistSourceRange = &v
+}
+
+// GetNetworkIngressBasicAuthEnvVar returns the NetworkIngressBasicAuthEnvVar field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetNetworkIngressBasicAuthEnvVar() string {
+	if o == nil || o.NetworkIngressBasicAuthEnvVar == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressBasicAuthEnvVar
+}
+
+// GetNetworkIngressBasicAuthEnvVarOk returns a tuple with the NetworkIngressBasicAuthEnvVar field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetNetworkIngressBasicAuthEnvVarOk() (*string, bool) {
+	if o == nil || o.NetworkIngressBasicAuthEnvVar == nil {
+		return nil, false
+	}
+	return o.NetworkIngressBasicAuthEnvVar, true
+}
+
+// HasNetworkIngressBasicAuthEnvVar returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkIngressBasicAuthEnvVar() bool {
+	if o != nil && o.NetworkIngressBasicAuthEnvVar != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressBasicAuthEnvVar gets a reference to the given string and assigns it to the NetworkIngressBasicAuthEnvVar field.
+func (o *ContainerAdvancedSettings) SetNetworkIngressBasicAuthEnvVar(v string) {
+	o.NetworkIngressBasicAuthEnvVar = &v
+}
+
 // GetReadinessProbeType returns the ReadinessProbeType field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetReadinessProbeType() string {
 	if o == nil || o.ReadinessProbeType == nil {
@@ -1179,6 +1255,12 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressWhitelistSourceRange != nil {
 		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange
+	}
+	if o.NetworkIngressDenylistSourceRange != nil {
+		toSerialize["network.ingress.denylist_source_range"] = o.NetworkIngressDenylistSourceRange
+	}
+	if o.NetworkIngressBasicAuthEnvVar != nil {
+		toSerialize["network.ingress.basic_auth_env_var"] = o.NetworkIngressBasicAuthEnvVar
 	}
 	if o.ReadinessProbeType != nil {
 		toSerialize["readiness_probe.type"] = o.ReadinessProbeType

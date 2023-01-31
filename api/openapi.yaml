@@ -12700,12 +12700,14 @@ components:
         network.ingress.keepalive_time_seconds: 2
         liveness_probe.timeout_seconds: 4
         deployment.termination_grace_period_seconds: 6
+        network.ingress.denylist_source_range: network.ingress.denylist_source_range
         liveness_probe.period_seconds: 1
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
         readiness_probe.initial_delay_seconds: 7
         readiness_probe.timeout_seconds: 1
+        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 5
         liveness_probe.type: TCP
         liveness_probe.success_threshold: 5
@@ -12799,6 +12801,17 @@ components:
             This property can be used to whitelist source IP ranges for ingress proxy.\n\
             The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
             To allow all source ranges, set 0.0.0.0/0.\n"
+          type: string
+        network.ingress.denylist_source_range:
+          default: ""
+          description: "list of source ranges to deny access to ingress proxy. \n\
+            This property can be used to blacklist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n"
+          type: string
+        network.ingress.basic_auth_env_var:
+          default: ""
+          description: |
+            Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command.
           type: string
         readiness_probe.type:
           default: TCP
@@ -14084,12 +14097,14 @@ components:
         network.ingress.keepalive_time_seconds: 5
         liveness_probe.timeout_seconds: 7
         deployment.termination_grace_period_seconds: 0
+        network.ingress.denylist_source_range: network.ingress.denylist_source_range
         liveness_probe.period_seconds: 6
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
         readiness_probe.initial_delay_seconds: 2
         readiness_probe.timeout_seconds: 7
+        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 6
         liveness_probe.type: TCP
         liveness_probe.success_threshold: 1
@@ -14172,6 +14187,17 @@ components:
             This property can be used to whitelist source IP ranges for ingress proxy.\n\
             The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
             To allow all source ranges, set 0.0.0.0/0.\n"
+          type: string
+        network.ingress.denylist_source_range:
+          default: ""
+          description: "list of source ranges to deny access to ingress proxy. \n\
+            This property can be used to blacklist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n"
+          type: string
+        network.ingress.basic_auth_env_var:
+          default: ""
+          description: |
+            Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
           type: string
         readiness_probe.type:
           default: TCP

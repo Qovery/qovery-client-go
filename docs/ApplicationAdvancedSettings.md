@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **NetworkIngressProxySendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the proxied server | [optional] [default to 60]
 **NetworkIngressProxyReadTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for reading a response from the proxied server | [optional] [default to 60]
 **NetworkIngressWhitelistSourceRange** | Pointer to **string** | list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.  | [optional] [default to "0.0.0.0/0"]
+**NetworkIngressDenylistSourceRange** | Pointer to **string** | list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1  | [optional] [default to ""]
+**NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command.  | [optional] [default to ""]
 **ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
 **ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
 **ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
@@ -480,6 +482,56 @@ SetNetworkIngressWhitelistSourceRange sets NetworkIngressWhitelistSourceRange fi
 `func (o *ApplicationAdvancedSettings) HasNetworkIngressWhitelistSourceRange() bool`
 
 HasNetworkIngressWhitelistSourceRange returns a boolean if a field has been set.
+
+### GetNetworkIngressDenylistSourceRange
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressDenylistSourceRange() string`
+
+GetNetworkIngressDenylistSourceRange returns the NetworkIngressDenylistSourceRange field if non-nil, zero value otherwise.
+
+### GetNetworkIngressDenylistSourceRangeOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressDenylistSourceRangeOk() (*string, bool)`
+
+GetNetworkIngressDenylistSourceRangeOk returns a tuple with the NetworkIngressDenylistSourceRange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressDenylistSourceRange
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressDenylistSourceRange(v string)`
+
+SetNetworkIngressDenylistSourceRange sets NetworkIngressDenylistSourceRange field to given value.
+
+### HasNetworkIngressDenylistSourceRange
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressDenylistSourceRange() bool`
+
+HasNetworkIngressDenylistSourceRange returns a boolean if a field has been set.
+
+### GetNetworkIngressBasicAuthEnvVar
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressBasicAuthEnvVar() string`
+
+GetNetworkIngressBasicAuthEnvVar returns the NetworkIngressBasicAuthEnvVar field if non-nil, zero value otherwise.
+
+### GetNetworkIngressBasicAuthEnvVarOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressBasicAuthEnvVarOk() (*string, bool)`
+
+GetNetworkIngressBasicAuthEnvVarOk returns a tuple with the NetworkIngressBasicAuthEnvVar field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressBasicAuthEnvVar
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressBasicAuthEnvVar(v string)`
+
+SetNetworkIngressBasicAuthEnvVar sets NetworkIngressBasicAuthEnvVar field to given value.
+
+### HasNetworkIngressBasicAuthEnvVar
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressBasicAuthEnvVar() bool`
+
+HasNetworkIngressBasicAuthEnvVar returns a boolean if a field has been set.
 
 ### GetReadinessProbeType
 
