@@ -38,7 +38,10 @@ type ApplicationRequest struct {
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
 	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
 	// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
-	AutoPreview *bool `json:"auto_preview,omitempty"`
+	AutoPreview *bool    `json:"auto_preview,omitempty"`
+	Arguments   []string `json:"arguments,omitempty"`
+	// optional entrypoint when launching container
+	Entrypoint *string `json:"entrypoint,omitempty"`
 }
 
 // NewApplicationRequest instantiates a new ApplicationRequest object
@@ -549,6 +552,70 @@ func (o *ApplicationRequest) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
+// GetArguments returns the Arguments field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetArguments() []string {
+	if o == nil || o.Arguments == nil {
+		var ret []string
+		return ret
+	}
+	return o.Arguments
+}
+
+// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetArgumentsOk() ([]string, bool) {
+	if o == nil || o.Arguments == nil {
+		return nil, false
+	}
+	return o.Arguments, true
+}
+
+// HasArguments returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasArguments() bool {
+	if o != nil && o.Arguments != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetArguments gets a reference to the given []string and assigns it to the Arguments field.
+func (o *ApplicationRequest) SetArguments(v []string) {
+	o.Arguments = v
+}
+
+// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetEntrypoint() string {
+	if o == nil || o.Entrypoint == nil {
+		var ret string
+		return ret
+	}
+	return *o.Entrypoint
+}
+
+// GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetEntrypointOk() (*string, bool) {
+	if o == nil || o.Entrypoint == nil {
+		return nil, false
+	}
+	return o.Entrypoint, true
+}
+
+// HasEntrypoint returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasEntrypoint() bool {
+	if o != nil && o.Entrypoint != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
+func (o *ApplicationRequest) SetEntrypoint(v string) {
+	o.Entrypoint = &v
+}
+
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Storage != nil {
@@ -592,6 +659,12 @@ func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
+	}
+	if o.Arguments != nil {
+		toSerialize["arguments"] = o.Arguments
+	}
+	if o.Entrypoint != nil {
+		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	return json.Marshal(toSerialize)
 }

@@ -18212,6 +18212,13 @@ components:
           items:
             $ref: '#/components/schemas/ServicePort'
           type: array
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
       type: object
     ApplicationEditRequest_allOf:
       properties:
@@ -18266,6 +18273,13 @@ components:
           items:
             $ref: '#/components/schemas/ServicePort'
           type: array
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
       type: object
     ServicePortRequest_ports_inner:
       properties:
@@ -18344,6 +18358,13 @@ components:
             \ be automatically cloned at each pull request.  \nIf not specified, it\
             \ takes the value of the `auto_preview` property from the associated environment.\n"
           type: boolean
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
       required:
       - git_repository
       - name

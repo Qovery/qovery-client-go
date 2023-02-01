@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
+**Arguments** | Pointer to **[]string** |  | [optional] 
+**Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 
 ## Methods
 
@@ -355,6 +357,56 @@ SetAutoPreview sets AutoPreview field to given value.
 `func (o *ApplicationRequestAllOf) HasAutoPreview() bool`
 
 HasAutoPreview returns a boolean if a field has been set.
+
+### GetArguments
+
+`func (o *ApplicationRequestAllOf) GetArguments() []string`
+
+GetArguments returns the Arguments field if non-nil, zero value otherwise.
+
+### GetArgumentsOk
+
+`func (o *ApplicationRequestAllOf) GetArgumentsOk() (*[]string, bool)`
+
+GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArguments
+
+`func (o *ApplicationRequestAllOf) SetArguments(v []string)`
+
+SetArguments sets Arguments field to given value.
+
+### HasArguments
+
+`func (o *ApplicationRequestAllOf) HasArguments() bool`
+
+HasArguments returns a boolean if a field has been set.
+
+### GetEntrypoint
+
+`func (o *ApplicationRequestAllOf) GetEntrypoint() string`
+
+GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
+
+### GetEntrypointOk
+
+`func (o *ApplicationRequestAllOf) GetEntrypointOk() (*string, bool)`
+
+GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntrypoint
+
+`func (o *ApplicationRequestAllOf) SetEntrypoint(v string)`
+
+SetEntrypoint sets Entrypoint field to given value.
+
+### HasEntrypoint
+
+`func (o *ApplicationRequestAllOf) HasEntrypoint() bool`
+
+HasEntrypoint returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
