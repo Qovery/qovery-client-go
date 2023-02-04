@@ -17292,6 +17292,7 @@ components:
           type: boolean
         renewal_at:
           format: date-time
+          nullable: true
           readOnly: true
           type: string
       type: object

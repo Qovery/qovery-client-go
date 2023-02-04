@@ -18,13 +18,13 @@ import (
 
 // PaidUsage struct for PaidUsage
 type PaidUsage struct {
-	MaxDeploymentsPerMonth *int32     `json:"max_deployments_per_month,omitempty"`
-	ConsumedDeployments    *int32     `json:"consumed_deployments,omitempty"`
-	MonthlyPlanCost        *float32   `json:"monthly_plan_cost,omitempty"`
-	MonthlyPlanCostInCents *int32     `json:"monthly_plan_cost_in_cents,omitempty"`
-	RemainingDeployments   *int32     `json:"remaining_deployments,omitempty"`
-	DeploymentsExceeded    *bool      `json:"deployments_exceeded,omitempty"`
-	RenewalAt              *time.Time `json:"renewal_at,omitempty"`
+	MaxDeploymentsPerMonth *int32       `json:"max_deployments_per_month,omitempty"`
+	ConsumedDeployments    *int32       `json:"consumed_deployments,omitempty"`
+	MonthlyPlanCost        *float32     `json:"monthly_plan_cost,omitempty"`
+	MonthlyPlanCostInCents *int32       `json:"monthly_plan_cost_in_cents,omitempty"`
+	RemainingDeployments   *int32       `json:"remaining_deployments,omitempty"`
+	DeploymentsExceeded    *bool        `json:"deployments_exceeded,omitempty"`
+	RenewalAt              NullableTime `json:"renewal_at,omitempty"`
 }
 
 // NewPaidUsage instantiates a new PaidUsage object
@@ -236,36 +236,47 @@ func (o *PaidUsage) SetDeploymentsExceeded(v bool) {
 	o.DeploymentsExceeded = &v
 }
 
-// GetRenewalAt returns the RenewalAt field value if set, zero value otherwise.
+// GetRenewalAt returns the RenewalAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PaidUsage) GetRenewalAt() time.Time {
-	if o == nil || o.RenewalAt == nil {
+	if o == nil || o.RenewalAt.Get() == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.RenewalAt
+	return *o.RenewalAt.Get()
 }
 
 // GetRenewalAtOk returns a tuple with the RenewalAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PaidUsage) GetRenewalAtOk() (*time.Time, bool) {
-	if o == nil || o.RenewalAt == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RenewalAt, true
+	return o.RenewalAt.Get(), o.RenewalAt.IsSet()
 }
 
 // HasRenewalAt returns a boolean if a field has been set.
 func (o *PaidUsage) HasRenewalAt() bool {
-	if o != nil && o.RenewalAt != nil {
+	if o != nil && o.RenewalAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRenewalAt gets a reference to the given time.Time and assigns it to the RenewalAt field.
+// SetRenewalAt gets a reference to the given NullableTime and assigns it to the RenewalAt field.
 func (o *PaidUsage) SetRenewalAt(v time.Time) {
-	o.RenewalAt = &v
+	o.RenewalAt.Set(&v)
+}
+
+// SetRenewalAtNil sets the value for RenewalAt to be an explicit nil
+func (o *PaidUsage) SetRenewalAtNil() {
+	o.RenewalAt.Set(nil)
+}
+
+// UnsetRenewalAt ensures that no value is present for RenewalAt, not even an explicit nil
+func (o *PaidUsage) UnsetRenewalAt() {
+	o.RenewalAt.Unset()
 }
 
 func (o PaidUsage) MarshalJSON() ([]byte, error) {
@@ -288,8 +299,8 @@ func (o PaidUsage) MarshalJSON() ([]byte, error) {
 	if o.DeploymentsExceeded != nil {
 		toSerialize["deployments_exceeded"] = o.DeploymentsExceeded
 	}
-	if o.RenewalAt != nil {
-		toSerialize["renewal_at"] = o.RenewalAt
+	if o.RenewalAt.IsSet() {
+		toSerialize["renewal_at"] = o.RenewalAt.Get()
 	}
 	return json.Marshal(toSerialize)
 }

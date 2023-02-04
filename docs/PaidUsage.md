@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **MonthlyPlanCostInCents** | Pointer to **int32** |  | [optional] 
 **RemainingDeployments** | Pointer to **int32** |  | [optional] 
 **DeploymentsExceeded** | Pointer to **bool** |  | [optional] 
-**RenewalAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**RenewalAt** | Pointer to **NullableTime** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -206,6 +206,16 @@ SetRenewalAt sets RenewalAt field to given value.
 
 HasRenewalAt returns a boolean if a field has been set.
 
+### SetRenewalAtNil
+
+`func (o *PaidUsage) SetRenewalAtNil(b bool)`
+
+ SetRenewalAtNil sets the value for RenewalAt to be an explicit nil
+
+### UnsetRenewalAt
+`func (o *PaidUsage) UnsetRenewalAt()`
+
+UnsetRenewalAt ensures that no value is present for RenewalAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
