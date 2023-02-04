@@ -18218,6 +18218,7 @@ components:
           type: array
         entrypoint:
           description: optional entrypoint when launching container
+          nullable: true
           type: string
       type: object
     ApplicationEditRequest_allOf:
