@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
-**Entrypoint** | Pointer to **NullableString** | optional entrypoint when launching container | [optional] 
+**Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 
 ## Methods
 
@@ -522,16 +522,6 @@ SetEntrypoint sets Entrypoint field to given value.
 
 HasEntrypoint returns a boolean if a field has been set.
 
-### SetEntrypointNil
-
-`func (o *ApplicationAllOf) SetEntrypointNil(b bool)`
-
- SetEntrypointNil sets the value for Entrypoint to be an explicit nil
-
-### UnsetEntrypoint
-`func (o *ApplicationAllOf) UnsetEntrypoint()`
-
-UnsetEntrypoint ensures that no value is present for Entrypoint, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

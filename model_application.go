@@ -50,7 +50,7 @@ type Application struct {
 	Ports       []ServicePort `json:"ports,omitempty"`
 	Arguments   []string      `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
-	Entrypoint NullableString `json:"entrypoint,omitempty"`
+	Entrypoint *string `json:"entrypoint,omitempty"`
 }
 
 // NewApplication instantiates a new Application object
@@ -777,47 +777,36 @@ func (o *Application) SetArguments(v []string) {
 	o.Arguments = v
 }
 
-// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
 func (o *Application) GetEntrypoint() string {
-	if o == nil || o.Entrypoint.Get() == nil {
+	if o == nil || o.Entrypoint == nil {
 		var ret string
 		return ret
 	}
-	return *o.Entrypoint.Get()
+	return *o.Entrypoint
 }
 
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Application) GetEntrypointOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Entrypoint == nil {
 		return nil, false
 	}
-	return o.Entrypoint.Get(), o.Entrypoint.IsSet()
+	return o.Entrypoint, true
 }
 
 // HasEntrypoint returns a boolean if a field has been set.
 func (o *Application) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint.IsSet() {
+	if o != nil && o.Entrypoint != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetEntrypoint gets a reference to the given NullableString and assigns it to the Entrypoint field.
+// SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
 func (o *Application) SetEntrypoint(v string) {
-	o.Entrypoint.Set(&v)
-}
-
-// SetEntrypointNil sets the value for Entrypoint to be an explicit nil
-func (o *Application) SetEntrypointNil() {
-	o.Entrypoint.Set(nil)
-}
-
-// UnsetEntrypoint ensures that no value is present for Entrypoint, not even an explicit nil
-func (o *Application) UnsetEntrypoint() {
-	o.Entrypoint.Unset()
+	o.Entrypoint = &v
 }
 
 func (o Application) MarshalJSON() ([]byte, error) {
@@ -885,8 +874,8 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	if o.Arguments != nil {
 		toSerialize["arguments"] = o.Arguments
 	}
-	if o.Entrypoint.IsSet() {
-		toSerialize["entrypoint"] = o.Entrypoint.Get()
+	if o.Entrypoint != nil {
+		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	return json.Marshal(toSerialize)
 }
