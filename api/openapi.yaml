@@ -17115,6 +17115,7 @@ components:
           description: name is case insensitive
           type: string
         description:
+          nullable: true
           type: string
         plan:
           $ref: '#/components/schemas/PlanEnum'
