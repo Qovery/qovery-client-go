@@ -47,6 +47,7 @@ tags:
 - name: Container Registry
 - name: Container Secret
 - name: Containers
+- name: Deployment Stage Main Calls
 - name: Job
 - name: Job Actions
 - name: Job Configuration
@@ -4686,9 +4687,9 @@ paths:
       summary: Get environment statuses with services status
       tags:
       - Environment Main Calls
-  /environment/{environmentId}/deploymentRule:
+  /environment/{environmentId}/deploymentStage:
     get:
-      operationId: getEnvironmentDeploymentRule
+      operationId: ListEnvironmentDeploymentStage
       parameters:
       - description: Environment ID
         explode: false
@@ -4704,17 +4705,153 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnvironmentDeploymentRule'
-          description: Get deployment rule
+                $ref: '#/components/schemas/DeploymentStageResponseList'
+          description: List deployment stage
         "401":
           description: Access token is missing or invalid
         "403":
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Get environment deployment rule
+      summary: List environment deployment stage
       tags:
-      - Environment Deployment Rule
+      - Deployment Stage Main Calls
+    post:
+      operationId: CreateEnvironmentDeploymentStage
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentStageResponse'
+          description: created deployment stage
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create environment deployment stage
+      tags:
+      - Deployment Stage Main Calls
+  /deploymentStage/{deploymentStageId}:
+    delete:
+      operationId: DeleteDeploymentStage
+      parameters: []
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete deployment stage
+      tags:
+      - Deployment Stage Main Calls
+    put:
+      operationId: EditDeploymentStage
+      parameters:
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: deploymentStageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentStageRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentStageResponse'
+          description: created deployment stage
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit deployment stage
+      tags:
+      - Deployment Stage Main Calls
+  /deploymentStage/{deploymentStageId}/service/{serviceId}:
+    put:
+      operationId: AttachServiceToDeploymentStage
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Attach service to deployment stage
+      tags:
+      - Deployment Stage Main Calls
+  /deploymentStage/{deploymentStageId}/moveBefore/{stageId}:
+    put:
+      operationId: MoveDeploymentStage
+      parameters:
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: stageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentStageResponseList'
+          description: List deployment stage
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Move deployment stage before requested stage
+      tags:
+      - Deployment Stage Main Calls
   /environment/{environmentId}/deploymentRule/{deploymentRuleId}:
     put:
       operationId: editEnvironmentDeploymentRule
@@ -16068,6 +16205,41 @@ components:
       - UNKNOWN
       - VOIDED
       type: string
+    DeploymentStageRequest:
+      example:
+        name: name
+        description: description
+      properties:
+        name:
+          description: The name of the deployment stage
+          type: string
+        description:
+          description: free test describing this stage
+          type: string
+      type: object
+    DeploymentStageResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentStageResponse_allOf'
+    DeploymentStageResponseList:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/DeploymentStageResponse'
+          type: array
+      type: object
+    DeploymentStageServiceResponseList:
+      items:
+        $ref: '#/components/schemas/DeploymentStageServiceResponse'
+      type: array
+    DeploymentStageServiceResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/DeploymentStageServiceResponse_allOf'
     JobRequest:
       allOf:
       - $ref: '#/components/schemas/JobRequest_allOf'
@@ -19523,6 +19695,33 @@ components:
       - total
       - total_in_cents
       type: object
+    DeploymentStageResponse_allOf:
+      properties:
+        environment:
+          $ref: '#/components/schemas/ReferenceObject'
+        name:
+          description: name is case insensitive
+          type: string
+        description:
+          type: string
+        deployment_order:
+          description: Position of the deployment stage within the environment
+          example: 1
+          type: integer
+        services:
+          items:
+            $ref: '#/components/schemas/DeploymentStageServiceResponse'
+          type: array
+      required:
+      - environment
+      type: object
+    DeploymentStageServiceResponse_allOf:
+      properties:
+        service_id:
+          description: id of the service attached to the stage
+          format: uuid
+          type: string
+      type: object
     JobRequest_allOf_source_image:
       nullable: true
       properties:
@@ -20188,6 +20387,9 @@ x-tagGroups:
   - Environment Deployment Rule
   - Environment Variable
   - Environment Secret
+- name: Deployment Stage
+  tags:
+  - Deployment Stage Main Calls
 - name: Application
   tags:
   - Application Main Calls

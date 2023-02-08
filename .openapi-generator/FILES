@@ -41,6 +41,7 @@ api_database_main_calls.go
 api_database_metrics.go
 api_databases.go
 api_dependency.go
+api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
 api_environment_deployment_history.go
@@ -274,6 +275,13 @@ docs/DeploymentHistoryStatusEnum.md
 docs/DeploymentRestrictionModeEnum.md
 docs/DeploymentRestrictionTypeEnum.md
 docs/DeploymentRuleRequest.md
+docs/DeploymentStageMainCallsApi.md
+docs/DeploymentStageRequest.md
+docs/DeploymentStageResponse.md
+docs/DeploymentStageResponseAllOf.md
+docs/DeploymentStageResponseList.md
+docs/DeploymentStageServiceResponse.md
+docs/DeploymentStageServiceResponseAllOf.md
 docs/DoCredentialsRequest.md
 docs/Environment.md
 docs/EnvironmentActionsApi.md
@@ -719,6 +727,12 @@ model_deployment_history_status_enum.go
 model_deployment_restriction_mode_enum.go
 model_deployment_restriction_type_enum.go
 model_deployment_rule_request.go
+model_deployment_stage_request.go
+model_deployment_stage_response.go
+model_deployment_stage_response_all_of.go
+model_deployment_stage_response_list.go
+model_deployment_stage_service_response.go
+model_deployment_stage_service_response_all_of.go
 model_do_credentials_request.go
 model_environment.go
 model_environment_all_of.go

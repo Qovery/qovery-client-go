@@ -289,6 +289,12 @@ Class | Method | HTTP request | Description
 *DependencyApi* | [**CreateApplicationDependency**](docs/DependencyApi.md#createapplicationdependency) | **Post** /application/{applicationId}/dependency/{targetApplicationId} | Add application dependency to this application.
 *DependencyApi* | [**ListApplicationDependency**](docs/DependencyApi.md#listapplicationdependency) | **Get** /application/{applicationId}/dependency | List application dependencies
 *DependencyApi* | [**RemoveApplicationDependency**](docs/DependencyApi.md#removeapplicationdependency) | **Delete** /application/{applicationId}/dependency/{targetApplicationId} | Remove application dependency to this application.
+*DeploymentStageMainCallsApi* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsApi.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
+*DeploymentStageMainCallsApi* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
+*DeploymentStageMainCallsApi* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsApi.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
+*DeploymentStageMainCallsApi* | [**EditDeploymentStage**](docs/DeploymentStageMainCallsApi.md#editdeploymentstage) | **Put** /deploymentStage/{deploymentStageId} | Edit deployment stage
+*DeploymentStageMainCallsApi* | [**ListEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#listenvironmentdeploymentstage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
+*DeploymentStageMainCallsApi* | [**MoveDeploymentStage**](docs/DeploymentStageMainCallsApi.md#movedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
 *EnvironmentApi* | [**DeployAllApplications**](docs/EnvironmentApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsApi* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsApi.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsApi* | [**CloneEnvironment**](docs/EnvironmentActionsApi.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
@@ -300,7 +306,6 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsApi* | [**StopEnvironment**](docs/EnvironmentActionsApi.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 *EnvironmentDeploymentHistoryApi* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryApi.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
 *EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
-*EnvironmentDeploymentRuleApi* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
 *EnvironmentLogsApi* | [**ListEnvironmentLog**](docs/EnvironmentLogsApi.md#listenvironmentlog) | **Get** /environment/{environmentId}/log | List environment deployment logs
 *EnvironmentLogsApi* | [**ListEnvironmentLogs**](docs/EnvironmentLogsApi.md#listenvironmentlogs) | **Get** /environment/{environmentId}/logs | List environment deployment logs v2
 *EnvironmentMainCallsApi* | [**DeleteEnvironment**](docs/EnvironmentMainCallsApi.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
@@ -599,6 +604,12 @@ Class | Method | HTTP request | Description
  - [DeploymentRestrictionModeEnum](docs/DeploymentRestrictionModeEnum.md)
  - [DeploymentRestrictionTypeEnum](docs/DeploymentRestrictionTypeEnum.md)
  - [DeploymentRuleRequest](docs/DeploymentRuleRequest.md)
+ - [DeploymentStageRequest](docs/DeploymentStageRequest.md)
+ - [DeploymentStageResponse](docs/DeploymentStageResponse.md)
+ - [DeploymentStageResponseAllOf](docs/DeploymentStageResponseAllOf.md)
+ - [DeploymentStageResponseList](docs/DeploymentStageResponseList.md)
+ - [DeploymentStageServiceResponse](docs/DeploymentStageServiceResponse.md)
+ - [DeploymentStageServiceResponseAllOf](docs/DeploymentStageServiceResponseAllOf.md)
  - [DoCredentialsRequest](docs/DoCredentialsRequest.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOf](docs/EnvironmentAllOf.md)
