@@ -90,8 +90,6 @@ type APIClient struct {
 
 	ContainerCustomDomainApi *ContainerCustomDomainApiService
 
-	ContainerDependencyApi *ContainerDependencyApiService
-
 	ContainerDeploymentHistoryApi *ContainerDeploymentHistoryApiService
 
 	ContainerEnvironmentVariableApi *ContainerEnvironmentVariableApiService
@@ -123,8 +121,6 @@ type APIClient struct {
 	DatabaseMetricsApi *DatabaseMetricsApiService
 
 	DatabasesApi *DatabasesApiService
-
-	DependencyApi *DependencyApiService
 
 	DeploymentStageMainCallsApi *DeploymentStageMainCallsApiService
 
@@ -231,7 +227,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContainerActionsApi = (*ContainerActionsApiService)(&c.common)
 	c.ContainerConfigurationApi = (*ContainerConfigurationApiService)(&c.common)
 	c.ContainerCustomDomainApi = (*ContainerCustomDomainApiService)(&c.common)
-	c.ContainerDependencyApi = (*ContainerDependencyApiService)(&c.common)
 	c.ContainerDeploymentHistoryApi = (*ContainerDeploymentHistoryApiService)(&c.common)
 	c.ContainerEnvironmentVariableApi = (*ContainerEnvironmentVariableApiService)(&c.common)
 	c.ContainerLogsApi = (*ContainerLogsApiService)(&c.common)
@@ -248,7 +243,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DatabaseMainCallsApi = (*DatabaseMainCallsApiService)(&c.common)
 	c.DatabaseMetricsApi = (*DatabaseMetricsApiService)(&c.common)
 	c.DatabasesApi = (*DatabasesApiService)(&c.common)
-	c.DependencyApi = (*DependencyApiService)(&c.common)
 	c.DeploymentStageMainCallsApi = (*DeploymentStageMainCallsApiService)(&c.common)
 	c.EnvironmentApi = (*EnvironmentApiService)(&c.common)
 	c.EnvironmentActionsApi = (*EnvironmentActionsApiService)(&c.common)

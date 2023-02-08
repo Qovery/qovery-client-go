@@ -213,9 +213,6 @@ Class | Method | HTTP request | Description
 *ContainerCustomDomainApi* | [**EditContainerCustomDomain**](docs/ContainerCustomDomainApi.md#editcontainercustomdomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
 *ContainerCustomDomainApi* | [**GetContainerCustomDomainStatus**](docs/ContainerCustomDomainApi.md#getcontainercustomdomainstatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
 *ContainerCustomDomainApi* | [**ListContainerCustomDomain**](docs/ContainerCustomDomainApi.md#listcontainercustomdomain) | **Get** /container/{containerId}/customDomain | List container custom domains
-*ContainerDependencyApi* | [**CreateContainerDependency**](docs/ContainerDependencyApi.md#createcontainerdependency) | **Post** /container/{containerId}/dependency/{targetContainerId} | Add container dependency to this application.
-*ContainerDependencyApi* | [**ListContainerDependency**](docs/ContainerDependencyApi.md#listcontainerdependency) | **Get** /container/{containerId}/dependency | List container dependencies
-*ContainerDependencyApi* | [**RemoveContainerDependency**](docs/ContainerDependencyApi.md#removecontainerdependency) | **Delete** /container/{containerId}/dependency/{targetContainerId} | Remove container dependency to this container.
 *ContainerDeploymentHistoryApi* | [**ListContainerDeploymentHistory**](docs/ContainerDeploymentHistoryApi.md#listcontainerdeploymenthistory) | **Get** /container/{containerId}/deploymentHistory | List container deployments
 *ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable | Add an environment variable to the container
 *ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariableAlias**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariablealias) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the container level
@@ -286,9 +283,6 @@ Class | Method | HTTP request | Description
 *DatabasesApi* | [**ListDatabase**](docs/DatabasesApi.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesApi* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesApi.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DatabasesApi* | [**ListEnvironmentDatabaseCurrentMetric**](docs/DatabasesApi.md#listenvironmentdatabasecurrentmetric) | **Get** /environment/{environmentId}/database/currentMetric | List current metric consumption for each database
-*DependencyApi* | [**CreateApplicationDependency**](docs/DependencyApi.md#createapplicationdependency) | **Post** /application/{applicationId}/dependency/{targetApplicationId} | Add application dependency to this application.
-*DependencyApi* | [**ListApplicationDependency**](docs/DependencyApi.md#listapplicationdependency) | **Get** /application/{applicationId}/dependency | List application dependencies
-*DependencyApi* | [**RemoveApplicationDependency**](docs/DependencyApi.md#removeapplicationdependency) | **Delete** /application/{applicationId}/dependency/{targetApplicationId} | Remove application dependency to this application.
 *DeploymentStageMainCallsApi* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsApi.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsApi* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsApi* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsApi.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -531,7 +525,6 @@ Class | Method | HTTP request | Description
  - [CompanySizeEnum](docs/CompanySizeEnum.md)
  - [ContainerAdvancedSettings](docs/ContainerAdvancedSettings.md)
  - [ContainerCurrentScale](docs/ContainerCurrentScale.md)
- - [ContainerDependencyRequest](docs/ContainerDependencyRequest.md)
  - [ContainerDeployRequest](docs/ContainerDeployRequest.md)
  - [ContainerNetwork](docs/ContainerNetwork.md)
  - [ContainerNetworkRequest](docs/ContainerNetworkRequest.md)

@@ -78,8 +78,6 @@ tags:
 - name: Database Main Calls
 - name: Database Metrics
 - name: Databases
-- name: Dependency
-- name: Container Dependency
 - name: Environment
 - name: Environment Actions
 - name: Environment Deployment History
@@ -7034,110 +7032,6 @@ paths:
       summary: List application restarts
       tags:
       - Application Metrics
-  /application/{applicationId}/dependency:
-    get:
-      operationId: listApplicationDependency
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApplicationResponseList'
-          description: List dependencies
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List application dependencies
-      tags:
-      - Dependency
-  /application/{applicationId}/dependency/{targetApplicationId}:
-    delete:
-      operationId: removeApplicationDependency
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Target application ID
-        explode: false
-        in: path
-        name: targetApplicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: The resource was deleted successfully
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Remove application dependency to this application.
-      tags:
-      - Dependency
-    post:
-      description: Add application dependency to this application to prevent this
-        application starting before the linked dependencies
-      operationId: createApplicationDependency
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Target application ID
-        explode: false
-        in: path
-        name: targetApplicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Application'
-          description: Add application dependencies
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Add application dependency to this application.
-      tags:
-      - Dependency
   /application/{applicationId}/commit:
     get:
       description: Returns list of the last 100 commits made on the repository linked
@@ -8683,101 +8577,6 @@ paths:
       summary: Get current scaling of the container
       tags:
       - Container Metrics
-  /container/{containerId}/dependency:
-    get:
-      operationId: listContainerDependency
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContainerResponseList'
-          description: List dependencies
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List container dependencies
-      tags:
-      - Container Dependency
-  /container/{containerId}/dependency/{targetContainerId}:
-    delete:
-      operationId: removeContainerDependency
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: The resource was deleted successfully
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Remove container dependency to this container.
-      tags:
-      - Container Dependency
-    post:
-      description: Add container dependency to this container to prevent this container
-        starting before the linked dependencies
-      operationId: createContainerDependency
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Target container ID
-        explode: false
-        in: path
-        name: targetContainerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContainerResponse'
-          description: Add container dependencies
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Add container dependency to this application.
-      tags:
-      - Container Dependency
   /container/{containerId}/deploy:
     post:
       description: You must provide a git commit id
@@ -13062,8 +12861,6 @@ components:
           readOnly: true
           type: string
       type: object
-    ApplicationDependencyRequest:
-      $ref: '#/components/schemas/ContainerDependencyRequest'
     ApplicationDeploymentRestriction:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -14450,15 +14247,6 @@ components:
           format: date-time
           readOnly: true
           type: string
-      type: object
-    ContainerDependencyRequest:
-      properties:
-        id:
-          description: Set application ID
-          format: uuid
-          type: string
-      required:
-      - id
       type: object
     ContainerNetwork:
       example:
@@ -20396,7 +20184,6 @@ x-tagGroups:
   - Application Actions
   - Application Configuration
   - Custom Domain
-  - Dependency
   - Application Metrics
   - Application Database
   - Application Logs
@@ -20411,7 +20198,6 @@ x-tagGroups:
   - Container Actions
   - Container Configuration
   - Container Custom Domain
-  - Container Dependency
   - Container Metrics
   - Container Database
   - Container Logs
@@ -20439,7 +20225,6 @@ x-tagGroups:
   - Job Actions
   - Job Configuration
   - Job Custom Domain
-  - Job Dependency
   - Job Metrics
   - Job Deployment History
   - Job Environment Variable

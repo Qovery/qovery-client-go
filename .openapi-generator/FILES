@@ -23,7 +23,6 @@ api_clusters.go
 api_container_actions.go
 api_container_configuration.go
 api_container_custom_domain.go
-api_container_dependency.go
 api_container_deployment_history.go
 api_container_environment_variable.go
 api_container_logs.go
@@ -40,7 +39,6 @@ api_database_event.go
 api_database_main_calls.go
 api_database_metrics.go
 api_databases.go
-api_dependency.go
 api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
@@ -184,8 +182,6 @@ docs/ContainerAdvancedSettings.md
 docs/ContainerConfigurationApi.md
 docs/ContainerCurrentScale.md
 docs/ContainerCustomDomainApi.md
-docs/ContainerDependencyApi.md
-docs/ContainerDependencyRequest.md
 docs/ContainerDeployRequest.md
 docs/ContainerDeploymentHistoryApi.md
 docs/ContainerEnvironmentVariableApi.md
@@ -247,7 +243,6 @@ docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesApi.md
 docs/DeleteMemberRequest.md
-docs/DependencyApi.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
 docs/DeployAllRequestContainersInner.md
@@ -654,7 +649,6 @@ model_community_usage.go
 model_company_size_enum.go
 model_container_advanced_settings.go
 model_container_current_scale.go
-model_container_dependency_request.go
 model_container_deploy_request.go
 model_container_network.go
 model_container_network_request.go
