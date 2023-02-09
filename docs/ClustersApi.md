@@ -21,7 +21,6 @@ Method | HTTP request | Description
 [**ListOrganizationCluster**](ClustersApi.md#ListOrganizationCluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 [**SpecifyClusterCloudProviderInfo**](ClustersApi.md#SpecifyClusterCloudProviderInfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 [**StopCluster**](ClustersApi.md#StopCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
-[**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/update | Update a cluster Version
 
 
 
@@ -1210,79 +1209,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStopClusterRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ClusterStatus**](ClusterStatus.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateCluster
-
-> ClusterStatus UpdateCluster(ctx, organizationId, clusterId).Execute()
-
-Update a cluster Version
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClustersApi.UpdateCluster(context.Background(), organizationId, clusterId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateCluster`: ClusterStatus
-    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateCluster`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-**clusterId** | **string** | Cluster ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateClusterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

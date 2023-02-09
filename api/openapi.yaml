@@ -3253,47 +3253,6 @@ paths:
       summary: Deploy a cluster
       tags:
       - Clusters
-  /organization/{organizationId}/cluster/{clusterId}/update:
-    post:
-      description: allows to update cluster version
-      operationId: UpdateCluster
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Cluster ID
-        explode: false
-        in: path
-        name: clusterId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClusterStatus'
-          description: Update cluster
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Update a cluster Version
-      tags:
-      - Clusters
   /organization/{organizationId}/cluster/{clusterId}/stop:
     post:
       description: Cluster stop has been requester.

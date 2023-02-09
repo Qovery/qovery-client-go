@@ -198,7 +198,6 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**ListOrganizationCluster**](docs/ClustersApi.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 *ClustersApi* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersApi.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 *ClustersApi* | [**StopCluster**](docs/ClustersApi.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
-*ClustersApi* | [**UpdateCluster**](docs/ClustersApi.md#updatecluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/update | Update a cluster Version
 *ContainerActionsApi* | [**DeployContainer**](docs/ContainerActionsApi.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
 *ContainerActionsApi* | [**RebootContainer**](docs/ContainerActionsApi.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
 *ContainerActionsApi* | [**RedeployContainer**](docs/ContainerActionsApi.md#redeploycontainer) | **Post** /container/{containerId}/redeploy | Redeploy container
