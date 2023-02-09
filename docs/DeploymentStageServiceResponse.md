@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **ServiceId** | Pointer to **string** | id of the service attached to the stage | [optional] 
+**ServiceType** | Pointer to **string** | type of the service (i.e APPLICATION, JOB, DATABASE, ...) | [optional] 
 
 ## Methods
 
@@ -117,6 +118,31 @@ SetServiceId sets ServiceId field to given value.
 `func (o *DeploymentStageServiceResponse) HasServiceId() bool`
 
 HasServiceId returns a boolean if a field has been set.
+
+### GetServiceType
+
+`func (o *DeploymentStageServiceResponse) GetServiceType() string`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *DeploymentStageServiceResponse) GetServiceTypeOk() (*string, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *DeploymentStageServiceResponse) SetServiceType(v string)`
+
+SetServiceType sets ServiceType field to given value.
+
+### HasServiceType
+
+`func (o *DeploymentStageServiceResponse) HasServiceType() bool`
+
+HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

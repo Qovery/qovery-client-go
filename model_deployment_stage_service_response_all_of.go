@@ -19,6 +19,8 @@ import (
 type DeploymentStageServiceResponseAllOf struct {
 	// id of the service attached to the stage
 	ServiceId *string `json:"service_id,omitempty"`
+	// type of the service (i.e APPLICATION, JOB, DATABASE, ...)
+	ServiceType *string `json:"service_type,omitempty"`
 }
 
 // NewDeploymentStageServiceResponseAllOf instantiates a new DeploymentStageServiceResponseAllOf object
@@ -70,10 +72,45 @@ func (o *DeploymentStageServiceResponseAllOf) SetServiceId(v string) {
 	o.ServiceId = &v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *DeploymentStageServiceResponseAllOf) GetServiceType() string {
+	if o == nil || o.ServiceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentStageServiceResponseAllOf) GetServiceTypeOk() (*string, bool) {
+	if o == nil || o.ServiceType == nil {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *DeploymentStageServiceResponseAllOf) HasServiceType() bool {
+	if o != nil && o.ServiceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given string and assigns it to the ServiceType field.
+func (o *DeploymentStageServiceResponseAllOf) SetServiceType(v string) {
+	o.ServiceType = &v
+}
+
 func (o DeploymentStageServiceResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ServiceId != nil {
 		toSerialize["service_id"] = o.ServiceId
+	}
+	if o.ServiceType != nil {
+		toSerialize["service_type"] = o.ServiceType
 	}
 	return json.Marshal(toSerialize)
 }

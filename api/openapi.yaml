@@ -19509,6 +19509,9 @@ components:
           description: id of the service attached to the stage
           format: uuid
           type: string
+        service_type:
+          description: "type of the service (i.e APPLICATION, JOB, DATABASE, ...)"
+          type: string
       type: object
     JobRequest_allOf_source_image:
       nullable: true
