@@ -24,9 +24,10 @@ import (
 type DeploymentStageMainCallsApiService service
 
 type ApiAttachServiceToDeploymentStageRequest struct {
-	ctx        context.Context
-	ApiService *DeploymentStageMainCallsApiService
-	serviceId  string
+	ctx               context.Context
+	ApiService        *DeploymentStageMainCallsApiService
+	deploymentStageId string
+	serviceId         string
 }
 
 func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*http.Response, error) {
@@ -37,14 +38,16 @@ func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*http.Response, err
 AttachServiceToDeploymentStage Attach service to deployment stage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
  @param serviceId Service ID of an application/job/container/database
  @return ApiAttachServiceToDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStage(ctx context.Context, serviceId string) ApiAttachServiceToDeploymentStageRequest {
+func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStage(ctx context.Context, deploymentStageId string, serviceId string) ApiAttachServiceToDeploymentStageRequest {
 	return ApiAttachServiceToDeploymentStageRequest{
-		ApiService: a,
-		ctx:        ctx,
-		serviceId:  serviceId,
+		ApiService:        a,
+		ctx:               ctx,
+		deploymentStageId: deploymentStageId,
+		serviceId:         serviceId,
 	}
 }
 
@@ -62,6 +65,7 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/service/{serviceId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -223,8 +227,9 @@ func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStageExe
 }
 
 type ApiDeleteDeploymentStageRequest struct {
-	ctx        context.Context
-	ApiService *DeploymentStageMainCallsApiService
+	ctx               context.Context
+	ApiService        *DeploymentStageMainCallsApiService
+	deploymentStageId string
 }
 
 func (r ApiDeleteDeploymentStageRequest) Execute() (*http.Response, error) {
@@ -235,12 +240,14 @@ func (r ApiDeleteDeploymentStageRequest) Execute() (*http.Response, error) {
 DeleteDeploymentStage Delete deployment stage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
  @return ApiDeleteDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStage(ctx context.Context) ApiDeleteDeploymentStageRequest {
+func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStage(ctx context.Context, deploymentStageId string) ApiDeleteDeploymentStageRequest {
 	return ApiDeleteDeploymentStageRequest{
-		ApiService: a,
-		ctx:        ctx,
+		ApiService:        a,
+		ctx:               ctx,
+		deploymentStageId: deploymentStageId,
 	}
 }
 
@@ -258,6 +265,7 @@ func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStageExecute(r ApiD
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -519,9 +527,10 @@ func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStageExecu
 }
 
 type ApiMoveDeploymentStageRequest struct {
-	ctx        context.Context
-	ApiService *DeploymentStageMainCallsApiService
-	stageId    string
+	ctx               context.Context
+	ApiService        *DeploymentStageMainCallsApiService
+	deploymentStageId string
+	stageId           string
 }
 
 func (r ApiMoveDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
@@ -532,14 +541,16 @@ func (r ApiMoveDeploymentStageRequest) Execute() (*DeploymentStageResponseList, 
 MoveDeploymentStage Move deployment stage before requested stage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
  @param stageId Deployment Stage ID
  @return ApiMoveDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) MoveDeploymentStage(ctx context.Context, stageId string) ApiMoveDeploymentStageRequest {
+func (a *DeploymentStageMainCallsApiService) MoveDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveDeploymentStageRequest {
 	return ApiMoveDeploymentStageRequest{
-		ApiService: a,
-		ctx:        ctx,
-		stageId:    stageId,
+		ApiService:        a,
+		ctx:               ctx,
+		deploymentStageId: deploymentStageId,
+		stageId:           stageId,
 	}
 }
 
@@ -559,6 +570,7 @@ func (a *DeploymentStageMainCallsApiService) MoveDeploymentStageExecute(r ApiMov
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/moveBefore/{stageId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterToString(r.stageId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

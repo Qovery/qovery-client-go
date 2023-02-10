@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## AttachServiceToDeploymentStage
 
-> AttachServiceToDeploymentStage(ctx, serviceId).Execute()
+> AttachServiceToDeploymentStage(ctx, deploymentStageId, serviceId).Execute()
 
 Attach service to deployment stage
 
@@ -32,11 +32,12 @@ import (
 )
 
 func main() {
+    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
     serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsApi.AttachServiceToDeploymentStage(context.Background(), serviceId).Execute()
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.AttachServiceToDeploymentStage(context.Background(), deploymentStageId, serviceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.AttachServiceToDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -50,6 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentStageId** | **string** | Deployment Stage ID | 
 **serviceId** | **string** | Service ID of an application/job/container/database | 
 
 ### Other Parameters
@@ -59,6 +61,7 @@ Other parameters are passed through a pointer to a apiAttachServiceToDeploymentS
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -151,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDeploymentStage
 
-> DeleteDeploymentStage(ctx).Execute()
+> DeleteDeploymentStage(ctx, deploymentStageId).Execute()
 
 Delete deployment stage
 
@@ -168,10 +171,11 @@ import (
 )
 
 func main() {
+    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsApi.DeleteDeploymentStage(context.Background()).Execute()
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.DeleteDeploymentStage(context.Background(), deploymentStageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.DeleteDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -181,11 +185,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentStageId** | **string** | Deployment Stage ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteDeploymentStageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -346,7 +358,7 @@ Name | Type | Description  | Notes
 
 ## MoveDeploymentStage
 
-> DeploymentStageResponseList MoveDeploymentStage(ctx, stageId).Execute()
+> DeploymentStageResponseList MoveDeploymentStage(ctx, deploymentStageId, stageId).Execute()
 
 Move deployment stage before requested stage
 
@@ -363,11 +375,12 @@ import (
 )
 
 func main() {
+    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
     stageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsApi.MoveDeploymentStage(context.Background(), stageId).Execute()
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.MoveDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.MoveDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -383,6 +396,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentStageId** | **string** | Deployment Stage ID | 
 **stageId** | **string** | Deployment Stage ID | 
 
 ### Other Parameters
@@ -392,6 +406,7 @@ Other parameters are passed through a pointer to a apiMoveDeploymentStageRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

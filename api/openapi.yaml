@@ -4709,7 +4709,16 @@ paths:
   /deploymentStage/{deploymentStageId}:
     delete:
       operationId: DeleteDeploymentStage
-      parameters: []
+      parameters:
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: deploymentStageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: no content
@@ -4759,6 +4768,15 @@ paths:
     put:
       operationId: AttachServiceToDeploymentStage
       parameters:
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: deploymentStageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Service ID of an application/job/container/database
         explode: false
         in: path
@@ -4784,6 +4802,15 @@ paths:
     put:
       operationId: MoveDeploymentStage
       parameters:
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: deploymentStageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       - description: Deployment Stage ID
         explode: false
         in: path
@@ -12271,6 +12298,16 @@ components:
       explode: false
       in: path
       name: databaseId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    deploymentStageId:
+      description: Deployment Stage ID
+      explode: false
+      in: path
+      name: deploymentStageId
       required: true
       schema:
         format: uuid
