@@ -18,17 +18,18 @@ import (
 // DeploymentStageRequest struct for DeploymentStageRequest
 type DeploymentStageRequest struct {
 	// The name of the deployment stage
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// free test describing this stage
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 }
 
 // NewDeploymentStageRequest instantiates a new DeploymentStageRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentStageRequest() *DeploymentStageRequest {
+func NewDeploymentStageRequest(name string) *DeploymentStageRequest {
 	this := DeploymentStageRequest{}
+	this.Name = name
 	return &this
 }
 
@@ -40,77 +41,80 @@ func NewDeploymentStageRequestWithDefaults() *DeploymentStageRequest {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *DeploymentStageRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *DeploymentStageRequest) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *DeploymentStageRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentStageRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentStageRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *DeploymentStageRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *DeploymentStageRequest) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *DeploymentStageRequest) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *DeploymentStageRequest) UnsetDescription() {
+	o.Description.Unset()
 }
 
 func (o DeploymentStageRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	return json.Marshal(toSerialize)
 }

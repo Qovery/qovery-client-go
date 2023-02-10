@@ -99,7 +99,7 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    deploymentStageRequest := *openapiclient.NewDeploymentStageRequest() // DeploymentStageRequest |  (optional)
+    deploymentStageRequest := *openapiclient.NewDeploymentStageRequest("Name_example") // DeploymentStageRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -226,7 +226,7 @@ import (
 
 func main() {
     deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
-    deploymentStageRequest := *openapiclient.NewDeploymentStageRequest() // DeploymentStageRequest |  (optional)
+    deploymentStageRequest := *openapiclient.NewDeploymentStageRequest("Name_example") // DeploymentStageRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

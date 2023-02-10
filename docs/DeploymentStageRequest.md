@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The name of the deployment stage | [optional] 
-**Description** | Pointer to **string** | free test describing this stage | [optional] 
+**Name** | **string** | The name of the deployment stage | 
+**Description** | Pointer to **NullableString** | free test describing this stage | [optional] 
 
 ## Methods
 
 ### NewDeploymentStageRequest
 
-`func NewDeploymentStageRequest() *DeploymentStageRequest`
+`func NewDeploymentStageRequest(name string, ) *DeploymentStageRequest`
 
 NewDeploymentStageRequest instantiates a new DeploymentStageRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *DeploymentStageRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -76,6 +71,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *DeploymentStageRequest) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *DeploymentStageRequest) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

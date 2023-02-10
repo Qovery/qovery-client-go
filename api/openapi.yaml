@@ -15962,7 +15962,10 @@ components:
           type: string
         description:
           description: free test describing this stage
+          nullable: true
           type: string
+      required:
+      - name
       type: object
     DeploymentStageResponse:
       allOf:
