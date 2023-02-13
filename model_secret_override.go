@@ -17,20 +17,24 @@ import (
 
 // SecretOverride struct for SecretOverride
 type SecretOverride struct {
-	Id    string               `json:"id"`
-	Key   string               `json:"key"`
-	Scope APIVariableScopeEnum `json:"scope"`
+	Id           string               `json:"id"`
+	Key          string               `json:"key"`
+	MountPath    string               `json:"mount_path"`
+	Scope        APIVariableScopeEnum `json:"scope"`
+	VariableType APIVariableTypeEnum  `json:"variable_type"`
 }
 
 // NewSecretOverride instantiates a new SecretOverride object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretOverride(id string, key string, scope APIVariableScopeEnum) *SecretOverride {
+func NewSecretOverride(id string, key string, mountPath string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum) *SecretOverride {
 	this := SecretOverride{}
 	this.Id = id
 	this.Key = key
+	this.MountPath = mountPath
 	this.Scope = scope
+	this.VariableType = variableType
 	return &this
 }
 
@@ -90,6 +94,30 @@ func (o *SecretOverride) SetKey(v string) {
 	o.Key = v
 }
 
+// GetMountPath returns the MountPath field value
+func (o *SecretOverride) GetMountPath() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MountPath
+}
+
+// GetMountPathOk returns a tuple with the MountPath field value
+// and a boolean to check if the value has been set.
+func (o *SecretOverride) GetMountPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MountPath, true
+}
+
+// SetMountPath sets field value
+func (o *SecretOverride) SetMountPath(v string) {
+	o.MountPath = v
+}
+
 // GetScope returns the Scope field value
 func (o *SecretOverride) GetScope() APIVariableScopeEnum {
 	if o == nil {
@@ -114,6 +142,30 @@ func (o *SecretOverride) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
 }
 
+// GetVariableType returns the VariableType field value
+func (o *SecretOverride) GetVariableType() APIVariableTypeEnum {
+	if o == nil {
+		var ret APIVariableTypeEnum
+		return ret
+	}
+
+	return o.VariableType
+}
+
+// GetVariableTypeOk returns a tuple with the VariableType field value
+// and a boolean to check if the value has been set.
+func (o *SecretOverride) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VariableType, true
+}
+
+// SetVariableType sets field value
+func (o *SecretOverride) SetVariableType(v APIVariableTypeEnum) {
+	o.VariableType = v
+}
+
 func (o SecretOverride) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -123,7 +175,13 @@ func (o SecretOverride) MarshalJSON() ([]byte, error) {
 		toSerialize["key"] = o.Key
 	}
 	if true {
+		toSerialize["mount_path"] = o.MountPath
+	}
+	if true {
 		toSerialize["scope"] = o.Scope
+	}
+	if true {
+		toSerialize["variable_type"] = o.VariableType
 	}
 	return json.Marshal(toSerialize)
 }

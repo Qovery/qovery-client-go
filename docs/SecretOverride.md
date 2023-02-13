@@ -6,13 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Key** | **string** |  | 
+**MountPath** | **string** |  | 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
+**VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
 
 ## Methods
 
 ### NewSecretOverride
 
-`func NewSecretOverride(id string, key string, scope APIVariableScopeEnum, ) *SecretOverride`
+`func NewSecretOverride(id string, key string, mountPath string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, ) *SecretOverride`
 
 NewSecretOverride instantiates a new SecretOverride object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +69,26 @@ and a boolean to check if the value has been set.
 SetKey sets Key field to given value.
 
 
+### GetMountPath
+
+`func (o *SecretOverride) GetMountPath() string`
+
+GetMountPath returns the MountPath field if non-nil, zero value otherwise.
+
+### GetMountPathOk
+
+`func (o *SecretOverride) GetMountPathOk() (*string, bool)`
+
+GetMountPathOk returns a tuple with the MountPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMountPath
+
+`func (o *SecretOverride) SetMountPath(v string)`
+
+SetMountPath sets MountPath field to given value.
+
+
 ### GetScope
 
 `func (o *SecretOverride) GetScope() APIVariableScopeEnum`
@@ -85,6 +107,26 @@ and a boolean to check if the value has been set.
 `func (o *SecretOverride) SetScope(v APIVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
+
+
+### GetVariableType
+
+`func (o *SecretOverride) GetVariableType() APIVariableTypeEnum`
+
+GetVariableType returns the VariableType field if non-nil, zero value otherwise.
+
+### GetVariableTypeOk
+
+`func (o *SecretOverride) GetVariableTypeOk() (*APIVariableTypeEnum, bool)`
+
+GetVariableTypeOk returns a tuple with the VariableType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVariableType
+
+`func (o *SecretOverride) SetVariableType(v APIVariableTypeEnum)`
+
+SetVariableType sets VariableType field to given value.
 
 
 

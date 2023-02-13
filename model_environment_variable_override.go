@@ -17,22 +17,26 @@ import (
 
 // EnvironmentVariableOverride struct for EnvironmentVariableOverride
 type EnvironmentVariableOverride struct {
-	Id    string               `json:"id"`
-	Key   string               `json:"key"`
-	Value string               `json:"value"`
-	Scope APIVariableScopeEnum `json:"scope"`
+	Id           string               `json:"id"`
+	Key          string               `json:"key"`
+	Value        string               `json:"value"`
+	MountPath    string               `json:"mount_path"`
+	Scope        APIVariableScopeEnum `json:"scope"`
+	VariableType APIVariableTypeEnum  `json:"variable_type"`
 }
 
 // NewEnvironmentVariableOverride instantiates a new EnvironmentVariableOverride object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentVariableOverride(id string, key string, value string, scope APIVariableScopeEnum) *EnvironmentVariableOverride {
+func NewEnvironmentVariableOverride(id string, key string, value string, mountPath string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum) *EnvironmentVariableOverride {
 	this := EnvironmentVariableOverride{}
 	this.Id = id
 	this.Key = key
 	this.Value = value
+	this.MountPath = mountPath
 	this.Scope = scope
+	this.VariableType = variableType
 	return &this
 }
 
@@ -116,6 +120,30 @@ func (o *EnvironmentVariableOverride) SetValue(v string) {
 	o.Value = v
 }
 
+// GetMountPath returns the MountPath field value
+func (o *EnvironmentVariableOverride) GetMountPath() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MountPath
+}
+
+// GetMountPathOk returns a tuple with the MountPath field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableOverride) GetMountPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MountPath, true
+}
+
+// SetMountPath sets field value
+func (o *EnvironmentVariableOverride) SetMountPath(v string) {
+	o.MountPath = v
+}
+
 // GetScope returns the Scope field value
 func (o *EnvironmentVariableOverride) GetScope() APIVariableScopeEnum {
 	if o == nil {
@@ -140,6 +168,30 @@ func (o *EnvironmentVariableOverride) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
 }
 
+// GetVariableType returns the VariableType field value
+func (o *EnvironmentVariableOverride) GetVariableType() APIVariableTypeEnum {
+	if o == nil {
+		var ret APIVariableTypeEnum
+		return ret
+	}
+
+	return o.VariableType
+}
+
+// GetVariableTypeOk returns a tuple with the VariableType field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableOverride) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VariableType, true
+}
+
+// SetVariableType sets field value
+func (o *EnvironmentVariableOverride) SetVariableType(v APIVariableTypeEnum) {
+	o.VariableType = v
+}
+
 func (o EnvironmentVariableOverride) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -152,7 +204,13 @@ func (o EnvironmentVariableOverride) MarshalJSON() ([]byte, error) {
 		toSerialize["value"] = o.Value
 	}
 	if true {
+		toSerialize["mount_path"] = o.MountPath
+	}
+	if true {
 		toSerialize["scope"] = o.Scope
+	}
+	if true {
+		toSerialize["variable_type"] = o.VariableType
 	}
 	return json.Marshal(toSerialize)
 }

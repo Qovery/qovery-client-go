@@ -7,13 +7,15 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Key** | **string** |  | 
 **Value** | **string** |  | 
+**MountPath** | **string** |  | 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
+**VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
 
 ## Methods
 
 ### NewEnvironmentVariableOverride
 
-`func NewEnvironmentVariableOverride(id string, key string, value string, scope APIVariableScopeEnum, ) *EnvironmentVariableOverride`
+`func NewEnvironmentVariableOverride(id string, key string, value string, mountPath string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, ) *EnvironmentVariableOverride`
 
 NewEnvironmentVariableOverride instantiates a new EnvironmentVariableOverride object
 This constructor will assign default values to properties that have it defined,
@@ -88,6 +90,26 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
+### GetMountPath
+
+`func (o *EnvironmentVariableOverride) GetMountPath() string`
+
+GetMountPath returns the MountPath field if non-nil, zero value otherwise.
+
+### GetMountPathOk
+
+`func (o *EnvironmentVariableOverride) GetMountPathOk() (*string, bool)`
+
+GetMountPathOk returns a tuple with the MountPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMountPath
+
+`func (o *EnvironmentVariableOverride) SetMountPath(v string)`
+
+SetMountPath sets MountPath field to given value.
+
+
 ### GetScope
 
 `func (o *EnvironmentVariableOverride) GetScope() APIVariableScopeEnum`
@@ -106,6 +128,26 @@ and a boolean to check if the value has been set.
 `func (o *EnvironmentVariableOverride) SetScope(v APIVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
+
+
+### GetVariableType
+
+`func (o *EnvironmentVariableOverride) GetVariableType() APIVariableTypeEnum`
+
+GetVariableType returns the VariableType field if non-nil, zero value otherwise.
+
+### GetVariableTypeOk
+
+`func (o *EnvironmentVariableOverride) GetVariableTypeOk() (*APIVariableTypeEnum, bool)`
+
+GetVariableTypeOk returns a tuple with the VariableType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVariableType
+
+`func (o *EnvironmentVariableOverride) SetVariableType(v APIVariableTypeEnum)`
+
+SetVariableType sets VariableType field to given value.
 
 
 

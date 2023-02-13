@@ -6,13 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Key** | **string** |  | 
+**MountPath** | **string** |  | 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
+**VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
 
 ## Methods
 
 ### NewSecretAlias
 
-`func NewSecretAlias(id string, key string, scope APIVariableScopeEnum, ) *SecretAlias`
+`func NewSecretAlias(id string, key string, mountPath string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, ) *SecretAlias`
 
 NewSecretAlias instantiates a new SecretAlias object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +69,26 @@ and a boolean to check if the value has been set.
 SetKey sets Key field to given value.
 
 
+### GetMountPath
+
+`func (o *SecretAlias) GetMountPath() string`
+
+GetMountPath returns the MountPath field if non-nil, zero value otherwise.
+
+### GetMountPathOk
+
+`func (o *SecretAlias) GetMountPathOk() (*string, bool)`
+
+GetMountPathOk returns a tuple with the MountPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMountPath
+
+`func (o *SecretAlias) SetMountPath(v string)`
+
+SetMountPath sets MountPath field to given value.
+
+
 ### GetScope
 
 `func (o *SecretAlias) GetScope() APIVariableScopeEnum`
@@ -85,6 +107,26 @@ and a boolean to check if the value has been set.
 `func (o *SecretAlias) SetScope(v APIVariableScopeEnum)`
 
 SetScope sets Scope field to given value.
+
+
+### GetVariableType
+
+`func (o *SecretAlias) GetVariableType() APIVariableTypeEnum`
+
+GetVariableType returns the VariableType field if non-nil, zero value otherwise.
+
+### GetVariableTypeOk
+
+`func (o *SecretAlias) GetVariableTypeOk() (*APIVariableTypeEnum, bool)`
+
+GetVariableTypeOk returns a tuple with the VariableType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVariableType
+
+`func (o *SecretAlias) SetVariableType(v APIVariableTypeEnum)`
+
+SetVariableType sets VariableType field to given value.
 
 
 

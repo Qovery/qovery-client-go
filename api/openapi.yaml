@@ -12610,12 +12610,18 @@ components:
         key:
           example: QOVERY_DATABASE_PSQL_NAME
           type: string
+        mount_path:
+          type: string
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
       required:
       - id
       - key
+      - mount_path
       - scope
+      - variable_type
       type: object
     Application:
       allOf:
@@ -15603,13 +15609,19 @@ components:
           type: string
         value:
           type: string
+        mount_path:
+          type: string
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
       required:
       - id
       - key
+      - mount_path
       - scope
       - value
+      - variable_type
       type: object
     EnvironmentVariableOverride:
       properties:
@@ -15620,13 +15632,19 @@ components:
           type: string
         value:
           type: string
+        mount_path:
+          type: string
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
       required:
       - id
       - key
+      - mount_path
       - scope
       - value
+      - variable_type
       type: object
     EnvironmentVariableEditRequest:
       example:
@@ -17117,12 +17135,18 @@ components:
           type: string
         key:
           type: string
+        mount_path:
+          type: string
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
       required:
       - id
       - key
+      - mount_path
       - scope
+      - variable_type
       type: object
     OrganizationWebhookCreateRequest:
       example:
