@@ -4836,6 +4836,35 @@ paths:
       summary: Move deployment stage before requested stage
       tags:
       - Deployment Stage Main Calls
+  /environment/{environmentId}/deploymentRule:
+    get:
+      operationId: getEnvironmentDeploymentRule
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentDeploymentRule'
+          description: Get deployment rule
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get environment deployment rule
+      tags:
+      - Environment Deployment Rule
   /environment/{environmentId}/deploymentRule/{deploymentRuleId}:
     put:
       operationId: editEnvironmentDeploymentRule

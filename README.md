@@ -299,6 +299,7 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsApi* | [**StopEnvironment**](docs/EnvironmentActionsApi.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 *EnvironmentDeploymentHistoryApi* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryApi.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
 *EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
+*EnvironmentDeploymentRuleApi* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
 *EnvironmentLogsApi* | [**ListEnvironmentLog**](docs/EnvironmentLogsApi.md#listenvironmentlog) | **Get** /environment/{environmentId}/log | List environment deployment logs
 *EnvironmentLogsApi* | [**ListEnvironmentLogs**](docs/EnvironmentLogsApi.md#listenvironmentlogs) | **Get** /environment/{environmentId}/logs | List environment deployment logs v2
 *EnvironmentMainCallsApi* | [**DeleteEnvironment**](docs/EnvironmentMainCallsApi.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
