@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
-**Type** | Pointer to [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | [optional] 
+**VariableType** | Pointer to [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | [optional] 
 **ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceName** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
@@ -101,30 +101,30 @@ and a boolean to check if the value has been set.
 SetScope sets Scope field to given value.
 
 
-### GetType
+### GetVariableType
 
-`func (o *EnvironmentVariableAllOf) GetType() APIVariableTypeEnum`
+`func (o *EnvironmentVariableAllOf) GetVariableType() APIVariableTypeEnum`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetVariableType returns the VariableType field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetVariableTypeOk
 
-`func (o *EnvironmentVariableAllOf) GetTypeOk() (*APIVariableTypeEnum, bool)`
+`func (o *EnvironmentVariableAllOf) GetVariableTypeOk() (*APIVariableTypeEnum, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetVariableTypeOk returns a tuple with the VariableType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetVariableType
 
-`func (o *EnvironmentVariableAllOf) SetType(v APIVariableTypeEnum)`
+`func (o *EnvironmentVariableAllOf) SetVariableType(v APIVariableTypeEnum)`
 
-SetType sets Type field to given value.
+SetVariableType sets VariableType field to given value.
 
-### HasType
+### HasVariableType
 
-`func (o *EnvironmentVariableAllOf) HasType() bool`
+`func (o *EnvironmentVariableAllOf) HasVariableType() bool`
 
-HasType returns a boolean if a field has been set.
+HasVariableType returns a boolean if a field has been set.
 
 ### GetServiceId
 
