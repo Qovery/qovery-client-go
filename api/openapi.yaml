@@ -4787,8 +4787,12 @@ paths:
           type: string
         style: simple
       responses:
-        "204":
-          description: no content
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentStageResponseList'
+          description: List of deployment stages for the env
         "401":
           description: Access token is missing or invalid
         "403":

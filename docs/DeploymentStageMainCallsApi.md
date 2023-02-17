@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## AttachServiceToDeploymentStage
 
-> AttachServiceToDeploymentStage(ctx, deploymentStageId, serviceId).Execute()
+> DeploymentStageResponseList AttachServiceToDeploymentStage(ctx, deploymentStageId, serviceId).Execute()
 
 Attach service to deployment stage
 
@@ -42,6 +42,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.AttachServiceToDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `AttachServiceToDeploymentStage`: DeploymentStageResponseList
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsApi.AttachServiceToDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -66,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**DeploymentStageResponseList**](DeploymentStageResponseList.md)
 
 ### Authorization
 
@@ -75,7 +77,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

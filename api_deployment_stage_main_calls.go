@@ -30,7 +30,7 @@ type ApiAttachServiceToDeploymentStageRequest struct {
 	serviceId         string
 }
 
-func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*http.Response, error) {
+func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
 	return r.ApiService.AttachServiceToDeploymentStageExecute(r)
 }
 
@@ -52,16 +52,18 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStage(ctx 
 }
 
 // Execute executes the request
-func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecute(r ApiAttachServiceToDeploymentStageRequest) (*http.Response, error) {
+//  @return DeploymentStageResponseList
+func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecute(r ApiAttachServiceToDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeploymentStageResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.AttachServiceToDeploymentStage")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/service/{serviceId}"
@@ -82,7 +84,7 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -91,19 +93,19 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -111,10 +113,19 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiCreateEnvironmentDeploymentStageRequest struct {
