@@ -13942,15 +13942,31 @@ components:
     ClusterAdvancedSettings:
       example:
         aws.cloudwatch.eks_logs_retention_days: 0
-        aws.vpc.flow_logs_retention_days: 6
+        database.mysql.deny_public_access: false
+        database.mongodb.deny_public_access: false
         loki.log_retention_in_week: 5
-        aws.vpc.enable_s3_flow_logs: false
-        registry.image_retention_time: 1
-        load_balancer.size: lb-s
         pleco.resources_ttl: 5
+        database.postgresql.allowed_cidrs:
+        - database.postgresql.allowed_cidrs
+        - database.postgresql.allowed_cidrs
+        database.mysql.allowed_cidrs:
+        - database.mysql.allowed_cidrs
+        - database.mysql.allowed_cidrs
         cloud_provider_container_registry_tags:
           value: value
           key: key
+        database.redis.deny_public_access: false
+        aws.vpc.flow_logs_retention_days: 6
+        database.redis.allowed_cidrs:
+        - database.redis.allowed_cidrs
+        - database.redis.allowed_cidrs
+        aws.vpc.enable_s3_flow_logs: false
+        registry.image_retention_time: 1
+        database.postgresql.deny_public_access: false
+        load_balancer.size: lb-s
+        database.mongodb.allowed_cidrs:
+        - database.mongodb.allowed_cidrs
+        - database.mongodb.allowed_cidrs
       properties:
         aws.cloudwatch.eks_logs_retention_days:
           default: 90
@@ -13965,6 +13981,50 @@ components:
           description: Set the number of retention days for flow logs. Disable with
             value "0"
           type: integer
+        database.postgresql.deny_public_access:
+          default: false
+          description: Deny public access to any PostgreSQL database
+          type: boolean
+        database.postgresql.allowed_cidrs:
+          default:
+          - 0.0.0.0/0
+          description: List of CIDRs allowed to access the PostgreSQL database
+          items:
+            type: string
+          type: array
+        database.mysql.deny_public_access:
+          default: false
+          description: Deny public access to any MySql database
+          type: boolean
+        database.mysql.allowed_cidrs:
+          default:
+          - 0.0.0.0/0
+          description: List of CIDRs allowed to access the MySql database
+          items:
+            type: string
+          type: array
+        database.mongodb.deny_public_access:
+          default: false
+          description: Deny public access to any MongoDB/DocumentDB database
+          type: boolean
+        database.mongodb.allowed_cidrs:
+          default:
+          - 0.0.0.0/0
+          description: List of CIDRs allowed to access the MongoDB/DocumentDB database
+          items:
+            type: string
+          type: array
+        database.redis.deny_public_access:
+          default: false
+          description: Deny public access to any Redis database
+          type: boolean
+        database.redis.allowed_cidrs:
+          default:
+          - 0.0.0.0/0
+          description: List of CIDRs allowed to access the Redis database
+          items:
+            type: string
+          type: array
         registry.image_retention_time:
           default: 31536000
           description: Configure the number of seconds before cleaning images in the

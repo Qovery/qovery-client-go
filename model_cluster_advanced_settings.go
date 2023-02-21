@@ -23,6 +23,22 @@ type ClusterAdvancedSettings struct {
 	AwsVpcEnableS3FlowLogs *bool `json:"aws.vpc.enable_s3_flow_logs,omitempty"`
 	// Set the number of retention days for flow logs. Disable with value \"0\"
 	AwsVpcFlowLogsRetentionDays *int32 `json:"aws.vpc.flow_logs_retention_days,omitempty"`
+	// Deny public access to any PostgreSQL database
+	DatabasePostgresqlDenyPublicAccess *bool `json:"database.postgresql.deny_public_access,omitempty"`
+	// List of CIDRs allowed to access the PostgreSQL database
+	DatabasePostgresqlAllowedCidrs []string `json:"database.postgresql.allowed_cidrs,omitempty"`
+	// Deny public access to any MySql database
+	DatabaseMysqlDenyPublicAccess *bool `json:"database.mysql.deny_public_access,omitempty"`
+	// List of CIDRs allowed to access the MySql database
+	DatabaseMysqlAllowedCidrs []string `json:"database.mysql.allowed_cidrs,omitempty"`
+	// Deny public access to any MongoDB/DocumentDB database
+	DatabaseMongodbDenyPublicAccess *bool `json:"database.mongodb.deny_public_access,omitempty"`
+	// List of CIDRs allowed to access the MongoDB/DocumentDB database
+	DatabaseMongodbAllowedCidrs []string `json:"database.mongodb.allowed_cidrs,omitempty"`
+	// Deny public access to any Redis database
+	DatabaseRedisDenyPublicAccess *bool `json:"database.redis.deny_public_access,omitempty"`
+	// List of CIDRs allowed to access the Redis database
+	DatabaseRedisAllowedCidrs []string `json:"database.redis.allowed_cidrs,omitempty"`
 	// Configure the number of seconds before cleaning images in the registry
 	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
 	// For how long in week loki is going to keep logs of your applications
@@ -46,6 +62,14 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
 	var awsVpcFlowLogsRetentionDays int32 = 365
 	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
+	var databasePostgresqlDenyPublicAccess bool = false
+	this.DatabasePostgresqlDenyPublicAccess = &databasePostgresqlDenyPublicAccess
+	var databaseMysqlDenyPublicAccess bool = false
+	this.DatabaseMysqlDenyPublicAccess = &databaseMysqlDenyPublicAccess
+	var databaseMongodbDenyPublicAccess bool = false
+	this.DatabaseMongodbDenyPublicAccess = &databaseMongodbDenyPublicAccess
+	var databaseRedisDenyPublicAccess bool = false
+	this.DatabaseRedisDenyPublicAccess = &databaseRedisDenyPublicAccess
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var lokiLogRetentionInWeek int32 = 12
@@ -68,6 +92,14 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
 	var awsVpcFlowLogsRetentionDays int32 = 365
 	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
+	var databasePostgresqlDenyPublicAccess bool = false
+	this.DatabasePostgresqlDenyPublicAccess = &databasePostgresqlDenyPublicAccess
+	var databaseMysqlDenyPublicAccess bool = false
+	this.DatabaseMysqlDenyPublicAccess = &databaseMysqlDenyPublicAccess
+	var databaseMongodbDenyPublicAccess bool = false
+	this.DatabaseMongodbDenyPublicAccess = &databaseMongodbDenyPublicAccess
+	var databaseRedisDenyPublicAccess bool = false
+	this.DatabaseRedisDenyPublicAccess = &databaseRedisDenyPublicAccess
 	var registryImageRetentionTime int32 = 31536000
 	this.RegistryImageRetentionTime = &registryImageRetentionTime
 	var lokiLogRetentionInWeek int32 = 12
@@ -173,6 +205,262 @@ func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool {
 // SetAwsVpcFlowLogsRetentionDays gets a reference to the given int32 and assigns it to the AwsVpcFlowLogsRetentionDays field.
 func (o *ClusterAdvancedSettings) SetAwsVpcFlowLogsRetentionDays(v int32) {
 	o.AwsVpcFlowLogsRetentionDays = &v
+}
+
+// GetDatabasePostgresqlDenyPublicAccess returns the DatabasePostgresqlDenyPublicAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccess() bool {
+	if o == nil || o.DatabasePostgresqlDenyPublicAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DatabasePostgresqlDenyPublicAccess
+}
+
+// GetDatabasePostgresqlDenyPublicAccessOk returns a tuple with the DatabasePostgresqlDenyPublicAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccessOk() (*bool, bool) {
+	if o == nil || o.DatabasePostgresqlDenyPublicAccess == nil {
+		return nil, false
+	}
+	return o.DatabasePostgresqlDenyPublicAccess, true
+}
+
+// HasDatabasePostgresqlDenyPublicAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabasePostgresqlDenyPublicAccess() bool {
+	if o != nil && o.DatabasePostgresqlDenyPublicAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabasePostgresqlDenyPublicAccess gets a reference to the given bool and assigns it to the DatabasePostgresqlDenyPublicAccess field.
+func (o *ClusterAdvancedSettings) SetDatabasePostgresqlDenyPublicAccess(v bool) {
+	o.DatabasePostgresqlDenyPublicAccess = &v
+}
+
+// GetDatabasePostgresqlAllowedCidrs returns the DatabasePostgresqlAllowedCidrs field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabasePostgresqlAllowedCidrs() []string {
+	if o == nil || o.DatabasePostgresqlAllowedCidrs == nil {
+		var ret []string
+		return ret
+	}
+	return o.DatabasePostgresqlAllowedCidrs
+}
+
+// GetDatabasePostgresqlAllowedCidrsOk returns a tuple with the DatabasePostgresqlAllowedCidrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabasePostgresqlAllowedCidrsOk() ([]string, bool) {
+	if o == nil || o.DatabasePostgresqlAllowedCidrs == nil {
+		return nil, false
+	}
+	return o.DatabasePostgresqlAllowedCidrs, true
+}
+
+// HasDatabasePostgresqlAllowedCidrs returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabasePostgresqlAllowedCidrs() bool {
+	if o != nil && o.DatabasePostgresqlAllowedCidrs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabasePostgresqlAllowedCidrs gets a reference to the given []string and assigns it to the DatabasePostgresqlAllowedCidrs field.
+func (o *ClusterAdvancedSettings) SetDatabasePostgresqlAllowedCidrs(v []string) {
+	o.DatabasePostgresqlAllowedCidrs = v
+}
+
+// GetDatabaseMysqlDenyPublicAccess returns the DatabaseMysqlDenyPublicAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccess() bool {
+	if o == nil || o.DatabaseMysqlDenyPublicAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DatabaseMysqlDenyPublicAccess
+}
+
+// GetDatabaseMysqlDenyPublicAccessOk returns a tuple with the DatabaseMysqlDenyPublicAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccessOk() (*bool, bool) {
+	if o == nil || o.DatabaseMysqlDenyPublicAccess == nil {
+		return nil, false
+	}
+	return o.DatabaseMysqlDenyPublicAccess, true
+}
+
+// HasDatabaseMysqlDenyPublicAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseMysqlDenyPublicAccess() bool {
+	if o != nil && o.DatabaseMysqlDenyPublicAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseMysqlDenyPublicAccess gets a reference to the given bool and assigns it to the DatabaseMysqlDenyPublicAccess field.
+func (o *ClusterAdvancedSettings) SetDatabaseMysqlDenyPublicAccess(v bool) {
+	o.DatabaseMysqlDenyPublicAccess = &v
+}
+
+// GetDatabaseMysqlAllowedCidrs returns the DatabaseMysqlAllowedCidrs field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseMysqlAllowedCidrs() []string {
+	if o == nil || o.DatabaseMysqlAllowedCidrs == nil {
+		var ret []string
+		return ret
+	}
+	return o.DatabaseMysqlAllowedCidrs
+}
+
+// GetDatabaseMysqlAllowedCidrsOk returns a tuple with the DatabaseMysqlAllowedCidrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabaseMysqlAllowedCidrsOk() ([]string, bool) {
+	if o == nil || o.DatabaseMysqlAllowedCidrs == nil {
+		return nil, false
+	}
+	return o.DatabaseMysqlAllowedCidrs, true
+}
+
+// HasDatabaseMysqlAllowedCidrs returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseMysqlAllowedCidrs() bool {
+	if o != nil && o.DatabaseMysqlAllowedCidrs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseMysqlAllowedCidrs gets a reference to the given []string and assigns it to the DatabaseMysqlAllowedCidrs field.
+func (o *ClusterAdvancedSettings) SetDatabaseMysqlAllowedCidrs(v []string) {
+	o.DatabaseMysqlAllowedCidrs = v
+}
+
+// GetDatabaseMongodbDenyPublicAccess returns the DatabaseMongodbDenyPublicAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccess() bool {
+	if o == nil || o.DatabaseMongodbDenyPublicAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DatabaseMongodbDenyPublicAccess
+}
+
+// GetDatabaseMongodbDenyPublicAccessOk returns a tuple with the DatabaseMongodbDenyPublicAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccessOk() (*bool, bool) {
+	if o == nil || o.DatabaseMongodbDenyPublicAccess == nil {
+		return nil, false
+	}
+	return o.DatabaseMongodbDenyPublicAccess, true
+}
+
+// HasDatabaseMongodbDenyPublicAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseMongodbDenyPublicAccess() bool {
+	if o != nil && o.DatabaseMongodbDenyPublicAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseMongodbDenyPublicAccess gets a reference to the given bool and assigns it to the DatabaseMongodbDenyPublicAccess field.
+func (o *ClusterAdvancedSettings) SetDatabaseMongodbDenyPublicAccess(v bool) {
+	o.DatabaseMongodbDenyPublicAccess = &v
+}
+
+// GetDatabaseMongodbAllowedCidrs returns the DatabaseMongodbAllowedCidrs field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseMongodbAllowedCidrs() []string {
+	if o == nil || o.DatabaseMongodbAllowedCidrs == nil {
+		var ret []string
+		return ret
+	}
+	return o.DatabaseMongodbAllowedCidrs
+}
+
+// GetDatabaseMongodbAllowedCidrsOk returns a tuple with the DatabaseMongodbAllowedCidrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabaseMongodbAllowedCidrsOk() ([]string, bool) {
+	if o == nil || o.DatabaseMongodbAllowedCidrs == nil {
+		return nil, false
+	}
+	return o.DatabaseMongodbAllowedCidrs, true
+}
+
+// HasDatabaseMongodbAllowedCidrs returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseMongodbAllowedCidrs() bool {
+	if o != nil && o.DatabaseMongodbAllowedCidrs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseMongodbAllowedCidrs gets a reference to the given []string and assigns it to the DatabaseMongodbAllowedCidrs field.
+func (o *ClusterAdvancedSettings) SetDatabaseMongodbAllowedCidrs(v []string) {
+	o.DatabaseMongodbAllowedCidrs = v
+}
+
+// GetDatabaseRedisDenyPublicAccess returns the DatabaseRedisDenyPublicAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccess() bool {
+	if o == nil || o.DatabaseRedisDenyPublicAccess == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DatabaseRedisDenyPublicAccess
+}
+
+// GetDatabaseRedisDenyPublicAccessOk returns a tuple with the DatabaseRedisDenyPublicAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccessOk() (*bool, bool) {
+	if o == nil || o.DatabaseRedisDenyPublicAccess == nil {
+		return nil, false
+	}
+	return o.DatabaseRedisDenyPublicAccess, true
+}
+
+// HasDatabaseRedisDenyPublicAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseRedisDenyPublicAccess() bool {
+	if o != nil && o.DatabaseRedisDenyPublicAccess != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseRedisDenyPublicAccess gets a reference to the given bool and assigns it to the DatabaseRedisDenyPublicAccess field.
+func (o *ClusterAdvancedSettings) SetDatabaseRedisDenyPublicAccess(v bool) {
+	o.DatabaseRedisDenyPublicAccess = &v
+}
+
+// GetDatabaseRedisAllowedCidrs returns the DatabaseRedisAllowedCidrs field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseRedisAllowedCidrs() []string {
+	if o == nil || o.DatabaseRedisAllowedCidrs == nil {
+		var ret []string
+		return ret
+	}
+	return o.DatabaseRedisAllowedCidrs
+}
+
+// GetDatabaseRedisAllowedCidrsOk returns a tuple with the DatabaseRedisAllowedCidrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetDatabaseRedisAllowedCidrsOk() ([]string, bool) {
+	if o == nil || o.DatabaseRedisAllowedCidrs == nil {
+		return nil, false
+	}
+	return o.DatabaseRedisAllowedCidrs, true
+}
+
+// HasDatabaseRedisAllowedCidrs returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseRedisAllowedCidrs() bool {
+	if o != nil && o.DatabaseRedisAllowedCidrs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseRedisAllowedCidrs gets a reference to the given []string and assigns it to the DatabaseRedisAllowedCidrs field.
+func (o *ClusterAdvancedSettings) SetDatabaseRedisAllowedCidrs(v []string) {
+	o.DatabaseRedisAllowedCidrs = v
 }
 
 // GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field value if set, zero value otherwise.
@@ -348,6 +636,30 @@ func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.AwsVpcFlowLogsRetentionDays != nil {
 		toSerialize["aws.vpc.flow_logs_retention_days"] = o.AwsVpcFlowLogsRetentionDays
+	}
+	if o.DatabasePostgresqlDenyPublicAccess != nil {
+		toSerialize["database.postgresql.deny_public_access"] = o.DatabasePostgresqlDenyPublicAccess
+	}
+	if o.DatabasePostgresqlAllowedCidrs != nil {
+		toSerialize["database.postgresql.allowed_cidrs"] = o.DatabasePostgresqlAllowedCidrs
+	}
+	if o.DatabaseMysqlDenyPublicAccess != nil {
+		toSerialize["database.mysql.deny_public_access"] = o.DatabaseMysqlDenyPublicAccess
+	}
+	if o.DatabaseMysqlAllowedCidrs != nil {
+		toSerialize["database.mysql.allowed_cidrs"] = o.DatabaseMysqlAllowedCidrs
+	}
+	if o.DatabaseMongodbDenyPublicAccess != nil {
+		toSerialize["database.mongodb.deny_public_access"] = o.DatabaseMongodbDenyPublicAccess
+	}
+	if o.DatabaseMongodbAllowedCidrs != nil {
+		toSerialize["database.mongodb.allowed_cidrs"] = o.DatabaseMongodbAllowedCidrs
+	}
+	if o.DatabaseRedisDenyPublicAccess != nil {
+		toSerialize["database.redis.deny_public_access"] = o.DatabaseRedisDenyPublicAccess
+	}
+	if o.DatabaseRedisAllowedCidrs != nil {
+		toSerialize["database.redis.allowed_cidrs"] = o.DatabaseRedisAllowedCidrs
 	}
 	if o.RegistryImageRetentionTime != nil {
 		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
