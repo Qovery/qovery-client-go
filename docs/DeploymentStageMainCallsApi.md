@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**CreateEnvironmentDeploymentStage**](DeploymentStageMainCallsApi.md#CreateEnvironmentDeploymentStage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 [**DeleteDeploymentStage**](DeploymentStageMainCallsApi.md#DeleteDeploymentStage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
 [**EditDeploymentStage**](DeploymentStageMainCallsApi.md#EditDeploymentStage) | **Put** /deploymentStage/{deploymentStageId} | Edit deployment stage
+[**GetDeploymentStage**](DeploymentStageMainCallsApi.md#GetDeploymentStage) | **Get** /deploymentStage/{deploymentStageId} | Get Deployment Stage
+[**GetServiceDeploymentStage**](DeploymentStageMainCallsApi.md#GetServiceDeploymentStage) | **Get** /service/{serviceId}/deploymentStage | Get Service Deployment Stage
 [**ListEnvironmentDeploymentStage**](DeploymentStageMainCallsApi.md#ListEnvironmentDeploymentStage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
 [**MoveDeploymentStage**](DeploymentStageMainCallsApi.md#MoveDeploymentStage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
 
@@ -15,7 +17,7 @@ Method | HTTP request | Description
 
 ## AttachServiceToDeploymentStage
 
-> DeploymentStageResponseList AttachServiceToDeploymentStage(ctx, deploymentStageId, serviceId).Execute()
+> DeploymentStageResponseList AttachServiceToDeploymentStage(ctx, deploymentStageId).Execute()
 
 Attach service to deployment stage
 
@@ -33,11 +35,10 @@ import (
 
 func main() {
     deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
-    serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsApi.AttachServiceToDeploymentStage(context.Background(), deploymentStageId, serviceId).Execute()
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.AttachServiceToDeploymentStage(context.Background(), deploymentStageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.AttachServiceToDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,7 +55,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **deploymentStageId** | **string** | Deployment Stage ID | 
-**serviceId** | **string** | Service ID of an application/job/container/database | 
 
 ### Other Parameters
 
@@ -63,7 +63,6 @@ Other parameters are passed through a pointer to a apiAttachServiceToDeploymentS
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 
 ### Return type
@@ -283,6 +282,142 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDeploymentStage
+
+> DeploymentStageResponse GetDeploymentStage(ctx, deploymentStageId).Execute()
+
+Get Deployment Stage
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.GetDeploymentStage(context.Background(), deploymentStageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.GetDeploymentStage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDeploymentStage`: DeploymentStageResponse
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsApi.GetDeploymentStage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentStageId** | **string** | Deployment Stage ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDeploymentStageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DeploymentStageResponse**](DeploymentStageResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetServiceDeploymentStage
+
+> DeploymentStageResponse GetServiceDeploymentStage(ctx, serviceId).Execute()
+
+Get Service Deployment Stage
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.GetServiceDeploymentStage(context.Background(), serviceId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.GetServiceDeploymentStage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetServiceDeploymentStage`: DeploymentStageResponse
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsApi.GetServiceDeploymentStage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** | Service ID of an application/job/container/database | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetServiceDeploymentStageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DeploymentStageResponse**](DeploymentStageResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

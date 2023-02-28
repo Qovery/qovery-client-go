@@ -4731,6 +4731,34 @@ paths:
       summary: Delete deployment stage
       tags:
       - Deployment Stage Main Calls
+    get:
+      operationId: getDeploymentStage
+      parameters:
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: deploymentStageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentStageResponse'
+          description: Get Deployment Stage
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get Deployment Stage
+      tags:
+      - Deployment Stage Main Calls
     put:
       operationId: EditDeploymentStage
       parameters:
@@ -4772,15 +4800,6 @@ paths:
         explode: false
         in: path
         name: deploymentStageId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Service ID of an application/job/container/database
-        explode: false
-        in: path
-        name: serviceId
         required: true
         schema:
           format: uuid
@@ -12234,6 +12253,35 @@ paths:
       summary: List last job commits
       tags:
       - Job Main Calls
+  /service/{serviceId}/deploymentStage:
+    get:
+      operationId: getServiceDeploymentStage
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentStageResponse'
+          description: Get Service Deployment Stage
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get Service Deployment Stage
+      tags:
+      - Deployment Stage Main Calls
 components:
   parameters:
     applicationId:

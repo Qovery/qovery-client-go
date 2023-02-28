@@ -286,6 +286,8 @@ Class | Method | HTTP request | Description
 *DeploymentStageMainCallsApi* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsApi* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsApi.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
 *DeploymentStageMainCallsApi* | [**EditDeploymentStage**](docs/DeploymentStageMainCallsApi.md#editdeploymentstage) | **Put** /deploymentStage/{deploymentStageId} | Edit deployment stage
+*DeploymentStageMainCallsApi* | [**GetDeploymentStage**](docs/DeploymentStageMainCallsApi.md#getdeploymentstage) | **Get** /deploymentStage/{deploymentStageId} | Get Deployment Stage
+*DeploymentStageMainCallsApi* | [**GetServiceDeploymentStage**](docs/DeploymentStageMainCallsApi.md#getservicedeploymentstage) | **Get** /service/{serviceId}/deploymentStage | Get Service Deployment Stage
 *DeploymentStageMainCallsApi* | [**ListEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#listenvironmentdeploymentstage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
 *DeploymentStageMainCallsApi* | [**MoveDeploymentStage**](docs/DeploymentStageMainCallsApi.md#movedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
 *EnvironmentApi* | [**DeployAllApplications**](docs/EnvironmentApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
