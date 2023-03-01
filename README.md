@@ -289,7 +289,8 @@ Class | Method | HTTP request | Description
 *DeploymentStageMainCallsApi* | [**GetDeploymentStage**](docs/DeploymentStageMainCallsApi.md#getdeploymentstage) | **Get** /deploymentStage/{deploymentStageId} | Get Deployment Stage
 *DeploymentStageMainCallsApi* | [**GetServiceDeploymentStage**](docs/DeploymentStageMainCallsApi.md#getservicedeploymentstage) | **Get** /service/{serviceId}/deploymentStage | Get Service Deployment Stage
 *DeploymentStageMainCallsApi* | [**ListEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#listenvironmentdeploymentstage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
-*DeploymentStageMainCallsApi* | [**MoveDeploymentStage**](docs/DeploymentStageMainCallsApi.md#movedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
+*DeploymentStageMainCallsApi* | [**MoveAfterDeploymentStage**](docs/DeploymentStageMainCallsApi.md#moveafterdeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveAfter/{stageId} | Move deployment stage after requested stage
+*DeploymentStageMainCallsApi* | [**MoveBeforeDeploymentStage**](docs/DeploymentStageMainCallsApi.md#movebeforedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
 *EnvironmentApi* | [**DeployAllApplications**](docs/EnvironmentApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsApi* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsApi.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsApi* | [**CloneEnvironment**](docs/EnvironmentActionsApi.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment

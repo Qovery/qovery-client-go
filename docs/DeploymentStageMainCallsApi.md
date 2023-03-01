@@ -11,7 +11,8 @@ Method | HTTP request | Description
 [**GetDeploymentStage**](DeploymentStageMainCallsApi.md#GetDeploymentStage) | **Get** /deploymentStage/{deploymentStageId} | Get Deployment Stage
 [**GetServiceDeploymentStage**](DeploymentStageMainCallsApi.md#GetServiceDeploymentStage) | **Get** /service/{serviceId}/deploymentStage | Get Service Deployment Stage
 [**ListEnvironmentDeploymentStage**](DeploymentStageMainCallsApi.md#ListEnvironmentDeploymentStage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
-[**MoveDeploymentStage**](DeploymentStageMainCallsApi.md#MoveDeploymentStage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
+[**MoveAfterDeploymentStage**](DeploymentStageMainCallsApi.md#MoveAfterDeploymentStage) | **Put** /deploymentStage/{deploymentStageId}/moveAfter/{stageId} | Move deployment stage after requested stage
+[**MoveBeforeDeploymentStage**](DeploymentStageMainCallsApi.md#MoveBeforeDeploymentStage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
 
 
 
@@ -496,11 +497,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## MoveDeploymentStage
+## MoveAfterDeploymentStage
 
-> DeploymentStageResponseList MoveDeploymentStage(ctx, deploymentStageId, stageId).Execute()
+> DeploymentStageResponseList MoveAfterDeploymentStage(ctx, deploymentStageId, stageId).Execute()
 
-Move deployment stage before requested stage
+Move deployment stage after requested stage
 
 ### Example
 
@@ -520,13 +521,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsApi.MoveDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.MoveAfterDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.MoveDeploymentStage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.MoveAfterDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `MoveDeploymentStage`: DeploymentStageResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsApi.MoveDeploymentStage`: %v\n", resp)
+    // response from `MoveAfterDeploymentStage`: DeploymentStageResponseList
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsApi.MoveAfterDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -541,12 +542,80 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiMoveDeploymentStageRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiMoveAfterDeploymentStageRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
+
+### Return type
+
+[**DeploymentStageResponseList**](DeploymentStageResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MoveBeforeDeploymentStage
+
+> DeploymentStageResponseList MoveBeforeDeploymentStage(ctx, deploymentStageId).Execute()
+
+Move deployment stage before requested stage
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.MoveBeforeDeploymentStage(context.Background(), deploymentStageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.MoveBeforeDeploymentStage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `MoveBeforeDeploymentStage`: DeploymentStageResponseList
+    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsApi.MoveBeforeDeploymentStage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentStageId** | **string** | Deployment Stage ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMoveBeforeDeploymentStageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

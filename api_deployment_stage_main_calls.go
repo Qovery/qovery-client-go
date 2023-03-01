@@ -739,27 +739,27 @@ func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStageExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiMoveDeploymentStageRequest struct {
+type ApiMoveAfterDeploymentStageRequest struct {
 	ctx               context.Context
 	ApiService        *DeploymentStageMainCallsApiService
 	deploymentStageId string
 	stageId           string
 }
 
-func (r ApiMoveDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
-	return r.ApiService.MoveDeploymentStageExecute(r)
+func (r ApiMoveAfterDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
+	return r.ApiService.MoveAfterDeploymentStageExecute(r)
 }
 
 /*
-MoveDeploymentStage Move deployment stage before requested stage
+MoveAfterDeploymentStage Move deployment stage after requested stage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param deploymentStageId Deployment Stage ID
  @param stageId Deployment Stage ID
- @return ApiMoveDeploymentStageRequest
+ @return ApiMoveAfterDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) MoveDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveDeploymentStageRequest {
-	return ApiMoveDeploymentStageRequest{
+func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveAfterDeploymentStageRequest {
+	return ApiMoveAfterDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
 		deploymentStageId: deploymentStageId,
@@ -769,7 +769,7 @@ func (a *DeploymentStageMainCallsApiService) MoveDeploymentStage(ctx context.Con
 
 // Execute executes the request
 //  @return DeploymentStageResponseList
-func (a *DeploymentStageMainCallsApiService) MoveDeploymentStageExecute(r ApiMoveDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
+func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStageExecute(r ApiMoveAfterDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -777,14 +777,115 @@ func (a *DeploymentStageMainCallsApiService) MoveDeploymentStageExecute(r ApiMov
 		localVarReturnValue *DeploymentStageResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.MoveDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.MoveAfterDeploymentStage")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/moveAfter/{stageId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterToString(r.stageId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiMoveBeforeDeploymentStageRequest struct {
+	ctx               context.Context
+	ApiService        *DeploymentStageMainCallsApiService
+	deploymentStageId string
+}
+
+func (r ApiMoveBeforeDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
+	return r.ApiService.MoveBeforeDeploymentStageExecute(r)
+}
+
+/*
+MoveBeforeDeploymentStage Move deployment stage before requested stage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
+ @return ApiMoveBeforeDeploymentStageRequest
+*/
+func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStage(ctx context.Context, deploymentStageId string) ApiMoveBeforeDeploymentStageRequest {
+	return ApiMoveBeforeDeploymentStageRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		deploymentStageId: deploymentStageId,
+	}
+}
+
+// Execute executes the request
+//  @return DeploymentStageResponseList
+func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStageExecute(r ApiMoveBeforeDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeploymentStageResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.MoveBeforeDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/moveBefore/{stageId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterToString(r.stageId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

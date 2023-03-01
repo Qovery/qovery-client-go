@@ -4832,7 +4832,36 @@ paths:
       - Deployment Stage Main Calls
   /deploymentStage/{deploymentStageId}/moveBefore/{stageId}:
     put:
-      operationId: MoveDeploymentStage
+      operationId: MoveBeforeDeploymentStage
+      parameters:
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: deploymentStageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentStageResponseList'
+          description: List deployment stage
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Move deployment stage before requested stage
+      tags:
+      - Deployment Stage Main Calls
+  /deploymentStage/{deploymentStageId}/moveAfter/{stageId}:
+    put:
+      operationId: MoveAfterDeploymentStage
       parameters:
       - description: Deployment Stage ID
         explode: false
@@ -4865,7 +4894,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Move deployment stage before requested stage
+      summary: Move deployment stage after requested stage
       tags:
       - Deployment Stage Main Calls
   /environment/{environmentId}/deploymentRule:
