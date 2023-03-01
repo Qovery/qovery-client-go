@@ -848,6 +848,7 @@ type ApiMoveBeforeDeploymentStageRequest struct {
 	ctx               context.Context
 	ApiService        *DeploymentStageMainCallsApiService
 	deploymentStageId string
+	stageId           string
 }
 
 func (r ApiMoveBeforeDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
@@ -859,13 +860,15 @@ MoveBeforeDeploymentStage Move deployment stage before requested stage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param deploymentStageId Deployment Stage ID
+ @param stageId Deployment Stage ID
  @return ApiMoveBeforeDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStage(ctx context.Context, deploymentStageId string) ApiMoveBeforeDeploymentStageRequest {
+func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveBeforeDeploymentStageRequest {
 	return ApiMoveBeforeDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
 		deploymentStageId: deploymentStageId,
+		stageId:           stageId,
 	}
 }
 
@@ -886,6 +889,7 @@ func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStageExecute(r 
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/moveBefore/{stageId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterToString(r.stageId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

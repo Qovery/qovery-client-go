@@ -570,7 +570,7 @@ Name | Type | Description  | Notes
 
 ## MoveBeforeDeploymentStage
 
-> DeploymentStageResponseList MoveBeforeDeploymentStage(ctx, deploymentStageId).Execute()
+> DeploymentStageResponseList MoveBeforeDeploymentStage(ctx, deploymentStageId, stageId).Execute()
 
 Move deployment stage before requested stage
 
@@ -588,10 +588,11 @@ import (
 
 func main() {
     deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+    stageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsApi.MoveBeforeDeploymentStage(context.Background(), deploymentStageId).Execute()
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.MoveBeforeDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.MoveBeforeDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -608,6 +609,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **deploymentStageId** | **string** | Deployment Stage ID | 
+**stageId** | **string** | Deployment Stage ID | 
 
 ### Other Parameters
 
@@ -616,6 +618,7 @@ Other parameters are passed through a pointer to a apiMoveBeforeDeploymentStageR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

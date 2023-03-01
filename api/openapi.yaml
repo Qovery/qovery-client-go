@@ -4843,6 +4843,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Deployment Stage ID
+        explode: false
+        in: path
+        name: stageId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -12427,6 +12436,16 @@ components:
       explode: false
       in: path
       name: deploymentStageId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    stageId:
+      description: Deployment Stage ID
+      explode: false
+      in: path
+      name: stageId
       required: true
       schema:
         format: uuid
