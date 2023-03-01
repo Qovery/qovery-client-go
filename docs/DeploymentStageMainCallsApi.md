@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## AttachServiceToDeploymentStage
 
-> DeploymentStageResponseList AttachServiceToDeploymentStage(ctx, deploymentStageId).Execute()
+> DeploymentStageResponseList AttachServiceToDeploymentStage(ctx, deploymentStageId, serviceId).Execute()
 
 Attach service to deployment stage
 
@@ -35,10 +35,11 @@ import (
 
 func main() {
     deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+    serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsApi.AttachServiceToDeploymentStage(context.Background(), deploymentStageId).Execute()
+    resp, r, err := apiClient.DeploymentStageMainCallsApi.AttachServiceToDeploymentStage(context.Background(), deploymentStageId, serviceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsApi.AttachServiceToDeploymentStage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -55,6 +56,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **deploymentStageId** | **string** | Deployment Stage ID | 
+**serviceId** | **string** | Service ID of an application/job/container/database | 
 
 ### Other Parameters
 
@@ -63,6 +65,7 @@ Other parameters are passed through a pointer to a apiAttachServiceToDeploymentS
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

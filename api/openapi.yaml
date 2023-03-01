@@ -4805,6 +4805,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -12627,6 +12636,16 @@ components:
       explode: false
       in: path
       name: targetLogicalDatabaseId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    serviceId:
+      description: Service ID of an application/job/container/database
+      explode: false
+      in: path
+      name: serviceId
       required: true
       schema:
         format: uuid

@@ -27,6 +27,7 @@ type ApiAttachServiceToDeploymentStageRequest struct {
 	ctx               context.Context
 	ApiService        *DeploymentStageMainCallsApiService
 	deploymentStageId string
+	serviceId         string
 }
 
 func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
@@ -38,13 +39,15 @@ AttachServiceToDeploymentStage Attach service to deployment stage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param deploymentStageId Deployment Stage ID
+ @param serviceId Service ID of an application/job/container/database
  @return ApiAttachServiceToDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStage(ctx context.Context, deploymentStageId string) ApiAttachServiceToDeploymentStageRequest {
+func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStage(ctx context.Context, deploymentStageId string, serviceId string) ApiAttachServiceToDeploymentStageRequest {
 	return ApiAttachServiceToDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
 		deploymentStageId: deploymentStageId,
+		serviceId:         serviceId,
 	}
 }
 
@@ -65,6 +68,7 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/service/{serviceId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
