@@ -22,8 +22,8 @@ type DeploymentHistoryDatabase struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the service
-	Name   *string                      `json:"name,omitempty"`
-	Status *DeploymentHistoryStatusEnum `json:"status,omitempty"`
+	Name   *string    `json:"name,omitempty"`
+	Status *StateEnum `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryDatabase instantiates a new DeploymentHistoryDatabase object
@@ -158,9 +158,9 @@ func (o *DeploymentHistoryDatabase) SetName(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryDatabase) GetStatus() DeploymentHistoryStatusEnum {
+func (o *DeploymentHistoryDatabase) GetStatus() StateEnum {
 	if o == nil || o.Status == nil {
-		var ret DeploymentHistoryStatusEnum
+		var ret StateEnum
 		return ret
 	}
 	return *o.Status
@@ -168,7 +168,7 @@ func (o *DeploymentHistoryDatabase) GetStatus() DeploymentHistoryStatusEnum {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryDatabase) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
+func (o *DeploymentHistoryDatabase) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -184,8 +184,8 @@ func (o *DeploymentHistoryDatabase) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given DeploymentHistoryStatusEnum and assigns it to the Status field.
-func (o *DeploymentHistoryDatabase) SetStatus(v DeploymentHistoryStatusEnum) {
+// SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
+func (o *DeploymentHistoryDatabase) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 

@@ -19277,7 +19277,7 @@ components:
           description: name of the service
           type: string
         status:
-          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+          $ref: '#/components/schemas/StateEnum'
       type: object
     DeploymentHistoryContainer_allOf:
       properties:
@@ -19285,7 +19285,7 @@ components:
           description: name of the container
           type: string
         status:
-          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+          $ref: '#/components/schemas/StateEnum'
         image_name:
           type: string
         tag:
@@ -20008,7 +20008,7 @@ components:
           description: name of the job
           type: string
         status:
-          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+          $ref: '#/components/schemas/StateEnum'
         image_name:
           type: string
         tag:

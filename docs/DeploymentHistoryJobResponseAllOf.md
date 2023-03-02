@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | name of the job | [optional] 
-**Status** | Pointer to [**DeploymentHistoryStatusEnum**](DeploymentHistoryStatusEnum.md) |  | [optional] 
+**Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **ImageName** | Pointer to **string** |  | [optional] 
 **Tag** | Pointer to **string** |  | [optional] 
 **Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
@@ -59,20 +59,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *DeploymentHistoryJobResponseAllOf) GetStatus() DeploymentHistoryStatusEnum`
+`func (o *DeploymentHistoryJobResponseAllOf) GetStatus() StateEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *DeploymentHistoryJobResponseAllOf) GetStatusOk() (*DeploymentHistoryStatusEnum, bool)`
+`func (o *DeploymentHistoryJobResponseAllOf) GetStatusOk() (*StateEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *DeploymentHistoryJobResponseAllOf) SetStatus(v DeploymentHistoryStatusEnum)`
+`func (o *DeploymentHistoryJobResponseAllOf) SetStatus(v StateEnum)`
 
 SetStatus sets Status field to given value.
 

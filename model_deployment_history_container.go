@@ -22,12 +22,12 @@ type DeploymentHistoryContainer struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the container
-	Name       *string                      `json:"name,omitempty"`
-	Status     *DeploymentHistoryStatusEnum `json:"status,omitempty"`
-	ImageName  *string                      `json:"image_name,omitempty"`
-	Tag        *string                      `json:"tag,omitempty"`
-	Arguments  []string                     `json:"arguments,omitempty"`
-	Entrypoint *string                      `json:"entrypoint,omitempty"`
+	Name       *string    `json:"name,omitempty"`
+	Status     *StateEnum `json:"status,omitempty"`
+	ImageName  *string    `json:"image_name,omitempty"`
+	Tag        *string    `json:"tag,omitempty"`
+	Arguments  []string   `json:"arguments,omitempty"`
+	Entrypoint *string    `json:"entrypoint,omitempty"`
 }
 
 // NewDeploymentHistoryContainer instantiates a new DeploymentHistoryContainer object
@@ -162,9 +162,9 @@ func (o *DeploymentHistoryContainer) SetName(v string) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *DeploymentHistoryContainer) GetStatus() DeploymentHistoryStatusEnum {
+func (o *DeploymentHistoryContainer) GetStatus() StateEnum {
 	if o == nil || o.Status == nil {
-		var ret DeploymentHistoryStatusEnum
+		var ret StateEnum
 		return ret
 	}
 	return *o.Status
@@ -172,7 +172,7 @@ func (o *DeploymentHistoryContainer) GetStatus() DeploymentHistoryStatusEnum {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryContainer) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
+func (o *DeploymentHistoryContainer) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -188,8 +188,8 @@ func (o *DeploymentHistoryContainer) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given DeploymentHistoryStatusEnum and assigns it to the Status field.
-func (o *DeploymentHistoryContainer) SetStatus(v DeploymentHistoryStatusEnum) {
+// SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
+func (o *DeploymentHistoryContainer) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 
