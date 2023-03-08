@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **CloudProviderContainerRegistryTags** | Pointer to [**ClusterAdvancedSettingsCloudProviderContainerRegistryTags**](ClusterAdvancedSettingsCloudProviderContainerRegistryTags.md) |  | [optional] 
 **LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] [default to "lb-s"]
 **PlecoResourcesTtl** | Pointer to **int32** |  | [optional] [default to -1]
+**AwsIamAdminGroup** | Pointer to **string** | AWS IAM group name with cluster access | [optional] [default to "Admins"]
 
 ## Methods
 
@@ -439,6 +440,31 @@ SetPlecoResourcesTtl sets PlecoResourcesTtl field to given value.
 `func (o *ClusterAdvancedSettings) HasPlecoResourcesTtl() bool`
 
 HasPlecoResourcesTtl returns a boolean if a field has been set.
+
+### GetAwsIamAdminGroup
+
+`func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string`
+
+GetAwsIamAdminGroup returns the AwsIamAdminGroup field if non-nil, zero value otherwise.
+
+### GetAwsIamAdminGroupOk
+
+`func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool)`
+
+GetAwsIamAdminGroupOk returns a tuple with the AwsIamAdminGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsIamAdminGroup
+
+`func (o *ClusterAdvancedSettings) SetAwsIamAdminGroup(v string)`
+
+SetAwsIamAdminGroup sets AwsIamAdminGroup field to given value.
+
+### HasAwsIamAdminGroup
+
+`func (o *ClusterAdvancedSettings) HasAwsIamAdminGroup() bool`
+
+HasAwsIamAdminGroup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

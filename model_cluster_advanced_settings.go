@@ -48,6 +48,8 @@ type ClusterAdvancedSettings struct {
 	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deprecated
 	PlecoResourcesTtl *int32 `json:"pleco.resources_ttl,omitempty"`
+	// AWS IAM group name with cluster access
+	AwsIamAdminGroup *string `json:"aws.iam.admin_group,omitempty"`
 }
 
 // NewClusterAdvancedSettings instantiates a new ClusterAdvancedSettings object
@@ -78,6 +80,8 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this.LoadBalancerSize = &loadBalancerSize
 	var plecoResourcesTtl int32 = -1
 	this.PlecoResourcesTtl = &plecoResourcesTtl
+	var awsIamAdminGroup string = "Admins"
+	this.AwsIamAdminGroup = &awsIamAdminGroup
 	return &this
 }
 
@@ -108,6 +112,8 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this.LoadBalancerSize = &loadBalancerSize
 	var plecoResourcesTtl int32 = -1
 	this.PlecoResourcesTtl = &plecoResourcesTtl
+	var awsIamAdminGroup string = "Admins"
+	this.AwsIamAdminGroup = &awsIamAdminGroup
 	return &this
 }
 
@@ -626,6 +632,38 @@ func (o *ClusterAdvancedSettings) SetPlecoResourcesTtl(v int32) {
 	o.PlecoResourcesTtl = &v
 }
 
+// GetAwsIamAdminGroup returns the AwsIamAdminGroup field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string {
+	if o == nil || o.AwsIamAdminGroup == nil {
+		var ret string
+		return ret
+	}
+	return *o.AwsIamAdminGroup
+}
+
+// GetAwsIamAdminGroupOk returns a tuple with the AwsIamAdminGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool) {
+	if o == nil || o.AwsIamAdminGroup == nil {
+		return nil, false
+	}
+	return o.AwsIamAdminGroup, true
+}
+
+// HasAwsIamAdminGroup returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsIamAdminGroup() bool {
+	if o != nil && o.AwsIamAdminGroup != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsIamAdminGroup gets a reference to the given string and assigns it to the AwsIamAdminGroup field.
+func (o *ClusterAdvancedSettings) SetAwsIamAdminGroup(v string) {
+	o.AwsIamAdminGroup = &v
+}
+
 func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AwsCloudwatchEksLogsRetentionDays != nil {
@@ -675,6 +713,9 @@ func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.PlecoResourcesTtl != nil {
 		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
+	}
+	if o.AwsIamAdminGroup != nil {
+		toSerialize["aws.iam.admin_group"] = o.AwsIamAdminGroup
 	}
 	return json.Marshal(toSerialize)
 }

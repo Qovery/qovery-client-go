@@ -14060,6 +14060,7 @@ components:
         database.mysql.deny_public_access: false
         database.mongodb.deny_public_access: false
         loki.log_retention_in_week: 5
+        aws.iam.admin_group: Admins
         pleco.resources_ttl: 5
         database.postgresql.allowed_cidrs:
         - database.postgresql.allowed_cidrs
@@ -14160,6 +14161,10 @@ components:
           default: -1
           deprecated: true
           type: integer
+        aws.iam.admin_group:
+          default: Admins
+          description: AWS IAM group name with cluster access
+          type: string
       type: object
     Commit:
       example:
