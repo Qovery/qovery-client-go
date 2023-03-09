@@ -44,7 +44,7 @@ type ClusterAdvancedSettings struct {
 	// For how long in week loki is going to keep logs of your applications
 	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
 	// Add additional tags on the cluster dedicated registry
-	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider_container_registry_tags,omitempty"`
+	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider.container_registry.tags,omitempty"`
 	// Select the size of the main load_balancer (only effective for Scaleway)
 	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deprecated
@@ -707,7 +707,7 @@ func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
 	}
 	if o.CloudProviderContainerRegistryTags != nil {
-		toSerialize["cloud_provider_container_registry_tags"] = o.CloudProviderContainerRegistryTags
+		toSerialize["cloud_provider.container_registry.tags"] = o.CloudProviderContainerRegistryTags
 	}
 	if o.LoadBalancerSize != nil {
 		toSerialize["load_balancer.size"] = o.LoadBalancerSize

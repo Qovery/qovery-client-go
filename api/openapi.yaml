@@ -14065,11 +14065,11 @@ components:
         database.postgresql.allowed_cidrs:
         - database.postgresql.allowed_cidrs
         - database.postgresql.allowed_cidrs
+        cloud_provider.container_registry.tags:
+          key: cloud_provider.container_registry.tags
         database.mysql.allowed_cidrs:
         - database.mysql.allowed_cidrs
         - database.mysql.allowed_cidrs
-        cloud_provider_container_registry_tags:
-          key: cloud_provider_container_registry_tags
         database.redis.deny_public_access: false
         aws.vpc.flow_logs_retention_days: 6
         database.redis.allowed_cidrs:
@@ -14149,7 +14149,7 @@ components:
           default: 12
           description: For how long in week loki is going to keep logs of your applications
           type: integer
-        cloud_provider_container_registry_tags:
+        cloud_provider.container_registry.tags:
           additionalProperties:
             type: string
           description: Add additional tags on the cluster dedicated registry
