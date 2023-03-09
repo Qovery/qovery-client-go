@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **DatabaseRedisAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the Redis database | [optional] [default to ["0.0.0.0/0"]]
 **RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] [default to 31536000]
 **LokiLogRetentionInWeek** | Pointer to **int32** | For how long in week loki is going to keep logs of your applications | [optional] [default to 12]
-**CloudProviderContainerRegistryTags** | Pointer to [**ClusterAdvancedSettingsCloudProviderContainerRegistryTags**](ClusterAdvancedSettingsCloudProviderContainerRegistryTags.md) |  | [optional] 
+**CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
 **LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] [default to "lb-s"]
 **PlecoResourcesTtl** | Pointer to **int32** |  | [optional] [default to -1]
 **AwsIamAdminGroup** | Pointer to **string** | AWS IAM group name with cluster access | [optional] [default to "Admins"]
@@ -368,20 +368,20 @@ HasLokiLogRetentionInWeek returns a boolean if a field has been set.
 
 ### GetCloudProviderContainerRegistryTags
 
-`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() ClusterAdvancedSettingsCloudProviderContainerRegistryTags`
+`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[string]string`
 
 GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field if non-nil, zero value otherwise.
 
 ### GetCloudProviderContainerRegistryTagsOk
 
-`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*ClusterAdvancedSettingsCloudProviderContainerRegistryTags, bool)`
+`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool)`
 
 GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloudProviderContainerRegistryTags
 
-`func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v ClusterAdvancedSettingsCloudProviderContainerRegistryTags)`
+`func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string)`
 
 SetCloudProviderContainerRegistryTags sets CloudProviderContainerRegistryTags field to given value.
 

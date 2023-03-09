@@ -42,8 +42,9 @@ type ClusterAdvancedSettings struct {
 	// Configure the number of seconds before cleaning images in the registry
 	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
 	// For how long in week loki is going to keep logs of your applications
-	LokiLogRetentionInWeek             *int32                                                     `json:"loki.log_retention_in_week,omitempty"`
-	CloudProviderContainerRegistryTags *ClusterAdvancedSettingsCloudProviderContainerRegistryTags `json:"cloud_provider_container_registry_tags,omitempty"`
+	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
+	// Add additional tags on the cluster dedicated registry
+	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider_container_registry_tags,omitempty"`
 	// Select the size of the main load_balancer (only effective for Scaleway)
 	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deprecated
@@ -534,9 +535,9 @@ func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32) {
 }
 
 // GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() ClusterAdvancedSettingsCloudProviderContainerRegistryTags {
+func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[string]string {
 	if o == nil || o.CloudProviderContainerRegistryTags == nil {
-		var ret ClusterAdvancedSettingsCloudProviderContainerRegistryTags
+		var ret map[string]string
 		return ret
 	}
 	return *o.CloudProviderContainerRegistryTags
@@ -544,7 +545,7 @@ func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() Cluste
 
 // GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*ClusterAdvancedSettingsCloudProviderContainerRegistryTags, bool) {
+func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool) {
 	if o == nil || o.CloudProviderContainerRegistryTags == nil {
 		return nil, false
 	}
@@ -560,8 +561,8 @@ func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool {
 	return false
 }
 
-// SetCloudProviderContainerRegistryTags gets a reference to the given ClusterAdvancedSettingsCloudProviderContainerRegistryTags and assigns it to the CloudProviderContainerRegistryTags field.
-func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v ClusterAdvancedSettingsCloudProviderContainerRegistryTags) {
+// SetCloudProviderContainerRegistryTags gets a reference to the given map[string]string and assigns it to the CloudProviderContainerRegistryTags field.
+func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string) {
 	o.CloudProviderContainerRegistryTags = &v
 }
 

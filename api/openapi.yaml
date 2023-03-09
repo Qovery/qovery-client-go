@@ -14069,8 +14069,7 @@ components:
         - database.mysql.allowed_cidrs
         - database.mysql.allowed_cidrs
         cloud_provider_container_registry_tags:
-          value: value
-          key: key
+          key: cloud_provider_container_registry_tags
         database.redis.deny_public_access: false
         aws.vpc.flow_logs_retention_days: 6
         database.redis.allowed_cidrs:
@@ -14151,7 +14150,10 @@ components:
           description: For how long in week loki is going to keep logs of your applications
           type: integer
         cloud_provider_container_registry_tags:
-          $ref: '#/components/schemas/ClusterAdvancedSettings_cloud_provider_container_registry_tags'
+          additionalProperties:
+            type: string
+          description: Add additional tags on the cluster dedicated registry
+          type: object
         load_balancer.size:
           default: lb-s
           description: Select the size of the main load_balancer (only effective for
@@ -18885,17 +18887,6 @@ components:
       - description
       - destination
       - target
-      type: object
-    ClusterAdvancedSettings_cloud_provider_container_registry_tags:
-      description: Add additional tags on the cluster dedicated registry
-      example:
-        value: value
-        key: key
-      properties:
-        key:
-          type: string
-        value:
-          type: string
       type: object
     CommitPaginatedResponseList_allOf:
       properties:

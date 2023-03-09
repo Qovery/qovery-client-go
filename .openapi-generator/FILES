@@ -136,7 +136,6 @@ docs/CloudProviderEnum.md
 docs/CloudProviderResponseList.md
 docs/Cluster.md
 docs/ClusterAdvancedSettings.md
-docs/ClusterAdvancedSettingsCloudProviderContainerRegistryTags.md
 docs/ClusterAllOf.md
 docs/ClusterCloudProviderInfo.md
 docs/ClusterCloudProviderInfoCredentials.md
@@ -607,7 +606,6 @@ model_cloud_provider_enum.go
 model_cloud_provider_response_list.go
 model_cluster.go
 model_cluster_advanced_settings.go
-model_cluster_advanced_settings_cloud_provider_container_registry_tags.go
 model_cluster_all_of.go
 model_cluster_cloud_provider_info.go
 model_cluster_cloud_provider_info_credentials.go
