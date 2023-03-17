@@ -14057,16 +14057,17 @@ components:
     ClusterAdvancedSettings:
       example:
         aws.cloudwatch.eks_logs_retention_days: 0
+        loki.log_retention_in_week: 1
         database.mysql.deny_public_access: false
         database.mongodb.deny_public_access: false
-        loki.log_retention_in_week: 5
         aws.iam.admin_group: Admins
+        aws.eks.ec2.metadata_imds: optional
         pleco.resources_ttl: 5
+        cloud_provider.container_registry.tags:
+          key: cloud_provider.container_registry.tags
         database.postgresql.allowed_cidrs:
         - database.postgresql.allowed_cidrs
         - database.postgresql.allowed_cidrs
-        cloud_provider.container_registry.tags:
-          key: cloud_provider.container_registry.tags
         database.mysql.allowed_cidrs:
         - database.mysql.allowed_cidrs
         - database.mysql.allowed_cidrs
@@ -14076,7 +14077,7 @@ components:
         - database.redis.allowed_cidrs
         - database.redis.allowed_cidrs
         aws.vpc.enable_s3_flow_logs: false
-        registry.image_retention_time: 1
+        registry.image_retention_time: 5
         database.postgresql.deny_public_access: false
         load_balancer.size: lb-s
         database.mongodb.allowed_cidrs:
@@ -14096,6 +14097,25 @@ components:
           description: Set the number of retention days for flow logs. Disable with
             value "0"
           type: integer
+        loki.log_retention_in_week:
+          default: 12
+          description: For how long in week loki is going to keep logs of your applications
+          type: integer
+        registry.image_retention_time:
+          default: 31536000
+          description: Configure the number of seconds before cleaning images in the
+            registry
+          type: integer
+        cloud_provider.container_registry.tags:
+          additionalProperties:
+            type: string
+          description: Add additional tags on the cluster dedicated registry
+          type: object
+        load_balancer.size:
+          default: lb-s
+          description: Select the size of the main load_balancer (only effective for
+            Scaleway)
+          type: string
         database.postgresql.deny_public_access:
           default: false
           description: Deny public access to any PostgreSQL database
@@ -14140,33 +14160,23 @@ components:
           items:
             type: string
           type: array
-        registry.image_retention_time:
-          default: 31536000
-          description: Configure the number of seconds before cleaning images in the
-            registry
-          type: integer
-        loki.log_retention_in_week:
-          default: 12
-          description: For how long in week loki is going to keep logs of your applications
-          type: integer
-        cloud_provider.container_registry.tags:
-          additionalProperties:
-            type: string
-          description: Add additional tags on the cluster dedicated registry
-          type: object
-        load_balancer.size:
-          default: lb-s
-          description: Select the size of the main load_balancer (only effective for
-            Scaleway)
+        aws.iam.admin_group:
+          default: Admins
+          description: AWS IAM group name with cluster access
+          type: string
+        aws.eks.ec2.metadata_imds:
+          default: optional
+          description: "Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)\
+            \ version you want to use:\n  * `required`: IMDS V2 only\n  * `optional`:\
+            \ IMDS V1 + V2\n"
+          enum:
+          - optional
+          - required
           type: string
         pleco.resources_ttl:
           default: -1
           deprecated: true
           type: integer
-        aws.iam.admin_group:
-          default: Admins
-          description: AWS IAM group name with cluster access
-          type: string
       type: object
     Commit:
       example:

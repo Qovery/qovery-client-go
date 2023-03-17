@@ -7,6 +7,10 @@ Name | Type | Description | Notes
 **AwsCloudwatchEksLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for EKS Cloudwatch logs | [optional] [default to 90]
 **AwsVpcEnableS3FlowLogs** | Pointer to **bool** | Enable flow logs for on the VPC and store them in an S3 bucket | [optional] [default to false]
 **AwsVpcFlowLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for flow logs. Disable with value \&quot;0\&quot; | [optional] [default to 365]
+**LokiLogRetentionInWeek** | Pointer to **int32** | For how long in week loki is going to keep logs of your applications | [optional] [default to 12]
+**RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] [default to 31536000]
+**CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
+**LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] [default to "lb-s"]
 **DatabasePostgresqlDenyPublicAccess** | Pointer to **bool** | Deny public access to any PostgreSQL database | [optional] [default to false]
 **DatabasePostgresqlAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the PostgreSQL database | [optional] [default to ["0.0.0.0/0"]]
 **DatabaseMysqlDenyPublicAccess** | Pointer to **bool** | Deny public access to any MySql database | [optional] [default to false]
@@ -15,12 +19,9 @@ Name | Type | Description | Notes
 **DatabaseMongodbAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the MongoDB/DocumentDB database | [optional] [default to ["0.0.0.0/0"]]
 **DatabaseRedisDenyPublicAccess** | Pointer to **bool** | Deny public access to any Redis database | [optional] [default to false]
 **DatabaseRedisAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the Redis database | [optional] [default to ["0.0.0.0/0"]]
-**RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] [default to 31536000]
-**LokiLogRetentionInWeek** | Pointer to **int32** | For how long in week loki is going to keep logs of your applications | [optional] [default to 12]
-**CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
-**LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] [default to "lb-s"]
-**PlecoResourcesTtl** | Pointer to **int32** |  | [optional] [default to -1]
 **AwsIamAdminGroup** | Pointer to **string** | AWS IAM group name with cluster access | [optional] [default to "Admins"]
+**AwsEksEc2MetadataImds** | Pointer to **string** | Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * &#x60;required&#x60;: IMDS V2 only   * &#x60;optional&#x60;: IMDS V1 + V2  | [optional] [default to "optional"]
+**PlecoResourcesTtl** | Pointer to **int32** |  | [optional] [default to -1]
 
 ## Methods
 
@@ -115,6 +116,106 @@ SetAwsVpcFlowLogsRetentionDays sets AwsVpcFlowLogsRetentionDays field to given v
 `func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool`
 
 HasAwsVpcFlowLogsRetentionDays returns a boolean if a field has been set.
+
+### GetLokiLogRetentionInWeek
+
+`func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32`
+
+GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field if non-nil, zero value otherwise.
+
+### GetLokiLogRetentionInWeekOk
+
+`func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool)`
+
+GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiLogRetentionInWeek
+
+`func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32)`
+
+SetLokiLogRetentionInWeek sets LokiLogRetentionInWeek field to given value.
+
+### HasLokiLogRetentionInWeek
+
+`func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool`
+
+HasLokiLogRetentionInWeek returns a boolean if a field has been set.
+
+### GetRegistryImageRetentionTime
+
+`func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTime() int32`
+
+GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field if non-nil, zero value otherwise.
+
+### GetRegistryImageRetentionTimeOk
+
+`func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTimeOk() (*int32, bool)`
+
+GetRegistryImageRetentionTimeOk returns a tuple with the RegistryImageRetentionTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegistryImageRetentionTime
+
+`func (o *ClusterAdvancedSettings) SetRegistryImageRetentionTime(v int32)`
+
+SetRegistryImageRetentionTime sets RegistryImageRetentionTime field to given value.
+
+### HasRegistryImageRetentionTime
+
+`func (o *ClusterAdvancedSettings) HasRegistryImageRetentionTime() bool`
+
+HasRegistryImageRetentionTime returns a boolean if a field has been set.
+
+### GetCloudProviderContainerRegistryTags
+
+`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[string]string`
+
+GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field if non-nil, zero value otherwise.
+
+### GetCloudProviderContainerRegistryTagsOk
+
+`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool)`
+
+GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProviderContainerRegistryTags
+
+`func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string)`
+
+SetCloudProviderContainerRegistryTags sets CloudProviderContainerRegistryTags field to given value.
+
+### HasCloudProviderContainerRegistryTags
+
+`func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool`
+
+HasCloudProviderContainerRegistryTags returns a boolean if a field has been set.
+
+### GetLoadBalancerSize
+
+`func (o *ClusterAdvancedSettings) GetLoadBalancerSize() string`
+
+GetLoadBalancerSize returns the LoadBalancerSize field if non-nil, zero value otherwise.
+
+### GetLoadBalancerSizeOk
+
+`func (o *ClusterAdvancedSettings) GetLoadBalancerSizeOk() (*string, bool)`
+
+GetLoadBalancerSizeOk returns a tuple with the LoadBalancerSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLoadBalancerSize
+
+`func (o *ClusterAdvancedSettings) SetLoadBalancerSize(v string)`
+
+SetLoadBalancerSize sets LoadBalancerSize field to given value.
+
+### HasLoadBalancerSize
+
+`func (o *ClusterAdvancedSettings) HasLoadBalancerSize() bool`
+
+HasLoadBalancerSize returns a boolean if a field has been set.
 
 ### GetDatabasePostgresqlDenyPublicAccess
 
@@ -316,105 +417,55 @@ SetDatabaseRedisAllowedCidrs sets DatabaseRedisAllowedCidrs field to given value
 
 HasDatabaseRedisAllowedCidrs returns a boolean if a field has been set.
 
-### GetRegistryImageRetentionTime
+### GetAwsIamAdminGroup
 
-`func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTime() int32`
+`func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string`
 
-GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field if non-nil, zero value otherwise.
+GetAwsIamAdminGroup returns the AwsIamAdminGroup field if non-nil, zero value otherwise.
 
-### GetRegistryImageRetentionTimeOk
+### GetAwsIamAdminGroupOk
 
-`func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTimeOk() (*int32, bool)`
+`func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool)`
 
-GetRegistryImageRetentionTimeOk returns a tuple with the RegistryImageRetentionTime field if it's non-nil, zero value otherwise
+GetAwsIamAdminGroupOk returns a tuple with the AwsIamAdminGroup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRegistryImageRetentionTime
+### SetAwsIamAdminGroup
 
-`func (o *ClusterAdvancedSettings) SetRegistryImageRetentionTime(v int32)`
+`func (o *ClusterAdvancedSettings) SetAwsIamAdminGroup(v string)`
 
-SetRegistryImageRetentionTime sets RegistryImageRetentionTime field to given value.
+SetAwsIamAdminGroup sets AwsIamAdminGroup field to given value.
 
-### HasRegistryImageRetentionTime
+### HasAwsIamAdminGroup
 
-`func (o *ClusterAdvancedSettings) HasRegistryImageRetentionTime() bool`
+`func (o *ClusterAdvancedSettings) HasAwsIamAdminGroup() bool`
 
-HasRegistryImageRetentionTime returns a boolean if a field has been set.
+HasAwsIamAdminGroup returns a boolean if a field has been set.
 
-### GetLokiLogRetentionInWeek
+### GetAwsEksEc2MetadataImds
 
-`func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32`
+`func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImds() string`
 
-GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field if non-nil, zero value otherwise.
+GetAwsEksEc2MetadataImds returns the AwsEksEc2MetadataImds field if non-nil, zero value otherwise.
 
-### GetLokiLogRetentionInWeekOk
+### GetAwsEksEc2MetadataImdsOk
 
-`func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool)`
+`func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImdsOk() (*string, bool)`
 
-GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field if it's non-nil, zero value otherwise
+GetAwsEksEc2MetadataImdsOk returns a tuple with the AwsEksEc2MetadataImds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLokiLogRetentionInWeek
+### SetAwsEksEc2MetadataImds
 
-`func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32)`
+`func (o *ClusterAdvancedSettings) SetAwsEksEc2MetadataImds(v string)`
 
-SetLokiLogRetentionInWeek sets LokiLogRetentionInWeek field to given value.
+SetAwsEksEc2MetadataImds sets AwsEksEc2MetadataImds field to given value.
 
-### HasLokiLogRetentionInWeek
+### HasAwsEksEc2MetadataImds
 
-`func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool`
+`func (o *ClusterAdvancedSettings) HasAwsEksEc2MetadataImds() bool`
 
-HasLokiLogRetentionInWeek returns a boolean if a field has been set.
-
-### GetCloudProviderContainerRegistryTags
-
-`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[string]string`
-
-GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field if non-nil, zero value otherwise.
-
-### GetCloudProviderContainerRegistryTagsOk
-
-`func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool)`
-
-GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudProviderContainerRegistryTags
-
-`func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string)`
-
-SetCloudProviderContainerRegistryTags sets CloudProviderContainerRegistryTags field to given value.
-
-### HasCloudProviderContainerRegistryTags
-
-`func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool`
-
-HasCloudProviderContainerRegistryTags returns a boolean if a field has been set.
-
-### GetLoadBalancerSize
-
-`func (o *ClusterAdvancedSettings) GetLoadBalancerSize() string`
-
-GetLoadBalancerSize returns the LoadBalancerSize field if non-nil, zero value otherwise.
-
-### GetLoadBalancerSizeOk
-
-`func (o *ClusterAdvancedSettings) GetLoadBalancerSizeOk() (*string, bool)`
-
-GetLoadBalancerSizeOk returns a tuple with the LoadBalancerSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLoadBalancerSize
-
-`func (o *ClusterAdvancedSettings) SetLoadBalancerSize(v string)`
-
-SetLoadBalancerSize sets LoadBalancerSize field to given value.
-
-### HasLoadBalancerSize
-
-`func (o *ClusterAdvancedSettings) HasLoadBalancerSize() bool`
-
-HasLoadBalancerSize returns a boolean if a field has been set.
+HasAwsEksEc2MetadataImds returns a boolean if a field has been set.
 
 ### GetPlecoResourcesTtl
 
@@ -440,31 +491,6 @@ SetPlecoResourcesTtl sets PlecoResourcesTtl field to given value.
 `func (o *ClusterAdvancedSettings) HasPlecoResourcesTtl() bool`
 
 HasPlecoResourcesTtl returns a boolean if a field has been set.
-
-### GetAwsIamAdminGroup
-
-`func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string`
-
-GetAwsIamAdminGroup returns the AwsIamAdminGroup field if non-nil, zero value otherwise.
-
-### GetAwsIamAdminGroupOk
-
-`func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool)`
-
-GetAwsIamAdminGroupOk returns a tuple with the AwsIamAdminGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAwsIamAdminGroup
-
-`func (o *ClusterAdvancedSettings) SetAwsIamAdminGroup(v string)`
-
-SetAwsIamAdminGroup sets AwsIamAdminGroup field to given value.
-
-### HasAwsIamAdminGroup
-
-`func (o *ClusterAdvancedSettings) HasAwsIamAdminGroup() bool`
-
-HasAwsIamAdminGroup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

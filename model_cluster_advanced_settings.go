@@ -23,6 +23,14 @@ type ClusterAdvancedSettings struct {
 	AwsVpcEnableS3FlowLogs *bool `json:"aws.vpc.enable_s3_flow_logs,omitempty"`
 	// Set the number of retention days for flow logs. Disable with value \"0\"
 	AwsVpcFlowLogsRetentionDays *int32 `json:"aws.vpc.flow_logs_retention_days,omitempty"`
+	// For how long in week loki is going to keep logs of your applications
+	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
+	// Configure the number of seconds before cleaning images in the registry
+	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
+	// Add additional tags on the cluster dedicated registry
+	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider.container_registry.tags,omitempty"`
+	// Select the size of the main load_balancer (only effective for Scaleway)
+	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deny public access to any PostgreSQL database
 	DatabasePostgresqlDenyPublicAccess *bool `json:"database.postgresql.deny_public_access,omitempty"`
 	// List of CIDRs allowed to access the PostgreSQL database
@@ -39,18 +47,12 @@ type ClusterAdvancedSettings struct {
 	DatabaseRedisDenyPublicAccess *bool `json:"database.redis.deny_public_access,omitempty"`
 	// List of CIDRs allowed to access the Redis database
 	DatabaseRedisAllowedCidrs []string `json:"database.redis.allowed_cidrs,omitempty"`
-	// Configure the number of seconds before cleaning images in the registry
-	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
-	// For how long in week loki is going to keep logs of your applications
-	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
-	// Add additional tags on the cluster dedicated registry
-	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider.container_registry.tags,omitempty"`
-	// Select the size of the main load_balancer (only effective for Scaleway)
-	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
-	// Deprecated
-	PlecoResourcesTtl *int32 `json:"pleco.resources_ttl,omitempty"`
 	// AWS IAM group name with cluster access
 	AwsIamAdminGroup *string `json:"aws.iam.admin_group,omitempty"`
+	// Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * `required`: IMDS V2 only   * `optional`: IMDS V1 + V2
+	AwsEksEc2MetadataImds *string `json:"aws.eks.ec2.metadata_imds,omitempty"`
+	// Deprecated
+	PlecoResourcesTtl *int32 `json:"pleco.resources_ttl,omitempty"`
 }
 
 // NewClusterAdvancedSettings instantiates a new ClusterAdvancedSettings object
@@ -65,6 +67,12 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
 	var awsVpcFlowLogsRetentionDays int32 = 365
 	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
+	var lokiLogRetentionInWeek int32 = 12
+	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
+	var registryImageRetentionTime int32 = 31536000
+	this.RegistryImageRetentionTime = &registryImageRetentionTime
+	var loadBalancerSize string = "lb-s"
+	this.LoadBalancerSize = &loadBalancerSize
 	var databasePostgresqlDenyPublicAccess bool = false
 	this.DatabasePostgresqlDenyPublicAccess = &databasePostgresqlDenyPublicAccess
 	var databaseMysqlDenyPublicAccess bool = false
@@ -73,16 +81,12 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this.DatabaseMongodbDenyPublicAccess = &databaseMongodbDenyPublicAccess
 	var databaseRedisDenyPublicAccess bool = false
 	this.DatabaseRedisDenyPublicAccess = &databaseRedisDenyPublicAccess
-	var registryImageRetentionTime int32 = 31536000
-	this.RegistryImageRetentionTime = &registryImageRetentionTime
-	var lokiLogRetentionInWeek int32 = 12
-	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
-	var loadBalancerSize string = "lb-s"
-	this.LoadBalancerSize = &loadBalancerSize
-	var plecoResourcesTtl int32 = -1
-	this.PlecoResourcesTtl = &plecoResourcesTtl
 	var awsIamAdminGroup string = "Admins"
 	this.AwsIamAdminGroup = &awsIamAdminGroup
+	var awsEksEc2MetadataImds string = "optional"
+	this.AwsEksEc2MetadataImds = &awsEksEc2MetadataImds
+	var plecoResourcesTtl int32 = -1
+	this.PlecoResourcesTtl = &plecoResourcesTtl
 	return &this
 }
 
@@ -97,6 +101,12 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
 	var awsVpcFlowLogsRetentionDays int32 = 365
 	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
+	var lokiLogRetentionInWeek int32 = 12
+	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
+	var registryImageRetentionTime int32 = 31536000
+	this.RegistryImageRetentionTime = &registryImageRetentionTime
+	var loadBalancerSize string = "lb-s"
+	this.LoadBalancerSize = &loadBalancerSize
 	var databasePostgresqlDenyPublicAccess bool = false
 	this.DatabasePostgresqlDenyPublicAccess = &databasePostgresqlDenyPublicAccess
 	var databaseMysqlDenyPublicAccess bool = false
@@ -105,16 +115,12 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this.DatabaseMongodbDenyPublicAccess = &databaseMongodbDenyPublicAccess
 	var databaseRedisDenyPublicAccess bool = false
 	this.DatabaseRedisDenyPublicAccess = &databaseRedisDenyPublicAccess
-	var registryImageRetentionTime int32 = 31536000
-	this.RegistryImageRetentionTime = &registryImageRetentionTime
-	var lokiLogRetentionInWeek int32 = 12
-	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
-	var loadBalancerSize string = "lb-s"
-	this.LoadBalancerSize = &loadBalancerSize
-	var plecoResourcesTtl int32 = -1
-	this.PlecoResourcesTtl = &plecoResourcesTtl
 	var awsIamAdminGroup string = "Admins"
 	this.AwsIamAdminGroup = &awsIamAdminGroup
+	var awsEksEc2MetadataImds string = "optional"
+	this.AwsEksEc2MetadataImds = &awsEksEc2MetadataImds
+	var plecoResourcesTtl int32 = -1
+	this.PlecoResourcesTtl = &plecoResourcesTtl
 	return &this
 }
 
@@ -212,6 +218,134 @@ func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool {
 // SetAwsVpcFlowLogsRetentionDays gets a reference to the given int32 and assigns it to the AwsVpcFlowLogsRetentionDays field.
 func (o *ClusterAdvancedSettings) SetAwsVpcFlowLogsRetentionDays(v int32) {
 	o.AwsVpcFlowLogsRetentionDays = &v
+}
+
+// GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32 {
+	if o == nil || o.LokiLogRetentionInWeek == nil {
+		var ret int32
+		return ret
+	}
+	return *o.LokiLogRetentionInWeek
+}
+
+// GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool) {
+	if o == nil || o.LokiLogRetentionInWeek == nil {
+		return nil, false
+	}
+	return o.LokiLogRetentionInWeek, true
+}
+
+// HasLokiLogRetentionInWeek returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool {
+	if o != nil && o.LokiLogRetentionInWeek != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLokiLogRetentionInWeek gets a reference to the given int32 and assigns it to the LokiLogRetentionInWeek field.
+func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32) {
+	o.LokiLogRetentionInWeek = &v
+}
+
+// GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTime() int32 {
+	if o == nil || o.RegistryImageRetentionTime == nil {
+		var ret int32
+		return ret
+	}
+	return *o.RegistryImageRetentionTime
+}
+
+// GetRegistryImageRetentionTimeOk returns a tuple with the RegistryImageRetentionTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTimeOk() (*int32, bool) {
+	if o == nil || o.RegistryImageRetentionTime == nil {
+		return nil, false
+	}
+	return o.RegistryImageRetentionTime, true
+}
+
+// HasRegistryImageRetentionTime returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasRegistryImageRetentionTime() bool {
+	if o != nil && o.RegistryImageRetentionTime != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistryImageRetentionTime gets a reference to the given int32 and assigns it to the RegistryImageRetentionTime field.
+func (o *ClusterAdvancedSettings) SetRegistryImageRetentionTime(v int32) {
+	o.RegistryImageRetentionTime = &v
+}
+
+// GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[string]string {
+	if o == nil || o.CloudProviderContainerRegistryTags == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.CloudProviderContainerRegistryTags
+}
+
+// GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool) {
+	if o == nil || o.CloudProviderContainerRegistryTags == nil {
+		return nil, false
+	}
+	return o.CloudProviderContainerRegistryTags, true
+}
+
+// HasCloudProviderContainerRegistryTags returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool {
+	if o != nil && o.CloudProviderContainerRegistryTags != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProviderContainerRegistryTags gets a reference to the given map[string]string and assigns it to the CloudProviderContainerRegistryTags field.
+func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string) {
+	o.CloudProviderContainerRegistryTags = &v
+}
+
+// GetLoadBalancerSize returns the LoadBalancerSize field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetLoadBalancerSize() string {
+	if o == nil || o.LoadBalancerSize == nil {
+		var ret string
+		return ret
+	}
+	return *o.LoadBalancerSize
+}
+
+// GetLoadBalancerSizeOk returns a tuple with the LoadBalancerSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetLoadBalancerSizeOk() (*string, bool) {
+	if o == nil || o.LoadBalancerSize == nil {
+		return nil, false
+	}
+	return o.LoadBalancerSize, true
+}
+
+// HasLoadBalancerSize returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasLoadBalancerSize() bool {
+	if o != nil && o.LoadBalancerSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLoadBalancerSize gets a reference to the given string and assigns it to the LoadBalancerSize field.
+func (o *ClusterAdvancedSettings) SetLoadBalancerSize(v string) {
+	o.LoadBalancerSize = &v
 }
 
 // GetDatabasePostgresqlDenyPublicAccess returns the DatabasePostgresqlDenyPublicAccess field value if set, zero value otherwise.
@@ -470,132 +604,68 @@ func (o *ClusterAdvancedSettings) SetDatabaseRedisAllowedCidrs(v []string) {
 	o.DatabaseRedisAllowedCidrs = v
 }
 
-// GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTime() int32 {
-	if o == nil || o.RegistryImageRetentionTime == nil {
-		var ret int32
-		return ret
-	}
-	return *o.RegistryImageRetentionTime
-}
-
-// GetRegistryImageRetentionTimeOk returns a tuple with the RegistryImageRetentionTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTimeOk() (*int32, bool) {
-	if o == nil || o.RegistryImageRetentionTime == nil {
-		return nil, false
-	}
-	return o.RegistryImageRetentionTime, true
-}
-
-// HasRegistryImageRetentionTime returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasRegistryImageRetentionTime() bool {
-	if o != nil && o.RegistryImageRetentionTime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistryImageRetentionTime gets a reference to the given int32 and assigns it to the RegistryImageRetentionTime field.
-func (o *ClusterAdvancedSettings) SetRegistryImageRetentionTime(v int32) {
-	o.RegistryImageRetentionTime = &v
-}
-
-// GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32 {
-	if o == nil || o.LokiLogRetentionInWeek == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LokiLogRetentionInWeek
-}
-
-// GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool) {
-	if o == nil || o.LokiLogRetentionInWeek == nil {
-		return nil, false
-	}
-	return o.LokiLogRetentionInWeek, true
-}
-
-// HasLokiLogRetentionInWeek returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool {
-	if o != nil && o.LokiLogRetentionInWeek != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLokiLogRetentionInWeek gets a reference to the given int32 and assigns it to the LokiLogRetentionInWeek field.
-func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32) {
-	o.LokiLogRetentionInWeek = &v
-}
-
-// GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[string]string {
-	if o == nil || o.CloudProviderContainerRegistryTags == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.CloudProviderContainerRegistryTags
-}
-
-// GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool) {
-	if o == nil || o.CloudProviderContainerRegistryTags == nil {
-		return nil, false
-	}
-	return o.CloudProviderContainerRegistryTags, true
-}
-
-// HasCloudProviderContainerRegistryTags returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool {
-	if o != nil && o.CloudProviderContainerRegistryTags != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudProviderContainerRegistryTags gets a reference to the given map[string]string and assigns it to the CloudProviderContainerRegistryTags field.
-func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string) {
-	o.CloudProviderContainerRegistryTags = &v
-}
-
-// GetLoadBalancerSize returns the LoadBalancerSize field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetLoadBalancerSize() string {
-	if o == nil || o.LoadBalancerSize == nil {
+// GetAwsIamAdminGroup returns the AwsIamAdminGroup field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string {
+	if o == nil || o.AwsIamAdminGroup == nil {
 		var ret string
 		return ret
 	}
-	return *o.LoadBalancerSize
+	return *o.AwsIamAdminGroup
 }
 
-// GetLoadBalancerSizeOk returns a tuple with the LoadBalancerSize field value if set, nil otherwise
+// GetAwsIamAdminGroupOk returns a tuple with the AwsIamAdminGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetLoadBalancerSizeOk() (*string, bool) {
-	if o == nil || o.LoadBalancerSize == nil {
+func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool) {
+	if o == nil || o.AwsIamAdminGroup == nil {
 		return nil, false
 	}
-	return o.LoadBalancerSize, true
+	return o.AwsIamAdminGroup, true
 }
 
-// HasLoadBalancerSize returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasLoadBalancerSize() bool {
-	if o != nil && o.LoadBalancerSize != nil {
+// HasAwsIamAdminGroup returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsIamAdminGroup() bool {
+	if o != nil && o.AwsIamAdminGroup != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLoadBalancerSize gets a reference to the given string and assigns it to the LoadBalancerSize field.
-func (o *ClusterAdvancedSettings) SetLoadBalancerSize(v string) {
-	o.LoadBalancerSize = &v
+// SetAwsIamAdminGroup gets a reference to the given string and assigns it to the AwsIamAdminGroup field.
+func (o *ClusterAdvancedSettings) SetAwsIamAdminGroup(v string) {
+	o.AwsIamAdminGroup = &v
+}
+
+// GetAwsEksEc2MetadataImds returns the AwsEksEc2MetadataImds field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImds() string {
+	if o == nil || o.AwsEksEc2MetadataImds == nil {
+		var ret string
+		return ret
+	}
+	return *o.AwsEksEc2MetadataImds
+}
+
+// GetAwsEksEc2MetadataImdsOk returns a tuple with the AwsEksEc2MetadataImds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImdsOk() (*string, bool) {
+	if o == nil || o.AwsEksEc2MetadataImds == nil {
+		return nil, false
+	}
+	return o.AwsEksEc2MetadataImds, true
+}
+
+// HasAwsEksEc2MetadataImds returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksEc2MetadataImds() bool {
+	if o != nil && o.AwsEksEc2MetadataImds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksEc2MetadataImds gets a reference to the given string and assigns it to the AwsEksEc2MetadataImds field.
+func (o *ClusterAdvancedSettings) SetAwsEksEc2MetadataImds(v string) {
+	o.AwsEksEc2MetadataImds = &v
 }
 
 // GetPlecoResourcesTtl returns the PlecoResourcesTtl field value if set, zero value otherwise.
@@ -633,38 +703,6 @@ func (o *ClusterAdvancedSettings) SetPlecoResourcesTtl(v int32) {
 	o.PlecoResourcesTtl = &v
 }
 
-// GetAwsIamAdminGroup returns the AwsIamAdminGroup field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string {
-	if o == nil || o.AwsIamAdminGroup == nil {
-		var ret string
-		return ret
-	}
-	return *o.AwsIamAdminGroup
-}
-
-// GetAwsIamAdminGroupOk returns a tuple with the AwsIamAdminGroup field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool) {
-	if o == nil || o.AwsIamAdminGroup == nil {
-		return nil, false
-	}
-	return o.AwsIamAdminGroup, true
-}
-
-// HasAwsIamAdminGroup returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasAwsIamAdminGroup() bool {
-	if o != nil && o.AwsIamAdminGroup != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAwsIamAdminGroup gets a reference to the given string and assigns it to the AwsIamAdminGroup field.
-func (o *ClusterAdvancedSettings) SetAwsIamAdminGroup(v string) {
-	o.AwsIamAdminGroup = &v
-}
-
 func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AwsCloudwatchEksLogsRetentionDays != nil {
@@ -675,6 +713,18 @@ func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.AwsVpcFlowLogsRetentionDays != nil {
 		toSerialize["aws.vpc.flow_logs_retention_days"] = o.AwsVpcFlowLogsRetentionDays
+	}
+	if o.LokiLogRetentionInWeek != nil {
+		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
+	}
+	if o.RegistryImageRetentionTime != nil {
+		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
+	}
+	if o.CloudProviderContainerRegistryTags != nil {
+		toSerialize["cloud_provider.container_registry.tags"] = o.CloudProviderContainerRegistryTags
+	}
+	if o.LoadBalancerSize != nil {
+		toSerialize["load_balancer.size"] = o.LoadBalancerSize
 	}
 	if o.DatabasePostgresqlDenyPublicAccess != nil {
 		toSerialize["database.postgresql.deny_public_access"] = o.DatabasePostgresqlDenyPublicAccess
@@ -700,23 +750,14 @@ func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	if o.DatabaseRedisAllowedCidrs != nil {
 		toSerialize["database.redis.allowed_cidrs"] = o.DatabaseRedisAllowedCidrs
 	}
-	if o.RegistryImageRetentionTime != nil {
-		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
+	if o.AwsIamAdminGroup != nil {
+		toSerialize["aws.iam.admin_group"] = o.AwsIamAdminGroup
 	}
-	if o.LokiLogRetentionInWeek != nil {
-		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
-	}
-	if o.CloudProviderContainerRegistryTags != nil {
-		toSerialize["cloud_provider.container_registry.tags"] = o.CloudProviderContainerRegistryTags
-	}
-	if o.LoadBalancerSize != nil {
-		toSerialize["load_balancer.size"] = o.LoadBalancerSize
+	if o.AwsEksEc2MetadataImds != nil {
+		toSerialize["aws.eks.ec2.metadata_imds"] = o.AwsEksEc2MetadataImds
 	}
 	if o.PlecoResourcesTtl != nil {
 		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
-	}
-	if o.AwsIamAdminGroup != nil {
-		toSerialize["aws.iam.admin_group"] = o.AwsIamAdminGroup
 	}
 	return json.Marshal(toSerialize)
 }
