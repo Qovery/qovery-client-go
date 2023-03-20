@@ -17,12 +17,13 @@ import (
 
 // ClusterInstanceTypeResponseListResultsInner struct for ClusterInstanceTypeResponseListResultsInner
 type ClusterInstanceTypeResponseListResultsInner struct {
-	Type               string `json:"type"`
-	Name               string `json:"name"`
-	Cpu                int32  `json:"cpu"`
-	RamInGb            int32  `json:"ram_in_gb"`
-	BandwidthInGbps    string `json:"bandwidth_in_gbps"`
-	BandwidthGuarantee string `json:"bandwidth_guarantee"`
+	Type               string  `json:"type"`
+	Name               string  `json:"name"`
+	Cpu                int32   `json:"cpu"`
+	RamInGb            int32   `json:"ram_in_gb"`
+	BandwidthInGbps    string  `json:"bandwidth_in_gbps"`
+	BandwidthGuarantee string  `json:"bandwidth_guarantee"`
+	Architecture       *string `json:"architecture,omitempty"`
 }
 
 // NewClusterInstanceTypeResponseListResultsInner instantiates a new ClusterInstanceTypeResponseListResultsInner object
@@ -192,6 +193,38 @@ func (o *ClusterInstanceTypeResponseListResultsInner) SetBandwidthGuarantee(v st
 	o.BandwidthGuarantee = v
 }
 
+// GetArchitecture returns the Architecture field value if set, zero value otherwise.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetArchitecture() string {
+	if o == nil || o.Architecture == nil {
+		var ret string
+		return ret
+	}
+	return *o.Architecture
+}
+
+// GetArchitectureOk returns a tuple with the Architecture field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetArchitectureOk() (*string, bool) {
+	if o == nil || o.Architecture == nil {
+		return nil, false
+	}
+	return o.Architecture, true
+}
+
+// HasArchitecture returns a boolean if a field has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) HasArchitecture() bool {
+	if o != nil && o.Architecture != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetArchitecture gets a reference to the given string and assigns it to the Architecture field.
+func (o *ClusterInstanceTypeResponseListResultsInner) SetArchitecture(v string) {
+	o.Architecture = &v
+}
+
 func (o ClusterInstanceTypeResponseListResultsInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -211,6 +244,9 @@ func (o ClusterInstanceTypeResponseListResultsInner) MarshalJSON() ([]byte, erro
 	}
 	if true {
 		toSerialize["bandwidth_guarantee"] = o.BandwidthGuarantee
+	}
+	if o.Architecture != nil {
+		toSerialize["architecture"] = o.Architecture
 	}
 	return json.Marshal(toSerialize)
 }

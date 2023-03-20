@@ -13777,12 +13777,14 @@ components:
           type: T3A_XLARGE
           bandwidth_guarantee: UpTo
           ram_in_gb: 8
+          architecture: ARM64
         - name: t3a.xlarge
           cpu: 2
           bandwidth_in_gbps: "5.2"
           type: T3A_XLARGE
           bandwidth_guarantee: UpTo
           ram_in_gb: 8
+          architecture: ARM64
       properties:
         results:
           items:
@@ -18829,6 +18831,7 @@ components:
         type: T3A_XLARGE
         bandwidth_guarantee: UpTo
         ram_in_gb: 8
+        architecture: ARM64
       properties:
         type:
           example: T3A_XLARGE
@@ -18847,6 +18850,9 @@ components:
           type: string
         bandwidth_guarantee:
           example: UpTo
+          type: string
+        architecture:
+          example: ARM64
           type: string
       required:
       - bandwidth_guarantee
