@@ -8525,7 +8525,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContainerAdvancedSettingsResponse'
+                $ref: '#/components/schemas/ContainerAdvancedSettings'
           description: Advanced settings list
         "401":
           description: Access token is missing or invalid
@@ -8553,13 +8553,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ContainerAdvancedSettingsRequest'
+              $ref: '#/components/schemas/ContainerAdvancedSettings'
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContainerAdvancedSettingsResponse'
+                $ref: '#/components/schemas/ContainerAdvancedSettings'
           description: Updated advanced settings
         "400":
           description: Bad request
@@ -14439,14 +14439,6 @@ components:
             failed after having succeeded.
           type: integer
       type: object
-    ContainerAdvancedSettingsRequest:
-      items:
-        $ref: '#/components/schemas/ContainerAdvancedSettings'
-      type: array
-    ContainerAdvancedSettingsResponse:
-      items:
-        $ref: '#/components/schemas/ContainerAdvancedSettings'
-      type: array
     ContainerCurrentScale:
       example:
         running: 1

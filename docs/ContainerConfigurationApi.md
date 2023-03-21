@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## EditContainerAdvancedSettings
 
-> []ContainerAdvancedSettings EditContainerAdvancedSettings(ctx, containerId).ContainerAdvancedSettings(containerAdvancedSettings).Execute()
+> ContainerAdvancedSettings EditContainerAdvancedSettings(ctx, containerId).ContainerAdvancedSettings(containerAdvancedSettings).Execute()
 
 Edit advanced settings
 
@@ -33,7 +33,7 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    containerAdvancedSettings := []openapiclient.ContainerAdvancedSettings{*openapiclient.NewContainerAdvancedSettings()} // []ContainerAdvancedSettings |  (optional)
+    containerAdvancedSettings := *openapiclient.NewContainerAdvancedSettings() // ContainerAdvancedSettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationApi.EditContainerAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditContainerAdvancedSettings`: []ContainerAdvancedSettings
+    // response from `EditContainerAdvancedSettings`: ContainerAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationApi.EditContainerAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -63,11 +63,11 @@ Other parameters are passed through a pointer to a apiEditContainerAdvancedSetti
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **containerAdvancedSettings** | [**[]ContainerAdvancedSettings**](ContainerAdvancedSettings.md) |  | 
+ **containerAdvancedSettings** | [**ContainerAdvancedSettings**](ContainerAdvancedSettings.md) |  | 
 
 ### Return type
 
-[**[]ContainerAdvancedSettings**](ContainerAdvancedSettings.md)
+[**ContainerAdvancedSettings**](ContainerAdvancedSettings.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## GetContainerAdvancedSettings
 
-> []ContainerAdvancedSettings GetContainerAdvancedSettings(ctx, containerId).Execute()
+> ContainerAdvancedSettings GetContainerAdvancedSettings(ctx, containerId).Execute()
 
 Get advanced settings
 
@@ -185,7 +185,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationApi.GetContainerAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetContainerAdvancedSettings`: []ContainerAdvancedSettings
+    // response from `GetContainerAdvancedSettings`: ContainerAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationApi.GetContainerAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ContainerAdvancedSettings**](ContainerAdvancedSettings.md)
+[**ContainerAdvancedSettings**](ContainerAdvancedSettings.md)
 
 ### Authorization
 
