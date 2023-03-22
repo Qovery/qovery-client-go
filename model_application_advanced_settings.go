@@ -50,6 +50,8 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressDenylistSourceRange *string `json:"network.ingress.denylist_source_range,omitempty"`
 	// Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command.
 	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
+	// Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target
+	NetworkIngressEnableStickySession *bool `json:"network.ingress.enable_sticky_session,omitempty"`
 	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
 	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
 	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
@@ -126,6 +128,8 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
 	var networkIngressBasicAuthEnvVar string = ""
 	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
+	var networkIngressEnableStickySession bool = false
+	this.NetworkIngressEnableStickySession = &networkIngressEnableStickySession
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -202,6 +206,8 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
 	var networkIngressBasicAuthEnvVar string = ""
 	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
+	var networkIngressEnableStickySession bool = false
+	this.NetworkIngressEnableStickySession = &networkIngressEnableStickySession
 	var readinessProbeType string = "TCP"
 	this.ReadinessProbeType = &readinessProbeType
 	var readinessProbeHttpGetPath string = "/"
@@ -846,6 +852,38 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressBasicAuthEnvVar(v string)
 	o.NetworkIngressBasicAuthEnvVar = &v
 }
 
+// GetNetworkIngressEnableStickySession returns the NetworkIngressEnableStickySession field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySession() bool {
+	if o == nil || o.NetworkIngressEnableStickySession == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NetworkIngressEnableStickySession
+}
+
+// GetNetworkIngressEnableStickySessionOk returns a tuple with the NetworkIngressEnableStickySession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySessionOk() (*bool, bool) {
+	if o == nil || o.NetworkIngressEnableStickySession == nil {
+		return nil, false
+	}
+	return o.NetworkIngressEnableStickySession, true
+}
+
+// HasNetworkIngressEnableStickySession returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressEnableStickySession() bool {
+	if o != nil && o.NetworkIngressEnableStickySession != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressEnableStickySession gets a reference to the given bool and assigns it to the NetworkIngressEnableStickySession field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressEnableStickySession(v bool) {
+	o.NetworkIngressEnableStickySession = &v
+}
+
 // GetReadinessProbeType returns the ReadinessProbeType field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetReadinessProbeType() string {
 	if o == nil || o.ReadinessProbeType == nil {
@@ -1384,6 +1422,9 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressBasicAuthEnvVar != nil {
 		toSerialize["network.ingress.basic_auth_env_var"] = o.NetworkIngressBasicAuthEnvVar
+	}
+	if o.NetworkIngressEnableStickySession != nil {
+		toSerialize["network.ingress.enable_sticky_session"] = o.NetworkIngressEnableStickySession
 	}
 	if o.ReadinessProbeType != nil {
 		toSerialize["readiness_probe.type"] = o.ReadinessProbeType

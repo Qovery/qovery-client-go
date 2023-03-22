@@ -12790,6 +12790,7 @@ components:
         liveness_probe.period_seconds: 1
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
+        network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
         readiness_probe.initial_delay_seconds: 7
         readiness_probe.timeout_seconds: 1
@@ -12899,6 +12900,12 @@ components:
           description: |
             Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command.
           type: string
+        network.ingress.enable_sticky_session:
+          default: false
+          description: |
+            Enable the load balancer to bind a user's session to a specific target.
+            This ensures that all requests from the user during the session are sent to the same target
+          type: boolean
         readiness_probe.type:
           default: TCP
           description: |
@@ -14264,6 +14271,7 @@ components:
         liveness_probe.period_seconds: 6
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
+        network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
         readiness_probe.initial_delay_seconds: 2
         readiness_probe.timeout_seconds: 7
@@ -14362,6 +14370,12 @@ components:
           description: |
             Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
           type: string
+        network.ingress.enable_sticky_session:
+          default: false
+          description: |
+            Enable the load balancer to bind a user's session to a specific target.
+            This ensures that all requests from the user during the session are sent to the same target
+          type: boolean
         readiness_probe.type:
           default: TCP
           description: |

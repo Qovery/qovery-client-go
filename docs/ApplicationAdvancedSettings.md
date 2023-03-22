@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **NetworkIngressWhitelistSourceRange** | Pointer to **string** | list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.  | [optional] [default to "0.0.0.0/0"]
 **NetworkIngressDenylistSourceRange** | Pointer to **string** | list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1  | [optional] [default to ""]
 **NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command.  | [optional] [default to ""]
+**NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] [default to false]
 **ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
 **ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
 **ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
@@ -532,6 +533,31 @@ SetNetworkIngressBasicAuthEnvVar sets NetworkIngressBasicAuthEnvVar field to giv
 `func (o *ApplicationAdvancedSettings) HasNetworkIngressBasicAuthEnvVar() bool`
 
 HasNetworkIngressBasicAuthEnvVar returns a boolean if a field has been set.
+
+### GetNetworkIngressEnableStickySession
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySession() bool`
+
+GetNetworkIngressEnableStickySession returns the NetworkIngressEnableStickySession field if non-nil, zero value otherwise.
+
+### GetNetworkIngressEnableStickySessionOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySessionOk() (*bool, bool)`
+
+GetNetworkIngressEnableStickySessionOk returns a tuple with the NetworkIngressEnableStickySession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressEnableStickySession
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressEnableStickySession(v bool)`
+
+SetNetworkIngressEnableStickySession sets NetworkIngressEnableStickySession field to given value.
+
+### HasNetworkIngressEnableStickySession
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressEnableStickySession() bool`
+
+HasNetworkIngressEnableStickySession returns a boolean if a field has been set.
 
 ### GetReadinessProbeType
 
