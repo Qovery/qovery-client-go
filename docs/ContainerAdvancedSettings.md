@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **LivenessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] [default to 5]
 **LivenessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] [default to 1]
 **LivenessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] [default to 3]
+**SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
 
 ## Methods
 
@@ -855,6 +856,31 @@ SetLivenessProbeFailureThreshold sets LivenessProbeFailureThreshold field to giv
 `func (o *ContainerAdvancedSettings) HasLivenessProbeFailureThreshold() bool`
 
 HasLivenessProbeFailureThreshold returns a boolean if a field has been set.
+
+### GetSecurityServiceAccountName
+
+`func (o *ContainerAdvancedSettings) GetSecurityServiceAccountName() string`
+
+GetSecurityServiceAccountName returns the SecurityServiceAccountName field if non-nil, zero value otherwise.
+
+### GetSecurityServiceAccountNameOk
+
+`func (o *ContainerAdvancedSettings) GetSecurityServiceAccountNameOk() (*string, bool)`
+
+GetSecurityServiceAccountNameOk returns a tuple with the SecurityServiceAccountName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecurityServiceAccountName
+
+`func (o *ContainerAdvancedSettings) SetSecurityServiceAccountName(v string)`
+
+SetSecurityServiceAccountName sets SecurityServiceAccountName field to given value.
+
+### HasSecurityServiceAccountName
+
+`func (o *ContainerAdvancedSettings) HasSecurityServiceAccountName() bool`
+
+HasSecurityServiceAccountName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

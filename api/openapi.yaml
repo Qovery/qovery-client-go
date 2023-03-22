@@ -12808,6 +12808,7 @@ components:
         network.ingress.proxy_read_timeout_seconds: 4
         build.timeout_max_sec: 1
         readiness_probe.http_get.path: /
+        security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
         readiness_probe.success_threshold: 1
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
@@ -12987,6 +12988,11 @@ components:
           description: Percentage value of cpu usage at which point pods should scale
             up.
           type: integer
+        security.service_account_name:
+          default: ""
+          description: |
+            Allows you to set an existing Kubernetes service account name
+          type: string
       type: object
     ApplicationCurrentScale:
       example:
@@ -14287,6 +14293,7 @@ components:
         network.ingress.proxy_buffer_size_kb: 1
         network.ingress.proxy_read_timeout_seconds: 3
         readiness_probe.http_get.path: /
+        security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
         readiness_probe.success_threshold: 1
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
@@ -14452,6 +14459,11 @@ components:
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
+        security.service_account_name:
+          default: ""
+          description: |
+            Allows you to set an existing Kubernetes service account name
+          type: string
       type: object
     ContainerCurrentScale:
       example:
@@ -16311,6 +16323,7 @@ components:
         deployment.termination_grace_period_seconds: 0
         liveness_probe.period_seconds: 4
         readiness_probe.http_get.path: readiness_probe.http_get.path
+        security.service_account_name: security.service_account_name
         cronjob.failed_jobs_history_limit: 1
         cronjob.concurrency_policy: Forbid
         readiness_probe.success_threshold: 9
@@ -16411,6 +16424,11 @@ components:
           description: Minimum consecutive failures for the probe to be considered
             failed after having succeeded.
           type: integer
+        security.service_account_name:
+          default: ""
+          description: |
+            Allows you to set an existing Kubernetes service account name
+          type: string
       type: object
     JobDeployRequest:
       example:

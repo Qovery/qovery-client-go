@@ -51,6 +51,8 @@ type JobAdvancedSettings struct {
 	LivenessProbeSuccessThreshold *int32 `json:"liveness_probe.success_threshold,omitempty"`
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
 	LivenessProbeFailureThreshold *int32 `json:"liveness_probe.failure_threshold,omitempty"`
+	// Allows you to set an existing Kubernetes service account name
+	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 }
 
 // NewJobAdvancedSettings instantiates a new JobAdvancedSettings object
@@ -95,6 +97,8 @@ func NewJobAdvancedSettings() *JobAdvancedSettings {
 	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
 	var livenessProbeFailureThreshold int32 = 0
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
+	var securityServiceAccountName string = ""
+	this.SecurityServiceAccountName = &securityServiceAccountName
 	return &this
 }
 
@@ -139,6 +143,8 @@ func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
 	var livenessProbeFailureThreshold int32 = 0
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
+	var securityServiceAccountName string = ""
+	this.SecurityServiceAccountName = &securityServiceAccountName
 	return &this
 }
 
@@ -761,6 +767,38 @@ func (o *JobAdvancedSettings) SetLivenessProbeFailureThreshold(v int32) {
 	o.LivenessProbeFailureThreshold = &v
 }
 
+// GetSecurityServiceAccountName returns the SecurityServiceAccountName field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetSecurityServiceAccountName() string {
+	if o == nil || o.SecurityServiceAccountName == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecurityServiceAccountName
+}
+
+// GetSecurityServiceAccountNameOk returns a tuple with the SecurityServiceAccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetSecurityServiceAccountNameOk() (*string, bool) {
+	if o == nil || o.SecurityServiceAccountName == nil {
+		return nil, false
+	}
+	return o.SecurityServiceAccountName, true
+}
+
+// HasSecurityServiceAccountName returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasSecurityServiceAccountName() bool {
+	if o != nil && o.SecurityServiceAccountName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityServiceAccountName gets a reference to the given string and assigns it to the SecurityServiceAccountName field.
+func (o *JobAdvancedSettings) SetSecurityServiceAccountName(v string) {
+	o.SecurityServiceAccountName = &v
+}
+
 func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeploymentTerminationGracePeriodSeconds != nil {
@@ -819,6 +857,9 @@ func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.LivenessProbeFailureThreshold != nil {
 		toSerialize["liveness_probe.failure_threshold"] = o.LivenessProbeFailureThreshold
+	}
+	if o.SecurityServiceAccountName != nil {
+		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
 	}
 	return json.Marshal(toSerialize)
 }

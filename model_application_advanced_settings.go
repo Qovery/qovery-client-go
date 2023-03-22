@@ -82,6 +82,8 @@ type ApplicationAdvancedSettings struct {
 	LivenessProbeFailureThreshold *int32 `json:"liveness_probe.failure_threshold,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
+	// Allows you to set an existing Kubernetes service account name
+	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 }
 
 // NewApplicationAdvancedSettings instantiates a new ApplicationAdvancedSettings object
@@ -160,6 +162,8 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var hpaCpuAverageUtilizationPercent int32 = 60
 	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
+	var securityServiceAccountName string = ""
+	this.SecurityServiceAccountName = &securityServiceAccountName
 	return &this
 }
 
@@ -238,6 +242,8 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var hpaCpuAverageUtilizationPercent int32 = 60
 	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
+	var securityServiceAccountName string = ""
+	this.SecurityServiceAccountName = &securityServiceAccountName
 	return &this
 }
 
@@ -1364,6 +1370,38 @@ func (o *ApplicationAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32
 	o.HpaCpuAverageUtilizationPercent = &v
 }
 
+// GetSecurityServiceAccountName returns the SecurityServiceAccountName field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetSecurityServiceAccountName() string {
+	if o == nil || o.SecurityServiceAccountName == nil {
+		var ret string
+		return ret
+	}
+	return *o.SecurityServiceAccountName
+}
+
+// GetSecurityServiceAccountNameOk returns a tuple with the SecurityServiceAccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetSecurityServiceAccountNameOk() (*string, bool) {
+	if o == nil || o.SecurityServiceAccountName == nil {
+		return nil, false
+	}
+	return o.SecurityServiceAccountName, true
+}
+
+// HasSecurityServiceAccountName returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasSecurityServiceAccountName() bool {
+	if o != nil && o.SecurityServiceAccountName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityServiceAccountName gets a reference to the given string and assigns it to the SecurityServiceAccountName field.
+func (o *ApplicationAdvancedSettings) SetSecurityServiceAccountName(v string) {
+	o.SecurityServiceAccountName = &v
+}
+
 func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeploymentDelayStartTimeSec != nil {
@@ -1470,6 +1508,9 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.HpaCpuAverageUtilizationPercent != nil {
 		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
+	}
+	if o.SecurityServiceAccountName != nil {
+		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
 	}
 	return json.Marshal(toSerialize)
 }
