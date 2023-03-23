@@ -78,6 +78,8 @@ type ContainerAdvancedSettings struct {
 	LivenessProbeFailureThreshold *int32 `json:"liveness_probe.failure_threshold,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
+	// Percentage value of cpu usage at which point pods should scale up.
+	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
 }
 
 // NewContainerAdvancedSettings instantiates a new ContainerAdvancedSettings object
@@ -152,6 +154,8 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
+	var hpaCpuAverageUtilizationPercent int32 = 60
+	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
 	return &this
 }
 
@@ -226,6 +230,8 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
+	var hpaCpuAverageUtilizationPercent int32 = 60
+	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
 	return &this
 }
 
@@ -1285,6 +1291,38 @@ func (o *ContainerAdvancedSettings) SetSecurityServiceAccountName(v string) {
 	o.SecurityServiceAccountName = &v
 }
 
+// GetHpaCpuAverageUtilizationPercent returns the HpaCpuAverageUtilizationPercent field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32 {
+	if o == nil || o.HpaCpuAverageUtilizationPercent == nil {
+		var ret int32
+		return ret
+	}
+	return *o.HpaCpuAverageUtilizationPercent
+}
+
+// GetHpaCpuAverageUtilizationPercentOk returns a tuple with the HpaCpuAverageUtilizationPercent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetHpaCpuAverageUtilizationPercentOk() (*int32, bool) {
+	if o == nil || o.HpaCpuAverageUtilizationPercent == nil {
+		return nil, false
+	}
+	return o.HpaCpuAverageUtilizationPercent, true
+}
+
+// HasHpaCpuAverageUtilizationPercent returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasHpaCpuAverageUtilizationPercent() bool {
+	if o != nil && o.HpaCpuAverageUtilizationPercent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHpaCpuAverageUtilizationPercent gets a reference to the given int32 and assigns it to the HpaCpuAverageUtilizationPercent field.
+func (o *ContainerAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32) {
+	o.HpaCpuAverageUtilizationPercent = &v
+}
+
 func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeploymentCustomDomainCheckEnabled != nil {
@@ -1385,6 +1423,9 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecurityServiceAccountName != nil {
 		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
+	}
+	if o.HpaCpuAverageUtilizationPercent != nil {
+		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
 	}
 	return json.Marshal(toSerialize)
 }

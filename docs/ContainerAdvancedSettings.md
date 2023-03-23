@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **LivenessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] [default to 1]
 **LivenessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] [default to 3]
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
+**HpaCpuAverageUtilizationPercent** | Pointer to **int32** | Percentage value of cpu usage at which point pods should scale up. | [optional] [default to 60]
 
 ## Methods
 
@@ -881,6 +882,31 @@ SetSecurityServiceAccountName sets SecurityServiceAccountName field to given val
 `func (o *ContainerAdvancedSettings) HasSecurityServiceAccountName() bool`
 
 HasSecurityServiceAccountName returns a boolean if a field has been set.
+
+### GetHpaCpuAverageUtilizationPercent
+
+`func (o *ContainerAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32`
+
+GetHpaCpuAverageUtilizationPercent returns the HpaCpuAverageUtilizationPercent field if non-nil, zero value otherwise.
+
+### GetHpaCpuAverageUtilizationPercentOk
+
+`func (o *ContainerAdvancedSettings) GetHpaCpuAverageUtilizationPercentOk() (*int32, bool)`
+
+GetHpaCpuAverageUtilizationPercentOk returns a tuple with the HpaCpuAverageUtilizationPercent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHpaCpuAverageUtilizationPercent
+
+`func (o *ContainerAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32)`
+
+SetHpaCpuAverageUtilizationPercent sets HpaCpuAverageUtilizationPercent field to given value.
+
+### HasHpaCpuAverageUtilizationPercent
+
+`func (o *ContainerAdvancedSettings) HasHpaCpuAverageUtilizationPercent() bool`
+
+HasHpaCpuAverageUtilizationPercent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

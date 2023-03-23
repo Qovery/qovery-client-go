@@ -14286,6 +14286,7 @@ components:
         liveness_probe.type: TCP
         liveness_probe.success_threshold: 1
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        hpa.cpu.average_utilization_percent: 5
         network.ingress.keepalive_timeout_seconds: 5
         readiness_probe.type: TCP
         network.ingress.proxy_connect_timeout_seconds: 7
@@ -14464,6 +14465,11 @@ components:
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
+        hpa.cpu.average_utilization_percent:
+          default: 60
+          description: Percentage value of cpu usage at which point pods should scale
+            up.
+          type: integer
       type: object
     ContainerCurrentScale:
       example:
