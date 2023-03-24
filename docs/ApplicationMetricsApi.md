@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**GetApplicationMetricCpu**](ApplicationMetricsApi.md#GetApplicationMetricCpu) | **Get** /application/{applicationId}/metric/cpu | Get CPU consumption metric over time for the application
 [**GetApplicationMetricHealthCheck**](ApplicationMetricsApi.md#GetApplicationMetricHealthCheck) | **Get** /application/{applicationId}/metric/healthCheck | Get Health Check latency  metric over time for the application
 [**GetApplicationMetricMemory**](ApplicationMetricsApi.md#GetApplicationMetricMemory) | **Get** /application/{applicationId}/metric/memory | Get Memory consumption metric over time for the application
-[**GetApplicationMetricRestart**](ApplicationMetricsApi.md#GetApplicationMetricRestart) | **Get** /application/{applicationId}/metric/restart | List application restarts
 [**GetApplicationMetricStorage**](ApplicationMetricsApi.md#GetApplicationMetricStorage) | **Get** /application/{applicationId}/metric/storage | Get Storage consumption metric over time for the application
 
 
@@ -418,78 +417,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MetricMemoryResponseList**](MetricMemoryResponseList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetApplicationMetricRestart
-
-> MetricRestart GetApplicationMetricRestart(ctx, applicationId).LastSeconds(lastSeconds).Execute()
-
-List application restarts
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    lastSeconds := float32(8.14) // float32 | Up to how many seconds in the past to ask analytics results
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMetricsApi.GetApplicationMetricRestart(context.Background(), applicationId).LastSeconds(lastSeconds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMetricsApi.GetApplicationMetricRestart``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetApplicationMetricRestart`: MetricRestart
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationMetricsApi.GetApplicationMetricRestart`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**applicationId** | **string** | Application ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetApplicationMetricRestartRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **lastSeconds** | **float32** | Up to how many seconds in the past to ask analytics results | 
-
-### Return type
-
-[**MetricRestart**](MetricRestart.md)
 
 ### Authorization
 

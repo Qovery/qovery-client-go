@@ -429,8 +429,6 @@ docs/MetricMemory.md
 docs/MetricMemoryDatapoint.md
 docs/MetricMemoryDatapointResponseList.md
 docs/MetricMemoryResponseList.md
-docs/MetricRestart.md
-docs/MetricRestartResultsInner.md
 docs/MetricStorage.md
 docs/MetricStorageDatapoint.md
 docs/MetricStorageDatapointResponseList.md
@@ -857,8 +855,6 @@ model_metric_memory.go
 model_metric_memory_datapoint.go
 model_metric_memory_datapoint_response_list.go
 model_metric_memory_response_list.go
-model_metric_restart.go
-model_metric_restart_results_inner.go
 model_metric_storage.go
 model_metric_storage_datapoint.go
 model_metric_storage_datapoint_response_list.go

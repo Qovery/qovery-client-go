@@ -7079,44 +7079,6 @@ paths:
       summary: Get Storage consumption metric over time for the application
       tags:
       - Application Metrics
-  /application/{applicationId}/metric/restart:
-    get:
-      description: Get application restart message and timestamp.
-      operationId: getApplicationMetricRestart
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Up to how many seconds in the past to ask analytics results
-        explode: true
-        in: query
-        name: lastSeconds
-        required: true
-        schema:
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetricRestart'
-          description: Restarts
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List application restarts
-      tags:
-      - Application Metrics
   /application/{applicationId}/commit:
     get:
       description: Returns list of the last 100 commits made on the repository linked
@@ -10542,44 +10504,6 @@ paths:
         "404":
           description: Resource not found
       summary: Get Health Check latency  metric over time for the database
-      tags:
-      - Database Metrics
-  /database/{databaseId}/metric/restart:
-    get:
-      description: Get database restart message and timestamp.
-      operationId: getDatabaseMetricRestart
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Up to how many seconds in the past to ask analytics results
-        explode: true
-        in: query
-        name: lastSeconds
-        required: true
-        schema:
-          type: number
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MetricRestart'
-          description: Restarts
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List database restarts
       tags:
       - Database Metrics
   /database/{databaseId}/backup:
@@ -16869,19 +16793,6 @@ components:
             $ref: '#/components/schemas/MetricMemory'
           type: array
       type: object
-    MetricRestart:
-      example:
-        results:
-        - datetime: 2000-01-23T04:56:07.000+00:00
-          message: message
-        - datetime: 2000-01-23T04:56:07.000+00:00
-          message: message
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/MetricRestart_results_inner'
-          type: array
-      type: object
     MetricStorage:
       example:
         data:
@@ -20104,20 +20015,6 @@ components:
           type: string
       required:
       - email
-      type: object
-    MetricRestart_results_inner:
-      example:
-        datetime: 2000-01-23T04:56:07.000+00:00
-        message: message
-      properties:
-        datetime:
-          format: date-time
-          type: string
-        message:
-          type: string
-      required:
-      - datetime
-      - message
       type: object
     Organization_allOf:
       properties:

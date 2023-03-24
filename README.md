@@ -121,7 +121,6 @@ Class | Method | HTTP request | Description
 *ApplicationMetricsApi* | [**GetApplicationMetricCpu**](docs/ApplicationMetricsApi.md#getapplicationmetriccpu) | **Get** /application/{applicationId}/metric/cpu | Get CPU consumption metric over time for the application
 *ApplicationMetricsApi* | [**GetApplicationMetricHealthCheck**](docs/ApplicationMetricsApi.md#getapplicationmetrichealthcheck) | **Get** /application/{applicationId}/metric/healthCheck | Get Health Check latency  metric over time for the application
 *ApplicationMetricsApi* | [**GetApplicationMetricMemory**](docs/ApplicationMetricsApi.md#getapplicationmetricmemory) | **Get** /application/{applicationId}/metric/memory | Get Memory consumption metric over time for the application
-*ApplicationMetricsApi* | [**GetApplicationMetricRestart**](docs/ApplicationMetricsApi.md#getapplicationmetricrestart) | **Get** /application/{applicationId}/metric/restart | List application restarts
 *ApplicationMetricsApi* | [**GetApplicationMetricStorage**](docs/ApplicationMetricsApi.md#getapplicationmetricstorage) | **Get** /application/{applicationId}/metric/storage | Get Storage consumption metric over time for the application
 *ApplicationSecretApi* | [**CreateApplicationSecret**](docs/ApplicationSecretApi.md#createapplicationsecret) | **Post** /application/{applicationId}/secret | Add a secret to the application
 *ApplicationSecretApi* | [**CreateApplicationSecretAlias**](docs/ApplicationSecretApi.md#createapplicationsecretalias) | **Post** /application/{applicationId}/secret/{secretId}/alias | Create a secret alias at the application level
@@ -275,7 +274,6 @@ Class | Method | HTTP request | Description
 *DatabaseMetricsApi* | [**GetDatabaseMetricCpu**](docs/DatabaseMetricsApi.md#getdatabasemetriccpu) | **Get** /database/{databaseId}/metric/cpu | Get CPU consumption metric over time for the database
 *DatabaseMetricsApi* | [**GetDatabaseMetricHealthCheck**](docs/DatabaseMetricsApi.md#getdatabasemetrichealthcheck) | **Get** /database/{databaseId}/metric/healthCheck | Get Health Check latency  metric over time for the database
 *DatabaseMetricsApi* | [**GetDatabaseMetricMemory**](docs/DatabaseMetricsApi.md#getdatabasemetricmemory) | **Get** /database/{databaseId}/metric/memory | Get Memory consumption metric over time for the database
-*DatabaseMetricsApi* | [**GetDatabaseMetricRestart**](docs/DatabaseMetricsApi.md#getdatabasemetricrestart) | **Get** /database/{databaseId}/metric/restart | List database restarts
 *DatabaseMetricsApi* | [**GetDatabaseMetricStorage**](docs/DatabaseMetricsApi.md#getdatabasemetricstorage) | **Get** /database/{databaseId}/metric/storage | Get Storage consumption metric over time for the database
 *DatabasesApi* | [**CreateDatabase**](docs/DatabasesApi.md#createdatabase) | **Post** /environment/{environmentId}/database | Create a database
 *DatabasesApi* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesApi.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
@@ -737,8 +735,6 @@ Class | Method | HTTP request | Description
  - [MetricMemoryDatapoint](docs/MetricMemoryDatapoint.md)
  - [MetricMemoryDatapointResponseList](docs/MetricMemoryDatapointResponseList.md)
  - [MetricMemoryResponseList](docs/MetricMemoryResponseList.md)
- - [MetricRestart](docs/MetricRestart.md)
- - [MetricRestartResultsInner](docs/MetricRestartResultsInner.md)
  - [MetricStorage](docs/MetricStorage.md)
  - [MetricStorageDatapoint](docs/MetricStorageDatapoint.md)
  - [MetricStorageDatapointResponseList](docs/MetricStorageDatapointResponseList.md)
