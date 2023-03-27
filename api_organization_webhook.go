@@ -138,6 +138,7 @@ type ApiDeleteOrganizationWebhookRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationWebhookApiService
 	organizationId string
+	webhookId      string
 }
 
 func (r ApiDeleteOrganizationWebhookRequest) Execute() (*http.Response, error) {
@@ -151,13 +152,15 @@ Delete organization webhook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param webhookId Webhook ID
  @return ApiDeleteOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) DeleteOrganizationWebhook(ctx context.Context, organizationId string) ApiDeleteOrganizationWebhookRequest {
+func (a *OrganizationWebhookApiService) DeleteOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiDeleteOrganizationWebhookRequest {
 	return ApiDeleteOrganizationWebhookRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		webhookId:      webhookId,
 	}
 }
 
@@ -176,6 +179,7 @@ func (a *OrganizationWebhookApiService) DeleteOrganizationWebhookExecute(r ApiDe
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterToString(r.webhookId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -230,6 +234,7 @@ type ApiEditOrganizationWebhookRequest struct {
 	ctx                              context.Context
 	ApiService                       *OrganizationWebhookApiService
 	organizationId                   string
+	webhookId                        string
 	organizationWebhookCreateRequest *OrganizationWebhookCreateRequest
 }
 
@@ -249,13 +254,15 @@ Edit an organization webhook
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param webhookId Webhook ID
  @return ApiEditOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) EditOrganizationWebhook(ctx context.Context, organizationId string) ApiEditOrganizationWebhookRequest {
+func (a *OrganizationWebhookApiService) EditOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiEditOrganizationWebhookRequest {
 	return ApiEditOrganizationWebhookRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		webhookId:      webhookId,
 	}
 }
 
@@ -276,6 +283,7 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterToString(r.webhookId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

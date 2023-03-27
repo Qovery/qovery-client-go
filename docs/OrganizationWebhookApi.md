@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationWebhook
 
-> DeleteOrganizationWebhook(ctx, organizationId).Execute()
+> DeleteOrganizationWebhook(ctx, organizationId, webhookId).Execute()
 
 Delete organization webhook
 
@@ -106,10 +106,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookApi.DeleteOrganizationWebhook(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationWebhookApi.DeleteOrganizationWebhook(context.Background(), organizationId, webhookId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.DeleteOrganizationWebhook``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -124,6 +125,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**webhookId** | **string** | Webhook ID | 
 
 ### Other Parameters
 
@@ -132,6 +134,7 @@ Other parameters are passed through a pointer to a apiDeleteOrganizationWebhookR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -154,7 +157,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationWebhook
 
-> OrganizationWebhookCreateResponse EditOrganizationWebhook(ctx, organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
+> OrganizationWebhookCreateResponse EditOrganizationWebhook(ctx, organizationId, webhookId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
 
 Edit an organization webhook
 
@@ -174,11 +177,12 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
     organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookApi.EditOrganizationWebhook(context.Background(), organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
+    resp, r, err := apiClient.OrganizationWebhookApi.EditOrganizationWebhook(context.Background(), organizationId, webhookId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookApi.EditOrganizationWebhook``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,6 +199,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**webhookId** | **string** | Webhook ID | 
 
 ### Other Parameters
 
@@ -203,6 +208,7 @@ Other parameters are passed through a pointer to a apiEditOrganizationWebhookReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **organizationWebhookCreateRequest** | [**OrganizationWebhookCreateRequest**](OrganizationWebhookCreateRequest.md) |  | 
 
