@@ -308,6 +308,7 @@ Class | Method | HTTP request | Description
 *EnvironmentMainCallsApi* | [**GetEnvironment**](docs/EnvironmentMainCallsApi.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
 *EnvironmentMainCallsApi* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsApi.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
 *EnvironmentMainCallsApi* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsApi.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
+*EnvironmentMainCallsApi* | [**GetEnvironmentStatusesWithStages**](docs/EnvironmentMainCallsApi.md#getenvironmentstatuseswithstages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
 *EnvironmentSecretApi* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretApi.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretApi.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
 *EnvironmentSecretApi* | [**CreateEnvironmentSecretOverride**](docs/EnvironmentSecretApi.md#createenvironmentsecretoverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
@@ -661,6 +662,9 @@ Class | Method | HTTP request | Description
  - [EventResponseList](docs/EventResponseList.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
  - [GetEnvironmentStatuses200Response](docs/GetEnvironmentStatuses200Response.md)
+ - [GetEnvironmentStatusesWithStages200Response](docs/GetEnvironmentStatusesWithStages200Response.md)
+ - [GetEnvironmentStatusesWithStages200ResponseStages](docs/GetEnvironmentStatusesWithStages200ResponseStages.md)
+ - [GetEnvironmentStatusesWithStages200ResponseStagesResultsInner](docs/GetEnvironmentStatusesWithStages200ResponseStagesResultsInner.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitProviderEnum](docs/GitProviderEnum.md)
@@ -827,6 +831,7 @@ Class | Method | HTTP request | Description
  - [ServiceTypeEnum](docs/ServiceTypeEnum.md)
  - [SignUp](docs/SignUp.md)
  - [SignUpRequest](docs/SignUpRequest.md)
+ - [Stage](docs/Stage.md)
  - [StateEnum](docs/StateEnum.md)
  - [Status](docs/Status.md)
  - [StatusKindEnum](docs/StatusKindEnum.md)

@@ -343,6 +343,9 @@ docs/EventPaginatedResponseListAllOf.md
 docs/EventResponseList.md
 docs/GenericObjectCurrentCost.md
 docs/GetEnvironmentStatuses200Response.md
+docs/GetEnvironmentStatusesWithStages200Response.md
+docs/GetEnvironmentStatusesWithStages200ResponseStages.md
+docs/GetEnvironmentStatusesWithStages200ResponseStagesResultsInner.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitProviderEnum.md
@@ -532,6 +535,7 @@ docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
 docs/SignUp.md
 docs/SignUpRequest.md
+docs/Stage.md
 docs/StateEnum.md
 docs/Status.md
 docs/StatusKindEnum.md
@@ -781,6 +785,9 @@ model_event_paginated_response_list_all_of.go
 model_event_response_list.go
 model_generic_object_current_cost.go
 model_get_environment_statuses_200_response.go
+model_get_environment_statuses_with_stages_200_response.go
+model_get_environment_statuses_with_stages_200_response_stages.go
+model_get_environment_statuses_with_stages_200_response_stages_results_inner.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
 model_git_provider_enum.go
@@ -947,6 +954,7 @@ model_service_total_number.go
 model_service_type_enum.go
 model_sign_up.go
 model_sign_up_request.go
+model_stage.go
 model_state_enum.go
 model_status.go
 model_status_kind_enum.go
