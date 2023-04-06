@@ -17,8 +17,8 @@ import (
 
 // GetEnvironmentStatusesWithStages200Response struct for GetEnvironmentStatusesWithStages200Response
 type GetEnvironmentStatusesWithStages200Response struct {
-	Environment *Status                                            `json:"environment,omitempty"`
-	Stages      *GetEnvironmentStatusesWithStages200ResponseStages `json:"stages,omitempty"`
+	Environment *Status                                 `json:"environment,omitempty"`
+	Stages      *DeploymentStageWithServiceStatusesList `json:"stages,omitempty"`
 }
 
 // NewGetEnvironmentStatusesWithStages200Response instantiates a new GetEnvironmentStatusesWithStages200Response object
@@ -71,9 +71,9 @@ func (o *GetEnvironmentStatusesWithStages200Response) SetEnvironment(v Status) {
 }
 
 // GetStages returns the Stages field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200Response) GetStages() GetEnvironmentStatusesWithStages200ResponseStages {
+func (o *GetEnvironmentStatusesWithStages200Response) GetStages() DeploymentStageWithServiceStatusesList {
 	if o == nil || o.Stages == nil {
-		var ret GetEnvironmentStatusesWithStages200ResponseStages
+		var ret DeploymentStageWithServiceStatusesList
 		return ret
 	}
 	return *o.Stages
@@ -81,7 +81,7 @@ func (o *GetEnvironmentStatusesWithStages200Response) GetStages() GetEnvironment
 
 // GetStagesOk returns a tuple with the Stages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200Response) GetStagesOk() (*GetEnvironmentStatusesWithStages200ResponseStages, bool) {
+func (o *GetEnvironmentStatusesWithStages200Response) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool) {
 	if o == nil || o.Stages == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *GetEnvironmentStatusesWithStages200Response) HasStages() bool {
 	return false
 }
 
-// SetStages gets a reference to the given GetEnvironmentStatusesWithStages200ResponseStages and assigns it to the Stages field.
-func (o *GetEnvironmentStatusesWithStages200Response) SetStages(v GetEnvironmentStatusesWithStages200ResponseStages) {
+// SetStages gets a reference to the given DeploymentStageWithServiceStatusesList and assigns it to the Stages field.
+func (o *GetEnvironmentStatusesWithStages200Response) SetStages(v DeploymentStageWithServiceStatusesList) {
 	o.Stages = &v
 }
 

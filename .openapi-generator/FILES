@@ -276,6 +276,8 @@ docs/DeploymentStageResponseAllOf.md
 docs/DeploymentStageResponseList.md
 docs/DeploymentStageServiceResponse.md
 docs/DeploymentStageServiceResponseAllOf.md
+docs/DeploymentStageWithServiceStatusesList.md
+docs/DeploymentStageWithServicesStatuses.md
 docs/DoCredentialsRequest.md
 docs/Environment.md
 docs/EnvironmentActionsApi.md
@@ -344,8 +346,6 @@ docs/EventResponseList.md
 docs/GenericObjectCurrentCost.md
 docs/GetEnvironmentStatuses200Response.md
 docs/GetEnvironmentStatusesWithStages200Response.md
-docs/GetEnvironmentStatusesWithStages200ResponseStages.md
-docs/GetEnvironmentStatusesWithStages200ResponseStagesResultsInner.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitProviderEnum.md
@@ -727,6 +727,8 @@ model_deployment_stage_response_all_of.go
 model_deployment_stage_response_list.go
 model_deployment_stage_service_response.go
 model_deployment_stage_service_response_all_of.go
+model_deployment_stage_with_service_statuses_list.go
+model_deployment_stage_with_services_statuses.go
 model_do_credentials_request.go
 model_environment.go
 model_environment_all_of.go
@@ -786,8 +788,6 @@ model_event_response_list.go
 model_generic_object_current_cost.go
 model_get_environment_statuses_200_response.go
 model_get_environment_statuses_with_stages_200_response.go
-model_get_environment_statuses_with_stages_200_response_stages.go
-model_get_environment_statuses_with_stages_200_response_stages_results_inner.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
 model_git_provider_enum.go

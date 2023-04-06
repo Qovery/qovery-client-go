@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// GetEnvironmentStatusesWithStages200ResponseStagesResultsInner struct for GetEnvironmentStatusesWithStages200ResponseStagesResultsInner
-type GetEnvironmentStatusesWithStages200ResponseStagesResultsInner struct {
+// DeploymentStageWithServicesStatuses struct for DeploymentStageWithServicesStatuses
+type DeploymentStageWithServicesStatuses struct {
 	Applications []Status `json:"applications,omitempty"`
 	Containers   []Status `json:"containers,omitempty"`
 	Jobs         []Status `json:"jobs,omitempty"`
@@ -24,25 +24,25 @@ type GetEnvironmentStatusesWithStages200ResponseStagesResultsInner struct {
 	Stage        *Stage   `json:"stage,omitempty"`
 }
 
-// NewGetEnvironmentStatusesWithStages200ResponseStagesResultsInner instantiates a new GetEnvironmentStatusesWithStages200ResponseStagesResultsInner object
+// NewDeploymentStageWithServicesStatuses instantiates a new DeploymentStageWithServicesStatuses object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetEnvironmentStatusesWithStages200ResponseStagesResultsInner() *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner {
-	this := GetEnvironmentStatusesWithStages200ResponseStagesResultsInner{}
+func NewDeploymentStageWithServicesStatuses() *DeploymentStageWithServicesStatuses {
+	this := DeploymentStageWithServicesStatuses{}
 	return &this
 }
 
-// NewGetEnvironmentStatusesWithStages200ResponseStagesResultsInnerWithDefaults instantiates a new GetEnvironmentStatusesWithStages200ResponseStagesResultsInner object
+// NewDeploymentStageWithServicesStatusesWithDefaults instantiates a new DeploymentStageWithServicesStatuses object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetEnvironmentStatusesWithStages200ResponseStagesResultsInnerWithDefaults() *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner {
-	this := GetEnvironmentStatusesWithStages200ResponseStagesResultsInner{}
+func NewDeploymentStageWithServicesStatusesWithDefaults() *DeploymentStageWithServicesStatuses {
+	this := DeploymentStageWithServicesStatuses{}
 	return &this
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetApplications() []Status {
+func (o *DeploymentStageWithServicesStatuses) GetApplications() []Status {
 	if o == nil || o.Applications == nil {
 		var ret []Status
 		return ret
@@ -52,7 +52,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetAppli
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetApplicationsOk() ([]Status, bool) {
+func (o *DeploymentStageWithServicesStatuses) GetApplicationsOk() ([]Status, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetAppli
 }
 
 // HasApplications returns a boolean if a field has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasApplications() bool {
+func (o *DeploymentStageWithServicesStatuses) HasApplications() bool {
 	if o != nil && o.Applications != nil {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasAppli
 }
 
 // SetApplications gets a reference to the given []Status and assigns it to the Applications field.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) SetApplications(v []Status) {
+func (o *DeploymentStageWithServicesStatuses) SetApplications(v []Status) {
 	o.Applications = v
 }
 
 // GetContainers returns the Containers field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetContainers() []Status {
+func (o *DeploymentStageWithServicesStatuses) GetContainers() []Status {
 	if o == nil || o.Containers == nil {
 		var ret []Status
 		return ret
@@ -84,7 +84,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetConta
 
 // GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetContainersOk() ([]Status, bool) {
+func (o *DeploymentStageWithServicesStatuses) GetContainersOk() ([]Status, bool) {
 	if o == nil || o.Containers == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetConta
 }
 
 // HasContainers returns a boolean if a field has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasContainers() bool {
+func (o *DeploymentStageWithServicesStatuses) HasContainers() bool {
 	if o != nil && o.Containers != nil {
 		return true
 	}
@@ -101,12 +101,12 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasConta
 }
 
 // SetContainers gets a reference to the given []Status and assigns it to the Containers field.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) SetContainers(v []Status) {
+func (o *DeploymentStageWithServicesStatuses) SetContainers(v []Status) {
 	o.Containers = v
 }
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetJobs() []Status {
+func (o *DeploymentStageWithServicesStatuses) GetJobs() []Status {
 	if o == nil || o.Jobs == nil {
 		var ret []Status
 		return ret
@@ -116,7 +116,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetJobs(
 
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetJobsOk() ([]Status, bool) {
+func (o *DeploymentStageWithServicesStatuses) GetJobsOk() ([]Status, bool) {
 	if o == nil || o.Jobs == nil {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetJobsO
 }
 
 // HasJobs returns a boolean if a field has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasJobs() bool {
+func (o *DeploymentStageWithServicesStatuses) HasJobs() bool {
 	if o != nil && o.Jobs != nil {
 		return true
 	}
@@ -133,12 +133,12 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasJobs(
 }
 
 // SetJobs gets a reference to the given []Status and assigns it to the Jobs field.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) SetJobs(v []Status) {
+func (o *DeploymentStageWithServicesStatuses) SetJobs(v []Status) {
 	o.Jobs = v
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetDatabases() []Status {
+func (o *DeploymentStageWithServicesStatuses) GetDatabases() []Status {
 	if o == nil || o.Databases == nil {
 		var ret []Status
 		return ret
@@ -148,7 +148,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetDatab
 
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetDatabasesOk() ([]Status, bool) {
+func (o *DeploymentStageWithServicesStatuses) GetDatabasesOk() ([]Status, bool) {
 	if o == nil || o.Databases == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetDatab
 }
 
 // HasDatabases returns a boolean if a field has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasDatabases() bool {
+func (o *DeploymentStageWithServicesStatuses) HasDatabases() bool {
 	if o != nil && o.Databases != nil {
 		return true
 	}
@@ -165,12 +165,12 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasDatab
 }
 
 // SetDatabases gets a reference to the given []Status and assigns it to the Databases field.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) SetDatabases(v []Status) {
+func (o *DeploymentStageWithServicesStatuses) SetDatabases(v []Status) {
 	o.Databases = v
 }
 
 // GetStage returns the Stage field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetStage() Stage {
+func (o *DeploymentStageWithServicesStatuses) GetStage() Stage {
 	if o == nil || o.Stage == nil {
 		var ret Stage
 		return ret
@@ -180,7 +180,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetStage
 
 // GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetStageOk() (*Stage, bool) {
+func (o *DeploymentStageWithServicesStatuses) GetStageOk() (*Stage, bool) {
 	if o == nil || o.Stage == nil {
 		return nil, false
 	}
@@ -188,7 +188,7 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) GetStage
 }
 
 // HasStage returns a boolean if a field has been set.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasStage() bool {
+func (o *DeploymentStageWithServicesStatuses) HasStage() bool {
 	if o != nil && o.Stage != nil {
 		return true
 	}
@@ -197,11 +197,11 @@ func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) HasStage
 }
 
 // SetStage gets a reference to the given Stage and assigns it to the Stage field.
-func (o *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) SetStage(v Stage) {
+func (o *DeploymentStageWithServicesStatuses) SetStage(v Stage) {
 	o.Stage = &v
 }
 
-func (o GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) MarshalJSON() ([]byte, error) {
+func (o DeploymentStageWithServicesStatuses) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Applications != nil {
 		toSerialize["applications"] = o.Applications
@@ -221,38 +221,38 @@ func (o GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) MarshalJS
 	return json.Marshal(toSerialize)
 }
 
-type NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner struct {
-	value *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner
+type NullableDeploymentStageWithServicesStatuses struct {
+	value *DeploymentStageWithServicesStatuses
 	isSet bool
 }
 
-func (v NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner) Get() *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner {
+func (v NullableDeploymentStageWithServicesStatuses) Get() *DeploymentStageWithServicesStatuses {
 	return v.value
 }
 
-func (v *NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner) Set(val *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) {
+func (v *NullableDeploymentStageWithServicesStatuses) Set(val *DeploymentStageWithServicesStatuses) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner) IsSet() bool {
+func (v NullableDeploymentStageWithServicesStatuses) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner) Unset() {
+func (v *NullableDeploymentStageWithServicesStatuses) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner(val *GetEnvironmentStatusesWithStages200ResponseStagesResultsInner) *NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner {
-	return &NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner{value: val, isSet: true}
+func NewNullableDeploymentStageWithServicesStatuses(val *DeploymentStageWithServicesStatuses) *NullableDeploymentStageWithServicesStatuses {
+	return &NullableDeploymentStageWithServicesStatuses{value: val, isSet: true}
 }
 
-func (v NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner) MarshalJSON() ([]byte, error) {
+func (v NullableDeploymentStageWithServicesStatuses) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetEnvironmentStatusesWithStages200ResponseStagesResultsInner) UnmarshalJSON(src []byte) error {
+func (v *NullableDeploymentStageWithServicesStatuses) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

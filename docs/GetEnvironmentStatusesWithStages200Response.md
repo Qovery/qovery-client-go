@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environment** | Pointer to [**Status**](Status.md) |  | [optional] 
-**Stages** | Pointer to [**GetEnvironmentStatusesWithStages200ResponseStages**](GetEnvironmentStatusesWithStages200ResponseStages.md) |  | [optional] 
+**Stages** | Pointer to [**DeploymentStageWithServiceStatusesList**](DeploymentStageWithServiceStatusesList.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetStages
 
-`func (o *GetEnvironmentStatusesWithStages200Response) GetStages() GetEnvironmentStatusesWithStages200ResponseStages`
+`func (o *GetEnvironmentStatusesWithStages200Response) GetStages() DeploymentStageWithServiceStatusesList`
 
 GetStages returns the Stages field if non-nil, zero value otherwise.
 
 ### GetStagesOk
 
-`func (o *GetEnvironmentStatusesWithStages200Response) GetStagesOk() (*GetEnvironmentStatusesWithStages200ResponseStages, bool)`
+`func (o *GetEnvironmentStatusesWithStages200Response) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool)`
 
 GetStagesOk returns a tuple with the Stages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStages
 
-`func (o *GetEnvironmentStatusesWithStages200Response) SetStages(v GetEnvironmentStatusesWithStages200ResponseStages)`
+`func (o *GetEnvironmentStatusesWithStages200Response) SetStages(v DeploymentStageWithServiceStatusesList)`
 
 SetStages sets Stages field to given value.
 
