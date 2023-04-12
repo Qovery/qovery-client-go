@@ -15671,7 +15671,9 @@ components:
           execution_id: execution_id
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           stage:
+            name: name
             step: step
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           transmitter:
             name: name
@@ -19825,9 +19827,18 @@ components:
       type: object
     EnvironmentLogs_details_stage:
       example:
+        name: name
         step: step
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         step:
+          type: string
+        id:
+          format: uuid
+          nullable: true
+          type: string
+        name:
+          nullable: true
           type: string
       type: object
     EnvironmentLogs_details:
@@ -19835,7 +19846,9 @@ components:
         execution_id: execution_id
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         stage:
+          name: name
           step: step
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         transmitter:
           name: name
