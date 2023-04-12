@@ -90,7 +90,6 @@ tags:
 - name: Git
 - name: Github App
 - name: Git repositories
-- name: Logical Database
 - name: Members
 - name: Organization
 - name: Organization Account Git Repositories
@@ -10047,76 +10046,6 @@ paths:
       summary: Edit database  master credentials
       tags:
       - Database Main Calls
-  /database/{databaseId}/logicalDatabase:
-    get:
-      description: "A logical database exists inside a database. The database is a\
-        \ service that exists within an environment, that you can deploy, and that\
-        \ has allocated resources. A database can have several logical databases"
-      operationId: listLogicalDatabaseDatabase
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LogicalDatabaseResponseList'
-          description: List logical databases
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List logical databases of a database
-      tags:
-      - Logical Database
-    post:
-      description: "If you don't specify credentials, Qovery will autogenerate them."
-      operationId: createLogicalDatabaseOnDatabase
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LogicalDatabaseRequest'
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LogicalDatabase'
-          description: Created database on the database
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Logical Database with this name already exists on the database
-      summary: Create a logical database on the database
-      tags:
-      - Logical Database
   /database/{databaseId}/application:
     get:
       operationId: listDatabaseApplication
@@ -10702,220 +10631,6 @@ paths:
       summary: List database  events
       tags:
       - Database Event
-  /logicalDatabase/{logicalDatabaseId}:
-    delete:
-      description: To delete a logical database you must have the project user permission
-      operationId: deleteLogicalDatabase
-      parameters:
-      - description: Logical Database ID
-        explode: false
-        in: path
-        name: logicalDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: The resource was deleted successfully
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Delete a Logical database
-      tags:
-      - Logical Database
-    get:
-      description: "A logical database exists inside a database. The database is a\
-        \ service that exists within an environment, that you can deploy, and that\
-        \ has allocated resources. A database can have several logical databases"
-      operationId: getLogicalDatabase
-      parameters:
-      - description: Logical Database ID
-        explode: false
-        in: path
-        name: logicalDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LogicalDatabase'
-          description: Get logical database by ID
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Get logical database by ID
-      tags:
-      - Logical Database
-    put:
-      operationId: editLogicalDatabase
-      parameters:
-      - description: Logical Database ID
-        explode: false
-        in: path
-        name: logicalDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LogicalDatabaseRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LogicalDatabase'
-          description: Edit a Logical Database
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Edit a logical database
-      tags:
-      - Logical Database
-  /logicalDatabase/{logicalDatabaseId}/credentials:
-    get:
-      operationId: getLogicalDatabaseCredentials
-      parameters:
-      - description: Logical Database ID
-        explode: false
-        in: path
-        name: logicalDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Credentials'
-          description: get credentials
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Get  credentials of the logical database
-      tags:
-      - Logical Database
-    put:
-      operationId: editLogicalDatabaseCredentials
-      parameters:
-      - description: Logical Database ID
-        explode: false
-        in: path
-        name: logicalDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CredentialsRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Credentials'
-          description: Edit logical database credentials
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Edit logical database credentials
-      tags:
-      - Logical Database
-  /logicalDatabase/{logicalDatabaseId}/application:
-    get:
-      operationId: listLogicalDatabaseApplication
-      parameters:
-      - description: Logical Database ID
-        explode: false
-        in: path
-        name: logicalDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApplicationResponseList'
-          description: List linked applications
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List linked applications
-      tags:
-      - Logical Database
-  /logicalDatabase/{logicalDatabaseId}/container:
-    get:
-      operationId: listLogicalDatabaseContainer
-      parameters:
-      - description: Logical Database ID
-        explode: false
-        in: path
-        name: logicalDatabaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ContainerResponseList'
-          description: List linked containers
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List linked containers
-      tags:
-      - Logical Database
   /account:
     get:
       operationId: getAccountInformation
@@ -12551,16 +12266,6 @@ components:
         format: int32
         type: integer
       style: form
-    logicalDatabaseId:
-      description: Logical Database ID
-      explode: false
-      in: path
-      name: logicalDatabaseId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
     organizationId:
       description: Organization ID
       explode: false
@@ -12645,16 +12350,6 @@ components:
       explode: false
       in: path
       name: targetDatabaseId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
-    targetLogicalDatabaseId:
-      description: Target database ID
-      explode: false
-      in: path
-      name: targetLogicalDatabaseId
       required: true
       schema:
         format: uuid
@@ -16721,35 +16416,6 @@ components:
             $ref: '#/components/schemas/Log'
           type: array
       type: object
-    LogicalDatabase:
-      allOf:
-      - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/LogicalDatabaseRequest'
-      - $ref: '#/components/schemas/LogicalDatabase_allOf'
-    LogicalDatabaseRequest:
-      example:
-        name: name
-        description: description
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          type: string
-      required:
-      - name
-      type: object
-    LogicalDatabaseResponseList:
-      example:
-        results:
-        - null
-        - null
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/LogicalDatabase'
-          type: array
-      type: object
     Member:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -20351,11 +20017,6 @@ components:
             $ref: '#/components/schemas/Log'
           type: array
       type: object
-    LogicalDatabase_allOf:
-      properties:
-        database:
-          $ref: '#/components/schemas/ReferenceObject'
-      type: object
     Member_allOf:
       properties:
         name:
@@ -20754,7 +20415,6 @@ x-tagGroups:
   - Database Applications
   - Database Deployment History
   - Database Containers
-  - Logical Database
   - Database Application
   - Database Container
   - Backups

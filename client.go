@@ -162,8 +162,6 @@ type APIClient struct {
 
 	JobsApi *JobsApiService
 
-	LogicalDatabaseApi *LogicalDatabaseApiService
-
 	MembersApi *MembersApiService
 
 	OrganizationAccountGitRepositoriesApi *OrganizationAccountGitRepositoriesApiService
@@ -263,7 +261,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobMetricsApi = (*JobMetricsApiService)(&c.common)
 	c.JobSecretApi = (*JobSecretApiService)(&c.common)
 	c.JobsApi = (*JobsApiService)(&c.common)
-	c.LogicalDatabaseApi = (*LogicalDatabaseApiService)(&c.common)
 	c.MembersApi = (*MembersApiService)(&c.common)
 	c.OrganizationAccountGitRepositoriesApi = (*OrganizationAccountGitRepositoriesApiService)(&c.common)
 	c.OrganizationApiTokenApi = (*OrganizationApiTokenApiService)(&c.common)

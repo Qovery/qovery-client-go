@@ -364,15 +364,6 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**GetDefaultJobAdvancedSettings**](docs/JobsApi.md#getdefaultjobadvancedsettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
 *JobsApi* | [**GetEnvironmentJobStatus**](docs/JobsApi.md#getenvironmentjobstatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
 *JobsApi* | [**ListJobs**](docs/JobsApi.md#listjobs) | **Get** /environment/{environmentId}/job | List jobs
-*LogicalDatabaseApi* | [**CreateLogicalDatabaseOnDatabase**](docs/LogicalDatabaseApi.md#createlogicaldatabaseondatabase) | **Post** /database/{databaseId}/logicalDatabase | Create a logical database on the database
-*LogicalDatabaseApi* | [**DeleteLogicalDatabase**](docs/LogicalDatabaseApi.md#deletelogicaldatabase) | **Delete** /logicalDatabase/{logicalDatabaseId} | Delete a Logical database
-*LogicalDatabaseApi* | [**EditLogicalDatabase**](docs/LogicalDatabaseApi.md#editlogicaldatabase) | **Put** /logicalDatabase/{logicalDatabaseId} | Edit a logical database
-*LogicalDatabaseApi* | [**EditLogicalDatabaseCredentials**](docs/LogicalDatabaseApi.md#editlogicaldatabasecredentials) | **Put** /logicalDatabase/{logicalDatabaseId}/credentials | Edit logical database credentials
-*LogicalDatabaseApi* | [**GetLogicalDatabase**](docs/LogicalDatabaseApi.md#getlogicaldatabase) | **Get** /logicalDatabase/{logicalDatabaseId} | Get logical database by ID
-*LogicalDatabaseApi* | [**GetLogicalDatabaseCredentials**](docs/LogicalDatabaseApi.md#getlogicaldatabasecredentials) | **Get** /logicalDatabase/{logicalDatabaseId}/credentials | Get  credentials of the logical database
-*LogicalDatabaseApi* | [**ListLogicalDatabaseApplication**](docs/LogicalDatabaseApi.md#listlogicaldatabaseapplication) | **Get** /logicalDatabase/{logicalDatabaseId}/application | List linked applications
-*LogicalDatabaseApi* | [**ListLogicalDatabaseContainer**](docs/LogicalDatabaseApi.md#listlogicaldatabasecontainer) | **Get** /logicalDatabase/{logicalDatabaseId}/container | List linked containers
-*LogicalDatabaseApi* | [**ListLogicalDatabaseDatabase**](docs/LogicalDatabaseApi.md#listlogicaldatabasedatabase) | **Get** /database/{databaseId}/logicalDatabase | List logical databases of a database
 *MembersApi* | [**DeleteInviteMember**](docs/MembersApi.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
 *MembersApi* | [**DeleteMember**](docs/MembersApi.md#deletemember) | **Delete** /organization/{organizationId}/member | Remove a member
 *MembersApi* | [**EditOrganizationMemberRole**](docs/MembersApi.md#editorganizationmemberrole) | **Put** /organization/{organizationId}/member | Edit an organization member role
@@ -720,10 +711,6 @@ Class | Method | HTTP request | Description
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogPaginatedResponseListAllOf](docs/LogPaginatedResponseListAllOf.md)
  - [LogResponseList](docs/LogResponseList.md)
- - [LogicalDatabase](docs/LogicalDatabase.md)
- - [LogicalDatabaseAllOf](docs/LogicalDatabaseAllOf.md)
- - [LogicalDatabaseRequest](docs/LogicalDatabaseRequest.md)
- - [LogicalDatabaseResponseList](docs/LogicalDatabaseResponseList.md)
  - [Member](docs/Member.md)
  - [MemberAllOf](docs/MemberAllOf.md)
  - [MemberResponseList](docs/MemberResponseList.md)
