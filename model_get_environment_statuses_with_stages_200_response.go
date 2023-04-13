@@ -17,7 +17,7 @@ import (
 
 // GetEnvironmentStatusesWithStages200Response struct for GetEnvironmentStatusesWithStages200Response
 type GetEnvironmentStatusesWithStages200Response struct {
-	Environment *Status                                 `json:"environment,omitempty"`
+	Environment *EnvironmentStatus                      `json:"environment,omitempty"`
 	Stages      *DeploymentStageWithServiceStatusesList `json:"stages,omitempty"`
 }
 
@@ -39,9 +39,9 @@ func NewGetEnvironmentStatusesWithStages200ResponseWithDefaults() *GetEnvironmen
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironment() Status {
+func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironment() EnvironmentStatus {
 	if o == nil || o.Environment == nil {
-		var ret Status
+		var ret EnvironmentStatus
 		return ret
 	}
 	return *o.Environment
@@ -49,7 +49,7 @@ func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironment() Status {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironmentOk() (*Status, bool) {
+func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironmentOk() (*EnvironmentStatus, bool) {
 	if o == nil || o.Environment == nil {
 		return nil, false
 	}
@@ -65,8 +65,8 @@ func (o *GetEnvironmentStatusesWithStages200Response) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Status and assigns it to the Environment field.
-func (o *GetEnvironmentStatusesWithStages200Response) SetEnvironment(v Status) {
+// SetEnvironment gets a reference to the given EnvironmentStatus and assigns it to the Environment field.
+func (o *GetEnvironmentStatusesWithStages200Response) SetEnvironment(v EnvironmentStatus) {
 	o.Environment = &v
 }
 

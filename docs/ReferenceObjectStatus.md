@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **State** | [**StateEnum**](StateEnum.md) |  | 
-**Message** | Pointer to **string** | message related to the state | [optional] 
 **ServiceDeploymentStatus** | [**ServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 
@@ -68,31 +67,6 @@ and a boolean to check if the value has been set.
 
 SetState sets State field to given value.
 
-
-### GetMessage
-
-`func (o *ReferenceObjectStatus) GetMessage() string`
-
-GetMessage returns the Message field if non-nil, zero value otherwise.
-
-### GetMessageOk
-
-`func (o *ReferenceObjectStatus) GetMessageOk() (*string, bool)`
-
-GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMessage
-
-`func (o *ReferenceObjectStatus) SetMessage(v string)`
-
-SetMessage sets Message field to given value.
-
-### HasMessage
-
-`func (o *ReferenceObjectStatus) HasMessage() bool`
-
-HasMessage returns a boolean if a field has been set.
 
 ### GetServiceDeploymentStatus
 

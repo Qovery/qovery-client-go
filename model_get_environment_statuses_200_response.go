@@ -17,11 +17,11 @@ import (
 
 // GetEnvironmentStatuses200Response struct for GetEnvironmentStatuses200Response
 type GetEnvironmentStatuses200Response struct {
-	Environment  *Status  `json:"environment,omitempty"`
-	Applications []Status `json:"applications,omitempty"`
-	Containers   []Status `json:"containers,omitempty"`
-	Jobs         []Status `json:"jobs,omitempty"`
-	Databases    []Status `json:"databases,omitempty"`
+	Environment  *EnvironmentStatus `json:"environment,omitempty"`
+	Applications []Status           `json:"applications,omitempty"`
+	Containers   []Status           `json:"containers,omitempty"`
+	Jobs         []Status           `json:"jobs,omitempty"`
+	Databases    []Status           `json:"databases,omitempty"`
 }
 
 // NewGetEnvironmentStatuses200Response instantiates a new GetEnvironmentStatuses200Response object
@@ -42,9 +42,9 @@ func NewGetEnvironmentStatuses200ResponseWithDefaults() *GetEnvironmentStatuses2
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *GetEnvironmentStatuses200Response) GetEnvironment() Status {
+func (o *GetEnvironmentStatuses200Response) GetEnvironment() EnvironmentStatus {
 	if o == nil || o.Environment == nil {
-		var ret Status
+		var ret EnvironmentStatus
 		return ret
 	}
 	return *o.Environment
@@ -52,7 +52,7 @@ func (o *GetEnvironmentStatuses200Response) GetEnvironment() Status {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatuses200Response) GetEnvironmentOk() (*Status, bool) {
+func (o *GetEnvironmentStatuses200Response) GetEnvironmentOk() (*EnvironmentStatus, bool) {
 	if o == nil || o.Environment == nil {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *GetEnvironmentStatuses200Response) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Status and assigns it to the Environment field.
-func (o *GetEnvironmentStatuses200Response) SetEnvironment(v Status) {
+// SetEnvironment gets a reference to the given EnvironmentStatus and assigns it to the Environment field.
+func (o *GetEnvironmentStatuses200Response) SetEnvironment(v EnvironmentStatus) {
 	o.Environment = &v
 }
 

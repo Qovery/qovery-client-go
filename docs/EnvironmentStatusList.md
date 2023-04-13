@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]Status**](Status.md) |  | [optional] 
+**Results** | Pointer to [**[]EnvironmentStatus**](EnvironmentStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *EnvironmentStatusList) GetResults() []Status`
+`func (o *EnvironmentStatusList) GetResults() []EnvironmentStatus`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *EnvironmentStatusList) GetResultsOk() (*[]Status, bool)`
+`func (o *EnvironmentStatusList) GetResultsOk() (*[]EnvironmentStatus, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *EnvironmentStatusList) SetResults(v []Status)`
+`func (o *EnvironmentStatusList) SetResults(v []EnvironmentStatus)`
 
 SetResults sets Results field to given value.
 

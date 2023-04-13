@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Environment** | Pointer to [**Status**](Status.md) |  | [optional] 
+**Environment** | Pointer to [**EnvironmentStatus**](EnvironmentStatus.md) |  | [optional] 
 **Applications** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Containers** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Jobs** | Pointer to [**[]Status**](Status.md) |  | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetEnvironment
 
-`func (o *GetEnvironmentStatuses200Response) GetEnvironment() Status`
+`func (o *GetEnvironmentStatuses200Response) GetEnvironment() EnvironmentStatus`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *GetEnvironmentStatuses200Response) GetEnvironmentOk() (*Status, bool)`
+`func (o *GetEnvironmentStatuses200Response) GetEnvironmentOk() (*EnvironmentStatus, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *GetEnvironmentStatuses200Response) SetEnvironment(v Status)`
+`func (o *GetEnvironmentStatuses200Response) SetEnvironment(v EnvironmentStatus)`
 
 SetEnvironment sets Environment field to given value.
 

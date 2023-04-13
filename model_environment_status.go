@@ -16,36 +16,36 @@ import (
 	"time"
 )
 
-// Status struct for Status
-type Status struct {
-	Id                      string                      `json:"id"`
-	State                   StateEnum                   `json:"state"`
-	ServiceDeploymentStatus ServiceDeploymentStatusEnum `json:"service_deployment_status"`
-	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
+// EnvironmentStatus struct for EnvironmentStatus
+type EnvironmentStatus struct {
+	Id                  string     `json:"id"`
+	State               StateEnum  `json:"state"`
+	LastDeploymentDate  *time.Time `json:"last_deployment_date,omitempty"`
+	LastDeploymentState StateEnum  `json:"last_deployment_state"`
 }
 
-// NewStatus instantiates a new Status object
+// NewEnvironmentStatus instantiates a new EnvironmentStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum) *Status {
-	this := Status{}
+func NewEnvironmentStatus(id string, state StateEnum, lastDeploymentState StateEnum) *EnvironmentStatus {
+	this := EnvironmentStatus{}
 	this.Id = id
 	this.State = state
-	this.ServiceDeploymentStatus = serviceDeploymentStatus
+	this.LastDeploymentState = lastDeploymentState
 	return &this
 }
 
-// NewStatusWithDefaults instantiates a new Status object
+// NewEnvironmentStatusWithDefaults instantiates a new EnvironmentStatus object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewStatusWithDefaults() *Status {
-	this := Status{}
+func NewEnvironmentStatusWithDefaults() *EnvironmentStatus {
+	this := EnvironmentStatus{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *Status) GetId() string {
+func (o *EnvironmentStatus) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -56,7 +56,7 @@ func (o *Status) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *Status) GetIdOk() (*string, bool) {
+func (o *EnvironmentStatus) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,12 +64,12 @@ func (o *Status) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
-func (o *Status) SetId(v string) {
+func (o *EnvironmentStatus) SetId(v string) {
 	o.Id = v
 }
 
 // GetState returns the State field value
-func (o *Status) GetState() StateEnum {
+func (o *EnvironmentStatus) GetState() StateEnum {
 	if o == nil {
 		var ret StateEnum
 		return ret
@@ -80,7 +80,7 @@ func (o *Status) GetState() StateEnum {
 
 // GetStateOk returns a tuple with the State field value
 // and a boolean to check if the value has been set.
-func (o *Status) GetStateOk() (*StateEnum, bool) {
+func (o *EnvironmentStatus) GetStateOk() (*StateEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,36 +88,12 @@ func (o *Status) GetStateOk() (*StateEnum, bool) {
 }
 
 // SetState sets field value
-func (o *Status) SetState(v StateEnum) {
+func (o *EnvironmentStatus) SetState(v StateEnum) {
 	o.State = v
 }
 
-// GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value
-func (o *Status) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum {
-	if o == nil {
-		var ret ServiceDeploymentStatusEnum
-		return ret
-	}
-
-	return o.ServiceDeploymentStatus
-}
-
-// GetServiceDeploymentStatusOk returns a tuple with the ServiceDeploymentStatus field value
-// and a boolean to check if the value has been set.
-func (o *Status) GetServiceDeploymentStatusOk() (*ServiceDeploymentStatusEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ServiceDeploymentStatus, true
-}
-
-// SetServiceDeploymentStatus sets field value
-func (o *Status) SetServiceDeploymentStatus(v ServiceDeploymentStatusEnum) {
-	o.ServiceDeploymentStatus = v
-}
-
 // GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
-func (o *Status) GetLastDeploymentDate() time.Time {
+func (o *EnvironmentStatus) GetLastDeploymentDate() time.Time {
 	if o == nil || o.LastDeploymentDate == nil {
 		var ret time.Time
 		return ret
@@ -127,7 +103,7 @@ func (o *Status) GetLastDeploymentDate() time.Time {
 
 // GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Status) GetLastDeploymentDateOk() (*time.Time, bool) {
+func (o *EnvironmentStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
 	if o == nil || o.LastDeploymentDate == nil {
 		return nil, false
 	}
@@ -135,7 +111,7 @@ func (o *Status) GetLastDeploymentDateOk() (*time.Time, bool) {
 }
 
 // HasLastDeploymentDate returns a boolean if a field has been set.
-func (o *Status) HasLastDeploymentDate() bool {
+func (o *EnvironmentStatus) HasLastDeploymentDate() bool {
 	if o != nil && o.LastDeploymentDate != nil {
 		return true
 	}
@@ -144,11 +120,35 @@ func (o *Status) HasLastDeploymentDate() bool {
 }
 
 // SetLastDeploymentDate gets a reference to the given time.Time and assigns it to the LastDeploymentDate field.
-func (o *Status) SetLastDeploymentDate(v time.Time) {
+func (o *EnvironmentStatus) SetLastDeploymentDate(v time.Time) {
 	o.LastDeploymentDate = &v
 }
 
-func (o Status) MarshalJSON() ([]byte, error) {
+// GetLastDeploymentState returns the LastDeploymentState field value
+func (o *EnvironmentStatus) GetLastDeploymentState() StateEnum {
+	if o == nil {
+		var ret StateEnum
+		return ret
+	}
+
+	return o.LastDeploymentState
+}
+
+// GetLastDeploymentStateOk returns a tuple with the LastDeploymentState field value
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatus) GetLastDeploymentStateOk() (*StateEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LastDeploymentState, true
+}
+
+// SetLastDeploymentState sets field value
+func (o *EnvironmentStatus) SetLastDeploymentState(v StateEnum) {
+	o.LastDeploymentState = v
+}
+
+func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
@@ -156,47 +156,47 @@ func (o Status) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["state"] = o.State
 	}
-	if true {
-		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus
-	}
 	if o.LastDeploymentDate != nil {
 		toSerialize["last_deployment_date"] = o.LastDeploymentDate
+	}
+	if true {
+		toSerialize["last_deployment_state"] = o.LastDeploymentState
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableStatus struct {
-	value *Status
+type NullableEnvironmentStatus struct {
+	value *EnvironmentStatus
 	isSet bool
 }
 
-func (v NullableStatus) Get() *Status {
+func (v NullableEnvironmentStatus) Get() *EnvironmentStatus {
 	return v.value
 }
 
-func (v *NullableStatus) Set(val *Status) {
+func (v *NullableEnvironmentStatus) Set(val *EnvironmentStatus) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableStatus) IsSet() bool {
+func (v NullableEnvironmentStatus) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableStatus) Unset() {
+func (v *NullableEnvironmentStatus) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableStatus(val *Status) *NullableStatus {
-	return &NullableStatus{value: val, isSet: true}
+func NewNullableEnvironmentStatus(val *EnvironmentStatus) *NullableEnvironmentStatus {
+	return &NullableEnvironmentStatus{value: val, isSet: true}
 }
 
-func (v NullableStatus) MarshalJSON() ([]byte, error) {
+func (v NullableEnvironmentStatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableStatus) UnmarshalJSON(src []byte) error {
+func (v *NullableEnvironmentStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

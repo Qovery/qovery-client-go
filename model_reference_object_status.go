@@ -18,10 +18,8 @@ import (
 
 // ReferenceObjectStatus struct for ReferenceObjectStatus
 type ReferenceObjectStatus struct {
-	Id    string    `json:"id"`
-	State StateEnum `json:"state"`
-	// message related to the state
-	Message                 *string                     `json:"message,omitempty"`
+	Id                      string                      `json:"id"`
+	State                   StateEnum                   `json:"state"`
 	ServiceDeploymentStatus ServiceDeploymentStatusEnum `json:"service_deployment_status"`
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 }
@@ -94,38 +92,6 @@ func (o *ReferenceObjectStatus) SetState(v StateEnum) {
 	o.State = v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
-func (o *ReferenceObjectStatus) GetMessage() string {
-	if o == nil || o.Message == nil {
-		var ret string
-		return ret
-	}
-	return *o.Message
-}
-
-// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ReferenceObjectStatus) GetMessageOk() (*string, bool) {
-	if o == nil || o.Message == nil {
-		return nil, false
-	}
-	return o.Message, true
-}
-
-// HasMessage returns a boolean if a field has been set.
-func (o *ReferenceObjectStatus) HasMessage() bool {
-	if o != nil && o.Message != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMessage gets a reference to the given string and assigns it to the Message field.
-func (o *ReferenceObjectStatus) SetMessage(v string) {
-	o.Message = &v
-}
-
 // GetServiceDeploymentStatus returns the ServiceDeploymentStatus field value
 func (o *ReferenceObjectStatus) GetServiceDeploymentStatus() ServiceDeploymentStatusEnum {
 	if o == nil {
@@ -189,9 +155,6 @@ func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["state"] = o.State
-	}
-	if o.Message != nil {
-		toSerialize["message"] = o.Message
 	}
 	if true {
 		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus

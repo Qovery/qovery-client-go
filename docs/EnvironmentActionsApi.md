@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CancelEnvironmentDeployment
 
-> Status CancelEnvironmentDeployment(ctx, environmentId).Execute()
+> EnvironmentStatus CancelEnvironmentDeployment(ctx, environmentId).Execute()
 
 Cancel environment deployment
 
@@ -45,7 +45,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.CancelEnvironmentDeployment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CancelEnvironmentDeployment`: Status
+    // response from `CancelEnvironmentDeployment`: EnvironmentStatus
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsApi.CancelEnvironmentDeployment`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**EnvironmentStatus**](EnvironmentStatus.md)
 
 ### Authorization
 
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## RedeployEnvironment
 
-> Status RedeployEnvironment(ctx, environmentId).Execute()
+> EnvironmentStatus RedeployEnvironment(ctx, environmentId).Execute()
 
 Redeploy environment
 
@@ -399,7 +399,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.RedeployEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RedeployEnvironment`: Status
+    // response from `RedeployEnvironment`: EnvironmentStatus
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsApi.RedeployEnvironment`: %v\n", resp)
 }
 ```
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**EnvironmentStatus**](EnvironmentStatus.md)
 
 ### Authorization
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ## RestartEnvironment
 
-> Status RestartEnvironment(ctx, environmentId).Execute()
+> EnvironmentStatus RestartEnvironment(ctx, environmentId).Execute()
 
 Deprecated - Restart environment
 
@@ -469,7 +469,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.RestartEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RestartEnvironment`: Status
+    // response from `RestartEnvironment`: EnvironmentStatus
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsApi.RestartEnvironment`: %v\n", resp)
 }
 ```
@@ -493,7 +493,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**EnvironmentStatus**](EnvironmentStatus.md)
 
 ### Authorization
 
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 
 ## StopEnvironment
 
-> Status StopEnvironment(ctx, environmentId).Execute()
+> EnvironmentStatus StopEnvironment(ctx, environmentId).Execute()
 
 Stop environment
 
@@ -537,7 +537,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsApi.StopEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StopEnvironment`: Status
+    // response from `StopEnvironment`: EnvironmentStatus
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsApi.StopEnvironment`: %v\n", resp)
 }
 ```
@@ -561,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**EnvironmentStatus**](EnvironmentStatus.md)
 
 ### Authorization
 

@@ -29,7 +29,7 @@ type ApiCancelEnvironmentDeploymentRequest struct {
 	environmentId string
 }
 
-func (r ApiCancelEnvironmentDeploymentRequest) Execute() (*Status, *http.Response, error) {
+func (r ApiCancelEnvironmentDeploymentRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
 	return r.ApiService.CancelEnvironmentDeploymentExecute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *EnvironmentActionsApiService) CancelEnvironmentDeployment(ctx context.C
 }
 
 // Execute executes the request
-//  @return Status
-func (a *EnvironmentActionsApiService) CancelEnvironmentDeploymentExecute(r ApiCancelEnvironmentDeploymentRequest) (*Status, *http.Response, error) {
+//  @return EnvironmentStatus
+func (a *EnvironmentActionsApiService) CancelEnvironmentDeploymentExecute(r ApiCancelEnvironmentDeploymentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarReturnValue *EnvironmentStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.CancelEnvironmentDeployment")
@@ -568,7 +568,7 @@ type ApiRedeployEnvironmentRequest struct {
 	environmentId string
 }
 
-func (r ApiRedeployEnvironmentRequest) Execute() (*Status, *http.Response, error) {
+func (r ApiRedeployEnvironmentRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
 	return r.ApiService.RedeployEnvironmentExecute(r)
 }
 
@@ -588,13 +588,13 @@ func (a *EnvironmentActionsApiService) RedeployEnvironment(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Status
-func (a *EnvironmentActionsApiService) RedeployEnvironmentExecute(r ApiRedeployEnvironmentRequest) (*Status, *http.Response, error) {
+//  @return EnvironmentStatus
+func (a *EnvironmentActionsApiService) RedeployEnvironmentExecute(r ApiRedeployEnvironmentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarReturnValue *EnvironmentStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.RedeployEnvironment")
@@ -669,7 +669,7 @@ type ApiRestartEnvironmentRequest struct {
 	environmentId string
 }
 
-func (r ApiRestartEnvironmentRequest) Execute() (*Status, *http.Response, error) {
+func (r ApiRestartEnvironmentRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
 	return r.ApiService.RestartEnvironmentExecute(r)
 }
 
@@ -691,13 +691,13 @@ func (a *EnvironmentActionsApiService) RestartEnvironment(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return Status
-func (a *EnvironmentActionsApiService) RestartEnvironmentExecute(r ApiRestartEnvironmentRequest) (*Status, *http.Response, error) {
+//  @return EnvironmentStatus
+func (a *EnvironmentActionsApiService) RestartEnvironmentExecute(r ApiRestartEnvironmentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarReturnValue *EnvironmentStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.RestartEnvironment")
@@ -772,7 +772,7 @@ type ApiStopEnvironmentRequest struct {
 	environmentId string
 }
 
-func (r ApiStopEnvironmentRequest) Execute() (*Status, *http.Response, error) {
+func (r ApiStopEnvironmentRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
 	return r.ApiService.StopEnvironmentExecute(r)
 }
 
@@ -792,13 +792,13 @@ func (a *EnvironmentActionsApiService) StopEnvironment(ctx context.Context, envi
 }
 
 // Execute executes the request
-//  @return Status
-func (a *EnvironmentActionsApiService) StopEnvironmentExecute(r ApiStopEnvironmentRequest) (*Status, *http.Response, error) {
+//  @return EnvironmentStatus
+func (a *EnvironmentActionsApiService) StopEnvironmentExecute(r ApiStopEnvironmentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarReturnValue *EnvironmentStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.StopEnvironment")

@@ -5077,7 +5077,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/EnvironmentStatus'
           description: Environment stop has been requested
         "401":
           description: Access token is missing or invalid
@@ -5110,7 +5110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/EnvironmentStatus'
           description: Environment restart has been requested
         "401":
           description: Access token is missing or invalid
@@ -5141,7 +5141,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/EnvironmentStatus'
           description: Environment redeploy has been requested
         "401":
           description: Access token is missing or invalid
@@ -5173,7 +5173,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/EnvironmentStatus'
           description: environment deployment cancelling has been requested
         "401":
           description: Access token is missing or invalid
@@ -15486,6 +15486,28 @@ components:
       allOf:
       - $ref: '#/components/schemas/ReferenceObject'
       - $ref: '#/components/schemas/ServiceTotalNumber'
+    EnvironmentStatus:
+      example:
+        last_deployment_state: null
+        last_deployment_date: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: null
+      properties:
+        id:
+          format: uuid
+          type: string
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        last_deployment_date:
+          format: date-time
+          type: string
+        last_deployment_state:
+          $ref: '#/components/schemas/StateEnum'
+      required:
+      - id
+      - last_deployment_state
+      - state
+      type: object
     EnvironmentStatsResponseList:
       example:
         results:
@@ -15500,20 +15522,18 @@ components:
     EnvironmentStatusList:
       example:
         results:
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+        - last_deployment_state: null
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
-          service_deployment_status: null
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+        - last_deployment_state: null
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
-          service_deployment_status: null
       properties:
         results:
           items:
-            $ref: '#/components/schemas/Status'
+            $ref: '#/components/schemas/EnvironmentStatus'
           type: array
       type: object
     EnvironmentTotalNumber:
@@ -15981,12 +16001,10 @@ components:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           stage:
             name: name
@@ -15995,45 +16013,37 @@ components:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           containers:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           applications:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
         - databases:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           stage:
             name: name
@@ -16042,34 +16052,28 @@ components:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           containers:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           applications:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
-            message: message
             service_deployment_status: null
       properties:
         results:
@@ -16083,12 +16087,10 @@ components:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         stage:
           name: name
@@ -16097,34 +16099,28 @@ components:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         containers:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         applications:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
       properties:
         applications:
@@ -17777,7 +17773,6 @@ components:
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: null
-        message: message
         service_deployment_status: null
       properties:
         id:
@@ -17785,9 +17780,6 @@ components:
           type: string
         state:
           $ref: '#/components/schemas/StateEnum'
-        message:
-          description: message related to the state
-          type: string
         service_deployment_status:
           $ref: '#/components/schemas/ServiceDeploymentStatusEnum'
         last_deployment_date:
@@ -18111,55 +18103,46 @@ components:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         environment:
+          last_deployment_state: null
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
-          service_deployment_status: null
         jobs:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         containers:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         applications:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
           service_deployment_status: null
       properties:
         environment:
-          $ref: '#/components/schemas/Status'
+          $ref: '#/components/schemas/EnvironmentStatus'
         applications:
           items:
             $ref: '#/components/schemas/Status'
@@ -18180,23 +18163,20 @@ components:
     getEnvironmentStatusesWithStages_200_response:
       example:
         environment:
+          last_deployment_state: null
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
-          message: message
-          service_deployment_status: null
         stages:
           results:
           - databases:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             stage:
               name: name
@@ -18205,45 +18185,37 @@ components:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             containers:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             applications:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
           - databases:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             stage:
               name: name
@@ -18252,38 +18224,32 @@ components:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             containers:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             applications:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
-              message: message
               service_deployment_status: null
       properties:
         environment:
-          $ref: '#/components/schemas/Status'
+          $ref: '#/components/schemas/EnvironmentStatus'
         stages:
           $ref: '#/components/schemas/DeploymentStageWithServiceStatusesList'
       type: object

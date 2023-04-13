@@ -326,6 +326,7 @@ docs/EnvironmentResponseList.md
 docs/EnvironmentSecretApi.md
 docs/EnvironmentStats.md
 docs/EnvironmentStatsResponseList.md
+docs/EnvironmentStatus.md
 docs/EnvironmentStatusList.md
 docs/EnvironmentTotalNumber.md
 docs/EnvironmentVariable.md
@@ -765,6 +766,7 @@ model_environment_mode_enum.go
 model_environment_response_list.go
 model_environment_stats.go
 model_environment_stats_response_list.go
+model_environment_status.go
 model_environment_status_list.go
 model_environment_total_number.go
 model_environment_variable.go
