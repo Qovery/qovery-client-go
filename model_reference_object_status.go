@@ -22,6 +22,7 @@ type ReferenceObjectStatus struct {
 	State                   StateEnum                   `json:"state"`
 	ServiceDeploymentStatus ServiceDeploymentStatusEnum `json:"service_deployment_status"`
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
+	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
 }
 
 // NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
@@ -148,6 +149,38 @@ func (o *ReferenceObjectStatus) SetLastDeploymentDate(v time.Time) {
 	o.LastDeploymentDate = &v
 }
 
+// GetIsPartLastDeployment returns the IsPartLastDeployment field value if set, zero value otherwise.
+func (o *ReferenceObjectStatus) GetIsPartLastDeployment() bool {
+	if o == nil || o.IsPartLastDeployment == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsPartLastDeployment
+}
+
+// GetIsPartLastDeploymentOk returns a tuple with the IsPartLastDeployment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReferenceObjectStatus) GetIsPartLastDeploymentOk() (*bool, bool) {
+	if o == nil || o.IsPartLastDeployment == nil {
+		return nil, false
+	}
+	return o.IsPartLastDeployment, true
+}
+
+// HasIsPartLastDeployment returns a boolean if a field has been set.
+func (o *ReferenceObjectStatus) HasIsPartLastDeployment() bool {
+	if o != nil && o.IsPartLastDeployment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPartLastDeployment gets a reference to the given bool and assigns it to the IsPartLastDeployment field.
+func (o *ReferenceObjectStatus) SetIsPartLastDeployment(v bool) {
+	o.IsPartLastDeployment = &v
+}
+
 func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -161,6 +194,9 @@ func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastDeploymentDate != nil {
 		toSerialize["last_deployment_date"] = o.LastDeploymentDate
+	}
+	if o.IsPartLastDeployment != nil {
+		toSerialize["is_part_last_deployment"] = o.IsPartLastDeployment
 	}
 	return json.Marshal(toSerialize)
 }

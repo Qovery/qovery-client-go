@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **State** | [**StateEnum**](StateEnum.md) |  | 
 **ServiceDeploymentStatus** | [**ServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
+**IsPartLastDeployment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -112,6 +113,31 @@ SetLastDeploymentDate sets LastDeploymentDate field to given value.
 `func (o *ReferenceObjectStatus) HasLastDeploymentDate() bool`
 
 HasLastDeploymentDate returns a boolean if a field has been set.
+
+### GetIsPartLastDeployment
+
+`func (o *ReferenceObjectStatus) GetIsPartLastDeployment() bool`
+
+GetIsPartLastDeployment returns the IsPartLastDeployment field if non-nil, zero value otherwise.
+
+### GetIsPartLastDeploymentOk
+
+`func (o *ReferenceObjectStatus) GetIsPartLastDeploymentOk() (*bool, bool)`
+
+GetIsPartLastDeploymentOk returns a tuple with the IsPartLastDeployment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPartLastDeployment
+
+`func (o *ReferenceObjectStatus) SetIsPartLastDeployment(v bool)`
+
+SetIsPartLastDeployment sets IsPartLastDeployment field to given value.
+
+### HasIsPartLastDeployment
+
+`func (o *ReferenceObjectStatus) HasIsPartLastDeployment() bool`
+
+HasIsPartLastDeployment returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

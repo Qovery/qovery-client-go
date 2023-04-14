@@ -16008,10 +16008,12 @@ components:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           stage:
             name: name
@@ -16020,37 +16022,45 @@ components:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           containers:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           applications:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
         - databases:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           stage:
             name: name
@@ -16059,28 +16069,34 @@ components:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           containers:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           applications:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: null
+            is_part_last_deployment: true
             service_deployment_status: null
       properties:
         results:
@@ -16094,10 +16110,12 @@ components:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         stage:
           name: name
@@ -16106,28 +16124,34 @@ components:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         containers:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         applications:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
       properties:
         applications:
@@ -17780,6 +17804,7 @@ components:
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: null
+        is_part_last_deployment: true
         service_deployment_status: null
       properties:
         id:
@@ -17792,6 +17817,8 @@ components:
         last_deployment_date:
           format: date-time
           type: string
+        is_part_last_deployment:
+          type: boolean
       required:
       - id
       - service_deployment_status
@@ -18110,10 +18137,12 @@ components:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         environment:
           last_deployment_state: null
@@ -18125,28 +18154,34 @@ components:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         containers:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         applications:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          is_part_last_deployment: true
           service_deployment_status: null
       properties:
         environment:
@@ -18182,10 +18217,12 @@ components:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             stage:
               name: name
@@ -18194,37 +18231,45 @@ components:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             containers:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             applications:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
           - databases:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             stage:
               name: name
@@ -18233,28 +18278,34 @@ components:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             containers:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             applications:
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
             - last_deployment_date: 2000-01-23T04:56:07.000+00:00
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               state: null
+              is_part_last_deployment: true
               service_deployment_status: null
       properties:
         environment:
