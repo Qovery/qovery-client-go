@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **State** | [**StateEnum**](StateEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 **LastDeploymentState** | [**StateEnum**](StateEnum.md) |  | 
+**LastDeploymentId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -112,6 +113,31 @@ and a boolean to check if the value has been set.
 
 SetLastDeploymentState sets LastDeploymentState field to given value.
 
+
+### GetLastDeploymentId
+
+`func (o *EnvironmentStatus) GetLastDeploymentId() string`
+
+GetLastDeploymentId returns the LastDeploymentId field if non-nil, zero value otherwise.
+
+### GetLastDeploymentIdOk
+
+`func (o *EnvironmentStatus) GetLastDeploymentIdOk() (*string, bool)`
+
+GetLastDeploymentIdOk returns a tuple with the LastDeploymentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastDeploymentId
+
+`func (o *EnvironmentStatus) SetLastDeploymentId(v string)`
+
+SetLastDeploymentId sets LastDeploymentId field to given value.
+
+### HasLastDeploymentId
+
+`func (o *EnvironmentStatus) HasLastDeploymentId() bool`
+
+HasLastDeploymentId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

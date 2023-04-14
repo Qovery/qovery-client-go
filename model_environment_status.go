@@ -22,6 +22,7 @@ type EnvironmentStatus struct {
 	State               StateEnum  `json:"state"`
 	LastDeploymentDate  *time.Time `json:"last_deployment_date,omitempty"`
 	LastDeploymentState StateEnum  `json:"last_deployment_state"`
+	LastDeploymentId    *string    `json:"last_deployment_id,omitempty"`
 }
 
 // NewEnvironmentStatus instantiates a new EnvironmentStatus object
@@ -148,6 +149,38 @@ func (o *EnvironmentStatus) SetLastDeploymentState(v StateEnum) {
 	o.LastDeploymentState = v
 }
 
+// GetLastDeploymentId returns the LastDeploymentId field value if set, zero value otherwise.
+func (o *EnvironmentStatus) GetLastDeploymentId() string {
+	if o == nil || o.LastDeploymentId == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastDeploymentId
+}
+
+// GetLastDeploymentIdOk returns a tuple with the LastDeploymentId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatus) GetLastDeploymentIdOk() (*string, bool) {
+	if o == nil || o.LastDeploymentId == nil {
+		return nil, false
+	}
+	return o.LastDeploymentId, true
+}
+
+// HasLastDeploymentId returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasLastDeploymentId() bool {
+	if o != nil && o.LastDeploymentId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastDeploymentId gets a reference to the given string and assigns it to the LastDeploymentId field.
+func (o *EnvironmentStatus) SetLastDeploymentId(v string) {
+	o.LastDeploymentId = &v
+}
+
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -161,6 +194,9 @@ func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["last_deployment_state"] = o.LastDeploymentState
+	}
+	if o.LastDeploymentId != nil {
+		toSerialize["last_deployment_id"] = o.LastDeploymentId
 	}
 	return json.Marshal(toSerialize)
 }

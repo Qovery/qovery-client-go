@@ -15492,6 +15492,7 @@ components:
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: null
+        last_deployment_id: last_deployment_id
       properties:
         id:
           format: uuid
@@ -15503,6 +15504,8 @@ components:
           type: string
         last_deployment_state:
           $ref: '#/components/schemas/StateEnum'
+        last_deployment_id:
+          type: string
       required:
       - id
       - last_deployment_state
@@ -15526,10 +15529,12 @@ components:
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          last_deployment_id: last_deployment_id
         - last_deployment_state: null
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          last_deployment_id: last_deployment_id
       properties:
         results:
           items:
@@ -18113,6 +18118,7 @@ components:
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          last_deployment_id: last_deployment_id
         jobs:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18167,6 +18173,7 @@ components:
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
+          last_deployment_id: last_deployment_id
         stages:
           results:
           - databases:
