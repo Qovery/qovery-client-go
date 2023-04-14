@@ -15501,10 +15501,12 @@ components:
           $ref: '#/components/schemas/StateEnum'
         last_deployment_date:
           format: date-time
+          nullable: true
           type: string
         last_deployment_state:
           $ref: '#/components/schemas/StateEnum'
         last_deployment_id:
+          nullable: true
           type: string
       required:
       - id

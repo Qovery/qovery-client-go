@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **State** | [**StateEnum**](StateEnum.md) |  | 
-**LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
+**LastDeploymentDate** | Pointer to **NullableTime** |  | [optional] 
 **LastDeploymentState** | [**StateEnum**](StateEnum.md) |  | 
-**LastDeploymentId** | Pointer to **string** |  | [optional] 
+**LastDeploymentId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -94,6 +94,16 @@ SetLastDeploymentDate sets LastDeploymentDate field to given value.
 
 HasLastDeploymentDate returns a boolean if a field has been set.
 
+### SetLastDeploymentDateNil
+
+`func (o *EnvironmentStatus) SetLastDeploymentDateNil(b bool)`
+
+ SetLastDeploymentDateNil sets the value for LastDeploymentDate to be an explicit nil
+
+### UnsetLastDeploymentDate
+`func (o *EnvironmentStatus) UnsetLastDeploymentDate()`
+
+UnsetLastDeploymentDate ensures that no value is present for LastDeploymentDate, not even an explicit nil
 ### GetLastDeploymentState
 
 `func (o *EnvironmentStatus) GetLastDeploymentState() StateEnum`
@@ -139,6 +149,16 @@ SetLastDeploymentId sets LastDeploymentId field to given value.
 
 HasLastDeploymentId returns a boolean if a field has been set.
 
+### SetLastDeploymentIdNil
+
+`func (o *EnvironmentStatus) SetLastDeploymentIdNil(b bool)`
+
+ SetLastDeploymentIdNil sets the value for LastDeploymentId to be an explicit nil
+
+### UnsetLastDeploymentId
+`func (o *EnvironmentStatus) UnsetLastDeploymentId()`
+
+UnsetLastDeploymentId ensures that no value is present for LastDeploymentId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,11 +18,11 @@ import (
 
 // EnvironmentStatus struct for EnvironmentStatus
 type EnvironmentStatus struct {
-	Id                  string     `json:"id"`
-	State               StateEnum  `json:"state"`
-	LastDeploymentDate  *time.Time `json:"last_deployment_date,omitempty"`
-	LastDeploymentState StateEnum  `json:"last_deployment_state"`
-	LastDeploymentId    *string    `json:"last_deployment_id,omitempty"`
+	Id                  string         `json:"id"`
+	State               StateEnum      `json:"state"`
+	LastDeploymentDate  NullableTime   `json:"last_deployment_date,omitempty"`
+	LastDeploymentState StateEnum      `json:"last_deployment_state"`
+	LastDeploymentId    NullableString `json:"last_deployment_id,omitempty"`
 }
 
 // NewEnvironmentStatus instantiates a new EnvironmentStatus object
@@ -93,36 +93,47 @@ func (o *EnvironmentStatus) SetState(v StateEnum) {
 	o.State = v
 }
 
-// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
+// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentStatus) GetLastDeploymentDate() time.Time {
-	if o == nil || o.LastDeploymentDate == nil {
+	if o == nil || o.LastDeploymentDate.Get() == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastDeploymentDate
+	return *o.LastDeploymentDate.Get()
 }
 
 // GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
-	if o == nil || o.LastDeploymentDate == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastDeploymentDate, true
+	return o.LastDeploymentDate.Get(), o.LastDeploymentDate.IsSet()
 }
 
 // HasLastDeploymentDate returns a boolean if a field has been set.
 func (o *EnvironmentStatus) HasLastDeploymentDate() bool {
-	if o != nil && o.LastDeploymentDate != nil {
+	if o != nil && o.LastDeploymentDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastDeploymentDate gets a reference to the given time.Time and assigns it to the LastDeploymentDate field.
+// SetLastDeploymentDate gets a reference to the given NullableTime and assigns it to the LastDeploymentDate field.
 func (o *EnvironmentStatus) SetLastDeploymentDate(v time.Time) {
-	o.LastDeploymentDate = &v
+	o.LastDeploymentDate.Set(&v)
+}
+
+// SetLastDeploymentDateNil sets the value for LastDeploymentDate to be an explicit nil
+func (o *EnvironmentStatus) SetLastDeploymentDateNil() {
+	o.LastDeploymentDate.Set(nil)
+}
+
+// UnsetLastDeploymentDate ensures that no value is present for LastDeploymentDate, not even an explicit nil
+func (o *EnvironmentStatus) UnsetLastDeploymentDate() {
+	o.LastDeploymentDate.Unset()
 }
 
 // GetLastDeploymentState returns the LastDeploymentState field value
@@ -149,36 +160,47 @@ func (o *EnvironmentStatus) SetLastDeploymentState(v StateEnum) {
 	o.LastDeploymentState = v
 }
 
-// GetLastDeploymentId returns the LastDeploymentId field value if set, zero value otherwise.
+// GetLastDeploymentId returns the LastDeploymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentStatus) GetLastDeploymentId() string {
-	if o == nil || o.LastDeploymentId == nil {
+	if o == nil || o.LastDeploymentId.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.LastDeploymentId
+	return *o.LastDeploymentId.Get()
 }
 
 // GetLastDeploymentIdOk returns a tuple with the LastDeploymentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentStatus) GetLastDeploymentIdOk() (*string, bool) {
-	if o == nil || o.LastDeploymentId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastDeploymentId, true
+	return o.LastDeploymentId.Get(), o.LastDeploymentId.IsSet()
 }
 
 // HasLastDeploymentId returns a boolean if a field has been set.
 func (o *EnvironmentStatus) HasLastDeploymentId() bool {
-	if o != nil && o.LastDeploymentId != nil {
+	if o != nil && o.LastDeploymentId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastDeploymentId gets a reference to the given string and assigns it to the LastDeploymentId field.
+// SetLastDeploymentId gets a reference to the given NullableString and assigns it to the LastDeploymentId field.
 func (o *EnvironmentStatus) SetLastDeploymentId(v string) {
-	o.LastDeploymentId = &v
+	o.LastDeploymentId.Set(&v)
+}
+
+// SetLastDeploymentIdNil sets the value for LastDeploymentId to be an explicit nil
+func (o *EnvironmentStatus) SetLastDeploymentIdNil() {
+	o.LastDeploymentId.Set(nil)
+}
+
+// UnsetLastDeploymentId ensures that no value is present for LastDeploymentId, not even an explicit nil
+func (o *EnvironmentStatus) UnsetLastDeploymentId() {
+	o.LastDeploymentId.Unset()
 }
 
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
@@ -189,14 +211,14 @@ func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["state"] = o.State
 	}
-	if o.LastDeploymentDate != nil {
-		toSerialize["last_deployment_date"] = o.LastDeploymentDate
+	if o.LastDeploymentDate.IsSet() {
+		toSerialize["last_deployment_date"] = o.LastDeploymentDate.Get()
 	}
 	if true {
 		toSerialize["last_deployment_state"] = o.LastDeploymentState
 	}
-	if o.LastDeploymentId != nil {
-		toSerialize["last_deployment_id"] = o.LastDeploymentId
+	if o.LastDeploymentId.IsSet() {
+		toSerialize["last_deployment_id"] = o.LastDeploymentId.Get()
 	}
 	return json.Marshal(toSerialize)
 }
