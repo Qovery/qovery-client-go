@@ -22,6 +22,7 @@ type StateEnum string
 // List of StateEnum
 const (
 	STATEENUM_BUILDING          StateEnum = "BUILDING"
+	STATEENUM_BUILD_ERROR       StateEnum = "BUILD_ERROR"
 	STATEENUM_CANCELED          StateEnum = "CANCELED"
 	STATEENUM_CANCELING         StateEnum = "CANCELING"
 	STATEENUM_DELETED           StateEnum = "DELETED"
@@ -34,7 +35,6 @@ const (
 	STATEENUM_DEPLOYMENT_QUEUED StateEnum = "DEPLOYMENT_QUEUED"
 	STATEENUM_QUEUED            StateEnum = "QUEUED"
 	STATEENUM_READY             StateEnum = "READY"
-	STATEENUM_RUNNING           StateEnum = "RUNNING"
 	STATEENUM_STOPPED           StateEnum = "STOPPED"
 	STATEENUM_STOPPING          StateEnum = "STOPPING"
 	STATEENUM_STOP_ERROR        StateEnum = "STOP_ERROR"
@@ -48,6 +48,7 @@ const (
 // All allowed values of StateEnum enum
 var AllowedStateEnumEnumValues = []StateEnum{
 	"BUILDING",
+	"BUILD_ERROR",
 	"CANCELED",
 	"CANCELING",
 	"DELETED",
@@ -60,7 +61,6 @@ var AllowedStateEnumEnumValues = []StateEnum{
 	"DEPLOYMENT_QUEUED",
 	"QUEUED",
 	"READY",
-	"RUNNING",
 	"STOPPED",
 	"STOPPING",
 	"STOP_ERROR",

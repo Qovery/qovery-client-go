@@ -5,6 +5,8 @@
 
 * `BUILDING` (value: `"BUILDING"`)
 
+* `BUILD_ERROR` (value: `"BUILD_ERROR"`)
+
 * `CANCELED` (value: `"CANCELED"`)
 
 * `CANCELING` (value: `"CANCELING"`)
@@ -28,8 +30,6 @@
 * `QUEUED` (value: `"QUEUED"`)
 
 * `READY` (value: `"READY"`)
-
-* `RUNNING` (value: `"RUNNING"`)
 
 * `STOPPED` (value: `"STOPPED"`)
 
