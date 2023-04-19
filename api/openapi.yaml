@@ -4621,7 +4621,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/EnvironmentStatus'
           description: Get status
         "401":
           description: Access token is missing or invalid

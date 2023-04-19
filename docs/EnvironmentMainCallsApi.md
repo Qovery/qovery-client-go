@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ## GetEnvironmentStatus
 
-> Status GetEnvironmentStatus(ctx, environmentId).Execute()
+> EnvironmentStatus GetEnvironmentStatus(ctx, environmentId).Execute()
 
 Get environment status
 
@@ -249,7 +249,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsApi.GetEnvironmentStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEnvironmentStatus`: Status
+    // response from `GetEnvironmentStatus`: EnvironmentStatus
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsApi.GetEnvironmentStatus`: %v\n", resp)
 }
 ```
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**EnvironmentStatus**](EnvironmentStatus.md)
 
 ### Authorization
 

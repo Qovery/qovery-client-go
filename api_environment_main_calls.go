@@ -333,7 +333,7 @@ type ApiGetEnvironmentStatusRequest struct {
 	environmentId string
 }
 
-func (r ApiGetEnvironmentStatusRequest) Execute() (*Status, *http.Response, error) {
+func (r ApiGetEnvironmentStatusRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
 	return r.ApiService.GetEnvironmentStatusExecute(r)
 }
 
@@ -353,13 +353,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatus(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Status
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (*Status, *http.Response, error) {
+//  @return EnvironmentStatus
+func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarReturnValue *EnvironmentStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironmentStatus")
