@@ -388,6 +388,7 @@ Class | Method | HTTP request | Description
 *OrganizationCustomRoleApi* | [**EditOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#editorganizationcustomrole) | **Put** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
 *OrganizationCustomRoleApi* | [**GetOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#getorganizationcustomrole) | **Get** /organization/{organizationId}/customRole/{customRoleId} | Get an organization custom role 
 *OrganizationCustomRoleApi* | [**ListOrganizationCustomRoles**](docs/OrganizationCustomRoleApi.md#listorganizationcustomroles) | **Get** /organization/{organizationId}/customRole | List organization custom roles
+*OrganizationEventApi* | [**GetOrganizationEvents**](docs/OrganizationEventApi.md#getorganizationevents) | **Get** /organization/{organizationId}/events | Get all events inside the organization
 *OrganizationMainCallsApi* | [**CreateOrganization**](docs/OrganizationMainCallsApi.md#createorganization) | **Post** /organization | Create an organization
 *OrganizationMainCallsApi* | [**DeleteOrganization**](docs/OrganizationMainCallsApi.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
 *OrganizationMainCallsApi* | [**EditOrganization**](docs/OrganizationMainCallsApi.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
@@ -761,6 +762,13 @@ Class | Method | HTTP request | Description
  - [OrganizationCustomRoleUpdateRequestProjectPermissionsInner](docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInner.md)
  - [OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner](docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner.md)
  - [OrganizationEditRequest](docs/OrganizationEditRequest.md)
+ - [OrganizationEventOrigin](docs/OrganizationEventOrigin.md)
+ - [OrganizationEventResponse](docs/OrganizationEventResponse.md)
+ - [OrganizationEventResponseList](docs/OrganizationEventResponseList.md)
+ - [OrganizationEventResponseListLinks](docs/OrganizationEventResponseListLinks.md)
+ - [OrganizationEventSubTargetType](docs/OrganizationEventSubTargetType.md)
+ - [OrganizationEventTargetType](docs/OrganizationEventTargetType.md)
+ - [OrganizationEventType](docs/OrganizationEventType.md)
  - [OrganizationGithubAppConnectRequest](docs/OrganizationGithubAppConnectRequest.md)
  - [OrganizationRequest](docs/OrganizationRequest.md)
  - [OrganizationResponseList](docs/OrganizationResponseList.md)

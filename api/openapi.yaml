@@ -97,6 +97,7 @@ tags:
 - name: Organization Custom Role
 - name: Organization Api Token
 - name: Organization Webhook
+- name: Organization Event
 - name: Project
 - name: Project Deployment Rule
 - name: Project Environment Variable
@@ -2832,6 +2833,100 @@ paths:
       summary: Edit an organization custom role
       tags:
       - Organization Custom Role
+  /organization/{organizationId}/events:
+    get:
+      description: Get all events inside the organization
+      operationId: getOrganizationEvents
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Display events triggered since this timestamp.  \nA range of\
+          \ date can be specified by using `from-timestamp` with `to-timestamp`\n"
+        explode: true
+        in: query
+        name: from-timestamp
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - description: "Display events triggered before this timestamp.  \nA range of\
+          \ date can be specified by using `to-timestamp` with `from-timestamp`\n"
+        explode: true
+        in: query
+        name: to-timestamp
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: event_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventType'
+        style: form
+      - explode: true
+        in: query
+        name: target_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventTargetType'
+        style: form
+      - explode: true
+        in: query
+        name: target_id
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sub_target
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventSubTargetType'
+        style: form
+      - description: The username who has triggered the action
+        explode: true
+        in: query
+        name: user
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: origin
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventOrigin'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationEventResponseList'
+          description: Get organization events
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get all events inside the organization
+      tags:
+      - Organization Event
   /cloudProvider:
     get:
       operationId: listCloudProvider
@@ -17220,6 +17315,157 @@ components:
             $ref: '#/components/schemas/Organization'
           type: array
       type: object
+    OrganizationEventResponse:
+      example:
+        event_type: CREATE
+        target_name: target_name
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        change: change
+        origin: origin
+        target_type: target_type
+        target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: id
+        sub_target_type: sub_target_type
+        triggered_by: triggered_by
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+        event_type:
+          $ref: '#/components/schemas/OrganizationEventType'
+        target_id:
+          format: uuid
+          nullable: true
+          type: string
+        target_name:
+          type: string
+        target_type:
+          $ref: '#/components/schemas/OrganizationEventTargetType'
+        sub_target_type:
+          $ref: '#/components/schemas/OrganizationEventSubTargetType'
+        change:
+          type: string
+        origin:
+          $ref: '#/components/schemas/OrganizationEventOrigin'
+        triggered_by:
+          type: string
+        project_id:
+          format: uuid
+          nullable: true
+          type: string
+        environment_id:
+          format: uuid
+          nullable: true
+          type: string
+      type: object
+    OrganizationEventResponseList:
+      example:
+        links:
+          next: https://openapi-generator.tech
+          previous: https://openapi-generator.tech
+        events:
+        - event_type: CREATE
+          target_name: target_name
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          change: change
+          origin: origin
+          target_type: target_type
+          target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: id
+          sub_target_type: sub_target_type
+          triggered_by: triggered_by
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - event_type: CREATE
+          target_name: target_name
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          change: change
+          origin: origin
+          target_type: target_type
+          target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: id
+          sub_target_type: sub_target_type
+          triggered_by: triggered_by
+          timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        links:
+          $ref: '#/components/schemas/OrganizationEventResponseList_links'
+        events:
+          items:
+            $ref: '#/components/schemas/OrganizationEventResponse'
+          type: array
+      type: object
+    OrganizationEventOrigin:
+      description: Origin of the organization event
+      enum:
+      - API
+      - CLI
+      - CONSOLE
+      - GIT
+      - TERRAFORM_PROVIDER
+      example: API
+      type: string
+    OrganizationEventSubTargetType:
+      description: Type of the organization event
+      enum:
+      - ADVANCED_SETTINGS
+      - API_TOKEN
+      - BILLING_INFO
+      - CLOUD_PROVIDER_CREDENTIALS
+      - CLUSTER_CREDENTIALS
+      - CLUSTER_ROUTING_TABLE
+      - CREDIT_CARD
+      - CREDIT_CODE
+      - CUSTOM_DOMAIN
+      - CUSTOM_ROLE
+      - DEPLOYMENT_RULE
+      - DEPLOYMENT_STAGE
+      - GITHUB_APP
+      - GIT_REPOSITORY
+      - INVITATION
+      - MEMBER_ROLE
+      - PLAN
+      - SECRET
+      - TRANSFER_OWNERSHIP
+      - VARIABLE
+      example: ADVANCED_SETTINGS
+      type: string
+    OrganizationEventTargetType:
+      description: Type of the organization event
+      enum:
+      - APPLICATION
+      - CLUSTER
+      - CONTAINER
+      - CONTAINER_REGISTRY
+      - DATABASE
+      - ENVIRONMENT
+      - JOB
+      - MEMBERS_AND_ROLES
+      - ORGANIZATION
+      - PROJECT
+      - WEBHOOK
+      example: APPLICATION
+      type: string
+    OrganizationEventType:
+      description: Type of the organization event
+      enum:
+      - CREATE
+      - UPDATE
+      - DELETE
+      - ACCEPT
+      - TRIGGER_DEPLOY
+      - TRIGGER_REDEPLOY
+      - TRIGGER_STOP
+      - TRIGGER_CANCEL
+      - TRIGGER_RESTART
+      - TRIGGER_DELETE
+      example: CREATE
+      type: string
     SecretOverride:
       properties:
         id:
@@ -20195,6 +20441,18 @@ components:
             $ref: '#/components/schemas/OrganizationCustomRoleUpdateRequest_project_permissions_inner_permissions_inner'
           type: array
       type: object
+    OrganizationEventResponseList_links:
+      example:
+        next: https://openapi-generator.tech
+        previous: https://openapi-generator.tech
+      properties:
+        previous:
+          format: uri
+          type: string
+        next:
+          format: uri
+          type: string
+      type: object
     OrganizationWebhookCreateResponse_allOf:
       properties:
         kind:
@@ -20374,6 +20632,7 @@ x-tagGroups:
   - Organization Account Git Repositories
   - Organization Webhook
   - Organization Custom Role
+  - Organization Event
   - Projects
   - Members
   - Billing
