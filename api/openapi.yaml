@@ -2847,6 +2847,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The number of events to display in the current page
+        explode: true
+        in: query
+        name: page-size
+        required: false
+        schema:
+          default: 10
+          nullable: true
+          type: number
+        style: form
       - description: "Display events triggered since this timestamp.  \nA range of\
           \ date can be specified by using `from-timestamp` with `to-timestamp`\n"
         explode: true
@@ -2855,6 +2865,7 @@ paths:
         required: false
         schema:
           format: date-time
+          nullable: true
           type: string
         style: form
       - description: "Display events triggered before this timestamp.  \nA range of\
@@ -2865,6 +2876,7 @@ paths:
         required: false
         schema:
           format: date-time
+          nullable: true
           type: string
         style: form
       - explode: true
@@ -2881,25 +2893,29 @@ paths:
         schema:
           $ref: '#/components/schemas/OrganizationEventTargetType'
         style: form
-      - explode: true
+      - description: "The target resource id to search.  \nMust be specified with\
+          \ the corresponding `target_type`\n"
+        explode: true
         in: query
         name: target_id
         required: false
         schema:
           format: uuid
+          nullable: true
           type: string
         style: form
       - explode: true
         in: query
-        name: sub_target
+        name: sub_target_type
         required: false
         schema:
           $ref: '#/components/schemas/OrganizationEventSubTargetType'
         style: form
-      - description: The username who has triggered the action
+      - description: Information about the owner of the event (user name / apitoken
+          / automatic action)
         explode: true
         in: query
-        name: user
+        name: triggered_by
         required: false
         schema:
           type: string
@@ -17325,13 +17341,10 @@ components:
         origin: origin
         target_type: target_type
         target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        id: id
         sub_target_type: sub_target_type
         triggered_by: triggered_by
         timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
-        id:
-          type: string
         timestamp:
           format: date-time
           type: string
@@ -17376,7 +17389,6 @@ components:
           origin: origin
           target_type: target_type
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          id: id
           sub_target_type: sub_target_type
           triggered_by: triggered_by
           timestamp: 2000-01-23T04:56:07.000+00:00
@@ -17388,7 +17400,6 @@ components:
           origin: origin
           target_type: target_type
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          id: id
           sub_target_type: sub_target_type
           triggered_by: triggered_by
           timestamp: 2000-01-23T04:56:07.000+00:00

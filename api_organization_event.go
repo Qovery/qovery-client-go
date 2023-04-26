@@ -28,14 +28,21 @@ type ApiGetOrganizationEventsRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationEventApiService
 	organizationId string
+	pageSize       *float32
 	fromTimestamp  *time.Time
 	toTimestamp    *time.Time
 	eventType      *OrganizationEventType
 	targetType     *OrganizationEventTargetType
 	targetId       *string
-	subTarget      *OrganizationEventSubTargetType
-	user           *string
+	subTargetType  *OrganizationEventSubTargetType
+	triggeredBy    *string
 	origin         *OrganizationEventOrigin
+}
+
+// The number of events to display in the current page
+func (r ApiGetOrganizationEventsRequest) PageSize(pageSize float32) ApiGetOrganizationEventsRequest {
+	r.pageSize = &pageSize
+	return r
 }
 
 // Display events triggered since this timestamp.   A range of date can be specified by using &#x60;from-timestamp&#x60; with &#x60;to-timestamp&#x60;
@@ -60,19 +67,20 @@ func (r ApiGetOrganizationEventsRequest) TargetType(targetType OrganizationEvent
 	return r
 }
 
+// The target resource id to search.   Must be specified with the corresponding &#x60;target_type&#x60;
 func (r ApiGetOrganizationEventsRequest) TargetId(targetId string) ApiGetOrganizationEventsRequest {
 	r.targetId = &targetId
 	return r
 }
 
-func (r ApiGetOrganizationEventsRequest) SubTarget(subTarget OrganizationEventSubTargetType) ApiGetOrganizationEventsRequest {
-	r.subTarget = &subTarget
+func (r ApiGetOrganizationEventsRequest) SubTargetType(subTargetType OrganizationEventSubTargetType) ApiGetOrganizationEventsRequest {
+	r.subTargetType = &subTargetType
 	return r
 }
 
-// The username who has triggered the action
-func (r ApiGetOrganizationEventsRequest) User(user string) ApiGetOrganizationEventsRequest {
-	r.user = &user
+// Information about the owner of the event (user name / apitoken / automatic action)
+func (r ApiGetOrganizationEventsRequest) TriggeredBy(triggeredBy string) ApiGetOrganizationEventsRequest {
+	r.triggeredBy = &triggeredBy
 	return r
 }
 
@@ -124,6 +132,9 @@ func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrgan
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.pageSize != nil {
+		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+	}
 	if r.fromTimestamp != nil {
 		localVarQueryParams.Add("from-timestamp", parameterToString(*r.fromTimestamp, ""))
 	}
@@ -139,11 +150,11 @@ func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrgan
 	if r.targetId != nil {
 		localVarQueryParams.Add("target_id", parameterToString(*r.targetId, ""))
 	}
-	if r.subTarget != nil {
-		localVarQueryParams.Add("sub_target", parameterToString(*r.subTarget, ""))
+	if r.subTargetType != nil {
+		localVarQueryParams.Add("sub_target_type", parameterToString(*r.subTargetType, ""))
 	}
-	if r.user != nil {
-		localVarQueryParams.Add("user", parameterToString(*r.user, ""))
+	if r.triggeredBy != nil {
+		localVarQueryParams.Add("triggered_by", parameterToString(*r.triggeredBy, ""))
 	}
 	if r.origin != nil {
 		localVarQueryParams.Add("origin", parameterToString(*r.origin, ""))
