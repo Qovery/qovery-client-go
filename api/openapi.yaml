@@ -19875,6 +19875,9 @@ components:
           type: string
         service_type:
           $ref: '#/components/schemas/LinkedServiceTypeEnum'
+        owned_by:
+          description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
+          type: string
       required:
       - scope
       type: object
@@ -20537,6 +20540,9 @@ components:
           type: string
         service_type:
           $ref: '#/components/schemas/LinkedServiceTypeEnum'
+        owned_by:
+          description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
+          type: string
       required:
       - key
       - scope

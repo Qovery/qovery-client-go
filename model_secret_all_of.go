@@ -28,6 +28,8 @@ type SecretAllOf struct {
 	// present only for `BUILT_IN` variable
 	ServiceName *string                `json:"service_name,omitempty"`
 	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
+	// Entity that created/own the variable (i.e: Qovery, Doppler)
+	OwnedBy *string `json:"owned_by,omitempty"`
 }
 
 // NewSecretAllOf instantiates a new SecretAllOf object
@@ -289,6 +291,38 @@ func (o *SecretAllOf) SetServiceType(v LinkedServiceTypeEnum) {
 	o.ServiceType = &v
 }
 
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *SecretAllOf) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretAllOf) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *SecretAllOf) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *SecretAllOf) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
 func (o SecretAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -314,6 +348,9 @@ func (o SecretAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.ServiceType != nil {
 		toSerialize["service_type"] = o.ServiceType
+	}
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
 	}
 	return json.Marshal(toSerialize)
 }

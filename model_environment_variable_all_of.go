@@ -26,6 +26,8 @@ type EnvironmentVariableAllOf struct {
 	// present only for `BUILT_IN` variable
 	ServiceName *string                `json:"service_name,omitempty"`
 	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
+	// Entity that created/own the variable (i.e: Qovery, Doppler)
+	OwnedBy *string `json:"owned_by,omitempty"`
 }
 
 // NewEnvironmentVariableAllOf instantiates a new EnvironmentVariableAllOf object
@@ -262,6 +264,38 @@ func (o *EnvironmentVariableAllOf) SetServiceType(v LinkedServiceTypeEnum) {
 	o.ServiceType = &v
 }
 
+// GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
+func (o *EnvironmentVariableAllOf) GetOwnedBy() string {
+	if o == nil || o.OwnedBy == nil {
+		var ret string
+		return ret
+	}
+	return *o.OwnedBy
+}
+
+// GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentVariableAllOf) GetOwnedByOk() (*string, bool) {
+	if o == nil || o.OwnedBy == nil {
+		return nil, false
+	}
+	return o.OwnedBy, true
+}
+
+// HasOwnedBy returns a boolean if a field has been set.
+func (o *EnvironmentVariableAllOf) HasOwnedBy() bool {
+	if o != nil && o.OwnedBy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnedBy gets a reference to the given string and assigns it to the OwnedBy field.
+func (o *EnvironmentVariableAllOf) SetOwnedBy(v string) {
+	o.OwnedBy = &v
+}
+
 func (o EnvironmentVariableAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.OverriddenVariable != nil {
@@ -284,6 +318,9 @@ func (o EnvironmentVariableAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.ServiceType != nil {
 		toSerialize["service_type"] = o.ServiceType
+	}
+	if o.OwnedBy != nil {
+		toSerialize["owned_by"] = o.OwnedBy
 	}
 	return json.Marshal(toSerialize)
 }
