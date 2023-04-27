@@ -18,9 +18,10 @@ import (
 // CloneRequest struct for CloneRequest
 type CloneRequest struct {
 	// name is case insensitive
-	Name      string               `json:"name"`
-	ClusterId *string              `json:"cluster_id,omitempty"`
-	Mode      *EnvironmentModeEnum `json:"mode,omitempty"`
+	Name                string               `json:"name"`
+	ClusterId           *string              `json:"cluster_id,omitempty"`
+	Mode                *EnvironmentModeEnum `json:"mode,omitempty"`
+	ApplyDeploymentRule *bool                `json:"apply_deployment_rule,omitempty"`
 }
 
 // NewCloneRequest instantiates a new CloneRequest object
@@ -30,6 +31,8 @@ type CloneRequest struct {
 func NewCloneRequest(name string) *CloneRequest {
 	this := CloneRequest{}
 	this.Name = name
+	var applyDeploymentRule bool = false
+	this.ApplyDeploymentRule = &applyDeploymentRule
 	return &this
 }
 
@@ -38,6 +41,8 @@ func NewCloneRequest(name string) *CloneRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewCloneRequestWithDefaults() *CloneRequest {
 	this := CloneRequest{}
+	var applyDeploymentRule bool = false
+	this.ApplyDeploymentRule = &applyDeploymentRule
 	return &this
 }
 
@@ -129,6 +134,38 @@ func (o *CloneRequest) SetMode(v EnvironmentModeEnum) {
 	o.Mode = &v
 }
 
+// GetApplyDeploymentRule returns the ApplyDeploymentRule field value if set, zero value otherwise.
+func (o *CloneRequest) GetApplyDeploymentRule() bool {
+	if o == nil || o.ApplyDeploymentRule == nil {
+		var ret bool
+		return ret
+	}
+	return *o.ApplyDeploymentRule
+}
+
+// GetApplyDeploymentRuleOk returns a tuple with the ApplyDeploymentRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloneRequest) GetApplyDeploymentRuleOk() (*bool, bool) {
+	if o == nil || o.ApplyDeploymentRule == nil {
+		return nil, false
+	}
+	return o.ApplyDeploymentRule, true
+}
+
+// HasApplyDeploymentRule returns a boolean if a field has been set.
+func (o *CloneRequest) HasApplyDeploymentRule() bool {
+	if o != nil && o.ApplyDeploymentRule != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApplyDeploymentRule gets a reference to the given bool and assigns it to the ApplyDeploymentRule field.
+func (o *CloneRequest) SetApplyDeploymentRule(v bool) {
+	o.ApplyDeploymentRule = &v
+}
+
 func (o CloneRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -139,6 +176,9 @@ func (o CloneRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
+	}
+	if o.ApplyDeploymentRule != nil {
+		toSerialize["apply_deployment_rule"] = o.ApplyDeploymentRule
 	}
 	return json.Marshal(toSerialize)
 }

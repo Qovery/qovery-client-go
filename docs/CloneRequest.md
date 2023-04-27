@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **ClusterId** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
+**ApplyDeploymentRule** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -96,6 +97,31 @@ SetMode sets Mode field to given value.
 `func (o *CloneRequest) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
+
+### GetApplyDeploymentRule
+
+`func (o *CloneRequest) GetApplyDeploymentRule() bool`
+
+GetApplyDeploymentRule returns the ApplyDeploymentRule field if non-nil, zero value otherwise.
+
+### GetApplyDeploymentRuleOk
+
+`func (o *CloneRequest) GetApplyDeploymentRuleOk() (*bool, bool)`
+
+GetApplyDeploymentRuleOk returns a tuple with the ApplyDeploymentRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplyDeploymentRule
+
+`func (o *CloneRequest) SetApplyDeploymentRule(v bool)`
+
+SetApplyDeploymentRule sets ApplyDeploymentRule field to given value.
+
+### HasApplyDeploymentRule
+
+`func (o *CloneRequest) HasApplyDeploymentRule() bool`
+
+HasApplyDeploymentRule returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -13281,6 +13281,7 @@ components:
         mode: PRODUCTION
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        apply_deployment_rule: false
       properties:
         name:
           description: name is case insensitive
@@ -13290,6 +13291,9 @@ components:
           type: string
         mode:
           $ref: '#/components/schemas/EnvironmentModeEnum'
+        apply_deployment_rule:
+          default: false
+          type: boolean
       required:
       - name
       type: object
