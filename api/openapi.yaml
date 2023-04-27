@@ -2858,25 +2858,45 @@ paths:
           type: number
         style: form
       - description: "Display events triggered since this timestamp.  \nA range of\
-          \ date can be specified by using `from-timestamp` with `to-timestamp`\n"
+          \ date can be specified by using `from-timestamp` with `to-timestamp`\n\
+          The format is a timestamp with nano precision\n"
         explode: true
         in: query
         name: from-timestamp
         required: false
         schema:
-          format: date-time
           nullable: true
           type: string
         style: form
       - description: "Display events triggered before this timestamp.  \nA range of\
-          \ date can be specified by using `to-timestamp` with `from-timestamp`\n"
+          \ date can be specified by using `to-timestamp` with `from-timestamp`\n\
+          The format is a timestamp with nano precision\n"
         explode: true
         in: query
         name: to-timestamp
         required: false
         schema:
-          format: date-time
           nullable: true
+          type: string
+        style: form
+      - description: |
+          Token used to fetch the next page results
+          The format is a timestamp with nano precision
+        explode: true
+        in: query
+        name: continue-token
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |
+          Token used to fetch the previous page results
+          The format is a timestamp with nano precision
+        explode: true
+        in: query
+        name: step-back-token
+        required: false
+        schema:
           type: string
         style: form
       - explode: true

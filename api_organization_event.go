@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 // OrganizationEventApiService OrganizationEventApi service
@@ -29,8 +28,10 @@ type ApiGetOrganizationEventsRequest struct {
 	ApiService     *OrganizationEventApiService
 	organizationId string
 	pageSize       *float32
-	fromTimestamp  *time.Time
-	toTimestamp    *time.Time
+	fromTimestamp  *string
+	toTimestamp    *string
+	continueToken  *string
+	stepBackToken  *string
 	eventType      *OrganizationEventType
 	targetType     *OrganizationEventTargetType
 	targetId       *string
@@ -45,15 +46,27 @@ func (r ApiGetOrganizationEventsRequest) PageSize(pageSize float32) ApiGetOrgani
 	return r
 }
 
-// Display events triggered since this timestamp.   A range of date can be specified by using &#x60;from-timestamp&#x60; with &#x60;to-timestamp&#x60;
-func (r ApiGetOrganizationEventsRequest) FromTimestamp(fromTimestamp time.Time) ApiGetOrganizationEventsRequest {
+// Display events triggered since this timestamp.   A range of date can be specified by using &#x60;from-timestamp&#x60; with &#x60;to-timestamp&#x60; The format is a timestamp with nano precision
+func (r ApiGetOrganizationEventsRequest) FromTimestamp(fromTimestamp string) ApiGetOrganizationEventsRequest {
 	r.fromTimestamp = &fromTimestamp
 	return r
 }
 
-// Display events triggered before this timestamp.   A range of date can be specified by using &#x60;to-timestamp&#x60; with &#x60;from-timestamp&#x60;
-func (r ApiGetOrganizationEventsRequest) ToTimestamp(toTimestamp time.Time) ApiGetOrganizationEventsRequest {
+// Display events triggered before this timestamp.   A range of date can be specified by using &#x60;to-timestamp&#x60; with &#x60;from-timestamp&#x60; The format is a timestamp with nano precision
+func (r ApiGetOrganizationEventsRequest) ToTimestamp(toTimestamp string) ApiGetOrganizationEventsRequest {
 	r.toTimestamp = &toTimestamp
+	return r
+}
+
+// Token used to fetch the next page results The format is a timestamp with nano precision
+func (r ApiGetOrganizationEventsRequest) ContinueToken(continueToken string) ApiGetOrganizationEventsRequest {
+	r.continueToken = &continueToken
+	return r
+}
+
+// Token used to fetch the previous page results The format is a timestamp with nano precision
+func (r ApiGetOrganizationEventsRequest) StepBackToken(stepBackToken string) ApiGetOrganizationEventsRequest {
+	r.stepBackToken = &stepBackToken
 	return r
 }
 
@@ -140,6 +153,12 @@ func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrgan
 	}
 	if r.toTimestamp != nil {
 		localVarQueryParams.Add("to-timestamp", parameterToString(*r.toTimestamp, ""))
+	}
+	if r.continueToken != nil {
+		localVarQueryParams.Add("continue-token", parameterToString(*r.continueToken, ""))
+	}
+	if r.stepBackToken != nil {
+		localVarQueryParams.Add("step-back-token", parameterToString(*r.stepBackToken, ""))
 	}
 	if r.eventType != nil {
 		localVarQueryParams.Add("event_type", parameterToString(*r.eventType, ""))

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetOrganizationEvents
 
-> OrganizationEventResponseList GetOrganizationEvents(ctx, organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
+> OrganizationEventResponseList GetOrganizationEvents(ctx, organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
 
 Get all events inside the organization
 
@@ -25,15 +25,16 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     pageSize := float32(8.14) // float32 | The number of events to display in the current page (optional) (default to 10)
-    fromTimestamp := time.Now() // time.Time | Display events triggered since this timestamp.   A range of date can be specified by using `from-timestamp` with `to-timestamp`  (optional)
-    toTimestamp := time.Now() // time.Time | Display events triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp`  (optional)
+    fromTimestamp := "fromTimestamp_example" // string | Display events triggered since this timestamp.   A range of date can be specified by using `from-timestamp` with `to-timestamp` The format is a timestamp with nano precision  (optional)
+    toTimestamp := "toTimestamp_example" // string | Display events triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp` The format is a timestamp with nano precision  (optional)
+    continueToken := "continueToken_example" // string | Token used to fetch the next page results The format is a timestamp with nano precision  (optional)
+    stepBackToken := "stepBackToken_example" // string | Token used to fetch the previous page results The format is a timestamp with nano precision  (optional)
     eventType := openapiclient.OrganizationEventType("CREATE") // OrganizationEventType |  (optional)
     targetType := openapiclient.OrganizationEventTargetType("APPLICATION") // OrganizationEventTargetType |  (optional)
     targetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The target resource id to search.   Must be specified with the corresponding `target_type`  (optional)
@@ -43,7 +44,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationEventApi.GetOrganizationEvents(context.Background(), organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
+    resp, r, err := apiClient.OrganizationEventApi.GetOrganizationEvents(context.Background(), organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventApi.GetOrganizationEvents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,8 +71,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **pageSize** | **float32** | The number of events to display in the current page | [default to 10]
- **fromTimestamp** | **time.Time** | Display events triggered since this timestamp.   A range of date can be specified by using &#x60;from-timestamp&#x60; with &#x60;to-timestamp&#x60;  | 
- **toTimestamp** | **time.Time** | Display events triggered before this timestamp.   A range of date can be specified by using &#x60;to-timestamp&#x60; with &#x60;from-timestamp&#x60;  | 
+ **fromTimestamp** | **string** | Display events triggered since this timestamp.   A range of date can be specified by using &#x60;from-timestamp&#x60; with &#x60;to-timestamp&#x60; The format is a timestamp with nano precision  | 
+ **toTimestamp** | **string** | Display events triggered before this timestamp.   A range of date can be specified by using &#x60;to-timestamp&#x60; with &#x60;from-timestamp&#x60; The format is a timestamp with nano precision  | 
+ **continueToken** | **string** | Token used to fetch the next page results The format is a timestamp with nano precision  | 
+ **stepBackToken** | **string** | Token used to fetch the previous page results The format is a timestamp with nano precision  | 
  **eventType** | [**OrganizationEventType**](OrganizationEventType.md) |  | 
  **targetType** | [**OrganizationEventTargetType**](OrganizationEventTargetType.md) |  | 
  **targetId** | **string** | The target resource id to search.   Must be specified with the corresponding &#x60;target_type&#x60;  | 
