@@ -146,34 +146,34 @@ func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrgan
 	localVarFormParams := url.Values{}
 
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		localVarQueryParams.Add("pageSize", parameterToString(*r.pageSize, ""))
 	}
 	if r.fromTimestamp != nil {
-		localVarQueryParams.Add("from-timestamp", parameterToString(*r.fromTimestamp, ""))
+		localVarQueryParams.Add("fromTimestamp", parameterToString(*r.fromTimestamp, ""))
 	}
 	if r.toTimestamp != nil {
-		localVarQueryParams.Add("to-timestamp", parameterToString(*r.toTimestamp, ""))
+		localVarQueryParams.Add("toTimestamp", parameterToString(*r.toTimestamp, ""))
 	}
 	if r.continueToken != nil {
-		localVarQueryParams.Add("continue-token", parameterToString(*r.continueToken, ""))
+		localVarQueryParams.Add("continueToken", parameterToString(*r.continueToken, ""))
 	}
 	if r.stepBackToken != nil {
-		localVarQueryParams.Add("step-back-token", parameterToString(*r.stepBackToken, ""))
+		localVarQueryParams.Add("stepBackToken", parameterToString(*r.stepBackToken, ""))
 	}
 	if r.eventType != nil {
-		localVarQueryParams.Add("event_type", parameterToString(*r.eventType, ""))
+		localVarQueryParams.Add("eventType", parameterToString(*r.eventType, ""))
 	}
 	if r.targetType != nil {
-		localVarQueryParams.Add("target_type", parameterToString(*r.targetType, ""))
+		localVarQueryParams.Add("targetType", parameterToString(*r.targetType, ""))
 	}
 	if r.targetId != nil {
-		localVarQueryParams.Add("target_id", parameterToString(*r.targetId, ""))
+		localVarQueryParams.Add("targetId", parameterToString(*r.targetId, ""))
 	}
 	if r.subTargetType != nil {
-		localVarQueryParams.Add("sub_target_type", parameterToString(*r.subTargetType, ""))
+		localVarQueryParams.Add("subTargetType", parameterToString(*r.subTargetType, ""))
 	}
 	if r.triggeredBy != nil {
-		localVarQueryParams.Add("triggered_by", parameterToString(*r.triggeredBy, ""))
+		localVarQueryParams.Add("triggeredBy", parameterToString(*r.triggeredBy, ""))
 	}
 	if r.origin != nil {
 		localVarQueryParams.Add("origin", parameterToString(*r.origin, ""))

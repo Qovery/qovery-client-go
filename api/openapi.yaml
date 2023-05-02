@@ -2850,7 +2850,7 @@ paths:
       - description: The number of events to display in the current page
         explode: true
         in: query
-        name: page-size
+        name: pageSize
         required: false
         schema:
           default: 10
@@ -2862,7 +2862,7 @@ paths:
           The format is a timestamp with nano precision\n"
         explode: true
         in: query
-        name: from-timestamp
+        name: fromTimestamp
         required: false
         schema:
           nullable: true
@@ -2873,7 +2873,7 @@ paths:
           The format is a timestamp with nano precision\n"
         explode: true
         in: query
-        name: to-timestamp
+        name: toTimestamp
         required: false
         schema:
           nullable: true
@@ -2884,7 +2884,7 @@ paths:
           The format is a timestamp with nano precision
         explode: true
         in: query
-        name: continue-token
+        name: continueToken
         required: false
         schema:
           type: string
@@ -2894,21 +2894,21 @@ paths:
           The format is a timestamp with nano precision
         explode: true
         in: query
-        name: step-back-token
+        name: stepBackToken
         required: false
         schema:
           type: string
         style: form
       - explode: true
         in: query
-        name: event_type
+        name: eventType
         required: false
         schema:
           $ref: '#/components/schemas/OrganizationEventType'
         style: form
       - explode: true
         in: query
-        name: target_type
+        name: targetType
         required: false
         schema:
           $ref: '#/components/schemas/OrganizationEventTargetType'
@@ -2917,7 +2917,7 @@ paths:
           \ the corresponding `target_type`\n"
         explode: true
         in: query
-        name: target_id
+        name: targetId
         required: false
         schema:
           format: uuid
@@ -2926,7 +2926,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: sub_target_type
+        name: subTargetType
         required: false
         schema:
           $ref: '#/components/schemas/OrganizationEventSubTargetType'
@@ -2935,7 +2935,7 @@ paths:
           / automatic action)
         explode: true
         in: query
-        name: triggered_by
+        name: triggeredBy
         required: false
         schema:
           type: string
