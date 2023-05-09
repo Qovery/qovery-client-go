@@ -45,7 +45,7 @@
 
 * `RESTARTED` (value: `"RESTARTED"`)
 
-* `RESTART_ERROR` (value: `"RESTART_ERROR"`)
+* `RESTARTED_ERROR` (value: `"RESTARTED_ERROR"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
