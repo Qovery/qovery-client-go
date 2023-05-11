@@ -12585,39 +12585,42 @@ components:
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
       example:
-        network.ingress.send_timeout_seconds: 9
+        network.ingress.send_timeout_seconds: 2
         deployment.delay_start_time_sec: 0
-        network.ingress.proxy_send_timeout_seconds: 2
-        liveness_probe.initial_delay_seconds: 7
-        liveness_probe.failure_threshold: 9
-        network.ingress.keepalive_time_seconds: 2
-        liveness_probe.timeout_seconds: 4
+        network.ingress.proxy_send_timeout_seconds: 7
+        liveness_probe.initial_delay_seconds: 4
+        liveness_probe.failure_threshold: 6
+        deployment.update_strategy.type: RollingUpdate
+        deployment.update_strategy.rolling_update.max_surge_percent: 5
+        network.ingress.keepalive_time_seconds: 9
+        liveness_probe.timeout_seconds: 9
         deployment.termination_grace_period_seconds: 6
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
-        liveness_probe.period_seconds: 1
+        liveness_probe.period_seconds: 5
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
-        readiness_probe.initial_delay_seconds: 7
-        readiness_probe.timeout_seconds: 1
+        readiness_probe.initial_delay_seconds: 1
+        readiness_probe.timeout_seconds: 6
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
-        network.ingress.proxy_body_size_mb: 5
+        network.ingress.proxy_body_size_mb: 2
         liveness_probe.type: TCP
-        liveness_probe.success_threshold: 5
+        liveness_probe.success_threshold: 9
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-        hpa.cpu.average_utilization_percent: 9
-        network.ingress.keepalive_timeout_seconds: 7
+        hpa.cpu.average_utilization_percent: 8
+        network.ingress.keepalive_timeout_seconds: 3
         readiness_probe.type: TCP
-        network.ingress.proxy_connect_timeout_seconds: 3
-        readiness_probe.failure_threshold: 6
-        network.ingress.proxy_buffer_size_kb: 5
-        network.ingress.proxy_read_timeout_seconds: 4
-        build.timeout_max_sec: 1
+        network.ingress.proxy_connect_timeout_seconds: 4
+        readiness_probe.failure_threshold: 1
+        network.ingress.proxy_buffer_size_kb: 7
+        network.ingress.proxy_read_timeout_seconds: 1
+        build.timeout_max_sec: 5
+        deployment.update_strategy.rolling_update.max_unavailable_percent: 1
         readiness_probe.http_get.path: /
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
-        readiness_probe.success_threshold: 1
+        readiness_probe.success_threshold: 7
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
         readiness_probe.period_seconds: 1
         liveness_probe.http_get.path: /
@@ -12636,6 +12639,25 @@ components:
           default: 60
           description: define how long in seconds an application is supposed to be
             stopped gracefully
+          type: integer
+        deployment.update_strategy.type:
+          default: RollingUpdate
+          description: "* `RollingUpdate` gracefully rollout new versions, and automatically\
+            \ rollback if the new version fails to start\n* `Recreate` stop all current\
+            \ versions and create new ones once all old ones have been shutdown\n"
+          enum:
+          - RollingUpdate
+          - Recreate
+          type: string
+        deployment.update_strategy.rolling_update.max_unavailable_percent:
+          default: 25
+          description: Define the percentage of a maximum number of pods that can
+            be unavailable during the update process
+          type: integer
+        deployment.update_strategy.rolling_update.max_surge_percent:
+          default: 25
+          description: Define the percentage of the maximum number of pods that can
+            be created over the desired number of pods
           type: integer
         build.timeout_max_sec:
           default: 1800
@@ -12717,9 +12739,9 @@ components:
         readiness_probe.type:
           default: TCP
           description: |
-            `NONE` disable readiness probe
-            `TCP` enable TCP readiness probe
-            `HTTP` enable HTTP readiness probe
+            * `NONE` disable readiness probe
+            * `TCP` enable TCP readiness probe
+            * `HTTP` enable HTTP readiness probe
           enum:
           - NONE
           - TCP
@@ -12755,9 +12777,9 @@ components:
         liveness_probe.type:
           default: TCP
           description: |
-            `NONE` disable liveness probe
-            `TCP` enable TCP liveness probe
-            `HTTP` enable HTTP liveness probe
+            * `NONE` disable liveness probe
+            * `TCP` enable TCP liveness probe
+            * `HTTP` enable HTTP liveness probe
           enum:
           - NONE
           - TCP
@@ -14077,39 +14099,42 @@ components:
       type: string
     ContainerAdvancedSettings:
       example:
-        network.ingress.send_timeout_seconds: 2
-        network.ingress.proxy_send_timeout_seconds: 9
-        liveness_probe.initial_delay_seconds: 1
-        liveness_probe.failure_threshold: 4
-        network.ingress.keepalive_time_seconds: 5
-        liveness_probe.timeout_seconds: 7
+        network.ingress.send_timeout_seconds: 9
+        network.ingress.proxy_send_timeout_seconds: 2
+        liveness_probe.initial_delay_seconds: 7
+        liveness_probe.failure_threshold: 9
+        deployment.update_strategy.type: RollingUpdate
+        deployment.update_strategy.rolling_update.max_surge_percent: 1
+        network.ingress.keepalive_time_seconds: 2
+        liveness_probe.timeout_seconds: 4
         deployment.termination_grace_period_seconds: 0
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
-        liveness_probe.period_seconds: 6
+        liveness_probe.period_seconds: 1
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
-        readiness_probe.initial_delay_seconds: 2
-        readiness_probe.timeout_seconds: 7
+        readiness_probe.initial_delay_seconds: 7
+        readiness_probe.timeout_seconds: 1
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
-        network.ingress.proxy_body_size_mb: 6
+        network.ingress.proxy_body_size_mb: 5
         liveness_probe.type: TCP
-        liveness_probe.success_threshold: 1
+        liveness_probe.success_threshold: 5
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-        hpa.cpu.average_utilization_percent: 5
-        network.ingress.keepalive_timeout_seconds: 5
+        hpa.cpu.average_utilization_percent: 9
+        network.ingress.keepalive_timeout_seconds: 7
         readiness_probe.type: TCP
-        network.ingress.proxy_connect_timeout_seconds: 7
-        readiness_probe.failure_threshold: 1
-        network.ingress.proxy_buffer_size_kb: 1
-        network.ingress.proxy_read_timeout_seconds: 3
+        network.ingress.proxy_connect_timeout_seconds: 3
+        readiness_probe.failure_threshold: 6
+        network.ingress.proxy_buffer_size_kb: 5
+        network.ingress.proxy_read_timeout_seconds: 4
+        deployment.update_strategy.rolling_update.max_unavailable_percent: 6
         readiness_probe.http_get.path: /
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
         readiness_probe.success_threshold: 1
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-        readiness_probe.period_seconds: 4
+        readiness_probe.period_seconds: 1
         liveness_probe.http_get.path: /
       properties:
         deployment.custom_domain_check_enabled:
@@ -14120,6 +14145,25 @@ components:
           default: 60
           description: define how long in seconds an application is supposed to be
             stopped gracefully
+          type: integer
+        deployment.update_strategy.type:
+          default: RollingUpdate
+          description: "* `RollingUpdate` gracefully rollout new versions, and automatically\
+            \ rollback if the new version fails to start\n* `Recreate` stop all current\
+            \ versions and create new ones once all old ones have been shutdown\n"
+          enum:
+          - RollingUpdate
+          - Recreate
+          type: string
+        deployment.update_strategy.rolling_update.max_unavailable_percent:
+          default: 25
+          description: Define the percentage of a maximum number of pods that can
+            be unavailable during the update process
+          type: integer
+        deployment.update_strategy.rolling_update.max_surge_percent:
+          default: 25
+          description: Define the percentage of the maximum number of pods that can
+            be created over the desired number of pods
           type: integer
         network.ingress.proxy_body_size_mb:
           default: 100
@@ -14198,9 +14242,9 @@ components:
         readiness_probe.type:
           default: TCP
           description: |
-            `NONE` disable readiness probe
-            `TCP` enable TCP readiness probe
-            `HTTP` enable HTTP readiness probe
+            * `NONE` disable readiness probe
+            * `TCP` enable TCP readiness probe
+            * `HTTP` enable HTTP readiness probe
           enum:
           - NONE
           - TCP
@@ -14236,9 +14280,9 @@ components:
         liveness_probe.type:
           default: TCP
           description: |
-            `NONE` disable liveness probe
-            `TCP` enable TCP liveness probe
-            `HTTP` enable HTTP liveness probe
+            * `NONE` disable liveness probe
+            * `TCP` enable TCP liveness probe
+            * `HTTP` enable HTTP liveness probe
           enum:
           - NONE
           - TCP

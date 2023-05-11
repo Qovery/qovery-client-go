@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **DeploymentDelayStartTimeSec** | Pointer to **int32** | please use &#x60;readiness_probe.initial_delay_seconds&#x60; and &#x60;liveness_probe.initial_delay_seconds&#x60; instead | [optional] [default to 30]
 **DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying an application | [optional] [default to true]
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
+**DeploymentUpdateStrategyType** | Pointer to **string** | * &#x60;RollingUpdate&#x60; gracefully rollout new versions, and automatically rollback if the new version fails to start * &#x60;Recreate&#x60; stop all current versions and create new ones once all old ones have been shutdown  | [optional] [default to "RollingUpdate"]
+**DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent** | Pointer to **int32** | Define the percentage of a maximum number of pods that can be unavailable during the update process | [optional] [default to 25]
+**DeploymentUpdateStrategyRollingUpdateMaxSurgePercent** | Pointer to **int32** | Define the percentage of the maximum number of pods that can be created over the desired number of pods | [optional] [default to 25]
 **BuildTimeoutMaxSec** | Pointer to **int32** |  | [optional] [default to 1800]
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] [default to 100]
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] [default to false]
@@ -24,14 +27,14 @@ Name | Type | Description | Notes
 **NetworkIngressDenylistSourceRange** | Pointer to **string** | list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1  | [optional] [default to ""]
 **NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command.  | [optional] [default to ""]
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] [default to false]
-**ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
+**ReadinessProbeType** | Pointer to **string** | * &#x60;NONE&#x60; disable readiness probe * &#x60;TCP&#x60; enable TCP readiness probe * &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
 **ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
 **ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
 **ReadinessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] [default to 10]
 **ReadinessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] [default to 1]
 **ReadinessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] [default to 1]
 **ReadinessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] [default to 3]
-**LivenessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable liveness probe &#x60;TCP&#x60; enable TCP liveness probe &#x60;HTTP&#x60; enable HTTP liveness probe  | [optional] [default to "TCP"]
+**LivenessProbeType** | Pointer to **string** | * &#x60;NONE&#x60; disable liveness probe * &#x60;TCP&#x60; enable TCP liveness probe * &#x60;HTTP&#x60; enable HTTP liveness probe  | [optional] [default to "TCP"]
 **LivenessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
 **LivenessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
 **LivenessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] [default to 10]
@@ -134,6 +137,81 @@ SetDeploymentTerminationGracePeriodSeconds sets DeploymentTerminationGracePeriod
 `func (o *ApplicationAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool`
 
 HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
+
+### GetDeploymentUpdateStrategyType
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyType() string`
+
+GetDeploymentUpdateStrategyType returns the DeploymentUpdateStrategyType field if non-nil, zero value otherwise.
+
+### GetDeploymentUpdateStrategyTypeOk
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyTypeOk() (*string, bool)`
+
+GetDeploymentUpdateStrategyTypeOk returns a tuple with the DeploymentUpdateStrategyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentUpdateStrategyType
+
+`func (o *ApplicationAdvancedSettings) SetDeploymentUpdateStrategyType(v string)`
+
+SetDeploymentUpdateStrategyType sets DeploymentUpdateStrategyType field to given value.
+
+### HasDeploymentUpdateStrategyType
+
+`func (o *ApplicationAdvancedSettings) HasDeploymentUpdateStrategyType() bool`
+
+HasDeploymentUpdateStrategyType returns a boolean if a field has been set.
+
+### GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent() int32`
+
+GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent returns the DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field if non-nil, zero value otherwise.
+
+### GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercentOk
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercentOk() (*int32, bool)`
+
+GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercentOk returns a tuple with the DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+
+`func (o *ApplicationAdvancedSettings) SetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent(v int32)`
+
+SetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent sets DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field to given value.
+
+### HasDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+
+`func (o *ApplicationAdvancedSettings) HasDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent() bool`
+
+HasDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent returns a boolean if a field has been set.
+
+### GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent() int32`
+
+GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent returns the DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field if non-nil, zero value otherwise.
+
+### GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercentOk
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercentOk() (*int32, bool)`
+
+GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercentOk returns a tuple with the DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent
+
+`func (o *ApplicationAdvancedSettings) SetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent(v int32)`
+
+SetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent sets DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field to given value.
+
+### HasDeploymentUpdateStrategyRollingUpdateMaxSurgePercent
+
+`func (o *ApplicationAdvancedSettings) HasDeploymentUpdateStrategyRollingUpdateMaxSurgePercent() bool`
+
+HasDeploymentUpdateStrategyRollingUpdateMaxSurgePercent returns a boolean if a field has been set.
 
 ### GetBuildTimeoutMaxSec
 

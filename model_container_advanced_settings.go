@@ -20,12 +20,18 @@ type ContainerAdvancedSettings struct {
 	// disable custom domain check when deploying an application
 	DeploymentCustomDomainCheckEnabled *bool `json:"deployment.custom_domain_check_enabled,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
-	DeploymentTerminationGracePeriodSeconds *int32  `json:"deployment.termination_grace_period_seconds,omitempty"`
-	NetworkIngressProxyBodySizeMb           *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
-	NetworkIngressEnableCors                *bool   `json:"network.ingress.enable_cors,omitempty"`
-	NetworkIngressCorsAllowOrigin           *string `json:"network.ingress.cors_allow_origin,omitempty"`
-	NetworkIngressCorsAllowMethods          *string `json:"network.ingress.cors_allow_methods,omitempty"`
-	NetworkIngressCorsAllowHeaders          *string `json:"network.ingress.cors_allow_headers,omitempty"`
+	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
+	// * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
+	DeploymentUpdateStrategyType *string `json:"deployment.update_strategy.type,omitempty"`
+	// Define the percentage of a maximum number of pods that can be unavailable during the update process
+	DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent *int32 `json:"deployment.update_strategy.rolling_update.max_unavailable_percent,omitempty"`
+	// Define the percentage of the maximum number of pods that can be created over the desired number of pods
+	DeploymentUpdateStrategyRollingUpdateMaxSurgePercent *int32  `json:"deployment.update_strategy.rolling_update.max_surge_percent,omitempty"`
+	NetworkIngressProxyBodySizeMb                        *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
+	NetworkIngressEnableCors                             *bool   `json:"network.ingress.enable_cors,omitempty"`
+	NetworkIngressCorsAllowOrigin                        *string `json:"network.ingress.cors_allow_origin,omitempty"`
+	NetworkIngressCorsAllowMethods                       *string `json:"network.ingress.cors_allow_methods,omitempty"`
+	NetworkIngressCorsAllowHeaders                       *string `json:"network.ingress.cors_allow_headers,omitempty"`
 	// header buffer size used while reading response header from upstream
 	NetworkIngressProxyBufferSizeKb *int32 `json:"network.ingress.proxy_buffer_size_kb,omitempty"`
 	// Limits the maximum time (in seconds) during which requests can be processed through one keepalive connection
@@ -48,7 +54,7 @@ type ContainerAdvancedSettings struct {
 	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
 	// Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target
 	NetworkIngressEnableStickySession *bool `json:"network.ingress.enable_sticky_session,omitempty"`
-	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
+	// * `NONE` disable readiness probe * `TCP` enable TCP readiness probe * `HTTP` enable HTTP readiness probe
 	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
 	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
 	ReadinessProbeHttpGetPath *string `json:"readiness_probe.http_get.path,omitempty"`
@@ -62,7 +68,7 @@ type ContainerAdvancedSettings struct {
 	ReadinessProbeSuccessThreshold *int32 `json:"readiness_probe.success_threshold,omitempty"`
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
 	ReadinessProbeFailureThreshold *int32 `json:"readiness_probe.failure_threshold,omitempty"`
-	// `NONE` disable liveness probe `TCP` enable TCP liveness probe `HTTP` enable HTTP liveness probe
+	// * `NONE` disable liveness probe * `TCP` enable TCP liveness probe * `HTTP` enable HTTP liveness probe
 	LivenessProbeType *string `json:"liveness_probe.type,omitempty"`
 	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
 	LivenessProbeHttpGetPath *string `json:"liveness_probe.http_get.path,omitempty"`
@@ -92,6 +98,12 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
 	var deploymentTerminationGracePeriodSeconds int32 = 60
 	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
+	var deploymentUpdateStrategyType string = "RollingUpdate"
+	this.DeploymentUpdateStrategyType = &deploymentUpdateStrategyType
+	var deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent int32 = 25
+	this.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent = &deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+	var deploymentUpdateStrategyRollingUpdateMaxSurgePercent int32 = 25
+	this.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent = &deploymentUpdateStrategyRollingUpdateMaxSurgePercent
 	var networkIngressProxyBodySizeMb int32 = 100
 	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
 	var networkIngressEnableCors bool = false
@@ -168,6 +180,12 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
 	var deploymentTerminationGracePeriodSeconds int32 = 60
 	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
+	var deploymentUpdateStrategyType string = "RollingUpdate"
+	this.DeploymentUpdateStrategyType = &deploymentUpdateStrategyType
+	var deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent int32 = 25
+	this.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent = &deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+	var deploymentUpdateStrategyRollingUpdateMaxSurgePercent int32 = 25
+	this.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent = &deploymentUpdateStrategyRollingUpdateMaxSurgePercent
 	var networkIngressProxyBodySizeMb int32 = 100
 	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
 	var networkIngressEnableCors bool = false
@@ -297,6 +315,102 @@ func (o *ContainerAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds()
 // SetDeploymentTerminationGracePeriodSeconds gets a reference to the given int32 and assigns it to the DeploymentTerminationGracePeriodSeconds field.
 func (o *ContainerAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32) {
 	o.DeploymentTerminationGracePeriodSeconds = &v
+}
+
+// GetDeploymentUpdateStrategyType returns the DeploymentUpdateStrategyType field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetDeploymentUpdateStrategyType() string {
+	if o == nil || o.DeploymentUpdateStrategyType == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentUpdateStrategyType
+}
+
+// GetDeploymentUpdateStrategyTypeOk returns a tuple with the DeploymentUpdateStrategyType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetDeploymentUpdateStrategyTypeOk() (*string, bool) {
+	if o == nil || o.DeploymentUpdateStrategyType == nil {
+		return nil, false
+	}
+	return o.DeploymentUpdateStrategyType, true
+}
+
+// HasDeploymentUpdateStrategyType returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasDeploymentUpdateStrategyType() bool {
+	if o != nil && o.DeploymentUpdateStrategyType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentUpdateStrategyType gets a reference to the given string and assigns it to the DeploymentUpdateStrategyType field.
+func (o *ContainerAdvancedSettings) SetDeploymentUpdateStrategyType(v string) {
+	o.DeploymentUpdateStrategyType = &v
+}
+
+// GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent returns the DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent() int32 {
+	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+}
+
+// GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercentOk returns a tuple with the DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercentOk() (*int32, bool) {
+	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent == nil {
+		return nil, false
+	}
+	return o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent, true
+}
+
+// HasDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent() bool {
+	if o != nil && o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent gets a reference to the given int32 and assigns it to the DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field.
+func (o *ContainerAdvancedSettings) SetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent(v int32) {
+	o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent = &v
+}
+
+// GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent returns the DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent() int32 {
+	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent
+}
+
+// GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercentOk returns a tuple with the DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercentOk() (*int32, bool) {
+	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent == nil {
+		return nil, false
+	}
+	return o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent, true
+}
+
+// HasDeploymentUpdateStrategyRollingUpdateMaxSurgePercent returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasDeploymentUpdateStrategyRollingUpdateMaxSurgePercent() bool {
+	if o != nil && o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent gets a reference to the given int32 and assigns it to the DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field.
+func (o *ContainerAdvancedSettings) SetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent(v int32) {
+	o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent = &v
 }
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
@@ -1330,6 +1444,15 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeploymentTerminationGracePeriodSeconds != nil {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
+	}
+	if o.DeploymentUpdateStrategyType != nil {
+		toSerialize["deployment.update_strategy.type"] = o.DeploymentUpdateStrategyType
+	}
+	if o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent != nil {
+		toSerialize["deployment.update_strategy.rolling_update.max_unavailable_percent"] = o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+	}
+	if o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent != nil {
+		toSerialize["deployment.update_strategy.rolling_update.max_surge_percent"] = o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent
 	}
 	if o.NetworkIngressProxyBodySizeMb != nil {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
