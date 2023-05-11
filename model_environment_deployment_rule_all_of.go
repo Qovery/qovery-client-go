@@ -18,14 +18,15 @@ import (
 
 // EnvironmentDeploymentRuleAllOf struct for EnvironmentDeploymentRuleAllOf
 type EnvironmentDeploymentRuleAllOf struct {
-	AutoDeploy  *bool         `json:"auto_deploy,omitempty"`
-	AutoStop    *bool         `json:"auto_stop,omitempty"`
-	AutoDelete  *bool         `json:"auto_delete,omitempty"`
-	AutoPreview *bool         `json:"auto_preview,omitempty"`
-	Timezone    string        `json:"timezone"`
-	StartTime   time.Time     `json:"start_time"`
-	StopTime    time.Time     `json:"stop_time"`
-	Weekdays    []WeekdayEnum `json:"weekdays"`
+	AutoDeploy      *bool         `json:"auto_deploy,omitempty"`
+	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
+	AutoStop        *bool         `json:"auto_stop,omitempty"`
+	AutoDelete      *bool         `json:"auto_delete,omitempty"`
+	AutoPreview     *bool         `json:"auto_preview,omitempty"`
+	Timezone        string        `json:"timezone"`
+	StartTime       time.Time     `json:"start_time"`
+	StopTime        time.Time     `json:"stop_time"`
+	Weekdays        []WeekdayEnum `json:"weekdays"`
 }
 
 // NewEnvironmentDeploymentRuleAllOf instantiates a new EnvironmentDeploymentRuleAllOf object
@@ -36,6 +37,8 @@ func NewEnvironmentDeploymentRuleAllOf(timezone string, startTime time.Time, sto
 	this := EnvironmentDeploymentRuleAllOf{}
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
+	var onDemandPreview bool = false
+	this.OnDemandPreview = &onDemandPreview
 	var autoStop bool = false
 	this.AutoStop = &autoStop
 	var autoDelete bool = false
@@ -56,6 +59,8 @@ func NewEnvironmentDeploymentRuleAllOfWithDefaults() *EnvironmentDeploymentRuleA
 	this := EnvironmentDeploymentRuleAllOf{}
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
+	var onDemandPreview bool = false
+	this.OnDemandPreview = &onDemandPreview
 	var autoStop bool = false
 	this.AutoStop = &autoStop
 	var autoDelete bool = false
@@ -95,6 +100,38 @@ func (o *EnvironmentDeploymentRuleAllOf) HasAutoDeploy() bool {
 // SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
 func (o *EnvironmentDeploymentRuleAllOf) SetAutoDeploy(v bool) {
 	o.AutoDeploy = &v
+}
+
+// GetOnDemandPreview returns the OnDemandPreview field value if set, zero value otherwise.
+func (o *EnvironmentDeploymentRuleAllOf) GetOnDemandPreview() bool {
+	if o == nil || o.OnDemandPreview == nil {
+		var ret bool
+		return ret
+	}
+	return *o.OnDemandPreview
+}
+
+// GetOnDemandPreviewOk returns a tuple with the OnDemandPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleAllOf) GetOnDemandPreviewOk() (*bool, bool) {
+	if o == nil || o.OnDemandPreview == nil {
+		return nil, false
+	}
+	return o.OnDemandPreview, true
+}
+
+// HasOnDemandPreview returns a boolean if a field has been set.
+func (o *EnvironmentDeploymentRuleAllOf) HasOnDemandPreview() bool {
+	if o != nil && o.OnDemandPreview != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOnDemandPreview gets a reference to the given bool and assigns it to the OnDemandPreview field.
+func (o *EnvironmentDeploymentRuleAllOf) SetOnDemandPreview(v bool) {
+	o.OnDemandPreview = &v
 }
 
 // GetAutoStop returns the AutoStop field value if set, zero value otherwise.
@@ -293,6 +330,9 @@ func (o EnvironmentDeploymentRuleAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AutoDeploy != nil {
 		toSerialize["auto_deploy"] = o.AutoDeploy
+	}
+	if o.OnDemandPreview != nil {
+		toSerialize["on_demand_preview"] = o.OnDemandPreview
 	}
 	if o.AutoStop != nil {
 		toSerialize["auto_stop"] = o.AutoStop

@@ -18,13 +18,15 @@ import (
 
 // EnvironmentDeploymentRuleEditRequest struct for EnvironmentDeploymentRuleEditRequest
 type EnvironmentDeploymentRuleEditRequest struct {
-	AutoDeploy *bool         `json:"auto_deploy,omitempty"`
-	AutoDelete *bool         `json:"auto_delete,omitempty"`
-	AutoStop   *bool         `json:"auto_stop,omitempty"`
-	Timezone   string        `json:"timezone"`
-	StartTime  time.Time     `json:"start_time"`
-	StopTime   time.Time     `json:"stop_time"`
-	Weekdays   []WeekdayEnum `json:"weekdays"`
+	AutoDeploy      *bool         `json:"auto_deploy,omitempty"`
+	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
+	AutoPreview     *bool         `json:"auto_preview,omitempty"`
+	AutoDelete      *bool         `json:"auto_delete,omitempty"`
+	AutoStop        *bool         `json:"auto_stop,omitempty"`
+	Timezone        string        `json:"timezone"`
+	StartTime       time.Time     `json:"start_time"`
+	StopTime        time.Time     `json:"stop_time"`
+	Weekdays        []WeekdayEnum `json:"weekdays"`
 }
 
 // NewEnvironmentDeploymentRuleEditRequest instantiates a new EnvironmentDeploymentRuleEditRequest object
@@ -35,6 +37,10 @@ func NewEnvironmentDeploymentRuleEditRequest(timezone string, startTime time.Tim
 	this := EnvironmentDeploymentRuleEditRequest{}
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
+	var onDemandPreview bool = false
+	this.OnDemandPreview = &onDemandPreview
+	var autoPreview bool = false
+	this.AutoPreview = &autoPreview
 	var autoDelete bool = false
 	this.AutoDelete = &autoDelete
 	var autoStop bool = false
@@ -53,6 +59,10 @@ func NewEnvironmentDeploymentRuleEditRequestWithDefaults() *EnvironmentDeploymen
 	this := EnvironmentDeploymentRuleEditRequest{}
 	var autoDeploy bool = true
 	this.AutoDeploy = &autoDeploy
+	var onDemandPreview bool = false
+	this.OnDemandPreview = &onDemandPreview
+	var autoPreview bool = false
+	this.AutoPreview = &autoPreview
 	var autoDelete bool = false
 	this.AutoDelete = &autoDelete
 	var autoStop bool = false
@@ -90,6 +100,70 @@ func (o *EnvironmentDeploymentRuleEditRequest) HasAutoDeploy() bool {
 // SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
 func (o *EnvironmentDeploymentRuleEditRequest) SetAutoDeploy(v bool) {
 	o.AutoDeploy = &v
+}
+
+// GetOnDemandPreview returns the OnDemandPreview field value if set, zero value otherwise.
+func (o *EnvironmentDeploymentRuleEditRequest) GetOnDemandPreview() bool {
+	if o == nil || o.OnDemandPreview == nil {
+		var ret bool
+		return ret
+	}
+	return *o.OnDemandPreview
+}
+
+// GetOnDemandPreviewOk returns a tuple with the OnDemandPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleEditRequest) GetOnDemandPreviewOk() (*bool, bool) {
+	if o == nil || o.OnDemandPreview == nil {
+		return nil, false
+	}
+	return o.OnDemandPreview, true
+}
+
+// HasOnDemandPreview returns a boolean if a field has been set.
+func (o *EnvironmentDeploymentRuleEditRequest) HasOnDemandPreview() bool {
+	if o != nil && o.OnDemandPreview != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOnDemandPreview gets a reference to the given bool and assigns it to the OnDemandPreview field.
+func (o *EnvironmentDeploymentRuleEditRequest) SetOnDemandPreview(v bool) {
+	o.OnDemandPreview = &v
+}
+
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreview() bool {
+	if o == nil || o.AutoPreview == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoPreview
+}
+
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil || o.AutoPreview == nil {
+		return nil, false
+	}
+	return o.AutoPreview, true
+}
+
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *EnvironmentDeploymentRuleEditRequest) HasAutoPreview() bool {
+	if o != nil && o.AutoPreview != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+func (o *EnvironmentDeploymentRuleEditRequest) SetAutoPreview(v bool) {
+	o.AutoPreview = &v
 }
 
 // GetAutoDelete returns the AutoDelete field value if set, zero value otherwise.
@@ -256,6 +330,12 @@ func (o EnvironmentDeploymentRuleEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AutoDeploy != nil {
 		toSerialize["auto_deploy"] = o.AutoDeploy
+	}
+	if o.OnDemandPreview != nil {
+		toSerialize["on_demand_preview"] = o.OnDemandPreview
+	}
+	if o.AutoPreview != nil {
+		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	if o.AutoDelete != nil {
 		toSerialize["auto_delete"] = o.AutoDelete

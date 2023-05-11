@@ -15454,11 +15454,19 @@ components:
         weekdays:
         - MONDAY
         - MONDAY
+        on_demand_preview: false
         auto_stop: false
         auto_delete: false
+        auto_preview: false
       properties:
         auto_deploy:
           default: true
+          type: boolean
+        on_demand_preview:
+          default: false
+          type: boolean
+        auto_preview:
+          default: false
           type: boolean
         auto_delete:
           default: false
@@ -19783,6 +19791,9 @@ components:
       properties:
         auto_deploy:
           default: true
+          type: boolean
+        on_demand_preview:
+          default: false
           type: boolean
         auto_stop:
           default: false

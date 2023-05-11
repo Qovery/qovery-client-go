@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
+**OnDemandPreview** | Pointer to **bool** |  | [optional] [default to false]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
 **AutoDelete** | Pointer to **bool** |  | [optional] [default to false]
 **AutoPreview** | Pointer to **bool** |  | [optional] [default to false]
@@ -124,6 +125,31 @@ SetAutoDeploy sets AutoDeploy field to given value.
 `func (o *EnvironmentDeploymentRule) HasAutoDeploy() bool`
 
 HasAutoDeploy returns a boolean if a field has been set.
+
+### GetOnDemandPreview
+
+`func (o *EnvironmentDeploymentRule) GetOnDemandPreview() bool`
+
+GetOnDemandPreview returns the OnDemandPreview field if non-nil, zero value otherwise.
+
+### GetOnDemandPreviewOk
+
+`func (o *EnvironmentDeploymentRule) GetOnDemandPreviewOk() (*bool, bool)`
+
+GetOnDemandPreviewOk returns a tuple with the OnDemandPreview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnDemandPreview
+
+`func (o *EnvironmentDeploymentRule) SetOnDemandPreview(v bool)`
+
+SetOnDemandPreview sets OnDemandPreview field to given value.
+
+### HasOnDemandPreview
+
+`func (o *EnvironmentDeploymentRule) HasOnDemandPreview() bool`
+
+HasOnDemandPreview returns a boolean if a field has been set.
 
 ### GetAutoStop
 
