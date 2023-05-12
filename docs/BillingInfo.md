@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Zip** | Pointer to **NullableString** |  | [optional] 
 **State** | Pointer to **NullableString** | only for US | [optional] 
 **CountryCode** | Pointer to **NullableString** | ISO code of the country | [optional] 
-**Company** | Pointer to **string** | name of the company to bill | [optional] 
+**Company** | Pointer to **NullableString** | name of the company to bill | [optional] 
 **VatNumber** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -339,6 +339,16 @@ SetCompany sets Company field to given value.
 
 HasCompany returns a boolean if a field has been set.
 
+### SetCompanyNil
+
+`func (o *BillingInfo) SetCompanyNil(b bool)`
+
+ SetCompanyNil sets the value for Company to be an explicit nil
+
+### UnsetCompany
+`func (o *BillingInfo) UnsetCompany()`
+
+UnsetCompany ensures that no value is present for Company, not even an explicit nil
 ### GetVatNumber
 
 `func (o *BillingInfo) GetVatNumber() string`

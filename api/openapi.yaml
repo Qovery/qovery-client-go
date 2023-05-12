@@ -13199,6 +13199,7 @@ components:
           type: string
         company:
           description: name of the company to bill
+          nullable: true
           type: string
         vat_number:
           nullable: true

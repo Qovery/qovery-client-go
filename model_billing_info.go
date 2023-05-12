@@ -29,7 +29,7 @@ type BillingInfo struct {
 	// ISO code of the country
 	CountryCode NullableString `json:"country_code,omitempty"`
 	// name of the company to bill
-	Company   *string        `json:"company,omitempty"`
+	Company   NullableString `json:"company,omitempty"`
 	VatNumber NullableString `json:"vat_number,omitempty"`
 }
 
@@ -394,36 +394,47 @@ func (o *BillingInfo) UnsetCountryCode() {
 	o.CountryCode.Unset()
 }
 
-// GetCompany returns the Company field value if set, zero value otherwise.
+// GetCompany returns the Company field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetCompany() string {
-	if o == nil || o.Company == nil {
+	if o == nil || o.Company.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.Company
+	return *o.Company.Get()
 }
 
 // GetCompanyOk returns a tuple with the Company field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BillingInfo) GetCompanyOk() (*string, bool) {
-	if o == nil || o.Company == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Company, true
+	return o.Company.Get(), o.Company.IsSet()
 }
 
 // HasCompany returns a boolean if a field has been set.
 func (o *BillingInfo) HasCompany() bool {
-	if o != nil && o.Company != nil {
+	if o != nil && o.Company.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCompany gets a reference to the given string and assigns it to the Company field.
+// SetCompany gets a reference to the given NullableString and assigns it to the Company field.
 func (o *BillingInfo) SetCompany(v string) {
-	o.Company = &v
+	o.Company.Set(&v)
+}
+
+// SetCompanyNil sets the value for Company to be an explicit nil
+func (o *BillingInfo) SetCompanyNil() {
+	o.Company.Set(nil)
+}
+
+// UnsetCompany ensures that no value is present for Company, not even an explicit nil
+func (o *BillingInfo) UnsetCompany() {
+	o.Company.Unset()
 }
 
 // GetVatNumber returns the VatNumber field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -495,8 +506,8 @@ func (o BillingInfo) MarshalJSON() ([]byte, error) {
 	if o.CountryCode.IsSet() {
 		toSerialize["country_code"] = o.CountryCode.Get()
 	}
-	if o.Company != nil {
-		toSerialize["company"] = o.Company
+	if o.Company.IsSet() {
+		toSerialize["company"] = o.Company.Get()
 	}
 	if o.VatNumber.IsSet() {
 		toSerialize["vat_number"] = o.VatNumber.Get()
