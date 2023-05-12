@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**Email** | Pointer to **string** | email used for billing, and to receive all invoices by email | [optional] 
-**Address** | Pointer to **string** |  | [optional] 
-**City** | Pointer to **string** |  | [optional] 
-**Zip** | Pointer to **string** |  | [optional] 
-**State** | Pointer to **string** | only for US | [optional] 
-**CountryCode** | Pointer to **string** | ISO code of the country | [optional] 
+**FirstName** | Pointer to **NullableString** |  | [optional] 
+**LastName** | Pointer to **NullableString** |  | [optional] 
+**Email** | Pointer to **NullableString** | email used for billing, and to receive all invoices by email | [optional] 
+**Address** | Pointer to **NullableString** |  | [optional] 
+**City** | Pointer to **NullableString** |  | [optional] 
+**Zip** | Pointer to **NullableString** |  | [optional] 
+**State** | Pointer to **NullableString** | only for US | [optional] 
+**CountryCode** | Pointer to **NullableString** | ISO code of the country | [optional] 
 **Company** | Pointer to **string** | name of the company to bill | [optional] 
-**VatNumber** | Pointer to **string** |  | [optional] 
+**VatNumber** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -59,6 +59,16 @@ SetFirstName sets FirstName field to given value.
 
 HasFirstName returns a boolean if a field has been set.
 
+### SetFirstNameNil
+
+`func (o *BillingInfo) SetFirstNameNil(b bool)`
+
+ SetFirstNameNil sets the value for FirstName to be an explicit nil
+
+### UnsetFirstName
+`func (o *BillingInfo) UnsetFirstName()`
+
+UnsetFirstName ensures that no value is present for FirstName, not even an explicit nil
 ### GetLastName
 
 `func (o *BillingInfo) GetLastName() string`
@@ -84,6 +94,16 @@ SetLastName sets LastName field to given value.
 
 HasLastName returns a boolean if a field has been set.
 
+### SetLastNameNil
+
+`func (o *BillingInfo) SetLastNameNil(b bool)`
+
+ SetLastNameNil sets the value for LastName to be an explicit nil
+
+### UnsetLastName
+`func (o *BillingInfo) UnsetLastName()`
+
+UnsetLastName ensures that no value is present for LastName, not even an explicit nil
 ### GetEmail
 
 `func (o *BillingInfo) GetEmail() string`
@@ -109,6 +129,16 @@ SetEmail sets Email field to given value.
 
 HasEmail returns a boolean if a field has been set.
 
+### SetEmailNil
+
+`func (o *BillingInfo) SetEmailNil(b bool)`
+
+ SetEmailNil sets the value for Email to be an explicit nil
+
+### UnsetEmail
+`func (o *BillingInfo) UnsetEmail()`
+
+UnsetEmail ensures that no value is present for Email, not even an explicit nil
 ### GetAddress
 
 `func (o *BillingInfo) GetAddress() string`
@@ -134,6 +164,16 @@ SetAddress sets Address field to given value.
 
 HasAddress returns a boolean if a field has been set.
 
+### SetAddressNil
+
+`func (o *BillingInfo) SetAddressNil(b bool)`
+
+ SetAddressNil sets the value for Address to be an explicit nil
+
+### UnsetAddress
+`func (o *BillingInfo) UnsetAddress()`
+
+UnsetAddress ensures that no value is present for Address, not even an explicit nil
 ### GetCity
 
 `func (o *BillingInfo) GetCity() string`
@@ -159,6 +199,16 @@ SetCity sets City field to given value.
 
 HasCity returns a boolean if a field has been set.
 
+### SetCityNil
+
+`func (o *BillingInfo) SetCityNil(b bool)`
+
+ SetCityNil sets the value for City to be an explicit nil
+
+### UnsetCity
+`func (o *BillingInfo) UnsetCity()`
+
+UnsetCity ensures that no value is present for City, not even an explicit nil
 ### GetZip
 
 `func (o *BillingInfo) GetZip() string`
@@ -184,6 +234,16 @@ SetZip sets Zip field to given value.
 
 HasZip returns a boolean if a field has been set.
 
+### SetZipNil
+
+`func (o *BillingInfo) SetZipNil(b bool)`
+
+ SetZipNil sets the value for Zip to be an explicit nil
+
+### UnsetZip
+`func (o *BillingInfo) UnsetZip()`
+
+UnsetZip ensures that no value is present for Zip, not even an explicit nil
 ### GetState
 
 `func (o *BillingInfo) GetState() string`
@@ -209,6 +269,16 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
+### SetStateNil
+
+`func (o *BillingInfo) SetStateNil(b bool)`
+
+ SetStateNil sets the value for State to be an explicit nil
+
+### UnsetState
+`func (o *BillingInfo) UnsetState()`
+
+UnsetState ensures that no value is present for State, not even an explicit nil
 ### GetCountryCode
 
 `func (o *BillingInfo) GetCountryCode() string`
@@ -234,6 +304,16 @@ SetCountryCode sets CountryCode field to given value.
 
 HasCountryCode returns a boolean if a field has been set.
 
+### SetCountryCodeNil
+
+`func (o *BillingInfo) SetCountryCodeNil(b bool)`
+
+ SetCountryCodeNil sets the value for CountryCode to be an explicit nil
+
+### UnsetCountryCode
+`func (o *BillingInfo) UnsetCountryCode()`
+
+UnsetCountryCode ensures that no value is present for CountryCode, not even an explicit nil
 ### GetCompany
 
 `func (o *BillingInfo) GetCompany() string`
@@ -284,6 +364,16 @@ SetVatNumber sets VatNumber field to given value.
 
 HasVatNumber returns a boolean if a field has been set.
 
+### SetVatNumberNil
+
+`func (o *BillingInfo) SetVatNumberNil(b bool)`
+
+ SetVatNumberNil sets the value for VatNumber to be an explicit nil
+
+### UnsetVatNumber
+`func (o *BillingInfo) UnsetVatNumber()`
+
+UnsetVatNumber ensures that no value is present for VatNumber, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

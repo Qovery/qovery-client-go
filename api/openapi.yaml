@@ -13163,36 +13163,45 @@ components:
       properties:
         first_name:
           example: Forrest
+          nullable: true
           type: string
         last_name:
           example: Gump
+          nullable: true
           type: string
         email:
           description: "email used for billing, and to receive all invoices by email"
           example: forrest@gump.com
           format: email
+          nullable: true
           type: string
         address:
           example: 21 Jenny Street
+          nullable: true
           type: string
         city:
           example: Greenbow
+          nullable: true
           type: string
         zip:
           example: "36744"
+          nullable: true
           type: string
         state:
           description: only for US
           example: Alabama
+          nullable: true
           type: string
         country_code:
           description: ISO code of the country
           example: US
+          nullable: true
           type: string
         company:
           description: name of the company to bill
           type: string
         vat_number:
+          nullable: true
           type: string
       type: object
     BillingInfoRequest:
