@@ -17,17 +17,17 @@ import (
 
 // BillingInfo struct for BillingInfo
 type BillingInfo struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
+	FirstName *string `json:"first_name,omitempty"`
+	LastName  *string `json:"last_name,omitempty"`
 	// email used for billing, and to receive all invoices by email
-	Email   string `json:"email"`
-	Address string `json:"address"`
-	City    string `json:"city"`
-	Zip     string `json:"zip"`
+	Email   *string `json:"email,omitempty"`
+	Address *string `json:"address,omitempty"`
+	City    *string `json:"city,omitempty"`
+	Zip     *string `json:"zip,omitempty"`
 	// only for US
 	State *string `json:"state,omitempty"`
 	// ISO code of the country
-	CountryCode string `json:"country_code"`
+	CountryCode *string `json:"country_code,omitempty"`
 	// name of the company to bill
 	Company   *string `json:"company,omitempty"`
 	VatNumber *string `json:"vat_number,omitempty"`
@@ -37,15 +37,8 @@ type BillingInfo struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBillingInfo(firstName string, lastName string, email string, address string, city string, zip string, countryCode string) *BillingInfo {
+func NewBillingInfo() *BillingInfo {
 	this := BillingInfo{}
-	this.FirstName = firstName
-	this.LastName = lastName
-	this.Email = email
-	this.Address = address
-	this.City = city
-	this.Zip = zip
-	this.CountryCode = countryCode
 	return &this
 }
 
@@ -57,148 +50,196 @@ func NewBillingInfoWithDefaults() *BillingInfo {
 	return &this
 }
 
-// GetFirstName returns the FirstName field value
+// GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *BillingInfo) GetFirstName() string {
-	if o == nil {
+	if o == nil || o.FirstName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.FirstName
+	return *o.FirstName
 }
 
-// GetFirstNameOk returns a tuple with the FirstName field value
+// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetFirstNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.FirstName == nil {
 		return nil, false
 	}
-	return &o.FirstName, true
+	return o.FirstName, true
 }
 
-// SetFirstName sets field value
+// HasFirstName returns a boolean if a field has been set.
+func (o *BillingInfo) HasFirstName() bool {
+	if o != nil && o.FirstName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
 func (o *BillingInfo) SetFirstName(v string) {
-	o.FirstName = v
+	o.FirstName = &v
 }
 
-// GetLastName returns the LastName field value
+// GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *BillingInfo) GetLastName() string {
-	if o == nil {
+	if o == nil || o.LastName == nil {
 		var ret string
 		return ret
 	}
-
-	return o.LastName
+	return *o.LastName
 }
 
-// GetLastNameOk returns a tuple with the LastName field value
+// GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetLastNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.LastName == nil {
 		return nil, false
 	}
-	return &o.LastName, true
+	return o.LastName, true
 }
 
-// SetLastName sets field value
+// HasLastName returns a boolean if a field has been set.
+func (o *BillingInfo) HasLastName() bool {
+	if o != nil && o.LastName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastName gets a reference to the given string and assigns it to the LastName field.
 func (o *BillingInfo) SetLastName(v string) {
-	o.LastName = v
+	o.LastName = &v
 }
 
-// GetEmail returns the Email field value
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *BillingInfo) GetEmail() string {
-	if o == nil {
+	if o == nil || o.Email == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Email
+	return *o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Email == nil {
 		return nil, false
 	}
-	return &o.Email, true
+	return o.Email, true
 }
 
-// SetEmail sets field value
+// HasEmail returns a boolean if a field has been set.
+func (o *BillingInfo) HasEmail() bool {
+	if o != nil && o.Email != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *BillingInfo) SetEmail(v string) {
-	o.Email = v
+	o.Email = &v
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *BillingInfo) GetAddress() string {
-	if o == nil {
+	if o == nil || o.Address == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Address == nil {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address, true
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *BillingInfo) HasAddress() bool {
+	if o != nil && o.Address != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *BillingInfo) SetAddress(v string) {
-	o.Address = v
+	o.Address = &v
 }
 
-// GetCity returns the City field value
+// GetCity returns the City field value if set, zero value otherwise.
 func (o *BillingInfo) GetCity() string {
-	if o == nil {
+	if o == nil || o.City == nil {
 		var ret string
 		return ret
 	}
-
-	return o.City
+	return *o.City
 }
 
-// GetCityOk returns a tuple with the City field value
+// GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.City == nil {
 		return nil, false
 	}
-	return &o.City, true
+	return o.City, true
 }
 
-// SetCity sets field value
+// HasCity returns a boolean if a field has been set.
+func (o *BillingInfo) HasCity() bool {
+	if o != nil && o.City != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCity gets a reference to the given string and assigns it to the City field.
 func (o *BillingInfo) SetCity(v string) {
-	o.City = v
+	o.City = &v
 }
 
-// GetZip returns the Zip field value
+// GetZip returns the Zip field value if set, zero value otherwise.
 func (o *BillingInfo) GetZip() string {
-	if o == nil {
+	if o == nil || o.Zip == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Zip
+	return *o.Zip
 }
 
-// GetZipOk returns a tuple with the Zip field value
+// GetZipOk returns a tuple with the Zip field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetZipOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Zip == nil {
 		return nil, false
 	}
-	return &o.Zip, true
+	return o.Zip, true
 }
 
-// SetZip sets field value
+// HasZip returns a boolean if a field has been set.
+func (o *BillingInfo) HasZip() bool {
+	if o != nil && o.Zip != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetZip gets a reference to the given string and assigns it to the Zip field.
 func (o *BillingInfo) SetZip(v string) {
-	o.Zip = v
+	o.Zip = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
@@ -233,28 +274,36 @@ func (o *BillingInfo) SetState(v string) {
 	o.State = &v
 }
 
-// GetCountryCode returns the CountryCode field value
+// GetCountryCode returns the CountryCode field value if set, zero value otherwise.
 func (o *BillingInfo) GetCountryCode() string {
-	if o == nil {
+	if o == nil || o.CountryCode == nil {
 		var ret string
 		return ret
 	}
-
-	return o.CountryCode
+	return *o.CountryCode
 }
 
-// GetCountryCodeOk returns a tuple with the CountryCode field value
+// GetCountryCodeOk returns a tuple with the CountryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfo) GetCountryCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.CountryCode == nil {
 		return nil, false
 	}
-	return &o.CountryCode, true
+	return o.CountryCode, true
 }
 
-// SetCountryCode sets field value
+// HasCountryCode returns a boolean if a field has been set.
+func (o *BillingInfo) HasCountryCode() bool {
+	if o != nil && o.CountryCode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCountryCode gets a reference to the given string and assigns it to the CountryCode field.
 func (o *BillingInfo) SetCountryCode(v string) {
-	o.CountryCode = v
+	o.CountryCode = &v
 }
 
 // GetCompany returns the Company field value if set, zero value otherwise.
@@ -323,28 +372,28 @@ func (o *BillingInfo) SetVatNumber(v string) {
 
 func (o BillingInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.FirstName != nil {
 		toSerialize["first_name"] = o.FirstName
 	}
-	if true {
+	if o.LastName != nil {
 		toSerialize["last_name"] = o.LastName
 	}
-	if true {
+	if o.Email != nil {
 		toSerialize["email"] = o.Email
 	}
-	if true {
+	if o.Address != nil {
 		toSerialize["address"] = o.Address
 	}
-	if true {
+	if o.City != nil {
 		toSerialize["city"] = o.City
 	}
-	if true {
+	if o.Zip != nil {
 		toSerialize["zip"] = o.Zip
 	}
 	if o.State != nil {
 		toSerialize["state"] = o.State
 	}
-	if true {
+	if o.CountryCode != nil {
 		toSerialize["country_code"] = o.CountryCode
 	}
 	if o.Company != nil {

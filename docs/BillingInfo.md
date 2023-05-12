@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstName** | **string** |  | 
-**LastName** | **string** |  | 
-**Email** | **string** | email used for billing, and to receive all invoices by email | 
-**Address** | **string** |  | 
-**City** | **string** |  | 
-**Zip** | **string** |  | 
+**FirstName** | Pointer to **string** |  | [optional] 
+**LastName** | Pointer to **string** |  | [optional] 
+**Email** | Pointer to **string** | email used for billing, and to receive all invoices by email | [optional] 
+**Address** | Pointer to **string** |  | [optional] 
+**City** | Pointer to **string** |  | [optional] 
+**Zip** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **string** | only for US | [optional] 
-**CountryCode** | **string** | ISO code of the country | 
+**CountryCode** | Pointer to **string** | ISO code of the country | [optional] 
 **Company** | Pointer to **string** | name of the company to bill | [optional] 
 **VatNumber** | Pointer to **string** |  | [optional] 
 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewBillingInfo
 
-`func NewBillingInfo(firstName string, lastName string, email string, address string, city string, zip string, countryCode string, ) *BillingInfo`
+`func NewBillingInfo() *BillingInfo`
 
 NewBillingInfo instantiates a new BillingInfo object
 This constructor will assign default values to properties that have it defined,
@@ -53,6 +53,11 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
+### HasFirstName
+
+`func (o *BillingInfo) HasFirstName() bool`
+
+HasFirstName returns a boolean if a field has been set.
 
 ### GetLastName
 
@@ -73,6 +78,11 @@ and a boolean to check if the value has been set.
 
 SetLastName sets LastName field to given value.
 
+### HasLastName
+
+`func (o *BillingInfo) HasLastName() bool`
+
+HasLastName returns a boolean if a field has been set.
 
 ### GetEmail
 
@@ -93,6 +103,11 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
+### HasEmail
+
+`func (o *BillingInfo) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
 
 ### GetAddress
 
@@ -113,6 +128,11 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
+### HasAddress
+
+`func (o *BillingInfo) HasAddress() bool`
+
+HasAddress returns a boolean if a field has been set.
 
 ### GetCity
 
@@ -133,6 +153,11 @@ and a boolean to check if the value has been set.
 
 SetCity sets City field to given value.
 
+### HasCity
+
+`func (o *BillingInfo) HasCity() bool`
+
+HasCity returns a boolean if a field has been set.
 
 ### GetZip
 
@@ -153,6 +178,11 @@ and a boolean to check if the value has been set.
 
 SetZip sets Zip field to given value.
 
+### HasZip
+
+`func (o *BillingInfo) HasZip() bool`
+
+HasZip returns a boolean if a field has been set.
 
 ### GetState
 
@@ -198,6 +228,11 @@ and a boolean to check if the value has been set.
 
 SetCountryCode sets CountryCode field to given value.
 
+### HasCountryCode
+
+`func (o *BillingInfo) HasCountryCode() bool`
+
+HasCountryCode returns a boolean if a field has been set.
 
 ### GetCompany
 

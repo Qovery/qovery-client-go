@@ -13194,14 +13194,6 @@ components:
           type: string
         vat_number:
           type: string
-      required:
-      - address
-      - city
-      - country_code
-      - email
-      - first_name
-      - last_name
-      - zip
       type: object
     BillingInfoRequest:
       example:
