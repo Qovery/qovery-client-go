@@ -18,18 +18,20 @@ import (
 
 // OrganizationEventResponse struct for OrganizationEventResponse
 type OrganizationEventResponse struct {
-	Id            *string                         `json:"id,omitempty"`
-	Timestamp     *time.Time                      `json:"timestamp,omitempty"`
-	EventType     *OrganizationEventType          `json:"event_type,omitempty"`
-	TargetId      NullableString                  `json:"target_id,omitempty"`
-	TargetName    *string                         `json:"target_name,omitempty"`
-	TargetType    *OrganizationEventTargetType    `json:"target_type,omitempty"`
-	SubTargetType *OrganizationEventSubTargetType `json:"sub_target_type,omitempty"`
-	Change        *string                         `json:"change,omitempty"`
-	Origin        *OrganizationEventOrigin        `json:"origin,omitempty"`
-	TriggeredBy   *string                         `json:"triggered_by,omitempty"`
-	ProjectId     NullableString                  `json:"project_id,omitempty"`
-	EnvironmentId NullableString                  `json:"environment_id,omitempty"`
+	Id              *string                         `json:"id,omitempty"`
+	Timestamp       *time.Time                      `json:"timestamp,omitempty"`
+	EventType       *OrganizationEventType          `json:"event_type,omitempty"`
+	TargetId        NullableString                  `json:"target_id,omitempty"`
+	TargetName      *string                         `json:"target_name,omitempty"`
+	TargetType      *OrganizationEventTargetType    `json:"target_type,omitempty"`
+	SubTargetType   *OrganizationEventSubTargetType `json:"sub_target_type,omitempty"`
+	Change          *string                         `json:"change,omitempty"`
+	Origin          *OrganizationEventOrigin        `json:"origin,omitempty"`
+	TriggeredBy     *string                         `json:"triggered_by,omitempty"`
+	ProjectId       NullableString                  `json:"project_id,omitempty"`
+	ProjectName     *string                         `json:"project_name,omitempty"`
+	EnvironmentId   NullableString                  `json:"environment_id,omitempty"`
+	EnvironmentName *string                         `json:"environment_name,omitempty"`
 }
 
 // NewOrganizationEventResponse instantiates a new OrganizationEventResponse object
@@ -423,6 +425,38 @@ func (o *OrganizationEventResponse) UnsetProjectId() {
 	o.ProjectId.Unset()
 }
 
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
+func (o *OrganizationEventResponse) GetProjectName() string {
+	if o == nil || o.ProjectName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProjectName
+}
+
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationEventResponse) GetProjectNameOk() (*string, bool) {
+	if o == nil || o.ProjectName == nil {
+		return nil, false
+	}
+	return o.ProjectName, true
+}
+
+// HasProjectName returns a boolean if a field has been set.
+func (o *OrganizationEventResponse) HasProjectName() bool {
+	if o != nil && o.ProjectName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
+func (o *OrganizationEventResponse) SetProjectName(v string) {
+	o.ProjectName = &v
+}
+
 // GetEnvironmentId returns the EnvironmentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEventResponse) GetEnvironmentId() string {
 	if o == nil || o.EnvironmentId.Get() == nil {
@@ -466,6 +500,38 @@ func (o *OrganizationEventResponse) UnsetEnvironmentId() {
 	o.EnvironmentId.Unset()
 }
 
+// GetEnvironmentName returns the EnvironmentName field value if set, zero value otherwise.
+func (o *OrganizationEventResponse) GetEnvironmentName() string {
+	if o == nil || o.EnvironmentName == nil {
+		var ret string
+		return ret
+	}
+	return *o.EnvironmentName
+}
+
+// GetEnvironmentNameOk returns a tuple with the EnvironmentName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationEventResponse) GetEnvironmentNameOk() (*string, bool) {
+	if o == nil || o.EnvironmentName == nil {
+		return nil, false
+	}
+	return o.EnvironmentName, true
+}
+
+// HasEnvironmentName returns a boolean if a field has been set.
+func (o *OrganizationEventResponse) HasEnvironmentName() bool {
+	if o != nil && o.EnvironmentName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironmentName gets a reference to the given string and assigns it to the EnvironmentName field.
+func (o *OrganizationEventResponse) SetEnvironmentName(v string) {
+	o.EnvironmentName = &v
+}
+
 func (o OrganizationEventResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -501,8 +567,14 @@ func (o OrganizationEventResponse) MarshalJSON() ([]byte, error) {
 	if o.ProjectId.IsSet() {
 		toSerialize["project_id"] = o.ProjectId.Get()
 	}
+	if o.ProjectName != nil {
+		toSerialize["project_name"] = o.ProjectName
+	}
 	if o.EnvironmentId.IsSet() {
 		toSerialize["environment_id"] = o.EnvironmentId.Get()
+	}
+	if o.EnvironmentName != nil {
+		toSerialize["environment_name"] = o.EnvironmentName
 	}
 	return json.Marshal(toSerialize)
 }

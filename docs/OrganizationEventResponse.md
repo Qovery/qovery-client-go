@@ -15,7 +15,9 @@ Name | Type | Description | Notes
 **Origin** | Pointer to [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | [optional] 
 **TriggeredBy** | Pointer to **string** |  | [optional] 
 **ProjectId** | Pointer to **NullableString** |  | [optional] 
+**ProjectName** | Pointer to **string** |  | [optional] 
 **EnvironmentId** | Pointer to **NullableString** |  | [optional] 
+**EnvironmentName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -331,6 +333,31 @@ HasProjectId returns a boolean if a field has been set.
 `func (o *OrganizationEventResponse) UnsetProjectId()`
 
 UnsetProjectId ensures that no value is present for ProjectId, not even an explicit nil
+### GetProjectName
+
+`func (o *OrganizationEventResponse) GetProjectName() string`
+
+GetProjectName returns the ProjectName field if non-nil, zero value otherwise.
+
+### GetProjectNameOk
+
+`func (o *OrganizationEventResponse) GetProjectNameOk() (*string, bool)`
+
+GetProjectNameOk returns a tuple with the ProjectName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectName
+
+`func (o *OrganizationEventResponse) SetProjectName(v string)`
+
+SetProjectName sets ProjectName field to given value.
+
+### HasProjectName
+
+`func (o *OrganizationEventResponse) HasProjectName() bool`
+
+HasProjectName returns a boolean if a field has been set.
+
 ### GetEnvironmentId
 
 `func (o *OrganizationEventResponse) GetEnvironmentId() string`
@@ -366,6 +393,31 @@ HasEnvironmentId returns a boolean if a field has been set.
 `func (o *OrganizationEventResponse) UnsetEnvironmentId()`
 
 UnsetEnvironmentId ensures that no value is present for EnvironmentId, not even an explicit nil
+### GetEnvironmentName
+
+`func (o *OrganizationEventResponse) GetEnvironmentName() string`
+
+GetEnvironmentName returns the EnvironmentName field if non-nil, zero value otherwise.
+
+### GetEnvironmentNameOk
+
+`func (o *OrganizationEventResponse) GetEnvironmentNameOk() (*string, bool)`
+
+GetEnvironmentNameOk returns a tuple with the EnvironmentName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentName
+
+`func (o *OrganizationEventResponse) SetEnvironmentName(v string)`
+
+SetEnvironmentName sets EnvironmentName field to given value.
+
+### HasEnvironmentName
+
+`func (o *OrganizationEventResponse) HasEnvironmentName() bool`
+
+HasEnvironmentName returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
