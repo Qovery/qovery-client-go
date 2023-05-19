@@ -15,6 +15,8 @@
 
 * `CLUSTER_ROUTING_TABLE` (value: `"CLUSTER_ROUTING_TABLE"`)
 
+* `CONFIG` (value: `"CONFIG"`)
+
 * `CREDIT_CARD` (value: `"CREDIT_CARD"`)
 
 * `CREDIT_CODE` (value: `"CREDIT_CODE"`)
