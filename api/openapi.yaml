@@ -16002,14 +16002,10 @@ components:
       type: object
     Healthcheck:
       properties:
-        protocol:
-          enum:
-          - TCP
-          - HTTP
-          - None
-          type: string
-        value:
-          type: string
+        readiness_probe:
+          $ref: '#/components/schemas/Probe'
+        liveness_probe:
+          $ref: '#/components/schemas/Probe'
       type: object
     Instance:
       example:
@@ -17739,6 +17735,26 @@ components:
       enum:
       - HTTP
       type: string
+    Probe:
+      properties:
+        probe:
+          $ref: '#/components/schemas/Probe_probe'
+        initial_delay_seconds:
+          default: 30
+          type: integer
+        period_seconds:
+          default: 10
+          type: integer
+        timeout_seconds:
+          default: 5
+          type: integer
+        success_threshold:
+          default: 1
+          type: integer
+        failure_threshold:
+          default: 9
+          type: integer
+      type: object
     Project:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -18752,7 +18768,7 @@ components:
             \ based on the CPU and Memory consumption.\nNote: -1 means that there\
             \ is no limit.\n"
           type: integer
-        healthcheck:
+        healthchecks:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
@@ -18902,7 +18918,7 @@ components:
             \ based on the CPU and Memory consumption.\nNote: -1 means that there\
             \ is no limit.\n"
           type: integer
-        healthcheck:
+        healthchecks:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
@@ -19364,6 +19380,8 @@ components:
             \ based on the CPU and Memory consumption.\nNote: -1 means that there\
             \ is no limit.\n"
           type: integer
+        healthchecks:
+          $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           description: "Indicates if the 'environment preview option' is enabled for\
             \ this container.  \nIf enabled, a preview environment will be automatically\
@@ -19433,6 +19451,8 @@ components:
             \ based on the CPU and Memory consumption.\nNote: -1 means that there\
             \ is no limit.\n"
           type: integer
+        healthchecks:
+          $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           description: "Indicates if the 'environment preview option' is enabled for\
             \ this container.  \nIf enabled, a preview environment will be automatically\
@@ -20233,6 +20253,8 @@ components:
           type: integer
         source:
           $ref: '#/components/schemas/JobRequest_allOf_source'
+        healthchecks:
+          $ref: '#/components/schemas/Healthcheck'
         schedule:
           $ref: '#/components/schemas/JobRequest_allOf_schedule'
       required:
@@ -20343,6 +20365,8 @@ components:
           type: integer
         source:
           $ref: '#/components/schemas/JobResponse_allOf_source'
+        healthchecks:
+          $ref: '#/components/schemas/Healthcheck'
         schedule:
           $ref: '#/components/schemas/JobResponse_allOf_schedule'
       required:
@@ -20600,6 +20624,52 @@ components:
           items:
             $ref: '#/components/schemas/EnvironmentModeEnum'
           type: array
+      type: object
+    Probe_probe_tcp:
+      nullable: true
+      properties:
+        host:
+          nullable: true
+          type: string
+      type: object
+    Probe_probe_http:
+      nullable: true
+      properties:
+        path:
+          default: /
+          type: string
+        scheme:
+          default: HTTP
+          type: string
+      type: object
+    Probe_probe_exec:
+      nullable: true
+      properties:
+        command:
+          items:
+            type: string
+          type: array
+      type: object
+    Probe_probe_grpc:
+      nullable: true
+      properties:
+        service:
+          nullable: true
+          type: string
+      type: object
+    Probe_probe:
+      properties:
+        none:
+          nullable: true
+          type: object
+        tcp:
+          $ref: '#/components/schemas/Probe_probe_tcp'
+        http:
+          $ref: '#/components/schemas/Probe_probe_http'
+        exec:
+          $ref: '#/components/schemas/Probe_probe_exec'
+        grpc:
+          $ref: '#/components/schemas/Probe_probe_grpc'
       type: object
     Project_allOf:
       properties:

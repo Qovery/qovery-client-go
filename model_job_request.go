@@ -31,9 +31,10 @@ type JobRequest struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port     NullableInt32            `json:"port,omitempty"`
-	Source   *JobRequestAllOfSource   `json:"source,omitempty"`
-	Schedule *JobRequestAllOfSchedule `json:"schedule,omitempty"`
+	Port         NullableInt32            `json:"port,omitempty"`
+	Source       *JobRequestAllOfSource   `json:"source,omitempty"`
+	Healthchecks *Healthcheck             `json:"healthchecks,omitempty"`
+	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
 }
 
 // NewJobRequest instantiates a new JobRequest object
@@ -357,6 +358,38 @@ func (o *JobRequest) SetSource(v JobRequestAllOfSource) {
 	o.Source = &v
 }
 
+// GetHealthchecks returns the Healthchecks field value if set, zero value otherwise.
+func (o *JobRequest) GetHealthchecks() Healthcheck {
+	if o == nil || o.Healthchecks == nil {
+		var ret Healthcheck
+		return ret
+	}
+	return *o.Healthchecks
+}
+
+// GetHealthchecksOk returns a tuple with the Healthchecks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequest) GetHealthchecksOk() (*Healthcheck, bool) {
+	if o == nil || o.Healthchecks == nil {
+		return nil, false
+	}
+	return o.Healthchecks, true
+}
+
+// HasHealthchecks returns a boolean if a field has been set.
+func (o *JobRequest) HasHealthchecks() bool {
+	if o != nil && o.Healthchecks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHealthchecks gets a reference to the given Healthcheck and assigns it to the Healthchecks field.
+func (o *JobRequest) SetHealthchecks(v Healthcheck) {
+	o.Healthchecks = &v
+}
+
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
 func (o *JobRequest) GetSchedule() JobRequestAllOfSchedule {
 	if o == nil || o.Schedule == nil {
@@ -417,6 +450,9 @@ func (o JobRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Source != nil {
 		toSerialize["source"] = o.Source
+	}
+	if o.Healthchecks != nil {
+		toSerialize["healthchecks"] = o.Healthchecks
 	}
 	if o.Schedule != nil {
 		toSerialize["schedule"] = o.Schedule

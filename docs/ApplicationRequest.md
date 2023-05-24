@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
-**Healthcheck** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
+**Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
@@ -360,30 +360,30 @@ SetMaxRunningInstances sets MaxRunningInstances field to given value.
 
 HasMaxRunningInstances returns a boolean if a field has been set.
 
-### GetHealthcheck
+### GetHealthchecks
 
-`func (o *ApplicationRequest) GetHealthcheck() Healthcheck`
+`func (o *ApplicationRequest) GetHealthchecks() Healthcheck`
 
-GetHealthcheck returns the Healthcheck field if non-nil, zero value otherwise.
+GetHealthchecks returns the Healthchecks field if non-nil, zero value otherwise.
 
-### GetHealthcheckOk
+### GetHealthchecksOk
 
-`func (o *ApplicationRequest) GetHealthcheckOk() (*Healthcheck, bool)`
+`func (o *ApplicationRequest) GetHealthchecksOk() (*Healthcheck, bool)`
 
-GetHealthcheckOk returns a tuple with the Healthcheck field if it's non-nil, zero value otherwise
+GetHealthchecksOk returns a tuple with the Healthchecks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHealthcheck
+### SetHealthchecks
 
-`func (o *ApplicationRequest) SetHealthcheck(v Healthcheck)`
+`func (o *ApplicationRequest) SetHealthchecks(v Healthcheck)`
 
-SetHealthcheck sets Healthcheck field to given value.
+SetHealthchecks sets Healthchecks field to given value.
 
-### HasHealthcheck
+### HasHealthchecks
 
-`func (o *ApplicationRequest) HasHealthcheck() bool`
+`func (o *ApplicationRequest) HasHealthchecks() bool`
 
-HasHealthcheck returns a boolean if a field has been set.
+HasHealthchecks returns a boolean if a field has been set.
 
 ### GetAutoPreview
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
 **Source** | Pointer to [**JobRequestAllOfSource**](JobRequestAllOfSource.md) |  | [optional] 
+**Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
 
 ## Methods
@@ -263,6 +264,31 @@ SetSource sets Source field to given value.
 `func (o *JobRequestAllOf) HasSource() bool`
 
 HasSource returns a boolean if a field has been set.
+
+### GetHealthchecks
+
+`func (o *JobRequestAllOf) GetHealthchecks() Healthcheck`
+
+GetHealthchecks returns the Healthchecks field if non-nil, zero value otherwise.
+
+### GetHealthchecksOk
+
+`func (o *JobRequestAllOf) GetHealthchecksOk() (*Healthcheck, bool)`
+
+GetHealthchecksOk returns a tuple with the Healthchecks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHealthchecks
+
+`func (o *JobRequestAllOf) SetHealthchecks(v Healthcheck)`
+
+SetHealthchecks sets Healthchecks field to given value.
+
+### HasHealthchecks
+
+`func (o *JobRequestAllOf) HasHealthchecks() bool`
+
+HasHealthchecks returns a boolean if a field has been set.
 
 ### GetSchedule
 

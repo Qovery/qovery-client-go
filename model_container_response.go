@@ -46,7 +46,8 @@ type ContainerResponse struct {
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
 	MinRunningInstances int32 `json:"min_running_instances"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances int32 `json:"max_running_instances"`
+	MaxRunningInstances int32        `json:"max_running_instances"`
+	Healthchecks        *Healthcheck `json:"healthchecks,omitempty"`
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool          `json:"auto_preview"`
 	Ports       []ServicePort `json:"ports,omitempty"`
@@ -559,6 +560,38 @@ func (o *ContainerResponse) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = v
 }
 
+// GetHealthchecks returns the Healthchecks field value if set, zero value otherwise.
+func (o *ContainerResponse) GetHealthchecks() Healthcheck {
+	if o == nil || o.Healthchecks == nil {
+		var ret Healthcheck
+		return ret
+	}
+	return *o.Healthchecks
+}
+
+// GetHealthchecksOk returns a tuple with the Healthchecks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetHealthchecksOk() (*Healthcheck, bool) {
+	if o == nil || o.Healthchecks == nil {
+		return nil, false
+	}
+	return o.Healthchecks, true
+}
+
+// HasHealthchecks returns a boolean if a field has been set.
+func (o *ContainerResponse) HasHealthchecks() bool {
+	if o != nil && o.Healthchecks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHealthchecks gets a reference to the given Healthcheck and assigns it to the Healthchecks field.
+func (o *ContainerResponse) SetHealthchecks(v Healthcheck) {
+	o.Healthchecks = &v
+}
+
 // GetAutoPreview returns the AutoPreview field value
 func (o *ContainerResponse) GetAutoPreview() bool {
 	if o == nil {
@@ -670,6 +703,9 @@ func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
+	}
+	if o.Healthchecks != nil {
+		toSerialize["healthchecks"] = o.Healthchecks
 	}
 	if true {
 		toSerialize["auto_preview"] = o.AutoPreview

@@ -17,8 +17,8 @@ import (
 
 // Healthcheck struct for Healthcheck
 type Healthcheck struct {
-	Protocol *string `json:"protocol,omitempty"`
-	Value    *string `json:"value,omitempty"`
+	ReadinessProbe *Probe `json:"readiness_probe,omitempty"`
+	LivenessProbe  *Probe `json:"liveness_probe,omitempty"`
 }
 
 // NewHealthcheck instantiates a new Healthcheck object
@@ -38,77 +38,77 @@ func NewHealthcheckWithDefaults() *Healthcheck {
 	return &this
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
-func (o *Healthcheck) GetProtocol() string {
-	if o == nil || o.Protocol == nil {
-		var ret string
+// GetReadinessProbe returns the ReadinessProbe field value if set, zero value otherwise.
+func (o *Healthcheck) GetReadinessProbe() Probe {
+	if o == nil || o.ReadinessProbe == nil {
+		var ret Probe
 		return ret
 	}
-	return *o.Protocol
+	return *o.ReadinessProbe
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetReadinessProbeOk returns a tuple with the ReadinessProbe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Healthcheck) GetProtocolOk() (*string, bool) {
-	if o == nil || o.Protocol == nil {
+func (o *Healthcheck) GetReadinessProbeOk() (*Probe, bool) {
+	if o == nil || o.ReadinessProbe == nil {
 		return nil, false
 	}
-	return o.Protocol, true
+	return o.ReadinessProbe, true
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *Healthcheck) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
+// HasReadinessProbe returns a boolean if a field has been set.
+func (o *Healthcheck) HasReadinessProbe() bool {
+	if o != nil && o.ReadinessProbe != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *Healthcheck) SetProtocol(v string) {
-	o.Protocol = &v
+// SetReadinessProbe gets a reference to the given Probe and assigns it to the ReadinessProbe field.
+func (o *Healthcheck) SetReadinessProbe(v Probe) {
+	o.ReadinessProbe = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *Healthcheck) GetValue() string {
-	if o == nil || o.Value == nil {
-		var ret string
+// GetLivenessProbe returns the LivenessProbe field value if set, zero value otherwise.
+func (o *Healthcheck) GetLivenessProbe() Probe {
+	if o == nil || o.LivenessProbe == nil {
+		var ret Probe
 		return ret
 	}
-	return *o.Value
+	return *o.LivenessProbe
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetLivenessProbeOk returns a tuple with the LivenessProbe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Healthcheck) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+func (o *Healthcheck) GetLivenessProbeOk() (*Probe, bool) {
+	if o == nil || o.LivenessProbe == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.LivenessProbe, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *Healthcheck) HasValue() bool {
-	if o != nil && o.Value != nil {
+// HasLivenessProbe returns a boolean if a field has been set.
+func (o *Healthcheck) HasLivenessProbe() bool {
+	if o != nil && o.LivenessProbe != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *Healthcheck) SetValue(v string) {
-	o.Value = &v
+// SetLivenessProbe gets a reference to the given Probe and assigns it to the LivenessProbe field.
+func (o *Healthcheck) SetLivenessProbe(v Probe) {
+	o.LivenessProbe = &v
 }
 
 func (o Healthcheck) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Protocol != nil {
-		toSerialize["protocol"] = o.Protocol
+	if o.ReadinessProbe != nil {
+		toSerialize["readiness_probe"] = o.ReadinessProbe
 	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	if o.LivenessProbe != nil {
+		toSerialize["liveness_probe"] = o.LivenessProbe
 	}
 	return json.Marshal(toSerialize)
 }

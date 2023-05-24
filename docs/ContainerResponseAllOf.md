@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
+**Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 
@@ -334,6 +335,31 @@ and a boolean to check if the value has been set.
 
 SetMaxRunningInstances sets MaxRunningInstances field to given value.
 
+
+### GetHealthchecks
+
+`func (o *ContainerResponseAllOf) GetHealthchecks() Healthcheck`
+
+GetHealthchecks returns the Healthchecks field if non-nil, zero value otherwise.
+
+### GetHealthchecksOk
+
+`func (o *ContainerResponseAllOf) GetHealthchecksOk() (*Healthcheck, bool)`
+
+GetHealthchecksOk returns a tuple with the Healthchecks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHealthchecks
+
+`func (o *ContainerResponseAllOf) SetHealthchecks(v Healthcheck)`
+
+SetHealthchecks sets Healthchecks field to given value.
+
+### HasHealthchecks
+
+`func (o *ContainerResponseAllOf) HasHealthchecks() bool`
+
+HasHealthchecks returns a boolean if a field has been set.
 
 ### GetAutoPreview
 

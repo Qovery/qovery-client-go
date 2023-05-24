@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Protocol** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
+**ReadinessProbe** | Pointer to [**Probe**](Probe.md) |  | [optional] 
+**LivenessProbe** | Pointer to [**Probe**](Probe.md) |  | [optional] 
 
 ## Methods
 
@@ -26,55 +26,55 @@ NewHealthcheckWithDefaults instantiates a new Healthcheck object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetProtocol
+### GetReadinessProbe
 
-`func (o *Healthcheck) GetProtocol() string`
+`func (o *Healthcheck) GetReadinessProbe() Probe`
 
-GetProtocol returns the Protocol field if non-nil, zero value otherwise.
+GetReadinessProbe returns the ReadinessProbe field if non-nil, zero value otherwise.
 
-### GetProtocolOk
+### GetReadinessProbeOk
 
-`func (o *Healthcheck) GetProtocolOk() (*string, bool)`
+`func (o *Healthcheck) GetReadinessProbeOk() (*Probe, bool)`
 
-GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
+GetReadinessProbeOk returns a tuple with the ReadinessProbe field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProtocol
+### SetReadinessProbe
 
-`func (o *Healthcheck) SetProtocol(v string)`
+`func (o *Healthcheck) SetReadinessProbe(v Probe)`
 
-SetProtocol sets Protocol field to given value.
+SetReadinessProbe sets ReadinessProbe field to given value.
 
-### HasProtocol
+### HasReadinessProbe
 
-`func (o *Healthcheck) HasProtocol() bool`
+`func (o *Healthcheck) HasReadinessProbe() bool`
 
-HasProtocol returns a boolean if a field has been set.
+HasReadinessProbe returns a boolean if a field has been set.
 
-### GetValue
+### GetLivenessProbe
 
-`func (o *Healthcheck) GetValue() string`
+`func (o *Healthcheck) GetLivenessProbe() Probe`
 
-GetValue returns the Value field if non-nil, zero value otherwise.
+GetLivenessProbe returns the LivenessProbe field if non-nil, zero value otherwise.
 
-### GetValueOk
+### GetLivenessProbeOk
 
-`func (o *Healthcheck) GetValueOk() (*string, bool)`
+`func (o *Healthcheck) GetLivenessProbeOk() (*Probe, bool)`
 
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+GetLivenessProbeOk returns a tuple with the LivenessProbe field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetValue
+### SetLivenessProbe
 
-`func (o *Healthcheck) SetValue(v string)`
+`func (o *Healthcheck) SetLivenessProbe(v Probe)`
 
-SetValue sets Value field to given value.
+SetLivenessProbe sets LivenessProbe field to given value.
 
-### HasValue
+### HasLivenessProbe
 
-`func (o *Healthcheck) HasValue() bool`
+`func (o *Healthcheck) HasLivenessProbe() bool`
 
-HasValue returns a boolean if a field has been set.
+HasLivenessProbe returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

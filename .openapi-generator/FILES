@@ -489,6 +489,12 @@ docs/PaginationData.md
 docs/PaidUsage.md
 docs/PlanEnum.md
 docs/PortProtocolEnum.md
+docs/Probe.md
+docs/ProbeProbe.md
+docs/ProbeProbeExec.md
+docs/ProbeProbeGrpc.md
+docs/ProbeProbeHttp.md
+docs/ProbeProbeTcp.md
 docs/Project.md
 docs/ProjectAllOf.md
 docs/ProjectCurrentCost.md
@@ -918,6 +924,12 @@ model_pagination_data.go
 model_paid_usage.go
 model_plan_enum.go
 model_port_protocol_enum.go
+model_probe.go
+model_probe_probe.go
+model_probe_probe_exec.go
+model_probe_probe_grpc.go
+model_probe_probe_http.go
+model_probe_probe_tcp.go
 model_project.go
 model_project_all_of.go
 model_project_current_cost.go
