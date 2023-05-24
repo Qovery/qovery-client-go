@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ProbeProbeTcp struct for ProbeProbeTcp
-type ProbeProbeTcp struct {
+// ProbeTypeTcp struct for ProbeTypeTcp
+type ProbeTypeTcp struct {
 	Host NullableString `json:"host,omitempty"`
 }
 
-// NewProbeProbeTcp instantiates a new ProbeProbeTcp object
+// NewProbeTypeTcp instantiates a new ProbeTypeTcp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProbeProbeTcp() *ProbeProbeTcp {
-	this := ProbeProbeTcp{}
+func NewProbeTypeTcp() *ProbeTypeTcp {
+	this := ProbeTypeTcp{}
 	return &this
 }
 
-// NewProbeProbeTcpWithDefaults instantiates a new ProbeProbeTcp object
+// NewProbeTypeTcpWithDefaults instantiates a new ProbeTypeTcp object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProbeProbeTcpWithDefaults() *ProbeProbeTcp {
-	this := ProbeProbeTcp{}
+func NewProbeTypeTcpWithDefaults() *ProbeTypeTcp {
+	this := ProbeTypeTcp{}
 	return &this
 }
 
 // GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProbeProbeTcp) GetHost() string {
+func (o *ProbeTypeTcp) GetHost() string {
 	if o == nil || o.Host.Get() == nil {
 		var ret string
 		return ret
@@ -49,7 +49,7 @@ func (o *ProbeProbeTcp) GetHost() string {
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProbeProbeTcp) GetHostOk() (*string, bool) {
+func (o *ProbeTypeTcp) GetHostOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *ProbeProbeTcp) GetHostOk() (*string, bool) {
 }
 
 // HasHost returns a boolean if a field has been set.
-func (o *ProbeProbeTcp) HasHost() bool {
+func (o *ProbeTypeTcp) HasHost() bool {
 	if o != nil && o.Host.IsSet() {
 		return true
 	}
@@ -66,21 +66,21 @@ func (o *ProbeProbeTcp) HasHost() bool {
 }
 
 // SetHost gets a reference to the given NullableString and assigns it to the Host field.
-func (o *ProbeProbeTcp) SetHost(v string) {
+func (o *ProbeTypeTcp) SetHost(v string) {
 	o.Host.Set(&v)
 }
 
 // SetHostNil sets the value for Host to be an explicit nil
-func (o *ProbeProbeTcp) SetHostNil() {
+func (o *ProbeTypeTcp) SetHostNil() {
 	o.Host.Set(nil)
 }
 
 // UnsetHost ensures that no value is present for Host, not even an explicit nil
-func (o *ProbeProbeTcp) UnsetHost() {
+func (o *ProbeTypeTcp) UnsetHost() {
 	o.Host.Unset()
 }
 
-func (o ProbeProbeTcp) MarshalJSON() ([]byte, error) {
+func (o ProbeTypeTcp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Host.IsSet() {
 		toSerialize["host"] = o.Host.Get()
@@ -88,38 +88,38 @@ func (o ProbeProbeTcp) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableProbeProbeTcp struct {
-	value *ProbeProbeTcp
+type NullableProbeTypeTcp struct {
+	value *ProbeTypeTcp
 	isSet bool
 }
 
-func (v NullableProbeProbeTcp) Get() *ProbeProbeTcp {
+func (v NullableProbeTypeTcp) Get() *ProbeTypeTcp {
 	return v.value
 }
 
-func (v *NullableProbeProbeTcp) Set(val *ProbeProbeTcp) {
+func (v *NullableProbeTypeTcp) Set(val *ProbeTypeTcp) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProbeProbeTcp) IsSet() bool {
+func (v NullableProbeTypeTcp) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProbeProbeTcp) Unset() {
+func (v *NullableProbeTypeTcp) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProbeProbeTcp(val *ProbeProbeTcp) *NullableProbeProbeTcp {
-	return &NullableProbeProbeTcp{value: val, isSet: true}
+func NewNullableProbeTypeTcp(val *ProbeTypeTcp) *NullableProbeTypeTcp {
+	return &NullableProbeTypeTcp{value: val, isSet: true}
 }
 
-func (v NullableProbeProbeTcp) MarshalJSON() ([]byte, error) {
+func (v NullableProbeTypeTcp) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProbeProbeTcp) UnmarshalJSON(src []byte) error {
+func (v *NullableProbeTypeTcp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

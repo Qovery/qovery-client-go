@@ -17,12 +17,12 @@ import (
 
 // Probe struct for Probe
 type Probe struct {
-	Probe               *ProbeProbe `json:"probe,omitempty"`
-	InitialDelaySeconds *int32      `json:"initial_delay_seconds,omitempty"`
-	PeriodSeconds       *int32      `json:"period_seconds,omitempty"`
-	TimeoutSeconds      *int32      `json:"timeout_seconds,omitempty"`
-	SuccessThreshold    *int32      `json:"success_threshold,omitempty"`
-	FailureThreshold    *int32      `json:"failure_threshold,omitempty"`
+	Type                *ProbeType `json:"type,omitempty"`
+	InitialDelaySeconds *int32     `json:"initial_delay_seconds,omitempty"`
+	PeriodSeconds       *int32     `json:"period_seconds,omitempty"`
+	TimeoutSeconds      *int32     `json:"timeout_seconds,omitempty"`
+	SuccessThreshold    *int32     `json:"success_threshold,omitempty"`
+	FailureThreshold    *int32     `json:"failure_threshold,omitempty"`
 }
 
 // NewProbe instantiates a new Probe object
@@ -62,36 +62,36 @@ func NewProbeWithDefaults() *Probe {
 	return &this
 }
 
-// GetProbe returns the Probe field value if set, zero value otherwise.
-func (o *Probe) GetProbe() ProbeProbe {
-	if o == nil || o.Probe == nil {
-		var ret ProbeProbe
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Probe) GetType() ProbeType {
+	if o == nil || o.Type == nil {
+		var ret ProbeType
 		return ret
 	}
-	return *o.Probe
+	return *o.Type
 }
 
-// GetProbeOk returns a tuple with the Probe field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Probe) GetProbeOk() (*ProbeProbe, bool) {
-	if o == nil || o.Probe == nil {
+func (o *Probe) GetTypeOk() (*ProbeType, bool) {
+	if o == nil || o.Type == nil {
 		return nil, false
 	}
-	return o.Probe, true
+	return o.Type, true
 }
 
-// HasProbe returns a boolean if a field has been set.
-func (o *Probe) HasProbe() bool {
-	if o != nil && o.Probe != nil {
+// HasType returns a boolean if a field has been set.
+func (o *Probe) HasType() bool {
+	if o != nil && o.Type != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProbe gets a reference to the given ProbeProbe and assigns it to the Probe field.
-func (o *Probe) SetProbe(v ProbeProbe) {
-	o.Probe = &v
+// SetType gets a reference to the given ProbeType and assigns it to the Type field.
+func (o *Probe) SetType(v ProbeType) {
+	o.Type = &v
 }
 
 // GetInitialDelaySeconds returns the InitialDelaySeconds field value if set, zero value otherwise.
@@ -256,8 +256,8 @@ func (o *Probe) SetFailureThreshold(v int32) {
 
 func (o Probe) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Probe != nil {
-		toSerialize["probe"] = o.Probe
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.InitialDelaySeconds != nil {
 		toSerialize["initial_delay_seconds"] = o.InitialDelaySeconds

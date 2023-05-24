@@ -17737,8 +17737,8 @@ components:
       type: string
     Probe:
       properties:
-        probe:
-          $ref: '#/components/schemas/Probe_probe'
+        type:
+          $ref: '#/components/schemas/Probe_type'
         initial_delay_seconds:
           default: 30
           type: integer
@@ -20625,14 +20625,14 @@ components:
             $ref: '#/components/schemas/EnvironmentModeEnum'
           type: array
       type: object
-    Probe_probe_tcp:
+    Probe_type_tcp:
       nullable: true
       properties:
         host:
           nullable: true
           type: string
       type: object
-    Probe_probe_http:
+    Probe_type_http:
       nullable: true
       properties:
         path:
@@ -20642,7 +20642,7 @@ components:
           default: HTTP
           type: string
       type: object
-    Probe_probe_exec:
+    Probe_type_exec:
       nullable: true
       properties:
         command:
@@ -20650,26 +20650,26 @@ components:
             type: string
           type: array
       type: object
-    Probe_probe_grpc:
+    Probe_type_grpc:
       nullable: true
       properties:
         service:
           nullable: true
           type: string
       type: object
-    Probe_probe:
+    Probe_type:
       properties:
         none:
           nullable: true
           type: object
         tcp:
-          $ref: '#/components/schemas/Probe_probe_tcp'
+          $ref: '#/components/schemas/Probe_type_tcp'
         http:
-          $ref: '#/components/schemas/Probe_probe_http'
+          $ref: '#/components/schemas/Probe_type_http'
         exec:
-          $ref: '#/components/schemas/Probe_probe_exec'
+          $ref: '#/components/schemas/Probe_type_exec'
         grpc:
-          $ref: '#/components/schemas/Probe_probe_grpc'
+          $ref: '#/components/schemas/Probe_type_grpc'
       type: object
     Project_allOf:
       properties:

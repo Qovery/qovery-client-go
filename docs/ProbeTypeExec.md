@@ -1,4 +1,4 @@
-# ProbeProbeExec
+# ProbeTypeExec
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewProbeProbeExec
+### NewProbeTypeExec
 
-`func NewProbeProbeExec() *ProbeProbeExec`
+`func NewProbeTypeExec() *ProbeTypeExec`
 
-NewProbeProbeExec instantiates a new ProbeProbeExec object
+NewProbeTypeExec instantiates a new ProbeTypeExec object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewProbeProbeExecWithDefaults
+### NewProbeTypeExecWithDefaults
 
-`func NewProbeProbeExecWithDefaults() *ProbeProbeExec`
+`func NewProbeTypeExecWithDefaults() *ProbeTypeExec`
 
-NewProbeProbeExecWithDefaults instantiates a new ProbeProbeExec object
+NewProbeTypeExecWithDefaults instantiates a new ProbeTypeExec object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCommand
 
-`func (o *ProbeProbeExec) GetCommand() []string`
+`func (o *ProbeTypeExec) GetCommand() []string`
 
 GetCommand returns the Command field if non-nil, zero value otherwise.
 
 ### GetCommandOk
 
-`func (o *ProbeProbeExec) GetCommandOk() (*[]string, bool)`
+`func (o *ProbeTypeExec) GetCommandOk() (*[]string, bool)`
 
 GetCommandOk returns a tuple with the Command field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCommand
 
-`func (o *ProbeProbeExec) SetCommand(v []string)`
+`func (o *ProbeTypeExec) SetCommand(v []string)`
 
 SetCommand sets Command field to given value.
 
 ### HasCommand
 
-`func (o *ProbeProbeExec) HasCommand() bool`
+`func (o *ProbeTypeExec) HasCommand() bool`
 
 HasCommand returns a boolean if a field has been set.
 

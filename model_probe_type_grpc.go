@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ProbeProbeGrpc struct for ProbeProbeGrpc
-type ProbeProbeGrpc struct {
+// ProbeTypeGrpc struct for ProbeTypeGrpc
+type ProbeTypeGrpc struct {
 	Service NullableString `json:"service,omitempty"`
 }
 
-// NewProbeProbeGrpc instantiates a new ProbeProbeGrpc object
+// NewProbeTypeGrpc instantiates a new ProbeTypeGrpc object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProbeProbeGrpc() *ProbeProbeGrpc {
-	this := ProbeProbeGrpc{}
+func NewProbeTypeGrpc() *ProbeTypeGrpc {
+	this := ProbeTypeGrpc{}
 	return &this
 }
 
-// NewProbeProbeGrpcWithDefaults instantiates a new ProbeProbeGrpc object
+// NewProbeTypeGrpcWithDefaults instantiates a new ProbeTypeGrpc object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProbeProbeGrpcWithDefaults() *ProbeProbeGrpc {
-	this := ProbeProbeGrpc{}
+func NewProbeTypeGrpcWithDefaults() *ProbeTypeGrpc {
+	this := ProbeTypeGrpc{}
 	return &this
 }
 
 // GetService returns the Service field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProbeProbeGrpc) GetService() string {
+func (o *ProbeTypeGrpc) GetService() string {
 	if o == nil || o.Service.Get() == nil {
 		var ret string
 		return ret
@@ -49,7 +49,7 @@ func (o *ProbeProbeGrpc) GetService() string {
 // GetServiceOk returns a tuple with the Service field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProbeProbeGrpc) GetServiceOk() (*string, bool) {
+func (o *ProbeTypeGrpc) GetServiceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *ProbeProbeGrpc) GetServiceOk() (*string, bool) {
 }
 
 // HasService returns a boolean if a field has been set.
-func (o *ProbeProbeGrpc) HasService() bool {
+func (o *ProbeTypeGrpc) HasService() bool {
 	if o != nil && o.Service.IsSet() {
 		return true
 	}
@@ -66,21 +66,21 @@ func (o *ProbeProbeGrpc) HasService() bool {
 }
 
 // SetService gets a reference to the given NullableString and assigns it to the Service field.
-func (o *ProbeProbeGrpc) SetService(v string) {
+func (o *ProbeTypeGrpc) SetService(v string) {
 	o.Service.Set(&v)
 }
 
 // SetServiceNil sets the value for Service to be an explicit nil
-func (o *ProbeProbeGrpc) SetServiceNil() {
+func (o *ProbeTypeGrpc) SetServiceNil() {
 	o.Service.Set(nil)
 }
 
 // UnsetService ensures that no value is present for Service, not even an explicit nil
-func (o *ProbeProbeGrpc) UnsetService() {
+func (o *ProbeTypeGrpc) UnsetService() {
 	o.Service.Unset()
 }
 
-func (o ProbeProbeGrpc) MarshalJSON() ([]byte, error) {
+func (o ProbeTypeGrpc) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Service.IsSet() {
 		toSerialize["service"] = o.Service.Get()
@@ -88,38 +88,38 @@ func (o ProbeProbeGrpc) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableProbeProbeGrpc struct {
-	value *ProbeProbeGrpc
+type NullableProbeTypeGrpc struct {
+	value *ProbeTypeGrpc
 	isSet bool
 }
 
-func (v NullableProbeProbeGrpc) Get() *ProbeProbeGrpc {
+func (v NullableProbeTypeGrpc) Get() *ProbeTypeGrpc {
 	return v.value
 }
 
-func (v *NullableProbeProbeGrpc) Set(val *ProbeProbeGrpc) {
+func (v *NullableProbeTypeGrpc) Set(val *ProbeTypeGrpc) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProbeProbeGrpc) IsSet() bool {
+func (v NullableProbeTypeGrpc) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProbeProbeGrpc) Unset() {
+func (v *NullableProbeTypeGrpc) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProbeProbeGrpc(val *ProbeProbeGrpc) *NullableProbeProbeGrpc {
-	return &NullableProbeProbeGrpc{value: val, isSet: true}
+func NewNullableProbeTypeGrpc(val *ProbeTypeGrpc) *NullableProbeTypeGrpc {
+	return &NullableProbeTypeGrpc{value: val, isSet: true}
 }
 
-func (v NullableProbeProbeGrpc) MarshalJSON() ([]byte, error) {
+func (v NullableProbeTypeGrpc) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProbeProbeGrpc) UnmarshalJSON(src []byte) error {
+func (v *NullableProbeTypeGrpc) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

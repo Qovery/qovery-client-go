@@ -15,18 +15,18 @@ import (
 	"encoding/json"
 )
 
-// ProbeProbeHttp struct for ProbeProbeHttp
-type ProbeProbeHttp struct {
+// ProbeTypeHttp struct for ProbeTypeHttp
+type ProbeTypeHttp struct {
 	Path   *string `json:"path,omitempty"`
 	Scheme *string `json:"scheme,omitempty"`
 }
 
-// NewProbeProbeHttp instantiates a new ProbeProbeHttp object
+// NewProbeTypeHttp instantiates a new ProbeTypeHttp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProbeProbeHttp() *ProbeProbeHttp {
-	this := ProbeProbeHttp{}
+func NewProbeTypeHttp() *ProbeTypeHttp {
+	this := ProbeTypeHttp{}
 	var path string = "/"
 	this.Path = &path
 	var scheme string = "HTTP"
@@ -34,11 +34,11 @@ func NewProbeProbeHttp() *ProbeProbeHttp {
 	return &this
 }
 
-// NewProbeProbeHttpWithDefaults instantiates a new ProbeProbeHttp object
+// NewProbeTypeHttpWithDefaults instantiates a new ProbeTypeHttp object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProbeProbeHttpWithDefaults() *ProbeProbeHttp {
-	this := ProbeProbeHttp{}
+func NewProbeTypeHttpWithDefaults() *ProbeTypeHttp {
+	this := ProbeTypeHttp{}
 	var path string = "/"
 	this.Path = &path
 	var scheme string = "HTTP"
@@ -47,7 +47,7 @@ func NewProbeProbeHttpWithDefaults() *ProbeProbeHttp {
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
-func (o *ProbeProbeHttp) GetPath() string {
+func (o *ProbeTypeHttp) GetPath() string {
 	if o == nil || o.Path == nil {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *ProbeProbeHttp) GetPath() string {
 
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProbeProbeHttp) GetPathOk() (*string, bool) {
+func (o *ProbeTypeHttp) GetPathOk() (*string, bool) {
 	if o == nil || o.Path == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *ProbeProbeHttp) GetPathOk() (*string, bool) {
 }
 
 // HasPath returns a boolean if a field has been set.
-func (o *ProbeProbeHttp) HasPath() bool {
+func (o *ProbeTypeHttp) HasPath() bool {
 	if o != nil && o.Path != nil {
 		return true
 	}
@@ -74,12 +74,12 @@ func (o *ProbeProbeHttp) HasPath() bool {
 }
 
 // SetPath gets a reference to the given string and assigns it to the Path field.
-func (o *ProbeProbeHttp) SetPath(v string) {
+func (o *ProbeTypeHttp) SetPath(v string) {
 	o.Path = &v
 }
 
 // GetScheme returns the Scheme field value if set, zero value otherwise.
-func (o *ProbeProbeHttp) GetScheme() string {
+func (o *ProbeTypeHttp) GetScheme() string {
 	if o == nil || o.Scheme == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *ProbeProbeHttp) GetScheme() string {
 
 // GetSchemeOk returns a tuple with the Scheme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProbeProbeHttp) GetSchemeOk() (*string, bool) {
+func (o *ProbeTypeHttp) GetSchemeOk() (*string, bool) {
 	if o == nil || o.Scheme == nil {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *ProbeProbeHttp) GetSchemeOk() (*string, bool) {
 }
 
 // HasScheme returns a boolean if a field has been set.
-func (o *ProbeProbeHttp) HasScheme() bool {
+func (o *ProbeTypeHttp) HasScheme() bool {
 	if o != nil && o.Scheme != nil {
 		return true
 	}
@@ -106,11 +106,11 @@ func (o *ProbeProbeHttp) HasScheme() bool {
 }
 
 // SetScheme gets a reference to the given string and assigns it to the Scheme field.
-func (o *ProbeProbeHttp) SetScheme(v string) {
+func (o *ProbeTypeHttp) SetScheme(v string) {
 	o.Scheme = &v
 }
 
-func (o ProbeProbeHttp) MarshalJSON() ([]byte, error) {
+func (o ProbeTypeHttp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Path != nil {
 		toSerialize["path"] = o.Path
@@ -121,38 +121,38 @@ func (o ProbeProbeHttp) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableProbeProbeHttp struct {
-	value *ProbeProbeHttp
+type NullableProbeTypeHttp struct {
+	value *ProbeTypeHttp
 	isSet bool
 }
 
-func (v NullableProbeProbeHttp) Get() *ProbeProbeHttp {
+func (v NullableProbeTypeHttp) Get() *ProbeTypeHttp {
 	return v.value
 }
 
-func (v *NullableProbeProbeHttp) Set(val *ProbeProbeHttp) {
+func (v *NullableProbeTypeHttp) Set(val *ProbeTypeHttp) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProbeProbeHttp) IsSet() bool {
+func (v NullableProbeTypeHttp) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProbeProbeHttp) Unset() {
+func (v *NullableProbeTypeHttp) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProbeProbeHttp(val *ProbeProbeHttp) *NullableProbeProbeHttp {
-	return &NullableProbeProbeHttp{value: val, isSet: true}
+func NewNullableProbeTypeHttp(val *ProbeTypeHttp) *NullableProbeTypeHttp {
+	return &NullableProbeTypeHttp{value: val, isSet: true}
 }
 
-func (v NullableProbeProbeHttp) MarshalJSON() ([]byte, error) {
+func (v NullableProbeTypeHttp) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProbeProbeHttp) UnmarshalJSON(src []byte) error {
+func (v *NullableProbeTypeHttp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1,4 +1,4 @@
-# ProbeProbeTcp
+# ProbeTypeTcp
 
 ## Properties
 
@@ -8,56 +8,56 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewProbeProbeTcp
+### NewProbeTypeTcp
 
-`func NewProbeProbeTcp() *ProbeProbeTcp`
+`func NewProbeTypeTcp() *ProbeTypeTcp`
 
-NewProbeProbeTcp instantiates a new ProbeProbeTcp object
+NewProbeTypeTcp instantiates a new ProbeTypeTcp object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewProbeProbeTcpWithDefaults
+### NewProbeTypeTcpWithDefaults
 
-`func NewProbeProbeTcpWithDefaults() *ProbeProbeTcp`
+`func NewProbeTypeTcpWithDefaults() *ProbeTypeTcp`
 
-NewProbeProbeTcpWithDefaults instantiates a new ProbeProbeTcp object
+NewProbeTypeTcpWithDefaults instantiates a new ProbeTypeTcp object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetHost
 
-`func (o *ProbeProbeTcp) GetHost() string`
+`func (o *ProbeTypeTcp) GetHost() string`
 
 GetHost returns the Host field if non-nil, zero value otherwise.
 
 ### GetHostOk
 
-`func (o *ProbeProbeTcp) GetHostOk() (*string, bool)`
+`func (o *ProbeTypeTcp) GetHostOk() (*string, bool)`
 
 GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHost
 
-`func (o *ProbeProbeTcp) SetHost(v string)`
+`func (o *ProbeTypeTcp) SetHost(v string)`
 
 SetHost sets Host field to given value.
 
 ### HasHost
 
-`func (o *ProbeProbeTcp) HasHost() bool`
+`func (o *ProbeTypeTcp) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
 
 ### SetHostNil
 
-`func (o *ProbeProbeTcp) SetHostNil(b bool)`
+`func (o *ProbeTypeTcp) SetHostNil(b bool)`
 
  SetHostNil sets the value for Host to be an explicit nil
 
 ### UnsetHost
-`func (o *ProbeProbeTcp) UnsetHost()`
+`func (o *ProbeTypeTcp) UnsetHost()`
 
 UnsetHost ensures that no value is present for Host, not even an explicit nil
 

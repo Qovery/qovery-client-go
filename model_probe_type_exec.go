@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ProbeProbeExec struct for ProbeProbeExec
-type ProbeProbeExec struct {
+// ProbeTypeExec struct for ProbeTypeExec
+type ProbeTypeExec struct {
 	Command []string `json:"command,omitempty"`
 }
 
-// NewProbeProbeExec instantiates a new ProbeProbeExec object
+// NewProbeTypeExec instantiates a new ProbeTypeExec object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProbeProbeExec() *ProbeProbeExec {
-	this := ProbeProbeExec{}
+func NewProbeTypeExec() *ProbeTypeExec {
+	this := ProbeTypeExec{}
 	return &this
 }
 
-// NewProbeProbeExecWithDefaults instantiates a new ProbeProbeExec object
+// NewProbeTypeExecWithDefaults instantiates a new ProbeTypeExec object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProbeProbeExecWithDefaults() *ProbeProbeExec {
-	this := ProbeProbeExec{}
+func NewProbeTypeExecWithDefaults() *ProbeTypeExec {
+	this := ProbeTypeExec{}
 	return &this
 }
 
 // GetCommand returns the Command field value if set, zero value otherwise.
-func (o *ProbeProbeExec) GetCommand() []string {
+func (o *ProbeTypeExec) GetCommand() []string {
 	if o == nil || o.Command == nil {
 		var ret []string
 		return ret
@@ -48,7 +48,7 @@ func (o *ProbeProbeExec) GetCommand() []string {
 
 // GetCommandOk returns a tuple with the Command field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProbeProbeExec) GetCommandOk() ([]string, bool) {
+func (o *ProbeTypeExec) GetCommandOk() ([]string, bool) {
 	if o == nil || o.Command == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ProbeProbeExec) GetCommandOk() ([]string, bool) {
 }
 
 // HasCommand returns a boolean if a field has been set.
-func (o *ProbeProbeExec) HasCommand() bool {
+func (o *ProbeTypeExec) HasCommand() bool {
 	if o != nil && o.Command != nil {
 		return true
 	}
@@ -65,11 +65,11 @@ func (o *ProbeProbeExec) HasCommand() bool {
 }
 
 // SetCommand gets a reference to the given []string and assigns it to the Command field.
-func (o *ProbeProbeExec) SetCommand(v []string) {
+func (o *ProbeTypeExec) SetCommand(v []string) {
 	o.Command = v
 }
 
-func (o ProbeProbeExec) MarshalJSON() ([]byte, error) {
+func (o ProbeTypeExec) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Command != nil {
 		toSerialize["command"] = o.Command
@@ -77,38 +77,38 @@ func (o ProbeProbeExec) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableProbeProbeExec struct {
-	value *ProbeProbeExec
+type NullableProbeTypeExec struct {
+	value *ProbeTypeExec
 	isSet bool
 }
 
-func (v NullableProbeProbeExec) Get() *ProbeProbeExec {
+func (v NullableProbeTypeExec) Get() *ProbeTypeExec {
 	return v.value
 }
 
-func (v *NullableProbeProbeExec) Set(val *ProbeProbeExec) {
+func (v *NullableProbeTypeExec) Set(val *ProbeTypeExec) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProbeProbeExec) IsSet() bool {
+func (v NullableProbeTypeExec) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProbeProbeExec) Unset() {
+func (v *NullableProbeTypeExec) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProbeProbeExec(val *ProbeProbeExec) *NullableProbeProbeExec {
-	return &NullableProbeProbeExec{value: val, isSet: true}
+func NewNullableProbeTypeExec(val *ProbeTypeExec) *NullableProbeTypeExec {
+	return &NullableProbeTypeExec{value: val, isSet: true}
 }
 
-func (v NullableProbeProbeExec) MarshalJSON() ([]byte, error) {
+func (v NullableProbeTypeExec) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProbeProbeExec) UnmarshalJSON(src []byte) error {
+func (v *NullableProbeTypeExec) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

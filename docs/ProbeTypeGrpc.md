@@ -1,4 +1,4 @@
-# ProbeProbeGrpc
+# ProbeTypeGrpc
 
 ## Properties
 
@@ -8,56 +8,56 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewProbeProbeGrpc
+### NewProbeTypeGrpc
 
-`func NewProbeProbeGrpc() *ProbeProbeGrpc`
+`func NewProbeTypeGrpc() *ProbeTypeGrpc`
 
-NewProbeProbeGrpc instantiates a new ProbeProbeGrpc object
+NewProbeTypeGrpc instantiates a new ProbeTypeGrpc object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewProbeProbeGrpcWithDefaults
+### NewProbeTypeGrpcWithDefaults
 
-`func NewProbeProbeGrpcWithDefaults() *ProbeProbeGrpc`
+`func NewProbeTypeGrpcWithDefaults() *ProbeTypeGrpc`
 
-NewProbeProbeGrpcWithDefaults instantiates a new ProbeProbeGrpc object
+NewProbeTypeGrpcWithDefaults instantiates a new ProbeTypeGrpc object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetService
 
-`func (o *ProbeProbeGrpc) GetService() string`
+`func (o *ProbeTypeGrpc) GetService() string`
 
 GetService returns the Service field if non-nil, zero value otherwise.
 
 ### GetServiceOk
 
-`func (o *ProbeProbeGrpc) GetServiceOk() (*string, bool)`
+`func (o *ProbeTypeGrpc) GetServiceOk() (*string, bool)`
 
 GetServiceOk returns a tuple with the Service field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetService
 
-`func (o *ProbeProbeGrpc) SetService(v string)`
+`func (o *ProbeTypeGrpc) SetService(v string)`
 
 SetService sets Service field to given value.
 
 ### HasService
 
-`func (o *ProbeProbeGrpc) HasService() bool`
+`func (o *ProbeTypeGrpc) HasService() bool`
 
 HasService returns a boolean if a field has been set.
 
 ### SetServiceNil
 
-`func (o *ProbeProbeGrpc) SetServiceNil(b bool)`
+`func (o *ProbeTypeGrpc) SetServiceNil(b bool)`
 
  SetServiceNil sets the value for Service to be an explicit nil
 
 ### UnsetService
-`func (o *ProbeProbeGrpc) UnsetService()`
+`func (o *ProbeTypeGrpc) UnsetService()`
 
 UnsetService ensures that no value is present for Service, not even an explicit nil
 

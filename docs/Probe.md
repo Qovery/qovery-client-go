@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Probe** | Pointer to [**ProbeProbe**](ProbeProbe.md) |  | [optional] 
+**Type** | Pointer to [**ProbeType**](ProbeType.md) |  | [optional] 
 **InitialDelaySeconds** | Pointer to **int32** |  | [optional] [default to 30]
 **PeriodSeconds** | Pointer to **int32** |  | [optional] [default to 10]
 **TimeoutSeconds** | Pointer to **int32** |  | [optional] [default to 5]
@@ -30,30 +30,30 @@ NewProbeWithDefaults instantiates a new Probe object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetProbe
+### GetType
 
-`func (o *Probe) GetProbe() ProbeProbe`
+`func (o *Probe) GetType() ProbeType`
 
-GetProbe returns the Probe field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetProbeOk
+### GetTypeOk
 
-`func (o *Probe) GetProbeOk() (*ProbeProbe, bool)`
+`func (o *Probe) GetTypeOk() (*ProbeType, bool)`
 
-GetProbeOk returns a tuple with the Probe field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProbe
+### SetType
 
-`func (o *Probe) SetProbe(v ProbeProbe)`
+`func (o *Probe) SetType(v ProbeType)`
 
-SetProbe sets Probe field to given value.
+SetType sets Type field to given value.
 
-### HasProbe
+### HasType
 
-`func (o *Probe) HasProbe() bool`
+`func (o *Probe) HasType() bool`
 
-HasProbe returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 ### GetInitialDelaySeconds
 
