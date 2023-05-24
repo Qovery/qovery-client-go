@@ -35,7 +35,7 @@ type ApplicationEditRequest struct {
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
 	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthcheck         *Healthcheck `json:"healthcheck,omitempty"`
+	Healthchecks        *Healthcheck `json:"healthchecks,omitempty"`
 	// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool         `json:"auto_preview,omitempty"`
 	Ports       []ServicePort `json:"ports,omitempty"`
@@ -448,36 +448,36 @@ func (o *ApplicationEditRequest) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = &v
 }
 
-// GetHealthcheck returns the Healthcheck field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetHealthcheck() Healthcheck {
-	if o == nil || o.Healthcheck == nil {
+// GetHealthchecks returns the Healthchecks field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetHealthchecks() Healthcheck {
+	if o == nil || o.Healthchecks == nil {
 		var ret Healthcheck
 		return ret
 	}
-	return *o.Healthcheck
+	return *o.Healthchecks
 }
 
-// GetHealthcheckOk returns a tuple with the Healthcheck field value if set, nil otherwise
+// GetHealthchecksOk returns a tuple with the Healthchecks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetHealthcheckOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthcheck == nil {
+func (o *ApplicationEditRequest) GetHealthchecksOk() (*Healthcheck, bool) {
+	if o == nil || o.Healthchecks == nil {
 		return nil, false
 	}
-	return o.Healthcheck, true
+	return o.Healthchecks, true
 }
 
-// HasHealthcheck returns a boolean if a field has been set.
-func (o *ApplicationEditRequest) HasHealthcheck() bool {
-	if o != nil && o.Healthcheck != nil {
+// HasHealthchecks returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasHealthchecks() bool {
+	if o != nil && o.Healthchecks != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHealthcheck gets a reference to the given Healthcheck and assigns it to the Healthcheck field.
-func (o *ApplicationEditRequest) SetHealthcheck(v Healthcheck) {
-	o.Healthcheck = &v
+// SetHealthchecks gets a reference to the given Healthcheck and assigns it to the Healthchecks field.
+func (o *ApplicationEditRequest) SetHealthchecks(v Healthcheck) {
+	o.Healthchecks = &v
 }
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
@@ -643,8 +643,8 @@ func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	if o.MaxRunningInstances != nil {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
 	}
-	if o.Healthcheck != nil {
-		toSerialize["healthcheck"] = o.Healthcheck
+	if o.Healthchecks != nil {
+		toSerialize["healthchecks"] = o.Healthchecks
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview

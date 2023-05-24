@@ -18829,7 +18829,7 @@ components:
             \ based on the CPU and Memory consumption.\nNote: -1 means that there\
             \ is no limit.\n"
           type: integer
-        healthcheck:
+        healthchecks:
           $ref: '#/components/schemas/Healthcheck'
         auto_preview:
           default: true
