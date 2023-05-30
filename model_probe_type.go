@@ -17,11 +17,10 @@ import (
 
 // ProbeType struct for ProbeType
 type ProbeType struct {
-	None map[string]interface{} `json:"none,omitempty"`
-	Tcp  NullableProbeTypeTcp   `json:"tcp,omitempty"`
-	Http NullableProbeTypeHttp  `json:"http,omitempty"`
-	Exec NullableProbeTypeExec  `json:"exec,omitempty"`
-	Grpc NullableProbeTypeGrpc  `json:"grpc,omitempty"`
+	Tcp  NullableProbeTypeTcp  `json:"tcp,omitempty"`
+	Http NullableProbeTypeHttp `json:"http,omitempty"`
+	Exec NullableProbeTypeExec `json:"exec,omitempty"`
+	Grpc NullableProbeTypeGrpc `json:"grpc,omitempty"`
 }
 
 // NewProbeType instantiates a new ProbeType object
@@ -39,39 +38,6 @@ func NewProbeType() *ProbeType {
 func NewProbeTypeWithDefaults() *ProbeType {
 	this := ProbeType{}
 	return &this
-}
-
-// GetNone returns the None field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProbeType) GetNone() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.None
-}
-
-// GetNoneOk returns a tuple with the None field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProbeType) GetNoneOk() (map[string]interface{}, bool) {
-	if o == nil || o.None == nil {
-		return nil, false
-	}
-	return o.None, true
-}
-
-// HasNone returns a boolean if a field has been set.
-func (o *ProbeType) HasNone() bool {
-	if o != nil && o.None != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNone gets a reference to the given map[string]interface{} and assigns it to the None field.
-func (o *ProbeType) SetNone(v map[string]interface{}) {
-	o.None = v
 }
 
 // GetTcp returns the Tcp field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -248,9 +214,6 @@ func (o *ProbeType) UnsetGrpc() {
 
 func (o ProbeType) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.None != nil {
-		toSerialize["none"] = o.None
-	}
 	if o.Tcp.IsSet() {
 		toSerialize["tcp"] = o.Tcp.Get()
 	}

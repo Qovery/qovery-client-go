@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**None** | Pointer to **map[string]interface{}** |  | [optional] 
 **Tcp** | Pointer to [**NullableProbeTypeTcp**](ProbeTypeTcp.md) |  | [optional] 
 **Http** | Pointer to [**NullableProbeTypeHttp**](ProbeTypeHttp.md) |  | [optional] 
 **Exec** | Pointer to [**NullableProbeTypeExec**](ProbeTypeExec.md) |  | [optional] 
@@ -29,41 +28,6 @@ NewProbeTypeWithDefaults instantiates a new ProbeType object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetNone
-
-`func (o *ProbeType) GetNone() map[string]interface{}`
-
-GetNone returns the None field if non-nil, zero value otherwise.
-
-### GetNoneOk
-
-`func (o *ProbeType) GetNoneOk() (*map[string]interface{}, bool)`
-
-GetNoneOk returns a tuple with the None field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNone
-
-`func (o *ProbeType) SetNone(v map[string]interface{})`
-
-SetNone sets None field to given value.
-
-### HasNone
-
-`func (o *ProbeType) HasNone() bool`
-
-HasNone returns a boolean if a field has been set.
-
-### SetNoneNil
-
-`func (o *ProbeType) SetNoneNil(b bool)`
-
- SetNoneNil sets the value for None to be an explicit nil
-
-### UnsetNone
-`func (o *ProbeType) UnsetNone()`
-
-UnsetNone ensures that no value is present for None, not even an explicit nil
 ### GetTcp
 
 `func (o *ProbeType) GetTcp() ProbeTypeTcp`

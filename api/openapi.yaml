@@ -20672,9 +20672,6 @@ components:
       type: object
     Probe_type:
       properties:
-        none:
-          nullable: true
-          type: object
         tcp:
           $ref: '#/components/schemas/Probe_type_tcp'
         http:
