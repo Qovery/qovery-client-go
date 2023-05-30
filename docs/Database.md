@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Mode** | [**DatabaseModeEnum**](DatabaseModeEnum.md) |  | 
 **Accessibility** | Pointer to [**DatabaseAccessibilityEnum**](DatabaseAccessibilityEnum.md) |  | [optional] [default to DATABASEACCESSIBILITYENUM_PRIVATE]
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
+**InstanceType** | Pointer to **string** | Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field is null for container DB. | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB   Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
 **Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
@@ -261,6 +262,31 @@ SetCpu sets Cpu field to given value.
 `func (o *Database) HasCpu() bool`
 
 HasCpu returns a boolean if a field has been set.
+
+### GetInstanceType
+
+`func (o *Database) GetInstanceType() string`
+
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
+
+### GetInstanceTypeOk
+
+`func (o *Database) GetInstanceTypeOk() (*string, bool)`
+
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceType
+
+`func (o *Database) SetInstanceType(v string)`
+
+SetInstanceType sets InstanceType field to given value.
+
+### HasInstanceType
+
+`func (o *Database) HasInstanceType() bool`
+
+HasInstanceType returns a boolean if a field has been set.
 
 ### GetMemory
 

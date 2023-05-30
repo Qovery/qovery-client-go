@@ -26,6 +26,8 @@ type DatabaseAllOf struct {
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
 	DiskEncrypted *bool `json:"disk_encrypted,omitempty"`
+	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field is null for container DB.
+	InstanceType *string `json:"instance_type,omitempty"`
 }
 
 // NewDatabaseAllOf instantiates a new DatabaseAllOf object
@@ -237,6 +239,38 @@ func (o *DatabaseAllOf) SetDiskEncrypted(v bool) {
 	o.DiskEncrypted = &v
 }
 
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *DatabaseAllOf) GetInstanceType() string {
+	if o == nil || o.InstanceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseAllOf) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || o.InstanceType == nil {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *DatabaseAllOf) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *DatabaseAllOf) SetInstanceType(v string) {
+	o.InstanceType = &v
+}
+
 func (o DatabaseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Environment != nil {
@@ -256,6 +290,9 @@ func (o DatabaseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.DiskEncrypted != nil {
 		toSerialize["disk_encrypted"] = o.DiskEncrypted
+	}
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	return json.Marshal(toSerialize)
 }

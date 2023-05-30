@@ -419,6 +419,208 @@ func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListAWSManagedDatabaseInstanceTypeRequest struct {
+	ctx          context.Context
+	ApiService   *CloudProviderApiService
+	region       string
+	databaseType string
+}
+
+func (r ApiListAWSManagedDatabaseInstanceTypeRequest) Execute() (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+	return r.ApiService.ListAWSManagedDatabaseInstanceTypeExecute(r)
+}
+
+/*
+ListAWSManagedDatabaseInstanceType List AWS available managed database instance types
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region region name
+ @param databaseType Database type
+ @return ApiListAWSManagedDatabaseInstanceTypeRequest
+*/
+func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListAWSManagedDatabaseInstanceTypeRequest {
+	return ApiListAWSManagedDatabaseInstanceTypeRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		region:       region,
+		databaseType: databaseType,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedDatabaseInstanceTypeResponseList
+func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceTypeExecute(r ApiListAWSManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ManagedDatabaseInstanceTypeResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSManagedDatabaseInstanceType")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/aws/managedDatabase/instanceType/{region}/{databaseType}"
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterToString(r.region, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterToString(r.databaseType, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListAWSManagedDatabaseTypeRequest struct {
+	ctx        context.Context
+	ApiService *CloudProviderApiService
+}
+
+func (r ApiListAWSManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+	return r.ApiService.ListAWSManagedDatabaseTypeExecute(r)
+}
+
+/*
+ListAWSManagedDatabaseType List AWS available managed database types
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAWSManagedDatabaseTypeRequest
+*/
+func (a *CloudProviderApiService) ListAWSManagedDatabaseType(ctx context.Context) ApiListAWSManagedDatabaseTypeRequest {
+	return ApiListAWSManagedDatabaseTypeRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedDatabaseTypeResponseList
+func (a *CloudProviderApiService) ListAWSManagedDatabaseTypeExecute(r ApiListAWSManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ManagedDatabaseTypeResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSManagedDatabaseType")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/aws/managedDatabase/type"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListAWSRegionsRequest struct {
 	ctx        context.Context
 	ApiService *CloudProviderApiService
@@ -807,6 +1009,208 @@ func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListDOManagedDatabaseInstanceTypeRequest struct {
+	ctx          context.Context
+	ApiService   *CloudProviderApiService
+	region       string
+	databaseType string
+}
+
+func (r ApiListDOManagedDatabaseInstanceTypeRequest) Execute() (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+	return r.ApiService.ListDOManagedDatabaseInstanceTypeExecute(r)
+}
+
+/*
+ListDOManagedDatabaseInstanceType List Digital Ocean available managed database instance types
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region region name
+ @param databaseType Database type
+ @return ApiListDOManagedDatabaseInstanceTypeRequest
+*/
+func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListDOManagedDatabaseInstanceTypeRequest {
+	return ApiListDOManagedDatabaseInstanceTypeRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		region:       region,
+		databaseType: databaseType,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedDatabaseInstanceTypeResponseList
+func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceTypeExecute(r ApiListDOManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ManagedDatabaseInstanceTypeResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOManagedDatabaseInstanceType")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/digitalOcean/managedDatabase/instanceType/{region}/{databaseType}"
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterToString(r.region, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterToString(r.databaseType, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListDOManagedDatabaseTypeRequest struct {
+	ctx        context.Context
+	ApiService *CloudProviderApiService
+}
+
+func (r ApiListDOManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+	return r.ApiService.ListDOManagedDatabaseTypeExecute(r)
+}
+
+/*
+ListDOManagedDatabaseType List Digital Ocean available managed database types
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListDOManagedDatabaseTypeRequest
+*/
+func (a *CloudProviderApiService) ListDOManagedDatabaseType(ctx context.Context) ApiListDOManagedDatabaseTypeRequest {
+	return ApiListDOManagedDatabaseTypeRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedDatabaseTypeResponseList
+func (a *CloudProviderApiService) ListDOManagedDatabaseTypeExecute(r ApiListDOManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ManagedDatabaseTypeResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOManagedDatabaseType")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/digitalOcean/managedDatabase/type"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListDORegionsRequest struct {
 	ctx        context.Context
 	ApiService *CloudProviderApiService
@@ -845,6 +1249,204 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 	}
 
 	localVarPath := localBasePath + "/digitalOcean/region"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListSCWManagedDatabaseInstanceTypeRequest struct {
+	ctx          context.Context
+	ApiService   *CloudProviderApiService
+	databaseType string
+}
+
+func (r ApiListSCWManagedDatabaseInstanceTypeRequest) Execute() (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+	return r.ApiService.ListSCWManagedDatabaseInstanceTypeExecute(r)
+}
+
+/*
+ListSCWManagedDatabaseInstanceType List Scaleway available managed database instance types
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param databaseType Database type
+ @return ApiListSCWManagedDatabaseInstanceTypeRequest
+*/
+func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceType(ctx context.Context, databaseType string) ApiListSCWManagedDatabaseInstanceTypeRequest {
+	return ApiListSCWManagedDatabaseInstanceTypeRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		databaseType: databaseType,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedDatabaseInstanceTypeResponseList
+func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceTypeExecute(r ApiListSCWManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ManagedDatabaseInstanceTypeResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListSCWManagedDatabaseInstanceType")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/scaleway/managedDatabase/instanceType/{zone}/{databaseType}"
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterToString(r.databaseType, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListSCWManagedDatabaseTypeRequest struct {
+	ctx        context.Context
+	ApiService *CloudProviderApiService
+}
+
+func (r ApiListSCWManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+	return r.ApiService.ListSCWManagedDatabaseTypeExecute(r)
+}
+
+/*
+ListSCWManagedDatabaseType List Scaleway available managed database types
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListSCWManagedDatabaseTypeRequest
+*/
+func (a *CloudProviderApiService) ListSCWManagedDatabaseType(ctx context.Context) ApiListSCWManagedDatabaseTypeRequest {
+	return ApiListSCWManagedDatabaseTypeRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedDatabaseTypeResponseList
+func (a *CloudProviderApiService) ListSCWManagedDatabaseTypeExecute(r ApiListSCWManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ManagedDatabaseTypeResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListSCWManagedDatabaseType")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/scaleway/managedDatabase/type"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

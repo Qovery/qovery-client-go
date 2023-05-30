@@ -3039,6 +3039,63 @@ paths:
       summary: List AWS available instance types
       tags:
       - Cloud Provider
+  /aws/managedDatabase/type:
+    get:
+      operationId: listAWSManagedDatabaseType
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDatabaseTypeResponseList'
+          description: list AWS available managed database types
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List AWS available managed database types
+      tags:
+      - Cloud Provider
+  /aws/managedDatabase/instanceType/{region}/{databaseType}:
+    get:
+      operationId: listAWSManagedDatabaseInstanceType
+      parameters:
+      - description: region name
+        explode: false
+        in: path
+        name: region
+        required: true
+        schema:
+          example: us-east-2
+          type: string
+        style: simple
+      - description: Database type
+        explode: false
+        in: path
+        name: databaseType
+        required: true
+        schema:
+          example: MYSQL
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDatabaseInstanceTypeResponseList'
+          description: list AWS available managed database instance types
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List AWS available managed database instance types
+      tags:
+      - Cloud Provider
   /aws/ec2/instanceType/{region}:
     get:
       operationId: listAWSEc2InstanceType
@@ -3154,6 +3211,63 @@ paths:
       summary: List DO available instance types
       tags:
       - Cloud Provider
+  /digitalOcean/managedDatabase/type:
+    get:
+      operationId: listDOManagedDatabaseType
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDatabaseTypeResponseList'
+          description: list Digital Ocean available managed database types
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Digital Ocean available managed database types
+      tags:
+      - Cloud Provider
+  /digitalOcean/managedDatabase/instanceType/{region}/{databaseType}:
+    get:
+      operationId: listDOManagedDatabaseInstanceType
+      parameters:
+      - description: region name
+        explode: false
+        in: path
+        name: region
+        required: true
+        schema:
+          example: us-east-2
+          type: string
+        style: simple
+      - description: Database type
+        explode: false
+        in: path
+        name: databaseType
+        required: true
+        schema:
+          example: MYSQL
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDatabaseInstanceTypeResponseList'
+          description: list Digital Ocean available managed database instance types
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Digital Ocean available managed database instance types
+      tags:
+      - Cloud Provider
   /scaleway/region:
     get:
       operationId: listScalewayRegions
@@ -3209,6 +3323,54 @@ paths:
         "404":
           description: Resource not found
       summary: List Scaleway available instance types
+      tags:
+      - Cloud Provider
+  /scaleway/managedDatabase/type:
+    get:
+      operationId: listSCWManagedDatabaseType
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDatabaseTypeResponseList'
+          description: list Scaleway available managed database types
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Scaleway available managed database types
+      tags:
+      - Cloud Provider
+  /scaleway/managedDatabase/instanceType/{zone}/{databaseType}:
+    get:
+      operationId: listSCWManagedDatabaseInstanceType
+      parameters:
+      - description: Database type
+        explode: false
+        in: path
+        name: databaseType
+        required: true
+        schema:
+          example: MYSQL
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedDatabaseInstanceTypeResponseList'
+          description: list Scaleway available managed database instance types
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Scaleway available managed database instance types
       tags:
       - Cloud Provider
   /scaleway/instanceType/{zone}:
@@ -12248,6 +12410,16 @@ components:
         format: uuid
         type: string
       style: simple
+    databaseType:
+      description: Database type
+      explode: false
+      in: path
+      name: databaseType
+      required: true
+      schema:
+        example: MYSQL
+        type: string
+      style: simple
     deploymentStageId:
       description: Deployment Stage ID
       explode: false
@@ -14809,6 +14981,7 @@ components:
         storage: 0
         type: null
         version: "10.1"
+        instance_type: db.t3.medium
       properties:
         name:
           description: name is case insensitive
@@ -14830,6 +15003,12 @@ components:
           description: unit is millicores (m). 1000m = 1 cpu
           example: 1250
           type: integer
+        instance_type:
+          description: "Database instance type to be used for this database. The list\
+            \ of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}.\
+            \ This field SHOULD NOT be set for container DB."
+          example: db.t3.medium
+          type: string
         memory:
           description: "unit is MB. 1024 MB = 1GB  \nDefault value is linked to the\
             \ database type:\n- MANAGED: `100`\n- CONTAINER\n  - POSTGRES: `100`\n\
@@ -16632,6 +16811,48 @@ components:
         results:
           items:
             $ref: '#/components/schemas/Log'
+          type: array
+      type: object
+    ManagedDatabaseTypeResponse:
+      example:
+        name: MYSQL
+      properties:
+        name:
+          example: MYSQL
+          type: string
+      required:
+      - name
+      type: object
+    ManagedDatabaseTypeResponseList:
+      example:
+        results:
+        - name: MYSQL
+        - name: MYSQL
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ManagedDatabaseTypeResponse'
+          type: array
+      type: object
+    ManagedDatabaseInstanceTypeResponse:
+      example:
+        name: db.t3.medium
+      properties:
+        name:
+          example: db.t3.medium
+          type: string
+      required:
+      - name
+      type: object
+    ManagedDatabaseInstanceTypeResponseList:
+      example:
+        results:
+        - name: db.t3.medium
+        - name: db.t3.medium
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ManagedDatabaseInstanceTypeResponse'
           type: array
       type: object
     Member:
@@ -19522,6 +19743,12 @@ components:
         disk_encrypted:
           description: indicates if the database disk is encrypted or not
           type: boolean
+        instance_type:
+          description: "Database instance type to be used for this database. The list\
+            \ of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}.\
+            \ This field is null for container DB."
+          example: db.t3.medium
+          type: string
       type: object
     DatabaseCurrentMetric_cpu:
       example:

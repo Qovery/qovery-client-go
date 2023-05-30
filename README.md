@@ -156,11 +156,17 @@ Class | Method | HTTP request | Description
 *CloudProviderApi* | [**ListAWSEc2InstanceType**](docs/CloudProviderApi.md#listawsec2instancetype) | **Get** /aws/ec2/instanceType/{region} | List AWS EC2 available instance types
 *CloudProviderApi* | [**ListAWSFeatures**](docs/CloudProviderApi.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
 *CloudProviderApi* | [**ListAWSInstanceType**](docs/CloudProviderApi.md#listawsinstancetype) | **Get** /aws/instanceType | List AWS available instance types
+*CloudProviderApi* | [**ListAWSManagedDatabaseInstanceType**](docs/CloudProviderApi.md#listawsmanageddatabaseinstancetype) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
+*CloudProviderApi* | [**ListAWSManagedDatabaseType**](docs/CloudProviderApi.md#listawsmanageddatabasetype) | **Get** /aws/managedDatabase/type | List AWS available managed database types
 *CloudProviderApi* | [**ListAWSRegions**](docs/CloudProviderApi.md#listawsregions) | **Get** /aws/region | List AWS regions
 *CloudProviderApi* | [**ListCloudProvider**](docs/CloudProviderApi.md#listcloudprovider) | **Get** /cloudProvider | List Cloud providers available
 *CloudProviderApi* | [**ListDOFeatures**](docs/CloudProviderApi.md#listdofeatures) | **Get** /digitalOcean/clusterFeature | List DO features available
 *CloudProviderApi* | [**ListDOInstanceType**](docs/CloudProviderApi.md#listdoinstancetype) | **Get** /digitalOcean/instanceType | List DO available instance types
+*CloudProviderApi* | [**ListDOManagedDatabaseInstanceType**](docs/CloudProviderApi.md#listdomanageddatabaseinstancetype) | **Get** /digitalOcean/managedDatabase/instanceType/{region}/{databaseType} | List Digital Ocean available managed database instance types
+*CloudProviderApi* | [**ListDOManagedDatabaseType**](docs/CloudProviderApi.md#listdomanageddatabasetype) | **Get** /digitalOcean/managedDatabase/type | List Digital Ocean available managed database types
 *CloudProviderApi* | [**ListDORegions**](docs/CloudProviderApi.md#listdoregions) | **Get** /digitalOcean/region | List DO regions
+*CloudProviderApi* | [**ListSCWManagedDatabaseInstanceType**](docs/CloudProviderApi.md#listscwmanageddatabaseinstancetype) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
+*CloudProviderApi* | [**ListSCWManagedDatabaseType**](docs/CloudProviderApi.md#listscwmanageddatabasetype) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
 *CloudProviderApi* | [**ListScalewayFeatures**](docs/CloudProviderApi.md#listscalewayfeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
 *CloudProviderApi* | [**ListScalewayInstanceType**](docs/CloudProviderApi.md#listscalewayinstancetype) | **Get** /scaleway/instanceType | List Scaleway available instance types
 *CloudProviderApi* | [**ListScalewayKapsuleInstanceType**](docs/CloudProviderApi.md#listscalewaykapsuleinstancetype) | **Get** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
@@ -713,6 +719,10 @@ Class | Method | HTTP request | Description
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogPaginatedResponseListAllOf](docs/LogPaginatedResponseListAllOf.md)
  - [LogResponseList](docs/LogResponseList.md)
+ - [ManagedDatabaseInstanceTypeResponse](docs/ManagedDatabaseInstanceTypeResponse.md)
+ - [ManagedDatabaseInstanceTypeResponseList](docs/ManagedDatabaseInstanceTypeResponseList.md)
+ - [ManagedDatabaseTypeResponse](docs/ManagedDatabaseTypeResponse.md)
+ - [ManagedDatabaseTypeResponseList](docs/ManagedDatabaseTypeResponseList.md)
  - [Member](docs/Member.md)
  - [MemberAllOf](docs/MemberAllOf.md)
  - [MemberResponseList](docs/MemberResponseList.md)

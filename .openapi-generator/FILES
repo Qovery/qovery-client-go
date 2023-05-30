@@ -412,6 +412,10 @@ docs/Log.md
 docs/LogPaginatedResponseList.md
 docs/LogPaginatedResponseListAllOf.md
 docs/LogResponseList.md
+docs/ManagedDatabaseInstanceTypeResponse.md
+docs/ManagedDatabaseInstanceTypeResponseList.md
+docs/ManagedDatabaseTypeResponse.md
+docs/ManagedDatabaseTypeResponseList.md
 docs/Member.md
 docs/MemberAllOf.md
 docs/MemberResponseList.md
@@ -854,6 +858,10 @@ model_log.go
 model_log_paginated_response_list.go
 model_log_paginated_response_list_all_of.go
 model_log_response_list.go
+model_managed_database_instance_type_response.go
+model_managed_database_instance_type_response_list.go
+model_managed_database_type_response.go
+model_managed_database_type_response_list.go
 model_member.go
 model_member_all_of.go
 model_member_response_list.go

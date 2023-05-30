@@ -8,11 +8,17 @@ Method | HTTP request | Description
 [**ListAWSEc2InstanceType**](CloudProviderApi.md#ListAWSEc2InstanceType) | **Get** /aws/ec2/instanceType/{region} | List AWS EC2 available instance types
 [**ListAWSFeatures**](CloudProviderApi.md#ListAWSFeatures) | **Get** /aws/clusterFeature | List AWS features available
 [**ListAWSInstanceType**](CloudProviderApi.md#ListAWSInstanceType) | **Get** /aws/instanceType | List AWS available instance types
+[**ListAWSManagedDatabaseInstanceType**](CloudProviderApi.md#ListAWSManagedDatabaseInstanceType) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
+[**ListAWSManagedDatabaseType**](CloudProviderApi.md#ListAWSManagedDatabaseType) | **Get** /aws/managedDatabase/type | List AWS available managed database types
 [**ListAWSRegions**](CloudProviderApi.md#ListAWSRegions) | **Get** /aws/region | List AWS regions
 [**ListCloudProvider**](CloudProviderApi.md#ListCloudProvider) | **Get** /cloudProvider | List Cloud providers available
 [**ListDOFeatures**](CloudProviderApi.md#ListDOFeatures) | **Get** /digitalOcean/clusterFeature | List DO features available
 [**ListDOInstanceType**](CloudProviderApi.md#ListDOInstanceType) | **Get** /digitalOcean/instanceType | List DO available instance types
+[**ListDOManagedDatabaseInstanceType**](CloudProviderApi.md#ListDOManagedDatabaseInstanceType) | **Get** /digitalOcean/managedDatabase/instanceType/{region}/{databaseType} | List Digital Ocean available managed database instance types
+[**ListDOManagedDatabaseType**](CloudProviderApi.md#ListDOManagedDatabaseType) | **Get** /digitalOcean/managedDatabase/type | List Digital Ocean available managed database types
 [**ListDORegions**](CloudProviderApi.md#ListDORegions) | **Get** /digitalOcean/region | List DO regions
+[**ListSCWManagedDatabaseInstanceType**](CloudProviderApi.md#ListSCWManagedDatabaseInstanceType) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
+[**ListSCWManagedDatabaseType**](CloudProviderApi.md#ListSCWManagedDatabaseType) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
 [**ListScalewayFeatures**](CloudProviderApi.md#ListScalewayFeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
 [**ListScalewayInstanceType**](CloudProviderApi.md#ListScalewayInstanceType) | **Get** /scaleway/instanceType | List Scaleway available instance types
 [**ListScalewayKapsuleInstanceType**](CloudProviderApi.md#ListScalewayKapsuleInstanceType) | **Get** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
@@ -274,6 +280,136 @@ Other parameters are passed through a pointer to a apiListAWSInstanceTypeRequest
 [[Back to README]](../README.md)
 
 
+## ListAWSManagedDatabaseInstanceType
+
+> ManagedDatabaseInstanceTypeResponseList ListAWSManagedDatabaseInstanceType(ctx, region, databaseType).Execute()
+
+List AWS available managed database instance types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    region := "us-east-2" // string | region name
+    databaseType := "MYSQL" // string | Database type
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListAWSManagedDatabaseInstanceType(context.Background(), region, databaseType).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListAWSManagedDatabaseInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListAWSManagedDatabaseInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**region** | **string** | region name | 
+**databaseType** | **string** | Database type | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAWSManagedDatabaseInstanceTypeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ManagedDatabaseInstanceTypeResponseList**](ManagedDatabaseInstanceTypeResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAWSManagedDatabaseType
+
+> ManagedDatabaseTypeResponseList ListAWSManagedDatabaseType(ctx).Execute()
+
+List AWS available managed database types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListAWSManagedDatabaseType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListAWSManagedDatabaseType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSManagedDatabaseType`: ManagedDatabaseTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListAWSManagedDatabaseType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAWSManagedDatabaseTypeRequest struct via the builder pattern
+
+
+### Return type
+
+[**ManagedDatabaseTypeResponseList**](ManagedDatabaseTypeResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListAWSRegions
 
 > ClusterRegionResponseList ListAWSRegions(ctx).Execute()
@@ -510,6 +646,136 @@ Other parameters are passed through a pointer to a apiListDOInstanceTypeRequest 
 [[Back to README]](../README.md)
 
 
+## ListDOManagedDatabaseInstanceType
+
+> ManagedDatabaseInstanceTypeResponseList ListDOManagedDatabaseInstanceType(ctx, region, databaseType).Execute()
+
+List Digital Ocean available managed database instance types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    region := "us-east-2" // string | region name
+    databaseType := "MYSQL" // string | Database type
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListDOManagedDatabaseInstanceType(context.Background(), region, databaseType).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListDOManagedDatabaseInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListDOManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListDOManagedDatabaseInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**region** | **string** | region name | 
+**databaseType** | **string** | Database type | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListDOManagedDatabaseInstanceTypeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ManagedDatabaseInstanceTypeResponseList**](ManagedDatabaseInstanceTypeResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListDOManagedDatabaseType
+
+> ManagedDatabaseTypeResponseList ListDOManagedDatabaseType(ctx).Execute()
+
+List Digital Ocean available managed database types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListDOManagedDatabaseType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListDOManagedDatabaseType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListDOManagedDatabaseType`: ManagedDatabaseTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListDOManagedDatabaseType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListDOManagedDatabaseTypeRequest struct via the builder pattern
+
+
+### Return type
+
+[**ManagedDatabaseTypeResponseList**](ManagedDatabaseTypeResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListDORegions
 
 > ClusterRegionResponseList ListDORegions(ctx).Execute()
@@ -554,6 +820,133 @@ Other parameters are passed through a pointer to a apiListDORegionsRequest struc
 ### Return type
 
 [**ClusterRegionResponseList**](ClusterRegionResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSCWManagedDatabaseInstanceType
+
+> ManagedDatabaseInstanceTypeResponseList ListSCWManagedDatabaseInstanceType(ctx, databaseType).Execute()
+
+List Scaleway available managed database instance types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    databaseType := "MYSQL" // string | Database type
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListSCWManagedDatabaseInstanceType(context.Background(), databaseType).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListSCWManagedDatabaseInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSCWManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListSCWManagedDatabaseInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**databaseType** | **string** | Database type | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSCWManagedDatabaseInstanceTypeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ManagedDatabaseInstanceTypeResponseList**](ManagedDatabaseInstanceTypeResponseList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSCWManagedDatabaseType
+
+> ManagedDatabaseTypeResponseList ListSCWManagedDatabaseType(ctx).Execute()
+
+List Scaleway available managed database types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderApi.ListSCWManagedDatabaseType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderApi.ListSCWManagedDatabaseType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSCWManagedDatabaseType`: ManagedDatabaseTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderApi.ListSCWManagedDatabaseType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSCWManagedDatabaseTypeRequest struct via the builder pattern
+
+
+### Return type
+
+[**ManagedDatabaseTypeResponseList**](ManagedDatabaseTypeResponseList.md)
 
 ### Authorization
 

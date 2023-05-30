@@ -27,6 +27,8 @@ type DatabaseRequest struct {
 	Accessibility *DatabaseAccessibilityEnum `json:"accessibility,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
+	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
+	InstanceType *string `json:"instance_type,omitempty"`
 	// unit is MB. 1024 MB = 1GB   Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
@@ -258,6 +260,38 @@ func (o *DatabaseRequest) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *DatabaseRequest) GetInstanceType() string {
+	if o == nil || o.InstanceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseRequest) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || o.InstanceType == nil {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *DatabaseRequest) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *DatabaseRequest) SetInstanceType(v string) {
+	o.InstanceType = &v
+}
+
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *DatabaseRequest) GetMemory() int32 {
 	if o == nil || o.Memory == nil {
@@ -344,6 +378,9 @@ func (o DatabaseRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
+	}
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	if o.Memory != nil {
 		toSerialize["memory"] = o.Memory
