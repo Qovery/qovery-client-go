@@ -24,9 +24,13 @@ type ServicePortRequestPortsInner struct {
 	ExternalPort *int32 `json:"external_port,omitempty"`
 	// Expose the port to the world
 	PubliclyAccessible bool `json:"publicly_accessible"`
-	// is the default port to use for domain & probes check
-	IsDefault *bool             `json:"is_default,omitempty"`
-	Protocol  *PortProtocolEnum `json:"protocol,omitempty"`
+	// is the default port to use for domain
+	IsDefault *bool `json:"is_default,omitempty"`
+	// is port to use for probe readiness check
+	HasReadinessProbe *bool `json:"has_readiness_probe,omitempty"`
+	// is port to use for probe liveness check
+	HasLivenessProbe *bool             `json:"has_liveness_probe,omitempty"`
+	Protocol         *PortProtocolEnum `json:"protocol,omitempty"`
 }
 
 // NewServicePortRequestPortsInner instantiates a new ServicePortRequestPortsInner object
@@ -196,6 +200,70 @@ func (o *ServicePortRequestPortsInner) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
+// GetHasReadinessProbe returns the HasReadinessProbe field value if set, zero value otherwise.
+func (o *ServicePortRequestPortsInner) GetHasReadinessProbe() bool {
+	if o == nil || o.HasReadinessProbe == nil {
+		var ret bool
+		return ret
+	}
+	return *o.HasReadinessProbe
+}
+
+// GetHasReadinessProbeOk returns a tuple with the HasReadinessProbe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePortRequestPortsInner) GetHasReadinessProbeOk() (*bool, bool) {
+	if o == nil || o.HasReadinessProbe == nil {
+		return nil, false
+	}
+	return o.HasReadinessProbe, true
+}
+
+// HasHasReadinessProbe returns a boolean if a field has been set.
+func (o *ServicePortRequestPortsInner) HasHasReadinessProbe() bool {
+	if o != nil && o.HasReadinessProbe != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHasReadinessProbe gets a reference to the given bool and assigns it to the HasReadinessProbe field.
+func (o *ServicePortRequestPortsInner) SetHasReadinessProbe(v bool) {
+	o.HasReadinessProbe = &v
+}
+
+// GetHasLivenessProbe returns the HasLivenessProbe field value if set, zero value otherwise.
+func (o *ServicePortRequestPortsInner) GetHasLivenessProbe() bool {
+	if o == nil || o.HasLivenessProbe == nil {
+		var ret bool
+		return ret
+	}
+	return *o.HasLivenessProbe
+}
+
+// GetHasLivenessProbeOk returns a tuple with the HasLivenessProbe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePortRequestPortsInner) GetHasLivenessProbeOk() (*bool, bool) {
+	if o == nil || o.HasLivenessProbe == nil {
+		return nil, false
+	}
+	return o.HasLivenessProbe, true
+}
+
+// HasHasLivenessProbe returns a boolean if a field has been set.
+func (o *ServicePortRequestPortsInner) HasHasLivenessProbe() bool {
+	if o != nil && o.HasLivenessProbe != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHasLivenessProbe gets a reference to the given bool and assigns it to the HasLivenessProbe field.
+func (o *ServicePortRequestPortsInner) SetHasLivenessProbe(v bool) {
+	o.HasLivenessProbe = &v
+}
+
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *ServicePortRequestPortsInner) GetProtocol() PortProtocolEnum {
 	if o == nil || o.Protocol == nil {
@@ -244,6 +312,12 @@ func (o ServicePortRequestPortsInner) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsDefault != nil {
 		toSerialize["is_default"] = o.IsDefault
+	}
+	if o.HasReadinessProbe != nil {
+		toSerialize["has_readiness_probe"] = o.HasReadinessProbe
+	}
+	if o.HasLivenessProbe != nil {
+		toSerialize["has_liveness_probe"] = o.HasLivenessProbe
 	}
 	if o.Protocol != nil {
 		toSerialize["protocol"] = o.Protocol

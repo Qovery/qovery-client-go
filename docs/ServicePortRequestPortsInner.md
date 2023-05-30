@@ -8,7 +8,9 @@ Name | Type | Description | Notes
 **InternalPort** | **int32** | The listening port of your service. | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
-**IsDefault** | Pointer to **bool** | is the default port to use for domain &amp; probes check | [optional] 
+**IsDefault** | Pointer to **bool** | is the default port to use for domain | [optional] 
+**HasReadinessProbe** | Pointer to **bool** | is port to use for probe readiness check | [optional] 
+**HasLivenessProbe** | Pointer to **bool** | is port to use for probe liveness check | [optional] 
 **Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to PORTPROTOCOLENUM_HTTP]
 
 ## Methods
@@ -144,6 +146,56 @@ SetIsDefault sets IsDefault field to given value.
 `func (o *ServicePortRequestPortsInner) HasIsDefault() bool`
 
 HasIsDefault returns a boolean if a field has been set.
+
+### GetHasReadinessProbe
+
+`func (o *ServicePortRequestPortsInner) GetHasReadinessProbe() bool`
+
+GetHasReadinessProbe returns the HasReadinessProbe field if non-nil, zero value otherwise.
+
+### GetHasReadinessProbeOk
+
+`func (o *ServicePortRequestPortsInner) GetHasReadinessProbeOk() (*bool, bool)`
+
+GetHasReadinessProbeOk returns a tuple with the HasReadinessProbe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasReadinessProbe
+
+`func (o *ServicePortRequestPortsInner) SetHasReadinessProbe(v bool)`
+
+SetHasReadinessProbe sets HasReadinessProbe field to given value.
+
+### HasHasReadinessProbe
+
+`func (o *ServicePortRequestPortsInner) HasHasReadinessProbe() bool`
+
+HasHasReadinessProbe returns a boolean if a field has been set.
+
+### GetHasLivenessProbe
+
+`func (o *ServicePortRequestPortsInner) GetHasLivenessProbe() bool`
+
+GetHasLivenessProbe returns the HasLivenessProbe field if non-nil, zero value otherwise.
+
+### GetHasLivenessProbeOk
+
+`func (o *ServicePortRequestPortsInner) GetHasLivenessProbeOk() (*bool, bool)`
+
+GetHasLivenessProbeOk returns a tuple with the HasLivenessProbe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasLivenessProbe
+
+`func (o *ServicePortRequestPortsInner) SetHasLivenessProbe(v bool)`
+
+SetHasLivenessProbe sets HasLivenessProbe field to given value.
+
+### HasHasLivenessProbe
+
+`func (o *ServicePortRequestPortsInner) HasHasLivenessProbe() bool`
+
+HasHasLivenessProbe returns a boolean if a field has been set.
 
 ### GetProtocol
 

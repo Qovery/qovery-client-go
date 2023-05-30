@@ -22,11 +22,13 @@ type PortProtocolEnum string
 // List of PortProtocolEnum
 const (
 	PORTPROTOCOLENUM_HTTP PortProtocolEnum = "HTTP"
+	PORTPROTOCOLENUM_GRPC PortProtocolEnum = "GRPC"
 )
 
 // All allowed values of PortProtocolEnum enum
 var AllowedPortProtocolEnumEnumValues = []PortProtocolEnum{
 	"HTTP",
+	"GRPC",
 }
 
 func (v *PortProtocolEnum) UnmarshalJSON(src []byte) error {
