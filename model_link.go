@@ -17,7 +17,10 @@ import (
 
 // Link struct for Link
 type Link struct {
-	Url *string `json:"url,omitempty"`
+	Url            *string `json:"url,omitempty"`
+	Port           *int32  `json:"port,omitempty"`
+	IsQoveryDomain *bool   `json:"is_qovery_domain,omitempty"`
+	IsDefault      *bool   `json:"is_default,omitempty"`
 }
 
 // NewLink instantiates a new Link object
@@ -69,10 +72,115 @@ func (o *Link) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetPort returns the Port field value if set, zero value otherwise.
+func (o *Link) GetPort() int32 {
+	if o == nil || o.Port == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Link) GetPortOk() (*int32, bool) {
+	if o == nil || o.Port == nil {
+		return nil, false
+	}
+	return o.Port, true
+}
+
+// HasPort returns a boolean if a field has been set.
+func (o *Link) HasPort() bool {
+	if o != nil && o.Port != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPort gets a reference to the given int32 and assigns it to the Port field.
+func (o *Link) SetPort(v int32) {
+	o.Port = &v
+}
+
+// GetIsQoveryDomain returns the IsQoveryDomain field value if set, zero value otherwise.
+func (o *Link) GetIsQoveryDomain() bool {
+	if o == nil || o.IsQoveryDomain == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsQoveryDomain
+}
+
+// GetIsQoveryDomainOk returns a tuple with the IsQoveryDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Link) GetIsQoveryDomainOk() (*bool, bool) {
+	if o == nil || o.IsQoveryDomain == nil {
+		return nil, false
+	}
+	return o.IsQoveryDomain, true
+}
+
+// HasIsQoveryDomain returns a boolean if a field has been set.
+func (o *Link) HasIsQoveryDomain() bool {
+	if o != nil && o.IsQoveryDomain != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsQoveryDomain gets a reference to the given bool and assigns it to the IsQoveryDomain field.
+func (o *Link) SetIsQoveryDomain(v bool) {
+	o.IsQoveryDomain = &v
+}
+
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *Link) GetIsDefault() bool {
+	if o == nil || o.IsDefault == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Link) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || o.IsDefault == nil {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *Link) HasIsDefault() bool {
+	if o != nil && o.IsDefault != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *Link) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
 func (o Link) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
+	}
+	if o.Port != nil {
+		toSerialize["port"] = o.Port
+	}
+	if o.IsQoveryDomain != nil {
+		toSerialize["is_qovery_domain"] = o.IsQoveryDomain
+	}
+	if o.IsDefault != nil {
+		toSerialize["is_default"] = o.IsDefault
 	}
 	return json.Marshal(toSerialize)
 }

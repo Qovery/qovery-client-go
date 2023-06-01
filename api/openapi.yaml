@@ -16736,16 +16736,31 @@ components:
       type: string
     Link:
       example:
+        is_qovery_domain: true
+        port: 0
+        is_default: true
         url: url
       properties:
         url:
           type: string
+        port:
+          type: integer
+        is_qovery_domain:
+          type: boolean
+        is_default:
+          type: boolean
       type: object
     LinkResponseList:
       example:
         results:
-        - url: url
-        - url: url
+        - is_qovery_domain: true
+          port: 0
+          is_default: true
+          url: url
+        - is_qovery_domain: true
+          port: 0
+          is_default: true
+          url: url
       properties:
         results:
           items:
