@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | Pointer to **string** |  | [optional] 
-**Port** | Pointer to **int32** |  | [optional] 
+**InternalPort** | Pointer to **int32** |  | [optional] 
+**ExternalPort** | Pointer to **int32** |  | [optional] 
 **IsQoveryDomain** | Pointer to **bool** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
 
@@ -53,30 +54,55 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
-### GetPort
+### GetInternalPort
 
-`func (o *Link) GetPort() int32`
+`func (o *Link) GetInternalPort() int32`
 
-GetPort returns the Port field if non-nil, zero value otherwise.
+GetInternalPort returns the InternalPort field if non-nil, zero value otherwise.
 
-### GetPortOk
+### GetInternalPortOk
 
-`func (o *Link) GetPortOk() (*int32, bool)`
+`func (o *Link) GetInternalPortOk() (*int32, bool)`
 
-GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
+GetInternalPortOk returns a tuple with the InternalPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPort
+### SetInternalPort
 
-`func (o *Link) SetPort(v int32)`
+`func (o *Link) SetInternalPort(v int32)`
 
-SetPort sets Port field to given value.
+SetInternalPort sets InternalPort field to given value.
 
-### HasPort
+### HasInternalPort
 
-`func (o *Link) HasPort() bool`
+`func (o *Link) HasInternalPort() bool`
 
-HasPort returns a boolean if a field has been set.
+HasInternalPort returns a boolean if a field has been set.
+
+### GetExternalPort
+
+`func (o *Link) GetExternalPort() int32`
+
+GetExternalPort returns the ExternalPort field if non-nil, zero value otherwise.
+
+### GetExternalPortOk
+
+`func (o *Link) GetExternalPortOk() (*int32, bool)`
+
+GetExternalPortOk returns a tuple with the ExternalPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalPort
+
+`func (o *Link) SetExternalPort(v int32)`
+
+SetExternalPort sets ExternalPort field to given value.
+
+### HasExternalPort
+
+`func (o *Link) HasExternalPort() bool`
+
+HasExternalPort returns a boolean if a field has been set.
 
 ### GetIsQoveryDomain
 

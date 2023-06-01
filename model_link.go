@@ -18,7 +18,8 @@ import (
 // Link struct for Link
 type Link struct {
 	Url            *string `json:"url,omitempty"`
-	Port           *int32  `json:"port,omitempty"`
+	InternalPort   *int32  `json:"internal_port,omitempty"`
+	ExternalPort   *int32  `json:"external_port,omitempty"`
 	IsQoveryDomain *bool   `json:"is_qovery_domain,omitempty"`
 	IsDefault      *bool   `json:"is_default,omitempty"`
 }
@@ -72,36 +73,68 @@ func (o *Link) SetUrl(v string) {
 	o.Url = &v
 }
 
-// GetPort returns the Port field value if set, zero value otherwise.
-func (o *Link) GetPort() int32 {
-	if o == nil || o.Port == nil {
+// GetInternalPort returns the InternalPort field value if set, zero value otherwise.
+func (o *Link) GetInternalPort() int32 {
+	if o == nil || o.InternalPort == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Port
+	return *o.InternalPort
 }
 
-// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// GetInternalPortOk returns a tuple with the InternalPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+func (o *Link) GetInternalPortOk() (*int32, bool) {
+	if o == nil || o.InternalPort == nil {
 		return nil, false
 	}
-	return o.Port, true
+	return o.InternalPort, true
 }
 
-// HasPort returns a boolean if a field has been set.
-func (o *Link) HasPort() bool {
-	if o != nil && o.Port != nil {
+// HasInternalPort returns a boolean if a field has been set.
+func (o *Link) HasInternalPort() bool {
+	if o != nil && o.InternalPort != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *Link) SetPort(v int32) {
-	o.Port = &v
+// SetInternalPort gets a reference to the given int32 and assigns it to the InternalPort field.
+func (o *Link) SetInternalPort(v int32) {
+	o.InternalPort = &v
+}
+
+// GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
+func (o *Link) GetExternalPort() int32 {
+	if o == nil || o.ExternalPort == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ExternalPort
+}
+
+// GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Link) GetExternalPortOk() (*int32, bool) {
+	if o == nil || o.ExternalPort == nil {
+		return nil, false
+	}
+	return o.ExternalPort, true
+}
+
+// HasExternalPort returns a boolean if a field has been set.
+func (o *Link) HasExternalPort() bool {
+	if o != nil && o.ExternalPort != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalPort gets a reference to the given int32 and assigns it to the ExternalPort field.
+func (o *Link) SetExternalPort(v int32) {
+	o.ExternalPort = &v
 }
 
 // GetIsQoveryDomain returns the IsQoveryDomain field value if set, zero value otherwise.
@@ -173,8 +206,11 @@ func (o Link) MarshalJSON() ([]byte, error) {
 	if o.Url != nil {
 		toSerialize["url"] = o.Url
 	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
+	if o.InternalPort != nil {
+		toSerialize["internal_port"] = o.InternalPort
+	}
+	if o.ExternalPort != nil {
+		toSerialize["external_port"] = o.ExternalPort
 	}
 	if o.IsQoveryDomain != nil {
 		toSerialize["is_qovery_domain"] = o.IsQoveryDomain

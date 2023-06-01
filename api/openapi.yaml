@@ -16737,13 +16737,16 @@ components:
     Link:
       example:
         is_qovery_domain: true
-        port: 0
+        external_port: 6
+        internal_port: 0
         is_default: true
         url: url
       properties:
         url:
           type: string
-        port:
+        internal_port:
+          type: integer
+        external_port:
           type: integer
         is_qovery_domain:
           type: boolean
@@ -16754,11 +16757,13 @@ components:
       example:
         results:
         - is_qovery_domain: true
-          port: 0
+          external_port: 6
+          internal_port: 0
           is_default: true
           url: url
         - is_qovery_domain: true
-          port: 0
+          external_port: 6
+          internal_port: 0
           is_default: true
           url: url
       properties:
