@@ -18409,7 +18409,7 @@ components:
       - RESTART_QUEUED
       - RESTARTING
       - RESTARTED
-      - RESTARTED_ERROR
+      - RESTART_ERROR
       type: string
     Status:
       example:
