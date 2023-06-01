@@ -25,6 +25,7 @@ const (
 	ORGANIZATIONEVENTORIGIN_CLI                OrganizationEventOrigin = "CLI"
 	ORGANIZATIONEVENTORIGIN_CONSOLE            OrganizationEventOrigin = "CONSOLE"
 	ORGANIZATIONEVENTORIGIN_GIT                OrganizationEventOrigin = "GIT"
+	ORGANIZATIONEVENTORIGIN_QOVERY_INTERNAL    OrganizationEventOrigin = "QOVERY_INTERNAL"
 	ORGANIZATIONEVENTORIGIN_TERRAFORM_PROVIDER OrganizationEventOrigin = "TERRAFORM_PROVIDER"
 )
 
@@ -34,6 +35,7 @@ var AllowedOrganizationEventOriginEnumValues = []OrganizationEventOrigin{
 	"CLI",
 	"CONSOLE",
 	"GIT",
+	"QOVERY_INTERNAL",
 	"TERRAFORM_PROVIDER",
 }
 

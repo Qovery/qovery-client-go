@@ -17750,6 +17750,7 @@ components:
       - CLI
       - CONSOLE
       - GIT
+      - QOVERY_INTERNAL
       - TERRAFORM_PROVIDER
       example: API
       type: string
