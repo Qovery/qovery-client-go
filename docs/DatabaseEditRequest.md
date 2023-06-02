@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 250]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB   Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] 
+**InstanceType** | Pointer to **string** | Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB. | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetStorage sets Storage field to given value.
 `func (o *DatabaseEditRequest) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
+
+### GetInstanceType
+
+`func (o *DatabaseEditRequest) GetInstanceType() string`
+
+GetInstanceType returns the InstanceType field if non-nil, zero value otherwise.
+
+### GetInstanceTypeOk
+
+`func (o *DatabaseEditRequest) GetInstanceTypeOk() (*string, bool)`
+
+GetInstanceTypeOk returns a tuple with the InstanceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstanceType
+
+`func (o *DatabaseEditRequest) SetInstanceType(v string)`
+
+SetInstanceType sets InstanceType field to given value.
+
+### HasInstanceType
+
+`func (o *DatabaseEditRequest) HasInstanceType() bool`
+
+HasInstanceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

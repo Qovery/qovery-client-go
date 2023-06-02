@@ -29,6 +29,8 @@ type DatabaseEditRequest struct {
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
+	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
+	InstanceType *string `json:"instance_type,omitempty"`
 }
 
 // NewDatabaseEditRequest instantiates a new DatabaseEditRequest object
@@ -280,6 +282,38 @@ func (o *DatabaseEditRequest) SetStorage(v int32) {
 	o.Storage = &v
 }
 
+// GetInstanceType returns the InstanceType field value if set, zero value otherwise.
+func (o *DatabaseEditRequest) GetInstanceType() string {
+	if o == nil || o.InstanceType == nil {
+		var ret string
+		return ret
+	}
+	return *o.InstanceType
+}
+
+// GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseEditRequest) GetInstanceTypeOk() (*string, bool) {
+	if o == nil || o.InstanceType == nil {
+		return nil, false
+	}
+	return o.InstanceType, true
+}
+
+// HasInstanceType returns a boolean if a field has been set.
+func (o *DatabaseEditRequest) HasInstanceType() bool {
+	if o != nil && o.InstanceType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
+func (o *DatabaseEditRequest) SetInstanceType(v string) {
+	o.InstanceType = &v
+}
+
 func (o DatabaseEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -302,6 +336,9 @@ func (o DatabaseEditRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Storage != nil {
 		toSerialize["storage"] = o.Storage
+	}
+	if o.InstanceType != nil {
+		toSerialize["instance_type"] = o.InstanceType
 	}
 	return json.Marshal(toSerialize)
 }

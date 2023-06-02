@@ -14937,6 +14937,7 @@ components:
         cpu: 1250
         storage: 4
         version: "10.1"
+        instance_type: db.t3.medium
       properties:
         name:
           description: name is case-insensitive
@@ -14964,6 +14965,12 @@ components:
           description: unit is GB
           example: 4
           type: integer
+        instance_type:
+          description: "Database instance type to be used for this database. The list\
+            \ of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}.\
+            \ This field SHOULD NOT be set for container DB."
+          example: db.t3.medium
+          type: string
       type: object
     DatabaseModeEnum:
       enum:
