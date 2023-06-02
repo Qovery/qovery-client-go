@@ -14952,13 +14952,16 @@ components:
           $ref: '#/components/schemas/DatabaseAccessibilityEnum'
         cpu:
           default: 250
-          description: unit is millicores (m). 1000m = 1 cpu
+          description: |
+            unit is millicores (m). 1000m = 1 cpu.
+            This field will be ignored for managed DB (instance type will be used instead).
           example: 1250
           type: integer
         memory:
-          description: "unit is MB. 1024 MB = 1GB  \nDefault value is linked to the\
-            \ database type:\n- MANAGED: 100\n- CONTAINER\n  - POSTGRES: 100\n  -\
-            \ REDIS: 100\n  - MYSQL: 512\n  - MONGODB: 256\n"
+          description: "unit is MB. 1024 MB = 1GB\nThis field will be ignored for\
+            \ managed DB (instance type will be used instead).\nDefault value is linked\
+            \ to the database type:\n- MANAGED: 100\n- CONTAINER\n  - POSTGRES: 100\n\
+            \  - REDIS: 100\n  - MYSQL: 512\n  - MONGODB: 256\n"
           example: 1024
           type: integer
         storage:
@@ -15007,7 +15010,9 @@ components:
           $ref: '#/components/schemas/DatabaseAccessibilityEnum'
         cpu:
           default: 250
-          description: unit is millicores (m). 1000m = 1 cpu
+          description: |
+            unit is millicores (m). 1000m = 1 cpu
+            This field will be ignored for managed DB (instance type will be used instead).
           example: 1250
           type: integer
         instance_type:
@@ -15017,9 +15022,10 @@ components:
           example: db.t3.medium
           type: string
         memory:
-          description: "unit is MB. 1024 MB = 1GB  \nDefault value is linked to the\
-            \ database type:\n- MANAGED: `100`\n- CONTAINER\n  - POSTGRES: `100`\n\
-            \  - REDIS: `100`\n  - MYSQL: `512`\n  - MONGODB: `256`\n"
+          description: "unit is MB. 1024 MB = 1GB\nThis field will be ignored for\
+            \ managed DB (instance type will be used instead).\nDefault value is linked\
+            \ to the database type:\n- MANAGED: `100`\n- CONTAINER\n  - POSTGRES:\
+            \ `100`\n  - REDIS: `100`\n  - MYSQL: `512`\n  - MONGODB: `256`\n"
           example: 1024
           type: integer
         storage:

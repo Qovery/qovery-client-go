@@ -29,11 +29,11 @@ type Database struct {
 	Version       string                     `json:"version"`
 	Mode          DatabaseModeEnum           `json:"mode"`
 	Accessibility *DatabaseAccessibilityEnum `json:"accessibility,omitempty"`
-	// unit is millicores (m). 1000m = 1 cpu
+	// unit is millicores (m). 1000m = 1 cpu This field will be ignored for managed DB (instance type will be used instead).
 	Cpu *int32 `json:"cpu,omitempty"`
 	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field is null for container DB.
 	InstanceType *string `json:"instance_type,omitempty"`
-	// unit is MB. 1024 MB = 1GB   Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
+	// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
 	Storage     *int32           `json:"storage,omitempty"`

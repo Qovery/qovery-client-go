@@ -23,9 +23,9 @@ type DatabaseEditRequest struct {
 	Description   *string                    `json:"description,omitempty"`
 	Version       *string                    `json:"version,omitempty"`
 	Accessibility *DatabaseAccessibilityEnum `json:"accessibility,omitempty"`
-	// unit is millicores (m). 1000m = 1 cpu
+	// unit is millicores (m). 1000m = 1 cpu. This field will be ignored for managed DB (instance type will be used instead).
 	Cpu *int32 `json:"cpu,omitempty"`
-	// unit is MB. 1024 MB = 1GB   Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256
+	// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
