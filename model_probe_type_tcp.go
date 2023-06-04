@@ -17,6 +17,7 @@ import (
 
 // ProbeTypeTcp struct for ProbeTypeTcp
 type ProbeTypeTcp struct {
+	Port *int32         `json:"port,omitempty"`
 	Host NullableString `json:"host,omitempty"`
 }
 
@@ -35,6 +36,38 @@ func NewProbeTypeTcp() *ProbeTypeTcp {
 func NewProbeTypeTcpWithDefaults() *ProbeTypeTcp {
 	this := ProbeTypeTcp{}
 	return &this
+}
+
+// GetPort returns the Port field value if set, zero value otherwise.
+func (o *ProbeTypeTcp) GetPort() int32 {
+	if o == nil || o.Port == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProbeTypeTcp) GetPortOk() (*int32, bool) {
+	if o == nil || o.Port == nil {
+		return nil, false
+	}
+	return o.Port, true
+}
+
+// HasPort returns a boolean if a field has been set.
+func (o *ProbeTypeTcp) HasPort() bool {
+	if o != nil && o.Port != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPort gets a reference to the given int32 and assigns it to the Port field.
+func (o *ProbeTypeTcp) SetPort(v int32) {
+	o.Port = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -82,6 +115,9 @@ func (o *ProbeTypeTcp) UnsetHost() {
 
 func (o ProbeTypeTcp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Port != nil {
+		toSerialize["port"] = o.Port
+	}
 	if o.Host.IsSet() {
 		toSerialize["host"] = o.Host.Get()
 	}

@@ -19,6 +19,7 @@ import (
 type ProbeTypeHttp struct {
 	Path   *string `json:"path,omitempty"`
 	Scheme *string `json:"scheme,omitempty"`
+	Port   *int32  `json:"port,omitempty"`
 }
 
 // NewProbeTypeHttp instantiates a new ProbeTypeHttp object
@@ -110,6 +111,38 @@ func (o *ProbeTypeHttp) SetScheme(v string) {
 	o.Scheme = &v
 }
 
+// GetPort returns the Port field value if set, zero value otherwise.
+func (o *ProbeTypeHttp) GetPort() int32 {
+	if o == nil || o.Port == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProbeTypeHttp) GetPortOk() (*int32, bool) {
+	if o == nil || o.Port == nil {
+		return nil, false
+	}
+	return o.Port, true
+}
+
+// HasPort returns a boolean if a field has been set.
+func (o *ProbeTypeHttp) HasPort() bool {
+	if o != nil && o.Port != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPort gets a reference to the given int32 and assigns it to the Port field.
+func (o *ProbeTypeHttp) SetPort(v int32) {
+	o.Port = &v
+}
+
 func (o ProbeTypeHttp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Path != nil {
@@ -117,6 +150,9 @@ func (o ProbeTypeHttp) MarshalJSON() ([]byte, error) {
 	}
 	if o.Scheme != nil {
 		toSerialize["scheme"] = o.Scheme
+	}
+	if o.Port != nil {
+		toSerialize["port"] = o.Port
 	}
 	return json.Marshal(toSerialize)
 }

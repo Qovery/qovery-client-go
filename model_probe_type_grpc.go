@@ -18,6 +18,7 @@ import (
 // ProbeTypeGrpc struct for ProbeTypeGrpc
 type ProbeTypeGrpc struct {
 	Service NullableString `json:"service,omitempty"`
+	Port    *int32         `json:"port,omitempty"`
 }
 
 // NewProbeTypeGrpc instantiates a new ProbeTypeGrpc object
@@ -80,10 +81,45 @@ func (o *ProbeTypeGrpc) UnsetService() {
 	o.Service.Unset()
 }
 
+// GetPort returns the Port field value if set, zero value otherwise.
+func (o *ProbeTypeGrpc) GetPort() int32 {
+	if o == nil || o.Port == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Port
+}
+
+// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProbeTypeGrpc) GetPortOk() (*int32, bool) {
+	if o == nil || o.Port == nil {
+		return nil, false
+	}
+	return o.Port, true
+}
+
+// HasPort returns a boolean if a field has been set.
+func (o *ProbeTypeGrpc) HasPort() bool {
+	if o != nil && o.Port != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPort gets a reference to the given int32 and assigns it to the Port field.
+func (o *ProbeTypeGrpc) SetPort(v int32) {
+	o.Port = &v
+}
+
 func (o ProbeTypeGrpc) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Service.IsSet() {
 		toSerialize["service"] = o.Service.Get()
+	}
+	if o.Port != nil {
+		toSerialize["port"] = o.Port
 	}
 	return json.Marshal(toSerialize)
 }

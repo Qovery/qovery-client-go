@@ -13169,12 +13169,6 @@ components:
         is_default:
           description: is the default port to use for domain
           type: boolean
-        has_readiness_probe:
-          description: is port to use for probe readiness check
-          type: boolean
-        has_liveness_probe:
-          description: is port to use for probe liveness check
-          type: boolean
         protocol:
           $ref: '#/components/schemas/PortProtocolEnum'
       required:
@@ -19131,12 +19125,6 @@ components:
         is_default:
           description: is the default port to use for domain
           type: boolean
-        has_readiness_probe:
-          description: is port to use for probe readiness check
-          type: boolean
-        has_liveness_probe:
-          description: is port to use for probe liveness check
-          type: boolean
         protocol:
           $ref: '#/components/schemas/PortProtocolEnum'
       required:
@@ -20902,6 +20890,8 @@ components:
     Probe_type_tcp:
       nullable: true
       properties:
+        port:
+          type: integer
         host:
           nullable: true
           type: string
@@ -20915,6 +20905,8 @@ components:
         scheme:
           default: HTTP
           type: string
+        port:
+          type: integer
       type: object
     Probe_type_exec:
       nullable: true
@@ -20930,6 +20922,8 @@ components:
         service:
           nullable: true
           type: string
+        port:
+          type: integer
       type: object
     Probe_type:
       properties:

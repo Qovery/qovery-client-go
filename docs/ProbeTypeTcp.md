@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Port** | Pointer to **int32** |  | [optional] 
 **Host** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewProbeTypeTcpWithDefaults instantiates a new ProbeTypeTcp object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPort
+
+`func (o *ProbeTypeTcp) GetPort() int32`
+
+GetPort returns the Port field if non-nil, zero value otherwise.
+
+### GetPortOk
+
+`func (o *ProbeTypeTcp) GetPortOk() (*int32, bool)`
+
+GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPort
+
+`func (o *ProbeTypeTcp) SetPort(v int32)`
+
+SetPort sets Port field to given value.
+
+### HasPort
+
+`func (o *ProbeTypeTcp) HasPort() bool`
+
+HasPort returns a boolean if a field has been set.
 
 ### GetHost
 
