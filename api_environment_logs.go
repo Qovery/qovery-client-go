@@ -130,6 +130,12 @@ type ApiListEnvironmentLogsRequest struct {
 	ctx           context.Context
 	ApiService    *EnvironmentLogsApiService
 	environmentId string
+	version       *string
+}
+
+func (r ApiListEnvironmentLogsRequest) Version(version string) ApiListEnvironmentLogsRequest {
+	r.version = &version
+	return r
 }
 
 func (r ApiListEnvironmentLogsRequest) Execute() ([]EnvironmentLogs, *http.Response, error) {
@@ -175,6 +181,9 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogsExecute(r ApiListEnvironm
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.version != nil {
+		localVarQueryParams.Add("version", parameterToString(*r.version, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

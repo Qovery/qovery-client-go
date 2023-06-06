@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## ListEnvironmentLogs
 
-> []EnvironmentLogs ListEnvironmentLogs(ctx, environmentId).Execute()
+> []EnvironmentLogs ListEnvironmentLogs(ctx, environmentId).Version(version).Execute()
 
 List environment deployment logs v2
 
@@ -101,10 +101,11 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    version := "version_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentLogsApi.ListEnvironmentLogs(context.Background(), environmentId).Execute()
+    resp, r, err := apiClient.EnvironmentLogsApi.ListEnvironmentLogs(context.Background(), environmentId).Version(version).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentLogsApi.ListEnvironmentLogs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,6 +131,7 @@ Other parameters are passed through a pointer to a apiListEnvironmentLogsRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **version** | **string** |  | 
 
 ### Return type
 
