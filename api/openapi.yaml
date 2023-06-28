@@ -6727,6 +6727,46 @@ paths:
       summary: "List eligible database types, versions and modes for the environment"
       tags:
       - Databases
+  /environment/{environmentId}/terraformExport:
+    get:
+      operationId: exportEnvironmentConfigurationIntoTerraform
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: export Secrets from configuration and include them into Terraform
+          export
+        explode: true
+        in: query
+        name: exportSecrets
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/zip:
+              schema:
+                format: binary
+                type: string
+          description: Export full environment and its resources into Terraform manifests
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Export full environment and its resources into Terraform manifests
+      tags:
+      - Applications
   /defaultApplicationAdvancedSettings:
     get:
       operationId: getDefaultApplicationAdvancedSettings
