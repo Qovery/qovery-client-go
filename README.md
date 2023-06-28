@@ -129,7 +129,6 @@ Class | Method | HTTP request | Description
 *ApplicationSecretApi* | [**EditApplicationSecret**](docs/ApplicationSecretApi.md#editapplicationsecret) | **Put** /application/{applicationId}/secret/{secretId} | Edit a secret belonging to the application
 *ApplicationSecretApi* | [**ListApplicationSecrets**](docs/ApplicationSecretApi.md#listapplicationsecrets) | **Get** /application/{applicationId}/secret | List application secrets
 *ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **Post** /environment/{environmentId}/application | Create an application
-*ApplicationsApi* | [**ExportEnvironmentConfigurationIntoTerraform**](docs/ApplicationsApi.md#exportenvironmentconfigurationintoterraform) | **Get** /environment/{environmentId}/terraformExport | Export full environment and its resources into Terraform manifests
 *ApplicationsApi* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsApi.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentScale**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentscale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
 *ApplicationsApi* | [**GetEnvironmentApplicationCurrentStorage**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentstorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
@@ -308,6 +307,7 @@ Class | Method | HTTP request | Description
 *EnvironmentDeploymentHistoryApi* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryApi.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
 *EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
 *EnvironmentDeploymentRuleApi* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
+*EnvironmentExportApi* | [**ExportEnvironmentConfigurationIntoTerraform**](docs/EnvironmentExportApi.md#exportenvironmentconfigurationintoterraform) | **Get** /environment/{environmentId}/terraformExport | Export full environment and its resources into Terraform manifests
 *EnvironmentLogsApi* | [**ListEnvironmentLog**](docs/EnvironmentLogsApi.md#listenvironmentlog) | **Get** /environment/{environmentId}/log | List environment deployment logs
 *EnvironmentLogsApi* | [**ListEnvironmentLogs**](docs/EnvironmentLogsApi.md#listenvironmentlogs) | **Get** /environment/{environmentId}/logs | List environment deployment logs v2
 *EnvironmentMainCallsApi* | [**DeleteEnvironment**](docs/EnvironmentMainCallsApi.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment

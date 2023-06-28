@@ -132,6 +132,8 @@ type APIClient struct {
 
 	EnvironmentDeploymentRuleApi *EnvironmentDeploymentRuleApiService
 
+	EnvironmentExportApi *EnvironmentExportApiService
+
 	EnvironmentLogsApi *EnvironmentLogsApiService
 
 	EnvironmentMainCallsApi *EnvironmentMainCallsApiService
@@ -248,6 +250,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EnvironmentActionsApi = (*EnvironmentActionsApiService)(&c.common)
 	c.EnvironmentDeploymentHistoryApi = (*EnvironmentDeploymentHistoryApiService)(&c.common)
 	c.EnvironmentDeploymentRuleApi = (*EnvironmentDeploymentRuleApiService)(&c.common)
+	c.EnvironmentExportApi = (*EnvironmentExportApiService)(&c.common)
 	c.EnvironmentLogsApi = (*EnvironmentLogsApiService)(&c.common)
 	c.EnvironmentMainCallsApi = (*EnvironmentMainCallsApiService)(&c.common)
 	c.EnvironmentSecretApi = (*EnvironmentSecretApiService)(&c.common)

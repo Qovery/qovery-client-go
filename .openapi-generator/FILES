@@ -44,6 +44,7 @@ api_environment.go
 api_environment_actions.go
 api_environment_deployment_history.go
 api_environment_deployment_rule.go
+api_environment_export.go
 api_environment_logs.go
 api_environment_main_calls.go
 api_environment_secret.go
@@ -307,6 +308,7 @@ docs/EnvironmentDeploymentRuleAllOf.md
 docs/EnvironmentDeploymentRuleApi.md
 docs/EnvironmentDeploymentRuleEditRequest.md
 docs/EnvironmentEditRequest.md
+docs/EnvironmentExportApi.md
 docs/EnvironmentLog.md
 docs/EnvironmentLogPaginatedResponseList.md
 docs/EnvironmentLogPaginatedResponseListAllOf.md

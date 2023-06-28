@@ -6766,7 +6766,7 @@ paths:
           description: Resource not found
       summary: Export full environment and its resources into Terraform manifests
       tags:
-      - Applications
+      - Environment Export
   /defaultApplicationAdvancedSettings:
     get:
       operationId: getDefaultApplicationAdvancedSettings
