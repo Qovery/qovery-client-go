@@ -21158,6 +21158,7 @@ x-tagGroups:
   - Environment Deployment Rule
   - Environment Variable
   - Environment Secret
+  - Environment Export
 - name: Deployment Stage
   tags:
   - Deployment Stage Main Calls
