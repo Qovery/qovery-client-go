@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | **string** |  | 
+**Value** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewValue
 
-`func NewValue(value string, ) *Value`
+`func NewValue() *Value`
 
 NewValue instantiates a new Value object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### HasValue
+
+`func (o *Value) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

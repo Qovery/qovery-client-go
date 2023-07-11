@@ -36,7 +36,7 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example", "Value_example") // EnvironmentVariableRequest |  (optional)
+    environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example") // EnvironmentVariableRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -184,7 +184,7 @@ import (
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
     environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-    value := *openapiclient.NewValue("Value_example") // Value |  (optional)
+    value := *openapiclient.NewValue() // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

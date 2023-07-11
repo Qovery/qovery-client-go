@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Key** | **string** | key is case sensitive. | 
-**Value** | **string** | value of the env variable. | 
+**Value** | Pointer to **string** | value of the env variable. | [optional] 
 **MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
 **OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironmentVariable
 
-`func NewEnvironmentVariable(id string, createdAt time.Time, key string, value string, scope APIVariableScopeEnum, ) *EnvironmentVariable`
+`func NewEnvironmentVariable(id string, createdAt time.Time, key string, scope APIVariableScopeEnum, ) *EnvironmentVariable`
 
 NewEnvironmentVariable instantiates a new EnvironmentVariable object
 This constructor will assign default values to properties that have it defined,
@@ -142,6 +142,11 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### HasValue
+
+`func (o *EnvironmentVariable) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
 
 ### GetMountPath
 

@@ -183,7 +183,7 @@ import (
 func main() {
     projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-    value := *openapiclient.NewValue("Value_example") // Value |  (optional)
+    value := *openapiclient.NewValue() // Value |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

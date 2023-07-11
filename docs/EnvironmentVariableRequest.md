@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | key is case sensitive. | 
-**Value** | **string** | value of the env variable. | 
+**Value** | Pointer to **string** | value of the env variable. | [optional] 
 **MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
 
 ## Methods
 
 ### NewEnvironmentVariableRequest
 
-`func NewEnvironmentVariableRequest(key string, value string, ) *EnvironmentVariableRequest`
+`func NewEnvironmentVariableRequest(key string, ) *EnvironmentVariableRequest`
 
 NewEnvironmentVariableRequest instantiates a new EnvironmentVariableRequest object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +66,11 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### HasValue
+
+`func (o *EnvironmentVariableRequest) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
 
 ### GetMountPath
 

@@ -16064,7 +16064,6 @@ components:
           type: string
       required:
       - key
-      - value
       type: object
     EnvironmentVariableResponseList:
       example:
@@ -18712,8 +18711,6 @@ components:
       properties:
         value:
           type: string
-      required:
-      - value
       type: object
     VariableImport:
       example:
