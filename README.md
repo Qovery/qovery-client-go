@@ -395,6 +395,7 @@ Class | Method | HTTP request | Description
 *OrganizationCustomRoleApi* | [**EditOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#editorganizationcustomrole) | **Put** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
 *OrganizationCustomRoleApi* | [**GetOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#getorganizationcustomrole) | **Get** /organization/{organizationId}/customRole/{customRoleId} | Get an organization custom role 
 *OrganizationCustomRoleApi* | [**ListOrganizationCustomRoles**](docs/OrganizationCustomRoleApi.md#listorganizationcustomroles) | **Get** /organization/{organizationId}/customRole | List organization custom roles
+*OrganizationEventApi* | [**GetOrganizationEventTargets**](docs/OrganizationEventApi.md#getorganizationeventtargets) | **Get** /organization/{organizationId}/targets | Get available event targets to filter events
 *OrganizationEventApi* | [**GetOrganizationEvents**](docs/OrganizationEventApi.md#getorganizationevents) | **Get** /organization/{organizationId}/events | Get all events inside the organization
 *OrganizationMainCallsApi* | [**CreateOrganization**](docs/OrganizationMainCallsApi.md#createorganization) | **Post** /organization | Create an organization
 *OrganizationMainCallsApi* | [**DeleteOrganization**](docs/OrganizationMainCallsApi.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
@@ -486,7 +487,6 @@ Class | Method | HTTP request | Description
  - [ClusterAdvancedSettings](docs/ClusterAdvancedSettings.md)
  - [ClusterAllOf](docs/ClusterAllOf.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)
- - [ClusterCloudProviderInfoCredentials](docs/ClusterCloudProviderInfoCredentials.md)
  - [ClusterCloudProviderInfoRequest](docs/ClusterCloudProviderInfoRequest.md)
  - [ClusterCredentials](docs/ClusterCredentials.md)
  - [ClusterCredentialsResponseList](docs/ClusterCredentialsResponseList.md)
@@ -665,6 +665,8 @@ Class | Method | HTTP request | Description
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
  - [GetEnvironmentStatuses200Response](docs/GetEnvironmentStatuses200Response.md)
  - [GetEnvironmentStatusesWithStages200Response](docs/GetEnvironmentStatusesWithStages200Response.md)
+ - [GetOrganizationEventTargets200Response](docs/GetOrganizationEventTargets200Response.md)
+ - [GetOrganizationEventTargets200ResponseTargetsInner](docs/GetOrganizationEventTargets200ResponseTargetsInner.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitProviderEnum](docs/GitProviderEnum.md)

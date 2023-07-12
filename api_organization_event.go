@@ -23,6 +23,186 @@ import (
 // OrganizationEventApiService OrganizationEventApi service
 type OrganizationEventApiService service
 
+type ApiGetOrganizationEventTargetsRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationEventApiService
+	organizationId string
+	fromTimestamp  *string
+	toTimestamp    *string
+	eventType      *OrganizationEventType
+	targetType     *OrganizationEventTargetType
+	triggeredBy    *string
+	origin         *OrganizationEventOrigin
+	projectId      *string
+	environmentId  *string
+}
+
+// Display targets available since this timestamp.   A range of date can be specified by using &#x60;from-timestamp&#x60; with &#x60;to-timestamp&#x60; The format is a timestamp with nano precision
+func (r ApiGetOrganizationEventTargetsRequest) FromTimestamp(fromTimestamp string) ApiGetOrganizationEventTargetsRequest {
+	r.fromTimestamp = &fromTimestamp
+	return r
+}
+
+// Display targets triggered before this timestamp.   A range of date can be specified by using &#x60;to-timestamp&#x60; with &#x60;from-timestamp&#x60; The format is a timestamp with nano precision
+func (r ApiGetOrganizationEventTargetsRequest) ToTimestamp(toTimestamp string) ApiGetOrganizationEventTargetsRequest {
+	r.toTimestamp = &toTimestamp
+	return r
+}
+
+func (r ApiGetOrganizationEventTargetsRequest) EventType(eventType OrganizationEventType) ApiGetOrganizationEventTargetsRequest {
+	r.eventType = &eventType
+	return r
+}
+
+func (r ApiGetOrganizationEventTargetsRequest) TargetType(targetType OrganizationEventTargetType) ApiGetOrganizationEventTargetsRequest {
+	r.targetType = &targetType
+	return r
+}
+
+// Information about the owner of the event (user name / apitoken / automatic action)
+func (r ApiGetOrganizationEventTargetsRequest) TriggeredBy(triggeredBy string) ApiGetOrganizationEventTargetsRequest {
+	r.triggeredBy = &triggeredBy
+	return r
+}
+
+func (r ApiGetOrganizationEventTargetsRequest) Origin(origin OrganizationEventOrigin) ApiGetOrganizationEventTargetsRequest {
+	r.origin = &origin
+	return r
+}
+
+// Mandatory when requesting an environment or a service
+func (r ApiGetOrganizationEventTargetsRequest) ProjectId(projectId string) ApiGetOrganizationEventTargetsRequest {
+	r.projectId = &projectId
+	return r
+}
+
+// Mandatory when requesting a service
+func (r ApiGetOrganizationEventTargetsRequest) EnvironmentId(environmentId string) ApiGetOrganizationEventTargetsRequest {
+	r.environmentId = &environmentId
+	return r
+}
+
+func (r ApiGetOrganizationEventTargetsRequest) Execute() (*GetOrganizationEventTargets200Response, *http.Response, error) {
+	return r.ApiService.GetOrganizationEventTargetsExecute(r)
+}
+
+/*
+GetOrganizationEventTargets Get available event targets to filter events
+
+Get available event targets to filter events
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiGetOrganizationEventTargetsRequest
+*/
+func (a *OrganizationEventApiService) GetOrganizationEventTargets(ctx context.Context, organizationId string) ApiGetOrganizationEventTargetsRequest {
+	return ApiGetOrganizationEventTargetsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//  @return GetOrganizationEventTargets200Response
+func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGetOrganizationEventTargetsRequest) (*GetOrganizationEventTargets200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetOrganizationEventTargets200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEventApiService.GetOrganizationEventTargets")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/targets"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.fromTimestamp != nil {
+		localVarQueryParams.Add("fromTimestamp", parameterToString(*r.fromTimestamp, ""))
+	}
+	if r.toTimestamp != nil {
+		localVarQueryParams.Add("toTimestamp", parameterToString(*r.toTimestamp, ""))
+	}
+	if r.eventType != nil {
+		localVarQueryParams.Add("eventType", parameterToString(*r.eventType, ""))
+	}
+	if r.targetType != nil {
+		localVarQueryParams.Add("targetType", parameterToString(*r.targetType, ""))
+	}
+	if r.triggeredBy != nil {
+		localVarQueryParams.Add("triggeredBy", parameterToString(*r.triggeredBy, ""))
+	}
+	if r.origin != nil {
+		localVarQueryParams.Add("origin", parameterToString(*r.origin, ""))
+	}
+	if r.projectId != nil {
+		localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
+	}
+	if r.environmentId != nil {
+		localVarQueryParams.Add("environmentId", parameterToString(*r.environmentId, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetOrganizationEventsRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationEventApiService

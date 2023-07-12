@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to [**CloudProviderEnum**](CloudProviderEnum.md) |  | [optional] 
-**Credentials** | Pointer to [**ClusterCloudProviderInfoCredentials**](ClusterCloudProviderInfoCredentials.md) |  | [optional] 
+**Credentials** | Pointer to [**GetOrganizationEventTargets200ResponseTargetsInner**](GetOrganizationEventTargets200ResponseTargetsInner.md) |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasCloudProvider returns a boolean if a field has been set.
 
 ### GetCredentials
 
-`func (o *ClusterCloudProviderInfoRequest) GetCredentials() ClusterCloudProviderInfoCredentials`
+`func (o *ClusterCloudProviderInfoRequest) GetCredentials() GetOrganizationEventTargets200ResponseTargetsInner`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *ClusterCloudProviderInfoRequest) GetCredentialsOk() (*ClusterCloudProviderInfoCredentials, bool)`
+`func (o *ClusterCloudProviderInfoRequest) GetCredentialsOk() (*GetOrganizationEventTargets200ResponseTargetsInner, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *ClusterCloudProviderInfoRequest) SetCredentials(v ClusterCloudProviderInfoCredentials)`
+`func (o *ClusterCloudProviderInfoRequest) SetCredentials(v GetOrganizationEventTargets200ResponseTargetsInner)`
 
 SetCredentials sets Credentials field to given value.
 

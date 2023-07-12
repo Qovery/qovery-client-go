@@ -2963,6 +2963,106 @@ paths:
       summary: Get all events inside the organization
       tags:
       - Organization Event
+  /organization/{organizationId}/targets:
+    get:
+      description: Get available event targets to filter events
+      operationId: getOrganizationEventTargets
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Display targets available since this timestamp.  \nA range of\
+          \ date can be specified by using `from-timestamp` with `to-timestamp`\n\
+          The format is a timestamp with nano precision\n"
+        explode: true
+        in: query
+        name: fromTimestamp
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - description: "Display targets triggered before this timestamp.  \nA range\
+          \ of date can be specified by using `to-timestamp` with `from-timestamp`\n\
+          The format is a timestamp with nano precision\n"
+        explode: true
+        in: query
+        name: toTimestamp
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: eventType
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventType'
+        style: form
+      - explode: true
+        in: query
+        name: targetType
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventTargetType'
+        style: form
+      - description: Information about the owner of the event (user name / apitoken
+          / automatic action)
+        explode: true
+        in: query
+        name: triggeredBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: origin
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventOrigin'
+        style: form
+      - description: Mandatory when requesting an environment or a service
+        explode: true
+        in: query
+        name: projectId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Mandatory when requesting a service
+        explode: true
+        in: query
+        name: environmentId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getOrganizationEventTargets_200_response'
+          description: Get organization event targets
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get available event targets to filter events
+      tags:
+      - Organization Event
   /cloudProvider:
     get:
       operationId: listCloudProvider
@@ -13705,7 +13805,7 @@ components:
         cloud_provider:
           $ref: '#/components/schemas/CloudProviderEnum'
         credentials:
-          $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
+          $ref: '#/components/schemas/getOrganizationEventTargets_200_response_targets_inner'
         region:
           type: string
       type: object
@@ -13720,7 +13820,7 @@ components:
         cloud_provider:
           $ref: '#/components/schemas/CloudProviderEnum'
         credentials:
-          $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
+          $ref: '#/components/schemas/getOrganizationEventTargets_200_response_targets_inner'
         region:
           type: string
       type: object
@@ -18799,6 +18899,30 @@ components:
       required:
       - user_id
       type: object
+    getOrganizationEventTargets_200_response_targets_inner:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    getOrganizationEventTargets_200_response:
+      example:
+        targets:
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        targets:
+          items:
+            $ref: '#/components/schemas/getOrganizationEventTargets_200_response_targets_inner'
+          type: array
+      type: object
     getEnvironmentStatuses_200_response:
       example:
         databases:
@@ -19459,17 +19583,6 @@ components:
           type: string
         transmitter:
           $ref: '#/components/schemas/ClusterLogs_error_event_details_transmitter'
-      type: object
-    ClusterCloudProviderInfo_credentials:
-      example:
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
       type: object
     ClusterFeature_value:
       nullable: true
