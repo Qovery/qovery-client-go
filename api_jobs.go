@@ -23,6 +23,117 @@ import (
 // JobsApiService JobsApi service
 type JobsApiService service
 
+type ApiCloneJobRequest struct {
+	ctx             context.Context
+	ApiService      *JobsApiService
+	jobId           string
+	cloneJobRequest *CloneJobRequest
+}
+
+func (r ApiCloneJobRequest) CloneJobRequest(cloneJobRequest CloneJobRequest) ApiCloneJobRequest {
+	r.cloneJobRequest = &cloneJobRequest
+	return r
+}
+
+func (r ApiCloneJobRequest) Execute() (*JobResponse, *http.Response, error) {
+	return r.ApiService.CloneJobExecute(r)
+}
+
+/*
+CloneJob Clone job
+
+This will create a new job with the same configuration on the targeted environment Id.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiCloneJobRequest
+*/
+func (a *JobsApiService) CloneJob(ctx context.Context, jobId string) ApiCloneJobRequest {
+	return ApiCloneJobRequest{
+		ApiService: a,
+		ctx:        ctx,
+		jobId:      jobId,
+	}
+}
+
+// Execute executes the request
+//  @return JobResponse
+func (a *JobsApiService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *JobResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.CloneJob")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/job/{jobId}/clone"
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.cloneJobRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCreateJobRequest struct {
 	ctx           context.Context
 	ApiService    *JobsApiService

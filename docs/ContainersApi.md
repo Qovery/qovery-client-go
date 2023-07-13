@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AutoDeployContainerEnvironments**](ContainersApi.md#AutoDeployContainerEnvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
+[**CloneContainer**](ContainersApi.md#CloneContainer) | **Post** /container/{containerId}/clone | Clone container
 [**CreateContainer**](ContainersApi.md#CreateContainer) | **Post** /environment/{environmentId}/container | Create a container
 [**GetContainerRegistryContainerStatus**](ContainersApi.md#GetContainerRegistryContainerStatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
 [**GetDefaultContainerAdvancedSettings**](ContainersApi.md#GetDefaultContainerAdvancedSettings) | **Get** /defaultContainerAdvancedSettings | List default container advanced settings
@@ -73,6 +74,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Status**](Status.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CloneContainer
+
+> ContainerResponse CloneContainer(ctx, containerId).CloneContainerRequest(cloneContainerRequest).Execute()
+
+Clone container
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    cloneContainerRequest := *openapiclient.NewCloneContainerRequest("Name_example", "EnvironmentId_example") // CloneContainerRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersApi.CloneContainer(context.Background(), containerId).CloneContainerRequest(cloneContainerRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersApi.CloneContainer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloneContainer`: ContainerResponse
+    fmt.Fprintf(os.Stdout, "Response from `ContainersApi.CloneContainer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**containerId** | **string** | Container ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloneContainerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloneContainerRequest** | [**CloneContainerRequest**](CloneContainerRequest.md) |  | 
+
+### Return type
+
+[**ContainerResponse**](ContainerResponse.md)
 
 ### Authorization
 

@@ -4,6 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CloneApplication**](ApplicationsApi.md#CloneApplication) | **Post** /application/{applicationId}/clone | Clone application
 [**CreateApplication**](ApplicationsApi.md#CreateApplication) | **Post** /environment/{environmentId}/application | Create an application
 [**GetDefaultApplicationAdvancedSettings**](ApplicationsApi.md#GetDefaultApplicationAdvancedSettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 [**GetEnvironmentApplicationCurrentScale**](ApplicationsApi.md#GetEnvironmentApplicationCurrentScale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
@@ -12,6 +13,78 @@ Method | HTTP request | Description
 [**GetEnvironmentApplicationSupportedLanguages**](ApplicationsApi.md#GetEnvironmentApplicationSupportedLanguages) | **Get** /environment/{environmentId}/application/supportedLanguage | List supported languages
 [**ListApplication**](ApplicationsApi.md#ListApplication) | **Get** /environment/{environmentId}/application | List applications
 
+
+
+## CloneApplication
+
+> Application CloneApplication(ctx, applicationId).CloneApplicationRequest(cloneApplicationRequest).Execute()
+
+Clone application
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    cloneApplicationRequest := *openapiclient.NewCloneApplicationRequest("Name_example", "EnvironmentId_example") // CloneApplicationRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationsApi.CloneApplication(context.Background(), applicationId).CloneApplicationRequest(cloneApplicationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.CloneApplication``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloneApplication`: Application
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.CloneApplication`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**applicationId** | **string** | Application ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloneApplicationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloneApplicationRequest** | [**CloneApplicationRequest**](CloneApplicationRequest.md) |  | 
+
+### Return type
+
+[**Application**](Application.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateApplication

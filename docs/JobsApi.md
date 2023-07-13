@@ -4,11 +4,84 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CloneJob**](JobsApi.md#CloneJob) | **Post** /job/{jobId}/clone | Clone job
 [**CreateJob**](JobsApi.md#CreateJob) | **Post** /environment/{environmentId}/job | Create a job
 [**GetDefaultJobAdvancedSettings**](JobsApi.md#GetDefaultJobAdvancedSettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
 [**GetEnvironmentJobStatus**](JobsApi.md#GetEnvironmentJobStatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
 [**ListJobs**](JobsApi.md#ListJobs) | **Get** /environment/{environmentId}/job | List jobs
 
+
+
+## CloneJob
+
+> JobResponse CloneJob(ctx, jobId).CloneJobRequest(cloneJobRequest).Execute()
+
+Clone job
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+    cloneJobRequest := *openapiclient.NewCloneJobRequest("Name_example", "EnvironmentId_example") // CloneJobRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.CloneJob(context.Background(), jobId).CloneJobRequest(cloneJobRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.CloneJob``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloneJob`: JobResponse
+    fmt.Fprintf(os.Stdout, "Response from `JobsApi.CloneJob`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloneJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloneJobRequest** | [**CloneJobRequest**](CloneJobRequest.md) |  | 
+
+### Return type
+
+[**JobResponse**](JobResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateJob

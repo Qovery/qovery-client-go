@@ -8798,6 +8798,44 @@ paths:
       summary: Edit advanced settings
       tags:
       - Application Configuration
+  /application/{applicationId}/clone:
+    post:
+      description: This will create a new application with the same configuration
+        on the targeted environment Id.
+      operationId: cloneApplication
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloneApplicationRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+          description: Application clone has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Clone application
+      tags:
+      - Applications
   /container/{containerId}:
     delete:
       description: To delete the container you must have the admin permission
@@ -10147,6 +10185,44 @@ paths:
       summary: List all URLs of the container
       tags:
       - Container Main Calls
+  /container/{containerId}/clone:
+    post:
+      description: This will create a new container with the same configuration on
+        the targeted environment Id.
+      operationId: cloneContainer
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloneContainerRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerResponse'
+          description: Container clone has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Clone container
+      tags:
+      - Containers
   /environment/{environmentId}/database:
     get:
       operationId: listDatabase
@@ -11071,6 +11147,44 @@ paths:
       summary: List database  events
       tags:
       - Database Event
+  /database/{databaseId}/clone:
+    post:
+      description: This will create a new database with the same configuration on
+        the targeted environment Id.
+      operationId: cloneDatabase
+      parameters:
+      - description: Database ID
+        explode: false
+        in: path
+        name: databaseId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloneDatabaseRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Database'
+          description: Database clone has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Clone database
+      tags:
+      - Databases
   /account:
     get:
       operationId: getAccountInformation
@@ -12426,6 +12540,44 @@ paths:
       summary: List last job commits
       tags:
       - Job Main Calls
+  /job/{jobId}/clone:
+    post:
+      description: This will create a new job with the same configuration on the targeted
+        environment Id.
+      operationId: cloneJob
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloneJobRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+          description: Job clone has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Clone job
+      tags:
+      - Jobs
   /service/{serviceId}/deploymentStage:
     get:
       operationId: getServiceDeploymentStage
@@ -13658,6 +13810,62 @@ components:
           default: false
           type: boolean
       required:
+      - name
+      type: object
+    CloneApplicationRequest:
+      example:
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+      required:
+      - environment_id
+      - name
+      type: object
+    CloneContainerRequest:
+      example:
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+      required:
+      - environment_id
+      - name
+      type: object
+    CloneDatabaseRequest:
+      example:
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+      required:
+      - environment_id
+      - name
+      type: object
+    CloneJobRequest:
+      example:
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+      required:
+      - environment_id
       - name
       type: object
     CloudProvider:

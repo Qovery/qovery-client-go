@@ -4,12 +4,85 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CloneDatabase**](DatabasesApi.md#CloneDatabase) | **Post** /database/{databaseId}/clone | Clone database
 [**CreateDatabase**](DatabasesApi.md#CreateDatabase) | **Post** /environment/{environmentId}/database | Create a database
 [**GetEnvironmentDatabaseStatus**](DatabasesApi.md#GetEnvironmentDatabaseStatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
 [**ListDatabase**](DatabasesApi.md#ListDatabase) | **Get** /environment/{environmentId}/database | List environment databases
 [**ListEnvironmentDatabaseConfig**](DatabasesApi.md#ListEnvironmentDatabaseConfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 [**ListEnvironmentDatabaseCurrentMetric**](DatabasesApi.md#ListEnvironmentDatabaseCurrentMetric) | **Get** /environment/{environmentId}/database/currentMetric | List current metric consumption for each database
 
+
+
+## CloneDatabase
+
+> Database CloneDatabase(ctx, databaseId).CloneDatabaseRequest(cloneDatabaseRequest).Execute()
+
+Clone database
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    cloneDatabaseRequest := *openapiclient.NewCloneDatabaseRequest("Name_example", "EnvironmentId_example") // CloneDatabaseRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabasesApi.CloneDatabase(context.Background(), databaseId).CloneDatabaseRequest(cloneDatabaseRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabasesApi.CloneDatabase``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloneDatabase`: Database
+    fmt.Fprintf(os.Stdout, "Response from `DatabasesApi.CloneDatabase`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**databaseId** | **string** | Database ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloneDatabaseRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cloneDatabaseRequest** | [**CloneDatabaseRequest**](CloneDatabaseRequest.md) |  | 
+
+### Return type
+
+[**Database**](Database.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateDatabase
