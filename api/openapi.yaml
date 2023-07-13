@@ -3052,7 +3052,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getOrganizationEventTargets_200_response'
+                $ref: '#/components/schemas/OrganizationEventTargetResponseList'
           description: Get organization event targets
         "401":
           description: Access token is missing or invalid
@@ -14013,7 +14013,7 @@ components:
         cloud_provider:
           $ref: '#/components/schemas/CloudProviderEnum'
         credentials:
-          $ref: '#/components/schemas/getOrganizationEventTargets_200_response_targets_inner'
+          $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
         region:
           type: string
       type: object
@@ -14028,7 +14028,7 @@ components:
         cloud_provider:
           $ref: '#/components/schemas/CloudProviderEnum'
         credentials:
-          $ref: '#/components/schemas/getOrganizationEventTargets_200_response_targets_inner'
+          $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
         region:
           type: string
       type: object
@@ -18109,6 +18109,19 @@ components:
             $ref: '#/components/schemas/OrganizationEventResponse'
           type: array
       type: object
+    OrganizationEventTargetResponseList:
+      example:
+        targets:
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        targets:
+          items:
+            $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
+          type: array
+      type: object
     OrganizationEventOrigin:
       description: Origin of the organization event
       enum:
@@ -19107,30 +19120,6 @@ components:
       required:
       - user_id
       type: object
-    getOrganizationEventTargets_200_response_targets_inner:
-      example:
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
-      type: object
-    getOrganizationEventTargets_200_response:
-      example:
-        targets:
-        - name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        targets:
-          items:
-            $ref: '#/components/schemas/getOrganizationEventTargets_200_response_targets_inner'
-          type: array
-      type: object
     getEnvironmentStatuses_200_response:
       example:
         databases:
@@ -19791,6 +19780,17 @@ components:
           type: string
         transmitter:
           $ref: '#/components/schemas/ClusterLogs_error_event_details_transmitter'
+      type: object
+    ClusterCloudProviderInfo_credentials:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
       type: object
     ClusterFeature_value:
       nullable: true

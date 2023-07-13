@@ -82,7 +82,7 @@ func (r ApiGetOrganizationEventTargetsRequest) EnvironmentId(environmentId strin
 	return r
 }
 
-func (r ApiGetOrganizationEventTargetsRequest) Execute() (*GetOrganizationEventTargets200Response, *http.Response, error) {
+func (r ApiGetOrganizationEventTargetsRequest) Execute() (*OrganizationEventTargetResponseList, *http.Response, error) {
 	return r.ApiService.GetOrganizationEventTargetsExecute(r)
 }
 
@@ -104,13 +104,13 @@ func (a *OrganizationEventApiService) GetOrganizationEventTargets(ctx context.Co
 }
 
 // Execute executes the request
-//  @return GetOrganizationEventTargets200Response
-func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGetOrganizationEventTargetsRequest) (*GetOrganizationEventTargets200Response, *http.Response, error) {
+//  @return OrganizationEventTargetResponseList
+func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGetOrganizationEventTargetsRequest) (*OrganizationEventTargetResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GetOrganizationEventTargets200Response
+		localVarReturnValue *OrganizationEventTargetResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEventApiService.GetOrganizationEventTargets")

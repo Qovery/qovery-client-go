@@ -143,6 +143,7 @@ docs/Cluster.md
 docs/ClusterAdvancedSettings.md
 docs/ClusterAllOf.md
 docs/ClusterCloudProviderInfo.md
+docs/ClusterCloudProviderInfoCredentials.md
 docs/ClusterCloudProviderInfoRequest.md
 docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
@@ -352,8 +353,6 @@ docs/EventResponseList.md
 docs/GenericObjectCurrentCost.md
 docs/GetEnvironmentStatuses200Response.md
 docs/GetEnvironmentStatusesWithStages200Response.md
-docs/GetOrganizationEventTargets200Response.md
-docs/GetOrganizationEventTargets200ResponseTargetsInner.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitProviderEnum.md
@@ -482,6 +481,7 @@ docs/OrganizationEventResponse.md
 docs/OrganizationEventResponseList.md
 docs/OrganizationEventResponseListLinks.md
 docs/OrganizationEventSubTargetType.md
+docs/OrganizationEventTargetResponseList.md
 docs/OrganizationEventTargetType.md
 docs/OrganizationEventType.md
 docs/OrganizationGithubAppConnectRequest.md
@@ -635,6 +635,7 @@ model_cluster.go
 model_cluster_advanced_settings.go
 model_cluster_all_of.go
 model_cluster_cloud_provider_info.go
+model_cluster_cloud_provider_info_credentials.go
 model_cluster_cloud_provider_info_request.go
 model_cluster_credentials.go
 model_cluster_credentials_response_list.go
@@ -813,8 +814,6 @@ model_event_response_list.go
 model_generic_object_current_cost.go
 model_get_environment_statuses_200_response.go
 model_get_environment_statuses_with_stages_200_response.go
-model_get_organization_event_targets_200_response.go
-model_get_organization_event_targets_200_response_targets_inner.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
 model_git_provider_enum.go
@@ -928,6 +927,7 @@ model_organization_event_response.go
 model_organization_event_response_list.go
 model_organization_event_response_list_links.go
 model_organization_event_sub_target_type.go
+model_organization_event_target_response_list.go
 model_organization_event_target_type.go
 model_organization_event_type.go
 model_organization_github_app_connect_request.go

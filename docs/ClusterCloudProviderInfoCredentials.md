@@ -1,4 +1,4 @@
-# GetOrganizationEventTargets200ResponseTargetsInner
+# ClusterCloudProviderInfoCredentials
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGetOrganizationEventTargets200ResponseTargetsInner
+### NewClusterCloudProviderInfoCredentials
 
-`func NewGetOrganizationEventTargets200ResponseTargetsInner() *GetOrganizationEventTargets200ResponseTargetsInner`
+`func NewClusterCloudProviderInfoCredentials() *ClusterCloudProviderInfoCredentials`
 
-NewGetOrganizationEventTargets200ResponseTargetsInner instantiates a new GetOrganizationEventTargets200ResponseTargetsInner object
+NewClusterCloudProviderInfoCredentials instantiates a new ClusterCloudProviderInfoCredentials object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGetOrganizationEventTargets200ResponseTargetsInnerWithDefaults
+### NewClusterCloudProviderInfoCredentialsWithDefaults
 
-`func NewGetOrganizationEventTargets200ResponseTargetsInnerWithDefaults() *GetOrganizationEventTargets200ResponseTargetsInner`
+`func NewClusterCloudProviderInfoCredentialsWithDefaults() *ClusterCloudProviderInfoCredentials`
 
-NewGetOrganizationEventTargets200ResponseTargetsInnerWithDefaults instantiates a new GetOrganizationEventTargets200ResponseTargetsInner object
+NewClusterCloudProviderInfoCredentialsWithDefaults instantiates a new ClusterCloudProviderInfoCredentials object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) GetId() string`
+`func (o *ClusterCloudProviderInfoCredentials) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) GetIdOk() (*string, bool)`
+`func (o *ClusterCloudProviderInfoCredentials) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) SetId(v string)`
+`func (o *ClusterCloudProviderInfoCredentials) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) HasId() bool`
+`func (o *ClusterCloudProviderInfoCredentials) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) GetName() string`
+`func (o *ClusterCloudProviderInfoCredentials) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) GetNameOk() (*string, bool)`
+`func (o *ClusterCloudProviderInfoCredentials) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) SetName(v string)`
+`func (o *ClusterCloudProviderInfoCredentials) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *GetOrganizationEventTargets200ResponseTargetsInner) HasName() bool`
+`func (o *ClusterCloudProviderInfoCredentials) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 

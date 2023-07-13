@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetOrganizationEventTargets
 
-> GetOrganizationEventTargets200Response GetOrganizationEventTargets(ctx, organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).Execute()
+> OrganizationEventTargetResponseList GetOrganizationEventTargets(ctx, organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).Execute()
 
 Get available event targets to filter events
 
@@ -47,7 +47,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventApi.GetOrganizationEventTargets``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationEventTargets`: GetOrganizationEventTargets200Response
+    // response from `GetOrganizationEventTargets`: OrganizationEventTargetResponseList
     fmt.Fprintf(os.Stdout, "Response from `OrganizationEventApi.GetOrganizationEventTargets`: %v\n", resp)
 }
 ```
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetOrganizationEventTargets200Response**](GetOrganizationEventTargets200Response.md)
+[**OrganizationEventTargetResponseList**](OrganizationEventTargetResponseList.md)
 
 ### Authorization
 
