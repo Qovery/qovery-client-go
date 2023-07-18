@@ -440,6 +440,7 @@ Class | Method | HTTP request | Description
 *ReferralRewardsApi* | [**PostAccountRewardClaim**](docs/ReferralRewardsApi.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
 *UserSignUpApi* | [**CreateUserSignUp**](docs/UserSignUpApi.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
 *UserSignUpApi* | [**GetUserSignUp**](docs/UserSignUpApi.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information
+*VariableMainCallsApi* | [**CreateVariableAlias**](docs/VariableMainCallsApi.md#createvariablealias) | **Post** /variable/{variableId}/alias | Create a variable alias
 
 
 ## Documentation For Models
@@ -871,10 +872,13 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserResponseList](docs/UserResponseList.md)
  - [Value](docs/Value.md)
+ - [VariableAliasRequest](docs/VariableAliasRequest.md)
  - [VariableImport](docs/VariableImport.md)
  - [VariableImportRequest](docs/VariableImportRequest.md)
  - [VariableImportRequestVarsInner](docs/VariableImportRequestVarsInner.md)
  - [VariableImportSuccessfulImportedVariablesInner](docs/VariableImportSuccessfulImportedVariablesInner.md)
+ - [VariableResponse](docs/VariableResponse.md)
+ - [VariableResponseAllOf](docs/VariableResponseAllOf.md)
  - [Version](docs/Version.md)
  - [VersionResponseList](docs/VersionResponseList.md)
  - [WeekdayEnum](docs/WeekdayEnum.md)

@@ -12607,6 +12607,54 @@ paths:
       summary: Get Service Deployment Stage
       tags:
       - Deployment Stage Main Calls
+  /variable/{variableId}/alias:
+    post:
+      description: "- Allows you to add an alias at the level defined in the request\
+        \ body on an existing variable having a higher scope, in order to customize\
+        \ its key.\n- You have to specify a key in the request body and the scope\
+        \ and the parent id of the alias\n- The system will create a new variable\
+        \ at the requested level with the same value as the one corresponding to the\
+        \ variable id in the path\n- The response body will contain the newly created\
+        \ variable\n- Information regarding the aliased_variable will be exposed in\
+        \ the \"aliased_variable\" or in the \"aliased_secret\" field of the newly\
+        \ created variable\n- Only 1 alias level is allowed. You can't create an alias\
+        \ on an alias\n"
+      operationId: createVariableAlias
+      parameters:
+      - description: Variable ID
+        explode: false
+        in: path
+        name: variableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableAliasRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableResponse'
+          description: Create variable alias
+        "400":
+          description: Can't create an alias on a higher scope. Aliases can only be
+            created from one scope to a lower scope. Scope hierarchy is ORGANIZATION
+            > PROJECT > ENVIRONMENT > CONTAINER
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a variable alias
+      tags:
+      - Variable Main Calls
 components:
   parameters:
     applicationId:
@@ -12972,6 +13020,16 @@ components:
       explode: false
       in: path
       name: webhookId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    variableId:
+      description: Variable ID
+      explode: false
+      in: path
+      name: variableId
       required: true
       schema:
         format: uuid
@@ -19112,6 +19170,28 @@ components:
       - SUNDAY
       example: MONDAY
       type: string
+    VariableAliasRequest:
+      example:
+        aliasParentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        aliasScope: null
+        key: key
+      properties:
+        key:
+          type: string
+        aliasScope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        aliasParentId:
+          format: uuid
+          type: string
+      required:
+      - aliasParentId
+      - aliasScope
+      - key
+      type: object
+    VariableResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/VariableResponse_allOf'
     deleteMember_request:
       properties:
         user_id:
@@ -21434,6 +21514,35 @@ components:
       - scope
       - value
       type: object
+    VariableResponse_allOf:
+      properties:
+        overridden_variable:
+          $ref: '#/components/schemas/EnvironmentVariableOverride'
+        aliased_variable:
+          $ref: '#/components/schemas/EnvironmentVariableAlias'
+        overridden_secret:
+          $ref: '#/components/schemas/SecretOverride'
+        aliased_secret:
+          $ref: '#/components/schemas/SecretAlias'
+        scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
+        service_id:
+          description: present only for `BUILT_IN` variable
+          format: uuid
+          type: string
+        service_name:
+          description: present only for `BUILT_IN` variable
+          type: string
+        service_type:
+          $ref: '#/components/schemas/LinkedServiceTypeEnum'
+        owned_by:
+          description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
+          type: string
+      required:
+      - scope
+      type: object
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
@@ -21539,6 +21648,9 @@ x-tagGroups:
 - name: Git
   tags:
   - Git repositories
+- name: Variable
+  tags:
+  - Variable Main Calls
 - name: Admin
   tags:
   - User Sign Up
