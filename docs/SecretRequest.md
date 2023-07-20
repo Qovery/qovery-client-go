@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | key is case sensitive | 
-**Value** | **string** | value of the secret. Clear value will never be returned | 
+**Value** | Pointer to **string** | value of the secret. Clear value will never be returned | [optional] 
 **MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path make secret a file (where file should be mounted). | [optional] 
 
 ## Methods
 
 ### NewSecretRequest
 
-`func NewSecretRequest(key string, value string, ) *SecretRequest`
+`func NewSecretRequest(key string, ) *SecretRequest`
 
 NewSecretRequest instantiates a new SecretRequest object
 This constructor will assign default values to properties that have it defined,
@@ -66,6 +66,11 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### HasValue
+
+`func (o *SecretRequest) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
 
 ### GetMountPath
 

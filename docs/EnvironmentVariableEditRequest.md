@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | key is case sensitive | 
-**Value** | **string** | value of the env variable. | 
+**Value** | Pointer to **string** | value of the env variable. | [optional] 
 
 ## Methods
 
 ### NewEnvironmentVariableEditRequest
 
-`func NewEnvironmentVariableEditRequest(key string, value string, ) *EnvironmentVariableEditRequest`
+`func NewEnvironmentVariableEditRequest(key string, ) *EnvironmentVariableEditRequest`
 
 NewEnvironmentVariableEditRequest instantiates a new EnvironmentVariableEditRequest object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### HasValue
+
+`func (o *EnvironmentVariableEditRequest) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

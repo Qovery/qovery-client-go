@@ -16405,7 +16405,6 @@ components:
           type: string
       required:
       - key
-      - value
       type: object
     EnvironmentVariableRequest:
       example:
@@ -18695,7 +18694,6 @@ components:
           type: string
       required:
       - key
-      - value
       type: object
     SecretRequest:
       example:
@@ -18716,7 +18714,6 @@ components:
           type: string
       required:
       - key
-      - value
       type: object
     SecretResponseList:
       example:

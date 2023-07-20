@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | **string** |  | 
+**Value** | Pointer to **string** |  | [optional] 
 **Key** | **string** |  | 
 
 ## Methods
 
 ### NewSecretEditRequest
 
-`func NewSecretEditRequest(value string, key string, ) *SecretEditRequest`
+`func NewSecretEditRequest(key string, ) *SecretEditRequest`
 
 NewSecretEditRequest instantiates a new SecretEditRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### HasValue
+
+`func (o *SecretEditRequest) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
 
 ### GetKey
 

@@ -20,7 +20,7 @@ type SecretRequest struct {
 	// key is case sensitive
 	Key string `json:"key"`
 	// value of the secret. Clear value will never be returned
-	Value string `json:"value"`
+	Value *string `json:"value,omitempty"`
 	// should be set for file only. variable mount path make secret a file (where file should be mounted).
 	MountPath NullableString `json:"mount_path,omitempty"`
 }
@@ -29,10 +29,9 @@ type SecretRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretRequest(key string, value string) *SecretRequest {
+func NewSecretRequest(key string) *SecretRequest {
 	this := SecretRequest{}
 	this.Key = key
-	this.Value = value
 	return &this
 }
 
@@ -68,28 +67,36 @@ func (o *SecretRequest) SetKey(v string) {
 	o.Key = v
 }
 
-// GetValue returns the Value field value
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *SecretRequest) GetValue() string {
-	if o == nil {
+	if o == nil || o.Value == nil {
 		var ret string
 		return ret
 	}
-
-	return o.Value
+	return *o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SecretRequest) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.Value == nil {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Value, true
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *SecretRequest) HasValue() bool {
+	if o != nil && o.Value != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *SecretRequest) SetValue(v string) {
-	o.Value = v
+	o.Value = &v
 }
 
 // GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -140,7 +147,7 @@ func (o SecretRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["key"] = o.Key
 	}
-	if true {
+	if o.Value != nil {
 		toSerialize["value"] = o.Value
 	}
 	if o.MountPath.IsSet() {

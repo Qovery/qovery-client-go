@@ -35,7 +35,7 @@ import (
 
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    secretRequest := *openapiclient.NewSecretRequest("Key_example", "Value_example") // SecretRequest |  (optional)
+    secretRequest := *openapiclient.NewSecretRequest("Key_example") // SecretRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -329,7 +329,7 @@ import (
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
     secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-    secretEditRequest := *openapiclient.NewSecretEditRequest("Value_example", "Key_example") // SecretEditRequest | 
+    secretEditRequest := *openapiclient.NewSecretEditRequest("Key_example") // SecretEditRequest | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
