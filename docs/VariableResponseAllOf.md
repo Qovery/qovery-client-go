@@ -4,10 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
-**AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
-**OverriddenSecret** | Pointer to [**SecretOverride**](SecretOverride.md) |  | [optional] 
-**AliasedSecret** | Pointer to [**SecretAlias**](SecretAlias.md) |  | [optional] 
+**OverriddenVariable** | Pointer to [**VariableOverride**](VariableOverride.md) |  | [optional] 
+**AliasedVariable** | Pointer to [**VariableAlias**](VariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableType** | Pointer to [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | [optional] 
 **ServiceId** | Pointer to **string** | present only for &#x60;BUILT_IN&#x60; variable | [optional] 
@@ -36,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOverriddenVariable
 
-`func (o *VariableResponseAllOf) GetOverriddenVariable() EnvironmentVariableOverride`
+`func (o *VariableResponseAllOf) GetOverriddenVariable() VariableOverride`
 
 GetOverriddenVariable returns the OverriddenVariable field if non-nil, zero value otherwise.
 
 ### GetOverriddenVariableOk
 
-`func (o *VariableResponseAllOf) GetOverriddenVariableOk() (*EnvironmentVariableOverride, bool)`
+`func (o *VariableResponseAllOf) GetOverriddenVariableOk() (*VariableOverride, bool)`
 
 GetOverriddenVariableOk returns a tuple with the OverriddenVariable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOverriddenVariable
 
-`func (o *VariableResponseAllOf) SetOverriddenVariable(v EnvironmentVariableOverride)`
+`func (o *VariableResponseAllOf) SetOverriddenVariable(v VariableOverride)`
 
 SetOverriddenVariable sets OverriddenVariable field to given value.
 
@@ -61,20 +59,20 @@ HasOverriddenVariable returns a boolean if a field has been set.
 
 ### GetAliasedVariable
 
-`func (o *VariableResponseAllOf) GetAliasedVariable() EnvironmentVariableAlias`
+`func (o *VariableResponseAllOf) GetAliasedVariable() VariableAlias`
 
 GetAliasedVariable returns the AliasedVariable field if non-nil, zero value otherwise.
 
 ### GetAliasedVariableOk
 
-`func (o *VariableResponseAllOf) GetAliasedVariableOk() (*EnvironmentVariableAlias, bool)`
+`func (o *VariableResponseAllOf) GetAliasedVariableOk() (*VariableAlias, bool)`
 
 GetAliasedVariableOk returns a tuple with the AliasedVariable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAliasedVariable
 
-`func (o *VariableResponseAllOf) SetAliasedVariable(v EnvironmentVariableAlias)`
+`func (o *VariableResponseAllOf) SetAliasedVariable(v VariableAlias)`
 
 SetAliasedVariable sets AliasedVariable field to given value.
 
@@ -83,56 +81,6 @@ SetAliasedVariable sets AliasedVariable field to given value.
 `func (o *VariableResponseAllOf) HasAliasedVariable() bool`
 
 HasAliasedVariable returns a boolean if a field has been set.
-
-### GetOverriddenSecret
-
-`func (o *VariableResponseAllOf) GetOverriddenSecret() SecretOverride`
-
-GetOverriddenSecret returns the OverriddenSecret field if non-nil, zero value otherwise.
-
-### GetOverriddenSecretOk
-
-`func (o *VariableResponseAllOf) GetOverriddenSecretOk() (*SecretOverride, bool)`
-
-GetOverriddenSecretOk returns a tuple with the OverriddenSecret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOverriddenSecret
-
-`func (o *VariableResponseAllOf) SetOverriddenSecret(v SecretOverride)`
-
-SetOverriddenSecret sets OverriddenSecret field to given value.
-
-### HasOverriddenSecret
-
-`func (o *VariableResponseAllOf) HasOverriddenSecret() bool`
-
-HasOverriddenSecret returns a boolean if a field has been set.
-
-### GetAliasedSecret
-
-`func (o *VariableResponseAllOf) GetAliasedSecret() SecretAlias`
-
-GetAliasedSecret returns the AliasedSecret field if non-nil, zero value otherwise.
-
-### GetAliasedSecretOk
-
-`func (o *VariableResponseAllOf) GetAliasedSecretOk() (*SecretAlias, bool)`
-
-GetAliasedSecretOk returns a tuple with the AliasedSecret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAliasedSecret
-
-`func (o *VariableResponseAllOf) SetAliasedSecret(v SecretAlias)`
-
-SetAliasedSecret sets AliasedSecret field to given value.
-
-### HasAliasedSecret
-
-`func (o *VariableResponseAllOf) HasAliasedSecret() bool`
-
-HasAliasedSecret returns a boolean if a field has been set.
 
 ### GetScope
 

@@ -4,7 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateVariableAlias**](VariableMainCallsApi.md#CreateVariableAlias) | **Post** /variable/{variableId}/alias | Create a variable alias
+[**CreateVariableAlias**](VariableMainCallsApi.md#CreateVariableAlias) | **Post** /variable/{variableId}/alias | WIP: Create a variable alias
 
 
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 > VariableResponse CreateVariableAlias(ctx, variableId).VariableAliasRequest(variableAliasRequest).Execute()
 
-Create a variable alias
+WIP: Create a variable alias
 
 
 

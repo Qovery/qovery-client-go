@@ -12652,7 +12652,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Create a variable alias
+      summary: "WIP: Create a variable alias"
       tags:
       - Variable Main Calls
 components:
@@ -19192,6 +19192,53 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/VariableResponse_allOf'
+    VariableAlias:
+      properties:
+        id:
+          format: uuid
+          type: string
+        key:
+          example: QOVERY_DATABASE_PSQL_NAME
+          type: string
+        value:
+          nullable: true
+          type: string
+        mount_path:
+          type: string
+        scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
+      required:
+      - id
+      - key
+      - mount_path
+      - scope
+      - variable_type
+      type: object
+    VariableOverride:
+      properties:
+        id:
+          format: uuid
+          type: string
+        key:
+          type: string
+        value:
+          nullable: true
+          type: string
+        mount_path:
+          type: string
+        scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
+      required:
+      - id
+      - key
+      - mount_path
+      - scope
+      - variable_type
+      type: object
     deleteMember_request:
       properties:
         user_id:
@@ -21517,13 +21564,9 @@ components:
     VariableResponse_allOf:
       properties:
         overridden_variable:
-          $ref: '#/components/schemas/EnvironmentVariableOverride'
+          $ref: '#/components/schemas/VariableOverride'
         aliased_variable:
-          $ref: '#/components/schemas/EnvironmentVariableAlias'
-        overridden_secret:
-          $ref: '#/components/schemas/SecretOverride'
-        aliased_secret:
-          $ref: '#/components/schemas/SecretAlias'
+          $ref: '#/components/schemas/VariableAlias'
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         variable_type:

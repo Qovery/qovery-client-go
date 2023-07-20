@@ -40,7 +40,7 @@ func (r ApiCreateVariableAliasRequest) Execute() (*VariableResponse, *http.Respo
 }
 
 /*
-CreateVariableAlias Create a variable alias
+CreateVariableAlias WIP: Create a variable alias
 
 - Allows you to add an alias at the level defined in the request body on an existing variable having a higher scope, in order to customize its key.
 - You have to specify a key in the request body and the scope and the parent id of the alias

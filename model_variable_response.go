@@ -18,15 +18,13 @@ import (
 
 // VariableResponse struct for VariableResponse
 type VariableResponse struct {
-	Id                 string                       `json:"id"`
-	CreatedAt          time.Time                    `json:"created_at"`
-	UpdatedAt          *time.Time                   `json:"updated_at,omitempty"`
-	OverriddenVariable *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
-	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
-	OverriddenSecret   *SecretOverride              `json:"overridden_secret,omitempty"`
-	AliasedSecret      *SecretAlias                 `json:"aliased_secret,omitempty"`
-	Scope              APIVariableScopeEnum         `json:"scope"`
-	VariableType       *APIVariableTypeEnum         `json:"variable_type,omitempty"`
+	Id                 string               `json:"id"`
+	CreatedAt          time.Time            `json:"created_at"`
+	UpdatedAt          *time.Time           `json:"updated_at,omitempty"`
+	OverriddenVariable *VariableOverride    `json:"overridden_variable,omitempty"`
+	AliasedVariable    *VariableAlias       `json:"aliased_variable,omitempty"`
+	Scope              APIVariableScopeEnum `json:"scope"`
+	VariableType       *APIVariableTypeEnum `json:"variable_type,omitempty"`
 	// present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
 	// present only for `BUILT_IN` variable
@@ -137,9 +135,9 @@ func (o *VariableResponse) SetUpdatedAt(v time.Time) {
 }
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
-func (o *VariableResponse) GetOverriddenVariable() EnvironmentVariableOverride {
+func (o *VariableResponse) GetOverriddenVariable() VariableOverride {
 	if o == nil || o.OverriddenVariable == nil {
-		var ret EnvironmentVariableOverride
+		var ret VariableOverride
 		return ret
 	}
 	return *o.OverriddenVariable
@@ -147,7 +145,7 @@ func (o *VariableResponse) GetOverriddenVariable() EnvironmentVariableOverride {
 
 // GetOverriddenVariableOk returns a tuple with the OverriddenVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VariableResponse) GetOverriddenVariableOk() (*EnvironmentVariableOverride, bool) {
+func (o *VariableResponse) GetOverriddenVariableOk() (*VariableOverride, bool) {
 	if o == nil || o.OverriddenVariable == nil {
 		return nil, false
 	}
@@ -163,15 +161,15 @@ func (o *VariableResponse) HasOverriddenVariable() bool {
 	return false
 }
 
-// SetOverriddenVariable gets a reference to the given EnvironmentVariableOverride and assigns it to the OverriddenVariable field.
-func (o *VariableResponse) SetOverriddenVariable(v EnvironmentVariableOverride) {
+// SetOverriddenVariable gets a reference to the given VariableOverride and assigns it to the OverriddenVariable field.
+func (o *VariableResponse) SetOverriddenVariable(v VariableOverride) {
 	o.OverriddenVariable = &v
 }
 
 // GetAliasedVariable returns the AliasedVariable field value if set, zero value otherwise.
-func (o *VariableResponse) GetAliasedVariable() EnvironmentVariableAlias {
+func (o *VariableResponse) GetAliasedVariable() VariableAlias {
 	if o == nil || o.AliasedVariable == nil {
-		var ret EnvironmentVariableAlias
+		var ret VariableAlias
 		return ret
 	}
 	return *o.AliasedVariable
@@ -179,7 +177,7 @@ func (o *VariableResponse) GetAliasedVariable() EnvironmentVariableAlias {
 
 // GetAliasedVariableOk returns a tuple with the AliasedVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VariableResponse) GetAliasedVariableOk() (*EnvironmentVariableAlias, bool) {
+func (o *VariableResponse) GetAliasedVariableOk() (*VariableAlias, bool) {
 	if o == nil || o.AliasedVariable == nil {
 		return nil, false
 	}
@@ -195,73 +193,9 @@ func (o *VariableResponse) HasAliasedVariable() bool {
 	return false
 }
 
-// SetAliasedVariable gets a reference to the given EnvironmentVariableAlias and assigns it to the AliasedVariable field.
-func (o *VariableResponse) SetAliasedVariable(v EnvironmentVariableAlias) {
+// SetAliasedVariable gets a reference to the given VariableAlias and assigns it to the AliasedVariable field.
+func (o *VariableResponse) SetAliasedVariable(v VariableAlias) {
 	o.AliasedVariable = &v
-}
-
-// GetOverriddenSecret returns the OverriddenSecret field value if set, zero value otherwise.
-func (o *VariableResponse) GetOverriddenSecret() SecretOverride {
-	if o == nil || o.OverriddenSecret == nil {
-		var ret SecretOverride
-		return ret
-	}
-	return *o.OverriddenSecret
-}
-
-// GetOverriddenSecretOk returns a tuple with the OverriddenSecret field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VariableResponse) GetOverriddenSecretOk() (*SecretOverride, bool) {
-	if o == nil || o.OverriddenSecret == nil {
-		return nil, false
-	}
-	return o.OverriddenSecret, true
-}
-
-// HasOverriddenSecret returns a boolean if a field has been set.
-func (o *VariableResponse) HasOverriddenSecret() bool {
-	if o != nil && o.OverriddenSecret != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOverriddenSecret gets a reference to the given SecretOverride and assigns it to the OverriddenSecret field.
-func (o *VariableResponse) SetOverriddenSecret(v SecretOverride) {
-	o.OverriddenSecret = &v
-}
-
-// GetAliasedSecret returns the AliasedSecret field value if set, zero value otherwise.
-func (o *VariableResponse) GetAliasedSecret() SecretAlias {
-	if o == nil || o.AliasedSecret == nil {
-		var ret SecretAlias
-		return ret
-	}
-	return *o.AliasedSecret
-}
-
-// GetAliasedSecretOk returns a tuple with the AliasedSecret field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VariableResponse) GetAliasedSecretOk() (*SecretAlias, bool) {
-	if o == nil || o.AliasedSecret == nil {
-		return nil, false
-	}
-	return o.AliasedSecret, true
-}
-
-// HasAliasedSecret returns a boolean if a field has been set.
-func (o *VariableResponse) HasAliasedSecret() bool {
-	if o != nil && o.AliasedSecret != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAliasedSecret gets a reference to the given SecretAlias and assigns it to the AliasedSecret field.
-func (o *VariableResponse) SetAliasedSecret(v SecretAlias) {
-	o.AliasedSecret = &v
 }
 
 // GetScope returns the Scope field value
@@ -464,12 +398,6 @@ func (o VariableResponse) MarshalJSON() ([]byte, error) {
 	}
 	if o.AliasedVariable != nil {
 		toSerialize["aliased_variable"] = o.AliasedVariable
-	}
-	if o.OverriddenSecret != nil {
-		toSerialize["overridden_secret"] = o.OverriddenSecret
-	}
-	if o.AliasedSecret != nil {
-		toSerialize["aliased_secret"] = o.AliasedSecret
 	}
 	if true {
 		toSerialize["scope"] = o.Scope
