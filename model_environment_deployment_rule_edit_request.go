@@ -21,7 +21,6 @@ type EnvironmentDeploymentRuleEditRequest struct {
 	AutoDeploy      *bool         `json:"auto_deploy,omitempty"`
 	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
 	AutoPreview     *bool         `json:"auto_preview,omitempty"`
-	AutoDelete      *bool         `json:"auto_delete,omitempty"`
 	AutoStop        *bool         `json:"auto_stop,omitempty"`
 	Timezone        string        `json:"timezone"`
 	StartTime       time.Time     `json:"start_time"`
@@ -41,8 +40,6 @@ func NewEnvironmentDeploymentRuleEditRequest(timezone string, startTime time.Tim
 	this.OnDemandPreview = &onDemandPreview
 	var autoPreview bool = false
 	this.AutoPreview = &autoPreview
-	var autoDelete bool = false
-	this.AutoDelete = &autoDelete
 	var autoStop bool = false
 	this.AutoStop = &autoStop
 	this.Timezone = timezone
@@ -63,8 +60,6 @@ func NewEnvironmentDeploymentRuleEditRequestWithDefaults() *EnvironmentDeploymen
 	this.OnDemandPreview = &onDemandPreview
 	var autoPreview bool = false
 	this.AutoPreview = &autoPreview
-	var autoDelete bool = false
-	this.AutoDelete = &autoDelete
 	var autoStop bool = false
 	this.AutoStop = &autoStop
 	return &this
@@ -164,38 +159,6 @@ func (o *EnvironmentDeploymentRuleEditRequest) HasAutoPreview() bool {
 // SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
 func (o *EnvironmentDeploymentRuleEditRequest) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
-}
-
-// GetAutoDelete returns the AutoDelete field value if set, zero value otherwise.
-func (o *EnvironmentDeploymentRuleEditRequest) GetAutoDelete() bool {
-	if o == nil || o.AutoDelete == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AutoDelete
-}
-
-// GetAutoDeleteOk returns a tuple with the AutoDelete field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) GetAutoDeleteOk() (*bool, bool) {
-	if o == nil || o.AutoDelete == nil {
-		return nil, false
-	}
-	return o.AutoDelete, true
-}
-
-// HasAutoDelete returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) HasAutoDelete() bool {
-	if o != nil && o.AutoDelete != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDelete gets a reference to the given bool and assigns it to the AutoDelete field.
-func (o *EnvironmentDeploymentRuleEditRequest) SetAutoDelete(v bool) {
-	o.AutoDelete = &v
 }
 
 // GetAutoStop returns the AutoStop field value if set, zero value otherwise.
@@ -336,9 +299,6 @@ func (o EnvironmentDeploymentRuleEditRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.AutoPreview != nil {
 		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.AutoDelete != nil {
-		toSerialize["auto_delete"] = o.AutoDelete
 	}
 	if o.AutoStop != nil {
 		toSerialize["auto_stop"] = o.AutoStop

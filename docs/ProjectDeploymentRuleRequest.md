@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  | 
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to false]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
-**AutoDelete** | Pointer to **bool** |  | [optional] [default to false]
 **Timezone** | **string** |  | 
 **StartTime** | **time.Time** |  | 
 **StopTime** | **time.Time** |  | 
@@ -180,31 +179,6 @@ SetAutoStop sets AutoStop field to given value.
 `func (o *ProjectDeploymentRuleRequest) HasAutoStop() bool`
 
 HasAutoStop returns a boolean if a field has been set.
-
-### GetAutoDelete
-
-`func (o *ProjectDeploymentRuleRequest) GetAutoDelete() bool`
-
-GetAutoDelete returns the AutoDelete field if non-nil, zero value otherwise.
-
-### GetAutoDeleteOk
-
-`func (o *ProjectDeploymentRuleRequest) GetAutoDeleteOk() (*bool, bool)`
-
-GetAutoDeleteOk returns a tuple with the AutoDelete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoDelete
-
-`func (o *ProjectDeploymentRuleRequest) SetAutoDelete(v bool)`
-
-SetAutoDelete sets AutoDelete field to given value.
-
-### HasAutoDelete
-
-`func (o *ProjectDeploymentRuleRequest) HasAutoDelete() bool`
-
-HasAutoDelete returns a boolean if a field has been set.
 
 ### GetTimezone
 

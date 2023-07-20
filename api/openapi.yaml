@@ -16063,7 +16063,6 @@ components:
         - MONDAY
         on_demand_preview: false
         auto_stop: false
-        auto_delete: false
         auto_preview: false
       properties:
         auto_deploy:
@@ -16073,9 +16072,6 @@ components:
           default: false
           type: boolean
         auto_preview:
-          default: false
-          type: boolean
-        auto_delete:
           default: false
           type: boolean
         auto_stop:
@@ -18469,7 +18465,6 @@ components:
         - MONDAY
         auto_stop: false
         name: project-rule
-        auto_delete: false
         description: description project rule
         wildcard: wildcard
       properties:
@@ -18490,9 +18485,6 @@ components:
           default: false
           type: boolean
         auto_stop:
-          default: false
-          type: boolean
-        auto_delete:
           default: false
           type: boolean
         timezone:
@@ -20589,9 +20581,6 @@ components:
           default: false
           type: boolean
         auto_stop:
-          default: false
-          type: boolean
-        auto_delete:
           default: false
           type: boolean
         auto_preview:

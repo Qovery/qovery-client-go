@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
 **OnDemandPreview** | Pointer to **bool** |  | [optional] [default to false]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
-**AutoDelete** | Pointer to **bool** |  | [optional] [default to false]
 **AutoPreview** | Pointer to **bool** |  | [optional] [default to false]
 **Timezone** | **string** |  | 
 **StartTime** | **time.Time** |  | 
@@ -107,31 +106,6 @@ SetAutoStop sets AutoStop field to given value.
 `func (o *EnvironmentDeploymentRuleAllOf) HasAutoStop() bool`
 
 HasAutoStop returns a boolean if a field has been set.
-
-### GetAutoDelete
-
-`func (o *EnvironmentDeploymentRuleAllOf) GetAutoDelete() bool`
-
-GetAutoDelete returns the AutoDelete field if non-nil, zero value otherwise.
-
-### GetAutoDeleteOk
-
-`func (o *EnvironmentDeploymentRuleAllOf) GetAutoDeleteOk() (*bool, bool)`
-
-GetAutoDeleteOk returns a tuple with the AutoDelete field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoDelete
-
-`func (o *EnvironmentDeploymentRuleAllOf) SetAutoDelete(v bool)`
-
-SetAutoDelete sets AutoDelete field to given value.
-
-### HasAutoDelete
-
-`func (o *EnvironmentDeploymentRuleAllOf) HasAutoDelete() bool`
-
-HasAutoDelete returns a boolean if a field has been set.
 
 ### GetAutoPreview
 
