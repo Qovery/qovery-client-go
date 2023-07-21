@@ -12652,7 +12652,51 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: "WIP: Create a variable alias"
+      summary: Create a variable alias
+      tags:
+      - Variable Main Calls
+  /variable/{variableId}/override:
+    post:
+      description: |
+        - Allows you to override a variable that has a higher scope.
+        - You have to specify a value in the request body and the scope and the parent id of the variable to alias
+        - The system will create a new environment variable at project level with the same key as the one corresponding to the variable id in the path
+        - The response body will contain the newly created variable
+        - Information regarding the overridden_variable will be exposed in the "overridden_variable" or in the "overridden_secret" field of the newly created variable
+      operationId: createVariableOverride
+      parameters:
+      - description: Variable ID
+        explode: false
+        in: path
+        name: variableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableOverrideRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableResponse'
+          description: Create variable override
+        "400":
+          description: Can't create an override on a higher scope. Overrides can only
+            be created from one scope to a lower scope. Scope hierarchy is ORGANIZATION
+            > PROJECT > ENVIRONMENT > APPLICATION
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a variable override
       tags:
       - Variable Main Calls
 components:
@@ -19161,21 +19205,39 @@ components:
       type: string
     VariableAliasRequest:
       example:
-        aliasParentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        aliasScope: null
+        alias_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        alias_scope: null
         key: key
       properties:
         key:
           type: string
-        aliasScope:
+        alias_scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
-        aliasParentId:
+        alias_parent_id:
           format: uuid
           type: string
       required:
-      - aliasParentId
-      - aliasScope
+      - alias_parent_id
+      - alias_scope
       - key
+      type: object
+    VariableOverrideRequest:
+      example:
+        alias_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        alias_scope: null
+        value: value
+      properties:
+        value:
+          type: string
+        alias_scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        alias_parent_id:
+          format: uuid
+          type: string
+      required:
+      - alias_parent_id
+      - alias_scope
+      - value
       type: object
     VariableResponse:
       allOf:

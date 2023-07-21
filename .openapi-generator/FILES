@@ -583,6 +583,7 @@ docs/VariableImportRequestVarsInner.md
 docs/VariableImportSuccessfulImportedVariablesInner.md
 docs/VariableMainCallsApi.md
 docs/VariableOverride.md
+docs/VariableOverrideRequest.md
 docs/VariableResponse.md
 docs/VariableResponseAllOf.md
 docs/Version.md
@@ -1025,6 +1026,7 @@ model_variable_import_request.go
 model_variable_import_request_vars_inner.go
 model_variable_import_successful_imported_variables_inner.go
 model_variable_override.go
+model_variable_override_request.go
 model_variable_response.go
 model_variable_response_all_of.go
 model_version.go

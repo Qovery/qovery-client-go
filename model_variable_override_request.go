@@ -15,59 +15,59 @@ import (
 	"encoding/json"
 )
 
-// VariableAliasRequest struct for VariableAliasRequest
-type VariableAliasRequest struct {
-	Key           string               `json:"key"`
+// VariableOverrideRequest struct for VariableOverrideRequest
+type VariableOverrideRequest struct {
+	Value         string               `json:"value"`
 	AliasScope    APIVariableScopeEnum `json:"alias_scope"`
 	AliasParentId string               `json:"alias_parent_id"`
 }
 
-// NewVariableAliasRequest instantiates a new VariableAliasRequest object
+// NewVariableOverrideRequest instantiates a new VariableOverrideRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableAliasRequest(key string, aliasScope APIVariableScopeEnum, aliasParentId string) *VariableAliasRequest {
-	this := VariableAliasRequest{}
-	this.Key = key
+func NewVariableOverrideRequest(value string, aliasScope APIVariableScopeEnum, aliasParentId string) *VariableOverrideRequest {
+	this := VariableOverrideRequest{}
+	this.Value = value
 	this.AliasScope = aliasScope
 	this.AliasParentId = aliasParentId
 	return &this
 }
 
-// NewVariableAliasRequestWithDefaults instantiates a new VariableAliasRequest object
+// NewVariableOverrideRequestWithDefaults instantiates a new VariableOverrideRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewVariableAliasRequestWithDefaults() *VariableAliasRequest {
-	this := VariableAliasRequest{}
+func NewVariableOverrideRequestWithDefaults() *VariableOverrideRequest {
+	this := VariableOverrideRequest{}
 	return &this
 }
 
-// GetKey returns the Key field value
-func (o *VariableAliasRequest) GetKey() string {
+// GetValue returns the Value field value
+func (o *VariableOverrideRequest) GetValue() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Key
+	return o.Value
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *VariableAliasRequest) GetKeyOk() (*string, bool) {
+func (o *VariableOverrideRequest) GetValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Key, true
+	return &o.Value, true
 }
 
-// SetKey sets field value
-func (o *VariableAliasRequest) SetKey(v string) {
-	o.Key = v
+// SetValue sets field value
+func (o *VariableOverrideRequest) SetValue(v string) {
+	o.Value = v
 }
 
 // GetAliasScope returns the AliasScope field value
-func (o *VariableAliasRequest) GetAliasScope() APIVariableScopeEnum {
+func (o *VariableOverrideRequest) GetAliasScope() APIVariableScopeEnum {
 	if o == nil {
 		var ret APIVariableScopeEnum
 		return ret
@@ -78,7 +78,7 @@ func (o *VariableAliasRequest) GetAliasScope() APIVariableScopeEnum {
 
 // GetAliasScopeOk returns a tuple with the AliasScope field value
 // and a boolean to check if the value has been set.
-func (o *VariableAliasRequest) GetAliasScopeOk() (*APIVariableScopeEnum, bool) {
+func (o *VariableOverrideRequest) GetAliasScopeOk() (*APIVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,12 +86,12 @@ func (o *VariableAliasRequest) GetAliasScopeOk() (*APIVariableScopeEnum, bool) {
 }
 
 // SetAliasScope sets field value
-func (o *VariableAliasRequest) SetAliasScope(v APIVariableScopeEnum) {
+func (o *VariableOverrideRequest) SetAliasScope(v APIVariableScopeEnum) {
 	o.AliasScope = v
 }
 
 // GetAliasParentId returns the AliasParentId field value
-func (o *VariableAliasRequest) GetAliasParentId() string {
+func (o *VariableOverrideRequest) GetAliasParentId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -102,7 +102,7 @@ func (o *VariableAliasRequest) GetAliasParentId() string {
 
 // GetAliasParentIdOk returns a tuple with the AliasParentId field value
 // and a boolean to check if the value has been set.
-func (o *VariableAliasRequest) GetAliasParentIdOk() (*string, bool) {
+func (o *VariableOverrideRequest) GetAliasParentIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -110,14 +110,14 @@ func (o *VariableAliasRequest) GetAliasParentIdOk() (*string, bool) {
 }
 
 // SetAliasParentId sets field value
-func (o *VariableAliasRequest) SetAliasParentId(v string) {
+func (o *VariableOverrideRequest) SetAliasParentId(v string) {
 	o.AliasParentId = v
 }
 
-func (o VariableAliasRequest) MarshalJSON() ([]byte, error) {
+func (o VariableOverrideRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["key"] = o.Key
+		toSerialize["value"] = o.Value
 	}
 	if true {
 		toSerialize["alias_scope"] = o.AliasScope
@@ -128,38 +128,38 @@ func (o VariableAliasRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableVariableAliasRequest struct {
-	value *VariableAliasRequest
+type NullableVariableOverrideRequest struct {
+	value *VariableOverrideRequest
 	isSet bool
 }
 
-func (v NullableVariableAliasRequest) Get() *VariableAliasRequest {
+func (v NullableVariableOverrideRequest) Get() *VariableOverrideRequest {
 	return v.value
 }
 
-func (v *NullableVariableAliasRequest) Set(val *VariableAliasRequest) {
+func (v *NullableVariableOverrideRequest) Set(val *VariableOverrideRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableVariableAliasRequest) IsSet() bool {
+func (v NullableVariableOverrideRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableVariableAliasRequest) Unset() {
+func (v *NullableVariableOverrideRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableVariableAliasRequest(val *VariableAliasRequest) *NullableVariableAliasRequest {
-	return &NullableVariableAliasRequest{value: val, isSet: true}
+func NewNullableVariableOverrideRequest(val *VariableOverrideRequest) *NullableVariableOverrideRequest {
+	return &NullableVariableOverrideRequest{value: val, isSet: true}
 }
 
-func (v NullableVariableAliasRequest) MarshalJSON() ([]byte, error) {
+func (v NullableVariableOverrideRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableVariableAliasRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableVariableOverrideRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
