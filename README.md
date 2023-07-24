@@ -440,8 +440,12 @@ Class | Method | HTTP request | Description
 *ReferralRewardsApi* | [**PostAccountRewardClaim**](docs/ReferralRewardsApi.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
 *UserSignUpApi* | [**CreateUserSignUp**](docs/UserSignUpApi.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
 *UserSignUpApi* | [**GetUserSignUp**](docs/UserSignUpApi.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information
+*VariableMainCallsApi* | [**CreateVariable**](docs/VariableMainCallsApi.md#createvariable) | **Post** /variable | Create a variable
 *VariableMainCallsApi* | [**CreateVariableAlias**](docs/VariableMainCallsApi.md#createvariablealias) | **Post** /variable/{variableId}/alias | Create a variable alias
 *VariableMainCallsApi* | [**CreateVariableOverride**](docs/VariableMainCallsApi.md#createvariableoverride) | **Post** /variable/{variableId}/override | Create a variable override
+*VariableMainCallsApi* | [**DeleteVariable**](docs/VariableMainCallsApi.md#deletevariable) | **Delete** /variable/{variableId} | Delete a variable
+*VariableMainCallsApi* | [**EditVariable**](docs/VariableMainCallsApi.md#editvariable) | **Put** /variable/{variableId} | Edit a variable
+*VariableMainCallsApi* | [**ListVariables**](docs/VariableMainCallsApi.md#listvariables) | **Get** /variable | List variables
 
 
 ## Documentation For Models
@@ -875,14 +879,17 @@ Class | Method | HTTP request | Description
  - [Value](docs/Value.md)
  - [VariableAlias](docs/VariableAlias.md)
  - [VariableAliasRequest](docs/VariableAliasRequest.md)
+ - [VariableEditRequest](docs/VariableEditRequest.md)
  - [VariableImport](docs/VariableImport.md)
  - [VariableImportRequest](docs/VariableImportRequest.md)
  - [VariableImportRequestVarsInner](docs/VariableImportRequestVarsInner.md)
  - [VariableImportSuccessfulImportedVariablesInner](docs/VariableImportSuccessfulImportedVariablesInner.md)
  - [VariableOverride](docs/VariableOverride.md)
  - [VariableOverrideRequest](docs/VariableOverrideRequest.md)
+ - [VariableRequest](docs/VariableRequest.md)
  - [VariableResponse](docs/VariableResponse.md)
  - [VariableResponseAllOf](docs/VariableResponseAllOf.md)
+ - [VariableResponseList](docs/VariableResponseList.md)
  - [Version](docs/Version.md)
  - [VersionResponseList](docs/VersionResponseList.md)
  - [WeekdayEnum](docs/WeekdayEnum.md)

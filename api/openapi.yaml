@@ -107,6 +107,7 @@ tags:
 - name: Referral & Rewards
 - name: Container Registries
 - name: User Sign Up
+- name: Variable Main Calls
 paths:
   /organization:
     get:
@@ -12607,6 +12608,80 @@ paths:
       summary: Get Service Deployment Stage
       tags:
       - Deployment Stage Main Calls
+  /variable:
+    get:
+      description: Returns a list of variables
+      operationId: listVariables
+      parameters:
+      - description: the id where the variable will be added
+        explode: true
+        in: query
+        name: parent_id
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: the scope of the parent where the variable will be added
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        style: form
+      - explode: true
+        in: query
+        name: is_secret
+        required: false
+        schema:
+          description: true if the variable is a secret
+          nullable: true
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableResponseList'
+          description: List variables
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List variables
+      tags:
+      - Variable Main Calls
+    post:
+      description: |
+        - Create a variable at the level defined in the request body.
+      operationId: createVariable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableResponse'
+          description: Create a variable
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a variable
+      tags:
+      - Variable Main Calls
   /variable/{variableId}/alias:
     post:
       description: "- Allows you to add an alias at the level defined in the request\
@@ -12697,6 +12772,72 @@ paths:
         "404":
           description: Resource not found
       summary: Create a variable override
+      tags:
+      - Variable Main Calls
+  /variable/{variableId}:
+    delete:
+      description: "- To delete a variable\n- You can't delete a BUILT_IN variable\n\
+        - If you delete a variable having override or alias, the associated override/alias\
+        \ will be deleted as well\n"
+      operationId: deleteVariable
+      parameters:
+      - description: Variable ID
+        explode: false
+        in: path
+        name: variableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a variable
+      tags:
+      - Variable Main Calls
+    put:
+      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
+        \ edit the key\n- For an alias, you can't edit the value\n"
+      operationId: editVariable
+      parameters:
+      - description: Variable ID
+        explode: false
+        in: path
+        name: variableId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableEditRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableResponse'
+          description: Edited variable value
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a variable
       tags:
       - Variable Main Calls
 components:
@@ -19239,10 +19380,64 @@ components:
       - alias_scope
       - value
       type: object
+    VariableRequest:
+      example:
+        mount_path: mount_path
+        variable_scope: null
+        is_secret: true
+        variable_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        mount_path:
+          nullable: true
+          type: string
+        is_secret:
+          type: boolean
+        variable_scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_parent_id:
+          format: uuid
+          type: string
+      required:
+      - is_secret
+      - key
+      - value
+      - variable_parent_id
+      - variable_scope
+      type: object
+    VariableEditRequest:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
+      type: object
     VariableResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/VariableResponse_allOf'
+    VariableResponseList:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/VariableResponse'
+          type: array
+      type: object
     VariableAlias:
       properties:
         id:
