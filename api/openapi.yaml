@@ -18393,6 +18393,7 @@ components:
       - MEMBER_ROLE
       - PLAN
       - SECRET
+      - TERRAFORM
       - TRANSFER_OWNERSHIP
       - VARIABLE
       example: ADVANCED_SETTINGS
@@ -18420,6 +18421,7 @@ components:
       - UPDATE
       - DELETE
       - ACCEPT
+      - EXPORT
       - TRIGGER_DEPLOY
       - TRIGGER_REDEPLOY
       - TRIGGER_STOP

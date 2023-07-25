@@ -40,6 +40,7 @@ const (
 	ORGANIZATIONEVENTSUBTARGETTYPE_MEMBER_ROLE                OrganizationEventSubTargetType = "MEMBER_ROLE"
 	ORGANIZATIONEVENTSUBTARGETTYPE_PLAN                       OrganizationEventSubTargetType = "PLAN"
 	ORGANIZATIONEVENTSUBTARGETTYPE_SECRET                     OrganizationEventSubTargetType = "SECRET"
+	ORGANIZATIONEVENTSUBTARGETTYPE_TERRAFORM                  OrganizationEventSubTargetType = "TERRAFORM"
 	ORGANIZATIONEVENTSUBTARGETTYPE_TRANSFER_OWNERSHIP         OrganizationEventSubTargetType = "TRANSFER_OWNERSHIP"
 	ORGANIZATIONEVENTSUBTARGETTYPE_VARIABLE                   OrganizationEventSubTargetType = "VARIABLE"
 )
@@ -65,6 +66,7 @@ var AllowedOrganizationEventSubTargetTypeEnumValues = []OrganizationEventSubTarg
 	"MEMBER_ROLE",
 	"PLAN",
 	"SECRET",
+	"TERRAFORM",
 	"TRANSFER_OWNERSHIP",
 	"VARIABLE",
 }

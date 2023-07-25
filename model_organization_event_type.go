@@ -25,6 +25,7 @@ const (
 	ORGANIZATIONEVENTTYPE_UPDATE           OrganizationEventType = "UPDATE"
 	ORGANIZATIONEVENTTYPE_DELETE           OrganizationEventType = "DELETE"
 	ORGANIZATIONEVENTTYPE_ACCEPT           OrganizationEventType = "ACCEPT"
+	ORGANIZATIONEVENTTYPE_EXPORT           OrganizationEventType = "EXPORT"
 	ORGANIZATIONEVENTTYPE_TRIGGER_DEPLOY   OrganizationEventType = "TRIGGER_DEPLOY"
 	ORGANIZATIONEVENTTYPE_TRIGGER_REDEPLOY OrganizationEventType = "TRIGGER_REDEPLOY"
 	ORGANIZATIONEVENTTYPE_TRIGGER_STOP     OrganizationEventType = "TRIGGER_STOP"
@@ -39,6 +40,7 @@ var AllowedOrganizationEventTypeEnumValues = []OrganizationEventType{
 	"UPDATE",
 	"DELETE",
 	"ACCEPT",
+	"EXPORT",
 	"TRIGGER_DEPLOY",
 	"TRIGGER_REDEPLOY",
 	"TRIGGER_STOP",

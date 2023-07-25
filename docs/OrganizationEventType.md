@@ -11,6 +11,8 @@
 
 * `ACCEPT` (value: `"ACCEPT"`)
 
+* `EXPORT` (value: `"EXPORT"`)
+
 * `TRIGGER_DEPLOY` (value: `"TRIGGER_DEPLOY"`)
 
 * `TRIGGER_REDEPLOY` (value: `"TRIGGER_REDEPLOY"`)

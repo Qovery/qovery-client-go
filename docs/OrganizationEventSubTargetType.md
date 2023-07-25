@@ -41,6 +41,8 @@
 
 * `SECRET` (value: `"SECRET"`)
 
+* `TERRAFORM` (value: `"TERRAFORM"`)
+
 * `TRANSFER_OWNERSHIP` (value: `"TRANSFER_OWNERSHIP"`)
 
 * `VARIABLE` (value: `"VARIABLE"`)
