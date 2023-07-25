@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | id of the job to be updated. | [optional] 
-**ImageTag** | Pointer to **string** | new tag for the job image. Use only if job is an image source | [optional] 
-**GitCommitId** | Pointer to **string** | Commit ID to deploy. Use only if job is a repository source | [optional] 
+**ImageTag** | Pointer to **string** | new tag for the job image. Use only if job is an image source. Can be empty only if the service has been already deployed (in this case the service version won&#39;t be changed) | [optional] 
+**GitCommitId** | Pointer to **string** | Commit ID to deploy. Use only if job is a repository source. Can be empty only if the service has been already deployed (in this case the service version won&#39;t be changed) | [optional] 
 
 ## Methods
 

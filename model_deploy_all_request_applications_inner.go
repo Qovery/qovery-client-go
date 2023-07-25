@@ -19,18 +19,17 @@ import (
 type DeployAllRequestApplicationsInner struct {
 	// id of the application to be deployed.
 	ApplicationId string `json:"application_id"`
-	// Commit ID to deploy.
-	GitCommitId string `json:"git_commit_id"`
+	// Commit ID to deploy. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
+	GitCommitId *string `json:"git_commit_id,omitempty"`
 }
 
 // NewDeployAllRequestApplicationsInner instantiates a new DeployAllRequestApplicationsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeployAllRequestApplicationsInner(applicationId string, gitCommitId string) *DeployAllRequestApplicationsInner {
+func NewDeployAllRequestApplicationsInner(applicationId string) *DeployAllRequestApplicationsInner {
 	this := DeployAllRequestApplicationsInner{}
 	this.ApplicationId = applicationId
-	this.GitCommitId = gitCommitId
 	return &this
 }
 
@@ -66,28 +65,36 @@ func (o *DeployAllRequestApplicationsInner) SetApplicationId(v string) {
 	o.ApplicationId = v
 }
 
-// GetGitCommitId returns the GitCommitId field value
+// GetGitCommitId returns the GitCommitId field value if set, zero value otherwise.
 func (o *DeployAllRequestApplicationsInner) GetGitCommitId() string {
-	if o == nil {
+	if o == nil || o.GitCommitId == nil {
 		var ret string
 		return ret
 	}
-
-	return o.GitCommitId
+	return *o.GitCommitId
 }
 
-// GetGitCommitIdOk returns a tuple with the GitCommitId field value
+// GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequestApplicationsInner) GetGitCommitIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.GitCommitId == nil {
 		return nil, false
 	}
-	return &o.GitCommitId, true
+	return o.GitCommitId, true
 }
 
-// SetGitCommitId sets field value
+// HasGitCommitId returns a boolean if a field has been set.
+func (o *DeployAllRequestApplicationsInner) HasGitCommitId() bool {
+	if o != nil && o.GitCommitId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGitCommitId gets a reference to the given string and assigns it to the GitCommitId field.
 func (o *DeployAllRequestApplicationsInner) SetGitCommitId(v string) {
-	o.GitCommitId = v
+	o.GitCommitId = &v
 }
 
 func (o DeployAllRequestApplicationsInner) MarshalJSON() ([]byte, error) {
@@ -95,7 +102,7 @@ func (o DeployAllRequestApplicationsInner) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["application_id"] = o.ApplicationId
 	}
-	if true {
+	if o.GitCommitId != nil {
 		toSerialize["git_commit_id"] = o.GitCommitId
 	}
 	return json.Marshal(toSerialize)

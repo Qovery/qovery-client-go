@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | id of the container to be updated. | 
-**ImageTag** | **string** | new tag for the container. | 
+**ImageTag** | Pointer to **string** | new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won&#39;t be changed) | [optional] 
 
 ## Methods
 
 ### NewDeployAllRequestContainersInner
 
-`func NewDeployAllRequestContainersInner(id string, imageTag string, ) *DeployAllRequestContainersInner`
+`func NewDeployAllRequestContainersInner(id string, ) *DeployAllRequestContainersInner`
 
 NewDeployAllRequestContainersInner instantiates a new DeployAllRequestContainersInner object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetImageTag sets ImageTag field to given value.
 
+### HasImageTag
+
+`func (o *DeployAllRequestContainersInner) HasImageTag() bool`
+
+HasImageTag returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

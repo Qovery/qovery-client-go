@@ -19,9 +19,9 @@ import (
 type DeployAllRequestJobsInner struct {
 	// id of the job to be updated.
 	Id *string `json:"id,omitempty"`
-	// new tag for the job image. Use only if job is an image source
+	// new tag for the job image. Use only if job is an image source. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
 	ImageTag *string `json:"image_tag,omitempty"`
-	// Commit ID to deploy. Use only if job is a repository source
+	// Commit ID to deploy. Use only if job is a repository source. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
 	GitCommitId *string `json:"git_commit_id,omitempty"`
 }
 

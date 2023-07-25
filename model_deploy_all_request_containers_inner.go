@@ -19,18 +19,17 @@ import (
 type DeployAllRequestContainersInner struct {
 	// id of the container to be updated.
 	Id string `json:"id"`
-	// new tag for the container.
-	ImageTag string `json:"image_tag"`
+	// new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
+	ImageTag *string `json:"image_tag,omitempty"`
 }
 
 // NewDeployAllRequestContainersInner instantiates a new DeployAllRequestContainersInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeployAllRequestContainersInner(id string, imageTag string) *DeployAllRequestContainersInner {
+func NewDeployAllRequestContainersInner(id string) *DeployAllRequestContainersInner {
 	this := DeployAllRequestContainersInner{}
 	this.Id = id
-	this.ImageTag = imageTag
 	return &this
 }
 
@@ -66,28 +65,36 @@ func (o *DeployAllRequestContainersInner) SetId(v string) {
 	o.Id = v
 }
 
-// GetImageTag returns the ImageTag field value
+// GetImageTag returns the ImageTag field value if set, zero value otherwise.
 func (o *DeployAllRequestContainersInner) GetImageTag() string {
-	if o == nil {
+	if o == nil || o.ImageTag == nil {
 		var ret string
 		return ret
 	}
-
-	return o.ImageTag
+	return *o.ImageTag
 }
 
-// GetImageTagOk returns a tuple with the ImageTag field value
+// GetImageTagOk returns a tuple with the ImageTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequestContainersInner) GetImageTagOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.ImageTag == nil {
 		return nil, false
 	}
-	return &o.ImageTag, true
+	return o.ImageTag, true
 }
 
-// SetImageTag sets field value
+// HasImageTag returns a boolean if a field has been set.
+func (o *DeployAllRequestContainersInner) HasImageTag() bool {
+	if o != nil && o.ImageTag != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetImageTag gets a reference to the given string and assigns it to the ImageTag field.
 func (o *DeployAllRequestContainersInner) SetImageTag(v string) {
-	o.ImageTag = v
+	o.ImageTag = &v
 }
 
 func (o DeployAllRequestContainersInner) MarshalJSON() ([]byte, error) {
@@ -95,7 +102,7 @@ func (o DeployAllRequestContainersInner) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["id"] = o.Id
 	}
-	if true {
+	if o.ImageTag != nil {
 		toSerialize["image_tag"] = o.ImageTag
 	}
 	return json.Marshal(toSerialize)

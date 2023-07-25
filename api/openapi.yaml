@@ -20367,11 +20367,11 @@ components:
           format: uuid
           type: string
         git_commit_id:
-          description: Commit ID to deploy.
+          description: Commit ID to deploy. Can be empty only if the service has been
+            already deployed (in this case the service version won't be changed)
           type: string
       required:
       - application_id
-      - git_commit_id
       type: object
     DeployAllRequest_containers_inner:
       example:
@@ -20383,11 +20383,11 @@ components:
           format: uuid
           type: string
         image_tag:
-          description: new tag for the container.
+          description: new tag for the container. Can be empty only if the service
+            has been already deployed (in this case the service version won't be changed)
           type: string
       required:
       - id
-      - image_tag
       type: object
     DeployAllRequest_jobs_inner:
       example:
@@ -20400,10 +20400,14 @@ components:
           format: uuid
           type: string
         image_tag:
-          description: new tag for the job image. Use only if job is an image source
+          description: new tag for the job image. Use only if job is an image source.
+            Can be empty only if the service has been already deployed (in this case
+            the service version won't be changed)
           type: string
         git_commit_id:
-          description: Commit ID to deploy. Use only if job is a repository source
+          description: Commit ID to deploy. Use only if job is a repository source.
+            Can be empty only if the service has been already deployed (in this case
+            the service version won't be changed)
           type: string
       type: object
     DeploymentHistory_allOf:
