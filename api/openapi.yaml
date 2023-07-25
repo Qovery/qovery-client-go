@@ -13299,45 +13299,35 @@ components:
       - $ref: '#/components/schemas/Application_allOf'
     ApplicationAdvancedSettings:
       example:
-        network.ingress.send_timeout_seconds: 2
+        network.ingress.send_timeout_seconds: 7
         deployment.delay_start_time_sec: 0
-        network.ingress.proxy_send_timeout_seconds: 7
-        liveness_probe.initial_delay_seconds: 4
-        liveness_probe.failure_threshold: 6
+        network.ingress.proxy_send_timeout_seconds: 1
         deployment.update_strategy.type: RollingUpdate
         deployment.update_strategy.rolling_update.max_surge_percent: 5
-        network.ingress.keepalive_time_seconds: 9
-        liveness_probe.timeout_seconds: 9
+        network.ingress.keepalive_time_seconds: 2
         deployment.termination_grace_period_seconds: 6
+        network.ingress.grpc_send_timeout_seconds: 6
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
-        liveness_probe.period_seconds: 5
+        build.cpu_max_in_milli: 2
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
-        readiness_probe.initial_delay_seconds: 1
-        readiness_probe.timeout_seconds: 6
+        build.ram_max_in_gib: 7
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
-        network.ingress.proxy_body_size_mb: 2
-        liveness_probe.type: TCP
-        liveness_probe.success_threshold: 9
+        network.ingress.proxy_body_size_mb: 9
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-        hpa.cpu.average_utilization_percent: 8
-        network.ingress.keepalive_timeout_seconds: 3
-        readiness_probe.type: TCP
-        network.ingress.proxy_connect_timeout_seconds: 4
-        readiness_probe.failure_threshold: 1
-        network.ingress.proxy_buffer_size_kb: 7
+        hpa.cpu.average_utilization_percent: 1
+        network.ingress.keepalive_timeout_seconds: 4
+        network.ingress.proxy_connect_timeout_seconds: 1
+        network.ingress.proxy_buffer_size_kb: 3
         network.ingress.proxy_read_timeout_seconds: 1
         build.timeout_max_sec: 5
+        network.ingress.grpc_read_timeout_seconds: 7
         deployment.update_strategy.rolling_update.max_unavailable_percent: 1
-        readiness_probe.http_get.path: /
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
-        readiness_probe.success_threshold: 7
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-        readiness_probe.period_seconds: 1
-        liveness_probe.http_get.path: /
       properties:
         deployment.delay_start_time_sec:
           default: 30
@@ -13375,6 +13365,14 @@ components:
           type: integer
         build.timeout_max_sec:
           default: 1800
+          type: integer
+        build.cpu_max_in_milli:
+          default: 4000
+          description: define the max cpu resources (in milli)
+          type: integer
+        build.ram_max_in_gib:
+          default: 8
+          description: define the max ram resources (in gib)
           type: integer
         network.ingress.proxy_body_size_mb:
           default: 100
@@ -13450,81 +13448,15 @@ components:
             Enable the load balancer to bind a user's session to a specific target.
             This ensures that all requests from the user during the session are sent to the same target
           type: boolean
-        readiness_probe.type:
-          default: TCP
-          description: |
-            * `NONE` disable readiness probe
-            * `TCP` enable TCP readiness probe
-            * `HTTP` enable HTTP readiness probe
-          enum:
-          - NONE
-          - TCP
-          - HTTP
-          type: string
-        readiness_probe.http_get.path:
-          default: /
-          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
-            - only usable with TYPE = HTTP
-          type: string
-        readiness_probe.initial_delay_seconds:
-          default: 30
-          description: Delay before liveness probe is initiated
+        network.ingress.grpc_send_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
           type: integer
-        readiness_probe.period_seconds:
-          default: 10
-          description: How often to perform the probe
-          type: integer
-        readiness_probe.timeout_seconds:
-          default: 1
-          description: When the probe times out
-          type: integer
-        readiness_probe.success_threshold:
-          default: 1
-          description: Minimum consecutive successes for the probe to be considered
-            successful after having failed.
-          type: integer
-        readiness_probe.failure_threshold:
-          default: 3
-          description: Minimum consecutive failures for the probe to be considered
-            failed after having succeeded.
-          type: integer
-        liveness_probe.type:
-          default: TCP
-          description: |
-            * `NONE` disable liveness probe
-            * `TCP` enable TCP liveness probe
-            * `HTTP` enable HTTP liveness probe
-          enum:
-          - NONE
-          - TCP
-          - HTTP
-          type: string
-        liveness_probe.http_get.path:
-          default: /
-          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
-            - only usable with TYPE = HTTP
-          type: string
-        liveness_probe.initial_delay_seconds:
-          default: 30
-          description: Delay before liveness probe is initiated
-          type: integer
-        liveness_probe.period_seconds:
-          default: 10
-          description: How often to perform the probe
-          type: integer
-        liveness_probe.timeout_seconds:
-          default: 5
-          description: When the probe times out
-          type: integer
-        liveness_probe.success_threshold:
-          default: 1
-          description: Minimum consecutive successes for the probe to be considered
-            successful after having failed.
-          type: integer
-        liveness_probe.failure_threshold:
-          default: 3
-          description: Minimum consecutive failures for the probe to be considered
-            failed after having succeeded.
+        network.ingress.grpc_read_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
           type: integer
         hpa.cpu.average_utilization_percent:
           default: 60
@@ -14873,41 +14805,29 @@ components:
       example:
         network.ingress.send_timeout_seconds: 9
         network.ingress.proxy_send_timeout_seconds: 2
-        liveness_probe.initial_delay_seconds: 7
-        liveness_probe.failure_threshold: 9
         deployment.update_strategy.type: RollingUpdate
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 2
-        liveness_probe.timeout_seconds: 4
         deployment.termination_grace_period_seconds: 0
+        network.ingress.grpc_send_timeout_seconds: 7
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
-        liveness_probe.period_seconds: 1
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
-        readiness_probe.initial_delay_seconds: 7
-        readiness_probe.timeout_seconds: 1
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 5
-        liveness_probe.type: TCP
-        liveness_probe.success_threshold: 5
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-        hpa.cpu.average_utilization_percent: 9
+        hpa.cpu.average_utilization_percent: 1
         network.ingress.keepalive_timeout_seconds: 7
-        readiness_probe.type: TCP
         network.ingress.proxy_connect_timeout_seconds: 3
-        readiness_probe.failure_threshold: 6
         network.ingress.proxy_buffer_size_kb: 5
         network.ingress.proxy_read_timeout_seconds: 4
+        network.ingress.grpc_read_timeout_seconds: 1
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
-        readiness_probe.http_get.path: /
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
-        readiness_probe.success_threshold: 1
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-        readiness_probe.period_seconds: 1
-        liveness_probe.http_get.path: /
       properties:
         deployment.custom_domain_check_enabled:
           default: true
@@ -14987,6 +14907,16 @@ components:
           description: Sets a timeout (in seconds) for reading a response from the
             proxied server
           type: integer
+        network.ingress.grpc_send_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
+          type: integer
+        network.ingress.grpc_read_timeout_seconds:
+          default: 60
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
+          type: integer
         network.ingress.whitelist_source_range:
           default: 0.0.0.0/0
           description: "list of source ranges to allow access to ingress proxy. \n\
@@ -15011,82 +14941,6 @@ components:
             Enable the load balancer to bind a user's session to a specific target.
             This ensures that all requests from the user during the session are sent to the same target
           type: boolean
-        readiness_probe.type:
-          default: TCP
-          description: |
-            * `NONE` disable readiness probe
-            * `TCP` enable TCP readiness probe
-            * `HTTP` enable HTTP readiness probe
-          enum:
-          - NONE
-          - TCP
-          - HTTP
-          type: string
-        readiness_probe.http_get.path:
-          default: /
-          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
-            - only usable with TYPE = HTTP
-          type: string
-        readiness_probe.initial_delay_seconds:
-          default: 30
-          description: Delay before liveness probe is initiated
-          type: integer
-        readiness_probe.period_seconds:
-          default: 10
-          description: How often to perform the probe
-          type: integer
-        readiness_probe.timeout_seconds:
-          default: 1
-          description: When the probe times out
-          type: integer
-        readiness_probe.success_threshold:
-          default: 1
-          description: Minimum consecutive successes for the probe to be considered
-            successful after having failed.
-          type: integer
-        readiness_probe.failure_threshold:
-          default: 3
-          description: Minimum consecutive failures for the probe to be considered
-            failed after having succeeded.
-          type: integer
-        liveness_probe.type:
-          default: TCP
-          description: |
-            * `NONE` disable liveness probe
-            * `TCP` enable TCP liveness probe
-            * `HTTP` enable HTTP liveness probe
-          enum:
-          - NONE
-          - TCP
-          - HTTP
-          type: string
-        liveness_probe.http_get.path:
-          default: /
-          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
-            - only usable with TYPE = HTTP
-          type: string
-        liveness_probe.initial_delay_seconds:
-          default: 30
-          description: Delay before liveness probe is initiated
-          type: integer
-        liveness_probe.period_seconds:
-          default: 10
-          description: How often to perform the probe
-          type: integer
-        liveness_probe.timeout_seconds:
-          default: 5
-          description: When the probe times out
-          type: integer
-        liveness_probe.success_threshold:
-          default: 1
-          description: Minimum consecutive successes for the probe to be considered
-            successful after having failed.
-          type: integer
-        liveness_probe.failure_threshold:
-          default: 3
-          description: Minimum consecutive failures for the probe to be considered
-            failed after having succeeded.
-          type: integer
         security.service_account_name:
           default: ""
           description: |
@@ -17162,27 +17016,28 @@ components:
       type: object
     JobAdvancedSettings:
       example:
-        readiness_probe.timeout_seconds: 7
-        liveness_probe.type: NONE
-        liveness_probe.initial_delay_seconds: 2
-        liveness_probe.success_threshold: 1
-        job.delete_ttl_seconds_after_finished: 6
-        liveness_probe.failure_threshold: 1
-        cronjob.success_jobs_history_limit: 5
-        readiness_probe.type: NONE
-        liveness_probe.timeout_seconds: 7
-        readiness_probe.failure_threshold: 3
-        deployment.termination_grace_period_seconds: 0
-        liveness_probe.period_seconds: 4
-        readiness_probe.http_get.path: readiness_probe.http_get.path
+        build.timeout_max_sec: 0
+        build.cpu_max_in_milli: 6
+        job.delete_ttl_seconds_after_finished: 5
         security.service_account_name: security.service_account_name
-        cronjob.failed_jobs_history_limit: 1
+        cronjob.failed_jobs_history_limit: 2
         cronjob.concurrency_policy: Forbid
-        readiness_probe.success_threshold: 9
-        readiness_probe.initial_delay_seconds: 5
-        readiness_probe.period_seconds: 2
-        liveness_probe.http_get.path: liveness_probe.http_get.path
+        cronjob.success_jobs_history_limit: 7
+        build.ram_max_in_gib: 1
+        deployment.termination_grace_period_seconds: 5
       properties:
+        build.timeout_max_sec:
+          default: 1800
+          description: define the max timeout for the build
+          type: integer
+        build.cpu_max_in_milli:
+          default: 4000
+          description: define the max cpu resources (in milli)
+          type: integer
+        build.ram_max_in_gib:
+          default: 8
+          description: define the max ram resources (in gib)
+          type: integer
         deployment.termination_grace_period_seconds:
           default: 60
           description: define how long in seconds an application is supposed to be
@@ -17199,82 +17054,6 @@ components:
           type: integer
         cronjob.success_jobs_history_limit:
           default: 1
-          type: integer
-        readiness_probe.type:
-          default: NONE
-          description: |
-            `NONE` disable readiness probe
-            `TCP` enable TCP readiness probe
-            `HTTP` enable HTTP readiness probe
-          enum:
-          - NONE
-          - TCP
-          - HTTP
-          type: string
-        readiness_probe.http_get.path:
-          default: ""
-          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
-            - only usable with TYPE = HTTP
-          type: string
-        readiness_probe.initial_delay_seconds:
-          default: 0
-          description: Delay before liveness probe is initiated
-          type: integer
-        readiness_probe.period_seconds:
-          default: 0
-          description: How often to perform the probe
-          type: integer
-        readiness_probe.timeout_seconds:
-          default: 0
-          description: When the probe times out
-          type: integer
-        readiness_probe.success_threshold:
-          default: 0
-          description: Minimum consecutive successes for the probe to be considered
-            successful after having failed.
-          type: integer
-        readiness_probe.failure_threshold:
-          default: 0
-          description: Minimum consecutive failures for the probe to be considered
-            failed after having succeeded.
-          type: integer
-        liveness_probe.type:
-          default: NONE
-          description: |
-            `NONE` disable liveness probe
-            `TCP` enable TCP liveness probe
-            `HTTP` enable HTTP liveness probe
-          enum:
-          - NONE
-          - TCP
-          - HTTP
-          type: string
-        liveness_probe.http_get.path:
-          default: ""
-          description: HTTP GET path to check status (must returns 2xx E.g "/healtz")
-            - only usable with TYPE = HTTP
-          type: string
-        liveness_probe.initial_delay_seconds:
-          default: 0
-          description: Delay before liveness probe is initiated
-          type: integer
-        liveness_probe.period_seconds:
-          default: 0
-          description: How often to perform the probe
-          type: integer
-        liveness_probe.timeout_seconds:
-          default: 0
-          description: When the probe times out
-          type: integer
-        liveness_probe.success_threshold:
-          default: 0
-          description: Minimum consecutive successes for the probe to be considered
-            successful after having failed.
-          type: integer
-        liveness_probe.failure_threshold:
-          default: 0
-          description: Minimum consecutive failures for the probe to be considered
-            failed after having succeeded.
           type: integer
         security.service_account_name:
           default: ""

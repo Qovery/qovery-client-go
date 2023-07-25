@@ -17,40 +17,18 @@ import (
 
 // JobAdvancedSettings struct for JobAdvancedSettings
 type JobAdvancedSettings struct {
+	// define the max timeout for the build
+	BuildTimeoutMaxSec *int32 `json:"build.timeout_max_sec,omitempty"`
+	// define the max cpu resources (in milli)
+	BuildCpuMaxInMilli *int32 `json:"build.cpu_max_in_milli,omitempty"`
+	// define the max ram resources (in gib)
+	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32        `json:"deployment.termination_grace_period_seconds,omitempty"`
 	JobDeleteTtlSecondsAfterFinished        NullableInt32 `json:"job.delete_ttl_seconds_after_finished,omitempty"`
 	CronjobConcurrencyPolicy                *string       `json:"cronjob.concurrency_policy,omitempty"`
 	CronjobFailedJobsHistoryLimit           *int32        `json:"cronjob.failed_jobs_history_limit,omitempty"`
 	CronjobSuccessJobsHistoryLimit          *int32        `json:"cronjob.success_jobs_history_limit,omitempty"`
-	// `NONE` disable readiness probe `TCP` enable TCP readiness probe `HTTP` enable HTTP readiness probe
-	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
-	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
-	ReadinessProbeHttpGetPath *string `json:"readiness_probe.http_get.path,omitempty"`
-	// Delay before liveness probe is initiated
-	ReadinessProbeInitialDelaySeconds *int32 `json:"readiness_probe.initial_delay_seconds,omitempty"`
-	// How often to perform the probe
-	ReadinessProbePeriodSeconds *int32 `json:"readiness_probe.period_seconds,omitempty"`
-	// When the probe times out
-	ReadinessProbeTimeoutSeconds *int32 `json:"readiness_probe.timeout_seconds,omitempty"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed.
-	ReadinessProbeSuccessThreshold *int32 `json:"readiness_probe.success_threshold,omitempty"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
-	ReadinessProbeFailureThreshold *int32 `json:"readiness_probe.failure_threshold,omitempty"`
-	// `NONE` disable liveness probe `TCP` enable TCP liveness probe `HTTP` enable HTTP liveness probe
-	LivenessProbeType *string `json:"liveness_probe.type,omitempty"`
-	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
-	LivenessProbeHttpGetPath *string `json:"liveness_probe.http_get.path,omitempty"`
-	// Delay before liveness probe is initiated
-	LivenessProbeInitialDelaySeconds *int32 `json:"liveness_probe.initial_delay_seconds,omitempty"`
-	// How often to perform the probe
-	LivenessProbePeriodSeconds *int32 `json:"liveness_probe.period_seconds,omitempty"`
-	// When the probe times out
-	LivenessProbeTimeoutSeconds *int32 `json:"liveness_probe.timeout_seconds,omitempty"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed.
-	LivenessProbeSuccessThreshold *int32 `json:"liveness_probe.success_threshold,omitempty"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
-	LivenessProbeFailureThreshold *int32 `json:"liveness_probe.failure_threshold,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 }
@@ -61,6 +39,12 @@ type JobAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewJobAdvancedSettings() *JobAdvancedSettings {
 	this := JobAdvancedSettings{}
+	var buildTimeoutMaxSec int32 = 1800
+	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
+	var buildCpuMaxInMilli int32 = 4000
+	this.BuildCpuMaxInMilli = &buildCpuMaxInMilli
+	var buildRamMaxInGib int32 = 8
+	this.BuildRamMaxInGib = &buildRamMaxInGib
 	var deploymentTerminationGracePeriodSeconds int32 = 60
 	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
 	var cronjobConcurrencyPolicy string = "Forbid"
@@ -69,34 +53,6 @@ func NewJobAdvancedSettings() *JobAdvancedSettings {
 	this.CronjobFailedJobsHistoryLimit = &cronjobFailedJobsHistoryLimit
 	var cronjobSuccessJobsHistoryLimit int32 = 1
 	this.CronjobSuccessJobsHistoryLimit = &cronjobSuccessJobsHistoryLimit
-	var readinessProbeType string = "NONE"
-	this.ReadinessProbeType = &readinessProbeType
-	var readinessProbeHttpGetPath string = ""
-	this.ReadinessProbeHttpGetPath = &readinessProbeHttpGetPath
-	var readinessProbeInitialDelaySeconds int32 = 0
-	this.ReadinessProbeInitialDelaySeconds = &readinessProbeInitialDelaySeconds
-	var readinessProbePeriodSeconds int32 = 0
-	this.ReadinessProbePeriodSeconds = &readinessProbePeriodSeconds
-	var readinessProbeTimeoutSeconds int32 = 0
-	this.ReadinessProbeTimeoutSeconds = &readinessProbeTimeoutSeconds
-	var readinessProbeSuccessThreshold int32 = 0
-	this.ReadinessProbeSuccessThreshold = &readinessProbeSuccessThreshold
-	var readinessProbeFailureThreshold int32 = 0
-	this.ReadinessProbeFailureThreshold = &readinessProbeFailureThreshold
-	var livenessProbeType string = "NONE"
-	this.LivenessProbeType = &livenessProbeType
-	var livenessProbeHttpGetPath string = ""
-	this.LivenessProbeHttpGetPath = &livenessProbeHttpGetPath
-	var livenessProbeInitialDelaySeconds int32 = 0
-	this.LivenessProbeInitialDelaySeconds = &livenessProbeInitialDelaySeconds
-	var livenessProbePeriodSeconds int32 = 0
-	this.LivenessProbePeriodSeconds = &livenessProbePeriodSeconds
-	var livenessProbeTimeoutSeconds int32 = 0
-	this.LivenessProbeTimeoutSeconds = &livenessProbeTimeoutSeconds
-	var livenessProbeSuccessThreshold int32 = 0
-	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
-	var livenessProbeFailureThreshold int32 = 0
-	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
 	return &this
@@ -107,6 +63,12 @@ func NewJobAdvancedSettings() *JobAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 	this := JobAdvancedSettings{}
+	var buildTimeoutMaxSec int32 = 1800
+	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
+	var buildCpuMaxInMilli int32 = 4000
+	this.BuildCpuMaxInMilli = &buildCpuMaxInMilli
+	var buildRamMaxInGib int32 = 8
+	this.BuildRamMaxInGib = &buildRamMaxInGib
 	var deploymentTerminationGracePeriodSeconds int32 = 60
 	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
 	var cronjobConcurrencyPolicy string = "Forbid"
@@ -115,37 +77,105 @@ func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 	this.CronjobFailedJobsHistoryLimit = &cronjobFailedJobsHistoryLimit
 	var cronjobSuccessJobsHistoryLimit int32 = 1
 	this.CronjobSuccessJobsHistoryLimit = &cronjobSuccessJobsHistoryLimit
-	var readinessProbeType string = "NONE"
-	this.ReadinessProbeType = &readinessProbeType
-	var readinessProbeHttpGetPath string = ""
-	this.ReadinessProbeHttpGetPath = &readinessProbeHttpGetPath
-	var readinessProbeInitialDelaySeconds int32 = 0
-	this.ReadinessProbeInitialDelaySeconds = &readinessProbeInitialDelaySeconds
-	var readinessProbePeriodSeconds int32 = 0
-	this.ReadinessProbePeriodSeconds = &readinessProbePeriodSeconds
-	var readinessProbeTimeoutSeconds int32 = 0
-	this.ReadinessProbeTimeoutSeconds = &readinessProbeTimeoutSeconds
-	var readinessProbeSuccessThreshold int32 = 0
-	this.ReadinessProbeSuccessThreshold = &readinessProbeSuccessThreshold
-	var readinessProbeFailureThreshold int32 = 0
-	this.ReadinessProbeFailureThreshold = &readinessProbeFailureThreshold
-	var livenessProbeType string = "NONE"
-	this.LivenessProbeType = &livenessProbeType
-	var livenessProbeHttpGetPath string = ""
-	this.LivenessProbeHttpGetPath = &livenessProbeHttpGetPath
-	var livenessProbeInitialDelaySeconds int32 = 0
-	this.LivenessProbeInitialDelaySeconds = &livenessProbeInitialDelaySeconds
-	var livenessProbePeriodSeconds int32 = 0
-	this.LivenessProbePeriodSeconds = &livenessProbePeriodSeconds
-	var livenessProbeTimeoutSeconds int32 = 0
-	this.LivenessProbeTimeoutSeconds = &livenessProbeTimeoutSeconds
-	var livenessProbeSuccessThreshold int32 = 0
-	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
-	var livenessProbeFailureThreshold int32 = 0
-	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
 	return &this
+}
+
+// GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
+	if o == nil || o.BuildTimeoutMaxSec == nil {
+		var ret int32
+		return ret
+	}
+	return *o.BuildTimeoutMaxSec
+}
+
+// GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
+	if o == nil || o.BuildTimeoutMaxSec == nil {
+		return nil, false
+	}
+	return o.BuildTimeoutMaxSec, true
+}
+
+// HasBuildTimeoutMaxSec returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasBuildTimeoutMaxSec() bool {
+	if o != nil && o.BuildTimeoutMaxSec != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildTimeoutMaxSec gets a reference to the given int32 and assigns it to the BuildTimeoutMaxSec field.
+func (o *JobAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
+	o.BuildTimeoutMaxSec = &v
+}
+
+// GetBuildCpuMaxInMilli returns the BuildCpuMaxInMilli field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
+	if o == nil || o.BuildCpuMaxInMilli == nil {
+		var ret int32
+		return ret
+	}
+	return *o.BuildCpuMaxInMilli
+}
+
+// GetBuildCpuMaxInMilliOk returns a tuple with the BuildCpuMaxInMilli field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
+	if o == nil || o.BuildCpuMaxInMilli == nil {
+		return nil, false
+	}
+	return o.BuildCpuMaxInMilli, true
+}
+
+// HasBuildCpuMaxInMilli returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasBuildCpuMaxInMilli() bool {
+	if o != nil && o.BuildCpuMaxInMilli != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildCpuMaxInMilli gets a reference to the given int32 and assigns it to the BuildCpuMaxInMilli field.
+func (o *JobAdvancedSettings) SetBuildCpuMaxInMilli(v int32) {
+	o.BuildCpuMaxInMilli = &v
+}
+
+// GetBuildRamMaxInGib returns the BuildRamMaxInGib field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetBuildRamMaxInGib() int32 {
+	if o == nil || o.BuildRamMaxInGib == nil {
+		var ret int32
+		return ret
+	}
+	return *o.BuildRamMaxInGib
+}
+
+// GetBuildRamMaxInGibOk returns a tuple with the BuildRamMaxInGib field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
+	if o == nil || o.BuildRamMaxInGib == nil {
+		return nil, false
+	}
+	return o.BuildRamMaxInGib, true
+}
+
+// HasBuildRamMaxInGib returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasBuildRamMaxInGib() bool {
+	if o != nil && o.BuildRamMaxInGib != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildRamMaxInGib gets a reference to the given int32 and assigns it to the BuildRamMaxInGib field.
+func (o *JobAdvancedSettings) SetBuildRamMaxInGib(v int32) {
+	o.BuildRamMaxInGib = &v
 }
 
 // GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
@@ -319,454 +349,6 @@ func (o *JobAdvancedSettings) SetCronjobSuccessJobsHistoryLimit(v int32) {
 	o.CronjobSuccessJobsHistoryLimit = &v
 }
 
-// GetReadinessProbeType returns the ReadinessProbeType field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetReadinessProbeType() string {
-	if o == nil || o.ReadinessProbeType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ReadinessProbeType
-}
-
-// GetReadinessProbeTypeOk returns a tuple with the ReadinessProbeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetReadinessProbeTypeOk() (*string, bool) {
-	if o == nil || o.ReadinessProbeType == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeType, true
-}
-
-// HasReadinessProbeType returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasReadinessProbeType() bool {
-	if o != nil && o.ReadinessProbeType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeType gets a reference to the given string and assigns it to the ReadinessProbeType field.
-func (o *JobAdvancedSettings) SetReadinessProbeType(v string) {
-	o.ReadinessProbeType = &v
-}
-
-// GetReadinessProbeHttpGetPath returns the ReadinessProbeHttpGetPath field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetReadinessProbeHttpGetPath() string {
-	if o == nil || o.ReadinessProbeHttpGetPath == nil {
-		var ret string
-		return ret
-	}
-	return *o.ReadinessProbeHttpGetPath
-}
-
-// GetReadinessProbeHttpGetPathOk returns a tuple with the ReadinessProbeHttpGetPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetReadinessProbeHttpGetPathOk() (*string, bool) {
-	if o == nil || o.ReadinessProbeHttpGetPath == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeHttpGetPath, true
-}
-
-// HasReadinessProbeHttpGetPath returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasReadinessProbeHttpGetPath() bool {
-	if o != nil && o.ReadinessProbeHttpGetPath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeHttpGetPath gets a reference to the given string and assigns it to the ReadinessProbeHttpGetPath field.
-func (o *JobAdvancedSettings) SetReadinessProbeHttpGetPath(v string) {
-	o.ReadinessProbeHttpGetPath = &v
-}
-
-// GetReadinessProbeInitialDelaySeconds returns the ReadinessProbeInitialDelaySeconds field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetReadinessProbeInitialDelaySeconds() int32 {
-	if o == nil || o.ReadinessProbeInitialDelaySeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeInitialDelaySeconds
-}
-
-// GetReadinessProbeInitialDelaySecondsOk returns a tuple with the ReadinessProbeInitialDelaySeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetReadinessProbeInitialDelaySecondsOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeInitialDelaySeconds == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeInitialDelaySeconds, true
-}
-
-// HasReadinessProbeInitialDelaySeconds returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasReadinessProbeInitialDelaySeconds() bool {
-	if o != nil && o.ReadinessProbeInitialDelaySeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeInitialDelaySeconds gets a reference to the given int32 and assigns it to the ReadinessProbeInitialDelaySeconds field.
-func (o *JobAdvancedSettings) SetReadinessProbeInitialDelaySeconds(v int32) {
-	o.ReadinessProbeInitialDelaySeconds = &v
-}
-
-// GetReadinessProbePeriodSeconds returns the ReadinessProbePeriodSeconds field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetReadinessProbePeriodSeconds() int32 {
-	if o == nil || o.ReadinessProbePeriodSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbePeriodSeconds
-}
-
-// GetReadinessProbePeriodSecondsOk returns a tuple with the ReadinessProbePeriodSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetReadinessProbePeriodSecondsOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbePeriodSeconds == nil {
-		return nil, false
-	}
-	return o.ReadinessProbePeriodSeconds, true
-}
-
-// HasReadinessProbePeriodSeconds returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasReadinessProbePeriodSeconds() bool {
-	if o != nil && o.ReadinessProbePeriodSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbePeriodSeconds gets a reference to the given int32 and assigns it to the ReadinessProbePeriodSeconds field.
-func (o *JobAdvancedSettings) SetReadinessProbePeriodSeconds(v int32) {
-	o.ReadinessProbePeriodSeconds = &v
-}
-
-// GetReadinessProbeTimeoutSeconds returns the ReadinessProbeTimeoutSeconds field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetReadinessProbeTimeoutSeconds() int32 {
-	if o == nil || o.ReadinessProbeTimeoutSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeTimeoutSeconds
-}
-
-// GetReadinessProbeTimeoutSecondsOk returns a tuple with the ReadinessProbeTimeoutSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetReadinessProbeTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeTimeoutSeconds == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeTimeoutSeconds, true
-}
-
-// HasReadinessProbeTimeoutSeconds returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasReadinessProbeTimeoutSeconds() bool {
-	if o != nil && o.ReadinessProbeTimeoutSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeTimeoutSeconds gets a reference to the given int32 and assigns it to the ReadinessProbeTimeoutSeconds field.
-func (o *JobAdvancedSettings) SetReadinessProbeTimeoutSeconds(v int32) {
-	o.ReadinessProbeTimeoutSeconds = &v
-}
-
-// GetReadinessProbeSuccessThreshold returns the ReadinessProbeSuccessThreshold field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetReadinessProbeSuccessThreshold() int32 {
-	if o == nil || o.ReadinessProbeSuccessThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeSuccessThreshold
-}
-
-// GetReadinessProbeSuccessThresholdOk returns a tuple with the ReadinessProbeSuccessThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetReadinessProbeSuccessThresholdOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeSuccessThreshold == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeSuccessThreshold, true
-}
-
-// HasReadinessProbeSuccessThreshold returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasReadinessProbeSuccessThreshold() bool {
-	if o != nil && o.ReadinessProbeSuccessThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeSuccessThreshold gets a reference to the given int32 and assigns it to the ReadinessProbeSuccessThreshold field.
-func (o *JobAdvancedSettings) SetReadinessProbeSuccessThreshold(v int32) {
-	o.ReadinessProbeSuccessThreshold = &v
-}
-
-// GetReadinessProbeFailureThreshold returns the ReadinessProbeFailureThreshold field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetReadinessProbeFailureThreshold() int32 {
-	if o == nil || o.ReadinessProbeFailureThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeFailureThreshold
-}
-
-// GetReadinessProbeFailureThresholdOk returns a tuple with the ReadinessProbeFailureThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetReadinessProbeFailureThresholdOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeFailureThreshold == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeFailureThreshold, true
-}
-
-// HasReadinessProbeFailureThreshold returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasReadinessProbeFailureThreshold() bool {
-	if o != nil && o.ReadinessProbeFailureThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeFailureThreshold gets a reference to the given int32 and assigns it to the ReadinessProbeFailureThreshold field.
-func (o *JobAdvancedSettings) SetReadinessProbeFailureThreshold(v int32) {
-	o.ReadinessProbeFailureThreshold = &v
-}
-
-// GetLivenessProbeType returns the LivenessProbeType field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetLivenessProbeType() string {
-	if o == nil || o.LivenessProbeType == nil {
-		var ret string
-		return ret
-	}
-	return *o.LivenessProbeType
-}
-
-// GetLivenessProbeTypeOk returns a tuple with the LivenessProbeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetLivenessProbeTypeOk() (*string, bool) {
-	if o == nil || o.LivenessProbeType == nil {
-		return nil, false
-	}
-	return o.LivenessProbeType, true
-}
-
-// HasLivenessProbeType returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasLivenessProbeType() bool {
-	if o != nil && o.LivenessProbeType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeType gets a reference to the given string and assigns it to the LivenessProbeType field.
-func (o *JobAdvancedSettings) SetLivenessProbeType(v string) {
-	o.LivenessProbeType = &v
-}
-
-// GetLivenessProbeHttpGetPath returns the LivenessProbeHttpGetPath field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetLivenessProbeHttpGetPath() string {
-	if o == nil || o.LivenessProbeHttpGetPath == nil {
-		var ret string
-		return ret
-	}
-	return *o.LivenessProbeHttpGetPath
-}
-
-// GetLivenessProbeHttpGetPathOk returns a tuple with the LivenessProbeHttpGetPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetLivenessProbeHttpGetPathOk() (*string, bool) {
-	if o == nil || o.LivenessProbeHttpGetPath == nil {
-		return nil, false
-	}
-	return o.LivenessProbeHttpGetPath, true
-}
-
-// HasLivenessProbeHttpGetPath returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasLivenessProbeHttpGetPath() bool {
-	if o != nil && o.LivenessProbeHttpGetPath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeHttpGetPath gets a reference to the given string and assigns it to the LivenessProbeHttpGetPath field.
-func (o *JobAdvancedSettings) SetLivenessProbeHttpGetPath(v string) {
-	o.LivenessProbeHttpGetPath = &v
-}
-
-// GetLivenessProbeInitialDelaySeconds returns the LivenessProbeInitialDelaySeconds field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetLivenessProbeInitialDelaySeconds() int32 {
-	if o == nil || o.LivenessProbeInitialDelaySeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeInitialDelaySeconds
-}
-
-// GetLivenessProbeInitialDelaySecondsOk returns a tuple with the LivenessProbeInitialDelaySeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetLivenessProbeInitialDelaySecondsOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeInitialDelaySeconds == nil {
-		return nil, false
-	}
-	return o.LivenessProbeInitialDelaySeconds, true
-}
-
-// HasLivenessProbeInitialDelaySeconds returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasLivenessProbeInitialDelaySeconds() bool {
-	if o != nil && o.LivenessProbeInitialDelaySeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeInitialDelaySeconds gets a reference to the given int32 and assigns it to the LivenessProbeInitialDelaySeconds field.
-func (o *JobAdvancedSettings) SetLivenessProbeInitialDelaySeconds(v int32) {
-	o.LivenessProbeInitialDelaySeconds = &v
-}
-
-// GetLivenessProbePeriodSeconds returns the LivenessProbePeriodSeconds field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetLivenessProbePeriodSeconds() int32 {
-	if o == nil || o.LivenessProbePeriodSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbePeriodSeconds
-}
-
-// GetLivenessProbePeriodSecondsOk returns a tuple with the LivenessProbePeriodSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetLivenessProbePeriodSecondsOk() (*int32, bool) {
-	if o == nil || o.LivenessProbePeriodSeconds == nil {
-		return nil, false
-	}
-	return o.LivenessProbePeriodSeconds, true
-}
-
-// HasLivenessProbePeriodSeconds returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasLivenessProbePeriodSeconds() bool {
-	if o != nil && o.LivenessProbePeriodSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbePeriodSeconds gets a reference to the given int32 and assigns it to the LivenessProbePeriodSeconds field.
-func (o *JobAdvancedSettings) SetLivenessProbePeriodSeconds(v int32) {
-	o.LivenessProbePeriodSeconds = &v
-}
-
-// GetLivenessProbeTimeoutSeconds returns the LivenessProbeTimeoutSeconds field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetLivenessProbeTimeoutSeconds() int32 {
-	if o == nil || o.LivenessProbeTimeoutSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeTimeoutSeconds
-}
-
-// GetLivenessProbeTimeoutSecondsOk returns a tuple with the LivenessProbeTimeoutSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetLivenessProbeTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeTimeoutSeconds == nil {
-		return nil, false
-	}
-	return o.LivenessProbeTimeoutSeconds, true
-}
-
-// HasLivenessProbeTimeoutSeconds returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasLivenessProbeTimeoutSeconds() bool {
-	if o != nil && o.LivenessProbeTimeoutSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeTimeoutSeconds gets a reference to the given int32 and assigns it to the LivenessProbeTimeoutSeconds field.
-func (o *JobAdvancedSettings) SetLivenessProbeTimeoutSeconds(v int32) {
-	o.LivenessProbeTimeoutSeconds = &v
-}
-
-// GetLivenessProbeSuccessThreshold returns the LivenessProbeSuccessThreshold field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetLivenessProbeSuccessThreshold() int32 {
-	if o == nil || o.LivenessProbeSuccessThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeSuccessThreshold
-}
-
-// GetLivenessProbeSuccessThresholdOk returns a tuple with the LivenessProbeSuccessThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetLivenessProbeSuccessThresholdOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeSuccessThreshold == nil {
-		return nil, false
-	}
-	return o.LivenessProbeSuccessThreshold, true
-}
-
-// HasLivenessProbeSuccessThreshold returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasLivenessProbeSuccessThreshold() bool {
-	if o != nil && o.LivenessProbeSuccessThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeSuccessThreshold gets a reference to the given int32 and assigns it to the LivenessProbeSuccessThreshold field.
-func (o *JobAdvancedSettings) SetLivenessProbeSuccessThreshold(v int32) {
-	o.LivenessProbeSuccessThreshold = &v
-}
-
-// GetLivenessProbeFailureThreshold returns the LivenessProbeFailureThreshold field value if set, zero value otherwise.
-func (o *JobAdvancedSettings) GetLivenessProbeFailureThreshold() int32 {
-	if o == nil || o.LivenessProbeFailureThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeFailureThreshold
-}
-
-// GetLivenessProbeFailureThresholdOk returns a tuple with the LivenessProbeFailureThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetLivenessProbeFailureThresholdOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeFailureThreshold == nil {
-		return nil, false
-	}
-	return o.LivenessProbeFailureThreshold, true
-}
-
-// HasLivenessProbeFailureThreshold returns a boolean if a field has been set.
-func (o *JobAdvancedSettings) HasLivenessProbeFailureThreshold() bool {
-	if o != nil && o.LivenessProbeFailureThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeFailureThreshold gets a reference to the given int32 and assigns it to the LivenessProbeFailureThreshold field.
-func (o *JobAdvancedSettings) SetLivenessProbeFailureThreshold(v int32) {
-	o.LivenessProbeFailureThreshold = &v
-}
-
 // GetSecurityServiceAccountName returns the SecurityServiceAccountName field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetSecurityServiceAccountName() string {
 	if o == nil || o.SecurityServiceAccountName == nil {
@@ -801,6 +383,15 @@ func (o *JobAdvancedSettings) SetSecurityServiceAccountName(v string) {
 
 func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.BuildTimeoutMaxSec != nil {
+		toSerialize["build.timeout_max_sec"] = o.BuildTimeoutMaxSec
+	}
+	if o.BuildCpuMaxInMilli != nil {
+		toSerialize["build.cpu_max_in_milli"] = o.BuildCpuMaxInMilli
+	}
+	if o.BuildRamMaxInGib != nil {
+		toSerialize["build.ram_max_in_gib"] = o.BuildRamMaxInGib
+	}
 	if o.DeploymentTerminationGracePeriodSeconds != nil {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
 	}
@@ -815,48 +406,6 @@ func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.CronjobSuccessJobsHistoryLimit != nil {
 		toSerialize["cronjob.success_jobs_history_limit"] = o.CronjobSuccessJobsHistoryLimit
-	}
-	if o.ReadinessProbeType != nil {
-		toSerialize["readiness_probe.type"] = o.ReadinessProbeType
-	}
-	if o.ReadinessProbeHttpGetPath != nil {
-		toSerialize["readiness_probe.http_get.path"] = o.ReadinessProbeHttpGetPath
-	}
-	if o.ReadinessProbeInitialDelaySeconds != nil {
-		toSerialize["readiness_probe.initial_delay_seconds"] = o.ReadinessProbeInitialDelaySeconds
-	}
-	if o.ReadinessProbePeriodSeconds != nil {
-		toSerialize["readiness_probe.period_seconds"] = o.ReadinessProbePeriodSeconds
-	}
-	if o.ReadinessProbeTimeoutSeconds != nil {
-		toSerialize["readiness_probe.timeout_seconds"] = o.ReadinessProbeTimeoutSeconds
-	}
-	if o.ReadinessProbeSuccessThreshold != nil {
-		toSerialize["readiness_probe.success_threshold"] = o.ReadinessProbeSuccessThreshold
-	}
-	if o.ReadinessProbeFailureThreshold != nil {
-		toSerialize["readiness_probe.failure_threshold"] = o.ReadinessProbeFailureThreshold
-	}
-	if o.LivenessProbeType != nil {
-		toSerialize["liveness_probe.type"] = o.LivenessProbeType
-	}
-	if o.LivenessProbeHttpGetPath != nil {
-		toSerialize["liveness_probe.http_get.path"] = o.LivenessProbeHttpGetPath
-	}
-	if o.LivenessProbeInitialDelaySeconds != nil {
-		toSerialize["liveness_probe.initial_delay_seconds"] = o.LivenessProbeInitialDelaySeconds
-	}
-	if o.LivenessProbePeriodSeconds != nil {
-		toSerialize["liveness_probe.period_seconds"] = o.LivenessProbePeriodSeconds
-	}
-	if o.LivenessProbeTimeoutSeconds != nil {
-		toSerialize["liveness_probe.timeout_seconds"] = o.LivenessProbeTimeoutSeconds
-	}
-	if o.LivenessProbeSuccessThreshold != nil {
-		toSerialize["liveness_probe.success_threshold"] = o.LivenessProbeSuccessThreshold
-	}
-	if o.LivenessProbeFailureThreshold != nil {
-		toSerialize["liveness_probe.failure_threshold"] = o.LivenessProbeFailureThreshold
 	}
 	if o.SecurityServiceAccountName != nil {
 		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName

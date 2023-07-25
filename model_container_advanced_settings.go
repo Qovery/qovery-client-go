@@ -46,6 +46,10 @@ type ContainerAdvancedSettings struct {
 	NetworkIngressProxySendTimeoutSeconds *int32 `json:"network.ingress.proxy_send_timeout_seconds,omitempty"`
 	// Sets a timeout (in seconds) for reading a response from the proxied server
 	NetworkIngressProxyReadTimeoutSeconds *int32 `json:"network.ingress.proxy_read_timeout_seconds,omitempty"`
+	// Sets a timeout (in seconds) for transmitting a request to the grpc server
+	NetworkIngressGrpcSendTimeoutSeconds *int32 `json:"network.ingress.grpc_send_timeout_seconds,omitempty"`
+	// Sets a timeout (in seconds) for transmitting a request to the grpc server
+	NetworkIngressGrpcReadTimeoutSeconds *int32 `json:"network.ingress.grpc_read_timeout_seconds,omitempty"`
 	// list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.
 	NetworkIngressWhitelistSourceRange *string `json:"network.ingress.whitelist_source_range,omitempty"`
 	// list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1
@@ -54,34 +58,6 @@ type ContainerAdvancedSettings struct {
 	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
 	// Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target
 	NetworkIngressEnableStickySession *bool `json:"network.ingress.enable_sticky_session,omitempty"`
-	// * `NONE` disable readiness probe * `TCP` enable TCP readiness probe * `HTTP` enable HTTP readiness probe
-	ReadinessProbeType *string `json:"readiness_probe.type,omitempty"`
-	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
-	ReadinessProbeHttpGetPath *string `json:"readiness_probe.http_get.path,omitempty"`
-	// Delay before liveness probe is initiated
-	ReadinessProbeInitialDelaySeconds *int32 `json:"readiness_probe.initial_delay_seconds,omitempty"`
-	// How often to perform the probe
-	ReadinessProbePeriodSeconds *int32 `json:"readiness_probe.period_seconds,omitempty"`
-	// When the probe times out
-	ReadinessProbeTimeoutSeconds *int32 `json:"readiness_probe.timeout_seconds,omitempty"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed.
-	ReadinessProbeSuccessThreshold *int32 `json:"readiness_probe.success_threshold,omitempty"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
-	ReadinessProbeFailureThreshold *int32 `json:"readiness_probe.failure_threshold,omitempty"`
-	// * `NONE` disable liveness probe * `TCP` enable TCP liveness probe * `HTTP` enable HTTP liveness probe
-	LivenessProbeType *string `json:"liveness_probe.type,omitempty"`
-	// HTTP GET path to check status (must returns 2xx E.g \"/healtz\") - only usable with TYPE = HTTP
-	LivenessProbeHttpGetPath *string `json:"liveness_probe.http_get.path,omitempty"`
-	// Delay before liveness probe is initiated
-	LivenessProbeInitialDelaySeconds *int32 `json:"liveness_probe.initial_delay_seconds,omitempty"`
-	// How often to perform the probe
-	LivenessProbePeriodSeconds *int32 `json:"liveness_probe.period_seconds,omitempty"`
-	// When the probe times out
-	LivenessProbeTimeoutSeconds *int32 `json:"liveness_probe.timeout_seconds,omitempty"`
-	// Minimum consecutive successes for the probe to be considered successful after having failed.
-	LivenessProbeSuccessThreshold *int32 `json:"liveness_probe.success_threshold,omitempty"`
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded.
-	LivenessProbeFailureThreshold *int32 `json:"liveness_probe.failure_threshold,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
@@ -128,6 +104,10 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
 	var networkIngressProxyReadTimeoutSeconds int32 = 60
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
+	var networkIngressGrpcSendTimeoutSeconds int32 = 60
+	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
+	var networkIngressGrpcReadTimeoutSeconds int32 = 60
+	this.NetworkIngressGrpcReadTimeoutSeconds = &networkIngressGrpcReadTimeoutSeconds
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var networkIngressDenylistSourceRange string = ""
@@ -136,34 +116,6 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
 	var networkIngressEnableStickySession bool = false
 	this.NetworkIngressEnableStickySession = &networkIngressEnableStickySession
-	var readinessProbeType string = "TCP"
-	this.ReadinessProbeType = &readinessProbeType
-	var readinessProbeHttpGetPath string = "/"
-	this.ReadinessProbeHttpGetPath = &readinessProbeHttpGetPath
-	var readinessProbeInitialDelaySeconds int32 = 30
-	this.ReadinessProbeInitialDelaySeconds = &readinessProbeInitialDelaySeconds
-	var readinessProbePeriodSeconds int32 = 10
-	this.ReadinessProbePeriodSeconds = &readinessProbePeriodSeconds
-	var readinessProbeTimeoutSeconds int32 = 1
-	this.ReadinessProbeTimeoutSeconds = &readinessProbeTimeoutSeconds
-	var readinessProbeSuccessThreshold int32 = 1
-	this.ReadinessProbeSuccessThreshold = &readinessProbeSuccessThreshold
-	var readinessProbeFailureThreshold int32 = 3
-	this.ReadinessProbeFailureThreshold = &readinessProbeFailureThreshold
-	var livenessProbeType string = "TCP"
-	this.LivenessProbeType = &livenessProbeType
-	var livenessProbeHttpGetPath string = "/"
-	this.LivenessProbeHttpGetPath = &livenessProbeHttpGetPath
-	var livenessProbeInitialDelaySeconds int32 = 30
-	this.LivenessProbeInitialDelaySeconds = &livenessProbeInitialDelaySeconds
-	var livenessProbePeriodSeconds int32 = 10
-	this.LivenessProbePeriodSeconds = &livenessProbePeriodSeconds
-	var livenessProbeTimeoutSeconds int32 = 5
-	this.LivenessProbeTimeoutSeconds = &livenessProbeTimeoutSeconds
-	var livenessProbeSuccessThreshold int32 = 1
-	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
-	var livenessProbeFailureThreshold int32 = 3
-	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
 	var hpaCpuAverageUtilizationPercent int32 = 60
@@ -210,6 +162,10 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
 	var networkIngressProxyReadTimeoutSeconds int32 = 60
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
+	var networkIngressGrpcSendTimeoutSeconds int32 = 60
+	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
+	var networkIngressGrpcReadTimeoutSeconds int32 = 60
+	this.NetworkIngressGrpcReadTimeoutSeconds = &networkIngressGrpcReadTimeoutSeconds
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var networkIngressDenylistSourceRange string = ""
@@ -218,34 +174,6 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
 	var networkIngressEnableStickySession bool = false
 	this.NetworkIngressEnableStickySession = &networkIngressEnableStickySession
-	var readinessProbeType string = "TCP"
-	this.ReadinessProbeType = &readinessProbeType
-	var readinessProbeHttpGetPath string = "/"
-	this.ReadinessProbeHttpGetPath = &readinessProbeHttpGetPath
-	var readinessProbeInitialDelaySeconds int32 = 30
-	this.ReadinessProbeInitialDelaySeconds = &readinessProbeInitialDelaySeconds
-	var readinessProbePeriodSeconds int32 = 10
-	this.ReadinessProbePeriodSeconds = &readinessProbePeriodSeconds
-	var readinessProbeTimeoutSeconds int32 = 1
-	this.ReadinessProbeTimeoutSeconds = &readinessProbeTimeoutSeconds
-	var readinessProbeSuccessThreshold int32 = 1
-	this.ReadinessProbeSuccessThreshold = &readinessProbeSuccessThreshold
-	var readinessProbeFailureThreshold int32 = 3
-	this.ReadinessProbeFailureThreshold = &readinessProbeFailureThreshold
-	var livenessProbeType string = "TCP"
-	this.LivenessProbeType = &livenessProbeType
-	var livenessProbeHttpGetPath string = "/"
-	this.LivenessProbeHttpGetPath = &livenessProbeHttpGetPath
-	var livenessProbeInitialDelaySeconds int32 = 30
-	this.LivenessProbeInitialDelaySeconds = &livenessProbeInitialDelaySeconds
-	var livenessProbePeriodSeconds int32 = 10
-	this.LivenessProbePeriodSeconds = &livenessProbePeriodSeconds
-	var livenessProbeTimeoutSeconds int32 = 5
-	this.LivenessProbeTimeoutSeconds = &livenessProbeTimeoutSeconds
-	var livenessProbeSuccessThreshold int32 = 1
-	this.LivenessProbeSuccessThreshold = &livenessProbeSuccessThreshold
-	var livenessProbeFailureThreshold int32 = 3
-	this.LivenessProbeFailureThreshold = &livenessProbeFailureThreshold
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
 	var hpaCpuAverageUtilizationPercent int32 = 60
@@ -797,6 +725,70 @@ func (o *ContainerAdvancedSettings) SetNetworkIngressProxyReadTimeoutSeconds(v i
 	o.NetworkIngressProxyReadTimeoutSeconds = &v
 }
 
+// GetNetworkIngressGrpcSendTimeoutSeconds returns the NetworkIngressGrpcSendTimeoutSeconds field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSeconds() int32 {
+	if o == nil || o.NetworkIngressGrpcSendTimeoutSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressGrpcSendTimeoutSeconds
+}
+
+// GetNetworkIngressGrpcSendTimeoutSecondsOk returns a tuple with the NetworkIngressGrpcSendTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressGrpcSendTimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressGrpcSendTimeoutSeconds, true
+}
+
+// HasNetworkIngressGrpcSendTimeoutSeconds returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkIngressGrpcSendTimeoutSeconds() bool {
+	if o != nil && o.NetworkIngressGrpcSendTimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressGrpcSendTimeoutSeconds gets a reference to the given int32 and assigns it to the NetworkIngressGrpcSendTimeoutSeconds field.
+func (o *ContainerAdvancedSettings) SetNetworkIngressGrpcSendTimeoutSeconds(v int32) {
+	o.NetworkIngressGrpcSendTimeoutSeconds = &v
+}
+
+// GetNetworkIngressGrpcReadTimeoutSeconds returns the NetworkIngressGrpcReadTimeoutSeconds field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSeconds() int32 {
+	if o == nil || o.NetworkIngressGrpcReadTimeoutSeconds == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkIngressGrpcReadTimeoutSeconds
+}
+
+// GetNetworkIngressGrpcReadTimeoutSecondsOk returns a tuple with the NetworkIngressGrpcReadTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSecondsOk() (*int32, bool) {
+	if o == nil || o.NetworkIngressGrpcReadTimeoutSeconds == nil {
+		return nil, false
+	}
+	return o.NetworkIngressGrpcReadTimeoutSeconds, true
+}
+
+// HasNetworkIngressGrpcReadTimeoutSeconds returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkIngressGrpcReadTimeoutSeconds() bool {
+	if o != nil && o.NetworkIngressGrpcReadTimeoutSeconds != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressGrpcReadTimeoutSeconds gets a reference to the given int32 and assigns it to the NetworkIngressGrpcReadTimeoutSeconds field.
+func (o *ContainerAdvancedSettings) SetNetworkIngressGrpcReadTimeoutSeconds(v int32) {
+	o.NetworkIngressGrpcReadTimeoutSeconds = &v
+}
+
 // GetNetworkIngressWhitelistSourceRange returns the NetworkIngressWhitelistSourceRange field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string {
 	if o == nil || o.NetworkIngressWhitelistSourceRange == nil {
@@ -925,454 +917,6 @@ func (o *ContainerAdvancedSettings) SetNetworkIngressEnableStickySession(v bool)
 	o.NetworkIngressEnableStickySession = &v
 }
 
-// GetReadinessProbeType returns the ReadinessProbeType field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetReadinessProbeType() string {
-	if o == nil || o.ReadinessProbeType == nil {
-		var ret string
-		return ret
-	}
-	return *o.ReadinessProbeType
-}
-
-// GetReadinessProbeTypeOk returns a tuple with the ReadinessProbeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetReadinessProbeTypeOk() (*string, bool) {
-	if o == nil || o.ReadinessProbeType == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeType, true
-}
-
-// HasReadinessProbeType returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasReadinessProbeType() bool {
-	if o != nil && o.ReadinessProbeType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeType gets a reference to the given string and assigns it to the ReadinessProbeType field.
-func (o *ContainerAdvancedSettings) SetReadinessProbeType(v string) {
-	o.ReadinessProbeType = &v
-}
-
-// GetReadinessProbeHttpGetPath returns the ReadinessProbeHttpGetPath field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetReadinessProbeHttpGetPath() string {
-	if o == nil || o.ReadinessProbeHttpGetPath == nil {
-		var ret string
-		return ret
-	}
-	return *o.ReadinessProbeHttpGetPath
-}
-
-// GetReadinessProbeHttpGetPathOk returns a tuple with the ReadinessProbeHttpGetPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetReadinessProbeHttpGetPathOk() (*string, bool) {
-	if o == nil || o.ReadinessProbeHttpGetPath == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeHttpGetPath, true
-}
-
-// HasReadinessProbeHttpGetPath returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasReadinessProbeHttpGetPath() bool {
-	if o != nil && o.ReadinessProbeHttpGetPath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeHttpGetPath gets a reference to the given string and assigns it to the ReadinessProbeHttpGetPath field.
-func (o *ContainerAdvancedSettings) SetReadinessProbeHttpGetPath(v string) {
-	o.ReadinessProbeHttpGetPath = &v
-}
-
-// GetReadinessProbeInitialDelaySeconds returns the ReadinessProbeInitialDelaySeconds field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetReadinessProbeInitialDelaySeconds() int32 {
-	if o == nil || o.ReadinessProbeInitialDelaySeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeInitialDelaySeconds
-}
-
-// GetReadinessProbeInitialDelaySecondsOk returns a tuple with the ReadinessProbeInitialDelaySeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetReadinessProbeInitialDelaySecondsOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeInitialDelaySeconds == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeInitialDelaySeconds, true
-}
-
-// HasReadinessProbeInitialDelaySeconds returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasReadinessProbeInitialDelaySeconds() bool {
-	if o != nil && o.ReadinessProbeInitialDelaySeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeInitialDelaySeconds gets a reference to the given int32 and assigns it to the ReadinessProbeInitialDelaySeconds field.
-func (o *ContainerAdvancedSettings) SetReadinessProbeInitialDelaySeconds(v int32) {
-	o.ReadinessProbeInitialDelaySeconds = &v
-}
-
-// GetReadinessProbePeriodSeconds returns the ReadinessProbePeriodSeconds field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetReadinessProbePeriodSeconds() int32 {
-	if o == nil || o.ReadinessProbePeriodSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbePeriodSeconds
-}
-
-// GetReadinessProbePeriodSecondsOk returns a tuple with the ReadinessProbePeriodSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetReadinessProbePeriodSecondsOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbePeriodSeconds == nil {
-		return nil, false
-	}
-	return o.ReadinessProbePeriodSeconds, true
-}
-
-// HasReadinessProbePeriodSeconds returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasReadinessProbePeriodSeconds() bool {
-	if o != nil && o.ReadinessProbePeriodSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbePeriodSeconds gets a reference to the given int32 and assigns it to the ReadinessProbePeriodSeconds field.
-func (o *ContainerAdvancedSettings) SetReadinessProbePeriodSeconds(v int32) {
-	o.ReadinessProbePeriodSeconds = &v
-}
-
-// GetReadinessProbeTimeoutSeconds returns the ReadinessProbeTimeoutSeconds field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetReadinessProbeTimeoutSeconds() int32 {
-	if o == nil || o.ReadinessProbeTimeoutSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeTimeoutSeconds
-}
-
-// GetReadinessProbeTimeoutSecondsOk returns a tuple with the ReadinessProbeTimeoutSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetReadinessProbeTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeTimeoutSeconds == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeTimeoutSeconds, true
-}
-
-// HasReadinessProbeTimeoutSeconds returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasReadinessProbeTimeoutSeconds() bool {
-	if o != nil && o.ReadinessProbeTimeoutSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeTimeoutSeconds gets a reference to the given int32 and assigns it to the ReadinessProbeTimeoutSeconds field.
-func (o *ContainerAdvancedSettings) SetReadinessProbeTimeoutSeconds(v int32) {
-	o.ReadinessProbeTimeoutSeconds = &v
-}
-
-// GetReadinessProbeSuccessThreshold returns the ReadinessProbeSuccessThreshold field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetReadinessProbeSuccessThreshold() int32 {
-	if o == nil || o.ReadinessProbeSuccessThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeSuccessThreshold
-}
-
-// GetReadinessProbeSuccessThresholdOk returns a tuple with the ReadinessProbeSuccessThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetReadinessProbeSuccessThresholdOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeSuccessThreshold == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeSuccessThreshold, true
-}
-
-// HasReadinessProbeSuccessThreshold returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasReadinessProbeSuccessThreshold() bool {
-	if o != nil && o.ReadinessProbeSuccessThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeSuccessThreshold gets a reference to the given int32 and assigns it to the ReadinessProbeSuccessThreshold field.
-func (o *ContainerAdvancedSettings) SetReadinessProbeSuccessThreshold(v int32) {
-	o.ReadinessProbeSuccessThreshold = &v
-}
-
-// GetReadinessProbeFailureThreshold returns the ReadinessProbeFailureThreshold field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetReadinessProbeFailureThreshold() int32 {
-	if o == nil || o.ReadinessProbeFailureThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ReadinessProbeFailureThreshold
-}
-
-// GetReadinessProbeFailureThresholdOk returns a tuple with the ReadinessProbeFailureThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetReadinessProbeFailureThresholdOk() (*int32, bool) {
-	if o == nil || o.ReadinessProbeFailureThreshold == nil {
-		return nil, false
-	}
-	return o.ReadinessProbeFailureThreshold, true
-}
-
-// HasReadinessProbeFailureThreshold returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasReadinessProbeFailureThreshold() bool {
-	if o != nil && o.ReadinessProbeFailureThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadinessProbeFailureThreshold gets a reference to the given int32 and assigns it to the ReadinessProbeFailureThreshold field.
-func (o *ContainerAdvancedSettings) SetReadinessProbeFailureThreshold(v int32) {
-	o.ReadinessProbeFailureThreshold = &v
-}
-
-// GetLivenessProbeType returns the LivenessProbeType field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetLivenessProbeType() string {
-	if o == nil || o.LivenessProbeType == nil {
-		var ret string
-		return ret
-	}
-	return *o.LivenessProbeType
-}
-
-// GetLivenessProbeTypeOk returns a tuple with the LivenessProbeType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetLivenessProbeTypeOk() (*string, bool) {
-	if o == nil || o.LivenessProbeType == nil {
-		return nil, false
-	}
-	return o.LivenessProbeType, true
-}
-
-// HasLivenessProbeType returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasLivenessProbeType() bool {
-	if o != nil && o.LivenessProbeType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeType gets a reference to the given string and assigns it to the LivenessProbeType field.
-func (o *ContainerAdvancedSettings) SetLivenessProbeType(v string) {
-	o.LivenessProbeType = &v
-}
-
-// GetLivenessProbeHttpGetPath returns the LivenessProbeHttpGetPath field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetLivenessProbeHttpGetPath() string {
-	if o == nil || o.LivenessProbeHttpGetPath == nil {
-		var ret string
-		return ret
-	}
-	return *o.LivenessProbeHttpGetPath
-}
-
-// GetLivenessProbeHttpGetPathOk returns a tuple with the LivenessProbeHttpGetPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetLivenessProbeHttpGetPathOk() (*string, bool) {
-	if o == nil || o.LivenessProbeHttpGetPath == nil {
-		return nil, false
-	}
-	return o.LivenessProbeHttpGetPath, true
-}
-
-// HasLivenessProbeHttpGetPath returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasLivenessProbeHttpGetPath() bool {
-	if o != nil && o.LivenessProbeHttpGetPath != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeHttpGetPath gets a reference to the given string and assigns it to the LivenessProbeHttpGetPath field.
-func (o *ContainerAdvancedSettings) SetLivenessProbeHttpGetPath(v string) {
-	o.LivenessProbeHttpGetPath = &v
-}
-
-// GetLivenessProbeInitialDelaySeconds returns the LivenessProbeInitialDelaySeconds field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetLivenessProbeInitialDelaySeconds() int32 {
-	if o == nil || o.LivenessProbeInitialDelaySeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeInitialDelaySeconds
-}
-
-// GetLivenessProbeInitialDelaySecondsOk returns a tuple with the LivenessProbeInitialDelaySeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetLivenessProbeInitialDelaySecondsOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeInitialDelaySeconds == nil {
-		return nil, false
-	}
-	return o.LivenessProbeInitialDelaySeconds, true
-}
-
-// HasLivenessProbeInitialDelaySeconds returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasLivenessProbeInitialDelaySeconds() bool {
-	if o != nil && o.LivenessProbeInitialDelaySeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeInitialDelaySeconds gets a reference to the given int32 and assigns it to the LivenessProbeInitialDelaySeconds field.
-func (o *ContainerAdvancedSettings) SetLivenessProbeInitialDelaySeconds(v int32) {
-	o.LivenessProbeInitialDelaySeconds = &v
-}
-
-// GetLivenessProbePeriodSeconds returns the LivenessProbePeriodSeconds field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetLivenessProbePeriodSeconds() int32 {
-	if o == nil || o.LivenessProbePeriodSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbePeriodSeconds
-}
-
-// GetLivenessProbePeriodSecondsOk returns a tuple with the LivenessProbePeriodSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetLivenessProbePeriodSecondsOk() (*int32, bool) {
-	if o == nil || o.LivenessProbePeriodSeconds == nil {
-		return nil, false
-	}
-	return o.LivenessProbePeriodSeconds, true
-}
-
-// HasLivenessProbePeriodSeconds returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasLivenessProbePeriodSeconds() bool {
-	if o != nil && o.LivenessProbePeriodSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbePeriodSeconds gets a reference to the given int32 and assigns it to the LivenessProbePeriodSeconds field.
-func (o *ContainerAdvancedSettings) SetLivenessProbePeriodSeconds(v int32) {
-	o.LivenessProbePeriodSeconds = &v
-}
-
-// GetLivenessProbeTimeoutSeconds returns the LivenessProbeTimeoutSeconds field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetLivenessProbeTimeoutSeconds() int32 {
-	if o == nil || o.LivenessProbeTimeoutSeconds == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeTimeoutSeconds
-}
-
-// GetLivenessProbeTimeoutSecondsOk returns a tuple with the LivenessProbeTimeoutSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetLivenessProbeTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeTimeoutSeconds == nil {
-		return nil, false
-	}
-	return o.LivenessProbeTimeoutSeconds, true
-}
-
-// HasLivenessProbeTimeoutSeconds returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasLivenessProbeTimeoutSeconds() bool {
-	if o != nil && o.LivenessProbeTimeoutSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeTimeoutSeconds gets a reference to the given int32 and assigns it to the LivenessProbeTimeoutSeconds field.
-func (o *ContainerAdvancedSettings) SetLivenessProbeTimeoutSeconds(v int32) {
-	o.LivenessProbeTimeoutSeconds = &v
-}
-
-// GetLivenessProbeSuccessThreshold returns the LivenessProbeSuccessThreshold field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetLivenessProbeSuccessThreshold() int32 {
-	if o == nil || o.LivenessProbeSuccessThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeSuccessThreshold
-}
-
-// GetLivenessProbeSuccessThresholdOk returns a tuple with the LivenessProbeSuccessThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetLivenessProbeSuccessThresholdOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeSuccessThreshold == nil {
-		return nil, false
-	}
-	return o.LivenessProbeSuccessThreshold, true
-}
-
-// HasLivenessProbeSuccessThreshold returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasLivenessProbeSuccessThreshold() bool {
-	if o != nil && o.LivenessProbeSuccessThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeSuccessThreshold gets a reference to the given int32 and assigns it to the LivenessProbeSuccessThreshold field.
-func (o *ContainerAdvancedSettings) SetLivenessProbeSuccessThreshold(v int32) {
-	o.LivenessProbeSuccessThreshold = &v
-}
-
-// GetLivenessProbeFailureThreshold returns the LivenessProbeFailureThreshold field value if set, zero value otherwise.
-func (o *ContainerAdvancedSettings) GetLivenessProbeFailureThreshold() int32 {
-	if o == nil || o.LivenessProbeFailureThreshold == nil {
-		var ret int32
-		return ret
-	}
-	return *o.LivenessProbeFailureThreshold
-}
-
-// GetLivenessProbeFailureThresholdOk returns a tuple with the LivenessProbeFailureThreshold field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetLivenessProbeFailureThresholdOk() (*int32, bool) {
-	if o == nil || o.LivenessProbeFailureThreshold == nil {
-		return nil, false
-	}
-	return o.LivenessProbeFailureThreshold, true
-}
-
-// HasLivenessProbeFailureThreshold returns a boolean if a field has been set.
-func (o *ContainerAdvancedSettings) HasLivenessProbeFailureThreshold() bool {
-	if o != nil && o.LivenessProbeFailureThreshold != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLivenessProbeFailureThreshold gets a reference to the given int32 and assigns it to the LivenessProbeFailureThreshold field.
-func (o *ContainerAdvancedSettings) SetLivenessProbeFailureThreshold(v int32) {
-	o.LivenessProbeFailureThreshold = &v
-}
-
 // GetSecurityServiceAccountName returns the SecurityServiceAccountName field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetSecurityServiceAccountName() string {
 	if o == nil || o.SecurityServiceAccountName == nil {
@@ -1490,6 +1034,12 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	if o.NetworkIngressProxyReadTimeoutSeconds != nil {
 		toSerialize["network.ingress.proxy_read_timeout_seconds"] = o.NetworkIngressProxyReadTimeoutSeconds
 	}
+	if o.NetworkIngressGrpcSendTimeoutSeconds != nil {
+		toSerialize["network.ingress.grpc_send_timeout_seconds"] = o.NetworkIngressGrpcSendTimeoutSeconds
+	}
+	if o.NetworkIngressGrpcReadTimeoutSeconds != nil {
+		toSerialize["network.ingress.grpc_read_timeout_seconds"] = o.NetworkIngressGrpcReadTimeoutSeconds
+	}
 	if o.NetworkIngressWhitelistSourceRange != nil {
 		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange
 	}
@@ -1501,48 +1051,6 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressEnableStickySession != nil {
 		toSerialize["network.ingress.enable_sticky_session"] = o.NetworkIngressEnableStickySession
-	}
-	if o.ReadinessProbeType != nil {
-		toSerialize["readiness_probe.type"] = o.ReadinessProbeType
-	}
-	if o.ReadinessProbeHttpGetPath != nil {
-		toSerialize["readiness_probe.http_get.path"] = o.ReadinessProbeHttpGetPath
-	}
-	if o.ReadinessProbeInitialDelaySeconds != nil {
-		toSerialize["readiness_probe.initial_delay_seconds"] = o.ReadinessProbeInitialDelaySeconds
-	}
-	if o.ReadinessProbePeriodSeconds != nil {
-		toSerialize["readiness_probe.period_seconds"] = o.ReadinessProbePeriodSeconds
-	}
-	if o.ReadinessProbeTimeoutSeconds != nil {
-		toSerialize["readiness_probe.timeout_seconds"] = o.ReadinessProbeTimeoutSeconds
-	}
-	if o.ReadinessProbeSuccessThreshold != nil {
-		toSerialize["readiness_probe.success_threshold"] = o.ReadinessProbeSuccessThreshold
-	}
-	if o.ReadinessProbeFailureThreshold != nil {
-		toSerialize["readiness_probe.failure_threshold"] = o.ReadinessProbeFailureThreshold
-	}
-	if o.LivenessProbeType != nil {
-		toSerialize["liveness_probe.type"] = o.LivenessProbeType
-	}
-	if o.LivenessProbeHttpGetPath != nil {
-		toSerialize["liveness_probe.http_get.path"] = o.LivenessProbeHttpGetPath
-	}
-	if o.LivenessProbeInitialDelaySeconds != nil {
-		toSerialize["liveness_probe.initial_delay_seconds"] = o.LivenessProbeInitialDelaySeconds
-	}
-	if o.LivenessProbePeriodSeconds != nil {
-		toSerialize["liveness_probe.period_seconds"] = o.LivenessProbePeriodSeconds
-	}
-	if o.LivenessProbeTimeoutSeconds != nil {
-		toSerialize["liveness_probe.timeout_seconds"] = o.LivenessProbeTimeoutSeconds
-	}
-	if o.LivenessProbeSuccessThreshold != nil {
-		toSerialize["liveness_probe.success_threshold"] = o.LivenessProbeSuccessThreshold
-	}
-	if o.LivenessProbeFailureThreshold != nil {
-		toSerialize["liveness_probe.failure_threshold"] = o.LivenessProbeFailureThreshold
 	}
 	if o.SecurityServiceAccountName != nil {
 		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName

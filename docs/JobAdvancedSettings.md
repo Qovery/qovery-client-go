@@ -4,25 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BuildTimeoutMaxSec** | Pointer to **int32** | define the max timeout for the build | [optional] [default to 1800]
+**BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] [default to 4000]
+**BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] [default to 8]
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
 **JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
 **CronjobConcurrencyPolicy** | Pointer to **string** |  | [optional] [default to "Forbid"]
 **CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
 **CronjobSuccessJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
-**ReadinessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable readiness probe &#x60;TCP&#x60; enable TCP readiness probe &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "NONE"]
-**ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to ""]
-**ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 0]
-**ReadinessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] [default to 0]
-**ReadinessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] [default to 0]
-**ReadinessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] [default to 0]
-**ReadinessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] [default to 0]
-**LivenessProbeType** | Pointer to **string** | &#x60;NONE&#x60; disable liveness probe &#x60;TCP&#x60; enable TCP liveness probe &#x60;HTTP&#x60; enable HTTP liveness probe  | [optional] [default to "NONE"]
-**LivenessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to ""]
-**LivenessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 0]
-**LivenessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] [default to 0]
-**LivenessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] [default to 0]
-**LivenessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] [default to 0]
-**LivenessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] [default to 0]
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
 
 ## Methods
@@ -43,6 +32,81 @@ will change when the set of required properties is changed
 NewJobAdvancedSettingsWithDefaults instantiates a new JobAdvancedSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBuildTimeoutMaxSec
+
+`func (o *JobAdvancedSettings) GetBuildTimeoutMaxSec() int32`
+
+GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field if non-nil, zero value otherwise.
+
+### GetBuildTimeoutMaxSecOk
+
+`func (o *JobAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool)`
+
+GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildTimeoutMaxSec
+
+`func (o *JobAdvancedSettings) SetBuildTimeoutMaxSec(v int32)`
+
+SetBuildTimeoutMaxSec sets BuildTimeoutMaxSec field to given value.
+
+### HasBuildTimeoutMaxSec
+
+`func (o *JobAdvancedSettings) HasBuildTimeoutMaxSec() bool`
+
+HasBuildTimeoutMaxSec returns a boolean if a field has been set.
+
+### GetBuildCpuMaxInMilli
+
+`func (o *JobAdvancedSettings) GetBuildCpuMaxInMilli() int32`
+
+GetBuildCpuMaxInMilli returns the BuildCpuMaxInMilli field if non-nil, zero value otherwise.
+
+### GetBuildCpuMaxInMilliOk
+
+`func (o *JobAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool)`
+
+GetBuildCpuMaxInMilliOk returns a tuple with the BuildCpuMaxInMilli field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildCpuMaxInMilli
+
+`func (o *JobAdvancedSettings) SetBuildCpuMaxInMilli(v int32)`
+
+SetBuildCpuMaxInMilli sets BuildCpuMaxInMilli field to given value.
+
+### HasBuildCpuMaxInMilli
+
+`func (o *JobAdvancedSettings) HasBuildCpuMaxInMilli() bool`
+
+HasBuildCpuMaxInMilli returns a boolean if a field has been set.
+
+### GetBuildRamMaxInGib
+
+`func (o *JobAdvancedSettings) GetBuildRamMaxInGib() int32`
+
+GetBuildRamMaxInGib returns the BuildRamMaxInGib field if non-nil, zero value otherwise.
+
+### GetBuildRamMaxInGibOk
+
+`func (o *JobAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool)`
+
+GetBuildRamMaxInGibOk returns a tuple with the BuildRamMaxInGib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildRamMaxInGib
+
+`func (o *JobAdvancedSettings) SetBuildRamMaxInGib(v int32)`
+
+SetBuildRamMaxInGib sets BuildRamMaxInGib field to given value.
+
+### HasBuildRamMaxInGib
+
+`func (o *JobAdvancedSettings) HasBuildRamMaxInGib() bool`
+
+HasBuildRamMaxInGib returns a boolean if a field has been set.
 
 ### GetDeploymentTerminationGracePeriodSeconds
 
@@ -178,356 +242,6 @@ SetCronjobSuccessJobsHistoryLimit sets CronjobSuccessJobsHistoryLimit field to g
 `func (o *JobAdvancedSettings) HasCronjobSuccessJobsHistoryLimit() bool`
 
 HasCronjobSuccessJobsHistoryLimit returns a boolean if a field has been set.
-
-### GetReadinessProbeType
-
-`func (o *JobAdvancedSettings) GetReadinessProbeType() string`
-
-GetReadinessProbeType returns the ReadinessProbeType field if non-nil, zero value otherwise.
-
-### GetReadinessProbeTypeOk
-
-`func (o *JobAdvancedSettings) GetReadinessProbeTypeOk() (*string, bool)`
-
-GetReadinessProbeTypeOk returns a tuple with the ReadinessProbeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeType
-
-`func (o *JobAdvancedSettings) SetReadinessProbeType(v string)`
-
-SetReadinessProbeType sets ReadinessProbeType field to given value.
-
-### HasReadinessProbeType
-
-`func (o *JobAdvancedSettings) HasReadinessProbeType() bool`
-
-HasReadinessProbeType returns a boolean if a field has been set.
-
-### GetReadinessProbeHttpGetPath
-
-`func (o *JobAdvancedSettings) GetReadinessProbeHttpGetPath() string`
-
-GetReadinessProbeHttpGetPath returns the ReadinessProbeHttpGetPath field if non-nil, zero value otherwise.
-
-### GetReadinessProbeHttpGetPathOk
-
-`func (o *JobAdvancedSettings) GetReadinessProbeHttpGetPathOk() (*string, bool)`
-
-GetReadinessProbeHttpGetPathOk returns a tuple with the ReadinessProbeHttpGetPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeHttpGetPath
-
-`func (o *JobAdvancedSettings) SetReadinessProbeHttpGetPath(v string)`
-
-SetReadinessProbeHttpGetPath sets ReadinessProbeHttpGetPath field to given value.
-
-### HasReadinessProbeHttpGetPath
-
-`func (o *JobAdvancedSettings) HasReadinessProbeHttpGetPath() bool`
-
-HasReadinessProbeHttpGetPath returns a boolean if a field has been set.
-
-### GetReadinessProbeInitialDelaySeconds
-
-`func (o *JobAdvancedSettings) GetReadinessProbeInitialDelaySeconds() int32`
-
-GetReadinessProbeInitialDelaySeconds returns the ReadinessProbeInitialDelaySeconds field if non-nil, zero value otherwise.
-
-### GetReadinessProbeInitialDelaySecondsOk
-
-`func (o *JobAdvancedSettings) GetReadinessProbeInitialDelaySecondsOk() (*int32, bool)`
-
-GetReadinessProbeInitialDelaySecondsOk returns a tuple with the ReadinessProbeInitialDelaySeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeInitialDelaySeconds
-
-`func (o *JobAdvancedSettings) SetReadinessProbeInitialDelaySeconds(v int32)`
-
-SetReadinessProbeInitialDelaySeconds sets ReadinessProbeInitialDelaySeconds field to given value.
-
-### HasReadinessProbeInitialDelaySeconds
-
-`func (o *JobAdvancedSettings) HasReadinessProbeInitialDelaySeconds() bool`
-
-HasReadinessProbeInitialDelaySeconds returns a boolean if a field has been set.
-
-### GetReadinessProbePeriodSeconds
-
-`func (o *JobAdvancedSettings) GetReadinessProbePeriodSeconds() int32`
-
-GetReadinessProbePeriodSeconds returns the ReadinessProbePeriodSeconds field if non-nil, zero value otherwise.
-
-### GetReadinessProbePeriodSecondsOk
-
-`func (o *JobAdvancedSettings) GetReadinessProbePeriodSecondsOk() (*int32, bool)`
-
-GetReadinessProbePeriodSecondsOk returns a tuple with the ReadinessProbePeriodSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbePeriodSeconds
-
-`func (o *JobAdvancedSettings) SetReadinessProbePeriodSeconds(v int32)`
-
-SetReadinessProbePeriodSeconds sets ReadinessProbePeriodSeconds field to given value.
-
-### HasReadinessProbePeriodSeconds
-
-`func (o *JobAdvancedSettings) HasReadinessProbePeriodSeconds() bool`
-
-HasReadinessProbePeriodSeconds returns a boolean if a field has been set.
-
-### GetReadinessProbeTimeoutSeconds
-
-`func (o *JobAdvancedSettings) GetReadinessProbeTimeoutSeconds() int32`
-
-GetReadinessProbeTimeoutSeconds returns the ReadinessProbeTimeoutSeconds field if non-nil, zero value otherwise.
-
-### GetReadinessProbeTimeoutSecondsOk
-
-`func (o *JobAdvancedSettings) GetReadinessProbeTimeoutSecondsOk() (*int32, bool)`
-
-GetReadinessProbeTimeoutSecondsOk returns a tuple with the ReadinessProbeTimeoutSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeTimeoutSeconds
-
-`func (o *JobAdvancedSettings) SetReadinessProbeTimeoutSeconds(v int32)`
-
-SetReadinessProbeTimeoutSeconds sets ReadinessProbeTimeoutSeconds field to given value.
-
-### HasReadinessProbeTimeoutSeconds
-
-`func (o *JobAdvancedSettings) HasReadinessProbeTimeoutSeconds() bool`
-
-HasReadinessProbeTimeoutSeconds returns a boolean if a field has been set.
-
-### GetReadinessProbeSuccessThreshold
-
-`func (o *JobAdvancedSettings) GetReadinessProbeSuccessThreshold() int32`
-
-GetReadinessProbeSuccessThreshold returns the ReadinessProbeSuccessThreshold field if non-nil, zero value otherwise.
-
-### GetReadinessProbeSuccessThresholdOk
-
-`func (o *JobAdvancedSettings) GetReadinessProbeSuccessThresholdOk() (*int32, bool)`
-
-GetReadinessProbeSuccessThresholdOk returns a tuple with the ReadinessProbeSuccessThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeSuccessThreshold
-
-`func (o *JobAdvancedSettings) SetReadinessProbeSuccessThreshold(v int32)`
-
-SetReadinessProbeSuccessThreshold sets ReadinessProbeSuccessThreshold field to given value.
-
-### HasReadinessProbeSuccessThreshold
-
-`func (o *JobAdvancedSettings) HasReadinessProbeSuccessThreshold() bool`
-
-HasReadinessProbeSuccessThreshold returns a boolean if a field has been set.
-
-### GetReadinessProbeFailureThreshold
-
-`func (o *JobAdvancedSettings) GetReadinessProbeFailureThreshold() int32`
-
-GetReadinessProbeFailureThreshold returns the ReadinessProbeFailureThreshold field if non-nil, zero value otherwise.
-
-### GetReadinessProbeFailureThresholdOk
-
-`func (o *JobAdvancedSettings) GetReadinessProbeFailureThresholdOk() (*int32, bool)`
-
-GetReadinessProbeFailureThresholdOk returns a tuple with the ReadinessProbeFailureThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeFailureThreshold
-
-`func (o *JobAdvancedSettings) SetReadinessProbeFailureThreshold(v int32)`
-
-SetReadinessProbeFailureThreshold sets ReadinessProbeFailureThreshold field to given value.
-
-### HasReadinessProbeFailureThreshold
-
-`func (o *JobAdvancedSettings) HasReadinessProbeFailureThreshold() bool`
-
-HasReadinessProbeFailureThreshold returns a boolean if a field has been set.
-
-### GetLivenessProbeType
-
-`func (o *JobAdvancedSettings) GetLivenessProbeType() string`
-
-GetLivenessProbeType returns the LivenessProbeType field if non-nil, zero value otherwise.
-
-### GetLivenessProbeTypeOk
-
-`func (o *JobAdvancedSettings) GetLivenessProbeTypeOk() (*string, bool)`
-
-GetLivenessProbeTypeOk returns a tuple with the LivenessProbeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeType
-
-`func (o *JobAdvancedSettings) SetLivenessProbeType(v string)`
-
-SetLivenessProbeType sets LivenessProbeType field to given value.
-
-### HasLivenessProbeType
-
-`func (o *JobAdvancedSettings) HasLivenessProbeType() bool`
-
-HasLivenessProbeType returns a boolean if a field has been set.
-
-### GetLivenessProbeHttpGetPath
-
-`func (o *JobAdvancedSettings) GetLivenessProbeHttpGetPath() string`
-
-GetLivenessProbeHttpGetPath returns the LivenessProbeHttpGetPath field if non-nil, zero value otherwise.
-
-### GetLivenessProbeHttpGetPathOk
-
-`func (o *JobAdvancedSettings) GetLivenessProbeHttpGetPathOk() (*string, bool)`
-
-GetLivenessProbeHttpGetPathOk returns a tuple with the LivenessProbeHttpGetPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeHttpGetPath
-
-`func (o *JobAdvancedSettings) SetLivenessProbeHttpGetPath(v string)`
-
-SetLivenessProbeHttpGetPath sets LivenessProbeHttpGetPath field to given value.
-
-### HasLivenessProbeHttpGetPath
-
-`func (o *JobAdvancedSettings) HasLivenessProbeHttpGetPath() bool`
-
-HasLivenessProbeHttpGetPath returns a boolean if a field has been set.
-
-### GetLivenessProbeInitialDelaySeconds
-
-`func (o *JobAdvancedSettings) GetLivenessProbeInitialDelaySeconds() int32`
-
-GetLivenessProbeInitialDelaySeconds returns the LivenessProbeInitialDelaySeconds field if non-nil, zero value otherwise.
-
-### GetLivenessProbeInitialDelaySecondsOk
-
-`func (o *JobAdvancedSettings) GetLivenessProbeInitialDelaySecondsOk() (*int32, bool)`
-
-GetLivenessProbeInitialDelaySecondsOk returns a tuple with the LivenessProbeInitialDelaySeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeInitialDelaySeconds
-
-`func (o *JobAdvancedSettings) SetLivenessProbeInitialDelaySeconds(v int32)`
-
-SetLivenessProbeInitialDelaySeconds sets LivenessProbeInitialDelaySeconds field to given value.
-
-### HasLivenessProbeInitialDelaySeconds
-
-`func (o *JobAdvancedSettings) HasLivenessProbeInitialDelaySeconds() bool`
-
-HasLivenessProbeInitialDelaySeconds returns a boolean if a field has been set.
-
-### GetLivenessProbePeriodSeconds
-
-`func (o *JobAdvancedSettings) GetLivenessProbePeriodSeconds() int32`
-
-GetLivenessProbePeriodSeconds returns the LivenessProbePeriodSeconds field if non-nil, zero value otherwise.
-
-### GetLivenessProbePeriodSecondsOk
-
-`func (o *JobAdvancedSettings) GetLivenessProbePeriodSecondsOk() (*int32, bool)`
-
-GetLivenessProbePeriodSecondsOk returns a tuple with the LivenessProbePeriodSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbePeriodSeconds
-
-`func (o *JobAdvancedSettings) SetLivenessProbePeriodSeconds(v int32)`
-
-SetLivenessProbePeriodSeconds sets LivenessProbePeriodSeconds field to given value.
-
-### HasLivenessProbePeriodSeconds
-
-`func (o *JobAdvancedSettings) HasLivenessProbePeriodSeconds() bool`
-
-HasLivenessProbePeriodSeconds returns a boolean if a field has been set.
-
-### GetLivenessProbeTimeoutSeconds
-
-`func (o *JobAdvancedSettings) GetLivenessProbeTimeoutSeconds() int32`
-
-GetLivenessProbeTimeoutSeconds returns the LivenessProbeTimeoutSeconds field if non-nil, zero value otherwise.
-
-### GetLivenessProbeTimeoutSecondsOk
-
-`func (o *JobAdvancedSettings) GetLivenessProbeTimeoutSecondsOk() (*int32, bool)`
-
-GetLivenessProbeTimeoutSecondsOk returns a tuple with the LivenessProbeTimeoutSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeTimeoutSeconds
-
-`func (o *JobAdvancedSettings) SetLivenessProbeTimeoutSeconds(v int32)`
-
-SetLivenessProbeTimeoutSeconds sets LivenessProbeTimeoutSeconds field to given value.
-
-### HasLivenessProbeTimeoutSeconds
-
-`func (o *JobAdvancedSettings) HasLivenessProbeTimeoutSeconds() bool`
-
-HasLivenessProbeTimeoutSeconds returns a boolean if a field has been set.
-
-### GetLivenessProbeSuccessThreshold
-
-`func (o *JobAdvancedSettings) GetLivenessProbeSuccessThreshold() int32`
-
-GetLivenessProbeSuccessThreshold returns the LivenessProbeSuccessThreshold field if non-nil, zero value otherwise.
-
-### GetLivenessProbeSuccessThresholdOk
-
-`func (o *JobAdvancedSettings) GetLivenessProbeSuccessThresholdOk() (*int32, bool)`
-
-GetLivenessProbeSuccessThresholdOk returns a tuple with the LivenessProbeSuccessThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeSuccessThreshold
-
-`func (o *JobAdvancedSettings) SetLivenessProbeSuccessThreshold(v int32)`
-
-SetLivenessProbeSuccessThreshold sets LivenessProbeSuccessThreshold field to given value.
-
-### HasLivenessProbeSuccessThreshold
-
-`func (o *JobAdvancedSettings) HasLivenessProbeSuccessThreshold() bool`
-
-HasLivenessProbeSuccessThreshold returns a boolean if a field has been set.
-
-### GetLivenessProbeFailureThreshold
-
-`func (o *JobAdvancedSettings) GetLivenessProbeFailureThreshold() int32`
-
-GetLivenessProbeFailureThreshold returns the LivenessProbeFailureThreshold field if non-nil, zero value otherwise.
-
-### GetLivenessProbeFailureThresholdOk
-
-`func (o *JobAdvancedSettings) GetLivenessProbeFailureThresholdOk() (*int32, bool)`
-
-GetLivenessProbeFailureThresholdOk returns a tuple with the LivenessProbeFailureThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeFailureThreshold
-
-`func (o *JobAdvancedSettings) SetLivenessProbeFailureThreshold(v int32)`
-
-SetLivenessProbeFailureThreshold sets LivenessProbeFailureThreshold field to given value.
-
-### HasLivenessProbeFailureThreshold
-
-`func (o *JobAdvancedSettings) HasLivenessProbeFailureThreshold() bool`
-
-HasLivenessProbeFailureThreshold returns a boolean if a field has been set.
 
 ### GetSecurityServiceAccountName
 

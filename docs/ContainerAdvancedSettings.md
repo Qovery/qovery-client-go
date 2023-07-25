@@ -21,24 +21,12 @@ Name | Type | Description | Notes
 **NetworkIngressProxyConnectTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for establishing a connection to a proxied server | [optional] [default to 60]
 **NetworkIngressProxySendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the proxied server | [optional] [default to 60]
 **NetworkIngressProxyReadTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for reading a response from the proxied server | [optional] [default to 60]
+**NetworkIngressGrpcSendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional] [default to 60]
+**NetworkIngressGrpcReadTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional] [default to 60]
 **NetworkIngressWhitelistSourceRange** | Pointer to **string** | list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.  | [optional] [default to "0.0.0.0/0"]
 **NetworkIngressDenylistSourceRange** | Pointer to **string** | list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1  | [optional] [default to ""]
 **NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command. You can add multiples comma separated values.  | [optional] [default to ""]
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] [default to false]
-**ReadinessProbeType** | Pointer to **string** | * &#x60;NONE&#x60; disable readiness probe * &#x60;TCP&#x60; enable TCP readiness probe * &#x60;HTTP&#x60; enable HTTP readiness probe  | [optional] [default to "TCP"]
-**ReadinessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
-**ReadinessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
-**ReadinessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] [default to 10]
-**ReadinessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] [default to 1]
-**ReadinessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] [default to 1]
-**ReadinessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] [default to 3]
-**LivenessProbeType** | Pointer to **string** | * &#x60;NONE&#x60; disable liveness probe * &#x60;TCP&#x60; enable TCP liveness probe * &#x60;HTTP&#x60; enable HTTP liveness probe  | [optional] [default to "TCP"]
-**LivenessProbeHttpGetPath** | Pointer to **string** | HTTP GET path to check status (must returns 2xx E.g \&quot;/healtz\&quot;) - only usable with TYPE &#x3D; HTTP | [optional] [default to "/"]
-**LivenessProbeInitialDelaySeconds** | Pointer to **int32** | Delay before liveness probe is initiated | [optional] [default to 30]
-**LivenessProbePeriodSeconds** | Pointer to **int32** | How often to perform the probe | [optional] [default to 10]
-**LivenessProbeTimeoutSeconds** | Pointer to **int32** | When the probe times out | [optional] [default to 5]
-**LivenessProbeSuccessThreshold** | Pointer to **int32** | Minimum consecutive successes for the probe to be considered successful after having failed. | [optional] [default to 1]
-**LivenessProbeFailureThreshold** | Pointer to **int32** | Minimum consecutive failures for the probe to be considered failed after having succeeded. | [optional] [default to 3]
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
 **HpaCpuAverageUtilizationPercent** | Pointer to **int32** | Percentage value of cpu usage at which point pods should scale up. | [optional] [default to 60]
 
@@ -486,6 +474,56 @@ SetNetworkIngressProxyReadTimeoutSeconds sets NetworkIngressProxyReadTimeoutSeco
 
 HasNetworkIngressProxyReadTimeoutSeconds returns a boolean if a field has been set.
 
+### GetNetworkIngressGrpcSendTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSeconds() int32`
+
+GetNetworkIngressGrpcSendTimeoutSeconds returns the NetworkIngressGrpcSendTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressGrpcSendTimeoutSecondsOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkIngressGrpcSendTimeoutSecondsOk returns a tuple with the NetworkIngressGrpcSendTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressGrpcSendTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) SetNetworkIngressGrpcSendTimeoutSeconds(v int32)`
+
+SetNetworkIngressGrpcSendTimeoutSeconds sets NetworkIngressGrpcSendTimeoutSeconds field to given value.
+
+### HasNetworkIngressGrpcSendTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) HasNetworkIngressGrpcSendTimeoutSeconds() bool`
+
+HasNetworkIngressGrpcSendTimeoutSeconds returns a boolean if a field has been set.
+
+### GetNetworkIngressGrpcReadTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSeconds() int32`
+
+GetNetworkIngressGrpcReadTimeoutSeconds returns the NetworkIngressGrpcReadTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkIngressGrpcReadTimeoutSecondsOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkIngressGrpcReadTimeoutSecondsOk returns a tuple with the NetworkIngressGrpcReadTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressGrpcReadTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) SetNetworkIngressGrpcReadTimeoutSeconds(v int32)`
+
+SetNetworkIngressGrpcReadTimeoutSeconds sets NetworkIngressGrpcReadTimeoutSeconds field to given value.
+
+### HasNetworkIngressGrpcReadTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) HasNetworkIngressGrpcReadTimeoutSeconds() bool`
+
+HasNetworkIngressGrpcReadTimeoutSeconds returns a boolean if a field has been set.
+
 ### GetNetworkIngressWhitelistSourceRange
 
 `func (o *ContainerAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string`
@@ -585,356 +623,6 @@ SetNetworkIngressEnableStickySession sets NetworkIngressEnableStickySession fiel
 `func (o *ContainerAdvancedSettings) HasNetworkIngressEnableStickySession() bool`
 
 HasNetworkIngressEnableStickySession returns a boolean if a field has been set.
-
-### GetReadinessProbeType
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeType() string`
-
-GetReadinessProbeType returns the ReadinessProbeType field if non-nil, zero value otherwise.
-
-### GetReadinessProbeTypeOk
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeTypeOk() (*string, bool)`
-
-GetReadinessProbeTypeOk returns a tuple with the ReadinessProbeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeType
-
-`func (o *ContainerAdvancedSettings) SetReadinessProbeType(v string)`
-
-SetReadinessProbeType sets ReadinessProbeType field to given value.
-
-### HasReadinessProbeType
-
-`func (o *ContainerAdvancedSettings) HasReadinessProbeType() bool`
-
-HasReadinessProbeType returns a boolean if a field has been set.
-
-### GetReadinessProbeHttpGetPath
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeHttpGetPath() string`
-
-GetReadinessProbeHttpGetPath returns the ReadinessProbeHttpGetPath field if non-nil, zero value otherwise.
-
-### GetReadinessProbeHttpGetPathOk
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeHttpGetPathOk() (*string, bool)`
-
-GetReadinessProbeHttpGetPathOk returns a tuple with the ReadinessProbeHttpGetPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeHttpGetPath
-
-`func (o *ContainerAdvancedSettings) SetReadinessProbeHttpGetPath(v string)`
-
-SetReadinessProbeHttpGetPath sets ReadinessProbeHttpGetPath field to given value.
-
-### HasReadinessProbeHttpGetPath
-
-`func (o *ContainerAdvancedSettings) HasReadinessProbeHttpGetPath() bool`
-
-HasReadinessProbeHttpGetPath returns a boolean if a field has been set.
-
-### GetReadinessProbeInitialDelaySeconds
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeInitialDelaySeconds() int32`
-
-GetReadinessProbeInitialDelaySeconds returns the ReadinessProbeInitialDelaySeconds field if non-nil, zero value otherwise.
-
-### GetReadinessProbeInitialDelaySecondsOk
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeInitialDelaySecondsOk() (*int32, bool)`
-
-GetReadinessProbeInitialDelaySecondsOk returns a tuple with the ReadinessProbeInitialDelaySeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeInitialDelaySeconds
-
-`func (o *ContainerAdvancedSettings) SetReadinessProbeInitialDelaySeconds(v int32)`
-
-SetReadinessProbeInitialDelaySeconds sets ReadinessProbeInitialDelaySeconds field to given value.
-
-### HasReadinessProbeInitialDelaySeconds
-
-`func (o *ContainerAdvancedSettings) HasReadinessProbeInitialDelaySeconds() bool`
-
-HasReadinessProbeInitialDelaySeconds returns a boolean if a field has been set.
-
-### GetReadinessProbePeriodSeconds
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbePeriodSeconds() int32`
-
-GetReadinessProbePeriodSeconds returns the ReadinessProbePeriodSeconds field if non-nil, zero value otherwise.
-
-### GetReadinessProbePeriodSecondsOk
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbePeriodSecondsOk() (*int32, bool)`
-
-GetReadinessProbePeriodSecondsOk returns a tuple with the ReadinessProbePeriodSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbePeriodSeconds
-
-`func (o *ContainerAdvancedSettings) SetReadinessProbePeriodSeconds(v int32)`
-
-SetReadinessProbePeriodSeconds sets ReadinessProbePeriodSeconds field to given value.
-
-### HasReadinessProbePeriodSeconds
-
-`func (o *ContainerAdvancedSettings) HasReadinessProbePeriodSeconds() bool`
-
-HasReadinessProbePeriodSeconds returns a boolean if a field has been set.
-
-### GetReadinessProbeTimeoutSeconds
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeTimeoutSeconds() int32`
-
-GetReadinessProbeTimeoutSeconds returns the ReadinessProbeTimeoutSeconds field if non-nil, zero value otherwise.
-
-### GetReadinessProbeTimeoutSecondsOk
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeTimeoutSecondsOk() (*int32, bool)`
-
-GetReadinessProbeTimeoutSecondsOk returns a tuple with the ReadinessProbeTimeoutSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeTimeoutSeconds
-
-`func (o *ContainerAdvancedSettings) SetReadinessProbeTimeoutSeconds(v int32)`
-
-SetReadinessProbeTimeoutSeconds sets ReadinessProbeTimeoutSeconds field to given value.
-
-### HasReadinessProbeTimeoutSeconds
-
-`func (o *ContainerAdvancedSettings) HasReadinessProbeTimeoutSeconds() bool`
-
-HasReadinessProbeTimeoutSeconds returns a boolean if a field has been set.
-
-### GetReadinessProbeSuccessThreshold
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeSuccessThreshold() int32`
-
-GetReadinessProbeSuccessThreshold returns the ReadinessProbeSuccessThreshold field if non-nil, zero value otherwise.
-
-### GetReadinessProbeSuccessThresholdOk
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeSuccessThresholdOk() (*int32, bool)`
-
-GetReadinessProbeSuccessThresholdOk returns a tuple with the ReadinessProbeSuccessThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeSuccessThreshold
-
-`func (o *ContainerAdvancedSettings) SetReadinessProbeSuccessThreshold(v int32)`
-
-SetReadinessProbeSuccessThreshold sets ReadinessProbeSuccessThreshold field to given value.
-
-### HasReadinessProbeSuccessThreshold
-
-`func (o *ContainerAdvancedSettings) HasReadinessProbeSuccessThreshold() bool`
-
-HasReadinessProbeSuccessThreshold returns a boolean if a field has been set.
-
-### GetReadinessProbeFailureThreshold
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeFailureThreshold() int32`
-
-GetReadinessProbeFailureThreshold returns the ReadinessProbeFailureThreshold field if non-nil, zero value otherwise.
-
-### GetReadinessProbeFailureThresholdOk
-
-`func (o *ContainerAdvancedSettings) GetReadinessProbeFailureThresholdOk() (*int32, bool)`
-
-GetReadinessProbeFailureThresholdOk returns a tuple with the ReadinessProbeFailureThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadinessProbeFailureThreshold
-
-`func (o *ContainerAdvancedSettings) SetReadinessProbeFailureThreshold(v int32)`
-
-SetReadinessProbeFailureThreshold sets ReadinessProbeFailureThreshold field to given value.
-
-### HasReadinessProbeFailureThreshold
-
-`func (o *ContainerAdvancedSettings) HasReadinessProbeFailureThreshold() bool`
-
-HasReadinessProbeFailureThreshold returns a boolean if a field has been set.
-
-### GetLivenessProbeType
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeType() string`
-
-GetLivenessProbeType returns the LivenessProbeType field if non-nil, zero value otherwise.
-
-### GetLivenessProbeTypeOk
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeTypeOk() (*string, bool)`
-
-GetLivenessProbeTypeOk returns a tuple with the LivenessProbeType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeType
-
-`func (o *ContainerAdvancedSettings) SetLivenessProbeType(v string)`
-
-SetLivenessProbeType sets LivenessProbeType field to given value.
-
-### HasLivenessProbeType
-
-`func (o *ContainerAdvancedSettings) HasLivenessProbeType() bool`
-
-HasLivenessProbeType returns a boolean if a field has been set.
-
-### GetLivenessProbeHttpGetPath
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeHttpGetPath() string`
-
-GetLivenessProbeHttpGetPath returns the LivenessProbeHttpGetPath field if non-nil, zero value otherwise.
-
-### GetLivenessProbeHttpGetPathOk
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeHttpGetPathOk() (*string, bool)`
-
-GetLivenessProbeHttpGetPathOk returns a tuple with the LivenessProbeHttpGetPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeHttpGetPath
-
-`func (o *ContainerAdvancedSettings) SetLivenessProbeHttpGetPath(v string)`
-
-SetLivenessProbeHttpGetPath sets LivenessProbeHttpGetPath field to given value.
-
-### HasLivenessProbeHttpGetPath
-
-`func (o *ContainerAdvancedSettings) HasLivenessProbeHttpGetPath() bool`
-
-HasLivenessProbeHttpGetPath returns a boolean if a field has been set.
-
-### GetLivenessProbeInitialDelaySeconds
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeInitialDelaySeconds() int32`
-
-GetLivenessProbeInitialDelaySeconds returns the LivenessProbeInitialDelaySeconds field if non-nil, zero value otherwise.
-
-### GetLivenessProbeInitialDelaySecondsOk
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeInitialDelaySecondsOk() (*int32, bool)`
-
-GetLivenessProbeInitialDelaySecondsOk returns a tuple with the LivenessProbeInitialDelaySeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeInitialDelaySeconds
-
-`func (o *ContainerAdvancedSettings) SetLivenessProbeInitialDelaySeconds(v int32)`
-
-SetLivenessProbeInitialDelaySeconds sets LivenessProbeInitialDelaySeconds field to given value.
-
-### HasLivenessProbeInitialDelaySeconds
-
-`func (o *ContainerAdvancedSettings) HasLivenessProbeInitialDelaySeconds() bool`
-
-HasLivenessProbeInitialDelaySeconds returns a boolean if a field has been set.
-
-### GetLivenessProbePeriodSeconds
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbePeriodSeconds() int32`
-
-GetLivenessProbePeriodSeconds returns the LivenessProbePeriodSeconds field if non-nil, zero value otherwise.
-
-### GetLivenessProbePeriodSecondsOk
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbePeriodSecondsOk() (*int32, bool)`
-
-GetLivenessProbePeriodSecondsOk returns a tuple with the LivenessProbePeriodSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbePeriodSeconds
-
-`func (o *ContainerAdvancedSettings) SetLivenessProbePeriodSeconds(v int32)`
-
-SetLivenessProbePeriodSeconds sets LivenessProbePeriodSeconds field to given value.
-
-### HasLivenessProbePeriodSeconds
-
-`func (o *ContainerAdvancedSettings) HasLivenessProbePeriodSeconds() bool`
-
-HasLivenessProbePeriodSeconds returns a boolean if a field has been set.
-
-### GetLivenessProbeTimeoutSeconds
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeTimeoutSeconds() int32`
-
-GetLivenessProbeTimeoutSeconds returns the LivenessProbeTimeoutSeconds field if non-nil, zero value otherwise.
-
-### GetLivenessProbeTimeoutSecondsOk
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeTimeoutSecondsOk() (*int32, bool)`
-
-GetLivenessProbeTimeoutSecondsOk returns a tuple with the LivenessProbeTimeoutSeconds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeTimeoutSeconds
-
-`func (o *ContainerAdvancedSettings) SetLivenessProbeTimeoutSeconds(v int32)`
-
-SetLivenessProbeTimeoutSeconds sets LivenessProbeTimeoutSeconds field to given value.
-
-### HasLivenessProbeTimeoutSeconds
-
-`func (o *ContainerAdvancedSettings) HasLivenessProbeTimeoutSeconds() bool`
-
-HasLivenessProbeTimeoutSeconds returns a boolean if a field has been set.
-
-### GetLivenessProbeSuccessThreshold
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeSuccessThreshold() int32`
-
-GetLivenessProbeSuccessThreshold returns the LivenessProbeSuccessThreshold field if non-nil, zero value otherwise.
-
-### GetLivenessProbeSuccessThresholdOk
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeSuccessThresholdOk() (*int32, bool)`
-
-GetLivenessProbeSuccessThresholdOk returns a tuple with the LivenessProbeSuccessThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeSuccessThreshold
-
-`func (o *ContainerAdvancedSettings) SetLivenessProbeSuccessThreshold(v int32)`
-
-SetLivenessProbeSuccessThreshold sets LivenessProbeSuccessThreshold field to given value.
-
-### HasLivenessProbeSuccessThreshold
-
-`func (o *ContainerAdvancedSettings) HasLivenessProbeSuccessThreshold() bool`
-
-HasLivenessProbeSuccessThreshold returns a boolean if a field has been set.
-
-### GetLivenessProbeFailureThreshold
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeFailureThreshold() int32`
-
-GetLivenessProbeFailureThreshold returns the LivenessProbeFailureThreshold field if non-nil, zero value otherwise.
-
-### GetLivenessProbeFailureThresholdOk
-
-`func (o *ContainerAdvancedSettings) GetLivenessProbeFailureThresholdOk() (*int32, bool)`
-
-GetLivenessProbeFailureThresholdOk returns a tuple with the LivenessProbeFailureThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLivenessProbeFailureThreshold
-
-`func (o *ContainerAdvancedSettings) SetLivenessProbeFailureThreshold(v int32)`
-
-SetLivenessProbeFailureThreshold sets LivenessProbeFailureThreshold field to given value.
-
-### HasLivenessProbeFailureThreshold
-
-`func (o *ContainerAdvancedSettings) HasLivenessProbeFailureThreshold() bool`
-
-HasLivenessProbeFailureThreshold returns a boolean if a field has been set.
 
 ### GetSecurityServiceAccountName
 
