@@ -18376,6 +18376,8 @@ components:
       enum:
       - HTTP
       - GRPC
+      - TCP
+      - UDP
       type: string
     Probe:
       properties:
