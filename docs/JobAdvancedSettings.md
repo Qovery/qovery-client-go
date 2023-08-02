@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] [default to 4000]
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] [default to 8]
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
+**DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
 **CronjobConcurrencyPolicy** | Pointer to **string** |  | [optional] [default to "Forbid"]
 **CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
@@ -132,6 +133,31 @@ SetDeploymentTerminationGracePeriodSeconds sets DeploymentTerminationGracePeriod
 `func (o *JobAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool`
 
 HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
+
+### GetDeploymentAffinityNodeRequired
+
+`func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequired() map[string]string`
+
+GetDeploymentAffinityNodeRequired returns the DeploymentAffinityNodeRequired field if non-nil, zero value otherwise.
+
+### GetDeploymentAffinityNodeRequiredOk
+
+`func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool)`
+
+GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentAffinityNodeRequired
+
+`func (o *JobAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[string]string)`
+
+SetDeploymentAffinityNodeRequired sets DeploymentAffinityNodeRequired field to given value.
+
+### HasDeploymentAffinityNodeRequired
+
+`func (o *JobAdvancedSettings) HasDeploymentAffinityNodeRequired() bool`
+
+HasDeploymentAffinityNodeRequired returns a boolean if a field has been set.
 
 ### GetJobDeleteTtlSecondsAfterFinished
 

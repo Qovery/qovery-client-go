@@ -24,6 +24,10 @@ type ApplicationAdvancedSettings struct {
 	DeploymentCustomDomainCheckEnabled *bool `json:"deployment.custom_domain_check_enabled,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
+	// Set pod placement on specific Kubernetes nodes labels
+	DeploymentAffinityNodeRequired *map[string]string `json:"deployment.affinity.node.required,omitempty"`
+	// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+	DeploymentAntiaffinityPod *string `json:"deployment.antiaffinity.pod,omitempty"`
 	// * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
 	DeploymentUpdateStrategyType *string `json:"deployment.update_strategy.type,omitempty"`
 	// Define the percentage of a maximum number of pods that can be unavailable during the update process
@@ -84,6 +88,8 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
 	var deploymentTerminationGracePeriodSeconds int32 = 60
 	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
+	var deploymentAntiaffinityPod string = "Preferred"
+	this.DeploymentAntiaffinityPod = &deploymentAntiaffinityPod
 	var deploymentUpdateStrategyType string = "RollingUpdate"
 	this.DeploymentUpdateStrategyType = &deploymentUpdateStrategyType
 	var deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent int32 = 25
@@ -150,6 +156,8 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
 	var deploymentTerminationGracePeriodSeconds int32 = 60
 	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
+	var deploymentAntiaffinityPod string = "Preferred"
+	this.DeploymentAntiaffinityPod = &deploymentAntiaffinityPod
 	var deploymentUpdateStrategyType string = "RollingUpdate"
 	this.DeploymentUpdateStrategyType = &deploymentUpdateStrategyType
 	var deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent int32 = 25
@@ -302,6 +310,70 @@ func (o *ApplicationAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds
 // SetDeploymentTerminationGracePeriodSeconds gets a reference to the given int32 and assigns it to the DeploymentTerminationGracePeriodSeconds field.
 func (o *ApplicationAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32) {
 	o.DeploymentTerminationGracePeriodSeconds = &v
+}
+
+// GetDeploymentAffinityNodeRequired returns the DeploymentAffinityNodeRequired field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetDeploymentAffinityNodeRequired() map[string]string {
+	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.DeploymentAffinityNodeRequired
+}
+
+// GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool) {
+	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+		return nil, false
+	}
+	return o.DeploymentAffinityNodeRequired, true
+}
+
+// HasDeploymentAffinityNodeRequired returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasDeploymentAffinityNodeRequired() bool {
+	if o != nil && o.DeploymentAffinityNodeRequired != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentAffinityNodeRequired gets a reference to the given map[string]string and assigns it to the DeploymentAffinityNodeRequired field.
+func (o *ApplicationAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[string]string) {
+	o.DeploymentAffinityNodeRequired = &v
+}
+
+// GetDeploymentAntiaffinityPod returns the DeploymentAntiaffinityPod field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetDeploymentAntiaffinityPod() string {
+	if o == nil || o.DeploymentAntiaffinityPod == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentAntiaffinityPod
+}
+
+// GetDeploymentAntiaffinityPodOk returns a tuple with the DeploymentAntiaffinityPod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetDeploymentAntiaffinityPodOk() (*string, bool) {
+	if o == nil || o.DeploymentAntiaffinityPod == nil {
+		return nil, false
+	}
+	return o.DeploymentAntiaffinityPod, true
+}
+
+// HasDeploymentAntiaffinityPod returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasDeploymentAntiaffinityPod() bool {
+	if o != nil && o.DeploymentAntiaffinityPod != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentAntiaffinityPod gets a reference to the given string and assigns it to the DeploymentAntiaffinityPod field.
+func (o *ApplicationAdvancedSettings) SetDeploymentAntiaffinityPod(v string) {
+	o.DeploymentAntiaffinityPod = &v
 }
 
 // GetDeploymentUpdateStrategyType returns the DeploymentUpdateStrategyType field value if set, zero value otherwise.
@@ -1146,6 +1218,12 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeploymentTerminationGracePeriodSeconds != nil {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
+	}
+	if o.DeploymentAffinityNodeRequired != nil {
+		toSerialize["deployment.affinity.node.required"] = o.DeploymentAffinityNodeRequired
+	}
+	if o.DeploymentAntiaffinityPod != nil {
+		toSerialize["deployment.antiaffinity.pod"] = o.DeploymentAntiaffinityPod
 	}
 	if o.DeploymentUpdateStrategyType != nil {
 		toSerialize["deployment.update_strategy.type"] = o.DeploymentUpdateStrategyType

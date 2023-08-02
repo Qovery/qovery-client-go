@@ -24,11 +24,13 @@ type JobAdvancedSettings struct {
 	// define the max ram resources (in gib)
 	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
-	DeploymentTerminationGracePeriodSeconds *int32        `json:"deployment.termination_grace_period_seconds,omitempty"`
-	JobDeleteTtlSecondsAfterFinished        NullableInt32 `json:"job.delete_ttl_seconds_after_finished,omitempty"`
-	CronjobConcurrencyPolicy                *string       `json:"cronjob.concurrency_policy,omitempty"`
-	CronjobFailedJobsHistoryLimit           *int32        `json:"cronjob.failed_jobs_history_limit,omitempty"`
-	CronjobSuccessJobsHistoryLimit          *int32        `json:"cronjob.success_jobs_history_limit,omitempty"`
+	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
+	// Set pod placement on specific Kubernetes nodes labels
+	DeploymentAffinityNodeRequired   *map[string]string `json:"deployment.affinity.node.required,omitempty"`
+	JobDeleteTtlSecondsAfterFinished NullableInt32      `json:"job.delete_ttl_seconds_after_finished,omitempty"`
+	CronjobConcurrencyPolicy         *string            `json:"cronjob.concurrency_policy,omitempty"`
+	CronjobFailedJobsHistoryLimit    *int32             `json:"cronjob.failed_jobs_history_limit,omitempty"`
+	CronjobSuccessJobsHistoryLimit   *int32             `json:"cronjob.success_jobs_history_limit,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 }
@@ -208,6 +210,38 @@ func (o *JobAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool 
 // SetDeploymentTerminationGracePeriodSeconds gets a reference to the given int32 and assigns it to the DeploymentTerminationGracePeriodSeconds field.
 func (o *JobAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32) {
 	o.DeploymentTerminationGracePeriodSeconds = &v
+}
+
+// GetDeploymentAffinityNodeRequired returns the DeploymentAffinityNodeRequired field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequired() map[string]string {
+	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.DeploymentAffinityNodeRequired
+}
+
+// GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool) {
+	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+		return nil, false
+	}
+	return o.DeploymentAffinityNodeRequired, true
+}
+
+// HasDeploymentAffinityNodeRequired returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasDeploymentAffinityNodeRequired() bool {
+	if o != nil && o.DeploymentAffinityNodeRequired != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentAffinityNodeRequired gets a reference to the given map[string]string and assigns it to the DeploymentAffinityNodeRequired field.
+func (o *JobAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[string]string) {
+	o.DeploymentAffinityNodeRequired = &v
 }
 
 // GetJobDeleteTtlSecondsAfterFinished returns the JobDeleteTtlSecondsAfterFinished field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -394,6 +428,9 @@ func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeploymentTerminationGracePeriodSeconds != nil {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
+	}
+	if o.DeploymentAffinityNodeRequired != nil {
+		toSerialize["deployment.affinity.node.required"] = o.DeploymentAffinityNodeRequired
 	}
 	if o.JobDeleteTtlSecondsAfterFinished.IsSet() {
 		toSerialize["job.delete_ttl_seconds_after_finished"] = o.JobDeleteTtlSecondsAfterFinished.Get()
