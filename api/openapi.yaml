@@ -13301,43 +13301,36 @@ components:
       example:
         deployment.affinity.node.required:
           key: deployment.affinity.node.required
-        network.ingress.send_timeout_seconds: 7
-        deployment.delay_start_time_sec: 0
+        network.ingress.send_timeout_seconds: 4
         deployment.antiaffinity.pod: Preferred
         network.ingress.proxy_send_timeout_seconds: 1
         deployment.update_strategy.type: RollingUpdate
-        deployment.update_strategy.rolling_update.max_surge_percent: 5
-        network.ingress.keepalive_time_seconds: 2
-        deployment.termination_grace_period_seconds: 6
-        network.ingress.grpc_send_timeout_seconds: 6
+        deployment.update_strategy.rolling_update.max_surge_percent: 1
+        network.ingress.keepalive_time_seconds: 3
+        deployment.termination_grace_period_seconds: 0
+        network.ingress.grpc_send_timeout_seconds: 1
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
-        build.cpu_max_in_milli: 2
+        build.cpu_max_in_milli: 5
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
-        build.ram_max_in_gib: 7
+        build.ram_max_in_gib: 2
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
-        network.ingress.proxy_body_size_mb: 9
+        network.ingress.proxy_body_size_mb: 7
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-        hpa.cpu.average_utilization_percent: 1
-        network.ingress.keepalive_timeout_seconds: 4
-        network.ingress.proxy_connect_timeout_seconds: 1
-        network.ingress.proxy_buffer_size_kb: 3
+        hpa.cpu.average_utilization_percent: 7
+        network.ingress.keepalive_timeout_seconds: 2
+        network.ingress.proxy_connect_timeout_seconds: 7
+        network.ingress.proxy_buffer_size_kb: 9
         network.ingress.proxy_read_timeout_seconds: 1
         build.timeout_max_sec: 5
-        network.ingress.grpc_read_timeout_seconds: 7
-        deployment.update_strategy.rolling_update.max_unavailable_percent: 1
+        network.ingress.grpc_read_timeout_seconds: 6
+        deployment.update_strategy.rolling_update.max_unavailable_percent: 6
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
         network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
       properties:
-        deployment.delay_start_time_sec:
-          default: 30
-          deprecated: true
-          description: please use `readiness_probe.initial_delay_seconds` and `liveness_probe.initial_delay_seconds`
-            instead
-          type: integer
         deployment.custom_domain_check_enabled:
           default: true
           description: disable custom domain check when deploying an application

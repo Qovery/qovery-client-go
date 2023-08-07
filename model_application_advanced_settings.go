@@ -17,9 +17,6 @@ import (
 
 // ApplicationAdvancedSettings struct for ApplicationAdvancedSettings
 type ApplicationAdvancedSettings struct {
-	// please use `readiness_probe.initial_delay_seconds` and `liveness_probe.initial_delay_seconds` instead
-	// Deprecated
-	DeploymentDelayStartTimeSec *int32 `json:"deployment.delay_start_time_sec,omitempty"`
 	// disable custom domain check when deploying an application
 	DeploymentCustomDomainCheckEnabled *bool `json:"deployment.custom_domain_check_enabled,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
@@ -82,8 +79,6 @@ type ApplicationAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this := ApplicationAdvancedSettings{}
-	var deploymentDelayStartTimeSec int32 = 30
-	this.DeploymentDelayStartTimeSec = &deploymentDelayStartTimeSec
 	var deploymentCustomDomainCheckEnabled bool = true
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
 	var deploymentTerminationGracePeriodSeconds int32 = 60
@@ -150,8 +145,6 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this := ApplicationAdvancedSettings{}
-	var deploymentDelayStartTimeSec int32 = 30
-	this.DeploymentDelayStartTimeSec = &deploymentDelayStartTimeSec
 	var deploymentCustomDomainCheckEnabled bool = true
 	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
 	var deploymentTerminationGracePeriodSeconds int32 = 60
@@ -211,41 +204,6 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
 	return &this
-}
-
-// GetDeploymentDelayStartTimeSec returns the DeploymentDelayStartTimeSec field value if set, zero value otherwise.
-// Deprecated
-func (o *ApplicationAdvancedSettings) GetDeploymentDelayStartTimeSec() int32 {
-	if o == nil || o.DeploymentDelayStartTimeSec == nil {
-		var ret int32
-		return ret
-	}
-	return *o.DeploymentDelayStartTimeSec
-}
-
-// GetDeploymentDelayStartTimeSecOk returns a tuple with the DeploymentDelayStartTimeSec field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *ApplicationAdvancedSettings) GetDeploymentDelayStartTimeSecOk() (*int32, bool) {
-	if o == nil || o.DeploymentDelayStartTimeSec == nil {
-		return nil, false
-	}
-	return o.DeploymentDelayStartTimeSec, true
-}
-
-// HasDeploymentDelayStartTimeSec returns a boolean if a field has been set.
-func (o *ApplicationAdvancedSettings) HasDeploymentDelayStartTimeSec() bool {
-	if o != nil && o.DeploymentDelayStartTimeSec != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeploymentDelayStartTimeSec gets a reference to the given int32 and assigns it to the DeploymentDelayStartTimeSec field.
-// Deprecated
-func (o *ApplicationAdvancedSettings) SetDeploymentDelayStartTimeSec(v int32) {
-	o.DeploymentDelayStartTimeSec = &v
 }
 
 // GetDeploymentCustomDomainCheckEnabled returns the DeploymentCustomDomainCheckEnabled field value if set, zero value otherwise.
@@ -1210,9 +1168,6 @@ func (o *ApplicationAdvancedSettings) SetSecurityServiceAccountName(v string) {
 
 func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeploymentDelayStartTimeSec != nil {
-		toSerialize["deployment.delay_start_time_sec"] = o.DeploymentDelayStartTimeSec
-	}
 	if o.DeploymentCustomDomainCheckEnabled != nil {
 		toSerialize["deployment.custom_domain_check_enabled"] = o.DeploymentCustomDomainCheckEnabled
 	}

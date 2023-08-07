@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeploymentDelayStartTimeSec** | Pointer to **int32** | please use &#x60;readiness_probe.initial_delay_seconds&#x60; and &#x60;liveness_probe.initial_delay_seconds&#x60; instead | [optional] [default to 30]
 **DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying an application | [optional] [default to true]
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
@@ -54,31 +53,6 @@ will change when the set of required properties is changed
 NewApplicationAdvancedSettingsWithDefaults instantiates a new ApplicationAdvancedSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDeploymentDelayStartTimeSec
-
-`func (o *ApplicationAdvancedSettings) GetDeploymentDelayStartTimeSec() int32`
-
-GetDeploymentDelayStartTimeSec returns the DeploymentDelayStartTimeSec field if non-nil, zero value otherwise.
-
-### GetDeploymentDelayStartTimeSecOk
-
-`func (o *ApplicationAdvancedSettings) GetDeploymentDelayStartTimeSecOk() (*int32, bool)`
-
-GetDeploymentDelayStartTimeSecOk returns a tuple with the DeploymentDelayStartTimeSec field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDeploymentDelayStartTimeSec
-
-`func (o *ApplicationAdvancedSettings) SetDeploymentDelayStartTimeSec(v int32)`
-
-SetDeploymentDelayStartTimeSec sets DeploymentDelayStartTimeSec field to given value.
-
-### HasDeploymentDelayStartTimeSec
-
-`func (o *ApplicationAdvancedSettings) HasDeploymentDelayStartTimeSec() bool`
-
-HasDeploymentDelayStartTimeSec returns a boolean if a field has been set.
 
 ### GetDeploymentCustomDomainCheckEnabled
 
