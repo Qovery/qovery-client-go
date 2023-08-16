@@ -535,7 +535,7 @@ type ApiGetEnvironmentStatusesWithStagesRequest struct {
 	environmentId string
 }
 
-func (r ApiGetEnvironmentStatusesWithStagesRequest) Execute() (*GetEnvironmentStatusesWithStages200Response, *http.Response, error) {
+func (r ApiGetEnvironmentStatusesWithStagesRequest) Execute() (*EnvironmentStatusesWithStages, *http.Response, error) {
 	return r.ApiService.GetEnvironmentStatusesWithStagesExecute(r)
 }
 
@@ -555,13 +555,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStages(ctx co
 }
 
 // Execute executes the request
-//  @return GetEnvironmentStatusesWithStages200Response
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStagesExecute(r ApiGetEnvironmentStatusesWithStagesRequest) (*GetEnvironmentStatusesWithStages200Response, *http.Response, error) {
+//  @return EnvironmentStatusesWithStages
+func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStagesExecute(r ApiGetEnvironmentStatusesWithStagesRequest) (*EnvironmentStatusesWithStages, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GetEnvironmentStatusesWithStages200Response
+		localVarReturnValue *EnvironmentStatusesWithStages
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironmentStatusesWithStages")

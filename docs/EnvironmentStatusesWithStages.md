@@ -1,4 +1,4 @@
-# GetEnvironmentStatusesWithStages200Response
+# EnvironmentStatusesWithStages
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGetEnvironmentStatusesWithStages200Response
+### NewEnvironmentStatusesWithStages
 
-`func NewGetEnvironmentStatusesWithStages200Response() *GetEnvironmentStatusesWithStages200Response`
+`func NewEnvironmentStatusesWithStages() *EnvironmentStatusesWithStages`
 
-NewGetEnvironmentStatusesWithStages200Response instantiates a new GetEnvironmentStatusesWithStages200Response object
+NewEnvironmentStatusesWithStages instantiates a new EnvironmentStatusesWithStages object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGetEnvironmentStatusesWithStages200ResponseWithDefaults
+### NewEnvironmentStatusesWithStagesWithDefaults
 
-`func NewGetEnvironmentStatusesWithStages200ResponseWithDefaults() *GetEnvironmentStatusesWithStages200Response`
+`func NewEnvironmentStatusesWithStagesWithDefaults() *EnvironmentStatusesWithStages`
 
-NewGetEnvironmentStatusesWithStages200ResponseWithDefaults instantiates a new GetEnvironmentStatusesWithStages200Response object
+NewEnvironmentStatusesWithStagesWithDefaults instantiates a new EnvironmentStatusesWithStages object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetEnvironment
 
-`func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironment() EnvironmentStatus`
+`func (o *EnvironmentStatusesWithStages) GetEnvironment() EnvironmentStatus`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironmentOk() (*EnvironmentStatus, bool)`
+`func (o *EnvironmentStatusesWithStages) GetEnvironmentOk() (*EnvironmentStatus, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *GetEnvironmentStatusesWithStages200Response) SetEnvironment(v EnvironmentStatus)`
+`func (o *EnvironmentStatusesWithStages) SetEnvironment(v EnvironmentStatus)`
 
 SetEnvironment sets Environment field to given value.
 
 ### HasEnvironment
 
-`func (o *GetEnvironmentStatusesWithStages200Response) HasEnvironment() bool`
+`func (o *EnvironmentStatusesWithStages) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
 
 ### GetStages
 
-`func (o *GetEnvironmentStatusesWithStages200Response) GetStages() DeploymentStageWithServiceStatusesList`
+`func (o *EnvironmentStatusesWithStages) GetStages() DeploymentStageWithServiceStatusesList`
 
 GetStages returns the Stages field if non-nil, zero value otherwise.
 
 ### GetStagesOk
 
-`func (o *GetEnvironmentStatusesWithStages200Response) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool)`
+`func (o *EnvironmentStatusesWithStages) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool)`
 
 GetStagesOk returns a tuple with the Stages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStages
 
-`func (o *GetEnvironmentStatusesWithStages200Response) SetStages(v DeploymentStageWithServiceStatusesList)`
+`func (o *EnvironmentStatusesWithStages) SetStages(v DeploymentStageWithServiceStatusesList)`
 
 SetStages sets Stages field to given value.
 
 ### HasStages
 
-`func (o *GetEnvironmentStatusesWithStages200Response) HasStages() bool`
+`func (o *EnvironmentStatusesWithStages) HasStages() bool`
 
 HasStages returns a boolean if a field has been set.
 

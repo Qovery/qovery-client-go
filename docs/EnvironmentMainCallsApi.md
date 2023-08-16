@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ## GetEnvironmentStatusesWithStages
 
-> GetEnvironmentStatusesWithStages200Response GetEnvironmentStatusesWithStages(ctx, environmentId).Execute()
+> EnvironmentStatusesWithStages GetEnvironmentStatusesWithStages(ctx, environmentId).Execute()
 
 Get environment statuses with stages
 
@@ -385,7 +385,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsApi.GetEnvironmentStatusesWithStages``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEnvironmentStatusesWithStages`: GetEnvironmentStatusesWithStages200Response
+    // response from `GetEnvironmentStatusesWithStages`: EnvironmentStatusesWithStages
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsApi.GetEnvironmentStatusesWithStages`: %v\n", resp)
 }
 ```
@@ -409,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEnvironmentStatusesWithStages200Response**](GetEnvironmentStatusesWithStages200Response.md)
+[**EnvironmentStatusesWithStages**](EnvironmentStatusesWithStages.md)
 
 ### Authorization
 

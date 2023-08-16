@@ -15,31 +15,31 @@ import (
 	"encoding/json"
 )
 
-// GetEnvironmentStatusesWithStages200Response struct for GetEnvironmentStatusesWithStages200Response
-type GetEnvironmentStatusesWithStages200Response struct {
+// EnvironmentStatusesWithStages struct for EnvironmentStatusesWithStages
+type EnvironmentStatusesWithStages struct {
 	Environment *EnvironmentStatus                      `json:"environment,omitempty"`
 	Stages      *DeploymentStageWithServiceStatusesList `json:"stages,omitempty"`
 }
 
-// NewGetEnvironmentStatusesWithStages200Response instantiates a new GetEnvironmentStatusesWithStages200Response object
+// NewEnvironmentStatusesWithStages instantiates a new EnvironmentStatusesWithStages object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetEnvironmentStatusesWithStages200Response() *GetEnvironmentStatusesWithStages200Response {
-	this := GetEnvironmentStatusesWithStages200Response{}
+func NewEnvironmentStatusesWithStages() *EnvironmentStatusesWithStages {
+	this := EnvironmentStatusesWithStages{}
 	return &this
 }
 
-// NewGetEnvironmentStatusesWithStages200ResponseWithDefaults instantiates a new GetEnvironmentStatusesWithStages200Response object
+// NewEnvironmentStatusesWithStagesWithDefaults instantiates a new EnvironmentStatusesWithStages object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetEnvironmentStatusesWithStages200ResponseWithDefaults() *GetEnvironmentStatusesWithStages200Response {
-	this := GetEnvironmentStatusesWithStages200Response{}
+func NewEnvironmentStatusesWithStagesWithDefaults() *EnvironmentStatusesWithStages {
+	this := EnvironmentStatusesWithStages{}
 	return &this
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironment() EnvironmentStatus {
+func (o *EnvironmentStatusesWithStages) GetEnvironment() EnvironmentStatus {
 	if o == nil || o.Environment == nil {
 		var ret EnvironmentStatus
 		return ret
@@ -49,7 +49,7 @@ func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironment() Environme
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironmentOk() (*EnvironmentStatus, bool) {
+func (o *EnvironmentStatusesWithStages) GetEnvironmentOk() (*EnvironmentStatus, bool) {
 	if o == nil || o.Environment == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *GetEnvironmentStatusesWithStages200Response) GetEnvironmentOk() (*Envir
 }
 
 // HasEnvironment returns a boolean if a field has been set.
-func (o *GetEnvironmentStatusesWithStages200Response) HasEnvironment() bool {
+func (o *EnvironmentStatusesWithStages) HasEnvironment() bool {
 	if o != nil && o.Environment != nil {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *GetEnvironmentStatusesWithStages200Response) HasEnvironment() bool {
 }
 
 // SetEnvironment gets a reference to the given EnvironmentStatus and assigns it to the Environment field.
-func (o *GetEnvironmentStatusesWithStages200Response) SetEnvironment(v EnvironmentStatus) {
+func (o *EnvironmentStatusesWithStages) SetEnvironment(v EnvironmentStatus) {
 	o.Environment = &v
 }
 
 // GetStages returns the Stages field value if set, zero value otherwise.
-func (o *GetEnvironmentStatusesWithStages200Response) GetStages() DeploymentStageWithServiceStatusesList {
+func (o *EnvironmentStatusesWithStages) GetStages() DeploymentStageWithServiceStatusesList {
 	if o == nil || o.Stages == nil {
 		var ret DeploymentStageWithServiceStatusesList
 		return ret
@@ -81,7 +81,7 @@ func (o *GetEnvironmentStatusesWithStages200Response) GetStages() DeploymentStag
 
 // GetStagesOk returns a tuple with the Stages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatusesWithStages200Response) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool) {
+func (o *EnvironmentStatusesWithStages) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool) {
 	if o == nil || o.Stages == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *GetEnvironmentStatusesWithStages200Response) GetStagesOk() (*Deployment
 }
 
 // HasStages returns a boolean if a field has been set.
-func (o *GetEnvironmentStatusesWithStages200Response) HasStages() bool {
+func (o *EnvironmentStatusesWithStages) HasStages() bool {
 	if o != nil && o.Stages != nil {
 		return true
 	}
@@ -98,11 +98,11 @@ func (o *GetEnvironmentStatusesWithStages200Response) HasStages() bool {
 }
 
 // SetStages gets a reference to the given DeploymentStageWithServiceStatusesList and assigns it to the Stages field.
-func (o *GetEnvironmentStatusesWithStages200Response) SetStages(v DeploymentStageWithServiceStatusesList) {
+func (o *EnvironmentStatusesWithStages) SetStages(v DeploymentStageWithServiceStatusesList) {
 	o.Stages = &v
 }
 
-func (o GetEnvironmentStatusesWithStages200Response) MarshalJSON() ([]byte, error) {
+func (o EnvironmentStatusesWithStages) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
@@ -113,38 +113,38 @@ func (o GetEnvironmentStatusesWithStages200Response) MarshalJSON() ([]byte, erro
 	return json.Marshal(toSerialize)
 }
 
-type NullableGetEnvironmentStatusesWithStages200Response struct {
-	value *GetEnvironmentStatusesWithStages200Response
+type NullableEnvironmentStatusesWithStages struct {
+	value *EnvironmentStatusesWithStages
 	isSet bool
 }
 
-func (v NullableGetEnvironmentStatusesWithStages200Response) Get() *GetEnvironmentStatusesWithStages200Response {
+func (v NullableEnvironmentStatusesWithStages) Get() *EnvironmentStatusesWithStages {
 	return v.value
 }
 
-func (v *NullableGetEnvironmentStatusesWithStages200Response) Set(val *GetEnvironmentStatusesWithStages200Response) {
+func (v *NullableEnvironmentStatusesWithStages) Set(val *EnvironmentStatusesWithStages) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetEnvironmentStatusesWithStages200Response) IsSet() bool {
+func (v NullableEnvironmentStatusesWithStages) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetEnvironmentStatusesWithStages200Response) Unset() {
+func (v *NullableEnvironmentStatusesWithStages) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetEnvironmentStatusesWithStages200Response(val *GetEnvironmentStatusesWithStages200Response) *NullableGetEnvironmentStatusesWithStages200Response {
-	return &NullableGetEnvironmentStatusesWithStages200Response{value: val, isSet: true}
+func NewNullableEnvironmentStatusesWithStages(val *EnvironmentStatusesWithStages) *NullableEnvironmentStatusesWithStages {
+	return &NullableEnvironmentStatusesWithStages{value: val, isSet: true}
 }
 
-func (v NullableGetEnvironmentStatusesWithStages200Response) MarshalJSON() ([]byte, error) {
+func (v NullableEnvironmentStatusesWithStages) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetEnvironmentStatusesWithStages200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableEnvironmentStatusesWithStages) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
