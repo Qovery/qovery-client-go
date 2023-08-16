@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// GetEnvironmentStatuses200Response struct for GetEnvironmentStatuses200Response
-type GetEnvironmentStatuses200Response struct {
+// EnvironmentStatuses struct for EnvironmentStatuses
+type EnvironmentStatuses struct {
 	Environment  *EnvironmentStatus `json:"environment,omitempty"`
 	Applications []Status           `json:"applications,omitempty"`
 	Containers   []Status           `json:"containers,omitempty"`
@@ -24,25 +24,25 @@ type GetEnvironmentStatuses200Response struct {
 	Databases    []Status           `json:"databases,omitempty"`
 }
 
-// NewGetEnvironmentStatuses200Response instantiates a new GetEnvironmentStatuses200Response object
+// NewEnvironmentStatuses instantiates a new EnvironmentStatuses object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetEnvironmentStatuses200Response() *GetEnvironmentStatuses200Response {
-	this := GetEnvironmentStatuses200Response{}
+func NewEnvironmentStatuses() *EnvironmentStatuses {
+	this := EnvironmentStatuses{}
 	return &this
 }
 
-// NewGetEnvironmentStatuses200ResponseWithDefaults instantiates a new GetEnvironmentStatuses200Response object
+// NewEnvironmentStatusesWithDefaults instantiates a new EnvironmentStatuses object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetEnvironmentStatuses200ResponseWithDefaults() *GetEnvironmentStatuses200Response {
-	this := GetEnvironmentStatuses200Response{}
+func NewEnvironmentStatusesWithDefaults() *EnvironmentStatuses {
+	this := EnvironmentStatuses{}
 	return &this
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *GetEnvironmentStatuses200Response) GetEnvironment() EnvironmentStatus {
+func (o *EnvironmentStatuses) GetEnvironment() EnvironmentStatus {
 	if o == nil || o.Environment == nil {
 		var ret EnvironmentStatus
 		return ret
@@ -52,7 +52,7 @@ func (o *GetEnvironmentStatuses200Response) GetEnvironment() EnvironmentStatus {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatuses200Response) GetEnvironmentOk() (*EnvironmentStatus, bool) {
+func (o *EnvironmentStatuses) GetEnvironmentOk() (*EnvironmentStatus, bool) {
 	if o == nil || o.Environment == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *GetEnvironmentStatuses200Response) GetEnvironmentOk() (*EnvironmentStat
 }
 
 // HasEnvironment returns a boolean if a field has been set.
-func (o *GetEnvironmentStatuses200Response) HasEnvironment() bool {
+func (o *EnvironmentStatuses) HasEnvironment() bool {
 	if o != nil && o.Environment != nil {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *GetEnvironmentStatuses200Response) HasEnvironment() bool {
 }
 
 // SetEnvironment gets a reference to the given EnvironmentStatus and assigns it to the Environment field.
-func (o *GetEnvironmentStatuses200Response) SetEnvironment(v EnvironmentStatus) {
+func (o *EnvironmentStatuses) SetEnvironment(v EnvironmentStatus) {
 	o.Environment = &v
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *GetEnvironmentStatuses200Response) GetApplications() []Status {
+func (o *EnvironmentStatuses) GetApplications() []Status {
 	if o == nil || o.Applications == nil {
 		var ret []Status
 		return ret
@@ -84,7 +84,7 @@ func (o *GetEnvironmentStatuses200Response) GetApplications() []Status {
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatuses200Response) GetApplicationsOk() ([]Status, bool) {
+func (o *EnvironmentStatuses) GetApplicationsOk() ([]Status, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *GetEnvironmentStatuses200Response) GetApplicationsOk() ([]Status, bool)
 }
 
 // HasApplications returns a boolean if a field has been set.
-func (o *GetEnvironmentStatuses200Response) HasApplications() bool {
+func (o *EnvironmentStatuses) HasApplications() bool {
 	if o != nil && o.Applications != nil {
 		return true
 	}
@@ -101,12 +101,12 @@ func (o *GetEnvironmentStatuses200Response) HasApplications() bool {
 }
 
 // SetApplications gets a reference to the given []Status and assigns it to the Applications field.
-func (o *GetEnvironmentStatuses200Response) SetApplications(v []Status) {
+func (o *EnvironmentStatuses) SetApplications(v []Status) {
 	o.Applications = v
 }
 
 // GetContainers returns the Containers field value if set, zero value otherwise.
-func (o *GetEnvironmentStatuses200Response) GetContainers() []Status {
+func (o *EnvironmentStatuses) GetContainers() []Status {
 	if o == nil || o.Containers == nil {
 		var ret []Status
 		return ret
@@ -116,7 +116,7 @@ func (o *GetEnvironmentStatuses200Response) GetContainers() []Status {
 
 // GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatuses200Response) GetContainersOk() ([]Status, bool) {
+func (o *EnvironmentStatuses) GetContainersOk() ([]Status, bool) {
 	if o == nil || o.Containers == nil {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *GetEnvironmentStatuses200Response) GetContainersOk() ([]Status, bool) {
 }
 
 // HasContainers returns a boolean if a field has been set.
-func (o *GetEnvironmentStatuses200Response) HasContainers() bool {
+func (o *EnvironmentStatuses) HasContainers() bool {
 	if o != nil && o.Containers != nil {
 		return true
 	}
@@ -133,12 +133,12 @@ func (o *GetEnvironmentStatuses200Response) HasContainers() bool {
 }
 
 // SetContainers gets a reference to the given []Status and assigns it to the Containers field.
-func (o *GetEnvironmentStatuses200Response) SetContainers(v []Status) {
+func (o *EnvironmentStatuses) SetContainers(v []Status) {
 	o.Containers = v
 }
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
-func (o *GetEnvironmentStatuses200Response) GetJobs() []Status {
+func (o *EnvironmentStatuses) GetJobs() []Status {
 	if o == nil || o.Jobs == nil {
 		var ret []Status
 		return ret
@@ -148,7 +148,7 @@ func (o *GetEnvironmentStatuses200Response) GetJobs() []Status {
 
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatuses200Response) GetJobsOk() ([]Status, bool) {
+func (o *EnvironmentStatuses) GetJobsOk() ([]Status, bool) {
 	if o == nil || o.Jobs == nil {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *GetEnvironmentStatuses200Response) GetJobsOk() ([]Status, bool) {
 }
 
 // HasJobs returns a boolean if a field has been set.
-func (o *GetEnvironmentStatuses200Response) HasJobs() bool {
+func (o *EnvironmentStatuses) HasJobs() bool {
 	if o != nil && o.Jobs != nil {
 		return true
 	}
@@ -165,12 +165,12 @@ func (o *GetEnvironmentStatuses200Response) HasJobs() bool {
 }
 
 // SetJobs gets a reference to the given []Status and assigns it to the Jobs field.
-func (o *GetEnvironmentStatuses200Response) SetJobs(v []Status) {
+func (o *EnvironmentStatuses) SetJobs(v []Status) {
 	o.Jobs = v
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
-func (o *GetEnvironmentStatuses200Response) GetDatabases() []Status {
+func (o *EnvironmentStatuses) GetDatabases() []Status {
 	if o == nil || o.Databases == nil {
 		var ret []Status
 		return ret
@@ -180,7 +180,7 @@ func (o *GetEnvironmentStatuses200Response) GetDatabases() []Status {
 
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnvironmentStatuses200Response) GetDatabasesOk() ([]Status, bool) {
+func (o *EnvironmentStatuses) GetDatabasesOk() ([]Status, bool) {
 	if o == nil || o.Databases == nil {
 		return nil, false
 	}
@@ -188,7 +188,7 @@ func (o *GetEnvironmentStatuses200Response) GetDatabasesOk() ([]Status, bool) {
 }
 
 // HasDatabases returns a boolean if a field has been set.
-func (o *GetEnvironmentStatuses200Response) HasDatabases() bool {
+func (o *EnvironmentStatuses) HasDatabases() bool {
 	if o != nil && o.Databases != nil {
 		return true
 	}
@@ -197,11 +197,11 @@ func (o *GetEnvironmentStatuses200Response) HasDatabases() bool {
 }
 
 // SetDatabases gets a reference to the given []Status and assigns it to the Databases field.
-func (o *GetEnvironmentStatuses200Response) SetDatabases(v []Status) {
+func (o *EnvironmentStatuses) SetDatabases(v []Status) {
 	o.Databases = v
 }
 
-func (o GetEnvironmentStatuses200Response) MarshalJSON() ([]byte, error) {
+func (o EnvironmentStatuses) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
@@ -221,38 +221,38 @@ func (o GetEnvironmentStatuses200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGetEnvironmentStatuses200Response struct {
-	value *GetEnvironmentStatuses200Response
+type NullableEnvironmentStatuses struct {
+	value *EnvironmentStatuses
 	isSet bool
 }
 
-func (v NullableGetEnvironmentStatuses200Response) Get() *GetEnvironmentStatuses200Response {
+func (v NullableEnvironmentStatuses) Get() *EnvironmentStatuses {
 	return v.value
 }
 
-func (v *NullableGetEnvironmentStatuses200Response) Set(val *GetEnvironmentStatuses200Response) {
+func (v *NullableEnvironmentStatuses) Set(val *EnvironmentStatuses) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetEnvironmentStatuses200Response) IsSet() bool {
+func (v NullableEnvironmentStatuses) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetEnvironmentStatuses200Response) Unset() {
+func (v *NullableEnvironmentStatuses) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetEnvironmentStatuses200Response(val *GetEnvironmentStatuses200Response) *NullableGetEnvironmentStatuses200Response {
-	return &NullableGetEnvironmentStatuses200Response{value: val, isSet: true}
+func NewNullableEnvironmentStatuses(val *EnvironmentStatuses) *NullableEnvironmentStatuses {
+	return &NullableEnvironmentStatuses{value: val, isSet: true}
 }
 
-func (v NullableGetEnvironmentStatuses200Response) MarshalJSON() ([]byte, error) {
+func (v NullableEnvironmentStatuses) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetEnvironmentStatuses200Response) UnmarshalJSON(src []byte) error {
+func (v *NullableEnvironmentStatuses) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

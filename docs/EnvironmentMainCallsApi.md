@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ## GetEnvironmentStatuses
 
-> GetEnvironmentStatuses200Response GetEnvironmentStatuses(ctx, environmentId).Execute()
+> EnvironmentStatuses GetEnvironmentStatuses(ctx, environmentId).Execute()
 
 Get environment statuses with services status
 
@@ -317,7 +317,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsApi.GetEnvironmentStatuses``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEnvironmentStatuses`: GetEnvironmentStatuses200Response
+    // response from `GetEnvironmentStatuses`: EnvironmentStatuses
     fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsApi.GetEnvironmentStatuses`: %v\n", resp)
 }
 ```
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetEnvironmentStatuses200Response**](GetEnvironmentStatuses200Response.md)
+[**EnvironmentStatuses**](EnvironmentStatuses.md)
 
 ### Authorization
 

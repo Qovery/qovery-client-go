@@ -5044,7 +5044,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getEnvironmentStatuses_200_response'
+                $ref: '#/components/schemas/EnvironmentStatuses'
           description: Get statuses
         "401":
           description: Access token is missing or invalid
@@ -16386,6 +16386,78 @@ components:
             $ref: '#/components/schemas/EnvironmentStats'
           type: array
       type: object
+    EnvironmentStatuses:
+      example:
+        databases:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+        environment:
+          last_deployment_state: null
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          last_deployment_id: last_deployment_id
+        jobs:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+        containers:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+        applications:
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: null
+          is_part_last_deployment: true
+          service_deployment_status: null
+      properties:
+        environment:
+          $ref: '#/components/schemas/EnvironmentStatus'
+        applications:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+        containers:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+        jobs:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+        databases:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+      type: object
     EnvironmentStatusList:
       example:
         results:
@@ -19315,78 +19387,6 @@ components:
           type: string
       required:
       - user_id
-      type: object
-    getEnvironmentStatuses_200_response:
-      example:
-        databases:
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-        environment:
-          last_deployment_state: null
-          last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          last_deployment_id: last_deployment_id
-        jobs:
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-        containers:
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-        applications:
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-        - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: null
-          is_part_last_deployment: true
-          service_deployment_status: null
-      properties:
-        environment:
-          $ref: '#/components/schemas/EnvironmentStatus'
-        applications:
-          items:
-            $ref: '#/components/schemas/Status'
-          type: array
-        containers:
-          items:
-            $ref: '#/components/schemas/Status'
-          type: array
-        jobs:
-          items:
-            $ref: '#/components/schemas/Status'
-          type: array
-        databases:
-          items:
-            $ref: '#/components/schemas/Status'
-          type: array
       type: object
     getEnvironmentStatusesWithStages_200_response:
       example:
