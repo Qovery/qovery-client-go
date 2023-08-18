@@ -173,7 +173,7 @@ import (
 
 func main() {
     variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
-    variableOverrideRequest := *openapiclient.NewVariableOverrideRequest("Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), "AliasParentId_example") // VariableOverrideRequest |  (optional)
+    variableOverrideRequest := *openapiclient.NewVariableOverrideRequest("Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), "OverrideParentId_example") // VariableOverrideRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -384,8 +384,8 @@ import (
 )
 
 func main() {
-    parentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | the id where the variable will be added (optional)
-    scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | the scope of the parent where the variable will be added (optional)
+    parentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | it filters the list by returning only the variables accessible by the selected parent_id. This field shall contain the id of a project, environment or service depending on the selected scope. Example, if scope = APPLICATION and parent_id=<application_id>, the result will contain any variable accessible by the application. The result will contain also any variable declared at an higher scope. (optional)
+    scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | the type of the parent_id (application, project, environment etc..). (optional)
     isSecret := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -411,8 +411,8 @@ Other parameters are passed through a pointer to a apiListVariablesRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parentId** | **string** | the id where the variable will be added | 
- **scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) | the scope of the parent where the variable will be added | 
+ **parentId** | **string** | it filters the list by returning only the variables accessible by the selected parent_id. This field shall contain the id of a project, environment or service depending on the selected scope. Example, if scope &#x3D; APPLICATION and parent_id&#x3D;&lt;application_id&gt;, the result will contain any variable accessible by the application. The result will contain also any variable declared at an higher scope. | 
+ **scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) | the type of the parent_id (application, project, environment etc..). | 
  **isSecret** | **bool** |  | 
 
 ### Return type

@@ -17,9 +17,13 @@ import (
 
 // VariableOverride struct for VariableOverride
 type VariableOverride struct {
-	Id           string               `json:"id"`
-	Key          string               `json:"key"`
-	Value        NullableString       `json:"value,omitempty"`
+	// The id of the overriden variable
+	Id string `json:"id"`
+	// The key of the overriden variable
+	Key string `json:"key"`
+	// The value of the overriden variable
+	Value NullableString `json:"value,omitempty"`
+	// The mounth path of the overriden variable (only if environment variable type is 'file')
 	MountPath    string               `json:"mount_path"`
 	Scope        APIVariableScopeEnum `json:"scope"`
 	VariableType APIVariableTypeEnum  `json:"variable_type"`

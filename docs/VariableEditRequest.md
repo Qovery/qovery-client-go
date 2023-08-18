@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** |  | 
-**Value** | **string** |  | 
+**Key** | **string** | the key of the environment variable | 
+**Value** | **string** | the value of the environment variable | 
 
 ## Methods
 

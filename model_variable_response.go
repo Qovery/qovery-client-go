@@ -25,9 +25,9 @@ type VariableResponse struct {
 	AliasedVariable    *VariableAlias       `json:"aliased_variable,omitempty"`
 	Scope              APIVariableScopeEnum `json:"scope"`
 	VariableType       *APIVariableTypeEnum `json:"variable_type,omitempty"`
-	// present only for `BUILT_IN` variable
+	// The id of the service referenced by this variable. present only for `BUILT_IN` variable
 	ServiceId *string `json:"service_id,omitempty"`
-	// present only for `BUILT_IN` variable
+	// The name of the service referenced by this variable. present only for `BUILT_IN` variable
 	ServiceName *string                `json:"service_name,omitempty"`
 	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)

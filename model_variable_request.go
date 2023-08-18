@@ -17,12 +17,17 @@ import (
 
 // VariableRequest struct for VariableRequest
 type VariableRequest struct {
-	Key              string               `json:"key"`
-	Value            string               `json:"value"`
-	MountPath        NullableString       `json:"mount_path,omitempty"`
-	IsSecret         bool                 `json:"is_secret"`
-	VariableScope    APIVariableScopeEnum `json:"variable_scope"`
-	VariableParentId string               `json:"variable_parent_id"`
+	// the key of the environment variable
+	Key string `json:"key"`
+	// the value of the environment variable
+	Value string `json:"value"`
+	// the path where the file will be mounted (only if type =file)
+	MountPath NullableString `json:"mount_path,omitempty"`
+	// if true, the variable will be considered as a secret and will not be accessible after its creation. Only your applications will be able to access its value at build and run time.
+	IsSecret      bool                 `json:"is_secret"`
+	VariableScope APIVariableScopeEnum `json:"variable_scope"`
+	// based on the selected scope, it contains the ID of the service, environment or project where the variable is attached
+	VariableParentId string `json:"variable_parent_id"`
 }
 
 // NewVariableRequest instantiates a new VariableRequest object

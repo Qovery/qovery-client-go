@@ -17,20 +17,22 @@ import (
 
 // VariableOverrideRequest struct for VariableOverrideRequest
 type VariableOverrideRequest struct {
+	// the value to be used as Override of the targeted environment variable.
 	Value         string               `json:"value"`
-	AliasScope    APIVariableScopeEnum `json:"alias_scope"`
-	AliasParentId string               `json:"alias_parent_id"`
+	OverrideScope APIVariableScopeEnum `json:"override_scope"`
+	// the id of the variable that is aliased.
+	OverrideParentId string `json:"override_parent_id"`
 }
 
 // NewVariableOverrideRequest instantiates a new VariableOverrideRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableOverrideRequest(value string, aliasScope APIVariableScopeEnum, aliasParentId string) *VariableOverrideRequest {
+func NewVariableOverrideRequest(value string, overrideScope APIVariableScopeEnum, overrideParentId string) *VariableOverrideRequest {
 	this := VariableOverrideRequest{}
 	this.Value = value
-	this.AliasScope = aliasScope
-	this.AliasParentId = aliasParentId
+	this.OverrideScope = overrideScope
+	this.OverrideParentId = overrideParentId
 	return &this
 }
 
@@ -66,52 +68,52 @@ func (o *VariableOverrideRequest) SetValue(v string) {
 	o.Value = v
 }
 
-// GetAliasScope returns the AliasScope field value
-func (o *VariableOverrideRequest) GetAliasScope() APIVariableScopeEnum {
+// GetOverrideScope returns the OverrideScope field value
+func (o *VariableOverrideRequest) GetOverrideScope() APIVariableScopeEnum {
 	if o == nil {
 		var ret APIVariableScopeEnum
 		return ret
 	}
 
-	return o.AliasScope
+	return o.OverrideScope
 }
 
-// GetAliasScopeOk returns a tuple with the AliasScope field value
+// GetOverrideScopeOk returns a tuple with the OverrideScope field value
 // and a boolean to check if the value has been set.
-func (o *VariableOverrideRequest) GetAliasScopeOk() (*APIVariableScopeEnum, bool) {
+func (o *VariableOverrideRequest) GetOverrideScopeOk() (*APIVariableScopeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AliasScope, true
+	return &o.OverrideScope, true
 }
 
-// SetAliasScope sets field value
-func (o *VariableOverrideRequest) SetAliasScope(v APIVariableScopeEnum) {
-	o.AliasScope = v
+// SetOverrideScope sets field value
+func (o *VariableOverrideRequest) SetOverrideScope(v APIVariableScopeEnum) {
+	o.OverrideScope = v
 }
 
-// GetAliasParentId returns the AliasParentId field value
-func (o *VariableOverrideRequest) GetAliasParentId() string {
+// GetOverrideParentId returns the OverrideParentId field value
+func (o *VariableOverrideRequest) GetOverrideParentId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AliasParentId
+	return o.OverrideParentId
 }
 
-// GetAliasParentIdOk returns a tuple with the AliasParentId field value
+// GetOverrideParentIdOk returns a tuple with the OverrideParentId field value
 // and a boolean to check if the value has been set.
-func (o *VariableOverrideRequest) GetAliasParentIdOk() (*string, bool) {
+func (o *VariableOverrideRequest) GetOverrideParentIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AliasParentId, true
+	return &o.OverrideParentId, true
 }
 
-// SetAliasParentId sets field value
-func (o *VariableOverrideRequest) SetAliasParentId(v string) {
-	o.AliasParentId = v
+// SetOverrideParentId sets field value
+func (o *VariableOverrideRequest) SetOverrideParentId(v string) {
+	o.OverrideParentId = v
 }
 
 func (o VariableOverrideRequest) MarshalJSON() ([]byte, error) {
@@ -120,10 +122,10 @@ func (o VariableOverrideRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["value"] = o.Value
 	}
 	if true {
-		toSerialize["alias_scope"] = o.AliasScope
+		toSerialize["override_scope"] = o.OverrideScope
 	}
 	if true {
-		toSerialize["alias_parent_id"] = o.AliasParentId
+		toSerialize["override_parent_id"] = o.OverrideParentId
 	}
 	return json.Marshal(toSerialize)
 }

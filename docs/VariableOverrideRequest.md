@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | **string** |  | 
-**AliasScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
-**AliasParentId** | **string** |  | 
+**Value** | **string** | the value to be used as Override of the targeted environment variable. | 
+**OverrideScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
+**OverrideParentId** | **string** | the id of the variable that is aliased. | 
 
 ## Methods
 
 ### NewVariableOverrideRequest
 
-`func NewVariableOverrideRequest(value string, aliasScope APIVariableScopeEnum, aliasParentId string, ) *VariableOverrideRequest`
+`func NewVariableOverrideRequest(value string, overrideScope APIVariableScopeEnum, overrideParentId string, ) *VariableOverrideRequest`
 
 NewVariableOverrideRequest instantiates a new VariableOverrideRequest object
 This constructor will assign default values to properties that have it defined,
@@ -47,44 +47,44 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
-### GetAliasScope
+### GetOverrideScope
 
-`func (o *VariableOverrideRequest) GetAliasScope() APIVariableScopeEnum`
+`func (o *VariableOverrideRequest) GetOverrideScope() APIVariableScopeEnum`
 
-GetAliasScope returns the AliasScope field if non-nil, zero value otherwise.
+GetOverrideScope returns the OverrideScope field if non-nil, zero value otherwise.
 
-### GetAliasScopeOk
+### GetOverrideScopeOk
 
-`func (o *VariableOverrideRequest) GetAliasScopeOk() (*APIVariableScopeEnum, bool)`
+`func (o *VariableOverrideRequest) GetOverrideScopeOk() (*APIVariableScopeEnum, bool)`
 
-GetAliasScopeOk returns a tuple with the AliasScope field if it's non-nil, zero value otherwise
+GetOverrideScopeOk returns a tuple with the OverrideScope field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAliasScope
+### SetOverrideScope
 
-`func (o *VariableOverrideRequest) SetAliasScope(v APIVariableScopeEnum)`
+`func (o *VariableOverrideRequest) SetOverrideScope(v APIVariableScopeEnum)`
 
-SetAliasScope sets AliasScope field to given value.
+SetOverrideScope sets OverrideScope field to given value.
 
 
-### GetAliasParentId
+### GetOverrideParentId
 
-`func (o *VariableOverrideRequest) GetAliasParentId() string`
+`func (o *VariableOverrideRequest) GetOverrideParentId() string`
 
-GetAliasParentId returns the AliasParentId field if non-nil, zero value otherwise.
+GetOverrideParentId returns the OverrideParentId field if non-nil, zero value otherwise.
 
-### GetAliasParentIdOk
+### GetOverrideParentIdOk
 
-`func (o *VariableOverrideRequest) GetAliasParentIdOk() (*string, bool)`
+`func (o *VariableOverrideRequest) GetOverrideParentIdOk() (*string, bool)`
 
-GetAliasParentIdOk returns a tuple with the AliasParentId field if it's non-nil, zero value otherwise
+GetOverrideParentIdOk returns a tuple with the OverrideParentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAliasParentId
+### SetOverrideParentId
 
-`func (o *VariableOverrideRequest) SetAliasParentId(v string)`
+`func (o *VariableOverrideRequest) SetOverrideParentId(v string)`
 
-SetAliasParentId sets AliasParentId field to given value.
+SetOverrideParentId sets OverrideParentId field to given value.
 
 
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** |  | 
+**Key** | **string** | the value to be used as Alias of the targeted environment variable. | 
 **AliasScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
-**AliasParentId** | **string** |  | 
+**AliasParentId** | **string** | the id of the variable that is aliased. | 
 
 ## Methods
 

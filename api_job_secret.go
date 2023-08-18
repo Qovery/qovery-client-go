@@ -160,7 +160,7 @@ CreateJobSecretAlias Create a secret alias at the job level
 - The system will create a new secret at job level with the same value as the one corresponding to the secret id in the path
 - The response body will contain the newly created secret
 - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
-- Only 1 alias level is allowed. You can't create an alias on an alias
+- You can't create an alias on an alias
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

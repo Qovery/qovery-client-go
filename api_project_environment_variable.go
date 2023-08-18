@@ -162,7 +162,7 @@ CreateProjectEnvironmentVariableAlias Create an environment variable alias at th
 - The system will create a new environment variable at project level with the same value as the one corresponding to the variable id in the path
 - The response body will contain the newly created variable
 - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
-- Only 1 alias level is allowed. You can't create an alias on an alias
+- You can't create an alias on an alias
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

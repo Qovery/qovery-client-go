@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Key** | **string** |  | 
-**Value** | Pointer to **NullableString** |  | [optional] 
-**MountPath** | **string** |  | 
+**Id** | **string** | The id of the overriden variable | 
+**Key** | **string** | The key of the overriden variable | 
+**Value** | Pointer to **NullableString** | The value of the overriden variable | [optional] 
+**MountPath** | **string** | The mounth path of the overriden variable (only if environment variable type is &#39;file&#39;) | 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
 

@@ -17,7 +17,9 @@ import (
 
 // VariableEditRequest struct for VariableEditRequest
 type VariableEditRequest struct {
-	Key   string `json:"key"`
+	// the key of the environment variable
+	Key string `json:"key"`
+	// the value of the environment variable
 	Value string `json:"value"`
 }
 

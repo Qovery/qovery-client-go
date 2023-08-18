@@ -17,9 +17,11 @@ import (
 
 // VariableAliasRequest struct for VariableAliasRequest
 type VariableAliasRequest struct {
-	Key           string               `json:"key"`
-	AliasScope    APIVariableScopeEnum `json:"alias_scope"`
-	AliasParentId string               `json:"alias_parent_id"`
+	// the value to be used as Alias of the targeted environment variable.
+	Key        string               `json:"key"`
+	AliasScope APIVariableScopeEnum `json:"alias_scope"`
+	// the id of the variable that is aliased.
+	AliasParentId string `json:"alias_parent_id"`
 }
 
 // NewVariableAliasRequest instantiates a new VariableAliasRequest object

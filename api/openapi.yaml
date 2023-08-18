@@ -4535,8 +4535,8 @@ paths:
         \ environment variable at project level with the same value as the one corresponding\
         \ to the variable id in the path\n- The response body will contain the newly\
         \ created variable\n- Information regarding the aliased_variable will be exposed\
-        \ in the \"aliased_variable\" field of the newly created variable\n- Only\
-        \ 1 alias level is allowed. You can't create an alias on an alias\n"
+        \ in the \"aliased_variable\" field of the newly created variable\n- You can't\
+        \ create an alias on an alias\n"
       operationId: createProjectEnvironmentVariableAlias
       parameters:
       - description: Project ID
@@ -4797,8 +4797,7 @@ paths:
         \ at project level with the same value as the one corresponding to the secret\
         \ id in the path\n- The response body will contain the newly created secret\n\
         - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
-        \ field of the newly created secret\n- Only 1 alias level is allowed. You\
-        \ can't create an alias on an alias\n"
+        \ field of the newly created secret\n- You can't create an alias on an alias\n"
       operationId: createProjectSecretAlias
       parameters:
       - description: Project ID
@@ -6491,7 +6490,7 @@ paths:
         \ one corresponding to the variable id in the path\n- The response body will\
         \ contain the newly created variable\n- Information regarding the aliased_variable\
         \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
-        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
+        - You can't create an alias on an alias\n"
       operationId: createEnvironmentEnvironmentVariableAlias
       parameters:
       - description: Environment ID
@@ -6752,8 +6751,8 @@ paths:
         \ at environment level with the same value as the one corresponding to the\
         \ secret id in the path\n- The response body will contain the newly created\
         \ secret\n- Information regarding the aliased_secret will be exposed in the\
-        \ \"aliased_secret\" field of the newly created secret\n- Only 1 alias level\
-        \ is allowed. You can't create an alias on an alias\n"
+        \ \"aliased_secret\" field of the newly created secret\n- You can't create\
+        \ an alias on an alias\n"
       operationId: createEnvironmentSecretAlias
       parameters:
       - description: Environment ID
@@ -8114,7 +8113,7 @@ paths:
         \ one corresponding to the variable id in the path\n- The response body will\
         \ contain the newly created variable\n- Information regarding the aliased_variable\
         \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
-        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
+        - You can't create an alias on an alias\n"
       operationId: createApplicationEnvironmentVariableAlias
       parameters:
       - description: Application ID
@@ -8375,8 +8374,8 @@ paths:
         \ at application level with the same value as the one corresponding to the\
         \ secret id in the path\n- The response body will contain the newly created\
         \ secret\n- Information regarding the aliased_secret will be exposed in the\
-        \ \"aliased_secret\" field of the newly created secret\n- Only 1 alias level\
-        \ is allowed. You can't create an alias on an alias\n"
+        \ \"aliased_secret\" field of the newly created secret\n- You can't create\
+        \ an alias on an alias\n"
       operationId: createApplicationSecretAlias
       parameters:
       - description: Application ID
@@ -9567,7 +9566,7 @@ paths:
         \ one corresponding to the variable id in the path\n- The response body will\
         \ contain the newly created variable\n- Information regarding the aliased_variable\
         \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
-        - Only 1 alias level is allowed. You can't create an alias on an alias\n"
+        - You can't create an alias on an alias\n"
       operationId: createContainerEnvironmentVariableAlias
       parameters:
       - description: Container ID
@@ -9828,8 +9827,7 @@ paths:
         \ at container level with the same value as the one corresponding to the secret\
         \ id in the path\n- The response body will contain the newly created secret\n\
         - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
-        \ field of the newly created secret\n- Only 1 alias level is allowed. You\
-        \ can't create an alias on an alias\n"
+        \ field of the newly created secret\n- You can't create an alias on an alias\n"
       operationId: createContainerSecretAlias
       parameters:
       - description: Container ID
@@ -12183,8 +12181,8 @@ paths:
         \ environment variable at job level with the same value as the one corresponding\
         \ to the variable id in the path\n- The response body will contain the newly\
         \ created variable\n- Information regarding the aliased_variable will be exposed\
-        \ in the \"aliased_variable\" field of the newly created variable\n- Only\
-        \ 1 alias level is allowed. You can't create an alias on an alias\n"
+        \ in the \"aliased_variable\" field of the newly created variable\n- You can't\
+        \ create an alias on an alias\n"
       operationId: createJobEnvironmentVariableAlias
       parameters:
       - description: Job ID
@@ -12445,8 +12443,7 @@ paths:
         \ at job level with the same value as the one corresponding to the secret\
         \ id in the path\n- The response body will contain the newly created secret\n\
         - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
-        \ field of the newly created secret\n- Only 1 alias level is allowed. You\
-        \ can't create an alias on an alias\n"
+        \ field of the newly created secret\n- You can't create an alias on an alias\n"
       operationId: createJobSecretAlias
       parameters:
       - description: Job ID
@@ -12610,10 +12607,16 @@ paths:
       - Deployment Stage Main Calls
   /variable:
     get:
-      description: Returns a list of variables
+      description: Returns a list of variables. The result can be filtered by using
+        the query parameters.
       operationId: listVariables
       parameters:
-      - description: the id where the variable will be added
+      - description: "it filters the list by returning only the variables accessible\
+          \ by the selected parent_id. This field shall contain the id of a project,\
+          \ environment or service depending on the selected scope. Example, if scope\
+          \ = APPLICATION and parent_id=<application_id>, the result will contain\
+          \ any variable accessible by the application. The result will contain also\
+          \ any variable declared at an higher scope."
         explode: true
         in: query
         name: parent_id
@@ -12622,7 +12625,8 @@ paths:
           format: uuid
           type: string
         style: form
-      - description: the scope of the parent where the variable will be added
+      - description: "the type of the parent_id (application, project, environment\
+          \ etc..)."
         explode: true
         in: query
         name: scope
@@ -12635,7 +12639,8 @@ paths:
         name: is_secret
         required: false
         schema:
-          description: true if the variable is a secret
+          description: it filters the list by returning only the variables of type
+            secret or not
           nullable: true
           type: boolean
         style: form
@@ -12657,7 +12662,7 @@ paths:
       - Variable Main Calls
     post:
       description: |
-        - Create a variable at the level defined in the request body.
+        - Create a variable with the scope defined in the request body.
       operationId: createVariable
       requestBody:
         content:
@@ -12684,16 +12689,15 @@ paths:
       - Variable Main Calls
   /variable/{variableId}/alias:
     post:
-      description: "- Allows you to add an alias at the level defined in the request\
-        \ body on an existing variable having a higher scope, in order to customize\
-        \ its key.\n- You have to specify a key in the request body and the scope\
-        \ and the parent id of the alias\n- The system will create a new variable\
-        \ at the requested level with the same value as the one corresponding to the\
-        \ variable id in the path\n- The response body will contain the newly created\
-        \ variable\n- Information regarding the aliased_variable will be exposed in\
-        \ the \"aliased_variable\" or in the \"aliased_secret\" field of the newly\
-        \ created variable\n- Only 1 alias level is allowed. You can't create an alias\
-        \ on an alias\n"
+      description: "- Allows you to create an alias of one of the existing variables.\n\
+        - You have to specify an alias (key) in the request body, the scope and the\
+        \ parent id of the alias (project id, environment id or service id)\n- The\
+        \ system will create a new variable at the requested level with the same value\
+        \ as the one corresponding to the variable id passed as path parameter.\n\
+        - The response body will contain the newly created variable\n- Information\
+        \ regarding the aliased_variable will be exposed in the \"aliased_variable\"\
+        \ or in the \"aliased_secret\" field of the newly created variable\n- You\
+        \ can't create an alias on an alias\n"
       operationId: createVariableAlias
       parameters:
       - description: Variable ID
@@ -12732,12 +12736,15 @@ paths:
       - Variable Main Calls
   /variable/{variableId}/override:
     post:
-      description: |
-        - Allows you to override a variable that has a higher scope.
-        - You have to specify a value in the request body and the scope and the parent id of the variable to alias
-        - The system will create a new environment variable at project level with the same key as the one corresponding to the variable id in the path
-        - The response body will contain the newly created variable
-        - Information regarding the overridden_variable will be exposed in the "overridden_variable" or in the "overridden_secret" field of the newly created variable
+      description: "- Allows you to override a variable that has a higher scope.\n\
+        - You have to specify a value (override) in the request body and the scope\
+        \ and the parent id of the variable to override (project id, environment id\
+        \ or service id)\n- The system will create a new environment variable at the\
+        \ requested level with the same key as the one corresponding to the variable\
+        \ id passed as path parameter.\n- The response body will contain the newly\
+        \ created variable\n- Information regarding the overridden_variable will be\
+        \ exposed in the \"overridden_variable\" or in the \"overridden_secret\" field\
+        \ of the newly created variable\n"
       operationId: createVariableOverride
       parameters:
       - description: Variable ID
@@ -19356,10 +19363,12 @@ components:
         key: key
       properties:
         key:
+          description: the value to be used as Alias of the targeted environment variable.
           type: string
         alias_scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         alias_parent_id:
+          description: the id of the variable that is aliased.
           format: uuid
           type: string
       required:
@@ -19369,20 +19378,23 @@ components:
       type: object
     VariableOverrideRequest:
       example:
-        alias_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        alias_scope: null
+        override_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        override_scope: null
         value: value
       properties:
         value:
+          description: the value to be used as Override of the targeted environment
+            variable.
           type: string
-        alias_scope:
+        override_scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
-        alias_parent_id:
+        override_parent_id:
+          description: the id of the variable that is aliased.
           format: uuid
           type: string
       required:
-      - alias_parent_id
-      - alias_scope
+      - override_parent_id
+      - override_scope
       - value
       type: object
     VariableRequest:
@@ -19395,17 +19407,25 @@ components:
         key: key
       properties:
         key:
+          description: the key of the environment variable
           type: string
         value:
+          description: the value of the environment variable
           type: string
         mount_path:
+          description: the path where the file will be mounted (only if type =file)
           nullable: true
           type: string
         is_secret:
+          description: "if true, the variable will be considered as a secret and will\
+            \ not be accessible after its creation. Only your applications will be\
+            \ able to access its value at build and run time."
           type: boolean
         variable_scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         variable_parent_id:
+          description: "based on the selected scope, it contains the ID of the service,\
+            \ environment or project where the variable is attached"
           format: uuid
           type: string
       required:
@@ -19421,8 +19441,10 @@ components:
         key: key
       properties:
         key:
+          description: the key of the environment variable
           type: string
         value:
+          description: the value of the environment variable
           type: string
       required:
       - key
@@ -19449,7 +19471,7 @@ components:
           format: uuid
           type: string
         key:
-          example: QOVERY_DATABASE_PSQL_NAME
+          example: DATABASE_PSQL_NAME
           type: string
         value:
           nullable: true
@@ -19470,14 +19492,19 @@ components:
     VariableOverride:
       properties:
         id:
+          description: The id of the overriden variable
           format: uuid
           type: string
         key:
+          description: The key of the overriden variable
           type: string
         value:
+          description: The value of the overriden variable
           nullable: true
           type: string
         mount_path:
+          description: The mounth path of the overriden variable (only if environment
+            variable type is 'file')
           type: string
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
@@ -21642,11 +21669,13 @@ components:
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
         service_id:
-          description: present only for `BUILT_IN` variable
+          description: The id of the service referenced by this variable. present
+            only for `BUILT_IN` variable
           format: uuid
           type: string
         service_name:
-          description: present only for `BUILT_IN` variable
+          description: The name of the service referenced by this variable. present
+            only for `BUILT_IN` variable
           type: string
         service_type:
           $ref: '#/components/schemas/LinkedServiceTypeEnum'

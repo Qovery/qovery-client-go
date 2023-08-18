@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** |  | 
-**Value** | **string** |  | 
-**MountPath** | Pointer to **NullableString** |  | [optional] 
-**IsSecret** | **bool** |  | 
+**Key** | **string** | the key of the environment variable | 
+**Value** | **string** | the value of the environment variable | 
+**MountPath** | Pointer to **NullableString** | the path where the file will be mounted (only if type &#x3D;file) | [optional] 
+**IsSecret** | **bool** | if true, the variable will be considered as a secret and will not be accessible after its creation. Only your applications will be able to access its value at build and run time. | 
 **VariableScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
-**VariableParentId** | **string** |  | 
+**VariableParentId** | **string** | based on the selected scope, it contains the ID of the service, environment or project where the variable is attached | 
 
 ## Methods
 
