@@ -81,6 +81,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccountInfoApi* | [**EditAccountInformation**](docs/AccountInfoApi.md#editaccountinformation) | **Put** /account | Edit account information
 *AccountInfoApi* | [**GetAccountInformation**](docs/AccountInfoApi.md#getaccountinformation) | **Get** /account | Get Account information
 *ApplicationActionsApi* | [**DeployApplication**](docs/ApplicationActionsApi.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsApi* | [**RebootApplication**](docs/ApplicationActionsApi.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application

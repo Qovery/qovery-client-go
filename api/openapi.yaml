@@ -11199,6 +11199,27 @@ paths:
       summary: Get Account information
       tags:
       - Account Info
+    put:
+      operationId: editAccountInformation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountInfoEditRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfo'
+          description: Edit application
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+      summary: Edit account information
+      tags:
+      - Account Info
   /account/gitAuthProvider:
     get:
       deprecated: true
@@ -13245,6 +13266,7 @@ components:
   schemas:
     AccountInfo:
       example:
+        communication_email: communication_email
         profile_picture_url: profile_picture_url
         nickname: nickname
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -13266,16 +13288,16 @@ components:
           type: string
         profile_picture_url:
           type: string
-      required:
-      - username
+        communication_email:
+          type: string
       type: object
     AccountInfoEditRequest:
+      example:
+        communication_email: communication_email
       properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        profile_picture_url:
+        communication_email:
+          description: The email to be used for official Qovery communications
+          nullable: true
           type: string
       type: object
     SecretAlias:

@@ -17,9 +17,8 @@ import (
 
 // AccountInfoEditRequest struct for AccountInfoEditRequest
 type AccountInfoEditRequest struct {
-	FirstName         *string `json:"first_name,omitempty"`
-	LastName          *string `json:"last_name,omitempty"`
-	ProfilePictureUrl *string `json:"profile_picture_url,omitempty"`
+	// The email to be used for official Qovery communications
+	CommunicationEmail NullableString `json:"communication_email,omitempty"`
 }
 
 // NewAccountInfoEditRequest instantiates a new AccountInfoEditRequest object
@@ -39,112 +38,53 @@ func NewAccountInfoEditRequestWithDefaults() *AccountInfoEditRequest {
 	return &this
 }
 
-// GetFirstName returns the FirstName field value if set, zero value otherwise.
-func (o *AccountInfoEditRequest) GetFirstName() string {
-	if o == nil || o.FirstName == nil {
+// GetCommunicationEmail returns the CommunicationEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AccountInfoEditRequest) GetCommunicationEmail() string {
+	if o == nil || o.CommunicationEmail.Get() == nil {
 		var ret string
 		return ret
 	}
-	return *o.FirstName
+	return *o.CommunicationEmail.Get()
 }
 
-// GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
+// GetCommunicationEmailOk returns a tuple with the CommunicationEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountInfoEditRequest) GetFirstNameOk() (*string, bool) {
-	if o == nil || o.FirstName == nil {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AccountInfoEditRequest) GetCommunicationEmailOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FirstName, true
+	return o.CommunicationEmail.Get(), o.CommunicationEmail.IsSet()
 }
 
-// HasFirstName returns a boolean if a field has been set.
-func (o *AccountInfoEditRequest) HasFirstName() bool {
-	if o != nil && o.FirstName != nil {
+// HasCommunicationEmail returns a boolean if a field has been set.
+func (o *AccountInfoEditRequest) HasCommunicationEmail() bool {
+	if o != nil && o.CommunicationEmail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFirstName gets a reference to the given string and assigns it to the FirstName field.
-func (o *AccountInfoEditRequest) SetFirstName(v string) {
-	o.FirstName = &v
+// SetCommunicationEmail gets a reference to the given NullableString and assigns it to the CommunicationEmail field.
+func (o *AccountInfoEditRequest) SetCommunicationEmail(v string) {
+	o.CommunicationEmail.Set(&v)
 }
 
-// GetLastName returns the LastName field value if set, zero value otherwise.
-func (o *AccountInfoEditRequest) GetLastName() string {
-	if o == nil || o.LastName == nil {
-		var ret string
-		return ret
-	}
-	return *o.LastName
+// SetCommunicationEmailNil sets the value for CommunicationEmail to be an explicit nil
+func (o *AccountInfoEditRequest) SetCommunicationEmailNil() {
+	o.CommunicationEmail.Set(nil)
 }
 
-// GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountInfoEditRequest) GetLastNameOk() (*string, bool) {
-	if o == nil || o.LastName == nil {
-		return nil, false
-	}
-	return o.LastName, true
-}
-
-// HasLastName returns a boolean if a field has been set.
-func (o *AccountInfoEditRequest) HasLastName() bool {
-	if o != nil && o.LastName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastName gets a reference to the given string and assigns it to the LastName field.
-func (o *AccountInfoEditRequest) SetLastName(v string) {
-	o.LastName = &v
-}
-
-// GetProfilePictureUrl returns the ProfilePictureUrl field value if set, zero value otherwise.
-func (o *AccountInfoEditRequest) GetProfilePictureUrl() string {
-	if o == nil || o.ProfilePictureUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProfilePictureUrl
-}
-
-// GetProfilePictureUrlOk returns a tuple with the ProfilePictureUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountInfoEditRequest) GetProfilePictureUrlOk() (*string, bool) {
-	if o == nil || o.ProfilePictureUrl == nil {
-		return nil, false
-	}
-	return o.ProfilePictureUrl, true
-}
-
-// HasProfilePictureUrl returns a boolean if a field has been set.
-func (o *AccountInfoEditRequest) HasProfilePictureUrl() bool {
-	if o != nil && o.ProfilePictureUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProfilePictureUrl gets a reference to the given string and assigns it to the ProfilePictureUrl field.
-func (o *AccountInfoEditRequest) SetProfilePictureUrl(v string) {
-	o.ProfilePictureUrl = &v
+// UnsetCommunicationEmail ensures that no value is present for CommunicationEmail, not even an explicit nil
+func (o *AccountInfoEditRequest) UnsetCommunicationEmail() {
+	o.CommunicationEmail.Unset()
 }
 
 func (o AccountInfoEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FirstName != nil {
-		toSerialize["first_name"] = o.FirstName
-	}
-	if o.LastName != nil {
-		toSerialize["last_name"] = o.LastName
-	}
-	if o.ProfilePictureUrl != nil {
-		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
+	if o.CommunicationEmail.IsSet() {
+		toSerialize["communication_email"] = o.CommunicationEmail.Get()
 	}
 	return json.Marshal(toSerialize)
 }

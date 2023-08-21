@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstName** | Pointer to **string** |  | [optional] 
-**LastName** | Pointer to **string** |  | [optional] 
-**ProfilePictureUrl** | Pointer to **string** |  | [optional] 
+**CommunicationEmail** | Pointer to **NullableString** | The email to be used for official Qovery communications | [optional] 
 
 ## Methods
 
@@ -27,81 +25,41 @@ NewAccountInfoEditRequestWithDefaults instantiates a new AccountInfoEditRequest 
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetFirstName
+### GetCommunicationEmail
 
-`func (o *AccountInfoEditRequest) GetFirstName() string`
+`func (o *AccountInfoEditRequest) GetCommunicationEmail() string`
 
-GetFirstName returns the FirstName field if non-nil, zero value otherwise.
+GetCommunicationEmail returns the CommunicationEmail field if non-nil, zero value otherwise.
 
-### GetFirstNameOk
+### GetCommunicationEmailOk
 
-`func (o *AccountInfoEditRequest) GetFirstNameOk() (*string, bool)`
+`func (o *AccountInfoEditRequest) GetCommunicationEmailOk() (*string, bool)`
 
-GetFirstNameOk returns a tuple with the FirstName field if it's non-nil, zero value otherwise
+GetCommunicationEmailOk returns a tuple with the CommunicationEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFirstName
+### SetCommunicationEmail
 
-`func (o *AccountInfoEditRequest) SetFirstName(v string)`
+`func (o *AccountInfoEditRequest) SetCommunicationEmail(v string)`
 
-SetFirstName sets FirstName field to given value.
+SetCommunicationEmail sets CommunicationEmail field to given value.
 
-### HasFirstName
+### HasCommunicationEmail
 
-`func (o *AccountInfoEditRequest) HasFirstName() bool`
+`func (o *AccountInfoEditRequest) HasCommunicationEmail() bool`
 
-HasFirstName returns a boolean if a field has been set.
+HasCommunicationEmail returns a boolean if a field has been set.
 
-### GetLastName
+### SetCommunicationEmailNil
 
-`func (o *AccountInfoEditRequest) GetLastName() string`
+`func (o *AccountInfoEditRequest) SetCommunicationEmailNil(b bool)`
 
-GetLastName returns the LastName field if non-nil, zero value otherwise.
+ SetCommunicationEmailNil sets the value for CommunicationEmail to be an explicit nil
 
-### GetLastNameOk
+### UnsetCommunicationEmail
+`func (o *AccountInfoEditRequest) UnsetCommunicationEmail()`
 
-`func (o *AccountInfoEditRequest) GetLastNameOk() (*string, bool)`
-
-GetLastNameOk returns a tuple with the LastName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastName
-
-`func (o *AccountInfoEditRequest) SetLastName(v string)`
-
-SetLastName sets LastName field to given value.
-
-### HasLastName
-
-`func (o *AccountInfoEditRequest) HasLastName() bool`
-
-HasLastName returns a boolean if a field has been set.
-
-### GetProfilePictureUrl
-
-`func (o *AccountInfoEditRequest) GetProfilePictureUrl() string`
-
-GetProfilePictureUrl returns the ProfilePictureUrl field if non-nil, zero value otherwise.
-
-### GetProfilePictureUrlOk
-
-`func (o *AccountInfoEditRequest) GetProfilePictureUrlOk() (*string, bool)`
-
-GetProfilePictureUrlOk returns a tuple with the ProfilePictureUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProfilePictureUrl
-
-`func (o *AccountInfoEditRequest) SetProfilePictureUrl(v string)`
-
-SetProfilePictureUrl sets ProfilePictureUrl field to given value.
-
-### HasProfilePictureUrl
-
-`func (o *AccountInfoEditRequest) HasProfilePictureUrl() bool`
-
-HasProfilePictureUrl returns a boolean if a field has been set.
-
+UnsetCommunicationEmail ensures that no value is present for CommunicationEmail, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

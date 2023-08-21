@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **FirstName** | Pointer to **string** |  | [optional] 
 **LastName** | Pointer to **string** |  | [optional] 
 **ProfilePictureUrl** | Pointer to **string** |  | [optional] 
+**CommunicationEmail** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetProfilePictureUrl sets ProfilePictureUrl field to given value.
 `func (o *AccountInfo) HasProfilePictureUrl() bool`
 
 HasProfilePictureUrl returns a boolean if a field has been set.
+
+### GetCommunicationEmail
+
+`func (o *AccountInfo) GetCommunicationEmail() string`
+
+GetCommunicationEmail returns the CommunicationEmail field if non-nil, zero value otherwise.
+
+### GetCommunicationEmailOk
+
+`func (o *AccountInfo) GetCommunicationEmailOk() (*string, bool)`
+
+GetCommunicationEmailOk returns a tuple with the CommunicationEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommunicationEmail
+
+`func (o *AccountInfo) SetCommunicationEmail(v string)`
+
+SetCommunicationEmail sets CommunicationEmail field to given value.
+
+### HasCommunicationEmail
+
+`func (o *AccountInfo) HasCommunicationEmail() bool`
+
+HasCommunicationEmail returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

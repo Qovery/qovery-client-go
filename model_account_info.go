@@ -18,12 +18,13 @@ import (
 
 // AccountInfo struct for AccountInfo
 type AccountInfo struct {
-	Id                *string    `json:"id,omitempty"`
-	CreatedAt         *time.Time `json:"created_at,omitempty"`
-	Nickname          *string    `json:"nickname,omitempty"`
-	FirstName         *string    `json:"first_name,omitempty"`
-	LastName          *string    `json:"last_name,omitempty"`
-	ProfilePictureUrl *string    `json:"profile_picture_url,omitempty"`
+	Id                 *string    `json:"id,omitempty"`
+	CreatedAt          *time.Time `json:"created_at,omitempty"`
+	Nickname           *string    `json:"nickname,omitempty"`
+	FirstName          *string    `json:"first_name,omitempty"`
+	LastName           *string    `json:"last_name,omitempty"`
+	ProfilePictureUrl  *string    `json:"profile_picture_url,omitempty"`
+	CommunicationEmail *string    `json:"communication_email,omitempty"`
 }
 
 // NewAccountInfo instantiates a new AccountInfo object
@@ -235,6 +236,38 @@ func (o *AccountInfo) SetProfilePictureUrl(v string) {
 	o.ProfilePictureUrl = &v
 }
 
+// GetCommunicationEmail returns the CommunicationEmail field value if set, zero value otherwise.
+func (o *AccountInfo) GetCommunicationEmail() string {
+	if o == nil || o.CommunicationEmail == nil {
+		var ret string
+		return ret
+	}
+	return *o.CommunicationEmail
+}
+
+// GetCommunicationEmailOk returns a tuple with the CommunicationEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountInfo) GetCommunicationEmailOk() (*string, bool) {
+	if o == nil || o.CommunicationEmail == nil {
+		return nil, false
+	}
+	return o.CommunicationEmail, true
+}
+
+// HasCommunicationEmail returns a boolean if a field has been set.
+func (o *AccountInfo) HasCommunicationEmail() bool {
+	if o != nil && o.CommunicationEmail != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCommunicationEmail gets a reference to the given string and assigns it to the CommunicationEmail field.
+func (o *AccountInfo) SetCommunicationEmail(v string) {
+	o.CommunicationEmail = &v
+}
+
 func (o AccountInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -254,6 +287,9 @@ func (o AccountInfo) MarshalJSON() ([]byte, error) {
 	}
 	if o.ProfilePictureUrl != nil {
 		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
+	}
+	if o.CommunicationEmail != nil {
+		toSerialize["communication_email"] = o.CommunicationEmail
 	}
 	return json.Marshal(toSerialize)
 }
