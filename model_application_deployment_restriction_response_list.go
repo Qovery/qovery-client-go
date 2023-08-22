@@ -17,7 +17,7 @@ import (
 
 // ApplicationDeploymentRestrictionResponseList struct for ApplicationDeploymentRestrictionResponseList
 type ApplicationDeploymentRestrictionResponseList struct {
-	DeploymentRestrictions []ApplicationDeploymentRestriction `json:"deployment_restrictions,omitempty"`
+	Results []ApplicationDeploymentRestriction `json:"results,omitempty"`
 }
 
 // NewApplicationDeploymentRestrictionResponseList instantiates a new ApplicationDeploymentRestrictionResponseList object
@@ -37,42 +37,42 @@ func NewApplicationDeploymentRestrictionResponseListWithDefaults() *ApplicationD
 	return &this
 }
 
-// GetDeploymentRestrictions returns the DeploymentRestrictions field value if set, zero value otherwise.
-func (o *ApplicationDeploymentRestrictionResponseList) GetDeploymentRestrictions() []ApplicationDeploymentRestriction {
-	if o == nil || o.DeploymentRestrictions == nil {
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *ApplicationDeploymentRestrictionResponseList) GetResults() []ApplicationDeploymentRestriction {
+	if o == nil || o.Results == nil {
 		var ret []ApplicationDeploymentRestriction
 		return ret
 	}
-	return o.DeploymentRestrictions
+	return o.Results
 }
 
-// GetDeploymentRestrictionsOk returns a tuple with the DeploymentRestrictions field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationDeploymentRestrictionResponseList) GetDeploymentRestrictionsOk() ([]ApplicationDeploymentRestriction, bool) {
-	if o == nil || o.DeploymentRestrictions == nil {
+func (o *ApplicationDeploymentRestrictionResponseList) GetResultsOk() ([]ApplicationDeploymentRestriction, bool) {
+	if o == nil || o.Results == nil {
 		return nil, false
 	}
-	return o.DeploymentRestrictions, true
+	return o.Results, true
 }
 
-// HasDeploymentRestrictions returns a boolean if a field has been set.
-func (o *ApplicationDeploymentRestrictionResponseList) HasDeploymentRestrictions() bool {
-	if o != nil && o.DeploymentRestrictions != nil {
+// HasResults returns a boolean if a field has been set.
+func (o *ApplicationDeploymentRestrictionResponseList) HasResults() bool {
+	if o != nil && o.Results != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDeploymentRestrictions gets a reference to the given []ApplicationDeploymentRestriction and assigns it to the DeploymentRestrictions field.
-func (o *ApplicationDeploymentRestrictionResponseList) SetDeploymentRestrictions(v []ApplicationDeploymentRestriction) {
-	o.DeploymentRestrictions = v
+// SetResults gets a reference to the given []ApplicationDeploymentRestriction and assigns it to the Results field.
+func (o *ApplicationDeploymentRestrictionResponseList) SetResults(v []ApplicationDeploymentRestriction) {
+	o.Results = v
 }
 
 func (o ApplicationDeploymentRestrictionResponseList) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeploymentRestrictions != nil {
-		toSerialize["deployment_restrictions"] = o.DeploymentRestrictions
+	if o.Results != nil {
+		toSerialize["results"] = o.Results
 	}
 	return json.Marshal(toSerialize)
 }

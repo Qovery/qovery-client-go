@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeploymentRestrictions** | Pointer to [**[]ApplicationDeploymentRestriction**](ApplicationDeploymentRestriction.md) |  | [optional] 
+**Results** | Pointer to [**[]ApplicationDeploymentRestriction**](ApplicationDeploymentRestriction.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewApplicationDeploymentRestrictionResponseListWithDefaults instantiates a new A
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetDeploymentRestrictions
+### GetResults
 
-`func (o *ApplicationDeploymentRestrictionResponseList) GetDeploymentRestrictions() []ApplicationDeploymentRestriction`
+`func (o *ApplicationDeploymentRestrictionResponseList) GetResults() []ApplicationDeploymentRestriction`
 
-GetDeploymentRestrictions returns the DeploymentRestrictions field if non-nil, zero value otherwise.
+GetResults returns the Results field if non-nil, zero value otherwise.
 
-### GetDeploymentRestrictionsOk
+### GetResultsOk
 
-`func (o *ApplicationDeploymentRestrictionResponseList) GetDeploymentRestrictionsOk() (*[]ApplicationDeploymentRestriction, bool)`
+`func (o *ApplicationDeploymentRestrictionResponseList) GetResultsOk() (*[]ApplicationDeploymentRestriction, bool)`
 
-GetDeploymentRestrictionsOk returns a tuple with the DeploymentRestrictions field if it's non-nil, zero value otherwise
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDeploymentRestrictions
+### SetResults
 
-`func (o *ApplicationDeploymentRestrictionResponseList) SetDeploymentRestrictions(v []ApplicationDeploymentRestriction)`
+`func (o *ApplicationDeploymentRestrictionResponseList) SetResults(v []ApplicationDeploymentRestriction)`
 
-SetDeploymentRestrictions sets DeploymentRestrictions field to given value.
+SetResults sets Results field to given value.
 
-### HasDeploymentRestrictions
+### HasResults
 
-`func (o *ApplicationDeploymentRestrictionResponseList) HasDeploymentRestrictions() bool`
+`func (o *ApplicationDeploymentRestrictionResponseList) HasResults() bool`
 
-HasDeploymentRestrictions returns a boolean if a field has been set.
+HasResults returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

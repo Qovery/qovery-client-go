@@ -13584,11 +13584,11 @@ components:
       type: object
     ApplicationDeploymentRestrictionResponseList:
       example:
-        deployment_restrictions:
+        results:
         - null
         - null
       properties:
-        deployment_restrictions:
+        results:
           items:
             $ref: '#/components/schemas/ApplicationDeploymentRestriction'
           type: array
