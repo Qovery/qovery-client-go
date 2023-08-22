@@ -37,7 +37,6 @@ tags:
 - name: Container Actions
 - name: Container Configuration
 - name: Container Database
-- name: Container Deployment Restriction
 - name: Container Deployment History
 - name: Container Environment Variable
 - name: Container Event
@@ -7142,6 +7141,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Deployment Restriction ID
+        explode: false
+        in: path
+        name: deploymentRestrictionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: The resource was deleted successfully
@@ -12995,6 +13003,16 @@ components:
       explode: false
       in: path
       name: stageId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    deploymentRestrictionId:
+      description: Deployment Restriction ID
+      explode: false
+      in: path
+      name: deploymentRestrictionId
       required: true
       schema:
         format: uuid
@@ -21776,7 +21794,6 @@ x-tagGroups:
   - Container Metrics
   - Container Database
   - Container Logs
-  - Container Deployment Restriction
   - Container Deployment History
   - Container Environment Variable
   - Container Secret

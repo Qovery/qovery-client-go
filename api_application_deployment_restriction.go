@@ -135,9 +135,10 @@ func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeployment
 }
 
 type ApiDeleteApplicationDeploymentRestrictionRequest struct {
-	ctx           context.Context
-	ApiService    *ApplicationDeploymentRestrictionApiService
-	applicationId string
+	ctx                     context.Context
+	ApiService              *ApplicationDeploymentRestrictionApiService
+	applicationId           string
+	deploymentRestrictionId string
 }
 
 func (r ApiDeleteApplicationDeploymentRestrictionRequest) Execute() (*http.Response, error) {
@@ -151,13 +152,15 @@ Delete an application deployment restriction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
+ @param deploymentRestrictionId Deployment Restriction ID
  @return ApiDeleteApplicationDeploymentRestrictionRequest
 */
-func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeploymentRestriction(ctx context.Context, applicationId string) ApiDeleteApplicationDeploymentRestrictionRequest {
+func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiDeleteApplicationDeploymentRestrictionRequest {
 	return ApiDeleteApplicationDeploymentRestrictionRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		applicationId: applicationId,
+		ApiService:              a,
+		ctx:                     ctx,
+		applicationId:           applicationId,
+		deploymentRestrictionId: deploymentRestrictionId,
 	}
 }
 
@@ -176,6 +179,7 @@ func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeployment
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterToString(r.deploymentRestrictionId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## DeleteApplicationDeploymentRestriction
 
-> DeleteApplicationDeploymentRestriction(ctx, applicationId).Execute()
+> DeleteApplicationDeploymentRestriction(ctx, applicationId, deploymentRestrictionId).Execute()
 
 Delete an application deployment restriction
 
@@ -105,10 +105,11 @@ import (
 
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDeploymentRestrictionApi.DeleteApplicationDeploymentRestriction(context.Background(), applicationId).Execute()
+    resp, r, err := apiClient.ApplicationDeploymentRestrictionApi.DeleteApplicationDeploymentRestriction(context.Background(), applicationId, deploymentRestrictionId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionApi.DeleteApplicationDeploymentRestriction``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,6 +124,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **applicationId** | **string** | Application ID | 
+**deploymentRestrictionId** | **string** | Deployment Restriction ID | 
 
 ### Other Parameters
 
@@ -131,6 +133,7 @@ Other parameters are passed through a pointer to a apiDeleteApplicationDeploymen
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
