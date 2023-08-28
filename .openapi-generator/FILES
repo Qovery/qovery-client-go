@@ -564,9 +564,6 @@ docs/StatusKindEnum.md
 docs/StorageDisk.md
 docs/StorageDiskResponseList.md
 docs/StorageTypeEnum.md
-docs/Tag.md
-docs/TagRequest.md
-docs/TagResponseList.md
 docs/ThresholdMetricStatusEnum.md
 docs/TransferOwnershipRequest.md
 docs/TypeOfUseEnum.md
@@ -1012,9 +1009,6 @@ model_status_kind_enum.go
 model_storage_disk.go
 model_storage_disk_response_list.go
 model_storage_type_enum.go
-model_tag.go
-model_tag_request.go
-model_tag_response_list.go
 model_threshold_metric_status_enum.go
 model_transfer_ownership_request.go
 model_type_of_use_enum.go
