@@ -17294,12 +17294,24 @@ components:
         url:
           type: string
         internal_port:
+          description: The port from which the service is reachable from within the
+            cluster
           type: integer
         external_port:
+          description: "The port from which the service is reachable from externally\
+            \ (i.e: 443 for HTTPS)"
           type: integer
         is_qovery_domain:
+          description: "True if the domain is managed by Qovery, false if it belongs\
+            \ to the user"
           type: boolean
         is_default:
+          description: "Indicate if the link is using the root of the domain and not\
+            \ one derivated from port\ni.e:\np8080.zxxxx.jvm.worl      => is_default\
+            \ = false, is_qovery = true\nzxxxx.jvm.world           => is_default =\
+            \ true, is_qovery = true\np8080-my-super-domain.com => is_default = false,\
+            \ is_qovery = false\nmy-super-domain.com       => is_default = true, is_qovery\
+            \ = false\n"
           type: boolean
       type: object
     LinkResponseList:

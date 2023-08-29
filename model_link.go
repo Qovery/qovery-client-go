@@ -17,11 +17,15 @@ import (
 
 // Link struct for Link
 type Link struct {
-	Url            *string `json:"url,omitempty"`
-	InternalPort   *int32  `json:"internal_port,omitempty"`
-	ExternalPort   *int32  `json:"external_port,omitempty"`
-	IsQoveryDomain *bool   `json:"is_qovery_domain,omitempty"`
-	IsDefault      *bool   `json:"is_default,omitempty"`
+	Url *string `json:"url,omitempty"`
+	// The port from which the service is reachable from within the cluster
+	InternalPort *int32 `json:"internal_port,omitempty"`
+	// The port from which the service is reachable from externally (i.e: 443 for HTTPS)
+	ExternalPort *int32 `json:"external_port,omitempty"`
+	// True if the domain is managed by Qovery, false if it belongs to the user
+	IsQoveryDomain *bool `json:"is_qovery_domain,omitempty"`
+	// Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      => is_default = false, is_qovery = true zxxxx.jvm.world           => is_default = true, is_qovery = true p8080-my-super-domain.com => is_default = false, is_qovery = false my-super-domain.com       => is_default = true, is_qovery = false
+	IsDefault *bool `json:"is_default,omitempty"`
 }
 
 // NewLink instantiates a new Link object
