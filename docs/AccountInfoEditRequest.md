@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CommunicationEmail** | Pointer to **NullableString** | The email to be used for official Qovery communications | [optional] 
+**CommunicationEmail** | Pointer to **string** | The email to be used for official Qovery communications | [optional] 
 
 ## Methods
 
@@ -50,16 +50,6 @@ SetCommunicationEmail sets CommunicationEmail field to given value.
 
 HasCommunicationEmail returns a boolean if a field has been set.
 
-### SetCommunicationEmailNil
-
-`func (o *AccountInfoEditRequest) SetCommunicationEmailNil(b bool)`
-
- SetCommunicationEmailNil sets the value for CommunicationEmail to be an explicit nil
-
-### UnsetCommunicationEmail
-`func (o *AccountInfoEditRequest) UnsetCommunicationEmail()`
-
-UnsetCommunicationEmail ensures that no value is present for CommunicationEmail, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

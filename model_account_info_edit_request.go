@@ -18,7 +18,7 @@ import (
 // AccountInfoEditRequest struct for AccountInfoEditRequest
 type AccountInfoEditRequest struct {
 	// The email to be used for official Qovery communications
-	CommunicationEmail NullableString `json:"communication_email,omitempty"`
+	CommunicationEmail *string `json:"communication_email,omitempty"`
 }
 
 // NewAccountInfoEditRequest instantiates a new AccountInfoEditRequest object
@@ -38,53 +38,42 @@ func NewAccountInfoEditRequestWithDefaults() *AccountInfoEditRequest {
 	return &this
 }
 
-// GetCommunicationEmail returns the CommunicationEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCommunicationEmail returns the CommunicationEmail field value if set, zero value otherwise.
 func (o *AccountInfoEditRequest) GetCommunicationEmail() string {
-	if o == nil || o.CommunicationEmail.Get() == nil {
+	if o == nil || o.CommunicationEmail == nil {
 		var ret string
 		return ret
 	}
-	return *o.CommunicationEmail.Get()
+	return *o.CommunicationEmail
 }
 
 // GetCommunicationEmailOk returns a tuple with the CommunicationEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountInfoEditRequest) GetCommunicationEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.CommunicationEmail == nil {
 		return nil, false
 	}
-	return o.CommunicationEmail.Get(), o.CommunicationEmail.IsSet()
+	return o.CommunicationEmail, true
 }
 
 // HasCommunicationEmail returns a boolean if a field has been set.
 func (o *AccountInfoEditRequest) HasCommunicationEmail() bool {
-	if o != nil && o.CommunicationEmail.IsSet() {
+	if o != nil && o.CommunicationEmail != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCommunicationEmail gets a reference to the given NullableString and assigns it to the CommunicationEmail field.
+// SetCommunicationEmail gets a reference to the given string and assigns it to the CommunicationEmail field.
 func (o *AccountInfoEditRequest) SetCommunicationEmail(v string) {
-	o.CommunicationEmail.Set(&v)
-}
-
-// SetCommunicationEmailNil sets the value for CommunicationEmail to be an explicit nil
-func (o *AccountInfoEditRequest) SetCommunicationEmailNil() {
-	o.CommunicationEmail.Set(nil)
-}
-
-// UnsetCommunicationEmail ensures that no value is present for CommunicationEmail, not even an explicit nil
-func (o *AccountInfoEditRequest) UnsetCommunicationEmail() {
-	o.CommunicationEmail.Unset()
+	o.CommunicationEmail = &v
 }
 
 func (o AccountInfoEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CommunicationEmail.IsSet() {
-		toSerialize["communication_email"] = o.CommunicationEmail.Get()
+	if o.CommunicationEmail != nil {
+		toSerialize["communication_email"] = o.CommunicationEmail
 	}
 	return json.Marshal(toSerialize)
 }

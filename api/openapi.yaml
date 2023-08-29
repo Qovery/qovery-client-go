@@ -13217,7 +13217,7 @@ components:
       properties:
         communication_email:
           description: The email to be used for official Qovery communications
-          nullable: true
+          nullable: false
           type: string
       type: object
     SecretAlias:
