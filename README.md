@@ -894,6 +894,15 @@ Class | Method | HTTP request | Description
 
 
 
+### ApiKeyAuth
+
+- **Type**: API key
+- **API key parameter name**: Token
+- **Location**: HTTP header
+
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: Token and passed in as the auth context for each request.
+
+
 ### bearerAuth
 
 - **Type**: HTTP Bearer token authentication
