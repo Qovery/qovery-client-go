@@ -26,12 +26,15 @@ Name | Type | Description | Notes
 **NetworkIngressProxyConnectTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for establishing a connection to a proxied server | [optional] [default to 60]
 **NetworkIngressProxySendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the proxied server | [optional] [default to 60]
 **NetworkIngressProxyReadTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for reading a response from the proxied server | [optional] [default to 60]
+**NetworkIngressProxyBuffering** | Pointer to **string** | Allows to enable or disable nginx &#x60;proxy-buffering&#x60; | [optional] [default to "on"]
+**NetworkIngressProxyRequestBuffering** | Pointer to **string** | Allows to enable or disable nginx &#x60;proxy-request-buffering&#x60; | [optional] [default to "on"]
 **NetworkIngressWhitelistSourceRange** | Pointer to **string** | list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.  | [optional] [default to "0.0.0.0/0"]
 **NetworkIngressDenylistSourceRange** | Pointer to **string** | list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1  | [optional] [default to ""]
 **NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command.  | [optional] [default to ""]
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] [default to false]
 **NetworkIngressGrpcSendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional] [default to 60]
 **NetworkIngressGrpcReadTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional] [default to 60]
+**NetworkIngressExtraHeaders** | Pointer to **string** | Allows to define response headers | [optional] [default to "{}"]
 **HpaCpuAverageUtilizationPercent** | Pointer to **int32** | Percentage value of cpu usage at which point pods should scale up. | [optional] [default to 60]
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
 
@@ -604,6 +607,56 @@ SetNetworkIngressProxyReadTimeoutSeconds sets NetworkIngressProxyReadTimeoutSeco
 
 HasNetworkIngressProxyReadTimeoutSeconds returns a boolean if a field has been set.
 
+### GetNetworkIngressProxyBuffering
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBuffering() string`
+
+GetNetworkIngressProxyBuffering returns the NetworkIngressProxyBuffering field if non-nil, zero value otherwise.
+
+### GetNetworkIngressProxyBufferingOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferingOk() (*string, bool)`
+
+GetNetworkIngressProxyBufferingOk returns a tuple with the NetworkIngressProxyBuffering field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressProxyBuffering
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBuffering(v string)`
+
+SetNetworkIngressProxyBuffering sets NetworkIngressProxyBuffering field to given value.
+
+### HasNetworkIngressProxyBuffering
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBuffering() bool`
+
+HasNetworkIngressProxyBuffering returns a boolean if a field has been set.
+
+### GetNetworkIngressProxyRequestBuffering
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBuffering() string`
+
+GetNetworkIngressProxyRequestBuffering returns the NetworkIngressProxyRequestBuffering field if non-nil, zero value otherwise.
+
+### GetNetworkIngressProxyRequestBufferingOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBufferingOk() (*string, bool)`
+
+GetNetworkIngressProxyRequestBufferingOk returns a tuple with the NetworkIngressProxyRequestBuffering field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressProxyRequestBuffering
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyRequestBuffering(v string)`
+
+SetNetworkIngressProxyRequestBuffering sets NetworkIngressProxyRequestBuffering field to given value.
+
+### HasNetworkIngressProxyRequestBuffering
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyRequestBuffering() bool`
+
+HasNetworkIngressProxyRequestBuffering returns a boolean if a field has been set.
+
 ### GetNetworkIngressWhitelistSourceRange
 
 `func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string`
@@ -753,6 +806,31 @@ SetNetworkIngressGrpcReadTimeoutSeconds sets NetworkIngressGrpcReadTimeoutSecond
 `func (o *ApplicationAdvancedSettings) HasNetworkIngressGrpcReadTimeoutSeconds() bool`
 
 HasNetworkIngressGrpcReadTimeoutSeconds returns a boolean if a field has been set.
+
+### GetNetworkIngressExtraHeaders
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeaders() string`
+
+GetNetworkIngressExtraHeaders returns the NetworkIngressExtraHeaders field if non-nil, zero value otherwise.
+
+### GetNetworkIngressExtraHeadersOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeadersOk() (*string, bool)`
+
+GetNetworkIngressExtraHeadersOk returns a tuple with the NetworkIngressExtraHeaders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressExtraHeaders
+
+`func (o *ApplicationAdvancedSettings) SetNetworkIngressExtraHeaders(v string)`
+
+SetNetworkIngressExtraHeaders sets NetworkIngressExtraHeaders field to given value.
+
+### HasNetworkIngressExtraHeaders
+
+`func (o *ApplicationAdvancedSettings) HasNetworkIngressExtraHeaders() bool`
+
+HasNetworkIngressExtraHeaders returns a boolean if a field has been set.
 
 ### GetHpaCpuAverageUtilizationPercent
 

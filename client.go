@@ -154,6 +154,8 @@ type APIClient struct {
 
 	JobDeploymentHistoryApi *JobDeploymentHistoryApiService
 
+	JobDeploymentRestrictionApi *JobDeploymentRestrictionApiService
+
 	JobEnvironmentVariableApi *JobEnvironmentVariableApiService
 
 	JobMainCallsApi *JobMainCallsApiService
@@ -263,6 +265,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobActionsApi = (*JobActionsApiService)(&c.common)
 	c.JobConfigurationApi = (*JobConfigurationApiService)(&c.common)
 	c.JobDeploymentHistoryApi = (*JobDeploymentHistoryApiService)(&c.common)
+	c.JobDeploymentRestrictionApi = (*JobDeploymentRestrictionApiService)(&c.common)
 	c.JobEnvironmentVariableApi = (*JobEnvironmentVariableApiService)(&c.common)
 	c.JobMainCallsApi = (*JobMainCallsApiService)(&c.common)
 	c.JobMetricsApi = (*JobMetricsApiService)(&c.common)

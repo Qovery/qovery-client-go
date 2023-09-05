@@ -55,6 +55,10 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressProxySendTimeoutSeconds *int32 `json:"network.ingress.proxy_send_timeout_seconds,omitempty"`
 	// Sets a timeout (in seconds) for reading a response from the proxied server
 	NetworkIngressProxyReadTimeoutSeconds *int32 `json:"network.ingress.proxy_read_timeout_seconds,omitempty"`
+	// Allows to enable or disable nginx `proxy-buffering`
+	NetworkIngressProxyBuffering *string `json:"network.ingress.proxy_buffering,omitempty"`
+	// Allows to enable or disable nginx `proxy-request-buffering`
+	NetworkIngressProxyRequestBuffering *string `json:"network.ingress.proxy_request_buffering,omitempty"`
 	// list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.
 	NetworkIngressWhitelistSourceRange *string `json:"network.ingress.whitelist_source_range,omitempty"`
 	// list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1
@@ -67,6 +71,8 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressGrpcSendTimeoutSeconds *int32 `json:"network.ingress.grpc_send_timeout_seconds,omitempty"`
 	// Sets a timeout (in seconds) for transmitting a request to the grpc server
 	NetworkIngressGrpcReadTimeoutSeconds *int32 `json:"network.ingress.grpc_read_timeout_seconds,omitempty"`
+	// Allows to define response headers
+	NetworkIngressExtraHeaders *string `json:"network.ingress.extra_headers,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
@@ -121,6 +127,10 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
 	var networkIngressProxyReadTimeoutSeconds int32 = 60
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
+	var networkIngressProxyBuffering string = "on"
+	this.NetworkIngressProxyBuffering = &networkIngressProxyBuffering
+	var networkIngressProxyRequestBuffering string = "on"
+	this.NetworkIngressProxyRequestBuffering = &networkIngressProxyRequestBuffering
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var networkIngressDenylistSourceRange string = ""
@@ -133,6 +143,8 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
 	var networkIngressGrpcReadTimeoutSeconds int32 = 60
 	this.NetworkIngressGrpcReadTimeoutSeconds = &networkIngressGrpcReadTimeoutSeconds
+	var networkIngressExtraHeaders string = "{}"
+	this.NetworkIngressExtraHeaders = &networkIngressExtraHeaders
 	var hpaCpuAverageUtilizationPercent int32 = 60
 	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
 	var securityServiceAccountName string = ""
@@ -187,6 +199,10 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
 	var networkIngressProxyReadTimeoutSeconds int32 = 60
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
+	var networkIngressProxyBuffering string = "on"
+	this.NetworkIngressProxyBuffering = &networkIngressProxyBuffering
+	var networkIngressProxyRequestBuffering string = "on"
+	this.NetworkIngressProxyRequestBuffering = &networkIngressProxyRequestBuffering
 	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var networkIngressDenylistSourceRange string = ""
@@ -199,6 +215,8 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
 	var networkIngressGrpcReadTimeoutSeconds int32 = 60
 	this.NetworkIngressGrpcReadTimeoutSeconds = &networkIngressGrpcReadTimeoutSeconds
+	var networkIngressExtraHeaders string = "{}"
+	this.NetworkIngressExtraHeaders = &networkIngressExtraHeaders
 	var hpaCpuAverageUtilizationPercent int32 = 60
 	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
 	var securityServiceAccountName string = ""
@@ -910,6 +928,70 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyReadTimeoutSeconds(v
 	o.NetworkIngressProxyReadTimeoutSeconds = &v
 }
 
+// GetNetworkIngressProxyBuffering returns the NetworkIngressProxyBuffering field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBuffering() string {
+	if o == nil || o.NetworkIngressProxyBuffering == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressProxyBuffering
+}
+
+// GetNetworkIngressProxyBufferingOk returns a tuple with the NetworkIngressProxyBuffering field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferingOk() (*string, bool) {
+	if o == nil || o.NetworkIngressProxyBuffering == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxyBuffering, true
+}
+
+// HasNetworkIngressProxyBuffering returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBuffering() bool {
+	if o != nil && o.NetworkIngressProxyBuffering != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxyBuffering gets a reference to the given string and assigns it to the NetworkIngressProxyBuffering field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBuffering(v string) {
+	o.NetworkIngressProxyBuffering = &v
+}
+
+// GetNetworkIngressProxyRequestBuffering returns the NetworkIngressProxyRequestBuffering field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBuffering() string {
+	if o == nil || o.NetworkIngressProxyRequestBuffering == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressProxyRequestBuffering
+}
+
+// GetNetworkIngressProxyRequestBufferingOk returns a tuple with the NetworkIngressProxyRequestBuffering field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBufferingOk() (*string, bool) {
+	if o == nil || o.NetworkIngressProxyRequestBuffering == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxyRequestBuffering, true
+}
+
+// HasNetworkIngressProxyRequestBuffering returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyRequestBuffering() bool {
+	if o != nil && o.NetworkIngressProxyRequestBuffering != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxyRequestBuffering gets a reference to the given string and assigns it to the NetworkIngressProxyRequestBuffering field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyRequestBuffering(v string) {
+	o.NetworkIngressProxyRequestBuffering = &v
+}
+
 // GetNetworkIngressWhitelistSourceRange returns the NetworkIngressWhitelistSourceRange field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string {
 	if o == nil || o.NetworkIngressWhitelistSourceRange == nil {
@@ -1102,6 +1184,38 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressGrpcReadTimeoutSeconds(v 
 	o.NetworkIngressGrpcReadTimeoutSeconds = &v
 }
 
+// GetNetworkIngressExtraHeaders returns the NetworkIngressExtraHeaders field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeaders() string {
+	if o == nil || o.NetworkIngressExtraHeaders == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressExtraHeaders
+}
+
+// GetNetworkIngressExtraHeadersOk returns a tuple with the NetworkIngressExtraHeaders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeadersOk() (*string, bool) {
+	if o == nil || o.NetworkIngressExtraHeaders == nil {
+		return nil, false
+	}
+	return o.NetworkIngressExtraHeaders, true
+}
+
+// HasNetworkIngressExtraHeaders returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressExtraHeaders() bool {
+	if o != nil && o.NetworkIngressExtraHeaders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressExtraHeaders gets a reference to the given string and assigns it to the NetworkIngressExtraHeaders field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressExtraHeaders(v string) {
+	o.NetworkIngressExtraHeaders = &v
+}
+
 // GetHpaCpuAverageUtilizationPercent returns the HpaCpuAverageUtilizationPercent field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32 {
 	if o == nil || o.HpaCpuAverageUtilizationPercent == nil {
@@ -1234,6 +1348,12 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	if o.NetworkIngressProxyReadTimeoutSeconds != nil {
 		toSerialize["network.ingress.proxy_read_timeout_seconds"] = o.NetworkIngressProxyReadTimeoutSeconds
 	}
+	if o.NetworkIngressProxyBuffering != nil {
+		toSerialize["network.ingress.proxy_buffering"] = o.NetworkIngressProxyBuffering
+	}
+	if o.NetworkIngressProxyRequestBuffering != nil {
+		toSerialize["network.ingress.proxy_request_buffering"] = o.NetworkIngressProxyRequestBuffering
+	}
 	if o.NetworkIngressWhitelistSourceRange != nil {
 		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange
 	}
@@ -1251,6 +1371,9 @@ func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressGrpcReadTimeoutSeconds != nil {
 		toSerialize["network.ingress.grpc_read_timeout_seconds"] = o.NetworkIngressGrpcReadTimeoutSeconds
+	}
+	if o.NetworkIngressExtraHeaders != nil {
+		toSerialize["network.ingress.extra_headers"] = o.NetworkIngressExtraHeaders
 	}
 	if o.HpaCpuAverageUtilizationPercent != nil {
 		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent

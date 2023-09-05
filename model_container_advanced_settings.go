@@ -50,6 +50,10 @@ type ContainerAdvancedSettings struct {
 	NetworkIngressProxySendTimeoutSeconds *int32 `json:"network.ingress.proxy_send_timeout_seconds,omitempty"`
 	// Sets a timeout (in seconds) for reading a response from the proxied server
 	NetworkIngressProxyReadTimeoutSeconds *int32 `json:"network.ingress.proxy_read_timeout_seconds,omitempty"`
+	// Allows to enable or disable nginx `proxy-buffering`
+	NetworkIngressProxyBuffering *string `json:"network.ingress.proxy_buffering,omitempty"`
+	// Allows to enable or disable nginx `proxy-request-buffering`
+	NetworkIngressProxyRequestBuffering *string `json:"network.ingress.proxy_request_buffering,omitempty"`
 	// Sets a timeout (in seconds) for transmitting a request to the grpc server
 	NetworkIngressGrpcSendTimeoutSeconds *int32 `json:"network.ingress.grpc_send_timeout_seconds,omitempty"`
 	// Sets a timeout (in seconds) for transmitting a request to the grpc server
@@ -58,6 +62,8 @@ type ContainerAdvancedSettings struct {
 	NetworkIngressWhitelistSourceRange *string `json:"network.ingress.whitelist_source_range,omitempty"`
 	// list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1
 	NetworkIngressDenylistSourceRange *string `json:"network.ingress.denylist_source_range,omitempty"`
+	// Allows to define response headers
+	NetworkIngressExtraHeaders *string `json:"network.ingress.extra_headers,omitempty"`
 	// Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
 	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
 	// Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target
@@ -110,6 +116,10 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
 	var networkIngressProxyReadTimeoutSeconds int32 = 60
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
+	var networkIngressProxyBuffering string = "on"
+	this.NetworkIngressProxyBuffering = &networkIngressProxyBuffering
+	var networkIngressProxyRequestBuffering string = "on"
+	this.NetworkIngressProxyRequestBuffering = &networkIngressProxyRequestBuffering
 	var networkIngressGrpcSendTimeoutSeconds int32 = 60
 	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
 	var networkIngressGrpcReadTimeoutSeconds int32 = 60
@@ -118,6 +128,8 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var networkIngressDenylistSourceRange string = ""
 	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
+	var networkIngressExtraHeaders string = "{}"
+	this.NetworkIngressExtraHeaders = &networkIngressExtraHeaders
 	var networkIngressBasicAuthEnvVar string = ""
 	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
 	var networkIngressEnableStickySession bool = false
@@ -170,6 +182,10 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
 	var networkIngressProxyReadTimeoutSeconds int32 = 60
 	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
+	var networkIngressProxyBuffering string = "on"
+	this.NetworkIngressProxyBuffering = &networkIngressProxyBuffering
+	var networkIngressProxyRequestBuffering string = "on"
+	this.NetworkIngressProxyRequestBuffering = &networkIngressProxyRequestBuffering
 	var networkIngressGrpcSendTimeoutSeconds int32 = 60
 	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
 	var networkIngressGrpcReadTimeoutSeconds int32 = 60
@@ -178,6 +194,8 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
 	var networkIngressDenylistSourceRange string = ""
 	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
+	var networkIngressExtraHeaders string = "{}"
+	this.NetworkIngressExtraHeaders = &networkIngressExtraHeaders
 	var networkIngressBasicAuthEnvVar string = ""
 	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
 	var networkIngressEnableStickySession bool = false
@@ -797,6 +815,70 @@ func (o *ContainerAdvancedSettings) SetNetworkIngressProxyReadTimeoutSeconds(v i
 	o.NetworkIngressProxyReadTimeoutSeconds = &v
 }
 
+// GetNetworkIngressProxyBuffering returns the NetworkIngressProxyBuffering field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetNetworkIngressProxyBuffering() string {
+	if o == nil || o.NetworkIngressProxyBuffering == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressProxyBuffering
+}
+
+// GetNetworkIngressProxyBufferingOk returns a tuple with the NetworkIngressProxyBuffering field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetNetworkIngressProxyBufferingOk() (*string, bool) {
+	if o == nil || o.NetworkIngressProxyBuffering == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxyBuffering, true
+}
+
+// HasNetworkIngressProxyBuffering returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkIngressProxyBuffering() bool {
+	if o != nil && o.NetworkIngressProxyBuffering != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxyBuffering gets a reference to the given string and assigns it to the NetworkIngressProxyBuffering field.
+func (o *ContainerAdvancedSettings) SetNetworkIngressProxyBuffering(v string) {
+	o.NetworkIngressProxyBuffering = &v
+}
+
+// GetNetworkIngressProxyRequestBuffering returns the NetworkIngressProxyRequestBuffering field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetNetworkIngressProxyRequestBuffering() string {
+	if o == nil || o.NetworkIngressProxyRequestBuffering == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressProxyRequestBuffering
+}
+
+// GetNetworkIngressProxyRequestBufferingOk returns a tuple with the NetworkIngressProxyRequestBuffering field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetNetworkIngressProxyRequestBufferingOk() (*string, bool) {
+	if o == nil || o.NetworkIngressProxyRequestBuffering == nil {
+		return nil, false
+	}
+	return o.NetworkIngressProxyRequestBuffering, true
+}
+
+// HasNetworkIngressProxyRequestBuffering returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkIngressProxyRequestBuffering() bool {
+	if o != nil && o.NetworkIngressProxyRequestBuffering != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressProxyRequestBuffering gets a reference to the given string and assigns it to the NetworkIngressProxyRequestBuffering field.
+func (o *ContainerAdvancedSettings) SetNetworkIngressProxyRequestBuffering(v string) {
+	o.NetworkIngressProxyRequestBuffering = &v
+}
+
 // GetNetworkIngressGrpcSendTimeoutSeconds returns the NetworkIngressGrpcSendTimeoutSeconds field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSeconds() int32 {
 	if o == nil || o.NetworkIngressGrpcSendTimeoutSeconds == nil {
@@ -923,6 +1005,38 @@ func (o *ContainerAdvancedSettings) HasNetworkIngressDenylistSourceRange() bool 
 // SetNetworkIngressDenylistSourceRange gets a reference to the given string and assigns it to the NetworkIngressDenylistSourceRange field.
 func (o *ContainerAdvancedSettings) SetNetworkIngressDenylistSourceRange(v string) {
 	o.NetworkIngressDenylistSourceRange = &v
+}
+
+// GetNetworkIngressExtraHeaders returns the NetworkIngressExtraHeaders field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetNetworkIngressExtraHeaders() string {
+	if o == nil || o.NetworkIngressExtraHeaders == nil {
+		var ret string
+		return ret
+	}
+	return *o.NetworkIngressExtraHeaders
+}
+
+// GetNetworkIngressExtraHeadersOk returns a tuple with the NetworkIngressExtraHeaders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetNetworkIngressExtraHeadersOk() (*string, bool) {
+	if o == nil || o.NetworkIngressExtraHeaders == nil {
+		return nil, false
+	}
+	return o.NetworkIngressExtraHeaders, true
+}
+
+// HasNetworkIngressExtraHeaders returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkIngressExtraHeaders() bool {
+	if o != nil && o.NetworkIngressExtraHeaders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressExtraHeaders gets a reference to the given string and assigns it to the NetworkIngressExtraHeaders field.
+func (o *ContainerAdvancedSettings) SetNetworkIngressExtraHeaders(v string) {
+	o.NetworkIngressExtraHeaders = &v
 }
 
 // GetNetworkIngressBasicAuthEnvVar returns the NetworkIngressBasicAuthEnvVar field value if set, zero value otherwise.
@@ -1112,6 +1226,12 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	if o.NetworkIngressProxyReadTimeoutSeconds != nil {
 		toSerialize["network.ingress.proxy_read_timeout_seconds"] = o.NetworkIngressProxyReadTimeoutSeconds
 	}
+	if o.NetworkIngressProxyBuffering != nil {
+		toSerialize["network.ingress.proxy_buffering"] = o.NetworkIngressProxyBuffering
+	}
+	if o.NetworkIngressProxyRequestBuffering != nil {
+		toSerialize["network.ingress.proxy_request_buffering"] = o.NetworkIngressProxyRequestBuffering
+	}
 	if o.NetworkIngressGrpcSendTimeoutSeconds != nil {
 		toSerialize["network.ingress.grpc_send_timeout_seconds"] = o.NetworkIngressGrpcSendTimeoutSeconds
 	}
@@ -1123,6 +1243,9 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.NetworkIngressDenylistSourceRange != nil {
 		toSerialize["network.ingress.denylist_source_range"] = o.NetworkIngressDenylistSourceRange
+	}
+	if o.NetworkIngressExtraHeaders != nil {
+		toSerialize["network.ingress.extra_headers"] = o.NetworkIngressExtraHeaders
 	}
 	if o.NetworkIngressBasicAuthEnvVar != nil {
 		toSerialize["network.ingress.basic_auth_env_var"] = o.NetworkIngressBasicAuthEnvVar
