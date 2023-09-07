@@ -46,8 +46,9 @@ type Cluster struct {
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
-	SshKeys  []string         `json:"ssh_keys,omitempty"`
-	Features []ClusterFeature `json:"features,omitempty"`
+	SshKeys          []string                     `json:"ssh_keys,omitempty"`
+	Features         []ClusterFeature             `json:"features,omitempty"`
+	DeploymentStatus *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
 }
 
 // NewCluster instantiates a new Cluster object
@@ -748,6 +749,38 @@ func (o *Cluster) SetFeatures(v []ClusterFeature) {
 	o.Features = v
 }
 
+// GetDeploymentStatus returns the DeploymentStatus field value if set, zero value otherwise.
+func (o *Cluster) GetDeploymentStatus() ClusterDeploymentStatusEnum {
+	if o == nil || o.DeploymentStatus == nil {
+		var ret ClusterDeploymentStatusEnum
+		return ret
+	}
+	return *o.DeploymentStatus
+}
+
+// GetDeploymentStatusOk returns a tuple with the DeploymentStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetDeploymentStatusOk() (*ClusterDeploymentStatusEnum, bool) {
+	if o == nil || o.DeploymentStatus == nil {
+		return nil, false
+	}
+	return o.DeploymentStatus, true
+}
+
+// HasDeploymentStatus returns a boolean if a field has been set.
+func (o *Cluster) HasDeploymentStatus() bool {
+	if o != nil && o.DeploymentStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentStatus gets a reference to the given ClusterDeploymentStatusEnum and assigns it to the DeploymentStatus field.
+func (o *Cluster) SetDeploymentStatus(v ClusterDeploymentStatusEnum) {
+	o.DeploymentStatus = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -815,6 +848,9 @@ func (o Cluster) MarshalJSON() ([]byte, error) {
 	}
 	if o.Features != nil {
 		toSerialize["features"] = o.Features
+	}
+	if o.DeploymentStatus != nil {
+		toSerialize["deployment_status"] = o.DeploymentStatus
 	}
 	return json.Marshal(toSerialize)
 }

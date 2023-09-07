@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**[]ClusterFeature**](ClusterFeature.md) |  | [optional] 
+**DeploymentStatus** | Pointer to [**ClusterDeploymentStatusEnum**](ClusterDeploymentStatusEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -502,6 +503,31 @@ SetFeatures sets Features field to given value.
 `func (o *ClusterAllOf) HasFeatures() bool`
 
 HasFeatures returns a boolean if a field has been set.
+
+### GetDeploymentStatus
+
+`func (o *ClusterAllOf) GetDeploymentStatus() ClusterDeploymentStatusEnum`
+
+GetDeploymentStatus returns the DeploymentStatus field if non-nil, zero value otherwise.
+
+### GetDeploymentStatusOk
+
+`func (o *ClusterAllOf) GetDeploymentStatusOk() (*ClusterDeploymentStatusEnum, bool)`
+
+GetDeploymentStatusOk returns a tuple with the DeploymentStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentStatus
+
+`func (o *ClusterAllOf) SetDeploymentStatus(v ClusterDeploymentStatusEnum)`
+
+SetDeploymentStatus sets DeploymentStatus field to given value.
+
+### HasDeploymentStatus
+
+`func (o *ClusterAllOf) HasDeploymentStatus() bool`
+
+HasDeploymentStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -149,6 +149,7 @@ docs/ClusterCloudProviderInfoCredentials.md
 docs/ClusterCloudProviderInfoRequest.md
 docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
+docs/ClusterDeploymentStatusEnum.md
 docs/ClusterFeature.md
 docs/ClusterFeatureAcceptedValuesInner.md
 docs/ClusterFeatureResponseList.md
@@ -652,6 +653,7 @@ model_cluster_cloud_provider_info_credentials.go
 model_cluster_cloud_provider_info_request.go
 model_cluster_credentials.go
 model_cluster_credentials_response_list.go
+model_cluster_deployment_status_enum.go
 model_cluster_feature.go
 model_cluster_feature_accepted_values_inner.go
 model_cluster_feature_response_list.go

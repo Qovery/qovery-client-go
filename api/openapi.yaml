@@ -19672,6 +19672,12 @@ components:
       - scope
       - variable_type
       type: object
+    ClusterDeploymentStatusEnum:
+      enum:
+      - NEVER_DEPLOYED
+      - OUT_OF_DATE
+      - UP_TO_DATE
+      type: string
     deleteMember_request:
       properties:
         user_id:
@@ -20046,6 +20052,8 @@ components:
           items:
             $ref: '#/components/schemas/ClusterFeature'
           type: array
+        deployment_status:
+          $ref: '#/components/schemas/ClusterDeploymentStatusEnum'
       required:
       - cloud_provider
       - name
