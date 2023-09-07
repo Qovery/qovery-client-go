@@ -20,7 +20,7 @@ type ContainerRegistryRequest struct {
 	Name        string                    `json:"name"`
 	Kind        ContainerRegistryKindEnum `json:"kind"`
 	Description *string                   `json:"description,omitempty"`
-	// URL of the container registry: * For `DOCKER_HUB`: it must be `https://docker.io` (default with 'https://docker.io' if no url provided for DOCKER_HUB) * For others: it's required and must start by `https://`
+	// URL of the container registry: * For `DOCKER_HUB`: it must be `https://docker.io` (default with 'https://docker.io' if no url provided for `DOCKER_HUB`) * For `GITHUB_CR`: it must be `https://ghcr.io` (default with 'https://ghcr.io' if no url provided for `GITHUB_CR`) * For `GITLAB_CR`: it must be `https://registry.gitlab.com` (default with 'https://registry.gitlab.com' if no url provided for `GITLAB_CR`) * For others: it's required and must start by `https://`
 	Url    *string                        `json:"url,omitempty"`
 	Config ContainerRegistryRequestConfig `json:"config"`
 }

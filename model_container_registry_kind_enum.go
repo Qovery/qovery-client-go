@@ -24,8 +24,11 @@ const (
 	CONTAINERREGISTRYKINDENUM_ECR         ContainerRegistryKindEnum = "ECR"
 	CONTAINERREGISTRYKINDENUM_SCALEWAY_CR ContainerRegistryKindEnum = "SCALEWAY_CR"
 	CONTAINERREGISTRYKINDENUM_DOCKER_HUB  ContainerRegistryKindEnum = "DOCKER_HUB"
+	CONTAINERREGISTRYKINDENUM_GITHUB_CR   ContainerRegistryKindEnum = "GITHUB_CR"
+	CONTAINERREGISTRYKINDENUM_GITLAB_CR   ContainerRegistryKindEnum = "GITLAB_CR"
 	CONTAINERREGISTRYKINDENUM_PUBLIC_ECR  ContainerRegistryKindEnum = "PUBLIC_ECR"
 	CONTAINERREGISTRYKINDENUM_DOCR        ContainerRegistryKindEnum = "DOCR"
+	CONTAINERREGISTRYKINDENUM_GENERIC_CR  ContainerRegistryKindEnum = "GENERIC_CR"
 )
 
 // All allowed values of ContainerRegistryKindEnum enum
@@ -33,8 +36,11 @@ var AllowedContainerRegistryKindEnumEnumValues = []ContainerRegistryKindEnum{
 	"ECR",
 	"SCALEWAY_CR",
 	"DOCKER_HUB",
+	"GITHUB_CR",
+	"GITLAB_CR",
 	"PUBLIC_ECR",
 	"DOCR",
+	"GENERIC_CR",
 }
 
 func (v *ContainerRegistryKindEnum) UnmarshalJSON(src []byte) error {

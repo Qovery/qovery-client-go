@@ -15200,8 +15200,11 @@ components:
       - ECR
       - SCALEWAY_CR
       - DOCKER_HUB
+      - GITHUB_CR
+      - GITLAB_CR
       - PUBLIC_ECR
       - DOCR
+      - GENERIC_CR
       type: string
     ContainerRegistryRequest:
       example:
@@ -15227,7 +15230,11 @@ components:
         url:
           description: "URL of the container registry:\n* For `DOCKER_HUB`: it must\
             \ be `https://docker.io` (default with 'https://docker.io' if no url provided\
-            \ for DOCKER_HUB)\n* For others: it's required and must start by `https://`\n"
+            \ for `DOCKER_HUB`)\n* For `GITHUB_CR`: it must be `https://ghcr.io` (default\
+            \ with 'https://ghcr.io' if no url provided for `GITHUB_CR`)\n* For `GITLAB_CR`:\
+            \ it must be `https://registry.gitlab.com` (default with 'https://registry.gitlab.com'\
+            \ if no url provided for `GITLAB_CR`)\n* For others: it's required and\
+            \ must start by `https://`\n"
           format: uri
           type: string
         config:
@@ -20279,8 +20286,10 @@ components:
       description: "This field is dependent of the container registry kind:\n* `ECR`\
         \ needs in the config: region, access_key_id, secret_access_key\n* `SCALEWAY_CR`\
         \ needs in the config: region, scaleway_access_key, scaleway_secret_key\n\
-        * `DOCKER_HUB` needs in the config (optional): username, password\n* `PUBLIC_ECR`\
-        \ doesn't need credentials info\n* `DOCR` is not supported anymore\n"
+        * `DOCKER_HUB` needs in the config (optional): username, password\n* `GITHUB_CR`\
+        \ needs in the config: username, password\n* `GITLAB_CR` needs in the config:\
+        \ username, password\n* `PUBLIC_ECR` doesn't need credentials info\n* `GENERIC_CR`\
+        \ needs in the config: username, password\n* `DOCR` is not supported anymore\n"
       example:
         access_key_id: access_key_id
         password: password
