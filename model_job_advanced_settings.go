@@ -33,6 +33,8 @@ type JobAdvancedSettings struct {
 	CronjobSuccessJobsHistoryLimit   *int32             `json:"cronjob.success_jobs_history_limit,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
+	// Mounts the container's root filesystem as read-only
+	SecurityReadOnlyRootFilesystem *bool `json:"security.read_only_root_filesystem,omitempty"`
 }
 
 // NewJobAdvancedSettings instantiates a new JobAdvancedSettings object
@@ -57,6 +59,8 @@ func NewJobAdvancedSettings() *JobAdvancedSettings {
 	this.CronjobSuccessJobsHistoryLimit = &cronjobSuccessJobsHistoryLimit
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
+	var securityReadOnlyRootFilesystem bool = false
+	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 
@@ -81,6 +85,8 @@ func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 	this.CronjobSuccessJobsHistoryLimit = &cronjobSuccessJobsHistoryLimit
 	var securityServiceAccountName string = ""
 	this.SecurityServiceAccountName = &securityServiceAccountName
+	var securityReadOnlyRootFilesystem bool = false
+	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 
@@ -415,6 +421,38 @@ func (o *JobAdvancedSettings) SetSecurityServiceAccountName(v string) {
 	o.SecurityServiceAccountName = &v
 }
 
+// GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
+	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecurityReadOnlyRootFilesystem
+}
+
+// GetSecurityReadOnlyRootFilesystemOk returns a tuple with the SecurityReadOnlyRootFilesystem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bool, bool) {
+	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+		return nil, false
+	}
+	return o.SecurityReadOnlyRootFilesystem, true
+}
+
+// HasSecurityReadOnlyRootFilesystem returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasSecurityReadOnlyRootFilesystem() bool {
+	if o != nil && o.SecurityReadOnlyRootFilesystem != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityReadOnlyRootFilesystem gets a reference to the given bool and assigns it to the SecurityReadOnlyRootFilesystem field.
+func (o *JobAdvancedSettings) SetSecurityReadOnlyRootFilesystem(v bool) {
+	o.SecurityReadOnlyRootFilesystem = &v
+}
+
 func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BuildTimeoutMaxSec != nil {
@@ -446,6 +484,9 @@ func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.SecurityServiceAccountName != nil {
 		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
+	}
+	if o.SecurityReadOnlyRootFilesystem != nil {
+		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
 	}
 	return json.Marshal(toSerialize)
 }

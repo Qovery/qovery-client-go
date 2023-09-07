@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] [default to false]
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
 **HpaCpuAverageUtilizationPercent** | Pointer to **int32** | Percentage value of cpu usage at which point pods should scale up. | [optional] [default to 60]
+**SecurityReadOnlyRootFilesystem** | Pointer to **bool** | Mounts the container&#39;s root filesystem as read-only  | [optional] [default to false]
 
 ## Methods
 
@@ -803,6 +804,31 @@ SetHpaCpuAverageUtilizationPercent sets HpaCpuAverageUtilizationPercent field to
 `func (o *ContainerAdvancedSettings) HasHpaCpuAverageUtilizationPercent() bool`
 
 HasHpaCpuAverageUtilizationPercent returns a boolean if a field has been set.
+
+### GetSecurityReadOnlyRootFilesystem
+
+`func (o *ContainerAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool`
+
+GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field if non-nil, zero value otherwise.
+
+### GetSecurityReadOnlyRootFilesystemOk
+
+`func (o *ContainerAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bool, bool)`
+
+GetSecurityReadOnlyRootFilesystemOk returns a tuple with the SecurityReadOnlyRootFilesystem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecurityReadOnlyRootFilesystem
+
+`func (o *ContainerAdvancedSettings) SetSecurityReadOnlyRootFilesystem(v bool)`
+
+SetSecurityReadOnlyRootFilesystem sets SecurityReadOnlyRootFilesystem field to given value.
+
+### HasSecurityReadOnlyRootFilesystem
+
+`func (o *ContainerAdvancedSettings) HasSecurityReadOnlyRootFilesystem() bool`
+
+HasSecurityReadOnlyRootFilesystem returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

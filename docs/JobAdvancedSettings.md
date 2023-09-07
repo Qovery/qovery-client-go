@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
 **CronjobSuccessJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
+**SecurityReadOnlyRootFilesystem** | Pointer to **bool** | Mounts the container&#39;s root filesystem as read-only  | [optional] [default to false]
 
 ## Methods
 
@@ -293,6 +294,31 @@ SetSecurityServiceAccountName sets SecurityServiceAccountName field to given val
 `func (o *JobAdvancedSettings) HasSecurityServiceAccountName() bool`
 
 HasSecurityServiceAccountName returns a boolean if a field has been set.
+
+### GetSecurityReadOnlyRootFilesystem
+
+`func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool`
+
+GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field if non-nil, zero value otherwise.
+
+### GetSecurityReadOnlyRootFilesystemOk
+
+`func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bool, bool)`
+
+GetSecurityReadOnlyRootFilesystemOk returns a tuple with the SecurityReadOnlyRootFilesystem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecurityReadOnlyRootFilesystem
+
+`func (o *JobAdvancedSettings) SetSecurityReadOnlyRootFilesystem(v bool)`
+
+SetSecurityReadOnlyRootFilesystem sets SecurityReadOnlyRootFilesystem field to given value.
+
+### HasSecurityReadOnlyRootFilesystem
+
+`func (o *JobAdvancedSettings) HasSecurityReadOnlyRootFilesystem() bool`
+
+HasSecurityReadOnlyRootFilesystem returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

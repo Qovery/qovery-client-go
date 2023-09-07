@@ -72,6 +72,8 @@ type ContainerAdvancedSettings struct {
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
+	// Mounts the container's root filesystem as read-only
+	SecurityReadOnlyRootFilesystem *bool `json:"security.read_only_root_filesystem,omitempty"`
 }
 
 // NewContainerAdvancedSettings instantiates a new ContainerAdvancedSettings object
@@ -138,6 +140,8 @@ func NewContainerAdvancedSettings() *ContainerAdvancedSettings {
 	this.SecurityServiceAccountName = &securityServiceAccountName
 	var hpaCpuAverageUtilizationPercent int32 = 60
 	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
+	var securityReadOnlyRootFilesystem bool = false
+	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 
@@ -204,6 +208,8 @@ func NewContainerAdvancedSettingsWithDefaults() *ContainerAdvancedSettings {
 	this.SecurityServiceAccountName = &securityServiceAccountName
 	var hpaCpuAverageUtilizationPercent int32 = 60
 	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
+	var securityReadOnlyRootFilesystem bool = false
+	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 
@@ -1167,6 +1173,38 @@ func (o *ContainerAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32) 
 	o.HpaCpuAverageUtilizationPercent = &v
 }
 
+// GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
+	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SecurityReadOnlyRootFilesystem
+}
+
+// GetSecurityReadOnlyRootFilesystemOk returns a tuple with the SecurityReadOnlyRootFilesystem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bool, bool) {
+	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+		return nil, false
+	}
+	return o.SecurityReadOnlyRootFilesystem, true
+}
+
+// HasSecurityReadOnlyRootFilesystem returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasSecurityReadOnlyRootFilesystem() bool {
+	if o != nil && o.SecurityReadOnlyRootFilesystem != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityReadOnlyRootFilesystem gets a reference to the given bool and assigns it to the SecurityReadOnlyRootFilesystem field.
+func (o *ContainerAdvancedSettings) SetSecurityReadOnlyRootFilesystem(v bool) {
+	o.SecurityReadOnlyRootFilesystem = &v
+}
+
 func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DeploymentCustomDomainCheckEnabled != nil {
@@ -1258,6 +1296,9 @@ func (o ContainerAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.HpaCpuAverageUtilizationPercent != nil {
 		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
+	}
+	if o.SecurityReadOnlyRootFilesystem != nil {
+		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
 	}
 	return json.Marshal(toSerialize)
 }

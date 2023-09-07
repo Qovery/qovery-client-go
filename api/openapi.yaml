@@ -13425,6 +13425,7 @@ components:
         network.ingress.proxy_read_timeout_seconds: 1
         build.timeout_max_sec: 5
         network.ingress.grpc_read_timeout_seconds: 6
+        security.read_only_root_filesystem: false
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
@@ -13596,6 +13597,11 @@ components:
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
+        security.read_only_root_filesystem:
+          default: false
+          description: |
+            Mounts the container's root filesystem as read-only
+          type: boolean
       type: object
     ApplicationCurrentScale:
       example:
@@ -14957,6 +14963,7 @@ components:
         network.ingress.proxy_buffer_size_kb: 5
         network.ingress.proxy_read_timeout_seconds: 4
         network.ingress.grpc_read_timeout_seconds: 1
+        security.read_only_root_filesystem: false
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: '*'
@@ -15117,6 +15124,11 @@ components:
           description: Percentage value of cpu usage at which point pods should scale
             up.
           type: integer
+        security.read_only_root_filesystem:
+          default: false
+          description: |
+            Mounts the container's root filesystem as read-only
+          type: boolean
       type: object
     ContainerCurrentScale:
       example:
@@ -17368,6 +17380,7 @@ components:
         build.cpu_max_in_milli: 6
         deployment.affinity.node.required:
           key: deployment.affinity.node.required
+        security.read_only_root_filesystem: false
         job.delete_ttl_seconds_after_finished: 5
         security.service_account_name: security.service_account_name
         cronjob.failed_jobs_history_limit: 2
@@ -17415,6 +17428,11 @@ components:
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
+        security.read_only_root_filesystem:
+          default: false
+          description: |
+            Mounts the container's root filesystem as read-only
+          type: boolean
       type: object
     JobDeployRequest:
       example:
