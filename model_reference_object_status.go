@@ -23,6 +23,7 @@ type ReferenceObjectStatus struct {
 	ServiceDeploymentStatus ServiceDeploymentStatusEnum `json:"service_deployment_status"`
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
+	Metrics                 *ServiceStepMetrics         `json:"metrics,omitempty"`
 }
 
 // NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
@@ -181,6 +182,38 @@ func (o *ReferenceObjectStatus) SetIsPartLastDeployment(v bool) {
 	o.IsPartLastDeployment = &v
 }
 
+// GetMetrics returns the Metrics field value if set, zero value otherwise.
+func (o *ReferenceObjectStatus) GetMetrics() ServiceStepMetrics {
+	if o == nil || o.Metrics == nil {
+		var ret ServiceStepMetrics
+		return ret
+	}
+	return *o.Metrics
+}
+
+// GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReferenceObjectStatus) GetMetricsOk() (*ServiceStepMetrics, bool) {
+	if o == nil || o.Metrics == nil {
+		return nil, false
+	}
+	return o.Metrics, true
+}
+
+// HasMetrics returns a boolean if a field has been set.
+func (o *ReferenceObjectStatus) HasMetrics() bool {
+	if o != nil && o.Metrics != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetrics gets a reference to the given ServiceStepMetrics and assigns it to the Metrics field.
+func (o *ReferenceObjectStatus) SetMetrics(v ServiceStepMetrics) {
+	o.Metrics = &v
+}
+
 func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -197,6 +230,9 @@ func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	}
 	if o.IsPartLastDeployment != nil {
 		toSerialize["is_part_last_deployment"] = o.IsPartLastDeployment
+	}
+	if o.Metrics != nil {
+		toSerialize["metrics"] = o.Metrics
 	}
 	return json.Marshal(toSerialize)
 }

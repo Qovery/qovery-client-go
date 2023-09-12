@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ServiceDeploymentStatus** | [**ServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 **IsPartLastDeployment** | Pointer to **bool** |  | [optional] 
+**Metrics** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
 
 ## Methods
 
@@ -138,6 +139,31 @@ SetIsPartLastDeployment sets IsPartLastDeployment field to given value.
 `func (o *ReferenceObjectStatus) HasIsPartLastDeployment() bool`
 
 HasIsPartLastDeployment returns a boolean if a field has been set.
+
+### GetMetrics
+
+`func (o *ReferenceObjectStatus) GetMetrics() ServiceStepMetrics`
+
+GetMetrics returns the Metrics field if non-nil, zero value otherwise.
+
+### GetMetricsOk
+
+`func (o *ReferenceObjectStatus) GetMetricsOk() (*ServiceStepMetrics, bool)`
+
+GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetrics
+
+`func (o *ReferenceObjectStatus) SetMetrics(v ServiceStepMetrics)`
+
+SetMetrics sets Metrics field to given value.
+
+### HasMetrics
+
+`func (o *ReferenceObjectStatus) HasMetrics() bool`
+
+HasMetrics returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

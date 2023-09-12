@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** | stage name | 
+**Metrics** | Pointer to [**StageStepMetrics**](StageStepMetrics.md) |  | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetMetrics
+
+`func (o *Stage) GetMetrics() StageStepMetrics`
+
+GetMetrics returns the Metrics field if non-nil, zero value otherwise.
+
+### GetMetricsOk
+
+`func (o *Stage) GetMetricsOk() (*StageStepMetrics, bool)`
+
+GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetrics
+
+`func (o *Stage) SetMetrics(v StageStepMetrics)`
+
+SetMetrics sets Metrics field to given value.
+
+### HasMetrics
+
+`func (o *Stage) HasMetrics() bool`
+
+HasMetrics returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

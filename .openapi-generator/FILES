@@ -555,6 +555,9 @@ docs/ServicePort.md
 docs/ServicePortRequest.md
 docs/ServicePortRequestPortsInner.md
 docs/ServiceResponseList.md
+docs/ServiceStepMetric.md
+docs/ServiceStepMetricNameEnum.md
+docs/ServiceStepMetrics.md
 docs/ServiceStorage.md
 docs/ServiceStorageRequest.md
 docs/ServiceStorageRequestStorageInner.md
@@ -564,9 +567,13 @@ docs/ServiceTypeEnum.md
 docs/SignUp.md
 docs/SignUpRequest.md
 docs/Stage.md
+docs/StageStepMetric.md
+docs/StageStepMetricNameEnum.md
+docs/StageStepMetrics.md
 docs/StateEnum.md
 docs/Status.md
 docs/StatusKindEnum.md
+docs/StepMetricStatusEnum.md
 docs/StorageDisk.md
 docs/StorageDiskResponseList.md
 docs/StorageTypeEnum.md
@@ -1004,6 +1011,9 @@ model_service_port.go
 model_service_port_request.go
 model_service_port_request_ports_inner.go
 model_service_response_list.go
+model_service_step_metric.go
+model_service_step_metric_name_enum.go
+model_service_step_metrics.go
 model_service_storage.go
 model_service_storage_request.go
 model_service_storage_request_storage_inner.go
@@ -1013,9 +1023,13 @@ model_service_type_enum.go
 model_sign_up.go
 model_sign_up_request.go
 model_stage.go
+model_stage_step_metric.go
+model_stage_step_metric_name_enum.go
+model_stage_step_metrics.go
 model_state_enum.go
 model_status.go
 model_status_kind_enum.go
+model_step_metric_status_enum.go
 model_storage_disk.go
 model_storage_disk_response_list.go
 model_storage_type_enum.go

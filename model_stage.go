@@ -19,7 +19,8 @@ import (
 type Stage struct {
 	Id string `json:"id"`
 	// stage name
-	Name string `json:"name"`
+	Name    string            `json:"name"`
+	Metrics *StageStepMetrics `json:"metrics,omitempty"`
 }
 
 // NewStage instantiates a new Stage object
@@ -89,6 +90,38 @@ func (o *Stage) SetName(v string) {
 	o.Name = v
 }
 
+// GetMetrics returns the Metrics field value if set, zero value otherwise.
+func (o *Stage) GetMetrics() StageStepMetrics {
+	if o == nil || o.Metrics == nil {
+		var ret StageStepMetrics
+		return ret
+	}
+	return *o.Metrics
+}
+
+// GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stage) GetMetricsOk() (*StageStepMetrics, bool) {
+	if o == nil || o.Metrics == nil {
+		return nil, false
+	}
+	return o.Metrics, true
+}
+
+// HasMetrics returns a boolean if a field has been set.
+func (o *Stage) HasMetrics() bool {
+	if o != nil && o.Metrics != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetrics gets a reference to the given StageStepMetrics and assigns it to the Metrics field.
+func (o *Stage) SetMetrics(v StageStepMetrics) {
+	o.Metrics = &v
+}
+
 func (o Stage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -96,6 +129,9 @@ func (o Stage) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Metrics != nil {
+		toSerialize["metrics"] = o.Metrics
 	}
 	return json.Marshal(toSerialize)
 }
