@@ -20887,9 +20887,10 @@ components:
         \ needs in the config: region, access_key_id, secret_access_key\n* `SCALEWAY_CR`\
         \ needs in the config: region, scaleway_access_key, scaleway_secret_key\n\
         * `DOCKER_HUB` needs in the config (optional): username, password\n* `GITHUB_CR`\
-        \ needs in the config: username, password\n* `GITLAB_CR` needs in the config:\
-        \ username, password\n* `PUBLIC_ECR` doesn't need credentials info\n* `GENERIC_CR`\
-        \ needs in the config: username, password\n* `DOCR` is not supported anymore\n"
+        \ needs in the config (optional): username, password\n* `GITLAB_CR` needs\
+        \ in the config (optional): username, password\n* `PUBLIC_ECR` doesn't need\
+        \ credentials info\n* `GENERIC_CR` needs in the config (optional): username,\
+        \ password\n* `DOCR` is not supported anymore\n"
       example:
         access_key_id: access_key_id
         password: password
