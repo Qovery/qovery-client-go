@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
+**AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
 
 ## Methods
 
@@ -394,6 +395,41 @@ SetAutoPreview sets AutoPreview field to given value.
 
 HasAutoPreview returns a boolean if a field has been set.
 
+### GetAutoDeploy
+
+`func (o *ContainerRequest) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *ContainerRequest) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *ContainerRequest) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *ContainerRequest) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
+
+### SetAutoDeployNil
+
+`func (o *ContainerRequest) SetAutoDeployNil(b bool)`
+
+ SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+
+### UnsetAutoDeploy
+`func (o *ContainerRequest) UnsetAutoDeploy()`
+
+UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

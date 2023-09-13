@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**AutoDeploy** | Pointer to **NullableBool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
 
 ## Methods
 
@@ -408,6 +409,41 @@ SetEntrypoint sets Entrypoint field to given value.
 
 HasEntrypoint returns a boolean if a field has been set.
 
+### GetAutoDeploy
+
+`func (o *ApplicationRequestAllOf) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *ApplicationRequestAllOf) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *ApplicationRequestAllOf) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *ApplicationRequestAllOf) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
+
+### SetAutoDeployNil
+
+`func (o *ApplicationRequestAllOf) SetAutoDeployNil(b bool)`
+
+ SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+
+### UnsetAutoDeploy
+`func (o *ApplicationRequestAllOf) UnsetAutoDeploy()`
+
+UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

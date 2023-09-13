@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
+**AutoDeploy** | Pointer to **bool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
 
 ## Methods
 
@@ -405,6 +406,31 @@ SetPorts sets Ports field to given value.
 `func (o *ContainerResponseAllOf) HasPorts() bool`
 
 HasPorts returns a boolean if a field has been set.
+
+### GetAutoDeploy
+
+`func (o *ContainerResponseAllOf) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *ContainerResponseAllOf) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *ContainerResponseAllOf) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *ContainerResponseAllOf) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

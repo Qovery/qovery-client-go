@@ -35,6 +35,8 @@ type JobRequest struct {
 	Source       *JobRequestAllOfSource   `json:"source,omitempty"`
 	Healthchecks *Healthcheck             `json:"healthchecks,omitempty"`
 	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
+	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
+	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
 }
 
 // NewJobRequest instantiates a new JobRequest object
@@ -422,6 +424,49 @@ func (o *JobRequest) SetSchedule(v JobRequestAllOfSchedule) {
 	o.Schedule = &v
 }
 
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobRequest) GetAutoDeploy() bool {
+	if o == nil || o.AutoDeploy.Get() == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDeploy.Get()
+}
+
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobRequest) GetAutoDeployOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AutoDeploy.Get(), o.AutoDeploy.IsSet()
+}
+
+// HasAutoDeploy returns a boolean if a field has been set.
+func (o *JobRequest) HasAutoDeploy() bool {
+	if o != nil && o.AutoDeploy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeploy gets a reference to the given NullableBool and assigns it to the AutoDeploy field.
+func (o *JobRequest) SetAutoDeploy(v bool) {
+	o.AutoDeploy.Set(&v)
+}
+
+// SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+func (o *JobRequest) SetAutoDeployNil() {
+	o.AutoDeploy.Set(nil)
+}
+
+// UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
+func (o *JobRequest) UnsetAutoDeploy() {
+	o.AutoDeploy.Unset()
+}
+
 func (o JobRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -456,6 +501,9 @@ func (o JobRequest) MarshalJSON() ([]byte, error) {
 	}
 	if o.Schedule != nil {
 		toSerialize["schedule"] = o.Schedule
+	}
+	if o.AutoDeploy.IsSet() {
+		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
 	return json.Marshal(toSerialize)
 }

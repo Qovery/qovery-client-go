@@ -41,6 +41,8 @@ type ApplicationEditRequestAllOf struct {
 	Arguments   []string      `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
+	// Specify if the application will be automatically updated after receiving a new commit.
+	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
 }
 
 // NewApplicationEditRequestAllOf instantiates a new ApplicationEditRequestAllOf object
@@ -575,6 +577,49 @@ func (o *ApplicationEditRequestAllOf) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationEditRequestAllOf) GetAutoDeploy() bool {
+	if o == nil || o.AutoDeploy.Get() == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDeploy.Get()
+}
+
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationEditRequestAllOf) GetAutoDeployOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AutoDeploy.Get(), o.AutoDeploy.IsSet()
+}
+
+// HasAutoDeploy returns a boolean if a field has been set.
+func (o *ApplicationEditRequestAllOf) HasAutoDeploy() bool {
+	if o != nil && o.AutoDeploy.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeploy gets a reference to the given NullableBool and assigns it to the AutoDeploy field.
+func (o *ApplicationEditRequestAllOf) SetAutoDeploy(v bool) {
+	o.AutoDeploy.Set(&v)
+}
+
+// SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+func (o *ApplicationEditRequestAllOf) SetAutoDeployNil() {
+	o.AutoDeploy.Set(nil)
+}
+
+// UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
+func (o *ApplicationEditRequestAllOf) UnsetAutoDeploy() {
+	o.AutoDeploy.Unset()
+}
+
 func (o ApplicationEditRequestAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
@@ -621,6 +666,9 @@ func (o ApplicationEditRequestAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Entrypoint != nil {
 		toSerialize["entrypoint"] = o.Entrypoint
+	}
+	if o.AutoDeploy.IsSet() {
+		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
 	return json.Marshal(toSerialize)
 }

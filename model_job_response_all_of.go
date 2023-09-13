@@ -41,6 +41,8 @@ type JobResponseAllOf struct {
 	Source       *JobResponseAllOfSource   `json:"source,omitempty"`
 	Healthchecks *Healthcheck              `json:"healthchecks,omitempty"`
 	Schedule     *JobResponseAllOfSchedule `json:"schedule,omitempty"`
+	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
 
 // NewJobResponseAllOf instantiates a new JobResponseAllOf object
@@ -495,6 +497,38 @@ func (o *JobResponseAllOf) SetSchedule(v JobResponseAllOfSchedule) {
 	o.Schedule = &v
 }
 
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+func (o *JobResponseAllOf) GetAutoDeploy() bool {
+	if o == nil || o.AutoDeploy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDeploy
+}
+
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobResponseAllOf) GetAutoDeployOk() (*bool, bool) {
+	if o == nil || o.AutoDeploy == nil {
+		return nil, false
+	}
+	return o.AutoDeploy, true
+}
+
+// HasAutoDeploy returns a boolean if a field has been set.
+func (o *JobResponseAllOf) HasAutoDeploy() bool {
+	if o != nil && o.AutoDeploy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+func (o *JobResponseAllOf) SetAutoDeploy(v bool) {
+	o.AutoDeploy = &v
+}
+
 func (o JobResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -541,6 +575,9 @@ func (o JobResponseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Schedule != nil {
 		toSerialize["schedule"] = o.Schedule
+	}
+	if o.AutoDeploy != nil {
+		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	return json.Marshal(toSerialize)
 }

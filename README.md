@@ -372,6 +372,7 @@ Class | Method | HTTP request | Description
 *JobSecretApi* | [**DeleteJobSecret**](docs/JobSecretApi.md#deletejobsecret) | **Delete** /job/{jobId}/secret/{secretId} | Delete a secret from an job
 *JobSecretApi* | [**EditJobSecret**](docs/JobSecretApi.md#editjobsecret) | **Put** /job/{jobId}/secret/{secretId} | Edit a secret belonging to the job
 *JobSecretApi* | [**ListJobSecrets**](docs/JobSecretApi.md#listjobsecrets) | **Get** /job/{jobId}/secret | List job secrets
+*JobsApi* | [**AutoDeployJobEnvironments**](docs/JobsApi.md#autodeployjobenvironments) | **Post** /organization/{organizationId}/job/deploy | Auto deploy jobs
 *JobsApi* | [**CloneJob**](docs/JobsApi.md#clonejob) | **Post** /job/{jobId}/clone | Clone job
 *JobsApi* | [**CreateJob**](docs/JobsApi.md#createjob) | **Post** /environment/{environmentId}/job | Create a job
 *JobsApi* | [**GetDefaultJobAdvancedSettings**](docs/JobsApi.md#getdefaultjobadvancedsettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
@@ -803,6 +804,7 @@ Class | Method | HTTP request | Description
  - [OrganizationEventTargetType](docs/OrganizationEventTargetType.md)
  - [OrganizationEventType](docs/OrganizationEventType.md)
  - [OrganizationGithubAppConnectRequest](docs/OrganizationGithubAppConnectRequest.md)
+ - [OrganizationJobAutoDeployRequest](docs/OrganizationJobAutoDeployRequest.md)
  - [OrganizationRequest](docs/OrganizationRequest.md)
  - [OrganizationResponseList](docs/OrganizationResponseList.md)
  - [OrganizationWebhookCreateRequest](docs/OrganizationWebhookCreateRequest.md)

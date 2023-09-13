@@ -4,12 +4,85 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AutoDeployJobEnvironments**](JobsApi.md#AutoDeployJobEnvironments) | **Post** /organization/{organizationId}/job/deploy | Auto deploy jobs
 [**CloneJob**](JobsApi.md#CloneJob) | **Post** /job/{jobId}/clone | Clone job
 [**CreateJob**](JobsApi.md#CreateJob) | **Post** /environment/{environmentId}/job | Create a job
 [**GetDefaultJobAdvancedSettings**](JobsApi.md#GetDefaultJobAdvancedSettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
 [**GetEnvironmentJobStatus**](JobsApi.md#GetEnvironmentJobStatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
 [**ListJobs**](JobsApi.md#ListJobs) | **Get** /environment/{environmentId}/job | List jobs
 
+
+
+## AutoDeployJobEnvironments
+
+> Status AutoDeployJobEnvironments(ctx, organizationId).OrganizationJobAutoDeployRequest(organizationJobAutoDeployRequest).Execute()
+
+Auto deploy jobs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationJobAutoDeployRequest := *openapiclient.NewOrganizationJobAutoDeployRequest() // OrganizationJobAutoDeployRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsApi.AutoDeployJobEnvironments(context.Background(), organizationId).OrganizationJobAutoDeployRequest(organizationJobAutoDeployRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsApi.AutoDeployJobEnvironments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AutoDeployJobEnvironments`: Status
+    fmt.Fprintf(os.Stdout, "Response from `JobsApi.AutoDeployJobEnvironments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAutoDeployJobEnvironmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **organizationJobAutoDeployRequest** | [**OrganizationJobAutoDeployRequest**](OrganizationJobAutoDeployRequest.md) |  | 
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CloneJob

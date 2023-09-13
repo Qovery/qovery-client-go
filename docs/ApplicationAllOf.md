@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**AutoDeploy** | Pointer to **bool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
 
 ## Methods
 
@@ -521,6 +522,31 @@ SetEntrypoint sets Entrypoint field to given value.
 `func (o *ApplicationAllOf) HasEntrypoint() bool`
 
 HasEntrypoint returns a boolean if a field has been set.
+
+### GetAutoDeploy
+
+`func (o *ApplicationAllOf) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *ApplicationAllOf) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *ApplicationAllOf) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *ApplicationAllOf) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

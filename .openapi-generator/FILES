@@ -492,6 +492,7 @@ docs/OrganizationEventTargetResponseList.md
 docs/OrganizationEventTargetType.md
 docs/OrganizationEventType.md
 docs/OrganizationGithubAppConnectRequest.md
+docs/OrganizationJobAutoDeployRequest.md
 docs/OrganizationMainCallsApi.md
 docs/OrganizationRequest.md
 docs/OrganizationResponseList.md
@@ -956,6 +957,7 @@ model_organization_event_target_response_list.go
 model_organization_event_target_type.go
 model_organization_event_type.go
 model_organization_github_app_connect_request.go
+model_organization_job_auto_deploy_request.go
 model_organization_request.go
 model_organization_response_list.go
 model_organization_webhook_create_request.go

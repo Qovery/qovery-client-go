@@ -46,6 +46,8 @@ type ApplicationAllOf struct {
 	Arguments   []string      `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
+	// Specify if the application will be automatically updated after receiving a new commit.
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
 
 // NewApplicationAllOf instantiates a new ApplicationAllOf object
@@ -690,6 +692,38 @@ func (o *ApplicationAllOf) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+func (o *ApplicationAllOf) GetAutoDeploy() bool {
+	if o == nil || o.AutoDeploy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDeploy
+}
+
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAllOf) GetAutoDeployOk() (*bool, bool) {
+	if o == nil || o.AutoDeploy == nil {
+		return nil, false
+	}
+	return o.AutoDeploy, true
+}
+
+// HasAutoDeploy returns a boolean if a field has been set.
+func (o *ApplicationAllOf) HasAutoDeploy() bool {
+	if o != nil && o.AutoDeploy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+func (o *ApplicationAllOf) SetAutoDeploy(v bool) {
+	o.AutoDeploy = &v
+}
+
 func (o ApplicationAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Environment != nil {
@@ -745,6 +779,9 @@ func (o ApplicationAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Entrypoint != nil {
 		toSerialize["entrypoint"] = o.Entrypoint
+	}
+	if o.AutoDeploy != nil {
+		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	return json.Marshal(toSerialize)
 }

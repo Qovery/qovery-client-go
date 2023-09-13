@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Source** | Pointer to [**JobResponseAllOfSource**](JobResponseAllOfSource.md) |  | [optional] 
 **Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **Schedule** | Pointer to [**JobResponseAllOfSchedule**](JobResponseAllOfSchedule.md) |  | [optional] 
+**AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 
 ## Methods
 
@@ -383,6 +384,31 @@ SetSchedule sets Schedule field to given value.
 `func (o *JobResponseAllOf) HasSchedule() bool`
 
 HasSchedule returns a boolean if a field has been set.
+
+### GetAutoDeploy
+
+`func (o *JobResponseAllOf) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *JobResponseAllOf) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *JobResponseAllOf) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *JobResponseAllOf) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

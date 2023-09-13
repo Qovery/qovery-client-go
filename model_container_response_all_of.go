@@ -46,6 +46,8 @@ type ContainerResponseAllOf struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool          `json:"auto_preview"`
 	Ports       []ServicePort `json:"ports,omitempty"`
+	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
 
 // NewContainerResponseAllOf instantiates a new ContainerResponseAllOf object
@@ -529,6 +531,38 @@ func (o *ContainerResponseAllOf) SetPorts(v []ServicePort) {
 	o.Ports = v
 }
 
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+func (o *ContainerResponseAllOf) GetAutoDeploy() bool {
+	if o == nil || o.AutoDeploy == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDeploy
+}
+
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponseAllOf) GetAutoDeployOk() (*bool, bool) {
+	if o == nil || o.AutoDeploy == nil {
+		return nil, false
+	}
+	return o.AutoDeploy, true
+}
+
+// HasAutoDeploy returns a boolean if a field has been set.
+func (o *ContainerResponseAllOf) HasAutoDeploy() bool {
+	if o != nil && o.AutoDeploy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+func (o *ContainerResponseAllOf) SetAutoDeploy(v bool) {
+	o.AutoDeploy = &v
+}
+
 func (o ContainerResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -581,6 +615,9 @@ func (o ContainerResponseAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Ports != nil {
 		toSerialize["ports"] = o.Ports
+	}
+	if o.AutoDeploy != nil {
+		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	return json.Marshal(toSerialize)
 }

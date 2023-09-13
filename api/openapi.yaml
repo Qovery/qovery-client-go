@@ -6164,6 +6164,48 @@ paths:
       summary: Preview container environments
       tags:
       - Containers
+  /organization/{organizationId}/job/deploy:
+    post:
+      description: |
+        Triggers a new job deploy in each environment matching the following conditions
+        - environment should have the auto-deploy enabled
+        - the job should have the same image name and a different tag
+      operationId: autoDeployJobEnvironments
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationJobAutoDeployRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deployed jobs
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Auto deploy jobs
+      tags:
+      - Jobs
   /environment/{environmentId}/log:
     get:
       description: This returns the last 1000 environment deployment logs.
@@ -20285,6 +20327,18 @@ components:
       - DEPLOYMENT
       - ROUTER_DEPLOYMENT
       type: string
+    OrganizationJobAutoDeployRequest:
+      example:
+        image_name: image_name
+        tag: tag
+      properties:
+        image_name:
+          description: the job image name to deploy
+          type: string
+        tag:
+          description: the new tag to deploy
+          type: string
+      type: object
     deleteMember_request:
       properties:
         user_id:
@@ -20400,6 +20454,10 @@ components:
         entrypoint:
           description: optional entrypoint when launching container
           type: string
+        auto_deploy:
+          description: Specify if the application will be automatically updated after
+            receiving a new commit.
+          type: boolean
       type: object
     ApplicationEditRequest_allOf:
       properties:
@@ -20461,6 +20519,11 @@ components:
         entrypoint:
           description: optional entrypoint when launching container
           type: string
+        auto_deploy:
+          description: Specify if the application will be automatically updated after
+            receiving a new commit.
+          nullable: true
+          type: boolean
       type: object
     ServicePortRequest_ports_inner:
       properties:
@@ -20546,6 +20609,11 @@ components:
         entrypoint:
           description: optional entrypoint when launching container
           type: string
+        auto_deploy:
+          description: Specify if the application will be automatically updated after
+            receiving a new commit.
+          nullable: true
+          type: boolean
       required:
       - git_repository
       - name
@@ -21005,6 +21073,12 @@ components:
             \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
             \ the value of the `auto_preview` property from the associated environment.\n"
           type: boolean
+        auto_deploy:
+          description: "Specify if the container will be automatically updated after\
+            \ receiving a new image tag. \nThe new image tag shall be communicated\
+            \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
+          nullable: true
+          type: boolean
       required:
       - image_name
       - name
@@ -21080,6 +21154,11 @@ components:
           items:
             $ref: '#/components/schemas/ServicePort'
           type: array
+        auto_deploy:
+          description: "Specify if the container will be automatically updated after\
+            \ receiving a new image tag. \nThe new image tag shall be communicated\
+            \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
+          type: boolean
       required:
       - auto_preview
       - cpu
@@ -21881,6 +21960,13 @@ components:
           $ref: '#/components/schemas/Healthcheck'
         schedule:
           $ref: '#/components/schemas/JobRequest_allOf_schedule'
+        auto_deploy:
+          description: "Specify if the job will be automatically updated after receiving\
+            \ a new image tag or a new commit according to the source type. \nThe\
+            \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
+            \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
+          nullable: true
+          type: boolean
       required:
       - name
       type: object
@@ -21993,6 +22079,12 @@ components:
           $ref: '#/components/schemas/Healthcheck'
         schedule:
           $ref: '#/components/schemas/JobResponse_allOf_schedule'
+        auto_deploy:
+          description: "Specify if the job will be automatically updated after receiving\
+            \ a new image tag or a new commit according to the source type. \nThe\
+            \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
+            \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
+          type: boolean
       required:
       - auto_preview
       - cpu

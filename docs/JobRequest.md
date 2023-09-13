@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Source** | Pointer to [**JobRequestAllOfSource**](JobRequestAllOfSource.md) |  | [optional] 
 **Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
 **Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
+**AutoDeploy** | Pointer to **NullableBool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 
 ## Methods
 
@@ -315,6 +316,41 @@ SetSchedule sets Schedule field to given value.
 
 HasSchedule returns a boolean if a field has been set.
 
+### GetAutoDeploy
+
+`func (o *JobRequest) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *JobRequest) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *JobRequest) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *JobRequest) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
+
+### SetAutoDeployNil
+
+`func (o *JobRequest) SetAutoDeployNil(b bool)`
+
+ SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+
+### UnsetAutoDeploy
+`func (o *JobRequest) UnsetAutoDeploy()`
+
+UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

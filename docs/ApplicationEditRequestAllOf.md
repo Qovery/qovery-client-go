@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**AutoDeploy** | Pointer to **NullableBool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
 
 ## Methods
 
@@ -424,6 +425,41 @@ SetEntrypoint sets Entrypoint field to given value.
 
 HasEntrypoint returns a boolean if a field has been set.
 
+### GetAutoDeploy
+
+`func (o *ApplicationEditRequestAllOf) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *ApplicationEditRequestAllOf) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *ApplicationEditRequestAllOf) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *ApplicationEditRequestAllOf) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
+
+### SetAutoDeployNil
+
+`func (o *ApplicationEditRequestAllOf) SetAutoDeployNil(b bool)`
+
+ SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+
+### UnsetAutoDeploy
+`func (o *ApplicationEditRequestAllOf) UnsetAutoDeploy()`
+
+UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
