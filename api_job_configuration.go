@@ -107,7 +107,7 @@ func (a *JobConfigurationApiService) EditJobAdvancedSettingsExecute(r ApiEditJob
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -224,7 +224,7 @@ func (a *JobConfigurationApiService) GetJobAdvancedSettingsExecute(r ApiGetJobAd
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

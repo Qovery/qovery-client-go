@@ -100,7 +100,7 @@ func (a *AccountInfoApiService) EditAccountInformationExecute(r ApiEditAccountIn
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -211,7 +211,7 @@ func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInfo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

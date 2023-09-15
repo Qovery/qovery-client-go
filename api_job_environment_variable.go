@@ -108,7 +108,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableExecute(r
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -243,7 +243,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAliasExec
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -377,7 +377,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverrideE
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -499,7 +499,7 @@ func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariableExecute(r
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -626,7 +626,7 @@ func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariableExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -751,7 +751,7 @@ func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariableExecute(r
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -866,7 +866,7 @@ func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariableExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

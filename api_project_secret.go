@@ -110,7 +110,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectS
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -245,7 +245,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreatePro
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -379,7 +379,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreate
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -501,7 +501,7 @@ func (a *ProjectSecretApiService) DeleteProjectSecretExecute(r ApiDeleteProjectS
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -628,7 +628,7 @@ func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecre
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -743,7 +743,7 @@ func (a *ProjectSecretApiService) ListProjectSecretsExecute(r ApiListProjectSecr
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

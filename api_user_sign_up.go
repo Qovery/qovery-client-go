@@ -100,7 +100,7 @@ func (a *UserSignUpApiService) CreateUserSignUpExecute(r ApiCreateUserSignUpRequ
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -204,7 +204,7 @@ func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

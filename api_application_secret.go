@@ -108,7 +108,7 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretExecute(r ApiCreate
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -243,7 +243,7 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretAliasExecute(r ApiC
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -377,7 +377,7 @@ func (a *ApplicationSecretApiService) CreateApplicationSecretOverrideExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -499,7 +499,7 @@ func (a *ApplicationSecretApiService) DeleteApplicationSecretExecute(r ApiDelete
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -626,7 +626,7 @@ func (a *ApplicationSecretApiService) EditApplicationSecretExecute(r ApiEditAppl
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -743,7 +743,7 @@ func (a *ApplicationSecretApiService) ListApplicationSecretsExecute(r ApiListApp
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

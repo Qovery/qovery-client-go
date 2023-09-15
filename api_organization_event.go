@@ -176,7 +176,7 @@ func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -399,7 +399,7 @@ func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrgan
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

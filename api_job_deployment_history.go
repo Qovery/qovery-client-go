@@ -99,7 +99,7 @@ func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistoryExecute(r ApiLi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

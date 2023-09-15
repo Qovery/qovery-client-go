@@ -92,7 +92,7 @@ func (a *ReferralRewardsApiService) GetAccountReferralExecute(r ApiGetAccountRef
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -211,7 +211,7 @@ func (a *ReferralRewardsApiService) PostAccountRewardClaimExecute(r ApiPostAccou
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

@@ -110,7 +110,7 @@ func (a *ContainersApiService) AutoDeployContainerEnvironmentsExecute(r ApiAutoD
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -235,7 +235,7 @@ func (a *ContainersApiService) CloneContainerExecute(r ApiCloneContainerRequest)
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -358,7 +358,7 @@ func (a *ContainersApiService) CreateContainerExecute(r ApiCreateContainerReques
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -479,7 +479,7 @@ func (a *ContainersApiService) GetContainerRegistryContainerStatusExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -590,7 +590,7 @@ func (a *ContainersApiService) GetDefaultContainerAdvancedSettingsExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -707,7 +707,7 @@ func (a *ContainersApiService) GetEnvironmentContainerCurrentScaleExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -822,7 +822,7 @@ func (a *ContainersApiService) GetEnvironmentContainerCurrentStorageExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -939,7 +939,7 @@ func (a *ContainersApiService) GetEnvironmentContainerStatusExecute(r ApiGetEnvi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1054,7 +1054,7 @@ func (a *ContainersApiService) ListContainerExecute(r ApiListContainerRequest) (
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1182,7 +1182,7 @@ func (a *ContainersApiService) PreviewContainerEnvironmentsExecute(r ApiPreviewC
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

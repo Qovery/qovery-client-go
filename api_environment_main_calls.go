@@ -97,7 +97,7 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnv
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -213,7 +213,7 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -328,7 +328,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -443,7 +443,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -558,7 +558,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesExecute(r ApiGetE
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -673,7 +673,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStagesExecute
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

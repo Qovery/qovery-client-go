@@ -99,7 +99,7 @@ func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistoryExe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

@@ -97,7 +97,7 @@ func (a *CloudProviderApiService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -212,7 +212,7 @@ func (a *CloudProviderApiService) ListAWSEc2InstanceTypeExecute(r ApiListAWSEc2I
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -323,7 +323,7 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -434,7 +434,7 @@ func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanc
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -553,7 +553,7 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceTypeExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -664,7 +664,7 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseTypeExecute(r ApiListAWS
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -775,7 +775,7 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -886,7 +886,7 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -997,7 +997,7 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1108,7 +1108,7 @@ func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceT
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1227,7 +1227,7 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceTypeExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1338,7 +1338,7 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseTypeExecute(r ApiListDOMa
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1449,7 +1449,7 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1564,7 +1564,7 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceTypeExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1675,7 +1675,7 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseTypeExecute(r ApiListSCW
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1786,7 +1786,7 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1897,7 +1897,7 @@ func (a *CloudProviderApiService) ListScalewayInstanceTypeExecute(r ApiListScale
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -2012,7 +2012,7 @@ func (a *CloudProviderApiService) ListScalewayKapsuleInstanceTypeExecute(r ApiLi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -2123,7 +2123,7 @@ func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

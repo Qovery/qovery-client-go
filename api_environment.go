@@ -107,7 +107,7 @@ func (a *EnvironmentApiService) DeployAllApplicationsExecute(r ApiDeployAllAppli
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

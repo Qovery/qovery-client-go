@@ -105,7 +105,7 @@ func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseReque
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -232,7 +232,7 @@ func (a *BackupsApiService) ListDatabaseBackupExecute(r ApiListDatabaseBackupReq
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -349,7 +349,7 @@ func (a *BackupsApiService) RemoveDatabaseBackupExecute(r ApiRemoveDatabaseBacku
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

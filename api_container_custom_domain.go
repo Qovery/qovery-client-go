@@ -107,7 +107,7 @@ func (a *ContainerCustomDomainApiService) CreateContainerCustomDomainExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *ContainerCustomDomainApiService) DeleteContainerCustomDomainExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *ContainerCustomDomainApiService) EditContainerCustomDomainExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -465,7 +465,7 @@ func (a *ContainerCustomDomainApiService) GetContainerCustomDomainStatusExecute(
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -580,7 +580,7 @@ func (a *ContainerCustomDomainApiService) ListContainerCustomDomainExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

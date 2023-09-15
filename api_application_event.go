@@ -109,7 +109,7 @@ func (a *ApplicationEventApiService) ListApplicationEventExecute(r ApiListApplic
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

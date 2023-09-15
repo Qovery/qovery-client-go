@@ -107,7 +107,7 @@ func (a *ContainerConfigurationApiService) EditContainerAdvancedSettingsExecute(
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -232,7 +232,7 @@ func (a *ContainerConfigurationApiService) EditContainerNetworkExecute(r ApiEdit
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -349,7 +349,7 @@ func (a *ContainerConfigurationApiService) GetContainerAdvancedSettingsExecute(r
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -466,7 +466,7 @@ func (a *ContainerConfigurationApiService) GetContainerNetworkExecute(r ApiGetCo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

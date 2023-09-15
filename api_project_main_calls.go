@@ -97,7 +97,7 @@ func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequ
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -213,7 +213,7 @@ func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest)
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -328,7 +328,7 @@ func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

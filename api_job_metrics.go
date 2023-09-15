@@ -97,7 +97,7 @@ func (a *JobMetricsApiService) GetJobCurrentInstanceExecute(r ApiGetJobCurrentIn
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

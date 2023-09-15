@@ -110,7 +110,7 @@ func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableExec
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -245,7 +245,7 @@ func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableAlia
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -379,7 +379,7 @@ func (a *EnvironmentVariableApiService) CreateEnvironmentEnvironmentVariableOver
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -501,7 +501,7 @@ func (a *EnvironmentVariableApiService) DeleteEnvironmentEnvironmentVariableExec
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -628,7 +628,7 @@ func (a *EnvironmentVariableApiService) EditEnvironmentEnvironmentVariableExecut
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -743,7 +743,7 @@ func (a *EnvironmentVariableApiService) ListEnvironmentEnvironmentVariableExecut
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

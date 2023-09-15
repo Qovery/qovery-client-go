@@ -99,7 +99,7 @@ func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicati
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

@@ -99,7 +99,7 @@ func (a *MembersApiService) DeleteInviteMemberExecute(r ApiDeleteInviteMemberReq
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -211,7 +211,7 @@ func (a *MembersApiService) DeleteMemberExecute(r ApiDeleteMemberRequest) (*http
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -325,7 +325,7 @@ func (a *MembersApiService) EditOrganizationMemberRoleExecute(r ApiEditOrganizat
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -435,7 +435,7 @@ func (a *MembersApiService) GetMemberInvitationExecute(r ApiGetMemberInvitationR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -550,7 +550,7 @@ func (a *MembersApiService) GetOrganizationInvitedMembersExecute(r ApiGetOrganiz
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -665,7 +665,7 @@ func (a *MembersApiService) GetOrganizationMembersExecute(r ApiGetOrganizationMe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -784,7 +784,7 @@ func (a *MembersApiService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteM
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -907,7 +907,7 @@ func (a *MembersApiService) PostInviteMemberExecute(r ApiPostInviteMemberRequest
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1028,7 +1028,7 @@ func (a *MembersApiService) PostOrganizationTransferOwnershipExecute(r ApiPostOr
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

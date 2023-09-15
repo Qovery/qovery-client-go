@@ -99,7 +99,7 @@ func (a *EnvironmentActionsApiService) CancelEnvironmentDeploymentExecute(r ApiC
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -224,7 +224,7 @@ func (a *EnvironmentActionsApiService) CloneEnvironmentExecute(r ApiCloneEnviron
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -349,7 +349,7 @@ func (a *EnvironmentActionsApiService) DeployAllServicesExecute(r ApiDeployAllSe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -466,7 +466,7 @@ func (a *EnvironmentActionsApiService) DeployEnvironmentExecute(r ApiDeployEnvir
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -591,7 +591,7 @@ func (a *EnvironmentActionsApiService) RebootServicesExecute(r ApiRebootServices
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -706,7 +706,7 @@ func (a *EnvironmentActionsApiService) RedeployEnvironmentExecute(r ApiRedeployE
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -823,7 +823,7 @@ func (a *EnvironmentActionsApiService) RestartEnvironmentExecute(r ApiRestartEnv
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -938,7 +938,7 @@ func (a *EnvironmentActionsApiService) StopEnvironmentExecute(r ApiStopEnvironme
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

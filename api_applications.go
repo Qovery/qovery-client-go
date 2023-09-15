@@ -107,7 +107,7 @@ func (a *ApplicationsApiService) CloneApplicationExecute(r ApiCloneApplicationRe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -230,7 +230,7 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -341,7 +341,7 @@ func (a *ApplicationsApiService) GetDefaultApplicationAdvancedSettingsExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -458,7 +458,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScaleExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -573,7 +573,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorageExecute(
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -690,7 +690,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGet
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -807,7 +807,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExec
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -922,7 +922,7 @@ func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequ
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

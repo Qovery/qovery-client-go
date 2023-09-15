@@ -105,7 +105,7 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*C
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -222,7 +222,7 @@ func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*h
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -334,7 +334,7 @@ func (a *ClustersApiService) DeployClusterExecute(r ApiDeployClusterRequest) (*C
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -461,7 +461,7 @@ func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Clust
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -590,7 +590,7 @@ func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditCluster
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -719,7 +719,7 @@ func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableReques
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -840,7 +840,7 @@ func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAd
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -959,7 +959,7 @@ func (a *ClustersApiService) GetClusterReadinessStatusExecute(r ApiGetClusterRea
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1078,7 +1078,7 @@ func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusReques
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1189,7 +1189,7 @@ func (a *ClustersApiService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1308,7 +1308,7 @@ func (a *ClustersApiService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrg
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1425,7 +1425,7 @@ func (a *ClustersApiService) GetOrganizationClusterStatusExecute(r ApiGetOrganiz
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1546,7 +1546,7 @@ func (a *ClustersApiService) GetRoutingTableExecute(r ApiGetRoutingTableRequest)
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1667,7 +1667,7 @@ func (a *ClustersApiService) ListClusterLogsExecute(r ApiListClusterLogsRequest)
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1782,7 +1782,7 @@ func (a *ClustersApiService) ListOrganizationClusterExecute(r ApiListOrganizatio
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1909,7 +1909,7 @@ func (a *ClustersApiService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecify
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -2030,7 +2030,7 @@ func (a *ClustersApiService) StopClusterExecute(r ApiStopClusterRequest) (*Clust
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

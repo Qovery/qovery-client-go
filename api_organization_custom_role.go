@@ -107,7 +107,7 @@ func (a *OrganizationCustomRoleApiService) CreateOrganizationCustomRoleExecute(r
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *OrganizationCustomRoleApiService) DeleteOrganizationCustomRoleExecute(r
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *OrganizationCustomRoleApiService) EditOrganizationCustomRoleExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -467,7 +467,7 @@ func (a *OrganizationCustomRoleApiService) GetOrganizationCustomRoleExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -584,7 +584,7 @@ func (a *OrganizationCustomRoleApiService) ListOrganizationCustomRolesExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

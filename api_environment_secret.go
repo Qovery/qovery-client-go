@@ -110,7 +110,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -245,7 +245,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -379,7 +379,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -501,7 +501,7 @@ func (a *EnvironmentSecretApiService) DeleteEnvironmentSecretExecute(r ApiDelete
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -628,7 +628,7 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -743,7 +743,7 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnv
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

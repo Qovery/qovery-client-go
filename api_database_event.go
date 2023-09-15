@@ -109,7 +109,7 @@ func (a *DatabaseEventApiService) ListDatabaseEventExecute(r ApiListDatabaseEven
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

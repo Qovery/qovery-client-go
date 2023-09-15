@@ -105,7 +105,7 @@ func (a *ContainerRegistriesApiService) CreateContainerRegistryExecute(r ApiCrea
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -222,7 +222,7 @@ func (a *ContainerRegistriesApiService) DeleteContainerRegistryExecute(r ApiDele
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -340,7 +340,7 @@ func (a *ContainerRegistriesApiService) EditContainerRegistryExecute(r ApiEditCo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -459,7 +459,7 @@ func (a *ContainerRegistriesApiService) GetContainerRegistryExecute(r ApiGetCont
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -572,7 +572,7 @@ func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -687,7 +687,7 @@ func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListCo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

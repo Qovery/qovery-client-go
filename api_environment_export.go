@@ -108,7 +108,7 @@ func (a *EnvironmentExportApiService) ExportEnvironmentConfigurationIntoTerrafor
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

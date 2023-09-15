@@ -103,7 +103,7 @@ func (a *GithubAppApiService) OrganizationGithubAppConnectExecute(r ApiOrganizat
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -217,7 +217,7 @@ func (a *GithubAppApiService) OrganizationGithubAppDisconnectExecute(r ApiOrgani
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

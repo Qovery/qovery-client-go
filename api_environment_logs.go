@@ -99,7 +99,7 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironme
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -225,7 +225,7 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogsExecute(r ApiListEnvironm
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

@@ -105,7 +105,7 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -228,7 +228,7 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -351,7 +351,7 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -468,7 +468,7 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -576,7 +576,7 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDel
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -684,7 +684,7 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -802,7 +802,7 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -929,7 +929,7 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1056,7 +1056,7 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1175,7 +1175,7 @@ func (a *CloudProviderCredentialsApiService) GetAWSCredentialsExecute(r ApiGetAW
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1294,7 +1294,7 @@ func (a *CloudProviderCredentialsApiService) GetDOCredentialsExecute(r ApiGetDOC
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1413,7 +1413,7 @@ func (a *CloudProviderCredentialsApiService) GetScalewayCredentialsExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1528,7 +1528,7 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1643,7 +1643,7 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1758,7 +1758,7 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

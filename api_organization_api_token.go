@@ -107,7 +107,7 @@ func (a *OrganizationApiTokenApiService) CreateOrganizationApiTokenExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *OrganizationApiTokenApiService) DeleteOrganizationApiTokenExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -334,7 +334,7 @@ func (a *OrganizationApiTokenApiService) ListOrganizationApiTokensExecute(r ApiL
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

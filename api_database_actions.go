@@ -97,7 +97,7 @@ func (a *DatabaseActionsApiService) DeployDatabaseExecute(r ApiDeployDatabaseReq
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -212,7 +212,7 @@ func (a *DatabaseActionsApiService) RebootDatabaseExecute(r ApiRebootDatabaseReq
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -327,7 +327,7 @@ func (a *DatabaseActionsApiService) RedeployDatabaseExecute(r ApiRedeployDatabas
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -444,7 +444,7 @@ func (a *DatabaseActionsApiService) RestartDatabaseExecute(r ApiRestartDatabaseR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -559,7 +559,7 @@ func (a *DatabaseActionsApiService) StopDatabaseExecute(r ApiStopDatabaseRequest
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

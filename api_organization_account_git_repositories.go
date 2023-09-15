@@ -97,7 +97,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -222,7 +222,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -337,7 +337,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProvide
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -452,7 +452,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -577,7 +577,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -692,7 +692,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -817,7 +817,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

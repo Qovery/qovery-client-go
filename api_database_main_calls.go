@@ -97,7 +97,7 @@ func (a *DatabaseMainCallsApiService) DeleteDatabaseExecute(r ApiDeleteDatabaseR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -213,7 +213,7 @@ func (a *DatabaseMainCallsApiService) EditDatabaseExecute(r ApiEditDatabaseReque
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -336,7 +336,7 @@ func (a *DatabaseMainCallsApiService) EditDatabaseCredentialsExecute(r ApiEditDa
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -451,7 +451,7 @@ func (a *DatabaseMainCallsApiService) GetDatabaseExecute(r ApiGetDatabaseRequest
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -566,7 +566,7 @@ func (a *DatabaseMainCallsApiService) GetDatabaseMasterCredentialsExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -681,7 +681,7 @@ func (a *DatabaseMainCallsApiService) GetDatabaseStatusExecute(r ApiGetDatabaseS
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -796,7 +796,7 @@ func (a *DatabaseMainCallsApiService) ListDatabaseVersionExecute(r ApiListDataba
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

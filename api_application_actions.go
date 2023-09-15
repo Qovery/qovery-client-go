@@ -107,7 +107,7 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -222,7 +222,7 @@ func (a *ApplicationActionsApiService) RebootApplicationExecute(r ApiRebootAppli
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -337,7 +337,7 @@ func (a *ApplicationActionsApiService) RedeployApplicationExecute(r ApiRedeployA
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -454,7 +454,7 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -569,7 +569,7 @@ func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicati
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

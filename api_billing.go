@@ -105,7 +105,7 @@ func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*Cr
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*ht
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -340,7 +340,7 @@ func (a *BillingApiService) ChangePlanExecute(r ApiChangePlanRequest) (*Organiza
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -457,7 +457,7 @@ func (a *BillingApiService) DeleteCreditCardExecute(r ApiDeleteCreditCardRequest
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -571,7 +571,7 @@ func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganiza
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -694,7 +694,7 @@ func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentC
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -809,7 +809,7 @@ func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizati
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -930,7 +930,7 @@ func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganiza
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1045,7 +1045,7 @@ func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizati
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1164,7 +1164,7 @@ func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationIn
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1285,7 +1285,7 @@ func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizatio
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1400,7 +1400,7 @@ func (a *BillingApiService) ListOrganizationCreditCardsExecute(r ApiListOrganiza
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1515,7 +1515,7 @@ func (a *BillingApiService) ListOrganizationInvoiceExecute(r ApiListOrganization
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1628,7 +1628,7 @@ func (a *BillingApiService) OrganizationDownloadAllInvoicesExecute(r ApiOrganiza
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

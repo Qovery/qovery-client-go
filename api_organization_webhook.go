@@ -107,7 +107,7 @@ func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCr
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *OrganizationWebhookApiService) DeleteOrganizationWebhookExecute(r ApiDe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -467,7 +467,7 @@ func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOr
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -584,7 +584,7 @@ func (a *OrganizationWebhookApiService) ListOrganizationWebHooksExecute(r ApiLis
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

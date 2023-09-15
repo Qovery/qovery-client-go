@@ -99,7 +99,7 @@ func (a *ContainerLogsApiService) ListContainerLogExecute(r ApiListContainerLogR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

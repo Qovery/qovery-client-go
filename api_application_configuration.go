@@ -107,7 +107,7 @@ func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEd
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -232,7 +232,7 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -349,7 +349,7 @@ func (a *ApplicationConfigurationApiService) GetAdvancedSettingsExecute(r ApiGet
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -466,7 +466,7 @@ func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

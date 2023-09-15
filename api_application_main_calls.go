@@ -97,7 +97,7 @@ func (a *ApplicationMainCallsApiService) DeleteApplicationExecute(r ApiDeleteApp
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -216,7 +216,7 @@ func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplica
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -331,7 +331,7 @@ func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicati
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -446,7 +446,7 @@ func (a *ApplicationMainCallsApiService) GetApplicationStatusExecute(r ApiGetApp
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -583,7 +583,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationCommitExecute(r ApiListA
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -698,7 +698,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationContributorExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -815,7 +815,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationLinksExecute(r ApiListAp
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

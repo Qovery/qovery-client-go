@@ -97,7 +97,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentInstanceExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -214,7 +214,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentScaleExecute(r ApiGe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -329,7 +329,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDiskExecute(r
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -455,7 +455,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetAp
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -583,7 +583,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -709,7 +709,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -835,7 +835,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricStorageExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

@@ -108,7 +108,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -243,7 +243,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -377,7 +377,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -499,7 +499,7 @@ func (a *ContainerEnvironmentVariableApiService) DeleteContainerEnvironmentVaria
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -626,7 +626,7 @@ func (a *ContainerEnvironmentVariableApiService) EditContainerEnvironmentVariabl
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -751,7 +751,7 @@ func (a *ContainerEnvironmentVariableApiService) ImportContainerEnvironmentVaria
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -866,7 +866,7 @@ func (a *ContainerEnvironmentVariableApiService) ListContainerEnvironmentVariabl
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

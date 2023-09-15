@@ -101,7 +101,7 @@ func (a *OrganizationMainCallsApiService) CreateOrganizationExecute(r ApiCreateO
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -216,7 +216,7 @@ func (a *OrganizationMainCallsApiService) DeleteOrganizationExecute(r ApiDeleteO
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -332,7 +332,7 @@ func (a *OrganizationMainCallsApiService) EditOrganizationExecute(r ApiEditOrgan
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -447,7 +447,7 @@ func (a *OrganizationMainCallsApiService) GetOrganizationExecute(r ApiGetOrganiz
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -558,7 +558,7 @@ func (a *OrganizationMainCallsApiService) ListOrganizationExecute(r ApiListOrgan
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -675,7 +675,7 @@ func (a *OrganizationMainCallsApiService) ListOrganizationAvailableRolesExecute(
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

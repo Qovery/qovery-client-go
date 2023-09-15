@@ -108,7 +108,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretExecute(r ApiCreateCont
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -243,7 +243,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretAliasExecute(r ApiCreat
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -377,7 +377,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretOverrideExecute(r ApiCr
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -499,7 +499,7 @@ func (a *ContainerSecretApiService) DeleteContainerSecretExecute(r ApiDeleteCont
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -626,7 +626,7 @@ func (a *ContainerSecretApiService) EditContainerSecretExecute(r ApiEditContaine
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -743,7 +743,7 @@ func (a *ContainerSecretApiService) ListContainerSecretsExecute(r ApiListContain
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

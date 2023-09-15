@@ -101,7 +101,7 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -224,7 +224,7 @@ func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStageExe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -337,7 +337,7 @@ func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStageExecute(r ApiD
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -451,7 +451,7 @@ func (a *DeploymentStageMainCallsApiService) EditDeploymentStageExecute(r ApiEdi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -566,7 +566,7 @@ func (a *DeploymentStageMainCallsApiService) GetDeploymentStageExecute(r ApiGetD
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -681,7 +681,7 @@ func (a *DeploymentStageMainCallsApiService) GetServiceDeploymentStageExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -796,7 +796,7 @@ func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStageExecu
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -915,7 +915,7 @@ func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStageExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -1034,7 +1034,7 @@ func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStageExecute(r 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

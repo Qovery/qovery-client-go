@@ -104,7 +104,7 @@ func (a *VariableMainCallsApiService) CreateVariableExecute(r ApiCreateVariableR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -235,7 +235,7 @@ func (a *VariableMainCallsApiService) CreateVariableAliasExecute(r ApiCreateVari
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -365,7 +365,7 @@ func (a *VariableMainCallsApiService) CreateVariableOverrideExecute(r ApiCreateV
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -483,7 +483,7 @@ func (a *VariableMainCallsApiService) DeleteVariableExecute(r ApiDeleteVariableR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -605,7 +605,7 @@ func (a *VariableMainCallsApiService) EditVariableExecute(r ApiEditVariableReque
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -747,7 +747,7 @@ func (a *VariableMainCallsApiService) ListVariablesExecute(r ApiListVariablesReq
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

@@ -97,7 +97,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseCurrentMetricExecute(r ApiGetData
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -223,7 +223,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricCpuExecute(r ApiGetDatabase
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -351,7 +351,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricHealthCheckExecute(r ApiGet
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -477,7 +477,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricMemoryExecute(r ApiGetDatab
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -603,7 +603,7 @@ func (a *DatabaseMetricsApiService) GetDatabaseMetricStorageExecute(r ApiGetData
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

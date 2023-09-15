@@ -117,7 +117,7 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -242,7 +242,7 @@ func (a *JobActionsApiService) RedeployJobExecute(r ApiRedeployJobRequest) (*Sta
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -369,7 +369,7 @@ func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -484,7 +484,7 @@ func (a *JobActionsApiService) StopJobExecute(r ApiStopJobRequest) (*Status, *ht
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

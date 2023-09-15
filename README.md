@@ -914,10 +914,10 @@ Class | Method | HTTP request | Description
 ### ApiKeyAuth
 
 - **Type**: API key
-- **API key parameter name**: Token
+- **API key parameter name**: Authorization
 - **Location**: HTTP header
 
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: Token and passed in as the auth context for each request.
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
 
 
 ### bearerAuth

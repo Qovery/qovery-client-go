@@ -110,7 +110,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableE
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -245,7 +245,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableA
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -379,7 +379,7 @@ func (a *ProjectEnvironmentVariableApiService) CreateProjectEnvironmentVariableO
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -501,7 +501,7 @@ func (a *ProjectEnvironmentVariableApiService) DeleteProjectEnvironmentVariableE
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -628,7 +628,7 @@ func (a *ProjectEnvironmentVariableApiService) EditProjectEnvironmentVariableExe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -743,7 +743,7 @@ func (a *ProjectEnvironmentVariableApiService) ListProjectEnvironmentVariableExe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

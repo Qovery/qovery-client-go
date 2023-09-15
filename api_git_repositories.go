@@ -95,7 +95,7 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoriesExecute(r ApiGetBitb
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -219,7 +219,7 @@ func (a *GitRepositoriesApiService) GetBitbucketRepositoryBranchesExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -333,7 +333,7 @@ func (a *GitRepositoriesApiService) GetGitProviderAccountExecute(r ApiGetGitProv
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -447,7 +447,7 @@ func (a *GitRepositoriesApiService) GetGithubRepositoriesExecute(r ApiGetGithubR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -571,7 +571,7 @@ func (a *GitRepositoriesApiService) GetGithubRepositoryBranchesExecute(r ApiGetG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -685,7 +685,7 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoriesExecute(r ApiGetGitlabR
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -809,7 +809,7 @@ func (a *GitRepositoriesApiService) GetGitlabRepositoryBranchesExecute(r ApiGetG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

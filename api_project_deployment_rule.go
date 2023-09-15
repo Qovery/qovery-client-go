@@ -107,7 +107,7 @@ func (a *ProjectDeploymentRuleApiService) CreateDeploymentRuleExecute(r ApiCreat
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRuleExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRuleExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -467,7 +467,7 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiG
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -584,7 +584,7 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRulesExecute(r Ap
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -707,7 +707,7 @@ func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrderExec
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

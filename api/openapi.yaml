@@ -22572,7 +22572,7 @@ components:
         \ interaction and do not have a TTL. Curl Example ' curl https://console.qovery.com/organization\
         \ -H \"Authorization: Token $qovery_token\" '"
       in: header
-      name: Token
+      name: Authorization
       type: apiKey
 x-tagGroups:
 - name: Organization

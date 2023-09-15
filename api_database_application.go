@@ -97,7 +97,7 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -214,7 +214,7 @@ func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r A
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

@@ -107,7 +107,7 @@ func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeployment
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeployment
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -463,7 +463,7 @@ func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRes
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

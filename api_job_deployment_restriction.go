@@ -107,7 +107,7 @@ func (a *JobDeploymentRestrictionApiService) CreateJobDeploymentRestrictionExecu
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *JobDeploymentRestrictionApiService) DeleteJobDeploymentRestrictionExecu
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *JobDeploymentRestrictionApiService) EditJobDeploymentRestrictionExecute
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -463,7 +463,7 @@ func (a *JobDeploymentRestrictionApiService) GetJobDeploymentRestrictionsExecute
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

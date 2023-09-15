@@ -97,7 +97,7 @@ func (a *ContainerMetricsApiService) GetContainerCurrentInstanceExecute(r ApiGet
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -214,7 +214,7 @@ func (a *ContainerMetricsApiService) GetContainerCurrentScaleExecute(r ApiGetCon
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -329,7 +329,7 @@ func (a *ContainerMetricsApiService) GetContainerCurrentStorageDiskExecute(r Api
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

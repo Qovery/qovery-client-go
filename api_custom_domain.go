@@ -107,7 +107,7 @@ func (a *CustomDomainApiService) CreateApplicationCustomDomainExecute(r ApiCreat
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -226,7 +226,7 @@ func (a *CustomDomainApiService) DeleteCustomDomainExecute(r ApiDeleteCustomDoma
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -346,7 +346,7 @@ func (a *CustomDomainApiService) EditCustomDomainExecute(r ApiEditCustomDomainRe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -465,7 +465,7 @@ func (a *CustomDomainApiService) GetCustomDomainStatusExecute(r ApiGetCustomDoma
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -580,7 +580,7 @@ func (a *CustomDomainApiService) ListApplicationCustomDomainExecute(r ApiListApp
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

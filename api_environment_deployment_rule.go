@@ -109,7 +109,7 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecu
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -224,7 +224,7 @@ func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecut
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

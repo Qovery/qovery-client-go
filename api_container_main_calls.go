@@ -97,7 +97,7 @@ func (a *ContainerMainCallsApiService) DeleteContainerExecute(r ApiDeleteContain
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -216,7 +216,7 @@ func (a *ContainerMainCallsApiService) EditContainerExecute(r ApiEditContainerRe
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -331,7 +331,7 @@ func (a *ContainerMainCallsApiService) GetContainerExecute(r ApiGetContainerRequ
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -446,7 +446,7 @@ func (a *ContainerMainCallsApiService) GetContainerStatusExecute(r ApiGetContain
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -563,7 +563,7 @@ func (a *ContainerMainCallsApiService) ListContainerLinksExecute(r ApiListContai
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

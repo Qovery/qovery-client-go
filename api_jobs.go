@@ -110,7 +110,7 @@ func (a *JobsApiService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -235,7 +235,7 @@ func (a *JobsApiService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *h
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -358,7 +358,7 @@ func (a *JobsApiService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -469,7 +469,7 @@ func (a *JobsApiService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJob
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -586,7 +586,7 @@ func (a *JobsApiService) GetEnvironmentJobStatusExecute(r ApiGetEnvironmentJobSt
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -711,7 +711,7 @@ func (a *JobsApiService) ListJobsExecute(r ApiListJobsRequest) (*JobResponseList
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}

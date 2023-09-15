@@ -107,7 +107,7 @@ func (a *DatabasesApiService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -230,7 +230,7 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -347,7 +347,7 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -462,7 +462,7 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (*Da
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -577,7 +577,7 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
@@ -692,7 +692,7 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiL
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["Token"] = key
+				localVarHeaderParams["Authorization"] = key
 			}
 		}
 	}
