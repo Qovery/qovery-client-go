@@ -20459,6 +20459,8 @@ components:
           description: Specify if the application will be automatically updated after
             receiving a new commit.
           type: boolean
+      required:
+      - healthchecks
       type: object
     ApplicationEditRequest_allOf:
       properties:
@@ -21166,6 +21168,7 @@ components:
       - auto_preview
       - cpu
       - environment
+      - healthchecks
       - image_name
       - max_running_instances
       - maximum_cpu
@@ -22093,6 +22096,7 @@ components:
       - auto_preview
       - cpu
       - environment
+      - healthchecks
       - image_name
       - max_running_instances
       - maximum_cpu

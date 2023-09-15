@@ -43,7 +43,7 @@ type JobResponse struct {
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
 	Port         NullableInt32             `json:"port,omitempty"`
 	Source       *JobResponseAllOfSource   `json:"source,omitempty"`
-	Healthchecks *Healthcheck              `json:"healthchecks,omitempty"`
+	Healthchecks Healthcheck               `json:"healthchecks"`
 	Schedule     *JobResponseAllOfSchedule `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
@@ -53,7 +53,7 @@ type JobResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool) *JobResponse {
+func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, healthchecks Healthcheck) *JobResponse {
 	this := JobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -65,6 +65,7 @@ func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject,
 	this.Cpu = cpu
 	this.Memory = memory
 	this.AutoPreview = autoPreview
+	this.Healthchecks = healthchecks
 	return &this
 }
 
@@ -519,36 +520,28 @@ func (o *JobResponse) SetSource(v JobResponseAllOfSource) {
 	o.Source = &v
 }
 
-// GetHealthchecks returns the Healthchecks field value if set, zero value otherwise.
+// GetHealthchecks returns the Healthchecks field value
 func (o *JobResponse) GetHealthchecks() Healthcheck {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		var ret Healthcheck
 		return ret
 	}
-	return *o.Healthchecks
+
+	return o.Healthchecks
 }
 
-// GetHealthchecksOk returns a tuple with the Healthchecks field value if set, nil otherwise
+// GetHealthchecksOk returns a tuple with the Healthchecks field value
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetHealthchecksOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Healthchecks, true
+	return &o.Healthchecks, true
 }
 
-// HasHealthchecks returns a boolean if a field has been set.
-func (o *JobResponse) HasHealthchecks() bool {
-	if o != nil && o.Healthchecks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthchecks gets a reference to the given Healthcheck and assigns it to the Healthchecks field.
+// SetHealthchecks sets field value
 func (o *JobResponse) SetHealthchecks(v Healthcheck) {
-	o.Healthchecks = &v
+	o.Healthchecks = v
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
@@ -665,7 +658,7 @@ func (o JobResponse) MarshalJSON() ([]byte, error) {
 	if o.Source != nil {
 		toSerialize["source"] = o.Source
 	}
-	if o.Healthchecks != nil {
+	if true {
 		toSerialize["healthchecks"] = o.Healthchecks
 	}
 	if o.Schedule != nil {

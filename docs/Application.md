@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
-**Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
+**Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(id string, createdAt time.Time, ) *Application`
+`func NewApplication(id string, createdAt time.Time, healthchecks Healthcheck, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -511,11 +511,6 @@ and a boolean to check if the value has been set.
 
 SetHealthchecks sets Healthchecks field to given value.
 
-### HasHealthchecks
-
-`func (o *Application) HasHealthchecks() bool`
-
-HasHealthchecks returns a boolean if a field has been set.
 
 ### GetAutoPreview
 

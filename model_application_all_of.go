@@ -38,8 +38,8 @@ type ApplicationAllOf struct {
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthchecks        *Healthcheck `json:"healthchecks,omitempty"`
+	MaxRunningInstances *int32      `json:"max_running_instances,omitempty"`
+	Healthchecks        Healthcheck `json:"healthchecks"`
 	// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool         `json:"auto_preview,omitempty"`
 	Ports       []ServicePort `json:"ports,omitempty"`
@@ -54,7 +54,7 @@ type ApplicationAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationAllOf() *ApplicationAllOf {
+func NewApplicationAllOf(healthchecks Healthcheck) *ApplicationAllOf {
 	this := ApplicationAllOf{}
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
@@ -62,6 +62,7 @@ func NewApplicationAllOf() *ApplicationAllOf {
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
+	this.Healthchecks = healthchecks
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
 	return &this
@@ -532,36 +533,28 @@ func (o *ApplicationAllOf) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = &v
 }
 
-// GetHealthchecks returns the Healthchecks field value if set, zero value otherwise.
+// GetHealthchecks returns the Healthchecks field value
 func (o *ApplicationAllOf) GetHealthchecks() Healthcheck {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		var ret Healthcheck
 		return ret
 	}
-	return *o.Healthchecks
+
+	return o.Healthchecks
 }
 
-// GetHealthchecksOk returns a tuple with the Healthchecks field value if set, nil otherwise
+// GetHealthchecksOk returns a tuple with the Healthchecks field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationAllOf) GetHealthchecksOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Healthchecks, true
+	return &o.Healthchecks, true
 }
 
-// HasHealthchecks returns a boolean if a field has been set.
-func (o *ApplicationAllOf) HasHealthchecks() bool {
-	if o != nil && o.Healthchecks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthchecks gets a reference to the given Healthcheck and assigns it to the Healthchecks field.
+// SetHealthchecks sets field value
 func (o *ApplicationAllOf) SetHealthchecks(v Healthcheck) {
-	o.Healthchecks = &v
+	o.Healthchecks = v
 }
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
@@ -765,7 +758,7 @@ func (o ApplicationAllOf) MarshalJSON() ([]byte, error) {
 	if o.MaxRunningInstances != nil {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
 	}
-	if o.Healthchecks != nil {
+	if true {
 		toSerialize["healthchecks"] = o.Healthchecks
 	}
 	if o.AutoPreview != nil {
