@@ -20527,6 +20527,8 @@ components:
             receiving a new commit.
           nullable: true
           type: boolean
+      required:
+      - healthchecks
       type: object
     ServicePortRequest_ports_inner:
       properties:

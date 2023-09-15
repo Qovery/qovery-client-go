@@ -104,7 +104,7 @@ import (
 
 func main() {
     applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    applicationEditRequest := *openapiclient.NewApplicationEditRequest() // ApplicationEditRequest |  (optional)
+    applicationEditRequest := *openapiclient.NewApplicationEditRequest(*openapiclient.NewHealthcheck()) // ApplicationEditRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
