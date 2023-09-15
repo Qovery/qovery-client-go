@@ -33,7 +33,7 @@ type JobRequest struct {
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
 	Port         NullableInt32            `json:"port,omitempty"`
 	Source       *JobRequestAllOfSource   `json:"source,omitempty"`
-	Healthchecks *Healthcheck             `json:"healthchecks,omitempty"`
+	Healthchecks Healthcheck              `json:"healthchecks"`
 	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
@@ -43,7 +43,7 @@ type JobRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobRequest(name string) *JobRequest {
+func NewJobRequest(name string, healthchecks Healthcheck) *JobRequest {
 	this := JobRequest{}
 	this.Name = name
 	var cpu int32 = 500
@@ -52,6 +52,7 @@ func NewJobRequest(name string) *JobRequest {
 	this.Memory = &memory
 	var maxNbRestart int32 = 0
 	this.MaxNbRestart = &maxNbRestart
+	this.Healthchecks = healthchecks
 	return &this
 }
 
@@ -360,36 +361,28 @@ func (o *JobRequest) SetSource(v JobRequestAllOfSource) {
 	o.Source = &v
 }
 
-// GetHealthchecks returns the Healthchecks field value if set, zero value otherwise.
+// GetHealthchecks returns the Healthchecks field value
 func (o *JobRequest) GetHealthchecks() Healthcheck {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		var ret Healthcheck
 		return ret
 	}
-	return *o.Healthchecks
+
+	return o.Healthchecks
 }
 
-// GetHealthchecksOk returns a tuple with the Healthchecks field value if set, nil otherwise
+// GetHealthchecksOk returns a tuple with the Healthchecks field value
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetHealthchecksOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Healthchecks, true
+	return &o.Healthchecks, true
 }
 
-// HasHealthchecks returns a boolean if a field has been set.
-func (o *JobRequest) HasHealthchecks() bool {
-	if o != nil && o.Healthchecks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthchecks gets a reference to the given Healthcheck and assigns it to the Healthchecks field.
+// SetHealthchecks sets field value
 func (o *JobRequest) SetHealthchecks(v Healthcheck) {
-	o.Healthchecks = &v
+	o.Healthchecks = v
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
@@ -496,7 +489,7 @@ func (o JobRequest) MarshalJSON() ([]byte, error) {
 	if o.Source != nil {
 		toSerialize["source"] = o.Source
 	}
-	if o.Healthchecks != nil {
+	if true {
 		toSerialize["healthchecks"] = o.Healthchecks
 	}
 	if o.Schedule != nil {

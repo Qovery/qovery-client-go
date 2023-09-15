@@ -177,7 +177,7 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    jobRequest := *openapiclient.NewJobRequest("Name_example") // JobRequest |  (optional)
+    jobRequest := *openapiclient.NewJobRequest("Name_example", *openapiclient.NewHealthcheck()) // JobRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

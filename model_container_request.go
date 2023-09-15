@@ -39,8 +39,8 @@ type ContainerRequest struct {
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
-	MaxRunningInstances *int32       `json:"max_running_instances,omitempty"`
-	Healthchecks        *Healthcheck `json:"healthchecks,omitempty"`
+	MaxRunningInstances *int32      `json:"max_running_instances,omitempty"`
+	Healthchecks        Healthcheck `json:"healthchecks"`
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
@@ -51,7 +51,7 @@ type ContainerRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRequest(name string, registryId string, imageName string, tag string) *ContainerRequest {
+func NewContainerRequest(name string, registryId string, imageName string, tag string, healthchecks Healthcheck) *ContainerRequest {
 	this := ContainerRequest{}
 	this.Name = name
 	this.RegistryId = registryId
@@ -65,6 +65,7 @@ func NewContainerRequest(name string, registryId string, imageName string, tag s
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
+	this.Healthchecks = healthchecks
 	return &this
 }
 
@@ -468,36 +469,28 @@ func (o *ContainerRequest) SetMaxRunningInstances(v int32) {
 	o.MaxRunningInstances = &v
 }
 
-// GetHealthchecks returns the Healthchecks field value if set, zero value otherwise.
+// GetHealthchecks returns the Healthchecks field value
 func (o *ContainerRequest) GetHealthchecks() Healthcheck {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		var ret Healthcheck
 		return ret
 	}
-	return *o.Healthchecks
+
+	return o.Healthchecks
 }
 
-// GetHealthchecksOk returns a tuple with the Healthchecks field value if set, nil otherwise
+// GetHealthchecksOk returns a tuple with the Healthchecks field value
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetHealthchecksOk() (*Healthcheck, bool) {
-	if o == nil || o.Healthchecks == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Healthchecks, true
+	return &o.Healthchecks, true
 }
 
-// HasHealthchecks returns a boolean if a field has been set.
-func (o *ContainerRequest) HasHealthchecks() bool {
-	if o != nil && o.Healthchecks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthchecks gets a reference to the given Healthcheck and assigns it to the Healthchecks field.
+// SetHealthchecks sets field value
 func (o *ContainerRequest) SetHealthchecks(v Healthcheck) {
-	o.Healthchecks = &v
+	o.Healthchecks = v
 }
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
@@ -616,7 +609,7 @@ func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	if o.MaxRunningInstances != nil {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
 	}
-	if o.Healthchecks != nil {
+	if true {
 		toSerialize["healthchecks"] = o.Healthchecks
 	}
 	if o.AutoPreview != nil {

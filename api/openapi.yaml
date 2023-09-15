@@ -17282,6 +17282,7 @@ components:
           type: array
       type: object
     Healthcheck:
+      nullable: false
       properties:
         readiness_probe:
           $ref: '#/components/schemas/Probe'
@@ -20616,6 +20617,7 @@ components:
           type: boolean
       required:
       - git_repository
+      - healthchecks
       - name
       type: object
     ServiceStorage_storage_inner:
@@ -21080,6 +21082,7 @@ components:
           nullable: true
           type: boolean
       required:
+      - healthchecks
       - image_name
       - name
       - registry_id
@@ -21968,6 +21971,7 @@ components:
           nullable: true
           type: boolean
       required:
+      - healthchecks
       - name
       type: object
     JobResponse_allOf_source_docker:

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
 **Source** | Pointer to [**JobRequestAllOfSource**](JobRequestAllOfSource.md) |  | [optional] 
-**Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
+**Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewJobRequestAllOf
 
-`func NewJobRequestAllOf(name string, ) *JobRequestAllOf`
+`func NewJobRequestAllOf(name string, healthchecks Healthcheck, ) *JobRequestAllOf`
 
 NewJobRequestAllOf instantiates a new JobRequestAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -285,11 +285,6 @@ and a boolean to check if the value has been set.
 
 SetHealthchecks sets Healthchecks field to given value.
 
-### HasHealthchecks
-
-`func (o *JobRequestAllOf) HasHealthchecks() bool`
-
-HasHealthchecks returns a boolean if a field has been set.
 
 ### GetSchedule
 

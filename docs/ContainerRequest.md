@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
-**Healthchecks** | Pointer to [**Healthcheck**](Healthcheck.md) |  | [optional] 
+**Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewContainerRequest
 
-`func NewContainerRequest(name string, registryId string, imageName string, tag string, ) *ContainerRequest`
+`func NewContainerRequest(name string, registryId string, imageName string, tag string, healthchecks Healthcheck, ) *ContainerRequest`
 
 NewContainerRequest instantiates a new ContainerRequest object
 This constructor will assign default values to properties that have it defined,
@@ -364,11 +364,6 @@ and a boolean to check if the value has been set.
 
 SetHealthchecks sets Healthchecks field to given value.
 
-### HasHealthchecks
-
-`func (o *ContainerRequest) HasHealthchecks() bool`
-
-HasHealthchecks returns a boolean if a field has been set.
 
 ### GetAutoPreview
 

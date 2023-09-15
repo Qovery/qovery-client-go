@@ -102,7 +102,7 @@ import (
 
 func main() {
     jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    jobRequest := *openapiclient.NewJobRequest("Name_example") // JobRequest |  (optional)
+    jobRequest := *openapiclient.NewJobRequest("Name_example", *openapiclient.NewHealthcheck()) // JobRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
