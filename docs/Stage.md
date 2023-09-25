@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** | stage name | 
-**Metrics** | Pointer to [**StageStepMetrics**](StageStepMetrics.md) |  | [optional] 
+**Steps** | Pointer to [**StageStepMetrics**](StageStepMetrics.md) |  | [optional] 
 
 ## Methods
 
@@ -67,30 +67,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetMetrics
+### GetSteps
 
-`func (o *Stage) GetMetrics() StageStepMetrics`
+`func (o *Stage) GetSteps() StageStepMetrics`
 
-GetMetrics returns the Metrics field if non-nil, zero value otherwise.
+GetSteps returns the Steps field if non-nil, zero value otherwise.
 
-### GetMetricsOk
+### GetStepsOk
 
-`func (o *Stage) GetMetricsOk() (*StageStepMetrics, bool)`
+`func (o *Stage) GetStepsOk() (*StageStepMetrics, bool)`
 
-GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
+GetStepsOk returns a tuple with the Steps field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetrics
+### SetSteps
 
-`func (o *Stage) SetMetrics(v StageStepMetrics)`
+`func (o *Stage) SetSteps(v StageStepMetrics)`
 
-SetMetrics sets Metrics field to given value.
+SetSteps sets Steps field to given value.
 
-### HasMetrics
+### HasSteps
 
-`func (o *Stage) HasMetrics() bool`
+`func (o *Stage) HasSteps() bool`
 
-HasMetrics returns a boolean if a field has been set.
+HasSteps returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

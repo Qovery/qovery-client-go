@@ -18,11 +18,12 @@ import (
 
 // EnvironmentStatus struct for EnvironmentStatus
 type EnvironmentStatus struct {
-	Id                  string         `json:"id"`
-	State               StateEnum      `json:"state"`
-	LastDeploymentDate  NullableTime   `json:"last_deployment_date,omitempty"`
-	LastDeploymentState StateEnum      `json:"last_deployment_state"`
-	LastDeploymentId    NullableString `json:"last_deployment_id,omitempty"`
+	Id                               string         `json:"id"`
+	State                            StateEnum      `json:"state"`
+	LastDeploymentDate               NullableTime   `json:"last_deployment_date,omitempty"`
+	LastDeploymentState              StateEnum      `json:"last_deployment_state"`
+	LastDeploymentId                 NullableString `json:"last_deployment_id,omitempty"`
+	TotalDeploymentDurationInSeconds NullableInt32  `json:"total_deployment_duration_in_seconds,omitempty"`
 }
 
 // NewEnvironmentStatus instantiates a new EnvironmentStatus object
@@ -203,6 +204,49 @@ func (o *EnvironmentStatus) UnsetLastDeploymentId() {
 	o.LastDeploymentId.Unset()
 }
 
+// GetTotalDeploymentDurationInSeconds returns the TotalDeploymentDurationInSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentStatus) GetTotalDeploymentDurationInSeconds() int32 {
+	if o == nil || o.TotalDeploymentDurationInSeconds.Get() == nil {
+		var ret int32
+		return ret
+	}
+	return *o.TotalDeploymentDurationInSeconds.Get()
+}
+
+// GetTotalDeploymentDurationInSecondsOk returns a tuple with the TotalDeploymentDurationInSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentStatus) GetTotalDeploymentDurationInSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TotalDeploymentDurationInSeconds.Get(), o.TotalDeploymentDurationInSeconds.IsSet()
+}
+
+// HasTotalDeploymentDurationInSeconds returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasTotalDeploymentDurationInSeconds() bool {
+	if o != nil && o.TotalDeploymentDurationInSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalDeploymentDurationInSeconds gets a reference to the given NullableInt32 and assigns it to the TotalDeploymentDurationInSeconds field.
+func (o *EnvironmentStatus) SetTotalDeploymentDurationInSeconds(v int32) {
+	o.TotalDeploymentDurationInSeconds.Set(&v)
+}
+
+// SetTotalDeploymentDurationInSecondsNil sets the value for TotalDeploymentDurationInSeconds to be an explicit nil
+func (o *EnvironmentStatus) SetTotalDeploymentDurationInSecondsNil() {
+	o.TotalDeploymentDurationInSeconds.Set(nil)
+}
+
+// UnsetTotalDeploymentDurationInSeconds ensures that no value is present for TotalDeploymentDurationInSeconds, not even an explicit nil
+func (o *EnvironmentStatus) UnsetTotalDeploymentDurationInSeconds() {
+	o.TotalDeploymentDurationInSeconds.Unset()
+}
+
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -219,6 +263,9 @@ func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	}
 	if o.LastDeploymentId.IsSet() {
 		toSerialize["last_deployment_id"] = o.LastDeploymentId.Get()
+	}
+	if o.TotalDeploymentDurationInSeconds.IsSet() {
+		toSerialize["total_deployment_duration_in_seconds"] = o.TotalDeploymentDurationInSeconds.Get()
 	}
 	return json.Marshal(toSerialize)
 }

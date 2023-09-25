@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **LastDeploymentDate** | Pointer to **NullableTime** |  | [optional] 
 **LastDeploymentState** | [**StateEnum**](StateEnum.md) |  | 
 **LastDeploymentId** | Pointer to **NullableString** |  | [optional] 
+**TotalDeploymentDurationInSeconds** | Pointer to **NullableInt32** |  | [optional] 
 
 ## Methods
 
@@ -159,6 +160,41 @@ HasLastDeploymentId returns a boolean if a field has been set.
 `func (o *EnvironmentStatus) UnsetLastDeploymentId()`
 
 UnsetLastDeploymentId ensures that no value is present for LastDeploymentId, not even an explicit nil
+### GetTotalDeploymentDurationInSeconds
+
+`func (o *EnvironmentStatus) GetTotalDeploymentDurationInSeconds() int32`
+
+GetTotalDeploymentDurationInSeconds returns the TotalDeploymentDurationInSeconds field if non-nil, zero value otherwise.
+
+### GetTotalDeploymentDurationInSecondsOk
+
+`func (o *EnvironmentStatus) GetTotalDeploymentDurationInSecondsOk() (*int32, bool)`
+
+GetTotalDeploymentDurationInSecondsOk returns a tuple with the TotalDeploymentDurationInSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalDeploymentDurationInSeconds
+
+`func (o *EnvironmentStatus) SetTotalDeploymentDurationInSeconds(v int32)`
+
+SetTotalDeploymentDurationInSeconds sets TotalDeploymentDurationInSeconds field to given value.
+
+### HasTotalDeploymentDurationInSeconds
+
+`func (o *EnvironmentStatus) HasTotalDeploymentDurationInSeconds() bool`
+
+HasTotalDeploymentDurationInSeconds returns a boolean if a field has been set.
+
+### SetTotalDeploymentDurationInSecondsNil
+
+`func (o *EnvironmentStatus) SetTotalDeploymentDurationInSecondsNil(b bool)`
+
+ SetTotalDeploymentDurationInSecondsNil sets the value for TotalDeploymentDurationInSeconds to be an explicit nil
+
+### UnsetTotalDeploymentDurationInSeconds
+`func (o *EnvironmentStatus) UnsetTotalDeploymentDurationInSeconds()`
+
+UnsetTotalDeploymentDurationInSeconds ensures that no value is present for TotalDeploymentDurationInSeconds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

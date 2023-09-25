@@ -23,7 +23,7 @@ type Status struct {
 	ServiceDeploymentStatus ServiceDeploymentStatusEnum `json:"service_deployment_status"`
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
-	Metrics                 *ServiceStepMetrics         `json:"metrics,omitempty"`
+	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
 }
 
 // NewStatus instantiates a new Status object
@@ -182,36 +182,36 @@ func (o *Status) SetIsPartLastDeployment(v bool) {
 	o.IsPartLastDeployment = &v
 }
 
-// GetMetrics returns the Metrics field value if set, zero value otherwise.
-func (o *Status) GetMetrics() ServiceStepMetrics {
-	if o == nil || o.Metrics == nil {
+// GetSteps returns the Steps field value if set, zero value otherwise.
+func (o *Status) GetSteps() ServiceStepMetrics {
+	if o == nil || o.Steps == nil {
 		var ret ServiceStepMetrics
 		return ret
 	}
-	return *o.Metrics
+	return *o.Steps
 }
 
-// GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
+// GetStepsOk returns a tuple with the Steps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Status) GetMetricsOk() (*ServiceStepMetrics, bool) {
-	if o == nil || o.Metrics == nil {
+func (o *Status) GetStepsOk() (*ServiceStepMetrics, bool) {
+	if o == nil || o.Steps == nil {
 		return nil, false
 	}
-	return o.Metrics, true
+	return o.Steps, true
 }
 
-// HasMetrics returns a boolean if a field has been set.
-func (o *Status) HasMetrics() bool {
-	if o != nil && o.Metrics != nil {
+// HasSteps returns a boolean if a field has been set.
+func (o *Status) HasSteps() bool {
+	if o != nil && o.Steps != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMetrics gets a reference to the given ServiceStepMetrics and assigns it to the Metrics field.
-func (o *Status) SetMetrics(v ServiceStepMetrics) {
-	o.Metrics = &v
+// SetSteps gets a reference to the given ServiceStepMetrics and assigns it to the Steps field.
+func (o *Status) SetSteps(v ServiceStepMetrics) {
+	o.Steps = &v
 }
 
 func (o Status) MarshalJSON() ([]byte, error) {
@@ -231,8 +231,8 @@ func (o Status) MarshalJSON() ([]byte, error) {
 	if o.IsPartLastDeployment != nil {
 		toSerialize["is_part_last_deployment"] = o.IsPartLastDeployment
 	}
-	if o.Metrics != nil {
-		toSerialize["metrics"] = o.Metrics
+	if o.Steps != nil {
+		toSerialize["steps"] = o.Steps
 	}
 	return json.Marshal(toSerialize)
 }

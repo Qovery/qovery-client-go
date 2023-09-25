@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **ServiceDeploymentStatus** | [**ServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 **IsPartLastDeployment** | Pointer to **bool** |  | [optional] 
-**Metrics** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
+**Steps** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
 
 ## Methods
 
@@ -140,30 +140,30 @@ SetIsPartLastDeployment sets IsPartLastDeployment field to given value.
 
 HasIsPartLastDeployment returns a boolean if a field has been set.
 
-### GetMetrics
+### GetSteps
 
-`func (o *Status) GetMetrics() ServiceStepMetrics`
+`func (o *Status) GetSteps() ServiceStepMetrics`
 
-GetMetrics returns the Metrics field if non-nil, zero value otherwise.
+GetSteps returns the Steps field if non-nil, zero value otherwise.
 
-### GetMetricsOk
+### GetStepsOk
 
-`func (o *Status) GetMetricsOk() (*ServiceStepMetrics, bool)`
+`func (o *Status) GetStepsOk() (*ServiceStepMetrics, bool)`
 
-GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
+GetStepsOk returns a tuple with the Steps field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetrics
+### SetSteps
 
-`func (o *Status) SetMetrics(v ServiceStepMetrics)`
+`func (o *Status) SetSteps(v ServiceStepMetrics)`
 
-SetMetrics sets Metrics field to given value.
+SetSteps sets Steps field to given value.
 
-### HasMetrics
+### HasSteps
 
-`func (o *Status) HasMetrics() bool`
+`func (o *Status) HasSteps() bool`
 
-HasMetrics returns a boolean if a field has been set.
+HasSteps returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
