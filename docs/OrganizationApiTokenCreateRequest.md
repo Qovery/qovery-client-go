@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Scope** | [**OrganizationApiTokenScope**](OrganizationApiTokenScope.md) |  | 
+**Scope** | Pointer to [**NullableOrganizationApiTokenScope**](OrganizationApiTokenScope.md) |  | [optional] 
+**RoleId** | **NullableString** | the roleId provided by the \&quot;List organization custom roles\&quot; endpoint. | 
 
 ## Methods
 
 ### NewOrganizationApiTokenCreateRequest
 
-`func NewOrganizationApiTokenCreateRequest(name string, scope OrganizationApiTokenScope, ) *OrganizationApiTokenCreateRequest`
+`func NewOrganizationApiTokenCreateRequest(name string, roleId NullableString, ) *OrganizationApiTokenCreateRequest`
 
 NewOrganizationApiTokenCreateRequest instantiates a new OrganizationApiTokenCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -91,7 +92,52 @@ and a boolean to check if the value has been set.
 
 SetScope sets Scope field to given value.
 
+### HasScope
 
+`func (o *OrganizationApiTokenCreateRequest) HasScope() bool`
+
+HasScope returns a boolean if a field has been set.
+
+### SetScopeNil
+
+`func (o *OrganizationApiTokenCreateRequest) SetScopeNil(b bool)`
+
+ SetScopeNil sets the value for Scope to be an explicit nil
+
+### UnsetScope
+`func (o *OrganizationApiTokenCreateRequest) UnsetScope()`
+
+UnsetScope ensures that no value is present for Scope, not even an explicit nil
+### GetRoleId
+
+`func (o *OrganizationApiTokenCreateRequest) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *OrganizationApiTokenCreateRequest) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *OrganizationApiTokenCreateRequest) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+
+### SetRoleIdNil
+
+`func (o *OrganizationApiTokenCreateRequest) SetRoleIdNil(b bool)`
+
+ SetRoleIdNil sets the value for RoleId to be an explicit nil
+
+### UnsetRoleId
+`func (o *OrganizationApiTokenCreateRequest) UnsetRoleId()`
+
+UnsetRoleId ensures that no value is present for RoleId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

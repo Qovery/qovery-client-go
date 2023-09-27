@@ -18,12 +18,13 @@ import (
 
 // OrganizationApiToken struct for OrganizationApiToken
 type OrganizationApiToken struct {
-	Id          string                     `json:"id"`
-	CreatedAt   time.Time                  `json:"created_at"`
-	UpdatedAt   *time.Time                 `json:"updated_at,omitempty"`
-	Name        *string                    `json:"name,omitempty"`
-	Description *string                    `json:"description,omitempty"`
-	Scope       *OrganizationApiTokenScope `json:"scope,omitempty"`
+	Id          string     `json:"id"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
+	Name        *string    `json:"name,omitempty"`
+	Description *string    `json:"description,omitempty"`
+	RoleName    *string    `json:"roleName,omitempty"`
+	RoleId      *string    `json:"roleId,omitempty"`
 }
 
 // NewOrganizationApiToken instantiates a new OrganizationApiToken object
@@ -189,36 +190,68 @@ func (o *OrganizationApiToken) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetScope returns the Scope field value if set, zero value otherwise.
-func (o *OrganizationApiToken) GetScope() OrganizationApiTokenScope {
-	if o == nil || o.Scope == nil {
-		var ret OrganizationApiTokenScope
+// GetRoleName returns the RoleName field value if set, zero value otherwise.
+func (o *OrganizationApiToken) GetRoleName() string {
+	if o == nil || o.RoleName == nil {
+		var ret string
 		return ret
 	}
-	return *o.Scope
+	return *o.RoleName
 }
 
-// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
+// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationApiToken) GetScopeOk() (*OrganizationApiTokenScope, bool) {
-	if o == nil || o.Scope == nil {
+func (o *OrganizationApiToken) GetRoleNameOk() (*string, bool) {
+	if o == nil || o.RoleName == nil {
 		return nil, false
 	}
-	return o.Scope, true
+	return o.RoleName, true
 }
 
-// HasScope returns a boolean if a field has been set.
-func (o *OrganizationApiToken) HasScope() bool {
-	if o != nil && o.Scope != nil {
+// HasRoleName returns a boolean if a field has been set.
+func (o *OrganizationApiToken) HasRoleName() bool {
+	if o != nil && o.RoleName != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetScope gets a reference to the given OrganizationApiTokenScope and assigns it to the Scope field.
-func (o *OrganizationApiToken) SetScope(v OrganizationApiTokenScope) {
-	o.Scope = &v
+// SetRoleName gets a reference to the given string and assigns it to the RoleName field.
+func (o *OrganizationApiToken) SetRoleName(v string) {
+	o.RoleName = &v
+}
+
+// GetRoleId returns the RoleId field value if set, zero value otherwise.
+func (o *OrganizationApiToken) GetRoleId() string {
+	if o == nil || o.RoleId == nil {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationApiToken) GetRoleIdOk() (*string, bool) {
+	if o == nil || o.RoleId == nil {
+		return nil, false
+	}
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *OrganizationApiToken) HasRoleId() bool {
+	if o != nil && o.RoleId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *OrganizationApiToken) SetRoleId(v string) {
+	o.RoleId = &v
 }
 
 func (o OrganizationApiToken) MarshalJSON() ([]byte, error) {
@@ -238,8 +271,11 @@ func (o OrganizationApiToken) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if o.Scope != nil {
-		toSerialize["scope"] = o.Scope
+	if o.RoleName != nil {
+		toSerialize["roleName"] = o.RoleName
+	}
+	if o.RoleId != nil {
+		toSerialize["roleId"] = o.RoleId
 	}
 	return json.Marshal(toSerialize)
 }

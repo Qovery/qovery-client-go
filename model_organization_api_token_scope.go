@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// OrganizationApiTokenScope the model 'OrganizationApiTokenScope'
+// OrganizationApiTokenScope deprecated
 type OrganizationApiTokenScope string
 
 // List of OrganizationApiTokenScope

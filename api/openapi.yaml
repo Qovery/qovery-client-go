@@ -18596,6 +18596,7 @@ components:
       - $ref: '#/components/schemas/OrganizationApiTokenCreate_allOf'
     OrganizationApiTokenCreateRequest:
       example:
+        roleId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope: null
         name: name
         description: description
@@ -18606,9 +18607,15 @@ components:
           type: string
         scope:
           $ref: '#/components/schemas/OrganizationApiTokenScope'
+        roleId:
+          description: the roleId provided by the "List organization custom roles"
+            endpoint.
+          format: uuid
+          nullable: true
+          type: string
       required:
       - name
-      - scope
+      - roleId
       type: object
     OrganizationApiTokenResponseList:
       example:
@@ -18622,8 +18629,10 @@ components:
           type: array
       type: object
     OrganizationApiTokenScope:
+      description: deprecated
       enum:
       - ADMIN
+      nullable: true
       type: string
     OrganizationAvailableRole:
       example:
@@ -22199,8 +22208,11 @@ components:
           type: string
         description:
           type: string
-        scope:
-          $ref: '#/components/schemas/OrganizationApiTokenScope'
+        roleName:
+          type: string
+        roleId:
+          format: uuid
+          type: string
       type: object
     OrganizationApiTokenCreate_allOf:
       properties:
@@ -22212,8 +22224,11 @@ components:
           description: the generated token to send in 'Authorization' header prefixed
             by 'Token '
           type: string
-        scope:
-          $ref: '#/components/schemas/OrganizationApiTokenScope'
+        roleName:
+          type: string
+        roleId:
+          format: uuid
+          type: string
       type: object
     OrganizationCurrentCost_allOf:
       properties:

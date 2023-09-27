@@ -17,19 +17,21 @@ import (
 
 // OrganizationApiTokenCreateRequest struct for OrganizationApiTokenCreateRequest
 type OrganizationApiTokenCreateRequest struct {
-	Name        string                    `json:"name"`
-	Description *string                   `json:"description,omitempty"`
-	Scope       OrganizationApiTokenScope `json:"scope"`
+	Name        string                            `json:"name"`
+	Description *string                           `json:"description,omitempty"`
+	Scope       NullableOrganizationApiTokenScope `json:"scope,omitempty"`
+	// the roleId provided by the \"List organization custom roles\" endpoint.
+	RoleId NullableString `json:"roleId"`
 }
 
 // NewOrganizationApiTokenCreateRequest instantiates a new OrganizationApiTokenCreateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationApiTokenCreateRequest(name string, scope OrganizationApiTokenScope) *OrganizationApiTokenCreateRequest {
+func NewOrganizationApiTokenCreateRequest(name string, roleId NullableString) *OrganizationApiTokenCreateRequest {
 	this := OrganizationApiTokenCreateRequest{}
 	this.Name = name
-	this.Scope = scope
+	this.RoleId = roleId
 	return &this
 }
 
@@ -97,28 +99,73 @@ func (o *OrganizationApiTokenCreateRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetScope returns the Scope field value
+// GetScope returns the Scope field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationApiTokenCreateRequest) GetScope() OrganizationApiTokenScope {
-	if o == nil {
+	if o == nil || o.Scope.Get() == nil {
 		var ret OrganizationApiTokenScope
 		return ret
 	}
-
-	return o.Scope
+	return *o.Scope.Get()
 }
 
-// GetScopeOk returns a tuple with the Scope field value
+// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationApiTokenCreateRequest) GetScopeOk() (*OrganizationApiTokenScope, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Scope, true
+	return o.Scope.Get(), o.Scope.IsSet()
 }
 
-// SetScope sets field value
+// HasScope returns a boolean if a field has been set.
+func (o *OrganizationApiTokenCreateRequest) HasScope() bool {
+	if o != nil && o.Scope.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetScope gets a reference to the given NullableOrganizationApiTokenScope and assigns it to the Scope field.
 func (o *OrganizationApiTokenCreateRequest) SetScope(v OrganizationApiTokenScope) {
-	o.Scope = v
+	o.Scope.Set(&v)
+}
+
+// SetScopeNil sets the value for Scope to be an explicit nil
+func (o *OrganizationApiTokenCreateRequest) SetScopeNil() {
+	o.Scope.Set(nil)
+}
+
+// UnsetScope ensures that no value is present for Scope, not even an explicit nil
+func (o *OrganizationApiTokenCreateRequest) UnsetScope() {
+	o.Scope.Unset()
+}
+
+// GetRoleId returns the RoleId field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *OrganizationApiTokenCreateRequest) GetRoleId() string {
+	if o == nil || o.RoleId.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.RoleId.Get()
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationApiTokenCreateRequest) GetRoleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RoleId.Get(), o.RoleId.IsSet()
+}
+
+// SetRoleId sets field value
+func (o *OrganizationApiTokenCreateRequest) SetRoleId(v string) {
+	o.RoleId.Set(&v)
 }
 
 func (o OrganizationApiTokenCreateRequest) MarshalJSON() ([]byte, error) {
@@ -129,8 +176,11 @@ func (o OrganizationApiTokenCreateRequest) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
+	if o.Scope.IsSet() {
+		toSerialize["scope"] = o.Scope.Get()
+	}
 	if true {
-		toSerialize["scope"] = o.Scope
+		toSerialize["roleId"] = o.RoleId.Get()
 	}
 	return json.Marshal(toSerialize)
 }

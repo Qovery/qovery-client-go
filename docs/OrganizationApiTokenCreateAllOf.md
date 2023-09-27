@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | the generated token to send in &#39;Authorization&#39; header prefixed by &#39;Token &#39; | [optional] 
-**Scope** | Pointer to [**OrganizationApiTokenScope**](OrganizationApiTokenScope.md) |  | [optional] 
+**RoleName** | Pointer to **string** |  | [optional] 
+**RoleId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -103,30 +104,55 @@ SetToken sets Token field to given value.
 
 HasToken returns a boolean if a field has been set.
 
-### GetScope
+### GetRoleName
 
-`func (o *OrganizationApiTokenCreateAllOf) GetScope() OrganizationApiTokenScope`
+`func (o *OrganizationApiTokenCreateAllOf) GetRoleName() string`
 
-GetScope returns the Scope field if non-nil, zero value otherwise.
+GetRoleName returns the RoleName field if non-nil, zero value otherwise.
 
-### GetScopeOk
+### GetRoleNameOk
 
-`func (o *OrganizationApiTokenCreateAllOf) GetScopeOk() (*OrganizationApiTokenScope, bool)`
+`func (o *OrganizationApiTokenCreateAllOf) GetRoleNameOk() (*string, bool)`
 
-GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
+GetRoleNameOk returns a tuple with the RoleName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetScope
+### SetRoleName
 
-`func (o *OrganizationApiTokenCreateAllOf) SetScope(v OrganizationApiTokenScope)`
+`func (o *OrganizationApiTokenCreateAllOf) SetRoleName(v string)`
 
-SetScope sets Scope field to given value.
+SetRoleName sets RoleName field to given value.
 
-### HasScope
+### HasRoleName
 
-`func (o *OrganizationApiTokenCreateAllOf) HasScope() bool`
+`func (o *OrganizationApiTokenCreateAllOf) HasRoleName() bool`
 
-HasScope returns a boolean if a field has been set.
+HasRoleName returns a boolean if a field has been set.
+
+### GetRoleId
+
+`func (o *OrganizationApiTokenCreateAllOf) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *OrganizationApiTokenCreateAllOf) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *OrganizationApiTokenCreateAllOf) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *OrganizationApiTokenCreateAllOf) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

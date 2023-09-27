@@ -32,7 +32,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationApiTokenCreateRequest := *openapiclient.NewOrganizationApiTokenCreateRequest("Name_example", openapiclient.OrganizationApiTokenScope("ADMIN")) // OrganizationApiTokenCreateRequest |  (optional)
+    organizationApiTokenCreateRequest := *openapiclient.NewOrganizationApiTokenCreateRequest("Name_example", "RoleId_example") // OrganizationApiTokenCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
