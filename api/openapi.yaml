@@ -18596,7 +18596,7 @@ components:
       - $ref: '#/components/schemas/OrganizationApiTokenCreate_allOf'
     OrganizationApiTokenCreateRequest:
       example:
-        roleId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scope: null
         name: name
         description: description
@@ -18607,7 +18607,7 @@ components:
           type: string
         scope:
           $ref: '#/components/schemas/OrganizationApiTokenScope'
-        roleId:
+        role_id:
           description: the roleId provided by the "List organization custom roles"
             endpoint.
           format: uuid
@@ -18615,7 +18615,7 @@ components:
           type: string
       required:
       - name
-      - roleId
+      - role_id
       type: object
     OrganizationApiTokenResponseList:
       example:
@@ -22208,9 +22208,9 @@ components:
           type: string
         description:
           type: string
-        roleName:
+        role_name:
           type: string
-        roleId:
+        role_id:
           format: uuid
           type: string
       type: object
@@ -22224,9 +22224,9 @@ components:
           description: the generated token to send in 'Authorization' header prefixed
             by 'Token '
           type: string
-        roleName:
+        role_name:
           type: string
-        roleId:
+        role_id:
           format: uuid
           type: string
       type: object

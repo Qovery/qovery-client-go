@@ -21,8 +21,8 @@ type OrganizationApiTokenCreateAllOf struct {
 	Description *string `json:"description,omitempty"`
 	// the generated token to send in 'Authorization' header prefixed by 'Token '
 	Token    *string `json:"token,omitempty"`
-	RoleName *string `json:"roleName,omitempty"`
-	RoleId   *string `json:"roleId,omitempty"`
+	RoleName *string `json:"role_name,omitempty"`
+	RoleId   *string `json:"role_id,omitempty"`
 }
 
 // NewOrganizationApiTokenCreateAllOf instantiates a new OrganizationApiTokenCreateAllOf object
@@ -214,10 +214,10 @@ func (o OrganizationApiTokenCreateAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize["token"] = o.Token
 	}
 	if o.RoleName != nil {
-		toSerialize["roleName"] = o.RoleName
+		toSerialize["role_name"] = o.RoleName
 	}
 	if o.RoleId != nil {
-		toSerialize["roleId"] = o.RoleId
+		toSerialize["role_id"] = o.RoleId
 	}
 	return json.Marshal(toSerialize)
 }

@@ -19,8 +19,8 @@ import (
 type OrganizationApiTokenAllOf struct {
 	Name        *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
-	RoleName    *string `json:"roleName,omitempty"`
-	RoleId      *string `json:"roleId,omitempty"`
+	RoleName    *string `json:"role_name,omitempty"`
+	RoleId      *string `json:"role_id,omitempty"`
 }
 
 // NewOrganizationApiTokenAllOf instantiates a new OrganizationApiTokenAllOf object
@@ -177,10 +177,10 @@ func (o OrganizationApiTokenAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize["description"] = o.Description
 	}
 	if o.RoleName != nil {
-		toSerialize["roleName"] = o.RoleName
+		toSerialize["role_name"] = o.RoleName
 	}
 	if o.RoleId != nil {
-		toSerialize["roleId"] = o.RoleId
+		toSerialize["role_id"] = o.RoleId
 	}
 	return json.Marshal(toSerialize)
 }

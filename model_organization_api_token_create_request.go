@@ -21,7 +21,7 @@ type OrganizationApiTokenCreateRequest struct {
 	Description *string                           `json:"description,omitempty"`
 	Scope       NullableOrganizationApiTokenScope `json:"scope,omitempty"`
 	// the roleId provided by the \"List organization custom roles\" endpoint.
-	RoleId NullableString `json:"roleId"`
+	RoleId NullableString `json:"role_id"`
 }
 
 // NewOrganizationApiTokenCreateRequest instantiates a new OrganizationApiTokenCreateRequest object
@@ -180,7 +180,7 @@ func (o OrganizationApiTokenCreateRequest) MarshalJSON() ([]byte, error) {
 		toSerialize["scope"] = o.Scope.Get()
 	}
 	if true {
-		toSerialize["roleId"] = o.RoleId.Get()
+		toSerialize["role_id"] = o.RoleId.Get()
 	}
 	return json.Marshal(toSerialize)
 }
