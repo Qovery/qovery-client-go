@@ -16,14 +16,16 @@ import (
 	"fmt"
 )
 
-// ServiceStepMetricNameEnum The name of the deployment step at the service level: - REGISTRY_CREATE_REPOSITORY: The step to create the repository in the registry. - GIT_CLONE: The step to clone the source code repository.  - BUILD: The step to build the source code. - DEPLOYMENT: The step to deploy the service.  - ROUTER_DEPLOYMENT: The step to deploy the router.
+// ServiceStepMetricNameEnum The name of the deployment step at the service level: - REGISTRY_CREATE_REPOSITORY: The step to create the repository in the registry. - GIT_CLONE: The step to clone the source code repository.  - BUILD_QUEUEING: The queuing time preceding the actual building step. - BUILD: The step to build the source code. - DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment step. - DEPLOYMENT: The step to deploy the service.  - ROUTER_DEPLOYMENT: The step to deploy the router.
 type ServiceStepMetricNameEnum string
 
 // List of ServiceStepMetricNameEnum
 const (
 	SERVICESTEPMETRICNAMEENUM_REGISTRY_CREATE_REPOSITORY ServiceStepMetricNameEnum = "REGISTRY_CREATE_REPOSITORY"
 	SERVICESTEPMETRICNAMEENUM_GIT_CLONE                  ServiceStepMetricNameEnum = "GIT_CLONE"
+	SERVICESTEPMETRICNAMEENUM_BUILD_QUEUEING             ServiceStepMetricNameEnum = "BUILD_QUEUEING"
 	SERVICESTEPMETRICNAMEENUM_BUILD                      ServiceStepMetricNameEnum = "BUILD"
+	SERVICESTEPMETRICNAMEENUM_DEPLOYMENT_QUEUEING        ServiceStepMetricNameEnum = "DEPLOYMENT_QUEUEING"
 	SERVICESTEPMETRICNAMEENUM_DEPLOYMENT                 ServiceStepMetricNameEnum = "DEPLOYMENT"
 	SERVICESTEPMETRICNAMEENUM_ROUTER_DEPLOYMENT          ServiceStepMetricNameEnum = "ROUTER_DEPLOYMENT"
 )
@@ -32,7 +34,9 @@ const (
 var AllowedServiceStepMetricNameEnumEnumValues = []ServiceStepMetricNameEnum{
 	"REGISTRY_CREATE_REPOSITORY",
 	"GIT_CLONE",
+	"BUILD_QUEUEING",
 	"BUILD",
+	"DEPLOYMENT_QUEUEING",
 	"DEPLOYMENT",
 	"ROUTER_DEPLOYMENT",
 }

@@ -20317,9 +20317,11 @@ components:
           type: integer
       type: object
     StageStepMetricNameEnum:
-      description: "The name of the deployment step at the stage level:\n- PROVISION_BUILDER:\
-        \ The step to provision builders before the actual build\n"
+      description: "The name of the deployment step at the stage level:\n- QUEUEING:\
+        \ The step preceding the actual stage deployment step.\n- PROVISION_BUILDER:\
+        \ The step to provision builders before the actual build.\n"
       enum:
+      - QUEUEING
       - PROVISION_BUILDER
       type: string
     StepMetricStatusEnum:
@@ -20335,13 +20337,17 @@ components:
     ServiceStepMetricNameEnum:
       description: "The name of the deployment step at the service level:\n- REGISTRY_CREATE_REPOSITORY:\
         \ The step to create the repository in the registry.\n- GIT_CLONE: The step\
-        \ to clone the source code repository. \n- BUILD: The step to build the source\
-        \ code.\n- DEPLOYMENT: The step to deploy the service. \n- ROUTER_DEPLOYMENT:\
+        \ to clone the source code repository. \n- BUILD_QUEUEING: The queuing time\
+        \ preceding the actual building step.\n- BUILD: The step to build the source\
+        \ code.\n- DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment\
+        \ step.\n- DEPLOYMENT: The step to deploy the service. \n- ROUTER_DEPLOYMENT:\
         \ The step to deploy the router. \n"
       enum:
       - REGISTRY_CREATE_REPOSITORY
       - GIT_CLONE
+      - BUILD_QUEUEING
       - BUILD
+      - DEPLOYMENT_QUEUEING
       - DEPLOYMENT
       - ROUTER_DEPLOYMENT
       type: string

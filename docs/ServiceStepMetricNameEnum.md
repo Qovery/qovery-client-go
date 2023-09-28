@@ -7,7 +7,11 @@
 
 * `GIT_CLONE` (value: `"GIT_CLONE"`)
 
+* `BUILD_QUEUEING` (value: `"BUILD_QUEUEING"`)
+
 * `BUILD` (value: `"BUILD"`)
+
+* `DEPLOYMENT_QUEUEING` (value: `"DEPLOYMENT_QUEUEING"`)
 
 * `DEPLOYMENT` (value: `"DEPLOYMENT"`)
 
