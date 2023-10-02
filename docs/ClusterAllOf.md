@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 
-**Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
+**Status** | Pointer to [**ClusterStateEnum**](ClusterStateEnum.md) |  | [optional] 
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
@@ -331,20 +331,20 @@ HasEstimatedCloudProviderCost returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *ClusterAllOf) GetStatus() StateEnum`
+`func (o *ClusterAllOf) GetStatus() ClusterStateEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ClusterAllOf) GetStatusOk() (*StateEnum, bool)`
+`func (o *ClusterAllOf) GetStatusOk() (*ClusterStateEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ClusterAllOf) SetStatus(v StateEnum)`
+`func (o *ClusterAllOf) SetStatus(v ClusterStateEnum)`
 
 SetStatus sets Status field to given value.
 

@@ -533,6 +533,7 @@ Class | Method | HTTP request | Description
  - [ClusterRoutingTableRequest](docs/ClusterRoutingTableRequest.md)
  - [ClusterRoutingTableRequestRoutesInner](docs/ClusterRoutingTableRequestRoutesInner.md)
  - [ClusterRoutingTableResultsInner](docs/ClusterRoutingTableResultsInner.md)
+ - [ClusterStateEnum](docs/ClusterStateEnum.md)
  - [ClusterStatus](docs/ClusterStatus.md)
  - [ClusterStatusGet](docs/ClusterStatusGet.md)
  - [ClusterStatusResponseList](docs/ClusterStatusResponseList.md)

@@ -14743,7 +14743,7 @@ components:
           format: uuid
           type: string
         status:
-          $ref: '#/components/schemas/StateEnum'
+          $ref: '#/components/schemas/ClusterStateEnum'
         is_deployed:
           type: boolean
       type: object
@@ -14758,7 +14758,7 @@ components:
           format: uuid
           type: string
         status:
-          $ref: '#/components/schemas/StateEnum'
+          $ref: '#/components/schemas/ClusterStateEnum'
         is_deployed:
           type: boolean
         last_execution_id:
@@ -19768,6 +19768,32 @@ components:
       - RESTARTED
       - RESTART_ERROR
       type: string
+    ClusterStateEnum:
+      enum:
+      - BUILDING
+      - BUILD_ERROR
+      - CANCELED
+      - CANCELING
+      - DELETED
+      - DELETE_ERROR
+      - DELETE_QUEUED
+      - DELETING
+      - DEPLOYED
+      - DEPLOYING
+      - DEPLOYMENT_ERROR
+      - DEPLOYMENT_QUEUED
+      - QUEUED
+      - READY
+      - STOPPED
+      - STOPPING
+      - STOP_ERROR
+      - STOP_QUEUED
+      - RESTART_QUEUED
+      - RESTARTING
+      - RESTARTED
+      - RESTART_ERROR
+      - INVALID_CREDENTIALS
+      type: string
     Status:
       example:
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
@@ -20735,7 +20761,7 @@ components:
             \ on your cloud proider bill, based on your current configuration"
           type: integer
         status:
-          $ref: '#/components/schemas/StateEnum'
+          $ref: '#/components/schemas/ClusterStateEnum'
         has_access:
           type: boolean
         version:
