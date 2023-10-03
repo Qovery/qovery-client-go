@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
-**Registry** | [**ReferenceObject**](ReferenceObject.md) |  | 
+**Registry** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **Name** | **string** | name is case insensitive | 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewJobResponse
 
-`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, healthchecks Healthcheck, ) *JobResponse`
+`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, healthchecks Healthcheck, ) *JobResponse`
 
 NewJobResponse instantiates a new JobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -147,6 +147,11 @@ and a boolean to check if the value has been set.
 
 SetRegistry sets Registry field to given value.
 
+### HasRegistry
+
+`func (o *JobResponse) HasRegistry() bool`
+
+HasRegistry returns a boolean if a field has been set.
 
 ### GetMaximumCpu
 

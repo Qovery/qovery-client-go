@@ -22155,7 +22155,6 @@ components:
       - memory
       - min_running_instances
       - name
-      - registry
       - tag
       type: object
     DeploymentHistoryJobResponse_allOf_schedule:

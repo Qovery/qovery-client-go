@@ -18,11 +18,11 @@ import (
 
 // JobResponse struct for JobResponse
 type JobResponse struct {
-	Id          string          `json:"id"`
-	CreatedAt   time.Time       `json:"created_at"`
-	UpdatedAt   *time.Time      `json:"updated_at,omitempty"`
-	Environment ReferenceObject `json:"environment"`
-	Registry    ReferenceObject `json:"registry"`
+	Id          string           `json:"id"`
+	CreatedAt   time.Time        `json:"created_at"`
+	UpdatedAt   *time.Time       `json:"updated_at,omitempty"`
+	Environment ReferenceObject  `json:"environment"`
+	Registry    *ReferenceObject `json:"registry,omitempty"`
 	// Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -53,12 +53,11 @@ type JobResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, healthchecks Healthcheck) *JobResponse {
+func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, healthchecks Healthcheck) *JobResponse {
 	this := JobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Environment = environment
-	this.Registry = registry
 	this.MaximumCpu = maximumCpu
 	this.MaximumMemory = maximumMemory
 	this.Name = name
@@ -181,28 +180,36 @@ func (o *JobResponse) SetEnvironment(v ReferenceObject) {
 	o.Environment = v
 }
 
-// GetRegistry returns the Registry field value
+// GetRegistry returns the Registry field value if set, zero value otherwise.
 func (o *JobResponse) GetRegistry() ReferenceObject {
-	if o == nil {
+	if o == nil || o.Registry == nil {
 		var ret ReferenceObject
 		return ret
 	}
-
-	return o.Registry
+	return *o.Registry
 }
 
-// GetRegistryOk returns a tuple with the Registry field value
+// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetRegistryOk() (*ReferenceObject, bool) {
-	if o == nil {
+	if o == nil || o.Registry == nil {
 		return nil, false
 	}
-	return &o.Registry, true
+	return o.Registry, true
 }
 
-// SetRegistry sets field value
+// HasRegistry returns a boolean if a field has been set.
+func (o *JobResponse) HasRegistry() bool {
+	if o != nil && o.Registry != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistry gets a reference to the given ReferenceObject and assigns it to the Registry field.
 func (o *JobResponse) SetRegistry(v ReferenceObject) {
-	o.Registry = v
+	o.Registry = &v
 }
 
 // GetMaximumCpu returns the MaximumCpu field value
@@ -622,7 +629,7 @@ func (o JobResponse) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["environment"] = o.Environment
 	}
-	if true {
+	if o.Registry != nil {
 		toSerialize["registry"] = o.Registry
 	}
 	if true {
