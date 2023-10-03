@@ -15302,6 +15302,11 @@ components:
           type: string
         kind:
           $ref: '#/components/schemas/ContainerRegistryKindEnum'
+      required:
+      - id
+      - kind
+      - name
+      - url
       type: object
     ContainerRegistryResponseList:
       example:
