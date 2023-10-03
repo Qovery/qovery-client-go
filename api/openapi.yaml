@@ -20380,7 +20380,8 @@ components:
         \ preceding the actual building step.\n- BUILD: The step to build the source\
         \ code.\n- DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment\
         \ step.\n- DEPLOYMENT: The step to deploy the service. \n- ROUTER_DEPLOYMENT:\
-        \ The step to deploy the router. \n"
+        \ The step to deploy the router. \n- MIRROR_IMAGE: The step to mirror the\
+        \ image to the private registry.\n"
       enum:
       - REGISTRY_CREATE_REPOSITORY
       - GIT_CLONE
@@ -20389,6 +20390,7 @@ components:
       - DEPLOYMENT_QUEUEING
       - DEPLOYMENT
       - ROUTER_DEPLOYMENT
+      - MIRROR_IMAGE
       type: string
     OrganizationJobAutoDeployRequest:
       example:
