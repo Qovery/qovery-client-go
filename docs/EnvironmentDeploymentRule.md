@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
 **OnDemandPreview** | Pointer to **bool** |  | [optional] [default to false]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
 **AutoPreview** | Pointer to **bool** |  | [optional] [default to false]
@@ -99,31 +98,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *EnvironmentDeploymentRule) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### GetAutoDeploy
-
-`func (o *EnvironmentDeploymentRule) GetAutoDeploy() bool`
-
-GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
-
-### GetAutoDeployOk
-
-`func (o *EnvironmentDeploymentRule) GetAutoDeployOk() (*bool, bool)`
-
-GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoDeploy
-
-`func (o *EnvironmentDeploymentRule) SetAutoDeploy(v bool)`
-
-SetAutoDeploy sets AutoDeploy field to given value.
-
-### HasAutoDeploy
-
-`func (o *EnvironmentDeploymentRule) HasAutoDeploy() bool`
-
-HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetOnDemandPreview
 

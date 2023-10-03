@@ -21,7 +21,6 @@ type EnvironmentDeploymentRule struct {
 	Id              string        `json:"id"`
 	CreatedAt       time.Time     `json:"created_at"`
 	UpdatedAt       *time.Time    `json:"updated_at,omitempty"`
-	AutoDeploy      *bool         `json:"auto_deploy,omitempty"`
 	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
 	AutoStop        *bool         `json:"auto_stop,omitempty"`
 	AutoPreview     *bool         `json:"auto_preview,omitempty"`
@@ -39,8 +38,6 @@ func NewEnvironmentDeploymentRule(id string, createdAt time.Time, timezone strin
 	this := EnvironmentDeploymentRule{}
 	this.Id = id
 	this.CreatedAt = createdAt
-	var autoDeploy bool = true
-	this.AutoDeploy = &autoDeploy
 	var onDemandPreview bool = false
 	this.OnDemandPreview = &onDemandPreview
 	var autoStop bool = false
@@ -59,8 +56,6 @@ func NewEnvironmentDeploymentRule(id string, createdAt time.Time, timezone strin
 // but it doesn't guarantee that properties required by API are set
 func NewEnvironmentDeploymentRuleWithDefaults() *EnvironmentDeploymentRule {
 	this := EnvironmentDeploymentRule{}
-	var autoDeploy bool = true
-	this.AutoDeploy = &autoDeploy
 	var onDemandPreview bool = false
 	this.OnDemandPreview = &onDemandPreview
 	var autoStop bool = false
@@ -148,38 +143,6 @@ func (o *EnvironmentDeploymentRule) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *EnvironmentDeploymentRule) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
-}
-
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
-func (o *EnvironmentDeploymentRule) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AutoDeploy
-}
-
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRule) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || o.AutoDeploy == nil {
-		return nil, false
-	}
-	return o.AutoDeploy, true
-}
-
-// HasAutoDeploy returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRule) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
-func (o *EnvironmentDeploymentRule) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
 }
 
 // GetOnDemandPreview returns the OnDemandPreview field value if set, zero value otherwise.
@@ -384,9 +347,6 @@ func (o EnvironmentDeploymentRule) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.AutoDeploy != nil {
-		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	if o.OnDemandPreview != nil {
 		toSerialize["on_demand_preview"] = o.OnDemandPreview

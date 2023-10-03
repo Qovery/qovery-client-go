@@ -26,7 +26,6 @@ type ProjectDeploymentRule struct {
 	Description NullableString      `json:"description,omitempty"`
 	Mode        EnvironmentModeEnum `json:"mode"`
 	ClusterId   string              `json:"cluster_id"`
-	AutoDeploy  *bool               `json:"auto_deploy,omitempty"`
 	AutoStop    *bool               `json:"auto_stop,omitempty"`
 	Timezone    string              `json:"timezone"`
 	StartTime   time.Time           `json:"start_time"`
@@ -49,8 +48,6 @@ func NewProjectDeploymentRule(id string, createdAt time.Time, name string, mode 
 	this.Name = name
 	this.Mode = mode
 	this.ClusterId = clusterId
-	var autoDeploy bool = false
-	this.AutoDeploy = &autoDeploy
 	var autoStop bool = false
 	this.AutoStop = &autoStop
 	this.Timezone = timezone
@@ -66,8 +63,6 @@ func NewProjectDeploymentRule(id string, createdAt time.Time, name string, mode 
 // but it doesn't guarantee that properties required by API are set
 func NewProjectDeploymentRuleWithDefaults() *ProjectDeploymentRule {
 	this := ProjectDeploymentRule{}
-	var autoDeploy bool = false
-	this.AutoDeploy = &autoDeploy
 	var autoStop bool = false
 	this.AutoStop = &autoStop
 	var wildcard string = ""
@@ -268,38 +263,6 @@ func (o *ProjectDeploymentRule) GetClusterIdOk() (*string, bool) {
 // SetClusterId sets field value
 func (o *ProjectDeploymentRule) SetClusterId(v string) {
 	o.ClusterId = v
-}
-
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
-func (o *ProjectDeploymentRule) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AutoDeploy
-}
-
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectDeploymentRule) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || o.AutoDeploy == nil {
-		return nil, false
-	}
-	return o.AutoDeploy, true
-}
-
-// HasAutoDeploy returns a boolean if a field has been set.
-func (o *ProjectDeploymentRule) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
-func (o *ProjectDeploymentRule) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
 }
 
 // GetAutoStop returns the AutoStop field value if set, zero value otherwise.
@@ -508,9 +471,6 @@ func (o ProjectDeploymentRule) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.AutoDeploy != nil {
-		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	if o.AutoStop != nil {
 		toSerialize["auto_stop"] = o.AutoStop

@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **ClusterId** | **string** |  | 
-**AutoDeploy** | Pointer to **bool** |  | [optional] [default to false]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
 **Timezone** | **string** |  | 
 **StartTime** | **time.Time** |  | 
@@ -129,31 +128,6 @@ and a boolean to check if the value has been set.
 
 SetClusterId sets ClusterId field to given value.
 
-
-### GetAutoDeploy
-
-`func (o *ProjectDeploymentRuleRequest) GetAutoDeploy() bool`
-
-GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
-
-### GetAutoDeployOk
-
-`func (o *ProjectDeploymentRuleRequest) GetAutoDeployOk() (*bool, bool)`
-
-GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoDeploy
-
-`func (o *ProjectDeploymentRuleRequest) SetAutoDeploy(v bool)`
-
-SetAutoDeploy sets AutoDeploy field to given value.
-
-### HasAutoDeploy
-
-`func (o *ProjectDeploymentRuleRequest) HasAutoDeploy() bool`
-
-HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetAutoStop
 

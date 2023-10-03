@@ -18,7 +18,6 @@ import (
 
 // EnvironmentDeploymentRuleAllOf struct for EnvironmentDeploymentRuleAllOf
 type EnvironmentDeploymentRuleAllOf struct {
-	AutoDeploy      *bool         `json:"auto_deploy,omitempty"`
 	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
 	AutoStop        *bool         `json:"auto_stop,omitempty"`
 	AutoPreview     *bool         `json:"auto_preview,omitempty"`
@@ -34,8 +33,6 @@ type EnvironmentDeploymentRuleAllOf struct {
 // will change when the set of required properties is changed
 func NewEnvironmentDeploymentRuleAllOf(timezone string, startTime time.Time, stopTime time.Time, weekdays []WeekdayEnum) *EnvironmentDeploymentRuleAllOf {
 	this := EnvironmentDeploymentRuleAllOf{}
-	var autoDeploy bool = true
-	this.AutoDeploy = &autoDeploy
 	var onDemandPreview bool = false
 	this.OnDemandPreview = &onDemandPreview
 	var autoStop bool = false
@@ -54,8 +51,6 @@ func NewEnvironmentDeploymentRuleAllOf(timezone string, startTime time.Time, sto
 // but it doesn't guarantee that properties required by API are set
 func NewEnvironmentDeploymentRuleAllOfWithDefaults() *EnvironmentDeploymentRuleAllOf {
 	this := EnvironmentDeploymentRuleAllOf{}
-	var autoDeploy bool = true
-	this.AutoDeploy = &autoDeploy
 	var onDemandPreview bool = false
 	this.OnDemandPreview = &onDemandPreview
 	var autoStop bool = false
@@ -63,38 +58,6 @@ func NewEnvironmentDeploymentRuleAllOfWithDefaults() *EnvironmentDeploymentRuleA
 	var autoPreview bool = false
 	this.AutoPreview = &autoPreview
 	return &this
-}
-
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
-func (o *EnvironmentDeploymentRuleAllOf) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AutoDeploy
-}
-
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleAllOf) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || o.AutoDeploy == nil {
-		return nil, false
-	}
-	return o.AutoDeploy, true
-}
-
-// HasAutoDeploy returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleAllOf) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
-func (o *EnvironmentDeploymentRuleAllOf) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
 }
 
 // GetOnDemandPreview returns the OnDemandPreview field value if set, zero value otherwise.
@@ -291,9 +254,6 @@ func (o *EnvironmentDeploymentRuleAllOf) SetWeekdays(v []WeekdayEnum) {
 
 func (o EnvironmentDeploymentRuleAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AutoDeploy != nil {
-		toSerialize["auto_deploy"] = o.AutoDeploy
-	}
 	if o.OnDemandPreview != nil {
 		toSerialize["on_demand_preview"] = o.OnDemandPreview
 	}

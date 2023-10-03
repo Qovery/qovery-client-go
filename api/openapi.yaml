@@ -15869,9 +15869,6 @@ components:
         cluster:
           format: uuid
           type: string
-        auto_deploy:
-          default: true
-          type: boolean
         auto_stop:
           default: false
           type: boolean
@@ -16334,7 +16331,6 @@ components:
     EnvironmentDeploymentRuleEditRequest:
       example:
         start_time: 1970-01-01T08:00:00Z
-        auto_deploy: true
         stop_time: 1970-01-01T19:00:00Z
         timezone: UTC
         weekdays:
@@ -16344,9 +16340,6 @@ components:
         auto_stop: false
         auto_preview: false
       properties:
-        auto_deploy:
-          default: true
-          type: boolean
         on_demand_preview:
           default: false
           type: boolean
@@ -19400,7 +19393,6 @@ components:
         mode: PRODUCTION
         start_time: 1970-01-01T08:00:00Z
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        auto_deploy: false
         stop_time: 1970-01-01T19:00:00Z
         timezone: UTC
         weekdays:
@@ -19424,9 +19416,6 @@ components:
         cluster_id:
           format: uuid
           type: string
-        auto_deploy:
-          default: false
-          type: boolean
         auto_stop:
           default: false
           type: boolean
@@ -21606,9 +21595,6 @@ components:
       type: object
     EnvironmentDeploymentRule_allOf:
       properties:
-        auto_deploy:
-          default: true
-          type: boolean
         on_demand_preview:
           default: false
           type: boolean

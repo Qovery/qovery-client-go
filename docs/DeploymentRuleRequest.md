@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **Cluster** | **string** |  | 
-**AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
 **AutoStop** | **bool** |  | [default to false]
 **Timezone** | Pointer to **string** | specify value only if auto_stop &#x3D; false | [optional] [default to "Europe/London"]
 **StartTime** | Pointer to **NullableTime** | specify value only if auto_stop &#x3D; false | [optional] 
@@ -118,31 +117,6 @@ and a boolean to check if the value has been set.
 
 SetCluster sets Cluster field to given value.
 
-
-### GetAutoDeploy
-
-`func (o *DeploymentRuleRequest) GetAutoDeploy() bool`
-
-GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
-
-### GetAutoDeployOk
-
-`func (o *DeploymentRuleRequest) GetAutoDeployOk() (*bool, bool)`
-
-GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoDeploy
-
-`func (o *DeploymentRuleRequest) SetAutoDeploy(v bool)`
-
-SetAutoDeploy sets AutoDeploy field to given value.
-
-### HasAutoDeploy
-
-`func (o *DeploymentRuleRequest) HasAutoDeploy() bool`
-
-HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetAutoStop
 

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoDeploy** | Pointer to **bool** |  | [optional] [default to true]
 **OnDemandPreview** | Pointer to **bool** |  | [optional] [default to false]
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
 **AutoPreview** | Pointer to **bool** |  | [optional] [default to false]
@@ -31,31 +30,6 @@ will change when the set of required properties is changed
 NewEnvironmentDeploymentRuleAllOfWithDefaults instantiates a new EnvironmentDeploymentRuleAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAutoDeploy
-
-`func (o *EnvironmentDeploymentRuleAllOf) GetAutoDeploy() bool`
-
-GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
-
-### GetAutoDeployOk
-
-`func (o *EnvironmentDeploymentRuleAllOf) GetAutoDeployOk() (*bool, bool)`
-
-GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoDeploy
-
-`func (o *EnvironmentDeploymentRuleAllOf) SetAutoDeploy(v bool)`
-
-SetAutoDeploy sets AutoDeploy field to given value.
-
-### HasAutoDeploy
-
-`func (o *EnvironmentDeploymentRuleAllOf) HasAutoDeploy() bool`
-
-HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetOnDemandPreview
 
