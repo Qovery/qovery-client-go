@@ -17,7 +17,7 @@ import (
 
 // JobResponseAllOfSource struct for JobResponseAllOfSource
 type JobResponseAllOfSource struct {
-	Image  NullableJobRequestAllOfSourceImage   `json:"image,omitempty"`
+	Image  NullableJobResponseAllOfSourceImage  `json:"image,omitempty"`
 	Docker NullableJobResponseAllOfSourceDocker `json:"docker,omitempty"`
 }
 
@@ -39,9 +39,9 @@ func NewJobResponseAllOfSourceWithDefaults() *JobResponseAllOfSource {
 }
 
 // GetImage returns the Image field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JobResponseAllOfSource) GetImage() JobRequestAllOfSourceImage {
+func (o *JobResponseAllOfSource) GetImage() JobResponseAllOfSourceImage {
 	if o == nil || o.Image.Get() == nil {
-		var ret JobRequestAllOfSourceImage
+		var ret JobResponseAllOfSourceImage
 		return ret
 	}
 	return *o.Image.Get()
@@ -50,7 +50,7 @@ func (o *JobResponseAllOfSource) GetImage() JobRequestAllOfSourceImage {
 // GetImageOk returns a tuple with the Image field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JobResponseAllOfSource) GetImageOk() (*JobRequestAllOfSourceImage, bool) {
+func (o *JobResponseAllOfSource) GetImageOk() (*JobResponseAllOfSourceImage, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *JobResponseAllOfSource) HasImage() bool {
 	return false
 }
 
-// SetImage gets a reference to the given NullableJobRequestAllOfSourceImage and assigns it to the Image field.
-func (o *JobResponseAllOfSource) SetImage(v JobRequestAllOfSourceImage) {
+// SetImage gets a reference to the given NullableJobResponseAllOfSourceImage and assigns it to the Image field.
+func (o *JobResponseAllOfSource) SetImage(v JobResponseAllOfSourceImage) {
 	o.Image.Set(&v)
 }
 

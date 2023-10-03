@@ -18,12 +18,12 @@ import (
 
 // ContainerResponse struct for ContainerResponse
 type ContainerResponse struct {
-	Id          string                       `json:"id"`
-	CreatedAt   time.Time                    `json:"created_at"`
-	UpdatedAt   *time.Time                   `json:"updated_at,omitempty"`
-	Storage     []ServiceStorageStorageInner `json:"storage,omitempty"`
-	Environment ReferenceObject              `json:"environment"`
-	Registry    ReferenceObject              `json:"registry"`
+	Id          string                                   `json:"id"`
+	CreatedAt   time.Time                                `json:"created_at"`
+	UpdatedAt   *time.Time                               `json:"updated_at,omitempty"`
+	Storage     []ServiceStorageStorageInner             `json:"storage,omitempty"`
+	Environment ReferenceObject                          `json:"environment"`
+	Registry    ContainerRegistryProviderDetailsResponse `json:"registry"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -59,7 +59,7 @@ type ContainerResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponse(id string, createdAt time.Time, environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool) *ContainerResponse {
+func NewContainerResponse(id string, createdAt time.Time, environment ReferenceObject, registry ContainerRegistryProviderDetailsResponse, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool) *ContainerResponse {
 	this := ContainerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -228,9 +228,9 @@ func (o *ContainerResponse) SetEnvironment(v ReferenceObject) {
 }
 
 // GetRegistry returns the Registry field value
-func (o *ContainerResponse) GetRegistry() ReferenceObject {
+func (o *ContainerResponse) GetRegistry() ContainerRegistryProviderDetailsResponse {
 	if o == nil {
-		var ret ReferenceObject
+		var ret ContainerRegistryProviderDetailsResponse
 		return ret
 	}
 
@@ -239,7 +239,7 @@ func (o *ContainerResponse) GetRegistry() ReferenceObject {
 
 // GetRegistryOk returns a tuple with the Registry field value
 // and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetRegistryOk() (*ReferenceObject, bool) {
+func (o *ContainerResponse) GetRegistryOk() (*ContainerRegistryProviderDetailsResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -247,7 +247,7 @@ func (o *ContainerResponse) GetRegistryOk() (*ReferenceObject, bool) {
 }
 
 // SetRegistry sets field value
-func (o *ContainerResponse) SetRegistry(v ReferenceObject) {
+func (o *ContainerResponse) SetRegistry(v ContainerRegistryProviderDetailsResponse) {
 	o.Registry = v
 }
 

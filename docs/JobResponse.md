@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
-**Registry** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **Name** | **string** | name is case insensitive | 
@@ -127,31 +126,6 @@ and a boolean to check if the value has been set.
 
 SetEnvironment sets Environment field to given value.
 
-
-### GetRegistry
-
-`func (o *JobResponse) GetRegistry() ReferenceObject`
-
-GetRegistry returns the Registry field if non-nil, zero value otherwise.
-
-### GetRegistryOk
-
-`func (o *JobResponse) GetRegistryOk() (*ReferenceObject, bool)`
-
-GetRegistryOk returns a tuple with the Registry field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegistry
-
-`func (o *JobResponse) SetRegistry(v ReferenceObject)`
-
-SetRegistry sets Registry field to given value.
-
-### HasRegistry
-
-`func (o *JobResponse) HasRegistry() bool`
-
-HasRegistry returns a boolean if a field has been set.
 
 ### GetMaximumCpu
 

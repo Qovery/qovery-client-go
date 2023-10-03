@@ -17,8 +17,7 @@ import (
 
 // JobResponseAllOf struct for JobResponseAllOf
 type JobResponseAllOf struct {
-	Environment ReferenceObject  `json:"environment"`
-	Registry    *ReferenceObject `json:"registry,omitempty"`
+	Environment ReferenceObject `json:"environment"`
 	// Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -92,38 +91,6 @@ func (o *JobResponseAllOf) GetEnvironmentOk() (*ReferenceObject, bool) {
 // SetEnvironment sets field value
 func (o *JobResponseAllOf) SetEnvironment(v ReferenceObject) {
 	o.Environment = v
-}
-
-// GetRegistry returns the Registry field value if set, zero value otherwise.
-func (o *JobResponseAllOf) GetRegistry() ReferenceObject {
-	if o == nil || o.Registry == nil {
-		var ret ReferenceObject
-		return ret
-	}
-	return *o.Registry
-}
-
-// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobResponseAllOf) GetRegistryOk() (*ReferenceObject, bool) {
-	if o == nil || o.Registry == nil {
-		return nil, false
-	}
-	return o.Registry, true
-}
-
-// HasRegistry returns a boolean if a field has been set.
-func (o *JobResponseAllOf) HasRegistry() bool {
-	if o != nil && o.Registry != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistry gets a reference to the given ReferenceObject and assigns it to the Registry field.
-func (o *JobResponseAllOf) SetRegistry(v ReferenceObject) {
-	o.Registry = &v
 }
 
 // GetMaximumCpu returns the MaximumCpu field value
@@ -533,9 +500,6 @@ func (o JobResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["environment"] = o.Environment
-	}
-	if o.Registry != nil {
-		toSerialize["registry"] = o.Registry
 	}
 	if true {
 		toSerialize["maximum_cpu"] = o.MaximumCpu

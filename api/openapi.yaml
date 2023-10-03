@@ -15290,6 +15290,19 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ContainerRegistryResponse_allOf'
+    ContainerRegistryProviderDetailsResponse:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        url:
+          description: URL of the container registry
+          type: string
+        kind:
+          $ref: '#/components/schemas/ContainerRegistryKindEnum'
+      type: object
     ContainerRegistryResponseList:
       example:
         results:
@@ -21146,7 +21159,7 @@ components:
         environment:
           $ref: '#/components/schemas/ReferenceObject'
         registry:
-          $ref: '#/components/schemas/ReferenceObject'
+          $ref: '#/components/schemas/ContainerRegistryProviderDetailsResponse'
         maximum_cpu:
           description: Maximum cpu that can be allocated to the container based on
             organization cluster configuration. unit is millicores (m). 1000m = 1
@@ -22028,6 +22041,23 @@ components:
       - healthchecks
       - name
       type: object
+    JobResponse_allOf_source_image:
+      nullable: true
+      properties:
+        image_name:
+          description: "The image name pattern differs according to chosen container\
+            \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
+            * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
+          type: string
+        tag:
+          description: tag of the image container
+          type: string
+        registry_id:
+          description: tag of the image container
+          type: string
+        registry:
+          $ref: '#/components/schemas/ContainerRegistryProviderDetailsResponse'
+      type: object
     JobResponse_allOf_source_docker:
       nullable: true
       properties:
@@ -22042,7 +22072,7 @@ components:
     JobResponse_allOf_source:
       properties:
         image:
-          $ref: '#/components/schemas/JobRequest_allOf_source_image'
+          $ref: '#/components/schemas/JobResponse_allOf_source_image'
         docker:
           $ref: '#/components/schemas/JobResponse_allOf_source_docker'
       type: object
@@ -22082,8 +22112,6 @@ components:
     JobResponse_allOf:
       properties:
         environment:
-          $ref: '#/components/schemas/ReferenceObject'
-        registry:
           $ref: '#/components/schemas/ReferenceObject'
         maximum_cpu:
           description: Maximum cpu that can be allocated to the job based on organization

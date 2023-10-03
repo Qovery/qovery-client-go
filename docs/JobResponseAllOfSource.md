@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Image** | Pointer to [**NullableJobRequestAllOfSourceImage**](JobRequestAllOfSourceImage.md) |  | [optional] 
+**Image** | Pointer to [**NullableJobResponseAllOfSourceImage**](JobResponseAllOfSourceImage.md) |  | [optional] 
 **Docker** | Pointer to [**NullableJobResponseAllOfSourceDocker**](JobResponseAllOfSourceDocker.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetImage
 
-`func (o *JobResponseAllOfSource) GetImage() JobRequestAllOfSourceImage`
+`func (o *JobResponseAllOfSource) GetImage() JobResponseAllOfSourceImage`
 
 GetImage returns the Image field if non-nil, zero value otherwise.
 
 ### GetImageOk
 
-`func (o *JobResponseAllOfSource) GetImageOk() (*JobRequestAllOfSourceImage, bool)`
+`func (o *JobResponseAllOfSource) GetImageOk() (*JobResponseAllOfSourceImage, bool)`
 
 GetImageOk returns a tuple with the Image field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImage
 
-`func (o *JobResponseAllOfSource) SetImage(v JobRequestAllOfSourceImage)`
+`func (o *JobResponseAllOfSource) SetImage(v JobResponseAllOfSourceImage)`
 
 SetImage sets Image field to given value.
 

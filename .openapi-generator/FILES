@@ -200,6 +200,7 @@ docs/ContainerNetwork.md
 docs/ContainerNetworkRequest.md
 docs/ContainerRegistriesApi.md
 docs/ContainerRegistryKindEnum.md
+docs/ContainerRegistryProviderDetailsResponse.md
 docs/ContainerRegistryRequest.md
 docs/ContainerRegistryRequestConfig.md
 docs/ContainerRegistryResponse.md
@@ -407,6 +408,7 @@ docs/JobResponseAllOfSchedule.md
 docs/JobResponseAllOfScheduleCronjob.md
 docs/JobResponseAllOfSource.md
 docs/JobResponseAllOfSourceDocker.md
+docs/JobResponseAllOfSourceImage.md
 docs/JobResponseList.md
 docs/JobScheduleEvent.md
 docs/JobSecretApi.md
@@ -703,6 +705,7 @@ model_container_deploy_request.go
 model_container_network.go
 model_container_network_request.go
 model_container_registry_kind_enum.go
+model_container_registry_provider_details_response.go
 model_container_registry_request.go
 model_container_registry_request_config.go
 model_container_registry_response.go
@@ -880,6 +883,7 @@ model_job_response_all_of_schedule.go
 model_job_response_all_of_schedule_cronjob.go
 model_job_response_all_of_source.go
 model_job_response_all_of_source_docker.go
+model_job_response_all_of_source_image.go
 model_job_response_list.go
 model_job_schedule_event.go
 model_key.go

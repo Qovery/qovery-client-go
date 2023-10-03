@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
-**Registry** | [**ReferenceObject**](ReferenceObject.md) |  | 
+**Registry** | [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **Name** | **string** | name is case insensitive | 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewContainerResponse
 
-`func NewContainerResponse(id string, createdAt time.Time, environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, ) *ContainerResponse`
+`func NewContainerResponse(id string, createdAt time.Time, environment ReferenceObject, registry ContainerRegistryProviderDetailsResponse, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, ) *ContainerResponse`
 
 NewContainerResponse instantiates a new ContainerResponse object
 This constructor will assign default values to properties that have it defined,
@@ -158,20 +158,20 @@ SetEnvironment sets Environment field to given value.
 
 ### GetRegistry
 
-`func (o *ContainerResponse) GetRegistry() ReferenceObject`
+`func (o *ContainerResponse) GetRegistry() ContainerRegistryProviderDetailsResponse`
 
 GetRegistry returns the Registry field if non-nil, zero value otherwise.
 
 ### GetRegistryOk
 
-`func (o *ContainerResponse) GetRegistryOk() (*ReferenceObject, bool)`
+`func (o *ContainerResponse) GetRegistryOk() (*ContainerRegistryProviderDetailsResponse, bool)`
 
 GetRegistryOk returns a tuple with the Registry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistry
 
-`func (o *ContainerResponse) SetRegistry(v ReferenceObject)`
+`func (o *ContainerResponse) SetRegistry(v ContainerRegistryProviderDetailsResponse)`
 
 SetRegistry sets Registry field to given value.
 

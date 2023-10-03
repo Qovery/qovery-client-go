@@ -17,8 +17,8 @@ import (
 
 // ContainerResponseAllOf struct for ContainerResponseAllOf
 type ContainerResponseAllOf struct {
-	Environment ReferenceObject `json:"environment"`
-	Registry    ReferenceObject `json:"registry"`
+	Environment ReferenceObject                          `json:"environment"`
+	Registry    ContainerRegistryProviderDetailsResponse `json:"registry"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -54,7 +54,7 @@ type ContainerResponseAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponseAllOf(environment ReferenceObject, registry ReferenceObject, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool) *ContainerResponseAllOf {
+func NewContainerResponseAllOf(environment ReferenceObject, registry ContainerRegistryProviderDetailsResponse, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool) *ContainerResponseAllOf {
 	this := ContainerResponseAllOf{}
 	this.Environment = environment
 	this.Registry = registry
@@ -109,9 +109,9 @@ func (o *ContainerResponseAllOf) SetEnvironment(v ReferenceObject) {
 }
 
 // GetRegistry returns the Registry field value
-func (o *ContainerResponseAllOf) GetRegistry() ReferenceObject {
+func (o *ContainerResponseAllOf) GetRegistry() ContainerRegistryProviderDetailsResponse {
 	if o == nil {
-		var ret ReferenceObject
+		var ret ContainerRegistryProviderDetailsResponse
 		return ret
 	}
 
@@ -120,7 +120,7 @@ func (o *ContainerResponseAllOf) GetRegistry() ReferenceObject {
 
 // GetRegistryOk returns a tuple with the Registry field value
 // and a boolean to check if the value has been set.
-func (o *ContainerResponseAllOf) GetRegistryOk() (*ReferenceObject, bool) {
+func (o *ContainerResponseAllOf) GetRegistryOk() (*ContainerRegistryProviderDetailsResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *ContainerResponseAllOf) GetRegistryOk() (*ReferenceObject, bool) {
 }
 
 // SetRegistry sets field value
-func (o *ContainerResponseAllOf) SetRegistry(v ReferenceObject) {
+func (o *ContainerResponseAllOf) SetRegistry(v ContainerRegistryProviderDetailsResponse) {
 	o.Registry = v
 }
 
