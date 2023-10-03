@@ -278,7 +278,7 @@ func (r ApiEditCustomDomainRequest) Execute() (*CustomDomain, *http.Response, er
 /*
 EditCustomDomain Edit a Custom Domain
 
-To edit a Custom Domain  you must have the project user permission
+To edit a Custom Domain you must have the project user permission
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
