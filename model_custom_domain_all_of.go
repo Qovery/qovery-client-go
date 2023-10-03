@@ -20,6 +20,8 @@ type CustomDomainAllOf struct {
 	// URL provided by Qovery. You must create a CNAME on your DNS provider using that URL
 	ValidationDomain *string                 `json:"validation_domain,omitempty"`
 	Status           *CustomDomainStatusEnum `json:"status,omitempty"`
+	// to control if a certificate has to be generated for this custom domain by Qovery. The default value is `true`. This flag should be set to `false` if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery.
+	GenerateCertificate *bool `json:"generate_certificate,omitempty"`
 }
 
 // NewCustomDomainAllOf instantiates a new CustomDomainAllOf object
@@ -103,6 +105,38 @@ func (o *CustomDomainAllOf) SetStatus(v CustomDomainStatusEnum) {
 	o.Status = &v
 }
 
+// GetGenerateCertificate returns the GenerateCertificate field value if set, zero value otherwise.
+func (o *CustomDomainAllOf) GetGenerateCertificate() bool {
+	if o == nil || o.GenerateCertificate == nil {
+		var ret bool
+		return ret
+	}
+	return *o.GenerateCertificate
+}
+
+// GetGenerateCertificateOk returns a tuple with the GenerateCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomDomainAllOf) GetGenerateCertificateOk() (*bool, bool) {
+	if o == nil || o.GenerateCertificate == nil {
+		return nil, false
+	}
+	return o.GenerateCertificate, true
+}
+
+// HasGenerateCertificate returns a boolean if a field has been set.
+func (o *CustomDomainAllOf) HasGenerateCertificate() bool {
+	if o != nil && o.GenerateCertificate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGenerateCertificate gets a reference to the given bool and assigns it to the GenerateCertificate field.
+func (o *CustomDomainAllOf) SetGenerateCertificate(v bool) {
+	o.GenerateCertificate = &v
+}
+
 func (o CustomDomainAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ValidationDomain != nil {
@@ -110,6 +144,9 @@ func (o CustomDomainAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
+	}
+	if o.GenerateCertificate != nil {
+		toSerialize["generate_certificate"] = o.GenerateCertificate
 	}
 	return json.Marshal(toSerialize)
 }
