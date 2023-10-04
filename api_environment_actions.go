@@ -265,6 +265,120 @@ func (a *EnvironmentActionsApiService) CloneEnvironmentExecute(r ApiCloneEnviron
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDeleteSelectedServicesRequest struct {
+	ctx                             context.Context
+	ApiService                      *EnvironmentActionsApiService
+	environmentId                   string
+	environmentServiceIdsAllRequest *EnvironmentServiceIdsAllRequest
+}
+
+func (r ApiDeleteSelectedServicesRequest) EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest EnvironmentServiceIdsAllRequest) ApiDeleteSelectedServicesRequest {
+	r.environmentServiceIdsAllRequest = &environmentServiceIdsAllRequest
+	return r
+}
+
+func (r ApiDeleteSelectedServicesRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteSelectedServicesExecute(r)
+}
+
+/*
+DeleteSelectedServices Delete services
+
+Delete selected services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiDeleteSelectedServicesRequest
+*/
+func (a *EnvironmentActionsApiService) DeleteSelectedServices(ctx context.Context, environmentId string) ApiDeleteSelectedServicesRequest {
+	return ApiDeleteSelectedServicesRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentId: environmentId,
+	}
+}
+
+// Execute executes the request
+func (a *EnvironmentActionsApiService) DeleteSelectedServicesExecute(r ApiDeleteSelectedServicesRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.DeleteSelectedServices")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environment/{environmentId}/service/delete"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.environmentServiceIdsAllRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiDeployAllServicesRequest struct {
 	ctx              context.Context
 	ApiService       *EnvironmentActionsApiService
@@ -977,4 +1091,118 @@ func (a *EnvironmentActionsApiService) StopEnvironmentExecute(r ApiStopEnvironme
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStopSelectedServicesRequest struct {
+	ctx                             context.Context
+	ApiService                      *EnvironmentActionsApiService
+	environmentId                   string
+	environmentServiceIdsAllRequest *EnvironmentServiceIdsAllRequest
+}
+
+func (r ApiStopSelectedServicesRequest) EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest EnvironmentServiceIdsAllRequest) ApiStopSelectedServicesRequest {
+	r.environmentServiceIdsAllRequest = &environmentServiceIdsAllRequest
+	return r
+}
+
+func (r ApiStopSelectedServicesRequest) Execute() (*http.Response, error) {
+	return r.ApiService.StopSelectedServicesExecute(r)
+}
+
+/*
+StopSelectedServices Stop services
+
+Stop selected services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiStopSelectedServicesRequest
+*/
+func (a *EnvironmentActionsApiService) StopSelectedServices(ctx context.Context, environmentId string) ApiStopSelectedServicesRequest {
+	return ApiStopSelectedServicesRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentId: environmentId,
+	}
+}
+
+// Execute executes the request
+func (a *EnvironmentActionsApiService) StopSelectedServicesExecute(r ApiStopSelectedServicesRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsApiService.StopSelectedServices")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environment/{environmentId}/service/stop"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.environmentServiceIdsAllRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }

@@ -6087,6 +6087,76 @@ paths:
       summary: Reboot services
       tags:
       - Environment Actions
+  /environment/{environmentId}/service/stop:
+    post:
+      description: Stop selected services
+      operationId: stopSelectedServices
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentServiceIdsAllRequest'
+      responses:
+        "200":
+          description: Services have been triggered to be deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Stop services
+      tags:
+      - Environment Actions
+  /environment/{environmentId}/service/delete:
+    post:
+      description: Delete selected services
+      operationId: deleteSelectedServices
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentServiceIdsAllRequest'
+      responses:
+        "200":
+          description: Services have been triggered to be deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Delete services
+      tags:
+      - Environment Actions
   /organization/{organizationId}/container/deploy:
     post:
       description: |
@@ -17165,6 +17235,42 @@ components:
         results:
           items:
             $ref: '#/components/schemas/EnvironmentVariable'
+          type: array
+      type: object
+    EnvironmentServiceIdsAllRequest:
+      example:
+        application_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        job_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        container_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        database_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        application_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        container_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        database_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        job_ids:
+          items:
+            format: uuid
+            type: string
           type: array
       type: object
     APIVariableScopeEnum:
