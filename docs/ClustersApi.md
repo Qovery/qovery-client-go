@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ## DeleteCluster
 
-> DeleteCluster(ctx, organizationId, clusterId).Execute()
+> DeleteCluster(ctx, organizationId, clusterId).DeleteMode(deleteMode).Execute()
 
 Delete a cluster
 
@@ -115,10 +115,11 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    deleteMode := "DEFAULT" // string |  (optional) (default to "DEFAULT")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClustersApi.DeleteCluster(context.Background(), organizationId, clusterId).Execute()
+    resp, r, err := apiClient.ClustersApi.DeleteCluster(context.Background(), organizationId, clusterId).DeleteMode(deleteMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.DeleteCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,6 +145,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **deleteMode** | **string** |  | [default to &quot;DEFAULT&quot;]
 
 ### Return type
 

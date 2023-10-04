@@ -151,6 +151,12 @@ type ApiDeleteClusterRequest struct {
 	ApiService     *ClustersApiService
 	organizationId string
 	clusterId      string
+	deleteMode     *string
+}
+
+func (r ApiDeleteClusterRequest) DeleteMode(deleteMode string) ApiDeleteClusterRequest {
+	r.deleteMode = &deleteMode
+	return r
 }
 
 func (r ApiDeleteClusterRequest) Execute() (*http.Response, error) {
@@ -195,6 +201,9 @@ func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*h
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.deleteMode != nil {
+		localVarQueryParams.Add("deleteMode", parameterToString(*r.deleteMode, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
