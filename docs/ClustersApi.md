@@ -115,7 +115,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-    deleteMode := "DEFAULT" // string |  (optional) (default to "DEFAULT")
+    deleteMode := openapiclient.ClusterDeleteMode("DEFAULT") // ClusterDeleteMode |  (optional) (default to "DEFAULT")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **deleteMode** | **string** |  | [default to &quot;DEFAULT&quot;]
+ **deleteMode** | [**ClusterDeleteMode**](ClusterDeleteMode.md) |  | [default to &quot;DEFAULT&quot;]
 
 ### Return type
 

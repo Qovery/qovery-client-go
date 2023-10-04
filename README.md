@@ -508,6 +508,7 @@ Class | Method | HTTP request | Description
  - [ClusterCloudProviderInfoRequest](docs/ClusterCloudProviderInfoRequest.md)
  - [ClusterCredentials](docs/ClusterCredentials.md)
  - [ClusterCredentialsResponseList](docs/ClusterCredentialsResponseList.md)
+ - [ClusterDeleteMode](docs/ClusterDeleteMode.md)
  - [ClusterDeploymentStatusEnum](docs/ClusterDeploymentStatusEnum.md)
  - [ClusterFeature](docs/ClusterFeature.md)
  - [ClusterFeatureAcceptedValuesInner](docs/ClusterFeatureAcceptedValuesInner.md)

@@ -151,10 +151,10 @@ type ApiDeleteClusterRequest struct {
 	ApiService     *ClustersApiService
 	organizationId string
 	clusterId      string
-	deleteMode     *string
+	deleteMode     *ClusterDeleteMode
 }
 
-func (r ApiDeleteClusterRequest) DeleteMode(deleteMode string) ApiDeleteClusterRequest {
+func (r ApiDeleteClusterRequest) DeleteMode(deleteMode ClusterDeleteMode) ApiDeleteClusterRequest {
 	r.deleteMode = &deleteMode
 	return r
 }

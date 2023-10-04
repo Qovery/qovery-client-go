@@ -1365,21 +1365,7 @@ paths:
         name: deleteMode
         required: false
         schema:
-          default: DEFAULT
-          description: "Indicates the mode to apply on cluster deletion  \n**\"hard\
-            \ delete\"** means that we delete directly from our database, this is\
-            \ different from a **\"trigger delete\"** that cleans the resource\n-\
-            \ `DEFAULT`: this is the normal way, trigger delete the cluster only if\
-            \ no environment linked to this cluster remains\n- `DELETE_CLUSTER_AND_QOVERY_CONFIG`:\
-            \ hard delete environments linked to this cluster then trigger delete\
-            \ the cluster\n- `DELETE_QOVERY_CONFIG`: hard delete environments linked\
-            \ to this cluster then hard delete the cluster\n"
-          enum:
-          - DEFAULT
-          - DELETE_CLUSTER_AND_QOVERY_CONFIG
-          - DELETE_QOVERY_CONFIG
-          example: DEFAULT
-          type: string
+          $ref: '#/components/schemas/ClusterDeleteMode'
         style: form
       responses:
         "204":
@@ -14309,6 +14295,21 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/Cluster_allOf'
+    ClusterDeleteMode:
+      default: DEFAULT
+      description: "Indicates the mode to apply on cluster deletion  \n**\"hard delete\"\
+        ** means that we delete directly from our database, this is different from\
+        \ a **\"trigger delete\"** that cleans the resource\n- `DEFAULT`: this is\
+        \ the normal way, trigger delete the cluster only if no environment linked\
+        \ to this cluster remains\n- `DELETE_CLUSTER_AND_QOVERY_CONFIG`: hard delete\
+        \ environments linked to this cluster then trigger delete the cluster\n- `DELETE_QOVERY_CONFIG`:\
+        \ hard delete environments linked to this cluster then hard delete the cluster\n"
+      enum:
+      - DEFAULT
+      - DELETE_CLUSTER_AND_QOVERY_CONFIG
+      - DELETE_QOVERY_CONFIG
+      example: DEFAULT
+      type: string
     ClusterLogs:
       example:
         step: Create
