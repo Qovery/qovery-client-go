@@ -24,7 +24,7 @@ type CustomDomain struct {
 	// your custom domain
 	Domain string `json:"domain"`
 	// to control if a certificate has to be generated for this custom domain by Qovery. The default value is `true`. This flag should be set to `false` if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery.
-	GenerateCertificate *bool `json:"generate_certificate,omitempty"`
+	GenerateCertificate bool `json:"generate_certificate"`
 	// URL provided by Qovery. You must create a CNAME on your DNS provider using that URL
 	ValidationDomain *string                 `json:"validation_domain,omitempty"`
 	Status           *CustomDomainStatusEnum `json:"status,omitempty"`
@@ -34,11 +34,12 @@ type CustomDomain struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomDomain(id string, createdAt time.Time, domain string) *CustomDomain {
+func NewCustomDomain(id string, createdAt time.Time, domain string, generateCertificate bool) *CustomDomain {
 	this := CustomDomain{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Domain = domain
+	this.GenerateCertificate = generateCertificate
 	return &this
 }
 
@@ -154,36 +155,28 @@ func (o *CustomDomain) SetDomain(v string) {
 	o.Domain = v
 }
 
-// GetGenerateCertificate returns the GenerateCertificate field value if set, zero value otherwise.
+// GetGenerateCertificate returns the GenerateCertificate field value
 func (o *CustomDomain) GetGenerateCertificate() bool {
-	if o == nil || o.GenerateCertificate == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.GenerateCertificate
+
+	return o.GenerateCertificate
 }
 
-// GetGenerateCertificateOk returns a tuple with the GenerateCertificate field value if set, nil otherwise
+// GetGenerateCertificateOk returns a tuple with the GenerateCertificate field value
 // and a boolean to check if the value has been set.
 func (o *CustomDomain) GetGenerateCertificateOk() (*bool, bool) {
-	if o == nil || o.GenerateCertificate == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.GenerateCertificate, true
+	return &o.GenerateCertificate, true
 }
 
-// HasGenerateCertificate returns a boolean if a field has been set.
-func (o *CustomDomain) HasGenerateCertificate() bool {
-	if o != nil && o.GenerateCertificate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGenerateCertificate gets a reference to the given bool and assigns it to the GenerateCertificate field.
+// SetGenerateCertificate sets field value
 func (o *CustomDomain) SetGenerateCertificate(v bool) {
-	o.GenerateCertificate = &v
+	o.GenerateCertificate = v
 }
 
 // GetValidationDomain returns the ValidationDomain field value if set, zero value otherwise.
@@ -264,7 +257,7 @@ func (o CustomDomain) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["domain"] = o.Domain
 	}
-	if o.GenerateCertificate != nil {
+	if true {
 		toSerialize["generate_certificate"] = o.GenerateCertificate
 	}
 	if o.ValidationDomain != nil {

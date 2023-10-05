@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Domain** | **string** | your custom domain | 
-**GenerateCertificate** | Pointer to **bool** | to control if a certificate has to be generated for this custom domain by Qovery. The default value is &#x60;true&#x60;. This flag should be set to &#x60;false&#x60; if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery. | [optional] 
+**GenerateCertificate** | **bool** | to control if a certificate has to be generated for this custom domain by Qovery. The default value is &#x60;true&#x60;. This flag should be set to &#x60;false&#x60; if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery. | 
 
 ## Methods
 
 ### NewCustomDomainRequest
 
-`func NewCustomDomainRequest(domain string, ) *CustomDomainRequest`
+`func NewCustomDomainRequest(domain string, generateCertificate bool, ) *CustomDomainRequest`
 
 NewCustomDomainRequest instantiates a new CustomDomainRequest object
 This constructor will assign default values to properties that have it defined,
@@ -65,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetGenerateCertificate sets GenerateCertificate field to given value.
 
-### HasGenerateCertificate
-
-`func (o *CustomDomainRequest) HasGenerateCertificate() bool`
-
-HasGenerateCertificate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -15622,6 +15622,7 @@ components:
           type: boolean
       required:
       - domain
+      - generate_certificate
       type: object
     CustomDomainResponseList:
       example:

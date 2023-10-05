@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Domain** | **string** | your custom domain | 
-**GenerateCertificate** | Pointer to **bool** | to control if a certificate has to be generated for this custom domain by Qovery. The default value is &#x60;true&#x60;. This flag should be set to &#x60;false&#x60; if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery. | [optional] 
+**GenerateCertificate** | **bool** | to control if a certificate has to be generated for this custom domain by Qovery. The default value is &#x60;true&#x60;. This flag should be set to &#x60;false&#x60; if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery. | 
 **ValidationDomain** | Pointer to **string** | URL provided by Qovery. You must create a CNAME on your DNS provider using that URL | [optional] 
 **Status** | Pointer to [**CustomDomainStatusEnum**](CustomDomainStatusEnum.md) |  | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewCustomDomain
 
-`func NewCustomDomain(id string, createdAt time.Time, domain string, ) *CustomDomain`
+`func NewCustomDomain(id string, createdAt time.Time, domain string, generateCertificate bool, ) *CustomDomain`
 
 NewCustomDomain instantiates a new CustomDomain object
 This constructor will assign default values to properties that have it defined,
@@ -135,11 +135,6 @@ and a boolean to check if the value has been set.
 
 SetGenerateCertificate sets GenerateCertificate field to given value.
 
-### HasGenerateCertificate
-
-`func (o *CustomDomain) HasGenerateCertificate() bool`
-
-HasGenerateCertificate returns a boolean if a field has been set.
 
 ### GetValidationDomain
 
