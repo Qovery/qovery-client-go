@@ -9,7 +9,6 @@ api_application_configuration.go
 api_application_deployment_history.go
 api_application_deployment_restriction.go
 api_application_environment_variable.go
-api_application_event.go
 api_application_logs.go
 api_application_main_calls.go
 api_application_metrics.go
@@ -35,7 +34,6 @@ api_custom_domain.go
 api_database_actions.go
 api_database_application.go
 api_database_deployment_history.go
-api_database_event.go
 api_database_main_calls.go
 api_database_metrics.go
 api_databases.go
@@ -97,7 +95,6 @@ docs/ApplicationDeploymentRestrictionResponseList.md
 docs/ApplicationEditRequest.md
 docs/ApplicationEditRequestAllOf.md
 docs/ApplicationEnvironmentVariableApi.md
-docs/ApplicationEventApi.md
 docs/ApplicationGitRepository.md
 docs/ApplicationGitRepositoryRequest.md
 docs/ApplicationLogsApi.md
@@ -243,7 +240,6 @@ docs/DatabaseCurrentMetricMemory.md
 docs/DatabaseCurrentMetricStorage.md
 docs/DatabaseDeploymentHistoryApi.md
 docs/DatabaseEditRequest.md
-docs/DatabaseEventApi.md
 docs/DatabaseMainCallsApi.md
 docs/DatabaseMetricsApi.md
 docs/DatabaseModeEnum.md

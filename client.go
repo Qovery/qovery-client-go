@@ -62,8 +62,6 @@ type APIClient struct {
 
 	ApplicationEnvironmentVariableApi *ApplicationEnvironmentVariableApiService
 
-	ApplicationEventApi *ApplicationEventApiService
-
 	ApplicationLogsApi *ApplicationLogsApiService
 
 	ApplicationMainCallsApi *ApplicationMainCallsApiService
@@ -113,8 +111,6 @@ type APIClient struct {
 	DatabaseApplicationApi *DatabaseApplicationApiService
 
 	DatabaseDeploymentHistoryApi *DatabaseDeploymentHistoryApiService
-
-	DatabaseEventApi *DatabaseEventApiService
 
 	DatabaseMainCallsApi *DatabaseMainCallsApiService
 
@@ -219,7 +215,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationDeploymentHistoryApi = (*ApplicationDeploymentHistoryApiService)(&c.common)
 	c.ApplicationDeploymentRestrictionApi = (*ApplicationDeploymentRestrictionApiService)(&c.common)
 	c.ApplicationEnvironmentVariableApi = (*ApplicationEnvironmentVariableApiService)(&c.common)
-	c.ApplicationEventApi = (*ApplicationEventApiService)(&c.common)
 	c.ApplicationLogsApi = (*ApplicationLogsApiService)(&c.common)
 	c.ApplicationMainCallsApi = (*ApplicationMainCallsApiService)(&c.common)
 	c.ApplicationMetricsApi = (*ApplicationMetricsApiService)(&c.common)
@@ -245,7 +240,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DatabaseActionsApi = (*DatabaseActionsApiService)(&c.common)
 	c.DatabaseApplicationApi = (*DatabaseApplicationApiService)(&c.common)
 	c.DatabaseDeploymentHistoryApi = (*DatabaseDeploymentHistoryApiService)(&c.common)
-	c.DatabaseEventApi = (*DatabaseEventApiService)(&c.common)
 	c.DatabaseMainCallsApi = (*DatabaseMainCallsApiService)(&c.common)
 	c.DatabaseMetricsApi = (*DatabaseMetricsApiService)(&c.common)
 	c.DatabasesApi = (*DatabasesApiService)(&c.common)

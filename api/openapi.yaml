@@ -40,7 +40,6 @@ tags:
 - name: Container Database
 - name: Container Deployment History
 - name: Container Environment Variable
-- name: Container Event
 - name: Container Logs
 - name: Container Main Calls
 - name: Container Metrics
@@ -55,7 +54,6 @@ tags:
 - name: Job Deployment Restriction
 - name: Job Deployment History
 - name: Job Environment Variable
-- name: Job Event
 - name: Job Logs
 - name: Job Main Calls
 - name: Job Metrics
@@ -7850,46 +7848,6 @@ paths:
       summary: List application deploys
       tags:
       - Application Deployment History
-  /application/{applicationId}/event:
-    get:
-      description: "By default it returns the 20 last results. The response is paginated.\
-        \ In order to request the next page, you can use the startId query parameter"
-      operationId: listApplicationEvent
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Starting point after which to return results
-        explode: true
-        in: query
-        name: startId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EventPaginatedResponseList'
-          description: List events
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List application events
-      tags:
-      - Application Event
   /application/{applicationId}/environmentVariable:
     get:
       operationId: listApplicationEnvironmentVariable
@@ -11136,46 +11094,6 @@ paths:
       summary: Remove database  backup
       tags:
       - Backups
-  /database/{databaseId}/event:
-    get:
-      description: "By default it returns the 20 last results. The response is paginated.\
-        \ In order to request the next page, you can use the startId query parameter"
-      operationId: listDatabaseEvent
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Starting point after which to return results
-        explode: true
-        in: query
-        name: startId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EventPaginatedResponseList'
-          description: List events
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List database  events
-      tags:
-      - Database Event
   /database/{databaseId}/clone:
     post:
       description: This will create a new database with the same configuration on
@@ -22863,7 +22781,6 @@ x-tagGroups:
   - Container Deployment History
   - Container Environment Variable
   - Container Secret
-  - Container Event
 - name: Database
   tags:
   - Database Main Calls
@@ -22887,7 +22804,6 @@ x-tagGroups:
   - Job Deployment History
   - Job Environment Variable
   - Job Secret
-  - Job Event
 - name: Account
   tags:
   - Account Info
