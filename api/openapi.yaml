@@ -14291,7 +14291,9 @@ components:
         \ the normal way, trigger delete the cluster only if no environment linked\
         \ to this cluster remains\n- `DELETE_CLUSTER_AND_QOVERY_CONFIG`: hard delete\
         \ environments linked to this cluster then trigger delete the cluster\n- `DELETE_QOVERY_CONFIG`:\
-        \ hard delete environments linked to this cluster then hard delete the cluster\n"
+        \ ⚠️ ⚠️ ⚠️ hard delete environments linked to this cluster then hard delete\
+        \ the cluster - whole cluster ressources **are not deleted** on our side and\
+        \ must be deleted on your side\n"
       enum:
       - DEFAULT
       - DELETE_CLUSTER_AND_QOVERY_CONFIG
