@@ -21,11 +21,9 @@ type EnvironmentVariableAllOf struct {
 	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
 	Scope              APIVariableScopeEnum         `json:"scope"`
 	VariableType       *APIVariableTypeEnum         `json:"variable_type,omitempty"`
-	// present only for `BUILT_IN` variable
-	ServiceId *string `json:"service_id,omitempty"`
-	// present only for `BUILT_IN` variable
-	ServiceName *string                `json:"service_name,omitempty"`
-	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
+	ServiceId          *string                      `json:"service_id,omitempty"`
+	ServiceName        *string                      `json:"service_name,omitempty"`
+	ServiceType        *LinkedServiceTypeEnum       `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
 	OwnedBy *string `json:"owned_by,omitempty"`
 }

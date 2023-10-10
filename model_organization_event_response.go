@@ -18,20 +18,20 @@ import (
 
 // OrganizationEventResponse struct for OrganizationEventResponse
 type OrganizationEventResponse struct {
-	Id              *string                         `json:"id,omitempty"`
-	Timestamp       *time.Time                      `json:"timestamp,omitempty"`
-	EventType       *OrganizationEventType          `json:"event_type,omitempty"`
-	TargetId        NullableString                  `json:"target_id,omitempty"`
-	TargetName      *string                         `json:"target_name,omitempty"`
-	TargetType      *OrganizationEventTargetType    `json:"target_type,omitempty"`
-	SubTargetType   *OrganizationEventSubTargetType `json:"sub_target_type,omitempty"`
-	Change          *string                         `json:"change,omitempty"`
-	Origin          *OrganizationEventOrigin        `json:"origin,omitempty"`
-	TriggeredBy     *string                         `json:"triggered_by,omitempty"`
-	ProjectId       NullableString                  `json:"project_id,omitempty"`
-	ProjectName     *string                         `json:"project_name,omitempty"`
-	EnvironmentId   NullableString                  `json:"environment_id,omitempty"`
-	EnvironmentName *string                         `json:"environment_name,omitempty"`
+	Id              *string                                `json:"id,omitempty"`
+	Timestamp       *time.Time                             `json:"timestamp,omitempty"`
+	EventType       *OrganizationEventType                 `json:"event_type,omitempty"`
+	TargetId        NullableString                         `json:"target_id,omitempty"`
+	TargetName      *string                                `json:"target_name,omitempty"`
+	TargetType      *OrganizationEventTargetType           `json:"target_type,omitempty"`
+	SubTargetType   NullableOrganizationEventSubTargetType `json:"sub_target_type,omitempty"`
+	Change          *string                                `json:"change,omitempty"`
+	Origin          *OrganizationEventOrigin               `json:"origin,omitempty"`
+	TriggeredBy     *string                                `json:"triggered_by,omitempty"`
+	ProjectId       NullableString                         `json:"project_id,omitempty"`
+	ProjectName     *string                                `json:"project_name,omitempty"`
+	EnvironmentId   NullableString                         `json:"environment_id,omitempty"`
+	EnvironmentName *string                                `json:"environment_name,omitempty"`
 }
 
 // NewOrganizationEventResponse instantiates a new OrganizationEventResponse object
@@ -254,36 +254,47 @@ func (o *OrganizationEventResponse) SetTargetType(v OrganizationEventTargetType)
 	o.TargetType = &v
 }
 
-// GetSubTargetType returns the SubTargetType field value if set, zero value otherwise.
+// GetSubTargetType returns the SubTargetType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEventResponse) GetSubTargetType() OrganizationEventSubTargetType {
-	if o == nil || o.SubTargetType == nil {
+	if o == nil || o.SubTargetType.Get() == nil {
 		var ret OrganizationEventSubTargetType
 		return ret
 	}
-	return *o.SubTargetType
+	return *o.SubTargetType.Get()
 }
 
 // GetSubTargetTypeOk returns a tuple with the SubTargetType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEventResponse) GetSubTargetTypeOk() (*OrganizationEventSubTargetType, bool) {
-	if o == nil || o.SubTargetType == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SubTargetType, true
+	return o.SubTargetType.Get(), o.SubTargetType.IsSet()
 }
 
 // HasSubTargetType returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasSubTargetType() bool {
-	if o != nil && o.SubTargetType != nil {
+	if o != nil && o.SubTargetType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubTargetType gets a reference to the given OrganizationEventSubTargetType and assigns it to the SubTargetType field.
+// SetSubTargetType gets a reference to the given NullableOrganizationEventSubTargetType and assigns it to the SubTargetType field.
 func (o *OrganizationEventResponse) SetSubTargetType(v OrganizationEventSubTargetType) {
-	o.SubTargetType = &v
+	o.SubTargetType.Set(&v)
+}
+
+// SetSubTargetTypeNil sets the value for SubTargetType to be an explicit nil
+func (o *OrganizationEventResponse) SetSubTargetTypeNil() {
+	o.SubTargetType.Set(nil)
+}
+
+// UnsetSubTargetType ensures that no value is present for SubTargetType, not even an explicit nil
+func (o *OrganizationEventResponse) UnsetSubTargetType() {
+	o.SubTargetType.Unset()
 }
 
 // GetChange returns the Change field value if set, zero value otherwise.
@@ -552,8 +563,8 @@ func (o OrganizationEventResponse) MarshalJSON() ([]byte, error) {
 	if o.TargetType != nil {
 		toSerialize["target_type"] = o.TargetType
 	}
-	if o.SubTargetType != nil {
-		toSerialize["sub_target_type"] = o.SubTargetType
+	if o.SubTargetType.IsSet() {
+		toSerialize["sub_target_type"] = o.SubTargetType.Get()
 	}
 	if o.Change != nil {
 		toSerialize["change"] = o.Change

@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// LinkedServiceTypeEnum type of the service (application, database, job, gateway...)   present only for `BUILT_IN` variable
+// LinkedServiceTypeEnum type of the service (application, database, job, gateway...)
 type LinkedServiceTypeEnum string
 
 // List of LinkedServiceTypeEnum

@@ -14927,6 +14927,7 @@ components:
         tag: v2.1.1
         message: message
         commit_page_url: commit_page_url
+      nullable: true
       properties:
         created_at:
           format: date-time
@@ -18117,6 +18118,7 @@ components:
       - key
       type: object
     KubernetesEnum:
+      default: MANAGED
       enum:
       - K3S
       - MANAGED
@@ -18172,8 +18174,7 @@ components:
           type: array
       type: object
     LinkedServiceTypeEnum:
-      description: "type of the service (application, database, job, gateway...) \
-        \ \npresent only for `BUILT_IN` variable\n"
+      description: "type of the service (application, database, job, gateway...)"
       enum:
       - APPLICATION
       - CONTAINER
@@ -19068,10 +19069,10 @@ components:
         target_name: target_name
         environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         change: change
-        origin: origin
-        target_type: target_type
+        origin: API
+        target_type: APPLICATION
         target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        sub_target_type: sub_target_type
+        sub_target_type: ADVANCED_SETTINGS
         triggered_by: triggered_by
         project_name: project_name
         event_type: CREATE
@@ -19126,10 +19127,10 @@ components:
         - target_name: target_name
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           change: change
-          origin: origin
-          target_type: target_type
+          origin: API
+          target_type: APPLICATION
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          sub_target_type: sub_target_type
+          sub_target_type: ADVANCED_SETTINGS
           triggered_by: triggered_by
           project_name: project_name
           event_type: CREATE
@@ -19140,10 +19141,10 @@ components:
         - target_name: target_name
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           change: change
-          origin: origin
-          target_type: target_type
+          origin: API
+          target_type: APPLICATION
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          sub_target_type: sub_target_type
+          sub_target_type: ADVANCED_SETTINGS
           triggered_by: triggered_by
           project_name: project_name
           event_type: CREATE
@@ -19209,6 +19210,7 @@ components:
       - TRANSFER_OWNERSHIP
       - VARIABLE
       example: ADVANCED_SETTINGS
+      nullable: true
       type: string
     OrganizationEventTargetType:
       description: Type of the organization event
@@ -19413,6 +19415,7 @@ components:
       - UDP
       type: string
     Probe:
+      nullable: true
       properties:
         type:
           $ref: '#/components/schemas/Probe_type'
@@ -21827,11 +21830,9 @@ components:
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
         service_id:
-          description: present only for `BUILT_IN` variable
           format: uuid
           type: string
         service_name:
-          description: present only for `BUILT_IN` variable
           type: string
         service_type:
           $ref: '#/components/schemas/LinkedServiceTypeEnum'
@@ -22580,11 +22581,9 @@ components:
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
         service_id:
-          description: present only for `BUILT_IN` variable
           format: uuid
           type: string
         service_name:
-          description: present only for `BUILT_IN` variable
           type: string
         service_type:
           $ref: '#/components/schemas/LinkedServiceTypeEnum'
@@ -22684,13 +22683,11 @@ components:
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
         service_id:
-          description: The id of the service referenced by this variable. present
-            only for `BUILT_IN` variable
+          description: The id of the service referenced by this variable.
           format: uuid
           type: string
         service_name:
-          description: The name of the service referenced by this variable. present
-            only for `BUILT_IN` variable
+          description: The name of the service referenced by this variable.
           type: string
         service_type:
           $ref: '#/components/schemas/LinkedServiceTypeEnum'

@@ -26,7 +26,7 @@ type DeploymentHistoryJobResponse struct {
 	Status     *StateEnum                                 `json:"status,omitempty"`
 	ImageName  *string                                    `json:"image_name,omitempty"`
 	Tag        *string                                    `json:"tag,omitempty"`
-	Commit     *Commit                                    `json:"commit,omitempty"`
+	Commit     NullableCommit                             `json:"commit,omitempty"`
 	Schedule   *DeploymentHistoryJobResponseAllOfSchedule `json:"schedule,omitempty"`
 	Arguments  []string                                   `json:"arguments,omitempty"`
 	Entrypoint *string                                    `json:"entrypoint,omitempty"`
@@ -259,36 +259,47 @@ func (o *DeploymentHistoryJobResponse) SetTag(v string) {
 	o.Tag = &v
 }
 
-// GetCommit returns the Commit field value if set, zero value otherwise.
+// GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentHistoryJobResponse) GetCommit() Commit {
-	if o == nil || o.Commit == nil {
+	if o == nil || o.Commit.Get() == nil {
 		var ret Commit
 		return ret
 	}
-	return *o.Commit
+	return *o.Commit.Get()
 }
 
 // GetCommitOk returns a tuple with the Commit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentHistoryJobResponse) GetCommitOk() (*Commit, bool) {
-	if o == nil || o.Commit == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Commit, true
+	return o.Commit.Get(), o.Commit.IsSet()
 }
 
 // HasCommit returns a boolean if a field has been set.
 func (o *DeploymentHistoryJobResponse) HasCommit() bool {
-	if o != nil && o.Commit != nil {
+	if o != nil && o.Commit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCommit gets a reference to the given Commit and assigns it to the Commit field.
+// SetCommit gets a reference to the given NullableCommit and assigns it to the Commit field.
 func (o *DeploymentHistoryJobResponse) SetCommit(v Commit) {
-	o.Commit = &v
+	o.Commit.Set(&v)
+}
+
+// SetCommitNil sets the value for Commit to be an explicit nil
+func (o *DeploymentHistoryJobResponse) SetCommitNil() {
+	o.Commit.Set(nil)
+}
+
+// UnsetCommit ensures that no value is present for Commit, not even an explicit nil
+func (o *DeploymentHistoryJobResponse) UnsetCommit() {
+	o.Commit.Unset()
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
@@ -410,8 +421,8 @@ func (o DeploymentHistoryJobResponse) MarshalJSON() ([]byte, error) {
 	if o.Tag != nil {
 		toSerialize["tag"] = o.Tag
 	}
-	if o.Commit != nil {
-		toSerialize["commit"] = o.Commit
+	if o.Commit.IsSet() {
+		toSerialize["commit"] = o.Commit.Get()
 	}
 	if o.Schedule != nil {
 		toSerialize["schedule"] = o.Schedule

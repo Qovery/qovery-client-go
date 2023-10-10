@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **TargetId** | Pointer to **NullableString** |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 **TargetType** | Pointer to [**OrganizationEventTargetType**](OrganizationEventTargetType.md) |  | [optional] 
-**SubTargetType** | Pointer to [**OrganizationEventSubTargetType**](OrganizationEventSubTargetType.md) |  | [optional] 
+**SubTargetType** | Pointer to [**NullableOrganizationEventSubTargetType**](OrganizationEventSubTargetType.md) |  | [optional] 
 **Change** | Pointer to **string** |  | [optional] 
 **Origin** | Pointer to [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | [optional] 
 **TriggeredBy** | Pointer to **string** |  | [optional] 
@@ -223,6 +223,16 @@ SetSubTargetType sets SubTargetType field to given value.
 
 HasSubTargetType returns a boolean if a field has been set.
 
+### SetSubTargetTypeNil
+
+`func (o *OrganizationEventResponse) SetSubTargetTypeNil(b bool)`
+
+ SetSubTargetTypeNil sets the value for SubTargetType to be an explicit nil
+
+### UnsetSubTargetType
+`func (o *OrganizationEventResponse) UnsetSubTargetType()`
+
+UnsetSubTargetType ensures that no value is present for SubTargetType, not even an explicit nil
 ### GetChange
 
 `func (o *OrganizationEventResponse) GetChange() string`

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 20]
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
-**Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] 
+**Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] [default to KUBERNETESENUM_MANAGED]
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **EstimatedCloudProviderCost** | Pointer to **int32** | This is an estimation of the cost this cluster will represent on your cloud proider bill, based on your current configuration | [optional] 

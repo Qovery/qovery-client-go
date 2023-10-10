@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | name of the service | [optional] 
-**Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
+**Commit** | Pointer to [**NullableCommit**](Commit.md) |  | [optional] 
 **Status** | Pointer to [**DeploymentHistoryStatusEnum**](DeploymentHistoryStatusEnum.md) |  | [optional] 
 
 ## Methods
@@ -77,6 +77,16 @@ SetCommit sets Commit field to given value.
 
 HasCommit returns a boolean if a field has been set.
 
+### SetCommitNil
+
+`func (o *DeploymentHistoryAllOf) SetCommitNil(b bool)`
+
+ SetCommitNil sets the value for Commit to be an explicit nil
+
+### UnsetCommit
+`func (o *DeploymentHistoryAllOf) UnsetCommit()`
+
+UnsetCommit ensures that no value is present for Commit, not even an explicit nil
 ### GetStatus
 
 `func (o *DeploymentHistoryAllOf) GetStatus() DeploymentHistoryStatusEnum`

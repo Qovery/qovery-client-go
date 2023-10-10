@@ -62,6 +62,8 @@ func NewClusterAllOf(name string, region string, cloudProvider CloudProviderEnum
 	this.MaxRunningNodes = &maxRunningNodes
 	var diskSize int32 = 20
 	this.DiskSize = &diskSize
+	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
+	this.Kubernetes = &kubernetes
 	return &this
 }
 
@@ -76,6 +78,8 @@ func NewClusterAllOfWithDefaults() *ClusterAllOf {
 	this.MaxRunningNodes = &maxRunningNodes
 	var diskSize int32 = 20
 	this.DiskSize = &diskSize
+	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
+	this.Kubernetes = &kubernetes
 	return &this
 }
 

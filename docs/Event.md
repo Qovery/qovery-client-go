@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **User** | Pointer to [**User**](User.md) |  | [optional] 
-**Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
+**Commit** | Pointer to [**NullableCommit**](Commit.md) |  | [optional] 
 **Status** | Pointer to [**Status**](Status.md) |  | [optional] 
 **Type** | Pointer to **string** | DRAFT - we have to specify here all the possible events | [optional] 
 **Log** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
@@ -147,6 +147,16 @@ SetCommit sets Commit field to given value.
 
 HasCommit returns a boolean if a field has been set.
 
+### SetCommitNil
+
+`func (o *Event) SetCommitNil(b bool)`
+
+ SetCommitNil sets the value for Commit to be an explicit nil
+
+### UnsetCommit
+`func (o *Event) UnsetCommit()`
+
+UnsetCommit ensures that no value is present for Commit, not even an explicit nil
 ### GetStatus
 
 `func (o *Event) GetStatus() Status`

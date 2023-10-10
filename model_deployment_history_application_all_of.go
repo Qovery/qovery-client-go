@@ -17,9 +17,9 @@ import (
 
 // DeploymentHistoryApplicationAllOf struct for DeploymentHistoryApplicationAllOf
 type DeploymentHistoryApplicationAllOf struct {
-	Name   *string    `json:"name,omitempty"`
-	Commit *Commit    `json:"commit,omitempty"`
-	Status *StateEnum `json:"status,omitempty"`
+	Name   *string        `json:"name,omitempty"`
+	Commit NullableCommit `json:"commit,omitempty"`
+	Status *StateEnum     `json:"status,omitempty"`
 }
 
 // NewDeploymentHistoryApplicationAllOf instantiates a new DeploymentHistoryApplicationAllOf object
@@ -71,36 +71,47 @@ func (o *DeploymentHistoryApplicationAllOf) SetName(v string) {
 	o.Name = &v
 }
 
-// GetCommit returns the Commit field value if set, zero value otherwise.
+// GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentHistoryApplicationAllOf) GetCommit() Commit {
-	if o == nil || o.Commit == nil {
+	if o == nil || o.Commit.Get() == nil {
 		var ret Commit
 		return ret
 	}
-	return *o.Commit
+	return *o.Commit.Get()
 }
 
 // GetCommitOk returns a tuple with the Commit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentHistoryApplicationAllOf) GetCommitOk() (*Commit, bool) {
-	if o == nil || o.Commit == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Commit, true
+	return o.Commit.Get(), o.Commit.IsSet()
 }
 
 // HasCommit returns a boolean if a field has been set.
 func (o *DeploymentHistoryApplicationAllOf) HasCommit() bool {
-	if o != nil && o.Commit != nil {
+	if o != nil && o.Commit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCommit gets a reference to the given Commit and assigns it to the Commit field.
+// SetCommit gets a reference to the given NullableCommit and assigns it to the Commit field.
 func (o *DeploymentHistoryApplicationAllOf) SetCommit(v Commit) {
-	o.Commit = &v
+	o.Commit.Set(&v)
+}
+
+// SetCommitNil sets the value for Commit to be an explicit nil
+func (o *DeploymentHistoryApplicationAllOf) SetCommitNil() {
+	o.Commit.Set(nil)
+}
+
+// UnsetCommit ensures that no value is present for Commit, not even an explicit nil
+func (o *DeploymentHistoryApplicationAllOf) UnsetCommit() {
+	o.Commit.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -140,8 +151,8 @@ func (o DeploymentHistoryApplicationAllOf) MarshalJSON() ([]byte, error) {
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
 	}
-	if o.Commit != nil {
-		toSerialize["commit"] = o.Commit
+	if o.Commit.IsSet() {
+		toSerialize["commit"] = o.Commit.Get()
 	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status

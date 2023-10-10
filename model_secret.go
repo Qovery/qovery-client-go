@@ -22,16 +22,14 @@ type Secret struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// key is case sensitive
-	Key              string               `json:"key"`
-	OverriddenSecret *SecretOverride      `json:"overridden_secret,omitempty"`
-	AliasedSecret    *SecretAlias         `json:"aliased_secret,omitempty"`
-	Scope            APIVariableScopeEnum `json:"scope"`
-	VariableType     *APIVariableTypeEnum `json:"variable_type,omitempty"`
-	// present only for `BUILT_IN` variable
-	ServiceId *string `json:"service_id,omitempty"`
-	// present only for `BUILT_IN` variable
-	ServiceName *string                `json:"service_name,omitempty"`
-	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
+	Key              string                 `json:"key"`
+	OverriddenSecret *SecretOverride        `json:"overridden_secret,omitempty"`
+	AliasedSecret    *SecretAlias           `json:"aliased_secret,omitempty"`
+	Scope            APIVariableScopeEnum   `json:"scope"`
+	VariableType     *APIVariableTypeEnum   `json:"variable_type,omitempty"`
+	ServiceId        *string                `json:"service_id,omitempty"`
+	ServiceName      *string                `json:"service_name,omitempty"`
+	ServiceType      *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
 	OwnedBy *string `json:"owned_by,omitempty"`
 }

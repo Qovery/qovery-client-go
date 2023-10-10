@@ -68,6 +68,8 @@ func NewCluster(id string, createdAt time.Time, name string, region string, clou
 	this.MaxRunningNodes = &maxRunningNodes
 	var diskSize int32 = 20
 	this.DiskSize = &diskSize
+	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
+	this.Kubernetes = &kubernetes
 	return &this
 }
 
@@ -82,6 +84,8 @@ func NewClusterWithDefaults() *Cluster {
 	this.MaxRunningNodes = &maxRunningNodes
 	var diskSize int32 = 20
 	this.DiskSize = &diskSize
+	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
+	this.Kubernetes = &kubernetes
 	return &this
 }
 
