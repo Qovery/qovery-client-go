@@ -18,20 +18,24 @@ import (
 // JobResponseAllOfSourceImage struct for JobResponseAllOfSourceImage
 type JobResponseAllOfSourceImage struct {
 	// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
-	ImageName *string `json:"image_name,omitempty"`
+	ImageName string `json:"image_name"`
 	// tag of the image container
-	Tag *string `json:"tag,omitempty"`
+	Tag string `json:"tag"`
 	// tag of the image container
-	RegistryId *string                                   `json:"registry_id,omitempty"`
-	Registry   *ContainerRegistryProviderDetailsResponse `json:"registry,omitempty"`
+	RegistryId string                                   `json:"registry_id"`
+	Registry   ContainerRegistryProviderDetailsResponse `json:"registry"`
 }
 
 // NewJobResponseAllOfSourceImage instantiates a new JobResponseAllOfSourceImage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobResponseAllOfSourceImage() *JobResponseAllOfSourceImage {
+func NewJobResponseAllOfSourceImage(imageName string, tag string, registryId string, registry ContainerRegistryProviderDetailsResponse) *JobResponseAllOfSourceImage {
 	this := JobResponseAllOfSourceImage{}
+	this.ImageName = imageName
+	this.Tag = tag
+	this.RegistryId = registryId
+	this.Registry = registry
 	return &this
 }
 
@@ -43,146 +47,114 @@ func NewJobResponseAllOfSourceImageWithDefaults() *JobResponseAllOfSourceImage {
 	return &this
 }
 
-// GetImageName returns the ImageName field value if set, zero value otherwise.
+// GetImageName returns the ImageName field value
 func (o *JobResponseAllOfSourceImage) GetImageName() string {
-	if o == nil || o.ImageName == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ImageName
+
+	return o.ImageName
 }
 
-// GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
+// GetImageNameOk returns a tuple with the ImageName field value
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSourceImage) GetImageNameOk() (*string, bool) {
-	if o == nil || o.ImageName == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ImageName, true
+	return &o.ImageName, true
 }
 
-// HasImageName returns a boolean if a field has been set.
-func (o *JobResponseAllOfSourceImage) HasImageName() bool {
-	if o != nil && o.ImageName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetImageName gets a reference to the given string and assigns it to the ImageName field.
+// SetImageName sets field value
 func (o *JobResponseAllOfSourceImage) SetImageName(v string) {
-	o.ImageName = &v
+	o.ImageName = v
 }
 
-// GetTag returns the Tag field value if set, zero value otherwise.
+// GetTag returns the Tag field value
 func (o *JobResponseAllOfSourceImage) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Tag
+
+	return o.Tag
 }
 
-// GetTagOk returns a tuple with the Tag field value if set, nil otherwise
+// GetTagOk returns a tuple with the Tag field value
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSourceImage) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tag, true
+	return &o.Tag, true
 }
 
-// HasTag returns a boolean if a field has been set.
-func (o *JobResponseAllOfSourceImage) HasTag() bool {
-	if o != nil && o.Tag != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTag gets a reference to the given string and assigns it to the Tag field.
+// SetTag sets field value
 func (o *JobResponseAllOfSourceImage) SetTag(v string) {
-	o.Tag = &v
+	o.Tag = v
 }
 
-// GetRegistryId returns the RegistryId field value if set, zero value otherwise.
+// GetRegistryId returns the RegistryId field value
 func (o *JobResponseAllOfSourceImage) GetRegistryId() string {
-	if o == nil || o.RegistryId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.RegistryId
+
+	return o.RegistryId
 }
 
-// GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
+// GetRegistryIdOk returns a tuple with the RegistryId field value
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSourceImage) GetRegistryIdOk() (*string, bool) {
-	if o == nil || o.RegistryId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RegistryId, true
+	return &o.RegistryId, true
 }
 
-// HasRegistryId returns a boolean if a field has been set.
-func (o *JobResponseAllOfSourceImage) HasRegistryId() bool {
-	if o != nil && o.RegistryId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistryId gets a reference to the given string and assigns it to the RegistryId field.
+// SetRegistryId sets field value
 func (o *JobResponseAllOfSourceImage) SetRegistryId(v string) {
-	o.RegistryId = &v
+	o.RegistryId = v
 }
 
-// GetRegistry returns the Registry field value if set, zero value otherwise.
+// GetRegistry returns the Registry field value
 func (o *JobResponseAllOfSourceImage) GetRegistry() ContainerRegistryProviderDetailsResponse {
-	if o == nil || o.Registry == nil {
+	if o == nil {
 		var ret ContainerRegistryProviderDetailsResponse
 		return ret
 	}
-	return *o.Registry
+
+	return o.Registry
 }
 
-// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
+// GetRegistryOk returns a tuple with the Registry field value
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSourceImage) GetRegistryOk() (*ContainerRegistryProviderDetailsResponse, bool) {
-	if o == nil || o.Registry == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Registry, true
+	return &o.Registry, true
 }
 
-// HasRegistry returns a boolean if a field has been set.
-func (o *JobResponseAllOfSourceImage) HasRegistry() bool {
-	if o != nil && o.Registry != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistry gets a reference to the given ContainerRegistryProviderDetailsResponse and assigns it to the Registry field.
+// SetRegistry sets field value
 func (o *JobResponseAllOfSourceImage) SetRegistry(v ContainerRegistryProviderDetailsResponse) {
-	o.Registry = &v
+	o.Registry = v
 }
 
 func (o JobResponseAllOfSourceImage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ImageName != nil {
+	if true {
 		toSerialize["image_name"] = o.ImageName
 	}
-	if o.Tag != nil {
+	if true {
 		toSerialize["tag"] = o.Tag
 	}
-	if o.RegistryId != nil {
+	if true {
 		toSerialize["registry_id"] = o.RegistryId
 	}
-	if o.Registry != nil {
+	if true {
 		toSerialize["registry"] = o.Registry
 	}
 	return json.Marshal(toSerialize)

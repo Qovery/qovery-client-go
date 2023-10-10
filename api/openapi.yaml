@@ -22116,6 +22116,11 @@ components:
           type: string
         registry:
           $ref: '#/components/schemas/ContainerRegistryProviderDetailsResponse'
+      required:
+      - image_name
+      - registry
+      - registry_id
+      - tag
       type: object
     JobResponse_allOf_source_docker:
       nullable: true
@@ -22235,7 +22240,6 @@ components:
       - cpu
       - environment
       - healthchecks
-      - image_name
       - max_running_instances
       - maximum_cpu
       - maximum_memory

@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ImageName** | Pointer to **string** | The image name pattern differs according to chosen container registry provider:   * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | [optional] 
-**Tag** | Pointer to **string** | tag of the image container | [optional] 
-**RegistryId** | Pointer to **string** | tag of the image container | [optional] 
-**Registry** | Pointer to [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | [optional] 
+**ImageName** | **string** | The image name pattern differs according to chosen container registry provider:   * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
+**Tag** | **string** | tag of the image container | 
+**RegistryId** | **string** | tag of the image container | 
+**Registry** | [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
 
 ## Methods
 
 ### NewJobResponseAllOfSourceImage
 
-`func NewJobResponseAllOfSourceImage() *JobResponseAllOfSourceImage`
+`func NewJobResponseAllOfSourceImage(imageName string, tag string, registryId string, registry ContainerRegistryProviderDetailsResponse, ) *JobResponseAllOfSourceImage`
 
 NewJobResponseAllOfSourceImage instantiates a new JobResponseAllOfSourceImage object
 This constructor will assign default values to properties that have it defined,
@@ -47,11 +47,6 @@ and a boolean to check if the value has been set.
 
 SetImageName sets ImageName field to given value.
 
-### HasImageName
-
-`func (o *JobResponseAllOfSourceImage) HasImageName() bool`
-
-HasImageName returns a boolean if a field has been set.
 
 ### GetTag
 
@@ -72,11 +67,6 @@ and a boolean to check if the value has been set.
 
 SetTag sets Tag field to given value.
 
-### HasTag
-
-`func (o *JobResponseAllOfSourceImage) HasTag() bool`
-
-HasTag returns a boolean if a field has been set.
 
 ### GetRegistryId
 
@@ -97,11 +87,6 @@ and a boolean to check if the value has been set.
 
 SetRegistryId sets RegistryId field to given value.
 
-### HasRegistryId
-
-`func (o *JobResponseAllOfSourceImage) HasRegistryId() bool`
-
-HasRegistryId returns a boolean if a field has been set.
 
 ### GetRegistry
 
@@ -122,11 +107,6 @@ and a boolean to check if the value has been set.
 
 SetRegistry sets Registry field to given value.
 
-### HasRegistry
-
-`func (o *JobResponseAllOfSourceImage) HasRegistry() bool`
-
-HasRegistry returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
