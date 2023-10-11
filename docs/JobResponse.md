@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
-**Source** | Pointer to [**JobResponseAllOfSource**](JobResponseAllOfSource.md) |  | [optional] 
+**Source** | [**JobResponseAllOfSource**](JobResponseAllOfSource.md) |  | 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **Schedule** | Pointer to [**JobResponseAllOfSchedule**](JobResponseAllOfSchedule.md) |  | [optional] 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewJobResponse
 
-`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, healthchecks Healthcheck, ) *JobResponse`
+`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source JobResponseAllOfSource, healthchecks Healthcheck, ) *JobResponse`
 
 NewJobResponse instantiates a new JobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -376,11 +376,6 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
-### HasSource
-
-`func (o *JobResponse) HasSource() bool`
-
-HasSource returns a boolean if a field has been set.
 
 ### GetHealthchecks
 

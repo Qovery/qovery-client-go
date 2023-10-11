@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableImport type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableImport{}
+
 // VariableImport struct for VariableImport
 type VariableImport struct {
 	TotalVariablesToImport      float32                                          `json:"total_variables_to_import"`
@@ -89,14 +92,18 @@ func (o *VariableImport) SetSuccessfulImportedVariables(v []VariableImportSucces
 }
 
 func (o VariableImport) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["total_variables_to_import"] = o.TotalVariablesToImport
-	}
-	if true {
-		toSerialize["successful_imported_variables"] = o.SuccessfulImportedVariables
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableImport) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["total_variables_to_import"] = o.TotalVariablesToImport
+	toSerialize["successful_imported_variables"] = o.SuccessfulImportedVariables
+	return toSerialize, nil
 }
 
 type NullableVariableImport struct {

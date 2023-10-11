@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// DeploymentStageMainCallsApiService DeploymentStageMainCallsApi service
-type DeploymentStageMainCallsApiService service
+// DeploymentStageMainCallsAPIService DeploymentStageMainCallsAPI service
+type DeploymentStageMainCallsAPIService service
 
 type ApiAttachServiceToDeploymentStageRequest struct {
 	ctx               context.Context
-	ApiService        *DeploymentStageMainCallsApiService
+	ApiService        *DeploymentStageMainCallsAPIService
 	deploymentStageId string
 	serviceId         string
 }
@@ -42,7 +42,7 @@ AttachServiceToDeploymentStage Attach service to deployment stage
  @param serviceId Service ID of an application/job/container/database
  @return ApiAttachServiceToDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStage(ctx context.Context, deploymentStageId string, serviceId string) ApiAttachServiceToDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) AttachServiceToDeploymentStage(ctx context.Context, deploymentStageId string, serviceId string) ApiAttachServiceToDeploymentStageRequest {
 	return ApiAttachServiceToDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -53,7 +53,7 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStage(ctx 
 
 // Execute executes the request
 //  @return DeploymentStageResponseList
-func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecute(r ApiAttachServiceToDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) AttachServiceToDeploymentStageExecute(r ApiAttachServiceToDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -61,14 +61,14 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 		localVarReturnValue *DeploymentStageResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.AttachServiceToDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.AttachServiceToDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/service/{serviceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterValueToString(r.deploymentStageId, "deploymentStageId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterValueToString(r.serviceId, "serviceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -115,9 +115,9 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -144,7 +144,7 @@ func (a *DeploymentStageMainCallsApiService) AttachServiceToDeploymentStageExecu
 
 type ApiCreateEnvironmentDeploymentStageRequest struct {
 	ctx                    context.Context
-	ApiService             *DeploymentStageMainCallsApiService
+	ApiService             *DeploymentStageMainCallsAPIService
 	environmentId          string
 	deploymentStageRequest *DeploymentStageRequest
 }
@@ -165,7 +165,7 @@ CreateEnvironmentDeploymentStage Create environment deployment stage
  @param environmentId Environment ID
  @return ApiCreateEnvironmentDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStage(ctx context.Context, environmentId string) ApiCreateEnvironmentDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) CreateEnvironmentDeploymentStage(ctx context.Context, environmentId string) ApiCreateEnvironmentDeploymentStageRequest {
 	return ApiCreateEnvironmentDeploymentStageRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -175,7 +175,7 @@ func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStage(ct
 
 // Execute executes the request
 //  @return DeploymentStageResponse
-func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStageExecute(r ApiCreateEnvironmentDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) CreateEnvironmentDeploymentStageExecute(r ApiCreateEnvironmentDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -183,13 +183,13 @@ func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStageExe
 		localVarReturnValue *DeploymentStageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.CreateEnvironmentDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.CreateEnvironmentDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/deploymentStage"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -238,9 +238,9 @@ func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStageExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -267,7 +267,7 @@ func (a *DeploymentStageMainCallsApiService) CreateEnvironmentDeploymentStageExe
 
 type ApiDeleteDeploymentStageRequest struct {
 	ctx               context.Context
-	ApiService        *DeploymentStageMainCallsApiService
+	ApiService        *DeploymentStageMainCallsAPIService
 	deploymentStageId string
 }
 
@@ -282,7 +282,7 @@ DeleteDeploymentStage Delete deployment stage
  @param deploymentStageId Deployment Stage ID
  @return ApiDeleteDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStage(ctx context.Context, deploymentStageId string) ApiDeleteDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) DeleteDeploymentStage(ctx context.Context, deploymentStageId string) ApiDeleteDeploymentStageRequest {
 	return ApiDeleteDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -291,20 +291,20 @@ func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStage(ctx context.C
 }
 
 // Execute executes the request
-func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStageExecute(r ApiDeleteDeploymentStageRequest) (*http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) DeleteDeploymentStageExecute(r ApiDeleteDeploymentStageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.DeleteDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.DeleteDeploymentStage")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterValueToString(r.deploymentStageId, "deploymentStageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -351,9 +351,9 @@ func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStageExecute(r ApiD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -371,7 +371,7 @@ func (a *DeploymentStageMainCallsApiService) DeleteDeploymentStageExecute(r ApiD
 
 type ApiEditDeploymentStageRequest struct {
 	ctx                    context.Context
-	ApiService             *DeploymentStageMainCallsApiService
+	ApiService             *DeploymentStageMainCallsAPIService
 	deploymentStageId      string
 	deploymentStageRequest *DeploymentStageRequest
 }
@@ -392,7 +392,7 @@ EditDeploymentStage Edit deployment stage
  @param deploymentStageId Deployment Stage ID
  @return ApiEditDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) EditDeploymentStage(ctx context.Context, deploymentStageId string) ApiEditDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) EditDeploymentStage(ctx context.Context, deploymentStageId string) ApiEditDeploymentStageRequest {
 	return ApiEditDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -402,7 +402,7 @@ func (a *DeploymentStageMainCallsApiService) EditDeploymentStage(ctx context.Con
 
 // Execute executes the request
 //  @return DeploymentStageResponse
-func (a *DeploymentStageMainCallsApiService) EditDeploymentStageExecute(r ApiEditDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) EditDeploymentStageExecute(r ApiEditDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -410,13 +410,13 @@ func (a *DeploymentStageMainCallsApiService) EditDeploymentStageExecute(r ApiEdi
 		localVarReturnValue *DeploymentStageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.EditDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.EditDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterValueToString(r.deploymentStageId, "deploymentStageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -465,9 +465,9 @@ func (a *DeploymentStageMainCallsApiService) EditDeploymentStageExecute(r ApiEdi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -494,7 +494,7 @@ func (a *DeploymentStageMainCallsApiService) EditDeploymentStageExecute(r ApiEdi
 
 type ApiGetDeploymentStageRequest struct {
 	ctx               context.Context
-	ApiService        *DeploymentStageMainCallsApiService
+	ApiService        *DeploymentStageMainCallsAPIService
 	deploymentStageId string
 }
 
@@ -509,7 +509,7 @@ GetDeploymentStage Get Deployment Stage
  @param deploymentStageId Deployment Stage ID
  @return ApiGetDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) GetDeploymentStage(ctx context.Context, deploymentStageId string) ApiGetDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) GetDeploymentStage(ctx context.Context, deploymentStageId string) ApiGetDeploymentStageRequest {
 	return ApiGetDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -519,7 +519,7 @@ func (a *DeploymentStageMainCallsApiService) GetDeploymentStage(ctx context.Cont
 
 // Execute executes the request
 //  @return DeploymentStageResponse
-func (a *DeploymentStageMainCallsApiService) GetDeploymentStageExecute(r ApiGetDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) GetDeploymentStageExecute(r ApiGetDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -527,13 +527,13 @@ func (a *DeploymentStageMainCallsApiService) GetDeploymentStageExecute(r ApiGetD
 		localVarReturnValue *DeploymentStageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.GetDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.GetDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterValueToString(r.deploymentStageId, "deploymentStageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -580,9 +580,9 @@ func (a *DeploymentStageMainCallsApiService) GetDeploymentStageExecute(r ApiGetD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -609,7 +609,7 @@ func (a *DeploymentStageMainCallsApiService) GetDeploymentStageExecute(r ApiGetD
 
 type ApiGetServiceDeploymentStageRequest struct {
 	ctx        context.Context
-	ApiService *DeploymentStageMainCallsApiService
+	ApiService *DeploymentStageMainCallsAPIService
 	serviceId  string
 }
 
@@ -624,7 +624,7 @@ GetServiceDeploymentStage Get Service Deployment Stage
  @param serviceId Service ID of an application/job/container/database
  @return ApiGetServiceDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) GetServiceDeploymentStage(ctx context.Context, serviceId string) ApiGetServiceDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) GetServiceDeploymentStage(ctx context.Context, serviceId string) ApiGetServiceDeploymentStageRequest {
 	return ApiGetServiceDeploymentStageRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -634,7 +634,7 @@ func (a *DeploymentStageMainCallsApiService) GetServiceDeploymentStage(ctx conte
 
 // Execute executes the request
 //  @return DeploymentStageResponse
-func (a *DeploymentStageMainCallsApiService) GetServiceDeploymentStageExecute(r ApiGetServiceDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) GetServiceDeploymentStageExecute(r ApiGetServiceDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -642,13 +642,13 @@ func (a *DeploymentStageMainCallsApiService) GetServiceDeploymentStageExecute(r 
 		localVarReturnValue *DeploymentStageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.GetServiceDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.GetServiceDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/service/{serviceId}/deploymentStage"
-	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterToString(r.serviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceId"+"}", url.PathEscape(parameterValueToString(r.serviceId, "serviceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -695,9 +695,9 @@ func (a *DeploymentStageMainCallsApiService) GetServiceDeploymentStageExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -724,7 +724,7 @@ func (a *DeploymentStageMainCallsApiService) GetServiceDeploymentStageExecute(r 
 
 type ApiListEnvironmentDeploymentStageRequest struct {
 	ctx           context.Context
-	ApiService    *DeploymentStageMainCallsApiService
+	ApiService    *DeploymentStageMainCallsAPIService
 	environmentId string
 }
 
@@ -739,7 +739,7 @@ ListEnvironmentDeploymentStage List environment deployment stage
  @param environmentId Environment ID
  @return ApiListEnvironmentDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStage(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) ListEnvironmentDeploymentStage(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentStageRequest {
 	return ApiListEnvironmentDeploymentStageRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -749,7 +749,7 @@ func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStage(ctx 
 
 // Execute executes the request
 //  @return DeploymentStageResponseList
-func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStageExecute(r ApiListEnvironmentDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) ListEnvironmentDeploymentStageExecute(r ApiListEnvironmentDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -757,13 +757,13 @@ func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStageExecu
 		localVarReturnValue *DeploymentStageResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.ListEnvironmentDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.ListEnvironmentDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/deploymentStage"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -810,9 +810,9 @@ func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStageExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -839,7 +839,7 @@ func (a *DeploymentStageMainCallsApiService) ListEnvironmentDeploymentStageExecu
 
 type ApiMoveAfterDeploymentStageRequest struct {
 	ctx               context.Context
-	ApiService        *DeploymentStageMainCallsApiService
+	ApiService        *DeploymentStageMainCallsAPIService
 	deploymentStageId string
 	stageId           string
 }
@@ -856,7 +856,7 @@ MoveAfterDeploymentStage Move deployment stage after requested stage
  @param stageId Deployment Stage ID
  @return ApiMoveAfterDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveAfterDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) MoveAfterDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveAfterDeploymentStageRequest {
 	return ApiMoveAfterDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -867,7 +867,7 @@ func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStage(ctx contex
 
 // Execute executes the request
 //  @return DeploymentStageResponseList
-func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStageExecute(r ApiMoveAfterDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) MoveAfterDeploymentStageExecute(r ApiMoveAfterDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -875,14 +875,14 @@ func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStageExecute(r A
 		localVarReturnValue *DeploymentStageResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.MoveAfterDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.MoveAfterDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/moveAfter/{stageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterToString(r.stageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterValueToString(r.deploymentStageId, "deploymentStageId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterValueToString(r.stageId, "stageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -929,9 +929,9 @@ func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStageExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -958,7 +958,7 @@ func (a *DeploymentStageMainCallsApiService) MoveAfterDeploymentStageExecute(r A
 
 type ApiMoveBeforeDeploymentStageRequest struct {
 	ctx               context.Context
-	ApiService        *DeploymentStageMainCallsApiService
+	ApiService        *DeploymentStageMainCallsAPIService
 	deploymentStageId string
 	stageId           string
 }
@@ -975,7 +975,7 @@ MoveBeforeDeploymentStage Move deployment stage before requested stage
  @param stageId Deployment Stage ID
  @return ApiMoveBeforeDeploymentStageRequest
 */
-func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveBeforeDeploymentStageRequest {
+func (a *DeploymentStageMainCallsAPIService) MoveBeforeDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveBeforeDeploymentStageRequest {
 	return ApiMoveBeforeDeploymentStageRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -986,7 +986,7 @@ func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStage(ctx conte
 
 // Execute executes the request
 //  @return DeploymentStageResponseList
-func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStageExecute(r ApiMoveBeforeDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
+func (a *DeploymentStageMainCallsAPIService) MoveBeforeDeploymentStageExecute(r ApiMoveBeforeDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -994,14 +994,14 @@ func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStageExecute(r 
 		localVarReturnValue *DeploymentStageResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsApiService.MoveBeforeDeploymentStage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeploymentStageMainCallsAPIService.MoveBeforeDeploymentStage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/deploymentStage/{deploymentStageId}/moveBefore/{stageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterToString(r.deploymentStageId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterToString(r.stageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentStageId"+"}", url.PathEscape(parameterValueToString(r.deploymentStageId, "deploymentStageId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"stageId"+"}", url.PathEscape(parameterValueToString(r.stageId, "stageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1048,9 +1048,9 @@ func (a *DeploymentStageMainCallsApiService) MoveBeforeDeploymentStageExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

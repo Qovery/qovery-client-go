@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PaginationData type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginationData{}
+
 // PaginationData struct for PaginationData
 type PaginationData struct {
 	Page     float32 `json:"page"`
@@ -89,14 +92,18 @@ func (o *PaginationData) SetPageSize(v float32) {
 }
 
 func (o PaginationData) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["page"] = o.Page
-	}
-	if true {
-		toSerialize["page_size"] = o.PageSize
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PaginationData) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["page"] = o.Page
+	toSerialize["page_size"] = o.PageSize
+	return toSerialize, nil
 }
 
 type NullablePaginationData struct {

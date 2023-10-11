@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AvailableContainerRegistryResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AvailableContainerRegistryResponseList{}
+
 // AvailableContainerRegistryResponseList struct for AvailableContainerRegistryResponseList
 type AvailableContainerRegistryResponseList struct {
 	Results []AvailableContainerRegistryResponse `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewAvailableContainerRegistryResponseListWithDefaults() *AvailableContainer
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *AvailableContainerRegistryResponseList) GetResults() []AvailableContainerRegistryResponse {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []AvailableContainerRegistryResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *AvailableContainerRegistryResponseList) GetResults() []AvailableContain
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableContainerRegistryResponseList) GetResultsOk() ([]AvailableContainerRegistryResponse, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *AvailableContainerRegistryResponseList) GetResultsOk() ([]AvailableCont
 
 // HasResults returns a boolean if a field has been set.
 func (o *AvailableContainerRegistryResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *AvailableContainerRegistryResponseList) SetResults(v []AvailableContain
 }
 
 func (o AvailableContainerRegistryResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AvailableContainerRegistryResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableAvailableContainerRegistryResponseList struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MetricStorageDatapointResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricStorageDatapointResponseList{}
+
 // MetricStorageDatapointResponseList struct for MetricStorageDatapointResponseList
 type MetricStorageDatapointResponseList struct {
 	Results []MetricStorageDatapoint `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewMetricStorageDatapointResponseListWithDefaults() *MetricStorageDatapoint
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *MetricStorageDatapointResponseList) GetResults() []MetricStorageDatapoint {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []MetricStorageDatapoint
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MetricStorageDatapointResponseList) GetResults() []MetricStorageDatapoi
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricStorageDatapointResponseList) GetResultsOk() ([]MetricStorageDatapoint, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *MetricStorageDatapointResponseList) GetResultsOk() ([]MetricStorageData
 
 // HasResults returns a boolean if a field has been set.
 func (o *MetricStorageDatapointResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *MetricStorageDatapointResponseList) SetResults(v []MetricStorageDatapoi
 }
 
 func (o MetricStorageDatapointResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricStorageDatapointResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableMetricStorageDatapointResponseList struct {

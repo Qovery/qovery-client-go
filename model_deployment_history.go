@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentHistory type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistory{}
+
 // DeploymentHistory struct for DeploymentHistory
 type DeploymentHistory struct {
 	Id        string     `json:"id"`
@@ -96,7 +99,7 @@ func (o *DeploymentHistory) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeploymentHistory) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *DeploymentHistory) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistory) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -114,7 +117,7 @@ func (o *DeploymentHistory) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DeploymentHistory) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *DeploymentHistory) SetUpdatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeploymentHistory) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *DeploymentHistory) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistory) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -146,7 +149,7 @@ func (o *DeploymentHistory) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeploymentHistory) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *DeploymentHistory) SetName(v string) {
 
 // GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentHistory) GetCommit() Commit {
-	if o == nil || o.Commit.Get() == nil {
+	if o == nil || IsNil(o.Commit.Get()) {
 		var ret Commit
 		return ret
 	}
@@ -203,7 +206,7 @@ func (o *DeploymentHistory) UnsetCommit() {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DeploymentHistory) GetStatus() DeploymentHistoryStatusEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret DeploymentHistoryStatusEnum
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *DeploymentHistory) GetStatus() DeploymentHistoryStatusEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistory) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -221,7 +224,7 @@ func (o *DeploymentHistory) GetStatusOk() (*DeploymentHistoryStatusEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DeploymentHistory) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -234,26 +237,30 @@ func (o *DeploymentHistory) SetStatus(v DeploymentHistoryStatusEnum) {
 }
 
 func (o DeploymentHistory) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistory) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Commit.IsSet() {
 		toSerialize["commit"] = o.Commit.Get()
 	}
-	if o.Status != nil {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistory struct {

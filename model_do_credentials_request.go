@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DoCredentialsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DoCredentialsRequest{}
+
 // DoCredentialsRequest struct for DoCredentialsRequest
 type DoCredentialsRequest struct {
 	Name            string  `json:"name"`
@@ -67,7 +70,7 @@ func (o *DoCredentialsRequest) SetName(v string) {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *DoCredentialsRequest) GetToken() string {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *DoCredentialsRequest) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DoCredentialsRequest) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
 	return o.Token, true
@@ -85,7 +88,7 @@ func (o *DoCredentialsRequest) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *DoCredentialsRequest) HasToken() bool {
-	if o != nil && o.Token != nil {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *DoCredentialsRequest) SetToken(v string) {
 
 // GetSpacesAccessId returns the SpacesAccessId field value if set, zero value otherwise.
 func (o *DoCredentialsRequest) GetSpacesAccessId() string {
-	if o == nil || o.SpacesAccessId == nil {
+	if o == nil || IsNil(o.SpacesAccessId) {
 		var ret string
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *DoCredentialsRequest) GetSpacesAccessId() string {
 // GetSpacesAccessIdOk returns a tuple with the SpacesAccessId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DoCredentialsRequest) GetSpacesAccessIdOk() (*string, bool) {
-	if o == nil || o.SpacesAccessId == nil {
+	if o == nil || IsNil(o.SpacesAccessId) {
 		return nil, false
 	}
 	return o.SpacesAccessId, true
@@ -117,7 +120,7 @@ func (o *DoCredentialsRequest) GetSpacesAccessIdOk() (*string, bool) {
 
 // HasSpacesAccessId returns a boolean if a field has been set.
 func (o *DoCredentialsRequest) HasSpacesAccessId() bool {
-	if o != nil && o.SpacesAccessId != nil {
+	if o != nil && !IsNil(o.SpacesAccessId) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *DoCredentialsRequest) SetSpacesAccessId(v string) {
 
 // GetSpacesSecretKey returns the SpacesSecretKey field value if set, zero value otherwise.
 func (o *DoCredentialsRequest) GetSpacesSecretKey() string {
-	if o == nil || o.SpacesSecretKey == nil {
+	if o == nil || IsNil(o.SpacesSecretKey) {
 		var ret string
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *DoCredentialsRequest) GetSpacesSecretKey() string {
 // GetSpacesSecretKeyOk returns a tuple with the SpacesSecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DoCredentialsRequest) GetSpacesSecretKeyOk() (*string, bool) {
-	if o == nil || o.SpacesSecretKey == nil {
+	if o == nil || IsNil(o.SpacesSecretKey) {
 		return nil, false
 	}
 	return o.SpacesSecretKey, true
@@ -149,7 +152,7 @@ func (o *DoCredentialsRequest) GetSpacesSecretKeyOk() (*string, bool) {
 
 // HasSpacesSecretKey returns a boolean if a field has been set.
 func (o *DoCredentialsRequest) HasSpacesSecretKey() bool {
-	if o != nil && o.SpacesSecretKey != nil {
+	if o != nil && !IsNil(o.SpacesSecretKey) {
 		return true
 	}
 
@@ -162,20 +165,26 @@ func (o *DoCredentialsRequest) SetSpacesSecretKey(v string) {
 }
 
 func (o DoCredentialsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
-	}
-	if o.SpacesAccessId != nil {
-		toSerialize["spaces_access_id"] = o.SpacesAccessId
-	}
-	if o.SpacesSecretKey != nil {
-		toSerialize["spaces_secret_key"] = o.SpacesSecretKey
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DoCredentialsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.SpacesAccessId) {
+		toSerialize["spaces_access_id"] = o.SpacesAccessId
+	}
+	if !IsNil(o.SpacesSecretKey) {
+		toSerialize["spaces_secret_key"] = o.SpacesSecretKey
+	}
+	return toSerialize, nil
 }
 
 type NullableDoCredentialsRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobRequestAllOfSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobRequestAllOfSource{}
+
 // JobRequestAllOfSource struct for JobRequestAllOfSource
 type JobRequestAllOfSource struct {
 	Image  NullableJobRequestAllOfSourceImage  `json:"image,omitempty"`
@@ -40,7 +43,7 @@ func NewJobRequestAllOfSourceWithDefaults() *JobRequestAllOfSource {
 
 // GetImage returns the Image field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequestAllOfSource) GetImage() JobRequestAllOfSourceImage {
-	if o == nil || o.Image.Get() == nil {
+	if o == nil || IsNil(o.Image.Get()) {
 		var ret JobRequestAllOfSourceImage
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *JobRequestAllOfSource) UnsetImage() {
 
 // GetDocker returns the Docker field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequestAllOfSource) GetDocker() JobRequestAllOfSourceDocker {
-	if o == nil || o.Docker.Get() == nil {
+	if o == nil || IsNil(o.Docker.Get()) {
 		var ret JobRequestAllOfSourceDocker
 		return ret
 	}
@@ -125,6 +128,14 @@ func (o *JobRequestAllOfSource) UnsetDocker() {
 }
 
 func (o JobRequestAllOfSource) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o JobRequestAllOfSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Image.IsSet() {
 		toSerialize["image"] = o.Image.Get()
@@ -132,7 +143,7 @@ func (o JobRequestAllOfSource) MarshalJSON() ([]byte, error) {
 	if o.Docker.IsSet() {
 		toSerialize["docker"] = o.Docker.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableJobRequestAllOfSource struct {

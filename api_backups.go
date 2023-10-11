@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// BackupsApiService BackupsApi service
-type BackupsApiService service
+// BackupsAPIService BackupsAPI service
+type BackupsAPIService service
 
 type ApiAddBackupDatabaseRequest struct {
 	ctx           context.Context
-	ApiService    *BackupsApiService
+	ApiService    *BackupsAPIService
 	databaseId    string
 	backupRequest *BackupRequest
 }
@@ -46,7 +46,7 @@ AddBackupDatabase Add a backup to the Database
  @param databaseId Database ID
  @return ApiAddBackupDatabaseRequest
 */
-func (a *BackupsApiService) AddBackupDatabase(ctx context.Context, databaseId string) ApiAddBackupDatabaseRequest {
+func (a *BackupsAPIService) AddBackupDatabase(ctx context.Context, databaseId string) ApiAddBackupDatabaseRequest {
 	return ApiAddBackupDatabaseRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -56,7 +56,7 @@ func (a *BackupsApiService) AddBackupDatabase(ctx context.Context, databaseId st
 
 // Execute executes the request
 //  @return Backup
-func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseRequest) (*Backup, *http.Response, error) {
+func (a *BackupsAPIService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseRequest) (*Backup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,13 +64,13 @@ func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseReque
 		localVarReturnValue *Backup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.AddBackupDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsAPIService.AddBackupDatabase")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/backup"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -119,9 +119,9 @@ func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +148,7 @@ func (a *BackupsApiService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseReque
 
 type ApiListDatabaseBackupRequest struct {
 	ctx        context.Context
-	ApiService *BackupsApiService
+	ApiService *BackupsAPIService
 	databaseId string
 	startId    *string
 }
@@ -172,7 +172,7 @@ By default it returns the 20 last results. The response is paginated. In order t
  @param databaseId Database ID
  @return ApiListDatabaseBackupRequest
 */
-func (a *BackupsApiService) ListDatabaseBackup(ctx context.Context, databaseId string) ApiListDatabaseBackupRequest {
+func (a *BackupsAPIService) ListDatabaseBackup(ctx context.Context, databaseId string) ApiListDatabaseBackupRequest {
 	return ApiListDatabaseBackupRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -182,7 +182,7 @@ func (a *BackupsApiService) ListDatabaseBackup(ctx context.Context, databaseId s
 
 // Execute executes the request
 //  @return BackupPaginatedResponseList
-func (a *BackupsApiService) ListDatabaseBackupExecute(r ApiListDatabaseBackupRequest) (*BackupPaginatedResponseList, *http.Response, error) {
+func (a *BackupsAPIService) ListDatabaseBackupExecute(r ApiListDatabaseBackupRequest) (*BackupPaginatedResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -190,20 +190,20 @@ func (a *BackupsApiService) ListDatabaseBackupExecute(r ApiListDatabaseBackupReq
 		localVarReturnValue *BackupPaginatedResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.ListDatabaseBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsAPIService.ListDatabaseBackup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/backup"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.startId != nil {
-		localVarQueryParams.Add("startId", parameterToString(*r.startId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startId", r.startId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -246,9 +246,9 @@ func (a *BackupsApiService) ListDatabaseBackupExecute(r ApiListDatabaseBackupReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -275,7 +275,7 @@ func (a *BackupsApiService) ListDatabaseBackupExecute(r ApiListDatabaseBackupReq
 
 type ApiRemoveDatabaseBackupRequest struct {
 	ctx        context.Context
-	ApiService *BackupsApiService
+	ApiService *BackupsAPIService
 	databaseId string
 	backupId   string
 }
@@ -292,7 +292,7 @@ RemoveDatabaseBackup Remove database  backup
  @param backupId Database Backup ID
  @return ApiRemoveDatabaseBackupRequest
 */
-func (a *BackupsApiService) RemoveDatabaseBackup(ctx context.Context, databaseId string, backupId string) ApiRemoveDatabaseBackupRequest {
+func (a *BackupsAPIService) RemoveDatabaseBackup(ctx context.Context, databaseId string, backupId string) ApiRemoveDatabaseBackupRequest {
 	return ApiRemoveDatabaseBackupRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -302,21 +302,21 @@ func (a *BackupsApiService) RemoveDatabaseBackup(ctx context.Context, databaseId
 }
 
 // Execute executes the request
-func (a *BackupsApiService) RemoveDatabaseBackupExecute(r ApiRemoveDatabaseBackupRequest) (*http.Response, error) {
+func (a *BackupsAPIService) RemoveDatabaseBackupExecute(r ApiRemoveDatabaseBackupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsApiService.RemoveDatabaseBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsAPIService.RemoveDatabaseBackup")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/backup/{backupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"backupId"+"}", url.PathEscape(parameterToString(r.backupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"backupId"+"}", url.PathEscape(parameterValueToString(r.backupId, "backupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -363,9 +363,9 @@ func (a *BackupsApiService) RemoveDatabaseBackupExecute(r ApiRemoveDatabaseBacku
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationCreditCodeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationCreditCodeRequest{}
+
 // OrganizationCreditCodeRequest struct for OrganizationCreditCodeRequest
 type OrganizationCreditCodeRequest struct {
 	Code *string `json:"code,omitempty"`
@@ -39,7 +42,7 @@ func NewOrganizationCreditCodeRequestWithDefaults() *OrganizationCreditCodeReque
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *OrganizationCreditCodeRequest) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *OrganizationCreditCodeRequest) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCreditCodeRequest) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -57,7 +60,7 @@ func (o *OrganizationCreditCodeRequest) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *OrganizationCreditCodeRequest) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *OrganizationCreditCodeRequest) SetCode(v string) {
 }
 
 func (o OrganizationCreditCodeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationCreditCodeRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationCreditCodeRequest struct {

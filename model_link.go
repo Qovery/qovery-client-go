@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Link type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Link{}
+
 // Link struct for Link
 type Link struct {
 	Url *string `json:"url,omitempty"`
@@ -47,7 +50,7 @@ func NewLinkWithDefaults() *Link {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *Link) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *Link) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -65,7 +68,7 @@ func (o *Link) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *Link) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *Link) SetUrl(v string) {
 
 // GetInternalPort returns the InternalPort field value if set, zero value otherwise.
 func (o *Link) GetInternalPort() int32 {
-	if o == nil || o.InternalPort == nil {
+	if o == nil || IsNil(o.InternalPort) {
 		var ret int32
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *Link) GetInternalPort() int32 {
 // GetInternalPortOk returns a tuple with the InternalPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetInternalPortOk() (*int32, bool) {
-	if o == nil || o.InternalPort == nil {
+	if o == nil || IsNil(o.InternalPort) {
 		return nil, false
 	}
 	return o.InternalPort, true
@@ -97,7 +100,7 @@ func (o *Link) GetInternalPortOk() (*int32, bool) {
 
 // HasInternalPort returns a boolean if a field has been set.
 func (o *Link) HasInternalPort() bool {
-	if o != nil && o.InternalPort != nil {
+	if o != nil && !IsNil(o.InternalPort) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *Link) SetInternalPort(v int32) {
 
 // GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
 func (o *Link) GetExternalPort() int32 {
-	if o == nil || o.ExternalPort == nil {
+	if o == nil || IsNil(o.ExternalPort) {
 		var ret int32
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *Link) GetExternalPort() int32 {
 // GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetExternalPortOk() (*int32, bool) {
-	if o == nil || o.ExternalPort == nil {
+	if o == nil || IsNil(o.ExternalPort) {
 		return nil, false
 	}
 	return o.ExternalPort, true
@@ -129,7 +132,7 @@ func (o *Link) GetExternalPortOk() (*int32, bool) {
 
 // HasExternalPort returns a boolean if a field has been set.
 func (o *Link) HasExternalPort() bool {
-	if o != nil && o.ExternalPort != nil {
+	if o != nil && !IsNil(o.ExternalPort) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *Link) SetExternalPort(v int32) {
 
 // GetIsQoveryDomain returns the IsQoveryDomain field value if set, zero value otherwise.
 func (o *Link) GetIsQoveryDomain() bool {
-	if o == nil || o.IsQoveryDomain == nil {
+	if o == nil || IsNil(o.IsQoveryDomain) {
 		var ret bool
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *Link) GetIsQoveryDomain() bool {
 // GetIsQoveryDomainOk returns a tuple with the IsQoveryDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetIsQoveryDomainOk() (*bool, bool) {
-	if o == nil || o.IsQoveryDomain == nil {
+	if o == nil || IsNil(o.IsQoveryDomain) {
 		return nil, false
 	}
 	return o.IsQoveryDomain, true
@@ -161,7 +164,7 @@ func (o *Link) GetIsQoveryDomainOk() (*bool, bool) {
 
 // HasIsQoveryDomain returns a boolean if a field has been set.
 func (o *Link) HasIsQoveryDomain() bool {
-	if o != nil && o.IsQoveryDomain != nil {
+	if o != nil && !IsNil(o.IsQoveryDomain) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *Link) SetIsQoveryDomain(v bool) {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
 func (o *Link) GetIsDefault() bool {
-	if o == nil || o.IsDefault == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		var ret bool
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *Link) GetIsDefault() bool {
 // GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Link) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || o.IsDefault == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		return nil, false
 	}
 	return o.IsDefault, true
@@ -193,7 +196,7 @@ func (o *Link) GetIsDefaultOk() (*bool, bool) {
 
 // HasIsDefault returns a boolean if a field has been set.
 func (o *Link) HasIsDefault() bool {
-	if o != nil && o.IsDefault != nil {
+	if o != nil && !IsNil(o.IsDefault) {
 		return true
 	}
 
@@ -206,23 +209,31 @@ func (o *Link) SetIsDefault(v bool) {
 }
 
 func (o Link) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.InternalPort != nil {
-		toSerialize["internal_port"] = o.InternalPort
-	}
-	if o.ExternalPort != nil {
-		toSerialize["external_port"] = o.ExternalPort
-	}
-	if o.IsQoveryDomain != nil {
-		toSerialize["is_qovery_domain"] = o.IsQoveryDomain
-	}
-	if o.IsDefault != nil {
-		toSerialize["is_default"] = o.IsDefault
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Link) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.InternalPort) {
+		toSerialize["internal_port"] = o.InternalPort
+	}
+	if !IsNil(o.ExternalPort) {
+		toSerialize["external_port"] = o.ExternalPort
+	}
+	if !IsNil(o.IsQoveryDomain) {
+		toSerialize["is_qovery_domain"] = o.IsQoveryDomain
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["is_default"] = o.IsDefault
+	}
+	return toSerialize, nil
 }
 
 type NullableLink struct {

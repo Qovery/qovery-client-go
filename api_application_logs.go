@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationLogsApiService ApplicationLogsApi service
-type ApplicationLogsApiService service
+// ApplicationLogsAPIService ApplicationLogsAPI service
+type ApplicationLogsAPIService service
 
 type ApiListApplicationLogRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationLogsApiService
+	ApiService    *ApplicationLogsAPIService
 	applicationId string
 }
 
@@ -42,7 +42,7 @@ This will list the last 1000 logs of the application
  @param applicationId Application ID
  @return ApiListApplicationLogRequest
 */
-func (a *ApplicationLogsApiService) ListApplicationLog(ctx context.Context, applicationId string) ApiListApplicationLogRequest {
+func (a *ApplicationLogsAPIService) ListApplicationLog(ctx context.Context, applicationId string) ApiListApplicationLogRequest {
 	return ApiListApplicationLogRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -52,7 +52,7 @@ func (a *ApplicationLogsApiService) ListApplicationLog(ctx context.Context, appl
 
 // Execute executes the request
 //  @return LogResponseList
-func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicationLogRequest) (*LogResponseList, *http.Response, error) {
+func (a *ApplicationLogsAPIService) ListApplicationLogExecute(r ApiListApplicationLogRequest) (*LogResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -60,13 +60,13 @@ func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicati
 		localVarReturnValue *LogResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLogsApiService.ListApplicationLog")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationLogsAPIService.ListApplicationLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/log"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *ApplicationLogsApiService) ListApplicationLogExecute(r ApiListApplicati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

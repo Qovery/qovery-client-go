@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProjectStats type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectStats{}
+
 // ProjectStats struct for ProjectStats
 type ProjectStats struct {
 	Id                     string   `json:"id"`
@@ -66,7 +69,7 @@ func (o *ProjectStats) SetId(v string) {
 
 // GetServiceTotalNumber returns the ServiceTotalNumber field value if set, zero value otherwise.
 func (o *ProjectStats) GetServiceTotalNumber() float32 {
-	if o == nil || o.ServiceTotalNumber == nil {
+	if o == nil || IsNil(o.ServiceTotalNumber) {
 		var ret float32
 		return ret
 	}
@@ -76,7 +79,7 @@ func (o *ProjectStats) GetServiceTotalNumber() float32 {
 // GetServiceTotalNumberOk returns a tuple with the ServiceTotalNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectStats) GetServiceTotalNumberOk() (*float32, bool) {
-	if o == nil || o.ServiceTotalNumber == nil {
+	if o == nil || IsNil(o.ServiceTotalNumber) {
 		return nil, false
 	}
 	return o.ServiceTotalNumber, true
@@ -84,7 +87,7 @@ func (o *ProjectStats) GetServiceTotalNumberOk() (*float32, bool) {
 
 // HasServiceTotalNumber returns a boolean if a field has been set.
 func (o *ProjectStats) HasServiceTotalNumber() bool {
-	if o != nil && o.ServiceTotalNumber != nil {
+	if o != nil && !IsNil(o.ServiceTotalNumber) {
 		return true
 	}
 
@@ -98,7 +101,7 @@ func (o *ProjectStats) SetServiceTotalNumber(v float32) {
 
 // GetEnvironmentTotalNumber returns the EnvironmentTotalNumber field value if set, zero value otherwise.
 func (o *ProjectStats) GetEnvironmentTotalNumber() float32 {
-	if o == nil || o.EnvironmentTotalNumber == nil {
+	if o == nil || IsNil(o.EnvironmentTotalNumber) {
 		var ret float32
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *ProjectStats) GetEnvironmentTotalNumber() float32 {
 // GetEnvironmentTotalNumberOk returns a tuple with the EnvironmentTotalNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectStats) GetEnvironmentTotalNumberOk() (*float32, bool) {
-	if o == nil || o.EnvironmentTotalNumber == nil {
+	if o == nil || IsNil(o.EnvironmentTotalNumber) {
 		return nil, false
 	}
 	return o.EnvironmentTotalNumber, true
@@ -116,7 +119,7 @@ func (o *ProjectStats) GetEnvironmentTotalNumberOk() (*float32, bool) {
 
 // HasEnvironmentTotalNumber returns a boolean if a field has been set.
 func (o *ProjectStats) HasEnvironmentTotalNumber() bool {
-	if o != nil && o.EnvironmentTotalNumber != nil {
+	if o != nil && !IsNil(o.EnvironmentTotalNumber) {
 		return true
 	}
 
@@ -129,17 +132,23 @@ func (o *ProjectStats) SetEnvironmentTotalNumber(v float32) {
 }
 
 func (o ProjectStats) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if o.ServiceTotalNumber != nil {
-		toSerialize["service_total_number"] = o.ServiceTotalNumber
-	}
-	if o.EnvironmentTotalNumber != nil {
-		toSerialize["environment_total_number"] = o.EnvironmentTotalNumber
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProjectStats) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.ServiceTotalNumber) {
+		toSerialize["service_total_number"] = o.ServiceTotalNumber
+	}
+	if !IsNil(o.EnvironmentTotalNumber) {
+		toSerialize["environment_total_number"] = o.EnvironmentTotalNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableProjectStats struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GitRepository type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitRepository{}
+
 // GitRepository struct for GitRepository
 type GitRepository struct {
 	Id            string  `json:"id"`
@@ -118,7 +121,7 @@ func (o *GitRepository) SetUrl(v string) {
 
 // GetDefaultBranch returns the DefaultBranch field value if set, zero value otherwise.
 func (o *GitRepository) GetDefaultBranch() string {
-	if o == nil || o.DefaultBranch == nil {
+	if o == nil || IsNil(o.DefaultBranch) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *GitRepository) GetDefaultBranch() string {
 // GetDefaultBranchOk returns a tuple with the DefaultBranch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitRepository) GetDefaultBranchOk() (*string, bool) {
-	if o == nil || o.DefaultBranch == nil {
+	if o == nil || IsNil(o.DefaultBranch) {
 		return nil, false
 	}
 	return o.DefaultBranch, true
@@ -136,7 +139,7 @@ func (o *GitRepository) GetDefaultBranchOk() (*string, bool) {
 
 // HasDefaultBranch returns a boolean if a field has been set.
 func (o *GitRepository) HasDefaultBranch() bool {
-	if o != nil && o.DefaultBranch != nil {
+	if o != nil && !IsNil(o.DefaultBranch) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *GitRepository) SetDefaultBranch(v string) {
 
 // GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
 func (o *GitRepository) GetIsPrivate() bool {
-	if o == nil || o.IsPrivate == nil {
+	if o == nil || IsNil(o.IsPrivate) {
 		var ret bool
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *GitRepository) GetIsPrivate() bool {
 // GetIsPrivateOk returns a tuple with the IsPrivate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitRepository) GetIsPrivateOk() (*bool, bool) {
-	if o == nil || o.IsPrivate == nil {
+	if o == nil || IsNil(o.IsPrivate) {
 		return nil, false
 	}
 	return o.IsPrivate, true
@@ -168,7 +171,7 @@ func (o *GitRepository) GetIsPrivateOk() (*bool, bool) {
 
 // HasIsPrivate returns a boolean if a field has been set.
 func (o *GitRepository) HasIsPrivate() bool {
-	if o != nil && o.IsPrivate != nil {
+	if o != nil && !IsNil(o.IsPrivate) {
 		return true
 	}
 
@@ -181,23 +184,25 @@ func (o *GitRepository) SetIsPrivate(v bool) {
 }
 
 func (o GitRepository) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if o.DefaultBranch != nil {
-		toSerialize["default_branch"] = o.DefaultBranch
-	}
-	if o.IsPrivate != nil {
-		toSerialize["is_private"] = o.IsPrivate
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GitRepository) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["url"] = o.Url
+	if !IsNil(o.DefaultBranch) {
+		toSerialize["default_branch"] = o.DefaultBranch
+	}
+	if !IsNil(o.IsPrivate) {
+		toSerialize["is_private"] = o.IsPrivate
+	}
+	return toSerialize, nil
 }
 
 type NullableGitRepository struct {

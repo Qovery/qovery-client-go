@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the MetricCPUDatapoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricCPUDatapoint{}
+
 // MetricCPUDatapoint struct for MetricCPUDatapoint
 type MetricCPUDatapoint struct {
 	CreatedAt time.Time `json:"created_at"`
@@ -72,7 +75,7 @@ func (o *MetricCPUDatapoint) SetCreatedAt(v time.Time) {
 
 // GetRequestedInNumber returns the RequestedInNumber field value if set, zero value otherwise.
 func (o *MetricCPUDatapoint) GetRequestedInNumber() float32 {
-	if o == nil || o.RequestedInNumber == nil {
+	if o == nil || IsNil(o.RequestedInNumber) {
 		var ret float32
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *MetricCPUDatapoint) GetRequestedInNumber() float32 {
 // GetRequestedInNumberOk returns a tuple with the RequestedInNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricCPUDatapoint) GetRequestedInNumberOk() (*float32, bool) {
-	if o == nil || o.RequestedInNumber == nil {
+	if o == nil || IsNil(o.RequestedInNumber) {
 		return nil, false
 	}
 	return o.RequestedInNumber, true
@@ -90,7 +93,7 @@ func (o *MetricCPUDatapoint) GetRequestedInNumberOk() (*float32, bool) {
 
 // HasRequestedInNumber returns a boolean if a field has been set.
 func (o *MetricCPUDatapoint) HasRequestedInNumber() bool {
-	if o != nil && o.RequestedInNumber != nil {
+	if o != nil && !IsNil(o.RequestedInNumber) {
 		return true
 	}
 
@@ -151,20 +154,22 @@ func (o *MetricCPUDatapoint) SetConsumedInPercent(v float32) {
 }
 
 func (o MetricCPUDatapoint) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.RequestedInNumber != nil {
-		toSerialize["requested_in_number"] = o.RequestedInNumber
-	}
-	if true {
-		toSerialize["consumed_in_number"] = o.ConsumedInNumber
-	}
-	if true {
-		toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricCPUDatapoint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.RequestedInNumber) {
+		toSerialize["requested_in_number"] = o.RequestedInNumber
+	}
+	toSerialize["consumed_in_number"] = o.ConsumedInNumber
+	toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	return toSerialize, nil
 }
 
 type NullableMetricCPUDatapoint struct {

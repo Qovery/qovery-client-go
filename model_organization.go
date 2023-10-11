@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Organization type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Organization{}
+
 // Organization struct for Organization
 type Organization struct {
 	Id        string     `json:"id"`
@@ -105,7 +108,7 @@ func (o *Organization) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Organization) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *Organization) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Organization) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -123,7 +126,7 @@ func (o *Organization) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Organization) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -161,7 +164,7 @@ func (o *Organization) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Organization) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -228,7 +231,7 @@ func (o *Organization) SetPlan(v PlanEnum) {
 
 // GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Organization) GetWebsiteUrl() string {
-	if o == nil || o.WebsiteUrl.Get() == nil {
+	if o == nil || IsNil(o.WebsiteUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -271,7 +274,7 @@ func (o *Organization) UnsetWebsiteUrl() {
 
 // GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Organization) GetRepository() string {
-	if o == nil || o.Repository.Get() == nil {
+	if o == nil || IsNil(o.Repository.Get()) {
 		var ret string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *Organization) UnsetRepository() {
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Organization) GetLogoUrl() string {
-	if o == nil || o.LogoUrl.Get() == nil {
+	if o == nil || IsNil(o.LogoUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -357,7 +360,7 @@ func (o *Organization) UnsetLogoUrl() {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Organization) GetIconUrl() string {
-	if o == nil || o.IconUrl.Get() == nil {
+	if o == nil || IsNil(o.IconUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -411,7 +414,7 @@ func (o *Organization) GetAdminEmails() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Organization) GetAdminEmailsOk() ([]string, bool) {
-	if o == nil || o.AdminEmails == nil {
+	if o == nil || IsNil(o.AdminEmails) {
 		return nil, false
 	}
 	return o.AdminEmails, true
@@ -419,7 +422,7 @@ func (o *Organization) GetAdminEmailsOk() ([]string, bool) {
 
 // HasAdminEmails returns a boolean if a field has been set.
 func (o *Organization) HasAdminEmails() bool {
-	if o != nil && o.AdminEmails != nil {
+	if o != nil && IsNil(o.AdminEmails) {
 		return true
 	}
 
@@ -433,7 +436,7 @@ func (o *Organization) SetAdminEmails(v []string) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *Organization) GetOwner() string {
-	if o == nil || o.Owner == nil {
+	if o == nil || IsNil(o.Owner) {
 		var ret string
 		return ret
 	}
@@ -443,7 +446,7 @@ func (o *Organization) GetOwner() string {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Organization) GetOwnerOk() (*string, bool) {
-	if o == nil || o.Owner == nil {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -451,7 +454,7 @@ func (o *Organization) GetOwnerOk() (*string, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *Organization) HasOwner() bool {
-	if o != nil && o.Owner != nil {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -464,25 +467,25 @@ func (o *Organization) SetOwner(v string) {
 }
 
 func (o Organization) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Organization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["plan"] = o.Plan
-	}
+	toSerialize["plan"] = o.Plan
 	if o.WebsiteUrl.IsSet() {
 		toSerialize["website_url"] = o.WebsiteUrl.Get()
 	}
@@ -498,10 +501,10 @@ func (o Organization) MarshalJSON() ([]byte, error) {
 	if o.AdminEmails != nil {
 		toSerialize["admin_emails"] = o.AdminEmails
 	}
-	if o.Owner != nil {
+	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOrganization struct {

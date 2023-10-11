@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationConfigurationApiService ApplicationConfigurationApi service
-type ApplicationConfigurationApiService service
+// ApplicationConfigurationAPIService ApplicationConfigurationAPI service
+type ApplicationConfigurationAPIService service
 
 type ApiEditAdvancedSettingsRequest struct {
 	ctx                         context.Context
-	ApiService                  *ApplicationConfigurationApiService
+	ApiService                  *ApplicationConfigurationAPIService
 	applicationId               string
 	applicationAdvancedSettings *ApplicationAdvancedSettings
 }
@@ -48,7 +48,7 @@ Edit advanced settings by returning table of advanced settings.
  @param applicationId Application ID
  @return ApiEditAdvancedSettingsRequest
 */
-func (a *ApplicationConfigurationApiService) EditAdvancedSettings(ctx context.Context, applicationId string) ApiEditAdvancedSettingsRequest {
+func (a *ApplicationConfigurationAPIService) EditAdvancedSettings(ctx context.Context, applicationId string) ApiEditAdvancedSettingsRequest {
 	return ApiEditAdvancedSettingsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -58,7 +58,7 @@ func (a *ApplicationConfigurationApiService) EditAdvancedSettings(ctx context.Co
 
 // Execute executes the request
 //  @return ApplicationAdvancedSettings
-func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEditAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
+func (a *ApplicationConfigurationAPIService) EditAdvancedSettingsExecute(r ApiEditAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEd
 		localVarReturnValue *ApplicationAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.EditAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationAPIService.EditAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *ApplicationConfigurationApiService) EditAdvancedSettingsExecute(r ApiEd
 
 type ApiEditApplicationNetworkRequest struct {
 	ctx                       context.Context
-	ApiService                *ApplicationConfigurationApiService
+	ApiService                *ApplicationConfigurationAPIService
 	applicationId             string
 	applicationNetworkRequest *ApplicationNetworkRequest
 }
@@ -173,7 +173,7 @@ Edit the Network settings of the application.
  @param applicationId Application ID
  @return ApiEditApplicationNetworkRequest
 */
-func (a *ApplicationConfigurationApiService) EditApplicationNetwork(ctx context.Context, applicationId string) ApiEditApplicationNetworkRequest {
+func (a *ApplicationConfigurationAPIService) EditApplicationNetwork(ctx context.Context, applicationId string) ApiEditApplicationNetworkRequest {
 	return ApiEditApplicationNetworkRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -183,7 +183,7 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetwork(ctx context.
 
 // Execute executes the request
 //  @return ApplicationNetwork
-func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r ApiEditApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
+func (a *ApplicationConfigurationAPIService) EditApplicationNetworkExecute(r ApiEditApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -191,13 +191,13 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r Api
 		localVarReturnValue *ApplicationNetwork
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.EditApplicationNetwork")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationAPIService.EditApplicationNetwork")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/network"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -246,9 +246,9 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -275,7 +275,7 @@ func (a *ApplicationConfigurationApiService) EditApplicationNetworkExecute(r Api
 
 type ApiGetAdvancedSettingsRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationConfigurationApiService
+	ApiService    *ApplicationConfigurationAPIService
 	applicationId string
 }
 
@@ -292,7 +292,7 @@ Get list and values of the advanced settings of the application.
  @param applicationId Application ID
  @return ApiGetAdvancedSettingsRequest
 */
-func (a *ApplicationConfigurationApiService) GetAdvancedSettings(ctx context.Context, applicationId string) ApiGetAdvancedSettingsRequest {
+func (a *ApplicationConfigurationAPIService) GetAdvancedSettings(ctx context.Context, applicationId string) ApiGetAdvancedSettingsRequest {
 	return ApiGetAdvancedSettingsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -302,7 +302,7 @@ func (a *ApplicationConfigurationApiService) GetAdvancedSettings(ctx context.Con
 
 // Execute executes the request
 //  @return ApplicationAdvancedSettings
-func (a *ApplicationConfigurationApiService) GetAdvancedSettingsExecute(r ApiGetAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
+func (a *ApplicationConfigurationAPIService) GetAdvancedSettingsExecute(r ApiGetAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -310,13 +310,13 @@ func (a *ApplicationConfigurationApiService) GetAdvancedSettingsExecute(r ApiGet
 		localVarReturnValue *ApplicationAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.GetAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationAPIService.GetAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -363,9 +363,9 @@ func (a *ApplicationConfigurationApiService) GetAdvancedSettingsExecute(r ApiGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -392,7 +392,7 @@ func (a *ApplicationConfigurationApiService) GetAdvancedSettingsExecute(r ApiGet
 
 type ApiGetApplicationNetworkRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationConfigurationApiService
+	ApiService    *ApplicationConfigurationAPIService
 	applicationId string
 }
 
@@ -409,7 +409,7 @@ Get status of the application network settings.
  @param applicationId Application ID
  @return ApiGetApplicationNetworkRequest
 */
-func (a *ApplicationConfigurationApiService) GetApplicationNetwork(ctx context.Context, applicationId string) ApiGetApplicationNetworkRequest {
+func (a *ApplicationConfigurationAPIService) GetApplicationNetwork(ctx context.Context, applicationId string) ApiGetApplicationNetworkRequest {
 	return ApiGetApplicationNetworkRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -419,7 +419,7 @@ func (a *ApplicationConfigurationApiService) GetApplicationNetwork(ctx context.C
 
 // Execute executes the request
 //  @return ApplicationNetwork
-func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiGetApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
+func (a *ApplicationConfigurationAPIService) GetApplicationNetworkExecute(r ApiGetApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -427,13 +427,13 @@ func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiG
 		localVarReturnValue *ApplicationNetwork
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationApiService.GetApplicationNetwork")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationConfigurationAPIService.GetApplicationNetwork")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/network"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -480,9 +480,9 @@ func (a *ApplicationConfigurationApiService) GetApplicationNetworkExecute(r ApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

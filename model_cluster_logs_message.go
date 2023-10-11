@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterLogsMessage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterLogsMessage{}
+
 // ClusterLogsMessage struct for ClusterLogsMessage
 type ClusterLogsMessage struct {
 	// log global message
@@ -40,7 +43,7 @@ func NewClusterLogsMessageWithDefaults() *ClusterLogsMessage {
 
 // GetSafeMessage returns the SafeMessage field value if set, zero value otherwise.
 func (o *ClusterLogsMessage) GetSafeMessage() string {
-	if o == nil || o.SafeMessage == nil {
+	if o == nil || IsNil(o.SafeMessage) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ClusterLogsMessage) GetSafeMessage() string {
 // GetSafeMessageOk returns a tuple with the SafeMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsMessage) GetSafeMessageOk() (*string, bool) {
-	if o == nil || o.SafeMessage == nil {
+	if o == nil || IsNil(o.SafeMessage) {
 		return nil, false
 	}
 	return o.SafeMessage, true
@@ -58,7 +61,7 @@ func (o *ClusterLogsMessage) GetSafeMessageOk() (*string, bool) {
 
 // HasSafeMessage returns a boolean if a field has been set.
 func (o *ClusterLogsMessage) HasSafeMessage() bool {
-	if o != nil && o.SafeMessage != nil {
+	if o != nil && !IsNil(o.SafeMessage) {
 		return true
 	}
 
@@ -71,11 +74,19 @@ func (o *ClusterLogsMessage) SetSafeMessage(v string) {
 }
 
 func (o ClusterLogsMessage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SafeMessage != nil {
-		toSerialize["safe_message"] = o.SafeMessage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterLogsMessage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SafeMessage) {
+		toSerialize["safe_message"] = o.SafeMessage
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterLogsMessage struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationCustomRoleUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationCustomRoleUpdateRequest{}
+
 // OrganizationCustomRoleUpdateRequest struct for OrganizationCustomRoleUpdateRequest
 type OrganizationCustomRoleUpdateRequest struct {
 	Name        string  `json:"name"`
@@ -71,7 +74,7 @@ func (o *OrganizationCustomRoleUpdateRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *OrganizationCustomRoleUpdateRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -89,7 +92,7 @@ func (o *OrganizationCustomRoleUpdateRequest) GetDescriptionOk() (*string, bool)
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -150,20 +153,22 @@ func (o *OrganizationCustomRoleUpdateRequest) SetProjectPermissions(v []Organiza
 }
 
 func (o OrganizationCustomRoleUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["cluster_permissions"] = o.ClusterPermissions
-	}
-	if true {
-		toSerialize["project_permissions"] = o.ProjectPermissions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationCustomRoleUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["cluster_permissions"] = o.ClusterPermissions
+	toSerialize["project_permissions"] = o.ProjectPermissions
+	return toSerialize, nil
 }
 
 type NullableOrganizationCustomRoleUpdateRequest struct {

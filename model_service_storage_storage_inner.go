@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceStorageStorageInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceStorageStorageInner{}
+
 // ServiceStorageStorageInner struct for ServiceStorageStorageInner
 type ServiceStorageStorageInner struct {
 	Id   string          `json:"id"`
@@ -142,20 +145,20 @@ func (o *ServiceStorageStorageInner) SetMountPoint(v string) {
 }
 
 func (o ServiceStorageStorageInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["size"] = o.Size
-	}
-	if true {
-		toSerialize["mount_point"] = o.MountPoint
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceStorageStorageInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["type"] = o.Type
+	toSerialize["size"] = o.Size
+	toSerialize["mount_point"] = o.MountPoint
+	return toSerialize, nil
 }
 
 type NullableServiceStorageStorageInner struct {

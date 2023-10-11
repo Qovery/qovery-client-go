@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EventResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventResponseList{}
+
 // EventResponseList struct for EventResponseList
 type EventResponseList struct {
 	Results []Event `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewEventResponseListWithDefaults() *EventResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *EventResponseList) GetResults() []Event {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Event
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EventResponseList) GetResults() []Event {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EventResponseList) GetResultsOk() ([]Event, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *EventResponseList) GetResultsOk() ([]Event, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *EventResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *EventResponseList) SetResults(v []Event) {
 }
 
 func (o EventResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EventResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableEventResponseList struct {

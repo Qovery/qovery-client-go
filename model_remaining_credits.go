@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RemainingCredits type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RemainingCredits{}
+
 // RemainingCredits struct for RemainingCredits
 type RemainingCredits struct {
 	TotalInCents int32   `json:"total_in_cents"`
@@ -115,17 +118,19 @@ func (o *RemainingCredits) SetCurrencyCode(v string) {
 }
 
 func (o RemainingCredits) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["total_in_cents"] = o.TotalInCents
-	}
-	if true {
-		toSerialize["total"] = o.Total
-	}
-	if true {
-		toSerialize["currency_code"] = o.CurrencyCode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RemainingCredits) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["total_in_cents"] = o.TotalInCents
+	toSerialize["total"] = o.Total
+	toSerialize["currency_code"] = o.CurrencyCode
+	return toSerialize, nil
 }
 
 type NullableRemainingCredits struct {

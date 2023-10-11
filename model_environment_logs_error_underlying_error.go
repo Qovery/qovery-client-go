@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentLogsErrorUnderlyingError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLogsErrorUnderlyingError{}
+
 // EnvironmentLogsErrorUnderlyingError struct for EnvironmentLogsErrorUnderlyingError
 type EnvironmentLogsErrorUnderlyingError struct {
 	Message     *string `json:"message,omitempty"`
@@ -40,7 +43,7 @@ func NewEnvironmentLogsErrorUnderlyingErrorWithDefaults() *EnvironmentLogsErrorU
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *EnvironmentLogsErrorUnderlyingError) GetMessage() string {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EnvironmentLogsErrorUnderlyingError) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsErrorUnderlyingError) GetMessageOk() (*string, bool) {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -58,7 +61,7 @@ func (o *EnvironmentLogsErrorUnderlyingError) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *EnvironmentLogsErrorUnderlyingError) HasMessage() bool {
-	if o != nil && o.Message != nil {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EnvironmentLogsErrorUnderlyingError) SetMessage(v string) {
 
 // GetFullDetails returns the FullDetails field value if set, zero value otherwise.
 func (o *EnvironmentLogsErrorUnderlyingError) GetFullDetails() string {
-	if o == nil || o.FullDetails == nil {
+	if o == nil || IsNil(o.FullDetails) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EnvironmentLogsErrorUnderlyingError) GetFullDetails() string {
 // GetFullDetailsOk returns a tuple with the FullDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsErrorUnderlyingError) GetFullDetailsOk() (*string, bool) {
-	if o == nil || o.FullDetails == nil {
+	if o == nil || IsNil(o.FullDetails) {
 		return nil, false
 	}
 	return o.FullDetails, true
@@ -90,7 +93,7 @@ func (o *EnvironmentLogsErrorUnderlyingError) GetFullDetailsOk() (*string, bool)
 
 // HasFullDetails returns a boolean if a field has been set.
 func (o *EnvironmentLogsErrorUnderlyingError) HasFullDetails() bool {
-	if o != nil && o.FullDetails != nil {
+	if o != nil && !IsNil(o.FullDetails) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *EnvironmentLogsErrorUnderlyingError) SetFullDetails(v string) {
 }
 
 func (o EnvironmentLogsErrorUnderlyingError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Message != nil {
-		toSerialize["message"] = o.Message
-	}
-	if o.FullDetails != nil {
-		toSerialize["full_details"] = o.FullDetails
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLogsErrorUnderlyingError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.FullDetails) {
+		toSerialize["full_details"] = o.FullDetails
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLogsErrorUnderlyingError struct {

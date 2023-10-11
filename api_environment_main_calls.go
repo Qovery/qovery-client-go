@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// EnvironmentMainCallsApiService EnvironmentMainCallsApi service
-type EnvironmentMainCallsApiService service
+// EnvironmentMainCallsAPIService EnvironmentMainCallsAPI service
+type EnvironmentMainCallsAPIService service
 
 type ApiDeleteEnvironmentRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ApiService    *EnvironmentMainCallsAPIService
 	environmentId string
 }
 
@@ -42,7 +42,7 @@ To delete an environment you must have the admin permission
  @param environmentId Environment ID
  @return ApiDeleteEnvironmentRequest
 */
-func (a *EnvironmentMainCallsApiService) DeleteEnvironment(ctx context.Context, environmentId string) ApiDeleteEnvironmentRequest {
+func (a *EnvironmentMainCallsAPIService) DeleteEnvironment(ctx context.Context, environmentId string) ApiDeleteEnvironmentRequest {
 	return ApiDeleteEnvironmentRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -51,20 +51,20 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironment(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
+func (a *EnvironmentMainCallsAPIService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.DeleteEnvironment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsAPIService.DeleteEnvironment")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnv
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -131,7 +131,7 @@ func (a *EnvironmentMainCallsApiService) DeleteEnvironmentExecute(r ApiDeleteEnv
 
 type ApiEditEnvironmentRequest struct {
 	ctx                    context.Context
-	ApiService             *EnvironmentMainCallsApiService
+	ApiService             *EnvironmentMainCallsAPIService
 	environmentId          string
 	environmentEditRequest *EnvironmentEditRequest
 }
@@ -154,7 +154,7 @@ To edit an environment you must have the admin permission
  @param environmentId Environment ID
  @return ApiEditEnvironmentRequest
 */
-func (a *EnvironmentMainCallsApiService) EditEnvironment(ctx context.Context, environmentId string) ApiEditEnvironmentRequest {
+func (a *EnvironmentMainCallsAPIService) EditEnvironment(ctx context.Context, environmentId string) ApiEditEnvironmentRequest {
 	return ApiEditEnvironmentRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -164,7 +164,7 @@ func (a *EnvironmentMainCallsApiService) EditEnvironment(ctx context.Context, en
 
 // Execute executes the request
 //  @return Environment
-func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (*Environment, *http.Response, error) {
+func (a *EnvironmentMainCallsAPIService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -172,13 +172,13 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 		localVarReturnValue *Environment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.EditEnvironment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsAPIService.EditEnvironment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -227,9 +227,9 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -256,7 +256,7 @@ func (a *EnvironmentMainCallsApiService) EditEnvironmentExecute(r ApiEditEnviron
 
 type ApiGetEnvironmentRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ApiService    *EnvironmentMainCallsAPIService
 	environmentId string
 }
 
@@ -271,7 +271,7 @@ GetEnvironment Get environment by ID
  @param environmentId Environment ID
  @return ApiGetEnvironmentRequest
 */
-func (a *EnvironmentMainCallsApiService) GetEnvironment(ctx context.Context, environmentId string) ApiGetEnvironmentRequest {
+func (a *EnvironmentMainCallsAPIService) GetEnvironment(ctx context.Context, environmentId string) ApiGetEnvironmentRequest {
 	return ApiGetEnvironmentRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -281,7 +281,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironment(ctx context.Context, env
 
 // Execute executes the request
 //  @return Environment
-func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (*Environment, *http.Response, error) {
+func (a *EnvironmentMainCallsAPIService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -289,13 +289,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 		localVarReturnValue *Environment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsAPIService.GetEnvironment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -342,9 +342,9 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -371,7 +371,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentExecute(r ApiGetEnvironme
 
 type ApiGetEnvironmentStatusRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ApiService    *EnvironmentMainCallsAPIService
 	environmentId string
 }
 
@@ -386,7 +386,7 @@ GetEnvironmentStatus Get environment status
  @param environmentId Environment ID
  @return ApiGetEnvironmentStatusRequest
 */
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatus(ctx context.Context, environmentId string) ApiGetEnvironmentStatusRequest {
+func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatus(ctx context.Context, environmentId string) ApiGetEnvironmentStatusRequest {
 	return ApiGetEnvironmentStatusRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -396,7 +396,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatus(ctx context.Contex
 
 // Execute executes the request
 //  @return EnvironmentStatus
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (*EnvironmentStatus, *http.Response, error) {
+func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -404,13 +404,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 		localVarReturnValue *EnvironmentStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironmentStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsAPIService.GetEnvironmentStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -457,9 +457,9 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -486,7 +486,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusExecute(r ApiGetEnv
 
 type ApiGetEnvironmentStatusesRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ApiService    *EnvironmentMainCallsAPIService
 	environmentId string
 }
 
@@ -501,7 +501,7 @@ GetEnvironmentStatuses Get environment statuses with services status
  @param environmentId Environment ID
  @return ApiGetEnvironmentStatusesRequest
 */
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatuses(ctx context.Context, environmentId string) ApiGetEnvironmentStatusesRequest {
+func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatuses(ctx context.Context, environmentId string) ApiGetEnvironmentStatusesRequest {
 	return ApiGetEnvironmentStatusesRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -511,7 +511,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatuses(ctx context.Cont
 
 // Execute executes the request
 //  @return EnvironmentStatuses
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesExecute(r ApiGetEnvironmentStatusesRequest) (*EnvironmentStatuses, *http.Response, error) {
+func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusesExecute(r ApiGetEnvironmentStatusesRequest) (*EnvironmentStatuses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -519,13 +519,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesExecute(r ApiGetE
 		localVarReturnValue *EnvironmentStatuses
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironmentStatuses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsAPIService.GetEnvironmentStatuses")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/statuses"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -572,9 +572,9 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesExecute(r ApiGetE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -601,7 +601,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesExecute(r ApiGetE
 
 type ApiGetEnvironmentStatusesWithStagesRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentMainCallsApiService
+	ApiService    *EnvironmentMainCallsAPIService
 	environmentId string
 }
 
@@ -616,7 +616,7 @@ GetEnvironmentStatusesWithStages Get environment statuses with stages
  @param environmentId Environment ID
  @return ApiGetEnvironmentStatusesWithStagesRequest
 */
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStages(ctx context.Context, environmentId string) ApiGetEnvironmentStatusesWithStagesRequest {
+func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusesWithStages(ctx context.Context, environmentId string) ApiGetEnvironmentStatusesWithStagesRequest {
 	return ApiGetEnvironmentStatusesWithStagesRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -626,7 +626,7 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStages(ctx co
 
 // Execute executes the request
 //  @return EnvironmentStatusesWithStages
-func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStagesExecute(r ApiGetEnvironmentStatusesWithStagesRequest) (*EnvironmentStatusesWithStages, *http.Response, error) {
+func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusesWithStagesExecute(r ApiGetEnvironmentStatusesWithStagesRequest) (*EnvironmentStatusesWithStages, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -634,13 +634,13 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStagesExecute
 		localVarReturnValue *EnvironmentStatusesWithStages
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsApiService.GetEnvironmentStatusesWithStages")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentMainCallsAPIService.GetEnvironmentStatusesWithStages")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/statusesWithStages"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -687,9 +687,9 @@ func (a *EnvironmentMainCallsApiService) GetEnvironmentStatusesWithStagesExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

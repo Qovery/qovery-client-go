@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentLog type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLog{}
+
 // EnvironmentLog struct for EnvironmentLog
 type EnvironmentLog struct {
 	Id        string               `json:"id"`
@@ -99,7 +102,7 @@ func (o *EnvironmentLog) SetCreatedAt(v time.Time) {
 
 // GetScope returns the Scope field value if set, zero value otherwise.
 func (o *EnvironmentLog) GetScope() EnvironmentLogScope {
-	if o == nil || o.Scope == nil {
+	if o == nil || IsNil(o.Scope) {
 		var ret EnvironmentLogScope
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *EnvironmentLog) GetScope() EnvironmentLogScope {
 // GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLog) GetScopeOk() (*EnvironmentLogScope, bool) {
-	if o == nil || o.Scope == nil {
+	if o == nil || IsNil(o.Scope) {
 		return nil, false
 	}
 	return o.Scope, true
@@ -117,7 +120,7 @@ func (o *EnvironmentLog) GetScopeOk() (*EnvironmentLogScope, bool) {
 
 // HasScope returns a boolean if a field has been set.
 func (o *EnvironmentLog) HasScope() bool {
-	if o != nil && o.Scope != nil {
+	if o != nil && !IsNil(o.Scope) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *EnvironmentLog) SetScope(v EnvironmentLogScope) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *EnvironmentLog) GetState() StatusKindEnum {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		var ret StatusKindEnum
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *EnvironmentLog) GetState() StatusKindEnum {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLog) GetStateOk() (*StatusKindEnum, bool) {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -149,7 +152,7 @@ func (o *EnvironmentLog) GetStateOk() (*StatusKindEnum, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *EnvironmentLog) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -189,7 +192,7 @@ func (o *EnvironmentLog) SetMessage(v string) {
 
 // GetExecutionId returns the ExecutionId field value if set, zero value otherwise.
 func (o *EnvironmentLog) GetExecutionId() string {
-	if o == nil || o.ExecutionId == nil {
+	if o == nil || IsNil(o.ExecutionId) {
 		var ret string
 		return ret
 	}
@@ -199,7 +202,7 @@ func (o *EnvironmentLog) GetExecutionId() string {
 // GetExecutionIdOk returns a tuple with the ExecutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLog) GetExecutionIdOk() (*string, bool) {
-	if o == nil || o.ExecutionId == nil {
+	if o == nil || IsNil(o.ExecutionId) {
 		return nil, false
 	}
 	return o.ExecutionId, true
@@ -207,7 +210,7 @@ func (o *EnvironmentLog) GetExecutionIdOk() (*string, bool) {
 
 // HasExecutionId returns a boolean if a field has been set.
 func (o *EnvironmentLog) HasExecutionId() bool {
-	if o != nil && o.ExecutionId != nil {
+	if o != nil && !IsNil(o.ExecutionId) {
 		return true
 	}
 
@@ -221,7 +224,7 @@ func (o *EnvironmentLog) SetExecutionId(v string) {
 
 // GetHint returns the Hint field value if set, zero value otherwise.
 func (o *EnvironmentLog) GetHint() string {
-	if o == nil || o.Hint == nil {
+	if o == nil || IsNil(o.Hint) {
 		var ret string
 		return ret
 	}
@@ -231,7 +234,7 @@ func (o *EnvironmentLog) GetHint() string {
 // GetHintOk returns a tuple with the Hint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLog) GetHintOk() (*string, bool) {
-	if o == nil || o.Hint == nil {
+	if o == nil || IsNil(o.Hint) {
 		return nil, false
 	}
 	return o.Hint, true
@@ -239,7 +242,7 @@ func (o *EnvironmentLog) GetHintOk() (*string, bool) {
 
 // HasHint returns a boolean if a field has been set.
 func (o *EnvironmentLog) HasHint() bool {
-	if o != nil && o.Hint != nil {
+	if o != nil && !IsNil(o.Hint) {
 		return true
 	}
 
@@ -252,29 +255,31 @@ func (o *EnvironmentLog) SetHint(v string) {
 }
 
 func (o EnvironmentLog) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Scope != nil {
-		toSerialize["scope"] = o.Scope
-	}
-	if o.State != nil {
-		toSerialize["state"] = o.State
-	}
-	if true {
-		toSerialize["message"] = o.Message.Get()
-	}
-	if o.ExecutionId != nil {
-		toSerialize["execution_id"] = o.ExecutionId
-	}
-	if o.Hint != nil {
-		toSerialize["hint"] = o.Hint
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLog) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.Scope) {
+		toSerialize["scope"] = o.Scope
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	toSerialize["message"] = o.Message.Get()
+	if !IsNil(o.ExecutionId) {
+		toSerialize["execution_id"] = o.ExecutionId
+	}
+	if !IsNil(o.Hint) {
+		toSerialize["hint"] = o.Hint
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLog struct {

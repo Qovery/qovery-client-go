@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Probe type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Probe{}
+
 // Probe struct for Probe
 type Probe struct {
 	Type                *ProbeType `json:"type,omitempty"`
@@ -64,7 +67,7 @@ func NewProbeWithDefaults() *Probe {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Probe) GetType() ProbeType {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret ProbeType
 		return ret
 	}
@@ -74,7 +77,7 @@ func (o *Probe) GetType() ProbeType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Probe) GetTypeOk() (*ProbeType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -82,7 +85,7 @@ func (o *Probe) GetTypeOk() (*ProbeType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Probe) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -96,7 +99,7 @@ func (o *Probe) SetType(v ProbeType) {
 
 // GetInitialDelaySeconds returns the InitialDelaySeconds field value if set, zero value otherwise.
 func (o *Probe) GetInitialDelaySeconds() int32 {
-	if o == nil || o.InitialDelaySeconds == nil {
+	if o == nil || IsNil(o.InitialDelaySeconds) {
 		var ret int32
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *Probe) GetInitialDelaySeconds() int32 {
 // GetInitialDelaySecondsOk returns a tuple with the InitialDelaySeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Probe) GetInitialDelaySecondsOk() (*int32, bool) {
-	if o == nil || o.InitialDelaySeconds == nil {
+	if o == nil || IsNil(o.InitialDelaySeconds) {
 		return nil, false
 	}
 	return o.InitialDelaySeconds, true
@@ -114,7 +117,7 @@ func (o *Probe) GetInitialDelaySecondsOk() (*int32, bool) {
 
 // HasInitialDelaySeconds returns a boolean if a field has been set.
 func (o *Probe) HasInitialDelaySeconds() bool {
-	if o != nil && o.InitialDelaySeconds != nil {
+	if o != nil && !IsNil(o.InitialDelaySeconds) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *Probe) SetInitialDelaySeconds(v int32) {
 
 // GetPeriodSeconds returns the PeriodSeconds field value if set, zero value otherwise.
 func (o *Probe) GetPeriodSeconds() int32 {
-	if o == nil || o.PeriodSeconds == nil {
+	if o == nil || IsNil(o.PeriodSeconds) {
 		var ret int32
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *Probe) GetPeriodSeconds() int32 {
 // GetPeriodSecondsOk returns a tuple with the PeriodSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Probe) GetPeriodSecondsOk() (*int32, bool) {
-	if o == nil || o.PeriodSeconds == nil {
+	if o == nil || IsNil(o.PeriodSeconds) {
 		return nil, false
 	}
 	return o.PeriodSeconds, true
@@ -146,7 +149,7 @@ func (o *Probe) GetPeriodSecondsOk() (*int32, bool) {
 
 // HasPeriodSeconds returns a boolean if a field has been set.
 func (o *Probe) HasPeriodSeconds() bool {
-	if o != nil && o.PeriodSeconds != nil {
+	if o != nil && !IsNil(o.PeriodSeconds) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *Probe) SetPeriodSeconds(v int32) {
 
 // GetTimeoutSeconds returns the TimeoutSeconds field value if set, zero value otherwise.
 func (o *Probe) GetTimeoutSeconds() int32 {
-	if o == nil || o.TimeoutSeconds == nil {
+	if o == nil || IsNil(o.TimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *Probe) GetTimeoutSeconds() int32 {
 // GetTimeoutSecondsOk returns a tuple with the TimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Probe) GetTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.TimeoutSeconds == nil {
+	if o == nil || IsNil(o.TimeoutSeconds) {
 		return nil, false
 	}
 	return o.TimeoutSeconds, true
@@ -178,7 +181,7 @@ func (o *Probe) GetTimeoutSecondsOk() (*int32, bool) {
 
 // HasTimeoutSeconds returns a boolean if a field has been set.
 func (o *Probe) HasTimeoutSeconds() bool {
-	if o != nil && o.TimeoutSeconds != nil {
+	if o != nil && !IsNil(o.TimeoutSeconds) {
 		return true
 	}
 
@@ -192,7 +195,7 @@ func (o *Probe) SetTimeoutSeconds(v int32) {
 
 // GetSuccessThreshold returns the SuccessThreshold field value if set, zero value otherwise.
 func (o *Probe) GetSuccessThreshold() int32 {
-	if o == nil || o.SuccessThreshold == nil {
+	if o == nil || IsNil(o.SuccessThreshold) {
 		var ret int32
 		return ret
 	}
@@ -202,7 +205,7 @@ func (o *Probe) GetSuccessThreshold() int32 {
 // GetSuccessThresholdOk returns a tuple with the SuccessThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Probe) GetSuccessThresholdOk() (*int32, bool) {
-	if o == nil || o.SuccessThreshold == nil {
+	if o == nil || IsNil(o.SuccessThreshold) {
 		return nil, false
 	}
 	return o.SuccessThreshold, true
@@ -210,7 +213,7 @@ func (o *Probe) GetSuccessThresholdOk() (*int32, bool) {
 
 // HasSuccessThreshold returns a boolean if a field has been set.
 func (o *Probe) HasSuccessThreshold() bool {
-	if o != nil && o.SuccessThreshold != nil {
+	if o != nil && !IsNil(o.SuccessThreshold) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *Probe) SetSuccessThreshold(v int32) {
 
 // GetFailureThreshold returns the FailureThreshold field value if set, zero value otherwise.
 func (o *Probe) GetFailureThreshold() int32 {
-	if o == nil || o.FailureThreshold == nil {
+	if o == nil || IsNil(o.FailureThreshold) {
 		var ret int32
 		return ret
 	}
@@ -234,7 +237,7 @@ func (o *Probe) GetFailureThreshold() int32 {
 // GetFailureThresholdOk returns a tuple with the FailureThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Probe) GetFailureThresholdOk() (*int32, bool) {
-	if o == nil || o.FailureThreshold == nil {
+	if o == nil || IsNil(o.FailureThreshold) {
 		return nil, false
 	}
 	return o.FailureThreshold, true
@@ -242,7 +245,7 @@ func (o *Probe) GetFailureThresholdOk() (*int32, bool) {
 
 // HasFailureThreshold returns a boolean if a field has been set.
 func (o *Probe) HasFailureThreshold() bool {
-	if o != nil && o.FailureThreshold != nil {
+	if o != nil && !IsNil(o.FailureThreshold) {
 		return true
 	}
 
@@ -255,26 +258,34 @@ func (o *Probe) SetFailureThreshold(v int32) {
 }
 
 func (o Probe) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.InitialDelaySeconds != nil {
-		toSerialize["initial_delay_seconds"] = o.InitialDelaySeconds
-	}
-	if o.PeriodSeconds != nil {
-		toSerialize["period_seconds"] = o.PeriodSeconds
-	}
-	if o.TimeoutSeconds != nil {
-		toSerialize["timeout_seconds"] = o.TimeoutSeconds
-	}
-	if o.SuccessThreshold != nil {
-		toSerialize["success_threshold"] = o.SuccessThreshold
-	}
-	if o.FailureThreshold != nil {
-		toSerialize["failure_threshold"] = o.FailureThreshold
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Probe) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.InitialDelaySeconds) {
+		toSerialize["initial_delay_seconds"] = o.InitialDelaySeconds
+	}
+	if !IsNil(o.PeriodSeconds) {
+		toSerialize["period_seconds"] = o.PeriodSeconds
+	}
+	if !IsNil(o.TimeoutSeconds) {
+		toSerialize["timeout_seconds"] = o.TimeoutSeconds
+	}
+	if !IsNil(o.SuccessThreshold) {
+		toSerialize["success_threshold"] = o.SuccessThreshold
+	}
+	if !IsNil(o.FailureThreshold) {
+		toSerialize["failure_threshold"] = o.FailureThreshold
+	}
+	return toSerialize, nil
 }
 
 type NullableProbe struct {

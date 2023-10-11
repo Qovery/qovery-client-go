@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// DatabasesApiService DatabasesApi service
-type DatabasesApiService service
+// DatabasesAPIService DatabasesAPI service
+type DatabasesAPIService service
 
 type ApiCloneDatabaseRequest struct {
 	ctx                  context.Context
-	ApiService           *DatabasesApiService
+	ApiService           *DatabasesAPIService
 	databaseId           string
 	cloneDatabaseRequest *CloneDatabaseRequest
 }
@@ -48,7 +48,7 @@ This will create a new database with the same configuration on the targeted envi
  @param databaseId Database ID
  @return ApiCloneDatabaseRequest
 */
-func (a *DatabasesApiService) CloneDatabase(ctx context.Context, databaseId string) ApiCloneDatabaseRequest {
+func (a *DatabasesAPIService) CloneDatabase(ctx context.Context, databaseId string) ApiCloneDatabaseRequest {
 	return ApiCloneDatabaseRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -58,7 +58,7 @@ func (a *DatabasesApiService) CloneDatabase(ctx context.Context, databaseId stri
 
 // Execute executes the request
 //  @return Database
-func (a *DatabasesApiService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*Database, *http.Response, error) {
+func (a *DatabasesAPIService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *DatabasesApiService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*
 		localVarReturnValue *Database
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.CloneDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesAPIService.CloneDatabase")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/clone"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *DatabasesApiService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *DatabasesApiService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*
 
 type ApiCreateDatabaseRequest struct {
 	ctx             context.Context
-	ApiService      *DatabasesApiService
+	ApiService      *DatabasesAPIService
 	environmentId   string
 	databaseRequest *DatabaseRequest
 }
@@ -171,7 +171,7 @@ CreateDatabase Create a database
  @param environmentId Environment ID
  @return ApiCreateDatabaseRequest
 */
-func (a *DatabasesApiService) CreateDatabase(ctx context.Context, environmentId string) ApiCreateDatabaseRequest {
+func (a *DatabasesAPIService) CreateDatabase(ctx context.Context, environmentId string) ApiCreateDatabaseRequest {
 	return ApiCreateDatabaseRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -181,7 +181,7 @@ func (a *DatabasesApiService) CreateDatabase(ctx context.Context, environmentId 
 
 // Execute executes the request
 //  @return Database
-func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*Database, *http.Response, error) {
+func (a *DatabasesAPIService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -189,13 +189,13 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 		localVarReturnValue *Database
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.CreateDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesAPIService.CreateDatabase")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -273,7 +273,7 @@ func (a *DatabasesApiService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) 
 
 type ApiGetEnvironmentDatabaseStatusRequest struct {
 	ctx           context.Context
-	ApiService    *DatabasesApiService
+	ApiService    *DatabasesAPIService
 	environmentId string
 }
 
@@ -290,7 +290,7 @@ Returns a list of databases with only their id and status.
  @param environmentId Environment ID
  @return ApiGetEnvironmentDatabaseStatusRequest
 */
-func (a *DatabasesApiService) GetEnvironmentDatabaseStatus(ctx context.Context, environmentId string) ApiGetEnvironmentDatabaseStatusRequest {
+func (a *DatabasesAPIService) GetEnvironmentDatabaseStatus(ctx context.Context, environmentId string) ApiGetEnvironmentDatabaseStatusRequest {
 	return ApiGetEnvironmentDatabaseStatusRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -300,7 +300,7 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatus(ctx context.Context, 
 
 // Execute executes the request
 //  @return ReferenceObjectStatusResponseList
-func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnvironmentDatabaseStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
+func (a *DatabasesAPIService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnvironmentDatabaseStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -308,13 +308,13 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 		localVarReturnValue *ReferenceObjectStatusResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.GetEnvironmentDatabaseStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesAPIService.GetEnvironmentDatabaseStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -361,9 +361,9 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -390,7 +390,7 @@ func (a *DatabasesApiService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnviro
 
 type ApiListDatabaseRequest struct {
 	ctx           context.Context
-	ApiService    *DatabasesApiService
+	ApiService    *DatabasesAPIService
 	environmentId string
 }
 
@@ -405,7 +405,7 @@ ListDatabase List environment databases
  @param environmentId Environment ID
  @return ApiListDatabaseRequest
 */
-func (a *DatabasesApiService) ListDatabase(ctx context.Context, environmentId string) ApiListDatabaseRequest {
+func (a *DatabasesAPIService) ListDatabase(ctx context.Context, environmentId string) ApiListDatabaseRequest {
 	return ApiListDatabaseRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -415,7 +415,7 @@ func (a *DatabasesApiService) ListDatabase(ctx context.Context, environmentId st
 
 // Execute executes the request
 //  @return DatabaseResponseList
-func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (*DatabaseResponseList, *http.Response, error) {
+func (a *DatabasesAPIService) ListDatabaseExecute(r ApiListDatabaseRequest) (*DatabaseResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -423,13 +423,13 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (*Da
 		localVarReturnValue *DatabaseResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesAPIService.ListDatabase")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -476,9 +476,9 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (*Da
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -505,7 +505,7 @@ func (a *DatabasesApiService) ListDatabaseExecute(r ApiListDatabaseRequest) (*Da
 
 type ApiListEnvironmentDatabaseConfigRequest struct {
 	ctx           context.Context
-	ApiService    *DatabasesApiService
+	ApiService    *DatabasesAPIService
 	environmentId string
 }
 
@@ -520,7 +520,7 @@ ListEnvironmentDatabaseConfig List eligible database types, versions and modes f
  @param environmentId Environment ID
  @return ApiListEnvironmentDatabaseConfigRequest
 */
-func (a *DatabasesApiService) ListEnvironmentDatabaseConfig(ctx context.Context, environmentId string) ApiListEnvironmentDatabaseConfigRequest {
+func (a *DatabasesAPIService) ListEnvironmentDatabaseConfig(ctx context.Context, environmentId string) ApiListEnvironmentDatabaseConfigRequest {
 	return ApiListEnvironmentDatabaseConfigRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -530,7 +530,7 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfig(ctx context.Context,
 
 // Execute executes the request
 //  @return DatabaseConfigurationResponseList
-func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvironmentDatabaseConfigRequest) (*DatabaseConfigurationResponseList, *http.Response, error) {
+func (a *DatabasesAPIService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvironmentDatabaseConfigRequest) (*DatabaseConfigurationResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -538,13 +538,13 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 		localVarReturnValue *DatabaseConfigurationResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListEnvironmentDatabaseConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesAPIService.ListEnvironmentDatabaseConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/databaseConfiguration"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -591,9 +591,9 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -620,7 +620,7 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvi
 
 type ApiListEnvironmentDatabaseCurrentMetricRequest struct {
 	ctx           context.Context
-	ApiService    *DatabasesApiService
+	ApiService    *DatabasesAPIService
 	environmentId string
 }
 
@@ -635,7 +635,7 @@ ListEnvironmentDatabaseCurrentMetric List current metric consumption for each da
  @param environmentId Environment ID
  @return ApiListEnvironmentDatabaseCurrentMetricRequest
 */
-func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetric(ctx context.Context, environmentId string) ApiListEnvironmentDatabaseCurrentMetricRequest {
+func (a *DatabasesAPIService) ListEnvironmentDatabaseCurrentMetric(ctx context.Context, environmentId string) ApiListEnvironmentDatabaseCurrentMetricRequest {
 	return ApiListEnvironmentDatabaseCurrentMetricRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -645,7 +645,7 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetric(ctx context.C
 
 // Execute executes the request
 //  @return EnvironmentDatabasesCurrentMetricResponseList
-func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiListEnvironmentDatabaseCurrentMetricRequest) (*EnvironmentDatabasesCurrentMetricResponseList, *http.Response, error) {
+func (a *DatabasesAPIService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiListEnvironmentDatabaseCurrentMetricRequest) (*EnvironmentDatabasesCurrentMetricResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -653,13 +653,13 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiL
 		localVarReturnValue *EnvironmentDatabasesCurrentMetricResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesApiService.ListEnvironmentDatabaseCurrentMetric")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabasesAPIService.ListEnvironmentDatabaseCurrentMetric")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/database/currentMetric"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -706,9 +706,9 @@ func (a *DatabasesApiService) ListEnvironmentDatabaseCurrentMetricExecute(r ApiL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

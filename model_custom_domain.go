@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the CustomDomain type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomDomain{}
+
 // CustomDomain struct for CustomDomain
 type CustomDomain struct {
 	Id        string     `json:"id"`
@@ -101,7 +104,7 @@ func (o *CustomDomain) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *CustomDomain) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -111,7 +114,7 @@ func (o *CustomDomain) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomDomain) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -119,7 +122,7 @@ func (o *CustomDomain) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *CustomDomain) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -181,7 +184,7 @@ func (o *CustomDomain) SetGenerateCertificate(v bool) {
 
 // GetValidationDomain returns the ValidationDomain field value if set, zero value otherwise.
 func (o *CustomDomain) GetValidationDomain() string {
-	if o == nil || o.ValidationDomain == nil {
+	if o == nil || IsNil(o.ValidationDomain) {
 		var ret string
 		return ret
 	}
@@ -191,7 +194,7 @@ func (o *CustomDomain) GetValidationDomain() string {
 // GetValidationDomainOk returns a tuple with the ValidationDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomDomain) GetValidationDomainOk() (*string, bool) {
-	if o == nil || o.ValidationDomain == nil {
+	if o == nil || IsNil(o.ValidationDomain) {
 		return nil, false
 	}
 	return o.ValidationDomain, true
@@ -199,7 +202,7 @@ func (o *CustomDomain) GetValidationDomainOk() (*string, bool) {
 
 // HasValidationDomain returns a boolean if a field has been set.
 func (o *CustomDomain) HasValidationDomain() bool {
-	if o != nil && o.ValidationDomain != nil {
+	if o != nil && !IsNil(o.ValidationDomain) {
 		return true
 	}
 
@@ -213,7 +216,7 @@ func (o *CustomDomain) SetValidationDomain(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CustomDomain) GetStatus() CustomDomainStatusEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret CustomDomainStatusEnum
 		return ret
 	}
@@ -223,7 +226,7 @@ func (o *CustomDomain) GetStatus() CustomDomainStatusEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomDomain) GetStatusOk() (*CustomDomainStatusEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -231,7 +234,7 @@ func (o *CustomDomain) GetStatusOk() (*CustomDomainStatusEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CustomDomain) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -244,29 +247,29 @@ func (o *CustomDomain) SetStatus(v CustomDomainStatusEnum) {
 }
 
 func (o CustomDomain) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["domain"] = o.Domain
-	}
-	if true {
-		toSerialize["generate_certificate"] = o.GenerateCertificate
-	}
-	if o.ValidationDomain != nil {
-		toSerialize["validation_domain"] = o.ValidationDomain
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomDomain) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["domain"] = o.Domain
+	toSerialize["generate_certificate"] = o.GenerateCertificate
+	if !IsNil(o.ValidationDomain) {
+		toSerialize["validation_domain"] = o.ValidationDomain
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableCustomDomain struct {

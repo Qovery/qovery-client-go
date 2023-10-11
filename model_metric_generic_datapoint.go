@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the MetricGenericDatapoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricGenericDatapoint{}
+
 // MetricGenericDatapoint struct for MetricGenericDatapoint
 type MetricGenericDatapoint struct {
 	CreatedAt time.Time `json:"created_at"`
@@ -90,14 +93,18 @@ func (o *MetricGenericDatapoint) SetValue(v float32) {
 }
 
 func (o MetricGenericDatapoint) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricGenericDatapoint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["value"] = o.Value
+	return toSerialize, nil
 }
 
 type NullableMetricGenericDatapoint struct {

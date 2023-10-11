@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedDatabaseInstanceTypeResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedDatabaseInstanceTypeResponse{}
+
 // ManagedDatabaseInstanceTypeResponse struct for ManagedDatabaseInstanceTypeResponse
 type ManagedDatabaseInstanceTypeResponse struct {
 	Name string `json:"name"`
@@ -63,11 +66,17 @@ func (o *ManagedDatabaseInstanceTypeResponse) SetName(v string) {
 }
 
 func (o ManagedDatabaseInstanceTypeResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ManagedDatabaseInstanceTypeResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableManagedDatabaseInstanceTypeResponse struct {

@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the JobResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobResponse{}
+
 // JobResponse struct for JobResponse
 type JobResponse struct {
 	Id          string          `json:"id"`
@@ -41,7 +44,7 @@ type JobResponse struct {
 	AutoPreview bool `json:"auto_preview"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
 	Port         NullableInt32             `json:"port,omitempty"`
-	Source       *JobResponseAllOfSource   `json:"source,omitempty"`
+	Source       JobResponseAllOfSource    `json:"source"`
 	Healthchecks Healthcheck               `json:"healthchecks"`
 	Schedule     *JobResponseAllOfSchedule `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
@@ -52,7 +55,7 @@ type JobResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, healthchecks Healthcheck) *JobResponse {
+func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source JobResponseAllOfSource, healthchecks Healthcheck) *JobResponse {
 	this := JobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -63,6 +66,7 @@ func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject,
 	this.Cpu = cpu
 	this.Memory = memory
 	this.AutoPreview = autoPreview
+	this.Source = source
 	this.Healthchecks = healthchecks
 	return &this
 }
@@ -125,7 +129,7 @@ func (o *JobResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *JobResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -135,7 +139,7 @@ func (o *JobResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -143,7 +147,7 @@ func (o *JobResponse) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *JobResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -253,7 +257,7 @@ func (o *JobResponse) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *JobResponse) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -263,7 +267,7 @@ func (o *JobResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -271,7 +275,7 @@ func (o *JobResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *JobResponse) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -333,7 +337,7 @@ func (o *JobResponse) SetMemory(v int32) {
 
 // GetMaxNbRestart returns the MaxNbRestart field value if set, zero value otherwise.
 func (o *JobResponse) GetMaxNbRestart() int32 {
-	if o == nil || o.MaxNbRestart == nil {
+	if o == nil || IsNil(o.MaxNbRestart) {
 		var ret int32
 		return ret
 	}
@@ -343,7 +347,7 @@ func (o *JobResponse) GetMaxNbRestart() int32 {
 // GetMaxNbRestartOk returns a tuple with the MaxNbRestart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetMaxNbRestartOk() (*int32, bool) {
-	if o == nil || o.MaxNbRestart == nil {
+	if o == nil || IsNil(o.MaxNbRestart) {
 		return nil, false
 	}
 	return o.MaxNbRestart, true
@@ -351,7 +355,7 @@ func (o *JobResponse) GetMaxNbRestartOk() (*int32, bool) {
 
 // HasMaxNbRestart returns a boolean if a field has been set.
 func (o *JobResponse) HasMaxNbRestart() bool {
-	if o != nil && o.MaxNbRestart != nil {
+	if o != nil && !IsNil(o.MaxNbRestart) {
 		return true
 	}
 
@@ -365,7 +369,7 @@ func (o *JobResponse) SetMaxNbRestart(v int32) {
 
 // GetMaxDurationSeconds returns the MaxDurationSeconds field value if set, zero value otherwise.
 func (o *JobResponse) GetMaxDurationSeconds() int32 {
-	if o == nil || o.MaxDurationSeconds == nil {
+	if o == nil || IsNil(o.MaxDurationSeconds) {
 		var ret int32
 		return ret
 	}
@@ -375,7 +379,7 @@ func (o *JobResponse) GetMaxDurationSeconds() int32 {
 // GetMaxDurationSecondsOk returns a tuple with the MaxDurationSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetMaxDurationSecondsOk() (*int32, bool) {
-	if o == nil || o.MaxDurationSeconds == nil {
+	if o == nil || IsNil(o.MaxDurationSeconds) {
 		return nil, false
 	}
 	return o.MaxDurationSeconds, true
@@ -383,7 +387,7 @@ func (o *JobResponse) GetMaxDurationSecondsOk() (*int32, bool) {
 
 // HasMaxDurationSeconds returns a boolean if a field has been set.
 func (o *JobResponse) HasMaxDurationSeconds() bool {
-	if o != nil && o.MaxDurationSeconds != nil {
+	if o != nil && !IsNil(o.MaxDurationSeconds) {
 		return true
 	}
 
@@ -421,7 +425,7 @@ func (o *JobResponse) SetAutoPreview(v bool) {
 
 // GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobResponse) GetPort() int32 {
-	if o == nil || o.Port.Get() == nil {
+	if o == nil || IsNil(o.Port.Get()) {
 		var ret int32
 		return ret
 	}
@@ -462,36 +466,28 @@ func (o *JobResponse) UnsetPort() {
 	o.Port.Unset()
 }
 
-// GetSource returns the Source field value if set, zero value otherwise.
+// GetSource returns the Source field value
 func (o *JobResponse) GetSource() JobResponseAllOfSource {
-	if o == nil || o.Source == nil {
+	if o == nil {
 		var ret JobResponseAllOfSource
 		return ret
 	}
-	return *o.Source
+
+	return o.Source
 }
 
-// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetSourceOk() (*JobResponseAllOfSource, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Source, true
+	return &o.Source, true
 }
 
-// HasSource returns a boolean if a field has been set.
-func (o *JobResponse) HasSource() bool {
-	if o != nil && o.Source != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSource gets a reference to the given JobResponseAllOfSource and assigns it to the Source field.
+// SetSource sets field value
 func (o *JobResponse) SetSource(v JobResponseAllOfSource) {
-	o.Source = &v
+	o.Source = v
 }
 
 // GetHealthchecks returns the Healthchecks field value
@@ -520,7 +516,7 @@ func (o *JobResponse) SetHealthchecks(v Healthcheck) {
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
 func (o *JobResponse) GetSchedule() JobResponseAllOfSchedule {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		var ret JobResponseAllOfSchedule
 		return ret
 	}
@@ -530,7 +526,7 @@ func (o *JobResponse) GetSchedule() JobResponseAllOfSchedule {
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetScheduleOk() (*JobResponseAllOfSchedule, bool) {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		return nil, false
 	}
 	return o.Schedule, true
@@ -538,7 +534,7 @@ func (o *JobResponse) GetScheduleOk() (*JobResponseAllOfSchedule, bool) {
 
 // HasSchedule returns a boolean if a field has been set.
 func (o *JobResponse) HasSchedule() bool {
-	if o != nil && o.Schedule != nil {
+	if o != nil && !IsNil(o.Schedule) {
 		return true
 	}
 
@@ -552,7 +548,7 @@ func (o *JobResponse) SetSchedule(v JobResponseAllOfSchedule) {
 
 // GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
 func (o *JobResponse) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		var ret bool
 		return ret
 	}
@@ -562,7 +558,7 @@ func (o *JobResponse) GetAutoDeploy() bool {
 // GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponse) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		return nil, false
 	}
 	return o.AutoDeploy, true
@@ -570,7 +566,7 @@ func (o *JobResponse) GetAutoDeployOk() (*bool, bool) {
 
 // HasAutoDeploy returns a boolean if a field has been set.
 func (o *JobResponse) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy != nil {
+	if o != nil && !IsNil(o.AutoDeploy) {
 		return true
 	}
 
@@ -583,62 +579,48 @@ func (o *JobResponse) SetAutoDeploy(v bool) {
 }
 
 func (o JobResponse) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o JobResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if true {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["maximum_cpu"] = o.MaximumCpu
-	}
-	if true {
-		toSerialize["maximum_memory"] = o.MaximumMemory
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
+	toSerialize["environment"] = o.Environment
+	toSerialize["maximum_cpu"] = o.MaximumCpu
+	toSerialize["maximum_memory"] = o.MaximumMemory
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if true {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.MaxNbRestart != nil {
+	toSerialize["cpu"] = o.Cpu
+	toSerialize["memory"] = o.Memory
+	if !IsNil(o.MaxNbRestart) {
 		toSerialize["max_nb_restart"] = o.MaxNbRestart
 	}
-	if o.MaxDurationSeconds != nil {
+	if !IsNil(o.MaxDurationSeconds) {
 		toSerialize["max_duration_seconds"] = o.MaxDurationSeconds
 	}
-	if true {
-		toSerialize["auto_preview"] = o.AutoPreview
-	}
+	toSerialize["auto_preview"] = o.AutoPreview
 	if o.Port.IsSet() {
 		toSerialize["port"] = o.Port.Get()
 	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["healthchecks"] = o.Healthchecks
-	}
-	if o.Schedule != nil {
+	toSerialize["source"] = o.Source
+	toSerialize["healthchecks"] = o.Healthchecks
+	if !IsNil(o.Schedule) {
 		toSerialize["schedule"] = o.Schedule
 	}
-	if o.AutoDeploy != nil {
+	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableJobResponse struct {

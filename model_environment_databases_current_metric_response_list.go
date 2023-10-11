@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentDatabasesCurrentMetricResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentDatabasesCurrentMetricResponseList{}
+
 // EnvironmentDatabasesCurrentMetricResponseList struct for EnvironmentDatabasesCurrentMetricResponseList
 type EnvironmentDatabasesCurrentMetricResponseList struct {
 	Results []EnvironmentDatabasesCurrentMetric `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewEnvironmentDatabasesCurrentMetricResponseListWithDefaults() *Environment
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResults() []EnvironmentDatabasesCurrentMetric {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []EnvironmentDatabasesCurrentMetric
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResults() []Environme
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResultsOk() ([]EnvironmentDatabasesCurrentMetric, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *EnvironmentDatabasesCurrentMetricResponseList) GetResultsOk() ([]Enviro
 
 // HasResults returns a boolean if a field has been set.
 func (o *EnvironmentDatabasesCurrentMetricResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *EnvironmentDatabasesCurrentMetricResponseList) SetResults(v []Environme
 }
 
 func (o EnvironmentDatabasesCurrentMetricResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentDatabasesCurrentMetricResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentDatabasesCurrentMetricResponseList struct {

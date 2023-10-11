@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentApplicationsInstanceResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentApplicationsInstanceResponseList{}
+
 // EnvironmentApplicationsInstanceResponseList struct for EnvironmentApplicationsInstanceResponseList
 type EnvironmentApplicationsInstanceResponseList struct {
 	Results []EnvironmentApplicationsInstanceResponseListResultsInner `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewEnvironmentApplicationsInstanceResponseListWithDefaults() *EnvironmentAp
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []EnvironmentApplicationsInstanceResponseListResultsInner {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []EnvironmentApplicationsInstanceResponseListResultsInner
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EnvironmentApplicationsInstanceResponseList) GetResults() []Environment
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() ([]EnvironmentApplicationsInstanceResponseListResultsInner, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *EnvironmentApplicationsInstanceResponseList) GetResultsOk() ([]Environm
 
 // HasResults returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsInstanceResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *EnvironmentApplicationsInstanceResponseList) SetResults(v []Environment
 }
 
 func (o EnvironmentApplicationsInstanceResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentApplicationsInstanceResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentApplicationsInstanceResponseList struct {

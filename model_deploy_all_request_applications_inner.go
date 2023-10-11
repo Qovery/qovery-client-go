@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeployAllRequestApplicationsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeployAllRequestApplicationsInner{}
+
 // DeployAllRequestApplicationsInner struct for DeployAllRequestApplicationsInner
 type DeployAllRequestApplicationsInner struct {
 	// id of the application to be deployed.
@@ -67,7 +70,7 @@ func (o *DeployAllRequestApplicationsInner) SetApplicationId(v string) {
 
 // GetGitCommitId returns the GitCommitId field value if set, zero value otherwise.
 func (o *DeployAllRequestApplicationsInner) GetGitCommitId() string {
-	if o == nil || o.GitCommitId == nil {
+	if o == nil || IsNil(o.GitCommitId) {
 		var ret string
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *DeployAllRequestApplicationsInner) GetGitCommitId() string {
 // GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequestApplicationsInner) GetGitCommitIdOk() (*string, bool) {
-	if o == nil || o.GitCommitId == nil {
+	if o == nil || IsNil(o.GitCommitId) {
 		return nil, false
 	}
 	return o.GitCommitId, true
@@ -85,7 +88,7 @@ func (o *DeployAllRequestApplicationsInner) GetGitCommitIdOk() (*string, bool) {
 
 // HasGitCommitId returns a boolean if a field has been set.
 func (o *DeployAllRequestApplicationsInner) HasGitCommitId() bool {
-	if o != nil && o.GitCommitId != nil {
+	if o != nil && !IsNil(o.GitCommitId) {
 		return true
 	}
 
@@ -98,14 +101,20 @@ func (o *DeployAllRequestApplicationsInner) SetGitCommitId(v string) {
 }
 
 func (o DeployAllRequestApplicationsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["application_id"] = o.ApplicationId
-	}
-	if o.GitCommitId != nil {
-		toSerialize["git_commit_id"] = o.GitCommitId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeployAllRequestApplicationsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["application_id"] = o.ApplicationId
+	if !IsNil(o.GitCommitId) {
+		toSerialize["git_commit_id"] = o.GitCommitId
+	}
+	return toSerialize, nil
 }
 
 type NullableDeployAllRequestApplicationsInner struct {

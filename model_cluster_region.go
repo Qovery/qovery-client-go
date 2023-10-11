@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterRegion type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterRegion{}
+
 // ClusterRegion struct for ClusterRegion
 type ClusterRegion struct {
 	Name        string `json:"name"`
@@ -141,20 +144,20 @@ func (o *ClusterRegion) SetCity(v string) {
 }
 
 func (o ClusterRegion) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["country_code"] = o.CountryCode
-	}
-	if true {
-		toSerialize["country"] = o.Country
-	}
-	if true {
-		toSerialize["city"] = o.City
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterRegion) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["country_code"] = o.CountryCode
+	toSerialize["country"] = o.Country
+	toSerialize["city"] = o.City
+	return toSerialize, nil
 }
 
 type NullableClusterRegion struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobDeploymentRestrictionResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobDeploymentRestrictionResponseList{}
+
 // JobDeploymentRestrictionResponseList struct for JobDeploymentRestrictionResponseList
 type JobDeploymentRestrictionResponseList struct {
 	Results []JobDeploymentRestrictionResponse `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewJobDeploymentRestrictionResponseListWithDefaults() *JobDeploymentRestric
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *JobDeploymentRestrictionResponseList) GetResults() []JobDeploymentRestrictionResponse {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []JobDeploymentRestrictionResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *JobDeploymentRestrictionResponseList) GetResults() []JobDeploymentRestr
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobDeploymentRestrictionResponseList) GetResultsOk() ([]JobDeploymentRestrictionResponse, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *JobDeploymentRestrictionResponseList) GetResultsOk() ([]JobDeploymentRe
 
 // HasResults returns a boolean if a field has been set.
 func (o *JobDeploymentRestrictionResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *JobDeploymentRestrictionResponseList) SetResults(v []JobDeploymentRestr
 }
 
 func (o JobDeploymentRestrictionResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JobDeploymentRestrictionResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableJobDeploymentRestrictionResponseList struct {

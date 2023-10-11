@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloneRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloneRequest{}
+
 // CloneRequest struct for CloneRequest
 type CloneRequest struct {
 	// name is case insensitive
@@ -72,7 +75,7 @@ func (o *CloneRequest) SetName(v string) {
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *CloneRequest) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CloneRequest) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloneRequest) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -90,7 +93,7 @@ func (o *CloneRequest) GetClusterIdOk() (*string, bool) {
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *CloneRequest) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *CloneRequest) SetClusterId(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *CloneRequest) GetMode() EnvironmentModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret EnvironmentModeEnum
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *CloneRequest) GetMode() EnvironmentModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloneRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -122,7 +125,7 @@ func (o *CloneRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 
 // HasMode returns a boolean if a field has been set.
 func (o *CloneRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *CloneRequest) SetMode(v EnvironmentModeEnum) {
 
 // GetApplyDeploymentRule returns the ApplyDeploymentRule field value if set, zero value otherwise.
 func (o *CloneRequest) GetApplyDeploymentRule() bool {
-	if o == nil || o.ApplyDeploymentRule == nil {
+	if o == nil || IsNil(o.ApplyDeploymentRule) {
 		var ret bool
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *CloneRequest) GetApplyDeploymentRule() bool {
 // GetApplyDeploymentRuleOk returns a tuple with the ApplyDeploymentRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloneRequest) GetApplyDeploymentRuleOk() (*bool, bool) {
-	if o == nil || o.ApplyDeploymentRule == nil {
+	if o == nil || IsNil(o.ApplyDeploymentRule) {
 		return nil, false
 	}
 	return o.ApplyDeploymentRule, true
@@ -154,7 +157,7 @@ func (o *CloneRequest) GetApplyDeploymentRuleOk() (*bool, bool) {
 
 // HasApplyDeploymentRule returns a boolean if a field has been set.
 func (o *CloneRequest) HasApplyDeploymentRule() bool {
-	if o != nil && o.ApplyDeploymentRule != nil {
+	if o != nil && !IsNil(o.ApplyDeploymentRule) {
 		return true
 	}
 
@@ -167,20 +170,26 @@ func (o *CloneRequest) SetApplyDeploymentRule(v bool) {
 }
 
 func (o CloneRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.ApplyDeploymentRule != nil {
-		toSerialize["apply_deployment_rule"] = o.ApplyDeploymentRule
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloneRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.ApplyDeploymentRule) {
+		toSerialize["apply_deployment_rule"] = o.ApplyDeploymentRule
+	}
+	return toSerialize, nil
 }
 
 type NullableCloneRequest struct {

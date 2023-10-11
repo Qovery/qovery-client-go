@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentStatuses type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentStatuses{}
+
 // EnvironmentStatuses struct for EnvironmentStatuses
 type EnvironmentStatuses struct {
 	Environment  *EnvironmentStatus `json:"environment,omitempty"`
@@ -43,7 +46,7 @@ func NewEnvironmentStatusesWithDefaults() *EnvironmentStatuses {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *EnvironmentStatuses) GetEnvironment() EnvironmentStatus {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		var ret EnvironmentStatus
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *EnvironmentStatuses) GetEnvironment() EnvironmentStatus {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetEnvironmentOk() (*EnvironmentStatus, bool) {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -61,7 +64,7 @@ func (o *EnvironmentStatuses) GetEnvironmentOk() (*EnvironmentStatus, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *EnvironmentStatuses) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *EnvironmentStatuses) SetEnvironment(v EnvironmentStatus) {
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
 func (o *EnvironmentStatuses) GetApplications() []Status {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		var ret []Status
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *EnvironmentStatuses) GetApplications() []Status {
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetApplicationsOk() ([]Status, bool) {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		return nil, false
 	}
 	return o.Applications, true
@@ -93,7 +96,7 @@ func (o *EnvironmentStatuses) GetApplicationsOk() ([]Status, bool) {
 
 // HasApplications returns a boolean if a field has been set.
 func (o *EnvironmentStatuses) HasApplications() bool {
-	if o != nil && o.Applications != nil {
+	if o != nil && !IsNil(o.Applications) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *EnvironmentStatuses) SetApplications(v []Status) {
 
 // GetContainers returns the Containers field value if set, zero value otherwise.
 func (o *EnvironmentStatuses) GetContainers() []Status {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		var ret []Status
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *EnvironmentStatuses) GetContainers() []Status {
 // GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetContainersOk() ([]Status, bool) {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		return nil, false
 	}
 	return o.Containers, true
@@ -125,7 +128,7 @@ func (o *EnvironmentStatuses) GetContainersOk() ([]Status, bool) {
 
 // HasContainers returns a boolean if a field has been set.
 func (o *EnvironmentStatuses) HasContainers() bool {
-	if o != nil && o.Containers != nil {
+	if o != nil && !IsNil(o.Containers) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *EnvironmentStatuses) SetContainers(v []Status) {
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
 func (o *EnvironmentStatuses) GetJobs() []Status {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		var ret []Status
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *EnvironmentStatuses) GetJobs() []Status {
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetJobsOk() ([]Status, bool) {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		return nil, false
 	}
 	return o.Jobs, true
@@ -157,7 +160,7 @@ func (o *EnvironmentStatuses) GetJobsOk() ([]Status, bool) {
 
 // HasJobs returns a boolean if a field has been set.
 func (o *EnvironmentStatuses) HasJobs() bool {
-	if o != nil && o.Jobs != nil {
+	if o != nil && !IsNil(o.Jobs) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *EnvironmentStatuses) SetJobs(v []Status) {
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
 func (o *EnvironmentStatuses) GetDatabases() []Status {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		var ret []Status
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *EnvironmentStatuses) GetDatabases() []Status {
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetDatabasesOk() ([]Status, bool) {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
 	return o.Databases, true
@@ -189,7 +192,7 @@ func (o *EnvironmentStatuses) GetDatabasesOk() ([]Status, bool) {
 
 // HasDatabases returns a boolean if a field has been set.
 func (o *EnvironmentStatuses) HasDatabases() bool {
-	if o != nil && o.Databases != nil {
+	if o != nil && !IsNil(o.Databases) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *EnvironmentStatuses) SetDatabases(v []Status) {
 }
 
 func (o EnvironmentStatuses) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Environment != nil {
-		toSerialize["environment"] = o.Environment
-	}
-	if o.Applications != nil {
-		toSerialize["applications"] = o.Applications
-	}
-	if o.Containers != nil {
-		toSerialize["containers"] = o.Containers
-	}
-	if o.Jobs != nil {
-		toSerialize["jobs"] = o.Jobs
-	}
-	if o.Databases != nil {
-		toSerialize["databases"] = o.Databases
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentStatuses) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Applications) {
+		toSerialize["applications"] = o.Applications
+	}
+	if !IsNil(o.Containers) {
+		toSerialize["containers"] = o.Containers
+	}
+	if !IsNil(o.Jobs) {
+		toSerialize["jobs"] = o.Jobs
+	}
+	if !IsNil(o.Databases) {
+		toSerialize["databases"] = o.Databases
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentStatuses struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransferOwnershipRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransferOwnershipRequest{}
+
 // TransferOwnershipRequest struct for TransferOwnershipRequest
 type TransferOwnershipRequest struct {
 	UserId string `json:"user_id"`
@@ -63,11 +66,17 @@ func (o *TransferOwnershipRequest) SetUserId(v string) {
 }
 
 func (o TransferOwnershipRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user_id"] = o.UserId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TransferOwnershipRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["user_id"] = o.UserId
+	return toSerialize, nil
 }
 
 type NullableTransferOwnershipRequest struct {

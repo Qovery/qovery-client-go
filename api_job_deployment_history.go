@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobDeploymentHistoryApiService JobDeploymentHistoryApi service
-type JobDeploymentHistoryApiService service
+// JobDeploymentHistoryAPIService JobDeploymentHistoryAPI service
+type JobDeploymentHistoryAPIService service
 
 type ApiListJobDeploymentHistoryRequest struct {
 	ctx        context.Context
-	ApiService *JobDeploymentHistoryApiService
+	ApiService *JobDeploymentHistoryAPIService
 	jobId      string
 }
 
@@ -42,7 +42,7 @@ Returns the 20 last job deployments
  @param jobId Job ID
  @return ApiListJobDeploymentHistoryRequest
 */
-func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistory(ctx context.Context, jobId string) ApiListJobDeploymentHistoryRequest {
+func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistory(ctx context.Context, jobId string) ApiListJobDeploymentHistoryRequest {
 	return ApiListJobDeploymentHistoryRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -52,7 +52,7 @@ func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistory(ctx context.Co
 
 // Execute executes the request
 //  @return ListJobDeploymentHistory200Response
-func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistoryExecute(r ApiListJobDeploymentHistoryRequest) (*ListJobDeploymentHistory200Response, *http.Response, error) {
+func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistoryExecute(r ApiListJobDeploymentHistoryRequest) (*ListJobDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -60,13 +60,13 @@ func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistoryExecute(r ApiLi
 		localVarReturnValue *ListJobDeploymentHistory200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentHistoryApiService.ListJobDeploymentHistory")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentHistoryAPIService.ListJobDeploymentHistory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploymentHistory"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *JobDeploymentHistoryApiService) ListJobDeploymentHistoryExecute(r ApiLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

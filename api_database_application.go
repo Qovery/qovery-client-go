@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// DatabaseApplicationApiService DatabaseApplicationApi service
-type DatabaseApplicationApiService service
+// DatabaseApplicationAPIService DatabaseApplicationAPI service
+type DatabaseApplicationAPIService service
 
 type ApiListDatabaseApplicationRequest struct {
 	ctx        context.Context
-	ApiService *DatabaseApplicationApiService
+	ApiService *DatabaseApplicationAPIService
 	databaseId string
 }
 
@@ -40,7 +40,7 @@ ListDatabaseApplication List applications using the database
  @param databaseId Database ID
  @return ApiListDatabaseApplicationRequest
 */
-func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx context.Context, databaseId string) ApiListDatabaseApplicationRequest {
+func (a *DatabaseApplicationAPIService) ListDatabaseApplication(ctx context.Context, databaseId string) ApiListDatabaseApplicationRequest {
 	return ApiListDatabaseApplicationRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -50,7 +50,7 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplication(ctx context.Cont
 
 // Execute executes the request
 //  @return ApplicationResponseList
-func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiListDatabaseApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
+func (a *DatabaseApplicationAPIService) ListDatabaseApplicationExecute(r ApiListDatabaseApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -58,13 +58,13 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 		localVarReturnValue *ApplicationResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.ListDatabaseApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationAPIService.ListDatabaseApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/application"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -140,7 +140,7 @@ func (a *DatabaseApplicationApiService) ListDatabaseApplicationExecute(r ApiList
 
 type ApiRemoveApplicationFromDatabaseRequest struct {
 	ctx                 context.Context
-	ApiService          *DatabaseApplicationApiService
+	ApiService          *DatabaseApplicationAPIService
 	databaseId          string
 	targetApplicationId string
 }
@@ -157,7 +157,7 @@ RemoveApplicationFromDatabase Remove an application from this database
  @param targetApplicationId Target application ID
  @return ApiRemoveApplicationFromDatabaseRequest
 */
-func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx context.Context, databaseId string, targetApplicationId string) ApiRemoveApplicationFromDatabaseRequest {
+func (a *DatabaseApplicationAPIService) RemoveApplicationFromDatabase(ctx context.Context, databaseId string, targetApplicationId string) ApiRemoveApplicationFromDatabaseRequest {
 	return ApiRemoveApplicationFromDatabaseRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -167,21 +167,21 @@ func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabase(ctx contex
 }
 
 // Execute executes the request
-func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r ApiRemoveApplicationFromDatabaseRequest) (*http.Response, error) {
+func (a *DatabaseApplicationAPIService) RemoveApplicationFromDatabaseExecute(r ApiRemoveApplicationFromDatabaseRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationApiService.RemoveApplicationFromDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseApplicationAPIService.RemoveApplicationFromDatabase")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/database/{databaseId}/application/{targetApplicationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterToString(r.databaseId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"targetApplicationId"+"}", url.PathEscape(parameterToString(r.targetApplicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"targetApplicationId"+"}", url.PathEscape(parameterValueToString(r.targetApplicationId, "targetApplicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -228,9 +228,9 @@ func (a *DatabaseApplicationApiService) RemoveApplicationFromDatabaseExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

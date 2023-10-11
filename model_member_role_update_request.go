@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MemberRoleUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MemberRoleUpdateRequest{}
+
 // MemberRoleUpdateRequest struct for MemberRoleUpdateRequest
 type MemberRoleUpdateRequest struct {
 	// specify the git provider user id
@@ -90,14 +93,18 @@ func (o *MemberRoleUpdateRequest) SetRoleId(v string) {
 }
 
 func (o MemberRoleUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user_id"] = o.UserId
-	}
-	if true {
-		toSerialize["role_id"] = o.RoleId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MemberRoleUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["user_id"] = o.UserId
+	toSerialize["role_id"] = o.RoleId
+	return toSerialize, nil
 }
 
 type NullableMemberRoleUpdateRequest struct {

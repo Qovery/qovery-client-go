@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ScalewayCredentialsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScalewayCredentialsRequest{}
+
 // ScalewayCredentialsRequest struct for ScalewayCredentialsRequest
 type ScalewayCredentialsRequest struct {
 	Name              string  `json:"name"`
@@ -67,7 +70,7 @@ func (o *ScalewayCredentialsRequest) SetName(v string) {
 
 // GetScalewayAccessKey returns the ScalewayAccessKey field value if set, zero value otherwise.
 func (o *ScalewayCredentialsRequest) GetScalewayAccessKey() string {
-	if o == nil || o.ScalewayAccessKey == nil {
+	if o == nil || IsNil(o.ScalewayAccessKey) {
 		var ret string
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *ScalewayCredentialsRequest) GetScalewayAccessKey() string {
 // GetScalewayAccessKeyOk returns a tuple with the ScalewayAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScalewayCredentialsRequest) GetScalewayAccessKeyOk() (*string, bool) {
-	if o == nil || o.ScalewayAccessKey == nil {
+	if o == nil || IsNil(o.ScalewayAccessKey) {
 		return nil, false
 	}
 	return o.ScalewayAccessKey, true
@@ -85,7 +88,7 @@ func (o *ScalewayCredentialsRequest) GetScalewayAccessKeyOk() (*string, bool) {
 
 // HasScalewayAccessKey returns a boolean if a field has been set.
 func (o *ScalewayCredentialsRequest) HasScalewayAccessKey() bool {
-	if o != nil && o.ScalewayAccessKey != nil {
+	if o != nil && !IsNil(o.ScalewayAccessKey) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *ScalewayCredentialsRequest) SetScalewayAccessKey(v string) {
 
 // GetScalewaySecretKey returns the ScalewaySecretKey field value if set, zero value otherwise.
 func (o *ScalewayCredentialsRequest) GetScalewaySecretKey() string {
-	if o == nil || o.ScalewaySecretKey == nil {
+	if o == nil || IsNil(o.ScalewaySecretKey) {
 		var ret string
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *ScalewayCredentialsRequest) GetScalewaySecretKey() string {
 // GetScalewaySecretKeyOk returns a tuple with the ScalewaySecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScalewayCredentialsRequest) GetScalewaySecretKeyOk() (*string, bool) {
-	if o == nil || o.ScalewaySecretKey == nil {
+	if o == nil || IsNil(o.ScalewaySecretKey) {
 		return nil, false
 	}
 	return o.ScalewaySecretKey, true
@@ -117,7 +120,7 @@ func (o *ScalewayCredentialsRequest) GetScalewaySecretKeyOk() (*string, bool) {
 
 // HasScalewaySecretKey returns a boolean if a field has been set.
 func (o *ScalewayCredentialsRequest) HasScalewaySecretKey() bool {
-	if o != nil && o.ScalewaySecretKey != nil {
+	if o != nil && !IsNil(o.ScalewaySecretKey) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *ScalewayCredentialsRequest) SetScalewaySecretKey(v string) {
 
 // GetScalewayProjectId returns the ScalewayProjectId field value if set, zero value otherwise.
 func (o *ScalewayCredentialsRequest) GetScalewayProjectId() string {
-	if o == nil || o.ScalewayProjectId == nil {
+	if o == nil || IsNil(o.ScalewayProjectId) {
 		var ret string
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *ScalewayCredentialsRequest) GetScalewayProjectId() string {
 // GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ScalewayCredentialsRequest) GetScalewayProjectIdOk() (*string, bool) {
-	if o == nil || o.ScalewayProjectId == nil {
+	if o == nil || IsNil(o.ScalewayProjectId) {
 		return nil, false
 	}
 	return o.ScalewayProjectId, true
@@ -149,7 +152,7 @@ func (o *ScalewayCredentialsRequest) GetScalewayProjectIdOk() (*string, bool) {
 
 // HasScalewayProjectId returns a boolean if a field has been set.
 func (o *ScalewayCredentialsRequest) HasScalewayProjectId() bool {
-	if o != nil && o.ScalewayProjectId != nil {
+	if o != nil && !IsNil(o.ScalewayProjectId) {
 		return true
 	}
 
@@ -162,20 +165,26 @@ func (o *ScalewayCredentialsRequest) SetScalewayProjectId(v string) {
 }
 
 func (o ScalewayCredentialsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.ScalewayAccessKey != nil {
-		toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
-	}
-	if o.ScalewaySecretKey != nil {
-		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
-	}
-	if o.ScalewayProjectId != nil {
-		toSerialize["scaleway_project_id"] = o.ScalewayProjectId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ScalewayCredentialsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ScalewayAccessKey) {
+		toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
+	}
+	if !IsNil(o.ScalewaySecretKey) {
+		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
+	}
+	if !IsNil(o.ScalewayProjectId) {
+		toSerialize["scaleway_project_id"] = o.ScalewayProjectId
+	}
+	return toSerialize, nil
 }
 
 type NullableScalewayCredentialsRequest struct {

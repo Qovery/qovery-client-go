@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DatabaseResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DatabaseResponseList{}
+
 // DatabaseResponseList struct for DatabaseResponseList
 type DatabaseResponseList struct {
 	Results []Database `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewDatabaseResponseListWithDefaults() *DatabaseResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *DatabaseResponseList) GetResults() []Database {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Database
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *DatabaseResponseList) GetResults() []Database {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseResponseList) GetResultsOk() ([]Database, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *DatabaseResponseList) GetResultsOk() ([]Database, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *DatabaseResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *DatabaseResponseList) SetResults(v []Database) {
 }
 
 func (o DatabaseResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DatabaseResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabaseResponseList struct {

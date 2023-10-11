@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationDeploymentHistoryApiService ApplicationDeploymentHistoryApi service
-type ApplicationDeploymentHistoryApiService service
+// ApplicationDeploymentHistoryAPIService ApplicationDeploymentHistoryAPI service
+type ApplicationDeploymentHistoryAPIService service
 
 type ApiListApplicationDeploymentHistoryRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationDeploymentHistoryApiService
+	ApiService    *ApplicationDeploymentHistoryAPIService
 	applicationId string
 	startId       *string
 }
@@ -49,7 +49,7 @@ By default it returns the 20 last results. The response is paginated. In order t
  @param applicationId Application ID
  @return ApiListApplicationDeploymentHistoryRequest
 */
-func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistory(ctx context.Context, applicationId string) ApiListApplicationDeploymentHistoryRequest {
+func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistory(ctx context.Context, applicationId string) ApiListApplicationDeploymentHistoryRequest {
 	return ApiListApplicationDeploymentHistoryRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -59,7 +59,7 @@ func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistor
 
 // Execute executes the request
 //  @return DeploymentHistoryPaginatedResponseList
-func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistoryExecute(r ApiListApplicationDeploymentHistoryRequest) (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
+func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistoryExecute(r ApiListApplicationDeploymentHistoryRequest) (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -67,20 +67,20 @@ func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistor
 		localVarReturnValue *DeploymentHistoryPaginatedResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentHistoryApiService.ListApplicationDeploymentHistory")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentHistoryAPIService.ListApplicationDeploymentHistory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentHistory"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.startId != nil {
-		localVarQueryParams.Add("startId", parameterToString(*r.startId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startId", r.startId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -123,9 +123,9 @@ func (a *ApplicationDeploymentHistoryApiService) ListApplicationDeploymentHistor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

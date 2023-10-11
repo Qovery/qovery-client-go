@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ProjectDeploymentRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectDeploymentRule{}
+
 // ProjectDeploymentRule struct for ProjectDeploymentRule
 type ProjectDeploymentRule struct {
 	Id        string     `json:"id"`
@@ -120,7 +123,7 @@ func (o *ProjectDeploymentRule) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ProjectDeploymentRule) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -130,7 +133,7 @@ func (o *ProjectDeploymentRule) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRule) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -138,7 +141,7 @@ func (o *ProjectDeploymentRule) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ProjectDeploymentRule) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *ProjectDeploymentRule) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDeploymentRule) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -267,7 +270,7 @@ func (o *ProjectDeploymentRule) SetClusterId(v string) {
 
 // GetAutoStop returns the AutoStop field value if set, zero value otherwise.
 func (o *ProjectDeploymentRule) GetAutoStop() bool {
-	if o == nil || o.AutoStop == nil {
+	if o == nil || IsNil(o.AutoStop) {
 		var ret bool
 		return ret
 	}
@@ -277,7 +280,7 @@ func (o *ProjectDeploymentRule) GetAutoStop() bool {
 // GetAutoStopOk returns a tuple with the AutoStop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRule) GetAutoStopOk() (*bool, bool) {
-	if o == nil || o.AutoStop == nil {
+	if o == nil || IsNil(o.AutoStop) {
 		return nil, false
 	}
 	return o.AutoStop, true
@@ -285,7 +288,7 @@ func (o *ProjectDeploymentRule) GetAutoStopOk() (*bool, bool) {
 
 // HasAutoStop returns a boolean if a field has been set.
 func (o *ProjectDeploymentRule) HasAutoStop() bool {
-	if o != nil && o.AutoStop != nil {
+	if o != nil && !IsNil(o.AutoStop) {
 		return true
 	}
 
@@ -419,7 +422,7 @@ func (o *ProjectDeploymentRule) SetWildcard(v string) {
 
 // GetPriorityIndex returns the PriorityIndex field value if set, zero value otherwise.
 func (o *ProjectDeploymentRule) GetPriorityIndex() int32 {
-	if o == nil || o.PriorityIndex == nil {
+	if o == nil || IsNil(o.PriorityIndex) {
 		var ret int32
 		return ret
 	}
@@ -429,7 +432,7 @@ func (o *ProjectDeploymentRule) GetPriorityIndex() int32 {
 // GetPriorityIndexOk returns a tuple with the PriorityIndex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRule) GetPriorityIndexOk() (*int32, bool) {
-	if o == nil || o.PriorityIndex == nil {
+	if o == nil || IsNil(o.PriorityIndex) {
 		return nil, false
 	}
 	return o.PriorityIndex, true
@@ -437,7 +440,7 @@ func (o *ProjectDeploymentRule) GetPriorityIndexOk() (*int32, bool) {
 
 // HasPriorityIndex returns a boolean if a field has been set.
 func (o *ProjectDeploymentRule) HasPriorityIndex() bool {
-	if o != nil && o.PriorityIndex != nil {
+	if o != nil && !IsNil(o.PriorityIndex) {
 		return true
 	}
 
@@ -450,50 +453,38 @@ func (o *ProjectDeploymentRule) SetPriorityIndex(v int32) {
 }
 
 func (o ProjectDeploymentRule) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProjectDeploymentRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if true {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.AutoStop != nil {
+	toSerialize["mode"] = o.Mode
+	toSerialize["cluster_id"] = o.ClusterId
+	if !IsNil(o.AutoStop) {
 		toSerialize["auto_stop"] = o.AutoStop
 	}
-	if true {
-		toSerialize["timezone"] = o.Timezone
-	}
-	if true {
-		toSerialize["start_time"] = o.StartTime
-	}
-	if true {
-		toSerialize["stop_time"] = o.StopTime
-	}
-	if true {
-		toSerialize["weekdays"] = o.Weekdays
-	}
-	if true {
-		toSerialize["wildcard"] = o.Wildcard
-	}
-	if o.PriorityIndex != nil {
+	toSerialize["timezone"] = o.Timezone
+	toSerialize["start_time"] = o.StartTime
+	toSerialize["stop_time"] = o.StopTime
+	toSerialize["weekdays"] = o.Weekdays
+	toSerialize["wildcard"] = o.Wildcard
+	if !IsNil(o.PriorityIndex) {
 		toSerialize["priority_index"] = o.PriorityIndex
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProjectDeploymentRule struct {

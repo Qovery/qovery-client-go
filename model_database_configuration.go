@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DatabaseConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DatabaseConfiguration{}
+
 // DatabaseConfiguration struct for DatabaseConfiguration
 type DatabaseConfiguration struct {
 	DatabaseType *DatabaseTypeEnum     `json:"database_type,omitempty"`
@@ -40,7 +43,7 @@ func NewDatabaseConfigurationWithDefaults() *DatabaseConfiguration {
 
 // GetDatabaseType returns the DatabaseType field value if set, zero value otherwise.
 func (o *DatabaseConfiguration) GetDatabaseType() DatabaseTypeEnum {
-	if o == nil || o.DatabaseType == nil {
+	if o == nil || IsNil(o.DatabaseType) {
 		var ret DatabaseTypeEnum
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *DatabaseConfiguration) GetDatabaseType() DatabaseTypeEnum {
 // GetDatabaseTypeOk returns a tuple with the DatabaseType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseConfiguration) GetDatabaseTypeOk() (*DatabaseTypeEnum, bool) {
-	if o == nil || o.DatabaseType == nil {
+	if o == nil || IsNil(o.DatabaseType) {
 		return nil, false
 	}
 	return o.DatabaseType, true
@@ -58,7 +61,7 @@ func (o *DatabaseConfiguration) GetDatabaseTypeOk() (*DatabaseTypeEnum, bool) {
 
 // HasDatabaseType returns a boolean if a field has been set.
 func (o *DatabaseConfiguration) HasDatabaseType() bool {
-	if o != nil && o.DatabaseType != nil {
+	if o != nil && !IsNil(o.DatabaseType) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *DatabaseConfiguration) SetDatabaseType(v DatabaseTypeEnum) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *DatabaseConfiguration) GetVersion() []DatabaseVersionMode {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret []DatabaseVersionMode
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *DatabaseConfiguration) GetVersion() []DatabaseVersionMode {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseConfiguration) GetVersionOk() ([]DatabaseVersionMode, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -90,7 +93,7 @@ func (o *DatabaseConfiguration) GetVersionOk() ([]DatabaseVersionMode, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *DatabaseConfiguration) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *DatabaseConfiguration) SetVersion(v []DatabaseVersionMode) {
 }
 
 func (o DatabaseConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DatabaseType != nil {
-		toSerialize["database_type"] = o.DatabaseType
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DatabaseConfiguration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DatabaseType) {
+		toSerialize["database_type"] = o.DatabaseType
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabaseConfiguration struct {

@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the OrganizationEventResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationEventResponse{}
+
 // OrganizationEventResponse struct for OrganizationEventResponse
 type OrganizationEventResponse struct {
 	Id              *string                                `json:"id,omitempty"`
@@ -53,7 +56,7 @@ func NewOrganizationEventResponseWithDefaults() *OrganizationEventResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *OrganizationEventResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -71,7 +74,7 @@ func (o *OrganizationEventResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *OrganizationEventResponse) SetId(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetTimestamp() time.Time {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *OrganizationEventResponse) GetTimestamp() time.Time {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetTimestampOk() (*time.Time, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -103,7 +106,7 @@ func (o *OrganizationEventResponse) GetTimestampOk() (*time.Time, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *OrganizationEventResponse) SetTimestamp(v time.Time) {
 
 // GetEventType returns the EventType field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetEventType() OrganizationEventType {
-	if o == nil || o.EventType == nil {
+	if o == nil || IsNil(o.EventType) {
 		var ret OrganizationEventType
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *OrganizationEventResponse) GetEventType() OrganizationEventType {
 // GetEventTypeOk returns a tuple with the EventType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetEventTypeOk() (*OrganizationEventType, bool) {
-	if o == nil || o.EventType == nil {
+	if o == nil || IsNil(o.EventType) {
 		return nil, false
 	}
 	return o.EventType, true
@@ -135,7 +138,7 @@ func (o *OrganizationEventResponse) GetEventTypeOk() (*OrganizationEventType, bo
 
 // HasEventType returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasEventType() bool {
-	if o != nil && o.EventType != nil {
+	if o != nil && !IsNil(o.EventType) {
 		return true
 	}
 
@@ -149,7 +152,7 @@ func (o *OrganizationEventResponse) SetEventType(v OrganizationEventType) {
 
 // GetTargetId returns the TargetId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEventResponse) GetTargetId() string {
-	if o == nil || o.TargetId.Get() == nil {
+	if o == nil || IsNil(o.TargetId.Get()) {
 		var ret string
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *OrganizationEventResponse) UnsetTargetId() {
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetTargetName() string {
-	if o == nil || o.TargetName == nil {
+	if o == nil || IsNil(o.TargetName) {
 		var ret string
 		return ret
 	}
@@ -202,7 +205,7 @@ func (o *OrganizationEventResponse) GetTargetName() string {
 // GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetTargetNameOk() (*string, bool) {
-	if o == nil || o.TargetName == nil {
+	if o == nil || IsNil(o.TargetName) {
 		return nil, false
 	}
 	return o.TargetName, true
@@ -210,7 +213,7 @@ func (o *OrganizationEventResponse) GetTargetNameOk() (*string, bool) {
 
 // HasTargetName returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasTargetName() bool {
-	if o != nil && o.TargetName != nil {
+	if o != nil && !IsNil(o.TargetName) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *OrganizationEventResponse) SetTargetName(v string) {
 
 // GetTargetType returns the TargetType field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetTargetType() OrganizationEventTargetType {
-	if o == nil || o.TargetType == nil {
+	if o == nil || IsNil(o.TargetType) {
 		var ret OrganizationEventTargetType
 		return ret
 	}
@@ -234,7 +237,7 @@ func (o *OrganizationEventResponse) GetTargetType() OrganizationEventTargetType 
 // GetTargetTypeOk returns a tuple with the TargetType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetTargetTypeOk() (*OrganizationEventTargetType, bool) {
-	if o == nil || o.TargetType == nil {
+	if o == nil || IsNil(o.TargetType) {
 		return nil, false
 	}
 	return o.TargetType, true
@@ -242,7 +245,7 @@ func (o *OrganizationEventResponse) GetTargetTypeOk() (*OrganizationEventTargetT
 
 // HasTargetType returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasTargetType() bool {
-	if o != nil && o.TargetType != nil {
+	if o != nil && !IsNil(o.TargetType) {
 		return true
 	}
 
@@ -256,7 +259,7 @@ func (o *OrganizationEventResponse) SetTargetType(v OrganizationEventTargetType)
 
 // GetSubTargetType returns the SubTargetType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEventResponse) GetSubTargetType() OrganizationEventSubTargetType {
-	if o == nil || o.SubTargetType.Get() == nil {
+	if o == nil || IsNil(o.SubTargetType.Get()) {
 		var ret OrganizationEventSubTargetType
 		return ret
 	}
@@ -299,7 +302,7 @@ func (o *OrganizationEventResponse) UnsetSubTargetType() {
 
 // GetChange returns the Change field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetChange() string {
-	if o == nil || o.Change == nil {
+	if o == nil || IsNil(o.Change) {
 		var ret string
 		return ret
 	}
@@ -309,7 +312,7 @@ func (o *OrganizationEventResponse) GetChange() string {
 // GetChangeOk returns a tuple with the Change field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetChangeOk() (*string, bool) {
-	if o == nil || o.Change == nil {
+	if o == nil || IsNil(o.Change) {
 		return nil, false
 	}
 	return o.Change, true
@@ -317,7 +320,7 @@ func (o *OrganizationEventResponse) GetChangeOk() (*string, bool) {
 
 // HasChange returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasChange() bool {
-	if o != nil && o.Change != nil {
+	if o != nil && !IsNil(o.Change) {
 		return true
 	}
 
@@ -331,7 +334,7 @@ func (o *OrganizationEventResponse) SetChange(v string) {
 
 // GetOrigin returns the Origin field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetOrigin() OrganizationEventOrigin {
-	if o == nil || o.Origin == nil {
+	if o == nil || IsNil(o.Origin) {
 		var ret OrganizationEventOrigin
 		return ret
 	}
@@ -341,7 +344,7 @@ func (o *OrganizationEventResponse) GetOrigin() OrganizationEventOrigin {
 // GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetOriginOk() (*OrganizationEventOrigin, bool) {
-	if o == nil || o.Origin == nil {
+	if o == nil || IsNil(o.Origin) {
 		return nil, false
 	}
 	return o.Origin, true
@@ -349,7 +352,7 @@ func (o *OrganizationEventResponse) GetOriginOk() (*OrganizationEventOrigin, boo
 
 // HasOrigin returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasOrigin() bool {
-	if o != nil && o.Origin != nil {
+	if o != nil && !IsNil(o.Origin) {
 		return true
 	}
 
@@ -363,7 +366,7 @@ func (o *OrganizationEventResponse) SetOrigin(v OrganizationEventOrigin) {
 
 // GetTriggeredBy returns the TriggeredBy field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetTriggeredBy() string {
-	if o == nil || o.TriggeredBy == nil {
+	if o == nil || IsNil(o.TriggeredBy) {
 		var ret string
 		return ret
 	}
@@ -373,7 +376,7 @@ func (o *OrganizationEventResponse) GetTriggeredBy() string {
 // GetTriggeredByOk returns a tuple with the TriggeredBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetTriggeredByOk() (*string, bool) {
-	if o == nil || o.TriggeredBy == nil {
+	if o == nil || IsNil(o.TriggeredBy) {
 		return nil, false
 	}
 	return o.TriggeredBy, true
@@ -381,7 +384,7 @@ func (o *OrganizationEventResponse) GetTriggeredByOk() (*string, bool) {
 
 // HasTriggeredBy returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasTriggeredBy() bool {
-	if o != nil && o.TriggeredBy != nil {
+	if o != nil && !IsNil(o.TriggeredBy) {
 		return true
 	}
 
@@ -395,7 +398,7 @@ func (o *OrganizationEventResponse) SetTriggeredBy(v string) {
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEventResponse) GetProjectId() string {
-	if o == nil || o.ProjectId.Get() == nil {
+	if o == nil || IsNil(o.ProjectId.Get()) {
 		var ret string
 		return ret
 	}
@@ -438,7 +441,7 @@ func (o *OrganizationEventResponse) UnsetProjectId() {
 
 // GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetProjectName() string {
-	if o == nil || o.ProjectName == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
@@ -448,7 +451,7 @@ func (o *OrganizationEventResponse) GetProjectName() string {
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetProjectNameOk() (*string, bool) {
-	if o == nil || o.ProjectName == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
 	return o.ProjectName, true
@@ -456,7 +459,7 @@ func (o *OrganizationEventResponse) GetProjectNameOk() (*string, bool) {
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasProjectName() bool {
-	if o != nil && o.ProjectName != nil {
+	if o != nil && !IsNil(o.ProjectName) {
 		return true
 	}
 
@@ -470,7 +473,7 @@ func (o *OrganizationEventResponse) SetProjectName(v string) {
 
 // GetEnvironmentId returns the EnvironmentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEventResponse) GetEnvironmentId() string {
-	if o == nil || o.EnvironmentId.Get() == nil {
+	if o == nil || IsNil(o.EnvironmentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -513,7 +516,7 @@ func (o *OrganizationEventResponse) UnsetEnvironmentId() {
 
 // GetEnvironmentName returns the EnvironmentName field value if set, zero value otherwise.
 func (o *OrganizationEventResponse) GetEnvironmentName() string {
-	if o == nil || o.EnvironmentName == nil {
+	if o == nil || IsNil(o.EnvironmentName) {
 		var ret string
 		return ret
 	}
@@ -523,7 +526,7 @@ func (o *OrganizationEventResponse) GetEnvironmentName() string {
 // GetEnvironmentNameOk returns a tuple with the EnvironmentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponse) GetEnvironmentNameOk() (*string, bool) {
-	if o == nil || o.EnvironmentName == nil {
+	if o == nil || IsNil(o.EnvironmentName) {
 		return nil, false
 	}
 	return o.EnvironmentName, true
@@ -531,7 +534,7 @@ func (o *OrganizationEventResponse) GetEnvironmentNameOk() (*string, bool) {
 
 // HasEnvironmentName returns a boolean if a field has been set.
 func (o *OrganizationEventResponse) HasEnvironmentName() bool {
-	if o != nil && o.EnvironmentName != nil {
+	if o != nil && !IsNil(o.EnvironmentName) {
 		return true
 	}
 
@@ -544,50 +547,58 @@ func (o *OrganizationEventResponse) SetEnvironmentName(v string) {
 }
 
 func (o OrganizationEventResponse) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationEventResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Timestamp != nil {
+	if !IsNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if o.EventType != nil {
+	if !IsNil(o.EventType) {
 		toSerialize["event_type"] = o.EventType
 	}
 	if o.TargetId.IsSet() {
 		toSerialize["target_id"] = o.TargetId.Get()
 	}
-	if o.TargetName != nil {
+	if !IsNil(o.TargetName) {
 		toSerialize["target_name"] = o.TargetName
 	}
-	if o.TargetType != nil {
+	if !IsNil(o.TargetType) {
 		toSerialize["target_type"] = o.TargetType
 	}
 	if o.SubTargetType.IsSet() {
 		toSerialize["sub_target_type"] = o.SubTargetType.Get()
 	}
-	if o.Change != nil {
+	if !IsNil(o.Change) {
 		toSerialize["change"] = o.Change
 	}
-	if o.Origin != nil {
+	if !IsNil(o.Origin) {
 		toSerialize["origin"] = o.Origin
 	}
-	if o.TriggeredBy != nil {
+	if !IsNil(o.TriggeredBy) {
 		toSerialize["triggered_by"] = o.TriggeredBy
 	}
 	if o.ProjectId.IsSet() {
 		toSerialize["project_id"] = o.ProjectId.Get()
 	}
-	if o.ProjectName != nil {
+	if !IsNil(o.ProjectName) {
 		toSerialize["project_name"] = o.ProjectName
 	}
 	if o.EnvironmentId.IsSet() {
 		toSerialize["environment_id"] = o.EnvironmentId.Get()
 	}
-	if o.EnvironmentName != nil {
+	if !IsNil(o.EnvironmentName) {
 		toSerialize["environment_name"] = o.EnvironmentName
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOrganizationEventResponse struct {

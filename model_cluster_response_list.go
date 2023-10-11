@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterResponseList{}
+
 // ClusterResponseList struct for ClusterResponseList
 type ClusterResponseList struct {
 	Results []Cluster `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewClusterResponseListWithDefaults() *ClusterResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ClusterResponseList) GetResults() []Cluster {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Cluster
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ClusterResponseList) GetResults() []Cluster {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterResponseList) GetResultsOk() ([]Cluster, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ClusterResponseList) GetResultsOk() ([]Cluster, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *ClusterResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ClusterResponseList) SetResults(v []Cluster) {
 }
 
 func (o ClusterResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterResponseList struct {

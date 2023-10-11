@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MemberResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MemberResponseList{}
+
 // MemberResponseList struct for MemberResponseList
 type MemberResponseList struct {
 	Results []Member `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewMemberResponseListWithDefaults() *MemberResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *MemberResponseList) GetResults() []Member {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Member
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MemberResponseList) GetResults() []Member {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemberResponseList) GetResultsOk() ([]Member, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *MemberResponseList) GetResultsOk() ([]Member, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *MemberResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *MemberResponseList) SetResults(v []Member) {
 }
 
 func (o MemberResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MemberResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableMemberResponseList struct {

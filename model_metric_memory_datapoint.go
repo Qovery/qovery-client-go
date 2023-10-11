@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the MetricMemoryDatapoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricMemoryDatapoint{}
+
 // MetricMemoryDatapoint struct for MetricMemoryDatapoint
 type MetricMemoryDatapoint struct {
 	CreatedAt time.Time `json:"created_at"`
@@ -144,20 +147,20 @@ func (o *MetricMemoryDatapoint) SetConsumedInPercent(v float32) {
 }
 
 func (o MetricMemoryDatapoint) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["requested_in_mb"] = o.RequestedInMb
-	}
-	if true {
-		toSerialize["consumed_in_mb"] = o.ConsumedInMb
-	}
-	if true {
-		toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricMemoryDatapoint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["requested_in_mb"] = o.RequestedInMb
+	toSerialize["consumed_in_mb"] = o.ConsumedInMb
+	toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	return toSerialize, nil
 }
 
 type NullableMetricMemoryDatapoint struct {

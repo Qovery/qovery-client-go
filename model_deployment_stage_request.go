@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentStageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentStageRequest{}
+
 // DeploymentStageRequest struct for DeploymentStageRequest
 type DeploymentStageRequest struct {
 	// The name of the deployment stage
@@ -67,7 +70,7 @@ func (o *DeploymentStageRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentStageRequest) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -109,14 +112,20 @@ func (o *DeploymentStageRequest) UnsetDescription() {
 }
 
 func (o DeploymentStageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentStageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDeploymentStageRequest struct {

@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ClustersApiService ClustersApi service
-type ClustersApiService service
+// ClustersAPIService ClustersAPI service
+type ClustersAPIService service
 
 type ApiCreateClusterRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterRequest *ClusterRequest
 }
@@ -46,7 +46,7 @@ CreateCluster Create a cluster
  @param organizationId Organization ID
  @return ApiCreateClusterRequest
 */
-func (a *ClustersApiService) CreateCluster(ctx context.Context, organizationId string) ApiCreateClusterRequest {
+func (a *ClustersAPIService) CreateCluster(ctx context.Context, organizationId string) ApiCreateClusterRequest {
 	return ApiCreateClusterRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -56,7 +56,7 @@ func (a *ClustersApiService) CreateCluster(ctx context.Context, organizationId s
 
 // Execute executes the request
 //  @return Cluster
-func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*Cluster, *http.Response, error) {
+func (a *ClustersAPIService) CreateClusterExecute(r ApiCreateClusterRequest) (*Cluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,13 +64,13 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*C
 		localVarReturnValue *Cluster
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.CreateCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -119,9 +119,9 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*C
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +148,7 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*C
 
 type ApiDeleteClusterRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 	deleteMode     *ClusterDeleteMode
@@ -171,7 +171,7 @@ DeleteCluster Delete a cluster
  @param clusterId Cluster ID
  @return ApiDeleteClusterRequest
 */
-func (a *ClustersApiService) DeleteCluster(ctx context.Context, organizationId string, clusterId string) ApiDeleteClusterRequest {
+func (a *ClustersAPIService) DeleteCluster(ctx context.Context, organizationId string, clusterId string) ApiDeleteClusterRequest {
 	return ApiDeleteClusterRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -181,28 +181,31 @@ func (a *ClustersApiService) DeleteCluster(ctx context.Context, organizationId s
 }
 
 // Execute executes the request
-func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*http.Response, error) {
+func (a *ClustersAPIService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DeleteCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.DeleteCluster")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.deleteMode != nil {
-		localVarQueryParams.Add("deleteMode", parameterToString(*r.deleteMode, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "deleteMode", r.deleteMode, "")
+	} else {
+		var defaultValue ClusterDeleteMode = "DEFAULT"
+		r.deleteMode = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -245,9 +248,9 @@ func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*h
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -265,7 +268,7 @@ func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*h
 
 type ApiDeployClusterRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -284,7 +287,7 @@ allows to deploy a cluster
  @param clusterId Cluster ID
  @return ApiDeployClusterRequest
 */
-func (a *ClustersApiService) DeployCluster(ctx context.Context, organizationId string, clusterId string) ApiDeployClusterRequest {
+func (a *ClustersAPIService) DeployCluster(ctx context.Context, organizationId string, clusterId string) ApiDeployClusterRequest {
 	return ApiDeployClusterRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -295,7 +298,7 @@ func (a *ClustersApiService) DeployCluster(ctx context.Context, organizationId s
 
 // Execute executes the request
 //  @return ClusterStatus
-func (a *ClustersApiService) DeployClusterExecute(r ApiDeployClusterRequest) (*ClusterStatus, *http.Response, error) {
+func (a *ClustersAPIService) DeployClusterExecute(r ApiDeployClusterRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -303,14 +306,14 @@ func (a *ClustersApiService) DeployClusterExecute(r ApiDeployClusterRequest) (*C
 		localVarReturnValue *ClusterStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DeployCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.DeployCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/deploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -357,9 +360,9 @@ func (a *ClustersApiService) DeployClusterExecute(r ApiDeployClusterRequest) (*C
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -386,7 +389,7 @@ func (a *ClustersApiService) DeployClusterExecute(r ApiDeployClusterRequest) (*C
 
 type ApiEditClusterRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 	clusterRequest *ClusterRequest
@@ -409,7 +412,7 @@ EditCluster Edit a cluster
  @param clusterId Cluster ID
  @return ApiEditClusterRequest
 */
-func (a *ClustersApiService) EditCluster(ctx context.Context, organizationId string, clusterId string) ApiEditClusterRequest {
+func (a *ClustersAPIService) EditCluster(ctx context.Context, organizationId string, clusterId string) ApiEditClusterRequest {
 	return ApiEditClusterRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -420,7 +423,7 @@ func (a *ClustersApiService) EditCluster(ctx context.Context, organizationId str
 
 // Execute executes the request
 //  @return Cluster
-func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Cluster, *http.Response, error) {
+func (a *ClustersAPIService) EditClusterExecute(r ApiEditClusterRequest) (*Cluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -428,14 +431,14 @@ func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Clust
 		localVarReturnValue *Cluster
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.EditCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.EditCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -484,9 +487,9 @@ func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Clust
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -513,7 +516,7 @@ func (a *ClustersApiService) EditClusterExecute(r ApiEditClusterRequest) (*Clust
 
 type ApiEditClusterAdvancedSettingsRequest struct {
 	ctx                     context.Context
-	ApiService              *ClustersApiService
+	ApiService              *ClustersAPIService
 	organizationId          string
 	clusterId               string
 	clusterAdvancedSettings *ClusterAdvancedSettings
@@ -538,7 +541,7 @@ Edit advanced settings by returning table of advanced settings.
  @param clusterId Cluster ID
  @return ApiEditClusterAdvancedSettingsRequest
 */
-func (a *ClustersApiService) EditClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiEditClusterAdvancedSettingsRequest {
+func (a *ClustersAPIService) EditClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiEditClusterAdvancedSettingsRequest {
 	return ApiEditClusterAdvancedSettingsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -549,7 +552,7 @@ func (a *ClustersApiService) EditClusterAdvancedSettings(ctx context.Context, or
 
 // Execute executes the request
 //  @return ClusterAdvancedSettings
-func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
+func (a *ClustersAPIService) EditClusterAdvancedSettingsExecute(r ApiEditClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -557,14 +560,14 @@ func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditCluster
 		localVarReturnValue *ClusterAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.EditClusterAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.EditClusterAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -613,9 +616,9 @@ func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditCluster
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -642,7 +645,7 @@ func (a *ClustersApiService) EditClusterAdvancedSettingsExecute(r ApiEditCluster
 
 type ApiEditRoutingTableRequest struct {
 	ctx                        context.Context
-	ApiService                 *ClustersApiService
+	ApiService                 *ClustersAPIService
 	organizationId             string
 	clusterId                  string
 	clusterRoutingTableRequest *ClusterRoutingTableRequest
@@ -667,7 +670,7 @@ Edit routing table by returning updated table.
  @param clusterId Cluster ID
  @return ApiEditRoutingTableRequest
 */
-func (a *ClustersApiService) EditRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiEditRoutingTableRequest {
+func (a *ClustersAPIService) EditRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiEditRoutingTableRequest {
 	return ApiEditRoutingTableRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -678,7 +681,7 @@ func (a *ClustersApiService) EditRoutingTable(ctx context.Context, organizationI
 
 // Execute executes the request
 //  @return ClusterRoutingTable
-func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableRequest) (*ClusterRoutingTable, *http.Response, error) {
+func (a *ClustersAPIService) EditRoutingTableExecute(r ApiEditRoutingTableRequest) (*ClusterRoutingTable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -686,14 +689,14 @@ func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableReques
 		localVarReturnValue *ClusterRoutingTable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.EditRoutingTable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.EditRoutingTable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/routingTable"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -742,9 +745,9 @@ func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -771,7 +774,7 @@ func (a *ClustersApiService) EditRoutingTableExecute(r ApiEditRoutingTableReques
 
 type ApiGetClusterAdvancedSettingsRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -790,7 +793,7 @@ Get list and values of the advanced settings of the cluster.
  @param clusterId Cluster ID
  @return ApiGetClusterAdvancedSettingsRequest
 */
-func (a *ClustersApiService) GetClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiGetClusterAdvancedSettingsRequest {
+func (a *ClustersAPIService) GetClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiGetClusterAdvancedSettingsRequest {
 	return ApiGetClusterAdvancedSettingsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -801,7 +804,7 @@ func (a *ClustersApiService) GetClusterAdvancedSettings(ctx context.Context, org
 
 // Execute executes the request
 //  @return ClusterAdvancedSettings
-func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
+func (a *ClustersAPIService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -809,14 +812,14 @@ func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAd
 		localVarReturnValue *ClusterAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetClusterAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -863,9 +866,9 @@ func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -892,7 +895,7 @@ func (a *ClustersApiService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAd
 
 type ApiGetClusterReadinessStatusRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -909,7 +912,7 @@ GetClusterReadinessStatus Know if a cluster is ready to be deployed or not
  @param clusterId Cluster ID
  @return ApiGetClusterReadinessStatusRequest
 */
-func (a *ClustersApiService) GetClusterReadinessStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterReadinessStatusRequest {
+func (a *ClustersAPIService) GetClusterReadinessStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterReadinessStatusRequest {
 	return ApiGetClusterReadinessStatusRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -920,7 +923,7 @@ func (a *ClustersApiService) GetClusterReadinessStatus(ctx context.Context, orga
 
 // Execute executes the request
 //  @return ClusterReadinessStatus
-func (a *ClustersApiService) GetClusterReadinessStatusExecute(r ApiGetClusterReadinessStatusRequest) (*ClusterReadinessStatus, *http.Response, error) {
+func (a *ClustersAPIService) GetClusterReadinessStatusExecute(r ApiGetClusterReadinessStatusRequest) (*ClusterReadinessStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -928,14 +931,14 @@ func (a *ClustersApiService) GetClusterReadinessStatusExecute(r ApiGetClusterRea
 		localVarReturnValue *ClusterReadinessStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterReadinessStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetClusterReadinessStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/isReady"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -982,9 +985,9 @@ func (a *ClustersApiService) GetClusterReadinessStatusExecute(r ApiGetClusterRea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1011,7 +1014,7 @@ func (a *ClustersApiService) GetClusterReadinessStatusExecute(r ApiGetClusterRea
 
 type ApiGetClusterStatusRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -1028,7 +1031,7 @@ GetClusterStatus Get cluster status
  @param clusterId Cluster ID
  @return ApiGetClusterStatusRequest
 */
-func (a *ClustersApiService) GetClusterStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterStatusRequest {
+func (a *ClustersAPIService) GetClusterStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterStatusRequest {
 	return ApiGetClusterStatusRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1039,7 +1042,7 @@ func (a *ClustersApiService) GetClusterStatus(ctx context.Context, organizationI
 
 // Execute executes the request
 //  @return ClusterStatusGet
-func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusRequest) (*ClusterStatusGet, *http.Response, error) {
+func (a *ClustersAPIService) GetClusterStatusExecute(r ApiGetClusterStatusRequest) (*ClusterStatusGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1047,14 +1050,14 @@ func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusReques
 		localVarReturnValue *ClusterStatusGet
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetClusterStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1101,9 +1104,9 @@ func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1130,7 +1133,7 @@ func (a *ClustersApiService) GetClusterStatusExecute(r ApiGetClusterStatusReques
 
 type ApiGetDefaultClusterAdvancedSettingsRequest struct {
 	ctx        context.Context
-	ApiService *ClustersApiService
+	ApiService *ClustersAPIService
 }
 
 func (r ApiGetDefaultClusterAdvancedSettingsRequest) Execute() (*ClusterAdvancedSettings, *http.Response, error) {
@@ -1143,7 +1146,7 @@ GetDefaultClusterAdvancedSettings List default cluster advanced settings
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDefaultClusterAdvancedSettingsRequest
 */
-func (a *ClustersApiService) GetDefaultClusterAdvancedSettings(ctx context.Context) ApiGetDefaultClusterAdvancedSettingsRequest {
+func (a *ClustersAPIService) GetDefaultClusterAdvancedSettings(ctx context.Context) ApiGetDefaultClusterAdvancedSettingsRequest {
 	return ApiGetDefaultClusterAdvancedSettingsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1152,7 +1155,7 @@ func (a *ClustersApiService) GetDefaultClusterAdvancedSettings(ctx context.Conte
 
 // Execute executes the request
 //  @return ClusterAdvancedSettings
-func (a *ClustersApiService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDefaultClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
+func (a *ClustersAPIService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDefaultClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1160,7 +1163,7 @@ func (a *ClustersApiService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDe
 		localVarReturnValue *ClusterAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetDefaultClusterAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetDefaultClusterAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1212,9 +1215,9 @@ func (a *ClustersApiService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1241,7 +1244,7 @@ func (a *ClustersApiService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDe
 
 type ApiGetOrganizationCloudProviderInfoRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -1258,7 +1261,7 @@ GetOrganizationCloudProviderInfo Get cluster cloud provider info and credentials
  @param clusterId Cluster ID
  @return ApiGetOrganizationCloudProviderInfoRequest
 */
-func (a *ClustersApiService) GetOrganizationCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiGetOrganizationCloudProviderInfoRequest {
+func (a *ClustersAPIService) GetOrganizationCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiGetOrganizationCloudProviderInfoRequest {
 	return ApiGetOrganizationCloudProviderInfoRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1269,7 +1272,7 @@ func (a *ClustersApiService) GetOrganizationCloudProviderInfo(ctx context.Contex
 
 // Execute executes the request
 //  @return ClusterCloudProviderInfo
-func (a *ClustersApiService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrganizationCloudProviderInfoRequest) (*ClusterCloudProviderInfo, *http.Response, error) {
+func (a *ClustersAPIService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrganizationCloudProviderInfoRequest) (*ClusterCloudProviderInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1277,14 +1280,14 @@ func (a *ClustersApiService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrg
 		localVarReturnValue *ClusterCloudProviderInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetOrganizationCloudProviderInfo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetOrganizationCloudProviderInfo")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1331,9 +1334,9 @@ func (a *ClustersApiService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrg
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1360,7 +1363,7 @@ func (a *ClustersApiService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrg
 
 type ApiGetOrganizationClusterStatusRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 }
 
@@ -1377,7 +1380,7 @@ Returns a list of clusters with only their id and status.
  @param organizationId Organization ID
  @return ApiGetOrganizationClusterStatusRequest
 */
-func (a *ClustersApiService) GetOrganizationClusterStatus(ctx context.Context, organizationId string) ApiGetOrganizationClusterStatusRequest {
+func (a *ClustersAPIService) GetOrganizationClusterStatus(ctx context.Context, organizationId string) ApiGetOrganizationClusterStatusRequest {
 	return ApiGetOrganizationClusterStatusRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1387,7 +1390,7 @@ func (a *ClustersApiService) GetOrganizationClusterStatus(ctx context.Context, o
 
 // Execute executes the request
 //  @return ClusterStatusResponseList
-func (a *ClustersApiService) GetOrganizationClusterStatusExecute(r ApiGetOrganizationClusterStatusRequest) (*ClusterStatusResponseList, *http.Response, error) {
+func (a *ClustersAPIService) GetOrganizationClusterStatusExecute(r ApiGetOrganizationClusterStatusRequest) (*ClusterStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1395,13 +1398,13 @@ func (a *ClustersApiService) GetOrganizationClusterStatusExecute(r ApiGetOrganiz
 		localVarReturnValue *ClusterStatusResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetOrganizationClusterStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetOrganizationClusterStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1448,9 +1451,9 @@ func (a *ClustersApiService) GetOrganizationClusterStatusExecute(r ApiGetOrganiz
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1477,7 +1480,7 @@ func (a *ClustersApiService) GetOrganizationClusterStatusExecute(r ApiGetOrganiz
 
 type ApiGetRoutingTableRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -1496,7 +1499,7 @@ Retrieve network routing table where each line corresponds to a route between a 
  @param clusterId Cluster ID
  @return ApiGetRoutingTableRequest
 */
-func (a *ClustersApiService) GetRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiGetRoutingTableRequest {
+func (a *ClustersAPIService) GetRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiGetRoutingTableRequest {
 	return ApiGetRoutingTableRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1507,7 +1510,7 @@ func (a *ClustersApiService) GetRoutingTable(ctx context.Context, organizationId
 
 // Execute executes the request
 //  @return ClusterRoutingTable
-func (a *ClustersApiService) GetRoutingTableExecute(r ApiGetRoutingTableRequest) (*ClusterRoutingTable, *http.Response, error) {
+func (a *ClustersAPIService) GetRoutingTableExecute(r ApiGetRoutingTableRequest) (*ClusterRoutingTable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1515,14 +1518,14 @@ func (a *ClustersApiService) GetRoutingTableExecute(r ApiGetRoutingTableRequest)
 		localVarReturnValue *ClusterRoutingTable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetRoutingTable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetRoutingTable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/routingTable"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1569,9 +1572,9 @@ func (a *ClustersApiService) GetRoutingTableExecute(r ApiGetRoutingTableRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1598,7 +1601,7 @@ func (a *ClustersApiService) GetRoutingTableExecute(r ApiGetRoutingTableRequest)
 
 type ApiListClusterLogsRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -1617,7 +1620,7 @@ List Cluster Logs
  @param clusterId Cluster ID
  @return ApiListClusterLogsRequest
 */
-func (a *ClustersApiService) ListClusterLogs(ctx context.Context, organizationId string, clusterId string) ApiListClusterLogsRequest {
+func (a *ClustersAPIService) ListClusterLogs(ctx context.Context, organizationId string, clusterId string) ApiListClusterLogsRequest {
 	return ApiListClusterLogsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1628,7 +1631,7 @@ func (a *ClustersApiService) ListClusterLogs(ctx context.Context, organizationId
 
 // Execute executes the request
 //  @return ClusterLogsResponseList
-func (a *ClustersApiService) ListClusterLogsExecute(r ApiListClusterLogsRequest) (*ClusterLogsResponseList, *http.Response, error) {
+func (a *ClustersAPIService) ListClusterLogsExecute(r ApiListClusterLogsRequest) (*ClusterLogsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1636,14 +1639,14 @@ func (a *ClustersApiService) ListClusterLogsExecute(r ApiListClusterLogsRequest)
 		localVarReturnValue *ClusterLogsResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusterLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ListClusterLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/logs"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1690,9 +1693,9 @@ func (a *ClustersApiService) ListClusterLogsExecute(r ApiListClusterLogsRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1719,7 +1722,7 @@ func (a *ClustersApiService) ListClusterLogsExecute(r ApiListClusterLogsRequest)
 
 type ApiListOrganizationClusterRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 }
 
@@ -1734,7 +1737,7 @@ ListOrganizationCluster List organization clusters
  @param organizationId Organization ID
  @return ApiListOrganizationClusterRequest
 */
-func (a *ClustersApiService) ListOrganizationCluster(ctx context.Context, organizationId string) ApiListOrganizationClusterRequest {
+func (a *ClustersAPIService) ListOrganizationCluster(ctx context.Context, organizationId string) ApiListOrganizationClusterRequest {
 	return ApiListOrganizationClusterRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1744,7 +1747,7 @@ func (a *ClustersApiService) ListOrganizationCluster(ctx context.Context, organi
 
 // Execute executes the request
 //  @return ClusterResponseList
-func (a *ClustersApiService) ListOrganizationClusterExecute(r ApiListOrganizationClusterRequest) (*ClusterResponseList, *http.Response, error) {
+func (a *ClustersAPIService) ListOrganizationClusterExecute(r ApiListOrganizationClusterRequest) (*ClusterResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1752,13 +1755,13 @@ func (a *ClustersApiService) ListOrganizationClusterExecute(r ApiListOrganizatio
 		localVarReturnValue *ClusterResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListOrganizationCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ListOrganizationCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1805,9 +1808,9 @@ func (a *ClustersApiService) ListOrganizationClusterExecute(r ApiListOrganizatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1834,7 +1837,7 @@ func (a *ClustersApiService) ListOrganizationClusterExecute(r ApiListOrganizatio
 
 type ApiSpecifyClusterCloudProviderInfoRequest struct {
 	ctx                             context.Context
-	ApiService                      *ClustersApiService
+	ApiService                      *ClustersAPIService
 	organizationId                  string
 	clusterId                       string
 	clusterCloudProviderInfoRequest *ClusterCloudProviderInfoRequest
@@ -1857,7 +1860,7 @@ SpecifyClusterCloudProviderInfo Specify cluster cloud provider info and credenti
  @param clusterId Cluster ID
  @return ApiSpecifyClusterCloudProviderInfoRequest
 */
-func (a *ClustersApiService) SpecifyClusterCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiSpecifyClusterCloudProviderInfoRequest {
+func (a *ClustersAPIService) SpecifyClusterCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiSpecifyClusterCloudProviderInfoRequest {
 	return ApiSpecifyClusterCloudProviderInfoRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1868,7 +1871,7 @@ func (a *ClustersApiService) SpecifyClusterCloudProviderInfo(ctx context.Context
 
 // Execute executes the request
 //  @return ClusterCloudProviderInfo
-func (a *ClustersApiService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecifyClusterCloudProviderInfoRequest) (*ClusterCloudProviderInfo, *http.Response, error) {
+func (a *ClustersAPIService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecifyClusterCloudProviderInfoRequest) (*ClusterCloudProviderInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1876,14 +1879,14 @@ func (a *ClustersApiService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecify
 		localVarReturnValue *ClusterCloudProviderInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.SpecifyClusterCloudProviderInfo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.SpecifyClusterCloudProviderInfo")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1932,9 +1935,9 @@ func (a *ClustersApiService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecify
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1961,7 +1964,7 @@ func (a *ClustersApiService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecify
 
 type ApiStopClusterRequest struct {
 	ctx            context.Context
-	ApiService     *ClustersApiService
+	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
 }
@@ -1980,7 +1983,7 @@ Cluster stop has been requester.
  @param clusterId Cluster ID
  @return ApiStopClusterRequest
 */
-func (a *ClustersApiService) StopCluster(ctx context.Context, organizationId string, clusterId string) ApiStopClusterRequest {
+func (a *ClustersAPIService) StopCluster(ctx context.Context, organizationId string, clusterId string) ApiStopClusterRequest {
 	return ApiStopClusterRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1991,7 +1994,7 @@ func (a *ClustersApiService) StopCluster(ctx context.Context, organizationId str
 
 // Execute executes the request
 //  @return ClusterStatus
-func (a *ClustersApiService) StopClusterExecute(r ApiStopClusterRequest) (*ClusterStatus, *http.Response, error) {
+func (a *ClustersAPIService) StopClusterExecute(r ApiStopClusterRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1999,14 +2002,14 @@ func (a *ClustersApiService) StopClusterExecute(r ApiStopClusterRequest) (*Clust
 		localVarReturnValue *ClusterStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.StopCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.StopCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/stop"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2053,9 +2056,9 @@ func (a *ClustersApiService) StopClusterExecute(r ApiStopClusterRequest) (*Clust
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

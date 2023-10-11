@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationMetricsApiService ApplicationMetricsApi service
-type ApplicationMetricsApiService service
+// ApplicationMetricsAPIService ApplicationMetricsAPI service
+type ApplicationMetricsAPIService service
 
 type ApiGetApplicationCurrentInstanceRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMetricsApiService
+	ApiService    *ApplicationMetricsAPIService
 	applicationId string
 }
 
@@ -40,7 +40,7 @@ GetApplicationCurrentInstance List currently running instances of the applicatio
  @param applicationId Application ID
  @return ApiGetApplicationCurrentInstanceRequest
 */
-func (a *ApplicationMetricsApiService) GetApplicationCurrentInstance(ctx context.Context, applicationId string) ApiGetApplicationCurrentInstanceRequest {
+func (a *ApplicationMetricsAPIService) GetApplicationCurrentInstance(ctx context.Context, applicationId string) ApiGetApplicationCurrentInstanceRequest {
 	return ApiGetApplicationCurrentInstanceRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -50,7 +50,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentInstance(ctx context
 
 // Execute executes the request
 //  @return InstanceResponseList
-func (a *ApplicationMetricsApiService) GetApplicationCurrentInstanceExecute(r ApiGetApplicationCurrentInstanceRequest) (*InstanceResponseList, *http.Response, error) {
+func (a *ApplicationMetricsAPIService) GetApplicationCurrentInstanceExecute(r ApiGetApplicationCurrentInstanceRequest) (*InstanceResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -58,13 +58,13 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentInstanceExecute(r Ap
 		localVarReturnValue *InstanceResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationCurrentInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsAPIService.GetApplicationCurrentInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/instance"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentInstanceExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -140,7 +140,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentInstanceExecute(r Ap
 
 type ApiGetApplicationCurrentScaleRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMetricsApiService
+	ApiService    *ApplicationMetricsAPIService
 	applicationId string
 }
 
@@ -157,7 +157,7 @@ Returns min, max, and running number of instances of the application
  @param applicationId Application ID
  @return ApiGetApplicationCurrentScaleRequest
 */
-func (a *ApplicationMetricsApiService) GetApplicationCurrentScale(ctx context.Context, applicationId string) ApiGetApplicationCurrentScaleRequest {
+func (a *ApplicationMetricsAPIService) GetApplicationCurrentScale(ctx context.Context, applicationId string) ApiGetApplicationCurrentScaleRequest {
 	return ApiGetApplicationCurrentScaleRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -167,7 +167,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentScale(ctx context.Co
 
 // Execute executes the request
 //  @return ApplicationCurrentScale
-func (a *ApplicationMetricsApiService) GetApplicationCurrentScaleExecute(r ApiGetApplicationCurrentScaleRequest) (*ApplicationCurrentScale, *http.Response, error) {
+func (a *ApplicationMetricsAPIService) GetApplicationCurrentScaleExecute(r ApiGetApplicationCurrentScaleRequest) (*ApplicationCurrentScale, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -175,13 +175,13 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentScaleExecute(r ApiGe
 		localVarReturnValue *ApplicationCurrentScale
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationCurrentScale")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsAPIService.GetApplicationCurrentScale")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/currentScale"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -228,9 +228,9 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentScaleExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -257,7 +257,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentScaleExecute(r ApiGe
 
 type ApiGetApplicationCurrentStorageDiskRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMetricsApiService
+	ApiService    *ApplicationMetricsAPIService
 	applicationId string
 }
 
@@ -272,7 +272,7 @@ GetApplicationCurrentStorageDisk List current storage disk usage
  @param applicationId Application ID
  @return ApiGetApplicationCurrentStorageDiskRequest
 */
-func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDisk(ctx context.Context, applicationId string) ApiGetApplicationCurrentStorageDiskRequest {
+func (a *ApplicationMetricsAPIService) GetApplicationCurrentStorageDisk(ctx context.Context, applicationId string) ApiGetApplicationCurrentStorageDiskRequest {
 	return ApiGetApplicationCurrentStorageDiskRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -282,7 +282,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDisk(ctx cont
 
 // Execute executes the request
 //  @return StorageDiskResponseList
-func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDiskExecute(r ApiGetApplicationCurrentStorageDiskRequest) (*StorageDiskResponseList, *http.Response, error) {
+func (a *ApplicationMetricsAPIService) GetApplicationCurrentStorageDiskExecute(r ApiGetApplicationCurrentStorageDiskRequest) (*StorageDiskResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -290,13 +290,13 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDiskExecute(r
 		localVarReturnValue *StorageDiskResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationCurrentStorageDisk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsAPIService.GetApplicationCurrentStorageDisk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/currentStorage"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -343,9 +343,9 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDiskExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -372,7 +372,7 @@ func (a *ApplicationMetricsApiService) GetApplicationCurrentStorageDiskExecute(r
 
 type ApiGetApplicationMetricCpuRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMetricsApiService
+	ApiService    *ApplicationMetricsAPIService
 	applicationId string
 	lastSeconds   *float32
 }
@@ -394,7 +394,7 @@ GetApplicationMetricCpu Get CPU consumption metric over time for the application
  @param applicationId Application ID
  @return ApiGetApplicationMetricCpuRequest
 */
-func (a *ApplicationMetricsApiService) GetApplicationMetricCpu(ctx context.Context, applicationId string) ApiGetApplicationMetricCpuRequest {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricCpu(ctx context.Context, applicationId string) ApiGetApplicationMetricCpuRequest {
 	return ApiGetApplicationMetricCpuRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -404,7 +404,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpu(ctx context.Conte
 
 // Execute executes the request
 //  @return MetricCPUResponseList
-func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetApplicationMetricCpuRequest) (*MetricCPUResponseList, *http.Response, error) {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricCpuExecute(r ApiGetApplicationMetricCpuRequest) (*MetricCPUResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -412,13 +412,13 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetAp
 		localVarReturnValue *MetricCPUResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricCpu")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsAPIService.GetApplicationMetricCpu")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/metric/cpu"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,7 +427,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetAp
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
 
-	localVarQueryParams.Add("lastSeconds", parameterToString(*r.lastSeconds, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "lastSeconds", r.lastSeconds, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -469,9 +469,9 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -498,7 +498,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricCpuExecute(r ApiGetAp
 
 type ApiGetApplicationMetricHealthCheckRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMetricsApiService
+	ApiService    *ApplicationMetricsAPIService
 	applicationId string
 	lastSeconds   *float32
 }
@@ -522,7 +522,7 @@ The value returned corresponds to the 95th centile
  @param applicationId Application ID
  @return ApiGetApplicationMetricHealthCheckRequest
 */
-func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheck(ctx context.Context, applicationId string) ApiGetApplicationMetricHealthCheckRequest {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricHealthCheck(ctx context.Context, applicationId string) ApiGetApplicationMetricHealthCheckRequest {
 	return ApiGetApplicationMetricHealthCheckRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -532,7 +532,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheck(ctx conte
 
 // Execute executes the request
 //  @return MetricGenericResponseList
-func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r ApiGetApplicationMetricHealthCheckRequest) (*MetricGenericResponseList, *http.Response, error) {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricHealthCheckExecute(r ApiGetApplicationMetricHealthCheckRequest) (*MetricGenericResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -540,13 +540,13 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r 
 		localVarReturnValue *MetricGenericResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricHealthCheck")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsAPIService.GetApplicationMetricHealthCheck")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/metric/healthCheck"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -555,7 +555,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r 
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
 
-	localVarQueryParams.Add("lastSeconds", parameterToString(*r.lastSeconds, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "lastSeconds", r.lastSeconds, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -597,9 +597,9 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -626,7 +626,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricHealthCheckExecute(r 
 
 type ApiGetApplicationMetricMemoryRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMetricsApiService
+	ApiService    *ApplicationMetricsAPIService
 	applicationId string
 	lastSeconds   *float32
 }
@@ -648,7 +648,7 @@ GetApplicationMetricMemory Get Memory consumption metric over time for the appli
  @param applicationId Application ID
  @return ApiGetApplicationMetricMemoryRequest
 */
-func (a *ApplicationMetricsApiService) GetApplicationMetricMemory(ctx context.Context, applicationId string) ApiGetApplicationMetricMemoryRequest {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricMemory(ctx context.Context, applicationId string) ApiGetApplicationMetricMemoryRequest {
 	return ApiGetApplicationMetricMemoryRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -658,7 +658,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemory(ctx context.Co
 
 // Execute executes the request
 //  @return MetricMemoryResponseList
-func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGetApplicationMetricMemoryRequest) (*MetricMemoryResponseList, *http.Response, error) {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricMemoryExecute(r ApiGetApplicationMetricMemoryRequest) (*MetricMemoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -666,13 +666,13 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGe
 		localVarReturnValue *MetricMemoryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricMemory")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsAPIService.GetApplicationMetricMemory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/metric/memory"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -681,7 +681,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGe
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
 
-	localVarQueryParams.Add("lastSeconds", parameterToString(*r.lastSeconds, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "lastSeconds", r.lastSeconds, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -723,9 +723,9 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -752,7 +752,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricMemoryExecute(r ApiGe
 
 type ApiGetApplicationMetricStorageRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMetricsApiService
+	ApiService    *ApplicationMetricsAPIService
 	applicationId string
 	lastSeconds   *float32
 }
@@ -774,7 +774,7 @@ GetApplicationMetricStorage Get Storage consumption metric over time for the app
  @param applicationId Application ID
  @return ApiGetApplicationMetricStorageRequest
 */
-func (a *ApplicationMetricsApiService) GetApplicationMetricStorage(ctx context.Context, applicationId string) ApiGetApplicationMetricStorageRequest {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricStorage(ctx context.Context, applicationId string) ApiGetApplicationMetricStorageRequest {
 	return ApiGetApplicationMetricStorageRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -784,7 +784,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricStorage(ctx context.C
 
 // Execute executes the request
 //  @return MetricStorageResponseList
-func (a *ApplicationMetricsApiService) GetApplicationMetricStorageExecute(r ApiGetApplicationMetricStorageRequest) (*MetricStorageResponseList, *http.Response, error) {
+func (a *ApplicationMetricsAPIService) GetApplicationMetricStorageExecute(r ApiGetApplicationMetricStorageRequest) (*MetricStorageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -792,13 +792,13 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricStorageExecute(r ApiG
 		localVarReturnValue *MetricStorageResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsApiService.GetApplicationMetricStorage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMetricsAPIService.GetApplicationMetricStorage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/metric/storage"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -807,7 +807,7 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricStorageExecute(r ApiG
 		return localVarReturnValue, nil, reportError("lastSeconds is required and must be specified")
 	}
 
-	localVarQueryParams.Add("lastSeconds", parameterToString(*r.lastSeconds, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "lastSeconds", r.lastSeconds, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -849,9 +849,9 @@ func (a *ApplicationMetricsApiService) GetApplicationMetricStorageExecute(r ApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

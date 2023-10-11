@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentHistoryJobResponseAllOfSchedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryJobResponseAllOfSchedule{}
+
 // DeploymentHistoryJobResponseAllOfSchedule struct for DeploymentHistoryJobResponseAllOfSchedule
 type DeploymentHistoryJobResponseAllOfSchedule struct {
 	Event *JobScheduleEvent `json:"event,omitempty"`
@@ -41,7 +44,7 @@ func NewDeploymentHistoryJobResponseAllOfScheduleWithDefaults() *DeploymentHisto
 
 // GetEvent returns the Event field value if set, zero value otherwise.
 func (o *DeploymentHistoryJobResponseAllOfSchedule) GetEvent() JobScheduleEvent {
-	if o == nil || o.Event == nil {
+	if o == nil || IsNil(o.Event) {
 		var ret JobScheduleEvent
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *DeploymentHistoryJobResponseAllOfSchedule) GetEvent() JobScheduleEvent 
 // GetEventOk returns a tuple with the Event field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryJobResponseAllOfSchedule) GetEventOk() (*JobScheduleEvent, bool) {
-	if o == nil || o.Event == nil {
+	if o == nil || IsNil(o.Event) {
 		return nil, false
 	}
 	return o.Event, true
@@ -59,7 +62,7 @@ func (o *DeploymentHistoryJobResponseAllOfSchedule) GetEventOk() (*JobScheduleEv
 
 // HasEvent returns a boolean if a field has been set.
 func (o *DeploymentHistoryJobResponseAllOfSchedule) HasEvent() bool {
-	if o != nil && o.Event != nil {
+	if o != nil && !IsNil(o.Event) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *DeploymentHistoryJobResponseAllOfSchedule) SetEvent(v JobScheduleEvent)
 
 // GetScheduleAt returns the ScheduleAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentHistoryJobResponseAllOfSchedule) GetScheduleAt() string {
-	if o == nil || o.ScheduleAt.Get() == nil {
+	if o == nil || IsNil(o.ScheduleAt.Get()) {
 		var ret string
 		return ret
 	}
@@ -115,14 +118,22 @@ func (o *DeploymentHistoryJobResponseAllOfSchedule) UnsetScheduleAt() {
 }
 
 func (o DeploymentHistoryJobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistoryJobResponseAllOfSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Event != nil {
+	if !IsNil(o.Event) {
 		toSerialize["event"] = o.Event
 	}
 	if o.ScheduleAt.IsSet() {
 		toSerialize["schedule_at"] = o.ScheduleAt.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistoryJobResponseAllOfSchedule struct {

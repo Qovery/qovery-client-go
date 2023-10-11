@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Application type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Application{}
+
 // Application struct for Application
 type Application struct {
 	Id            string                       `json:"id"`
@@ -141,7 +144,7 @@ func (o *Application) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Application) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *Application) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -159,7 +162,7 @@ func (o *Application) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Application) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *Application) SetUpdatedAt(v time.Time) {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *Application) GetStorage() []ServiceStorageStorageInner {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret []ServiceStorageStorageInner
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *Application) GetStorage() []ServiceStorageStorageInner {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -191,7 +194,7 @@ func (o *Application) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
 
 // HasStorage returns a boolean if a field has been set.
 func (o *Application) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *Application) SetStorage(v []ServiceStorageStorageInner) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Application) GetEnvironment() ReferenceObject {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		var ret ReferenceObject
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *Application) GetEnvironment() ReferenceObject {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetEnvironmentOk() (*ReferenceObject, bool) {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -223,7 +226,7 @@ func (o *Application) GetEnvironmentOk() (*ReferenceObject, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Application) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -237,7 +240,7 @@ func (o *Application) SetEnvironment(v ReferenceObject) {
 
 // GetGitRepository returns the GitRepository field value if set, zero value otherwise.
 func (o *Application) GetGitRepository() ApplicationGitRepository {
-	if o == nil || o.GitRepository == nil {
+	if o == nil || IsNil(o.GitRepository) {
 		var ret ApplicationGitRepository
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *Application) GetGitRepository() ApplicationGitRepository {
 // GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetGitRepositoryOk() (*ApplicationGitRepository, bool) {
-	if o == nil || o.GitRepository == nil {
+	if o == nil || IsNil(o.GitRepository) {
 		return nil, false
 	}
 	return o.GitRepository, true
@@ -255,7 +258,7 @@ func (o *Application) GetGitRepositoryOk() (*ApplicationGitRepository, bool) {
 
 // HasGitRepository returns a boolean if a field has been set.
 func (o *Application) HasGitRepository() bool {
-	if o != nil && o.GitRepository != nil {
+	if o != nil && !IsNil(o.GitRepository) {
 		return true
 	}
 
@@ -269,7 +272,7 @@ func (o *Application) SetGitRepository(v ApplicationGitRepository) {
 
 // GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
 func (o *Application) GetMaximumCpu() int32 {
-	if o == nil || o.MaximumCpu == nil {
+	if o == nil || IsNil(o.MaximumCpu) {
 		var ret int32
 		return ret
 	}
@@ -279,7 +282,7 @@ func (o *Application) GetMaximumCpu() int32 {
 // GetMaximumCpuOk returns a tuple with the MaximumCpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetMaximumCpuOk() (*int32, bool) {
-	if o == nil || o.MaximumCpu == nil {
+	if o == nil || IsNil(o.MaximumCpu) {
 		return nil, false
 	}
 	return o.MaximumCpu, true
@@ -287,7 +290,7 @@ func (o *Application) GetMaximumCpuOk() (*int32, bool) {
 
 // HasMaximumCpu returns a boolean if a field has been set.
 func (o *Application) HasMaximumCpu() bool {
-	if o != nil && o.MaximumCpu != nil {
+	if o != nil && !IsNil(o.MaximumCpu) {
 		return true
 	}
 
@@ -301,7 +304,7 @@ func (o *Application) SetMaximumCpu(v int32) {
 
 // GetMaximumMemory returns the MaximumMemory field value if set, zero value otherwise.
 func (o *Application) GetMaximumMemory() int32 {
-	if o == nil || o.MaximumMemory == nil {
+	if o == nil || IsNil(o.MaximumMemory) {
 		var ret int32
 		return ret
 	}
@@ -311,7 +314,7 @@ func (o *Application) GetMaximumMemory() int32 {
 // GetMaximumMemoryOk returns a tuple with the MaximumMemory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetMaximumMemoryOk() (*int32, bool) {
-	if o == nil || o.MaximumMemory == nil {
+	if o == nil || IsNil(o.MaximumMemory) {
 		return nil, false
 	}
 	return o.MaximumMemory, true
@@ -319,7 +322,7 @@ func (o *Application) GetMaximumMemoryOk() (*int32, bool) {
 
 // HasMaximumMemory returns a boolean if a field has been set.
 func (o *Application) HasMaximumMemory() bool {
-	if o != nil && o.MaximumMemory != nil {
+	if o != nil && !IsNil(o.MaximumMemory) {
 		return true
 	}
 
@@ -333,7 +336,7 @@ func (o *Application) SetMaximumMemory(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Application) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -343,7 +346,7 @@ func (o *Application) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -351,7 +354,7 @@ func (o *Application) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Application) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -365,7 +368,7 @@ func (o *Application) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Application) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -408,7 +411,7 @@ func (o *Application) UnsetDescription() {
 
 // GetBuildMode returns the BuildMode field value if set, zero value otherwise.
 func (o *Application) GetBuildMode() BuildModeEnum {
-	if o == nil || o.BuildMode == nil {
+	if o == nil || IsNil(o.BuildMode) {
 		var ret BuildModeEnum
 		return ret
 	}
@@ -418,7 +421,7 @@ func (o *Application) GetBuildMode() BuildModeEnum {
 // GetBuildModeOk returns a tuple with the BuildMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetBuildModeOk() (*BuildModeEnum, bool) {
-	if o == nil || o.BuildMode == nil {
+	if o == nil || IsNil(o.BuildMode) {
 		return nil, false
 	}
 	return o.BuildMode, true
@@ -426,7 +429,7 @@ func (o *Application) GetBuildModeOk() (*BuildModeEnum, bool) {
 
 // HasBuildMode returns a boolean if a field has been set.
 func (o *Application) HasBuildMode() bool {
-	if o != nil && o.BuildMode != nil {
+	if o != nil && !IsNil(o.BuildMode) {
 		return true
 	}
 
@@ -440,7 +443,7 @@ func (o *Application) SetBuildMode(v BuildModeEnum) {
 
 // GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Application) GetDockerfilePath() string {
-	if o == nil || o.DockerfilePath.Get() == nil {
+	if o == nil || IsNil(o.DockerfilePath.Get()) {
 		var ret string
 		return ret
 	}
@@ -483,7 +486,7 @@ func (o *Application) UnsetDockerfilePath() {
 
 // GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Application) GetBuildpackLanguage() BuildPackLanguageEnum {
-	if o == nil || o.BuildpackLanguage.Get() == nil {
+	if o == nil || IsNil(o.BuildpackLanguage.Get()) {
 		var ret BuildPackLanguageEnum
 		return ret
 	}
@@ -526,7 +529,7 @@ func (o *Application) UnsetBuildpackLanguage() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *Application) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret int32
 		return ret
 	}
@@ -536,7 +539,7 @@ func (o *Application) GetCpu() int32 {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -544,7 +547,7 @@ func (o *Application) GetCpuOk() (*int32, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *Application) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -558,7 +561,7 @@ func (o *Application) SetCpu(v int32) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *Application) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -568,7 +571,7 @@ func (o *Application) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -576,7 +579,7 @@ func (o *Application) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *Application) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -590,7 +593,7 @@ func (o *Application) SetMemory(v int32) {
 
 // GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
 func (o *Application) GetMinRunningInstances() int32 {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil || IsNil(o.MinRunningInstances) {
 		var ret int32
 		return ret
 	}
@@ -600,7 +603,7 @@ func (o *Application) GetMinRunningInstances() int32 {
 // GetMinRunningInstancesOk returns a tuple with the MinRunningInstances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetMinRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil || IsNil(o.MinRunningInstances) {
 		return nil, false
 	}
 	return o.MinRunningInstances, true
@@ -608,7 +611,7 @@ func (o *Application) GetMinRunningInstancesOk() (*int32, bool) {
 
 // HasMinRunningInstances returns a boolean if a field has been set.
 func (o *Application) HasMinRunningInstances() bool {
-	if o != nil && o.MinRunningInstances != nil {
+	if o != nil && !IsNil(o.MinRunningInstances) {
 		return true
 	}
 
@@ -622,7 +625,7 @@ func (o *Application) SetMinRunningInstances(v int32) {
 
 // GetMaxRunningInstances returns the MaxRunningInstances field value if set, zero value otherwise.
 func (o *Application) GetMaxRunningInstances() int32 {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil || IsNil(o.MaxRunningInstances) {
 		var ret int32
 		return ret
 	}
@@ -632,7 +635,7 @@ func (o *Application) GetMaxRunningInstances() int32 {
 // GetMaxRunningInstancesOk returns a tuple with the MaxRunningInstances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetMaxRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil || IsNil(o.MaxRunningInstances) {
 		return nil, false
 	}
 	return o.MaxRunningInstances, true
@@ -640,7 +643,7 @@ func (o *Application) GetMaxRunningInstancesOk() (*int32, bool) {
 
 // HasMaxRunningInstances returns a boolean if a field has been set.
 func (o *Application) HasMaxRunningInstances() bool {
-	if o != nil && o.MaxRunningInstances != nil {
+	if o != nil && !IsNil(o.MaxRunningInstances) {
 		return true
 	}
 
@@ -678,7 +681,7 @@ func (o *Application) SetHealthchecks(v Healthcheck) {
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
 func (o *Application) GetAutoPreview() bool {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		var ret bool
 		return ret
 	}
@@ -688,7 +691,7 @@ func (o *Application) GetAutoPreview() bool {
 // GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		return nil, false
 	}
 	return o.AutoPreview, true
@@ -696,7 +699,7 @@ func (o *Application) GetAutoPreviewOk() (*bool, bool) {
 
 // HasAutoPreview returns a boolean if a field has been set.
 func (o *Application) HasAutoPreview() bool {
-	if o != nil && o.AutoPreview != nil {
+	if o != nil && !IsNil(o.AutoPreview) {
 		return true
 	}
 
@@ -710,7 +713,7 @@ func (o *Application) SetAutoPreview(v bool) {
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
 func (o *Application) GetPorts() []ServicePort {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		var ret []ServicePort
 		return ret
 	}
@@ -720,7 +723,7 @@ func (o *Application) GetPorts() []ServicePort {
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetPortsOk() ([]ServicePort, bool) {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		return nil, false
 	}
 	return o.Ports, true
@@ -728,7 +731,7 @@ func (o *Application) GetPortsOk() ([]ServicePort, bool) {
 
 // HasPorts returns a boolean if a field has been set.
 func (o *Application) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+	if o != nil && !IsNil(o.Ports) {
 		return true
 	}
 
@@ -742,7 +745,7 @@ func (o *Application) SetPorts(v []ServicePort) {
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *Application) GetArguments() []string {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		var ret []string
 		return ret
 	}
@@ -752,7 +755,7 @@ func (o *Application) GetArguments() []string {
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetArgumentsOk() ([]string, bool) {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
 	return o.Arguments, true
@@ -760,7 +763,7 @@ func (o *Application) GetArgumentsOk() ([]string, bool) {
 
 // HasArguments returns a boolean if a field has been set.
 func (o *Application) HasArguments() bool {
-	if o != nil && o.Arguments != nil {
+	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
 
@@ -774,7 +777,7 @@ func (o *Application) SetArguments(v []string) {
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
 func (o *Application) GetEntrypoint() string {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
 	}
@@ -784,7 +787,7 @@ func (o *Application) GetEntrypoint() string {
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetEntrypointOk() (*string, bool) {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
 	return o.Entrypoint, true
@@ -792,7 +795,7 @@ func (o *Application) GetEntrypointOk() (*string, bool) {
 
 // HasEntrypoint returns a boolean if a field has been set.
 func (o *Application) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint != nil {
+	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
 
@@ -806,7 +809,7 @@ func (o *Application) SetEntrypoint(v string) {
 
 // GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
 func (o *Application) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		var ret bool
 		return ret
 	}
@@ -816,7 +819,7 @@ func (o *Application) GetAutoDeploy() bool {
 // GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Application) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		return nil, false
 	}
 	return o.AutoDeploy, true
@@ -824,7 +827,7 @@ func (o *Application) GetAutoDeployOk() (*bool, bool) {
 
 // HasAutoDeploy returns a boolean if a field has been set.
 func (o *Application) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy != nil {
+	if o != nil && !IsNil(o.AutoDeploy) {
 		return true
 	}
 
@@ -837,38 +840,42 @@ func (o *Application) SetAutoDeploy(v bool) {
 }
 
 func (o Application) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Application) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if o.Storage != nil {
+	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
-	if o.Environment != nil {
+	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if o.GitRepository != nil {
+	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
-	if o.MaximumCpu != nil {
+	if !IsNil(o.MaximumCpu) {
 		toSerialize["maximum_cpu"] = o.MaximumCpu
 	}
-	if o.MaximumMemory != nil {
+	if !IsNil(o.MaximumMemory) {
 		toSerialize["maximum_memory"] = o.MaximumMemory
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if o.BuildMode != nil {
+	if !IsNil(o.BuildMode) {
 		toSerialize["build_mode"] = o.BuildMode
 	}
 	if o.DockerfilePath.IsSet() {
@@ -877,37 +884,35 @@ func (o Application) MarshalJSON() ([]byte, error) {
 	if o.BuildpackLanguage.IsSet() {
 		toSerialize["buildpack_language"] = o.BuildpackLanguage.Get()
 	}
-	if o.Cpu != nil {
+	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
-	if o.Memory != nil {
+	if !IsNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
-	if o.MinRunningInstances != nil {
+	if !IsNil(o.MinRunningInstances) {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
 	}
-	if o.MaxRunningInstances != nil {
+	if !IsNil(o.MaxRunningInstances) {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
 	}
-	if true {
-		toSerialize["healthchecks"] = o.Healthchecks
-	}
-	if o.AutoPreview != nil {
+	toSerialize["healthchecks"] = o.Healthchecks
+	if !IsNil(o.AutoPreview) {
 		toSerialize["auto_preview"] = o.AutoPreview
 	}
-	if o.Ports != nil {
+	if !IsNil(o.Ports) {
 		toSerialize["ports"] = o.Ports
 	}
-	if o.Arguments != nil {
+	if !IsNil(o.Arguments) {
 		toSerialize["arguments"] = o.Arguments
 	}
-	if o.Entrypoint != nil {
+	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
-	if o.AutoDeploy != nil {
+	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableApplication struct {

@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobDeploymentRestrictionApiService JobDeploymentRestrictionApi service
-type JobDeploymentRestrictionApiService service
+// JobDeploymentRestrictionAPIService JobDeploymentRestrictionAPI service
+type JobDeploymentRestrictionAPIService service
 
 type ApiCreateJobDeploymentRestrictionRequest struct {
 	ctx                             context.Context
-	ApiService                      *JobDeploymentRestrictionApiService
+	ApiService                      *JobDeploymentRestrictionAPIService
 	jobId                           string
 	jobDeploymentRestrictionRequest *JobDeploymentRestrictionRequest
 }
@@ -48,7 +48,7 @@ Create a job deployment restriction
  @param jobId Job ID
  @return ApiCreateJobDeploymentRestrictionRequest
 */
-func (a *JobDeploymentRestrictionApiService) CreateJobDeploymentRestriction(ctx context.Context, jobId string) ApiCreateJobDeploymentRestrictionRequest {
+func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestriction(ctx context.Context, jobId string) ApiCreateJobDeploymentRestrictionRequest {
 	return ApiCreateJobDeploymentRestrictionRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -58,7 +58,7 @@ func (a *JobDeploymentRestrictionApiService) CreateJobDeploymentRestriction(ctx 
 
 // Execute executes the request
 //  @return JobDeploymentRestrictionResponse
-func (a *JobDeploymentRestrictionApiService) CreateJobDeploymentRestrictionExecute(r ApiCreateJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
+func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestrictionExecute(r ApiCreateJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *JobDeploymentRestrictionApiService) CreateJobDeploymentRestrictionExecu
 		localVarReturnValue *JobDeploymentRestrictionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionApiService.CreateJobDeploymentRestriction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionAPIService.CreateJobDeploymentRestriction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploymentRestriction"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *JobDeploymentRestrictionApiService) CreateJobDeploymentRestrictionExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *JobDeploymentRestrictionApiService) CreateJobDeploymentRestrictionExecu
 
 type ApiDeleteJobDeploymentRestrictionRequest struct {
 	ctx                     context.Context
-	ApiService              *JobDeploymentRestrictionApiService
+	ApiService              *JobDeploymentRestrictionAPIService
 	jobId                   string
 	deploymentRestrictionId string
 }
@@ -169,7 +169,7 @@ Delete a job deployment restriction
  @param deploymentRestrictionId Deployment Restriction ID
  @return ApiDeleteJobDeploymentRestrictionRequest
 */
-func (a *JobDeploymentRestrictionApiService) DeleteJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiDeleteJobDeploymentRestrictionRequest {
+func (a *JobDeploymentRestrictionAPIService) DeleteJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiDeleteJobDeploymentRestrictionRequest {
 	return ApiDeleteJobDeploymentRestrictionRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -179,21 +179,21 @@ func (a *JobDeploymentRestrictionApiService) DeleteJobDeploymentRestriction(ctx 
 }
 
 // Execute executes the request
-func (a *JobDeploymentRestrictionApiService) DeleteJobDeploymentRestrictionExecute(r ApiDeleteJobDeploymentRestrictionRequest) (*http.Response, error) {
+func (a *JobDeploymentRestrictionAPIService) DeleteJobDeploymentRestrictionExecute(r ApiDeleteJobDeploymentRestrictionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionApiService.DeleteJobDeploymentRestriction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionAPIService.DeleteJobDeploymentRestriction")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploymentRestriction/{deploymentRestrictionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterToString(r.deploymentRestrictionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterValueToString(r.deploymentRestrictionId, "deploymentRestrictionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -240,9 +240,9 @@ func (a *JobDeploymentRestrictionApiService) DeleteJobDeploymentRestrictionExecu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -260,7 +260,7 @@ func (a *JobDeploymentRestrictionApiService) DeleteJobDeploymentRestrictionExecu
 
 type ApiEditJobDeploymentRestrictionRequest struct {
 	ctx                             context.Context
-	ApiService                      *JobDeploymentRestrictionApiService
+	ApiService                      *JobDeploymentRestrictionAPIService
 	jobId                           string
 	deploymentRestrictionId         string
 	jobDeploymentRestrictionRequest *JobDeploymentRestrictionRequest
@@ -285,7 +285,7 @@ Edit a job deployment restriction
  @param deploymentRestrictionId Deployment Restriction ID
  @return ApiEditJobDeploymentRestrictionRequest
 */
-func (a *JobDeploymentRestrictionApiService) EditJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiEditJobDeploymentRestrictionRequest {
+func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiEditJobDeploymentRestrictionRequest {
 	return ApiEditJobDeploymentRestrictionRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -296,7 +296,7 @@ func (a *JobDeploymentRestrictionApiService) EditJobDeploymentRestriction(ctx co
 
 // Execute executes the request
 //  @return JobDeploymentRestrictionResponse
-func (a *JobDeploymentRestrictionApiService) EditJobDeploymentRestrictionExecute(r ApiEditJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
+func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestrictionExecute(r ApiEditJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -304,14 +304,14 @@ func (a *JobDeploymentRestrictionApiService) EditJobDeploymentRestrictionExecute
 		localVarReturnValue *JobDeploymentRestrictionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionApiService.EditJobDeploymentRestriction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionAPIService.EditJobDeploymentRestriction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploymentRestriction/{deploymentRestrictionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterToString(r.deploymentRestrictionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterValueToString(r.deploymentRestrictionId, "deploymentRestrictionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -360,9 +360,9 @@ func (a *JobDeploymentRestrictionApiService) EditJobDeploymentRestrictionExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -389,7 +389,7 @@ func (a *JobDeploymentRestrictionApiService) EditJobDeploymentRestrictionExecute
 
 type ApiGetJobDeploymentRestrictionsRequest struct {
 	ctx        context.Context
-	ApiService *JobDeploymentRestrictionApiService
+	ApiService *JobDeploymentRestrictionAPIService
 	jobId      string
 }
 
@@ -406,7 +406,7 @@ Get job deployment restrictions
  @param jobId Job ID
  @return ApiGetJobDeploymentRestrictionsRequest
 */
-func (a *JobDeploymentRestrictionApiService) GetJobDeploymentRestrictions(ctx context.Context, jobId string) ApiGetJobDeploymentRestrictionsRequest {
+func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictions(ctx context.Context, jobId string) ApiGetJobDeploymentRestrictionsRequest {
 	return ApiGetJobDeploymentRestrictionsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -416,7 +416,7 @@ func (a *JobDeploymentRestrictionApiService) GetJobDeploymentRestrictions(ctx co
 
 // Execute executes the request
 //  @return JobDeploymentRestrictionResponseList
-func (a *JobDeploymentRestrictionApiService) GetJobDeploymentRestrictionsExecute(r ApiGetJobDeploymentRestrictionsRequest) (*JobDeploymentRestrictionResponseList, *http.Response, error) {
+func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictionsExecute(r ApiGetJobDeploymentRestrictionsRequest) (*JobDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -424,13 +424,13 @@ func (a *JobDeploymentRestrictionApiService) GetJobDeploymentRestrictionsExecute
 		localVarReturnValue *JobDeploymentRestrictionResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionApiService.GetJobDeploymentRestrictions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobDeploymentRestrictionAPIService.GetJobDeploymentRestrictions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploymentRestriction"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -477,9 +477,9 @@ func (a *JobDeploymentRestrictionApiService) GetJobDeploymentRestrictionsExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

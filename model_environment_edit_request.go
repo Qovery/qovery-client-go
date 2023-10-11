@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentEditRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentEditRequest{}
+
 // EnvironmentEditRequest struct for EnvironmentEditRequest
 type EnvironmentEditRequest struct {
 	Name *string                    `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewEnvironmentEditRequestWithDefaults() *EnvironmentEditRequest {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EnvironmentEditRequest) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EnvironmentEditRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentEditRequest) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *EnvironmentEditRequest) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *EnvironmentEditRequest) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EnvironmentEditRequest) SetName(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *EnvironmentEditRequest) GetMode() CreateEnvironmentModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret CreateEnvironmentModeEnum
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EnvironmentEditRequest) GetMode() CreateEnvironmentModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentEditRequest) GetModeOk() (*CreateEnvironmentModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -90,7 +93,7 @@ func (o *EnvironmentEditRequest) GetModeOk() (*CreateEnvironmentModeEnum, bool) 
 
 // HasMode returns a boolean if a field has been set.
 func (o *EnvironmentEditRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *EnvironmentEditRequest) SetMode(v CreateEnvironmentModeEnum) {
 }
 
 func (o EnvironmentEditRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentEditRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentEditRequest struct {

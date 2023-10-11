@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Stage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Stage{}
+
 // Stage struct for Stage
 type Stage struct {
 	Id string `json:"id"`
@@ -92,7 +95,7 @@ func (o *Stage) SetName(v string) {
 
 // GetSteps returns the Steps field value if set, zero value otherwise.
 func (o *Stage) GetSteps() StageStepMetrics {
-	if o == nil || o.Steps == nil {
+	if o == nil || IsNil(o.Steps) {
 		var ret StageStepMetrics
 		return ret
 	}
@@ -102,7 +105,7 @@ func (o *Stage) GetSteps() StageStepMetrics {
 // GetStepsOk returns a tuple with the Steps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Stage) GetStepsOk() (*StageStepMetrics, bool) {
-	if o == nil || o.Steps == nil {
+	if o == nil || IsNil(o.Steps) {
 		return nil, false
 	}
 	return o.Steps, true
@@ -110,7 +113,7 @@ func (o *Stage) GetStepsOk() (*StageStepMetrics, bool) {
 
 // HasSteps returns a boolean if a field has been set.
 func (o *Stage) HasSteps() bool {
-	if o != nil && o.Steps != nil {
+	if o != nil && !IsNil(o.Steps) {
 		return true
 	}
 
@@ -123,17 +126,21 @@ func (o *Stage) SetSteps(v StageStepMetrics) {
 }
 
 func (o Stage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Steps != nil {
-		toSerialize["steps"] = o.Steps
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Stage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Steps) {
+		toSerialize["steps"] = o.Steps
+	}
+	return toSerialize, nil
 }
 
 type NullableStage struct {

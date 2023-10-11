@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterRoutingTableRequestRoutesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterRoutingTableRequestRoutesInner{}
+
 // ClusterRoutingTableRequestRoutesInner struct for ClusterRoutingTableRequestRoutesInner
 type ClusterRoutingTableRequestRoutesInner struct {
 	Destination string `json:"destination"`
@@ -115,17 +118,19 @@ func (o *ClusterRoutingTableRequestRoutesInner) SetDescription(v string) {
 }
 
 func (o ClusterRoutingTableRequestRoutesInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["destination"] = o.Destination
-	}
-	if true {
-		toSerialize["target"] = o.Target
-	}
-	if true {
-		toSerialize["description"] = o.Description
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterRoutingTableRequestRoutesInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["destination"] = o.Destination
+	toSerialize["target"] = o.Target
+	toSerialize["description"] = o.Description
+	return toSerialize, nil
 }
 
 type NullableClusterRoutingTableRequestRoutesInner struct {

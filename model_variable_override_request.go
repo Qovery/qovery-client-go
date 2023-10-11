@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableOverrideRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableOverrideRequest{}
+
 // VariableOverrideRequest struct for VariableOverrideRequest
 type VariableOverrideRequest struct {
 	// the value to be used as Override of the targeted environment variable.
@@ -117,17 +120,19 @@ func (o *VariableOverrideRequest) SetOverrideParentId(v string) {
 }
 
 func (o VariableOverrideRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["value"] = o.Value
-	}
-	if true {
-		toSerialize["override_scope"] = o.OverrideScope
-	}
-	if true {
-		toSerialize["override_parent_id"] = o.OverrideParentId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableOverrideRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["value"] = o.Value
+	toSerialize["override_scope"] = o.OverrideScope
+	toSerialize["override_parent_id"] = o.OverrideParentId
+	return toSerialize, nil
 }
 
 type NullableVariableOverrideRequest struct {

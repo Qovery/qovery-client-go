@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterLogsError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterLogsError{}
+
 // ClusterLogsError Present only for `error` log
 type ClusterLogsError struct {
 	// log error tag
@@ -48,7 +51,7 @@ func NewClusterLogsErrorWithDefaults() *ClusterLogsError {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *ClusterLogsError) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *ClusterLogsError) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsError) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -66,7 +69,7 @@ func (o *ClusterLogsError) GetTagOk() (*string, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *ClusterLogsError) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !IsNil(o.Tag) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *ClusterLogsError) SetTag(v string) {
 
 // GetUserLogMessage returns the UserLogMessage field value if set, zero value otherwise.
 func (o *ClusterLogsError) GetUserLogMessage() string {
-	if o == nil || o.UserLogMessage == nil {
+	if o == nil || IsNil(o.UserLogMessage) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *ClusterLogsError) GetUserLogMessage() string {
 // GetUserLogMessageOk returns a tuple with the UserLogMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsError) GetUserLogMessageOk() (*string, bool) {
-	if o == nil || o.UserLogMessage == nil {
+	if o == nil || IsNil(o.UserLogMessage) {
 		return nil, false
 	}
 	return o.UserLogMessage, true
@@ -98,7 +101,7 @@ func (o *ClusterLogsError) GetUserLogMessageOk() (*string, bool) {
 
 // HasUserLogMessage returns a boolean if a field has been set.
 func (o *ClusterLogsError) HasUserLogMessage() bool {
-	if o != nil && o.UserLogMessage != nil {
+	if o != nil && !IsNil(o.UserLogMessage) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *ClusterLogsError) SetUserLogMessage(v string) {
 
 // GetLink returns the Link field value if set, zero value otherwise.
 func (o *ClusterLogsError) GetLink() string {
-	if o == nil || o.Link == nil {
+	if o == nil || IsNil(o.Link) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *ClusterLogsError) GetLink() string {
 // GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsError) GetLinkOk() (*string, bool) {
-	if o == nil || o.Link == nil {
+	if o == nil || IsNil(o.Link) {
 		return nil, false
 	}
 	return o.Link, true
@@ -130,7 +133,7 @@ func (o *ClusterLogsError) GetLinkOk() (*string, bool) {
 
 // HasLink returns a boolean if a field has been set.
 func (o *ClusterLogsError) HasLink() bool {
-	if o != nil && o.Link != nil {
+	if o != nil && !IsNil(o.Link) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *ClusterLogsError) SetLink(v string) {
 
 // GetHintMessage returns the HintMessage field value if set, zero value otherwise.
 func (o *ClusterLogsError) GetHintMessage() string {
-	if o == nil || o.HintMessage == nil {
+	if o == nil || IsNil(o.HintMessage) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *ClusterLogsError) GetHintMessage() string {
 // GetHintMessageOk returns a tuple with the HintMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsError) GetHintMessageOk() (*string, bool) {
-	if o == nil || o.HintMessage == nil {
+	if o == nil || IsNil(o.HintMessage) {
 		return nil, false
 	}
 	return o.HintMessage, true
@@ -162,7 +165,7 @@ func (o *ClusterLogsError) GetHintMessageOk() (*string, bool) {
 
 // HasHintMessage returns a boolean if a field has been set.
 func (o *ClusterLogsError) HasHintMessage() bool {
-	if o != nil && o.HintMessage != nil {
+	if o != nil && !IsNil(o.HintMessage) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *ClusterLogsError) SetHintMessage(v string) {
 
 // GetEventDetails returns the EventDetails field value if set, zero value otherwise.
 func (o *ClusterLogsError) GetEventDetails() ClusterLogsErrorEventDetails {
-	if o == nil || o.EventDetails == nil {
+	if o == nil || IsNil(o.EventDetails) {
 		var ret ClusterLogsErrorEventDetails
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *ClusterLogsError) GetEventDetails() ClusterLogsErrorEventDetails {
 // GetEventDetailsOk returns a tuple with the EventDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsError) GetEventDetailsOk() (*ClusterLogsErrorEventDetails, bool) {
-	if o == nil || o.EventDetails == nil {
+	if o == nil || IsNil(o.EventDetails) {
 		return nil, false
 	}
 	return o.EventDetails, true
@@ -194,7 +197,7 @@ func (o *ClusterLogsError) GetEventDetailsOk() (*ClusterLogsErrorEventDetails, b
 
 // HasEventDetails returns a boolean if a field has been set.
 func (o *ClusterLogsError) HasEventDetails() bool {
-	if o != nil && o.EventDetails != nil {
+	if o != nil && !IsNil(o.EventDetails) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *ClusterLogsError) SetEventDetails(v ClusterLogsErrorEventDetails) {
 
 // GetUnderlyingError returns the UnderlyingError field value if set, zero value otherwise.
 func (o *ClusterLogsError) GetUnderlyingError() ClusterLogsErrorUnderlyingError {
-	if o == nil || o.UnderlyingError == nil {
+	if o == nil || IsNil(o.UnderlyingError) {
 		var ret ClusterLogsErrorUnderlyingError
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *ClusterLogsError) GetUnderlyingError() ClusterLogsErrorUnderlyingError 
 // GetUnderlyingErrorOk returns a tuple with the UnderlyingError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsError) GetUnderlyingErrorOk() (*ClusterLogsErrorUnderlyingError, bool) {
-	if o == nil || o.UnderlyingError == nil {
+	if o == nil || IsNil(o.UnderlyingError) {
 		return nil, false
 	}
 	return o.UnderlyingError, true
@@ -226,7 +229,7 @@ func (o *ClusterLogsError) GetUnderlyingErrorOk() (*ClusterLogsErrorUnderlyingEr
 
 // HasUnderlyingError returns a boolean if a field has been set.
 func (o *ClusterLogsError) HasUnderlyingError() bool {
-	if o != nil && o.UnderlyingError != nil {
+	if o != nil && !IsNil(o.UnderlyingError) {
 		return true
 	}
 
@@ -239,26 +242,34 @@ func (o *ClusterLogsError) SetUnderlyingError(v ClusterLogsErrorUnderlyingError)
 }
 
 func (o ClusterLogsError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.UserLogMessage != nil {
-		toSerialize["user_log_message"] = o.UserLogMessage
-	}
-	if o.Link != nil {
-		toSerialize["link"] = o.Link
-	}
-	if o.HintMessage != nil {
-		toSerialize["hint_message"] = o.HintMessage
-	}
-	if o.EventDetails != nil {
-		toSerialize["event_details"] = o.EventDetails
-	}
-	if o.UnderlyingError != nil {
-		toSerialize["underlying_error"] = o.UnderlyingError
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterLogsError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	if !IsNil(o.UserLogMessage) {
+		toSerialize["user_log_message"] = o.UserLogMessage
+	}
+	if !IsNil(o.Link) {
+		toSerialize["link"] = o.Link
+	}
+	if !IsNil(o.HintMessage) {
+		toSerialize["hint_message"] = o.HintMessage
+	}
+	if !IsNil(o.EventDetails) {
+		toSerialize["event_details"] = o.EventDetails
+	}
+	if !IsNil(o.UnderlyingError) {
+		toSerialize["underlying_error"] = o.UnderlyingError
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterLogsError struct {

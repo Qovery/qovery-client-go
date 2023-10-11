@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterInstanceTypeResponseListResultsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterInstanceTypeResponseListResultsInner{}
+
 // ClusterInstanceTypeResponseListResultsInner struct for ClusterInstanceTypeResponseListResultsInner
 type ClusterInstanceTypeResponseListResultsInner struct {
 	Type               string  `json:"type"`
@@ -195,7 +198,7 @@ func (o *ClusterInstanceTypeResponseListResultsInner) SetBandwidthGuarantee(v st
 
 // GetArchitecture returns the Architecture field value if set, zero value otherwise.
 func (o *ClusterInstanceTypeResponseListResultsInner) GetArchitecture() string {
-	if o == nil || o.Architecture == nil {
+	if o == nil || IsNil(o.Architecture) {
 		var ret string
 		return ret
 	}
@@ -205,7 +208,7 @@ func (o *ClusterInstanceTypeResponseListResultsInner) GetArchitecture() string {
 // GetArchitectureOk returns a tuple with the Architecture field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterInstanceTypeResponseListResultsInner) GetArchitectureOk() (*string, bool) {
-	if o == nil || o.Architecture == nil {
+	if o == nil || IsNil(o.Architecture) {
 		return nil, false
 	}
 	return o.Architecture, true
@@ -213,7 +216,7 @@ func (o *ClusterInstanceTypeResponseListResultsInner) GetArchitectureOk() (*stri
 
 // HasArchitecture returns a boolean if a field has been set.
 func (o *ClusterInstanceTypeResponseListResultsInner) HasArchitecture() bool {
-	if o != nil && o.Architecture != nil {
+	if o != nil && !IsNil(o.Architecture) {
 		return true
 	}
 
@@ -226,29 +229,25 @@ func (o *ClusterInstanceTypeResponseListResultsInner) SetArchitecture(v string) 
 }
 
 func (o ClusterInstanceTypeResponseListResultsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if true {
-		toSerialize["ram_in_gb"] = o.RamInGb
-	}
-	if true {
-		toSerialize["bandwidth_in_gbps"] = o.BandwidthInGbps
-	}
-	if true {
-		toSerialize["bandwidth_guarantee"] = o.BandwidthGuarantee
-	}
-	if o.Architecture != nil {
-		toSerialize["architecture"] = o.Architecture
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterInstanceTypeResponseListResultsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	toSerialize["name"] = o.Name
+	toSerialize["cpu"] = o.Cpu
+	toSerialize["ram_in_gb"] = o.RamInGb
+	toSerialize["bandwidth_in_gbps"] = o.BandwidthInGbps
+	toSerialize["bandwidth_guarantee"] = o.BandwidthGuarantee
+	if !IsNil(o.Architecture) {
+		toSerialize["architecture"] = o.Architecture
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterInstanceTypeResponseListResultsInner struct {

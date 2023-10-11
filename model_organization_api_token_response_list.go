@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationApiTokenResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationApiTokenResponseList{}
+
 // OrganizationApiTokenResponseList struct for OrganizationApiTokenResponseList
 type OrganizationApiTokenResponseList struct {
 	Results []OrganizationApiToken `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewOrganizationApiTokenResponseListWithDefaults() *OrganizationApiTokenResp
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *OrganizationApiTokenResponseList) GetResults() []OrganizationApiToken {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []OrganizationApiToken
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *OrganizationApiTokenResponseList) GetResults() []OrganizationApiToken {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenResponseList) GetResultsOk() ([]OrganizationApiToken, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *OrganizationApiTokenResponseList) GetResultsOk() ([]OrganizationApiToke
 
 // HasResults returns a boolean if a field has been set.
 func (o *OrganizationApiTokenResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *OrganizationApiTokenResponseList) SetResults(v []OrganizationApiToken) 
 }
 
 func (o OrganizationApiTokenResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationApiTokenResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationApiTokenResponseList struct {

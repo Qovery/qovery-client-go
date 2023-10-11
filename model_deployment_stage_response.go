@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentStageResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentStageResponse{}
+
 // DeploymentStageResponse struct for DeploymentStageResponse
 type DeploymentStageResponse struct {
 	Id          string          `json:"id"`
@@ -100,7 +103,7 @@ func (o *DeploymentStageResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeploymentStageResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -110,7 +113,7 @@ func (o *DeploymentStageResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -118,7 +121,7 @@ func (o *DeploymentStageResponse) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DeploymentStageResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -156,7 +159,7 @@ func (o *DeploymentStageResponse) SetEnvironment(v ReferenceObject) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeploymentStageResponse) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -166,7 +169,7 @@ func (o *DeploymentStageResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageResponse) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -174,7 +177,7 @@ func (o *DeploymentStageResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeploymentStageResponse) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -188,7 +191,7 @@ func (o *DeploymentStageResponse) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *DeploymentStageResponse) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -198,7 +201,7 @@ func (o *DeploymentStageResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -206,7 +209,7 @@ func (o *DeploymentStageResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *DeploymentStageResponse) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -220,7 +223,7 @@ func (o *DeploymentStageResponse) SetDescription(v string) {
 
 // GetDeploymentOrder returns the DeploymentOrder field value if set, zero value otherwise.
 func (o *DeploymentStageResponse) GetDeploymentOrder() int32 {
-	if o == nil || o.DeploymentOrder == nil {
+	if o == nil || IsNil(o.DeploymentOrder) {
 		var ret int32
 		return ret
 	}
@@ -230,7 +233,7 @@ func (o *DeploymentStageResponse) GetDeploymentOrder() int32 {
 // GetDeploymentOrderOk returns a tuple with the DeploymentOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageResponse) GetDeploymentOrderOk() (*int32, bool) {
-	if o == nil || o.DeploymentOrder == nil {
+	if o == nil || IsNil(o.DeploymentOrder) {
 		return nil, false
 	}
 	return o.DeploymentOrder, true
@@ -238,7 +241,7 @@ func (o *DeploymentStageResponse) GetDeploymentOrderOk() (*int32, bool) {
 
 // HasDeploymentOrder returns a boolean if a field has been set.
 func (o *DeploymentStageResponse) HasDeploymentOrder() bool {
-	if o != nil && o.DeploymentOrder != nil {
+	if o != nil && !IsNil(o.DeploymentOrder) {
 		return true
 	}
 
@@ -252,7 +255,7 @@ func (o *DeploymentStageResponse) SetDeploymentOrder(v int32) {
 
 // GetServices returns the Services field value if set, zero value otherwise.
 func (o *DeploymentStageResponse) GetServices() []DeploymentStageServiceResponse {
-	if o == nil || o.Services == nil {
+	if o == nil || IsNil(o.Services) {
 		var ret []DeploymentStageServiceResponse
 		return ret
 	}
@@ -262,7 +265,7 @@ func (o *DeploymentStageResponse) GetServices() []DeploymentStageServiceResponse
 // GetServicesOk returns a tuple with the Services field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageResponse) GetServicesOk() ([]DeploymentStageServiceResponse, bool) {
-	if o == nil || o.Services == nil {
+	if o == nil || IsNil(o.Services) {
 		return nil, false
 	}
 	return o.Services, true
@@ -270,7 +273,7 @@ func (o *DeploymentStageResponse) GetServicesOk() ([]DeploymentStageServiceRespo
 
 // HasServices returns a boolean if a field has been set.
 func (o *DeploymentStageResponse) HasServices() bool {
-	if o != nil && o.Services != nil {
+	if o != nil && !IsNil(o.Services) {
 		return true
 	}
 
@@ -283,32 +286,34 @@ func (o *DeploymentStageResponse) SetServices(v []DeploymentStageServiceResponse
 }
 
 func (o DeploymentStageResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["environment"] = o.Environment
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.DeploymentOrder != nil {
-		toSerialize["deployment_order"] = o.DeploymentOrder
-	}
-	if o.Services != nil {
-		toSerialize["services"] = o.Services
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentStageResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["environment"] = o.Environment
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.DeploymentOrder) {
+		toSerialize["deployment_order"] = o.DeploymentOrder
+	}
+	if !IsNil(o.Services) {
+		toSerialize["services"] = o.Services
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentStageResponse struct {

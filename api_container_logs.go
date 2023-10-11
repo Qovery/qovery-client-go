@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ContainerLogsApiService ContainerLogsApi service
-type ContainerLogsApiService service
+// ContainerLogsAPIService ContainerLogsAPI service
+type ContainerLogsAPIService service
 
 type ApiListContainerLogRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerLogsApiService
+	ApiService  *ContainerLogsAPIService
 	containerId string
 }
 
@@ -42,7 +42,7 @@ This will list the last 1000 logs of the container
  @param containerId Container ID
  @return ApiListContainerLogRequest
 */
-func (a *ContainerLogsApiService) ListContainerLog(ctx context.Context, containerId string) ApiListContainerLogRequest {
+func (a *ContainerLogsAPIService) ListContainerLog(ctx context.Context, containerId string) ApiListContainerLogRequest {
 	return ApiListContainerLogRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -52,7 +52,7 @@ func (a *ContainerLogsApiService) ListContainerLog(ctx context.Context, containe
 
 // Execute executes the request
 //  @return LogResponseList
-func (a *ContainerLogsApiService) ListContainerLogExecute(r ApiListContainerLogRequest) (*LogResponseList, *http.Response, error) {
+func (a *ContainerLogsAPIService) ListContainerLogExecute(r ApiListContainerLogRequest) (*LogResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -60,13 +60,13 @@ func (a *ContainerLogsApiService) ListContainerLogExecute(r ApiListContainerLogR
 		localVarReturnValue *LogResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerLogsApiService.ListContainerLog")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerLogsAPIService.ListContainerLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/log"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *ContainerLogsApiService) ListContainerLogExecute(r ApiListContainerLogR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

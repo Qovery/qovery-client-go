@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Image** | Pointer to [**NullableJobResponseAllOfSourceImage**](JobResponseAllOfSourceImage.md) |  | [optional] 
-**Docker** | Pointer to [**NullableJobResponseAllOfSourceDocker**](JobResponseAllOfSourceDocker.md) |  | [optional] 
+**Image** | Pointer to [**ContainerSource**](ContainerSource.md) |  | [optional] 
+**Docker** | Pointer to [**JobResponseAllOfSourceOneOf1Docker**](JobResponseAllOfSourceOneOf1Docker.md) |  | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetImage
 
-`func (o *JobResponseAllOfSource) GetImage() JobResponseAllOfSourceImage`
+`func (o *JobResponseAllOfSource) GetImage() ContainerSource`
 
 GetImage returns the Image field if non-nil, zero value otherwise.
 
 ### GetImageOk
 
-`func (o *JobResponseAllOfSource) GetImageOk() (*JobResponseAllOfSourceImage, bool)`
+`func (o *JobResponseAllOfSource) GetImageOk() (*ContainerSource, bool)`
 
 GetImageOk returns a tuple with the Image field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImage
 
-`func (o *JobResponseAllOfSource) SetImage(v JobResponseAllOfSourceImage)`
+`func (o *JobResponseAllOfSource) SetImage(v ContainerSource)`
 
 SetImage sets Image field to given value.
 
@@ -51,32 +51,22 @@ SetImage sets Image field to given value.
 
 HasImage returns a boolean if a field has been set.
 
-### SetImageNil
-
-`func (o *JobResponseAllOfSource) SetImageNil(b bool)`
-
- SetImageNil sets the value for Image to be an explicit nil
-
-### UnsetImage
-`func (o *JobResponseAllOfSource) UnsetImage()`
-
-UnsetImage ensures that no value is present for Image, not even an explicit nil
 ### GetDocker
 
-`func (o *JobResponseAllOfSource) GetDocker() JobResponseAllOfSourceDocker`
+`func (o *JobResponseAllOfSource) GetDocker() JobResponseAllOfSourceOneOf1Docker`
 
 GetDocker returns the Docker field if non-nil, zero value otherwise.
 
 ### GetDockerOk
 
-`func (o *JobResponseAllOfSource) GetDockerOk() (*JobResponseAllOfSourceDocker, bool)`
+`func (o *JobResponseAllOfSource) GetDockerOk() (*JobResponseAllOfSourceOneOf1Docker, bool)`
 
 GetDockerOk returns a tuple with the Docker field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDocker
 
-`func (o *JobResponseAllOfSource) SetDocker(v JobResponseAllOfSourceDocker)`
+`func (o *JobResponseAllOfSource) SetDocker(v JobResponseAllOfSourceOneOf1Docker)`
 
 SetDocker sets Docker field to given value.
 
@@ -86,16 +76,6 @@ SetDocker sets Docker field to given value.
 
 HasDocker returns a boolean if a field has been set.
 
-### SetDockerNil
-
-`func (o *JobResponseAllOfSource) SetDockerNil(b bool)`
-
- SetDockerNil sets the value for Docker to be an explicit nil
-
-### UnsetDocker
-`func (o *JobResponseAllOfSource) UnsetDocker()`
-
-UnsetDocker ensures that no value is present for Docker, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

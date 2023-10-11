@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// EnvironmentLogsApiService EnvironmentLogsApi service
-type EnvironmentLogsApiService service
+// EnvironmentLogsAPIService EnvironmentLogsAPI service
+type EnvironmentLogsAPIService service
 
 type ApiListEnvironmentLogRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentLogsApiService
+	ApiService    *EnvironmentLogsAPIService
 	environmentId string
 }
 
@@ -42,7 +42,7 @@ This returns the last 1000 environment deployment logs.
  @param environmentId Environment ID
  @return ApiListEnvironmentLogRequest
 */
-func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx context.Context, environmentId string) ApiListEnvironmentLogRequest {
+func (a *EnvironmentLogsAPIService) ListEnvironmentLog(ctx context.Context, environmentId string) ApiListEnvironmentLogRequest {
 	return ApiListEnvironmentLogRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -52,7 +52,7 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLog(ctx context.Context, envi
 
 // Execute executes the request
 //  @return EnvironmentLogResponseList
-func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironmentLogRequest) (*EnvironmentLogResponseList, *http.Response, error) {
+func (a *EnvironmentLogsAPIService) ListEnvironmentLogExecute(r ApiListEnvironmentLogRequest) (*EnvironmentLogResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -60,13 +60,13 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironme
 		localVarReturnValue *EnvironmentLogResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsApiService.ListEnvironmentLog")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsAPIService.ListEnvironmentLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/log"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironme
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -142,7 +142,7 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogExecute(r ApiListEnvironme
 
 type ApiListEnvironmentLogsRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentLogsApiService
+	ApiService    *EnvironmentLogsAPIService
 	environmentId string
 	version       *string
 }
@@ -165,7 +165,7 @@ This returns the last 1000 environment deployment logs v2
  @param environmentId Environment ID
  @return ApiListEnvironmentLogsRequest
 */
-func (a *EnvironmentLogsApiService) ListEnvironmentLogs(ctx context.Context, environmentId string) ApiListEnvironmentLogsRequest {
+func (a *EnvironmentLogsAPIService) ListEnvironmentLogs(ctx context.Context, environmentId string) ApiListEnvironmentLogsRequest {
 	return ApiListEnvironmentLogsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -175,7 +175,7 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogs(ctx context.Context, env
 
 // Execute executes the request
 //  @return []EnvironmentLogs
-func (a *EnvironmentLogsApiService) ListEnvironmentLogsExecute(r ApiListEnvironmentLogsRequest) ([]EnvironmentLogs, *http.Response, error) {
+func (a *EnvironmentLogsAPIService) ListEnvironmentLogsExecute(r ApiListEnvironmentLogsRequest) ([]EnvironmentLogs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,20 +183,20 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogsExecute(r ApiListEnvironm
 		localVarReturnValue []EnvironmentLogs
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsApiService.ListEnvironmentLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentLogsAPIService.ListEnvironmentLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/logs"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.version != nil {
-		localVarQueryParams.Add("version", parameterToString(*r.version, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "version", r.version, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -239,9 +239,9 @@ func (a *EnvironmentLogsApiService) ListEnvironmentLogsExecute(r ApiListEnvironm
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

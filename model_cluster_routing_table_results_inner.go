@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterRoutingTableResultsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterRoutingTableResultsInner{}
+
 // ClusterRoutingTableResultsInner struct for ClusterRoutingTableResultsInner
 type ClusterRoutingTableResultsInner struct {
 	Destination *string `json:"destination,omitempty"`
@@ -41,7 +44,7 @@ func NewClusterRoutingTableResultsInnerWithDefaults() *ClusterRoutingTableResult
 
 // GetDestination returns the Destination field value if set, zero value otherwise.
 func (o *ClusterRoutingTableResultsInner) GetDestination() string {
-	if o == nil || o.Destination == nil {
+	if o == nil || IsNil(o.Destination) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ClusterRoutingTableResultsInner) GetDestination() string {
 // GetDestinationOk returns a tuple with the Destination field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableResultsInner) GetDestinationOk() (*string, bool) {
-	if o == nil || o.Destination == nil {
+	if o == nil || IsNil(o.Destination) {
 		return nil, false
 	}
 	return o.Destination, true
@@ -59,7 +62,7 @@ func (o *ClusterRoutingTableResultsInner) GetDestinationOk() (*string, bool) {
 
 // HasDestination returns a boolean if a field has been set.
 func (o *ClusterRoutingTableResultsInner) HasDestination() bool {
-	if o != nil && o.Destination != nil {
+	if o != nil && !IsNil(o.Destination) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ClusterRoutingTableResultsInner) SetDestination(v string) {
 
 // GetTarget returns the Target field value if set, zero value otherwise.
 func (o *ClusterRoutingTableResultsInner) GetTarget() string {
-	if o == nil || o.Target == nil {
+	if o == nil || IsNil(o.Target) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ClusterRoutingTableResultsInner) GetTarget() string {
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableResultsInner) GetTargetOk() (*string, bool) {
-	if o == nil || o.Target == nil {
+	if o == nil || IsNil(o.Target) {
 		return nil, false
 	}
 	return o.Target, true
@@ -91,7 +94,7 @@ func (o *ClusterRoutingTableResultsInner) GetTargetOk() (*string, bool) {
 
 // HasTarget returns a boolean if a field has been set.
 func (o *ClusterRoutingTableResultsInner) HasTarget() bool {
-	if o != nil && o.Target != nil {
+	if o != nil && !IsNil(o.Target) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ClusterRoutingTableResultsInner) SetTarget(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ClusterRoutingTableResultsInner) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ClusterRoutingTableResultsInner) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableResultsInner) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -123,7 +126,7 @@ func (o *ClusterRoutingTableResultsInner) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ClusterRoutingTableResultsInner) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *ClusterRoutingTableResultsInner) SetDescription(v string) {
 }
 
 func (o ClusterRoutingTableResultsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Destination != nil {
-		toSerialize["destination"] = o.Destination
-	}
-	if o.Target != nil {
-		toSerialize["target"] = o.Target
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterRoutingTableResultsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Destination) {
+		toSerialize["destination"] = o.Destination
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterRoutingTableResultsInner struct {

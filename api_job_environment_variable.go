@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobEnvironmentVariableApiService JobEnvironmentVariableApi service
-type JobEnvironmentVariableApiService service
+// JobEnvironmentVariableAPIService JobEnvironmentVariableAPI service
+type JobEnvironmentVariableAPIService service
 
 type ApiCreateJobEnvironmentVariableRequest struct {
 	ctx                        context.Context
-	ApiService                 *JobEnvironmentVariableApiService
+	ApiService                 *JobEnvironmentVariableAPIService
 	jobId                      string
 	environmentVariableRequest *EnvironmentVariableRequest
 }
@@ -49,7 +49,7 @@ CreateJobEnvironmentVariable Add an environment variable to the job
  @param jobId Job ID
  @return ApiCreateJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariable(ctx context.Context, jobId string) ApiCreateJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariable(ctx context.Context, jobId string) ApiCreateJobEnvironmentVariableRequest {
 	return ApiCreateJobEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -59,7 +59,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariable(ctx cont
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableExecute(r ApiCreateJobEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableExecute(r ApiCreateJobEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -67,13 +67,13 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableExecute(r
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableApiService.CreateJobEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableAPIService.CreateJobEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -122,9 +122,9 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -151,7 +151,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableExecute(r
 
 type ApiCreateJobEnvironmentVariableAliasRequest struct {
 	ctx                   context.Context
-	ApiService            *JobEnvironmentVariableApiService
+	ApiService            *JobEnvironmentVariableAPIService
 	jobId                 string
 	environmentVariableId string
 	key                   *Key
@@ -182,7 +182,7 @@ CreateJobEnvironmentVariableAlias Create an environment variable alias at the jo
  @param environmentVariableId Environment Variable ID
  @return ApiCreateJobEnvironmentVariableAliasRequest
 */
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAlias(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableAliasRequest {
+func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableAlias(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableAliasRequest {
 	return ApiCreateJobEnvironmentVariableAliasRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -193,7 +193,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAlias(ctx
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAliasExecute(r ApiCreateJobEnvironmentVariableAliasRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableAliasExecute(r ApiCreateJobEnvironmentVariableAliasRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -201,14 +201,14 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAliasExec
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableApiService.CreateJobEnvironmentVariableAlias")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableAPIService.CreateJobEnvironmentVariableAlias")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -257,9 +257,9 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAliasExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -286,7 +286,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableAliasExec
 
 type ApiCreateJobEnvironmentVariableOverrideRequest struct {
 	ctx                   context.Context
-	ApiService            *JobEnvironmentVariableApiService
+	ApiService            *JobEnvironmentVariableAPIService
 	jobId                 string
 	environmentVariableId string
 	value                 *Value
@@ -316,7 +316,7 @@ CreateJobEnvironmentVariableOverride Create an environment variable override at 
  @param environmentVariableId Environment Variable ID
  @return ApiCreateJobEnvironmentVariableOverrideRequest
 */
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverride(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableOverrideRequest {
+func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableOverride(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableOverrideRequest {
 	return ApiCreateJobEnvironmentVariableOverrideRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -327,7 +327,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverride(
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverrideExecute(r ApiCreateJobEnvironmentVariableOverrideRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableOverrideExecute(r ApiCreateJobEnvironmentVariableOverrideRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -335,14 +335,14 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverrideE
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableApiService.CreateJobEnvironmentVariableOverride")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableAPIService.CreateJobEnvironmentVariableOverride")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -391,9 +391,9 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverrideE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -420,7 +420,7 @@ func (a *JobEnvironmentVariableApiService) CreateJobEnvironmentVariableOverrideE
 
 type ApiDeleteJobEnvironmentVariableRequest struct {
 	ctx                   context.Context
-	ApiService            *JobEnvironmentVariableApiService
+	ApiService            *JobEnvironmentVariableAPIService
 	jobId                 string
 	environmentVariableId string
 }
@@ -442,7 +442,7 @@ DeleteJobEnvironmentVariable Delete an environment variable from a job
  @param environmentVariableId Environment Variable ID
  @return ApiDeleteJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiDeleteJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableAPIService) DeleteJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiDeleteJobEnvironmentVariableRequest {
 	return ApiDeleteJobEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -452,21 +452,21 @@ func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariable(ctx cont
 }
 
 // Execute executes the request
-func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariableExecute(r ApiDeleteJobEnvironmentVariableRequest) (*http.Response, error) {
+func (a *JobEnvironmentVariableAPIService) DeleteJobEnvironmentVariableExecute(r ApiDeleteJobEnvironmentVariableRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableApiService.DeleteJobEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableAPIService.DeleteJobEnvironmentVariable")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -513,9 +513,9 @@ func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariableExecute(r
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -533,7 +533,7 @@ func (a *JobEnvironmentVariableApiService) DeleteJobEnvironmentVariableExecute(r
 
 type ApiEditJobEnvironmentVariableRequest struct {
 	ctx                            context.Context
-	ApiService                     *JobEnvironmentVariableApiService
+	ApiService                     *JobEnvironmentVariableAPIService
 	jobId                          string
 	environmentVariableId          string
 	environmentVariableEditRequest *EnvironmentVariableEditRequest
@@ -562,7 +562,7 @@ EditJobEnvironmentVariable Edit an environment variable belonging to the job
  @param environmentVariableId Environment Variable ID
  @return ApiEditJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiEditJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableAPIService) EditJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiEditJobEnvironmentVariableRequest {
 	return ApiEditJobEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -573,7 +573,7 @@ func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariable(ctx contex
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariableExecute(r ApiEditJobEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *JobEnvironmentVariableAPIService) EditJobEnvironmentVariableExecute(r ApiEditJobEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -581,14 +581,14 @@ func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariableExecute(r A
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableApiService.EditJobEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableAPIService.EditJobEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -640,9 +640,9 @@ func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariableExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -669,7 +669,7 @@ func (a *JobEnvironmentVariableApiService) EditJobEnvironmentVariableExecute(r A
 
 type ApiImportJobEnvironmentVariableRequest struct {
 	ctx                   context.Context
-	ApiService            *JobEnvironmentVariableApiService
+	ApiService            *JobEnvironmentVariableAPIService
 	jobId                 string
 	variableImportRequest *VariableImportRequest
 }
@@ -692,7 +692,7 @@ Import environment variables in a defined scope, with a defined visibility.
  @param jobId Job ID
  @return ApiImportJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariable(ctx context.Context, jobId string) ApiImportJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableAPIService) ImportJobEnvironmentVariable(ctx context.Context, jobId string) ApiImportJobEnvironmentVariableRequest {
 	return ApiImportJobEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -702,7 +702,7 @@ func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariable(ctx cont
 
 // Execute executes the request
 //  @return VariableImport
-func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariableExecute(r ApiImportJobEnvironmentVariableRequest) (*VariableImport, *http.Response, error) {
+func (a *JobEnvironmentVariableAPIService) ImportJobEnvironmentVariableExecute(r ApiImportJobEnvironmentVariableRequest) (*VariableImport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -710,13 +710,13 @@ func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariableExecute(r
 		localVarReturnValue *VariableImport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableApiService.ImportJobEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableAPIService.ImportJobEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable/import"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -765,9 +765,9 @@ func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariableExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -794,7 +794,7 @@ func (a *JobEnvironmentVariableApiService) ImportJobEnvironmentVariableExecute(r
 
 type ApiListJobEnvironmentVariableRequest struct {
 	ctx        context.Context
-	ApiService *JobEnvironmentVariableApiService
+	ApiService *JobEnvironmentVariableAPIService
 	jobId      string
 }
 
@@ -809,7 +809,7 @@ ListJobEnvironmentVariable List environment variables
  @param jobId Job ID
  @return ApiListJobEnvironmentVariableRequest
 */
-func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariable(ctx context.Context, jobId string) ApiListJobEnvironmentVariableRequest {
+func (a *JobEnvironmentVariableAPIService) ListJobEnvironmentVariable(ctx context.Context, jobId string) ApiListJobEnvironmentVariableRequest {
 	return ApiListJobEnvironmentVariableRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -819,7 +819,7 @@ func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariable(ctx contex
 
 // Execute executes the request
 //  @return EnvironmentVariableResponseList
-func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariableExecute(r ApiListJobEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
+func (a *JobEnvironmentVariableAPIService) ListJobEnvironmentVariableExecute(r ApiListJobEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -827,13 +827,13 @@ func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariableExecute(r A
 		localVarReturnValue *EnvironmentVariableResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableApiService.ListJobEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobEnvironmentVariableAPIService.ListJobEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -880,9 +880,9 @@ func (a *JobEnvironmentVariableApiService) ListJobEnvironmentVariableExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

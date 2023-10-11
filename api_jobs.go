@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobsApiService JobsApi service
-type JobsApiService service
+// JobsAPIService JobsAPI service
+type JobsAPIService service
 
 type ApiAutoDeployJobEnvironmentsRequest struct {
 	ctx                              context.Context
-	ApiService                       *JobsApiService
+	ApiService                       *JobsAPIService
 	organizationId                   string
 	organizationJobAutoDeployRequest *OrganizationJobAutoDeployRequest
 }
@@ -51,7 +51,7 @@ Triggers a new job deploy in each environment matching the following conditions
  @param organizationId Organization ID
  @return ApiAutoDeployJobEnvironmentsRequest
 */
-func (a *JobsApiService) AutoDeployJobEnvironments(ctx context.Context, organizationId string) ApiAutoDeployJobEnvironmentsRequest {
+func (a *JobsAPIService) AutoDeployJobEnvironments(ctx context.Context, organizationId string) ApiAutoDeployJobEnvironmentsRequest {
 	return ApiAutoDeployJobEnvironmentsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -61,7 +61,7 @@ func (a *JobsApiService) AutoDeployJobEnvironments(ctx context.Context, organiza
 
 // Execute executes the request
 //  @return Status
-func (a *JobsApiService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvironmentsRequest) (*Status, *http.Response, error) {
+func (a *JobsAPIService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvironmentsRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -69,13 +69,13 @@ func (a *JobsApiService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvi
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.AutoDeployJobEnvironments")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.AutoDeployJobEnvironments")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/job/deploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -124,9 +124,9 @@ func (a *JobsApiService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -153,7 +153,7 @@ func (a *JobsApiService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvi
 
 type ApiCloneJobRequest struct {
 	ctx             context.Context
-	ApiService      *JobsApiService
+	ApiService      *JobsAPIService
 	jobId           string
 	cloneJobRequest *CloneJobRequest
 }
@@ -176,7 +176,7 @@ This will create a new job with the same configuration on the targeted environme
  @param jobId Job ID
  @return ApiCloneJobRequest
 */
-func (a *JobsApiService) CloneJob(ctx context.Context, jobId string) ApiCloneJobRequest {
+func (a *JobsAPIService) CloneJob(ctx context.Context, jobId string) ApiCloneJobRequest {
 	return ApiCloneJobRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -186,7 +186,7 @@ func (a *JobsApiService) CloneJob(ctx context.Context, jobId string) ApiCloneJob
 
 // Execute executes the request
 //  @return JobResponse
-func (a *JobsApiService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *http.Response, error) {
+func (a *JobsAPIService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -194,13 +194,13 @@ func (a *JobsApiService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *h
 		localVarReturnValue *JobResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.CloneJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.CloneJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/clone"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -249,9 +249,9 @@ func (a *JobsApiService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *h
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -278,7 +278,7 @@ func (a *JobsApiService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *h
 
 type ApiCreateJobRequest struct {
 	ctx           context.Context
-	ApiService    *JobsApiService
+	ApiService    *JobsAPIService
 	environmentId string
 	jobRequest    *JobRequest
 }
@@ -299,7 +299,7 @@ CreateJob Create a job
  @param environmentId Environment ID
  @return ApiCreateJobRequest
 */
-func (a *JobsApiService) CreateJob(ctx context.Context, environmentId string) ApiCreateJobRequest {
+func (a *JobsAPIService) CreateJob(ctx context.Context, environmentId string) ApiCreateJobRequest {
 	return ApiCreateJobRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -309,7 +309,7 @@ func (a *JobsApiService) CreateJob(ctx context.Context, environmentId string) Ap
 
 // Execute executes the request
 //  @return JobResponse
-func (a *JobsApiService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, *http.Response, error) {
+func (a *JobsAPIService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -317,13 +317,13 @@ func (a *JobsApiService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, 
 		localVarReturnValue *JobResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.CreateJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.CreateJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/job"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -372,9 +372,9 @@ func (a *JobsApiService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -401,7 +401,7 @@ func (a *JobsApiService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, 
 
 type ApiGetDefaultJobAdvancedSettingsRequest struct {
 	ctx        context.Context
-	ApiService *JobsApiService
+	ApiService *JobsAPIService
 }
 
 func (r ApiGetDefaultJobAdvancedSettingsRequest) Execute() (*JobAdvancedSettings, *http.Response, error) {
@@ -414,7 +414,7 @@ GetDefaultJobAdvancedSettings List default job advanced settings
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDefaultJobAdvancedSettingsRequest
 */
-func (a *JobsApiService) GetDefaultJobAdvancedSettings(ctx context.Context) ApiGetDefaultJobAdvancedSettingsRequest {
+func (a *JobsAPIService) GetDefaultJobAdvancedSettings(ctx context.Context) ApiGetDefaultJobAdvancedSettingsRequest {
 	return ApiGetDefaultJobAdvancedSettingsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -423,7 +423,7 @@ func (a *JobsApiService) GetDefaultJobAdvancedSettings(ctx context.Context) ApiG
 
 // Execute executes the request
 //  @return JobAdvancedSettings
-func (a *JobsApiService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
+func (a *JobsAPIService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -431,7 +431,7 @@ func (a *JobsApiService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJob
 		localVarReturnValue *JobAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetDefaultJobAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.GetDefaultJobAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -483,9 +483,9 @@ func (a *JobsApiService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJob
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -512,7 +512,7 @@ func (a *JobsApiService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJob
 
 type ApiGetEnvironmentJobStatusRequest struct {
 	ctx           context.Context
-	ApiService    *JobsApiService
+	ApiService    *JobsAPIService
 	environmentId string
 }
 
@@ -529,7 +529,7 @@ Returns a list of jobs with only their id and status.
  @param environmentId Environment ID
  @return ApiGetEnvironmentJobStatusRequest
 */
-func (a *JobsApiService) GetEnvironmentJobStatus(ctx context.Context, environmentId string) ApiGetEnvironmentJobStatusRequest {
+func (a *JobsAPIService) GetEnvironmentJobStatus(ctx context.Context, environmentId string) ApiGetEnvironmentJobStatusRequest {
 	return ApiGetEnvironmentJobStatusRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -539,7 +539,7 @@ func (a *JobsApiService) GetEnvironmentJobStatus(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return ReferenceObjectStatusResponseList
-func (a *JobsApiService) GetEnvironmentJobStatusExecute(r ApiGetEnvironmentJobStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
+func (a *JobsAPIService) GetEnvironmentJobStatusExecute(r ApiGetEnvironmentJobStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -547,13 +547,13 @@ func (a *JobsApiService) GetEnvironmentJobStatusExecute(r ApiGetEnvironmentJobSt
 		localVarReturnValue *ReferenceObjectStatusResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.GetEnvironmentJobStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.GetEnvironmentJobStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/job/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -600,9 +600,9 @@ func (a *JobsApiService) GetEnvironmentJobStatusExecute(r ApiGetEnvironmentJobSt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -629,7 +629,7 @@ func (a *JobsApiService) GetEnvironmentJobStatusExecute(r ApiGetEnvironmentJobSt
 
 type ApiListJobsRequest struct {
 	ctx           context.Context
-	ApiService    *JobsApiService
+	ApiService    *JobsAPIService
 	environmentId string
 	toUpdate      *bool
 }
@@ -651,7 +651,7 @@ ListJobs List jobs
  @param environmentId Environment ID
  @return ApiListJobsRequest
 */
-func (a *JobsApiService) ListJobs(ctx context.Context, environmentId string) ApiListJobsRequest {
+func (a *JobsAPIService) ListJobs(ctx context.Context, environmentId string) ApiListJobsRequest {
 	return ApiListJobsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -661,7 +661,7 @@ func (a *JobsApiService) ListJobs(ctx context.Context, environmentId string) Api
 
 // Execute executes the request
 //  @return JobResponseList
-func (a *JobsApiService) ListJobsExecute(r ApiListJobsRequest) (*JobResponseList, *http.Response, error) {
+func (a *JobsAPIService) ListJobsExecute(r ApiListJobsRequest) (*JobResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -669,20 +669,23 @@ func (a *JobsApiService) ListJobsExecute(r ApiListJobsRequest) (*JobResponseList
 		localVarReturnValue *JobResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsApiService.ListJobs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ListJobs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/job"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.toUpdate != nil {
-		localVarQueryParams.Add("toUpdate", parameterToString(*r.toUpdate, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "toUpdate", r.toUpdate, "")
+	} else {
+		var defaultValue bool = false
+		r.toUpdate = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -725,9 +728,9 @@ func (a *JobsApiService) ListJobsExecute(r ApiListJobsRequest) (*JobResponseList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

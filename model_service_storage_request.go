@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceStorageRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceStorageRequest{}
+
 // ServiceStorageRequest struct for ServiceStorageRequest
 type ServiceStorageRequest struct {
 	Storage []ServiceStorageRequestStorageInner `json:"storage,omitempty"`
@@ -39,7 +42,7 @@ func NewServiceStorageRequestWithDefaults() *ServiceStorageRequest {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *ServiceStorageRequest) GetStorage() []ServiceStorageRequestStorageInner {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret []ServiceStorageRequestStorageInner
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ServiceStorageRequest) GetStorage() []ServiceStorageRequestStorageInner
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceStorageRequest) GetStorageOk() ([]ServiceStorageRequestStorageInner, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -57,7 +60,7 @@ func (o *ServiceStorageRequest) GetStorageOk() ([]ServiceStorageRequestStorageIn
 
 // HasStorage returns a boolean if a field has been set.
 func (o *ServiceStorageRequest) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ServiceStorageRequest) SetStorage(v []ServiceStorageRequestStorageInner
 }
 
 func (o ServiceStorageRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceStorageRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	return toSerialize, nil
 }
 
 type NullableServiceStorageRequest struct {

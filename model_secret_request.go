@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SecretRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretRequest{}
+
 // SecretRequest struct for SecretRequest
 type SecretRequest struct {
 	// key is case sensitive
@@ -69,7 +72,7 @@ func (o *SecretRequest) SetKey(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *SecretRequest) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -79,7 +82,7 @@ func (o *SecretRequest) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SecretRequest) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -87,7 +90,7 @@ func (o *SecretRequest) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *SecretRequest) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -101,7 +104,7 @@ func (o *SecretRequest) SetValue(v string) {
 
 // GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SecretRequest) GetMountPath() string {
-	if o == nil || o.MountPath.Get() == nil {
+	if o == nil || IsNil(o.MountPath.Get()) {
 		var ret string
 		return ret
 	}
@@ -143,17 +146,23 @@ func (o *SecretRequest) UnsetMountPath() {
 }
 
 func (o SecretRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Value != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o SecretRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 	if o.MountPath.IsSet() {
 		toSerialize["mount_path"] = o.MountPath.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableSecretRequest struct {

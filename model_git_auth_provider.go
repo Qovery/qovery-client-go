@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GitAuthProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitAuthProvider{}
+
 // GitAuthProvider struct for GitAuthProvider
 type GitAuthProvider struct {
 	Id     *string `json:"id,omitempty"`
@@ -44,7 +47,7 @@ func NewGitAuthProviderWithDefaults() *GitAuthProvider {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GitAuthProvider) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *GitAuthProvider) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitAuthProvider) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -62,7 +65,7 @@ func (o *GitAuthProvider) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GitAuthProvider) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -124,7 +127,7 @@ func (o *GitAuthProvider) SetOwner(v string) {
 
 // GetUseBot returns the UseBot field value if set, zero value otherwise.
 func (o *GitAuthProvider) GetUseBot() bool {
-	if o == nil || o.UseBot == nil {
+	if o == nil || IsNil(o.UseBot) {
 		var ret bool
 		return ret
 	}
@@ -134,7 +137,7 @@ func (o *GitAuthProvider) GetUseBot() bool {
 // GetUseBotOk returns a tuple with the UseBot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitAuthProvider) GetUseBotOk() (*bool, bool) {
-	if o == nil || o.UseBot == nil {
+	if o == nil || IsNil(o.UseBot) {
 		return nil, false
 	}
 	return o.UseBot, true
@@ -142,7 +145,7 @@ func (o *GitAuthProvider) GetUseBotOk() (*bool, bool) {
 
 // HasUseBot returns a boolean if a field has been set.
 func (o *GitAuthProvider) HasUseBot() bool {
-	if o != nil && o.UseBot != nil {
+	if o != nil && !IsNil(o.UseBot) {
 		return true
 	}
 
@@ -155,20 +158,24 @@ func (o *GitAuthProvider) SetUseBot(v bool) {
 }
 
 func (o GitAuthProvider) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["owner"] = o.Owner
-	}
-	if o.UseBot != nil {
-		toSerialize["use_bot"] = o.UseBot
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GitAuthProvider) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["name"] = o.Name
+	toSerialize["owner"] = o.Owner
+	if !IsNil(o.UseBot) {
+		toSerialize["use_bot"] = o.UseBot
+	}
+	return toSerialize, nil
 }
 
 type NullableGitAuthProvider struct {

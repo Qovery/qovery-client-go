@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner{}
+
 // OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct for OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 type OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct {
 	EnvironmentType *EnvironmentModeEnum                     `json:"environment_type,omitempty"`
@@ -40,7 +43,7 @@ func NewOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInn
 
 // GetEnvironmentType returns the EnvironmentType field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetEnvironmentType() EnvironmentModeEnum {
-	if o == nil || o.EnvironmentType == nil {
+	if o == nil || IsNil(o.EnvironmentType) {
 		var ret EnvironmentModeEnum
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 // GetEnvironmentTypeOk returns a tuple with the EnvironmentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetEnvironmentTypeOk() (*EnvironmentModeEnum, bool) {
-	if o == nil || o.EnvironmentType == nil {
+	if o == nil || IsNil(o.EnvironmentType) {
 		return nil, false
 	}
 	return o.EnvironmentType, true
@@ -58,7 +61,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 
 // HasEnvironmentType returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) HasEnvironmentType() bool {
-	if o != nil && o.EnvironmentType != nil {
+	if o != nil && !IsNil(o.EnvironmentType) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 
 // GetPermission returns the Permission field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetPermission() OrganizationCustomRoleProjectPermission {
-	if o == nil || o.Permission == nil {
+	if o == nil || IsNil(o.Permission) {
 		var ret OrganizationCustomRoleProjectPermission
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 // GetPermissionOk returns a tuple with the Permission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetPermissionOk() (*OrganizationCustomRoleProjectPermission, bool) {
-	if o == nil || o.Permission == nil {
+	if o == nil || IsNil(o.Permission) {
 		return nil, false
 	}
 	return o.Permission, true
@@ -90,7 +93,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 
 // HasPermission returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) HasPermission() bool {
-	if o != nil && o.Permission != nil {
+	if o != nil && !IsNil(o.Permission) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 }
 
 func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.EnvironmentType != nil {
-		toSerialize["environment_type"] = o.EnvironmentType
-	}
-	if o.Permission != nil {
-		toSerialize["permission"] = o.Permission
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EnvironmentType) {
+		toSerialize["environment_type"] = o.EnvironmentType
+	}
+	if !IsNil(o.Permission) {
+		toSerialize["permission"] = o.Permission
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct {

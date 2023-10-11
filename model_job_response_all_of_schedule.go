@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobResponseAllOfSchedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobResponseAllOfSchedule{}
+
 // JobResponseAllOfSchedule If you want to define a Cron job, only the `cronjob` property must be filled   A Lifecycle job should contain at least one property `on_XXX` among the 3 properties: `on_start`, `on_stop`, `on_delete`
 type JobResponseAllOfSchedule struct {
 	OnStart  *JobRequestAllOfScheduleOnStart  `json:"on_start,omitempty"`
@@ -42,7 +45,7 @@ func NewJobResponseAllOfScheduleWithDefaults() *JobResponseAllOfSchedule {
 
 // GetOnStart returns the OnStart field value if set, zero value otherwise.
 func (o *JobResponseAllOfSchedule) GetOnStart() JobRequestAllOfScheduleOnStart {
-	if o == nil || o.OnStart == nil {
+	if o == nil || IsNil(o.OnStart) {
 		var ret JobRequestAllOfScheduleOnStart
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *JobResponseAllOfSchedule) GetOnStart() JobRequestAllOfScheduleOnStart {
 // GetOnStartOk returns a tuple with the OnStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSchedule) GetOnStartOk() (*JobRequestAllOfScheduleOnStart, bool) {
-	if o == nil || o.OnStart == nil {
+	if o == nil || IsNil(o.OnStart) {
 		return nil, false
 	}
 	return o.OnStart, true
@@ -60,7 +63,7 @@ func (o *JobResponseAllOfSchedule) GetOnStartOk() (*JobRequestAllOfScheduleOnSta
 
 // HasOnStart returns a boolean if a field has been set.
 func (o *JobResponseAllOfSchedule) HasOnStart() bool {
-	if o != nil && o.OnStart != nil {
+	if o != nil && !IsNil(o.OnStart) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *JobResponseAllOfSchedule) SetOnStart(v JobRequestAllOfScheduleOnStart) 
 
 // GetOnStop returns the OnStop field value if set, zero value otherwise.
 func (o *JobResponseAllOfSchedule) GetOnStop() JobRequestAllOfScheduleOnStart {
-	if o == nil || o.OnStop == nil {
+	if o == nil || IsNil(o.OnStop) {
 		var ret JobRequestAllOfScheduleOnStart
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *JobResponseAllOfSchedule) GetOnStop() JobRequestAllOfScheduleOnStart {
 // GetOnStopOk returns a tuple with the OnStop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSchedule) GetOnStopOk() (*JobRequestAllOfScheduleOnStart, bool) {
-	if o == nil || o.OnStop == nil {
+	if o == nil || IsNil(o.OnStop) {
 		return nil, false
 	}
 	return o.OnStop, true
@@ -92,7 +95,7 @@ func (o *JobResponseAllOfSchedule) GetOnStopOk() (*JobRequestAllOfScheduleOnStar
 
 // HasOnStop returns a boolean if a field has been set.
 func (o *JobResponseAllOfSchedule) HasOnStop() bool {
-	if o != nil && o.OnStop != nil {
+	if o != nil && !IsNil(o.OnStop) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *JobResponseAllOfSchedule) SetOnStop(v JobRequestAllOfScheduleOnStart) {
 
 // GetOnDelete returns the OnDelete field value if set, zero value otherwise.
 func (o *JobResponseAllOfSchedule) GetOnDelete() JobRequestAllOfScheduleOnStart {
-	if o == nil || o.OnDelete == nil {
+	if o == nil || IsNil(o.OnDelete) {
 		var ret JobRequestAllOfScheduleOnStart
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *JobResponseAllOfSchedule) GetOnDelete() JobRequestAllOfScheduleOnStart 
 // GetOnDeleteOk returns a tuple with the OnDelete field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSchedule) GetOnDeleteOk() (*JobRequestAllOfScheduleOnStart, bool) {
-	if o == nil || o.OnDelete == nil {
+	if o == nil || IsNil(o.OnDelete) {
 		return nil, false
 	}
 	return o.OnDelete, true
@@ -124,7 +127,7 @@ func (o *JobResponseAllOfSchedule) GetOnDeleteOk() (*JobRequestAllOfScheduleOnSt
 
 // HasOnDelete returns a boolean if a field has been set.
 func (o *JobResponseAllOfSchedule) HasOnDelete() bool {
-	if o != nil && o.OnDelete != nil {
+	if o != nil && !IsNil(o.OnDelete) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *JobResponseAllOfSchedule) SetOnDelete(v JobRequestAllOfScheduleOnStart)
 
 // GetCronjob returns the Cronjob field value if set, zero value otherwise.
 func (o *JobResponseAllOfSchedule) GetCronjob() JobResponseAllOfScheduleCronjob {
-	if o == nil || o.Cronjob == nil {
+	if o == nil || IsNil(o.Cronjob) {
 		var ret JobResponseAllOfScheduleCronjob
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *JobResponseAllOfSchedule) GetCronjob() JobResponseAllOfScheduleCronjob 
 // GetCronjobOk returns a tuple with the Cronjob field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponseAllOfSchedule) GetCronjobOk() (*JobResponseAllOfScheduleCronjob, bool) {
-	if o == nil || o.Cronjob == nil {
+	if o == nil || IsNil(o.Cronjob) {
 		return nil, false
 	}
 	return o.Cronjob, true
@@ -156,7 +159,7 @@ func (o *JobResponseAllOfSchedule) GetCronjobOk() (*JobResponseAllOfScheduleCron
 
 // HasCronjob returns a boolean if a field has been set.
 func (o *JobResponseAllOfSchedule) HasCronjob() bool {
-	if o != nil && o.Cronjob != nil {
+	if o != nil && !IsNil(o.Cronjob) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *JobResponseAllOfSchedule) SetCronjob(v JobResponseAllOfScheduleCronjob)
 }
 
 func (o JobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.OnStart != nil {
-		toSerialize["on_start"] = o.OnStart
-	}
-	if o.OnStop != nil {
-		toSerialize["on_stop"] = o.OnStop
-	}
-	if o.OnDelete != nil {
-		toSerialize["on_delete"] = o.OnDelete
-	}
-	if o.Cronjob != nil {
-		toSerialize["cronjob"] = o.Cronjob
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JobResponseAllOfSchedule) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OnStart) {
+		toSerialize["on_start"] = o.OnStart
+	}
+	if !IsNil(o.OnStop) {
+		toSerialize["on_stop"] = o.OnStop
+	}
+	if !IsNil(o.OnDelete) {
+		toSerialize["on_delete"] = o.OnDelete
+	}
+	if !IsNil(o.Cronjob) {
+		toSerialize["cronjob"] = o.Cronjob
+	}
+	return toSerialize, nil
 }
 
 type NullableJobResponseAllOfSchedule struct {

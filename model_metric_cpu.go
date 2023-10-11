@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MetricCPU type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricCPU{}
+
 // MetricCPU struct for MetricCPU
 type MetricCPU struct {
 	InstanceName string               `json:"instance_name"`
@@ -89,14 +92,18 @@ func (o *MetricCPU) SetData(v []MetricCPUDatapoint) {
 }
 
 func (o MetricCPU) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["instance_name"] = o.InstanceName
-	}
-	if true {
-		toSerialize["data"] = o.Data
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricCPU) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["instance_name"] = o.InstanceName
+	toSerialize["data"] = o.Data
+	return toSerialize, nil
 }
 
 type NullableMetricCPU struct {

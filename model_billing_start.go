@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the BillingStart type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillingStart{}
+
 // BillingStart struct for BillingStart
 type BillingStart struct {
 	BillingStartedOn *time.Time `json:"billing_started_on,omitempty"`
@@ -40,7 +43,7 @@ func NewBillingStartWithDefaults() *BillingStart {
 
 // GetBillingStartedOn returns the BillingStartedOn field value if set, zero value otherwise.
 func (o *BillingStart) GetBillingStartedOn() time.Time {
-	if o == nil || o.BillingStartedOn == nil {
+	if o == nil || IsNil(o.BillingStartedOn) {
 		var ret time.Time
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *BillingStart) GetBillingStartedOn() time.Time {
 // GetBillingStartedOnOk returns a tuple with the BillingStartedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingStart) GetBillingStartedOnOk() (*time.Time, bool) {
-	if o == nil || o.BillingStartedOn == nil {
+	if o == nil || IsNil(o.BillingStartedOn) {
 		return nil, false
 	}
 	return o.BillingStartedOn, true
@@ -58,7 +61,7 @@ func (o *BillingStart) GetBillingStartedOnOk() (*time.Time, bool) {
 
 // HasBillingStartedOn returns a boolean if a field has been set.
 func (o *BillingStart) HasBillingStartedOn() bool {
-	if o != nil && o.BillingStartedOn != nil {
+	if o != nil && !IsNil(o.BillingStartedOn) {
 		return true
 	}
 
@@ -71,11 +74,19 @@ func (o *BillingStart) SetBillingStartedOn(v time.Time) {
 }
 
 func (o BillingStart) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BillingStartedOn != nil {
-		toSerialize["billing_started_on"] = o.BillingStartedOn
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillingStart) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BillingStartedOn) {
+		toSerialize["billing_started_on"] = o.BillingStartedOn
+	}
+	return toSerialize, nil
 }
 
 type NullableBillingStart struct {

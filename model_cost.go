@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Cost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Cost{}
+
 // Cost struct for Cost
 type Cost struct {
 	TotalInCents int32   `json:"total_in_cents"`
@@ -115,17 +118,19 @@ func (o *Cost) SetCurrencyCode(v string) {
 }
 
 func (o Cost) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["total_in_cents"] = o.TotalInCents
-	}
-	if true {
-		toSerialize["total"] = o.Total
-	}
-	if true {
-		toSerialize["currency_code"] = o.CurrencyCode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Cost) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["total_in_cents"] = o.TotalInCents
+	toSerialize["total"] = o.Total
+	toSerialize["currency_code"] = o.CurrencyCode
+	return toSerialize, nil
 }
 
 type NullableCost struct {

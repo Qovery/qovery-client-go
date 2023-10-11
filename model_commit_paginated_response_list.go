@@ -15,11 +15,14 @@ import (
 	"encoding/json"
 )
 
+// checks if the CommitPaginatedResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommitPaginatedResponseList{}
+
 // CommitPaginatedResponseList struct for CommitPaginatedResponseList
 type CommitPaginatedResponseList struct {
-	Results  []Commit `json:"results,omitempty"`
 	Page     float32  `json:"page"`
 	PageSize float32  `json:"page_size"`
+	Results  []Commit `json:"results,omitempty"`
 }
 
 // NewCommitPaginatedResponseList instantiates a new CommitPaginatedResponseList object
@@ -39,38 +42,6 @@ func NewCommitPaginatedResponseList(page float32, pageSize float32) *CommitPagin
 func NewCommitPaginatedResponseListWithDefaults() *CommitPaginatedResponseList {
 	this := CommitPaginatedResponseList{}
 	return &this
-}
-
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *CommitPaginatedResponseList) GetResults() []Commit {
-	if o == nil || o.Results == nil {
-		var ret []Commit
-		return ret
-	}
-	return o.Results
-}
-
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CommitPaginatedResponseList) GetResultsOk() ([]Commit, bool) {
-	if o == nil || o.Results == nil {
-		return nil, false
-	}
-	return o.Results, true
-}
-
-// HasResults returns a boolean if a field has been set.
-func (o *CommitPaginatedResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []Commit and assigns it to the Results field.
-func (o *CommitPaginatedResponseList) SetResults(v []Commit) {
-	o.Results = v
 }
 
 // GetPage returns the Page field value
@@ -121,18 +92,54 @@ func (o *CommitPaginatedResponseList) SetPageSize(v float32) {
 	o.PageSize = v
 }
 
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *CommitPaginatedResponseList) GetResults() []Commit {
+	if o == nil || IsNil(o.Results) {
+		var ret []Commit
+		return ret
+	}
+	return o.Results
+}
+
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommitPaginatedResponseList) GetResultsOk() ([]Commit, bool) {
+	if o == nil || IsNil(o.Results) {
+		return nil, false
+	}
+	return o.Results, true
+}
+
+// HasResults returns a boolean if a field has been set.
+func (o *CommitPaginatedResponseList) HasResults() bool {
+	if o != nil && !IsNil(o.Results) {
+		return true
+	}
+
+	return false
+}
+
+// SetResults gets a reference to the given []Commit and assigns it to the Results field.
+func (o *CommitPaginatedResponseList) SetResults(v []Commit) {
+	o.Results = v
+}
+
 func (o CommitPaginatedResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
-	}
-	if true {
-		toSerialize["page"] = o.Page
-	}
-	if true {
-		toSerialize["page_size"] = o.PageSize
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CommitPaginatedResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["page"] = o.Page
+	toSerialize["page_size"] = o.PageSize
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableCommitPaginatedResponseList struct {

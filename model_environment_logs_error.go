@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentLogsError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLogsError{}
+
 // EnvironmentLogsError struct for EnvironmentLogsError
 type EnvironmentLogsError struct {
 	Tag             *string                              `json:"tag,omitempty"`
@@ -43,7 +46,7 @@ func NewEnvironmentLogsErrorWithDefaults() *EnvironmentLogsError {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *EnvironmentLogsError) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *EnvironmentLogsError) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsError) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -61,7 +64,7 @@ func (o *EnvironmentLogsError) GetTagOk() (*string, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *EnvironmentLogsError) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !IsNil(o.Tag) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *EnvironmentLogsError) SetTag(v string) {
 
 // GetUserLogMessage returns the UserLogMessage field value if set, zero value otherwise.
 func (o *EnvironmentLogsError) GetUserLogMessage() string {
-	if o == nil || o.UserLogMessage == nil {
+	if o == nil || IsNil(o.UserLogMessage) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *EnvironmentLogsError) GetUserLogMessage() string {
 // GetUserLogMessageOk returns a tuple with the UserLogMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsError) GetUserLogMessageOk() (*string, bool) {
-	if o == nil || o.UserLogMessage == nil {
+	if o == nil || IsNil(o.UserLogMessage) {
 		return nil, false
 	}
 	return o.UserLogMessage, true
@@ -93,7 +96,7 @@ func (o *EnvironmentLogsError) GetUserLogMessageOk() (*string, bool) {
 
 // HasUserLogMessage returns a boolean if a field has been set.
 func (o *EnvironmentLogsError) HasUserLogMessage() bool {
-	if o != nil && o.UserLogMessage != nil {
+	if o != nil && !IsNil(o.UserLogMessage) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *EnvironmentLogsError) SetUserLogMessage(v string) {
 
 // GetLink returns the Link field value if set, zero value otherwise.
 func (o *EnvironmentLogsError) GetLink() string {
-	if o == nil || o.Link == nil {
+	if o == nil || IsNil(o.Link) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *EnvironmentLogsError) GetLink() string {
 // GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsError) GetLinkOk() (*string, bool) {
-	if o == nil || o.Link == nil {
+	if o == nil || IsNil(o.Link) {
 		return nil, false
 	}
 	return o.Link, true
@@ -125,7 +128,7 @@ func (o *EnvironmentLogsError) GetLinkOk() (*string, bool) {
 
 // HasLink returns a boolean if a field has been set.
 func (o *EnvironmentLogsError) HasLink() bool {
-	if o != nil && o.Link != nil {
+	if o != nil && !IsNil(o.Link) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *EnvironmentLogsError) SetLink(v string) {
 
 // GetHintMessage returns the HintMessage field value if set, zero value otherwise.
 func (o *EnvironmentLogsError) GetHintMessage() string {
-	if o == nil || o.HintMessage == nil {
+	if o == nil || IsNil(o.HintMessage) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *EnvironmentLogsError) GetHintMessage() string {
 // GetHintMessageOk returns a tuple with the HintMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsError) GetHintMessageOk() (*string, bool) {
-	if o == nil || o.HintMessage == nil {
+	if o == nil || IsNil(o.HintMessage) {
 		return nil, false
 	}
 	return o.HintMessage, true
@@ -157,7 +160,7 @@ func (o *EnvironmentLogsError) GetHintMessageOk() (*string, bool) {
 
 // HasHintMessage returns a boolean if a field has been set.
 func (o *EnvironmentLogsError) HasHintMessage() bool {
-	if o != nil && o.HintMessage != nil {
+	if o != nil && !IsNil(o.HintMessage) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *EnvironmentLogsError) SetHintMessage(v string) {
 
 // GetUnderlyingError returns the UnderlyingError field value if set, zero value otherwise.
 func (o *EnvironmentLogsError) GetUnderlyingError() EnvironmentLogsErrorUnderlyingError {
-	if o == nil || o.UnderlyingError == nil {
+	if o == nil || IsNil(o.UnderlyingError) {
 		var ret EnvironmentLogsErrorUnderlyingError
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *EnvironmentLogsError) GetUnderlyingError() EnvironmentLogsErrorUnderlyi
 // GetUnderlyingErrorOk returns a tuple with the UnderlyingError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsError) GetUnderlyingErrorOk() (*EnvironmentLogsErrorUnderlyingError, bool) {
-	if o == nil || o.UnderlyingError == nil {
+	if o == nil || IsNil(o.UnderlyingError) {
 		return nil, false
 	}
 	return o.UnderlyingError, true
@@ -189,7 +192,7 @@ func (o *EnvironmentLogsError) GetUnderlyingErrorOk() (*EnvironmentLogsErrorUnde
 
 // HasUnderlyingError returns a boolean if a field has been set.
 func (o *EnvironmentLogsError) HasUnderlyingError() bool {
-	if o != nil && o.UnderlyingError != nil {
+	if o != nil && !IsNil(o.UnderlyingError) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *EnvironmentLogsError) SetUnderlyingError(v EnvironmentLogsErrorUnderlyi
 }
 
 func (o EnvironmentLogsError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.UserLogMessage != nil {
-		toSerialize["user_log_message"] = o.UserLogMessage
-	}
-	if o.Link != nil {
-		toSerialize["link"] = o.Link
-	}
-	if o.HintMessage != nil {
-		toSerialize["hint_message"] = o.HintMessage
-	}
-	if o.UnderlyingError != nil {
-		toSerialize["underlying_error"] = o.UnderlyingError
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLogsError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	if !IsNil(o.UserLogMessage) {
+		toSerialize["user_log_message"] = o.UserLogMessage
+	}
+	if !IsNil(o.Link) {
+		toSerialize["link"] = o.Link
+	}
+	if !IsNil(o.HintMessage) {
+		toSerialize["hint_message"] = o.HintMessage
+	}
+	if !IsNil(o.UnderlyingError) {
+		toSerialize["underlying_error"] = o.UnderlyingError
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLogsError struct {

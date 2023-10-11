@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ContainerDeploymentHistoryApiService ContainerDeploymentHistoryApi service
-type ContainerDeploymentHistoryApiService service
+// ContainerDeploymentHistoryAPIService ContainerDeploymentHistoryAPI service
+type ContainerDeploymentHistoryAPIService service
 
 type ApiListContainerDeploymentHistoryRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerDeploymentHistoryApiService
+	ApiService  *ContainerDeploymentHistoryAPIService
 	containerId string
 }
 
@@ -42,7 +42,7 @@ Returns the 20 last container deployments
  @param containerId Container ID
  @return ApiListContainerDeploymentHistoryRequest
 */
-func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistory(ctx context.Context, containerId string) ApiListContainerDeploymentHistoryRequest {
+func (a *ContainerDeploymentHistoryAPIService) ListContainerDeploymentHistory(ctx context.Context, containerId string) ApiListContainerDeploymentHistoryRequest {
 	return ApiListContainerDeploymentHistoryRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -52,7 +52,7 @@ func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistory(ct
 
 // Execute executes the request
 //  @return ListContainerDeploymentHistory200Response
-func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistoryExecute(r ApiListContainerDeploymentHistoryRequest) (*ListContainerDeploymentHistory200Response, *http.Response, error) {
+func (a *ContainerDeploymentHistoryAPIService) ListContainerDeploymentHistoryExecute(r ApiListContainerDeploymentHistoryRequest) (*ListContainerDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -60,13 +60,13 @@ func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistoryExe
 		localVarReturnValue *ListContainerDeploymentHistory200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerDeploymentHistoryApiService.ListContainerDeploymentHistory")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerDeploymentHistoryAPIService.ListContainerDeploymentHistory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/deploymentHistory"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -113,9 +113,9 @@ func (a *ContainerDeploymentHistoryApiService) ListContainerDeploymentHistoryExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

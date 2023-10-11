@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProbeTypeGrpc type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProbeTypeGrpc{}
+
 // ProbeTypeGrpc struct for ProbeTypeGrpc
 type ProbeTypeGrpc struct {
 	Service NullableString `json:"service,omitempty"`
@@ -40,7 +43,7 @@ func NewProbeTypeGrpcWithDefaults() *ProbeTypeGrpc {
 
 // GetService returns the Service field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeTypeGrpc) GetService() string {
-	if o == nil || o.Service.Get() == nil {
+	if o == nil || IsNil(o.Service.Get()) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ProbeTypeGrpc) UnsetService() {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *ProbeTypeGrpc) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *ProbeTypeGrpc) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProbeTypeGrpc) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -101,7 +104,7 @@ func (o *ProbeTypeGrpc) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *ProbeTypeGrpc) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -114,14 +117,22 @@ func (o *ProbeTypeGrpc) SetPort(v int32) {
 }
 
 func (o ProbeTypeGrpc) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProbeTypeGrpc) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Service.IsSet() {
 		toSerialize["service"] = o.Service.Get()
 	}
-	if o.Port != nil {
+	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProbeTypeGrpc struct {

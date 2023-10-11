@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobResponseList{}
+
 // JobResponseList struct for JobResponseList
 type JobResponseList struct {
 	Results []JobResponse `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewJobResponseListWithDefaults() *JobResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *JobResponseList) GetResults() []JobResponse {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []JobResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *JobResponseList) GetResults() []JobResponse {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobResponseList) GetResultsOk() ([]JobResponse, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *JobResponseList) GetResultsOk() ([]JobResponse, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *JobResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *JobResponseList) SetResults(v []JobResponse) {
 }
 
 func (o JobResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JobResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableJobResponseList struct {

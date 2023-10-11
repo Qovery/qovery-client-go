@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InstanceResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstanceResponseList{}
+
 // InstanceResponseList struct for InstanceResponseList
 type InstanceResponseList struct {
 	Results []Instance `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewInstanceResponseListWithDefaults() *InstanceResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *InstanceResponseList) GetResults() []Instance {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Instance
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *InstanceResponseList) GetResults() []Instance {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstanceResponseList) GetResultsOk() ([]Instance, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *InstanceResponseList) GetResultsOk() ([]Instance, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *InstanceResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *InstanceResponseList) SetResults(v []Instance) {
 }
 
 func (o InstanceResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InstanceResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableInstanceResponseList struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CommitResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommitResponseList{}
+
 // CommitResponseList struct for CommitResponseList
 type CommitResponseList struct {
 	Results []Commit `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewCommitResponseListWithDefaults() *CommitResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *CommitResponseList) GetResults() []Commit {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Commit
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CommitResponseList) GetResults() []Commit {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommitResponseList) GetResultsOk() ([]Commit, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *CommitResponseList) GetResultsOk() ([]Commit, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *CommitResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *CommitResponseList) SetResults(v []Commit) {
 }
 
 func (o CommitResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CommitResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableCommitResponseList struct {

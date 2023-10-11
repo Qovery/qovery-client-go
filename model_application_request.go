@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationRequest{}
+
 // ApplicationRequest struct for ApplicationRequest
 type ApplicationRequest struct {
 	Storage []ServiceStorageRequestStorageInner `json:"storage,omitempty"`
@@ -92,7 +95,7 @@ func NewApplicationRequestWithDefaults() *ApplicationRequest {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetStorage() []ServiceStorageRequestStorageInner {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret []ServiceStorageRequestStorageInner
 		return ret
 	}
@@ -102,7 +105,7 @@ func (o *ApplicationRequest) GetStorage() []ServiceStorageRequestStorageInner {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetStorageOk() ([]ServiceStorageRequestStorageInner, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -110,7 +113,7 @@ func (o *ApplicationRequest) GetStorageOk() ([]ServiceStorageRequestStorageInner
 
 // HasStorage returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -124,7 +127,7 @@ func (o *ApplicationRequest) SetStorage(v []ServiceStorageRequestStorageInner) {
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetPorts() []ServicePortRequestPortsInner {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		var ret []ServicePortRequestPortsInner
 		return ret
 	}
@@ -134,7 +137,7 @@ func (o *ApplicationRequest) GetPorts() []ServicePortRequestPortsInner {
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		return nil, false
 	}
 	return o.Ports, true
@@ -142,7 +145,7 @@ func (o *ApplicationRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool)
 
 // HasPorts returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+	if o != nil && !IsNil(o.Ports) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *ApplicationRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationRequest) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *ApplicationRequest) SetGitRepository(v ApplicationGitRepositoryRequest)
 
 // GetBuildMode returns the BuildMode field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetBuildMode() BuildModeEnum {
-	if o == nil || o.BuildMode == nil {
+	if o == nil || IsNil(o.BuildMode) {
 		var ret BuildModeEnum
 		return ret
 	}
@@ -257,7 +260,7 @@ func (o *ApplicationRequest) GetBuildMode() BuildModeEnum {
 // GetBuildModeOk returns a tuple with the BuildMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetBuildModeOk() (*BuildModeEnum, bool) {
-	if o == nil || o.BuildMode == nil {
+	if o == nil || IsNil(o.BuildMode) {
 		return nil, false
 	}
 	return o.BuildMode, true
@@ -265,7 +268,7 @@ func (o *ApplicationRequest) GetBuildModeOk() (*BuildModeEnum, bool) {
 
 // HasBuildMode returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasBuildMode() bool {
-	if o != nil && o.BuildMode != nil {
+	if o != nil && !IsNil(o.BuildMode) {
 		return true
 	}
 
@@ -279,7 +282,7 @@ func (o *ApplicationRequest) SetBuildMode(v BuildModeEnum) {
 
 // GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationRequest) GetDockerfilePath() string {
-	if o == nil || o.DockerfilePath.Get() == nil {
+	if o == nil || IsNil(o.DockerfilePath.Get()) {
 		var ret string
 		return ret
 	}
@@ -322,7 +325,7 @@ func (o *ApplicationRequest) UnsetDockerfilePath() {
 
 // GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationRequest) GetBuildpackLanguage() BuildPackLanguageEnum {
-	if o == nil || o.BuildpackLanguage.Get() == nil {
+	if o == nil || IsNil(o.BuildpackLanguage.Get()) {
 		var ret BuildPackLanguageEnum
 		return ret
 	}
@@ -365,7 +368,7 @@ func (o *ApplicationRequest) UnsetBuildpackLanguage() {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret int32
 		return ret
 	}
@@ -375,7 +378,7 @@ func (o *ApplicationRequest) GetCpu() int32 {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -383,7 +386,7 @@ func (o *ApplicationRequest) GetCpuOk() (*int32, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -397,7 +400,7 @@ func (o *ApplicationRequest) SetCpu(v int32) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -407,7 +410,7 @@ func (o *ApplicationRequest) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -415,7 +418,7 @@ func (o *ApplicationRequest) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -429,7 +432,7 @@ func (o *ApplicationRequest) SetMemory(v int32) {
 
 // GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetMinRunningInstances() int32 {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil || IsNil(o.MinRunningInstances) {
 		var ret int32
 		return ret
 	}
@@ -439,7 +442,7 @@ func (o *ApplicationRequest) GetMinRunningInstances() int32 {
 // GetMinRunningInstancesOk returns a tuple with the MinRunningInstances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetMinRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil || IsNil(o.MinRunningInstances) {
 		return nil, false
 	}
 	return o.MinRunningInstances, true
@@ -447,7 +450,7 @@ func (o *ApplicationRequest) GetMinRunningInstancesOk() (*int32, bool) {
 
 // HasMinRunningInstances returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasMinRunningInstances() bool {
-	if o != nil && o.MinRunningInstances != nil {
+	if o != nil && !IsNil(o.MinRunningInstances) {
 		return true
 	}
 
@@ -461,7 +464,7 @@ func (o *ApplicationRequest) SetMinRunningInstances(v int32) {
 
 // GetMaxRunningInstances returns the MaxRunningInstances field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetMaxRunningInstances() int32 {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil || IsNil(o.MaxRunningInstances) {
 		var ret int32
 		return ret
 	}
@@ -471,7 +474,7 @@ func (o *ApplicationRequest) GetMaxRunningInstances() int32 {
 // GetMaxRunningInstancesOk returns a tuple with the MaxRunningInstances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetMaxRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil || IsNil(o.MaxRunningInstances) {
 		return nil, false
 	}
 	return o.MaxRunningInstances, true
@@ -479,7 +482,7 @@ func (o *ApplicationRequest) GetMaxRunningInstancesOk() (*int32, bool) {
 
 // HasMaxRunningInstances returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasMaxRunningInstances() bool {
-	if o != nil && o.MaxRunningInstances != nil {
+	if o != nil && !IsNil(o.MaxRunningInstances) {
 		return true
 	}
 
@@ -517,7 +520,7 @@ func (o *ApplicationRequest) SetHealthchecks(v Healthcheck) {
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetAutoPreview() bool {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		var ret bool
 		return ret
 	}
@@ -527,7 +530,7 @@ func (o *ApplicationRequest) GetAutoPreview() bool {
 // GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		return nil, false
 	}
 	return o.AutoPreview, true
@@ -535,7 +538,7 @@ func (o *ApplicationRequest) GetAutoPreviewOk() (*bool, bool) {
 
 // HasAutoPreview returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasAutoPreview() bool {
-	if o != nil && o.AutoPreview != nil {
+	if o != nil && !IsNil(o.AutoPreview) {
 		return true
 	}
 
@@ -549,7 +552,7 @@ func (o *ApplicationRequest) SetAutoPreview(v bool) {
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetArguments() []string {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		var ret []string
 		return ret
 	}
@@ -559,7 +562,7 @@ func (o *ApplicationRequest) GetArguments() []string {
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetArgumentsOk() ([]string, bool) {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
 	return o.Arguments, true
@@ -567,7 +570,7 @@ func (o *ApplicationRequest) GetArgumentsOk() ([]string, bool) {
 
 // HasArguments returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasArguments() bool {
-	if o != nil && o.Arguments != nil {
+	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
 
@@ -581,7 +584,7 @@ func (o *ApplicationRequest) SetArguments(v []string) {
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetEntrypoint() string {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
 	}
@@ -591,7 +594,7 @@ func (o *ApplicationRequest) GetEntrypoint() string {
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationRequest) GetEntrypointOk() (*string, bool) {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
 	return o.Entrypoint, true
@@ -599,7 +602,7 @@ func (o *ApplicationRequest) GetEntrypointOk() (*string, bool) {
 
 // HasEntrypoint returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint != nil {
+	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
 
@@ -613,7 +616,7 @@ func (o *ApplicationRequest) SetEntrypoint(v string) {
 
 // GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationRequest) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy.Get() == nil {
+	if o == nil || IsNil(o.AutoDeploy.Get()) {
 		var ret bool
 		return ret
 	}
@@ -655,23 +658,27 @@ func (o *ApplicationRequest) UnsetAutoDeploy() {
 }
 
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Storage != nil {
+	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
-	if o.Ports != nil {
+	if !IsNil(o.Ports) {
 		toSerialize["ports"] = o.Ports
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["git_repository"] = o.GitRepository
-	}
-	if o.BuildMode != nil {
+	toSerialize["git_repository"] = o.GitRepository
+	if !IsNil(o.BuildMode) {
 		toSerialize["build_mode"] = o.BuildMode
 	}
 	if o.DockerfilePath.IsSet() {
@@ -680,34 +687,32 @@ func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	if o.BuildpackLanguage.IsSet() {
 		toSerialize["buildpack_language"] = o.BuildpackLanguage.Get()
 	}
-	if o.Cpu != nil {
+	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
-	if o.Memory != nil {
+	if !IsNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
-	if o.MinRunningInstances != nil {
+	if !IsNil(o.MinRunningInstances) {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
 	}
-	if o.MaxRunningInstances != nil {
+	if !IsNil(o.MaxRunningInstances) {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
 	}
-	if true {
-		toSerialize["healthchecks"] = o.Healthchecks
-	}
-	if o.AutoPreview != nil {
+	toSerialize["healthchecks"] = o.Healthchecks
+	if !IsNil(o.AutoPreview) {
 		toSerialize["auto_preview"] = o.AutoPreview
 	}
-	if o.Arguments != nil {
+	if !IsNil(o.Arguments) {
 		toSerialize["arguments"] = o.Arguments
 	}
-	if o.Entrypoint != nil {
+	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableApplicationRequest struct {

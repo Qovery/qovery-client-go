@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ClusterLogs type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterLogs{}
+
 // ClusterLogs struct for ClusterLogs
 type ClusterLogs struct {
 	// log level
@@ -48,7 +51,7 @@ func NewClusterLogsWithDefaults() *ClusterLogs {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ClusterLogs) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *ClusterLogs) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogs) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -66,7 +69,7 @@ func (o *ClusterLogs) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ClusterLogs) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *ClusterLogs) SetType(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *ClusterLogs) GetTimestamp() time.Time {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *ClusterLogs) GetTimestamp() time.Time {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogs) GetTimestampOk() (*time.Time, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -98,7 +101,7 @@ func (o *ClusterLogs) GetTimestampOk() (*time.Time, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *ClusterLogs) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *ClusterLogs) SetTimestamp(v time.Time) {
 
 // GetStep returns the Step field value if set, zero value otherwise.
 func (o *ClusterLogs) GetStep() string {
-	if o == nil || o.Step == nil {
+	if o == nil || IsNil(o.Step) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *ClusterLogs) GetStep() string {
 // GetStepOk returns a tuple with the Step field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogs) GetStepOk() (*string, bool) {
-	if o == nil || o.Step == nil {
+	if o == nil || IsNil(o.Step) {
 		return nil, false
 	}
 	return o.Step, true
@@ -130,7 +133,7 @@ func (o *ClusterLogs) GetStepOk() (*string, bool) {
 
 // HasStep returns a boolean if a field has been set.
 func (o *ClusterLogs) HasStep() bool {
-	if o != nil && o.Step != nil {
+	if o != nil && !IsNil(o.Step) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *ClusterLogs) SetStep(v string) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *ClusterLogs) GetMessage() ClusterLogsMessage {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret ClusterLogsMessage
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *ClusterLogs) GetMessage() ClusterLogsMessage {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogs) GetMessageOk() (*ClusterLogsMessage, bool) {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -162,7 +165,7 @@ func (o *ClusterLogs) GetMessageOk() (*ClusterLogsMessage, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *ClusterLogs) HasMessage() bool {
-	if o != nil && o.Message != nil {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *ClusterLogs) SetMessage(v ClusterLogsMessage) {
 
 // GetError returns the Error field value if set, zero value otherwise.
 func (o *ClusterLogs) GetError() ClusterLogsError {
-	if o == nil || o.Error == nil {
+	if o == nil || IsNil(o.Error) {
 		var ret ClusterLogsError
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *ClusterLogs) GetError() ClusterLogsError {
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogs) GetErrorOk() (*ClusterLogsError, bool) {
-	if o == nil || o.Error == nil {
+	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
 	return o.Error, true
@@ -194,7 +197,7 @@ func (o *ClusterLogs) GetErrorOk() (*ClusterLogsError, bool) {
 
 // HasError returns a boolean if a field has been set.
 func (o *ClusterLogs) HasError() bool {
-	if o != nil && o.Error != nil {
+	if o != nil && !IsNil(o.Error) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *ClusterLogs) SetError(v ClusterLogsError) {
 
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *ClusterLogs) GetDetails() ClusterLogsDetails {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		var ret ClusterLogsDetails
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *ClusterLogs) GetDetails() ClusterLogsDetails {
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogs) GetDetailsOk() (*ClusterLogsDetails, bool) {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		return nil, false
 	}
 	return o.Details, true
@@ -226,7 +229,7 @@ func (o *ClusterLogs) GetDetailsOk() (*ClusterLogsDetails, bool) {
 
 // HasDetails returns a boolean if a field has been set.
 func (o *ClusterLogs) HasDetails() bool {
-	if o != nil && o.Details != nil {
+	if o != nil && !IsNil(o.Details) {
 		return true
 	}
 
@@ -239,26 +242,34 @@ func (o *ClusterLogs) SetDetails(v ClusterLogsDetails) {
 }
 
 func (o ClusterLogs) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
-	}
-	if o.Step != nil {
-		toSerialize["step"] = o.Step
-	}
-	if o.Message != nil {
-		toSerialize["message"] = o.Message
-	}
-	if o.Error != nil {
-		toSerialize["error"] = o.Error
-	}
-	if o.Details != nil {
-		toSerialize["details"] = o.Details
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterLogs) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Timestamp) {
+		toSerialize["timestamp"] = o.Timestamp
+	}
+	if !IsNil(o.Step) {
+		toSerialize["step"] = o.Step
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.Error) {
+		toSerialize["error"] = o.Error
+	}
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterLogs struct {

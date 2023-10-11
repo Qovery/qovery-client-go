@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentStatus{}
+
 // EnvironmentStatus struct for EnvironmentStatus
 type EnvironmentStatus struct {
 	Id                               string         `json:"id"`
@@ -96,7 +99,7 @@ func (o *EnvironmentStatus) SetState(v StateEnum) {
 
 // GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentStatus) GetLastDeploymentDate() time.Time {
-	if o == nil || o.LastDeploymentDate.Get() == nil {
+	if o == nil || IsNil(o.LastDeploymentDate.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -163,7 +166,7 @@ func (o *EnvironmentStatus) SetLastDeploymentState(v StateEnum) {
 
 // GetLastDeploymentId returns the LastDeploymentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentStatus) GetLastDeploymentId() string {
-	if o == nil || o.LastDeploymentId.Get() == nil {
+	if o == nil || IsNil(o.LastDeploymentId.Get()) {
 		var ret string
 		return ret
 	}
@@ -206,7 +209,7 @@ func (o *EnvironmentStatus) UnsetLastDeploymentId() {
 
 // GetTotalDeploymentDurationInSeconds returns the TotalDeploymentDurationInSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentStatus) GetTotalDeploymentDurationInSeconds() int32 {
-	if o == nil || o.TotalDeploymentDurationInSeconds.Get() == nil {
+	if o == nil || IsNil(o.TotalDeploymentDurationInSeconds.Get()) {
 		var ret int32
 		return ret
 	}
@@ -248,26 +251,28 @@ func (o *EnvironmentStatus) UnsetTotalDeploymentDurationInSeconds() {
 }
 
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["state"] = o.State
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["state"] = o.State
 	if o.LastDeploymentDate.IsSet() {
 		toSerialize["last_deployment_date"] = o.LastDeploymentDate.Get()
 	}
-	if true {
-		toSerialize["last_deployment_state"] = o.LastDeploymentState
-	}
+	toSerialize["last_deployment_state"] = o.LastDeploymentState
 	if o.LastDeploymentId.IsSet() {
 		toSerialize["last_deployment_id"] = o.LastDeploymentId.Get()
 	}
 	if o.TotalDeploymentDurationInSeconds.IsSet() {
 		toSerialize["total_deployment_duration_in_seconds"] = o.TotalDeploymentDurationInSeconds.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentStatus struct {

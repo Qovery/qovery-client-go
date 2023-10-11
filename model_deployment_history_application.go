@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentHistoryApplication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryApplication{}
+
 // DeploymentHistoryApplication struct for DeploymentHistoryApplication
 type DeploymentHistoryApplication struct {
 	Id        string         `json:"id"`
@@ -95,7 +98,7 @@ func (o *DeploymentHistoryApplication) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeploymentHistoryApplication) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -105,7 +108,7 @@ func (o *DeploymentHistoryApplication) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryApplication) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -113,7 +116,7 @@ func (o *DeploymentHistoryApplication) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DeploymentHistoryApplication) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -127,7 +130,7 @@ func (o *DeploymentHistoryApplication) SetUpdatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeploymentHistoryApplication) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -137,7 +140,7 @@ func (o *DeploymentHistoryApplication) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryApplication) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -145,7 +148,7 @@ func (o *DeploymentHistoryApplication) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeploymentHistoryApplication) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -159,7 +162,7 @@ func (o *DeploymentHistoryApplication) SetName(v string) {
 
 // GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentHistoryApplication) GetCommit() Commit {
-	if o == nil || o.Commit.Get() == nil {
+	if o == nil || IsNil(o.Commit.Get()) {
 		var ret Commit
 		return ret
 	}
@@ -202,7 +205,7 @@ func (o *DeploymentHistoryApplication) UnsetCommit() {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DeploymentHistoryApplication) GetStatus() StateEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret StateEnum
 		return ret
 	}
@@ -212,7 +215,7 @@ func (o *DeploymentHistoryApplication) GetStatus() StateEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryApplication) GetStatusOk() (*StateEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -220,7 +223,7 @@ func (o *DeploymentHistoryApplication) GetStatusOk() (*StateEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DeploymentHistoryApplication) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -233,26 +236,30 @@ func (o *DeploymentHistoryApplication) SetStatus(v StateEnum) {
 }
 
 func (o DeploymentHistoryApplication) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistoryApplication) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Commit.IsSet() {
 		toSerialize["commit"] = o.Commit.Get()
 	}
-	if o.Status != nil {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistoryApplication struct {

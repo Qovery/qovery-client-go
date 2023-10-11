@@ -8,14 +8,15 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
-**Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
+**ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
+**Tag** | **string** | tag of the image container | 
+**RegistryId** | Pointer to **string** | tag of the image container | [optional] 
 **Registry** | [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
+**Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** | give a description to this container | [optional] 
-**ImageName** | **string** | name of the image container | 
-**Tag** | **string** | tag of the image container | 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
@@ -31,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewContainerResponse
 
-`func NewContainerResponse(id string, createdAt time.Time, environment ReferenceObject, registry ContainerRegistryProviderDetailsResponse, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, ) *ContainerResponse`
+`func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, ) *ContainerResponse`
 
 NewContainerResponse instantiates a new ContainerResponse object
 This constructor will assign default values to properties that have it defined,
@@ -136,25 +137,70 @@ SetStorage sets Storage field to given value.
 
 HasStorage returns a boolean if a field has been set.
 
-### GetEnvironment
+### GetImageName
 
-`func (o *ContainerResponse) GetEnvironment() ReferenceObject`
+`func (o *ContainerResponse) GetImageName() string`
 
-GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+GetImageName returns the ImageName field if non-nil, zero value otherwise.
 
-### GetEnvironmentOk
+### GetImageNameOk
 
-`func (o *ContainerResponse) GetEnvironmentOk() (*ReferenceObject, bool)`
+`func (o *ContainerResponse) GetImageNameOk() (*string, bool)`
 
-GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+GetImageNameOk returns a tuple with the ImageName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnvironment
+### SetImageName
 
-`func (o *ContainerResponse) SetEnvironment(v ReferenceObject)`
+`func (o *ContainerResponse) SetImageName(v string)`
 
-SetEnvironment sets Environment field to given value.
+SetImageName sets ImageName field to given value.
 
+
+### GetTag
+
+`func (o *ContainerResponse) GetTag() string`
+
+GetTag returns the Tag field if non-nil, zero value otherwise.
+
+### GetTagOk
+
+`func (o *ContainerResponse) GetTagOk() (*string, bool)`
+
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTag
+
+`func (o *ContainerResponse) SetTag(v string)`
+
+SetTag sets Tag field to given value.
+
+
+### GetRegistryId
+
+`func (o *ContainerResponse) GetRegistryId() string`
+
+GetRegistryId returns the RegistryId field if non-nil, zero value otherwise.
+
+### GetRegistryIdOk
+
+`func (o *ContainerResponse) GetRegistryIdOk() (*string, bool)`
+
+GetRegistryIdOk returns a tuple with the RegistryId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegistryId
+
+`func (o *ContainerResponse) SetRegistryId(v string)`
+
+SetRegistryId sets RegistryId field to given value.
+
+### HasRegistryId
+
+`func (o *ContainerResponse) HasRegistryId() bool`
+
+HasRegistryId returns a boolean if a field has been set.
 
 ### GetRegistry
 
@@ -174,6 +220,26 @@ and a boolean to check if the value has been set.
 `func (o *ContainerResponse) SetRegistry(v ContainerRegistryProviderDetailsResponse)`
 
 SetRegistry sets Registry field to given value.
+
+
+### GetEnvironment
+
+`func (o *ContainerResponse) GetEnvironment() ReferenceObject`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *ContainerResponse) GetEnvironmentOk() (*ReferenceObject, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *ContainerResponse) SetEnvironment(v ReferenceObject)`
+
+SetEnvironment sets Environment field to given value.
 
 
 ### GetMaximumCpu
@@ -260,46 +326,6 @@ SetDescription sets Description field to given value.
 `func (o *ContainerResponse) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetImageName
-
-`func (o *ContainerResponse) GetImageName() string`
-
-GetImageName returns the ImageName field if non-nil, zero value otherwise.
-
-### GetImageNameOk
-
-`func (o *ContainerResponse) GetImageNameOk() (*string, bool)`
-
-GetImageNameOk returns a tuple with the ImageName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetImageName
-
-`func (o *ContainerResponse) SetImageName(v string)`
-
-SetImageName sets ImageName field to given value.
-
-
-### GetTag
-
-`func (o *ContainerResponse) GetTag() string`
-
-GetTag returns the Tag field if non-nil, zero value otherwise.
-
-### GetTagOk
-
-`func (o *ContainerResponse) GetTagOk() (*string, bool)`
-
-GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTag
-
-`func (o *ContainerResponse) SetTag(v string)`
-
-SetTag sets Tag field to given value.
-
 
 ### GetArguments
 

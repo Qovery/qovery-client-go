@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// OrganizationApiTokenApiService OrganizationApiTokenApi service
-type OrganizationApiTokenApiService service
+// OrganizationApiTokenAPIService OrganizationApiTokenAPI service
+type OrganizationApiTokenAPIService service
 
 type ApiCreateOrganizationApiTokenRequest struct {
 	ctx                               context.Context
-	ApiService                        *OrganizationApiTokenApiService
+	ApiService                        *OrganizationApiTokenAPIService
 	organizationId                    string
 	organizationApiTokenCreateRequest *OrganizationApiTokenCreateRequest
 }
@@ -48,7 +48,7 @@ Create an organization api token. You can use the generated token to interact in
  @param organizationId Organization ID
  @return ApiCreateOrganizationApiTokenRequest
 */
-func (a *OrganizationApiTokenApiService) CreateOrganizationApiToken(ctx context.Context, organizationId string) ApiCreateOrganizationApiTokenRequest {
+func (a *OrganizationApiTokenAPIService) CreateOrganizationApiToken(ctx context.Context, organizationId string) ApiCreateOrganizationApiTokenRequest {
 	return ApiCreateOrganizationApiTokenRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -58,7 +58,7 @@ func (a *OrganizationApiTokenApiService) CreateOrganizationApiToken(ctx context.
 
 // Execute executes the request
 //  @return OrganizationApiTokenCreate
-func (a *OrganizationApiTokenApiService) CreateOrganizationApiTokenExecute(r ApiCreateOrganizationApiTokenRequest) (*OrganizationApiTokenCreate, *http.Response, error) {
+func (a *OrganizationApiTokenAPIService) CreateOrganizationApiTokenExecute(r ApiCreateOrganizationApiTokenRequest) (*OrganizationApiTokenCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *OrganizationApiTokenApiService) CreateOrganizationApiTokenExecute(r Api
 		localVarReturnValue *OrganizationApiTokenCreate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiTokenApiService.CreateOrganizationApiToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiTokenAPIService.CreateOrganizationApiToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/apiToken"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *OrganizationApiTokenApiService) CreateOrganizationApiTokenExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *OrganizationApiTokenApiService) CreateOrganizationApiTokenExecute(r Api
 
 type ApiDeleteOrganizationApiTokenRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationApiTokenApiService
+	ApiService     *OrganizationApiTokenAPIService
 	organizationId string
 	apiTokenId     string
 }
@@ -169,7 +169,7 @@ Delete organization api token
  @param apiTokenId Organization Api Token ID
  @return ApiDeleteOrganizationApiTokenRequest
 */
-func (a *OrganizationApiTokenApiService) DeleteOrganizationApiToken(ctx context.Context, organizationId string, apiTokenId string) ApiDeleteOrganizationApiTokenRequest {
+func (a *OrganizationApiTokenAPIService) DeleteOrganizationApiToken(ctx context.Context, organizationId string, apiTokenId string) ApiDeleteOrganizationApiTokenRequest {
 	return ApiDeleteOrganizationApiTokenRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -179,21 +179,21 @@ func (a *OrganizationApiTokenApiService) DeleteOrganizationApiToken(ctx context.
 }
 
 // Execute executes the request
-func (a *OrganizationApiTokenApiService) DeleteOrganizationApiTokenExecute(r ApiDeleteOrganizationApiTokenRequest) (*http.Response, error) {
+func (a *OrganizationApiTokenAPIService) DeleteOrganizationApiTokenExecute(r ApiDeleteOrganizationApiTokenRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiTokenApiService.DeleteOrganizationApiToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiTokenAPIService.DeleteOrganizationApiToken")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/apiToken/{apiTokenId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"apiTokenId"+"}", url.PathEscape(parameterToString(r.apiTokenId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"apiTokenId"+"}", url.PathEscape(parameterValueToString(r.apiTokenId, "apiTokenId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -240,9 +240,9 @@ func (a *OrganizationApiTokenApiService) DeleteOrganizationApiTokenExecute(r Api
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -260,7 +260,7 @@ func (a *OrganizationApiTokenApiService) DeleteOrganizationApiTokenExecute(r Api
 
 type ApiListOrganizationApiTokensRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationApiTokenApiService
+	ApiService     *OrganizationApiTokenAPIService
 	organizationId string
 }
 
@@ -277,7 +277,7 @@ List organization api tokens
  @param organizationId Organization ID
  @return ApiListOrganizationApiTokensRequest
 */
-func (a *OrganizationApiTokenApiService) ListOrganizationApiTokens(ctx context.Context, organizationId string) ApiListOrganizationApiTokensRequest {
+func (a *OrganizationApiTokenAPIService) ListOrganizationApiTokens(ctx context.Context, organizationId string) ApiListOrganizationApiTokensRequest {
 	return ApiListOrganizationApiTokensRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -287,7 +287,7 @@ func (a *OrganizationApiTokenApiService) ListOrganizationApiTokens(ctx context.C
 
 // Execute executes the request
 //  @return OrganizationApiTokenResponseList
-func (a *OrganizationApiTokenApiService) ListOrganizationApiTokensExecute(r ApiListOrganizationApiTokensRequest) (*OrganizationApiTokenResponseList, *http.Response, error) {
+func (a *OrganizationApiTokenAPIService) ListOrganizationApiTokensExecute(r ApiListOrganizationApiTokensRequest) (*OrganizationApiTokenResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -295,13 +295,13 @@ func (a *OrganizationApiTokenApiService) ListOrganizationApiTokensExecute(r ApiL
 		localVarReturnValue *OrganizationApiTokenResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiTokenApiService.ListOrganizationApiTokens")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationApiTokenAPIService.ListOrganizationApiTokens")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/apiToken"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -348,9 +348,9 @@ func (a *OrganizationApiTokenApiService) ListOrganizationApiTokensExecute(r ApiL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

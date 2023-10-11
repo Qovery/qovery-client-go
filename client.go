@@ -19,7 +19,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -33,13 +32,13 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
-
-	"golang.org/x/oauth2"
 )
 
 var (
-	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
-	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
+	jsonCheck       = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
+	xmlCheck        = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
+	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
+	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
 // APIClient manages communication with the Qovery API API v1.0.3
@@ -50,147 +49,147 @@ type APIClient struct {
 
 	// API Services
 
-	AccountInfoApi *AccountInfoApiService
+	AccountInfoAPI *AccountInfoAPIService
 
-	ApplicationActionsApi *ApplicationActionsApiService
+	ApplicationActionsAPI *ApplicationActionsAPIService
 
-	ApplicationConfigurationApi *ApplicationConfigurationApiService
+	ApplicationConfigurationAPI *ApplicationConfigurationAPIService
 
-	ApplicationDeploymentHistoryApi *ApplicationDeploymentHistoryApiService
+	ApplicationDeploymentHistoryAPI *ApplicationDeploymentHistoryAPIService
 
-	ApplicationDeploymentRestrictionApi *ApplicationDeploymentRestrictionApiService
+	ApplicationDeploymentRestrictionAPI *ApplicationDeploymentRestrictionAPIService
 
-	ApplicationEnvironmentVariableApi *ApplicationEnvironmentVariableApiService
+	ApplicationEnvironmentVariableAPI *ApplicationEnvironmentVariableAPIService
 
-	ApplicationLogsApi *ApplicationLogsApiService
+	ApplicationLogsAPI *ApplicationLogsAPIService
 
-	ApplicationMainCallsApi *ApplicationMainCallsApiService
+	ApplicationMainCallsAPI *ApplicationMainCallsAPIService
 
-	ApplicationMetricsApi *ApplicationMetricsApiService
+	ApplicationMetricsAPI *ApplicationMetricsAPIService
 
-	ApplicationSecretApi *ApplicationSecretApiService
+	ApplicationSecretAPI *ApplicationSecretAPIService
 
-	ApplicationsApi *ApplicationsApiService
+	ApplicationsAPI *ApplicationsAPIService
 
-	BackupsApi *BackupsApiService
+	BackupsAPI *BackupsAPIService
 
-	BillingApi *BillingApiService
+	BillingAPI *BillingAPIService
 
-	CloudProviderApi *CloudProviderApiService
+	CloudProviderAPI *CloudProviderAPIService
 
-	CloudProviderCredentialsApi *CloudProviderCredentialsApiService
+	CloudProviderCredentialsAPI *CloudProviderCredentialsAPIService
 
-	ClustersApi *ClustersApiService
+	ClustersAPI *ClustersAPIService
 
-	ContainerActionsApi *ContainerActionsApiService
+	ContainerActionsAPI *ContainerActionsAPIService
 
-	ContainerConfigurationApi *ContainerConfigurationApiService
+	ContainerConfigurationAPI *ContainerConfigurationAPIService
 
-	ContainerCustomDomainApi *ContainerCustomDomainApiService
+	ContainerCustomDomainAPI *ContainerCustomDomainAPIService
 
-	ContainerDeploymentHistoryApi *ContainerDeploymentHistoryApiService
+	ContainerDeploymentHistoryAPI *ContainerDeploymentHistoryAPIService
 
-	ContainerEnvironmentVariableApi *ContainerEnvironmentVariableApiService
+	ContainerEnvironmentVariableAPI *ContainerEnvironmentVariableAPIService
 
-	ContainerLogsApi *ContainerLogsApiService
+	ContainerLogsAPI *ContainerLogsAPIService
 
-	ContainerMainCallsApi *ContainerMainCallsApiService
+	ContainerMainCallsAPI *ContainerMainCallsAPIService
 
-	ContainerMetricsApi *ContainerMetricsApiService
+	ContainerMetricsAPI *ContainerMetricsAPIService
 
-	ContainerRegistriesApi *ContainerRegistriesApiService
+	ContainerRegistriesAPI *ContainerRegistriesAPIService
 
-	ContainerSecretApi *ContainerSecretApiService
+	ContainerSecretAPI *ContainerSecretAPIService
 
-	ContainersApi *ContainersApiService
+	ContainersAPI *ContainersAPIService
 
-	CustomDomainApi *CustomDomainApiService
+	CustomDomainAPI *CustomDomainAPIService
 
-	DatabaseActionsApi *DatabaseActionsApiService
+	DatabaseActionsAPI *DatabaseActionsAPIService
 
-	DatabaseApplicationApi *DatabaseApplicationApiService
+	DatabaseApplicationAPI *DatabaseApplicationAPIService
 
-	DatabaseDeploymentHistoryApi *DatabaseDeploymentHistoryApiService
+	DatabaseDeploymentHistoryAPI *DatabaseDeploymentHistoryAPIService
 
-	DatabaseMainCallsApi *DatabaseMainCallsApiService
+	DatabaseMainCallsAPI *DatabaseMainCallsAPIService
 
-	DatabaseMetricsApi *DatabaseMetricsApiService
+	DatabaseMetricsAPI *DatabaseMetricsAPIService
 
-	DatabasesApi *DatabasesApiService
+	DatabasesAPI *DatabasesAPIService
 
-	DeploymentStageMainCallsApi *DeploymentStageMainCallsApiService
+	DeploymentStageMainCallsAPI *DeploymentStageMainCallsAPIService
 
-	EnvironmentApi *EnvironmentApiService
+	EnvironmentAPI *EnvironmentAPIService
 
-	EnvironmentActionsApi *EnvironmentActionsApiService
+	EnvironmentActionsAPI *EnvironmentActionsAPIService
 
-	EnvironmentDeploymentHistoryApi *EnvironmentDeploymentHistoryApiService
+	EnvironmentDeploymentHistoryAPI *EnvironmentDeploymentHistoryAPIService
 
-	EnvironmentDeploymentRuleApi *EnvironmentDeploymentRuleApiService
+	EnvironmentDeploymentRuleAPI *EnvironmentDeploymentRuleAPIService
 
-	EnvironmentExportApi *EnvironmentExportApiService
+	EnvironmentExportAPI *EnvironmentExportAPIService
 
-	EnvironmentLogsApi *EnvironmentLogsApiService
+	EnvironmentLogsAPI *EnvironmentLogsAPIService
 
-	EnvironmentMainCallsApi *EnvironmentMainCallsApiService
+	EnvironmentMainCallsAPI *EnvironmentMainCallsAPIService
 
-	EnvironmentSecretApi *EnvironmentSecretApiService
+	EnvironmentSecretAPI *EnvironmentSecretAPIService
 
-	EnvironmentVariableApi *EnvironmentVariableApiService
+	EnvironmentVariableAPI *EnvironmentVariableAPIService
 
-	EnvironmentsApi *EnvironmentsApiService
+	EnvironmentsAPI *EnvironmentsAPIService
 
-	GitRepositoriesApi *GitRepositoriesApiService
+	GitRepositoriesAPI *GitRepositoriesAPIService
 
-	GithubAppApi *GithubAppApiService
+	GithubAppAPI *GithubAppAPIService
 
-	JobActionsApi *JobActionsApiService
+	JobActionsAPI *JobActionsAPIService
 
-	JobConfigurationApi *JobConfigurationApiService
+	JobConfigurationAPI *JobConfigurationAPIService
 
-	JobDeploymentHistoryApi *JobDeploymentHistoryApiService
+	JobDeploymentHistoryAPI *JobDeploymentHistoryAPIService
 
-	JobDeploymentRestrictionApi *JobDeploymentRestrictionApiService
+	JobDeploymentRestrictionAPI *JobDeploymentRestrictionAPIService
 
-	JobEnvironmentVariableApi *JobEnvironmentVariableApiService
+	JobEnvironmentVariableAPI *JobEnvironmentVariableAPIService
 
-	JobMainCallsApi *JobMainCallsApiService
+	JobMainCallsAPI *JobMainCallsAPIService
 
-	JobMetricsApi *JobMetricsApiService
+	JobMetricsAPI *JobMetricsAPIService
 
-	JobSecretApi *JobSecretApiService
+	JobSecretAPI *JobSecretAPIService
 
-	JobsApi *JobsApiService
+	JobsAPI *JobsAPIService
 
-	MembersApi *MembersApiService
+	MembersAPI *MembersAPIService
 
-	OrganizationAccountGitRepositoriesApi *OrganizationAccountGitRepositoriesApiService
+	OrganizationAccountGitRepositoriesAPI *OrganizationAccountGitRepositoriesAPIService
 
-	OrganizationApiTokenApi *OrganizationApiTokenApiService
+	OrganizationApiTokenAPI *OrganizationApiTokenAPIService
 
-	OrganizationCustomRoleApi *OrganizationCustomRoleApiService
+	OrganizationCustomRoleAPI *OrganizationCustomRoleAPIService
 
-	OrganizationEventApi *OrganizationEventApiService
+	OrganizationEventAPI *OrganizationEventAPIService
 
-	OrganizationMainCallsApi *OrganizationMainCallsApiService
+	OrganizationMainCallsAPI *OrganizationMainCallsAPIService
 
-	OrganizationWebhookApi *OrganizationWebhookApiService
+	OrganizationWebhookAPI *OrganizationWebhookAPIService
 
-	ProjectDeploymentRuleApi *ProjectDeploymentRuleApiService
+	ProjectDeploymentRuleAPI *ProjectDeploymentRuleAPIService
 
-	ProjectEnvironmentVariableApi *ProjectEnvironmentVariableApiService
+	ProjectEnvironmentVariableAPI *ProjectEnvironmentVariableAPIService
 
-	ProjectMainCallsApi *ProjectMainCallsApiService
+	ProjectMainCallsAPI *ProjectMainCallsAPIService
 
-	ProjectSecretApi *ProjectSecretApiService
+	ProjectSecretAPI *ProjectSecretAPIService
 
-	ProjectsApi *ProjectsApiService
+	ProjectsAPI *ProjectsAPIService
 
-	ReferralRewardsApi *ReferralRewardsApiService
+	ReferralRewardsAPI *ReferralRewardsAPIService
 
-	UserSignUpApi *UserSignUpApiService
+	UserSignUpAPI *UserSignUpAPIService
 
-	VariableMainCallsApi *VariableMainCallsApiService
+	VariableMainCallsAPI *VariableMainCallsAPIService
 }
 
 type service struct {
@@ -209,77 +208,77 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AccountInfoApi = (*AccountInfoApiService)(&c.common)
-	c.ApplicationActionsApi = (*ApplicationActionsApiService)(&c.common)
-	c.ApplicationConfigurationApi = (*ApplicationConfigurationApiService)(&c.common)
-	c.ApplicationDeploymentHistoryApi = (*ApplicationDeploymentHistoryApiService)(&c.common)
-	c.ApplicationDeploymentRestrictionApi = (*ApplicationDeploymentRestrictionApiService)(&c.common)
-	c.ApplicationEnvironmentVariableApi = (*ApplicationEnvironmentVariableApiService)(&c.common)
-	c.ApplicationLogsApi = (*ApplicationLogsApiService)(&c.common)
-	c.ApplicationMainCallsApi = (*ApplicationMainCallsApiService)(&c.common)
-	c.ApplicationMetricsApi = (*ApplicationMetricsApiService)(&c.common)
-	c.ApplicationSecretApi = (*ApplicationSecretApiService)(&c.common)
-	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
-	c.BackupsApi = (*BackupsApiService)(&c.common)
-	c.BillingApi = (*BillingApiService)(&c.common)
-	c.CloudProviderApi = (*CloudProviderApiService)(&c.common)
-	c.CloudProviderCredentialsApi = (*CloudProviderCredentialsApiService)(&c.common)
-	c.ClustersApi = (*ClustersApiService)(&c.common)
-	c.ContainerActionsApi = (*ContainerActionsApiService)(&c.common)
-	c.ContainerConfigurationApi = (*ContainerConfigurationApiService)(&c.common)
-	c.ContainerCustomDomainApi = (*ContainerCustomDomainApiService)(&c.common)
-	c.ContainerDeploymentHistoryApi = (*ContainerDeploymentHistoryApiService)(&c.common)
-	c.ContainerEnvironmentVariableApi = (*ContainerEnvironmentVariableApiService)(&c.common)
-	c.ContainerLogsApi = (*ContainerLogsApiService)(&c.common)
-	c.ContainerMainCallsApi = (*ContainerMainCallsApiService)(&c.common)
-	c.ContainerMetricsApi = (*ContainerMetricsApiService)(&c.common)
-	c.ContainerRegistriesApi = (*ContainerRegistriesApiService)(&c.common)
-	c.ContainerSecretApi = (*ContainerSecretApiService)(&c.common)
-	c.ContainersApi = (*ContainersApiService)(&c.common)
-	c.CustomDomainApi = (*CustomDomainApiService)(&c.common)
-	c.DatabaseActionsApi = (*DatabaseActionsApiService)(&c.common)
-	c.DatabaseApplicationApi = (*DatabaseApplicationApiService)(&c.common)
-	c.DatabaseDeploymentHistoryApi = (*DatabaseDeploymentHistoryApiService)(&c.common)
-	c.DatabaseMainCallsApi = (*DatabaseMainCallsApiService)(&c.common)
-	c.DatabaseMetricsApi = (*DatabaseMetricsApiService)(&c.common)
-	c.DatabasesApi = (*DatabasesApiService)(&c.common)
-	c.DeploymentStageMainCallsApi = (*DeploymentStageMainCallsApiService)(&c.common)
-	c.EnvironmentApi = (*EnvironmentApiService)(&c.common)
-	c.EnvironmentActionsApi = (*EnvironmentActionsApiService)(&c.common)
-	c.EnvironmentDeploymentHistoryApi = (*EnvironmentDeploymentHistoryApiService)(&c.common)
-	c.EnvironmentDeploymentRuleApi = (*EnvironmentDeploymentRuleApiService)(&c.common)
-	c.EnvironmentExportApi = (*EnvironmentExportApiService)(&c.common)
-	c.EnvironmentLogsApi = (*EnvironmentLogsApiService)(&c.common)
-	c.EnvironmentMainCallsApi = (*EnvironmentMainCallsApiService)(&c.common)
-	c.EnvironmentSecretApi = (*EnvironmentSecretApiService)(&c.common)
-	c.EnvironmentVariableApi = (*EnvironmentVariableApiService)(&c.common)
-	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
-	c.GitRepositoriesApi = (*GitRepositoriesApiService)(&c.common)
-	c.GithubAppApi = (*GithubAppApiService)(&c.common)
-	c.JobActionsApi = (*JobActionsApiService)(&c.common)
-	c.JobConfigurationApi = (*JobConfigurationApiService)(&c.common)
-	c.JobDeploymentHistoryApi = (*JobDeploymentHistoryApiService)(&c.common)
-	c.JobDeploymentRestrictionApi = (*JobDeploymentRestrictionApiService)(&c.common)
-	c.JobEnvironmentVariableApi = (*JobEnvironmentVariableApiService)(&c.common)
-	c.JobMainCallsApi = (*JobMainCallsApiService)(&c.common)
-	c.JobMetricsApi = (*JobMetricsApiService)(&c.common)
-	c.JobSecretApi = (*JobSecretApiService)(&c.common)
-	c.JobsApi = (*JobsApiService)(&c.common)
-	c.MembersApi = (*MembersApiService)(&c.common)
-	c.OrganizationAccountGitRepositoriesApi = (*OrganizationAccountGitRepositoriesApiService)(&c.common)
-	c.OrganizationApiTokenApi = (*OrganizationApiTokenApiService)(&c.common)
-	c.OrganizationCustomRoleApi = (*OrganizationCustomRoleApiService)(&c.common)
-	c.OrganizationEventApi = (*OrganizationEventApiService)(&c.common)
-	c.OrganizationMainCallsApi = (*OrganizationMainCallsApiService)(&c.common)
-	c.OrganizationWebhookApi = (*OrganizationWebhookApiService)(&c.common)
-	c.ProjectDeploymentRuleApi = (*ProjectDeploymentRuleApiService)(&c.common)
-	c.ProjectEnvironmentVariableApi = (*ProjectEnvironmentVariableApiService)(&c.common)
-	c.ProjectMainCallsApi = (*ProjectMainCallsApiService)(&c.common)
-	c.ProjectSecretApi = (*ProjectSecretApiService)(&c.common)
-	c.ProjectsApi = (*ProjectsApiService)(&c.common)
-	c.ReferralRewardsApi = (*ReferralRewardsApiService)(&c.common)
-	c.UserSignUpApi = (*UserSignUpApiService)(&c.common)
-	c.VariableMainCallsApi = (*VariableMainCallsApiService)(&c.common)
+	c.AccountInfoAPI = (*AccountInfoAPIService)(&c.common)
+	c.ApplicationActionsAPI = (*ApplicationActionsAPIService)(&c.common)
+	c.ApplicationConfigurationAPI = (*ApplicationConfigurationAPIService)(&c.common)
+	c.ApplicationDeploymentHistoryAPI = (*ApplicationDeploymentHistoryAPIService)(&c.common)
+	c.ApplicationDeploymentRestrictionAPI = (*ApplicationDeploymentRestrictionAPIService)(&c.common)
+	c.ApplicationEnvironmentVariableAPI = (*ApplicationEnvironmentVariableAPIService)(&c.common)
+	c.ApplicationLogsAPI = (*ApplicationLogsAPIService)(&c.common)
+	c.ApplicationMainCallsAPI = (*ApplicationMainCallsAPIService)(&c.common)
+	c.ApplicationMetricsAPI = (*ApplicationMetricsAPIService)(&c.common)
+	c.ApplicationSecretAPI = (*ApplicationSecretAPIService)(&c.common)
+	c.ApplicationsAPI = (*ApplicationsAPIService)(&c.common)
+	c.BackupsAPI = (*BackupsAPIService)(&c.common)
+	c.BillingAPI = (*BillingAPIService)(&c.common)
+	c.CloudProviderAPI = (*CloudProviderAPIService)(&c.common)
+	c.CloudProviderCredentialsAPI = (*CloudProviderCredentialsAPIService)(&c.common)
+	c.ClustersAPI = (*ClustersAPIService)(&c.common)
+	c.ContainerActionsAPI = (*ContainerActionsAPIService)(&c.common)
+	c.ContainerConfigurationAPI = (*ContainerConfigurationAPIService)(&c.common)
+	c.ContainerCustomDomainAPI = (*ContainerCustomDomainAPIService)(&c.common)
+	c.ContainerDeploymentHistoryAPI = (*ContainerDeploymentHistoryAPIService)(&c.common)
+	c.ContainerEnvironmentVariableAPI = (*ContainerEnvironmentVariableAPIService)(&c.common)
+	c.ContainerLogsAPI = (*ContainerLogsAPIService)(&c.common)
+	c.ContainerMainCallsAPI = (*ContainerMainCallsAPIService)(&c.common)
+	c.ContainerMetricsAPI = (*ContainerMetricsAPIService)(&c.common)
+	c.ContainerRegistriesAPI = (*ContainerRegistriesAPIService)(&c.common)
+	c.ContainerSecretAPI = (*ContainerSecretAPIService)(&c.common)
+	c.ContainersAPI = (*ContainersAPIService)(&c.common)
+	c.CustomDomainAPI = (*CustomDomainAPIService)(&c.common)
+	c.DatabaseActionsAPI = (*DatabaseActionsAPIService)(&c.common)
+	c.DatabaseApplicationAPI = (*DatabaseApplicationAPIService)(&c.common)
+	c.DatabaseDeploymentHistoryAPI = (*DatabaseDeploymentHistoryAPIService)(&c.common)
+	c.DatabaseMainCallsAPI = (*DatabaseMainCallsAPIService)(&c.common)
+	c.DatabaseMetricsAPI = (*DatabaseMetricsAPIService)(&c.common)
+	c.DatabasesAPI = (*DatabasesAPIService)(&c.common)
+	c.DeploymentStageMainCallsAPI = (*DeploymentStageMainCallsAPIService)(&c.common)
+	c.EnvironmentAPI = (*EnvironmentAPIService)(&c.common)
+	c.EnvironmentActionsAPI = (*EnvironmentActionsAPIService)(&c.common)
+	c.EnvironmentDeploymentHistoryAPI = (*EnvironmentDeploymentHistoryAPIService)(&c.common)
+	c.EnvironmentDeploymentRuleAPI = (*EnvironmentDeploymentRuleAPIService)(&c.common)
+	c.EnvironmentExportAPI = (*EnvironmentExportAPIService)(&c.common)
+	c.EnvironmentLogsAPI = (*EnvironmentLogsAPIService)(&c.common)
+	c.EnvironmentMainCallsAPI = (*EnvironmentMainCallsAPIService)(&c.common)
+	c.EnvironmentSecretAPI = (*EnvironmentSecretAPIService)(&c.common)
+	c.EnvironmentVariableAPI = (*EnvironmentVariableAPIService)(&c.common)
+	c.EnvironmentsAPI = (*EnvironmentsAPIService)(&c.common)
+	c.GitRepositoriesAPI = (*GitRepositoriesAPIService)(&c.common)
+	c.GithubAppAPI = (*GithubAppAPIService)(&c.common)
+	c.JobActionsAPI = (*JobActionsAPIService)(&c.common)
+	c.JobConfigurationAPI = (*JobConfigurationAPIService)(&c.common)
+	c.JobDeploymentHistoryAPI = (*JobDeploymentHistoryAPIService)(&c.common)
+	c.JobDeploymentRestrictionAPI = (*JobDeploymentRestrictionAPIService)(&c.common)
+	c.JobEnvironmentVariableAPI = (*JobEnvironmentVariableAPIService)(&c.common)
+	c.JobMainCallsAPI = (*JobMainCallsAPIService)(&c.common)
+	c.JobMetricsAPI = (*JobMetricsAPIService)(&c.common)
+	c.JobSecretAPI = (*JobSecretAPIService)(&c.common)
+	c.JobsAPI = (*JobsAPIService)(&c.common)
+	c.MembersAPI = (*MembersAPIService)(&c.common)
+	c.OrganizationAccountGitRepositoriesAPI = (*OrganizationAccountGitRepositoriesAPIService)(&c.common)
+	c.OrganizationApiTokenAPI = (*OrganizationApiTokenAPIService)(&c.common)
+	c.OrganizationCustomRoleAPI = (*OrganizationCustomRoleAPIService)(&c.common)
+	c.OrganizationEventAPI = (*OrganizationEventAPIService)(&c.common)
+	c.OrganizationMainCallsAPI = (*OrganizationMainCallsAPIService)(&c.common)
+	c.OrganizationWebhookAPI = (*OrganizationWebhookAPIService)(&c.common)
+	c.ProjectDeploymentRuleAPI = (*ProjectDeploymentRuleAPIService)(&c.common)
+	c.ProjectEnvironmentVariableAPI = (*ProjectEnvironmentVariableAPIService)(&c.common)
+	c.ProjectMainCallsAPI = (*ProjectMainCallsAPIService)(&c.common)
+	c.ProjectSecretAPI = (*ProjectSecretAPIService)(&c.common)
+	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
+	c.ReferralRewardsAPI = (*ReferralRewardsAPIService)(&c.common)
+	c.UserSignUpAPI = (*UserSignUpAPIService)(&c.common)
+	c.VariableMainCallsAPI = (*VariableMainCallsAPIService)(&c.common)
 
 	return c
 }
@@ -331,33 +330,111 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 
 	// Check the type is as expected.
 	if reflect.TypeOf(obj).String() != expected {
-		return fmt.Errorf("Expected %s to be of type %s but received %s.", name, expected, reflect.TypeOf(obj).String())
+		return fmt.Errorf("expected %s to be of type %s but received %s", name, expected, reflect.TypeOf(obj).String())
 	}
 	return nil
 }
 
-// parameterToString convert interface{} parameters to string, using a delimiter if format is provided.
-func parameterToString(obj interface{}, collectionFormat string) string {
-	var delimiter string
+func parameterValueToString(obj interface{}, key string) string {
+	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
+		return fmt.Sprintf("%v", obj)
+	}
+	var param, ok = obj.(MappedNullable)
+	if !ok {
+		return ""
+	}
+	dataMap, err := param.ToMap()
+	if err != nil {
+		return ""
+	}
+	return fmt.Sprintf("%v", dataMap[key])
+}
 
-	switch collectionFormat {
-	case "pipes":
-		delimiter = "|"
-	case "ssv":
-		delimiter = " "
-	case "tsv":
-		delimiter = "\t"
-	case "csv":
-		delimiter = ","
+// parameterAddToHeaderOrQuery adds the provided object to the request header or url query
+// supporting deep object syntax
+func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
+	var v = reflect.ValueOf(obj)
+	var value = ""
+	if v == reflect.ValueOf(nil) {
+		value = "null"
+	} else {
+		switch v.Kind() {
+		case reflect.Invalid:
+			value = "invalid"
+
+		case reflect.Struct:
+			if t, ok := obj.(MappedNullable); ok {
+				dataMap, err := t.ToMap()
+				if err != nil {
+					return
+				}
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, collectionType)
+				return
+			}
+			if t, ok := obj.(time.Time); ok {
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
+				return
+			}
+			value = v.Type().String() + " value"
+		case reflect.Slice:
+			var indValue = reflect.ValueOf(obj)
+			if indValue == reflect.ValueOf(nil) {
+				return
+			}
+			var lenIndValue = indValue.Len()
+			for i := 0; i < lenIndValue; i++ {
+				var arrayValue = indValue.Index(i)
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
+			}
+			return
+
+		case reflect.Map:
+			var indValue = reflect.ValueOf(obj)
+			if indValue == reflect.ValueOf(nil) {
+				return
+			}
+			iter := indValue.MapRange()
+			for iter.Next() {
+				k, v := iter.Key(), iter.Value()
+				parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
+			}
+			return
+
+		case reflect.Interface:
+			fallthrough
+		case reflect.Ptr:
+			parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
+			return
+
+		case reflect.Int, reflect.Int8, reflect.Int16,
+			reflect.Int32, reflect.Int64:
+			value = strconv.FormatInt(v.Int(), 10)
+		case reflect.Uint, reflect.Uint8, reflect.Uint16,
+			reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+			value = strconv.FormatUint(v.Uint(), 10)
+		case reflect.Float32, reflect.Float64:
+			value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
+		case reflect.Bool:
+			value = strconv.FormatBool(v.Bool())
+		case reflect.String:
+			value = v.String()
+		default:
+			value = v.Type().String() + " value"
+		}
 	}
 
-	if reflect.TypeOf(obj).Kind() == reflect.Slice {
-		return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
-	} else if t, ok := obj.(time.Time); ok {
-		return t.Format(time.RFC3339)
+	switch valuesMap := headerOrQueryParams.(type) {
+	case url.Values:
+		if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
+			valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix)+","+value)
+		} else {
+			valuesMap.Add(keyPrefix, value)
+		}
+		break
+	case map[string]string:
+		valuesMap[keyPrefix] = value
+		break
 	}
-
-	return fmt.Sprintf("%v", obj)
 }
 
 // helper for converting interface{} parameters to json strings
@@ -509,7 +586,11 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Encode the parameters.
-	url.RawQuery = query.Encode()
+	url.RawQuery = queryParamSplit.ReplaceAllStringFunc(query.Encode(), func(s string) string {
+		pieces := strings.Split(s, "=")
+		pieces[0] = queryDescape.Replace(pieces[0])
+		return strings.Join(pieces, "=")
+	})
 
 	// Generate a new request
 	if body != nil {
@@ -539,22 +620,6 @@ func (c *APIClient) prepareRequest(
 
 		// Walk through any authentication.
 
-		// OAuth2 authentication
-		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
-			// We were able to grab an oauth2 token from the context
-			var latestToken *oauth2.Token
-			if latestToken, err = tok.Token(); err != nil {
-				return nil, err
-			}
-
-			latestToken.SetAuthHeader(localVarRequest)
-		}
-
-		// Basic HTTP Authentication
-		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
-			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
-		}
-
 		// AccessToken Authentication
 		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
@@ -576,8 +641,21 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		*s = string(b)
 		return nil
 	}
+	if f, ok := v.(*os.File); ok {
+		f, err = os.CreateTemp("", "HttpClientFile")
+		if err != nil {
+			return
+		}
+		_, err = f.Write(b)
+		if err != nil {
+			return
+		}
+		_, err = f.Seek(0, io.SeekStart)
+		err = os.Remove(f.Name())
+		return
+	}
 	if f, ok := v.(**os.File); ok {
-		*f, err = ioutil.TempFile("", "HttpClientFile")
+		*f, err = os.CreateTemp("", "HttpClientFile")
 		if err != nil {
 			return
 		}
@@ -586,6 +664,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Seek(0, io.SeekStart)
+		err = os.Remove((*f).Name())
 		return
 	}
 	if xmlCheck.MatchString(contentType) {
@@ -651,8 +730,8 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 
 	if reader, ok := body.(io.Reader); ok {
 		_, err = bodyBuf.ReadFrom(reader)
-	} else if fp, ok := body.(**os.File); ok {
-		_, err = bodyBuf.ReadFrom(*fp)
+	} else if fp, ok := body.(*os.File); ok {
+		_, err = bodyBuf.ReadFrom(fp)
 	} else if b, ok := body.([]byte); ok {
 		_, err = bodyBuf.Write(b)
 	} else if s, ok := body.(string); ok {
@@ -662,7 +741,11 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	} else if jsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
 	} else if xmlCheck.MatchString(contentType) {
-		err = xml.NewEncoder(bodyBuf).Encode(body)
+		var bs []byte
+		bs, err = xml.Marshal(body)
+		if err == nil {
+			bodyBuf.Write(bs)
+		}
 	}
 
 	if err != nil {
@@ -670,7 +753,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if bodyBuf.Len() == 0 {
-		err = fmt.Errorf("Invalid body type %s\n", contentType)
+		err = fmt.Errorf("invalid body type %s\n", contentType)
 		return nil, err
 	}
 	return bodyBuf, nil
@@ -771,4 +854,24 @@ func (e GenericOpenAPIError) Body() []byte {
 // Model returns the unpacked model of the error
 func (e GenericOpenAPIError) Model() interface{} {
 	return e.model
+}
+
+// format error message using title and detail when model implements rfc7807
+func formatErrorMessage(status string, v interface{}) string {
+	str := ""
+	metaValue := reflect.ValueOf(v).Elem()
+
+	if metaValue.Kind() == reflect.Struct {
+		field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
+		}
+
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+		}
+	}
+
+	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }

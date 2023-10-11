@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentLogsDetailsStage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLogsDetailsStage{}
+
 // EnvironmentLogsDetailsStage struct for EnvironmentLogsDetailsStage
 type EnvironmentLogsDetailsStage struct {
 	Step *string        `json:"step,omitempty"`
@@ -41,7 +44,7 @@ func NewEnvironmentLogsDetailsStageWithDefaults() *EnvironmentLogsDetailsStage {
 
 // GetStep returns the Step field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetailsStage) GetStep() string {
-	if o == nil || o.Step == nil {
+	if o == nil || IsNil(o.Step) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *EnvironmentLogsDetailsStage) GetStep() string {
 // GetStepOk returns a tuple with the Step field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsDetailsStage) GetStepOk() (*string, bool) {
-	if o == nil || o.Step == nil {
+	if o == nil || IsNil(o.Step) {
 		return nil, false
 	}
 	return o.Step, true
@@ -59,7 +62,7 @@ func (o *EnvironmentLogsDetailsStage) GetStepOk() (*string, bool) {
 
 // HasStep returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetailsStage) HasStep() bool {
-	if o != nil && o.Step != nil {
+	if o != nil && !IsNil(o.Step) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *EnvironmentLogsDetailsStage) SetStep(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentLogsDetailsStage) GetId() string {
-	if o == nil || o.Id.Get() == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *EnvironmentLogsDetailsStage) UnsetId() {
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentLogsDetailsStage) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
@@ -158,8 +161,16 @@ func (o *EnvironmentLogsDetailsStage) UnsetName() {
 }
 
 func (o EnvironmentLogsDetailsStage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLogsDetailsStage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Step != nil {
+	if !IsNil(o.Step) {
 		toSerialize["step"] = o.Step
 	}
 	if o.Id.IsSet() {
@@ -168,7 +179,7 @@ func (o EnvironmentLogsDetailsStage) MarshalJSON() ([]byte, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLogsDetailsStage struct {

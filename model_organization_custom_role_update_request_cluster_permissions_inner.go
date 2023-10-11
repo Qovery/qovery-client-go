@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationCustomRoleUpdateRequestClusterPermissionsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationCustomRoleUpdateRequestClusterPermissionsInner{}
+
 // OrganizationCustomRoleUpdateRequestClusterPermissionsInner struct for OrganizationCustomRoleUpdateRequestClusterPermissionsInner
 type OrganizationCustomRoleUpdateRequestClusterPermissionsInner struct {
 	ClusterId  *string                                  `json:"cluster_id,omitempty"`
@@ -40,7 +43,7 @@ func NewOrganizationCustomRoleUpdateRequestClusterPermissionsInnerWithDefaults()
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetClusterI
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -58,7 +61,7 @@ func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetClusterI
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) SetClusterI
 
 // GetPermission returns the Permission field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetPermission() OrganizationCustomRoleClusterPermission {
-	if o == nil || o.Permission == nil {
+	if o == nil || IsNil(o.Permission) {
 		var ret OrganizationCustomRoleClusterPermission
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetPermissi
 // GetPermissionOk returns a tuple with the Permission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetPermissionOk() (*OrganizationCustomRoleClusterPermission, bool) {
-	if o == nil || o.Permission == nil {
+	if o == nil || IsNil(o.Permission) {
 		return nil, false
 	}
 	return o.Permission, true
@@ -90,7 +93,7 @@ func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) GetPermissi
 
 // HasPermission returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) HasPermission() bool {
-	if o != nil && o.Permission != nil {
+	if o != nil && !IsNil(o.Permission) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) SetPermissi
 }
 
 func (o OrganizationCustomRoleUpdateRequestClusterPermissionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.Permission != nil {
-		toSerialize["permission"] = o.Permission
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationCustomRoleUpdateRequestClusterPermissionsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.Permission) {
+		toSerialize["permission"] = o.Permission
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationCustomRoleUpdateRequestClusterPermissionsInner struct {

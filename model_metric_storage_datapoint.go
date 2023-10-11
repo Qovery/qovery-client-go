@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the MetricStorageDatapoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricStorageDatapoint{}
+
 // MetricStorageDatapoint struct for MetricStorageDatapoint
 type MetricStorageDatapoint struct {
 	CreatedAt time.Time `json:"created_at"`
@@ -71,7 +74,7 @@ func (o *MetricStorageDatapoint) SetCreatedAt(v time.Time) {
 
 // GetRequestedInGb returns the RequestedInGb field value if set, zero value otherwise.
 func (o *MetricStorageDatapoint) GetRequestedInGb() int32 {
-	if o == nil || o.RequestedInGb == nil {
+	if o == nil || IsNil(o.RequestedInGb) {
 		var ret int32
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MetricStorageDatapoint) GetRequestedInGb() int32 {
 // GetRequestedInGbOk returns a tuple with the RequestedInGb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricStorageDatapoint) GetRequestedInGbOk() (*int32, bool) {
-	if o == nil || o.RequestedInGb == nil {
+	if o == nil || IsNil(o.RequestedInGb) {
 		return nil, false
 	}
 	return o.RequestedInGb, true
@@ -89,7 +92,7 @@ func (o *MetricStorageDatapoint) GetRequestedInGbOk() (*int32, bool) {
 
 // HasRequestedInGb returns a boolean if a field has been set.
 func (o *MetricStorageDatapoint) HasRequestedInGb() bool {
-	if o != nil && o.RequestedInGb != nil {
+	if o != nil && !IsNil(o.RequestedInGb) {
 		return true
 	}
 
@@ -103,7 +106,7 @@ func (o *MetricStorageDatapoint) SetRequestedInGb(v int32) {
 
 // GetConsumedInGb returns the ConsumedInGb field value if set, zero value otherwise.
 func (o *MetricStorageDatapoint) GetConsumedInGb() float32 {
-	if o == nil || o.ConsumedInGb == nil {
+	if o == nil || IsNil(o.ConsumedInGb) {
 		var ret float32
 		return ret
 	}
@@ -113,7 +116,7 @@ func (o *MetricStorageDatapoint) GetConsumedInGb() float32 {
 // GetConsumedInGbOk returns a tuple with the ConsumedInGb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricStorageDatapoint) GetConsumedInGbOk() (*float32, bool) {
-	if o == nil || o.ConsumedInGb == nil {
+	if o == nil || IsNil(o.ConsumedInGb) {
 		return nil, false
 	}
 	return o.ConsumedInGb, true
@@ -121,7 +124,7 @@ func (o *MetricStorageDatapoint) GetConsumedInGbOk() (*float32, bool) {
 
 // HasConsumedInGb returns a boolean if a field has been set.
 func (o *MetricStorageDatapoint) HasConsumedInGb() bool {
-	if o != nil && o.ConsumedInGb != nil {
+	if o != nil && !IsNil(o.ConsumedInGb) {
 		return true
 	}
 
@@ -158,20 +161,24 @@ func (o *MetricStorageDatapoint) SetConsumedInPercent(v float32) {
 }
 
 func (o MetricStorageDatapoint) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.RequestedInGb != nil {
-		toSerialize["requested_in_gb"] = o.RequestedInGb
-	}
-	if o.ConsumedInGb != nil {
-		toSerialize["consumed_in_gb"] = o.ConsumedInGb
-	}
-	if true {
-		toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricStorageDatapoint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.RequestedInGb) {
+		toSerialize["requested_in_gb"] = o.RequestedInGb
+	}
+	if !IsNil(o.ConsumedInGb) {
+		toSerialize["consumed_in_gb"] = o.ConsumedInGb
+	}
+	toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	return toSerialize, nil
 }
 
 type NullableMetricStorageDatapoint struct {

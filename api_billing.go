@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// BillingApiService BillingApi service
-type BillingApiService service
+// BillingAPIService BillingAPI service
+type BillingAPIService service
 
 type ApiAddCreditCardRequest struct {
 	ctx               context.Context
-	ApiService        *BillingApiService
+	ApiService        *BillingAPIService
 	organizationId    string
 	creditCardRequest *CreditCardRequest
 }
@@ -46,7 +46,7 @@ AddCreditCard Add credit card
  @param organizationId Organization ID
  @return ApiAddCreditCardRequest
 */
-func (a *BillingApiService) AddCreditCard(ctx context.Context, organizationId string) ApiAddCreditCardRequest {
+func (a *BillingAPIService) AddCreditCard(ctx context.Context, organizationId string) ApiAddCreditCardRequest {
 	return ApiAddCreditCardRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -56,7 +56,7 @@ func (a *BillingApiService) AddCreditCard(ctx context.Context, organizationId st
 
 // Execute executes the request
 //  @return CreditCard
-func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*CreditCard, *http.Response, error) {
+func (a *BillingAPIService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*CreditCard, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,13 +64,13 @@ func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*Cr
 		localVarReturnValue *CreditCard
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.AddCreditCard")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.AddCreditCard")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/creditCard"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -119,9 +119,9 @@ func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*Cr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +148,7 @@ func (a *BillingApiService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*Cr
 
 type ApiAddCreditCodeRequest struct {
 	ctx                           context.Context
-	ApiService                    *BillingApiService
+	ApiService                    *BillingAPIService
 	organizationId                string
 	organizationCreditCodeRequest *OrganizationCreditCodeRequest
 }
@@ -169,7 +169,7 @@ AddCreditCode Add credit code
  @param organizationId Organization ID
  @return ApiAddCreditCodeRequest
 */
-func (a *BillingApiService) AddCreditCode(ctx context.Context, organizationId string) ApiAddCreditCodeRequest {
+func (a *BillingAPIService) AddCreditCode(ctx context.Context, organizationId string) ApiAddCreditCodeRequest {
 	return ApiAddCreditCodeRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -178,20 +178,20 @@ func (a *BillingApiService) AddCreditCode(ctx context.Context, organizationId st
 }
 
 // Execute executes the request
-func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*http.Response, error) {
+func (a *BillingAPIService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.AddCreditCode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.AddCreditCode")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/creditCode"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -240,9 +240,9 @@ func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*ht
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -260,7 +260,7 @@ func (a *BillingApiService) AddCreditCodeExecute(r ApiAddCreditCodeRequest) (*ht
 
 type ApiChangePlanRequest struct {
 	ctx                           context.Context
-	ApiService                    *BillingApiService
+	ApiService                    *BillingAPIService
 	organizationId                string
 	organizationChangePlanRequest *OrganizationChangePlanRequest
 }
@@ -281,7 +281,7 @@ ChangePlan Change organization plan
  @param organizationId Organization ID
  @return ApiChangePlanRequest
 */
-func (a *BillingApiService) ChangePlan(ctx context.Context, organizationId string) ApiChangePlanRequest {
+func (a *BillingAPIService) ChangePlan(ctx context.Context, organizationId string) ApiChangePlanRequest {
 	return ApiChangePlanRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -291,7 +291,7 @@ func (a *BillingApiService) ChangePlan(ctx context.Context, organizationId strin
 
 // Execute executes the request
 //  @return Organization
-func (a *BillingApiService) ChangePlanExecute(r ApiChangePlanRequest) (*Organization, *http.Response, error) {
+func (a *BillingAPIService) ChangePlanExecute(r ApiChangePlanRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -299,13 +299,13 @@ func (a *BillingApiService) ChangePlanExecute(r ApiChangePlanRequest) (*Organiza
 		localVarReturnValue *Organization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.ChangePlan")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.ChangePlan")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/changePlan"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,9 +354,9 @@ func (a *BillingApiService) ChangePlanExecute(r ApiChangePlanRequest) (*Organiza
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -383,7 +383,7 @@ func (a *BillingApiService) ChangePlanExecute(r ApiChangePlanRequest) (*Organiza
 
 type ApiDeleteCreditCardRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 	creditCardId   string
 }
@@ -400,7 +400,7 @@ DeleteCreditCard Delete credit card
  @param creditCardId Credit Card ID
  @return ApiDeleteCreditCardRequest
 */
-func (a *BillingApiService) DeleteCreditCard(ctx context.Context, organizationId string, creditCardId string) ApiDeleteCreditCardRequest {
+func (a *BillingAPIService) DeleteCreditCard(ctx context.Context, organizationId string, creditCardId string) ApiDeleteCreditCardRequest {
 	return ApiDeleteCreditCardRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -410,21 +410,21 @@ func (a *BillingApiService) DeleteCreditCard(ctx context.Context, organizationId
 }
 
 // Execute executes the request
-func (a *BillingApiService) DeleteCreditCardExecute(r ApiDeleteCreditCardRequest) (*http.Response, error) {
+func (a *BillingAPIService) DeleteCreditCardExecute(r ApiDeleteCreditCardRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.DeleteCreditCard")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.DeleteCreditCard")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/creditCard/{creditCardId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"creditCardId"+"}", url.PathEscape(parameterToString(r.creditCardId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"creditCardId"+"}", url.PathEscape(parameterValueToString(r.creditCardId, "creditCardId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -471,9 +471,9 @@ func (a *BillingApiService) DeleteCreditCardExecute(r ApiDeleteCreditCardRequest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -491,7 +491,7 @@ func (a *BillingApiService) DeleteCreditCardExecute(r ApiDeleteCreditCardRequest
 
 type ApiEditOrganizationBillingInfoRequest struct {
 	ctx                context.Context
-	ApiService         *BillingApiService
+	ApiService         *BillingAPIService
 	organizationId     string
 	billingInfoRequest *BillingInfoRequest
 }
@@ -512,7 +512,7 @@ EditOrganizationBillingInfo Edit Organization Billing Info
  @param organizationId Organization ID
  @return ApiEditOrganizationBillingInfoRequest
 */
-func (a *BillingApiService) EditOrganizationBillingInfo(ctx context.Context, organizationId string) ApiEditOrganizationBillingInfoRequest {
+func (a *BillingAPIService) EditOrganizationBillingInfo(ctx context.Context, organizationId string) ApiEditOrganizationBillingInfoRequest {
 	return ApiEditOrganizationBillingInfoRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -522,7 +522,7 @@ func (a *BillingApiService) EditOrganizationBillingInfo(ctx context.Context, org
 
 // Execute executes the request
 //  @return BillingInfo
-func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
+func (a *BillingAPIService) EditOrganizationBillingInfoExecute(r ApiEditOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -530,13 +530,13 @@ func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganiza
 		localVarReturnValue *BillingInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.EditOrganizationBillingInfo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.EditOrganizationBillingInfo")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/billingInfo"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -585,9 +585,9 @@ func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganiza
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -614,7 +614,7 @@ func (a *BillingApiService) EditOrganizationBillingInfoExecute(r ApiEditOrganiza
 
 type ApiGetClusterCurrentCostRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 	clusterId      string
 }
@@ -635,7 +635,7 @@ But Qovery guarantees that the cost of your cluster will not exceed the max rang
  @param clusterId Cluster ID
  @return ApiGetClusterCurrentCostRequest
 */
-func (a *BillingApiService) GetClusterCurrentCost(ctx context.Context, organizationId string, clusterId string) ApiGetClusterCurrentCostRequest {
+func (a *BillingAPIService) GetClusterCurrentCost(ctx context.Context, organizationId string, clusterId string) ApiGetClusterCurrentCostRequest {
 	return ApiGetClusterCurrentCostRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -646,7 +646,7 @@ func (a *BillingApiService) GetClusterCurrentCost(ctx context.Context, organizat
 
 // Execute executes the request
 //  @return CostRange
-func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (*CostRange, *http.Response, error) {
+func (a *BillingAPIService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (*CostRange, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -654,14 +654,14 @@ func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentC
 		localVarReturnValue *CostRange
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetClusterCurrentCost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetClusterCurrentCost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/currentCost"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterToString(r.clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -708,9 +708,9 @@ func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -737,7 +737,7 @@ func (a *BillingApiService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentC
 
 type ApiGetOrganizationBillingInfoRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 }
 
@@ -752,7 +752,7 @@ GetOrganizationBillingInfo Get organization billing info
  @param organizationId Organization ID
  @return ApiGetOrganizationBillingInfoRequest
 */
-func (a *BillingApiService) GetOrganizationBillingInfo(ctx context.Context, organizationId string) ApiGetOrganizationBillingInfoRequest {
+func (a *BillingAPIService) GetOrganizationBillingInfo(ctx context.Context, organizationId string) ApiGetOrganizationBillingInfoRequest {
 	return ApiGetOrganizationBillingInfoRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -762,7 +762,7 @@ func (a *BillingApiService) GetOrganizationBillingInfo(ctx context.Context, orga
 
 // Execute executes the request
 //  @return BillingInfo
-func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
+func (a *BillingAPIService) GetOrganizationBillingInfoExecute(r ApiGetOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -770,13 +770,13 @@ func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizati
 		localVarReturnValue *BillingInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationBillingInfo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetOrganizationBillingInfo")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/billingInfo"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -823,9 +823,9 @@ func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -852,7 +852,7 @@ func (a *BillingApiService) GetOrganizationBillingInfoExecute(r ApiGetOrganizati
 
 type ApiGetOrganizationBillingStatusRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 }
 
@@ -873,7 +873,7 @@ This endpoint returns a "is_valid" boolean field reflecting the billing status o
  @param organizationId Organization ID
  @return ApiGetOrganizationBillingStatusRequest
 */
-func (a *BillingApiService) GetOrganizationBillingStatus(ctx context.Context, organizationId string) ApiGetOrganizationBillingStatusRequest {
+func (a *BillingAPIService) GetOrganizationBillingStatus(ctx context.Context, organizationId string) ApiGetOrganizationBillingStatusRequest {
 	return ApiGetOrganizationBillingStatusRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -883,7 +883,7 @@ func (a *BillingApiService) GetOrganizationBillingStatus(ctx context.Context, or
 
 // Execute executes the request
 //  @return BillingStatus
-func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganizationBillingStatusRequest) (*BillingStatus, *http.Response, error) {
+func (a *BillingAPIService) GetOrganizationBillingStatusExecute(r ApiGetOrganizationBillingStatusRequest) (*BillingStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -891,13 +891,13 @@ func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganiza
 		localVarReturnValue *BillingStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationBillingStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetOrganizationBillingStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/billingStatus"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -944,9 +944,9 @@ func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganiza
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -973,7 +973,7 @@ func (a *BillingApiService) GetOrganizationBillingStatusExecute(r ApiGetOrganiza
 
 type ApiGetOrganizationCurrentCostRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 }
 
@@ -988,7 +988,7 @@ GetOrganizationCurrentCost Get organization current cost
  @param organizationId Organization ID
  @return ApiGetOrganizationCurrentCostRequest
 */
-func (a *BillingApiService) GetOrganizationCurrentCost(ctx context.Context, organizationId string) ApiGetOrganizationCurrentCostRequest {
+func (a *BillingAPIService) GetOrganizationCurrentCost(ctx context.Context, organizationId string) ApiGetOrganizationCurrentCostRequest {
 	return ApiGetOrganizationCurrentCostRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -998,7 +998,7 @@ func (a *BillingApiService) GetOrganizationCurrentCost(ctx context.Context, orga
 
 // Execute executes the request
 //  @return OrganizationCurrentCost
-func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizationCurrentCostRequest) (*OrganizationCurrentCost, *http.Response, error) {
+func (a *BillingAPIService) GetOrganizationCurrentCostExecute(r ApiGetOrganizationCurrentCostRequest) (*OrganizationCurrentCost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1006,13 +1006,13 @@ func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizati
 		localVarReturnValue *OrganizationCurrentCost
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationCurrentCost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetOrganizationCurrentCost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/currentCost"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1059,9 +1059,9 @@ func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1088,7 +1088,7 @@ func (a *BillingApiService) GetOrganizationCurrentCostExecute(r ApiGetOrganizati
 
 type ApiGetOrganizationInvoiceRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 	invoiceId      string
 }
@@ -1105,7 +1105,7 @@ GetOrganizationInvoice Get organization invoice
  @param invoiceId Invoice ID
  @return ApiGetOrganizationInvoiceRequest
 */
-func (a *BillingApiService) GetOrganizationInvoice(ctx context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoiceRequest {
+func (a *BillingAPIService) GetOrganizationInvoice(ctx context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoiceRequest {
 	return ApiGetOrganizationInvoiceRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1116,7 +1116,7 @@ func (a *BillingApiService) GetOrganizationInvoice(ctx context.Context, organiza
 
 // Execute executes the request
 //  @return Invoice
-func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationInvoiceRequest) (*Invoice, *http.Response, error) {
+func (a *BillingAPIService) GetOrganizationInvoiceExecute(r ApiGetOrganizationInvoiceRequest) (*Invoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1124,14 +1124,14 @@ func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationIn
 		localVarReturnValue *Invoice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationInvoice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetOrganizationInvoice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/invoice/{invoiceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(parameterToString(r.invoiceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(parameterValueToString(r.invoiceId, "invoiceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1178,9 +1178,9 @@ func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationIn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1207,7 +1207,7 @@ func (a *BillingApiService) GetOrganizationInvoiceExecute(r ApiGetOrganizationIn
 
 type ApiGetOrganizationInvoicePDFRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 	invoiceId      string
 }
@@ -1226,7 +1226,7 @@ This will return URL of the invoice PDF
  @param invoiceId Invoice ID
  @return ApiGetOrganizationInvoicePDFRequest
 */
-func (a *BillingApiService) GetOrganizationInvoicePDF(ctx context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoicePDFRequest {
+func (a *BillingAPIService) GetOrganizationInvoicePDF(ctx context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoicePDFRequest {
 	return ApiGetOrganizationInvoicePDFRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1237,7 +1237,7 @@ func (a *BillingApiService) GetOrganizationInvoicePDF(ctx context.Context, organ
 
 // Execute executes the request
 //  @return Link
-func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizationInvoicePDFRequest) (*Link, *http.Response, error) {
+func (a *BillingAPIService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizationInvoicePDFRequest) (*Link, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1245,14 +1245,14 @@ func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizatio
 		localVarReturnValue *Link
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.GetOrganizationInvoicePDF")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetOrganizationInvoicePDF")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/invoice/{invoiceId}/download"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(parameterToString(r.invoiceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(parameterValueToString(r.invoiceId, "invoiceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1299,9 +1299,9 @@ func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizatio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1328,7 +1328,7 @@ func (a *BillingApiService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizatio
 
 type ApiListOrganizationCreditCardsRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 }
 
@@ -1343,7 +1343,7 @@ ListOrganizationCreditCards List organization credit cards
  @param organizationId Organization ID
  @return ApiListOrganizationCreditCardsRequest
 */
-func (a *BillingApiService) ListOrganizationCreditCards(ctx context.Context, organizationId string) ApiListOrganizationCreditCardsRequest {
+func (a *BillingAPIService) ListOrganizationCreditCards(ctx context.Context, organizationId string) ApiListOrganizationCreditCardsRequest {
 	return ApiListOrganizationCreditCardsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1353,7 +1353,7 @@ func (a *BillingApiService) ListOrganizationCreditCards(ctx context.Context, org
 
 // Execute executes the request
 //  @return CreditCardResponseList
-func (a *BillingApiService) ListOrganizationCreditCardsExecute(r ApiListOrganizationCreditCardsRequest) (*CreditCardResponseList, *http.Response, error) {
+func (a *BillingAPIService) ListOrganizationCreditCardsExecute(r ApiListOrganizationCreditCardsRequest) (*CreditCardResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1361,13 +1361,13 @@ func (a *BillingApiService) ListOrganizationCreditCardsExecute(r ApiListOrganiza
 		localVarReturnValue *CreditCardResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.ListOrganizationCreditCards")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.ListOrganizationCreditCards")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/creditCard"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1414,9 +1414,9 @@ func (a *BillingApiService) ListOrganizationCreditCardsExecute(r ApiListOrganiza
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1443,7 +1443,7 @@ func (a *BillingApiService) ListOrganizationCreditCardsExecute(r ApiListOrganiza
 
 type ApiListOrganizationInvoiceRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 }
 
@@ -1458,7 +1458,7 @@ ListOrganizationInvoice List organization invoices
  @param organizationId Organization ID
  @return ApiListOrganizationInvoiceRequest
 */
-func (a *BillingApiService) ListOrganizationInvoice(ctx context.Context, organizationId string) ApiListOrganizationInvoiceRequest {
+func (a *BillingAPIService) ListOrganizationInvoice(ctx context.Context, organizationId string) ApiListOrganizationInvoiceRequest {
 	return ApiListOrganizationInvoiceRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1468,7 +1468,7 @@ func (a *BillingApiService) ListOrganizationInvoice(ctx context.Context, organiz
 
 // Execute executes the request
 //  @return InvoiceResponseList
-func (a *BillingApiService) ListOrganizationInvoiceExecute(r ApiListOrganizationInvoiceRequest) (*InvoiceResponseList, *http.Response, error) {
+func (a *BillingAPIService) ListOrganizationInvoiceExecute(r ApiListOrganizationInvoiceRequest) (*InvoiceResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1476,13 +1476,13 @@ func (a *BillingApiService) ListOrganizationInvoiceExecute(r ApiListOrganization
 		localVarReturnValue *InvoiceResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.ListOrganizationInvoice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.ListOrganizationInvoice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/invoice"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1529,9 +1529,9 @@ func (a *BillingApiService) ListOrganizationInvoiceExecute(r ApiListOrganization
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1558,7 +1558,7 @@ func (a *BillingApiService) ListOrganizationInvoiceExecute(r ApiListOrganization
 
 type ApiOrganizationDownloadAllInvoicesRequest struct {
 	ctx            context.Context
-	ApiService     *BillingApiService
+	ApiService     *BillingAPIService
 	organizationId string
 }
 
@@ -1573,7 +1573,7 @@ OrganizationDownloadAllInvoices Download all invoices
  @param organizationId Organization ID
  @return ApiOrganizationDownloadAllInvoicesRequest
 */
-func (a *BillingApiService) OrganizationDownloadAllInvoices(ctx context.Context, organizationId string) ApiOrganizationDownloadAllInvoicesRequest {
+func (a *BillingAPIService) OrganizationDownloadAllInvoices(ctx context.Context, organizationId string) ApiOrganizationDownloadAllInvoicesRequest {
 	return ApiOrganizationDownloadAllInvoicesRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1582,20 +1582,20 @@ func (a *BillingApiService) OrganizationDownloadAllInvoices(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *BillingApiService) OrganizationDownloadAllInvoicesExecute(r ApiOrganizationDownloadAllInvoicesRequest) (*http.Response, error) {
+func (a *BillingAPIService) OrganizationDownloadAllInvoicesExecute(r ApiOrganizationDownloadAllInvoicesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingApiService.OrganizationDownloadAllInvoices")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.OrganizationDownloadAllInvoices")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/downloadInvoices"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1642,9 +1642,9 @@ func (a *BillingApiService) OrganizationDownloadAllInvoicesExecute(r ApiOrganiza
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

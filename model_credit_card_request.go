@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreditCardRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreditCardRequest{}
+
 // CreditCardRequest struct for CreditCardRequest
 type CreditCardRequest struct {
 	Number      string `json:"number"`
@@ -141,20 +144,20 @@ func (o *CreditCardRequest) SetExpiryYear(v int32) {
 }
 
 func (o CreditCardRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["number"] = o.Number
-	}
-	if true {
-		toSerialize["cvv"] = o.Cvv
-	}
-	if true {
-		toSerialize["expiry_month"] = o.ExpiryMonth
-	}
-	if true {
-		toSerialize["expiry_year"] = o.ExpiryYear
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreditCardRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["number"] = o.Number
+	toSerialize["cvv"] = o.Cvv
+	toSerialize["expiry_month"] = o.ExpiryMonth
+	toSerialize["expiry_year"] = o.ExpiryYear
+	return toSerialize, nil
 }
 
 type NullableCreditCardRequest struct {

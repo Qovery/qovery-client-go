@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentTotalNumber type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentTotalNumber{}
+
 // EnvironmentTotalNumber struct for EnvironmentTotalNumber
 type EnvironmentTotalNumber struct {
 	EnvironmentTotalNumber *float32 `json:"environment_total_number,omitempty"`
@@ -39,7 +42,7 @@ func NewEnvironmentTotalNumberWithDefaults() *EnvironmentTotalNumber {
 
 // GetEnvironmentTotalNumber returns the EnvironmentTotalNumber field value if set, zero value otherwise.
 func (o *EnvironmentTotalNumber) GetEnvironmentTotalNumber() float32 {
-	if o == nil || o.EnvironmentTotalNumber == nil {
+	if o == nil || IsNil(o.EnvironmentTotalNumber) {
 		var ret float32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EnvironmentTotalNumber) GetEnvironmentTotalNumber() float32 {
 // GetEnvironmentTotalNumberOk returns a tuple with the EnvironmentTotalNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentTotalNumber) GetEnvironmentTotalNumberOk() (*float32, bool) {
-	if o == nil || o.EnvironmentTotalNumber == nil {
+	if o == nil || IsNil(o.EnvironmentTotalNumber) {
 		return nil, false
 	}
 	return o.EnvironmentTotalNumber, true
@@ -57,7 +60,7 @@ func (o *EnvironmentTotalNumber) GetEnvironmentTotalNumberOk() (*float32, bool) 
 
 // HasEnvironmentTotalNumber returns a boolean if a field has been set.
 func (o *EnvironmentTotalNumber) HasEnvironmentTotalNumber() bool {
-	if o != nil && o.EnvironmentTotalNumber != nil {
+	if o != nil && !IsNil(o.EnvironmentTotalNumber) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *EnvironmentTotalNumber) SetEnvironmentTotalNumber(v float32) {
 }
 
 func (o EnvironmentTotalNumber) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.EnvironmentTotalNumber != nil {
-		toSerialize["environment_total_number"] = o.EnvironmentTotalNumber
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentTotalNumber) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EnvironmentTotalNumber) {
+		toSerialize["environment_total_number"] = o.EnvironmentTotalNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentTotalNumber struct {

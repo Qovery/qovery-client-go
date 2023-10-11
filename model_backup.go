@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Backup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Backup{}
+
 // Backup struct for Backup
 type Backup struct {
 	Id        string     `json:"id"`
@@ -97,7 +100,7 @@ func (o *Backup) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Backup) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -107,7 +110,7 @@ func (o *Backup) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Backup) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -115,7 +118,7 @@ func (o *Backup) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Backup) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *Backup) SetMessage(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Backup) GetStatus() Status {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret Status
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *Backup) GetStatus() Status {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Backup) GetStatusOk() (*Status, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -195,7 +198,7 @@ func (o *Backup) GetStatusOk() (*Status, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Backup) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -208,26 +211,26 @@ func (o *Backup) SetStatus(v Status) {
 }
 
 func (o Backup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["message"] = o.Message
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Backup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["name"] = o.Name
+	toSerialize["message"] = o.Message
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableBackup struct {

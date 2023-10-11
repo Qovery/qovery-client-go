@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the InviteMember type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InviteMember{}
+
 // InviteMember struct for InviteMember
 type InviteMember struct {
 	Id               string               `json:"id"`
@@ -106,7 +109,7 @@ func (o *InviteMember) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *InviteMember) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *InviteMember) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMember) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -124,7 +127,7 @@ func (o *InviteMember) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *InviteMember) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -234,7 +237,7 @@ func (o *InviteMember) SetInvitationStatus(v InviteStatusEnum) {
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *InviteMember) GetOrganizationName() string {
-	if o == nil || o.OrganizationName == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
@@ -244,7 +247,7 @@ func (o *InviteMember) GetOrganizationName() string {
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMember) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || o.OrganizationName == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
 	return o.OrganizationName, true
@@ -252,7 +255,7 @@ func (o *InviteMember) GetOrganizationNameOk() (*string, bool) {
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *InviteMember) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName != nil {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
@@ -290,7 +293,7 @@ func (o *InviteMember) SetInviter(v string) {
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise.
 func (o *InviteMember) GetLogoUrl() string {
-	if o == nil || o.LogoUrl == nil {
+	if o == nil || IsNil(o.LogoUrl) {
 		var ret string
 		return ret
 	}
@@ -300,7 +303,7 @@ func (o *InviteMember) GetLogoUrl() string {
 // GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMember) GetLogoUrlOk() (*string, bool) {
-	if o == nil || o.LogoUrl == nil {
+	if o == nil || IsNil(o.LogoUrl) {
 		return nil, false
 	}
 	return o.LogoUrl, true
@@ -308,7 +311,7 @@ func (o *InviteMember) GetLogoUrlOk() (*string, bool) {
 
 // HasLogoUrl returns a boolean if a field has been set.
 func (o *InviteMember) HasLogoUrl() bool {
-	if o != nil && o.LogoUrl != nil {
+	if o != nil && !IsNil(o.LogoUrl) {
 		return true
 	}
 
@@ -322,7 +325,7 @@ func (o *InviteMember) SetLogoUrl(v string) {
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise.
 func (o *InviteMember) GetRoleId() string {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		var ret string
 		return ret
 	}
@@ -332,7 +335,7 @@ func (o *InviteMember) GetRoleId() string {
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMember) GetRoleIdOk() (*string, bool) {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		return nil, false
 	}
 	return o.RoleId, true
@@ -340,7 +343,7 @@ func (o *InviteMember) GetRoleIdOk() (*string, bool) {
 
 // HasRoleId returns a boolean if a field has been set.
 func (o *InviteMember) HasRoleId() bool {
-	if o != nil && o.RoleId != nil {
+	if o != nil && !IsNil(o.RoleId) {
 		return true
 	}
 
@@ -354,7 +357,7 @@ func (o *InviteMember) SetRoleId(v string) {
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *InviteMember) GetRoleName() string {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		var ret string
 		return ret
 	}
@@ -364,7 +367,7 @@ func (o *InviteMember) GetRoleName() string {
 // GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMember) GetRoleNameOk() (*string, bool) {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		return nil, false
 	}
 	return o.RoleName, true
@@ -372,7 +375,7 @@ func (o *InviteMember) GetRoleNameOk() (*string, bool) {
 
 // HasRoleName returns a boolean if a field has been set.
 func (o *InviteMember) HasRoleName() bool {
-	if o != nil && o.RoleName != nil {
+	if o != nil && !IsNil(o.RoleName) {
 		return true
 	}
 
@@ -385,44 +388,38 @@ func (o *InviteMember) SetRoleName(v string) {
 }
 
 func (o InviteMember) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["role"] = o.Role
-	}
-	if true {
-		toSerialize["invitation_link"] = o.InvitationLink
-	}
-	if true {
-		toSerialize["invitation_status"] = o.InvitationStatus
-	}
-	if o.OrganizationName != nil {
-		toSerialize["organization_name"] = o.OrganizationName
-	}
-	if true {
-		toSerialize["inviter"] = o.Inviter
-	}
-	if o.LogoUrl != nil {
-		toSerialize["logo_url"] = o.LogoUrl
-	}
-	if o.RoleId != nil {
-		toSerialize["role_id"] = o.RoleId
-	}
-	if o.RoleName != nil {
-		toSerialize["role_name"] = o.RoleName
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InviteMember) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["email"] = o.Email
+	toSerialize["role"] = o.Role
+	toSerialize["invitation_link"] = o.InvitationLink
+	toSerialize["invitation_status"] = o.InvitationStatus
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organization_name"] = o.OrganizationName
+	}
+	toSerialize["inviter"] = o.Inviter
+	if !IsNil(o.LogoUrl) {
+		toSerialize["logo_url"] = o.LogoUrl
+	}
+	if !IsNil(o.RoleId) {
+		toSerialize["role_id"] = o.RoleId
+	}
+	if !IsNil(o.RoleName) {
+		toSerialize["role_name"] = o.RoleName
+	}
+	return toSerialize, nil
 }
 
 type NullableInviteMember struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentApplicationsSupportedLanguageList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentApplicationsSupportedLanguageList{}
+
 // EnvironmentApplicationsSupportedLanguageList struct for EnvironmentApplicationsSupportedLanguageList
 type EnvironmentApplicationsSupportedLanguageList struct {
 	Results []EnvironmentApplicationsSupportedLanguage `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewEnvironmentApplicationsSupportedLanguageListWithDefaults() *EnvironmentA
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsSupportedLanguageList) GetResults() []EnvironmentApplicationsSupportedLanguage {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []EnvironmentApplicationsSupportedLanguage
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EnvironmentApplicationsSupportedLanguageList) GetResults() []Environmen
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsSupportedLanguageList) GetResultsOk() ([]EnvironmentApplicationsSupportedLanguage, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *EnvironmentApplicationsSupportedLanguageList) GetResultsOk() ([]Environ
 
 // HasResults returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsSupportedLanguageList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *EnvironmentApplicationsSupportedLanguageList) SetResults(v []Environmen
 }
 
 func (o EnvironmentApplicationsSupportedLanguageList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentApplicationsSupportedLanguageList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentApplicationsSupportedLanguageList struct {

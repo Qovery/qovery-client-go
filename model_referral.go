@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Referral type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Referral{}
+
 // Referral struct for Referral
 type Referral struct {
 	TotalInvited   *int32  `json:"total_invited,omitempty"`
@@ -40,7 +43,7 @@ func NewReferralWithDefaults() *Referral {
 
 // GetTotalInvited returns the TotalInvited field value if set, zero value otherwise.
 func (o *Referral) GetTotalInvited() int32 {
-	if o == nil || o.TotalInvited == nil {
+	if o == nil || IsNil(o.TotalInvited) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *Referral) GetTotalInvited() int32 {
 // GetTotalInvitedOk returns a tuple with the TotalInvited field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Referral) GetTotalInvitedOk() (*int32, bool) {
-	if o == nil || o.TotalInvited == nil {
+	if o == nil || IsNil(o.TotalInvited) {
 		return nil, false
 	}
 	return o.TotalInvited, true
@@ -58,7 +61,7 @@ func (o *Referral) GetTotalInvitedOk() (*int32, bool) {
 
 // HasTotalInvited returns a boolean if a field has been set.
 func (o *Referral) HasTotalInvited() bool {
-	if o != nil && o.TotalInvited != nil {
+	if o != nil && !IsNil(o.TotalInvited) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *Referral) SetTotalInvited(v int32) {
 
 // GetInvitationLink returns the InvitationLink field value if set, zero value otherwise.
 func (o *Referral) GetInvitationLink() string {
-	if o == nil || o.InvitationLink == nil {
+	if o == nil || IsNil(o.InvitationLink) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *Referral) GetInvitationLink() string {
 // GetInvitationLinkOk returns a tuple with the InvitationLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Referral) GetInvitationLinkOk() (*string, bool) {
-	if o == nil || o.InvitationLink == nil {
+	if o == nil || IsNil(o.InvitationLink) {
 		return nil, false
 	}
 	return o.InvitationLink, true
@@ -90,7 +93,7 @@ func (o *Referral) GetInvitationLinkOk() (*string, bool) {
 
 // HasInvitationLink returns a boolean if a field has been set.
 func (o *Referral) HasInvitationLink() bool {
-	if o != nil && o.InvitationLink != nil {
+	if o != nil && !IsNil(o.InvitationLink) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *Referral) SetInvitationLink(v string) {
 }
 
 func (o Referral) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TotalInvited != nil {
-		toSerialize["total_invited"] = o.TotalInvited
-	}
-	if o.InvitationLink != nil {
-		toSerialize["invitation_link"] = o.InvitationLink
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Referral) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TotalInvited) {
+		toSerialize["total_invited"] = o.TotalInvited
+	}
+	if !IsNil(o.InvitationLink) {
+		toSerialize["invitation_link"] = o.InvitationLink
+	}
+	return toSerialize, nil
 }
 
 type NullableReferral struct {

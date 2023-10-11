@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ContainerEnvironmentVariableApiService ContainerEnvironmentVariableApi service
-type ContainerEnvironmentVariableApiService service
+// ContainerEnvironmentVariableAPIService ContainerEnvironmentVariableAPI service
+type ContainerEnvironmentVariableAPIService service
 
 type ApiCreateContainerEnvironmentVariableRequest struct {
 	ctx                        context.Context
-	ApiService                 *ContainerEnvironmentVariableApiService
+	ApiService                 *ContainerEnvironmentVariableAPIService
 	containerId                string
 	environmentVariableRequest *EnvironmentVariableRequest
 }
@@ -49,7 +49,7 @@ CreateContainerEnvironmentVariable Add an environment variable to the container
  @param containerId Container ID
  @return ApiCreateContainerEnvironmentVariableRequest
 */
-func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVariable(ctx context.Context, containerId string) ApiCreateContainerEnvironmentVariableRequest {
+func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariable(ctx context.Context, containerId string) ApiCreateContainerEnvironmentVariableRequest {
 	return ApiCreateContainerEnvironmentVariableRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -59,7 +59,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVariableExecute(r ApiCreateContainerEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableExecute(r ApiCreateContainerEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -67,13 +67,13 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableApiService.CreateContainerEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableAPIService.CreateContainerEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -122,9 +122,9 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -151,7 +151,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 
 type ApiCreateContainerEnvironmentVariableAliasRequest struct {
 	ctx                   context.Context
-	ApiService            *ContainerEnvironmentVariableApiService
+	ApiService            *ContainerEnvironmentVariableAPIService
 	containerId           string
 	environmentVariableId string
 	key                   *Key
@@ -182,7 +182,7 @@ CreateContainerEnvironmentVariableAlias Create an environment variable alias at 
  @param environmentVariableId Environment Variable ID
  @return ApiCreateContainerEnvironmentVariableAliasRequest
 */
-func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVariableAlias(ctx context.Context, containerId string, environmentVariableId string) ApiCreateContainerEnvironmentVariableAliasRequest {
+func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableAlias(ctx context.Context, containerId string, environmentVariableId string) ApiCreateContainerEnvironmentVariableAliasRequest {
 	return ApiCreateContainerEnvironmentVariableAliasRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -193,7 +193,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVariableAliasExecute(r ApiCreateContainerEnvironmentVariableAliasRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableAliasExecute(r ApiCreateContainerEnvironmentVariableAliasRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -201,14 +201,14 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableApiService.CreateContainerEnvironmentVariableAlias")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableAPIService.CreateContainerEnvironmentVariableAlias")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/environmentVariable/{environmentVariableId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -257,9 +257,9 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -286,7 +286,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 
 type ApiCreateContainerEnvironmentVariableOverrideRequest struct {
 	ctx                   context.Context
-	ApiService            *ContainerEnvironmentVariableApiService
+	ApiService            *ContainerEnvironmentVariableAPIService
 	containerId           string
 	environmentVariableId string
 	value                 *Value
@@ -316,7 +316,7 @@ CreateContainerEnvironmentVariableOverride Create an environment variable overri
  @param environmentVariableId Environment Variable ID
  @return ApiCreateContainerEnvironmentVariableOverrideRequest
 */
-func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVariableOverride(ctx context.Context, containerId string, environmentVariableId string) ApiCreateContainerEnvironmentVariableOverrideRequest {
+func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableOverride(ctx context.Context, containerId string, environmentVariableId string) ApiCreateContainerEnvironmentVariableOverrideRequest {
 	return ApiCreateContainerEnvironmentVariableOverrideRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -327,7 +327,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVariableOverrideExecute(r ApiCreateContainerEnvironmentVariableOverrideRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableOverrideExecute(r ApiCreateContainerEnvironmentVariableOverrideRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -335,14 +335,14 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableApiService.CreateContainerEnvironmentVariableOverride")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableAPIService.CreateContainerEnvironmentVariableOverride")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/environmentVariable/{environmentVariableId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -391,9 +391,9 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -420,7 +420,7 @@ func (a *ContainerEnvironmentVariableApiService) CreateContainerEnvironmentVaria
 
 type ApiDeleteContainerEnvironmentVariableRequest struct {
 	ctx                   context.Context
-	ApiService            *ContainerEnvironmentVariableApiService
+	ApiService            *ContainerEnvironmentVariableAPIService
 	containerId           string
 	environmentVariableId string
 }
@@ -442,7 +442,7 @@ DeleteContainerEnvironmentVariable Delete an environment variable from a contain
  @param environmentVariableId Environment Variable ID
  @return ApiDeleteContainerEnvironmentVariableRequest
 */
-func (a *ContainerEnvironmentVariableApiService) DeleteContainerEnvironmentVariable(ctx context.Context, containerId string, environmentVariableId string) ApiDeleteContainerEnvironmentVariableRequest {
+func (a *ContainerEnvironmentVariableAPIService) DeleteContainerEnvironmentVariable(ctx context.Context, containerId string, environmentVariableId string) ApiDeleteContainerEnvironmentVariableRequest {
 	return ApiDeleteContainerEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -452,21 +452,21 @@ func (a *ContainerEnvironmentVariableApiService) DeleteContainerEnvironmentVaria
 }
 
 // Execute executes the request
-func (a *ContainerEnvironmentVariableApiService) DeleteContainerEnvironmentVariableExecute(r ApiDeleteContainerEnvironmentVariableRequest) (*http.Response, error) {
+func (a *ContainerEnvironmentVariableAPIService) DeleteContainerEnvironmentVariableExecute(r ApiDeleteContainerEnvironmentVariableRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableApiService.DeleteContainerEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableAPIService.DeleteContainerEnvironmentVariable")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -513,9 +513,9 @@ func (a *ContainerEnvironmentVariableApiService) DeleteContainerEnvironmentVaria
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -533,7 +533,7 @@ func (a *ContainerEnvironmentVariableApiService) DeleteContainerEnvironmentVaria
 
 type ApiEditContainerEnvironmentVariableRequest struct {
 	ctx                            context.Context
-	ApiService                     *ContainerEnvironmentVariableApiService
+	ApiService                     *ContainerEnvironmentVariableAPIService
 	containerId                    string
 	environmentVariableId          string
 	environmentVariableEditRequest *EnvironmentVariableEditRequest
@@ -562,7 +562,7 @@ EditContainerEnvironmentVariable Edit an environment variable belonging to the c
  @param environmentVariableId Environment Variable ID
  @return ApiEditContainerEnvironmentVariableRequest
 */
-func (a *ContainerEnvironmentVariableApiService) EditContainerEnvironmentVariable(ctx context.Context, containerId string, environmentVariableId string) ApiEditContainerEnvironmentVariableRequest {
+func (a *ContainerEnvironmentVariableAPIService) EditContainerEnvironmentVariable(ctx context.Context, containerId string, environmentVariableId string) ApiEditContainerEnvironmentVariableRequest {
 	return ApiEditContainerEnvironmentVariableRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -573,7 +573,7 @@ func (a *ContainerEnvironmentVariableApiService) EditContainerEnvironmentVariabl
 
 // Execute executes the request
 //  @return EnvironmentVariable
-func (a *ContainerEnvironmentVariableApiService) EditContainerEnvironmentVariableExecute(r ApiEditContainerEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
+func (a *ContainerEnvironmentVariableAPIService) EditContainerEnvironmentVariableExecute(r ApiEditContainerEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -581,14 +581,14 @@ func (a *ContainerEnvironmentVariableApiService) EditContainerEnvironmentVariabl
 		localVarReturnValue *EnvironmentVariable
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableApiService.EditContainerEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableAPIService.EditContainerEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/environmentVariable/{environmentVariableId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterToString(r.environmentVariableId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentVariableId"+"}", url.PathEscape(parameterValueToString(r.environmentVariableId, "environmentVariableId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -640,9 +640,9 @@ func (a *ContainerEnvironmentVariableApiService) EditContainerEnvironmentVariabl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -669,7 +669,7 @@ func (a *ContainerEnvironmentVariableApiService) EditContainerEnvironmentVariabl
 
 type ApiImportContainerEnvironmentVariableRequest struct {
 	ctx                   context.Context
-	ApiService            *ContainerEnvironmentVariableApiService
+	ApiService            *ContainerEnvironmentVariableAPIService
 	containerId           string
 	variableImportRequest *VariableImportRequest
 }
@@ -692,7 +692,7 @@ Import environment variables in a defined scope, with a defined visibility.
  @param containerId Container ID
  @return ApiImportContainerEnvironmentVariableRequest
 */
-func (a *ContainerEnvironmentVariableApiService) ImportContainerEnvironmentVariable(ctx context.Context, containerId string) ApiImportContainerEnvironmentVariableRequest {
+func (a *ContainerEnvironmentVariableAPIService) ImportContainerEnvironmentVariable(ctx context.Context, containerId string) ApiImportContainerEnvironmentVariableRequest {
 	return ApiImportContainerEnvironmentVariableRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -702,7 +702,7 @@ func (a *ContainerEnvironmentVariableApiService) ImportContainerEnvironmentVaria
 
 // Execute executes the request
 //  @return VariableImport
-func (a *ContainerEnvironmentVariableApiService) ImportContainerEnvironmentVariableExecute(r ApiImportContainerEnvironmentVariableRequest) (*VariableImport, *http.Response, error) {
+func (a *ContainerEnvironmentVariableAPIService) ImportContainerEnvironmentVariableExecute(r ApiImportContainerEnvironmentVariableRequest) (*VariableImport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -710,13 +710,13 @@ func (a *ContainerEnvironmentVariableApiService) ImportContainerEnvironmentVaria
 		localVarReturnValue *VariableImport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableApiService.ImportContainerEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableAPIService.ImportContainerEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/environmentVariable/import"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -765,9 +765,9 @@ func (a *ContainerEnvironmentVariableApiService) ImportContainerEnvironmentVaria
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -794,7 +794,7 @@ func (a *ContainerEnvironmentVariableApiService) ImportContainerEnvironmentVaria
 
 type ApiListContainerEnvironmentVariableRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerEnvironmentVariableApiService
+	ApiService  *ContainerEnvironmentVariableAPIService
 	containerId string
 }
 
@@ -809,7 +809,7 @@ ListContainerEnvironmentVariable List environment variables
  @param containerId Container ID
  @return ApiListContainerEnvironmentVariableRequest
 */
-func (a *ContainerEnvironmentVariableApiService) ListContainerEnvironmentVariable(ctx context.Context, containerId string) ApiListContainerEnvironmentVariableRequest {
+func (a *ContainerEnvironmentVariableAPIService) ListContainerEnvironmentVariable(ctx context.Context, containerId string) ApiListContainerEnvironmentVariableRequest {
 	return ApiListContainerEnvironmentVariableRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -819,7 +819,7 @@ func (a *ContainerEnvironmentVariableApiService) ListContainerEnvironmentVariabl
 
 // Execute executes the request
 //  @return EnvironmentVariableResponseList
-func (a *ContainerEnvironmentVariableApiService) ListContainerEnvironmentVariableExecute(r ApiListContainerEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
+func (a *ContainerEnvironmentVariableAPIService) ListContainerEnvironmentVariableExecute(r ApiListContainerEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -827,13 +827,13 @@ func (a *ContainerEnvironmentVariableApiService) ListContainerEnvironmentVariabl
 		localVarReturnValue *EnvironmentVariableResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableApiService.ListContainerEnvironmentVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerEnvironmentVariableAPIService.ListContainerEnvironmentVariable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/environmentVariable"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -880,9 +880,9 @@ func (a *ContainerEnvironmentVariableApiService) ListContainerEnvironmentVariabl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

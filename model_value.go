@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Value type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Value{}
+
 // Value struct for Value
 type Value struct {
 	Value *string `json:"value,omitempty"`
@@ -39,7 +42,7 @@ func NewValueWithDefaults() *Value {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *Value) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *Value) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Value) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -57,7 +60,7 @@ func (o *Value) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *Value) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *Value) SetValue(v string) {
 }
 
 func (o Value) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Value) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableValue struct {

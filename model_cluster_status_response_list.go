@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterStatusResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterStatusResponseList{}
+
 // ClusterStatusResponseList struct for ClusterStatusResponseList
 type ClusterStatusResponseList struct {
 	Results []ClusterStatusGet `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewClusterStatusResponseListWithDefaults() *ClusterStatusResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ClusterStatusResponseList) GetResults() []ClusterStatusGet {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ClusterStatusGet
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ClusterStatusResponseList) GetResults() []ClusterStatusGet {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatusResponseList) GetResultsOk() ([]ClusterStatusGet, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ClusterStatusResponseList) GetResultsOk() ([]ClusterStatusGet, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *ClusterStatusResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ClusterStatusResponseList) SetResults(v []ClusterStatusGet) {
 }
 
 func (o ClusterStatusResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterStatusResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterStatusResponseList struct {

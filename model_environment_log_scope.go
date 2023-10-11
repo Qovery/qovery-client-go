@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentLogScope type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLogScope{}
+
 // EnvironmentLogScope struct for EnvironmentLogScope
 type EnvironmentLogScope struct {
 	Type *EnvironmentLogTypeEnum `json:"type,omitempty"`
@@ -41,7 +44,7 @@ func NewEnvironmentLogScopeWithDefaults() *EnvironmentLogScope {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *EnvironmentLogScope) GetType() EnvironmentLogTypeEnum {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret EnvironmentLogTypeEnum
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *EnvironmentLogScope) GetType() EnvironmentLogTypeEnum {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogScope) GetTypeOk() (*EnvironmentLogTypeEnum, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -59,7 +62,7 @@ func (o *EnvironmentLogScope) GetTypeOk() (*EnvironmentLogTypeEnum, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *EnvironmentLogScope) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *EnvironmentLogScope) SetType(v EnvironmentLogTypeEnum) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EnvironmentLogScope) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *EnvironmentLogScope) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogScope) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *EnvironmentLogScope) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *EnvironmentLogScope) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *EnvironmentLogScope) SetName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvironmentLogScope) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *EnvironmentLogScope) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogScope) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -123,7 +126,7 @@ func (o *EnvironmentLogScope) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvironmentLogScope) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *EnvironmentLogScope) SetId(v string) {
 }
 
 func (o EnvironmentLogScope) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLogScope) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLogScope struct {

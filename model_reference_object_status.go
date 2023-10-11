@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ReferenceObjectStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReferenceObjectStatus{}
+
 // ReferenceObjectStatus struct for ReferenceObjectStatus
 type ReferenceObjectStatus struct {
 	Id                      string                      `json:"id"`
@@ -120,7 +123,7 @@ func (o *ReferenceObjectStatus) SetServiceDeploymentStatus(v ServiceDeploymentSt
 
 // GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
 func (o *ReferenceObjectStatus) GetLastDeploymentDate() time.Time {
-	if o == nil || o.LastDeploymentDate == nil {
+	if o == nil || IsNil(o.LastDeploymentDate) {
 		var ret time.Time
 		return ret
 	}
@@ -130,7 +133,7 @@ func (o *ReferenceObjectStatus) GetLastDeploymentDate() time.Time {
 // GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReferenceObjectStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
-	if o == nil || o.LastDeploymentDate == nil {
+	if o == nil || IsNil(o.LastDeploymentDate) {
 		return nil, false
 	}
 	return o.LastDeploymentDate, true
@@ -138,7 +141,7 @@ func (o *ReferenceObjectStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
 
 // HasLastDeploymentDate returns a boolean if a field has been set.
 func (o *ReferenceObjectStatus) HasLastDeploymentDate() bool {
-	if o != nil && o.LastDeploymentDate != nil {
+	if o != nil && !IsNil(o.LastDeploymentDate) {
 		return true
 	}
 
@@ -152,7 +155,7 @@ func (o *ReferenceObjectStatus) SetLastDeploymentDate(v time.Time) {
 
 // GetIsPartLastDeployment returns the IsPartLastDeployment field value if set, zero value otherwise.
 func (o *ReferenceObjectStatus) GetIsPartLastDeployment() bool {
-	if o == nil || o.IsPartLastDeployment == nil {
+	if o == nil || IsNil(o.IsPartLastDeployment) {
 		var ret bool
 		return ret
 	}
@@ -162,7 +165,7 @@ func (o *ReferenceObjectStatus) GetIsPartLastDeployment() bool {
 // GetIsPartLastDeploymentOk returns a tuple with the IsPartLastDeployment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReferenceObjectStatus) GetIsPartLastDeploymentOk() (*bool, bool) {
-	if o == nil || o.IsPartLastDeployment == nil {
+	if o == nil || IsNil(o.IsPartLastDeployment) {
 		return nil, false
 	}
 	return o.IsPartLastDeployment, true
@@ -170,7 +173,7 @@ func (o *ReferenceObjectStatus) GetIsPartLastDeploymentOk() (*bool, bool) {
 
 // HasIsPartLastDeployment returns a boolean if a field has been set.
 func (o *ReferenceObjectStatus) HasIsPartLastDeployment() bool {
-	if o != nil && o.IsPartLastDeployment != nil {
+	if o != nil && !IsNil(o.IsPartLastDeployment) {
 		return true
 	}
 
@@ -184,7 +187,7 @@ func (o *ReferenceObjectStatus) SetIsPartLastDeployment(v bool) {
 
 // GetSteps returns the Steps field value if set, zero value otherwise.
 func (o *ReferenceObjectStatus) GetSteps() ServiceStepMetrics {
-	if o == nil || o.Steps == nil {
+	if o == nil || IsNil(o.Steps) {
 		var ret ServiceStepMetrics
 		return ret
 	}
@@ -194,7 +197,7 @@ func (o *ReferenceObjectStatus) GetSteps() ServiceStepMetrics {
 // GetStepsOk returns a tuple with the Steps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReferenceObjectStatus) GetStepsOk() (*ServiceStepMetrics, bool) {
-	if o == nil || o.Steps == nil {
+	if o == nil || IsNil(o.Steps) {
 		return nil, false
 	}
 	return o.Steps, true
@@ -202,7 +205,7 @@ func (o *ReferenceObjectStatus) GetStepsOk() (*ServiceStepMetrics, bool) {
 
 // HasSteps returns a boolean if a field has been set.
 func (o *ReferenceObjectStatus) HasSteps() bool {
-	if o != nil && o.Steps != nil {
+	if o != nil && !IsNil(o.Steps) {
 		return true
 	}
 
@@ -215,26 +218,28 @@ func (o *ReferenceObjectStatus) SetSteps(v ServiceStepMetrics) {
 }
 
 func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["state"] = o.State
-	}
-	if true {
-		toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus
-	}
-	if o.LastDeploymentDate != nil {
-		toSerialize["last_deployment_date"] = o.LastDeploymentDate
-	}
-	if o.IsPartLastDeployment != nil {
-		toSerialize["is_part_last_deployment"] = o.IsPartLastDeployment
-	}
-	if o.Steps != nil {
-		toSerialize["steps"] = o.Steps
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ReferenceObjectStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["state"] = o.State
+	toSerialize["service_deployment_status"] = o.ServiceDeploymentStatus
+	if !IsNil(o.LastDeploymentDate) {
+		toSerialize["last_deployment_date"] = o.LastDeploymentDate
+	}
+	if !IsNil(o.IsPartLastDeployment) {
+		toSerialize["is_part_last_deployment"] = o.IsPartLastDeployment
+	}
+	if !IsNil(o.Steps) {
+		toSerialize["steps"] = o.Steps
+	}
+	return toSerialize, nil
 }
 
 type NullableReferenceObjectStatus struct {

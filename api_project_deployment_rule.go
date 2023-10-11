@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ProjectDeploymentRuleApiService ProjectDeploymentRuleApi service
-type ProjectDeploymentRuleApiService service
+// ProjectDeploymentRuleAPIService ProjectDeploymentRuleAPI service
+type ProjectDeploymentRuleAPIService service
 
 type ApiCreateDeploymentRuleRequest struct {
 	ctx                          context.Context
-	ApiService                   *ProjectDeploymentRuleApiService
+	ApiService                   *ProjectDeploymentRuleAPIService
 	projectId                    string
 	projectDeploymentRuleRequest *ProjectDeploymentRuleRequest
 }
@@ -48,7 +48,7 @@ Create a deployment rule
  @param projectId Project ID
  @return ApiCreateDeploymentRuleRequest
 */
-func (a *ProjectDeploymentRuleApiService) CreateDeploymentRule(ctx context.Context, projectId string) ApiCreateDeploymentRuleRequest {
+func (a *ProjectDeploymentRuleAPIService) CreateDeploymentRule(ctx context.Context, projectId string) ApiCreateDeploymentRuleRequest {
 	return ApiCreateDeploymentRuleRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -58,7 +58,7 @@ func (a *ProjectDeploymentRuleApiService) CreateDeploymentRule(ctx context.Conte
 
 // Execute executes the request
 //  @return ProjectDeploymentRule
-func (a *ProjectDeploymentRuleApiService) CreateDeploymentRuleExecute(r ApiCreateDeploymentRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
+func (a *ProjectDeploymentRuleAPIService) CreateDeploymentRuleExecute(r ApiCreateDeploymentRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *ProjectDeploymentRuleApiService) CreateDeploymentRuleExecute(r ApiCreat
 		localVarReturnValue *ProjectDeploymentRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.CreateDeploymentRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleAPIService.CreateDeploymentRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/deploymentRule"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *ProjectDeploymentRuleApiService) CreateDeploymentRuleExecute(r ApiCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *ProjectDeploymentRuleApiService) CreateDeploymentRuleExecute(r ApiCreat
 
 type ApiDeleteProjectDeploymentRuleRequest struct {
 	ctx              context.Context
-	ApiService       *ProjectDeploymentRuleApiService
+	ApiService       *ProjectDeploymentRuleAPIService
 	projectId        string
 	deploymentRuleId string
 }
@@ -169,7 +169,7 @@ Delete a project deployment rule
  @param deploymentRuleId Deployment Rule ID
  @return ApiDeleteProjectDeploymentRuleRequest
 */
-func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRule(ctx context.Context, projectId string, deploymentRuleId string) ApiDeleteProjectDeploymentRuleRequest {
+func (a *ProjectDeploymentRuleAPIService) DeleteProjectDeploymentRule(ctx context.Context, projectId string, deploymentRuleId string) ApiDeleteProjectDeploymentRuleRequest {
 	return ApiDeleteProjectDeploymentRuleRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -179,21 +179,21 @@ func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRule(ctx contex
 }
 
 // Execute executes the request
-func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRuleExecute(r ApiDeleteProjectDeploymentRuleRequest) (*http.Response, error) {
+func (a *ProjectDeploymentRuleAPIService) DeleteProjectDeploymentRuleExecute(r ApiDeleteProjectDeploymentRuleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.DeleteProjectDeploymentRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleAPIService.DeleteProjectDeploymentRule")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/deploymentRule/{deploymentRuleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterToString(r.deploymentRuleId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterValueToString(r.deploymentRuleId, "deploymentRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -240,9 +240,9 @@ func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRuleExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -260,7 +260,7 @@ func (a *ProjectDeploymentRuleApiService) DeleteProjectDeploymentRuleExecute(r A
 
 type ApiEditProjectDeployemtnRuleRequest struct {
 	ctx                          context.Context
-	ApiService                   *ProjectDeploymentRuleApiService
+	ApiService                   *ProjectDeploymentRuleAPIService
 	projectId                    string
 	deploymentRuleId             string
 	projectDeploymentRuleRequest *ProjectDeploymentRuleRequest
@@ -285,7 +285,7 @@ Edit a project deployment rule
  @param deploymentRuleId Deployment Rule ID
  @return ApiEditProjectDeployemtnRuleRequest
 */
-func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRule(ctx context.Context, projectId string, deploymentRuleId string) ApiEditProjectDeployemtnRuleRequest {
+func (a *ProjectDeploymentRuleAPIService) EditProjectDeployemtnRule(ctx context.Context, projectId string, deploymentRuleId string) ApiEditProjectDeployemtnRuleRequest {
 	return ApiEditProjectDeployemtnRuleRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -296,7 +296,7 @@ func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRule(ctx context.
 
 // Execute executes the request
 //  @return ProjectDeploymentRule
-func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRuleExecute(r ApiEditProjectDeployemtnRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
+func (a *ProjectDeploymentRuleAPIService) EditProjectDeployemtnRuleExecute(r ApiEditProjectDeployemtnRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -304,14 +304,14 @@ func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRuleExecute(r Api
 		localVarReturnValue *ProjectDeploymentRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.EditProjectDeployemtnRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleAPIService.EditProjectDeployemtnRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/deploymentRule/{deploymentRuleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterToString(r.deploymentRuleId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterValueToString(r.deploymentRuleId, "deploymentRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -360,9 +360,9 @@ func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRuleExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -389,7 +389,7 @@ func (a *ProjectDeploymentRuleApiService) EditProjectDeployemtnRuleExecute(r Api
 
 type ApiGetProjectDeploymentRuleRequest struct {
 	ctx              context.Context
-	ApiService       *ProjectDeploymentRuleApiService
+	ApiService       *ProjectDeploymentRuleAPIService
 	projectId        string
 	deploymentRuleId string
 }
@@ -408,7 +408,7 @@ Get a project deployment rule
  @param deploymentRuleId Deployment Rule ID
  @return ApiGetProjectDeploymentRuleRequest
 */
-func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRule(ctx context.Context, projectId string, deploymentRuleId string) ApiGetProjectDeploymentRuleRequest {
+func (a *ProjectDeploymentRuleAPIService) GetProjectDeploymentRule(ctx context.Context, projectId string, deploymentRuleId string) ApiGetProjectDeploymentRuleRequest {
 	return ApiGetProjectDeploymentRuleRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -419,7 +419,7 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRule(ctx context.C
 
 // Execute executes the request
 //  @return ProjectDeploymentRule
-func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiGetProjectDeploymentRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
+func (a *ProjectDeploymentRuleAPIService) GetProjectDeploymentRuleExecute(r ApiGetProjectDeploymentRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -427,14 +427,14 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiG
 		localVarReturnValue *ProjectDeploymentRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.GetProjectDeploymentRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleAPIService.GetProjectDeploymentRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/deploymentRule/{deploymentRuleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterToString(r.deploymentRuleId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterValueToString(r.deploymentRuleId, "deploymentRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -481,9 +481,9 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,7 +510,7 @@ func (a *ProjectDeploymentRuleApiService) GetProjectDeploymentRuleExecute(r ApiG
 
 type ApiListProjectDeploymentRulesRequest struct {
 	ctx        context.Context
-	ApiService *ProjectDeploymentRuleApiService
+	ApiService *ProjectDeploymentRuleAPIService
 	projectId  string
 }
 
@@ -527,7 +527,7 @@ List project deployment rules
  @param projectId Project ID
  @return ApiListProjectDeploymentRulesRequest
 */
-func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRules(ctx context.Context, projectId string) ApiListProjectDeploymentRulesRequest {
+func (a *ProjectDeploymentRuleAPIService) ListProjectDeploymentRules(ctx context.Context, projectId string) ApiListProjectDeploymentRulesRequest {
 	return ApiListProjectDeploymentRulesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -537,7 +537,7 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRules(ctx context
 
 // Execute executes the request
 //  @return ProjectDeploymentRuleResponseList
-func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRulesExecute(r ApiListProjectDeploymentRulesRequest) (*ProjectDeploymentRuleResponseList, *http.Response, error) {
+func (a *ProjectDeploymentRuleAPIService) ListProjectDeploymentRulesExecute(r ApiListProjectDeploymentRulesRequest) (*ProjectDeploymentRuleResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -545,13 +545,13 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRulesExecute(r Ap
 		localVarReturnValue *ProjectDeploymentRuleResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.ListProjectDeploymentRules")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleAPIService.ListProjectDeploymentRules")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/deploymentRule"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -598,9 +598,9 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRulesExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -627,7 +627,7 @@ func (a *ProjectDeploymentRuleApiService) ListProjectDeploymentRulesExecute(r Ap
 
 type ApiUpdateDeploymentRulesPriorityOrderRequest struct {
 	ctx                                        context.Context
-	ApiService                                 *ProjectDeploymentRuleApiService
+	ApiService                                 *ProjectDeploymentRuleAPIService
 	projectId                                  string
 	projectDeploymentRulesPriorityOrderRequest *ProjectDeploymentRulesPriorityOrderRequest
 }
@@ -650,7 +650,7 @@ Update deployment rules priority order
  @param projectId Project ID
  @return ApiUpdateDeploymentRulesPriorityOrderRequest
 */
-func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrder(ctx context.Context, projectId string) ApiUpdateDeploymentRulesPriorityOrderRequest {
+func (a *ProjectDeploymentRuleAPIService) UpdateDeploymentRulesPriorityOrder(ctx context.Context, projectId string) ApiUpdateDeploymentRulesPriorityOrderRequest {
 	return ApiUpdateDeploymentRulesPriorityOrderRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -659,20 +659,20 @@ func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrder(ctx
 }
 
 // Execute executes the request
-func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrderExecute(r ApiUpdateDeploymentRulesPriorityOrderRequest) (*http.Response, error) {
+func (a *ProjectDeploymentRuleAPIService) UpdateDeploymentRulesPriorityOrderExecute(r ApiUpdateDeploymentRulesPriorityOrderRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPut
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleApiService.UpdateDeploymentRulesPriorityOrder")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentRuleAPIService.UpdateDeploymentRulesPriorityOrder")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/deploymentRule/order"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -721,9 +721,9 @@ func (a *ProjectDeploymentRuleApiService) UpdateDeploymentRulesPriorityOrderExec
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

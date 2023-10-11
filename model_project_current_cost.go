@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProjectCurrentCost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectCurrentCost{}
+
 // ProjectCurrentCost struct for ProjectCurrentCost
 type ProjectCurrentCost struct {
 	Id                    string                     `json:"id"`
@@ -143,7 +146,7 @@ func (o *ProjectCurrentCost) SetCost(v Cost) {
 
 // GetEnvironments returns the Environments field value if set, zero value otherwise.
 func (o *ProjectCurrentCost) GetEnvironments() []GenericObjectCurrentCost {
-	if o == nil || o.Environments == nil {
+	if o == nil || IsNil(o.Environments) {
 		var ret []GenericObjectCurrentCost
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *ProjectCurrentCost) GetEnvironments() []GenericObjectCurrentCost {
 // GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectCurrentCost) GetEnvironmentsOk() ([]GenericObjectCurrentCost, bool) {
-	if o == nil || o.Environments == nil {
+	if o == nil || IsNil(o.Environments) {
 		return nil, false
 	}
 	return o.Environments, true
@@ -161,7 +164,7 @@ func (o *ProjectCurrentCost) GetEnvironmentsOk() ([]GenericObjectCurrentCost, bo
 
 // HasEnvironments returns a boolean if a field has been set.
 func (o *ProjectCurrentCost) HasEnvironments() bool {
-	if o != nil && o.Environments != nil {
+	if o != nil && !IsNil(o.Environments) {
 		return true
 	}
 
@@ -174,23 +177,23 @@ func (o *ProjectCurrentCost) SetEnvironments(v []GenericObjectCurrentCost) {
 }
 
 func (o ProjectCurrentCost) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["consumed_time_in_seconds"] = o.ConsumedTimeInSeconds
-	}
-	if true {
-		toSerialize["cost"] = o.Cost
-	}
-	if o.Environments != nil {
-		toSerialize["environments"] = o.Environments
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProjectCurrentCost) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["consumed_time_in_seconds"] = o.ConsumedTimeInSeconds
+	toSerialize["cost"] = o.Cost
+	if !IsNil(o.Environments) {
+		toSerialize["environments"] = o.Environments
+	}
+	return toSerialize, nil
 }
 
 type NullableProjectCurrentCost struct {

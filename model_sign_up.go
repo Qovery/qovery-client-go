@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the SignUp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignUp{}
+
 // SignUp struct for SignUp
 type SignUp struct {
 	Id               string           `json:"id"`
@@ -109,7 +112,7 @@ func (o *SignUp) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *SignUp) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *SignUp) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignUp) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -127,7 +130,7 @@ func (o *SignUp) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *SignUp) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -261,7 +264,7 @@ func (o *SignUp) SetQoveryUsage(v string) {
 
 // GetCompanyName returns the CompanyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUp) GetCompanyName() string {
-	if o == nil || o.CompanyName.Get() == nil {
+	if o == nil || IsNil(o.CompanyName.Get()) {
 		var ret string
 		return ret
 	}
@@ -304,7 +307,7 @@ func (o *SignUp) UnsetCompanyName() {
 
 // GetCompanySize returns the CompanySize field value if set, zero value otherwise.
 func (o *SignUp) GetCompanySize() CompanySizeEnum {
-	if o == nil || o.CompanySize == nil {
+	if o == nil || IsNil(o.CompanySize) {
 		var ret CompanySizeEnum
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *SignUp) GetCompanySize() CompanySizeEnum {
 // GetCompanySizeOk returns a tuple with the CompanySize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignUp) GetCompanySizeOk() (*CompanySizeEnum, bool) {
-	if o == nil || o.CompanySize == nil {
+	if o == nil || IsNil(o.CompanySize) {
 		return nil, false
 	}
 	return o.CompanySize, true
@@ -322,7 +325,7 @@ func (o *SignUp) GetCompanySizeOk() (*CompanySizeEnum, bool) {
 
 // HasCompanySize returns a boolean if a field has been set.
 func (o *SignUp) HasCompanySize() bool {
-	if o != nil && o.CompanySize != nil {
+	if o != nil && !IsNil(o.CompanySize) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *SignUp) SetCompanySize(v CompanySizeEnum) {
 
 // GetUserRole returns the UserRole field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUp) GetUserRole() string {
-	if o == nil || o.UserRole.Get() == nil {
+	if o == nil || IsNil(o.UserRole.Get()) {
 		var ret string
 		return ret
 	}
@@ -379,7 +382,7 @@ func (o *SignUp) UnsetUserRole() {
 
 // GetQoveryUsageOther returns the QoveryUsageOther field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUp) GetQoveryUsageOther() string {
-	if o == nil || o.QoveryUsageOther.Get() == nil {
+	if o == nil || IsNil(o.QoveryUsageOther.Get()) {
 		var ret string
 		return ret
 	}
@@ -422,7 +425,7 @@ func (o *SignUp) UnsetQoveryUsageOther() {
 
 // GetUserQuestions returns the UserQuestions field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUp) GetUserQuestions() string {
-	if o == nil || o.UserQuestions.Get() == nil {
+	if o == nil || IsNil(o.UserQuestions.Get()) {
 		var ret string
 		return ret
 	}
@@ -465,7 +468,7 @@ func (o *SignUp) UnsetUserQuestions() {
 
 // GetCurrentStep returns the CurrentStep field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUp) GetCurrentStep() string {
-	if o == nil || o.CurrentStep.Get() == nil {
+	if o == nil || IsNil(o.CurrentStep.Get()) {
 		var ret string
 		return ret
 	}
@@ -508,7 +511,7 @@ func (o *SignUp) UnsetCurrentStep() {
 
 // GetDxAuth returns the DxAuth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUp) GetDxAuth() bool {
-	if o == nil || o.DxAuth.Get() == nil {
+	if o == nil || IsNil(o.DxAuth.Get()) {
 		var ret bool
 		return ret
 	}
@@ -550,35 +553,29 @@ func (o *SignUp) UnsetDxAuth() {
 }
 
 func (o SignUp) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SignUp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if true {
-		toSerialize["first_name"] = o.FirstName
-	}
-	if true {
-		toSerialize["last_name"] = o.LastName
-	}
-	if true {
-		toSerialize["user_email"] = o.UserEmail
-	}
-	if true {
-		toSerialize["type_of_use"] = o.TypeOfUse
-	}
-	if true {
-		toSerialize["qovery_usage"] = o.QoveryUsage
-	}
+	toSerialize["first_name"] = o.FirstName
+	toSerialize["last_name"] = o.LastName
+	toSerialize["user_email"] = o.UserEmail
+	toSerialize["type_of_use"] = o.TypeOfUse
+	toSerialize["qovery_usage"] = o.QoveryUsage
 	if o.CompanyName.IsSet() {
 		toSerialize["company_name"] = o.CompanyName.Get()
 	}
-	if o.CompanySize != nil {
+	if !IsNil(o.CompanySize) {
 		toSerialize["company_size"] = o.CompanySize
 	}
 	if o.UserRole.IsSet() {
@@ -596,7 +593,7 @@ func (o SignUp) MarshalJSON() ([]byte, error) {
 	if o.DxAuth.IsSet() {
 		toSerialize["dx_auth"] = o.DxAuth.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableSignUp struct {

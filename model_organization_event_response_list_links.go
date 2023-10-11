@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationEventResponseListLinks type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationEventResponseListLinks{}
+
 // OrganizationEventResponseListLinks struct for OrganizationEventResponseListLinks
 type OrganizationEventResponseListLinks struct {
 	Previous *string `json:"previous,omitempty"`
@@ -40,7 +43,7 @@ func NewOrganizationEventResponseListLinksWithDefaults() *OrganizationEventRespo
 
 // GetPrevious returns the Previous field value if set, zero value otherwise.
 func (o *OrganizationEventResponseListLinks) GetPrevious() string {
-	if o == nil || o.Previous == nil {
+	if o == nil || IsNil(o.Previous) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *OrganizationEventResponseListLinks) GetPrevious() string {
 // GetPreviousOk returns a tuple with the Previous field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponseListLinks) GetPreviousOk() (*string, bool) {
-	if o == nil || o.Previous == nil {
+	if o == nil || IsNil(o.Previous) {
 		return nil, false
 	}
 	return o.Previous, true
@@ -58,7 +61,7 @@ func (o *OrganizationEventResponseListLinks) GetPreviousOk() (*string, bool) {
 
 // HasPrevious returns a boolean if a field has been set.
 func (o *OrganizationEventResponseListLinks) HasPrevious() bool {
-	if o != nil && o.Previous != nil {
+	if o != nil && !IsNil(o.Previous) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *OrganizationEventResponseListLinks) SetPrevious(v string) {
 
 // GetNext returns the Next field value if set, zero value otherwise.
 func (o *OrganizationEventResponseListLinks) GetNext() string {
-	if o == nil || o.Next == nil {
+	if o == nil || IsNil(o.Next) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *OrganizationEventResponseListLinks) GetNext() string {
 // GetNextOk returns a tuple with the Next field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponseListLinks) GetNextOk() (*string, bool) {
-	if o == nil || o.Next == nil {
+	if o == nil || IsNil(o.Next) {
 		return nil, false
 	}
 	return o.Next, true
@@ -90,7 +93,7 @@ func (o *OrganizationEventResponseListLinks) GetNextOk() (*string, bool) {
 
 // HasNext returns a boolean if a field has been set.
 func (o *OrganizationEventResponseListLinks) HasNext() bool {
-	if o != nil && o.Next != nil {
+	if o != nil && !IsNil(o.Next) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *OrganizationEventResponseListLinks) SetNext(v string) {
 }
 
 func (o OrganizationEventResponseListLinks) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Previous != nil {
-		toSerialize["previous"] = o.Previous
-	}
-	if o.Next != nil {
-		toSerialize["next"] = o.Next
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationEventResponseListLinks) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Previous) {
+		toSerialize["previous"] = o.Previous
+	}
+	if !IsNil(o.Next) {
+		toSerialize["next"] = o.Next
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationEventResponseListLinks struct {

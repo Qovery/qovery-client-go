@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SecretAlias type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretAlias{}
+
 // SecretAlias struct for SecretAlias
 type SecretAlias struct {
 	Id           string               `json:"id"`
@@ -167,23 +170,21 @@ func (o *SecretAlias) SetVariableType(v APIVariableTypeEnum) {
 }
 
 func (o SecretAlias) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["mount_path"] = o.MountPath
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["variable_type"] = o.VariableType
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SecretAlias) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["key"] = o.Key
+	toSerialize["mount_path"] = o.MountPath
+	toSerialize["scope"] = o.Scope
+	toSerialize["variable_type"] = o.VariableType
+	return toSerialize, nil
 }
 
 type NullableSecretAlias struct {

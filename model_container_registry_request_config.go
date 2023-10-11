@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ContainerRegistryRequestConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContainerRegistryRequestConfig{}
+
 // ContainerRegistryRequestConfig This field is dependent of the container registry kind: * `ECR` needs in the config: region, access_key_id, secret_access_key * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key * `DOCKER_HUB` needs in the config (optional): username, password * `GITHUB_CR` needs in the config (optional): username, password * `GITLAB_CR` needs in the config (optional): username, password * `PUBLIC_ECR` doesn't need credentials info * `GENERIC_CR` needs in the config (optional): username, password * `DOCR` is not supported anymore
 type ContainerRegistryRequestConfig struct {
 	// Required if kind is `ECR` or `PUBLIC_ECR`
@@ -52,7 +55,7 @@ func NewContainerRegistryRequestConfigWithDefaults() *ContainerRegistryRequestCo
 
 // GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetAccessKeyId() string {
-	if o == nil || o.AccessKeyId == nil {
+	if o == nil || IsNil(o.AccessKeyId) {
 		var ret string
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *ContainerRegistryRequestConfig) GetAccessKeyId() string {
 // GetAccessKeyIdOk returns a tuple with the AccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequestConfig) GetAccessKeyIdOk() (*string, bool) {
-	if o == nil || o.AccessKeyId == nil {
+	if o == nil || IsNil(o.AccessKeyId) {
 		return nil, false
 	}
 	return o.AccessKeyId, true
@@ -70,7 +73,7 @@ func (o *ContainerRegistryRequestConfig) GetAccessKeyIdOk() (*string, bool) {
 
 // HasAccessKeyId returns a boolean if a field has been set.
 func (o *ContainerRegistryRequestConfig) HasAccessKeyId() bool {
-	if o != nil && o.AccessKeyId != nil {
+	if o != nil && !IsNil(o.AccessKeyId) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *ContainerRegistryRequestConfig) SetAccessKeyId(v string) {
 
 // GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetSecretAccessKey() string {
-	if o == nil || o.SecretAccessKey == nil {
+	if o == nil || IsNil(o.SecretAccessKey) {
 		var ret string
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *ContainerRegistryRequestConfig) GetSecretAccessKey() string {
 // GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequestConfig) GetSecretAccessKeyOk() (*string, bool) {
-	if o == nil || o.SecretAccessKey == nil {
+	if o == nil || IsNil(o.SecretAccessKey) {
 		return nil, false
 	}
 	return o.SecretAccessKey, true
@@ -102,7 +105,7 @@ func (o *ContainerRegistryRequestConfig) GetSecretAccessKeyOk() (*string, bool) 
 
 // HasSecretAccessKey returns a boolean if a field has been set.
 func (o *ContainerRegistryRequestConfig) HasSecretAccessKey() bool {
-	if o != nil && o.SecretAccessKey != nil {
+	if o != nil && !IsNil(o.SecretAccessKey) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *ContainerRegistryRequestConfig) SetSecretAccessKey(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *ContainerRegistryRequestConfig) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequestConfig) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -134,7 +137,7 @@ func (o *ContainerRegistryRequestConfig) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *ContainerRegistryRequestConfig) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *ContainerRegistryRequestConfig) SetRegion(v string) {
 
 // GetScalewayAccessKey returns the ScalewayAccessKey field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetScalewayAccessKey() string {
-	if o == nil || o.ScalewayAccessKey == nil {
+	if o == nil || IsNil(o.ScalewayAccessKey) {
 		var ret string
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *ContainerRegistryRequestConfig) GetScalewayAccessKey() string {
 // GetScalewayAccessKeyOk returns a tuple with the ScalewayAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequestConfig) GetScalewayAccessKeyOk() (*string, bool) {
-	if o == nil || o.ScalewayAccessKey == nil {
+	if o == nil || IsNil(o.ScalewayAccessKey) {
 		return nil, false
 	}
 	return o.ScalewayAccessKey, true
@@ -166,7 +169,7 @@ func (o *ContainerRegistryRequestConfig) GetScalewayAccessKeyOk() (*string, bool
 
 // HasScalewayAccessKey returns a boolean if a field has been set.
 func (o *ContainerRegistryRequestConfig) HasScalewayAccessKey() bool {
-	if o != nil && o.ScalewayAccessKey != nil {
+	if o != nil && !IsNil(o.ScalewayAccessKey) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *ContainerRegistryRequestConfig) SetScalewayAccessKey(v string) {
 
 // GetScalewaySecretKey returns the ScalewaySecretKey field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetScalewaySecretKey() string {
-	if o == nil || o.ScalewaySecretKey == nil {
+	if o == nil || IsNil(o.ScalewaySecretKey) {
 		var ret string
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *ContainerRegistryRequestConfig) GetScalewaySecretKey() string {
 // GetScalewaySecretKeyOk returns a tuple with the ScalewaySecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequestConfig) GetScalewaySecretKeyOk() (*string, bool) {
-	if o == nil || o.ScalewaySecretKey == nil {
+	if o == nil || IsNil(o.ScalewaySecretKey) {
 		return nil, false
 	}
 	return o.ScalewaySecretKey, true
@@ -198,7 +201,7 @@ func (o *ContainerRegistryRequestConfig) GetScalewaySecretKeyOk() (*string, bool
 
 // HasScalewaySecretKey returns a boolean if a field has been set.
 func (o *ContainerRegistryRequestConfig) HasScalewaySecretKey() bool {
-	if o != nil && o.ScalewaySecretKey != nil {
+	if o != nil && !IsNil(o.ScalewaySecretKey) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *ContainerRegistryRequestConfig) SetScalewaySecretKey(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *ContainerRegistryRequestConfig) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequestConfig) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -230,7 +233,7 @@ func (o *ContainerRegistryRequestConfig) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *ContainerRegistryRequestConfig) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *ContainerRegistryRequestConfig) SetUsername(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetPassword() string {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *ContainerRegistryRequestConfig) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryRequestConfig) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -262,7 +265,7 @@ func (o *ContainerRegistryRequestConfig) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *ContainerRegistryRequestConfig) HasPassword() bool {
-	if o != nil && o.Password != nil {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
@@ -275,29 +278,37 @@ func (o *ContainerRegistryRequestConfig) SetPassword(v string) {
 }
 
 func (o ContainerRegistryRequestConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccessKeyId != nil {
-		toSerialize["access_key_id"] = o.AccessKeyId
-	}
-	if o.SecretAccessKey != nil {
-		toSerialize["secret_access_key"] = o.SecretAccessKey
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
-	if o.ScalewayAccessKey != nil {
-		toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
-	}
-	if o.ScalewaySecretKey != nil {
-		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ContainerRegistryRequestConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessKeyId) {
+		toSerialize["access_key_id"] = o.AccessKeyId
+	}
+	if !IsNil(o.SecretAccessKey) {
+		toSerialize["secret_access_key"] = o.SecretAccessKey
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.ScalewayAccessKey) {
+		toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
+	}
+	if !IsNil(o.ScalewaySecretKey) {
+		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	return toSerialize, nil
 }
 
 type NullableContainerRegistryRequestConfig struct {

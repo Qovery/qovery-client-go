@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProjectDeploymentRuleResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectDeploymentRuleResponseList{}
+
 // ProjectDeploymentRuleResponseList struct for ProjectDeploymentRuleResponseList
 type ProjectDeploymentRuleResponseList struct {
 	Results []ProjectDeploymentRule `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewProjectDeploymentRuleResponseListWithDefaults() *ProjectDeploymentRuleRe
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ProjectDeploymentRuleResponseList) GetResults() []ProjectDeploymentRule {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ProjectDeploymentRule
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ProjectDeploymentRuleResponseList) GetResults() []ProjectDeploymentRule
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleResponseList) GetResultsOk() ([]ProjectDeploymentRule, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ProjectDeploymentRuleResponseList) GetResultsOk() ([]ProjectDeploymentR
 
 // HasResults returns a boolean if a field has been set.
 func (o *ProjectDeploymentRuleResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ProjectDeploymentRuleResponseList) SetResults(v []ProjectDeploymentRule
 }
 
 func (o ProjectDeploymentRuleResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProjectDeploymentRuleResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableProjectDeploymentRuleResponseList struct {

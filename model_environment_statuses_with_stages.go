@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentStatusesWithStages type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentStatusesWithStages{}
+
 // EnvironmentStatusesWithStages struct for EnvironmentStatusesWithStages
 type EnvironmentStatusesWithStages struct {
 	Environment *EnvironmentStatus                      `json:"environment,omitempty"`
@@ -40,7 +43,7 @@ func NewEnvironmentStatusesWithStagesWithDefaults() *EnvironmentStatusesWithStag
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *EnvironmentStatusesWithStages) GetEnvironment() EnvironmentStatus {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		var ret EnvironmentStatus
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EnvironmentStatusesWithStages) GetEnvironment() EnvironmentStatus {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatusesWithStages) GetEnvironmentOk() (*EnvironmentStatus, bool) {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -58,7 +61,7 @@ func (o *EnvironmentStatusesWithStages) GetEnvironmentOk() (*EnvironmentStatus, 
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *EnvironmentStatusesWithStages) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EnvironmentStatusesWithStages) SetEnvironment(v EnvironmentStatus) {
 
 // GetStages returns the Stages field value if set, zero value otherwise.
 func (o *EnvironmentStatusesWithStages) GetStages() DeploymentStageWithServiceStatusesList {
-	if o == nil || o.Stages == nil {
+	if o == nil || IsNil(o.Stages) {
 		var ret DeploymentStageWithServiceStatusesList
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EnvironmentStatusesWithStages) GetStages() DeploymentStageWithServiceSt
 // GetStagesOk returns a tuple with the Stages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatusesWithStages) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool) {
-	if o == nil || o.Stages == nil {
+	if o == nil || IsNil(o.Stages) {
 		return nil, false
 	}
 	return o.Stages, true
@@ -90,7 +93,7 @@ func (o *EnvironmentStatusesWithStages) GetStagesOk() (*DeploymentStageWithServi
 
 // HasStages returns a boolean if a field has been set.
 func (o *EnvironmentStatusesWithStages) HasStages() bool {
-	if o != nil && o.Stages != nil {
+	if o != nil && !IsNil(o.Stages) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *EnvironmentStatusesWithStages) SetStages(v DeploymentStageWithServiceSt
 }
 
 func (o EnvironmentStatusesWithStages) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Environment != nil {
-		toSerialize["environment"] = o.Environment
-	}
-	if o.Stages != nil {
-		toSerialize["stages"] = o.Stages
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentStatusesWithStages) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Stages) {
+		toSerialize["stages"] = o.Stages
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentStatusesWithStages struct {

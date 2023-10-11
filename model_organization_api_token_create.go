@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the OrganizationApiTokenCreate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationApiTokenCreate{}
+
 // OrganizationApiTokenCreate struct for OrganizationApiTokenCreate
 type OrganizationApiTokenCreate struct {
 	Id          string     `json:"id"`
@@ -98,7 +101,7 @@ func (o *OrganizationApiTokenCreate) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *OrganizationApiTokenCreate) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *OrganizationApiTokenCreate) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenCreate) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -116,7 +119,7 @@ func (o *OrganizationApiTokenCreate) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *OrganizationApiTokenCreate) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -130,7 +133,7 @@ func (o *OrganizationApiTokenCreate) SetUpdatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *OrganizationApiTokenCreate) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *OrganizationApiTokenCreate) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenCreate) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -148,7 +151,7 @@ func (o *OrganizationApiTokenCreate) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *OrganizationApiTokenCreate) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -162,7 +165,7 @@ func (o *OrganizationApiTokenCreate) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OrganizationApiTokenCreate) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -172,7 +175,7 @@ func (o *OrganizationApiTokenCreate) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenCreate) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -180,7 +183,7 @@ func (o *OrganizationApiTokenCreate) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OrganizationApiTokenCreate) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -194,7 +197,7 @@ func (o *OrganizationApiTokenCreate) SetDescription(v string) {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *OrganizationApiTokenCreate) GetToken() string {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -204,7 +207,7 @@ func (o *OrganizationApiTokenCreate) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenCreate) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
 	return o.Token, true
@@ -212,7 +215,7 @@ func (o *OrganizationApiTokenCreate) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *OrganizationApiTokenCreate) HasToken() bool {
-	if o != nil && o.Token != nil {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
@@ -226,7 +229,7 @@ func (o *OrganizationApiTokenCreate) SetToken(v string) {
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *OrganizationApiTokenCreate) GetRoleName() string {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		var ret string
 		return ret
 	}
@@ -236,7 +239,7 @@ func (o *OrganizationApiTokenCreate) GetRoleName() string {
 // GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenCreate) GetRoleNameOk() (*string, bool) {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		return nil, false
 	}
 	return o.RoleName, true
@@ -244,7 +247,7 @@ func (o *OrganizationApiTokenCreate) GetRoleNameOk() (*string, bool) {
 
 // HasRoleName returns a boolean if a field has been set.
 func (o *OrganizationApiTokenCreate) HasRoleName() bool {
-	if o != nil && o.RoleName != nil {
+	if o != nil && !IsNil(o.RoleName) {
 		return true
 	}
 
@@ -258,7 +261,7 @@ func (o *OrganizationApiTokenCreate) SetRoleName(v string) {
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise.
 func (o *OrganizationApiTokenCreate) GetRoleId() string {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		var ret string
 		return ret
 	}
@@ -268,7 +271,7 @@ func (o *OrganizationApiTokenCreate) GetRoleId() string {
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenCreate) GetRoleIdOk() (*string, bool) {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		return nil, false
 	}
 	return o.RoleId, true
@@ -276,7 +279,7 @@ func (o *OrganizationApiTokenCreate) GetRoleIdOk() (*string, bool) {
 
 // HasRoleId returns a boolean if a field has been set.
 func (o *OrganizationApiTokenCreate) HasRoleId() bool {
-	if o != nil && o.RoleId != nil {
+	if o != nil && !IsNil(o.RoleId) {
 		return true
 	}
 
@@ -289,32 +292,36 @@ func (o *OrganizationApiTokenCreate) SetRoleId(v string) {
 }
 
 func (o OrganizationApiTokenCreate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
-	}
-	if o.RoleName != nil {
-		toSerialize["role_name"] = o.RoleName
-	}
-	if o.RoleId != nil {
-		toSerialize["role_id"] = o.RoleId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationApiTokenCreate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.RoleName) {
+		toSerialize["role_name"] = o.RoleName
+	}
+	if !IsNil(o.RoleId) {
+		toSerialize["role_id"] = o.RoleId
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationApiTokenCreate struct {

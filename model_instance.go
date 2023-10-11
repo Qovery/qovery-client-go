@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Instance type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Instance{}
+
 // Instance struct for Instance
 type Instance struct {
 	CreatedAt *time.Time                            `json:"created_at,omitempty"`
@@ -43,7 +46,7 @@ func NewInstanceWithDefaults() *Instance {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Instance) GetCreatedAt() time.Time {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *Instance) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Instance) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -61,7 +64,7 @@ func (o *Instance) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Instance) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *Instance) SetCreatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Instance) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *Instance) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Instance) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -93,7 +96,7 @@ func (o *Instance) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Instance) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *Instance) SetName(v string) {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *Instance) GetCpu() EnvironmentDatabasesCurrentMetricCpu {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret EnvironmentDatabasesCurrentMetricCpu
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *Instance) GetCpu() EnvironmentDatabasesCurrentMetricCpu {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Instance) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -125,7 +128,7 @@ func (o *Instance) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *Instance) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *Instance) SetCpu(v EnvironmentDatabasesCurrentMetricCpu) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *Instance) GetMemory() InstanceMemory {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret InstanceMemory
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *Instance) GetMemory() InstanceMemory {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Instance) GetMemoryOk() (*InstanceMemory, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -157,7 +160,7 @@ func (o *Instance) GetMemoryOk() (*InstanceMemory, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *Instance) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -170,20 +173,28 @@ func (o *Instance) SetMemory(v InstanceMemory) {
 }
 
 func (o Instance) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Instance) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Cpu) {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if !IsNil(o.Memory) {
+		toSerialize["memory"] = o.Memory
+	}
+	return toSerialize, nil
 }
 
 type NullableInstance struct {

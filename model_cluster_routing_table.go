@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterRoutingTable type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterRoutingTable{}
+
 // ClusterRoutingTable struct for ClusterRoutingTable
 type ClusterRoutingTable struct {
 	Results []ClusterRoutingTableResultsInner `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewClusterRoutingTableWithDefaults() *ClusterRoutingTable {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ClusterRoutingTable) GetResults() []ClusterRoutingTableResultsInner {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ClusterRoutingTableResultsInner
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ClusterRoutingTable) GetResults() []ClusterRoutingTableResultsInner {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTable) GetResultsOk() ([]ClusterRoutingTableResultsInner, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ClusterRoutingTable) GetResultsOk() ([]ClusterRoutingTableResultsInner,
 
 // HasResults returns a boolean if a field has been set.
 func (o *ClusterRoutingTable) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ClusterRoutingTable) SetResults(v []ClusterRoutingTableResultsInner) {
 }
 
 func (o ClusterRoutingTable) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterRoutingTable) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterRoutingTable struct {

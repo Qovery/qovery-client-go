@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobConfigurationApiService JobConfigurationApi service
-type JobConfigurationApiService service
+// JobConfigurationAPIService JobConfigurationAPI service
+type JobConfigurationAPIService service
 
 type ApiEditJobAdvancedSettingsRequest struct {
 	ctx                 context.Context
-	ApiService          *JobConfigurationApiService
+	ApiService          *JobConfigurationAPIService
 	jobId               string
 	jobAdvancedSettings *JobAdvancedSettings
 }
@@ -48,7 +48,7 @@ Edit advanced settings by returning table of advanced settings.
  @param jobId Job ID
  @return ApiEditJobAdvancedSettingsRequest
 */
-func (a *JobConfigurationApiService) EditJobAdvancedSettings(ctx context.Context, jobId string) ApiEditJobAdvancedSettingsRequest {
+func (a *JobConfigurationAPIService) EditJobAdvancedSettings(ctx context.Context, jobId string) ApiEditJobAdvancedSettingsRequest {
 	return ApiEditJobAdvancedSettingsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -58,7 +58,7 @@ func (a *JobConfigurationApiService) EditJobAdvancedSettings(ctx context.Context
 
 // Execute executes the request
 //  @return JobAdvancedSettings
-func (a *JobConfigurationApiService) EditJobAdvancedSettingsExecute(r ApiEditJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
+func (a *JobConfigurationAPIService) EditJobAdvancedSettingsExecute(r ApiEditJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *JobConfigurationApiService) EditJobAdvancedSettingsExecute(r ApiEditJob
 		localVarReturnValue *JobAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobConfigurationApiService.EditJobAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobConfigurationAPIService.EditJobAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *JobConfigurationApiService) EditJobAdvancedSettingsExecute(r ApiEditJob
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *JobConfigurationApiService) EditJobAdvancedSettingsExecute(r ApiEditJob
 
 type ApiGetJobAdvancedSettingsRequest struct {
 	ctx        context.Context
-	ApiService *JobConfigurationApiService
+	ApiService *JobConfigurationAPIService
 	jobId      string
 }
 
@@ -167,7 +167,7 @@ Get list and values of the advanced settings of the job.
  @param jobId Job ID
  @return ApiGetJobAdvancedSettingsRequest
 */
-func (a *JobConfigurationApiService) GetJobAdvancedSettings(ctx context.Context, jobId string) ApiGetJobAdvancedSettingsRequest {
+func (a *JobConfigurationAPIService) GetJobAdvancedSettings(ctx context.Context, jobId string) ApiGetJobAdvancedSettingsRequest {
 	return ApiGetJobAdvancedSettingsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -177,7 +177,7 @@ func (a *JobConfigurationApiService) GetJobAdvancedSettings(ctx context.Context,
 
 // Execute executes the request
 //  @return JobAdvancedSettings
-func (a *JobConfigurationApiService) GetJobAdvancedSettingsExecute(r ApiGetJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
+func (a *JobConfigurationAPIService) GetJobAdvancedSettingsExecute(r ApiGetJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -185,13 +185,13 @@ func (a *JobConfigurationApiService) GetJobAdvancedSettingsExecute(r ApiGetJobAd
 		localVarReturnValue *JobAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobConfigurationApiService.GetJobAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobConfigurationAPIService.GetJobAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -238,9 +238,9 @@ func (a *JobConfigurationApiService) GetJobAdvancedSettingsExecute(r ApiGetJobAd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

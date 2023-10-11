@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the BillingEnd type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillingEnd{}
+
 // BillingEnd struct for BillingEnd
 type BillingEnd struct {
 	BillingEndedOn *time.Time `json:"billing_ended_on,omitempty"`
@@ -40,7 +43,7 @@ func NewBillingEndWithDefaults() *BillingEnd {
 
 // GetBillingEndedOn returns the BillingEndedOn field value if set, zero value otherwise.
 func (o *BillingEnd) GetBillingEndedOn() time.Time {
-	if o == nil || o.BillingEndedOn == nil {
+	if o == nil || IsNil(o.BillingEndedOn) {
 		var ret time.Time
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *BillingEnd) GetBillingEndedOn() time.Time {
 // GetBillingEndedOnOk returns a tuple with the BillingEndedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingEnd) GetBillingEndedOnOk() (*time.Time, bool) {
-	if o == nil || o.BillingEndedOn == nil {
+	if o == nil || IsNil(o.BillingEndedOn) {
 		return nil, false
 	}
 	return o.BillingEndedOn, true
@@ -58,7 +61,7 @@ func (o *BillingEnd) GetBillingEndedOnOk() (*time.Time, bool) {
 
 // HasBillingEndedOn returns a boolean if a field has been set.
 func (o *BillingEnd) HasBillingEndedOn() bool {
-	if o != nil && o.BillingEndedOn != nil {
+	if o != nil && !IsNil(o.BillingEndedOn) {
 		return true
 	}
 
@@ -71,11 +74,19 @@ func (o *BillingEnd) SetBillingEndedOn(v time.Time) {
 }
 
 func (o BillingEnd) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BillingEndedOn != nil {
-		toSerialize["billing_ended_on"] = o.BillingEndedOn
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillingEnd) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BillingEndedOn) {
+		toSerialize["billing_ended_on"] = o.BillingEndedOn
+	}
+	return toSerialize, nil
 }
 
 type NullableBillingEnd struct {

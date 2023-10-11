@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreditCardResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreditCardResponseList{}
+
 // CreditCardResponseList struct for CreditCardResponseList
 type CreditCardResponseList struct {
 	Results []CreditCard `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewCreditCardResponseListWithDefaults() *CreditCardResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *CreditCardResponseList) GetResults() []CreditCard {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []CreditCard
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CreditCardResponseList) GetResults() []CreditCard {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreditCardResponseList) GetResultsOk() ([]CreditCard, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *CreditCardResponseList) GetResultsOk() ([]CreditCard, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *CreditCardResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *CreditCardResponseList) SetResults(v []CreditCard) {
 }
 
 func (o CreditCardResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreditCardResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableCreditCardResponseList struct {

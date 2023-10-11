@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudProvider{}
+
 // CloudProvider struct for CloudProvider
 type CloudProvider struct {
 	ShortName *string         `json:"short_name,omitempty"`
@@ -42,7 +45,7 @@ func NewCloudProviderWithDefaults() *CloudProvider {
 
 // GetShortName returns the ShortName field value if set, zero value otherwise.
 func (o *CloudProvider) GetShortName() string {
-	if o == nil || o.ShortName == nil {
+	if o == nil || IsNil(o.ShortName) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *CloudProvider) GetShortName() string {
 // GetShortNameOk returns a tuple with the ShortName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudProvider) GetShortNameOk() (*string, bool) {
-	if o == nil || o.ShortName == nil {
+	if o == nil || IsNil(o.ShortName) {
 		return nil, false
 	}
 	return o.ShortName, true
@@ -60,7 +63,7 @@ func (o *CloudProvider) GetShortNameOk() (*string, bool) {
 
 // HasShortName returns a boolean if a field has been set.
 func (o *CloudProvider) HasShortName() bool {
-	if o != nil && o.ShortName != nil {
+	if o != nil && !IsNil(o.ShortName) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *CloudProvider) SetShortName(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CloudProvider) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *CloudProvider) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudProvider) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -92,7 +95,7 @@ func (o *CloudProvider) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CloudProvider) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *CloudProvider) SetName(v string) {
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise.
 func (o *CloudProvider) GetLogoUrl() string {
-	if o == nil || o.LogoUrl == nil {
+	if o == nil || IsNil(o.LogoUrl) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *CloudProvider) GetLogoUrl() string {
 // GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudProvider) GetLogoUrlOk() (*string, bool) {
-	if o == nil || o.LogoUrl == nil {
+	if o == nil || IsNil(o.LogoUrl) {
 		return nil, false
 	}
 	return o.LogoUrl, true
@@ -124,7 +127,7 @@ func (o *CloudProvider) GetLogoUrlOk() (*string, bool) {
 
 // HasLogoUrl returns a boolean if a field has been set.
 func (o *CloudProvider) HasLogoUrl() bool {
-	if o != nil && o.LogoUrl != nil {
+	if o != nil && !IsNil(o.LogoUrl) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *CloudProvider) SetLogoUrl(v string) {
 
 // GetRegions returns the Regions field value if set, zero value otherwise.
 func (o *CloudProvider) GetRegions() []ClusterRegion {
-	if o == nil || o.Regions == nil {
+	if o == nil || IsNil(o.Regions) {
 		var ret []ClusterRegion
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *CloudProvider) GetRegions() []ClusterRegion {
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudProvider) GetRegionsOk() ([]ClusterRegion, bool) {
-	if o == nil || o.Regions == nil {
+	if o == nil || IsNil(o.Regions) {
 		return nil, false
 	}
 	return o.Regions, true
@@ -156,7 +159,7 @@ func (o *CloudProvider) GetRegionsOk() ([]ClusterRegion, bool) {
 
 // HasRegions returns a boolean if a field has been set.
 func (o *CloudProvider) HasRegions() bool {
-	if o != nil && o.Regions != nil {
+	if o != nil && !IsNil(o.Regions) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *CloudProvider) SetRegions(v []ClusterRegion) {
 }
 
 func (o CloudProvider) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ShortName != nil {
-		toSerialize["short_name"] = o.ShortName
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.LogoUrl != nil {
-		toSerialize["logo_url"] = o.LogoUrl
-	}
-	if o.Regions != nil {
-		toSerialize["regions"] = o.Regions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudProvider) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ShortName) {
+		toSerialize["short_name"] = o.ShortName
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.LogoUrl) {
+		toSerialize["logo_url"] = o.LogoUrl
+	}
+	if !IsNil(o.Regions) {
+		toSerialize["regions"] = o.Regions
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudProvider struct {

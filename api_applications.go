@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationsApiService ApplicationsApi service
-type ApplicationsApiService service
+// ApplicationsAPIService ApplicationsAPI service
+type ApplicationsAPIService service
 
 type ApiCloneApplicationRequest struct {
 	ctx                     context.Context
-	ApiService              *ApplicationsApiService
+	ApiService              *ApplicationsAPIService
 	applicationId           string
 	cloneApplicationRequest *CloneApplicationRequest
 }
@@ -48,7 +48,7 @@ This will create a new application with the same configuration on the targeted e
  @param applicationId Application ID
  @return ApiCloneApplicationRequest
 */
-func (a *ApplicationsApiService) CloneApplication(ctx context.Context, applicationId string) ApiCloneApplicationRequest {
+func (a *ApplicationsAPIService) CloneApplication(ctx context.Context, applicationId string) ApiCloneApplicationRequest {
 	return ApiCloneApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -58,7 +58,7 @@ func (a *ApplicationsApiService) CloneApplication(ctx context.Context, applicati
 
 // Execute executes the request
 //  @return Application
-func (a *ApplicationsApiService) CloneApplicationExecute(r ApiCloneApplicationRequest) (*Application, *http.Response, error) {
+func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *ApplicationsApiService) CloneApplicationExecute(r ApiCloneApplicationRe
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.CloneApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.CloneApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/clone"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *ApplicationsApiService) CloneApplicationExecute(r ApiCloneApplicationRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *ApplicationsApiService) CloneApplicationExecute(r ApiCloneApplicationRe
 
 type ApiCreateApplicationRequest struct {
 	ctx                context.Context
-	ApiService         *ApplicationsApiService
+	ApiService         *ApplicationsAPIService
 	environmentId      string
 	applicationRequest *ApplicationRequest
 }
@@ -171,7 +171,7 @@ CreateApplication Create an application
  @param environmentId Environment ID
  @return ApiCreateApplicationRequest
 */
-func (a *ApplicationsApiService) CreateApplication(ctx context.Context, environmentId string) ApiCreateApplicationRequest {
+func (a *ApplicationsAPIService) CreateApplication(ctx context.Context, environmentId string) ApiCreateApplicationRequest {
 	return ApiCreateApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -181,7 +181,7 @@ func (a *ApplicationsApiService) CreateApplication(ctx context.Context, environm
 
 // Execute executes the request
 //  @return Application
-func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*Application, *http.Response, error) {
+func (a *ApplicationsAPIService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -189,13 +189,13 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.CreateApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.CreateApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/application"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -244,9 +244,9 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -273,7 +273,7 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 
 type ApiGetDefaultApplicationAdvancedSettingsRequest struct {
 	ctx        context.Context
-	ApiService *ApplicationsApiService
+	ApiService *ApplicationsAPIService
 }
 
 func (r ApiGetDefaultApplicationAdvancedSettingsRequest) Execute() (*ApplicationAdvancedSettings, *http.Response, error) {
@@ -286,7 +286,7 @@ GetDefaultApplicationAdvancedSettings List default application advanced settings
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDefaultApplicationAdvancedSettingsRequest
 */
-func (a *ApplicationsApiService) GetDefaultApplicationAdvancedSettings(ctx context.Context) ApiGetDefaultApplicationAdvancedSettingsRequest {
+func (a *ApplicationsAPIService) GetDefaultApplicationAdvancedSettings(ctx context.Context) ApiGetDefaultApplicationAdvancedSettingsRequest {
 	return ApiGetDefaultApplicationAdvancedSettingsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -295,7 +295,7 @@ func (a *ApplicationsApiService) GetDefaultApplicationAdvancedSettings(ctx conte
 
 // Execute executes the request
 //  @return ApplicationAdvancedSettings
-func (a *ApplicationsApiService) GetDefaultApplicationAdvancedSettingsExecute(r ApiGetDefaultApplicationAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
+func (a *ApplicationsAPIService) GetDefaultApplicationAdvancedSettingsExecute(r ApiGetDefaultApplicationAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -303,7 +303,7 @@ func (a *ApplicationsApiService) GetDefaultApplicationAdvancedSettingsExecute(r 
 		localVarReturnValue *ApplicationAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetDefaultApplicationAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.GetDefaultApplicationAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -355,9 +355,9 @@ func (a *ApplicationsApiService) GetDefaultApplicationAdvancedSettingsExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -384,7 +384,7 @@ func (a *ApplicationsApiService) GetDefaultApplicationAdvancedSettingsExecute(r 
 
 type ApiGetEnvironmentApplicationCurrentScaleRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ApiService    *ApplicationsAPIService
 	environmentId string
 }
 
@@ -401,7 +401,7 @@ Returns min, max, and running number of instances for each application
  @param environmentId Environment ID
  @return ApiGetEnvironmentApplicationCurrentScaleRequest
 */
-func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScale(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationCurrentScaleRequest {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationCurrentScale(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationCurrentScaleRequest {
 	return ApiGetEnvironmentApplicationCurrentScaleRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -411,7 +411,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScale(ctx conte
 
 // Execute executes the request
 //  @return EnvironmentApplicationsCurrentScaleResponseList
-func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScaleExecute(r ApiGetEnvironmentApplicationCurrentScaleRequest) (*EnvironmentApplicationsCurrentScaleResponseList, *http.Response, error) {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationCurrentScaleExecute(r ApiGetEnvironmentApplicationCurrentScaleRequest) (*EnvironmentApplicationsCurrentScaleResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -419,13 +419,13 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScaleExecute(r 
 		localVarReturnValue *EnvironmentApplicationsCurrentScaleResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationCurrentScale")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.GetEnvironmentApplicationCurrentScale")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/application/currentScale"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -472,9 +472,9 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScaleExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -501,7 +501,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentScaleExecute(r 
 
 type ApiGetEnvironmentApplicationCurrentStorageRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ApiService    *ApplicationsAPIService
 	environmentId string
 }
 
@@ -516,7 +516,7 @@ GetEnvironmentApplicationCurrentStorage List current storage disk usage for each
  @param environmentId Environment ID
  @return ApiGetEnvironmentApplicationCurrentStorageRequest
 */
-func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorage(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationCurrentStorageRequest {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationCurrentStorage(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationCurrentStorageRequest {
 	return ApiGetEnvironmentApplicationCurrentStorageRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -526,7 +526,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorage(ctx con
 
 // Execute executes the request
 //  @return EnvironmentApplicationsStorageResponseList
-func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorageExecute(r ApiGetEnvironmentApplicationCurrentStorageRequest) (*EnvironmentApplicationsStorageResponseList, *http.Response, error) {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationCurrentStorageExecute(r ApiGetEnvironmentApplicationCurrentStorageRequest) (*EnvironmentApplicationsStorageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -534,13 +534,13 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorageExecute(
 		localVarReturnValue *EnvironmentApplicationsStorageResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationCurrentStorage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.GetEnvironmentApplicationCurrentStorage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/application/currentStorage"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -587,9 +587,9 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorageExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -616,7 +616,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationCurrentStorageExecute(
 
 type ApiGetEnvironmentApplicationStatusRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ApiService    *ApplicationsAPIService
 	environmentId string
 }
 
@@ -633,7 +633,7 @@ Returns a list of applications with only their id and status.
  @param environmentId Environment ID
  @return ApiGetEnvironmentApplicationStatusRequest
 */
-func (a *ApplicationsApiService) GetEnvironmentApplicationStatus(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationStatusRequest {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationStatus(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationStatusRequest {
 	return ApiGetEnvironmentApplicationStatusRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -643,7 +643,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatus(ctx context.Con
 
 // Execute executes the request
 //  @return ReferenceObjectStatusResponseList
-func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGetEnvironmentApplicationStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationStatusExecute(r ApiGetEnvironmentApplicationStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -651,13 +651,13 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGet
 		localVarReturnValue *ReferenceObjectStatusResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.GetEnvironmentApplicationStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/application/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -704,9 +704,9 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -733,7 +733,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationStatusExecute(r ApiGet
 
 type ApiGetEnvironmentApplicationSupportedLanguagesRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ApiService    *ApplicationsAPIService
 	environmentId string
 }
 
@@ -750,7 +750,7 @@ Returns list of languages supported by Buildpacks.
  @param environmentId Environment ID
  @return ApiGetEnvironmentApplicationSupportedLanguagesRequest
 */
-func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguages(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationSupportedLanguagesRequest {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationSupportedLanguages(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationSupportedLanguagesRequest {
 	return ApiGetEnvironmentApplicationSupportedLanguagesRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -760,7 +760,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguages(ctx
 
 // Execute executes the request
 //  @return EnvironmentApplicationsSupportedLanguageList
-func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExecute(r ApiGetEnvironmentApplicationSupportedLanguagesRequest) (*EnvironmentApplicationsSupportedLanguageList, *http.Response, error) {
+func (a *ApplicationsAPIService) GetEnvironmentApplicationSupportedLanguagesExecute(r ApiGetEnvironmentApplicationSupportedLanguagesRequest) (*EnvironmentApplicationsSupportedLanguageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -768,13 +768,13 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExec
 		localVarReturnValue *EnvironmentApplicationsSupportedLanguageList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetEnvironmentApplicationSupportedLanguages")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.GetEnvironmentApplicationSupportedLanguages")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/application/supportedLanguage"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -821,9 +821,9 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -850,7 +850,7 @@ func (a *ApplicationsApiService) GetEnvironmentApplicationSupportedLanguagesExec
 
 type ApiListApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationsApiService
+	ApiService    *ApplicationsAPIService
 	environmentId string
 }
 
@@ -865,7 +865,7 @@ ListApplication List applications
  @param environmentId Environment ID
  @return ApiListApplicationRequest
 */
-func (a *ApplicationsApiService) ListApplication(ctx context.Context, environmentId string) ApiListApplicationRequest {
+func (a *ApplicationsAPIService) ListApplication(ctx context.Context, environmentId string) ApiListApplicationRequest {
 	return ApiListApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -875,7 +875,7 @@ func (a *ApplicationsApiService) ListApplication(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return ApplicationResponseList
-func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
+func (a *ApplicationsAPIService) ListApplicationExecute(r ApiListApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -883,13 +883,13 @@ func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequ
 		localVarReturnValue *ApplicationResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.ListApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsAPIService.ListApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/application"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -936,9 +936,9 @@ func (a *ApplicationsApiService) ListApplicationExecute(r ApiListApplicationRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

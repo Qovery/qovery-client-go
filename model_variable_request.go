@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableRequest{}
+
 // VariableRequest struct for VariableRequest
 type VariableRequest struct {
 	// the key of the environment variable
@@ -102,7 +105,7 @@ func (o *VariableRequest) SetValue(v string) {
 
 // GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VariableRequest) GetMountPath() string {
-	if o == nil || o.MountPath.Get() == nil {
+	if o == nil || IsNil(o.MountPath.Get()) {
 		var ret string
 		return ret
 	}
@@ -216,26 +219,24 @@ func (o *VariableRequest) SetVariableParentId(v string) {
 }
 
 func (o VariableRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o VariableRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["value"] = o.Value
-	}
+	toSerialize["key"] = o.Key
+	toSerialize["value"] = o.Value
 	if o.MountPath.IsSet() {
 		toSerialize["mount_path"] = o.MountPath.Get()
 	}
-	if true {
-		toSerialize["is_secret"] = o.IsSecret
-	}
-	if true {
-		toSerialize["variable_scope"] = o.VariableScope
-	}
-	if true {
-		toSerialize["variable_parent_id"] = o.VariableParentId
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["is_secret"] = o.IsSecret
+	toSerialize["variable_scope"] = o.VariableScope
+	toSerialize["variable_parent_id"] = o.VariableParentId
+	return toSerialize, nil
 }
 
 type NullableVariableRequest struct {

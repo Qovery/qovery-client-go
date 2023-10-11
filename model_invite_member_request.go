@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InviteMemberRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InviteMemberRequest{}
+
 // InviteMemberRequest struct for InviteMemberRequest
 type InviteMemberRequest struct {
 	Email string                `json:"email"`
@@ -67,7 +70,7 @@ func (o *InviteMemberRequest) SetEmail(v string) {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *InviteMemberRequest) GetRole() InviteMemberRoleEnum {
-	if o == nil || o.Role == nil {
+	if o == nil || IsNil(o.Role) {
 		var ret InviteMemberRoleEnum
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *InviteMemberRequest) GetRole() InviteMemberRoleEnum {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMemberRequest) GetRoleOk() (*InviteMemberRoleEnum, bool) {
-	if o == nil || o.Role == nil {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -85,7 +88,7 @@ func (o *InviteMemberRequest) GetRoleOk() (*InviteMemberRoleEnum, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *InviteMemberRequest) HasRole() bool {
-	if o != nil && o.Role != nil {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *InviteMemberRequest) SetRole(v InviteMemberRoleEnum) {
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise.
 func (o *InviteMemberRequest) GetRoleId() string {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		var ret string
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *InviteMemberRequest) GetRoleId() string {
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InviteMemberRequest) GetRoleIdOk() (*string, bool) {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		return nil, false
 	}
 	return o.RoleId, true
@@ -117,7 +120,7 @@ func (o *InviteMemberRequest) GetRoleIdOk() (*string, bool) {
 
 // HasRoleId returns a boolean if a field has been set.
 func (o *InviteMemberRequest) HasRoleId() bool {
-	if o != nil && o.RoleId != nil {
+	if o != nil && !IsNil(o.RoleId) {
 		return true
 	}
 
@@ -130,17 +133,23 @@ func (o *InviteMemberRequest) SetRoleId(v string) {
 }
 
 func (o InviteMemberRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if o.Role != nil {
-		toSerialize["role"] = o.Role
-	}
-	if o.RoleId != nil {
-		toSerialize["role_id"] = o.RoleId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InviteMemberRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["email"] = o.Email
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
+	if !IsNil(o.RoleId) {
+		toSerialize["role_id"] = o.RoleId
+	}
+	return toSerialize, nil
 }
 
 type NullableInviteMemberRequest struct {

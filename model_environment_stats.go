@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentStats type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentStats{}
+
 // EnvironmentStats struct for EnvironmentStats
 type EnvironmentStats struct {
 	Id                 string   `json:"id"`
@@ -65,7 +68,7 @@ func (o *EnvironmentStats) SetId(v string) {
 
 // GetServiceTotalNumber returns the ServiceTotalNumber field value if set, zero value otherwise.
 func (o *EnvironmentStats) GetServiceTotalNumber() float32 {
-	if o == nil || o.ServiceTotalNumber == nil {
+	if o == nil || IsNil(o.ServiceTotalNumber) {
 		var ret float32
 		return ret
 	}
@@ -75,7 +78,7 @@ func (o *EnvironmentStats) GetServiceTotalNumber() float32 {
 // GetServiceTotalNumberOk returns a tuple with the ServiceTotalNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStats) GetServiceTotalNumberOk() (*float32, bool) {
-	if o == nil || o.ServiceTotalNumber == nil {
+	if o == nil || IsNil(o.ServiceTotalNumber) {
 		return nil, false
 	}
 	return o.ServiceTotalNumber, true
@@ -83,7 +86,7 @@ func (o *EnvironmentStats) GetServiceTotalNumberOk() (*float32, bool) {
 
 // HasServiceTotalNumber returns a boolean if a field has been set.
 func (o *EnvironmentStats) HasServiceTotalNumber() bool {
-	if o != nil && o.ServiceTotalNumber != nil {
+	if o != nil && !IsNil(o.ServiceTotalNumber) {
 		return true
 	}
 
@@ -96,14 +99,20 @@ func (o *EnvironmentStats) SetServiceTotalNumber(v float32) {
 }
 
 func (o EnvironmentStats) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if o.ServiceTotalNumber != nil {
-		toSerialize["service_total_number"] = o.ServiceTotalNumber
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentStats) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.ServiceTotalNumber) {
+		toSerialize["service_total_number"] = o.ServiceTotalNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentStats struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentVariableOverride type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentVariableOverride{}
+
 // EnvironmentVariableOverride struct for EnvironmentVariableOverride
 type EnvironmentVariableOverride struct {
 	Id           string               `json:"id"`
@@ -193,26 +196,22 @@ func (o *EnvironmentVariableOverride) SetVariableType(v APIVariableTypeEnum) {
 }
 
 func (o EnvironmentVariableOverride) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["value"] = o.Value
-	}
-	if true {
-		toSerialize["mount_path"] = o.MountPath
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["variable_type"] = o.VariableType
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentVariableOverride) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["key"] = o.Key
+	toSerialize["value"] = o.Value
+	toSerialize["mount_path"] = o.MountPath
+	toSerialize["scope"] = o.Scope
+	toSerialize["variable_type"] = o.VariableType
+	return toSerialize, nil
 }
 
 type NullableEnvironmentVariableOverride struct {

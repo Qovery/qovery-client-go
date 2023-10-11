@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DatabaseRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DatabaseRequest{}
+
 // DatabaseRequest struct for DatabaseRequest
 type DatabaseRequest struct {
 	// name is case insensitive
@@ -94,7 +97,7 @@ func (o *DatabaseRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *DatabaseRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -104,7 +107,7 @@ func (o *DatabaseRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -112,7 +115,7 @@ func (o *DatabaseRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *DatabaseRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -198,7 +201,7 @@ func (o *DatabaseRequest) SetMode(v DatabaseModeEnum) {
 
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
 func (o *DatabaseRequest) GetAccessibility() DatabaseAccessibilityEnum {
-	if o == nil || o.Accessibility == nil {
+	if o == nil || IsNil(o.Accessibility) {
 		var ret DatabaseAccessibilityEnum
 		return ret
 	}
@@ -208,7 +211,7 @@ func (o *DatabaseRequest) GetAccessibility() DatabaseAccessibilityEnum {
 // GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetAccessibilityOk() (*DatabaseAccessibilityEnum, bool) {
-	if o == nil || o.Accessibility == nil {
+	if o == nil || IsNil(o.Accessibility) {
 		return nil, false
 	}
 	return o.Accessibility, true
@@ -216,7 +219,7 @@ func (o *DatabaseRequest) GetAccessibilityOk() (*DatabaseAccessibilityEnum, bool
 
 // HasAccessibility returns a boolean if a field has been set.
 func (o *DatabaseRequest) HasAccessibility() bool {
-	if o != nil && o.Accessibility != nil {
+	if o != nil && !IsNil(o.Accessibility) {
 		return true
 	}
 
@@ -230,7 +233,7 @@ func (o *DatabaseRequest) SetAccessibility(v DatabaseAccessibilityEnum) {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *DatabaseRequest) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret int32
 		return ret
 	}
@@ -240,7 +243,7 @@ func (o *DatabaseRequest) GetCpu() int32 {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -248,7 +251,7 @@ func (o *DatabaseRequest) GetCpuOk() (*int32, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *DatabaseRequest) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -262,7 +265,7 @@ func (o *DatabaseRequest) SetCpu(v int32) {
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
 func (o *DatabaseRequest) GetInstanceType() string {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		var ret string
 		return ret
 	}
@@ -272,7 +275,7 @@ func (o *DatabaseRequest) GetInstanceType() string {
 // GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetInstanceTypeOk() (*string, bool) {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		return nil, false
 	}
 	return o.InstanceType, true
@@ -280,7 +283,7 @@ func (o *DatabaseRequest) GetInstanceTypeOk() (*string, bool) {
 
 // HasInstanceType returns a boolean if a field has been set.
 func (o *DatabaseRequest) HasInstanceType() bool {
-	if o != nil && o.InstanceType != nil {
+	if o != nil && !IsNil(o.InstanceType) {
 		return true
 	}
 
@@ -294,7 +297,7 @@ func (o *DatabaseRequest) SetInstanceType(v string) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *DatabaseRequest) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -304,7 +307,7 @@ func (o *DatabaseRequest) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -312,7 +315,7 @@ func (o *DatabaseRequest) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *DatabaseRequest) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -326,7 +329,7 @@ func (o *DatabaseRequest) SetMemory(v int32) {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *DatabaseRequest) GetStorage() int32 {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret int32
 		return ret
 	}
@@ -336,7 +339,7 @@ func (o *DatabaseRequest) GetStorage() int32 {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseRequest) GetStorageOk() (*int32, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -344,7 +347,7 @@ func (o *DatabaseRequest) GetStorageOk() (*int32, bool) {
 
 // HasStorage returns a boolean if a field has been set.
 func (o *DatabaseRequest) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -357,38 +360,38 @@ func (o *DatabaseRequest) SetStorage(v int32) {
 }
 
 func (o DatabaseRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["version"] = o.Version
-	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.Accessibility != nil {
-		toSerialize["accessibility"] = o.Accessibility
-	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.InstanceType != nil {
-		toSerialize["instance_type"] = o.InstanceType
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DatabaseRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["type"] = o.Type
+	toSerialize["version"] = o.Version
+	toSerialize["mode"] = o.Mode
+	if !IsNil(o.Accessibility) {
+		toSerialize["accessibility"] = o.Accessibility
+	}
+	if !IsNil(o.Cpu) {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if !IsNil(o.InstanceType) {
+		toSerialize["instance_type"] = o.InstanceType
+	}
+	if !IsNil(o.Memory) {
+		toSerialize["memory"] = o.Memory
+	}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabaseRequest struct {

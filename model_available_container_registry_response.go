@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AvailableContainerRegistryResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AvailableContainerRegistryResponse{}
+
 // AvailableContainerRegistryResponse struct for AvailableContainerRegistryResponse
 type AvailableContainerRegistryResponse struct {
 	Kind           *ContainerRegistryKindEnum `json:"kind,omitempty"`
@@ -41,7 +44,7 @@ func NewAvailableContainerRegistryResponseWithDefaults() *AvailableContainerRegi
 
 // GetKind returns the Kind field value if set, zero value otherwise.
 func (o *AvailableContainerRegistryResponse) GetKind() ContainerRegistryKindEnum {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		var ret ContainerRegistryKindEnum
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *AvailableContainerRegistryResponse) GetKind() ContainerRegistryKindEnum
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableContainerRegistryResponse) GetKindOk() (*ContainerRegistryKindEnum, bool) {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		return nil, false
 	}
 	return o.Kind, true
@@ -59,7 +62,7 @@ func (o *AvailableContainerRegistryResponse) GetKindOk() (*ContainerRegistryKind
 
 // HasKind returns a boolean if a field has been set.
 func (o *AvailableContainerRegistryResponse) HasKind() bool {
-	if o != nil && o.Kind != nil {
+	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *AvailableContainerRegistryResponse) SetKind(v ContainerRegistryKindEnum
 
 // GetRequiredConfig returns the RequiredConfig field value if set, zero value otherwise.
 func (o *AvailableContainerRegistryResponse) GetRequiredConfig() map[string]interface{} {
-	if o == nil || o.RequiredConfig == nil {
+	if o == nil || IsNil(o.RequiredConfig) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *AvailableContainerRegistryResponse) GetRequiredConfig() map[string]inte
 // GetRequiredConfigOk returns a tuple with the RequiredConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableContainerRegistryResponse) GetRequiredConfigOk() (map[string]interface{}, bool) {
-	if o == nil || o.RequiredConfig == nil {
-		return nil, false
+	if o == nil || IsNil(o.RequiredConfig) {
+		return map[string]interface{}{}, false
 	}
 	return o.RequiredConfig, true
 }
 
 // HasRequiredConfig returns a boolean if a field has been set.
 func (o *AvailableContainerRegistryResponse) HasRequiredConfig() bool {
-	if o != nil && o.RequiredConfig != nil {
+	if o != nil && !IsNil(o.RequiredConfig) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *AvailableContainerRegistryResponse) SetRequiredConfig(v map[string]inte
 
 // GetIsMandatory returns the IsMandatory field value if set, zero value otherwise.
 func (o *AvailableContainerRegistryResponse) GetIsMandatory() bool {
-	if o == nil || o.IsMandatory == nil {
+	if o == nil || IsNil(o.IsMandatory) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *AvailableContainerRegistryResponse) GetIsMandatory() bool {
 // GetIsMandatoryOk returns a tuple with the IsMandatory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableContainerRegistryResponse) GetIsMandatoryOk() (*bool, bool) {
-	if o == nil || o.IsMandatory == nil {
+	if o == nil || IsNil(o.IsMandatory) {
 		return nil, false
 	}
 	return o.IsMandatory, true
@@ -123,7 +126,7 @@ func (o *AvailableContainerRegistryResponse) GetIsMandatoryOk() (*bool, bool) {
 
 // HasIsMandatory returns a boolean if a field has been set.
 func (o *AvailableContainerRegistryResponse) HasIsMandatory() bool {
-	if o != nil && o.IsMandatory != nil {
+	if o != nil && !IsNil(o.IsMandatory) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *AvailableContainerRegistryResponse) SetIsMandatory(v bool) {
 }
 
 func (o AvailableContainerRegistryResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Kind != nil {
-		toSerialize["kind"] = o.Kind
-	}
-	if o.RequiredConfig != nil {
-		toSerialize["required_config"] = o.RequiredConfig
-	}
-	if o.IsMandatory != nil {
-		toSerialize["is_mandatory"] = o.IsMandatory
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AvailableContainerRegistryResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
+	}
+	if !IsNil(o.RequiredConfig) {
+		toSerialize["required_config"] = o.RequiredConfig
+	}
+	if !IsNil(o.IsMandatory) {
+		toSerialize["is_mandatory"] = o.IsMandatory
+	}
+	return toSerialize, nil
 }
 
 type NullableAvailableContainerRegistryResponse struct {

@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Secret type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Secret{}
+
 // Secret struct for Secret
 type Secret struct {
 	Id        string     `json:"id"`
@@ -105,7 +108,7 @@ func (o *Secret) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Secret) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *Secret) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -123,7 +126,7 @@ func (o *Secret) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Secret) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -161,7 +164,7 @@ func (o *Secret) SetKey(v string) {
 
 // GetOverriddenSecret returns the OverriddenSecret field value if set, zero value otherwise.
 func (o *Secret) GetOverriddenSecret() SecretOverride {
-	if o == nil || o.OverriddenSecret == nil {
+	if o == nil || IsNil(o.OverriddenSecret) {
 		var ret SecretOverride
 		return ret
 	}
@@ -171,7 +174,7 @@ func (o *Secret) GetOverriddenSecret() SecretOverride {
 // GetOverriddenSecretOk returns a tuple with the OverriddenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetOverriddenSecretOk() (*SecretOverride, bool) {
-	if o == nil || o.OverriddenSecret == nil {
+	if o == nil || IsNil(o.OverriddenSecret) {
 		return nil, false
 	}
 	return o.OverriddenSecret, true
@@ -179,7 +182,7 @@ func (o *Secret) GetOverriddenSecretOk() (*SecretOverride, bool) {
 
 // HasOverriddenSecret returns a boolean if a field has been set.
 func (o *Secret) HasOverriddenSecret() bool {
-	if o != nil && o.OverriddenSecret != nil {
+	if o != nil && !IsNil(o.OverriddenSecret) {
 		return true
 	}
 
@@ -193,7 +196,7 @@ func (o *Secret) SetOverriddenSecret(v SecretOverride) {
 
 // GetAliasedSecret returns the AliasedSecret field value if set, zero value otherwise.
 func (o *Secret) GetAliasedSecret() SecretAlias {
-	if o == nil || o.AliasedSecret == nil {
+	if o == nil || IsNil(o.AliasedSecret) {
 		var ret SecretAlias
 		return ret
 	}
@@ -203,7 +206,7 @@ func (o *Secret) GetAliasedSecret() SecretAlias {
 // GetAliasedSecretOk returns a tuple with the AliasedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetAliasedSecretOk() (*SecretAlias, bool) {
-	if o == nil || o.AliasedSecret == nil {
+	if o == nil || IsNil(o.AliasedSecret) {
 		return nil, false
 	}
 	return o.AliasedSecret, true
@@ -211,7 +214,7 @@ func (o *Secret) GetAliasedSecretOk() (*SecretAlias, bool) {
 
 // HasAliasedSecret returns a boolean if a field has been set.
 func (o *Secret) HasAliasedSecret() bool {
-	if o != nil && o.AliasedSecret != nil {
+	if o != nil && !IsNil(o.AliasedSecret) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *Secret) SetScope(v APIVariableScopeEnum) {
 
 // GetVariableType returns the VariableType field value if set, zero value otherwise.
 func (o *Secret) GetVariableType() APIVariableTypeEnum {
-	if o == nil || o.VariableType == nil {
+	if o == nil || IsNil(o.VariableType) {
 		var ret APIVariableTypeEnum
 		return ret
 	}
@@ -259,7 +262,7 @@ func (o *Secret) GetVariableType() APIVariableTypeEnum {
 // GetVariableTypeOk returns a tuple with the VariableType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
-	if o == nil || o.VariableType == nil {
+	if o == nil || IsNil(o.VariableType) {
 		return nil, false
 	}
 	return o.VariableType, true
@@ -267,7 +270,7 @@ func (o *Secret) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
 
 // HasVariableType returns a boolean if a field has been set.
 func (o *Secret) HasVariableType() bool {
-	if o != nil && o.VariableType != nil {
+	if o != nil && !IsNil(o.VariableType) {
 		return true
 	}
 
@@ -281,7 +284,7 @@ func (o *Secret) SetVariableType(v APIVariableTypeEnum) {
 
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
 func (o *Secret) GetServiceId() string {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		var ret string
 		return ret
 	}
@@ -291,7 +294,7 @@ func (o *Secret) GetServiceId() string {
 // GetServiceIdOk returns a tuple with the ServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetServiceIdOk() (*string, bool) {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		return nil, false
 	}
 	return o.ServiceId, true
@@ -299,7 +302,7 @@ func (o *Secret) GetServiceIdOk() (*string, bool) {
 
 // HasServiceId returns a boolean if a field has been set.
 func (o *Secret) HasServiceId() bool {
-	if o != nil && o.ServiceId != nil {
+	if o != nil && !IsNil(o.ServiceId) {
 		return true
 	}
 
@@ -313,7 +316,7 @@ func (o *Secret) SetServiceId(v string) {
 
 // GetServiceName returns the ServiceName field value if set, zero value otherwise.
 func (o *Secret) GetServiceName() string {
-	if o == nil || o.ServiceName == nil {
+	if o == nil || IsNil(o.ServiceName) {
 		var ret string
 		return ret
 	}
@@ -323,7 +326,7 @@ func (o *Secret) GetServiceName() string {
 // GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetServiceNameOk() (*string, bool) {
-	if o == nil || o.ServiceName == nil {
+	if o == nil || IsNil(o.ServiceName) {
 		return nil, false
 	}
 	return o.ServiceName, true
@@ -331,7 +334,7 @@ func (o *Secret) GetServiceNameOk() (*string, bool) {
 
 // HasServiceName returns a boolean if a field has been set.
 func (o *Secret) HasServiceName() bool {
-	if o != nil && o.ServiceName != nil {
+	if o != nil && !IsNil(o.ServiceName) {
 		return true
 	}
 
@@ -345,7 +348,7 @@ func (o *Secret) SetServiceName(v string) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 func (o *Secret) GetServiceType() LinkedServiceTypeEnum {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		var ret LinkedServiceTypeEnum
 		return ret
 	}
@@ -355,7 +358,7 @@ func (o *Secret) GetServiceType() LinkedServiceTypeEnum {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
 	return o.ServiceType, true
@@ -363,7 +366,7 @@ func (o *Secret) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) {
 
 // HasServiceType returns a boolean if a field has been set.
 func (o *Secret) HasServiceType() bool {
-	if o != nil && o.ServiceType != nil {
+	if o != nil && !IsNil(o.ServiceType) {
 		return true
 	}
 
@@ -377,7 +380,7 @@ func (o *Secret) SetServiceType(v LinkedServiceTypeEnum) {
 
 // GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
 func (o *Secret) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
+	if o == nil || IsNil(o.OwnedBy) {
 		var ret string
 		return ret
 	}
@@ -387,7 +390,7 @@ func (o *Secret) GetOwnedBy() string {
 // GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Secret) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
+	if o == nil || IsNil(o.OwnedBy) {
 		return nil, false
 	}
 	return o.OwnedBy, true
@@ -395,7 +398,7 @@ func (o *Secret) GetOwnedByOk() (*string, bool) {
 
 // HasOwnedBy returns a boolean if a field has been set.
 func (o *Secret) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
+	if o != nil && !IsNil(o.OwnedBy) {
 		return true
 	}
 
@@ -408,44 +411,44 @@ func (o *Secret) SetOwnedBy(v string) {
 }
 
 func (o Secret) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if o.OverriddenSecret != nil {
-		toSerialize["overridden_secret"] = o.OverriddenSecret
-	}
-	if o.AliasedSecret != nil {
-		toSerialize["aliased_secret"] = o.AliasedSecret
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if o.VariableType != nil {
-		toSerialize["variable_type"] = o.VariableType
-	}
-	if o.ServiceId != nil {
-		toSerialize["service_id"] = o.ServiceId
-	}
-	if o.ServiceName != nil {
-		toSerialize["service_name"] = o.ServiceName
-	}
-	if o.ServiceType != nil {
-		toSerialize["service_type"] = o.ServiceType
-	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Secret) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["key"] = o.Key
+	if !IsNil(o.OverriddenSecret) {
+		toSerialize["overridden_secret"] = o.OverriddenSecret
+	}
+	if !IsNil(o.AliasedSecret) {
+		toSerialize["aliased_secret"] = o.AliasedSecret
+	}
+	toSerialize["scope"] = o.Scope
+	if !IsNil(o.VariableType) {
+		toSerialize["variable_type"] = o.VariableType
+	}
+	if !IsNil(o.ServiceId) {
+		toSerialize["service_id"] = o.ServiceId
+	}
+	if !IsNil(o.ServiceName) {
+		toSerialize["service_name"] = o.ServiceName
+	}
+	if !IsNil(o.ServiceType) {
+		toSerialize["service_type"] = o.ServiceType
+	}
+	if !IsNil(o.OwnedBy) {
+		toSerialize["owned_by"] = o.OwnedBy
+	}
+	return toSerialize, nil
 }
 
 type NullableSecret struct {

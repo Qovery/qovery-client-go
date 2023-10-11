@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeployAllRequestJobsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeployAllRequestJobsInner{}
+
 // DeployAllRequestJobsInner struct for DeployAllRequestJobsInner
 type DeployAllRequestJobsInner struct {
 	// id of the job to be updated.
@@ -44,7 +47,7 @@ func NewDeployAllRequestJobsInnerWithDefaults() *DeployAllRequestJobsInner {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DeployAllRequestJobsInner) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *DeployAllRequestJobsInner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequestJobsInner) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -62,7 +65,7 @@ func (o *DeployAllRequestJobsInner) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *DeployAllRequestJobsInner) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *DeployAllRequestJobsInner) SetId(v string) {
 
 // GetImageTag returns the ImageTag field value if set, zero value otherwise.
 func (o *DeployAllRequestJobsInner) GetImageTag() string {
-	if o == nil || o.ImageTag == nil {
+	if o == nil || IsNil(o.ImageTag) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *DeployAllRequestJobsInner) GetImageTag() string {
 // GetImageTagOk returns a tuple with the ImageTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequestJobsInner) GetImageTagOk() (*string, bool) {
-	if o == nil || o.ImageTag == nil {
+	if o == nil || IsNil(o.ImageTag) {
 		return nil, false
 	}
 	return o.ImageTag, true
@@ -94,7 +97,7 @@ func (o *DeployAllRequestJobsInner) GetImageTagOk() (*string, bool) {
 
 // HasImageTag returns a boolean if a field has been set.
 func (o *DeployAllRequestJobsInner) HasImageTag() bool {
-	if o != nil && o.ImageTag != nil {
+	if o != nil && !IsNil(o.ImageTag) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *DeployAllRequestJobsInner) SetImageTag(v string) {
 
 // GetGitCommitId returns the GitCommitId field value if set, zero value otherwise.
 func (o *DeployAllRequestJobsInner) GetGitCommitId() string {
-	if o == nil || o.GitCommitId == nil {
+	if o == nil || IsNil(o.GitCommitId) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *DeployAllRequestJobsInner) GetGitCommitId() string {
 // GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequestJobsInner) GetGitCommitIdOk() (*string, bool) {
-	if o == nil || o.GitCommitId == nil {
+	if o == nil || IsNil(o.GitCommitId) {
 		return nil, false
 	}
 	return o.GitCommitId, true
@@ -126,7 +129,7 @@ func (o *DeployAllRequestJobsInner) GetGitCommitIdOk() (*string, bool) {
 
 // HasGitCommitId returns a boolean if a field has been set.
 func (o *DeployAllRequestJobsInner) HasGitCommitId() bool {
-	if o != nil && o.GitCommitId != nil {
+	if o != nil && !IsNil(o.GitCommitId) {
 		return true
 	}
 
@@ -139,17 +142,25 @@ func (o *DeployAllRequestJobsInner) SetGitCommitId(v string) {
 }
 
 func (o DeployAllRequestJobsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ImageTag != nil {
-		toSerialize["image_tag"] = o.ImageTag
-	}
-	if o.GitCommitId != nil {
-		toSerialize["git_commit_id"] = o.GitCommitId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeployAllRequestJobsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ImageTag) {
+		toSerialize["image_tag"] = o.ImageTag
+	}
+	if !IsNil(o.GitCommitId) {
+		toSerialize["git_commit_id"] = o.GitCommitId
+	}
+	return toSerialize, nil
 }
 
 type NullableDeployAllRequestJobsInner struct {

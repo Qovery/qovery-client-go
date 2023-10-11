@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the VariableResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableResponse{}
+
 // VariableResponse struct for VariableResponse
 type VariableResponse struct {
 	Id                 string               `json:"id"`
@@ -104,7 +107,7 @@ func (o *VariableResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *VariableResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *VariableResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -122,7 +125,7 @@ func (o *VariableResponse) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *VariableResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *VariableResponse) SetUpdatedAt(v time.Time) {
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
 func (o *VariableResponse) GetOverriddenVariable() VariableOverride {
-	if o == nil || o.OverriddenVariable == nil {
+	if o == nil || IsNil(o.OverriddenVariable) {
 		var ret VariableOverride
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *VariableResponse) GetOverriddenVariable() VariableOverride {
 // GetOverriddenVariableOk returns a tuple with the OverriddenVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetOverriddenVariableOk() (*VariableOverride, bool) {
-	if o == nil || o.OverriddenVariable == nil {
+	if o == nil || IsNil(o.OverriddenVariable) {
 		return nil, false
 	}
 	return o.OverriddenVariable, true
@@ -154,7 +157,7 @@ func (o *VariableResponse) GetOverriddenVariableOk() (*VariableOverride, bool) {
 
 // HasOverriddenVariable returns a boolean if a field has been set.
 func (o *VariableResponse) HasOverriddenVariable() bool {
-	if o != nil && o.OverriddenVariable != nil {
+	if o != nil && !IsNil(o.OverriddenVariable) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *VariableResponse) SetOverriddenVariable(v VariableOverride) {
 
 // GetAliasedVariable returns the AliasedVariable field value if set, zero value otherwise.
 func (o *VariableResponse) GetAliasedVariable() VariableAlias {
-	if o == nil || o.AliasedVariable == nil {
+	if o == nil || IsNil(o.AliasedVariable) {
 		var ret VariableAlias
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *VariableResponse) GetAliasedVariable() VariableAlias {
 // GetAliasedVariableOk returns a tuple with the AliasedVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetAliasedVariableOk() (*VariableAlias, bool) {
-	if o == nil || o.AliasedVariable == nil {
+	if o == nil || IsNil(o.AliasedVariable) {
 		return nil, false
 	}
 	return o.AliasedVariable, true
@@ -186,7 +189,7 @@ func (o *VariableResponse) GetAliasedVariableOk() (*VariableAlias, bool) {
 
 // HasAliasedVariable returns a boolean if a field has been set.
 func (o *VariableResponse) HasAliasedVariable() bool {
-	if o != nil && o.AliasedVariable != nil {
+	if o != nil && !IsNil(o.AliasedVariable) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *VariableResponse) SetScope(v APIVariableScopeEnum) {
 
 // GetVariableType returns the VariableType field value if set, zero value otherwise.
 func (o *VariableResponse) GetVariableType() APIVariableTypeEnum {
-	if o == nil || o.VariableType == nil {
+	if o == nil || IsNil(o.VariableType) {
 		var ret APIVariableTypeEnum
 		return ret
 	}
@@ -234,7 +237,7 @@ func (o *VariableResponse) GetVariableType() APIVariableTypeEnum {
 // GetVariableTypeOk returns a tuple with the VariableType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
-	if o == nil || o.VariableType == nil {
+	if o == nil || IsNil(o.VariableType) {
 		return nil, false
 	}
 	return o.VariableType, true
@@ -242,7 +245,7 @@ func (o *VariableResponse) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
 
 // HasVariableType returns a boolean if a field has been set.
 func (o *VariableResponse) HasVariableType() bool {
-	if o != nil && o.VariableType != nil {
+	if o != nil && !IsNil(o.VariableType) {
 		return true
 	}
 
@@ -256,7 +259,7 @@ func (o *VariableResponse) SetVariableType(v APIVariableTypeEnum) {
 
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
 func (o *VariableResponse) GetServiceId() string {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		var ret string
 		return ret
 	}
@@ -266,7 +269,7 @@ func (o *VariableResponse) GetServiceId() string {
 // GetServiceIdOk returns a tuple with the ServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetServiceIdOk() (*string, bool) {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		return nil, false
 	}
 	return o.ServiceId, true
@@ -274,7 +277,7 @@ func (o *VariableResponse) GetServiceIdOk() (*string, bool) {
 
 // HasServiceId returns a boolean if a field has been set.
 func (o *VariableResponse) HasServiceId() bool {
-	if o != nil && o.ServiceId != nil {
+	if o != nil && !IsNil(o.ServiceId) {
 		return true
 	}
 
@@ -288,7 +291,7 @@ func (o *VariableResponse) SetServiceId(v string) {
 
 // GetServiceName returns the ServiceName field value if set, zero value otherwise.
 func (o *VariableResponse) GetServiceName() string {
-	if o == nil || o.ServiceName == nil {
+	if o == nil || IsNil(o.ServiceName) {
 		var ret string
 		return ret
 	}
@@ -298,7 +301,7 @@ func (o *VariableResponse) GetServiceName() string {
 // GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetServiceNameOk() (*string, bool) {
-	if o == nil || o.ServiceName == nil {
+	if o == nil || IsNil(o.ServiceName) {
 		return nil, false
 	}
 	return o.ServiceName, true
@@ -306,7 +309,7 @@ func (o *VariableResponse) GetServiceNameOk() (*string, bool) {
 
 // HasServiceName returns a boolean if a field has been set.
 func (o *VariableResponse) HasServiceName() bool {
-	if o != nil && o.ServiceName != nil {
+	if o != nil && !IsNil(o.ServiceName) {
 		return true
 	}
 
@@ -320,7 +323,7 @@ func (o *VariableResponse) SetServiceName(v string) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 func (o *VariableResponse) GetServiceType() LinkedServiceTypeEnum {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		var ret LinkedServiceTypeEnum
 		return ret
 	}
@@ -330,7 +333,7 @@ func (o *VariableResponse) GetServiceType() LinkedServiceTypeEnum {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
 	return o.ServiceType, true
@@ -338,7 +341,7 @@ func (o *VariableResponse) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) {
 
 // HasServiceType returns a boolean if a field has been set.
 func (o *VariableResponse) HasServiceType() bool {
-	if o != nil && o.ServiceType != nil {
+	if o != nil && !IsNil(o.ServiceType) {
 		return true
 	}
 
@@ -352,7 +355,7 @@ func (o *VariableResponse) SetServiceType(v LinkedServiceTypeEnum) {
 
 // GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
 func (o *VariableResponse) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
+	if o == nil || IsNil(o.OwnedBy) {
 		var ret string
 		return ret
 	}
@@ -362,7 +365,7 @@ func (o *VariableResponse) GetOwnedBy() string {
 // GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableResponse) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
+	if o == nil || IsNil(o.OwnedBy) {
 		return nil, false
 	}
 	return o.OwnedBy, true
@@ -370,7 +373,7 @@ func (o *VariableResponse) GetOwnedByOk() (*string, bool) {
 
 // HasOwnedBy returns a boolean if a field has been set.
 func (o *VariableResponse) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
+	if o != nil && !IsNil(o.OwnedBy) {
 		return true
 	}
 
@@ -383,41 +386,43 @@ func (o *VariableResponse) SetOwnedBy(v string) {
 }
 
 func (o VariableResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.OverriddenVariable != nil {
-		toSerialize["overridden_variable"] = o.OverriddenVariable
-	}
-	if o.AliasedVariable != nil {
-		toSerialize["aliased_variable"] = o.AliasedVariable
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if o.VariableType != nil {
-		toSerialize["variable_type"] = o.VariableType
-	}
-	if o.ServiceId != nil {
-		toSerialize["service_id"] = o.ServiceId
-	}
-	if o.ServiceName != nil {
-		toSerialize["service_name"] = o.ServiceName
-	}
-	if o.ServiceType != nil {
-		toSerialize["service_type"] = o.ServiceType
-	}
-	if o.OwnedBy != nil {
-		toSerialize["owned_by"] = o.OwnedBy
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.OverriddenVariable) {
+		toSerialize["overridden_variable"] = o.OverriddenVariable
+	}
+	if !IsNil(o.AliasedVariable) {
+		toSerialize["aliased_variable"] = o.AliasedVariable
+	}
+	toSerialize["scope"] = o.Scope
+	if !IsNil(o.VariableType) {
+		toSerialize["variable_type"] = o.VariableType
+	}
+	if !IsNil(o.ServiceId) {
+		toSerialize["service_id"] = o.ServiceId
+	}
+	if !IsNil(o.ServiceName) {
+		toSerialize["service_name"] = o.ServiceName
+	}
+	if !IsNil(o.ServiceType) {
+		toSerialize["service_type"] = o.ServiceType
+	}
+	if !IsNil(o.OwnedBy) {
+		toSerialize["owned_by"] = o.OwnedBy
+	}
+	return toSerialize, nil
 }
 
 type NullableVariableResponse struct {

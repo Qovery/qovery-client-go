@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobDeployRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobDeployRequest{}
+
 // JobDeployRequest struct for JobDeployRequest
 type JobDeployRequest struct {
 	// Image tag to deploy.   Cannot be set if `git_commit_id` is defined
@@ -42,7 +45,7 @@ func NewJobDeployRequestWithDefaults() *JobDeployRequest {
 
 // GetImageTag returns the ImageTag field value if set, zero value otherwise.
 func (o *JobDeployRequest) GetImageTag() string {
-	if o == nil || o.ImageTag == nil {
+	if o == nil || IsNil(o.ImageTag) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *JobDeployRequest) GetImageTag() string {
 // GetImageTagOk returns a tuple with the ImageTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobDeployRequest) GetImageTagOk() (*string, bool) {
-	if o == nil || o.ImageTag == nil {
+	if o == nil || IsNil(o.ImageTag) {
 		return nil, false
 	}
 	return o.ImageTag, true
@@ -60,7 +63,7 @@ func (o *JobDeployRequest) GetImageTagOk() (*string, bool) {
 
 // HasImageTag returns a boolean if a field has been set.
 func (o *JobDeployRequest) HasImageTag() bool {
-	if o != nil && o.ImageTag != nil {
+	if o != nil && !IsNil(o.ImageTag) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *JobDeployRequest) SetImageTag(v string) {
 
 // GetGitCommitId returns the GitCommitId field value if set, zero value otherwise.
 func (o *JobDeployRequest) GetGitCommitId() string {
-	if o == nil || o.GitCommitId == nil {
+	if o == nil || IsNil(o.GitCommitId) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *JobDeployRequest) GetGitCommitId() string {
 // GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobDeployRequest) GetGitCommitIdOk() (*string, bool) {
-	if o == nil || o.GitCommitId == nil {
+	if o == nil || IsNil(o.GitCommitId) {
 		return nil, false
 	}
 	return o.GitCommitId, true
@@ -92,7 +95,7 @@ func (o *JobDeployRequest) GetGitCommitIdOk() (*string, bool) {
 
 // HasGitCommitId returns a boolean if a field has been set.
 func (o *JobDeployRequest) HasGitCommitId() bool {
-	if o != nil && o.GitCommitId != nil {
+	if o != nil && !IsNil(o.GitCommitId) {
 		return true
 	}
 
@@ -105,14 +108,22 @@ func (o *JobDeployRequest) SetGitCommitId(v string) {
 }
 
 func (o JobDeployRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ImageTag != nil {
-		toSerialize["image_tag"] = o.ImageTag
-	}
-	if o.GitCommitId != nil {
-		toSerialize["git_commit_id"] = o.GitCommitId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JobDeployRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ImageTag) {
+		toSerialize["image_tag"] = o.ImageTag
+	}
+	if !IsNil(o.GitCommitId) {
+		toSerialize["git_commit_id"] = o.GitCommitId
+	}
+	return toSerialize, nil
 }
 
 type NullableJobDeployRequest struct {

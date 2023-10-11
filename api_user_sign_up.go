@@ -14,17 +14,17 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// UserSignUpApiService UserSignUpApi service
-type UserSignUpApiService service
+// UserSignUpAPIService UserSignUpAPI service
+type UserSignUpAPIService service
 
 type ApiCreateUserSignUpRequest struct {
 	ctx           context.Context
-	ApiService    *UserSignUpApiService
+	ApiService    *UserSignUpAPIService
 	signUpRequest *SignUpRequest
 }
 
@@ -45,7 +45,7 @@ Send a Sign Up request containing the user information
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUserSignUpRequest
 */
-func (a *UserSignUpApiService) CreateUserSignUp(ctx context.Context) ApiCreateUserSignUpRequest {
+func (a *UserSignUpAPIService) CreateUserSignUp(ctx context.Context) ApiCreateUserSignUpRequest {
 	return ApiCreateUserSignUpRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -53,14 +53,14 @@ func (a *UserSignUpApiService) CreateUserSignUp(ctx context.Context) ApiCreateUs
 }
 
 // Execute executes the request
-func (a *UserSignUpApiService) CreateUserSignUpExecute(r ApiCreateUserSignUpRequest) (*http.Response, error) {
+func (a *UserSignUpAPIService) CreateUserSignUpExecute(r ApiCreateUserSignUpRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSignUpApiService.CreateUserSignUp")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSignUpAPIService.CreateUserSignUp")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -114,9 +114,9 @@ func (a *UserSignUpApiService) CreateUserSignUpExecute(r ApiCreateUserSignUpRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -134,7 +134,7 @@ func (a *UserSignUpApiService) CreateUserSignUpExecute(r ApiCreateUserSignUpRequ
 
 type ApiGetUserSignUpRequest struct {
 	ctx        context.Context
-	ApiService *UserSignUpApiService
+	ApiService *UserSignUpAPIService
 }
 
 func (r ApiGetUserSignUpRequest) Execute() (*SignUp, *http.Response, error) {
@@ -149,7 +149,7 @@ Retrieve the Sign Up information of the user
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetUserSignUpRequest
 */
-func (a *UserSignUpApiService) GetUserSignUp(ctx context.Context) ApiGetUserSignUpRequest {
+func (a *UserSignUpAPIService) GetUserSignUp(ctx context.Context) ApiGetUserSignUpRequest {
 	return ApiGetUserSignUpRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -158,7 +158,7 @@ func (a *UserSignUpApiService) GetUserSignUp(ctx context.Context) ApiGetUserSign
 
 // Execute executes the request
 //  @return SignUp
-func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (*SignUp, *http.Response, error) {
+func (a *UserSignUpAPIService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (*SignUp, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -166,7 +166,7 @@ func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (
 		localVarReturnValue *SignUp
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSignUpApiService.GetUserSignUp")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSignUpAPIService.GetUserSignUp")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -218,9 +218,9 @@ func (a *UserSignUpApiService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

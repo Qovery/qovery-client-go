@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Credentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Credentials{}
+
 // Credentials struct for Credentials
 type Credentials struct {
 	Host     string `json:"host"`
@@ -141,20 +144,20 @@ func (o *Credentials) SetPassword(v string) {
 }
 
 func (o Credentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["host"] = o.Host
-	}
-	if true {
-		toSerialize["port"] = o.Port
-	}
-	if true {
-		toSerialize["login"] = o.Login
-	}
-	if true {
-		toSerialize["password"] = o.Password
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Credentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["host"] = o.Host
+	toSerialize["port"] = o.Port
+	toSerialize["login"] = o.Login
+	toSerialize["password"] = o.Password
+	return toSerialize, nil
 }
 
 type NullableCredentials struct {

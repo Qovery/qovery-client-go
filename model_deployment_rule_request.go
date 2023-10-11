@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentRuleRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentRuleRequest{}
+
 // DeploymentRuleRequest struct for DeploymentRuleRequest
 type DeploymentRuleRequest struct {
 	// name is case insensitive
@@ -87,7 +90,7 @@ func (o *DeploymentRuleRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *DeploymentRuleRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *DeploymentRuleRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentRuleRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -105,7 +108,7 @@ func (o *DeploymentRuleRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *DeploymentRuleRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -191,7 +194,7 @@ func (o *DeploymentRuleRequest) SetAutoStop(v bool) {
 
 // GetTimezone returns the Timezone field value if set, zero value otherwise.
 func (o *DeploymentRuleRequest) GetTimezone() string {
-	if o == nil || o.Timezone == nil {
+	if o == nil || IsNil(o.Timezone) {
 		var ret string
 		return ret
 	}
@@ -201,7 +204,7 @@ func (o *DeploymentRuleRequest) GetTimezone() string {
 // GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentRuleRequest) GetTimezoneOk() (*string, bool) {
-	if o == nil || o.Timezone == nil {
+	if o == nil || IsNil(o.Timezone) {
 		return nil, false
 	}
 	return o.Timezone, true
@@ -209,7 +212,7 @@ func (o *DeploymentRuleRequest) GetTimezoneOk() (*string, bool) {
 
 // HasTimezone returns a boolean if a field has been set.
 func (o *DeploymentRuleRequest) HasTimezone() bool {
-	if o != nil && o.Timezone != nil {
+	if o != nil && !IsNil(o.Timezone) {
 		return true
 	}
 
@@ -223,7 +226,7 @@ func (o *DeploymentRuleRequest) SetTimezone(v string) {
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentRuleRequest) GetStartTime() time.Time {
-	if o == nil || o.StartTime.Get() == nil {
+	if o == nil || IsNil(o.StartTime.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -266,7 +269,7 @@ func (o *DeploymentRuleRequest) UnsetStartTime() {
 
 // GetStopTime returns the StopTime field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentRuleRequest) GetStopTime() time.Time {
-	if o == nil || o.StopTime.Get() == nil {
+	if o == nil || IsNil(o.StopTime.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *DeploymentRuleRequest) GetWeekdays() []WeekdayEnum {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentRuleRequest) GetWeekdaysOk() ([]WeekdayEnum, bool) {
-	if o == nil || o.Weekdays == nil {
+	if o == nil || IsNil(o.Weekdays) {
 		return nil, false
 	}
 	return o.Weekdays, true
@@ -328,7 +331,7 @@ func (o *DeploymentRuleRequest) GetWeekdaysOk() ([]WeekdayEnum, bool) {
 
 // HasWeekdays returns a boolean if a field has been set.
 func (o *DeploymentRuleRequest) HasWeekdays() bool {
-	if o != nil && o.Weekdays != nil {
+	if o != nil && IsNil(o.Weekdays) {
 		return true
 	}
 
@@ -341,23 +344,23 @@ func (o *DeploymentRuleRequest) SetWeekdays(v []WeekdayEnum) {
 }
 
 func (o DeploymentRuleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Description != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentRuleRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if true {
-		toSerialize["cluster"] = o.Cluster
-	}
-	if true {
-		toSerialize["auto_stop"] = o.AutoStop
-	}
-	if o.Timezone != nil {
+	toSerialize["mode"] = o.Mode
+	toSerialize["cluster"] = o.Cluster
+	toSerialize["auto_stop"] = o.AutoStop
+	if !IsNil(o.Timezone) {
 		toSerialize["timezone"] = o.Timezone
 	}
 	if o.StartTime.IsSet() {
@@ -369,7 +372,7 @@ func (o DeploymentRuleRequest) MarshalJSON() ([]byte, error) {
 	if o.Weekdays != nil {
 		toSerialize["weekdays"] = o.Weekdays
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableDeploymentRuleRequest struct {

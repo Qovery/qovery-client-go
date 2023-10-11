@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServicePortRequestPortsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServicePortRequestPortsInner{}
+
 // ServicePortRequestPortsInner struct for ServicePortRequestPortsInner
 type ServicePortRequestPortsInner struct {
 	Name *string `json:"name,omitempty"`
@@ -54,7 +57,7 @@ func NewServicePortRequestPortsInnerWithDefaults() *ServicePortRequestPortsInner
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ServicePortRequestPortsInner) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *ServicePortRequestPortsInner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServicePortRequestPortsInner) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -72,7 +75,7 @@ func (o *ServicePortRequestPortsInner) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ServicePortRequestPortsInner) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *ServicePortRequestPortsInner) SetInternalPort(v int32) {
 
 // GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
 func (o *ServicePortRequestPortsInner) GetExternalPort() int32 {
-	if o == nil || o.ExternalPort == nil {
+	if o == nil || IsNil(o.ExternalPort) {
 		var ret int32
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *ServicePortRequestPortsInner) GetExternalPort() int32 {
 // GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServicePortRequestPortsInner) GetExternalPortOk() (*int32, bool) {
-	if o == nil || o.ExternalPort == nil {
+	if o == nil || IsNil(o.ExternalPort) {
 		return nil, false
 	}
 	return o.ExternalPort, true
@@ -128,7 +131,7 @@ func (o *ServicePortRequestPortsInner) GetExternalPortOk() (*int32, bool) {
 
 // HasExternalPort returns a boolean if a field has been set.
 func (o *ServicePortRequestPortsInner) HasExternalPort() bool {
-	if o != nil && o.ExternalPort != nil {
+	if o != nil && !IsNil(o.ExternalPort) {
 		return true
 	}
 
@@ -166,7 +169,7 @@ func (o *ServicePortRequestPortsInner) SetPubliclyAccessible(v bool) {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
 func (o *ServicePortRequestPortsInner) GetIsDefault() bool {
-	if o == nil || o.IsDefault == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		var ret bool
 		return ret
 	}
@@ -176,7 +179,7 @@ func (o *ServicePortRequestPortsInner) GetIsDefault() bool {
 // GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServicePortRequestPortsInner) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || o.IsDefault == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		return nil, false
 	}
 	return o.IsDefault, true
@@ -184,7 +187,7 @@ func (o *ServicePortRequestPortsInner) GetIsDefaultOk() (*bool, bool) {
 
 // HasIsDefault returns a boolean if a field has been set.
 func (o *ServicePortRequestPortsInner) HasIsDefault() bool {
-	if o != nil && o.IsDefault != nil {
+	if o != nil && !IsNil(o.IsDefault) {
 		return true
 	}
 
@@ -198,7 +201,7 @@ func (o *ServicePortRequestPortsInner) SetIsDefault(v bool) {
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *ServicePortRequestPortsInner) GetProtocol() PortProtocolEnum {
-	if o == nil || o.Protocol == nil {
+	if o == nil || IsNil(o.Protocol) {
 		var ret PortProtocolEnum
 		return ret
 	}
@@ -208,7 +211,7 @@ func (o *ServicePortRequestPortsInner) GetProtocol() PortProtocolEnum {
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServicePortRequestPortsInner) GetProtocolOk() (*PortProtocolEnum, bool) {
-	if o == nil || o.Protocol == nil {
+	if o == nil || IsNil(o.Protocol) {
 		return nil, false
 	}
 	return o.Protocol, true
@@ -216,7 +219,7 @@ func (o *ServicePortRequestPortsInner) GetProtocolOk() (*PortProtocolEnum, bool)
 
 // HasProtocol returns a boolean if a field has been set.
 func (o *ServicePortRequestPortsInner) HasProtocol() bool {
-	if o != nil && o.Protocol != nil {
+	if o != nil && !IsNil(o.Protocol) {
 		return true
 	}
 
@@ -229,26 +232,30 @@ func (o *ServicePortRequestPortsInner) SetProtocol(v PortProtocolEnum) {
 }
 
 func (o ServicePortRequestPortsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["internal_port"] = o.InternalPort
-	}
-	if o.ExternalPort != nil {
-		toSerialize["external_port"] = o.ExternalPort
-	}
-	if true {
-		toSerialize["publicly_accessible"] = o.PubliclyAccessible
-	}
-	if o.IsDefault != nil {
-		toSerialize["is_default"] = o.IsDefault
-	}
-	if o.Protocol != nil {
-		toSerialize["protocol"] = o.Protocol
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServicePortRequestPortsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	toSerialize["internal_port"] = o.InternalPort
+	if !IsNil(o.ExternalPort) {
+		toSerialize["external_port"] = o.ExternalPort
+	}
+	toSerialize["publicly_accessible"] = o.PubliclyAccessible
+	if !IsNil(o.IsDefault) {
+		toSerialize["is_default"] = o.IsDefault
+	}
+	if !IsNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
+	}
+	return toSerialize, nil
 }
 
 type NullableServicePortRequestPortsInner struct {

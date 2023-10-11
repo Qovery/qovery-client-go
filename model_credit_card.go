@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the CreditCard type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreditCard{}
+
 // CreditCard struct for CreditCard
 type CreditCard struct {
 	Id          string    `json:"id"`
@@ -194,26 +197,22 @@ func (o *CreditCard) SetIsExpired(v bool) {
 }
 
 func (o CreditCard) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["expiry_month"] = o.ExpiryMonth
-	}
-	if true {
-		toSerialize["expiry_year"] = o.ExpiryYear
-	}
-	if true {
-		toSerialize["last_digit"] = o.LastDigit
-	}
-	if true {
-		toSerialize["is_expired"] = o.IsExpired
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreditCard) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["expiry_month"] = o.ExpiryMonth
+	toSerialize["expiry_year"] = o.ExpiryYear
+	toSerialize["last_digit"] = o.LastDigit
+	toSerialize["is_expired"] = o.IsExpired
+	return toSerialize, nil
 }
 
 type NullableCreditCard struct {

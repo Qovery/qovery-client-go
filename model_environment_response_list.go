@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentResponseList{}
+
 // EnvironmentResponseList struct for EnvironmentResponseList
 type EnvironmentResponseList struct {
 	Results []Environment `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewEnvironmentResponseListWithDefaults() *EnvironmentResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *EnvironmentResponseList) GetResults() []Environment {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []Environment
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EnvironmentResponseList) GetResults() []Environment {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentResponseList) GetResultsOk() ([]Environment, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *EnvironmentResponseList) GetResultsOk() ([]Environment, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *EnvironmentResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *EnvironmentResponseList) SetResults(v []Environment) {
 }
 
 func (o EnvironmentResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentResponseList struct {

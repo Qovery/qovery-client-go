@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationChangePlanRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationChangePlanRequest{}
+
 // OrganizationChangePlanRequest struct for OrganizationChangePlanRequest
 type OrganizationChangePlanRequest struct {
 	Plan *string `json:"plan,omitempty"`
@@ -39,7 +42,7 @@ func NewOrganizationChangePlanRequestWithDefaults() *OrganizationChangePlanReque
 
 // GetPlan returns the Plan field value if set, zero value otherwise.
 func (o *OrganizationChangePlanRequest) GetPlan() string {
-	if o == nil || o.Plan == nil {
+	if o == nil || IsNil(o.Plan) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *OrganizationChangePlanRequest) GetPlan() string {
 // GetPlanOk returns a tuple with the Plan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationChangePlanRequest) GetPlanOk() (*string, bool) {
-	if o == nil || o.Plan == nil {
+	if o == nil || IsNil(o.Plan) {
 		return nil, false
 	}
 	return o.Plan, true
@@ -57,7 +60,7 @@ func (o *OrganizationChangePlanRequest) GetPlanOk() (*string, bool) {
 
 // HasPlan returns a boolean if a field has been set.
 func (o *OrganizationChangePlanRequest) HasPlan() bool {
-	if o != nil && o.Plan != nil {
+	if o != nil && !IsNil(o.Plan) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *OrganizationChangePlanRequest) SetPlan(v string) {
 }
 
 func (o OrganizationChangePlanRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Plan != nil {
-		toSerialize["plan"] = o.Plan
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationChangePlanRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Plan) {
+		toSerialize["plan"] = o.Plan
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationChangePlanRequest struct {

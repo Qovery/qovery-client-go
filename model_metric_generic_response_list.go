@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MetricGenericResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricGenericResponseList{}
+
 // MetricGenericResponseList struct for MetricGenericResponseList
 type MetricGenericResponseList struct {
 	Results []MetricGeneric `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewMetricGenericResponseListWithDefaults() *MetricGenericResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *MetricGenericResponseList) GetResults() []MetricGeneric {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []MetricGeneric
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MetricGenericResponseList) GetResults() []MetricGeneric {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricGenericResponseList) GetResultsOk() ([]MetricGeneric, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *MetricGenericResponseList) GetResultsOk() ([]MetricGeneric, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *MetricGenericResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *MetricGenericResponseList) SetResults(v []MetricGeneric) {
 }
 
 func (o MetricGenericResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricGenericResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableMetricGenericResponseList struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterStatusGet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterStatusGet{}
+
 // ClusterStatusGet struct for ClusterStatusGet
 type ClusterStatusGet struct {
 	ClusterId       *string           `json:"cluster_id,omitempty"`
@@ -42,7 +45,7 @@ func NewClusterStatusGetWithDefaults() *ClusterStatusGet {
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *ClusterStatusGet) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ClusterStatusGet) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatusGet) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -60,7 +63,7 @@ func (o *ClusterStatusGet) GetClusterIdOk() (*string, bool) {
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *ClusterStatusGet) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ClusterStatusGet) SetClusterId(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ClusterStatusGet) GetStatus() ClusterStateEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret ClusterStateEnum
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ClusterStatusGet) GetStatus() ClusterStateEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatusGet) GetStatusOk() (*ClusterStateEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -92,7 +95,7 @@ func (o *ClusterStatusGet) GetStatusOk() (*ClusterStateEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ClusterStatusGet) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ClusterStatusGet) SetStatus(v ClusterStateEnum) {
 
 // GetIsDeployed returns the IsDeployed field value if set, zero value otherwise.
 func (o *ClusterStatusGet) GetIsDeployed() bool {
-	if o == nil || o.IsDeployed == nil {
+	if o == nil || IsNil(o.IsDeployed) {
 		var ret bool
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ClusterStatusGet) GetIsDeployed() bool {
 // GetIsDeployedOk returns a tuple with the IsDeployed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatusGet) GetIsDeployedOk() (*bool, bool) {
-	if o == nil || o.IsDeployed == nil {
+	if o == nil || IsNil(o.IsDeployed) {
 		return nil, false
 	}
 	return o.IsDeployed, true
@@ -124,7 +127,7 @@ func (o *ClusterStatusGet) GetIsDeployedOk() (*bool, bool) {
 
 // HasIsDeployed returns a boolean if a field has been set.
 func (o *ClusterStatusGet) HasIsDeployed() bool {
-	if o != nil && o.IsDeployed != nil {
+	if o != nil && !IsNil(o.IsDeployed) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ClusterStatusGet) SetIsDeployed(v bool) {
 
 // GetLastExecutionId returns the LastExecutionId field value if set, zero value otherwise.
 func (o *ClusterStatusGet) GetLastExecutionId() string {
-	if o == nil || o.LastExecutionId == nil {
+	if o == nil || IsNil(o.LastExecutionId) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ClusterStatusGet) GetLastExecutionId() string {
 // GetLastExecutionIdOk returns a tuple with the LastExecutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatusGet) GetLastExecutionIdOk() (*string, bool) {
-	if o == nil || o.LastExecutionId == nil {
+	if o == nil || IsNil(o.LastExecutionId) {
 		return nil, false
 	}
 	return o.LastExecutionId, true
@@ -156,7 +159,7 @@ func (o *ClusterStatusGet) GetLastExecutionIdOk() (*string, bool) {
 
 // HasLastExecutionId returns a boolean if a field has been set.
 func (o *ClusterStatusGet) HasLastExecutionId() bool {
-	if o != nil && o.LastExecutionId != nil {
+	if o != nil && !IsNil(o.LastExecutionId) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *ClusterStatusGet) SetLastExecutionId(v string) {
 }
 
 func (o ClusterStatusGet) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.IsDeployed != nil {
-		toSerialize["is_deployed"] = o.IsDeployed
-	}
-	if o.LastExecutionId != nil {
-		toSerialize["last_execution_id"] = o.LastExecutionId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterStatusGet) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.IsDeployed) {
+		toSerialize["is_deployed"] = o.IsDeployed
+	}
+	if !IsNil(o.LastExecutionId) {
+		toSerialize["last_execution_id"] = o.LastExecutionId
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterStatusGet struct {

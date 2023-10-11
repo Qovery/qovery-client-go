@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationContainerPreviewRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationContainerPreviewRequest{}
+
 // OrganizationContainerPreviewRequest struct for OrganizationContainerPreviewRequest
 type OrganizationContainerPreviewRequest struct {
 	// the container image name to trigger preview environment
@@ -42,7 +45,7 @@ func NewOrganizationContainerPreviewRequestWithDefaults() *OrganizationContainer
 
 // GetImageName returns the ImageName field value if set, zero value otherwise.
 func (o *OrganizationContainerPreviewRequest) GetImageName() string {
-	if o == nil || o.ImageName == nil {
+	if o == nil || IsNil(o.ImageName) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *OrganizationContainerPreviewRequest) GetImageName() string {
 // GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationContainerPreviewRequest) GetImageNameOk() (*string, bool) {
-	if o == nil || o.ImageName == nil {
+	if o == nil || IsNil(o.ImageName) {
 		return nil, false
 	}
 	return o.ImageName, true
@@ -60,7 +63,7 @@ func (o *OrganizationContainerPreviewRequest) GetImageNameOk() (*string, bool) {
 
 // HasImageName returns a boolean if a field has been set.
 func (o *OrganizationContainerPreviewRequest) HasImageName() bool {
-	if o != nil && o.ImageName != nil {
+	if o != nil && !IsNil(o.ImageName) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *OrganizationContainerPreviewRequest) SetImageName(v string) {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *OrganizationContainerPreviewRequest) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *OrganizationContainerPreviewRequest) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationContainerPreviewRequest) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -92,7 +95,7 @@ func (o *OrganizationContainerPreviewRequest) GetTagOk() (*string, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *OrganizationContainerPreviewRequest) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !IsNil(o.Tag) {
 		return true
 	}
 
@@ -105,14 +108,22 @@ func (o *OrganizationContainerPreviewRequest) SetTag(v string) {
 }
 
 func (o OrganizationContainerPreviewRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ImageName != nil {
-		toSerialize["image_name"] = o.ImageName
-	}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationContainerPreviewRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ImageName) {
+		toSerialize["image_name"] = o.ImageName
+	}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationContainerPreviewRequest struct {

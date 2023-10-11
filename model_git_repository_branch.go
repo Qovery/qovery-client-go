@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GitRepositoryBranch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitRepositoryBranch{}
+
 // GitRepositoryBranch struct for GitRepositoryBranch
 type GitRepositoryBranch struct {
 	Name string `json:"name"`
@@ -63,11 +66,17 @@ func (o *GitRepositoryBranch) SetName(v string) {
 }
 
 func (o GitRepositoryBranch) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GitRepositoryBranch) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableGitRepositoryBranch struct {

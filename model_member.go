@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Member type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Member{}
+
 // Member struct for Member
 type Member struct {
 	Id                string     `json:"id"`
@@ -103,7 +106,7 @@ func (o *Member) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Member) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -113,7 +116,7 @@ func (o *Member) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -121,7 +124,7 @@ func (o *Member) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Member) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -135,7 +138,7 @@ func (o *Member) SetUpdatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Member) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -145,7 +148,7 @@ func (o *Member) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -153,7 +156,7 @@ func (o *Member) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Member) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -167,7 +170,7 @@ func (o *Member) SetName(v string) {
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.
 func (o *Member) GetNickname() string {
-	if o == nil || o.Nickname == nil {
+	if o == nil || IsNil(o.Nickname) {
 		var ret string
 		return ret
 	}
@@ -177,7 +180,7 @@ func (o *Member) GetNickname() string {
 // GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetNicknameOk() (*string, bool) {
-	if o == nil || o.Nickname == nil {
+	if o == nil || IsNil(o.Nickname) {
 		return nil, false
 	}
 	return o.Nickname, true
@@ -185,7 +188,7 @@ func (o *Member) GetNicknameOk() (*string, bool) {
 
 // HasNickname returns a boolean if a field has been set.
 func (o *Member) HasNickname() bool {
-	if o != nil && o.Nickname != nil {
+	if o != nil && !IsNil(o.Nickname) {
 		return true
 	}
 
@@ -223,7 +226,7 @@ func (o *Member) SetEmail(v string) {
 
 // GetProfilePictureUrl returns the ProfilePictureUrl field value if set, zero value otherwise.
 func (o *Member) GetProfilePictureUrl() string {
-	if o == nil || o.ProfilePictureUrl == nil {
+	if o == nil || IsNil(o.ProfilePictureUrl) {
 		var ret string
 		return ret
 	}
@@ -233,7 +236,7 @@ func (o *Member) GetProfilePictureUrl() string {
 // GetProfilePictureUrlOk returns a tuple with the ProfilePictureUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetProfilePictureUrlOk() (*string, bool) {
-	if o == nil || o.ProfilePictureUrl == nil {
+	if o == nil || IsNil(o.ProfilePictureUrl) {
 		return nil, false
 	}
 	return o.ProfilePictureUrl, true
@@ -241,7 +244,7 @@ func (o *Member) GetProfilePictureUrlOk() (*string, bool) {
 
 // HasProfilePictureUrl returns a boolean if a field has been set.
 func (o *Member) HasProfilePictureUrl() bool {
-	if o != nil && o.ProfilePictureUrl != nil {
+	if o != nil && !IsNil(o.ProfilePictureUrl) {
 		return true
 	}
 
@@ -255,7 +258,7 @@ func (o *Member) SetProfilePictureUrl(v string) {
 
 // GetLastActivityAt returns the LastActivityAt field value if set, zero value otherwise.
 func (o *Member) GetLastActivityAt() time.Time {
-	if o == nil || o.LastActivityAt == nil {
+	if o == nil || IsNil(o.LastActivityAt) {
 		var ret time.Time
 		return ret
 	}
@@ -265,7 +268,7 @@ func (o *Member) GetLastActivityAt() time.Time {
 // GetLastActivityAtOk returns a tuple with the LastActivityAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetLastActivityAtOk() (*time.Time, bool) {
-	if o == nil || o.LastActivityAt == nil {
+	if o == nil || IsNil(o.LastActivityAt) {
 		return nil, false
 	}
 	return o.LastActivityAt, true
@@ -273,7 +276,7 @@ func (o *Member) GetLastActivityAtOk() (*time.Time, bool) {
 
 // HasLastActivityAt returns a boolean if a field has been set.
 func (o *Member) HasLastActivityAt() bool {
-	if o != nil && o.LastActivityAt != nil {
+	if o != nil && !IsNil(o.LastActivityAt) {
 		return true
 	}
 
@@ -287,7 +290,7 @@ func (o *Member) SetLastActivityAt(v time.Time) {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *Member) GetRole() InviteMemberRoleEnum {
-	if o == nil || o.Role == nil {
+	if o == nil || IsNil(o.Role) {
 		var ret InviteMemberRoleEnum
 		return ret
 	}
@@ -297,7 +300,7 @@ func (o *Member) GetRole() InviteMemberRoleEnum {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetRoleOk() (*InviteMemberRoleEnum, bool) {
-	if o == nil || o.Role == nil {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
 	return o.Role, true
@@ -305,7 +308,7 @@ func (o *Member) GetRoleOk() (*InviteMemberRoleEnum, bool) {
 
 // HasRole returns a boolean if a field has been set.
 func (o *Member) HasRole() bool {
-	if o != nil && o.Role != nil {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -319,7 +322,7 @@ func (o *Member) SetRole(v InviteMemberRoleEnum) {
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *Member) GetRoleName() string {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		var ret string
 		return ret
 	}
@@ -329,7 +332,7 @@ func (o *Member) GetRoleName() string {
 // GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetRoleNameOk() (*string, bool) {
-	if o == nil || o.RoleName == nil {
+	if o == nil || IsNil(o.RoleName) {
 		return nil, false
 	}
 	return o.RoleName, true
@@ -337,7 +340,7 @@ func (o *Member) GetRoleNameOk() (*string, bool) {
 
 // HasRoleName returns a boolean if a field has been set.
 func (o *Member) HasRoleName() bool {
-	if o != nil && o.RoleName != nil {
+	if o != nil && !IsNil(o.RoleName) {
 		return true
 	}
 
@@ -351,7 +354,7 @@ func (o *Member) SetRoleName(v string) {
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise.
 func (o *Member) GetRoleId() string {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		var ret string
 		return ret
 	}
@@ -361,7 +364,7 @@ func (o *Member) GetRoleId() string {
 // GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Member) GetRoleIdOk() (*string, bool) {
-	if o == nil || o.RoleId == nil {
+	if o == nil || IsNil(o.RoleId) {
 		return nil, false
 	}
 	return o.RoleId, true
@@ -369,7 +372,7 @@ func (o *Member) GetRoleIdOk() (*string, bool) {
 
 // HasRoleId returns a boolean if a field has been set.
 func (o *Member) HasRoleId() bool {
-	if o != nil && o.RoleId != nil {
+	if o != nil && !IsNil(o.RoleId) {
 		return true
 	}
 
@@ -382,41 +385,43 @@ func (o *Member) SetRoleId(v string) {
 }
 
 func (o Member) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Nickname != nil {
-		toSerialize["nickname"] = o.Nickname
-	}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if o.ProfilePictureUrl != nil {
-		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
-	}
-	if o.LastActivityAt != nil {
-		toSerialize["last_activity_at"] = o.LastActivityAt
-	}
-	if o.Role != nil {
-		toSerialize["role"] = o.Role
-	}
-	if o.RoleName != nil {
-		toSerialize["role_name"] = o.RoleName
-	}
-	if o.RoleId != nil {
-		toSerialize["role_id"] = o.RoleId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Member) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Nickname) {
+		toSerialize["nickname"] = o.Nickname
+	}
+	toSerialize["email"] = o.Email
+	if !IsNil(o.ProfilePictureUrl) {
+		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
+	}
+	if !IsNil(o.LastActivityAt) {
+		toSerialize["last_activity_at"] = o.LastActivityAt
+	}
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
+	if !IsNil(o.RoleName) {
+		toSerialize["role_name"] = o.RoleName
+	}
+	if !IsNil(o.RoleId) {
+		toSerialize["role_id"] = o.RoleId
+	}
+	return toSerialize, nil
 }
 
 type NullableMember struct {

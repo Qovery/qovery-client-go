@@ -14,19 +14,19 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
 )
 
-// EnvironmentExportApiService EnvironmentExportApi service
-type EnvironmentExportApiService service
+// EnvironmentExportAPIService EnvironmentExportAPI service
+type EnvironmentExportAPIService service
 
 type ApiExportEnvironmentConfigurationIntoTerraformRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentExportApiService
+	ApiService    *EnvironmentExportAPIService
 	environmentId string
 	exportSecrets *bool
 }
@@ -37,7 +37,7 @@ func (r ApiExportEnvironmentConfigurationIntoTerraformRequest) ExportSecrets(exp
 	return r
 }
 
-func (r ApiExportEnvironmentConfigurationIntoTerraformRequest) Execute() (**os.File, *http.Response, error) {
+func (r ApiExportEnvironmentConfigurationIntoTerraformRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.ExportEnvironmentConfigurationIntoTerraformExecute(r)
 }
 
@@ -48,7 +48,7 @@ ExportEnvironmentConfigurationIntoTerraform Export full environment and its reso
  @param environmentId Environment ID
  @return ApiExportEnvironmentConfigurationIntoTerraformRequest
 */
-func (a *EnvironmentExportApiService) ExportEnvironmentConfigurationIntoTerraform(ctx context.Context, environmentId string) ApiExportEnvironmentConfigurationIntoTerraformRequest {
+func (a *EnvironmentExportAPIService) ExportEnvironmentConfigurationIntoTerraform(ctx context.Context, environmentId string) ApiExportEnvironmentConfigurationIntoTerraformRequest {
 	return ApiExportEnvironmentConfigurationIntoTerraformRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -58,28 +58,31 @@ func (a *EnvironmentExportApiService) ExportEnvironmentConfigurationIntoTerrafor
 
 // Execute executes the request
 //  @return *os.File
-func (a *EnvironmentExportApiService) ExportEnvironmentConfigurationIntoTerraformExecute(r ApiExportEnvironmentConfigurationIntoTerraformRequest) (**os.File, *http.Response, error) {
+func (a *EnvironmentExportAPIService) ExportEnvironmentConfigurationIntoTerraformExecute(r ApiExportEnvironmentConfigurationIntoTerraformRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue **os.File
+		localVarReturnValue *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentExportApiService.ExportEnvironmentConfigurationIntoTerraform")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentExportAPIService.ExportEnvironmentConfigurationIntoTerraform")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/terraformExport"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.exportSecrets != nil {
-		localVarQueryParams.Add("exportSecrets", parameterToString(*r.exportSecrets, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "exportSecrets", r.exportSecrets, "")
+	} else {
+		var defaultValue bool = false
+		r.exportSecrets = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -122,9 +125,9 @@ func (a *EnvironmentExportApiService) ExportEnvironmentConfigurationIntoTerrafor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

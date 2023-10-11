@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Environment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Environment{}
+
 // Environment struct for Environment
 type Environment struct {
 	Id        string     `json:"id"`
@@ -105,7 +108,7 @@ func (o *Environment) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Environment) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *Environment) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -123,7 +126,7 @@ func (o *Environment) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Environment) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -161,7 +164,7 @@ func (o *Environment) SetName(v string) {
 
 // GetProject returns the Project field value if set, zero value otherwise.
 func (o *Environment) GetProject() ReferenceObject {
-	if o == nil || o.Project == nil {
+	if o == nil || IsNil(o.Project) {
 		var ret ReferenceObject
 		return ret
 	}
@@ -171,7 +174,7 @@ func (o *Environment) GetProject() ReferenceObject {
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetProjectOk() (*ReferenceObject, bool) {
-	if o == nil || o.Project == nil {
+	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
 	return o.Project, true
@@ -179,7 +182,7 @@ func (o *Environment) GetProjectOk() (*ReferenceObject, bool) {
 
 // HasProject returns a boolean if a field has been set.
 func (o *Environment) HasProject() bool {
-	if o != nil && o.Project != nil {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
@@ -193,7 +196,7 @@ func (o *Environment) SetProject(v ReferenceObject) {
 
 // GetLastUpdatedBy returns the LastUpdatedBy field value if set, zero value otherwise.
 func (o *Environment) GetLastUpdatedBy() string {
-	if o == nil || o.LastUpdatedBy == nil {
+	if o == nil || IsNil(o.LastUpdatedBy) {
 		var ret string
 		return ret
 	}
@@ -203,7 +206,7 @@ func (o *Environment) GetLastUpdatedBy() string {
 // GetLastUpdatedByOk returns a tuple with the LastUpdatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetLastUpdatedByOk() (*string, bool) {
-	if o == nil || o.LastUpdatedBy == nil {
+	if o == nil || IsNil(o.LastUpdatedBy) {
 		return nil, false
 	}
 	return o.LastUpdatedBy, true
@@ -211,7 +214,7 @@ func (o *Environment) GetLastUpdatedByOk() (*string, bool) {
 
 // HasLastUpdatedBy returns a boolean if a field has been set.
 func (o *Environment) HasLastUpdatedBy() bool {
-	if o != nil && o.LastUpdatedBy != nil {
+	if o != nil && !IsNil(o.LastUpdatedBy) {
 		return true
 	}
 
@@ -297,7 +300,7 @@ func (o *Environment) SetClusterId(v string) {
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise.
 func (o *Environment) GetClusterName() string {
-	if o == nil || o.ClusterName == nil {
+	if o == nil || IsNil(o.ClusterName) {
 		var ret string
 		return ret
 	}
@@ -307,7 +310,7 @@ func (o *Environment) GetClusterName() string {
 // GetClusterNameOk returns a tuple with the ClusterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetClusterNameOk() (*string, bool) {
-	if o == nil || o.ClusterName == nil {
+	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
 	return o.ClusterName, true
@@ -315,7 +318,7 @@ func (o *Environment) GetClusterNameOk() (*string, bool) {
 
 // HasClusterName returns a boolean if a field has been set.
 func (o *Environment) HasClusterName() bool {
-	if o != nil && o.ClusterName != nil {
+	if o != nil && !IsNil(o.ClusterName) {
 		return true
 	}
 
@@ -328,38 +331,34 @@ func (o *Environment) SetClusterName(v string) {
 }
 
 func (o Environment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Project != nil {
-		toSerialize["project"] = o.Project
-	}
-	if o.LastUpdatedBy != nil {
-		toSerialize["last_updated_by"] = o.LastUpdatedBy
-	}
-	if true {
-		toSerialize["cloud_provider"] = o.CloudProvider
-	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if true {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.ClusterName != nil {
-		toSerialize["cluster_name"] = o.ClusterName
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Environment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
+	}
+	if !IsNil(o.LastUpdatedBy) {
+		toSerialize["last_updated_by"] = o.LastUpdatedBy
+	}
+	toSerialize["cloud_provider"] = o.CloudProvider
+	toSerialize["mode"] = o.Mode
+	toSerialize["cluster_id"] = o.ClusterId
+	if !IsNil(o.ClusterName) {
+		toSerialize["cluster_name"] = o.ClusterName
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironment struct {

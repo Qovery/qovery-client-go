@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// OrganizationAccountGitRepositoriesApiService OrganizationAccountGitRepositoriesApi service
-type OrganizationAccountGitRepositoriesApiService service
+// OrganizationAccountGitRepositoriesAPIService OrganizationAccountGitRepositoriesAPI service
+type OrganizationAccountGitRepositoriesAPIService service
 
 type ApiGetOrganizationBitbucketRepositoriesRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAccountGitRepositoriesApiService
+	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
 }
 
@@ -40,7 +40,7 @@ GetOrganizationBitbucketRepositories Get bitbucket repositories of the connected
  @param organizationId Organization ID
  @return ApiGetOrganizationBitbucketRepositoriesRequest
 */
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositories(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoriesRequest {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositories(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoriesRequest {
 	return ApiGetOrganizationBitbucketRepositoriesRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -50,7 +50,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositoriesExecute(r ApiGetOrganizationBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositoriesExecute(r ApiGetOrganizationBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -58,13 +58,13 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 		localVarReturnValue *GitRepositoryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationBitbucketRepositories")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesAPIService.GetOrganizationBitbucketRepositories")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/account/bitbucket/repository"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -140,7 +140,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 
 type ApiGetOrganizationBitbucketRepositoryBranchesRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAccountGitRepositoriesApiService
+	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
 	name           *string
 }
@@ -162,7 +162,7 @@ GetOrganizationBitbucketRepositoryBranches Get bitbucket branches of the specifi
  @param organizationId Organization ID
  @return ApiGetOrganizationBitbucketRepositoryBranchesRequest
 */
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoryBranchesRequest {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoryBranchesRequest {
 	return ApiGetOrganizationBitbucketRepositoryBranchesRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -172,7 +172,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketRepositoryBranchesExecute(r ApiGetOrganizationBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositoryBranchesExecute(r ApiGetOrganizationBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -180,20 +180,20 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationBitbucketRepositoryBranches")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesAPIService.GetOrganizationBitbucketRepositoryBranches")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/account/bitbucket/repository/branch"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -236,9 +236,9 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -265,7 +265,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationBitbucketR
 
 type ApiGetOrganizationGitProviderAccountRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAccountGitRepositoriesApiService
+	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
 }
 
@@ -280,7 +280,7 @@ GetOrganizationGitProviderAccount Get git provider accounts
  @param organizationId Organization ID
  @return ApiGetOrganizationGitProviderAccountRequest
 */
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProviderAccount(ctx context.Context, organizationId string) ApiGetOrganizationGitProviderAccountRequest {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitProviderAccount(ctx context.Context, organizationId string) ApiGetOrganizationGitProviderAccountRequest {
 	return ApiGetOrganizationGitProviderAccountRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -290,7 +290,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProvide
 
 // Execute executes the request
 //  @return GitAuthProviderResponseList
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProviderAccountExecute(r ApiGetOrganizationGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitProviderAccountExecute(r ApiGetOrganizationGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,13 +298,13 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProvide
 		localVarReturnValue *GitAuthProviderResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGitProviderAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesAPIService.GetOrganizationGitProviderAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/account/gitAuthProvider"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -351,9 +351,9 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProvide
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,7 +380,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitProvide
 
 type ApiGetOrganizationGithubRepositoriesRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAccountGitRepositoriesApiService
+	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
 }
 
@@ -395,7 +395,7 @@ GetOrganizationGithubRepositories Get github repositories of the connected user
  @param organizationId Organization ID
  @return ApiGetOrganizationGithubRepositoriesRequest
 */
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoriesRequest {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoriesRequest {
 	return ApiGetOrganizationGithubRepositoriesRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -405,7 +405,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositoriesExecute(r ApiGetOrganizationGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositoriesExecute(r ApiGetOrganizationGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -413,13 +413,13 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 		localVarReturnValue *GitRepositoryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGithubRepositories")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesAPIService.GetOrganizationGithubRepositories")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/account/github/repository"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -466,9 +466,9 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -495,7 +495,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 
 type ApiGetOrganizationGithubRepositoryBranchesRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAccountGitRepositoriesApiService
+	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
 	name           *string
 }
@@ -517,7 +517,7 @@ GetOrganizationGithubRepositoryBranches Get github branches of the specified rep
  @param organizationId Organization ID
  @return ApiGetOrganizationGithubRepositoryBranchesRequest
 */
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoryBranchesRequest {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoryBranchesRequest {
 	return ApiGetOrganizationGithubRepositoryBranchesRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -527,7 +527,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepositoryBranchesExecute(r ApiGetOrganizationGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositoryBranchesExecute(r ApiGetOrganizationGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -535,20 +535,20 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGithubRepositoryBranches")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesAPIService.GetOrganizationGithubRepositoryBranches")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/account/github/repository/branch"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -591,9 +591,9 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -620,7 +620,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGithubRepo
 
 type ApiGetOrganizationGitlabRepositoriesRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAccountGitRepositoriesApiService
+	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
 }
 
@@ -635,7 +635,7 @@ GetOrganizationGitlabRepositories Get gitlab repositories of the connected user
  @param organizationId Organization ID
  @return ApiGetOrganizationGitlabRepositoriesRequest
 */
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoriesRequest {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoriesRequest {
 	return ApiGetOrganizationGitlabRepositoriesRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -645,7 +645,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 
 // Execute executes the request
 //  @return GitRepositoryResponseList
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositoriesExecute(r ApiGetOrganizationGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositoriesExecute(r ApiGetOrganizationGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -653,13 +653,13 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 		localVarReturnValue *GitRepositoryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGitlabRepositories")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesAPIService.GetOrganizationGitlabRepositories")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/account/gitlab/repository"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -706,9 +706,9 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -735,7 +735,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 
 type ApiGetOrganizationGitlabRepositoryBranchesRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAccountGitRepositoriesApiService
+	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
 	name           *string
 }
@@ -757,7 +757,7 @@ GetOrganizationGitlabRepositoryBranches Get gitlab branches of the specified rep
  @param organizationId Organization ID
  @return ApiGetOrganizationGitlabRepositoryBranchesRequest
 */
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoryBranchesRequest {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoryBranchesRequest {
 	return ApiGetOrganizationGitlabRepositoryBranchesRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -767,7 +767,7 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 
 // Execute executes the request
 //  @return GitRepositoryBranchResponseList
-func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepositoryBranchesExecute(r ApiGetOrganizationGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
+func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositoryBranchesExecute(r ApiGetOrganizationGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -775,20 +775,20 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 		localVarReturnValue *GitRepositoryBranchResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesApiService.GetOrganizationGitlabRepositoryBranches")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAccountGitRepositoriesAPIService.GetOrganizationGitlabRepositoryBranches")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/account/gitlab/repository/branch"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.name != nil {
-		localVarQueryParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -831,9 +831,9 @@ func (a *OrganizationAccountGitRepositoriesApiService) GetOrganizationGitlabRepo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

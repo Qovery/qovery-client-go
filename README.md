@@ -18,7 +18,6 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -64,7 +63,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
-```
+```golang
 ctx := context.WithValue(context.Background(), qovery.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -81,374 +80,374 @@ All URIs are relative to *https://api.qovery.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountInfoApi* | [**EditAccountInformation**](docs/AccountInfoApi.md#editaccountinformation) | **Put** /account | Edit account information
-*AccountInfoApi* | [**GetAccountInformation**](docs/AccountInfoApi.md#getaccountinformation) | **Get** /account | Get Account information
-*ApplicationActionsApi* | [**DeployApplication**](docs/ApplicationActionsApi.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
-*ApplicationActionsApi* | [**RebootApplication**](docs/ApplicationActionsApi.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application
-*ApplicationActionsApi* | [**RedeployApplication**](docs/ApplicationActionsApi.md#redeployapplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
-*ApplicationActionsApi* | [**RestartApplication**](docs/ApplicationActionsApi.md#restartapplication) | **Post** /application/{applicationId}/restart | Deprecated - Restart application
-*ApplicationActionsApi* | [**StopApplication**](docs/ApplicationActionsApi.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
-*ApplicationConfigurationApi* | [**EditAdvancedSettings**](docs/ApplicationConfigurationApi.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
-*ApplicationConfigurationApi* | [**EditApplicationNetwork**](docs/ApplicationConfigurationApi.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
-*ApplicationConfigurationApi* | [**GetAdvancedSettings**](docs/ApplicationConfigurationApi.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
-*ApplicationConfigurationApi* | [**GetApplicationNetwork**](docs/ApplicationConfigurationApi.md#getapplicationnetwork) | **Get** /application/{applicationId}/network | Get Application Network information
-*ApplicationDeploymentHistoryApi* | [**ListApplicationDeploymentHistory**](docs/ApplicationDeploymentHistoryApi.md#listapplicationdeploymenthistory) | **Get** /application/{applicationId}/deploymentHistory | List application deploys
-*ApplicationDeploymentRestrictionApi* | [**CreateApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionApi.md#createapplicationdeploymentrestriction) | **Post** /application/{applicationId}/deploymentRestriction | Create an application deployment restriction
-*ApplicationDeploymentRestrictionApi* | [**DeleteApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionApi.md#deleteapplicationdeploymentrestriction) | **Delete** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Delete an application deployment restriction
-*ApplicationDeploymentRestrictionApi* | [**EditApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionApi.md#editapplicationdeploymentrestriction) | **Put** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Edit an application deployment restriction
-*ApplicationDeploymentRestrictionApi* | [**GetApplicationDeploymentRestrictions**](docs/ApplicationDeploymentRestrictionApi.md#getapplicationdeploymentrestrictions) | **Get** /application/{applicationId}/deploymentRestriction | Get application deployment restrictions
-*ApplicationEnvironmentVariableApi* | [**CreateApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#createapplicationenvironmentvariable) | **Post** /application/{applicationId}/environmentVariable | Add an environment variable to the application
-*ApplicationEnvironmentVariableApi* | [**CreateApplicationEnvironmentVariableAlias**](docs/ApplicationEnvironmentVariableApi.md#createapplicationenvironmentvariablealias) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the application level
-*ApplicationEnvironmentVariableApi* | [**CreateApplicationEnvironmentVariableOverride**](docs/ApplicationEnvironmentVariableApi.md#createapplicationenvironmentvariableoverride) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the application level
-*ApplicationEnvironmentVariableApi* | [**DeleteApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#deleteapplicationenvironmentvariable) | **Delete** /application/{applicationId}/environmentVariable/{environmentVariableId} | Delete an environment variable from an application
-*ApplicationEnvironmentVariableApi* | [**EditApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#editapplicationenvironmentvariable) | **Put** /application/{applicationId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the application
-*ApplicationEnvironmentVariableApi* | [**ImportEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#importenvironmentvariable) | **Post** /application/{applicationId}/environmentVariable/import | Import variables
-*ApplicationEnvironmentVariableApi* | [**ListApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableApi.md#listapplicationenvironmentvariable) | **Get** /application/{applicationId}/environmentVariable | List environment variables
-*ApplicationLogsApi* | [**ListApplicationLog**](docs/ApplicationLogsApi.md#listapplicationlog) | **Get** /application/{applicationId}/log | List logs
-*ApplicationMainCallsApi* | [**DeleteApplication**](docs/ApplicationMainCallsApi.md#deleteapplication) | **Delete** /application/{applicationId} | Delete application
-*ApplicationMainCallsApi* | [**EditApplication**](docs/ApplicationMainCallsApi.md#editapplication) | **Put** /application/{applicationId} | Edit application
-*ApplicationMainCallsApi* | [**GetApplication**](docs/ApplicationMainCallsApi.md#getapplication) | **Get** /application/{applicationId} | Get application by ID
-*ApplicationMainCallsApi* | [**GetApplicationStatus**](docs/ApplicationMainCallsApi.md#getapplicationstatus) | **Get** /application/{applicationId}/status | Get application status
-*ApplicationMainCallsApi* | [**ListApplicationCommit**](docs/ApplicationMainCallsApi.md#listapplicationcommit) | **Get** /application/{applicationId}/commit | List last commits
-*ApplicationMainCallsApi* | [**ListApplicationContributor**](docs/ApplicationMainCallsApi.md#listapplicationcontributor) | **Get** /application/{applicationId}/contributor | List contributors
-*ApplicationMainCallsApi* | [**ListApplicationLinks**](docs/ApplicationMainCallsApi.md#listapplicationlinks) | **Get** /application/{applicationId}/link | List all URLs of the application
-*ApplicationMetricsApi* | [**GetApplicationCurrentInstance**](docs/ApplicationMetricsApi.md#getapplicationcurrentinstance) | **Get** /application/{applicationId}/instance | List currently running instances of the application with their CPU and RAM metrics
-*ApplicationMetricsApi* | [**GetApplicationCurrentScale**](docs/ApplicationMetricsApi.md#getapplicationcurrentscale) | **Get** /application/{applicationId}/currentScale | Get current scaling of the application
-*ApplicationMetricsApi* | [**GetApplicationCurrentStorageDisk**](docs/ApplicationMetricsApi.md#getapplicationcurrentstoragedisk) | **Get** /application/{applicationId}/currentStorage | List current storage disk usage
-*ApplicationMetricsApi* | [**GetApplicationMetricCpu**](docs/ApplicationMetricsApi.md#getapplicationmetriccpu) | **Get** /application/{applicationId}/metric/cpu | Get CPU consumption metric over time for the application
-*ApplicationMetricsApi* | [**GetApplicationMetricHealthCheck**](docs/ApplicationMetricsApi.md#getapplicationmetrichealthcheck) | **Get** /application/{applicationId}/metric/healthCheck | Get Health Check latency  metric over time for the application
-*ApplicationMetricsApi* | [**GetApplicationMetricMemory**](docs/ApplicationMetricsApi.md#getapplicationmetricmemory) | **Get** /application/{applicationId}/metric/memory | Get Memory consumption metric over time for the application
-*ApplicationMetricsApi* | [**GetApplicationMetricStorage**](docs/ApplicationMetricsApi.md#getapplicationmetricstorage) | **Get** /application/{applicationId}/metric/storage | Get Storage consumption metric over time for the application
-*ApplicationSecretApi* | [**CreateApplicationSecret**](docs/ApplicationSecretApi.md#createapplicationsecret) | **Post** /application/{applicationId}/secret | Add a secret to the application
-*ApplicationSecretApi* | [**CreateApplicationSecretAlias**](docs/ApplicationSecretApi.md#createapplicationsecretalias) | **Post** /application/{applicationId}/secret/{secretId}/alias | Create a secret alias at the application level
-*ApplicationSecretApi* | [**CreateApplicationSecretOverride**](docs/ApplicationSecretApi.md#createapplicationsecretoverride) | **Post** /application/{applicationId}/secret/{secretId}/override | Create a secret override at the application level
-*ApplicationSecretApi* | [**DeleteApplicationSecret**](docs/ApplicationSecretApi.md#deleteapplicationsecret) | **Delete** /application/{applicationId}/secret/{secretId} | Delete a secret from an application
-*ApplicationSecretApi* | [**EditApplicationSecret**](docs/ApplicationSecretApi.md#editapplicationsecret) | **Put** /application/{applicationId}/secret/{secretId} | Edit a secret belonging to the application
-*ApplicationSecretApi* | [**ListApplicationSecrets**](docs/ApplicationSecretApi.md#listapplicationsecrets) | **Get** /application/{applicationId}/secret | List application secrets
-*ApplicationsApi* | [**CloneApplication**](docs/ApplicationsApi.md#cloneapplication) | **Post** /application/{applicationId}/clone | Clone application
-*ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **Post** /environment/{environmentId}/application | Create an application
-*ApplicationsApi* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsApi.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
-*ApplicationsApi* | [**GetEnvironmentApplicationCurrentScale**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentscale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
-*ApplicationsApi* | [**GetEnvironmentApplicationCurrentStorage**](docs/ApplicationsApi.md#getenvironmentapplicationcurrentstorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
-*ApplicationsApi* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsApi.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
-*ApplicationsApi* | [**GetEnvironmentApplicationSupportedLanguages**](docs/ApplicationsApi.md#getenvironmentapplicationsupportedlanguages) | **Get** /environment/{environmentId}/application/supportedLanguage | List supported languages
-*ApplicationsApi* | [**ListApplication**](docs/ApplicationsApi.md#listapplication) | **Get** /environment/{environmentId}/application | List applications
-*BackupsApi* | [**AddBackupDatabase**](docs/BackupsApi.md#addbackupdatabase) | **Post** /database/{databaseId}/backup | Add a backup to the Database 
-*BackupsApi* | [**ListDatabaseBackup**](docs/BackupsApi.md#listdatabasebackup) | **Get** /database/{databaseId}/backup | List database  backups
-*BackupsApi* | [**RemoveDatabaseBackup**](docs/BackupsApi.md#removedatabasebackup) | **Delete** /database/{databaseId}/backup/{backupId} | Remove database  backup
-*BillingApi* | [**AddCreditCard**](docs/BillingApi.md#addcreditcard) | **Post** /organization/{organizationId}/creditCard | Add credit card
-*BillingApi* | [**AddCreditCode**](docs/BillingApi.md#addcreditcode) | **Post** /organization/{organizationId}/creditCode | Add credit code
-*BillingApi* | [**ChangePlan**](docs/BillingApi.md#changeplan) | **Post** /organization/{organizationId}/changePlan | Change organization plan
-*BillingApi* | [**DeleteCreditCard**](docs/BillingApi.md#deletecreditcard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
-*BillingApi* | [**EditOrganizationBillingInfo**](docs/BillingApi.md#editorganizationbillinginfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
-*BillingApi* | [**GetClusterCurrentCost**](docs/BillingApi.md#getclustercurrentcost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
-*BillingApi* | [**GetOrganizationBillingInfo**](docs/BillingApi.md#getorganizationbillinginfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
-*BillingApi* | [**GetOrganizationBillingStatus**](docs/BillingApi.md#getorganizationbillingstatus) | **Get** /organization/{organizationId}/billingStatus | Get organization billing status
-*BillingApi* | [**GetOrganizationCurrentCost**](docs/BillingApi.md#getorganizationcurrentcost) | **Get** /organization/{organizationId}/currentCost | Get organization current cost
-*BillingApi* | [**GetOrganizationInvoice**](docs/BillingApi.md#getorganizationinvoice) | **Get** /organization/{organizationId}/invoice/{invoiceId} | Get organization invoice
-*BillingApi* | [**GetOrganizationInvoicePDF**](docs/BillingApi.md#getorganizationinvoicepdf) | **Get** /organization/{organizationId}/invoice/{invoiceId}/download | Get invoice link
-*BillingApi* | [**ListOrganizationCreditCards**](docs/BillingApi.md#listorganizationcreditcards) | **Get** /organization/{organizationId}/creditCard | List organization credit cards
-*BillingApi* | [**ListOrganizationInvoice**](docs/BillingApi.md#listorganizationinvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
-*BillingApi* | [**OrganizationDownloadAllInvoices**](docs/BillingApi.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
-*CloudProviderApi* | [**ListAWSEKSInstanceType**](docs/CloudProviderApi.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
-*CloudProviderApi* | [**ListAWSEc2InstanceType**](docs/CloudProviderApi.md#listawsec2instancetype) | **Get** /aws/ec2/instanceType/{region} | List AWS EC2 available instance types
-*CloudProviderApi* | [**ListAWSFeatures**](docs/CloudProviderApi.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
-*CloudProviderApi* | [**ListAWSInstanceType**](docs/CloudProviderApi.md#listawsinstancetype) | **Get** /aws/instanceType | List AWS available instance types
-*CloudProviderApi* | [**ListAWSManagedDatabaseInstanceType**](docs/CloudProviderApi.md#listawsmanageddatabaseinstancetype) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
-*CloudProviderApi* | [**ListAWSManagedDatabaseType**](docs/CloudProviderApi.md#listawsmanageddatabasetype) | **Get** /aws/managedDatabase/type | List AWS available managed database types
-*CloudProviderApi* | [**ListAWSRegions**](docs/CloudProviderApi.md#listawsregions) | **Get** /aws/region | List AWS regions
-*CloudProviderApi* | [**ListCloudProvider**](docs/CloudProviderApi.md#listcloudprovider) | **Get** /cloudProvider | List Cloud providers available
-*CloudProviderApi* | [**ListDOFeatures**](docs/CloudProviderApi.md#listdofeatures) | **Get** /digitalOcean/clusterFeature | List DO features available
-*CloudProviderApi* | [**ListDOInstanceType**](docs/CloudProviderApi.md#listdoinstancetype) | **Get** /digitalOcean/instanceType | List DO available instance types
-*CloudProviderApi* | [**ListDOManagedDatabaseInstanceType**](docs/CloudProviderApi.md#listdomanageddatabaseinstancetype) | **Get** /digitalOcean/managedDatabase/instanceType/{region}/{databaseType} | List Digital Ocean available managed database instance types
-*CloudProviderApi* | [**ListDOManagedDatabaseType**](docs/CloudProviderApi.md#listdomanageddatabasetype) | **Get** /digitalOcean/managedDatabase/type | List Digital Ocean available managed database types
-*CloudProviderApi* | [**ListDORegions**](docs/CloudProviderApi.md#listdoregions) | **Get** /digitalOcean/region | List DO regions
-*CloudProviderApi* | [**ListSCWManagedDatabaseInstanceType**](docs/CloudProviderApi.md#listscwmanageddatabaseinstancetype) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
-*CloudProviderApi* | [**ListSCWManagedDatabaseType**](docs/CloudProviderApi.md#listscwmanageddatabasetype) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
-*CloudProviderApi* | [**ListScalewayFeatures**](docs/CloudProviderApi.md#listscalewayfeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
-*CloudProviderApi* | [**ListScalewayInstanceType**](docs/CloudProviderApi.md#listscalewayinstancetype) | **Get** /scaleway/instanceType | List Scaleway available instance types
-*CloudProviderApi* | [**ListScalewayKapsuleInstanceType**](docs/CloudProviderApi.md#listscalewaykapsuleinstancetype) | **Get** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
-*CloudProviderApi* | [**ListScalewayRegions**](docs/CloudProviderApi.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
-*CloudProviderCredentialsApi* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsApi.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
-*CloudProviderCredentialsApi* | [**CreateDOCredentials**](docs/CloudProviderCredentialsApi.md#createdocredentials) | **Post** /organization/{organizationId}/digitalOcean/credentials | Create Digital Ocean credentials set
-*CloudProviderCredentialsApi* | [**CreateScalewayCredentials**](docs/CloudProviderCredentialsApi.md#createscalewaycredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
-*CloudProviderCredentialsApi* | [**DeleteAWSCredentials**](docs/CloudProviderCredentialsApi.md#deleteawscredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
-*CloudProviderCredentialsApi* | [**DeleteDOCredentials**](docs/CloudProviderCredentialsApi.md#deletedocredentials) | **Delete** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Delete a set of Digital Ocean credentials
-*CloudProviderCredentialsApi* | [**DeleteScalewayCredentials**](docs/CloudProviderCredentialsApi.md#deletescalewaycredentials) | **Delete** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Delete a set of Scaleway credentials
-*CloudProviderCredentialsApi* | [**EditAWSCredentials**](docs/CloudProviderCredentialsApi.md#editawscredentials) | **Put** /organization/{organizationId}/aws/credentials/{credentialsId} | Edit a set of AWS credentials
-*CloudProviderCredentialsApi* | [**EditDOCredentials**](docs/CloudProviderCredentialsApi.md#editdocredentials) | **Put** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Edit a set of Digital Ocean credentials
-*CloudProviderCredentialsApi* | [**EditScalewayCredentials**](docs/CloudProviderCredentialsApi.md#editscalewaycredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
-*CloudProviderCredentialsApi* | [**GetAWSCredentials**](docs/CloudProviderCredentialsApi.md#getawscredentials) | **Get** /organization/{organizationId}/aws/credentials/{credentialsId} | Get a set of AWS credentials
-*CloudProviderCredentialsApi* | [**GetDOCredentials**](docs/CloudProviderCredentialsApi.md#getdocredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Get a set of Digital Ocean credentials
-*CloudProviderCredentialsApi* | [**GetScalewayCredentials**](docs/CloudProviderCredentialsApi.md#getscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Get a set of Scaleway credentials
-*CloudProviderCredentialsApi* | [**ListAWSCredentials**](docs/CloudProviderCredentialsApi.md#listawscredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
-*CloudProviderCredentialsApi* | [**ListDOCredentials**](docs/CloudProviderCredentialsApi.md#listdocredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials | List DO credentials
-*CloudProviderCredentialsApi* | [**ListScalewayCredentials**](docs/CloudProviderCredentialsApi.md#listscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
-*ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
-*ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
-*ClustersApi* | [**DeployCluster**](docs/ClustersApi.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
-*ClustersApi* | [**EditCluster**](docs/ClustersApi.md#editcluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
-*ClustersApi* | [**EditClusterAdvancedSettings**](docs/ClustersApi.md#editclusteradvancedsettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
-*ClustersApi* | [**EditRoutingTable**](docs/ClustersApi.md#editroutingtable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
-*ClustersApi* | [**GetClusterAdvancedSettings**](docs/ClustersApi.md#getclusteradvancedsettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
-*ClustersApi* | [**GetClusterReadinessStatus**](docs/ClustersApi.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
-*ClustersApi* | [**GetClusterStatus**](docs/ClustersApi.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
-*ClustersApi* | [**GetDefaultClusterAdvancedSettings**](docs/ClustersApi.md#getdefaultclusteradvancedsettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
-*ClustersApi* | [**GetOrganizationCloudProviderInfo**](docs/ClustersApi.md#getorganizationcloudproviderinfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
-*ClustersApi* | [**GetOrganizationClusterStatus**](docs/ClustersApi.md#getorganizationclusterstatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
-*ClustersApi* | [**GetRoutingTable**](docs/ClustersApi.md#getroutingtable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
-*ClustersApi* | [**ListClusterLogs**](docs/ClustersApi.md#listclusterlogs) | **Get** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
-*ClustersApi* | [**ListOrganizationCluster**](docs/ClustersApi.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
-*ClustersApi* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersApi.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
-*ClustersApi* | [**StopCluster**](docs/ClustersApi.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
-*ContainerActionsApi* | [**DeployContainer**](docs/ContainerActionsApi.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
-*ContainerActionsApi* | [**RebootContainer**](docs/ContainerActionsApi.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
-*ContainerActionsApi* | [**RedeployContainer**](docs/ContainerActionsApi.md#redeploycontainer) | **Post** /container/{containerId}/redeploy | Redeploy container
-*ContainerActionsApi* | [**RestartContainer**](docs/ContainerActionsApi.md#restartcontainer) | **Post** /container/{containerId}/restart | Deprecated - Restart container
-*ContainerActionsApi* | [**StopContainer**](docs/ContainerActionsApi.md#stopcontainer) | **Post** /container/{containerId}/stop | Stop container
-*ContainerConfigurationApi* | [**EditContainerAdvancedSettings**](docs/ContainerConfigurationApi.md#editcontaineradvancedsettings) | **Put** /container/{containerId}/advancedSettings | Edit advanced settings
-*ContainerConfigurationApi* | [**EditContainerNetwork**](docs/ContainerConfigurationApi.md#editcontainernetwork) | **Put** /container/{containerId}/network | Edit Container Network
-*ContainerConfigurationApi* | [**GetContainerAdvancedSettings**](docs/ContainerConfigurationApi.md#getcontaineradvancedsettings) | **Get** /container/{containerId}/advancedSettings | Get advanced settings
-*ContainerConfigurationApi* | [**GetContainerNetwork**](docs/ContainerConfigurationApi.md#getcontainernetwork) | **Get** /container/{containerId}/network | Get Container Network information
-*ContainerCustomDomainApi* | [**CreateContainerCustomDomain**](docs/ContainerCustomDomainApi.md#createcontainercustomdomain) | **Post** /container/{containerId}/customDomain | Add custom domain to the container.
-*ContainerCustomDomainApi* | [**DeleteContainerCustomDomain**](docs/ContainerCustomDomainApi.md#deletecontainercustomdomain) | **Delete** /container/{containerId}/customDomain/{customDomainId} | Delete a Custom Domain
-*ContainerCustomDomainApi* | [**EditContainerCustomDomain**](docs/ContainerCustomDomainApi.md#editcontainercustomdomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
-*ContainerCustomDomainApi* | [**GetContainerCustomDomainStatus**](docs/ContainerCustomDomainApi.md#getcontainercustomdomainstatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
-*ContainerCustomDomainApi* | [**ListContainerCustomDomain**](docs/ContainerCustomDomainApi.md#listcontainercustomdomain) | **Get** /container/{containerId}/customDomain | List container custom domains
-*ContainerDeploymentHistoryApi* | [**ListContainerDeploymentHistory**](docs/ContainerDeploymentHistoryApi.md#listcontainerdeploymenthistory) | **Get** /container/{containerId}/deploymentHistory | List container deployments
-*ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable | Add an environment variable to the container
-*ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariableAlias**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariablealias) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the container level
-*ContainerEnvironmentVariableApi* | [**CreateContainerEnvironmentVariableOverride**](docs/ContainerEnvironmentVariableApi.md#createcontainerenvironmentvariableoverride) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the container level
-*ContainerEnvironmentVariableApi* | [**DeleteContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#deletecontainerenvironmentvariable) | **Delete** /container/{containerId}/environmentVariable/{environmentVariableId} | Delete an environment variable from a container
-*ContainerEnvironmentVariableApi* | [**EditContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#editcontainerenvironmentvariable) | **Put** /container/{containerId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the container
-*ContainerEnvironmentVariableApi* | [**ImportContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#importcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable/import | Import variables
-*ContainerEnvironmentVariableApi* | [**ListContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableApi.md#listcontainerenvironmentvariable) | **Get** /container/{containerId}/environmentVariable | List environment variables
-*ContainerLogsApi* | [**ListContainerLog**](docs/ContainerLogsApi.md#listcontainerlog) | **Get** /container/{containerId}/log | List logs
-*ContainerMainCallsApi* | [**DeleteContainer**](docs/ContainerMainCallsApi.md#deletecontainer) | **Delete** /container/{containerId} | Delete container
-*ContainerMainCallsApi* | [**EditContainer**](docs/ContainerMainCallsApi.md#editcontainer) | **Put** /container/{containerId} | Edit container
-*ContainerMainCallsApi* | [**GetContainer**](docs/ContainerMainCallsApi.md#getcontainer) | **Get** /container/{containerId} | Get container by ID
-*ContainerMainCallsApi* | [**GetContainerStatus**](docs/ContainerMainCallsApi.md#getcontainerstatus) | **Get** /container/{containerId}/status | Get container status
-*ContainerMainCallsApi* | [**ListContainerLinks**](docs/ContainerMainCallsApi.md#listcontainerlinks) | **Get** /container/{containerId}/link | List all URLs of the container
-*ContainerMetricsApi* | [**GetContainerCurrentInstance**](docs/ContainerMetricsApi.md#getcontainercurrentinstance) | **Get** /container/{containerId}/instance | List currently running instances of the container with their CPU and RAM metrics
-*ContainerMetricsApi* | [**GetContainerCurrentScale**](docs/ContainerMetricsApi.md#getcontainercurrentscale) | **Get** /container/{containerId}/currentScale | Get current scaling of the container
-*ContainerMetricsApi* | [**GetContainerCurrentStorageDisk**](docs/ContainerMetricsApi.md#getcontainercurrentstoragedisk) | **Get** /container/{containerId}/currentStorage | List current storage disk usage
-*ContainerRegistriesApi* | [**CreateContainerRegistry**](docs/ContainerRegistriesApi.md#createcontainerregistry) | **Post** /organization/{organizationId}/containerRegistry | Create a container registry
-*ContainerRegistriesApi* | [**DeleteContainerRegistry**](docs/ContainerRegistriesApi.md#deletecontainerregistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
-*ContainerRegistriesApi* | [**EditContainerRegistry**](docs/ContainerRegistriesApi.md#editcontainerregistry) | **Put** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Edit a container registry
-*ContainerRegistriesApi* | [**GetContainerRegistry**](docs/ContainerRegistriesApi.md#getcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Get a container registry
-*ContainerRegistriesApi* | [**ListAvailableContainerRegistry**](docs/ContainerRegistriesApi.md#listavailablecontainerregistry) | **Get** /availableContainerRegistry | List supported container registries
-*ContainerRegistriesApi* | [**ListContainerRegistry**](docs/ContainerRegistriesApi.md#listcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
-*ContainerSecretApi* | [**CreateContainerSecret**](docs/ContainerSecretApi.md#createcontainersecret) | **Post** /container/{containerId}/secret | Add a secret to the container
-*ContainerSecretApi* | [**CreateContainerSecretAlias**](docs/ContainerSecretApi.md#createcontainersecretalias) | **Post** /container/{containerId}/secret/{secretId}/alias | Create a secret alias at the container level
-*ContainerSecretApi* | [**CreateContainerSecretOverride**](docs/ContainerSecretApi.md#createcontainersecretoverride) | **Post** /container/{containerId}/secret/{secretId}/override | Create a secret override at the container level
-*ContainerSecretApi* | [**DeleteContainerSecret**](docs/ContainerSecretApi.md#deletecontainersecret) | **Delete** /container/{containerId}/secret/{secretId} | Delete a secret from an container
-*ContainerSecretApi* | [**EditContainerSecret**](docs/ContainerSecretApi.md#editcontainersecret) | **Put** /container/{containerId}/secret/{secretId} | Edit a secret belonging to the container
-*ContainerSecretApi* | [**ListContainerSecrets**](docs/ContainerSecretApi.md#listcontainersecrets) | **Get** /container/{containerId}/secret | List container secrets
-*ContainersApi* | [**AutoDeployContainerEnvironments**](docs/ContainersApi.md#autodeploycontainerenvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
-*ContainersApi* | [**CloneContainer**](docs/ContainersApi.md#clonecontainer) | **Post** /container/{containerId}/clone | Clone container
-*ContainersApi* | [**CreateContainer**](docs/ContainersApi.md#createcontainer) | **Post** /environment/{environmentId}/container | Create a container
-*ContainersApi* | [**GetContainerRegistryContainerStatus**](docs/ContainersApi.md#getcontainerregistrycontainerstatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
-*ContainersApi* | [**GetDefaultContainerAdvancedSettings**](docs/ContainersApi.md#getdefaultcontaineradvancedsettings) | **Get** /defaultContainerAdvancedSettings | List default container advanced settings
-*ContainersApi* | [**GetEnvironmentContainerCurrentScale**](docs/ContainersApi.md#getenvironmentcontainercurrentscale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
-*ContainersApi* | [**GetEnvironmentContainerCurrentStorage**](docs/ContainersApi.md#getenvironmentcontainercurrentstorage) | **Get** /environment/{environmentId}/container/currentStorage | List current storage disk usage for each containers
-*ContainersApi* | [**GetEnvironmentContainerStatus**](docs/ContainersApi.md#getenvironmentcontainerstatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
-*ContainersApi* | [**ListContainer**](docs/ContainersApi.md#listcontainer) | **Get** /environment/{environmentId}/container | List containers
-*ContainersApi* | [**PreviewContainerEnvironments**](docs/ContainersApi.md#previewcontainerenvironments) | **Post** /organization/{organizationId}/container/preview | Preview container environments
-*CustomDomainApi* | [**CreateApplicationCustomDomain**](docs/CustomDomainApi.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
-*CustomDomainApi* | [**DeleteCustomDomain**](docs/CustomDomainApi.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
-*CustomDomainApi* | [**EditCustomDomain**](docs/CustomDomainApi.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
-*CustomDomainApi* | [**GetCustomDomainStatus**](docs/CustomDomainApi.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
-*CustomDomainApi* | [**ListApplicationCustomDomain**](docs/CustomDomainApi.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
-*DatabaseActionsApi* | [**DeployDatabase**](docs/DatabaseActionsApi.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
-*DatabaseActionsApi* | [**RebootDatabase**](docs/DatabaseActionsApi.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
-*DatabaseActionsApi* | [**RedeployDatabase**](docs/DatabaseActionsApi.md#redeploydatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
-*DatabaseActionsApi* | [**RestartDatabase**](docs/DatabaseActionsApi.md#restartdatabase) | **Post** /database/{databaseId}/restart | Deprecated - Restart database
-*DatabaseActionsApi* | [**StopDatabase**](docs/DatabaseActionsApi.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
-*DatabaseApplicationApi* | [**ListDatabaseApplication**](docs/DatabaseApplicationApi.md#listdatabaseapplication) | **Get** /database/{databaseId}/application | List applications using the database
-*DatabaseApplicationApi* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationApi.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
-*DatabaseDeploymentHistoryApi* | [**ListDatabaseDeploymentHistory**](docs/DatabaseDeploymentHistoryApi.md#listdatabasedeploymenthistory) | **Get** /database/{databaseId}/deploymentHistory | List database deploys
-*DatabaseMainCallsApi* | [**DeleteDatabase**](docs/DatabaseMainCallsApi.md#deletedatabase) | **Delete** /database/{databaseId} | Delete a database 
-*DatabaseMainCallsApi* | [**EditDatabase**](docs/DatabaseMainCallsApi.md#editdatabase) | **Put** /database/{databaseId} | Edit a database 
-*DatabaseMainCallsApi* | [**EditDatabaseCredentials**](docs/DatabaseMainCallsApi.md#editdatabasecredentials) | **Put** /database/{databaseId}/masterCredentials | Edit database  master credentials
-*DatabaseMainCallsApi* | [**GetDatabase**](docs/DatabaseMainCallsApi.md#getdatabase) | **Get** /database/{databaseId} | Get database by ID
-*DatabaseMainCallsApi* | [**GetDatabaseMasterCredentials**](docs/DatabaseMainCallsApi.md#getdatabasemastercredentials) | **Get** /database/{databaseId}/masterCredentials | Get master credentials of the database
-*DatabaseMainCallsApi* | [**GetDatabaseStatus**](docs/DatabaseMainCallsApi.md#getdatabasestatus) | **Get** /database/{databaseId}/status | Get database status
-*DatabaseMainCallsApi* | [**ListDatabaseVersion**](docs/DatabaseMainCallsApi.md#listdatabaseversion) | **Get** /database/{databaseId}/version | List eligible versions for the database
-*DatabaseMetricsApi* | [**GetDatabaseCurrentMetric**](docs/DatabaseMetricsApi.md#getdatabasecurrentmetric) | **Get** /database/{databaseId}/currentMetric | Get current metric consumption of the database 
-*DatabaseMetricsApi* | [**GetDatabaseMetricCpu**](docs/DatabaseMetricsApi.md#getdatabasemetriccpu) | **Get** /database/{databaseId}/metric/cpu | Get CPU consumption metric over time for the database
-*DatabaseMetricsApi* | [**GetDatabaseMetricHealthCheck**](docs/DatabaseMetricsApi.md#getdatabasemetrichealthcheck) | **Get** /database/{databaseId}/metric/healthCheck | Get Health Check latency  metric over time for the database
-*DatabaseMetricsApi* | [**GetDatabaseMetricMemory**](docs/DatabaseMetricsApi.md#getdatabasemetricmemory) | **Get** /database/{databaseId}/metric/memory | Get Memory consumption metric over time for the database
-*DatabaseMetricsApi* | [**GetDatabaseMetricStorage**](docs/DatabaseMetricsApi.md#getdatabasemetricstorage) | **Get** /database/{databaseId}/metric/storage | Get Storage consumption metric over time for the database
-*DatabasesApi* | [**CloneDatabase**](docs/DatabasesApi.md#clonedatabase) | **Post** /database/{databaseId}/clone | Clone database
-*DatabasesApi* | [**CreateDatabase**](docs/DatabasesApi.md#createdatabase) | **Post** /environment/{environmentId}/database | Create a database
-*DatabasesApi* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesApi.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
-*DatabasesApi* | [**ListDatabase**](docs/DatabasesApi.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
-*DatabasesApi* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesApi.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
-*DatabasesApi* | [**ListEnvironmentDatabaseCurrentMetric**](docs/DatabasesApi.md#listenvironmentdatabasecurrentmetric) | **Get** /environment/{environmentId}/database/currentMetric | List current metric consumption for each database
-*DeploymentStageMainCallsApi* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsApi.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
-*DeploymentStageMainCallsApi* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
-*DeploymentStageMainCallsApi* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsApi.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
-*DeploymentStageMainCallsApi* | [**EditDeploymentStage**](docs/DeploymentStageMainCallsApi.md#editdeploymentstage) | **Put** /deploymentStage/{deploymentStageId} | Edit deployment stage
-*DeploymentStageMainCallsApi* | [**GetDeploymentStage**](docs/DeploymentStageMainCallsApi.md#getdeploymentstage) | **Get** /deploymentStage/{deploymentStageId} | Get Deployment Stage
-*DeploymentStageMainCallsApi* | [**GetServiceDeploymentStage**](docs/DeploymentStageMainCallsApi.md#getservicedeploymentstage) | **Get** /service/{serviceId}/deploymentStage | Get Service Deployment Stage
-*DeploymentStageMainCallsApi* | [**ListEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsApi.md#listenvironmentdeploymentstage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
-*DeploymentStageMainCallsApi* | [**MoveAfterDeploymentStage**](docs/DeploymentStageMainCallsApi.md#moveafterdeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveAfter/{stageId} | Move deployment stage after requested stage
-*DeploymentStageMainCallsApi* | [**MoveBeforeDeploymentStage**](docs/DeploymentStageMainCallsApi.md#movebeforedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
-*EnvironmentApi* | [**DeployAllApplications**](docs/EnvironmentApi.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
-*EnvironmentActionsApi* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsApi.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
-*EnvironmentActionsApi* | [**CloneEnvironment**](docs/EnvironmentActionsApi.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
-*EnvironmentActionsApi* | [**DeleteSelectedServices**](docs/EnvironmentActionsApi.md#deleteselectedservices) | **Post** /environment/{environmentId}/service/delete | Delete services
-*EnvironmentActionsApi* | [**DeployAllServices**](docs/EnvironmentActionsApi.md#deployallservices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
-*EnvironmentActionsApi* | [**DeployEnvironment**](docs/EnvironmentActionsApi.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
-*EnvironmentActionsApi* | [**RebootServices**](docs/EnvironmentActionsApi.md#rebootservices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
-*EnvironmentActionsApi* | [**RedeployEnvironment**](docs/EnvironmentActionsApi.md#redeployenvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
-*EnvironmentActionsApi* | [**RestartEnvironment**](docs/EnvironmentActionsApi.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Deprecated - Restart environment
-*EnvironmentActionsApi* | [**StopEnvironment**](docs/EnvironmentActionsApi.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
-*EnvironmentActionsApi* | [**StopSelectedServices**](docs/EnvironmentActionsApi.md#stopselectedservices) | **Post** /environment/{environmentId}/service/stop | Stop services
-*EnvironmentDeploymentHistoryApi* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryApi.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
-*EnvironmentDeploymentRuleApi* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
-*EnvironmentDeploymentRuleApi* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleApi.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
-*EnvironmentExportApi* | [**ExportEnvironmentConfigurationIntoTerraform**](docs/EnvironmentExportApi.md#exportenvironmentconfigurationintoterraform) | **Get** /environment/{environmentId}/terraformExport | Export full environment and its resources into Terraform manifests
-*EnvironmentLogsApi* | [**ListEnvironmentLog**](docs/EnvironmentLogsApi.md#listenvironmentlog) | **Get** /environment/{environmentId}/log | List environment deployment logs
-*EnvironmentLogsApi* | [**ListEnvironmentLogs**](docs/EnvironmentLogsApi.md#listenvironmentlogs) | **Get** /environment/{environmentId}/logs | List environment deployment logs v2
-*EnvironmentMainCallsApi* | [**DeleteEnvironment**](docs/EnvironmentMainCallsApi.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
-*EnvironmentMainCallsApi* | [**EditEnvironment**](docs/EnvironmentMainCallsApi.md#editenvironment) | **Put** /environment/{environmentId} | Edit an environment
-*EnvironmentMainCallsApi* | [**GetEnvironment**](docs/EnvironmentMainCallsApi.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
-*EnvironmentMainCallsApi* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsApi.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
-*EnvironmentMainCallsApi* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsApi.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
-*EnvironmentMainCallsApi* | [**GetEnvironmentStatusesWithStages**](docs/EnvironmentMainCallsApi.md#getenvironmentstatuseswithstages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
-*EnvironmentSecretApi* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretApi.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
-*EnvironmentSecretApi* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretApi.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
-*EnvironmentSecretApi* | [**CreateEnvironmentSecretOverride**](docs/EnvironmentSecretApi.md#createenvironmentsecretoverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
-*EnvironmentSecretApi* | [**DeleteEnvironmentSecret**](docs/EnvironmentSecretApi.md#deleteenvironmentsecret) | **Delete** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
-*EnvironmentSecretApi* | [**EditEnvironmentSecret**](docs/EnvironmentSecretApi.md#editenvironmentsecret) | **Put** /environment/{environmentId}/secret/{secretId} | Edit a secret belonging to the environment
-*EnvironmentSecretApi* | [**ListEnvironmentSecrets**](docs/EnvironmentSecretApi.md#listenvironmentsecrets) | **Get** /environment/{environmentId}/secret | List environment secrets
-*EnvironmentVariableApi* | [**CreateEnvironmentEnvironmentVariable**](docs/EnvironmentVariableApi.md#createenvironmentenvironmentvariable) | **Post** /environment/{environmentId}/environmentVariable | Add an environment variable to the environment
-*EnvironmentVariableApi* | [**CreateEnvironmentEnvironmentVariableAlias**](docs/EnvironmentVariableApi.md#createenvironmentenvironmentvariablealias) | **Post** /environment/{environmentId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the environment level
-*EnvironmentVariableApi* | [**CreateEnvironmentEnvironmentVariableOverride**](docs/EnvironmentVariableApi.md#createenvironmentenvironmentvariableoverride) | **Post** /environment/{environmentId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the environment level
-*EnvironmentVariableApi* | [**DeleteEnvironmentEnvironmentVariable**](docs/EnvironmentVariableApi.md#deleteenvironmentenvironmentvariable) | **Delete** /environment/{environmentId}/environmentVariable/{environmentVariableId} | Delete an environment variable from an environment
-*EnvironmentVariableApi* | [**EditEnvironmentEnvironmentVariable**](docs/EnvironmentVariableApi.md#editenvironmentenvironmentvariable) | **Put** /environment/{environmentId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the environment
-*EnvironmentVariableApi* | [**ListEnvironmentEnvironmentVariable**](docs/EnvironmentVariableApi.md#listenvironmentenvironmentvariable) | **Get** /environment/{environmentId}/environmentVariable | List environment variables
-*EnvironmentsApi* | [**CreateEnvironment**](docs/EnvironmentsApi.md#createenvironment) | **Post** /project/{projectId}/environment | Create an environment
-*EnvironmentsApi* | [**GetProjectEnvironmentServiceNumber**](docs/EnvironmentsApi.md#getprojectenvironmentservicenumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
-*EnvironmentsApi* | [**GetProjectEnvironmentsStatus**](docs/EnvironmentsApi.md#getprojectenvironmentsstatus) | **Get** /project/{projectId}/environment/status | List environments statuses
-*EnvironmentsApi* | [**ListEnvironment**](docs/EnvironmentsApi.md#listenvironment) | **Get** /project/{projectId}/environment | List environments
-*GitRepositoriesApi* | [**GetBitbucketRepositories**](docs/GitRepositoriesApi.md#getbitbucketrepositories) | **Get** /account/bitbucket/repository | Get bitbucket repositories of the connected user
-*GitRepositoriesApi* | [**GetBitbucketRepositoryBranches**](docs/GitRepositoriesApi.md#getbitbucketrepositorybranches) | **Get** /account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
-*GitRepositoriesApi* | [**GetGitProviderAccount**](docs/GitRepositoriesApi.md#getgitprovideraccount) | **Get** /account/gitAuthProvider | Get git provider accounts
-*GitRepositoriesApi* | [**GetGithubRepositories**](docs/GitRepositoriesApi.md#getgithubrepositories) | **Get** /account/github/repository | Get github repositories of the connected user
-*GitRepositoriesApi* | [**GetGithubRepositoryBranches**](docs/GitRepositoriesApi.md#getgithubrepositorybranches) | **Get** /account/github/repository/branch | Get github branches of the specified repository
-*GitRepositoriesApi* | [**GetGitlabRepositories**](docs/GitRepositoriesApi.md#getgitlabrepositories) | **Get** /account/gitlab/repository | Get gitlab repositories of the connected user
-*GitRepositoriesApi* | [**GetGitlabRepositoryBranches**](docs/GitRepositoriesApi.md#getgitlabrepositorybranches) | **Get** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
-*GithubAppApi* | [**OrganizationGithubAppConnect**](docs/GithubAppApi.md#organizationgithubappconnect) | **Post** /organization/{organizationId}/github/connect | Connect a github account to an organization
-*GithubAppApi* | [**OrganizationGithubAppDisconnect**](docs/GithubAppApi.md#organizationgithubappdisconnect) | **Delete** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
-*JobActionsApi* | [**DeployJob**](docs/JobActionsApi.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
-*JobActionsApi* | [**RedeployJob**](docs/JobActionsApi.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
-*JobActionsApi* | [**RestartJob**](docs/JobActionsApi.md#restartjob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
-*JobActionsApi* | [**StopJob**](docs/JobActionsApi.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
-*JobConfigurationApi* | [**EditJobAdvancedSettings**](docs/JobConfigurationApi.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
-*JobConfigurationApi* | [**GetJobAdvancedSettings**](docs/JobConfigurationApi.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
-*JobDeploymentHistoryApi* | [**ListJobDeploymentHistory**](docs/JobDeploymentHistoryApi.md#listjobdeploymenthistory) | **Get** /job/{jobId}/deploymentHistory | List job deployments
-*JobDeploymentRestrictionApi* | [**CreateJobDeploymentRestriction**](docs/JobDeploymentRestrictionApi.md#createjobdeploymentrestriction) | **Post** /job/{jobId}/deploymentRestriction | Create a job deployment restriction
-*JobDeploymentRestrictionApi* | [**DeleteJobDeploymentRestriction**](docs/JobDeploymentRestrictionApi.md#deletejobdeploymentrestriction) | **Delete** /job/{jobId}/deploymentRestriction/{deploymentRestrictionId} | Delete a job deployment restriction
-*JobDeploymentRestrictionApi* | [**EditJobDeploymentRestriction**](docs/JobDeploymentRestrictionApi.md#editjobdeploymentrestriction) | **Put** /job/{jobId}/deploymentRestriction/{deploymentRestrictionId} | Edit a job deployment restriction
-*JobDeploymentRestrictionApi* | [**GetJobDeploymentRestrictions**](docs/JobDeploymentRestrictionApi.md#getjobdeploymentrestrictions) | **Get** /job/{jobId}/deploymentRestriction | Get job deployment restrictions
-*JobEnvironmentVariableApi* | [**CreateJobEnvironmentVariable**](docs/JobEnvironmentVariableApi.md#createjobenvironmentvariable) | **Post** /job/{jobId}/environmentVariable | Add an environment variable to the job
-*JobEnvironmentVariableApi* | [**CreateJobEnvironmentVariableAlias**](docs/JobEnvironmentVariableApi.md#createjobenvironmentvariablealias) | **Post** /job/{jobId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the job level
-*JobEnvironmentVariableApi* | [**CreateJobEnvironmentVariableOverride**](docs/JobEnvironmentVariableApi.md#createjobenvironmentvariableoverride) | **Post** /job/{jobId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the job level
-*JobEnvironmentVariableApi* | [**DeleteJobEnvironmentVariable**](docs/JobEnvironmentVariableApi.md#deletejobenvironmentvariable) | **Delete** /job/{jobId}/environmentVariable/{environmentVariableId} | Delete an environment variable from a job
-*JobEnvironmentVariableApi* | [**EditJobEnvironmentVariable**](docs/JobEnvironmentVariableApi.md#editjobenvironmentvariable) | **Put** /job/{jobId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the job
-*JobEnvironmentVariableApi* | [**ImportJobEnvironmentVariable**](docs/JobEnvironmentVariableApi.md#importjobenvironmentvariable) | **Post** /job/{jobId}/environmentVariable/import | Import variables
-*JobEnvironmentVariableApi* | [**ListJobEnvironmentVariable**](docs/JobEnvironmentVariableApi.md#listjobenvironmentvariable) | **Get** /job/{jobId}/environmentVariable | List environment variables
-*JobMainCallsApi* | [**DeleteJob**](docs/JobMainCallsApi.md#deletejob) | **Delete** /job/{jobId} | Delete job
-*JobMainCallsApi* | [**EditJob**](docs/JobMainCallsApi.md#editjob) | **Put** /job/{jobId} | Edit job
-*JobMainCallsApi* | [**GetJob**](docs/JobMainCallsApi.md#getjob) | **Get** /job/{jobId} | Get job by ID
-*JobMainCallsApi* | [**GetJobStatus**](docs/JobMainCallsApi.md#getjobstatus) | **Get** /job/{jobId}/status | Get job status
-*JobMainCallsApi* | [**ListJobCommit**](docs/JobMainCallsApi.md#listjobcommit) | **Get** /job/{jobId}/commit | List last job commits
-*JobMetricsApi* | [**GetJobCurrentInstance**](docs/JobMetricsApi.md#getjobcurrentinstance) | **Get** /job/{jobId}/instance | List currently running instances of the job with their CPU and RAM metrics
-*JobSecretApi* | [**CreateJobSecret**](docs/JobSecretApi.md#createjobsecret) | **Post** /job/{jobId}/secret | Add a secret to the job
-*JobSecretApi* | [**CreateJobSecretAlias**](docs/JobSecretApi.md#createjobsecretalias) | **Post** /job/{jobId}/secret/{secretId}/alias | Create a secret alias at the job level
-*JobSecretApi* | [**CreateJobSecretOverride**](docs/JobSecretApi.md#createjobsecretoverride) | **Post** /job/{jobId}/secret/{secretId}/override | Create a secret override at the job level
-*JobSecretApi* | [**DeleteJobSecret**](docs/JobSecretApi.md#deletejobsecret) | **Delete** /job/{jobId}/secret/{secretId} | Delete a secret from an job
-*JobSecretApi* | [**EditJobSecret**](docs/JobSecretApi.md#editjobsecret) | **Put** /job/{jobId}/secret/{secretId} | Edit a secret belonging to the job
-*JobSecretApi* | [**ListJobSecrets**](docs/JobSecretApi.md#listjobsecrets) | **Get** /job/{jobId}/secret | List job secrets
-*JobsApi* | [**AutoDeployJobEnvironments**](docs/JobsApi.md#autodeployjobenvironments) | **Post** /organization/{organizationId}/job/deploy | Auto deploy jobs
-*JobsApi* | [**CloneJob**](docs/JobsApi.md#clonejob) | **Post** /job/{jobId}/clone | Clone job
-*JobsApi* | [**CreateJob**](docs/JobsApi.md#createjob) | **Post** /environment/{environmentId}/job | Create a job
-*JobsApi* | [**GetDefaultJobAdvancedSettings**](docs/JobsApi.md#getdefaultjobadvancedsettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
-*JobsApi* | [**GetEnvironmentJobStatus**](docs/JobsApi.md#getenvironmentjobstatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
-*JobsApi* | [**ListJobs**](docs/JobsApi.md#listjobs) | **Get** /environment/{environmentId}/job | List jobs
-*MembersApi* | [**DeleteInviteMember**](docs/MembersApi.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
-*MembersApi* | [**DeleteMember**](docs/MembersApi.md#deletemember) | **Delete** /organization/{organizationId}/member | Remove a member
-*MembersApi* | [**EditOrganizationMemberRole**](docs/MembersApi.md#editorganizationmemberrole) | **Put** /organization/{organizationId}/member | Edit an organization member role
-*MembersApi* | [**GetMemberInvitation**](docs/MembersApi.md#getmemberinvitation) | **Get** /organization/{organizationId}/inviteMember/{inviteId} | Get member invitation
-*MembersApi* | [**GetOrganizationInvitedMembers**](docs/MembersApi.md#getorganizationinvitedmembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
-*MembersApi* | [**GetOrganizationMembers**](docs/MembersApi.md#getorganizationmembers) | **Get** /organization/{organizationId}/member | Get organization members
-*MembersApi* | [**PostAcceptInviteMember**](docs/MembersApi.md#postacceptinvitemember) | **Post** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization
-*MembersApi* | [**PostInviteMember**](docs/MembersApi.md#postinvitemember) | **Post** /organization/{organizationId}/inviteMember | Invite someone in the organization
-*MembersApi* | [**PostOrganizationTransferOwnership**](docs/MembersApi.md#postorganizationtransferownership) | **Post** /organization/{organizationId}/transferOwnership | Transfer organization ownership to another user
-*OrganizationAccountGitRepositoriesApi* | [**GetOrganizationBitbucketRepositories**](docs/OrganizationAccountGitRepositoriesApi.md#getorganizationbitbucketrepositories) | **Get** /organization/{organizationId}/account/bitbucket/repository | Get bitbucket repositories of the connected user
-*OrganizationAccountGitRepositoriesApi* | [**GetOrganizationBitbucketRepositoryBranches**](docs/OrganizationAccountGitRepositoriesApi.md#getorganizationbitbucketrepositorybranches) | **Get** /organization/{organizationId}/account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
-*OrganizationAccountGitRepositoriesApi* | [**GetOrganizationGitProviderAccount**](docs/OrganizationAccountGitRepositoriesApi.md#getorganizationgitprovideraccount) | **Get** /organization/{organizationId}/account/gitAuthProvider | Get git provider accounts
-*OrganizationAccountGitRepositoriesApi* | [**GetOrganizationGithubRepositories**](docs/OrganizationAccountGitRepositoriesApi.md#getorganizationgithubrepositories) | **Get** /organization/{organizationId}/account/github/repository | Get github repositories of the connected user
-*OrganizationAccountGitRepositoriesApi* | [**GetOrganizationGithubRepositoryBranches**](docs/OrganizationAccountGitRepositoriesApi.md#getorganizationgithubrepositorybranches) | **Get** /organization/{organizationId}/account/github/repository/branch | Get github branches of the specified repository
-*OrganizationAccountGitRepositoriesApi* | [**GetOrganizationGitlabRepositories**](docs/OrganizationAccountGitRepositoriesApi.md#getorganizationgitlabrepositories) | **Get** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
-*OrganizationAccountGitRepositoriesApi* | [**GetOrganizationGitlabRepositoryBranches**](docs/OrganizationAccountGitRepositoriesApi.md#getorganizationgitlabrepositorybranches) | **Get** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
-*OrganizationApiTokenApi* | [**CreateOrganizationApiToken**](docs/OrganizationApiTokenApi.md#createorganizationapitoken) | **Post** /organization/{organizationId}/apiToken | Create an organization api token
-*OrganizationApiTokenApi* | [**DeleteOrganizationApiToken**](docs/OrganizationApiTokenApi.md#deleteorganizationapitoken) | **Delete** /organization/{organizationId}/apiToken/{apiTokenId} | Delete organization api token
-*OrganizationApiTokenApi* | [**ListOrganizationApiTokens**](docs/OrganizationApiTokenApi.md#listorganizationapitokens) | **Get** /organization/{organizationId}/apiToken | List organization api tokens
-*OrganizationCustomRoleApi* | [**CreateOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#createorganizationcustomrole) | **Post** /organization/{organizationId}/customRole | Create an organization custom role
-*OrganizationCustomRoleApi* | [**DeleteOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#deleteorganizationcustomrole) | **Delete** /organization/{organizationId}/customRole/{customRoleId} | Delete organization custom role
-*OrganizationCustomRoleApi* | [**EditOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#editorganizationcustomrole) | **Put** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
-*OrganizationCustomRoleApi* | [**GetOrganizationCustomRole**](docs/OrganizationCustomRoleApi.md#getorganizationcustomrole) | **Get** /organization/{organizationId}/customRole/{customRoleId} | Get an organization custom role 
-*OrganizationCustomRoleApi* | [**ListOrganizationCustomRoles**](docs/OrganizationCustomRoleApi.md#listorganizationcustomroles) | **Get** /organization/{organizationId}/customRole | List organization custom roles
-*OrganizationEventApi* | [**GetOrganizationEventTargets**](docs/OrganizationEventApi.md#getorganizationeventtargets) | **Get** /organization/{organizationId}/targets | Get available event targets to filter events
-*OrganizationEventApi* | [**GetOrganizationEvents**](docs/OrganizationEventApi.md#getorganizationevents) | **Get** /organization/{organizationId}/events | Get all events inside the organization
-*OrganizationMainCallsApi* | [**CreateOrganization**](docs/OrganizationMainCallsApi.md#createorganization) | **Post** /organization | Create an organization
-*OrganizationMainCallsApi* | [**DeleteOrganization**](docs/OrganizationMainCallsApi.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
-*OrganizationMainCallsApi* | [**EditOrganization**](docs/OrganizationMainCallsApi.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
-*OrganizationMainCallsApi* | [**GetOrganization**](docs/OrganizationMainCallsApi.md#getorganization) | **Get** /organization/{organizationId} | Get organization by ID
-*OrganizationMainCallsApi* | [**ListOrganization**](docs/OrganizationMainCallsApi.md#listorganization) | **Get** /organization | List user organizations
-*OrganizationMainCallsApi* | [**ListOrganizationAvailableRoles**](docs/OrganizationMainCallsApi.md#listorganizationavailableroles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
-*OrganizationWebhookApi* | [**CreateOrganizationWebhook**](docs/OrganizationWebhookApi.md#createorganizationwebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
-*OrganizationWebhookApi* | [**DeleteOrganizationWebhook**](docs/OrganizationWebhookApi.md#deleteorganizationwebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
-*OrganizationWebhookApi* | [**EditOrganizationWebhook**](docs/OrganizationWebhookApi.md#editorganizationwebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
-*OrganizationWebhookApi* | [**GetOrganizationWebhook**](docs/OrganizationWebhookApi.md#getorganizationwebhook) | **Get** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
-*OrganizationWebhookApi* | [**ListOrganizationWebHooks**](docs/OrganizationWebhookApi.md#listorganizationwebhooks) | **Get** /organization/{organizationId}/webhook | List organization webhooks
-*ProjectDeploymentRuleApi* | [**CreateDeploymentRule**](docs/ProjectDeploymentRuleApi.md#createdeploymentrule) | **Post** /project/{projectId}/deploymentRule | Create a deployment rule
-*ProjectDeploymentRuleApi* | [**DeleteProjectDeploymentRule**](docs/ProjectDeploymentRuleApi.md#deleteprojectdeploymentrule) | **Delete** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
-*ProjectDeploymentRuleApi* | [**EditProjectDeployemtnRule**](docs/ProjectDeploymentRuleApi.md#editprojectdeployemtnrule) | **Put** /project/{projectId}/deploymentRule/{deploymentRuleId} | Edit a project deployment rule
-*ProjectDeploymentRuleApi* | [**GetProjectDeploymentRule**](docs/ProjectDeploymentRuleApi.md#getprojectdeploymentrule) | **Get** /project/{projectId}/deploymentRule/{deploymentRuleId} | Get a project deployment rule
-*ProjectDeploymentRuleApi* | [**ListProjectDeploymentRules**](docs/ProjectDeploymentRuleApi.md#listprojectdeploymentrules) | **Get** /project/{projectId}/deploymentRule | List project deployment rules
-*ProjectDeploymentRuleApi* | [**UpdateDeploymentRulesPriorityOrder**](docs/ProjectDeploymentRuleApi.md#updatedeploymentrulespriorityorder) | **Put** /project/{projectId}/deploymentRule/order | Update deployment rules priority order
-*ProjectEnvironmentVariableApi* | [**CreateProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableApi.md#createprojectenvironmentvariable) | **Post** /project/{projectId}/environmentVariable | Add an environment variable to the project
-*ProjectEnvironmentVariableApi* | [**CreateProjectEnvironmentVariableAlias**](docs/ProjectEnvironmentVariableApi.md#createprojectenvironmentvariablealias) | **Post** /project/{projectId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the project level
-*ProjectEnvironmentVariableApi* | [**CreateProjectEnvironmentVariableOverride**](docs/ProjectEnvironmentVariableApi.md#createprojectenvironmentvariableoverride) | **Post** /project/{projectId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the project level
-*ProjectEnvironmentVariableApi* | [**DeleteProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableApi.md#deleteprojectenvironmentvariable) | **Delete** /project/{projectId}/environmentVariable/{environmentVariableId} | Delete an environment variable from a project
-*ProjectEnvironmentVariableApi* | [**EditProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableApi.md#editprojectenvironmentvariable) | **Put** /project/{projectId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the project
-*ProjectEnvironmentVariableApi* | [**ListProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableApi.md#listprojectenvironmentvariable) | **Get** /project/{projectId}/environmentVariable | List project environment variables
-*ProjectMainCallsApi* | [**DeleteProject**](docs/ProjectMainCallsApi.md#deleteproject) | **Delete** /project/{projectId} | Delete a project
-*ProjectMainCallsApi* | [**EditProject**](docs/ProjectMainCallsApi.md#editproject) | **Put** /project/{projectId} | Edit a project
-*ProjectMainCallsApi* | [**GetProject**](docs/ProjectMainCallsApi.md#getproject) | **Get** /project/{projectId} | Get project by ID
-*ProjectSecretApi* | [**CreateProjectSecret**](docs/ProjectSecretApi.md#createprojectsecret) | **Post** /project/{projectId}/secret | Add a secret to the project
-*ProjectSecretApi* | [**CreateProjectSecretAlias**](docs/ProjectSecretApi.md#createprojectsecretalias) | **Post** /project/{projectId}/secret/{secretId}/alias | Create a secret alias at the project level
-*ProjectSecretApi* | [**CreateProjectSecretOverride**](docs/ProjectSecretApi.md#createprojectsecretoverride) | **Post** /project/{projectId}/secret/{secretId}/override | Create a secret override at the project level
-*ProjectSecretApi* | [**DeleteProjectSecret**](docs/ProjectSecretApi.md#deleteprojectsecret) | **Delete** /project/{projectId}/secret/{secretId} | Delete a secret from a project
-*ProjectSecretApi* | [**EditProjectSecret**](docs/ProjectSecretApi.md#editprojectsecret) | **Put** /project/{projectId}/secret/{secretId} | Edit a secret belonging to the project
-*ProjectSecretApi* | [**ListProjectSecrets**](docs/ProjectSecretApi.md#listprojectsecrets) | **Get** /project/{projectId}/secret | List project secrets
-*ProjectsApi* | [**CreateProject**](docs/ProjectsApi.md#createproject) | **Post** /organization/{organizationId}/project | Create a project
-*ProjectsApi* | [**GetOrganizationProjectStats**](docs/ProjectsApi.md#getorganizationprojectstats) | **Get** /organization/{organizationId}/project/stats | List total number of services and environments for each project of the organization
-*ProjectsApi* | [**ListProject**](docs/ProjectsApi.md#listproject) | **Get** /organization/{organizationId}/project | List projects
-*ReferralRewardsApi* | [**GetAccountReferral**](docs/ReferralRewardsApi.md#getaccountreferral) | **Get** /account/referral | Get your referral information
-*ReferralRewardsApi* | [**PostAccountRewardClaim**](docs/ReferralRewardsApi.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
-*UserSignUpApi* | [**CreateUserSignUp**](docs/UserSignUpApi.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
-*UserSignUpApi* | [**GetUserSignUp**](docs/UserSignUpApi.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information
-*VariableMainCallsApi* | [**CreateVariable**](docs/VariableMainCallsApi.md#createvariable) | **Post** /variable | Create a variable
-*VariableMainCallsApi* | [**CreateVariableAlias**](docs/VariableMainCallsApi.md#createvariablealias) | **Post** /variable/{variableId}/alias | Create a variable alias
-*VariableMainCallsApi* | [**CreateVariableOverride**](docs/VariableMainCallsApi.md#createvariableoverride) | **Post** /variable/{variableId}/override | Create a variable override
-*VariableMainCallsApi* | [**DeleteVariable**](docs/VariableMainCallsApi.md#deletevariable) | **Delete** /variable/{variableId} | Delete a variable
-*VariableMainCallsApi* | [**EditVariable**](docs/VariableMainCallsApi.md#editvariable) | **Put** /variable/{variableId} | Edit a variable
-*VariableMainCallsApi* | [**ListVariables**](docs/VariableMainCallsApi.md#listvariables) | **Get** /variable | List variables
+*AccountInfoAPI* | [**EditAccountInformation**](docs/AccountInfoAPI.md#editaccountinformation) | **Put** /account | Edit account information
+*AccountInfoAPI* | [**GetAccountInformation**](docs/AccountInfoAPI.md#getaccountinformation) | **Get** /account | Get Account information
+*ApplicationActionsAPI* | [**DeployApplication**](docs/ApplicationActionsAPI.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
+*ApplicationActionsAPI* | [**RebootApplication**](docs/ApplicationActionsAPI.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application
+*ApplicationActionsAPI* | [**RedeployApplication**](docs/ApplicationActionsAPI.md#redeployapplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
+*ApplicationActionsAPI* | [**RestartApplication**](docs/ApplicationActionsAPI.md#restartapplication) | **Post** /application/{applicationId}/restart | Deprecated - Restart application
+*ApplicationActionsAPI* | [**StopApplication**](docs/ApplicationActionsAPI.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
+*ApplicationConfigurationAPI* | [**EditAdvancedSettings**](docs/ApplicationConfigurationAPI.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
+*ApplicationConfigurationAPI* | [**EditApplicationNetwork**](docs/ApplicationConfigurationAPI.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
+*ApplicationConfigurationAPI* | [**GetAdvancedSettings**](docs/ApplicationConfigurationAPI.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
+*ApplicationConfigurationAPI* | [**GetApplicationNetwork**](docs/ApplicationConfigurationAPI.md#getapplicationnetwork) | **Get** /application/{applicationId}/network | Get Application Network information
+*ApplicationDeploymentHistoryAPI* | [**ListApplicationDeploymentHistory**](docs/ApplicationDeploymentHistoryAPI.md#listapplicationdeploymenthistory) | **Get** /application/{applicationId}/deploymentHistory | List application deploys
+*ApplicationDeploymentRestrictionAPI* | [**CreateApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#createapplicationdeploymentrestriction) | **Post** /application/{applicationId}/deploymentRestriction | Create an application deployment restriction
+*ApplicationDeploymentRestrictionAPI* | [**DeleteApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#deleteapplicationdeploymentrestriction) | **Delete** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Delete an application deployment restriction
+*ApplicationDeploymentRestrictionAPI* | [**EditApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#editapplicationdeploymentrestriction) | **Put** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Edit an application deployment restriction
+*ApplicationDeploymentRestrictionAPI* | [**GetApplicationDeploymentRestrictions**](docs/ApplicationDeploymentRestrictionAPI.md#getapplicationdeploymentrestrictions) | **Get** /application/{applicationId}/deploymentRestriction | Get application deployment restrictions
+*ApplicationEnvironmentVariableAPI* | [**CreateApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableAPI.md#createapplicationenvironmentvariable) | **Post** /application/{applicationId}/environmentVariable | Add an environment variable to the application
+*ApplicationEnvironmentVariableAPI* | [**CreateApplicationEnvironmentVariableAlias**](docs/ApplicationEnvironmentVariableAPI.md#createapplicationenvironmentvariablealias) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the application level
+*ApplicationEnvironmentVariableAPI* | [**CreateApplicationEnvironmentVariableOverride**](docs/ApplicationEnvironmentVariableAPI.md#createapplicationenvironmentvariableoverride) | **Post** /application/{applicationId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the application level
+*ApplicationEnvironmentVariableAPI* | [**DeleteApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableAPI.md#deleteapplicationenvironmentvariable) | **Delete** /application/{applicationId}/environmentVariable/{environmentVariableId} | Delete an environment variable from an application
+*ApplicationEnvironmentVariableAPI* | [**EditApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableAPI.md#editapplicationenvironmentvariable) | **Put** /application/{applicationId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the application
+*ApplicationEnvironmentVariableAPI* | [**ImportEnvironmentVariable**](docs/ApplicationEnvironmentVariableAPI.md#importenvironmentvariable) | **Post** /application/{applicationId}/environmentVariable/import | Import variables
+*ApplicationEnvironmentVariableAPI* | [**ListApplicationEnvironmentVariable**](docs/ApplicationEnvironmentVariableAPI.md#listapplicationenvironmentvariable) | **Get** /application/{applicationId}/environmentVariable | List environment variables
+*ApplicationLogsAPI* | [**ListApplicationLog**](docs/ApplicationLogsAPI.md#listapplicationlog) | **Get** /application/{applicationId}/log | List logs
+*ApplicationMainCallsAPI* | [**DeleteApplication**](docs/ApplicationMainCallsAPI.md#deleteapplication) | **Delete** /application/{applicationId} | Delete application
+*ApplicationMainCallsAPI* | [**EditApplication**](docs/ApplicationMainCallsAPI.md#editapplication) | **Put** /application/{applicationId} | Edit application
+*ApplicationMainCallsAPI* | [**GetApplication**](docs/ApplicationMainCallsAPI.md#getapplication) | **Get** /application/{applicationId} | Get application by ID
+*ApplicationMainCallsAPI* | [**GetApplicationStatus**](docs/ApplicationMainCallsAPI.md#getapplicationstatus) | **Get** /application/{applicationId}/status | Get application status
+*ApplicationMainCallsAPI* | [**ListApplicationCommit**](docs/ApplicationMainCallsAPI.md#listapplicationcommit) | **Get** /application/{applicationId}/commit | List last commits
+*ApplicationMainCallsAPI* | [**ListApplicationContributor**](docs/ApplicationMainCallsAPI.md#listapplicationcontributor) | **Get** /application/{applicationId}/contributor | List contributors
+*ApplicationMainCallsAPI* | [**ListApplicationLinks**](docs/ApplicationMainCallsAPI.md#listapplicationlinks) | **Get** /application/{applicationId}/link | List all URLs of the application
+*ApplicationMetricsAPI* | [**GetApplicationCurrentInstance**](docs/ApplicationMetricsAPI.md#getapplicationcurrentinstance) | **Get** /application/{applicationId}/instance | List currently running instances of the application with their CPU and RAM metrics
+*ApplicationMetricsAPI* | [**GetApplicationCurrentScale**](docs/ApplicationMetricsAPI.md#getapplicationcurrentscale) | **Get** /application/{applicationId}/currentScale | Get current scaling of the application
+*ApplicationMetricsAPI* | [**GetApplicationCurrentStorageDisk**](docs/ApplicationMetricsAPI.md#getapplicationcurrentstoragedisk) | **Get** /application/{applicationId}/currentStorage | List current storage disk usage
+*ApplicationMetricsAPI* | [**GetApplicationMetricCpu**](docs/ApplicationMetricsAPI.md#getapplicationmetriccpu) | **Get** /application/{applicationId}/metric/cpu | Get CPU consumption metric over time for the application
+*ApplicationMetricsAPI* | [**GetApplicationMetricHealthCheck**](docs/ApplicationMetricsAPI.md#getapplicationmetrichealthcheck) | **Get** /application/{applicationId}/metric/healthCheck | Get Health Check latency  metric over time for the application
+*ApplicationMetricsAPI* | [**GetApplicationMetricMemory**](docs/ApplicationMetricsAPI.md#getapplicationmetricmemory) | **Get** /application/{applicationId}/metric/memory | Get Memory consumption metric over time for the application
+*ApplicationMetricsAPI* | [**GetApplicationMetricStorage**](docs/ApplicationMetricsAPI.md#getapplicationmetricstorage) | **Get** /application/{applicationId}/metric/storage | Get Storage consumption metric over time for the application
+*ApplicationSecretAPI* | [**CreateApplicationSecret**](docs/ApplicationSecretAPI.md#createapplicationsecret) | **Post** /application/{applicationId}/secret | Add a secret to the application
+*ApplicationSecretAPI* | [**CreateApplicationSecretAlias**](docs/ApplicationSecretAPI.md#createapplicationsecretalias) | **Post** /application/{applicationId}/secret/{secretId}/alias | Create a secret alias at the application level
+*ApplicationSecretAPI* | [**CreateApplicationSecretOverride**](docs/ApplicationSecretAPI.md#createapplicationsecretoverride) | **Post** /application/{applicationId}/secret/{secretId}/override | Create a secret override at the application level
+*ApplicationSecretAPI* | [**DeleteApplicationSecret**](docs/ApplicationSecretAPI.md#deleteapplicationsecret) | **Delete** /application/{applicationId}/secret/{secretId} | Delete a secret from an application
+*ApplicationSecretAPI* | [**EditApplicationSecret**](docs/ApplicationSecretAPI.md#editapplicationsecret) | **Put** /application/{applicationId}/secret/{secretId} | Edit a secret belonging to the application
+*ApplicationSecretAPI* | [**ListApplicationSecrets**](docs/ApplicationSecretAPI.md#listapplicationsecrets) | **Get** /application/{applicationId}/secret | List application secrets
+*ApplicationsAPI* | [**CloneApplication**](docs/ApplicationsAPI.md#cloneapplication) | **Post** /application/{applicationId}/clone | Clone application
+*ApplicationsAPI* | [**CreateApplication**](docs/ApplicationsAPI.md#createapplication) | **Post** /environment/{environmentId}/application | Create an application
+*ApplicationsAPI* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsAPI.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
+*ApplicationsAPI* | [**GetEnvironmentApplicationCurrentScale**](docs/ApplicationsAPI.md#getenvironmentapplicationcurrentscale) | **Get** /environment/{environmentId}/application/currentScale | List current scaling information for each application
+*ApplicationsAPI* | [**GetEnvironmentApplicationCurrentStorage**](docs/ApplicationsAPI.md#getenvironmentapplicationcurrentstorage) | **Get** /environment/{environmentId}/application/currentStorage | List current storage disk usage for each application
+*ApplicationsAPI* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsAPI.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
+*ApplicationsAPI* | [**GetEnvironmentApplicationSupportedLanguages**](docs/ApplicationsAPI.md#getenvironmentapplicationsupportedlanguages) | **Get** /environment/{environmentId}/application/supportedLanguage | List supported languages
+*ApplicationsAPI* | [**ListApplication**](docs/ApplicationsAPI.md#listapplication) | **Get** /environment/{environmentId}/application | List applications
+*BackupsAPI* | [**AddBackupDatabase**](docs/BackupsAPI.md#addbackupdatabase) | **Post** /database/{databaseId}/backup | Add a backup to the Database 
+*BackupsAPI* | [**ListDatabaseBackup**](docs/BackupsAPI.md#listdatabasebackup) | **Get** /database/{databaseId}/backup | List database  backups
+*BackupsAPI* | [**RemoveDatabaseBackup**](docs/BackupsAPI.md#removedatabasebackup) | **Delete** /database/{databaseId}/backup/{backupId} | Remove database  backup
+*BillingAPI* | [**AddCreditCard**](docs/BillingAPI.md#addcreditcard) | **Post** /organization/{organizationId}/creditCard | Add credit card
+*BillingAPI* | [**AddCreditCode**](docs/BillingAPI.md#addcreditcode) | **Post** /organization/{organizationId}/creditCode | Add credit code
+*BillingAPI* | [**ChangePlan**](docs/BillingAPI.md#changeplan) | **Post** /organization/{organizationId}/changePlan | Change organization plan
+*BillingAPI* | [**DeleteCreditCard**](docs/BillingAPI.md#deletecreditcard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
+*BillingAPI* | [**EditOrganizationBillingInfo**](docs/BillingAPI.md#editorganizationbillinginfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
+*BillingAPI* | [**GetClusterCurrentCost**](docs/BillingAPI.md#getclustercurrentcost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
+*BillingAPI* | [**GetOrganizationBillingInfo**](docs/BillingAPI.md#getorganizationbillinginfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
+*BillingAPI* | [**GetOrganizationBillingStatus**](docs/BillingAPI.md#getorganizationbillingstatus) | **Get** /organization/{organizationId}/billingStatus | Get organization billing status
+*BillingAPI* | [**GetOrganizationCurrentCost**](docs/BillingAPI.md#getorganizationcurrentcost) | **Get** /organization/{organizationId}/currentCost | Get organization current cost
+*BillingAPI* | [**GetOrganizationInvoice**](docs/BillingAPI.md#getorganizationinvoice) | **Get** /organization/{organizationId}/invoice/{invoiceId} | Get organization invoice
+*BillingAPI* | [**GetOrganizationInvoicePDF**](docs/BillingAPI.md#getorganizationinvoicepdf) | **Get** /organization/{organizationId}/invoice/{invoiceId}/download | Get invoice link
+*BillingAPI* | [**ListOrganizationCreditCards**](docs/BillingAPI.md#listorganizationcreditcards) | **Get** /organization/{organizationId}/creditCard | List organization credit cards
+*BillingAPI* | [**ListOrganizationInvoice**](docs/BillingAPI.md#listorganizationinvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
+*BillingAPI* | [**OrganizationDownloadAllInvoices**](docs/BillingAPI.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
+*CloudProviderAPI* | [**ListAWSEKSInstanceType**](docs/CloudProviderAPI.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
+*CloudProviderAPI* | [**ListAWSEc2InstanceType**](docs/CloudProviderAPI.md#listawsec2instancetype) | **Get** /aws/ec2/instanceType/{region} | List AWS EC2 available instance types
+*CloudProviderAPI* | [**ListAWSFeatures**](docs/CloudProviderAPI.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
+*CloudProviderAPI* | [**ListAWSInstanceType**](docs/CloudProviderAPI.md#listawsinstancetype) | **Get** /aws/instanceType | List AWS available instance types
+*CloudProviderAPI* | [**ListAWSManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listawsmanageddatabaseinstancetype) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
+*CloudProviderAPI* | [**ListAWSManagedDatabaseType**](docs/CloudProviderAPI.md#listawsmanageddatabasetype) | **Get** /aws/managedDatabase/type | List AWS available managed database types
+*CloudProviderAPI* | [**ListAWSRegions**](docs/CloudProviderAPI.md#listawsregions) | **Get** /aws/region | List AWS regions
+*CloudProviderAPI* | [**ListCloudProvider**](docs/CloudProviderAPI.md#listcloudprovider) | **Get** /cloudProvider | List Cloud providers available
+*CloudProviderAPI* | [**ListDOFeatures**](docs/CloudProviderAPI.md#listdofeatures) | **Get** /digitalOcean/clusterFeature | List DO features available
+*CloudProviderAPI* | [**ListDOInstanceType**](docs/CloudProviderAPI.md#listdoinstancetype) | **Get** /digitalOcean/instanceType | List DO available instance types
+*CloudProviderAPI* | [**ListDOManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listdomanageddatabaseinstancetype) | **Get** /digitalOcean/managedDatabase/instanceType/{region}/{databaseType} | List Digital Ocean available managed database instance types
+*CloudProviderAPI* | [**ListDOManagedDatabaseType**](docs/CloudProviderAPI.md#listdomanageddatabasetype) | **Get** /digitalOcean/managedDatabase/type | List Digital Ocean available managed database types
+*CloudProviderAPI* | [**ListDORegions**](docs/CloudProviderAPI.md#listdoregions) | **Get** /digitalOcean/region | List DO regions
+*CloudProviderAPI* | [**ListSCWManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listscwmanageddatabaseinstancetype) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
+*CloudProviderAPI* | [**ListSCWManagedDatabaseType**](docs/CloudProviderAPI.md#listscwmanageddatabasetype) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
+*CloudProviderAPI* | [**ListScalewayFeatures**](docs/CloudProviderAPI.md#listscalewayfeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
+*CloudProviderAPI* | [**ListScalewayInstanceType**](docs/CloudProviderAPI.md#listscalewayinstancetype) | **Get** /scaleway/instanceType | List Scaleway available instance types
+*CloudProviderAPI* | [**ListScalewayKapsuleInstanceType**](docs/CloudProviderAPI.md#listscalewaykapsuleinstancetype) | **Get** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
+*CloudProviderAPI* | [**ListScalewayRegions**](docs/CloudProviderAPI.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
+*CloudProviderCredentialsAPI* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsAPI.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
+*CloudProviderCredentialsAPI* | [**CreateDOCredentials**](docs/CloudProviderCredentialsAPI.md#createdocredentials) | **Post** /organization/{organizationId}/digitalOcean/credentials | Create Digital Ocean credentials set
+*CloudProviderCredentialsAPI* | [**CreateScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#createscalewaycredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
+*CloudProviderCredentialsAPI* | [**DeleteAWSCredentials**](docs/CloudProviderCredentialsAPI.md#deleteawscredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
+*CloudProviderCredentialsAPI* | [**DeleteDOCredentials**](docs/CloudProviderCredentialsAPI.md#deletedocredentials) | **Delete** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Delete a set of Digital Ocean credentials
+*CloudProviderCredentialsAPI* | [**DeleteScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#deletescalewaycredentials) | **Delete** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Delete a set of Scaleway credentials
+*CloudProviderCredentialsAPI* | [**EditAWSCredentials**](docs/CloudProviderCredentialsAPI.md#editawscredentials) | **Put** /organization/{organizationId}/aws/credentials/{credentialsId} | Edit a set of AWS credentials
+*CloudProviderCredentialsAPI* | [**EditDOCredentials**](docs/CloudProviderCredentialsAPI.md#editdocredentials) | **Put** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Edit a set of Digital Ocean credentials
+*CloudProviderCredentialsAPI* | [**EditScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#editscalewaycredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
+*CloudProviderCredentialsAPI* | [**GetAWSCredentials**](docs/CloudProviderCredentialsAPI.md#getawscredentials) | **Get** /organization/{organizationId}/aws/credentials/{credentialsId} | Get a set of AWS credentials
+*CloudProviderCredentialsAPI* | [**GetDOCredentials**](docs/CloudProviderCredentialsAPI.md#getdocredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Get a set of Digital Ocean credentials
+*CloudProviderCredentialsAPI* | [**GetScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#getscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Get a set of Scaleway credentials
+*CloudProviderCredentialsAPI* | [**ListAWSCredentials**](docs/CloudProviderCredentialsAPI.md#listawscredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
+*CloudProviderCredentialsAPI* | [**ListDOCredentials**](docs/CloudProviderCredentialsAPI.md#listdocredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials | List DO credentials
+*CloudProviderCredentialsAPI* | [**ListScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#listscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
+*ClustersAPI* | [**CreateCluster**](docs/ClustersAPI.md#createcluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
+*ClustersAPI* | [**DeleteCluster**](docs/ClustersAPI.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
+*ClustersAPI* | [**DeployCluster**](docs/ClustersAPI.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
+*ClustersAPI* | [**EditCluster**](docs/ClustersAPI.md#editcluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
+*ClustersAPI* | [**EditClusterAdvancedSettings**](docs/ClustersAPI.md#editclusteradvancedsettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
+*ClustersAPI* | [**EditRoutingTable**](docs/ClustersAPI.md#editroutingtable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
+*ClustersAPI* | [**GetClusterAdvancedSettings**](docs/ClustersAPI.md#getclusteradvancedsettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+*ClustersAPI* | [**GetClusterReadinessStatus**](docs/ClustersAPI.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
+*ClustersAPI* | [**GetClusterStatus**](docs/ClustersAPI.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
+*ClustersAPI* | [**GetDefaultClusterAdvancedSettings**](docs/ClustersAPI.md#getdefaultclusteradvancedsettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
+*ClustersAPI* | [**GetOrganizationCloudProviderInfo**](docs/ClustersAPI.md#getorganizationcloudproviderinfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
+*ClustersAPI* | [**GetOrganizationClusterStatus**](docs/ClustersAPI.md#getorganizationclusterstatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
+*ClustersAPI* | [**GetRoutingTable**](docs/ClustersAPI.md#getroutingtable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
+*ClustersAPI* | [**ListClusterLogs**](docs/ClustersAPI.md#listclusterlogs) | **Get** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
+*ClustersAPI* | [**ListOrganizationCluster**](docs/ClustersAPI.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
+*ClustersAPI* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersAPI.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
+*ClustersAPI* | [**StopCluster**](docs/ClustersAPI.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
+*ContainerActionsAPI* | [**DeployContainer**](docs/ContainerActionsAPI.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
+*ContainerActionsAPI* | [**RebootContainer**](docs/ContainerActionsAPI.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
+*ContainerActionsAPI* | [**RedeployContainer**](docs/ContainerActionsAPI.md#redeploycontainer) | **Post** /container/{containerId}/redeploy | Redeploy container
+*ContainerActionsAPI* | [**RestartContainer**](docs/ContainerActionsAPI.md#restartcontainer) | **Post** /container/{containerId}/restart | Deprecated - Restart container
+*ContainerActionsAPI* | [**StopContainer**](docs/ContainerActionsAPI.md#stopcontainer) | **Post** /container/{containerId}/stop | Stop container
+*ContainerConfigurationAPI* | [**EditContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#editcontaineradvancedsettings) | **Put** /container/{containerId}/advancedSettings | Edit advanced settings
+*ContainerConfigurationAPI* | [**EditContainerNetwork**](docs/ContainerConfigurationAPI.md#editcontainernetwork) | **Put** /container/{containerId}/network | Edit Container Network
+*ContainerConfigurationAPI* | [**GetContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#getcontaineradvancedsettings) | **Get** /container/{containerId}/advancedSettings | Get advanced settings
+*ContainerConfigurationAPI* | [**GetContainerNetwork**](docs/ContainerConfigurationAPI.md#getcontainernetwork) | **Get** /container/{containerId}/network | Get Container Network information
+*ContainerCustomDomainAPI* | [**CreateContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#createcontainercustomdomain) | **Post** /container/{containerId}/customDomain | Add custom domain to the container.
+*ContainerCustomDomainAPI* | [**DeleteContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#deletecontainercustomdomain) | **Delete** /container/{containerId}/customDomain/{customDomainId} | Delete a Custom Domain
+*ContainerCustomDomainAPI* | [**EditContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#editcontainercustomdomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
+*ContainerCustomDomainAPI* | [**GetContainerCustomDomainStatus**](docs/ContainerCustomDomainAPI.md#getcontainercustomdomainstatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
+*ContainerCustomDomainAPI* | [**ListContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#listcontainercustomdomain) | **Get** /container/{containerId}/customDomain | List container custom domains
+*ContainerDeploymentHistoryAPI* | [**ListContainerDeploymentHistory**](docs/ContainerDeploymentHistoryAPI.md#listcontainerdeploymenthistory) | **Get** /container/{containerId}/deploymentHistory | List container deployments
+*ContainerEnvironmentVariableAPI* | [**CreateContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableAPI.md#createcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable | Add an environment variable to the container
+*ContainerEnvironmentVariableAPI* | [**CreateContainerEnvironmentVariableAlias**](docs/ContainerEnvironmentVariableAPI.md#createcontainerenvironmentvariablealias) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the container level
+*ContainerEnvironmentVariableAPI* | [**CreateContainerEnvironmentVariableOverride**](docs/ContainerEnvironmentVariableAPI.md#createcontainerenvironmentvariableoverride) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the container level
+*ContainerEnvironmentVariableAPI* | [**DeleteContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableAPI.md#deletecontainerenvironmentvariable) | **Delete** /container/{containerId}/environmentVariable/{environmentVariableId} | Delete an environment variable from a container
+*ContainerEnvironmentVariableAPI* | [**EditContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableAPI.md#editcontainerenvironmentvariable) | **Put** /container/{containerId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the container
+*ContainerEnvironmentVariableAPI* | [**ImportContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableAPI.md#importcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable/import | Import variables
+*ContainerEnvironmentVariableAPI* | [**ListContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableAPI.md#listcontainerenvironmentvariable) | **Get** /container/{containerId}/environmentVariable | List environment variables
+*ContainerLogsAPI* | [**ListContainerLog**](docs/ContainerLogsAPI.md#listcontainerlog) | **Get** /container/{containerId}/log | List logs
+*ContainerMainCallsAPI* | [**DeleteContainer**](docs/ContainerMainCallsAPI.md#deletecontainer) | **Delete** /container/{containerId} | Delete container
+*ContainerMainCallsAPI* | [**EditContainer**](docs/ContainerMainCallsAPI.md#editcontainer) | **Put** /container/{containerId} | Edit container
+*ContainerMainCallsAPI* | [**GetContainer**](docs/ContainerMainCallsAPI.md#getcontainer) | **Get** /container/{containerId} | Get container by ID
+*ContainerMainCallsAPI* | [**GetContainerStatus**](docs/ContainerMainCallsAPI.md#getcontainerstatus) | **Get** /container/{containerId}/status | Get container status
+*ContainerMainCallsAPI* | [**ListContainerLinks**](docs/ContainerMainCallsAPI.md#listcontainerlinks) | **Get** /container/{containerId}/link | List all URLs of the container
+*ContainerMetricsAPI* | [**GetContainerCurrentInstance**](docs/ContainerMetricsAPI.md#getcontainercurrentinstance) | **Get** /container/{containerId}/instance | List currently running instances of the container with their CPU and RAM metrics
+*ContainerMetricsAPI* | [**GetContainerCurrentScale**](docs/ContainerMetricsAPI.md#getcontainercurrentscale) | **Get** /container/{containerId}/currentScale | Get current scaling of the container
+*ContainerMetricsAPI* | [**GetContainerCurrentStorageDisk**](docs/ContainerMetricsAPI.md#getcontainercurrentstoragedisk) | **Get** /container/{containerId}/currentStorage | List current storage disk usage
+*ContainerRegistriesAPI* | [**CreateContainerRegistry**](docs/ContainerRegistriesAPI.md#createcontainerregistry) | **Post** /organization/{organizationId}/containerRegistry | Create a container registry
+*ContainerRegistriesAPI* | [**DeleteContainerRegistry**](docs/ContainerRegistriesAPI.md#deletecontainerregistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
+*ContainerRegistriesAPI* | [**EditContainerRegistry**](docs/ContainerRegistriesAPI.md#editcontainerregistry) | **Put** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Edit a container registry
+*ContainerRegistriesAPI* | [**GetContainerRegistry**](docs/ContainerRegistriesAPI.md#getcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Get a container registry
+*ContainerRegistriesAPI* | [**ListAvailableContainerRegistry**](docs/ContainerRegistriesAPI.md#listavailablecontainerregistry) | **Get** /availableContainerRegistry | List supported container registries
+*ContainerRegistriesAPI* | [**ListContainerRegistry**](docs/ContainerRegistriesAPI.md#listcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
+*ContainerSecretAPI* | [**CreateContainerSecret**](docs/ContainerSecretAPI.md#createcontainersecret) | **Post** /container/{containerId}/secret | Add a secret to the container
+*ContainerSecretAPI* | [**CreateContainerSecretAlias**](docs/ContainerSecretAPI.md#createcontainersecretalias) | **Post** /container/{containerId}/secret/{secretId}/alias | Create a secret alias at the container level
+*ContainerSecretAPI* | [**CreateContainerSecretOverride**](docs/ContainerSecretAPI.md#createcontainersecretoverride) | **Post** /container/{containerId}/secret/{secretId}/override | Create a secret override at the container level
+*ContainerSecretAPI* | [**DeleteContainerSecret**](docs/ContainerSecretAPI.md#deletecontainersecret) | **Delete** /container/{containerId}/secret/{secretId} | Delete a secret from an container
+*ContainerSecretAPI* | [**EditContainerSecret**](docs/ContainerSecretAPI.md#editcontainersecret) | **Put** /container/{containerId}/secret/{secretId} | Edit a secret belonging to the container
+*ContainerSecretAPI* | [**ListContainerSecrets**](docs/ContainerSecretAPI.md#listcontainersecrets) | **Get** /container/{containerId}/secret | List container secrets
+*ContainersAPI* | [**AutoDeployContainerEnvironments**](docs/ContainersAPI.md#autodeploycontainerenvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
+*ContainersAPI* | [**CloneContainer**](docs/ContainersAPI.md#clonecontainer) | **Post** /container/{containerId}/clone | Clone container
+*ContainersAPI* | [**CreateContainer**](docs/ContainersAPI.md#createcontainer) | **Post** /environment/{environmentId}/container | Create a container
+*ContainersAPI* | [**GetContainerRegistryContainerStatus**](docs/ContainersAPI.md#getcontainerregistrycontainerstatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
+*ContainersAPI* | [**GetDefaultContainerAdvancedSettings**](docs/ContainersAPI.md#getdefaultcontaineradvancedsettings) | **Get** /defaultContainerAdvancedSettings | List default container advanced settings
+*ContainersAPI* | [**GetEnvironmentContainerCurrentScale**](docs/ContainersAPI.md#getenvironmentcontainercurrentscale) | **Get** /environment/{environmentId}/container/currentScale | List current scaling information for each container
+*ContainersAPI* | [**GetEnvironmentContainerCurrentStorage**](docs/ContainersAPI.md#getenvironmentcontainercurrentstorage) | **Get** /environment/{environmentId}/container/currentStorage | List current storage disk usage for each containers
+*ContainersAPI* | [**GetEnvironmentContainerStatus**](docs/ContainersAPI.md#getenvironmentcontainerstatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
+*ContainersAPI* | [**ListContainer**](docs/ContainersAPI.md#listcontainer) | **Get** /environment/{environmentId}/container | List containers
+*ContainersAPI* | [**PreviewContainerEnvironments**](docs/ContainersAPI.md#previewcontainerenvironments) | **Post** /organization/{organizationId}/container/preview | Preview container environments
+*CustomDomainAPI* | [**CreateApplicationCustomDomain**](docs/CustomDomainAPI.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
+*CustomDomainAPI* | [**DeleteCustomDomain**](docs/CustomDomainAPI.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
+*CustomDomainAPI* | [**EditCustomDomain**](docs/CustomDomainAPI.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
+*CustomDomainAPI* | [**GetCustomDomainStatus**](docs/CustomDomainAPI.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
+*CustomDomainAPI* | [**ListApplicationCustomDomain**](docs/CustomDomainAPI.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
+*DatabaseActionsAPI* | [**DeployDatabase**](docs/DatabaseActionsAPI.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
+*DatabaseActionsAPI* | [**RebootDatabase**](docs/DatabaseActionsAPI.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
+*DatabaseActionsAPI* | [**RedeployDatabase**](docs/DatabaseActionsAPI.md#redeploydatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
+*DatabaseActionsAPI* | [**RestartDatabase**](docs/DatabaseActionsAPI.md#restartdatabase) | **Post** /database/{databaseId}/restart | Deprecated - Restart database
+*DatabaseActionsAPI* | [**StopDatabase**](docs/DatabaseActionsAPI.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
+*DatabaseApplicationAPI* | [**ListDatabaseApplication**](docs/DatabaseApplicationAPI.md#listdatabaseapplication) | **Get** /database/{databaseId}/application | List applications using the database
+*DatabaseApplicationAPI* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationAPI.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
+*DatabaseDeploymentHistoryAPI* | [**ListDatabaseDeploymentHistory**](docs/DatabaseDeploymentHistoryAPI.md#listdatabasedeploymenthistory) | **Get** /database/{databaseId}/deploymentHistory | List database deploys
+*DatabaseMainCallsAPI* | [**DeleteDatabase**](docs/DatabaseMainCallsAPI.md#deletedatabase) | **Delete** /database/{databaseId} | Delete a database 
+*DatabaseMainCallsAPI* | [**EditDatabase**](docs/DatabaseMainCallsAPI.md#editdatabase) | **Put** /database/{databaseId} | Edit a database 
+*DatabaseMainCallsAPI* | [**EditDatabaseCredentials**](docs/DatabaseMainCallsAPI.md#editdatabasecredentials) | **Put** /database/{databaseId}/masterCredentials | Edit database  master credentials
+*DatabaseMainCallsAPI* | [**GetDatabase**](docs/DatabaseMainCallsAPI.md#getdatabase) | **Get** /database/{databaseId} | Get database by ID
+*DatabaseMainCallsAPI* | [**GetDatabaseMasterCredentials**](docs/DatabaseMainCallsAPI.md#getdatabasemastercredentials) | **Get** /database/{databaseId}/masterCredentials | Get master credentials of the database
+*DatabaseMainCallsAPI* | [**GetDatabaseStatus**](docs/DatabaseMainCallsAPI.md#getdatabasestatus) | **Get** /database/{databaseId}/status | Get database status
+*DatabaseMainCallsAPI* | [**ListDatabaseVersion**](docs/DatabaseMainCallsAPI.md#listdatabaseversion) | **Get** /database/{databaseId}/version | List eligible versions for the database
+*DatabaseMetricsAPI* | [**GetDatabaseCurrentMetric**](docs/DatabaseMetricsAPI.md#getdatabasecurrentmetric) | **Get** /database/{databaseId}/currentMetric | Get current metric consumption of the database 
+*DatabaseMetricsAPI* | [**GetDatabaseMetricCpu**](docs/DatabaseMetricsAPI.md#getdatabasemetriccpu) | **Get** /database/{databaseId}/metric/cpu | Get CPU consumption metric over time for the database
+*DatabaseMetricsAPI* | [**GetDatabaseMetricHealthCheck**](docs/DatabaseMetricsAPI.md#getdatabasemetrichealthcheck) | **Get** /database/{databaseId}/metric/healthCheck | Get Health Check latency  metric over time for the database
+*DatabaseMetricsAPI* | [**GetDatabaseMetricMemory**](docs/DatabaseMetricsAPI.md#getdatabasemetricmemory) | **Get** /database/{databaseId}/metric/memory | Get Memory consumption metric over time for the database
+*DatabaseMetricsAPI* | [**GetDatabaseMetricStorage**](docs/DatabaseMetricsAPI.md#getdatabasemetricstorage) | **Get** /database/{databaseId}/metric/storage | Get Storage consumption metric over time for the database
+*DatabasesAPI* | [**CloneDatabase**](docs/DatabasesAPI.md#clonedatabase) | **Post** /database/{databaseId}/clone | Clone database
+*DatabasesAPI* | [**CreateDatabase**](docs/DatabasesAPI.md#createdatabase) | **Post** /environment/{environmentId}/database | Create a database
+*DatabasesAPI* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesAPI.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
+*DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
+*DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
+*DatabasesAPI* | [**ListEnvironmentDatabaseCurrentMetric**](docs/DatabasesAPI.md#listenvironmentdatabasecurrentmetric) | **Get** /environment/{environmentId}/database/currentMetric | List current metric consumption for each database
+*DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
+*DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
+*DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
+*DeploymentStageMainCallsAPI* | [**EditDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#editdeploymentstage) | **Put** /deploymentStage/{deploymentStageId} | Edit deployment stage
+*DeploymentStageMainCallsAPI* | [**GetDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#getdeploymentstage) | **Get** /deploymentStage/{deploymentStageId} | Get Deployment Stage
+*DeploymentStageMainCallsAPI* | [**GetServiceDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#getservicedeploymentstage) | **Get** /service/{serviceId}/deploymentStage | Get Service Deployment Stage
+*DeploymentStageMainCallsAPI* | [**ListEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#listenvironmentdeploymentstage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
+*DeploymentStageMainCallsAPI* | [**MoveAfterDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#moveafterdeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveAfter/{stageId} | Move deployment stage after requested stage
+*DeploymentStageMainCallsAPI* | [**MoveBeforeDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#movebeforedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
+*EnvironmentAPI* | [**DeployAllApplications**](docs/EnvironmentAPI.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
+*EnvironmentActionsAPI* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsAPI.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
+*EnvironmentActionsAPI* | [**CloneEnvironment**](docs/EnvironmentActionsAPI.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
+*EnvironmentActionsAPI* | [**DeleteSelectedServices**](docs/EnvironmentActionsAPI.md#deleteselectedservices) | **Post** /environment/{environmentId}/service/delete | Delete services
+*EnvironmentActionsAPI* | [**DeployAllServices**](docs/EnvironmentActionsAPI.md#deployallservices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
+*EnvironmentActionsAPI* | [**DeployEnvironment**](docs/EnvironmentActionsAPI.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
+*EnvironmentActionsAPI* | [**RebootServices**](docs/EnvironmentActionsAPI.md#rebootservices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
+*EnvironmentActionsAPI* | [**RedeployEnvironment**](docs/EnvironmentActionsAPI.md#redeployenvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
+*EnvironmentActionsAPI* | [**RestartEnvironment**](docs/EnvironmentActionsAPI.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Deprecated - Restart environment
+*EnvironmentActionsAPI* | [**StopEnvironment**](docs/EnvironmentActionsAPI.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
+*EnvironmentActionsAPI* | [**StopSelectedServices**](docs/EnvironmentActionsAPI.md#stopselectedservices) | **Post** /environment/{environmentId}/service/stop | Stop services
+*EnvironmentDeploymentHistoryAPI* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryAPI.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
+*EnvironmentDeploymentRuleAPI* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleAPI.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
+*EnvironmentDeploymentRuleAPI* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleAPI.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
+*EnvironmentExportAPI* | [**ExportEnvironmentConfigurationIntoTerraform**](docs/EnvironmentExportAPI.md#exportenvironmentconfigurationintoterraform) | **Get** /environment/{environmentId}/terraformExport | Export full environment and its resources into Terraform manifests
+*EnvironmentLogsAPI* | [**ListEnvironmentLog**](docs/EnvironmentLogsAPI.md#listenvironmentlog) | **Get** /environment/{environmentId}/log | List environment deployment logs
+*EnvironmentLogsAPI* | [**ListEnvironmentLogs**](docs/EnvironmentLogsAPI.md#listenvironmentlogs) | **Get** /environment/{environmentId}/logs | List environment deployment logs v2
+*EnvironmentMainCallsAPI* | [**DeleteEnvironment**](docs/EnvironmentMainCallsAPI.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
+*EnvironmentMainCallsAPI* | [**EditEnvironment**](docs/EnvironmentMainCallsAPI.md#editenvironment) | **Put** /environment/{environmentId} | Edit an environment
+*EnvironmentMainCallsAPI* | [**GetEnvironment**](docs/EnvironmentMainCallsAPI.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
+*EnvironmentMainCallsAPI* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
+*EnvironmentMainCallsAPI* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
+*EnvironmentMainCallsAPI* | [**GetEnvironmentStatusesWithStages**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuseswithstages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
+*EnvironmentSecretAPI* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretAPI.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
+*EnvironmentSecretAPI* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretAPI.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
+*EnvironmentSecretAPI* | [**CreateEnvironmentSecretOverride**](docs/EnvironmentSecretAPI.md#createenvironmentsecretoverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
+*EnvironmentSecretAPI* | [**DeleteEnvironmentSecret**](docs/EnvironmentSecretAPI.md#deleteenvironmentsecret) | **Delete** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
+*EnvironmentSecretAPI* | [**EditEnvironmentSecret**](docs/EnvironmentSecretAPI.md#editenvironmentsecret) | **Put** /environment/{environmentId}/secret/{secretId} | Edit a secret belonging to the environment
+*EnvironmentSecretAPI* | [**ListEnvironmentSecrets**](docs/EnvironmentSecretAPI.md#listenvironmentsecrets) | **Get** /environment/{environmentId}/secret | List environment secrets
+*EnvironmentVariableAPI* | [**CreateEnvironmentEnvironmentVariable**](docs/EnvironmentVariableAPI.md#createenvironmentenvironmentvariable) | **Post** /environment/{environmentId}/environmentVariable | Add an environment variable to the environment
+*EnvironmentVariableAPI* | [**CreateEnvironmentEnvironmentVariableAlias**](docs/EnvironmentVariableAPI.md#createenvironmentenvironmentvariablealias) | **Post** /environment/{environmentId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the environment level
+*EnvironmentVariableAPI* | [**CreateEnvironmentEnvironmentVariableOverride**](docs/EnvironmentVariableAPI.md#createenvironmentenvironmentvariableoverride) | **Post** /environment/{environmentId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the environment level
+*EnvironmentVariableAPI* | [**DeleteEnvironmentEnvironmentVariable**](docs/EnvironmentVariableAPI.md#deleteenvironmentenvironmentvariable) | **Delete** /environment/{environmentId}/environmentVariable/{environmentVariableId} | Delete an environment variable from an environment
+*EnvironmentVariableAPI* | [**EditEnvironmentEnvironmentVariable**](docs/EnvironmentVariableAPI.md#editenvironmentenvironmentvariable) | **Put** /environment/{environmentId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the environment
+*EnvironmentVariableAPI* | [**ListEnvironmentEnvironmentVariable**](docs/EnvironmentVariableAPI.md#listenvironmentenvironmentvariable) | **Get** /environment/{environmentId}/environmentVariable | List environment variables
+*EnvironmentsAPI* | [**CreateEnvironment**](docs/EnvironmentsAPI.md#createenvironment) | **Post** /project/{projectId}/environment | Create an environment
+*EnvironmentsAPI* | [**GetProjectEnvironmentServiceNumber**](docs/EnvironmentsAPI.md#getprojectenvironmentservicenumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
+*EnvironmentsAPI* | [**GetProjectEnvironmentsStatus**](docs/EnvironmentsAPI.md#getprojectenvironmentsstatus) | **Get** /project/{projectId}/environment/status | List environments statuses
+*EnvironmentsAPI* | [**ListEnvironment**](docs/EnvironmentsAPI.md#listenvironment) | **Get** /project/{projectId}/environment | List environments
+*GitRepositoriesAPI* | [**GetBitbucketRepositories**](docs/GitRepositoriesAPI.md#getbitbucketrepositories) | **Get** /account/bitbucket/repository | Get bitbucket repositories of the connected user
+*GitRepositoriesAPI* | [**GetBitbucketRepositoryBranches**](docs/GitRepositoriesAPI.md#getbitbucketrepositorybranches) | **Get** /account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
+*GitRepositoriesAPI* | [**GetGitProviderAccount**](docs/GitRepositoriesAPI.md#getgitprovideraccount) | **Get** /account/gitAuthProvider | Get git provider accounts
+*GitRepositoriesAPI* | [**GetGithubRepositories**](docs/GitRepositoriesAPI.md#getgithubrepositories) | **Get** /account/github/repository | Get github repositories of the connected user
+*GitRepositoriesAPI* | [**GetGithubRepositoryBranches**](docs/GitRepositoriesAPI.md#getgithubrepositorybranches) | **Get** /account/github/repository/branch | Get github branches of the specified repository
+*GitRepositoriesAPI* | [**GetGitlabRepositories**](docs/GitRepositoriesAPI.md#getgitlabrepositories) | **Get** /account/gitlab/repository | Get gitlab repositories of the connected user
+*GitRepositoriesAPI* | [**GetGitlabRepositoryBranches**](docs/GitRepositoriesAPI.md#getgitlabrepositorybranches) | **Get** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
+*GithubAppAPI* | [**OrganizationGithubAppConnect**](docs/GithubAppAPI.md#organizationgithubappconnect) | **Post** /organization/{organizationId}/github/connect | Connect a github account to an organization
+*GithubAppAPI* | [**OrganizationGithubAppDisconnect**](docs/GithubAppAPI.md#organizationgithubappdisconnect) | **Delete** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
+*JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
+*JobActionsAPI* | [**RedeployJob**](docs/JobActionsAPI.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
+*JobActionsAPI* | [**RestartJob**](docs/JobActionsAPI.md#restartjob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
+*JobActionsAPI* | [**StopJob**](docs/JobActionsAPI.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
+*JobConfigurationAPI* | [**EditJobAdvancedSettings**](docs/JobConfigurationAPI.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
+*JobConfigurationAPI* | [**GetJobAdvancedSettings**](docs/JobConfigurationAPI.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
+*JobDeploymentHistoryAPI* | [**ListJobDeploymentHistory**](docs/JobDeploymentHistoryAPI.md#listjobdeploymenthistory) | **Get** /job/{jobId}/deploymentHistory | List job deployments
+*JobDeploymentRestrictionAPI* | [**CreateJobDeploymentRestriction**](docs/JobDeploymentRestrictionAPI.md#createjobdeploymentrestriction) | **Post** /job/{jobId}/deploymentRestriction | Create a job deployment restriction
+*JobDeploymentRestrictionAPI* | [**DeleteJobDeploymentRestriction**](docs/JobDeploymentRestrictionAPI.md#deletejobdeploymentrestriction) | **Delete** /job/{jobId}/deploymentRestriction/{deploymentRestrictionId} | Delete a job deployment restriction
+*JobDeploymentRestrictionAPI* | [**EditJobDeploymentRestriction**](docs/JobDeploymentRestrictionAPI.md#editjobdeploymentrestriction) | **Put** /job/{jobId}/deploymentRestriction/{deploymentRestrictionId} | Edit a job deployment restriction
+*JobDeploymentRestrictionAPI* | [**GetJobDeploymentRestrictions**](docs/JobDeploymentRestrictionAPI.md#getjobdeploymentrestrictions) | **Get** /job/{jobId}/deploymentRestriction | Get job deployment restrictions
+*JobEnvironmentVariableAPI* | [**CreateJobEnvironmentVariable**](docs/JobEnvironmentVariableAPI.md#createjobenvironmentvariable) | **Post** /job/{jobId}/environmentVariable | Add an environment variable to the job
+*JobEnvironmentVariableAPI* | [**CreateJobEnvironmentVariableAlias**](docs/JobEnvironmentVariableAPI.md#createjobenvironmentvariablealias) | **Post** /job/{jobId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the job level
+*JobEnvironmentVariableAPI* | [**CreateJobEnvironmentVariableOverride**](docs/JobEnvironmentVariableAPI.md#createjobenvironmentvariableoverride) | **Post** /job/{jobId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the job level
+*JobEnvironmentVariableAPI* | [**DeleteJobEnvironmentVariable**](docs/JobEnvironmentVariableAPI.md#deletejobenvironmentvariable) | **Delete** /job/{jobId}/environmentVariable/{environmentVariableId} | Delete an environment variable from a job
+*JobEnvironmentVariableAPI* | [**EditJobEnvironmentVariable**](docs/JobEnvironmentVariableAPI.md#editjobenvironmentvariable) | **Put** /job/{jobId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the job
+*JobEnvironmentVariableAPI* | [**ImportJobEnvironmentVariable**](docs/JobEnvironmentVariableAPI.md#importjobenvironmentvariable) | **Post** /job/{jobId}/environmentVariable/import | Import variables
+*JobEnvironmentVariableAPI* | [**ListJobEnvironmentVariable**](docs/JobEnvironmentVariableAPI.md#listjobenvironmentvariable) | **Get** /job/{jobId}/environmentVariable | List environment variables
+*JobMainCallsAPI* | [**DeleteJob**](docs/JobMainCallsAPI.md#deletejob) | **Delete** /job/{jobId} | Delete job
+*JobMainCallsAPI* | [**EditJob**](docs/JobMainCallsAPI.md#editjob) | **Put** /job/{jobId} | Edit job
+*JobMainCallsAPI* | [**GetJob**](docs/JobMainCallsAPI.md#getjob) | **Get** /job/{jobId} | Get job by ID
+*JobMainCallsAPI* | [**GetJobStatus**](docs/JobMainCallsAPI.md#getjobstatus) | **Get** /job/{jobId}/status | Get job status
+*JobMainCallsAPI* | [**ListJobCommit**](docs/JobMainCallsAPI.md#listjobcommit) | **Get** /job/{jobId}/commit | List last job commits
+*JobMetricsAPI* | [**GetJobCurrentInstance**](docs/JobMetricsAPI.md#getjobcurrentinstance) | **Get** /job/{jobId}/instance | List currently running instances of the job with their CPU and RAM metrics
+*JobSecretAPI* | [**CreateJobSecret**](docs/JobSecretAPI.md#createjobsecret) | **Post** /job/{jobId}/secret | Add a secret to the job
+*JobSecretAPI* | [**CreateJobSecretAlias**](docs/JobSecretAPI.md#createjobsecretalias) | **Post** /job/{jobId}/secret/{secretId}/alias | Create a secret alias at the job level
+*JobSecretAPI* | [**CreateJobSecretOverride**](docs/JobSecretAPI.md#createjobsecretoverride) | **Post** /job/{jobId}/secret/{secretId}/override | Create a secret override at the job level
+*JobSecretAPI* | [**DeleteJobSecret**](docs/JobSecretAPI.md#deletejobsecret) | **Delete** /job/{jobId}/secret/{secretId} | Delete a secret from an job
+*JobSecretAPI* | [**EditJobSecret**](docs/JobSecretAPI.md#editjobsecret) | **Put** /job/{jobId}/secret/{secretId} | Edit a secret belonging to the job
+*JobSecretAPI* | [**ListJobSecrets**](docs/JobSecretAPI.md#listjobsecrets) | **Get** /job/{jobId}/secret | List job secrets
+*JobsAPI* | [**AutoDeployJobEnvironments**](docs/JobsAPI.md#autodeployjobenvironments) | **Post** /organization/{organizationId}/job/deploy | Auto deploy jobs
+*JobsAPI* | [**CloneJob**](docs/JobsAPI.md#clonejob) | **Post** /job/{jobId}/clone | Clone job
+*JobsAPI* | [**CreateJob**](docs/JobsAPI.md#createjob) | **Post** /environment/{environmentId}/job | Create a job
+*JobsAPI* | [**GetDefaultJobAdvancedSettings**](docs/JobsAPI.md#getdefaultjobadvancedsettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
+*JobsAPI* | [**GetEnvironmentJobStatus**](docs/JobsAPI.md#getenvironmentjobstatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
+*JobsAPI* | [**ListJobs**](docs/JobsAPI.md#listjobs) | **Get** /environment/{environmentId}/job | List jobs
+*MembersAPI* | [**DeleteInviteMember**](docs/MembersAPI.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
+*MembersAPI* | [**DeleteMember**](docs/MembersAPI.md#deletemember) | **Delete** /organization/{organizationId}/member | Remove a member
+*MembersAPI* | [**EditOrganizationMemberRole**](docs/MembersAPI.md#editorganizationmemberrole) | **Put** /organization/{organizationId}/member | Edit an organization member role
+*MembersAPI* | [**GetMemberInvitation**](docs/MembersAPI.md#getmemberinvitation) | **Get** /organization/{organizationId}/inviteMember/{inviteId} | Get member invitation
+*MembersAPI* | [**GetOrganizationInvitedMembers**](docs/MembersAPI.md#getorganizationinvitedmembers) | **Get** /organization/{organizationId}/inviteMember | Get invited members
+*MembersAPI* | [**GetOrganizationMembers**](docs/MembersAPI.md#getorganizationmembers) | **Get** /organization/{organizationId}/member | Get organization members
+*MembersAPI* | [**PostAcceptInviteMember**](docs/MembersAPI.md#postacceptinvitemember) | **Post** /organization/{organizationId}/inviteMember/{inviteId} | Accept Invite in the organization
+*MembersAPI* | [**PostInviteMember**](docs/MembersAPI.md#postinvitemember) | **Post** /organization/{organizationId}/inviteMember | Invite someone in the organization
+*MembersAPI* | [**PostOrganizationTransferOwnership**](docs/MembersAPI.md#postorganizationtransferownership) | **Post** /organization/{organizationId}/transferOwnership | Transfer organization ownership to another user
+*OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationBitbucketRepositories**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationbitbucketrepositories) | **Get** /organization/{organizationId}/account/bitbucket/repository | Get bitbucket repositories of the connected user
+*OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationBitbucketRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationbitbucketrepositorybranches) | **Get** /organization/{organizationId}/account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
+*OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitProviderAccount**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitprovideraccount) | **Get** /organization/{organizationId}/account/gitAuthProvider | Get git provider accounts
+*OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGithubRepositories**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgithubrepositories) | **Get** /organization/{organizationId}/account/github/repository | Get github repositories of the connected user
+*OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGithubRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgithubrepositorybranches) | **Get** /organization/{organizationId}/account/github/repository/branch | Get github branches of the specified repository
+*OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositories**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositories) | **Get** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
+*OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositorybranches) | **Get** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
+*OrganizationApiTokenAPI* | [**CreateOrganizationApiToken**](docs/OrganizationApiTokenAPI.md#createorganizationapitoken) | **Post** /organization/{organizationId}/apiToken | Create an organization api token
+*OrganizationApiTokenAPI* | [**DeleteOrganizationApiToken**](docs/OrganizationApiTokenAPI.md#deleteorganizationapitoken) | **Delete** /organization/{organizationId}/apiToken/{apiTokenId} | Delete organization api token
+*OrganizationApiTokenAPI* | [**ListOrganizationApiTokens**](docs/OrganizationApiTokenAPI.md#listorganizationapitokens) | **Get** /organization/{organizationId}/apiToken | List organization api tokens
+*OrganizationCustomRoleAPI* | [**CreateOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#createorganizationcustomrole) | **Post** /organization/{organizationId}/customRole | Create an organization custom role
+*OrganizationCustomRoleAPI* | [**DeleteOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#deleteorganizationcustomrole) | **Delete** /organization/{organizationId}/customRole/{customRoleId} | Delete organization custom role
+*OrganizationCustomRoleAPI* | [**EditOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#editorganizationcustomrole) | **Put** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
+*OrganizationCustomRoleAPI* | [**GetOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#getorganizationcustomrole) | **Get** /organization/{organizationId}/customRole/{customRoleId} | Get an organization custom role 
+*OrganizationCustomRoleAPI* | [**ListOrganizationCustomRoles**](docs/OrganizationCustomRoleAPI.md#listorganizationcustomroles) | **Get** /organization/{organizationId}/customRole | List organization custom roles
+*OrganizationEventAPI* | [**GetOrganizationEventTargets**](docs/OrganizationEventAPI.md#getorganizationeventtargets) | **Get** /organization/{organizationId}/targets | Get available event targets to filter events
+*OrganizationEventAPI* | [**GetOrganizationEvents**](docs/OrganizationEventAPI.md#getorganizationevents) | **Get** /organization/{organizationId}/events | Get all events inside the organization
+*OrganizationMainCallsAPI* | [**CreateOrganization**](docs/OrganizationMainCallsAPI.md#createorganization) | **Post** /organization | Create an organization
+*OrganizationMainCallsAPI* | [**DeleteOrganization**](docs/OrganizationMainCallsAPI.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
+*OrganizationMainCallsAPI* | [**EditOrganization**](docs/OrganizationMainCallsAPI.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
+*OrganizationMainCallsAPI* | [**GetOrganization**](docs/OrganizationMainCallsAPI.md#getorganization) | **Get** /organization/{organizationId} | Get organization by ID
+*OrganizationMainCallsAPI* | [**ListOrganization**](docs/OrganizationMainCallsAPI.md#listorganization) | **Get** /organization | List user organizations
+*OrganizationMainCallsAPI* | [**ListOrganizationAvailableRoles**](docs/OrganizationMainCallsAPI.md#listorganizationavailableroles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
+*OrganizationWebhookAPI* | [**CreateOrganizationWebhook**](docs/OrganizationWebhookAPI.md#createorganizationwebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
+*OrganizationWebhookAPI* | [**DeleteOrganizationWebhook**](docs/OrganizationWebhookAPI.md#deleteorganizationwebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
+*OrganizationWebhookAPI* | [**EditOrganizationWebhook**](docs/OrganizationWebhookAPI.md#editorganizationwebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
+*OrganizationWebhookAPI* | [**GetOrganizationWebhook**](docs/OrganizationWebhookAPI.md#getorganizationwebhook) | **Get** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
+*OrganizationWebhookAPI* | [**ListOrganizationWebHooks**](docs/OrganizationWebhookAPI.md#listorganizationwebhooks) | **Get** /organization/{organizationId}/webhook | List organization webhooks
+*ProjectDeploymentRuleAPI* | [**CreateDeploymentRule**](docs/ProjectDeploymentRuleAPI.md#createdeploymentrule) | **Post** /project/{projectId}/deploymentRule | Create a deployment rule
+*ProjectDeploymentRuleAPI* | [**DeleteProjectDeploymentRule**](docs/ProjectDeploymentRuleAPI.md#deleteprojectdeploymentrule) | **Delete** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
+*ProjectDeploymentRuleAPI* | [**EditProjectDeployemtnRule**](docs/ProjectDeploymentRuleAPI.md#editprojectdeployemtnrule) | **Put** /project/{projectId}/deploymentRule/{deploymentRuleId} | Edit a project deployment rule
+*ProjectDeploymentRuleAPI* | [**GetProjectDeploymentRule**](docs/ProjectDeploymentRuleAPI.md#getprojectdeploymentrule) | **Get** /project/{projectId}/deploymentRule/{deploymentRuleId} | Get a project deployment rule
+*ProjectDeploymentRuleAPI* | [**ListProjectDeploymentRules**](docs/ProjectDeploymentRuleAPI.md#listprojectdeploymentrules) | **Get** /project/{projectId}/deploymentRule | List project deployment rules
+*ProjectDeploymentRuleAPI* | [**UpdateDeploymentRulesPriorityOrder**](docs/ProjectDeploymentRuleAPI.md#updatedeploymentrulespriorityorder) | **Put** /project/{projectId}/deploymentRule/order | Update deployment rules priority order
+*ProjectEnvironmentVariableAPI* | [**CreateProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableAPI.md#createprojectenvironmentvariable) | **Post** /project/{projectId}/environmentVariable | Add an environment variable to the project
+*ProjectEnvironmentVariableAPI* | [**CreateProjectEnvironmentVariableAlias**](docs/ProjectEnvironmentVariableAPI.md#createprojectenvironmentvariablealias) | **Post** /project/{projectId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the project level
+*ProjectEnvironmentVariableAPI* | [**CreateProjectEnvironmentVariableOverride**](docs/ProjectEnvironmentVariableAPI.md#createprojectenvironmentvariableoverride) | **Post** /project/{projectId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the project level
+*ProjectEnvironmentVariableAPI* | [**DeleteProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableAPI.md#deleteprojectenvironmentvariable) | **Delete** /project/{projectId}/environmentVariable/{environmentVariableId} | Delete an environment variable from a project
+*ProjectEnvironmentVariableAPI* | [**EditProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableAPI.md#editprojectenvironmentvariable) | **Put** /project/{projectId}/environmentVariable/{environmentVariableId} | Edit an environment variable belonging to the project
+*ProjectEnvironmentVariableAPI* | [**ListProjectEnvironmentVariable**](docs/ProjectEnvironmentVariableAPI.md#listprojectenvironmentvariable) | **Get** /project/{projectId}/environmentVariable | List project environment variables
+*ProjectMainCallsAPI* | [**DeleteProject**](docs/ProjectMainCallsAPI.md#deleteproject) | **Delete** /project/{projectId} | Delete a project
+*ProjectMainCallsAPI* | [**EditProject**](docs/ProjectMainCallsAPI.md#editproject) | **Put** /project/{projectId} | Edit a project
+*ProjectMainCallsAPI* | [**GetProject**](docs/ProjectMainCallsAPI.md#getproject) | **Get** /project/{projectId} | Get project by ID
+*ProjectSecretAPI* | [**CreateProjectSecret**](docs/ProjectSecretAPI.md#createprojectsecret) | **Post** /project/{projectId}/secret | Add a secret to the project
+*ProjectSecretAPI* | [**CreateProjectSecretAlias**](docs/ProjectSecretAPI.md#createprojectsecretalias) | **Post** /project/{projectId}/secret/{secretId}/alias | Create a secret alias at the project level
+*ProjectSecretAPI* | [**CreateProjectSecretOverride**](docs/ProjectSecretAPI.md#createprojectsecretoverride) | **Post** /project/{projectId}/secret/{secretId}/override | Create a secret override at the project level
+*ProjectSecretAPI* | [**DeleteProjectSecret**](docs/ProjectSecretAPI.md#deleteprojectsecret) | **Delete** /project/{projectId}/secret/{secretId} | Delete a secret from a project
+*ProjectSecretAPI* | [**EditProjectSecret**](docs/ProjectSecretAPI.md#editprojectsecret) | **Put** /project/{projectId}/secret/{secretId} | Edit a secret belonging to the project
+*ProjectSecretAPI* | [**ListProjectSecrets**](docs/ProjectSecretAPI.md#listprojectsecrets) | **Get** /project/{projectId}/secret | List project secrets
+*ProjectsAPI* | [**CreateProject**](docs/ProjectsAPI.md#createproject) | **Post** /organization/{organizationId}/project | Create a project
+*ProjectsAPI* | [**GetOrganizationProjectStats**](docs/ProjectsAPI.md#getorganizationprojectstats) | **Get** /organization/{organizationId}/project/stats | List total number of services and environments for each project of the organization
+*ProjectsAPI* | [**ListProject**](docs/ProjectsAPI.md#listproject) | **Get** /organization/{organizationId}/project | List projects
+*ReferralRewardsAPI* | [**GetAccountReferral**](docs/ReferralRewardsAPI.md#getaccountreferral) | **Get** /account/referral | Get your referral information
+*ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
+*UserSignUpAPI* | [**CreateUserSignUp**](docs/UserSignUpAPI.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
+*UserSignUpAPI* | [**GetUserSignUp**](docs/UserSignUpAPI.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information
+*VariableMainCallsAPI* | [**CreateVariable**](docs/VariableMainCallsAPI.md#createvariable) | **Post** /variable | Create a variable
+*VariableMainCallsAPI* | [**CreateVariableAlias**](docs/VariableMainCallsAPI.md#createvariablealias) | **Post** /variable/{variableId}/alias | Create a variable alias
+*VariableMainCallsAPI* | [**CreateVariableOverride**](docs/VariableMainCallsAPI.md#createvariableoverride) | **Post** /variable/{variableId}/override | Create a variable override
+*VariableMainCallsAPI* | [**DeleteVariable**](docs/VariableMainCallsAPI.md#deletevariable) | **Delete** /variable/{variableId} | Delete a variable
+*VariableMainCallsAPI* | [**EditVariable**](docs/VariableMainCallsAPI.md#editvariable) | **Put** /variable/{variableId} | Edit a variable
+*VariableMainCallsAPI* | [**ListVariables**](docs/VariableMainCallsAPI.md#listvariables) | **Get** /variable | List variables
 
 
 ## Documentation For Models
@@ -459,25 +458,21 @@ Class | Method | HTTP request | Description
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
  - [Application](docs/Application.md)
  - [ApplicationAdvancedSettings](docs/ApplicationAdvancedSettings.md)
- - [ApplicationAllOf](docs/ApplicationAllOf.md)
  - [ApplicationCurrentScale](docs/ApplicationCurrentScale.md)
  - [ApplicationDeploymentRestriction](docs/ApplicationDeploymentRestriction.md)
  - [ApplicationDeploymentRestrictionRequest](docs/ApplicationDeploymentRestrictionRequest.md)
  - [ApplicationDeploymentRestrictionResponseList](docs/ApplicationDeploymentRestrictionResponseList.md)
  - [ApplicationEditRequest](docs/ApplicationEditRequest.md)
- - [ApplicationEditRequestAllOf](docs/ApplicationEditRequestAllOf.md)
  - [ApplicationGitRepository](docs/ApplicationGitRepository.md)
  - [ApplicationGitRepositoryRequest](docs/ApplicationGitRepositoryRequest.md)
  - [ApplicationNetwork](docs/ApplicationNetwork.md)
  - [ApplicationNetworkRequest](docs/ApplicationNetworkRequest.md)
  - [ApplicationRequest](docs/ApplicationRequest.md)
- - [ApplicationRequestAllOf](docs/ApplicationRequestAllOf.md)
  - [ApplicationResponseList](docs/ApplicationResponseList.md)
  - [AvailableContainerRegistryResponse](docs/AvailableContainerRegistryResponse.md)
  - [AvailableContainerRegistryResponseList](docs/AvailableContainerRegistryResponseList.md)
  - [AwsCredentialsRequest](docs/AwsCredentialsRequest.md)
  - [Backup](docs/Backup.md)
- - [BackupAllOf](docs/BackupAllOf.md)
  - [BackupPaginatedResponseList](docs/BackupPaginatedResponseList.md)
  - [BackupRequest](docs/BackupRequest.md)
  - [BackupResponseList](docs/BackupResponseList.md)
@@ -502,7 +497,6 @@ Class | Method | HTTP request | Description
  - [CloudProviderResponseList](docs/CloudProviderResponseList.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterAdvancedSettings](docs/ClusterAdvancedSettings.md)
- - [ClusterAllOf](docs/ClusterAllOf.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)
  - [ClusterCloudProviderInfoCredentials](docs/ClusterCloudProviderInfoCredentials.md)
  - [ClusterCloudProviderInfoRequest](docs/ClusterCloudProviderInfoRequest.md)
@@ -540,7 +534,6 @@ Class | Method | HTTP request | Description
  - [ClusterStatusResponseList](docs/ClusterStatusResponseList.md)
  - [Commit](docs/Commit.md)
  - [CommitPaginatedResponseList](docs/CommitPaginatedResponseList.md)
- - [CommitPaginatedResponseListAllOf](docs/CommitPaginatedResponseListAllOf.md)
  - [CommitResponseList](docs/CommitResponseList.md)
  - [CommunityUsage](docs/CommunityUsage.md)
  - [CompanySizeEnum](docs/CompanySizeEnum.md)
@@ -554,13 +547,12 @@ Class | Method | HTTP request | Description
  - [ContainerRegistryRequest](docs/ContainerRegistryRequest.md)
  - [ContainerRegistryRequestConfig](docs/ContainerRegistryRequestConfig.md)
  - [ContainerRegistryResponse](docs/ContainerRegistryResponse.md)
- - [ContainerRegistryResponseAllOf](docs/ContainerRegistryResponseAllOf.md)
+ - [ContainerRegistryResponseAllOfCluster](docs/ContainerRegistryResponseAllOfCluster.md)
  - [ContainerRegistryResponseList](docs/ContainerRegistryResponseList.md)
  - [ContainerRequest](docs/ContainerRequest.md)
- - [ContainerRequestAllOf](docs/ContainerRequestAllOf.md)
  - [ContainerResponse](docs/ContainerResponse.md)
- - [ContainerResponseAllOf](docs/ContainerResponseAllOf.md)
  - [ContainerResponseList](docs/ContainerResponseList.md)
+ - [ContainerSource](docs/ContainerSource.md)
  - [Cost](docs/Cost.md)
  - [CostRange](docs/CostRange.md)
  - [CreateEnvironmentModeEnum](docs/CreateEnvironmentModeEnum.md)
@@ -572,13 +564,11 @@ Class | Method | HTTP request | Description
  - [CreditCardResponseList](docs/CreditCardResponseList.md)
  - [CurrentCost](docs/CurrentCost.md)
  - [CustomDomain](docs/CustomDomain.md)
- - [CustomDomainAllOf](docs/CustomDomainAllOf.md)
  - [CustomDomainRequest](docs/CustomDomainRequest.md)
  - [CustomDomainResponseList](docs/CustomDomainResponseList.md)
  - [CustomDomainStatusEnum](docs/CustomDomainStatusEnum.md)
  - [Database](docs/Database.md)
  - [DatabaseAccessibilityEnum](docs/DatabaseAccessibilityEnum.md)
- - [DatabaseAllOf](docs/DatabaseAllOf.md)
  - [DatabaseConfiguration](docs/DatabaseConfiguration.md)
  - [DatabaseConfigurationResponseList](docs/DatabaseConfigurationResponseList.md)
  - [DatabaseCurrentMetric](docs/DatabaseCurrentMetric.md)
@@ -598,22 +588,14 @@ Class | Method | HTTP request | Description
  - [DeployAllRequestJobsInner](docs/DeployAllRequestJobsInner.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeploymentHistory](docs/DeploymentHistory.md)
- - [DeploymentHistoryAllOf](docs/DeploymentHistoryAllOf.md)
  - [DeploymentHistoryApplication](docs/DeploymentHistoryApplication.md)
- - [DeploymentHistoryApplicationAllOf](docs/DeploymentHistoryApplicationAllOf.md)
  - [DeploymentHistoryContainer](docs/DeploymentHistoryContainer.md)
- - [DeploymentHistoryContainerAllOf](docs/DeploymentHistoryContainerAllOf.md)
  - [DeploymentHistoryDatabase](docs/DeploymentHistoryDatabase.md)
- - [DeploymentHistoryDatabaseAllOf](docs/DeploymentHistoryDatabaseAllOf.md)
  - [DeploymentHistoryEnvironment](docs/DeploymentHistoryEnvironment.md)
- - [DeploymentHistoryEnvironmentAllOf](docs/DeploymentHistoryEnvironmentAllOf.md)
  - [DeploymentHistoryEnvironmentPaginatedResponseList](docs/DeploymentHistoryEnvironmentPaginatedResponseList.md)
- - [DeploymentHistoryEnvironmentPaginatedResponseListAllOf](docs/DeploymentHistoryEnvironmentPaginatedResponseListAllOf.md)
  - [DeploymentHistoryJobResponse](docs/DeploymentHistoryJobResponse.md)
- - [DeploymentHistoryJobResponseAllOf](docs/DeploymentHistoryJobResponseAllOf.md)
  - [DeploymentHistoryJobResponseAllOfSchedule](docs/DeploymentHistoryJobResponseAllOfSchedule.md)
  - [DeploymentHistoryPaginatedResponseList](docs/DeploymentHistoryPaginatedResponseList.md)
- - [DeploymentHistoryPaginatedResponseListAllOf](docs/DeploymentHistoryPaginatedResponseListAllOf.md)
  - [DeploymentHistoryResponseList](docs/DeploymentHistoryResponseList.md)
  - [DeploymentHistoryStatusEnum](docs/DeploymentHistoryStatusEnum.md)
  - [DeploymentRestrictionModeEnum](docs/DeploymentRestrictionModeEnum.md)
@@ -621,15 +603,12 @@ Class | Method | HTTP request | Description
  - [DeploymentRuleRequest](docs/DeploymentRuleRequest.md)
  - [DeploymentStageRequest](docs/DeploymentStageRequest.md)
  - [DeploymentStageResponse](docs/DeploymentStageResponse.md)
- - [DeploymentStageResponseAllOf](docs/DeploymentStageResponseAllOf.md)
  - [DeploymentStageResponseList](docs/DeploymentStageResponseList.md)
  - [DeploymentStageServiceResponse](docs/DeploymentStageServiceResponse.md)
- - [DeploymentStageServiceResponseAllOf](docs/DeploymentStageServiceResponseAllOf.md)
  - [DeploymentStageWithServiceStatusesList](docs/DeploymentStageWithServiceStatusesList.md)
  - [DeploymentStageWithServicesStatuses](docs/DeploymentStageWithServicesStatuses.md)
  - [DoCredentialsRequest](docs/DoCredentialsRequest.md)
  - [Environment](docs/Environment.md)
- - [EnvironmentAllOf](docs/EnvironmentAllOf.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)
  - [EnvironmentApplicationsCurrentScale](docs/EnvironmentApplicationsCurrentScale.md)
  - [EnvironmentApplicationsCurrentScaleResponseList](docs/EnvironmentApplicationsCurrentScaleResponseList.md)
@@ -649,12 +628,10 @@ Class | Method | HTTP request | Description
  - [EnvironmentDatabasesCurrentMetricResponseList](docs/EnvironmentDatabasesCurrentMetricResponseList.md)
  - [EnvironmentDatabasesCurrentMetricStorage](docs/EnvironmentDatabasesCurrentMetricStorage.md)
  - [EnvironmentDeploymentRule](docs/EnvironmentDeploymentRule.md)
- - [EnvironmentDeploymentRuleAllOf](docs/EnvironmentDeploymentRuleAllOf.md)
  - [EnvironmentDeploymentRuleEditRequest](docs/EnvironmentDeploymentRuleEditRequest.md)
  - [EnvironmentEditRequest](docs/EnvironmentEditRequest.md)
  - [EnvironmentLog](docs/EnvironmentLog.md)
  - [EnvironmentLogPaginatedResponseList](docs/EnvironmentLogPaginatedResponseList.md)
- - [EnvironmentLogPaginatedResponseListAllOf](docs/EnvironmentLogPaginatedResponseListAllOf.md)
  - [EnvironmentLogResponseList](docs/EnvironmentLogResponseList.md)
  - [EnvironmentLogScope](docs/EnvironmentLogScope.md)
  - [EnvironmentLogTypeEnum](docs/EnvironmentLogTypeEnum.md)
@@ -677,15 +654,12 @@ Class | Method | HTTP request | Description
  - [EnvironmentTotalNumber](docs/EnvironmentTotalNumber.md)
  - [EnvironmentVariable](docs/EnvironmentVariable.md)
  - [EnvironmentVariableAlias](docs/EnvironmentVariableAlias.md)
- - [EnvironmentVariableAllOf](docs/EnvironmentVariableAllOf.md)
  - [EnvironmentVariableEditRequest](docs/EnvironmentVariableEditRequest.md)
  - [EnvironmentVariableOverride](docs/EnvironmentVariableOverride.md)
  - [EnvironmentVariableRequest](docs/EnvironmentVariableRequest.md)
  - [EnvironmentVariableResponseList](docs/EnvironmentVariableResponseList.md)
  - [Event](docs/Event.md)
- - [EventAllOf](docs/EventAllOf.md)
  - [EventPaginatedResponseList](docs/EventPaginatedResponseList.md)
- - [EventPaginatedResponseListAllOf](docs/EventPaginatedResponseListAllOf.md)
  - [EventResponseList](docs/EventResponseList.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
@@ -700,13 +674,11 @@ Class | Method | HTTP request | Description
  - [InstanceMemory](docs/InstanceMemory.md)
  - [InstanceResponseList](docs/InstanceResponseList.md)
  - [InviteMember](docs/InviteMember.md)
- - [InviteMemberAllOf](docs/InviteMemberAllOf.md)
  - [InviteMemberRequest](docs/InviteMemberRequest.md)
  - [InviteMemberResponseList](docs/InviteMemberResponseList.md)
  - [InviteMemberRoleEnum](docs/InviteMemberRoleEnum.md)
  - [InviteStatusEnum](docs/InviteStatusEnum.md)
  - [Invoice](docs/Invoice.md)
- - [InvoiceAllOf](docs/InvoiceAllOf.md)
  - [InvoiceResponseList](docs/InvoiceResponseList.md)
  - [InvoiceStatusEnum](docs/InvoiceStatusEnum.md)
  - [JobAdvancedSettings](docs/JobAdvancedSettings.md)
@@ -716,7 +688,6 @@ Class | Method | HTTP request | Description
  - [JobDeploymentRestrictionResponseList](docs/JobDeploymentRestrictionResponseList.md)
  - [JobForceEvent](docs/JobForceEvent.md)
  - [JobRequest](docs/JobRequest.md)
- - [JobRequestAllOf](docs/JobRequestAllOf.md)
  - [JobRequestAllOfSchedule](docs/JobRequestAllOfSchedule.md)
  - [JobRequestAllOfScheduleCronjob](docs/JobRequestAllOfScheduleCronjob.md)
  - [JobRequestAllOfScheduleOnStart](docs/JobRequestAllOfScheduleOnStart.md)
@@ -724,12 +695,12 @@ Class | Method | HTTP request | Description
  - [JobRequestAllOfSourceDocker](docs/JobRequestAllOfSourceDocker.md)
  - [JobRequestAllOfSourceImage](docs/JobRequestAllOfSourceImage.md)
  - [JobResponse](docs/JobResponse.md)
- - [JobResponseAllOf](docs/JobResponseAllOf.md)
  - [JobResponseAllOfSchedule](docs/JobResponseAllOfSchedule.md)
  - [JobResponseAllOfScheduleCronjob](docs/JobResponseAllOfScheduleCronjob.md)
  - [JobResponseAllOfSource](docs/JobResponseAllOfSource.md)
- - [JobResponseAllOfSourceDocker](docs/JobResponseAllOfSourceDocker.md)
- - [JobResponseAllOfSourceImage](docs/JobResponseAllOfSourceImage.md)
+ - [JobResponseAllOfSourceOneOf](docs/JobResponseAllOfSourceOneOf.md)
+ - [JobResponseAllOfSourceOneOf1](docs/JobResponseAllOfSourceOneOf1.md)
+ - [JobResponseAllOfSourceOneOf1Docker](docs/JobResponseAllOfSourceOneOf1Docker.md)
  - [JobResponseList](docs/JobResponseList.md)
  - [JobScheduleEvent](docs/JobScheduleEvent.md)
  - [Key](docs/Key.md)
@@ -738,21 +709,16 @@ Class | Method | HTTP request | Description
  - [LinkResponseList](docs/LinkResponseList.md)
  - [LinkedServiceTypeEnum](docs/LinkedServiceTypeEnum.md)
  - [ListContainerDeploymentHistory200Response](docs/ListContainerDeploymentHistory200Response.md)
- - [ListContainerDeploymentHistory200ResponseAllOf](docs/ListContainerDeploymentHistory200ResponseAllOf.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
- - [ListDatabaseDeploymentHistory200ResponseAllOf](docs/ListDatabaseDeploymentHistory200ResponseAllOf.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
- - [ListJobDeploymentHistory200ResponseAllOf](docs/ListJobDeploymentHistory200ResponseAllOf.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
- - [LogPaginatedResponseListAllOf](docs/LogPaginatedResponseListAllOf.md)
  - [LogResponseList](docs/LogResponseList.md)
  - [ManagedDatabaseInstanceTypeResponse](docs/ManagedDatabaseInstanceTypeResponse.md)
  - [ManagedDatabaseInstanceTypeResponseList](docs/ManagedDatabaseInstanceTypeResponseList.md)
  - [ManagedDatabaseTypeResponse](docs/ManagedDatabaseTypeResponse.md)
  - [ManagedDatabaseTypeResponseList](docs/ManagedDatabaseTypeResponseList.md)
  - [Member](docs/Member.md)
- - [MemberAllOf](docs/MemberAllOf.md)
  - [MemberResponseList](docs/MemberResponseList.md)
  - [MemberRoleUpdateRequest](docs/MemberRoleUpdateRequest.md)
  - [MetricCPU](docs/MetricCPU.md)
@@ -772,11 +738,8 @@ Class | Method | HTTP request | Description
  - [MetricStorageResponseList](docs/MetricStorageResponseList.md)
  - [Name](docs/Name.md)
  - [Organization](docs/Organization.md)
- - [OrganizationAllOf](docs/OrganizationAllOf.md)
  - [OrganizationApiToken](docs/OrganizationApiToken.md)
- - [OrganizationApiTokenAllOf](docs/OrganizationApiTokenAllOf.md)
  - [OrganizationApiTokenCreate](docs/OrganizationApiTokenCreate.md)
- - [OrganizationApiTokenCreateAllOf](docs/OrganizationApiTokenCreateAllOf.md)
  - [OrganizationApiTokenCreateRequest](docs/OrganizationApiTokenCreateRequest.md)
  - [OrganizationApiTokenResponseList](docs/OrganizationApiTokenResponseList.md)
  - [OrganizationApiTokenScope](docs/OrganizationApiTokenScope.md)
@@ -787,7 +750,6 @@ Class | Method | HTTP request | Description
  - [OrganizationContainerPreviewRequest](docs/OrganizationContainerPreviewRequest.md)
  - [OrganizationCreditCodeRequest](docs/OrganizationCreditCodeRequest.md)
  - [OrganizationCurrentCost](docs/OrganizationCurrentCost.md)
- - [OrganizationCurrentCostAllOf](docs/OrganizationCurrentCostAllOf.md)
  - [OrganizationCustomRole](docs/OrganizationCustomRole.md)
  - [OrganizationCustomRoleClusterPermission](docs/OrganizationCustomRoleClusterPermission.md)
  - [OrganizationCustomRoleClusterPermissionsInner](docs/OrganizationCustomRoleClusterPermissionsInner.md)
@@ -814,7 +776,6 @@ Class | Method | HTTP request | Description
  - [OrganizationResponseList](docs/OrganizationResponseList.md)
  - [OrganizationWebhookCreateRequest](docs/OrganizationWebhookCreateRequest.md)
  - [OrganizationWebhookCreateResponse](docs/OrganizationWebhookCreateResponse.md)
- - [OrganizationWebhookCreateResponseAllOf](docs/OrganizationWebhookCreateResponseAllOf.md)
  - [OrganizationWebhookEventEnum](docs/OrganizationWebhookEventEnum.md)
  - [OrganizationWebhookKindEnum](docs/OrganizationWebhookKindEnum.md)
  - [OrganizationWebhookResponse](docs/OrganizationWebhookResponse.md)
@@ -830,12 +791,9 @@ Class | Method | HTTP request | Description
  - [ProbeTypeHttp](docs/ProbeTypeHttp.md)
  - [ProbeTypeTcp](docs/ProbeTypeTcp.md)
  - [Project](docs/Project.md)
- - [ProjectAllOf](docs/ProjectAllOf.md)
  - [ProjectCurrentCost](docs/ProjectCurrentCost.md)
- - [ProjectCurrentCostAllOf](docs/ProjectCurrentCostAllOf.md)
  - [ProjectCurrentCostResponseList](docs/ProjectCurrentCostResponseList.md)
  - [ProjectDeploymentRule](docs/ProjectDeploymentRule.md)
- - [ProjectDeploymentRuleAllOf](docs/ProjectDeploymentRuleAllOf.md)
  - [ProjectDeploymentRuleRequest](docs/ProjectDeploymentRuleRequest.md)
  - [ProjectDeploymentRuleResponseList](docs/ProjectDeploymentRuleResponseList.md)
  - [ProjectDeploymentRulesPriorityOrderRequest](docs/ProjectDeploymentRulesPriorityOrderRequest.md)
@@ -854,13 +812,11 @@ Class | Method | HTTP request | Description
  - [ScalewayCredentialsRequest](docs/ScalewayCredentialsRequest.md)
  - [Secret](docs/Secret.md)
  - [SecretAlias](docs/SecretAlias.md)
- - [SecretAllOf](docs/SecretAllOf.md)
  - [SecretEditRequest](docs/SecretEditRequest.md)
  - [SecretOverride](docs/SecretOverride.md)
  - [SecretRequest](docs/SecretRequest.md)
  - [SecretResponseList](docs/SecretResponseList.md)
  - [Service](docs/Service.md)
- - [ServiceAllOf](docs/ServiceAllOf.md)
  - [ServiceDeploymentStatusEnum](docs/ServiceDeploymentStatusEnum.md)
  - [ServicePort](docs/ServicePort.md)
  - [ServicePortRequest](docs/ServicePortRequest.md)
@@ -906,7 +862,6 @@ Class | Method | HTTP request | Description
  - [VariableOverrideRequest](docs/VariableOverrideRequest.md)
  - [VariableRequest](docs/VariableRequest.md)
  - [VariableResponse](docs/VariableResponse.md)
- - [VariableResponseAllOf](docs/VariableResponseAllOf.md)
  - [VariableResponseList](docs/VariableResponseList.md)
  - [Version](docs/Version.md)
  - [VersionResponseList](docs/VersionResponseList.md)
@@ -916,6 +871,17 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
+Authentication schemes defined for the API:
+### bearerAuth
+
+- **Type**: HTTP Bearer token authentication
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+r, err := client.Service.Operation(auth, args)
+```
 
 ### ApiKeyAuth
 
@@ -925,15 +891,16 @@ Class | Method | HTTP request | Description
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
 
-
-### bearerAuth
-
-- **Type**: HTTP Bearer token authentication
-
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
 r, err := client.Service.Operation(auth, args)
 ```
 

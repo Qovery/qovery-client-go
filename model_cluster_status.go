@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterStatus{}
+
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
 	ClusterId  *string           `json:"cluster_id,omitempty"`
@@ -41,7 +44,7 @@ func NewClusterStatusWithDefaults() *ClusterStatus {
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *ClusterStatus) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ClusterStatus) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatus) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -59,7 +62,7 @@ func (o *ClusterStatus) GetClusterIdOk() (*string, bool) {
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *ClusterStatus) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ClusterStatus) SetClusterId(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ClusterStatus) GetStatus() ClusterStateEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret ClusterStateEnum
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ClusterStatus) GetStatus() ClusterStateEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatus) GetStatusOk() (*ClusterStateEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -91,7 +94,7 @@ func (o *ClusterStatus) GetStatusOk() (*ClusterStateEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ClusterStatus) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ClusterStatus) SetStatus(v ClusterStateEnum) {
 
 // GetIsDeployed returns the IsDeployed field value if set, zero value otherwise.
 func (o *ClusterStatus) GetIsDeployed() bool {
-	if o == nil || o.IsDeployed == nil {
+	if o == nil || IsNil(o.IsDeployed) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ClusterStatus) GetIsDeployed() bool {
 // GetIsDeployedOk returns a tuple with the IsDeployed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterStatus) GetIsDeployedOk() (*bool, bool) {
-	if o == nil || o.IsDeployed == nil {
+	if o == nil || IsNil(o.IsDeployed) {
 		return nil, false
 	}
 	return o.IsDeployed, true
@@ -123,7 +126,7 @@ func (o *ClusterStatus) GetIsDeployedOk() (*bool, bool) {
 
 // HasIsDeployed returns a boolean if a field has been set.
 func (o *ClusterStatus) HasIsDeployed() bool {
-	if o != nil && o.IsDeployed != nil {
+	if o != nil && !IsNil(o.IsDeployed) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *ClusterStatus) SetIsDeployed(v bool) {
 }
 
 func (o ClusterStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.IsDeployed != nil {
-		toSerialize["is_deployed"] = o.IsDeployed
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.IsDeployed) {
+		toSerialize["is_deployed"] = o.IsDeployed
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterStatus struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentDatabasesCurrentMetric type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentDatabasesCurrentMetric{}
+
 // EnvironmentDatabasesCurrentMetric struct for EnvironmentDatabasesCurrentMetric
 type EnvironmentDatabasesCurrentMetric struct {
 	Database *string                                   `json:"database,omitempty"`
@@ -42,7 +45,7 @@ func NewEnvironmentDatabasesCurrentMetricWithDefaults() *EnvironmentDatabasesCur
 
 // GetDatabase returns the Database field value if set, zero value otherwise.
 func (o *EnvironmentDatabasesCurrentMetric) GetDatabase() string {
-	if o == nil || o.Database == nil {
+	if o == nil || IsNil(o.Database) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetDatabase() string {
 // GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDatabasesCurrentMetric) GetDatabaseOk() (*string, bool) {
-	if o == nil || o.Database == nil {
+	if o == nil || IsNil(o.Database) {
 		return nil, false
 	}
 	return o.Database, true
@@ -60,7 +63,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetDatabaseOk() (*string, bool) {
 
 // HasDatabase returns a boolean if a field has been set.
 func (o *EnvironmentDatabasesCurrentMetric) HasDatabase() bool {
-	if o != nil && o.Database != nil {
+	if o != nil && !IsNil(o.Database) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *EnvironmentDatabasesCurrentMetric) SetDatabase(v string) {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *EnvironmentDatabasesCurrentMetric) GetCpu() EnvironmentDatabasesCurrentMetricCpu {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret EnvironmentDatabasesCurrentMetricCpu
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetCpu() EnvironmentDatabasesCurrent
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDatabasesCurrentMetric) GetCpuOk() (*EnvironmentDatabasesCurrentMetricCpu, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -92,7 +95,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetCpuOk() (*EnvironmentDatabasesCur
 
 // HasCpu returns a boolean if a field has been set.
 func (o *EnvironmentDatabasesCurrentMetric) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *EnvironmentDatabasesCurrentMetric) SetCpu(v EnvironmentDatabasesCurrent
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *EnvironmentDatabasesCurrentMetric) GetMemory() EnvironmentDatabasesCurrentMetricMemory {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret EnvironmentDatabasesCurrentMetricMemory
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetMemory() EnvironmentDatabasesCurr
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDatabasesCurrentMetric) GetMemoryOk() (*EnvironmentDatabasesCurrentMetricMemory, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -124,7 +127,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetMemoryOk() (*EnvironmentDatabases
 
 // HasMemory returns a boolean if a field has been set.
 func (o *EnvironmentDatabasesCurrentMetric) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *EnvironmentDatabasesCurrentMetric) SetMemory(v EnvironmentDatabasesCurr
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *EnvironmentDatabasesCurrentMetric) GetStorage() EnvironmentDatabasesCurrentMetricStorage {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret EnvironmentDatabasesCurrentMetricStorage
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetStorage() EnvironmentDatabasesCur
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDatabasesCurrentMetric) GetStorageOk() (*EnvironmentDatabasesCurrentMetricStorage, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -156,7 +159,7 @@ func (o *EnvironmentDatabasesCurrentMetric) GetStorageOk() (*EnvironmentDatabase
 
 // HasStorage returns a boolean if a field has been set.
 func (o *EnvironmentDatabasesCurrentMetric) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *EnvironmentDatabasesCurrentMetric) SetStorage(v EnvironmentDatabasesCur
 }
 
 func (o EnvironmentDatabasesCurrentMetric) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Database != nil {
-		toSerialize["database"] = o.Database
-	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentDatabasesCurrentMetric) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Database) {
+		toSerialize["database"] = o.Database
+	}
+	if !IsNil(o.Cpu) {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if !IsNil(o.Memory) {
+		toSerialize["memory"] = o.Memory
+	}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentDatabasesCurrentMetric struct {

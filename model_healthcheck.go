@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Healthcheck type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Healthcheck{}
+
 // Healthcheck struct for Healthcheck
 type Healthcheck struct {
 	ReadinessProbe NullableProbe `json:"readiness_probe,omitempty"`
@@ -40,7 +43,7 @@ func NewHealthcheckWithDefaults() *Healthcheck {
 
 // GetReadinessProbe returns the ReadinessProbe field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Healthcheck) GetReadinessProbe() Probe {
-	if o == nil || o.ReadinessProbe.Get() == nil {
+	if o == nil || IsNil(o.ReadinessProbe.Get()) {
 		var ret Probe
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *Healthcheck) UnsetReadinessProbe() {
 
 // GetLivenessProbe returns the LivenessProbe field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Healthcheck) GetLivenessProbe() Probe {
-	if o == nil || o.LivenessProbe.Get() == nil {
+	if o == nil || IsNil(o.LivenessProbe.Get()) {
 		var ret Probe
 		return ret
 	}
@@ -125,6 +128,14 @@ func (o *Healthcheck) UnsetLivenessProbe() {
 }
 
 func (o Healthcheck) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Healthcheck) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ReadinessProbe.IsSet() {
 		toSerialize["readiness_probe"] = o.ReadinessProbe.Get()
@@ -132,7 +143,7 @@ func (o Healthcheck) MarshalJSON() ([]byte, error) {
 	if o.LivenessProbe.IsSet() {
 		toSerialize["liveness_probe"] = o.LivenessProbe.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableHealthcheck struct {

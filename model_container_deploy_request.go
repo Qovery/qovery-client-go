@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ContainerDeployRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContainerDeployRequest{}
+
 // ContainerDeployRequest struct for ContainerDeployRequest
 type ContainerDeployRequest struct {
 	// Image tag to deploy
@@ -64,11 +67,17 @@ func (o *ContainerDeployRequest) SetImageTag(v string) {
 }
 
 func (o ContainerDeployRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["image_tag"] = o.ImageTag
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ContainerDeployRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["image_tag"] = o.ImageTag
+	return toSerialize, nil
 }
 
 type NullableContainerDeployRequest struct {

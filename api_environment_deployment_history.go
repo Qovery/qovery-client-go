@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// EnvironmentDeploymentHistoryApiService EnvironmentDeploymentHistoryApi service
-type EnvironmentDeploymentHistoryApiService service
+// EnvironmentDeploymentHistoryAPIService EnvironmentDeploymentHistoryAPI service
+type EnvironmentDeploymentHistoryAPIService service
 
 type ApiListEnvironmentDeploymentHistoryRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentDeploymentHistoryApiService
+	ApiService    *EnvironmentDeploymentHistoryAPIService
 	environmentId string
 	startId       *string
 }
@@ -49,7 +49,7 @@ List previous and current environment deployments with the status deployment and
  @param environmentId Environment ID
  @return ApiListEnvironmentDeploymentHistoryRequest
 */
-func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistory(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentHistoryRequest {
+func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistory(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentHistoryRequest {
 	return ApiListEnvironmentDeploymentHistoryRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -59,7 +59,7 @@ func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistor
 
 // Execute executes the request
 //  @return DeploymentHistoryEnvironmentPaginatedResponseList
-func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistoryExecute(r ApiListEnvironmentDeploymentHistoryRequest) (*DeploymentHistoryEnvironmentPaginatedResponseList, *http.Response, error) {
+func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistoryExecute(r ApiListEnvironmentDeploymentHistoryRequest) (*DeploymentHistoryEnvironmentPaginatedResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -67,20 +67,20 @@ func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistor
 		localVarReturnValue *DeploymentHistoryEnvironmentPaginatedResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentHistoryApiService.ListEnvironmentDeploymentHistory")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentHistoryAPIService.ListEnvironmentDeploymentHistory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/deploymentHistory"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.startId != nil {
-		localVarQueryParams.Add("startId", parameterToString(*r.startId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startId", r.startId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -123,9 +123,9 @@ func (a *EnvironmentDeploymentHistoryApiService) ListEnvironmentDeploymentHistor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

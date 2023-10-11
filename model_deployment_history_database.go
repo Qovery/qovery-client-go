@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentHistoryDatabase type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryDatabase{}
+
 // DeploymentHistoryDatabase struct for DeploymentHistoryDatabase
 type DeploymentHistoryDatabase struct {
 	Id        string     `json:"id"`
@@ -95,7 +98,7 @@ func (o *DeploymentHistoryDatabase) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeploymentHistoryDatabase) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -105,7 +108,7 @@ func (o *DeploymentHistoryDatabase) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryDatabase) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -113,7 +116,7 @@ func (o *DeploymentHistoryDatabase) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DeploymentHistoryDatabase) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -127,7 +130,7 @@ func (o *DeploymentHistoryDatabase) SetUpdatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeploymentHistoryDatabase) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -137,7 +140,7 @@ func (o *DeploymentHistoryDatabase) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryDatabase) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -145,7 +148,7 @@ func (o *DeploymentHistoryDatabase) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeploymentHistoryDatabase) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -159,7 +162,7 @@ func (o *DeploymentHistoryDatabase) SetName(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DeploymentHistoryDatabase) GetStatus() StateEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret StateEnum
 		return ret
 	}
@@ -169,7 +172,7 @@ func (o *DeploymentHistoryDatabase) GetStatus() StateEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryDatabase) GetStatusOk() (*StateEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -177,7 +180,7 @@ func (o *DeploymentHistoryDatabase) GetStatusOk() (*StateEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DeploymentHistoryDatabase) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -190,23 +193,27 @@ func (o *DeploymentHistoryDatabase) SetStatus(v StateEnum) {
 }
 
 func (o DeploymentHistoryDatabase) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistoryDatabase) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistoryDatabase struct {

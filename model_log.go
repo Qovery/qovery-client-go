@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Log type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Log{}
+
 // Log struct for Log
 type Log struct {
 	Id        string    `json:"id"`
@@ -119,7 +122,7 @@ func (o *Log) SetMessage(v string) {
 
 // GetPodName returns the PodName field value if set, zero value otherwise.
 func (o *Log) GetPodName() string {
-	if o == nil || o.PodName == nil {
+	if o == nil || IsNil(o.PodName) {
 		var ret string
 		return ret
 	}
@@ -129,7 +132,7 @@ func (o *Log) GetPodName() string {
 // GetPodNameOk returns a tuple with the PodName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Log) GetPodNameOk() (*string, bool) {
-	if o == nil || o.PodName == nil {
+	if o == nil || IsNil(o.PodName) {
 		return nil, false
 	}
 	return o.PodName, true
@@ -137,7 +140,7 @@ func (o *Log) GetPodNameOk() (*string, bool) {
 
 // HasPodName returns a boolean if a field has been set.
 func (o *Log) HasPodName() bool {
-	if o != nil && o.PodName != nil {
+	if o != nil && !IsNil(o.PodName) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *Log) SetPodName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *Log) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -161,7 +164,7 @@ func (o *Log) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Log) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -169,7 +172,7 @@ func (o *Log) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *Log) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -182,23 +185,25 @@ func (o *Log) SetVersion(v string) {
 }
 
 func (o Log) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["message"] = o.Message
-	}
-	if o.PodName != nil {
-		toSerialize["pod_name"] = o.PodName
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Log) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["message"] = o.Message
+	if !IsNil(o.PodName) {
+		toSerialize["pod_name"] = o.PodName
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableLog struct {

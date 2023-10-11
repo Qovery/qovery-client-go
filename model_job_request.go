@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobRequest{}
+
 // JobRequest struct for JobRequest
 type JobRequest struct {
 	// name is case insensitive
@@ -96,7 +99,7 @@ func (o *JobRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *JobRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *JobRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -114,7 +117,7 @@ func (o *JobRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *JobRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *JobRequest) SetDescription(v string) {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *JobRequest) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret int32
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *JobRequest) GetCpu() int32 {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -146,7 +149,7 @@ func (o *JobRequest) GetCpuOk() (*int32, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *JobRequest) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *JobRequest) SetCpu(v int32) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *JobRequest) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *JobRequest) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -178,7 +181,7 @@ func (o *JobRequest) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *JobRequest) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -192,7 +195,7 @@ func (o *JobRequest) SetMemory(v int32) {
 
 // GetMaxNbRestart returns the MaxNbRestart field value if set, zero value otherwise.
 func (o *JobRequest) GetMaxNbRestart() int32 {
-	if o == nil || o.MaxNbRestart == nil {
+	if o == nil || IsNil(o.MaxNbRestart) {
 		var ret int32
 		return ret
 	}
@@ -202,7 +205,7 @@ func (o *JobRequest) GetMaxNbRestart() int32 {
 // GetMaxNbRestartOk returns a tuple with the MaxNbRestart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetMaxNbRestartOk() (*int32, bool) {
-	if o == nil || o.MaxNbRestart == nil {
+	if o == nil || IsNil(o.MaxNbRestart) {
 		return nil, false
 	}
 	return o.MaxNbRestart, true
@@ -210,7 +213,7 @@ func (o *JobRequest) GetMaxNbRestartOk() (*int32, bool) {
 
 // HasMaxNbRestart returns a boolean if a field has been set.
 func (o *JobRequest) HasMaxNbRestart() bool {
-	if o != nil && o.MaxNbRestart != nil {
+	if o != nil && !IsNil(o.MaxNbRestart) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *JobRequest) SetMaxNbRestart(v int32) {
 
 // GetMaxDurationSeconds returns the MaxDurationSeconds field value if set, zero value otherwise.
 func (o *JobRequest) GetMaxDurationSeconds() int32 {
-	if o == nil || o.MaxDurationSeconds == nil {
+	if o == nil || IsNil(o.MaxDurationSeconds) {
 		var ret int32
 		return ret
 	}
@@ -234,7 +237,7 @@ func (o *JobRequest) GetMaxDurationSeconds() int32 {
 // GetMaxDurationSecondsOk returns a tuple with the MaxDurationSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetMaxDurationSecondsOk() (*int32, bool) {
-	if o == nil || o.MaxDurationSeconds == nil {
+	if o == nil || IsNil(o.MaxDurationSeconds) {
 		return nil, false
 	}
 	return o.MaxDurationSeconds, true
@@ -242,7 +245,7 @@ func (o *JobRequest) GetMaxDurationSecondsOk() (*int32, bool) {
 
 // HasMaxDurationSeconds returns a boolean if a field has been set.
 func (o *JobRequest) HasMaxDurationSeconds() bool {
-	if o != nil && o.MaxDurationSeconds != nil {
+	if o != nil && !IsNil(o.MaxDurationSeconds) {
 		return true
 	}
 
@@ -256,7 +259,7 @@ func (o *JobRequest) SetMaxDurationSeconds(v int32) {
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
 func (o *JobRequest) GetAutoPreview() bool {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		var ret bool
 		return ret
 	}
@@ -266,7 +269,7 @@ func (o *JobRequest) GetAutoPreview() bool {
 // GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		return nil, false
 	}
 	return o.AutoPreview, true
@@ -274,7 +277,7 @@ func (o *JobRequest) GetAutoPreviewOk() (*bool, bool) {
 
 // HasAutoPreview returns a boolean if a field has been set.
 func (o *JobRequest) HasAutoPreview() bool {
-	if o != nil && o.AutoPreview != nil {
+	if o != nil && !IsNil(o.AutoPreview) {
 		return true
 	}
 
@@ -288,7 +291,7 @@ func (o *JobRequest) SetAutoPreview(v bool) {
 
 // GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequest) GetPort() int32 {
-	if o == nil || o.Port.Get() == nil {
+	if o == nil || IsNil(o.Port.Get()) {
 		var ret int32
 		return ret
 	}
@@ -331,7 +334,7 @@ func (o *JobRequest) UnsetPort() {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *JobRequest) GetSource() JobRequestAllOfSource {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		var ret JobRequestAllOfSource
 		return ret
 	}
@@ -341,7 +344,7 @@ func (o *JobRequest) GetSource() JobRequestAllOfSource {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetSourceOk() (*JobRequestAllOfSource, bool) {
-	if o == nil || o.Source == nil {
+	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
 	return o.Source, true
@@ -349,7 +352,7 @@ func (o *JobRequest) GetSourceOk() (*JobRequestAllOfSource, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *JobRequest) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -387,7 +390,7 @@ func (o *JobRequest) SetHealthchecks(v Healthcheck) {
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
 func (o *JobRequest) GetSchedule() JobRequestAllOfSchedule {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		var ret JobRequestAllOfSchedule
 		return ret
 	}
@@ -397,7 +400,7 @@ func (o *JobRequest) GetSchedule() JobRequestAllOfSchedule {
 // GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequest) GetScheduleOk() (*JobRequestAllOfSchedule, bool) {
-	if o == nil || o.Schedule == nil {
+	if o == nil || IsNil(o.Schedule) {
 		return nil, false
 	}
 	return o.Schedule, true
@@ -405,7 +408,7 @@ func (o *JobRequest) GetScheduleOk() (*JobRequestAllOfSchedule, bool) {
 
 // HasSchedule returns a boolean if a field has been set.
 func (o *JobRequest) HasSchedule() bool {
-	if o != nil && o.Schedule != nil {
+	if o != nil && !IsNil(o.Schedule) {
 		return true
 	}
 
@@ -419,7 +422,7 @@ func (o *JobRequest) SetSchedule(v JobRequestAllOfSchedule) {
 
 // GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequest) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy.Get() == nil {
+	if o == nil || IsNil(o.AutoDeploy.Get()) {
 		var ret bool
 		return ret
 	}
@@ -461,44 +464,48 @@ func (o *JobRequest) UnsetAutoDeploy() {
 }
 
 func (o JobRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Description != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o JobRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.Cpu != nil {
+	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
-	if o.Memory != nil {
+	if !IsNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
-	if o.MaxNbRestart != nil {
+	if !IsNil(o.MaxNbRestart) {
 		toSerialize["max_nb_restart"] = o.MaxNbRestart
 	}
-	if o.MaxDurationSeconds != nil {
+	if !IsNil(o.MaxDurationSeconds) {
 		toSerialize["max_duration_seconds"] = o.MaxDurationSeconds
 	}
-	if o.AutoPreview != nil {
+	if !IsNil(o.AutoPreview) {
 		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	if o.Port.IsSet() {
 		toSerialize["port"] = o.Port.Get()
 	}
-	if o.Source != nil {
+	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if true {
-		toSerialize["healthchecks"] = o.Healthchecks
-	}
-	if o.Schedule != nil {
+	toSerialize["healthchecks"] = o.Healthchecks
+	if !IsNil(o.Schedule) {
 		toSerialize["schedule"] = o.Schedule
 	}
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableJobRequest struct {

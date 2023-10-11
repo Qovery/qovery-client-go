@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentLogs type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLogs{}
+
 // EnvironmentLogs struct for EnvironmentLogs
 type EnvironmentLogs struct {
 	Type      string                         `json:"type"`
@@ -119,7 +122,7 @@ func (o *EnvironmentLogs) SetDetails(v EnvironmentLogsDetails) {
 
 // GetError returns the Error field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentLogs) GetError() EnvironmentLogsError {
-	if o == nil || o.Error.Get() == nil {
+	if o == nil || IsNil(o.Error.Get()) {
 		var ret EnvironmentLogsError
 		return ret
 	}
@@ -162,7 +165,7 @@ func (o *EnvironmentLogs) UnsetError() {
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentLogs) GetMessage() EnvironmentLogsMessage {
-	if o == nil || o.Message.Get() == nil {
+	if o == nil || IsNil(o.Message.Get()) {
 		var ret EnvironmentLogsMessage
 		return ret
 	}
@@ -204,23 +207,25 @@ func (o *EnvironmentLogs) UnsetMessage() {
 }
 
 func (o EnvironmentLogs) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLogs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["timestamp"] = o.Timestamp
-	}
-	if true {
-		toSerialize["details"] = o.Details
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["timestamp"] = o.Timestamp
+	toSerialize["details"] = o.Details
 	if o.Error.IsSet() {
 		toSerialize["error"] = o.Error.Get()
 	}
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLogs struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobRequestAllOfSourceImage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobRequestAllOfSourceImage{}
+
 // JobRequestAllOfSourceImage struct for JobRequestAllOfSourceImage
 type JobRequestAllOfSourceImage struct {
 	// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
@@ -44,7 +47,7 @@ func NewJobRequestAllOfSourceImageWithDefaults() *JobRequestAllOfSourceImage {
 
 // GetImageName returns the ImageName field value if set, zero value otherwise.
 func (o *JobRequestAllOfSourceImage) GetImageName() string {
-	if o == nil || o.ImageName == nil {
+	if o == nil || IsNil(o.ImageName) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *JobRequestAllOfSourceImage) GetImageName() string {
 // GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequestAllOfSourceImage) GetImageNameOk() (*string, bool) {
-	if o == nil || o.ImageName == nil {
+	if o == nil || IsNil(o.ImageName) {
 		return nil, false
 	}
 	return o.ImageName, true
@@ -62,7 +65,7 @@ func (o *JobRequestAllOfSourceImage) GetImageNameOk() (*string, bool) {
 
 // HasImageName returns a boolean if a field has been set.
 func (o *JobRequestAllOfSourceImage) HasImageName() bool {
-	if o != nil && o.ImageName != nil {
+	if o != nil && !IsNil(o.ImageName) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *JobRequestAllOfSourceImage) SetImageName(v string) {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *JobRequestAllOfSourceImage) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *JobRequestAllOfSourceImage) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequestAllOfSourceImage) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -94,7 +97,7 @@ func (o *JobRequestAllOfSourceImage) GetTagOk() (*string, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *JobRequestAllOfSourceImage) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !IsNil(o.Tag) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *JobRequestAllOfSourceImage) SetTag(v string) {
 
 // GetRegistryId returns the RegistryId field value if set, zero value otherwise.
 func (o *JobRequestAllOfSourceImage) GetRegistryId() string {
-	if o == nil || o.RegistryId == nil {
+	if o == nil || IsNil(o.RegistryId) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *JobRequestAllOfSourceImage) GetRegistryId() string {
 // GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequestAllOfSourceImage) GetRegistryIdOk() (*string, bool) {
-	if o == nil || o.RegistryId == nil {
+	if o == nil || IsNil(o.RegistryId) {
 		return nil, false
 	}
 	return o.RegistryId, true
@@ -126,7 +129,7 @@ func (o *JobRequestAllOfSourceImage) GetRegistryIdOk() (*string, bool) {
 
 // HasRegistryId returns a boolean if a field has been set.
 func (o *JobRequestAllOfSourceImage) HasRegistryId() bool {
-	if o != nil && o.RegistryId != nil {
+	if o != nil && !IsNil(o.RegistryId) {
 		return true
 	}
 
@@ -139,17 +142,25 @@ func (o *JobRequestAllOfSourceImage) SetRegistryId(v string) {
 }
 
 func (o JobRequestAllOfSourceImage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ImageName != nil {
-		toSerialize["image_name"] = o.ImageName
-	}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.RegistryId != nil {
-		toSerialize["registry_id"] = o.RegistryId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JobRequestAllOfSourceImage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ImageName) {
+		toSerialize["image_name"] = o.ImageName
+	}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	if !IsNil(o.RegistryId) {
+		toSerialize["registry_id"] = o.RegistryId
+	}
+	return toSerialize, nil
 }
 
 type NullableJobRequestAllOfSourceImage struct {

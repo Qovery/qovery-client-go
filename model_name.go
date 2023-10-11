@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Name type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Name{}
+
 // Name struct for Name
 type Name struct {
 	Name string `json:"name"`
@@ -63,11 +66,17 @@ func (o *Name) SetName(v string) {
 }
 
 func (o Name) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Name) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableName struct {

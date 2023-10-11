@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationGithubAppConnectRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationGithubAppConnectRequest{}
+
 // OrganizationGithubAppConnectRequest struct for OrganizationGithubAppConnectRequest
 type OrganizationGithubAppConnectRequest struct {
 	InstallationId string `json:"installation_id"`
@@ -89,14 +92,18 @@ func (o *OrganizationGithubAppConnectRequest) SetCode(v string) {
 }
 
 func (o OrganizationGithubAppConnectRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["installation_id"] = o.InstallationId
-	}
-	if true {
-		toSerialize["code"] = o.Code
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationGithubAppConnectRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["installation_id"] = o.InstallationId
+	toSerialize["code"] = o.Code
+	return toSerialize, nil
 }
 
 type NullableOrganizationGithubAppConnectRequest struct {

@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Event type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Event{}
+
 // Event struct for Event
 type Event struct {
 	Id        string         `json:"id"`
@@ -98,7 +101,7 @@ func (o *Event) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Event) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *Event) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Event) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -116,7 +119,7 @@ func (o *Event) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Event) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -130,7 +133,7 @@ func (o *Event) SetUpdatedAt(v time.Time) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *Event) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *Event) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Event) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
 	return o.User, true
@@ -148,7 +151,7 @@ func (o *Event) GetUserOk() (*User, bool) {
 
 // HasUser returns a boolean if a field has been set.
 func (o *Event) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
@@ -162,7 +165,7 @@ func (o *Event) SetUser(v User) {
 
 // GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Event) GetCommit() Commit {
-	if o == nil || o.Commit.Get() == nil {
+	if o == nil || IsNil(o.Commit.Get()) {
 		var ret Commit
 		return ret
 	}
@@ -205,7 +208,7 @@ func (o *Event) UnsetCommit() {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Event) GetStatus() Status {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret Status
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *Event) GetStatus() Status {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Event) GetStatusOk() (*Status, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -223,7 +226,7 @@ func (o *Event) GetStatusOk() (*Status, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Event) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -237,7 +240,7 @@ func (o *Event) SetStatus(v Status) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Event) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *Event) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Event) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -255,7 +258,7 @@ func (o *Event) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Event) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -269,7 +272,7 @@ func (o *Event) SetType(v string) {
 
 // GetLog returns the Log field value if set, zero value otherwise.
 func (o *Event) GetLog() ReferenceObject {
-	if o == nil || o.Log == nil {
+	if o == nil || IsNil(o.Log) {
 		var ret ReferenceObject
 		return ret
 	}
@@ -279,7 +282,7 @@ func (o *Event) GetLog() ReferenceObject {
 // GetLogOk returns a tuple with the Log field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Event) GetLogOk() (*ReferenceObject, bool) {
-	if o == nil || o.Log == nil {
+	if o == nil || IsNil(o.Log) {
 		return nil, false
 	}
 	return o.Log, true
@@ -287,7 +290,7 @@ func (o *Event) GetLogOk() (*ReferenceObject, bool) {
 
 // HasLog returns a boolean if a field has been set.
 func (o *Event) HasLog() bool {
-	if o != nil && o.Log != nil {
+	if o != nil && !IsNil(o.Log) {
 		return true
 	}
 
@@ -300,32 +303,36 @@ func (o *Event) SetLog(v ReferenceObject) {
 }
 
 func (o Event) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Event) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if o.User != nil {
+	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
 	if o.Commit.IsSet() {
 		toSerialize["commit"] = o.Commit.Get()
 	}
-	if o.Status != nil {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.Type != nil {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Log != nil {
+	if !IsNil(o.Log) {
 		toSerialize["log"] = o.Log
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEvent struct {

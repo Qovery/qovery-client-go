@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationDeploymentRestrictionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationDeploymentRestrictionRequest{}
+
 // ApplicationDeploymentRestrictionRequest struct for ApplicationDeploymentRestrictionRequest
 type ApplicationDeploymentRestrictionRequest struct {
 	Mode DeploymentRestrictionModeEnum `json:"mode"`
@@ -116,17 +119,19 @@ func (o *ApplicationDeploymentRestrictionRequest) SetValue(v string) {
 }
 
 func (o ApplicationDeploymentRestrictionRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationDeploymentRestrictionRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["mode"] = o.Mode
+	toSerialize["type"] = o.Type
+	toSerialize["value"] = o.Value
+	return toSerialize, nil
 }
 
 type NullableApplicationDeploymentRestrictionRequest struct {

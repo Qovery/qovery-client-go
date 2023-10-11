@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ApplicationGitRepository type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationGitRepository{}
+
 // ApplicationGitRepository struct for ApplicationGitRepository
 type ApplicationGitRepository struct {
 	HasAccess *bool            `json:"has_access,omitempty"`
@@ -54,7 +57,7 @@ func NewApplicationGitRepositoryWithDefaults() *ApplicationGitRepository {
 
 // GetHasAccess returns the HasAccess field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetHasAccess() bool {
-	if o == nil || o.HasAccess == nil {
+	if o == nil || IsNil(o.HasAccess) {
 		var ret bool
 		return ret
 	}
@@ -64,7 +67,7 @@ func (o *ApplicationGitRepository) GetHasAccess() bool {
 // GetHasAccessOk returns a tuple with the HasAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetHasAccessOk() (*bool, bool) {
-	if o == nil || o.HasAccess == nil {
+	if o == nil || IsNil(o.HasAccess) {
 		return nil, false
 	}
 	return o.HasAccess, true
@@ -72,7 +75,7 @@ func (o *ApplicationGitRepository) GetHasAccessOk() (*bool, bool) {
 
 // HasHasAccess returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasHasAccess() bool {
-	if o != nil && o.HasAccess != nil {
+	if o != nil && !IsNil(o.HasAccess) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *ApplicationGitRepository) SetHasAccess(v bool) {
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetProvider() GitProviderEnum {
-	if o == nil || o.Provider == nil {
+	if o == nil || IsNil(o.Provider) {
 		var ret GitProviderEnum
 		return ret
 	}
@@ -96,7 +99,7 @@ func (o *ApplicationGitRepository) GetProvider() GitProviderEnum {
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetProviderOk() (*GitProviderEnum, bool) {
-	if o == nil || o.Provider == nil {
+	if o == nil || IsNil(o.Provider) {
 		return nil, false
 	}
 	return o.Provider, true
@@ -104,7 +107,7 @@ func (o *ApplicationGitRepository) GetProviderOk() (*GitProviderEnum, bool) {
 
 // HasProvider returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasProvider() bool {
-	if o != nil && o.Provider != nil {
+	if o != nil && !IsNil(o.Provider) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *ApplicationGitRepository) SetProvider(v GitProviderEnum) {
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetOwner() string {
-	if o == nil || o.Owner == nil {
+	if o == nil || IsNil(o.Owner) {
 		var ret string
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *ApplicationGitRepository) GetOwner() string {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetOwnerOk() (*string, bool) {
-	if o == nil || o.Owner == nil {
+	if o == nil || IsNil(o.Owner) {
 		return nil, false
 	}
 	return o.Owner, true
@@ -136,7 +139,7 @@ func (o *ApplicationGitRepository) GetOwnerOk() (*string, bool) {
 
 // HasOwner returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasOwner() bool {
-	if o != nil && o.Owner != nil {
+	if o != nil && !IsNil(o.Owner) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *ApplicationGitRepository) SetOwner(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -160,7 +163,7 @@ func (o *ApplicationGitRepository) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -168,7 +171,7 @@ func (o *ApplicationGitRepository) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *ApplicationGitRepository) SetUrl(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -192,7 +195,7 @@ func (o *ApplicationGitRepository) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -200,7 +203,7 @@ func (o *ApplicationGitRepository) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *ApplicationGitRepository) SetName(v string) {
 
 // GetBranch returns the Branch field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetBranch() string {
-	if o == nil || o.Branch == nil {
+	if o == nil || IsNil(o.Branch) {
 		var ret string
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *ApplicationGitRepository) GetBranch() string {
 // GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetBranchOk() (*string, bool) {
-	if o == nil || o.Branch == nil {
+	if o == nil || IsNil(o.Branch) {
 		return nil, false
 	}
 	return o.Branch, true
@@ -232,7 +235,7 @@ func (o *ApplicationGitRepository) GetBranchOk() (*string, bool) {
 
 // HasBranch returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasBranch() bool {
-	if o != nil && o.Branch != nil {
+	if o != nil && !IsNil(o.Branch) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *ApplicationGitRepository) SetBranch(v string) {
 
 // GetRootPath returns the RootPath field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetRootPath() string {
-	if o == nil || o.RootPath == nil {
+	if o == nil || IsNil(o.RootPath) {
 		var ret string
 		return ret
 	}
@@ -256,7 +259,7 @@ func (o *ApplicationGitRepository) GetRootPath() string {
 // GetRootPathOk returns a tuple with the RootPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetRootPathOk() (*string, bool) {
-	if o == nil || o.RootPath == nil {
+	if o == nil || IsNil(o.RootPath) {
 		return nil, false
 	}
 	return o.RootPath, true
@@ -264,7 +267,7 @@ func (o *ApplicationGitRepository) GetRootPathOk() (*string, bool) {
 
 // HasRootPath returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasRootPath() bool {
-	if o != nil && o.RootPath != nil {
+	if o != nil && !IsNil(o.RootPath) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *ApplicationGitRepository) SetRootPath(v string) {
 
 // GetDeployedCommitId returns the DeployedCommitId field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetDeployedCommitId() string {
-	if o == nil || o.DeployedCommitId == nil {
+	if o == nil || IsNil(o.DeployedCommitId) {
 		var ret string
 		return ret
 	}
@@ -288,7 +291,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitId() string {
 // GetDeployedCommitIdOk returns a tuple with the DeployedCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetDeployedCommitIdOk() (*string, bool) {
-	if o == nil || o.DeployedCommitId == nil {
+	if o == nil || IsNil(o.DeployedCommitId) {
 		return nil, false
 	}
 	return o.DeployedCommitId, true
@@ -296,7 +299,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitIdOk() (*string, bool) {
 
 // HasDeployedCommitId returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasDeployedCommitId() bool {
-	if o != nil && o.DeployedCommitId != nil {
+	if o != nil && !IsNil(o.DeployedCommitId) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *ApplicationGitRepository) SetDeployedCommitId(v string) {
 
 // GetDeployedCommitDate returns the DeployedCommitDate field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetDeployedCommitDate() time.Time {
-	if o == nil || o.DeployedCommitDate == nil {
+	if o == nil || IsNil(o.DeployedCommitDate) {
 		var ret time.Time
 		return ret
 	}
@@ -320,7 +323,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitDate() time.Time {
 // GetDeployedCommitDateOk returns a tuple with the DeployedCommitDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetDeployedCommitDateOk() (*time.Time, bool) {
-	if o == nil || o.DeployedCommitDate == nil {
+	if o == nil || IsNil(o.DeployedCommitDate) {
 		return nil, false
 	}
 	return o.DeployedCommitDate, true
@@ -328,7 +331,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitDateOk() (*time.Time, bool) 
 
 // HasDeployedCommitDate returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasDeployedCommitDate() bool {
-	if o != nil && o.DeployedCommitDate != nil {
+	if o != nil && !IsNil(o.DeployedCommitDate) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *ApplicationGitRepository) SetDeployedCommitDate(v time.Time) {
 
 // GetDeployedCommitContributor returns the DeployedCommitContributor field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetDeployedCommitContributor() string {
-	if o == nil || o.DeployedCommitContributor == nil {
+	if o == nil || IsNil(o.DeployedCommitContributor) {
 		var ret string
 		return ret
 	}
@@ -352,7 +355,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitContributor() string {
 // GetDeployedCommitContributorOk returns a tuple with the DeployedCommitContributor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetDeployedCommitContributorOk() (*string, bool) {
-	if o == nil || o.DeployedCommitContributor == nil {
+	if o == nil || IsNil(o.DeployedCommitContributor) {
 		return nil, false
 	}
 	return o.DeployedCommitContributor, true
@@ -360,7 +363,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitContributorOk() (*string, bo
 
 // HasDeployedCommitContributor returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasDeployedCommitContributor() bool {
-	if o != nil && o.DeployedCommitContributor != nil {
+	if o != nil && !IsNil(o.DeployedCommitContributor) {
 		return true
 	}
 
@@ -374,7 +377,7 @@ func (o *ApplicationGitRepository) SetDeployedCommitContributor(v string) {
 
 // GetDeployedCommitTag returns the DeployedCommitTag field value if set, zero value otherwise.
 func (o *ApplicationGitRepository) GetDeployedCommitTag() string {
-	if o == nil || o.DeployedCommitTag == nil {
+	if o == nil || IsNil(o.DeployedCommitTag) {
 		var ret string
 		return ret
 	}
@@ -384,7 +387,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitTag() string {
 // GetDeployedCommitTagOk returns a tuple with the DeployedCommitTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetDeployedCommitTagOk() (*string, bool) {
-	if o == nil || o.DeployedCommitTag == nil {
+	if o == nil || IsNil(o.DeployedCommitTag) {
 		return nil, false
 	}
 	return o.DeployedCommitTag, true
@@ -392,7 +395,7 @@ func (o *ApplicationGitRepository) GetDeployedCommitTagOk() (*string, bool) {
 
 // HasDeployedCommitTag returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasDeployedCommitTag() bool {
-	if o != nil && o.DeployedCommitTag != nil {
+	if o != nil && !IsNil(o.DeployedCommitTag) {
 		return true
 	}
 
@@ -405,41 +408,49 @@ func (o *ApplicationGitRepository) SetDeployedCommitTag(v string) {
 }
 
 func (o ApplicationGitRepository) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.HasAccess != nil {
-		toSerialize["has_access"] = o.HasAccess
-	}
-	if o.Provider != nil {
-		toSerialize["provider"] = o.Provider
-	}
-	if o.Owner != nil {
-		toSerialize["owner"] = o.Owner
-	}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Branch != nil {
-		toSerialize["branch"] = o.Branch
-	}
-	if o.RootPath != nil {
-		toSerialize["root_path"] = o.RootPath
-	}
-	if o.DeployedCommitId != nil {
-		toSerialize["deployed_commit_id"] = o.DeployedCommitId
-	}
-	if o.DeployedCommitDate != nil {
-		toSerialize["deployed_commit_date"] = o.DeployedCommitDate
-	}
-	if o.DeployedCommitContributor != nil {
-		toSerialize["deployed_commit_contributor"] = o.DeployedCommitContributor
-	}
-	if o.DeployedCommitTag != nil {
-		toSerialize["deployed_commit_tag"] = o.DeployedCommitTag
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationGitRepository) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.HasAccess) {
+		toSerialize["has_access"] = o.HasAccess
+	}
+	if !IsNil(o.Provider) {
+		toSerialize["provider"] = o.Provider
+	}
+	if !IsNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Branch) {
+		toSerialize["branch"] = o.Branch
+	}
+	if !IsNil(o.RootPath) {
+		toSerialize["root_path"] = o.RootPath
+	}
+	if !IsNil(o.DeployedCommitId) {
+		toSerialize["deployed_commit_id"] = o.DeployedCommitId
+	}
+	if !IsNil(o.DeployedCommitDate) {
+		toSerialize["deployed_commit_date"] = o.DeployedCommitDate
+	}
+	if !IsNil(o.DeployedCommitContributor) {
+		toSerialize["deployed_commit_contributor"] = o.DeployedCommitContributor
+	}
+	if !IsNil(o.DeployedCommitTag) {
+		toSerialize["deployed_commit_tag"] = o.DeployedCommitTag
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationGitRepository struct {

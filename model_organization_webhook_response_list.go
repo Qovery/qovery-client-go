@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationWebhookResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationWebhookResponseList{}
+
 // OrganizationWebhookResponseList struct for OrganizationWebhookResponseList
 type OrganizationWebhookResponseList struct {
 	Results []OrganizationWebhookResponse `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewOrganizationWebhookResponseListWithDefaults() *OrganizationWebhookRespon
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *OrganizationWebhookResponseList) GetResults() []OrganizationWebhookResponse {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []OrganizationWebhookResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *OrganizationWebhookResponseList) GetResults() []OrganizationWebhookResp
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookResponseList) GetResultsOk() ([]OrganizationWebhookResponse, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *OrganizationWebhookResponseList) GetResultsOk() ([]OrganizationWebhookR
 
 // HasResults returns a boolean if a field has been set.
 func (o *OrganizationWebhookResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *OrganizationWebhookResponseList) SetResults(v []OrganizationWebhookResp
 }
 
 func (o OrganizationWebhookResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationWebhookResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationWebhookResponseList struct {

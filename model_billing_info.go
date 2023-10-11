@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BillingInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillingInfo{}
+
 // BillingInfo struct for BillingInfo
 type BillingInfo struct {
 	FirstName NullableString `json:"first_name,omitempty"`
@@ -52,7 +55,7 @@ func NewBillingInfoWithDefaults() *BillingInfo {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetFirstName() string {
-	if o == nil || o.FirstName.Get() == nil {
+	if o == nil || IsNil(o.FirstName.Get()) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *BillingInfo) UnsetFirstName() {
 
 // GetLastName returns the LastName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetLastName() string {
-	if o == nil || o.LastName.Get() == nil {
+	if o == nil || IsNil(o.LastName.Get()) {
 		var ret string
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *BillingInfo) UnsetLastName() {
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetEmail() string {
-	if o == nil || o.Email.Get() == nil {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *BillingInfo) UnsetEmail() {
 
 // GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetAddress() string {
-	if o == nil || o.Address.Get() == nil {
+	if o == nil || IsNil(o.Address.Get()) {
 		var ret string
 		return ret
 	}
@@ -224,7 +227,7 @@ func (o *BillingInfo) UnsetAddress() {
 
 // GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetCity() string {
-	if o == nil || o.City.Get() == nil {
+	if o == nil || IsNil(o.City.Get()) {
 		var ret string
 		return ret
 	}
@@ -267,7 +270,7 @@ func (o *BillingInfo) UnsetCity() {
 
 // GetZip returns the Zip field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetZip() string {
-	if o == nil || o.Zip.Get() == nil {
+	if o == nil || IsNil(o.Zip.Get()) {
 		var ret string
 		return ret
 	}
@@ -310,7 +313,7 @@ func (o *BillingInfo) UnsetZip() {
 
 // GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetState() string {
-	if o == nil || o.State.Get() == nil {
+	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
@@ -353,7 +356,7 @@ func (o *BillingInfo) UnsetState() {
 
 // GetCountryCode returns the CountryCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetCountryCode() string {
-	if o == nil || o.CountryCode.Get() == nil {
+	if o == nil || IsNil(o.CountryCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -396,7 +399,7 @@ func (o *BillingInfo) UnsetCountryCode() {
 
 // GetCompany returns the Company field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetCompany() string {
-	if o == nil || o.Company.Get() == nil {
+	if o == nil || IsNil(o.Company.Get()) {
 		var ret string
 		return ret
 	}
@@ -439,7 +442,7 @@ func (o *BillingInfo) UnsetCompany() {
 
 // GetVatNumber returns the VatNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingInfo) GetVatNumber() string {
-	if o == nil || o.VatNumber.Get() == nil {
+	if o == nil || IsNil(o.VatNumber.Get()) {
 		var ret string
 		return ret
 	}
@@ -481,6 +484,14 @@ func (o *BillingInfo) UnsetVatNumber() {
 }
 
 func (o BillingInfo) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BillingInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.FirstName.IsSet() {
 		toSerialize["first_name"] = o.FirstName.Get()
@@ -512,7 +523,7 @@ func (o BillingInfo) MarshalJSON() ([]byte, error) {
 	if o.VatNumber.IsSet() {
 		toSerialize["vat_number"] = o.VatNumber.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableBillingInfo struct {

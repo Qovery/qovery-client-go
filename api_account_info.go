@@ -14,17 +14,17 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// AccountInfoApiService AccountInfoApi service
-type AccountInfoApiService service
+// AccountInfoAPIService AccountInfoAPI service
+type AccountInfoAPIService service
 
 type ApiEditAccountInformationRequest struct {
 	ctx                    context.Context
-	ApiService             *AccountInfoApiService
+	ApiService             *AccountInfoAPIService
 	accountInfoEditRequest *AccountInfoEditRequest
 }
 
@@ -43,7 +43,7 @@ EditAccountInformation Edit account information
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEditAccountInformationRequest
 */
-func (a *AccountInfoApiService) EditAccountInformation(ctx context.Context) ApiEditAccountInformationRequest {
+func (a *AccountInfoAPIService) EditAccountInformation(ctx context.Context) ApiEditAccountInformationRequest {
 	return ApiEditAccountInformationRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -52,7 +52,7 @@ func (a *AccountInfoApiService) EditAccountInformation(ctx context.Context) ApiE
 
 // Execute executes the request
 //  @return AccountInfo
-func (a *AccountInfoApiService) EditAccountInformationExecute(r ApiEditAccountInformationRequest) (*AccountInfo, *http.Response, error) {
+func (a *AccountInfoAPIService) EditAccountInformationExecute(r ApiEditAccountInformationRequest) (*AccountInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -60,7 +60,7 @@ func (a *AccountInfoApiService) EditAccountInformationExecute(r ApiEditAccountIn
 		localVarReturnValue *AccountInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountInfoApiService.EditAccountInformation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountInfoAPIService.EditAccountInformation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -114,9 +114,9 @@ func (a *AccountInfoApiService) EditAccountInformationExecute(r ApiEditAccountIn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -143,7 +143,7 @@ func (a *AccountInfoApiService) EditAccountInformationExecute(r ApiEditAccountIn
 
 type ApiGetAccountInformationRequest struct {
 	ctx        context.Context
-	ApiService *AccountInfoApiService
+	ApiService *AccountInfoAPIService
 }
 
 func (r ApiGetAccountInformationRequest) Execute() (*AccountInfo, *http.Response, error) {
@@ -156,7 +156,7 @@ GetAccountInformation Get Account information
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccountInformationRequest
 */
-func (a *AccountInfoApiService) GetAccountInformation(ctx context.Context) ApiGetAccountInformationRequest {
+func (a *AccountInfoAPIService) GetAccountInformation(ctx context.Context) ApiGetAccountInformationRequest {
 	return ApiGetAccountInformationRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -165,7 +165,7 @@ func (a *AccountInfoApiService) GetAccountInformation(ctx context.Context) ApiGe
 
 // Execute executes the request
 //  @return AccountInfo
-func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInformationRequest) (*AccountInfo, *http.Response, error) {
+func (a *AccountInfoAPIService) GetAccountInformationExecute(r ApiGetAccountInformationRequest) (*AccountInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -173,7 +173,7 @@ func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInfo
 		localVarReturnValue *AccountInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountInfoApiService.GetAccountInformation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountInfoAPIService.GetAccountInformation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -225,9 +225,9 @@ func (a *AccountInfoApiService) GetAccountInformationExecute(r ApiGetAccountInfo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

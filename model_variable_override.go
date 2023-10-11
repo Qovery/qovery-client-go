@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableOverride type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableOverride{}
+
 // VariableOverride struct for VariableOverride
 type VariableOverride struct {
 	// The id of the overriden variable
@@ -101,7 +104,7 @@ func (o *VariableOverride) SetKey(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VariableOverride) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
@@ -215,26 +218,24 @@ func (o *VariableOverride) SetVariableType(v APIVariableTypeEnum) {
 }
 
 func (o VariableOverride) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o VariableOverride) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["key"] = o.Key
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-	if true {
-		toSerialize["mount_path"] = o.MountPath
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["variable_type"] = o.VariableType
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["mount_path"] = o.MountPath
+	toSerialize["scope"] = o.Scope
+	toSerialize["variable_type"] = o.VariableType
+	return toSerialize, nil
 }
 
 type NullableVariableOverride struct {

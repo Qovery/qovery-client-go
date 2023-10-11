@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationAdvancedSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationAdvancedSettings{}
+
 // ApplicationAdvancedSettings struct for ApplicationAdvancedSettings
 type ApplicationAdvancedSettings struct {
 	// disable custom domain check when deploying an application
@@ -232,7 +235,7 @@ func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 
 // GetDeploymentCustomDomainCheckEnabled returns the DeploymentCustomDomainCheckEnabled field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetDeploymentCustomDomainCheckEnabled() bool {
-	if o == nil || o.DeploymentCustomDomainCheckEnabled == nil {
+	if o == nil || IsNil(o.DeploymentCustomDomainCheckEnabled) {
 		var ret bool
 		return ret
 	}
@@ -242,7 +245,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentCustomDomainCheckEnabled() bo
 // GetDeploymentCustomDomainCheckEnabledOk returns a tuple with the DeploymentCustomDomainCheckEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetDeploymentCustomDomainCheckEnabledOk() (*bool, bool) {
-	if o == nil || o.DeploymentCustomDomainCheckEnabled == nil {
+	if o == nil || IsNil(o.DeploymentCustomDomainCheckEnabled) {
 		return nil, false
 	}
 	return o.DeploymentCustomDomainCheckEnabled, true
@@ -250,7 +253,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentCustomDomainCheckEnabledOk() 
 
 // HasDeploymentCustomDomainCheckEnabled returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool {
-	if o != nil && o.DeploymentCustomDomainCheckEnabled != nil {
+	if o != nil && !IsNil(o.DeploymentCustomDomainCheckEnabled) {
 		return true
 	}
 
@@ -264,7 +267,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentCustomDomainCheckEnabled(v bo
 
 // GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32 {
-	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+	if o == nil || IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		var ret int32
 		return ret
 	}
@@ -274,7 +277,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds
 // GetDeploymentTerminationGracePeriodSecondsOk returns a tuple with the DeploymentTerminationGracePeriodSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*int32, bool) {
-	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+	if o == nil || IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		return nil, false
 	}
 	return o.DeploymentTerminationGracePeriodSeconds, true
@@ -282,7 +285,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds
 
 // HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool {
-	if o != nil && o.DeploymentTerminationGracePeriodSeconds != nil {
+	if o != nil && !IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		return true
 	}
 
@@ -296,7 +299,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds
 
 // GetDeploymentAffinityNodeRequired returns the DeploymentAffinityNodeRequired field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetDeploymentAffinityNodeRequired() map[string]string {
-	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+	if o == nil || IsNil(o.DeploymentAffinityNodeRequired) {
 		var ret map[string]string
 		return ret
 	}
@@ -306,7 +309,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentAffinityNodeRequired() map[st
 // GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool) {
-	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+	if o == nil || IsNil(o.DeploymentAffinityNodeRequired) {
 		return nil, false
 	}
 	return o.DeploymentAffinityNodeRequired, true
@@ -314,7 +317,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*ma
 
 // HasDeploymentAffinityNodeRequired returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasDeploymentAffinityNodeRequired() bool {
-	if o != nil && o.DeploymentAffinityNodeRequired != nil {
+	if o != nil && !IsNil(o.DeploymentAffinityNodeRequired) {
 		return true
 	}
 
@@ -328,7 +331,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[st
 
 // GetDeploymentAntiaffinityPod returns the DeploymentAntiaffinityPod field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetDeploymentAntiaffinityPod() string {
-	if o == nil || o.DeploymentAntiaffinityPod == nil {
+	if o == nil || IsNil(o.DeploymentAntiaffinityPod) {
 		var ret string
 		return ret
 	}
@@ -338,7 +341,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentAntiaffinityPod() string {
 // GetDeploymentAntiaffinityPodOk returns a tuple with the DeploymentAntiaffinityPod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetDeploymentAntiaffinityPodOk() (*string, bool) {
-	if o == nil || o.DeploymentAntiaffinityPod == nil {
+	if o == nil || IsNil(o.DeploymentAntiaffinityPod) {
 		return nil, false
 	}
 	return o.DeploymentAntiaffinityPod, true
@@ -346,7 +349,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentAntiaffinityPodOk() (*string,
 
 // HasDeploymentAntiaffinityPod returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasDeploymentAntiaffinityPod() bool {
-	if o != nil && o.DeploymentAntiaffinityPod != nil {
+	if o != nil && !IsNil(o.DeploymentAntiaffinityPod) {
 		return true
 	}
 
@@ -360,7 +363,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentAntiaffinityPod(v string) {
 
 // GetDeploymentUpdateStrategyType returns the DeploymentUpdateStrategyType field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyType() string {
-	if o == nil || o.DeploymentUpdateStrategyType == nil {
+	if o == nil || IsNil(o.DeploymentUpdateStrategyType) {
 		var ret string
 		return ret
 	}
@@ -370,7 +373,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyType() string {
 // GetDeploymentUpdateStrategyTypeOk returns a tuple with the DeploymentUpdateStrategyType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyTypeOk() (*string, bool) {
-	if o == nil || o.DeploymentUpdateStrategyType == nil {
+	if o == nil || IsNil(o.DeploymentUpdateStrategyType) {
 		return nil, false
 	}
 	return o.DeploymentUpdateStrategyType, true
@@ -378,7 +381,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyTypeOk() (*stri
 
 // HasDeploymentUpdateStrategyType returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasDeploymentUpdateStrategyType() bool {
-	if o != nil && o.DeploymentUpdateStrategyType != nil {
+	if o != nil && !IsNil(o.DeploymentUpdateStrategyType) {
 		return true
 	}
 
@@ -392,7 +395,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentUpdateStrategyType(v string) 
 
 // GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent returns the DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent() int32 {
-	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent == nil {
+	if o == nil || IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent) {
 		var ret int32
 		return ret
 	}
@@ -402,7 +405,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMa
 // GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercentOk returns a tuple with the DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercentOk() (*int32, bool) {
-	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent == nil {
+	if o == nil || IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent) {
 		return nil, false
 	}
 	return o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent, true
@@ -410,7 +413,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMa
 
 // HasDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasDeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent() bool {
-	if o != nil && o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent != nil {
+	if o != nil && !IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent) {
 		return true
 	}
 
@@ -424,7 +427,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentUpdateStrategyRollingUpdateMa
 
 // GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent returns the DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercent() int32 {
-	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent == nil {
+	if o == nil || IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent) {
 		var ret int32
 		return ret
 	}
@@ -434,7 +437,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMa
 // GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercentOk returns a tuple with the DeploymentUpdateStrategyRollingUpdateMaxSurgePercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMaxSurgePercentOk() (*int32, bool) {
-	if o == nil || o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent == nil {
+	if o == nil || IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent) {
 		return nil, false
 	}
 	return o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent, true
@@ -442,7 +445,7 @@ func (o *ApplicationAdvancedSettings) GetDeploymentUpdateStrategyRollingUpdateMa
 
 // HasDeploymentUpdateStrategyRollingUpdateMaxSurgePercent returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasDeploymentUpdateStrategyRollingUpdateMaxSurgePercent() bool {
-	if o != nil && o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent != nil {
+	if o != nil && !IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent) {
 		return true
 	}
 
@@ -456,7 +459,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentUpdateStrategyRollingUpdateMa
 
 // GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
-	if o == nil || o.BuildTimeoutMaxSec == nil {
+	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		var ret int32
 		return ret
 	}
@@ -466,7 +469,7 @@ func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 // GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
-	if o == nil || o.BuildTimeoutMaxSec == nil {
+	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		return nil, false
 	}
 	return o.BuildTimeoutMaxSec, true
@@ -474,7 +477,7 @@ func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
 
 // HasBuildTimeoutMaxSec returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasBuildTimeoutMaxSec() bool {
-	if o != nil && o.BuildTimeoutMaxSec != nil {
+	if o != nil && !IsNil(o.BuildTimeoutMaxSec) {
 		return true
 	}
 
@@ -488,7 +491,7 @@ func (o *ApplicationAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
 
 // GetBuildCpuMaxInMilli returns the BuildCpuMaxInMilli field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
-	if o == nil || o.BuildCpuMaxInMilli == nil {
+	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		var ret int32
 		return ret
 	}
@@ -498,7 +501,7 @@ func (o *ApplicationAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 // GetBuildCpuMaxInMilliOk returns a tuple with the BuildCpuMaxInMilli field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
-	if o == nil || o.BuildCpuMaxInMilli == nil {
+	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		return nil, false
 	}
 	return o.BuildCpuMaxInMilli, true
@@ -506,7 +509,7 @@ func (o *ApplicationAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
 
 // HasBuildCpuMaxInMilli returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasBuildCpuMaxInMilli() bool {
-	if o != nil && o.BuildCpuMaxInMilli != nil {
+	if o != nil && !IsNil(o.BuildCpuMaxInMilli) {
 		return true
 	}
 
@@ -520,7 +523,7 @@ func (o *ApplicationAdvancedSettings) SetBuildCpuMaxInMilli(v int32) {
 
 // GetBuildRamMaxInGib returns the BuildRamMaxInGib field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetBuildRamMaxInGib() int32 {
-	if o == nil || o.BuildRamMaxInGib == nil {
+	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		var ret int32
 		return ret
 	}
@@ -530,7 +533,7 @@ func (o *ApplicationAdvancedSettings) GetBuildRamMaxInGib() int32 {
 // GetBuildRamMaxInGibOk returns a tuple with the BuildRamMaxInGib field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
-	if o == nil || o.BuildRamMaxInGib == nil {
+	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		return nil, false
 	}
 	return o.BuildRamMaxInGib, true
@@ -538,7 +541,7 @@ func (o *ApplicationAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
 
 // HasBuildRamMaxInGib returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasBuildRamMaxInGib() bool {
-	if o != nil && o.BuildRamMaxInGib != nil {
+	if o != nil && !IsNil(o.BuildRamMaxInGib) {
 		return true
 	}
 
@@ -552,7 +555,7 @@ func (o *ApplicationAdvancedSettings) SetBuildRamMaxInGib(v int32) {
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBodySizeMb() int32 {
-	if o == nil || o.NetworkIngressProxyBodySizeMb == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyBodySizeMb) {
 		var ret int32
 		return ret
 	}
@@ -562,7 +565,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBodySizeMb() int32 {
 // GetNetworkIngressProxyBodySizeMbOk returns a tuple with the NetworkIngressProxyBodySizeMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBodySizeMbOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressProxyBodySizeMb == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyBodySizeMb) {
 		return nil, false
 	}
 	return o.NetworkIngressProxyBodySizeMb, true
@@ -570,7 +573,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBodySizeMbOk() (*int
 
 // HasNetworkIngressProxyBodySizeMb returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBodySizeMb() bool {
-	if o != nil && o.NetworkIngressProxyBodySizeMb != nil {
+	if o != nil && !IsNil(o.NetworkIngressProxyBodySizeMb) {
 		return true
 	}
 
@@ -584,7 +587,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBodySizeMb(v int32) 
 
 // GetNetworkIngressEnableCors returns the NetworkIngressEnableCors field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableCors() bool {
-	if o == nil || o.NetworkIngressEnableCors == nil {
+	if o == nil || IsNil(o.NetworkIngressEnableCors) {
 		var ret bool
 		return ret
 	}
@@ -594,7 +597,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableCors() bool {
 // GetNetworkIngressEnableCorsOk returns a tuple with the NetworkIngressEnableCors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableCorsOk() (*bool, bool) {
-	if o == nil || o.NetworkIngressEnableCors == nil {
+	if o == nil || IsNil(o.NetworkIngressEnableCors) {
 		return nil, false
 	}
 	return o.NetworkIngressEnableCors, true
@@ -602,7 +605,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableCorsOk() (*bool, bo
 
 // HasNetworkIngressEnableCors returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressEnableCors() bool {
-	if o != nil && o.NetworkIngressEnableCors != nil {
+	if o != nil && !IsNil(o.NetworkIngressEnableCors) {
 		return true
 	}
 
@@ -616,7 +619,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressEnableCors(v bool) {
 
 // GetNetworkIngressCorsAllowOrigin returns the NetworkIngressCorsAllowOrigin field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowOrigin() string {
-	if o == nil || o.NetworkIngressCorsAllowOrigin == nil {
+	if o == nil || IsNil(o.NetworkIngressCorsAllowOrigin) {
 		var ret string
 		return ret
 	}
@@ -626,7 +629,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowOrigin() string 
 // GetNetworkIngressCorsAllowOriginOk returns a tuple with the NetworkIngressCorsAllowOrigin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowOriginOk() (*string, bool) {
-	if o == nil || o.NetworkIngressCorsAllowOrigin == nil {
+	if o == nil || IsNil(o.NetworkIngressCorsAllowOrigin) {
 		return nil, false
 	}
 	return o.NetworkIngressCorsAllowOrigin, true
@@ -634,7 +637,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowOriginOk() (*str
 
 // HasNetworkIngressCorsAllowOrigin returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressCorsAllowOrigin() bool {
-	if o != nil && o.NetworkIngressCorsAllowOrigin != nil {
+	if o != nil && !IsNil(o.NetworkIngressCorsAllowOrigin) {
 		return true
 	}
 
@@ -648,7 +651,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressCorsAllowOrigin(v string)
 
 // GetNetworkIngressCorsAllowMethods returns the NetworkIngressCorsAllowMethods field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowMethods() string {
-	if o == nil || o.NetworkIngressCorsAllowMethods == nil {
+	if o == nil || IsNil(o.NetworkIngressCorsAllowMethods) {
 		var ret string
 		return ret
 	}
@@ -658,7 +661,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowMethods() string
 // GetNetworkIngressCorsAllowMethodsOk returns a tuple with the NetworkIngressCorsAllowMethods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowMethodsOk() (*string, bool) {
-	if o == nil || o.NetworkIngressCorsAllowMethods == nil {
+	if o == nil || IsNil(o.NetworkIngressCorsAllowMethods) {
 		return nil, false
 	}
 	return o.NetworkIngressCorsAllowMethods, true
@@ -666,7 +669,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowMethodsOk() (*st
 
 // HasNetworkIngressCorsAllowMethods returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressCorsAllowMethods() bool {
-	if o != nil && o.NetworkIngressCorsAllowMethods != nil {
+	if o != nil && !IsNil(o.NetworkIngressCorsAllowMethods) {
 		return true
 	}
 
@@ -680,7 +683,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressCorsAllowMethods(v string
 
 // GetNetworkIngressCorsAllowHeaders returns the NetworkIngressCorsAllowHeaders field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowHeaders() string {
-	if o == nil || o.NetworkIngressCorsAllowHeaders == nil {
+	if o == nil || IsNil(o.NetworkIngressCorsAllowHeaders) {
 		var ret string
 		return ret
 	}
@@ -690,7 +693,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowHeaders() string
 // GetNetworkIngressCorsAllowHeadersOk returns a tuple with the NetworkIngressCorsAllowHeaders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowHeadersOk() (*string, bool) {
-	if o == nil || o.NetworkIngressCorsAllowHeaders == nil {
+	if o == nil || IsNil(o.NetworkIngressCorsAllowHeaders) {
 		return nil, false
 	}
 	return o.NetworkIngressCorsAllowHeaders, true
@@ -698,7 +701,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressCorsAllowHeadersOk() (*st
 
 // HasNetworkIngressCorsAllowHeaders returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressCorsAllowHeaders() bool {
-	if o != nil && o.NetworkIngressCorsAllowHeaders != nil {
+	if o != nil && !IsNil(o.NetworkIngressCorsAllowHeaders) {
 		return true
 	}
 
@@ -712,7 +715,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressCorsAllowHeaders(v string
 
 // GetNetworkIngressProxyBufferSizeKb returns the NetworkIngressProxyBufferSizeKb field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferSizeKb() int32 {
-	if o == nil || o.NetworkIngressProxyBufferSizeKb == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyBufferSizeKb) {
 		var ret int32
 		return ret
 	}
@@ -722,7 +725,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferSizeKb() int32
 // GetNetworkIngressProxyBufferSizeKbOk returns a tuple with the NetworkIngressProxyBufferSizeKb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferSizeKbOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressProxyBufferSizeKb == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyBufferSizeKb) {
 		return nil, false
 	}
 	return o.NetworkIngressProxyBufferSizeKb, true
@@ -730,7 +733,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferSizeKbOk() (*i
 
 // HasNetworkIngressProxyBufferSizeKb returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBufferSizeKb() bool {
-	if o != nil && o.NetworkIngressProxyBufferSizeKb != nil {
+	if o != nil && !IsNil(o.NetworkIngressProxyBufferSizeKb) {
 		return true
 	}
 
@@ -744,7 +747,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBufferSizeKb(v int32
 
 // GetNetworkIngressKeepaliveTimeSeconds returns the NetworkIngressKeepaliveTimeSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSeconds() int32 {
-	if o == nil || o.NetworkIngressKeepaliveTimeSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressKeepaliveTimeSeconds) {
 		var ret int32
 		return ret
 	}
@@ -754,7 +757,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSeconds() in
 // GetNetworkIngressKeepaliveTimeSecondsOk returns a tuple with the NetworkIngressKeepaliveTimeSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressKeepaliveTimeSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressKeepaliveTimeSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressKeepaliveTimeSeconds, true
@@ -762,7 +765,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeSecondsOk() 
 
 // HasNetworkIngressKeepaliveTimeSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressKeepaliveTimeSeconds() bool {
-	if o != nil && o.NetworkIngressKeepaliveTimeSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressKeepaliveTimeSeconds) {
 		return true
 	}
 
@@ -776,7 +779,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressKeepaliveTimeSeconds(v in
 
 // GetNetworkIngressKeepaliveTimeoutSeconds returns the NetworkIngressKeepaliveTimeoutSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSeconds() int32 {
-	if o == nil || o.NetworkIngressKeepaliveTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressKeepaliveTimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -786,7 +789,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSeconds()
 // GetNetworkIngressKeepaliveTimeoutSecondsOk returns a tuple with the NetworkIngressKeepaliveTimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressKeepaliveTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressKeepaliveTimeoutSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressKeepaliveTimeoutSeconds, true
@@ -794,7 +797,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressKeepaliveTimeoutSecondsOk
 
 // HasNetworkIngressKeepaliveTimeoutSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressKeepaliveTimeoutSeconds() bool {
-	if o != nil && o.NetworkIngressKeepaliveTimeoutSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressKeepaliveTimeoutSeconds) {
 		return true
 	}
 
@@ -808,7 +811,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressKeepaliveTimeoutSeconds(v
 
 // GetNetworkIngressSendTimeoutSeconds returns the NetworkIngressSendTimeoutSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSeconds() int32 {
-	if o == nil || o.NetworkIngressSendTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressSendTimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -818,7 +821,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSeconds() int3
 // GetNetworkIngressSendTimeoutSecondsOk returns a tuple with the NetworkIngressSendTimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressSendTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressSendTimeoutSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressSendTimeoutSeconds, true
@@ -826,7 +829,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressSendTimeoutSecondsOk() (*
 
 // HasNetworkIngressSendTimeoutSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressSendTimeoutSeconds() bool {
-	if o != nil && o.NetworkIngressSendTimeoutSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressSendTimeoutSeconds) {
 		return true
 	}
 
@@ -840,7 +843,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressSendTimeoutSeconds(v int3
 
 // GetNetworkIngressProxyConnectTimeoutSeconds returns the NetworkIngressProxyConnectTimeoutSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSeconds() int32 {
-	if o == nil || o.NetworkIngressProxyConnectTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyConnectTimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -850,7 +853,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSecond
 // GetNetworkIngressProxyConnectTimeoutSecondsOk returns a tuple with the NetworkIngressProxyConnectTimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressProxyConnectTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyConnectTimeoutSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressProxyConnectTimeoutSeconds, true
@@ -858,7 +861,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyConnectTimeoutSecond
 
 // HasNetworkIngressProxyConnectTimeoutSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyConnectTimeoutSeconds() bool {
-	if o != nil && o.NetworkIngressProxyConnectTimeoutSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressProxyConnectTimeoutSeconds) {
 		return true
 	}
 
@@ -872,7 +875,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyConnectTimeoutSecond
 
 // GetNetworkIngressProxySendTimeoutSeconds returns the NetworkIngressProxySendTimeoutSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSeconds() int32 {
-	if o == nil || o.NetworkIngressProxySendTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressProxySendTimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -882,7 +885,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSeconds()
 // GetNetworkIngressProxySendTimeoutSecondsOk returns a tuple with the NetworkIngressProxySendTimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressProxySendTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressProxySendTimeoutSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressProxySendTimeoutSeconds, true
@@ -890,7 +893,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxySendTimeoutSecondsOk
 
 // HasNetworkIngressProxySendTimeoutSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressProxySendTimeoutSeconds() bool {
-	if o != nil && o.NetworkIngressProxySendTimeoutSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressProxySendTimeoutSeconds) {
 		return true
 	}
 
@@ -904,7 +907,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxySendTimeoutSeconds(v
 
 // GetNetworkIngressProxyReadTimeoutSeconds returns the NetworkIngressProxyReadTimeoutSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSeconds() int32 {
-	if o == nil || o.NetworkIngressProxyReadTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyReadTimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -914,7 +917,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSeconds()
 // GetNetworkIngressProxyReadTimeoutSecondsOk returns a tuple with the NetworkIngressProxyReadTimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressProxyReadTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyReadTimeoutSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressProxyReadTimeoutSeconds, true
@@ -922,7 +925,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyReadTimeoutSecondsOk
 
 // HasNetworkIngressProxyReadTimeoutSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyReadTimeoutSeconds() bool {
-	if o != nil && o.NetworkIngressProxyReadTimeoutSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressProxyReadTimeoutSeconds) {
 		return true
 	}
 
@@ -936,7 +939,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyReadTimeoutSeconds(v
 
 // GetNetworkIngressProxyBuffering returns the NetworkIngressProxyBuffering field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBuffering() string {
-	if o == nil || o.NetworkIngressProxyBuffering == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyBuffering) {
 		var ret string
 		return ret
 	}
@@ -946,7 +949,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBuffering() string {
 // GetNetworkIngressProxyBufferingOk returns a tuple with the NetworkIngressProxyBuffering field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferingOk() (*string, bool) {
-	if o == nil || o.NetworkIngressProxyBuffering == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyBuffering) {
 		return nil, false
 	}
 	return o.NetworkIngressProxyBuffering, true
@@ -954,7 +957,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyBufferingOk() (*stri
 
 // HasNetworkIngressProxyBuffering returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBuffering() bool {
-	if o != nil && o.NetworkIngressProxyBuffering != nil {
+	if o != nil && !IsNil(o.NetworkIngressProxyBuffering) {
 		return true
 	}
 
@@ -968,7 +971,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBuffering(v string) 
 
 // GetNetworkIngressProxyRequestBuffering returns the NetworkIngressProxyRequestBuffering field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBuffering() string {
-	if o == nil || o.NetworkIngressProxyRequestBuffering == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyRequestBuffering) {
 		var ret string
 		return ret
 	}
@@ -978,7 +981,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBuffering() s
 // GetNetworkIngressProxyRequestBufferingOk returns a tuple with the NetworkIngressProxyRequestBuffering field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBufferingOk() (*string, bool) {
-	if o == nil || o.NetworkIngressProxyRequestBuffering == nil {
+	if o == nil || IsNil(o.NetworkIngressProxyRequestBuffering) {
 		return nil, false
 	}
 	return o.NetworkIngressProxyRequestBuffering, true
@@ -986,7 +989,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBufferingOk()
 
 // HasNetworkIngressProxyRequestBuffering returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyRequestBuffering() bool {
-	if o != nil && o.NetworkIngressProxyRequestBuffering != nil {
+	if o != nil && !IsNil(o.NetworkIngressProxyRequestBuffering) {
 		return true
 	}
 
@@ -1000,7 +1003,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyRequestBuffering(v s
 
 // GetNetworkIngressWhitelistSourceRange returns the NetworkIngressWhitelistSourceRange field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string {
-	if o == nil || o.NetworkIngressWhitelistSourceRange == nil {
+	if o == nil || IsNil(o.NetworkIngressWhitelistSourceRange) {
 		var ret string
 		return ret
 	}
@@ -1010,7 +1013,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRange() st
 // GetNetworkIngressWhitelistSourceRangeOk returns a tuple with the NetworkIngressWhitelistSourceRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRangeOk() (*string, bool) {
-	if o == nil || o.NetworkIngressWhitelistSourceRange == nil {
+	if o == nil || IsNil(o.NetworkIngressWhitelistSourceRange) {
 		return nil, false
 	}
 	return o.NetworkIngressWhitelistSourceRange, true
@@ -1018,7 +1021,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRangeOk() 
 
 // HasNetworkIngressWhitelistSourceRange returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressWhitelistSourceRange() bool {
-	if o != nil && o.NetworkIngressWhitelistSourceRange != nil {
+	if o != nil && !IsNil(o.NetworkIngressWhitelistSourceRange) {
 		return true
 	}
 
@@ -1032,7 +1035,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressWhitelistSourceRange(v st
 
 // GetNetworkIngressDenylistSourceRange returns the NetworkIngressDenylistSourceRange field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressDenylistSourceRange() string {
-	if o == nil || o.NetworkIngressDenylistSourceRange == nil {
+	if o == nil || IsNil(o.NetworkIngressDenylistSourceRange) {
 		var ret string
 		return ret
 	}
@@ -1042,7 +1045,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressDenylistSourceRange() str
 // GetNetworkIngressDenylistSourceRangeOk returns a tuple with the NetworkIngressDenylistSourceRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressDenylistSourceRangeOk() (*string, bool) {
-	if o == nil || o.NetworkIngressDenylistSourceRange == nil {
+	if o == nil || IsNil(o.NetworkIngressDenylistSourceRange) {
 		return nil, false
 	}
 	return o.NetworkIngressDenylistSourceRange, true
@@ -1050,7 +1053,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressDenylistSourceRangeOk() (
 
 // HasNetworkIngressDenylistSourceRange returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressDenylistSourceRange() bool {
-	if o != nil && o.NetworkIngressDenylistSourceRange != nil {
+	if o != nil && !IsNil(o.NetworkIngressDenylistSourceRange) {
 		return true
 	}
 
@@ -1064,7 +1067,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressDenylistSourceRange(v str
 
 // GetNetworkIngressBasicAuthEnvVar returns the NetworkIngressBasicAuthEnvVar field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressBasicAuthEnvVar() string {
-	if o == nil || o.NetworkIngressBasicAuthEnvVar == nil {
+	if o == nil || IsNil(o.NetworkIngressBasicAuthEnvVar) {
 		var ret string
 		return ret
 	}
@@ -1074,7 +1077,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressBasicAuthEnvVar() string 
 // GetNetworkIngressBasicAuthEnvVarOk returns a tuple with the NetworkIngressBasicAuthEnvVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressBasicAuthEnvVarOk() (*string, bool) {
-	if o == nil || o.NetworkIngressBasicAuthEnvVar == nil {
+	if o == nil || IsNil(o.NetworkIngressBasicAuthEnvVar) {
 		return nil, false
 	}
 	return o.NetworkIngressBasicAuthEnvVar, true
@@ -1082,7 +1085,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressBasicAuthEnvVarOk() (*str
 
 // HasNetworkIngressBasicAuthEnvVar returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressBasicAuthEnvVar() bool {
-	if o != nil && o.NetworkIngressBasicAuthEnvVar != nil {
+	if o != nil && !IsNil(o.NetworkIngressBasicAuthEnvVar) {
 		return true
 	}
 
@@ -1096,7 +1099,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressBasicAuthEnvVar(v string)
 
 // GetNetworkIngressEnableStickySession returns the NetworkIngressEnableStickySession field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySession() bool {
-	if o == nil || o.NetworkIngressEnableStickySession == nil {
+	if o == nil || IsNil(o.NetworkIngressEnableStickySession) {
 		var ret bool
 		return ret
 	}
@@ -1106,7 +1109,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySession() boo
 // GetNetworkIngressEnableStickySessionOk returns a tuple with the NetworkIngressEnableStickySession field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySessionOk() (*bool, bool) {
-	if o == nil || o.NetworkIngressEnableStickySession == nil {
+	if o == nil || IsNil(o.NetworkIngressEnableStickySession) {
 		return nil, false
 	}
 	return o.NetworkIngressEnableStickySession, true
@@ -1114,7 +1117,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressEnableStickySessionOk() (
 
 // HasNetworkIngressEnableStickySession returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressEnableStickySession() bool {
-	if o != nil && o.NetworkIngressEnableStickySession != nil {
+	if o != nil && !IsNil(o.NetworkIngressEnableStickySession) {
 		return true
 	}
 
@@ -1128,7 +1131,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressEnableStickySession(v boo
 
 // GetNetworkIngressGrpcSendTimeoutSeconds returns the NetworkIngressGrpcSendTimeoutSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSeconds() int32 {
-	if o == nil || o.NetworkIngressGrpcSendTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressGrpcSendTimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -1138,7 +1141,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSeconds() 
 // GetNetworkIngressGrpcSendTimeoutSecondsOk returns a tuple with the NetworkIngressGrpcSendTimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressGrpcSendTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressGrpcSendTimeoutSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressGrpcSendTimeoutSeconds, true
@@ -1146,7 +1149,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcSendTimeoutSecondsOk(
 
 // HasNetworkIngressGrpcSendTimeoutSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressGrpcSendTimeoutSeconds() bool {
-	if o != nil && o.NetworkIngressGrpcSendTimeoutSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressGrpcSendTimeoutSeconds) {
 		return true
 	}
 
@@ -1160,7 +1163,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressGrpcSendTimeoutSeconds(v 
 
 // GetNetworkIngressGrpcReadTimeoutSeconds returns the NetworkIngressGrpcReadTimeoutSeconds field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSeconds() int32 {
-	if o == nil || o.NetworkIngressGrpcReadTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressGrpcReadTimeoutSeconds) {
 		var ret int32
 		return ret
 	}
@@ -1170,7 +1173,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSeconds() 
 // GetNetworkIngressGrpcReadTimeoutSecondsOk returns a tuple with the NetworkIngressGrpcReadTimeoutSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSecondsOk() (*int32, bool) {
-	if o == nil || o.NetworkIngressGrpcReadTimeoutSeconds == nil {
+	if o == nil || IsNil(o.NetworkIngressGrpcReadTimeoutSeconds) {
 		return nil, false
 	}
 	return o.NetworkIngressGrpcReadTimeoutSeconds, true
@@ -1178,7 +1181,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressGrpcReadTimeoutSecondsOk(
 
 // HasNetworkIngressGrpcReadTimeoutSeconds returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressGrpcReadTimeoutSeconds() bool {
-	if o != nil && o.NetworkIngressGrpcReadTimeoutSeconds != nil {
+	if o != nil && !IsNil(o.NetworkIngressGrpcReadTimeoutSeconds) {
 		return true
 	}
 
@@ -1192,7 +1195,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressGrpcReadTimeoutSeconds(v 
 
 // GetNetworkIngressExtraHeaders returns the NetworkIngressExtraHeaders field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeaders() string {
-	if o == nil || o.NetworkIngressExtraHeaders == nil {
+	if o == nil || IsNil(o.NetworkIngressExtraHeaders) {
 		var ret string
 		return ret
 	}
@@ -1202,7 +1205,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeaders() string {
 // GetNetworkIngressExtraHeadersOk returns a tuple with the NetworkIngressExtraHeaders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeadersOk() (*string, bool) {
-	if o == nil || o.NetworkIngressExtraHeaders == nil {
+	if o == nil || IsNil(o.NetworkIngressExtraHeaders) {
 		return nil, false
 	}
 	return o.NetworkIngressExtraHeaders, true
@@ -1210,7 +1213,7 @@ func (o *ApplicationAdvancedSettings) GetNetworkIngressExtraHeadersOk() (*string
 
 // HasNetworkIngressExtraHeaders returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasNetworkIngressExtraHeaders() bool {
-	if o != nil && o.NetworkIngressExtraHeaders != nil {
+	if o != nil && !IsNil(o.NetworkIngressExtraHeaders) {
 		return true
 	}
 
@@ -1224,7 +1227,7 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressExtraHeaders(v string) {
 
 // GetHpaCpuAverageUtilizationPercent returns the HpaCpuAverageUtilizationPercent field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32 {
-	if o == nil || o.HpaCpuAverageUtilizationPercent == nil {
+	if o == nil || IsNil(o.HpaCpuAverageUtilizationPercent) {
 		var ret int32
 		return ret
 	}
@@ -1234,7 +1237,7 @@ func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32
 // GetHpaCpuAverageUtilizationPercentOk returns a tuple with the HpaCpuAverageUtilizationPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercentOk() (*int32, bool) {
-	if o == nil || o.HpaCpuAverageUtilizationPercent == nil {
+	if o == nil || IsNil(o.HpaCpuAverageUtilizationPercent) {
 		return nil, false
 	}
 	return o.HpaCpuAverageUtilizationPercent, true
@@ -1242,7 +1245,7 @@ func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercentOk() (*i
 
 // HasHpaCpuAverageUtilizationPercent returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasHpaCpuAverageUtilizationPercent() bool {
-	if o != nil && o.HpaCpuAverageUtilizationPercent != nil {
+	if o != nil && !IsNil(o.HpaCpuAverageUtilizationPercent) {
 		return true
 	}
 
@@ -1256,7 +1259,7 @@ func (o *ApplicationAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32
 
 // GetSecurityServiceAccountName returns the SecurityServiceAccountName field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetSecurityServiceAccountName() string {
-	if o == nil || o.SecurityServiceAccountName == nil {
+	if o == nil || IsNil(o.SecurityServiceAccountName) {
 		var ret string
 		return ret
 	}
@@ -1266,7 +1269,7 @@ func (o *ApplicationAdvancedSettings) GetSecurityServiceAccountName() string {
 // GetSecurityServiceAccountNameOk returns a tuple with the SecurityServiceAccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetSecurityServiceAccountNameOk() (*string, bool) {
-	if o == nil || o.SecurityServiceAccountName == nil {
+	if o == nil || IsNil(o.SecurityServiceAccountName) {
 		return nil, false
 	}
 	return o.SecurityServiceAccountName, true
@@ -1274,7 +1277,7 @@ func (o *ApplicationAdvancedSettings) GetSecurityServiceAccountNameOk() (*string
 
 // HasSecurityServiceAccountName returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasSecurityServiceAccountName() bool {
-	if o != nil && o.SecurityServiceAccountName != nil {
+	if o != nil && !IsNil(o.SecurityServiceAccountName) {
 		return true
 	}
 
@@ -1288,7 +1291,7 @@ func (o *ApplicationAdvancedSettings) SetSecurityServiceAccountName(v string) {
 
 // GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
-	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+	if o == nil || IsNil(o.SecurityReadOnlyRootFilesystem) {
 		var ret bool
 		return ret
 	}
@@ -1298,7 +1301,7 @@ func (o *ApplicationAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
 // GetSecurityReadOnlyRootFilesystemOk returns a tuple with the SecurityReadOnlyRootFilesystem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bool, bool) {
-	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+	if o == nil || IsNil(o.SecurityReadOnlyRootFilesystem) {
 		return nil, false
 	}
 	return o.SecurityReadOnlyRootFilesystem, true
@@ -1306,7 +1309,7 @@ func (o *ApplicationAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bo
 
 // HasSecurityReadOnlyRootFilesystem returns a boolean if a field has been set.
 func (o *ApplicationAdvancedSettings) HasSecurityReadOnlyRootFilesystem() bool {
-	if o != nil && o.SecurityReadOnlyRootFilesystem != nil {
+	if o != nil && !IsNil(o.SecurityReadOnlyRootFilesystem) {
 		return true
 	}
 
@@ -1319,110 +1322,118 @@ func (o *ApplicationAdvancedSettings) SetSecurityReadOnlyRootFilesystem(v bool) 
 }
 
 func (o ApplicationAdvancedSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DeploymentCustomDomainCheckEnabled != nil {
-		toSerialize["deployment.custom_domain_check_enabled"] = o.DeploymentCustomDomainCheckEnabled
-	}
-	if o.DeploymentTerminationGracePeriodSeconds != nil {
-		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
-	}
-	if o.DeploymentAffinityNodeRequired != nil {
-		toSerialize["deployment.affinity.node.required"] = o.DeploymentAffinityNodeRequired
-	}
-	if o.DeploymentAntiaffinityPod != nil {
-		toSerialize["deployment.antiaffinity.pod"] = o.DeploymentAntiaffinityPod
-	}
-	if o.DeploymentUpdateStrategyType != nil {
-		toSerialize["deployment.update_strategy.type"] = o.DeploymentUpdateStrategyType
-	}
-	if o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent != nil {
-		toSerialize["deployment.update_strategy.rolling_update.max_unavailable_percent"] = o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
-	}
-	if o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent != nil {
-		toSerialize["deployment.update_strategy.rolling_update.max_surge_percent"] = o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent
-	}
-	if o.BuildTimeoutMaxSec != nil {
-		toSerialize["build.timeout_max_sec"] = o.BuildTimeoutMaxSec
-	}
-	if o.BuildCpuMaxInMilli != nil {
-		toSerialize["build.cpu_max_in_milli"] = o.BuildCpuMaxInMilli
-	}
-	if o.BuildRamMaxInGib != nil {
-		toSerialize["build.ram_max_in_gib"] = o.BuildRamMaxInGib
-	}
-	if o.NetworkIngressProxyBodySizeMb != nil {
-		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
-	}
-	if o.NetworkIngressEnableCors != nil {
-		toSerialize["network.ingress.enable_cors"] = o.NetworkIngressEnableCors
-	}
-	if o.NetworkIngressCorsAllowOrigin != nil {
-		toSerialize["network.ingress.cors_allow_origin"] = o.NetworkIngressCorsAllowOrigin
-	}
-	if o.NetworkIngressCorsAllowMethods != nil {
-		toSerialize["network.ingress.cors_allow_methods"] = o.NetworkIngressCorsAllowMethods
-	}
-	if o.NetworkIngressCorsAllowHeaders != nil {
-		toSerialize["network.ingress.cors_allow_headers"] = o.NetworkIngressCorsAllowHeaders
-	}
-	if o.NetworkIngressProxyBufferSizeKb != nil {
-		toSerialize["network.ingress.proxy_buffer_size_kb"] = o.NetworkIngressProxyBufferSizeKb
-	}
-	if o.NetworkIngressKeepaliveTimeSeconds != nil {
-		toSerialize["network.ingress.keepalive_time_seconds"] = o.NetworkIngressKeepaliveTimeSeconds
-	}
-	if o.NetworkIngressKeepaliveTimeoutSeconds != nil {
-		toSerialize["network.ingress.keepalive_timeout_seconds"] = o.NetworkIngressKeepaliveTimeoutSeconds
-	}
-	if o.NetworkIngressSendTimeoutSeconds != nil {
-		toSerialize["network.ingress.send_timeout_seconds"] = o.NetworkIngressSendTimeoutSeconds
-	}
-	if o.NetworkIngressProxyConnectTimeoutSeconds != nil {
-		toSerialize["network.ingress.proxy_connect_timeout_seconds"] = o.NetworkIngressProxyConnectTimeoutSeconds
-	}
-	if o.NetworkIngressProxySendTimeoutSeconds != nil {
-		toSerialize["network.ingress.proxy_send_timeout_seconds"] = o.NetworkIngressProxySendTimeoutSeconds
-	}
-	if o.NetworkIngressProxyReadTimeoutSeconds != nil {
-		toSerialize["network.ingress.proxy_read_timeout_seconds"] = o.NetworkIngressProxyReadTimeoutSeconds
-	}
-	if o.NetworkIngressProxyBuffering != nil {
-		toSerialize["network.ingress.proxy_buffering"] = o.NetworkIngressProxyBuffering
-	}
-	if o.NetworkIngressProxyRequestBuffering != nil {
-		toSerialize["network.ingress.proxy_request_buffering"] = o.NetworkIngressProxyRequestBuffering
-	}
-	if o.NetworkIngressWhitelistSourceRange != nil {
-		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange
-	}
-	if o.NetworkIngressDenylistSourceRange != nil {
-		toSerialize["network.ingress.denylist_source_range"] = o.NetworkIngressDenylistSourceRange
-	}
-	if o.NetworkIngressBasicAuthEnvVar != nil {
-		toSerialize["network.ingress.basic_auth_env_var"] = o.NetworkIngressBasicAuthEnvVar
-	}
-	if o.NetworkIngressEnableStickySession != nil {
-		toSerialize["network.ingress.enable_sticky_session"] = o.NetworkIngressEnableStickySession
-	}
-	if o.NetworkIngressGrpcSendTimeoutSeconds != nil {
-		toSerialize["network.ingress.grpc_send_timeout_seconds"] = o.NetworkIngressGrpcSendTimeoutSeconds
-	}
-	if o.NetworkIngressGrpcReadTimeoutSeconds != nil {
-		toSerialize["network.ingress.grpc_read_timeout_seconds"] = o.NetworkIngressGrpcReadTimeoutSeconds
-	}
-	if o.NetworkIngressExtraHeaders != nil {
-		toSerialize["network.ingress.extra_headers"] = o.NetworkIngressExtraHeaders
-	}
-	if o.HpaCpuAverageUtilizationPercent != nil {
-		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
-	}
-	if o.SecurityServiceAccountName != nil {
-		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
-	}
-	if o.SecurityReadOnlyRootFilesystem != nil {
-		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeploymentCustomDomainCheckEnabled) {
+		toSerialize["deployment.custom_domain_check_enabled"] = o.DeploymentCustomDomainCheckEnabled
+	}
+	if !IsNil(o.DeploymentTerminationGracePeriodSeconds) {
+		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
+	}
+	if !IsNil(o.DeploymentAffinityNodeRequired) {
+		toSerialize["deployment.affinity.node.required"] = o.DeploymentAffinityNodeRequired
+	}
+	if !IsNil(o.DeploymentAntiaffinityPod) {
+		toSerialize["deployment.antiaffinity.pod"] = o.DeploymentAntiaffinityPod
+	}
+	if !IsNil(o.DeploymentUpdateStrategyType) {
+		toSerialize["deployment.update_strategy.type"] = o.DeploymentUpdateStrategyType
+	}
+	if !IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent) {
+		toSerialize["deployment.update_strategy.rolling_update.max_unavailable_percent"] = o.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
+	}
+	if !IsNil(o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent) {
+		toSerialize["deployment.update_strategy.rolling_update.max_surge_percent"] = o.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent
+	}
+	if !IsNil(o.BuildTimeoutMaxSec) {
+		toSerialize["build.timeout_max_sec"] = o.BuildTimeoutMaxSec
+	}
+	if !IsNil(o.BuildCpuMaxInMilli) {
+		toSerialize["build.cpu_max_in_milli"] = o.BuildCpuMaxInMilli
+	}
+	if !IsNil(o.BuildRamMaxInGib) {
+		toSerialize["build.ram_max_in_gib"] = o.BuildRamMaxInGib
+	}
+	if !IsNil(o.NetworkIngressProxyBodySizeMb) {
+		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
+	}
+	if !IsNil(o.NetworkIngressEnableCors) {
+		toSerialize["network.ingress.enable_cors"] = o.NetworkIngressEnableCors
+	}
+	if !IsNil(o.NetworkIngressCorsAllowOrigin) {
+		toSerialize["network.ingress.cors_allow_origin"] = o.NetworkIngressCorsAllowOrigin
+	}
+	if !IsNil(o.NetworkIngressCorsAllowMethods) {
+		toSerialize["network.ingress.cors_allow_methods"] = o.NetworkIngressCorsAllowMethods
+	}
+	if !IsNil(o.NetworkIngressCorsAllowHeaders) {
+		toSerialize["network.ingress.cors_allow_headers"] = o.NetworkIngressCorsAllowHeaders
+	}
+	if !IsNil(o.NetworkIngressProxyBufferSizeKb) {
+		toSerialize["network.ingress.proxy_buffer_size_kb"] = o.NetworkIngressProxyBufferSizeKb
+	}
+	if !IsNil(o.NetworkIngressKeepaliveTimeSeconds) {
+		toSerialize["network.ingress.keepalive_time_seconds"] = o.NetworkIngressKeepaliveTimeSeconds
+	}
+	if !IsNil(o.NetworkIngressKeepaliveTimeoutSeconds) {
+		toSerialize["network.ingress.keepalive_timeout_seconds"] = o.NetworkIngressKeepaliveTimeoutSeconds
+	}
+	if !IsNil(o.NetworkIngressSendTimeoutSeconds) {
+		toSerialize["network.ingress.send_timeout_seconds"] = o.NetworkIngressSendTimeoutSeconds
+	}
+	if !IsNil(o.NetworkIngressProxyConnectTimeoutSeconds) {
+		toSerialize["network.ingress.proxy_connect_timeout_seconds"] = o.NetworkIngressProxyConnectTimeoutSeconds
+	}
+	if !IsNil(o.NetworkIngressProxySendTimeoutSeconds) {
+		toSerialize["network.ingress.proxy_send_timeout_seconds"] = o.NetworkIngressProxySendTimeoutSeconds
+	}
+	if !IsNil(o.NetworkIngressProxyReadTimeoutSeconds) {
+		toSerialize["network.ingress.proxy_read_timeout_seconds"] = o.NetworkIngressProxyReadTimeoutSeconds
+	}
+	if !IsNil(o.NetworkIngressProxyBuffering) {
+		toSerialize["network.ingress.proxy_buffering"] = o.NetworkIngressProxyBuffering
+	}
+	if !IsNil(o.NetworkIngressProxyRequestBuffering) {
+		toSerialize["network.ingress.proxy_request_buffering"] = o.NetworkIngressProxyRequestBuffering
+	}
+	if !IsNil(o.NetworkIngressWhitelistSourceRange) {
+		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange
+	}
+	if !IsNil(o.NetworkIngressDenylistSourceRange) {
+		toSerialize["network.ingress.denylist_source_range"] = o.NetworkIngressDenylistSourceRange
+	}
+	if !IsNil(o.NetworkIngressBasicAuthEnvVar) {
+		toSerialize["network.ingress.basic_auth_env_var"] = o.NetworkIngressBasicAuthEnvVar
+	}
+	if !IsNil(o.NetworkIngressEnableStickySession) {
+		toSerialize["network.ingress.enable_sticky_session"] = o.NetworkIngressEnableStickySession
+	}
+	if !IsNil(o.NetworkIngressGrpcSendTimeoutSeconds) {
+		toSerialize["network.ingress.grpc_send_timeout_seconds"] = o.NetworkIngressGrpcSendTimeoutSeconds
+	}
+	if !IsNil(o.NetworkIngressGrpcReadTimeoutSeconds) {
+		toSerialize["network.ingress.grpc_read_timeout_seconds"] = o.NetworkIngressGrpcReadTimeoutSeconds
+	}
+	if !IsNil(o.NetworkIngressExtraHeaders) {
+		toSerialize["network.ingress.extra_headers"] = o.NetworkIngressExtraHeaders
+	}
+	if !IsNil(o.HpaCpuAverageUtilizationPercent) {
+		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
+	}
+	if !IsNil(o.SecurityServiceAccountName) {
+		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
+	}
+	if !IsNil(o.SecurityReadOnlyRootFilesystem) {
+		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationAdvancedSettings struct {

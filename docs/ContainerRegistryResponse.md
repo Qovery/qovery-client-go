@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Kind** | Pointer to [**ContainerRegistryKindEnum**](ContainerRegistryKindEnum.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the container registry | [optional] 
-**Cluster** | Pointer to [**NullableBase**](Base.md) |  | [optional] 
+**Cluster** | Pointer to [**ContainerRegistryResponseAllOfCluster**](ContainerRegistryResponseAllOfCluster.md) |  | [optional] 
 
 ## Methods
 
@@ -199,20 +199,20 @@ HasUrl returns a boolean if a field has been set.
 
 ### GetCluster
 
-`func (o *ContainerRegistryResponse) GetCluster() Base`
+`func (o *ContainerRegistryResponse) GetCluster() ContainerRegistryResponseAllOfCluster`
 
 GetCluster returns the Cluster field if non-nil, zero value otherwise.
 
 ### GetClusterOk
 
-`func (o *ContainerRegistryResponse) GetClusterOk() (*Base, bool)`
+`func (o *ContainerRegistryResponse) GetClusterOk() (*ContainerRegistryResponseAllOfCluster, bool)`
 
 GetClusterOk returns a tuple with the Cluster field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCluster
 
-`func (o *ContainerRegistryResponse) SetCluster(v Base)`
+`func (o *ContainerRegistryResponse) SetCluster(v ContainerRegistryResponseAllOfCluster)`
 
 SetCluster sets Cluster field to given value.
 
@@ -222,16 +222,6 @@ SetCluster sets Cluster field to given value.
 
 HasCluster returns a boolean if a field has been set.
 
-### SetClusterNil
-
-`func (o *ContainerRegistryResponse) SetClusterNil(b bool)`
-
- SetClusterNil sets the value for Cluster to be an explicit nil
-
-### UnsetCluster
-`func (o *ContainerRegistryResponse) UnsetCluster()`
-
-UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

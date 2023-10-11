@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ContainerSecretApiService ContainerSecretApi service
-type ContainerSecretApiService service
+// ContainerSecretAPIService ContainerSecretAPI service
+type ContainerSecretAPIService service
 
 type ApiCreateContainerSecretRequest struct {
 	ctx           context.Context
-	ApiService    *ContainerSecretApiService
+	ApiService    *ContainerSecretAPIService
 	containerId   string
 	secretRequest *SecretRequest
 }
@@ -49,7 +49,7 @@ CreateContainerSecret Add a secret to the container
  @param containerId Container ID
  @return ApiCreateContainerSecretRequest
 */
-func (a *ContainerSecretApiService) CreateContainerSecret(ctx context.Context, containerId string) ApiCreateContainerSecretRequest {
+func (a *ContainerSecretAPIService) CreateContainerSecret(ctx context.Context, containerId string) ApiCreateContainerSecretRequest {
 	return ApiCreateContainerSecretRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -59,7 +59,7 @@ func (a *ContainerSecretApiService) CreateContainerSecret(ctx context.Context, c
 
 // Execute executes the request
 //  @return Secret
-func (a *ContainerSecretApiService) CreateContainerSecretExecute(r ApiCreateContainerSecretRequest) (*Secret, *http.Response, error) {
+func (a *ContainerSecretAPIService) CreateContainerSecretExecute(r ApiCreateContainerSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -67,13 +67,13 @@ func (a *ContainerSecretApiService) CreateContainerSecretExecute(r ApiCreateCont
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretApiService.CreateContainerSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretAPIService.CreateContainerSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -122,9 +122,9 @@ func (a *ContainerSecretApiService) CreateContainerSecretExecute(r ApiCreateCont
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -151,7 +151,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretExecute(r ApiCreateCont
 
 type ApiCreateContainerSecretAliasRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerSecretApiService
+	ApiService  *ContainerSecretAPIService
 	containerId string
 	secretId    string
 	key         *Key
@@ -182,7 +182,7 @@ CreateContainerSecretAlias Create a secret alias at the container level
  @param secretId Secret ID
  @return ApiCreateContainerSecretAliasRequest
 */
-func (a *ContainerSecretApiService) CreateContainerSecretAlias(ctx context.Context, containerId string, secretId string) ApiCreateContainerSecretAliasRequest {
+func (a *ContainerSecretAPIService) CreateContainerSecretAlias(ctx context.Context, containerId string, secretId string) ApiCreateContainerSecretAliasRequest {
 	return ApiCreateContainerSecretAliasRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -193,7 +193,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretAlias(ctx context.Conte
 
 // Execute executes the request
 //  @return Secret
-func (a *ContainerSecretApiService) CreateContainerSecretAliasExecute(r ApiCreateContainerSecretAliasRequest) (*Secret, *http.Response, error) {
+func (a *ContainerSecretAPIService) CreateContainerSecretAliasExecute(r ApiCreateContainerSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -201,14 +201,14 @@ func (a *ContainerSecretApiService) CreateContainerSecretAliasExecute(r ApiCreat
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretApiService.CreateContainerSecretAlias")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretAPIService.CreateContainerSecretAlias")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/secret/{secretId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -257,9 +257,9 @@ func (a *ContainerSecretApiService) CreateContainerSecretAliasExecute(r ApiCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -286,7 +286,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretAliasExecute(r ApiCreat
 
 type ApiCreateContainerSecretOverrideRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerSecretApiService
+	ApiService  *ContainerSecretAPIService
 	containerId string
 	secretId    string
 	value       *Value
@@ -316,7 +316,7 @@ CreateContainerSecretOverride Create a secret override at the container level
  @param secretId Secret ID
  @return ApiCreateContainerSecretOverrideRequest
 */
-func (a *ContainerSecretApiService) CreateContainerSecretOverride(ctx context.Context, containerId string, secretId string) ApiCreateContainerSecretOverrideRequest {
+func (a *ContainerSecretAPIService) CreateContainerSecretOverride(ctx context.Context, containerId string, secretId string) ApiCreateContainerSecretOverrideRequest {
 	return ApiCreateContainerSecretOverrideRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -327,7 +327,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretOverride(ctx context.Co
 
 // Execute executes the request
 //  @return Secret
-func (a *ContainerSecretApiService) CreateContainerSecretOverrideExecute(r ApiCreateContainerSecretOverrideRequest) (*Secret, *http.Response, error) {
+func (a *ContainerSecretAPIService) CreateContainerSecretOverrideExecute(r ApiCreateContainerSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -335,14 +335,14 @@ func (a *ContainerSecretApiService) CreateContainerSecretOverrideExecute(r ApiCr
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretApiService.CreateContainerSecretOverride")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretAPIService.CreateContainerSecretOverride")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/secret/{secretId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -391,9 +391,9 @@ func (a *ContainerSecretApiService) CreateContainerSecretOverrideExecute(r ApiCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -420,7 +420,7 @@ func (a *ContainerSecretApiService) CreateContainerSecretOverrideExecute(r ApiCr
 
 type ApiDeleteContainerSecretRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerSecretApiService
+	ApiService  *ContainerSecretAPIService
 	containerId string
 	secretId    string
 }
@@ -442,7 +442,7 @@ DeleteContainerSecret Delete a secret from an container
  @param secretId Secret ID
  @return ApiDeleteContainerSecretRequest
 */
-func (a *ContainerSecretApiService) DeleteContainerSecret(ctx context.Context, containerId string, secretId string) ApiDeleteContainerSecretRequest {
+func (a *ContainerSecretAPIService) DeleteContainerSecret(ctx context.Context, containerId string, secretId string) ApiDeleteContainerSecretRequest {
 	return ApiDeleteContainerSecretRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -452,21 +452,21 @@ func (a *ContainerSecretApiService) DeleteContainerSecret(ctx context.Context, c
 }
 
 // Execute executes the request
-func (a *ContainerSecretApiService) DeleteContainerSecretExecute(r ApiDeleteContainerSecretRequest) (*http.Response, error) {
+func (a *ContainerSecretAPIService) DeleteContainerSecretExecute(r ApiDeleteContainerSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretApiService.DeleteContainerSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretAPIService.DeleteContainerSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -513,9 +513,9 @@ func (a *ContainerSecretApiService) DeleteContainerSecretExecute(r ApiDeleteCont
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -533,7 +533,7 @@ func (a *ContainerSecretApiService) DeleteContainerSecretExecute(r ApiDeleteCont
 
 type ApiEditContainerSecretRequest struct {
 	ctx               context.Context
-	ApiService        *ContainerSecretApiService
+	ApiService        *ContainerSecretAPIService
 	containerId       string
 	secretId          string
 	secretEditRequest *SecretEditRequest
@@ -562,7 +562,7 @@ EditContainerSecret Edit a secret belonging to the container
  @param secretId Secret ID
  @return ApiEditContainerSecretRequest
 */
-func (a *ContainerSecretApiService) EditContainerSecret(ctx context.Context, containerId string, secretId string) ApiEditContainerSecretRequest {
+func (a *ContainerSecretAPIService) EditContainerSecret(ctx context.Context, containerId string, secretId string) ApiEditContainerSecretRequest {
 	return ApiEditContainerSecretRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -573,7 +573,7 @@ func (a *ContainerSecretApiService) EditContainerSecret(ctx context.Context, con
 
 // Execute executes the request
 //  @return Secret
-func (a *ContainerSecretApiService) EditContainerSecretExecute(r ApiEditContainerSecretRequest) (*Secret, *http.Response, error) {
+func (a *ContainerSecretAPIService) EditContainerSecretExecute(r ApiEditContainerSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -581,14 +581,14 @@ func (a *ContainerSecretApiService) EditContainerSecretExecute(r ApiEditContaine
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretApiService.EditContainerSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretAPIService.EditContainerSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -640,9 +640,9 @@ func (a *ContainerSecretApiService) EditContainerSecretExecute(r ApiEditContaine
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -669,7 +669,7 @@ func (a *ContainerSecretApiService) EditContainerSecretExecute(r ApiEditContaine
 
 type ApiListContainerSecretsRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerSecretApiService
+	ApiService  *ContainerSecretAPIService
 	containerId string
 }
 
@@ -686,7 +686,7 @@ Secrets are like environment variables, but they are secured and can't be reveal
  @param containerId Container ID
  @return ApiListContainerSecretsRequest
 */
-func (a *ContainerSecretApiService) ListContainerSecrets(ctx context.Context, containerId string) ApiListContainerSecretsRequest {
+func (a *ContainerSecretAPIService) ListContainerSecrets(ctx context.Context, containerId string) ApiListContainerSecretsRequest {
 	return ApiListContainerSecretsRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -696,7 +696,7 @@ func (a *ContainerSecretApiService) ListContainerSecrets(ctx context.Context, co
 
 // Execute executes the request
 //  @return SecretResponseList
-func (a *ContainerSecretApiService) ListContainerSecretsExecute(r ApiListContainerSecretsRequest) (*SecretResponseList, *http.Response, error) {
+func (a *ContainerSecretAPIService) ListContainerSecretsExecute(r ApiListContainerSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -704,13 +704,13 @@ func (a *ContainerSecretApiService) ListContainerSecretsExecute(r ApiListContain
 		localVarReturnValue *SecretResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretApiService.ListContainerSecrets")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerSecretAPIService.ListContainerSecrets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -757,9 +757,9 @@ func (a *ContainerSecretApiService) ListContainerSecretsExecute(r ApiListContain
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

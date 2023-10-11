@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ProjectMainCallsApiService ProjectMainCallsApi service
-type ProjectMainCallsApiService service
+// ProjectMainCallsAPIService ProjectMainCallsAPI service
+type ProjectMainCallsAPIService service
 
 type ApiDeleteProjectRequest struct {
 	ctx        context.Context
-	ApiService *ProjectMainCallsApiService
+	ApiService *ProjectMainCallsAPIService
 	projectId  string
 }
 
@@ -42,7 +42,7 @@ To delete a project you must have the admin permission
  @param projectId Project ID
  @return ApiDeleteProjectRequest
 */
-func (a *ProjectMainCallsApiService) DeleteProject(ctx context.Context, projectId string) ApiDeleteProjectRequest {
+func (a *ProjectMainCallsAPIService) DeleteProject(ctx context.Context, projectId string) ApiDeleteProjectRequest {
 	return ApiDeleteProjectRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -51,20 +51,20 @@ func (a *ProjectMainCallsApiService) DeleteProject(ctx context.Context, projectI
 }
 
 // Execute executes the request
-func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequest) (*http.Response, error) {
+func (a *ProjectMainCallsAPIService) DeleteProjectExecute(r ApiDeleteProjectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.DeleteProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsAPIService.DeleteProject")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequ
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -131,7 +131,7 @@ func (a *ProjectMainCallsApiService) DeleteProjectExecute(r ApiDeleteProjectRequ
 
 type ApiEditProjectRequest struct {
 	ctx            context.Context
-	ApiService     *ProjectMainCallsApiService
+	ApiService     *ProjectMainCallsAPIService
 	projectId      string
 	projectRequest *ProjectRequest
 }
@@ -154,7 +154,7 @@ To edit a project you must have the admin permission
  @param projectId Project ID
  @return ApiEditProjectRequest
 */
-func (a *ProjectMainCallsApiService) EditProject(ctx context.Context, projectId string) ApiEditProjectRequest {
+func (a *ProjectMainCallsAPIService) EditProject(ctx context.Context, projectId string) ApiEditProjectRequest {
 	return ApiEditProjectRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -164,7 +164,7 @@ func (a *ProjectMainCallsApiService) EditProject(ctx context.Context, projectId 
 
 // Execute executes the request
 //  @return Project
-func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest) (*Project, *http.Response, error) {
+func (a *ProjectMainCallsAPIService) EditProjectExecute(r ApiEditProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -172,13 +172,13 @@ func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest)
 		localVarReturnValue *Project
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.EditProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsAPIService.EditProject")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -227,9 +227,9 @@ func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -256,7 +256,7 @@ func (a *ProjectMainCallsApiService) EditProjectExecute(r ApiEditProjectRequest)
 
 type ApiGetProjectRequest struct {
 	ctx        context.Context
-	ApiService *ProjectMainCallsApiService
+	ApiService *ProjectMainCallsAPIService
 	projectId  string
 }
 
@@ -271,7 +271,7 @@ GetProject Get project by ID
  @param projectId Project ID
  @return ApiGetProjectRequest
 */
-func (a *ProjectMainCallsApiService) GetProject(ctx context.Context, projectId string) ApiGetProjectRequest {
+func (a *ProjectMainCallsAPIService) GetProject(ctx context.Context, projectId string) ApiGetProjectRequest {
 	return ApiGetProjectRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -281,7 +281,7 @@ func (a *ProjectMainCallsApiService) GetProject(ctx context.Context, projectId s
 
 // Execute executes the request
 //  @return Project
-func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (*Project, *http.Response, error) {
+func (a *ProjectMainCallsAPIService) GetProjectExecute(r ApiGetProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -289,13 +289,13 @@ func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (
 		localVarReturnValue *Project
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsApiService.GetProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectMainCallsAPIService.GetProject")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -342,9 +342,9 @@ func (a *ProjectMainCallsApiService) GetProjectExecute(r ApiGetProjectRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

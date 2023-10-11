@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Service type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Service{}
+
 // Service struct for Service
 type Service struct {
 	// uuid of the associated service (application, database, job, gateway...)
@@ -107,7 +110,7 @@ func (o *Service) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Service) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *Service) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -125,7 +128,7 @@ func (o *Service) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Service) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *Service) SetUpdatedAt(v time.Time) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Service) GetType() ServiceTypeEnum {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret ServiceTypeEnum
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *Service) GetType() ServiceTypeEnum {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetTypeOk() (*ServiceTypeEnum, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -157,7 +160,7 @@ func (o *Service) GetTypeOk() (*ServiceTypeEnum, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *Service) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *Service) SetType(v ServiceTypeEnum) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Service) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *Service) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -189,7 +192,7 @@ func (o *Service) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Service) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *Service) SetName(v string) {
 
 // GetDeployedCommitId returns the DeployedCommitId field value if set, zero value otherwise.
 func (o *Service) GetDeployedCommitId() string {
-	if o == nil || o.DeployedCommitId == nil {
+	if o == nil || IsNil(o.DeployedCommitId) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *Service) GetDeployedCommitId() string {
 // GetDeployedCommitIdOk returns a tuple with the DeployedCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetDeployedCommitIdOk() (*string, bool) {
-	if o == nil || o.DeployedCommitId == nil {
+	if o == nil || IsNil(o.DeployedCommitId) {
 		return nil, false
 	}
 	return o.DeployedCommitId, true
@@ -221,7 +224,7 @@ func (o *Service) GetDeployedCommitIdOk() (*string, bool) {
 
 // HasDeployedCommitId returns a boolean if a field has been set.
 func (o *Service) HasDeployedCommitId() bool {
-	if o != nil && o.DeployedCommitId != nil {
+	if o != nil && !IsNil(o.DeployedCommitId) {
 		return true
 	}
 
@@ -235,7 +238,7 @@ func (o *Service) SetDeployedCommitId(v string) {
 
 // GetLastUpdatedBy returns the LastUpdatedBy field value if set, zero value otherwise.
 func (o *Service) GetLastUpdatedBy() string {
-	if o == nil || o.LastUpdatedBy == nil {
+	if o == nil || IsNil(o.LastUpdatedBy) {
 		var ret string
 		return ret
 	}
@@ -245,7 +248,7 @@ func (o *Service) GetLastUpdatedBy() string {
 // GetLastUpdatedByOk returns a tuple with the LastUpdatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetLastUpdatedByOk() (*string, bool) {
-	if o == nil || o.LastUpdatedBy == nil {
+	if o == nil || IsNil(o.LastUpdatedBy) {
 		return nil, false
 	}
 	return o.LastUpdatedBy, true
@@ -253,7 +256,7 @@ func (o *Service) GetLastUpdatedByOk() (*string, bool) {
 
 // HasLastUpdatedBy returns a boolean if a field has been set.
 func (o *Service) HasLastUpdatedBy() bool {
-	if o != nil && o.LastUpdatedBy != nil {
+	if o != nil && !IsNil(o.LastUpdatedBy) {
 		return true
 	}
 
@@ -267,7 +270,7 @@ func (o *Service) SetLastUpdatedBy(v string) {
 
 // GetConsumedResourcesInPercent returns the ConsumedResourcesInPercent field value if set, zero value otherwise.
 func (o *Service) GetConsumedResourcesInPercent() float32 {
-	if o == nil || o.ConsumedResourcesInPercent == nil {
+	if o == nil || IsNil(o.ConsumedResourcesInPercent) {
 		var ret float32
 		return ret
 	}
@@ -277,7 +280,7 @@ func (o *Service) GetConsumedResourcesInPercent() float32 {
 // GetConsumedResourcesInPercentOk returns a tuple with the ConsumedResourcesInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetConsumedResourcesInPercentOk() (*float32, bool) {
-	if o == nil || o.ConsumedResourcesInPercent == nil {
+	if o == nil || IsNil(o.ConsumedResourcesInPercent) {
 		return nil, false
 	}
 	return o.ConsumedResourcesInPercent, true
@@ -285,7 +288,7 @@ func (o *Service) GetConsumedResourcesInPercentOk() (*float32, bool) {
 
 // HasConsumedResourcesInPercent returns a boolean if a field has been set.
 func (o *Service) HasConsumedResourcesInPercent() bool {
-	if o != nil && o.ConsumedResourcesInPercent != nil {
+	if o != nil && !IsNil(o.ConsumedResourcesInPercent) {
 		return true
 	}
 
@@ -299,7 +302,7 @@ func (o *Service) SetConsumedResourcesInPercent(v float32) {
 
 // GetServiceTypology returns the ServiceTypology field value if set, zero value otherwise.
 func (o *Service) GetServiceTypology() string {
-	if o == nil || o.ServiceTypology == nil {
+	if o == nil || IsNil(o.ServiceTypology) {
 		var ret string
 		return ret
 	}
@@ -309,7 +312,7 @@ func (o *Service) GetServiceTypology() string {
 // GetServiceTypologyOk returns a tuple with the ServiceTypology field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetServiceTypologyOk() (*string, bool) {
-	if o == nil || o.ServiceTypology == nil {
+	if o == nil || IsNil(o.ServiceTypology) {
 		return nil, false
 	}
 	return o.ServiceTypology, true
@@ -317,7 +320,7 @@ func (o *Service) GetServiceTypologyOk() (*string, bool) {
 
 // HasServiceTypology returns a boolean if a field has been set.
 func (o *Service) HasServiceTypology() bool {
-	if o != nil && o.ServiceTypology != nil {
+	if o != nil && !IsNil(o.ServiceTypology) {
 		return true
 	}
 
@@ -331,7 +334,7 @@ func (o *Service) SetServiceTypology(v string) {
 
 // GetServiceVersion returns the ServiceVersion field value if set, zero value otherwise.
 func (o *Service) GetServiceVersion() string {
-	if o == nil || o.ServiceVersion == nil {
+	if o == nil || IsNil(o.ServiceVersion) {
 		var ret string
 		return ret
 	}
@@ -341,7 +344,7 @@ func (o *Service) GetServiceVersion() string {
 // GetServiceVersionOk returns a tuple with the ServiceVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetServiceVersionOk() (*string, bool) {
-	if o == nil || o.ServiceVersion == nil {
+	if o == nil || IsNil(o.ServiceVersion) {
 		return nil, false
 	}
 	return o.ServiceVersion, true
@@ -349,7 +352,7 @@ func (o *Service) GetServiceVersionOk() (*string, bool) {
 
 // HasServiceVersion returns a boolean if a field has been set.
 func (o *Service) HasServiceVersion() bool {
-	if o != nil && o.ServiceVersion != nil {
+	if o != nil && !IsNil(o.ServiceVersion) {
 		return true
 	}
 
@@ -363,7 +366,7 @@ func (o *Service) SetServiceVersion(v string) {
 
 // GetToUpdate returns the ToUpdate field value if set, zero value otherwise.
 func (o *Service) GetToUpdate() bool {
-	if o == nil || o.ToUpdate == nil {
+	if o == nil || IsNil(o.ToUpdate) {
 		var ret bool
 		return ret
 	}
@@ -373,7 +376,7 @@ func (o *Service) GetToUpdate() bool {
 // GetToUpdateOk returns a tuple with the ToUpdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Service) GetToUpdateOk() (*bool, bool) {
-	if o == nil || o.ToUpdate == nil {
+	if o == nil || IsNil(o.ToUpdate) {
 		return nil, false
 	}
 	return o.ToUpdate, true
@@ -381,7 +384,7 @@ func (o *Service) GetToUpdateOk() (*bool, bool) {
 
 // HasToUpdate returns a boolean if a field has been set.
 func (o *Service) HasToUpdate() bool {
-	if o != nil && o.ToUpdate != nil {
+	if o != nil && !IsNil(o.ToUpdate) {
 		return true
 	}
 
@@ -394,41 +397,45 @@ func (o *Service) SetToUpdate(v bool) {
 }
 
 func (o Service) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.DeployedCommitId != nil {
-		toSerialize["deployed_commit_id"] = o.DeployedCommitId
-	}
-	if o.LastUpdatedBy != nil {
-		toSerialize["last_updated_by"] = o.LastUpdatedBy
-	}
-	if o.ConsumedResourcesInPercent != nil {
-		toSerialize["consumed_resources_in_percent"] = o.ConsumedResourcesInPercent
-	}
-	if o.ServiceTypology != nil {
-		toSerialize["service_typology"] = o.ServiceTypology
-	}
-	if o.ServiceVersion != nil {
-		toSerialize["service_version"] = o.ServiceVersion
-	}
-	if o.ToUpdate != nil {
-		toSerialize["to_update"] = o.ToUpdate
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Service) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.DeployedCommitId) {
+		toSerialize["deployed_commit_id"] = o.DeployedCommitId
+	}
+	if !IsNil(o.LastUpdatedBy) {
+		toSerialize["last_updated_by"] = o.LastUpdatedBy
+	}
+	if !IsNil(o.ConsumedResourcesInPercent) {
+		toSerialize["consumed_resources_in_percent"] = o.ConsumedResourcesInPercent
+	}
+	if !IsNil(o.ServiceTypology) {
+		toSerialize["service_typology"] = o.ServiceTypology
+	}
+	if !IsNil(o.ServiceVersion) {
+		toSerialize["service_version"] = o.ServiceVersion
+	}
+	if !IsNil(o.ToUpdate) {
+		toSerialize["to_update"] = o.ToUpdate
+	}
+	return toSerialize, nil
 }
 
 type NullableService struct {

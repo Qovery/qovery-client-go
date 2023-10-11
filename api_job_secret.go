@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobSecretApiService JobSecretApi service
-type JobSecretApiService service
+// JobSecretAPIService JobSecretAPI service
+type JobSecretAPIService service
 
 type ApiCreateJobSecretRequest struct {
 	ctx           context.Context
-	ApiService    *JobSecretApiService
+	ApiService    *JobSecretAPIService
 	jobId         string
 	secretRequest *SecretRequest
 }
@@ -49,7 +49,7 @@ CreateJobSecret Add a secret to the job
  @param jobId Job ID
  @return ApiCreateJobSecretRequest
 */
-func (a *JobSecretApiService) CreateJobSecret(ctx context.Context, jobId string) ApiCreateJobSecretRequest {
+func (a *JobSecretAPIService) CreateJobSecret(ctx context.Context, jobId string) ApiCreateJobSecretRequest {
 	return ApiCreateJobSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -59,7 +59,7 @@ func (a *JobSecretApiService) CreateJobSecret(ctx context.Context, jobId string)
 
 // Execute executes the request
 //  @return Secret
-func (a *JobSecretApiService) CreateJobSecretExecute(r ApiCreateJobSecretRequest) (*Secret, *http.Response, error) {
+func (a *JobSecretAPIService) CreateJobSecretExecute(r ApiCreateJobSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -67,13 +67,13 @@ func (a *JobSecretApiService) CreateJobSecretExecute(r ApiCreateJobSecretRequest
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretApiService.CreateJobSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretAPIService.CreateJobSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -122,9 +122,9 @@ func (a *JobSecretApiService) CreateJobSecretExecute(r ApiCreateJobSecretRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -151,7 +151,7 @@ func (a *JobSecretApiService) CreateJobSecretExecute(r ApiCreateJobSecretRequest
 
 type ApiCreateJobSecretAliasRequest struct {
 	ctx        context.Context
-	ApiService *JobSecretApiService
+	ApiService *JobSecretAPIService
 	jobId      string
 	secretId   string
 	key        *Key
@@ -182,7 +182,7 @@ CreateJobSecretAlias Create a secret alias at the job level
  @param secretId Secret ID
  @return ApiCreateJobSecretAliasRequest
 */
-func (a *JobSecretApiService) CreateJobSecretAlias(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretAliasRequest {
+func (a *JobSecretAPIService) CreateJobSecretAlias(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretAliasRequest {
 	return ApiCreateJobSecretAliasRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -193,7 +193,7 @@ func (a *JobSecretApiService) CreateJobSecretAlias(ctx context.Context, jobId st
 
 // Execute executes the request
 //  @return Secret
-func (a *JobSecretApiService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAliasRequest) (*Secret, *http.Response, error) {
+func (a *JobSecretAPIService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -201,14 +201,14 @@ func (a *JobSecretApiService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAl
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretApiService.CreateJobSecretAlias")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretAPIService.CreateJobSecretAlias")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -257,9 +257,9 @@ func (a *JobSecretApiService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -286,7 +286,7 @@ func (a *JobSecretApiService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAl
 
 type ApiCreateJobSecretOverrideRequest struct {
 	ctx        context.Context
-	ApiService *JobSecretApiService
+	ApiService *JobSecretAPIService
 	jobId      string
 	secretId   string
 	value      *Value
@@ -316,7 +316,7 @@ CreateJobSecretOverride Create a secret override at the job level
  @param secretId Secret ID
  @return ApiCreateJobSecretOverrideRequest
 */
-func (a *JobSecretApiService) CreateJobSecretOverride(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretOverrideRequest {
+func (a *JobSecretAPIService) CreateJobSecretOverride(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretOverrideRequest {
 	return ApiCreateJobSecretOverrideRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -327,7 +327,7 @@ func (a *JobSecretApiService) CreateJobSecretOverride(ctx context.Context, jobId
 
 // Execute executes the request
 //  @return Secret
-func (a *JobSecretApiService) CreateJobSecretOverrideExecute(r ApiCreateJobSecretOverrideRequest) (*Secret, *http.Response, error) {
+func (a *JobSecretAPIService) CreateJobSecretOverrideExecute(r ApiCreateJobSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -335,14 +335,14 @@ func (a *JobSecretApiService) CreateJobSecretOverrideExecute(r ApiCreateJobSecre
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretApiService.CreateJobSecretOverride")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretAPIService.CreateJobSecretOverride")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -391,9 +391,9 @@ func (a *JobSecretApiService) CreateJobSecretOverrideExecute(r ApiCreateJobSecre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -420,7 +420,7 @@ func (a *JobSecretApiService) CreateJobSecretOverrideExecute(r ApiCreateJobSecre
 
 type ApiDeleteJobSecretRequest struct {
 	ctx        context.Context
-	ApiService *JobSecretApiService
+	ApiService *JobSecretAPIService
 	jobId      string
 	secretId   string
 }
@@ -442,7 +442,7 @@ DeleteJobSecret Delete a secret from an job
  @param secretId Secret ID
  @return ApiDeleteJobSecretRequest
 */
-func (a *JobSecretApiService) DeleteJobSecret(ctx context.Context, jobId string, secretId string) ApiDeleteJobSecretRequest {
+func (a *JobSecretAPIService) DeleteJobSecret(ctx context.Context, jobId string, secretId string) ApiDeleteJobSecretRequest {
 	return ApiDeleteJobSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -452,21 +452,21 @@ func (a *JobSecretApiService) DeleteJobSecret(ctx context.Context, jobId string,
 }
 
 // Execute executes the request
-func (a *JobSecretApiService) DeleteJobSecretExecute(r ApiDeleteJobSecretRequest) (*http.Response, error) {
+func (a *JobSecretAPIService) DeleteJobSecretExecute(r ApiDeleteJobSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretApiService.DeleteJobSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretAPIService.DeleteJobSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -513,9 +513,9 @@ func (a *JobSecretApiService) DeleteJobSecretExecute(r ApiDeleteJobSecretRequest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -533,7 +533,7 @@ func (a *JobSecretApiService) DeleteJobSecretExecute(r ApiDeleteJobSecretRequest
 
 type ApiEditJobSecretRequest struct {
 	ctx               context.Context
-	ApiService        *JobSecretApiService
+	ApiService        *JobSecretAPIService
 	jobId             string
 	secretId          string
 	secretEditRequest *SecretEditRequest
@@ -562,7 +562,7 @@ EditJobSecret Edit a secret belonging to the job
  @param secretId Secret ID
  @return ApiEditJobSecretRequest
 */
-func (a *JobSecretApiService) EditJobSecret(ctx context.Context, jobId string, secretId string) ApiEditJobSecretRequest {
+func (a *JobSecretAPIService) EditJobSecret(ctx context.Context, jobId string, secretId string) ApiEditJobSecretRequest {
 	return ApiEditJobSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -573,7 +573,7 @@ func (a *JobSecretApiService) EditJobSecret(ctx context.Context, jobId string, s
 
 // Execute executes the request
 //  @return Secret
-func (a *JobSecretApiService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*Secret, *http.Response, error) {
+func (a *JobSecretAPIService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -581,14 +581,14 @@ func (a *JobSecretApiService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretApiService.EditJobSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretAPIService.EditJobSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -640,9 +640,9 @@ func (a *JobSecretApiService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -669,7 +669,7 @@ func (a *JobSecretApiService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*
 
 type ApiListJobSecretsRequest struct {
 	ctx        context.Context
-	ApiService *JobSecretApiService
+	ApiService *JobSecretAPIService
 	jobId      string
 }
 
@@ -686,7 +686,7 @@ Secrets are like environment variables, but they are secured and can't be reveal
  @param jobId Job ID
  @return ApiListJobSecretsRequest
 */
-func (a *JobSecretApiService) ListJobSecrets(ctx context.Context, jobId string) ApiListJobSecretsRequest {
+func (a *JobSecretAPIService) ListJobSecrets(ctx context.Context, jobId string) ApiListJobSecretsRequest {
 	return ApiListJobSecretsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -696,7 +696,7 @@ func (a *JobSecretApiService) ListJobSecrets(ctx context.Context, jobId string) 
 
 // Execute executes the request
 //  @return SecretResponseList
-func (a *JobSecretApiService) ListJobSecretsExecute(r ApiListJobSecretsRequest) (*SecretResponseList, *http.Response, error) {
+func (a *JobSecretAPIService) ListJobSecretsExecute(r ApiListJobSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -704,13 +704,13 @@ func (a *JobSecretApiService) ListJobSecretsExecute(r ApiListJobSecretsRequest) 
 		localVarReturnValue *SecretResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretApiService.ListJobSecrets")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobSecretAPIService.ListJobSecrets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -757,9 +757,9 @@ func (a *JobSecretApiService) ListJobSecretsExecute(r ApiListJobSecretsRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentStageResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentStageResponseList{}
+
 // DeploymentStageResponseList struct for DeploymentStageResponseList
 type DeploymentStageResponseList struct {
 	Results []DeploymentStageResponse `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewDeploymentStageResponseListWithDefaults() *DeploymentStageResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *DeploymentStageResponseList) GetResults() []DeploymentStageResponse {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []DeploymentStageResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *DeploymentStageResponseList) GetResults() []DeploymentStageResponse {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageResponseList) GetResultsOk() ([]DeploymentStageResponse, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *DeploymentStageResponseList) GetResultsOk() ([]DeploymentStageResponse,
 
 // HasResults returns a boolean if a field has been set.
 func (o *DeploymentStageResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *DeploymentStageResponseList) SetResults(v []DeploymentStageResponse) {
 }
 
 func (o DeploymentStageResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentStageResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentStageResponseList struct {

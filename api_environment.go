@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// EnvironmentApiService EnvironmentApi service
-type EnvironmentApiService service
+// EnvironmentAPIService EnvironmentAPI service
+type EnvironmentAPIService service
 
 type ApiDeployAllApplicationsRequest struct {
 	ctx              context.Context
-	ApiService       *EnvironmentApiService
+	ApiService       *EnvironmentAPIService
 	environmentId    string
 	deployAllRequest *DeployAllRequest
 }
@@ -48,7 +48,7 @@ Start a deployment of the environment. Any of the services within the chosen env
  @param environmentId Environment ID
  @return ApiDeployAllApplicationsRequest
 */
-func (a *EnvironmentApiService) DeployAllApplications(ctx context.Context, environmentId string) ApiDeployAllApplicationsRequest {
+func (a *EnvironmentAPIService) DeployAllApplications(ctx context.Context, environmentId string) ApiDeployAllApplicationsRequest {
 	return ApiDeployAllApplicationsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -58,7 +58,7 @@ func (a *EnvironmentApiService) DeployAllApplications(ctx context.Context, envir
 
 // Execute executes the request
 //  @return Status
-func (a *EnvironmentApiService) DeployAllApplicationsExecute(r ApiDeployAllApplicationsRequest) (*Status, *http.Response, error) {
+func (a *EnvironmentAPIService) DeployAllApplicationsExecute(r ApiDeployAllApplicationsRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *EnvironmentApiService) DeployAllApplicationsExecute(r ApiDeployAllAppli
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentApiService.DeployAllApplications")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentAPIService.DeployAllApplications")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/application/deploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *EnvironmentApiService) DeployAllApplicationsExecute(r ApiDeployAllAppli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

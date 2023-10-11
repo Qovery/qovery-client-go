@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeployAllRequestContainersInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeployAllRequestContainersInner{}
+
 // DeployAllRequestContainersInner struct for DeployAllRequestContainersInner
 type DeployAllRequestContainersInner struct {
 	// id of the container to be updated.
@@ -67,7 +70,7 @@ func (o *DeployAllRequestContainersInner) SetId(v string) {
 
 // GetImageTag returns the ImageTag field value if set, zero value otherwise.
 func (o *DeployAllRequestContainersInner) GetImageTag() string {
-	if o == nil || o.ImageTag == nil {
+	if o == nil || IsNil(o.ImageTag) {
 		var ret string
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *DeployAllRequestContainersInner) GetImageTag() string {
 // GetImageTagOk returns a tuple with the ImageTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequestContainersInner) GetImageTagOk() (*string, bool) {
-	if o == nil || o.ImageTag == nil {
+	if o == nil || IsNil(o.ImageTag) {
 		return nil, false
 	}
 	return o.ImageTag, true
@@ -85,7 +88,7 @@ func (o *DeployAllRequestContainersInner) GetImageTagOk() (*string, bool) {
 
 // HasImageTag returns a boolean if a field has been set.
 func (o *DeployAllRequestContainersInner) HasImageTag() bool {
-	if o != nil && o.ImageTag != nil {
+	if o != nil && !IsNil(o.ImageTag) {
 		return true
 	}
 
@@ -98,14 +101,20 @@ func (o *DeployAllRequestContainersInner) SetImageTag(v string) {
 }
 
 func (o DeployAllRequestContainersInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if o.ImageTag != nil {
-		toSerialize["image_tag"] = o.ImageTag
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeployAllRequestContainersInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.ImageTag) {
+		toSerialize["image_tag"] = o.ImageTag
+	}
+	return toSerialize, nil
 }
 
 type NullableDeployAllRequestContainersInner struct {

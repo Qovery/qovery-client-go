@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationNetworkRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationNetworkRequest{}
+
 // ApplicationNetworkRequest struct for ApplicationNetworkRequest
 type ApplicationNetworkRequest struct {
 	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
@@ -44,7 +47,7 @@ func NewApplicationNetworkRequestWithDefaults() *ApplicationNetworkRequest {
 
 // GetStickySession returns the StickySession field value if set, zero value otherwise.
 func (o *ApplicationNetworkRequest) GetStickySession() bool {
-	if o == nil || o.StickySession == nil {
+	if o == nil || IsNil(o.StickySession) {
 		var ret bool
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ApplicationNetworkRequest) GetStickySession() bool {
 // GetStickySessionOk returns a tuple with the StickySession field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationNetworkRequest) GetStickySessionOk() (*bool, bool) {
-	if o == nil || o.StickySession == nil {
+	if o == nil || IsNil(o.StickySession) {
 		return nil, false
 	}
 	return o.StickySession, true
@@ -62,7 +65,7 @@ func (o *ApplicationNetworkRequest) GetStickySessionOk() (*bool, bool) {
 
 // HasStickySession returns a boolean if a field has been set.
 func (o *ApplicationNetworkRequest) HasStickySession() bool {
-	if o != nil && o.StickySession != nil {
+	if o != nil && !IsNil(o.StickySession) {
 		return true
 	}
 
@@ -75,11 +78,19 @@ func (o *ApplicationNetworkRequest) SetStickySession(v bool) {
 }
 
 func (o ApplicationNetworkRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.StickySession != nil {
-		toSerialize["sticky_session"] = o.StickySession
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationNetworkRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.StickySession) {
+		toSerialize["sticky_session"] = o.StickySession
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationNetworkRequest struct {

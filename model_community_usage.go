@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CommunityUsage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommunityUsage{}
+
 // CommunityUsage struct for CommunityUsage
 type CommunityUsage struct {
 	Projects []ProjectCurrentCost `json:"projects,omitempty"`
@@ -39,7 +42,7 @@ func NewCommunityUsageWithDefaults() *CommunityUsage {
 
 // GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *CommunityUsage) GetProjects() []ProjectCurrentCost {
-	if o == nil || o.Projects == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []ProjectCurrentCost
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CommunityUsage) GetProjects() []ProjectCurrentCost {
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CommunityUsage) GetProjectsOk() ([]ProjectCurrentCost, bool) {
-	if o == nil || o.Projects == nil {
+	if o == nil || IsNil(o.Projects) {
 		return nil, false
 	}
 	return o.Projects, true
@@ -57,7 +60,7 @@ func (o *CommunityUsage) GetProjectsOk() ([]ProjectCurrentCost, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *CommunityUsage) HasProjects() bool {
-	if o != nil && o.Projects != nil {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *CommunityUsage) SetProjects(v []ProjectCurrentCost) {
 }
 
 func (o CommunityUsage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Projects != nil {
-		toSerialize["projects"] = o.Projects
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CommunityUsage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Projects) {
+		toSerialize["projects"] = o.Projects
+	}
+	return toSerialize, nil
 }
 
 type NullableCommunityUsage struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProjectDeploymentRulesPriorityOrderRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectDeploymentRulesPriorityOrderRequest{}
+
 // ProjectDeploymentRulesPriorityOrderRequest struct for ProjectDeploymentRulesPriorityOrderRequest
 type ProjectDeploymentRulesPriorityOrderRequest struct {
 	ProjectDeploymentRuleIdsInOrder []string `json:"project_deployment_rule_ids_in_order,omitempty"`
@@ -39,7 +42,7 @@ func NewProjectDeploymentRulesPriorityOrderRequestWithDefaults() *ProjectDeploym
 
 // GetProjectDeploymentRuleIdsInOrder returns the ProjectDeploymentRuleIdsInOrder field value if set, zero value otherwise.
 func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIdsInOrder() []string {
-	if o == nil || o.ProjectDeploymentRuleIdsInOrder == nil {
+	if o == nil || IsNil(o.ProjectDeploymentRuleIdsInOrder) {
 		var ret []string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIds
 // GetProjectDeploymentRuleIdsInOrderOk returns a tuple with the ProjectDeploymentRuleIdsInOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIdsInOrderOk() ([]string, bool) {
-	if o == nil || o.ProjectDeploymentRuleIdsInOrder == nil {
+	if o == nil || IsNil(o.ProjectDeploymentRuleIdsInOrder) {
 		return nil, false
 	}
 	return o.ProjectDeploymentRuleIdsInOrder, true
@@ -57,7 +60,7 @@ func (o *ProjectDeploymentRulesPriorityOrderRequest) GetProjectDeploymentRuleIds
 
 // HasProjectDeploymentRuleIdsInOrder returns a boolean if a field has been set.
 func (o *ProjectDeploymentRulesPriorityOrderRequest) HasProjectDeploymentRuleIdsInOrder() bool {
-	if o != nil && o.ProjectDeploymentRuleIdsInOrder != nil {
+	if o != nil && !IsNil(o.ProjectDeploymentRuleIdsInOrder) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ProjectDeploymentRulesPriorityOrderRequest) SetProjectDeploymentRuleIds
 }
 
 func (o ProjectDeploymentRulesPriorityOrderRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ProjectDeploymentRuleIdsInOrder != nil {
-		toSerialize["project_deployment_rule_ids_in_order"] = o.ProjectDeploymentRuleIdsInOrder
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProjectDeploymentRulesPriorityOrderRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProjectDeploymentRuleIdsInOrder) {
+		toSerialize["project_deployment_rule_ids_in_order"] = o.ProjectDeploymentRuleIdsInOrder
+	}
+	return toSerialize, nil
 }
 
 type NullableProjectDeploymentRulesPriorityOrderRequest struct {

@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Commit type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Commit{}
+
 // Commit struct for Commit
 type Commit struct {
 	CreatedAt       time.Time `json:"created_at"`
@@ -171,7 +174,7 @@ func (o *Commit) SetAuthorName(v string) {
 
 // GetAuthorAvatarUrl returns the AuthorAvatarUrl field value if set, zero value otherwise.
 func (o *Commit) GetAuthorAvatarUrl() string {
-	if o == nil || o.AuthorAvatarUrl == nil {
+	if o == nil || IsNil(o.AuthorAvatarUrl) {
 		var ret string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *Commit) GetAuthorAvatarUrl() string {
 // GetAuthorAvatarUrlOk returns a tuple with the AuthorAvatarUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Commit) GetAuthorAvatarUrlOk() (*string, bool) {
-	if o == nil || o.AuthorAvatarUrl == nil {
+	if o == nil || IsNil(o.AuthorAvatarUrl) {
 		return nil, false
 	}
 	return o.AuthorAvatarUrl, true
@@ -189,7 +192,7 @@ func (o *Commit) GetAuthorAvatarUrlOk() (*string, bool) {
 
 // HasAuthorAvatarUrl returns a boolean if a field has been set.
 func (o *Commit) HasAuthorAvatarUrl() bool {
-	if o != nil && o.AuthorAvatarUrl != nil {
+	if o != nil && !IsNil(o.AuthorAvatarUrl) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *Commit) SetAuthorAvatarUrl(v string) {
 
 // GetCommitPageUrl returns the CommitPageUrl field value if set, zero value otherwise.
 func (o *Commit) GetCommitPageUrl() string {
-	if o == nil || o.CommitPageUrl == nil {
+	if o == nil || IsNil(o.CommitPageUrl) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *Commit) GetCommitPageUrl() string {
 // GetCommitPageUrlOk returns a tuple with the CommitPageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Commit) GetCommitPageUrlOk() (*string, bool) {
-	if o == nil || o.CommitPageUrl == nil {
+	if o == nil || IsNil(o.CommitPageUrl) {
 		return nil, false
 	}
 	return o.CommitPageUrl, true
@@ -221,7 +224,7 @@ func (o *Commit) GetCommitPageUrlOk() (*string, bool) {
 
 // HasCommitPageUrl returns a boolean if a field has been set.
 func (o *Commit) HasCommitPageUrl() bool {
-	if o != nil && o.CommitPageUrl != nil {
+	if o != nil && !IsNil(o.CommitPageUrl) {
 		return true
 	}
 
@@ -234,29 +237,27 @@ func (o *Commit) SetCommitPageUrl(v string) {
 }
 
 func (o Commit) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["git_commit_id"] = o.GitCommitId
-	}
-	if true {
-		toSerialize["tag"] = o.Tag
-	}
-	if true {
-		toSerialize["message"] = o.Message
-	}
-	if true {
-		toSerialize["author_name"] = o.AuthorName
-	}
-	if o.AuthorAvatarUrl != nil {
-		toSerialize["author_avatar_url"] = o.AuthorAvatarUrl
-	}
-	if o.CommitPageUrl != nil {
-		toSerialize["commit_page_url"] = o.CommitPageUrl
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Commit) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["git_commit_id"] = o.GitCommitId
+	toSerialize["tag"] = o.Tag
+	toSerialize["message"] = o.Message
+	toSerialize["author_name"] = o.AuthorName
+	if !IsNil(o.AuthorAvatarUrl) {
+		toSerialize["author_avatar_url"] = o.AuthorAvatarUrl
+	}
+	if !IsNil(o.CommitPageUrl) {
+		toSerialize["commit_page_url"] = o.CommitPageUrl
+	}
+	return toSerialize, nil
 }
 
 type NullableCommit struct {

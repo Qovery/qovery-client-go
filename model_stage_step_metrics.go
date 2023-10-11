@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StageStepMetrics type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StageStepMetrics{}
+
 // StageStepMetrics struct for StageStepMetrics
 type StageStepMetrics struct {
 	// The total duration in seconds of the stage deployment or null if the deployment is not completed
@@ -42,7 +45,7 @@ func NewStageStepMetricsWithDefaults() *StageStepMetrics {
 
 // GetTotalDurationSec returns the TotalDurationSec field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StageStepMetrics) GetTotalDurationSec() int32 {
-	if o == nil || o.TotalDurationSec.Get() == nil {
+	if o == nil || IsNil(o.TotalDurationSec.Get()) {
 		var ret int32
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *StageStepMetrics) UnsetTotalDurationSec() {
 
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *StageStepMetrics) GetDetails() []StageStepMetric {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		var ret []StageStepMetric
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *StageStepMetrics) GetDetails() []StageStepMetric {
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StageStepMetrics) GetDetailsOk() ([]StageStepMetric, bool) {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		return nil, false
 	}
 	return o.Details, true
@@ -103,7 +106,7 @@ func (o *StageStepMetrics) GetDetailsOk() ([]StageStepMetric, bool) {
 
 // HasDetails returns a boolean if a field has been set.
 func (o *StageStepMetrics) HasDetails() bool {
-	if o != nil && o.Details != nil {
+	if o != nil && !IsNil(o.Details) {
 		return true
 	}
 
@@ -116,14 +119,22 @@ func (o *StageStepMetrics) SetDetails(v []StageStepMetric) {
 }
 
 func (o StageStepMetrics) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o StageStepMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TotalDurationSec.IsSet() {
 		toSerialize["total_duration_sec"] = o.TotalDurationSec.Get()
 	}
-	if o.Details != nil {
+	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableStageStepMetrics struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ReferenceObjectStatusResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReferenceObjectStatusResponseList{}
+
 // ReferenceObjectStatusResponseList struct for ReferenceObjectStatusResponseList
 type ReferenceObjectStatusResponseList struct {
 	Results []ReferenceObjectStatus `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewReferenceObjectStatusResponseListWithDefaults() *ReferenceObjectStatusRe
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ReferenceObjectStatusResponseList) GetResults() []ReferenceObjectStatus {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ReferenceObjectStatus
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ReferenceObjectStatusResponseList) GetResults() []ReferenceObjectStatus
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ReferenceObjectStatusResponseList) GetResultsOk() ([]ReferenceObjectStatus, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ReferenceObjectStatusResponseList) GetResultsOk() ([]ReferenceObjectSta
 
 // HasResults returns a boolean if a field has been set.
 func (o *ReferenceObjectStatusResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ReferenceObjectStatusResponseList) SetResults(v []ReferenceObjectStatus
 }
 
 func (o ReferenceObjectStatusResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ReferenceObjectStatusResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableReferenceObjectStatusResponseList struct {

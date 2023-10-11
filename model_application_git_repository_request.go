@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationGitRepositoryRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationGitRepositoryRequest{}
+
 // ApplicationGitRepositoryRequest struct for ApplicationGitRepositoryRequest
 type ApplicationGitRepositoryRequest struct {
 	// application git repository URL
@@ -73,7 +76,7 @@ func (o *ApplicationGitRepositoryRequest) SetUrl(v string) {
 
 // GetBranch returns the Branch field value if set, zero value otherwise.
 func (o *ApplicationGitRepositoryRequest) GetBranch() string {
-	if o == nil || o.Branch == nil {
+	if o == nil || IsNil(o.Branch) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ApplicationGitRepositoryRequest) GetBranch() string {
 // GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepositoryRequest) GetBranchOk() (*string, bool) {
-	if o == nil || o.Branch == nil {
+	if o == nil || IsNil(o.Branch) {
 		return nil, false
 	}
 	return o.Branch, true
@@ -91,7 +94,7 @@ func (o *ApplicationGitRepositoryRequest) GetBranchOk() (*string, bool) {
 
 // HasBranch returns a boolean if a field has been set.
 func (o *ApplicationGitRepositoryRequest) HasBranch() bool {
-	if o != nil && o.Branch != nil {
+	if o != nil && !IsNil(o.Branch) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ApplicationGitRepositoryRequest) SetBranch(v string) {
 
 // GetRootPath returns the RootPath field value if set, zero value otherwise.
 func (o *ApplicationGitRepositoryRequest) GetRootPath() string {
-	if o == nil || o.RootPath == nil {
+	if o == nil || IsNil(o.RootPath) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ApplicationGitRepositoryRequest) GetRootPath() string {
 // GetRootPathOk returns a tuple with the RootPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepositoryRequest) GetRootPathOk() (*string, bool) {
-	if o == nil || o.RootPath == nil {
+	if o == nil || IsNil(o.RootPath) {
 		return nil, false
 	}
 	return o.RootPath, true
@@ -123,7 +126,7 @@ func (o *ApplicationGitRepositoryRequest) GetRootPathOk() (*string, bool) {
 
 // HasRootPath returns a boolean if a field has been set.
 func (o *ApplicationGitRepositoryRequest) HasRootPath() bool {
-	if o != nil && o.RootPath != nil {
+	if o != nil && !IsNil(o.RootPath) {
 		return true
 	}
 
@@ -136,17 +139,23 @@ func (o *ApplicationGitRepositoryRequest) SetRootPath(v string) {
 }
 
 func (o ApplicationGitRepositoryRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if o.Branch != nil {
-		toSerialize["branch"] = o.Branch
-	}
-	if o.RootPath != nil {
-		toSerialize["root_path"] = o.RootPath
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationGitRepositoryRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["url"] = o.Url
+	if !IsNil(o.Branch) {
+		toSerialize["branch"] = o.Branch
+	}
+	if !IsNil(o.RootPath) {
+		toSerialize["root_path"] = o.RootPath
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationGitRepositoryRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeployAllRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeployAllRequest{}
+
 // DeployAllRequest struct for DeployAllRequest
 type DeployAllRequest struct {
 	Applications []DeployAllRequestApplicationsInner `json:"applications,omitempty"`
@@ -42,7 +45,7 @@ func NewDeployAllRequestWithDefaults() *DeployAllRequest {
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
 func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplicationsInner {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		var ret []DeployAllRequestApplicationsInner
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *DeployAllRequest) GetApplications() []DeployAllRequestApplicationsInner
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequest) GetApplicationsOk() ([]DeployAllRequestApplicationsInner, bool) {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		return nil, false
 	}
 	return o.Applications, true
@@ -60,7 +63,7 @@ func (o *DeployAllRequest) GetApplicationsOk() ([]DeployAllRequestApplicationsIn
 
 // HasApplications returns a boolean if a field has been set.
 func (o *DeployAllRequest) HasApplications() bool {
-	if o != nil && o.Applications != nil {
+	if o != nil && !IsNil(o.Applications) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *DeployAllRequest) SetApplications(v []DeployAllRequestApplicationsInner
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
 func (o *DeployAllRequest) GetDatabases() []string {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		var ret []string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *DeployAllRequest) GetDatabases() []string {
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequest) GetDatabasesOk() ([]string, bool) {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
 	return o.Databases, true
@@ -92,7 +95,7 @@ func (o *DeployAllRequest) GetDatabasesOk() ([]string, bool) {
 
 // HasDatabases returns a boolean if a field has been set.
 func (o *DeployAllRequest) HasDatabases() bool {
-	if o != nil && o.Databases != nil {
+	if o != nil && !IsNil(o.Databases) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *DeployAllRequest) SetDatabases(v []string) {
 
 // GetContainers returns the Containers field value if set, zero value otherwise.
 func (o *DeployAllRequest) GetContainers() []DeployAllRequestContainersInner {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		var ret []DeployAllRequestContainersInner
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *DeployAllRequest) GetContainers() []DeployAllRequestContainersInner {
 // GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequest) GetContainersOk() ([]DeployAllRequestContainersInner, bool) {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		return nil, false
 	}
 	return o.Containers, true
@@ -124,7 +127,7 @@ func (o *DeployAllRequest) GetContainersOk() ([]DeployAllRequestContainersInner,
 
 // HasContainers returns a boolean if a field has been set.
 func (o *DeployAllRequest) HasContainers() bool {
-	if o != nil && o.Containers != nil {
+	if o != nil && !IsNil(o.Containers) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *DeployAllRequest) SetContainers(v []DeployAllRequestContainersInner) {
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
 func (o *DeployAllRequest) GetJobs() []DeployAllRequestJobsInner {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		var ret []DeployAllRequestJobsInner
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *DeployAllRequest) GetJobs() []DeployAllRequestJobsInner {
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeployAllRequest) GetJobsOk() ([]DeployAllRequestJobsInner, bool) {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		return nil, false
 	}
 	return o.Jobs, true
@@ -156,7 +159,7 @@ func (o *DeployAllRequest) GetJobsOk() ([]DeployAllRequestJobsInner, bool) {
 
 // HasJobs returns a boolean if a field has been set.
 func (o *DeployAllRequest) HasJobs() bool {
-	if o != nil && o.Jobs != nil {
+	if o != nil && !IsNil(o.Jobs) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *DeployAllRequest) SetJobs(v []DeployAllRequestJobsInner) {
 }
 
 func (o DeployAllRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Applications != nil {
-		toSerialize["applications"] = o.Applications
-	}
-	if o.Databases != nil {
-		toSerialize["databases"] = o.Databases
-	}
-	if o.Containers != nil {
-		toSerialize["containers"] = o.Containers
-	}
-	if o.Jobs != nil {
-		toSerialize["jobs"] = o.Jobs
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeployAllRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Applications) {
+		toSerialize["applications"] = o.Applications
+	}
+	if !IsNil(o.Databases) {
+		toSerialize["databases"] = o.Databases
+	}
+	if !IsNil(o.Containers) {
+		toSerialize["containers"] = o.Containers
+	}
+	if !IsNil(o.Jobs) {
+		toSerialize["jobs"] = o.Jobs
+	}
+	return toSerialize, nil
 }
 
 type NullableDeployAllRequest struct {

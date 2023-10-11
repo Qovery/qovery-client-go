@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationDeploymentRestrictionApiService ApplicationDeploymentRestrictionApi service
-type ApplicationDeploymentRestrictionApiService service
+// ApplicationDeploymentRestrictionAPIService ApplicationDeploymentRestrictionAPI service
+type ApplicationDeploymentRestrictionAPIService service
 
 type ApiCreateApplicationDeploymentRestrictionRequest struct {
 	ctx                                     context.Context
-	ApiService                              *ApplicationDeploymentRestrictionApiService
+	ApiService                              *ApplicationDeploymentRestrictionAPIService
 	applicationId                           string
 	applicationDeploymentRestrictionRequest *ApplicationDeploymentRestrictionRequest
 }
@@ -48,7 +48,7 @@ Create an application deployment restriction
  @param applicationId Application ID
  @return ApiCreateApplicationDeploymentRestrictionRequest
 */
-func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeploymentRestriction(ctx context.Context, applicationId string) ApiCreateApplicationDeploymentRestrictionRequest {
+func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeploymentRestriction(ctx context.Context, applicationId string) ApiCreateApplicationDeploymentRestrictionRequest {
 	return ApiCreateApplicationDeploymentRestrictionRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -58,7 +58,7 @@ func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeployment
 
 // Execute executes the request
 //  @return ApplicationDeploymentRestriction
-func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeploymentRestrictionExecute(r ApiCreateApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
+func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeploymentRestrictionExecute(r ApiCreateApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeployment
 		localVarReturnValue *ApplicationDeploymentRestriction
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionApiService.CreateApplicationDeploymentRestriction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionAPIService.CreateApplicationDeploymentRestriction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentRestriction"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeployment
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *ApplicationDeploymentRestrictionApiService) CreateApplicationDeployment
 
 type ApiDeleteApplicationDeploymentRestrictionRequest struct {
 	ctx                     context.Context
-	ApiService              *ApplicationDeploymentRestrictionApiService
+	ApiService              *ApplicationDeploymentRestrictionAPIService
 	applicationId           string
 	deploymentRestrictionId string
 }
@@ -169,7 +169,7 @@ Delete an application deployment restriction
  @param deploymentRestrictionId Deployment Restriction ID
  @return ApiDeleteApplicationDeploymentRestrictionRequest
 */
-func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiDeleteApplicationDeploymentRestrictionRequest {
+func (a *ApplicationDeploymentRestrictionAPIService) DeleteApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiDeleteApplicationDeploymentRestrictionRequest {
 	return ApiDeleteApplicationDeploymentRestrictionRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -179,21 +179,21 @@ func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeployment
 }
 
 // Execute executes the request
-func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeploymentRestrictionExecute(r ApiDeleteApplicationDeploymentRestrictionRequest) (*http.Response, error) {
+func (a *ApplicationDeploymentRestrictionAPIService) DeleteApplicationDeploymentRestrictionExecute(r ApiDeleteApplicationDeploymentRestrictionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionApiService.DeleteApplicationDeploymentRestriction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionAPIService.DeleteApplicationDeploymentRestriction")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterToString(r.deploymentRestrictionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterValueToString(r.deploymentRestrictionId, "deploymentRestrictionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -240,9 +240,9 @@ func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeployment
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -260,7 +260,7 @@ func (a *ApplicationDeploymentRestrictionApiService) DeleteApplicationDeployment
 
 type ApiEditApplicationDeploymentRestrictionRequest struct {
 	ctx                                     context.Context
-	ApiService                              *ApplicationDeploymentRestrictionApiService
+	ApiService                              *ApplicationDeploymentRestrictionAPIService
 	applicationId                           string
 	deploymentRestrictionId                 string
 	applicationDeploymentRestrictionRequest *ApplicationDeploymentRestrictionRequest
@@ -285,7 +285,7 @@ Edit an application deployment restriction
  @param deploymentRestrictionId Deployment Restriction ID
  @return ApiEditApplicationDeploymentRestrictionRequest
 */
-func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiEditApplicationDeploymentRestrictionRequest {
+func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiEditApplicationDeploymentRestrictionRequest {
 	return ApiEditApplicationDeploymentRestrictionRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -296,7 +296,7 @@ func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRe
 
 // Execute executes the request
 //  @return ApplicationDeploymentRestriction
-func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRestrictionExecute(r ApiEditApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
+func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRestrictionExecute(r ApiEditApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -304,14 +304,14 @@ func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRe
 		localVarReturnValue *ApplicationDeploymentRestriction
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionApiService.EditApplicationDeploymentRestriction")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionAPIService.EditApplicationDeploymentRestriction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentRestriction/{deploymentRestrictionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterToString(r.deploymentRestrictionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRestrictionId"+"}", url.PathEscape(parameterValueToString(r.deploymentRestrictionId, "deploymentRestrictionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -360,9 +360,9 @@ func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -389,7 +389,7 @@ func (a *ApplicationDeploymentRestrictionApiService) EditApplicationDeploymentRe
 
 type ApiGetApplicationDeploymentRestrictionsRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationDeploymentRestrictionApiService
+	ApiService    *ApplicationDeploymentRestrictionAPIService
 	applicationId string
 }
 
@@ -406,7 +406,7 @@ Get application deployment restrictions
  @param applicationId Application ID
  @return ApiGetApplicationDeploymentRestrictionsRequest
 */
-func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRestrictions(ctx context.Context, applicationId string) ApiGetApplicationDeploymentRestrictionsRequest {
+func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRestrictions(ctx context.Context, applicationId string) ApiGetApplicationDeploymentRestrictionsRequest {
 	return ApiGetApplicationDeploymentRestrictionsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -416,7 +416,7 @@ func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRes
 
 // Execute executes the request
 //  @return ApplicationDeploymentRestrictionResponseList
-func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRestrictionsExecute(r ApiGetApplicationDeploymentRestrictionsRequest) (*ApplicationDeploymentRestrictionResponseList, *http.Response, error) {
+func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRestrictionsExecute(r ApiGetApplicationDeploymentRestrictionsRequest) (*ApplicationDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -424,13 +424,13 @@ func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRes
 		localVarReturnValue *ApplicationDeploymentRestrictionResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionApiService.GetApplicationDeploymentRestrictions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationDeploymentRestrictionAPIService.GetApplicationDeploymentRestrictions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploymentRestriction"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -477,9 +477,9 @@ func (a *ApplicationDeploymentRestrictionApiService) GetApplicationDeploymentRes
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

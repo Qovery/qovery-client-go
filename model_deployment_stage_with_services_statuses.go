@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentStageWithServicesStatuses type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentStageWithServicesStatuses{}
+
 // DeploymentStageWithServicesStatuses struct for DeploymentStageWithServicesStatuses
 type DeploymentStageWithServicesStatuses struct {
 	Applications []Status `json:"applications,omitempty"`
@@ -43,7 +46,7 @@ func NewDeploymentStageWithServicesStatusesWithDefaults() *DeploymentStageWithSe
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
 func (o *DeploymentStageWithServicesStatuses) GetApplications() []Status {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		var ret []Status
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *DeploymentStageWithServicesStatuses) GetApplications() []Status {
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageWithServicesStatuses) GetApplicationsOk() ([]Status, bool) {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		return nil, false
 	}
 	return o.Applications, true
@@ -61,7 +64,7 @@ func (o *DeploymentStageWithServicesStatuses) GetApplicationsOk() ([]Status, boo
 
 // HasApplications returns a boolean if a field has been set.
 func (o *DeploymentStageWithServicesStatuses) HasApplications() bool {
-	if o != nil && o.Applications != nil {
+	if o != nil && !IsNil(o.Applications) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *DeploymentStageWithServicesStatuses) SetApplications(v []Status) {
 
 // GetContainers returns the Containers field value if set, zero value otherwise.
 func (o *DeploymentStageWithServicesStatuses) GetContainers() []Status {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		var ret []Status
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *DeploymentStageWithServicesStatuses) GetContainers() []Status {
 // GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageWithServicesStatuses) GetContainersOk() ([]Status, bool) {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		return nil, false
 	}
 	return o.Containers, true
@@ -93,7 +96,7 @@ func (o *DeploymentStageWithServicesStatuses) GetContainersOk() ([]Status, bool)
 
 // HasContainers returns a boolean if a field has been set.
 func (o *DeploymentStageWithServicesStatuses) HasContainers() bool {
-	if o != nil && o.Containers != nil {
+	if o != nil && !IsNil(o.Containers) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *DeploymentStageWithServicesStatuses) SetContainers(v []Status) {
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
 func (o *DeploymentStageWithServicesStatuses) GetJobs() []Status {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		var ret []Status
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *DeploymentStageWithServicesStatuses) GetJobs() []Status {
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageWithServicesStatuses) GetJobsOk() ([]Status, bool) {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		return nil, false
 	}
 	return o.Jobs, true
@@ -125,7 +128,7 @@ func (o *DeploymentStageWithServicesStatuses) GetJobsOk() ([]Status, bool) {
 
 // HasJobs returns a boolean if a field has been set.
 func (o *DeploymentStageWithServicesStatuses) HasJobs() bool {
-	if o != nil && o.Jobs != nil {
+	if o != nil && !IsNil(o.Jobs) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *DeploymentStageWithServicesStatuses) SetJobs(v []Status) {
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
 func (o *DeploymentStageWithServicesStatuses) GetDatabases() []Status {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		var ret []Status
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *DeploymentStageWithServicesStatuses) GetDatabases() []Status {
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageWithServicesStatuses) GetDatabasesOk() ([]Status, bool) {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
 	return o.Databases, true
@@ -157,7 +160,7 @@ func (o *DeploymentStageWithServicesStatuses) GetDatabasesOk() ([]Status, bool) 
 
 // HasDatabases returns a boolean if a field has been set.
 func (o *DeploymentStageWithServicesStatuses) HasDatabases() bool {
-	if o != nil && o.Databases != nil {
+	if o != nil && !IsNil(o.Databases) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *DeploymentStageWithServicesStatuses) SetDatabases(v []Status) {
 
 // GetStage returns the Stage field value if set, zero value otherwise.
 func (o *DeploymentStageWithServicesStatuses) GetStage() Stage {
-	if o == nil || o.Stage == nil {
+	if o == nil || IsNil(o.Stage) {
 		var ret Stage
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *DeploymentStageWithServicesStatuses) GetStage() Stage {
 // GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageWithServicesStatuses) GetStageOk() (*Stage, bool) {
-	if o == nil || o.Stage == nil {
+	if o == nil || IsNil(o.Stage) {
 		return nil, false
 	}
 	return o.Stage, true
@@ -189,7 +192,7 @@ func (o *DeploymentStageWithServicesStatuses) GetStageOk() (*Stage, bool) {
 
 // HasStage returns a boolean if a field has been set.
 func (o *DeploymentStageWithServicesStatuses) HasStage() bool {
-	if o != nil && o.Stage != nil {
+	if o != nil && !IsNil(o.Stage) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *DeploymentStageWithServicesStatuses) SetStage(v Stage) {
 }
 
 func (o DeploymentStageWithServicesStatuses) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Applications != nil {
-		toSerialize["applications"] = o.Applications
-	}
-	if o.Containers != nil {
-		toSerialize["containers"] = o.Containers
-	}
-	if o.Jobs != nil {
-		toSerialize["jobs"] = o.Jobs
-	}
-	if o.Databases != nil {
-		toSerialize["databases"] = o.Databases
-	}
-	if o.Stage != nil {
-		toSerialize["stage"] = o.Stage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentStageWithServicesStatuses) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Applications) {
+		toSerialize["applications"] = o.Applications
+	}
+	if !IsNil(o.Containers) {
+		toSerialize["containers"] = o.Containers
+	}
+	if !IsNil(o.Jobs) {
+		toSerialize["jobs"] = o.Jobs
+	}
+	if !IsNil(o.Databases) {
+		toSerialize["databases"] = o.Databases
+	}
+	if !IsNil(o.Stage) {
+		toSerialize["stage"] = o.Stage
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentStageWithServicesStatuses struct {

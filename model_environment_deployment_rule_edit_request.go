@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentDeploymentRuleEditRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentDeploymentRuleEditRequest{}
+
 // EnvironmentDeploymentRuleEditRequest struct for EnvironmentDeploymentRuleEditRequest
 type EnvironmentDeploymentRuleEditRequest struct {
 	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
@@ -62,7 +65,7 @@ func NewEnvironmentDeploymentRuleEditRequestWithDefaults() *EnvironmentDeploymen
 
 // GetOnDemandPreview returns the OnDemandPreview field value if set, zero value otherwise.
 func (o *EnvironmentDeploymentRuleEditRequest) GetOnDemandPreview() bool {
-	if o == nil || o.OnDemandPreview == nil {
+	if o == nil || IsNil(o.OnDemandPreview) {
 		var ret bool
 		return ret
 	}
@@ -72,7 +75,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetOnDemandPreview() bool {
 // GetOnDemandPreviewOk returns a tuple with the OnDemandPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDeploymentRuleEditRequest) GetOnDemandPreviewOk() (*bool, bool) {
-	if o == nil || o.OnDemandPreview == nil {
+	if o == nil || IsNil(o.OnDemandPreview) {
 		return nil, false
 	}
 	return o.OnDemandPreview, true
@@ -80,7 +83,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetOnDemandPreviewOk() (*bool, bo
 
 // HasOnDemandPreview returns a boolean if a field has been set.
 func (o *EnvironmentDeploymentRuleEditRequest) HasOnDemandPreview() bool {
-	if o != nil && o.OnDemandPreview != nil {
+	if o != nil && !IsNil(o.OnDemandPreview) {
 		return true
 	}
 
@@ -94,7 +97,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) SetOnDemandPreview(v bool) {
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
 func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreview() bool {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		var ret bool
 		return ret
 	}
@@ -104,7 +107,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreview() bool {
 // GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		return nil, false
 	}
 	return o.AutoPreview, true
@@ -112,7 +115,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreviewOk() (*bool, bool) 
 
 // HasAutoPreview returns a boolean if a field has been set.
 func (o *EnvironmentDeploymentRuleEditRequest) HasAutoPreview() bool {
-	if o != nil && o.AutoPreview != nil {
+	if o != nil && !IsNil(o.AutoPreview) {
 		return true
 	}
 
@@ -126,7 +129,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) SetAutoPreview(v bool) {
 
 // GetAutoStop returns the AutoStop field value if set, zero value otherwise.
 func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStop() bool {
-	if o == nil || o.AutoStop == nil {
+	if o == nil || IsNil(o.AutoStop) {
 		var ret bool
 		return ret
 	}
@@ -136,7 +139,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStop() bool {
 // GetAutoStopOk returns a tuple with the AutoStop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStopOk() (*bool, bool) {
-	if o == nil || o.AutoStop == nil {
+	if o == nil || IsNil(o.AutoStop) {
 		return nil, false
 	}
 	return o.AutoStop, true
@@ -144,7 +147,7 @@ func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStopOk() (*bool, bool) {
 
 // HasAutoStop returns a boolean if a field has been set.
 func (o *EnvironmentDeploymentRuleEditRequest) HasAutoStop() bool {
-	if o != nil && o.AutoStop != nil {
+	if o != nil && !IsNil(o.AutoStop) {
 		return true
 	}
 
@@ -253,29 +256,29 @@ func (o *EnvironmentDeploymentRuleEditRequest) SetWeekdays(v []WeekdayEnum) {
 }
 
 func (o EnvironmentDeploymentRuleEditRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.OnDemandPreview != nil {
-		toSerialize["on_demand_preview"] = o.OnDemandPreview
-	}
-	if o.AutoPreview != nil {
-		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.AutoStop != nil {
-		toSerialize["auto_stop"] = o.AutoStop
-	}
-	if true {
-		toSerialize["timezone"] = o.Timezone
-	}
-	if true {
-		toSerialize["start_time"] = o.StartTime
-	}
-	if true {
-		toSerialize["stop_time"] = o.StopTime
-	}
-	if true {
-		toSerialize["weekdays"] = o.Weekdays
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentDeploymentRuleEditRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OnDemandPreview) {
+		toSerialize["on_demand_preview"] = o.OnDemandPreview
+	}
+	if !IsNil(o.AutoPreview) {
+		toSerialize["auto_preview"] = o.AutoPreview
+	}
+	if !IsNil(o.AutoStop) {
+		toSerialize["auto_stop"] = o.AutoStop
+	}
+	toSerialize["timezone"] = o.Timezone
+	toSerialize["start_time"] = o.StartTime
+	toSerialize["stop_time"] = o.StopTime
+	toSerialize["weekdays"] = o.Weekdays
+	return toSerialize, nil
 }
 
 type NullableEnvironmentDeploymentRuleEditRequest struct {

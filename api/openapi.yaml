@@ -883,11 +883,11 @@ paths:
       - Billing
   /organization/{organizationId}/billingStatus:
     get:
-      description: "This endpoint returns a \"is_valid\" boolean field reflecting\
-        \ the billing status of the organization:\n- If true, the organization billing\
-        \ is valid\n- For Startup organization, it returns false if there is at least\
-        \ 1 invoice unpaid since 1 week\n- For Community organization, it returns\
-        \ false if there is no credit left\n"
+      description: |
+        This endpoint returns a "is_valid" boolean field reflecting the billing status of the organization:
+        - If true, the organization billing is valid
+        - For Startup organization, it returns false if there is at least 1 invoice unpaid since 1 week
+        - For Community organization, it returns false if there is no credit left
       operationId: getOrganizationBillingStatus
       parameters:
       - description: Organization ID
@@ -4354,10 +4354,10 @@ paths:
       tags:
       - Project Environment Variable
     post:
-      description: "- Add an environment variable to the project.\n  - If the environment\
-        \ variable key already exists, then it will be replaced by the new one.\n\
-        \  - If the environment variable value points toward an existing environment\
-        \ variable key, it will be considered as an alias.\n"
+      description: |
+        - Add an environment variable to the project.
+          - If the environment variable key already exists, then it will be replaced by the new one.
+          - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
       operationId: createProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -4394,10 +4394,10 @@ paths:
       - Project Environment Variable
   /project/{projectId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: "- To delete an environment variable you must have the project\
-        \ user permission\n- You can't delete a BUILT_IN variable\n- If you delete\
-        \ a variable having override or alias, the associated override/alias will\
-        \ be deleted as well\n"
+      description: |
+        - To delete an environment variable you must have the project user permission
+        - You can't delete a BUILT_IN variable
+        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
       operationId: deleteProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -4431,10 +4431,11 @@ paths:
       tags:
       - Project Environment Variable
     put:
-      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
+      description: |
+        - You can't edit a BUILT_IN variable
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
       operationId: editProjectEnvironmentVariable
       parameters:
       - description: Project ID
@@ -4534,14 +4535,13 @@ paths:
       - Project Environment Variable
   /project/{projectId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: "- Allows you to add an alias at project level on an existing environment\
-        \ variable having higher scope, in order to customize its key.\n- You only\
-        \ have to specify a key in the request body\n- The system will create a new\
-        \ environment variable at project level with the same value as the one corresponding\
-        \ to the variable id in the path\n- The response body will contain the newly\
-        \ created variable\n- Information regarding the aliased_variable will be exposed\
-        \ in the \"aliased_variable\" field of the newly created variable\n- You can't\
-        \ create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at project level on an existing environment variable having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new environment variable at project level with the same value as the one corresponding to the variable id in the path
+        - The response body will contain the newly created variable
+        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
+        - You can't create an alias on an alias
       operationId: createProjectEnvironmentVariableAlias
       parameters:
       - description: Project ID
@@ -4617,9 +4617,10 @@ paths:
       tags:
       - Project Secret
     post:
-      description: "- Add a secret to the project.\n  - If the secret key already\
-        \ exists, then it will be replaced by the new one.\n  - If the secret value\
-        \ points toward an existing secret key, it will be considered as an alias.\n"
+      description: |
+        - Add a secret to the project.
+          - If the secret key already exists, then it will be replaced by the new one.
+          - If the secret value points toward an existing secret key, it will be considered as an alias.
       operationId: createProjectSecret
       parameters:
       - description: Project ID
@@ -4656,10 +4657,10 @@ paths:
       - Project Secret
   /project/{projectId}/secret/{secretId}:
     delete:
-      description: "- To delete a secret you must have the project user permission\n\
-        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
-        \ or alias, the associated override/alias will be deleted as well  operationId:\
-        \ deleteProjectSecret\n"
+      description: |
+        - To delete a secret you must have the project user permission
+        - You can't delete a BUILT_IN secret
+        - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteProjectSecret
       operationId: deleteProjectSecret
       parameters:
       - description: Project ID
@@ -4693,10 +4694,11 @@ paths:
       tags:
       - Project Secret
     put:
-      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
+      description: |
+        - You can't edit a BUILT_IN secret
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
       operationId: editProjectSecret
       parameters:
       - description: Project ID
@@ -4796,13 +4798,13 @@ paths:
       - Project Secret
   /project/{projectId}/secret/{secretId}/alias:
     post:
-      description: "- Allows you to add an alias at project level on an existing secret\
-        \ having higher scope, in order to customize its key.\n- You only have to\
-        \ specify a key in the request body\n- The system will create a new secret\
-        \ at project level with the same value as the one corresponding to the secret\
-        \ id in the path\n- The response body will contain the newly created secret\n\
-        - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
-        \ field of the newly created secret\n- You can't create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at project level on an existing secret having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new secret at project level with the same value as the one corresponding to the secret id in the path
+        - The response body will contain the newly created secret
+        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
+        - You can't create an alias on an alias
       operationId: createProjectSecretAlias
       parameters:
       - description: Project ID
@@ -6420,10 +6422,10 @@ paths:
       tags:
       - Environment Variable
     post:
-      description: "- Add an environment variable to the environment.\n  - If the\
-        \ environment variable key already exists, then it will be replaced by the\
-        \ new one.\n  - If the environment variable value points toward an existing\
-        \ environment variable key, it will be considered as an alias.\n"
+      description: |
+        - Add an environment variable to the environment.
+          - If the environment variable key already exists, then it will be replaced by the new one.
+          - If the environment variable value points toward an existing environment variable key, it will be considered as an alias.
       operationId: createEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -6460,10 +6462,10 @@ paths:
       - Environment Variable
   /environment/{environmentId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: "- To delete an environment variable you must have the project\
-        \ user permission\n- You can't delete a BUILT_IN variable\n- If you delete\
-        \ a variable having override or alias, the associated override/alias will\
-        \ be deleted as well\n"
+      description: |
+        - To delete an environment variable you must have the project user permission
+        - You can't delete a BUILT_IN variable
+        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
       operationId: deleteEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -6497,10 +6499,11 @@ paths:
       tags:
       - Environment Variable
     put:
-      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
+      description: |
+        - You can't edit a BUILT_IN variable
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
       operationId: editEnvironmentEnvironmentVariable
       parameters:
       - description: Environment ID
@@ -6600,14 +6603,13 @@ paths:
       - Environment Variable
   /environment/{environmentId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: "- Allows you to add an alias at environment level on an existing\
-        \ environment variable having higher scope, in order to customize its key.\n\
-        - You only have to specify a key in the request body\n- The system will create\
-        \ a new environment variable at environment level with the same value as the\
-        \ one corresponding to the variable id in the path\n- The response body will\
-        \ contain the newly created variable\n- Information regarding the aliased_variable\
-        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
-        - You can't create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at environment level on an existing environment variable having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new environment variable at environment level with the same value as the one corresponding to the variable id in the path
+        - The response body will contain the newly created variable
+        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
+        - You can't create an alias on an alias
       operationId: createEnvironmentEnvironmentVariableAlias
       parameters:
       - description: Environment ID
@@ -6683,9 +6685,10 @@ paths:
       tags:
       - Environment Secret
     post:
-      description: "- Add a secret to the environment.\n  - If the secret key already\
-        \ exists, then it will be replaced by the new one.\n  - If the secret value\
-        \ points toward an existing secret key, it will be considered as an alias.\n"
+      description: |
+        - Add a secret to the environment.
+          - If the secret key already exists, then it will be replaced by the new one.
+          - If the secret value points toward an existing secret key, it will be considered as an alias.
       operationId: createEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -6722,10 +6725,10 @@ paths:
       - Environment Secret
   /environment/{environmentId}/secret/{secretId}:
     delete:
-      description: "- To delete a secret you must have the project user permission\n\
-        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
-        \ or alias, the associated override/alias will be deleted as well  operationId:\
-        \ deleteEnvironmentSecret\n"
+      description: |
+        - To delete a secret you must have the project user permission
+        - You can't delete a BUILT_IN secret
+        - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
       operationId: deleteEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -6759,10 +6762,11 @@ paths:
       tags:
       - Environment Secret
     put:
-      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
+      description: |
+        - You can't edit a BUILT_IN secret
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
       operationId: editEnvironmentSecret
       parameters:
       - description: Environment ID
@@ -6862,14 +6866,13 @@ paths:
       - Environment Secret
   /environment/{environmentId}/secret/{secretId}/alias:
     post:
-      description: "- Allows you to add an alias at environment level on an existing\
-        \ secret having higher scope, in order to customize its key.\n- You only have\
-        \ to specify a key in the request body\n- The system will create a new secret\
-        \ at environment level with the same value as the one corresponding to the\
-        \ secret id in the path\n- The response body will contain the newly created\
-        \ secret\n- Information regarding the aliased_secret will be exposed in the\
-        \ \"aliased_secret\" field of the newly created secret\n- You can't create\
-        \ an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at environment level on an existing secret having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new secret at environment level with the same value as the one corresponding to the secret id in the path
+        - The response body will contain the newly created secret
+        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
+        - You can't create an alias on an alias
       operationId: createEnvironmentSecretAlias
       parameters:
       - description: Environment ID
@@ -7107,12 +7110,10 @@ paths:
       tags:
       - Application Main Calls
     put:
-      description: "- To edit the application you must have the admin permission.\n\
-        - For port edition, if you provide a port id, we will update the corresponding\
-        \ port. If you don't we will create a new one. If you remove a port from the\
-        \ payload, we will delete it.\n- For storage edition, if you provide a storage\
-        \ id, we will update the corresponding storage. If you don't we will create\
-        \ a new one. If you remove a storage from the payload, we will delete it.\n"
+      description: |
+        - To edit the application you must have the admin permission.
+        - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
+        - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
       operationId: editApplication
       parameters:
       - description: Application ID
@@ -7954,10 +7955,10 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: "- To delete an environment variable from an application you must\
-        \ have the project user permission\n- You can't delete a BUILT_IN variable\n\
-        - If you delete a variable having override or alias, the associated override/alias\
-        \ will be deleted as well\n"
+      description: |
+        - To delete an environment variable from an application you must have the project user permission
+        - You can't delete a BUILT_IN variable
+        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
       operationId: deleteApplicationEnvironmentVariable
       parameters:
       - description: Application ID
@@ -7991,10 +7992,11 @@ paths:
       tags:
       - Application Environment Variable
     put:
-      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
+      description: |
+        - You can't edit a BUILT_IN variable
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
       operationId: editApplicationEnvironmentVariable
       parameters:
       - description: Application ID
@@ -8094,14 +8096,13 @@ paths:
       - Application Environment Variable
   /application/{applicationId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: "- Allows you to add an alias at application level on an existing\
-        \ environment variable having higher scope, in order to customize its key.\n\
-        - You only have to specify a key in the request body\n- The system will create\
-        \ a new environment variable at application level with the same value as the\
-        \ one corresponding to the variable id in the path\n- The response body will\
-        \ contain the newly created variable\n- Information regarding the aliased_variable\
-        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
-        - You can't create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at application level on an existing environment variable having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new environment variable at application level with the same value as the one corresponding to the variable id in the path
+        - The response body will contain the newly created variable
+        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
+        - You can't create an alias on an alias
       operationId: createApplicationEnvironmentVariableAlias
       parameters:
       - description: Application ID
@@ -8217,9 +8218,10 @@ paths:
       - Application Secret
   /application/{applicationId}/secret/{secretId}:
     delete:
-      description: "- To delete a secret you must have the project user permission\n\
-        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
-        \ or alias, the associated override/alias will be deleted as well\n"
+      description: |
+        - To delete a secret you must have the project user permission
+        - You can't delete a BUILT_IN secret
+        - If you delete a secret having override or alias, the associated override/alias will be deleted as well
       operationId: deleteApplicationSecret
       parameters:
       - description: Application ID
@@ -8253,10 +8255,11 @@ paths:
       tags:
       - Application Secret
     put:
-      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > APPLICATION)\n"
+      description: |
+        - You can't edit a BUILT_IN secret
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
       operationId: editApplicationSecret
       parameters:
       - description: Application ID
@@ -8356,14 +8359,13 @@ paths:
       - Application Secret
   /application/{applicationId}/secret/{secretId}/alias:
     post:
-      description: "- Allows you to add an alias at application level on an existing\
-        \ secret having higher scope, in order to customize its key.\n- You only have\
-        \ to specify a key in the request body\n- The system will create a new secret\
-        \ at application level with the same value as the one corresponding to the\
-        \ secret id in the path\n- The response body will contain the newly created\
-        \ secret\n- Information regarding the aliased_secret will be exposed in the\
-        \ \"aliased_secret\" field of the newly created secret\n- You can't create\
-        \ an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at application level on an existing secret having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new secret at application level with the same value as the one corresponding to the secret id in the path
+        - The response body will contain the newly created secret
+        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
+        - You can't create an alias on an alias
       operationId: createApplicationSecretAlias
       parameters:
       - description: Application ID
@@ -8879,12 +8881,10 @@ paths:
       tags:
       - Container Main Calls
     put:
-      description: "- To edit the container you must have the admin permission.\n\
-        - For port edition, if you provide a port id, we will update the corresponding\
-        \ port. If you don't we will create a new one. If you remove a port from the\
-        \ payload, we will delete it.\n- For storage edition, if you provide a storage\
-        \ id, we will update the corresponding storage. If you don't we will create\
-        \ a new one. If you remove a storage from the payload, we will delete it.\n"
+      description: |
+        - To edit the container you must have the admin permission.
+        - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
+        - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
       operationId: editContainer
       parameters:
       - description: Container ID
@@ -9407,10 +9407,10 @@ paths:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: "- To delete an environment variable from an container you must\
-        \ have the project user permission\n- You can't delete a BUILT_IN variable\n\
-        - If you delete a variable having override or alias, the associated override/alias\
-        \ will be deleted as well\n"
+      description: |
+        - To delete an environment variable from an container you must have the project user permission
+        - You can't delete a BUILT_IN variable
+        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
       operationId: deleteContainerEnvironmentVariable
       parameters:
       - description: Container ID
@@ -9444,10 +9444,11 @@ paths:
       tags:
       - Container Environment Variable
     put:
-      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
+      description: |
+        - You can't edit a BUILT_IN variable
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
       operationId: editContainerEnvironmentVariable
       parameters:
       - description: Container ID
@@ -9547,14 +9548,13 @@ paths:
       - Container Environment Variable
   /container/{containerId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: "- Allows you to add an alias at container level on an existing\
-        \ environment variable having higher scope, in order to customize its key.\n\
-        - You only have to specify a key in the request body\n- The system will create\
-        \ a new environment variable at container level with the same value as the\
-        \ one corresponding to the variable id in the path\n- The response body will\
-        \ contain the newly created variable\n- Information regarding the aliased_variable\
-        \ will be exposed in the \"aliased_variable\" field of the newly created variable\n\
-        - You can't create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at container level on an existing environment variable having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new environment variable at container level with the same value as the one corresponding to the variable id in the path
+        - The response body will contain the newly created variable
+        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
+        - You can't create an alias on an alias
       operationId: createContainerEnvironmentVariableAlias
       parameters:
       - description: Container ID
@@ -9670,9 +9670,10 @@ paths:
       - Container Secret
   /container/{containerId}/secret/{secretId}:
     delete:
-      description: "- To delete a secret you must have the project user permission\n\
-        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
-        \ or alias, the associated override/alias will be deleted as well\n"
+      description: |
+        - To delete a secret you must have the project user permission
+        - You can't delete a BUILT_IN secret
+        - If you delete a secret having override or alias, the associated override/alias will be deleted as well
       operationId: deleteContainerSecret
       parameters:
       - description: Container ID
@@ -9706,10 +9707,11 @@ paths:
       tags:
       - Container Secret
     put:
-      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
+      description: |
+        - You can't edit a BUILT_IN secret
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
       operationId: editContainerSecret
       parameters:
       - description: Container ID
@@ -9809,13 +9811,13 @@ paths:
       - Container Secret
   /container/{containerId}/secret/{secretId}/alias:
     post:
-      description: "- Allows you to add an alias at container level on an existing\
-        \ secret having higher scope, in order to customize its key.\n- You only have\
-        \ to specify a key in the request body\n- The system will create a new secret\
-        \ at container level with the same value as the one corresponding to the secret\
-        \ id in the path\n- The response body will contain the newly created secret\n\
-        - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
-        \ field of the newly created secret\n- You can't create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at container level on an existing secret having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new secret at container level with the same value as the one corresponding to the secret id in the path
+        - The response body will contain the newly created secret
+        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
+        - You can't create an alias on an alias
       operationId: createContainerSecretAlias
       parameters:
       - description: Container ID
@@ -12151,10 +12153,10 @@ paths:
       - Job Environment Variable
   /job/{jobId}/environmentVariable/{environmentVariableId}:
     delete:
-      description: "- To delete an environment variable from an job you must have\
-        \ the project user permission\n- You can't delete a BUILT_IN variable\n- If\
-        \ you delete a variable having override or alias, the associated override/alias\
-        \ will be deleted as well\n"
+      description: |
+        - To delete an environment variable from an job you must have the project user permission
+        - You can't delete a BUILT_IN variable
+        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
       operationId: deleteJobEnvironmentVariable
       parameters:
       - description: Job ID
@@ -12188,10 +12190,11 @@ paths:
       tags:
       - Job Environment Variable
     put:
-      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
+      description: |
+        - You can't edit a BUILT_IN variable
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
       operationId: editJobEnvironmentVariable
       parameters:
       - description: Job ID
@@ -12291,14 +12294,13 @@ paths:
       - Job Environment Variable
   /job/{jobId}/environmentVariable/{environmentVariableId}/alias:
     post:
-      description: "- Allows you to add an alias at job level on an existing environment\
-        \ variable having higher scope, in order to customize its key.\n- You only\
-        \ have to specify a key in the request body\n- The system will create a new\
-        \ environment variable at job level with the same value as the one corresponding\
-        \ to the variable id in the path\n- The response body will contain the newly\
-        \ created variable\n- Information regarding the aliased_variable will be exposed\
-        \ in the \"aliased_variable\" field of the newly created variable\n- You can't\
-        \ create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at job level on an existing environment variable having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new environment variable at job level with the same value as the one corresponding to the variable id in the path
+        - The response body will contain the newly created variable
+        - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
+        - You can't create an alias on an alias
       operationId: createJobEnvironmentVariableAlias
       parameters:
       - description: Job ID
@@ -12414,9 +12416,10 @@ paths:
       - Job Secret
   /job/{jobId}/secret/{secretId}:
     delete:
-      description: "- To delete a secret you must have the project user permission\n\
-        - You can't delete a BUILT_IN secret\n- If you delete a secret having override\
-        \ or alias, the associated override/alias will be deleted as well\n"
+      description: |
+        - To delete a secret you must have the project user permission
+        - You can't delete a BUILT_IN secret
+        - If you delete a secret having override or alias, the associated override/alias will be deleted as well
       operationId: deleteJobSecret
       parameters:
       - description: Job ID
@@ -12450,10 +12453,11 @@ paths:
       tags:
       - Job Secret
     put:
-      description: "- You can't edit a BUILT_IN secret\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n- An override can\
-        \ only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN\
-        \ > PROJECT > ENVIRONMENT > CONTAINER)\n"
+      description: |
+        - You can't edit a BUILT_IN secret
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
+        - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
       operationId: editJobSecret
       parameters:
       - description: Job ID
@@ -12553,13 +12557,13 @@ paths:
       - Job Secret
   /job/{jobId}/secret/{secretId}/alias:
     post:
-      description: "- Allows you to add an alias at job level on an existing secret\
-        \ having higher scope, in order to customize its key.\n- You only have to\
-        \ specify a key in the request body\n- The system will create a new secret\
-        \ at job level with the same value as the one corresponding to the secret\
-        \ id in the path\n- The response body will contain the newly created secret\n\
-        - Information regarding the aliased_secret will be exposed in the \"aliased_secret\"\
-        \ field of the newly created secret\n- You can't create an alias on an alias\n"
+      description: |
+        - Allows you to add an alias at job level on an existing secret having higher scope, in order to customize its key.
+        - You only have to specify a key in the request body
+        - The system will create a new secret at job level with the same value as the one corresponding to the secret id in the path
+        - The response body will contain the newly created secret
+        - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
+        - You can't create an alias on an alias
       operationId: createJobSecretAlias
       parameters:
       - description: Job ID
@@ -12805,15 +12809,13 @@ paths:
       - Variable Main Calls
   /variable/{variableId}/alias:
     post:
-      description: "- Allows you to create an alias of one of the existing variables.\n\
-        - You have to specify an alias (key) in the request body, the scope and the\
-        \ parent id of the alias (project id, environment id or service id)\n- The\
-        \ system will create a new variable at the requested level with the same value\
-        \ as the one corresponding to the variable id passed as path parameter.\n\
-        - The response body will contain the newly created variable\n- Information\
-        \ regarding the aliased_variable will be exposed in the \"aliased_variable\"\
-        \ or in the \"aliased_secret\" field of the newly created variable\n- You\
-        \ can't create an alias on an alias\n"
+      description: |
+        - Allows you to create an alias of one of the existing variables.
+        - You have to specify an alias (key) in the request body, the scope and the parent id of the alias (project id, environment id or service id)
+        - The system will create a new variable at the requested level with the same value as the one corresponding to the variable id passed as path parameter.
+        - The response body will contain the newly created variable
+        - Information regarding the aliased_variable will be exposed in the "aliased_variable" or in the "aliased_secret" field of the newly created variable
+        - You can't create an alias on an alias
       operationId: createVariableAlias
       parameters:
       - description: Variable ID
@@ -12852,15 +12854,12 @@ paths:
       - Variable Main Calls
   /variable/{variableId}/override:
     post:
-      description: "- Allows you to override a variable that has a higher scope.\n\
-        - You have to specify a value (override) in the request body and the scope\
-        \ and the parent id of the variable to override (project id, environment id\
-        \ or service id)\n- The system will create a new environment variable at the\
-        \ requested level with the same key as the one corresponding to the variable\
-        \ id passed as path parameter.\n- The response body will contain the newly\
-        \ created variable\n- Information regarding the overridden_variable will be\
-        \ exposed in the \"overridden_variable\" or in the \"overridden_secret\" field\
-        \ of the newly created variable\n"
+      description: |
+        - Allows you to override a variable that has a higher scope.
+        - You have to specify a value (override) in the request body and the scope and the parent id of the variable to override (project id, environment id or service id)
+        - The system will create a new environment variable at the requested level with the same key as the one corresponding to the variable id passed as path parameter.
+        - The response body will contain the newly created variable
+        - Information regarding the overridden_variable will be exposed in the "overridden_variable" or in the "overridden_secret" field of the newly created variable
       operationId: createVariableOverride
       parameters:
       - description: Variable ID
@@ -12899,9 +12898,10 @@ paths:
       - Variable Main Calls
   /variable/{variableId}:
     delete:
-      description: "- To delete a variable\n- You can't delete a BUILT_IN variable\n\
-        - If you delete a variable having override or alias, the associated override/alias\
-        \ will be deleted as well\n"
+      description: |
+        - To delete a variable
+        - You can't delete a BUILT_IN variable
+        - If you delete a variable having override or alias, the associated override/alias will be deleted as well
       operationId: deleteVariable
       parameters:
       - description: Variable ID
@@ -12926,8 +12926,10 @@ paths:
       tags:
       - Variable Main Calls
     put:
-      description: "- You can't edit a BUILT_IN variable\n- For an override, you can't\
-        \ edit the key\n- For an alias, you can't edit the value\n"
+      description: |
+        - You can't edit a BUILT_IN variable
+        - For an override, you can't edit the key
+        - For an alias, you can't edit the value
       operationId: editVariable
       parameters:
       - description: Variable ID
@@ -13430,7 +13432,85 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
-      - $ref: '#/components/schemas/Application_allOf'
+      - properties:
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
+          git_repository:
+            $ref: '#/components/schemas/ApplicationGitRepository'
+          maximum_cpu:
+            description: Maximum cpu that can be allocated to the application based
+              on organization cluster configuration. unit is millicores (m). 1000m
+              = 1 cpu
+            example: 16000
+            type: integer
+          maximum_memory:
+            description: Maximum memory that can be allocated to the application based
+              on organization cluster configuration. unit is MB. 1024 MB = 1GB
+            example: 16384
+            type: integer
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            description: give a description to this application
+            nullable: true
+            type: string
+          build_mode:
+            $ref: '#/components/schemas/BuildModeEnum'
+          dockerfile_path:
+            description: The path of the associated Dockerfile. Only if you are using
+              build_mode = DOCKER
+            nullable: true
+            type: string
+          buildpack_language:
+            $ref: '#/components/schemas/BuildPackLanguageEnum'
+          cpu:
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          min_running_instances:
+            default: 1
+            description: |
+              Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: 0 means that there is no application running.
+            minimum: 0
+            type: integer
+          max_running_instances:
+            default: 1
+            description: |
+              Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: -1 means that there is no limit.
+            type: integer
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          auto_preview:
+            default: true
+            description: "Specify if the environment preview option is activated or\
+              \ not for this application.  \nIf activated, a preview environment will\
+              \ be automatically cloned at each pull request.  \nIf not specified,\
+              \ it takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          ports:
+            $ref: '#/components/schemas/ServicePortResponseList'
+          arguments:
+            items:
+              type: string
+            type: array
+          entrypoint:
+            description: optional entrypoint when launching container
+            type: string
+          auto_deploy:
+            description: Specify if the application will be automatically updated
+              after receiving a new commit.
+            type: boolean
+        required:
+        - healthchecks
+        type: object
     ApplicationAdvancedSettings:
       example:
         deployment.affinity.node.required:
@@ -13443,7 +13523,7 @@ components:
         network.ingress.keepalive_time_seconds: 3
         deployment.termination_grace_period_seconds: 0
         network.ingress.grpc_send_timeout_seconds: 1
-        network.ingress.denylist_source_range: network.ingress.denylist_source_range
+        network.ingress.denylist_source_range: ""
         build.cpu_max_in_milli: 5
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
@@ -13451,7 +13531,7 @@ components:
         network.ingress.whitelist_source_range: 0.0.0.0/0
         network.ingress.proxy_request_buffering: "on"
         build.ram_max_in_gib: 2
-        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
+        network.ingress.basic_auth_env_var: ""
         network.ingress.proxy_body_size_mb: 7
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
         hpa.cpu.average_utilization_percent: 7
@@ -13464,7 +13544,7 @@ components:
         network.ingress.grpc_read_timeout_seconds: 6
         security.read_only_root_filesystem: false
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
-        security.service_account_name: security.service_account_name
+        security.service_account_name: ""
         network.ingress.cors_allow_origin: '*'
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
@@ -13486,21 +13566,19 @@ components:
           type: object
         deployment.antiaffinity.pod:
           default: Preferred
-          description: "Define how you want pods affinity to behave:\n* `Preferred`\
-            \ allows, but does not require, pods of a given service are not co-located\
-            \ (or co-hosted) on a single node\n* `Requirred` ensures that the pods\
-            \ of a given service are not co-located (or co-hosted) on a single node\
-            \ (safer in term of availability but can be expensive depending on the\
-            \ number of replicas)\n"
+          description: |
+            Define how you want pods affinity to behave:
+            * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
+            * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
           enum:
           - Preferred
           - Requirred
           type: string
         deployment.update_strategy.type:
           default: RollingUpdate
-          description: "* `RollingUpdate` gracefully rollout new versions, and automatically\
-            \ rollback if the new version fails to start\n* `Recreate` stop all current\
-            \ versions and create new ones once all old ones have been shutdown\n"
+          description: |
+            * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start
+            * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
           enum:
           - RollingUpdate
           - Recreate
@@ -13707,7 +13785,72 @@ components:
     ApplicationEditRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
-      - $ref: '#/components/schemas/ApplicationEditRequest_allOf'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            description: give a description to this application
+            type: string
+          git_repository:
+            $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+          build_mode:
+            $ref: '#/components/schemas/BuildModeEnum'
+          dockerfile_path:
+            description: The path of the associated Dockerfile
+            type: string
+          buildpack_language:
+            $ref: '#/components/schemas/BuildPackLanguageEnum'
+          cpu:
+            default: 500
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            default: 512
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          min_running_instances:
+            default: 1
+            description: |
+              Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: 0 means that there is no application running.
+            minimum: 0
+            type: integer
+          max_running_instances:
+            default: 1
+            description: |
+              Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: -1 means that there is no limit.
+            type: integer
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          auto_preview:
+            default: true
+            description: "Specify if the environment preview option is activated or\
+              \ not for this application.  \nIf activated, a preview environment will\
+              \ be automatically cloned at each pull request.  \nIf not specified,\
+              \ it takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          ports:
+            $ref: '#/components/schemas/ServicePortResponseList'
+          arguments:
+            items:
+              type: string
+            type: array
+          entrypoint:
+            description: optional entrypoint when launching container
+            type: string
+          auto_deploy:
+            description: Specify if the application will be automatically updated
+              after receiving a new commit.
+            nullable: true
+            type: boolean
+        required:
+        - healthchecks
+        type: object
     ApplicationGitRepository:
       properties:
         has_access:
@@ -13754,8 +13897,9 @@ components:
           example: https://github.com/Qovery/simple-node-app
           type: string
         branch:
-          description: "Name of the branch to use. This is optional\nIf not specified,\
-            \ then the branch used is the `main` or `master` one\n"
+          description: |
+            Name of the branch to use. This is optional
+            If not specified, then the branch used is the `main` or `master` one
           example: feat/text_xxx
           type: string
         root_path:
@@ -13837,7 +13981,75 @@ components:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
       - $ref: '#/components/schemas/ServicePortRequest'
-      - $ref: '#/components/schemas/ApplicationRequest_allOf'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            description: give a description to this application
+            nullable: true
+            type: string
+          git_repository:
+            $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+          build_mode:
+            $ref: '#/components/schemas/BuildModeEnum'
+          dockerfile_path:
+            description: The path of the associated Dockerfile. Only if you are using
+              build_mode = DOCKER
+            nullable: true
+            type: string
+          buildpack_language:
+            $ref: '#/components/schemas/BuildPackLanguageEnum'
+          cpu:
+            default: 500
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            default: 512
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          min_running_instances:
+            default: 1
+            description: |
+              Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: 0 means that there is no application running.
+            minimum: 0
+            type: integer
+          max_running_instances:
+            default: 1
+            description: |
+              Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: -1 means that there is no limit.
+            type: integer
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          auto_preview:
+            default: true
+            description: "Specify if the environment preview option is activated or\
+              \ not for this application.  \nIf activated, a preview environment will\
+              \ be automatically cloned at each pull request.  \nIf not specified,\
+              \ it takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          arguments:
+            items:
+              type: string
+            type: array
+          entrypoint:
+            description: optional entrypoint when launching container
+            type: string
+          auto_deploy:
+            description: Specify if the application will be automatically updated
+              after receiving a new commit.
+            nullable: true
+            type: boolean
+        required:
+        - git_repository
+        - healthchecks
+        - name
+        type: object
     ApplicationResponseList:
       example:
         results:
@@ -13916,7 +14128,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/BackupRequest'
-      - $ref: '#/components/schemas/Backup_allOf'
+      - properties:
+          status:
+            $ref: '#/components/schemas/Status'
+        type: object
     BackupPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
@@ -14282,7 +14497,75 @@ components:
     Cluster:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/Cluster_allOf'
+      - properties:
+          name:
+            description: name is case-insensitive
+            type: string
+          description:
+            type: string
+          region:
+            type: string
+          cloud_provider:
+            $ref: '#/components/schemas/CloudProviderEnum'
+          min_running_nodes:
+            default: 1
+            type: integer
+          max_running_nodes:
+            default: 1
+            type: integer
+          disk_size:
+            default: 20
+            description: Unit is in GB. The disk size to be used for the node configuration
+            example: 50
+            type: integer
+          instance_type:
+            description: "the instance type to be used for this cluster. The list\
+              \ of values can be retrieved via the endpoint /{CloudProvider}/instanceType"
+            example: T3A_LARGE
+            type: string
+          kubernetes:
+            $ref: '#/components/schemas/KubernetesEnum'
+          cpu:
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 10000
+            type: integer
+          memory:
+            description: unit is MB. 1024 MB = 1GB
+            example: 4096
+            type: integer
+          estimated_cloud_provider_cost:
+            description: "This is an estimation of the cost this cluster will represent\
+              \ on your cloud proider bill, based on your current configuration"
+            type: integer
+          status:
+            $ref: '#/components/schemas/ClusterStateEnum'
+          has_access:
+            type: boolean
+          version:
+            type: string
+          is_default:
+            type: boolean
+          production:
+            description: specific flag to indicate that this cluster is a production
+              one
+            type: boolean
+          ssh_keys:
+            description: Indicate your public ssh_key to remotely connect to your
+              EC2 instance.
+            items:
+              type: string
+            type: array
+          features:
+            items:
+              $ref: '#/components/schemas/ClusterFeature'
+            type: array
+          deployment_status:
+            $ref: '#/components/schemas/ClusterDeploymentStatusEnum'
+        required:
+        - cloud_provider
+        - name
+        - region
+        type: object
     ClusterDeleteMode:
       default: DEFAULT
       description: "Indicates the mode to apply on cluster deletion  \n**\"hard delete\"\
@@ -14907,9 +15190,10 @@ components:
           type: string
         aws.eks.ec2.metadata_imds:
           default: optional
-          description: "Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)\
-            \ version you want to use:\n  * `required`: IMDS V2 only\n  * `optional`:\
-            \ IMDS V1 + V2\n"
+          description: |
+            Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:
+              * `required`: IMDS V2 only
+              * `optional`: IMDS V1 + V2
           enum:
           - optional
           - required
@@ -14957,7 +15241,12 @@ components:
       type: object
     CommitPaginatedResponseList:
       allOf:
-      - $ref: '#/components/schemas/CommitPaginatedResponseList_allOf'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/Commit'
+            type: array
+        type: object
       - $ref: '#/components/schemas/PaginationData'
     CommitResponseList:
       example:
@@ -15005,13 +15294,13 @@ components:
         network.ingress.keepalive_time_seconds: 2
         deployment.termination_grace_period_seconds: 0
         network.ingress.grpc_send_timeout_seconds: 7
-        network.ingress.denylist_source_range: network.ingress.denylist_source_range
+        network.ingress.denylist_source_range: ""
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: false
         network.ingress.enable_sticky_session: false
         network.ingress.whitelist_source_range: 0.0.0.0/0
         network.ingress.proxy_request_buffering: "on"
-        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
+        network.ingress.basic_auth_env_var: ""
         network.ingress.proxy_body_size_mb: 5
         network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
         hpa.cpu.average_utilization_percent: 1
@@ -15023,7 +15312,7 @@ components:
         network.ingress.grpc_read_timeout_seconds: 1
         security.read_only_root_filesystem: false
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
-        security.service_account_name: security.service_account_name
+        security.service_account_name: ""
         network.ingress.cors_allow_origin: '*'
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
@@ -15045,21 +15334,19 @@ components:
           type: object
         deployment.antiaffinity.pod:
           default: Preferred
-          description: "Define how you want pods affinity to behave:\n* `Preferred`\
-            \ allows, but does not require, pods of a given service are not co-located\
-            \ (or co-hosted) on a single node\n* `Requirred` ensures that the pods\
-            \ of a given service are not co-located (or co-hosted) on a single node\
-            \ (safer in term of availability but can be expensive depending on the\
-            \ number of replicas)\n"
+          description: |
+            Define how you want pods affinity to behave:
+            * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
+            * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
           enum:
           - Preferred
           - Requirred
           type: string
         deployment.update_strategy.type:
           default: RollingUpdate
-          description: "* `RollingUpdate` gracefully rollout new versions, and automatically\
-            \ rollback if the new version fails to start\n* `Recreate` stop all current\
-            \ versions and create new ones once all old ones have been shutdown\n"
+          description: |
+            * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start
+            * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
           enum:
           - RollingUpdate
           - Recreate
@@ -15286,13 +15573,12 @@ components:
         description:
           type: string
         url:
-          description: "URL of the container registry:\n* For `DOCKER_HUB`: it must\
-            \ be `https://docker.io` (default with 'https://docker.io' if no url provided\
-            \ for `DOCKER_HUB`)\n* For `GITHUB_CR`: it must be `https://ghcr.io` (default\
-            \ with 'https://ghcr.io' if no url provided for `GITHUB_CR`)\n* For `GITLAB_CR`:\
-            \ it must be `https://registry.gitlab.com` (default with 'https://registry.gitlab.com'\
-            \ if no url provided for `GITLAB_CR`)\n* For others: it's required and\
-            \ must start by `https://`\n"
+          description: |
+            URL of the container registry:
+            * For `DOCKER_HUB`: it must be `https://docker.io` (default with 'https://docker.io' if no url provided for `DOCKER_HUB`)
+            * For `GITHUB_CR`: it must be `https://ghcr.io` (default with 'https://ghcr.io' if no url provided for `GITHUB_CR`)
+            * For `GITLAB_CR`: it must be `https://registry.gitlab.com` (default with 'https://registry.gitlab.com' if no url provided for `GITLAB_CR`)
+            * For others: it's required and must start by `https://`
           format: uri
           type: string
         config:
@@ -15305,7 +15591,19 @@ components:
     ContainerRegistryResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/ContainerRegistryResponse_allOf'
+      - properties:
+          name:
+            type: string
+          kind:
+            $ref: '#/components/schemas/ContainerRegistryKindEnum'
+          description:
+            type: string
+          url:
+            description: URL of the container registry
+            type: string
+          cluster:
+            $ref: '#/components/schemas/ContainerRegistryResponse_allOf_cluster'
+        type: object
     ContainerRegistryProviderDetailsResponse:
       properties:
         id:
@@ -15339,12 +15637,157 @@ components:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
       - $ref: '#/components/schemas/ServicePortRequest'
-      - $ref: '#/components/schemas/ContainerRequest_allOf'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            description: give a description to this container
+            type: string
+          registry_id:
+            description: id of the linked registry
+            type: string
+          image_name:
+            description: "The image name pattern differs according to chosen container\
+              \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
+              * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
+            type: string
+          tag:
+            description: tag of the image container
+            type: string
+          arguments:
+            items:
+              type: string
+            type: array
+          entrypoint:
+            description: optional entrypoint when launching container
+            type: string
+          cpu:
+            default: 500
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            default: 512
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          min_running_instances:
+            default: 1
+            description: |
+              Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: 0 means that there is no container running.
+            minimum: 0
+            type: integer
+          max_running_instances:
+            default: 1
+            description: |
+              Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: -1 means that there is no limit.
+            type: integer
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          auto_preview:
+            description: "Indicates if the 'environment preview option' is enabled\
+              \ for this container.  \nIf enabled, a preview environment will be automatically\
+              \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
+              \ takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          auto_deploy:
+            description: "Specify if the container will be automatically updated after\
+              \ receiving a new image tag. \nThe new image tag shall be communicated\
+              \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
+            nullable: true
+            type: boolean
+        required:
+        - healthchecks
+        - image_name
+        - name
+        - registry_id
+        - tag
+        type: object
     ContainerResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
-      - $ref: '#/components/schemas/ContainerResponse_allOf'
+      - $ref: '#/components/schemas/ContainerSource'
+      - properties:
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
+          maximum_cpu:
+            description: Maximum cpu that can be allocated to the container based
+              on organization cluster configuration. unit is millicores (m). 1000m
+              = 1 cpu
+            example: 16000
+            type: integer
+          maximum_memory:
+            description: Maximum memory that can be allocated to the container based
+              on organization cluster configuration. unit is MB. 1024 MB = 1GB
+            example: 16384
+            type: integer
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            description: give a description to this container
+            type: string
+          arguments:
+            items:
+              type: string
+            type: array
+          entrypoint:
+            description: optional entrypoint when launching container
+            type: string
+          cpu:
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          min_running_instances:
+            default: 1
+            description: |
+              Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: 0 means that there is no container running.
+            minimum: 0
+            type: integer
+          max_running_instances:
+            default: 1
+            description: |
+              Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption.
+              Note: -1 means that there is no limit.
+            type: integer
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          auto_preview:
+            description: "Indicates if the 'environment preview option' is enabled\
+              \ for this container.  \nIf enabled, a preview environment will be automatically\
+              \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
+              \ takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          ports:
+            $ref: '#/components/schemas/ServicePortResponseList'
+          auto_deploy:
+            description: "Specify if the container will be automatically updated after\
+              \ receiving a new image tag. \nThe new image tag shall be communicated\
+              \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
+            type: boolean
+        required:
+        - auto_preview
+        - cpu
+        - environment
+        - healthchecks
+        - max_running_instances
+        - maximum_cpu
+        - maximum_memory
+        - memory
+        - min_running_instances
+        - name
+        type: object
     ContainerResponseList:
       example:
         results:
@@ -15355,6 +15798,29 @@ components:
           items:
             $ref: '#/components/schemas/ContainerResponse'
           type: array
+      type: object
+    ContainerSource:
+      properties:
+        image_name:
+          description: |
+            The image name pattern differs according to chosen container registry provider:
+            * `ECR`: `repository`
+            * `SCALEWAY_CR`: `namespace/image`
+            * `DOCKER_HUB`: `image` or `repository/image`
+            * `PUBLIC_ECR`: `registry_alias/repository`
+          type: string
+        tag:
+          description: tag of the image container
+          type: string
+        registry_id:
+          description: tag of the image container
+          type: string
+        registry:
+          $ref: '#/components/schemas/ContainerRegistryProviderDetailsResponse'
+      required:
+      - image_name
+      - registry
+      - tag
       type: object
     Cost:
       properties:
@@ -15528,7 +15994,20 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/CustomDomainRequest'
-      - $ref: '#/components/schemas/CustomDomain_allOf'
+      - properties:
+          validation_domain:
+            description: URL provided by Qovery. You must create a CNAME on your DNS
+              provider using that URL
+            type: string
+          status:
+            $ref: '#/components/schemas/CustomDomainStatusEnum'
+          generate_certificate:
+            description: to control if a certificate has to be generated for this
+              custom domain by Qovery. The default value is `true`. This flag should
+              be set to `false` if a CDN or other entities are managing the certificate
+              for the specified domain and the traffic is proxied by the CDN to Qovery.
+            type: boolean
+        type: object
     CustomDomainRequest:
       example:
         generate_certificate: true
@@ -15568,7 +16047,35 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/DatabaseRequest'
-      - $ref: '#/components/schemas/Database_allOf'
+      - properties:
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
+          host:
+            type: string
+          port:
+            example: 5432
+            type: integer
+          maximum_cpu:
+            description: Maximum cpu that can be allocated to the database based on
+              organization cluster configuration. unit is millicores (m). 1000m =
+              1 cpu
+            example: 1250
+            type: integer
+          maximum_memory:
+            description: Maximum memory that can be allocated to the database based
+              on organization cluster configuration. unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          disk_encrypted:
+            description: indicates if the database disk is encrypted or not
+            type: boolean
+          instance_type:
+            description: "Database instance type to be used for this database. The\
+              \ list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}.\
+              \ This field is null for container DB."
+            example: db.t3.medium
+            type: string
+        type: object
     DatabaseAccessibilityEnum:
       default: PRIVATE
       enum:
@@ -15673,10 +16180,16 @@ components:
           example: 1250
           type: integer
         memory:
-          description: "unit is MB. 1024 MB = 1GB\nThis field will be ignored for\
-            \ managed DB (instance type will be used instead).\nDefault value is linked\
-            \ to the database type:\n- MANAGED: 100\n- CONTAINER\n  - POSTGRES: 100\n\
-            \  - REDIS: 100\n  - MYSQL: 512\n  - MONGODB: 256\n"
+          description: |
+            unit is MB. 1024 MB = 1GB
+            This field will be ignored for managed DB (instance type will be used instead).
+            Default value is linked to the database type:
+            - MANAGED: 100
+            - CONTAINER
+              - POSTGRES: 100
+              - REDIS: 100
+              - MYSQL: 512
+              - MONGODB: 256
           example: 1024
           type: integer
         storage:
@@ -15737,10 +16250,16 @@ components:
           example: db.t3.medium
           type: string
         memory:
-          description: "unit is MB. 1024 MB = 1GB\nThis field will be ignored for\
-            \ managed DB (instance type will be used instead).\nDefault value is linked\
-            \ to the database type:\n- MANAGED: `100`\n- CONTAINER\n  - POSTGRES:\
-            \ `100`\n  - REDIS: `100`\n  - MYSQL: `512`\n  - MONGODB: `256`\n"
+          description: |
+            unit is MB. 1024 MB = 1GB
+            This field will be ignored for managed DB (instance type will be used instead).
+            Default value is linked to the database type:
+            - MANAGED: `100`
+            - CONTAINER
+              - POSTGRES: `100`
+              - REDIS: `100`
+              - MYSQL: `512`
+              - MONGODB: `256`
           example: 1024
           type: integer
         storage:
@@ -15836,31 +16355,97 @@ components:
     DeploymentHistory:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentHistory_allOf'
+      - properties:
+          name:
+            description: name of the service
+            type: string
+          commit:
+            $ref: '#/components/schemas/Commit'
+          status:
+            $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
+        type: object
     DeploymentHistoryApplication:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentHistoryApplication_allOf'
+      - properties:
+          name:
+            type: string
+          commit:
+            $ref: '#/components/schemas/Commit'
+          status:
+            $ref: '#/components/schemas/StateEnum'
+        type: object
     DeploymentHistoryDatabase:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentHistoryDatabase_allOf'
+      - properties:
+          name:
+            description: name of the service
+            type: string
+          status:
+            $ref: '#/components/schemas/StateEnum'
+        type: object
     DeploymentHistoryContainer:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentHistoryContainer_allOf'
+      - properties:
+          name:
+            description: name of the container
+            type: string
+          status:
+            $ref: '#/components/schemas/StateEnum'
+          image_name:
+            type: string
+          tag:
+            type: string
+          arguments:
+            items:
+              type: string
+            type: array
+          entrypoint:
+            type: string
+        type: object
     DeploymentHistoryEnvironment:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentHistoryEnvironment_allOf'
+      - properties:
+          status:
+            $ref: '#/components/schemas/StateEnum'
+          applications:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryApplication'
+            type: array
+          containers:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryContainer'
+            type: array
+          databases:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryDatabase'
+            type: array
+          jobs:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryJobResponse'
+            type: array
+        type: object
     DeploymentHistoryEnvironmentPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/DeploymentHistoryEnvironmentPaginatedResponseList_allOf'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryEnvironment'
+            type: array
+        type: object
     DeploymentHistoryPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/DeploymentHistoryPaginatedResponseList_allOf'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/DeploymentHistory'
+            type: array
+        type: object
     DeploymentHistoryResponseList:
       properties:
         results:
@@ -15949,7 +16534,32 @@ components:
     Environment:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/Environment_allOf'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          project:
+            $ref: '#/components/schemas/ReferenceObject'
+          last_updated_by:
+            description: uuid of the user that made the last update
+            format: uuid
+            type: string
+          cloud_provider:
+            $ref: '#/components/schemas/Environment_allOf_cloud_provider'
+          mode:
+            $ref: '#/components/schemas/EnvironmentModeEnum'
+          cluster_id:
+            format: uuid
+            type: string
+          cluster_name:
+            format: string
+            type: string
+        required:
+        - cloud_provider
+        - cluster_id
+        - mode
+        - name
+        type: object
     EnvironmentResponseList:
       example:
         results:
@@ -16356,7 +16966,37 @@ components:
     EnvironmentDeploymentRule:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/EnvironmentDeploymentRule_allOf'
+      - properties:
+          on_demand_preview:
+            default: false
+            type: boolean
+          auto_stop:
+            default: false
+            type: boolean
+          auto_preview:
+            default: false
+            type: boolean
+          timezone:
+            example: UTC
+            type: string
+          start_time:
+            example: 1970-01-01T08:00:00Z
+            format: date-time
+            type: string
+          stop_time:
+            example: 1970-01-01T19:00:00Z
+            format: date-time
+            type: string
+          weekdays:
+            items:
+              $ref: '#/components/schemas/WeekdayEnum'
+            type: array
+        required:
+        - start_time
+        - stop_time
+        - timezone
+        - weekdays
+        type: object
     EnvironmentDeploymentRuleEditRequest:
       example:
         start_time: 1970-01-01T08:00:00Z
@@ -16499,7 +17139,12 @@ components:
     EnvironmentLogPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/EnvironmentLogPaginatedResponseList_allOf'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/EnvironmentLog'
+            type: array
+        type: object
     EnvironmentLogResponseList:
       example:
         results:
@@ -17069,7 +17714,28 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/EnvironmentVariableRequest'
-      - $ref: '#/components/schemas/EnvironmentVariable_allOf'
+      - properties:
+          overridden_variable:
+            $ref: '#/components/schemas/EnvironmentVariableOverride'
+          aliased_variable:
+            $ref: '#/components/schemas/EnvironmentVariableAlias'
+          scope:
+            $ref: '#/components/schemas/APIVariableScopeEnum'
+          variable_type:
+            $ref: '#/components/schemas/APIVariableTypeEnum'
+          service_id:
+            format: uuid
+            type: string
+          service_name:
+            type: string
+          service_type:
+            $ref: '#/components/schemas/LinkedServiceTypeEnum'
+          owned_by:
+            description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
+            type: string
+        required:
+        - scope
+        type: object
     EnvironmentVariableAlias:
       properties:
         id:
@@ -17220,11 +17886,28 @@ components:
     Event:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/Event_allOf'
+      - properties:
+          user:
+            $ref: '#/components/schemas/User'
+          commit:
+            $ref: '#/components/schemas/Commit'
+          status:
+            $ref: '#/components/schemas/Status'
+          type:
+            description: DRAFT - we have to specify here all the possible events
+            type: string
+          log:
+            $ref: '#/components/schemas/ReferenceObject'
+        type: object
     EventPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/EventPaginatedResponseList_allOf'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/Event'
+            type: array
+        type: object
     EventResponseList:
       properties:
         results:
@@ -17442,7 +18125,36 @@ components:
     InviteMember:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/InviteMember_allOf'
+      - properties:
+          email:
+            format: email
+            type: string
+          role:
+            $ref: '#/components/schemas/InviteMemberRoleEnum'
+          invitation_link:
+            format: uri
+            type: string
+          invitation_status:
+            $ref: '#/components/schemas/InviteStatusEnum'
+          organization_name:
+            type: string
+          inviter:
+            type: string
+          logo_url:
+            format: uri
+            type: string
+          role_id:
+            format: uuid
+            type: string
+          role_name:
+            type: string
+        required:
+        - email
+        - invitation_link
+        - invitation_status
+        - inviter
+        - role
+        type: object
     InviteMemberRequest:
       example:
         role: null
@@ -17487,7 +18199,23 @@ components:
     Invoice:
       allOf:
       - $ref: '#/components/schemas/Cost'
-      - $ref: '#/components/schemas/Invoice_allOf'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          status:
+            $ref: '#/components/schemas/InvoiceStatusEnum'
+        required:
+        - created_at
+        - currency_code
+        - id
+        - status
+        - total
+        - total_in_cents
+        type: object
     InvoiceResponseList:
       example:
         results:
@@ -17527,7 +18255,23 @@ components:
     DeploymentStageResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentStageResponse_allOf'
+      - properties:
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            type: string
+          deployment_order:
+            description: Position of the deployment stage within the environment
+            example: 1
+            type: integer
+          services:
+            $ref: '#/components/schemas/DeploymentStageServiceResponseList'
+        required:
+        - environment
+        type: object
     DeploymentStageResponseList:
       example:
         results:
@@ -17546,7 +18290,15 @@ components:
     DeploymentStageServiceResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentStageServiceResponse_allOf'
+      - properties:
+          service_id:
+            description: id of the service attached to the stage
+            format: uuid
+            type: string
+          service_type:
+            description: "type of the service (i.e APPLICATION, JOB, DATABASE, ...)"
+            type: string
+        type: object
     DeploymentStageWithServiceStatusesList:
       example:
         results:
@@ -17964,11 +18716,143 @@ components:
       type: object
     JobRequest:
       allOf:
-      - $ref: '#/components/schemas/JobRequest_allOf'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            type: string
+          cpu:
+            default: 500
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            default: 512
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          max_nb_restart:
+            default: 0
+            description: |
+              Maximum number of restart allowed before the job is considered as failed
+              0 means that no restart/crash of the job is allowed
+            minimum: 0
+            type: integer
+          max_duration_seconds:
+            description: |
+              Maximum number of seconds allowed for the job to run before killing it and mark it as failed
+            minimum: 0
+            type: integer
+          auto_preview:
+            description: "Indicates if the 'environment preview option' is enabled\
+              \ for this container.  \nIf enabled, a preview environment will be automatically\
+              \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
+              \ takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          port:
+            description: Port where to run readiness and liveliness probes checks.
+              The port will not be exposed externally
+            minimum: 1
+            nullable: true
+            type: integer
+          source:
+            $ref: '#/components/schemas/JobRequest_allOf_source'
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          schedule:
+            $ref: '#/components/schemas/JobRequest_allOf_schedule'
+          auto_deploy:
+            description: "Specify if the job will be automatically updated after receiving\
+              \ a new image tag or a new commit according to the source type. \nThe\
+              \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
+              \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
+            nullable: true
+            type: boolean
+        required:
+        - healthchecks
+        - name
+        type: object
     JobResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/JobResponse_allOf'
+      - properties:
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
+          maximum_cpu:
+            description: Maximum cpu that can be allocated to the job based on organization
+              cluster configuration. unit is millicores (m). 1000m = 1 cpu
+            example: 16000
+            type: integer
+          maximum_memory:
+            description: Maximum memory that can be allocated to the job based on
+              organization cluster configuration. unit is MB. 1024 MB = 1GB
+            example: 16384
+            type: integer
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            type: string
+          cpu:
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          max_nb_restart:
+            description: |
+              Maximum number of restart allowed before the job is considered as failed
+              0 means that no restart/crash of the job is allowed
+            minimum: 0
+            type: integer
+          max_duration_seconds:
+            description: |
+              Maximum number of seconds allowed for the job to run before killing it and mark it as failed
+            minimum: 0
+            type: integer
+          auto_preview:
+            description: "Indicates if the 'environment preview option' is enabled\
+              \ for this container.  \nIf enabled, a preview environment will be automatically\
+              \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
+              \ takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          port:
+            description: Port where to run readiness and liveliness probes checks.
+              The port will not be exposed externally
+            minimum: 1
+            nullable: true
+            type: integer
+          source:
+            $ref: '#/components/schemas/JobResponse_allOf_source'
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          schedule:
+            $ref: '#/components/schemas/JobResponse_allOf_schedule'
+          auto_deploy:
+            description: "Specify if the job will be automatically updated after receiving\
+              \ a new image tag or a new commit according to the source type. \nThe\
+              \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
+              \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
+            type: boolean
+        required:
+        - auto_preview
+        - cpu
+        - environment
+        - healthchecks
+        - max_running_instances
+        - maximum_cpu
+        - maximum_memory
+        - memory
+        - min_running_instances
+        - name
+        - source
+        - tag
+        type: object
     JobResponseList:
       example:
         results:
@@ -17988,7 +18872,7 @@ components:
           key: deployment.affinity.node.required
         security.read_only_root_filesystem: false
         job.delete_ttl_seconds_after_finished: 5
-        security.service_account_name: security.service_account_name
+        security.service_account_name: ""
         cronjob.failed_jobs_history_limit: 2
         cronjob.concurrency_policy: Forbid
         cronjob.success_jobs_history_limit: 7
@@ -18110,7 +18994,27 @@ components:
     DeploymentHistoryJobResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/DeploymentHistoryJobResponse_allOf'
+      - properties:
+          name:
+            description: name of the job
+            type: string
+          status:
+            $ref: '#/components/schemas/StateEnum'
+          image_name:
+            type: string
+          tag:
+            type: string
+          commit:
+            $ref: '#/components/schemas/Commit'
+          schedule:
+            $ref: '#/components/schemas/DeploymentHistoryJobResponse_allOf_schedule'
+          arguments:
+            items:
+              type: string
+            type: array
+          entrypoint:
+            type: string
+        type: object
     Key:
       example:
         key: key
@@ -18149,12 +19053,13 @@ components:
             \ to the user"
           type: boolean
         is_default:
-          description: "Indicate if the link is using the root of the domain and not\
-            \ one derivated from port\ni.e:\np8080.zxxxx.jvm.worl      => is_default\
-            \ = false, is_qovery = true\nzxxxx.jvm.world           => is_default =\
-            \ true, is_qovery = true\np8080-my-super-domain.com => is_default = false,\
-            \ is_qovery = false\nmy-super-domain.com       => is_default = true, is_qovery\
-            \ = false\n"
+          description: |
+            Indicate if the link is using the root of the domain and not one derivated from port
+            i.e:
+            p8080.zxxxx.jvm.worl      => is_default = false, is_qovery = true
+            zxxxx.jvm.world           => is_default = true, is_qovery = true
+            p8080-my-super-domain.com => is_default = false, is_qovery = false
+            my-super-domain.com       => is_default = true, is_qovery = false
           type: boolean
       type: object
     LinkResponseList:
@@ -18216,7 +19121,12 @@ components:
     LogPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/LogPaginatedResponseList_allOf'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/Log'
+            type: array
+        type: object
     LogResponseList:
       example:
         results:
@@ -18281,7 +19191,32 @@ components:
     Member:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/Member_allOf'
+      - properties:
+          name:
+            type: string
+          nickname:
+            type: string
+          email:
+            format: email
+            type: string
+          profile_picture_url:
+            format: uri
+            type: string
+          last_activity_at:
+            description: last time the user was connected
+            format: date-time
+            type: string
+          role:
+            $ref: '#/components/schemas/InviteMemberRoleEnum'
+          role_name:
+            description: the role linked to the user
+            type: string
+          role_id:
+            format: uuid
+            type: string
+        required:
+        - email
+        type: object
     MemberResponseList:
       example:
         results:
@@ -18656,15 +19591,44 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/OrganizationRequest'
-      - $ref: '#/components/schemas/Organization_allOf'
+      - properties:
+          owner:
+            description: uuid of the user owning the organization
+            format: uuid
+            type: string
+        type: object
     OrganizationApiToken:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/OrganizationApiToken_allOf'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          role_name:
+            type: string
+          role_id:
+            format: uuid
+            type: string
+        type: object
     OrganizationApiTokenCreate:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/OrganizationApiTokenCreate_allOf'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          token:
+            description: the generated token to send in 'Authorization' header prefixed
+              by 'Token '
+            type: string
+          role_name:
+            type: string
+          role_id:
+            format: uuid
+            type: string
+        type: object
     OrganizationApiTokenCreateRequest:
       example:
         role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18773,7 +19737,10 @@ components:
     OrganizationCurrentCost:
       allOf:
       - $ref: '#/components/schemas/CurrentCost'
-      - $ref: '#/components/schemas/OrganizationCurrentCost_allOf'
+      - properties:
+          paid_usage:
+            $ref: '#/components/schemas/PaidUsage'
+        type: object
     OrganizationCustomRoleCreateRequest:
       example:
         name: name
@@ -18939,12 +19906,12 @@ components:
           type: array
       type: object
     OrganizationCustomRoleProjectPermission:
-      description: "Indicates the permission for a target project and a given environment\
-        \ type, from the lowest to the highest:\n- `NO_ACCESS` user has no access\n\
-        - `VIEWER` user can access the environment (and applications / containers\
-        \ / databases / variables)\n- `DEPLOYER` user can deploy the environment (dependent\
-        \ on the required cluster permission `ENV_CREATOR`)\n- `MANAGER` user can\
-        \ create an environment (and applications / containers / databases / variables)\n"
+      description: |
+        Indicates the permission for a target project and a given environment type, from the lowest to the highest:
+        - `NO_ACCESS` user has no access
+        - `VIEWER` user can access the environment (and applications / containers / databases / variables)
+        - `DEPLOYER` user can deploy the environment (dependent on the required cluster permission `ENV_CREATOR`)
+        - `MANAGER` user can create an environment (and applications / containers / databases / variables)
       enum:
       - NO_ACCESS
       - VIEWER
@@ -18953,10 +19920,11 @@ components:
       example: NO_ACCESS
       type: string
     OrganizationCustomRoleClusterPermission:
-      description: "Indicates the permission for a target cluster, from the lowest\
-        \ to the highest:\n- `VIEWER` user has only read access on target cluster\n\
-        - `ENV_CREATOR` user can deploy on the cluster\n- `ADMIN` user can modify\
-        \ the cluster settings\n"
+      description: |
+        Indicates the permission for a target cluster, from the lowest to the highest:
+        - `VIEWER` user has only read access on target cluster
+        - `ENV_CREATOR` user can deploy on the cluster
+        - `ADMIN` user can modify the cluster settings
       enum:
       - VIEWER
       - ENV_CREATOR
@@ -19292,9 +20260,9 @@ components:
             The target URL must starts with `http://` or `https://`
           type: string
         target_secret:
-          description: "Make sure you receive a payload to sign the Qovery request\
-            \ with your secret.\nQovery will add a HTTP header `Qovery-Signature:\
-            \ <Your Secret>` to every webhook requests sent to your target URL.\n"
+          description: |
+            Make sure you receive a payload to sign the Qovery request with your secret.
+            Qovery will add a HTTP header `Qovery-Signature: <Your Secret>` to every webhook requests sent to your target URL.
           type: string
         description:
           type: string
@@ -19328,7 +20296,41 @@ components:
     OrganizationWebhookCreateResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/OrganizationWebhookCreateResponse_allOf'
+      - properties:
+          kind:
+            $ref: '#/components/schemas/OrganizationWebhookKindEnum'
+          target_url:
+            description: |
+              Set the public HTTP or HTTPS endpoint that will receive the specified events.
+              The target URL must starts with `http://` or `https://`
+            type: string
+          target_secret_set:
+            type: boolean
+          description:
+            type: string
+          enabled:
+            description: Turn on or off your endpoint.
+            type: boolean
+          events:
+            items:
+              $ref: '#/components/schemas/OrganizationWebhookEventEnum'
+            type: array
+          project_names_filter:
+            description: "Specify the project names you want to filter to. \nThis\
+              \ webhook will be triggered only if the event is coming from the specified\
+              \ Project IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name\
+              \ is case insensitive.\n"
+            items:
+              type: string
+            type: array
+          environment_types_filter:
+            description: |
+              Specify the environment modes you want to filter to.
+              This webhook will be triggered only if the event is coming from an environment with the specified mode.
+            items:
+              $ref: '#/components/schemas/EnvironmentModeEnum'
+            type: array
+        type: object
     OrganizationWebhookEventEnum:
       description: |
         Events to subscribe to and send to the `target_url`.
@@ -19354,7 +20356,41 @@ components:
     OrganizationWebhookResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/OrganizationWebhookCreateResponse_allOf'
+      - properties:
+          kind:
+            $ref: '#/components/schemas/OrganizationWebhookKindEnum'
+          target_url:
+            description: |
+              Set the public HTTP or HTTPS endpoint that will receive the specified events.
+              The target URL must starts with `http://` or `https://`
+            type: string
+          target_secret_set:
+            type: boolean
+          description:
+            type: string
+          enabled:
+            description: Turn on or off your endpoint.
+            type: boolean
+          events:
+            items:
+              $ref: '#/components/schemas/OrganizationWebhookEventEnum'
+            type: array
+          project_names_filter:
+            description: "Specify the project names you want to filter to. \nThis\
+              \ webhook will be triggered only if the event is coming from the specified\
+              \ Project IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name\
+              \ is case insensitive.\n"
+            items:
+              type: string
+            type: array
+          environment_types_filter:
+            description: |
+              Specify the environment modes you want to filter to.
+              This webhook will be triggered only if the event is coming from an environment with the specified mode.
+            items:
+              $ref: '#/components/schemas/EnvironmentModeEnum'
+            type: array
+        type: object
     OrganizationWebhookResponseList:
       example:
         results:
@@ -19441,11 +20477,25 @@ components:
     Project:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/Project_allOf'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          organization:
+            $ref: '#/components/schemas/ReferenceObject'
+        required:
+        - name
+        type: object
     ProjectCurrentCost:
       allOf:
       - $ref: '#/components/schemas/GenericObjectCurrentCost'
-      - $ref: '#/components/schemas/ProjectCurrentCost_allOf'
+      - properties:
+          environments:
+            items:
+              $ref: '#/components/schemas/GenericObjectCurrentCost'
+            type: array
+        type: object
     ProjectCurrentCostResponseList:
       properties:
         projects:
@@ -19457,7 +20507,13 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ProjectDeploymentRuleRequest'
-      - $ref: '#/components/schemas/ProjectDeploymentRule_allOf'
+      - properties:
+          priority_index:
+            description: used to select the first deployment rule to match new created
+              environments
+            nullable: false
+            type: integer
+        type: object
     ProjectDeploymentRuleRequest:
       example:
         mode: PRODUCTION
@@ -19471,7 +20527,7 @@ components:
         auto_stop: false
         name: project-rule
         description: description project rule
-        wildcard: wildcard
+        wildcard: ""
       properties:
         name:
           description: name is case insensitive
@@ -19685,7 +20741,32 @@ components:
     Secret:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/Secret_allOf'
+      - properties:
+          key:
+            description: key is case sensitive
+            type: string
+          overridden_secret:
+            $ref: '#/components/schemas/SecretOverride'
+          aliased_secret:
+            $ref: '#/components/schemas/SecretAlias'
+          scope:
+            $ref: '#/components/schemas/APIVariableScopeEnum'
+          variable_type:
+            $ref: '#/components/schemas/APIVariableTypeEnum'
+          service_id:
+            format: uuid
+            type: string
+          service_name:
+            type: string
+          service_type:
+            $ref: '#/components/schemas/LinkedServiceTypeEnum'
+          owned_by:
+            description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
+            type: string
+        required:
+        - key
+        - scope
+        type: object
     SecretEditRequest:
       example:
         value: value
@@ -19732,7 +20813,42 @@ components:
     Service:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/Service_allOf'
+      - properties:
+          type:
+            $ref: '#/components/schemas/ServiceTypeEnum'
+          name:
+            description: name of the service
+            type: string
+          id:
+            description: "uuid of the associated service (application, database, job,\
+              \ gateway...)"
+            format: uuid
+            type: string
+          deployed_commit_id:
+            description: Git commit ID corresponding to the deployed version of the
+              application
+            type: string
+          last_updated_by:
+            description: uuid of the user that made the last update
+            format: uuid
+            type: string
+          consumed_resources_in_percent:
+            description: global overview of resources consumption of the service
+            type: number
+          service_typology:
+            description: "describes the typology of service (container, postgresl,\
+              \ redis...)"
+            example: container
+            type: string
+          service_version:
+            description: for databases this field exposes the database version
+            example: v12
+            type: string
+          to_update:
+            type: boolean
+        required:
+        - id
+        type: object
     ServiceDeploymentStatusEnum:
       enum:
       - NEVER_DEPLOYED
@@ -20272,7 +21388,30 @@ components:
     VariableResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
-      - $ref: '#/components/schemas/VariableResponse_allOf'
+      - properties:
+          overridden_variable:
+            $ref: '#/components/schemas/VariableOverride'
+          aliased_variable:
+            $ref: '#/components/schemas/VariableAlias'
+          scope:
+            $ref: '#/components/schemas/APIVariableScopeEnum'
+          variable_type:
+            $ref: '#/components/schemas/APIVariableTypeEnum'
+          service_id:
+            description: The id of the service referenced by this variable.
+            format: uuid
+            type: string
+          service_name:
+            description: The name of the service referenced by this variable.
+            type: string
+          service_type:
+            $ref: '#/components/schemas/LinkedServiceTypeEnum'
+          owned_by:
+            description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
+            type: string
+        required:
+        - scope
+        type: object
     VariableResponseList:
       example:
         results:
@@ -20415,17 +21554,21 @@ components:
           type: integer
       type: object
     StageStepMetricNameEnum:
-      description: "The name of the deployment step at the stage level:\n- QUEUEING:\
-        \ The step preceding the actual stage deployment step.\n- PROVISION_BUILDER:\
-        \ The step to provision builders before the actual build.\n"
+      description: |
+        The name of the deployment step at the stage level:
+        - QUEUEING: The step preceding the actual stage deployment step.
+        - PROVISION_BUILDER: The step to provision builders before the actual build.
       enum:
       - QUEUEING
       - PROVISION_BUILDER
       type: string
     StepMetricStatusEnum:
-      description: "The status of completion for the step:\n- SUCCESS: The step completed\
-        \ successfully.\n- ERROR: The step completed with an error.\n- CANCEL: The\
-        \ step was canceled.\n- SKIP: The step was skipped because it was not necessary.\n"
+      description: |
+        The status of completion for the step:
+        - SUCCESS: The step completed successfully.
+        - ERROR: The step completed with an error.
+        - CANCEL: The step was canceled.
+        - SKIP: The step was skipped because it was not necessary.
       enum:
       - SUCCESS
       - ERROR
@@ -20465,12 +21608,10 @@ components:
       type: object
     RegistryMirroringModeEnum:
       default: SERVICE
-      description: "Mirroring mode when deploying a service from a container registry\n\
-        - CLUSTER: This is not available on Scaleway. Images within the mirroring\
-        \ registry are organized by \"Qovery cluster\", meaning that the application\
-        \ deployed on the same cluster are all mirrored on the same repository.\n\
-        - SERVICE: Images within the mirroring registry are organized by \"Qovery\
-        \ service\", each service has its own repository\n"
+      description: |
+        Mirroring mode when deploying a service from a container registry
+        - CLUSTER: This is not available on Scaleway. Images within the mirroring registry are organized by "Qovery cluster", meaning that the application deployed on the same cluster are all mirrored on the same repository.
+        - SERVICE: Images within the mirroring registry are organized by "Qovery service", each service has its own repository
       enum:
       - CLUSTER
       - SERVICE
@@ -20483,188 +21624,33 @@ components:
       required:
       - user_id
       type: object
-    listContainerDeploymentHistory_200_response_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryContainer'
-          type: array
-      type: object
     listContainerDeploymentHistory_200_response:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/listContainerDeploymentHistory_200_response_allOf'
-    listDatabaseDeploymentHistory_200_response_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryDatabase'
-          type: array
-      type: object
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryContainer'
+            type: array
+        type: object
     listDatabaseDeploymentHistory_200_response:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/listDatabaseDeploymentHistory_200_response_allOf'
-    listJobDeploymentHistory_200_response_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryJobResponse'
-          type: array
-      type: object
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryDatabase'
+            type: array
+        type: object
     listJobDeploymentHistory_200_response:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
-      - $ref: '#/components/schemas/listJobDeploymentHistory_200_response_allOf'
-    Application_allOf:
-      properties:
-        environment:
-          $ref: '#/components/schemas/ReferenceObject'
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepository'
-        maximum_cpu:
-          description: Maximum cpu that can be allocated to the application based
-            on organization cluster configuration. unit is millicores (m). 1000m =
-            1 cpu
-          example: 16000
-          type: integer
-        maximum_memory:
-          description: Maximum memory that can be allocated to the application based
-            on organization cluster configuration. unit is MB. 1024 MB = 1GB
-          example: 16384
-          type: integer
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          description: give a description to this application
-          nullable: true
-          type: string
-        build_mode:
-          $ref: '#/components/schemas/BuildModeEnum'
-        dockerfile_path:
-          description: The path of the associated Dockerfile. Only if you are using
-            build_mode = DOCKER
-          nullable: true
-          type: string
-        buildpack_language:
-          $ref: '#/components/schemas/BuildPackLanguageEnum'
-        cpu:
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_instances:
-          default: 1
-          description: "Minimum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
-            \ no application running.\n"
-          minimum: 0
-          type: integer
-        max_running_instances:
-          default: 1
-          description: "Maximum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
-            \ is no limit.\n"
-          type: integer
-        healthchecks:
-          $ref: '#/components/schemas/Healthcheck'
-        auto_preview:
-          default: true
-          description: "Specify if the environment preview option is activated or\
-            \ not for this application.  \nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request.  \nIf not specified, it\
-            \ takes the value of the `auto_preview` property from the associated environment.\n"
-          type: boolean
-        ports:
-          items:
-            $ref: '#/components/schemas/ServicePort'
-          type: array
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
-        auto_deploy:
-          description: Specify if the application will be automatically updated after
-            receiving a new commit.
-          type: boolean
-      required:
-      - healthchecks
-      type: object
-    ApplicationEditRequest_allOf:
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          description: give a description to this application
-          type: string
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
-        build_mode:
-          $ref: '#/components/schemas/BuildModeEnum'
-        dockerfile_path:
-          description: The path of the associated Dockerfile
-          type: string
-        buildpack_language:
-          $ref: '#/components/schemas/BuildPackLanguageEnum'
-        cpu:
-          default: 500
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 512
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_instances:
-          default: 1
-          description: "Minimum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
-            \ no application running.\n"
-          minimum: 0
-          type: integer
-        max_running_instances:
-          default: 1
-          description: "Maximum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
-            \ is no limit.\n"
-          type: integer
-        healthchecks:
-          $ref: '#/components/schemas/Healthcheck'
-        auto_preview:
-          default: true
-          description: "Specify if the environment preview option is activated or\
-            \ not for this application.  \nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request.  \nIf not specified, it\
-            \ takes the value of the `auto_preview` property from the associated environment.\n"
-          type: boolean
-        ports:
-          items:
-            $ref: '#/components/schemas/ServicePort'
-          type: array
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
-        auto_deploy:
-          description: Specify if the application will be automatically updated after
-            receiving a new commit.
-          nullable: true
-          type: boolean
-      required:
-      - healthchecks
-      type: object
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryJobResponse'
+            type: array
+        type: object
     ServicePortRequest_ports_inner:
       properties:
         name:
@@ -20689,75 +21675,6 @@ components:
       required:
       - internal_port
       - publicly_accessible
-      type: object
-    ApplicationRequest_allOf:
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          description: give a description to this application
-          nullable: true
-          type: string
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
-        build_mode:
-          $ref: '#/components/schemas/BuildModeEnum'
-        dockerfile_path:
-          description: The path of the associated Dockerfile. Only if you are using
-            build_mode = DOCKER
-          nullable: true
-          type: string
-        buildpack_language:
-          $ref: '#/components/schemas/BuildPackLanguageEnum'
-        cpu:
-          default: 500
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 512
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_instances:
-          default: 1
-          description: "Minimum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
-            \ no application running.\n"
-          minimum: 0
-          type: integer
-        max_running_instances:
-          default: 1
-          description: "Maximum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
-            \ is no limit.\n"
-          type: integer
-        healthchecks:
-          $ref: '#/components/schemas/Healthcheck'
-        auto_preview:
-          default: true
-          description: "Specify if the environment preview option is activated or\
-            \ not for this application.  \nIf activated, a preview environment will\
-            \ be automatically cloned at each pull request.  \nIf not specified, it\
-            \ takes the value of the `auto_preview` property from the associated environment.\n"
-          type: boolean
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
-        auto_deploy:
-          description: Specify if the application will be automatically updated after
-            receiving a new commit.
-          nullable: true
-          type: boolean
-      required:
-      - git_repository
-      - healthchecks
-      - name
       type: object
     ServiceStorage_storage_inner:
       properties:
@@ -20799,81 +21716,6 @@ components:
       - mount_point
       - size
       - type
-      type: object
-    Backup_allOf:
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-      type: object
-    Cluster_allOf:
-      properties:
-        name:
-          description: name is case-insensitive
-          type: string
-        description:
-          type: string
-        region:
-          type: string
-        cloud_provider:
-          $ref: '#/components/schemas/CloudProviderEnum'
-        min_running_nodes:
-          default: 1
-          type: integer
-        max_running_nodes:
-          default: 1
-          type: integer
-        disk_size:
-          default: 20
-          description: Unit is in GB. The disk size to be used for the node configuration
-          example: 50
-          type: integer
-        instance_type:
-          description: "the instance type to be used for this cluster. The list of\
-            \ values can be retrieved via the endpoint /{CloudProvider}/instanceType"
-          example: T3A_LARGE
-          type: string
-        kubernetes:
-          $ref: '#/components/schemas/KubernetesEnum'
-        cpu:
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 10000
-          type: integer
-        memory:
-          description: unit is MB. 1024 MB = 1GB
-          example: 4096
-          type: integer
-        estimated_cloud_provider_cost:
-          description: "This is an estimation of the cost this cluster will represent\
-            \ on your cloud proider bill, based on your current configuration"
-          type: integer
-        status:
-          $ref: '#/components/schemas/ClusterStateEnum'
-        has_access:
-          type: boolean
-        version:
-          type: string
-        is_default:
-          type: boolean
-        production:
-          description: specific flag to indicate that this cluster is a production
-            one
-          type: boolean
-        ssh_keys:
-          description: Indicate your public ssh_key to remotely connect to your EC2
-            instance.
-          items:
-            type: string
-          type: array
-        features:
-          items:
-            $ref: '#/components/schemas/ClusterFeature'
-          type: array
-        deployment_status:
-          $ref: '#/components/schemas/ClusterDeploymentStatusEnum'
-      required:
-      - cloud_provider
-      - name
-      - region
       type: object
     ClusterLogs_message:
       example:
@@ -21084,22 +21926,17 @@ components:
       - destination
       - target
       type: object
-    CommitPaginatedResponseList_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/Commit'
-          type: array
-      type: object
     ContainerRegistryRequest_config:
-      description: "This field is dependent of the container registry kind:\n* `ECR`\
-        \ needs in the config: region, access_key_id, secret_access_key\n* `SCALEWAY_CR`\
-        \ needs in the config: region, scaleway_access_key, scaleway_secret_key\n\
-        * `DOCKER_HUB` needs in the config (optional): username, password\n* `GITHUB_CR`\
-        \ needs in the config (optional): username, password\n* `GITLAB_CR` needs\
-        \ in the config (optional): username, password\n* `PUBLIC_ECR` doesn't need\
-        \ credentials info\n* `GENERIC_CR` needs in the config (optional): username,\
-        \ password\n* `DOCR` is not supported anymore\n"
+      description: |
+        This field is dependent of the container registry kind:
+        * `ECR` needs in the config: region, access_key_id, secret_access_key
+        * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key
+        * `DOCKER_HUB` needs in the config (optional): username, password
+        * `GITHUB_CR` needs in the config (optional): username, password
+        * `GITLAB_CR` needs in the config (optional): username, password
+        * `PUBLIC_ECR` doesn't need credentials info
+        * `GENERIC_CR` needs in the config (optional): username, password
+        * `DOCR` is not supported anymore
       example:
         access_key_id: access_key_id
         password: password
@@ -21133,234 +21970,18 @@ components:
             \ credentials for Docker Hub due to the limits on the pull rate\n"
           type: string
       type: object
-    ContainerRegistryResponse_allOf:
-      properties:
-        name:
-          type: string
-        kind:
-          $ref: '#/components/schemas/ContainerRegistryKindEnum'
-        description:
-          type: string
-        url:
-          description: URL of the container registry
-          type: string
-        cluster:
-          allOf:
-          - $ref: '#/components/schemas/Base'
-          - properties:
-              id:
-                description: Id of the cluster of which the registry belongs to
-                format: uuid
-                type: string
-              name:
-                description: Name of the cluster of which the registry belongs to
-                type: string
-            type: object
-      type: object
-    ContainerRequest_allOf:
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          description: give a description to this container
-          type: string
-        registry_id:
-          description: id of the linked registry
-          type: string
-        image_name:
-          description: "The image name pattern differs according to chosen container\
-            \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
-            * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
-          type: string
-        tag:
-          description: tag of the image container
-          type: string
-        arguments:
-          items:
+    ContainerRegistryResponse_allOf_cluster:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          id:
+            description: Id of the cluster of which the registry belongs to
+            format: uuid
             type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
-        cpu:
-          default: 500
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 512
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_instances:
-          default: 1
-          description: "Minimum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
-            \ no container running.\n"
-          minimum: 0
-          type: integer
-        max_running_instances:
-          default: 1
-          description: "Maximum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
-            \ is no limit.\n"
-          type: integer
-        healthchecks:
-          $ref: '#/components/schemas/Healthcheck'
-        auto_preview:
-          description: "Indicates if the 'environment preview option' is enabled for\
-            \ this container.  \nIf enabled, a preview environment will be automatically\
-            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
-            \ the value of the `auto_preview` property from the associated environment.\n"
-          type: boolean
-        auto_deploy:
-          description: "Specify if the container will be automatically updated after\
-            \ receiving a new image tag. \nThe new image tag shall be communicated\
-            \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
-          nullable: true
-          type: boolean
-      required:
-      - healthchecks
-      - image_name
-      - name
-      - registry_id
-      - tag
-      type: object
-    ContainerResponse_allOf:
-      properties:
-        environment:
-          $ref: '#/components/schemas/ReferenceObject'
-        registry:
-          $ref: '#/components/schemas/ContainerRegistryProviderDetailsResponse'
-        maximum_cpu:
-          description: Maximum cpu that can be allocated to the container based on
-            organization cluster configuration. unit is millicores (m). 1000m = 1
-            cpu
-          example: 16000
-          type: integer
-        maximum_memory:
-          description: Maximum memory that can be allocated to the container based
-            on organization cluster configuration. unit is MB. 1024 MB = 1GB
-          example: 16384
-          type: integer
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          description: give a description to this container
-          type: string
-        image_name:
-          description: name of the image container
-          type: string
-        tag:
-          description: tag of the image container
-          type: string
-        arguments:
-          items:
+          name:
+            description: Name of the cluster of which the registry belongs to
             type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
-        cpu:
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        min_running_instances:
-          default: 1
-          description: "Minimum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: 0 means that there is\
-            \ no container running.\n"
-          minimum: 0
-          type: integer
-        max_running_instances:
-          default: 1
-          description: "Maximum number of instances running. This resource auto-scale\
-            \ based on the CPU and Memory consumption.\nNote: -1 means that there\
-            \ is no limit.\n"
-          type: integer
-        healthchecks:
-          $ref: '#/components/schemas/Healthcheck'
-        auto_preview:
-          description: "Indicates if the 'environment preview option' is enabled for\
-            \ this container.  \nIf enabled, a preview environment will be automatically\
-            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
-            \ the value of the `auto_preview` property from the associated environment.\n"
-          type: boolean
-        ports:
-          items:
-            $ref: '#/components/schemas/ServicePort'
-          type: array
-        auto_deploy:
-          description: "Specify if the container will be automatically updated after\
-            \ receiving a new image tag. \nThe new image tag shall be communicated\
-            \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
-          type: boolean
-      required:
-      - auto_preview
-      - cpu
-      - environment
-      - healthchecks
-      - image_name
-      - max_running_instances
-      - maximum_cpu
-      - maximum_memory
-      - memory
-      - min_running_instances
-      - name
-      - registry
-      - tag
-      type: object
-    CustomDomain_allOf:
-      properties:
-        validation_domain:
-          description: URL provided by Qovery. You must create a CNAME on your DNS
-            provider using that URL
-          type: string
-        status:
-          $ref: '#/components/schemas/CustomDomainStatusEnum'
-        generate_certificate:
-          description: to control if a certificate has to be generated for this custom
-            domain by Qovery. The default value is `true`. This flag should be set
-            to `false` if a CDN or other entities are managing the certificate for
-            the specified domain and the traffic is proxied by the CDN to Qovery.
-          type: boolean
-      type: object
-    Database_allOf:
-      properties:
-        environment:
-          $ref: '#/components/schemas/ReferenceObject'
-        host:
-          type: string
-        port:
-          example: 5432
-          type: integer
-        maximum_cpu:
-          description: Maximum cpu that can be allocated to the database based on
-            organization cluster configuration. unit is millicores (m). 1000m = 1
-            cpu
-          example: 1250
-          type: integer
-        maximum_memory:
-          description: Maximum memory that can be allocated to the database based
-            on organization cluster configuration. unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        disk_encrypted:
-          description: indicates if the database disk is encrypted or not
-          type: boolean
-        instance_type:
-          description: "Database instance type to be used for this database. The list\
-            \ of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}.\
-            \ This field is null for container DB."
-          example: db.t3.medium
-          type: string
-      type: object
+        type: object
     DatabaseCurrentMetric_cpu:
       example:
         consumed_in_percent: 1.4658129805029452
@@ -21480,86 +22101,6 @@ components:
             the service version won't be changed)
           type: string
       type: object
-    DeploymentHistory_allOf:
-      properties:
-        name:
-          description: name of the service
-          type: string
-        commit:
-          $ref: '#/components/schemas/Commit'
-        status:
-          $ref: '#/components/schemas/DeploymentHistoryStatusEnum'
-      type: object
-    DeploymentHistoryApplication_allOf:
-      properties:
-        name:
-          type: string
-        commit:
-          $ref: '#/components/schemas/Commit'
-        status:
-          $ref: '#/components/schemas/StateEnum'
-      type: object
-    DeploymentHistoryDatabase_allOf:
-      properties:
-        name:
-          description: name of the service
-          type: string
-        status:
-          $ref: '#/components/schemas/StateEnum'
-      type: object
-    DeploymentHistoryContainer_allOf:
-      properties:
-        name:
-          description: name of the container
-          type: string
-        status:
-          $ref: '#/components/schemas/StateEnum'
-        image_name:
-          type: string
-        tag:
-          type: string
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          type: string
-      type: object
-    DeploymentHistoryEnvironment_allOf:
-      properties:
-        status:
-          $ref: '#/components/schemas/StateEnum'
-        applications:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryApplication'
-          type: array
-        containers:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryContainer'
-          type: array
-        databases:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryDatabase'
-          type: array
-        jobs:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryJobResponse'
-          type: array
-      type: object
-    DeploymentHistoryEnvironmentPaginatedResponseList_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/DeploymentHistoryEnvironment'
-          type: array
-      type: object
-    DeploymentHistoryPaginatedResponseList_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/DeploymentHistory'
-          type: array
-      type: object
     Environment_allOf_cloud_provider:
       properties:
         provider:
@@ -21569,33 +22110,7 @@ components:
           example: us-east-2
           type: string
       type: object
-    Environment_allOf:
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        project:
-          $ref: '#/components/schemas/ReferenceObject'
-        last_updated_by:
-          description: uuid of the user that made the last update
-          format: uuid
-          type: string
-        cloud_provider:
-          $ref: '#/components/schemas/Environment_allOf_cloud_provider'
-        mode:
-          $ref: '#/components/schemas/EnvironmentModeEnum'
-        cluster_id:
-          format: uuid
-          type: string
-        cluster_name:
-          format: string
-          type: string
-      required:
-      - cloud_provider
-      - cluster_id
-      - mode
-      - name
-      type: object
+      example: null
     EnvironmentApplicationsInstanceResponseList_results_inner:
       properties:
         application:
@@ -21680,38 +22195,6 @@ components:
           type: number
         status:
           $ref: '#/components/schemas/ThresholdMetricStatusEnum'
-      type: object
-    EnvironmentDeploymentRule_allOf:
-      properties:
-        on_demand_preview:
-          default: false
-          type: boolean
-        auto_stop:
-          default: false
-          type: boolean
-        auto_preview:
-          default: false
-          type: boolean
-        timezone:
-          example: UTC
-          type: string
-        start_time:
-          example: 1970-01-01T08:00:00Z
-          format: date-time
-          type: string
-        stop_time:
-          example: 1970-01-01T19:00:00Z
-          format: date-time
-          type: string
-        weekdays:
-          items:
-            $ref: '#/components/schemas/WeekdayEnum'
-          type: array
-      required:
-      - start_time
-      - stop_time
-      - timezone
-      - weekdays
       type: object
     EnvironmentLog_scope:
       example:
@@ -21827,57 +22310,6 @@ components:
         full_details:
           type: string
       type: object
-    EnvironmentLogPaginatedResponseList_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/EnvironmentLog'
-          type: array
-      type: object
-    EnvironmentVariable_allOf:
-      properties:
-        overridden_variable:
-          $ref: '#/components/schemas/EnvironmentVariableOverride'
-        aliased_variable:
-          $ref: '#/components/schemas/EnvironmentVariableAlias'
-        scope:
-          $ref: '#/components/schemas/APIVariableScopeEnum'
-        variable_type:
-          $ref: '#/components/schemas/APIVariableTypeEnum'
-        service_id:
-          format: uuid
-          type: string
-        service_name:
-          type: string
-        service_type:
-          $ref: '#/components/schemas/LinkedServiceTypeEnum'
-        owned_by:
-          description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
-          type: string
-      required:
-      - scope
-      type: object
-    Event_allOf:
-      properties:
-        user:
-          $ref: '#/components/schemas/User'
-        commit:
-          $ref: '#/components/schemas/Commit'
-        status:
-          $ref: '#/components/schemas/Status'
-        type:
-          description: DRAFT - we have to specify here all the possible events
-          type: string
-        log:
-          $ref: '#/components/schemas/ReferenceObject'
-      type: object
-    EventPaginatedResponseList_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/Event'
-          type: array
-      type: object
     Instance_memory:
       example:
         consumed_in_percent: 9.301444243932576
@@ -21902,85 +22334,6 @@ components:
         status:
           $ref: '#/components/schemas/ThresholdMetricStatusEnum'
       type: object
-    InviteMember_allOf:
-      properties:
-        email:
-          format: email
-          type: string
-        role:
-          $ref: '#/components/schemas/InviteMemberRoleEnum'
-        invitation_link:
-          format: uri
-          type: string
-        invitation_status:
-          $ref: '#/components/schemas/InviteStatusEnum'
-        organization_name:
-          type: string
-        inviter:
-          type: string
-        logo_url:
-          format: uri
-          type: string
-        role_id:
-          format: uuid
-          type: string
-        role_name:
-          type: string
-      required:
-      - email
-      - invitation_link
-      - invitation_status
-      - inviter
-      - role
-      type: object
-    Invoice_allOf:
-      properties:
-        id:
-          format: uuid
-          type: string
-        created_at:
-          format: date-time
-          type: string
-        status:
-          $ref: '#/components/schemas/InvoiceStatusEnum'
-      required:
-      - created_at
-      - currency_code
-      - id
-      - status
-      - total
-      - total_in_cents
-      type: object
-    DeploymentStageResponse_allOf:
-      properties:
-        environment:
-          $ref: '#/components/schemas/ReferenceObject'
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          type: string
-        deployment_order:
-          description: Position of the deployment stage within the environment
-          example: 1
-          type: integer
-        services:
-          items:
-            $ref: '#/components/schemas/DeploymentStageServiceResponse'
-          type: array
-      required:
-      - environment
-      type: object
-    DeploymentStageServiceResponse_allOf:
-      properties:
-        service_id:
-          description: id of the service attached to the stage
-          format: uuid
-          type: string
-        service_type:
-          description: "type of the service (i.e APPLICATION, JOB, DATABASE, ...)"
-          type: string
-      type: object
     JobRequest_allOf_source_image:
       nullable: true
       properties:
@@ -21996,6 +22349,7 @@ components:
           description: tag of the image container
           type: string
       type: object
+      example: null
     JobRequest_allOf_source_docker:
       nullable: true
       properties:
@@ -22007,6 +22361,7 @@ components:
         git_repository:
           $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
       type: object
+      example: null
     JobRequest_allOf_source:
       properties:
         image:
@@ -22014,6 +22369,7 @@ components:
         docker:
           $ref: '#/components/schemas/JobRequest_allOf_source_docker'
       type: object
+      example: null
     JobRequest_allOf_schedule_on_start:
       properties:
         arguments:
@@ -22024,6 +22380,7 @@ components:
           description: optional entrypoint when launching container
           type: string
       type: object
+      example: null
     JobRequest_allOf_schedule_cronjob:
       properties:
         arguments:
@@ -22043,6 +22400,7 @@ components:
       required:
       - scheduled_at
       type: object
+      example: null
     JobRequest_allOf_schedule:
       description: "If you want to define a Cron job, only the `cronjob` property\
         \ must be filled  \nA Lifecycle job should contain at least one property `on_XXX`\
@@ -22057,104 +22415,7 @@ components:
         cronjob:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_cronjob'
       type: object
-    JobRequest_allOf:
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          type: string
-        cpu:
-          default: 500
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          default: 512
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        max_nb_restart:
-          default: 0
-          description: |
-            Maximum number of restart allowed before the job is considered as failed
-            0 means that no restart/crash of the job is allowed
-          minimum: 0
-          type: integer
-        max_duration_seconds:
-          description: |
-            Maximum number of seconds allowed for the job to run before killing it and mark it as failed
-          minimum: 0
-          type: integer
-        auto_preview:
-          description: "Indicates if the 'environment preview option' is enabled for\
-            \ this container.  \nIf enabled, a preview environment will be automatically\
-            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
-            \ the value of the `auto_preview` property from the associated environment.\n"
-          type: boolean
-        port:
-          description: Port where to run readiness and liveliness probes checks. The
-            port will not be exposed externally
-          minimum: 1
-          nullable: true
-          type: integer
-        source:
-          $ref: '#/components/schemas/JobRequest_allOf_source'
-        healthchecks:
-          $ref: '#/components/schemas/Healthcheck'
-        schedule:
-          $ref: '#/components/schemas/JobRequest_allOf_schedule'
-        auto_deploy:
-          description: "Specify if the job will be automatically updated after receiving\
-            \ a new image tag or a new commit according to the source type. \nThe\
-            \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
-            \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
-          nullable: true
-          type: boolean
-      required:
-      - healthchecks
-      - name
-      type: object
-    JobResponse_allOf_source_image:
-      nullable: true
-      properties:
-        image_name:
-          description: "The image name pattern differs according to chosen container\
-            \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
-            * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
-          type: string
-        tag:
-          description: tag of the image container
-          type: string
-        registry_id:
-          description: tag of the image container
-          type: string
-        registry:
-          $ref: '#/components/schemas/ContainerRegistryProviderDetailsResponse'
-      required:
-      - image_name
-      - registry
-      - registry_id
-      - tag
-      type: object
-    JobResponse_allOf_source_docker:
-      nullable: true
-      properties:
-        dockerfile_path:
-          description: The path of the associated Dockerfile. Only if you are using
-            build_mode = DOCKER
-          nullable: true
-          type: string
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepository'
-      type: object
-    JobResponse_allOf_source:
-      properties:
-        image:
-          $ref: '#/components/schemas/JobResponse_allOf_source_image'
-        docker:
-          $ref: '#/components/schemas/JobResponse_allOf_source_docker'
-      type: object
+      example: null
     JobResponse_allOf_schedule_cronjob:
       properties:
         arguments:
@@ -22174,6 +22435,7 @@ components:
       required:
       - scheduled_at
       type: object
+      example: null
     JobResponse_allOf_schedule:
       description: "If you want to define a Cron job, only the `cronjob` property\
         \ must be filled  \nA Lifecycle job should contain at least one property `on_XXX`\
@@ -22188,190 +22450,48 @@ components:
         cronjob:
           $ref: '#/components/schemas/JobResponse_allOf_schedule_cronjob'
       type: object
-    JobResponse_allOf:
+      example: null
+    JobResponse_allOf_source_oneOf:
       properties:
-        environment:
-          $ref: '#/components/schemas/ReferenceObject'
-        maximum_cpu:
-          description: Maximum cpu that can be allocated to the job based on organization
-            cluster configuration. unit is millicores (m). 1000m = 1 cpu
-          example: 16000
-          type: integer
-        maximum_memory:
-          description: Maximum memory that can be allocated to the job based on organization
-            cluster configuration. unit is MB. 1024 MB = 1GB
-          example: 16384
-          type: integer
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          type: string
-        cpu:
-          description: unit is millicores (m). 1000m = 1 cpu
-          example: 1250
-          type: integer
-        memory:
-          description: unit is MB. 1024 MB = 1GB
-          example: 1024
-          type: integer
-        max_nb_restart:
-          description: |
-            Maximum number of restart allowed before the job is considered as failed
-            0 means that no restart/crash of the job is allowed
-          minimum: 0
-          type: integer
-        max_duration_seconds:
-          description: |
-            Maximum number of seconds allowed for the job to run before killing it and mark it as failed
-          minimum: 0
-          type: integer
-        auto_preview:
-          description: "Indicates if the 'environment preview option' is enabled for\
-            \ this container.  \nIf enabled, a preview environment will be automatically\
-            \ cloned when `/preview` endpoint is called.  \nIf not specified, it takes\
-            \ the value of the `auto_preview` property from the associated environment.\n"
-          type: boolean
-        port:
-          description: Port where to run readiness and liveliness probes checks. The
-            port will not be exposed externally
-          minimum: 1
-          nullable: true
-          type: integer
-        source:
-          $ref: '#/components/schemas/JobResponse_allOf_source'
-        healthchecks:
-          $ref: '#/components/schemas/Healthcheck'
-        schedule:
-          $ref: '#/components/schemas/JobResponse_allOf_schedule'
-        auto_deploy:
-          description: "Specify if the job will be automatically updated after receiving\
-            \ a new image tag or a new commit according to the source type. \nThe\
-            \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
-            \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
-          type: boolean
-      required:
-      - auto_preview
-      - cpu
-      - environment
-      - healthchecks
-      - max_running_instances
-      - maximum_cpu
-      - maximum_memory
-      - memory
-      - min_running_instances
-      - name
-      - tag
+        image:
+          $ref: '#/components/schemas/ContainerSource'
       type: object
+    JobResponse_allOf_source_oneOf_1_docker:
+      properties:
+        dockerfile_path:
+          description: The path of the associated Dockerfile. Only if you are using
+            build_mode = DOCKER
+          nullable: true
+          type: string
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepository'
+      type: object
+    JobResponse_allOf_source_oneOf_1:
+      properties:
+        docker:
+          $ref: '#/components/schemas/JobResponse_allOf_source_oneOf_1_docker'
+      type: object
+    JobResponse_allOf_source:
+      nullable: false
+      oneOf:
+      - $ref: '#/components/schemas/JobResponse_allOf_source_oneOf'
+      - $ref: '#/components/schemas/JobResponse_allOf_source_oneOf_1'
     DeploymentHistoryJobResponse_allOf_schedule:
       properties:
         event:
           $ref: '#/components/schemas/JobScheduleEvent'
         schedule_at:
-          description: "Can only be set if the event is CRON.\nRepresent the cron\
-            \ format for the job schedule without seconds.\nFor example: `* * * *\
-            \ *` represent the cron to launch the job every minute.\nSee https://crontab.guru/\
-            \ to WISIWIG interface.\nTimezone is UTC\n"
+          description: |
+            Can only be set if the event is CRON.
+            Represent the cron format for the job schedule without seconds.
+            For example: `* * * * *` represent the cron to launch the job every minute.
+            See https://crontab.guru/ to WISIWIG interface.
+            Timezone is UTC
           format: cron
           nullable: true
           type: string
       type: object
-    DeploymentHistoryJobResponse_allOf:
-      properties:
-        name:
-          description: name of the job
-          type: string
-        status:
-          $ref: '#/components/schemas/StateEnum'
-        image_name:
-          type: string
-        tag:
-          type: string
-        commit:
-          $ref: '#/components/schemas/Commit'
-        schedule:
-          $ref: '#/components/schemas/DeploymentHistoryJobResponse_allOf_schedule'
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          type: string
-      type: object
-    LogPaginatedResponseList_allOf:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/Log'
-          type: array
-      type: object
-    Member_allOf:
-      properties:
-        name:
-          type: string
-        nickname:
-          type: string
-        email:
-          format: email
-          type: string
-        profile_picture_url:
-          format: uri
-          type: string
-        last_activity_at:
-          description: last time the user was connected
-          format: date-time
-          type: string
-        role:
-          $ref: '#/components/schemas/InviteMemberRoleEnum'
-        role_name:
-          description: the role linked to the user
-          type: string
-        role_id:
-          format: uuid
-          type: string
-      required:
-      - email
-      type: object
-    Organization_allOf:
-      properties:
-        owner:
-          description: uuid of the user owning the organization
-          format: uuid
-          type: string
-      type: object
-    OrganizationApiToken_allOf:
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        role_name:
-          type: string
-        role_id:
-          format: uuid
-          type: string
-      type: object
-    OrganizationApiTokenCreate_allOf:
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        token:
-          description: the generated token to send in 'Authorization' header prefixed
-            by 'Token '
-          type: string
-        role_name:
-          type: string
-        role_id:
-          format: uuid
-          type: string
-      type: object
-    OrganizationCurrentCost_allOf:
-      properties:
-        paid_usage:
-          $ref: '#/components/schemas/PaidUsage'
-      type: object
+      example: null
     OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22475,42 +22595,6 @@ components:
           format: uri
           type: string
       type: object
-    OrganizationWebhookCreateResponse_allOf:
-      properties:
-        kind:
-          $ref: '#/components/schemas/OrganizationWebhookKindEnum'
-        target_url:
-          description: |
-            Set the public HTTP or HTTPS endpoint that will receive the specified events.
-            The target URL must starts with `http://` or `https://`
-          type: string
-        target_secret_set:
-          type: boolean
-        description:
-          type: string
-        enabled:
-          description: Turn on or off your endpoint.
-          type: boolean
-        events:
-          items:
-            $ref: '#/components/schemas/OrganizationWebhookEventEnum'
-          type: array
-        project_names_filter:
-          description: "Specify the project names you want to filter to. \nThis webhook\
-            \ will be triggered only if the event is coming from the specified Project\
-            \ IDs.\nNotes: 1. Wildcard is accepted E.g. `product*`. 2. Name is case\
-            \ insensitive.\n"
-          items:
-            type: string
-          type: array
-        environment_types_filter:
-          description: |
-            Specify the environment modes you want to filter to.
-            This webhook will be triggered only if the event is coming from an environment with the specified mode.
-          items:
-            $ref: '#/components/schemas/EnvironmentModeEnum'
-          type: array
-      type: object
     Probe_type_tcp:
       nullable: true
       properties:
@@ -22560,95 +22644,6 @@ components:
         grpc:
           $ref: '#/components/schemas/Probe_type_grpc'
       type: object
-    Project_allOf:
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        organization:
-          $ref: '#/components/schemas/ReferenceObject'
-      required:
-      - name
-      type: object
-    ProjectCurrentCost_allOf:
-      properties:
-        environments:
-          items:
-            $ref: '#/components/schemas/GenericObjectCurrentCost'
-          type: array
-      type: object
-    ProjectDeploymentRule_allOf:
-      properties:
-        priority_index:
-          description: used to select the first deployment rule to match new created
-            environments
-          nullable: false
-          type: integer
-      type: object
-    Secret_allOf:
-      properties:
-        key:
-          description: key is case sensitive
-          type: string
-        overridden_secret:
-          $ref: '#/components/schemas/SecretOverride'
-        aliased_secret:
-          $ref: '#/components/schemas/SecretAlias'
-        scope:
-          $ref: '#/components/schemas/APIVariableScopeEnum'
-        variable_type:
-          $ref: '#/components/schemas/APIVariableTypeEnum'
-        service_id:
-          format: uuid
-          type: string
-        service_name:
-          type: string
-        service_type:
-          $ref: '#/components/schemas/LinkedServiceTypeEnum'
-        owned_by:
-          description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
-          type: string
-      required:
-      - key
-      - scope
-      type: object
-    Service_allOf:
-      properties:
-        type:
-          $ref: '#/components/schemas/ServiceTypeEnum'
-        name:
-          description: name of the service
-          type: string
-        id:
-          description: "uuid of the associated service (application, database, job,\
-            \ gateway...)"
-          format: uuid
-          type: string
-        deployed_commit_id:
-          description: Git commit ID corresponding to the deployed version of the
-            application
-          type: string
-        last_updated_by:
-          description: uuid of the user that made the last update
-          format: uuid
-          type: string
-        consumed_resources_in_percent:
-          description: global overview of resources consumption of the service
-          type: number
-        service_typology:
-          description: "describes the typology of service (container, postgresl, redis...)"
-          example: container
-          type: string
-        service_version:
-          description: for databases this field exposes the database version
-          example: v12
-          type: string
-        to_update:
-          type: boolean
-      required:
-      - id
-      type: object
     VariableImport_successful_imported_variables_inner:
       example:
         is_secret: true
@@ -22690,31 +22685,6 @@ components:
       - name
       - scope
       - value
-      type: object
-    VariableResponse_allOf:
-      properties:
-        overridden_variable:
-          $ref: '#/components/schemas/VariableOverride'
-        aliased_variable:
-          $ref: '#/components/schemas/VariableAlias'
-        scope:
-          $ref: '#/components/schemas/APIVariableScopeEnum'
-        variable_type:
-          $ref: '#/components/schemas/APIVariableTypeEnum'
-        service_id:
-          description: The id of the service referenced by this variable.
-          format: uuid
-          type: string
-        service_name:
-          description: The name of the service referenced by this variable.
-          type: string
-        service_type:
-          $ref: '#/components/schemas/LinkedServiceTypeEnum'
-        owned_by:
-          description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
-          type: string
-      required:
-      - scope
       type: object
   securitySchemes:
     bearerAuth:

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentApplicationsStorage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentApplicationsStorage{}
+
 // EnvironmentApplicationsStorage struct for EnvironmentApplicationsStorage
 type EnvironmentApplicationsStorage struct {
 	Application string        `json:"application"`
@@ -65,7 +68,7 @@ func (o *EnvironmentApplicationsStorage) SetApplication(v string) {
 
 // GetDisks returns the Disks field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsStorage) GetDisks() []StorageDisk {
-	if o == nil || o.Disks == nil {
+	if o == nil || IsNil(o.Disks) {
 		var ret []StorageDisk
 		return ret
 	}
@@ -75,7 +78,7 @@ func (o *EnvironmentApplicationsStorage) GetDisks() []StorageDisk {
 // GetDisksOk returns a tuple with the Disks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsStorage) GetDisksOk() ([]StorageDisk, bool) {
-	if o == nil || o.Disks == nil {
+	if o == nil || IsNil(o.Disks) {
 		return nil, false
 	}
 	return o.Disks, true
@@ -83,7 +86,7 @@ func (o *EnvironmentApplicationsStorage) GetDisksOk() ([]StorageDisk, bool) {
 
 // HasDisks returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsStorage) HasDisks() bool {
-	if o != nil && o.Disks != nil {
+	if o != nil && !IsNil(o.Disks) {
 		return true
 	}
 
@@ -96,14 +99,20 @@ func (o *EnvironmentApplicationsStorage) SetDisks(v []StorageDisk) {
 }
 
 func (o EnvironmentApplicationsStorage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["application"] = o.Application
-	}
-	if o.Disks != nil {
-		toSerialize["disks"] = o.Disks
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentApplicationsStorage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["application"] = o.Application
+	if !IsNil(o.Disks) {
+		toSerialize["disks"] = o.Disks
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentApplicationsStorage struct {

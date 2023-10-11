@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the BillingPeriod type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillingPeriod{}
+
 // BillingPeriod struct for BillingPeriod
 type BillingPeriod struct {
 	BillingStartedOn *time.Time `json:"billing_started_on,omitempty"`
@@ -41,7 +44,7 @@ func NewBillingPeriodWithDefaults() *BillingPeriod {
 
 // GetBillingStartedOn returns the BillingStartedOn field value if set, zero value otherwise.
 func (o *BillingPeriod) GetBillingStartedOn() time.Time {
-	if o == nil || o.BillingStartedOn == nil {
+	if o == nil || IsNil(o.BillingStartedOn) {
 		var ret time.Time
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *BillingPeriod) GetBillingStartedOn() time.Time {
 // GetBillingStartedOnOk returns a tuple with the BillingStartedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingPeriod) GetBillingStartedOnOk() (*time.Time, bool) {
-	if o == nil || o.BillingStartedOn == nil {
+	if o == nil || IsNil(o.BillingStartedOn) {
 		return nil, false
 	}
 	return o.BillingStartedOn, true
@@ -59,7 +62,7 @@ func (o *BillingPeriod) GetBillingStartedOnOk() (*time.Time, bool) {
 
 // HasBillingStartedOn returns a boolean if a field has been set.
 func (o *BillingPeriod) HasBillingStartedOn() bool {
-	if o != nil && o.BillingStartedOn != nil {
+	if o != nil && !IsNil(o.BillingStartedOn) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *BillingPeriod) SetBillingStartedOn(v time.Time) {
 
 // GetBillingEndedOn returns the BillingEndedOn field value if set, zero value otherwise.
 func (o *BillingPeriod) GetBillingEndedOn() time.Time {
-	if o == nil || o.BillingEndedOn == nil {
+	if o == nil || IsNil(o.BillingEndedOn) {
 		var ret time.Time
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *BillingPeriod) GetBillingEndedOn() time.Time {
 // GetBillingEndedOnOk returns a tuple with the BillingEndedOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingPeriod) GetBillingEndedOnOk() (*time.Time, bool) {
-	if o == nil || o.BillingEndedOn == nil {
+	if o == nil || IsNil(o.BillingEndedOn) {
 		return nil, false
 	}
 	return o.BillingEndedOn, true
@@ -91,7 +94,7 @@ func (o *BillingPeriod) GetBillingEndedOnOk() (*time.Time, bool) {
 
 // HasBillingEndedOn returns a boolean if a field has been set.
 func (o *BillingPeriod) HasBillingEndedOn() bool {
-	if o != nil && o.BillingEndedOn != nil {
+	if o != nil && !IsNil(o.BillingEndedOn) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *BillingPeriod) SetBillingEndedOn(v time.Time) {
 }
 
 func (o BillingPeriod) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BillingStartedOn != nil {
-		toSerialize["billing_started_on"] = o.BillingStartedOn
-	}
-	if o.BillingEndedOn != nil {
-		toSerialize["billing_ended_on"] = o.BillingEndedOn
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillingPeriod) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BillingStartedOn) {
+		toSerialize["billing_started_on"] = o.BillingStartedOn
+	}
+	if !IsNil(o.BillingEndedOn) {
+		toSerialize["billing_ended_on"] = o.BillingEndedOn
+	}
+	return toSerialize, nil
 }
 
 type NullableBillingPeriod struct {

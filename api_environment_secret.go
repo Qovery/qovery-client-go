@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// EnvironmentSecretApiService EnvironmentSecretApi service
-type EnvironmentSecretApiService service
+// EnvironmentSecretAPIService EnvironmentSecretAPI service
+type EnvironmentSecretAPIService service
 
 type ApiCreateEnvironmentSecretRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentSecretApiService
+	ApiService    *EnvironmentSecretAPIService
 	environmentId string
 	secretRequest *SecretRequest
 }
@@ -51,7 +51,7 @@ CreateEnvironmentSecret Add a secret to the environment
  @param environmentId Environment ID
  @return ApiCreateEnvironmentSecretRequest
 */
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx context.Context, environmentId string) ApiCreateEnvironmentSecretRequest {
+func (a *EnvironmentSecretAPIService) CreateEnvironmentSecret(ctx context.Context, environmentId string) ApiCreateEnvironmentSecretRequest {
 	return ApiCreateEnvironmentSecretRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -61,7 +61,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecret(ctx context.Contex
 
 // Execute executes the request
 //  @return Secret
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (*Secret, *http.Response, error) {
+func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -69,13 +69,13 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretAPIService.CreateEnvironmentSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -124,9 +124,9 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -153,7 +153,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretExecute(r ApiCreate
 
 type ApiCreateEnvironmentSecretAliasRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentSecretApiService
+	ApiService    *EnvironmentSecretAPIService
 	environmentId string
 	secretId      string
 	key           *Key
@@ -184,7 +184,7 @@ CreateEnvironmentSecretAlias Create a secret alias at the environment level
  @param secretId Secret ID
  @return ApiCreateEnvironmentSecretAliasRequest
 */
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretAliasRequest {
+func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretAlias(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretAliasRequest {
 	return ApiCreateEnvironmentSecretAliasRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -195,7 +195,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAlias(ctx context.C
 
 // Execute executes the request
 //  @return Secret
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (*Secret, *http.Response, error) {
+func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -203,14 +203,14 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretAlias")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretAPIService.CreateEnvironmentSecretAlias")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -259,9 +259,9 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -288,7 +288,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretAliasExecute(r ApiC
 
 type ApiCreateEnvironmentSecretOverrideRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentSecretApiService
+	ApiService    *EnvironmentSecretAPIService
 	environmentId string
 	secretId      string
 	value         *Value
@@ -318,7 +318,7 @@ CreateEnvironmentSecretOverride Create a secret override at the environment leve
  @param secretId Secret ID
  @return ApiCreateEnvironmentSecretOverrideRequest
 */
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretOverrideRequest {
+func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretOverride(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretOverrideRequest {
 	return ApiCreateEnvironmentSecretOverrideRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -329,7 +329,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverride(ctx contex
 
 // Execute executes the request
 //  @return Secret
-func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (*Secret, *http.Response, error) {
+func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -337,14 +337,14 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.CreateEnvironmentSecretOverride")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretAPIService.CreateEnvironmentSecretOverride")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -393,9 +393,9 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -422,7 +422,7 @@ func (a *EnvironmentSecretApiService) CreateEnvironmentSecretOverrideExecute(r A
 
 type ApiDeleteEnvironmentSecretRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentSecretApiService
+	ApiService    *EnvironmentSecretAPIService
 	environmentId string
 	secretId      string
 }
@@ -444,7 +444,7 @@ DeleteEnvironmentSecret Delete a secret from the environment
  @param secretId Secret ID
  @return ApiDeleteEnvironmentSecretRequest
 */
-func (a *EnvironmentSecretApiService) DeleteEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiDeleteEnvironmentSecretRequest {
+func (a *EnvironmentSecretAPIService) DeleteEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiDeleteEnvironmentSecretRequest {
 	return ApiDeleteEnvironmentSecretRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -454,21 +454,21 @@ func (a *EnvironmentSecretApiService) DeleteEnvironmentSecret(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *EnvironmentSecretApiService) DeleteEnvironmentSecretExecute(r ApiDeleteEnvironmentSecretRequest) (*http.Response, error) {
+func (a *EnvironmentSecretAPIService) DeleteEnvironmentSecretExecute(r ApiDeleteEnvironmentSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.DeleteEnvironmentSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretAPIService.DeleteEnvironmentSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -515,9 +515,9 @@ func (a *EnvironmentSecretApiService) DeleteEnvironmentSecretExecute(r ApiDelete
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -535,7 +535,7 @@ func (a *EnvironmentSecretApiService) DeleteEnvironmentSecretExecute(r ApiDelete
 
 type ApiEditEnvironmentSecretRequest struct {
 	ctx               context.Context
-	ApiService        *EnvironmentSecretApiService
+	ApiService        *EnvironmentSecretAPIService
 	environmentId     string
 	secretId          string
 	secretEditRequest *SecretEditRequest
@@ -564,7 +564,7 @@ EditEnvironmentSecret Edit a secret belonging to the environment
  @param secretId Secret ID
  @return ApiEditEnvironmentSecretRequest
 */
-func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiEditEnvironmentSecretRequest {
+func (a *EnvironmentSecretAPIService) EditEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiEditEnvironmentSecretRequest {
 	return ApiEditEnvironmentSecretRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -575,7 +575,7 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecret(ctx context.Context,
 
 // Execute executes the request
 //  @return Secret
-func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (*Secret, *http.Response, error) {
+func (a *EnvironmentSecretAPIService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -583,14 +583,14 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.EditEnvironmentSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretAPIService.EditEnvironmentSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -642,9 +642,9 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -671,7 +671,7 @@ func (a *EnvironmentSecretApiService) EditEnvironmentSecretExecute(r ApiEditEnvi
 
 type ApiListEnvironmentSecretsRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentSecretApiService
+	ApiService    *EnvironmentSecretAPIService
 	environmentId string
 }
 
@@ -686,7 +686,7 @@ ListEnvironmentSecrets List environment secrets
  @param environmentId Environment ID
  @return ApiListEnvironmentSecretsRequest
 */
-func (a *EnvironmentSecretApiService) ListEnvironmentSecrets(ctx context.Context, environmentId string) ApiListEnvironmentSecretsRequest {
+func (a *EnvironmentSecretAPIService) ListEnvironmentSecrets(ctx context.Context, environmentId string) ApiListEnvironmentSecretsRequest {
 	return ApiListEnvironmentSecretsRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -696,7 +696,7 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecrets(ctx context.Context
 
 // Execute executes the request
 //  @return SecretResponseList
-func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnvironmentSecretsRequest) (*SecretResponseList, *http.Response, error) {
+func (a *EnvironmentSecretAPIService) ListEnvironmentSecretsExecute(r ApiListEnvironmentSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -704,13 +704,13 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnv
 		localVarReturnValue *SecretResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretApiService.ListEnvironmentSecrets")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentSecretAPIService.ListEnvironmentSecrets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -757,9 +757,9 @@ func (a *EnvironmentSecretApiService) ListEnvironmentSecretsExecute(r ApiListEnv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

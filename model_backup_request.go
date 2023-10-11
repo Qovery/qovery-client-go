@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackupRequest{}
+
 // BackupRequest struct for BackupRequest
 type BackupRequest struct {
 	Name    string `json:"name"`
@@ -89,14 +92,18 @@ func (o *BackupRequest) SetMessage(v string) {
 }
 
 func (o BackupRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["message"] = o.Message
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BackupRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["message"] = o.Message
+	return toSerialize, nil
 }
 
 type NullableBackupRequest struct {

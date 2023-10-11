@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationCustomRoleProjectPermissionsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationCustomRoleProjectPermissionsInner{}
+
 // OrganizationCustomRoleProjectPermissionsInner struct for OrganizationCustomRoleProjectPermissionsInner
 type OrganizationCustomRoleProjectPermissionsInner struct {
 	ProjectId   *string `json:"project_id,omitempty"`
@@ -47,7 +50,7 @@ func NewOrganizationCustomRoleProjectPermissionsInnerWithDefaults() *Organizatio
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectId() string {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectId() string {
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectIdOk() (*string, bool) {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
 	return o.ProjectId, true
@@ -65,7 +68,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectIdOk() (*strin
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) SetProjectId(v string) {
 
 // GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectName() string {
-	if o == nil || o.ProjectName == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectName() string 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectNameOk() (*string, bool) {
-	if o == nil || o.ProjectName == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
 	return o.ProjectName, true
@@ -97,7 +100,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetProjectNameOk() (*str
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) HasProjectName() bool {
-	if o != nil && o.ProjectName != nil {
+	if o != nil && !IsNil(o.ProjectName) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) SetProjectName(v string)
 
 // GetIsAdmin returns the IsAdmin field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetIsAdmin() bool {
-	if o == nil || o.IsAdmin == nil {
+	if o == nil || IsNil(o.IsAdmin) {
 		var ret bool
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetIsAdmin() bool {
 // GetIsAdminOk returns a tuple with the IsAdmin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetIsAdminOk() (*bool, bool) {
-	if o == nil || o.IsAdmin == nil {
+	if o == nil || IsNil(o.IsAdmin) {
 		return nil, false
 	}
 	return o.IsAdmin, true
@@ -129,7 +132,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetIsAdminOk() (*bool, b
 
 // HasIsAdmin returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) HasIsAdmin() bool {
-	if o != nil && o.IsAdmin != nil {
+	if o != nil && !IsNil(o.IsAdmin) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) SetIsAdmin(v bool) {
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissions() []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		var ret []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissions() []Organ
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissionsOk() ([]OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner, bool) {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -161,7 +164,7 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) GetPermissionsOk() ([]Or
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleProjectPermissionsInner) HasPermissions() bool {
-	if o != nil && o.Permissions != nil {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -174,20 +177,28 @@ func (o *OrganizationCustomRoleProjectPermissionsInner) SetPermissions(v []Organ
 }
 
 func (o OrganizationCustomRoleProjectPermissionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ProjectId != nil {
-		toSerialize["project_id"] = o.ProjectId
-	}
-	if o.ProjectName != nil {
-		toSerialize["project_name"] = o.ProjectName
-	}
-	if o.IsAdmin != nil {
-		toSerialize["is_admin"] = o.IsAdmin
-	}
-	if o.Permissions != nil {
-		toSerialize["permissions"] = o.Permissions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationCustomRoleProjectPermissionsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	if !IsNil(o.ProjectName) {
+		toSerialize["project_name"] = o.ProjectName
+	}
+	if !IsNil(o.IsAdmin) {
+		toSerialize["is_admin"] = o.IsAdmin
+	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationCustomRoleProjectPermissionsInner struct {

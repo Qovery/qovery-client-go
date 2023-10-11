@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ReferenceObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReferenceObject{}
+
 // ReferenceObject struct for ReferenceObject
 type ReferenceObject struct {
 	Id string `json:"id"`
@@ -63,11 +66,17 @@ func (o *ReferenceObject) SetId(v string) {
 }
 
 func (o ReferenceObject) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ReferenceObject) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableReferenceObject struct {

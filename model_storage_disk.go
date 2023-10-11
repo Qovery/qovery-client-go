@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the StorageDisk type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StorageDisk{}
+
 // StorageDisk struct for StorageDisk
 type StorageDisk struct {
 	CreatedAt *time.Time `json:"created_at,omitempty"`
@@ -49,7 +52,7 @@ func NewStorageDiskWithDefaults() *StorageDisk {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *StorageDisk) GetCreatedAt() time.Time {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *StorageDisk) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -67,7 +70,7 @@ func (o *StorageDisk) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *StorageDisk) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *StorageDisk) SetCreatedAt(v time.Time) {
 
 // GetStorageId returns the StorageId field value if set, zero value otherwise.
 func (o *StorageDisk) GetStorageId() string {
-	if o == nil || o.StorageId == nil {
+	if o == nil || IsNil(o.StorageId) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *StorageDisk) GetStorageId() string {
 // GetStorageIdOk returns a tuple with the StorageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetStorageIdOk() (*string, bool) {
-	if o == nil || o.StorageId == nil {
+	if o == nil || IsNil(o.StorageId) {
 		return nil, false
 	}
 	return o.StorageId, true
@@ -99,7 +102,7 @@ func (o *StorageDisk) GetStorageIdOk() (*string, bool) {
 
 // HasStorageId returns a boolean if a field has been set.
 func (o *StorageDisk) HasStorageId() bool {
-	if o != nil && o.StorageId != nil {
+	if o != nil && !IsNil(o.StorageId) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *StorageDisk) SetStorageId(v string) {
 
 // GetRequestedInGb returns the RequestedInGb field value if set, zero value otherwise.
 func (o *StorageDisk) GetRequestedInGb() int32 {
-	if o == nil || o.RequestedInGb == nil {
+	if o == nil || IsNil(o.RequestedInGb) {
 		var ret int32
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *StorageDisk) GetRequestedInGb() int32 {
 // GetRequestedInGbOk returns a tuple with the RequestedInGb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetRequestedInGbOk() (*int32, bool) {
-	if o == nil || o.RequestedInGb == nil {
+	if o == nil || IsNil(o.RequestedInGb) {
 		return nil, false
 	}
 	return o.RequestedInGb, true
@@ -131,7 +134,7 @@ func (o *StorageDisk) GetRequestedInGbOk() (*int32, bool) {
 
 // HasRequestedInGb returns a boolean if a field has been set.
 func (o *StorageDisk) HasRequestedInGb() bool {
-	if o != nil && o.RequestedInGb != nil {
+	if o != nil && !IsNil(o.RequestedInGb) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *StorageDisk) SetRequestedInGb(v int32) {
 
 // GetConsumedInGb returns the ConsumedInGb field value if set, zero value otherwise.
 func (o *StorageDisk) GetConsumedInGb() float32 {
-	if o == nil || o.ConsumedInGb == nil {
+	if o == nil || IsNil(o.ConsumedInGb) {
 		var ret float32
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *StorageDisk) GetConsumedInGb() float32 {
 // GetConsumedInGbOk returns a tuple with the ConsumedInGb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetConsumedInGbOk() (*float32, bool) {
-	if o == nil || o.ConsumedInGb == nil {
+	if o == nil || IsNil(o.ConsumedInGb) {
 		return nil, false
 	}
 	return o.ConsumedInGb, true
@@ -163,7 +166,7 @@ func (o *StorageDisk) GetConsumedInGbOk() (*float32, bool) {
 
 // HasConsumedInGb returns a boolean if a field has been set.
 func (o *StorageDisk) HasConsumedInGb() bool {
-	if o != nil && o.ConsumedInGb != nil {
+	if o != nil && !IsNil(o.ConsumedInGb) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *StorageDisk) SetConsumedInGb(v float32) {
 
 // GetConsumedInPercent returns the ConsumedInPercent field value if set, zero value otherwise.
 func (o *StorageDisk) GetConsumedInPercent() float32 {
-	if o == nil || o.ConsumedInPercent == nil {
+	if o == nil || IsNil(o.ConsumedInPercent) {
 		var ret float32
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *StorageDisk) GetConsumedInPercent() float32 {
 // GetConsumedInPercentOk returns a tuple with the ConsumedInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetConsumedInPercentOk() (*float32, bool) {
-	if o == nil || o.ConsumedInPercent == nil {
+	if o == nil || IsNil(o.ConsumedInPercent) {
 		return nil, false
 	}
 	return o.ConsumedInPercent, true
@@ -195,7 +198,7 @@ func (o *StorageDisk) GetConsumedInPercentOk() (*float32, bool) {
 
 // HasConsumedInPercent returns a boolean if a field has been set.
 func (o *StorageDisk) HasConsumedInPercent() bool {
-	if o != nil && o.ConsumedInPercent != nil {
+	if o != nil && !IsNil(o.ConsumedInPercent) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *StorageDisk) SetConsumedInPercent(v float32) {
 
 // GetWarningThresholdInPercent returns the WarningThresholdInPercent field value if set, zero value otherwise.
 func (o *StorageDisk) GetWarningThresholdInPercent() float32 {
-	if o == nil || o.WarningThresholdInPercent == nil {
+	if o == nil || IsNil(o.WarningThresholdInPercent) {
 		var ret float32
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *StorageDisk) GetWarningThresholdInPercent() float32 {
 // GetWarningThresholdInPercentOk returns a tuple with the WarningThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetWarningThresholdInPercentOk() (*float32, bool) {
-	if o == nil || o.WarningThresholdInPercent == nil {
+	if o == nil || IsNil(o.WarningThresholdInPercent) {
 		return nil, false
 	}
 	return o.WarningThresholdInPercent, true
@@ -227,7 +230,7 @@ func (o *StorageDisk) GetWarningThresholdInPercentOk() (*float32, bool) {
 
 // HasWarningThresholdInPercent returns a boolean if a field has been set.
 func (o *StorageDisk) HasWarningThresholdInPercent() bool {
-	if o != nil && o.WarningThresholdInPercent != nil {
+	if o != nil && !IsNil(o.WarningThresholdInPercent) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *StorageDisk) SetWarningThresholdInPercent(v float32) {
 
 // GetAlertThresholdInPercent returns the AlertThresholdInPercent field value if set, zero value otherwise.
 func (o *StorageDisk) GetAlertThresholdInPercent() float32 {
-	if o == nil || o.AlertThresholdInPercent == nil {
+	if o == nil || IsNil(o.AlertThresholdInPercent) {
 		var ret float32
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *StorageDisk) GetAlertThresholdInPercent() float32 {
 // GetAlertThresholdInPercentOk returns a tuple with the AlertThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetAlertThresholdInPercentOk() (*float32, bool) {
-	if o == nil || o.AlertThresholdInPercent == nil {
+	if o == nil || IsNil(o.AlertThresholdInPercent) {
 		return nil, false
 	}
 	return o.AlertThresholdInPercent, true
@@ -259,7 +262,7 @@ func (o *StorageDisk) GetAlertThresholdInPercentOk() (*float32, bool) {
 
 // HasAlertThresholdInPercent returns a boolean if a field has been set.
 func (o *StorageDisk) HasAlertThresholdInPercent() bool {
-	if o != nil && o.AlertThresholdInPercent != nil {
+	if o != nil && !IsNil(o.AlertThresholdInPercent) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *StorageDisk) SetAlertThresholdInPercent(v float32) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *StorageDisk) GetStatus() ThresholdMetricStatusEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret ThresholdMetricStatusEnum
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *StorageDisk) GetStatus() ThresholdMetricStatusEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StorageDisk) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -291,7 +294,7 @@ func (o *StorageDisk) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *StorageDisk) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -304,32 +307,40 @@ func (o *StorageDisk) SetStatus(v ThresholdMetricStatusEnum) {
 }
 
 func (o StorageDisk) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.StorageId != nil {
-		toSerialize["storage_id"] = o.StorageId
-	}
-	if o.RequestedInGb != nil {
-		toSerialize["requested_in_gb"] = o.RequestedInGb
-	}
-	if o.ConsumedInGb != nil {
-		toSerialize["consumed_in_gb"] = o.ConsumedInGb
-	}
-	if o.ConsumedInPercent != nil {
-		toSerialize["consumed_in_percent"] = o.ConsumedInPercent
-	}
-	if o.WarningThresholdInPercent != nil {
-		toSerialize["warning_threshold_in_percent"] = o.WarningThresholdInPercent
-	}
-	if o.AlertThresholdInPercent != nil {
-		toSerialize["alert_threshold_in_percent"] = o.AlertThresholdInPercent
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StorageDisk) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.StorageId) {
+		toSerialize["storage_id"] = o.StorageId
+	}
+	if !IsNil(o.RequestedInGb) {
+		toSerialize["requested_in_gb"] = o.RequestedInGb
+	}
+	if !IsNil(o.ConsumedInGb) {
+		toSerialize["consumed_in_gb"] = o.ConsumedInGb
+	}
+	if !IsNil(o.ConsumedInPercent) {
+		toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	}
+	if !IsNil(o.WarningThresholdInPercent) {
+		toSerialize["warning_threshold_in_percent"] = o.WarningThresholdInPercent
+	}
+	if !IsNil(o.AlertThresholdInPercent) {
+		toSerialize["alert_threshold_in_percent"] = o.AlertThresholdInPercent
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableStorageDisk struct {

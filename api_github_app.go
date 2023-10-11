@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// GithubAppApiService GithubAppApi service
-type GithubAppApiService service
+// GithubAppAPIService GithubAppAPI service
+type GithubAppAPIService service
 
 type ApiOrganizationGithubAppConnectRequest struct {
 	ctx                                 context.Context
-	ApiService                          *GithubAppApiService
+	ApiService                          *GithubAppAPIService
 	organizationId                      string
 	organizationGithubAppConnectRequest *OrganizationGithubAppConnectRequest
 }
@@ -46,7 +46,7 @@ OrganizationGithubAppConnect Connect a github account to an organization
  @param organizationId Organization ID
  @return ApiOrganizationGithubAppConnectRequest
 */
-func (a *GithubAppApiService) OrganizationGithubAppConnect(ctx context.Context, organizationId string) ApiOrganizationGithubAppConnectRequest {
+func (a *GithubAppAPIService) OrganizationGithubAppConnect(ctx context.Context, organizationId string) ApiOrganizationGithubAppConnectRequest {
 	return ApiOrganizationGithubAppConnectRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -55,20 +55,20 @@ func (a *GithubAppApiService) OrganizationGithubAppConnect(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *GithubAppApiService) OrganizationGithubAppConnectExecute(r ApiOrganizationGithubAppConnectRequest) (*http.Response, error) {
+func (a *GithubAppAPIService) OrganizationGithubAppConnectExecute(r ApiOrganizationGithubAppConnectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GithubAppApiService.OrganizationGithubAppConnect")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GithubAppAPIService.OrganizationGithubAppConnect")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/github/connect"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -117,9 +117,9 @@ func (a *GithubAppApiService) OrganizationGithubAppConnectExecute(r ApiOrganizat
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -137,7 +137,7 @@ func (a *GithubAppApiService) OrganizationGithubAppConnectExecute(r ApiOrganizat
 
 type ApiOrganizationGithubAppDisconnectRequest struct {
 	ctx            context.Context
-	ApiService     *GithubAppApiService
+	ApiService     *GithubAppAPIService
 	organizationId string
 	force          *bool
 }
@@ -159,7 +159,7 @@ OrganizationGithubAppDisconnect Disconnect a github account from an organization
  @param organizationId Organization ID
  @return ApiOrganizationGithubAppDisconnectRequest
 */
-func (a *GithubAppApiService) OrganizationGithubAppDisconnect(ctx context.Context, organizationId string) ApiOrganizationGithubAppDisconnectRequest {
+func (a *GithubAppAPIService) OrganizationGithubAppDisconnect(ctx context.Context, organizationId string) ApiOrganizationGithubAppDisconnectRequest {
 	return ApiOrganizationGithubAppDisconnectRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -168,27 +168,27 @@ func (a *GithubAppApiService) OrganizationGithubAppDisconnect(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *GithubAppApiService) OrganizationGithubAppDisconnectExecute(r ApiOrganizationGithubAppDisconnectRequest) (*http.Response, error) {
+func (a *GithubAppAPIService) OrganizationGithubAppDisconnectExecute(r ApiOrganizationGithubAppDisconnectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GithubAppApiService.OrganizationGithubAppDisconnect")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GithubAppAPIService.OrganizationGithubAppDisconnect")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/github/disconnect"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.force != nil {
-		localVarQueryParams.Add("force", parameterToString(*r.force, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "force", r.force, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -231,9 +231,9 @@ func (a *GithubAppApiService) OrganizationGithubAppDisconnectExecute(r ApiOrgani
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

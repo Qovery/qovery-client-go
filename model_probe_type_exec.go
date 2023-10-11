@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProbeTypeExec type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProbeTypeExec{}
+
 // ProbeTypeExec struct for ProbeTypeExec
 type ProbeTypeExec struct {
 	Command []string `json:"command,omitempty"`
@@ -39,7 +42,7 @@ func NewProbeTypeExecWithDefaults() *ProbeTypeExec {
 
 // GetCommand returns the Command field value if set, zero value otherwise.
 func (o *ProbeTypeExec) GetCommand() []string {
-	if o == nil || o.Command == nil {
+	if o == nil || IsNil(o.Command) {
 		var ret []string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ProbeTypeExec) GetCommand() []string {
 // GetCommandOk returns a tuple with the Command field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProbeTypeExec) GetCommandOk() ([]string, bool) {
-	if o == nil || o.Command == nil {
+	if o == nil || IsNil(o.Command) {
 		return nil, false
 	}
 	return o.Command, true
@@ -57,7 +60,7 @@ func (o *ProbeTypeExec) GetCommandOk() ([]string, bool) {
 
 // HasCommand returns a boolean if a field has been set.
 func (o *ProbeTypeExec) HasCommand() bool {
-	if o != nil && o.Command != nil {
+	if o != nil && !IsNil(o.Command) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ProbeTypeExec) SetCommand(v []string) {
 }
 
 func (o ProbeTypeExec) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Command != nil {
-		toSerialize["command"] = o.Command
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProbeTypeExec) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Command) {
+		toSerialize["command"] = o.Command
+	}
+	return toSerialize, nil
 }
 
 type NullableProbeTypeExec struct {

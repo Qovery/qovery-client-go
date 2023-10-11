@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationActionsApiService ApplicationActionsApi service
-type ApplicationActionsApiService service
+// ApplicationActionsAPIService ApplicationActionsAPI service
+type ApplicationActionsAPIService service
 
 type ApiDeployApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ApiService    *ApplicationActionsAPIService
 	applicationId string
 	deployRequest *DeployRequest
 }
@@ -48,7 +48,7 @@ You must provide a git commit id
  @param applicationId Application ID
  @return ApiDeployApplicationRequest
 */
-func (a *ApplicationActionsApiService) DeployApplication(ctx context.Context, applicationId string) ApiDeployApplicationRequest {
+func (a *ApplicationActionsAPIService) DeployApplication(ctx context.Context, applicationId string) ApiDeployApplicationRequest {
 	return ApiDeployApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -58,7 +58,7 @@ func (a *ApplicationActionsApiService) DeployApplication(ctx context.Context, ap
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsAPIService) DeployApplicationExecute(r ApiDeployApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.DeployApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.DeployApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/deploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *ApplicationActionsApiService) DeployApplicationExecute(r ApiDeployAppli
 
 type ApiRebootApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ApiService    *ApplicationActionsAPIService
 	applicationId string
 }
 
@@ -165,7 +165,7 @@ RebootApplication Reboot application
  @param applicationId Application ID
  @return ApiRebootApplicationRequest
 */
-func (a *ApplicationActionsApiService) RebootApplication(ctx context.Context, applicationId string) ApiRebootApplicationRequest {
+func (a *ApplicationActionsAPIService) RebootApplication(ctx context.Context, applicationId string) ApiRebootApplicationRequest {
 	return ApiRebootApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -175,7 +175,7 @@ func (a *ApplicationActionsApiService) RebootApplication(ctx context.Context, ap
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) RebootApplicationExecute(r ApiRebootApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsAPIService) RebootApplicationExecute(r ApiRebootApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -183,13 +183,13 @@ func (a *ApplicationActionsApiService) RebootApplicationExecute(r ApiRebootAppli
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.RebootApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.RebootApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/restart-service"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -236,9 +236,9 @@ func (a *ApplicationActionsApiService) RebootApplicationExecute(r ApiRebootAppli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -265,7 +265,7 @@ func (a *ApplicationActionsApiService) RebootApplicationExecute(r ApiRebootAppli
 
 type ApiRedeployApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ApiService    *ApplicationActionsAPIService
 	applicationId string
 }
 
@@ -280,7 +280,7 @@ RedeployApplication Redeploy application
  @param applicationId Application ID
  @return ApiRedeployApplicationRequest
 */
-func (a *ApplicationActionsApiService) RedeployApplication(ctx context.Context, applicationId string) ApiRedeployApplicationRequest {
+func (a *ApplicationActionsAPIService) RedeployApplication(ctx context.Context, applicationId string) ApiRedeployApplicationRequest {
 	return ApiRedeployApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -290,7 +290,7 @@ func (a *ApplicationActionsApiService) RedeployApplication(ctx context.Context, 
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) RedeployApplicationExecute(r ApiRedeployApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsAPIService) RedeployApplicationExecute(r ApiRedeployApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -298,13 +298,13 @@ func (a *ApplicationActionsApiService) RedeployApplicationExecute(r ApiRedeployA
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.RedeployApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.RedeployApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/redeploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -351,9 +351,9 @@ func (a *ApplicationActionsApiService) RedeployApplicationExecute(r ApiRedeployA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,7 +380,7 @@ func (a *ApplicationActionsApiService) RedeployApplicationExecute(r ApiRedeployA
 
 type ApiRestartApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ApiService    *ApplicationActionsAPIService
 	applicationId string
 }
 
@@ -397,7 +397,7 @@ RestartApplication Deprecated - Restart application
  @param applicationId Application ID
  @return ApiRestartApplicationRequest
 */
-func (a *ApplicationActionsApiService) RestartApplication(ctx context.Context, applicationId string) ApiRestartApplicationRequest {
+func (a *ApplicationActionsAPIService) RestartApplication(ctx context.Context, applicationId string) ApiRestartApplicationRequest {
 	return ApiRestartApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -407,7 +407,7 @@ func (a *ApplicationActionsApiService) RestartApplication(ctx context.Context, a
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsAPIService) RestartApplicationExecute(r ApiRestartApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -415,13 +415,13 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.RestartApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.RestartApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/restart"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -468,9 +468,9 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -497,7 +497,7 @@ func (a *ApplicationActionsApiService) RestartApplicationExecute(r ApiRestartApp
 
 type ApiStopApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationActionsApiService
+	ApiService    *ApplicationActionsAPIService
 	applicationId string
 }
 
@@ -512,7 +512,7 @@ StopApplication Stop application
  @param applicationId Application ID
  @return ApiStopApplicationRequest
 */
-func (a *ApplicationActionsApiService) StopApplication(ctx context.Context, applicationId string) ApiStopApplicationRequest {
+func (a *ApplicationActionsAPIService) StopApplication(ctx context.Context, applicationId string) ApiStopApplicationRequest {
 	return ApiStopApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -522,7 +522,7 @@ func (a *ApplicationActionsApiService) StopApplication(ctx context.Context, appl
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsAPIService) StopApplicationExecute(r ApiStopApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -530,13 +530,13 @@ func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicati
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsApiService.StopApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.StopApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/stop"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -583,9 +583,9 @@ func (a *ApplicationActionsApiService) StopApplicationExecute(r ApiStopApplicati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProbeTypeTcp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProbeTypeTcp{}
+
 // ProbeTypeTcp struct for ProbeTypeTcp
 type ProbeTypeTcp struct {
 	Port *int32         `json:"port,omitempty"`
@@ -40,7 +43,7 @@ func NewProbeTypeTcpWithDefaults() *ProbeTypeTcp {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *ProbeTypeTcp) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ProbeTypeTcp) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProbeTypeTcp) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -58,7 +61,7 @@ func (o *ProbeTypeTcp) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *ProbeTypeTcp) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ProbeTypeTcp) SetPort(v int32) {
 
 // GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeTypeTcp) GetHost() string {
-	if o == nil || o.Host.Get() == nil {
+	if o == nil || IsNil(o.Host.Get()) {
 		var ret string
 		return ret
 	}
@@ -114,14 +117,22 @@ func (o *ProbeTypeTcp) UnsetHost() {
 }
 
 func (o ProbeTypeTcp) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProbeTypeTcp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Port != nil {
+	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
 	if o.Host.IsSet() {
 		toSerialize["host"] = o.Host.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProbeTypeTcp struct {

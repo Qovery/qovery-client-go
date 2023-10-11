@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CostRange type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CostRange{}
+
 // CostRange struct for CostRange
 type CostRange struct {
 	MinCostInCents *int32   `json:"min_cost_in_cents,omitempty"`
@@ -44,7 +47,7 @@ func NewCostRangeWithDefaults() *CostRange {
 
 // GetMinCostInCents returns the MinCostInCents field value if set, zero value otherwise.
 func (o *CostRange) GetMinCostInCents() int32 {
-	if o == nil || o.MinCostInCents == nil {
+	if o == nil || IsNil(o.MinCostInCents) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *CostRange) GetMinCostInCents() int32 {
 // GetMinCostInCentsOk returns a tuple with the MinCostInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostRange) GetMinCostInCentsOk() (*int32, bool) {
-	if o == nil || o.MinCostInCents == nil {
+	if o == nil || IsNil(o.MinCostInCents) {
 		return nil, false
 	}
 	return o.MinCostInCents, true
@@ -62,7 +65,7 @@ func (o *CostRange) GetMinCostInCentsOk() (*int32, bool) {
 
 // HasMinCostInCents returns a boolean if a field has been set.
 func (o *CostRange) HasMinCostInCents() bool {
-	if o != nil && o.MinCostInCents != nil {
+	if o != nil && !IsNil(o.MinCostInCents) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *CostRange) SetMinCostInCents(v int32) {
 
 // GetMinCost returns the MinCost field value if set, zero value otherwise.
 func (o *CostRange) GetMinCost() float32 {
-	if o == nil || o.MinCost == nil {
+	if o == nil || IsNil(o.MinCost) {
 		var ret float32
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *CostRange) GetMinCost() float32 {
 // GetMinCostOk returns a tuple with the MinCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostRange) GetMinCostOk() (*float32, bool) {
-	if o == nil || o.MinCost == nil {
+	if o == nil || IsNil(o.MinCost) {
 		return nil, false
 	}
 	return o.MinCost, true
@@ -94,7 +97,7 @@ func (o *CostRange) GetMinCostOk() (*float32, bool) {
 
 // HasMinCost returns a boolean if a field has been set.
 func (o *CostRange) HasMinCost() bool {
-	if o != nil && o.MinCost != nil {
+	if o != nil && !IsNil(o.MinCost) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *CostRange) SetMinCost(v float32) {
 
 // GetMaxCostInCents returns the MaxCostInCents field value if set, zero value otherwise.
 func (o *CostRange) GetMaxCostInCents() int32 {
-	if o == nil || o.MaxCostInCents == nil {
+	if o == nil || IsNil(o.MaxCostInCents) {
 		var ret int32
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *CostRange) GetMaxCostInCents() int32 {
 // GetMaxCostInCentsOk returns a tuple with the MaxCostInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostRange) GetMaxCostInCentsOk() (*int32, bool) {
-	if o == nil || o.MaxCostInCents == nil {
+	if o == nil || IsNil(o.MaxCostInCents) {
 		return nil, false
 	}
 	return o.MaxCostInCents, true
@@ -126,7 +129,7 @@ func (o *CostRange) GetMaxCostInCentsOk() (*int32, bool) {
 
 // HasMaxCostInCents returns a boolean if a field has been set.
 func (o *CostRange) HasMaxCostInCents() bool {
-	if o != nil && o.MaxCostInCents != nil {
+	if o != nil && !IsNil(o.MaxCostInCents) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *CostRange) SetMaxCostInCents(v int32) {
 
 // GetMaxCost returns the MaxCost field value if set, zero value otherwise.
 func (o *CostRange) GetMaxCost() float32 {
-	if o == nil || o.MaxCost == nil {
+	if o == nil || IsNil(o.MaxCost) {
 		var ret float32
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *CostRange) GetMaxCost() float32 {
 // GetMaxCostOk returns a tuple with the MaxCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CostRange) GetMaxCostOk() (*float32, bool) {
-	if o == nil || o.MaxCost == nil {
+	if o == nil || IsNil(o.MaxCost) {
 		return nil, false
 	}
 	return o.MaxCost, true
@@ -158,7 +161,7 @@ func (o *CostRange) GetMaxCostOk() (*float32, bool) {
 
 // HasMaxCost returns a boolean if a field has been set.
 func (o *CostRange) HasMaxCost() bool {
-	if o != nil && o.MaxCost != nil {
+	if o != nil && !IsNil(o.MaxCost) {
 		return true
 	}
 
@@ -195,23 +198,29 @@ func (o *CostRange) SetCurrencyCode(v string) {
 }
 
 func (o CostRange) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.MinCostInCents != nil {
-		toSerialize["min_cost_in_cents"] = o.MinCostInCents
-	}
-	if o.MinCost != nil {
-		toSerialize["min_cost"] = o.MinCost
-	}
-	if o.MaxCostInCents != nil {
-		toSerialize["max_cost_in_cents"] = o.MaxCostInCents
-	}
-	if o.MaxCost != nil {
-		toSerialize["max_cost"] = o.MaxCost
-	}
-	if true {
-		toSerialize["currency_code"] = o.CurrencyCode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CostRange) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MinCostInCents) {
+		toSerialize["min_cost_in_cents"] = o.MinCostInCents
+	}
+	if !IsNil(o.MinCost) {
+		toSerialize["min_cost"] = o.MinCost
+	}
+	if !IsNil(o.MaxCostInCents) {
+		toSerialize["max_cost_in_cents"] = o.MaxCostInCents
+	}
+	if !IsNil(o.MaxCost) {
+		toSerialize["max_cost"] = o.MaxCost
+	}
+	toSerialize["currency_code"] = o.CurrencyCode
+	return toSerialize, nil
 }
 
 type NullableCostRange struct {

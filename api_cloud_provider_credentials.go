@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// CloudProviderCredentialsApiService CloudProviderCredentialsApi service
-type CloudProviderCredentialsApiService service
+// CloudProviderCredentialsAPIService CloudProviderCredentialsAPI service
+type CloudProviderCredentialsAPIService service
 
 type ApiCreateAWSCredentialsRequest struct {
 	ctx                   context.Context
-	ApiService            *CloudProviderCredentialsApiService
+	ApiService            *CloudProviderCredentialsAPIService
 	organizationId        string
 	awsCredentialsRequest *AwsCredentialsRequest
 }
@@ -46,7 +46,7 @@ CreateAWSCredentials Create AWS credentials set
  @param organizationId Organization ID
  @return ApiCreateAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) CreateAWSCredentials(ctx context.Context, organizationId string) ApiCreateAWSCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) CreateAWSCredentials(ctx context.Context, organizationId string) ApiCreateAWSCredentialsRequest {
 	return ApiCreateAWSCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -56,7 +56,7 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentials(ctx context.Co
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,13 +64,13 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateAWSCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.CreateAWSCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -119,9 +119,9 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +148,7 @@ func (a *CloudProviderCredentialsApiService) CreateAWSCredentialsExecute(r ApiCr
 
 type ApiCreateDOCredentialsRequest struct {
 	ctx                  context.Context
-	ApiService           *CloudProviderCredentialsApiService
+	ApiService           *CloudProviderCredentialsAPIService
 	organizationId       string
 	doCredentialsRequest *DoCredentialsRequest
 }
@@ -169,7 +169,7 @@ CreateDOCredentials Create Digital Ocean credentials set
  @param organizationId Organization ID
  @return ApiCreateDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) CreateDOCredentials(ctx context.Context, organizationId string) ApiCreateDOCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) CreateDOCredentials(ctx context.Context, organizationId string) ApiCreateDOCredentialsRequest {
 	return ApiCreateDOCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -179,7 +179,7 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentials(ctx context.Con
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCreateDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) CreateDOCredentialsExecute(r ApiCreateDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -187,13 +187,13 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateDOCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.CreateDOCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -242,9 +242,9 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -271,7 +271,7 @@ func (a *CloudProviderCredentialsApiService) CreateDOCredentialsExecute(r ApiCre
 
 type ApiCreateScalewayCredentialsRequest struct {
 	ctx                        context.Context
-	ApiService                 *CloudProviderCredentialsApiService
+	ApiService                 *CloudProviderCredentialsAPIService
 	organizationId             string
 	scalewayCredentialsRequest *ScalewayCredentialsRequest
 }
@@ -292,7 +292,7 @@ CreateScalewayCredentials Create Scaleway credentials set
  @param organizationId Organization ID
  @return ApiCreateScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) CreateScalewayCredentials(ctx context.Context, organizationId string) ApiCreateScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) CreateScalewayCredentials(ctx context.Context, organizationId string) ApiCreateScalewayCredentialsRequest {
 	return ApiCreateScalewayCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -302,7 +302,7 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentials(ctx conte
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -310,13 +310,13 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.CreateScalewayCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.CreateScalewayCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -365,9 +365,9 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -394,7 +394,7 @@ func (a *CloudProviderCredentialsApiService) CreateScalewayCredentialsExecute(r 
 
 type ApiDeleteAWSCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	credentialsId  string
 	organizationId string
 }
@@ -411,7 +411,7 @@ DeleteAWSCredentials Delete a set of AWS credentials
  @param organizationId Organization ID
  @return ApiDeleteAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) DeleteAWSCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteAWSCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) DeleteAWSCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteAWSCredentialsRequest {
 	return ApiDeleteAWSCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -421,21 +421,21 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentials(ctx context.Co
 }
 
 // Execute executes the request
-func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDeleteAWSCredentialsRequest) (*http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) DeleteAWSCredentialsExecute(r ApiDeleteAWSCredentialsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteAWSCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.DeleteAWSCredentials")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -482,9 +482,9 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -502,7 +502,7 @@ func (a *CloudProviderCredentialsApiService) DeleteAWSCredentialsExecute(r ApiDe
 
 type ApiDeleteDOCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	credentialsId  string
 	organizationId string
 }
@@ -519,7 +519,7 @@ DeleteDOCredentials Delete a set of Digital Ocean credentials
  @param organizationId Organization ID
  @return ApiDeleteDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) DeleteDOCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteDOCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) DeleteDOCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteDOCredentialsRequest {
 	return ApiDeleteDOCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -529,21 +529,21 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentials(ctx context.Con
 }
 
 // Execute executes the request
-func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDeleteDOCredentialsRequest) (*http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) DeleteDOCredentialsExecute(r ApiDeleteDOCredentialsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteDOCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.DeleteDOCredentials")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -590,9 +590,9 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDel
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -610,7 +610,7 @@ func (a *CloudProviderCredentialsApiService) DeleteDOCredentialsExecute(r ApiDel
 
 type ApiDeleteScalewayCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	credentialsId  string
 	organizationId string
 }
@@ -627,7 +627,7 @@ DeleteScalewayCredentials Delete a set of Scaleway credentials
  @param organizationId Organization ID
  @return ApiDeleteScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) DeleteScalewayCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteScalewayCredentialsRequest {
 	return ApiDeleteScalewayCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -637,21 +637,21 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentials(ctx conte
 }
 
 // Execute executes the request
-func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r ApiDeleteScalewayCredentialsRequest) (*http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) DeleteScalewayCredentialsExecute(r ApiDeleteScalewayCredentialsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.DeleteScalewayCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.DeleteScalewayCredentials")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -698,9 +698,9 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -718,7 +718,7 @@ func (a *CloudProviderCredentialsApiService) DeleteScalewayCredentialsExecute(r 
 
 type ApiEditAWSCredentialsRequest struct {
 	ctx                   context.Context
-	ApiService            *CloudProviderCredentialsApiService
+	ApiService            *CloudProviderCredentialsAPIService
 	organizationId        string
 	credentialsId         string
 	awsCredentialsRequest *AwsCredentialsRequest
@@ -741,7 +741,7 @@ EditAWSCredentials Edit a set of AWS credentials
  @param credentialsId Credentials ID
  @return ApiEditAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) EditAWSCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditAWSCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) EditAWSCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditAWSCredentialsRequest {
 	return ApiEditAWSCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -752,7 +752,7 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentials(ctx context.Cont
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -760,14 +760,14 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditAWSCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.EditAWSCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -816,9 +816,9 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -845,7 +845,7 @@ func (a *CloudProviderCredentialsApiService) EditAWSCredentialsExecute(r ApiEdit
 
 type ApiEditDOCredentialsRequest struct {
 	ctx                  context.Context
-	ApiService           *CloudProviderCredentialsApiService
+	ApiService           *CloudProviderCredentialsAPIService
 	organizationId       string
 	credentialsId        string
 	doCredentialsRequest *DoCredentialsRequest
@@ -868,7 +868,7 @@ EditDOCredentials Edit a set of Digital Ocean credentials
  @param credentialsId Credentials ID
  @return ApiEditDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) EditDOCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditDOCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) EditDOCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditDOCredentialsRequest {
 	return ApiEditDOCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -879,7 +879,7 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentials(ctx context.Conte
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) EditDOCredentialsExecute(r ApiEditDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -887,14 +887,14 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditDOCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.EditDOCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -943,9 +943,9 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -972,7 +972,7 @@ func (a *CloudProviderCredentialsApiService) EditDOCredentialsExecute(r ApiEditD
 
 type ApiEditScalewayCredentialsRequest struct {
 	ctx                        context.Context
-	ApiService                 *CloudProviderCredentialsApiService
+	ApiService                 *CloudProviderCredentialsAPIService
 	organizationId             string
 	credentialsId              string
 	scalewayCredentialsRequest *ScalewayCredentialsRequest
@@ -995,7 +995,7 @@ EditScalewayCredentials Edit a set of Scaleway credentials
  @param credentialsId Credentials ID
  @return ApiEditScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) EditScalewayCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) EditScalewayCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditScalewayCredentialsRequest {
 	return ApiEditScalewayCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1006,7 +1006,7 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentials(ctx context
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1014,14 +1014,14 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.EditScalewayCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.EditScalewayCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1070,9 +1070,9 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1099,7 +1099,7 @@ func (a *CloudProviderCredentialsApiService) EditScalewayCredentialsExecute(r Ap
 
 type ApiGetAWSCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	organizationId string
 	credentialsId  string
 }
@@ -1116,7 +1116,7 @@ GetAWSCredentials Get a set of AWS credentials
  @param credentialsId Credentials ID
  @return ApiGetAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) GetAWSCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetAWSCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) GetAWSCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetAWSCredentialsRequest {
 	return ApiGetAWSCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1127,7 +1127,7 @@ func (a *CloudProviderCredentialsApiService) GetAWSCredentials(ctx context.Conte
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) GetAWSCredentialsExecute(r ApiGetAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) GetAWSCredentialsExecute(r ApiGetAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1135,14 +1135,14 @@ func (a *CloudProviderCredentialsApiService) GetAWSCredentialsExecute(r ApiGetAW
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.GetAWSCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.GetAWSCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1189,9 +1189,9 @@ func (a *CloudProviderCredentialsApiService) GetAWSCredentialsExecute(r ApiGetAW
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1218,7 +1218,7 @@ func (a *CloudProviderCredentialsApiService) GetAWSCredentialsExecute(r ApiGetAW
 
 type ApiGetDOCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	organizationId string
 	credentialsId  string
 }
@@ -1235,7 +1235,7 @@ GetDOCredentials Get a set of Digital Ocean credentials
  @param credentialsId Credentials ID
  @return ApiGetDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) GetDOCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetDOCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) GetDOCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetDOCredentialsRequest {
 	return ApiGetDOCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1246,7 +1246,7 @@ func (a *CloudProviderCredentialsApiService) GetDOCredentials(ctx context.Contex
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) GetDOCredentialsExecute(r ApiGetDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) GetDOCredentialsExecute(r ApiGetDOCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1254,14 +1254,14 @@ func (a *CloudProviderCredentialsApiService) GetDOCredentialsExecute(r ApiGetDOC
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.GetDOCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.GetDOCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1308,9 +1308,9 @@ func (a *CloudProviderCredentialsApiService) GetDOCredentialsExecute(r ApiGetDOC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1337,7 +1337,7 @@ func (a *CloudProviderCredentialsApiService) GetDOCredentialsExecute(r ApiGetDOC
 
 type ApiGetScalewayCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	organizationId string
 	credentialsId  string
 }
@@ -1354,7 +1354,7 @@ GetScalewayCredentials Get a set of Scaleway credentials
  @param credentialsId Credentials ID
  @return ApiGetScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) GetScalewayCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) GetScalewayCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetScalewayCredentialsRequest {
 	return ApiGetScalewayCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1365,7 +1365,7 @@ func (a *CloudProviderCredentialsApiService) GetScalewayCredentials(ctx context.
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsApiService) GetScalewayCredentialsExecute(r ApiGetScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) GetScalewayCredentialsExecute(r ApiGetScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1373,14 +1373,14 @@ func (a *CloudProviderCredentialsApiService) GetScalewayCredentialsExecute(r Api
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.GetScalewayCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.GetScalewayCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials/{credentialsId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterToString(r.credentialsId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1427,9 +1427,9 @@ func (a *CloudProviderCredentialsApiService) GetScalewayCredentialsExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1456,7 +1456,7 @@ func (a *CloudProviderCredentialsApiService) GetScalewayCredentialsExecute(r Api
 
 type ApiListAWSCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	organizationId string
 }
 
@@ -1471,7 +1471,7 @@ ListAWSCredentials List AWS credentials
  @param organizationId Organization ID
  @return ApiListAWSCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) ListAWSCredentials(ctx context.Context, organizationId string) ApiListAWSCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) ListAWSCredentials(ctx context.Context, organizationId string) ApiListAWSCredentialsRequest {
 	return ApiListAWSCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1481,7 +1481,7 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentials(ctx context.Cont
 
 // Execute executes the request
 //  @return ClusterCredentialsResponseList
-func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiListAWSCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) ListAWSCredentialsExecute(r ApiListAWSCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1489,13 +1489,13 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 		localVarReturnValue *ClusterCredentialsResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListAWSCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.ListAWSCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/aws/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1542,9 +1542,9 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1571,7 +1571,7 @@ func (a *CloudProviderCredentialsApiService) ListAWSCredentialsExecute(r ApiList
 
 type ApiListDOCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	organizationId string
 }
 
@@ -1586,7 +1586,7 @@ ListDOCredentials List DO credentials
  @param organizationId Organization ID
  @return ApiListDOCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) ListDOCredentials(ctx context.Context, organizationId string) ApiListDOCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) ListDOCredentials(ctx context.Context, organizationId string) ApiListDOCredentialsRequest {
 	return ApiListDOCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1596,7 +1596,7 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentials(ctx context.Conte
 
 // Execute executes the request
 //  @return ClusterCredentialsResponseList
-func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListDOCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) ListDOCredentialsExecute(r ApiListDOCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1604,13 +1604,13 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 		localVarReturnValue *ClusterCredentialsResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListDOCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.ListDOCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/digitalOcean/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1657,9 +1657,9 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1686,7 +1686,7 @@ func (a *CloudProviderCredentialsApiService) ListDOCredentialsExecute(r ApiListD
 
 type ApiListScalewayCredentialsRequest struct {
 	ctx            context.Context
-	ApiService     *CloudProviderCredentialsApiService
+	ApiService     *CloudProviderCredentialsAPIService
 	organizationId string
 }
 
@@ -1701,7 +1701,7 @@ ListScalewayCredentials List Scaleway credentials
  @param organizationId Organization ID
  @return ApiListScalewayCredentialsRequest
 */
-func (a *CloudProviderCredentialsApiService) ListScalewayCredentials(ctx context.Context, organizationId string) ApiListScalewayCredentialsRequest {
+func (a *CloudProviderCredentialsAPIService) ListScalewayCredentials(ctx context.Context, organizationId string) ApiListScalewayCredentialsRequest {
 	return ApiListScalewayCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1711,7 +1711,7 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentials(ctx context
 
 // Execute executes the request
 //  @return ClusterCredentialsResponseList
-func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r ApiListScalewayCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) ListScalewayCredentialsExecute(r ApiListScalewayCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1719,13 +1719,13 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r Ap
 		localVarReturnValue *ClusterCredentialsResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsApiService.ListScalewayCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.ListScalewayCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/scaleway/credentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1772,9 +1772,9 @@ func (a *CloudProviderCredentialsApiService) ListScalewayCredentialsExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

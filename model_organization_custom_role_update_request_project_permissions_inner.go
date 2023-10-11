@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationCustomRoleUpdateRequestProjectPermissionsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationCustomRoleUpdateRequestProjectPermissionsInner{}
+
 // OrganizationCustomRoleUpdateRequestProjectPermissionsInner struct for OrganizationCustomRoleUpdateRequestProjectPermissionsInner
 type OrganizationCustomRoleUpdateRequestProjectPermissionsInner struct {
 	ProjectId *string `json:"project_id,omitempty"`
@@ -47,7 +50,7 @@ func NewOrganizationCustomRoleUpdateRequestProjectPermissionsInnerWithDefaults()
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetProjectId() string {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetProjectI
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetProjectIdOk() (*string, bool) {
-	if o == nil || o.ProjectId == nil {
+	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
 	return o.ProjectId, true
@@ -65,7 +68,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetProjectI
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) HasProjectId() bool {
-	if o != nil && o.ProjectId != nil {
+	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) SetProjectI
 
 // GetIsAdmin returns the IsAdmin field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetIsAdmin() bool {
-	if o == nil || o.IsAdmin == nil {
+	if o == nil || IsNil(o.IsAdmin) {
 		var ret bool
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetIsAdmin(
 // GetIsAdminOk returns a tuple with the IsAdmin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetIsAdminOk() (*bool, bool) {
-	if o == nil || o.IsAdmin == nil {
+	if o == nil || IsNil(o.IsAdmin) {
 		return nil, false
 	}
 	return o.IsAdmin, true
@@ -97,7 +100,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetIsAdminO
 
 // HasIsAdmin returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) HasIsAdmin() bool {
-	if o != nil && o.IsAdmin != nil {
+	if o != nil && !IsNil(o.IsAdmin) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) SetIsAdmin(
 
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetPermissions() []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		var ret []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetPermissi
 // GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetPermissionsOk() ([]OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner, bool) {
-	if o == nil || o.Permissions == nil {
+	if o == nil || IsNil(o.Permissions) {
 		return nil, false
 	}
 	return o.Permissions, true
@@ -129,7 +132,7 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) GetPermissi
 
 // HasPermissions returns a boolean if a field has been set.
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) HasPermissions() bool {
-	if o != nil && o.Permissions != nil {
+	if o != nil && !IsNil(o.Permissions) {
 		return true
 	}
 
@@ -142,17 +145,25 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInner) SetPermissi
 }
 
 func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ProjectId != nil {
-		toSerialize["project_id"] = o.ProjectId
-	}
-	if o.IsAdmin != nil {
-		toSerialize["is_admin"] = o.IsAdmin
-	}
-	if o.Permissions != nil {
-		toSerialize["permissions"] = o.Permissions
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	if !IsNil(o.IsAdmin) {
+		toSerialize["is_admin"] = o.IsAdmin
+	}
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationCustomRoleUpdateRequestProjectPermissionsInner struct {

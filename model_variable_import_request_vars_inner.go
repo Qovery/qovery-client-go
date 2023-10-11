@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableImportRequestVarsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableImportRequestVarsInner{}
+
 // VariableImportRequestVarsInner struct for VariableImportRequestVarsInner
 type VariableImportRequestVarsInner struct {
 	Name     string               `json:"name"`
@@ -141,20 +144,20 @@ func (o *VariableImportRequestVarsInner) SetIsSecret(v bool) {
 }
 
 func (o VariableImportRequestVarsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["value"] = o.Value
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["is_secret"] = o.IsSecret
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableImportRequestVarsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["value"] = o.Value
+	toSerialize["scope"] = o.Scope
+	toSerialize["is_secret"] = o.IsSecret
+	return toSerialize, nil
 }
 
 type NullableVariableImportRequestVarsInner struct {

@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// CloudProviderApiService CloudProviderApi service
-type CloudProviderApiService service
+// CloudProviderAPIService CloudProviderAPI service
+type CloudProviderAPIService service
 
 type ApiListAWSEKSInstanceTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 	region     string
 }
 
@@ -40,7 +40,7 @@ ListAWSEKSInstanceType List AWS EKS available instance types
  @param region region name
  @return ApiListAWSEKSInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListAWSEKSInstanceType(ctx context.Context, region string) ApiListAWSEKSInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListAWSEKSInstanceType(ctx context.Context, region string) ApiListAWSEKSInstanceTypeRequest {
 	return ApiListAWSEKSInstanceTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -50,7 +50,7 @@ func (a *CloudProviderApiService) ListAWSEKSInstanceType(ctx context.Context, re
 
 // Execute executes the request
 //  @return ClusterInstanceTypeResponseList
-func (a *CloudProviderApiService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -58,13 +58,13 @@ func (a *CloudProviderApiService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSEKSInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSEKSInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/aws/eks/instanceType/{region}"
-	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterToString(r.region, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterValueToString(r.region, "region")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *CloudProviderApiService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -140,7 +140,7 @@ func (a *CloudProviderApiService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 
 type ApiListAWSEc2InstanceTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 	region     string
 }
 
@@ -155,7 +155,7 @@ ListAWSEc2InstanceType List AWS EC2 available instance types
  @param region region name
  @return ApiListAWSEc2InstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListAWSEc2InstanceType(ctx context.Context, region string) ApiListAWSEc2InstanceTypeRequest {
+func (a *CloudProviderAPIService) ListAWSEc2InstanceType(ctx context.Context, region string) ApiListAWSEc2InstanceTypeRequest {
 	return ApiListAWSEc2InstanceTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -165,7 +165,7 @@ func (a *CloudProviderApiService) ListAWSEc2InstanceType(ctx context.Context, re
 
 // Execute executes the request
 //  @return ClusterInstanceTypeResponseList
-func (a *CloudProviderApiService) ListAWSEc2InstanceTypeExecute(r ApiListAWSEc2InstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListAWSEc2InstanceTypeExecute(r ApiListAWSEc2InstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -173,13 +173,13 @@ func (a *CloudProviderApiService) ListAWSEc2InstanceTypeExecute(r ApiListAWSEc2I
 		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSEc2InstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSEc2InstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/aws/ec2/instanceType/{region}"
-	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterToString(r.region, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterValueToString(r.region, "region")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -226,9 +226,9 @@ func (a *CloudProviderApiService) ListAWSEc2InstanceTypeExecute(r ApiListAWSEc2I
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -255,7 +255,7 @@ func (a *CloudProviderApiService) ListAWSEc2InstanceTypeExecute(r ApiListAWSEc2I
 
 type ApiListAWSFeaturesRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListAWSFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http.Response, error) {
@@ -268,7 +268,7 @@ ListAWSFeatures List AWS features available
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAWSFeaturesRequest
 */
-func (a *CloudProviderApiService) ListAWSFeatures(ctx context.Context) ApiListAWSFeaturesRequest {
+func (a *CloudProviderAPIService) ListAWSFeatures(ctx context.Context) ApiListAWSFeaturesRequest {
 	return ApiListAWSFeaturesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -277,7 +277,7 @@ func (a *CloudProviderApiService) ListAWSFeatures(ctx context.Context) ApiListAW
 
 // Execute executes the request
 //  @return ClusterFeatureResponseList
-func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListAWSFeaturesExecute(r ApiListAWSFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -285,7 +285,7 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 		localVarReturnValue *ClusterFeatureResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSFeatures")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSFeatures")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -337,9 +337,9 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -366,7 +366,7 @@ func (a *CloudProviderApiService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 
 type ApiListAWSInstanceTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListAWSInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
@@ -379,7 +379,7 @@ ListAWSInstanceType List AWS available instance types
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAWSInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListAWSInstanceType(ctx context.Context) ApiListAWSInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListAWSInstanceType(ctx context.Context) ApiListAWSInstanceTypeRequest {
 	return ApiListAWSInstanceTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -388,7 +388,7 @@ func (a *CloudProviderApiService) ListAWSInstanceType(ctx context.Context) ApiLi
 
 // Execute executes the request
 //  @return ClusterInstanceTypeResponseList
-func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListAWSInstanceTypeExecute(r ApiListAWSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -396,7 +396,7 @@ func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanc
 		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -448,9 +448,9 @@ func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -477,7 +477,7 @@ func (a *CloudProviderApiService) ListAWSInstanceTypeExecute(r ApiListAWSInstanc
 
 type ApiListAWSManagedDatabaseInstanceTypeRequest struct {
 	ctx          context.Context
-	ApiService   *CloudProviderApiService
+	ApiService   *CloudProviderAPIService
 	region       string
 	databaseType string
 }
@@ -494,7 +494,7 @@ ListAWSManagedDatabaseInstanceType List AWS available managed database instance 
  @param databaseType Database type
  @return ApiListAWSManagedDatabaseInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListAWSManagedDatabaseInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListAWSManagedDatabaseInstanceTypeRequest {
 	return ApiListAWSManagedDatabaseInstanceTypeRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -505,7 +505,7 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceType(ctx context
 
 // Execute executes the request
 //  @return ManagedDatabaseInstanceTypeResponseList
-func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceTypeExecute(r ApiListAWSManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceTypeExecute(r ApiListAWSManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -513,14 +513,14 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceTypeExecute(r Ap
 		localVarReturnValue *ManagedDatabaseInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSManagedDatabaseInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSManagedDatabaseInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/aws/managedDatabase/instanceType/{region}/{databaseType}"
-	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterToString(r.region, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterToString(r.databaseType, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterValueToString(r.region, "region")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterValueToString(r.databaseType, "databaseType")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -567,9 +567,9 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceTypeExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -596,7 +596,7 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseInstanceTypeExecute(r Ap
 
 type ApiListAWSManagedDatabaseTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListAWSManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeResponseList, *http.Response, error) {
@@ -609,7 +609,7 @@ ListAWSManagedDatabaseType List AWS available managed database types
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAWSManagedDatabaseTypeRequest
 */
-func (a *CloudProviderApiService) ListAWSManagedDatabaseType(ctx context.Context) ApiListAWSManagedDatabaseTypeRequest {
+func (a *CloudProviderAPIService) ListAWSManagedDatabaseType(ctx context.Context) ApiListAWSManagedDatabaseTypeRequest {
 	return ApiListAWSManagedDatabaseTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -618,7 +618,7 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseType(ctx context.Context
 
 // Execute executes the request
 //  @return ManagedDatabaseTypeResponseList
-func (a *CloudProviderApiService) ListAWSManagedDatabaseTypeExecute(r ApiListAWSManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListAWSManagedDatabaseTypeExecute(r ApiListAWSManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -626,7 +626,7 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseTypeExecute(r ApiListAWS
 		localVarReturnValue *ManagedDatabaseTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSManagedDatabaseType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSManagedDatabaseType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -678,9 +678,9 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseTypeExecute(r ApiListAWS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -707,7 +707,7 @@ func (a *CloudProviderApiService) ListAWSManagedDatabaseTypeExecute(r ApiListAWS
 
 type ApiListAWSRegionsRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListAWSRegionsRequest) Execute() (*ClusterRegionResponseList, *http.Response, error) {
@@ -720,7 +720,7 @@ ListAWSRegions List AWS regions
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAWSRegionsRequest
 */
-func (a *CloudProviderApiService) ListAWSRegions(ctx context.Context) ApiListAWSRegionsRequest {
+func (a *CloudProviderAPIService) ListAWSRegions(ctx context.Context) ApiListAWSRegionsRequest {
 	return ApiListAWSRegionsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -729,7 +729,7 @@ func (a *CloudProviderApiService) ListAWSRegions(ctx context.Context) ApiListAWS
 
 // Execute executes the request
 //  @return ClusterRegionResponseList
-func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListAWSRegionsExecute(r ApiListAWSRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -737,7 +737,7 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 		localVarReturnValue *ClusterRegionResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListAWSRegions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSRegions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -789,9 +789,9 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -818,7 +818,7 @@ func (a *CloudProviderApiService) ListAWSRegionsExecute(r ApiListAWSRegionsReque
 
 type ApiListCloudProviderRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListCloudProviderRequest) Execute() (*CloudProviderResponseList, *http.Response, error) {
@@ -831,7 +831,7 @@ ListCloudProvider List Cloud providers available
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCloudProviderRequest
 */
-func (a *CloudProviderApiService) ListCloudProvider(ctx context.Context) ApiListCloudProviderRequest {
+func (a *CloudProviderAPIService) ListCloudProvider(ctx context.Context) ApiListCloudProviderRequest {
 	return ApiListCloudProviderRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -840,7 +840,7 @@ func (a *CloudProviderApiService) ListCloudProvider(ctx context.Context) ApiList
 
 // Execute executes the request
 //  @return CloudProviderResponseList
-func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProviderRequest) (*CloudProviderResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListCloudProviderExecute(r ApiListCloudProviderRequest) (*CloudProviderResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -848,7 +848,7 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 		localVarReturnValue *CloudProviderResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListCloudProvider")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListCloudProvider")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -900,9 +900,9 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -929,7 +929,7 @@ func (a *CloudProviderApiService) ListCloudProviderExecute(r ApiListCloudProvide
 
 type ApiListDOFeaturesRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListDOFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http.Response, error) {
@@ -942,7 +942,7 @@ ListDOFeatures List DO features available
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDOFeaturesRequest
 */
-func (a *CloudProviderApiService) ListDOFeatures(ctx context.Context) ApiListDOFeaturesRequest {
+func (a *CloudProviderAPIService) ListDOFeatures(ctx context.Context) ApiListDOFeaturesRequest {
 	return ApiListDOFeaturesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -951,7 +951,7 @@ func (a *CloudProviderApiService) ListDOFeatures(ctx context.Context) ApiListDOF
 
 // Execute executes the request
 //  @return ClusterFeatureResponseList
-func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListDOFeaturesExecute(r ApiListDOFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -959,7 +959,7 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 		localVarReturnValue *ClusterFeatureResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOFeatures")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListDOFeatures")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1011,9 +1011,9 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1040,7 +1040,7 @@ func (a *CloudProviderApiService) ListDOFeaturesExecute(r ApiListDOFeaturesReque
 
 type ApiListDOInstanceTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListDOInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
@@ -1053,7 +1053,7 @@ ListDOInstanceType List DO available instance types
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDOInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListDOInstanceType(ctx context.Context) ApiListDOInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListDOInstanceType(ctx context.Context) ApiListDOInstanceTypeRequest {
 	return ApiListDOInstanceTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1062,7 +1062,7 @@ func (a *CloudProviderApiService) ListDOInstanceType(ctx context.Context) ApiLis
 
 // Execute executes the request
 //  @return ClusterInstanceTypeResponseList
-func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListDOInstanceTypeExecute(r ApiListDOInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1070,7 +1070,7 @@ func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceT
 		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListDOInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1122,9 +1122,9 @@ func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceT
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1151,7 +1151,7 @@ func (a *CloudProviderApiService) ListDOInstanceTypeExecute(r ApiListDOInstanceT
 
 type ApiListDOManagedDatabaseInstanceTypeRequest struct {
 	ctx          context.Context
-	ApiService   *CloudProviderApiService
+	ApiService   *CloudProviderAPIService
 	region       string
 	databaseType string
 }
@@ -1168,7 +1168,7 @@ ListDOManagedDatabaseInstanceType List Digital Ocean available managed database 
  @param databaseType Database type
  @return ApiListDOManagedDatabaseInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListDOManagedDatabaseInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListDOManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListDOManagedDatabaseInstanceTypeRequest {
 	return ApiListDOManagedDatabaseInstanceTypeRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1179,7 +1179,7 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceType(ctx context.
 
 // Execute executes the request
 //  @return ManagedDatabaseInstanceTypeResponseList
-func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceTypeExecute(r ApiListDOManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListDOManagedDatabaseInstanceTypeExecute(r ApiListDOManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1187,14 +1187,14 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceTypeExecute(r Api
 		localVarReturnValue *ManagedDatabaseInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOManagedDatabaseInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListDOManagedDatabaseInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/digitalOcean/managedDatabase/instanceType/{region}/{databaseType}"
-	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterToString(r.region, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterToString(r.databaseType, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterValueToString(r.region, "region")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterValueToString(r.databaseType, "databaseType")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1241,9 +1241,9 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceTypeExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1270,7 +1270,7 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseInstanceTypeExecute(r Api
 
 type ApiListDOManagedDatabaseTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListDOManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeResponseList, *http.Response, error) {
@@ -1283,7 +1283,7 @@ ListDOManagedDatabaseType List Digital Ocean available managed database types
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDOManagedDatabaseTypeRequest
 */
-func (a *CloudProviderApiService) ListDOManagedDatabaseType(ctx context.Context) ApiListDOManagedDatabaseTypeRequest {
+func (a *CloudProviderAPIService) ListDOManagedDatabaseType(ctx context.Context) ApiListDOManagedDatabaseTypeRequest {
 	return ApiListDOManagedDatabaseTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1292,7 +1292,7 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseType(ctx context.Context)
 
 // Execute executes the request
 //  @return ManagedDatabaseTypeResponseList
-func (a *CloudProviderApiService) ListDOManagedDatabaseTypeExecute(r ApiListDOManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListDOManagedDatabaseTypeExecute(r ApiListDOManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1300,7 +1300,7 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseTypeExecute(r ApiListDOMa
 		localVarReturnValue *ManagedDatabaseTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDOManagedDatabaseType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListDOManagedDatabaseType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1352,9 +1352,9 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseTypeExecute(r ApiListDOMa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1381,7 +1381,7 @@ func (a *CloudProviderApiService) ListDOManagedDatabaseTypeExecute(r ApiListDOMa
 
 type ApiListDORegionsRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListDORegionsRequest) Execute() (*ClusterRegionResponseList, *http.Response, error) {
@@ -1394,7 +1394,7 @@ ListDORegions List DO regions
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListDORegionsRequest
 */
-func (a *CloudProviderApiService) ListDORegions(ctx context.Context) ApiListDORegionsRequest {
+func (a *CloudProviderAPIService) ListDORegions(ctx context.Context) ApiListDORegionsRequest {
 	return ApiListDORegionsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1403,7 +1403,7 @@ func (a *CloudProviderApiService) ListDORegions(ctx context.Context) ApiListDORe
 
 // Execute executes the request
 //  @return ClusterRegionResponseList
-func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListDORegionsExecute(r ApiListDORegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1411,7 +1411,7 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 		localVarReturnValue *ClusterRegionResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListDORegions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListDORegions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1463,9 +1463,9 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1492,7 +1492,7 @@ func (a *CloudProviderApiService) ListDORegionsExecute(r ApiListDORegionsRequest
 
 type ApiListSCWManagedDatabaseInstanceTypeRequest struct {
 	ctx          context.Context
-	ApiService   *CloudProviderApiService
+	ApiService   *CloudProviderAPIService
 	databaseType string
 }
 
@@ -1507,7 +1507,7 @@ ListSCWManagedDatabaseInstanceType List Scaleway available managed database inst
  @param databaseType Database type
  @return ApiListSCWManagedDatabaseInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceType(ctx context.Context, databaseType string) ApiListSCWManagedDatabaseInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListSCWManagedDatabaseInstanceType(ctx context.Context, databaseType string) ApiListSCWManagedDatabaseInstanceTypeRequest {
 	return ApiListSCWManagedDatabaseInstanceTypeRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1517,7 +1517,7 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceType(ctx context
 
 // Execute executes the request
 //  @return ManagedDatabaseInstanceTypeResponseList
-func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceTypeExecute(r ApiListSCWManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListSCWManagedDatabaseInstanceTypeExecute(r ApiListSCWManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1525,13 +1525,13 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceTypeExecute(r Ap
 		localVarReturnValue *ManagedDatabaseInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListSCWManagedDatabaseInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListSCWManagedDatabaseInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/scaleway/managedDatabase/instanceType/{zone}/{databaseType}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterToString(r.databaseType, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterValueToString(r.databaseType, "databaseType")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1578,9 +1578,9 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceTypeExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1607,7 +1607,7 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseInstanceTypeExecute(r Ap
 
 type ApiListSCWManagedDatabaseTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListSCWManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeResponseList, *http.Response, error) {
@@ -1620,7 +1620,7 @@ ListSCWManagedDatabaseType List Scaleway available managed database types
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSCWManagedDatabaseTypeRequest
 */
-func (a *CloudProviderApiService) ListSCWManagedDatabaseType(ctx context.Context) ApiListSCWManagedDatabaseTypeRequest {
+func (a *CloudProviderAPIService) ListSCWManagedDatabaseType(ctx context.Context) ApiListSCWManagedDatabaseTypeRequest {
 	return ApiListSCWManagedDatabaseTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1629,7 +1629,7 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseType(ctx context.Context
 
 // Execute executes the request
 //  @return ManagedDatabaseTypeResponseList
-func (a *CloudProviderApiService) ListSCWManagedDatabaseTypeExecute(r ApiListSCWManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListSCWManagedDatabaseTypeExecute(r ApiListSCWManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1637,7 +1637,7 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseTypeExecute(r ApiListSCW
 		localVarReturnValue *ManagedDatabaseTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListSCWManagedDatabaseType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListSCWManagedDatabaseType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1689,9 +1689,9 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseTypeExecute(r ApiListSCW
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1718,7 +1718,7 @@ func (a *CloudProviderApiService) ListSCWManagedDatabaseTypeExecute(r ApiListSCW
 
 type ApiListScalewayFeaturesRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListScalewayFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http.Response, error) {
@@ -1731,7 +1731,7 @@ ListScalewayFeatures List Scaleway features available
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListScalewayFeaturesRequest
 */
-func (a *CloudProviderApiService) ListScalewayFeatures(ctx context.Context) ApiListScalewayFeaturesRequest {
+func (a *CloudProviderAPIService) ListScalewayFeatures(ctx context.Context) ApiListScalewayFeaturesRequest {
 	return ApiListScalewayFeaturesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1740,7 +1740,7 @@ func (a *CloudProviderApiService) ListScalewayFeatures(ctx context.Context) ApiL
 
 // Execute executes the request
 //  @return ClusterFeatureResponseList
-func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListScalewayFeaturesExecute(r ApiListScalewayFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1748,7 +1748,7 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 		localVarReturnValue *ClusterFeatureResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayFeatures")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListScalewayFeatures")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1800,9 +1800,9 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1829,7 +1829,7 @@ func (a *CloudProviderApiService) ListScalewayFeaturesExecute(r ApiListScalewayF
 
 type ApiListScalewayInstanceTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListScalewayInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
@@ -1842,7 +1842,7 @@ ListScalewayInstanceType List Scaleway available instance types
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListScalewayInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListScalewayInstanceType(ctx context.Context) ApiListScalewayInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListScalewayInstanceType(ctx context.Context) ApiListScalewayInstanceTypeRequest {
 	return ApiListScalewayInstanceTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1851,7 +1851,7 @@ func (a *CloudProviderApiService) ListScalewayInstanceType(ctx context.Context) 
 
 // Execute executes the request
 //  @return ClusterInstanceTypeResponseList
-func (a *CloudProviderApiService) ListScalewayInstanceTypeExecute(r ApiListScalewayInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListScalewayInstanceTypeExecute(r ApiListScalewayInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1859,7 +1859,7 @@ func (a *CloudProviderApiService) ListScalewayInstanceTypeExecute(r ApiListScale
 		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListScalewayInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1911,9 +1911,9 @@ func (a *CloudProviderApiService) ListScalewayInstanceTypeExecute(r ApiListScale
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1940,7 +1940,7 @@ func (a *CloudProviderApiService) ListScalewayInstanceTypeExecute(r ApiListScale
 
 type ApiListScalewayKapsuleInstanceTypeRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 	zone       string
 }
 
@@ -1955,7 +1955,7 @@ ListScalewayKapsuleInstanceType List Scaleway Kapsule available instance types
  @param zone zone name
  @return ApiListScalewayKapsuleInstanceTypeRequest
 */
-func (a *CloudProviderApiService) ListScalewayKapsuleInstanceType(ctx context.Context, zone string) ApiListScalewayKapsuleInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListScalewayKapsuleInstanceType(ctx context.Context, zone string) ApiListScalewayKapsuleInstanceTypeRequest {
 	return ApiListScalewayKapsuleInstanceTypeRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1965,7 +1965,7 @@ func (a *CloudProviderApiService) ListScalewayKapsuleInstanceType(ctx context.Co
 
 // Execute executes the request
 //  @return ClusterInstanceTypeResponseList
-func (a *CloudProviderApiService) ListScalewayKapsuleInstanceTypeExecute(r ApiListScalewayKapsuleInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListScalewayKapsuleInstanceTypeExecute(r ApiListScalewayKapsuleInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1973,13 +1973,13 @@ func (a *CloudProviderApiService) ListScalewayKapsuleInstanceTypeExecute(r ApiLi
 		localVarReturnValue *ClusterInstanceTypeResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayKapsuleInstanceType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListScalewayKapsuleInstanceType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/scaleway/instanceType/{zone}"
-	localVarPath = strings.Replace(localVarPath, "{"+"zone"+"}", url.PathEscape(parameterToString(r.zone, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"zone"+"}", url.PathEscape(parameterValueToString(r.zone, "zone")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2026,9 +2026,9 @@ func (a *CloudProviderApiService) ListScalewayKapsuleInstanceTypeExecute(r ApiLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2055,7 +2055,7 @@ func (a *CloudProviderApiService) ListScalewayKapsuleInstanceTypeExecute(r ApiLi
 
 type ApiListScalewayRegionsRequest struct {
 	ctx        context.Context
-	ApiService *CloudProviderApiService
+	ApiService *CloudProviderAPIService
 }
 
 func (r ApiListScalewayRegionsRequest) Execute() (*ClusterRegionResponseList, *http.Response, error) {
@@ -2068,7 +2068,7 @@ ListScalewayRegions List Scaleway regions
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListScalewayRegionsRequest
 */
-func (a *CloudProviderApiService) ListScalewayRegions(ctx context.Context) ApiListScalewayRegionsRequest {
+func (a *CloudProviderAPIService) ListScalewayRegions(ctx context.Context) ApiListScalewayRegionsRequest {
 	return ApiListScalewayRegionsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2077,7 +2077,7 @@ func (a *CloudProviderApiService) ListScalewayRegions(ctx context.Context) ApiLi
 
 // Execute executes the request
 //  @return ClusterRegionResponseList
-func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
+func (a *CloudProviderAPIService) ListScalewayRegionsExecute(r ApiListScalewayRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2085,7 +2085,7 @@ func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRe
 		localVarReturnValue *ClusterRegionResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderApiService.ListScalewayRegions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListScalewayRegions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2137,9 +2137,9 @@ func (a *CloudProviderApiService) ListScalewayRegionsExecute(r ApiListScalewayRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

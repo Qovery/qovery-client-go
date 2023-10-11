@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CredentialsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CredentialsRequest{}
+
 // CredentialsRequest struct for CredentialsRequest
 type CredentialsRequest struct {
 	Login    string `json:"login"`
@@ -89,14 +92,18 @@ func (o *CredentialsRequest) SetPassword(v string) {
 }
 
 func (o CredentialsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["login"] = o.Login
-	}
-	if true {
-		toSerialize["password"] = o.Password
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CredentialsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["login"] = o.Login
+	toSerialize["password"] = o.Password
+	return toSerialize, nil
 }
 
 type NullableCredentialsRequest struct {

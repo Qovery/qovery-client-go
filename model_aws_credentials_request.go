@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AwsCredentialsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AwsCredentialsRequest{}
+
 // AwsCredentialsRequest struct for AwsCredentialsRequest
 type AwsCredentialsRequest struct {
 	Name            string `json:"name"`
@@ -115,17 +118,19 @@ func (o *AwsCredentialsRequest) SetSecretAccessKey(v string) {
 }
 
 func (o AwsCredentialsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["access_key_id"] = o.AccessKeyId
-	}
-	if true {
-		toSerialize["secret_access_key"] = o.SecretAccessKey
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AwsCredentialsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["access_key_id"] = o.AccessKeyId
+	toSerialize["secret_access_key"] = o.SecretAccessKey
+	return toSerialize, nil
 }
 
 type NullableAwsCredentialsRequest struct {

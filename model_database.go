@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Database type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Database{}
+
 // Database struct for Database
 type Database struct {
 	Id        string     `json:"id"`
@@ -133,7 +136,7 @@ func (o *Database) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Database) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -143,7 +146,7 @@ func (o *Database) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -151,7 +154,7 @@ func (o *Database) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Database) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -189,7 +192,7 @@ func (o *Database) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Database) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -199,7 +202,7 @@ func (o *Database) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -207,7 +210,7 @@ func (o *Database) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Database) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -293,7 +296,7 @@ func (o *Database) SetMode(v DatabaseModeEnum) {
 
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
 func (o *Database) GetAccessibility() DatabaseAccessibilityEnum {
-	if o == nil || o.Accessibility == nil {
+	if o == nil || IsNil(o.Accessibility) {
 		var ret DatabaseAccessibilityEnum
 		return ret
 	}
@@ -303,7 +306,7 @@ func (o *Database) GetAccessibility() DatabaseAccessibilityEnum {
 // GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetAccessibilityOk() (*DatabaseAccessibilityEnum, bool) {
-	if o == nil || o.Accessibility == nil {
+	if o == nil || IsNil(o.Accessibility) {
 		return nil, false
 	}
 	return o.Accessibility, true
@@ -311,7 +314,7 @@ func (o *Database) GetAccessibilityOk() (*DatabaseAccessibilityEnum, bool) {
 
 // HasAccessibility returns a boolean if a field has been set.
 func (o *Database) HasAccessibility() bool {
-	if o != nil && o.Accessibility != nil {
+	if o != nil && !IsNil(o.Accessibility) {
 		return true
 	}
 
@@ -325,7 +328,7 @@ func (o *Database) SetAccessibility(v DatabaseAccessibilityEnum) {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *Database) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret int32
 		return ret
 	}
@@ -335,7 +338,7 @@ func (o *Database) GetCpu() int32 {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -343,7 +346,7 @@ func (o *Database) GetCpuOk() (*int32, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *Database) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -357,7 +360,7 @@ func (o *Database) SetCpu(v int32) {
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
 func (o *Database) GetInstanceType() string {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		var ret string
 		return ret
 	}
@@ -367,7 +370,7 @@ func (o *Database) GetInstanceType() string {
 // GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetInstanceTypeOk() (*string, bool) {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		return nil, false
 	}
 	return o.InstanceType, true
@@ -375,7 +378,7 @@ func (o *Database) GetInstanceTypeOk() (*string, bool) {
 
 // HasInstanceType returns a boolean if a field has been set.
 func (o *Database) HasInstanceType() bool {
-	if o != nil && o.InstanceType != nil {
+	if o != nil && !IsNil(o.InstanceType) {
 		return true
 	}
 
@@ -389,7 +392,7 @@ func (o *Database) SetInstanceType(v string) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *Database) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -399,7 +402,7 @@ func (o *Database) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -407,7 +410,7 @@ func (o *Database) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *Database) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -421,7 +424,7 @@ func (o *Database) SetMemory(v int32) {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *Database) GetStorage() int32 {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret int32
 		return ret
 	}
@@ -431,7 +434,7 @@ func (o *Database) GetStorage() int32 {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetStorageOk() (*int32, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -439,7 +442,7 @@ func (o *Database) GetStorageOk() (*int32, bool) {
 
 // HasStorage returns a boolean if a field has been set.
 func (o *Database) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -453,7 +456,7 @@ func (o *Database) SetStorage(v int32) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Database) GetEnvironment() ReferenceObject {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		var ret ReferenceObject
 		return ret
 	}
@@ -463,7 +466,7 @@ func (o *Database) GetEnvironment() ReferenceObject {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetEnvironmentOk() (*ReferenceObject, bool) {
-	if o == nil || o.Environment == nil {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
 	return o.Environment, true
@@ -471,7 +474,7 @@ func (o *Database) GetEnvironmentOk() (*ReferenceObject, bool) {
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Database) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -485,7 +488,7 @@ func (o *Database) SetEnvironment(v ReferenceObject) {
 
 // GetHost returns the Host field value if set, zero value otherwise.
 func (o *Database) GetHost() string {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		var ret string
 		return ret
 	}
@@ -495,7 +498,7 @@ func (o *Database) GetHost() string {
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetHostOk() (*string, bool) {
-	if o == nil || o.Host == nil {
+	if o == nil || IsNil(o.Host) {
 		return nil, false
 	}
 	return o.Host, true
@@ -503,7 +506,7 @@ func (o *Database) GetHostOk() (*string, bool) {
 
 // HasHost returns a boolean if a field has been set.
 func (o *Database) HasHost() bool {
-	if o != nil && o.Host != nil {
+	if o != nil && !IsNil(o.Host) {
 		return true
 	}
 
@@ -517,7 +520,7 @@ func (o *Database) SetHost(v string) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *Database) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -527,7 +530,7 @@ func (o *Database) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -535,7 +538,7 @@ func (o *Database) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *Database) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -549,7 +552,7 @@ func (o *Database) SetPort(v int32) {
 
 // GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
 func (o *Database) GetMaximumCpu() int32 {
-	if o == nil || o.MaximumCpu == nil {
+	if o == nil || IsNil(o.MaximumCpu) {
 		var ret int32
 		return ret
 	}
@@ -559,7 +562,7 @@ func (o *Database) GetMaximumCpu() int32 {
 // GetMaximumCpuOk returns a tuple with the MaximumCpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetMaximumCpuOk() (*int32, bool) {
-	if o == nil || o.MaximumCpu == nil {
+	if o == nil || IsNil(o.MaximumCpu) {
 		return nil, false
 	}
 	return o.MaximumCpu, true
@@ -567,7 +570,7 @@ func (o *Database) GetMaximumCpuOk() (*int32, bool) {
 
 // HasMaximumCpu returns a boolean if a field has been set.
 func (o *Database) HasMaximumCpu() bool {
-	if o != nil && o.MaximumCpu != nil {
+	if o != nil && !IsNil(o.MaximumCpu) {
 		return true
 	}
 
@@ -581,7 +584,7 @@ func (o *Database) SetMaximumCpu(v int32) {
 
 // GetMaximumMemory returns the MaximumMemory field value if set, zero value otherwise.
 func (o *Database) GetMaximumMemory() int32 {
-	if o == nil || o.MaximumMemory == nil {
+	if o == nil || IsNil(o.MaximumMemory) {
 		var ret int32
 		return ret
 	}
@@ -591,7 +594,7 @@ func (o *Database) GetMaximumMemory() int32 {
 // GetMaximumMemoryOk returns a tuple with the MaximumMemory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetMaximumMemoryOk() (*int32, bool) {
-	if o == nil || o.MaximumMemory == nil {
+	if o == nil || IsNil(o.MaximumMemory) {
 		return nil, false
 	}
 	return o.MaximumMemory, true
@@ -599,7 +602,7 @@ func (o *Database) GetMaximumMemoryOk() (*int32, bool) {
 
 // HasMaximumMemory returns a boolean if a field has been set.
 func (o *Database) HasMaximumMemory() bool {
-	if o != nil && o.MaximumMemory != nil {
+	if o != nil && !IsNil(o.MaximumMemory) {
 		return true
 	}
 
@@ -613,7 +616,7 @@ func (o *Database) SetMaximumMemory(v int32) {
 
 // GetDiskEncrypted returns the DiskEncrypted field value if set, zero value otherwise.
 func (o *Database) GetDiskEncrypted() bool {
-	if o == nil || o.DiskEncrypted == nil {
+	if o == nil || IsNil(o.DiskEncrypted) {
 		var ret bool
 		return ret
 	}
@@ -623,7 +626,7 @@ func (o *Database) GetDiskEncrypted() bool {
 // GetDiskEncryptedOk returns a tuple with the DiskEncrypted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Database) GetDiskEncryptedOk() (*bool, bool) {
-	if o == nil || o.DiskEncrypted == nil {
+	if o == nil || IsNil(o.DiskEncrypted) {
 		return nil, false
 	}
 	return o.DiskEncrypted, true
@@ -631,7 +634,7 @@ func (o *Database) GetDiskEncryptedOk() (*bool, bool) {
 
 // HasDiskEncrypted returns a boolean if a field has been set.
 func (o *Database) HasDiskEncrypted() bool {
-	if o != nil && o.DiskEncrypted != nil {
+	if o != nil && !IsNil(o.DiskEncrypted) {
 		return true
 	}
 
@@ -644,65 +647,61 @@ func (o *Database) SetDiskEncrypted(v bool) {
 }
 
 func (o Database) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["version"] = o.Version
-	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if o.Accessibility != nil {
-		toSerialize["accessibility"] = o.Accessibility
-	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.InstanceType != nil {
-		toSerialize["instance_type"] = o.InstanceType
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
-	}
-	if o.Environment != nil {
-		toSerialize["environment"] = o.Environment
-	}
-	if o.Host != nil {
-		toSerialize["host"] = o.Host
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.MaximumCpu != nil {
-		toSerialize["maximum_cpu"] = o.MaximumCpu
-	}
-	if o.MaximumMemory != nil {
-		toSerialize["maximum_memory"] = o.MaximumMemory
-	}
-	if o.DiskEncrypted != nil {
-		toSerialize["disk_encrypted"] = o.DiskEncrypted
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Database) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["type"] = o.Type
+	toSerialize["version"] = o.Version
+	toSerialize["mode"] = o.Mode
+	if !IsNil(o.Accessibility) {
+		toSerialize["accessibility"] = o.Accessibility
+	}
+	if !IsNil(o.Cpu) {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if !IsNil(o.InstanceType) {
+		toSerialize["instance_type"] = o.InstanceType
+	}
+	if !IsNil(o.Memory) {
+		toSerialize["memory"] = o.Memory
+	}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Host) {
+		toSerialize["host"] = o.Host
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.MaximumCpu) {
+		toSerialize["maximum_cpu"] = o.MaximumCpu
+	}
+	if !IsNil(o.MaximumMemory) {
+		toSerialize["maximum_memory"] = o.MaximumMemory
+	}
+	if !IsNil(o.DiskEncrypted) {
+		toSerialize["disk_encrypted"] = o.DiskEncrypted
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabase struct {

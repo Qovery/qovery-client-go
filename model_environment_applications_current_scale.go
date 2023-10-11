@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentApplicationsCurrentScale type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentApplicationsCurrentScale{}
+
 // EnvironmentApplicationsCurrentScale struct for EnvironmentApplicationsCurrentScale
 type EnvironmentApplicationsCurrentScale struct {
 	Application               *string                    `json:"application,omitempty"`
@@ -48,7 +51,7 @@ func NewEnvironmentApplicationsCurrentScaleWithDefaults() *EnvironmentApplicatio
 
 // GetApplication returns the Application field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetApplication() string {
-	if o == nil || o.Application == nil {
+	if o == nil || IsNil(o.Application) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetApplication() string {
 // GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetApplicationOk() (*string, bool) {
-	if o == nil || o.Application == nil {
+	if o == nil || IsNil(o.Application) {
 		return nil, false
 	}
 	return o.Application, true
@@ -66,7 +69,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetApplicationOk() (*string, bool)
 
 // HasApplication returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasApplication() bool {
-	if o != nil && o.Application != nil {
+	if o != nil && !IsNil(o.Application) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetApplication(v string) {
 
 // GetMin returns the Min field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetMin() int32 {
-	if o == nil || o.Min == nil {
+	if o == nil || IsNil(o.Min) {
 		var ret int32
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetMin() int32 {
 // GetMinOk returns a tuple with the Min field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetMinOk() (*int32, bool) {
-	if o == nil || o.Min == nil {
+	if o == nil || IsNil(o.Min) {
 		return nil, false
 	}
 	return o.Min, true
@@ -98,7 +101,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetMinOk() (*int32, bool) {
 
 // HasMin returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasMin() bool {
-	if o != nil && o.Min != nil {
+	if o != nil && !IsNil(o.Min) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetMin(v int32) {
 
 // GetMax returns the Max field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetMax() int32 {
-	if o == nil || o.Max == nil {
+	if o == nil || IsNil(o.Max) {
 		var ret int32
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetMax() int32 {
 // GetMaxOk returns a tuple with the Max field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetMaxOk() (*int32, bool) {
-	if o == nil || o.Max == nil {
+	if o == nil || IsNil(o.Max) {
 		return nil, false
 	}
 	return o.Max, true
@@ -130,7 +133,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetMaxOk() (*int32, bool) {
 
 // HasMax returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasMax() bool {
-	if o != nil && o.Max != nil {
+	if o != nil && !IsNil(o.Max) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetMax(v int32) {
 
 // GetRunning returns the Running field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetRunning() int32 {
-	if o == nil || o.Running == nil {
+	if o == nil || IsNil(o.Running) {
 		var ret int32
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetRunning() int32 {
 // GetRunningOk returns a tuple with the Running field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetRunningOk() (*int32, bool) {
-	if o == nil || o.Running == nil {
+	if o == nil || IsNil(o.Running) {
 		return nil, false
 	}
 	return o.Running, true
@@ -162,7 +165,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetRunningOk() (*int32, bool) {
 
 // HasRunning returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasRunning() bool {
-	if o != nil && o.Running != nil {
+	if o != nil && !IsNil(o.Running) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetRunning(v int32) {
 
 // GetRunningInPercent returns the RunningInPercent field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetRunningInPercent() float32 {
-	if o == nil || o.RunningInPercent == nil {
+	if o == nil || IsNil(o.RunningInPercent) {
 		var ret float32
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetRunningInPercent() float32 {
 // GetRunningInPercentOk returns a tuple with the RunningInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetRunningInPercentOk() (*float32, bool) {
-	if o == nil || o.RunningInPercent == nil {
+	if o == nil || IsNil(o.RunningInPercent) {
 		return nil, false
 	}
 	return o.RunningInPercent, true
@@ -194,7 +197,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetRunningInPercentOk() (*float32,
 
 // HasRunningInPercent returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasRunningInPercent() bool {
-	if o != nil && o.RunningInPercent != nil {
+	if o != nil && !IsNil(o.RunningInPercent) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetRunningInPercent(v float32) {
 
 // GetWarningThresholdInPercent returns the WarningThresholdInPercent field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetWarningThresholdInPercent() float32 {
-	if o == nil || o.WarningThresholdInPercent == nil {
+	if o == nil || IsNil(o.WarningThresholdInPercent) {
 		var ret float32
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetWarningThresholdInPercent() flo
 // GetWarningThresholdInPercentOk returns a tuple with the WarningThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetWarningThresholdInPercentOk() (*float32, bool) {
-	if o == nil || o.WarningThresholdInPercent == nil {
+	if o == nil || IsNil(o.WarningThresholdInPercent) {
 		return nil, false
 	}
 	return o.WarningThresholdInPercent, true
@@ -226,7 +229,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetWarningThresholdInPercentOk() (
 
 // HasWarningThresholdInPercent returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasWarningThresholdInPercent() bool {
-	if o != nil && o.WarningThresholdInPercent != nil {
+	if o != nil && !IsNil(o.WarningThresholdInPercent) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetWarningThresholdInPercent(v flo
 
 // GetAlertThresholdInPercent returns the AlertThresholdInPercent field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetAlertThresholdInPercent() float32 {
-	if o == nil || o.AlertThresholdInPercent == nil {
+	if o == nil || IsNil(o.AlertThresholdInPercent) {
 		var ret float32
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetAlertThresholdInPercent() float
 // GetAlertThresholdInPercentOk returns a tuple with the AlertThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetAlertThresholdInPercentOk() (*float32, bool) {
-	if o == nil || o.AlertThresholdInPercent == nil {
+	if o == nil || IsNil(o.AlertThresholdInPercent) {
 		return nil, false
 	}
 	return o.AlertThresholdInPercent, true
@@ -258,7 +261,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetAlertThresholdInPercentOk() (*f
 
 // HasAlertThresholdInPercent returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasAlertThresholdInPercent() bool {
-	if o != nil && o.AlertThresholdInPercent != nil {
+	if o != nil && !IsNil(o.AlertThresholdInPercent) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetAlertThresholdInPercent(v float
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetStatus() ThresholdMetricStatusEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret ThresholdMetricStatusEnum
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetStatus() ThresholdMetricStatusE
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -290,7 +293,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetStatusOk() (*ThresholdMetricSta
 
 // HasStatus returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *EnvironmentApplicationsCurrentScale) SetStatus(v ThresholdMetricStatusE
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvironmentApplicationsCurrentScale) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentApplicationsCurrentScale) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -322,7 +325,7 @@ func (o *EnvironmentApplicationsCurrentScale) GetUpdatedAtOk() (*time.Time, bool
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvironmentApplicationsCurrentScale) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -335,35 +338,43 @@ func (o *EnvironmentApplicationsCurrentScale) SetUpdatedAt(v time.Time) {
 }
 
 func (o EnvironmentApplicationsCurrentScale) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Application != nil {
-		toSerialize["application"] = o.Application
-	}
-	if o.Min != nil {
-		toSerialize["min"] = o.Min
-	}
-	if o.Max != nil {
-		toSerialize["max"] = o.Max
-	}
-	if o.Running != nil {
-		toSerialize["running"] = o.Running
-	}
-	if o.RunningInPercent != nil {
-		toSerialize["running_in_percent"] = o.RunningInPercent
-	}
-	if o.WarningThresholdInPercent != nil {
-		toSerialize["warning_threshold_in_percent"] = o.WarningThresholdInPercent
-	}
-	if o.AlertThresholdInPercent != nil {
-		toSerialize["alert_threshold_in_percent"] = o.AlertThresholdInPercent
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentApplicationsCurrentScale) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Application) {
+		toSerialize["application"] = o.Application
+	}
+	if !IsNil(o.Min) {
+		toSerialize["min"] = o.Min
+	}
+	if !IsNil(o.Max) {
+		toSerialize["max"] = o.Max
+	}
+	if !IsNil(o.Running) {
+		toSerialize["running"] = o.Running
+	}
+	if !IsNil(o.RunningInPercent) {
+		toSerialize["running_in_percent"] = o.RunningInPercent
+	}
+	if !IsNil(o.WarningThresholdInPercent) {
+		toSerialize["warning_threshold_in_percent"] = o.WarningThresholdInPercent
+	}
+	if !IsNil(o.AlertThresholdInPercent) {
+		toSerialize["alert_threshold_in_percent"] = o.AlertThresholdInPercent
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentApplicationsCurrentScale struct {

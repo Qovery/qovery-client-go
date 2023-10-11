@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentLogsDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLogsDetails{}
+
 // EnvironmentLogsDetails struct for EnvironmentLogsDetails
 type EnvironmentLogsDetails struct {
 	OrganizationId *string                            `json:"organization_id,omitempty"`
@@ -43,7 +46,7 @@ func NewEnvironmentLogsDetailsWithDefaults() *EnvironmentLogsDetails {
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetails) GetOrganizationId() string {
-	if o == nil || o.OrganizationId == nil {
+	if o == nil || IsNil(o.OrganizationId) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *EnvironmentLogsDetails) GetOrganizationId() string {
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsDetails) GetOrganizationIdOk() (*string, bool) {
-	if o == nil || o.OrganizationId == nil {
+	if o == nil || IsNil(o.OrganizationId) {
 		return nil, false
 	}
 	return o.OrganizationId, true
@@ -61,7 +64,7 @@ func (o *EnvironmentLogsDetails) GetOrganizationIdOk() (*string, bool) {
 
 // HasOrganizationId returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetails) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId != nil {
+	if o != nil && !IsNil(o.OrganizationId) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *EnvironmentLogsDetails) SetOrganizationId(v string) {
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetails) GetClusterId() string {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *EnvironmentLogsDetails) GetClusterId() string {
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsDetails) GetClusterIdOk() (*string, bool) {
-	if o == nil || o.ClusterId == nil {
+	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
 	return o.ClusterId, true
@@ -93,7 +96,7 @@ func (o *EnvironmentLogsDetails) GetClusterIdOk() (*string, bool) {
 
 // HasClusterId returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetails) HasClusterId() bool {
-	if o != nil && o.ClusterId != nil {
+	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *EnvironmentLogsDetails) SetClusterId(v string) {
 
 // GetExecutionId returns the ExecutionId field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetails) GetExecutionId() string {
-	if o == nil || o.ExecutionId == nil {
+	if o == nil || IsNil(o.ExecutionId) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *EnvironmentLogsDetails) GetExecutionId() string {
 // GetExecutionIdOk returns a tuple with the ExecutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsDetails) GetExecutionIdOk() (*string, bool) {
-	if o == nil || o.ExecutionId == nil {
+	if o == nil || IsNil(o.ExecutionId) {
 		return nil, false
 	}
 	return o.ExecutionId, true
@@ -125,7 +128,7 @@ func (o *EnvironmentLogsDetails) GetExecutionIdOk() (*string, bool) {
 
 // HasExecutionId returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetails) HasExecutionId() bool {
-	if o != nil && o.ExecutionId != nil {
+	if o != nil && !IsNil(o.ExecutionId) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *EnvironmentLogsDetails) SetExecutionId(v string) {
 
 // GetTransmitter returns the Transmitter field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetails) GetTransmitter() EnvironmentLogsDetailsTransmitter {
-	if o == nil || o.Transmitter == nil {
+	if o == nil || IsNil(o.Transmitter) {
 		var ret EnvironmentLogsDetailsTransmitter
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *EnvironmentLogsDetails) GetTransmitter() EnvironmentLogsDetailsTransmit
 // GetTransmitterOk returns a tuple with the Transmitter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsDetails) GetTransmitterOk() (*EnvironmentLogsDetailsTransmitter, bool) {
-	if o == nil || o.Transmitter == nil {
+	if o == nil || IsNil(o.Transmitter) {
 		return nil, false
 	}
 	return o.Transmitter, true
@@ -157,7 +160,7 @@ func (o *EnvironmentLogsDetails) GetTransmitterOk() (*EnvironmentLogsDetailsTran
 
 // HasTransmitter returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetails) HasTransmitter() bool {
-	if o != nil && o.Transmitter != nil {
+	if o != nil && !IsNil(o.Transmitter) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *EnvironmentLogsDetails) SetTransmitter(v EnvironmentLogsDetailsTransmit
 
 // GetStage returns the Stage field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetails) GetStage() EnvironmentLogsDetailsStage {
-	if o == nil || o.Stage == nil {
+	if o == nil || IsNil(o.Stage) {
 		var ret EnvironmentLogsDetailsStage
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *EnvironmentLogsDetails) GetStage() EnvironmentLogsDetailsStage {
 // GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLogsDetails) GetStageOk() (*EnvironmentLogsDetailsStage, bool) {
-	if o == nil || o.Stage == nil {
+	if o == nil || IsNil(o.Stage) {
 		return nil, false
 	}
 	return o.Stage, true
@@ -189,7 +192,7 @@ func (o *EnvironmentLogsDetails) GetStageOk() (*EnvironmentLogsDetailsStage, boo
 
 // HasStage returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetails) HasStage() bool {
-	if o != nil && o.Stage != nil {
+	if o != nil && !IsNil(o.Stage) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *EnvironmentLogsDetails) SetStage(v EnvironmentLogsDetailsStage) {
 }
 
 func (o EnvironmentLogsDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.OrganizationId != nil {
-		toSerialize["organization_id"] = o.OrganizationId
-	}
-	if o.ClusterId != nil {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.ExecutionId != nil {
-		toSerialize["execution_id"] = o.ExecutionId
-	}
-	if o.Transmitter != nil {
-		toSerialize["transmitter"] = o.Transmitter
-	}
-	if o.Stage != nil {
-		toSerialize["stage"] = o.Stage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLogsDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OrganizationId) {
+		toSerialize["organization_id"] = o.OrganizationId
+	}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.ExecutionId) {
+		toSerialize["execution_id"] = o.ExecutionId
+	}
+	if !IsNil(o.Transmitter) {
+		toSerialize["transmitter"] = o.Transmitter
+	}
+	if !IsNil(o.Stage) {
+		toSerialize["stage"] = o.Stage
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLogsDetails struct {

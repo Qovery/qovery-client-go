@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RebootServicesRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RebootServicesRequest{}
+
 // RebootServicesRequest struct for RebootServicesRequest
 type RebootServicesRequest struct {
 	ApplicationIds []string `json:"applicationIds,omitempty"`
@@ -41,7 +44,7 @@ func NewRebootServicesRequestWithDefaults() *RebootServicesRequest {
 
 // GetApplicationIds returns the ApplicationIds field value if set, zero value otherwise.
 func (o *RebootServicesRequest) GetApplicationIds() []string {
-	if o == nil || o.ApplicationIds == nil {
+	if o == nil || IsNil(o.ApplicationIds) {
 		var ret []string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RebootServicesRequest) GetApplicationIds() []string {
 // GetApplicationIdsOk returns a tuple with the ApplicationIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RebootServicesRequest) GetApplicationIdsOk() ([]string, bool) {
-	if o == nil || o.ApplicationIds == nil {
+	if o == nil || IsNil(o.ApplicationIds) {
 		return nil, false
 	}
 	return o.ApplicationIds, true
@@ -59,7 +62,7 @@ func (o *RebootServicesRequest) GetApplicationIdsOk() ([]string, bool) {
 
 // HasApplicationIds returns a boolean if a field has been set.
 func (o *RebootServicesRequest) HasApplicationIds() bool {
-	if o != nil && o.ApplicationIds != nil {
+	if o != nil && !IsNil(o.ApplicationIds) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RebootServicesRequest) SetApplicationIds(v []string) {
 
 // GetDatabaseIds returns the DatabaseIds field value if set, zero value otherwise.
 func (o *RebootServicesRequest) GetDatabaseIds() []string {
-	if o == nil || o.DatabaseIds == nil {
+	if o == nil || IsNil(o.DatabaseIds) {
 		var ret []string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RebootServicesRequest) GetDatabaseIds() []string {
 // GetDatabaseIdsOk returns a tuple with the DatabaseIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RebootServicesRequest) GetDatabaseIdsOk() ([]string, bool) {
-	if o == nil || o.DatabaseIds == nil {
+	if o == nil || IsNil(o.DatabaseIds) {
 		return nil, false
 	}
 	return o.DatabaseIds, true
@@ -91,7 +94,7 @@ func (o *RebootServicesRequest) GetDatabaseIdsOk() ([]string, bool) {
 
 // HasDatabaseIds returns a boolean if a field has been set.
 func (o *RebootServicesRequest) HasDatabaseIds() bool {
-	if o != nil && o.DatabaseIds != nil {
+	if o != nil && !IsNil(o.DatabaseIds) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *RebootServicesRequest) SetDatabaseIds(v []string) {
 
 // GetContainerIds returns the ContainerIds field value if set, zero value otherwise.
 func (o *RebootServicesRequest) GetContainerIds() []string {
-	if o == nil || o.ContainerIds == nil {
+	if o == nil || IsNil(o.ContainerIds) {
 		var ret []string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *RebootServicesRequest) GetContainerIds() []string {
 // GetContainerIdsOk returns a tuple with the ContainerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RebootServicesRequest) GetContainerIdsOk() ([]string, bool) {
-	if o == nil || o.ContainerIds == nil {
+	if o == nil || IsNil(o.ContainerIds) {
 		return nil, false
 	}
 	return o.ContainerIds, true
@@ -123,7 +126,7 @@ func (o *RebootServicesRequest) GetContainerIdsOk() ([]string, bool) {
 
 // HasContainerIds returns a boolean if a field has been set.
 func (o *RebootServicesRequest) HasContainerIds() bool {
-	if o != nil && o.ContainerIds != nil {
+	if o != nil && !IsNil(o.ContainerIds) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *RebootServicesRequest) SetContainerIds(v []string) {
 }
 
 func (o RebootServicesRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ApplicationIds != nil {
-		toSerialize["applicationIds"] = o.ApplicationIds
-	}
-	if o.DatabaseIds != nil {
-		toSerialize["databaseIds"] = o.DatabaseIds
-	}
-	if o.ContainerIds != nil {
-		toSerialize["containerIds"] = o.ContainerIds
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RebootServicesRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApplicationIds) {
+		toSerialize["applicationIds"] = o.ApplicationIds
+	}
+	if !IsNil(o.DatabaseIds) {
+		toSerialize["databaseIds"] = o.DatabaseIds
+	}
+	if !IsNil(o.ContainerIds) {
+		toSerialize["containerIds"] = o.ContainerIds
+	}
+	return toSerialize, nil
 }
 
 type NullableRebootServicesRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentVariableResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentVariableResponseList{}
+
 // EnvironmentVariableResponseList struct for EnvironmentVariableResponseList
 type EnvironmentVariableResponseList struct {
 	Results []EnvironmentVariable `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewEnvironmentVariableResponseListWithDefaults() *EnvironmentVariableRespon
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariable {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []EnvironmentVariable
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *EnvironmentVariableResponseList) GetResults() []EnvironmentVariable {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariableResponseList) GetResultsOk() ([]EnvironmentVariable, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *EnvironmentVariableResponseList) GetResultsOk() ([]EnvironmentVariable,
 
 // HasResults returns a boolean if a field has been set.
 func (o *EnvironmentVariableResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *EnvironmentVariableResponseList) SetResults(v []EnvironmentVariable) {
 }
 
 func (o EnvironmentVariableResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentVariableResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentVariableResponseList struct {

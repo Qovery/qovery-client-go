@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobRequestAllOfScheduleCronjob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobRequestAllOfScheduleCronjob{}
+
 // JobRequestAllOfScheduleCronjob struct for JobRequestAllOfScheduleCronjob
 type JobRequestAllOfScheduleCronjob struct {
 	Arguments []string `json:"arguments,omitempty"`
@@ -44,7 +47,7 @@ func NewJobRequestAllOfScheduleCronjobWithDefaults() *JobRequestAllOfScheduleCro
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *JobRequestAllOfScheduleCronjob) GetArguments() []string {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		var ret []string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *JobRequestAllOfScheduleCronjob) GetArguments() []string {
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequestAllOfScheduleCronjob) GetArgumentsOk() ([]string, bool) {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
 	return o.Arguments, true
@@ -62,7 +65,7 @@ func (o *JobRequestAllOfScheduleCronjob) GetArgumentsOk() ([]string, bool) {
 
 // HasArguments returns a boolean if a field has been set.
 func (o *JobRequestAllOfScheduleCronjob) HasArguments() bool {
-	if o != nil && o.Arguments != nil {
+	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *JobRequestAllOfScheduleCronjob) SetArguments(v []string) {
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
 func (o *JobRequestAllOfScheduleCronjob) GetEntrypoint() string {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *JobRequestAllOfScheduleCronjob) GetEntrypoint() string {
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequestAllOfScheduleCronjob) GetEntrypointOk() (*string, bool) {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
 	return o.Entrypoint, true
@@ -94,7 +97,7 @@ func (o *JobRequestAllOfScheduleCronjob) GetEntrypointOk() (*string, bool) {
 
 // HasEntrypoint returns a boolean if a field has been set.
 func (o *JobRequestAllOfScheduleCronjob) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint != nil {
+	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
 
@@ -131,17 +134,23 @@ func (o *JobRequestAllOfScheduleCronjob) SetScheduledAt(v string) {
 }
 
 func (o JobRequestAllOfScheduleCronjob) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Arguments != nil {
-		toSerialize["arguments"] = o.Arguments
-	}
-	if o.Entrypoint != nil {
-		toSerialize["entrypoint"] = o.Entrypoint
-	}
-	if true {
-		toSerialize["scheduled_at"] = o.ScheduledAt
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JobRequestAllOfScheduleCronjob) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Arguments) {
+		toSerialize["arguments"] = o.Arguments
+	}
+	if !IsNil(o.Entrypoint) {
+		toSerialize["entrypoint"] = o.Entrypoint
+	}
+	toSerialize["scheduled_at"] = o.ScheduledAt
+	return toSerialize, nil
 }
 
 type NullableJobRequestAllOfScheduleCronjob struct {

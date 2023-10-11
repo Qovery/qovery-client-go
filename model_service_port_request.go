@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServicePortRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServicePortRequest{}
+
 // ServicePortRequest struct for ServicePortRequest
 type ServicePortRequest struct {
 	Ports []ServicePortRequestPortsInner `json:"ports,omitempty"`
@@ -39,7 +42,7 @@ func NewServicePortRequestWithDefaults() *ServicePortRequest {
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
 func (o *ServicePortRequest) GetPorts() []ServicePortRequestPortsInner {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		var ret []ServicePortRequestPortsInner
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ServicePortRequest) GetPorts() []ServicePortRequestPortsInner {
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServicePortRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		return nil, false
 	}
 	return o.Ports, true
@@ -57,7 +60,7 @@ func (o *ServicePortRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool)
 
 // HasPorts returns a boolean if a field has been set.
 func (o *ServicePortRequest) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+	if o != nil && !IsNil(o.Ports) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ServicePortRequest) SetPorts(v []ServicePortRequestPortsInner) {
 }
 
 func (o ServicePortRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServicePortRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ports) {
+		toSerialize["ports"] = o.Ports
+	}
+	return toSerialize, nil
 }
 
 type NullableServicePortRequest struct {

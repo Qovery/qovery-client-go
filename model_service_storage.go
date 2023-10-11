@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceStorage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceStorage{}
+
 // ServiceStorage struct for ServiceStorage
 type ServiceStorage struct {
 	Storage []ServiceStorageStorageInner `json:"storage,omitempty"`
@@ -39,7 +42,7 @@ func NewServiceStorageWithDefaults() *ServiceStorage {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *ServiceStorage) GetStorage() []ServiceStorageStorageInner {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret []ServiceStorageStorageInner
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ServiceStorage) GetStorage() []ServiceStorageStorageInner {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceStorage) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -57,7 +60,7 @@ func (o *ServiceStorage) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
 
 // HasStorage returns a boolean if a field has been set.
 func (o *ServiceStorage) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ServiceStorage) SetStorage(v []ServiceStorageStorageInner) {
 }
 
 func (o ServiceStorage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ServiceStorage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	return toSerialize, nil
 }
 
 type NullableServiceStorage struct {

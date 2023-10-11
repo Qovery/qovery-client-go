@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationEditRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationEditRequest{}
+
 // OrganizationEditRequest struct for OrganizationEditRequest
 type OrganizationEditRequest struct {
 	// name is case insensitive
@@ -71,7 +74,7 @@ func (o *OrganizationEditRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OrganizationEditRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *OrganizationEditRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEditRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -89,7 +92,7 @@ func (o *OrganizationEditRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OrganizationEditRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -103,7 +106,7 @@ func (o *OrganizationEditRequest) SetDescription(v string) {
 
 // GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetWebsiteUrl() string {
-	if o == nil || o.WebsiteUrl.Get() == nil {
+	if o == nil || IsNil(o.WebsiteUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *OrganizationEditRequest) UnsetWebsiteUrl() {
 
 // GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetRepository() string {
-	if o == nil || o.Repository.Get() == nil {
+	if o == nil || IsNil(o.Repository.Get()) {
 		var ret string
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *OrganizationEditRequest) UnsetRepository() {
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetLogoUrl() string {
-	if o == nil || o.LogoUrl.Get() == nil {
+	if o == nil || IsNil(o.LogoUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -232,7 +235,7 @@ func (o *OrganizationEditRequest) UnsetLogoUrl() {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetIconUrl() string {
-	if o == nil || o.IconUrl.Get() == nil {
+	if o == nil || IsNil(o.IconUrl.Get()) {
 		var ret string
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *OrganizationEditRequest) GetAdminEmails() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetAdminEmailsOk() ([]string, bool) {
-	if o == nil || o.AdminEmails == nil {
+	if o == nil || IsNil(o.AdminEmails) {
 		return nil, false
 	}
 	return o.AdminEmails, true
@@ -294,7 +297,7 @@ func (o *OrganizationEditRequest) GetAdminEmailsOk() ([]string, bool) {
 
 // HasAdminEmails returns a boolean if a field has been set.
 func (o *OrganizationEditRequest) HasAdminEmails() bool {
-	if o != nil && o.AdminEmails != nil {
+	if o != nil && IsNil(o.AdminEmails) {
 		return true
 	}
 
@@ -307,11 +310,17 @@ func (o *OrganizationEditRequest) SetAdminEmails(v []string) {
 }
 
 func (o OrganizationEditRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Description != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationEditRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.WebsiteUrl.IsSet() {
@@ -329,7 +338,7 @@ func (o OrganizationEditRequest) MarshalJSON() ([]byte, error) {
 	if o.AdminEmails != nil {
 		toSerialize["admin_emails"] = o.AdminEmails
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableOrganizationEditRequest struct {

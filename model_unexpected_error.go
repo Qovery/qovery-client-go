@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UnexpectedError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UnexpectedError{}
+
 // UnexpectedError struct for UnexpectedError
 type UnexpectedError struct {
 	Message string `json:"message"`
@@ -63,11 +66,17 @@ func (o *UnexpectedError) SetMessage(v string) {
 }
 
 func (o UnexpectedError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["message"] = o.Message
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UnexpectedError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["message"] = o.Message
+	return toSerialize, nil
 }
 
 type NullableUnexpectedError struct {

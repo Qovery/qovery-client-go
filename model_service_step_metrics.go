@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceStepMetrics type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceStepMetrics{}
+
 // ServiceStepMetrics struct for ServiceStepMetrics
 type ServiceStepMetrics struct {
 	// The total duration in seconds of the service deployment or null if the deployment is not completed.
@@ -42,7 +45,7 @@ func NewServiceStepMetricsWithDefaults() *ServiceStepMetrics {
 
 // GetTotalDurationSec returns the TotalDurationSec field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceStepMetrics) GetTotalDurationSec() int32 {
-	if o == nil || o.TotalDurationSec.Get() == nil {
+	if o == nil || IsNil(o.TotalDurationSec.Get()) {
 		var ret int32
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ServiceStepMetrics) UnsetTotalDurationSec() {
 
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *ServiceStepMetrics) GetDetails() []ServiceStepMetric {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		var ret []ServiceStepMetric
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *ServiceStepMetrics) GetDetails() []ServiceStepMetric {
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServiceStepMetrics) GetDetailsOk() ([]ServiceStepMetric, bool) {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		return nil, false
 	}
 	return o.Details, true
@@ -103,7 +106,7 @@ func (o *ServiceStepMetrics) GetDetailsOk() ([]ServiceStepMetric, bool) {
 
 // HasDetails returns a boolean if a field has been set.
 func (o *ServiceStepMetrics) HasDetails() bool {
-	if o != nil && o.Details != nil {
+	if o != nil && !IsNil(o.Details) {
 		return true
 	}
 
@@ -116,14 +119,22 @@ func (o *ServiceStepMetrics) SetDetails(v []ServiceStepMetric) {
 }
 
 func (o ServiceStepMetrics) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceStepMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TotalDurationSec.IsSet() {
 		toSerialize["total_duration_sec"] = o.TotalDurationSec.Get()
 	}
-	if o.Details != nil {
+	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableServiceStepMetrics struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProbeType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProbeType{}
+
 // ProbeType struct for ProbeType
 type ProbeType struct {
 	Tcp  NullableProbeTypeTcp  `json:"tcp,omitempty"`
@@ -42,7 +45,7 @@ func NewProbeTypeWithDefaults() *ProbeType {
 
 // GetTcp returns the Tcp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetTcp() ProbeTypeTcp {
-	if o == nil || o.Tcp.Get() == nil {
+	if o == nil || IsNil(o.Tcp.Get()) {
 		var ret ProbeTypeTcp
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ProbeType) UnsetTcp() {
 
 // GetHttp returns the Http field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetHttp() ProbeTypeHttp {
-	if o == nil || o.Http.Get() == nil {
+	if o == nil || IsNil(o.Http.Get()) {
 		var ret ProbeTypeHttp
 		return ret
 	}
@@ -128,7 +131,7 @@ func (o *ProbeType) UnsetHttp() {
 
 // GetExec returns the Exec field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetExec() ProbeTypeExec {
-	if o == nil || o.Exec.Get() == nil {
+	if o == nil || IsNil(o.Exec.Get()) {
 		var ret ProbeTypeExec
 		return ret
 	}
@@ -171,7 +174,7 @@ func (o *ProbeType) UnsetExec() {
 
 // GetGrpc returns the Grpc field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetGrpc() ProbeTypeGrpc {
-	if o == nil || o.Grpc.Get() == nil {
+	if o == nil || IsNil(o.Grpc.Get()) {
 		var ret ProbeTypeGrpc
 		return ret
 	}
@@ -213,6 +216,14 @@ func (o *ProbeType) UnsetGrpc() {
 }
 
 func (o ProbeType) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProbeType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Tcp.IsSet() {
 		toSerialize["tcp"] = o.Tcp.Get()
@@ -226,7 +237,7 @@ func (o ProbeType) MarshalJSON() ([]byte, error) {
 	if o.Grpc.IsSet() {
 		toSerialize["grpc"] = o.Grpc.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableProbeType struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProjectStatsResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectStatsResponseList{}
+
 // ProjectStatsResponseList struct for ProjectStatsResponseList
 type ProjectStatsResponseList struct {
 	Results []ProjectStats `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewProjectStatsResponseListWithDefaults() *ProjectStatsResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ProjectStatsResponseList) GetResults() []ProjectStats {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ProjectStats
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ProjectStatsResponseList) GetResults() []ProjectStats {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectStatsResponseList) GetResultsOk() ([]ProjectStats, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ProjectStatsResponseList) GetResultsOk() ([]ProjectStats, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *ProjectStatsResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ProjectStatsResponseList) SetResults(v []ProjectStats) {
 }
 
 func (o ProjectStatsResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProjectStatsResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableProjectStatsResponseList struct {

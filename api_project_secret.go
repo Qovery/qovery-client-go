@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ProjectSecretApiService ProjectSecretApi service
-type ProjectSecretApiService service
+// ProjectSecretAPIService ProjectSecretAPI service
+type ProjectSecretAPIService service
 
 type ApiCreateProjectSecretRequest struct {
 	ctx           context.Context
-	ApiService    *ProjectSecretApiService
+	ApiService    *ProjectSecretAPIService
 	projectId     string
 	secretRequest *SecretRequest
 }
@@ -51,7 +51,7 @@ CreateProjectSecret Add a secret to the project
  @param projectId Project ID
  @return ApiCreateProjectSecretRequest
 */
-func (a *ProjectSecretApiService) CreateProjectSecret(ctx context.Context, projectId string) ApiCreateProjectSecretRequest {
+func (a *ProjectSecretAPIService) CreateProjectSecret(ctx context.Context, projectId string) ApiCreateProjectSecretRequest {
 	return ApiCreateProjectSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -61,7 +61,7 @@ func (a *ProjectSecretApiService) CreateProjectSecret(ctx context.Context, proje
 
 // Execute executes the request
 //  @return Secret
-func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectSecretRequest) (*Secret, *http.Response, error) {
+func (a *ProjectSecretAPIService) CreateProjectSecretExecute(r ApiCreateProjectSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -69,13 +69,13 @@ func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectS
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretAPIService.CreateProjectSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -124,9 +124,9 @@ func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -153,7 +153,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretExecute(r ApiCreateProjectS
 
 type ApiCreateProjectSecretAliasRequest struct {
 	ctx        context.Context
-	ApiService *ProjectSecretApiService
+	ApiService *ProjectSecretAPIService
 	projectId  string
 	secretId   string
 	key        *Key
@@ -184,7 +184,7 @@ CreateProjectSecretAlias Create a secret alias at the project level
  @param secretId Secret ID
  @return ApiCreateProjectSecretAliasRequest
 */
-func (a *ProjectSecretApiService) CreateProjectSecretAlias(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretAliasRequest {
+func (a *ProjectSecretAPIService) CreateProjectSecretAlias(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretAliasRequest {
 	return ApiCreateProjectSecretAliasRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -195,7 +195,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretAlias(ctx context.Context, 
 
 // Execute executes the request
 //  @return Secret
-func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreateProjectSecretAliasRequest) (*Secret, *http.Response, error) {
+func (a *ProjectSecretAPIService) CreateProjectSecretAliasExecute(r ApiCreateProjectSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -203,14 +203,14 @@ func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreatePro
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecretAlias")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretAPIService.CreateProjectSecretAlias")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/secret/{secretId}/alias"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -259,9 +259,9 @@ func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreatePro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -288,7 +288,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretAliasExecute(r ApiCreatePro
 
 type ApiCreateProjectSecretOverrideRequest struct {
 	ctx        context.Context
-	ApiService *ProjectSecretApiService
+	ApiService *ProjectSecretAPIService
 	projectId  string
 	secretId   string
 	value      *Value
@@ -318,7 +318,7 @@ CreateProjectSecretOverride Create a secret override at the project level
  @param secretId Secret ID
  @return ApiCreateProjectSecretOverrideRequest
 */
-func (a *ProjectSecretApiService) CreateProjectSecretOverride(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretOverrideRequest {
+func (a *ProjectSecretAPIService) CreateProjectSecretOverride(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretOverrideRequest {
 	return ApiCreateProjectSecretOverrideRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -329,7 +329,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverride(ctx context.Contex
 
 // Execute executes the request
 //  @return Secret
-func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreateProjectSecretOverrideRequest) (*Secret, *http.Response, error) {
+func (a *ProjectSecretAPIService) CreateProjectSecretOverrideExecute(r ApiCreateProjectSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -337,14 +337,14 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreate
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.CreateProjectSecretOverride")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretAPIService.CreateProjectSecretOverride")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/secret/{secretId}/override"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -393,9 +393,9 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreate
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -422,7 +422,7 @@ func (a *ProjectSecretApiService) CreateProjectSecretOverrideExecute(r ApiCreate
 
 type ApiDeleteProjectSecretRequest struct {
 	ctx        context.Context
-	ApiService *ProjectSecretApiService
+	ApiService *ProjectSecretAPIService
 	projectId  string
 	secretId   string
 }
@@ -444,7 +444,7 @@ DeleteProjectSecret Delete a secret from a project
  @param secretId Secret ID
  @return ApiDeleteProjectSecretRequest
 */
-func (a *ProjectSecretApiService) DeleteProjectSecret(ctx context.Context, projectId string, secretId string) ApiDeleteProjectSecretRequest {
+func (a *ProjectSecretAPIService) DeleteProjectSecret(ctx context.Context, projectId string, secretId string) ApiDeleteProjectSecretRequest {
 	return ApiDeleteProjectSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -454,21 +454,21 @@ func (a *ProjectSecretApiService) DeleteProjectSecret(ctx context.Context, proje
 }
 
 // Execute executes the request
-func (a *ProjectSecretApiService) DeleteProjectSecretExecute(r ApiDeleteProjectSecretRequest) (*http.Response, error) {
+func (a *ProjectSecretAPIService) DeleteProjectSecretExecute(r ApiDeleteProjectSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.DeleteProjectSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretAPIService.DeleteProjectSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -515,9 +515,9 @@ func (a *ProjectSecretApiService) DeleteProjectSecretExecute(r ApiDeleteProjectS
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -535,7 +535,7 @@ func (a *ProjectSecretApiService) DeleteProjectSecretExecute(r ApiDeleteProjectS
 
 type ApiEditProjectSecretRequest struct {
 	ctx               context.Context
-	ApiService        *ProjectSecretApiService
+	ApiService        *ProjectSecretAPIService
 	projectId         string
 	secretId          string
 	secretEditRequest *SecretEditRequest
@@ -564,7 +564,7 @@ EditProjectSecret Edit a secret belonging to the project
  @param secretId Secret ID
  @return ApiEditProjectSecretRequest
 */
-func (a *ProjectSecretApiService) EditProjectSecret(ctx context.Context, projectId string, secretId string) ApiEditProjectSecretRequest {
+func (a *ProjectSecretAPIService) EditProjectSecret(ctx context.Context, projectId string, secretId string) ApiEditProjectSecretRequest {
 	return ApiEditProjectSecretRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -575,7 +575,7 @@ func (a *ProjectSecretApiService) EditProjectSecret(ctx context.Context, project
 
 // Execute executes the request
 //  @return Secret
-func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecretRequest) (*Secret, *http.Response, error) {
+func (a *ProjectSecretAPIService) EditProjectSecretExecute(r ApiEditProjectSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -583,14 +583,14 @@ func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecre
 		localVarReturnValue *Secret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.EditProjectSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretAPIService.EditProjectSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/secret/{secretId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterToString(r.secretId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(parameterValueToString(r.secretId, "secretId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -642,9 +642,9 @@ func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -671,7 +671,7 @@ func (a *ProjectSecretApiService) EditProjectSecretExecute(r ApiEditProjectSecre
 
 type ApiListProjectSecretsRequest struct {
 	ctx        context.Context
-	ApiService *ProjectSecretApiService
+	ApiService *ProjectSecretAPIService
 	projectId  string
 }
 
@@ -686,7 +686,7 @@ ListProjectSecrets List project secrets
  @param projectId Project ID
  @return ApiListProjectSecretsRequest
 */
-func (a *ProjectSecretApiService) ListProjectSecrets(ctx context.Context, projectId string) ApiListProjectSecretsRequest {
+func (a *ProjectSecretAPIService) ListProjectSecrets(ctx context.Context, projectId string) ApiListProjectSecretsRequest {
 	return ApiListProjectSecretsRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -696,7 +696,7 @@ func (a *ProjectSecretApiService) ListProjectSecrets(ctx context.Context, projec
 
 // Execute executes the request
 //  @return SecretResponseList
-func (a *ProjectSecretApiService) ListProjectSecretsExecute(r ApiListProjectSecretsRequest) (*SecretResponseList, *http.Response, error) {
+func (a *ProjectSecretAPIService) ListProjectSecretsExecute(r ApiListProjectSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -704,13 +704,13 @@ func (a *ProjectSecretApiService) ListProjectSecretsExecute(r ApiListProjectSecr
 		localVarReturnValue *SecretResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretApiService.ListProjectSecrets")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectSecretAPIService.ListProjectSecrets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/project/{projectId}/secret"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterToString(r.projectId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -757,9 +757,9 @@ func (a *ProjectSecretApiService) ListProjectSecretsExecute(r ApiListProjectSecr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

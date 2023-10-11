@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Cluster type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Cluster{}
+
 // Cluster struct for Cluster
 type Cluster struct {
 	Id        string     `json:"id"`
@@ -139,7 +142,7 @@ func (o *Cluster) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Cluster) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *Cluster) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -157,7 +160,7 @@ func (o *Cluster) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Cluster) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *Cluster) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Cluster) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -205,7 +208,7 @@ func (o *Cluster) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -213,7 +216,7 @@ func (o *Cluster) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Cluster) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -275,7 +278,7 @@ func (o *Cluster) SetCloudProvider(v CloudProviderEnum) {
 
 // GetMinRunningNodes returns the MinRunningNodes field value if set, zero value otherwise.
 func (o *Cluster) GetMinRunningNodes() int32 {
-	if o == nil || o.MinRunningNodes == nil {
+	if o == nil || IsNil(o.MinRunningNodes) {
 		var ret int32
 		return ret
 	}
@@ -285,7 +288,7 @@ func (o *Cluster) GetMinRunningNodes() int32 {
 // GetMinRunningNodesOk returns a tuple with the MinRunningNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetMinRunningNodesOk() (*int32, bool) {
-	if o == nil || o.MinRunningNodes == nil {
+	if o == nil || IsNil(o.MinRunningNodes) {
 		return nil, false
 	}
 	return o.MinRunningNodes, true
@@ -293,7 +296,7 @@ func (o *Cluster) GetMinRunningNodesOk() (*int32, bool) {
 
 // HasMinRunningNodes returns a boolean if a field has been set.
 func (o *Cluster) HasMinRunningNodes() bool {
-	if o != nil && o.MinRunningNodes != nil {
+	if o != nil && !IsNil(o.MinRunningNodes) {
 		return true
 	}
 
@@ -307,7 +310,7 @@ func (o *Cluster) SetMinRunningNodes(v int32) {
 
 // GetMaxRunningNodes returns the MaxRunningNodes field value if set, zero value otherwise.
 func (o *Cluster) GetMaxRunningNodes() int32 {
-	if o == nil || o.MaxRunningNodes == nil {
+	if o == nil || IsNil(o.MaxRunningNodes) {
 		var ret int32
 		return ret
 	}
@@ -317,7 +320,7 @@ func (o *Cluster) GetMaxRunningNodes() int32 {
 // GetMaxRunningNodesOk returns a tuple with the MaxRunningNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetMaxRunningNodesOk() (*int32, bool) {
-	if o == nil || o.MaxRunningNodes == nil {
+	if o == nil || IsNil(o.MaxRunningNodes) {
 		return nil, false
 	}
 	return o.MaxRunningNodes, true
@@ -325,7 +328,7 @@ func (o *Cluster) GetMaxRunningNodesOk() (*int32, bool) {
 
 // HasMaxRunningNodes returns a boolean if a field has been set.
 func (o *Cluster) HasMaxRunningNodes() bool {
-	if o != nil && o.MaxRunningNodes != nil {
+	if o != nil && !IsNil(o.MaxRunningNodes) {
 		return true
 	}
 
@@ -339,7 +342,7 @@ func (o *Cluster) SetMaxRunningNodes(v int32) {
 
 // GetDiskSize returns the DiskSize field value if set, zero value otherwise.
 func (o *Cluster) GetDiskSize() int32 {
-	if o == nil || o.DiskSize == nil {
+	if o == nil || IsNil(o.DiskSize) {
 		var ret int32
 		return ret
 	}
@@ -349,7 +352,7 @@ func (o *Cluster) GetDiskSize() int32 {
 // GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetDiskSizeOk() (*int32, bool) {
-	if o == nil || o.DiskSize == nil {
+	if o == nil || IsNil(o.DiskSize) {
 		return nil, false
 	}
 	return o.DiskSize, true
@@ -357,7 +360,7 @@ func (o *Cluster) GetDiskSizeOk() (*int32, bool) {
 
 // HasDiskSize returns a boolean if a field has been set.
 func (o *Cluster) HasDiskSize() bool {
-	if o != nil && o.DiskSize != nil {
+	if o != nil && !IsNil(o.DiskSize) {
 		return true
 	}
 
@@ -371,7 +374,7 @@ func (o *Cluster) SetDiskSize(v int32) {
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
 func (o *Cluster) GetInstanceType() string {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		var ret string
 		return ret
 	}
@@ -381,7 +384,7 @@ func (o *Cluster) GetInstanceType() string {
 // GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetInstanceTypeOk() (*string, bool) {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		return nil, false
 	}
 	return o.InstanceType, true
@@ -389,7 +392,7 @@ func (o *Cluster) GetInstanceTypeOk() (*string, bool) {
 
 // HasInstanceType returns a boolean if a field has been set.
 func (o *Cluster) HasInstanceType() bool {
-	if o != nil && o.InstanceType != nil {
+	if o != nil && !IsNil(o.InstanceType) {
 		return true
 	}
 
@@ -403,7 +406,7 @@ func (o *Cluster) SetInstanceType(v string) {
 
 // GetKubernetes returns the Kubernetes field value if set, zero value otherwise.
 func (o *Cluster) GetKubernetes() KubernetesEnum {
-	if o == nil || o.Kubernetes == nil {
+	if o == nil || IsNil(o.Kubernetes) {
 		var ret KubernetesEnum
 		return ret
 	}
@@ -413,7 +416,7 @@ func (o *Cluster) GetKubernetes() KubernetesEnum {
 // GetKubernetesOk returns a tuple with the Kubernetes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetKubernetesOk() (*KubernetesEnum, bool) {
-	if o == nil || o.Kubernetes == nil {
+	if o == nil || IsNil(o.Kubernetes) {
 		return nil, false
 	}
 	return o.Kubernetes, true
@@ -421,7 +424,7 @@ func (o *Cluster) GetKubernetesOk() (*KubernetesEnum, bool) {
 
 // HasKubernetes returns a boolean if a field has been set.
 func (o *Cluster) HasKubernetes() bool {
-	if o != nil && o.Kubernetes != nil {
+	if o != nil && !IsNil(o.Kubernetes) {
 		return true
 	}
 
@@ -435,7 +438,7 @@ func (o *Cluster) SetKubernetes(v KubernetesEnum) {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *Cluster) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret int32
 		return ret
 	}
@@ -445,7 +448,7 @@ func (o *Cluster) GetCpu() int32 {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -453,7 +456,7 @@ func (o *Cluster) GetCpuOk() (*int32, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *Cluster) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -467,7 +470,7 @@ func (o *Cluster) SetCpu(v int32) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *Cluster) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -477,7 +480,7 @@ func (o *Cluster) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -485,7 +488,7 @@ func (o *Cluster) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *Cluster) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -499,7 +502,7 @@ func (o *Cluster) SetMemory(v int32) {
 
 // GetEstimatedCloudProviderCost returns the EstimatedCloudProviderCost field value if set, zero value otherwise.
 func (o *Cluster) GetEstimatedCloudProviderCost() int32 {
-	if o == nil || o.EstimatedCloudProviderCost == nil {
+	if o == nil || IsNil(o.EstimatedCloudProviderCost) {
 		var ret int32
 		return ret
 	}
@@ -509,7 +512,7 @@ func (o *Cluster) GetEstimatedCloudProviderCost() int32 {
 // GetEstimatedCloudProviderCostOk returns a tuple with the EstimatedCloudProviderCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetEstimatedCloudProviderCostOk() (*int32, bool) {
-	if o == nil || o.EstimatedCloudProviderCost == nil {
+	if o == nil || IsNil(o.EstimatedCloudProviderCost) {
 		return nil, false
 	}
 	return o.EstimatedCloudProviderCost, true
@@ -517,7 +520,7 @@ func (o *Cluster) GetEstimatedCloudProviderCostOk() (*int32, bool) {
 
 // HasEstimatedCloudProviderCost returns a boolean if a field has been set.
 func (o *Cluster) HasEstimatedCloudProviderCost() bool {
-	if o != nil && o.EstimatedCloudProviderCost != nil {
+	if o != nil && !IsNil(o.EstimatedCloudProviderCost) {
 		return true
 	}
 
@@ -531,7 +534,7 @@ func (o *Cluster) SetEstimatedCloudProviderCost(v int32) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Cluster) GetStatus() ClusterStateEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret ClusterStateEnum
 		return ret
 	}
@@ -541,7 +544,7 @@ func (o *Cluster) GetStatus() ClusterStateEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetStatusOk() (*ClusterStateEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -549,7 +552,7 @@ func (o *Cluster) GetStatusOk() (*ClusterStateEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Cluster) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -563,7 +566,7 @@ func (o *Cluster) SetStatus(v ClusterStateEnum) {
 
 // GetHasAccess returns the HasAccess field value if set, zero value otherwise.
 func (o *Cluster) GetHasAccess() bool {
-	if o == nil || o.HasAccess == nil {
+	if o == nil || IsNil(o.HasAccess) {
 		var ret bool
 		return ret
 	}
@@ -573,7 +576,7 @@ func (o *Cluster) GetHasAccess() bool {
 // GetHasAccessOk returns a tuple with the HasAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetHasAccessOk() (*bool, bool) {
-	if o == nil || o.HasAccess == nil {
+	if o == nil || IsNil(o.HasAccess) {
 		return nil, false
 	}
 	return o.HasAccess, true
@@ -581,7 +584,7 @@ func (o *Cluster) GetHasAccessOk() (*bool, bool) {
 
 // HasHasAccess returns a boolean if a field has been set.
 func (o *Cluster) HasHasAccess() bool {
-	if o != nil && o.HasAccess != nil {
+	if o != nil && !IsNil(o.HasAccess) {
 		return true
 	}
 
@@ -595,7 +598,7 @@ func (o *Cluster) SetHasAccess(v bool) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *Cluster) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -605,7 +608,7 @@ func (o *Cluster) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -613,7 +616,7 @@ func (o *Cluster) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *Cluster) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -627,7 +630,7 @@ func (o *Cluster) SetVersion(v string) {
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
 func (o *Cluster) GetIsDefault() bool {
-	if o == nil || o.IsDefault == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		var ret bool
 		return ret
 	}
@@ -637,7 +640,7 @@ func (o *Cluster) GetIsDefault() bool {
 // GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || o.IsDefault == nil {
+	if o == nil || IsNil(o.IsDefault) {
 		return nil, false
 	}
 	return o.IsDefault, true
@@ -645,7 +648,7 @@ func (o *Cluster) GetIsDefaultOk() (*bool, bool) {
 
 // HasIsDefault returns a boolean if a field has been set.
 func (o *Cluster) HasIsDefault() bool {
-	if o != nil && o.IsDefault != nil {
+	if o != nil && !IsNil(o.IsDefault) {
 		return true
 	}
 
@@ -659,7 +662,7 @@ func (o *Cluster) SetIsDefault(v bool) {
 
 // GetProduction returns the Production field value if set, zero value otherwise.
 func (o *Cluster) GetProduction() bool {
-	if o == nil || o.Production == nil {
+	if o == nil || IsNil(o.Production) {
 		var ret bool
 		return ret
 	}
@@ -669,7 +672,7 @@ func (o *Cluster) GetProduction() bool {
 // GetProductionOk returns a tuple with the Production field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetProductionOk() (*bool, bool) {
-	if o == nil || o.Production == nil {
+	if o == nil || IsNil(o.Production) {
 		return nil, false
 	}
 	return o.Production, true
@@ -677,7 +680,7 @@ func (o *Cluster) GetProductionOk() (*bool, bool) {
 
 // HasProduction returns a boolean if a field has been set.
 func (o *Cluster) HasProduction() bool {
-	if o != nil && o.Production != nil {
+	if o != nil && !IsNil(o.Production) {
 		return true
 	}
 
@@ -691,7 +694,7 @@ func (o *Cluster) SetProduction(v bool) {
 
 // GetSshKeys returns the SshKeys field value if set, zero value otherwise.
 func (o *Cluster) GetSshKeys() []string {
-	if o == nil || o.SshKeys == nil {
+	if o == nil || IsNil(o.SshKeys) {
 		var ret []string
 		return ret
 	}
@@ -701,7 +704,7 @@ func (o *Cluster) GetSshKeys() []string {
 // GetSshKeysOk returns a tuple with the SshKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetSshKeysOk() ([]string, bool) {
-	if o == nil || o.SshKeys == nil {
+	if o == nil || IsNil(o.SshKeys) {
 		return nil, false
 	}
 	return o.SshKeys, true
@@ -709,7 +712,7 @@ func (o *Cluster) GetSshKeysOk() ([]string, bool) {
 
 // HasSshKeys returns a boolean if a field has been set.
 func (o *Cluster) HasSshKeys() bool {
-	if o != nil && o.SshKeys != nil {
+	if o != nil && !IsNil(o.SshKeys) {
 		return true
 	}
 
@@ -723,7 +726,7 @@ func (o *Cluster) SetSshKeys(v []string) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *Cluster) GetFeatures() []ClusterFeature {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		var ret []ClusterFeature
 		return ret
 	}
@@ -733,7 +736,7 @@ func (o *Cluster) GetFeatures() []ClusterFeature {
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetFeaturesOk() ([]ClusterFeature, bool) {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
 	return o.Features, true
@@ -741,7 +744,7 @@ func (o *Cluster) GetFeaturesOk() ([]ClusterFeature, bool) {
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *Cluster) HasFeatures() bool {
-	if o != nil && o.Features != nil {
+	if o != nil && !IsNil(o.Features) {
 		return true
 	}
 
@@ -755,7 +758,7 @@ func (o *Cluster) SetFeatures(v []ClusterFeature) {
 
 // GetDeploymentStatus returns the DeploymentStatus field value if set, zero value otherwise.
 func (o *Cluster) GetDeploymentStatus() ClusterDeploymentStatusEnum {
-	if o == nil || o.DeploymentStatus == nil {
+	if o == nil || IsNil(o.DeploymentStatus) {
 		var ret ClusterDeploymentStatusEnum
 		return ret
 	}
@@ -765,7 +768,7 @@ func (o *Cluster) GetDeploymentStatus() ClusterDeploymentStatusEnum {
 // GetDeploymentStatusOk returns a tuple with the DeploymentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetDeploymentStatusOk() (*ClusterDeploymentStatusEnum, bool) {
-	if o == nil || o.DeploymentStatus == nil {
+	if o == nil || IsNil(o.DeploymentStatus) {
 		return nil, false
 	}
 	return o.DeploymentStatus, true
@@ -773,7 +776,7 @@ func (o *Cluster) GetDeploymentStatusOk() (*ClusterDeploymentStatusEnum, bool) {
 
 // HasDeploymentStatus returns a boolean if a field has been set.
 func (o *Cluster) HasDeploymentStatus() bool {
-	if o != nil && o.DeploymentStatus != nil {
+	if o != nil && !IsNil(o.DeploymentStatus) {
 		return true
 	}
 
@@ -786,77 +789,75 @@ func (o *Cluster) SetDeploymentStatus(v ClusterDeploymentStatusEnum) {
 }
 
 func (o Cluster) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["region"] = o.Region
-	}
-	if true {
-		toSerialize["cloud_provider"] = o.CloudProvider
-	}
-	if o.MinRunningNodes != nil {
-		toSerialize["min_running_nodes"] = o.MinRunningNodes
-	}
-	if o.MaxRunningNodes != nil {
-		toSerialize["max_running_nodes"] = o.MaxRunningNodes
-	}
-	if o.DiskSize != nil {
-		toSerialize["disk_size"] = o.DiskSize
-	}
-	if o.InstanceType != nil {
-		toSerialize["instance_type"] = o.InstanceType
-	}
-	if o.Kubernetes != nil {
-		toSerialize["kubernetes"] = o.Kubernetes
-	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.EstimatedCloudProviderCost != nil {
-		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.HasAccess != nil {
-		toSerialize["has_access"] = o.HasAccess
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.IsDefault != nil {
-		toSerialize["is_default"] = o.IsDefault
-	}
-	if o.Production != nil {
-		toSerialize["production"] = o.Production
-	}
-	if o.SshKeys != nil {
-		toSerialize["ssh_keys"] = o.SshKeys
-	}
-	if o.Features != nil {
-		toSerialize["features"] = o.Features
-	}
-	if o.DeploymentStatus != nil {
-		toSerialize["deployment_status"] = o.DeploymentStatus
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Cluster) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["region"] = o.Region
+	toSerialize["cloud_provider"] = o.CloudProvider
+	if !IsNil(o.MinRunningNodes) {
+		toSerialize["min_running_nodes"] = o.MinRunningNodes
+	}
+	if !IsNil(o.MaxRunningNodes) {
+		toSerialize["max_running_nodes"] = o.MaxRunningNodes
+	}
+	if !IsNil(o.DiskSize) {
+		toSerialize["disk_size"] = o.DiskSize
+	}
+	if !IsNil(o.InstanceType) {
+		toSerialize["instance_type"] = o.InstanceType
+	}
+	if !IsNil(o.Kubernetes) {
+		toSerialize["kubernetes"] = o.Kubernetes
+	}
+	if !IsNil(o.Cpu) {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if !IsNil(o.Memory) {
+		toSerialize["memory"] = o.Memory
+	}
+	if !IsNil(o.EstimatedCloudProviderCost) {
+		toSerialize["estimated_cloud_provider_cost"] = o.EstimatedCloudProviderCost
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.HasAccess) {
+		toSerialize["has_access"] = o.HasAccess
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["is_default"] = o.IsDefault
+	}
+	if !IsNil(o.Production) {
+		toSerialize["production"] = o.Production
+	}
+	if !IsNil(o.SshKeys) {
+		toSerialize["ssh_keys"] = o.SshKeys
+	}
+	if !IsNil(o.Features) {
+		toSerialize["features"] = o.Features
+	}
+	if !IsNil(o.DeploymentStatus) {
+		toSerialize["deployment_status"] = o.DeploymentStatus
+	}
+	return toSerialize, nil
 }
 
 type NullableCluster struct {

@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobActionsApiService JobActionsApi service
-type JobActionsApiService service
+// JobActionsAPIService JobActionsAPI service
+type JobActionsAPIService service
 
 type ApiDeployJobRequest struct {
 	ctx              context.Context
-	ApiService       *JobActionsApiService
+	ApiService       *JobActionsAPIService
 	jobId            string
 	forceEvent       *JobForceEvent
 	jobDeployRequest *JobDeployRequest
@@ -55,7 +55,7 @@ You must provide a git commit id or an image tag depending on the source locatio
  @param jobId Job ID
  @return ApiDeployJobRequest
 */
-func (a *JobActionsApiService) DeployJob(ctx context.Context, jobId string) ApiDeployJobRequest {
+func (a *JobActionsAPIService) DeployJob(ctx context.Context, jobId string) ApiDeployJobRequest {
 	return ApiDeployJobRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -65,7 +65,7 @@ func (a *JobActionsApiService) DeployJob(ctx context.Context, jobId string) ApiD
 
 // Execute executes the request
 //  @return Status
-func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status, *http.Response, error) {
+func (a *JobActionsAPIService) DeployJobExecute(r ApiDeployJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -73,20 +73,20 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsApiService.DeployJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsAPIService.DeployJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/deploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.forceEvent != nil {
-		localVarQueryParams.Add("forceEvent", parameterToString(*r.forceEvent, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "forceEvent", r.forceEvent, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -131,9 +131,9 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -160,7 +160,7 @@ func (a *JobActionsApiService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 
 type ApiRedeployJobRequest struct {
 	ctx        context.Context
-	ApiService *JobActionsApiService
+	ApiService *JobActionsAPIService
 	jobId      string
 	forceEvent *JobForceEvent
 }
@@ -182,7 +182,7 @@ RedeployJob Redeploy job
  @param jobId Job ID
  @return ApiRedeployJobRequest
 */
-func (a *JobActionsApiService) RedeployJob(ctx context.Context, jobId string) ApiRedeployJobRequest {
+func (a *JobActionsAPIService) RedeployJob(ctx context.Context, jobId string) ApiRedeployJobRequest {
 	return ApiRedeployJobRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -192,7 +192,7 @@ func (a *JobActionsApiService) RedeployJob(ctx context.Context, jobId string) Ap
 
 // Execute executes the request
 //  @return Status
-func (a *JobActionsApiService) RedeployJobExecute(r ApiRedeployJobRequest) (*Status, *http.Response, error) {
+func (a *JobActionsAPIService) RedeployJobExecute(r ApiRedeployJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -200,20 +200,20 @@ func (a *JobActionsApiService) RedeployJobExecute(r ApiRedeployJobRequest) (*Sta
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsApiService.RedeployJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsAPIService.RedeployJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/redeploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.forceEvent != nil {
-		localVarQueryParams.Add("forceEvent", parameterToString(*r.forceEvent, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "forceEvent", r.forceEvent, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -256,9 +256,9 @@ func (a *JobActionsApiService) RedeployJobExecute(r ApiRedeployJobRequest) (*Sta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -285,7 +285,7 @@ func (a *JobActionsApiService) RedeployJobExecute(r ApiRedeployJobRequest) (*Sta
 
 type ApiRestartJobRequest struct {
 	ctx        context.Context
-	ApiService *JobActionsApiService
+	ApiService *JobActionsAPIService
 	jobId      string
 	forceEvent *JobForceEvent
 }
@@ -309,7 +309,7 @@ RestartJob Deprecated - Restart job
  @param jobId Job ID
  @return ApiRestartJobRequest
 */
-func (a *JobActionsApiService) RestartJob(ctx context.Context, jobId string) ApiRestartJobRequest {
+func (a *JobActionsAPIService) RestartJob(ctx context.Context, jobId string) ApiRestartJobRequest {
 	return ApiRestartJobRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -319,7 +319,7 @@ func (a *JobActionsApiService) RestartJob(ctx context.Context, jobId string) Api
 
 // Execute executes the request
 //  @return Status
-func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Status, *http.Response, error) {
+func (a *JobActionsAPIService) RestartJobExecute(r ApiRestartJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -327,20 +327,20 @@ func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsApiService.RestartJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsAPIService.RestartJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/restart"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.forceEvent != nil {
-		localVarQueryParams.Add("forceEvent", parameterToString(*r.forceEvent, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "forceEvent", r.forceEvent, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -383,9 +383,9 @@ func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -412,7 +412,7 @@ func (a *JobActionsApiService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 
 type ApiStopJobRequest struct {
 	ctx        context.Context
-	ApiService *JobActionsApiService
+	ApiService *JobActionsAPIService
 	jobId      string
 }
 
@@ -427,7 +427,7 @@ StopJob Stop job
  @param jobId Job ID
  @return ApiStopJobRequest
 */
-func (a *JobActionsApiService) StopJob(ctx context.Context, jobId string) ApiStopJobRequest {
+func (a *JobActionsAPIService) StopJob(ctx context.Context, jobId string) ApiStopJobRequest {
 	return ApiStopJobRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -437,7 +437,7 @@ func (a *JobActionsApiService) StopJob(ctx context.Context, jobId string) ApiSto
 
 // Execute executes the request
 //  @return Status
-func (a *JobActionsApiService) StopJobExecute(r ApiStopJobRequest) (*Status, *http.Response, error) {
+func (a *JobActionsAPIService) StopJobExecute(r ApiStopJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -445,13 +445,13 @@ func (a *JobActionsApiService) StopJobExecute(r ApiStopJobRequest) (*Status, *ht
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsApiService.StopJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsAPIService.StopJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/stop"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -498,9 +498,9 @@ func (a *JobActionsApiService) StopJobExecute(r ApiStopJobRequest) (*Status, *ht
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

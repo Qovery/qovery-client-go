@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentHistoryContainer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryContainer{}
+
 // DeploymentHistoryContainer struct for DeploymentHistoryContainer
 type DeploymentHistoryContainer struct {
 	Id        string     `json:"id"`
@@ -99,7 +102,7 @@ func (o *DeploymentHistoryContainer) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeploymentHistoryContainer) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *DeploymentHistoryContainer) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryContainer) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -117,7 +120,7 @@ func (o *DeploymentHistoryContainer) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DeploymentHistoryContainer) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *DeploymentHistoryContainer) SetUpdatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DeploymentHistoryContainer) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *DeploymentHistoryContainer) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryContainer) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -149,7 +152,7 @@ func (o *DeploymentHistoryContainer) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DeploymentHistoryContainer) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *DeploymentHistoryContainer) SetName(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DeploymentHistoryContainer) GetStatus() StateEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret StateEnum
 		return ret
 	}
@@ -173,7 +176,7 @@ func (o *DeploymentHistoryContainer) GetStatus() StateEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryContainer) GetStatusOk() (*StateEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -181,7 +184,7 @@ func (o *DeploymentHistoryContainer) GetStatusOk() (*StateEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DeploymentHistoryContainer) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *DeploymentHistoryContainer) SetStatus(v StateEnum) {
 
 // GetImageName returns the ImageName field value if set, zero value otherwise.
 func (o *DeploymentHistoryContainer) GetImageName() string {
-	if o == nil || o.ImageName == nil {
+	if o == nil || IsNil(o.ImageName) {
 		var ret string
 		return ret
 	}
@@ -205,7 +208,7 @@ func (o *DeploymentHistoryContainer) GetImageName() string {
 // GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryContainer) GetImageNameOk() (*string, bool) {
-	if o == nil || o.ImageName == nil {
+	if o == nil || IsNil(o.ImageName) {
 		return nil, false
 	}
 	return o.ImageName, true
@@ -213,7 +216,7 @@ func (o *DeploymentHistoryContainer) GetImageNameOk() (*string, bool) {
 
 // HasImageName returns a boolean if a field has been set.
 func (o *DeploymentHistoryContainer) HasImageName() bool {
-	if o != nil && o.ImageName != nil {
+	if o != nil && !IsNil(o.ImageName) {
 		return true
 	}
 
@@ -227,7 +230,7 @@ func (o *DeploymentHistoryContainer) SetImageName(v string) {
 
 // GetTag returns the Tag field value if set, zero value otherwise.
 func (o *DeploymentHistoryContainer) GetTag() string {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret string
 		return ret
 	}
@@ -237,7 +240,7 @@ func (o *DeploymentHistoryContainer) GetTag() string {
 // GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryContainer) GetTagOk() (*string, bool) {
-	if o == nil || o.Tag == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
 	return o.Tag, true
@@ -245,7 +248,7 @@ func (o *DeploymentHistoryContainer) GetTagOk() (*string, bool) {
 
 // HasTag returns a boolean if a field has been set.
 func (o *DeploymentHistoryContainer) HasTag() bool {
-	if o != nil && o.Tag != nil {
+	if o != nil && !IsNil(o.Tag) {
 		return true
 	}
 
@@ -259,7 +262,7 @@ func (o *DeploymentHistoryContainer) SetTag(v string) {
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *DeploymentHistoryContainer) GetArguments() []string {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		var ret []string
 		return ret
 	}
@@ -269,7 +272,7 @@ func (o *DeploymentHistoryContainer) GetArguments() []string {
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryContainer) GetArgumentsOk() ([]string, bool) {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
 	return o.Arguments, true
@@ -277,7 +280,7 @@ func (o *DeploymentHistoryContainer) GetArgumentsOk() ([]string, bool) {
 
 // HasArguments returns a boolean if a field has been set.
 func (o *DeploymentHistoryContainer) HasArguments() bool {
-	if o != nil && o.Arguments != nil {
+	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
 
@@ -291,7 +294,7 @@ func (o *DeploymentHistoryContainer) SetArguments(v []string) {
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
 func (o *DeploymentHistoryContainer) GetEntrypoint() string {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
 	}
@@ -301,7 +304,7 @@ func (o *DeploymentHistoryContainer) GetEntrypoint() string {
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryContainer) GetEntrypointOk() (*string, bool) {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
 	return o.Entrypoint, true
@@ -309,7 +312,7 @@ func (o *DeploymentHistoryContainer) GetEntrypointOk() (*string, bool) {
 
 // HasEntrypoint returns a boolean if a field has been set.
 func (o *DeploymentHistoryContainer) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint != nil {
+	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
 
@@ -322,35 +325,39 @@ func (o *DeploymentHistoryContainer) SetEntrypoint(v string) {
 }
 
 func (o DeploymentHistoryContainer) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.ImageName != nil {
-		toSerialize["image_name"] = o.ImageName
-	}
-	if o.Tag != nil {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.Arguments != nil {
-		toSerialize["arguments"] = o.Arguments
-	}
-	if o.Entrypoint != nil {
-		toSerialize["entrypoint"] = o.Entrypoint
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistoryContainer) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.ImageName) {
+		toSerialize["image_name"] = o.ImageName
+	}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	if !IsNil(o.Arguments) {
+		toSerialize["arguments"] = o.Arguments
+	}
+	if !IsNil(o.Entrypoint) {
+		toSerialize["entrypoint"] = o.Entrypoint
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistoryContainer struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountInfoEditRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountInfoEditRequest{}
+
 // AccountInfoEditRequest struct for AccountInfoEditRequest
 type AccountInfoEditRequest struct {
 	// The email to be used for official Qovery communications
@@ -40,7 +43,7 @@ func NewAccountInfoEditRequestWithDefaults() *AccountInfoEditRequest {
 
 // GetCommunicationEmail returns the CommunicationEmail field value if set, zero value otherwise.
 func (o *AccountInfoEditRequest) GetCommunicationEmail() string {
-	if o == nil || o.CommunicationEmail == nil {
+	if o == nil || IsNil(o.CommunicationEmail) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *AccountInfoEditRequest) GetCommunicationEmail() string {
 // GetCommunicationEmailOk returns a tuple with the CommunicationEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfoEditRequest) GetCommunicationEmailOk() (*string, bool) {
-	if o == nil || o.CommunicationEmail == nil {
+	if o == nil || IsNil(o.CommunicationEmail) {
 		return nil, false
 	}
 	return o.CommunicationEmail, true
@@ -58,7 +61,7 @@ func (o *AccountInfoEditRequest) GetCommunicationEmailOk() (*string, bool) {
 
 // HasCommunicationEmail returns a boolean if a field has been set.
 func (o *AccountInfoEditRequest) HasCommunicationEmail() bool {
-	if o != nil && o.CommunicationEmail != nil {
+	if o != nil && !IsNil(o.CommunicationEmail) {
 		return true
 	}
 
@@ -71,11 +74,19 @@ func (o *AccountInfoEditRequest) SetCommunicationEmail(v string) {
 }
 
 func (o AccountInfoEditRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CommunicationEmail != nil {
-		toSerialize["communication_email"] = o.CommunicationEmail
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountInfoEditRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CommunicationEmail) {
+		toSerialize["communication_email"] = o.CommunicationEmail
+	}
+	return toSerialize, nil
 }
 
 type NullableAccountInfoEditRequest struct {

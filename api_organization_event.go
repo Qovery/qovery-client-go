@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// OrganizationEventApiService OrganizationEventApi service
-type OrganizationEventApiService service
+// OrganizationEventAPIService OrganizationEventAPI service
+type OrganizationEventAPIService service
 
 type ApiGetOrganizationEventTargetsRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationEventApiService
+	ApiService     *OrganizationEventAPIService
 	organizationId string
 	fromTimestamp  *string
 	toTimestamp    *string
@@ -95,7 +95,7 @@ Get available event targets to filter events
  @param organizationId Organization ID
  @return ApiGetOrganizationEventTargetsRequest
 */
-func (a *OrganizationEventApiService) GetOrganizationEventTargets(ctx context.Context, organizationId string) ApiGetOrganizationEventTargetsRequest {
+func (a *OrganizationEventAPIService) GetOrganizationEventTargets(ctx context.Context, organizationId string) ApiGetOrganizationEventTargetsRequest {
 	return ApiGetOrganizationEventTargetsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -105,7 +105,7 @@ func (a *OrganizationEventApiService) GetOrganizationEventTargets(ctx context.Co
 
 // Execute executes the request
 //  @return OrganizationEventTargetResponseList
-func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGetOrganizationEventTargetsRequest) (*OrganizationEventTargetResponseList, *http.Response, error) {
+func (a *OrganizationEventAPIService) GetOrganizationEventTargetsExecute(r ApiGetOrganizationEventTargetsRequest) (*OrganizationEventTargetResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -113,41 +113,41 @@ func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGe
 		localVarReturnValue *OrganizationEventTargetResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEventApiService.GetOrganizationEventTargets")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEventAPIService.GetOrganizationEventTargets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/targets"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.fromTimestamp != nil {
-		localVarQueryParams.Add("fromTimestamp", parameterToString(*r.fromTimestamp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fromTimestamp", r.fromTimestamp, "")
 	}
 	if r.toTimestamp != nil {
-		localVarQueryParams.Add("toTimestamp", parameterToString(*r.toTimestamp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "toTimestamp", r.toTimestamp, "")
 	}
 	if r.eventType != nil {
-		localVarQueryParams.Add("eventType", parameterToString(*r.eventType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "eventType", r.eventType, "")
 	}
 	if r.targetType != nil {
-		localVarQueryParams.Add("targetType", parameterToString(*r.targetType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "targetType", r.targetType, "")
 	}
 	if r.triggeredBy != nil {
-		localVarQueryParams.Add("triggeredBy", parameterToString(*r.triggeredBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "triggeredBy", r.triggeredBy, "")
 	}
 	if r.origin != nil {
-		localVarQueryParams.Add("origin", parameterToString(*r.origin, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "origin", r.origin, "")
 	}
 	if r.projectId != nil {
-		localVarQueryParams.Add("projectId", parameterToString(*r.projectId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "projectId", r.projectId, "")
 	}
 	if r.environmentId != nil {
-		localVarQueryParams.Add("environmentId", parameterToString(*r.environmentId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "environmentId", r.environmentId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -190,9 +190,9 @@ func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -219,7 +219,7 @@ func (a *OrganizationEventApiService) GetOrganizationEventTargetsExecute(r ApiGe
 
 type ApiGetOrganizationEventsRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationEventApiService
+	ApiService     *OrganizationEventAPIService
 	organizationId string
 	pageSize       *float32
 	fromTimestamp  *string
@@ -309,7 +309,7 @@ Get all events inside the organization
  @param organizationId Organization ID
  @return ApiGetOrganizationEventsRequest
 */
-func (a *OrganizationEventApiService) GetOrganizationEvents(ctx context.Context, organizationId string) ApiGetOrganizationEventsRequest {
+func (a *OrganizationEventAPIService) GetOrganizationEvents(ctx context.Context, organizationId string) ApiGetOrganizationEventsRequest {
 	return ApiGetOrganizationEventsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -319,7 +319,7 @@ func (a *OrganizationEventApiService) GetOrganizationEvents(ctx context.Context,
 
 // Execute executes the request
 //  @return OrganizationEventResponseList
-func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrganizationEventsRequest) (*OrganizationEventResponseList, *http.Response, error) {
+func (a *OrganizationEventAPIService) GetOrganizationEventsExecute(r ApiGetOrganizationEventsRequest) (*OrganizationEventResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -327,50 +327,53 @@ func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrgan
 		localVarReturnValue *OrganizationEventResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEventApiService.GetOrganizationEvents")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEventAPIService.GetOrganizationEvents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/events"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.pageSize != nil {
-		localVarQueryParams.Add("pageSize", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageSize", r.pageSize, "")
+	} else {
+		var defaultValue float32 = 10
+		r.pageSize = &defaultValue
 	}
 	if r.fromTimestamp != nil {
-		localVarQueryParams.Add("fromTimestamp", parameterToString(*r.fromTimestamp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "fromTimestamp", r.fromTimestamp, "")
 	}
 	if r.toTimestamp != nil {
-		localVarQueryParams.Add("toTimestamp", parameterToString(*r.toTimestamp, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "toTimestamp", r.toTimestamp, "")
 	}
 	if r.continueToken != nil {
-		localVarQueryParams.Add("continueToken", parameterToString(*r.continueToken, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "continueToken", r.continueToken, "")
 	}
 	if r.stepBackToken != nil {
-		localVarQueryParams.Add("stepBackToken", parameterToString(*r.stepBackToken, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "stepBackToken", r.stepBackToken, "")
 	}
 	if r.eventType != nil {
-		localVarQueryParams.Add("eventType", parameterToString(*r.eventType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "eventType", r.eventType, "")
 	}
 	if r.targetType != nil {
-		localVarQueryParams.Add("targetType", parameterToString(*r.targetType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "targetType", r.targetType, "")
 	}
 	if r.targetId != nil {
-		localVarQueryParams.Add("targetId", parameterToString(*r.targetId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "targetId", r.targetId, "")
 	}
 	if r.subTargetType != nil {
-		localVarQueryParams.Add("subTargetType", parameterToString(*r.subTargetType, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "subTargetType", r.subTargetType, "")
 	}
 	if r.triggeredBy != nil {
-		localVarQueryParams.Add("triggeredBy", parameterToString(*r.triggeredBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "triggeredBy", r.triggeredBy, "")
 	}
 	if r.origin != nil {
-		localVarQueryParams.Add("origin", parameterToString(*r.origin, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "origin", r.origin, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -413,9 +416,9 @@ func (a *OrganizationEventApiService) GetOrganizationEventsExecute(r ApiGetOrgan
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

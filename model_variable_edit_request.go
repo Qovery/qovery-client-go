@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableEditRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableEditRequest{}
+
 // VariableEditRequest struct for VariableEditRequest
 type VariableEditRequest struct {
 	// the key of the environment variable
@@ -91,14 +94,18 @@ func (o *VariableEditRequest) SetValue(v string) {
 }
 
 func (o VariableEditRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableEditRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	toSerialize["value"] = o.Value
+	return toSerialize, nil
 }
 
 type NullableVariableEditRequest struct {

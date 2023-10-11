@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the OrganizationWebhookCreateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationWebhookCreateResponse{}
+
 // OrganizationWebhookCreateResponse struct for OrganizationWebhookCreateResponse
 type OrganizationWebhookCreateResponse struct {
 	Id        string                       `json:"id"`
@@ -104,7 +107,7 @@ func (o *OrganizationWebhookCreateResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *OrganizationWebhookCreateResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -122,7 +125,7 @@ func (o *OrganizationWebhookCreateResponse) GetUpdatedAtOk() (*time.Time, bool) 
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *OrganizationWebhookCreateResponse) SetUpdatedAt(v time.Time) {
 
 // GetKind returns the Kind field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetKind() OrganizationWebhookKindEnum {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		var ret OrganizationWebhookKindEnum
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *OrganizationWebhookCreateResponse) GetKind() OrganizationWebhookKindEnu
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetKindOk() (*OrganizationWebhookKindEnum, bool) {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		return nil, false
 	}
 	return o.Kind, true
@@ -154,7 +157,7 @@ func (o *OrganizationWebhookCreateResponse) GetKindOk() (*OrganizationWebhookKin
 
 // HasKind returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasKind() bool {
-	if o != nil && o.Kind != nil {
+	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *OrganizationWebhookCreateResponse) SetKind(v OrganizationWebhookKindEnu
 
 // GetTargetUrl returns the TargetUrl field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetTargetUrl() string {
-	if o == nil || o.TargetUrl == nil {
+	if o == nil || IsNil(o.TargetUrl) {
 		var ret string
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *OrganizationWebhookCreateResponse) GetTargetUrl() string {
 // GetTargetUrlOk returns a tuple with the TargetUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetTargetUrlOk() (*string, bool) {
-	if o == nil || o.TargetUrl == nil {
+	if o == nil || IsNil(o.TargetUrl) {
 		return nil, false
 	}
 	return o.TargetUrl, true
@@ -186,7 +189,7 @@ func (o *OrganizationWebhookCreateResponse) GetTargetUrlOk() (*string, bool) {
 
 // HasTargetUrl returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasTargetUrl() bool {
-	if o != nil && o.TargetUrl != nil {
+	if o != nil && !IsNil(o.TargetUrl) {
 		return true
 	}
 
@@ -200,7 +203,7 @@ func (o *OrganizationWebhookCreateResponse) SetTargetUrl(v string) {
 
 // GetTargetSecretSet returns the TargetSecretSet field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetTargetSecretSet() bool {
-	if o == nil || o.TargetSecretSet == nil {
+	if o == nil || IsNil(o.TargetSecretSet) {
 		var ret bool
 		return ret
 	}
@@ -210,7 +213,7 @@ func (o *OrganizationWebhookCreateResponse) GetTargetSecretSet() bool {
 // GetTargetSecretSetOk returns a tuple with the TargetSecretSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetTargetSecretSetOk() (*bool, bool) {
-	if o == nil || o.TargetSecretSet == nil {
+	if o == nil || IsNil(o.TargetSecretSet) {
 		return nil, false
 	}
 	return o.TargetSecretSet, true
@@ -218,7 +221,7 @@ func (o *OrganizationWebhookCreateResponse) GetTargetSecretSetOk() (*bool, bool)
 
 // HasTargetSecretSet returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasTargetSecretSet() bool {
-	if o != nil && o.TargetSecretSet != nil {
+	if o != nil && !IsNil(o.TargetSecretSet) {
 		return true
 	}
 
@@ -232,7 +235,7 @@ func (o *OrganizationWebhookCreateResponse) SetTargetSecretSet(v bool) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -242,7 +245,7 @@ func (o *OrganizationWebhookCreateResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -250,7 +253,7 @@ func (o *OrganizationWebhookCreateResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -264,7 +267,7 @@ func (o *OrganizationWebhookCreateResponse) SetDescription(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -274,7 +277,7 @@ func (o *OrganizationWebhookCreateResponse) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -282,7 +285,7 @@ func (o *OrganizationWebhookCreateResponse) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -296,7 +299,7 @@ func (o *OrganizationWebhookCreateResponse) SetEnabled(v bool) {
 
 // GetEvents returns the Events field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetEvents() []OrganizationWebhookEventEnum {
-	if o == nil || o.Events == nil {
+	if o == nil || IsNil(o.Events) {
 		var ret []OrganizationWebhookEventEnum
 		return ret
 	}
@@ -306,7 +309,7 @@ func (o *OrganizationWebhookCreateResponse) GetEvents() []OrganizationWebhookEve
 // GetEventsOk returns a tuple with the Events field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetEventsOk() ([]OrganizationWebhookEventEnum, bool) {
-	if o == nil || o.Events == nil {
+	if o == nil || IsNil(o.Events) {
 		return nil, false
 	}
 	return o.Events, true
@@ -314,7 +317,7 @@ func (o *OrganizationWebhookCreateResponse) GetEventsOk() ([]OrganizationWebhook
 
 // HasEvents returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasEvents() bool {
-	if o != nil && o.Events != nil {
+	if o != nil && !IsNil(o.Events) {
 		return true
 	}
 
@@ -328,7 +331,7 @@ func (o *OrganizationWebhookCreateResponse) SetEvents(v []OrganizationWebhookEve
 
 // GetProjectNamesFilter returns the ProjectNamesFilter field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetProjectNamesFilter() []string {
-	if o == nil || o.ProjectNamesFilter == nil {
+	if o == nil || IsNil(o.ProjectNamesFilter) {
 		var ret []string
 		return ret
 	}
@@ -338,7 +341,7 @@ func (o *OrganizationWebhookCreateResponse) GetProjectNamesFilter() []string {
 // GetProjectNamesFilterOk returns a tuple with the ProjectNamesFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetProjectNamesFilterOk() ([]string, bool) {
-	if o == nil || o.ProjectNamesFilter == nil {
+	if o == nil || IsNil(o.ProjectNamesFilter) {
 		return nil, false
 	}
 	return o.ProjectNamesFilter, true
@@ -346,7 +349,7 @@ func (o *OrganizationWebhookCreateResponse) GetProjectNamesFilterOk() ([]string,
 
 // HasProjectNamesFilter returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasProjectNamesFilter() bool {
-	if o != nil && o.ProjectNamesFilter != nil {
+	if o != nil && !IsNil(o.ProjectNamesFilter) {
 		return true
 	}
 
@@ -360,7 +363,7 @@ func (o *OrganizationWebhookCreateResponse) SetProjectNamesFilter(v []string) {
 
 // GetEnvironmentTypesFilter returns the EnvironmentTypesFilter field value if set, zero value otherwise.
 func (o *OrganizationWebhookCreateResponse) GetEnvironmentTypesFilter() []EnvironmentModeEnum {
-	if o == nil || o.EnvironmentTypesFilter == nil {
+	if o == nil || IsNil(o.EnvironmentTypesFilter) {
 		var ret []EnvironmentModeEnum
 		return ret
 	}
@@ -370,7 +373,7 @@ func (o *OrganizationWebhookCreateResponse) GetEnvironmentTypesFilter() []Enviro
 // GetEnvironmentTypesFilterOk returns a tuple with the EnvironmentTypesFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationWebhookCreateResponse) GetEnvironmentTypesFilterOk() ([]EnvironmentModeEnum, bool) {
-	if o == nil || o.EnvironmentTypesFilter == nil {
+	if o == nil || IsNil(o.EnvironmentTypesFilter) {
 		return nil, false
 	}
 	return o.EnvironmentTypesFilter, true
@@ -378,7 +381,7 @@ func (o *OrganizationWebhookCreateResponse) GetEnvironmentTypesFilterOk() ([]Env
 
 // HasEnvironmentTypesFilter returns a boolean if a field has been set.
 func (o *OrganizationWebhookCreateResponse) HasEnvironmentTypesFilter() bool {
-	if o != nil && o.EnvironmentTypesFilter != nil {
+	if o != nil && !IsNil(o.EnvironmentTypesFilter) {
 		return true
 	}
 
@@ -391,41 +394,45 @@ func (o *OrganizationWebhookCreateResponse) SetEnvironmentTypesFilter(v []Enviro
 }
 
 func (o OrganizationWebhookCreateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Kind != nil {
-		toSerialize["kind"] = o.Kind
-	}
-	if o.TargetUrl != nil {
-		toSerialize["target_url"] = o.TargetUrl
-	}
-	if o.TargetSecretSet != nil {
-		toSerialize["target_secret_set"] = o.TargetSecretSet
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.Events != nil {
-		toSerialize["events"] = o.Events
-	}
-	if o.ProjectNamesFilter != nil {
-		toSerialize["project_names_filter"] = o.ProjectNamesFilter
-	}
-	if o.EnvironmentTypesFilter != nil {
-		toSerialize["environment_types_filter"] = o.EnvironmentTypesFilter
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationWebhookCreateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
+	}
+	if !IsNil(o.TargetUrl) {
+		toSerialize["target_url"] = o.TargetUrl
+	}
+	if !IsNil(o.TargetSecretSet) {
+		toSerialize["target_secret_set"] = o.TargetSecretSet
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Events) {
+		toSerialize["events"] = o.Events
+	}
+	if !IsNil(o.ProjectNamesFilter) {
+		toSerialize["project_names_filter"] = o.ProjectNamesFilter
+	}
+	if !IsNil(o.EnvironmentTypesFilter) {
+		toSerialize["environment_types_filter"] = o.EnvironmentTypesFilter
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationWebhookCreateResponse struct {

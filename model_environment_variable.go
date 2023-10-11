@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the EnvironmentVariable type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentVariable{}
+
 // EnvironmentVariable struct for EnvironmentVariable
 type EnvironmentVariable struct {
 	Id        string     `json:"id"`
@@ -109,7 +112,7 @@ func (o *EnvironmentVariable) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *EnvironmentVariable) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -127,7 +130,7 @@ func (o *EnvironmentVariable) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -165,7 +168,7 @@ func (o *EnvironmentVariable) SetKey(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -175,7 +178,7 @@ func (o *EnvironmentVariable) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -183,7 +186,7 @@ func (o *EnvironmentVariable) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -197,7 +200,7 @@ func (o *EnvironmentVariable) SetValue(v string) {
 
 // GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentVariable) GetMountPath() string {
-	if o == nil || o.MountPath.Get() == nil {
+	if o == nil || IsNil(o.MountPath.Get()) {
 		var ret string
 		return ret
 	}
@@ -240,7 +243,7 @@ func (o *EnvironmentVariable) UnsetMountPath() {
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverride {
-	if o == nil || o.OverriddenVariable == nil {
+	if o == nil || IsNil(o.OverriddenVariable) {
 		var ret EnvironmentVariableOverride
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverrid
 // GetOverriddenVariableOk returns a tuple with the OverriddenVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetOverriddenVariableOk() (*EnvironmentVariableOverride, bool) {
-	if o == nil || o.OverriddenVariable == nil {
+	if o == nil || IsNil(o.OverriddenVariable) {
 		return nil, false
 	}
 	return o.OverriddenVariable, true
@@ -258,7 +261,7 @@ func (o *EnvironmentVariable) GetOverriddenVariableOk() (*EnvironmentVariableOve
 
 // HasOverriddenVariable returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasOverriddenVariable() bool {
-	if o != nil && o.OverriddenVariable != nil {
+	if o != nil && !IsNil(o.OverriddenVariable) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *EnvironmentVariable) SetOverriddenVariable(v EnvironmentVariableOverrid
 
 // GetAliasedVariable returns the AliasedVariable field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetAliasedVariable() EnvironmentVariableAlias {
-	if o == nil || o.AliasedVariable == nil {
+	if o == nil || IsNil(o.AliasedVariable) {
 		var ret EnvironmentVariableAlias
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *EnvironmentVariable) GetAliasedVariable() EnvironmentVariableAlias {
 // GetAliasedVariableOk returns a tuple with the AliasedVariable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetAliasedVariableOk() (*EnvironmentVariableAlias, bool) {
-	if o == nil || o.AliasedVariable == nil {
+	if o == nil || IsNil(o.AliasedVariable) {
 		return nil, false
 	}
 	return o.AliasedVariable, true
@@ -290,7 +293,7 @@ func (o *EnvironmentVariable) GetAliasedVariableOk() (*EnvironmentVariableAlias,
 
 // HasAliasedVariable returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasAliasedVariable() bool {
-	if o != nil && o.AliasedVariable != nil {
+	if o != nil && !IsNil(o.AliasedVariable) {
 		return true
 	}
 
@@ -328,7 +331,7 @@ func (o *EnvironmentVariable) SetScope(v APIVariableScopeEnum) {
 
 // GetVariableType returns the VariableType field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetVariableType() APIVariableTypeEnum {
-	if o == nil || o.VariableType == nil {
+	if o == nil || IsNil(o.VariableType) {
 		var ret APIVariableTypeEnum
 		return ret
 	}
@@ -338,7 +341,7 @@ func (o *EnvironmentVariable) GetVariableType() APIVariableTypeEnum {
 // GetVariableTypeOk returns a tuple with the VariableType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
-	if o == nil || o.VariableType == nil {
+	if o == nil || IsNil(o.VariableType) {
 		return nil, false
 	}
 	return o.VariableType, true
@@ -346,7 +349,7 @@ func (o *EnvironmentVariable) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
 
 // HasVariableType returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasVariableType() bool {
-	if o != nil && o.VariableType != nil {
+	if o != nil && !IsNil(o.VariableType) {
 		return true
 	}
 
@@ -360,7 +363,7 @@ func (o *EnvironmentVariable) SetVariableType(v APIVariableTypeEnum) {
 
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetServiceId() string {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		var ret string
 		return ret
 	}
@@ -370,7 +373,7 @@ func (o *EnvironmentVariable) GetServiceId() string {
 // GetServiceIdOk returns a tuple with the ServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetServiceIdOk() (*string, bool) {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		return nil, false
 	}
 	return o.ServiceId, true
@@ -378,7 +381,7 @@ func (o *EnvironmentVariable) GetServiceIdOk() (*string, bool) {
 
 // HasServiceId returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasServiceId() bool {
-	if o != nil && o.ServiceId != nil {
+	if o != nil && !IsNil(o.ServiceId) {
 		return true
 	}
 
@@ -392,7 +395,7 @@ func (o *EnvironmentVariable) SetServiceId(v string) {
 
 // GetServiceName returns the ServiceName field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetServiceName() string {
-	if o == nil || o.ServiceName == nil {
+	if o == nil || IsNil(o.ServiceName) {
 		var ret string
 		return ret
 	}
@@ -402,7 +405,7 @@ func (o *EnvironmentVariable) GetServiceName() string {
 // GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetServiceNameOk() (*string, bool) {
-	if o == nil || o.ServiceName == nil {
+	if o == nil || IsNil(o.ServiceName) {
 		return nil, false
 	}
 	return o.ServiceName, true
@@ -410,7 +413,7 @@ func (o *EnvironmentVariable) GetServiceNameOk() (*string, bool) {
 
 // HasServiceName returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasServiceName() bool {
-	if o != nil && o.ServiceName != nil {
+	if o != nil && !IsNil(o.ServiceName) {
 		return true
 	}
 
@@ -424,7 +427,7 @@ func (o *EnvironmentVariable) SetServiceName(v string) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetServiceType() LinkedServiceTypeEnum {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		var ret LinkedServiceTypeEnum
 		return ret
 	}
@@ -434,7 +437,7 @@ func (o *EnvironmentVariable) GetServiceType() LinkedServiceTypeEnum {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
 	return o.ServiceType, true
@@ -442,7 +445,7 @@ func (o *EnvironmentVariable) GetServiceTypeOk() (*LinkedServiceTypeEnum, bool) 
 
 // HasServiceType returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasServiceType() bool {
-	if o != nil && o.ServiceType != nil {
+	if o != nil && !IsNil(o.ServiceType) {
 		return true
 	}
 
@@ -456,7 +459,7 @@ func (o *EnvironmentVariable) SetServiceType(v LinkedServiceTypeEnum) {
 
 // GetOwnedBy returns the OwnedBy field value if set, zero value otherwise.
 func (o *EnvironmentVariable) GetOwnedBy() string {
-	if o == nil || o.OwnedBy == nil {
+	if o == nil || IsNil(o.OwnedBy) {
 		var ret string
 		return ret
 	}
@@ -466,7 +469,7 @@ func (o *EnvironmentVariable) GetOwnedBy() string {
 // GetOwnedByOk returns a tuple with the OwnedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetOwnedByOk() (*string, bool) {
-	if o == nil || o.OwnedBy == nil {
+	if o == nil || IsNil(o.OwnedBy) {
 		return nil, false
 	}
 	return o.OwnedBy, true
@@ -474,7 +477,7 @@ func (o *EnvironmentVariable) GetOwnedByOk() (*string, bool) {
 
 // HasOwnedBy returns a boolean if a field has been set.
 func (o *EnvironmentVariable) HasOwnedBy() bool {
-	if o != nil && o.OwnedBy != nil {
+	if o != nil && !IsNil(o.OwnedBy) {
 		return true
 	}
 
@@ -487,50 +490,50 @@ func (o *EnvironmentVariable) SetOwnedBy(v string) {
 }
 
 func (o EnvironmentVariable) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentVariable) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if o.Value != nil {
+	toSerialize["key"] = o.Key
+	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 	if o.MountPath.IsSet() {
 		toSerialize["mount_path"] = o.MountPath.Get()
 	}
-	if o.OverriddenVariable != nil {
+	if !IsNil(o.OverriddenVariable) {
 		toSerialize["overridden_variable"] = o.OverriddenVariable
 	}
-	if o.AliasedVariable != nil {
+	if !IsNil(o.AliasedVariable) {
 		toSerialize["aliased_variable"] = o.AliasedVariable
 	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if o.VariableType != nil {
+	toSerialize["scope"] = o.Scope
+	if !IsNil(o.VariableType) {
 		toSerialize["variable_type"] = o.VariableType
 	}
-	if o.ServiceId != nil {
+	if !IsNil(o.ServiceId) {
 		toSerialize["service_id"] = o.ServiceId
 	}
-	if o.ServiceName != nil {
+	if !IsNil(o.ServiceName) {
 		toSerialize["service_name"] = o.ServiceName
 	}
-	if o.ServiceType != nil {
+	if !IsNil(o.ServiceType) {
 		toSerialize["service_type"] = o.ServiceType
 	}
-	if o.OwnedBy != nil {
+	if !IsNil(o.OwnedBy) {
 		toSerialize["owned_by"] = o.OwnedBy
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableEnvironmentVariable struct {

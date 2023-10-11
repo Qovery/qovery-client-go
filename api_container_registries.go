@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ContainerRegistriesApiService ContainerRegistriesApi service
-type ContainerRegistriesApiService service
+// ContainerRegistriesAPIService ContainerRegistriesAPI service
+type ContainerRegistriesAPIService service
 
 type ApiCreateContainerRegistryRequest struct {
 	ctx                      context.Context
-	ApiService               *ContainerRegistriesApiService
+	ApiService               *ContainerRegistriesAPIService
 	organizationId           string
 	containerRegistryRequest *ContainerRegistryRequest
 }
@@ -46,7 +46,7 @@ CreateContainerRegistry Create a container registry
  @param organizationId Organization ID
  @return ApiCreateContainerRegistryRequest
 */
-func (a *ContainerRegistriesApiService) CreateContainerRegistry(ctx context.Context, organizationId string) ApiCreateContainerRegistryRequest {
+func (a *ContainerRegistriesAPIService) CreateContainerRegistry(ctx context.Context, organizationId string) ApiCreateContainerRegistryRequest {
 	return ApiCreateContainerRegistryRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -56,7 +56,7 @@ func (a *ContainerRegistriesApiService) CreateContainerRegistry(ctx context.Cont
 
 // Execute executes the request
 //  @return ContainerRegistryResponse
-func (a *ContainerRegistriesApiService) CreateContainerRegistryExecute(r ApiCreateContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
+func (a *ContainerRegistriesAPIService) CreateContainerRegistryExecute(r ApiCreateContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,13 +64,13 @@ func (a *ContainerRegistriesApiService) CreateContainerRegistryExecute(r ApiCrea
 		localVarReturnValue *ContainerRegistryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.CreateContainerRegistry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesAPIService.CreateContainerRegistry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/containerRegistry"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -119,9 +119,9 @@ func (a *ContainerRegistriesApiService) CreateContainerRegistryExecute(r ApiCrea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +148,7 @@ func (a *ContainerRegistriesApiService) CreateContainerRegistryExecute(r ApiCrea
 
 type ApiDeleteContainerRegistryRequest struct {
 	ctx                 context.Context
-	ApiService          *ContainerRegistriesApiService
+	ApiService          *ContainerRegistriesAPIService
 	organizationId      string
 	containerRegistryId string
 }
@@ -165,7 +165,7 @@ DeleteContainerRegistry Delete a container registry
  @param containerRegistryId Container Registry ID
  @return ApiDeleteContainerRegistryRequest
 */
-func (a *ContainerRegistriesApiService) DeleteContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiDeleteContainerRegistryRequest {
+func (a *ContainerRegistriesAPIService) DeleteContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiDeleteContainerRegistryRequest {
 	return ApiDeleteContainerRegistryRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -175,21 +175,21 @@ func (a *ContainerRegistriesApiService) DeleteContainerRegistry(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *ContainerRegistriesApiService) DeleteContainerRegistryExecute(r ApiDeleteContainerRegistryRequest) (*http.Response, error) {
+func (a *ContainerRegistriesAPIService) DeleteContainerRegistryExecute(r ApiDeleteContainerRegistryRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.DeleteContainerRegistry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesAPIService.DeleteContainerRegistry")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/containerRegistry/{containerRegistryId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterToString(r.containerRegistryId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterValueToString(r.containerRegistryId, "containerRegistryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -236,9 +236,9 @@ func (a *ContainerRegistriesApiService) DeleteContainerRegistryExecute(r ApiDele
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -256,7 +256,7 @@ func (a *ContainerRegistriesApiService) DeleteContainerRegistryExecute(r ApiDele
 
 type ApiEditContainerRegistryRequest struct {
 	ctx                      context.Context
-	ApiService               *ContainerRegistriesApiService
+	ApiService               *ContainerRegistriesAPIService
 	organizationId           string
 	containerRegistryId      string
 	containerRegistryRequest *ContainerRegistryRequest
@@ -279,7 +279,7 @@ EditContainerRegistry Edit a container registry
  @param containerRegistryId Container Registry ID
  @return ApiEditContainerRegistryRequest
 */
-func (a *ContainerRegistriesApiService) EditContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiEditContainerRegistryRequest {
+func (a *ContainerRegistriesAPIService) EditContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiEditContainerRegistryRequest {
 	return ApiEditContainerRegistryRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -290,7 +290,7 @@ func (a *ContainerRegistriesApiService) EditContainerRegistry(ctx context.Contex
 
 // Execute executes the request
 //  @return ContainerRegistryResponse
-func (a *ContainerRegistriesApiService) EditContainerRegistryExecute(r ApiEditContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
+func (a *ContainerRegistriesAPIService) EditContainerRegistryExecute(r ApiEditContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -298,14 +298,14 @@ func (a *ContainerRegistriesApiService) EditContainerRegistryExecute(r ApiEditCo
 		localVarReturnValue *ContainerRegistryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.EditContainerRegistry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesAPIService.EditContainerRegistry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/containerRegistry/{containerRegistryId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterToString(r.containerRegistryId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterValueToString(r.containerRegistryId, "containerRegistryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -354,9 +354,9 @@ func (a *ContainerRegistriesApiService) EditContainerRegistryExecute(r ApiEditCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -383,7 +383,7 @@ func (a *ContainerRegistriesApiService) EditContainerRegistryExecute(r ApiEditCo
 
 type ApiGetContainerRegistryRequest struct {
 	ctx                 context.Context
-	ApiService          *ContainerRegistriesApiService
+	ApiService          *ContainerRegistriesAPIService
 	organizationId      string
 	containerRegistryId string
 }
@@ -400,7 +400,7 @@ GetContainerRegistry Get a container registry
  @param containerRegistryId Container Registry ID
  @return ApiGetContainerRegistryRequest
 */
-func (a *ContainerRegistriesApiService) GetContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiGetContainerRegistryRequest {
+func (a *ContainerRegistriesAPIService) GetContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiGetContainerRegistryRequest {
 	return ApiGetContainerRegistryRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -411,7 +411,7 @@ func (a *ContainerRegistriesApiService) GetContainerRegistry(ctx context.Context
 
 // Execute executes the request
 //  @return ContainerRegistryResponse
-func (a *ContainerRegistriesApiService) GetContainerRegistryExecute(r ApiGetContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
+func (a *ContainerRegistriesAPIService) GetContainerRegistryExecute(r ApiGetContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -419,14 +419,14 @@ func (a *ContainerRegistriesApiService) GetContainerRegistryExecute(r ApiGetCont
 		localVarReturnValue *ContainerRegistryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.GetContainerRegistry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesAPIService.GetContainerRegistry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/containerRegistry/{containerRegistryId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterToString(r.containerRegistryId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterValueToString(r.containerRegistryId, "containerRegistryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -473,9 +473,9 @@ func (a *ContainerRegistriesApiService) GetContainerRegistryExecute(r ApiGetCont
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -502,7 +502,7 @@ func (a *ContainerRegistriesApiService) GetContainerRegistryExecute(r ApiGetCont
 
 type ApiListAvailableContainerRegistryRequest struct {
 	ctx        context.Context
-	ApiService *ContainerRegistriesApiService
+	ApiService *ContainerRegistriesAPIService
 }
 
 func (r ApiListAvailableContainerRegistryRequest) Execute() (*AvailableContainerRegistryResponseList, *http.Response, error) {
@@ -517,7 +517,7 @@ List supported container registries by Qovery and get the mandatory authentifica
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAvailableContainerRegistryRequest
 */
-func (a *ContainerRegistriesApiService) ListAvailableContainerRegistry(ctx context.Context) ApiListAvailableContainerRegistryRequest {
+func (a *ContainerRegistriesAPIService) ListAvailableContainerRegistry(ctx context.Context) ApiListAvailableContainerRegistryRequest {
 	return ApiListAvailableContainerRegistryRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -526,7 +526,7 @@ func (a *ContainerRegistriesApiService) ListAvailableContainerRegistry(ctx conte
 
 // Execute executes the request
 //  @return AvailableContainerRegistryResponseList
-func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r ApiListAvailableContainerRegistryRequest) (*AvailableContainerRegistryResponseList, *http.Response, error) {
+func (a *ContainerRegistriesAPIService) ListAvailableContainerRegistryExecute(r ApiListAvailableContainerRegistryRequest) (*AvailableContainerRegistryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -534,7 +534,7 @@ func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r 
 		localVarReturnValue *AvailableContainerRegistryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.ListAvailableContainerRegistry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesAPIService.ListAvailableContainerRegistry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -586,9 +586,9 @@ func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -615,7 +615,7 @@ func (a *ContainerRegistriesApiService) ListAvailableContainerRegistryExecute(r 
 
 type ApiListContainerRegistryRequest struct {
 	ctx            context.Context
-	ApiService     *ContainerRegistriesApiService
+	ApiService     *ContainerRegistriesAPIService
 	organizationId string
 }
 
@@ -630,7 +630,7 @@ ListContainerRegistry List organization container registries
  @param organizationId Organization ID
  @return ApiListContainerRegistryRequest
 */
-func (a *ContainerRegistriesApiService) ListContainerRegistry(ctx context.Context, organizationId string) ApiListContainerRegistryRequest {
+func (a *ContainerRegistriesAPIService) ListContainerRegistry(ctx context.Context, organizationId string) ApiListContainerRegistryRequest {
 	return ApiListContainerRegistryRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -640,7 +640,7 @@ func (a *ContainerRegistriesApiService) ListContainerRegistry(ctx context.Contex
 
 // Execute executes the request
 //  @return ContainerRegistryResponseList
-func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListContainerRegistryRequest) (*ContainerRegistryResponseList, *http.Response, error) {
+func (a *ContainerRegistriesAPIService) ListContainerRegistryExecute(r ApiListContainerRegistryRequest) (*ContainerRegistryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -648,13 +648,13 @@ func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListCo
 		localVarReturnValue *ContainerRegistryResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesApiService.ListContainerRegistry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerRegistriesAPIService.ListContainerRegistry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/containerRegistry"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -701,9 +701,9 @@ func (a *ContainerRegistriesApiService) ListContainerRegistryExecute(r ApiListCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

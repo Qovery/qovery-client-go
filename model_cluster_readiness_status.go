@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterReadinessStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterReadinessStatus{}
+
 // ClusterReadinessStatus struct for ClusterReadinessStatus
 type ClusterReadinessStatus struct {
 	IsReady *bool `json:"is_ready,omitempty"`
@@ -39,7 +42,7 @@ func NewClusterReadinessStatusWithDefaults() *ClusterReadinessStatus {
 
 // GetIsReady returns the IsReady field value if set, zero value otherwise.
 func (o *ClusterReadinessStatus) GetIsReady() bool {
-	if o == nil || o.IsReady == nil {
+	if o == nil || IsNil(o.IsReady) {
 		var ret bool
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ClusterReadinessStatus) GetIsReady() bool {
 // GetIsReadyOk returns a tuple with the IsReady field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterReadinessStatus) GetIsReadyOk() (*bool, bool) {
-	if o == nil || o.IsReady == nil {
+	if o == nil || IsNil(o.IsReady) {
 		return nil, false
 	}
 	return o.IsReady, true
@@ -57,7 +60,7 @@ func (o *ClusterReadinessStatus) GetIsReadyOk() (*bool, bool) {
 
 // HasIsReady returns a boolean if a field has been set.
 func (o *ClusterReadinessStatus) HasIsReady() bool {
-	if o != nil && o.IsReady != nil {
+	if o != nil && !IsNil(o.IsReady) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ClusterReadinessStatus) SetIsReady(v bool) {
 }
 
 func (o ClusterReadinessStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsReady != nil {
-		toSerialize["is_ready"] = o.IsReady
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterReadinessStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsReady) {
+		toSerialize["is_ready"] = o.IsReady
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterReadinessStatus struct {

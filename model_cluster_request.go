@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterRequest{}
+
 // ClusterRequest struct for ClusterRequest
 type ClusterRequest struct {
 	// name is case-insensitive
@@ -98,7 +101,7 @@ func (o *ClusterRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ClusterRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *ClusterRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -116,7 +119,7 @@ func (o *ClusterRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ClusterRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *ClusterRequest) SetCloudProvider(v CloudProviderEnum) {
 
 // GetMinRunningNodes returns the MinRunningNodes field value if set, zero value otherwise.
 func (o *ClusterRequest) GetMinRunningNodes() int32 {
-	if o == nil || o.MinRunningNodes == nil {
+	if o == nil || IsNil(o.MinRunningNodes) {
 		var ret int32
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *ClusterRequest) GetMinRunningNodes() int32 {
 // GetMinRunningNodesOk returns a tuple with the MinRunningNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetMinRunningNodesOk() (*int32, bool) {
-	if o == nil || o.MinRunningNodes == nil {
+	if o == nil || IsNil(o.MinRunningNodes) {
 		return nil, false
 	}
 	return o.MinRunningNodes, true
@@ -196,7 +199,7 @@ func (o *ClusterRequest) GetMinRunningNodesOk() (*int32, bool) {
 
 // HasMinRunningNodes returns a boolean if a field has been set.
 func (o *ClusterRequest) HasMinRunningNodes() bool {
-	if o != nil && o.MinRunningNodes != nil {
+	if o != nil && !IsNil(o.MinRunningNodes) {
 		return true
 	}
 
@@ -210,7 +213,7 @@ func (o *ClusterRequest) SetMinRunningNodes(v int32) {
 
 // GetMaxRunningNodes returns the MaxRunningNodes field value if set, zero value otherwise.
 func (o *ClusterRequest) GetMaxRunningNodes() int32 {
-	if o == nil || o.MaxRunningNodes == nil {
+	if o == nil || IsNil(o.MaxRunningNodes) {
 		var ret int32
 		return ret
 	}
@@ -220,7 +223,7 @@ func (o *ClusterRequest) GetMaxRunningNodes() int32 {
 // GetMaxRunningNodesOk returns a tuple with the MaxRunningNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetMaxRunningNodesOk() (*int32, bool) {
-	if o == nil || o.MaxRunningNodes == nil {
+	if o == nil || IsNil(o.MaxRunningNodes) {
 		return nil, false
 	}
 	return o.MaxRunningNodes, true
@@ -228,7 +231,7 @@ func (o *ClusterRequest) GetMaxRunningNodesOk() (*int32, bool) {
 
 // HasMaxRunningNodes returns a boolean if a field has been set.
 func (o *ClusterRequest) HasMaxRunningNodes() bool {
-	if o != nil && o.MaxRunningNodes != nil {
+	if o != nil && !IsNil(o.MaxRunningNodes) {
 		return true
 	}
 
@@ -242,7 +245,7 @@ func (o *ClusterRequest) SetMaxRunningNodes(v int32) {
 
 // GetDiskSize returns the DiskSize field value if set, zero value otherwise.
 func (o *ClusterRequest) GetDiskSize() int32 {
-	if o == nil || o.DiskSize == nil {
+	if o == nil || IsNil(o.DiskSize) {
 		var ret int32
 		return ret
 	}
@@ -252,7 +255,7 @@ func (o *ClusterRequest) GetDiskSize() int32 {
 // GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetDiskSizeOk() (*int32, bool) {
-	if o == nil || o.DiskSize == nil {
+	if o == nil || IsNil(o.DiskSize) {
 		return nil, false
 	}
 	return o.DiskSize, true
@@ -260,7 +263,7 @@ func (o *ClusterRequest) GetDiskSizeOk() (*int32, bool) {
 
 // HasDiskSize returns a boolean if a field has been set.
 func (o *ClusterRequest) HasDiskSize() bool {
-	if o != nil && o.DiskSize != nil {
+	if o != nil && !IsNil(o.DiskSize) {
 		return true
 	}
 
@@ -274,7 +277,7 @@ func (o *ClusterRequest) SetDiskSize(v int32) {
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
 func (o *ClusterRequest) GetInstanceType() string {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		var ret string
 		return ret
 	}
@@ -284,7 +287,7 @@ func (o *ClusterRequest) GetInstanceType() string {
 // GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetInstanceTypeOk() (*string, bool) {
-	if o == nil || o.InstanceType == nil {
+	if o == nil || IsNil(o.InstanceType) {
 		return nil, false
 	}
 	return o.InstanceType, true
@@ -292,7 +295,7 @@ func (o *ClusterRequest) GetInstanceTypeOk() (*string, bool) {
 
 // HasInstanceType returns a boolean if a field has been set.
 func (o *ClusterRequest) HasInstanceType() bool {
-	if o != nil && o.InstanceType != nil {
+	if o != nil && !IsNil(o.InstanceType) {
 		return true
 	}
 
@@ -306,7 +309,7 @@ func (o *ClusterRequest) SetInstanceType(v string) {
 
 // GetKubernetes returns the Kubernetes field value if set, zero value otherwise.
 func (o *ClusterRequest) GetKubernetes() KubernetesEnum {
-	if o == nil || o.Kubernetes == nil {
+	if o == nil || IsNil(o.Kubernetes) {
 		var ret KubernetesEnum
 		return ret
 	}
@@ -316,7 +319,7 @@ func (o *ClusterRequest) GetKubernetes() KubernetesEnum {
 // GetKubernetesOk returns a tuple with the Kubernetes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetKubernetesOk() (*KubernetesEnum, bool) {
-	if o == nil || o.Kubernetes == nil {
+	if o == nil || IsNil(o.Kubernetes) {
 		return nil, false
 	}
 	return o.Kubernetes, true
@@ -324,7 +327,7 @@ func (o *ClusterRequest) GetKubernetesOk() (*KubernetesEnum, bool) {
 
 // HasKubernetes returns a boolean if a field has been set.
 func (o *ClusterRequest) HasKubernetes() bool {
-	if o != nil && o.Kubernetes != nil {
+	if o != nil && !IsNil(o.Kubernetes) {
 		return true
 	}
 
@@ -338,7 +341,7 @@ func (o *ClusterRequest) SetKubernetes(v KubernetesEnum) {
 
 // GetProduction returns the Production field value if set, zero value otherwise.
 func (o *ClusterRequest) GetProduction() bool {
-	if o == nil || o.Production == nil {
+	if o == nil || IsNil(o.Production) {
 		var ret bool
 		return ret
 	}
@@ -348,7 +351,7 @@ func (o *ClusterRequest) GetProduction() bool {
 // GetProductionOk returns a tuple with the Production field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetProductionOk() (*bool, bool) {
-	if o == nil || o.Production == nil {
+	if o == nil || IsNil(o.Production) {
 		return nil, false
 	}
 	return o.Production, true
@@ -356,7 +359,7 @@ func (o *ClusterRequest) GetProductionOk() (*bool, bool) {
 
 // HasProduction returns a boolean if a field has been set.
 func (o *ClusterRequest) HasProduction() bool {
-	if o != nil && o.Production != nil {
+	if o != nil && !IsNil(o.Production) {
 		return true
 	}
 
@@ -370,7 +373,7 @@ func (o *ClusterRequest) SetProduction(v bool) {
 
 // GetSshKeys returns the SshKeys field value if set, zero value otherwise.
 func (o *ClusterRequest) GetSshKeys() []string {
-	if o == nil || o.SshKeys == nil {
+	if o == nil || IsNil(o.SshKeys) {
 		var ret []string
 		return ret
 	}
@@ -380,7 +383,7 @@ func (o *ClusterRequest) GetSshKeys() []string {
 // GetSshKeysOk returns a tuple with the SshKeys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetSshKeysOk() ([]string, bool) {
-	if o == nil || o.SshKeys == nil {
+	if o == nil || IsNil(o.SshKeys) {
 		return nil, false
 	}
 	return o.SshKeys, true
@@ -388,7 +391,7 @@ func (o *ClusterRequest) GetSshKeysOk() ([]string, bool) {
 
 // HasSshKeys returns a boolean if a field has been set.
 func (o *ClusterRequest) HasSshKeys() bool {
-	if o != nil && o.SshKeys != nil {
+	if o != nil && !IsNil(o.SshKeys) {
 		return true
 	}
 
@@ -402,7 +405,7 @@ func (o *ClusterRequest) SetSshKeys(v []string) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *ClusterRequest) GetFeatures() []ClusterRequestFeaturesInner {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		var ret []ClusterRequestFeaturesInner
 		return ret
 	}
@@ -412,7 +415,7 @@ func (o *ClusterRequest) GetFeatures() []ClusterRequestFeaturesInner {
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequest) GetFeaturesOk() ([]ClusterRequestFeaturesInner, bool) {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
 	return o.Features, true
@@ -420,7 +423,7 @@ func (o *ClusterRequest) GetFeaturesOk() ([]ClusterRequestFeaturesInner, bool) {
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *ClusterRequest) HasFeatures() bool {
-	if o != nil && o.Features != nil {
+	if o != nil && !IsNil(o.Features) {
 		return true
 	}
 
@@ -433,44 +436,46 @@ func (o *ClusterRequest) SetFeatures(v []ClusterRequestFeaturesInner) {
 }
 
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["region"] = o.Region
-	}
-	if true {
-		toSerialize["cloud_provider"] = o.CloudProvider
-	}
-	if o.MinRunningNodes != nil {
-		toSerialize["min_running_nodes"] = o.MinRunningNodes
-	}
-	if o.MaxRunningNodes != nil {
-		toSerialize["max_running_nodes"] = o.MaxRunningNodes
-	}
-	if o.DiskSize != nil {
-		toSerialize["disk_size"] = o.DiskSize
-	}
-	if o.InstanceType != nil {
-		toSerialize["instance_type"] = o.InstanceType
-	}
-	if o.Kubernetes != nil {
-		toSerialize["kubernetes"] = o.Kubernetes
-	}
-	if o.Production != nil {
-		toSerialize["production"] = o.Production
-	}
-	if o.SshKeys != nil {
-		toSerialize["ssh_keys"] = o.SshKeys
-	}
-	if o.Features != nil {
-		toSerialize["features"] = o.Features
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["region"] = o.Region
+	toSerialize["cloud_provider"] = o.CloudProvider
+	if !IsNil(o.MinRunningNodes) {
+		toSerialize["min_running_nodes"] = o.MinRunningNodes
+	}
+	if !IsNil(o.MaxRunningNodes) {
+		toSerialize["max_running_nodes"] = o.MaxRunningNodes
+	}
+	if !IsNil(o.DiskSize) {
+		toSerialize["disk_size"] = o.DiskSize
+	}
+	if !IsNil(o.InstanceType) {
+		toSerialize["instance_type"] = o.InstanceType
+	}
+	if !IsNil(o.Kubernetes) {
+		toSerialize["kubernetes"] = o.Kubernetes
+	}
+	if !IsNil(o.Production) {
+		toSerialize["production"] = o.Production
+	}
+	if !IsNil(o.SshKeys) {
+		toSerialize["ssh_keys"] = o.SshKeys
+	}
+	if !IsNil(o.Features) {
+		toSerialize["features"] = o.Features
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterRequest struct {

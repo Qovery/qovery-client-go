@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ContainerRegistryProviderDetailsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContainerRegistryProviderDetailsResponse{}
+
 // ContainerRegistryProviderDetailsResponse struct for ContainerRegistryProviderDetailsResponse
 type ContainerRegistryProviderDetailsResponse struct {
 	Id   string `json:"id"`
@@ -142,20 +145,20 @@ func (o *ContainerRegistryProviderDetailsResponse) SetKind(v ContainerRegistryKi
 }
 
 func (o ContainerRegistryProviderDetailsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if true {
-		toSerialize["kind"] = o.Kind
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ContainerRegistryProviderDetailsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["url"] = o.Url
+	toSerialize["kind"] = o.Kind
+	return toSerialize, nil
 }
 
 type NullableContainerRegistryProviderDetailsResponse struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ContainerRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContainerRequest{}
+
 // ContainerRequest struct for ContainerRequest
 type ContainerRequest struct {
 	Storage []ServiceStorageRequestStorageInner `json:"storage,omitempty"`
@@ -87,7 +90,7 @@ func NewContainerRequestWithDefaults() *ContainerRequest {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *ContainerRequest) GetStorage() []ServiceStorageRequestStorageInner {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret []ServiceStorageRequestStorageInner
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *ContainerRequest) GetStorage() []ServiceStorageRequestStorageInner {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetStorageOk() ([]ServiceStorageRequestStorageInner, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -105,7 +108,7 @@ func (o *ContainerRequest) GetStorageOk() ([]ServiceStorageRequestStorageInner, 
 
 // HasStorage returns a boolean if a field has been set.
 func (o *ContainerRequest) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -119,7 +122,7 @@ func (o *ContainerRequest) SetStorage(v []ServiceStorageRequestStorageInner) {
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
 func (o *ContainerRequest) GetPorts() []ServicePortRequestPortsInner {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		var ret []ServicePortRequestPortsInner
 		return ret
 	}
@@ -129,7 +132,7 @@ func (o *ContainerRequest) GetPorts() []ServicePortRequestPortsInner {
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		return nil, false
 	}
 	return o.Ports, true
@@ -137,7 +140,7 @@ func (o *ContainerRequest) GetPortsOk() ([]ServicePortRequestPortsInner, bool) {
 
 // HasPorts returns a boolean if a field has been set.
 func (o *ContainerRequest) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+	if o != nil && !IsNil(o.Ports) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *ContainerRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ContainerRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *ContainerRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -193,7 +196,7 @@ func (o *ContainerRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ContainerRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -279,7 +282,7 @@ func (o *ContainerRequest) SetTag(v string) {
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *ContainerRequest) GetArguments() []string {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		var ret []string
 		return ret
 	}
@@ -289,7 +292,7 @@ func (o *ContainerRequest) GetArguments() []string {
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetArgumentsOk() ([]string, bool) {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
 	return o.Arguments, true
@@ -297,7 +300,7 @@ func (o *ContainerRequest) GetArgumentsOk() ([]string, bool) {
 
 // HasArguments returns a boolean if a field has been set.
 func (o *ContainerRequest) HasArguments() bool {
-	if o != nil && o.Arguments != nil {
+	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
 
@@ -311,7 +314,7 @@ func (o *ContainerRequest) SetArguments(v []string) {
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
 func (o *ContainerRequest) GetEntrypoint() string {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
 	}
@@ -321,7 +324,7 @@ func (o *ContainerRequest) GetEntrypoint() string {
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetEntrypointOk() (*string, bool) {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
 	return o.Entrypoint, true
@@ -329,7 +332,7 @@ func (o *ContainerRequest) GetEntrypointOk() (*string, bool) {
 
 // HasEntrypoint returns a boolean if a field has been set.
 func (o *ContainerRequest) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint != nil {
+	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
 
@@ -343,7 +346,7 @@ func (o *ContainerRequest) SetEntrypoint(v string) {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *ContainerRequest) GetCpu() int32 {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret int32
 		return ret
 	}
@@ -353,7 +356,7 @@ func (o *ContainerRequest) GetCpu() int32 {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetCpuOk() (*int32, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -361,7 +364,7 @@ func (o *ContainerRequest) GetCpuOk() (*int32, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *ContainerRequest) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -375,7 +378,7 @@ func (o *ContainerRequest) SetCpu(v int32) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *ContainerRequest) GetMemory() int32 {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret int32
 		return ret
 	}
@@ -385,7 +388,7 @@ func (o *ContainerRequest) GetMemory() int32 {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetMemoryOk() (*int32, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -393,7 +396,7 @@ func (o *ContainerRequest) GetMemoryOk() (*int32, bool) {
 
 // HasMemory returns a boolean if a field has been set.
 func (o *ContainerRequest) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -407,7 +410,7 @@ func (o *ContainerRequest) SetMemory(v int32) {
 
 // GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
 func (o *ContainerRequest) GetMinRunningInstances() int32 {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil || IsNil(o.MinRunningInstances) {
 		var ret int32
 		return ret
 	}
@@ -417,7 +420,7 @@ func (o *ContainerRequest) GetMinRunningInstances() int32 {
 // GetMinRunningInstancesOk returns a tuple with the MinRunningInstances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetMinRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MinRunningInstances == nil {
+	if o == nil || IsNil(o.MinRunningInstances) {
 		return nil, false
 	}
 	return o.MinRunningInstances, true
@@ -425,7 +428,7 @@ func (o *ContainerRequest) GetMinRunningInstancesOk() (*int32, bool) {
 
 // HasMinRunningInstances returns a boolean if a field has been set.
 func (o *ContainerRequest) HasMinRunningInstances() bool {
-	if o != nil && o.MinRunningInstances != nil {
+	if o != nil && !IsNil(o.MinRunningInstances) {
 		return true
 	}
 
@@ -439,7 +442,7 @@ func (o *ContainerRequest) SetMinRunningInstances(v int32) {
 
 // GetMaxRunningInstances returns the MaxRunningInstances field value if set, zero value otherwise.
 func (o *ContainerRequest) GetMaxRunningInstances() int32 {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil || IsNil(o.MaxRunningInstances) {
 		var ret int32
 		return ret
 	}
@@ -449,7 +452,7 @@ func (o *ContainerRequest) GetMaxRunningInstances() int32 {
 // GetMaxRunningInstancesOk returns a tuple with the MaxRunningInstances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetMaxRunningInstancesOk() (*int32, bool) {
-	if o == nil || o.MaxRunningInstances == nil {
+	if o == nil || IsNil(o.MaxRunningInstances) {
 		return nil, false
 	}
 	return o.MaxRunningInstances, true
@@ -457,7 +460,7 @@ func (o *ContainerRequest) GetMaxRunningInstancesOk() (*int32, bool) {
 
 // HasMaxRunningInstances returns a boolean if a field has been set.
 func (o *ContainerRequest) HasMaxRunningInstances() bool {
-	if o != nil && o.MaxRunningInstances != nil {
+	if o != nil && !IsNil(o.MaxRunningInstances) {
 		return true
 	}
 
@@ -495,7 +498,7 @@ func (o *ContainerRequest) SetHealthchecks(v Healthcheck) {
 
 // GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
 func (o *ContainerRequest) GetAutoPreview() bool {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		var ret bool
 		return ret
 	}
@@ -505,7 +508,7 @@ func (o *ContainerRequest) GetAutoPreview() bool {
 // GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || o.AutoPreview == nil {
+	if o == nil || IsNil(o.AutoPreview) {
 		return nil, false
 	}
 	return o.AutoPreview, true
@@ -513,7 +516,7 @@ func (o *ContainerRequest) GetAutoPreviewOk() (*bool, bool) {
 
 // HasAutoPreview returns a boolean if a field has been set.
 func (o *ContainerRequest) HasAutoPreview() bool {
-	if o != nil && o.AutoPreview != nil {
+	if o != nil && !IsNil(o.AutoPreview) {
 		return true
 	}
 
@@ -527,7 +530,7 @@ func (o *ContainerRequest) SetAutoPreview(v bool) {
 
 // GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ContainerRequest) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy.Get() == nil {
+	if o == nil || IsNil(o.AutoDeploy.Get()) {
 		var ret bool
 		return ret
 	}
@@ -569,56 +572,54 @@ func (o *ContainerRequest) UnsetAutoDeploy() {
 }
 
 func (o ContainerRequest) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Storage != nil {
+	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
-	if o.Ports != nil {
+	if !IsNil(o.Ports) {
 		toSerialize["ports"] = o.Ports
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["registry_id"] = o.RegistryId
-	}
-	if true {
-		toSerialize["image_name"] = o.ImageName
-	}
-	if true {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.Arguments != nil {
+	toSerialize["registry_id"] = o.RegistryId
+	toSerialize["image_name"] = o.ImageName
+	toSerialize["tag"] = o.Tag
+	if !IsNil(o.Arguments) {
 		toSerialize["arguments"] = o.Arguments
 	}
-	if o.Entrypoint != nil {
+	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
-	if o.Cpu != nil {
+	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
-	if o.Memory != nil {
+	if !IsNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
-	if o.MinRunningInstances != nil {
+	if !IsNil(o.MinRunningInstances) {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
 	}
-	if o.MaxRunningInstances != nil {
+	if !IsNil(o.MaxRunningInstances) {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
 	}
-	if true {
-		toSerialize["healthchecks"] = o.Healthchecks
-	}
-	if o.AutoPreview != nil {
+	toSerialize["healthchecks"] = o.Healthchecks
+	if !IsNil(o.AutoPreview) {
 		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableContainerRequest struct {

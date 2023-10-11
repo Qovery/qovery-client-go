@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DatabaseVersionMode type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DatabaseVersionMode{}
+
 // DatabaseVersionMode struct for DatabaseVersionMode
 type DatabaseVersionMode struct {
 	Name          *string           `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewDatabaseVersionModeWithDefaults() *DatabaseVersionMode {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *DatabaseVersionMode) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *DatabaseVersionMode) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseVersionMode) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *DatabaseVersionMode) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *DatabaseVersionMode) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *DatabaseVersionMode) SetName(v string) {
 
 // GetSupportedMode returns the SupportedMode field value if set, zero value otherwise.
 func (o *DatabaseVersionMode) GetSupportedMode() DatabaseModeEnum {
-	if o == nil || o.SupportedMode == nil {
+	if o == nil || IsNil(o.SupportedMode) {
 		var ret DatabaseModeEnum
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *DatabaseVersionMode) GetSupportedMode() DatabaseModeEnum {
 // GetSupportedModeOk returns a tuple with the SupportedMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseVersionMode) GetSupportedModeOk() (*DatabaseModeEnum, bool) {
-	if o == nil || o.SupportedMode == nil {
+	if o == nil || IsNil(o.SupportedMode) {
 		return nil, false
 	}
 	return o.SupportedMode, true
@@ -90,7 +93,7 @@ func (o *DatabaseVersionMode) GetSupportedModeOk() (*DatabaseModeEnum, bool) {
 
 // HasSupportedMode returns a boolean if a field has been set.
 func (o *DatabaseVersionMode) HasSupportedMode() bool {
-	if o != nil && o.SupportedMode != nil {
+	if o != nil && !IsNil(o.SupportedMode) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *DatabaseVersionMode) SetSupportedMode(v DatabaseModeEnum) {
 }
 
 func (o DatabaseVersionMode) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.SupportedMode != nil {
-		toSerialize["supported_mode"] = o.SupportedMode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DatabaseVersionMode) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SupportedMode) {
+		toSerialize["supported_mode"] = o.SupportedMode
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabaseVersionMode struct {

@@ -13,126 +13,100 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// JobResponseAllOfSource struct for JobResponseAllOfSource
+// JobResponseAllOfSource - struct for JobResponseAllOfSource
 type JobResponseAllOfSource struct {
-	Image  NullableJobResponseAllOfSourceImage  `json:"image,omitempty"`
-	Docker NullableJobResponseAllOfSourceDocker `json:"docker,omitempty"`
+	JobResponseAllOfSourceOneOf  *JobResponseAllOfSourceOneOf
+	JobResponseAllOfSourceOneOf1 *JobResponseAllOfSourceOneOf1
 }
 
-// NewJobResponseAllOfSource instantiates a new JobResponseAllOfSource object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewJobResponseAllOfSource() *JobResponseAllOfSource {
-	this := JobResponseAllOfSource{}
-	return &this
-}
-
-// NewJobResponseAllOfSourceWithDefaults instantiates a new JobResponseAllOfSource object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewJobResponseAllOfSourceWithDefaults() *JobResponseAllOfSource {
-	this := JobResponseAllOfSource{}
-	return &this
-}
-
-// GetImage returns the Image field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JobResponseAllOfSource) GetImage() JobResponseAllOfSourceImage {
-	if o == nil || o.Image.Get() == nil {
-		var ret JobResponseAllOfSourceImage
-		return ret
+// JobResponseAllOfSourceOneOfAsJobResponseAllOfSource is a convenience function that returns JobResponseAllOfSourceOneOf wrapped in JobResponseAllOfSource
+func JobResponseAllOfSourceOneOfAsJobResponseAllOfSource(v *JobResponseAllOfSourceOneOf) JobResponseAllOfSource {
+	return JobResponseAllOfSource{
+		JobResponseAllOfSourceOneOf: v,
 	}
-	return *o.Image.Get()
 }
 
-// GetImageOk returns a tuple with the Image field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JobResponseAllOfSource) GetImageOk() (*JobResponseAllOfSourceImage, bool) {
-	if o == nil {
-		return nil, false
+// JobResponseAllOfSourceOneOf1AsJobResponseAllOfSource is a convenience function that returns JobResponseAllOfSourceOneOf1 wrapped in JobResponseAllOfSource
+func JobResponseAllOfSourceOneOf1AsJobResponseAllOfSource(v *JobResponseAllOfSourceOneOf1) JobResponseAllOfSource {
+	return JobResponseAllOfSource{
+		JobResponseAllOfSourceOneOf1: v,
 	}
-	return o.Image.Get(), o.Image.IsSet()
 }
 
-// HasImage returns a boolean if a field has been set.
-func (o *JobResponseAllOfSource) HasImage() bool {
-	if o != nil && o.Image.IsSet() {
-		return true
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *JobResponseAllOfSource) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into JobResponseAllOfSourceOneOf
+	err = newStrictDecoder(data).Decode(&dst.JobResponseAllOfSourceOneOf)
+	if err == nil {
+		jsonJobResponseAllOfSourceOneOf, _ := json.Marshal(dst.JobResponseAllOfSourceOneOf)
+		if string(jsonJobResponseAllOfSourceOneOf) == "{}" { // empty struct
+			dst.JobResponseAllOfSourceOneOf = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.JobResponseAllOfSourceOneOf = nil
 	}
 
-	return false
-}
-
-// SetImage gets a reference to the given NullableJobResponseAllOfSourceImage and assigns it to the Image field.
-func (o *JobResponseAllOfSource) SetImage(v JobResponseAllOfSourceImage) {
-	o.Image.Set(&v)
-}
-
-// SetImageNil sets the value for Image to be an explicit nil
-func (o *JobResponseAllOfSource) SetImageNil() {
-	o.Image.Set(nil)
-}
-
-// UnsetImage ensures that no value is present for Image, not even an explicit nil
-func (o *JobResponseAllOfSource) UnsetImage() {
-	o.Image.Unset()
-}
-
-// GetDocker returns the Docker field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JobResponseAllOfSource) GetDocker() JobResponseAllOfSourceDocker {
-	if o == nil || o.Docker.Get() == nil {
-		var ret JobResponseAllOfSourceDocker
-		return ret
-	}
-	return *o.Docker.Get()
-}
-
-// GetDockerOk returns a tuple with the Docker field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JobResponseAllOfSource) GetDockerOk() (*JobResponseAllOfSourceDocker, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Docker.Get(), o.Docker.IsSet()
-}
-
-// HasDocker returns a boolean if a field has been set.
-func (o *JobResponseAllOfSource) HasDocker() bool {
-	if o != nil && o.Docker.IsSet() {
-		return true
+	// try to unmarshal data into JobResponseAllOfSourceOneOf1
+	err = newStrictDecoder(data).Decode(&dst.JobResponseAllOfSourceOneOf1)
+	if err == nil {
+		jsonJobResponseAllOfSourceOneOf1, _ := json.Marshal(dst.JobResponseAllOfSourceOneOf1)
+		if string(jsonJobResponseAllOfSourceOneOf1) == "{}" { // empty struct
+			dst.JobResponseAllOfSourceOneOf1 = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.JobResponseAllOfSourceOneOf1 = nil
 	}
 
-	return false
-}
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.JobResponseAllOfSourceOneOf = nil
+		dst.JobResponseAllOfSourceOneOf1 = nil
 
-// SetDocker gets a reference to the given NullableJobResponseAllOfSourceDocker and assigns it to the Docker field.
-func (o *JobResponseAllOfSource) SetDocker(v JobResponseAllOfSourceDocker) {
-	o.Docker.Set(&v)
-}
-
-// SetDockerNil sets the value for Docker to be an explicit nil
-func (o *JobResponseAllOfSource) SetDockerNil() {
-	o.Docker.Set(nil)
-}
-
-// UnsetDocker ensures that no value is present for Docker, not even an explicit nil
-func (o *JobResponseAllOfSource) UnsetDocker() {
-	o.Docker.Unset()
-}
-
-func (o JobResponseAllOfSource) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Image.IsSet() {
-		toSerialize["image"] = o.Image.Get()
+		return fmt.Errorf("data matches more than one schema in oneOf(JobResponseAllOfSource)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(JobResponseAllOfSource)")
 	}
-	if o.Docker.IsSet() {
-		toSerialize["docker"] = o.Docker.Get()
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src JobResponseAllOfSource) MarshalJSON() ([]byte, error) {
+	if src.JobResponseAllOfSourceOneOf != nil {
+		return json.Marshal(&src.JobResponseAllOfSourceOneOf)
 	}
-	return json.Marshal(toSerialize)
+
+	if src.JobResponseAllOfSourceOneOf1 != nil {
+		return json.Marshal(&src.JobResponseAllOfSourceOneOf1)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *JobResponseAllOfSource) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.JobResponseAllOfSourceOneOf != nil {
+		return obj.JobResponseAllOfSourceOneOf
+	}
+
+	if obj.JobResponseAllOfSourceOneOf1 != nil {
+		return obj.JobResponseAllOfSourceOneOf1
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableJobResponseAllOfSource struct {

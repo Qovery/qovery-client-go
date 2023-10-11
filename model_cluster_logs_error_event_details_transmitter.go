@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterLogsErrorEventDetailsTransmitter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterLogsErrorEventDetailsTransmitter{}
+
 // ClusterLogsErrorEventDetailsTransmitter struct for ClusterLogsErrorEventDetailsTransmitter
 type ClusterLogsErrorEventDetailsTransmitter struct {
 	Type *string `json:"type,omitempty"`
@@ -41,7 +44,7 @@ func NewClusterLogsErrorEventDetailsTransmitterWithDefaults() *ClusterLogsErrorE
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ClusterLogsErrorEventDetailsTransmitter) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsErrorEventDetailsTransmitter) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -59,7 +62,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ClusterLogsErrorEventDetailsTransmitter) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) SetType(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ClusterLogsErrorEventDetailsTransmitter) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsErrorEventDetailsTransmitter) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -91,7 +94,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ClusterLogsErrorEventDetailsTransmitter) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ClusterLogsErrorEventDetailsTransmitter) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsErrorEventDetailsTransmitter) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -123,7 +126,7 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ClusterLogsErrorEventDetailsTransmitter) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *ClusterLogsErrorEventDetailsTransmitter) SetName(v string) {
 }
 
 func (o ClusterLogsErrorEventDetailsTransmitter) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterLogsErrorEventDetailsTransmitter) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterLogsErrorEventDetailsTransmitter struct {

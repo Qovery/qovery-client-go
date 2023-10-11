@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// EnvironmentDeploymentRuleApiService EnvironmentDeploymentRuleApi service
-type EnvironmentDeploymentRuleApiService service
+// EnvironmentDeploymentRuleAPIService EnvironmentDeploymentRuleAPI service
+type EnvironmentDeploymentRuleAPIService service
 
 type ApiEditEnvironmentDeploymentRuleRequest struct {
 	ctx                                  context.Context
-	ApiService                           *EnvironmentDeploymentRuleApiService
+	ApiService                           *EnvironmentDeploymentRuleAPIService
 	environmentId                        string
 	deploymentRuleId                     string
 	environmentDeploymentRuleEditRequest *EnvironmentDeploymentRuleEditRequest
@@ -48,7 +48,7 @@ EditEnvironmentDeploymentRule Edit an environment deployment rule
  @param deploymentRuleId Deployment Rule ID
  @return ApiEditEnvironmentDeploymentRuleRequest
 */
-func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRule(ctx context.Context, environmentId string, deploymentRuleId string) ApiEditEnvironmentDeploymentRuleRequest {
+func (a *EnvironmentDeploymentRuleAPIService) EditEnvironmentDeploymentRule(ctx context.Context, environmentId string, deploymentRuleId string) ApiEditEnvironmentDeploymentRuleRequest {
 	return ApiEditEnvironmentDeploymentRuleRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -59,7 +59,7 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRule(ctx 
 
 // Execute executes the request
 //  @return EnvironmentDeploymentRule
-func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecute(r ApiEditEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
+func (a *EnvironmentDeploymentRuleAPIService) EditEnvironmentDeploymentRuleExecute(r ApiEditEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -67,14 +67,14 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecu
 		localVarReturnValue *EnvironmentDeploymentRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.EditEnvironmentDeploymentRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleAPIService.EditEnvironmentDeploymentRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/deploymentRule/{deploymentRuleId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterToString(r.deploymentRuleId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deploymentRuleId"+"}", url.PathEscape(parameterValueToString(r.deploymentRuleId, "deploymentRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -123,9 +123,9 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -152,7 +152,7 @@ func (a *EnvironmentDeploymentRuleApiService) EditEnvironmentDeploymentRuleExecu
 
 type ApiGetEnvironmentDeploymentRuleRequest struct {
 	ctx           context.Context
-	ApiService    *EnvironmentDeploymentRuleApiService
+	ApiService    *EnvironmentDeploymentRuleAPIService
 	environmentId string
 }
 
@@ -167,7 +167,7 @@ GetEnvironmentDeploymentRule Get environment deployment rule
  @param environmentId Environment ID
  @return ApiGetEnvironmentDeploymentRuleRequest
 */
-func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRule(ctx context.Context, environmentId string) ApiGetEnvironmentDeploymentRuleRequest {
+func (a *EnvironmentDeploymentRuleAPIService) GetEnvironmentDeploymentRule(ctx context.Context, environmentId string) ApiGetEnvironmentDeploymentRuleRequest {
 	return ApiGetEnvironmentDeploymentRuleRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -177,7 +177,7 @@ func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRule(ctx c
 
 // Execute executes the request
 //  @return EnvironmentDeploymentRule
-func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecute(r ApiGetEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
+func (a *EnvironmentDeploymentRuleAPIService) GetEnvironmentDeploymentRuleExecute(r ApiGetEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -185,13 +185,13 @@ func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecut
 		localVarReturnValue *EnvironmentDeploymentRule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleApiService.GetEnvironmentDeploymentRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentRuleAPIService.GetEnvironmentDeploymentRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/environment/{environmentId}/deploymentRule"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterToString(r.environmentId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -238,9 +238,9 @@ func (a *EnvironmentDeploymentRuleApiService) GetEnvironmentDeploymentRuleExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

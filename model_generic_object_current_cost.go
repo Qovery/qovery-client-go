@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GenericObjectCurrentCost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GenericObjectCurrentCost{}
+
 // GenericObjectCurrentCost struct for GenericObjectCurrentCost
 type GenericObjectCurrentCost struct {
 	Id                    string `json:"id"`
@@ -141,20 +144,20 @@ func (o *GenericObjectCurrentCost) SetCost(v Cost) {
 }
 
 func (o GenericObjectCurrentCost) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["consumed_time_in_seconds"] = o.ConsumedTimeInSeconds
-	}
-	if true {
-		toSerialize["cost"] = o.Cost
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GenericObjectCurrentCost) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["consumed_time_in_seconds"] = o.ConsumedTimeInSeconds
+	toSerialize["cost"] = o.Cost
+	return toSerialize, nil
 }
 
 type NullableGenericObjectCurrentCost struct {

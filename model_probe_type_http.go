@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProbeTypeHttp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProbeTypeHttp{}
+
 // ProbeTypeHttp struct for ProbeTypeHttp
 type ProbeTypeHttp struct {
 	Path   *string `json:"path,omitempty"`
@@ -49,7 +52,7 @@ func NewProbeTypeHttpWithDefaults() *ProbeTypeHttp {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *ProbeTypeHttp) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ProbeTypeHttp) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProbeTypeHttp) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -67,7 +70,7 @@ func (o *ProbeTypeHttp) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *ProbeTypeHttp) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ProbeTypeHttp) SetPath(v string) {
 
 // GetScheme returns the Scheme field value if set, zero value otherwise.
 func (o *ProbeTypeHttp) GetScheme() string {
-	if o == nil || o.Scheme == nil {
+	if o == nil || IsNil(o.Scheme) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ProbeTypeHttp) GetScheme() string {
 // GetSchemeOk returns a tuple with the Scheme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProbeTypeHttp) GetSchemeOk() (*string, bool) {
-	if o == nil || o.Scheme == nil {
+	if o == nil || IsNil(o.Scheme) {
 		return nil, false
 	}
 	return o.Scheme, true
@@ -99,7 +102,7 @@ func (o *ProbeTypeHttp) GetSchemeOk() (*string, bool) {
 
 // HasScheme returns a boolean if a field has been set.
 func (o *ProbeTypeHttp) HasScheme() bool {
-	if o != nil && o.Scheme != nil {
+	if o != nil && !IsNil(o.Scheme) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ProbeTypeHttp) SetScheme(v string) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *ProbeTypeHttp) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ProbeTypeHttp) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProbeTypeHttp) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -131,7 +134,7 @@ func (o *ProbeTypeHttp) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *ProbeTypeHttp) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -144,17 +147,25 @@ func (o *ProbeTypeHttp) SetPort(v int32) {
 }
 
 func (o ProbeTypeHttp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Path != nil {
-		toSerialize["path"] = o.Path
-	}
-	if o.Scheme != nil {
-		toSerialize["scheme"] = o.Scheme
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProbeTypeHttp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	if !IsNil(o.Scheme) {
+		toSerialize["scheme"] = o.Scheme
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	return toSerialize, nil
 }
 
 type NullableProbeTypeHttp struct {

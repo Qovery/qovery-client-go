@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterCredentials{}
+
 // ClusterCredentials struct for ClusterCredentials
 type ClusterCredentials struct {
 	Id   string `json:"id"`
@@ -89,14 +92,18 @@ func (o *ClusterCredentials) SetName(v string) {
 }
 
 func (o ClusterCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableClusterCredentials struct {

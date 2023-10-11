@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentAllOfCloudProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentAllOfCloudProvider{}
+
 // EnvironmentAllOfCloudProvider struct for EnvironmentAllOfCloudProvider
 type EnvironmentAllOfCloudProvider struct {
 	Provider *string `json:"provider,omitempty"`
@@ -40,7 +43,7 @@ func NewEnvironmentAllOfCloudProviderWithDefaults() *EnvironmentAllOfCloudProvid
 
 // GetProvider returns the Provider field value if set, zero value otherwise.
 func (o *EnvironmentAllOfCloudProvider) GetProvider() string {
-	if o == nil || o.Provider == nil {
+	if o == nil || IsNil(o.Provider) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EnvironmentAllOfCloudProvider) GetProvider() string {
 // GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAllOfCloudProvider) GetProviderOk() (*string, bool) {
-	if o == nil || o.Provider == nil {
+	if o == nil || IsNil(o.Provider) {
 		return nil, false
 	}
 	return o.Provider, true
@@ -58,7 +61,7 @@ func (o *EnvironmentAllOfCloudProvider) GetProviderOk() (*string, bool) {
 
 // HasProvider returns a boolean if a field has been set.
 func (o *EnvironmentAllOfCloudProvider) HasProvider() bool {
-	if o != nil && o.Provider != nil {
+	if o != nil && !IsNil(o.Provider) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EnvironmentAllOfCloudProvider) SetProvider(v string) {
 
 // GetCluster returns the Cluster field value if set, zero value otherwise.
 func (o *EnvironmentAllOfCloudProvider) GetCluster() string {
-	if o == nil || o.Cluster == nil {
+	if o == nil || IsNil(o.Cluster) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EnvironmentAllOfCloudProvider) GetCluster() string {
 // GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentAllOfCloudProvider) GetClusterOk() (*string, bool) {
-	if o == nil || o.Cluster == nil {
+	if o == nil || IsNil(o.Cluster) {
 		return nil, false
 	}
 	return o.Cluster, true
@@ -90,7 +93,7 @@ func (o *EnvironmentAllOfCloudProvider) GetClusterOk() (*string, bool) {
 
 // HasCluster returns a boolean if a field has been set.
 func (o *EnvironmentAllOfCloudProvider) HasCluster() bool {
-	if o != nil && o.Cluster != nil {
+	if o != nil && !IsNil(o.Cluster) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *EnvironmentAllOfCloudProvider) SetCluster(v string) {
 }
 
 func (o EnvironmentAllOfCloudProvider) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Provider != nil {
-		toSerialize["provider"] = o.Provider
-	}
-	if o.Cluster != nil {
-		toSerialize["cluster"] = o.Cluster
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentAllOfCloudProvider) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Provider) {
+		toSerialize["provider"] = o.Provider
+	}
+	if !IsNil(o.Cluster) {
+		toSerialize["cluster"] = o.Cluster
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentAllOfCloudProvider struct {

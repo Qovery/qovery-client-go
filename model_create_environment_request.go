@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateEnvironmentRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateEnvironmentRequest{}
+
 // CreateEnvironmentRequest struct for CreateEnvironmentRequest
 type CreateEnvironmentRequest struct {
 	// name is case insensitive
@@ -67,7 +70,7 @@ func (o *CreateEnvironmentRequest) SetName(v string) {
 
 // GetCluster returns the Cluster field value if set, zero value otherwise.
 func (o *CreateEnvironmentRequest) GetCluster() string {
-	if o == nil || o.Cluster == nil {
+	if o == nil || IsNil(o.Cluster) {
 		var ret string
 		return ret
 	}
@@ -77,7 +80,7 @@ func (o *CreateEnvironmentRequest) GetCluster() string {
 // GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateEnvironmentRequest) GetClusterOk() (*string, bool) {
-	if o == nil || o.Cluster == nil {
+	if o == nil || IsNil(o.Cluster) {
 		return nil, false
 	}
 	return o.Cluster, true
@@ -85,7 +88,7 @@ func (o *CreateEnvironmentRequest) GetClusterOk() (*string, bool) {
 
 // HasCluster returns a boolean if a field has been set.
 func (o *CreateEnvironmentRequest) HasCluster() bool {
-	if o != nil && o.Cluster != nil {
+	if o != nil && !IsNil(o.Cluster) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *CreateEnvironmentRequest) SetCluster(v string) {
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *CreateEnvironmentRequest) GetMode() CreateEnvironmentModeEnum {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		var ret CreateEnvironmentModeEnum
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *CreateEnvironmentRequest) GetMode() CreateEnvironmentModeEnum {
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateEnvironmentRequest) GetModeOk() (*CreateEnvironmentModeEnum, bool) {
-	if o == nil || o.Mode == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
 	return o.Mode, true
@@ -117,7 +120,7 @@ func (o *CreateEnvironmentRequest) GetModeOk() (*CreateEnvironmentModeEnum, bool
 
 // HasMode returns a boolean if a field has been set.
 func (o *CreateEnvironmentRequest) HasMode() bool {
-	if o != nil && o.Mode != nil {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -130,17 +133,23 @@ func (o *CreateEnvironmentRequest) SetMode(v CreateEnvironmentModeEnum) {
 }
 
 func (o CreateEnvironmentRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Cluster != nil {
-		toSerialize["cluster"] = o.Cluster
-	}
-	if o.Mode != nil {
-		toSerialize["mode"] = o.Mode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreateEnvironmentRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Cluster) {
+		toSerialize["cluster"] = o.Cluster
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	return toSerialize, nil
 }
 
 type NullableCreateEnvironmentRequest struct {

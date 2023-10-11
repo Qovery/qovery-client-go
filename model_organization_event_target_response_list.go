@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationEventTargetResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationEventTargetResponseList{}
+
 // OrganizationEventTargetResponseList struct for OrganizationEventTargetResponseList
 type OrganizationEventTargetResponseList struct {
 	Targets []ClusterCloudProviderInfoCredentials `json:"targets,omitempty"`
@@ -39,7 +42,7 @@ func NewOrganizationEventTargetResponseListWithDefaults() *OrganizationEventTarg
 
 // GetTargets returns the Targets field value if set, zero value otherwise.
 func (o *OrganizationEventTargetResponseList) GetTargets() []ClusterCloudProviderInfoCredentials {
-	if o == nil || o.Targets == nil {
+	if o == nil || IsNil(o.Targets) {
 		var ret []ClusterCloudProviderInfoCredentials
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *OrganizationEventTargetResponseList) GetTargets() []ClusterCloudProvide
 // GetTargetsOk returns a tuple with the Targets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventTargetResponseList) GetTargetsOk() ([]ClusterCloudProviderInfoCredentials, bool) {
-	if o == nil || o.Targets == nil {
+	if o == nil || IsNil(o.Targets) {
 		return nil, false
 	}
 	return o.Targets, true
@@ -57,7 +60,7 @@ func (o *OrganizationEventTargetResponseList) GetTargetsOk() ([]ClusterCloudProv
 
 // HasTargets returns a boolean if a field has been set.
 func (o *OrganizationEventTargetResponseList) HasTargets() bool {
-	if o != nil && o.Targets != nil {
+	if o != nil && !IsNil(o.Targets) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *OrganizationEventTargetResponseList) SetTargets(v []ClusterCloudProvide
 }
 
 func (o OrganizationEventTargetResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Targets != nil {
-		toSerialize["targets"] = o.Targets
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationEventTargetResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Targets) {
+		toSerialize["targets"] = o.Targets
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationEventTargetResponseList struct {

@@ -16,14 +16,23 @@ import (
 	"time"
 )
 
+// checks if the ContainerResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContainerResponse{}
+
 // ContainerResponse struct for ContainerResponse
 type ContainerResponse struct {
-	Id          string                                   `json:"id"`
-	CreatedAt   time.Time                                `json:"created_at"`
-	UpdatedAt   *time.Time                               `json:"updated_at,omitempty"`
-	Storage     []ServiceStorageStorageInner             `json:"storage,omitempty"`
-	Environment ReferenceObject                          `json:"environment"`
+	Id        string                       `json:"id"`
+	CreatedAt time.Time                    `json:"created_at"`
+	UpdatedAt *time.Time                   `json:"updated_at,omitempty"`
+	Storage   []ServiceStorageStorageInner `json:"storage,omitempty"`
+	// The image name pattern differs according to chosen container registry provider: * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
+	ImageName string `json:"image_name"`
+	// tag of the image container
+	Tag string `json:"tag"`
+	// tag of the image container
+	RegistryId  *string                                  `json:"registry_id,omitempty"`
 	Registry    ContainerRegistryProviderDetailsResponse `json:"registry"`
+	Environment ReferenceObject                          `json:"environment"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -31,12 +40,8 @@ type ContainerResponse struct {
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this container
-	Description *string `json:"description,omitempty"`
-	// name of the image container
-	ImageName string `json:"image_name"`
-	// tag of the image container
-	Tag       string   `json:"tag"`
-	Arguments []string `json:"arguments,omitempty"`
+	Description *string  `json:"description,omitempty"`
+	Arguments   []string `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
@@ -59,17 +64,17 @@ type ContainerResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponse(id string, createdAt time.Time, environment ReferenceObject, registry ContainerRegistryProviderDetailsResponse, maximumCpu int32, maximumMemory int32, name string, imageName string, tag string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool) *ContainerResponse {
+func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool) *ContainerResponse {
 	this := ContainerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
-	this.Environment = environment
+	this.ImageName = imageName
+	this.Tag = tag
 	this.Registry = registry
+	this.Environment = environment
 	this.MaximumCpu = maximumCpu
 	this.MaximumMemory = maximumMemory
 	this.Name = name
-	this.ImageName = imageName
-	this.Tag = tag
 	this.Cpu = cpu
 	this.Memory = memory
 	this.MinRunningInstances = minRunningInstances
@@ -141,7 +146,7 @@ func (o *ContainerResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ContainerResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -151,7 +156,7 @@ func (o *ContainerResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -159,7 +164,7 @@ func (o *ContainerResponse) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ContainerResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -173,7 +178,7 @@ func (o *ContainerResponse) SetUpdatedAt(v time.Time) {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *ContainerResponse) GetStorage() []ServiceStorageStorageInner {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret []ServiceStorageStorageInner
 		return ret
 	}
@@ -183,7 +188,7 @@ func (o *ContainerResponse) GetStorage() []ServiceStorageStorageInner {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetStorageOk() ([]ServiceStorageStorageInner, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -191,7 +196,7 @@ func (o *ContainerResponse) GetStorageOk() ([]ServiceStorageStorageInner, bool) 
 
 // HasStorage returns a boolean if a field has been set.
 func (o *ContainerResponse) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -203,28 +208,84 @@ func (o *ContainerResponse) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
 }
 
-// GetEnvironment returns the Environment field value
-func (o *ContainerResponse) GetEnvironment() ReferenceObject {
+// GetImageName returns the ImageName field value
+func (o *ContainerResponse) GetImageName() string {
 	if o == nil {
-		var ret ReferenceObject
+		var ret string
 		return ret
 	}
 
-	return o.Environment
+	return o.ImageName
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value
+// GetImageNameOk returns a tuple with the ImageName field value
 // and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
+func (o *ContainerResponse) GetImageNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Environment, true
+	return &o.ImageName, true
 }
 
-// SetEnvironment sets field value
-func (o *ContainerResponse) SetEnvironment(v ReferenceObject) {
-	o.Environment = v
+// SetImageName sets field value
+func (o *ContainerResponse) SetImageName(v string) {
+	o.ImageName = v
+}
+
+// GetTag returns the Tag field value
+func (o *ContainerResponse) GetTag() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Tag
+}
+
+// GetTagOk returns a tuple with the Tag field value
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetTagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Tag, true
+}
+
+// SetTag sets field value
+func (o *ContainerResponse) SetTag(v string) {
+	o.Tag = v
+}
+
+// GetRegistryId returns the RegistryId field value if set, zero value otherwise.
+func (o *ContainerResponse) GetRegistryId() string {
+	if o == nil || IsNil(o.RegistryId) {
+		var ret string
+		return ret
+	}
+	return *o.RegistryId
+}
+
+// GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetRegistryIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RegistryId) {
+		return nil, false
+	}
+	return o.RegistryId, true
+}
+
+// HasRegistryId returns a boolean if a field has been set.
+func (o *ContainerResponse) HasRegistryId() bool {
+	if o != nil && !IsNil(o.RegistryId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistryId gets a reference to the given string and assigns it to the RegistryId field.
+func (o *ContainerResponse) SetRegistryId(v string) {
+	o.RegistryId = &v
 }
 
 // GetRegistry returns the Registry field value
@@ -249,6 +310,30 @@ func (o *ContainerResponse) GetRegistryOk() (*ContainerRegistryProviderDetailsRe
 // SetRegistry sets field value
 func (o *ContainerResponse) SetRegistry(v ContainerRegistryProviderDetailsResponse) {
 	o.Registry = v
+}
+
+// GetEnvironment returns the Environment field value
+func (o *ContainerResponse) GetEnvironment() ReferenceObject {
+	if o == nil {
+		var ret ReferenceObject
+		return ret
+	}
+
+	return o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Environment, true
+}
+
+// SetEnvironment sets field value
+func (o *ContainerResponse) SetEnvironment(v ReferenceObject) {
+	o.Environment = v
 }
 
 // GetMaximumCpu returns the MaximumCpu field value
@@ -325,7 +410,7 @@ func (o *ContainerResponse) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ContainerResponse) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -335,7 +420,7 @@ func (o *ContainerResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -343,7 +428,7 @@ func (o *ContainerResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ContainerResponse) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -355,57 +440,9 @@ func (o *ContainerResponse) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetImageName returns the ImageName field value
-func (o *ContainerResponse) GetImageName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ImageName
-}
-
-// GetImageNameOk returns a tuple with the ImageName field value
-// and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetImageNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ImageName, true
-}
-
-// SetImageName sets field value
-func (o *ContainerResponse) SetImageName(v string) {
-	o.ImageName = v
-}
-
-// GetTag returns the Tag field value
-func (o *ContainerResponse) GetTag() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Tag
-}
-
-// GetTagOk returns a tuple with the Tag field value
-// and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetTagOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Tag, true
-}
-
-// SetTag sets field value
-func (o *ContainerResponse) SetTag(v string) {
-	o.Tag = v
-}
-
 // GetArguments returns the Arguments field value if set, zero value otherwise.
 func (o *ContainerResponse) GetArguments() []string {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		var ret []string
 		return ret
 	}
@@ -415,7 +452,7 @@ func (o *ContainerResponse) GetArguments() []string {
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetArgumentsOk() ([]string, bool) {
-	if o == nil || o.Arguments == nil {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
 	return o.Arguments, true
@@ -423,7 +460,7 @@ func (o *ContainerResponse) GetArgumentsOk() ([]string, bool) {
 
 // HasArguments returns a boolean if a field has been set.
 func (o *ContainerResponse) HasArguments() bool {
-	if o != nil && o.Arguments != nil {
+	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
 
@@ -437,7 +474,7 @@ func (o *ContainerResponse) SetArguments(v []string) {
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
 func (o *ContainerResponse) GetEntrypoint() string {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
 	}
@@ -447,7 +484,7 @@ func (o *ContainerResponse) GetEntrypoint() string {
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetEntrypointOk() (*string, bool) {
-	if o == nil || o.Entrypoint == nil {
+	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
 	return o.Entrypoint, true
@@ -455,7 +492,7 @@ func (o *ContainerResponse) GetEntrypointOk() (*string, bool) {
 
 // HasEntrypoint returns a boolean if a field has been set.
 func (o *ContainerResponse) HasEntrypoint() bool {
-	if o != nil && o.Entrypoint != nil {
+	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
 
@@ -613,7 +650,7 @@ func (o *ContainerResponse) SetAutoPreview(v bool) {
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
 func (o *ContainerResponse) GetPorts() []ServicePort {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		var ret []ServicePort
 		return ret
 	}
@@ -623,7 +660,7 @@ func (o *ContainerResponse) GetPorts() []ServicePort {
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetPortsOk() ([]ServicePort, bool) {
-	if o == nil || o.Ports == nil {
+	if o == nil || IsNil(o.Ports) {
 		return nil, false
 	}
 	return o.Ports, true
@@ -631,7 +668,7 @@ func (o *ContainerResponse) GetPortsOk() ([]ServicePort, bool) {
 
 // HasPorts returns a boolean if a field has been set.
 func (o *ContainerResponse) HasPorts() bool {
-	if o != nil && o.Ports != nil {
+	if o != nil && !IsNil(o.Ports) {
 		return true
 	}
 
@@ -645,7 +682,7 @@ func (o *ContainerResponse) SetPorts(v []ServicePort) {
 
 // GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
 func (o *ContainerResponse) GetAutoDeploy() bool {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		var ret bool
 		return ret
 	}
@@ -655,7 +692,7 @@ func (o *ContainerResponse) GetAutoDeploy() bool {
 // GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || o.AutoDeploy == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		return nil, false
 	}
 	return o.AutoDeploy, true
@@ -663,7 +700,7 @@ func (o *ContainerResponse) GetAutoDeployOk() (*bool, bool) {
 
 // HasAutoDeploy returns a boolean if a field has been set.
 func (o *ContainerResponse) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy != nil {
+	if o != nil && !IsNil(o.AutoDeploy) {
 		return true
 	}
 
@@ -676,74 +713,55 @@ func (o *ContainerResponse) SetAutoDeploy(v bool) {
 }
 
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
-	}
-	if true {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["registry"] = o.Registry
-	}
-	if true {
-		toSerialize["maximum_cpu"] = o.MaximumCpu
-	}
-	if true {
-		toSerialize["maximum_memory"] = o.MaximumMemory
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["image_name"] = o.ImageName
-	}
-	if true {
-		toSerialize["tag"] = o.Tag
-	}
-	if o.Arguments != nil {
-		toSerialize["arguments"] = o.Arguments
-	}
-	if o.Entrypoint != nil {
-		toSerialize["entrypoint"] = o.Entrypoint
-	}
-	if true {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if true {
-		toSerialize["memory"] = o.Memory
-	}
-	if true {
-		toSerialize["min_running_instances"] = o.MinRunningInstances
-	}
-	if true {
-		toSerialize["max_running_instances"] = o.MaxRunningInstances
-	}
-	if true {
-		toSerialize["healthchecks"] = o.Healthchecks
-	}
-	if true {
-		toSerialize["auto_preview"] = o.AutoPreview
-	}
-	if o.Ports != nil {
-		toSerialize["ports"] = o.Ports
-	}
-	if o.AutoDeploy != nil {
-		toSerialize["auto_deploy"] = o.AutoDeploy
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	toSerialize["image_name"] = o.ImageName
+	toSerialize["tag"] = o.Tag
+	if !IsNil(o.RegistryId) {
+		toSerialize["registry_id"] = o.RegistryId
+	}
+	toSerialize["registry"] = o.Registry
+	toSerialize["environment"] = o.Environment
+	toSerialize["maximum_cpu"] = o.MaximumCpu
+	toSerialize["maximum_memory"] = o.MaximumMemory
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Arguments) {
+		toSerialize["arguments"] = o.Arguments
+	}
+	if !IsNil(o.Entrypoint) {
+		toSerialize["entrypoint"] = o.Entrypoint
+	}
+	toSerialize["cpu"] = o.Cpu
+	toSerialize["memory"] = o.Memory
+	toSerialize["min_running_instances"] = o.MinRunningInstances
+	toSerialize["max_running_instances"] = o.MaxRunningInstances
+	toSerialize["healthchecks"] = o.Healthchecks
+	toSerialize["auto_preview"] = o.AutoPreview
+	if !IsNil(o.Ports) {
+		toSerialize["ports"] = o.Ports
+	}
+	if !IsNil(o.AutoDeploy) {
+		toSerialize["auto_deploy"] = o.AutoDeploy
+	}
+	return toSerialize, nil
 }
 
 type NullableContainerResponse struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableImportSuccessfulImportedVariablesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableImportSuccessfulImportedVariablesInner{}
+
 // VariableImportSuccessfulImportedVariablesInner struct for VariableImportSuccessfulImportedVariablesInner
 type VariableImportSuccessfulImportedVariablesInner struct {
 	Name string `json:"name"`
@@ -70,7 +73,7 @@ func (o *VariableImportSuccessfulImportedVariablesInner) SetName(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *VariableImportSuccessfulImportedVariablesInner) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -80,7 +83,7 @@ func (o *VariableImportSuccessfulImportedVariablesInner) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariableImportSuccessfulImportedVariablesInner) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -88,7 +91,7 @@ func (o *VariableImportSuccessfulImportedVariablesInner) GetValueOk() (*string, 
 
 // HasValue returns a boolean if a field has been set.
 func (o *VariableImportSuccessfulImportedVariablesInner) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -149,20 +152,22 @@ func (o *VariableImportSuccessfulImportedVariablesInner) SetIsSecret(v bool) {
 }
 
 func (o VariableImportSuccessfulImportedVariablesInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["is_secret"] = o.IsSecret
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableImportSuccessfulImportedVariablesInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	toSerialize["scope"] = o.Scope
+	toSerialize["is_secret"] = o.IsSecret
+	return toSerialize, nil
 }
 
 type NullableVariableImportSuccessfulImportedVariablesInner struct {

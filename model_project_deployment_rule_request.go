@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ProjectDeploymentRuleRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectDeploymentRuleRequest{}
+
 // ProjectDeploymentRuleRequest struct for ProjectDeploymentRuleRequest
 type ProjectDeploymentRuleRequest struct {
 	// name is case insensitive
@@ -89,7 +92,7 @@ func (o *ProjectDeploymentRuleRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDeploymentRuleRequest) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *ProjectDeploymentRuleRequest) SetClusterId(v string) {
 
 // GetAutoStop returns the AutoStop field value if set, zero value otherwise.
 func (o *ProjectDeploymentRuleRequest) GetAutoStop() bool {
-	if o == nil || o.AutoStop == nil {
+	if o == nil || IsNil(o.AutoStop) {
 		var ret bool
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *ProjectDeploymentRuleRequest) GetAutoStop() bool {
 // GetAutoStopOk returns a tuple with the AutoStop field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectDeploymentRuleRequest) GetAutoStopOk() (*bool, bool) {
-	if o == nil || o.AutoStop == nil {
+	if o == nil || IsNil(o.AutoStop) {
 		return nil, false
 	}
 	return o.AutoStop, true
@@ -198,7 +201,7 @@ func (o *ProjectDeploymentRuleRequest) GetAutoStopOk() (*bool, bool) {
 
 // HasAutoStop returns a boolean if a field has been set.
 func (o *ProjectDeploymentRuleRequest) HasAutoStop() bool {
-	if o != nil && o.AutoStop != nil {
+	if o != nil && !IsNil(o.AutoStop) {
 		return true
 	}
 
@@ -331,38 +334,30 @@ func (o *ProjectDeploymentRuleRequest) SetWildcard(v string) {
 }
 
 func (o ProjectDeploymentRuleRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProjectDeploymentRuleRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["mode"] = o.Mode
-	}
-	if true {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if o.AutoStop != nil {
+	toSerialize["mode"] = o.Mode
+	toSerialize["cluster_id"] = o.ClusterId
+	if !IsNil(o.AutoStop) {
 		toSerialize["auto_stop"] = o.AutoStop
 	}
-	if true {
-		toSerialize["timezone"] = o.Timezone
-	}
-	if true {
-		toSerialize["start_time"] = o.StartTime
-	}
-	if true {
-		toSerialize["stop_time"] = o.StopTime
-	}
-	if true {
-		toSerialize["weekdays"] = o.Weekdays
-	}
-	if true {
-		toSerialize["wildcard"] = o.Wildcard
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["timezone"] = o.Timezone
+	toSerialize["start_time"] = o.StartTime
+	toSerialize["stop_time"] = o.StopTime
+	toSerialize["weekdays"] = o.Weekdays
+	toSerialize["wildcard"] = o.Wildcard
+	return toSerialize, nil
 }
 
 type NullableProjectDeploymentRuleRequest struct {

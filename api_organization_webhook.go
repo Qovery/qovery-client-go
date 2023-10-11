@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// OrganizationWebhookApiService OrganizationWebhookApi service
-type OrganizationWebhookApiService service
+// OrganizationWebhookAPIService OrganizationWebhookAPI service
+type OrganizationWebhookAPIService service
 
 type ApiCreateOrganizationWebhookRequest struct {
 	ctx                              context.Context
-	ApiService                       *OrganizationWebhookApiService
+	ApiService                       *OrganizationWebhookAPIService
 	organizationId                   string
 	organizationWebhookCreateRequest *OrganizationWebhookCreateRequest
 }
@@ -48,7 +48,7 @@ Create an organization webhook.
  @param organizationId Organization ID
  @return ApiCreateOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) CreateOrganizationWebhook(ctx context.Context, organizationId string) ApiCreateOrganizationWebhookRequest {
+func (a *OrganizationWebhookAPIService) CreateOrganizationWebhook(ctx context.Context, organizationId string) ApiCreateOrganizationWebhookRequest {
 	return ApiCreateOrganizationWebhookRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -58,7 +58,7 @@ func (a *OrganizationWebhookApiService) CreateOrganizationWebhook(ctx context.Co
 
 // Execute executes the request
 //  @return OrganizationWebhookCreateResponse
-func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCreateOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
+func (a *OrganizationWebhookAPIService) CreateOrganizationWebhookExecute(r ApiCreateOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCr
 		localVarReturnValue *OrganizationWebhookCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.CreateOrganizationWebhook")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookAPIService.CreateOrganizationWebhook")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *OrganizationWebhookApiService) CreateOrganizationWebhookExecute(r ApiCr
 
 type ApiDeleteOrganizationWebhookRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationWebhookApiService
+	ApiService     *OrganizationWebhookAPIService
 	organizationId string
 	webhookId      string
 }
@@ -169,7 +169,7 @@ Delete organization webhook
  @param webhookId Webhook ID
  @return ApiDeleteOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) DeleteOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiDeleteOrganizationWebhookRequest {
+func (a *OrganizationWebhookAPIService) DeleteOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiDeleteOrganizationWebhookRequest {
 	return ApiDeleteOrganizationWebhookRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -179,21 +179,21 @@ func (a *OrganizationWebhookApiService) DeleteOrganizationWebhook(ctx context.Co
 }
 
 // Execute executes the request
-func (a *OrganizationWebhookApiService) DeleteOrganizationWebhookExecute(r ApiDeleteOrganizationWebhookRequest) (*http.Response, error) {
+func (a *OrganizationWebhookAPIService) DeleteOrganizationWebhookExecute(r ApiDeleteOrganizationWebhookRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.DeleteOrganizationWebhook")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookAPIService.DeleteOrganizationWebhook")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterToString(r.webhookId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterValueToString(r.webhookId, "webhookId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -240,9 +240,9 @@ func (a *OrganizationWebhookApiService) DeleteOrganizationWebhookExecute(r ApiDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -260,7 +260,7 @@ func (a *OrganizationWebhookApiService) DeleteOrganizationWebhookExecute(r ApiDe
 
 type ApiEditOrganizationWebhookRequest struct {
 	ctx                              context.Context
-	ApiService                       *OrganizationWebhookApiService
+	ApiService                       *OrganizationWebhookAPIService
 	organizationId                   string
 	webhookId                        string
 	organizationWebhookCreateRequest *OrganizationWebhookCreateRequest
@@ -285,7 +285,7 @@ Edit an organization webhook
  @param webhookId Webhook ID
  @return ApiEditOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) EditOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiEditOrganizationWebhookRequest {
+func (a *OrganizationWebhookAPIService) EditOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiEditOrganizationWebhookRequest {
 	return ApiEditOrganizationWebhookRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -296,7 +296,7 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhook(ctx context.Cont
 
 // Execute executes the request
 //  @return OrganizationWebhookCreateResponse
-func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEditOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
+func (a *OrganizationWebhookAPIService) EditOrganizationWebhookExecute(r ApiEditOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -304,14 +304,14 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 		localVarReturnValue *OrganizationWebhookCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.EditOrganizationWebhook")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookAPIService.EditOrganizationWebhook")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterToString(r.webhookId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterValueToString(r.webhookId, "webhookId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -360,9 +360,9 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -389,7 +389,7 @@ func (a *OrganizationWebhookApiService) EditOrganizationWebhookExecute(r ApiEdit
 
 type ApiGetOrganizationWebhookRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationWebhookApiService
+	ApiService     *OrganizationWebhookAPIService
 	organizationId string
 	webhookId      string
 }
@@ -408,7 +408,7 @@ Get an Organization webhook
  @param webhookId Webhook ID
  @return ApiGetOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookApiService) GetOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiGetOrganizationWebhookRequest {
+func (a *OrganizationWebhookAPIService) GetOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiGetOrganizationWebhookRequest {
 	return ApiGetOrganizationWebhookRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -419,7 +419,7 @@ func (a *OrganizationWebhookApiService) GetOrganizationWebhook(ctx context.Conte
 
 // Execute executes the request
 //  @return OrganizationWebhookResponse
-func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOrganizationWebhookRequest) (*OrganizationWebhookResponse, *http.Response, error) {
+func (a *OrganizationWebhookAPIService) GetOrganizationWebhookExecute(r ApiGetOrganizationWebhookRequest) (*OrganizationWebhookResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -427,14 +427,14 @@ func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOr
 		localVarReturnValue *OrganizationWebhookResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.GetOrganizationWebhook")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookAPIService.GetOrganizationWebhook")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterToString(r.webhookId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterValueToString(r.webhookId, "webhookId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -481,9 +481,9 @@ func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -510,7 +510,7 @@ func (a *OrganizationWebhookApiService) GetOrganizationWebhookExecute(r ApiGetOr
 
 type ApiListOrganizationWebHooksRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationWebhookApiService
+	ApiService     *OrganizationWebhookAPIService
 	organizationId string
 }
 
@@ -527,7 +527,7 @@ List organization webhooks
  @param organizationId Organization ID
  @return ApiListOrganizationWebHooksRequest
 */
-func (a *OrganizationWebhookApiService) ListOrganizationWebHooks(ctx context.Context, organizationId string) ApiListOrganizationWebHooksRequest {
+func (a *OrganizationWebhookAPIService) ListOrganizationWebHooks(ctx context.Context, organizationId string) ApiListOrganizationWebHooksRequest {
 	return ApiListOrganizationWebHooksRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -537,7 +537,7 @@ func (a *OrganizationWebhookApiService) ListOrganizationWebHooks(ctx context.Con
 
 // Execute executes the request
 //  @return OrganizationWebhookResponseList
-func (a *OrganizationWebhookApiService) ListOrganizationWebHooksExecute(r ApiListOrganizationWebHooksRequest) (*OrganizationWebhookResponseList, *http.Response, error) {
+func (a *OrganizationWebhookAPIService) ListOrganizationWebHooksExecute(r ApiListOrganizationWebHooksRequest) (*OrganizationWebhookResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -545,13 +545,13 @@ func (a *OrganizationWebhookApiService) ListOrganizationWebHooksExecute(r ApiLis
 		localVarReturnValue *OrganizationWebhookResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookApiService.ListOrganizationWebHooks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationWebhookAPIService.ListOrganizationWebHooks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -598,9 +598,9 @@ func (a *OrganizationWebhookApiService) ListOrganizationWebHooksExecute(r ApiLis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

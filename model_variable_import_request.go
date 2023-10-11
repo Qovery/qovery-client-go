@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableImportRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableImportRequest{}
+
 // VariableImportRequest struct for VariableImportRequest
 type VariableImportRequest struct {
 	Overwrite bool                             `json:"overwrite"`
@@ -91,14 +94,18 @@ func (o *VariableImportRequest) SetVars(v []VariableImportRequestVarsInner) {
 }
 
 func (o VariableImportRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["overwrite"] = o.Overwrite
-	}
-	if true {
-		toSerialize["vars"] = o.Vars
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableImportRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["overwrite"] = o.Overwrite
+	toSerialize["vars"] = o.Vars
+	return toSerialize, nil
 }
 
 type NullableVariableImportRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StageStepMetric type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StageStepMetric{}
+
 // StageStepMetric struct for StageStepMetric
 type StageStepMetric struct {
 	StepName *StageStepMetricNameEnum `json:"step_name,omitempty"`
@@ -42,7 +45,7 @@ func NewStageStepMetricWithDefaults() *StageStepMetric {
 
 // GetStepName returns the StepName field value if set, zero value otherwise.
 func (o *StageStepMetric) GetStepName() StageStepMetricNameEnum {
-	if o == nil || o.StepName == nil {
+	if o == nil || IsNil(o.StepName) {
 		var ret StageStepMetricNameEnum
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *StageStepMetric) GetStepName() StageStepMetricNameEnum {
 // GetStepNameOk returns a tuple with the StepName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StageStepMetric) GetStepNameOk() (*StageStepMetricNameEnum, bool) {
-	if o == nil || o.StepName == nil {
+	if o == nil || IsNil(o.StepName) {
 		return nil, false
 	}
 	return o.StepName, true
@@ -60,7 +63,7 @@ func (o *StageStepMetric) GetStepNameOk() (*StageStepMetricNameEnum, bool) {
 
 // HasStepName returns a boolean if a field has been set.
 func (o *StageStepMetric) HasStepName() bool {
-	if o != nil && o.StepName != nil {
+	if o != nil && !IsNil(o.StepName) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *StageStepMetric) SetStepName(v StageStepMetricNameEnum) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *StageStepMetric) GetStatus() StepMetricStatusEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret StepMetricStatusEnum
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *StageStepMetric) GetStatus() StepMetricStatusEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StageStepMetric) GetStatusOk() (*StepMetricStatusEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -92,7 +95,7 @@ func (o *StageStepMetric) GetStatusOk() (*StepMetricStatusEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *StageStepMetric) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *StageStepMetric) SetStatus(v StepMetricStatusEnum) {
 
 // GetDurationSec returns the DurationSec field value if set, zero value otherwise.
 func (o *StageStepMetric) GetDurationSec() int32 {
-	if o == nil || o.DurationSec == nil {
+	if o == nil || IsNil(o.DurationSec) {
 		var ret int32
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *StageStepMetric) GetDurationSec() int32 {
 // GetDurationSecOk returns a tuple with the DurationSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StageStepMetric) GetDurationSecOk() (*int32, bool) {
-	if o == nil || o.DurationSec == nil {
+	if o == nil || IsNil(o.DurationSec) {
 		return nil, false
 	}
 	return o.DurationSec, true
@@ -124,7 +127,7 @@ func (o *StageStepMetric) GetDurationSecOk() (*int32, bool) {
 
 // HasDurationSec returns a boolean if a field has been set.
 func (o *StageStepMetric) HasDurationSec() bool {
-	if o != nil && o.DurationSec != nil {
+	if o != nil && !IsNil(o.DurationSec) {
 		return true
 	}
 
@@ -137,17 +140,25 @@ func (o *StageStepMetric) SetDurationSec(v int32) {
 }
 
 func (o StageStepMetric) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.StepName != nil {
-		toSerialize["step_name"] = o.StepName
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.DurationSec != nil {
-		toSerialize["duration_sec"] = o.DurationSec
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StageStepMetric) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.StepName) {
+		toSerialize["step_name"] = o.StepName
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.DurationSec) {
+		toSerialize["duration_sec"] = o.DurationSec
+	}
+	return toSerialize, nil
 }
 
 type NullableStageStepMetric struct {

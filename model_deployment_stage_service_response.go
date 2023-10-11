@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentStageServiceResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentStageServiceResponse{}
+
 // DeploymentStageServiceResponse struct for DeploymentStageServiceResponse
 type DeploymentStageServiceResponse struct {
 	Id        string     `json:"id"`
@@ -96,7 +99,7 @@ func (o *DeploymentStageServiceResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeploymentStageServiceResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *DeploymentStageServiceResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageServiceResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -114,7 +117,7 @@ func (o *DeploymentStageServiceResponse) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DeploymentStageServiceResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *DeploymentStageServiceResponse) SetUpdatedAt(v time.Time) {
 
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
 func (o *DeploymentStageServiceResponse) GetServiceId() string {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		var ret string
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *DeploymentStageServiceResponse) GetServiceId() string {
 // GetServiceIdOk returns a tuple with the ServiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageServiceResponse) GetServiceIdOk() (*string, bool) {
-	if o == nil || o.ServiceId == nil {
+	if o == nil || IsNil(o.ServiceId) {
 		return nil, false
 	}
 	return o.ServiceId, true
@@ -146,7 +149,7 @@ func (o *DeploymentStageServiceResponse) GetServiceIdOk() (*string, bool) {
 
 // HasServiceId returns a boolean if a field has been set.
 func (o *DeploymentStageServiceResponse) HasServiceId() bool {
-	if o != nil && o.ServiceId != nil {
+	if o != nil && !IsNil(o.ServiceId) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *DeploymentStageServiceResponse) SetServiceId(v string) {
 
 // GetServiceType returns the ServiceType field value if set, zero value otherwise.
 func (o *DeploymentStageServiceResponse) GetServiceType() string {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		var ret string
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *DeploymentStageServiceResponse) GetServiceType() string {
 // GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentStageServiceResponse) GetServiceTypeOk() (*string, bool) {
-	if o == nil || o.ServiceType == nil {
+	if o == nil || IsNil(o.ServiceType) {
 		return nil, false
 	}
 	return o.ServiceType, true
@@ -178,7 +181,7 @@ func (o *DeploymentStageServiceResponse) GetServiceTypeOk() (*string, bool) {
 
 // HasServiceType returns a boolean if a field has been set.
 func (o *DeploymentStageServiceResponse) HasServiceType() bool {
-	if o != nil && o.ServiceType != nil {
+	if o != nil && !IsNil(o.ServiceType) {
 		return true
 	}
 
@@ -191,23 +194,27 @@ func (o *DeploymentStageServiceResponse) SetServiceType(v string) {
 }
 
 func (o DeploymentStageServiceResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.ServiceId != nil {
-		toSerialize["service_id"] = o.ServiceId
-	}
-	if o.ServiceType != nil {
-		toSerialize["service_type"] = o.ServiceType
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentStageServiceResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.ServiceId) {
+		toSerialize["service_id"] = o.ServiceId
+	}
+	if !IsNil(o.ServiceType) {
+		toSerialize["service_type"] = o.ServiceType
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentStageServiceResponse struct {

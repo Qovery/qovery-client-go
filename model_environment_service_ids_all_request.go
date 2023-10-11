@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentServiceIdsAllRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentServiceIdsAllRequest{}
+
 // EnvironmentServiceIdsAllRequest struct for EnvironmentServiceIdsAllRequest
 type EnvironmentServiceIdsAllRequest struct {
 	ApplicationIds []string `json:"application_ids,omitempty"`
@@ -42,7 +45,7 @@ func NewEnvironmentServiceIdsAllRequestWithDefaults() *EnvironmentServiceIdsAllR
 
 // GetApplicationIds returns the ApplicationIds field value if set, zero value otherwise.
 func (o *EnvironmentServiceIdsAllRequest) GetApplicationIds() []string {
-	if o == nil || o.ApplicationIds == nil {
+	if o == nil || IsNil(o.ApplicationIds) {
 		var ret []string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetApplicationIds() []string {
 // GetApplicationIdsOk returns a tuple with the ApplicationIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentServiceIdsAllRequest) GetApplicationIdsOk() ([]string, bool) {
-	if o == nil || o.ApplicationIds == nil {
+	if o == nil || IsNil(o.ApplicationIds) {
 		return nil, false
 	}
 	return o.ApplicationIds, true
@@ -60,7 +63,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetApplicationIdsOk() ([]string, bool)
 
 // HasApplicationIds returns a boolean if a field has been set.
 func (o *EnvironmentServiceIdsAllRequest) HasApplicationIds() bool {
-	if o != nil && o.ApplicationIds != nil {
+	if o != nil && !IsNil(o.ApplicationIds) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *EnvironmentServiceIdsAllRequest) SetApplicationIds(v []string) {
 
 // GetContainerIds returns the ContainerIds field value if set, zero value otherwise.
 func (o *EnvironmentServiceIdsAllRequest) GetContainerIds() []string {
-	if o == nil || o.ContainerIds == nil {
+	if o == nil || IsNil(o.ContainerIds) {
 		var ret []string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetContainerIds() []string {
 // GetContainerIdsOk returns a tuple with the ContainerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentServiceIdsAllRequest) GetContainerIdsOk() ([]string, bool) {
-	if o == nil || o.ContainerIds == nil {
+	if o == nil || IsNil(o.ContainerIds) {
 		return nil, false
 	}
 	return o.ContainerIds, true
@@ -92,7 +95,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetContainerIdsOk() ([]string, bool) {
 
 // HasContainerIds returns a boolean if a field has been set.
 func (o *EnvironmentServiceIdsAllRequest) HasContainerIds() bool {
-	if o != nil && o.ContainerIds != nil {
+	if o != nil && !IsNil(o.ContainerIds) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *EnvironmentServiceIdsAllRequest) SetContainerIds(v []string) {
 
 // GetDatabaseIds returns the DatabaseIds field value if set, zero value otherwise.
 func (o *EnvironmentServiceIdsAllRequest) GetDatabaseIds() []string {
-	if o == nil || o.DatabaseIds == nil {
+	if o == nil || IsNil(o.DatabaseIds) {
 		var ret []string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetDatabaseIds() []string {
 // GetDatabaseIdsOk returns a tuple with the DatabaseIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentServiceIdsAllRequest) GetDatabaseIdsOk() ([]string, bool) {
-	if o == nil || o.DatabaseIds == nil {
+	if o == nil || IsNil(o.DatabaseIds) {
 		return nil, false
 	}
 	return o.DatabaseIds, true
@@ -124,7 +127,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetDatabaseIdsOk() ([]string, bool) {
 
 // HasDatabaseIds returns a boolean if a field has been set.
 func (o *EnvironmentServiceIdsAllRequest) HasDatabaseIds() bool {
-	if o != nil && o.DatabaseIds != nil {
+	if o != nil && !IsNil(o.DatabaseIds) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *EnvironmentServiceIdsAllRequest) SetDatabaseIds(v []string) {
 
 // GetJobIds returns the JobIds field value if set, zero value otherwise.
 func (o *EnvironmentServiceIdsAllRequest) GetJobIds() []string {
-	if o == nil || o.JobIds == nil {
+	if o == nil || IsNil(o.JobIds) {
 		var ret []string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetJobIds() []string {
 // GetJobIdsOk returns a tuple with the JobIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnvironmentServiceIdsAllRequest) GetJobIdsOk() ([]string, bool) {
-	if o == nil || o.JobIds == nil {
+	if o == nil || IsNil(o.JobIds) {
 		return nil, false
 	}
 	return o.JobIds, true
@@ -156,7 +159,7 @@ func (o *EnvironmentServiceIdsAllRequest) GetJobIdsOk() ([]string, bool) {
 
 // HasJobIds returns a boolean if a field has been set.
 func (o *EnvironmentServiceIdsAllRequest) HasJobIds() bool {
-	if o != nil && o.JobIds != nil {
+	if o != nil && !IsNil(o.JobIds) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *EnvironmentServiceIdsAllRequest) SetJobIds(v []string) {
 }
 
 func (o EnvironmentServiceIdsAllRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ApplicationIds != nil {
-		toSerialize["application_ids"] = o.ApplicationIds
-	}
-	if o.ContainerIds != nil {
-		toSerialize["container_ids"] = o.ContainerIds
-	}
-	if o.DatabaseIds != nil {
-		toSerialize["database_ids"] = o.DatabaseIds
-	}
-	if o.JobIds != nil {
-		toSerialize["job_ids"] = o.JobIds
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentServiceIdsAllRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApplicationIds) {
+		toSerialize["application_ids"] = o.ApplicationIds
+	}
+	if !IsNil(o.ContainerIds) {
+		toSerialize["container_ids"] = o.ContainerIds
+	}
+	if !IsNil(o.DatabaseIds) {
+		toSerialize["database_ids"] = o.DatabaseIds
+	}
+	if !IsNil(o.JobIds) {
+		toSerialize["job_ids"] = o.JobIds
+	}
+	return toSerialize, nil
 }
 
 type NullableEnvironmentServiceIdsAllRequest struct {

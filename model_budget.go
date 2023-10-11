@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Budget type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Budget{}
+
 // Budget struct for Budget
 type Budget struct {
 	TotalInCents *int32   `json:"total_in_cents,omitempty"`
@@ -41,7 +44,7 @@ func NewBudgetWithDefaults() *Budget {
 
 // GetTotalInCents returns the TotalInCents field value if set, zero value otherwise.
 func (o *Budget) GetTotalInCents() int32 {
-	if o == nil || o.TotalInCents == nil {
+	if o == nil || IsNil(o.TotalInCents) {
 		var ret int32
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *Budget) GetTotalInCents() int32 {
 // GetTotalInCentsOk returns a tuple with the TotalInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Budget) GetTotalInCentsOk() (*int32, bool) {
-	if o == nil || o.TotalInCents == nil {
+	if o == nil || IsNil(o.TotalInCents) {
 		return nil, false
 	}
 	return o.TotalInCents, true
@@ -59,7 +62,7 @@ func (o *Budget) GetTotalInCentsOk() (*int32, bool) {
 
 // HasTotalInCents returns a boolean if a field has been set.
 func (o *Budget) HasTotalInCents() bool {
-	if o != nil && o.TotalInCents != nil {
+	if o != nil && !IsNil(o.TotalInCents) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Budget) SetTotalInCents(v int32) {
 
 // GetTotal returns the Total field value if set, zero value otherwise.
 func (o *Budget) GetTotal() float32 {
-	if o == nil || o.Total == nil {
+	if o == nil || IsNil(o.Total) {
 		var ret float32
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *Budget) GetTotal() float32 {
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Budget) GetTotalOk() (*float32, bool) {
-	if o == nil || o.Total == nil {
+	if o == nil || IsNil(o.Total) {
 		return nil, false
 	}
 	return o.Total, true
@@ -91,7 +94,7 @@ func (o *Budget) GetTotalOk() (*float32, bool) {
 
 // HasTotal returns a boolean if a field has been set.
 func (o *Budget) HasTotal() bool {
-	if o != nil && o.Total != nil {
+	if o != nil && !IsNil(o.Total) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *Budget) SetTotal(v float32) {
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise.
 func (o *Budget) GetCurrencyCode() string {
-	if o == nil || o.CurrencyCode == nil {
+	if o == nil || IsNil(o.CurrencyCode) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *Budget) GetCurrencyCode() string {
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Budget) GetCurrencyCodeOk() (*string, bool) {
-	if o == nil || o.CurrencyCode == nil {
+	if o == nil || IsNil(o.CurrencyCode) {
 		return nil, false
 	}
 	return o.CurrencyCode, true
@@ -123,7 +126,7 @@ func (o *Budget) GetCurrencyCodeOk() (*string, bool) {
 
 // HasCurrencyCode returns a boolean if a field has been set.
 func (o *Budget) HasCurrencyCode() bool {
-	if o != nil && o.CurrencyCode != nil {
+	if o != nil && !IsNil(o.CurrencyCode) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *Budget) SetCurrencyCode(v string) {
 }
 
 func (o Budget) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TotalInCents != nil {
-		toSerialize["total_in_cents"] = o.TotalInCents
-	}
-	if o.Total != nil {
-		toSerialize["total"] = o.Total
-	}
-	if o.CurrencyCode != nil {
-		toSerialize["currency_code"] = o.CurrencyCode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Budget) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TotalInCents) {
+		toSerialize["total_in_cents"] = o.TotalInCents
+	}
+	if !IsNil(o.Total) {
+		toSerialize["total"] = o.Total
+	}
+	if !IsNil(o.CurrencyCode) {
+		toSerialize["currency_code"] = o.CurrencyCode
+	}
+	return toSerialize, nil
 }
 
 type NullableBudget struct {

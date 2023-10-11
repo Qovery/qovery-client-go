@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeleteMemberRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteMemberRequest{}
+
 // DeleteMemberRequest struct for DeleteMemberRequest
 type DeleteMemberRequest struct {
 	UserId string `json:"user_id"`
@@ -63,11 +66,17 @@ func (o *DeleteMemberRequest) SetUserId(v string) {
 }
 
 func (o DeleteMemberRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["user_id"] = o.UserId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeleteMemberRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["user_id"] = o.UserId
+	return toSerialize, nil
 }
 
 type NullableDeleteMemberRequest struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterAdvancedSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterAdvancedSettings{}
+
 // ClusterAdvancedSettings struct for ClusterAdvancedSettings
 type ClusterAdvancedSettings struct {
 	// Set the number of retention days for EKS Cloudwatch logs
@@ -131,7 +134,7 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 
 // GetAwsCloudwatchEksLogsRetentionDays returns the AwsCloudwatchEksLogsRetentionDays field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsRetentionDays() int32 {
-	if o == nil || o.AwsCloudwatchEksLogsRetentionDays == nil {
+	if o == nil || IsNil(o.AwsCloudwatchEksLogsRetentionDays) {
 		var ret int32
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsRetentionDays() int32 {
 // GetAwsCloudwatchEksLogsRetentionDaysOk returns a tuple with the AwsCloudwatchEksLogsRetentionDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsRetentionDaysOk() (*int32, bool) {
-	if o == nil || o.AwsCloudwatchEksLogsRetentionDays == nil {
+	if o == nil || IsNil(o.AwsCloudwatchEksLogsRetentionDays) {
 		return nil, false
 	}
 	return o.AwsCloudwatchEksLogsRetentionDays, true
@@ -149,7 +152,7 @@ func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsRetentionDaysOk() (*int
 
 // HasAwsCloudwatchEksLogsRetentionDays returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasAwsCloudwatchEksLogsRetentionDays() bool {
-	if o != nil && o.AwsCloudwatchEksLogsRetentionDays != nil {
+	if o != nil && !IsNil(o.AwsCloudwatchEksLogsRetentionDays) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *ClusterAdvancedSettings) SetAwsCloudwatchEksLogsRetentionDays(v int32) 
 
 // GetAwsVpcEnableS3FlowLogs returns the AwsVpcEnableS3FlowLogs field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetAwsVpcEnableS3FlowLogs() bool {
-	if o == nil || o.AwsVpcEnableS3FlowLogs == nil {
+	if o == nil || IsNil(o.AwsVpcEnableS3FlowLogs) {
 		var ret bool
 		return ret
 	}
@@ -173,7 +176,7 @@ func (o *ClusterAdvancedSettings) GetAwsVpcEnableS3FlowLogs() bool {
 // GetAwsVpcEnableS3FlowLogsOk returns a tuple with the AwsVpcEnableS3FlowLogs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetAwsVpcEnableS3FlowLogsOk() (*bool, bool) {
-	if o == nil || o.AwsVpcEnableS3FlowLogs == nil {
+	if o == nil || IsNil(o.AwsVpcEnableS3FlowLogs) {
 		return nil, false
 	}
 	return o.AwsVpcEnableS3FlowLogs, true
@@ -181,7 +184,7 @@ func (o *ClusterAdvancedSettings) GetAwsVpcEnableS3FlowLogsOk() (*bool, bool) {
 
 // HasAwsVpcEnableS3FlowLogs returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasAwsVpcEnableS3FlowLogs() bool {
-	if o != nil && o.AwsVpcEnableS3FlowLogs != nil {
+	if o != nil && !IsNil(o.AwsVpcEnableS3FlowLogs) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *ClusterAdvancedSettings) SetAwsVpcEnableS3FlowLogs(v bool) {
 
 // GetAwsVpcFlowLogsRetentionDays returns the AwsVpcFlowLogsRetentionDays field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDays() int32 {
-	if o == nil || o.AwsVpcFlowLogsRetentionDays == nil {
+	if o == nil || IsNil(o.AwsVpcFlowLogsRetentionDays) {
 		var ret int32
 		return ret
 	}
@@ -205,7 +208,7 @@ func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDays() int32 {
 // GetAwsVpcFlowLogsRetentionDaysOk returns a tuple with the AwsVpcFlowLogsRetentionDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDaysOk() (*int32, bool) {
-	if o == nil || o.AwsVpcFlowLogsRetentionDays == nil {
+	if o == nil || IsNil(o.AwsVpcFlowLogsRetentionDays) {
 		return nil, false
 	}
 	return o.AwsVpcFlowLogsRetentionDays, true
@@ -213,7 +216,7 @@ func (o *ClusterAdvancedSettings) GetAwsVpcFlowLogsRetentionDaysOk() (*int32, bo
 
 // HasAwsVpcFlowLogsRetentionDays returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool {
-	if o != nil && o.AwsVpcFlowLogsRetentionDays != nil {
+	if o != nil && !IsNil(o.AwsVpcFlowLogsRetentionDays) {
 		return true
 	}
 
@@ -227,7 +230,7 @@ func (o *ClusterAdvancedSettings) SetAwsVpcFlowLogsRetentionDays(v int32) {
 
 // GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32 {
-	if o == nil || o.LokiLogRetentionInWeek == nil {
+	if o == nil || IsNil(o.LokiLogRetentionInWeek) {
 		var ret int32
 		return ret
 	}
@@ -237,7 +240,7 @@ func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeek() int32 {
 // GetLokiLogRetentionInWeekOk returns a tuple with the LokiLogRetentionInWeek field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool) {
-	if o == nil || o.LokiLogRetentionInWeek == nil {
+	if o == nil || IsNil(o.LokiLogRetentionInWeek) {
 		return nil, false
 	}
 	return o.LokiLogRetentionInWeek, true
@@ -245,7 +248,7 @@ func (o *ClusterAdvancedSettings) GetLokiLogRetentionInWeekOk() (*int32, bool) {
 
 // HasLokiLogRetentionInWeek returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool {
-	if o != nil && o.LokiLogRetentionInWeek != nil {
+	if o != nil && !IsNil(o.LokiLogRetentionInWeek) {
 		return true
 	}
 
@@ -259,7 +262,7 @@ func (o *ClusterAdvancedSettings) SetLokiLogRetentionInWeek(v int32) {
 
 // GetRegistryImageRetentionTime returns the RegistryImageRetentionTime field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTime() int32 {
-	if o == nil || o.RegistryImageRetentionTime == nil {
+	if o == nil || IsNil(o.RegistryImageRetentionTime) {
 		var ret int32
 		return ret
 	}
@@ -269,7 +272,7 @@ func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTime() int32 {
 // GetRegistryImageRetentionTimeOk returns a tuple with the RegistryImageRetentionTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTimeOk() (*int32, bool) {
-	if o == nil || o.RegistryImageRetentionTime == nil {
+	if o == nil || IsNil(o.RegistryImageRetentionTime) {
 		return nil, false
 	}
 	return o.RegistryImageRetentionTime, true
@@ -277,7 +280,7 @@ func (o *ClusterAdvancedSettings) GetRegistryImageRetentionTimeOk() (*int32, boo
 
 // HasRegistryImageRetentionTime returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasRegistryImageRetentionTime() bool {
-	if o != nil && o.RegistryImageRetentionTime != nil {
+	if o != nil && !IsNil(o.RegistryImageRetentionTime) {
 		return true
 	}
 
@@ -291,7 +294,7 @@ func (o *ClusterAdvancedSettings) SetRegistryImageRetentionTime(v int32) {
 
 // GetCloudProviderContainerRegistryTags returns the CloudProviderContainerRegistryTags field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[string]string {
-	if o == nil || o.CloudProviderContainerRegistryTags == nil {
+	if o == nil || IsNil(o.CloudProviderContainerRegistryTags) {
 		var ret map[string]string
 		return ret
 	}
@@ -301,7 +304,7 @@ func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[st
 // GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool) {
-	if o == nil || o.CloudProviderContainerRegistryTags == nil {
+	if o == nil || IsNil(o.CloudProviderContainerRegistryTags) {
 		return nil, false
 	}
 	return o.CloudProviderContainerRegistryTags, true
@@ -309,7 +312,7 @@ func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*ma
 
 // HasCloudProviderContainerRegistryTags returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool {
-	if o != nil && o.CloudProviderContainerRegistryTags != nil {
+	if o != nil && !IsNil(o.CloudProviderContainerRegistryTags) {
 		return true
 	}
 
@@ -323,7 +326,7 @@ func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[st
 
 // GetLoadBalancerSize returns the LoadBalancerSize field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetLoadBalancerSize() string {
-	if o == nil || o.LoadBalancerSize == nil {
+	if o == nil || IsNil(o.LoadBalancerSize) {
 		var ret string
 		return ret
 	}
@@ -333,7 +336,7 @@ func (o *ClusterAdvancedSettings) GetLoadBalancerSize() string {
 // GetLoadBalancerSizeOk returns a tuple with the LoadBalancerSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetLoadBalancerSizeOk() (*string, bool) {
-	if o == nil || o.LoadBalancerSize == nil {
+	if o == nil || IsNil(o.LoadBalancerSize) {
 		return nil, false
 	}
 	return o.LoadBalancerSize, true
@@ -341,7 +344,7 @@ func (o *ClusterAdvancedSettings) GetLoadBalancerSizeOk() (*string, bool) {
 
 // HasLoadBalancerSize returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasLoadBalancerSize() bool {
-	if o != nil && o.LoadBalancerSize != nil {
+	if o != nil && !IsNil(o.LoadBalancerSize) {
 		return true
 	}
 
@@ -355,7 +358,7 @@ func (o *ClusterAdvancedSettings) SetLoadBalancerSize(v string) {
 
 // GetDatabasePostgresqlDenyPublicAccess returns the DatabasePostgresqlDenyPublicAccess field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccess() bool {
-	if o == nil || o.DatabasePostgresqlDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabasePostgresqlDenyPublicAccess) {
 		var ret bool
 		return ret
 	}
@@ -365,7 +368,7 @@ func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccess() bool {
 // GetDatabasePostgresqlDenyPublicAccessOk returns a tuple with the DatabasePostgresqlDenyPublicAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || o.DatabasePostgresqlDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabasePostgresqlDenyPublicAccess) {
 		return nil, false
 	}
 	return o.DatabasePostgresqlDenyPublicAccess, true
@@ -373,7 +376,7 @@ func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccessOk() (*bo
 
 // HasDatabasePostgresqlDenyPublicAccess returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabasePostgresqlDenyPublicAccess() bool {
-	if o != nil && o.DatabasePostgresqlDenyPublicAccess != nil {
+	if o != nil && !IsNil(o.DatabasePostgresqlDenyPublicAccess) {
 		return true
 	}
 
@@ -387,7 +390,7 @@ func (o *ClusterAdvancedSettings) SetDatabasePostgresqlDenyPublicAccess(v bool) 
 
 // GetDatabasePostgresqlAllowedCidrs returns the DatabasePostgresqlAllowedCidrs field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabasePostgresqlAllowedCidrs() []string {
-	if o == nil || o.DatabasePostgresqlAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabasePostgresqlAllowedCidrs) {
 		var ret []string
 		return ret
 	}
@@ -397,7 +400,7 @@ func (o *ClusterAdvancedSettings) GetDatabasePostgresqlAllowedCidrs() []string {
 // GetDatabasePostgresqlAllowedCidrsOk returns a tuple with the DatabasePostgresqlAllowedCidrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabasePostgresqlAllowedCidrsOk() ([]string, bool) {
-	if o == nil || o.DatabasePostgresqlAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabasePostgresqlAllowedCidrs) {
 		return nil, false
 	}
 	return o.DatabasePostgresqlAllowedCidrs, true
@@ -405,7 +408,7 @@ func (o *ClusterAdvancedSettings) GetDatabasePostgresqlAllowedCidrsOk() ([]strin
 
 // HasDatabasePostgresqlAllowedCidrs returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabasePostgresqlAllowedCidrs() bool {
-	if o != nil && o.DatabasePostgresqlAllowedCidrs != nil {
+	if o != nil && !IsNil(o.DatabasePostgresqlAllowedCidrs) {
 		return true
 	}
 
@@ -419,7 +422,7 @@ func (o *ClusterAdvancedSettings) SetDatabasePostgresqlAllowedCidrs(v []string) 
 
 // GetDatabaseMysqlDenyPublicAccess returns the DatabaseMysqlDenyPublicAccess field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccess() bool {
-	if o == nil || o.DatabaseMysqlDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabaseMysqlDenyPublicAccess) {
 		var ret bool
 		return ret
 	}
@@ -429,7 +432,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccess() bool {
 // GetDatabaseMysqlDenyPublicAccessOk returns a tuple with the DatabaseMysqlDenyPublicAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || o.DatabaseMysqlDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabaseMysqlDenyPublicAccess) {
 		return nil, false
 	}
 	return o.DatabaseMysqlDenyPublicAccess, true
@@ -437,7 +440,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccessOk() (*bool, b
 
 // HasDatabaseMysqlDenyPublicAccess returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabaseMysqlDenyPublicAccess() bool {
-	if o != nil && o.DatabaseMysqlDenyPublicAccess != nil {
+	if o != nil && !IsNil(o.DatabaseMysqlDenyPublicAccess) {
 		return true
 	}
 
@@ -451,7 +454,7 @@ func (o *ClusterAdvancedSettings) SetDatabaseMysqlDenyPublicAccess(v bool) {
 
 // GetDatabaseMysqlAllowedCidrs returns the DatabaseMysqlAllowedCidrs field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabaseMysqlAllowedCidrs() []string {
-	if o == nil || o.DatabaseMysqlAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabaseMysqlAllowedCidrs) {
 		var ret []string
 		return ret
 	}
@@ -461,7 +464,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMysqlAllowedCidrs() []string {
 // GetDatabaseMysqlAllowedCidrsOk returns a tuple with the DatabaseMysqlAllowedCidrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabaseMysqlAllowedCidrsOk() ([]string, bool) {
-	if o == nil || o.DatabaseMysqlAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabaseMysqlAllowedCidrs) {
 		return nil, false
 	}
 	return o.DatabaseMysqlAllowedCidrs, true
@@ -469,7 +472,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMysqlAllowedCidrsOk() ([]string, bo
 
 // HasDatabaseMysqlAllowedCidrs returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabaseMysqlAllowedCidrs() bool {
-	if o != nil && o.DatabaseMysqlAllowedCidrs != nil {
+	if o != nil && !IsNil(o.DatabaseMysqlAllowedCidrs) {
 		return true
 	}
 
@@ -483,7 +486,7 @@ func (o *ClusterAdvancedSettings) SetDatabaseMysqlAllowedCidrs(v []string) {
 
 // GetDatabaseMongodbDenyPublicAccess returns the DatabaseMongodbDenyPublicAccess field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccess() bool {
-	if o == nil || o.DatabaseMongodbDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabaseMongodbDenyPublicAccess) {
 		var ret bool
 		return ret
 	}
@@ -493,7 +496,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccess() bool {
 // GetDatabaseMongodbDenyPublicAccessOk returns a tuple with the DatabaseMongodbDenyPublicAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || o.DatabaseMongodbDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabaseMongodbDenyPublicAccess) {
 		return nil, false
 	}
 	return o.DatabaseMongodbDenyPublicAccess, true
@@ -501,7 +504,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccessOk() (*bool,
 
 // HasDatabaseMongodbDenyPublicAccess returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabaseMongodbDenyPublicAccess() bool {
-	if o != nil && o.DatabaseMongodbDenyPublicAccess != nil {
+	if o != nil && !IsNil(o.DatabaseMongodbDenyPublicAccess) {
 		return true
 	}
 
@@ -515,7 +518,7 @@ func (o *ClusterAdvancedSettings) SetDatabaseMongodbDenyPublicAccess(v bool) {
 
 // GetDatabaseMongodbAllowedCidrs returns the DatabaseMongodbAllowedCidrs field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabaseMongodbAllowedCidrs() []string {
-	if o == nil || o.DatabaseMongodbAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabaseMongodbAllowedCidrs) {
 		var ret []string
 		return ret
 	}
@@ -525,7 +528,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMongodbAllowedCidrs() []string {
 // GetDatabaseMongodbAllowedCidrsOk returns a tuple with the DatabaseMongodbAllowedCidrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabaseMongodbAllowedCidrsOk() ([]string, bool) {
-	if o == nil || o.DatabaseMongodbAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabaseMongodbAllowedCidrs) {
 		return nil, false
 	}
 	return o.DatabaseMongodbAllowedCidrs, true
@@ -533,7 +536,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseMongodbAllowedCidrsOk() ([]string, 
 
 // HasDatabaseMongodbAllowedCidrs returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabaseMongodbAllowedCidrs() bool {
-	if o != nil && o.DatabaseMongodbAllowedCidrs != nil {
+	if o != nil && !IsNil(o.DatabaseMongodbAllowedCidrs) {
 		return true
 	}
 
@@ -547,7 +550,7 @@ func (o *ClusterAdvancedSettings) SetDatabaseMongodbAllowedCidrs(v []string) {
 
 // GetDatabaseRedisDenyPublicAccess returns the DatabaseRedisDenyPublicAccess field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccess() bool {
-	if o == nil || o.DatabaseRedisDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabaseRedisDenyPublicAccess) {
 		var ret bool
 		return ret
 	}
@@ -557,7 +560,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccess() bool {
 // GetDatabaseRedisDenyPublicAccessOk returns a tuple with the DatabaseRedisDenyPublicAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || o.DatabaseRedisDenyPublicAccess == nil {
+	if o == nil || IsNil(o.DatabaseRedisDenyPublicAccess) {
 		return nil, false
 	}
 	return o.DatabaseRedisDenyPublicAccess, true
@@ -565,7 +568,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccessOk() (*bool, b
 
 // HasDatabaseRedisDenyPublicAccess returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabaseRedisDenyPublicAccess() bool {
-	if o != nil && o.DatabaseRedisDenyPublicAccess != nil {
+	if o != nil && !IsNil(o.DatabaseRedisDenyPublicAccess) {
 		return true
 	}
 
@@ -579,7 +582,7 @@ func (o *ClusterAdvancedSettings) SetDatabaseRedisDenyPublicAccess(v bool) {
 
 // GetDatabaseRedisAllowedCidrs returns the DatabaseRedisAllowedCidrs field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetDatabaseRedisAllowedCidrs() []string {
-	if o == nil || o.DatabaseRedisAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabaseRedisAllowedCidrs) {
 		var ret []string
 		return ret
 	}
@@ -589,7 +592,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseRedisAllowedCidrs() []string {
 // GetDatabaseRedisAllowedCidrsOk returns a tuple with the DatabaseRedisAllowedCidrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetDatabaseRedisAllowedCidrsOk() ([]string, bool) {
-	if o == nil || o.DatabaseRedisAllowedCidrs == nil {
+	if o == nil || IsNil(o.DatabaseRedisAllowedCidrs) {
 		return nil, false
 	}
 	return o.DatabaseRedisAllowedCidrs, true
@@ -597,7 +600,7 @@ func (o *ClusterAdvancedSettings) GetDatabaseRedisAllowedCidrsOk() ([]string, bo
 
 // HasDatabaseRedisAllowedCidrs returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasDatabaseRedisAllowedCidrs() bool {
-	if o != nil && o.DatabaseRedisAllowedCidrs != nil {
+	if o != nil && !IsNil(o.DatabaseRedisAllowedCidrs) {
 		return true
 	}
 
@@ -611,7 +614,7 @@ func (o *ClusterAdvancedSettings) SetDatabaseRedisAllowedCidrs(v []string) {
 
 // GetAwsIamAdminGroup returns the AwsIamAdminGroup field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string {
-	if o == nil || o.AwsIamAdminGroup == nil {
+	if o == nil || IsNil(o.AwsIamAdminGroup) {
 		var ret string
 		return ret
 	}
@@ -621,7 +624,7 @@ func (o *ClusterAdvancedSettings) GetAwsIamAdminGroup() string {
 // GetAwsIamAdminGroupOk returns a tuple with the AwsIamAdminGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool) {
-	if o == nil || o.AwsIamAdminGroup == nil {
+	if o == nil || IsNil(o.AwsIamAdminGroup) {
 		return nil, false
 	}
 	return o.AwsIamAdminGroup, true
@@ -629,7 +632,7 @@ func (o *ClusterAdvancedSettings) GetAwsIamAdminGroupOk() (*string, bool) {
 
 // HasAwsIamAdminGroup returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasAwsIamAdminGroup() bool {
-	if o != nil && o.AwsIamAdminGroup != nil {
+	if o != nil && !IsNil(o.AwsIamAdminGroup) {
 		return true
 	}
 
@@ -643,7 +646,7 @@ func (o *ClusterAdvancedSettings) SetAwsIamAdminGroup(v string) {
 
 // GetAwsEksEc2MetadataImds returns the AwsEksEc2MetadataImds field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImds() string {
-	if o == nil || o.AwsEksEc2MetadataImds == nil {
+	if o == nil || IsNil(o.AwsEksEc2MetadataImds) {
 		var ret string
 		return ret
 	}
@@ -653,7 +656,7 @@ func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImds() string {
 // GetAwsEksEc2MetadataImdsOk returns a tuple with the AwsEksEc2MetadataImds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImdsOk() (*string, bool) {
-	if o == nil || o.AwsEksEc2MetadataImds == nil {
+	if o == nil || IsNil(o.AwsEksEc2MetadataImds) {
 		return nil, false
 	}
 	return o.AwsEksEc2MetadataImds, true
@@ -661,7 +664,7 @@ func (o *ClusterAdvancedSettings) GetAwsEksEc2MetadataImdsOk() (*string, bool) {
 
 // HasAwsEksEc2MetadataImds returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasAwsEksEc2MetadataImds() bool {
-	if o != nil && o.AwsEksEc2MetadataImds != nil {
+	if o != nil && !IsNil(o.AwsEksEc2MetadataImds) {
 		return true
 	}
 
@@ -676,7 +679,7 @@ func (o *ClusterAdvancedSettings) SetAwsEksEc2MetadataImds(v string) {
 // GetPlecoResourcesTtl returns the PlecoResourcesTtl field value if set, zero value otherwise.
 // Deprecated
 func (o *ClusterAdvancedSettings) GetPlecoResourcesTtl() int32 {
-	if o == nil || o.PlecoResourcesTtl == nil {
+	if o == nil || IsNil(o.PlecoResourcesTtl) {
 		var ret int32
 		return ret
 	}
@@ -687,7 +690,7 @@ func (o *ClusterAdvancedSettings) GetPlecoResourcesTtl() int32 {
 // and a boolean to check if the value has been set.
 // Deprecated
 func (o *ClusterAdvancedSettings) GetPlecoResourcesTtlOk() (*int32, bool) {
-	if o == nil || o.PlecoResourcesTtl == nil {
+	if o == nil || IsNil(o.PlecoResourcesTtl) {
 		return nil, false
 	}
 	return o.PlecoResourcesTtl, true
@@ -695,7 +698,7 @@ func (o *ClusterAdvancedSettings) GetPlecoResourcesTtlOk() (*int32, bool) {
 
 // HasPlecoResourcesTtl returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasPlecoResourcesTtl() bool {
-	if o != nil && o.PlecoResourcesTtl != nil {
+	if o != nil && !IsNil(o.PlecoResourcesTtl) {
 		return true
 	}
 
@@ -710,7 +713,7 @@ func (o *ClusterAdvancedSettings) SetPlecoResourcesTtl(v int32) {
 
 // GetRegistryMirroringMode returns the RegistryMirroringMode field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetRegistryMirroringMode() RegistryMirroringModeEnum {
-	if o == nil || o.RegistryMirroringMode == nil {
+	if o == nil || IsNil(o.RegistryMirroringMode) {
 		var ret RegistryMirroringModeEnum
 		return ret
 	}
@@ -720,7 +723,7 @@ func (o *ClusterAdvancedSettings) GetRegistryMirroringMode() RegistryMirroringMo
 // GetRegistryMirroringModeOk returns a tuple with the RegistryMirroringMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterAdvancedSettings) GetRegistryMirroringModeOk() (*RegistryMirroringModeEnum, bool) {
-	if o == nil || o.RegistryMirroringMode == nil {
+	if o == nil || IsNil(o.RegistryMirroringMode) {
 		return nil, false
 	}
 	return o.RegistryMirroringMode, true
@@ -728,7 +731,7 @@ func (o *ClusterAdvancedSettings) GetRegistryMirroringModeOk() (*RegistryMirrori
 
 // HasRegistryMirroringMode returns a boolean if a field has been set.
 func (o *ClusterAdvancedSettings) HasRegistryMirroringMode() bool {
-	if o != nil && o.RegistryMirroringMode != nil {
+	if o != nil && !IsNil(o.RegistryMirroringMode) {
 		return true
 	}
 
@@ -741,65 +744,73 @@ func (o *ClusterAdvancedSettings) SetRegistryMirroringMode(v RegistryMirroringMo
 }
 
 func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AwsCloudwatchEksLogsRetentionDays != nil {
-		toSerialize["aws.cloudwatch.eks_logs_retention_days"] = o.AwsCloudwatchEksLogsRetentionDays
-	}
-	if o.AwsVpcEnableS3FlowLogs != nil {
-		toSerialize["aws.vpc.enable_s3_flow_logs"] = o.AwsVpcEnableS3FlowLogs
-	}
-	if o.AwsVpcFlowLogsRetentionDays != nil {
-		toSerialize["aws.vpc.flow_logs_retention_days"] = o.AwsVpcFlowLogsRetentionDays
-	}
-	if o.LokiLogRetentionInWeek != nil {
-		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
-	}
-	if o.RegistryImageRetentionTime != nil {
-		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
-	}
-	if o.CloudProviderContainerRegistryTags != nil {
-		toSerialize["cloud_provider.container_registry.tags"] = o.CloudProviderContainerRegistryTags
-	}
-	if o.LoadBalancerSize != nil {
-		toSerialize["load_balancer.size"] = o.LoadBalancerSize
-	}
-	if o.DatabasePostgresqlDenyPublicAccess != nil {
-		toSerialize["database.postgresql.deny_public_access"] = o.DatabasePostgresqlDenyPublicAccess
-	}
-	if o.DatabasePostgresqlAllowedCidrs != nil {
-		toSerialize["database.postgresql.allowed_cidrs"] = o.DatabasePostgresqlAllowedCidrs
-	}
-	if o.DatabaseMysqlDenyPublicAccess != nil {
-		toSerialize["database.mysql.deny_public_access"] = o.DatabaseMysqlDenyPublicAccess
-	}
-	if o.DatabaseMysqlAllowedCidrs != nil {
-		toSerialize["database.mysql.allowed_cidrs"] = o.DatabaseMysqlAllowedCidrs
-	}
-	if o.DatabaseMongodbDenyPublicAccess != nil {
-		toSerialize["database.mongodb.deny_public_access"] = o.DatabaseMongodbDenyPublicAccess
-	}
-	if o.DatabaseMongodbAllowedCidrs != nil {
-		toSerialize["database.mongodb.allowed_cidrs"] = o.DatabaseMongodbAllowedCidrs
-	}
-	if o.DatabaseRedisDenyPublicAccess != nil {
-		toSerialize["database.redis.deny_public_access"] = o.DatabaseRedisDenyPublicAccess
-	}
-	if o.DatabaseRedisAllowedCidrs != nil {
-		toSerialize["database.redis.allowed_cidrs"] = o.DatabaseRedisAllowedCidrs
-	}
-	if o.AwsIamAdminGroup != nil {
-		toSerialize["aws.iam.admin_group"] = o.AwsIamAdminGroup
-	}
-	if o.AwsEksEc2MetadataImds != nil {
-		toSerialize["aws.eks.ec2.metadata_imds"] = o.AwsEksEc2MetadataImds
-	}
-	if o.PlecoResourcesTtl != nil {
-		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
-	}
-	if o.RegistryMirroringMode != nil {
-		toSerialize["registry.mirroring_mode"] = o.RegistryMirroringMode
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsCloudwatchEksLogsRetentionDays) {
+		toSerialize["aws.cloudwatch.eks_logs_retention_days"] = o.AwsCloudwatchEksLogsRetentionDays
+	}
+	if !IsNil(o.AwsVpcEnableS3FlowLogs) {
+		toSerialize["aws.vpc.enable_s3_flow_logs"] = o.AwsVpcEnableS3FlowLogs
+	}
+	if !IsNil(o.AwsVpcFlowLogsRetentionDays) {
+		toSerialize["aws.vpc.flow_logs_retention_days"] = o.AwsVpcFlowLogsRetentionDays
+	}
+	if !IsNil(o.LokiLogRetentionInWeek) {
+		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
+	}
+	if !IsNil(o.RegistryImageRetentionTime) {
+		toSerialize["registry.image_retention_time"] = o.RegistryImageRetentionTime
+	}
+	if !IsNil(o.CloudProviderContainerRegistryTags) {
+		toSerialize["cloud_provider.container_registry.tags"] = o.CloudProviderContainerRegistryTags
+	}
+	if !IsNil(o.LoadBalancerSize) {
+		toSerialize["load_balancer.size"] = o.LoadBalancerSize
+	}
+	if !IsNil(o.DatabasePostgresqlDenyPublicAccess) {
+		toSerialize["database.postgresql.deny_public_access"] = o.DatabasePostgresqlDenyPublicAccess
+	}
+	if !IsNil(o.DatabasePostgresqlAllowedCidrs) {
+		toSerialize["database.postgresql.allowed_cidrs"] = o.DatabasePostgresqlAllowedCidrs
+	}
+	if !IsNil(o.DatabaseMysqlDenyPublicAccess) {
+		toSerialize["database.mysql.deny_public_access"] = o.DatabaseMysqlDenyPublicAccess
+	}
+	if !IsNil(o.DatabaseMysqlAllowedCidrs) {
+		toSerialize["database.mysql.allowed_cidrs"] = o.DatabaseMysqlAllowedCidrs
+	}
+	if !IsNil(o.DatabaseMongodbDenyPublicAccess) {
+		toSerialize["database.mongodb.deny_public_access"] = o.DatabaseMongodbDenyPublicAccess
+	}
+	if !IsNil(o.DatabaseMongodbAllowedCidrs) {
+		toSerialize["database.mongodb.allowed_cidrs"] = o.DatabaseMongodbAllowedCidrs
+	}
+	if !IsNil(o.DatabaseRedisDenyPublicAccess) {
+		toSerialize["database.redis.deny_public_access"] = o.DatabaseRedisDenyPublicAccess
+	}
+	if !IsNil(o.DatabaseRedisAllowedCidrs) {
+		toSerialize["database.redis.allowed_cidrs"] = o.DatabaseRedisAllowedCidrs
+	}
+	if !IsNil(o.AwsIamAdminGroup) {
+		toSerialize["aws.iam.admin_group"] = o.AwsIamAdminGroup
+	}
+	if !IsNil(o.AwsEksEc2MetadataImds) {
+		toSerialize["aws.eks.ec2.metadata_imds"] = o.AwsEksEc2MetadataImds
+	}
+	if !IsNil(o.PlecoResourcesTtl) {
+		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
+	}
+	if !IsNil(o.RegistryMirroringMode) {
+		toSerialize["registry.mirroring_mode"] = o.RegistryMirroringMode
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterAdvancedSettings struct {

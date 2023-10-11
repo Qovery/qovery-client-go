@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MetricStorage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricStorage{}
+
 // MetricStorage struct for MetricStorage
 type MetricStorage struct {
 	StorageId *string                  `json:"storage_id,omitempty"`
@@ -41,7 +44,7 @@ func NewMetricStorageWithDefaults() *MetricStorage {
 
 // GetStorageId returns the StorageId field value if set, zero value otherwise.
 func (o *MetricStorage) GetStorageId() string {
-	if o == nil || o.StorageId == nil {
+	if o == nil || IsNil(o.StorageId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *MetricStorage) GetStorageId() string {
 // GetStorageIdOk returns a tuple with the StorageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MetricStorage) GetStorageIdOk() (*string, bool) {
-	if o == nil || o.StorageId == nil {
+	if o == nil || IsNil(o.StorageId) {
 		return nil, false
 	}
 	return o.StorageId, true
@@ -59,7 +62,7 @@ func (o *MetricStorage) GetStorageIdOk() (*string, bool) {
 
 // HasStorageId returns a boolean if a field has been set.
 func (o *MetricStorage) HasStorageId() bool {
-	if o != nil && o.StorageId != nil {
+	if o != nil && !IsNil(o.StorageId) {
 		return true
 	}
 
@@ -96,14 +99,20 @@ func (o *MetricStorage) SetData(v []MetricStorageDatapoint) {
 }
 
 func (o MetricStorage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.StorageId != nil {
-		toSerialize["storage_id"] = o.StorageId
-	}
-	if true {
-		toSerialize["data"] = o.Data
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MetricStorage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.StorageId) {
+		toSerialize["storage_id"] = o.StorageId
+	}
+	toSerialize["data"] = o.Data
+	return toSerialize, nil
 }
 
 type NullableMetricStorage struct {

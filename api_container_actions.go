@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ContainerActionsApiService ContainerActionsApi service
-type ContainerActionsApiService service
+// ContainerActionsAPIService ContainerActionsAPI service
+type ContainerActionsAPIService service
 
 type ApiDeployContainerRequest struct {
 	ctx                    context.Context
-	ApiService             *ContainerActionsApiService
+	ApiService             *ContainerActionsAPIService
 	containerId            string
 	containerDeployRequest *ContainerDeployRequest
 }
@@ -48,7 +48,7 @@ You must provide a git commit id
  @param containerId Container ID
  @return ApiDeployContainerRequest
 */
-func (a *ContainerActionsApiService) DeployContainer(ctx context.Context, containerId string) ApiDeployContainerRequest {
+func (a *ContainerActionsAPIService) DeployContainer(ctx context.Context, containerId string) ApiDeployContainerRequest {
 	return ApiDeployContainerRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -58,7 +58,7 @@ func (a *ContainerActionsApiService) DeployContainer(ctx context.Context, contai
 
 // Execute executes the request
 //  @return Status
-func (a *ContainerActionsApiService) DeployContainerExecute(r ApiDeployContainerRequest) (*Status, *http.Response, error) {
+func (a *ContainerActionsAPIService) DeployContainerExecute(r ApiDeployContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *ContainerActionsApiService) DeployContainerExecute(r ApiDeployContainer
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsApiService.DeployContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.DeployContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/deploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *ContainerActionsApiService) DeployContainerExecute(r ApiDeployContainer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *ContainerActionsApiService) DeployContainerExecute(r ApiDeployContainer
 
 type ApiRebootContainerRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerActionsApiService
+	ApiService  *ContainerActionsAPIService
 	containerId string
 }
 
@@ -165,7 +165,7 @@ RebootContainer Reboot container
  @param containerId Container ID
  @return ApiRebootContainerRequest
 */
-func (a *ContainerActionsApiService) RebootContainer(ctx context.Context, containerId string) ApiRebootContainerRequest {
+func (a *ContainerActionsAPIService) RebootContainer(ctx context.Context, containerId string) ApiRebootContainerRequest {
 	return ApiRebootContainerRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -175,7 +175,7 @@ func (a *ContainerActionsApiService) RebootContainer(ctx context.Context, contai
 
 // Execute executes the request
 //  @return Status
-func (a *ContainerActionsApiService) RebootContainerExecute(r ApiRebootContainerRequest) (*Status, *http.Response, error) {
+func (a *ContainerActionsAPIService) RebootContainerExecute(r ApiRebootContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -183,13 +183,13 @@ func (a *ContainerActionsApiService) RebootContainerExecute(r ApiRebootContainer
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsApiService.RebootContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.RebootContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/restart-service"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -236,9 +236,9 @@ func (a *ContainerActionsApiService) RebootContainerExecute(r ApiRebootContainer
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -265,7 +265,7 @@ func (a *ContainerActionsApiService) RebootContainerExecute(r ApiRebootContainer
 
 type ApiRedeployContainerRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerActionsApiService
+	ApiService  *ContainerActionsAPIService
 	containerId string
 }
 
@@ -280,7 +280,7 @@ RedeployContainer Redeploy container
  @param containerId Container ID
  @return ApiRedeployContainerRequest
 */
-func (a *ContainerActionsApiService) RedeployContainer(ctx context.Context, containerId string) ApiRedeployContainerRequest {
+func (a *ContainerActionsAPIService) RedeployContainer(ctx context.Context, containerId string) ApiRedeployContainerRequest {
 	return ApiRedeployContainerRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -290,7 +290,7 @@ func (a *ContainerActionsApiService) RedeployContainer(ctx context.Context, cont
 
 // Execute executes the request
 //  @return Status
-func (a *ContainerActionsApiService) RedeployContainerExecute(r ApiRedeployContainerRequest) (*Status, *http.Response, error) {
+func (a *ContainerActionsAPIService) RedeployContainerExecute(r ApiRedeployContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -298,13 +298,13 @@ func (a *ContainerActionsApiService) RedeployContainerExecute(r ApiRedeployConta
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsApiService.RedeployContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.RedeployContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/redeploy"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -351,9 +351,9 @@ func (a *ContainerActionsApiService) RedeployContainerExecute(r ApiRedeployConta
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,7 +380,7 @@ func (a *ContainerActionsApiService) RedeployContainerExecute(r ApiRedeployConta
 
 type ApiRestartContainerRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerActionsApiService
+	ApiService  *ContainerActionsAPIService
 	containerId string
 }
 
@@ -397,7 +397,7 @@ RestartContainer Deprecated - Restart container
  @param containerId Container ID
  @return ApiRestartContainerRequest
 */
-func (a *ContainerActionsApiService) RestartContainer(ctx context.Context, containerId string) ApiRestartContainerRequest {
+func (a *ContainerActionsAPIService) RestartContainer(ctx context.Context, containerId string) ApiRestartContainerRequest {
 	return ApiRestartContainerRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -407,7 +407,7 @@ func (a *ContainerActionsApiService) RestartContainer(ctx context.Context, conta
 
 // Execute executes the request
 //  @return Status
-func (a *ContainerActionsApiService) RestartContainerExecute(r ApiRestartContainerRequest) (*Status, *http.Response, error) {
+func (a *ContainerActionsAPIService) RestartContainerExecute(r ApiRestartContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -415,13 +415,13 @@ func (a *ContainerActionsApiService) RestartContainerExecute(r ApiRestartContain
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsApiService.RestartContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.RestartContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/restart"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -468,9 +468,9 @@ func (a *ContainerActionsApiService) RestartContainerExecute(r ApiRestartContain
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -497,7 +497,7 @@ func (a *ContainerActionsApiService) RestartContainerExecute(r ApiRestartContain
 
 type ApiStopContainerRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerActionsApiService
+	ApiService  *ContainerActionsAPIService
 	containerId string
 }
 
@@ -512,7 +512,7 @@ StopContainer Stop container
  @param containerId Container ID
  @return ApiStopContainerRequest
 */
-func (a *ContainerActionsApiService) StopContainer(ctx context.Context, containerId string) ApiStopContainerRequest {
+func (a *ContainerActionsAPIService) StopContainer(ctx context.Context, containerId string) ApiStopContainerRequest {
 	return ApiStopContainerRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -522,7 +522,7 @@ func (a *ContainerActionsApiService) StopContainer(ctx context.Context, containe
 
 // Execute executes the request
 //  @return Status
-func (a *ContainerActionsApiService) StopContainerExecute(r ApiStopContainerRequest) (*Status, *http.Response, error) {
+func (a *ContainerActionsAPIService) StopContainerExecute(r ApiStopContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -530,13 +530,13 @@ func (a *ContainerActionsApiService) StopContainerExecute(r ApiStopContainerRequ
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsApiService.StopContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.StopContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/stop"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -583,9 +583,9 @@ func (a *ContainerActionsApiService) StopContainerExecute(r ApiStopContainerRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

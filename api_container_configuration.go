@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ContainerConfigurationApiService ContainerConfigurationApi service
-type ContainerConfigurationApiService service
+// ContainerConfigurationAPIService ContainerConfigurationAPI service
+type ContainerConfigurationAPIService service
 
 type ApiEditContainerAdvancedSettingsRequest struct {
 	ctx                       context.Context
-	ApiService                *ContainerConfigurationApiService
+	ApiService                *ContainerConfigurationAPIService
 	containerId               string
 	containerAdvancedSettings *ContainerAdvancedSettings
 }
@@ -48,7 +48,7 @@ Edit advanced settings by returning table of advanced settings.
  @param containerId Container ID
  @return ApiEditContainerAdvancedSettingsRequest
 */
-func (a *ContainerConfigurationApiService) EditContainerAdvancedSettings(ctx context.Context, containerId string) ApiEditContainerAdvancedSettingsRequest {
+func (a *ContainerConfigurationAPIService) EditContainerAdvancedSettings(ctx context.Context, containerId string) ApiEditContainerAdvancedSettingsRequest {
 	return ApiEditContainerAdvancedSettingsRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -58,7 +58,7 @@ func (a *ContainerConfigurationApiService) EditContainerAdvancedSettings(ctx con
 
 // Execute executes the request
 //  @return ContainerAdvancedSettings
-func (a *ContainerConfigurationApiService) EditContainerAdvancedSettingsExecute(r ApiEditContainerAdvancedSettingsRequest) (*ContainerAdvancedSettings, *http.Response, error) {
+func (a *ContainerConfigurationAPIService) EditContainerAdvancedSettingsExecute(r ApiEditContainerAdvancedSettingsRequest) (*ContainerAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -66,13 +66,13 @@ func (a *ContainerConfigurationApiService) EditContainerAdvancedSettingsExecute(
 		localVarReturnValue *ContainerAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationApiService.EditContainerAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationAPIService.EditContainerAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -121,9 +121,9 @@ func (a *ContainerConfigurationApiService) EditContainerAdvancedSettingsExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -150,7 +150,7 @@ func (a *ContainerConfigurationApiService) EditContainerAdvancedSettingsExecute(
 
 type ApiEditContainerNetworkRequest struct {
 	ctx                     context.Context
-	ApiService              *ContainerConfigurationApiService
+	ApiService              *ContainerConfigurationAPIService
 	containerId             string
 	containerNetworkRequest *ContainerNetworkRequest
 }
@@ -173,7 +173,7 @@ Edit the Network settings of the container.
  @param containerId Container ID
  @return ApiEditContainerNetworkRequest
 */
-func (a *ContainerConfigurationApiService) EditContainerNetwork(ctx context.Context, containerId string) ApiEditContainerNetworkRequest {
+func (a *ContainerConfigurationAPIService) EditContainerNetwork(ctx context.Context, containerId string) ApiEditContainerNetworkRequest {
 	return ApiEditContainerNetworkRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -183,7 +183,7 @@ func (a *ContainerConfigurationApiService) EditContainerNetwork(ctx context.Cont
 
 // Execute executes the request
 //  @return ContainerNetwork
-func (a *ContainerConfigurationApiService) EditContainerNetworkExecute(r ApiEditContainerNetworkRequest) (*ContainerNetwork, *http.Response, error) {
+func (a *ContainerConfigurationAPIService) EditContainerNetworkExecute(r ApiEditContainerNetworkRequest) (*ContainerNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -191,13 +191,13 @@ func (a *ContainerConfigurationApiService) EditContainerNetworkExecute(r ApiEdit
 		localVarReturnValue *ContainerNetwork
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationApiService.EditContainerNetwork")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationAPIService.EditContainerNetwork")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/network"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -246,9 +246,9 @@ func (a *ContainerConfigurationApiService) EditContainerNetworkExecute(r ApiEdit
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -275,7 +275,7 @@ func (a *ContainerConfigurationApiService) EditContainerNetworkExecute(r ApiEdit
 
 type ApiGetContainerAdvancedSettingsRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerConfigurationApiService
+	ApiService  *ContainerConfigurationAPIService
 	containerId string
 }
 
@@ -292,7 +292,7 @@ Get list and values of the advanced settings of the container.
  @param containerId Container ID
  @return ApiGetContainerAdvancedSettingsRequest
 */
-func (a *ContainerConfigurationApiService) GetContainerAdvancedSettings(ctx context.Context, containerId string) ApiGetContainerAdvancedSettingsRequest {
+func (a *ContainerConfigurationAPIService) GetContainerAdvancedSettings(ctx context.Context, containerId string) ApiGetContainerAdvancedSettingsRequest {
 	return ApiGetContainerAdvancedSettingsRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -302,7 +302,7 @@ func (a *ContainerConfigurationApiService) GetContainerAdvancedSettings(ctx cont
 
 // Execute executes the request
 //  @return ContainerAdvancedSettings
-func (a *ContainerConfigurationApiService) GetContainerAdvancedSettingsExecute(r ApiGetContainerAdvancedSettingsRequest) (*ContainerAdvancedSettings, *http.Response, error) {
+func (a *ContainerConfigurationAPIService) GetContainerAdvancedSettingsExecute(r ApiGetContainerAdvancedSettingsRequest) (*ContainerAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -310,13 +310,13 @@ func (a *ContainerConfigurationApiService) GetContainerAdvancedSettingsExecute(r
 		localVarReturnValue *ContainerAdvancedSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationApiService.GetContainerAdvancedSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationAPIService.GetContainerAdvancedSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/advancedSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -363,9 +363,9 @@ func (a *ContainerConfigurationApiService) GetContainerAdvancedSettingsExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -392,7 +392,7 @@ func (a *ContainerConfigurationApiService) GetContainerAdvancedSettingsExecute(r
 
 type ApiGetContainerNetworkRequest struct {
 	ctx         context.Context
-	ApiService  *ContainerConfigurationApiService
+	ApiService  *ContainerConfigurationAPIService
 	containerId string
 }
 
@@ -409,7 +409,7 @@ Get status of the container network settings.
  @param containerId Container ID
  @return ApiGetContainerNetworkRequest
 */
-func (a *ContainerConfigurationApiService) GetContainerNetwork(ctx context.Context, containerId string) ApiGetContainerNetworkRequest {
+func (a *ContainerConfigurationAPIService) GetContainerNetwork(ctx context.Context, containerId string) ApiGetContainerNetworkRequest {
 	return ApiGetContainerNetworkRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -419,7 +419,7 @@ func (a *ContainerConfigurationApiService) GetContainerNetwork(ctx context.Conte
 
 // Execute executes the request
 //  @return ContainerNetwork
-func (a *ContainerConfigurationApiService) GetContainerNetworkExecute(r ApiGetContainerNetworkRequest) (*ContainerNetwork, *http.Response, error) {
+func (a *ContainerConfigurationAPIService) GetContainerNetworkExecute(r ApiGetContainerNetworkRequest) (*ContainerNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -427,13 +427,13 @@ func (a *ContainerConfigurationApiService) GetContainerNetworkExecute(r ApiGetCo
 		localVarReturnValue *ContainerNetwork
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationApiService.GetContainerNetwork")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerConfigurationAPIService.GetContainerNetwork")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/container/{containerId}/network"
-	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterToString(r.containerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -480,9 +480,9 @@ func (a *ContainerConfigurationApiService) GetContainerNetworkExecute(r ApiGetCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

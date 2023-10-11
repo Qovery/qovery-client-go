@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomDomainRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomDomainRequest{}
+
 // CustomDomainRequest struct for CustomDomainRequest
 type CustomDomainRequest struct {
 	// your custom domain
@@ -91,14 +94,18 @@ func (o *CustomDomainRequest) SetGenerateCertificate(v bool) {
 }
 
 func (o CustomDomainRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["domain"] = o.Domain
-	}
-	if true {
-		toSerialize["generate_certificate"] = o.GenerateCertificate
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomDomainRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["domain"] = o.Domain
+	toSerialize["generate_certificate"] = o.GenerateCertificate
+	return toSerialize, nil
 }
 
 type NullableCustomDomainRequest struct {

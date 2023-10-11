@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobAdvancedSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobAdvancedSettings{}
+
 // JobAdvancedSettings struct for JobAdvancedSettings
 type JobAdvancedSettings struct {
 	// define the max timeout for the build
@@ -92,7 +95,7 @@ func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 
 // GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
-	if o == nil || o.BuildTimeoutMaxSec == nil {
+	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		var ret int32
 		return ret
 	}
@@ -102,7 +105,7 @@ func (o *JobAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 // GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
-	if o == nil || o.BuildTimeoutMaxSec == nil {
+	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		return nil, false
 	}
 	return o.BuildTimeoutMaxSec, true
@@ -110,7 +113,7 @@ func (o *JobAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
 
 // HasBuildTimeoutMaxSec returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasBuildTimeoutMaxSec() bool {
-	if o != nil && o.BuildTimeoutMaxSec != nil {
+	if o != nil && !IsNil(o.BuildTimeoutMaxSec) {
 		return true
 	}
 
@@ -124,7 +127,7 @@ func (o *JobAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
 
 // GetBuildCpuMaxInMilli returns the BuildCpuMaxInMilli field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
-	if o == nil || o.BuildCpuMaxInMilli == nil {
+	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		var ret int32
 		return ret
 	}
@@ -134,7 +137,7 @@ func (o *JobAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 // GetBuildCpuMaxInMilliOk returns a tuple with the BuildCpuMaxInMilli field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
-	if o == nil || o.BuildCpuMaxInMilli == nil {
+	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		return nil, false
 	}
 	return o.BuildCpuMaxInMilli, true
@@ -142,7 +145,7 @@ func (o *JobAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
 
 // HasBuildCpuMaxInMilli returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasBuildCpuMaxInMilli() bool {
-	if o != nil && o.BuildCpuMaxInMilli != nil {
+	if o != nil && !IsNil(o.BuildCpuMaxInMilli) {
 		return true
 	}
 
@@ -156,7 +159,7 @@ func (o *JobAdvancedSettings) SetBuildCpuMaxInMilli(v int32) {
 
 // GetBuildRamMaxInGib returns the BuildRamMaxInGib field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetBuildRamMaxInGib() int32 {
-	if o == nil || o.BuildRamMaxInGib == nil {
+	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		var ret int32
 		return ret
 	}
@@ -166,7 +169,7 @@ func (o *JobAdvancedSettings) GetBuildRamMaxInGib() int32 {
 // GetBuildRamMaxInGibOk returns a tuple with the BuildRamMaxInGib field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
-	if o == nil || o.BuildRamMaxInGib == nil {
+	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		return nil, false
 	}
 	return o.BuildRamMaxInGib, true
@@ -174,7 +177,7 @@ func (o *JobAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
 
 // HasBuildRamMaxInGib returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasBuildRamMaxInGib() bool {
-	if o != nil && o.BuildRamMaxInGib != nil {
+	if o != nil && !IsNil(o.BuildRamMaxInGib) {
 		return true
 	}
 
@@ -188,7 +191,7 @@ func (o *JobAdvancedSettings) SetBuildRamMaxInGib(v int32) {
 
 // GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32 {
-	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+	if o == nil || IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		var ret int32
 		return ret
 	}
@@ -198,7 +201,7 @@ func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32
 // GetDeploymentTerminationGracePeriodSecondsOk returns a tuple with the DeploymentTerminationGracePeriodSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*int32, bool) {
-	if o == nil || o.DeploymentTerminationGracePeriodSeconds == nil {
+	if o == nil || IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		return nil, false
 	}
 	return o.DeploymentTerminationGracePeriodSeconds, true
@@ -206,7 +209,7 @@ func (o *JobAdvancedSettings) GetDeploymentTerminationGracePeriodSecondsOk() (*i
 
 // HasDeploymentTerminationGracePeriodSeconds returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasDeploymentTerminationGracePeriodSeconds() bool {
-	if o != nil && o.DeploymentTerminationGracePeriodSeconds != nil {
+	if o != nil && !IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		return true
 	}
 
@@ -220,7 +223,7 @@ func (o *JobAdvancedSettings) SetDeploymentTerminationGracePeriodSeconds(v int32
 
 // GetDeploymentAffinityNodeRequired returns the DeploymentAffinityNodeRequired field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequired() map[string]string {
-	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+	if o == nil || IsNil(o.DeploymentAffinityNodeRequired) {
 		var ret map[string]string
 		return ret
 	}
@@ -230,7 +233,7 @@ func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequired() map[string]str
 // GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool) {
-	if o == nil || o.DeploymentAffinityNodeRequired == nil {
+	if o == nil || IsNil(o.DeploymentAffinityNodeRequired) {
 		return nil, false
 	}
 	return o.DeploymentAffinityNodeRequired, true
@@ -238,7 +241,7 @@ func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string
 
 // HasDeploymentAffinityNodeRequired returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasDeploymentAffinityNodeRequired() bool {
-	if o != nil && o.DeploymentAffinityNodeRequired != nil {
+	if o != nil && !IsNil(o.DeploymentAffinityNodeRequired) {
 		return true
 	}
 
@@ -252,7 +255,7 @@ func (o *JobAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[string]str
 
 // GetJobDeleteTtlSecondsAfterFinished returns the JobDeleteTtlSecondsAfterFinished field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobAdvancedSettings) GetJobDeleteTtlSecondsAfterFinished() int32 {
-	if o == nil || o.JobDeleteTtlSecondsAfterFinished.Get() == nil {
+	if o == nil || IsNil(o.JobDeleteTtlSecondsAfterFinished.Get()) {
 		var ret int32
 		return ret
 	}
@@ -295,7 +298,7 @@ func (o *JobAdvancedSettings) UnsetJobDeleteTtlSecondsAfterFinished() {
 
 // GetCronjobConcurrencyPolicy returns the CronjobConcurrencyPolicy field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetCronjobConcurrencyPolicy() string {
-	if o == nil || o.CronjobConcurrencyPolicy == nil {
+	if o == nil || IsNil(o.CronjobConcurrencyPolicy) {
 		var ret string
 		return ret
 	}
@@ -305,7 +308,7 @@ func (o *JobAdvancedSettings) GetCronjobConcurrencyPolicy() string {
 // GetCronjobConcurrencyPolicyOk returns a tuple with the CronjobConcurrencyPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetCronjobConcurrencyPolicyOk() (*string, bool) {
-	if o == nil || o.CronjobConcurrencyPolicy == nil {
+	if o == nil || IsNil(o.CronjobConcurrencyPolicy) {
 		return nil, false
 	}
 	return o.CronjobConcurrencyPolicy, true
@@ -313,7 +316,7 @@ func (o *JobAdvancedSettings) GetCronjobConcurrencyPolicyOk() (*string, bool) {
 
 // HasCronjobConcurrencyPolicy returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasCronjobConcurrencyPolicy() bool {
-	if o != nil && o.CronjobConcurrencyPolicy != nil {
+	if o != nil && !IsNil(o.CronjobConcurrencyPolicy) {
 		return true
 	}
 
@@ -327,7 +330,7 @@ func (o *JobAdvancedSettings) SetCronjobConcurrencyPolicy(v string) {
 
 // GetCronjobFailedJobsHistoryLimit returns the CronjobFailedJobsHistoryLimit field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetCronjobFailedJobsHistoryLimit() int32 {
-	if o == nil || o.CronjobFailedJobsHistoryLimit == nil {
+	if o == nil || IsNil(o.CronjobFailedJobsHistoryLimit) {
 		var ret int32
 		return ret
 	}
@@ -337,7 +340,7 @@ func (o *JobAdvancedSettings) GetCronjobFailedJobsHistoryLimit() int32 {
 // GetCronjobFailedJobsHistoryLimitOk returns a tuple with the CronjobFailedJobsHistoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetCronjobFailedJobsHistoryLimitOk() (*int32, bool) {
-	if o == nil || o.CronjobFailedJobsHistoryLimit == nil {
+	if o == nil || IsNil(o.CronjobFailedJobsHistoryLimit) {
 		return nil, false
 	}
 	return o.CronjobFailedJobsHistoryLimit, true
@@ -345,7 +348,7 @@ func (o *JobAdvancedSettings) GetCronjobFailedJobsHistoryLimitOk() (*int32, bool
 
 // HasCronjobFailedJobsHistoryLimit returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasCronjobFailedJobsHistoryLimit() bool {
-	if o != nil && o.CronjobFailedJobsHistoryLimit != nil {
+	if o != nil && !IsNil(o.CronjobFailedJobsHistoryLimit) {
 		return true
 	}
 
@@ -359,7 +362,7 @@ func (o *JobAdvancedSettings) SetCronjobFailedJobsHistoryLimit(v int32) {
 
 // GetCronjobSuccessJobsHistoryLimit returns the CronjobSuccessJobsHistoryLimit field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetCronjobSuccessJobsHistoryLimit() int32 {
-	if o == nil || o.CronjobSuccessJobsHistoryLimit == nil {
+	if o == nil || IsNil(o.CronjobSuccessJobsHistoryLimit) {
 		var ret int32
 		return ret
 	}
@@ -369,7 +372,7 @@ func (o *JobAdvancedSettings) GetCronjobSuccessJobsHistoryLimit() int32 {
 // GetCronjobSuccessJobsHistoryLimitOk returns a tuple with the CronjobSuccessJobsHistoryLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetCronjobSuccessJobsHistoryLimitOk() (*int32, bool) {
-	if o == nil || o.CronjobSuccessJobsHistoryLimit == nil {
+	if o == nil || IsNil(o.CronjobSuccessJobsHistoryLimit) {
 		return nil, false
 	}
 	return o.CronjobSuccessJobsHistoryLimit, true
@@ -377,7 +380,7 @@ func (o *JobAdvancedSettings) GetCronjobSuccessJobsHistoryLimitOk() (*int32, boo
 
 // HasCronjobSuccessJobsHistoryLimit returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasCronjobSuccessJobsHistoryLimit() bool {
-	if o != nil && o.CronjobSuccessJobsHistoryLimit != nil {
+	if o != nil && !IsNil(o.CronjobSuccessJobsHistoryLimit) {
 		return true
 	}
 
@@ -391,7 +394,7 @@ func (o *JobAdvancedSettings) SetCronjobSuccessJobsHistoryLimit(v int32) {
 
 // GetSecurityServiceAccountName returns the SecurityServiceAccountName field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetSecurityServiceAccountName() string {
-	if o == nil || o.SecurityServiceAccountName == nil {
+	if o == nil || IsNil(o.SecurityServiceAccountName) {
 		var ret string
 		return ret
 	}
@@ -401,7 +404,7 @@ func (o *JobAdvancedSettings) GetSecurityServiceAccountName() string {
 // GetSecurityServiceAccountNameOk returns a tuple with the SecurityServiceAccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetSecurityServiceAccountNameOk() (*string, bool) {
-	if o == nil || o.SecurityServiceAccountName == nil {
+	if o == nil || IsNil(o.SecurityServiceAccountName) {
 		return nil, false
 	}
 	return o.SecurityServiceAccountName, true
@@ -409,7 +412,7 @@ func (o *JobAdvancedSettings) GetSecurityServiceAccountNameOk() (*string, bool) 
 
 // HasSecurityServiceAccountName returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasSecurityServiceAccountName() bool {
-	if o != nil && o.SecurityServiceAccountName != nil {
+	if o != nil && !IsNil(o.SecurityServiceAccountName) {
 		return true
 	}
 
@@ -423,7 +426,7 @@ func (o *JobAdvancedSettings) SetSecurityServiceAccountName(v string) {
 
 // GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
-	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+	if o == nil || IsNil(o.SecurityReadOnlyRootFilesystem) {
 		var ret bool
 		return ret
 	}
@@ -433,7 +436,7 @@ func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
 // GetSecurityReadOnlyRootFilesystemOk returns a tuple with the SecurityReadOnlyRootFilesystem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bool, bool) {
-	if o == nil || o.SecurityReadOnlyRootFilesystem == nil {
+	if o == nil || IsNil(o.SecurityReadOnlyRootFilesystem) {
 		return nil, false
 	}
 	return o.SecurityReadOnlyRootFilesystem, true
@@ -441,7 +444,7 @@ func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystemOk() (*bool, bool
 
 // HasSecurityReadOnlyRootFilesystem returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasSecurityReadOnlyRootFilesystem() bool {
-	if o != nil && o.SecurityReadOnlyRootFilesystem != nil {
+	if o != nil && !IsNil(o.SecurityReadOnlyRootFilesystem) {
 		return true
 	}
 
@@ -454,41 +457,49 @@ func (o *JobAdvancedSettings) SetSecurityReadOnlyRootFilesystem(v bool) {
 }
 
 func (o JobAdvancedSettings) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o JobAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BuildTimeoutMaxSec != nil {
+	if !IsNil(o.BuildTimeoutMaxSec) {
 		toSerialize["build.timeout_max_sec"] = o.BuildTimeoutMaxSec
 	}
-	if o.BuildCpuMaxInMilli != nil {
+	if !IsNil(o.BuildCpuMaxInMilli) {
 		toSerialize["build.cpu_max_in_milli"] = o.BuildCpuMaxInMilli
 	}
-	if o.BuildRamMaxInGib != nil {
+	if !IsNil(o.BuildRamMaxInGib) {
 		toSerialize["build.ram_max_in_gib"] = o.BuildRamMaxInGib
 	}
-	if o.DeploymentTerminationGracePeriodSeconds != nil {
+	if !IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
 	}
-	if o.DeploymentAffinityNodeRequired != nil {
+	if !IsNil(o.DeploymentAffinityNodeRequired) {
 		toSerialize["deployment.affinity.node.required"] = o.DeploymentAffinityNodeRequired
 	}
 	if o.JobDeleteTtlSecondsAfterFinished.IsSet() {
 		toSerialize["job.delete_ttl_seconds_after_finished"] = o.JobDeleteTtlSecondsAfterFinished.Get()
 	}
-	if o.CronjobConcurrencyPolicy != nil {
+	if !IsNil(o.CronjobConcurrencyPolicy) {
 		toSerialize["cronjob.concurrency_policy"] = o.CronjobConcurrencyPolicy
 	}
-	if o.CronjobFailedJobsHistoryLimit != nil {
+	if !IsNil(o.CronjobFailedJobsHistoryLimit) {
 		toSerialize["cronjob.failed_jobs_history_limit"] = o.CronjobFailedJobsHistoryLimit
 	}
-	if o.CronjobSuccessJobsHistoryLimit != nil {
+	if !IsNil(o.CronjobSuccessJobsHistoryLimit) {
 		toSerialize["cronjob.success_jobs_history_limit"] = o.CronjobSuccessJobsHistoryLimit
 	}
-	if o.SecurityServiceAccountName != nil {
+	if !IsNil(o.SecurityServiceAccountName) {
 		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
 	}
-	if o.SecurityReadOnlyRootFilesystem != nil {
+	if !IsNil(o.SecurityReadOnlyRootFilesystem) {
 		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableJobAdvancedSettings struct {

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloneJobRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloneJobRequest{}
+
 // CloneJobRequest struct for CloneJobRequest
 type CloneJobRequest struct {
 	Name          string `json:"name"`
@@ -89,14 +92,18 @@ func (o *CloneJobRequest) SetEnvironmentId(v string) {
 }
 
 func (o CloneJobRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["environment_id"] = o.EnvironmentId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloneJobRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["environment_id"] = o.EnvironmentId
+	return toSerialize, nil
 }
 
 type NullableCloneJobRequest struct {

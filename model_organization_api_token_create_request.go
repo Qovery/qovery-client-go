@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationApiTokenCreateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationApiTokenCreateRequest{}
+
 // OrganizationApiTokenCreateRequest struct for OrganizationApiTokenCreateRequest
 type OrganizationApiTokenCreateRequest struct {
 	Name        string                            `json:"name"`
@@ -69,7 +72,7 @@ func (o *OrganizationApiTokenCreateRequest) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *OrganizationApiTokenCreateRequest) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -79,7 +82,7 @@ func (o *OrganizationApiTokenCreateRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationApiTokenCreateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -87,7 +90,7 @@ func (o *OrganizationApiTokenCreateRequest) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *OrganizationApiTokenCreateRequest) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -101,7 +104,7 @@ func (o *OrganizationApiTokenCreateRequest) SetDescription(v string) {
 
 // GetScope returns the Scope field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationApiTokenCreateRequest) GetScope() OrganizationApiTokenScope {
-	if o == nil || o.Scope.Get() == nil {
+	if o == nil || IsNil(o.Scope.Get()) {
 		var ret OrganizationApiTokenScope
 		return ret
 	}
@@ -169,20 +172,24 @@ func (o *OrganizationApiTokenCreateRequest) SetRoleId(v string) {
 }
 
 func (o OrganizationApiTokenCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-	if o.Description != nil {
+	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationApiTokenCreateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.Scope.IsSet() {
 		toSerialize["scope"] = o.Scope.Get()
 	}
-	if true {
-		toSerialize["role_id"] = o.RoleId.Get()
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["role_id"] = o.RoleId.Get()
+	return toSerialize, nil
 }
 
 type NullableOrganizationApiTokenCreateRequest struct {

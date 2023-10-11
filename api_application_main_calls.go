@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ApplicationMainCallsApiService ApplicationMainCallsApi service
-type ApplicationMainCallsApiService service
+// ApplicationMainCallsAPIService ApplicationMainCallsAPI service
+type ApplicationMainCallsAPIService service
 
 type ApiDeleteApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMainCallsApiService
+	ApiService    *ApplicationMainCallsAPIService
 	applicationId string
 }
 
@@ -42,7 +42,7 @@ To delete the application you must have the admin permission
  @param applicationId Application ID
  @return ApiDeleteApplicationRequest
 */
-func (a *ApplicationMainCallsApiService) DeleteApplication(ctx context.Context, applicationId string) ApiDeleteApplicationRequest {
+func (a *ApplicationMainCallsAPIService) DeleteApplication(ctx context.Context, applicationId string) ApiDeleteApplicationRequest {
 	return ApiDeleteApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -51,20 +51,20 @@ func (a *ApplicationMainCallsApiService) DeleteApplication(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *ApplicationMainCallsApiService) DeleteApplicationExecute(r ApiDeleteApplicationRequest) (*http.Response, error) {
+func (a *ApplicationMainCallsAPIService) DeleteApplicationExecute(r ApiDeleteApplicationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.DeleteApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsAPIService.DeleteApplication")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *ApplicationMainCallsApiService) DeleteApplicationExecute(r ApiDeleteApp
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -131,7 +131,7 @@ func (a *ApplicationMainCallsApiService) DeleteApplicationExecute(r ApiDeleteApp
 
 type ApiEditApplicationRequest struct {
 	ctx                    context.Context
-	ApiService             *ApplicationMainCallsApiService
+	ApiService             *ApplicationMainCallsAPIService
 	applicationId          string
 	applicationEditRequest *ApplicationEditRequest
 }
@@ -157,7 +157,7 @@ EditApplication Edit application
  @param applicationId Application ID
  @return ApiEditApplicationRequest
 */
-func (a *ApplicationMainCallsApiService) EditApplication(ctx context.Context, applicationId string) ApiEditApplicationRequest {
+func (a *ApplicationMainCallsAPIService) EditApplication(ctx context.Context, applicationId string) ApiEditApplicationRequest {
 	return ApiEditApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -167,7 +167,7 @@ func (a *ApplicationMainCallsApiService) EditApplication(ctx context.Context, ap
 
 // Execute executes the request
 //  @return Application
-func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplicationRequest) (*Application, *http.Response, error) {
+func (a *ApplicationMainCallsAPIService) EditApplicationExecute(r ApiEditApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -175,13 +175,13 @@ func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplica
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.EditApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsAPIService.EditApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -230,9 +230,9 @@ func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplica
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -259,7 +259,7 @@ func (a *ApplicationMainCallsApiService) EditApplicationExecute(r ApiEditApplica
 
 type ApiGetApplicationRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMainCallsApiService
+	ApiService    *ApplicationMainCallsAPIService
 	applicationId string
 }
 
@@ -274,7 +274,7 @@ GetApplication Get application by ID
  @param applicationId Application ID
  @return ApiGetApplicationRequest
 */
-func (a *ApplicationMainCallsApiService) GetApplication(ctx context.Context, applicationId string) ApiGetApplicationRequest {
+func (a *ApplicationMainCallsAPIService) GetApplication(ctx context.Context, applicationId string) ApiGetApplicationRequest {
 	return ApiGetApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -284,7 +284,7 @@ func (a *ApplicationMainCallsApiService) GetApplication(ctx context.Context, app
 
 // Execute executes the request
 //  @return Application
-func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicationRequest) (*Application, *http.Response, error) {
+func (a *ApplicationMainCallsAPIService) GetApplicationExecute(r ApiGetApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -292,13 +292,13 @@ func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicati
 		localVarReturnValue *Application
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.GetApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsAPIService.GetApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -345,9 +345,9 @@ func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -374,7 +374,7 @@ func (a *ApplicationMainCallsApiService) GetApplicationExecute(r ApiGetApplicati
 
 type ApiGetApplicationStatusRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMainCallsApiService
+	ApiService    *ApplicationMainCallsAPIService
 	applicationId string
 }
 
@@ -389,7 +389,7 @@ GetApplicationStatus Get application status
  @param applicationId Application ID
  @return ApiGetApplicationStatusRequest
 */
-func (a *ApplicationMainCallsApiService) GetApplicationStatus(ctx context.Context, applicationId string) ApiGetApplicationStatusRequest {
+func (a *ApplicationMainCallsAPIService) GetApplicationStatus(ctx context.Context, applicationId string) ApiGetApplicationStatusRequest {
 	return ApiGetApplicationStatusRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -399,7 +399,7 @@ func (a *ApplicationMainCallsApiService) GetApplicationStatus(ctx context.Contex
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationMainCallsApiService) GetApplicationStatusExecute(r ApiGetApplicationStatusRequest) (*Status, *http.Response, error) {
+func (a *ApplicationMainCallsAPIService) GetApplicationStatusExecute(r ApiGetApplicationStatusRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -407,13 +407,13 @@ func (a *ApplicationMainCallsApiService) GetApplicationStatusExecute(r ApiGetApp
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.GetApplicationStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsAPIService.GetApplicationStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -460,9 +460,9 @@ func (a *ApplicationMainCallsApiService) GetApplicationStatusExecute(r ApiGetApp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -489,7 +489,7 @@ func (a *ApplicationMainCallsApiService) GetApplicationStatusExecute(r ApiGetApp
 
 type ApiListApplicationCommitRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMainCallsApiService
+	ApiService    *ApplicationMainCallsAPIService
 	applicationId string
 	startId       *string
 	gitCommitId   *string
@@ -520,7 +520,7 @@ Returns list of the last 100 commits made on the repository linked to the applic
  @param applicationId Application ID
  @return ApiListApplicationCommitRequest
 */
-func (a *ApplicationMainCallsApiService) ListApplicationCommit(ctx context.Context, applicationId string) ApiListApplicationCommitRequest {
+func (a *ApplicationMainCallsAPIService) ListApplicationCommit(ctx context.Context, applicationId string) ApiListApplicationCommitRequest {
 	return ApiListApplicationCommitRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -530,7 +530,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationCommit(ctx context.Conte
 
 // Execute executes the request
 //  @return CommitResponseList
-func (a *ApplicationMainCallsApiService) ListApplicationCommitExecute(r ApiListApplicationCommitRequest) (*CommitResponseList, *http.Response, error) {
+func (a *ApplicationMainCallsAPIService) ListApplicationCommitExecute(r ApiListApplicationCommitRequest) (*CommitResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -538,23 +538,23 @@ func (a *ApplicationMainCallsApiService) ListApplicationCommitExecute(r ApiListA
 		localVarReturnValue *CommitResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.ListApplicationCommit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsAPIService.ListApplicationCommit")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/commit"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.startId != nil {
-		localVarQueryParams.Add("startId", parameterToString(*r.startId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startId", r.startId, "")
 	}
 	if r.gitCommitId != nil {
-		localVarQueryParams.Add("gitCommitId", parameterToString(*r.gitCommitId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitCommitId", r.gitCommitId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -597,9 +597,9 @@ func (a *ApplicationMainCallsApiService) ListApplicationCommitExecute(r ApiListA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -626,7 +626,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationCommitExecute(r ApiListA
 
 type ApiListApplicationContributorRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMainCallsApiService
+	ApiService    *ApplicationMainCallsAPIService
 	applicationId string
 }
 
@@ -641,7 +641,7 @@ ListApplicationContributor List contributors
  @param applicationId Application ID
  @return ApiListApplicationContributorRequest
 */
-func (a *ApplicationMainCallsApiService) ListApplicationContributor(ctx context.Context, applicationId string) ApiListApplicationContributorRequest {
+func (a *ApplicationMainCallsAPIService) ListApplicationContributor(ctx context.Context, applicationId string) ApiListApplicationContributorRequest {
 	return ApiListApplicationContributorRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -651,7 +651,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationContributor(ctx context.
 
 // Execute executes the request
 //  @return UserResponseList
-func (a *ApplicationMainCallsApiService) ListApplicationContributorExecute(r ApiListApplicationContributorRequest) (*UserResponseList, *http.Response, error) {
+func (a *ApplicationMainCallsAPIService) ListApplicationContributorExecute(r ApiListApplicationContributorRequest) (*UserResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -659,13 +659,13 @@ func (a *ApplicationMainCallsApiService) ListApplicationContributorExecute(r Api
 		localVarReturnValue *UserResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.ListApplicationContributor")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsAPIService.ListApplicationContributor")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/contributor"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -712,9 +712,9 @@ func (a *ApplicationMainCallsApiService) ListApplicationContributorExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -741,7 +741,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationContributorExecute(r Api
 
 type ApiListApplicationLinksRequest struct {
 	ctx           context.Context
-	ApiService    *ApplicationMainCallsApiService
+	ApiService    *ApplicationMainCallsAPIService
 	applicationId string
 }
 
@@ -758,7 +758,7 @@ This will return all the custom domains and Qovery autogenerated domain for the 
  @param applicationId Application ID
  @return ApiListApplicationLinksRequest
 */
-func (a *ApplicationMainCallsApiService) ListApplicationLinks(ctx context.Context, applicationId string) ApiListApplicationLinksRequest {
+func (a *ApplicationMainCallsAPIService) ListApplicationLinks(ctx context.Context, applicationId string) ApiListApplicationLinksRequest {
 	return ApiListApplicationLinksRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -768,7 +768,7 @@ func (a *ApplicationMainCallsApiService) ListApplicationLinks(ctx context.Contex
 
 // Execute executes the request
 //  @return LinkResponseList
-func (a *ApplicationMainCallsApiService) ListApplicationLinksExecute(r ApiListApplicationLinksRequest) (*LinkResponseList, *http.Response, error) {
+func (a *ApplicationMainCallsAPIService) ListApplicationLinksExecute(r ApiListApplicationLinksRequest) (*LinkResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -776,13 +776,13 @@ func (a *ApplicationMainCallsApiService) ListApplicationLinksExecute(r ApiListAp
 		localVarReturnValue *LinkResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsApiService.ListApplicationLinks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationMainCallsAPIService.ListApplicationLinks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/application/{applicationId}/link"
-	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterToString(r.applicationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -829,9 +829,9 @@ func (a *ApplicationMainCallsApiService) ListApplicationLinksExecute(r ApiListAp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

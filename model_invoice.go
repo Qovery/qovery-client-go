@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the Invoice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Invoice{}
+
 // Invoice struct for Invoice
 type Invoice struct {
 	TotalInCents int32             `json:"total_in_cents"`
@@ -194,26 +197,22 @@ func (o *Invoice) SetStatus(v InvoiceStatusEnum) {
 }
 
 func (o Invoice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["total_in_cents"] = o.TotalInCents
-	}
-	if true {
-		toSerialize["total"] = o.Total
-	}
-	if true {
-		toSerialize["currency_code"] = o.CurrencyCode
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["status"] = o.Status
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Invoice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["total_in_cents"] = o.TotalInCents
+	toSerialize["total"] = o.Total
+	toSerialize["currency_code"] = o.CurrencyCode
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["status"] = o.Status
+	return toSerialize, nil
 }
 
 type NullableInvoice struct {

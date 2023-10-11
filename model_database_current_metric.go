@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DatabaseCurrentMetric type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DatabaseCurrentMetric{}
+
 // DatabaseCurrentMetric struct for DatabaseCurrentMetric
 type DatabaseCurrentMetric struct {
 	Cpu     *DatabaseCurrentMetricCpu     `json:"cpu,omitempty"`
@@ -41,7 +44,7 @@ func NewDatabaseCurrentMetricWithDefaults() *DatabaseCurrentMetric {
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetric) GetCpu() DatabaseCurrentMetricCpu {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		var ret DatabaseCurrentMetricCpu
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *DatabaseCurrentMetric) GetCpu() DatabaseCurrentMetricCpu {
 // GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetric) GetCpuOk() (*DatabaseCurrentMetricCpu, bool) {
-	if o == nil || o.Cpu == nil {
+	if o == nil || IsNil(o.Cpu) {
 		return nil, false
 	}
 	return o.Cpu, true
@@ -59,7 +62,7 @@ func (o *DatabaseCurrentMetric) GetCpuOk() (*DatabaseCurrentMetricCpu, bool) {
 
 // HasCpu returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetric) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
+	if o != nil && !IsNil(o.Cpu) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *DatabaseCurrentMetric) SetCpu(v DatabaseCurrentMetricCpu) {
 
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetric) GetMemory() DatabaseCurrentMetricMemory {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		var ret DatabaseCurrentMetricMemory
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *DatabaseCurrentMetric) GetMemory() DatabaseCurrentMetricMemory {
 // GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetric) GetMemoryOk() (*DatabaseCurrentMetricMemory, bool) {
-	if o == nil || o.Memory == nil {
+	if o == nil || IsNil(o.Memory) {
 		return nil, false
 	}
 	return o.Memory, true
@@ -91,7 +94,7 @@ func (o *DatabaseCurrentMetric) GetMemoryOk() (*DatabaseCurrentMetricMemory, boo
 
 // HasMemory returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetric) HasMemory() bool {
-	if o != nil && o.Memory != nil {
+	if o != nil && !IsNil(o.Memory) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *DatabaseCurrentMetric) SetMemory(v DatabaseCurrentMetricMemory) {
 
 // GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetric) GetStorage() DatabaseCurrentMetricStorage {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		var ret DatabaseCurrentMetricStorage
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *DatabaseCurrentMetric) GetStorage() DatabaseCurrentMetricStorage {
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetric) GetStorageOk() (*DatabaseCurrentMetricStorage, bool) {
-	if o == nil || o.Storage == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
 	return o.Storage, true
@@ -123,7 +126,7 @@ func (o *DatabaseCurrentMetric) GetStorageOk() (*DatabaseCurrentMetricStorage, b
 
 // HasStorage returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetric) HasStorage() bool {
-	if o != nil && o.Storage != nil {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *DatabaseCurrentMetric) SetStorage(v DatabaseCurrentMetricStorage) {
 }
 
 func (o DatabaseCurrentMetric) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.Storage != nil {
-		toSerialize["storage"] = o.Storage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DatabaseCurrentMetric) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Cpu) {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if !IsNil(o.Memory) {
+		toSerialize["memory"] = o.Memory
+	}
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabaseCurrentMetric struct {

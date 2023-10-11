@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// JobMetricsApiService JobMetricsApi service
-type JobMetricsApiService service
+// JobMetricsAPIService JobMetricsAPI service
+type JobMetricsAPIService service
 
 type ApiGetJobCurrentInstanceRequest struct {
 	ctx        context.Context
-	ApiService *JobMetricsApiService
+	ApiService *JobMetricsAPIService
 	jobId      string
 }
 
@@ -40,7 +40,7 @@ GetJobCurrentInstance List currently running instances of the job with their CPU
  @param jobId Job ID
  @return ApiGetJobCurrentInstanceRequest
 */
-func (a *JobMetricsApiService) GetJobCurrentInstance(ctx context.Context, jobId string) ApiGetJobCurrentInstanceRequest {
+func (a *JobMetricsAPIService) GetJobCurrentInstance(ctx context.Context, jobId string) ApiGetJobCurrentInstanceRequest {
 	return ApiGetJobCurrentInstanceRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -50,7 +50,7 @@ func (a *JobMetricsApiService) GetJobCurrentInstance(ctx context.Context, jobId 
 
 // Execute executes the request
 //  @return InstanceResponseList
-func (a *JobMetricsApiService) GetJobCurrentInstanceExecute(r ApiGetJobCurrentInstanceRequest) (*InstanceResponseList, *http.Response, error) {
+func (a *JobMetricsAPIService) GetJobCurrentInstanceExecute(r ApiGetJobCurrentInstanceRequest) (*InstanceResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -58,13 +58,13 @@ func (a *JobMetricsApiService) GetJobCurrentInstanceExecute(r ApiGetJobCurrentIn
 		localVarReturnValue *InstanceResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobMetricsApiService.GetJobCurrentInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobMetricsAPIService.GetJobCurrentInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/job/{jobId}/instance"
-	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterToString(r.jobId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -111,9 +111,9 @@ func (a *JobMetricsApiService) GetJobCurrentInstanceExecute(r ApiGetJobCurrentIn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

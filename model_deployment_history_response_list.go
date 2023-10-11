@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentHistoryResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryResponseList{}
+
 // DeploymentHistoryResponseList struct for DeploymentHistoryResponseList
 type DeploymentHistoryResponseList struct {
 	Results []DeploymentHistory `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewDeploymentHistoryResponseListWithDefaults() *DeploymentHistoryResponseLi
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *DeploymentHistoryResponseList) GetResults() []DeploymentHistory {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []DeploymentHistory
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *DeploymentHistoryResponseList) GetResults() []DeploymentHistory {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryResponseList) GetResultsOk() ([]DeploymentHistory, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *DeploymentHistoryResponseList) GetResultsOk() ([]DeploymentHistory, boo
 
 // HasResults returns a boolean if a field has been set.
 func (o *DeploymentHistoryResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *DeploymentHistoryResponseList) SetResults(v []DeploymentHistory) {
 }
 
 func (o DeploymentHistoryResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistoryResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistoryResponseList struct {

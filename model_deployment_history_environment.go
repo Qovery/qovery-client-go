@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentHistoryEnvironment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryEnvironment{}
+
 // DeploymentHistoryEnvironment struct for DeploymentHistoryEnvironment
 type DeploymentHistoryEnvironment struct {
 	Id           string                         `json:"id"`
@@ -97,7 +100,7 @@ func (o *DeploymentHistoryEnvironment) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironment) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -107,7 +110,7 @@ func (o *DeploymentHistoryEnvironment) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironment) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -115,7 +118,7 @@ func (o *DeploymentHistoryEnvironment) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *DeploymentHistoryEnvironment) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -129,7 +132,7 @@ func (o *DeploymentHistoryEnvironment) SetUpdatedAt(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironment) GetStatus() StateEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret StateEnum
 		return ret
 	}
@@ -139,7 +142,7 @@ func (o *DeploymentHistoryEnvironment) GetStatus() StateEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironment) GetStatusOk() (*StateEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -147,7 +150,7 @@ func (o *DeploymentHistoryEnvironment) GetStatusOk() (*StateEnum, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DeploymentHistoryEnvironment) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -161,7 +164,7 @@ func (o *DeploymentHistoryEnvironment) SetStatus(v StateEnum) {
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironment) GetApplications() []DeploymentHistoryApplication {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		var ret []DeploymentHistoryApplication
 		return ret
 	}
@@ -171,7 +174,7 @@ func (o *DeploymentHistoryEnvironment) GetApplications() []DeploymentHistoryAppl
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironment) GetApplicationsOk() ([]DeploymentHistoryApplication, bool) {
-	if o == nil || o.Applications == nil {
+	if o == nil || IsNil(o.Applications) {
 		return nil, false
 	}
 	return o.Applications, true
@@ -179,7 +182,7 @@ func (o *DeploymentHistoryEnvironment) GetApplicationsOk() ([]DeploymentHistoryA
 
 // HasApplications returns a boolean if a field has been set.
 func (o *DeploymentHistoryEnvironment) HasApplications() bool {
-	if o != nil && o.Applications != nil {
+	if o != nil && !IsNil(o.Applications) {
 		return true
 	}
 
@@ -193,7 +196,7 @@ func (o *DeploymentHistoryEnvironment) SetApplications(v []DeploymentHistoryAppl
 
 // GetContainers returns the Containers field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironment) GetContainers() []DeploymentHistoryContainer {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		var ret []DeploymentHistoryContainer
 		return ret
 	}
@@ -203,7 +206,7 @@ func (o *DeploymentHistoryEnvironment) GetContainers() []DeploymentHistoryContai
 // GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironment) GetContainersOk() ([]DeploymentHistoryContainer, bool) {
-	if o == nil || o.Containers == nil {
+	if o == nil || IsNil(o.Containers) {
 		return nil, false
 	}
 	return o.Containers, true
@@ -211,7 +214,7 @@ func (o *DeploymentHistoryEnvironment) GetContainersOk() ([]DeploymentHistoryCon
 
 // HasContainers returns a boolean if a field has been set.
 func (o *DeploymentHistoryEnvironment) HasContainers() bool {
-	if o != nil && o.Containers != nil {
+	if o != nil && !IsNil(o.Containers) {
 		return true
 	}
 
@@ -225,7 +228,7 @@ func (o *DeploymentHistoryEnvironment) SetContainers(v []DeploymentHistoryContai
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironment) GetDatabases() []DeploymentHistoryDatabase {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		var ret []DeploymentHistoryDatabase
 		return ret
 	}
@@ -235,7 +238,7 @@ func (o *DeploymentHistoryEnvironment) GetDatabases() []DeploymentHistoryDatabas
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironment) GetDatabasesOk() ([]DeploymentHistoryDatabase, bool) {
-	if o == nil || o.Databases == nil {
+	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
 	return o.Databases, true
@@ -243,7 +246,7 @@ func (o *DeploymentHistoryEnvironment) GetDatabasesOk() ([]DeploymentHistoryData
 
 // HasDatabases returns a boolean if a field has been set.
 func (o *DeploymentHistoryEnvironment) HasDatabases() bool {
-	if o != nil && o.Databases != nil {
+	if o != nil && !IsNil(o.Databases) {
 		return true
 	}
 
@@ -257,7 +260,7 @@ func (o *DeploymentHistoryEnvironment) SetDatabases(v []DeploymentHistoryDatabas
 
 // GetJobs returns the Jobs field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironment) GetJobs() []DeploymentHistoryJobResponse {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		var ret []DeploymentHistoryJobResponse
 		return ret
 	}
@@ -267,7 +270,7 @@ func (o *DeploymentHistoryEnvironment) GetJobs() []DeploymentHistoryJobResponse 
 // GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironment) GetJobsOk() ([]DeploymentHistoryJobResponse, bool) {
-	if o == nil || o.Jobs == nil {
+	if o == nil || IsNil(o.Jobs) {
 		return nil, false
 	}
 	return o.Jobs, true
@@ -275,7 +278,7 @@ func (o *DeploymentHistoryEnvironment) GetJobsOk() ([]DeploymentHistoryJobRespon
 
 // HasJobs returns a boolean if a field has been set.
 func (o *DeploymentHistoryEnvironment) HasJobs() bool {
-	if o != nil && o.Jobs != nil {
+	if o != nil && !IsNil(o.Jobs) {
 		return true
 	}
 
@@ -288,32 +291,36 @@ func (o *DeploymentHistoryEnvironment) SetJobs(v []DeploymentHistoryJobResponse)
 }
 
 func (o DeploymentHistoryEnvironment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
-	}
-	if o.Applications != nil {
-		toSerialize["applications"] = o.Applications
-	}
-	if o.Containers != nil {
-		toSerialize["containers"] = o.Containers
-	}
-	if o.Databases != nil {
-		toSerialize["databases"] = o.Databases
-	}
-	if o.Jobs != nil {
-		toSerialize["jobs"] = o.Jobs
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistoryEnvironment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Applications) {
+		toSerialize["applications"] = o.Applications
+	}
+	if !IsNil(o.Containers) {
+		toSerialize["containers"] = o.Containers
+	}
+	if !IsNil(o.Databases) {
+		toSerialize["databases"] = o.Databases
+	}
+	if !IsNil(o.Jobs) {
+		toSerialize["jobs"] = o.Jobs
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistoryEnvironment struct {

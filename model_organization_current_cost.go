@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationCurrentCost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationCurrentCost{}
+
 // OrganizationCurrentCost struct for OrganizationCurrentCost
 type OrganizationCurrentCost struct {
 	Plan *PlanEnum `json:"plan,omitempty"`
@@ -44,7 +47,7 @@ func NewOrganizationCurrentCostWithDefaults() *OrganizationCurrentCost {
 
 // GetPlan returns the Plan field value if set, zero value otherwise.
 func (o *OrganizationCurrentCost) GetPlan() PlanEnum {
-	if o == nil || o.Plan == nil {
+	if o == nil || IsNil(o.Plan) {
 		var ret PlanEnum
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *OrganizationCurrentCost) GetPlan() PlanEnum {
 // GetPlanOk returns a tuple with the Plan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCurrentCost) GetPlanOk() (*PlanEnum, bool) {
-	if o == nil || o.Plan == nil {
+	if o == nil || IsNil(o.Plan) {
 		return nil, false
 	}
 	return o.Plan, true
@@ -62,7 +65,7 @@ func (o *OrganizationCurrentCost) GetPlanOk() (*PlanEnum, bool) {
 
 // HasPlan returns a boolean if a field has been set.
 func (o *OrganizationCurrentCost) HasPlan() bool {
-	if o != nil && o.Plan != nil {
+	if o != nil && !IsNil(o.Plan) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *OrganizationCurrentCost) SetPlan(v PlanEnum) {
 
 // GetRemainingTrialDay returns the RemainingTrialDay field value if set, zero value otherwise.
 func (o *OrganizationCurrentCost) GetRemainingTrialDay() int32 {
-	if o == nil || o.RemainingTrialDay == nil {
+	if o == nil || IsNil(o.RemainingTrialDay) {
 		var ret int32
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *OrganizationCurrentCost) GetRemainingTrialDay() int32 {
 // GetRemainingTrialDayOk returns a tuple with the RemainingTrialDay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCurrentCost) GetRemainingTrialDayOk() (*int32, bool) {
-	if o == nil || o.RemainingTrialDay == nil {
+	if o == nil || IsNil(o.RemainingTrialDay) {
 		return nil, false
 	}
 	return o.RemainingTrialDay, true
@@ -94,7 +97,7 @@ func (o *OrganizationCurrentCost) GetRemainingTrialDayOk() (*int32, bool) {
 
 // HasRemainingTrialDay returns a boolean if a field has been set.
 func (o *OrganizationCurrentCost) HasRemainingTrialDay() bool {
-	if o != nil && o.RemainingTrialDay != nil {
+	if o != nil && !IsNil(o.RemainingTrialDay) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *OrganizationCurrentCost) SetRemainingTrialDay(v int32) {
 
 // GetRemainingCredits returns the RemainingCredits field value if set, zero value otherwise.
 func (o *OrganizationCurrentCost) GetRemainingCredits() RemainingCredits {
-	if o == nil || o.RemainingCredits == nil {
+	if o == nil || IsNil(o.RemainingCredits) {
 		var ret RemainingCredits
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *OrganizationCurrentCost) GetRemainingCredits() RemainingCredits {
 // GetRemainingCreditsOk returns a tuple with the RemainingCredits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCurrentCost) GetRemainingCreditsOk() (*RemainingCredits, bool) {
-	if o == nil || o.RemainingCredits == nil {
+	if o == nil || IsNil(o.RemainingCredits) {
 		return nil, false
 	}
 	return o.RemainingCredits, true
@@ -126,7 +129,7 @@ func (o *OrganizationCurrentCost) GetRemainingCreditsOk() (*RemainingCredits, bo
 
 // HasRemainingCredits returns a boolean if a field has been set.
 func (o *OrganizationCurrentCost) HasRemainingCredits() bool {
-	if o != nil && o.RemainingCredits != nil {
+	if o != nil && !IsNil(o.RemainingCredits) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *OrganizationCurrentCost) SetRemainingCredits(v RemainingCredits) {
 
 // GetCost returns the Cost field value if set, zero value otherwise.
 func (o *OrganizationCurrentCost) GetCost() Cost {
-	if o == nil || o.Cost == nil {
+	if o == nil || IsNil(o.Cost) {
 		var ret Cost
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *OrganizationCurrentCost) GetCost() Cost {
 // GetCostOk returns a tuple with the Cost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCurrentCost) GetCostOk() (*Cost, bool) {
-	if o == nil || o.Cost == nil {
+	if o == nil || IsNil(o.Cost) {
 		return nil, false
 	}
 	return o.Cost, true
@@ -158,7 +161,7 @@ func (o *OrganizationCurrentCost) GetCostOk() (*Cost, bool) {
 
 // HasCost returns a boolean if a field has been set.
 func (o *OrganizationCurrentCost) HasCost() bool {
-	if o != nil && o.Cost != nil {
+	if o != nil && !IsNil(o.Cost) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *OrganizationCurrentCost) SetCost(v Cost) {
 
 // GetPaidUsage returns the PaidUsage field value if set, zero value otherwise.
 func (o *OrganizationCurrentCost) GetPaidUsage() PaidUsage {
-	if o == nil || o.PaidUsage == nil {
+	if o == nil || IsNil(o.PaidUsage) {
 		var ret PaidUsage
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *OrganizationCurrentCost) GetPaidUsage() PaidUsage {
 // GetPaidUsageOk returns a tuple with the PaidUsage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationCurrentCost) GetPaidUsageOk() (*PaidUsage, bool) {
-	if o == nil || o.PaidUsage == nil {
+	if o == nil || IsNil(o.PaidUsage) {
 		return nil, false
 	}
 	return o.PaidUsage, true
@@ -190,7 +193,7 @@ func (o *OrganizationCurrentCost) GetPaidUsageOk() (*PaidUsage, bool) {
 
 // HasPaidUsage returns a boolean if a field has been set.
 func (o *OrganizationCurrentCost) HasPaidUsage() bool {
-	if o != nil && o.PaidUsage != nil {
+	if o != nil && !IsNil(o.PaidUsage) {
 		return true
 	}
 
@@ -203,23 +206,31 @@ func (o *OrganizationCurrentCost) SetPaidUsage(v PaidUsage) {
 }
 
 func (o OrganizationCurrentCost) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Plan != nil {
-		toSerialize["plan"] = o.Plan
-	}
-	if o.RemainingTrialDay != nil {
-		toSerialize["remaining_trial_day"] = o.RemainingTrialDay
-	}
-	if o.RemainingCredits != nil {
-		toSerialize["remaining_credits"] = o.RemainingCredits
-	}
-	if o.Cost != nil {
-		toSerialize["cost"] = o.Cost
-	}
-	if o.PaidUsage != nil {
-		toSerialize["paid_usage"] = o.PaidUsage
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationCurrentCost) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Plan) {
+		toSerialize["plan"] = o.Plan
+	}
+	if !IsNil(o.RemainingTrialDay) {
+		toSerialize["remaining_trial_day"] = o.RemainingTrialDay
+	}
+	if !IsNil(o.RemainingCredits) {
+		toSerialize["remaining_credits"] = o.RemainingCredits
+	}
+	if !IsNil(o.Cost) {
+		toSerialize["cost"] = o.Cost
+	}
+	if !IsNil(o.PaidUsage) {
+		toSerialize["paid_usage"] = o.PaidUsage
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationCurrentCost struct {

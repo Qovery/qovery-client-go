@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedDatabaseTypeResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedDatabaseTypeResponseList{}
+
 // ManagedDatabaseTypeResponseList struct for ManagedDatabaseTypeResponseList
 type ManagedDatabaseTypeResponseList struct {
 	Results []ManagedDatabaseTypeResponse `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewManagedDatabaseTypeResponseListWithDefaults() *ManagedDatabaseTypeRespon
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ManagedDatabaseTypeResponseList) GetResults() []ManagedDatabaseTypeResponse {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ManagedDatabaseTypeResponse
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ManagedDatabaseTypeResponseList) GetResults() []ManagedDatabaseTypeResp
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ManagedDatabaseTypeResponseList) GetResultsOk() ([]ManagedDatabaseTypeResponse, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ManagedDatabaseTypeResponseList) GetResultsOk() ([]ManagedDatabaseTypeR
 
 // HasResults returns a boolean if a field has been set.
 func (o *ManagedDatabaseTypeResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ManagedDatabaseTypeResponseList) SetResults(v []ManagedDatabaseTypeResp
 }
 
 func (o ManagedDatabaseTypeResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ManagedDatabaseTypeResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableManagedDatabaseTypeResponseList struct {

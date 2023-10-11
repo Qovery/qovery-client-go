@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterLogsDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterLogsDetails{}
+
 // ClusterLogsDetails Present only for `info`, `warning` and `debug` logs
 type ClusterLogsDetails struct {
 	// cloud provider used
@@ -42,7 +45,7 @@ func NewClusterLogsDetailsWithDefaults() *ClusterLogsDetails {
 
 // GetProviderKind returns the ProviderKind field value if set, zero value otherwise.
 func (o *ClusterLogsDetails) GetProviderKind() string {
-	if o == nil || o.ProviderKind == nil {
+	if o == nil || IsNil(o.ProviderKind) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ClusterLogsDetails) GetProviderKind() string {
 // GetProviderKindOk returns a tuple with the ProviderKind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsDetails) GetProviderKindOk() (*string, bool) {
-	if o == nil || o.ProviderKind == nil {
+	if o == nil || IsNil(o.ProviderKind) {
 		return nil, false
 	}
 	return o.ProviderKind, true
@@ -60,7 +63,7 @@ func (o *ClusterLogsDetails) GetProviderKindOk() (*string, bool) {
 
 // HasProviderKind returns a boolean if a field has been set.
 func (o *ClusterLogsDetails) HasProviderKind() bool {
-	if o != nil && o.ProviderKind != nil {
+	if o != nil && !IsNil(o.ProviderKind) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ClusterLogsDetails) SetProviderKind(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *ClusterLogsDetails) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ClusterLogsDetails) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsDetails) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -92,7 +95,7 @@ func (o *ClusterLogsDetails) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *ClusterLogsDetails) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ClusterLogsDetails) SetRegion(v string) {
 
 // GetTransmitter returns the Transmitter field value if set, zero value otherwise.
 func (o *ClusterLogsDetails) GetTransmitter() ClusterLogsErrorEventDetailsTransmitter {
-	if o == nil || o.Transmitter == nil {
+	if o == nil || IsNil(o.Transmitter) {
 		var ret ClusterLogsErrorEventDetailsTransmitter
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ClusterLogsDetails) GetTransmitter() ClusterLogsErrorEventDetailsTransm
 // GetTransmitterOk returns a tuple with the Transmitter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterLogsDetails) GetTransmitterOk() (*ClusterLogsErrorEventDetailsTransmitter, bool) {
-	if o == nil || o.Transmitter == nil {
+	if o == nil || IsNil(o.Transmitter) {
 		return nil, false
 	}
 	return o.Transmitter, true
@@ -124,7 +127,7 @@ func (o *ClusterLogsDetails) GetTransmitterOk() (*ClusterLogsErrorEventDetailsTr
 
 // HasTransmitter returns a boolean if a field has been set.
 func (o *ClusterLogsDetails) HasTransmitter() bool {
-	if o != nil && o.Transmitter != nil {
+	if o != nil && !IsNil(o.Transmitter) {
 		return true
 	}
 
@@ -137,17 +140,25 @@ func (o *ClusterLogsDetails) SetTransmitter(v ClusterLogsErrorEventDetailsTransm
 }
 
 func (o ClusterLogsDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ProviderKind != nil {
-		toSerialize["provider_kind"] = o.ProviderKind
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
-	if o.Transmitter != nil {
-		toSerialize["transmitter"] = o.Transmitter
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterLogsDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProviderKind) {
+		toSerialize["provider_kind"] = o.ProviderKind
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.Transmitter) {
+		toSerialize["transmitter"] = o.Transmitter
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterLogsDetails struct {

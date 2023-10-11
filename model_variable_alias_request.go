@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VariableAliasRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariableAliasRequest{}
+
 // VariableAliasRequest struct for VariableAliasRequest
 type VariableAliasRequest struct {
 	// the value to be used as Alias of the targeted environment variable.
@@ -117,17 +120,19 @@ func (o *VariableAliasRequest) SetAliasParentId(v string) {
 }
 
 func (o VariableAliasRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["alias_scope"] = o.AliasScope
-	}
-	if true {
-		toSerialize["alias_parent_id"] = o.AliasParentId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariableAliasRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	toSerialize["alias_scope"] = o.AliasScope
+	toSerialize["alias_parent_id"] = o.AliasParentId
+	return toSerialize, nil
 }
 
 type NullableVariableAliasRequest struct {

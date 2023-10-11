@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterCredentialsResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterCredentialsResponseList{}
+
 // ClusterCredentialsResponseList struct for ClusterCredentialsResponseList
 type ClusterCredentialsResponseList struct {
 	Results []ClusterCredentials `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewClusterCredentialsResponseListWithDefaults() *ClusterCredentialsResponse
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentials {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ClusterCredentials
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ClusterCredentialsResponseList) GetResults() []ClusterCredentials {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterCredentialsResponseList) GetResultsOk() ([]ClusterCredentials, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *ClusterCredentialsResponseList) GetResultsOk() ([]ClusterCredentials, b
 
 // HasResults returns a boolean if a field has been set.
 func (o *ClusterCredentialsResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ClusterCredentialsResponseList) SetResults(v []ClusterCredentials) {
 }
 
 func (o ClusterCredentialsResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterCredentialsResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterCredentialsResponseList struct {

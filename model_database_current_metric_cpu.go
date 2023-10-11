@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DatabaseCurrentMetricCpu type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DatabaseCurrentMetricCpu{}
+
 // DatabaseCurrentMetricCpu struct for DatabaseCurrentMetricCpu
 type DatabaseCurrentMetricCpu struct {
 	RequestedInFloat          *float32                   `json:"requested_in_float,omitempty"`
@@ -44,7 +47,7 @@ func NewDatabaseCurrentMetricCpuWithDefaults() *DatabaseCurrentMetricCpu {
 
 // GetRequestedInFloat returns the RequestedInFloat field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetricCpu) GetRequestedInFloat() float32 {
-	if o == nil || o.RequestedInFloat == nil {
+	if o == nil || IsNil(o.RequestedInFloat) {
 		var ret float32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *DatabaseCurrentMetricCpu) GetRequestedInFloat() float32 {
 // GetRequestedInFloatOk returns a tuple with the RequestedInFloat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetricCpu) GetRequestedInFloatOk() (*float32, bool) {
-	if o == nil || o.RequestedInFloat == nil {
+	if o == nil || IsNil(o.RequestedInFloat) {
 		return nil, false
 	}
 	return o.RequestedInFloat, true
@@ -62,7 +65,7 @@ func (o *DatabaseCurrentMetricCpu) GetRequestedInFloatOk() (*float32, bool) {
 
 // HasRequestedInFloat returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetricCpu) HasRequestedInFloat() bool {
-	if o != nil && o.RequestedInFloat != nil {
+	if o != nil && !IsNil(o.RequestedInFloat) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *DatabaseCurrentMetricCpu) SetRequestedInFloat(v float32) {
 
 // GetConsumedInNumber returns the ConsumedInNumber field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetricCpu) GetConsumedInNumber() float32 {
-	if o == nil || o.ConsumedInNumber == nil {
+	if o == nil || IsNil(o.ConsumedInNumber) {
 		var ret float32
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *DatabaseCurrentMetricCpu) GetConsumedInNumber() float32 {
 // GetConsumedInNumberOk returns a tuple with the ConsumedInNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetricCpu) GetConsumedInNumberOk() (*float32, bool) {
-	if o == nil || o.ConsumedInNumber == nil {
+	if o == nil || IsNil(o.ConsumedInNumber) {
 		return nil, false
 	}
 	return o.ConsumedInNumber, true
@@ -94,7 +97,7 @@ func (o *DatabaseCurrentMetricCpu) GetConsumedInNumberOk() (*float32, bool) {
 
 // HasConsumedInNumber returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetricCpu) HasConsumedInNumber() bool {
-	if o != nil && o.ConsumedInNumber != nil {
+	if o != nil && !IsNil(o.ConsumedInNumber) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *DatabaseCurrentMetricCpu) SetConsumedInNumber(v float32) {
 
 // GetConsumedInPercent returns the ConsumedInPercent field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetricCpu) GetConsumedInPercent() float32 {
-	if o == nil || o.ConsumedInPercent == nil {
+	if o == nil || IsNil(o.ConsumedInPercent) {
 		var ret float32
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *DatabaseCurrentMetricCpu) GetConsumedInPercent() float32 {
 // GetConsumedInPercentOk returns a tuple with the ConsumedInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetricCpu) GetConsumedInPercentOk() (*float32, bool) {
-	if o == nil || o.ConsumedInPercent == nil {
+	if o == nil || IsNil(o.ConsumedInPercent) {
 		return nil, false
 	}
 	return o.ConsumedInPercent, true
@@ -126,7 +129,7 @@ func (o *DatabaseCurrentMetricCpu) GetConsumedInPercentOk() (*float32, bool) {
 
 // HasConsumedInPercent returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetricCpu) HasConsumedInPercent() bool {
-	if o != nil && o.ConsumedInPercent != nil {
+	if o != nil && !IsNil(o.ConsumedInPercent) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *DatabaseCurrentMetricCpu) SetConsumedInPercent(v float32) {
 
 // GetWarningThresholdInPercent returns the WarningThresholdInPercent field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetricCpu) GetWarningThresholdInPercent() float32 {
-	if o == nil || o.WarningThresholdInPercent == nil {
+	if o == nil || IsNil(o.WarningThresholdInPercent) {
 		var ret float32
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *DatabaseCurrentMetricCpu) GetWarningThresholdInPercent() float32 {
 // GetWarningThresholdInPercentOk returns a tuple with the WarningThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetricCpu) GetWarningThresholdInPercentOk() (*float32, bool) {
-	if o == nil || o.WarningThresholdInPercent == nil {
+	if o == nil || IsNil(o.WarningThresholdInPercent) {
 		return nil, false
 	}
 	return o.WarningThresholdInPercent, true
@@ -158,7 +161,7 @@ func (o *DatabaseCurrentMetricCpu) GetWarningThresholdInPercentOk() (*float32, b
 
 // HasWarningThresholdInPercent returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetricCpu) HasWarningThresholdInPercent() bool {
-	if o != nil && o.WarningThresholdInPercent != nil {
+	if o != nil && !IsNil(o.WarningThresholdInPercent) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *DatabaseCurrentMetricCpu) SetWarningThresholdInPercent(v float32) {
 
 // GetAlertThresholdInPercent returns the AlertThresholdInPercent field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetricCpu) GetAlertThresholdInPercent() float32 {
-	if o == nil || o.AlertThresholdInPercent == nil {
+	if o == nil || IsNil(o.AlertThresholdInPercent) {
 		var ret float32
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *DatabaseCurrentMetricCpu) GetAlertThresholdInPercent() float32 {
 // GetAlertThresholdInPercentOk returns a tuple with the AlertThresholdInPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetricCpu) GetAlertThresholdInPercentOk() (*float32, bool) {
-	if o == nil || o.AlertThresholdInPercent == nil {
+	if o == nil || IsNil(o.AlertThresholdInPercent) {
 		return nil, false
 	}
 	return o.AlertThresholdInPercent, true
@@ -190,7 +193,7 @@ func (o *DatabaseCurrentMetricCpu) GetAlertThresholdInPercentOk() (*float32, boo
 
 // HasAlertThresholdInPercent returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetricCpu) HasAlertThresholdInPercent() bool {
-	if o != nil && o.AlertThresholdInPercent != nil {
+	if o != nil && !IsNil(o.AlertThresholdInPercent) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *DatabaseCurrentMetricCpu) SetAlertThresholdInPercent(v float32) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DatabaseCurrentMetricCpu) GetStatus() ThresholdMetricStatusEnum {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret ThresholdMetricStatusEnum
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *DatabaseCurrentMetricCpu) GetStatus() ThresholdMetricStatusEnum {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DatabaseCurrentMetricCpu) GetStatusOk() (*ThresholdMetricStatusEnum, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -222,7 +225,7 @@ func (o *DatabaseCurrentMetricCpu) GetStatusOk() (*ThresholdMetricStatusEnum, bo
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DatabaseCurrentMetricCpu) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -235,26 +238,34 @@ func (o *DatabaseCurrentMetricCpu) SetStatus(v ThresholdMetricStatusEnum) {
 }
 
 func (o DatabaseCurrentMetricCpu) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.RequestedInFloat != nil {
-		toSerialize["requested_in_float"] = o.RequestedInFloat
-	}
-	if o.ConsumedInNumber != nil {
-		toSerialize["consumed_in_number"] = o.ConsumedInNumber
-	}
-	if o.ConsumedInPercent != nil {
-		toSerialize["consumed_in_percent"] = o.ConsumedInPercent
-	}
-	if o.WarningThresholdInPercent != nil {
-		toSerialize["warning_threshold_in_percent"] = o.WarningThresholdInPercent
-	}
-	if o.AlertThresholdInPercent != nil {
-		toSerialize["alert_threshold_in_percent"] = o.AlertThresholdInPercent
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DatabaseCurrentMetricCpu) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RequestedInFloat) {
+		toSerialize["requested_in_float"] = o.RequestedInFloat
+	}
+	if !IsNil(o.ConsumedInNumber) {
+		toSerialize["consumed_in_number"] = o.ConsumedInNumber
+	}
+	if !IsNil(o.ConsumedInPercent) {
+		toSerialize["consumed_in_percent"] = o.ConsumedInPercent
+	}
+	if !IsNil(o.WarningThresholdInPercent) {
+		toSerialize["warning_threshold_in_percent"] = o.WarningThresholdInPercent
+	}
+	if !IsNil(o.AlertThresholdInPercent) {
+		toSerialize["alert_threshold_in_percent"] = o.AlertThresholdInPercent
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableDatabaseCurrentMetricCpu struct {

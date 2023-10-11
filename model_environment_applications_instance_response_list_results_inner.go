@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentApplicationsInstanceResponseListResultsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentApplicationsInstanceResponseListResultsInner{}
+
 // EnvironmentApplicationsInstanceResponseListResultsInner struct for EnvironmentApplicationsInstanceResponseListResultsInner
 type EnvironmentApplicationsInstanceResponseListResultsInner struct {
 	Application string     `json:"application"`
@@ -89,14 +92,18 @@ func (o *EnvironmentApplicationsInstanceResponseListResultsInner) SetInstances(v
 }
 
 func (o EnvironmentApplicationsInstanceResponseListResultsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["application"] = o.Application
-	}
-	if true {
-		toSerialize["instances"] = o.Instances
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentApplicationsInstanceResponseListResultsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["application"] = o.Application
+	toSerialize["instances"] = o.Instances
+	return toSerialize, nil
 }
 
 type NullableEnvironmentApplicationsInstanceResponseListResultsInner struct {

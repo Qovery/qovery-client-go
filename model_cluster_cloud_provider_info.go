@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterCloudProviderInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterCloudProviderInfo{}
+
 // ClusterCloudProviderInfo struct for ClusterCloudProviderInfo
 type ClusterCloudProviderInfo struct {
 	CloudProvider *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
@@ -41,7 +44,7 @@ func NewClusterCloudProviderInfoWithDefaults() *ClusterCloudProviderInfo {
 
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
 func (o *ClusterCloudProviderInfo) GetCloudProvider() CloudProviderEnum {
-	if o == nil || o.CloudProvider == nil {
+	if o == nil || IsNil(o.CloudProvider) {
 		var ret CloudProviderEnum
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ClusterCloudProviderInfo) GetCloudProvider() CloudProviderEnum {
 // GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterCloudProviderInfo) GetCloudProviderOk() (*CloudProviderEnum, bool) {
-	if o == nil || o.CloudProvider == nil {
+	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
 	return o.CloudProvider, true
@@ -59,7 +62,7 @@ func (o *ClusterCloudProviderInfo) GetCloudProviderOk() (*CloudProviderEnum, boo
 
 // HasCloudProvider returns a boolean if a field has been set.
 func (o *ClusterCloudProviderInfo) HasCloudProvider() bool {
-	if o != nil && o.CloudProvider != nil {
+	if o != nil && !IsNil(o.CloudProvider) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ClusterCloudProviderInfo) SetCloudProvider(v CloudProviderEnum) {
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
 func (o *ClusterCloudProviderInfo) GetCredentials() ClusterCloudProviderInfoCredentials {
-	if o == nil || o.Credentials == nil {
+	if o == nil || IsNil(o.Credentials) {
 		var ret ClusterCloudProviderInfoCredentials
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ClusterCloudProviderInfo) GetCredentials() ClusterCloudProviderInfoCred
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterCloudProviderInfo) GetCredentialsOk() (*ClusterCloudProviderInfoCredentials, bool) {
-	if o == nil || o.Credentials == nil {
+	if o == nil || IsNil(o.Credentials) {
 		return nil, false
 	}
 	return o.Credentials, true
@@ -91,7 +94,7 @@ func (o *ClusterCloudProviderInfo) GetCredentialsOk() (*ClusterCloudProviderInfo
 
 // HasCredentials returns a boolean if a field has been set.
 func (o *ClusterCloudProviderInfo) HasCredentials() bool {
-	if o != nil && o.Credentials != nil {
+	if o != nil && !IsNil(o.Credentials) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ClusterCloudProviderInfo) SetCredentials(v ClusterCloudProviderInfoCred
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *ClusterCloudProviderInfo) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ClusterCloudProviderInfo) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterCloudProviderInfo) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -123,7 +126,7 @@ func (o *ClusterCloudProviderInfo) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *ClusterCloudProviderInfo) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *ClusterCloudProviderInfo) SetRegion(v string) {
 }
 
 func (o ClusterCloudProviderInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CloudProvider != nil {
-		toSerialize["cloud_provider"] = o.CloudProvider
-	}
-	if o.Credentials != nil {
-		toSerialize["credentials"] = o.Credentials
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClusterCloudProviderInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CloudProvider) {
+		toSerialize["cloud_provider"] = o.CloudProvider
+	}
+	if !IsNil(o.Credentials) {
+		toSerialize["credentials"] = o.Credentials
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	return toSerialize, nil
 }
 
 type NullableClusterCloudProviderInfo struct {

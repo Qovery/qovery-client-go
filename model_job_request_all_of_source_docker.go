@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JobRequestAllOfSourceDocker type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JobRequestAllOfSourceDocker{}
+
 // JobRequestAllOfSourceDocker struct for JobRequestAllOfSourceDocker
 type JobRequestAllOfSourceDocker struct {
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
@@ -41,7 +44,7 @@ func NewJobRequestAllOfSourceDockerWithDefaults() *JobRequestAllOfSourceDocker {
 
 // GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequestAllOfSourceDocker) GetDockerfilePath() string {
-	if o == nil || o.DockerfilePath.Get() == nil {
+	if o == nil || IsNil(o.DockerfilePath.Get()) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *JobRequestAllOfSourceDocker) UnsetDockerfilePath() {
 
 // GetGitRepository returns the GitRepository field value if set, zero value otherwise.
 func (o *JobRequestAllOfSourceDocker) GetGitRepository() ApplicationGitRepositoryRequest {
-	if o == nil || o.GitRepository == nil {
+	if o == nil || IsNil(o.GitRepository) {
 		var ret ApplicationGitRepositoryRequest
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *JobRequestAllOfSourceDocker) GetGitRepository() ApplicationGitRepositor
 // GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JobRequestAllOfSourceDocker) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
-	if o == nil || o.GitRepository == nil {
+	if o == nil || IsNil(o.GitRepository) {
 		return nil, false
 	}
 	return o.GitRepository, true
@@ -102,7 +105,7 @@ func (o *JobRequestAllOfSourceDocker) GetGitRepositoryOk() (*ApplicationGitRepos
 
 // HasGitRepository returns a boolean if a field has been set.
 func (o *JobRequestAllOfSourceDocker) HasGitRepository() bool {
-	if o != nil && o.GitRepository != nil {
+	if o != nil && !IsNil(o.GitRepository) {
 		return true
 	}
 
@@ -115,14 +118,22 @@ func (o *JobRequestAllOfSourceDocker) SetGitRepository(v ApplicationGitRepositor
 }
 
 func (o JobRequestAllOfSourceDocker) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o JobRequestAllOfSourceDocker) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DockerfilePath.IsSet() {
 		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
 	}
-	if o.GitRepository != nil {
+	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableJobRequestAllOfSourceDocker struct {

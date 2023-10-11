@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the ContainerRegistryResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ContainerRegistryResponse{}
+
 // ContainerRegistryResponse struct for ContainerRegistryResponse
 type ContainerRegistryResponse struct {
 	Id          string                     `json:"id"`
@@ -25,8 +28,8 @@ type ContainerRegistryResponse struct {
 	Kind        *ContainerRegistryKindEnum `json:"kind,omitempty"`
 	Description *string                    `json:"description,omitempty"`
 	// URL of the container registry
-	Url     *string      `json:"url,omitempty"`
-	Cluster NullableBase `json:"cluster,omitempty"`
+	Url     *string                                `json:"url,omitempty"`
+	Cluster *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
 }
 
 // NewContainerRegistryResponse instantiates a new ContainerRegistryResponse object
@@ -98,7 +101,7 @@ func (o *ContainerRegistryResponse) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ContainerRegistryResponse) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *ContainerRegistryResponse) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
 	return o.UpdatedAt, true
@@ -116,7 +119,7 @@ func (o *ContainerRegistryResponse) GetUpdatedAtOk() (*time.Time, bool) {
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ContainerRegistryResponse) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -130,7 +133,7 @@ func (o *ContainerRegistryResponse) SetUpdatedAt(v time.Time) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ContainerRegistryResponse) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *ContainerRegistryResponse) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryResponse) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -148,7 +151,7 @@ func (o *ContainerRegistryResponse) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ContainerRegistryResponse) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -162,7 +165,7 @@ func (o *ContainerRegistryResponse) SetName(v string) {
 
 // GetKind returns the Kind field value if set, zero value otherwise.
 func (o *ContainerRegistryResponse) GetKind() ContainerRegistryKindEnum {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		var ret ContainerRegistryKindEnum
 		return ret
 	}
@@ -172,7 +175,7 @@ func (o *ContainerRegistryResponse) GetKind() ContainerRegistryKindEnum {
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryResponse) GetKindOk() (*ContainerRegistryKindEnum, bool) {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		return nil, false
 	}
 	return o.Kind, true
@@ -180,7 +183,7 @@ func (o *ContainerRegistryResponse) GetKindOk() (*ContainerRegistryKindEnum, boo
 
 // HasKind returns a boolean if a field has been set.
 func (o *ContainerRegistryResponse) HasKind() bool {
-	if o != nil && o.Kind != nil {
+	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
 
@@ -194,7 +197,7 @@ func (o *ContainerRegistryResponse) SetKind(v ContainerRegistryKindEnum) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ContainerRegistryResponse) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -204,7 +207,7 @@ func (o *ContainerRegistryResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -212,7 +215,7 @@ func (o *ContainerRegistryResponse) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ContainerRegistryResponse) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -226,7 +229,7 @@ func (o *ContainerRegistryResponse) SetDescription(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *ContainerRegistryResponse) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -236,7 +239,7 @@ func (o *ContainerRegistryResponse) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryResponse) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -244,7 +247,7 @@ func (o *ContainerRegistryResponse) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *ContainerRegistryResponse) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -256,76 +259,69 @@ func (o *ContainerRegistryResponse) SetUrl(v string) {
 	o.Url = &v
 }
 
-// GetCluster returns the Cluster field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ContainerRegistryResponse) GetCluster() Base {
-	if o == nil || o.Cluster.Get() == nil {
-		var ret Base
+// GetCluster returns the Cluster field value if set, zero value otherwise.
+func (o *ContainerRegistryResponse) GetCluster() ContainerRegistryResponseAllOfCluster {
+	if o == nil || IsNil(o.Cluster) {
+		var ret ContainerRegistryResponseAllOfCluster
 		return ret
 	}
-	return *o.Cluster.Get()
+	return *o.Cluster
 }
 
 // GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ContainerRegistryResponse) GetClusterOk() (*Base, bool) {
-	if o == nil {
+func (o *ContainerRegistryResponse) GetClusterOk() (*ContainerRegistryResponseAllOfCluster, bool) {
+	if o == nil || IsNil(o.Cluster) {
 		return nil, false
 	}
-	return o.Cluster.Get(), o.Cluster.IsSet()
+	return o.Cluster, true
 }
 
 // HasCluster returns a boolean if a field has been set.
 func (o *ContainerRegistryResponse) HasCluster() bool {
-	if o != nil && o.Cluster.IsSet() {
+	if o != nil && !IsNil(o.Cluster) {
 		return true
 	}
 
 	return false
 }
 
-// SetCluster gets a reference to the given NullableBase and assigns it to the Cluster field.
-func (o *ContainerRegistryResponse) SetCluster(v Base) {
-	o.Cluster.Set(&v)
-}
-
-// SetClusterNil sets the value for Cluster to be an explicit nil
-func (o *ContainerRegistryResponse) SetClusterNil() {
-	o.Cluster.Set(nil)
-}
-
-// UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
-func (o *ContainerRegistryResponse) UnsetCluster() {
-	o.Cluster.Unset()
+// SetCluster gets a reference to the given ContainerRegistryResponseAllOfCluster and assigns it to the Cluster field.
+func (o *ContainerRegistryResponse) SetCluster(v ContainerRegistryResponseAllOfCluster) {
+	o.Cluster = &v
 }
 
 func (o ContainerRegistryResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.UpdatedAt != nil {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Kind != nil {
-		toSerialize["kind"] = o.Kind
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.Cluster.IsSet() {
-		toSerialize["cluster"] = o.Cluster.Get()
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ContainerRegistryResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Cluster) {
+		toSerialize["cluster"] = o.Cluster
+	}
+	return toSerialize, nil
 }
 
 type NullableContainerRegistryResponse struct {

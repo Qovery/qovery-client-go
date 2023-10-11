@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GitAuthProviderResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GitAuthProviderResponseList{}
+
 // GitAuthProviderResponseList struct for GitAuthProviderResponseList
 type GitAuthProviderResponseList struct {
 	Results []GitAuthProvider `json:"results,omitempty"`
@@ -39,7 +42,7 @@ func NewGitAuthProviderResponseListWithDefaults() *GitAuthProviderResponseList {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *GitAuthProviderResponseList) GetResults() []GitAuthProvider {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []GitAuthProvider
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *GitAuthProviderResponseList) GetResults() []GitAuthProvider {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GitAuthProviderResponseList) GetResultsOk() ([]GitAuthProvider, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -57,7 +60,7 @@ func (o *GitAuthProviderResponseList) GetResultsOk() ([]GitAuthProvider, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *GitAuthProviderResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *GitAuthProviderResponseList) SetResults(v []GitAuthProvider) {
 }
 
 func (o GitAuthProviderResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GitAuthProviderResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableGitAuthProviderResponseList struct {

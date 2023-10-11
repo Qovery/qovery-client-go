@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeployRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeployRequest{}
+
 // DeployRequest struct for DeployRequest
 type DeployRequest struct {
 	// Commit ID to deploy
@@ -64,11 +67,17 @@ func (o *DeployRequest) SetGitCommitId(v string) {
 }
 
 func (o DeployRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["git_commit_id"] = o.GitCommitId
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeployRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["git_commit_id"] = o.GitCommitId
+	return toSerialize, nil
 }
 
 type NullableDeployRequest struct {

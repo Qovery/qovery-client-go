@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the AccountInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountInfo{}
+
 // AccountInfo struct for AccountInfo
 type AccountInfo struct {
 	Id                 *string    `json:"id,omitempty"`
@@ -46,7 +49,7 @@ func NewAccountInfoWithDefaults() *AccountInfo {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AccountInfo) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *AccountInfo) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfo) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -64,7 +67,7 @@ func (o *AccountInfo) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AccountInfo) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *AccountInfo) SetId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AccountInfo) GetCreatedAt() time.Time {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *AccountInfo) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfo) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -96,7 +99,7 @@ func (o *AccountInfo) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AccountInfo) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *AccountInfo) SetCreatedAt(v time.Time) {
 
 // GetNickname returns the Nickname field value if set, zero value otherwise.
 func (o *AccountInfo) GetNickname() string {
-	if o == nil || o.Nickname == nil {
+	if o == nil || IsNil(o.Nickname) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *AccountInfo) GetNickname() string {
 // GetNicknameOk returns a tuple with the Nickname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfo) GetNicknameOk() (*string, bool) {
-	if o == nil || o.Nickname == nil {
+	if o == nil || IsNil(o.Nickname) {
 		return nil, false
 	}
 	return o.Nickname, true
@@ -128,7 +131,7 @@ func (o *AccountInfo) GetNicknameOk() (*string, bool) {
 
 // HasNickname returns a boolean if a field has been set.
 func (o *AccountInfo) HasNickname() bool {
-	if o != nil && o.Nickname != nil {
+	if o != nil && !IsNil(o.Nickname) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *AccountInfo) SetNickname(v string) {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *AccountInfo) GetFirstName() string {
-	if o == nil || o.FirstName == nil {
+	if o == nil || IsNil(o.FirstName) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *AccountInfo) GetFirstName() string {
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfo) GetFirstNameOk() (*string, bool) {
-	if o == nil || o.FirstName == nil {
+	if o == nil || IsNil(o.FirstName) {
 		return nil, false
 	}
 	return o.FirstName, true
@@ -160,7 +163,7 @@ func (o *AccountInfo) GetFirstNameOk() (*string, bool) {
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *AccountInfo) HasFirstName() bool {
-	if o != nil && o.FirstName != nil {
+	if o != nil && !IsNil(o.FirstName) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *AccountInfo) SetFirstName(v string) {
 
 // GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *AccountInfo) GetLastName() string {
-	if o == nil || o.LastName == nil {
+	if o == nil || IsNil(o.LastName) {
 		var ret string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *AccountInfo) GetLastName() string {
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfo) GetLastNameOk() (*string, bool) {
-	if o == nil || o.LastName == nil {
+	if o == nil || IsNil(o.LastName) {
 		return nil, false
 	}
 	return o.LastName, true
@@ -192,7 +195,7 @@ func (o *AccountInfo) GetLastNameOk() (*string, bool) {
 
 // HasLastName returns a boolean if a field has been set.
 func (o *AccountInfo) HasLastName() bool {
-	if o != nil && o.LastName != nil {
+	if o != nil && !IsNil(o.LastName) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *AccountInfo) SetLastName(v string) {
 
 // GetProfilePictureUrl returns the ProfilePictureUrl field value if set, zero value otherwise.
 func (o *AccountInfo) GetProfilePictureUrl() string {
-	if o == nil || o.ProfilePictureUrl == nil {
+	if o == nil || IsNil(o.ProfilePictureUrl) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *AccountInfo) GetProfilePictureUrl() string {
 // GetProfilePictureUrlOk returns a tuple with the ProfilePictureUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfo) GetProfilePictureUrlOk() (*string, bool) {
-	if o == nil || o.ProfilePictureUrl == nil {
+	if o == nil || IsNil(o.ProfilePictureUrl) {
 		return nil, false
 	}
 	return o.ProfilePictureUrl, true
@@ -224,7 +227,7 @@ func (o *AccountInfo) GetProfilePictureUrlOk() (*string, bool) {
 
 // HasProfilePictureUrl returns a boolean if a field has been set.
 func (o *AccountInfo) HasProfilePictureUrl() bool {
-	if o != nil && o.ProfilePictureUrl != nil {
+	if o != nil && !IsNil(o.ProfilePictureUrl) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *AccountInfo) SetProfilePictureUrl(v string) {
 
 // GetCommunicationEmail returns the CommunicationEmail field value if set, zero value otherwise.
 func (o *AccountInfo) GetCommunicationEmail() string {
-	if o == nil || o.CommunicationEmail == nil {
+	if o == nil || IsNil(o.CommunicationEmail) {
 		var ret string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *AccountInfo) GetCommunicationEmail() string {
 // GetCommunicationEmailOk returns a tuple with the CommunicationEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountInfo) GetCommunicationEmailOk() (*string, bool) {
-	if o == nil || o.CommunicationEmail == nil {
+	if o == nil || IsNil(o.CommunicationEmail) {
 		return nil, false
 	}
 	return o.CommunicationEmail, true
@@ -256,7 +259,7 @@ func (o *AccountInfo) GetCommunicationEmailOk() (*string, bool) {
 
 // HasCommunicationEmail returns a boolean if a field has been set.
 func (o *AccountInfo) HasCommunicationEmail() bool {
-	if o != nil && o.CommunicationEmail != nil {
+	if o != nil && !IsNil(o.CommunicationEmail) {
 		return true
 	}
 
@@ -269,29 +272,37 @@ func (o *AccountInfo) SetCommunicationEmail(v string) {
 }
 
 func (o AccountInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.CreatedAt != nil {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if o.Nickname != nil {
-		toSerialize["nickname"] = o.Nickname
-	}
-	if o.FirstName != nil {
-		toSerialize["first_name"] = o.FirstName
-	}
-	if o.LastName != nil {
-		toSerialize["last_name"] = o.LastName
-	}
-	if o.ProfilePictureUrl != nil {
-		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
-	}
-	if o.CommunicationEmail != nil {
-		toSerialize["communication_email"] = o.CommunicationEmail
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["created_at"] = o.CreatedAt
+	}
+	if !IsNil(o.Nickname) {
+		toSerialize["nickname"] = o.Nickname
+	}
+	if !IsNil(o.FirstName) {
+		toSerialize["first_name"] = o.FirstName
+	}
+	if !IsNil(o.LastName) {
+		toSerialize["last_name"] = o.LastName
+	}
+	if !IsNil(o.ProfilePictureUrl) {
+		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
+	}
+	if !IsNil(o.CommunicationEmail) {
+		toSerialize["communication_email"] = o.CommunicationEmail
+	}
+	return toSerialize, nil
 }
 
 type NullableAccountInfo struct {

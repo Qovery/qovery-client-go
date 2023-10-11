@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BillingInfoRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillingInfoRequest{}
+
 // BillingInfoRequest struct for BillingInfoRequest
 type BillingInfoRequest struct {
 	FirstName string `json:"first_name"`
@@ -203,7 +206,7 @@ func (o *BillingInfoRequest) SetZip(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *BillingInfoRequest) GetState() string {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *BillingInfoRequest) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfoRequest) GetStateOk() (*string, bool) {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -221,7 +224,7 @@ func (o *BillingInfoRequest) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *BillingInfoRequest) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -259,7 +262,7 @@ func (o *BillingInfoRequest) SetCountryCode(v string) {
 
 // GetCompany returns the Company field value if set, zero value otherwise.
 func (o *BillingInfoRequest) GetCompany() string {
-	if o == nil || o.Company == nil {
+	if o == nil || IsNil(o.Company) {
 		var ret string
 		return ret
 	}
@@ -269,7 +272,7 @@ func (o *BillingInfoRequest) GetCompany() string {
 // GetCompanyOk returns a tuple with the Company field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfoRequest) GetCompanyOk() (*string, bool) {
-	if o == nil || o.Company == nil {
+	if o == nil || IsNil(o.Company) {
 		return nil, false
 	}
 	return o.Company, true
@@ -277,7 +280,7 @@ func (o *BillingInfoRequest) GetCompanyOk() (*string, bool) {
 
 // HasCompany returns a boolean if a field has been set.
 func (o *BillingInfoRequest) HasCompany() bool {
-	if o != nil && o.Company != nil {
+	if o != nil && !IsNil(o.Company) {
 		return true
 	}
 
@@ -291,7 +294,7 @@ func (o *BillingInfoRequest) SetCompany(v string) {
 
 // GetVatNumber returns the VatNumber field value if set, zero value otherwise.
 func (o *BillingInfoRequest) GetVatNumber() string {
-	if o == nil || o.VatNumber == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		var ret string
 		return ret
 	}
@@ -301,7 +304,7 @@ func (o *BillingInfoRequest) GetVatNumber() string {
 // GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillingInfoRequest) GetVatNumberOk() (*string, bool) {
-	if o == nil || o.VatNumber == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		return nil, false
 	}
 	return o.VatNumber, true
@@ -309,7 +312,7 @@ func (o *BillingInfoRequest) GetVatNumberOk() (*string, bool) {
 
 // HasVatNumber returns a boolean if a field has been set.
 func (o *BillingInfoRequest) HasVatNumber() bool {
-	if o != nil && o.VatNumber != nil {
+	if o != nil && !IsNil(o.VatNumber) {
 		return true
 	}
 
@@ -322,38 +325,32 @@ func (o *BillingInfoRequest) SetVatNumber(v string) {
 }
 
 func (o BillingInfoRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["first_name"] = o.FirstName
-	}
-	if true {
-		toSerialize["last_name"] = o.LastName
-	}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["address"] = o.Address
-	}
-	if true {
-		toSerialize["city"] = o.City
-	}
-	if true {
-		toSerialize["zip"] = o.Zip
-	}
-	if o.State != nil {
-		toSerialize["state"] = o.State
-	}
-	if true {
-		toSerialize["country_code"] = o.CountryCode
-	}
-	if o.Company != nil {
-		toSerialize["company"] = o.Company
-	}
-	if o.VatNumber != nil {
-		toSerialize["vat_number"] = o.VatNumber
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillingInfoRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["first_name"] = o.FirstName
+	toSerialize["last_name"] = o.LastName
+	toSerialize["email"] = o.Email
+	toSerialize["address"] = o.Address
+	toSerialize["city"] = o.City
+	toSerialize["zip"] = o.Zip
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	toSerialize["country_code"] = o.CountryCode
+	if !IsNil(o.Company) {
+		toSerialize["company"] = o.Company
+	}
+	if !IsNil(o.VatNumber) {
+		toSerialize["vat_number"] = o.VatNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableBillingInfoRequest struct {

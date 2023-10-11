@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeploymentHistoryEnvironmentPaginatedResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryEnvironmentPaginatedResponseList{}
+
 // DeploymentHistoryEnvironmentPaginatedResponseList struct for DeploymentHistoryEnvironmentPaginatedResponseList
 type DeploymentHistoryEnvironmentPaginatedResponseList struct {
 	Page     float32                        `json:"page"`
@@ -91,7 +94,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) SetPageSize(v float3
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResults() []DeploymentHistoryEnvironment {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []DeploymentHistoryEnvironment
 		return ret
 	}
@@ -101,7 +104,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResults() []Deplo
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResultsOk() ([]DeploymentHistoryEnvironment, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -109,7 +112,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) GetResultsOk() ([]De
 
 // HasResults returns a boolean if a field has been set.
 func (o *DeploymentHistoryEnvironmentPaginatedResponseList) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -122,17 +125,21 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) SetResults(v []Deplo
 }
 
 func (o DeploymentHistoryEnvironmentPaginatedResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["page"] = o.Page
-	}
-	if true {
-		toSerialize["page_size"] = o.PageSize
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentHistoryEnvironmentPaginatedResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["page"] = o.Page
+	toSerialize["page_size"] = o.PageSize
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentHistoryEnvironmentPaginatedResponseList struct {

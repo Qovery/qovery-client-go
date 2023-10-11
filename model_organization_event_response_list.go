@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrganizationEventResponseList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationEventResponseList{}
+
 // OrganizationEventResponseList struct for OrganizationEventResponseList
 type OrganizationEventResponseList struct {
 	Links  *OrganizationEventResponseListLinks `json:"links,omitempty"`
@@ -40,7 +43,7 @@ func NewOrganizationEventResponseListWithDefaults() *OrganizationEventResponseLi
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *OrganizationEventResponseList) GetLinks() OrganizationEventResponseListLinks {
-	if o == nil || o.Links == nil {
+	if o == nil || IsNil(o.Links) {
 		var ret OrganizationEventResponseListLinks
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *OrganizationEventResponseList) GetLinks() OrganizationEventResponseList
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponseList) GetLinksOk() (*OrganizationEventResponseListLinks, bool) {
-	if o == nil || o.Links == nil {
+	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
 	return o.Links, true
@@ -58,7 +61,7 @@ func (o *OrganizationEventResponseList) GetLinksOk() (*OrganizationEventResponse
 
 // HasLinks returns a boolean if a field has been set.
 func (o *OrganizationEventResponseList) HasLinks() bool {
-	if o != nil && o.Links != nil {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *OrganizationEventResponseList) SetLinks(v OrganizationEventResponseList
 
 // GetEvents returns the Events field value if set, zero value otherwise.
 func (o *OrganizationEventResponseList) GetEvents() []OrganizationEventResponse {
-	if o == nil || o.Events == nil {
+	if o == nil || IsNil(o.Events) {
 		var ret []OrganizationEventResponse
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *OrganizationEventResponseList) GetEvents() []OrganizationEventResponse 
 // GetEventsOk returns a tuple with the Events field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrganizationEventResponseList) GetEventsOk() ([]OrganizationEventResponse, bool) {
-	if o == nil || o.Events == nil {
+	if o == nil || IsNil(o.Events) {
 		return nil, false
 	}
 	return o.Events, true
@@ -90,7 +93,7 @@ func (o *OrganizationEventResponseList) GetEventsOk() ([]OrganizationEventRespon
 
 // HasEvents returns a boolean if a field has been set.
 func (o *OrganizationEventResponseList) HasEvents() bool {
-	if o != nil && o.Events != nil {
+	if o != nil && !IsNil(o.Events) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *OrganizationEventResponseList) SetEvents(v []OrganizationEventResponse)
 }
 
 func (o OrganizationEventResponseList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Links != nil {
-		toSerialize["links"] = o.Links
-	}
-	if o.Events != nil {
-		toSerialize["events"] = o.Events
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrganizationEventResponseList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["links"] = o.Links
+	}
+	if !IsNil(o.Events) {
+		toSerialize["events"] = o.Events
+	}
+	return toSerialize, nil
 }
 
 type NullableOrganizationEventResponseList struct {

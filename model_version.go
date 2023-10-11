@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Version type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Version{}
+
 // Version struct for Version
 type Version struct {
 	Name string `json:"name"`
@@ -63,11 +66,17 @@ func (o *Version) SetName(v string) {
 }
 
 func (o Version) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Version) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableVersion struct {

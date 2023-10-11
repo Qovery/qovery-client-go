@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClusterRequestFeaturesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterRequestFeaturesInner{}
+
 // ClusterRequestFeaturesInner struct for ClusterRequestFeaturesInner
 type ClusterRequestFeaturesInner struct {
 	Id    *string                     `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewClusterRequestFeaturesInnerWithDefaults() *ClusterRequestFeaturesInner {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ClusterRequestFeaturesInner) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ClusterRequestFeaturesInner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusterRequestFeaturesInner) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *ClusterRequestFeaturesInner) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ClusterRequestFeaturesInner) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ClusterRequestFeaturesInner) SetId(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterRequestFeaturesInner) GetValue() ClusterFeatureValue {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret ClusterFeatureValue
 		return ret
 	}
@@ -114,14 +117,22 @@ func (o *ClusterRequestFeaturesInner) UnsetValue() {
 }
 
 func (o ClusterRequestFeaturesInner) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ClusterRequestFeaturesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableClusterRequestFeaturesInner struct {

@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the PaidUsage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaidUsage{}
+
 // PaidUsage struct for PaidUsage
 type PaidUsage struct {
 	MaxDeploymentsPerMonth *int32       `json:"max_deployments_per_month,omitempty"`
@@ -46,7 +49,7 @@ func NewPaidUsageWithDefaults() *PaidUsage {
 
 // GetMaxDeploymentsPerMonth returns the MaxDeploymentsPerMonth field value if set, zero value otherwise.
 func (o *PaidUsage) GetMaxDeploymentsPerMonth() int32 {
-	if o == nil || o.MaxDeploymentsPerMonth == nil {
+	if o == nil || IsNil(o.MaxDeploymentsPerMonth) {
 		var ret int32
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *PaidUsage) GetMaxDeploymentsPerMonth() int32 {
 // GetMaxDeploymentsPerMonthOk returns a tuple with the MaxDeploymentsPerMonth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaidUsage) GetMaxDeploymentsPerMonthOk() (*int32, bool) {
-	if o == nil || o.MaxDeploymentsPerMonth == nil {
+	if o == nil || IsNil(o.MaxDeploymentsPerMonth) {
 		return nil, false
 	}
 	return o.MaxDeploymentsPerMonth, true
@@ -64,7 +67,7 @@ func (o *PaidUsage) GetMaxDeploymentsPerMonthOk() (*int32, bool) {
 
 // HasMaxDeploymentsPerMonth returns a boolean if a field has been set.
 func (o *PaidUsage) HasMaxDeploymentsPerMonth() bool {
-	if o != nil && o.MaxDeploymentsPerMonth != nil {
+	if o != nil && !IsNil(o.MaxDeploymentsPerMonth) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *PaidUsage) SetMaxDeploymentsPerMonth(v int32) {
 
 // GetConsumedDeployments returns the ConsumedDeployments field value if set, zero value otherwise.
 func (o *PaidUsage) GetConsumedDeployments() int32 {
-	if o == nil || o.ConsumedDeployments == nil {
+	if o == nil || IsNil(o.ConsumedDeployments) {
 		var ret int32
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *PaidUsage) GetConsumedDeployments() int32 {
 // GetConsumedDeploymentsOk returns a tuple with the ConsumedDeployments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaidUsage) GetConsumedDeploymentsOk() (*int32, bool) {
-	if o == nil || o.ConsumedDeployments == nil {
+	if o == nil || IsNil(o.ConsumedDeployments) {
 		return nil, false
 	}
 	return o.ConsumedDeployments, true
@@ -96,7 +99,7 @@ func (o *PaidUsage) GetConsumedDeploymentsOk() (*int32, bool) {
 
 // HasConsumedDeployments returns a boolean if a field has been set.
 func (o *PaidUsage) HasConsumedDeployments() bool {
-	if o != nil && o.ConsumedDeployments != nil {
+	if o != nil && !IsNil(o.ConsumedDeployments) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *PaidUsage) SetConsumedDeployments(v int32) {
 
 // GetMonthlyPlanCost returns the MonthlyPlanCost field value if set, zero value otherwise.
 func (o *PaidUsage) GetMonthlyPlanCost() float32 {
-	if o == nil || o.MonthlyPlanCost == nil {
+	if o == nil || IsNil(o.MonthlyPlanCost) {
 		var ret float32
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *PaidUsage) GetMonthlyPlanCost() float32 {
 // GetMonthlyPlanCostOk returns a tuple with the MonthlyPlanCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaidUsage) GetMonthlyPlanCostOk() (*float32, bool) {
-	if o == nil || o.MonthlyPlanCost == nil {
+	if o == nil || IsNil(o.MonthlyPlanCost) {
 		return nil, false
 	}
 	return o.MonthlyPlanCost, true
@@ -128,7 +131,7 @@ func (o *PaidUsage) GetMonthlyPlanCostOk() (*float32, bool) {
 
 // HasMonthlyPlanCost returns a boolean if a field has been set.
 func (o *PaidUsage) HasMonthlyPlanCost() bool {
-	if o != nil && o.MonthlyPlanCost != nil {
+	if o != nil && !IsNil(o.MonthlyPlanCost) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *PaidUsage) SetMonthlyPlanCost(v float32) {
 
 // GetMonthlyPlanCostInCents returns the MonthlyPlanCostInCents field value if set, zero value otherwise.
 func (o *PaidUsage) GetMonthlyPlanCostInCents() int32 {
-	if o == nil || o.MonthlyPlanCostInCents == nil {
+	if o == nil || IsNil(o.MonthlyPlanCostInCents) {
 		var ret int32
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *PaidUsage) GetMonthlyPlanCostInCents() int32 {
 // GetMonthlyPlanCostInCentsOk returns a tuple with the MonthlyPlanCostInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaidUsage) GetMonthlyPlanCostInCentsOk() (*int32, bool) {
-	if o == nil || o.MonthlyPlanCostInCents == nil {
+	if o == nil || IsNil(o.MonthlyPlanCostInCents) {
 		return nil, false
 	}
 	return o.MonthlyPlanCostInCents, true
@@ -160,7 +163,7 @@ func (o *PaidUsage) GetMonthlyPlanCostInCentsOk() (*int32, bool) {
 
 // HasMonthlyPlanCostInCents returns a boolean if a field has been set.
 func (o *PaidUsage) HasMonthlyPlanCostInCents() bool {
-	if o != nil && o.MonthlyPlanCostInCents != nil {
+	if o != nil && !IsNil(o.MonthlyPlanCostInCents) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *PaidUsage) SetMonthlyPlanCostInCents(v int32) {
 
 // GetRemainingDeployments returns the RemainingDeployments field value if set, zero value otherwise.
 func (o *PaidUsage) GetRemainingDeployments() int32 {
-	if o == nil || o.RemainingDeployments == nil {
+	if o == nil || IsNil(o.RemainingDeployments) {
 		var ret int32
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *PaidUsage) GetRemainingDeployments() int32 {
 // GetRemainingDeploymentsOk returns a tuple with the RemainingDeployments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaidUsage) GetRemainingDeploymentsOk() (*int32, bool) {
-	if o == nil || o.RemainingDeployments == nil {
+	if o == nil || IsNil(o.RemainingDeployments) {
 		return nil, false
 	}
 	return o.RemainingDeployments, true
@@ -192,7 +195,7 @@ func (o *PaidUsage) GetRemainingDeploymentsOk() (*int32, bool) {
 
 // HasRemainingDeployments returns a boolean if a field has been set.
 func (o *PaidUsage) HasRemainingDeployments() bool {
-	if o != nil && o.RemainingDeployments != nil {
+	if o != nil && !IsNil(o.RemainingDeployments) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *PaidUsage) SetRemainingDeployments(v int32) {
 
 // GetDeploymentsExceeded returns the DeploymentsExceeded field value if set, zero value otherwise.
 func (o *PaidUsage) GetDeploymentsExceeded() bool {
-	if o == nil || o.DeploymentsExceeded == nil {
+	if o == nil || IsNil(o.DeploymentsExceeded) {
 		var ret bool
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *PaidUsage) GetDeploymentsExceeded() bool {
 // GetDeploymentsExceededOk returns a tuple with the DeploymentsExceeded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaidUsage) GetDeploymentsExceededOk() (*bool, bool) {
-	if o == nil || o.DeploymentsExceeded == nil {
+	if o == nil || IsNil(o.DeploymentsExceeded) {
 		return nil, false
 	}
 	return o.DeploymentsExceeded, true
@@ -224,7 +227,7 @@ func (o *PaidUsage) GetDeploymentsExceededOk() (*bool, bool) {
 
 // HasDeploymentsExceeded returns a boolean if a field has been set.
 func (o *PaidUsage) HasDeploymentsExceeded() bool {
-	if o != nil && o.DeploymentsExceeded != nil {
+	if o != nil && !IsNil(o.DeploymentsExceeded) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *PaidUsage) SetDeploymentsExceeded(v bool) {
 
 // GetRenewalAt returns the RenewalAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PaidUsage) GetRenewalAt() time.Time {
-	if o == nil || o.RenewalAt.Get() == nil {
+	if o == nil || IsNil(o.RenewalAt.Get()) {
 		var ret time.Time
 		return ret
 	}
@@ -280,29 +283,37 @@ func (o *PaidUsage) UnsetRenewalAt() {
 }
 
 func (o PaidUsage) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PaidUsage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MaxDeploymentsPerMonth != nil {
+	if !IsNil(o.MaxDeploymentsPerMonth) {
 		toSerialize["max_deployments_per_month"] = o.MaxDeploymentsPerMonth
 	}
-	if o.ConsumedDeployments != nil {
+	if !IsNil(o.ConsumedDeployments) {
 		toSerialize["consumed_deployments"] = o.ConsumedDeployments
 	}
-	if o.MonthlyPlanCost != nil {
+	if !IsNil(o.MonthlyPlanCost) {
 		toSerialize["monthly_plan_cost"] = o.MonthlyPlanCost
 	}
-	if o.MonthlyPlanCostInCents != nil {
+	if !IsNil(o.MonthlyPlanCostInCents) {
 		toSerialize["monthly_plan_cost_in_cents"] = o.MonthlyPlanCostInCents
 	}
-	if o.RemainingDeployments != nil {
+	if !IsNil(o.RemainingDeployments) {
 		toSerialize["remaining_deployments"] = o.RemainingDeployments
 	}
-	if o.DeploymentsExceeded != nil {
+	if !IsNil(o.DeploymentsExceeded) {
 		toSerialize["deployments_exceeded"] = o.DeploymentsExceeded
 	}
 	if o.RenewalAt.IsSet() {
 		toSerialize["renewal_at"] = o.RenewalAt.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullablePaidUsage struct {

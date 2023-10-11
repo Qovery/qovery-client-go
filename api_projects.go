@@ -14,18 +14,18 @@ package qovery
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ProjectsApiService ProjectsApi service
-type ProjectsApiService service
+// ProjectsAPIService ProjectsAPI service
+type ProjectsAPIService service
 
 type ApiCreateProjectRequest struct {
 	ctx            context.Context
-	ApiService     *ProjectsApiService
+	ApiService     *ProjectsAPIService
 	organizationId string
 	projectRequest *ProjectRequest
 }
@@ -46,7 +46,7 @@ CreateProject Create a project
  @param organizationId Organization ID
  @return ApiCreateProjectRequest
 */
-func (a *ProjectsApiService) CreateProject(ctx context.Context, organizationId string) ApiCreateProjectRequest {
+func (a *ProjectsAPIService) CreateProject(ctx context.Context, organizationId string) ApiCreateProjectRequest {
 	return ApiCreateProjectRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -56,7 +56,7 @@ func (a *ProjectsApiService) CreateProject(ctx context.Context, organizationId s
 
 // Execute executes the request
 //  @return Project
-func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*Project, *http.Response, error) {
+func (a *ProjectsAPIService) CreateProjectExecute(r ApiCreateProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -64,13 +64,13 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*P
 		localVarReturnValue *Project
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.CreateProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.CreateProject")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/project"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -119,9 +119,9 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*P
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +148,7 @@ func (a *ProjectsApiService) CreateProjectExecute(r ApiCreateProjectRequest) (*P
 
 type ApiGetOrganizationProjectStatsRequest struct {
 	ctx            context.Context
-	ApiService     *ProjectsApiService
+	ApiService     *ProjectsAPIService
 	organizationId string
 }
 
@@ -165,7 +165,7 @@ Returns a list of project ids, and for each its total numberof services and envi
  @param organizationId Organization ID
  @return ApiGetOrganizationProjectStatsRequest
 */
-func (a *ProjectsApiService) GetOrganizationProjectStats(ctx context.Context, organizationId string) ApiGetOrganizationProjectStatsRequest {
+func (a *ProjectsAPIService) GetOrganizationProjectStats(ctx context.Context, organizationId string) ApiGetOrganizationProjectStatsRequest {
 	return ApiGetOrganizationProjectStatsRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -175,7 +175,7 @@ func (a *ProjectsApiService) GetOrganizationProjectStats(ctx context.Context, or
 
 // Execute executes the request
 //  @return ProjectStatsResponseList
-func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganizationProjectStatsRequest) (*ProjectStatsResponseList, *http.Response, error) {
+func (a *ProjectsAPIService) GetOrganizationProjectStatsExecute(r ApiGetOrganizationProjectStatsRequest) (*ProjectStatsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -183,13 +183,13 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 		localVarReturnValue *ProjectStatsResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetOrganizationProjectStats")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetOrganizationProjectStats")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/project/stats"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -236,9 +236,9 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -265,7 +265,7 @@ func (a *ProjectsApiService) GetOrganizationProjectStatsExecute(r ApiGetOrganiza
 
 type ApiListProjectRequest struct {
 	ctx            context.Context
-	ApiService     *ProjectsApiService
+	ApiService     *ProjectsAPIService
 	organizationId string
 }
 
@@ -280,7 +280,7 @@ ListProject List projects
  @param organizationId Organization ID
  @return ApiListProjectRequest
 */
-func (a *ProjectsApiService) ListProject(ctx context.Context, organizationId string) ApiListProjectRequest {
+func (a *ProjectsAPIService) ListProject(ctx context.Context, organizationId string) ApiListProjectRequest {
 	return ApiListProjectRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -290,7 +290,7 @@ func (a *ProjectsApiService) ListProject(ctx context.Context, organizationId str
 
 // Execute executes the request
 //  @return ProjectResponseList
-func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (*ProjectResponseList, *http.Response, error) {
+func (a *ProjectsAPIService) ListProjectExecute(r ApiListProjectRequest) (*ProjectResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -298,13 +298,13 @@ func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (*Proje
 		localVarReturnValue *ProjectResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ListProject")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/project"
-	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterToString(r.organizationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -351,9 +351,9 @@ func (a *ProjectsApiService) ListProjectExecute(r ApiListProjectRequest) (*Proje
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
