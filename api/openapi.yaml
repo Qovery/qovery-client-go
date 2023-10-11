@@ -14801,6 +14801,7 @@ components:
         database.mysql.deny_public_access: false
         database.mongodb.deny_public_access: false
         aws.iam.admin_group: Admins
+        registry.mirroring_mode: null
         aws.eks.ec2.metadata_imds: optional
         pleco.resources_ttl: 5
         cloud_provider.container_registry.tags:
@@ -14917,6 +14918,8 @@ components:
           default: -1
           deprecated: true
           type: integer
+        registry.mirroring_mode:
+          $ref: '#/components/schemas/RegistryMirroringModeEnum'
       type: object
     Commit:
       example:
@@ -20460,6 +20463,18 @@ components:
           description: the new tag to deploy
           type: string
       type: object
+    RegistryMirroringModeEnum:
+      default: SERVICE
+      description: "Mirroring mode when deploying a service from a container registry\n\
+        - CLUSTER: This is not available on Scaleway. Images within the mirroring\
+        \ registry are organized by \"Qovery cluster\", meaning that the application\
+        \ deployed on the same cluster are all mirrored on the same repository.\n\
+        - SERVICE: Images within the mirroring registry are organized by \"Qovery\
+        \ service\", each service has its own repository\n"
+      enum:
+      - CLUSTER
+      - SERVICE
+      type: string
     deleteMember_request:
       properties:
         user_id:

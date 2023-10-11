@@ -848,6 +848,7 @@ Class | Method | HTTP request | Description
  - [ReferenceObjectStatus](docs/ReferenceObjectStatus.md)
  - [ReferenceObjectStatusResponseList](docs/ReferenceObjectStatusResponseList.md)
  - [Referral](docs/Referral.md)
+ - [RegistryMirroringModeEnum](docs/RegistryMirroringModeEnum.md)
  - [RemainingCredits](docs/RemainingCredits.md)
  - [RewardClaim](docs/RewardClaim.md)
  - [ScalewayCredentialsRequest](docs/ScalewayCredentialsRequest.md)

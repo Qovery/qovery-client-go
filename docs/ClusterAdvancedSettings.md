@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **AwsIamAdminGroup** | Pointer to **string** | AWS IAM group name with cluster access | [optional] [default to "Admins"]
 **AwsEksEc2MetadataImds** | Pointer to **string** | Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * &#x60;required&#x60;: IMDS V2 only   * &#x60;optional&#x60;: IMDS V1 + V2  | [optional] [default to "optional"]
 **PlecoResourcesTtl** | Pointer to **int32** |  | [optional] [default to -1]
+**RegistryMirroringMode** | Pointer to [**RegistryMirroringModeEnum**](RegistryMirroringModeEnum.md) |  | [optional] [default to REGISTRYMIRRORINGMODEENUM_SERVICE]
 
 ## Methods
 
@@ -491,6 +492,31 @@ SetPlecoResourcesTtl sets PlecoResourcesTtl field to given value.
 `func (o *ClusterAdvancedSettings) HasPlecoResourcesTtl() bool`
 
 HasPlecoResourcesTtl returns a boolean if a field has been set.
+
+### GetRegistryMirroringMode
+
+`func (o *ClusterAdvancedSettings) GetRegistryMirroringMode() RegistryMirroringModeEnum`
+
+GetRegistryMirroringMode returns the RegistryMirroringMode field if non-nil, zero value otherwise.
+
+### GetRegistryMirroringModeOk
+
+`func (o *ClusterAdvancedSettings) GetRegistryMirroringModeOk() (*RegistryMirroringModeEnum, bool)`
+
+GetRegistryMirroringModeOk returns a tuple with the RegistryMirroringMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegistryMirroringMode
+
+`func (o *ClusterAdvancedSettings) SetRegistryMirroringMode(v RegistryMirroringModeEnum)`
+
+SetRegistryMirroringMode sets RegistryMirroringMode field to given value.
+
+### HasRegistryMirroringMode
+
+`func (o *ClusterAdvancedSettings) HasRegistryMirroringMode() bool`
+
+HasRegistryMirroringMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

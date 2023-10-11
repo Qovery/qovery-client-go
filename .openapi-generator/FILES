@@ -540,6 +540,7 @@ docs/ReferenceObjectStatus.md
 docs/ReferenceObjectStatusResponseList.md
 docs/Referral.md
 docs/ReferralRewardsApi.md
+docs/RegistryMirroringModeEnum.md
 docs/RemainingCredits.md
 docs/RewardClaim.md
 docs/ScalewayCredentialsRequest.md
@@ -1002,6 +1003,7 @@ model_reference_object.go
 model_reference_object_status.go
 model_reference_object_status_response_list.go
 model_referral.go
+model_registry_mirroring_mode_enum.go
 model_remaining_credits.go
 model_reward_claim.go
 model_scaleway_credentials_request.go

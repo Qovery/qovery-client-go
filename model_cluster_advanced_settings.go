@@ -52,7 +52,8 @@ type ClusterAdvancedSettings struct {
 	// Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * `required`: IMDS V2 only   * `optional`: IMDS V1 + V2
 	AwsEksEc2MetadataImds *string `json:"aws.eks.ec2.metadata_imds,omitempty"`
 	// Deprecated
-	PlecoResourcesTtl *int32 `json:"pleco.resources_ttl,omitempty"`
+	PlecoResourcesTtl     *int32                     `json:"pleco.resources_ttl,omitempty"`
+	RegistryMirroringMode *RegistryMirroringModeEnum `json:"registry.mirroring_mode,omitempty"`
 }
 
 // NewClusterAdvancedSettings instantiates a new ClusterAdvancedSettings object
@@ -87,6 +88,8 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this.AwsEksEc2MetadataImds = &awsEksEc2MetadataImds
 	var plecoResourcesTtl int32 = -1
 	this.PlecoResourcesTtl = &plecoResourcesTtl
+	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
+	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
 }
 
@@ -121,6 +124,8 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this.AwsEksEc2MetadataImds = &awsEksEc2MetadataImds
 	var plecoResourcesTtl int32 = -1
 	this.PlecoResourcesTtl = &plecoResourcesTtl
+	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
+	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
 }
 
@@ -703,6 +708,38 @@ func (o *ClusterAdvancedSettings) SetPlecoResourcesTtl(v int32) {
 	o.PlecoResourcesTtl = &v
 }
 
+// GetRegistryMirroringMode returns the RegistryMirroringMode field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetRegistryMirroringMode() RegistryMirroringModeEnum {
+	if o == nil || o.RegistryMirroringMode == nil {
+		var ret RegistryMirroringModeEnum
+		return ret
+	}
+	return *o.RegistryMirroringMode
+}
+
+// GetRegistryMirroringModeOk returns a tuple with the RegistryMirroringMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetRegistryMirroringModeOk() (*RegistryMirroringModeEnum, bool) {
+	if o == nil || o.RegistryMirroringMode == nil {
+		return nil, false
+	}
+	return o.RegistryMirroringMode, true
+}
+
+// HasRegistryMirroringMode returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasRegistryMirroringMode() bool {
+	if o != nil && o.RegistryMirroringMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistryMirroringMode gets a reference to the given RegistryMirroringModeEnum and assigns it to the RegistryMirroringMode field.
+func (o *ClusterAdvancedSettings) SetRegistryMirroringMode(v RegistryMirroringModeEnum) {
+	o.RegistryMirroringMode = &v
+}
+
 func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AwsCloudwatchEksLogsRetentionDays != nil {
@@ -758,6 +795,9 @@ func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	}
 	if o.PlecoResourcesTtl != nil {
 		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
+	}
+	if o.RegistryMirroringMode != nil {
+		toSerialize["registry.mirroring_mode"] = o.RegistryMirroringMode
 	}
 	return json.Marshal(toSerialize)
 }
