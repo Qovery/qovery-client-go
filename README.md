@@ -605,7 +605,6 @@ Class | Method | HTTP request | Description
  - [DeploymentStageResponse](docs/DeploymentStageResponse.md)
  - [DeploymentStageResponseList](docs/DeploymentStageResponseList.md)
  - [DeploymentStageServiceResponse](docs/DeploymentStageServiceResponse.md)
- - [DeploymentStageWithServiceStatusesList](docs/DeploymentStageWithServiceStatusesList.md)
  - [DeploymentStageWithServicesStatuses](docs/DeploymentStageWithServicesStatuses.md)
  - [DoCredentialsRequest](docs/DoCredentialsRequest.md)
  - [Environment](docs/Environment.md)

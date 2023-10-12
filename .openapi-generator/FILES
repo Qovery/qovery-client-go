@@ -264,7 +264,6 @@ docs/DeploymentStageRequest.md
 docs/DeploymentStageResponse.md
 docs/DeploymentStageResponseList.md
 docs/DeploymentStageServiceResponse.md
-docs/DeploymentStageWithServiceStatusesList.md
 docs/DeploymentStageWithServicesStatuses.md
 docs/DoCredentialsRequest.md
 docs/Environment.md
@@ -717,7 +716,6 @@ model_deployment_stage_request.go
 model_deployment_stage_response.go
 model_deployment_stage_response_list.go
 model_deployment_stage_service_response.go
-model_deployment_stage_with_service_statuses_list.go
 model_deployment_stage_with_services_statuses.go
 model_do_credentials_request.go
 model_environment.go

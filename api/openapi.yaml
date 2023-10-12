@@ -17419,268 +17419,269 @@ components:
           last_deployment_id: last_deployment_id
           total_deployment_duration_in_seconds: 0
         stages:
-          results:
-          - databases:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            stage:
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-            jobs:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            containers:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            applications:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-          - databases:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            stage:
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-            jobs:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            containers:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            applications:
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
-            - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              state: null
-              steps:
-                total_duration_sec: 0
-                details:
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-                - step_name: null
-                  duration_sec: 6
-                  status: null
-              is_part_last_deployment: true
-              service_deployment_status: null
+        - databases:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          stage:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+          jobs:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          containers:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          applications:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+        - databases:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          stage:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+          jobs:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          containers:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          applications:
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
+          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: null
+            steps:
+              total_duration_sec: 0
+              details:
+              - step_name: null
+                duration_sec: 6
+                status: null
+              - step_name: null
+                duration_sec: 6
+                status: null
+            is_part_last_deployment: true
+            service_deployment_status: null
       properties:
         environment:
           $ref: '#/components/schemas/EnvironmentStatus'
         stages:
-          $ref: '#/components/schemas/DeploymentStageWithServiceStatusesList'
+          items:
+            $ref: '#/components/schemas/DeploymentStageWithServicesStatuses'
+          type: array
       type: object
     EnvironmentStatusList:
       example:
@@ -18299,271 +18300,6 @@ components:
             description: "type of the service (i.e APPLICATION, JOB, DATABASE, ...)"
             type: string
         type: object
-    DeploymentStageWithServiceStatusesList:
-      example:
-        results:
-        - databases:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          stage:
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-          jobs:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          containers:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          applications:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-        - databases:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          stage:
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-          jobs:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          containers:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          applications:
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-          - last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: null
-            steps:
-              total_duration_sec: 0
-              details:
-              - step_name: null
-                duration_sec: 6
-                status: null
-              - step_name: null
-                duration_sec: 6
-                status: null
-            is_part_last_deployment: true
-            service_deployment_status: null
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/DeploymentStageWithServicesStatuses'
-          type: array
-      type: object
     DeploymentStageWithServicesStatuses:
       example:
         databases:

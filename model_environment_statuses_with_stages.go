@@ -20,8 +20,8 @@ var _ MappedNullable = &EnvironmentStatusesWithStages{}
 
 // EnvironmentStatusesWithStages struct for EnvironmentStatusesWithStages
 type EnvironmentStatusesWithStages struct {
-	Environment *EnvironmentStatus                      `json:"environment,omitempty"`
-	Stages      *DeploymentStageWithServiceStatusesList `json:"stages,omitempty"`
+	Environment *EnvironmentStatus                    `json:"environment,omitempty"`
+	Stages      []DeploymentStageWithServicesStatuses `json:"stages,omitempty"`
 }
 
 // NewEnvironmentStatusesWithStages instantiates a new EnvironmentStatusesWithStages object
@@ -74,17 +74,17 @@ func (o *EnvironmentStatusesWithStages) SetEnvironment(v EnvironmentStatus) {
 }
 
 // GetStages returns the Stages field value if set, zero value otherwise.
-func (o *EnvironmentStatusesWithStages) GetStages() DeploymentStageWithServiceStatusesList {
+func (o *EnvironmentStatusesWithStages) GetStages() []DeploymentStageWithServicesStatuses {
 	if o == nil || IsNil(o.Stages) {
-		var ret DeploymentStageWithServiceStatusesList
+		var ret []DeploymentStageWithServicesStatuses
 		return ret
 	}
-	return *o.Stages
+	return o.Stages
 }
 
 // GetStagesOk returns a tuple with the Stages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnvironmentStatusesWithStages) GetStagesOk() (*DeploymentStageWithServiceStatusesList, bool) {
+func (o *EnvironmentStatusesWithStages) GetStagesOk() ([]DeploymentStageWithServicesStatuses, bool) {
 	if o == nil || IsNil(o.Stages) {
 		return nil, false
 	}
@@ -100,9 +100,9 @@ func (o *EnvironmentStatusesWithStages) HasStages() bool {
 	return false
 }
 
-// SetStages gets a reference to the given DeploymentStageWithServiceStatusesList and assigns it to the Stages field.
-func (o *EnvironmentStatusesWithStages) SetStages(v DeploymentStageWithServiceStatusesList) {
-	o.Stages = &v
+// SetStages gets a reference to the given []DeploymentStageWithServicesStatuses and assigns it to the Stages field.
+func (o *EnvironmentStatusesWithStages) SetStages(v []DeploymentStageWithServicesStatuses) {
+	o.Stages = v
 }
 
 func (o EnvironmentStatusesWithStages) MarshalJSON() ([]byte, error) {
