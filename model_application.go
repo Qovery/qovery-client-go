@@ -25,14 +25,14 @@ type Application struct {
 	CreatedAt     time.Time                    `json:"created_at"`
 	UpdatedAt     *time.Time                   `json:"updated_at,omitempty"`
 	Storage       []ServiceStorageStorageInner `json:"storage,omitempty"`
-	Environment   *ReferenceObject             `json:"environment,omitempty"`
+	Environment   ReferenceObject              `json:"environment"`
 	GitRepository *ApplicationGitRepository    `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// name is case insensitive
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// give a description to this application
 	Description NullableString `json:"description,omitempty"`
 	BuildMode   *BuildModeEnum `json:"build_mode,omitempty"`
@@ -62,10 +62,12 @@ type Application struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(id string, createdAt time.Time, healthchecks Healthcheck) *Application {
+func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck) *Application {
 	this := Application{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Environment = environment
+	this.Name = name
 	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
 	this.BuildMode = &buildMode
 	var minRunningInstances int32 = 1
@@ -206,36 +208,28 @@ func (o *Application) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
 }
 
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
+// GetEnvironment returns the Environment field value
 func (o *Application) GetEnvironment() ReferenceObject {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Environment
+
+	return o.Environment
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// GetEnvironmentOk returns a tuple with the Environment field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetEnvironmentOk() (*ReferenceObject, bool) {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Environment, true
+	return &o.Environment, true
 }
 
-// HasEnvironment returns a boolean if a field has been set.
-func (o *Application) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given ReferenceObject and assigns it to the Environment field.
+// SetEnvironment sets field value
 func (o *Application) SetEnvironment(v ReferenceObject) {
-	o.Environment = &v
+	o.Environment = v
 }
 
 // GetGitRepository returns the GitRepository field value if set, zero value otherwise.
@@ -334,36 +328,28 @@ func (o *Application) SetMaximumMemory(v int32) {
 	o.MaximumMemory = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *Application) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Application) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *Application) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -857,9 +843,7 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
-	if !IsNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
+	toSerialize["environment"] = o.Environment
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
@@ -869,9 +853,7 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaximumMemory) {
 		toSerialize["maximum_memory"] = o.MaximumMemory
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}

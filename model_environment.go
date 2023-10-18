@@ -25,8 +25,8 @@ type Environment struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name    string           `json:"name"`
-	Project *ReferenceObject `json:"project,omitempty"`
+	Name    string          `json:"name"`
+	Project ReferenceObject `json:"project"`
 	// uuid of the user that made the last update
 	LastUpdatedBy *string                       `json:"last_updated_by,omitempty"`
 	CloudProvider EnvironmentAllOfCloudProvider `json:"cloud_provider"`
@@ -39,11 +39,12 @@ type Environment struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironment(id string, createdAt time.Time, name string, cloudProvider EnvironmentAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string) *Environment {
+func NewEnvironment(id string, createdAt time.Time, name string, project ReferenceObject, cloudProvider EnvironmentAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string) *Environment {
 	this := Environment{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
+	this.Project = project
 	this.CloudProvider = cloudProvider
 	this.Mode = mode
 	this.ClusterId = clusterId
@@ -162,36 +163,28 @@ func (o *Environment) SetName(v string) {
 	o.Name = v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *Environment) GetProject() ReferenceObject {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetProjectOk() (*ReferenceObject, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *Environment) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given ReferenceObject and assigns it to the Project field.
+// SetProject sets field value
 func (o *Environment) SetProject(v ReferenceObject) {
-	o.Project = &v
+	o.Project = v
 }
 
 // GetLastUpdatedBy returns the LastUpdatedBy field value if set, zero value otherwise.
@@ -346,9 +339,7 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
+	toSerialize["project"] = o.Project
 	if !IsNil(o.LastUpdatedBy) {
 		toSerialize["last_updated_by"] = o.LastUpdatedBy
 	}

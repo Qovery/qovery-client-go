@@ -8,11 +8,11 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
-**Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
+**Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
-**Name** | Pointer to **string** | name is case insensitive | [optional] 
+**Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **NullableString** | give a description to this application | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_BUILDPACKS]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewApplication
 
-`func NewApplication(id string, createdAt time.Time, healthchecks Healthcheck, ) *Application`
+`func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -156,11 +156,6 @@ and a boolean to check if the value has been set.
 
 SetEnvironment sets Environment field to given value.
 
-### HasEnvironment
-
-`func (o *Application) HasEnvironment() bool`
-
-HasEnvironment returns a boolean if a field has been set.
 
 ### GetGitRepository
 
@@ -256,11 +251,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Application) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 

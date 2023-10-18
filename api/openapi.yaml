@@ -13509,7 +13509,9 @@ components:
               after receiving a new commit.
             type: boolean
         required:
+        - environment
         - healthchecks
+        - name
         type: object
     ApplicationAdvancedSettings:
       example:
@@ -16559,6 +16561,7 @@ components:
         - cluster_id
         - mode
         - name
+        - project
         type: object
     EnvironmentResponseList:
       example:
