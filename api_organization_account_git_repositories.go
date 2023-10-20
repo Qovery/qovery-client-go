@@ -27,6 +27,13 @@ type ApiGetOrganizationBitbucketRepositoriesRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
+	gitTokenId     *string
+}
+
+// The git token id that must be used for the application
+func (r ApiGetOrganizationBitbucketRepositoriesRequest) GitTokenId(gitTokenId string) ApiGetOrganizationBitbucketRepositoriesRequest {
+	r.gitTokenId = &gitTokenId
+	return r
 }
 
 func (r ApiGetOrganizationBitbucketRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
@@ -70,6 +77,9 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.gitTokenId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitTokenId", r.gitTokenId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -142,7 +152,14 @@ type ApiGetOrganizationBitbucketRepositoryBranchesRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
+	gitTokenId     *string
 	name           *string
+}
+
+// The git token id that must be used for the application
+func (r ApiGetOrganizationBitbucketRepositoryBranchesRequest) GitTokenId(gitTokenId string) ApiGetOrganizationBitbucketRepositoryBranchesRequest {
+	r.gitTokenId = &gitTokenId
+	return r
 }
 
 // The name of the repository where to retrieve the branches
@@ -192,6 +209,9 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.gitTokenId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitTokenId", r.gitTokenId, "")
+	}
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
@@ -382,6 +402,13 @@ type ApiGetOrganizationGithubRepositoriesRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
+	gitTokenId     *string
+}
+
+// The git token id that must be used for the application
+func (r ApiGetOrganizationGithubRepositoriesRequest) GitTokenId(gitTokenId string) ApiGetOrganizationGithubRepositoriesRequest {
+	r.gitTokenId = &gitTokenId
+	return r
 }
 
 func (r ApiGetOrganizationGithubRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
@@ -425,6 +452,9 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.gitTokenId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitTokenId", r.gitTokenId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -497,7 +527,14 @@ type ApiGetOrganizationGithubRepositoryBranchesRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
+	gitTokenId     *string
 	name           *string
+}
+
+// The git token id that must be used for the application
+func (r ApiGetOrganizationGithubRepositoryBranchesRequest) GitTokenId(gitTokenId string) ApiGetOrganizationGithubRepositoryBranchesRequest {
+	r.gitTokenId = &gitTokenId
+	return r
 }
 
 // The name of the repository where to retrieve the branches
@@ -547,6 +584,9 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.gitTokenId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitTokenId", r.gitTokenId, "")
+	}
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}
@@ -622,6 +662,13 @@ type ApiGetOrganizationGitlabRepositoriesRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
+	gitTokenId     *string
+}
+
+// The git token id that must be used for the application
+func (r ApiGetOrganizationGitlabRepositoriesRequest) GitTokenId(gitTokenId string) ApiGetOrganizationGitlabRepositoriesRequest {
+	r.gitTokenId = &gitTokenId
+	return r
 }
 
 func (r ApiGetOrganizationGitlabRepositoriesRequest) Execute() (*GitRepositoryResponseList, *http.Response, error) {
@@ -665,6 +712,9 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.gitTokenId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitTokenId", r.gitTokenId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -737,7 +787,14 @@ type ApiGetOrganizationGitlabRepositoryBranchesRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationAccountGitRepositoriesAPIService
 	organizationId string
+	gitTokenId     *string
 	name           *string
+}
+
+// The git token id that must be used for the application
+func (r ApiGetOrganizationGitlabRepositoryBranchesRequest) GitTokenId(gitTokenId string) ApiGetOrganizationGitlabRepositoryBranchesRequest {
+	r.gitTokenId = &gitTokenId
+	return r
 }
 
 // The name of the repository to retrieve the branches
@@ -787,6 +844,9 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.gitTokenId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitTokenId", r.gitTokenId, "")
+	}
 	if r.name != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
 	}

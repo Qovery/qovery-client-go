@@ -26,6 +26,8 @@ type ApplicationGitRepositoryRequest struct {
 	Branch *string `json:"branch,omitempty"`
 	// indicates the root path of the application.
 	RootPath *string `json:"root_path,omitempty"`
+	// The git token id on Qovery side
+	GitTokenId NullableString `json:"git_token_id,omitempty"`
 }
 
 // NewApplicationGitRepositoryRequest instantiates a new ApplicationGitRepositoryRequest object
@@ -138,6 +140,49 @@ func (o *ApplicationGitRepositoryRequest) SetRootPath(v string) {
 	o.RootPath = &v
 }
 
+// GetGitTokenId returns the GitTokenId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationGitRepositoryRequest) GetGitTokenId() string {
+	if o == nil || IsNil(o.GitTokenId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GitTokenId.Get()
+}
+
+// GetGitTokenIdOk returns a tuple with the GitTokenId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationGitRepositoryRequest) GetGitTokenIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GitTokenId.Get(), o.GitTokenId.IsSet()
+}
+
+// HasGitTokenId returns a boolean if a field has been set.
+func (o *ApplicationGitRepositoryRequest) HasGitTokenId() bool {
+	if o != nil && o.GitTokenId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGitTokenId gets a reference to the given NullableString and assigns it to the GitTokenId field.
+func (o *ApplicationGitRepositoryRequest) SetGitTokenId(v string) {
+	o.GitTokenId.Set(&v)
+}
+
+// SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
+func (o *ApplicationGitRepositoryRequest) SetGitTokenIdNil() {
+	o.GitTokenId.Set(nil)
+}
+
+// UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
+func (o *ApplicationGitRepositoryRequest) UnsetGitTokenId() {
+	o.GitTokenId.Unset()
+}
+
 func (o ApplicationGitRepositoryRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -154,6 +199,9 @@ func (o ApplicationGitRepositoryRequest) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.RootPath) {
 		toSerialize["root_path"] = o.RootPath
+	}
+	if o.GitTokenId.IsSet() {
+		toSerialize["git_token_id"] = o.GitTokenId.Get()
 	}
 	return toSerialize, nil
 }

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Url** | **string** | application git repository URL | 
 **Branch** | Pointer to **string** | Name of the branch to use. This is optional If not specified, then the branch used is the &#x60;main&#x60; or &#x60;master&#x60; one  | [optional] 
 **RootPath** | Pointer to **string** | indicates the root path of the application. | [optional] [default to "/"]
+**GitTokenId** | Pointer to **NullableString** | The git token id on Qovery side | [optional] 
 
 ## Methods
 
@@ -97,6 +98,41 @@ SetRootPath sets RootPath field to given value.
 
 HasRootPath returns a boolean if a field has been set.
 
+### GetGitTokenId
+
+`func (o *ApplicationGitRepositoryRequest) GetGitTokenId() string`
+
+GetGitTokenId returns the GitTokenId field if non-nil, zero value otherwise.
+
+### GetGitTokenIdOk
+
+`func (o *ApplicationGitRepositoryRequest) GetGitTokenIdOk() (*string, bool)`
+
+GetGitTokenIdOk returns a tuple with the GitTokenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitTokenId
+
+`func (o *ApplicationGitRepositoryRequest) SetGitTokenId(v string)`
+
+SetGitTokenId sets GitTokenId field to given value.
+
+### HasGitTokenId
+
+`func (o *ApplicationGitRepositoryRequest) HasGitTokenId() bool`
+
+HasGitTokenId returns a boolean if a field has been set.
+
+### SetGitTokenIdNil
+
+`func (o *ApplicationGitRepositoryRequest) SetGitTokenIdNil(b bool)`
+
+ SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
+
+### UnsetGitTokenId
+`func (o *ApplicationGitRepositoryRequest) UnsetGitTokenId()`
+
+UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

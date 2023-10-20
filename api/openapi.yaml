@@ -379,6 +379,36 @@ paths:
       summary: List organization available roles
       tags:
       - Organization Main Calls
+  /organization/{organizationId}/gitToken:
+    get:
+      description: List organization git tokens
+      operationId: listOrganizationGitTokens
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOrganizationGitTokens_200_response'
+          description: List organization git tokens
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization git tokens
+      tags:
+      - Organization Main Calls
   /organization/{organizationId}/member:
     delete:
       operationId: deleteMember
@@ -2314,6 +2344,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The git token id that must be used for the application
+        explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2339,6 +2378,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The git token id that must be used for the application
+        explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       - description: The name of the repository where to retrieve the branches
         explode: true
         in: query
@@ -2372,6 +2420,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The git token id that must be used for the application
+        explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2397,6 +2454,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The git token id that must be used for the application
+        explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       - description: The name of the repository to retrieve the branches
         explode: true
         in: query
@@ -2430,6 +2496,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The git token id that must be used for the application
+        explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2455,6 +2530,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The git token id that must be used for the application
+        explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       - description: The name of the repository where to retrieve the branches
         explode: true
         in: query
@@ -13908,6 +13992,11 @@ components:
           default: /
           description: indicates the root path of the application.
           type: string
+        git_token_id:
+          description: The git token id on Qovery side
+          format: uuid
+          nullable: true
+          type: string
       required:
       - name
       - owner
@@ -18047,6 +18136,20 @@ components:
             $ref: '#/components/schemas/GitRepository'
           type: array
       type: object
+    GitTokenResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          type:
+            $ref: '#/components/schemas/GitProviderEnum'
+        required:
+        - name
+        - type
+        type: object
     Healthcheck:
       nullable: false
       properties:
@@ -21355,6 +21458,17 @@ components:
       - CLUSTER
       - SERVICE
       type: string
+    listOrganizationGitTokens_200_response:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/GitTokenResponse'
+          type: array
+      type: object
     deleteMember_request:
       properties:
         user_id:

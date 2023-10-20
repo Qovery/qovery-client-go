@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## GetOrganizationBitbucketRepositories
 
-> GitRepositoryResponseList GetOrganizationBitbucketRepositories(ctx, organizationId).Execute()
+> GitRepositoryResponseList GetOrganizationBitbucketRepositories(ctx, organizationId).GitTokenId(gitTokenId).Execute()
 
 Get bitbucket repositories of the connected user
 
@@ -34,10 +34,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,6 +64,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationBitbucketRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
 
 ### Return type
 
@@ -84,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationBitbucketRepositoryBranches
 
-> GitRepositoryBranchResponseList GetOrganizationBitbucketRepositoryBranches(ctx, organizationId).Name(name).Execute()
+> GitRepositoryBranchResponseList GetOrganizationBitbucketRepositoryBranches(ctx, organizationId).GitTokenId(gitTokenId).Name(name).Execute()
 
 Get bitbucket branches of the specified repository
 
@@ -102,11 +104,12 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
     name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches(context.Background(), organizationId).Name(name).Execute()
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches(context.Background(), organizationId).GitTokenId(gitTokenId).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,6 +135,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationBitbucketRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
  **name** | **string** | The name of the repository where to retrieve the branches | 
 
 ### Return type
@@ -222,7 +226,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationGithubRepositories
 
-> GitRepositoryResponseList GetOrganizationGithubRepositories(ctx, organizationId).Execute()
+> GitRepositoryResponseList GetOrganizationGithubRepositories(ctx, organizationId).GitTokenId(gitTokenId).Execute()
 
 Get github repositories of the connected user
 
@@ -240,10 +244,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -269,6 +274,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationGithubRepos
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
 
 ### Return type
 
@@ -290,7 +296,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationGithubRepositoryBranches
 
-> GitRepositoryBranchResponseList GetOrganizationGithubRepositoryBranches(ctx, organizationId).Name(name).Execute()
+> GitRepositoryBranchResponseList GetOrganizationGithubRepositoryBranches(ctx, organizationId).GitTokenId(gitTokenId).Name(name).Execute()
 
 Get github branches of the specified repository
 
@@ -308,11 +314,12 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
     name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches(context.Background(), organizationId).Name(name).Execute()
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches(context.Background(), organizationId).GitTokenId(gitTokenId).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -338,6 +345,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationGithubRepos
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
  **name** | **string** | The name of the repository where to retrieve the branches | 
 
 ### Return type
@@ -360,7 +368,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationGitlabRepositories
 
-> GitRepositoryResponseList GetOrganizationGitlabRepositories(ctx, organizationId).Execute()
+> GitRepositoryResponseList GetOrganizationGitlabRepositories(ctx, organizationId).GitTokenId(gitTokenId).Execute()
 
 Get gitlab repositories of the connected user
 
@@ -378,10 +386,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -407,6 +416,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationGitlabRepos
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
 
 ### Return type
 
@@ -428,7 +438,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationGitlabRepositoryBranches
 
-> GitRepositoryBranchResponseList GetOrganizationGitlabRepositoryBranches(ctx, organizationId).Name(name).Execute()
+> GitRepositoryBranchResponseList GetOrganizationGitlabRepositoryBranches(ctx, organizationId).GitTokenId(gitTokenId).Name(name).Execute()
 
 Get gitlab branches of the specified repository
 
@@ -446,11 +456,12 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
     name := "name_example" // string | The name of the repository to retrieve the branches (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches(context.Background(), organizationId).Name(name).Execute()
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches(context.Background(), organizationId).GitTokenId(gitTokenId).Name(name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -476,6 +487,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationGitlabRepos
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
  **name** | **string** | The name of the repository to retrieve the branches | 
 
 ### Return type

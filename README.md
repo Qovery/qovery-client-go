@@ -409,6 +409,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsAPI* | [**GetOrganization**](docs/OrganizationMainCallsAPI.md#getorganization) | **Get** /organization/{organizationId} | Get organization by ID
 *OrganizationMainCallsAPI* | [**ListOrganization**](docs/OrganizationMainCallsAPI.md#listorganization) | **Get** /organization | List user organizations
 *OrganizationMainCallsAPI* | [**ListOrganizationAvailableRoles**](docs/OrganizationMainCallsAPI.md#listorganizationavailableroles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
+*OrganizationMainCallsAPI* | [**ListOrganizationGitTokens**](docs/OrganizationMainCallsAPI.md#listorganizationgittokens) | **Get** /organization/{organizationId}/gitToken | List organization git tokens
 *OrganizationWebhookAPI* | [**CreateOrganizationWebhook**](docs/OrganizationWebhookAPI.md#createorganizationwebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
 *OrganizationWebhookAPI* | [**DeleteOrganizationWebhook**](docs/OrganizationWebhookAPI.md#deleteorganizationwebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 *OrganizationWebhookAPI* | [**EditOrganizationWebhook**](docs/OrganizationWebhookAPI.md#editorganizationwebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
@@ -668,6 +669,7 @@ Class | Method | HTTP request | Description
  - [GitRepositoryBranch](docs/GitRepositoryBranch.md)
  - [GitRepositoryBranchResponseList](docs/GitRepositoryBranchResponseList.md)
  - [GitRepositoryResponseList](docs/GitRepositoryResponseList.md)
+ - [GitTokenResponse](docs/GitTokenResponse.md)
  - [Healthcheck](docs/Healthcheck.md)
  - [Instance](docs/Instance.md)
  - [InstanceMemory](docs/InstanceMemory.md)
@@ -710,6 +712,7 @@ Class | Method | HTTP request | Description
  - [ListContainerDeploymentHistory200Response](docs/ListContainerDeploymentHistory200Response.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
+ - [ListOrganizationGitTokens200Response](docs/ListOrganizationGitTokens200Response.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogResponseList](docs/LogResponseList.md)
