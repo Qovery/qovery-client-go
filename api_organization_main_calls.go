@@ -722,7 +722,7 @@ type ApiListOrganizationGitTokensRequest struct {
 	organizationId string
 }
 
-func (r ApiListOrganizationGitTokensRequest) Execute() (*ListOrganizationGitTokens200Response, *http.Response, error) {
+func (r ApiListOrganizationGitTokensRequest) Execute() (*GitTokenResponseList, *http.Response, error) {
 	return r.ApiService.ListOrganizationGitTokensExecute(r)
 }
 
@@ -744,13 +744,13 @@ func (a *OrganizationMainCallsAPIService) ListOrganizationGitTokens(ctx context.
 }
 
 // Execute executes the request
-//  @return ListOrganizationGitTokens200Response
-func (a *OrganizationMainCallsAPIService) ListOrganizationGitTokensExecute(r ApiListOrganizationGitTokensRequest) (*ListOrganizationGitTokens200Response, *http.Response, error) {
+//  @return GitTokenResponseList
+func (a *OrganizationMainCallsAPIService) ListOrganizationGitTokensExecute(r ApiListOrganizationGitTokensRequest) (*GitTokenResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ListOrganizationGitTokens200Response
+		localVarReturnValue *GitTokenResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsAPIService.ListOrganizationGitTokens")

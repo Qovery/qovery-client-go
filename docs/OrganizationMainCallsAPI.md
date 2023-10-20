@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 
 ## ListOrganizationGitTokens
 
-> ListOrganizationGitTokens200Response ListOrganizationGitTokens(ctx, organizationId).Execute()
+> GitTokenResponseList ListOrganizationGitTokens(ctx, organizationId).Execute()
 
 List organization git tokens
 
@@ -445,7 +445,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganizationGitTokens``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListOrganizationGitTokens`: ListOrganizationGitTokens200Response
+    // response from `ListOrganizationGitTokens`: GitTokenResponseList
     fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganizationGitTokens`: %v\n", resp)
 }
 ```
@@ -469,7 +469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListOrganizationGitTokens200Response**](ListOrganizationGitTokens200Response.md)
+[**GitTokenResponseList**](GitTokenResponseList.md)
 
 ### Authorization
 

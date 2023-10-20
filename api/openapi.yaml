@@ -398,7 +398,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listOrganizationGitTokens_200_response'
+                $ref: '#/components/schemas/GitTokenResponseList'
           description: List organization git tokens
         "401":
           description: Access token is missing or invalid
@@ -18150,6 +18150,17 @@ components:
         - name
         - type
         type: object
+    GitTokenResponseList:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/GitTokenResponse'
+          type: array
+      type: object
     Healthcheck:
       nullable: false
       properties:
@@ -21458,17 +21469,6 @@ components:
       - CLUSTER
       - SERVICE
       type: string
-    listOrganizationGitTokens_200_response:
-      example:
-        results:
-        - null
-        - null
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/GitTokenResponse'
-          type: array
-      type: object
     deleteMember_request:
       properties:
         user_id:
