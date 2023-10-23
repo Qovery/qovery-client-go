@@ -341,6 +341,25 @@ Class | Method | HTTP request | Description
 *GitRepositoriesAPI* | [**GetGitlabRepositoryBranches**](docs/GitRepositoriesAPI.md#getgitlabrepositorybranches) | **Get** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
 *GithubAppAPI* | [**OrganizationGithubAppConnect**](docs/GithubAppAPI.md#organizationgithubappconnect) | **Post** /organization/{organizationId}/github/connect | Connect a github account to an organization
 *GithubAppAPI* | [**OrganizationGithubAppDisconnect**](docs/GithubAppAPI.md#organizationgithubappdisconnect) | **Delete** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
+*HelmAPI* | [**GetDefaultHelmAdvancedSettings**](docs/HelmAPI.md#getdefaulthelmadvancedsettings) | **Get** /defaultHelmAdvancedSettings | List default helm advanced settings
+*HelmActionsAPI* | [**DeployHelm**](docs/HelmActionsAPI.md#deployhelm) | **Post** /helm/{helmId}/deploy | Deploy helm
+*HelmActionsAPI* | [**RedeployHelm**](docs/HelmActionsAPI.md#redeployhelm) | **Post** /helm/{helmId}/redeploy | Redeploy helm
+*HelmActionsAPI* | [**RestartHelm**](docs/HelmActionsAPI.md#restarthelm) | **Post** /helm/{helmId}/restart | Deprecated - Restart helm
+*HelmActionsAPI* | [**StopHelm**](docs/HelmActionsAPI.md#stophelm) | **Post** /helm/{helmId}/stop | Stop helm
+*HelmConfigurationAPI* | [**EditHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#edithelmadvancedsettings) | **Put** /helm/{helmId}/advancedSettings | Edit advanced settings
+*HelmConfigurationAPI* | [**GetHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#gethelmadvancedsettings) | **Get** /helm/{helmId}/advancedSettings | Get advanced settings
+*HelmDeploymentHistoryAPI* | [**ListHelmDeploymentHistory**](docs/HelmDeploymentHistoryAPI.md#listhelmdeploymenthistory) | **Get** /helm/{helmId}/deploymentHistory | List helm deployments
+*HelmDeploymentRestrictionAPI* | [**CreateHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#createhelmdeploymentrestriction) | **Post** /helm/{helmId}/deploymentRestriction | Create a helm deployment restriction
+*HelmDeploymentRestrictionAPI* | [**DeleteHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#deletehelmdeploymentrestriction) | **Delete** /helm/{helmId}/deploymentRestriction/{deploymentRestrictionId} | Delete a helm deployment restriction
+*HelmDeploymentRestrictionAPI* | [**EditHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#edithelmdeploymentrestriction) | **Put** /helm/{helmId}/deploymentRestriction/{deploymentRestrictionId} | Edit a helm deployment restriction
+*HelmDeploymentRestrictionAPI* | [**GetHelmDeploymentRestrictions**](docs/HelmDeploymentRestrictionAPI.md#gethelmdeploymentrestrictions) | **Get** /helm/{helmId}/deploymentRestriction | Get helm deployment restrictions
+*HelmMainCallsAPI* | [**DeleteHelm**](docs/HelmMainCallsAPI.md#deletehelm) | **Delete** /helm/{helmId} | Delete helm
+*HelmMainCallsAPI* | [**EditHelm**](docs/HelmMainCallsAPI.md#edithelm) | **Put** /helm/{helmId} | Edit helm
+*HelmMainCallsAPI* | [**GetHelm**](docs/HelmMainCallsAPI.md#gethelm) | **Get** /helm/{helmId} | Get helm by ID
+*HelmMainCallsAPI* | [**GetHelmStatus**](docs/HelmMainCallsAPI.md#gethelmstatus) | **Get** /helm/{helmId}/status | Get helm status
+*HelmsAPI* | [**CreateHelm**](docs/HelmsAPI.md#createhelm) | **Post** /environment/{environmentId}/helm | Create a helm
+*HelmsAPI* | [**GetEnvironmentHelmStatus**](docs/HelmsAPI.md#getenvironmenthelmstatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
+*HelmsAPI* | [**ListHelms**](docs/HelmsAPI.md#listhelms) | **Get** /environment/{environmentId}/helm | List helms
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
 *JobActionsAPI* | [**RedeployJob**](docs/JobActionsAPI.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
 *JobActionsAPI* | [**RestartJob**](docs/JobActionsAPI.md#restartjob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
@@ -587,6 +606,7 @@ Class | Method | HTTP request | Description
  - [DeployAllRequestApplicationsInner](docs/DeployAllRequestApplicationsInner.md)
  - [DeployAllRequestContainersInner](docs/DeployAllRequestContainersInner.md)
  - [DeployAllRequestJobsInner](docs/DeployAllRequestJobsInner.md)
+ - [DeployHelmRequest](docs/DeployHelmRequest.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeploymentHistory](docs/DeploymentHistory.md)
  - [DeploymentHistoryApplication](docs/DeploymentHistoryApplication.md)
@@ -672,6 +692,21 @@ Class | Method | HTTP request | Description
  - [GitTokenResponse](docs/GitTokenResponse.md)
  - [GitTokenResponseList](docs/GitTokenResponseList.md)
  - [Healthcheck](docs/Healthcheck.md)
+ - [HelmDeploymentRestrictionRequest](docs/HelmDeploymentRestrictionRequest.md)
+ - [HelmDeploymentRestrictionResponse](docs/HelmDeploymentRestrictionResponse.md)
+ - [HelmDeploymentRestrictionResponseList](docs/HelmDeploymentRestrictionResponseList.md)
+ - [HelmForceEvent](docs/HelmForceEvent.md)
+ - [HelmRequest](docs/HelmRequest.md)
+ - [HelmRequestAllOfSource](docs/HelmRequestAllOfSource.md)
+ - [HelmRequestAllOfSourceGit](docs/HelmRequestAllOfSourceGit.md)
+ - [HelmRequestAllOfSourceRepository](docs/HelmRequestAllOfSourceRepository.md)
+ - [HelmRequestAllOfValuesOverride](docs/HelmRequestAllOfValuesOverride.md)
+ - [HelmRequestAllOfValuesOverrideFile](docs/HelmRequestAllOfValuesOverrideFile.md)
+ - [HelmRequestAllOfValuesOverrideFileGit](docs/HelmRequestAllOfValuesOverrideFileGit.md)
+ - [HelmRequestAllOfValuesOverrideFileRaw](docs/HelmRequestAllOfValuesOverrideFileRaw.md)
+ - [HelmRequestAllOfValuesOverrideFileRawValues](docs/HelmRequestAllOfValuesOverrideFileRawValues.md)
+ - [HelmResponse](docs/HelmResponse.md)
+ - [HelmResponseList](docs/HelmResponseList.md)
  - [Instance](docs/Instance.md)
  - [InstanceMemory](docs/InstanceMemory.md)
  - [InstanceResponseList](docs/InstanceResponseList.md)
@@ -712,6 +747,8 @@ Class | Method | HTTP request | Description
  - [LinkedServiceTypeEnum](docs/LinkedServiceTypeEnum.md)
  - [ListContainerDeploymentHistory200Response](docs/ListContainerDeploymentHistory200Response.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
+ - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
+ - [ListHelmDeploymentHistory200ResponseAllOfResultsInner](docs/ListHelmDeploymentHistory200ResponseAllOfResultsInner.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
