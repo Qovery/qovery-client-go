@@ -22319,6 +22319,16 @@ components:
             Cannot be set if `version` is defined
           type: string
       type: object
+    listHelmDeploymentHistory_200_response_allOf_results_inner_allOf_repository:
+      description: "If the chart source if from a repository, the chart name and its\
+        \ version"
+      nullable: true
+      properties:
+        chart_name:
+          type: string
+        version:
+          type: string
+      type: object
     listHelmDeploymentHistory_200_response_allOf_results_inner:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -22328,6 +22338,10 @@ components:
             type: string
           status:
             $ref: '#/components/schemas/StateEnum'
+          commit:
+            $ref: '#/components/schemas/Commit'
+          repository:
+            $ref: '#/components/schemas/listHelmDeploymentHistory_200_response_allOf_results_inner_allOf_repository'
         type: object
     listHelmDeploymentHistory_200_response:
       allOf:

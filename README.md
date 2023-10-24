@@ -749,6 +749,7 @@ Class | Method | HTTP request | Description
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
  - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
  - [ListHelmDeploymentHistory200ResponseAllOfResultsInner](docs/ListHelmDeploymentHistory200ResponseAllOfResultsInner.md)
+ - [ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository](docs/ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)

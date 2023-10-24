@@ -25,8 +25,10 @@ type ListHelmDeploymentHistory200ResponseAllOfResultsInner struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the helm
-	Name   *string    `json:"name,omitempty"`
-	Status *StateEnum `json:"status,omitempty"`
+	Name       *string                                                                      `json:"name,omitempty"`
+	Status     *StateEnum                                                                   `json:"status,omitempty"`
+	Commit     NullableCommit                                                               `json:"commit,omitempty"`
+	Repository NullableListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository `json:"repository,omitempty"`
 }
 
 // NewListHelmDeploymentHistory200ResponseAllOfResultsInner instantiates a new ListHelmDeploymentHistory200ResponseAllOfResultsInner object
@@ -192,6 +194,92 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetStatus(v Stat
 	o.Status = &v
 }
 
+// GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCommit() Commit {
+	if o == nil || IsNil(o.Commit.Get()) {
+		var ret Commit
+		return ret
+	}
+	return *o.Commit.Get()
+}
+
+// GetCommitOk returns a tuple with the Commit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCommitOk() (*Commit, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Commit.Get(), o.Commit.IsSet()
+}
+
+// HasCommit returns a boolean if a field has been set.
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasCommit() bool {
+	if o != nil && o.Commit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCommit gets a reference to the given NullableCommit and assigns it to the Commit field.
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetCommit(v Commit) {
+	o.Commit.Set(&v)
+}
+
+// SetCommitNil sets the value for Commit to be an explicit nil
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetCommitNil() {
+	o.Commit.Set(nil)
+}
+
+// UnsetCommit ensures that no value is present for Commit, not even an explicit nil
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) UnsetCommit() {
+	o.Commit.Unset()
+}
+
+// GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetRepository() ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository {
+	if o == nil || IsNil(o.Repository.Get()) {
+		var ret ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository
+		return ret
+	}
+	return *o.Repository.Get()
+}
+
+// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetRepositoryOk() (*ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Repository.Get(), o.Repository.IsSet()
+}
+
+// HasRepository returns a boolean if a field has been set.
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasRepository() bool {
+	if o != nil && o.Repository.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRepository gets a reference to the given NullableListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository and assigns it to the Repository field.
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetRepository(v ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository) {
+	o.Repository.Set(&v)
+}
+
+// SetRepositoryNil sets the value for Repository to be an explicit nil
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetRepositoryNil() {
+	o.Repository.Set(nil)
+}
+
+// UnsetRepository ensures that no value is present for Repository, not even an explicit nil
+func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) UnsetRepository() {
+	o.Repository.Unset()
+}
+
 func (o ListHelmDeploymentHistory200ResponseAllOfResultsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -212,6 +300,12 @@ func (o ListHelmDeploymentHistory200ResponseAllOfResultsInner) ToMap() (map[stri
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if o.Commit.IsSet() {
+		toSerialize["commit"] = o.Commit.Get()
+	}
+	if o.Repository.IsSet() {
+		toSerialize["repository"] = o.Repository.Get()
 	}
 	return toSerialize, nil
 }
