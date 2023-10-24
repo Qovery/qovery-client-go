@@ -23541,6 +23541,7 @@ x-tagGroups:
   - Containers
   - Databases
   - Jobs
+  - Helms
   - Environment Actions
   - Environment Logs
   - Environment Deployment History
