@@ -34,8 +34,9 @@ type ApplicationGitRepository struct {
 	// Git commit date corresponding to the deployed version of the app
 	DeployedCommitDate *time.Time `json:"deployed_commit_date,omitempty"`
 	// Git commit user corresponding to the deployed version of the app
-	DeployedCommitContributor *string `json:"deployed_commit_contributor,omitempty"`
-	DeployedCommitTag         *string `json:"deployed_commit_tag,omitempty"`
+	DeployedCommitContributor *string        `json:"deployed_commit_contributor,omitempty"`
+	DeployedCommitTag         *string        `json:"deployed_commit_tag,omitempty"`
+	GitTokenId                NullableString `json:"git_token_id,omitempty"`
 }
 
 // NewApplicationGitRepository instantiates a new ApplicationGitRepository object
@@ -407,6 +408,49 @@ func (o *ApplicationGitRepository) SetDeployedCommitTag(v string) {
 	o.DeployedCommitTag = &v
 }
 
+// GetGitTokenId returns the GitTokenId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationGitRepository) GetGitTokenId() string {
+	if o == nil || IsNil(o.GitTokenId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GitTokenId.Get()
+}
+
+// GetGitTokenIdOk returns a tuple with the GitTokenId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationGitRepository) GetGitTokenIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GitTokenId.Get(), o.GitTokenId.IsSet()
+}
+
+// HasGitTokenId returns a boolean if a field has been set.
+func (o *ApplicationGitRepository) HasGitTokenId() bool {
+	if o != nil && o.GitTokenId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGitTokenId gets a reference to the given NullableString and assigns it to the GitTokenId field.
+func (o *ApplicationGitRepository) SetGitTokenId(v string) {
+	o.GitTokenId.Set(&v)
+}
+
+// SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
+func (o *ApplicationGitRepository) SetGitTokenIdNil() {
+	o.GitTokenId.Set(nil)
+}
+
+// UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
+func (o *ApplicationGitRepository) UnsetGitTokenId() {
+	o.GitTokenId.Unset()
+}
+
 func (o ApplicationGitRepository) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -449,6 +493,9 @@ func (o ApplicationGitRepository) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeployedCommitTag) {
 		toSerialize["deployed_commit_tag"] = o.DeployedCommitTag
+	}
+	if o.GitTokenId.IsSet() {
+		toSerialize["git_token_id"] = o.GitTokenId.Get()
 	}
 	return toSerialize, nil
 }

@@ -14640,6 +14640,10 @@ components:
         deployed_commit_tag:
           example: v1.0.1
           type: string
+        git_token_id:
+          format: uuid
+          nullable: true
+          type: string
       type: object
     ApplicationGitRepositoryRequest:
       properties:
