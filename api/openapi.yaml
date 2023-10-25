@@ -2391,6 +2391,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The name of the repository where to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: The git token id that must be used for the application
         explode: true
         in: query
@@ -2398,14 +2406,6 @@ paths:
         required: false
         schema:
           format: uuid
-          type: string
-        style: form
-      - description: The name of the repository where to retrieve the branches
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
           type: string
         style: form
       responses:
@@ -2467,6 +2467,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The name of the repository to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: The git token id that must be used for the application
         explode: true
         in: query
@@ -2474,14 +2482,6 @@ paths:
         required: false
         schema:
           format: uuid
-          type: string
-        style: form
-      - description: The name of the repository to retrieve the branches
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
           type: string
         style: form
       responses:
@@ -2543,6 +2543,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The name of the repository where to retrieve the branches
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - description: The git token id that must be used for the application
         explode: true
         in: query
@@ -2550,14 +2558,6 @@ paths:
         required: false
         schema:
           format: uuid
-          type: string
-        style: form
-      - description: The name of the repository where to retrieve the branches
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
           type: string
         style: form
       responses:
