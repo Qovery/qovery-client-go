@@ -15839,23 +15839,19 @@ components:
       type: object
     ClusterAdvancedSettings:
       example:
-        aws.cloudwatch.eks_logs_retention_days: 0
         loki.log_retention_in_week: 1
         database.mysql.deny_public_access: false
         database.mongodb.deny_public_access: false
-        aws.iam.admin_group: Admins
-        registry.mirroring_mode: null
+        nginx.memory.limit_in_mib: 3
+        nginx.hpa.cpu_utilization_percentage_threshold: 2
+        nginx.hpa.memory_utilization_percentage_threshold: 4
+        nginx.hpa.max_number_instances: 1
         aws.eks.ec2.metadata_imds: optional
+        nginx.vcpu.limit_in_milli: 7
         pleco.resources_ttl: 5
-        cloud_provider.container_registry.tags:
-          key: cloud_provider.container_registry.tags
-        database.postgresql.allowed_cidrs:
-        - database.postgresql.allowed_cidrs
-        - database.postgresql.allowed_cidrs
         database.mysql.allowed_cidrs:
         - database.mysql.allowed_cidrs
         - database.mysql.allowed_cidrs
-        database.redis.deny_public_access: false
         aws.vpc.flow_logs_retention_days: 6
         database.redis.allowed_cidrs:
         - database.redis.allowed_cidrs
@@ -15864,9 +15860,21 @@ components:
         registry.image_retention_time: 5
         database.postgresql.deny_public_access: false
         load_balancer.size: lb-s
+        nginx.memory.request_in_mib: 9
         database.mongodb.allowed_cidrs:
         - database.mongodb.allowed_cidrs
         - database.mongodb.allowed_cidrs
+        aws.cloudwatch.eks_logs_retention_days: 0
+        aws.iam.admin_group: Admins
+        registry.mirroring_mode: null
+        cloud_provider.container_registry.tags:
+          key: cloud_provider.container_registry.tags
+        database.postgresql.allowed_cidrs:
+        - database.postgresql.allowed_cidrs
+        - database.postgresql.allowed_cidrs
+        database.redis.deny_public_access: false
+        nginx.vcpu.request_in_milli: 2
+        nginx.hpa.min_number_instances: 7
       properties:
         aws.cloudwatch.eks_logs_retention_days:
           default: 90
@@ -15964,6 +15972,38 @@ components:
           type: integer
         registry.mirroring_mode:
           $ref: '#/components/schemas/RegistryMirroringModeEnum'
+        nginx.vcpu.request_in_milli:
+          default: 100
+          description: vcpu request in millicores
+          type: integer
+        nginx.vcpu.limit_in_milli:
+          default: 500
+          description: vcpu limit in millicores
+          type: integer
+        nginx.memory.request_in_mib:
+          default: 768
+          description: memory request in MiB
+          type: integer
+        nginx.memory.limit_in_mib:
+          default: 768
+          description: memory limit in MiB
+          type: integer
+        nginx.hpa.cpu_utilization_percentage_threshold:
+          default: 50
+          description: hpa cpu threshold in percentage
+          type: integer
+        nginx.hpa.memory_utilization_percentage_threshold:
+          default: 50
+          description: hpa memory threshold in percentage
+          type: integer
+        nginx.hpa.min_number_instances:
+          default: 2
+          description: hpa minimum number of instances
+          type: integer
+        nginx.hpa.max_number_instances:
+          default: 25
+          description: hpa maximum number of instances
+          type: integer
       type: object
     Commit:
       example:
