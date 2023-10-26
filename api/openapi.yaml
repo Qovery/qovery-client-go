@@ -422,6 +422,118 @@ paths:
       summary: List organization git tokens
       tags:
       - Organization Main Calls
+    post:
+      description: Create a new git token to be used as a git provider by a service
+      operationId: createGitToken
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GitTokenRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitTokenResponse'
+          description: Git token created
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a git token
+      tags:
+      - Organization Main Calls
+  /organization/{organizationId}/gitToken/{gitTokenId}:
+    delete:
+      operationId: deleteGitToken
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Git Token ID
+        explode: false
+        in: path
+        name: gitTokenId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a git token
+      tags:
+      - Organization Main Calls
+    put:
+      operationId: editGitToken
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Git Token ID
+        explode: false
+        in: path
+        name: gitTokenId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GitTokenRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitTokenResponse'
+          description: Git token edited
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a git token
+      tags:
+      - Organization Main Calls
   /organization/{organizationId}/member:
     delete:
       operationId: deleteMember
@@ -13926,6 +14038,16 @@ components:
         format: uuid
         type: string
       style: form
+    gitTokenId:
+      description: Git Token ID
+      explode: false
+      in: path
+      name: gitTokenId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     instanceId:
       description: Instance ID
       explode: false
@@ -18840,6 +18962,32 @@ components:
             $ref: '#/components/schemas/GitRepository'
           type: array
       type: object
+    GitTokenRequest:
+      example:
+        workspace: workspace
+        name: name
+        description: description
+        type: null
+        token: token
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          $ref: '#/components/schemas/GitProviderEnum'
+        token:
+          description: The token from your git provider side
+          type: string
+        workspace:
+          description: "Mandatory only for BITBUCKET git provider, to allow us to\
+            \ fetch repositories at creation/edition of a service"
+          type: string
+      required:
+      - name
+      - token
+      - type
+      type: object
     GitTokenResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -18850,6 +18998,9 @@ components:
             type: string
           type:
             $ref: '#/components/schemas/GitProviderEnum'
+          expired_at:
+            format: date
+            type: string
         required:
         - name
         - type

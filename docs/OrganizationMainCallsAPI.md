@@ -4,14 +4,89 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateGitToken**](OrganizationMainCallsAPI.md#CreateGitToken) | **Post** /organization/{organizationId}/gitToken | Create a git token
 [**CreateOrganization**](OrganizationMainCallsAPI.md#CreateOrganization) | **Post** /organization | Create an organization
+[**DeleteGitToken**](OrganizationMainCallsAPI.md#DeleteGitToken) | **Delete** /organization/{organizationId}/gitToken/{gitTokenId} | Delete a git token
 [**DeleteOrganization**](OrganizationMainCallsAPI.md#DeleteOrganization) | **Delete** /organization/{organizationId} | Delete an organization
+[**EditGitToken**](OrganizationMainCallsAPI.md#EditGitToken) | **Put** /organization/{organizationId}/gitToken/{gitTokenId} | Edit a git token
 [**EditOrganization**](OrganizationMainCallsAPI.md#EditOrganization) | **Put** /organization/{organizationId} | Edit an organization
 [**GetOrganization**](OrganizationMainCallsAPI.md#GetOrganization) | **Get** /organization/{organizationId} | Get organization by ID
 [**ListOrganization**](OrganizationMainCallsAPI.md#ListOrganization) | **Get** /organization | List user organizations
 [**ListOrganizationAvailableRoles**](OrganizationMainCallsAPI.md#ListOrganizationAvailableRoles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
 [**ListOrganizationGitTokens**](OrganizationMainCallsAPI.md#ListOrganizationGitTokens) | **Get** /organization/{organizationId}/gitToken | List organization git tokens
 
+
+
+## CreateGitToken
+
+> GitTokenResponse CreateGitToken(ctx, organizationId).GitTokenRequest(gitTokenRequest).Execute()
+
+Create a git token
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenRequest := *openapiclient.NewGitTokenRequest("Name_example", openapiclient.GitProviderEnum("BITBUCKET"), "Token_example") // GitTokenRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationMainCallsAPI.CreateGitToken(context.Background(), organizationId).GitTokenRequest(gitTokenRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.CreateGitToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateGitToken`: GitTokenResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.CreateGitToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateGitTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **gitTokenRequest** | [**GitTokenRequest**](GitTokenRequest.md) |  | 
+
+### Return type
+
+[**GitTokenResponse**](GitTokenResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateOrganization
@@ -72,6 +147,75 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteGitToken
+
+> DeleteGitToken(ctx, organizationId, gitTokenId).Execute()
+
+Delete a git token
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.OrganizationMainCallsAPI.DeleteGitToken(context.Background(), organizationId, gitTokenId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.DeleteGitToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**gitTokenId** | **string** | Git Token ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteGitTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -140,6 +284,79 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EditGitToken
+
+> GitTokenResponse EditGitToken(ctx, organizationId, gitTokenId).GitTokenRequest(gitTokenRequest).Execute()
+
+Edit a git token
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
+    gitTokenRequest := *openapiclient.NewGitTokenRequest("Name_example", openapiclient.GitProviderEnum("BITBUCKET"), "Token_example") // GitTokenRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationMainCallsAPI.EditGitToken(context.Background(), organizationId, gitTokenId).GitTokenRequest(gitTokenRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.EditGitToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditGitToken`: GitTokenResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.EditGitToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**gitTokenId** | **string** | Git Token ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditGitTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **gitTokenRequest** | [**GitTokenRequest**](GitTokenRequest.md) |  | 
+
+### Return type
+
+[**GitTokenResponse**](GitTokenResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Type** | [**GitProviderEnum**](GitProviderEnum.md) |  | 
+**ExpiredAt** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -159,6 +160,31 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetExpiredAt
+
+`func (o *GitTokenResponse) GetExpiredAt() string`
+
+GetExpiredAt returns the ExpiredAt field if non-nil, zero value otherwise.
+
+### GetExpiredAtOk
+
+`func (o *GitTokenResponse) GetExpiredAtOk() (*string, bool)`
+
+GetExpiredAtOk returns a tuple with the ExpiredAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiredAt
+
+`func (o *GitTokenResponse) SetExpiredAt(v string)`
+
+SetExpiredAt sets ExpiredAt field to given value.
+
+### HasExpiredAt
+
+`func (o *GitTokenResponse) HasExpiredAt() bool`
+
+HasExpiredAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

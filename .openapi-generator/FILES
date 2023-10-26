@@ -346,6 +346,7 @@ docs/GitRepository.md
 docs/GitRepositoryBranch.md
 docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponseList.md
+docs/GitTokenRequest.md
 docs/GitTokenResponse.md
 docs/GitTokenResponseList.md
 docs/GithubAppAPI.md
@@ -815,6 +816,7 @@ model_git_repository.go
 model_git_repository_branch.go
 model_git_repository_branch_response_list.go
 model_git_repository_response_list.go
+model_git_token_request.go
 model_git_token_response.go
 model_git_token_response_list.go
 model_healthcheck.go

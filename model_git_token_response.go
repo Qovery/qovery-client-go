@@ -27,6 +27,7 @@ type GitTokenResponse struct {
 	Name        string          `json:"name"`
 	Description *string         `json:"description,omitempty"`
 	Type        GitProviderEnum `json:"type"`
+	ExpiredAt   *string         `json:"expired_at,omitempty"`
 }
 
 // NewGitTokenResponse instantiates a new GitTokenResponse object
@@ -210,6 +211,38 @@ func (o *GitTokenResponse) SetType(v GitProviderEnum) {
 	o.Type = v
 }
 
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise.
+func (o *GitTokenResponse) GetExpiredAt() string {
+	if o == nil || IsNil(o.ExpiredAt) {
+		var ret string
+		return ret
+	}
+	return *o.ExpiredAt
+}
+
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GitTokenResponse) GetExpiredAtOk() (*string, bool) {
+	if o == nil || IsNil(o.ExpiredAt) {
+		return nil, false
+	}
+	return o.ExpiredAt, true
+}
+
+// HasExpiredAt returns a boolean if a field has been set.
+func (o *GitTokenResponse) HasExpiredAt() bool {
+	if o != nil && !IsNil(o.ExpiredAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiredAt gets a reference to the given string and assigns it to the ExpiredAt field.
+func (o *GitTokenResponse) SetExpiredAt(v string) {
+	o.ExpiredAt = &v
+}
+
 func (o GitTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -230,6 +263,9 @@ func (o GitTokenResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["type"] = o.Type
+	if !IsNil(o.ExpiredAt) {
+		toSerialize["expired_at"] = o.ExpiredAt
+	}
 	return toSerialize, nil
 }
 
