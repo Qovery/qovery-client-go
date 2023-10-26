@@ -37,6 +37,7 @@ type ApplicationGitRepository struct {
 	DeployedCommitContributor *string        `json:"deployed_commit_contributor,omitempty"`
 	DeployedCommitTag         *string        `json:"deployed_commit_tag,omitempty"`
 	GitTokenId                NullableString `json:"git_token_id,omitempty"`
+	GitTokenName              NullableString `json:"git_token_name,omitempty"`
 }
 
 // NewApplicationGitRepository instantiates a new ApplicationGitRepository object
@@ -451,6 +452,49 @@ func (o *ApplicationGitRepository) UnsetGitTokenId() {
 	o.GitTokenId.Unset()
 }
 
+// GetGitTokenName returns the GitTokenName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationGitRepository) GetGitTokenName() string {
+	if o == nil || IsNil(o.GitTokenName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GitTokenName.Get()
+}
+
+// GetGitTokenNameOk returns a tuple with the GitTokenName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationGitRepository) GetGitTokenNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GitTokenName.Get(), o.GitTokenName.IsSet()
+}
+
+// HasGitTokenName returns a boolean if a field has been set.
+func (o *ApplicationGitRepository) HasGitTokenName() bool {
+	if o != nil && o.GitTokenName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGitTokenName gets a reference to the given NullableString and assigns it to the GitTokenName field.
+func (o *ApplicationGitRepository) SetGitTokenName(v string) {
+	o.GitTokenName.Set(&v)
+}
+
+// SetGitTokenNameNil sets the value for GitTokenName to be an explicit nil
+func (o *ApplicationGitRepository) SetGitTokenNameNil() {
+	o.GitTokenName.Set(nil)
+}
+
+// UnsetGitTokenName ensures that no value is present for GitTokenName, not even an explicit nil
+func (o *ApplicationGitRepository) UnsetGitTokenName() {
+	o.GitTokenName.Unset()
+}
+
 func (o ApplicationGitRepository) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -496,6 +540,9 @@ func (o ApplicationGitRepository) ToMap() (map[string]interface{}, error) {
 	}
 	if o.GitTokenId.IsSet() {
 		toSerialize["git_token_id"] = o.GitTokenId.Get()
+	}
+	if o.GitTokenName.IsSet() {
+		toSerialize["git_token_name"] = o.GitTokenName.Get()
 	}
 	return toSerialize, nil
 }
