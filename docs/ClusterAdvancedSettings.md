@@ -23,12 +23,11 @@ Name | Type | Description | Notes
 **AwsEksEc2MetadataImds** | Pointer to **string** | Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * &#x60;required&#x60;: IMDS V2 only   * &#x60;optional&#x60;: IMDS V1 + V2  | [optional] [default to "optional"]
 **PlecoResourcesTtl** | Pointer to **int32** |  | [optional] [default to -1]
 **RegistryMirroringMode** | Pointer to [**RegistryMirroringModeEnum**](RegistryMirroringModeEnum.md) |  | [optional] [default to REGISTRYMIRRORINGMODEENUM_SERVICE]
-**NginxVcpuRequestInMilli** | Pointer to **int32** | vcpu request in millicores | [optional] [default to 100]
-**NginxVcpuLimitInMilli** | Pointer to **int32** | vcpu limit in millicores | [optional] [default to 500]
+**NginxVcpuRequestInMilliCpu** | Pointer to **int32** | vcpu request in millicores | [optional] [default to 100]
+**NginxVcpuLimitInMilliCpu** | Pointer to **int32** | vcpu limit in millicores | [optional] [default to 500]
 **NginxMemoryRequestInMib** | Pointer to **int32** | memory request in MiB | [optional] [default to 768]
 **NginxMemoryLimitInMib** | Pointer to **int32** | memory limit in MiB | [optional] [default to 768]
 **NginxHpaCpuUtilizationPercentageThreshold** | Pointer to **int32** | hpa cpu threshold in percentage | [optional] [default to 50]
-**NginxHpaMemoryUtilizationPercentageThreshold** | Pointer to **int32** | hpa memory threshold in percentage | [optional] [default to 50]
 **NginxHpaMinNumberInstances** | Pointer to **int32** | hpa minimum number of instances | [optional] [default to 2]
 **NginxHpaMaxNumberInstances** | Pointer to **int32** | hpa maximum number of instances | [optional] [default to 25]
 
@@ -526,55 +525,55 @@ SetRegistryMirroringMode sets RegistryMirroringMode field to given value.
 
 HasRegistryMirroringMode returns a boolean if a field has been set.
 
-### GetNginxVcpuRequestInMilli
+### GetNginxVcpuRequestInMilliCpu
 
-`func (o *ClusterAdvancedSettings) GetNginxVcpuRequestInMilli() int32`
+`func (o *ClusterAdvancedSettings) GetNginxVcpuRequestInMilliCpu() int32`
 
-GetNginxVcpuRequestInMilli returns the NginxVcpuRequestInMilli field if non-nil, zero value otherwise.
+GetNginxVcpuRequestInMilliCpu returns the NginxVcpuRequestInMilliCpu field if non-nil, zero value otherwise.
 
-### GetNginxVcpuRequestInMilliOk
+### GetNginxVcpuRequestInMilliCpuOk
 
-`func (o *ClusterAdvancedSettings) GetNginxVcpuRequestInMilliOk() (*int32, bool)`
+`func (o *ClusterAdvancedSettings) GetNginxVcpuRequestInMilliCpuOk() (*int32, bool)`
 
-GetNginxVcpuRequestInMilliOk returns a tuple with the NginxVcpuRequestInMilli field if it's non-nil, zero value otherwise
+GetNginxVcpuRequestInMilliCpuOk returns a tuple with the NginxVcpuRequestInMilliCpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNginxVcpuRequestInMilli
+### SetNginxVcpuRequestInMilliCpu
 
-`func (o *ClusterAdvancedSettings) SetNginxVcpuRequestInMilli(v int32)`
+`func (o *ClusterAdvancedSettings) SetNginxVcpuRequestInMilliCpu(v int32)`
 
-SetNginxVcpuRequestInMilli sets NginxVcpuRequestInMilli field to given value.
+SetNginxVcpuRequestInMilliCpu sets NginxVcpuRequestInMilliCpu field to given value.
 
-### HasNginxVcpuRequestInMilli
+### HasNginxVcpuRequestInMilliCpu
 
-`func (o *ClusterAdvancedSettings) HasNginxVcpuRequestInMilli() bool`
+`func (o *ClusterAdvancedSettings) HasNginxVcpuRequestInMilliCpu() bool`
 
-HasNginxVcpuRequestInMilli returns a boolean if a field has been set.
+HasNginxVcpuRequestInMilliCpu returns a boolean if a field has been set.
 
-### GetNginxVcpuLimitInMilli
+### GetNginxVcpuLimitInMilliCpu
 
-`func (o *ClusterAdvancedSettings) GetNginxVcpuLimitInMilli() int32`
+`func (o *ClusterAdvancedSettings) GetNginxVcpuLimitInMilliCpu() int32`
 
-GetNginxVcpuLimitInMilli returns the NginxVcpuLimitInMilli field if non-nil, zero value otherwise.
+GetNginxVcpuLimitInMilliCpu returns the NginxVcpuLimitInMilliCpu field if non-nil, zero value otherwise.
 
-### GetNginxVcpuLimitInMilliOk
+### GetNginxVcpuLimitInMilliCpuOk
 
-`func (o *ClusterAdvancedSettings) GetNginxVcpuLimitInMilliOk() (*int32, bool)`
+`func (o *ClusterAdvancedSettings) GetNginxVcpuLimitInMilliCpuOk() (*int32, bool)`
 
-GetNginxVcpuLimitInMilliOk returns a tuple with the NginxVcpuLimitInMilli field if it's non-nil, zero value otherwise
+GetNginxVcpuLimitInMilliCpuOk returns a tuple with the NginxVcpuLimitInMilliCpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNginxVcpuLimitInMilli
+### SetNginxVcpuLimitInMilliCpu
 
-`func (o *ClusterAdvancedSettings) SetNginxVcpuLimitInMilli(v int32)`
+`func (o *ClusterAdvancedSettings) SetNginxVcpuLimitInMilliCpu(v int32)`
 
-SetNginxVcpuLimitInMilli sets NginxVcpuLimitInMilli field to given value.
+SetNginxVcpuLimitInMilliCpu sets NginxVcpuLimitInMilliCpu field to given value.
 
-### HasNginxVcpuLimitInMilli
+### HasNginxVcpuLimitInMilliCpu
 
-`func (o *ClusterAdvancedSettings) HasNginxVcpuLimitInMilli() bool`
+`func (o *ClusterAdvancedSettings) HasNginxVcpuLimitInMilliCpu() bool`
 
-HasNginxVcpuLimitInMilli returns a boolean if a field has been set.
+HasNginxVcpuLimitInMilliCpu returns a boolean if a field has been set.
 
 ### GetNginxMemoryRequestInMib
 
@@ -650,31 +649,6 @@ SetNginxHpaCpuUtilizationPercentageThreshold sets NginxHpaCpuUtilizationPercenta
 `func (o *ClusterAdvancedSettings) HasNginxHpaCpuUtilizationPercentageThreshold() bool`
 
 HasNginxHpaCpuUtilizationPercentageThreshold returns a boolean if a field has been set.
-
-### GetNginxHpaMemoryUtilizationPercentageThreshold
-
-`func (o *ClusterAdvancedSettings) GetNginxHpaMemoryUtilizationPercentageThreshold() int32`
-
-GetNginxHpaMemoryUtilizationPercentageThreshold returns the NginxHpaMemoryUtilizationPercentageThreshold field if non-nil, zero value otherwise.
-
-### GetNginxHpaMemoryUtilizationPercentageThresholdOk
-
-`func (o *ClusterAdvancedSettings) GetNginxHpaMemoryUtilizationPercentageThresholdOk() (*int32, bool)`
-
-GetNginxHpaMemoryUtilizationPercentageThresholdOk returns a tuple with the NginxHpaMemoryUtilizationPercentageThreshold field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNginxHpaMemoryUtilizationPercentageThreshold
-
-`func (o *ClusterAdvancedSettings) SetNginxHpaMemoryUtilizationPercentageThreshold(v int32)`
-
-SetNginxHpaMemoryUtilizationPercentageThreshold sets NginxHpaMemoryUtilizationPercentageThreshold field to given value.
-
-### HasNginxHpaMemoryUtilizationPercentageThreshold
-
-`func (o *ClusterAdvancedSettings) HasNginxHpaMemoryUtilizationPercentageThreshold() bool`
-
-HasNginxHpaMemoryUtilizationPercentageThreshold returns a boolean if a field has been set.
 
 ### GetNginxHpaMinNumberInstances
 

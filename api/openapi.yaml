@@ -15844,10 +15844,9 @@ components:
         database.mongodb.deny_public_access: false
         nginx.memory.limit_in_mib: 3
         nginx.hpa.cpu_utilization_percentage_threshold: 2
-        nginx.hpa.memory_utilization_percentage_threshold: 4
-        nginx.hpa.max_number_instances: 1
+        nginx.hpa.max_number_instances: 7
+        nginx.vcpu.limit_in_milli_cpu: 7
         aws.eks.ec2.metadata_imds: optional
-        nginx.vcpu.limit_in_milli: 7
         pleco.resources_ttl: 5
         database.mysql.allowed_cidrs:
         - database.mysql.allowed_cidrs
@@ -15867,14 +15866,14 @@ components:
         aws.cloudwatch.eks_logs_retention_days: 0
         aws.iam.admin_group: Admins
         registry.mirroring_mode: null
+        nginx.vcpu.request_in_milli_cpu: 2
         cloud_provider.container_registry.tags:
           key: cloud_provider.container_registry.tags
         database.postgresql.allowed_cidrs:
         - database.postgresql.allowed_cidrs
         - database.postgresql.allowed_cidrs
         database.redis.deny_public_access: false
-        nginx.vcpu.request_in_milli: 2
-        nginx.hpa.min_number_instances: 7
+        nginx.hpa.min_number_instances: 4
       properties:
         aws.cloudwatch.eks_logs_retention_days:
           default: 90
@@ -15972,11 +15971,11 @@ components:
           type: integer
         registry.mirroring_mode:
           $ref: '#/components/schemas/RegistryMirroringModeEnum'
-        nginx.vcpu.request_in_milli:
+        nginx.vcpu.request_in_milli_cpu:
           default: 100
           description: vcpu request in millicores
           type: integer
-        nginx.vcpu.limit_in_milli:
+        nginx.vcpu.limit_in_milli_cpu:
           default: 500
           description: vcpu limit in millicores
           type: integer
@@ -15991,10 +15990,6 @@ components:
         nginx.hpa.cpu_utilization_percentage_threshold:
           default: 50
           description: hpa cpu threshold in percentage
-          type: integer
-        nginx.hpa.memory_utilization_percentage_threshold:
-          default: 50
-          description: hpa memory threshold in percentage
           type: integer
         nginx.hpa.min_number_instances:
           default: 2
