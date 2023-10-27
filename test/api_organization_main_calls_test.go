@@ -104,6 +104,21 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationMainCallsAPIService GetGitTokenAssociatedServices", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var gitTokenId string
+
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetGitTokenAssociatedServices(context.Background(), organizationId, gitTokenId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationMainCallsAPIService GetOrganization", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -111,6 +126,21 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetOrganization(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationMainCallsAPIService GetOrganizationGitTokens", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var gitTokenId string
+
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetOrganizationGitTokens(context.Background(), organizationId, gitTokenId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

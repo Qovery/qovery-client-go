@@ -432,7 +432,9 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsAPI* | [**DeleteOrganization**](docs/OrganizationMainCallsAPI.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
 *OrganizationMainCallsAPI* | [**EditGitToken**](docs/OrganizationMainCallsAPI.md#editgittoken) | **Put** /organization/{organizationId}/gitToken/{gitTokenId} | Edit a git token
 *OrganizationMainCallsAPI* | [**EditOrganization**](docs/OrganizationMainCallsAPI.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
+*OrganizationMainCallsAPI* | [**GetGitTokenAssociatedServices**](docs/OrganizationMainCallsAPI.md#getgittokenassociatedservices) | **Get** /organization/{organizationId}/gitToken/{gitTokenId}/associatedServices | Get organization git token associated services
 *OrganizationMainCallsAPI* | [**GetOrganization**](docs/OrganizationMainCallsAPI.md#getorganization) | **Get** /organization/{organizationId} | Get organization by ID
+*OrganizationMainCallsAPI* | [**GetOrganizationGitTokens**](docs/OrganizationMainCallsAPI.md#getorganizationgittokens) | **Get** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
 *OrganizationMainCallsAPI* | [**ListOrganization**](docs/OrganizationMainCallsAPI.md#listorganization) | **Get** /organization | List user organizations
 *OrganizationMainCallsAPI* | [**ListOrganizationAvailableRoles**](docs/OrganizationMainCallsAPI.md#listorganizationavailableroles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
 *OrganizationMainCallsAPI* | [**ListOrganizationGitTokens**](docs/OrganizationMainCallsAPI.md#listorganizationgittokens) | **Get** /organization/{organizationId}/gitToken | List organization git tokens
@@ -696,6 +698,9 @@ Class | Method | HTTP request | Description
  - [GitRepositoryBranch](docs/GitRepositoryBranch.md)
  - [GitRepositoryBranchResponseList](docs/GitRepositoryBranchResponseList.md)
  - [GitRepositoryResponseList](docs/GitRepositoryResponseList.md)
+ - [GitTokenAssociatedServiceResponse](docs/GitTokenAssociatedServiceResponse.md)
+ - [GitTokenAssociatedServiceType](docs/GitTokenAssociatedServiceType.md)
+ - [GitTokenAssociatedServicesResponseList](docs/GitTokenAssociatedServicesResponseList.md)
  - [GitTokenRequest](docs/GitTokenRequest.md)
  - [GitTokenResponse](docs/GitTokenResponse.md)
  - [GitTokenResponseList](docs/GitTokenResponseList.md)

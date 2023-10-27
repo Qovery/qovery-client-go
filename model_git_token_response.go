@@ -28,18 +28,21 @@ type GitTokenResponse struct {
 	Description *string         `json:"description,omitempty"`
 	Type        GitProviderEnum `json:"type"`
 	ExpiredAt   *string         `json:"expired_at,omitempty"`
+	// The number of services using this git token
+	AssociatedServicesCount float32 `json:"associated_services_count"`
 }
 
 // NewGitTokenResponse instantiates a new GitTokenResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum) *GitTokenResponse {
+func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum, associatedServicesCount float32) *GitTokenResponse {
 	this := GitTokenResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.Type = type_
+	this.AssociatedServicesCount = associatedServicesCount
 	return &this
 }
 
@@ -243,6 +246,30 @@ func (o *GitTokenResponse) SetExpiredAt(v string) {
 	o.ExpiredAt = &v
 }
 
+// GetAssociatedServicesCount returns the AssociatedServicesCount field value
+func (o *GitTokenResponse) GetAssociatedServicesCount() float32 {
+	if o == nil {
+		var ret float32
+		return ret
+	}
+
+	return o.AssociatedServicesCount
+}
+
+// GetAssociatedServicesCountOk returns a tuple with the AssociatedServicesCount field value
+// and a boolean to check if the value has been set.
+func (o *GitTokenResponse) GetAssociatedServicesCountOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssociatedServicesCount, true
+}
+
+// SetAssociatedServicesCount sets field value
+func (o *GitTokenResponse) SetAssociatedServicesCount(v float32) {
+	o.AssociatedServicesCount = v
+}
+
 func (o GitTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -266,6 +293,7 @@ func (o GitTokenResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExpiredAt) {
 		toSerialize["expired_at"] = o.ExpiredAt
 	}
+	toSerialize["associated_services_count"] = o.AssociatedServicesCount
 	return toSerialize, nil
 }
 

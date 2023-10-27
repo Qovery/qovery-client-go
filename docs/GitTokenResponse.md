@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Type** | [**GitProviderEnum**](GitProviderEnum.md) |  | 
 **ExpiredAt** | Pointer to **string** |  | [optional] 
+**AssociatedServicesCount** | **float32** | The number of services using this git token | 
 
 ## Methods
 
 ### NewGitTokenResponse
 
-`func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum, ) *GitTokenResponse`
+`func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum, associatedServicesCount float32, ) *GitTokenResponse`
 
 NewGitTokenResponse instantiates a new GitTokenResponse object
 This constructor will assign default values to properties that have it defined,
@@ -185,6 +186,26 @@ SetExpiredAt sets ExpiredAt field to given value.
 `func (o *GitTokenResponse) HasExpiredAt() bool`
 
 HasExpiredAt returns a boolean if a field has been set.
+
+### GetAssociatedServicesCount
+
+`func (o *GitTokenResponse) GetAssociatedServicesCount() float32`
+
+GetAssociatedServicesCount returns the AssociatedServicesCount field if non-nil, zero value otherwise.
+
+### GetAssociatedServicesCountOk
+
+`func (o *GitTokenResponse) GetAssociatedServicesCountOk() (*float32, bool)`
+
+GetAssociatedServicesCountOk returns a tuple with the AssociatedServicesCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociatedServicesCount
+
+`func (o *GitTokenResponse) SetAssociatedServicesCount(v float32)`
+
+SetAssociatedServicesCount sets AssociatedServicesCount field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

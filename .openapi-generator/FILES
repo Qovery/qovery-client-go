@@ -346,6 +346,9 @@ docs/GitRepository.md
 docs/GitRepositoryBranch.md
 docs/GitRepositoryBranchResponseList.md
 docs/GitRepositoryResponseList.md
+docs/GitTokenAssociatedServiceResponse.md
+docs/GitTokenAssociatedServiceType.md
+docs/GitTokenAssociatedServicesResponseList.md
 docs/GitTokenRequest.md
 docs/GitTokenResponse.md
 docs/GitTokenResponseList.md
@@ -816,6 +819,9 @@ model_git_repository.go
 model_git_repository_branch.go
 model_git_repository_branch_response_list.go
 model_git_repository_response_list.go
+model_git_token_associated_service_response.go
+model_git_token_associated_service_type.go
+model_git_token_associated_services_response_list.go
 model_git_token_request.go
 model_git_token_response.go
 model_git_token_response_list.go

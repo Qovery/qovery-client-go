@@ -733,6 +733,127 @@ func (a *OrganizationMainCallsAPIService) EditOrganizationExecute(r ApiEditOrgan
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetGitTokenAssociatedServicesRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationMainCallsAPIService
+	organizationId string
+	gitTokenId     string
+}
+
+func (r ApiGetGitTokenAssociatedServicesRequest) Execute() (*GitTokenAssociatedServicesResponseList, *http.Response, error) {
+	return r.ApiService.GetGitTokenAssociatedServicesExecute(r)
+}
+
+/*
+GetGitTokenAssociatedServices Get organization git token associated services
+
+Get organization git tokens associated services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param gitTokenId Git Token ID
+ @return ApiGetGitTokenAssociatedServicesRequest
+*/
+func (a *OrganizationMainCallsAPIService) GetGitTokenAssociatedServices(ctx context.Context, organizationId string, gitTokenId string) ApiGetGitTokenAssociatedServicesRequest {
+	return ApiGetGitTokenAssociatedServicesRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		gitTokenId:     gitTokenId,
+	}
+}
+
+// Execute executes the request
+//  @return GitTokenAssociatedServicesResponseList
+func (a *OrganizationMainCallsAPIService) GetGitTokenAssociatedServicesExecute(r ApiGetGitTokenAssociatedServicesRequest) (*GitTokenAssociatedServicesResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitTokenAssociatedServicesResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsAPIService.GetGitTokenAssociatedServices")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/gitToken/{gitTokenId}/associatedServices"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gitTokenId"+"}", url.PathEscape(parameterValueToString(r.gitTokenId, "gitTokenId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetOrganizationRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationMainCallsAPIService
@@ -775,6 +896,127 @@ func (a *OrganizationMainCallsAPIService) GetOrganizationExecute(r ApiGetOrganiz
 
 	localVarPath := localBasePath + "/organization/{organizationId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetOrganizationGitTokensRequest struct {
+	ctx            context.Context
+	ApiService     *OrganizationMainCallsAPIService
+	organizationId string
+	gitTokenId     string
+}
+
+func (r ApiGetOrganizationGitTokensRequest) Execute() (*GitTokenResponse, *http.Response, error) {
+	return r.ApiService.GetOrganizationGitTokensExecute(r)
+}
+
+/*
+GetOrganizationGitTokens Get organization git token
+
+Get organization git tokens
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param gitTokenId Git Token ID
+ @return ApiGetOrganizationGitTokensRequest
+*/
+func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokens(ctx context.Context, organizationId string, gitTokenId string) ApiGetOrganizationGitTokensRequest {
+	return ApiGetOrganizationGitTokensRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		gitTokenId:     gitTokenId,
+	}
+}
+
+// Execute executes the request
+//  @return GitTokenResponse
+func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokensExecute(r ApiGetOrganizationGitTokensRequest) (*GitTokenResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GitTokenResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsAPIService.GetOrganizationGitTokens")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/gitToken/{gitTokenId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"gitTokenId"+"}", url.PathEscape(parameterValueToString(r.gitTokenId, "gitTokenId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

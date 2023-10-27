@@ -490,6 +490,44 @@ paths:
       summary: Delete a git token
       tags:
       - Organization Main Calls
+    get:
+      description: Get organization git tokens
+      operationId: getOrganizationGitTokens
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Git Token ID
+        explode: false
+        in: path
+        name: gitTokenId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitTokenResponse'
+          description: Get organization git token
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get organization git token
+      tags:
+      - Organization Main Calls
     put:
       operationId: editGitToken
       parameters:
@@ -532,6 +570,45 @@ paths:
         "404":
           description: Resource not found
       summary: Edit a git token
+      tags:
+      - Organization Main Calls
+  /organization/{organizationId}/gitToken/{gitTokenId}/associatedServices:
+    get:
+      description: Get organization git tokens associated services
+      operationId: getGitTokenAssociatedServices
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Git Token ID
+        explode: false
+        in: path
+        name: gitTokenId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitTokenAssociatedServicesResponseList'
+          description: Get organization git token associated services
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get organization git token associated services
       tags:
       - Organization Main Calls
   /organization/{organizationId}/member:
@@ -19092,6 +19169,71 @@ components:
             $ref: '#/components/schemas/GitRepository'
           type: array
       type: object
+    GitTokenAssociatedServiceType:
+      enum:
+      - APPLICATION
+      - JOB
+      - HELM
+      type: string
+    GitTokenAssociatedServiceResponse:
+      example:
+        service_type: null
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_name: service_name
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_name: project_name
+        environment_name: environment_name
+      properties:
+        project_id:
+          format: uuid
+          type: string
+        project_name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+        environment_name:
+          type: string
+        service_id:
+          format: uuid
+          type: string
+        service_name:
+          type: string
+        service_type:
+          $ref: '#/components/schemas/GitTokenAssociatedServiceType'
+      required:
+      - environment_id
+      - environment_name
+      - project_id
+      - project_name
+      - service_id
+      - service_name
+      - service_type
+      type: object
+    GitTokenAssociatedServicesResponseList:
+      example:
+        results:
+        - service_type: null
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+        - service_type: null
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/GitTokenAssociatedServiceResponse'
+          type: array
+      type: object
     GitTokenRequest:
       example:
         workspace: workspace
@@ -19131,7 +19273,11 @@ components:
           expired_at:
             format: date
             type: string
+          associated_services_count:
+            description: The number of services using this git token
+            type: number
         required:
+        - associated_services_count
         - name
         - type
         type: object
