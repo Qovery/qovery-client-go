@@ -36,6 +36,20 @@ func Test_qovery_OrganizationAccountGitRepositoriesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetOrganizationBitbucketRepositoriesTemp", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoriesTemp(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetOrganizationBitbucketRepositoryBranches", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -64,6 +78,20 @@ func Test_qovery_OrganizationAccountGitRepositoriesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetOrganizationGitProviderAccountTemp", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccountTemp(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetOrganizationGithubRepositories", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -71,6 +99,20 @@ func Test_qovery_OrganizationAccountGitRepositoriesAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetOrganizationGithubRepositoriesTemp", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoriesTemp(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -99,6 +141,20 @@ func Test_qovery_OrganizationAccountGitRepositoriesAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetOrganizationGitlabRepositoriesTemp", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoriesTemp(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

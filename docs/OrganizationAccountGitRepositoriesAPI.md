@@ -5,11 +5,15 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetOrganizationBitbucketRepositories**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationBitbucketRepositories) | **Get** /organization/{organizationId}/account/bitbucket/repository | Get bitbucket repositories of the connected user
+[**GetOrganizationBitbucketRepositoriesTemp**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationBitbucketRepositoriesTemp) | **Get** /organization/{organizationId}/account/bitbucket/repositoryTemp | Get bitbucket repositories of the connected user
 [**GetOrganizationBitbucketRepositoryBranches**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationBitbucketRepositoryBranches) | **Get** /organization/{organizationId}/account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
 [**GetOrganizationGitProviderAccount**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitProviderAccount) | **Get** /organization/{organizationId}/account/gitAuthProvider | Get git provider accounts
+[**GetOrganizationGitProviderAccountTemp**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitProviderAccountTemp) | **Get** /organization/{organizationId}/account/gitAuthProviderTemp | Get git provider accounts
 [**GetOrganizationGithubRepositories**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGithubRepositories) | **Get** /organization/{organizationId}/account/github/repository | Get github repositories of the connected user
+[**GetOrganizationGithubRepositoriesTemp**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGithubRepositoriesTemp) | **Get** /organization/{organizationId}/account/github/repositoryTemp | Get github repositories of the connected user
 [**GetOrganizationGithubRepositoryBranches**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGithubRepositoryBranches) | **Get** /organization/{organizationId}/account/github/repository/branch | Get github branches of the specified repository
 [**GetOrganizationGitlabRepositories**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitlabRepositories) | **Get** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
+[**GetOrganizationGitlabRepositoriesTemp**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitlabRepositoriesTemp) | **Get** /organization/{organizationId}/account/gitlab/repositoryTemp | Get gitlab repositories of the connected user
 [**GetOrganizationGitlabRepositoryBranches**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitlabRepositoryBranches) | **Get** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
 
 
@@ -59,6 +63,76 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetOrganizationBitbucketRepositoriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
+
+### Return type
+
+[**GitRepositoryResponseList**](GitRepositoryResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrganizationBitbucketRepositoriesTemp
+
+> GitRepositoryResponseList GetOrganizationBitbucketRepositoriesTemp(ctx, organizationId).GitTokenId(gitTokenId).Execute()
+
+Get bitbucket repositories of the connected user
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoriesTemp(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoriesTemp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationBitbucketRepositoriesTemp`: GitRepositoryResponseList
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoriesTemp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrganizationBitbucketRepositoriesTempRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -224,6 +298,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetOrganizationGitProviderAccountTemp
+
+> GitAuthProviderResponseList GetOrganizationGitProviderAccountTemp(ctx, organizationId).Execute()
+
+Get git provider accounts
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccountTemp(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccountTemp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationGitProviderAccountTemp`: GitAuthProviderResponseList
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccountTemp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrganizationGitProviderAccountTempRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**GitAuthProviderResponseList**](GitAuthProviderResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetOrganizationGithubRepositories
 
 > GitRepositoryResponseList GetOrganizationGithubRepositories(ctx, organizationId).GitTokenId(gitTokenId).Execute()
@@ -269,6 +411,76 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetOrganizationGithubRepositoriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
+
+### Return type
+
+[**GitRepositoryResponseList**](GitRepositoryResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrganizationGithubRepositoriesTemp
+
+> GitRepositoryResponseList GetOrganizationGithubRepositoriesTemp(ctx, organizationId).GitTokenId(gitTokenId).Execute()
+
+Get github repositories of the connected user
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoriesTemp(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoriesTemp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationGithubRepositoriesTemp`: GitRepositoryResponseList
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoriesTemp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrganizationGithubRepositoriesTempRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -411,6 +623,76 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetOrganizationGitlabRepositoriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **gitTokenId** | **string** | The git token id that must be used for the application | 
+
+### Return type
+
+[**GitRepositoryResponseList**](GitRepositoryResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrganizationGitlabRepositoriesTemp
+
+> GitRepositoryResponseList GetOrganizationGitlabRepositoriesTemp(ctx, organizationId).GitTokenId(gitTokenId).Execute()
+
+Get gitlab repositories of the connected user
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoriesTemp(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoriesTemp``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationGitlabRepositoriesTemp`: GitRepositoryResponseList
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoriesTemp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrganizationGitlabRepositoriesTempRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
