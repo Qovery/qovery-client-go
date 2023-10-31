@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Containers** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Jobs** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Databases** | Pointer to [**[]Status**](Status.md) |  | [optional] 
+**Helms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Stage** | Pointer to [**Stage**](Stage.md) |  | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetDatabases sets Databases field to given value.
 `func (o *DeploymentStageWithServicesStatuses) HasDatabases() bool`
 
 HasDatabases returns a boolean if a field has been set.
+
+### GetHelms
+
+`func (o *DeploymentStageWithServicesStatuses) GetHelms() []Status`
+
+GetHelms returns the Helms field if non-nil, zero value otherwise.
+
+### GetHelmsOk
+
+`func (o *DeploymentStageWithServicesStatuses) GetHelmsOk() (*[]Status, bool)`
+
+GetHelmsOk returns a tuple with the Helms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHelms
+
+`func (o *DeploymentStageWithServicesStatuses) SetHelms(v []Status)`
+
+SetHelms sets Helms field to given value.
+
+### HasHelms
+
+`func (o *DeploymentStageWithServicesStatuses) HasHelms() bool`
+
+HasHelms returns a boolean if a field has been set.
 
 ### GetStage
 
