@@ -28,6 +28,8 @@ type GitTokenResponse struct {
 	Description *string         `json:"description,omitempty"`
 	Type        GitProviderEnum `json:"type"`
 	ExpiredAt   *string         `json:"expired_at,omitempty"`
+	// Mandatory only for BITBUCKET git provider
+	Workspace *string `json:"workspace,omitempty"`
 	// The number of services using this git token
 	AssociatedServicesCount float32 `json:"associated_services_count"`
 }
@@ -246,6 +248,38 @@ func (o *GitTokenResponse) SetExpiredAt(v string) {
 	o.ExpiredAt = &v
 }
 
+// GetWorkspace returns the Workspace field value if set, zero value otherwise.
+func (o *GitTokenResponse) GetWorkspace() string {
+	if o == nil || IsNil(o.Workspace) {
+		var ret string
+		return ret
+	}
+	return *o.Workspace
+}
+
+// GetWorkspaceOk returns a tuple with the Workspace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GitTokenResponse) GetWorkspaceOk() (*string, bool) {
+	if o == nil || IsNil(o.Workspace) {
+		return nil, false
+	}
+	return o.Workspace, true
+}
+
+// HasWorkspace returns a boolean if a field has been set.
+func (o *GitTokenResponse) HasWorkspace() bool {
+	if o != nil && !IsNil(o.Workspace) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkspace gets a reference to the given string and assigns it to the Workspace field.
+func (o *GitTokenResponse) SetWorkspace(v string) {
+	o.Workspace = &v
+}
+
 // GetAssociatedServicesCount returns the AssociatedServicesCount field value
 func (o *GitTokenResponse) GetAssociatedServicesCount() float32 {
 	if o == nil {
@@ -292,6 +326,9 @@ func (o GitTokenResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	if !IsNil(o.ExpiredAt) {
 		toSerialize["expired_at"] = o.ExpiredAt
+	}
+	if !IsNil(o.Workspace) {
+		toSerialize["workspace"] = o.Workspace
 	}
 	toSerialize["associated_services_count"] = o.AssociatedServicesCount
 	return toSerialize, nil

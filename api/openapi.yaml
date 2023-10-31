@@ -19331,6 +19331,9 @@ components:
           expired_at:
             format: date
             type: string
+          workspace:
+            description: Mandatory only for BITBUCKET git provider
+            type: string
           associated_services_count:
             description: The number of services using this git token
             type: number

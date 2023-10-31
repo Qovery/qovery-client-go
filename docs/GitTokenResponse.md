@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Type** | [**GitProviderEnum**](GitProviderEnum.md) |  | 
 **ExpiredAt** | Pointer to **string** |  | [optional] 
+**Workspace** | Pointer to **string** | Mandatory only for BITBUCKET git provider | [optional] 
 **AssociatedServicesCount** | **float32** | The number of services using this git token | 
 
 ## Methods
@@ -186,6 +187,31 @@ SetExpiredAt sets ExpiredAt field to given value.
 `func (o *GitTokenResponse) HasExpiredAt() bool`
 
 HasExpiredAt returns a boolean if a field has been set.
+
+### GetWorkspace
+
+`func (o *GitTokenResponse) GetWorkspace() string`
+
+GetWorkspace returns the Workspace field if non-nil, zero value otherwise.
+
+### GetWorkspaceOk
+
+`func (o *GitTokenResponse) GetWorkspaceOk() (*string, bool)`
+
+GetWorkspaceOk returns a tuple with the Workspace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkspace
+
+`func (o *GitTokenResponse) SetWorkspace(v string)`
+
+SetWorkspace sets Workspace field to given value.
+
+### HasWorkspace
+
+`func (o *GitTokenResponse) HasWorkspace() bool`
+
+HasWorkspace returns a boolean if a field has been set.
 
 ### GetAssociatedServicesCount
 
