@@ -36,6 +36,7 @@ const (
 	ORGANIZATIONEVENTSUBTARGETTYPE_DEPLOYMENT_STAGE           OrganizationEventSubTargetType = "DEPLOYMENT_STAGE"
 	ORGANIZATIONEVENTSUBTARGETTYPE_GITHUB_APP                 OrganizationEventSubTargetType = "GITHUB_APP"
 	ORGANIZATIONEVENTSUBTARGETTYPE_GIT_REPOSITORY             OrganizationEventSubTargetType = "GIT_REPOSITORY"
+	ORGANIZATIONEVENTSUBTARGETTYPE_GIT_TOKEN                  OrganizationEventSubTargetType = "GIT_TOKEN"
 	ORGANIZATIONEVENTSUBTARGETTYPE_INVITATION                 OrganizationEventSubTargetType = "INVITATION"
 	ORGANIZATIONEVENTSUBTARGETTYPE_MEMBER_ROLE                OrganizationEventSubTargetType = "MEMBER_ROLE"
 	ORGANIZATIONEVENTSUBTARGETTYPE_PLAN                       OrganizationEventSubTargetType = "PLAN"
@@ -62,6 +63,7 @@ var AllowedOrganizationEventSubTargetTypeEnumValues = []OrganizationEventSubTarg
 	"DEPLOYMENT_STAGE",
 	"GITHUB_APP",
 	"GIT_REPOSITORY",
+	"GIT_TOKEN",
 	"INVITATION",
 	"MEMBER_ROLE",
 	"PLAN",

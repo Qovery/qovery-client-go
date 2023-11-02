@@ -17,6 +17,8 @@
 
 * `JOB` (value: `"JOB"`)
 
+* `HELM` (value: `"HELM"`)
+
 * `MEMBERS_AND_ROLES` (value: `"MEMBERS_AND_ROLES"`)
 
 * `ORGANIZATION` (value: `"ORGANIZATION"`)

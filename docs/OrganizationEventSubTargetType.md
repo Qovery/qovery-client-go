@@ -33,6 +33,8 @@
 
 * `GIT_REPOSITORY` (value: `"GIT_REPOSITORY"`)
 
+* `GIT_TOKEN` (value: `"GIT_TOKEN"`)
+
 * `INVITATION` (value: `"INVITATION"`)
 
 * `MEMBER_ROLE` (value: `"MEMBER_ROLE"`)
