@@ -969,29 +969,29 @@ func (a *OrganizationMainCallsAPIService) GetOrganizationExecute(r ApiGetOrganiz
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetOrganizationGitTokensRequest struct {
+type ApiGetOrganizationGitTokenRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationMainCallsAPIService
 	organizationId string
 	gitTokenId     string
 }
 
-func (r ApiGetOrganizationGitTokensRequest) Execute() (*GitTokenResponse, *http.Response, error) {
-	return r.ApiService.GetOrganizationGitTokensExecute(r)
+func (r ApiGetOrganizationGitTokenRequest) Execute() (*GitTokenResponse, *http.Response, error) {
+	return r.ApiService.GetOrganizationGitTokenExecute(r)
 }
 
 /*
-GetOrganizationGitTokens Get organization git token
+GetOrganizationGitToken Get organization git token
 
-Get organization git tokens
+Get organization git token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
  @param gitTokenId Git Token ID
- @return ApiGetOrganizationGitTokensRequest
+ @return ApiGetOrganizationGitTokenRequest
 */
-func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokens(ctx context.Context, organizationId string, gitTokenId string) ApiGetOrganizationGitTokensRequest {
-	return ApiGetOrganizationGitTokensRequest{
+func (a *OrganizationMainCallsAPIService) GetOrganizationGitToken(ctx context.Context, organizationId string, gitTokenId string) ApiGetOrganizationGitTokenRequest {
+	return ApiGetOrganizationGitTokenRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
@@ -1001,7 +1001,7 @@ func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokens(ctx context.C
 
 // Execute executes the request
 //  @return GitTokenResponse
-func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokensExecute(r ApiGetOrganizationGitTokensRequest) (*GitTokenResponse, *http.Response, error) {
+func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokenExecute(r ApiGetOrganizationGitTokenRequest) (*GitTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1009,7 +1009,7 @@ func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokensExecute(r ApiG
 		localVarReturnValue *GitTokenResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsAPIService.GetOrganizationGitTokens")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsAPIService.GetOrganizationGitToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -133,14 +133,14 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganizationMainCallsAPIService GetOrganizationGitTokens", func(t *testing.T) {
+	t.Run("Test OrganizationMainCallsAPIService GetOrganizationGitToken", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
 		var gitTokenId string
 
-		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetOrganizationGitTokens(context.Background(), organizationId, gitTokenId).Execute()
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetOrganizationGitToken(context.Background(), organizationId, gitTokenId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

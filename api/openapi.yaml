@@ -491,8 +491,8 @@ paths:
       tags:
       - Organization Main Calls
     get:
-      description: Get organization git tokens
-      operationId: getOrganizationGitTokens
+      description: Get organization git token
+      operationId: getOrganizationGitToken
       parameters:
       - description: Organization ID
         explode: false

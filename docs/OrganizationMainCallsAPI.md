@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**EditOrganization**](OrganizationMainCallsAPI.md#EditOrganization) | **Put** /organization/{organizationId} | Edit an organization
 [**GetGitTokenAssociatedServices**](OrganizationMainCallsAPI.md#GetGitTokenAssociatedServices) | **Get** /organization/{organizationId}/gitToken/{gitTokenId}/associatedServices | Get organization git token associated services
 [**GetOrganization**](OrganizationMainCallsAPI.md#GetOrganization) | **Get** /organization/{organizationId} | Get organization by ID
-[**GetOrganizationGitTokens**](OrganizationMainCallsAPI.md#GetOrganizationGitTokens) | **Get** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
+[**GetOrganizationGitToken**](OrganizationMainCallsAPI.md#GetOrganizationGitToken) | **Get** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
 [**ListOrganization**](OrganizationMainCallsAPI.md#ListOrganization) | **Get** /organization | List user organizations
 [**ListOrganizationAvailableRoles**](OrganizationMainCallsAPI.md#ListOrganizationAvailableRoles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
 [**ListOrganizationGitTokens**](OrganizationMainCallsAPI.md#ListOrganizationGitTokens) | **Get** /organization/{organizationId}/gitToken | List organization git tokens
@@ -578,9 +578,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOrganizationGitTokens
+## GetOrganizationGitToken
 
-> GitTokenResponse GetOrganizationGitTokens(ctx, organizationId, gitTokenId).Execute()
+> GitTokenResponse GetOrganizationGitToken(ctx, organizationId, gitTokenId).Execute()
 
 Get organization git token
 
@@ -604,13 +604,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.GetOrganizationGitTokens(context.Background(), organizationId, gitTokenId).Execute()
+    resp, r, err := apiClient.OrganizationMainCallsAPI.GetOrganizationGitToken(context.Background(), organizationId, gitTokenId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetOrganizationGitTokens``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetOrganizationGitToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrganizationGitTokens`: GitTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetOrganizationGitTokens`: %v\n", resp)
+    // response from `GetOrganizationGitToken`: GitTokenResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetOrganizationGitToken`: %v\n", resp)
 }
 ```
 
@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOrganizationGitTokensRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetOrganizationGitTokenRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
