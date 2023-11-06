@@ -25,6 +25,8 @@ type DeploymentHistoryEnvironment struct {
 	CreatedAt    time.Time                      `json:"created_at"`
 	UpdatedAt    *time.Time                     `json:"updated_at,omitempty"`
 	Status       *StateEnum                     `json:"status,omitempty"`
+	Origin       *OrganizationEventOrigin       `json:"origin,omitempty"`
+	TriggeredBy  *string                        `json:"triggered_by,omitempty"`
 	Applications []DeploymentHistoryApplication `json:"applications,omitempty"`
 	Containers   []DeploymentHistoryContainer   `json:"containers,omitempty"`
 	Databases    []DeploymentHistoryDatabase    `json:"databases,omitempty"`
@@ -160,6 +162,70 @@ func (o *DeploymentHistoryEnvironment) HasStatus() bool {
 // SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
 func (o *DeploymentHistoryEnvironment) SetStatus(v StateEnum) {
 	o.Status = &v
+}
+
+// GetOrigin returns the Origin field value if set, zero value otherwise.
+func (o *DeploymentHistoryEnvironment) GetOrigin() OrganizationEventOrigin {
+	if o == nil || IsNil(o.Origin) {
+		var ret OrganizationEventOrigin
+		return ret
+	}
+	return *o.Origin
+}
+
+// GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironment) GetOriginOk() (*OrganizationEventOrigin, bool) {
+	if o == nil || IsNil(o.Origin) {
+		return nil, false
+	}
+	return o.Origin, true
+}
+
+// HasOrigin returns a boolean if a field has been set.
+func (o *DeploymentHistoryEnvironment) HasOrigin() bool {
+	if o != nil && !IsNil(o.Origin) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrigin gets a reference to the given OrganizationEventOrigin and assigns it to the Origin field.
+func (o *DeploymentHistoryEnvironment) SetOrigin(v OrganizationEventOrigin) {
+	o.Origin = &v
+}
+
+// GetTriggeredBy returns the TriggeredBy field value if set, zero value otherwise.
+func (o *DeploymentHistoryEnvironment) GetTriggeredBy() string {
+	if o == nil || IsNil(o.TriggeredBy) {
+		var ret string
+		return ret
+	}
+	return *o.TriggeredBy
+}
+
+// GetTriggeredByOk returns a tuple with the TriggeredBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironment) GetTriggeredByOk() (*string, bool) {
+	if o == nil || IsNil(o.TriggeredBy) {
+		return nil, false
+	}
+	return o.TriggeredBy, true
+}
+
+// HasTriggeredBy returns a boolean if a field has been set.
+func (o *DeploymentHistoryEnvironment) HasTriggeredBy() bool {
+	if o != nil && !IsNil(o.TriggeredBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetTriggeredBy gets a reference to the given string and assigns it to the TriggeredBy field.
+func (o *DeploymentHistoryEnvironment) SetTriggeredBy(v string) {
+	o.TriggeredBy = &v
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
@@ -307,6 +373,12 @@ func (o DeploymentHistoryEnvironment) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Origin) {
+		toSerialize["origin"] = o.Origin
+	}
+	if !IsNil(o.TriggeredBy) {
+		toSerialize["triggered_by"] = o.TriggeredBy
 	}
 	if !IsNil(o.Applications) {
 		toSerialize["applications"] = o.Applications

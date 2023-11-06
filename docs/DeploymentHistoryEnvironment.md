@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
+**Origin** | Pointer to [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | [optional] 
+**TriggeredBy** | Pointer to **string** |  | [optional] 
 **Applications** | Pointer to [**[]DeploymentHistoryApplication**](DeploymentHistoryApplication.md) |  | [optional] 
 **Containers** | Pointer to [**[]DeploymentHistoryContainer**](DeploymentHistoryContainer.md) |  | [optional] 
 **Databases** | Pointer to [**[]DeploymentHistoryDatabase**](DeploymentHistoryDatabase.md) |  | [optional] 
@@ -121,6 +123,56 @@ SetStatus sets Status field to given value.
 `func (o *DeploymentHistoryEnvironment) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetOrigin
+
+`func (o *DeploymentHistoryEnvironment) GetOrigin() OrganizationEventOrigin`
+
+GetOrigin returns the Origin field if non-nil, zero value otherwise.
+
+### GetOriginOk
+
+`func (o *DeploymentHistoryEnvironment) GetOriginOk() (*OrganizationEventOrigin, bool)`
+
+GetOriginOk returns a tuple with the Origin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrigin
+
+`func (o *DeploymentHistoryEnvironment) SetOrigin(v OrganizationEventOrigin)`
+
+SetOrigin sets Origin field to given value.
+
+### HasOrigin
+
+`func (o *DeploymentHistoryEnvironment) HasOrigin() bool`
+
+HasOrigin returns a boolean if a field has been set.
+
+### GetTriggeredBy
+
+`func (o *DeploymentHistoryEnvironment) GetTriggeredBy() string`
+
+GetTriggeredBy returns the TriggeredBy field if non-nil, zero value otherwise.
+
+### GetTriggeredByOk
+
+`func (o *DeploymentHistoryEnvironment) GetTriggeredByOk() (*string, bool)`
+
+GetTriggeredByOk returns a tuple with the TriggeredBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTriggeredBy
+
+`func (o *DeploymentHistoryEnvironment) SetTriggeredBy(v string)`
+
+SetTriggeredBy sets TriggeredBy field to given value.
+
+### HasTriggeredBy
+
+`func (o *DeploymentHistoryEnvironment) HasTriggeredBy() bool`
+
+HasTriggeredBy returns a boolean if a field has been set.
 
 ### GetApplications
 

@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **LastDeploymentState** | [**StateEnum**](StateEnum.md) |  | 
 **LastDeploymentId** | Pointer to **NullableString** |  | [optional] 
 **TotalDeploymentDurationInSeconds** | Pointer to **NullableInt32** |  | [optional] 
+**Origin** | Pointer to [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | [optional] 
+**TriggeredBy** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -195,6 +197,56 @@ HasTotalDeploymentDurationInSeconds returns a boolean if a field has been set.
 `func (o *EnvironmentStatus) UnsetTotalDeploymentDurationInSeconds()`
 
 UnsetTotalDeploymentDurationInSeconds ensures that no value is present for TotalDeploymentDurationInSeconds, not even an explicit nil
+### GetOrigin
+
+`func (o *EnvironmentStatus) GetOrigin() OrganizationEventOrigin`
+
+GetOrigin returns the Origin field if non-nil, zero value otherwise.
+
+### GetOriginOk
+
+`func (o *EnvironmentStatus) GetOriginOk() (*OrganizationEventOrigin, bool)`
+
+GetOriginOk returns a tuple with the Origin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrigin
+
+`func (o *EnvironmentStatus) SetOrigin(v OrganizationEventOrigin)`
+
+SetOrigin sets Origin field to given value.
+
+### HasOrigin
+
+`func (o *EnvironmentStatus) HasOrigin() bool`
+
+HasOrigin returns a boolean if a field has been set.
+
+### GetTriggeredBy
+
+`func (o *EnvironmentStatus) GetTriggeredBy() string`
+
+GetTriggeredBy returns the TriggeredBy field if non-nil, zero value otherwise.
+
+### GetTriggeredByOk
+
+`func (o *EnvironmentStatus) GetTriggeredByOk() (*string, bool)`
+
+GetTriggeredByOk returns a tuple with the TriggeredBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTriggeredBy
+
+`func (o *EnvironmentStatus) SetTriggeredBy(v string)`
+
+SetTriggeredBy sets TriggeredBy field to given value.
+
+### HasTriggeredBy
+
+`func (o *EnvironmentStatus) HasTriggeredBy() bool`
+
+HasTriggeredBy returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

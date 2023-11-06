@@ -17535,6 +17535,10 @@ components:
       - properties:
           status:
             $ref: '#/components/schemas/StateEnum'
+          origin:
+            $ref: '#/components/schemas/OrganizationEventOrigin'
+          triggered_by:
+            type: string
           applications:
             items:
               $ref: '#/components/schemas/DeploymentHistoryApplication'
@@ -18350,11 +18354,13 @@ components:
     EnvironmentStatus:
       example:
         last_deployment_state: null
+        origin: API
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: null
         last_deployment_id: last_deployment_id
         total_deployment_duration_in_seconds: 0
+        triggered_by: triggered_by
       properties:
         id:
           format: uuid
@@ -18373,6 +18379,10 @@ components:
         total_deployment_duration_in_seconds:
           nullable: true
           type: integer
+        origin:
+          $ref: '#/components/schemas/OrganizationEventOrigin'
+        triggered_by:
+          type: string
       required:
       - id
       - last_deployment_state
@@ -18422,11 +18432,13 @@ components:
           service_deployment_status: null
         environment:
           last_deployment_state: null
+          origin: API
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
           last_deployment_id: last_deployment_id
           total_deployment_duration_in_seconds: 0
+          triggered_by: triggered_by
         jobs:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18538,11 +18550,13 @@ components:
       example:
         environment:
           last_deployment_state: null
+          origin: API
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
           last_deployment_id: last_deployment_id
           total_deployment_duration_in_seconds: 0
+          triggered_by: triggered_by
         stages:
         - databases:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
@@ -18870,17 +18884,21 @@ components:
       example:
         results:
         - last_deployment_state: null
+          origin: API
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
           last_deployment_id: last_deployment_id
           total_deployment_duration_in_seconds: 0
+          triggered_by: triggered_by
         - last_deployment_state: null
+          origin: API
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: null
           last_deployment_id: last_deployment_id
           total_deployment_duration_in_seconds: 0
+          triggered_by: triggered_by
       properties:
         results:
           items:

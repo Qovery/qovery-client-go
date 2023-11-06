@@ -21,12 +21,14 @@ var _ MappedNullable = &EnvironmentStatus{}
 
 // EnvironmentStatus struct for EnvironmentStatus
 type EnvironmentStatus struct {
-	Id                               string         `json:"id"`
-	State                            StateEnum      `json:"state"`
-	LastDeploymentDate               NullableTime   `json:"last_deployment_date,omitempty"`
-	LastDeploymentState              StateEnum      `json:"last_deployment_state"`
-	LastDeploymentId                 NullableString `json:"last_deployment_id,omitempty"`
-	TotalDeploymentDurationInSeconds NullableInt32  `json:"total_deployment_duration_in_seconds,omitempty"`
+	Id                               string                   `json:"id"`
+	State                            StateEnum                `json:"state"`
+	LastDeploymentDate               NullableTime             `json:"last_deployment_date,omitempty"`
+	LastDeploymentState              StateEnum                `json:"last_deployment_state"`
+	LastDeploymentId                 NullableString           `json:"last_deployment_id,omitempty"`
+	TotalDeploymentDurationInSeconds NullableInt32            `json:"total_deployment_duration_in_seconds,omitempty"`
+	Origin                           *OrganizationEventOrigin `json:"origin,omitempty"`
+	TriggeredBy                      *string                  `json:"triggered_by,omitempty"`
 }
 
 // NewEnvironmentStatus instantiates a new EnvironmentStatus object
@@ -250,6 +252,70 @@ func (o *EnvironmentStatus) UnsetTotalDeploymentDurationInSeconds() {
 	o.TotalDeploymentDurationInSeconds.Unset()
 }
 
+// GetOrigin returns the Origin field value if set, zero value otherwise.
+func (o *EnvironmentStatus) GetOrigin() OrganizationEventOrigin {
+	if o == nil || IsNil(o.Origin) {
+		var ret OrganizationEventOrigin
+		return ret
+	}
+	return *o.Origin
+}
+
+// GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatus) GetOriginOk() (*OrganizationEventOrigin, bool) {
+	if o == nil || IsNil(o.Origin) {
+		return nil, false
+	}
+	return o.Origin, true
+}
+
+// HasOrigin returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasOrigin() bool {
+	if o != nil && !IsNil(o.Origin) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrigin gets a reference to the given OrganizationEventOrigin and assigns it to the Origin field.
+func (o *EnvironmentStatus) SetOrigin(v OrganizationEventOrigin) {
+	o.Origin = &v
+}
+
+// GetTriggeredBy returns the TriggeredBy field value if set, zero value otherwise.
+func (o *EnvironmentStatus) GetTriggeredBy() string {
+	if o == nil || IsNil(o.TriggeredBy) {
+		var ret string
+		return ret
+	}
+	return *o.TriggeredBy
+}
+
+// GetTriggeredByOk returns a tuple with the TriggeredBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatus) GetTriggeredByOk() (*string, bool) {
+	if o == nil || IsNil(o.TriggeredBy) {
+		return nil, false
+	}
+	return o.TriggeredBy, true
+}
+
+// HasTriggeredBy returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasTriggeredBy() bool {
+	if o != nil && !IsNil(o.TriggeredBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetTriggeredBy gets a reference to the given string and assigns it to the TriggeredBy field.
+func (o *EnvironmentStatus) SetTriggeredBy(v string) {
+	o.TriggeredBy = &v
+}
+
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -271,6 +337,12 @@ func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if o.TotalDeploymentDurationInSeconds.IsSet() {
 		toSerialize["total_deployment_duration_in_seconds"] = o.TotalDeploymentDurationInSeconds.Get()
+	}
+	if !IsNil(o.Origin) {
+		toSerialize["origin"] = o.Origin
+	}
+	if !IsNil(o.TriggeredBy) {
+		toSerialize["triggered_by"] = o.TriggeredBy
 	}
 	return toSerialize, nil
 }
