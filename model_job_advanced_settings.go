@@ -46,24 +46,6 @@ type JobAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewJobAdvancedSettings() *JobAdvancedSettings {
 	this := JobAdvancedSettings{}
-	var buildTimeoutMaxSec int32 = 1800
-	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
-	var buildCpuMaxInMilli int32 = 4000
-	this.BuildCpuMaxInMilli = &buildCpuMaxInMilli
-	var buildRamMaxInGib int32 = 8
-	this.BuildRamMaxInGib = &buildRamMaxInGib
-	var deploymentTerminationGracePeriodSeconds int32 = 60
-	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
-	var cronjobConcurrencyPolicy string = "Forbid"
-	this.CronjobConcurrencyPolicy = &cronjobConcurrencyPolicy
-	var cronjobFailedJobsHistoryLimit int32 = 1
-	this.CronjobFailedJobsHistoryLimit = &cronjobFailedJobsHistoryLimit
-	var cronjobSuccessJobsHistoryLimit int32 = 1
-	this.CronjobSuccessJobsHistoryLimit = &cronjobSuccessJobsHistoryLimit
-	var securityServiceAccountName string = ""
-	this.SecurityServiceAccountName = &securityServiceAccountName
-	var securityReadOnlyRootFilesystem bool = false
-	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 
@@ -72,24 +54,6 @@ func NewJobAdvancedSettings() *JobAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 	this := JobAdvancedSettings{}
-	var buildTimeoutMaxSec int32 = 1800
-	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
-	var buildCpuMaxInMilli int32 = 4000
-	this.BuildCpuMaxInMilli = &buildCpuMaxInMilli
-	var buildRamMaxInGib int32 = 8
-	this.BuildRamMaxInGib = &buildRamMaxInGib
-	var deploymentTerminationGracePeriodSeconds int32 = 60
-	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
-	var cronjobConcurrencyPolicy string = "Forbid"
-	this.CronjobConcurrencyPolicy = &cronjobConcurrencyPolicy
-	var cronjobFailedJobsHistoryLimit int32 = 1
-	this.CronjobFailedJobsHistoryLimit = &cronjobFailedJobsHistoryLimit
-	var cronjobSuccessJobsHistoryLimit int32 = 1
-	this.CronjobSuccessJobsHistoryLimit = &cronjobSuccessJobsHistoryLimit
-	var securityServiceAccountName string = ""
-	this.SecurityServiceAccountName = &securityServiceAccountName
-	var securityReadOnlyRootFilesystem bool = false
-	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 

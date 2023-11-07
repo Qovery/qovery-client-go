@@ -163,6 +163,8 @@ Name | Type | Description  | Notes
 
 List default application advanced settings
 
+
+
 ### Example
 
 ```go

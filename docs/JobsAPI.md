@@ -233,6 +233,8 @@ Name | Type | Description  | Notes
 
 List default job advanced settings
 
+
+
 ### Example
 
 ```go

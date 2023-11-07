@@ -1693,7 +1693,9 @@ paths:
       - Clusters
   /organization/{organizationId}/cluster/{clusterId}/advancedSettings:
     get:
-      description: Get list and values of the advanced settings of the cluster.
+      description: |
+        Get the list and values of the advanced settings of the cluster.
+        Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/cluster-advanced-settings/)
       operationId: getClusterAdvancedSettings
       parameters:
       - description: Organization ID
@@ -7402,6 +7404,7 @@ paths:
       - Environment Export
   /defaultApplicationAdvancedSettings:
     get:
+      description: "Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)"
       operationId: getDefaultApplicationAdvancedSettings
       responses:
         "200":
@@ -7419,6 +7422,7 @@ paths:
       - Applications
   /defaultClusterAdvancedSettings:
     get:
+      description: "Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/cluster-advanced-settings/)"
       operationId: getDefaultClusterAdvancedSettings
       responses:
         "200":
@@ -7436,6 +7440,7 @@ paths:
       - Clusters
   /defaultContainerAdvancedSettings:
     get:
+      description: "Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)"
       operationId: getDefaultContainerAdvancedSettings
       responses:
         "200":
@@ -7453,6 +7458,7 @@ paths:
       - Containers
   /defaultJobAdvancedSettings:
     get:
+      description: "Default values for each setting is available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)"
       operationId: getDefaultJobAdvancedSettings
       responses:
         "200":
@@ -9154,7 +9160,9 @@ paths:
       - Application Main Calls
   /application/{applicationId}/advancedSettings:
     get:
-      description: Get list and values of the advanced settings of the application.
+      description: |
+        Get list and values of the advanced settings of the application.
+        Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
       operationId: getAdvancedSettings
       parameters:
       - description: Application ID
@@ -9412,7 +9420,9 @@ paths:
       - Container Deployment History
   /container/{containerId}/advancedSettings:
     get:
-      description: Get list and values of the advanced settings of the container.
+      description: |
+        Get list and values of the advanced settings of the container.
+        Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
       operationId: getContainerAdvancedSettings
       parameters:
       - description: Container ID
@@ -12637,7 +12647,9 @@ paths:
       - Job Main Calls
   /job/{jobId}/advancedSettings:
     get:
-      description: Get list and values of the advanced settings of the job.
+      description: |
+        Get list and values of the advanced settings of the job.
+        Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
       operationId: getJobAdvancedSettings
       parameters:
       - description: Job ID
@@ -14600,39 +14612,36 @@ components:
         network.ingress.keepalive_time_seconds: 3
         deployment.termination_grace_period_seconds: 0
         network.ingress.grpc_send_timeout_seconds: 1
-        network.ingress.denylist_source_range: ""
+        network.ingress.denylist_source_range: network.ingress.denylist_source_range
         build.cpu_max_in_milli: 5
         deployment.custom_domain_check_enabled: true
-        network.ingress.enable_cors: false
-        network.ingress.enable_sticky_session: false
-        network.ingress.whitelist_source_range: 0.0.0.0/0
-        network.ingress.proxy_request_buffering: "on"
+        network.ingress.enable_cors: true
+        network.ingress.enable_sticky_session: true
+        network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
         build.ram_max_in_gib: 2
-        network.ingress.basic_auth_env_var: ""
+        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 7
-        network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         hpa.cpu.average_utilization_percent: 7
         network.ingress.keepalive_timeout_seconds: 2
         network.ingress.proxy_connect_timeout_seconds: 7
-        network.ingress.proxy_buffering: "on"
+        network.ingress.proxy_buffering: network.ingress.proxy_buffering
         network.ingress.proxy_buffer_size_kb: 9
         network.ingress.proxy_read_timeout_seconds: 1
         build.timeout_max_sec: 5
         network.ingress.grpc_read_timeout_seconds: 6
-        security.read_only_root_filesystem: false
+        security.read_only_root_filesystem: true
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
-        security.service_account_name: ""
-        network.ingress.cors_allow_origin: '*'
+        security.service_account_name: security.service_account_name
+        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
-        network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
       properties:
         deployment.custom_domain_check_enabled:
-          default: true
           description: disable custom domain check when deploying an application
           type: boolean
         deployment.termination_grace_period_seconds:
-          default: 60
           description: define how long in seconds an application is supposed to be
             stopped gracefully
           type: integer
@@ -14642,7 +14651,6 @@ components:
           description: Set pod placement on specific Kubernetes nodes labels
           type: object
         deployment.antiaffinity.pod:
-          default: Preferred
           description: |
             Define how you want pods affinity to behave:
             * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
@@ -14652,7 +14660,6 @@ components:
           - Requirred
           type: string
         deployment.update_strategy.type:
-          default: RollingUpdate
           description: |
             * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start
             * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
@@ -14661,136 +14668,104 @@ components:
           - Recreate
           type: string
         deployment.update_strategy.rolling_update.max_unavailable_percent:
-          default: 25
           description: Define the percentage of a maximum number of pods that can
             be unavailable during the update process
           type: integer
         deployment.update_strategy.rolling_update.max_surge_percent:
-          default: 25
           description: Define the percentage of the maximum number of pods that can
             be created over the desired number of pods
           type: integer
         build.timeout_max_sec:
-          default: 1800
           type: integer
         build.cpu_max_in_milli:
-          default: 4000
           description: define the max cpu resources (in milli)
           type: integer
         build.ram_max_in_gib:
-          default: 8
           description: define the max ram resources (in gib)
           type: integer
         network.ingress.proxy_body_size_mb:
-          default: 100
           type: integer
         network.ingress.enable_cors:
-          default: false
           type: boolean
         network.ingress.cors_allow_origin:
-          default: '*'
           type: string
         network.ingress.cors_allow_methods:
-          default: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
           type: string
         network.ingress.cors_allow_headers:
-          default: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
           type: string
         network.ingress.proxy_buffer_size_kb:
-          default: 4
           description: header buffer size used while reading response header from
             upstream
           type: integer
         network.ingress.keepalive_time_seconds:
-          default: 3600
           description: Limits the maximum time (in seconds) during which requests
             can be processed through one keepalive connection
           type: integer
         network.ingress.keepalive_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) during which an idle keepalive
             connection to an upstream server will stay open.
           type: integer
         network.ingress.send_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a response to
             the client
           type: integer
         network.ingress.proxy_connect_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for establishing a connection to
             a proxied server
           type: integer
         network.ingress.proxy_send_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a request to the
             proxied server
           type: integer
         network.ingress.proxy_read_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for reading a response from the
             proxied server
           type: integer
         network.ingress.proxy_buffering:
-          default: "on"
-          description: Allows to enable or disable nginx `proxy-buffering`
-          type: string
-        network.ingress.proxy_request_buffering:
-          default: "on"
           description: Allows to enable or disable nginx `proxy-request-buffering`
           type: string
         network.ingress.whitelist_source_range:
-          default: 0.0.0.0/0
           description: "list of source ranges to allow access to ingress proxy. \n\
             This property can be used to whitelist source IP ranges for ingress proxy.\n\
             The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
             To allow all source ranges, set 0.0.0.0/0.\n"
           type: string
         network.ingress.denylist_source_range:
-          default: ""
           description: "list of source ranges to deny access to ingress proxy. \n\
             This property can be used to blacklist source IP ranges for ingress proxy.\n\
             The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n"
           type: string
         network.ingress.basic_auth_env_var:
-          default: ""
           description: |
             Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command.
           type: string
         network.ingress.enable_sticky_session:
-          default: false
           description: |
             Enable the load balancer to bind a user's session to a specific target.
             This ensures that all requests from the user during the session are sent to the same target
           type: boolean
         network.ingress.grpc_send_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a request to the
             grpc server
           type: integer
         network.ingress.grpc_read_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a request to the
             grpc server
           type: integer
         network.ingress.extra_headers:
-          default: "{}"
           description: Allows to define response headers
           example: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\":\"nosniff\"\
             }"
           type: string
         hpa.cpu.average_utilization_percent:
-          default: 60
           description: Percentage value of cpu usage at which point pods should scale
             up.
           type: integer
         security.service_account_name:
-          default: ""
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
         security.read_only_root_filesystem:
-          default: false
           description: |
             Mounts the container's root filesystem as read-only
           type: boolean
@@ -16169,8 +16144,8 @@ components:
     ClusterAdvancedSettings:
       example:
         loki.log_retention_in_week: 1
-        database.mysql.deny_public_access: false
-        database.mongodb.deny_public_access: false
+        database.mysql.deny_public_access: true
+        database.mongodb.deny_public_access: true
         nginx.memory.limit_in_mib: 3
         nginx.hpa.cpu_utilization_percentage_threshold: 2
         nginx.hpa.max_number_instances: 7
@@ -16184,16 +16159,16 @@ components:
         database.redis.allowed_cidrs:
         - database.redis.allowed_cidrs
         - database.redis.allowed_cidrs
-        aws.vpc.enable_s3_flow_logs: false
+        aws.vpc.enable_s3_flow_logs: true
         registry.image_retention_time: 5
-        database.postgresql.deny_public_access: false
-        load_balancer.size: lb-s
+        database.postgresql.deny_public_access: true
+        load_balancer.size: load_balancer.size
         nginx.memory.request_in_mib: 9
         database.mongodb.allowed_cidrs:
         - database.mongodb.allowed_cidrs
         - database.mongodb.allowed_cidrs
         aws.cloudwatch.eks_logs_retention_days: 0
-        aws.iam.admin_group: Admins
+        aws.iam.admin_group: aws.iam.admin_group
         registry.mirroring_mode: null
         nginx.vcpu.request_in_milli_cpu: 2
         cloud_provider.container_registry.tags:
@@ -16201,28 +16176,23 @@ components:
         database.postgresql.allowed_cidrs:
         - database.postgresql.allowed_cidrs
         - database.postgresql.allowed_cidrs
-        database.redis.deny_public_access: false
+        database.redis.deny_public_access: true
         nginx.hpa.min_number_instances: 4
       properties:
         aws.cloudwatch.eks_logs_retention_days:
-          default: 90
           description: Set the number of retention days for EKS Cloudwatch logs
           type: integer
         aws.vpc.enable_s3_flow_logs:
-          default: false
           description: Enable flow logs for on the VPC and store them in an S3 bucket
           type: boolean
         aws.vpc.flow_logs_retention_days:
-          default: 365
           description: Set the number of retention days for flow logs. Disable with
             value "0"
           type: integer
         loki.log_retention_in_week:
-          default: 12
           description: For how long in week loki is going to keep logs of your applications
           type: integer
         registry.image_retention_time:
-          default: 31536000
           description: Configure the number of seconds before cleaning images in the
             registry
           type: integer
@@ -16232,60 +16202,45 @@ components:
           description: Add additional tags on the cluster dedicated registry
           type: object
         load_balancer.size:
-          default: lb-s
           description: Select the size of the main load_balancer (only effective for
             Scaleway)
           type: string
         database.postgresql.deny_public_access:
-          default: false
           description: Deny public access to any PostgreSQL database
           type: boolean
         database.postgresql.allowed_cidrs:
-          default:
-          - 0.0.0.0/0
           description: List of CIDRs allowed to access the PostgreSQL database
           items:
             type: string
           type: array
         database.mysql.deny_public_access:
-          default: false
           description: Deny public access to any MySql database
           type: boolean
         database.mysql.allowed_cidrs:
-          default:
-          - 0.0.0.0/0
           description: List of CIDRs allowed to access the MySql database
           items:
             type: string
           type: array
         database.mongodb.deny_public_access:
-          default: false
           description: Deny public access to any MongoDB/DocumentDB database
           type: boolean
         database.mongodb.allowed_cidrs:
-          default:
-          - 0.0.0.0/0
           description: List of CIDRs allowed to access the MongoDB/DocumentDB database
           items:
             type: string
           type: array
         database.redis.deny_public_access:
-          default: false
           description: Deny public access to any Redis database
           type: boolean
         database.redis.allowed_cidrs:
-          default:
-          - 0.0.0.0/0
           description: List of CIDRs allowed to access the Redis database
           items:
             type: string
           type: array
         aws.iam.admin_group:
-          default: Admins
           description: AWS IAM group name with cluster access
           type: string
         aws.eks.ec2.metadata_imds:
-          default: optional
           description: |
             Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:
               * `required`: IMDS V2 only
@@ -16295,37 +16250,29 @@ components:
           - required
           type: string
         pleco.resources_ttl:
-          default: -1
           deprecated: true
           type: integer
         registry.mirroring_mode:
           $ref: '#/components/schemas/RegistryMirroringModeEnum'
         nginx.vcpu.request_in_milli_cpu:
-          default: 100
           description: vcpu request in millicores
           type: integer
         nginx.vcpu.limit_in_milli_cpu:
-          default: 500
           description: vcpu limit in millicores
           type: integer
         nginx.memory.request_in_mib:
-          default: 768
           description: memory request in MiB
           type: integer
         nginx.memory.limit_in_mib:
-          default: 768
           description: memory limit in MiB
           type: integer
         nginx.hpa.cpu_utilization_percentage_threshold:
-          default: 50
           description: hpa cpu threshold in percentage
           type: integer
         nginx.hpa.min_number_instances:
-          default: 2
           description: hpa minimum number of instances
           type: integer
         nginx.hpa.max_number_instances:
-          default: 25
           description: hpa maximum number of instances
           type: integer
       type: object
@@ -16418,36 +16365,34 @@ components:
         network.ingress.keepalive_time_seconds: 2
         deployment.termination_grace_period_seconds: 0
         network.ingress.grpc_send_timeout_seconds: 7
-        network.ingress.denylist_source_range: ""
+        network.ingress.denylist_source_range: network.ingress.denylist_source_range
         deployment.custom_domain_check_enabled: true
-        network.ingress.enable_cors: false
-        network.ingress.enable_sticky_session: false
-        network.ingress.whitelist_source_range: 0.0.0.0/0
-        network.ingress.proxy_request_buffering: "on"
-        network.ingress.basic_auth_env_var: ""
+        network.ingress.enable_cors: true
+        network.ingress.enable_sticky_session: true
+        network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
+        network.ingress.proxy_request_buffering: network.ingress.proxy_request_buffering
+        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 5
-        network.ingress.cors_allow_headers: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         hpa.cpu.average_utilization_percent: 1
         network.ingress.keepalive_timeout_seconds: 7
         network.ingress.proxy_connect_timeout_seconds: 3
-        network.ingress.proxy_buffering: "on"
+        network.ingress.proxy_buffering: network.ingress.proxy_buffering
         network.ingress.proxy_buffer_size_kb: 5
         network.ingress.proxy_read_timeout_seconds: 4
         network.ingress.grpc_read_timeout_seconds: 1
-        security.read_only_root_filesystem: false
+        security.read_only_root_filesystem: true
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
-        security.service_account_name: ""
-        network.ingress.cors_allow_origin: '*'
+        security.service_account_name: security.service_account_name
+        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
-        network.ingress.cors_allow_methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
       properties:
         deployment.custom_domain_check_enabled:
-          default: true
           description: disable custom domain check when deploying an application
           type: boolean
         deployment.termination_grace_period_seconds:
-          default: 60
           description: define how long in seconds an application is supposed to be
             stopped gracefully
           type: integer
@@ -16457,7 +16402,6 @@ components:
           description: Set pod placement on specific Kubernetes nodes labels
           type: object
         deployment.antiaffinity.pod:
-          default: Preferred
           description: |
             Define how you want pods affinity to behave:
             * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
@@ -16467,7 +16411,6 @@ components:
           - Requirred
           type: string
         deployment.update_strategy.type:
-          default: RollingUpdate
           description: |
             * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start
             * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
@@ -16476,125 +16419,99 @@ components:
           - Recreate
           type: string
         deployment.update_strategy.rolling_update.max_unavailable_percent:
-          default: 25
           description: Define the percentage of a maximum number of pods that can
             be unavailable during the update process
           type: integer
         deployment.update_strategy.rolling_update.max_surge_percent:
-          default: 25
           description: Define the percentage of the maximum number of pods that can
             be created over the desired number of pods
           type: integer
         network.ingress.proxy_body_size_mb:
-          default: 100
           type: integer
         network.ingress.enable_cors:
-          default: false
           type: boolean
         network.ingress.cors_allow_origin:
-          default: '*'
           type: string
         network.ingress.cors_allow_methods:
-          default: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
           type: string
         network.ingress.cors_allow_headers:
-          default: "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
           type: string
         network.ingress.proxy_buffer_size_kb:
-          default: 4
           description: header buffer size used while reading response header from
             upstream
           type: integer
         network.ingress.keepalive_time_seconds:
-          default: 3600
           description: Limits the maximum time (in seconds) during which requests
             can be processed through one keepalive connection
           type: integer
         network.ingress.keepalive_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) during which an idle keepalive
             connection to an upstream server will stay open.
           type: integer
         network.ingress.send_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a response to
             the client
           type: integer
         network.ingress.proxy_connect_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for establishing a connection to
             a proxied server
           type: integer
         network.ingress.proxy_send_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a request to the
             proxied server
           type: integer
         network.ingress.proxy_read_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for reading a response from the
             proxied server
           type: integer
         network.ingress.proxy_buffering:
-          default: "on"
           description: Allows to enable or disable nginx `proxy-buffering`
           type: string
         network.ingress.proxy_request_buffering:
-          default: "on"
           description: Allows to enable or disable nginx `proxy-request-buffering`
           type: string
         network.ingress.grpc_send_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a request to the
             grpc server
           type: integer
         network.ingress.grpc_read_timeout_seconds:
-          default: 60
           description: Sets a timeout (in seconds) for transmitting a request to the
             grpc server
           type: integer
         network.ingress.whitelist_source_range:
-          default: 0.0.0.0/0
           description: "list of source ranges to allow access to ingress proxy. \n\
             This property can be used to whitelist source IP ranges for ingress proxy.\n\
             The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
             To allow all source ranges, set 0.0.0.0/0.\n"
           type: string
         network.ingress.denylist_source_range:
-          default: ""
           description: "list of source ranges to deny access to ingress proxy. \n\
             This property can be used to blacklist source IP ranges for ingress proxy.\n\
             The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n"
           type: string
         network.ingress.extra_headers:
-          default: "{}"
           description: Allows to define response headers
           example: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\":\"nosniff\"\
             }"
           type: string
         network.ingress.basic_auth_env_var:
-          default: ""
           description: |
             Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
           type: string
         network.ingress.enable_sticky_session:
-          default: false
           description: |
             Enable the load balancer to bind a user's session to a specific target.
             This ensures that all requests from the user during the session are sent to the same target
           type: boolean
         security.service_account_name:
-          default: ""
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
         hpa.cpu.average_utilization_percent:
-          default: 60
           description: Percentage value of cpu usage at which point pods should scale
             up.
           type: integer
         security.read_only_root_filesystem:
-          default: false
           description: |
             Mounts the container's root filesystem as read-only
           type: boolean
@@ -19966,29 +19883,25 @@ components:
         build.cpu_max_in_milli: 6
         deployment.affinity.node.required:
           key: deployment.affinity.node.required
-        security.read_only_root_filesystem: false
+        security.read_only_root_filesystem: true
         job.delete_ttl_seconds_after_finished: 5
-        security.service_account_name: ""
+        security.service_account_name: security.service_account_name
         cronjob.failed_jobs_history_limit: 2
-        cronjob.concurrency_policy: Forbid
+        cronjob.concurrency_policy: cronjob.concurrency_policy
         cronjob.success_jobs_history_limit: 7
         build.ram_max_in_gib: 1
         deployment.termination_grace_period_seconds: 5
       properties:
         build.timeout_max_sec:
-          default: 1800
           description: define the max timeout for the build
           type: integer
         build.cpu_max_in_milli:
-          default: 4000
           description: define the max cpu resources (in milli)
           type: integer
         build.ram_max_in_gib:
-          default: 8
           description: define the max ram resources (in gib)
           type: integer
         deployment.termination_grace_period_seconds:
-          default: 60
           description: define how long in seconds an application is supposed to be
             stopped gracefully
           type: integer
@@ -20001,21 +19914,16 @@ components:
           nullable: true
           type: integer
         cronjob.concurrency_policy:
-          default: Forbid
           type: string
         cronjob.failed_jobs_history_limit:
-          default: 1
           type: integer
         cronjob.success_jobs_history_limit:
-          default: 1
           type: integer
         security.service_account_name:
-          default: ""
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
         security.read_only_root_filesystem:
-          default: false
           description: |
             Mounts the container's root filesystem as read-only
           type: boolean

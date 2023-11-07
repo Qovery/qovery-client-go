@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BuildTimeoutMaxSec** | Pointer to **int32** | define the max timeout for the build | [optional] [default to 1800]
-**BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] [default to 4000]
-**BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] [default to 8]
-**DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] [default to 60]
+**BuildTimeoutMaxSec** | Pointer to **int32** | define the max timeout for the build | [optional] 
+**BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] 
+**BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
+**DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
-**CronjobConcurrencyPolicy** | Pointer to **string** |  | [optional] [default to "Forbid"]
-**CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
-**CronjobSuccessJobsHistoryLimit** | Pointer to **int32** |  | [optional] [default to 1]
-**SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] [default to ""]
-**SecurityReadOnlyRootFilesystem** | Pointer to **bool** | Mounts the container&#39;s root filesystem as read-only  | [optional] [default to false]
+**CronjobConcurrencyPolicy** | Pointer to **string** |  | [optional] 
+**CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] 
+**CronjobSuccessJobsHistoryLimit** | Pointer to **int32** |  | [optional] 
+**SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
+**SecurityReadOnlyRootFilesystem** | Pointer to **bool** | Mounts the container&#39;s root filesystem as read-only  | [optional] 
 
 ## Methods
 

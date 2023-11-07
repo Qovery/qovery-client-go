@@ -786,7 +786,9 @@ func (r ApiGetClusterAdvancedSettingsRequest) Execute() (*ClusterAdvancedSetting
 /*
 GetClusterAdvancedSettings Get advanced settings
 
-Get list and values of the advanced settings of the cluster.
+Get the list and values of the advanced settings of the cluster.
+Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/cluster-advanced-settings/)
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
@@ -1142,6 +1144,8 @@ func (r ApiGetDefaultClusterAdvancedSettingsRequest) Execute() (*ClusterAdvanced
 
 /*
 GetDefaultClusterAdvancedSettings List default cluster advanced settings
+
+Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/cluster-advanced-settings/)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDefaultClusterAdvancedSettingsRequest

@@ -79,48 +79,8 @@ type ClusterAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
-	var awsCloudwatchEksLogsRetentionDays int32 = 90
-	this.AwsCloudwatchEksLogsRetentionDays = &awsCloudwatchEksLogsRetentionDays
-	var awsVpcEnableS3FlowLogs bool = false
-	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
-	var awsVpcFlowLogsRetentionDays int32 = 365
-	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
-	var lokiLogRetentionInWeek int32 = 12
-	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
-	var registryImageRetentionTime int32 = 31536000
-	this.RegistryImageRetentionTime = &registryImageRetentionTime
-	var loadBalancerSize string = "lb-s"
-	this.LoadBalancerSize = &loadBalancerSize
-	var databasePostgresqlDenyPublicAccess bool = false
-	this.DatabasePostgresqlDenyPublicAccess = &databasePostgresqlDenyPublicAccess
-	var databaseMysqlDenyPublicAccess bool = false
-	this.DatabaseMysqlDenyPublicAccess = &databaseMysqlDenyPublicAccess
-	var databaseMongodbDenyPublicAccess bool = false
-	this.DatabaseMongodbDenyPublicAccess = &databaseMongodbDenyPublicAccess
-	var databaseRedisDenyPublicAccess bool = false
-	this.DatabaseRedisDenyPublicAccess = &databaseRedisDenyPublicAccess
-	var awsIamAdminGroup string = "Admins"
-	this.AwsIamAdminGroup = &awsIamAdminGroup
-	var awsEksEc2MetadataImds string = "optional"
-	this.AwsEksEc2MetadataImds = &awsEksEc2MetadataImds
-	var plecoResourcesTtl int32 = -1
-	this.PlecoResourcesTtl = &plecoResourcesTtl
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
-	var nginxVcpuRequestInMilliCpu int32 = 100
-	this.NginxVcpuRequestInMilliCpu = &nginxVcpuRequestInMilliCpu
-	var nginxVcpuLimitInMilliCpu int32 = 500
-	this.NginxVcpuLimitInMilliCpu = &nginxVcpuLimitInMilliCpu
-	var nginxMemoryRequestInMib int32 = 768
-	this.NginxMemoryRequestInMib = &nginxMemoryRequestInMib
-	var nginxMemoryLimitInMib int32 = 768
-	this.NginxMemoryLimitInMib = &nginxMemoryLimitInMib
-	var nginxHpaCpuUtilizationPercentageThreshold int32 = 50
-	this.NginxHpaCpuUtilizationPercentageThreshold = &nginxHpaCpuUtilizationPercentageThreshold
-	var nginxHpaMinNumberInstances int32 = 2
-	this.NginxHpaMinNumberInstances = &nginxHpaMinNumberInstances
-	var nginxHpaMaxNumberInstances int32 = 25
-	this.NginxHpaMaxNumberInstances = &nginxHpaMaxNumberInstances
 	return &this
 }
 
@@ -129,48 +89,8 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
-	var awsCloudwatchEksLogsRetentionDays int32 = 90
-	this.AwsCloudwatchEksLogsRetentionDays = &awsCloudwatchEksLogsRetentionDays
-	var awsVpcEnableS3FlowLogs bool = false
-	this.AwsVpcEnableS3FlowLogs = &awsVpcEnableS3FlowLogs
-	var awsVpcFlowLogsRetentionDays int32 = 365
-	this.AwsVpcFlowLogsRetentionDays = &awsVpcFlowLogsRetentionDays
-	var lokiLogRetentionInWeek int32 = 12
-	this.LokiLogRetentionInWeek = &lokiLogRetentionInWeek
-	var registryImageRetentionTime int32 = 31536000
-	this.RegistryImageRetentionTime = &registryImageRetentionTime
-	var loadBalancerSize string = "lb-s"
-	this.LoadBalancerSize = &loadBalancerSize
-	var databasePostgresqlDenyPublicAccess bool = false
-	this.DatabasePostgresqlDenyPublicAccess = &databasePostgresqlDenyPublicAccess
-	var databaseMysqlDenyPublicAccess bool = false
-	this.DatabaseMysqlDenyPublicAccess = &databaseMysqlDenyPublicAccess
-	var databaseMongodbDenyPublicAccess bool = false
-	this.DatabaseMongodbDenyPublicAccess = &databaseMongodbDenyPublicAccess
-	var databaseRedisDenyPublicAccess bool = false
-	this.DatabaseRedisDenyPublicAccess = &databaseRedisDenyPublicAccess
-	var awsIamAdminGroup string = "Admins"
-	this.AwsIamAdminGroup = &awsIamAdminGroup
-	var awsEksEc2MetadataImds string = "optional"
-	this.AwsEksEc2MetadataImds = &awsEksEc2MetadataImds
-	var plecoResourcesTtl int32 = -1
-	this.PlecoResourcesTtl = &plecoResourcesTtl
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
-	var nginxVcpuRequestInMilliCpu int32 = 100
-	this.NginxVcpuRequestInMilliCpu = &nginxVcpuRequestInMilliCpu
-	var nginxVcpuLimitInMilliCpu int32 = 500
-	this.NginxVcpuLimitInMilliCpu = &nginxVcpuLimitInMilliCpu
-	var nginxMemoryRequestInMib int32 = 768
-	this.NginxMemoryRequestInMib = &nginxMemoryRequestInMib
-	var nginxMemoryLimitInMib int32 = 768
-	this.NginxMemoryLimitInMib = &nginxMemoryLimitInMib
-	var nginxHpaCpuUtilizationPercentageThreshold int32 = 50
-	this.NginxHpaCpuUtilizationPercentageThreshold = &nginxHpaCpuUtilizationPercentageThreshold
-	var nginxHpaMinNumberInstances int32 = 2
-	this.NginxHpaMinNumberInstances = &nginxHpaMinNumberInstances
-	var nginxHpaMaxNumberInstances int32 = 25
-	this.NginxHpaMaxNumberInstances = &nginxHpaMaxNumberInstances
 	return &this
 }
 

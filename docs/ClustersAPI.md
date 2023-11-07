@@ -682,6 +682,8 @@ Name | Type | Description  | Notes
 
 List default cluster advanced settings
 
+
+
 ### Example
 
 ```go

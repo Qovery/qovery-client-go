@@ -58,10 +58,8 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressProxySendTimeoutSeconds *int32 `json:"network.ingress.proxy_send_timeout_seconds,omitempty"`
 	// Sets a timeout (in seconds) for reading a response from the proxied server
 	NetworkIngressProxyReadTimeoutSeconds *int32 `json:"network.ingress.proxy_read_timeout_seconds,omitempty"`
-	// Allows to enable or disable nginx `proxy-buffering`
-	NetworkIngressProxyBuffering *string `json:"network.ingress.proxy_buffering,omitempty"`
 	// Allows to enable or disable nginx `proxy-request-buffering`
-	NetworkIngressProxyRequestBuffering *string `json:"network.ingress.proxy_request_buffering,omitempty"`
+	NetworkIngressProxyBuffering *string `json:"network.ingress.proxy_buffering,omitempty"`
 	// list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.
 	NetworkIngressWhitelistSourceRange *string `json:"network.ingress.whitelist_source_range,omitempty"`
 	// list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1
@@ -90,72 +88,6 @@ type ApplicationAdvancedSettings struct {
 // will change when the set of required properties is changed
 func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 	this := ApplicationAdvancedSettings{}
-	var deploymentCustomDomainCheckEnabled bool = true
-	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
-	var deploymentTerminationGracePeriodSeconds int32 = 60
-	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
-	var deploymentAntiaffinityPod string = "Preferred"
-	this.DeploymentAntiaffinityPod = &deploymentAntiaffinityPod
-	var deploymentUpdateStrategyType string = "RollingUpdate"
-	this.DeploymentUpdateStrategyType = &deploymentUpdateStrategyType
-	var deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent int32 = 25
-	this.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent = &deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
-	var deploymentUpdateStrategyRollingUpdateMaxSurgePercent int32 = 25
-	this.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent = &deploymentUpdateStrategyRollingUpdateMaxSurgePercent
-	var buildTimeoutMaxSec int32 = 1800
-	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
-	var buildCpuMaxInMilli int32 = 4000
-	this.BuildCpuMaxInMilli = &buildCpuMaxInMilli
-	var buildRamMaxInGib int32 = 8
-	this.BuildRamMaxInGib = &buildRamMaxInGib
-	var networkIngressProxyBodySizeMb int32 = 100
-	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
-	var networkIngressEnableCors bool = false
-	this.NetworkIngressEnableCors = &networkIngressEnableCors
-	var networkIngressCorsAllowOrigin string = "*"
-	this.NetworkIngressCorsAllowOrigin = &networkIngressCorsAllowOrigin
-	var networkIngressCorsAllowMethods string = "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-	this.NetworkIngressCorsAllowMethods = &networkIngressCorsAllowMethods
-	var networkIngressCorsAllowHeaders string = "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
-	var networkIngressProxyBufferSizeKb int32 = 4
-	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
-	var networkIngressKeepaliveTimeSeconds int32 = 3600
-	this.NetworkIngressKeepaliveTimeSeconds = &networkIngressKeepaliveTimeSeconds
-	var networkIngressKeepaliveTimeoutSeconds int32 = 60
-	this.NetworkIngressKeepaliveTimeoutSeconds = &networkIngressKeepaliveTimeoutSeconds
-	var networkIngressSendTimeoutSeconds int32 = 60
-	this.NetworkIngressSendTimeoutSeconds = &networkIngressSendTimeoutSeconds
-	var networkIngressProxyConnectTimeoutSeconds int32 = 60
-	this.NetworkIngressProxyConnectTimeoutSeconds = &networkIngressProxyConnectTimeoutSeconds
-	var networkIngressProxySendTimeoutSeconds int32 = 60
-	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
-	var networkIngressProxyReadTimeoutSeconds int32 = 60
-	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
-	var networkIngressProxyBuffering string = "on"
-	this.NetworkIngressProxyBuffering = &networkIngressProxyBuffering
-	var networkIngressProxyRequestBuffering string = "on"
-	this.NetworkIngressProxyRequestBuffering = &networkIngressProxyRequestBuffering
-	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
-	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
-	var networkIngressDenylistSourceRange string = ""
-	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
-	var networkIngressBasicAuthEnvVar string = ""
-	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
-	var networkIngressEnableStickySession bool = false
-	this.NetworkIngressEnableStickySession = &networkIngressEnableStickySession
-	var networkIngressGrpcSendTimeoutSeconds int32 = 60
-	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
-	var networkIngressGrpcReadTimeoutSeconds int32 = 60
-	this.NetworkIngressGrpcReadTimeoutSeconds = &networkIngressGrpcReadTimeoutSeconds
-	var networkIngressExtraHeaders string = "{}"
-	this.NetworkIngressExtraHeaders = &networkIngressExtraHeaders
-	var hpaCpuAverageUtilizationPercent int32 = 60
-	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
-	var securityServiceAccountName string = ""
-	this.SecurityServiceAccountName = &securityServiceAccountName
-	var securityReadOnlyRootFilesystem bool = false
-	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 
@@ -164,72 +96,6 @@ func NewApplicationAdvancedSettings() *ApplicationAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationAdvancedSettingsWithDefaults() *ApplicationAdvancedSettings {
 	this := ApplicationAdvancedSettings{}
-	var deploymentCustomDomainCheckEnabled bool = true
-	this.DeploymentCustomDomainCheckEnabled = &deploymentCustomDomainCheckEnabled
-	var deploymentTerminationGracePeriodSeconds int32 = 60
-	this.DeploymentTerminationGracePeriodSeconds = &deploymentTerminationGracePeriodSeconds
-	var deploymentAntiaffinityPod string = "Preferred"
-	this.DeploymentAntiaffinityPod = &deploymentAntiaffinityPod
-	var deploymentUpdateStrategyType string = "RollingUpdate"
-	this.DeploymentUpdateStrategyType = &deploymentUpdateStrategyType
-	var deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent int32 = 25
-	this.DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent = &deploymentUpdateStrategyRollingUpdateMaxUnavailablePercent
-	var deploymentUpdateStrategyRollingUpdateMaxSurgePercent int32 = 25
-	this.DeploymentUpdateStrategyRollingUpdateMaxSurgePercent = &deploymentUpdateStrategyRollingUpdateMaxSurgePercent
-	var buildTimeoutMaxSec int32 = 1800
-	this.BuildTimeoutMaxSec = &buildTimeoutMaxSec
-	var buildCpuMaxInMilli int32 = 4000
-	this.BuildCpuMaxInMilli = &buildCpuMaxInMilli
-	var buildRamMaxInGib int32 = 8
-	this.BuildRamMaxInGib = &buildRamMaxInGib
-	var networkIngressProxyBodySizeMb int32 = 100
-	this.NetworkIngressProxyBodySizeMb = &networkIngressProxyBodySizeMb
-	var networkIngressEnableCors bool = false
-	this.NetworkIngressEnableCors = &networkIngressEnableCors
-	var networkIngressCorsAllowOrigin string = "*"
-	this.NetworkIngressCorsAllowOrigin = &networkIngressCorsAllowOrigin
-	var networkIngressCorsAllowMethods string = "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-	this.NetworkIngressCorsAllowMethods = &networkIngressCorsAllowMethods
-	var networkIngressCorsAllowHeaders string = "DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-	this.NetworkIngressCorsAllowHeaders = &networkIngressCorsAllowHeaders
-	var networkIngressProxyBufferSizeKb int32 = 4
-	this.NetworkIngressProxyBufferSizeKb = &networkIngressProxyBufferSizeKb
-	var networkIngressKeepaliveTimeSeconds int32 = 3600
-	this.NetworkIngressKeepaliveTimeSeconds = &networkIngressKeepaliveTimeSeconds
-	var networkIngressKeepaliveTimeoutSeconds int32 = 60
-	this.NetworkIngressKeepaliveTimeoutSeconds = &networkIngressKeepaliveTimeoutSeconds
-	var networkIngressSendTimeoutSeconds int32 = 60
-	this.NetworkIngressSendTimeoutSeconds = &networkIngressSendTimeoutSeconds
-	var networkIngressProxyConnectTimeoutSeconds int32 = 60
-	this.NetworkIngressProxyConnectTimeoutSeconds = &networkIngressProxyConnectTimeoutSeconds
-	var networkIngressProxySendTimeoutSeconds int32 = 60
-	this.NetworkIngressProxySendTimeoutSeconds = &networkIngressProxySendTimeoutSeconds
-	var networkIngressProxyReadTimeoutSeconds int32 = 60
-	this.NetworkIngressProxyReadTimeoutSeconds = &networkIngressProxyReadTimeoutSeconds
-	var networkIngressProxyBuffering string = "on"
-	this.NetworkIngressProxyBuffering = &networkIngressProxyBuffering
-	var networkIngressProxyRequestBuffering string = "on"
-	this.NetworkIngressProxyRequestBuffering = &networkIngressProxyRequestBuffering
-	var networkIngressWhitelistSourceRange string = "0.0.0.0/0"
-	this.NetworkIngressWhitelistSourceRange = &networkIngressWhitelistSourceRange
-	var networkIngressDenylistSourceRange string = ""
-	this.NetworkIngressDenylistSourceRange = &networkIngressDenylistSourceRange
-	var networkIngressBasicAuthEnvVar string = ""
-	this.NetworkIngressBasicAuthEnvVar = &networkIngressBasicAuthEnvVar
-	var networkIngressEnableStickySession bool = false
-	this.NetworkIngressEnableStickySession = &networkIngressEnableStickySession
-	var networkIngressGrpcSendTimeoutSeconds int32 = 60
-	this.NetworkIngressGrpcSendTimeoutSeconds = &networkIngressGrpcSendTimeoutSeconds
-	var networkIngressGrpcReadTimeoutSeconds int32 = 60
-	this.NetworkIngressGrpcReadTimeoutSeconds = &networkIngressGrpcReadTimeoutSeconds
-	var networkIngressExtraHeaders string = "{}"
-	this.NetworkIngressExtraHeaders = &networkIngressExtraHeaders
-	var hpaCpuAverageUtilizationPercent int32 = 60
-	this.HpaCpuAverageUtilizationPercent = &hpaCpuAverageUtilizationPercent
-	var securityServiceAccountName string = ""
-	this.SecurityServiceAccountName = &securityServiceAccountName
-	var securityReadOnlyRootFilesystem bool = false
-	this.SecurityReadOnlyRootFilesystem = &securityReadOnlyRootFilesystem
 	return &this
 }
 
@@ -969,38 +835,6 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBuffering(v string) 
 	o.NetworkIngressProxyBuffering = &v
 }
 
-// GetNetworkIngressProxyRequestBuffering returns the NetworkIngressProxyRequestBuffering field value if set, zero value otherwise.
-func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBuffering() string {
-	if o == nil || IsNil(o.NetworkIngressProxyRequestBuffering) {
-		var ret string
-		return ret
-	}
-	return *o.NetworkIngressProxyRequestBuffering
-}
-
-// GetNetworkIngressProxyRequestBufferingOk returns a tuple with the NetworkIngressProxyRequestBuffering field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationAdvancedSettings) GetNetworkIngressProxyRequestBufferingOk() (*string, bool) {
-	if o == nil || IsNil(o.NetworkIngressProxyRequestBuffering) {
-		return nil, false
-	}
-	return o.NetworkIngressProxyRequestBuffering, true
-}
-
-// HasNetworkIngressProxyRequestBuffering returns a boolean if a field has been set.
-func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyRequestBuffering() bool {
-	if o != nil && !IsNil(o.NetworkIngressProxyRequestBuffering) {
-		return true
-	}
-
-	return false
-}
-
-// SetNetworkIngressProxyRequestBuffering gets a reference to the given string and assigns it to the NetworkIngressProxyRequestBuffering field.
-func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyRequestBuffering(v string) {
-	o.NetworkIngressProxyRequestBuffering = &v
-}
-
 // GetNetworkIngressWhitelistSourceRange returns the NetworkIngressWhitelistSourceRange field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetNetworkIngressWhitelistSourceRange() string {
 	if o == nil || IsNil(o.NetworkIngressWhitelistSourceRange) {
@@ -1399,9 +1233,6 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NetworkIngressProxyBuffering) {
 		toSerialize["network.ingress.proxy_buffering"] = o.NetworkIngressProxyBuffering
-	}
-	if !IsNil(o.NetworkIngressProxyRequestBuffering) {
-		toSerialize["network.ingress.proxy_request_buffering"] = o.NetworkIngressProxyRequestBuffering
 	}
 	if !IsNil(o.NetworkIngressWhitelistSourceRange) {
 		toSerialize["network.ingress.whitelist_source_range"] = o.NetworkIngressWhitelistSourceRange

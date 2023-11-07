@@ -532,6 +532,8 @@ func (r ApiGetDefaultContainerAdvancedSettingsRequest) Execute() (*ContainerAdva
 /*
 GetDefaultContainerAdvancedSettings List default container advanced settings
 
+Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDefaultContainerAdvancedSettingsRequest
 */

@@ -411,6 +411,8 @@ func (r ApiGetDefaultJobAdvancedSettingsRequest) Execute() (*JobAdvancedSettings
 /*
 GetDefaultJobAdvancedSettings List default job advanced settings
 
+Default values for each setting is available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDefaultJobAdvancedSettingsRequest
 */
