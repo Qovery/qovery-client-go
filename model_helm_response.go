@@ -31,8 +31,8 @@ type HelmResponse struct {
 	// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.
-	AutoDeploy bool                   `json:"auto_deploy"`
-	Source     HelmRequestAllOfSource `json:"source"`
+	AutoDeploy bool                    `json:"auto_deploy"`
+	Source     HelmResponseAllOfSource `json:"source"`
 	// The extra arguments to pass to helm
 	Arguments []string `json:"arguments,omitempty"`
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
@@ -44,7 +44,7 @@ type HelmResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmRequestAllOfSource) *HelmResponse {
+func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource) *HelmResponse {
 	this := HelmResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -277,9 +277,9 @@ func (o *HelmResponse) SetAutoDeploy(v bool) {
 }
 
 // GetSource returns the Source field value
-func (o *HelmResponse) GetSource() HelmRequestAllOfSource {
+func (o *HelmResponse) GetSource() HelmResponseAllOfSource {
 	if o == nil {
-		var ret HelmRequestAllOfSource
+		var ret HelmResponseAllOfSource
 		return ret
 	}
 
@@ -288,7 +288,7 @@ func (o *HelmResponse) GetSource() HelmRequestAllOfSource {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *HelmResponse) GetSourceOk() (*HelmRequestAllOfSource, bool) {
+func (o *HelmResponse) GetSourceOk() (*HelmResponseAllOfSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -296,7 +296,7 @@ func (o *HelmResponse) GetSourceOk() (*HelmRequestAllOfSource, bool) {
 }
 
 // SetSource sets field value
-func (o *HelmResponse) SetSource(v HelmRequestAllOfSource) {
+func (o *HelmResponse) SetSource(v HelmResponseAllOfSource) {
 	o.Source = v
 }
 

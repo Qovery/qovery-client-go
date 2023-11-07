@@ -20180,7 +20180,7 @@ components:
               \ type. \n"
             type: boolean
           source:
-            $ref: '#/components/schemas/HelmRequest_allOf_source'
+            $ref: '#/components/schemas/HelmResponse_allOf_source'
           arguments:
             description: The extra arguments to pass to helm
             items:
@@ -23874,6 +23874,41 @@ components:
           type: array
         file:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
+      type: object
+      example: null
+    HelmResponse_allOf_source_repository_repository:
+      properties:
+        id:
+          description: The id of the helm repository
+          format: UUID
+          type: string
+        name:
+          description: The name of the helm repository
+          type: string
+        url:
+          description: The url the helm repository
+          type: string
+      type: object
+      example: null
+    HelmResponse_allOf_source_repository:
+      nullable: true
+      properties:
+        chart_name:
+          description: The name of the chart in the repository
+          type: string
+        chart_version:
+          description: The version of the chart to use
+          type: string
+        repository:
+          $ref: '#/components/schemas/HelmResponse_allOf_source_repository_repository'
+      type: object
+      example: null
+    HelmResponse_allOf_source:
+      properties:
+        git:
+          $ref: '#/components/schemas/HelmRequest_allOf_source_git'
+        repository:
+          $ref: '#/components/schemas/HelmResponse_allOf_source_repository'
       type: object
       example: null
     OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:

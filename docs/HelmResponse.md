@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **AutoDeploy** | **bool** | Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.   | 
-**Source** | [**HelmRequestAllOfSource**](HelmRequestAllOfSource.md) |  | 
+**Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **Arguments** | Pointer to **[]string** | The extra arguments to pass to helm | [optional] 
 **AllowClusterWideResources** | Pointer to **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [optional] [default to false]
 **ValuesOverride** | Pointer to [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewHelmResponse
 
-`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmRequestAllOfSource, ) *HelmResponse`
+`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, ) *HelmResponse`
 
 NewHelmResponse instantiates a new HelmResponse object
 This constructor will assign default values to properties that have it defined,
@@ -208,20 +208,20 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 ### GetSource
 
-`func (o *HelmResponse) GetSource() HelmRequestAllOfSource`
+`func (o *HelmResponse) GetSource() HelmResponseAllOfSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *HelmResponse) GetSourceOk() (*HelmRequestAllOfSource, bool)`
+`func (o *HelmResponse) GetSourceOk() (*HelmResponseAllOfSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *HelmResponse) SetSource(v HelmRequestAllOfSource)`
+`func (o *HelmResponse) SetSource(v HelmResponseAllOfSource)`
 
 SetSource sets Source field to given value.
 
