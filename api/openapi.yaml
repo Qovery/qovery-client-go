@@ -16698,6 +16698,49 @@ components:
             $ref: '#/components/schemas/ContainerRegistryResponse'
           type: array
       type: object
+    HelmRepositoryRequest:
+      properties:
+        name:
+          type: string
+        kind:
+          $ref: '#/components/schemas/HelmRepositoryKindEnum'
+        description:
+          type: string
+        url:
+          description: |
+            URL of the helm chart repository:
+            * For `OCI`: it must start by oci://
+            * For `HTTPS`: it must be start by https://
+          format: uri
+          type: string
+        config:
+          $ref: '#/components/schemas/HelmRepositoryRequest_config'
+      required:
+      - config
+      - kind
+      - name
+      type: object
+    HelmRepositoryResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          kind:
+            $ref: '#/components/schemas/HelmRepositoryKindEnum'
+          description:
+            type: string
+          url:
+            description: URL of the helm repository
+            type: string
+        type: object
+    HelmRepositoryResponseList:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/HelmRepositoryResponse'
+          type: array
+      type: object
     ContainerRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
@@ -23200,6 +23243,19 @@ components:
             description: Name of the cluster of which the registry belongs to
             type: string
         type: object
+    HelmRepositoryRequest_config:
+      properties:
+        skip_tls_verification:
+          default: false
+          description: Bypass tls certificate verification when connecting to repository
+          type: boolean
+        login:
+          description: Required if the repository is private
+          type: string
+        password:
+          description: Required if the repository is private
+          type: string
+      type: object
     DatabaseCurrentMetric_cpu:
       example:
         consumed_in_percent: 1.4658129805029452

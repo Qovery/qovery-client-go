@@ -367,6 +367,10 @@ docs/HelmDeploymentRestrictionResponseList.md
 docs/HelmForceEvent.md
 docs/HelmMainCallsAPI.md
 docs/HelmRepositoryKindEnum.md
+docs/HelmRepositoryRequest.md
+docs/HelmRepositoryRequestConfig.md
+docs/HelmRepositoryResponse.md
+docs/HelmRepositoryResponseList.md
 docs/HelmRequest.md
 docs/HelmRequestAllOfSource.md
 docs/HelmRequestAllOfSourceGit.md
@@ -839,6 +843,10 @@ model_helm_deployment_restriction_response.go
 model_helm_deployment_restriction_response_list.go
 model_helm_force_event.go
 model_helm_repository_kind_enum.go
+model_helm_repository_request.go
+model_helm_repository_request_config.go
+model_helm_repository_response.go
+model_helm_repository_response_list.go
 model_helm_request.go
 model_helm_request_all_of_source.go
 model_helm_request_all_of_source_git.go
