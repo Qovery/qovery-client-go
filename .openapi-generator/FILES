@@ -56,6 +56,7 @@ api_helm_configuration.go
 api_helm_deployment_history.go
 api_helm_deployment_restriction.go
 api_helm_main_calls.go
+api_helm_repositories.go
 api_helms.go
 api_job_actions.go
 api_job_configuration.go
@@ -366,6 +367,7 @@ docs/HelmDeploymentRestrictionResponse.md
 docs/HelmDeploymentRestrictionResponseList.md
 docs/HelmForceEvent.md
 docs/HelmMainCallsAPI.md
+docs/HelmRepositoriesAPI.md
 docs/HelmRepositoryKindEnum.md
 docs/HelmRepositoryRequest.md
 docs/HelmRepositoryRequestConfig.md
@@ -1113,6 +1115,7 @@ test/api_helm_configuration_test.go
 test/api_helm_deployment_history_test.go
 test/api_helm_deployment_restriction_test.go
 test/api_helm_main_calls_test.go
+test/api_helm_repositories_test.go
 test/api_helm_test.go
 test/api_helms_test.go
 test/api_job_actions_test.go

@@ -4365,6 +4365,188 @@ paths:
       summary: List supported container registries
       tags:
       - Container Registries
+  /availableHelmRepository:
+    get:
+      description: List supported helm repository by Qovery and get the mandatory
+        authentification configuration.
+      operationId: listAvailableHelmRepository
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AvailableHelmRepositoryResponseList'
+          description: supported helm repositories
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List supported helm repository
+      tags:
+      - Helm Repositories
+  /organization/{organizationId}/helmRepository:
+    get:
+      operationId: listHelmRepository
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmRepositoryResponseList'
+          description: List helm repositories
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization helm repositories
+      tags:
+      - Helm Repositories
+    post:
+      operationId: createHelmRepository
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmRepositoryRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmRepositoryResponse'
+          description: Create a helm repository
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create a helm repository
+      tags:
+      - Helm Repositories
+  /organization/{organizationId}/helmRepository/{helmRepositoryId}:
+    delete:
+      operationId: deleteHelmRepository
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a helm repository
+      tags:
+      - Helm Repositories
+    get:
+      operationId: getHelmRepository
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Helm chart repository ID
+        explode: false
+        in: path
+        name: helmRepositoryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmRepositoryResponse'
+          description: The helm repository
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a helm repository
+      tags:
+      - Helm Repositories
+    put:
+      operationId: editHelmRepository
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmRepositoryRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmRepositoryResponse'
+          description: Edited the helm repository
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a helm repository
+      tags:
+      - Helm Repositories
   /project/{projectId}:
     delete:
       description: To delete a project you must have the admin permission
@@ -15173,6 +15355,11 @@ components:
           type: array
       type: object
     AvailableHelmRepositoryResponse:
+      example:
+        required_config:
+          key: ""
+        kind: null
+        is_mandatory: true
       properties:
         kind:
           $ref: '#/components/schemas/HelmRepositoryKindEnum'
@@ -15183,6 +15370,16 @@ components:
           type: boolean
       type: object
     AvailableHelmRepositoryResponseList:
+      example:
+        results:
+        - required_config:
+            key: ""
+          kind: null
+          is_mandatory: true
+        - required_config:
+            key: ""
+          kind: null
+          is_mandatory: true
       properties:
         results:
           items:
@@ -16699,6 +16896,15 @@ components:
           type: array
       type: object
     HelmRepositoryRequest:
+      example:
+        kind: null
+        name: name
+        description: description
+        config:
+          password: password
+          skip_tls_verification: false
+          login: login
+        url: https://openapi-generator.tech
       properties:
         name:
           type: string
@@ -16735,6 +16941,10 @@ components:
             type: string
         type: object
     HelmRepositoryResponseList:
+      example:
+        results:
+        - null
+        - null
       properties:
         results:
           items:
@@ -23244,6 +23454,10 @@ components:
             type: string
         type: object
     HelmRepositoryRequest_config:
+      example:
+        password: password
+        skip_tls_verification: false
+        login: login
       properties:
         skip_tls_verification:
           default: false

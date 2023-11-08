@@ -155,6 +155,8 @@ type APIClient struct {
 
 	HelmMainCallsAPI *HelmMainCallsAPIService
 
+	HelmRepositoriesAPI *HelmRepositoriesAPIService
+
 	HelmsAPI *HelmsAPIService
 
 	JobActionsAPI *JobActionsAPIService
@@ -275,6 +277,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.HelmDeploymentHistoryAPI = (*HelmDeploymentHistoryAPIService)(&c.common)
 	c.HelmDeploymentRestrictionAPI = (*HelmDeploymentRestrictionAPIService)(&c.common)
 	c.HelmMainCallsAPI = (*HelmMainCallsAPIService)(&c.common)
+	c.HelmRepositoriesAPI = (*HelmRepositoriesAPIService)(&c.common)
 	c.HelmsAPI = (*HelmsAPIService)(&c.common)
 	c.JobActionsAPI = (*JobActionsAPIService)(&c.common)
 	c.JobConfigurationAPI = (*JobConfigurationAPIService)(&c.common)
