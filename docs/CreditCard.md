@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **ExpiryYear** | **int32** |  | 
 **LastDigit** | **string** |  | 
 **IsExpired** | **bool** |  | 
+**Brand** | **string** |  | 
 
 ## Methods
 
 ### NewCreditCard
 
-`func NewCreditCard(id string, createdAt time.Time, expiryMonth int32, expiryYear int32, lastDigit string, isExpired bool, ) *CreditCard`
+`func NewCreditCard(id string, createdAt time.Time, expiryMonth int32, expiryYear int32, lastDigit string, isExpired bool, brand string, ) *CreditCard`
 
 NewCreditCard instantiates a new CreditCard object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *CreditCard) SetIsExpired(v bool)`
 
 SetIsExpired sets IsExpired field to given value.
+
+
+### GetBrand
+
+`func (o *CreditCard) GetBrand() string`
+
+GetBrand returns the Brand field if non-nil, zero value otherwise.
+
+### GetBrandOk
+
+`func (o *CreditCard) GetBrandOk() (*string, bool)`
+
+GetBrandOk returns a tuple with the Brand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBrand
+
+`func (o *CreditCard) SetBrand(v string)`
+
+SetBrand sets Brand field to given value.
 
 
 

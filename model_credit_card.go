@@ -27,13 +27,14 @@ type CreditCard struct {
 	ExpiryYear  int32     `json:"expiry_year"`
 	LastDigit   string    `json:"last_digit"`
 	IsExpired   bool      `json:"is_expired"`
+	Brand       string    `json:"brand"`
 }
 
 // NewCreditCard instantiates a new CreditCard object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreditCard(id string, createdAt time.Time, expiryMonth int32, expiryYear int32, lastDigit string, isExpired bool) *CreditCard {
+func NewCreditCard(id string, createdAt time.Time, expiryMonth int32, expiryYear int32, lastDigit string, isExpired bool, brand string) *CreditCard {
 	this := CreditCard{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -41,6 +42,7 @@ func NewCreditCard(id string, createdAt time.Time, expiryMonth int32, expiryYear
 	this.ExpiryYear = expiryYear
 	this.LastDigit = lastDigit
 	this.IsExpired = isExpired
+	this.Brand = brand
 	return &this
 }
 
@@ -196,6 +198,30 @@ func (o *CreditCard) SetIsExpired(v bool) {
 	o.IsExpired = v
 }
 
+// GetBrand returns the Brand field value
+func (o *CreditCard) GetBrand() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Brand
+}
+
+// GetBrandOk returns a tuple with the Brand field value
+// and a boolean to check if the value has been set.
+func (o *CreditCard) GetBrandOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Brand, true
+}
+
+// SetBrand sets field value
+func (o *CreditCard) SetBrand(v string) {
+	o.Brand = v
+}
+
 func (o CreditCard) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -212,6 +238,7 @@ func (o CreditCard) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiry_year"] = o.ExpiryYear
 	toSerialize["last_digit"] = o.LastDigit
 	toSerialize["is_expired"] = o.IsExpired
+	toSerialize["brand"] = o.Brand
 	return toSerialize, nil
 }
 
