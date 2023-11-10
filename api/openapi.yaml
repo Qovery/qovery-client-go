@@ -12630,6 +12630,35 @@ paths:
       summary: Edit a helm deployment restriction
       tags:
       - Helm Deployment Restriction
+  /helm/{helmId}/defaultValues:
+    get:
+      operationId: getDefaultValues
+      parameters:
+      - description: Helm ID
+        explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Display the contents of the values.yaml file
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Display the contents of the values.yaml file
+      tags:
+      - Helm Main Calls
   /environment/{environmentId}/job:
     get:
       operationId: listJobs
