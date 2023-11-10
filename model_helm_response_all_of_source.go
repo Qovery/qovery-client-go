@@ -13,137 +13,100 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the HelmResponseAllOfSource type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HelmResponseAllOfSource{}
-
-// HelmResponseAllOfSource struct for HelmResponseAllOfSource
+// HelmResponseAllOfSource - struct for HelmResponseAllOfSource
 type HelmResponseAllOfSource struct {
-	Git        NullableHelmRequestAllOfSourceGit         `json:"git,omitempty"`
-	Repository NullableHelmResponseAllOfSourceRepository `json:"repository,omitempty"`
+	HelmResponseAllOfSourceOneOf  *HelmResponseAllOfSourceOneOf
+	HelmResponseAllOfSourceOneOf1 *HelmResponseAllOfSourceOneOf1
 }
 
-// NewHelmResponseAllOfSource instantiates a new HelmResponseAllOfSource object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewHelmResponseAllOfSource() *HelmResponseAllOfSource {
-	this := HelmResponseAllOfSource{}
-	return &this
-}
-
-// NewHelmResponseAllOfSourceWithDefaults instantiates a new HelmResponseAllOfSource object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewHelmResponseAllOfSourceWithDefaults() *HelmResponseAllOfSource {
-	this := HelmResponseAllOfSource{}
-	return &this
-}
-
-// GetGit returns the Git field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *HelmResponseAllOfSource) GetGit() HelmRequestAllOfSourceGit {
-	if o == nil || IsNil(o.Git.Get()) {
-		var ret HelmRequestAllOfSourceGit
-		return ret
+// HelmResponseAllOfSourceOneOfAsHelmResponseAllOfSource is a convenience function that returns HelmResponseAllOfSourceOneOf wrapped in HelmResponseAllOfSource
+func HelmResponseAllOfSourceOneOfAsHelmResponseAllOfSource(v *HelmResponseAllOfSourceOneOf) HelmResponseAllOfSource {
+	return HelmResponseAllOfSource{
+		HelmResponseAllOfSourceOneOf: v,
 	}
-	return *o.Git.Get()
 }
 
-// GetGitOk returns a tuple with the Git field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HelmResponseAllOfSource) GetGitOk() (*HelmRequestAllOfSourceGit, bool) {
-	if o == nil {
-		return nil, false
+// HelmResponseAllOfSourceOneOf1AsHelmResponseAllOfSource is a convenience function that returns HelmResponseAllOfSourceOneOf1 wrapped in HelmResponseAllOfSource
+func HelmResponseAllOfSourceOneOf1AsHelmResponseAllOfSource(v *HelmResponseAllOfSourceOneOf1) HelmResponseAllOfSource {
+	return HelmResponseAllOfSource{
+		HelmResponseAllOfSourceOneOf1: v,
 	}
-	return o.Git.Get(), o.Git.IsSet()
 }
 
-// HasGit returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSource) HasGit() bool {
-	if o != nil && o.Git.IsSet() {
-		return true
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *HelmResponseAllOfSource) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into HelmResponseAllOfSourceOneOf
+	err = newStrictDecoder(data).Decode(&dst.HelmResponseAllOfSourceOneOf)
+	if err == nil {
+		jsonHelmResponseAllOfSourceOneOf, _ := json.Marshal(dst.HelmResponseAllOfSourceOneOf)
+		if string(jsonHelmResponseAllOfSourceOneOf) == "{}" { // empty struct
+			dst.HelmResponseAllOfSourceOneOf = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.HelmResponseAllOfSourceOneOf = nil
 	}
 
-	return false
-}
-
-// SetGit gets a reference to the given NullableHelmRequestAllOfSourceGit and assigns it to the Git field.
-func (o *HelmResponseAllOfSource) SetGit(v HelmRequestAllOfSourceGit) {
-	o.Git.Set(&v)
-}
-
-// SetGitNil sets the value for Git to be an explicit nil
-func (o *HelmResponseAllOfSource) SetGitNil() {
-	o.Git.Set(nil)
-}
-
-// UnsetGit ensures that no value is present for Git, not even an explicit nil
-func (o *HelmResponseAllOfSource) UnsetGit() {
-	o.Git.Unset()
-}
-
-// GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *HelmResponseAllOfSource) GetRepository() HelmResponseAllOfSourceRepository {
-	if o == nil || IsNil(o.Repository.Get()) {
-		var ret HelmResponseAllOfSourceRepository
-		return ret
-	}
-	return *o.Repository.Get()
-}
-
-// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HelmResponseAllOfSource) GetRepositoryOk() (*HelmResponseAllOfSourceRepository, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Repository.Get(), o.Repository.IsSet()
-}
-
-// HasRepository returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSource) HasRepository() bool {
-	if o != nil && o.Repository.IsSet() {
-		return true
+	// try to unmarshal data into HelmResponseAllOfSourceOneOf1
+	err = newStrictDecoder(data).Decode(&dst.HelmResponseAllOfSourceOneOf1)
+	if err == nil {
+		jsonHelmResponseAllOfSourceOneOf1, _ := json.Marshal(dst.HelmResponseAllOfSourceOneOf1)
+		if string(jsonHelmResponseAllOfSourceOneOf1) == "{}" { // empty struct
+			dst.HelmResponseAllOfSourceOneOf1 = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.HelmResponseAllOfSourceOneOf1 = nil
 	}
 
-	return false
-}
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.HelmResponseAllOfSourceOneOf = nil
+		dst.HelmResponseAllOfSourceOneOf1 = nil
 
-// SetRepository gets a reference to the given NullableHelmResponseAllOfSourceRepository and assigns it to the Repository field.
-func (o *HelmResponseAllOfSource) SetRepository(v HelmResponseAllOfSourceRepository) {
-	o.Repository.Set(&v)
-}
-
-// SetRepositoryNil sets the value for Repository to be an explicit nil
-func (o *HelmResponseAllOfSource) SetRepositoryNil() {
-	o.Repository.Set(nil)
-}
-
-// UnsetRepository ensures that no value is present for Repository, not even an explicit nil
-func (o *HelmResponseAllOfSource) UnsetRepository() {
-	o.Repository.Unset()
-}
-
-func (o HelmResponseAllOfSource) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+		return fmt.Errorf("data matches more than one schema in oneOf(HelmResponseAllOfSource)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(HelmResponseAllOfSource)")
 	}
-	return json.Marshal(toSerialize)
 }
 
-func (o HelmResponseAllOfSource) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Git.IsSet() {
-		toSerialize["git"] = o.Git.Get()
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src HelmResponseAllOfSource) MarshalJSON() ([]byte, error) {
+	if src.HelmResponseAllOfSourceOneOf != nil {
+		return json.Marshal(&src.HelmResponseAllOfSourceOneOf)
 	}
-	if o.Repository.IsSet() {
-		toSerialize["repository"] = o.Repository.Get()
+
+	if src.HelmResponseAllOfSourceOneOf1 != nil {
+		return json.Marshal(&src.HelmResponseAllOfSourceOneOf1)
 	}
-	return toSerialize, nil
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *HelmResponseAllOfSource) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.HelmResponseAllOfSourceOneOf != nil {
+		return obj.HelmResponseAllOfSourceOneOf
+	}
+
+	if obj.HelmResponseAllOfSourceOneOf1 != nil {
+		return obj.HelmResponseAllOfSourceOneOf1
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableHelmResponseAllOfSource struct {

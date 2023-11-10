@@ -15,37 +15,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the HelmResponseAllOfSourceRepository type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HelmResponseAllOfSourceRepository{}
+// checks if the HelmResponseAllOfSourceOneOf1Repository type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmResponseAllOfSourceOneOf1Repository{}
 
-// HelmResponseAllOfSourceRepository struct for HelmResponseAllOfSourceRepository
-type HelmResponseAllOfSourceRepository struct {
+// HelmResponseAllOfSourceOneOf1Repository struct for HelmResponseAllOfSourceOneOf1Repository
+type HelmResponseAllOfSourceOneOf1Repository struct {
 	// The name of the chart in the repository
 	ChartName *string `json:"chart_name,omitempty"`
 	// The version of the chart to use
-	ChartVersion *string                                      `json:"chart_version,omitempty"`
-	Repository   *HelmResponseAllOfSourceRepositoryRepository `json:"repository,omitempty"`
+	ChartVersion *string                                            `json:"chart_version,omitempty"`
+	Repository   *HelmResponseAllOfSourceOneOf1RepositoryRepository `json:"repository,omitempty"`
 }
 
-// NewHelmResponseAllOfSourceRepository instantiates a new HelmResponseAllOfSourceRepository object
+// NewHelmResponseAllOfSourceOneOf1Repository instantiates a new HelmResponseAllOfSourceOneOf1Repository object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponseAllOfSourceRepository() *HelmResponseAllOfSourceRepository {
-	this := HelmResponseAllOfSourceRepository{}
+func NewHelmResponseAllOfSourceOneOf1Repository() *HelmResponseAllOfSourceOneOf1Repository {
+	this := HelmResponseAllOfSourceOneOf1Repository{}
 	return &this
 }
 
-// NewHelmResponseAllOfSourceRepositoryWithDefaults instantiates a new HelmResponseAllOfSourceRepository object
+// NewHelmResponseAllOfSourceOneOf1RepositoryWithDefaults instantiates a new HelmResponseAllOfSourceOneOf1Repository object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewHelmResponseAllOfSourceRepositoryWithDefaults() *HelmResponseAllOfSourceRepository {
-	this := HelmResponseAllOfSourceRepository{}
+func NewHelmResponseAllOfSourceOneOf1RepositoryWithDefaults() *HelmResponseAllOfSourceOneOf1Repository {
+	this := HelmResponseAllOfSourceOneOf1Repository{}
 	return &this
 }
 
 // GetChartName returns the ChartName field value if set, zero value otherwise.
-func (o *HelmResponseAllOfSourceRepository) GetChartName() string {
+func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartName() string {
 	if o == nil || IsNil(o.ChartName) {
 		var ret string
 		return ret
@@ -55,7 +55,7 @@ func (o *HelmResponseAllOfSourceRepository) GetChartName() string {
 
 // GetChartNameOk returns a tuple with the ChartName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfSourceRepository) GetChartNameOk() (*string, bool) {
+func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ChartName) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *HelmResponseAllOfSourceRepository) GetChartNameOk() (*string, bool) {
 }
 
 // HasChartName returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceRepository) HasChartName() bool {
+func (o *HelmResponseAllOfSourceOneOf1Repository) HasChartName() bool {
 	if o != nil && !IsNil(o.ChartName) {
 		return true
 	}
@@ -72,12 +72,12 @@ func (o *HelmResponseAllOfSourceRepository) HasChartName() bool {
 }
 
 // SetChartName gets a reference to the given string and assigns it to the ChartName field.
-func (o *HelmResponseAllOfSourceRepository) SetChartName(v string) {
+func (o *HelmResponseAllOfSourceOneOf1Repository) SetChartName(v string) {
 	o.ChartName = &v
 }
 
 // GetChartVersion returns the ChartVersion field value if set, zero value otherwise.
-func (o *HelmResponseAllOfSourceRepository) GetChartVersion() string {
+func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartVersion() string {
 	if o == nil || IsNil(o.ChartVersion) {
 		var ret string
 		return ret
@@ -87,7 +87,7 @@ func (o *HelmResponseAllOfSourceRepository) GetChartVersion() string {
 
 // GetChartVersionOk returns a tuple with the ChartVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfSourceRepository) GetChartVersionOk() (*string, bool) {
+func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.ChartVersion) {
 		return nil, false
 	}
@@ -95,7 +95,7 @@ func (o *HelmResponseAllOfSourceRepository) GetChartVersionOk() (*string, bool) 
 }
 
 // HasChartVersion returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceRepository) HasChartVersion() bool {
+func (o *HelmResponseAllOfSourceOneOf1Repository) HasChartVersion() bool {
 	if o != nil && !IsNil(o.ChartVersion) {
 		return true
 	}
@@ -104,14 +104,14 @@ func (o *HelmResponseAllOfSourceRepository) HasChartVersion() bool {
 }
 
 // SetChartVersion gets a reference to the given string and assigns it to the ChartVersion field.
-func (o *HelmResponseAllOfSourceRepository) SetChartVersion(v string) {
+func (o *HelmResponseAllOfSourceOneOf1Repository) SetChartVersion(v string) {
 	o.ChartVersion = &v
 }
 
 // GetRepository returns the Repository field value if set, zero value otherwise.
-func (o *HelmResponseAllOfSourceRepository) GetRepository() HelmResponseAllOfSourceRepositoryRepository {
+func (o *HelmResponseAllOfSourceOneOf1Repository) GetRepository() HelmResponseAllOfSourceOneOf1RepositoryRepository {
 	if o == nil || IsNil(o.Repository) {
-		var ret HelmResponseAllOfSourceRepositoryRepository
+		var ret HelmResponseAllOfSourceOneOf1RepositoryRepository
 		return ret
 	}
 	return *o.Repository
@@ -119,7 +119,7 @@ func (o *HelmResponseAllOfSourceRepository) GetRepository() HelmResponseAllOfSou
 
 // GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfSourceRepository) GetRepositoryOk() (*HelmResponseAllOfSourceRepositoryRepository, bool) {
+func (o *HelmResponseAllOfSourceOneOf1Repository) GetRepositoryOk() (*HelmResponseAllOfSourceOneOf1RepositoryRepository, bool) {
 	if o == nil || IsNil(o.Repository) {
 		return nil, false
 	}
@@ -127,7 +127,7 @@ func (o *HelmResponseAllOfSourceRepository) GetRepositoryOk() (*HelmResponseAllO
 }
 
 // HasRepository returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceRepository) HasRepository() bool {
+func (o *HelmResponseAllOfSourceOneOf1Repository) HasRepository() bool {
 	if o != nil && !IsNil(o.Repository) {
 		return true
 	}
@@ -135,12 +135,12 @@ func (o *HelmResponseAllOfSourceRepository) HasRepository() bool {
 	return false
 }
 
-// SetRepository gets a reference to the given HelmResponseAllOfSourceRepositoryRepository and assigns it to the Repository field.
-func (o *HelmResponseAllOfSourceRepository) SetRepository(v HelmResponseAllOfSourceRepositoryRepository) {
+// SetRepository gets a reference to the given HelmResponseAllOfSourceOneOf1RepositoryRepository and assigns it to the Repository field.
+func (o *HelmResponseAllOfSourceOneOf1Repository) SetRepository(v HelmResponseAllOfSourceOneOf1RepositoryRepository) {
 	o.Repository = &v
 }
 
-func (o HelmResponseAllOfSourceRepository) MarshalJSON() ([]byte, error) {
+func (o HelmResponseAllOfSourceOneOf1Repository) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -148,7 +148,7 @@ func (o HelmResponseAllOfSourceRepository) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o HelmResponseAllOfSourceRepository) ToMap() (map[string]interface{}, error) {
+func (o HelmResponseAllOfSourceOneOf1Repository) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ChartName) {
 		toSerialize["chart_name"] = o.ChartName
@@ -162,38 +162,38 @@ func (o HelmResponseAllOfSourceRepository) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-type NullableHelmResponseAllOfSourceRepository struct {
-	value *HelmResponseAllOfSourceRepository
+type NullableHelmResponseAllOfSourceOneOf1Repository struct {
+	value *HelmResponseAllOfSourceOneOf1Repository
 	isSet bool
 }
 
-func (v NullableHelmResponseAllOfSourceRepository) Get() *HelmResponseAllOfSourceRepository {
+func (v NullableHelmResponseAllOfSourceOneOf1Repository) Get() *HelmResponseAllOfSourceOneOf1Repository {
 	return v.value
 }
 
-func (v *NullableHelmResponseAllOfSourceRepository) Set(val *HelmResponseAllOfSourceRepository) {
+func (v *NullableHelmResponseAllOfSourceOneOf1Repository) Set(val *HelmResponseAllOfSourceOneOf1Repository) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableHelmResponseAllOfSourceRepository) IsSet() bool {
+func (v NullableHelmResponseAllOfSourceOneOf1Repository) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableHelmResponseAllOfSourceRepository) Unset() {
+func (v *NullableHelmResponseAllOfSourceOneOf1Repository) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableHelmResponseAllOfSourceRepository(val *HelmResponseAllOfSourceRepository) *NullableHelmResponseAllOfSourceRepository {
-	return &NullableHelmResponseAllOfSourceRepository{value: val, isSet: true}
+func NewNullableHelmResponseAllOfSourceOneOf1Repository(val *HelmResponseAllOfSourceOneOf1Repository) *NullableHelmResponseAllOfSourceOneOf1Repository {
+	return &NullableHelmResponseAllOfSourceOneOf1Repository{value: val, isSet: true}
 }
 
-func (v NullableHelmResponseAllOfSourceRepository) MarshalJSON() ([]byte, error) {
+func (v NullableHelmResponseAllOfSourceOneOf1Repository) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableHelmResponseAllOfSourceRepository) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmResponseAllOfSourceOneOf1Repository) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

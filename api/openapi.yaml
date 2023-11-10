@@ -24118,7 +24118,17 @@ components:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
       type: object
       example: null
-    HelmResponse_allOf_source_repository_repository:
+    HelmResponse_allOf_source_oneOf_git:
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+      type: object
+    HelmResponse_allOf_source_oneOf:
+      properties:
+        git:
+          $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_git'
+      type: object
+    HelmResponse_allOf_source_oneOf_1_repository_repository:
       properties:
         id:
           description: The id of the helm repository
@@ -24131,9 +24141,7 @@ components:
           description: The url the helm repository
           type: string
       type: object
-      example: null
-    HelmResponse_allOf_source_repository:
-      nullable: true
+    HelmResponse_allOf_source_oneOf_1_repository:
       properties:
         chart_name:
           description: The name of the chart in the repository
@@ -24142,17 +24150,18 @@ components:
           description: The version of the chart to use
           type: string
         repository:
-          $ref: '#/components/schemas/HelmResponse_allOf_source_repository_repository'
+          $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1_repository_repository'
       type: object
-      example: null
-    HelmResponse_allOf_source:
+    HelmResponse_allOf_source_oneOf_1:
       properties:
-        git:
-          $ref: '#/components/schemas/HelmRequest_allOf_source_git'
         repository:
-          $ref: '#/components/schemas/HelmResponse_allOf_source_repository'
+          $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1_repository'
       type: object
-      example: null
+    HelmResponse_allOf_source:
+      nullable: false
+      oneOf:
+      - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf'
+      - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1'
     OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

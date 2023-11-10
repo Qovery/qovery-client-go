@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the HelmResponseAllOfSourceRepositoryRepository type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HelmResponseAllOfSourceRepositoryRepository{}
+// checks if the HelmResponseAllOfSourceOneOf1RepositoryRepository type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmResponseAllOfSourceOneOf1RepositoryRepository{}
 
-// HelmResponseAllOfSourceRepositoryRepository struct for HelmResponseAllOfSourceRepositoryRepository
-type HelmResponseAllOfSourceRepositoryRepository struct {
+// HelmResponseAllOfSourceOneOf1RepositoryRepository struct for HelmResponseAllOfSourceOneOf1RepositoryRepository
+type HelmResponseAllOfSourceOneOf1RepositoryRepository struct {
 	// The id of the helm repository
 	Id *string `json:"id,omitempty"`
 	// The name of the helm repository
@@ -28,25 +28,25 @@ type HelmResponseAllOfSourceRepositoryRepository struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// NewHelmResponseAllOfSourceRepositoryRepository instantiates a new HelmResponseAllOfSourceRepositoryRepository object
+// NewHelmResponseAllOfSourceOneOf1RepositoryRepository instantiates a new HelmResponseAllOfSourceOneOf1RepositoryRepository object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponseAllOfSourceRepositoryRepository() *HelmResponseAllOfSourceRepositoryRepository {
-	this := HelmResponseAllOfSourceRepositoryRepository{}
+func NewHelmResponseAllOfSourceOneOf1RepositoryRepository() *HelmResponseAllOfSourceOneOf1RepositoryRepository {
+	this := HelmResponseAllOfSourceOneOf1RepositoryRepository{}
 	return &this
 }
 
-// NewHelmResponseAllOfSourceRepositoryRepositoryWithDefaults instantiates a new HelmResponseAllOfSourceRepositoryRepository object
+// NewHelmResponseAllOfSourceOneOf1RepositoryRepositoryWithDefaults instantiates a new HelmResponseAllOfSourceOneOf1RepositoryRepository object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewHelmResponseAllOfSourceRepositoryRepositoryWithDefaults() *HelmResponseAllOfSourceRepositoryRepository {
-	this := HelmResponseAllOfSourceRepositoryRepository{}
+func NewHelmResponseAllOfSourceOneOf1RepositoryRepositoryWithDefaults() *HelmResponseAllOfSourceOneOf1RepositoryRepository {
+	this := HelmResponseAllOfSourceOneOf1RepositoryRepository{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *HelmResponseAllOfSourceRepositoryRepository) GetId() string {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -56,7 +56,7 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfSourceRepositoryRepository) GetIdOk() (*string, bool) {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) GetIdOk() (*string, bool) 
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceRepositoryRepository) HasId() bool {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *HelmResponseAllOfSourceRepositoryRepository) SetId(v string) {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *HelmResponseAllOfSourceRepositoryRepository) GetName() string {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfSourceRepositoryRepository) GetNameOk() (*string, bool) {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) GetNameOk() (*string, bool
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceRepositoryRepository) HasName() bool {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *HelmResponseAllOfSourceRepositoryRepository) SetName(v string) {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) SetName(v string) {
 	o.Name = &v
 }
 
 // GetUrl returns the Url field value if set, zero value otherwise.
-func (o *HelmResponseAllOfSourceRepositoryRepository) GetUrl() string {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) GetUrl() string {
 	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
@@ -120,7 +120,7 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) GetUrl() string {
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfSourceRepositoryRepository) GetUrlOk() (*string, bool) {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) GetUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) GetUrlOk() (*string, bool)
 }
 
 // HasUrl returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceRepositoryRepository) HasUrl() bool {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) HasUrl() bool {
 	if o != nil && !IsNil(o.Url) {
 		return true
 	}
@@ -137,11 +137,11 @@ func (o *HelmResponseAllOfSourceRepositoryRepository) HasUrl() bool {
 }
 
 // SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *HelmResponseAllOfSourceRepositoryRepository) SetUrl(v string) {
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) SetUrl(v string) {
 	o.Url = &v
 }
 
-func (o HelmResponseAllOfSourceRepositoryRepository) MarshalJSON() ([]byte, error) {
+func (o HelmResponseAllOfSourceOneOf1RepositoryRepository) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -149,7 +149,7 @@ func (o HelmResponseAllOfSourceRepositoryRepository) MarshalJSON() ([]byte, erro
 	return json.Marshal(toSerialize)
 }
 
-func (o HelmResponseAllOfSourceRepositoryRepository) ToMap() (map[string]interface{}, error) {
+func (o HelmResponseAllOfSourceOneOf1RepositoryRepository) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -163,38 +163,38 @@ func (o HelmResponseAllOfSourceRepositoryRepository) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-type NullableHelmResponseAllOfSourceRepositoryRepository struct {
-	value *HelmResponseAllOfSourceRepositoryRepository
+type NullableHelmResponseAllOfSourceOneOf1RepositoryRepository struct {
+	value *HelmResponseAllOfSourceOneOf1RepositoryRepository
 	isSet bool
 }
 
-func (v NullableHelmResponseAllOfSourceRepositoryRepository) Get() *HelmResponseAllOfSourceRepositoryRepository {
+func (v NullableHelmResponseAllOfSourceOneOf1RepositoryRepository) Get() *HelmResponseAllOfSourceOneOf1RepositoryRepository {
 	return v.value
 }
 
-func (v *NullableHelmResponseAllOfSourceRepositoryRepository) Set(val *HelmResponseAllOfSourceRepositoryRepository) {
+func (v *NullableHelmResponseAllOfSourceOneOf1RepositoryRepository) Set(val *HelmResponseAllOfSourceOneOf1RepositoryRepository) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableHelmResponseAllOfSourceRepositoryRepository) IsSet() bool {
+func (v NullableHelmResponseAllOfSourceOneOf1RepositoryRepository) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableHelmResponseAllOfSourceRepositoryRepository) Unset() {
+func (v *NullableHelmResponseAllOfSourceOneOf1RepositoryRepository) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableHelmResponseAllOfSourceRepositoryRepository(val *HelmResponseAllOfSourceRepositoryRepository) *NullableHelmResponseAllOfSourceRepositoryRepository {
-	return &NullableHelmResponseAllOfSourceRepositoryRepository{value: val, isSet: true}
+func NewNullableHelmResponseAllOfSourceOneOf1RepositoryRepository(val *HelmResponseAllOfSourceOneOf1RepositoryRepository) *NullableHelmResponseAllOfSourceOneOf1RepositoryRepository {
+	return &NullableHelmResponseAllOfSourceOneOf1RepositoryRepository{value: val, isSet: true}
 }
 
-func (v NullableHelmResponseAllOfSourceRepositoryRepository) MarshalJSON() ([]byte, error) {
+func (v NullableHelmResponseAllOfSourceOneOf1RepositoryRepository) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableHelmResponseAllOfSourceRepositoryRepository) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmResponseAllOfSourceOneOf1RepositoryRepository) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
