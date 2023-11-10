@@ -101,7 +101,7 @@ import (
 
 func main() {
     helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    helmRequest := *openapiclient.NewHelmRequest("Name_example") // HelmRequest |  (optional)
+    helmRequest := *openapiclient.NewHelmRequest("Name_example", false, *openapiclient.NewHelmRequestAllOfSource(), []string{"Arguments_example"}, *openapiclient.NewHelmRequestAllOfValuesOverride()) // HelmRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

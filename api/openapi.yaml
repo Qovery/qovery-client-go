@@ -20345,8 +20345,11 @@ components:
           values_override:
             $ref: '#/components/schemas/HelmRequest_allOf_values_override'
         required:
-        - healthchecks
+        - arguments
+        - auto_deploy
         - name
+        - source
+        - values_override
         type: object
     HelmResponse:
       allOf:
@@ -20386,12 +20389,14 @@ components:
           values_override:
             $ref: '#/components/schemas/HelmRequest_allOf_values_override'
         required:
+        - allow_cluster_wide_resources
+        - arguments
         - auto_deploy
         - auto_preview
         - environment
         - name
         - source
-        - tag
+        - values_override
         type: object
     HelmResponseList:
       example:

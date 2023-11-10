@@ -34,17 +34,17 @@ type HelmResponse struct {
 	AutoDeploy bool                    `json:"auto_deploy"`
 	Source     HelmResponseAllOfSource `json:"source"`
 	// The extra arguments to pass to helm
-	Arguments []string `json:"arguments,omitempty"`
+	Arguments []string `json:"arguments"`
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
-	AllowClusterWideResources *bool                           `json:"allow_cluster_wide_resources,omitempty"`
-	ValuesOverride            *HelmRequestAllOfValuesOverride `json:"values_override,omitempty"`
+	AllowClusterWideResources bool                           `json:"allow_cluster_wide_resources"`
+	ValuesOverride            HelmRequestAllOfValuesOverride `json:"values_override"`
 }
 
 // NewHelmResponse instantiates a new HelmResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource) *HelmResponse {
+func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmRequestAllOfValuesOverride) *HelmResponse {
 	this := HelmResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -53,8 +53,9 @@ func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject
 	this.AutoPreview = autoPreview
 	this.AutoDeploy = autoDeploy
 	this.Source = source
-	var allowClusterWideResources bool = false
-	this.AllowClusterWideResources = &allowClusterWideResources
+	this.Arguments = arguments
+	this.AllowClusterWideResources = allowClusterWideResources
+	this.ValuesOverride = valuesOverride
 	return &this
 }
 
@@ -64,7 +65,7 @@ func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject
 func NewHelmResponseWithDefaults() *HelmResponse {
 	this := HelmResponse{}
 	var allowClusterWideResources bool = false
-	this.AllowClusterWideResources = &allowClusterWideResources
+	this.AllowClusterWideResources = allowClusterWideResources
 	return &this
 }
 
@@ -300,100 +301,76 @@ func (o *HelmResponse) SetSource(v HelmResponseAllOfSource) {
 	o.Source = v
 }
 
-// GetArguments returns the Arguments field value if set, zero value otherwise.
+// GetArguments returns the Arguments field value
 func (o *HelmResponse) GetArguments() []string {
-	if o == nil || IsNil(o.Arguments) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Arguments
 }
 
-// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
+// GetArgumentsOk returns a tuple with the Arguments field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponse) GetArgumentsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Arguments) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Arguments, true
 }
 
-// HasArguments returns a boolean if a field has been set.
-func (o *HelmResponse) HasArguments() bool {
-	if o != nil && !IsNil(o.Arguments) {
-		return true
-	}
-
-	return false
-}
-
-// SetArguments gets a reference to the given []string and assigns it to the Arguments field.
+// SetArguments sets field value
 func (o *HelmResponse) SetArguments(v []string) {
 	o.Arguments = v
 }
 
-// GetAllowClusterWideResources returns the AllowClusterWideResources field value if set, zero value otherwise.
+// GetAllowClusterWideResources returns the AllowClusterWideResources field value
 func (o *HelmResponse) GetAllowClusterWideResources() bool {
-	if o == nil || IsNil(o.AllowClusterWideResources) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowClusterWideResources
+
+	return o.AllowClusterWideResources
 }
 
-// GetAllowClusterWideResourcesOk returns a tuple with the AllowClusterWideResources field value if set, nil otherwise
+// GetAllowClusterWideResourcesOk returns a tuple with the AllowClusterWideResources field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponse) GetAllowClusterWideResourcesOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowClusterWideResources) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllowClusterWideResources, true
+	return &o.AllowClusterWideResources, true
 }
 
-// HasAllowClusterWideResources returns a boolean if a field has been set.
-func (o *HelmResponse) HasAllowClusterWideResources() bool {
-	if o != nil && !IsNil(o.AllowClusterWideResources) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowClusterWideResources gets a reference to the given bool and assigns it to the AllowClusterWideResources field.
+// SetAllowClusterWideResources sets field value
 func (o *HelmResponse) SetAllowClusterWideResources(v bool) {
-	o.AllowClusterWideResources = &v
+	o.AllowClusterWideResources = v
 }
 
-// GetValuesOverride returns the ValuesOverride field value if set, zero value otherwise.
+// GetValuesOverride returns the ValuesOverride field value
 func (o *HelmResponse) GetValuesOverride() HelmRequestAllOfValuesOverride {
-	if o == nil || IsNil(o.ValuesOverride) {
+	if o == nil {
 		var ret HelmRequestAllOfValuesOverride
 		return ret
 	}
-	return *o.ValuesOverride
+
+	return o.ValuesOverride
 }
 
-// GetValuesOverrideOk returns a tuple with the ValuesOverride field value if set, nil otherwise
+// GetValuesOverrideOk returns a tuple with the ValuesOverride field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponse) GetValuesOverrideOk() (*HelmRequestAllOfValuesOverride, bool) {
-	if o == nil || IsNil(o.ValuesOverride) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ValuesOverride, true
+	return &o.ValuesOverride, true
 }
 
-// HasValuesOverride returns a boolean if a field has been set.
-func (o *HelmResponse) HasValuesOverride() bool {
-	if o != nil && !IsNil(o.ValuesOverride) {
-		return true
-	}
-
-	return false
-}
-
-// SetValuesOverride gets a reference to the given HelmRequestAllOfValuesOverride and assigns it to the ValuesOverride field.
+// SetValuesOverride sets field value
 func (o *HelmResponse) SetValuesOverride(v HelmRequestAllOfValuesOverride) {
-	o.ValuesOverride = &v
+	o.ValuesOverride = v
 }
 
 func (o HelmResponse) MarshalJSON() ([]byte, error) {
@@ -419,15 +396,9 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["auto_preview"] = o.AutoPreview
 	toSerialize["auto_deploy"] = o.AutoDeploy
 	toSerialize["source"] = o.Source
-	if !IsNil(o.Arguments) {
-		toSerialize["arguments"] = o.Arguments
-	}
-	if !IsNil(o.AllowClusterWideResources) {
-		toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
-	}
-	if !IsNil(o.ValuesOverride) {
-		toSerialize["values_override"] = o.ValuesOverride
-	}
+	toSerialize["arguments"] = o.Arguments
+	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
+	toSerialize["values_override"] = o.ValuesOverride
 	return toSerialize, nil
 }
 

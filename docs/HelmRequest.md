@@ -8,17 +8,17 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **TimeoutSec** | Pointer to **int32** | Maximum number of seconds allowed for helm to run before killing it and mark it as failed  | [optional] [default to 600]
 **AutoPreview** | Pointer to **NullableBool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called or when a new commit is updated. If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
-**AutoDeploy** | Pointer to **bool** | Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.   | [optional] 
-**Source** | Pointer to [**HelmRequestAllOfSource**](HelmRequestAllOfSource.md) |  | [optional] 
-**Arguments** | Pointer to **[]string** | The extra arguments to pass to helm | [optional] 
+**AutoDeploy** | **bool** | Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.   | 
+**Source** | [**HelmRequestAllOfSource**](HelmRequestAllOfSource.md) |  | 
+**Arguments** | **[]string** | The extra arguments to pass to helm | 
 **AllowClusterWideResources** | Pointer to **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [optional] [default to false]
-**ValuesOverride** | Pointer to [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | [optional] 
+**ValuesOverride** | [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | 
 
 ## Methods
 
 ### NewHelmRequest
 
-`func NewHelmRequest(name string, ) *HelmRequest`
+`func NewHelmRequest(name string, autoDeploy bool, source HelmRequestAllOfSource, arguments []string, valuesOverride HelmRequestAllOfValuesOverride, ) *HelmRequest`
 
 NewHelmRequest instantiates a new HelmRequest object
 This constructor will assign default values to properties that have it defined,
@@ -157,11 +157,6 @@ and a boolean to check if the value has been set.
 
 SetAutoDeploy sets AutoDeploy field to given value.
 
-### HasAutoDeploy
-
-`func (o *HelmRequest) HasAutoDeploy() bool`
-
-HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetSource
 
@@ -182,11 +177,6 @@ and a boolean to check if the value has been set.
 
 SetSource sets Source field to given value.
 
-### HasSource
-
-`func (o *HelmRequest) HasSource() bool`
-
-HasSource returns a boolean if a field has been set.
 
 ### GetArguments
 
@@ -207,11 +197,6 @@ and a boolean to check if the value has been set.
 
 SetArguments sets Arguments field to given value.
 
-### HasArguments
-
-`func (o *HelmRequest) HasArguments() bool`
-
-HasArguments returns a boolean if a field has been set.
 
 ### GetAllowClusterWideResources
 
@@ -257,11 +242,6 @@ and a boolean to check if the value has been set.
 
 SetValuesOverride sets ValuesOverride field to given value.
 
-### HasValuesOverride
-
-`func (o *HelmRequest) HasValuesOverride() bool`
-
-HasValuesOverride returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

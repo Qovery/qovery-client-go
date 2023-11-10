@@ -13,15 +13,15 @@ Name | Type | Description | Notes
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **AutoDeploy** | **bool** | Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.   | 
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
-**Arguments** | Pointer to **[]string** | The extra arguments to pass to helm | [optional] 
-**AllowClusterWideResources** | Pointer to **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [optional] [default to false]
-**ValuesOverride** | Pointer to [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | [optional] 
+**Arguments** | **[]string** | The extra arguments to pass to helm | 
+**AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
+**ValuesOverride** | [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | 
 
 ## Methods
 
 ### NewHelmResponse
 
-`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, ) *HelmResponse`
+`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmRequestAllOfValuesOverride, ) *HelmResponse`
 
 NewHelmResponse instantiates a new HelmResponse object
 This constructor will assign default values to properties that have it defined,
@@ -245,11 +245,6 @@ and a boolean to check if the value has been set.
 
 SetArguments sets Arguments field to given value.
 
-### HasArguments
-
-`func (o *HelmResponse) HasArguments() bool`
-
-HasArguments returns a boolean if a field has been set.
 
 ### GetAllowClusterWideResources
 
@@ -270,11 +265,6 @@ and a boolean to check if the value has been set.
 
 SetAllowClusterWideResources sets AllowClusterWideResources field to given value.
 
-### HasAllowClusterWideResources
-
-`func (o *HelmResponse) HasAllowClusterWideResources() bool`
-
-HasAllowClusterWideResources returns a boolean if a field has been set.
 
 ### GetValuesOverride
 
@@ -295,11 +285,6 @@ and a boolean to check if the value has been set.
 
 SetValuesOverride sets ValuesOverride field to given value.
 
-### HasValuesOverride
-
-`func (o *HelmResponse) HasValuesOverride() bool`
-
-HasValuesOverride returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

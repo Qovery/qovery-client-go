@@ -28,26 +28,30 @@ type HelmRequest struct {
 	// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called or when a new commit is updated. If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview NullableBool `json:"auto_preview,omitempty"`
 	// Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.
-	AutoDeploy *bool                   `json:"auto_deploy,omitempty"`
-	Source     *HelmRequestAllOfSource `json:"source,omitempty"`
+	AutoDeploy bool                   `json:"auto_deploy"`
+	Source     HelmRequestAllOfSource `json:"source"`
 	// The extra arguments to pass to helm
-	Arguments []string `json:"arguments,omitempty"`
+	Arguments []string `json:"arguments"`
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
-	AllowClusterWideResources *bool                           `json:"allow_cluster_wide_resources,omitempty"`
-	ValuesOverride            *HelmRequestAllOfValuesOverride `json:"values_override,omitempty"`
+	AllowClusterWideResources *bool                          `json:"allow_cluster_wide_resources,omitempty"`
+	ValuesOverride            HelmRequestAllOfValuesOverride `json:"values_override"`
 }
 
 // NewHelmRequest instantiates a new HelmRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmRequest(name string) *HelmRequest {
+func NewHelmRequest(name string, autoDeploy bool, source HelmRequestAllOfSource, arguments []string, valuesOverride HelmRequestAllOfValuesOverride) *HelmRequest {
 	this := HelmRequest{}
 	this.Name = name
 	var timeoutSec int32 = 600
 	this.TimeoutSec = &timeoutSec
+	this.AutoDeploy = autoDeploy
+	this.Source = source
+	this.Arguments = arguments
 	var allowClusterWideResources bool = false
 	this.AllowClusterWideResources = &allowClusterWideResources
+	this.ValuesOverride = valuesOverride
 	return &this
 }
 
@@ -194,98 +198,74 @@ func (o *HelmRequest) UnsetAutoPreview() {
 	o.AutoPreview.Unset()
 }
 
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+// GetAutoDeploy returns the AutoDeploy field value
 func (o *HelmRequest) GetAutoDeploy() bool {
-	if o == nil || IsNil(o.AutoDeploy) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AutoDeploy
+
+	return o.AutoDeploy
 }
 
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value
 // and a boolean to check if the value has been set.
 func (o *HelmRequest) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoDeploy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoDeploy, true
+	return &o.AutoDeploy, true
 }
 
-// HasAutoDeploy returns a boolean if a field has been set.
-func (o *HelmRequest) HasAutoDeploy() bool {
-	if o != nil && !IsNil(o.AutoDeploy) {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+// SetAutoDeploy sets field value
 func (o *HelmRequest) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
+	o.AutoDeploy = v
 }
 
-// GetSource returns the Source field value if set, zero value otherwise.
+// GetSource returns the Source field value
 func (o *HelmRequest) GetSource() HelmRequestAllOfSource {
-	if o == nil || IsNil(o.Source) {
+	if o == nil {
 		var ret HelmRequestAllOfSource
 		return ret
 	}
-	return *o.Source
+
+	return o.Source
 }
 
-// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
 func (o *HelmRequest) GetSourceOk() (*HelmRequestAllOfSource, bool) {
-	if o == nil || IsNil(o.Source) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Source, true
+	return &o.Source, true
 }
 
-// HasSource returns a boolean if a field has been set.
-func (o *HelmRequest) HasSource() bool {
-	if o != nil && !IsNil(o.Source) {
-		return true
-	}
-
-	return false
-}
-
-// SetSource gets a reference to the given HelmRequestAllOfSource and assigns it to the Source field.
+// SetSource sets field value
 func (o *HelmRequest) SetSource(v HelmRequestAllOfSource) {
-	o.Source = &v
+	o.Source = v
 }
 
-// GetArguments returns the Arguments field value if set, zero value otherwise.
+// GetArguments returns the Arguments field value
 func (o *HelmRequest) GetArguments() []string {
-	if o == nil || IsNil(o.Arguments) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Arguments
 }
 
-// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
+// GetArgumentsOk returns a tuple with the Arguments field value
 // and a boolean to check if the value has been set.
 func (o *HelmRequest) GetArgumentsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Arguments) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Arguments, true
 }
 
-// HasArguments returns a boolean if a field has been set.
-func (o *HelmRequest) HasArguments() bool {
-	if o != nil && !IsNil(o.Arguments) {
-		return true
-	}
-
-	return false
-}
-
-// SetArguments gets a reference to the given []string and assigns it to the Arguments field.
+// SetArguments sets field value
 func (o *HelmRequest) SetArguments(v []string) {
 	o.Arguments = v
 }
@@ -322,36 +302,28 @@ func (o *HelmRequest) SetAllowClusterWideResources(v bool) {
 	o.AllowClusterWideResources = &v
 }
 
-// GetValuesOverride returns the ValuesOverride field value if set, zero value otherwise.
+// GetValuesOverride returns the ValuesOverride field value
 func (o *HelmRequest) GetValuesOverride() HelmRequestAllOfValuesOverride {
-	if o == nil || IsNil(o.ValuesOverride) {
+	if o == nil {
 		var ret HelmRequestAllOfValuesOverride
 		return ret
 	}
-	return *o.ValuesOverride
+
+	return o.ValuesOverride
 }
 
-// GetValuesOverrideOk returns a tuple with the ValuesOverride field value if set, nil otherwise
+// GetValuesOverrideOk returns a tuple with the ValuesOverride field value
 // and a boolean to check if the value has been set.
 func (o *HelmRequest) GetValuesOverrideOk() (*HelmRequestAllOfValuesOverride, bool) {
-	if o == nil || IsNil(o.ValuesOverride) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ValuesOverride, true
+	return &o.ValuesOverride, true
 }
 
-// HasValuesOverride returns a boolean if a field has been set.
-func (o *HelmRequest) HasValuesOverride() bool {
-	if o != nil && !IsNil(o.ValuesOverride) {
-		return true
-	}
-
-	return false
-}
-
-// SetValuesOverride gets a reference to the given HelmRequestAllOfValuesOverride and assigns it to the ValuesOverride field.
+// SetValuesOverride sets field value
 func (o *HelmRequest) SetValuesOverride(v HelmRequestAllOfValuesOverride) {
-	o.ValuesOverride = &v
+	o.ValuesOverride = v
 }
 
 func (o HelmRequest) MarshalJSON() ([]byte, error) {
@@ -374,21 +346,13 @@ func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 	if o.AutoPreview.IsSet() {
 		toSerialize["auto_preview"] = o.AutoPreview.Get()
 	}
-	if !IsNil(o.AutoDeploy) {
-		toSerialize["auto_deploy"] = o.AutoDeploy
-	}
-	if !IsNil(o.Source) {
-		toSerialize["source"] = o.Source
-	}
-	if !IsNil(o.Arguments) {
-		toSerialize["arguments"] = o.Arguments
-	}
+	toSerialize["auto_deploy"] = o.AutoDeploy
+	toSerialize["source"] = o.Source
+	toSerialize["arguments"] = o.Arguments
 	if !IsNil(o.AllowClusterWideResources) {
 		toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	}
-	if !IsNil(o.ValuesOverride) {
-		toSerialize["values_override"] = o.ValuesOverride
-	}
+	toSerialize["values_override"] = o.ValuesOverride
 	return toSerialize, nil
 }
 
