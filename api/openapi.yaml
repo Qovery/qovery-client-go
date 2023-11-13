@@ -2536,68 +2536,9 @@ paths:
       summary: Get git provider accounts
       tags:
       - Organization Account Git Repositories
-  /organization/{organizationId}/account/gitAuthProviderTemp:
-    get:
-      operationId: getOrganizationGitProviderAccountTemp
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitAuthProviderResponseList'
-          description: Get account
-        "401":
-          description: Access token is missing or invalid
-      summary: Get git provider accounts
-      tags:
-      - Organization Account Git Repositories
   /organization/{organizationId}/account/github/repository:
     get:
       operationId: getOrganizationGithubRepositories
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: The git token id that must be used for the application
-        explode: true
-        in: query
-        name: gitTokenId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryResponseList'
-          description: Get github repositories
-        "401":
-          description: Access token is missing or invalid
-      summary: Get github repositories of the connected user
-      tags:
-      - Organization Account Git Repositories
-  /organization/{organizationId}/account/github/repositoryTemp:
-    get:
-      operationId: getOrganizationGithubRepositoriesTemp
       parameters:
       - description: Organization ID
         explode: false
@@ -2705,40 +2646,6 @@ paths:
       summary: Get gitlab repositories of the connected user
       tags:
       - Organization Account Git Repositories
-  /organization/{organizationId}/account/gitlab/repositoryTemp:
-    get:
-      operationId: getOrganizationGitlabRepositoriesTemp
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: The git token id that must be used for the application
-        explode: true
-        in: query
-        name: gitTokenId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryResponseList'
-          description: Get gitlab repositories
-        "401":
-          description: Access token is missing or invalid
-      summary: Get gitlab repositories of the connected user
-      tags:
-      - Organization Account Git Repositories
   /organization/{organizationId}/account/gitlab/repository/branch:
     get:
       operationId: getOrganizationGitlabRepositoryBranches
@@ -2784,40 +2691,6 @@ paths:
   /organization/{organizationId}/account/bitbucket/repository:
     get:
       operationId: getOrganizationBitbucketRepositories
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: The git token id that must be used for the application
-        explode: true
-        in: query
-        name: gitTokenId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryResponseList'
-          description: Get bitbucket repositories
-        "401":
-          description: Access token is missing or invalid
-      summary: Get bitbucket repositories of the connected user
-      tags:
-      - Organization Account Git Repositories
-  /organization/{organizationId}/account/bitbucket/repositoryTemp:
-    get:
-      operationId: getOrganizationBitbucketRepositoriesTemp
       parameters:
       - description: Organization ID
         explode: false
