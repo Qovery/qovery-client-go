@@ -710,13 +710,15 @@ func (a *VariableMainCallsAPIService) ListVariablesExecute(r ApiListVariablesReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.parentId == nil {
+		return localVarReturnValue, nil, reportError("parentId is required and must be specified")
+	}
+	if r.scope == nil {
+		return localVarReturnValue, nil, reportError("scope is required and must be specified")
+	}
 
-	if r.parentId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "")
-	}
-	if r.scope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "scope", r.scope, "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "parent_id", r.parentId, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "scope", r.scope, "")
 	if r.isSecret != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "is_secret", r.isSecret, "")
 	}

@@ -384,8 +384,8 @@ import (
 )
 
 func main() {
-    parentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | it filters the list by returning only the variables accessible by the selected parent_id. This field shall contain the id of a project, environment or service depending on the selected scope. Example, if scope = APPLICATION and parent_id=<application_id>, the result will contain any variable accessible by the application. The result will contain also any variable declared at an higher scope. (optional)
-    scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | the type of the parent_id (application, project, environment etc..). (optional)
+    parentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | it filters the list by returning only the variables accessible by the selected parent_id. This field shall contain the id of a project, environment or service depending on the selected scope. Example, if scope = APPLICATION and parent_id=<application_id>, the result will contain any variable accessible by the application. The result will contain also any variable declared at an higher scope.
+    scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | the type of the parent_id (application, project, environment etc..).
     isSecret := true // bool |  (optional)
 
     configuration := openapiclient.NewConfiguration()

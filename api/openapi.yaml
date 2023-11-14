@@ -13892,7 +13892,7 @@ paths:
         explode: true
         in: query
         name: parent_id
-        required: false
+        required: true
         schema:
           format: uuid
           type: string
@@ -13902,7 +13902,7 @@ paths:
         explode: true
         in: query
         name: scope
-        required: false
+        required: true
         schema:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         style: form
