@@ -24,6 +24,8 @@ type VariableResponse struct {
 	Id                 string               `json:"id"`
 	CreatedAt          time.Time            `json:"created_at"`
 	UpdatedAt          *time.Time           `json:"updated_at,omitempty"`
+	Key                string               `json:"key"`
+	Value              NullableString       `json:"value"`
 	OverriddenVariable *VariableOverride    `json:"overridden_variable,omitempty"`
 	AliasedVariable    *VariableAlias       `json:"aliased_variable,omitempty"`
 	Scope              APIVariableScopeEnum `json:"scope"`
@@ -41,10 +43,12 @@ type VariableResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableResponse(id string, createdAt time.Time, scope APIVariableScopeEnum) *VariableResponse {
+func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum) *VariableResponse {
 	this := VariableResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Key = key
+	this.Value = value
 	this.Scope = scope
 	return &this
 }
@@ -135,6 +139,56 @@ func (o *VariableResponse) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *VariableResponse) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
+}
+
+// GetKey returns the Key field value
+func (o *VariableResponse) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *VariableResponse) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *VariableResponse) SetKey(v string) {
+	o.Key = v
+}
+
+// GetValue returns the Value field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *VariableResponse) GetValue() string {
+	if o == nil || o.Value.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Value.Get()
+}
+
+// GetValueOk returns a tuple with the Value field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableResponse) GetValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Value.Get(), o.Value.IsSet()
+}
+
+// SetValue sets field value
+func (o *VariableResponse) SetValue(v string) {
+	o.Value.Set(&v)
 }
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
@@ -400,6 +454,8 @@ func (o VariableResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	toSerialize["key"] = o.Key
+	toSerialize["value"] = o.Value.Get()
 	if !IsNil(o.OverriddenVariable) {
 		toSerialize["overridden_variable"] = o.OverriddenVariable
 	}

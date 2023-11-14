@@ -22727,6 +22727,11 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - properties:
+          key:
+            type: string
+          value:
+            nullable: true
+            type: string
           overridden_variable:
             $ref: '#/components/schemas/VariableOverride'
           aliased_variable:
@@ -22748,7 +22753,9 @@ components:
             description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
             type: string
         required:
+        - key
         - scope
+        - value
         type: object
     VariableResponseList:
       example:
