@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Key** | **string** |  | 
 **Value** | **NullableString** |  | 
+**MountPath** | Pointer to **NullableString** |  | [optional] 
 **OverriddenVariable** | Pointer to [**VariableOverride**](VariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**VariableAlias**](VariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
@@ -152,6 +153,41 @@ SetValue sets Value field to given value.
 `func (o *VariableResponse) UnsetValue()`
 
 UnsetValue ensures that no value is present for Value, not even an explicit nil
+### GetMountPath
+
+`func (o *VariableResponse) GetMountPath() string`
+
+GetMountPath returns the MountPath field if non-nil, zero value otherwise.
+
+### GetMountPathOk
+
+`func (o *VariableResponse) GetMountPathOk() (*string, bool)`
+
+GetMountPathOk returns a tuple with the MountPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMountPath
+
+`func (o *VariableResponse) SetMountPath(v string)`
+
+SetMountPath sets MountPath field to given value.
+
+### HasMountPath
+
+`func (o *VariableResponse) HasMountPath() bool`
+
+HasMountPath returns a boolean if a field has been set.
+
+### SetMountPathNil
+
+`func (o *VariableResponse) SetMountPathNil(b bool)`
+
+ SetMountPathNil sets the value for MountPath to be an explicit nil
+
+### UnsetMountPath
+`func (o *VariableResponse) UnsetMountPath()`
+
+UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 ### GetOverriddenVariable
 
 `func (o *VariableResponse) GetOverriddenVariable() VariableOverride`

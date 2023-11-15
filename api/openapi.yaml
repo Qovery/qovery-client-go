@@ -22732,6 +22732,9 @@ components:
           value:
             nullable: true
             type: string
+          mount_path:
+            nullable: true
+            type: string
           overridden_variable:
             $ref: '#/components/schemas/VariableOverride'
           aliased_variable:

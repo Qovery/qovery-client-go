@@ -26,6 +26,7 @@ type VariableResponse struct {
 	UpdatedAt          *time.Time           `json:"updated_at,omitempty"`
 	Key                string               `json:"key"`
 	Value              NullableString       `json:"value"`
+	MountPath          NullableString       `json:"mount_path,omitempty"`
 	OverriddenVariable *VariableOverride    `json:"overridden_variable,omitempty"`
 	AliasedVariable    *VariableAlias       `json:"aliased_variable,omitempty"`
 	Scope              APIVariableScopeEnum `json:"scope"`
@@ -189,6 +190,49 @@ func (o *VariableResponse) GetValueOk() (*string, bool) {
 // SetValue sets field value
 func (o *VariableResponse) SetValue(v string) {
 	o.Value.Set(&v)
+}
+
+// GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableResponse) GetMountPath() string {
+	if o == nil || IsNil(o.MountPath.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MountPath.Get()
+}
+
+// GetMountPathOk returns a tuple with the MountPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableResponse) GetMountPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MountPath.Get(), o.MountPath.IsSet()
+}
+
+// HasMountPath returns a boolean if a field has been set.
+func (o *VariableResponse) HasMountPath() bool {
+	if o != nil && o.MountPath.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMountPath gets a reference to the given NullableString and assigns it to the MountPath field.
+func (o *VariableResponse) SetMountPath(v string) {
+	o.MountPath.Set(&v)
+}
+
+// SetMountPathNil sets the value for MountPath to be an explicit nil
+func (o *VariableResponse) SetMountPathNil() {
+	o.MountPath.Set(nil)
+}
+
+// UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+func (o *VariableResponse) UnsetMountPath() {
+	o.MountPath.Unset()
 }
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
@@ -456,6 +500,9 @@ func (o VariableResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["key"] = o.Key
 	toSerialize["value"] = o.Value.Get()
+	if o.MountPath.IsSet() {
+		toSerialize["mount_path"] = o.MountPath.Get()
+	}
 	if !IsNil(o.OverriddenVariable) {
 		toSerialize["overridden_variable"] = o.OverriddenVariable
 	}
