@@ -901,6 +901,7 @@ Class | Method | HTTP request | Description
  - [ServiceStorageStorageInner](docs/ServiceStorageStorageInner.md)
  - [ServiceTotalNumber](docs/ServiceTotalNumber.md)
  - [ServiceTypeEnum](docs/ServiceTypeEnum.md)
+ - [ServiceTypeForVariableEnum](docs/ServiceTypeForVariableEnum.md)
  - [SignUp](docs/SignUp.md)
  - [SignUpRequest](docs/SignUpRequest.md)
  - [Stage](docs/Stage.md)

@@ -25,6 +25,7 @@ const (
 	LINKEDSERVICETYPEENUM_CONTAINER   LinkedServiceTypeEnum = "CONTAINER"
 	LINKEDSERVICETYPEENUM_DATABASE    LinkedServiceTypeEnum = "DATABASE"
 	LINKEDSERVICETYPEENUM_JOB         LinkedServiceTypeEnum = "JOB"
+	LINKEDSERVICETYPEENUM_HELM        LinkedServiceTypeEnum = "HELM"
 )
 
 // All allowed values of LinkedServiceTypeEnum enum
@@ -33,6 +34,7 @@ var AllowedLinkedServiceTypeEnumEnumValues = []LinkedServiceTypeEnum{
 	"CONTAINER",
 	"DATABASE",
 	"JOB",
+	"HELM",
 }
 
 func (v *LinkedServiceTypeEnum) UnmarshalJSON(src []byte) error {

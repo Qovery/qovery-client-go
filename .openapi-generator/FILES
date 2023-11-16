@@ -577,6 +577,7 @@ docs/ServiceStorageRequestStorageInner.md
 docs/ServiceStorageStorageInner.md
 docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
+docs/ServiceTypeForVariableEnum.md
 docs/SignUp.md
 docs/SignUpRequest.md
 docs/Stage.md
@@ -1033,6 +1034,7 @@ model_service_storage_request_storage_inner.go
 model_service_storage_storage_inner.go
 model_service_total_number.go
 model_service_type_enum.go
+model_service_type_for_variable_enum.go
 model_sign_up.go
 model_sign_up_request.go
 model_stage.go

@@ -14132,13 +14132,13 @@ paths:
           format: uuid
           type: string
         style: form
-      - description: scope
+      - description: service type
         explode: true
         in: query
-        name: scope
+        name: service_type
         required: true
         schema:
-          $ref: '#/components/schemas/APIVariableScopeEnum'
+          $ref: '#/components/schemas/ServiceTypeForVariableEnum'
         style: form
       requestBody:
         content:
@@ -20471,6 +20471,7 @@ components:
       - CONTAINER
       - DATABASE
       - JOB
+      - HELM
       type: string
     Log:
       example:
@@ -23010,6 +23011,14 @@ components:
       enum:
       - CLUSTER
       - SERVICE
+      type: string
+    ServiceTypeForVariableEnum:
+      description: type of the service
+      enum:
+      - APPLICATION
+      - CONTAINER
+      - JOB
+      - HELM
       type: string
     deleteMember_request:
       properties:

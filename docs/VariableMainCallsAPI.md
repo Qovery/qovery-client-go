@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ## ImportEnvironmentVariables
 
-> VariableImport ImportEnvironmentVariables(ctx).ServiceId(serviceId).Scope(scope).VariableImportRequest(variableImportRequest).Execute()
+> VariableImport ImportEnvironmentVariables(ctx).ServiceId(serviceId).ServiceType(serviceType).VariableImportRequest(variableImportRequest).Execute()
 
 Import variables
 
@@ -386,12 +386,12 @@ import (
 
 func main() {
     serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | service id
-    scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | scope
+    serviceType := openapiclient.ServiceTypeForVariableEnum("APPLICATION") // ServiceTypeForVariableEnum | service type
     variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VariableMainCallsAPI.ImportEnvironmentVariables(context.Background()).ServiceId(serviceId).Scope(scope).VariableImportRequest(variableImportRequest).Execute()
+    resp, r, err := apiClient.VariableMainCallsAPI.ImportEnvironmentVariables(context.Background()).ServiceId(serviceId).ServiceType(serviceType).VariableImportRequest(variableImportRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.ImportEnvironmentVariables``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -413,7 +413,7 @@ Other parameters are passed through a pointer to a apiImportEnvironmentVariables
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **serviceId** | **string** | service id | 
- **scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) | scope | 
+ **serviceType** | [**ServiceTypeForVariableEnum**](ServiceTypeForVariableEnum.md) | service type | 
  **variableImportRequest** | [**VariableImportRequest**](VariableImportRequest.md) |  | 
 
 ### Return type

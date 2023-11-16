@@ -650,7 +650,7 @@ type ApiImportEnvironmentVariablesRequest struct {
 	ctx                   context.Context
 	ApiService            *VariableMainCallsAPIService
 	serviceId             *string
-	scope                 *APIVariableScopeEnum
+	serviceType           *ServiceTypeForVariableEnum
 	variableImportRequest *VariableImportRequest
 }
 
@@ -660,9 +660,9 @@ func (r ApiImportEnvironmentVariablesRequest) ServiceId(serviceId string) ApiImp
 	return r
 }
 
-// scope
-func (r ApiImportEnvironmentVariablesRequest) Scope(scope APIVariableScopeEnum) ApiImportEnvironmentVariablesRequest {
-	r.scope = &scope
+// service type
+func (r ApiImportEnvironmentVariablesRequest) ServiceType(serviceType ServiceTypeForVariableEnum) ApiImportEnvironmentVariablesRequest {
+	r.serviceType = &serviceType
 	return r
 }
 
@@ -713,12 +713,12 @@ func (a *VariableMainCallsAPIService) ImportEnvironmentVariablesExecute(r ApiImp
 	if r.serviceId == nil {
 		return localVarReturnValue, nil, reportError("serviceId is required and must be specified")
 	}
-	if r.scope == nil {
-		return localVarReturnValue, nil, reportError("scope is required and must be specified")
+	if r.serviceType == nil {
+		return localVarReturnValue, nil, reportError("serviceType is required and must be specified")
 	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "service_id", r.serviceId, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "scope", r.scope, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "service_type", r.serviceType, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
