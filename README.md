@@ -479,6 +479,7 @@ Class | Method | HTTP request | Description
 *VariableMainCallsAPI* | [**CreateVariableOverride**](docs/VariableMainCallsAPI.md#createvariableoverride) | **Post** /variable/{variableId}/override | Create a variable override
 *VariableMainCallsAPI* | [**DeleteVariable**](docs/VariableMainCallsAPI.md#deletevariable) | **Delete** /variable/{variableId} | Delete a variable
 *VariableMainCallsAPI* | [**EditVariable**](docs/VariableMainCallsAPI.md#editvariable) | **Put** /variable/{variableId} | Edit a variable
+*VariableMainCallsAPI* | [**ImportEnvironmentVariables**](docs/VariableMainCallsAPI.md#importenvironmentvariables) | **Post** /variable/import | Import variables
 *VariableMainCallsAPI* | [**ListVariables**](docs/VariableMainCallsAPI.md#listvariables) | **Get** /variable | List variables
 
 

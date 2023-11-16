@@ -89,6 +89,18 @@ func Test_qovery_VariableMainCallsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test VariableMainCallsAPIService ImportEnvironmentVariables", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.VariableMainCallsAPI.ImportEnvironmentVariables(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test VariableMainCallsAPIService ListVariables", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

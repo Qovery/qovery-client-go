@@ -14117,6 +14117,52 @@ paths:
       summary: Edit a variable
       tags:
       - Variable Main Calls
+  /variable/import:
+    post:
+      description: "Import environment variables in a defined scope, with a defined\
+        \ visibility."
+      operationId: importEnvironmentVariables
+      parameters:
+      - description: service id
+        explode: true
+        in: query
+        name: service_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: scope
+        explode: true
+        in: query
+        name: scope
+        required: true
+        schema:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableImportRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableImport'
+          description: Import environment variables
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Import variables
+      tags:
+      - Variable Main Calls
 components:
   parameters:
     applicationId:
@@ -19176,6 +19222,7 @@ components:
       - PROJECT
       - CONTAINER
       - JOB
+      - HELM
       type: string
     APIVariableTypeEnum:
       description: "type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE\

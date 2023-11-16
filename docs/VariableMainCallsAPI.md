@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CreateVariableOverride**](VariableMainCallsAPI.md#CreateVariableOverride) | **Post** /variable/{variableId}/override | Create a variable override
 [**DeleteVariable**](VariableMainCallsAPI.md#DeleteVariable) | **Delete** /variable/{variableId} | Delete a variable
 [**EditVariable**](VariableMainCallsAPI.md#EditVariable) | **Put** /variable/{variableId} | Edit a variable
+[**ImportEnvironmentVariables**](VariableMainCallsAPI.md#ImportEnvironmentVariables) | **Post** /variable/import | Import variables
 [**ListVariables**](VariableMainCallsAPI.md#ListVariables) | **Get** /variable | List variables
 
 
@@ -348,6 +349,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**VariableResponse**](VariableResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportEnvironmentVariables
+
+> VariableImport ImportEnvironmentVariables(ctx).ServiceId(serviceId).Scope(scope).VariableImportRequest(variableImportRequest).Execute()
+
+Import variables
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | service id
+    scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | scope
+    variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VariableMainCallsAPI.ImportEnvironmentVariables(context.Background()).ServiceId(serviceId).Scope(scope).VariableImportRequest(variableImportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.ImportEnvironmentVariables``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportEnvironmentVariables`: VariableImport
+    fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.ImportEnvironmentVariables`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportEnvironmentVariablesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serviceId** | **string** | service id | 
+ **scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) | scope | 
+ **variableImportRequest** | [**VariableImportRequest**](VariableImportRequest.md) |  | 
+
+### Return type
+
+[**VariableImport**](VariableImport.md)
 
 ### Authorization
 
