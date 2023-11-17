@@ -367,6 +367,9 @@ docs/HelmDeploymentRestrictionResponse.md
 docs/HelmDeploymentRestrictionResponseList.md
 docs/HelmForceEvent.md
 docs/HelmMainCallsAPI.md
+docs/HelmPortProtocolEnum.md
+docs/HelmPortRequest.md
+docs/HelmPortRequestPortsInner.md
 docs/HelmRepositoriesAPI.md
 docs/HelmRepositoryKindEnum.md
 docs/HelmRepositoryRequest.md
@@ -383,6 +386,7 @@ docs/HelmRequestAllOfValuesOverrideFileGit.md
 docs/HelmRequestAllOfValuesOverrideFileRaw.md
 docs/HelmRequestAllOfValuesOverrideFileRawValues.md
 docs/HelmResponse.md
+docs/HelmResponseAllOfPorts.md
 docs/HelmResponseAllOfSource.md
 docs/HelmResponseAllOfSourceOneOf.md
 docs/HelmResponseAllOfSourceOneOf1.md
@@ -848,6 +852,9 @@ model_helm_deployment_restriction_request.go
 model_helm_deployment_restriction_response.go
 model_helm_deployment_restriction_response_list.go
 model_helm_force_event.go
+model_helm_port_protocol_enum.go
+model_helm_port_request.go
+model_helm_port_request_ports_inner.go
 model_helm_repository_kind_enum.go
 model_helm_repository_request.go
 model_helm_repository_request_config.go
@@ -863,6 +870,7 @@ model_helm_request_all_of_values_override_file_git.go
 model_helm_request_all_of_values_override_file_raw.go
 model_helm_request_all_of_values_override_file_raw_values.go
 model_helm_response.go
+model_helm_response_all_of_ports.go
 model_helm_response_all_of_source.go
 model_helm_response_all_of_source_one_of.go
 model_helm_response_all_of_source_one_of_1.go

@@ -20253,6 +20253,7 @@ components:
         type: object
     HelmRequest:
       allOf:
+      - $ref: '#/components/schemas/HelmPortRequest'
       - properties:
           name:
             description: name is case insensitive
@@ -20318,10 +20319,13 @@ components:
               \ the value of the `auto_preview` property from the associated environment.\n"
             type: boolean
           auto_deploy:
-            description: "Specify if the service will be automatically updated after\
-              \ receiving a new image tag or a new commit according to the source\
-              \ type. \n"
+            description: |
+              Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.
             type: boolean
+          ports:
+            items:
+              $ref: '#/components/schemas/HelmResponse_allOf_ports'
+            type: array
           source:
             $ref: '#/components/schemas/HelmResponse_allOf_source'
           arguments:
@@ -20394,9 +20398,26 @@ components:
             $ref: '#/components/schemas/HelmDeploymentRestrictionResponse'
           type: array
       type: object
+    HelmPortRequest:
+      properties:
+        ports:
+          items:
+            $ref: '#/components/schemas/HelmPortRequest_ports_inner'
+          type: array
+      type: object
+    HelmPortResponse:
+      $ref: '#/components/schemas/HelmResponse'
+    HelmPortResponseList:
+      $ref: '#/components/schemas/HelmResponseList'
     HelmForceEvent:
       enum:
       - DIFF
+      type: string
+    HelmPortProtocolEnum:
+      default: HTTP
+      enum:
+      - HTTP
+      - GRPC
       type: string
     Key:
       example:
@@ -24057,6 +24078,35 @@ components:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
       type: object
       example: null
+    HelmResponse_allOf_ports:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        internal_port:
+          description: The listening port of your service.
+          example: 8080
+          type: integer
+        external_port:
+          description: The exposed port for your service. This is optional. If not
+            set a default port will be used.
+          example: 8080
+          type: integer
+        service_name:
+          type: string
+        namespace:
+          type: string
+        protocol:
+          $ref: '#/components/schemas/HelmPortProtocolEnum'
+      required:
+      - id
+      - internal_port
+      - protocol
+      - service_name
+      type: object
+      example: null
     HelmResponse_allOf_source_oneOf_git:
       properties:
         git_repository:
@@ -24101,6 +24151,29 @@ components:
       oneOf:
       - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf'
       - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1'
+    HelmPortRequest_ports_inner:
+      properties:
+        name:
+          type: string
+        internal_port:
+          description: The listening port of your service.
+          example: 8080
+          type: integer
+        external_port:
+          description: The exposed port for your service. This is optional. If not
+            set a default port will be used.
+          example: 8080
+          type: integer
+        service_name:
+          type: string
+        namespace:
+          type: string
+        protocol:
+          $ref: '#/components/schemas/HelmPortProtocolEnum'
+      required:
+      - internal_port
+      - service_name
+      type: object
     OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

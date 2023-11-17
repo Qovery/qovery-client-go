@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Ports** | Pointer to [**[]HelmPortRequestPortsInner**](HelmPortRequestPortsInner.md) |  | [optional] 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **TimeoutSec** | Pointer to **int32** | Maximum number of seconds allowed for helm to run before killing it and mark it as failed  | [optional] [default to 600]
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewHelmRequestWithDefaults instantiates a new HelmRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPorts
+
+`func (o *HelmRequest) GetPorts() []HelmPortRequestPortsInner`
+
+GetPorts returns the Ports field if non-nil, zero value otherwise.
+
+### GetPortsOk
+
+`func (o *HelmRequest) GetPortsOk() (*[]HelmPortRequestPortsInner, bool)`
+
+GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPorts
+
+`func (o *HelmRequest) SetPorts(v []HelmPortRequestPortsInner)`
+
+SetPorts sets Ports field to given value.
+
+### HasPorts
+
+`func (o *HelmRequest) HasPorts() bool`
+
+HasPorts returns a boolean if a field has been set.
 
 ### GetName
 

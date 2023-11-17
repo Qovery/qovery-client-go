@@ -20,6 +20,7 @@ var _ MappedNullable = &HelmRequest{}
 
 // HelmRequest struct for HelmRequest
 type HelmRequest struct {
+	Ports []HelmPortRequestPortsInner `json:"ports,omitempty"`
 	// name is case insensitive
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
@@ -65,6 +66,38 @@ func NewHelmRequestWithDefaults() *HelmRequest {
 	var allowClusterWideResources bool = false
 	this.AllowClusterWideResources = &allowClusterWideResources
 	return &this
+}
+
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *HelmRequest) GetPorts() []HelmPortRequestPortsInner {
+	if o == nil || IsNil(o.Ports) {
+		var ret []HelmPortRequestPortsInner
+		return ret
+	}
+	return o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRequest) GetPortsOk() ([]HelmPortRequestPortsInner, bool) {
+	if o == nil || IsNil(o.Ports) {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *HelmRequest) HasPorts() bool {
+	if o != nil && !IsNil(o.Ports) {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given []HelmPortRequestPortsInner and assigns it to the Ports field.
+func (o *HelmRequest) SetPorts(v []HelmPortRequestPortsInner) {
+	o.Ports = v
 }
 
 // GetName returns the Name field value
@@ -336,6 +369,9 @@ func (o HelmRequest) MarshalJSON() ([]byte, error) {
 
 func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ports) {
+		toSerialize["ports"] = o.Ports
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
-**AutoDeploy** | **bool** | Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.   | 
+**AutoDeploy** | **bool** | Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.  | 
+**Ports** | Pointer to [**[]HelmResponseAllOfPorts**](HelmResponseAllOfPorts.md) |  | [optional] 
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **Arguments** | **[]string** | The extra arguments to pass to helm | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
@@ -205,6 +206,31 @@ and a boolean to check if the value has been set.
 
 SetAutoDeploy sets AutoDeploy field to given value.
 
+
+### GetPorts
+
+`func (o *HelmResponse) GetPorts() []HelmResponseAllOfPorts`
+
+GetPorts returns the Ports field if non-nil, zero value otherwise.
+
+### GetPortsOk
+
+`func (o *HelmResponse) GetPortsOk() (*[]HelmResponseAllOfPorts, bool)`
+
+GetPortsOk returns a tuple with the Ports field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPorts
+
+`func (o *HelmResponse) SetPorts(v []HelmResponseAllOfPorts)`
+
+SetPorts sets Ports field to given value.
+
+### HasPorts
+
+`func (o *HelmResponse) HasPorts() bool`
+
+HasPorts returns a boolean if a field has been set.
 
 ### GetSource
 

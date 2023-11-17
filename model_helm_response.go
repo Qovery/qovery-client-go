@@ -31,8 +31,9 @@ type HelmResponse struct {
 	// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.
-	AutoDeploy bool                    `json:"auto_deploy"`
-	Source     HelmResponseAllOfSource `json:"source"`
+	AutoDeploy bool                     `json:"auto_deploy"`
+	Ports      []HelmResponseAllOfPorts `json:"ports,omitempty"`
+	Source     HelmResponseAllOfSource  `json:"source"`
 	// The extra arguments to pass to helm
 	Arguments []string `json:"arguments"`
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
@@ -277,6 +278,38 @@ func (o *HelmResponse) SetAutoDeploy(v bool) {
 	o.AutoDeploy = v
 }
 
+// GetPorts returns the Ports field value if set, zero value otherwise.
+func (o *HelmResponse) GetPorts() []HelmResponseAllOfPorts {
+	if o == nil || IsNil(o.Ports) {
+		var ret []HelmResponseAllOfPorts
+		return ret
+	}
+	return o.Ports
+}
+
+// GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmResponse) GetPortsOk() ([]HelmResponseAllOfPorts, bool) {
+	if o == nil || IsNil(o.Ports) {
+		return nil, false
+	}
+	return o.Ports, true
+}
+
+// HasPorts returns a boolean if a field has been set.
+func (o *HelmResponse) HasPorts() bool {
+	if o != nil && !IsNil(o.Ports) {
+		return true
+	}
+
+	return false
+}
+
+// SetPorts gets a reference to the given []HelmResponseAllOfPorts and assigns it to the Ports field.
+func (o *HelmResponse) SetPorts(v []HelmResponseAllOfPorts) {
+	o.Ports = v
+}
+
 // GetSource returns the Source field value
 func (o *HelmResponse) GetSource() HelmResponseAllOfSource {
 	if o == nil {
@@ -395,6 +428,9 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["auto_preview"] = o.AutoPreview
 	toSerialize["auto_deploy"] = o.AutoDeploy
+	if !IsNil(o.Ports) {
+		toSerialize["ports"] = o.Ports
+	}
 	toSerialize["source"] = o.Source
 	toSerialize["arguments"] = o.Arguments
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
