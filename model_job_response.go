@@ -13,614 +13,100 @@ package qovery
 
 import (
 	"encoding/json"
-	"time"
+	"fmt"
 )
 
-// checks if the JobResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &JobResponse{}
-
-// JobResponse struct for JobResponse
+// JobResponse - struct for JobResponse
 type JobResponse struct {
-	Id          string          `json:"id"`
-	CreatedAt   time.Time       `json:"created_at"`
-	UpdatedAt   *time.Time      `json:"updated_at,omitempty"`
-	Environment ReferenceObject `json:"environment"`
-	// Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
-	MaximumCpu int32 `json:"maximum_cpu"`
-	// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
-	MaximumMemory int32 `json:"maximum_memory"`
-	// name is case insensitive
-	Name        string  `json:"name"`
-	Description *string `json:"description,omitempty"`
-	// unit is millicores (m). 1000m = 1 cpu
-	Cpu int32 `json:"cpu"`
-	// unit is MB. 1024 MB = 1GB
-	Memory int32 `json:"memory"`
-	// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
-	MaxNbRestart *int32 `json:"max_nb_restart,omitempty"`
-	// Maximum number of seconds allowed for the job to run before killing it and mark it as failed
-	MaxDurationSeconds *int32 `json:"max_duration_seconds,omitempty"`
-	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
-	AutoPreview bool `json:"auto_preview"`
-	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port         NullableInt32             `json:"port,omitempty"`
-	Source       JobResponseAllOfSource    `json:"source"`
-	Healthchecks Healthcheck               `json:"healthchecks"`
-	Schedule     *JobResponseAllOfSchedule `json:"schedule,omitempty"`
-	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	CronJobResponse      *CronJobResponse
+	LifecycleJobResponse *LifecycleJobResponse
 }
 
-// NewJobResponse instantiates a new JobResponse object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source JobResponseAllOfSource, healthchecks Healthcheck) *JobResponse {
-	this := JobResponse{}
-	this.Id = id
-	this.CreatedAt = createdAt
-	this.Environment = environment
-	this.MaximumCpu = maximumCpu
-	this.MaximumMemory = maximumMemory
-	this.Name = name
-	this.Cpu = cpu
-	this.Memory = memory
-	this.AutoPreview = autoPreview
-	this.Source = source
-	this.Healthchecks = healthchecks
-	return &this
+// CronJobResponseAsJobResponse is a convenience function that returns CronJobResponse wrapped in JobResponse
+func CronJobResponseAsJobResponse(v *CronJobResponse) JobResponse {
+	return JobResponse{
+		CronJobResponse: v,
+	}
 }
 
-// NewJobResponseWithDefaults instantiates a new JobResponse object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewJobResponseWithDefaults() *JobResponse {
-	this := JobResponse{}
-	return &this
+// LifecycleJobResponseAsJobResponse is a convenience function that returns LifecycleJobResponse wrapped in JobResponse
+func LifecycleJobResponseAsJobResponse(v *LifecycleJobResponse) JobResponse {
+	return JobResponse{
+		LifecycleJobResponse: v,
+	}
 }
 
-// GetId returns the Id field value
-func (o *JobResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *JobResponse) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into CronJobResponse
+	err = newStrictDecoder(data).Decode(&dst.CronJobResponse)
+	if err == nil {
+		jsonCronJobResponse, _ := json.Marshal(dst.CronJobResponse)
+		if string(jsonCronJobResponse) == "{}" { // empty struct
+			dst.CronJobResponse = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.CronJobResponse = nil
 	}
 
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *JobResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *JobResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
+	// try to unmarshal data into LifecycleJobResponse
+	err = newStrictDecoder(data).Decode(&dst.LifecycleJobResponse)
+	if err == nil {
+		jsonLifecycleJobResponse, _ := json.Marshal(dst.LifecycleJobResponse)
+		if string(jsonLifecycleJobResponse) == "{}" { // empty struct
+			dst.LifecycleJobResponse = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.LifecycleJobResponse = nil
 	}
 
-	return o.CreatedAt
-}
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.CronJobResponse = nil
+		dst.LifecycleJobResponse = nil
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
+		return fmt.Errorf("data matches more than one schema in oneOf(JobResponse)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(JobResponse)")
 	}
-	return &o.CreatedAt, true
 }
 
-// SetCreatedAt sets field value
-func (o *JobResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *JobResponse) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *JobResponse) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src JobResponse) MarshalJSON() ([]byte, error) {
+	if src.CronJobResponse != nil {
+		return json.Marshal(&src.CronJobResponse)
 	}
 
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *JobResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
-// GetEnvironment returns the Environment field value
-func (o *JobResponse) GetEnvironment() ReferenceObject {
-	if o == nil {
-		var ret ReferenceObject
-		return ret
+	if src.LifecycleJobResponse != nil {
+		return json.Marshal(&src.LifecycleJobResponse)
 	}
 
-	return o.Environment
+	return nil, nil // no data in oneOf schemas
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
-	if o == nil {
-		return nil, false
+// Get the actual instance
+func (obj *JobResponse) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
 	}
-	return &o.Environment, true
-}
-
-// SetEnvironment sets field value
-func (o *JobResponse) SetEnvironment(v ReferenceObject) {
-	o.Environment = v
-}
-
-// GetMaximumCpu returns the MaximumCpu field value
-func (o *JobResponse) GetMaximumCpu() int32 {
-	if o == nil {
-		var ret int32
-		return ret
+	if obj.CronJobResponse != nil {
+		return obj.CronJobResponse
 	}
 
-	return o.MaximumCpu
-}
-
-// GetMaximumCpuOk returns a tuple with the MaximumCpu field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetMaximumCpuOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MaximumCpu, true
-}
-
-// SetMaximumCpu sets field value
-func (o *JobResponse) SetMaximumCpu(v int32) {
-	o.MaximumCpu = v
-}
-
-// GetMaximumMemory returns the MaximumMemory field value
-func (o *JobResponse) GetMaximumMemory() int32 {
-	if o == nil {
-		var ret int32
-		return ret
+	if obj.LifecycleJobResponse != nil {
+		return obj.LifecycleJobResponse
 	}
 
-	return o.MaximumMemory
-}
-
-// GetMaximumMemoryOk returns a tuple with the MaximumMemory field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetMaximumMemoryOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MaximumMemory, true
-}
-
-// SetMaximumMemory sets field value
-func (o *JobResponse) SetMaximumMemory(v int32) {
-	o.MaximumMemory = v
-}
-
-// GetName returns the Name field value
-func (o *JobResponse) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *JobResponse) SetName(v string) {
-	o.Name = v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *JobResponse) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *JobResponse) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *JobResponse) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetCpu returns the Cpu field value
-func (o *JobResponse) GetCpu() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Cpu
-}
-
-// GetCpuOk returns a tuple with the Cpu field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetCpuOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Cpu, true
-}
-
-// SetCpu sets field value
-func (o *JobResponse) SetCpu(v int32) {
-	o.Cpu = v
-}
-
-// GetMemory returns the Memory field value
-func (o *JobResponse) GetMemory() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Memory
-}
-
-// GetMemoryOk returns a tuple with the Memory field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetMemoryOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Memory, true
-}
-
-// SetMemory sets field value
-func (o *JobResponse) SetMemory(v int32) {
-	o.Memory = v
-}
-
-// GetMaxNbRestart returns the MaxNbRestart field value if set, zero value otherwise.
-func (o *JobResponse) GetMaxNbRestart() int32 {
-	if o == nil || IsNil(o.MaxNbRestart) {
-		var ret int32
-		return ret
-	}
-	return *o.MaxNbRestart
-}
-
-// GetMaxNbRestartOk returns a tuple with the MaxNbRestart field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetMaxNbRestartOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaxNbRestart) {
-		return nil, false
-	}
-	return o.MaxNbRestart, true
-}
-
-// HasMaxNbRestart returns a boolean if a field has been set.
-func (o *JobResponse) HasMaxNbRestart() bool {
-	if o != nil && !IsNil(o.MaxNbRestart) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxNbRestart gets a reference to the given int32 and assigns it to the MaxNbRestart field.
-func (o *JobResponse) SetMaxNbRestart(v int32) {
-	o.MaxNbRestart = &v
-}
-
-// GetMaxDurationSeconds returns the MaxDurationSeconds field value if set, zero value otherwise.
-func (o *JobResponse) GetMaxDurationSeconds() int32 {
-	if o == nil || IsNil(o.MaxDurationSeconds) {
-		var ret int32
-		return ret
-	}
-	return *o.MaxDurationSeconds
-}
-
-// GetMaxDurationSecondsOk returns a tuple with the MaxDurationSeconds field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetMaxDurationSecondsOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaxDurationSeconds) {
-		return nil, false
-	}
-	return o.MaxDurationSeconds, true
-}
-
-// HasMaxDurationSeconds returns a boolean if a field has been set.
-func (o *JobResponse) HasMaxDurationSeconds() bool {
-	if o != nil && !IsNil(o.MaxDurationSeconds) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxDurationSeconds gets a reference to the given int32 and assigns it to the MaxDurationSeconds field.
-func (o *JobResponse) SetMaxDurationSeconds(v int32) {
-	o.MaxDurationSeconds = &v
-}
-
-// GetAutoPreview returns the AutoPreview field value
-func (o *JobResponse) GetAutoPreview() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.AutoPreview
-}
-
-// GetAutoPreviewOk returns a tuple with the AutoPreview field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AutoPreview, true
-}
-
-// SetAutoPreview sets field value
-func (o *JobResponse) SetAutoPreview(v bool) {
-	o.AutoPreview = v
-}
-
-// GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JobResponse) GetPort() int32 {
-	if o == nil || IsNil(o.Port.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.Port.Get()
-}
-
-// GetPortOk returns a tuple with the Port field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JobResponse) GetPortOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Port.Get(), o.Port.IsSet()
-}
-
-// HasPort returns a boolean if a field has been set.
-func (o *JobResponse) HasPort() bool {
-	if o != nil && o.Port.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPort gets a reference to the given NullableInt32 and assigns it to the Port field.
-func (o *JobResponse) SetPort(v int32) {
-	o.Port.Set(&v)
-}
-
-// SetPortNil sets the value for Port to be an explicit nil
-func (o *JobResponse) SetPortNil() {
-	o.Port.Set(nil)
-}
-
-// UnsetPort ensures that no value is present for Port, not even an explicit nil
-func (o *JobResponse) UnsetPort() {
-	o.Port.Unset()
-}
-
-// GetSource returns the Source field value
-func (o *JobResponse) GetSource() JobResponseAllOfSource {
-	if o == nil {
-		var ret JobResponseAllOfSource
-		return ret
-	}
-
-	return o.Source
-}
-
-// GetSourceOk returns a tuple with the Source field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetSourceOk() (*JobResponseAllOfSource, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Source, true
-}
-
-// SetSource sets field value
-func (o *JobResponse) SetSource(v JobResponseAllOfSource) {
-	o.Source = v
-}
-
-// GetHealthchecks returns the Healthchecks field value
-func (o *JobResponse) GetHealthchecks() Healthcheck {
-	if o == nil {
-		var ret Healthcheck
-		return ret
-	}
-
-	return o.Healthchecks
-}
-
-// GetHealthchecksOk returns a tuple with the Healthchecks field value
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetHealthchecksOk() (*Healthcheck, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Healthchecks, true
-}
-
-// SetHealthchecks sets field value
-func (o *JobResponse) SetHealthchecks(v Healthcheck) {
-	o.Healthchecks = v
-}
-
-// GetSchedule returns the Schedule field value if set, zero value otherwise.
-func (o *JobResponse) GetSchedule() JobResponseAllOfSchedule {
-	if o == nil || IsNil(o.Schedule) {
-		var ret JobResponseAllOfSchedule
-		return ret
-	}
-	return *o.Schedule
-}
-
-// GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetScheduleOk() (*JobResponseAllOfSchedule, bool) {
-	if o == nil || IsNil(o.Schedule) {
-		return nil, false
-	}
-	return o.Schedule, true
-}
-
-// HasSchedule returns a boolean if a field has been set.
-func (o *JobResponse) HasSchedule() bool {
-	if o != nil && !IsNil(o.Schedule) {
-		return true
-	}
-
-	return false
-}
-
-// SetSchedule gets a reference to the given JobResponseAllOfSchedule and assigns it to the Schedule field.
-func (o *JobResponse) SetSchedule(v JobResponseAllOfSchedule) {
-	o.Schedule = &v
-}
-
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
-func (o *JobResponse) GetAutoDeploy() bool {
-	if o == nil || IsNil(o.AutoDeploy) {
-		var ret bool
-		return ret
-	}
-	return *o.AutoDeploy
-}
-
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobResponse) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoDeploy) {
-		return nil, false
-	}
-	return o.AutoDeploy, true
-}
-
-// HasAutoDeploy returns a boolean if a field has been set.
-func (o *JobResponse) HasAutoDeploy() bool {
-	if o != nil && !IsNil(o.AutoDeploy) {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
-func (o *JobResponse) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
-}
-
-func (o JobResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o JobResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["created_at"] = o.CreatedAt
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	toSerialize["environment"] = o.Environment
-	toSerialize["maximum_cpu"] = o.MaximumCpu
-	toSerialize["maximum_memory"] = o.MaximumMemory
-	toSerialize["name"] = o.Name
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	toSerialize["cpu"] = o.Cpu
-	toSerialize["memory"] = o.Memory
-	if !IsNil(o.MaxNbRestart) {
-		toSerialize["max_nb_restart"] = o.MaxNbRestart
-	}
-	if !IsNil(o.MaxDurationSeconds) {
-		toSerialize["max_duration_seconds"] = o.MaxDurationSeconds
-	}
-	toSerialize["auto_preview"] = o.AutoPreview
-	if o.Port.IsSet() {
-		toSerialize["port"] = o.Port.Get()
-	}
-	toSerialize["source"] = o.Source
-	toSerialize["healthchecks"] = o.Healthchecks
-	if !IsNil(o.Schedule) {
-		toSerialize["schedule"] = o.Schedule
-	}
-	if !IsNil(o.AutoDeploy) {
-		toSerialize["auto_deploy"] = o.AutoDeploy
-	}
-	return toSerialize, nil
+	// all schemas are nil
+	return nil
 }
 
 type NullableJobResponse struct {

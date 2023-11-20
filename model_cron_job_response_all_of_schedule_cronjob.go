@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the JobResponseAllOfScheduleCronjob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &JobResponseAllOfScheduleCronjob{}
+// checks if the CronJobResponseAllOfScheduleCronjob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CronJobResponseAllOfScheduleCronjob{}
 
-// JobResponseAllOfScheduleCronjob struct for JobResponseAllOfScheduleCronjob
-type JobResponseAllOfScheduleCronjob struct {
+// CronJobResponseAllOfScheduleCronjob struct for CronJobResponseAllOfScheduleCronjob
+type CronJobResponseAllOfScheduleCronjob struct {
 	Arguments []string `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
@@ -27,26 +27,26 @@ type JobResponseAllOfScheduleCronjob struct {
 	ScheduledAt string `json:"scheduled_at"`
 }
 
-// NewJobResponseAllOfScheduleCronjob instantiates a new JobResponseAllOfScheduleCronjob object
+// NewCronJobResponseAllOfScheduleCronjob instantiates a new CronJobResponseAllOfScheduleCronjob object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobResponseAllOfScheduleCronjob(scheduledAt string) *JobResponseAllOfScheduleCronjob {
-	this := JobResponseAllOfScheduleCronjob{}
+func NewCronJobResponseAllOfScheduleCronjob(scheduledAt string) *CronJobResponseAllOfScheduleCronjob {
+	this := CronJobResponseAllOfScheduleCronjob{}
 	this.ScheduledAt = scheduledAt
 	return &this
 }
 
-// NewJobResponseAllOfScheduleCronjobWithDefaults instantiates a new JobResponseAllOfScheduleCronjob object
+// NewCronJobResponseAllOfScheduleCronjobWithDefaults instantiates a new CronJobResponseAllOfScheduleCronjob object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewJobResponseAllOfScheduleCronjobWithDefaults() *JobResponseAllOfScheduleCronjob {
-	this := JobResponseAllOfScheduleCronjob{}
+func NewCronJobResponseAllOfScheduleCronjobWithDefaults() *CronJobResponseAllOfScheduleCronjob {
+	this := CronJobResponseAllOfScheduleCronjob{}
 	return &this
 }
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *JobResponseAllOfScheduleCronjob) GetArguments() []string {
+func (o *CronJobResponseAllOfScheduleCronjob) GetArguments() []string {
 	if o == nil || IsNil(o.Arguments) {
 		var ret []string
 		return ret
@@ -56,7 +56,7 @@ func (o *JobResponseAllOfScheduleCronjob) GetArguments() []string {
 
 // GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobResponseAllOfScheduleCronjob) GetArgumentsOk() ([]string, bool) {
+func (o *CronJobResponseAllOfScheduleCronjob) GetArgumentsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *JobResponseAllOfScheduleCronjob) GetArgumentsOk() ([]string, bool) {
 }
 
 // HasArguments returns a boolean if a field has been set.
-func (o *JobResponseAllOfScheduleCronjob) HasArguments() bool {
+func (o *CronJobResponseAllOfScheduleCronjob) HasArguments() bool {
 	if o != nil && !IsNil(o.Arguments) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *JobResponseAllOfScheduleCronjob) HasArguments() bool {
 }
 
 // SetArguments gets a reference to the given []string and assigns it to the Arguments field.
-func (o *JobResponseAllOfScheduleCronjob) SetArguments(v []string) {
+func (o *CronJobResponseAllOfScheduleCronjob) SetArguments(v []string) {
 	o.Arguments = v
 }
 
 // GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
-func (o *JobResponseAllOfScheduleCronjob) GetEntrypoint() string {
+func (o *CronJobResponseAllOfScheduleCronjob) GetEntrypoint() string {
 	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *JobResponseAllOfScheduleCronjob) GetEntrypoint() string {
 
 // GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobResponseAllOfScheduleCronjob) GetEntrypointOk() (*string, bool) {
+func (o *CronJobResponseAllOfScheduleCronjob) GetEntrypointOk() (*string, bool) {
 	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *JobResponseAllOfScheduleCronjob) GetEntrypointOk() (*string, bool) {
 }
 
 // HasEntrypoint returns a boolean if a field has been set.
-func (o *JobResponseAllOfScheduleCronjob) HasEntrypoint() bool {
+func (o *CronJobResponseAllOfScheduleCronjob) HasEntrypoint() bool {
 	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *JobResponseAllOfScheduleCronjob) HasEntrypoint() bool {
 }
 
 // SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
-func (o *JobResponseAllOfScheduleCronjob) SetEntrypoint(v string) {
+func (o *CronJobResponseAllOfScheduleCronjob) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
 // GetScheduledAt returns the ScheduledAt field value
-func (o *JobResponseAllOfScheduleCronjob) GetScheduledAt() string {
+func (o *CronJobResponseAllOfScheduleCronjob) GetScheduledAt() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -121,7 +121,7 @@ func (o *JobResponseAllOfScheduleCronjob) GetScheduledAt() string {
 
 // GetScheduledAtOk returns a tuple with the ScheduledAt field value
 // and a boolean to check if the value has been set.
-func (o *JobResponseAllOfScheduleCronjob) GetScheduledAtOk() (*string, bool) {
+func (o *CronJobResponseAllOfScheduleCronjob) GetScheduledAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,11 +129,11 @@ func (o *JobResponseAllOfScheduleCronjob) GetScheduledAtOk() (*string, bool) {
 }
 
 // SetScheduledAt sets field value
-func (o *JobResponseAllOfScheduleCronjob) SetScheduledAt(v string) {
+func (o *CronJobResponseAllOfScheduleCronjob) SetScheduledAt(v string) {
 	o.ScheduledAt = v
 }
 
-func (o JobResponseAllOfScheduleCronjob) MarshalJSON() ([]byte, error) {
+func (o CronJobResponseAllOfScheduleCronjob) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -141,7 +141,7 @@ func (o JobResponseAllOfScheduleCronjob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o JobResponseAllOfScheduleCronjob) ToMap() (map[string]interface{}, error) {
+func (o CronJobResponseAllOfScheduleCronjob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Arguments) {
 		toSerialize["arguments"] = o.Arguments
@@ -153,38 +153,38 @@ func (o JobResponseAllOfScheduleCronjob) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-type NullableJobResponseAllOfScheduleCronjob struct {
-	value *JobResponseAllOfScheduleCronjob
+type NullableCronJobResponseAllOfScheduleCronjob struct {
+	value *CronJobResponseAllOfScheduleCronjob
 	isSet bool
 }
 
-func (v NullableJobResponseAllOfScheduleCronjob) Get() *JobResponseAllOfScheduleCronjob {
+func (v NullableCronJobResponseAllOfScheduleCronjob) Get() *CronJobResponseAllOfScheduleCronjob {
 	return v.value
 }
 
-func (v *NullableJobResponseAllOfScheduleCronjob) Set(val *JobResponseAllOfScheduleCronjob) {
+func (v *NullableCronJobResponseAllOfScheduleCronjob) Set(val *CronJobResponseAllOfScheduleCronjob) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableJobResponseAllOfScheduleCronjob) IsSet() bool {
+func (v NullableCronJobResponseAllOfScheduleCronjob) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableJobResponseAllOfScheduleCronjob) Unset() {
+func (v *NullableCronJobResponseAllOfScheduleCronjob) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableJobResponseAllOfScheduleCronjob(val *JobResponseAllOfScheduleCronjob) *NullableJobResponseAllOfScheduleCronjob {
-	return &NullableJobResponseAllOfScheduleCronjob{value: val, isSet: true}
+func NewNullableCronJobResponseAllOfScheduleCronjob(val *CronJobResponseAllOfScheduleCronjob) *NullableCronJobResponseAllOfScheduleCronjob {
+	return &NullableCronJobResponseAllOfScheduleCronjob{value: val, isSet: true}
 }
 
-func (v NullableJobResponseAllOfScheduleCronjob) MarshalJSON() ([]byte, error) {
+func (v NullableCronJobResponseAllOfScheduleCronjob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableJobResponseAllOfScheduleCronjob) UnmarshalJSON(src []byte) error {
+func (v *NullableCronJobResponseAllOfScheduleCronjob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1,78 +1,78 @@
-# JobResponseAllOfSource
+# BaseJobResponseAllOfSource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Image** | Pointer to [**ContainerSource**](ContainerSource.md) |  | [optional] 
-**Docker** | Pointer to [**JobResponseAllOfSourceOneOf1Docker**](JobResponseAllOfSourceOneOf1Docker.md) |  | [optional] 
+**Docker** | Pointer to [**BaseJobResponseAllOfSourceOneOf1Docker**](BaseJobResponseAllOfSourceOneOf1Docker.md) |  | [optional] 
 
 ## Methods
 
-### NewJobResponseAllOfSource
+### NewBaseJobResponseAllOfSource
 
-`func NewJobResponseAllOfSource() *JobResponseAllOfSource`
+`func NewBaseJobResponseAllOfSource() *BaseJobResponseAllOfSource`
 
-NewJobResponseAllOfSource instantiates a new JobResponseAllOfSource object
+NewBaseJobResponseAllOfSource instantiates a new BaseJobResponseAllOfSource object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewJobResponseAllOfSourceWithDefaults
+### NewBaseJobResponseAllOfSourceWithDefaults
 
-`func NewJobResponseAllOfSourceWithDefaults() *JobResponseAllOfSource`
+`func NewBaseJobResponseAllOfSourceWithDefaults() *BaseJobResponseAllOfSource`
 
-NewJobResponseAllOfSourceWithDefaults instantiates a new JobResponseAllOfSource object
+NewBaseJobResponseAllOfSourceWithDefaults instantiates a new BaseJobResponseAllOfSource object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetImage
 
-`func (o *JobResponseAllOfSource) GetImage() ContainerSource`
+`func (o *BaseJobResponseAllOfSource) GetImage() ContainerSource`
 
 GetImage returns the Image field if non-nil, zero value otherwise.
 
 ### GetImageOk
 
-`func (o *JobResponseAllOfSource) GetImageOk() (*ContainerSource, bool)`
+`func (o *BaseJobResponseAllOfSource) GetImageOk() (*ContainerSource, bool)`
 
 GetImageOk returns a tuple with the Image field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImage
 
-`func (o *JobResponseAllOfSource) SetImage(v ContainerSource)`
+`func (o *BaseJobResponseAllOfSource) SetImage(v ContainerSource)`
 
 SetImage sets Image field to given value.
 
 ### HasImage
 
-`func (o *JobResponseAllOfSource) HasImage() bool`
+`func (o *BaseJobResponseAllOfSource) HasImage() bool`
 
 HasImage returns a boolean if a field has been set.
 
 ### GetDocker
 
-`func (o *JobResponseAllOfSource) GetDocker() JobResponseAllOfSourceOneOf1Docker`
+`func (o *BaseJobResponseAllOfSource) GetDocker() BaseJobResponseAllOfSourceOneOf1Docker`
 
 GetDocker returns the Docker field if non-nil, zero value otherwise.
 
 ### GetDockerOk
 
-`func (o *JobResponseAllOfSource) GetDockerOk() (*JobResponseAllOfSourceOneOf1Docker, bool)`
+`func (o *BaseJobResponseAllOfSource) GetDockerOk() (*BaseJobResponseAllOfSourceOneOf1Docker, bool)`
 
 GetDockerOk returns a tuple with the Docker field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDocker
 
-`func (o *JobResponseAllOfSource) SetDocker(v JobResponseAllOfSourceOneOf1Docker)`
+`func (o *BaseJobResponseAllOfSource) SetDocker(v BaseJobResponseAllOfSourceOneOf1Docker)`
 
 SetDocker sets Docker field to given value.
 
 ### HasDocker
 
-`func (o *JobResponseAllOfSource) HasDocker() bool`
+`func (o *BaseJobResponseAllOfSource) HasDocker() bool`
 
 HasDocker returns a boolean if a field has been set.
 

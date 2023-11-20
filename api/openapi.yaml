@@ -20020,84 +20020,14 @@ components:
         - name
         type: object
     JobResponse:
-      allOf:
-      - $ref: '#/components/schemas/Base'
-      - properties:
-          environment:
-            $ref: '#/components/schemas/ReferenceObject'
-          maximum_cpu:
-            description: Maximum cpu that can be allocated to the job based on organization
-              cluster configuration. unit is millicores (m). 1000m = 1 cpu
-            example: 16000
-            type: integer
-          maximum_memory:
-            description: Maximum memory that can be allocated to the job based on
-              organization cluster configuration. unit is MB. 1024 MB = 1GB
-            example: 16384
-            type: integer
-          name:
-            description: name is case insensitive
-            type: string
-          description:
-            type: string
-          cpu:
-            description: unit is millicores (m). 1000m = 1 cpu
-            example: 1250
-            type: integer
-          memory:
-            description: unit is MB. 1024 MB = 1GB
-            example: 1024
-            type: integer
-          max_nb_restart:
-            description: |
-              Maximum number of restart allowed before the job is considered as failed
-              0 means that no restart/crash of the job is allowed
-            minimum: 0
-            type: integer
-          max_duration_seconds:
-            description: |
-              Maximum number of seconds allowed for the job to run before killing it and mark it as failed
-            minimum: 0
-            type: integer
-          auto_preview:
-            description: "Indicates if the 'environment preview option' is enabled\
-              \ for this container.  \nIf enabled, a preview environment will be automatically\
-              \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
-              \ takes the value of the `auto_preview` property from the associated\
-              \ environment.\n"
-            type: boolean
-          port:
-            description: Port where to run readiness and liveliness probes checks.
-              The port will not be exposed externally
-            minimum: 1
-            nullable: true
-            type: integer
-          source:
-            $ref: '#/components/schemas/JobResponse_allOf_source'
-          healthchecks:
-            $ref: '#/components/schemas/Healthcheck'
-          schedule:
-            $ref: '#/components/schemas/JobResponse_allOf_schedule'
-          auto_deploy:
-            description: "Specify if the job will be automatically updated after receiving\
-              \ a new image tag or a new commit according to the source type. \nThe\
-              \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
-              \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
-            type: boolean
-        required:
-        - auto_preview
-        - cpu
-        - environment
-        - healthchecks
-        - max_running_instances
-        - maximum_cpu
-        - maximum_memory
-        - memory
-        - min_running_instances
-        - name
-        - source
-        - tag
-        type: object
+      discriminator:
+        mapping:
+          LIFECYCLE: '#/components/schemas/LifecycleJobResponse'
+          CRON: '#/components/schemas/CronJobResponse'
+        propertyName: job_type
+      oneOf:
+      - $ref: '#/components/schemas/LifecycleJobResponse'
+      - $ref: '#/components/schemas/CronJobResponse'
     JobResponseList:
       example:
         results:
@@ -23041,6 +22971,111 @@ components:
       - JOB
       - HELM
       type: string
+    LifecycleJobResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseJobResponse'
+      - properties:
+          job_type:
+            enum:
+            - LIFECYCLE
+            type: string
+          schedule:
+            $ref: '#/components/schemas/LifecycleJobResponse_allOf_schedule'
+        required:
+        - job_type
+        - schedule
+        type: object
+    CronJobResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseJobResponse'
+      - properties:
+          job_type:
+            enum:
+            - CRON
+            type: string
+          schedule:
+            $ref: '#/components/schemas/CronJobResponse_allOf_schedule'
+        required:
+        - job_type
+        - schedule
+        type: object
+    BaseJobResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
+          maximum_cpu:
+            description: Maximum cpu that can be allocated to the job based on organization
+              cluster configuration. unit is millicores (m). 1000m = 1 cpu
+            example: 16000
+            type: integer
+          maximum_memory:
+            description: Maximum memory that can be allocated to the job based on
+              organization cluster configuration. unit is MB. 1024 MB = 1GB
+            example: 16384
+            type: integer
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            type: string
+          cpu:
+            description: unit is millicores (m). 1000m = 1 cpu
+            example: 1250
+            type: integer
+          memory:
+            description: unit is MB. 1024 MB = 1GB
+            example: 1024
+            type: integer
+          max_nb_restart:
+            description: |
+              Maximum number of restart allowed before the job is considered as failed
+              0 means that no restart/crash of the job is allowed
+            minimum: 0
+            type: integer
+          max_duration_seconds:
+            description: |
+              Maximum number of seconds allowed for the job to run before killing it and mark it as failed
+            minimum: 0
+            type: integer
+          auto_preview:
+            description: "Indicates if the 'environment preview option' is enabled\
+              \ for this container.  \nIf enabled, a preview environment will be automatically\
+              \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
+              \ takes the value of the `auto_preview` property from the associated\
+              \ environment.\n"
+            type: boolean
+          port:
+            description: Port where to run readiness and liveliness probes checks.
+              The port will not be exposed externally
+            minimum: 1
+            nullable: true
+            type: integer
+          source:
+            $ref: '#/components/schemas/BaseJobResponse_allOf_source'
+          healthchecks:
+            $ref: '#/components/schemas/Healthcheck'
+          auto_deploy:
+            description: "Specify if the job will be automatically updated after receiving\
+              \ a new image tag or a new commit according to the source type. \nThe\
+              \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
+              \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
+            type: boolean
+        required:
+        - auto_preview
+        - cpu
+        - environment
+        - healthchecks
+        - max_running_instances
+        - maximum_cpu
+        - maximum_memory
+        - memory
+        - min_running_instances
+        - name
+        - source
+        - tag
+        type: object
     deleteMember_request:
       properties:
         user_id:
@@ -23904,66 +23939,6 @@ components:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_cronjob'
       type: object
       example: null
-    JobResponse_allOf_schedule_cronjob:
-      properties:
-        arguments:
-          items:
-            type: string
-          type: array
-        entrypoint:
-          description: optional entrypoint when launching container
-          type: string
-        scheduled_at:
-          description: "Can only be set if the event is CRON.  \nRepresent the cron\
-            \ format for the job schedule without seconds.  \nFor example: `* * *\
-            \ * *` represent the cron to launch the job every minute.  \nSee https://crontab.guru/\
-            \ to WISIWIG interface.  \nTimezone is UT\n"
-          format: cron
-          type: string
-      required:
-      - scheduled_at
-      type: object
-      example: null
-    JobResponse_allOf_schedule:
-      description: "If you want to define a Cron job, only the `cronjob` property\
-        \ must be filled  \nA Lifecycle job should contain at least one property `on_XXX`\
-        \ among the 3 properties: `on_start`, `on_stop`, `on_delete`\n"
-      properties:
-        on_start:
-          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
-        on_stop:
-          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
-        on_delete:
-          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
-        cronjob:
-          $ref: '#/components/schemas/JobResponse_allOf_schedule_cronjob'
-      type: object
-      example: null
-    JobResponse_allOf_source_oneOf:
-      properties:
-        image:
-          $ref: '#/components/schemas/ContainerSource'
-      type: object
-    JobResponse_allOf_source_oneOf_1_docker:
-      properties:
-        dockerfile_path:
-          description: The path of the associated Dockerfile. Only if you are using
-            build_mode = DOCKER
-          nullable: true
-          type: string
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepository'
-      type: object
-    JobResponse_allOf_source_oneOf_1:
-      properties:
-        docker:
-          $ref: '#/components/schemas/JobResponse_allOf_source_oneOf_1_docker'
-      type: object
-    JobResponse_allOf_source:
-      nullable: false
-      oneOf:
-      - $ref: '#/components/schemas/JobResponse_allOf_source_oneOf'
-      - $ref: '#/components/schemas/JobResponse_allOf_source_oneOf_1'
     DeploymentHistoryJobResponse_allOf_schedule:
       properties:
         event:
@@ -24368,6 +24343,67 @@ components:
       - scope
       - value
       type: object
+    LifecycleJobResponse_allOf_schedule:
+      properties:
+        on_start:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        on_stop:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        on_delete:
+          $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+      type: object
+      example: null
+    CronJobResponse_allOf_schedule_cronjob:
+      properties:
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          description: optional entrypoint when launching container
+          type: string
+        scheduled_at:
+          description: "Can only be set if the event is CRON.  \nRepresent the cron\
+            \ format for the job schedule without seconds.  \nFor example: `* * *\
+            \ * *` represent the cron to launch the job every minute.  \nSee https://crontab.guru/\
+            \ to WISIWIG interface.  \nTimezone is UT\n"
+          format: cron
+          type: string
+      required:
+      - scheduled_at
+      type: object
+      example: null
+    CronJobResponse_allOf_schedule:
+      properties:
+        cronjob:
+          $ref: '#/components/schemas/CronJobResponse_allOf_schedule_cronjob'
+      type: object
+      example: null
+    BaseJobResponse_allOf_source_oneOf:
+      properties:
+        image:
+          $ref: '#/components/schemas/ContainerSource'
+      type: object
+    BaseJobResponse_allOf_source_oneOf_1_docker:
+      properties:
+        dockerfile_path:
+          description: The path of the associated Dockerfile. Only if you are using
+            build_mode = DOCKER
+          nullable: true
+          type: string
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepository'
+      type: object
+    BaseJobResponse_allOf_source_oneOf_1:
+      properties:
+        docker:
+          $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf_1_docker'
+      type: object
+    BaseJobResponse_allOf_source:
+      nullable: false
+      oneOf:
+      - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf'
+      - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf_1'
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

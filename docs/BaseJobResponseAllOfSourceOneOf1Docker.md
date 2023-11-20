@@ -1,4 +1,4 @@
-# JobResponseAllOfSourceOneOf1Docker
+# BaseJobResponseAllOfSourceOneOf1Docker
 
 ## Properties
 
@@ -9,80 +9,80 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewJobResponseAllOfSourceOneOf1Docker
+### NewBaseJobResponseAllOfSourceOneOf1Docker
 
-`func NewJobResponseAllOfSourceOneOf1Docker() *JobResponseAllOfSourceOneOf1Docker`
+`func NewBaseJobResponseAllOfSourceOneOf1Docker() *BaseJobResponseAllOfSourceOneOf1Docker`
 
-NewJobResponseAllOfSourceOneOf1Docker instantiates a new JobResponseAllOfSourceOneOf1Docker object
+NewBaseJobResponseAllOfSourceOneOf1Docker instantiates a new BaseJobResponseAllOfSourceOneOf1Docker object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewJobResponseAllOfSourceOneOf1DockerWithDefaults
+### NewBaseJobResponseAllOfSourceOneOf1DockerWithDefaults
 
-`func NewJobResponseAllOfSourceOneOf1DockerWithDefaults() *JobResponseAllOfSourceOneOf1Docker`
+`func NewBaseJobResponseAllOfSourceOneOf1DockerWithDefaults() *BaseJobResponseAllOfSourceOneOf1Docker`
 
-NewJobResponseAllOfSourceOneOf1DockerWithDefaults instantiates a new JobResponseAllOfSourceOneOf1Docker object
+NewBaseJobResponseAllOfSourceOneOf1DockerWithDefaults instantiates a new BaseJobResponseAllOfSourceOneOf1Docker object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDockerfilePath
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) GetDockerfilePath() string`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetDockerfilePath() string`
 
 GetDockerfilePath returns the DockerfilePath field if non-nil, zero value otherwise.
 
 ### GetDockerfilePathOk
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) GetDockerfilePathOk() (*string, bool)`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetDockerfilePathOk() (*string, bool)`
 
 GetDockerfilePathOk returns a tuple with the DockerfilePath field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDockerfilePath
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) SetDockerfilePath(v string)`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) SetDockerfilePath(v string)`
 
 SetDockerfilePath sets DockerfilePath field to given value.
 
 ### HasDockerfilePath
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) HasDockerfilePath() bool`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) HasDockerfilePath() bool`
 
 HasDockerfilePath returns a boolean if a field has been set.
 
 ### SetDockerfilePathNil
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) SetDockerfilePathNil(b bool)`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) SetDockerfilePathNil(b bool)`
 
  SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
 
 ### UnsetDockerfilePath
-`func (o *JobResponseAllOfSourceOneOf1Docker) UnsetDockerfilePath()`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) UnsetDockerfilePath()`
 
 UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetGitRepository
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) GetGitRepository() ApplicationGitRepository`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetGitRepository() ApplicationGitRepository`
 
 GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
 ### GetGitRepositoryOk
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) GetGitRepositoryOk() (*ApplicationGitRepository, bool)`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetGitRepositoryOk() (*ApplicationGitRepository, bool)`
 
 GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGitRepository
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) SetGitRepository(v ApplicationGitRepository)`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) SetGitRepository(v ApplicationGitRepository)`
 
 SetGitRepository sets GitRepository field to given value.
 
 ### HasGitRepository
 
-`func (o *JobResponseAllOfSourceOneOf1Docker) HasGitRepository() bool`
+`func (o *BaseJobResponseAllOfSourceOneOf1Docker) HasGitRepository() bool`
 
 HasGitRepository returns a boolean if a field has been set.
 

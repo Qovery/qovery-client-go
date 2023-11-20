@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the JobResponseAllOfSourceOneOf1Docker type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &JobResponseAllOfSourceOneOf1Docker{}
+// checks if the BaseJobResponseAllOfSourceOneOf1Docker type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseJobResponseAllOfSourceOneOf1Docker{}
 
-// JobResponseAllOfSourceOneOf1Docker struct for JobResponseAllOfSourceOneOf1Docker
-type JobResponseAllOfSourceOneOf1Docker struct {
+// BaseJobResponseAllOfSourceOneOf1Docker struct for BaseJobResponseAllOfSourceOneOf1Docker
+type BaseJobResponseAllOfSourceOneOf1Docker struct {
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath NullableString            `json:"dockerfile_path,omitempty"`
 	GitRepository  *ApplicationGitRepository `json:"git_repository,omitempty"`
 }
 
-// NewJobResponseAllOfSourceOneOf1Docker instantiates a new JobResponseAllOfSourceOneOf1Docker object
+// NewBaseJobResponseAllOfSourceOneOf1Docker instantiates a new BaseJobResponseAllOfSourceOneOf1Docker object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobResponseAllOfSourceOneOf1Docker() *JobResponseAllOfSourceOneOf1Docker {
-	this := JobResponseAllOfSourceOneOf1Docker{}
+func NewBaseJobResponseAllOfSourceOneOf1Docker() *BaseJobResponseAllOfSourceOneOf1Docker {
+	this := BaseJobResponseAllOfSourceOneOf1Docker{}
 	return &this
 }
 
-// NewJobResponseAllOfSourceOneOf1DockerWithDefaults instantiates a new JobResponseAllOfSourceOneOf1Docker object
+// NewBaseJobResponseAllOfSourceOneOf1DockerWithDefaults instantiates a new BaseJobResponseAllOfSourceOneOf1Docker object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewJobResponseAllOfSourceOneOf1DockerWithDefaults() *JobResponseAllOfSourceOneOf1Docker {
-	this := JobResponseAllOfSourceOneOf1Docker{}
+func NewBaseJobResponseAllOfSourceOneOf1DockerWithDefaults() *BaseJobResponseAllOfSourceOneOf1Docker {
+	this := BaseJobResponseAllOfSourceOneOf1Docker{}
 	return &this
 }
 
 // GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *JobResponseAllOfSourceOneOf1Docker) GetDockerfilePath() string {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetDockerfilePath() string {
 	if o == nil || IsNil(o.DockerfilePath.Get()) {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *JobResponseAllOfSourceOneOf1Docker) GetDockerfilePath() string {
 // GetDockerfilePathOk returns a tuple with the DockerfilePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *JobResponseAllOfSourceOneOf1Docker) GetDockerfilePathOk() (*string, bool) {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetDockerfilePathOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *JobResponseAllOfSourceOneOf1Docker) GetDockerfilePathOk() (*string, boo
 }
 
 // HasDockerfilePath returns a boolean if a field has been set.
-func (o *JobResponseAllOfSourceOneOf1Docker) HasDockerfilePath() bool {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) HasDockerfilePath() bool {
 	if o != nil && o.DockerfilePath.IsSet() {
 		return true
 	}
@@ -71,22 +71,22 @@ func (o *JobResponseAllOfSourceOneOf1Docker) HasDockerfilePath() bool {
 }
 
 // SetDockerfilePath gets a reference to the given NullableString and assigns it to the DockerfilePath field.
-func (o *JobResponseAllOfSourceOneOf1Docker) SetDockerfilePath(v string) {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) SetDockerfilePath(v string) {
 	o.DockerfilePath.Set(&v)
 }
 
 // SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
-func (o *JobResponseAllOfSourceOneOf1Docker) SetDockerfilePathNil() {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) SetDockerfilePathNil() {
 	o.DockerfilePath.Set(nil)
 }
 
 // UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
-func (o *JobResponseAllOfSourceOneOf1Docker) UnsetDockerfilePath() {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) UnsetDockerfilePath() {
 	o.DockerfilePath.Unset()
 }
 
 // GetGitRepository returns the GitRepository field value if set, zero value otherwise.
-func (o *JobResponseAllOfSourceOneOf1Docker) GetGitRepository() ApplicationGitRepository {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetGitRepository() ApplicationGitRepository {
 	if o == nil || IsNil(o.GitRepository) {
 		var ret ApplicationGitRepository
 		return ret
@@ -96,7 +96,7 @@ func (o *JobResponseAllOfSourceOneOf1Docker) GetGitRepository() ApplicationGitRe
 
 // GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobResponseAllOfSourceOneOf1Docker) GetGitRepositoryOk() (*ApplicationGitRepository, bool) {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) GetGitRepositoryOk() (*ApplicationGitRepository, bool) {
 	if o == nil || IsNil(o.GitRepository) {
 		return nil, false
 	}
@@ -104,7 +104,7 @@ func (o *JobResponseAllOfSourceOneOf1Docker) GetGitRepositoryOk() (*ApplicationG
 }
 
 // HasGitRepository returns a boolean if a field has been set.
-func (o *JobResponseAllOfSourceOneOf1Docker) HasGitRepository() bool {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) HasGitRepository() bool {
 	if o != nil && !IsNil(o.GitRepository) {
 		return true
 	}
@@ -113,11 +113,11 @@ func (o *JobResponseAllOfSourceOneOf1Docker) HasGitRepository() bool {
 }
 
 // SetGitRepository gets a reference to the given ApplicationGitRepository and assigns it to the GitRepository field.
-func (o *JobResponseAllOfSourceOneOf1Docker) SetGitRepository(v ApplicationGitRepository) {
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) SetGitRepository(v ApplicationGitRepository) {
 	o.GitRepository = &v
 }
 
-func (o JobResponseAllOfSourceOneOf1Docker) MarshalJSON() ([]byte, error) {
+func (o BaseJobResponseAllOfSourceOneOf1Docker) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -125,7 +125,7 @@ func (o JobResponseAllOfSourceOneOf1Docker) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o JobResponseAllOfSourceOneOf1Docker) ToMap() (map[string]interface{}, error) {
+func (o BaseJobResponseAllOfSourceOneOf1Docker) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.DockerfilePath.IsSet() {
 		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
@@ -136,38 +136,38 @@ func (o JobResponseAllOfSourceOneOf1Docker) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-type NullableJobResponseAllOfSourceOneOf1Docker struct {
-	value *JobResponseAllOfSourceOneOf1Docker
+type NullableBaseJobResponseAllOfSourceOneOf1Docker struct {
+	value *BaseJobResponseAllOfSourceOneOf1Docker
 	isSet bool
 }
 
-func (v NullableJobResponseAllOfSourceOneOf1Docker) Get() *JobResponseAllOfSourceOneOf1Docker {
+func (v NullableBaseJobResponseAllOfSourceOneOf1Docker) Get() *BaseJobResponseAllOfSourceOneOf1Docker {
 	return v.value
 }
 
-func (v *NullableJobResponseAllOfSourceOneOf1Docker) Set(val *JobResponseAllOfSourceOneOf1Docker) {
+func (v *NullableBaseJobResponseAllOfSourceOneOf1Docker) Set(val *BaseJobResponseAllOfSourceOneOf1Docker) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableJobResponseAllOfSourceOneOf1Docker) IsSet() bool {
+func (v NullableBaseJobResponseAllOfSourceOneOf1Docker) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableJobResponseAllOfSourceOneOf1Docker) Unset() {
+func (v *NullableBaseJobResponseAllOfSourceOneOf1Docker) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableJobResponseAllOfSourceOneOf1Docker(val *JobResponseAllOfSourceOneOf1Docker) *NullableJobResponseAllOfSourceOneOf1Docker {
-	return &NullableJobResponseAllOfSourceOneOf1Docker{value: val, isSet: true}
+func NewNullableBaseJobResponseAllOfSourceOneOf1Docker(val *BaseJobResponseAllOfSourceOneOf1Docker) *NullableBaseJobResponseAllOfSourceOneOf1Docker {
+	return &NullableBaseJobResponseAllOfSourceOneOf1Docker{value: val, isSet: true}
 }
 
-func (v NullableJobResponseAllOfSourceOneOf1Docker) MarshalJSON() ([]byte, error) {
+func (v NullableBaseJobResponseAllOfSourceOneOf1Docker) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableJobResponseAllOfSourceOneOf1Docker) UnmarshalJSON(src []byte) error {
+func (v *NullableBaseJobResponseAllOfSourceOneOf1Docker) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
