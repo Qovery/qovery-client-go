@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Git** | Pointer to [**NullableHelmRequestAllOfSourceGit**](HelmRequestAllOfSourceGit.md) |  | [optional] 
-**Repository** | Pointer to [**NullableHelmRequestAllOfSourceRepository**](HelmRequestAllOfSourceRepository.md) |  | [optional] 
+**GitRepository** | Pointer to [**NullableHelmGitRepositoryRequest**](HelmGitRepositoryRequest.md) |  | [optional] 
+**HelmRepository** | Pointer to [**NullableHelmRequestAllOfSourceHelmRepository**](HelmRequestAllOfSourceHelmRepository.md) |  | [optional] 
 
 ## Methods
 
@@ -26,76 +26,76 @@ NewHelmRequestAllOfSourceWithDefaults instantiates a new HelmRequestAllOfSource 
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetGit
+### GetGitRepository
 
-`func (o *HelmRequestAllOfSource) GetGit() HelmRequestAllOfSourceGit`
+`func (o *HelmRequestAllOfSource) GetGitRepository() HelmGitRepositoryRequest`
 
-GetGit returns the Git field if non-nil, zero value otherwise.
+GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
-### GetGitOk
+### GetGitRepositoryOk
 
-`func (o *HelmRequestAllOfSource) GetGitOk() (*HelmRequestAllOfSourceGit, bool)`
+`func (o *HelmRequestAllOfSource) GetGitRepositoryOk() (*HelmGitRepositoryRequest, bool)`
 
-GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
+GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGit
+### SetGitRepository
 
-`func (o *HelmRequestAllOfSource) SetGit(v HelmRequestAllOfSourceGit)`
+`func (o *HelmRequestAllOfSource) SetGitRepository(v HelmGitRepositoryRequest)`
 
-SetGit sets Git field to given value.
+SetGitRepository sets GitRepository field to given value.
 
-### HasGit
+### HasGitRepository
 
-`func (o *HelmRequestAllOfSource) HasGit() bool`
+`func (o *HelmRequestAllOfSource) HasGitRepository() bool`
 
-HasGit returns a boolean if a field has been set.
+HasGitRepository returns a boolean if a field has been set.
 
-### SetGitNil
+### SetGitRepositoryNil
 
-`func (o *HelmRequestAllOfSource) SetGitNil(b bool)`
+`func (o *HelmRequestAllOfSource) SetGitRepositoryNil(b bool)`
 
- SetGitNil sets the value for Git to be an explicit nil
+ SetGitRepositoryNil sets the value for GitRepository to be an explicit nil
 
-### UnsetGit
-`func (o *HelmRequestAllOfSource) UnsetGit()`
+### UnsetGitRepository
+`func (o *HelmRequestAllOfSource) UnsetGitRepository()`
 
-UnsetGit ensures that no value is present for Git, not even an explicit nil
-### GetRepository
+UnsetGitRepository ensures that no value is present for GitRepository, not even an explicit nil
+### GetHelmRepository
 
-`func (o *HelmRequestAllOfSource) GetRepository() HelmRequestAllOfSourceRepository`
+`func (o *HelmRequestAllOfSource) GetHelmRepository() HelmRequestAllOfSourceHelmRepository`
 
-GetRepository returns the Repository field if non-nil, zero value otherwise.
+GetHelmRepository returns the HelmRepository field if non-nil, zero value otherwise.
 
-### GetRepositoryOk
+### GetHelmRepositoryOk
 
-`func (o *HelmRequestAllOfSource) GetRepositoryOk() (*HelmRequestAllOfSourceRepository, bool)`
+`func (o *HelmRequestAllOfSource) GetHelmRepositoryOk() (*HelmRequestAllOfSourceHelmRepository, bool)`
 
-GetRepositoryOk returns a tuple with the Repository field if it's non-nil, zero value otherwise
+GetHelmRepositoryOk returns a tuple with the HelmRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRepository
+### SetHelmRepository
 
-`func (o *HelmRequestAllOfSource) SetRepository(v HelmRequestAllOfSourceRepository)`
+`func (o *HelmRequestAllOfSource) SetHelmRepository(v HelmRequestAllOfSourceHelmRepository)`
 
-SetRepository sets Repository field to given value.
+SetHelmRepository sets HelmRepository field to given value.
 
-### HasRepository
+### HasHelmRepository
 
-`func (o *HelmRequestAllOfSource) HasRepository() bool`
+`func (o *HelmRequestAllOfSource) HasHelmRepository() bool`
 
-HasRepository returns a boolean if a field has been set.
+HasHelmRepository returns a boolean if a field has been set.
 
-### SetRepositoryNil
+### SetHelmRepositoryNil
 
-`func (o *HelmRequestAllOfSource) SetRepositoryNil(b bool)`
+`func (o *HelmRequestAllOfSource) SetHelmRepositoryNil(b bool)`
 
- SetRepositoryNil sets the value for Repository to be an explicit nil
+ SetHelmRepositoryNil sets the value for HelmRepository to be an explicit nil
 
-### UnsetRepository
-`func (o *HelmRequestAllOfSource) UnsetRepository()`
+### UnsetHelmRepository
+`func (o *HelmRequestAllOfSource) UnsetHelmRepository()`
 
-UnsetRepository ensures that no value is present for Repository, not even an explicit nil
+UnsetHelmRepository ensures that no value is present for HelmRepository, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

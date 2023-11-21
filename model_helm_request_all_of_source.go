@@ -20,8 +20,8 @@ var _ MappedNullable = &HelmRequestAllOfSource{}
 
 // HelmRequestAllOfSource struct for HelmRequestAllOfSource
 type HelmRequestAllOfSource struct {
-	Git        NullableHelmRequestAllOfSourceGit        `json:"git,omitempty"`
-	Repository NullableHelmRequestAllOfSourceRepository `json:"repository,omitempty"`
+	GitRepository  NullableHelmGitRepositoryRequest             `json:"git_repository,omitempty"`
+	HelmRepository NullableHelmRequestAllOfSourceHelmRepository `json:"helm_repository,omitempty"`
 }
 
 // NewHelmRequestAllOfSource instantiates a new HelmRequestAllOfSource object
@@ -41,90 +41,90 @@ func NewHelmRequestAllOfSourceWithDefaults() *HelmRequestAllOfSource {
 	return &this
 }
 
-// GetGit returns the Git field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *HelmRequestAllOfSource) GetGit() HelmRequestAllOfSourceGit {
-	if o == nil || IsNil(o.Git.Get()) {
-		var ret HelmRequestAllOfSourceGit
+// GetGitRepository returns the GitRepository field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HelmRequestAllOfSource) GetGitRepository() HelmGitRepositoryRequest {
+	if o == nil || IsNil(o.GitRepository.Get()) {
+		var ret HelmGitRepositoryRequest
 		return ret
 	}
-	return *o.Git.Get()
+	return *o.GitRepository.Get()
 }
 
-// GetGitOk returns a tuple with the Git field value if set, nil otherwise
+// GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HelmRequestAllOfSource) GetGitOk() (*HelmRequestAllOfSourceGit, bool) {
+func (o *HelmRequestAllOfSource) GetGitRepositoryOk() (*HelmGitRepositoryRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Git.Get(), o.Git.IsSet()
+	return o.GitRepository.Get(), o.GitRepository.IsSet()
 }
 
-// HasGit returns a boolean if a field has been set.
-func (o *HelmRequestAllOfSource) HasGit() bool {
-	if o != nil && o.Git.IsSet() {
+// HasGitRepository returns a boolean if a field has been set.
+func (o *HelmRequestAllOfSource) HasGitRepository() bool {
+	if o != nil && o.GitRepository.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGit gets a reference to the given NullableHelmRequestAllOfSourceGit and assigns it to the Git field.
-func (o *HelmRequestAllOfSource) SetGit(v HelmRequestAllOfSourceGit) {
-	o.Git.Set(&v)
+// SetGitRepository gets a reference to the given NullableHelmGitRepositoryRequest and assigns it to the GitRepository field.
+func (o *HelmRequestAllOfSource) SetGitRepository(v HelmGitRepositoryRequest) {
+	o.GitRepository.Set(&v)
 }
 
-// SetGitNil sets the value for Git to be an explicit nil
-func (o *HelmRequestAllOfSource) SetGitNil() {
-	o.Git.Set(nil)
+// SetGitRepositoryNil sets the value for GitRepository to be an explicit nil
+func (o *HelmRequestAllOfSource) SetGitRepositoryNil() {
+	o.GitRepository.Set(nil)
 }
 
-// UnsetGit ensures that no value is present for Git, not even an explicit nil
-func (o *HelmRequestAllOfSource) UnsetGit() {
-	o.Git.Unset()
+// UnsetGitRepository ensures that no value is present for GitRepository, not even an explicit nil
+func (o *HelmRequestAllOfSource) UnsetGitRepository() {
+	o.GitRepository.Unset()
 }
 
-// GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *HelmRequestAllOfSource) GetRepository() HelmRequestAllOfSourceRepository {
-	if o == nil || IsNil(o.Repository.Get()) {
-		var ret HelmRequestAllOfSourceRepository
+// GetHelmRepository returns the HelmRepository field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HelmRequestAllOfSource) GetHelmRepository() HelmRequestAllOfSourceHelmRepository {
+	if o == nil || IsNil(o.HelmRepository.Get()) {
+		var ret HelmRequestAllOfSourceHelmRepository
 		return ret
 	}
-	return *o.Repository.Get()
+	return *o.HelmRepository.Get()
 }
 
-// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
+// GetHelmRepositoryOk returns a tuple with the HelmRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HelmRequestAllOfSource) GetRepositoryOk() (*HelmRequestAllOfSourceRepository, bool) {
+func (o *HelmRequestAllOfSource) GetHelmRepositoryOk() (*HelmRequestAllOfSourceHelmRepository, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Repository.Get(), o.Repository.IsSet()
+	return o.HelmRepository.Get(), o.HelmRepository.IsSet()
 }
 
-// HasRepository returns a boolean if a field has been set.
-func (o *HelmRequestAllOfSource) HasRepository() bool {
-	if o != nil && o.Repository.IsSet() {
+// HasHelmRepository returns a boolean if a field has been set.
+func (o *HelmRequestAllOfSource) HasHelmRepository() bool {
+	if o != nil && o.HelmRepository.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRepository gets a reference to the given NullableHelmRequestAllOfSourceRepository and assigns it to the Repository field.
-func (o *HelmRequestAllOfSource) SetRepository(v HelmRequestAllOfSourceRepository) {
-	o.Repository.Set(&v)
+// SetHelmRepository gets a reference to the given NullableHelmRequestAllOfSourceHelmRepository and assigns it to the HelmRepository field.
+func (o *HelmRequestAllOfSource) SetHelmRepository(v HelmRequestAllOfSourceHelmRepository) {
+	o.HelmRepository.Set(&v)
 }
 
-// SetRepositoryNil sets the value for Repository to be an explicit nil
-func (o *HelmRequestAllOfSource) SetRepositoryNil() {
-	o.Repository.Set(nil)
+// SetHelmRepositoryNil sets the value for HelmRepository to be an explicit nil
+func (o *HelmRequestAllOfSource) SetHelmRepositoryNil() {
+	o.HelmRepository.Set(nil)
 }
 
-// UnsetRepository ensures that no value is present for Repository, not even an explicit nil
-func (o *HelmRequestAllOfSource) UnsetRepository() {
-	o.Repository.Unset()
+// UnsetHelmRepository ensures that no value is present for HelmRepository, not even an explicit nil
+func (o *HelmRequestAllOfSource) UnsetHelmRepository() {
+	o.HelmRepository.Unset()
 }
 
 func (o HelmRequestAllOfSource) MarshalJSON() ([]byte, error) {
@@ -137,11 +137,11 @@ func (o HelmRequestAllOfSource) MarshalJSON() ([]byte, error) {
 
 func (o HelmRequestAllOfSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Git.IsSet() {
-		toSerialize["git"] = o.Git.Get()
+	if o.GitRepository.IsSet() {
+		toSerialize["git_repository"] = o.GitRepository.Get()
 	}
-	if o.Repository.IsSet() {
-		toSerialize["repository"] = o.Repository.Get()
+	if o.HelmRepository.IsSet() {
+		toSerialize["helm_repository"] = o.HelmRepository.Get()
 	}
 	return toSerialize, nil
 }

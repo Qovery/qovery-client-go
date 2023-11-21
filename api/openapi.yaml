@@ -23076,6 +23076,34 @@ components:
         - source
         - tag
         type: object
+    HelmGitRepositoryRequest:
+      nullable: true
+      properties:
+        url:
+          description: application git repository URL
+          example: https://github.com/Qovery/simple-node-app
+          type: string
+        branch:
+          description: |
+            Name of the branch to use. This is optional
+            If not specified, then the branch used is the `main` or `master` one
+          example: feat/text_xxx
+          type: string
+        root_path:
+          default: /
+          description: indicates the root path of the application.
+          type: string
+        git_token_id:
+          description: The git token id on Qovery side
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - name
+      - owner
+      - provider
+      - url
+      type: object
     deleteMember_request:
       properties:
         user_id:
@@ -23955,14 +23983,7 @@ components:
           type: string
       type: object
       example: null
-    HelmRequest_allOf_source_git:
-      nullable: true
-      properties:
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
-      type: object
-      example: null
-    HelmRequest_allOf_source_repository:
+    HelmRequest_allOf_source_helm_repository:
       nullable: true
       properties:
         repository:
@@ -23980,10 +24001,10 @@ components:
       example: null
     HelmRequest_allOf_source:
       properties:
-        git:
-          $ref: '#/components/schemas/HelmRequest_allOf_source_git'
-        repository:
-          $ref: '#/components/schemas/HelmRequest_allOf_source_repository'
+        git_repository:
+          $ref: '#/components/schemas/HelmGitRepositoryRequest'
+        helm_repository:
+          $ref: '#/components/schemas/HelmRequest_allOf_source_helm_repository'
       type: object
       example: null
     HelmRequest_allOf_values_override_file_raw_values:

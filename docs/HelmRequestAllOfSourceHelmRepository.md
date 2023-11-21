@@ -1,4 +1,4 @@
-# HelmRequestAllOfSourceRepository
+# HelmRequestAllOfSourceHelmRepository
 
 ## Properties
 
@@ -10,105 +10,105 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewHelmRequestAllOfSourceRepository
+### NewHelmRequestAllOfSourceHelmRepository
 
-`func NewHelmRequestAllOfSourceRepository() *HelmRequestAllOfSourceRepository`
+`func NewHelmRequestAllOfSourceHelmRepository() *HelmRequestAllOfSourceHelmRepository`
 
-NewHelmRequestAllOfSourceRepository instantiates a new HelmRequestAllOfSourceRepository object
+NewHelmRequestAllOfSourceHelmRepository instantiates a new HelmRequestAllOfSourceHelmRepository object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewHelmRequestAllOfSourceRepositoryWithDefaults
+### NewHelmRequestAllOfSourceHelmRepositoryWithDefaults
 
-`func NewHelmRequestAllOfSourceRepositoryWithDefaults() *HelmRequestAllOfSourceRepository`
+`func NewHelmRequestAllOfSourceHelmRepositoryWithDefaults() *HelmRequestAllOfSourceHelmRepository`
 
-NewHelmRequestAllOfSourceRepositoryWithDefaults instantiates a new HelmRequestAllOfSourceRepository object
+NewHelmRequestAllOfSourceHelmRepositoryWithDefaults instantiates a new HelmRequestAllOfSourceHelmRepository object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetRepository
 
-`func (o *HelmRequestAllOfSourceRepository) GetRepository() string`
+`func (o *HelmRequestAllOfSourceHelmRepository) GetRepository() string`
 
 GetRepository returns the Repository field if non-nil, zero value otherwise.
 
 ### GetRepositoryOk
 
-`func (o *HelmRequestAllOfSourceRepository) GetRepositoryOk() (*string, bool)`
+`func (o *HelmRequestAllOfSourceHelmRepository) GetRepositoryOk() (*string, bool)`
 
 GetRepositoryOk returns a tuple with the Repository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRepository
 
-`func (o *HelmRequestAllOfSourceRepository) SetRepository(v string)`
+`func (o *HelmRequestAllOfSourceHelmRepository) SetRepository(v string)`
 
 SetRepository sets Repository field to given value.
 
 ### HasRepository
 
-`func (o *HelmRequestAllOfSourceRepository) HasRepository() bool`
+`func (o *HelmRequestAllOfSourceHelmRepository) HasRepository() bool`
 
 HasRepository returns a boolean if a field has been set.
 
 ### SetRepositoryNil
 
-`func (o *HelmRequestAllOfSourceRepository) SetRepositoryNil(b bool)`
+`func (o *HelmRequestAllOfSourceHelmRepository) SetRepositoryNil(b bool)`
 
  SetRepositoryNil sets the value for Repository to be an explicit nil
 
 ### UnsetRepository
-`func (o *HelmRequestAllOfSourceRepository) UnsetRepository()`
+`func (o *HelmRequestAllOfSourceHelmRepository) UnsetRepository()`
 
 UnsetRepository ensures that no value is present for Repository, not even an explicit nil
 ### GetChartName
 
-`func (o *HelmRequestAllOfSourceRepository) GetChartName() string`
+`func (o *HelmRequestAllOfSourceHelmRepository) GetChartName() string`
 
 GetChartName returns the ChartName field if non-nil, zero value otherwise.
 
 ### GetChartNameOk
 
-`func (o *HelmRequestAllOfSourceRepository) GetChartNameOk() (*string, bool)`
+`func (o *HelmRequestAllOfSourceHelmRepository) GetChartNameOk() (*string, bool)`
 
 GetChartNameOk returns a tuple with the ChartName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChartName
 
-`func (o *HelmRequestAllOfSourceRepository) SetChartName(v string)`
+`func (o *HelmRequestAllOfSourceHelmRepository) SetChartName(v string)`
 
 SetChartName sets ChartName field to given value.
 
 ### HasChartName
 
-`func (o *HelmRequestAllOfSourceRepository) HasChartName() bool`
+`func (o *HelmRequestAllOfSourceHelmRepository) HasChartName() bool`
 
 HasChartName returns a boolean if a field has been set.
 
 ### GetChartVersion
 
-`func (o *HelmRequestAllOfSourceRepository) GetChartVersion() string`
+`func (o *HelmRequestAllOfSourceHelmRepository) GetChartVersion() string`
 
 GetChartVersion returns the ChartVersion field if non-nil, zero value otherwise.
 
 ### GetChartVersionOk
 
-`func (o *HelmRequestAllOfSourceRepository) GetChartVersionOk() (*string, bool)`
+`func (o *HelmRequestAllOfSourceHelmRepository) GetChartVersionOk() (*string, bool)`
 
 GetChartVersionOk returns a tuple with the ChartVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChartVersion
 
-`func (o *HelmRequestAllOfSourceRepository) SetChartVersion(v string)`
+`func (o *HelmRequestAllOfSourceHelmRepository) SetChartVersion(v string)`
 
 SetChartVersion sets ChartVersion field to given value.
 
 ### HasChartVersion
 
-`func (o *HelmRequestAllOfSourceRepository) HasChartVersion() bool`
+`func (o *HelmRequestAllOfSourceHelmRepository) HasChartVersion() bool`
 
 HasChartVersion returns a boolean if a field has been set.
 
