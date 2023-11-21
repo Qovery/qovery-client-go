@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **LastDeploymentState** | [**StateEnum**](StateEnum.md) |  | 
 **LastDeploymentId** | Pointer to **NullableString** |  | [optional] 
 **TotalDeploymentDurationInSeconds** | Pointer to **NullableInt32** |  | [optional] 
-**Origin** | Pointer to [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | [optional] 
-**TriggeredBy** | Pointer to **string** |  | [optional] 
+**Origin** | Pointer to [**NullableEnvironmentStatusEventOriginEnum**](EnvironmentStatusEventOriginEnum.md) |  | [optional] 
+**TriggeredBy** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -199,20 +199,20 @@ HasTotalDeploymentDurationInSeconds returns a boolean if a field has been set.
 UnsetTotalDeploymentDurationInSeconds ensures that no value is present for TotalDeploymentDurationInSeconds, not even an explicit nil
 ### GetOrigin
 
-`func (o *EnvironmentStatus) GetOrigin() OrganizationEventOrigin`
+`func (o *EnvironmentStatus) GetOrigin() EnvironmentStatusEventOriginEnum`
 
 GetOrigin returns the Origin field if non-nil, zero value otherwise.
 
 ### GetOriginOk
 
-`func (o *EnvironmentStatus) GetOriginOk() (*OrganizationEventOrigin, bool)`
+`func (o *EnvironmentStatus) GetOriginOk() (*EnvironmentStatusEventOriginEnum, bool)`
 
 GetOriginOk returns a tuple with the Origin field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrigin
 
-`func (o *EnvironmentStatus) SetOrigin(v OrganizationEventOrigin)`
+`func (o *EnvironmentStatus) SetOrigin(v EnvironmentStatusEventOriginEnum)`
 
 SetOrigin sets Origin field to given value.
 
@@ -222,6 +222,16 @@ SetOrigin sets Origin field to given value.
 
 HasOrigin returns a boolean if a field has been set.
 
+### SetOriginNil
+
+`func (o *EnvironmentStatus) SetOriginNil(b bool)`
+
+ SetOriginNil sets the value for Origin to be an explicit nil
+
+### UnsetOrigin
+`func (o *EnvironmentStatus) UnsetOrigin()`
+
+UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
 ### GetTriggeredBy
 
 `func (o *EnvironmentStatus) GetTriggeredBy() string`
@@ -247,6 +257,16 @@ SetTriggeredBy sets TriggeredBy field to given value.
 
 HasTriggeredBy returns a boolean if a field has been set.
 
+### SetTriggeredByNil
+
+`func (o *EnvironmentStatus) SetTriggeredByNil(b bool)`
+
+ SetTriggeredByNil sets the value for TriggeredBy to be an explicit nil
+
+### UnsetTriggeredBy
+`func (o *EnvironmentStatus) UnsetTriggeredBy()`
+
+UnsetTriggeredBy ensures that no value is present for TriggeredBy, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

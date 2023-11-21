@@ -18528,8 +18528,9 @@ components:
           nullable: true
           type: integer
         origin:
-          $ref: '#/components/schemas/OrganizationEventOrigin'
+          $ref: '#/components/schemas/EnvironmentStatusEventOriginEnum'
         triggered_by:
+          nullable: true
           type: string
       required:
       - id
@@ -18694,6 +18695,18 @@ components:
             $ref: '#/components/schemas/Status'
           type: array
       type: object
+    EnvironmentStatusEventOriginEnum:
+      description: Origin of the organization event
+      enum:
+      - API
+      - CLI
+      - CONSOLE
+      - GIT
+      - QOVERY_INTERNAL
+      - TERRAFORM_PROVIDER
+      example: API
+      nullable: true
+      type: string
     EnvironmentStatusesWithStages:
       example:
         environment:

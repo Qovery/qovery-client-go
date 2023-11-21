@@ -333,6 +333,7 @@ docs/EnvironmentServiceIdsAllRequest.md
 docs/EnvironmentStats.md
 docs/EnvironmentStatsResponseList.md
 docs/EnvironmentStatus.md
+docs/EnvironmentStatusEventOriginEnum.md
 docs/EnvironmentStatusList.md
 docs/EnvironmentStatuses.md
 docs/EnvironmentStatusesWithStages.md
@@ -832,6 +833,7 @@ model_environment_service_ids_all_request.go
 model_environment_stats.go
 model_environment_stats_response_list.go
 model_environment_status.go
+model_environment_status_event_origin_enum.go
 model_environment_status_list.go
 model_environment_statuses.go
 model_environment_statuses_with_stages.go

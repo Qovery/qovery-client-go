@@ -691,6 +691,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentStats](docs/EnvironmentStats.md)
  - [EnvironmentStatsResponseList](docs/EnvironmentStatsResponseList.md)
  - [EnvironmentStatus](docs/EnvironmentStatus.md)
+ - [EnvironmentStatusEventOriginEnum](docs/EnvironmentStatusEventOriginEnum.md)
  - [EnvironmentStatusList](docs/EnvironmentStatusList.md)
  - [EnvironmentStatuses](docs/EnvironmentStatuses.md)
  - [EnvironmentStatusesWithStages](docs/EnvironmentStatusesWithStages.md)
