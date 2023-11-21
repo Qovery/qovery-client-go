@@ -17347,6 +17347,8 @@ components:
               \ This field is null for container DB."
             example: db.t3.medium
             type: string
+        required:
+        - environment
         type: object
     DatabaseAccessibilityEnum:
       default: PRIVATE

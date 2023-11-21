@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **InstanceType** | Pointer to **string** | Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field is null for container DB. | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
-**Environment** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
+**Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewDatabase
 
-`func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, ) *Database`
+`func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, environment ReferenceObject, ) *Database`
 
 NewDatabase instantiates a new Database object
 This constructor will assign default values to properties that have it defined,
@@ -357,11 +357,6 @@ and a boolean to check if the value has been set.
 
 SetEnvironment sets Environment field to given value.
 
-### HasEnvironment
-
-`func (o *Database) HasEnvironment() bool`
-
-HasEnvironment returns a boolean if a field has been set.
 
 ### GetHost
 

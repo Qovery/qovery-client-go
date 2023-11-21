@@ -39,10 +39,10 @@ type Database struct {
 	// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
-	Storage     *int32           `json:"storage,omitempty"`
-	Environment *ReferenceObject `json:"environment,omitempty"`
-	Host        *string          `json:"host,omitempty"`
-	Port        *int32           `json:"port,omitempty"`
+	Storage     *int32          `json:"storage,omitempty"`
+	Environment ReferenceObject `json:"environment"`
+	Host        *string         `json:"host,omitempty"`
+	Port        *int32          `json:"port,omitempty"`
 	// Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -55,7 +55,7 @@ type Database struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum) *Database {
+func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, environment ReferenceObject) *Database {
 	this := Database{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -69,6 +69,7 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 	this.Cpu = &cpu
 	var storage int32 = 10
 	this.Storage = &storage
+	this.Environment = environment
 	return &this
 }
 
@@ -454,36 +455,28 @@ func (o *Database) SetStorage(v int32) {
 	o.Storage = &v
 }
 
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
+// GetEnvironment returns the Environment field value
 func (o *Database) GetEnvironment() ReferenceObject {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Environment
+
+	return o.Environment
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// GetEnvironmentOk returns a tuple with the Environment field value
 // and a boolean to check if the value has been set.
 func (o *Database) GetEnvironmentOk() (*ReferenceObject, bool) {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Environment, true
+	return &o.Environment, true
 }
 
-// HasEnvironment returns a boolean if a field has been set.
-func (o *Database) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given ReferenceObject and assigns it to the Environment field.
+// SetEnvironment sets field value
 func (o *Database) SetEnvironment(v ReferenceObject) {
-	o.Environment = &v
+	o.Environment = v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -683,9 +676,7 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
-	if !IsNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
+	toSerialize["environment"] = o.Environment
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
 	}
