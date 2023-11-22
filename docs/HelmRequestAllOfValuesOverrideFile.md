@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Raw** | Pointer to [**NullableHelmRequestAllOfValuesOverrideFileRaw**](HelmRequestAllOfValuesOverrideFileRaw.md) |  | [optional] 
-**Git** | Pointer to [**NullableHelmRequestAllOfValuesOverrideFileGit**](HelmRequestAllOfValuesOverrideFileGit.md) |  | [optional] 
+**GitRepository** | Pointer to [**HelmValuesGitRepositoryRequest**](HelmValuesGitRepositoryRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -61,41 +61,31 @@ HasRaw returns a boolean if a field has been set.
 `func (o *HelmRequestAllOfValuesOverrideFile) UnsetRaw()`
 
 UnsetRaw ensures that no value is present for Raw, not even an explicit nil
-### GetGit
+### GetGitRepository
 
-`func (o *HelmRequestAllOfValuesOverrideFile) GetGit() HelmRequestAllOfValuesOverrideFileGit`
+`func (o *HelmRequestAllOfValuesOverrideFile) GetGitRepository() HelmValuesGitRepositoryRequest`
 
-GetGit returns the Git field if non-nil, zero value otherwise.
+GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
-### GetGitOk
+### GetGitRepositoryOk
 
-`func (o *HelmRequestAllOfValuesOverrideFile) GetGitOk() (*HelmRequestAllOfValuesOverrideFileGit, bool)`
+`func (o *HelmRequestAllOfValuesOverrideFile) GetGitRepositoryOk() (*HelmValuesGitRepositoryRequest, bool)`
 
-GetGitOk returns a tuple with the Git field if it's non-nil, zero value otherwise
+GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGit
+### SetGitRepository
 
-`func (o *HelmRequestAllOfValuesOverrideFile) SetGit(v HelmRequestAllOfValuesOverrideFileGit)`
+`func (o *HelmRequestAllOfValuesOverrideFile) SetGitRepository(v HelmValuesGitRepositoryRequest)`
 
-SetGit sets Git field to given value.
+SetGitRepository sets GitRepository field to given value.
 
-### HasGit
+### HasGitRepository
 
-`func (o *HelmRequestAllOfValuesOverrideFile) HasGit() bool`
+`func (o *HelmRequestAllOfValuesOverrideFile) HasGitRepository() bool`
 
-HasGit returns a boolean if a field has been set.
+HasGitRepository returns a boolean if a field has been set.
 
-### SetGitNil
-
-`func (o *HelmRequestAllOfValuesOverrideFile) SetGitNil(b bool)`
-
- SetGitNil sets the value for Git to be an explicit nil
-
-### UnsetGit
-`func (o *HelmRequestAllOfValuesOverrideFile) UnsetGit()`
-
-UnsetGit ensures that no value is present for Git, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

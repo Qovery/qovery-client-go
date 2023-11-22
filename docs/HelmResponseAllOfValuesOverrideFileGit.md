@@ -1,4 +1,4 @@
-# HelmRequestAllOfValuesOverrideFileGit
+# HelmResponseAllOfValuesOverrideFileGit
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewHelmRequestAllOfValuesOverrideFileGit
+### NewHelmResponseAllOfValuesOverrideFileGit
 
-`func NewHelmRequestAllOfValuesOverrideFileGit() *HelmRequestAllOfValuesOverrideFileGit`
+`func NewHelmResponseAllOfValuesOverrideFileGit() *HelmResponseAllOfValuesOverrideFileGit`
 
-NewHelmRequestAllOfValuesOverrideFileGit instantiates a new HelmRequestAllOfValuesOverrideFileGit object
+NewHelmResponseAllOfValuesOverrideFileGit instantiates a new HelmResponseAllOfValuesOverrideFileGit object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewHelmRequestAllOfValuesOverrideFileGitWithDefaults
+### NewHelmResponseAllOfValuesOverrideFileGitWithDefaults
 
-`func NewHelmRequestAllOfValuesOverrideFileGitWithDefaults() *HelmRequestAllOfValuesOverrideFileGit`
+`func NewHelmResponseAllOfValuesOverrideFileGitWithDefaults() *HelmResponseAllOfValuesOverrideFileGit`
 
-NewHelmRequestAllOfValuesOverrideFileGitWithDefaults instantiates a new HelmRequestAllOfValuesOverrideFileGit object
+NewHelmResponseAllOfValuesOverrideFileGitWithDefaults instantiates a new HelmResponseAllOfValuesOverrideFileGit object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetGitRepository
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGitRepositoryRequest`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGitRepositoryRequest`
 
 GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
 ### GetGitRepositoryOk
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool)`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool)`
 
 GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGitRepository
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) SetGitRepository(v ApplicationGitRepositoryRequest)`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) SetGitRepository(v ApplicationGitRepositoryRequest)`
 
 SetGitRepository sets GitRepository field to given value.
 
 ### HasGitRepository
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) HasGitRepository() bool`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) HasGitRepository() bool`
 
 HasGitRepository returns a boolean if a field has been set.
 
 ### GetPaths
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) GetPaths() []string`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) GetPaths() []string`
 
 GetPaths returns the Paths field if non-nil, zero value otherwise.
 
 ### GetPathsOk
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) GetPathsOk() (*[]string, bool)`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) GetPathsOk() (*[]string, bool)`
 
 GetPathsOk returns a tuple with the Paths field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPaths
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) SetPaths(v []string)`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) SetPaths(v []string)`
 
 SetPaths sets Paths field to given value.
 
 ### HasPaths
 
-`func (o *HelmRequestAllOfValuesOverrideFileGit) HasPaths() bool`
+`func (o *HelmResponseAllOfValuesOverrideFileGit) HasPaths() bool`
 
 HasPaths returns a boolean if a field has been set.
 

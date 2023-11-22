@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **Arguments** | **[]string** | The extra arguments to pass to helm | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
-**ValuesOverride** | [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | 
+**ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 
 ## Methods
 
 ### NewHelmResponse
 
-`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmRequestAllOfValuesOverride, ) *HelmResponse`
+`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, ) *HelmResponse`
 
 NewHelmResponse instantiates a new HelmResponse object
 This constructor will assign default values to properties that have it defined,
@@ -294,20 +294,20 @@ SetAllowClusterWideResources sets AllowClusterWideResources field to given value
 
 ### GetValuesOverride
 
-`func (o *HelmResponse) GetValuesOverride() HelmRequestAllOfValuesOverride`
+`func (o *HelmResponse) GetValuesOverride() HelmResponseAllOfValuesOverride`
 
 GetValuesOverride returns the ValuesOverride field if non-nil, zero value otherwise.
 
 ### GetValuesOverrideOk
 
-`func (o *HelmResponse) GetValuesOverrideOk() (*HelmRequestAllOfValuesOverride, bool)`
+`func (o *HelmResponse) GetValuesOverrideOk() (*HelmResponseAllOfValuesOverride, bool)`
 
 GetValuesOverrideOk returns a tuple with the ValuesOverride field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValuesOverride
 
-`func (o *HelmResponse) SetValuesOverride(v HelmRequestAllOfValuesOverride)`
+`func (o *HelmResponse) SetValuesOverride(v HelmResponseAllOfValuesOverride)`
 
 SetValuesOverride sets ValuesOverride field to given value.
 

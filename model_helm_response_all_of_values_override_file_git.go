@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the HelmRequestAllOfValuesOverrideFileGit type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HelmRequestAllOfValuesOverrideFileGit{}
+// checks if the HelmResponseAllOfValuesOverrideFileGit type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmResponseAllOfValuesOverrideFileGit{}
 
-// HelmRequestAllOfValuesOverrideFileGit struct for HelmRequestAllOfValuesOverrideFileGit
-type HelmRequestAllOfValuesOverrideFileGit struct {
+// HelmResponseAllOfValuesOverrideFileGit struct for HelmResponseAllOfValuesOverrideFileGit
+type HelmResponseAllOfValuesOverrideFileGit struct {
 	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
 	// List of path inside your git repository to locate values file. Must start by a /
 	Paths []string `json:"paths,omitempty"`
 }
 
-// NewHelmRequestAllOfValuesOverrideFileGit instantiates a new HelmRequestAllOfValuesOverrideFileGit object
+// NewHelmResponseAllOfValuesOverrideFileGit instantiates a new HelmResponseAllOfValuesOverrideFileGit object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmRequestAllOfValuesOverrideFileGit() *HelmRequestAllOfValuesOverrideFileGit {
-	this := HelmRequestAllOfValuesOverrideFileGit{}
+func NewHelmResponseAllOfValuesOverrideFileGit() *HelmResponseAllOfValuesOverrideFileGit {
+	this := HelmResponseAllOfValuesOverrideFileGit{}
 	return &this
 }
 
-// NewHelmRequestAllOfValuesOverrideFileGitWithDefaults instantiates a new HelmRequestAllOfValuesOverrideFileGit object
+// NewHelmResponseAllOfValuesOverrideFileGitWithDefaults instantiates a new HelmResponseAllOfValuesOverrideFileGit object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewHelmRequestAllOfValuesOverrideFileGitWithDefaults() *HelmRequestAllOfValuesOverrideFileGit {
-	this := HelmRequestAllOfValuesOverrideFileGit{}
+func NewHelmResponseAllOfValuesOverrideFileGitWithDefaults() *HelmResponseAllOfValuesOverrideFileGit {
+	this := HelmResponseAllOfValuesOverrideFileGit{}
 	return &this
 }
 
 // GetGitRepository returns the GitRepository field value if set, zero value otherwise.
-func (o *HelmRequestAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGitRepositoryRequest {
+func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGitRepositoryRequest {
 	if o == nil || IsNil(o.GitRepository) {
 		var ret ApplicationGitRepositoryRequest
 		return ret
@@ -53,7 +53,7 @@ func (o *HelmRequestAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGi
 
 // GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmRequestAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
+func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
 	if o == nil || IsNil(o.GitRepository) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *HelmRequestAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*Applicati
 }
 
 // HasGitRepository returns a boolean if a field has been set.
-func (o *HelmRequestAllOfValuesOverrideFileGit) HasGitRepository() bool {
+func (o *HelmResponseAllOfValuesOverrideFileGit) HasGitRepository() bool {
 	if o != nil && !IsNil(o.GitRepository) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *HelmRequestAllOfValuesOverrideFileGit) HasGitRepository() bool {
 }
 
 // SetGitRepository gets a reference to the given ApplicationGitRepositoryRequest and assigns it to the GitRepository field.
-func (o *HelmRequestAllOfValuesOverrideFileGit) SetGitRepository(v ApplicationGitRepositoryRequest) {
+func (o *HelmResponseAllOfValuesOverrideFileGit) SetGitRepository(v ApplicationGitRepositoryRequest) {
 	o.GitRepository = &v
 }
 
 // GetPaths returns the Paths field value if set, zero value otherwise.
-func (o *HelmRequestAllOfValuesOverrideFileGit) GetPaths() []string {
+func (o *HelmResponseAllOfValuesOverrideFileGit) GetPaths() []string {
 	if o == nil || IsNil(o.Paths) {
 		var ret []string
 		return ret
@@ -85,7 +85,7 @@ func (o *HelmRequestAllOfValuesOverrideFileGit) GetPaths() []string {
 
 // GetPathsOk returns a tuple with the Paths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmRequestAllOfValuesOverrideFileGit) GetPathsOk() ([]string, bool) {
+func (o *HelmResponseAllOfValuesOverrideFileGit) GetPathsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Paths) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *HelmRequestAllOfValuesOverrideFileGit) GetPathsOk() ([]string, bool) {
 }
 
 // HasPaths returns a boolean if a field has been set.
-func (o *HelmRequestAllOfValuesOverrideFileGit) HasPaths() bool {
+func (o *HelmResponseAllOfValuesOverrideFileGit) HasPaths() bool {
 	if o != nil && !IsNil(o.Paths) {
 		return true
 	}
@@ -102,11 +102,11 @@ func (o *HelmRequestAllOfValuesOverrideFileGit) HasPaths() bool {
 }
 
 // SetPaths gets a reference to the given []string and assigns it to the Paths field.
-func (o *HelmRequestAllOfValuesOverrideFileGit) SetPaths(v []string) {
+func (o *HelmResponseAllOfValuesOverrideFileGit) SetPaths(v []string) {
 	o.Paths = v
 }
 
-func (o HelmRequestAllOfValuesOverrideFileGit) MarshalJSON() ([]byte, error) {
+func (o HelmResponseAllOfValuesOverrideFileGit) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -114,7 +114,7 @@ func (o HelmRequestAllOfValuesOverrideFileGit) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o HelmRequestAllOfValuesOverrideFileGit) ToMap() (map[string]interface{}, error) {
+func (o HelmResponseAllOfValuesOverrideFileGit) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
@@ -125,38 +125,38 @@ func (o HelmRequestAllOfValuesOverrideFileGit) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-type NullableHelmRequestAllOfValuesOverrideFileGit struct {
-	value *HelmRequestAllOfValuesOverrideFileGit
+type NullableHelmResponseAllOfValuesOverrideFileGit struct {
+	value *HelmResponseAllOfValuesOverrideFileGit
 	isSet bool
 }
 
-func (v NullableHelmRequestAllOfValuesOverrideFileGit) Get() *HelmRequestAllOfValuesOverrideFileGit {
+func (v NullableHelmResponseAllOfValuesOverrideFileGit) Get() *HelmResponseAllOfValuesOverrideFileGit {
 	return v.value
 }
 
-func (v *NullableHelmRequestAllOfValuesOverrideFileGit) Set(val *HelmRequestAllOfValuesOverrideFileGit) {
+func (v *NullableHelmResponseAllOfValuesOverrideFileGit) Set(val *HelmResponseAllOfValuesOverrideFileGit) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableHelmRequestAllOfValuesOverrideFileGit) IsSet() bool {
+func (v NullableHelmResponseAllOfValuesOverrideFileGit) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableHelmRequestAllOfValuesOverrideFileGit) Unset() {
+func (v *NullableHelmResponseAllOfValuesOverrideFileGit) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableHelmRequestAllOfValuesOverrideFileGit(val *HelmRequestAllOfValuesOverrideFileGit) *NullableHelmRequestAllOfValuesOverrideFileGit {
-	return &NullableHelmRequestAllOfValuesOverrideFileGit{value: val, isSet: true}
+func NewNullableHelmResponseAllOfValuesOverrideFileGit(val *HelmResponseAllOfValuesOverrideFileGit) *NullableHelmResponseAllOfValuesOverrideFileGit {
+	return &NullableHelmResponseAllOfValuesOverrideFileGit{value: val, isSet: true}
 }
 
-func (v NullableHelmRequestAllOfValuesOverrideFileGit) MarshalJSON() ([]byte, error) {
+func (v NullableHelmResponseAllOfValuesOverrideFileGit) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableHelmRequestAllOfValuesOverrideFileGit) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmResponseAllOfValuesOverrideFileGit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -37,15 +37,15 @@ type HelmResponse struct {
 	// The extra arguments to pass to helm
 	Arguments []string `json:"arguments"`
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
-	AllowClusterWideResources bool                           `json:"allow_cluster_wide_resources"`
-	ValuesOverride            HelmRequestAllOfValuesOverride `json:"values_override"`
+	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
+	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
 }
 
 // NewHelmResponse instantiates a new HelmResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmRequestAllOfValuesOverride) *HelmResponse {
+func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride) *HelmResponse {
 	this := HelmResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -383,9 +383,9 @@ func (o *HelmResponse) SetAllowClusterWideResources(v bool) {
 }
 
 // GetValuesOverride returns the ValuesOverride field value
-func (o *HelmResponse) GetValuesOverride() HelmRequestAllOfValuesOverride {
+func (o *HelmResponse) GetValuesOverride() HelmResponseAllOfValuesOverride {
 	if o == nil {
-		var ret HelmRequestAllOfValuesOverride
+		var ret HelmResponseAllOfValuesOverride
 		return ret
 	}
 
@@ -394,7 +394,7 @@ func (o *HelmResponse) GetValuesOverride() HelmRequestAllOfValuesOverride {
 
 // GetValuesOverrideOk returns a tuple with the ValuesOverride field value
 // and a boolean to check if the value has been set.
-func (o *HelmResponse) GetValuesOverrideOk() (*HelmRequestAllOfValuesOverride, bool) {
+func (o *HelmResponse) GetValuesOverrideOk() (*HelmResponseAllOfValuesOverride, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -402,7 +402,7 @@ func (o *HelmResponse) GetValuesOverrideOk() (*HelmRequestAllOfValuesOverride, b
 }
 
 // SetValuesOverride sets field value
-func (o *HelmResponse) SetValuesOverride(v HelmRequestAllOfValuesOverride) {
+func (o *HelmResponse) SetValuesOverride(v HelmResponseAllOfValuesOverride) {
 	o.ValuesOverride = v
 }
 

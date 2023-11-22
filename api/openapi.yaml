@@ -20285,7 +20285,7 @@ components:
               Setting this flag to true, requires special rights
             type: boolean
           values_override:
-            $ref: '#/components/schemas/HelmRequest_allOf_values_override'
+            $ref: '#/components/schemas/HelmResponse_allOf_values_override'
         required:
         - allow_cluster_wide_resources
         - arguments
@@ -23092,7 +23092,6 @@ components:
         - tag
         type: object
     HelmGitRepositoryRequest:
-      nullable: true
       properties:
         url:
           description: application git repository URL
@@ -23117,6 +23116,34 @@ components:
       - name
       - owner
       - provider
+      - url
+      type: object
+    HelmValuesGitRepositoryRequest:
+      properties:
+        url:
+          description: application git repository URL
+          example: https://github.com/Qovery/simple-node-app
+          type: string
+        branch:
+          description: |
+            Name of the branch to use. This is optional
+            If not specified, then the branch used is the `main` or `master` one
+          example: feat/text_xxx
+          type: string
+        paths:
+          description: List of path inside your git repository to locate values file.
+            Must start by a /
+          items:
+            type: string
+          type: array
+        git_token_id:
+          description: The git token id on Qovery side
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - branch
+      - paths
       - url
       type: object
     deleteMember_request:
@@ -23998,30 +24025,6 @@ components:
           type: string
       type: object
       example: null
-    HelmRequest_allOf_source_helm_repository:
-      nullable: true
-      properties:
-        repository:
-          description: The id of the helm repository
-          format: UUID
-          nullable: true
-          type: string
-        chart_name:
-          description: The name of the chart in the repository
-          type: string
-        chart_version:
-          description: The version of the chart to use
-          type: string
-      type: object
-      example: null
-    HelmRequest_allOf_source:
-      properties:
-        git_repository:
-          $ref: '#/components/schemas/HelmGitRepositoryRequest'
-        helm_repository:
-          $ref: '#/components/schemas/HelmRequest_allOf_source_helm_repository'
-      type: object
-      example: null
     HelmRequest_allOf_values_override_file_raw_values:
       properties:
         name:
@@ -24041,26 +24044,13 @@ components:
           type: array
       type: object
       example: null
-    HelmRequest_allOf_values_override_file_git:
-      nullable: true
-      properties:
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
-        paths:
-          description: List of path inside your git repository to locate values file.
-            Must start by a /
-          items:
-            type: string
-          type: array
-      type: object
-      example: null
     HelmRequest_allOf_values_override_file:
       nullable: true
       properties:
         raw:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_raw'
-        git:
-          $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_git'
+        git_repository:
+          $ref: '#/components/schemas/HelmValuesGitRepositoryRequest'
       type: object
       example: null
     HelmRequest_allOf_values_override:
@@ -24089,6 +24079,34 @@ components:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
       type: object
       example: null
+    HelmRequest_allOf_source_oneOf:
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/HelmGitRepositoryRequest'
+      type: object
+    HelmRequest_allOf_source_oneOf_1_helm_repository:
+      properties:
+        repository:
+          description: The id of the helm repository
+          format: UUID
+          nullable: true
+          type: string
+        chart_name:
+          description: The name of the chart in the repository
+          type: string
+        chart_version:
+          description: The version of the chart to use
+          type: string
+      type: object
+    HelmRequest_allOf_source_oneOf_1:
+      properties:
+        helm_repository:
+          $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1_helm_repository'
+      type: object
+    HelmRequest_allOf_source:
+      oneOf:
+      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf'
+      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1'
     HelmResponse_allOf_ports:
       properties:
         id:
@@ -24116,6 +24134,54 @@ components:
       - internal_port
       - protocol
       - service_name
+      type: object
+      example: null
+    HelmResponse_allOf_values_override_file_git:
+      nullable: true
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+        paths:
+          description: List of path inside your git repository to locate values file.
+            Must start by a /
+          items:
+            type: string
+          type: array
+      type: object
+      example: null
+    HelmResponse_allOf_values_override_file:
+      nullable: true
+      properties:
+        raw:
+          $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_raw'
+        git:
+          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_git'
+      type: object
+      example: null
+    HelmResponse_allOf_values_override:
+      description: |
+        Specify helm values you want to set or override
+      properties:
+        set:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        set_string:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        set_json:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        file:
+          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file'
       type: object
       example: null
     HelmResponse_allOf_source_oneOf_git:
