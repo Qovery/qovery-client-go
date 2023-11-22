@@ -24,14 +24,14 @@ import (
 type ApplicationsAPIService service
 
 type ApiCloneApplicationRequest struct {
-	ctx                     context.Context
-	ApiService              *ApplicationsAPIService
-	applicationId           string
-	cloneApplicationRequest *CloneApplicationRequest
+	ctx                 context.Context
+	ApiService          *ApplicationsAPIService
+	applicationId       string
+	cloneServiceRequest *CloneServiceRequest
 }
 
-func (r ApiCloneApplicationRequest) CloneApplicationRequest(cloneApplicationRequest CloneApplicationRequest) ApiCloneApplicationRequest {
-	r.cloneApplicationRequest = &cloneApplicationRequest
+func (r ApiCloneApplicationRequest) CloneServiceRequest(cloneServiceRequest CloneServiceRequest) ApiCloneApplicationRequest {
+	r.cloneServiceRequest = &cloneServiceRequest
 	return r
 }
 
@@ -96,7 +96,7 @@ func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloneApplicationRequest
+	localVarPostBody = r.cloneServiceRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

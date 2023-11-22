@@ -152,14 +152,14 @@ func (a *JobsAPIService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvi
 }
 
 type ApiCloneJobRequest struct {
-	ctx             context.Context
-	ApiService      *JobsAPIService
-	jobId           string
-	cloneJobRequest *CloneJobRequest
+	ctx                 context.Context
+	ApiService          *JobsAPIService
+	jobId               string
+	cloneServiceRequest *CloneServiceRequest
 }
 
-func (r ApiCloneJobRequest) CloneJobRequest(cloneJobRequest CloneJobRequest) ApiCloneJobRequest {
-	r.cloneJobRequest = &cloneJobRequest
+func (r ApiCloneJobRequest) CloneServiceRequest(cloneServiceRequest CloneServiceRequest) ApiCloneJobRequest {
+	r.cloneServiceRequest = &cloneServiceRequest
 	return r
 }
 
@@ -224,7 +224,7 @@ func (a *JobsAPIService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *h
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloneJobRequest
+	localVarPostBody = r.cloneServiceRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

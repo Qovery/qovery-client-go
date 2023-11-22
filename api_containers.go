@@ -152,14 +152,14 @@ func (a *ContainersAPIService) AutoDeployContainerEnvironmentsExecute(r ApiAutoD
 }
 
 type ApiCloneContainerRequest struct {
-	ctx                   context.Context
-	ApiService            *ContainersAPIService
-	containerId           string
-	cloneContainerRequest *CloneContainerRequest
+	ctx                 context.Context
+	ApiService          *ContainersAPIService
+	containerId         string
+	cloneServiceRequest *CloneServiceRequest
 }
 
-func (r ApiCloneContainerRequest) CloneContainerRequest(cloneContainerRequest CloneContainerRequest) ApiCloneContainerRequest {
-	r.cloneContainerRequest = &cloneContainerRequest
+func (r ApiCloneContainerRequest) CloneServiceRequest(cloneServiceRequest CloneServiceRequest) ApiCloneContainerRequest {
+	r.cloneServiceRequest = &cloneServiceRequest
 	return r
 }
 
@@ -224,7 +224,7 @@ func (a *ContainersAPIService) CloneContainerExecute(r ApiCloneContainerRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloneContainerRequest
+	localVarPostBody = r.cloneServiceRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

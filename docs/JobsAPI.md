@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CloneJob
 
-> JobResponse CloneJob(ctx, jobId).CloneJobRequest(cloneJobRequest).Execute()
+> JobResponse CloneJob(ctx, jobId).CloneServiceRequest(cloneServiceRequest).Execute()
 
 Clone job
 
@@ -107,11 +107,11 @@ import (
 
 func main() {
     jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    cloneJobRequest := *openapiclient.NewCloneJobRequest("Name_example", "EnvironmentId_example") // CloneJobRequest |  (optional)
+    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobsAPI.CloneJob(context.Background(), jobId).CloneJobRequest(cloneJobRequest).Execute()
+    resp, r, err := apiClient.JobsAPI.CloneJob(context.Background(), jobId).CloneServiceRequest(cloneServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.CloneJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,7 +137,7 @@ Other parameters are passed through a pointer to a apiCloneJobRequest struct via
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloneJobRequest** | [**CloneJobRequest**](CloneJobRequest.md) |  | 
+ **cloneServiceRequest** | [**CloneServiceRequest**](CloneServiceRequest.md) |  | 
 
 ### Return type
 

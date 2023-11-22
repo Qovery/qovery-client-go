@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## CloneContainer
 
-> ContainerResponse CloneContainer(ctx, containerId).CloneContainerRequest(cloneContainerRequest).Execute()
+> ContainerResponse CloneContainer(ctx, containerId).CloneServiceRequest(cloneServiceRequest).Execute()
 
 Clone container
 
@@ -111,11 +111,11 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    cloneContainerRequest := *openapiclient.NewCloneContainerRequest("Name_example", "EnvironmentId_example") // CloneContainerRequest |  (optional)
+    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainersAPI.CloneContainer(context.Background(), containerId).CloneContainerRequest(cloneContainerRequest).Execute()
+    resp, r, err := apiClient.ContainersAPI.CloneContainer(context.Background(), containerId).CloneServiceRequest(cloneServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.CloneContainer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,7 +141,7 @@ Other parameters are passed through a pointer to a apiCloneContainerRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloneContainerRequest** | [**CloneContainerRequest**](CloneContainerRequest.md) |  | 
+ **cloneServiceRequest** | [**CloneServiceRequest**](CloneServiceRequest.md) |  | 
 
 ### Return type
 

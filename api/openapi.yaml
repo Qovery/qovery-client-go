@@ -6078,7 +6078,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CloneRequest'
+              $ref: '#/components/schemas/CloneEnvironmentRequest'
       responses:
         "202":
           content:
@@ -9301,7 +9301,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CloneApplicationRequest'
+              $ref: '#/components/schemas/CloneServiceRequest'
       responses:
         "202":
           content:
@@ -10689,7 +10689,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CloneContainerRequest'
+              $ref: '#/components/schemas/CloneServiceRequest'
       responses:
         "202":
           content:
@@ -11611,7 +11611,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CloneDatabaseRequest'
+              $ref: '#/components/schemas/CloneServiceRequest'
       responses:
         "202":
           content:
@@ -13829,7 +13829,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CloneJobRequest'
+              $ref: '#/components/schemas/CloneServiceRequest'
       responses:
         "202":
           content:
@@ -15579,7 +15579,7 @@ components:
       - SCALA
       nullable: true
       type: string
-    CloneRequest:
+    CloneEnvironmentRequest:
       example:
         mode: PRODUCTION
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -15600,49 +15600,7 @@ components:
       required:
       - name
       type: object
-    CloneApplicationRequest:
-      example:
-        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-      properties:
-        name:
-          type: string
-        environment_id:
-          format: uuid
-          type: string
-      required:
-      - environment_id
-      - name
-      type: object
-    CloneContainerRequest:
-      example:
-        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-      properties:
-        name:
-          type: string
-        environment_id:
-          format: uuid
-          type: string
-      required:
-      - environment_id
-      - name
-      type: object
-    CloneDatabaseRequest:
-      example:
-        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-      properties:
-        name:
-          type: string
-        environment_id:
-          format: uuid
-          type: string
-      required:
-      - environment_id
-      - name
-      type: object
-    CloneJobRequest:
+    CloneServiceRequest:
       example:
         environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name

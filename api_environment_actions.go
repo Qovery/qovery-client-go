@@ -141,14 +141,14 @@ func (a *EnvironmentActionsAPIService) CancelEnvironmentDeploymentExecute(r ApiC
 }
 
 type ApiCloneEnvironmentRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentActionsAPIService
-	environmentId string
-	cloneRequest  *CloneRequest
+	ctx                     context.Context
+	ApiService              *EnvironmentActionsAPIService
+	environmentId           string
+	cloneEnvironmentRequest *CloneEnvironmentRequest
 }
 
-func (r ApiCloneEnvironmentRequest) CloneRequest(cloneRequest CloneRequest) ApiCloneEnvironmentRequest {
-	r.cloneRequest = &cloneRequest
+func (r ApiCloneEnvironmentRequest) CloneEnvironmentRequest(cloneEnvironmentRequest CloneEnvironmentRequest) ApiCloneEnvironmentRequest {
+	r.cloneEnvironmentRequest = &cloneEnvironmentRequest
 	return r
 }
 
@@ -213,7 +213,7 @@ func (a *EnvironmentActionsAPIService) CloneEnvironmentExecute(r ApiCloneEnviron
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloneRequest
+	localVarPostBody = r.cloneEnvironmentRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

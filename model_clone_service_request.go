@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloneDatabaseRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloneDatabaseRequest{}
+// checks if the CloneServiceRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloneServiceRequest{}
 
-// CloneDatabaseRequest struct for CloneDatabaseRequest
-type CloneDatabaseRequest struct {
+// CloneServiceRequest struct for CloneServiceRequest
+type CloneServiceRequest struct {
 	Name          string `json:"name"`
 	EnvironmentId string `json:"environment_id"`
 }
 
-// NewCloneDatabaseRequest instantiates a new CloneDatabaseRequest object
+// NewCloneServiceRequest instantiates a new CloneServiceRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloneDatabaseRequest(name string, environmentId string) *CloneDatabaseRequest {
-	this := CloneDatabaseRequest{}
+func NewCloneServiceRequest(name string, environmentId string) *CloneServiceRequest {
+	this := CloneServiceRequest{}
 	this.Name = name
 	this.EnvironmentId = environmentId
 	return &this
 }
 
-// NewCloneDatabaseRequestWithDefaults instantiates a new CloneDatabaseRequest object
+// NewCloneServiceRequestWithDefaults instantiates a new CloneServiceRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCloneDatabaseRequestWithDefaults() *CloneDatabaseRequest {
-	this := CloneDatabaseRequest{}
+func NewCloneServiceRequestWithDefaults() *CloneServiceRequest {
+	this := CloneServiceRequest{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *CloneDatabaseRequest) GetName() string {
+func (o *CloneServiceRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -55,7 +55,7 @@ func (o *CloneDatabaseRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CloneDatabaseRequest) GetNameOk() (*string, bool) {
+func (o *CloneServiceRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,12 +63,12 @@ func (o *CloneDatabaseRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *CloneDatabaseRequest) SetName(v string) {
+func (o *CloneServiceRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetEnvironmentId returns the EnvironmentId field value
-func (o *CloneDatabaseRequest) GetEnvironmentId() string {
+func (o *CloneServiceRequest) GetEnvironmentId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -79,7 +79,7 @@ func (o *CloneDatabaseRequest) GetEnvironmentId() string {
 
 // GetEnvironmentIdOk returns a tuple with the EnvironmentId field value
 // and a boolean to check if the value has been set.
-func (o *CloneDatabaseRequest) GetEnvironmentIdOk() (*string, bool) {
+func (o *CloneServiceRequest) GetEnvironmentIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,11 +87,11 @@ func (o *CloneDatabaseRequest) GetEnvironmentIdOk() (*string, bool) {
 }
 
 // SetEnvironmentId sets field value
-func (o *CloneDatabaseRequest) SetEnvironmentId(v string) {
+func (o *CloneServiceRequest) SetEnvironmentId(v string) {
 	o.EnvironmentId = v
 }
 
-func (o CloneDatabaseRequest) MarshalJSON() ([]byte, error) {
+func (o CloneServiceRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -99,45 +99,45 @@ func (o CloneDatabaseRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CloneDatabaseRequest) ToMap() (map[string]interface{}, error) {
+func (o CloneServiceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["environment_id"] = o.EnvironmentId
 	return toSerialize, nil
 }
 
-type NullableCloneDatabaseRequest struct {
-	value *CloneDatabaseRequest
+type NullableCloneServiceRequest struct {
+	value *CloneServiceRequest
 	isSet bool
 }
 
-func (v NullableCloneDatabaseRequest) Get() *CloneDatabaseRequest {
+func (v NullableCloneServiceRequest) Get() *CloneServiceRequest {
 	return v.value
 }
 
-func (v *NullableCloneDatabaseRequest) Set(val *CloneDatabaseRequest) {
+func (v *NullableCloneServiceRequest) Set(val *CloneServiceRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCloneDatabaseRequest) IsSet() bool {
+func (v NullableCloneServiceRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCloneDatabaseRequest) Unset() {
+func (v *NullableCloneServiceRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCloneDatabaseRequest(val *CloneDatabaseRequest) *NullableCloneDatabaseRequest {
-	return &NullableCloneDatabaseRequest{value: val, isSet: true}
+func NewNullableCloneServiceRequest(val *CloneServiceRequest) *NullableCloneServiceRequest {
+	return &NullableCloneServiceRequest{value: val, isSet: true}
 }
 
-func (v NullableCloneDatabaseRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCloneServiceRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCloneDatabaseRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCloneServiceRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

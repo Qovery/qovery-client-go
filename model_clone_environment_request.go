@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloneRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloneRequest{}
+// checks if the CloneEnvironmentRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloneEnvironmentRequest{}
 
-// CloneRequest struct for CloneRequest
-type CloneRequest struct {
+// CloneEnvironmentRequest struct for CloneEnvironmentRequest
+type CloneEnvironmentRequest struct {
 	// name is case insensitive
 	Name                string               `json:"name"`
 	ClusterId           *string              `json:"cluster_id,omitempty"`
@@ -27,30 +27,30 @@ type CloneRequest struct {
 	ApplyDeploymentRule *bool                `json:"apply_deployment_rule,omitempty"`
 }
 
-// NewCloneRequest instantiates a new CloneRequest object
+// NewCloneEnvironmentRequest instantiates a new CloneEnvironmentRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloneRequest(name string) *CloneRequest {
-	this := CloneRequest{}
+func NewCloneEnvironmentRequest(name string) *CloneEnvironmentRequest {
+	this := CloneEnvironmentRequest{}
 	this.Name = name
 	var applyDeploymentRule bool = false
 	this.ApplyDeploymentRule = &applyDeploymentRule
 	return &this
 }
 
-// NewCloneRequestWithDefaults instantiates a new CloneRequest object
+// NewCloneEnvironmentRequestWithDefaults instantiates a new CloneEnvironmentRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCloneRequestWithDefaults() *CloneRequest {
-	this := CloneRequest{}
+func NewCloneEnvironmentRequestWithDefaults() *CloneEnvironmentRequest {
+	this := CloneEnvironmentRequest{}
 	var applyDeploymentRule bool = false
 	this.ApplyDeploymentRule = &applyDeploymentRule
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *CloneRequest) GetName() string {
+func (o *CloneEnvironmentRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *CloneRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CloneRequest) GetNameOk() (*string, bool) {
+func (o *CloneEnvironmentRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *CloneRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *CloneRequest) SetName(v string) {
+func (o *CloneEnvironmentRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
-func (o *CloneRequest) GetClusterId() string {
+func (o *CloneEnvironmentRequest) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *CloneRequest) GetClusterId() string {
 
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloneRequest) GetClusterIdOk() (*string, bool) {
+func (o *CloneEnvironmentRequest) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *CloneRequest) GetClusterIdOk() (*string, bool) {
 }
 
 // HasClusterId returns a boolean if a field has been set.
-func (o *CloneRequest) HasClusterId() bool {
+func (o *CloneEnvironmentRequest) HasClusterId() bool {
 	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
@@ -101,12 +101,12 @@ func (o *CloneRequest) HasClusterId() bool {
 }
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
-func (o *CloneRequest) SetClusterId(v string) {
+func (o *CloneEnvironmentRequest) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *CloneRequest) GetMode() EnvironmentModeEnum {
+func (o *CloneEnvironmentRequest) GetMode() EnvironmentModeEnum {
 	if o == nil || IsNil(o.Mode) {
 		var ret EnvironmentModeEnum
 		return ret
@@ -116,7 +116,7 @@ func (o *CloneRequest) GetMode() EnvironmentModeEnum {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloneRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
+func (o *CloneEnvironmentRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *CloneRequest) GetModeOk() (*EnvironmentModeEnum, bool) {
 }
 
 // HasMode returns a boolean if a field has been set.
-func (o *CloneRequest) HasMode() bool {
+func (o *CloneEnvironmentRequest) HasMode() bool {
 	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
@@ -133,12 +133,12 @@ func (o *CloneRequest) HasMode() bool {
 }
 
 // SetMode gets a reference to the given EnvironmentModeEnum and assigns it to the Mode field.
-func (o *CloneRequest) SetMode(v EnvironmentModeEnum) {
+func (o *CloneEnvironmentRequest) SetMode(v EnvironmentModeEnum) {
 	o.Mode = &v
 }
 
 // GetApplyDeploymentRule returns the ApplyDeploymentRule field value if set, zero value otherwise.
-func (o *CloneRequest) GetApplyDeploymentRule() bool {
+func (o *CloneEnvironmentRequest) GetApplyDeploymentRule() bool {
 	if o == nil || IsNil(o.ApplyDeploymentRule) {
 		var ret bool
 		return ret
@@ -148,7 +148,7 @@ func (o *CloneRequest) GetApplyDeploymentRule() bool {
 
 // GetApplyDeploymentRuleOk returns a tuple with the ApplyDeploymentRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloneRequest) GetApplyDeploymentRuleOk() (*bool, bool) {
+func (o *CloneEnvironmentRequest) GetApplyDeploymentRuleOk() (*bool, bool) {
 	if o == nil || IsNil(o.ApplyDeploymentRule) {
 		return nil, false
 	}
@@ -156,7 +156,7 @@ func (o *CloneRequest) GetApplyDeploymentRuleOk() (*bool, bool) {
 }
 
 // HasApplyDeploymentRule returns a boolean if a field has been set.
-func (o *CloneRequest) HasApplyDeploymentRule() bool {
+func (o *CloneEnvironmentRequest) HasApplyDeploymentRule() bool {
 	if o != nil && !IsNil(o.ApplyDeploymentRule) {
 		return true
 	}
@@ -165,11 +165,11 @@ func (o *CloneRequest) HasApplyDeploymentRule() bool {
 }
 
 // SetApplyDeploymentRule gets a reference to the given bool and assigns it to the ApplyDeploymentRule field.
-func (o *CloneRequest) SetApplyDeploymentRule(v bool) {
+func (o *CloneEnvironmentRequest) SetApplyDeploymentRule(v bool) {
 	o.ApplyDeploymentRule = &v
 }
 
-func (o CloneRequest) MarshalJSON() ([]byte, error) {
+func (o CloneEnvironmentRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -177,7 +177,7 @@ func (o CloneRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CloneRequest) ToMap() (map[string]interface{}, error) {
+func (o CloneEnvironmentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.ClusterId) {
@@ -192,38 +192,38 @@ func (o CloneRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCloneRequest struct {
-	value *CloneRequest
+type NullableCloneEnvironmentRequest struct {
+	value *CloneEnvironmentRequest
 	isSet bool
 }
 
-func (v NullableCloneRequest) Get() *CloneRequest {
+func (v NullableCloneEnvironmentRequest) Get() *CloneEnvironmentRequest {
 	return v.value
 }
 
-func (v *NullableCloneRequest) Set(val *CloneRequest) {
+func (v *NullableCloneEnvironmentRequest) Set(val *CloneEnvironmentRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCloneRequest) IsSet() bool {
+func (v NullableCloneEnvironmentRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCloneRequest) Unset() {
+func (v *NullableCloneEnvironmentRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCloneRequest(val *CloneRequest) *NullableCloneRequest {
-	return &NullableCloneRequest{value: val, isSet: true}
+func NewNullableCloneEnvironmentRequest(val *CloneEnvironmentRequest) *NullableCloneEnvironmentRequest {
+	return &NullableCloneEnvironmentRequest{value: val, isSet: true}
 }
 
-func (v NullableCloneRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCloneEnvironmentRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCloneRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCloneEnvironmentRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

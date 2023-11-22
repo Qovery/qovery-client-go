@@ -1,4 +1,4 @@
-# CloneRequest
+# CloneEnvironmentRequest
 
 ## Properties
 
@@ -11,115 +11,115 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCloneRequest
+### NewCloneEnvironmentRequest
 
-`func NewCloneRequest(name string, ) *CloneRequest`
+`func NewCloneEnvironmentRequest(name string, ) *CloneEnvironmentRequest`
 
-NewCloneRequest instantiates a new CloneRequest object
+NewCloneEnvironmentRequest instantiates a new CloneEnvironmentRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCloneRequestWithDefaults
+### NewCloneEnvironmentRequestWithDefaults
 
-`func NewCloneRequestWithDefaults() *CloneRequest`
+`func NewCloneEnvironmentRequestWithDefaults() *CloneEnvironmentRequest`
 
-NewCloneRequestWithDefaults instantiates a new CloneRequest object
+NewCloneEnvironmentRequestWithDefaults instantiates a new CloneEnvironmentRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *CloneRequest) GetName() string`
+`func (o *CloneEnvironmentRequest) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *CloneRequest) GetNameOk() (*string, bool)`
+`func (o *CloneEnvironmentRequest) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *CloneRequest) SetName(v string)`
+`func (o *CloneEnvironmentRequest) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetClusterId
 
-`func (o *CloneRequest) GetClusterId() string`
+`func (o *CloneEnvironmentRequest) GetClusterId() string`
 
 GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
 
 ### GetClusterIdOk
 
-`func (o *CloneRequest) GetClusterIdOk() (*string, bool)`
+`func (o *CloneEnvironmentRequest) GetClusterIdOk() (*string, bool)`
 
 GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClusterId
 
-`func (o *CloneRequest) SetClusterId(v string)`
+`func (o *CloneEnvironmentRequest) SetClusterId(v string)`
 
 SetClusterId sets ClusterId field to given value.
 
 ### HasClusterId
 
-`func (o *CloneRequest) HasClusterId() bool`
+`func (o *CloneEnvironmentRequest) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
 
 ### GetMode
 
-`func (o *CloneRequest) GetMode() EnvironmentModeEnum`
+`func (o *CloneEnvironmentRequest) GetMode() EnvironmentModeEnum`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *CloneRequest) GetModeOk() (*EnvironmentModeEnum, bool)`
+`func (o *CloneEnvironmentRequest) GetModeOk() (*EnvironmentModeEnum, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *CloneRequest) SetMode(v EnvironmentModeEnum)`
+`func (o *CloneEnvironmentRequest) SetMode(v EnvironmentModeEnum)`
 
 SetMode sets Mode field to given value.
 
 ### HasMode
 
-`func (o *CloneRequest) HasMode() bool`
+`func (o *CloneEnvironmentRequest) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
 
 ### GetApplyDeploymentRule
 
-`func (o *CloneRequest) GetApplyDeploymentRule() bool`
+`func (o *CloneEnvironmentRequest) GetApplyDeploymentRule() bool`
 
 GetApplyDeploymentRule returns the ApplyDeploymentRule field if non-nil, zero value otherwise.
 
 ### GetApplyDeploymentRuleOk
 
-`func (o *CloneRequest) GetApplyDeploymentRuleOk() (*bool, bool)`
+`func (o *CloneEnvironmentRequest) GetApplyDeploymentRuleOk() (*bool, bool)`
 
 GetApplyDeploymentRuleOk returns a tuple with the ApplyDeploymentRule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplyDeploymentRule
 
-`func (o *CloneRequest) SetApplyDeploymentRule(v bool)`
+`func (o *CloneEnvironmentRequest) SetApplyDeploymentRule(v bool)`
 
 SetApplyDeploymentRule sets ApplyDeploymentRule field to given value.
 
 ### HasApplyDeploymentRule
 
-`func (o *CloneRequest) HasApplyDeploymentRule() bool`
+`func (o *CloneEnvironmentRequest) HasApplyDeploymentRule() bool`
 
 HasApplyDeploymentRule returns a boolean if a field has been set.
 

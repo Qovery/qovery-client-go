@@ -24,14 +24,14 @@ import (
 type DatabasesAPIService service
 
 type ApiCloneDatabaseRequest struct {
-	ctx                  context.Context
-	ApiService           *DatabasesAPIService
-	databaseId           string
-	cloneDatabaseRequest *CloneDatabaseRequest
+	ctx                 context.Context
+	ApiService          *DatabasesAPIService
+	databaseId          string
+	cloneServiceRequest *CloneServiceRequest
 }
 
-func (r ApiCloneDatabaseRequest) CloneDatabaseRequest(cloneDatabaseRequest CloneDatabaseRequest) ApiCloneDatabaseRequest {
-	r.cloneDatabaseRequest = &cloneDatabaseRequest
+func (r ApiCloneDatabaseRequest) CloneServiceRequest(cloneServiceRequest CloneServiceRequest) ApiCloneDatabaseRequest {
+	r.cloneServiceRequest = &cloneServiceRequest
 	return r
 }
 
@@ -96,7 +96,7 @@ func (a *DatabasesAPIService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloneDatabaseRequest
+	localVarPostBody = r.cloneServiceRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

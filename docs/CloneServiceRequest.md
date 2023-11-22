@@ -1,4 +1,4 @@
-# CloneContainerRequest
+# CloneServiceRequest
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCloneContainerRequest
+### NewCloneServiceRequest
 
-`func NewCloneContainerRequest(name string, environmentId string, ) *CloneContainerRequest`
+`func NewCloneServiceRequest(name string, environmentId string, ) *CloneServiceRequest`
 
-NewCloneContainerRequest instantiates a new CloneContainerRequest object
+NewCloneServiceRequest instantiates a new CloneServiceRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCloneContainerRequestWithDefaults
+### NewCloneServiceRequestWithDefaults
 
-`func NewCloneContainerRequestWithDefaults() *CloneContainerRequest`
+`func NewCloneServiceRequestWithDefaults() *CloneServiceRequest`
 
-NewCloneContainerRequestWithDefaults instantiates a new CloneContainerRequest object
+NewCloneServiceRequestWithDefaults instantiates a new CloneServiceRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *CloneContainerRequest) GetName() string`
+`func (o *CloneServiceRequest) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *CloneContainerRequest) GetNameOk() (*string, bool)`
+`func (o *CloneServiceRequest) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *CloneContainerRequest) SetName(v string)`
+`func (o *CloneServiceRequest) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetEnvironmentId
 
-`func (o *CloneContainerRequest) GetEnvironmentId() string`
+`func (o *CloneServiceRequest) GetEnvironmentId() string`
 
 GetEnvironmentId returns the EnvironmentId field if non-nil, zero value otherwise.
 
 ### GetEnvironmentIdOk
 
-`func (o *CloneContainerRequest) GetEnvironmentIdOk() (*string, bool)`
+`func (o *CloneServiceRequest) GetEnvironmentIdOk() (*string, bool)`
 
 GetEnvironmentIdOk returns a tuple with the EnvironmentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironmentId
 
-`func (o *CloneContainerRequest) SetEnvironmentId(v string)`
+`func (o *CloneServiceRequest) SetEnvironmentId(v string)`
 
 SetEnvironmentId sets EnvironmentId field to given value.
 

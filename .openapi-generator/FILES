@@ -139,11 +139,8 @@ docs/Budget.md
 docs/BudgetThreshold.md
 docs/BuildModeEnum.md
 docs/BuildPackLanguageEnum.md
-docs/CloneApplicationRequest.md
-docs/CloneContainerRequest.md
-docs/CloneDatabaseRequest.md
-docs/CloneJobRequest.md
-docs/CloneRequest.md
+docs/CloneEnvironmentRequest.md
+docs/CloneServiceRequest.md
 docs/CloudProvider.md
 docs/CloudProviderAPI.md
 docs/CloudProviderCredentialsAPI.md
@@ -674,11 +671,8 @@ model_budget.go
 model_budget_threshold.go
 model_build_mode_enum.go
 model_build_pack_language_enum.go
-model_clone_application_request.go
-model_clone_container_request.go
-model_clone_database_request.go
-model_clone_job_request.go
-model_clone_request.go
+model_clone_environment_request.go
+model_clone_service_request.go
 model_cloud_provider.go
 model_cloud_provider_enum.go
 model_cloud_provider_response_list.go

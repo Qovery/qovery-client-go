@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CloneDatabase
 
-> Database CloneDatabase(ctx, databaseId).CloneDatabaseRequest(cloneDatabaseRequest).Execute()
+> Database CloneDatabase(ctx, databaseId).CloneServiceRequest(cloneServiceRequest).Execute()
 
 Clone database
 
@@ -35,11 +35,11 @@ import (
 
 func main() {
     databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-    cloneDatabaseRequest := *openapiclient.NewCloneDatabaseRequest("Name_example", "EnvironmentId_example") // CloneDatabaseRequest |  (optional)
+    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabasesAPI.CloneDatabase(context.Background(), databaseId).CloneDatabaseRequest(cloneDatabaseRequest).Execute()
+    resp, r, err := apiClient.DatabasesAPI.CloneDatabase(context.Background(), databaseId).CloneServiceRequest(cloneServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.CloneDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiCloneDatabaseRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloneDatabaseRequest** | [**CloneDatabaseRequest**](CloneDatabaseRequest.md) |  | 
+ **cloneServiceRequest** | [**CloneServiceRequest**](CloneServiceRequest.md) |  | 
 
 ### Return type
 

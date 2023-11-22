@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ## CloneEnvironment
 
-> Environment CloneEnvironment(ctx, environmentId).CloneRequest(cloneRequest).Execute()
+> Environment CloneEnvironment(ctx, environmentId).CloneEnvironmentRequest(cloneEnvironmentRequest).Execute()
 
 Clone environment
 
@@ -109,11 +109,11 @@ import (
 
 func main() {
     environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    cloneRequest := *openapiclient.NewCloneRequest("Name_example") // CloneRequest |  (optional)
+    cloneEnvironmentRequest := *openapiclient.NewCloneEnvironmentRequest("Name_example") // CloneEnvironmentRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentActionsAPI.CloneEnvironment(context.Background(), environmentId).CloneRequest(cloneRequest).Execute()
+    resp, r, err := apiClient.EnvironmentActionsAPI.CloneEnvironment(context.Background(), environmentId).CloneEnvironmentRequest(cloneEnvironmentRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.CloneEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,7 +139,7 @@ Other parameters are passed through a pointer to a apiCloneEnvironmentRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloneRequest** | [**CloneRequest**](CloneRequest.md) |  | 
+ **cloneEnvironmentRequest** | [**CloneEnvironmentRequest**](CloneEnvironmentRequest.md) |  | 
 
 ### Return type
 
