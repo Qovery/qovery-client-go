@@ -50,6 +50,20 @@ func Test_qovery_ContainersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ContainersAPIService CloneHelm", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var helmId string
+
+		resp, httpRes, err := apiClient.ContainersAPI.CloneHelm(context.Background(), helmId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ContainersAPIService CreateContainer", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

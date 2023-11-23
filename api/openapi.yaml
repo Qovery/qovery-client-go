@@ -12532,6 +12532,44 @@ paths:
       summary: Display the contents of the values.yaml file
       tags:
       - Helm Main Calls
+  /helm/{helmId}/clone:
+    post:
+      description: This will create a new helm with the same configuration on the
+        targeted environment Id.
+      operationId: cloneHelm
+      parameters:
+      - description: Helm ID
+        explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloneServiceRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmResponse'
+          description: Helm clone has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Clone helm
+      tags:
+      - Containers
   /environment/{environmentId}/job:
     get:
       operationId: listJobs

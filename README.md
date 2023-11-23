@@ -245,6 +245,7 @@ Class | Method | HTTP request | Description
 *ContainerSecretAPI* | [**ListContainerSecrets**](docs/ContainerSecretAPI.md#listcontainersecrets) | **Get** /container/{containerId}/secret | List container secrets
 *ContainersAPI* | [**AutoDeployContainerEnvironments**](docs/ContainersAPI.md#autodeploycontainerenvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
 *ContainersAPI* | [**CloneContainer**](docs/ContainersAPI.md#clonecontainer) | **Post** /container/{containerId}/clone | Clone container
+*ContainersAPI* | [**CloneHelm**](docs/ContainersAPI.md#clonehelm) | **Post** /helm/{helmId}/clone | Clone helm
 *ContainersAPI* | [**CreateContainer**](docs/ContainersAPI.md#createcontainer) | **Post** /environment/{environmentId}/container | Create a container
 *ContainersAPI* | [**GetContainerRegistryContainerStatus**](docs/ContainersAPI.md#getcontainerregistrycontainerstatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
 *ContainersAPI* | [**GetDefaultContainerAdvancedSettings**](docs/ContainersAPI.md#getdefaultcontaineradvancedsettings) | **Get** /defaultContainerAdvancedSettings | List default container advanced settings
