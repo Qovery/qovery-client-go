@@ -4336,6 +4336,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Helm chart repository ID
+        explode: false
+        in: path
+        name: helmRepositoryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: The resource was deleted successfully
@@ -4392,6 +4401,15 @@ paths:
         explode: false
         in: path
         name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Helm chart repository ID
+        explode: false
+        in: path
+        name: helmRepositoryId
         required: true
         schema:
           format: uuid
@@ -14606,6 +14624,16 @@ components:
       explode: false
       in: path
       name: helmId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    helmRepositoryId:
+      description: Helm chart repository ID
+      explode: false
+      in: path
+      name: helmRepositoryId
       required: true
       schema:
         format: uuid

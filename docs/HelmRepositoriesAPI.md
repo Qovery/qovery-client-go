@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## DeleteHelmRepository
 
-> DeleteHelmRepository(ctx, organizationId).Execute()
+> DeleteHelmRepository(ctx, organizationId, helmRepositoryId).Execute()
 
 Delete a helm repository
 
@@ -103,10 +103,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.HelmRepositoriesAPI.DeleteHelmRepository(context.Background(), organizationId).Execute()
+    r, err := apiClient.HelmRepositoriesAPI.DeleteHelmRepository(context.Background(), organizationId, helmRepositoryId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.DeleteHelmRepository``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -121,6 +122,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**helmRepositoryId** | **string** | Helm chart repository ID | 
 
 ### Other Parameters
 
@@ -129,6 +131,7 @@ Other parameters are passed through a pointer to a apiDeleteHelmRepositoryReques
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -151,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## EditHelmRepository
 
-> HelmRepositoryResponse EditHelmRepository(ctx, organizationId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
+> HelmRepositoryResponse EditHelmRepository(ctx, organizationId, helmRepositoryId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
 
 Edit a helm repository
 
@@ -169,11 +172,12 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
     helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmRepositoriesAPI.EditHelmRepository(context.Background(), organizationId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
+    resp, r, err := apiClient.HelmRepositoriesAPI.EditHelmRepository(context.Background(), organizationId, helmRepositoryId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.EditHelmRepository``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,6 +194,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**helmRepositoryId** | **string** | Helm chart repository ID | 
 
 ### Other Parameters
 
@@ -198,6 +203,7 @@ Other parameters are passed through a pointer to a apiEditHelmRepositoryRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **helmRepositoryRequest** | [**HelmRepositoryRequest**](HelmRepositoryRequest.md) |  | 
 

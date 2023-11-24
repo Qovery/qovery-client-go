@@ -147,9 +147,10 @@ func (a *HelmRepositoriesAPIService) CreateHelmRepositoryExecute(r ApiCreateHelm
 }
 
 type ApiDeleteHelmRepositoryRequest struct {
-	ctx            context.Context
-	ApiService     *HelmRepositoriesAPIService
-	organizationId string
+	ctx              context.Context
+	ApiService       *HelmRepositoriesAPIService
+	organizationId   string
+	helmRepositoryId string
 }
 
 func (r ApiDeleteHelmRepositoryRequest) Execute() (*http.Response, error) {
@@ -161,13 +162,15 @@ DeleteHelmRepository Delete a helm repository
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param helmRepositoryId Helm chart repository ID
  @return ApiDeleteHelmRepositoryRequest
 */
-func (a *HelmRepositoriesAPIService) DeleteHelmRepository(ctx context.Context, organizationId string) ApiDeleteHelmRepositoryRequest {
+func (a *HelmRepositoriesAPIService) DeleteHelmRepository(ctx context.Context, organizationId string, helmRepositoryId string) ApiDeleteHelmRepositoryRequest {
 	return ApiDeleteHelmRepositoryRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
+		ApiService:       a,
+		ctx:              ctx,
+		organizationId:   organizationId,
+		helmRepositoryId: helmRepositoryId,
 	}
 }
 
@@ -186,6 +189,7 @@ func (a *HelmRepositoriesAPIService) DeleteHelmRepositoryExecute(r ApiDeleteHelm
 
 	localVarPath := localBasePath + "/organization/{organizationId}/helmRepository/{helmRepositoryId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"helmRepositoryId"+"}", url.PathEscape(parameterValueToString(r.helmRepositoryId, "helmRepositoryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -254,6 +258,7 @@ type ApiEditHelmRepositoryRequest struct {
 	ctx                   context.Context
 	ApiService            *HelmRepositoriesAPIService
 	organizationId        string
+	helmRepositoryId      string
 	helmRepositoryRequest *HelmRepositoryRequest
 }
 
@@ -271,13 +276,15 @@ EditHelmRepository Edit a helm repository
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param helmRepositoryId Helm chart repository ID
  @return ApiEditHelmRepositoryRequest
 */
-func (a *HelmRepositoriesAPIService) EditHelmRepository(ctx context.Context, organizationId string) ApiEditHelmRepositoryRequest {
+func (a *HelmRepositoriesAPIService) EditHelmRepository(ctx context.Context, organizationId string, helmRepositoryId string) ApiEditHelmRepositoryRequest {
 	return ApiEditHelmRepositoryRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
+		ApiService:       a,
+		ctx:              ctx,
+		organizationId:   organizationId,
+		helmRepositoryId: helmRepositoryId,
 	}
 }
 
@@ -298,6 +305,7 @@ func (a *HelmRepositoriesAPIService) EditHelmRepositoryExecute(r ApiEditHelmRepo
 
 	localVarPath := localBasePath + "/organization/{organizationId}/helmRepository/{helmRepositoryId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"helmRepositoryId"+"}", url.PathEscape(parameterValueToString(r.helmRepositoryId, "helmRepositoryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

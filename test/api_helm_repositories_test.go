@@ -41,8 +41,9 @@ func Test_qovery_HelmRepositoriesAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
+		var helmRepositoryId string
 
-		httpRes, err := apiClient.HelmRepositoriesAPI.DeleteHelmRepository(context.Background(), organizationId).Execute()
+		httpRes, err := apiClient.HelmRepositoriesAPI.DeleteHelmRepository(context.Background(), organizationId, helmRepositoryId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -54,8 +55,9 @@ func Test_qovery_HelmRepositoriesAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
+		var helmRepositoryId string
 
-		resp, httpRes, err := apiClient.HelmRepositoriesAPI.EditHelmRepository(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.HelmRepositoriesAPI.EditHelmRepository(context.Background(), organizationId, helmRepositoryId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
