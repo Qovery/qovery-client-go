@@ -19,6 +19,8 @@
 
 * `GENERIC_CR` (value: `"GENERIC_CR"`)
 
+* `GCP_ARTIFACT_REGISTRY` (value: `"GCP_ARTIFACT_REGISTRY"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

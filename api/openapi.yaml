@@ -16750,6 +16750,7 @@ components:
       - PUBLIC_ECR
       - DOCR
       - GENERIC_CR
+      - GCP_ARTIFACT_REGISTRY
       type: string
     HelmRepositoryKindEnum:
       description: The type of your helm repository
