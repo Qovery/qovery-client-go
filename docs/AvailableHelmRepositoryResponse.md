@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | Pointer to [**HelmRepositoryKindEnum**](HelmRepositoryKindEnum.md) |  | [optional] 
-**RequiredConfig** | Pointer to **map[string]interface{}** |  | [optional] 
-**IsMandatory** | Pointer to **bool** |  | [optional] 
+**Kind** | [**HelmRepositoryKindEnum**](HelmRepositoryKindEnum.md) |  | 
+**RequiredConfig** | **map[string]interface{}** |  | 
+**IsMandatory** | **bool** |  | 
 
 ## Methods
 
 ### NewAvailableHelmRepositoryResponse
 
-`func NewAvailableHelmRepositoryResponse() *AvailableHelmRepositoryResponse`
+`func NewAvailableHelmRepositoryResponse(kind HelmRepositoryKindEnum, requiredConfig map[string]interface{}, isMandatory bool, ) *AvailableHelmRepositoryResponse`
 
 NewAvailableHelmRepositoryResponse instantiates a new AvailableHelmRepositoryResponse object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetKind sets Kind field to given value.
 
-### HasKind
-
-`func (o *AvailableHelmRepositoryResponse) HasKind() bool`
-
-HasKind returns a boolean if a field has been set.
 
 ### GetRequiredConfig
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetRequiredConfig sets RequiredConfig field to given value.
 
-### HasRequiredConfig
-
-`func (o *AvailableHelmRepositoryResponse) HasRequiredConfig() bool`
-
-HasRequiredConfig returns a boolean if a field has been set.
 
 ### GetIsMandatory
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetIsMandatory sets IsMandatory field to given value.
 
-### HasIsMandatory
-
-`func (o *AvailableHelmRepositoryResponse) HasIsMandatory() bool`
-
-HasIsMandatory returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

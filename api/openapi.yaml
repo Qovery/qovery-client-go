@@ -15350,6 +15350,10 @@ components:
           type: object
         is_mandatory:
           type: boolean
+      required:
+      - is_mandatory
+      - kind
+      - required_config
       type: object
     AvailableContainerRegistryResponseList:
       example:
@@ -15382,6 +15386,10 @@ components:
           type: object
         is_mandatory:
           type: boolean
+      required:
+      - is_mandatory
+      - kind
+      - required_config
       type: object
     AvailableHelmRepositoryResponseList:
       example:
