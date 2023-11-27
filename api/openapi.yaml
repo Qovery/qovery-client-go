@@ -11962,6 +11962,40 @@ paths:
       summary: Create a helm
       tags:
       - Helms
+  /environment/{environmentId}/helmDefaultValues:
+    post:
+      operationId: createHelmDefaultValues
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmDefaultValuesRequest'
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: helm values
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get helm default values
+      tags:
+      - Helms
   /environment/{environmentId}/helm/status:
     get:
       description: Returns a list of helms with only their id and status.
@@ -12521,35 +12555,6 @@ paths:
       summary: Edit a helm deployment restriction
       tags:
       - Helm Deployment Restriction
-  /helm/{helmId}/defaultValues:
-    get:
-      operationId: getDefaultValues
-      parameters:
-      - description: Helm ID
-        explode: false
-        in: path
-        name: helmId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                type: string
-          description: Display the contents of the values.yaml file
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Display the contents of the values.yaml file
-      tags:
-      - Helm Main Calls
   /helm/{helmId}/clone:
     post:
       description: This will create a new helm with the same configuration on the
@@ -20397,6 +20402,14 @@ components:
       - HTTP
       - GRPC
       type: string
+    HelmDefaultValuesRequest:
+      allOf:
+      - properties:
+          source:
+            $ref: '#/components/schemas/HelmRequest_allOf_source'
+        required:
+        - source
+        type: object
     Key:
       example:
         key: key

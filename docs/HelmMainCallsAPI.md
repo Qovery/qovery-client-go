@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteHelm**](HelmMainCallsAPI.md#DeleteHelm) | **Delete** /helm/{helmId} | Delete helm
 [**EditHelm**](HelmMainCallsAPI.md#EditHelm) | **Put** /helm/{helmId} | Edit helm
-[**GetDefaultValues**](HelmMainCallsAPI.md#GetDefaultValues) | **Get** /helm/{helmId}/defaultValues | Display the contents of the values.yaml file
 [**GetHelm**](HelmMainCallsAPI.md#GetHelm) | **Get** /helm/{helmId} | Get helm by ID
 [**GetHelmStatus**](HelmMainCallsAPI.md#GetHelmStatus) | **Get** /helm/{helmId}/status | Get helm status
 
@@ -146,74 +145,6 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetDefaultValues
-
-> string GetDefaultValues(ctx, helmId).Execute()
-
-Display the contents of the values.yaml file
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmMainCallsAPI.GetDefaultValues(context.Background(), helmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmMainCallsAPI.GetDefaultValues``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDefaultValues`: string
-    fmt.Fprintf(os.Stdout, "Response from `HelmMainCallsAPI.GetDefaultValues`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**helmId** | **string** | Helm ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetDefaultValuesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

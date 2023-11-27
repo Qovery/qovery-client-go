@@ -356,7 +356,6 @@ Class | Method | HTTP request | Description
 *HelmDeploymentRestrictionAPI* | [**GetHelmDeploymentRestrictions**](docs/HelmDeploymentRestrictionAPI.md#gethelmdeploymentrestrictions) | **Get** /helm/{helmId}/deploymentRestriction | Get helm deployment restrictions
 *HelmMainCallsAPI* | [**DeleteHelm**](docs/HelmMainCallsAPI.md#deletehelm) | **Delete** /helm/{helmId} | Delete helm
 *HelmMainCallsAPI* | [**EditHelm**](docs/HelmMainCallsAPI.md#edithelm) | **Put** /helm/{helmId} | Edit helm
-*HelmMainCallsAPI* | [**GetDefaultValues**](docs/HelmMainCallsAPI.md#getdefaultvalues) | **Get** /helm/{helmId}/defaultValues | Display the contents of the values.yaml file
 *HelmMainCallsAPI* | [**GetHelm**](docs/HelmMainCallsAPI.md#gethelm) | **Get** /helm/{helmId} | Get helm by ID
 *HelmMainCallsAPI* | [**GetHelmStatus**](docs/HelmMainCallsAPI.md#gethelmstatus) | **Get** /helm/{helmId}/status | Get helm status
 *HelmRepositoriesAPI* | [**CreateHelmRepository**](docs/HelmRepositoriesAPI.md#createhelmrepository) | **Post** /organization/{organizationId}/helmRepository | Create a helm repository
@@ -366,6 +365,7 @@ Class | Method | HTTP request | Description
 *HelmRepositoriesAPI* | [**ListAvailableHelmRepository**](docs/HelmRepositoriesAPI.md#listavailablehelmrepository) | **Get** /availableHelmRepository | List supported helm repository
 *HelmRepositoriesAPI* | [**ListHelmRepository**](docs/HelmRepositoriesAPI.md#listhelmrepository) | **Get** /organization/{organizationId}/helmRepository | List organization helm repositories
 *HelmsAPI* | [**CreateHelm**](docs/HelmsAPI.md#createhelm) | **Post** /environment/{environmentId}/helm | Create a helm
+*HelmsAPI* | [**CreateHelmDefaultValues**](docs/HelmsAPI.md#createhelmdefaultvalues) | **Post** /environment/{environmentId}/helmDefaultValues | Get helm default values
 *HelmsAPI* | [**GetEnvironmentHelmStatus**](docs/HelmsAPI.md#getenvironmenthelmstatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
 *HelmsAPI* | [**ListHelms**](docs/HelmsAPI.md#listhelms) | **Get** /environment/{environmentId}/helm | List helms
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
@@ -718,6 +718,7 @@ Class | Method | HTTP request | Description
  - [GitTokenResponse](docs/GitTokenResponse.md)
  - [GitTokenResponseList](docs/GitTokenResponseList.md)
  - [Healthcheck](docs/Healthcheck.md)
+ - [HelmDefaultValuesRequest](docs/HelmDefaultValuesRequest.md)
  - [HelmDeploymentRestrictionRequest](docs/HelmDeploymentRestrictionRequest.md)
  - [HelmDeploymentRestrictionResponse](docs/HelmDeploymentRestrictionResponse.md)
  - [HelmDeploymentRestrictionResponseList](docs/HelmDeploymentRestrictionResponseList.md)
