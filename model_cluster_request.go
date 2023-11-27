@@ -52,7 +52,7 @@ func NewClusterRequest(name string, region string, cloudProvider CloudProviderEn
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
-	var diskSize int32 = 20
+	var diskSize int32 = 40
 	this.DiskSize = &diskSize
 	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
 	this.Kubernetes = &kubernetes
@@ -68,7 +68,7 @@ func NewClusterRequestWithDefaults() *ClusterRequest {
 	this.MinRunningNodes = &minRunningNodes
 	var maxRunningNodes int32 = 1
 	this.MaxRunningNodes = &maxRunningNodes
-	var diskSize int32 = 20
+	var diskSize int32 = 40
 	this.DiskSize = &diskSize
 	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
 	this.Kubernetes = &kubernetes

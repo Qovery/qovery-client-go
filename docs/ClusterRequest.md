@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
-**DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 20]
+**DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 40]
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] [default to KUBERNETESENUM_MANAGED]
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 

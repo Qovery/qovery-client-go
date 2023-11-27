@@ -16145,7 +16145,7 @@ components:
           default: 1
           type: integer
         disk_size:
-          default: 20
+          default: 40
           description: Unit is in GB. The disk size to be used for the node configuration
           example: 50
           type: integer
