@@ -65,12 +65,10 @@ tags:
 - name: Helm Database
 - name: Helm Deployment Restriction
 - name: Helm Deployment History
-- name: Helm Environment Variable
 - name: Helm Logs
 - name: Helm Main Calls
 - name: Helm Metrics
 - name: Helm Repository
-- name: Helm Secret
 - name: Helms
 - name: Backups
 - name: Billing
@@ -24633,9 +24631,6 @@ x-tagGroups:
   - Helm Deployment Restriction
   - Helm Metrics
   - Helm Deployment History
-  - Helm Environment Variable
-  - Helm Secret
-  - Helm Repository
 - name: Account
   tags:
   - Account Info
