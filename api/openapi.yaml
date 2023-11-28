@@ -12115,6 +12115,46 @@ paths:
       summary: Edit helm
       tags:
       - Helm Main Calls
+  /helm/{helmId}/commit:
+    get:
+      description: Returns list of the last 100 commits made on the repository linked
+        to helm
+      operationId: listHelmCommit
+      parameters:
+      - description: Helm ID
+        explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Source of git commit. Can be 'chart' or 'values'
+        explode: true
+        in: query
+        name: of
+        required: false
+        schema:
+          default: chart
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitResponseList'
+          description: List Helm commits
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List last helm commits
+      tags:
+      - Helm Main Calls
   /helm/{helmId}/advancedSettings:
     get:
       description: Get list and values of the advanced settings of the helm.
@@ -14640,6 +14680,16 @@ components:
         format: uuid
         type: string
       style: simple
+    helmOf:
+      description: Source of git commit. Can be 'chart' or 'values'
+      explode: true
+      in: query
+      name: of
+      required: false
+      schema:
+        default: chart
+        type: string
+      style: form
   responses:
     "204":
       description: no content

@@ -358,6 +358,7 @@ Class | Method | HTTP request | Description
 *HelmMainCallsAPI* | [**EditHelm**](docs/HelmMainCallsAPI.md#edithelm) | **Put** /helm/{helmId} | Edit helm
 *HelmMainCallsAPI* | [**GetHelm**](docs/HelmMainCallsAPI.md#gethelm) | **Get** /helm/{helmId} | Get helm by ID
 *HelmMainCallsAPI* | [**GetHelmStatus**](docs/HelmMainCallsAPI.md#gethelmstatus) | **Get** /helm/{helmId}/status | Get helm status
+*HelmMainCallsAPI* | [**ListHelmCommit**](docs/HelmMainCallsAPI.md#listhelmcommit) | **Get** /helm/{helmId}/commit | List last helm commits
 *HelmRepositoriesAPI* | [**CreateHelmRepository**](docs/HelmRepositoriesAPI.md#createhelmrepository) | **Post** /organization/{organizationId}/helmRepository | Create a helm repository
 *HelmRepositoriesAPI* | [**DeleteHelmRepository**](docs/HelmRepositoriesAPI.md#deletehelmrepository) | **Delete** /organization/{organizationId}/helmRepository/{helmRepositoryId} | Delete a helm repository
 *HelmRepositoriesAPI* | [**EditHelmRepository**](docs/HelmRepositoriesAPI.md#edithelmrepository) | **Put** /organization/{organizationId}/helmRepository/{helmRepositoryId} | Edit a helm repository

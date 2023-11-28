@@ -484,3 +484,133 @@ func (a *HelmMainCallsAPIService) GetHelmStatusExecute(r ApiGetHelmStatusRequest
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiListHelmCommitRequest struct {
+	ctx        context.Context
+	ApiService *HelmMainCallsAPIService
+	helmId     string
+	of         *string
+}
+
+// Source of git commit. Can be &#39;chart&#39; or &#39;values&#39;
+func (r ApiListHelmCommitRequest) Of(of string) ApiListHelmCommitRequest {
+	r.of = &of
+	return r
+}
+
+func (r ApiListHelmCommitRequest) Execute() (*CommitResponseList, *http.Response, error) {
+	return r.ApiService.ListHelmCommitExecute(r)
+}
+
+/*
+ListHelmCommit List last helm commits
+
+Returns list of the last 100 commits made on the repository linked to helm
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param helmId Helm ID
+ @return ApiListHelmCommitRequest
+*/
+func (a *HelmMainCallsAPIService) ListHelmCommit(ctx context.Context, helmId string) ApiListHelmCommitRequest {
+	return ApiListHelmCommitRequest{
+		ApiService: a,
+		ctx:        ctx,
+		helmId:     helmId,
+	}
+}
+
+// Execute executes the request
+//  @return CommitResponseList
+func (a *HelmMainCallsAPIService) ListHelmCommitExecute(r ApiListHelmCommitRequest) (*CommitResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmMainCallsAPIService.ListHelmCommit")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/helm/{helmId}/commit"
+	localVarPath = strings.Replace(localVarPath, "{"+"helmId"+"}", url.PathEscape(parameterValueToString(r.helmId, "helmId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.of != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "of", r.of, "")
+	} else {
+		var defaultValue string = "chart"
+		r.of = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
