@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**ScalewayAccessKey** | Pointer to **string** |  | [optional] 
-**ScalewaySecretKey** | Pointer to **string** |  | [optional] 
-**ScalewayProjectId** | Pointer to **string** |  | [optional] 
+**ScalewayAccessKey** | **string** |  | 
+**ScalewaySecretKey** | **string** |  | 
+**ScalewayProjectId** | **string** |  | 
+**ScalewayOrganizationId** | **string** |  | 
 
 ## Methods
 
 ### NewScalewayCredentialsRequest
 
-`func NewScalewayCredentialsRequest(name string, ) *ScalewayCredentialsRequest`
+`func NewScalewayCredentialsRequest(name string, scalewayAccessKey string, scalewaySecretKey string, scalewayProjectId string, scalewayOrganizationId string, ) *ScalewayCredentialsRequest`
 
 NewScalewayCredentialsRequest instantiates a new ScalewayCredentialsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -67,11 +68,6 @@ and a boolean to check if the value has been set.
 
 SetScalewayAccessKey sets ScalewayAccessKey field to given value.
 
-### HasScalewayAccessKey
-
-`func (o *ScalewayCredentialsRequest) HasScalewayAccessKey() bool`
-
-HasScalewayAccessKey returns a boolean if a field has been set.
 
 ### GetScalewaySecretKey
 
@@ -92,11 +88,6 @@ and a boolean to check if the value has been set.
 
 SetScalewaySecretKey sets ScalewaySecretKey field to given value.
 
-### HasScalewaySecretKey
-
-`func (o *ScalewayCredentialsRequest) HasScalewaySecretKey() bool`
-
-HasScalewaySecretKey returns a boolean if a field has been set.
 
 ### GetScalewayProjectId
 
@@ -117,11 +108,26 @@ and a boolean to check if the value has been set.
 
 SetScalewayProjectId sets ScalewayProjectId field to given value.
 
-### HasScalewayProjectId
 
-`func (o *ScalewayCredentialsRequest) HasScalewayProjectId() bool`
+### GetScalewayOrganizationId
 
-HasScalewayProjectId returns a boolean if a field has been set.
+`func (o *ScalewayCredentialsRequest) GetScalewayOrganizationId() string`
+
+GetScalewayOrganizationId returns the ScalewayOrganizationId field if non-nil, zero value otherwise.
+
+### GetScalewayOrganizationIdOk
+
+`func (o *ScalewayCredentialsRequest) GetScalewayOrganizationIdOk() (*string, bool)`
+
+GetScalewayOrganizationIdOk returns a tuple with the ScalewayOrganizationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScalewayOrganizationId
+
+`func (o *ScalewayCredentialsRequest) SetScalewayOrganizationId(v string)`
+
+SetScalewayOrganizationId sets ScalewayOrganizationId field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

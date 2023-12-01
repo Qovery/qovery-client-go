@@ -182,7 +182,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example") // ScalewayCredentialsRequest |  (optional)
+    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example", "ScalewayAccessKey_example", "ScalewaySecretKey_example", "ScalewayProjectId_example", "ScalewayOrganizationId_example") // ScalewayCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -606,7 +606,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example") // ScalewayCredentialsRequest |  (optional)
+    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example", "ScalewayAccessKey_example", "ScalewaySecretKey_example", "ScalewayProjectId_example", "ScalewayOrganizationId_example") // ScalewayCredentialsRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
