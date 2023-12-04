@@ -23279,8 +23279,12 @@ components:
           type: string
         git_commit_id:
           description: |
-            Commit to deploy
+            Commit to deploy for chart source.
             Cannot be set if `version` is defined
+          type: string
+        values_override_git_commit_id:
+          description: |
+            Commit to deploy for values override
           type: string
       type: object
     listHelmDeploymentHistory_200_response_allOf_results_inner_allOf_repository:

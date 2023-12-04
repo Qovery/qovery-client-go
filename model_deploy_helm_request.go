@@ -22,8 +22,10 @@ var _ MappedNullable = &DeployHelmRequest{}
 type DeployHelmRequest struct {
 	// version of the chart to deploy. Cannot be set if `git_commit_id` is defined
 	Version *string `json:"version,omitempty"`
-	// Commit to deploy Cannot be set if `version` is defined
+	// Commit to deploy for chart source. Cannot be set if `version` is defined
 	GitCommitId *string `json:"git_commit_id,omitempty"`
+	// Commit to deploy for values override
+	ValuesOverrideGitCommitId *string `json:"values_override_git_commit_id,omitempty"`
 }
 
 // NewDeployHelmRequest instantiates a new DeployHelmRequest object
@@ -107,6 +109,38 @@ func (o *DeployHelmRequest) SetGitCommitId(v string) {
 	o.GitCommitId = &v
 }
 
+// GetValuesOverrideGitCommitId returns the ValuesOverrideGitCommitId field value if set, zero value otherwise.
+func (o *DeployHelmRequest) GetValuesOverrideGitCommitId() string {
+	if o == nil || IsNil(o.ValuesOverrideGitCommitId) {
+		var ret string
+		return ret
+	}
+	return *o.ValuesOverrideGitCommitId
+}
+
+// GetValuesOverrideGitCommitIdOk returns a tuple with the ValuesOverrideGitCommitId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployHelmRequest) GetValuesOverrideGitCommitIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ValuesOverrideGitCommitId) {
+		return nil, false
+	}
+	return o.ValuesOverrideGitCommitId, true
+}
+
+// HasValuesOverrideGitCommitId returns a boolean if a field has been set.
+func (o *DeployHelmRequest) HasValuesOverrideGitCommitId() bool {
+	if o != nil && !IsNil(o.ValuesOverrideGitCommitId) {
+		return true
+	}
+
+	return false
+}
+
+// SetValuesOverrideGitCommitId gets a reference to the given string and assigns it to the ValuesOverrideGitCommitId field.
+func (o *DeployHelmRequest) SetValuesOverrideGitCommitId(v string) {
+	o.ValuesOverrideGitCommitId = &v
+}
+
 func (o DeployHelmRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -122,6 +156,9 @@ func (o DeployHelmRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GitCommitId) {
 		toSerialize["git_commit_id"] = o.GitCommitId
+	}
+	if !IsNil(o.ValuesOverrideGitCommitId) {
+		toSerialize["values_override_git_commit_id"] = o.ValuesOverrideGitCommitId
 	}
 	return toSerialize, nil
 }

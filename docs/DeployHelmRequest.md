@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Version** | Pointer to **string** | version of the chart to deploy. Cannot be set if &#x60;git_commit_id&#x60; is defined  | [optional] 
-**GitCommitId** | Pointer to **string** | Commit to deploy Cannot be set if &#x60;version&#x60; is defined  | [optional] 
+**GitCommitId** | Pointer to **string** | Commit to deploy for chart source. Cannot be set if &#x60;version&#x60; is defined  | [optional] 
+**ValuesOverrideGitCommitId** | Pointer to **string** | Commit to deploy for values override  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetGitCommitId sets GitCommitId field to given value.
 `func (o *DeployHelmRequest) HasGitCommitId() bool`
 
 HasGitCommitId returns a boolean if a field has been set.
+
+### GetValuesOverrideGitCommitId
+
+`func (o *DeployHelmRequest) GetValuesOverrideGitCommitId() string`
+
+GetValuesOverrideGitCommitId returns the ValuesOverrideGitCommitId field if non-nil, zero value otherwise.
+
+### GetValuesOverrideGitCommitIdOk
+
+`func (o *DeployHelmRequest) GetValuesOverrideGitCommitIdOk() (*string, bool)`
+
+GetValuesOverrideGitCommitIdOk returns a tuple with the ValuesOverrideGitCommitId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValuesOverrideGitCommitId
+
+`func (o *DeployHelmRequest) SetValuesOverrideGitCommitId(v string)`
+
+SetValuesOverrideGitCommitId sets ValuesOverrideGitCommitId field to given value.
+
+### HasValuesOverrideGitCommitId
+
+`func (o *DeployHelmRequest) HasValuesOverrideGitCommitId() bool`
+
+HasValuesOverrideGitCommitId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
