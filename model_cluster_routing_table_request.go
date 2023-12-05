@@ -20,14 +20,14 @@ var _ MappedNullable = &ClusterRoutingTableRequest{}
 
 // ClusterRoutingTableRequest struct for ClusterRoutingTableRequest
 type ClusterRoutingTableRequest struct {
-	Routes []ClusterRoutingTableRequestRoutesInner `json:"routes"`
+	Routes []ClusterRoutingTableResultsInner `json:"routes"`
 }
 
 // NewClusterRoutingTableRequest instantiates a new ClusterRoutingTableRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterRoutingTableRequest(routes []ClusterRoutingTableRequestRoutesInner) *ClusterRoutingTableRequest {
+func NewClusterRoutingTableRequest(routes []ClusterRoutingTableResultsInner) *ClusterRoutingTableRequest {
 	this := ClusterRoutingTableRequest{}
 	this.Routes = routes
 	return &this
@@ -42,9 +42,9 @@ func NewClusterRoutingTableRequestWithDefaults() *ClusterRoutingTableRequest {
 }
 
 // GetRoutes returns the Routes field value
-func (o *ClusterRoutingTableRequest) GetRoutes() []ClusterRoutingTableRequestRoutesInner {
+func (o *ClusterRoutingTableRequest) GetRoutes() []ClusterRoutingTableResultsInner {
 	if o == nil {
-		var ret []ClusterRoutingTableRequestRoutesInner
+		var ret []ClusterRoutingTableResultsInner
 		return ret
 	}
 
@@ -53,7 +53,7 @@ func (o *ClusterRoutingTableRequest) GetRoutes() []ClusterRoutingTableRequestRou
 
 // GetRoutesOk returns a tuple with the Routes field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRoutingTableRequest) GetRoutesOk() ([]ClusterRoutingTableRequestRoutesInner, bool) {
+func (o *ClusterRoutingTableRequest) GetRoutesOk() ([]ClusterRoutingTableResultsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *ClusterRoutingTableRequest) GetRoutesOk() ([]ClusterRoutingTableRequest
 }
 
 // SetRoutes sets field value
-func (o *ClusterRoutingTableRequest) SetRoutes(v []ClusterRoutingTableRequestRoutesInner) {
+func (o *ClusterRoutingTableRequest) SetRoutes(v []ClusterRoutingTableResultsInner) {
 	o.Routes = v
 }
 

@@ -409,7 +409,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-    clusterRoutingTableRequest := *openapiclient.NewClusterRoutingTableRequest([]openapiclient.ClusterRoutingTableRequestRoutesInner{*openapiclient.NewClusterRoutingTableRequestRoutesInner("Destination_example", "Target_example", "Description_example")}) // ClusterRoutingTableRequest |  (optional)
+    clusterRoutingTableRequest := *openapiclient.NewClusterRoutingTableRequest([]openapiclient.ClusterRoutingTableResultsInner{*openapiclient.NewClusterRoutingTableResultsInner("Destination_example", "Target_example", "Description_example")}) // ClusterRoutingTableRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

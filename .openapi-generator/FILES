@@ -177,7 +177,6 @@ docs/ClusterRequestFeaturesInner.md
 docs/ClusterResponseList.md
 docs/ClusterRoutingTable.md
 docs/ClusterRoutingTableRequest.md
-docs/ClusterRoutingTableRequestRoutesInner.md
 docs/ClusterRoutingTableResultsInner.md
 docs/ClusterStateEnum.md
 docs/ClusterStatus.md
@@ -705,7 +704,6 @@ model_cluster_request_features_inner.go
 model_cluster_response_list.go
 model_cluster_routing_table.go
 model_cluster_routing_table_request.go
-model_cluster_routing_table_request_routes_inner.go
 model_cluster_routing_table_results_inner.go
 model_cluster_state_enum.go
 model_cluster_status.go

@@ -20,17 +20,20 @@ var _ MappedNullable = &ClusterRoutingTableResultsInner{}
 
 // ClusterRoutingTableResultsInner struct for ClusterRoutingTableResultsInner
 type ClusterRoutingTableResultsInner struct {
-	Destination *string `json:"destination,omitempty"`
-	Target      *string `json:"target,omitempty"`
-	Description *string `json:"description,omitempty"`
+	Destination string `json:"destination"`
+	Target      string `json:"target"`
+	Description string `json:"description"`
 }
 
 // NewClusterRoutingTableResultsInner instantiates a new ClusterRoutingTableResultsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterRoutingTableResultsInner() *ClusterRoutingTableResultsInner {
+func NewClusterRoutingTableResultsInner(destination string, target string, description string) *ClusterRoutingTableResultsInner {
 	this := ClusterRoutingTableResultsInner{}
+	this.Destination = destination
+	this.Target = target
+	this.Description = description
 	return &this
 }
 
@@ -42,100 +45,76 @@ func NewClusterRoutingTableResultsInnerWithDefaults() *ClusterRoutingTableResult
 	return &this
 }
 
-// GetDestination returns the Destination field value if set, zero value otherwise.
+// GetDestination returns the Destination field value
 func (o *ClusterRoutingTableResultsInner) GetDestination() string {
-	if o == nil || IsNil(o.Destination) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Destination
+
+	return o.Destination
 }
 
-// GetDestinationOk returns a tuple with the Destination field value if set, nil otherwise
+// GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableResultsInner) GetDestinationOk() (*string, bool) {
-	if o == nil || IsNil(o.Destination) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Destination, true
+	return &o.Destination, true
 }
 
-// HasDestination returns a boolean if a field has been set.
-func (o *ClusterRoutingTableResultsInner) HasDestination() bool {
-	if o != nil && !IsNil(o.Destination) {
-		return true
-	}
-
-	return false
-}
-
-// SetDestination gets a reference to the given string and assigns it to the Destination field.
+// SetDestination sets field value
 func (o *ClusterRoutingTableResultsInner) SetDestination(v string) {
-	o.Destination = &v
+	o.Destination = v
 }
 
-// GetTarget returns the Target field value if set, zero value otherwise.
+// GetTarget returns the Target field value
 func (o *ClusterRoutingTableResultsInner) GetTarget() string {
-	if o == nil || IsNil(o.Target) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Target
+
+	return o.Target
 }
 
-// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableResultsInner) GetTargetOk() (*string, bool) {
-	if o == nil || IsNil(o.Target) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Target, true
+	return &o.Target, true
 }
 
-// HasTarget returns a boolean if a field has been set.
-func (o *ClusterRoutingTableResultsInner) HasTarget() bool {
-	if o != nil && !IsNil(o.Target) {
-		return true
-	}
-
-	return false
-}
-
-// SetTarget gets a reference to the given string and assigns it to the Target field.
+// SetTarget sets field value
 func (o *ClusterRoutingTableResultsInner) SetTarget(v string) {
-	o.Target = &v
+	o.Target = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value
 func (o *ClusterRoutingTableResultsInner) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+
+	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *ClusterRoutingTableResultsInner) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *ClusterRoutingTableResultsInner) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription sets field value
 func (o *ClusterRoutingTableResultsInner) SetDescription(v string) {
-	o.Description = &v
+	o.Description = v
 }
 
 func (o ClusterRoutingTableResultsInner) MarshalJSON() ([]byte, error) {
@@ -148,15 +127,9 @@ func (o ClusterRoutingTableResultsInner) MarshalJSON() ([]byte, error) {
 
 func (o ClusterRoutingTableResultsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Destination) {
-		toSerialize["destination"] = o.Destination
-	}
-	if !IsNil(o.Target) {
-		toSerialize["target"] = o.Target
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
+	toSerialize["destination"] = o.Destination
+	toSerialize["target"] = o.Target
+	toSerialize["description"] = o.Description
 	return toSerialize, nil
 }
 

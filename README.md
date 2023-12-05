@@ -566,7 +566,6 @@ Class | Method | HTTP request | Description
  - [ClusterResponseList](docs/ClusterResponseList.md)
  - [ClusterRoutingTable](docs/ClusterRoutingTable.md)
  - [ClusterRoutingTableRequest](docs/ClusterRoutingTableRequest.md)
- - [ClusterRoutingTableRequestRoutesInner](docs/ClusterRoutingTableRequestRoutesInner.md)
  - [ClusterRoutingTableResultsInner](docs/ClusterRoutingTableResultsInner.md)
  - [ClusterStateEnum](docs/ClusterStateEnum.md)
  - [ClusterStatus](docs/ClusterStatus.md)

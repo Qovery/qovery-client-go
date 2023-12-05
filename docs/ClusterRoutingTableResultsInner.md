@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Destination** | Pointer to **string** |  | [optional] 
-**Target** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
+**Destination** | **string** |  | 
+**Target** | **string** |  | 
+**Description** | **string** |  | 
 
 ## Methods
 
 ### NewClusterRoutingTableResultsInner
 
-`func NewClusterRoutingTableResultsInner() *ClusterRoutingTableResultsInner`
+`func NewClusterRoutingTableResultsInner(destination string, target string, description string, ) *ClusterRoutingTableResultsInner`
 
 NewClusterRoutingTableResultsInner instantiates a new ClusterRoutingTableResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetDestination sets Destination field to given value.
 
-### HasDestination
-
-`func (o *ClusterRoutingTableResultsInner) HasDestination() bool`
-
-HasDestination returns a boolean if a field has been set.
 
 ### GetTarget
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetTarget sets Target field to given value.
 
-### HasTarget
-
-`func (o *ClusterRoutingTableResultsInner) HasTarget() bool`
-
-HasTarget returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
-
-`func (o *ClusterRoutingTableResultsInner) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

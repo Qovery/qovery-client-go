@@ -16364,7 +16364,7 @@ components:
       properties:
         routes:
           items:
-            $ref: '#/components/schemas/ClusterRoutingTableRequest_routes_inner'
+            $ref: '#/components/schemas/ClusterRoutingTable_results_inner'
           type: array
       required:
       - routes
@@ -23575,19 +23575,6 @@ components:
           $ref: '#/components/schemas/ClusterFeature_value'
       type: object
     ClusterRoutingTable_results_inner:
-      example:
-        destination: destination
-        description: description
-        target: target
-      properties:
-        destination:
-          type: string
-        target:
-          type: string
-        description:
-          type: string
-      type: object
-    ClusterRoutingTableRequest_routes_inner:
       example:
         destination: destination
         description: description

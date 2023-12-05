@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Routes** | [**[]ClusterRoutingTableRequestRoutesInner**](ClusterRoutingTableRequestRoutesInner.md) |  | 
+**Routes** | [**[]ClusterRoutingTableResultsInner**](ClusterRoutingTableResultsInner.md) |  | 
 
 ## Methods
 
 ### NewClusterRoutingTableRequest
 
-`func NewClusterRoutingTableRequest(routes []ClusterRoutingTableRequestRoutesInner, ) *ClusterRoutingTableRequest`
+`func NewClusterRoutingTableRequest(routes []ClusterRoutingTableResultsInner, ) *ClusterRoutingTableRequest`
 
 NewClusterRoutingTableRequest instantiates a new ClusterRoutingTableRequest object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetRoutes
 
-`func (o *ClusterRoutingTableRequest) GetRoutes() []ClusterRoutingTableRequestRoutesInner`
+`func (o *ClusterRoutingTableRequest) GetRoutes() []ClusterRoutingTableResultsInner`
 
 GetRoutes returns the Routes field if non-nil, zero value otherwise.
 
 ### GetRoutesOk
 
-`func (o *ClusterRoutingTableRequest) GetRoutesOk() (*[]ClusterRoutingTableRequestRoutesInner, bool)`
+`func (o *ClusterRoutingTableRequest) GetRoutesOk() (*[]ClusterRoutingTableResultsInner, bool)`
 
 GetRoutesOk returns a tuple with the Routes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoutes
 
-`func (o *ClusterRoutingTableRequest) SetRoutes(v []ClusterRoutingTableRequestRoutesInner)`
+`func (o *ClusterRoutingTableRequest) SetRoutes(v []ClusterRoutingTableResultsInner)`
 
 SetRoutes sets Routes field to given value.
 
