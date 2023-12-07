@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**EditClusterAdvancedSettings**](docs/ClustersAPI.md#editclusteradvancedsettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
 *ClustersAPI* | [**EditRoutingTable**](docs/ClustersAPI.md#editroutingtable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 *ClustersAPI* | [**GetClusterAdvancedSettings**](docs/ClustersAPI.md#getclusteradvancedsettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+*ClustersAPI* | [**GetClusterKubeconfig**](docs/ClustersAPI.md#getclusterkubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 *ClustersAPI* | [**GetClusterReadinessStatus**](docs/ClustersAPI.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersAPI* | [**GetClusterStatus**](docs/ClustersAPI.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersAPI* | [**GetDefaultClusterAdvancedSettings**](docs/ClustersAPI.md#getdefaultclusteradvancedsettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings

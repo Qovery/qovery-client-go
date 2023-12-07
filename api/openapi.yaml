@@ -1688,6 +1688,44 @@ paths:
       summary: Get cluster status
       tags:
       - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/kubeconfig:
+    get:
+      operationId: getClusterKubeconfig
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: Get kubeconfig of the cluster
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get cluster kubeconfig
+      tags:
+      - Clusters
   /organization/{organizationId}/cluster/{clusterId}/advancedSettings:
     get:
       description: |
