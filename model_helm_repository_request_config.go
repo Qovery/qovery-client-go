@@ -23,9 +23,19 @@ type HelmRepositoryRequestConfig struct {
 	// Bypass tls certificate verification when connecting to repository
 	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
 	// Required if the repository is private
-	Login *string `json:"login,omitempty"`
+	Username *string `json:"username,omitempty"`
 	// Required if the repository is private
 	Password *string `json:"password,omitempty"`
+	// Required if kind is `ECR` or `PUBLIC_ECR`
+	AccessKeyId *string `json:"access_key_id,omitempty"`
+	// Required if kind is `ECR` or `PUBLIC_ECR`
+	SecretAccessKey *string `json:"secret_access_key,omitempty"`
+	// Required if kind is `ECR` or `SCALEWAY_CR`
+	Region *string `json:"region,omitempty"`
+	// Required if kind is `SCALEWAY_CR`
+	ScalewayAccessKey *string `json:"scaleway_access_key,omitempty"`
+	// Required if kind is `SCALEWAY_CR`
+	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
 }
 
 // NewHelmRepositoryRequestConfig instantiates a new HelmRepositoryRequestConfig object
@@ -81,36 +91,36 @@ func (o *HelmRepositoryRequestConfig) SetSkipTlsVerification(v bool) {
 	o.SkipTlsVerification = &v
 }
 
-// GetLogin returns the Login field value if set, zero value otherwise.
-func (o *HelmRepositoryRequestConfig) GetLogin() string {
-	if o == nil || IsNil(o.Login) {
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-	return *o.Login
+	return *o.Username
 }
 
-// GetLoginOk returns a tuple with the Login field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmRepositoryRequestConfig) GetLoginOk() (*string, bool) {
-	if o == nil || IsNil(o.Login) {
+func (o *HelmRepositoryRequestConfig) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return o.Login, true
+	return o.Username, true
 }
 
-// HasLogin returns a boolean if a field has been set.
-func (o *HelmRepositoryRequestConfig) HasLogin() bool {
-	if o != nil && !IsNil(o.Login) {
+// HasUsername returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
 	return false
 }
 
-// SetLogin gets a reference to the given string and assigns it to the Login field.
-func (o *HelmRepositoryRequestConfig) SetLogin(v string) {
-	o.Login = &v
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *HelmRepositoryRequestConfig) SetUsername(v string) {
+	o.Username = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -145,6 +155,166 @@ func (o *HelmRepositoryRequestConfig) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetAccessKeyId() string {
+	if o == nil || IsNil(o.AccessKeyId) {
+		var ret string
+		return ret
+	}
+	return *o.AccessKeyId
+}
+
+// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequestConfig) GetAccessKeyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessKeyId) {
+		return nil, false
+	}
+	return o.AccessKeyId, true
+}
+
+// HasAccessKeyId returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasAccessKeyId() bool {
+	if o != nil && !IsNil(o.AccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKeyId gets a reference to the given string and assigns it to the AccessKeyId field.
+func (o *HelmRepositoryRequestConfig) SetAccessKeyId(v string) {
+	o.AccessKeyId = &v
+}
+
+// GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetSecretAccessKey() string {
+	if o == nil || IsNil(o.SecretAccessKey) {
+		var ret string
+		return ret
+	}
+	return *o.SecretAccessKey
+}
+
+// GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequestConfig) GetSecretAccessKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.SecretAccessKey) {
+		return nil, false
+	}
+	return o.SecretAccessKey, true
+}
+
+// HasSecretAccessKey returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasSecretAccessKey() bool {
+	if o != nil && !IsNil(o.SecretAccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecretAccessKey gets a reference to the given string and assigns it to the SecretAccessKey field.
+func (o *HelmRepositoryRequestConfig) SetSecretAccessKey(v string) {
+	o.SecretAccessKey = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequestConfig) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *HelmRepositoryRequestConfig) SetRegion(v string) {
+	o.Region = &v
+}
+
+// GetScalewayAccessKey returns the ScalewayAccessKey field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetScalewayAccessKey() string {
+	if o == nil || IsNil(o.ScalewayAccessKey) {
+		var ret string
+		return ret
+	}
+	return *o.ScalewayAccessKey
+}
+
+// GetScalewayAccessKeyOk returns a tuple with the ScalewayAccessKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequestConfig) GetScalewayAccessKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ScalewayAccessKey) {
+		return nil, false
+	}
+	return o.ScalewayAccessKey, true
+}
+
+// HasScalewayAccessKey returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasScalewayAccessKey() bool {
+	if o != nil && !IsNil(o.ScalewayAccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetScalewayAccessKey gets a reference to the given string and assigns it to the ScalewayAccessKey field.
+func (o *HelmRepositoryRequestConfig) SetScalewayAccessKey(v string) {
+	o.ScalewayAccessKey = &v
+}
+
+// GetScalewaySecretKey returns the ScalewaySecretKey field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetScalewaySecretKey() string {
+	if o == nil || IsNil(o.ScalewaySecretKey) {
+		var ret string
+		return ret
+	}
+	return *o.ScalewaySecretKey
+}
+
+// GetScalewaySecretKeyOk returns a tuple with the ScalewaySecretKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequestConfig) GetScalewaySecretKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ScalewaySecretKey) {
+		return nil, false
+	}
+	return o.ScalewaySecretKey, true
+}
+
+// HasScalewaySecretKey returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasScalewaySecretKey() bool {
+	if o != nil && !IsNil(o.ScalewaySecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetScalewaySecretKey gets a reference to the given string and assigns it to the ScalewaySecretKey field.
+func (o *HelmRepositoryRequestConfig) SetScalewaySecretKey(v string) {
+	o.ScalewaySecretKey = &v
+}
+
 func (o HelmRepositoryRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -158,11 +328,26 @@ func (o HelmRepositoryRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsVerification) {
 		toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	}
-	if !IsNil(o.Login) {
-		toSerialize["login"] = o.Login
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.AccessKeyId) {
+		toSerialize["access_key_id"] = o.AccessKeyId
+	}
+	if !IsNil(o.SecretAccessKey) {
+		toSerialize["secret_access_key"] = o.SecretAccessKey
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.ScalewayAccessKey) {
+		toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
+	}
+	if !IsNil(o.ScalewaySecretKey) {
+		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
 	}
 	return toSerialize, nil
 }
