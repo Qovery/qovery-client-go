@@ -16912,7 +16912,14 @@ components:
       description: The type of your helm repository
       enum:
       - HTTPS
-      - OCI
+      - OCI_PUBLIC
+      - OCI_ECR
+      - OCI_SCALEWAY_CR
+      - OCI_DOCKER_HUB
+      - OCI_PUBLIC_ECR
+      - OCI_GENERIC_CR
+      - OCI_GITHUB_CR
+      - OCI_GITLAB_CR
       type: string
     ContainerRegistryRequest:
       example:

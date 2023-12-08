@@ -21,14 +21,28 @@ type HelmRepositoryKindEnum string
 
 // List of HelmRepositoryKindEnum
 const (
-	HELMREPOSITORYKINDENUM_HTTPS HelmRepositoryKindEnum = "HTTPS"
-	HELMREPOSITORYKINDENUM_OCI   HelmRepositoryKindEnum = "OCI"
+	HELMREPOSITORYKINDENUM_HTTPS           HelmRepositoryKindEnum = "HTTPS"
+	HELMREPOSITORYKINDENUM_OCI_PUBLIC      HelmRepositoryKindEnum = "OCI_PUBLIC"
+	HELMREPOSITORYKINDENUM_OCI_ECR         HelmRepositoryKindEnum = "OCI_ECR"
+	HELMREPOSITORYKINDENUM_OCI_SCALEWAY_CR HelmRepositoryKindEnum = "OCI_SCALEWAY_CR"
+	HELMREPOSITORYKINDENUM_OCI_DOCKER_HUB  HelmRepositoryKindEnum = "OCI_DOCKER_HUB"
+	HELMREPOSITORYKINDENUM_OCI_PUBLIC_ECR  HelmRepositoryKindEnum = "OCI_PUBLIC_ECR"
+	HELMREPOSITORYKINDENUM_OCI_GENERIC_CR  HelmRepositoryKindEnum = "OCI_GENERIC_CR"
+	HELMREPOSITORYKINDENUM_OCI_GITHUB_CR   HelmRepositoryKindEnum = "OCI_GITHUB_CR"
+	HELMREPOSITORYKINDENUM_OCI_GITLAB_CR   HelmRepositoryKindEnum = "OCI_GITLAB_CR"
 )
 
 // All allowed values of HelmRepositoryKindEnum enum
 var AllowedHelmRepositoryKindEnumEnumValues = []HelmRepositoryKindEnum{
 	"HTTPS",
-	"OCI",
+	"OCI_PUBLIC",
+	"OCI_ECR",
+	"OCI_SCALEWAY_CR",
+	"OCI_DOCKER_HUB",
+	"OCI_PUBLIC_ECR",
+	"OCI_GENERIC_CR",
+	"OCI_GITHUB_CR",
+	"OCI_GITLAB_CR",
 }
 
 func (v *HelmRepositoryKindEnum) UnmarshalJSON(src []byte) error {
