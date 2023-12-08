@@ -5,8 +5,6 @@
 
 * `HTTPS` (value: `"HTTPS"`)
 
-* `OCI_PUBLIC` (value: `"OCI_PUBLIC"`)
-
 * `OCI_ECR` (value: `"OCI_ECR"`)
 
 * `OCI_SCALEWAY_CR` (value: `"OCI_SCALEWAY_CR"`)

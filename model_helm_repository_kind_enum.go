@@ -22,7 +22,6 @@ type HelmRepositoryKindEnum string
 // List of HelmRepositoryKindEnum
 const (
 	HELMREPOSITORYKINDENUM_HTTPS           HelmRepositoryKindEnum = "HTTPS"
-	HELMREPOSITORYKINDENUM_OCI_PUBLIC      HelmRepositoryKindEnum = "OCI_PUBLIC"
 	HELMREPOSITORYKINDENUM_OCI_ECR         HelmRepositoryKindEnum = "OCI_ECR"
 	HELMREPOSITORYKINDENUM_OCI_SCALEWAY_CR HelmRepositoryKindEnum = "OCI_SCALEWAY_CR"
 	HELMREPOSITORYKINDENUM_OCI_DOCKER_HUB  HelmRepositoryKindEnum = "OCI_DOCKER_HUB"
@@ -35,7 +34,6 @@ const (
 // All allowed values of HelmRepositoryKindEnum enum
 var AllowedHelmRepositoryKindEnumEnumValues = []HelmRepositoryKindEnum{
 	"HTTPS",
-	"OCI_PUBLIC",
 	"OCI_ECR",
 	"OCI_SCALEWAY_CR",
 	"OCI_DOCKER_HUB",

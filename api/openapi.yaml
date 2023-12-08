@@ -16912,7 +16912,6 @@ components:
       description: The type of your helm repository
       enum:
       - HTTPS
-      - OCI_PUBLIC
       - OCI_ECR
       - OCI_SCALEWAY_CR
       - OCI_DOCKER_HUB
