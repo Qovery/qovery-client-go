@@ -24,18 +24,21 @@ type HelmRepositoryRequest struct {
 	Kind        HelmRepositoryKindEnum `json:"kind"`
 	Description *string                `json:"description,omitempty"`
 	// URL of the helm chart repository: * For `OCI`: it must start by oci:// * For `HTTPS`: it must be start by https://
-	Url    *string                     `json:"url,omitempty"`
-	Config HelmRepositoryRequestConfig `json:"config"`
+	Url *string `json:"url,omitempty"`
+	// Bypass tls certificate verification when connecting to repository
+	SkipTlsVerification bool                        `json:"skip_tls_verification"`
+	Config              HelmRepositoryRequestConfig `json:"config"`
 }
 
 // NewHelmRepositoryRequest instantiates a new HelmRepositoryRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmRepositoryRequest(name string, kind HelmRepositoryKindEnum, config HelmRepositoryRequestConfig) *HelmRepositoryRequest {
+func NewHelmRepositoryRequest(name string, kind HelmRepositoryKindEnum, skipTlsVerification bool, config HelmRepositoryRequestConfig) *HelmRepositoryRequest {
 	this := HelmRepositoryRequest{}
 	this.Name = name
 	this.Kind = kind
+	this.SkipTlsVerification = skipTlsVerification
 	this.Config = config
 	return &this
 }
@@ -160,6 +163,30 @@ func (o *HelmRepositoryRequest) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetSkipTlsVerification returns the SkipTlsVerification field value
+func (o *HelmRepositoryRequest) GetSkipTlsVerification() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.SkipTlsVerification
+}
+
+// GetSkipTlsVerificationOk returns a tuple with the SkipTlsVerification field value
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequest) GetSkipTlsVerificationOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SkipTlsVerification, true
+}
+
+// SetSkipTlsVerification sets field value
+func (o *HelmRepositoryRequest) SetSkipTlsVerification(v bool) {
+	o.SkipTlsVerification = v
+}
+
 // GetConfig returns the Config field value
 func (o *HelmRepositoryRequest) GetConfig() HelmRepositoryRequestConfig {
 	if o == nil {
@@ -202,6 +229,7 @@ func (o HelmRepositoryRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
+	toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	toSerialize["config"] = o.Config
 	return toSerialize, nil
 }

@@ -33,7 +33,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
+    helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), false, *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -173,7 +173,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
-    helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
+    helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), false, *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

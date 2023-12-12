@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **Kind** | [**HelmRepositoryKindEnum**](HelmRepositoryKindEnum.md) |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the helm chart repository: * For &#x60;OCI&#x60;: it must start by oci:// * For &#x60;HTTPS&#x60;: it must be start by https://  | [optional] 
+**SkipTlsVerification** | **bool** | Bypass tls certificate verification when connecting to repository | 
 **Config** | [**HelmRepositoryRequestConfig**](HelmRepositoryRequestConfig.md) |  | 
 
 ## Methods
 
 ### NewHelmRepositoryRequest
 
-`func NewHelmRepositoryRequest(name string, kind HelmRepositoryKindEnum, config HelmRepositoryRequestConfig, ) *HelmRepositoryRequest`
+`func NewHelmRepositoryRequest(name string, kind HelmRepositoryKindEnum, skipTlsVerification bool, config HelmRepositoryRequestConfig, ) *HelmRepositoryRequest`
 
 NewHelmRepositoryRequest instantiates a new HelmRepositoryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -118,6 +119,26 @@ SetUrl sets Url field to given value.
 `func (o *HelmRepositoryRequest) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetSkipTlsVerification
+
+`func (o *HelmRepositoryRequest) GetSkipTlsVerification() bool`
+
+GetSkipTlsVerification returns the SkipTlsVerification field if non-nil, zero value otherwise.
+
+### GetSkipTlsVerificationOk
+
+`func (o *HelmRepositoryRequest) GetSkipTlsVerificationOk() (*bool, bool)`
+
+GetSkipTlsVerificationOk returns a tuple with the SkipTlsVerification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipTlsVerification
+
+`func (o *HelmRepositoryRequest) SetSkipTlsVerification(v bool)`
+
+SetSkipTlsVerification sets SkipTlsVerification field to given value.
+
 
 ### GetConfig
 

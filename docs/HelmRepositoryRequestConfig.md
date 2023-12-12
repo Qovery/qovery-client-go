@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SkipTlsVerification** | Pointer to **bool** | Bypass tls certificate verification when connecting to repository | [optional] [default to false]
 **Username** | Pointer to **string** | Required if the repository is private | [optional] 
 **Password** | Pointer to **string** | Required if the repository is private | [optional] 
 **AccessKeyId** | Pointer to **string** | Required if kind is &#x60;ECR&#x60; or &#x60;PUBLIC_ECR&#x60; | [optional] 
@@ -31,31 +30,6 @@ will change when the set of required properties is changed
 NewHelmRepositoryRequestConfigWithDefaults instantiates a new HelmRepositoryRequestConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetSkipTlsVerification
-
-`func (o *HelmRepositoryRequestConfig) GetSkipTlsVerification() bool`
-
-GetSkipTlsVerification returns the SkipTlsVerification field if non-nil, zero value otherwise.
-
-### GetSkipTlsVerificationOk
-
-`func (o *HelmRepositoryRequestConfig) GetSkipTlsVerificationOk() (*bool, bool)`
-
-GetSkipTlsVerificationOk returns a tuple with the SkipTlsVerification field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSkipTlsVerification
-
-`func (o *HelmRepositoryRequestConfig) SetSkipTlsVerification(v bool)`
-
-SetSkipTlsVerification sets SkipTlsVerification field to given value.
-
-### HasSkipTlsVerification
-
-`func (o *HelmRepositoryRequestConfig) HasSkipTlsVerification() bool`
-
-HasSkipTlsVerification returns a boolean if a field has been set.
 
 ### GetUsername
 

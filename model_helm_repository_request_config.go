@@ -20,8 +20,6 @@ var _ MappedNullable = &HelmRepositoryRequestConfig{}
 
 // HelmRepositoryRequestConfig struct for HelmRepositoryRequestConfig
 type HelmRepositoryRequestConfig struct {
-	// Bypass tls certificate verification when connecting to repository
-	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
 	// Required if the repository is private
 	Username *string `json:"username,omitempty"`
 	// Required if the repository is private
@@ -44,8 +42,6 @@ type HelmRepositoryRequestConfig struct {
 // will change when the set of required properties is changed
 func NewHelmRepositoryRequestConfig() *HelmRepositoryRequestConfig {
 	this := HelmRepositoryRequestConfig{}
-	var skipTlsVerification bool = false
-	this.SkipTlsVerification = &skipTlsVerification
 	return &this
 }
 
@@ -54,41 +50,7 @@ func NewHelmRepositoryRequestConfig() *HelmRepositoryRequestConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewHelmRepositoryRequestConfigWithDefaults() *HelmRepositoryRequestConfig {
 	this := HelmRepositoryRequestConfig{}
-	var skipTlsVerification bool = false
-	this.SkipTlsVerification = &skipTlsVerification
 	return &this
-}
-
-// GetSkipTlsVerification returns the SkipTlsVerification field value if set, zero value otherwise.
-func (o *HelmRepositoryRequestConfig) GetSkipTlsVerification() bool {
-	if o == nil || IsNil(o.SkipTlsVerification) {
-		var ret bool
-		return ret
-	}
-	return *o.SkipTlsVerification
-}
-
-// GetSkipTlsVerificationOk returns a tuple with the SkipTlsVerification field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HelmRepositoryRequestConfig) GetSkipTlsVerificationOk() (*bool, bool) {
-	if o == nil || IsNil(o.SkipTlsVerification) {
-		return nil, false
-	}
-	return o.SkipTlsVerification, true
-}
-
-// HasSkipTlsVerification returns a boolean if a field has been set.
-func (o *HelmRepositoryRequestConfig) HasSkipTlsVerification() bool {
-	if o != nil && !IsNil(o.SkipTlsVerification) {
-		return true
-	}
-
-	return false
-}
-
-// SetSkipTlsVerification gets a reference to the given bool and assigns it to the SkipTlsVerification field.
-func (o *HelmRepositoryRequestConfig) SetSkipTlsVerification(v bool) {
-	o.SkipTlsVerification = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise.
@@ -325,9 +287,6 @@ func (o HelmRepositoryRequestConfig) MarshalJSON() ([]byte, error) {
 
 func (o HelmRepositoryRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SkipTlsVerification) {
-		toSerialize["skip_tls_verification"] = o.SkipTlsVerification
-	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}
