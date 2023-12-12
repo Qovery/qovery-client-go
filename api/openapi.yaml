@@ -23380,6 +23380,9 @@ components:
         type: object
     ServicePortRequest_ports_inner:
       properties:
+        id:
+          format: uuid
+          type: string
         name:
           type: string
         internal_port:
