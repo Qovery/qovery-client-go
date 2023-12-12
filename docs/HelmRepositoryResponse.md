@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Kind** | Pointer to [**HelmRepositoryKindEnum**](HelmRepositoryKindEnum.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the helm repository | [optional] 
+**SkipTlsVerification** | Pointer to **bool** | Bypass tls certificate verification when connecting to repository | [optional] 
 
 ## Methods
 
@@ -195,6 +196,31 @@ SetUrl sets Url field to given value.
 `func (o *HelmRepositoryResponse) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetSkipTlsVerification
+
+`func (o *HelmRepositoryResponse) GetSkipTlsVerification() bool`
+
+GetSkipTlsVerification returns the SkipTlsVerification field if non-nil, zero value otherwise.
+
+### GetSkipTlsVerificationOk
+
+`func (o *HelmRepositoryResponse) GetSkipTlsVerificationOk() (*bool, bool)`
+
+GetSkipTlsVerificationOk returns a tuple with the SkipTlsVerification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipTlsVerification
+
+`func (o *HelmRepositoryResponse) SetSkipTlsVerification(v bool)`
+
+SetSkipTlsVerification sets SkipTlsVerification field to given value.
+
+### HasSkipTlsVerification
+
+`func (o *HelmRepositoryResponse) HasSkipTlsVerification() bool`
+
+HasSkipTlsVerification returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

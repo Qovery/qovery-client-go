@@ -17055,6 +17055,9 @@ components:
           url:
             description: URL of the helm repository
             type: string
+          skip_tls_verification:
+            description: Bypass tls certificate verification when connecting to repository
+            type: boolean
         type: object
     HelmRepositoryResponseList:
       example:

@@ -29,6 +29,8 @@ type HelmRepositoryResponse struct {
 	Description *string                 `json:"description,omitempty"`
 	// URL of the helm repository
 	Url *string `json:"url,omitempty"`
+	// Bypass tls certificate verification when connecting to repository
+	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
 }
 
 // NewHelmRepositoryResponse instantiates a new HelmRepositoryResponse object
@@ -258,6 +260,38 @@ func (o *HelmRepositoryResponse) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetSkipTlsVerification returns the SkipTlsVerification field value if set, zero value otherwise.
+func (o *HelmRepositoryResponse) GetSkipTlsVerification() bool {
+	if o == nil || IsNil(o.SkipTlsVerification) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipTlsVerification
+}
+
+// GetSkipTlsVerificationOk returns a tuple with the SkipTlsVerification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryResponse) GetSkipTlsVerificationOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipTlsVerification) {
+		return nil, false
+	}
+	return o.SkipTlsVerification, true
+}
+
+// HasSkipTlsVerification returns a boolean if a field has been set.
+func (o *HelmRepositoryResponse) HasSkipTlsVerification() bool {
+	if o != nil && !IsNil(o.SkipTlsVerification) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipTlsVerification gets a reference to the given bool and assigns it to the SkipTlsVerification field.
+func (o *HelmRepositoryResponse) SetSkipTlsVerification(v bool) {
+	o.SkipTlsVerification = &v
+}
+
 func (o HelmRepositoryResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -284,6 +318,9 @@ func (o HelmRepositoryResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.SkipTlsVerification) {
+		toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	}
 	return toSerialize, nil
 }
