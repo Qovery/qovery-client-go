@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
+**TimeoutSec** | Pointer to **int32** | Maximum number of seconds allowed for helm to run before killing it and mark it as failed  | [optional] [default to 600]
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **AutoDeploy** | **bool** | Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.  | 
 **Ports** | Pointer to [**[]HelmResponseAllOfPorts**](HelmResponseAllOfPorts.md) |  | [optional] 
@@ -166,6 +167,31 @@ SetDescription sets Description field to given value.
 `func (o *HelmResponse) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetTimeoutSec
+
+`func (o *HelmResponse) GetTimeoutSec() int32`
+
+GetTimeoutSec returns the TimeoutSec field if non-nil, zero value otherwise.
+
+### GetTimeoutSecOk
+
+`func (o *HelmResponse) GetTimeoutSecOk() (*int32, bool)`
+
+GetTimeoutSecOk returns a tuple with the TimeoutSec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimeoutSec
+
+`func (o *HelmResponse) SetTimeoutSec(v int32)`
+
+SetTimeoutSec sets TimeoutSec field to given value.
+
+### HasTimeoutSec
+
+`func (o *HelmResponse) HasTimeoutSec() bool`
+
+HasTimeoutSec returns a boolean if a field has been set.
 
 ### GetAutoPreview
 

@@ -28,6 +28,8 @@ type HelmResponse struct {
 	// name is case insensitive
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
+	// Maximum number of seconds allowed for helm to run before killing it and mark it as failed
+	TimeoutSec *int32 `json:"timeout_sec,omitempty"`
 	// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.
@@ -51,6 +53,8 @@ func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject
 	this.CreatedAt = createdAt
 	this.Environment = environment
 	this.Name = name
+	var timeoutSec int32 = 600
+	this.TimeoutSec = &timeoutSec
 	this.AutoPreview = autoPreview
 	this.AutoDeploy = autoDeploy
 	this.Source = source
@@ -65,6 +69,8 @@ func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject
 // but it doesn't guarantee that properties required by API are set
 func NewHelmResponseWithDefaults() *HelmResponse {
 	this := HelmResponse{}
+	var timeoutSec int32 = 600
+	this.TimeoutSec = &timeoutSec
 	var allowClusterWideResources bool = false
 	this.AllowClusterWideResources = allowClusterWideResources
 	return &this
@@ -228,6 +234,38 @@ func (o *HelmResponse) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *HelmResponse) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetTimeoutSec returns the TimeoutSec field value if set, zero value otherwise.
+func (o *HelmResponse) GetTimeoutSec() int32 {
+	if o == nil || IsNil(o.TimeoutSec) {
+		var ret int32
+		return ret
+	}
+	return *o.TimeoutSec
+}
+
+// GetTimeoutSecOk returns a tuple with the TimeoutSec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmResponse) GetTimeoutSecOk() (*int32, bool) {
+	if o == nil || IsNil(o.TimeoutSec) {
+		return nil, false
+	}
+	return o.TimeoutSec, true
+}
+
+// HasTimeoutSec returns a boolean if a field has been set.
+func (o *HelmResponse) HasTimeoutSec() bool {
+	if o != nil && !IsNil(o.TimeoutSec) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeoutSec gets a reference to the given int32 and assigns it to the TimeoutSec field.
+func (o *HelmResponse) SetTimeoutSec(v int32) {
+	o.TimeoutSec = &v
 }
 
 // GetAutoPreview returns the AutoPreview field value
@@ -425,6 +463,9 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.TimeoutSec) {
+		toSerialize["timeout_sec"] = o.TimeoutSec
 	}
 	toSerialize["auto_preview"] = o.AutoPreview
 	toSerialize["auto_deploy"] = o.AutoDeploy
