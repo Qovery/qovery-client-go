@@ -162,6 +162,9 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListDOManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listdomanageddatabaseinstancetype) | **Get** /digitalOcean/managedDatabase/instanceType/{region}/{databaseType} | List Digital Ocean available managed database instance types
 *CloudProviderAPI* | [**ListDOManagedDatabaseType**](docs/CloudProviderAPI.md#listdomanageddatabasetype) | **Get** /digitalOcean/managedDatabase/type | List Digital Ocean available managed database types
 *CloudProviderAPI* | [**ListDORegions**](docs/CloudProviderAPI.md#listdoregions) | **Get** /digitalOcean/region | List DO regions
+*CloudProviderAPI* | [**ListGcpFeatures**](docs/CloudProviderAPI.md#listgcpfeatures) | **Get** /gcp/clusterFeature | List GCP features available
+*CloudProviderAPI* | [**ListGcpGkeInstanceType**](docs/CloudProviderAPI.md#listgcpgkeinstancetype) | **Get** /gcp/instanceType/{region} | List GCP GKE available instance types
+*CloudProviderAPI* | [**ListGcpRegions**](docs/CloudProviderAPI.md#listgcpregions) | **Get** /gcp/region | List GCP regions
 *CloudProviderAPI* | [**ListSCWManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listscwmanageddatabaseinstancetype) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
 *CloudProviderAPI* | [**ListSCWManagedDatabaseType**](docs/CloudProviderAPI.md#listscwmanageddatabasetype) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
 *CloudProviderAPI* | [**ListScalewayFeatures**](docs/CloudProviderAPI.md#listscalewayfeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
@@ -170,18 +173,23 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListScalewayRegions**](docs/CloudProviderAPI.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
 *CloudProviderCredentialsAPI* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsAPI.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 *CloudProviderCredentialsAPI* | [**CreateDOCredentials**](docs/CloudProviderCredentialsAPI.md#createdocredentials) | **Post** /organization/{organizationId}/digitalOcean/credentials | Create Digital Ocean credentials set
+*CloudProviderCredentialsAPI* | [**CreateGCPCredentials**](docs/CloudProviderCredentialsAPI.md#creategcpcredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
 *CloudProviderCredentialsAPI* | [**CreateScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#createscalewaycredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
 *CloudProviderCredentialsAPI* | [**DeleteAWSCredentials**](docs/CloudProviderCredentialsAPI.md#deleteawscredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
 *CloudProviderCredentialsAPI* | [**DeleteDOCredentials**](docs/CloudProviderCredentialsAPI.md#deletedocredentials) | **Delete** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Delete a set of Digital Ocean credentials
+*CloudProviderCredentialsAPI* | [**DeleteGcpCredentials**](docs/CloudProviderCredentialsAPI.md#deletegcpcredentials) | **Delete** /organization/{organizationId}/gcp/credentials/{credentialsId} | Delete a set of GCP credentials
 *CloudProviderCredentialsAPI* | [**DeleteScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#deletescalewaycredentials) | **Delete** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Delete a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**EditAWSCredentials**](docs/CloudProviderCredentialsAPI.md#editawscredentials) | **Put** /organization/{organizationId}/aws/credentials/{credentialsId} | Edit a set of AWS credentials
 *CloudProviderCredentialsAPI* | [**EditDOCredentials**](docs/CloudProviderCredentialsAPI.md#editdocredentials) | **Put** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Edit a set of Digital Ocean credentials
+*CloudProviderCredentialsAPI* | [**EditGcpCredentials**](docs/CloudProviderCredentialsAPI.md#editgcpcredentials) | **Put** /organization/{organizationId}/gcp/credentials/{credentialsId} | Edit a set of GCP credentials
 *CloudProviderCredentialsAPI* | [**EditScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#editscalewaycredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**GetAWSCredentials**](docs/CloudProviderCredentialsAPI.md#getawscredentials) | **Get** /organization/{organizationId}/aws/credentials/{credentialsId} | Get a set of AWS credentials
 *CloudProviderCredentialsAPI* | [**GetDOCredentials**](docs/CloudProviderCredentialsAPI.md#getdocredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Get a set of Digital Ocean credentials
+*CloudProviderCredentialsAPI* | [**GetGcpCredentials**](docs/CloudProviderCredentialsAPI.md#getgcpcredentials) | **Get** /organization/{organizationId}/gcp/credentials/{credentialsId} | Get a set of GCP credentials
 *CloudProviderCredentialsAPI* | [**GetScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#getscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Get a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**ListAWSCredentials**](docs/CloudProviderCredentialsAPI.md#listawscredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
 *CloudProviderCredentialsAPI* | [**ListDOCredentials**](docs/CloudProviderCredentialsAPI.md#listdocredentials) | **Get** /organization/{organizationId}/digitalOcean/credentials | List DO credentials
+*CloudProviderCredentialsAPI* | [**ListGcpCredentials**](docs/CloudProviderCredentialsAPI.md#listgcpcredentials) | **Get** /organization/{organizationId}/gcp/credentials | List GCP credentials
 *CloudProviderCredentialsAPI* | [**ListScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#listscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
 *ClustersAPI* | [**CreateCluster**](docs/ClustersAPI.md#createcluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
 *ClustersAPI* | [**DeleteCluster**](docs/ClustersAPI.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
@@ -702,6 +710,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentVariableOverride](docs/EnvironmentVariableOverride.md)
  - [EnvironmentVariableRequest](docs/EnvironmentVariableRequest.md)
  - [EnvironmentVariableResponseList](docs/EnvironmentVariableResponseList.md)
+ - [GcpCredentialsRequest](docs/GcpCredentialsRequest.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)

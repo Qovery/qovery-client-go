@@ -24,6 +24,7 @@ const (
 	CLOUDPROVIDERENUM_AWS CloudProviderEnum = "AWS"
 	CLOUDPROVIDERENUM_DO  CloudProviderEnum = "DO"
 	CLOUDPROVIDERENUM_SCW CloudProviderEnum = "SCW"
+	CLOUDPROVIDERENUM_GCP CloudProviderEnum = "GCP"
 )
 
 // All allowed values of CloudProviderEnum enum
@@ -31,6 +32,7 @@ var AllowedCloudProviderEnumEnumValues = []CloudProviderEnum{
 	"AWS",
 	"DO",
 	"SCW",
+	"GCP",
 }
 
 func (v *CloudProviderEnum) UnmarshalJSON(src []byte) error {

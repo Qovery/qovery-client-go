@@ -2479,6 +2479,187 @@ paths:
       summary: Edit a set of Scaleway credentials
       tags:
       - Cloud Provider Credentials
+  /organization/{organizationId}/gcp/credentials:
+    get:
+      operationId: listGcpCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentialsResponseList'
+          description: list credentials
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List GCP credentials
+      tags:
+      - Cloud Provider Credentials
+    post:
+      operationId: createGCPCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GcpCredentialsRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentials'
+          description: Credentials created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create GCP credentials set
+      tags:
+      - Cloud Provider Credentials
+  /organization/{organizationId}/gcp/credentials/{credentialsId}:
+    delete:
+      operationId: deleteGcpCredentials
+      parameters:
+      - description: Credentials ID
+        explode: false
+        in: path
+        name: credentialsId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a set of GCP credentials
+      tags:
+      - Cloud Provider Credentials
+    get:
+      operationId: getGcpCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Credentials ID
+        explode: false
+        in: path
+        name: credentialsId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentials'
+          description: Get a set of GCP credentials
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a set of GCP credentials
+      tags:
+      - Cloud Provider Credentials
+    put:
+      operationId: editGcpCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Credentials ID
+        explode: false
+        in: path
+        name: credentialsId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GcpCredentialsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentials'
+          description: Edit a set of GCP credentials
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a set of GCP credentials
+      tags:
+      - Cloud Provider Credentials
   /organization/{organizationId}/github/connect:
     post:
       operationId: organizationGithubAppConnect
@@ -3829,6 +4010,73 @@ paths:
         "404":
           description: Resource not found
       summary: List Scaleway Kapsule available instance types
+      tags:
+      - Cloud Provider
+  /gcp/region:
+    get:
+      operationId: listGcpRegions
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterRegionResponseList'
+          description: list regions
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List GCP regions
+      tags:
+      - Cloud Provider
+  /gcp/clusterFeature:
+    get:
+      operationId: listGcpFeatures
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterFeatureResponseList'
+          description: list features available for GCP cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List GCP features available
+      tags:
+      - Cloud Provider
+  /gcp/instanceType/{region}:
+    get:
+      operationId: listGcpGkeInstanceType
+      parameters:
+      - description: region name
+        explode: false
+        in: path
+        name: region
+        required: true
+        schema:
+          example: us-east-2
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
+          description: list the instance types available for GCP GKE by region
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List GCP GKE available instance types
       tags:
       - Cloud Provider
   /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo:
@@ -15839,6 +16087,7 @@ components:
       - AWS
       - DO
       - SCW
+      - GCP
       type: string
     CloudProviderResponseList:
       example:
@@ -19420,6 +19669,19 @@ components:
       - BUILT_IN
       - FILE
       type: string
+    GcpCredentialsRequest:
+      example:
+        json_credentials: json_credentials
+        name: name
+      properties:
+        name:
+          type: string
+        json_credentials:
+          type: string
+      required:
+      - json_credentials
+      - name
+      type: object
     GenericObjectCurrentCost:
       properties:
         id:

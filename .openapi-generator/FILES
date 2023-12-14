@@ -342,6 +342,7 @@ docs/EnvironmentVariableOverride.md
 docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsAPI.md
+docs/GcpCredentialsRequest.md
 docs/GenericObjectCurrentCost.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
@@ -839,6 +840,7 @@ model_environment_variable_edit_request.go
 model_environment_variable_override.go
 model_environment_variable_request.go
 model_environment_variable_response_list.go
+model_gcp_credentials_request.go
 model_generic_object_current_cost.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go

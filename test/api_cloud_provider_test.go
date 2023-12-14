@@ -188,6 +188,44 @@ func Test_qovery_CloudProviderAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CloudProviderAPIService ListGcpFeatures", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.CloudProviderAPI.ListGcpFeatures(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CloudProviderAPIService ListGcpGkeInstanceType", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var region string
+
+		resp, httpRes, err := apiClient.CloudProviderAPI.ListGcpGkeInstanceType(context.Background(), region).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CloudProviderAPIService ListGcpRegions", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.CloudProviderAPI.ListGcpRegions(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CloudProviderAPIService ListSCWManagedDatabaseInstanceType", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

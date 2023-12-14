@@ -17,6 +17,9 @@ Method | HTTP request | Description
 [**ListDOManagedDatabaseInstanceType**](CloudProviderAPI.md#ListDOManagedDatabaseInstanceType) | **Get** /digitalOcean/managedDatabase/instanceType/{region}/{databaseType} | List Digital Ocean available managed database instance types
 [**ListDOManagedDatabaseType**](CloudProviderAPI.md#ListDOManagedDatabaseType) | **Get** /digitalOcean/managedDatabase/type | List Digital Ocean available managed database types
 [**ListDORegions**](CloudProviderAPI.md#ListDORegions) | **Get** /digitalOcean/region | List DO regions
+[**ListGcpFeatures**](CloudProviderAPI.md#ListGcpFeatures) | **Get** /gcp/clusterFeature | List GCP features available
+[**ListGcpGkeInstanceType**](CloudProviderAPI.md#ListGcpGkeInstanceType) | **Get** /gcp/instanceType/{region} | List GCP GKE available instance types
+[**ListGcpRegions**](CloudProviderAPI.md#ListGcpRegions) | **Get** /gcp/region | List GCP regions
 [**ListSCWManagedDatabaseInstanceType**](CloudProviderAPI.md#ListSCWManagedDatabaseInstanceType) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
 [**ListSCWManagedDatabaseType**](CloudProviderAPI.md#ListSCWManagedDatabaseType) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
 [**ListScalewayFeatures**](CloudProviderAPI.md#ListScalewayFeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
@@ -815,6 +818,192 @@ This endpoint does not need any parameter.
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListDORegionsRequest struct via the builder pattern
+
+
+### Return type
+
+[**ClusterRegionResponseList**](ClusterRegionResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListGcpFeatures
+
+> ClusterFeatureResponseList ListGcpFeatures(ctx).Execute()
+
+List GCP features available
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListGcpFeatures(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpFeatures``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGcpFeatures`: ClusterFeatureResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpFeatures`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListGcpFeaturesRequest struct via the builder pattern
+
+
+### Return type
+
+[**ClusterFeatureResponseList**](ClusterFeatureResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListGcpGkeInstanceType
+
+> ClusterInstanceTypeResponseList ListGcpGkeInstanceType(ctx, region).Execute()
+
+List GCP GKE available instance types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    region := "us-east-2" // string | region name
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListGcpGkeInstanceType(context.Background(), region).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpGkeInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGcpGkeInstanceType`: ClusterInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpGkeInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**region** | **string** | region name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListGcpGkeInstanceTypeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListGcpRegions
+
+> ClusterRegionResponseList ListGcpRegions(ctx).Execute()
+
+List GCP regions
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListGcpRegions(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpRegions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGcpRegions`: ClusterRegionResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpRegions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListGcpRegionsRequest struct via the builder pattern
 
 
 ### Return type
