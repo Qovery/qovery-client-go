@@ -19673,15 +19673,15 @@ components:
       type: string
     GcpCredentialsRequest:
       example:
-        json_credentials: json_credentials
+        gcp_credentials: gcp_credentials
         name: name
       properties:
         name:
           type: string
-        json_credentials:
+        gcp_credentials:
           type: string
       required:
-      - json_credentials
+      - gcp_credentials
       - name
       type: object
     GenericObjectCurrentCost:

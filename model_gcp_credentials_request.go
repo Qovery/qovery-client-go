@@ -20,18 +20,18 @@ var _ MappedNullable = &GcpCredentialsRequest{}
 
 // GcpCredentialsRequest struct for GcpCredentialsRequest
 type GcpCredentialsRequest struct {
-	Name            string `json:"name"`
-	JsonCredentials string `json:"json_credentials"`
+	Name           string `json:"name"`
+	GcpCredentials string `json:"gcp_credentials"`
 }
 
 // NewGcpCredentialsRequest instantiates a new GcpCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGcpCredentialsRequest(name string, jsonCredentials string) *GcpCredentialsRequest {
+func NewGcpCredentialsRequest(name string, gcpCredentials string) *GcpCredentialsRequest {
 	this := GcpCredentialsRequest{}
 	this.Name = name
-	this.JsonCredentials = jsonCredentials
+	this.GcpCredentials = gcpCredentials
 	return &this
 }
 
@@ -67,28 +67,28 @@ func (o *GcpCredentialsRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetJsonCredentials returns the JsonCredentials field value
-func (o *GcpCredentialsRequest) GetJsonCredentials() string {
+// GetGcpCredentials returns the GcpCredentials field value
+func (o *GcpCredentialsRequest) GetGcpCredentials() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.JsonCredentials
+	return o.GcpCredentials
 }
 
-// GetJsonCredentialsOk returns a tuple with the JsonCredentials field value
+// GetGcpCredentialsOk returns a tuple with the GcpCredentials field value
 // and a boolean to check if the value has been set.
-func (o *GcpCredentialsRequest) GetJsonCredentialsOk() (*string, bool) {
+func (o *GcpCredentialsRequest) GetGcpCredentialsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.JsonCredentials, true
+	return &o.GcpCredentials, true
 }
 
-// SetJsonCredentials sets field value
-func (o *GcpCredentialsRequest) SetJsonCredentials(v string) {
-	o.JsonCredentials = v
+// SetGcpCredentials sets field value
+func (o *GcpCredentialsRequest) SetGcpCredentials(v string) {
+	o.GcpCredentials = v
 }
 
 func (o GcpCredentialsRequest) MarshalJSON() ([]byte, error) {
@@ -102,7 +102,7 @@ func (o GcpCredentialsRequest) MarshalJSON() ([]byte, error) {
 func (o GcpCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	toSerialize["json_credentials"] = o.JsonCredentials
+	toSerialize["gcp_credentials"] = o.GcpCredentials
 	return toSerialize, nil
 }
 

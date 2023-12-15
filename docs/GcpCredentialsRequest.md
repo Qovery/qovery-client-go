@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**JsonCredentials** | **string** |  | 
+**GcpCredentials** | **string** |  | 
 
 ## Methods
 
 ### NewGcpCredentialsRequest
 
-`func NewGcpCredentialsRequest(name string, jsonCredentials string, ) *GcpCredentialsRequest`
+`func NewGcpCredentialsRequest(name string, gcpCredentials string, ) *GcpCredentialsRequest`
 
 NewGcpCredentialsRequest instantiates a new GcpCredentialsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,24 +46,24 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetJsonCredentials
+### GetGcpCredentials
 
-`func (o *GcpCredentialsRequest) GetJsonCredentials() string`
+`func (o *GcpCredentialsRequest) GetGcpCredentials() string`
 
-GetJsonCredentials returns the JsonCredentials field if non-nil, zero value otherwise.
+GetGcpCredentials returns the GcpCredentials field if non-nil, zero value otherwise.
 
-### GetJsonCredentialsOk
+### GetGcpCredentialsOk
 
-`func (o *GcpCredentialsRequest) GetJsonCredentialsOk() (*string, bool)`
+`func (o *GcpCredentialsRequest) GetGcpCredentialsOk() (*string, bool)`
 
-GetJsonCredentialsOk returns a tuple with the JsonCredentials field if it's non-nil, zero value otherwise
+GetGcpCredentialsOk returns a tuple with the GcpCredentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetJsonCredentials
+### SetGcpCredentials
 
-`func (o *GcpCredentialsRequest) SetJsonCredentials(v string)`
+`func (o *GcpCredentialsRequest) SetGcpCredentials(v string)`
 
-SetJsonCredentials sets JsonCredentials field to given value.
+SetGcpCredentials sets GcpCredentials field to given value.
 
 
 
