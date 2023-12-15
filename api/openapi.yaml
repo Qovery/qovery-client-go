@@ -2509,7 +2509,7 @@ paths:
       tags:
       - Cloud Provider Credentials
     post:
-      operationId: createGCPCredentials
+      operationId: createGcpCredentials
       parameters:
       - description: Organization ID
         explode: false

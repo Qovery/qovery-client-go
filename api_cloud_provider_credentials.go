@@ -269,31 +269,31 @@ func (a *CloudProviderCredentialsAPIService) CreateDOCredentialsExecute(r ApiCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateGCPCredentialsRequest struct {
+type ApiCreateGcpCredentialsRequest struct {
 	ctx                   context.Context
 	ApiService            *CloudProviderCredentialsAPIService
 	organizationId        string
 	gcpCredentialsRequest *GcpCredentialsRequest
 }
 
-func (r ApiCreateGCPCredentialsRequest) GcpCredentialsRequest(gcpCredentialsRequest GcpCredentialsRequest) ApiCreateGCPCredentialsRequest {
+func (r ApiCreateGcpCredentialsRequest) GcpCredentialsRequest(gcpCredentialsRequest GcpCredentialsRequest) ApiCreateGcpCredentialsRequest {
 	r.gcpCredentialsRequest = &gcpCredentialsRequest
 	return r
 }
 
-func (r ApiCreateGCPCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
-	return r.ApiService.CreateGCPCredentialsExecute(r)
+func (r ApiCreateGcpCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
+	return r.ApiService.CreateGcpCredentialsExecute(r)
 }
 
 /*
-CreateGCPCredentials Create GCP credentials set
+CreateGcpCredentials Create GCP credentials set
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
- @return ApiCreateGCPCredentialsRequest
+ @return ApiCreateGcpCredentialsRequest
 */
-func (a *CloudProviderCredentialsAPIService) CreateGCPCredentials(ctx context.Context, organizationId string) ApiCreateGCPCredentialsRequest {
-	return ApiCreateGCPCredentialsRequest{
+func (a *CloudProviderCredentialsAPIService) CreateGcpCredentials(ctx context.Context, organizationId string) ApiCreateGcpCredentialsRequest {
+	return ApiCreateGcpCredentialsRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
@@ -302,7 +302,7 @@ func (a *CloudProviderCredentialsAPIService) CreateGCPCredentials(ctx context.Co
 
 // Execute executes the request
 //  @return ClusterCredentials
-func (a *CloudProviderCredentialsAPIService) CreateGCPCredentialsExecute(r ApiCreateGCPCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+func (a *CloudProviderCredentialsAPIService) CreateGcpCredentialsExecute(r ApiCreateGcpCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -310,7 +310,7 @@ func (a *CloudProviderCredentialsAPIService) CreateGCPCredentialsExecute(r ApiCr
 		localVarReturnValue *ClusterCredentials
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.CreateGCPCredentials")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.CreateGcpCredentials")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

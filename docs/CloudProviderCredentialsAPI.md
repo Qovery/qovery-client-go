@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAWSCredentials**](CloudProviderCredentialsAPI.md#CreateAWSCredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 [**CreateDOCredentials**](CloudProviderCredentialsAPI.md#CreateDOCredentials) | **Post** /organization/{organizationId}/digitalOcean/credentials | Create Digital Ocean credentials set
-[**CreateGCPCredentials**](CloudProviderCredentialsAPI.md#CreateGCPCredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
+[**CreateGcpCredentials**](CloudProviderCredentialsAPI.md#CreateGcpCredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
 [**CreateScalewayCredentials**](CloudProviderCredentialsAPI.md#CreateScalewayCredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
 [**DeleteAWSCredentials**](CloudProviderCredentialsAPI.md#DeleteAWSCredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
 [**DeleteDOCredentials**](CloudProviderCredentialsAPI.md#DeleteDOCredentials) | **Delete** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Delete a set of Digital Ocean credentials
@@ -167,9 +167,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateGCPCredentials
+## CreateGcpCredentials
 
-> ClusterCredentials CreateGCPCredentials(ctx, organizationId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
+> ClusterCredentials CreateGcpCredentials(ctx, organizationId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
 
 Create GCP credentials set
 
@@ -191,13 +191,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateGCPCredentials(context.Background(), organizationId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
+    resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateGcpCredentials(context.Background(), organizationId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateGCPCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateGcpCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateGCPCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateGCPCredentials`: %v\n", resp)
+    // response from `CreateGcpCredentials`: ClusterCredentials
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateGcpCredentials`: %v\n", resp)
 }
 ```
 
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateGCPCredentialsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateGcpCredentialsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

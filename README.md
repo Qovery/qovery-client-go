@@ -173,7 +173,7 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListScalewayRegions**](docs/CloudProviderAPI.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
 *CloudProviderCredentialsAPI* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsAPI.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 *CloudProviderCredentialsAPI* | [**CreateDOCredentials**](docs/CloudProviderCredentialsAPI.md#createdocredentials) | **Post** /organization/{organizationId}/digitalOcean/credentials | Create Digital Ocean credentials set
-*CloudProviderCredentialsAPI* | [**CreateGCPCredentials**](docs/CloudProviderCredentialsAPI.md#creategcpcredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
+*CloudProviderCredentialsAPI* | [**CreateGcpCredentials**](docs/CloudProviderCredentialsAPI.md#creategcpcredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
 *CloudProviderCredentialsAPI* | [**CreateScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#createscalewaycredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
 *CloudProviderCredentialsAPI* | [**DeleteAWSCredentials**](docs/CloudProviderCredentialsAPI.md#deleteawscredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
 *CloudProviderCredentialsAPI* | [**DeleteDOCredentials**](docs/CloudProviderCredentialsAPI.md#deletedocredentials) | **Delete** /organization/{organizationId}/digitalOcean/credentials/{credentialsId} | Delete a set of Digital Ocean credentials

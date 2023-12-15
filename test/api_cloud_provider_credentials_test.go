@@ -50,13 +50,13 @@ func Test_qovery_CloudProviderCredentialsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudProviderCredentialsAPIService CreateGCPCredentials", func(t *testing.T) {
+	t.Run("Test CloudProviderCredentialsAPIService CreateGcpCredentials", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
 
-		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.CreateGCPCredentials(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.CreateGcpCredentials(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
