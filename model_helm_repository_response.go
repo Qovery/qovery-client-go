@@ -24,7 +24,7 @@ type HelmRepositoryResponse struct {
 	Id          string                  `json:"id"`
 	CreatedAt   time.Time               `json:"created_at"`
 	UpdatedAt   *time.Time              `json:"updated_at,omitempty"`
-	Name        *string                 `json:"name,omitempty"`
+	Name        string                  `json:"name"`
 	Kind        *HelmRepositoryKindEnum `json:"kind,omitempty"`
 	Description *string                 `json:"description,omitempty"`
 	// URL of the helm repository
@@ -37,10 +37,11 @@ type HelmRepositoryResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmRepositoryResponse(id string, createdAt time.Time) *HelmRepositoryResponse {
+func NewHelmRepositoryResponse(id string, createdAt time.Time, name string) *HelmRepositoryResponse {
 	this := HelmRepositoryResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Name = name
 	return &this
 }
 
@@ -132,36 +133,28 @@ func (o *HelmRepositoryResponse) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *HelmRepositoryResponse) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *HelmRepositoryResponse) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *HelmRepositoryResponse) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *HelmRepositoryResponse) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetKind returns the Kind field value if set, zero value otherwise.
@@ -307,9 +300,7 @@ func (o HelmRepositoryResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Kind) {
 		toSerialize["kind"] = o.Kind
 	}

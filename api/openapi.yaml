@@ -17307,6 +17307,8 @@ components:
           skip_tls_verification:
             description: Bypass tls certificate verification when connecting to repository
             type: boolean
+        required:
+        - name
         type: object
     HelmRepositoryResponseList:
       example:

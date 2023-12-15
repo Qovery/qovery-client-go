@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | **string** |  | 
 **Kind** | Pointer to [**HelmRepositoryKindEnum**](HelmRepositoryKindEnum.md) |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the helm repository | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewHelmRepositoryResponse
 
-`func NewHelmRepositoryResponse(id string, createdAt time.Time, ) *HelmRepositoryResponse`
+`func NewHelmRepositoryResponse(id string, createdAt time.Time, name string, ) *HelmRepositoryResponse`
 
 NewHelmRepositoryResponse instantiates a new HelmRepositoryResponse object
 This constructor will assign default values to properties that have it defined,
@@ -116,11 +116,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *HelmRepositoryResponse) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetKind
 
