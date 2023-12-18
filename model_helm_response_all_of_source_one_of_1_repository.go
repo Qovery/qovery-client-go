@@ -21,18 +21,21 @@ var _ MappedNullable = &HelmResponseAllOfSourceOneOf1Repository{}
 // HelmResponseAllOfSourceOneOf1Repository struct for HelmResponseAllOfSourceOneOf1Repository
 type HelmResponseAllOfSourceOneOf1Repository struct {
 	// The name of the chart in the repository
-	ChartName *string `json:"chart_name,omitempty"`
+	ChartName string `json:"chart_name"`
 	// The version of the chart to use
-	ChartVersion *string                                            `json:"chart_version,omitempty"`
-	Repository   *HelmResponseAllOfSourceOneOf1RepositoryRepository `json:"repository,omitempty"`
+	ChartVersion string                                            `json:"chart_version"`
+	Repository   HelmResponseAllOfSourceOneOf1RepositoryRepository `json:"repository"`
 }
 
 // NewHelmResponseAllOfSourceOneOf1Repository instantiates a new HelmResponseAllOfSourceOneOf1Repository object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponseAllOfSourceOneOf1Repository() *HelmResponseAllOfSourceOneOf1Repository {
+func NewHelmResponseAllOfSourceOneOf1Repository(chartName string, chartVersion string, repository HelmResponseAllOfSourceOneOf1RepositoryRepository) *HelmResponseAllOfSourceOneOf1Repository {
 	this := HelmResponseAllOfSourceOneOf1Repository{}
+	this.ChartName = chartName
+	this.ChartVersion = chartVersion
+	this.Repository = repository
 	return &this
 }
 
@@ -44,100 +47,76 @@ func NewHelmResponseAllOfSourceOneOf1RepositoryWithDefaults() *HelmResponseAllOf
 	return &this
 }
 
-// GetChartName returns the ChartName field value if set, zero value otherwise.
+// GetChartName returns the ChartName field value
 func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartName() string {
-	if o == nil || IsNil(o.ChartName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ChartName
+
+	return o.ChartName
 }
 
-// GetChartNameOk returns a tuple with the ChartName field value if set, nil otherwise
+// GetChartNameOk returns a tuple with the ChartName field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ChartName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ChartName, true
+	return &o.ChartName, true
 }
 
-// HasChartName returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceOneOf1Repository) HasChartName() bool {
-	if o != nil && !IsNil(o.ChartName) {
-		return true
-	}
-
-	return false
-}
-
-// SetChartName gets a reference to the given string and assigns it to the ChartName field.
+// SetChartName sets field value
 func (o *HelmResponseAllOfSourceOneOf1Repository) SetChartName(v string) {
-	o.ChartName = &v
+	o.ChartName = v
 }
 
-// GetChartVersion returns the ChartVersion field value if set, zero value otherwise.
+// GetChartVersion returns the ChartVersion field value
 func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartVersion() string {
-	if o == nil || IsNil(o.ChartVersion) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ChartVersion
+
+	return o.ChartVersion
 }
 
-// GetChartVersionOk returns a tuple with the ChartVersion field value if set, nil otherwise
+// GetChartVersionOk returns a tuple with the ChartVersion field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponseAllOfSourceOneOf1Repository) GetChartVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.ChartVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ChartVersion, true
+	return &o.ChartVersion, true
 }
 
-// HasChartVersion returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceOneOf1Repository) HasChartVersion() bool {
-	if o != nil && !IsNil(o.ChartVersion) {
-		return true
-	}
-
-	return false
-}
-
-// SetChartVersion gets a reference to the given string and assigns it to the ChartVersion field.
+// SetChartVersion sets field value
 func (o *HelmResponseAllOfSourceOneOf1Repository) SetChartVersion(v string) {
-	o.ChartVersion = &v
+	o.ChartVersion = v
 }
 
-// GetRepository returns the Repository field value if set, zero value otherwise.
+// GetRepository returns the Repository field value
 func (o *HelmResponseAllOfSourceOneOf1Repository) GetRepository() HelmResponseAllOfSourceOneOf1RepositoryRepository {
-	if o == nil || IsNil(o.Repository) {
+	if o == nil {
 		var ret HelmResponseAllOfSourceOneOf1RepositoryRepository
 		return ret
 	}
-	return *o.Repository
+
+	return o.Repository
 }
 
-// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
+// GetRepositoryOk returns a tuple with the Repository field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponseAllOfSourceOneOf1Repository) GetRepositoryOk() (*HelmResponseAllOfSourceOneOf1RepositoryRepository, bool) {
-	if o == nil || IsNil(o.Repository) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Repository, true
+	return &o.Repository, true
 }
 
-// HasRepository returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceOneOf1Repository) HasRepository() bool {
-	if o != nil && !IsNil(o.Repository) {
-		return true
-	}
-
-	return false
-}
-
-// SetRepository gets a reference to the given HelmResponseAllOfSourceOneOf1RepositoryRepository and assigns it to the Repository field.
+// SetRepository sets field value
 func (o *HelmResponseAllOfSourceOneOf1Repository) SetRepository(v HelmResponseAllOfSourceOneOf1RepositoryRepository) {
-	o.Repository = &v
+	o.Repository = v
 }
 
 func (o HelmResponseAllOfSourceOneOf1Repository) MarshalJSON() ([]byte, error) {
@@ -150,15 +129,9 @@ func (o HelmResponseAllOfSourceOneOf1Repository) MarshalJSON() ([]byte, error) {
 
 func (o HelmResponseAllOfSourceOneOf1Repository) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ChartName) {
-		toSerialize["chart_name"] = o.ChartName
-	}
-	if !IsNil(o.ChartVersion) {
-		toSerialize["chart_version"] = o.ChartVersion
-	}
-	if !IsNil(o.Repository) {
-		toSerialize["repository"] = o.Repository
-	}
+	toSerialize["chart_name"] = o.ChartName
+	toSerialize["chart_version"] = o.ChartVersion
+	toSerialize["repository"] = o.Repository
 	return toSerialize, nil
 }
 

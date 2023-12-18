@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Raw** | Pointer to [**NullableHelmRequestAllOfValuesOverrideFileRaw**](HelmRequestAllOfValuesOverrideFileRaw.md) |  | [optional] 
+**Raw** | Pointer to [**NullableHelmResponseAllOfValuesOverrideFileRaw**](HelmResponseAllOfValuesOverrideFileRaw.md) |  | [optional] 
 **Git** | Pointer to [**NullableHelmResponseAllOfValuesOverrideFileGit**](HelmResponseAllOfValuesOverrideFileGit.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetRaw
 
-`func (o *HelmResponseAllOfValuesOverrideFile) GetRaw() HelmRequestAllOfValuesOverrideFileRaw`
+`func (o *HelmResponseAllOfValuesOverrideFile) GetRaw() HelmResponseAllOfValuesOverrideFileRaw`
 
 GetRaw returns the Raw field if non-nil, zero value otherwise.
 
 ### GetRawOk
 
-`func (o *HelmResponseAllOfValuesOverrideFile) GetRawOk() (*HelmRequestAllOfValuesOverrideFileRaw, bool)`
+`func (o *HelmResponseAllOfValuesOverrideFile) GetRawOk() (*HelmResponseAllOfValuesOverrideFileRaw, bool)`
 
 GetRawOk returns a tuple with the Raw field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRaw
 
-`func (o *HelmResponseAllOfValuesOverrideFile) SetRaw(v HelmRequestAllOfValuesOverrideFileRaw)`
+`func (o *HelmResponseAllOfValuesOverrideFile) SetRaw(v HelmResponseAllOfValuesOverrideFileRaw)`
 
 SetRaw sets Raw field to given value.
 

@@ -20,7 +20,7 @@ var _ MappedNullable = &HelmResponseAllOfValuesOverrideFile{}
 
 // HelmResponseAllOfValuesOverrideFile struct for HelmResponseAllOfValuesOverrideFile
 type HelmResponseAllOfValuesOverrideFile struct {
-	Raw NullableHelmRequestAllOfValuesOverrideFileRaw  `json:"raw,omitempty"`
+	Raw NullableHelmResponseAllOfValuesOverrideFileRaw `json:"raw,omitempty"`
 	Git NullableHelmResponseAllOfValuesOverrideFileGit `json:"git,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewHelmResponseAllOfValuesOverrideFileWithDefaults() *HelmResponseAllOfValu
 }
 
 // GetRaw returns the Raw field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *HelmResponseAllOfValuesOverrideFile) GetRaw() HelmRequestAllOfValuesOverrideFileRaw {
+func (o *HelmResponseAllOfValuesOverrideFile) GetRaw() HelmResponseAllOfValuesOverrideFileRaw {
 	if o == nil || IsNil(o.Raw.Get()) {
-		var ret HelmRequestAllOfValuesOverrideFileRaw
+		var ret HelmResponseAllOfValuesOverrideFileRaw
 		return ret
 	}
 	return *o.Raw.Get()
@@ -53,7 +53,7 @@ func (o *HelmResponseAllOfValuesOverrideFile) GetRaw() HelmRequestAllOfValuesOve
 // GetRawOk returns a tuple with the Raw field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HelmResponseAllOfValuesOverrideFile) GetRawOk() (*HelmRequestAllOfValuesOverrideFileRaw, bool) {
+func (o *HelmResponseAllOfValuesOverrideFile) GetRawOk() (*HelmResponseAllOfValuesOverrideFileRaw, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *HelmResponseAllOfValuesOverrideFile) HasRaw() bool {
 	return false
 }
 
-// SetRaw gets a reference to the given NullableHelmRequestAllOfValuesOverrideFileRaw and assigns it to the Raw field.
-func (o *HelmResponseAllOfValuesOverrideFile) SetRaw(v HelmRequestAllOfValuesOverrideFileRaw) {
+// SetRaw gets a reference to the given NullableHelmResponseAllOfValuesOverrideFileRaw and assigns it to the Raw field.
+func (o *HelmResponseAllOfValuesOverrideFile) SetRaw(v HelmResponseAllOfValuesOverrideFileRaw) {
 	o.Raw.Set(&v)
 }
 

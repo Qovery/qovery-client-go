@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The id of the helm repository | [optional] 
-**Name** | Pointer to **string** | The name of the helm repository | [optional] 
-**Url** | Pointer to **string** | The url the helm repository | [optional] 
+**Id** | **string** | The id of the helm repository | 
+**Name** | **string** | The name of the helm repository | 
+**Url** | **string** | The url the helm repository | 
 
 ## Methods
 
 ### NewHelmResponseAllOfSourceOneOf1RepositoryRepository
 
-`func NewHelmResponseAllOfSourceOneOf1RepositoryRepository() *HelmResponseAllOfSourceOneOf1RepositoryRepository`
+`func NewHelmResponseAllOfSourceOneOf1RepositoryRepository(id string, name string, url string, ) *HelmResponseAllOfSourceOneOf1RepositoryRepository`
 
 NewHelmResponseAllOfSourceOneOf1RepositoryRepository instantiates a new HelmResponseAllOfSourceOneOf1RepositoryRepository object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetUrl
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
-### HasUrl
-
-`func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

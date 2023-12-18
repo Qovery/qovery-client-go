@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChartName** | Pointer to **string** | The name of the chart in the repository | [optional] 
-**ChartVersion** | Pointer to **string** | The version of the chart to use | [optional] 
-**Repository** | Pointer to [**HelmResponseAllOfSourceOneOf1RepositoryRepository**](HelmResponseAllOfSourceOneOf1RepositoryRepository.md) |  | [optional] 
+**ChartName** | **string** | The name of the chart in the repository | 
+**ChartVersion** | **string** | The version of the chart to use | 
+**Repository** | [**HelmResponseAllOfSourceOneOf1RepositoryRepository**](HelmResponseAllOfSourceOneOf1RepositoryRepository.md) |  | 
 
 ## Methods
 
 ### NewHelmResponseAllOfSourceOneOf1Repository
 
-`func NewHelmResponseAllOfSourceOneOf1Repository() *HelmResponseAllOfSourceOneOf1Repository`
+`func NewHelmResponseAllOfSourceOneOf1Repository(chartName string, chartVersion string, repository HelmResponseAllOfSourceOneOf1RepositoryRepository, ) *HelmResponseAllOfSourceOneOf1Repository`
 
 NewHelmResponseAllOfSourceOneOf1Repository instantiates a new HelmResponseAllOfSourceOneOf1Repository object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetChartName sets ChartName field to given value.
 
-### HasChartName
-
-`func (o *HelmResponseAllOfSourceOneOf1Repository) HasChartName() bool`
-
-HasChartName returns a boolean if a field has been set.
 
 ### GetChartVersion
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetChartVersion sets ChartVersion field to given value.
 
-### HasChartVersion
-
-`func (o *HelmResponseAllOfSourceOneOf1Repository) HasChartVersion() bool`
-
-HasChartVersion returns a boolean if a field has been set.
 
 ### GetRepository
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetRepository sets Repository field to given value.
 
-### HasRepository
-
-`func (o *HelmResponseAllOfSourceOneOf1Repository) HasRepository() bool`
-
-HasRepository returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

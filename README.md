@@ -760,6 +760,8 @@ Class | Method | HTTP request | Description
  - [HelmResponseAllOfValuesOverride](docs/HelmResponseAllOfValuesOverride.md)
  - [HelmResponseAllOfValuesOverrideFile](docs/HelmResponseAllOfValuesOverrideFile.md)
  - [HelmResponseAllOfValuesOverrideFileGit](docs/HelmResponseAllOfValuesOverrideFileGit.md)
+ - [HelmResponseAllOfValuesOverrideFileRaw](docs/HelmResponseAllOfValuesOverrideFileRaw.md)
+ - [HelmResponseAllOfValuesOverrideFileRawValues](docs/HelmResponseAllOfValuesOverrideFileRawValues.md)
  - [HelmResponseList](docs/HelmResponseList.md)
  - [HelmValuesGitRepositoryRequest](docs/HelmValuesGitRepositoryRequest.md)
  - [Instance](docs/Instance.md)

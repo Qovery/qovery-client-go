@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
-**Paths** | Pointer to **[]string** | List of path inside your git repository to locate values file. Must start by a / | [optional] 
+**GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
+**Paths** | **[]string** | List of path inside your git repository to locate values file. Must start by a / | 
 
 ## Methods
 
 ### NewHelmResponseAllOfValuesOverrideFileGit
 
-`func NewHelmResponseAllOfValuesOverrideFileGit() *HelmResponseAllOfValuesOverrideFileGit`
+`func NewHelmResponseAllOfValuesOverrideFileGit(gitRepository ApplicationGitRepositoryRequest, paths []string, ) *HelmResponseAllOfValuesOverrideFileGit`
 
 NewHelmResponseAllOfValuesOverrideFileGit instantiates a new HelmResponseAllOfValuesOverrideFileGit object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetGitRepository sets GitRepository field to given value.
 
-### HasGitRepository
-
-`func (o *HelmResponseAllOfValuesOverrideFileGit) HasGitRepository() bool`
-
-HasGitRepository returns a boolean if a field has been set.
 
 ### GetPaths
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetPaths sets Paths field to given value.
 
-### HasPaths
-
-`func (o *HelmResponseAllOfValuesOverrideFileGit) HasPaths() bool`
-
-HasPaths returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

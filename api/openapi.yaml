@@ -24603,6 +24603,30 @@ components:
       - service_name
       type: object
       example: null
+    HelmResponse_allOf_values_override_file_raw_values:
+      properties:
+        name:
+          description: The name of the value file
+          type: string
+        content:
+          description: The content of the value file
+          type: string
+      required:
+      - content
+      - name
+      type: object
+      example: null
+    HelmResponse_allOf_values_override_file_raw:
+      nullable: true
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_raw_values'
+          type: array
+      required:
+      - values
+      type: object
+      example: null
     HelmResponse_allOf_values_override_file_git:
       nullable: true
       properties:
@@ -24614,13 +24638,16 @@ components:
           items:
             type: string
           type: array
+      required:
+      - git_repository
+      - paths
       type: object
       example: null
     HelmResponse_allOf_values_override_file:
       nullable: true
       properties:
         raw:
-          $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_raw'
+          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_raw'
         git:
           $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_git'
       type: object
@@ -24673,6 +24700,10 @@ components:
         url:
           description: The url the helm repository
           type: string
+      required:
+      - id
+      - name
+      - url
       type: object
     HelmResponse_allOf_source_oneOf_1_repository:
       properties:
@@ -24684,6 +24715,10 @@ components:
           type: string
         repository:
           $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1_repository_repository'
+      required:
+      - chart_name
+      - chart_version
+      - repository
       type: object
     HelmResponse_allOf_source_oneOf_1:
       properties:

@@ -401,6 +401,8 @@ docs/HelmResponseAllOfSourceOneOfGit.md
 docs/HelmResponseAllOfValuesOverride.md
 docs/HelmResponseAllOfValuesOverrideFile.md
 docs/HelmResponseAllOfValuesOverrideFileGit.md
+docs/HelmResponseAllOfValuesOverrideFileRaw.md
+docs/HelmResponseAllOfValuesOverrideFileRawValues.md
 docs/HelmResponseList.md
 docs/HelmValuesGitRepositoryRequest.md
 docs/HelmsAPI.md
@@ -890,6 +892,8 @@ model_helm_response_all_of_source_one_of_git.go
 model_helm_response_all_of_values_override.go
 model_helm_response_all_of_values_override_file.go
 model_helm_response_all_of_values_override_file_git.go
+model_helm_response_all_of_values_override_file_raw.go
+model_helm_response_all_of_values_override_file_raw_values.go
 model_helm_response_list.go
 model_helm_values_git_repository_request.go
 model_instance.go

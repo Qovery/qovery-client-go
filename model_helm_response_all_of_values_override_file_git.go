@@ -20,17 +20,19 @@ var _ MappedNullable = &HelmResponseAllOfValuesOverrideFileGit{}
 
 // HelmResponseAllOfValuesOverrideFileGit struct for HelmResponseAllOfValuesOverrideFileGit
 type HelmResponseAllOfValuesOverrideFileGit struct {
-	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
+	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
 	// List of path inside your git repository to locate values file. Must start by a /
-	Paths []string `json:"paths,omitempty"`
+	Paths []string `json:"paths"`
 }
 
 // NewHelmResponseAllOfValuesOverrideFileGit instantiates a new HelmResponseAllOfValuesOverrideFileGit object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponseAllOfValuesOverrideFileGit() *HelmResponseAllOfValuesOverrideFileGit {
+func NewHelmResponseAllOfValuesOverrideFileGit(gitRepository ApplicationGitRepositoryRequest, paths []string) *HelmResponseAllOfValuesOverrideFileGit {
 	this := HelmResponseAllOfValuesOverrideFileGit{}
+	this.GitRepository = gitRepository
+	this.Paths = paths
 	return &this
 }
 
@@ -42,66 +44,50 @@ func NewHelmResponseAllOfValuesOverrideFileGitWithDefaults() *HelmResponseAllOfV
 	return &this
 }
 
-// GetGitRepository returns the GitRepository field value if set, zero value otherwise.
+// GetGitRepository returns the GitRepository field value
 func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGitRepositoryRequest {
-	if o == nil || IsNil(o.GitRepository) {
+	if o == nil {
 		var ret ApplicationGitRepositoryRequest
 		return ret
 	}
-	return *o.GitRepository
+
+	return o.GitRepository
 }
 
-// GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
+// GetGitRepositoryOk returns a tuple with the GitRepository field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
-	if o == nil || IsNil(o.GitRepository) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GitRepository, true
+	return &o.GitRepository, true
 }
 
-// HasGitRepository returns a boolean if a field has been set.
-func (o *HelmResponseAllOfValuesOverrideFileGit) HasGitRepository() bool {
-	if o != nil && !IsNil(o.GitRepository) {
-		return true
-	}
-
-	return false
-}
-
-// SetGitRepository gets a reference to the given ApplicationGitRepositoryRequest and assigns it to the GitRepository field.
+// SetGitRepository sets field value
 func (o *HelmResponseAllOfValuesOverrideFileGit) SetGitRepository(v ApplicationGitRepositoryRequest) {
-	o.GitRepository = &v
+	o.GitRepository = v
 }
 
-// GetPaths returns the Paths field value if set, zero value otherwise.
+// GetPaths returns the Paths field value
 func (o *HelmResponseAllOfValuesOverrideFileGit) GetPaths() []string {
-	if o == nil || IsNil(o.Paths) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Paths
 }
 
-// GetPathsOk returns a tuple with the Paths field value if set, nil otherwise
+// GetPathsOk returns a tuple with the Paths field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponseAllOfValuesOverrideFileGit) GetPathsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Paths) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Paths, true
 }
 
-// HasPaths returns a boolean if a field has been set.
-func (o *HelmResponseAllOfValuesOverrideFileGit) HasPaths() bool {
-	if o != nil && !IsNil(o.Paths) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaths gets a reference to the given []string and assigns it to the Paths field.
+// SetPaths sets field value
 func (o *HelmResponseAllOfValuesOverrideFileGit) SetPaths(v []string) {
 	o.Paths = v
 }
@@ -116,12 +102,8 @@ func (o HelmResponseAllOfValuesOverrideFileGit) MarshalJSON() ([]byte, error) {
 
 func (o HelmResponseAllOfValuesOverrideFileGit) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.GitRepository) {
-		toSerialize["git_repository"] = o.GitRepository
-	}
-	if !IsNil(o.Paths) {
-		toSerialize["paths"] = o.Paths
-	}
+	toSerialize["git_repository"] = o.GitRepository
+	toSerialize["paths"] = o.Paths
 	return toSerialize, nil
 }
 
