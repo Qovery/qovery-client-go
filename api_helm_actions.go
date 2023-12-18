@@ -28,7 +28,7 @@ type ApiDeployHelmRequest struct {
 	ApiService        *HelmActionsAPIService
 	helmId            string
 	forceEvent        *HelmForceEvent
-	deployHelmRequest *DeployHelmRequest
+	helmDeployRequest *HelmDeployRequest
 }
 
 // When filled, it indicates the target event to be deployed.   If the concerned helm hasn&#39;t the target event provided, the helm won&#39;t be deployed.
@@ -37,8 +37,8 @@ func (r ApiDeployHelmRequest) ForceEvent(forceEvent HelmForceEvent) ApiDeployHel
 	return r
 }
 
-func (r ApiDeployHelmRequest) DeployHelmRequest(deployHelmRequest DeployHelmRequest) ApiDeployHelmRequest {
-	r.deployHelmRequest = &deployHelmRequest
+func (r ApiDeployHelmRequest) HelmDeployRequest(helmDeployRequest HelmDeployRequest) ApiDeployHelmRequest {
+	r.helmDeployRequest = &helmDeployRequest
 	return r
 }
 
@@ -106,7 +106,7 @@ func (a *HelmActionsAPIService) DeployHelmExecute(r ApiDeployHelmRequest) (*Stat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.deployHelmRequest
+	localVarPostBody = r.helmDeployRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

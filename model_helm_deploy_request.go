@@ -15,70 +15,70 @@ import (
 	"encoding/json"
 )
 
-// checks if the DeployHelmRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DeployHelmRequest{}
+// checks if the HelmDeployRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmDeployRequest{}
 
-// DeployHelmRequest struct for DeployHelmRequest
-type DeployHelmRequest struct {
+// HelmDeployRequest struct for HelmDeployRequest
+type HelmDeployRequest struct {
 	// version of the chart to deploy. Cannot be set if `git_commit_id` is defined
-	Version *string `json:"version,omitempty"`
+	ChartVersion *string `json:"chart_version,omitempty"`
 	// Commit to deploy for chart source. Cannot be set if `version` is defined
 	GitCommitId *string `json:"git_commit_id,omitempty"`
 	// Commit to deploy for values override
 	ValuesOverrideGitCommitId *string `json:"values_override_git_commit_id,omitempty"`
 }
 
-// NewDeployHelmRequest instantiates a new DeployHelmRequest object
+// NewHelmDeployRequest instantiates a new HelmDeployRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeployHelmRequest() *DeployHelmRequest {
-	this := DeployHelmRequest{}
+func NewHelmDeployRequest() *HelmDeployRequest {
+	this := HelmDeployRequest{}
 	return &this
 }
 
-// NewDeployHelmRequestWithDefaults instantiates a new DeployHelmRequest object
+// NewHelmDeployRequestWithDefaults instantiates a new HelmDeployRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDeployHelmRequestWithDefaults() *DeployHelmRequest {
-	this := DeployHelmRequest{}
+func NewHelmDeployRequestWithDefaults() *HelmDeployRequest {
+	this := HelmDeployRequest{}
 	return &this
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise.
-func (o *DeployHelmRequest) GetVersion() string {
-	if o == nil || IsNil(o.Version) {
+// GetChartVersion returns the ChartVersion field value if set, zero value otherwise.
+func (o *HelmDeployRequest) GetChartVersion() string {
+	if o == nil || IsNil(o.ChartVersion) {
 		var ret string
 		return ret
 	}
-	return *o.Version
+	return *o.ChartVersion
 }
 
-// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// GetChartVersionOk returns a tuple with the ChartVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeployHelmRequest) GetVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.Version) {
+func (o *HelmDeployRequest) GetChartVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.ChartVersion) {
 		return nil, false
 	}
-	return o.Version, true
+	return o.ChartVersion, true
 }
 
-// HasVersion returns a boolean if a field has been set.
-func (o *DeployHelmRequest) HasVersion() bool {
-	if o != nil && !IsNil(o.Version) {
+// HasChartVersion returns a boolean if a field has been set.
+func (o *HelmDeployRequest) HasChartVersion() bool {
+	if o != nil && !IsNil(o.ChartVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *DeployHelmRequest) SetVersion(v string) {
-	o.Version = &v
+// SetChartVersion gets a reference to the given string and assigns it to the ChartVersion field.
+func (o *HelmDeployRequest) SetChartVersion(v string) {
+	o.ChartVersion = &v
 }
 
 // GetGitCommitId returns the GitCommitId field value if set, zero value otherwise.
-func (o *DeployHelmRequest) GetGitCommitId() string {
+func (o *HelmDeployRequest) GetGitCommitId() string {
 	if o == nil || IsNil(o.GitCommitId) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *DeployHelmRequest) GetGitCommitId() string {
 
 // GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeployHelmRequest) GetGitCommitIdOk() (*string, bool) {
+func (o *HelmDeployRequest) GetGitCommitIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GitCommitId) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *DeployHelmRequest) GetGitCommitIdOk() (*string, bool) {
 }
 
 // HasGitCommitId returns a boolean if a field has been set.
-func (o *DeployHelmRequest) HasGitCommitId() bool {
+func (o *HelmDeployRequest) HasGitCommitId() bool {
 	if o != nil && !IsNil(o.GitCommitId) {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *DeployHelmRequest) HasGitCommitId() bool {
 }
 
 // SetGitCommitId gets a reference to the given string and assigns it to the GitCommitId field.
-func (o *DeployHelmRequest) SetGitCommitId(v string) {
+func (o *HelmDeployRequest) SetGitCommitId(v string) {
 	o.GitCommitId = &v
 }
 
 // GetValuesOverrideGitCommitId returns the ValuesOverrideGitCommitId field value if set, zero value otherwise.
-func (o *DeployHelmRequest) GetValuesOverrideGitCommitId() string {
+func (o *HelmDeployRequest) GetValuesOverrideGitCommitId() string {
 	if o == nil || IsNil(o.ValuesOverrideGitCommitId) {
 		var ret string
 		return ret
@@ -120,7 +120,7 @@ func (o *DeployHelmRequest) GetValuesOverrideGitCommitId() string {
 
 // GetValuesOverrideGitCommitIdOk returns a tuple with the ValuesOverrideGitCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeployHelmRequest) GetValuesOverrideGitCommitIdOk() (*string, bool) {
+func (o *HelmDeployRequest) GetValuesOverrideGitCommitIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ValuesOverrideGitCommitId) {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *DeployHelmRequest) GetValuesOverrideGitCommitIdOk() (*string, bool) {
 }
 
 // HasValuesOverrideGitCommitId returns a boolean if a field has been set.
-func (o *DeployHelmRequest) HasValuesOverrideGitCommitId() bool {
+func (o *HelmDeployRequest) HasValuesOverrideGitCommitId() bool {
 	if o != nil && !IsNil(o.ValuesOverrideGitCommitId) {
 		return true
 	}
@@ -137,11 +137,11 @@ func (o *DeployHelmRequest) HasValuesOverrideGitCommitId() bool {
 }
 
 // SetValuesOverrideGitCommitId gets a reference to the given string and assigns it to the ValuesOverrideGitCommitId field.
-func (o *DeployHelmRequest) SetValuesOverrideGitCommitId(v string) {
+func (o *HelmDeployRequest) SetValuesOverrideGitCommitId(v string) {
 	o.ValuesOverrideGitCommitId = &v
 }
 
-func (o DeployHelmRequest) MarshalJSON() ([]byte, error) {
+func (o HelmDeployRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -149,10 +149,10 @@ func (o DeployHelmRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DeployHelmRequest) ToMap() (map[string]interface{}, error) {
+func (o HelmDeployRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Version) {
-		toSerialize["version"] = o.Version
+	if !IsNil(o.ChartVersion) {
+		toSerialize["chart_version"] = o.ChartVersion
 	}
 	if !IsNil(o.GitCommitId) {
 		toSerialize["git_commit_id"] = o.GitCommitId
@@ -163,38 +163,38 @@ func (o DeployHelmRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableDeployHelmRequest struct {
-	value *DeployHelmRequest
+type NullableHelmDeployRequest struct {
+	value *HelmDeployRequest
 	isSet bool
 }
 
-func (v NullableDeployHelmRequest) Get() *DeployHelmRequest {
+func (v NullableHelmDeployRequest) Get() *HelmDeployRequest {
 	return v.value
 }
 
-func (v *NullableDeployHelmRequest) Set(val *DeployHelmRequest) {
+func (v *NullableHelmDeployRequest) Set(val *HelmDeployRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDeployHelmRequest) IsSet() bool {
+func (v NullableHelmDeployRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDeployHelmRequest) Unset() {
+func (v *NullableHelmDeployRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDeployHelmRequest(val *DeployHelmRequest) *NullableDeployHelmRequest {
-	return &NullableDeployHelmRequest{value: val, isSet: true}
+func NewNullableHelmDeployRequest(val *HelmDeployRequest) *NullableHelmDeployRequest {
+	return &NullableHelmDeployRequest{value: val, isSet: true}
 }
 
-func (v NullableDeployHelmRequest) MarshalJSON() ([]byte, error) {
+func (v NullableHelmDeployRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDeployHelmRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmDeployRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

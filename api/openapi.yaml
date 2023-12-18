@@ -12536,7 +12536,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/deployHelm_request'
+              $ref: '#/components/schemas/HelmDeployRequest'
       responses:
         "202":
           content:
@@ -19650,6 +19650,9 @@ components:
       type: object
     EnvironmentServiceIdsAllRequest:
       example:
+        helm_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         application_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19679,6 +19682,11 @@ components:
             type: string
           type: array
         job_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        helm_ids:
           items:
             format: uuid
             type: string
@@ -20750,6 +20758,27 @@ components:
           type: array
       type: object
     HelmAdvancedSettings:
+      type: object
+    HelmDeployRequest:
+      example:
+        git_commit_id: git_commit_id
+        chart_version: chart_version
+        values_override_git_commit_id: values_override_git_commit_id
+      properties:
+        chart_version:
+          description: |
+            version of the chart to deploy.
+            Cannot be set if `git_commit_id` is defined
+          type: string
+        git_commit_id:
+          description: |
+            Commit to deploy for chart source.
+            Cannot be set if `version` is defined
+          type: string
+        values_override_git_commit_id:
+          description: |
+            Commit to deploy for values override
+          type: string
       type: object
     HelmDeploymentRestrictionRequest:
       example:
@@ -23630,23 +23659,6 @@ components:
               $ref: '#/components/schemas/DeploymentHistoryDatabase'
             type: array
         type: object
-    deployHelm_request:
-      properties:
-        version:
-          description: |
-            version of the chart to deploy.
-            Cannot be set if `git_commit_id` is defined
-          type: string
-        git_commit_id:
-          description: |
-            Commit to deploy for chart source.
-            Cannot be set if `version` is defined
-          type: string
-        values_override_git_commit_id:
-          description: |
-            Commit to deploy for values override
-          type: string
-      type: object
     listHelmDeploymentHistory_200_response_allOf_results_inner_allOf_repository:
       description: "If the chart source if from a repository, the chart name and its\
         \ version"

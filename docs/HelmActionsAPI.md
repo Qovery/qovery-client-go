@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## DeployHelm
 
-> Status DeployHelm(ctx, helmId).ForceEvent(forceEvent).DeployHelmRequest(deployHelmRequest).Execute()
+> Status DeployHelm(ctx, helmId).ForceEvent(forceEvent).HelmDeployRequest(helmDeployRequest).Execute()
 
 Deploy helm
 
@@ -34,11 +34,11 @@ import (
 func main() {
     helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
     forceEvent := openapiclient.HelmForceEvent("DIFF") // HelmForceEvent | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  (optional)
-    deployHelmRequest := *openapiclient.NewDeployHelmRequest() // DeployHelmRequest |  (optional)
+    helmDeployRequest := *openapiclient.NewHelmDeployRequest() // HelmDeployRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmActionsAPI.DeployHelm(context.Background(), helmId).ForceEvent(forceEvent).DeployHelmRequest(deployHelmRequest).Execute()
+    resp, r, err := apiClient.HelmActionsAPI.DeployHelm(context.Background(), helmId).ForceEvent(forceEvent).HelmDeployRequest(helmDeployRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.DeployHelm``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **forceEvent** | [**HelmForceEvent**](HelmForceEvent.md) | When filled, it indicates the target event to be deployed.   If the concerned helm hasn&#39;t the target event provided, the helm won&#39;t be deployed.  | 
- **deployHelmRequest** | [**DeployHelmRequest**](DeployHelmRequest.md) |  | 
+ **helmDeployRequest** | [**HelmDeployRequest**](HelmDeployRequest.md) |  | 
 
 ### Return type
 

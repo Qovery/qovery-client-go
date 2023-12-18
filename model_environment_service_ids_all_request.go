@@ -24,6 +24,7 @@ type EnvironmentServiceIdsAllRequest struct {
 	ContainerIds   []string `json:"container_ids,omitempty"`
 	DatabaseIds    []string `json:"database_ids,omitempty"`
 	JobIds         []string `json:"job_ids,omitempty"`
+	HelmIds        []string `json:"helm_ids,omitempty"`
 }
 
 // NewEnvironmentServiceIdsAllRequest instantiates a new EnvironmentServiceIdsAllRequest object
@@ -171,6 +172,38 @@ func (o *EnvironmentServiceIdsAllRequest) SetJobIds(v []string) {
 	o.JobIds = v
 }
 
+// GetHelmIds returns the HelmIds field value if set, zero value otherwise.
+func (o *EnvironmentServiceIdsAllRequest) GetHelmIds() []string {
+	if o == nil || IsNil(o.HelmIds) {
+		var ret []string
+		return ret
+	}
+	return o.HelmIds
+}
+
+// GetHelmIdsOk returns a tuple with the HelmIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentServiceIdsAllRequest) GetHelmIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.HelmIds) {
+		return nil, false
+	}
+	return o.HelmIds, true
+}
+
+// HasHelmIds returns a boolean if a field has been set.
+func (o *EnvironmentServiceIdsAllRequest) HasHelmIds() bool {
+	if o != nil && !IsNil(o.HelmIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetHelmIds gets a reference to the given []string and assigns it to the HelmIds field.
+func (o *EnvironmentServiceIdsAllRequest) SetHelmIds(v []string) {
+	o.HelmIds = v
+}
+
 func (o EnvironmentServiceIdsAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -192,6 +225,9 @@ func (o EnvironmentServiceIdsAllRequest) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.JobIds) {
 		toSerialize["job_ids"] = o.JobIds
+	}
+	if !IsNil(o.HelmIds) {
+		toSerialize["helm_ids"] = o.HelmIds
 	}
 	return toSerialize, nil
 }

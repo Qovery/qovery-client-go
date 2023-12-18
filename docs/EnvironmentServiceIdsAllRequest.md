@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ContainerIds** | Pointer to **[]string** |  | [optional] 
 **DatabaseIds** | Pointer to **[]string** |  | [optional] 
 **JobIds** | Pointer to **[]string** |  | [optional] 
+**HelmIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetJobIds sets JobIds field to given value.
 `func (o *EnvironmentServiceIdsAllRequest) HasJobIds() bool`
 
 HasJobIds returns a boolean if a field has been set.
+
+### GetHelmIds
+
+`func (o *EnvironmentServiceIdsAllRequest) GetHelmIds() []string`
+
+GetHelmIds returns the HelmIds field if non-nil, zero value otherwise.
+
+### GetHelmIdsOk
+
+`func (o *EnvironmentServiceIdsAllRequest) GetHelmIdsOk() (*[]string, bool)`
+
+GetHelmIdsOk returns a tuple with the HelmIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHelmIds
+
+`func (o *EnvironmentServiceIdsAllRequest) SetHelmIds(v []string)`
+
+SetHelmIds sets HelmIds field to given value.
+
+### HasHelmIds
+
+`func (o *EnvironmentServiceIdsAllRequest) HasHelmIds() bool`
+
+HasHelmIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -258,7 +258,6 @@ docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
 docs/DeployAllRequestContainersInner.md
 docs/DeployAllRequestJobsInner.md
-docs/DeployHelmRequest.md
 docs/DeployRequest.md
 docs/DeploymentHistory.md
 docs/DeploymentHistoryApplication.md
@@ -364,6 +363,7 @@ docs/HelmAPI.md
 docs/HelmActionsAPI.md
 docs/HelmConfigurationAPI.md
 docs/HelmDefaultValuesRequest.md
+docs/HelmDeployRequest.md
 docs/HelmDeploymentHistoryAPI.md
 docs/HelmDeploymentRestrictionAPI.md
 docs/HelmDeploymentRestrictionRequest.md
@@ -769,7 +769,6 @@ model_deploy_all_request.go
 model_deploy_all_request_applications_inner.go
 model_deploy_all_request_containers_inner.go
 model_deploy_all_request_jobs_inner.go
-model_deploy_helm_request.go
 model_deploy_request.go
 model_deployment_history.go
 model_deployment_history_application.go
@@ -859,6 +858,7 @@ model_git_token_response.go
 model_git_token_response_list.go
 model_healthcheck.go
 model_helm_default_values_request.go
+model_helm_deploy_request.go
 model_helm_deployment_restriction_request.go
 model_helm_deployment_restriction_response.go
 model_helm_deployment_restriction_response_list.go
