@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AutoDeployContainerEnvironments**](ContainersAPI.md#AutoDeployContainerEnvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
 [**CloneContainer**](ContainersAPI.md#CloneContainer) | **Post** /container/{containerId}/clone | Clone container
-[**CloneHelm**](ContainersAPI.md#CloneHelm) | **Post** /helm/{helmId}/clone | Clone helm
 [**CreateContainer**](ContainersAPI.md#CreateContainer) | **Post** /environment/{environmentId}/container | Create a container
 [**GetContainerRegistryContainerStatus**](ContainersAPI.md#GetContainerRegistryContainerStatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
 [**GetDefaultContainerAdvancedSettings**](ContainersAPI.md#GetDefaultContainerAdvancedSettings) | **Get** /defaultContainerAdvancedSettings | List default container advanced settings
@@ -147,78 +146,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ContainerResponse**](ContainerResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CloneHelm
-
-> HelmResponse CloneHelm(ctx, helmId).CloneServiceRequest(cloneServiceRequest).Execute()
-
-Clone helm
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainersAPI.CloneHelm(context.Background(), helmId).CloneServiceRequest(cloneServiceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.CloneHelm``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CloneHelm`: HelmResponse
-    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.CloneHelm`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**helmId** | **string** | Helm ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCloneHelmRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **cloneServiceRequest** | [**CloneServiceRequest**](CloneServiceRequest.md) |  | 
-
-### Return type
-
-[**HelmResponse**](HelmResponse.md)
 
 ### Authorization
 

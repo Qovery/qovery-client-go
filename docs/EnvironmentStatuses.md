@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Containers** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Jobs** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Databases** | Pointer to [**[]Status**](Status.md) |  | [optional] 
+**Helms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetDatabases sets Databases field to given value.
 `func (o *EnvironmentStatuses) HasDatabases() bool`
 
 HasDatabases returns a boolean if a field has been set.
+
+### GetHelms
+
+`func (o *EnvironmentStatuses) GetHelms() []Status`
+
+GetHelms returns the Helms field if non-nil, zero value otherwise.
+
+### GetHelmsOk
+
+`func (o *EnvironmentStatuses) GetHelmsOk() (*[]Status, bool)`
+
+GetHelmsOk returns a tuple with the Helms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHelms
+
+`func (o *EnvironmentStatuses) SetHelms(v []Status)`
+
+SetHelms sets Helms field to given value.
+
+### HasHelms
+
+`func (o *EnvironmentStatuses) HasHelms() bool`
+
+HasHelms returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

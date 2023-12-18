@@ -25,6 +25,7 @@ type EnvironmentStatuses struct {
 	Containers   []Status           `json:"containers,omitempty"`
 	Jobs         []Status           `json:"jobs,omitempty"`
 	Databases    []Status           `json:"databases,omitempty"`
+	Helms        []Status           `json:"helms,omitempty"`
 }
 
 // NewEnvironmentStatuses instantiates a new EnvironmentStatuses object
@@ -204,6 +205,38 @@ func (o *EnvironmentStatuses) SetDatabases(v []Status) {
 	o.Databases = v
 }
 
+// GetHelms returns the Helms field value if set, zero value otherwise.
+func (o *EnvironmentStatuses) GetHelms() []Status {
+	if o == nil || IsNil(o.Helms) {
+		var ret []Status
+		return ret
+	}
+	return o.Helms
+}
+
+// GetHelmsOk returns a tuple with the Helms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatuses) GetHelmsOk() ([]Status, bool) {
+	if o == nil || IsNil(o.Helms) {
+		return nil, false
+	}
+	return o.Helms, true
+}
+
+// HasHelms returns a boolean if a field has been set.
+func (o *EnvironmentStatuses) HasHelms() bool {
+	if o != nil && !IsNil(o.Helms) {
+		return true
+	}
+
+	return false
+}
+
+// SetHelms gets a reference to the given []Status and assigns it to the Helms field.
+func (o *EnvironmentStatuses) SetHelms(v []Status) {
+	o.Helms = v
+}
+
 func (o EnvironmentStatuses) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -228,6 +261,9 @@ func (o EnvironmentStatuses) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Databases) {
 		toSerialize["databases"] = o.Databases
+	}
+	if !IsNil(o.Helms) {
+		toSerialize["helms"] = o.Helms
 	}
 	return toSerialize, nil
 }

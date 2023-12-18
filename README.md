@@ -254,7 +254,6 @@ Class | Method | HTTP request | Description
 *ContainerSecretAPI* | [**ListContainerSecrets**](docs/ContainerSecretAPI.md#listcontainersecrets) | **Get** /container/{containerId}/secret | List container secrets
 *ContainersAPI* | [**AutoDeployContainerEnvironments**](docs/ContainersAPI.md#autodeploycontainerenvironments) | **Post** /organization/{organizationId}/container/deploy | Auto deploy containers
 *ContainersAPI* | [**CloneContainer**](docs/ContainersAPI.md#clonecontainer) | **Post** /container/{containerId}/clone | Clone container
-*ContainersAPI* | [**CloneHelm**](docs/ContainersAPI.md#clonehelm) | **Post** /helm/{helmId}/clone | Clone helm
 *ContainersAPI* | [**CreateContainer**](docs/ContainersAPI.md#createcontainer) | **Post** /environment/{environmentId}/container | Create a container
 *ContainersAPI* | [**GetContainerRegistryContainerStatus**](docs/ContainersAPI.md#getcontainerregistrycontainerstatus) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status | List all container registry container statuses
 *ContainersAPI* | [**GetDefaultContainerAdvancedSettings**](docs/ContainersAPI.md#getdefaultcontaineradvancedsettings) | **Get** /defaultContainerAdvancedSettings | List default container advanced settings
@@ -375,6 +374,7 @@ Class | Method | HTTP request | Description
 *HelmRepositoriesAPI* | [**GetHelmRepository**](docs/HelmRepositoriesAPI.md#gethelmrepository) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId} | Get a helm repository
 *HelmRepositoriesAPI* | [**ListAvailableHelmRepository**](docs/HelmRepositoriesAPI.md#listavailablehelmrepository) | **Get** /availableHelmRepository | List supported helm repository
 *HelmRepositoriesAPI* | [**ListHelmRepository**](docs/HelmRepositoriesAPI.md#listhelmrepository) | **Get** /organization/{organizationId}/helmRepository | List organization helm repositories
+*HelmsAPI* | [**CloneHelm**](docs/HelmsAPI.md#clonehelm) | **Post** /helm/{helmId}/clone | Clone helm
 *HelmsAPI* | [**CreateHelm**](docs/HelmsAPI.md#createhelm) | **Post** /environment/{environmentId}/helm | Create a helm
 *HelmsAPI* | [**CreateHelmDefaultValues**](docs/HelmsAPI.md#createhelmdefaultvalues) | **Post** /environment/{environmentId}/helmDefaultValues | Get helm default values
 *HelmsAPI* | [**GetEnvironmentHelmStatus**](docs/HelmsAPI.md#getenvironmenthelmstatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
