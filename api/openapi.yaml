@@ -18014,6 +18014,15 @@ components:
           image_tag: image_tag
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           image_tag: image_tag
+        helms:
+        - git_commit_id: git_commit_id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          chart_version: chart_version
+          values_override_git_commit_id: values_override_git_commit_id
+        - git_commit_id: git_commit_id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          chart_version: chart_version
+          values_override_git_commit_id: values_override_git_commit_id
         applications:
         - git_commit_id: git_commit_id
           application_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18036,6 +18045,10 @@ components:
         jobs:
           items:
             $ref: '#/components/schemas/DeployAllRequest_jobs_inner'
+          type: array
+        helms:
+          items:
+            $ref: '#/components/schemas/DeployAllRequest_helms_inner'
           type: array
       type: object
     DeployRequest:
@@ -24171,6 +24184,30 @@ components:
           description: Commit ID to deploy. Use only if job is a repository source.
             Can be empty only if the service has been already deployed (in this case
             the service version won't be changed)
+          type: string
+      type: object
+    DeployAllRequest_helms_inner:
+      example:
+        git_commit_id: git_commit_id
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        chart_version: chart_version
+        values_override_git_commit_id: values_override_git_commit_id
+      properties:
+        id:
+          description: id of the helm to be updated.
+          format: uuid
+          type: string
+        chart_version:
+          description: The new chart version for the Helm source. Use this only if
+            the helm has a Helm repository source.
+          type: string
+        git_commit_id:
+          description: The commit Id to deploy. Use this only if the helm has a Git
+            repository source.
+          type: string
+        values_override_git_commit_id:
+          description: The commit Id of the override values to deploy. Use only if
+            the helm has a Git override values repository.
           type: string
       type: object
     Environment_allOf_cloud_provider:

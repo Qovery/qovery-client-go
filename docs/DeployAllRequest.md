@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Databases** | Pointer to **[]string** |  | [optional] 
 **Containers** | Pointer to [**[]DeployAllRequestContainersInner**](DeployAllRequestContainersInner.md) |  | [optional] 
 **Jobs** | Pointer to [**[]DeployAllRequestJobsInner**](DeployAllRequestJobsInner.md) |  | [optional] 
+**Helms** | Pointer to [**[]DeployAllRequestHelmsInner**](DeployAllRequestHelmsInner.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetJobs sets Jobs field to given value.
 `func (o *DeployAllRequest) HasJobs() bool`
 
 HasJobs returns a boolean if a field has been set.
+
+### GetHelms
+
+`func (o *DeployAllRequest) GetHelms() []DeployAllRequestHelmsInner`
+
+GetHelms returns the Helms field if non-nil, zero value otherwise.
+
+### GetHelmsOk
+
+`func (o *DeployAllRequest) GetHelmsOk() (*[]DeployAllRequestHelmsInner, bool)`
+
+GetHelmsOk returns a tuple with the Helms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHelms
+
+`func (o *DeployAllRequest) SetHelms(v []DeployAllRequestHelmsInner)`
+
+SetHelms sets Helms field to given value.
+
+### HasHelms
+
+`func (o *DeployAllRequest) HasHelms() bool`
+
+HasHelms returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,6 +24,7 @@ type DeployAllRequest struct {
 	Databases    []string                            `json:"databases,omitempty"`
 	Containers   []DeployAllRequestContainersInner   `json:"containers,omitempty"`
 	Jobs         []DeployAllRequestJobsInner         `json:"jobs,omitempty"`
+	Helms        []DeployAllRequestHelmsInner        `json:"helms,omitempty"`
 }
 
 // NewDeployAllRequest instantiates a new DeployAllRequest object
@@ -171,6 +172,38 @@ func (o *DeployAllRequest) SetJobs(v []DeployAllRequestJobsInner) {
 	o.Jobs = v
 }
 
+// GetHelms returns the Helms field value if set, zero value otherwise.
+func (o *DeployAllRequest) GetHelms() []DeployAllRequestHelmsInner {
+	if o == nil || IsNil(o.Helms) {
+		var ret []DeployAllRequestHelmsInner
+		return ret
+	}
+	return o.Helms
+}
+
+// GetHelmsOk returns a tuple with the Helms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployAllRequest) GetHelmsOk() ([]DeployAllRequestHelmsInner, bool) {
+	if o == nil || IsNil(o.Helms) {
+		return nil, false
+	}
+	return o.Helms, true
+}
+
+// HasHelms returns a boolean if a field has been set.
+func (o *DeployAllRequest) HasHelms() bool {
+	if o != nil && !IsNil(o.Helms) {
+		return true
+	}
+
+	return false
+}
+
+// SetHelms gets a reference to the given []DeployAllRequestHelmsInner and assigns it to the Helms field.
+func (o *DeployAllRequest) SetHelms(v []DeployAllRequestHelmsInner) {
+	o.Helms = v
+}
+
 func (o DeployAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -192,6 +225,9 @@ func (o DeployAllRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Jobs) {
 		toSerialize["jobs"] = o.Jobs
+	}
+	if !IsNil(o.Helms) {
+		toSerialize["helms"] = o.Helms
 	}
 	return toSerialize, nil
 }

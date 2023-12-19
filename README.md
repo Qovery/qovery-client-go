@@ -636,6 +636,7 @@ Class | Method | HTTP request | Description
  - [DeployAllRequest](docs/DeployAllRequest.md)
  - [DeployAllRequestApplicationsInner](docs/DeployAllRequestApplicationsInner.md)
  - [DeployAllRequestContainersInner](docs/DeployAllRequestContainersInner.md)
+ - [DeployAllRequestHelmsInner](docs/DeployAllRequestHelmsInner.md)
  - [DeployAllRequestJobsInner](docs/DeployAllRequestJobsInner.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeploymentHistory](docs/DeploymentHistory.md)
