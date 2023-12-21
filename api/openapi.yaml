@@ -7846,7 +7846,7 @@ paths:
           description: Access forbidden
       summary: List default helm advanced settings
       tags:
-      - Helm
+      - Helms
   /application/{applicationId}:
     delete:
       description: To delete the application you must have the admin permission

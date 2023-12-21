@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CloneHelm**](HelmsAPI.md#CloneHelm) | **Post** /helm/{helmId}/clone | Clone helm
 [**CreateHelm**](HelmsAPI.md#CreateHelm) | **Post** /environment/{environmentId}/helm | Create a helm
 [**CreateHelmDefaultValues**](HelmsAPI.md#CreateHelmDefaultValues) | **Post** /environment/{environmentId}/helmDefaultValues | Get helm default values
+[**GetDefaultHelmAdvancedSettings**](HelmsAPI.md#GetDefaultHelmAdvancedSettings) | **Get** /defaultHelmAdvancedSettings | List default helm advanced settings
 [**GetEnvironmentHelmStatus**](HelmsAPI.md#GetEnvironmentHelmStatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
 [**ListHelms**](HelmsAPI.md#ListHelms) | **Get** /environment/{environmentId}/helm | List helms
 
@@ -218,6 +219,65 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDefaultHelmAdvancedSettings
+
+> map[string]interface{} GetDefaultHelmAdvancedSettings(ctx).Execute()
+
+List default helm advanced settings
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmsAPI.GetDefaultHelmAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.GetDefaultHelmAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultHelmAdvancedSettings`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.GetDefaultHelmAdvancedSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDefaultHelmAdvancedSettingsRequest struct via the builder pattern
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

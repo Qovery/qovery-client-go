@@ -143,8 +143,6 @@ type APIClient struct {
 
 	GithubAppAPI *GithubAppAPIService
 
-	HelmAPI *HelmAPIService
-
 	HelmActionsAPI *HelmActionsAPIService
 
 	HelmConfigurationAPI *HelmConfigurationAPIService
@@ -271,7 +269,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EnvironmentsAPI = (*EnvironmentsAPIService)(&c.common)
 	c.GitRepositoriesAPI = (*GitRepositoriesAPIService)(&c.common)
 	c.GithubAppAPI = (*GithubAppAPIService)(&c.common)
-	c.HelmAPI = (*HelmAPIService)(&c.common)
 	c.HelmActionsAPI = (*HelmActionsAPIService)(&c.common)
 	c.HelmConfigurationAPI = (*HelmConfigurationAPIService)(&c.common)
 	c.HelmDeploymentHistoryAPI = (*HelmDeploymentHistoryAPIService)(&c.common)

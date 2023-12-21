@@ -50,7 +50,6 @@ api_environment_variable.go
 api_environments.go
 api_git_repositories.go
 api_github_app.go
-api_helm.go
 api_helm_actions.go
 api_helm_configuration.go
 api_helm_deployment_history.go
@@ -362,7 +361,6 @@ docs/GitTokenResponse.md
 docs/GitTokenResponseList.md
 docs/GithubAppAPI.md
 docs/Healthcheck.md
-docs/HelmAPI.md
 docs/HelmActionsAPI.md
 docs/HelmConfigurationAPI.md
 docs/HelmDefaultValuesRequest.md
@@ -1148,7 +1146,6 @@ test/api_helm_deployment_history_test.go
 test/api_helm_deployment_restriction_test.go
 test/api_helm_main_calls_test.go
 test/api_helm_repositories_test.go
-test/api_helm_test.go
 test/api_helms_test.go
 test/api_job_actions_test.go
 test/api_job_configuration_test.go

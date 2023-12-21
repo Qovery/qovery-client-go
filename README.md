@@ -350,7 +350,6 @@ Class | Method | HTTP request | Description
 *GitRepositoriesAPI* | [**GetGitlabRepositoryBranches**](docs/GitRepositoriesAPI.md#getgitlabrepositorybranches) | **Get** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
 *GithubAppAPI* | [**OrganizationGithubAppConnect**](docs/GithubAppAPI.md#organizationgithubappconnect) | **Post** /organization/{organizationId}/github/connect | Connect a github account to an organization
 *GithubAppAPI* | [**OrganizationGithubAppDisconnect**](docs/GithubAppAPI.md#organizationgithubappdisconnect) | **Delete** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
-*HelmAPI* | [**GetDefaultHelmAdvancedSettings**](docs/HelmAPI.md#getdefaulthelmadvancedsettings) | **Get** /defaultHelmAdvancedSettings | List default helm advanced settings
 *HelmActionsAPI* | [**DeployHelm**](docs/HelmActionsAPI.md#deployhelm) | **Post** /helm/{helmId}/deploy | Deploy helm
 *HelmActionsAPI* | [**RedeployHelm**](docs/HelmActionsAPI.md#redeployhelm) | **Post** /helm/{helmId}/redeploy | Redeploy helm
 *HelmActionsAPI* | [**RestartHelm**](docs/HelmActionsAPI.md#restarthelm) | **Post** /helm/{helmId}/restart | Deprecated - Restart helm
@@ -377,6 +376,7 @@ Class | Method | HTTP request | Description
 *HelmsAPI* | [**CloneHelm**](docs/HelmsAPI.md#clonehelm) | **Post** /helm/{helmId}/clone | Clone helm
 *HelmsAPI* | [**CreateHelm**](docs/HelmsAPI.md#createhelm) | **Post** /environment/{environmentId}/helm | Create a helm
 *HelmsAPI* | [**CreateHelmDefaultValues**](docs/HelmsAPI.md#createhelmdefaultvalues) | **Post** /environment/{environmentId}/helmDefaultValues | Get helm default values
+*HelmsAPI* | [**GetDefaultHelmAdvancedSettings**](docs/HelmsAPI.md#getdefaulthelmadvancedsettings) | **Get** /defaultHelmAdvancedSettings | List default helm advanced settings
 *HelmsAPI* | [**GetEnvironmentHelmStatus**](docs/HelmsAPI.md#getenvironmenthelmstatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
 *HelmsAPI* | [**ListHelms**](docs/HelmsAPI.md#listhelms) | **Get** /environment/{environmentId}/helm | List helms
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
